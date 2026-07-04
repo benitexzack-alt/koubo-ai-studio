@@ -132,6 +132,13 @@ Remotion 的定位是“精确包装工具”，不是剪映或达芬奇的替�
 -> Remotion 画框、箭头、马克笔或放大镜
 ```
 
+当前已落地的基础能力：
+
+- OCR 识别脚本：`tools/ocr-image.mjs`。
+- Remotion 动效类型：`ocr-callout`。
+- 开发验收 composition：`AIBizTalk16x9-OCRDemo`。
+- 单帧验收命令：`cd remotion && npm run still:ocr-demo`。
+
 边界：
 
 - OCR 是辅助定位，不是证据本身。

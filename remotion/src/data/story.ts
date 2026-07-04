@@ -7,7 +7,7 @@ export type Beat = {
   title: string;
   detail: string;
   accent?: string;
-  variant?: 'statement' | 'compare' | 'checklist' | 'flow' | 'metric';
+  variant?: 'statement' | 'compare' | 'checklist' | 'flow' | 'metric' | 'ocr-callout';
   side?: 'left' | 'right';
   items?: string[];
   steps?: string[];
@@ -17,6 +17,21 @@ export type Beat = {
   rightText?: string;
   metricLabel?: string;
   metricValue?: string;
+  canvas?: {
+    width: number;
+    height: number;
+  };
+  callouts?: Array<{
+    text: string;
+    label?: string;
+    box: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+    };
+    padding?: number;
+  }>;
 };
 
 export type TalkProps = {
@@ -236,6 +251,39 @@ export const localBossAiV2Props: TalkProps = {
       variant: 'statement',
       side: 'left',
       items: ['兰州本地', '小微企业', 'AI 实战记录'],
+    },
+  ],
+};
+
+export const localBossAiOcrDemoProps: TalkProps = {
+  ...localBossAiV2Props,
+  topic: 'OCR 标注测试',
+  beats: [
+    {
+      start: 0.2,
+      end: 3.8,
+      eyebrow: 'OCR 标注',
+      title: '指哪打哪',
+      detail: '用坐标把重点打到画面上。',
+      accent: '#FFD23F',
+      variant: 'ocr-callout',
+      canvas: {
+        width: 1920,
+        height: 1080,
+      },
+      callouts: [
+        {
+          text: '本地老板用 AI',
+          label: '高亮这句话',
+          box: {
+            x: 1330,
+            y: 42,
+            width: 515,
+            height: 72,
+          },
+          padding: 10,
+        },
+      ],
     },
   ],
 };

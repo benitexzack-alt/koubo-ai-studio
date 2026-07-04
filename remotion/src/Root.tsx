@@ -4,7 +4,7 @@ import {AIBizTalk16x9} from './AIBizTalk16x9';
 import {CoverStill} from './CoverStill';
 import {CoverStill3x4} from './CoverStill3x4';
 import {CoverStill9x16} from './CoverStill9x16';
-import {defaultTalkProps, localBossAiProps, localBossAiV2Props} from './data/story';
+import {defaultTalkProps, localBossAiOcrDemoProps, localBossAiProps, localBossAiV2Props} from './data/story';
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -36,6 +36,15 @@ export const RemotionRoot: React.FC = () => {
           fps={30}
           durationInFrames={1848}
           defaultProps={localBossAiV2Props}
+        />
+        <Composition
+          id="AIBizTalk16x9-OCRDemo"
+          component={AIBizTalk16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={120}
+          defaultProps={localBossAiOcrDemoProps}
         />
         <Still
           id="CoverStill"

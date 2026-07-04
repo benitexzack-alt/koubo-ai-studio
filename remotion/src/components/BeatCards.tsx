@@ -398,6 +398,96 @@ const MetricCard: React.FC<{beat: Beat}> = ({beat}) => {
   );
 };
 
+const OcrCalloutOverlay: React.FC<{beat: Beat}> = ({beat}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const local = Math.max(0, frame - beat.start * fps);
+  const seconds = frame / fps;
+  const exit = interpolate(seconds, [beat.end - 0.3, beat.end], [1, 0], clamp);
+  const canvas = beat.canvas ?? {width: 1920, height: 1080};
+  const accent = beat.accent ?? colors.yellow;
+  const scaleX = 1920 / canvas.width;
+  const scaleY = 1080 / canvas.height;
+
+  return (
+    <AbsoluteFill style={{opacity: exit, fontFamily}}>
+      {(beat.callouts ?? []).map((callout, index) => {
+        const padding = callout.padding ?? 12;
+        const left = (callout.box.x - padding) * scaleX;
+        const top = (callout.box.y - padding) * scaleY;
+        const width = (callout.box.width + padding * 2) * scaleX;
+        const height = (callout.box.height + padding * 2) * scaleY;
+        const labelSide = left + width > 1500 ? 'left' : 'right';
+        const labelLeft = labelSide === 'left' ? left - 260 : left + width + 24;
+        const labelTop = Math.max(76, top - 6);
+        const delay = index * 8;
+        const itemEnter = interpolate(Math.max(0, local - delay), [0, 18], [0, 1], {
+          ...clamp,
+          easing: Easing.out(Easing.cubic),
+        });
+
+        return (
+          <React.Fragment key={`${callout.text}-${index}`}>
+            <div
+              style={{
+                position: 'absolute',
+                left,
+                top,
+                width,
+                height,
+                borderRadius: 12,
+                border: `5px solid ${accent}`,
+                boxShadow: `0 0 28px ${accent}99, inset 0 0 28px ${accent}33`,
+                background: `${accent}12`,
+                opacity: itemEnter,
+                transform: `scale(${interpolate(itemEnter, [0, 1], [0.88, 1])})`,
+                transformOrigin: 'center',
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                left: labelSide === 'left' ? labelLeft + 228 : left + width,
+                top: top + height / 2,
+                width: labelSide === 'left' ? left - labelLeft - 6 : labelLeft - (left + width) + 6,
+                height: 3,
+                borderRadius: 99,
+                background: accent,
+                boxShadow: `0 0 18px ${accent}88`,
+                opacity: itemEnter,
+                transform: `scaleX(${itemEnter})`,
+                transformOrigin: labelSide === 'left' ? 'right' : 'left',
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                left: labelLeft,
+                top: labelTop,
+                minWidth: 220,
+                maxWidth: 280,
+                padding: '14px 18px',
+                borderRadius: 12,
+                background: 'rgba(5,10,18,0.88)',
+                border: `1px solid ${accent}AA`,
+                boxShadow: `0 18px 54px rgba(0,0,0,0.44), 0 0 28px ${accent}33`,
+                color: colors.ink,
+                opacity: itemEnter,
+                transform: `translateY(${interpolate(itemEnter, [0, 1], [18, 0])}px)`,
+              }}
+            >
+              <div style={{color: accent, fontSize: 20, fontWeight: 950}}>{beat.eyebrow}</div>
+              <div style={{marginTop: 6, fontSize: 28, lineHeight: 1.16, fontWeight: 950}}>
+                {callout.label ?? callout.text}
+              </div>
+            </div>
+          </React.Fragment>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
 const renderBeat = (beat: Beat) => {
   switch (beat.variant) {
     case 'compare':
@@ -408,6 +498,8 @@ const renderBeat = (beat: Beat) => {
       return <FlowCard beat={beat} />;
     case 'metric':
       return <MetricCard beat={beat} />;
+    case 'ocr-callout':
+      return <OcrCalloutOverlay beat={beat} />;
     case 'statement':
     default:
       return <StatementCard beat={beat} />;
@@ -425,6 +517,10 @@ export const BeatCards: React.FC<{beats: Beat[]}> = ({beats}) => {
         const active = seconds >= beat.start && seconds < beat.end;
         if (!active) {
           return null;
+        }
+
+        if (beat.variant === 'ocr-callout') {
+          return <React.Fragment key={`${beat.start}-${beat.title}`}>{renderBeat(beat)}</React.Fragment>;
         }
 
         return (

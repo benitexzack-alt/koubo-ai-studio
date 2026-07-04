@@ -88,6 +88,7 @@
 - 已确认 Remotion 三项长期机制：每条视频先做 `visual-plan.json`、Remotion 只做局部动效片段、复杂参数配置化。
 - 已安装并验证本地 OCR 中文识别能力：Tesseract 5.5.2 + `tesseract-lang`，可用语言包含 `chi_sim`。
 - 已新增 OCR 坐标识别脚本：`tools/ocr-image.mjs`。
+- 已新增 Remotion `ocr-callout` 动效类型和 `AIBizTalk16x9-OCRDemo` 验收 composition，可用 `npm run still:ocr-demo` 渲染单帧检查。
 - 仍待用户人工观看确认：节奏、形象、字幕字词、标题风格、封面视觉、是否压缩到 45 秒。
 
 ## 七、隐私与密钥规则
@@ -114,3 +115,4 @@
 - 2026-07-04 已初始化 Git，首个提交 `a8d8ad2 feat: initialize koubo ai studio workflow`，并推送到 `git@github.com:benitexzack-alt/koubo-ai-studio.git`。
 - 2026-07-04 已完成第二条测试口播 v2 升级：新增主题封面背景、语义卡片 variants、v2 composition 和 3:4 封面 Still；本次生图中转站调用封面背景时返回 `HTTP 504 Gateway Time-out`，已改为代码生成背景兜底，后续需增加重试和提示词归档。
 - 2026-07-05 已根据《口播秘籍》教程确认三项机制并入工作流：`visual-plan.json`、Remotion 小动效片段分工、复杂参数配置化；同时补齐 OCR 中文识别工具，用于后续截图/界面“指哪打哪”标注。
+- 2026-07-05 已把 OCR 标注从工具能力推进到 Remotion 组件能力：`Beat.variant` 支持 `ocr-callout`，可根据坐标画高亮框、连线和标签。
