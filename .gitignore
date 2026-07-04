@@ -1,0 +1,26 @@
+.env
+.env.*
+!.env.example
+
+# 原始/中间媒体通常体积大，按需手动归档，不进入 Git
+source/*
+edit/exports/*
+edit/transcripts/*
+edit/verify/*
+outputs/*
+work/*
+knowledge/source-materials/*
+assets/fonts/*
+remotion/node_modules/
+remotion/.cache/
+remotion/out/
+remotion/public/media/*
+remotion/public/fonts/*
+
+# 系统文件
+.DS_Store
+**/.DS_Store
+
+# 临时文件
+*.tmp
+*.log

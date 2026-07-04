@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "project": "口播视频项目",
+  "video": {
+    "id": "IMG_1911",
+    "title": "38岁，我在兰州做AI创业",
+    "format": "16:9",
+    "duration_sec": 79.33,
+    "source": "source/IMG_1911.MOV",
+    "render": "outputs/兰州AI创业口播样片_16x9_v4_语义字幕版.mp4"
+  },
+  "principles": [
+    "真实证据优先；能用真实截图、真实界面、真实企业场景时不生图。",
+    "生图服务抽象概念、封面视觉和提示卡背景，不替代案例证据。",
+    "视频生成只用于缺少实拍素材的3-5秒氛围镜头，默认不启用。",
+    "每个外部素材必须记录来源、授权状态和证据等级。",
+    "字幕按口语语义断句，不机械依赖转写标点。"
+  ],
+  "visual_type_rules": {
+    "talking_head": "默认主画面。用于身份表达、观点承接、情绪和信任建立。",
+    "real_screenshot": "讲工具、网页、后台、客户案例、数据和本地资源时优先使用。",
+    "generated_image": "讲抽象概念、封面、提示卡背景、概念流程和科技感视觉时使用。",
+    "generated_video": "讲城市、算力中心、AI流程等需要动态氛围且无实拍素材时使用；每次只生成短镜头。",
+    "text_card": "讲清单、三点结论、行动步骤、账号承诺时使用 Remotion 文字卡。"
+  },
+  "segments": [
+    {
+      "id": "s01_identity",
+      "start_sec": 1.8,
+      "end_sec": 6.7,
+      "beat": "开场身份",
+      "spoken_summary": "大家好，我是在甘肃兰州创业的AI博主。",
+      "primary_visual_type": "talking_head",
+      "secondary_visual_type": "text_card",
+      "asset_status": "ready",
+      "asset": "remotion/src/data/story.ts#beats[0]",
+      "evidence_level": "self-stated",
+      "notes": "保留真人正面，强化身份可信度；不需要生图。"
+    },
+    {
+      "id": "s02_small_business",
+      "start_sec": 6.8,
+      "end_sec": 17.2,
+      "beat": "核心判断",
+      "spoken_summary": "AI不该只属于大公司，小微企业和个体老板也应该用得上。",
+      "primary_visual_type": "text_card",
+      "secondary_visual_type": "generated_image",
+      "asset_status": "optional",
+      "prompt": "甘肃本地小微企业老板在手机和电脑前使用AI工具，真实商业纪录片风格，科技蓝与暖黄色点缀，干净背景，适合短视频提示卡，16:9",
+      "evidence_level": "conceptual",
+      "notes": "可用生图做提示卡背景，但不要伪造成真实企业案例。"
+    },
+    {
+      "id": "s03_local_needs",
+      "start_sec": 17.3,
+      "end_sec": 33.0,
+      "beat": "服务对象",
+      "spoken_summary": "从甘肃本地需求开始，解决获客、曝光、内容、工具应用和算力对接。",
+      "primary_visual_type": "real_screenshot",
+      "secondary_visual_type": "text_card",
+      "asset_status": "needed",
+      "needed_assets": [
+        "本地企业短视频账号截图",
+        "AI工具实操界面截图",
+        "庆阳算力中心公开资料截图"
+      ],
+      "evidence_level": "needs-source",
+      "notes": "这一段最需要真实截图，后续不要只用抽象科技图。"
+    },
+    {
+      "id": "s04_opc",
+      "start_sec": 33.1,
+      "end_sec": 49.0,
+      "beat": "创业连接",
+      "spoken_summary": "连接本地OPC一人公司创业者，用AI放大交付能力。",
+      "primary_visual_type": "text_card",
+      "secondary_visual_type": "generated_image",
+      "asset_status": "optional",
+      "prompt": "一人公司创业者的工作台，笔记本电脑、任务看板、AI助手界面、兰州城市夜景元素，商业科技纪录片风格，16:9",
+      "evidence_level": "conceptual",
+      "notes": "可以用生图表达OPC协作感；如后续有真实合伙人/工作场景，替换为实拍或截图。"
+    },
+    {
+      "id": "s05_content_direction",
+      "start_sec": 49.1,
+      "end_sec": 66.0,
+      "beat": "内容方向",
+      "spoken_summary": "讲AI基础知识、工具实操、企业案例和能马上验证的动作。",
+      "primary_visual_type": "real_screenshot",
+      "secondary_visual_type": "text_card",
+      "asset_status": "needed",
+      "needed_assets": [
+        "1个AI工具实际操作截图",
+        "1张工作流流程图",
+        "1张案例分析表或素材台账截图"
+      ],
+      "evidence_level": "needs-source",
+      "notes": "这段应逐步升级为截图飞入和流程拆解动画。"
+    },
+    {
+      "id": "s06_close",
+      "start_sec": 66.1,
+      "end_sec": 79.2,
+      "beat": "第一期结尾",
+      "spoken_summary": "从兰州开始，把AI落到地上，关注账号一起看甘肃小微企业进入AI时代。",
+      "primary_visual_type": "talking_head",
+      "secondary_visual_type": "generated_image",
+      "asset_status": "optional",
+      "prompt": "兰州城市轮廓与AI网络节点融合，黄河、城市灯光、科技线条，真实高级商业短视频片尾背景，16:9",
+      "evidence_level": "conceptual",
+      "notes": "结尾以真人号召为主，生图只做轻背景或封面延展。"
+    }
+  ],
+  "caption_rules": {
+    "transcript_text": "保留完整标点，服务剪辑和理解。",
+    "screen_caption": "按口语语义短句显示，少用逗号句号，保留问号、感叹号和关键词。",
+    "avoid": [
+      "单字掉页",
+      "半个词掉页",
+      "一整句堆满屏幕",
+      "字幕遮挡脸和手势"
+    ]
+  },
+  "next_actions": [
+    "用 tools/generate-image.mjs 做一张低成本封面/提示卡测试图。",
+    "补真实截图素材清单，再把 s03 和 s05 从 text_card 升级为截图包装。",
+    "后续 Remotion 模板读取 shot-plan.json，按 visual_type 自动安排提示卡、截图和生图素材。"
+  ]
+}
