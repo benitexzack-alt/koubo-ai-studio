@@ -7,6 +7,16 @@ export type Beat = {
   title: string;
   detail: string;
   accent?: string;
+  variant?: 'statement' | 'compare' | 'checklist' | 'flow' | 'metric';
+  side?: 'left' | 'right';
+  items?: string[];
+  steps?: string[];
+  leftLabel?: string;
+  leftText?: string;
+  rightLabel?: string;
+  rightText?: string;
+  metricLabel?: string;
+  metricValue?: string;
 };
 
 export type TalkProps = {
@@ -18,6 +28,8 @@ export type TalkProps = {
   identity: string;
   coverTitle: string;
   coverSubTitle: string;
+  coverKicker?: string;
+  coverBgSrc?: string;
   footerTag: string;
   beats: Beat[];
 };
@@ -142,6 +154,88 @@ export const localBossAiProps: TalkProps = {
       title: '记录甘肃企业怎么用上 AI',
       detail: '不讲虚的，从兰州开始，把本地小微企业一步步带进 AI 时代。',
       accent: '#19D3FF',
+    },
+  ],
+};
+
+export const localBossAiV2Props: TalkProps = {
+  ...localBossAiProps,
+  coverBgSrc: 'covers/local-boss-ai-cover-bg-v2.svg',
+  coverKicker: 'LOCAL AI FIELD NOTES',
+  coverTitle: '别急着买AI',
+  coverSubTitle: '系统不是第一步',
+  footerTag: 'AI | 兰州本地 | 小微企业 | 业务结构化',
+  beats: [
+    {
+      start: 0.5,
+      end: 5.5,
+      eyebrow: '误区',
+      title: '第一步不是买系统',
+      detail: 'AI 落地的第一关，不是采购工具，而是把业务讲清楚。',
+      accent: '#FFD23F',
+      variant: 'statement',
+      side: 'left',
+      items: ['别先问买什么', '先问业务怎么跑'],
+    },
+    {
+      start: 5.6,
+      end: 13.8,
+      eyebrow: '判断',
+      title: '工具不懂你的生意',
+      detail: '产品、顾客、问题、复购、差评，才是 AI 能工作的原料。',
+      accent: '#19D3FF',
+      variant: 'compare',
+      side: 'left',
+      leftLabel: '先买系统',
+      leftText: '工具很贵，业务仍乱',
+      rightLabel: '先讲清楚',
+      rightText: '资料清楚，AI 才能帮忙',
+    },
+    {
+      start: 13.9,
+      end: 29.2,
+      eyebrow: '餐饮店样例',
+      title: '老板每天知道很多',
+      detail: '真正要做的是把经验从脑子里拿出来，整理成可调用资料。',
+      accent: '#5CFF8F',
+      variant: 'checklist',
+      side: 'left',
+      items: ['每天卖什么菜', '顾客常问什么', '差评集中在哪', '哪道菜适合拍视频', '老顾客为何复购'],
+    },
+    {
+      start: 29.3,
+      end: 42.8,
+      eyebrow: '落地路径',
+      title: '经验要变成流程',
+      detail: '表格、话术、选题库和流程，是小微企业 AI 落地的底座。',
+      accent: '#FF7A45',
+      variant: 'flow',
+      side: 'right',
+      steps: ['老板经验', '结构表格', '客服话术', '选题库', '执行流程'],
+    },
+    {
+      start: 42.9,
+      end: 53.6,
+      eyebrow: '小闭环',
+      title: '先验证一个小结果',
+      detail: '短视频选题、客服回复、门店曝光，跑通以后再继续扩大。',
+      accent: '#B57CFF',
+      variant: 'metric',
+      side: 'left',
+      metricLabel: '先跑通',
+      metricValue: '1 个闭环',
+      items: ['短视频选题', '客服回复', '门店曝光'],
+    },
+    {
+      start: 53.7,
+      end: 61.4,
+      eyebrow: '账号定位',
+      title: '记录甘肃企业怎么用上 AI',
+      detail: '不讲虚的，从兰州开始，把本地小微企业一步步带进 AI 时代。',
+      accent: '#19D3FF',
+      variant: 'statement',
+      side: 'left',
+      items: ['兰州本地', '小微企业', 'AI 实战记录'],
     },
   ],
 };

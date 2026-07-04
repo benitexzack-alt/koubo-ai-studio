@@ -7,9 +7,11 @@
     "studio": "remotion studio src/index.ts",
     "render:sample": "remotion render src/index.ts AIBizTalk16x9 ../outputs/兰州AI创业口播样片_16x9_v4_语义字幕版.mp4 --codec=h264 --pixel-format=yuv420p",
     "render:img1926": "remotion render src/index.ts AIBizTalk16x9-IMG1926 ../outputs/本地老板AI第一步不是买软件_16x9_v1.mp4 --codec=h264 --pixel-format=yuv420p",
+    "render:img1926:v2": "remotion render src/index.ts AIBizTalk16x9-IMG1926-v2 ../outputs/本地老板AI第一步不是买软件_16x9_v2.mp4 --codec=h264 --pixel-format=yuv420p",
     "render:preview10": "remotion render src/index.ts AIBizTalk16x9 ../outputs/兰州AI创业口播预览10秒_语义字幕版.mp4 --codec=h264 --pixel-format=yuv420p --frames=0-300",
     "still:cover": "remotion still src/index.ts CoverStill ../outputs/兰州AI创业封面_v1.png --frame=0",
     "still:cover3x4:img1926": "remotion still src/index.ts CoverStill3x4-IMG1926 ../outputs/本地老板AI第一步不是买软件_封面3x4_v1.png --frame=0",
+    "still:cover3x4:img1926:v2": "remotion still src/index.ts CoverStill3x4-IMG1926-v2 ../outputs/本地老板AI第一步不是买软件_封面3x4_v2.png --frame=0",
     "still:cover9x16": "remotion still src/index.ts CoverStill9x16 ../outputs/兰州AI创业封面_9x16_v1.png --frame=0",
     "toolchain": "node ../tools/check-toolchain.mjs",
     "prepare:captions": "node ../tools/prepare-elevenlabs-captions.mjs ../edit/transcripts/IMG_1911.json public/data/IMG_1911.captions.json"

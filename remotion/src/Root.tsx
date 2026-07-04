@@ -4,7 +4,7 @@ import {AIBizTalk16x9} from './AIBizTalk16x9';
 import {CoverStill} from './CoverStill';
 import {CoverStill3x4} from './CoverStill3x4';
 import {CoverStill9x16} from './CoverStill9x16';
-import {defaultTalkProps, localBossAiProps} from './data/story';
+import {defaultTalkProps, localBossAiProps, localBossAiV2Props} from './data/story';
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -28,6 +28,15 @@ export const RemotionRoot: React.FC = () => {
           durationInFrames={1848}
           defaultProps={localBossAiProps}
         />
+        <Composition
+          id="AIBizTalk16x9-IMG1926-v2"
+          component={AIBizTalk16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={1848}
+          defaultProps={localBossAiV2Props}
+        />
         <Still
           id="CoverStill"
           component={CoverStill}
@@ -48,6 +57,13 @@ export const RemotionRoot: React.FC = () => {
           width={1080}
           height={1440}
           defaultProps={localBossAiProps}
+        />
+        <Still
+          id="CoverStill3x4-IMG1926-v2"
+          component={CoverStill3x4}
+          width={1080}
+          height={1440}
+          defaultProps={localBossAiV2Props}
         />
         <Still
           id="CoverStill9x16"

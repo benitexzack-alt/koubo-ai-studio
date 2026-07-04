@@ -1,7 +1,7 @@
 # 口播视频项目
 
 > 当前目标：建立个人 AI 口播账号的可复用视频生产流程。
-> 当前阶段：第一条 16:9 v4 样片已跑通；Remotion 模板、语义字幕、截图、封面、素材台账和生图 API 占位已补齐。
+> 当前阶段：第一条 16:9 v4 样片已跑通；第二条测试口播已完成 v2 语义动效和 3:4 封面升级，等待人工观看评审。
 
 ## 一、账号定位
 
@@ -45,6 +45,9 @@
 - 风格规范：`knowledge/06-选题脚本与风格规范.md`
 - 合伙人 PPT 摘要：`knowledge/07-合伙人PPT摘要与数据边界.md`
 - 决策与复盘：`knowledge/08-决策与复盘日志.md`
+- 命名调研：`knowledge/09-AI博主命名调研.md`
+- 时事选题：`knowledge/10-AI时事选题与口播转化工作流.md`
+- 封面与动效：`knowledge/11-封面与语义动效模板升级复盘.md`
 
 ## 五、已验证事实
 
@@ -75,6 +78,8 @@
 - 已生成 Remotion 10 秒语义字幕预览：`outputs/兰州AI创业口播预览10秒_语义字幕版.mp4`。
 - 已生成封面 Still：`outputs/兰州AI创业封面_v1.png`。
 - 已生成抖音 9:16 封面 Still：`outputs/兰州AI创业封面_9x16_v1.png`。
+- 已生成第二条测试口播 v2 样片：`outputs/本地老板AI第一步不是买软件_16x9_v2.mp4`。
+- 已生成第二条测试口播 3:4 封面：`outputs/本地老板AI第一步不是买软件_封面3x4_v2.png`。
 - 已同步交付文件到 Codex 输出目录：`/Users/pc/Documents/Codex/2026-07-03/claude/outputs/口播/`。
 - 技术自检通过：Remotion v4 全片输出 1920×1080、30fps、H.264/AAC、79.33 秒，完整解码通过；10 秒预览输出 1920×1080、30fps、H.264/AAC、10.09 秒。
 - 字幕问题已定位为 Remotion 默认 TikTok 分页不适合中文连续文本；已改为中文语义分页，已保护“甘肃 / 庆阳 / 兰州 / 重新 / OPC”等关键词，并消除少于 5 个有效字的短字幕页。
@@ -103,3 +108,4 @@
 - 2026-07-04 已通过 macOS 隐藏输入配置 ImageTo / GPT 生图中转站 API，已验证 `/v1/models` 返回 `gpt-image-2`。
 - 2026-07-04 已新增 `shot-plan.json` 和 `tools/generate-image.mjs`，并用 `gpt-image-2` 生成一张提示卡背景测试图。
 - 2026-07-04 已初始化 Git，首个提交 `a8d8ad2 feat: initialize koubo ai studio workflow`，并推送到 `git@github.com:benitexzack-alt/koubo-ai-studio.git`。
+- 2026-07-04 已完成第二条测试口播 v2 升级：新增主题封面背景、语义卡片 variants、v2 composition 和 3:4 封面 Still；本次生图中转站调用封面背景时返回 `HTTP 504 Gateway Time-out`，已改为代码生成背景兜底，后续需增加重试和提示词归档。
