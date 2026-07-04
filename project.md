@@ -51,10 +51,12 @@
 - 原片来自 iPhone 13 Pro Max。
 - 原片为 4K 横屏，约 79 秒，30fps，HEVC/HDR，约 674MB。
 - 当前项目目录：`/Users/pc/Documents/口播`
+- GitHub 仓库：`git@github.com:benitexzack-alt/koubo-ai-studio.git`
 - 当前机器可用工具：FFmpeg、FFprobe、Node.js、npm。
 - ElevenLabs API Key 已配置到 `/Users/pc/.agents/skills/video-use/.env`，文件权限为 `600`，已通过 ElevenLabs 用户接口有效性验证。
 - 生图中转站 API 已配置到本机 `.env`，权限 `600`；已验证 `/v1/models` 可访问，模型为 `gpt-image-2`。
 - 已通过 `tools/generate-image.mjs` 完成一次真实生图，输出：`outputs/generated/ai-card-smoke-test.png`。
+- 已初始化本地 Git 仓库并推送到 GitHub：`benitexzack-alt/koubo-ai-studio`。
 - 已建立项目本地知识库和强制执行规则，未来任务从 `AGENTS.md` 与 `knowledge/00-项目知识索引.md` 开始。
 - 已建立 Remotion 子工程：`remotion/`。
 - Remotion 依赖已安装：`remotion`、`@remotion/cli`、`@remotion/captions`、`@remotion/media`、`@remotion/fonts`。
@@ -100,3 +102,4 @@
 - 2026-07-04 已补生图 API 配置说明和校验脚本；当前项目不是 Git 仓库，未执行 commit。
 - 2026-07-04 已通过 macOS 隐藏输入配置 ImageTo / GPT 生图中转站 API，已验证 `/v1/models` 返回 `gpt-image-2`。
 - 2026-07-04 已新增 `shot-plan.json` 和 `tools/generate-image.mjs`，并用 `gpt-image-2` 生成一张提示卡背景测试图。
+- 2026-07-04 已初始化 Git，首个提交 `a8d8ad2 feat: initialize koubo ai studio workflow`，并推送到 `git@github.com:benitexzack-alt/koubo-ai-studio.git`。
