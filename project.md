@@ -48,6 +48,7 @@
 - 命名调研：`knowledge/09-AI博主命名调研.md`
 - 时事选题：`knowledge/10-AI时事选题与口播转化工作流.md`
 - 封面与动效：`knowledge/11-封面与语义动效模板升级复盘.md`
+- Remotion 迭代机制：`knowledge/12-Remotion协作与模板迭代机制.md`
 
 ## 五、已验证事实
 
@@ -84,6 +85,9 @@
 - 技术自检通过：Remotion v4 全片输出 1920×1080、30fps、H.264/AAC、79.33 秒，完整解码通过；10 秒预览输出 1920×1080、30fps、H.264/AAC、10.09 秒。
 - 字幕问题已定位为 Remotion 默认 TikTok 分页不适合中文连续文本；已改为中文语义分页，已保护“甘肃 / 庆阳 / 兰州 / 重新 / OPC”等关键词，并消除少于 5 个有效字的短字幕页。
 - 生图 API 已补 `.env.example` 占位、`tools/check-image-api.mjs` 校验脚本和 `templates/02-生图API接入说明.md`。
+- 已确认 Remotion 三项长期机制：每条视频先做 `visual-plan.json`、Remotion 只做局部动效片段、复杂参数配置化。
+- 已安装并验证本地 OCR 中文识别能力：Tesseract 5.5.2 + `tesseract-lang`，可用语言包含 `chi_sim`。
+- 已新增 OCR 坐标识别脚本：`tools/ocr-image.mjs`。
 - 仍待用户人工观看确认：节奏、形象、字幕字词、标题风格、封面视觉、是否压缩到 45 秒。
 
 ## 七、隐私与密钥规则
@@ -109,3 +113,4 @@
 - 2026-07-04 已新增 `shot-plan.json` 和 `tools/generate-image.mjs`，并用 `gpt-image-2` 生成一张提示卡背景测试图。
 - 2026-07-04 已初始化 Git，首个提交 `a8d8ad2 feat: initialize koubo ai studio workflow`，并推送到 `git@github.com:benitexzack-alt/koubo-ai-studio.git`。
 - 2026-07-04 已完成第二条测试口播 v2 升级：新增主题封面背景、语义卡片 variants、v2 composition 和 3:4 封面 Still；本次生图中转站调用封面背景时返回 `HTTP 504 Gateway Time-out`，已改为代码生成背景兜底，后续需增加重试和提示词归档。
+- 2026-07-05 已根据《口播秘籍》教程确认三项机制并入工作流：`visual-plan.json`、Remotion 小动效片段分工、复杂参数配置化；同时补齐 OCR 中文识别工具，用于后续截图/界面“指哪打哪”标注。
