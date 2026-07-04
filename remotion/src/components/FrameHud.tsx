@@ -22,7 +22,7 @@ export const FrameHud: React.FC<{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(90deg, rgba(0,0,0,0.48), rgba(0,0,0,0.04) 42%, rgba(0,0,0,0.36)), linear-gradient(0deg, rgba(0,0,0,0.52), rgba(0,0,0,0) 42%)',
+            'linear-gradient(90deg, rgba(0,0,0,0.3), rgba(0,0,0,0.02) 48%, rgba(0,0,0,0.22)), linear-gradient(0deg, rgba(0,0,0,0.42), rgba(0,0,0,0) 42%)',
         }}
       />
       <div

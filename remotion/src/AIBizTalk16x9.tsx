@@ -25,7 +25,7 @@ export const AIBizTalk16x9: React.FC<TalkProps> = ({
         style={{
           width: '100%',
           height: '100%',
-          filter: 'contrast(1.06) saturate(1.08) brightness(0.96)',
+          filter: 'contrast(1.04) saturate(1.08) brightness(1.08)',
         }}
       />
       <FrameHud hostName={hostName} identity={identity} topic={topic} footerTag={footerTag} />

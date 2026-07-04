@@ -12,6 +12,7 @@ export type Beat = {
 export type TalkProps = {
   videoSrc: string;
   captionsSrc: string;
+  coverImageSrc: string;
   topic: string;
   hostName: string;
   identity: string;
@@ -24,6 +25,7 @@ export type TalkProps = {
 export const defaultTalkProps: TalkProps = {
   videoSrc: 'media/IMG_1911_proxy_16x9.mp4',
   captionsSrc: 'data/IMG_1911.captions.json',
+  coverImageSrc: 'covers/cover-base-face.jpg',
   topic: '甘肃小微企业，怎么用上 AI？',
   hostName: '兰州 AI 创业者',
   identity: '本地 AI 工具 / 算力 / 企业曝光',
@@ -77,6 +79,68 @@ export const defaultTalkProps: TalkProps = {
       eyebrow: '第一期结尾',
       title: '从兰州开始，把 AI 落到地上',
       detail: '关注这个账号，一起看甘肃小微企业如何进入 AI 时代。',
+      accent: '#19D3FF',
+    },
+  ],
+};
+
+export const localBossAiProps: TalkProps = {
+  videoSrc: 'media/IMG_1926_proxy_16x9.mp4',
+  captionsSrc: 'data/IMG_1926.captions.json',
+  coverImageSrc: 'covers/IMG_1926_cover_base.jpg',
+  topic: '本地老板用 AI，第一步不是买软件',
+  hostName: '兰州 AI 创业者彭超',
+  identity: '甘肃小微企业 AI 落地',
+  coverTitle: '先别买AI系统',
+  coverSubTitle: '先把生意讲清楚',
+  footerTag: 'AI | 兰州本地 | 小微企业 | 落地案例',
+  beats: [
+    {
+      start: 0.5,
+      end: 5.5,
+      eyebrow: '反常识开场',
+      title: '第一步不是买系统',
+      detail: '很多老板一听 AI，先想采购工具，但真正卡住的是业务没讲清。',
+      accent: '#FFD23F',
+    },
+    {
+      start: 5.6,
+      end: 13.8,
+      eyebrow: '核心判断',
+      title: '先把生意说清楚',
+      detail: '产品、顾客、问题、复购、差评，这些才是 AI 能发挥作用的原料。',
+      accent: '#19D3FF',
+    },
+    {
+      start: 13.9,
+      end: 29.2,
+      eyebrow: '餐饮店例子',
+      title: '每天卖什么，顾客问什么？',
+      detail: '菜单、常见问题、差评原因、适合拍的视频内容，都要先结构化。',
+      accent: '#5CFF8F',
+    },
+    {
+      start: 29.3,
+      end: 42.8,
+      eyebrow: '落地动作',
+      title: '把经验变成 AI 能读的资料',
+      detail: '表格、话术、选题库和流程，比一上来买大系统更容易见效。',
+      accent: '#FF7A45',
+    },
+    {
+      start: 42.9,
+      end: 53.6,
+      eyebrow: '最小闭环',
+      title: '先跑通一个小结果',
+      detail: '短视频选题、客服回复、门店曝光，能验证，再继续往下做。',
+      accent: '#B57CFF',
+    },
+    {
+      start: 53.7,
+      end: 61.4,
+      eyebrow: '账号定位',
+      title: '记录甘肃企业怎么用上 AI',
+      detail: '不讲虚的，从兰州开始，把本地小微企业一步步带进 AI 时代。',
       accent: '#19D3FF',
     },
   ],
