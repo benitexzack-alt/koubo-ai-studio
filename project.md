@@ -84,6 +84,10 @@
 - 已生成第三条测试口播粗剪：`outputs/小企业用AI第一步不是买系统_16x9_rough_v1.mp4`。
 - 已生成第三条测试口播样片：`outputs/小企业用AI第一步不是买系统_16x9_sample_v1.mp4`。
 - 已生成第三条测试口播中英双语正式版：`outputs/小企业用AI第一步不是买系统_16x9_final_bilingual_v2.mp4`。
+- 已生成第三条测试口播 Remotion 正式基线 v2：`outputs/小企业用AI第一步不是买系统_16x9_remotion_final_v2.mp4`。
+- 已生成第三条测试口播 EDL v2：`edit/edl_20260707_small_business_ai_rough_v2.json`，删除开头偏稿碎句，保留“老板们，小企业用 AI 第一步到底该做什么？”与“最靠谱的第一步，是找一个重复动作。”作为开场。
+- 已生成第三条测试口播词级时间轴字幕：`remotion/public/data/IMG_20260707_small_business_ai.edl.v2.captions.json`。
+- 已生成第三条测试口播英文辅助字幕：`remotion/public/data/IMG_20260707_small_business_ai.edl.v2.english.json`。
 - 已生成第三条测试口播封面 GPT 出图提示词：`outputs/小企业用AI第一步不是买系统_封面GPT提示词_v1.md`。
 - 已同步交付文件到 Codex 输出目录：`/Users/pc/Documents/Codex/2026-07-03/claude/outputs/口播/`。
 - 技术自检通过：Remotion v4 全片输出 1920×1080、30fps、H.264/AAC、79.33 秒，完整解码通过；10 秒预览输出 1920×1080、30fps、H.264/AAC、10.09 秒。
@@ -93,7 +97,7 @@
 - 已安装并验证本地 OCR 中文识别能力：Tesseract 5.5.2 + `tesseract-lang`，可用语言包含 `chi_sim`。
 - 已新增 OCR 坐标识别脚本：`tools/ocr-image.mjs`。
 - 已新增 Remotion `ocr-callout` 动效类型和 `AIBizTalk16x9-OCRDemo` 验收 composition，可用 `npm run still:ocr-demo` 渲染单帧检查。
-- 仍待用户人工观看确认：节奏、形象、字幕字词、标题风格、封面视觉、是否压缩到 45 秒。
+- 第三条 Remotion 正式基线 v2 已完成技术质检、字幕数据质检和关键帧视觉质检，仍待用户人工观看确认：节奏、形象、字幕跟嘴、标题风格、封面视觉、是否压缩到 45 秒。
 
 ## 七、隐私与密钥规则
 
@@ -120,4 +124,4 @@
 - 2026-07-04 已完成第二条测试口播 v2 升级：新增主题封面背景、语义卡片 variants、v2 composition 和 3:4 封面 Still；本次生图中转站调用封面背景时返回 `HTTP 504 Gateway Time-out`，已改为代码生成背景兜底，后续需增加重试和提示词归档。
 - 2026-07-05 已根据《口播秘籍》教程确认三项机制并入工作流：`visual-plan.json`、Remotion 小动效片段分工、复杂参数配置化；同时补齐 OCR 中文识别工具，用于后续截图/界面“指哪打哪”标注。
 - 2026-07-05 已把 OCR 标注从工具能力推进到 Remotion 组件能力：`Beat.variant` 支持 `ocr-callout`，可根据坐标画高亮框、连线和标签。
-- 2026-07-07 已处理第三条“小企业用 AI 第一步不是买系统”测试口播：完成原片复制、ElevenLabs 转写、原稿核对、粗剪、校正字幕、左侧信息卡包装、16:9 样片导出和中英双语正式版导出；当前等待用户最终人工观看确认。
+- 2026-07-07 已处理第三条“小企业用 AI 第一步不是买系统”测试口播：完成原片复制、ElevenLabs 转写、原稿核对、粗剪、校正字幕、左侧信息卡包装、16:9 样片导出和中英双语正式版导出；用户反馈字幕不同步、特效降级后，已定位根因并改为 Remotion 正式基线 v2：词级转写 + EDL 输出时间轴映射 + 当前最高模板基线 + 预览门禁 + 三重质检。当前等待用户最终人工观看确认。

@@ -3,6 +3,7 @@ import React from 'react';
 import {AbsoluteFill, staticFile} from 'remotion';
 import {BeatCards} from './components/BeatCards';
 import {CaptionOverlay} from './components/CaptionOverlay';
+import {EnglishCaptionOverlay} from './components/EnglishCaptionOverlay';
 import {FrameHud} from './components/FrameHud';
 import {LocalFont} from './components/LocalFont';
 import type {TalkProps} from './data/story';
@@ -10,6 +11,7 @@ import type {TalkProps} from './data/story';
 export const AIBizTalk16x9: React.FC<TalkProps> = ({
   videoSrc,
   captionsSrc,
+  englishCaptionsSrc,
   hostName,
   identity,
   topic,
@@ -31,6 +33,7 @@ export const AIBizTalk16x9: React.FC<TalkProps> = ({
       <FrameHud hostName={hostName} identity={identity} topic={topic} footerTag={footerTag} />
       <BeatCards beats={beats} />
       <CaptionOverlay captionsSrc={captionsSrc} />
+      {englishCaptionsSrc ? <EnglishCaptionOverlay captionsSrc={englishCaptionsSrc} /> : null}
     </AbsoluteFill>
   );
 };
