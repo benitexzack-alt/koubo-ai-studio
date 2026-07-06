@@ -7,7 +7,7 @@ export type Beat = {
   title: string;
   detail: string;
   accent?: string;
-  variant?: 'statement' | 'compare' | 'checklist' | 'flow' | 'metric' | 'ocr-callout';
+  variant?: 'statement' | 'compare' | 'checklist' | 'flow' | 'metric' | 'ocr-callout' | 'keyword-pop';
   side?: 'left' | 'right';
   items?: string[];
   steps?: string[];
@@ -38,6 +38,7 @@ export type TalkProps = {
   videoSrc: string;
   captionsSrc: string;
   englishCaptionsSrc?: string;
+  bilingualCaptionsSrc?: string;
   coverImageSrc: string;
   topic: string;
   hostName: string;
@@ -293,6 +294,7 @@ export const smallBusinessAiV1Props: TalkProps = {
   videoSrc: 'media/IMG_20260707_small_business_ai_rough_v2.mp4',
   captionsSrc: 'data/IMG_20260707_small_business_ai.edl.v2.captions.json',
   englishCaptionsSrc: 'data/IMG_20260707_small_business_ai.edl.v2.english.json',
+  bilingualCaptionsSrc: 'data/IMG_20260707_small_business_ai.bilingual.v3.json',
   coverImageSrc: 'covers/IMG_1926_cover_base.jpg',
   topic: '小企业用 AI，第一步不是买系统',
   hostName: '兰州 AI 创业者彭超',
@@ -318,7 +320,7 @@ export const smallBusinessAiV1Props: TalkProps = {
     },
     {
       start: 8.0,
-      end: 31.4,
+      end: 20.2,
       eyebrow: '问题根源',
       title: '聊天窗口不是业务流程',
       detail: '会写文案、会解释表格，不等于公司真的变高效。',
@@ -328,8 +330,28 @@ export const smallBusinessAiV1Props: TalkProps = {
       items: ['文案', '通知', '表格', '流程仍旧'],
     },
     {
+      start: 20.3,
+      end: 28.4,
+      eyebrow: '关键词',
+      title: '关掉窗口，业务没变',
+      detail: '这就是聊天式 AI 和业务流程之间的距离。',
+      accent: '#19D3FF',
+      variant: 'keyword-pop',
+      side: 'left',
+    },
+    {
+      start: 30.8,
+      end: 35.1,
+      eyebrow: '旧 AI',
+      title: '你问，它答',
+      detail: '有用，但还不是自动化。',
+      accent: '#FFD23F',
+      variant: 'keyword-pop',
+      side: 'left',
+    },
+    {
       start: 35.2,
-      end: 57.8,
+      end: 49.4,
       eyebrow: '能力变化',
       title: 'AI 开始替你做一段工作',
       detail: '本地广告、网站文案、短视频脚本、客户评论回复，都可以进入流程。',
@@ -337,6 +359,16 @@ export const smallBusinessAiV1Props: TalkProps = {
       variant: 'checklist',
       side: 'left',
       items: ['本地广告', '网站文案', '短视频脚本', '评论回复', '跟进提醒'],
+    },
+    {
+      start: 49.8,
+      end: 57.8,
+      eyebrow: '落地场景',
+      title: '分类，再提醒跟进',
+      detail: '不是生成一句话，而是推进一个动作。',
+      accent: '#5CFF8F',
+      variant: 'keyword-pop',
+      side: 'left',
     },
     {
       start: 58.2,
@@ -350,8 +382,18 @@ export const smallBusinessAiV1Props: TalkProps = {
       steps: ['AI 草拟', '内部检查', '人工确认', '再发布'],
     },
     {
+      start: 72.6,
+      end: 80.2,
+      eyebrow: '安全边界',
+      title: '必须有人确认',
+      detail: '该放行的最后一步，永远在人。',
+      accent: '#FF7A45',
+      variant: 'keyword-pop',
+      side: 'left',
+    },
+    {
       start: 80.4,
-      end: 108.0,
+      end: 97.5,
       eyebrow: '启动方法',
       title: '列一个反待办清单',
       detail: '写下你不想再亲手做的事，但只挑一个任务先跑。',
@@ -361,8 +403,18 @@ export const smallBusinessAiV1Props: TalkProps = {
       items: ['不想亲手做', '每天重复', '风险可控', '只挑一个'],
     },
     {
+      start: 97.6,
+      end: 108.2,
+      eyebrow: '执行动作',
+      title: '资料先喂给 AI',
+      detail: '产品、报价、问题、聊天记录，先整理清楚。',
+      accent: '#B57CFF',
+      variant: 'keyword-pop',
+      side: 'left',
+    },
+    {
       start: 108.4,
-      end: 149.4,
+      end: 122.4,
       eyebrow: '验证闭环',
       title: '一周只看三个指标',
       detail: '别看热闹，看它有没有真的改变业务动作。',
@@ -372,6 +424,26 @@ export const smallBusinessAiV1Props: TalkProps = {
       metricLabel: '观察',
       metricValue: '3 个指标',
       items: ['省时间', '少漏跟进', '改改能用'],
+    },
+    {
+      start: 128.1,
+      end: 138.3,
+      eyebrow: '常见误区',
+      title: '先别急着换工具',
+      detail: '很多时候，是资料太少、太旧、太乱。',
+      accent: '#19D3FF',
+      variant: 'keyword-pop',
+      side: 'left',
+    },
+    {
+      start: 143.2,
+      end: 149.9,
+      eyebrow: '筛选标准',
+      title: '重复 高频 低风险',
+      detail: '再加一条：能检查。',
+      accent: '#5CFF8F',
+      variant: 'keyword-pop',
+      side: 'left',
     },
     {
       start: 149.8,

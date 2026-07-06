@@ -398,6 +398,87 @@ const MetricCard: React.FC<{beat: Beat}> = ({beat}) => {
   );
 };
 
+const KeywordPopOverlay: React.FC<{beat: Beat}> = ({beat}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const seconds = frame / fps;
+  const local = Math.max(0, frame - beat.start * fps);
+  const enter = spring({frame: local, fps, config: {damping: 18, stiffness: 220}});
+  const exit = interpolate(seconds, [beat.end - 0.22, beat.end], [1, 0], clamp);
+  const accent = beat.accent ?? colors.yellow;
+  const side = beat.side ?? 'left';
+  const left = side === 'right' ? 1220 : 84;
+  const top = 438;
+  const shimmer = interpolate(Math.sin(seconds * Math.PI * 2.6), [-1, 1], [0.55, 1]);
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left,
+        top,
+        width: 560,
+        padding: '16px 20px 18px',
+        borderRadius: 14,
+        background: 'rgba(4, 9, 18, 0.78)',
+        border: `1px solid ${accent}AA`,
+        boxShadow: `0 18px 54px rgba(0,0,0,0.42), 0 0 ${Math.round(28 * shimmer)}px ${accent}66`,
+        opacity: exit,
+        transform: `translateY(${interpolate(enter, [0, 1], [24, 0])}px) scale(${interpolate(enter, [0, 1], [0.94, 1])})`,
+        fontFamily,
+      }}
+    >
+      <div
+        style={{
+          color: accent,
+          fontSize: 20,
+          lineHeight: 1,
+          fontWeight: 950,
+          letterSpacing: 0,
+        }}
+      >
+        {beat.eyebrow}
+      </div>
+      <div
+        style={{
+          marginTop: 10,
+          color: colors.ink,
+          fontSize: 46,
+          lineHeight: 1.04,
+          fontWeight: 950,
+          letterSpacing: 0,
+          textShadow: `0 0 24px ${accent}44, 0 3px 10px rgba(0,0,0,0.9)`,
+        }}
+      >
+        {beat.title}
+      </div>
+      <div
+        style={{
+          marginTop: 10,
+          height: 4,
+          width: `${interpolate(enter, [0, 1], [18, 100])}%`,
+          borderRadius: 99,
+          background: `linear-gradient(90deg, ${accent}, rgba(255,255,255,0.84))`,
+          boxShadow: `0 0 18px ${accent}99`,
+        }}
+      />
+      {beat.detail ? (
+        <div
+          style={{
+            marginTop: 10,
+            color: dimText,
+            fontSize: 24,
+            lineHeight: 1.26,
+            fontWeight: 780,
+          }}
+        >
+          {beat.detail}
+        </div>
+      ) : null}
+    </div>
+  );
+};
+
 const OcrCalloutOverlay: React.FC<{beat: Beat}> = ({beat}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -500,6 +581,8 @@ const renderBeat = (beat: Beat) => {
       return <MetricCard beat={beat} />;
     case 'ocr-callout':
       return <OcrCalloutOverlay beat={beat} />;
+    case 'keyword-pop':
+      return <KeywordPopOverlay beat={beat} />;
     case 'statement':
     default:
       return <StatementCard beat={beat} />;
@@ -519,7 +602,7 @@ export const BeatCards: React.FC<{beats: Beat[]}> = ({beats}) => {
           return null;
         }
 
-        if (beat.variant === 'ocr-callout') {
+        if (beat.variant === 'ocr-callout' || beat.variant === 'keyword-pop') {
           return <React.Fragment key={`${beat.start}-${beat.title}`}>{renderBeat(beat)}</React.Fragment>;
         }
 

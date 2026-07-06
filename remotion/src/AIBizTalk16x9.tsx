@@ -2,6 +2,7 @@ import {Video} from '@remotion/media';
 import React from 'react';
 import {AbsoluteFill, staticFile} from 'remotion';
 import {BeatCards} from './components/BeatCards';
+import {BilingualCaptionOverlay} from './components/BilingualCaptionOverlay';
 import {CaptionOverlay} from './components/CaptionOverlay';
 import {EnglishCaptionOverlay} from './components/EnglishCaptionOverlay';
 import {FrameHud} from './components/FrameHud';
@@ -11,6 +12,7 @@ import type {TalkProps} from './data/story';
 export const AIBizTalk16x9: React.FC<TalkProps> = ({
   videoSrc,
   captionsSrc,
+  bilingualCaptionsSrc,
   englishCaptionsSrc,
   hostName,
   identity,
@@ -32,8 +34,14 @@ export const AIBizTalk16x9: React.FC<TalkProps> = ({
       />
       <FrameHud hostName={hostName} identity={identity} topic={topic} footerTag={footerTag} />
       <BeatCards beats={beats} />
-      <CaptionOverlay captionsSrc={captionsSrc} />
-      {englishCaptionsSrc ? <EnglishCaptionOverlay captionsSrc={englishCaptionsSrc} /> : null}
+      {bilingualCaptionsSrc ? (
+        <BilingualCaptionOverlay captionsSrc={bilingualCaptionsSrc} />
+      ) : (
+        <>
+          <CaptionOverlay captionsSrc={captionsSrc} />
+          {englishCaptionsSrc ? <EnglishCaptionOverlay captionsSrc={englishCaptionsSrc} /> : null}
+        </>
+      )}
     </AbsoluteFill>
   );
 };
