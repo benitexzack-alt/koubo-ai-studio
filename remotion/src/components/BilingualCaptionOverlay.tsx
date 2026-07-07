@@ -80,6 +80,24 @@ const groupTextParts = (parts: CaptionPart[]) => {
   return groups;
 };
 
+const visibleLength = (text: string) =>
+  [...text].filter((char) => !punctuation.has(char) && char.trim().length > 0).length;
+
+const captionMetrics = (page: BilingualCaptionPage) => {
+  const zhLength = visibleLength(page.zh);
+  const enLength = page.en.trim().length;
+  const dense = zhLength > 26 || enLength > 94;
+  const veryDense = zhLength > 32 || enLength > 118;
+
+  return {
+    maxWidth: veryDense ? 1360 : dense ? 1300 : 1220,
+    zhSize: veryDense ? 39 : dense ? 42 : 46,
+    enSize: veryDense ? 20 : dense ? 21 : 23,
+    padding: veryDense ? '9px 22px 12px' : dense ? '10px 23px 13px' : '10px 22px 13px',
+    bottom: veryDense ? 48 : 56,
+  };
+};
+
 export const BilingualCaptionOverlay: React.FC<{captionsSrc: string}> = ({captionsSrc}) => {
   const [captions, setCaptions] = useState<BilingualCaptionPage[] | null>(null);
   const [handle] = useState(() => delayRender('加载中英双语句群字幕'));
@@ -132,20 +150,21 @@ const ActiveCaption: React.FC<{page: BilingualCaptionPage; nowMs: number}> = ({p
     extrapolateRight: 'clamp',
   });
   const groups = groupTextParts(splitText(page.zh, page.highlights ?? []));
+  const metrics = captionMetrics(page);
 
   return (
     <AbsoluteFill
       style={{
         justifyContent: 'flex-end',
         alignItems: 'center',
-        paddingBottom: 56,
+        paddingBottom: metrics.bottom,
         pointerEvents: 'none',
       }}
     >
       <div
         style={{
-          maxWidth: 1220,
-          padding: '10px 22px 13px',
+          maxWidth: metrics.maxWidth,
+          padding: metrics.padding,
           borderRadius: 12,
           background: 'rgba(0,0,0,0.58)',
           border: '1px solid rgba(255,255,255,0.08)',
@@ -159,8 +178,8 @@ const ActiveCaption: React.FC<{page: BilingualCaptionPage; nowMs: number}> = ({p
         <div
           style={{
             color: colors.ink,
-            fontSize: 46,
-            lineHeight: 1.2,
+            fontSize: metrics.zhSize,
+            lineHeight: 1.18,
             fontWeight: 900,
             letterSpacing: 0,
             WebkitTextStroke: '1.15px rgba(0,0,0,0.72)',
@@ -169,6 +188,7 @@ const ActiveCaption: React.FC<{page: BilingualCaptionPage; nowMs: number}> = ({p
             flexWrap: 'wrap',
             justifyContent: 'center',
             alignItems: 'baseline',
+            rowGap: 0,
           }}
         >
           {groups.map((group, groupIndex) => (
@@ -185,12 +205,12 @@ const ActiveCaption: React.FC<{page: BilingualCaptionPage; nowMs: number}> = ({p
                   key={`${part.text}-${partIndex}`}
                   style={{
                     color: part.active ? colors.yellow : colors.ink,
-                    fontSize: part.punctuation ? '0.62em' : '1em',
-                    lineHeight: part.punctuation ? 1 : 1.2,
+                    fontSize: part.punctuation ? '0.58em' : '1em',
+                    lineHeight: part.punctuation ? 1 : 1.18,
                     display: 'inline-block',
-                    transform: part.punctuation ? 'translateY(0.18em)' : undefined,
-                    marginLeft: part.punctuation ? '-0.03em' : undefined,
-                    marginRight: part.punctuation ? '0.08em' : undefined,
+                    transform: part.punctuation ? 'translateY(0.26em)' : undefined,
+                    marginLeft: part.punctuation ? '-0.05em' : undefined,
+                    marginRight: part.punctuation ? '0.07em' : undefined,
                     textShadow: part.active
                       ? '0 0 22px rgba(255,210,63,0.66), 0 3px 10px rgba(0,0,0,0.9)'
                       : '0 3px 10px rgba(0,0,0,0.92)',
@@ -206,8 +226,8 @@ const ActiveCaption: React.FC<{page: BilingualCaptionPage; nowMs: number}> = ({p
           style={{
             marginTop: 4,
             color: 'rgba(247,250,255,0.86)',
-            fontSize: 23,
-            lineHeight: 1.18,
+            fontSize: metrics.enSize,
+            lineHeight: 1.16,
             fontWeight: 760,
             letterSpacing: 0,
             textShadow: '0 3px 10px rgba(0,0,0,0.95)',

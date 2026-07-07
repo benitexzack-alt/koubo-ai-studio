@@ -408,8 +408,11 @@ const KeywordPopOverlay: React.FC<{beat: Beat}> = ({beat}) => {
   const accent = beat.accent ?? colors.yellow;
   const side = beat.side ?? 'left';
   const left = side === 'right' ? 1220 : 84;
-  const top = 438;
+  const top = 420;
   const shimmer = interpolate(Math.sin(seconds * Math.PI * 2.6), [-1, 1], [0.55, 1]);
+  const titleLength = [...beat.title].filter((char) => char.trim().length > 0).length;
+  const titleFontSize = titleLength > 13 ? 39 : titleLength > 8 ? 43 : 48;
+  const pulse = interpolate(Math.sin(seconds * Math.PI * 4.2), [-1, 1], [0.86, 1]);
 
   return (
     <div
@@ -417,19 +420,46 @@ const KeywordPopOverlay: React.FC<{beat: Beat}> = ({beat}) => {
         position: 'absolute',
         left,
         top,
-        width: 560,
-        padding: '16px 20px 18px',
+        width: 585,
+        padding: '17px 22px 19px',
         borderRadius: 14,
-        background: 'rgba(4, 9, 18, 0.78)',
+        background: 'linear-gradient(135deg, rgba(4,9,18,0.9), rgba(7,16,28,0.78))',
         border: `1px solid ${accent}AA`,
         boxShadow: `0 18px 54px rgba(0,0,0,0.42), 0 0 ${Math.round(28 * shimmer)}px ${accent}66`,
         opacity: exit,
-        transform: `translateY(${interpolate(enter, [0, 1], [24, 0])}px) scale(${interpolate(enter, [0, 1], [0.94, 1])})`,
+        overflow: 'hidden',
+        transform: `translateY(${interpolate(enter, [0, 1], [24, 0])}px) scale(${interpolate(enter, [0, 1], [0.93, 1])})`,
         fontFamily,
       }}
     >
       <div
         style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: 7,
+          background: accent,
+          boxShadow: `0 0 30px ${accent}`,
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          right: 18,
+          top: 18,
+          width: 54,
+          height: 54,
+          borderRadius: 999,
+          border: `2px solid ${accent}88`,
+          opacity: 0.72,
+          transform: `scale(${pulse})`,
+          boxShadow: `0 0 22px ${accent}44`,
+        }}
+      />
+      <div
+        style={{
+          position: 'relative',
           color: accent,
           fontSize: 20,
           lineHeight: 1,
@@ -441,9 +471,10 @@ const KeywordPopOverlay: React.FC<{beat: Beat}> = ({beat}) => {
       </div>
       <div
         style={{
+          position: 'relative',
           marginTop: 10,
           color: colors.ink,
-          fontSize: 46,
+          fontSize: titleFontSize,
           lineHeight: 1.04,
           fontWeight: 950,
           letterSpacing: 0,
@@ -454,6 +485,7 @@ const KeywordPopOverlay: React.FC<{beat: Beat}> = ({beat}) => {
       </div>
       <div
         style={{
+          position: 'relative',
           marginTop: 10,
           height: 4,
           width: `${interpolate(enter, [0, 1], [18, 100])}%`,
@@ -465,6 +497,7 @@ const KeywordPopOverlay: React.FC<{beat: Beat}> = ({beat}) => {
       {beat.detail ? (
         <div
           style={{
+            position: 'relative',
             marginTop: 10,
             color: dimText,
             fontSize: 24,
