@@ -1,9 +1,9 @@
-import {Video} from '@remotion/media';
 import React from 'react';
-import {AbsoluteFill, staticFile} from 'remotion';
+import {AbsoluteFill} from 'remotion';
 import {BeatCards} from './components/BeatCards';
 import {BilingualCaptionOverlay} from './components/BilingualCaptionOverlay';
 import {CaptionOverlay} from './components/CaptionOverlay';
+import {DigitalCameraVideo} from './components/DigitalCameraVideo';
 import {EnglishCaptionOverlay} from './components/EnglishCaptionOverlay';
 import {FrameHud} from './components/FrameHud';
 import {LocalFont} from './components/LocalFont';
@@ -23,15 +23,7 @@ export const AIBizTalk16x9: React.FC<TalkProps> = ({
   return (
     <AbsoluteFill style={{background: '#050A12'}}>
       <LocalFont />
-      <Video
-        src={staticFile(videoSrc)}
-        objectFit="cover"
-        style={{
-          width: '100%',
-          height: '100%',
-          filter: 'contrast(1.04) saturate(1.08) brightness(1.08)',
-        }}
-      />
+      <DigitalCameraVideo videoSrc={videoSrc} beats={beats} />
       <FrameHud hostName={hostName} identity={identity} topic={topic} footerTag={footerTag} />
       <BeatCards beats={beats} />
       {bilingualCaptionsSrc ? (
