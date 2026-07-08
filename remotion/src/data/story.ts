@@ -461,9 +461,9 @@ export const smallBusinessAiV1Props: TalkProps = {
 };
 
 export const gansuStoreAiTalk01Props: TalkProps = {
-  videoSrc: 'media/IMG_20260708_talk01_16x9_rough_v1.mp4',
+  videoSrc: 'media/IMG_20260708_talk01_16x9_rough_v2.mp4',
   captionsSrc: 'data/IMG_20260708_talk01_16x9.edl.v1.captions.json',
-  bilingualCaptionsSrc: 'data/IMG_20260708_talk01_16x9.bilingual.v1.json',
+  bilingualCaptionsSrc: 'data/IMG_20260708_talk01_16x9.bilingual.v2.json',
   coverImageSrc: 'covers/IMG_1926_cover_base.jpg',
   topic: '甘肃实体店老板，别被 AI 忽悠',
   hostName: '超哥 AI 创业记',
@@ -566,7 +566,7 @@ export const gansuStoreAiTalk01Props: TalkProps = {
     },
     {
       start: 105.5,
-      end: 117.4,
+      end: 117.9,
       eyebrow: '现场证明',
       title: '我自己也先这么干',
       detail: '文稿、字幕、剪辑，都用 Codex 辅助完成。',
