@@ -19,11 +19,12 @@ export const AIBizTalk16x9: React.FC<TalkProps> = ({
   topic,
   footerTag,
   beats,
+  cameraMotionStrength,
 }) => {
   return (
     <AbsoluteFill style={{background: '#050A12'}}>
       <LocalFont />
-      <DigitalCameraVideo videoSrc={videoSrc} beats={beats} />
+      <DigitalCameraVideo videoSrc={videoSrc} beats={beats} strength={cameraMotionStrength} />
       <FrameHud hostName={hostName} identity={identity} topic={topic} footerTag={footerTag} />
       <BeatCards beats={beats} />
       {bilingualCaptionsSrc ? (

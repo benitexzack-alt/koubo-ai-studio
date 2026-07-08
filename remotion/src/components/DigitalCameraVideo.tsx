@@ -73,7 +73,8 @@ const keywordPunch = (seconds: number, beats: Beat[]) => {
 export const DigitalCameraVideo: React.FC<{
   videoSrc: string;
   beats: Beat[];
-}> = ({videoSrc, beats}) => {
+  strength?: number;
+}> = ({videoSrc, beats, strength = 1}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const seconds = frame / fps;
@@ -81,12 +82,14 @@ export const DigitalCameraVideo: React.FC<{
   const weight = current?.weight ?? 0;
   const sideNudge = current?.beat.side === 'right' ? -1 : 1;
 
-  const breathX = Math.sin(seconds * 0.36) * 9;
-  const breathY = Math.cos(seconds * 0.28) * 5;
-  const breathScale = Math.sin(seconds * 0.18) * 0.004;
-  const scale = 1.036 + breathScale + semanticBoost(current?.beat) * weight + keywordPunch(seconds, beats);
-  const translateX = breathX + sideNudge * weight * 5;
-  const translateY = breathY - weight * 3;
+  const baseScale = 1.022 + 0.014 * strength;
+  const breathX = Math.sin(seconds * 0.36) * 9 * strength;
+  const breathY = Math.cos(seconds * 0.28) * 5 * strength;
+  const breathScale = Math.sin(seconds * 0.18) * 0.004 * strength;
+  const scale =
+    baseScale + breathScale + semanticBoost(current?.beat) * weight * strength + keywordPunch(seconds, beats) * strength;
+  const translateX = breathX + sideNudge * weight * 5 * strength;
+  const translateY = breathY - weight * 3 * strength;
 
   return (
     <Video
