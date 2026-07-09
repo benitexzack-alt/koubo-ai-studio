@@ -6,6 +6,7 @@ import {CaptionOverlay} from './components/CaptionOverlay';
 import {DigitalCameraVideo} from './components/DigitalCameraVideo';
 import {EnglishCaptionOverlay} from './components/EnglishCaptionOverlay';
 import {FrameHud} from './components/FrameHud';
+import {FullScreenBrollOverlay} from './components/FullScreenBrollOverlay';
 import {LocalFont} from './components/LocalFont';
 import type {TalkProps} from './data/story';
 
@@ -19,12 +20,14 @@ export const AIBizTalk16x9: React.FC<TalkProps> = ({
   topic,
   footerTag,
   beats,
+  brolls,
   cameraMotionStrength,
 }) => {
   return (
     <AbsoluteFill style={{background: '#050A12'}}>
       <LocalFont />
       <DigitalCameraVideo videoSrc={videoSrc} beats={beats} strength={cameraMotionStrength} />
+      <FullScreenBrollOverlay brolls={brolls} />
       <FrameHud hostName={hostName} identity={identity} topic={topic} footerTag={footerTag} />
       <BeatCards beats={beats} />
       {bilingualCaptionsSrc ? (

@@ -7,6 +7,7 @@ import {CoverStill9x16} from './CoverStill9x16';
 import {
   defaultTalkProps,
   gansuStoreAiTalk01Props,
+  geoAiRecommendTalk01Props,
   localBossAiOcrDemoProps,
   localBossAiProps,
   localBossAiV2Props,
@@ -70,6 +71,15 @@ export const RemotionRoot: React.FC = () => {
           fps={30}
           durationInFrames={3543}
           defaultProps={gansuStoreAiTalk01Props}
+        />
+        <Composition
+          id="AIBizTalk16x9-GEO-AIRecommend-Talk01"
+          component={AIBizTalk16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={7306}
+          defaultProps={geoAiRecommendTalk01Props}
         />
         <Still
           id="CoverStill"

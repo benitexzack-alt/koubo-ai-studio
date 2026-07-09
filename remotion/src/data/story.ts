@@ -34,6 +34,19 @@ export type Beat = {
   }>;
 };
 
+export type FullScreenBroll = {
+  start: number;
+  end: number;
+  src: string;
+  kind: 'image' | 'video';
+  title?: string;
+  subtitle?: string;
+  accent?: string;
+  fit?: 'cover' | 'contain';
+  dim?: number;
+  blur?: number;
+};
+
 export type TalkProps = {
   videoSrc: string;
   captionsSrc: string;
@@ -49,6 +62,7 @@ export type TalkProps = {
   coverBgSrc?: string;
   footerTag: string;
   cameraMotionStrength?: number;
+  brolls?: FullScreenBroll[];
   beats: Beat[];
 };
 
@@ -574,6 +588,176 @@ export const gansuStoreAiTalk01Props: TalkProps = {
       variant: 'flow',
       side: 'left',
       steps: ['文稿', '字幕', '剪辑', '复盘'],
+    },
+  ],
+};
+
+export const geoAiRecommendTalk01Props: TalkProps = {
+  videoSrc: 'media/GEO_20260709_talk01_16x9_full_proxy.mp4',
+  captionsSrc: 'data/GEO_20260709_talk01_16x9.full.captions.json',
+  coverImageSrc: 'covers/IMG_1926_cover_base.jpg',
+  topic: '以后客户问 AI，凭什么推荐你？',
+  hostName: '超哥 AI 创业记',
+  identity: '兰州 AI 创业 / 甘肃本地企业 GEO 落地',
+  coverTitle: '别让 AI 找不到你',
+  coverSubTitle: '本地老板的 GEO 入门',
+  coverKicker: 'AI FIELD NOTES',
+  footerTag: 'GEO | AI 搜索 | 甘肃本地企业 | 获客',
+  cameraMotionStrength: 0.45,
+  brolls: [
+    {
+      start: 6.0,
+      end: 13.8,
+      src: 'media/GEO_20260709_ai_search_recommendation.mp4',
+      kind: 'video',
+      title: '客户开始问 AI',
+      subtitle: '搜索入口正在从“搜关键词”变成“问问题”。',
+      accent: '#19D3FF',
+      dim: 0.34,
+    },
+    {
+      start: 33.2,
+      end: 42.2,
+      src: 'media/GEO_20260709_geo_process_concept.mp4',
+      kind: 'video',
+      title: 'SEO → GEO',
+      subtitle: '过去让搜索引擎找到你，现在让 AI 能理解你。',
+      accent: '#5CFF8F',
+      dim: 0.3,
+    },
+    {
+      start: 107.2,
+      end: 114.8,
+      src: 'media/GEO_20260709_content_asset_network.png',
+      kind: 'image',
+      title: '三类材料',
+      subtitle: '身份说清楚、信息对齐、案例写具体。',
+      accent: '#FFD23F',
+      dim: 0.2,
+    },
+    {
+      start: 159.2,
+      end: 166.0,
+      src: 'media/GEO_20260709_doubao_test_question.png',
+      kind: 'image',
+      accent: '#19D3FF',
+      fit: 'contain',
+      dim: 0.62,
+      blur: 5,
+    },
+    {
+      start: 166.0,
+      end: 173.2,
+      src: 'media/GEO_20260709_deepseek_test_question.png',
+      kind: 'image',
+      accent: '#B57CFF',
+      fit: 'contain',
+      dim: 0.62,
+      blur: 5,
+    },
+    {
+      start: 184.4,
+      end: 191.0,
+      src: 'media/GEO_20260709_lanzhou_local_business_ai.mp4',
+      kind: 'video',
+      title: '整理成内容资产',
+      subtitle: '业务、案例、产品和服务，要变成 AI 能读懂的材料。',
+      accent: '#5CFF8F',
+      dim: 0.28,
+    },
+  ],
+  beats: [
+    {
+      start: 1.2,
+      end: 5.1,
+      eyebrow: '黄金首屏',
+      title: '客户正在被 AI 抢走',
+      detail: '先把注意力拉回来：未来客户可能先问 AI。',
+      accent: '#FFD23F',
+      variant: 'keyword-pop',
+      side: 'left',
+    },
+    {
+      start: 28.5,
+      end: 45.5,
+      eyebrow: '概念翻译',
+      title: 'GEO：让 AI 愿意推荐你',
+      detail: '不是黑科技，不是玄学服务，而是让 AI 有材料理解你的生意。',
+      accent: '#19D3FF',
+      variant: 'compare',
+      side: 'left',
+      leftLabel: 'SEO',
+      leftText: '让搜索引擎搜到你',
+      rightLabel: 'GEO',
+      rightText: '让 AI 理解并提到你',
+    },
+    {
+      start: 60.5,
+      end: 88.4,
+      eyebrow: '常见问题',
+      title: '网上全是套话',
+      detail: '专业团队、品质保障、客户至上，AI 很难判断你适合谁。',
+      accent: '#FF7A45',
+      variant: 'statement',
+      side: 'left',
+      items: ['你服务谁', '解决什么问题', '有什么案例'],
+    },
+    {
+      start: 104.0,
+      end: 154.5,
+      eyebrow: '三个动作',
+      title: '先补三类材料',
+      detail: '先别急着买系统，把 AI 能读取、能判断、能引用的资料补齐。',
+      accent: '#5CFF8F',
+      variant: 'flow',
+      side: 'left',
+      steps: ['身份说死', '信息对齐', '案例写实'],
+    },
+    {
+      start: 156.6,
+      end: 178.0,
+      eyebrow: '自测动作',
+      title: '打开豆包，问三个问题',
+      detail: '做你这行的公司、你的公司业务、三家本地服务商。',
+      accent: '#19D3FF',
+      variant: 'checklist',
+      side: 'left',
+      items: ['行业公司有哪些', 'AI 能不能说对', '推荐里有没有你'],
+    },
+    {
+      start: 181.0,
+      end: 207.8,
+      eyebrow: '人设锚定',
+      title: '把业务整理成内容资产',
+      detail: '不是只教工具，而是帮本地企业把业务、案例、产品整理成 AI 能读懂的材料。',
+      accent: '#B57CFF',
+      variant: 'statement',
+      side: 'left',
+      items: ['业务', '案例', '产品', '服务'],
+    },
+    {
+      start: 209.4,
+      end: 224.5,
+      eyebrow: '今天就做',
+      title: '公司介绍改成四句话',
+      detail: '你在哪、服务谁、解决啥问题、有啥真实案例。',
+      accent: '#FFD23F',
+      variant: 'metric',
+      side: 'left',
+      metricLabel: '模板',
+      metricValue: '4 句话',
+      items: ['在哪里', '服务谁', '解决什么', '真实案例'],
+    },
+    {
+      start: 225.8,
+      end: 243.2,
+      eyebrow: '行动引导',
+      title: '评论区打“模板”',
+      detail: '继续记录怎么帮甘肃老板把 AI 用到获客、内容、客户跟进里。',
+      accent: '#5CFF8F',
+      variant: 'statement',
+      side: 'left',
+      items: ['获客', '内容', '客户跟进'],
     },
   ],
 };
