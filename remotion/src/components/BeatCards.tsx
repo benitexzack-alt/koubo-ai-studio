@@ -35,7 +35,10 @@ const CardShell: React.FC<{
   });
   const exit = interpolate(seconds, [beat.end - 0.35, beat.end], [1, 0], clamp);
   const drift = interpolate(seconds, [beat.start, beat.end], [0, side === 'left' ? 16 : -16], clamp);
-  const width = beat.variant === 'flow' || beat.variant === 'compare' ? 690 : 590;
+  const width =
+    beat.variant === 'flow' || beat.variant === 'compare' || beat.variant === 'perspective' || beat.variant === 'mind-map'
+      ? 690
+      : 590;
   const xFrom = side === 'left' ? -96 : 96;
   const left = side === 'left' ? 66 : 1920 - width - 66;
   const top = 112 + (index % 2) * 18;
@@ -398,6 +401,163 @@ const MetricCard: React.FC<{beat: Beat}> = ({beat}) => {
   );
 };
 
+const PerspectiveCard: React.FC<{beat: Beat}> = ({beat}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const local = Math.max(0, frame - beat.start * fps);
+  const enter = spring({frame: local, fps, config: {damping: 20, stiffness: 160}});
+  const items = beat.items ?? [];
+
+  return (
+    <div style={{padding: '24px 28px 30px'}}>
+      <Label beat={beat} />
+      <div style={{marginTop: 18, color: colors.ink, fontSize: 46, lineHeight: 1.08, fontWeight: 950}}>
+        {beat.title}
+      </div>
+      {beat.detail ? (
+        <div style={{marginTop: 12, color: dimText, fontSize: 24, lineHeight: 1.28, fontWeight: 760}}>{beat.detail}</div>
+      ) : null}
+      <div style={{display: 'flex', gap: 12, marginTop: 22, perspective: 860}}>
+        {items.map((item, index) => {
+          const itemEnter = spring({
+            frame: Math.max(0, local - index * 7),
+            fps,
+            config: {damping: 18, stiffness: 190},
+          });
+          const tilt = index === 0 ? -4 : index === items.length - 1 ? 4 : 0;
+          return (
+            <div
+              key={item}
+              style={{
+                flex: 1,
+                minHeight: 104,
+                padding: '15px 14px',
+                borderRadius: 9,
+                background: `linear-gradient(145deg, ${(beat.accent ?? colors.cyan)}38, rgba(8,18,33,0.88))`,
+                border: `1px solid ${(beat.accent ?? colors.cyan)}AA`,
+                boxShadow: `0 15px 34px rgba(0,0,0,0.32), 0 0 22px ${(beat.accent ?? colors.cyan)}44`,
+                opacity: itemEnter,
+                transform: `translateY(${interpolate(itemEnter, [0, 1], [28, 0])}px) rotateX(10deg) rotateZ(${tilt}deg) scale(${interpolate(itemEnter, [0, 1], [0.88, 1])})`,
+              }}
+            >
+              <div style={{color: beat.accent ?? colors.cyan, fontSize: 16, fontWeight: 950}}>0{index + 1}</div>
+              <div style={{marginTop: 12, color: colors.ink, fontSize: 25, lineHeight: 1.16, fontWeight: 900}}>{item}</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const MindMapCard: React.FC<{beat: Beat}> = ({beat}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const seconds = frame / fps;
+  const local = Math.max(0, frame - beat.start * fps);
+  const nodes = beat.steps ?? beat.items ?? [];
+  const accent = beat.accent ?? colors.cyan;
+
+  return (
+    <div style={{padding: '24px 28px 28px'}}>
+      <Label beat={beat} />
+      <div style={{marginTop: 16, color: colors.ink, fontSize: 43, lineHeight: 1.08, fontWeight: 950}}>{beat.title}</div>
+      <div style={{position: 'relative', height: 244, marginTop: 15}}>
+        <div
+          style={{
+            position: 'absolute',
+            left: 214,
+            top: 82,
+            width: 220,
+            minHeight: 76,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '0 18px',
+            textAlign: 'center',
+            borderRadius: 12,
+            color: colors.ink,
+            background: `${accent}30`,
+            border: `1px solid ${accent}`,
+            boxShadow: `0 0 30px ${accent}55`,
+            fontSize: 29,
+            lineHeight: 1.12,
+            fontWeight: 950,
+          }}
+        >
+          {beat.detail || 'AI 小动作'}
+        </div>
+        {nodes.map((node, index) => {
+          const itemEnter = spring({
+            frame: Math.max(0, local - index * 8),
+            fps,
+            config: {damping: 19, stiffness: 190},
+          });
+          const y = 10 + index * 78;
+          const sweep = (Math.sin(seconds * 5 + index) + 1) / 2;
+          return (
+            <React.Fragment key={node}>
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 128,
+                  top: y + 31,
+                  width: 92,
+                  height: 3,
+                  borderRadius: 99,
+                  background: `linear-gradient(90deg, ${accent}22, ${accent})`,
+                  opacity: itemEnter,
+                  transform: `scaleX(${itemEnter})`,
+                  transformOrigin: 'right',
+                  boxShadow: `0 0 ${12 + Math.round(sweep * 14)}px ${accent}88`,
+                }}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 52,
+                  top: y,
+                  width: 142,
+                  minHeight: 62,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0 10px',
+                  borderRadius: 9,
+                  background: 'rgba(3,12,25,0.9)',
+                  border: `1px solid ${accent}99`,
+                  color: colors.ink,
+                  fontSize: 21,
+                  lineHeight: 1.15,
+                  fontWeight: 900,
+                  textAlign: 'center',
+                  opacity: itemEnter,
+                  transform: `translateX(${interpolate(itemEnter, [0, 1], [-18, 0])}px)`,
+                }}
+              >
+                {node}
+              </div>
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 197,
+                  top: y + 19,
+                  color: accent,
+                  fontSize: 22,
+                  fontWeight: 950,
+                  opacity: itemEnter,
+                }}
+              >
+                ›
+              </div>
+            </React.Fragment>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
 const KeywordPopOverlay: React.FC<{beat: Beat}> = ({beat}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -612,6 +772,10 @@ const renderBeat = (beat: Beat) => {
       return <FlowCard beat={beat} />;
     case 'metric':
       return <MetricCard beat={beat} />;
+    case 'perspective':
+      return <PerspectiveCard beat={beat} />;
+    case 'mind-map':
+      return <MindMapCard beat={beat} />;
     case 'ocr-callout':
       return <OcrCalloutOverlay beat={beat} />;
     case 'keyword-pop':

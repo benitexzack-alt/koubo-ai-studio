@@ -7,7 +7,16 @@ export type Beat = {
   title: string;
   detail: string;
   accent?: string;
-  variant?: 'statement' | 'compare' | 'checklist' | 'flow' | 'metric' | 'ocr-callout' | 'keyword-pop';
+  variant?:
+    | 'statement'
+    | 'compare'
+    | 'checklist'
+    | 'flow'
+    | 'metric'
+    | 'ocr-callout'
+    | 'keyword-pop'
+    | 'perspective'
+    | 'mind-map';
   side?: 'left' | 'right';
   items?: string[];
   steps?: string[];
@@ -759,6 +768,44 @@ export const geoAiRecommendTalk01Props: TalkProps = {
       side: 'left',
       items: ['获客', '内容', '客户跟进'],
     },
+  ],
+};
+
+export const localBusinessAiDailyTalk01Props: TalkProps = {
+  videoSrc: 'media/GEO_20260710_talk01_16x9_proxy.mp4',
+  captionsSrc: 'data/GEO_20260710_talk01_16x9.captions.json',
+  bilingualCaptionsSrc: 'data/GEO_20260710_talk01_16x9.bilingual.v1.json',
+  coverImageSrc: 'media/GEO_20260710_local_owner_phone.png',
+  topic: '本地老板，先把这 3 件小事交给 AI',
+  hostName: '超哥 AI 创业记',
+  identity: '兰州 AI 创业 / 本地生意实操',
+  coverTitle: 'AI 先帮你省时间',
+  coverSubTitle: '餐饮店 3 个零门槛动作',
+  coverKicker: 'LOCAL AI NOTES',
+  footerTag: '',
+  cameraMotionStrength: 0.42,
+  brolls: [
+    {start: 31.88, end: 35.8, src: 'media/GEO_20260710_store_owner_anxious.mp4', kind: 'video', title: '第一件：拍照发内容', subtitle: '一张图，变成三套能直接发的内容。', accent: '#19D3FF', dim: 0.31},
+    {start: 55.06, end: 58.96, src: 'media/GEO_20260710_manual_records.mp4', kind: 'video', title: '第二件：做活动方案', subtitle: '把生意数据交给 AI，老板用经验拍板。', accent: '#19D3FF', dim: 0.31},
+    {start: 73.32, end: 77.2, src: 'media/GEO_20260710_content_touchpoints.png', kind: 'image', title: '第三件：整理客户评价', subtitle: '菜品、服务、环境、价格，自动归类。', accent: '#19D3FF', dim: 0.28},
+    {start: 118.28, end: 122.1, src: 'media/GEO_20260710_local_owner_phone.png', kind: 'image', title: '跑顺后，固定成模板', subtitle: '输入菜名，直接产出内容。', accent: '#19D3FF', dim: 0.28},
+    {start: 133.9, end: 137.9, src: 'media/GEO_20260710_empty_store.mp4', kind: 'video', title: '明天就开始', subtitle: '找一件小事，交给 AI。', accent: '#19D3FF', dim: 0.31},
+  ],
+  beats: [
+    {start: 1.02, end: 6.94, eyebrow: 'LOCAL-FIRST', title: 'AI 不只属于大公司', detail: '餐饮、装修、民宿、美业，都有马上能用的小动作。', accent: '#19D3FF', variant: 'perspective', side: 'left', items: ['餐饮', '装修', '民宿 / 美业']},
+    {start: 7.56, end: 17.72, eyebrow: '先问关系', title: '本地生意，也有关系', detail: '不必先弄懂大模型，先看店里哪件小事能交给 AI。', accent: '#19D3FF', variant: 'keyword-pop', side: 'left'},
+    {start: 17.72, end: 22.48, eyebrow: '真实问题', title: '每天该做，却没认真做', detail: '这就是 AI 最先能帮上的地方。', accent: '#19D3FF', variant: 'statement', side: 'left'},
+    {start: 23.18, end: 27.98, eyebrow: '餐饮案例', title: '餐饮店的 3 件小事', detail: '直接交给 AI', accent: '#19D3FF', variant: 'mind-map', side: 'left', steps: ['拍照发内容', '做活动方案', '整理客户评价']},
+    {start: 28.82, end: 30.92, eyebrow: '01 / CONTENT', title: '拍照发内容', detail: '一张图，不只发一次。', accent: '#19D3FF', variant: 'keyword-pop', side: 'left'},
+    {start: 52.54, end: 54.18, eyebrow: '02 / CAMPAIGN', title: '做活动方案', detail: '数据交给 AI，经验留给老板。', accent: '#19D3FF', variant: 'keyword-pop', side: 'left'},
+    {start: 70.94, end: 72.64, eyebrow: '03 / REVIEW', title: '整理客户评价', detail: '把零散反馈变成问题清单。', accent: '#19D3FF', variant: 'keyword-pop', side: 'left'},
+    {start: 92.36, end: 99.2, eyebrow: '核心判断', title: '第一步，不是比模型', detail: '先找一个高频、重复、能立刻交出去的小动作。', accent: '#19D3FF', variant: 'compare', side: 'left', leftLabel: '先别做', leftText: '比模型 / 搞复杂系统', rightLabel: '先去做', rightText: '跑通一件小事'},
+    {start: 99.58, end: 110.08, eyebrow: '记住这三句', title: '三个变换', detail: '让 AI 接手重复活', accent: '#19D3FF', variant: 'mind-map', side: 'left', steps: ['图 → 文案', '套餐 → 活动', '评价 → 清单']},
+    {start: 111.62, end: 117.28, eyebrow: '真正价值', title: '省下重复活的时间', detail: '小事跑通，才有后面的增长。', accent: '#19D3FF', variant: 'keyword-pop', side: 'left'},
+    {start: 118.28, end: 128.72, eyebrow: '模板化', title: '先跑顺，再固定成模板', detail: '输入菜名，内容直接出，日常经营才会轻一点。', accent: '#19D3FF', variant: 'flow', side: 'left', steps: ['跑通小事', '固定模板', '更省心']},
+    {start: 128.72, end: 133.32, eyebrow: 'AI 的价值', title: '不是让你当技术专家', detail: '是把想做、没时间做的事，踏实地落到地上。', accent: '#19D3FF', variant: 'statement', side: 'left'},
+    {start: 137.1, end: 140.38, eyebrow: '明天就做', title: '找一件小事，交给 AI', detail: '不用先改变世界，先让店里轻一点。', accent: '#19D3FF', variant: 'keyword-pop', side: 'left'},
+    {start: 141.04, end: 146.68, eyebrow: '互动', title: '评论区留言你的行业', detail: '我告诉你，AI 可以从哪件小事开始。', accent: '#19D3FF', variant: 'keyword-pop', side: 'left'},
   ],
 };
 

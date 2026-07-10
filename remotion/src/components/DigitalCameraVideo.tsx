@@ -28,6 +28,8 @@ const semanticBoost = (beat?: Beat) => {
     case 'checklist':
     case 'flow':
     case 'metric':
+    case 'perspective':
+    case 'mind-map':
       return 0.007;
     case 'statement':
       return 0.005;

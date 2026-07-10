@@ -1,0 +1,34 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+const outPath = process.argv[2] ?? 'remotion/public/data/GEO_20260710_talk01_16x9.bilingual.v1.json';
+
+// 时间完全来自本条实录的词级转写；下面只校正 ASR 的同音/断句，并补充英文辅助字幕。
+const pages = [
+  {startMs: 1020, endMs: 6940, zh: '干餐饮、装修、民宿、美业的老板，是不是一听 AI 就觉得是大公司的玩意儿，跟咱们没关系？', en: 'Catering, renovation, homestay, and beauty business owners: do you think AI is only for big companies and has nothing to do with you?', highlights: ['AI', '大公司']},
+  {startMs: 7560, endMs: 17720, zh: '这两天满屏都是 AI 大新闻，什么大模型、算力、Agent，听着头都大，到底跟咱们本地做生意的有没有关系？', en: 'AI headlines are everywhere: foundation models, computing power, and agents. They are dizzying, but do they matter to local businesses?', highlights: ['AI', '本地做生意']},
+  {startMs: 17720, endMs: 22480, zh: '你问问自己，店里有没有啥事天天该做，但是从来没有认真做过的？', en: 'Ask yourself: is there something in the store that should be done every day but has never been done seriously?', highlights: ['天天该做']},
+  {startMs: 23180, endMs: 27980, zh: '就拿餐饮店来说，三件事直接交给 AI，零门槛就能用。', en: 'Take a restaurant: hand these three things to AI. Anyone can use them with no barrier.', highlights: ['三件事', 'AI', '零门槛']},
+  {startMs: 28820, endMs: 30920, zh: '第一件，拍照发内容。', en: 'First: use photos to create content.', highlights: ['拍照发内容']},
+  {startMs: 31880, endMs: 37100, zh: '新菜上线，套餐上新，别随手拍张照片就发朋友圈。', en: 'When new dishes or sets launch, do not just take a photo and post it to Moments.', highlights: ['新菜上线', '套餐上新']},
+  {startMs: 38100, endMs: 46780, zh: '一张图扔给 AI，朋友圈文案、小红书笔记、团购描述直接出三套，不用写得多高级。', en: 'Give one photo to AI and get three versions: a Moments post, a Xiaohongshu note, and a group-buying description. It does not need to sound fancy.', highlights: ['一张图', 'AI', '三套']},
+  {startMs: 46780, endMs: 52260, zh: '就把谁来吃、为啥今天来、来了点什么说清楚就好。', en: 'Just explain who should come, why they should come today, and what they should order.', highlights: ['谁来吃', '为什么来']},
+  {startMs: 52540, endMs: 54180, zh: '第二件，做活动方案。', en: 'Second: create promotional plans.', highlights: ['活动方案']},
+  {startMs: 55060, endMs: 59560, zh: '把你家客单价、毛利、闲时段、空桌数告诉 AI。', en: 'Give AI your average spend, margin, quiet hours, and empty-table count.', highlights: ['客单价', '毛利', 'AI']},
+  {startMs: 60500, endMs: 70300, zh: '工作日午餐怎么拉人，老客怎么复购，包厢怎么冲预订，它直接出好几套靠谱的方案，你拿经验拍板就行。', en: 'How to bring people in for weekday lunch, win repeat customers, and fill private rooms: it can propose several workable plans, and you make the call with experience.', highlights: ['老客复购', '包厢预订']},
+  {startMs: 70940, endMs: 72640, zh: '第三件，整理客户评价。', en: 'Third: organize customer reviews.', highlights: ['客户评价']},
+  {startMs: 73320, endMs: 78120, zh: '美团、抖音、小红书到处都是评价，你根本没空一条条看。', en: 'Reviews are everywhere on Meituan, Douyin, and Xiaohongshu. You do not have time to read them one by one.', highlights: ['美团', '抖音', '小红书']},
+  {startMs: 78740, endMs: 87740, zh: '全部丢给 AI，自动分成菜品、服务、环境、价格几大类，连客户为啥复购、为啥走都列得清清楚楚。', en: 'Give them all to AI. It sorts them into food, service, environment, and price, and clearly lists why customers return or leave.', highlights: ['AI', '菜品', '服务', '价格']},
+  {startMs: 88460, endMs: 92360, zh: '这三件小事，你店里是不是每天都在漏？', en: 'Are these three small things being missed in your store every day?', highlights: ['三件小事']},
+  {startMs: 92360, endMs: 99200, zh: '所以说本地老板用 AI，第一步根本不是比哪家模型强，更不是搞什么复杂的系统。', en: 'So for local business owners, the first step with AI is not comparing which model is stronger, nor building a complicated system.', highlights: ['第一步', '不是比模型', '复杂系统']},
+  {startMs: 99580, endMs: 110080, zh: '就记住三句话：一张图变三条文案，一个套餐变三个活动，一堆评价变一张问题清单。', en: 'Remember three lines: one photo becomes three pieces of copy, one set meal becomes three promotions, and a pile of reviews becomes one problem list.', highlights: ['一张图', '三个活动', '问题清单']},
+  {startMs: 111620, endMs: 117280, zh: '都是不起眼的小事，但是把你每天耗在重复活上的时间全省下来了。', en: 'They look like small things, but they save the time you spend on repetitive work every day.', highlights: ['重复活', '省下来']},
+  {startMs: 118280, endMs: 124100, zh: '等跑顺了再做成固定的模板，输入菜名直接出内容更省心。', en: 'Once it runs smoothly, turn it into a fixed template. Enter a dish name and get content directly.', highlights: ['固定模板', '直接出内容']},
+  {startMs: 124260, endMs: 133320, zh: 'AI 对咱们老板的价值，从来不是让你当技术专家，而是把你想做但没有时间做的事踏踏实实地落地。', en: 'The value of AI is never to turn business owners into technical experts. It is to make the things you want to do but lack time for happen in practice.', highlights: ['不是技术专家', '落地']},
+  {startMs: 133900, endMs: 140380, zh: '别问 AI 能不能改变世界，就问问自己，店里哪件小事明天就能交给 AI。', en: 'Do not ask whether AI can change the world. Ask which small task in your store can be handed to AI tomorrow.', highlights: ['明天', '交给 AI']},
+  {startMs: 141040, endMs: 146680, zh: '觉得有用的老板点赞收藏，评论区留言你的行业，我告诉你 AI 该怎么用。', en: 'If this helps, like and save it. Leave your industry in the comments and I will tell you how AI can be used there.', highlights: ['留言你的行业', 'AI']},
+];
+
+await fs.mkdir(path.dirname(outPath), {recursive: true});
+await fs.writeFile(outPath, `${JSON.stringify(pages, null, 2)}\n`, 'utf8');
+console.log(`已生成 ${pages.length} 段中英双语字幕：${outPath}`);

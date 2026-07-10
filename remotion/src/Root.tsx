@@ -8,6 +8,7 @@ import {
   defaultTalkProps,
   gansuStoreAiTalk01Props,
   geoAiRecommendTalk01Props,
+  localBusinessAiDailyTalk01Props,
   localBossAiOcrDemoProps,
   localBossAiProps,
   localBossAiV2Props,
@@ -80,6 +81,15 @@ export const RemotionRoot: React.FC = () => {
           fps={30}
           durationInFrames={7306}
           defaultProps={geoAiRecommendTalk01Props}
+        />
+        <Composition
+          id="AIBizTalk16x9-LocalBusinessAI-Daily-Talk01"
+          component={AIBizTalk16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={4405}
+          defaultProps={localBusinessAiDailyTalk01Props}
         />
         <Still
           id="CoverStill"
