@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260710_local-ai-three-tasks_16x9_v2",
+  "status": "ready-for-user-review",
+  "videoId": "GEO_20260710_talk01_16x9",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "serviceAudience": "餐饮、装修、民宿、美业等甘肃本地实体老板。",
+    "oneConclusion": "本地老板用 AI 的第一步不是比模型或上复杂系统，而是交出一件高频小事。",
+    "cta": "评论区留言你的行业，我说明可以从哪件小事开始。",
+    "factBoundary": "AI 只提供经营内容与方案建议，老板用真实数据和经验拍板；不承诺获客或收益。"
+  },
+  "inputs": {
+    "sourceVideo": "source/GEO_20260710_talk01_16x9.MOV",
+    "transcript": "edit/transcripts/GEO_20260710_final_v2.raw.json",
+    "bilingualCaptions": "remotion/public/data/GEO_20260710_talk01_16x9.bilingual.v1.json",
+    "visualPlan": "edit/visual-plan_GEO_20260710_talk01_v1.json",
+    "assets": [
+      "media/GEO_20260710_store_owner_anxious.mp4",
+      "media/GEO_20260710_manual_records.mp4",
+      "media/GEO_20260710_content_touchpoints.png",
+      "media/GEO_20260710_local_owner_phone.png",
+      "media/GEO_20260710_empty_store.mp4"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/本地老板把3件小事交给AI_16x9_完整双语动效_v2.mp4",
+    "previewOutput": "edit/exports/GEO_20260710_蓝白动效_预览35秒_v2.mp4",
+    "modules": [
+      "digital-camera",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "semantic-motion-card",
+      "bilingual-caption"
+    ],
+    "styleReferenceIds": []
+  },
+  "qa": {
+    "technical": {"status": "passed", "evidence": "1920×1080、30fps、H.264/AAC、146.88 秒；完整解码无报错。"},
+    "captionSync": {"status": "passed", "minimumScore": 0.92, "evidence": "最终 v2 音轨重新转写，22 段中英字幕最低同步分 0.92。"},
+    "visualPlan": {"status": "passed", "evidence": "新版图层表 13 个图层、13 个风险抽帧，标题拥有者冲突校验通过。"},
+    "keyframeReview": {"status": "passed", "frames": [3, 25, 33, 57, 75, 96, 103, 120, 136, 144], "evidence": "覆盖首屏、脑图、三处全屏素材、对比、三个变换、模板化、行动与结尾；120 秒、136 秒重复标题已修复。"}
+  },
+  "upgradeDecisions": [
+    {"id": "upgrade-20260710-blue-white-information-graphics", "decision": "applied", "evidence": "perspective 与 mind-map 已用于正式成片。"},
+    {"id": "upgrade-20260711-visual-plan-layer-owner", "decision": "applied", "evidence": "全屏素材标题与信息卡标题已拆分，v2 复查无重复叠层。"},
+    {"id": "upgrade-20260711-strong-title-cover-style", "decision": "deferred", "evidence": "封面尚未生成，下一条封面必须引用风格卡。"}
+  ],
+  "userReview": {"previewApproved": true, "fullWatchConfirmed": false, "notes": "用户已确认 35 秒预览方向；正式成片仍待完整人工观看。"},
+  "publish": {
+    "status": "not-published",
+    "platform": "",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "发布 24 小时后回填封面、标题、留存、完播、互动、行业评论和有效咨询，并决定哪些实验进入基线。"
+  }
+}
