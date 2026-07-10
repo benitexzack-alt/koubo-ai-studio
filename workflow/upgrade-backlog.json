@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "statuses": ["planned", "in-progress", "validated", "promoted", "rejected"],
+  "items": [
+    {
+      "id": "upgrade-20260711-visual-plan-layer-owner",
+      "type": "fix",
+      "source": "2026-07-10 成片复查：模板化与行动引导节点出现标题叠层。",
+      "goal": "让视觉方案声明每个时间段由哪一层承担标题，并在渲染前拦截冲突。",
+      "acceptance": "含全屏素材和信息卡的视觉方案能自动发现同组多标题。",
+      "status": "in-progress",
+      "baselineImpact": "required"
+    },
+    {
+      "id": "upgrade-20260711-strong-title-cover-style",
+      "type": "experiment",
+      "source": "refs/IMG_2203_强标题封面参考.PNG",
+      "goal": "建立真人右侧、粗体强标题左侧、蓝白主色和橙黄强调的封面风格卡。",
+      "acceptance": "每次封面提示词必须引用风格卡，并输出主标题、人物位置、色彩和信息密度。",
+      "status": "in-progress",
+      "baselineImpact": "cover"
+    },
+    {
+      "id": "upgrade-20260711-cover-keyframe-score",
+      "type": "experiment",
+      "source": "knowledge/11-封面与语义动效模板升级复盘.md",
+      "goal": "自动抽取并排序适合封面的人像关键帧。",
+      "acceptance": "输出至少六张候选帧，记录清晰度、表情、手势、文字安全区和构图得分。",
+      "status": "planned",
+      "baselineImpact": "cover"
+    },
+    {
+      "id": "upgrade-20260711-evidence-screenshot-card",
+      "type": "experiment",
+      "source": "knowledge/11-封面与语义动效模板升级复盘.md",
+      "goal": "为真实工具界面、网页、报告和脱敏案例建立截图证据卡。",
+      "acceptance": "支持来源、日期、脱敏状态、OCR 高亮和画面安全区。",
+      "status": "planned",
+      "baselineImpact": "optional"
+    },
+    {
+      "id": "upgrade-20260710-blue-white-information-graphics",
+      "type": "baseline",
+      "source": "用户提供的柱子哥风格参考与 2026-07-10 成片验证。",
+      "goal": "数字、观点列表和步骤默认采用蓝白透视卡、流程/脑图与箭头流动表达。",
+      "acceptance": "已在正式成片中使用 perspective 和 mind-map，并完成人工抽帧检查。",
+      "status": "promoted",
+      "baselineImpact": "required"
+    }
+  ]
+}

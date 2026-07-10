@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "koubo-formal-16x9-v1",
+  "status": "active",
+  "effectiveFrom": "2026-07-11",
+  "appliesTo": "所有正式横屏口播；用户明确要求简版、纯中文或其他画幅时，必须在发布记录中写明降级原因。",
+  "production": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "videoCodec": "h264",
+    "audioCodec": "aac",
+    "sourcePolicy": "原始素材只读；正式渲染使用高清兼容副本，不使用低清预览代理。"
+  },
+  "requiredModules": [
+    "digital-camera",
+    "top-brand-bar",
+    "topic-bar",
+    "progress-bar",
+    "semantic-motion-card",
+    "bilingual-caption"
+  ],
+  "captionPolicy": {
+    "mode": "zh-en-same-window",
+    "timingSource": "最终成片音轨的词级转写时间轴",
+    "minimumSyncScore": 0.74,
+    "punctuationBoundToPreviousCharacter": true,
+    "englishIsAuxiliary": true
+  },
+  "visualPolicy": {
+    "onePrimaryMessagePerScreen": true,
+    "maxSimultaneousTitleOwners": 1,
+    "requireSafeAreaChecks": ["face", "hands", "subtitle"],
+    "dataAndListDefault": "blue-white-infographic",
+    "fullScreenAssetRule": "同一时段如已有信息卡标题，全屏素材只能承担画面，不能重复标题。"
+  },
+  "previewGate": {
+    "required": true,
+    "minimumCoverage": ["hook", "complex-overlay", "full-screen-asset", "cta"],
+    "userApprovalRequiredBeforeFormalRender": true
+  },
+  "formalQa": {
+    "required": [
+      "output-decode",
+      "caption-sync",
+      "visual-plan-validation",
+      "keyframe-review",
+      "user-full-watch"
+    ],
+    "keyframeReview": {
+      "minimumCount": 8,
+      "mustInclude": ["hook", "data-or-list", "every-full-screen-asset", "cta"]
+    }
+  },
+  "evolutionPolicy": {
+    "fix": "已验证缺陷立即修正并进入基线。",
+    "experiment": "每条视频最多一个主实验；实验先出风险节点预览，不自动成为默认。",
+    "promotion": "连续三条稳定使用，且用户确认或发布数据支持后，才升级为下一版基线。"
+  }
+}
