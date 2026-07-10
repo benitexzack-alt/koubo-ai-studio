@@ -772,7 +772,7 @@ export const geoAiRecommendTalk01Props: TalkProps = {
 };
 
 export const localBusinessAiDailyTalk01Props: TalkProps = {
-  videoSrc: 'media/GEO_20260710_talk01_16x9_proxy.mp4',
+  videoSrc: 'media/GEO_20260710_talk01_16x9_hd.mp4',
   captionsSrc: 'data/GEO_20260710_talk01_16x9.captions.json',
   bilingualCaptionsSrc: 'data/GEO_20260710_talk01_16x9.bilingual.v1.json',
   coverImageSrc: 'media/GEO_20260710_local_owner_phone.png',
@@ -788,8 +788,8 @@ export const localBusinessAiDailyTalk01Props: TalkProps = {
     {start: 31.88, end: 35.8, src: 'media/GEO_20260710_store_owner_anxious.mp4', kind: 'video', title: '第一件：拍照发内容', subtitle: '一张图，变成三套能直接发的内容。', accent: '#19D3FF', dim: 0.31},
     {start: 55.06, end: 58.96, src: 'media/GEO_20260710_manual_records.mp4', kind: 'video', title: '第二件：做活动方案', subtitle: '把生意数据交给 AI，老板用经验拍板。', accent: '#19D3FF', dim: 0.31},
     {start: 73.32, end: 77.2, src: 'media/GEO_20260710_content_touchpoints.png', kind: 'image', title: '第三件：整理客户评价', subtitle: '菜品、服务、环境、价格，自动归类。', accent: '#19D3FF', dim: 0.28},
-    {start: 118.28, end: 122.1, src: 'media/GEO_20260710_local_owner_phone.png', kind: 'image', title: '跑顺后，固定成模板', subtitle: '输入菜名，直接产出内容。', accent: '#19D3FF', dim: 0.28},
-    {start: 133.9, end: 137.9, src: 'media/GEO_20260710_empty_store.mp4', kind: 'video', title: '明天就开始', subtitle: '找一件小事，交给 AI。', accent: '#19D3FF', dim: 0.31},
+    {start: 118.28, end: 122.1, src: 'media/GEO_20260710_local_owner_phone.png', kind: 'image', accent: '#19D3FF', dim: 0.28},
+    {start: 133.9, end: 137.9, src: 'media/GEO_20260710_empty_store.mp4', kind: 'video', accent: '#19D3FF', dim: 0.31},
   ],
   beats: [
     {start: 1.02, end: 6.94, eyebrow: 'LOCAL-FIRST', title: 'AI 不只属于大公司', detail: '餐饮、装修、民宿、美业，都有马上能用的小动作。', accent: '#19D3FF', variant: 'perspective', side: 'left', items: ['餐饮', '装修', '民宿 / 美业']},
