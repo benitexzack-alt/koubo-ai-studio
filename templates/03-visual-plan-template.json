@@ -1,7 +1,10 @@
 {
-  "version": 1,
+  "schemaVersion": 2,
+  "videoId": "",
   "videoTitle": "",
   "sourceVideo": "",
+  "baselineId": "koubo-formal-16x9-v1",
+  "styleReferenceIds": [],
   "target": {
     "aspect": "16:9",
     "width": 1920,
@@ -35,24 +38,26 @@
     "face": null,
     "hands": null
   },
-  "beats": [
+  "previewCoverage": ["hook", "complex-overlay", "full-screen-asset", "cta"],
+  "layers": [
     {
-      "id": "beat-001",
+      "id": "layer-001",
       "start": 0,
       "end": 5,
       "spokenLine": "",
       "purpose": "hook",
+      "kind": "semantic-card",
       "variant": "statement",
-      "side": "left",
+      "titleOwner": true,
+      "overlapGroup": "hook",
+      "zone": "top-left",
       "title": "",
       "detail": "",
       "items": [],
-      "canvas": {
-        "width": 1920,
-        "height": 1080
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": ""
       },
-      "callouts": [],
-      "assetSource": "remotion-component",
       "params": {
         "accent": "#FFD23F",
         "maxWidth": 590,
@@ -62,7 +67,8 @@
       "checks": {
         "avoidFace": true,
         "avoidSubtitle": true,
-        "needsFrameReview": true
+        "needsFrameReview": true,
+        "reviewAt": 2.5
       }
     }
   ],
