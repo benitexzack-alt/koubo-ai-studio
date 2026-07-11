@@ -31,7 +31,7 @@ edit/verify/covers/<coverId>/thumbnails/
 edit/verify/covers/<coverId>/ocr/
 ```
 
-单张候选和最终图为 `1080×1440` PNG。四宫格默认 `2240×2940`，外边距 `20px`，宫格间距 `40px`。
+单张候选和最终图为 `1080×1440` PNG。四宫格默认 `2240×2960`，外边距 `20px`，宫格间距 `40px`。
 
 ## 状态机
 
