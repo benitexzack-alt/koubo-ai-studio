@@ -149,14 +149,24 @@ const renderBackgroundSvg = (candidate) => {
 };
 
 const loadBackground = async (candidate) => {
+  const backgroundMode = candidate.background?.mode;
   const backgroundPath = candidate.background?.path;
-  if (backgroundPath) {
-    const absolute = resolveProjectPath(backgroundPath);
-    if (fs.existsSync(absolute)) {
-      return sharp(absolute).resize(width, height, {fit: 'cover'}).png().toBuffer();
+
+  if (backgroundMode === 'generated') {
+    if (!backgroundPath) {
+      throw new Error(`候选 ${candidate.id} 声明使用 AI 背景，但没有填写 background.path。`);
     }
-    warnings.push(`候选 ${candidate.id} 的背景文件不存在，已使用代码背景：${backgroundPath}`);
+    const absolute = resolveProjectPath(backgroundPath);
+    if (!fs.existsSync(absolute)) {
+      throw new Error(`候选 ${candidate.id} 的 AI 背景文件不存在：${backgroundPath}`);
+    }
+    return sharp(absolute).resize(width, height, {fit: 'cover'}).png().toBuffer();
   }
+
+  if (backgroundMode !== 'deterministic') {
+    throw new Error(`候选 ${candidate.id} 的 background.mode 必须是 generated 或 deterministic。`);
+  }
+
   return sharp(renderBackgroundSvg(candidate)).png().toBuffer();
 };
 
@@ -255,7 +265,7 @@ const makePortraitLayers = async (candidate, framePath) => {
 };
 
 const layoutConfig = {
-  'cinematic-right': {x: 78, y: 235, anchor: 'start', defaultSize: 146, maxWidth: 650, subtitleY: 700},
+  'cinematic-right': {x: 78, y: 280, anchor: 'start', defaultSize: 146, maxWidth: 650, subtitleY: 700},
   'clean-center': {x: 540, y: 300, anchor: 'middle', defaultSize: 142, maxWidth: 930, subtitleY: 565},
   'evidence-split': {x: 575, y: 170, anchor: 'start', defaultSize: 120, maxWidth: 445, subtitleY: 620},
   'local-story': {x: 78, y: 895, anchor: 'start', defaultSize: 146, maxWidth: 920, subtitleY: 1215},

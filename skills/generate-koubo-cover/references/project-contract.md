@@ -28,10 +28,17 @@ outputs/covers/<coverId>/<coverId>_final_v1.png
 
 edit/verify/covers/<coverId>/frames/
 edit/verify/covers/<coverId>/thumbnails/
-edit/verify/covers/<coverId>/ocr/
+edit/verify/covers/<coverId>/ocr/ocr-report.json
 ```
 
 单张候选和最终图为 `1080×1440` PNG。四宫格默认 `2240×2960`，外边距 `20px`，宫格间距 `40px`。
+
+每个候选必须声明背景来源：
+
+- `background.mode=generated`：`background.path` 指向实际生成的背景文件，`generationReason` 记录生成方式，任务单开启 AI 标识；
+- `background.mode=deterministic`：由渲染脚本生成原创几何背景，`generationReason` 记录为什么选择可复现背景。
+
+不得把主动选择的确定性背景伪写成“生图失败兜底”。
 
 ## 状态机
 
@@ -64,7 +71,7 @@ draft → grid-ready → selected → final-ready → approved
 
 ```bash
 node skills/generate-koubo-cover/scripts/render-cover-set.mjs <task.json> --mode grid
-node skills/generate-koubo-cover/scripts/validate-cover-task.mjs <task.json>
+node skills/generate-koubo-cover/scripts/validate-cover-task.mjs <task.json> --ocr
 
 node skills/generate-koubo-cover/scripts/render-cover-set.mjs <task.json> --mode final --selected 2
 node skills/generate-koubo-cover/scripts/validate-cover-task.mjs <task.json>

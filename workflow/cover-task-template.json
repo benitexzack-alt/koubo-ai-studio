@@ -24,7 +24,8 @@
   },
   "evidenceDir": "edit/verify/covers/YYYYMMDD_topic_cover_3x4_v1",
   "evidence": {
-    "allowedRiskTerms": []
+    "allowedRiskTerms": [],
+    "ocrReport": "edit/verify/covers/YYYYMMDD_topic_cover_3x4_v1/ocr/ocr-report.json"
   },
   "grid": {
     "output": "outputs/covers/YYYYMMDD_topic_cover_3x4_v1/YYYYMMDD_topic_cover_3x4_v1_grid_v1.png",
@@ -43,7 +44,7 @@
           "tags": []
         },
         "portrait": {"frameSecond": 0, "framePath": "", "expressionIntent": "疑问", "cropPosition": "attention"},
-        "background": {"mode": "fallback", "path": "", "atmosphere": "深色电影商业", "motif": "route", "prompt": "原创深色科技商业背景，无人物，无文字，无 Logo，无品牌界面，无水印"},
+        "background": {"mode": "generated", "path": "", "generationReason": "常规正式生产：本候选单独调用 image_gen 生成背景，生成后填写 path。", "atmosphere": "深色电影商业", "motif": "route", "prompt": "原创深色科技商业背景，无人物，无文字，无 Logo，无品牌界面，无水印"},
         "palette": {"base": "#050B18", "secondary": "#102A4F", "accent": "#2FD4FF", "warm": "#F5BE45", "text": "#F7FAFF", "muted": "#C5D1E0"},
         "typography": {"headlineSize": 146, "lineHeight": 144},
         "output": "outputs/covers/YYYYMMDD_topic_cover_3x4_v1/candidate-1.png"
@@ -61,7 +62,7 @@
           "tags": []
         },
         "portrait": {"frameSecond": 1, "framePath": "", "expressionIntent": "讲解", "cropPosition": "attention"},
-        "background": {"mode": "fallback", "path": "", "atmosphere": "明亮教学海报", "motif": "steps", "prompt": "原创明亮教学背景，无人物，无文字，无 Logo，无品牌界面，无水印"},
+        "background": {"mode": "generated", "path": "", "generationReason": "常规正式生产：本候选单独调用 image_gen 生成背景，生成后填写 path。", "atmosphere": "明亮教学海报", "motif": "steps", "prompt": "原创明亮教学背景，无人物，无文字，无 Logo，无品牌界面，无水印"},
         "palette": {"base": "#EEF5F8", "secondary": "#DDEAF2", "accent": "#126BFF", "warm": "#A5D63F", "text": "#071221", "muted": "#334A61"},
         "typography": {"headlineSize": 142, "lineHeight": 144},
         "output": "outputs/covers/YYYYMMDD_topic_cover_3x4_v1/candidate-2.png"
@@ -80,7 +81,7 @@
           "tags": ["步骤一", "步骤二", "步骤三"]
         },
         "portrait": {"frameSecond": 2, "framePath": "", "expressionIntent": "数数", "cropPosition": "attention"},
-        "background": {"mode": "fallback", "path": "", "atmosphere": "炭黑方法拆解", "motif": "evidence", "prompt": "原创方法拆解背景，无人物，无文字，无 Logo，无品牌界面，无水印"},
+        "background": {"mode": "generated", "path": "", "generationReason": "常规正式生产：本候选单独调用 image_gen 生成背景，生成后填写 path。", "atmosphere": "炭黑方法拆解", "motif": "evidence", "prompt": "原创方法拆解背景，无人物，无文字，无 Logo，无品牌界面，无水印"},
         "palette": {"base": "#06110F", "secondary": "#0C2928", "accent": "#21E6C1", "warm": "#F2C14E", "text": "#F6FFFC", "muted": "#B6D2CB"},
         "typography": {"headlineSize": 120, "lineHeight": 122},
         "output": "outputs/covers/YYYYMMDD_topic_cover_3x4_v1/candidate-3.png"
@@ -99,7 +100,7 @@
           "tags": []
         },
         "portrait": {"frameSecond": 3, "framePath": "", "expressionIntent": "行动", "cropPosition": "attention"},
-        "background": {"mode": "fallback", "path": "", "atmosphere": "本地夜色叙事", "motif": "local", "prompt": "原创本地商业叙事背景，无人物，无文字，无 Logo，无品牌界面，无水印"},
+        "background": {"mode": "generated", "path": "", "generationReason": "常规正式生产：本候选单独调用 image_gen 生成背景，生成后填写 path。", "atmosphere": "本地夜色叙事", "motif": "local", "prompt": "原创本地商业叙事背景，无人物，无文字，无 Logo，无品牌界面，无水印"},
         "palette": {"base": "#110A26", "secondary": "#2B1752", "accent": "#8E7CFF", "warm": "#F3A64A", "text": "#FFF9F2", "muted": "#D5C7E8"},
         "typography": {"headlineSize": 146, "lineHeight": 142},
         "output": "outputs/covers/YYYYMMDD_topic_cover_3x4_v1/candidate-4.png"
@@ -109,9 +110,9 @@
   "selection": null,
   "final": null,
   "aiDisclosure": {
-    "required": false,
+    "required": true,
     "label": "部分画面由 AI 生成",
-    "publishDeclarationRequired": false
+    "publishDeclarationRequired": true
   },
   "qa": {
     "grid": {

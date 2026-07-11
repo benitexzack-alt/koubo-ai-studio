@@ -67,18 +67,21 @@ description: 为口播视频分析封面样本、提炼原创风格，并根据�
 
 任务单是封面状态的唯一事实源。四张独立候选图必须分别保存，四宫格不能代替单张候选文件。
 
-### 4. 生成背景
+### 4. 选择并记录背景方式
 
-默认调用内置 `image_gen`，分别生成四张不同背景。每张单独调用一次，不用一个提示词生成四个近似变体。
+常规正式生产优先调用内置 `image_gen`，分别生成四张不同背景。每张单独调用一次，不用一个提示词生成四个近似变体。
 
-提示词只允许生成：
+也可以在首轮流程验证、纯抽象科技背景或需要完全可复现的版式中，明确选择渲染脚本的确定性原创背景。两种方式都必须在每个候选的 `background.mode` 和 `background.generationReason` 中如实记录：
+
+- `generated`：四张背景分别由 `image_gen` 生成；必须保存每张背景文件路径，并设置 AI 生成标识；
+- `deterministic`：由脚本生成原创渐变、光路、节点和几何图形；必须说明选择原因，不能伪称 AI 生图失败。
+
+只有真实发生工具不可用或调用失败时，才可以把 `generationReason` 写为失败兜底，并保留失败证据。无论使用哪种方式，背景都必须满足：
 
 - 无文字；
 - 无人物、脸、手和身体轮廓；
 - 无 Logo、品牌界面、水印和平台 UI；
 - 与当期主题有关的原创商业、教学、工作流或本地叙事背景。
-
-若生图不可用或失败，使用渲染脚本的确定性原创背景，继续完成四宫格，不让外部 API 阻塞交付。
 
 ### 5. 合成与验证
 
@@ -86,7 +89,7 @@ description: 为口播视频分析封面样本、提炼原创风格，并根据�
 
 ```bash
 node skills/generate-koubo-cover/scripts/render-cover-set.mjs <cover-task.json> --mode grid
-node skills/generate-koubo-cover/scripts/validate-cover-task.mjs <cover-task.json>
+node skills/generate-koubo-cover/scripts/validate-cover-task.mjs <cover-task.json> --ocr
 ```
 
 必须检查：
@@ -97,6 +100,7 @@ node skills/generate-koubo-cover/scripts/validate-cover-task.mjs <cover-task.jso
 - 主标题、人物和一个核心信息在手机缩略图下可读；
 - 人物来自真实帧且未被生成模型改写；
 - 不含样本人物、Logo、水印、乱码、隐私和虚假结果。
+- OCR 报告已经保存到任务单声明的证据路径；OCR 只是辅助提醒，不能替代标题源字符串核对和人工缩略图检查。
 
 向用户展示四宫格后停止，使用完成语：`四宫格初稿已生成，待你选择 1、2、3 或 4。`
 
