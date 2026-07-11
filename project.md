@@ -201,3 +201,14 @@
 - 现有项目已有双语字幕、数字运镜、语义卡、OCR 标注、视觉方案和预览门禁；缺口是 Zod 参数面板、透明 Overlay Composition、文字溢出门禁和按 `reviewAt` 自动渲染风险帧。
 - 完整拆解和升级顺序已写入 `knowledge/13-Codex加Remotion高级玩法拆解与升级建议.md`。
 - 待办已登记为 `upgrade-20260711-remotion-layout-safety-gate` 和 `upgrade-20260711-koubo-remotion-director`，当前仅为 `planned`，未替换 V4 实验或生产基线。
+
+## 2026-07-12 四宫格封面 Skill
+
+- 新增项目 Skill：`skills/generate-koubo-cover/`，并链接到 `~/.codex/skills/generate-koubo-cover`，用于后续口播视频的 3:4 封面生产。
+- 封面固定采用两阶段流程：先生成一张带 `1、2、3、4` 编号的 2×2 四宫格初稿；只有用户明确选中一个编号后，才允许基于该方案精修并导出无候选编号的 1080×1440 最终封面。
+- 四张候选必须围绕同一主题，并在标题表达、真人表情、画面构图、背景氛围和颜色搭配五个维度形成可辨差异；校验器会阻止四个候选在任一维度完全重复。
+- 真人仅可来自用户授权视频的真实抽帧；生图只负责无人物、无文字、无品牌和无 Logo 的背景，中文标题与编号由程序确定性排版，禁止模型重绘脸、手、服装或姿态。
+- 已用 `workflow/covers/20260710_local-ai-three-tasks_cover_3x4_v1.json` 完成真实四宫格初稿：四张候选均为 1080×1440 PNG，合成预览为 2240×2960 PNG，抽帧点分别为 54、36、72、126 秒。
+- 封面任务状态机为 `draft → grid-ready → selected → final-ready → approved`；当前样例停在 `grid-ready`，等待用户选择 `1、2、3、4`，尚未生成或确认最终封面。
+- `tools/validate-release.mjs` 已接入可选封面任务校验；三件小事发布记录与旧 OPC 发布记录均通过，证明旧发布记录可继续兼容。
+- 本次样例使用可复现的代码背景完成流程验证，没有调用 AI 生图背景；AI 背景分支和用户选中后的终稿精修仍待真实端到端验证。中文标题由 SVG 精确生成并经人工抽查可读，Tesseract 中文 OCR 仅部分识别，因此 OCR 只作为提醒，不作为唯一验收证据。
