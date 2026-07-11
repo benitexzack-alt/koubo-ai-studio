@@ -152,6 +152,37 @@ if (exists(release.inputs?.visualPlan)) {
   }
 }
 
+if (release.cover !== undefined && release.cover !== null) {
+  if (typeof release.cover !== 'object' || !isNonEmpty(release.cover.taskFile)) {
+    errors.push('cover 必须包含非空 taskFile。');
+  } else if (!exists(release.cover.taskFile)) {
+    errors.push(`封面任务单不存在：${release.cover.taskFile}`);
+  } else {
+    const coverCheck = run(process.execPath, [
+      'skills/generate-koubo-cover/scripts/validate-cover-task.mjs',
+      release.cover.taskFile
+    ]);
+    if (coverCheck.status !== 0) {
+      errors.push(`封面任务子校验失败：${coverCheck.stderr.trim() || coverCheck.stdout.trim()}`);
+    } else {
+      const coverTask = readJson(release.cover.taskFile);
+      if (coverTask.releaseId !== release.releaseId) {
+        errors.push(`封面任务 releaseId=${coverTask.releaseId} 与发布记录 ${release.releaseId} 不一致。`);
+      }
+      const publishing = release.publish?.status !== 'not-published' || release.status === 'verified';
+      if (publishing && release.cover.requiredForPublish !== false && coverTask.status !== 'approved') {
+        errors.push(`发布前封面必须达到 approved，当前为 ${coverTask.status}。`);
+      } else if (coverTask.status === 'grid-ready') {
+        warnings.push('封面四宫格初稿已生成，待用户选择 1、2、3 或 4。');
+      } else if (coverTask.status === 'selected') {
+        warnings.push('用户已选择封面候选，待生成最终精修图。');
+      } else if (coverTask.status === 'final-ready') {
+        warnings.push('最终封面已生成，待用户人工确认。');
+      }
+    }
+  }
+}
+
 if (!release.userReview?.previewApproved) {
   errors.push('用户尚未确认预览，不能进入正式状态。');
 }
