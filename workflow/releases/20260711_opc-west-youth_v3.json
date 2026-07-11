@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260711_opc-west-youth_16x9_v3",
+  "status": "ready-for-user-review",
+  "videoId": "OPC_20260711_talk01_16x9",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "serviceAudience": "西北本地年轻人、在校大学生、会剪辑/设计/AI写代码且想结合本地资源做交付的人。",
+    "oneConclusion": "OPC不是抽象概念，而是一个人带着AI，先把身边真实场景里的小问题做成可交付结果。",
+    "cta": "评论区留下你的城市、你会什么、你身边有什么行业资源。",
+    "factBoundary": "本条讲个人理解和行动号召，不承诺收入、获客、创业成功或公司注册结果。"
+  },
+  "inputs": {
+    "sourceVideo": "source/OPC_20260711_talk01_16x9.MOV",
+    "transcript": "edit/transcripts/OPC_20260711_talk01_16x9.json",
+    "bilingualCaptions": "remotion/public/data/OPC_20260711_talk01_16x9.bilingual.v1.json",
+    "visualPlan": "edit/visual-plan_OPC_20260711_talk01_v1.json",
+    "assets": [
+      "media/OPC_20260711_local_street_scene.mp4",
+      "media/OPC_20260711_restaurant_ai_delivery.mp4",
+      "media/OPC_20260711_youth_skill_delivery.mp4",
+      "media/OPC_20260711_workbench_screenshot.png"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/西北年轻人用AI做OPC_16x9_双语动效_v3.mp4",
+    "previewOutput": "edit/exports/OPC_20260711_预览30秒_v2.mp4",
+    "modules": [
+      "digital-camera",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "semantic-motion-card",
+      "bilingual-caption"
+    ],
+    "styleReferenceIds": [
+      "tzfilm-blue-white-perspective-card",
+      "tzfilm-mind-map-guided-card",
+      "full-screen-broll-with-original-voiceover"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "1920×1080、30fps、H.264/AAC、189.00 秒、202.7MB；完整解码无报错。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "minimumScore": 0.82,
+      "evidence": "34 段中英字幕按词级转写时间轴校验，最低同步分 0.82，高于基线 0.74；v3 修正了 v1/v2 中几段口语浓缩导致的低分。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "视觉方案 13 个图层、13 个风险抽帧，蓝白信息卡、全屏素材、结尾 CTA 校验通过。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [3, 14, 24, 42, 56, 72.5, 88, 106, 120, 132, 141, 152, 168, 179, 185],
+      "evidence": "覆盖首屏、OPC定义、本地场景、三要素、餐饮交付、闭环、技能交付、真实问题、CTA 和结尾；抽帧未见黑屏、关键遮挡或标题冲突。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260711-blue-white-information-card",
+      "decision": "applied",
+      "evidence": "本条使用蓝白透视信息卡、三要素卡、CTA 脑图卡。"
+    },
+    {
+      "id": "upgrade-20260711-full-screen-broll",
+      "decision": "applied",
+      "evidence": "本地街区、餐饮交付、技能交付、工作台截图均以全屏素材承接，原口播音频不断。"
+    },
+    {
+      "id": "upgrade-20260711-digital-camera-motion",
+      "decision": "applied",
+      "evidence": "口播主体段使用轻微数字运镜，降低固定机位呆板感。"
+    },
+    {
+      "id": "upgrade-20260711-caption-boundary-strictness",
+      "decision": "applied",
+      "evidence": "字幕边界按词级时间轴二次修正，最低同步分由 0.64 提升到 0.82。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户已要求进入制作成片；正式 v3 仍待用户完整人工观看确认。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "发布 24 小时后回填标题、封面、留存、完播、互动、评论质量和有效咨询，再决定蓝白信息卡与全屏素材比例是否进入下一版基线。"
+  }
+}

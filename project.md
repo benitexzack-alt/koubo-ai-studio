@@ -171,3 +171,14 @@
 - 新增视觉方案 v2 与校验器：`templates/03-visual-plan-template.json`、`tools/validate-visual-plan.mjs`；用标题拥有者和重叠组规则，在渲染前阻止重复标题叠层。
 - 新增发布记录和校验器：`workflow/releases/`、`tools/validate-release.mjs`；发布前实际检查素材、成片规格、完整解码、字幕同步、视觉方案、关键帧和用户确认状态。
 - 当前三件小事 v2 发布记录为 `workflow/releases/20260710_local-ai-three-tasks_v2.json`，机器校验通过，尚未完成用户全片确认和发布后 24 小时数据回填。
+
+## 2026-07-11 OPC 西北年轻人成片
+
+- 原视频复制到 `source/OPC_20260711_talk01_16x9.MOV`，本条按用户要求不删减原口播内容。
+- 今日素材使用 3 段视频和 1 张截图，按本地场景、餐饮交付、技能交付和真实问题节点全屏切入，原口播音频不中断。
+- 新增 `edit/visual-plan_OPC_20260711_talk01_v1.json`，共 13 个视觉图层，包含蓝白透视卡、三要素卡、全屏素材、工作台截图、CTA 脑图和数字运镜。
+- 新增 `tools/build-opc20260711-bilingual-pages.mjs`，生成 34 段中英同段字幕；首次校验发现部分压缩字幕低于生产基线，已按词级时间轴修正边界，最低同步分提升到 0.82。
+- 最终成片为 `outputs/西北年轻人用AI做OPC_16x9_双语动效_v3.mp4`，1920×1080、30fps、H.264/AAC、189.00 秒、约 202.7MB，完整解码无报错。
+- 音频质检：mean_volume 约 -24.8 dB，max_volume 约 -3.8 dB，未检出爆音。
+- 关键帧复查覆盖 3、14、24、42、56、72.5、88、106、120、132、141、152、168、179、185 秒；未发现黑屏、关键遮挡或标题冲突。
+- 发布记录为 `workflow/releases/20260711_opc-west-youth_v3.json`，校验通过，状态为 `ready-for-user-review`；仍待用户完整人工观看确认，不能标记为“成片通过验证”。

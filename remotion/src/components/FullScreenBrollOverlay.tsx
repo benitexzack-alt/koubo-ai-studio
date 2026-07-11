@@ -56,6 +56,7 @@ const BrollItem: React.FC<{item: FullScreenBroll}> = ({item}) => {
         <Video
           src={staticFile(item.src)}
           muted
+          loop
           volume={0}
           style={{
             width: '100%',
@@ -126,6 +127,7 @@ export const FullScreenBrollOverlay: React.FC<{brolls?: FullScreenBroll[]}> = ({
           key={`${item.src}-${item.start}`}
           from={Math.round(item.start * fps)}
           durationInFrames={Math.max(1, Math.round((item.end - item.start) * fps))}
+          premountFor={fps}
         >
           <BrollItem item={item} />
         </Sequence>
