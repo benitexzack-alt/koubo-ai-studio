@@ -57,6 +57,24 @@
       "baselineImpact": "experiment"
     },
     {
+      "id": "upgrade-20260711-remotion-layout-safety-gate",
+      "type": "fix",
+      "source": "2026-07-11 OPC v3 卡片裁切根因复查；knowledge/13-Codex加Remotion高级玩法拆解与升级建议.md。",
+      "goal": "建立文字测量、动态容器、极端文案测试和 reviewAt 风险帧渲染门禁，在全片渲染前拦截裁切、溢出和挡脸/挡字幕。",
+      "acceptance": "长标题、五个以上节点、双语字幕和最长单词测试全部通过；所有 reviewAt 节点生成实际验收帧；不再用 overflow:hidden 掩盖内容超限。",
+      "status": "planned",
+      "baselineImpact": "required"
+    },
+    {
+      "id": "upgrade-20260711-koubo-remotion-director",
+      "type": "experiment",
+      "source": "投哥不请自来《用 Codex+Remotion，生成百万博主同款动画》（抖音 7634920281269652745，同源完整版 BV1LSRhBQErk）；knowledge/13-Codex加Remotion高级玩法拆解与升级建议.md。",
+      "goal": "建立项目专用 koubo-remotion-director Skill，串联参考图合同、Zod 参数化、单帧自检迭代、透明 Overlay Composition、ProRes 4444 交付和节点素材清单。",
+      "acceptance": "使用一个真实 V4 卡片完成参考图输入、Studio 参数编辑、风险帧检查、主片直接合成和 ProRes 4444 透明素材双路导出；ffprobe 确认透明素材为 yuva444p10le；用户确认后才进入连续三条实验。",
+      "status": "planned",
+      "baselineImpact": "experiment"
+    },
+    {
       "id": "upgrade-20260711-serial-content-structure",
       "type": "experiment",
       "source": "knowledge/source-materials/口播方法参考/2026-07-11-连续剧式口播参考文案.txt（C 级创作者表达样本）及 knowledge/06-选题脚本与风格规范.md",

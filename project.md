@@ -192,3 +192,12 @@
 - 原始转写已作为 C 级创作者表达样本保存在本机 `knowledge/source-materials/口播方法参考/`；提炼规则已写入 `knowledge/06-选题脚本与风格规范.md`。
 - 选题库已升级为 1.1，新增系列定义、集数、前后集承接、本集兑现和验证证据字段；评分生成版已同步且字段保留校验通过。
 - `workflow/upgrade-backlog.json` 已新增三条系列化内容实验，状态为 `planned`；下一步是从真实可取得证据的业务场景中确认三集主题，发布并回填数据后再决定是否继续，当前不能称为已验证方法。
+
+## 2026-07-11 Codex + Remotion 高级玩法调研
+
+- 已核对用户提供的抖音作品 `7634920281269652745`，并用同作者、同标题的哔哩哔哩完整版 `BV1LSRhBQErk` 完成本地转写和抽帧对照。
+- 视频中真正值得吸收的能力是：参考图驱动、渲染帧自检迭代、参数化组件、透明通道导出、图像素材串联和精确区域反馈。
+- Remotion 官方资料已验证 ProRes Alpha 需要 PNG 帧、`yuva444p10le` 和 `4444/4444-xq`；参数化可通过 props、Schema 和 `calculateMetadata()` 实现。
+- 现有项目已有双语字幕、数字运镜、语义卡、OCR 标注、视觉方案和预览门禁；缺口是 Zod 参数面板、透明 Overlay Composition、文字溢出门禁和按 `reviewAt` 自动渲染风险帧。
+- 完整拆解和升级顺序已写入 `knowledge/13-Codex加Remotion高级玩法拆解与升级建议.md`。
+- 待办已登记为 `upgrade-20260711-remotion-layout-safety-gate` 和 `upgrade-20260711-koubo-remotion-director`，当前仅为 `planned`，未替换 V4 实验或生产基线。
