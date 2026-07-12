@@ -219,3 +219,11 @@
 - Skill 采用渐进式资料加载：`SKILL.md` 只保留执行主流程，详细合同拆到 `references/workflow-contract.md`、`references/v4-visual-pack.md`、`references/validation-gates.md`。
 - 已通过 `quick_validate.py` 结构校验；`workflow/upgrade-backlog.json` 中 `upgrade-20260711-koubo-remotion-director` 已从 `planned` 推进到 `in-progress`。
 - 当前只是流程能力落地，尚未完成该升级项的完整验收；完整验收仍需在真实 V4 卡片上跑通参考图输入、风险帧检查、主片合成和 ProRes 4444 透明素材双路导出。
+
+## 2026-07-13 AI 超市口播素材预制
+
+- 计划 2026-07-15 发布的“AI 超市”口播已完成文案、事实边界、官网证据和独立视觉素材预制；当前尚未录制口播原片，不进入正式成片状态。
+- 已建立 `assets/screenshots/20260713_ai_store_evidence_manifest.json`，收录博主观点来源、工信部“既懂行业又懂数字化 / 小快轻准”、上海 AI STORE 三层结构、甘肃“模型即服务 / 智能体即服务”和商务部特许经营边界，并记录来源、日期、SHA-256 与适用边界。
+- 已使用内置 imagegen 生成两张原创 B-roll：AI 能力货架和本地老板现场交付；文字与数据均由 Remotion 确定性排版，生成素材清单为 `assets/generated/ai-store-20260715/manifest.json`。
+- 新增 `AIStoreAssetPreview16x9`，生成 32 秒无配音视觉素材预览 `outputs/AI超市_视觉素材预览32秒_v1.mp4`，覆盖定义大字卡、三列价值卡、四层收益、官网证据、未来网络、连锁边界和行动输入。
+- 视觉方案 `edit/visual-plan_AI_STORE_20260715_talk01_v1.json` 校验通过；7 个风险帧已实际渲染并形成联系表。预览为 1920×1080、30fps、H.264/AAC、32.04 秒，完整解码通过，仍待用户完整观看确认。
