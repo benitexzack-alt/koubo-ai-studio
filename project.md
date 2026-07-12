@@ -212,3 +212,10 @@
 - 封面任务状态机为 `draft → grid-ready → selected → final-ready → approved`；当前样例停在 `grid-ready`，等待用户选择 `1、2、3、4`，尚未生成或确认最终封面。
 - `tools/validate-release.mjs` 已接入可选封面任务校验；三件小事发布记录与旧 OPC 发布记录均通过，证明旧发布记录可继续兼容。
 - 本次样例使用可复现的代码背景完成流程验证，没有调用 AI 生图背景；AI 背景分支和用户选中后的终稿精修仍待真实端到端验证。中文标题由 SVG 精确生成并经人工抽查可读，Tesseract 中文 OCR 仅部分识别，因此 OCR 只作为提醒，不作为唯一验收证据。
+
+## 2026-07-12 口播 Remotion 导演 Skill
+
+- 新增项目 Skill：`skills/koubo-remotion-director/`，并链接到 `~/.codex/skills/koubo-remotion-director`，用于把下一条口播的 `visual-plan.json`、V4 视觉实验、风险帧预览、Remotion 包装、字幕/遮挡质检和发布记录串成固定流程。
+- Skill 采用渐进式资料加载：`SKILL.md` 只保留执行主流程，详细合同拆到 `references/workflow-contract.md`、`references/v4-visual-pack.md`、`references/validation-gates.md`。
+- 已通过 `quick_validate.py` 结构校验；`workflow/upgrade-backlog.json` 中 `upgrade-20260711-koubo-remotion-director` 已从 `planned` 推进到 `in-progress`。
+- 当前只是流程能力落地，尚未完成该升级项的完整验收；完整验收仍需在真实 V4 卡片上跑通参考图输入、风险帧检查、主片合成和 ProRes 4444 透明素材双路导出。
