@@ -219,7 +219,110 @@ const panelFadeMask = (maskWidth, maskHeight) => Buffer.from(`
   </svg>
 `);
 
+const portraitBaseFadeMask = (maskWidth, maskHeight) => Buffer.from(`
+  <svg width="${maskWidth}" height="${maskHeight}" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="white" stop-opacity="1"/>
+        <stop offset="0.86" stop-color="white" stop-opacity="1"/>
+        <stop offset="1" stop-color="white" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect width="${maskWidth}" height="${maskHeight}" fill="url(#fade)"/>
+  </svg>
+`);
+
+const opacityMask = (maskWidth, maskHeight, opacity) => Buffer.from(`
+  <svg width="${maskWidth}" height="${maskHeight}" xmlns="http://www.w3.org/2000/svg">
+    <rect width="${maskWidth}" height="${maskHeight}" fill="white" fill-opacity="${opacity}"/>
+  </svg>
+`);
+
+const matteLayoutConfig = {
+  'workbench-right': {left: 170, top: 500, width: 600, height: 920},
+  'blueprint-right': {left: 170, top: 510, width: 595, height: 900},
+  'evidence-left': {left: -60, top: 555, width: 600, height: 860},
+  'local-left': {left: -40, top: 500, width: 650, height: 915},
+};
+
+const makeMattePortraitLayers = async (candidate) => {
+  const configured = candidate.portrait?.mattePath;
+  if (!configured) {
+    return null;
+  }
+
+  const mattePath = resolveProjectPath(configured);
+  if (!fs.existsSync(mattePath)) {
+    throw new Error(`候选 ${candidate.id} 的人物透明抠像不存在：${configured}`);
+  }
+
+  const fallback = matteLayoutConfig[candidate.layout];
+  if (!fallback) {
+    throw new Error(`候选 ${candidate.id} 的真实人物抠像使用未知布局：${candidate.layout}`);
+  }
+  const placement = {...fallback, ...(candidate.portrait?.placement ?? {})};
+  for (const key of ['left', 'top', 'width', 'height']) {
+    if (!Number.isFinite(Number(placement[key]))) {
+      throw new Error(`候选 ${candidate.id} 的 portrait.placement.${key} 必须是数字。`);
+    }
+    placement[key] = Math.round(Number(placement[key]));
+  }
+  if (placement.top < 0 || placement.width < 1 || placement.height < 1) {
+    throw new Error(`候选 ${candidate.id} 的人物抠像位置或尺寸无效。`);
+  }
+
+  const trimmed = await sharp(mattePath)
+    .ensureAlpha()
+    .trim({background: {r: 0, g: 0, b: 0, alpha: 0}, threshold: 8})
+    .png()
+    .toBuffer();
+  const scaled = await sharp(trimmed)
+    .resize({height: placement.height, withoutEnlargement: false})
+    .modulate({brightness: Number(candidate.portrait?.brightness ?? 1.03), saturation: Number(candidate.portrait?.saturation ?? 0.94)})
+    .png()
+    .toBuffer({resolveWithObject: true});
+
+  const cropLeft = Math.max(0, -placement.left);
+  const outputLeft = Math.max(0, placement.left);
+  const visibleWidth = Math.min(scaled.info.width - cropLeft, width - outputLeft);
+  const visibleHeight = Math.min(scaled.info.height, height - placement.top);
+  if (visibleWidth < 1 || visibleHeight < 1) {
+    throw new Error(`候选 ${candidate.id} 的人物抠像完全落在画布之外。`);
+  }
+  const portrait = await sharp(scaled.data)
+    .extract({left: cropLeft, top: 0, width: visibleWidth, height: visibleHeight})
+    .composite([{input: portraitBaseFadeMask(visibleWidth, visibleHeight), blend: 'dest-in'}])
+    .png()
+    .toBuffer();
+
+  const accent = candidate.palette?.accent ?? '#2FD4FF';
+  const shadow = await sharp(portrait)
+    .tint('#020711')
+    .blur(Number(candidate.portrait?.shadowBlur ?? 16))
+    .composite([{input: opacityMask(visibleWidth, visibleHeight, Number(candidate.portrait?.shadowOpacity ?? 0.38)), blend: 'dest-in'}])
+    .png()
+    .toBuffer();
+  const rim = await sharp(portrait)
+    .tint(accent)
+    .blur(Number(candidate.portrait?.rimBlur ?? 3.2))
+    .modulate({brightness: 1.18, saturation: 1.1})
+    .composite([{input: opacityMask(visibleWidth, visibleHeight, Number(candidate.portrait?.rimOpacity ?? 0.3)), blend: 'dest-in'}])
+    .png()
+    .toBuffer();
+
+  return [
+    {input: shadow, top: placement.top, left: outputLeft, blend: 'over'},
+    {input: rim, top: placement.top, left: outputLeft, blend: 'screen'},
+    {input: portrait, top: placement.top, left: outputLeft, blend: 'over'},
+  ];
+};
+
 const makePortraitLayers = async (candidate, framePath) => {
+  const matteLayers = await makeMattePortraitLayers(candidate);
+  if (matteLayers) {
+    return matteLayers;
+  }
+
   const layout = candidate.layout;
   const cropPosition = candidate.portrait?.cropPosition ?? 'attention';
   const layers = [];
@@ -269,11 +372,58 @@ const layoutConfig = {
   'clean-center': {x: 540, y: 300, anchor: 'middle', defaultSize: 142, maxWidth: 930, subtitleY: 565},
   'evidence-split': {x: 575, y: 170, anchor: 'start', defaultSize: 120, maxWidth: 445, subtitleY: 620},
   'local-story': {x: 78, y: 895, anchor: 'start', defaultSize: 146, maxWidth: 920, subtitleY: 1215},
+  'workbench-right': {x: 62, y: 258, anchor: 'start', defaultSize: 126, maxWidth: 660, subtitleY: 610},
+  'blueprint-right': {x: 62, y: 260, anchor: 'start', defaultSize: 122, maxWidth: 700, subtitleY: 590},
+  'evidence-left': {x: 62, y: 255, anchor: 'start', defaultSize: 126, maxWidth: 720, subtitleY: 600},
+  'local-left': {x: 1015, y: 255, anchor: 'end', defaultSize: 126, maxWidth: 680, subtitleY: 610},
+};
+
+const renderCompositionShadeSvg = (candidate) => {
+  const palette = candidate.palette ?? {};
+  const baseConfig = layoutConfig[candidate.layout];
+  if (!baseConfig) {
+    throw new Error(`候选 ${candidate.id} 使用未知排版布局：${candidate.layout}`);
+  }
+  const anchor = candidate.typography?.anchor ?? baseConfig.anchor;
+  const isLightSurface = candidate.typography?.surface === 'light' || candidate.layout === 'blueprint-right';
+  const shadeDirection = anchor === 'end' ? {x1: '1', x2: '0'} : {x1: '0', x2: '1'};
+  const shadeColor = isLightSurface ? '#F7FBFF' : '#020711';
+  const shadeOpacity = Number(candidate.typography?.shadeOpacity ?? (isLightSurface ? 0.76 : 0.72));
+
+  return Buffer.from(`
+    <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="headlineShade" x1="${shadeDirection.x1}" y1="0" x2="${shadeDirection.x2}" y2="0">
+          <stop offset="0" stop-color="${shadeColor}" stop-opacity="${shadeOpacity}"/>
+          <stop offset="0.55" stop-color="${shadeColor}" stop-opacity="${shadeOpacity * 0.52}"/>
+          <stop offset="1" stop-color="${shadeColor}" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="shadeFade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="white" stop-opacity="1"/>
+          <stop offset="0.7" stop-color="white" stop-opacity="1"/>
+          <stop offset="1" stop-color="white" stop-opacity="0"/>
+        </linearGradient>
+        <mask id="headlineShadeMask"><rect width="1080" height="800" fill="url(#shadeFade)"/></mask>
+      </defs>
+      <rect x="0" y="0" width="1080" height="800" fill="url(#headlineShade)" mask="url(#headlineShadeMask)"/>
+    </svg>
+  `);
 };
 
 const renderTextSvg = (candidate, {showNumber}) => {
   const palette = candidate.palette ?? {};
-  const config = layoutConfig[candidate.layout];
+  const baseConfig = layoutConfig[candidate.layout];
+  if (!baseConfig) {
+    throw new Error(`候选 ${candidate.id} 使用未知排版布局：${candidate.layout}`);
+  }
+  const config = {
+    ...baseConfig,
+    x: Number(candidate.typography?.x ?? baseConfig.x),
+    y: Number(candidate.typography?.y ?? baseConfig.y),
+    anchor: candidate.typography?.anchor ?? baseConfig.anchor,
+    maxWidth: Number(candidate.typography?.maxWidth ?? baseConfig.maxWidth),
+    subtitleY: Number(candidate.typography?.subtitleY ?? baseConfig.subtitleY),
+  };
   const lines = candidate.copy?.headlineLines ?? [];
   const requestedFontSize = Number(candidate.typography?.headlineSize ?? config.defaultSize);
   const measureUnits = (value) => Array.from(String(value ?? '')).reduce((total, character) => {
@@ -285,6 +435,7 @@ const renderTextSvg = (candidate, {showNumber}) => {
   const fontSize = Math.min(requestedFontSize, Math.floor(config.maxWidth / longestLineUnits));
   const requestedLineHeight = Number(candidate.typography?.lineHeight ?? Math.round(fontSize * 0.98));
   const lineHeight = Math.min(requestedLineHeight, Math.round(fontSize * 1.06));
+  const isLightSurface = candidate.typography?.surface === 'light' || candidate.layout === 'blueprint-right';
   const colors = {
     white: palette.text ?? '#F7FAFF',
     primary: palette.accent ?? '#42D8FF',
@@ -295,44 +446,55 @@ const renderTextSvg = (candidate, {showNumber}) => {
     const text = typeof line === 'string' ? line : line.text;
     const role = typeof line === 'string' ? 'white' : (line.role ?? 'white');
     const y = config.y + index * lineHeight;
-    return `<text x="${config.x}" y="${y}" text-anchor="${config.anchor}" font-family="STHeiti, PingFang SC, Arial, sans-serif" font-size="${fontSize}" font-weight="900" fill="${colors[role] ?? colors.white}" stroke="#02060D" stroke-width="${candidate.layout === 'clean-center' ? 2 : 6}" paint-order="stroke" letter-spacing="-5">${escapeXml(text)}</text>`;
+    const stroke = candidate.typography?.stroke ?? (isLightSurface ? '#F7FAFF' : '#02060D');
+    const strokeWidth = Number(candidate.typography?.strokeWidth ?? (isLightSurface ? 1.4 : 2.2));
+    return `<text x="${config.x}" y="${y}" text-anchor="${config.anchor}" font-family="Noto Sans CJK SC, Source Han Sans SC, PingFang SC, sans-serif" font-size="${fontSize}" font-weight="900" fill="${colors[role] ?? colors.white}" stroke="${stroke}" stroke-width="${strokeWidth}" paint-order="stroke" letter-spacing="-4" filter="url(#textShadow)">${escapeXml(text)}</text>`;
   }).join('\n');
   const lastHeadlineY = config.y + Math.max(0, lines.length - 1) * lineHeight;
-  const subtitleY = Math.max(config.subtitleY, lastHeadlineY + 92);
+  const subtitleY = Math.max(config.subtitleY, lastHeadlineY + 82);
   const subtitle = candidate.copy?.subtitle
-    ? `<text x="${config.x}" y="${subtitleY}" text-anchor="${config.anchor}" font-family="STHeiti, PingFang SC, Arial, sans-serif" font-size="40" font-weight="800" fill="${palette.muted ?? '#C4CFDD'}" stroke="#02060D" stroke-width="2" paint-order="stroke">${escapeXml(candidate.copy.subtitle)}</text>`
+    ? `<text x="${config.x}" y="${subtitleY}" text-anchor="${config.anchor}" font-family="Noto Sans CJK SC, Source Han Sans SC, PingFang SC, sans-serif" font-size="${Number(candidate.typography?.subtitleSize ?? 39)}" font-weight="800" fill="${palette.muted ?? '#C4CFDD'}" stroke="${isLightSurface ? '#F7FAFF' : '#02060D'}" stroke-width="1.2" paint-order="stroke" letter-spacing="0">${escapeXml(candidate.copy.subtitle)}</text>`
     : '';
-  const kickerX = candidate.layout === 'clean-center' ? 540 : 180;
-  const kickerAnchor = candidate.layout === 'clean-center' ? 'middle' : 'start';
+  const kickerX = showNumber ? 153 : 62;
   const kicker = task.brand?.kicker
-    ? `<rect x="${candidate.layout === 'clean-center' ? 350 : 180}" y="72" width="${candidate.layout === 'clean-center' ? 380 : 330}" height="64" rx="20" fill="${palette.accent ?? '#42D8FF'}" opacity="0.96"/><text x="${kickerX}" y="116" text-anchor="${kickerAnchor}" font-family="STHeiti, PingFang SC, Arial, sans-serif" font-size="30" font-weight="900" fill="${palette.base ?? '#06101F'}">${escapeXml(task.brand.kicker)}</text>`
+    ? `<circle cx="${kickerX}" cy="82" r="5" fill="${palette.warm ?? '#F5BE45'}"/><text x="${kickerX + 16}" y="91" text-anchor="start" font-family="Noto Sans CJK SC, Source Han Sans SC, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="${isLightSurface ? (palette.base ?? '#07111F') : (palette.text ?? '#F7FAFF')}" letter-spacing="1">${escapeXml(task.brand.kicker)}</text>`
     : '';
   const numberBadge = showNumber
-    ? `<rect x="64" y="62" width="92" height="92" rx="26" fill="#FFD23F"/><text x="110" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="64" font-weight="900" fill="#07101D">${escapeXml(candidate.id)}</text>`
+    ? `<rect x="48" y="46" width="72" height="72" rx="19" fill="${palette.warm ?? '#F5BE45'}"/><text x="84" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#07111F">${escapeXml(candidate.id)}</text>`
     : '';
-  const tagY = candidate.layout === 'local-story' ? 760 : 1120;
+  const defaultTagX = candidate.layout === 'evidence-left' ? 624 : 62;
+  const defaultTagY = candidate.layout === 'evidence-left' ? 800 : 1110;
+  const tagStartX = Number(candidate.typography?.tagStartX ?? defaultTagX);
+  const tagStartY = Number(candidate.typography?.tagStartY ?? defaultTagY);
+  const tagDirection = candidate.typography?.tagDirection ?? (candidate.layout === 'evidence-left' ? 'vertical' : 'horizontal');
   const tags = (candidate.copy?.tags ?? []).slice(0, 3).map((tag, index) => {
-    const x = candidate.layout === 'evidence-split' ? 590 : 80 + index * 230;
-    const y = candidate.layout === 'evidence-split' ? 760 + index * 118 : tagY;
-    return `<rect x="${x}" y="${y}" width="205" height="74" rx="22" fill="${palette.base ?? '#06101F'}" fill-opacity="0.84" stroke="${palette.accent ?? '#42D8FF'}" stroke-width="2"/><text x="${x + 102}" y="${y + 49}" text-anchor="middle" font-family="STHeiti, PingFang SC, Arial, sans-serif" font-size="30" font-weight="800" fill="${palette.text ?? '#F7FAFF'}">${escapeXml(tag)}</text>`;
+    const tagWidth = Math.max(174, Math.min(238, 78 + Array.from(String(tag)).length * 28));
+    const x = tagDirection === 'vertical' ? tagStartX : tagStartX + index * (tagWidth + 18);
+    const y = tagDirection === 'vertical' ? tagStartY + index * 82 : tagStartY;
+    return `<rect x="${x}" y="${y}" width="${tagWidth}" height="62" rx="18" fill="${palette.base ?? '#07111F'}" fill-opacity="0.88" stroke="${palette.accent ?? '#2FD4FF'}" stroke-width="1.6"/><text x="${x + tagWidth / 2}" y="${y + 42}" text-anchor="middle" font-family="Noto Sans CJK SC, Source Han Sans SC, PingFang SC, sans-serif" font-size="27" font-weight="800" fill="${palette.text ?? '#F7FAFF'}">${escapeXml(tag)}</text>`;
   }).join('\n');
-  const disclosure = task.aiDisclosure?.required
-    ? `<text x="1004" y="1250" text-anchor="end" font-family="STHeiti, PingFang SC, Arial, sans-serif" font-size="25" font-weight="700" fill="${palette.muted ?? '#C4CFDD'}" opacity="0.9">${escapeXml(task.aiDisclosure.label ?? '本封面含AI生成内容')}</text>`
+  const disclosure = task.aiDisclosure?.required && task.aiDisclosure?.renderLabel === true
+    ? `<text x="1018" y="1270" text-anchor="end" font-family="Noto Sans CJK SC, Source Han Sans SC, PingFang SC, sans-serif" font-size="22" font-weight="700" fill="${palette.muted ?? '#C4CFDD'}" opacity="0.82">${escapeXml(task.aiDisclosure.label ?? '部分画面由 AI 生成')}</text>`
     : '';
-  const localStoryShade = candidate.layout === 'local-story'
-    ? `<defs><linearGradient id="storyShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030711" stop-opacity="0"/><stop offset="0.58" stop-color="#030711" stop-opacity="0.32"/><stop offset="1" stop-color="#030711" stop-opacity="0.96"/></linearGradient></defs><rect width="1080" height="1440" fill="url(#storyShade)"/>`
+  const bigNumber = candidate.visualAccent?.bigNumber
+    ? `<text x="${Number(candidate.visualAccent?.x ?? 790)}" y="${Number(candidate.visualAccent?.y ?? 1010)}" text-anchor="middle" font-family="Arial, sans-serif" font-size="${Number(candidate.visualAccent?.size ?? 520)}" font-weight="900" fill="${candidate.visualAccent?.color ?? palette.warm ?? '#F5BE45'}" opacity="${Number(candidate.visualAccent?.opacity ?? 0.13)}">${escapeXml(candidate.visualAccent.bigNumber)}</text>`
     : '';
 
   return Buffer.from(`
     <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-      ${localStoryShade}
+      <defs>
+        <filter id="textShadow" x="-20%" y="-20%" width="140%" height="150%">
+          <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#020711" flood-opacity="0.45"/>
+        </filter>
+      </defs>
+      ${bigNumber}
       ${kicker}
       ${numberBadge}
       ${headline}
       ${subtitle}
       ${tags}
       ${disclosure}
-      <text x="78" y="1335" font-family="STHeiti, PingFang SC, Arial, sans-serif" font-size="29" font-weight="800" fill="${palette.muted ?? '#C4CFDD'}" opacity="0.82">${escapeXml(task.brand?.signature ?? '超哥 AI 创业记')}</text>
+      <text x="62" y="1344" font-family="Noto Sans CJK SC, Source Han Sans SC, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="${palette.muted ?? '#C4CFDD'}" opacity="0.78">${escapeXml(task.brand?.signature ?? '超哥 AI 创业记')}</text>
     </svg>
   `);
 };
@@ -340,11 +502,12 @@ const renderTextSvg = (candidate, {showNumber}) => {
 const renderCandidate = async (candidate, outputPath, {showNumber}) => {
   const framePath = extractFrame(candidate);
   const background = await loadBackground(candidate);
+  const shadeLayer = renderCompositionShadeSvg(candidate);
   const portraitLayers = await makePortraitLayers(candidate, framePath);
   const textLayer = renderTextSvg(candidate, {showNumber});
   ensureParent(outputPath);
   await sharp(background)
-    .composite([...portraitLayers, {input: textLayer, top: 0, left: 0}])
+    .composite([{input: shadeLayer, top: 0, left: 0}, ...portraitLayers, {input: textLayer, top: 0, left: 0}])
     .png({compressionLevel: 9})
     .toFile(outputPath);
 
@@ -355,7 +518,20 @@ const renderCandidate = async (candidate, outputPath, {showNumber}) => {
   ));
   ensureParent(thumbnailPath);
   await sharp(outputPath).resize(270, 360, {fit: 'fill'}).png().toFile(thumbnailPath);
-  return {outputPath, framePath, thumbnailPath};
+  const grayscalePath = resolveProjectPath(path.join(
+    task.evidenceDir ?? `edit/verify/covers/${task.coverId}`,
+    'grayscale',
+    `${showNumber ? `candidate-${candidate.id}` : 'final'}-270x360-gray.png`,
+  ));
+  ensureParent(grayscalePath);
+  await sharp(outputPath).resize(270, 360, {fit: 'fill'}).grayscale().png().toFile(grayscalePath);
+  return {
+    outputPath,
+    framePath,
+    mattePath: candidate.portrait?.mattePath ? resolveProjectPath(candidate.portrait.mattePath) : null,
+    thumbnailPath,
+    grayscalePath,
+  };
 };
 
 const deepMergeCandidate = (candidate, overrides = {}) => ({
