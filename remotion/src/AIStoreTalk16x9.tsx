@@ -139,12 +139,29 @@ const CardShell: React.FC<{
 
 const HookCard: React.FC = () => {
   const frame = useCurrentFrame();
-  const questions = ['到底是什么', '凭什么赚钱', '普通人怎么参与'];
+  const questions = ['到底是什么', '凭什么赚钱', '普通人参与'];
 
   return (
-    <CardShell eyebrow="一个概念 · 三个问题" accent={palette.yellow}>
-      <div style={{...enter(frame, 4), marginTop: 22, fontSize: 76, lineHeight: 1, fontWeight: 950}}>AI 超市</div>
-      <div style={{marginTop: 30, display: 'grid', gap: 12}}>
+    <div
+      style={{
+        ...enter(frame, 0, 26),
+        position: 'absolute',
+        left: 70,
+        top: 112,
+        width: 610,
+        padding: '22px 26px 25px',
+        background: 'rgba(248,251,255,0.95)',
+        borderTop: `8px solid ${palette.yellow}`,
+        boxShadow: '0 20px 58px rgba(12,28,44,0.22)',
+        color: palette.ink,
+        fontFamily,
+      }}
+    >
+      <div style={{display: 'flex', alignItems: 'baseline', gap: 18}}>
+        <div style={{...enter(frame, 4), fontSize: 61, lineHeight: 1, fontWeight: 950}}>AI 超市</div>
+        <div style={{...enter(frame, 8), color: palette.muted, fontSize: 19, fontWeight: 800}}>一个概念 · 三个问题</div>
+      </div>
+      <div style={{marginTop: 22, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 9}}>
         {questions.map((question, index) => (
           <div
             key={question}
@@ -152,19 +169,19 @@ const HookCard: React.FC = () => {
               ...enter(frame, 11 + index * 9, 18),
               display: 'flex',
               alignItems: 'center',
-              gap: 14,
-              padding: '13px 16px',
+              gap: 8,
+              padding: '12px 10px',
               background: index === 1 ? '#FFF4CF' : palette.white,
-              fontSize: 28,
+              fontSize: 19,
               fontWeight: 850,
             }}
           >
-            <span style={{color: index === 1 ? '#A86400' : palette.cyan, fontSize: 21, fontWeight: 950}}>0{index + 1}</span>
+            <span style={{color: index === 1 ? '#A86400' : palette.cyan, fontSize: 16, fontWeight: 950}}>0{index + 1}</span>
             {question}
           </div>
         ))}
       </div>
-    </CardShell>
+    </div>
   );
 };
 
@@ -288,8 +305,7 @@ const RevenueCard: React.FC<{step: 1 | 2 | 3 | 4}> = ({step}) => {
 
 const FullScreenConcept: React.FC = () => {
   const frame = useCurrentFrame();
-  const {durationInFrames} = useVideoConfig();
-  const scale = interpolate(frame, [0, durationInFrames], [1.02, 1.075], {...clamp, easing: Easing.inOut(Easing.quad)});
+  const scale = interpolate(frame, [0, secondsToFrames(7.2)], [1.02, 1.075], {...clamp, easing: Easing.inOut(Easing.quad)});
 
   return (
     <AbsoluteFill style={{background: palette.ink, fontFamily, overflow: 'hidden'}}>
