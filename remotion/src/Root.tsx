@@ -2,6 +2,7 @@ import React from 'react';
 import {Composition, Folder, Still} from 'remotion';
 import {AIBizTalk16x9} from './AIBizTalk16x9';
 import {AIStoreAssetPreview16x9} from './AIStoreAssetPreview16x9';
+import {AIStoreTalk16x9} from './AIStoreTalk16x9';
 import {CoverStill} from './CoverStill';
 import {CoverStill3x4} from './CoverStill3x4';
 import {CoverStill9x16} from './CoverStill9x16';
@@ -21,6 +22,14 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="AIStoreTalk16x9-Final"
+          component={AIStoreTalk16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={7462}
+        />
         <Composition
           id="AIStoreAssetPreview16x9"
           component={AIStoreAssetPreview16x9}
