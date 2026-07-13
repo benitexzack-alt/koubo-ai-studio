@@ -52,8 +52,9 @@ node tools/validate-visual-plan.mjs <visual-plan.json>
 - 完整解码；
 - 字幕同步分；
 - 关键帧视觉；
-- release 记录；
-- 可选封面任务。
+- release 记录。
+
+封面不属于本 Skill 的自动化门禁；成片完成后只向用户提供外部生图提示词。
 
 运行：
 
