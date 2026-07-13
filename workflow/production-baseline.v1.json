@@ -37,7 +37,8 @@
   "previewGate": {
     "required": true,
     "minimumCoverage": ["hook", "complex-overlay", "full-screen-asset", "cta"],
-    "userApprovalRequiredBeforeFormalRender": true
+    "userApprovalRequiredBeforeFormalRender": true,
+    "skipCondition": "完整单条口播且用户已明确授权直接成片时，可跳过中间预览确认；仍必须内部完成风险帧和机器质检。"
   },
   "formalQa": {
     "required": [
