@@ -183,8 +183,11 @@ if (release.cover !== undefined && release.cover !== null) {
   }
 }
 
-if (!release.userReview?.previewApproved) {
-  errors.push('用户尚未确认预览，不能进入正式状态。');
+const directFinalAuthorized = release.userReview?.directFinalAuthorized === true;
+if (!release.userReview?.previewApproved && !directFinalAuthorized) {
+  errors.push('用户尚未确认预览，也未授权完整口播直接成片，不能进入正式状态。');
+} else if (directFinalAuthorized && !release.userReview?.previewApproved) {
+  warnings.push('用户已授权完整口播直接成片；未单独执行中间预览确认。');
 }
 
 if (release.status === 'verified' && !release.userReview?.fullWatchConfirmed) {
