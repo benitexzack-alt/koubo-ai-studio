@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 2,
+  "status": "actual-word-timeline-ready-for-render",
+  "videoId": "DIGITAL1_20260714_talk01_16x9",
+  "videoTitle": "AI接不进企业，问题可能不在AI",
+  "sourceVideo": "source/DIGITAL1_20260714_talk01_16x9.MOV",
+  "baselineId": "koubo-formal-16x9-v1",
+  "styleReferenceIds": [
+    "refs/20260711_OPC对标_定义与角色卡.png",
+    "refs/20260711_OPC对标_三层能力卡.png"
+  ],
+  "strategy": "用户明确要求全量保留并直接按已确认V4方案出片；时间已按最新原片Scribe v2词级转写重映射。16:9不变，真人为主，官方截图承担事实证据，确定性V4组件承担解释；不使用GPT生图、AI视频或AI配音。跳过单独粗剪确认，但仍执行内部预览、风险帧和机器质检。",
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "previewCoverage": [
+    "hook",
+    "complex-overlay",
+    "full-screen-asset",
+    "cta"
+  ],
+  "layers": [
+    {
+      "id": "hook-ai-cannot-see",
+      "start": 0.44,
+      "end": 13.94,
+      "spokenLine": "不少老板用了AI还是没提效，可能不是AI不够强，而是自己的生意，AI根本看不见。",
+      "purpose": "hook",
+      "kind": "semantic-card",
+      "variant": "v4-definition",
+      "titleOwner": true,
+      "overlapGroup": "hook",
+      "zone": "left",
+      "title": "AI 根本看不见",
+      "detail": "不是模型不够强，是生意没有留下记录。",
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "v4-definition-card"
+      },
+      "params": {
+        "accent": "#FFD23F",
+        "motion": "frame-driven-reveal",
+        "keepSpeakerVisible": true
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 7.2
+      }
+    },
+    {
+      "id": "fragmented-business-records",
+      "start": 13.94,
+      "end": 24.76,
+      "spokenLine": "客户在微信里，报价在老板脑子里，库存记在本子上，售后靠员工记性。",
+      "purpose": "complex-overlay",
+      "kind": "semantic-card",
+      "variant": "v4-resource-map",
+      "titleOwner": true,
+      "overlapGroup": "fragmented-inputs",
+      "zone": "left",
+      "title": "信息散在四个地方",
+      "items": [
+        "个人聊天",
+        "老板经验",
+        "纸质记录",
+        "员工记忆"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "v4-resource-map"
+      },
+      "params": {
+        "nodeMode": "scatter",
+        "maxNodes": 4,
+        "brandLogos": false
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 19
+      }
+    },
+    {
+      "id": "digital-one-definition",
+      "start": 34.72,
+      "end": 49.98,
+      "spokenLine": "我把这一步叫数字化1.0。它不是官方术语，也不是花几十万上系统。",
+      "purpose": "definition",
+      "kind": "semantic-card",
+      "variant": "v4-definition",
+      "titleOwner": true,
+      "overlapGroup": "definition",
+      "zone": "left",
+      "title": "数字化 1.0",
+      "detail": "找得到 / 能更新 / 可追溯",
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "v4-definition-card"
+      },
+      "params": {
+        "disclaimer": "本视频工作定义，非官方术语",
+        "motion": "three-step-build"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 42.3
+      }
+    },
+    {
+      "id": "miit-notice-identity",
+      "start": 50.88,
+      "end": 56.16,
+      "spokenLine": "工信部2024年的中小企业数字化评测也体现了这个顺序。",
+      "purpose": "full-screen-asset",
+      "kind": "full-screen-asset",
+      "variant": "evidence-document",
+      "titleOwner": true,
+      "overlapGroup": "miit-evidence-intro",
+      "zone": "background",
+      "title": "工信部 2024 年评测指标",
+      "detail": "工信厅企业〔2024〕56号",
+      "asset": {
+        "sourceType": "real-screenshot",
+        "source": "screenshots/20260713_digital1_miit_notice_title.png"
+      },
+      "params": {
+        "sourceLabel": "来源：工业和信息化部｜2024-09-09",
+        "cropMode": "contain"
+      },
+      "checks": {
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 53.5
+      }
+    },
+    {
+      "id": "miit-four-levels",
+      "start": 56.88,
+      "end": 72.24,
+      "spokenLine": "先是工具辅助和关键环节在线采集，更高阶段才是人工智能驱动。",
+      "purpose": "full-screen-asset",
+      "kind": "full-screen-asset",
+      "variant": "evidence-ocr-callout",
+      "titleOwner": true,
+      "overlapGroup": "miit-four-levels",
+      "zone": "background",
+      "title": "工具辅助 → 在线采集 → AI 驱动",
+      "detail": "分级路径，不代表低级别禁止使用 AI",
+      "asset": {
+        "sourceType": "official-pdf-screenshot",
+        "source": "screenshots/20260713_digital1_miit_assessment_p07_levels_crop.png"
+      },
+      "params": {
+        "sourceLabel": "来源：工信部《中小企业数字化水平评测指标（2024年版）》第7页",
+        "highlightSequence": [
+          "一级：信息技术工具辅助",
+          "二级：在线数据采集与规范管理",
+          "四级：人工智能与模型驱动"
+        ],
+        "ocrCallout": true,
+        "ocrSource": "edit/verify/20260713_digital1_miit_p07_ocr.json"
+      },
+      "checks": {
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 64
+      }
+    },
+    {
+      "id": "gansu-industrial-evidence",
+      "start": 73,
+      "end": 81.74,
+      "spokenLine": "截至十四五末，甘肃公开口径是超2000家规上工业企业完成数字化改造，覆盖率约七成。",
+      "purpose": "full-screen-asset",
+      "kind": "full-screen-asset",
+      "variant": "evidence-document",
+      "titleOwner": true,
+      "overlapGroup": "gansu-evidence",
+      "zone": "background",
+      "title": "超 2000 家 / 68.2%",
+      "detail": "规上工业企业数字化改造口径",
+      "asset": {
+        "sourceType": "real-screenshot",
+        "source": "screenshots/20260713_digital1_gansu_press_evidence_composite.png"
+      },
+      "params": {
+        "compositeParts": [
+          "screenshots/20260713_digital1_gansu_press_title_element.png",
+          "screenshots/20260713_digital1_gansu_press_date_element.png",
+          "screenshots/20260713_digital1_gansu_press_68_2_quote_crop.png"
+        ],
+        "compositeLabel": "同一官方页面的标题、日期与原句拼接",
+        "sourceLabel": "来源：甘肃省政府新闻办省工信厅专场｜2025-11-26",
+        "highlightSequence": [
+          "超2000家规上工业企业",
+          "覆盖率达68.2%"
+        ],
+        "ocrSource": "edit/verify/20260713_digital1_gansu_press_ocr.json"
+      },
+      "checks": {
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 77.2
+      }
+    },
+    {
+      "id": "gansu-scope-boundary",
+      "start": 82.56,
+      "end": 96.46,
+      "spokenLine": "但这是规上工业口径，不能代表餐饮、装修、民宿、美业这些小微企业。",
+      "purpose": "evidence-boundary",
+      "kind": "semantic-card",
+      "variant": "v4-boundary",
+      "titleOwner": true,
+      "overlapGroup": "gansu-boundary",
+      "zone": "left",
+      "title": "规上工业 ≠ 全省小微企业",
+      "detail": "餐饮 / 装修 / 民宿 / 美业仍需真实调查",
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "v4-boundary-card"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 89.5
+      }
+    },
+    {
+      "id": "three-business-checks",
+      "start": 97.6,
+      "end": 112.62,
+      "spokenLine": "老板先问自己三个问题。",
+      "purpose": "complex-overlay",
+      "kind": "semantic-card",
+      "variant": "v4-three-column",
+      "titleOwner": true,
+      "overlapGroup": "three-checks",
+      "zone": "left",
+      "title": "先查三件事",
+      "items": [
+        "客户与订单",
+        "产品价格库存",
+        "更新与确认"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "v4-three-column-card"
+      },
+      "params": {
+        "enter": "staggered-columns",
+        "fixedHeightClipping": false
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 105
+      }
+    },
+    {
+      "id": "chaos-faster",
+      "start": 112.62,
+      "end": 119.42,
+      "spokenLine": "AI上得越快，可能只是让混乱跑得更快。",
+      "purpose": "core-judgment",
+      "kind": "semantic-card",
+      "variant": "keyword-pop",
+      "titleOwner": true,
+      "overlapGroup": "chaos",
+      "zone": "left",
+      "title": "让混乱跑得更快",
+      "detail": "",
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "keyword-pop"
+      },
+      "params": {
+        "accent": "#FF7A45",
+        "punchIn": true
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 116
+      }
+    },
+    {
+      "id": "seven-five-three-method",
+      "start": 120.18,
+      "end": 145.32,
+      "spokenLine": "连续七天记下五项，最后只看省没省时间、少没少漏单、结果准不准。",
+      "purpose": "action-method",
+      "kind": "semantic-card",
+      "variant": "v4-action-input",
+      "titleOwner": true,
+      "overlapGroup": "action-method",
+      "zone": "left",
+      "title": "7 天 / 5 项 / 3 个验证",
+      "items": [
+        "客户从哪来",
+        "问了什么",
+        "谁跟进",
+        "给了什么方案",
+        "结果怎样"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "v4-action-input-card"
+      },
+      "params": {
+        "metrics": [
+          "省没省时间",
+          "少没少漏单",
+          "结果准不准"
+        ],
+        "enter": "7-5-3-sequence"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 134
+      }
+    },
+    {
+      "id": "minimum-digital-flow",
+      "start": 145.92,
+      "end": 152.21,
+      "spokenLine": "先让一条真实流程留下来，再看AI能不能接进去。",
+      "purpose": "process",
+      "kind": "semantic-card",
+      "variant": "v4-resource-map",
+      "titleOwner": true,
+      "overlapGroup": "minimum-flow",
+      "zone": "left",
+      "title": "先留下流程，再接 AI",
+      "items": [
+        "纸张 / 个人聊天 / 经验",
+        "数字记录与流程",
+        "AI 进入经营"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "v4-resource-map"
+      },
+      "params": {
+        "layout": "left-to-right",
+        "arrowPasses": 1,
+        "maxNodes": 3
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 149
+      }
+    },
+    {
+      "id": "local-survey-cta",
+      "start": 152.94,
+      "end": 163.06,
+      "spokenLine": "如果你是本地老板，评论区留下行业，再说一个最乱、最靠人记的环节。",
+      "purpose": "cta",
+      "kind": "semantic-card",
+      "variant": "v4-action-input",
+      "titleOwner": true,
+      "overlapGroup": "cta",
+      "zone": "left",
+      "title": "行业 + 最乱的一个环节",
+      "detail": "不要留公司名和客户数据",
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "v4-action-input-card"
+      },
+      "params": {
+        "inputCount": 2,
+        "privacyReminder": true
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 158
+      }
+    },
+    {
+      "id": "sample-boundary",
+      "start": 163.06,
+      "end": 171.24,
+      "spokenLine": "我会公开样本量和行业分布，不拿小样本冒充全省结论。",
+      "purpose": "methodology-boundary",
+      "kind": "semantic-card",
+      "variant": "v4-boundary",
+      "titleOwner": true,
+      "overlapGroup": "sample-boundary",
+      "zone": "left",
+      "title": "不拿小样本冒充全省",
+      "items": [
+        "样本量",
+        "行业分布",
+        "采集渠道"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "v4-boundary-card"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 167.5
+      }
+    }
+  ],
+  "deferred": [
+    {
+      "type": "v4-comment-case-overlay",
+      "reason": "本条是发起调查，不是展示既有评论或案例；没有真实、脱敏且获授权的材料，不为凑组件伪造评论。"
+    },
+    {
+      "type": "gpt-generated-image",
+      "reason": "证据型口播以真人、官方截图和确定性V4组件为主；生成图会削弱可信度并增加泛AI味。"
+    },
+    {
+      "type": "ai-generated-video",
+      "reason": "不虚构甘肃企业、老板或工厂场景；本片不需要生成视频。"
+    }
+  ],
+  "compatibleVideo": "remotion/public/media/DIGITAL1_20260714_talk01_16x9_input.mp4",
+  "transcript": "edit/transcripts/DIGITAL1_20260714_talk01_16x9.json",
+  "bilingualCaptions": "remotion/public/data/DIGITAL1_20260714_talk01.bilingual.v1.json",
+  "digitalCamera": {
+    "enabled": true,
+    "appliesTo": "background-video-only",
+    "transformOrigin": "67% 38%",
+    "scaleRange": [
+      1.012,
+      1.043
+    ],
+    "translateXRangePx": [
+      -4,
+      12
+    ],
+    "cues": [
+      {
+        "at": 0,
+        "scale": 1.012,
+        "x": 0,
+        "reason": "开场稳定"
+      },
+      {
+        "at": 6.4,
+        "scale": 1.034,
+        "x": 6,
+        "reason": "没有提效"
+      },
+      {
+        "at": 13.94,
+        "scale": 1.022,
+        "x": 4,
+        "reason": "进入问题拆解"
+      },
+      {
+        "at": 24.76,
+        "scale": 1.018,
+        "x": 8,
+        "reason": "资料不能散"
+      },
+      {
+        "at": 34.72,
+        "scale": 1.038,
+        "x": 8,
+        "reason": "定义数字化1.0"
+      },
+      {
+        "at": 50.88,
+        "scale": 1.018,
+        "x": 0,
+        "reason": "证据全屏不作用于截图"
+      },
+      {
+        "at": 82.56,
+        "scale": 1.026,
+        "x": 6,
+        "reason": "回到真人解释口径"
+      },
+      {
+        "at": 97.6,
+        "scale": 1.018,
+        "x": 5,
+        "reason": "三个问题"
+      },
+      {
+        "at": 112.62,
+        "scale": 1.043,
+        "x": 10,
+        "reason": "混乱跑得更快"
+      },
+      {
+        "at": 120.18,
+        "scale": 1.02,
+        "x": 6,
+        "reason": "七天行动"
+      },
+      {
+        "at": 145.92,
+        "scale": 1.036,
+        "x": 9,
+        "reason": "流程留下来"
+      },
+      {
+        "at": 152.94,
+        "scale": 1.022,
+        "x": 6,
+        "reason": "调查CTA"
+      },
+      {
+        "at": 171.62,
+        "scale": 1.034,
+        "x": 8,
+        "reason": "品牌收尾"
+      },
+      {
+        "at": 174.85,
+        "scale": 1.034,
+        "x": 8,
+        "reason": "保持末帧"
+      }
+    ]
+  }
+}
