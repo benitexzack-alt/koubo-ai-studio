@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260715_ai-store_16x9_v3",
+  "status": "ready-for-user-review",
+  "videoId": "AI_STORE_20260715_talk01",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "serviceAudience": "甘肃兰州想了解 AI 行业、为本地企业做 AI 交付的普通人、小微企业主和创业者。",
+    "oneConclusion": "AI 超市不是工具链接仓库，而是把分散的 AI 能力组合成可交付、可运维、可验收的本地业务结果。",
+    "cta": "关注超哥，在兰州记录 AI 创业。",
+    "factBoundary": "本条区分官方规划、商务部公开边界和创作者商业模式判断；不承诺收入、获客、加盟回报、项目获批或创业成功。"
+  },
+  "inputs": {
+    "sourceVideo": "source/AI_STORE_20260715_talk01_16x9.MOV",
+    "transcript": "edit/transcripts/AI_STORE_20260715_talk01_16x9_final_audio_v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_STORE_20260715_talk01.bilingual.v1.json",
+    "visualPlan": "edit/visual-plan_AI_STORE_20260715_talk01_v2.json",
+    "assets": [
+      "remotion/public/generated/ai-store-20260715/ai-store-capability-showroom-v1.png",
+      "remotion/public/screenshots/20260713_ai_store_mofcom_franchise_requirement.png",
+      "remotion/public/screenshots/20260713_ai_store_gansu_model_agent_service.png"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/AI超市到底靠什么赚钱_16x9_V4数字运镜_final_v3.mp4",
+    "previewOutput": "edit/verify/AI_STORE_20260715_talk01/final-v3-contact-sheet.png",
+    "modules": [
+      "digital-camera",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "semantic-motion-card",
+      "bilingual-caption"
+    ],
+    "styleReferenceIds": [
+      "v4-definition-card",
+      "v4-three-column-capability",
+      "v4-resource-network",
+      "v4-evidence-overlay",
+      "v4-action-input"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "1920×1080、30fps、H.264/AAC、248.733 秒、425.4MB；完整解码无报错，无持续黑帧；音轨 -16.3 LUFS，真峰值 -1.2 dBFS。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "minimumScore": 0.75,
+      "evidence": "40 段中英双语字幕按最终成片音轨词级转写校验，最低同步分 0.75，高于正式基线 0.74。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "视觉方案 15 个图层、15 个风险抽帧；V4 定义卡、三列能力卡、资源导向图、官网证据页和行动输入卡均已落地。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [6.8, 23.5, 34.4, 69.5, 88, 109, 135, 156, 168, 187.4, 205.5, 213.8, 223, 238.2, 247.2],
+      "evidence": "从 final_v3 实际成片抽取 15 个关键帧，覆盖钩子、复杂叠层、每段全屏素材、四层盈利、本地机会和 CTA；未见卡片裁切、关键挡脸、字幕溢出或标题冲突。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260715-v4-visual-system",
+      "decision": "applied",
+      "evidence": "正式片使用蓝白 V4 定义卡、能力卡、资源图、四层收益卡、证据页和行动卡，未回退旧卡包。"
+    },
+    {
+      "id": "upgrade-20260715-semantic-digital-camera",
+      "decision": "applied-as-experiment",
+      "evidence": "使用 44 个语义时间节点驱动真人底层镜头，最大缩放 1.045、最大水平位移 14px；字幕和信息层保持稳定。"
+    },
+    {
+      "id": "upgrade-20260715-direct-final-complete-talk",
+      "decision": "applied",
+      "evidence": "用户明确要求完整口播不再做粗剪，本条仅移除开头 0.42 秒，主体全量保留后直接字幕、包装、质检和成片。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户明确授权完整口播直接成片，不单独等待粗剪或中间预览确认；正式 v3 仍待用户完整人工观看确认。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "用户完整观看确认后再进入发布；发布 24 小时后回填完播、留存、互动、评论质量和有效咨询，判断 V4 卡片密度和数字运镜是否值得进入基线。"
+  }
+}
