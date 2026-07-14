@@ -255,7 +255,20 @@ const MacroChainScene: React.FC = () => {
   return (
     <AbsoluteFill style={{opacity: sceneOpacity(frame, duration)}}>
       <GridBackground />
-      <TitleBlock eyebrow="开场转场 · 本地可生成的抽象版" title="一句提问，整条产业链开始运转" detail="芯片 → 服务器 → 数据中心 → 能源系统" />
+      <Img
+        src={staticFile('generated/token-v5-20260715/chip-server-datacenter-cinematic-v1.png')}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: 0.34,
+          transform: `scale(${interpolate(frame, [0, duration], [1.02, 1.09], clamp)})`,
+        }}
+      />
+      <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(5,11,20,0.36) 0%, rgba(5,11,20,0.68) 42%, rgba(5,11,20,0.96) 100%)'}} />
+      <TitleBlock eyebrow="开场转场 · 本地预制版" title="一句提问，整条产业链开始运转" detail="芯片 → 服务器 → 数据中心 → 能源系统" />
       <div style={{position: 'absolute', left: 116, right: 116, top: 344, height: 5, background: 'rgba(93,231,255,0.14)'}} />
       {nodes.map((node, index) => (
         <React.Fragment key={node.label}>
