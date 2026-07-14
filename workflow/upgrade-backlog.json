@@ -84,6 +84,15 @@
       "acceptance": "三条均在选题库记录系列编号、集数、上一集回扣、本集兑现证据和下一集问题；全部回填发布后 24 小时和 7 天可得数据；与最近三条同类型非系列内容比较，主页访问率、关注转化率、追更意图评论或有效咨询至少两项改善，且完播率无明显下降。平台无法提供的指标必须标记为不可得，不得按通过计算。",
       "status": "planned",
       "baselineImpact": "content-structure"
+    },
+    {
+      "id": "upgrade-20260714-fact-safe-humanizer",
+      "type": "experiment",
+      "source": "用户提供的博主截图；https://github.com/op7418/Humanizer-zh；本机审计提交 91f3d394db8419c20d67ebe22a96cf8fee0a404b。",
+      "goal": "把 Humanizer-zh 的 AI 写作模式检查用于口播定稿前精修，同时用项目专用 Skill 锁定事实、证据强度、钩子、金句和行动引导。",
+      "acceptance": "每次只处理未确认草稿；改写前建立事实锁；改写后新增事实、删除事实和口径变化均为零；用户在原稿与精修稿之间人工确认。连续三条使用后，只有事实保真均为 10/10 且用户确认表达更自然，才讨论进入默认流程。",
+      "status": "in-progress",
+      "baselineImpact": "experiment"
     }
   ]
 }
