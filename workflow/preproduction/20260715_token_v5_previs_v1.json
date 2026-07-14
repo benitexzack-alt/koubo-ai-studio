@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "projectId": "TOKEN_20260715",
+  "artifactType": "preproduction-visual-preview",
+  "status": "ready-for-user-review",
+  "createdAt": "2026-07-14T23:00:00+08:00",
+  "script": "notes/2026-07-14-Token产业链明日拍摄稿与V5预制方案-v1.md",
+  "composition": {
+    "id": "TokenV5AssetPreview16x9",
+    "source": "remotion/src/TokenV5AssetPreview16x9.tsx",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInFrames": 1680,
+    "durationSeconds": 56
+  },
+  "output": {
+    "path": "outputs/Token产业链_V5视觉预演56秒_v1.mp4",
+    "sha256": "ea6889c5fd2cba5154b1a0fb1504b5e471cff4f8e0992a2c48cc1a82092f2555",
+    "bytes": 11528495,
+    "videoCodec": "h264",
+    "pixelFormat": "yuvj420p",
+    "audioCodec": "aac",
+    "durationSeconds": 56.042667
+  },
+  "v5Experiment": {
+    "primaryChange": "用一条贯穿全片的Token数据流连接提问、算力、模型与结果",
+    "keepsFromV4": [
+      "顶部栏目",
+      "主题条",
+      "进度条",
+      "定义大字卡",
+      "三列能力卡",
+      "资源导向图",
+      "官方证据页",
+      "字幕安全区"
+    ],
+    "newModules": [
+      "基础设施五节点开场链路",
+      "三时代驱动变量",
+      "Token字符块拆分",
+      "豆包-DeepSeek-Kimi中性操作示意",
+      "上中下游贯穿链",
+      "Token出海纠偏链",
+      "甘肃与庆阳官方原文证据页",
+      "陇小郎单屏下游案例",
+      "兰州下游位置收束"
+    ],
+    "promotionRule": "本次只作为单条V5实验；取得用户预览确认并在连续三条稳定使用前，不替换全局生产基线。"
+  },
+  "evidence": [
+    {
+      "id": "gansu-hub-approval",
+      "sourceName": "国家发展和改革委员会等四部门",
+      "sourceUrl": "https://www.ncsti.gov.cn/kjdt/ztbd/dsxs/zcwj/202204/t20220428_75854.html",
+      "asset": "assets/screenshots/20260714_token_gansu_hub_approval.png",
+      "sha256": "4358af6b5de59906922c5714f9546718dd84910d23fa5496e356089c7cac4d05",
+      "claim": "同意甘肃启动国家枢纽节点建设。"
+    },
+    {
+      "id": "gansu-national-compute-base",
+      "sourceName": "国家发展和改革委员会等四部门",
+      "sourceUrl": "https://www.ncsti.gov.cn/kjdt/ztbd/dsxs/zcwj/202204/t20220428_75854.html",
+      "asset": "assets/screenshots/20260714_token_gansu_hub_quote.png",
+      "sha256": "67fd853949faec09fcdc3eedc7b4b025c4070bb7bb7c5362fa9ea03a1a91b9fa",
+      "claim": "提出打造面向全国的算力保障基地。"
+    },
+    {
+      "id": "qingyang-cluster",
+      "sourceName": "国家发展和改革委员会等四部门",
+      "sourceUrl": "https://www.ncsti.gov.cn/kjdt/ztbd/dsxs/zcwj/202204/t20220428_75854.html",
+      "asset": "assets/screenshots/20260714_token_qingyang_cluster_quote.png",
+      "sha256": "69d5a4cc4530ca9671b02b879ca7459da804b35eaf54f06b0267ac17a2230fa8",
+      "claim": "甘肃枢纽设立庆阳数据中心集群。"
+    },
+    {
+      "id": "qingyang-current",
+      "sourceName": "庆阳市人民政府网站",
+      "sourceUrl": "https://zgqingyang.gov.cn/zt/zgsgzhqy/content_344331",
+      "asset": "assets/screenshots/20260714_token_qingyang_current.png",
+      "sha256": "eba14d80f51c5208b70ec4206da16d6191f4575f8efad57c5cf5726dc8a94e1e",
+      "claim": "用于展示庆阳数据中心集群公开现状，不作为合作或投资背书。"
+    },
+    {
+      "id": "longxiaolang",
+      "sourceName": "甘肃省中医院",
+      "sourceUrl": "https://mp.weixin.qq.com/s/LnpeJn2yFTyyY3qlXo7vnQ",
+      "asset": "assets/screenshots/20260714_token_longxiaolang_top.png",
+      "sha256": "9e0eab099f90588adc53fab02b13fae9e69482e91f6226faf4ea4619226b8f15",
+      "claim": "原文称完成独家授权签约及首轮成果转化；不外推医疗效果或商业成功。"
+    }
+  ],
+  "validation": {
+    "typescriptNoEmit": "passed",
+    "remotionCompositionDiscovery": "passed",
+    "render": "passed",
+    "completeDecode": "passed",
+    "blackSegmentsAtLeast0_4Seconds": [],
+    "reviewFrames": [
+      60,
+      150,
+      300,
+      480,
+      720,
+      930,
+      1020,
+      1110,
+      1320,
+      1530
+    ],
+    "reviewFolder": "edit/verify/TokenV5_20260715",
+    "productionSideVisualReview": "passed-first-round",
+    "userFullPreviewConfirmed": false
+  },
+  "boundaries": [
+    "这是无配音视觉预制，不是口播正式成片。",
+    "正式时间轴、字幕和数字运镜必须等待真实原片词级转写。",
+    "三款模型界面当前为明确标注的操作示意，真实录屏可在正式片中替换。",
+    "写实宏大场面尚未生成，外部视频提示词已写入拍摄与V5方案。",
+    "用户完整观看确认前，不得标记为verified。"
+  ]
+}
