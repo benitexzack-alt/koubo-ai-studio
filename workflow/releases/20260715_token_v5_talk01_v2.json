@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "releaseId": "20260715_token-v5-talk01_16x9_v2",
-  "status": "ready-for-user-review",
+  "status": "verified",
   "videoId": "TOKEN_20260715_talk01",
   "baselineId": "koubo-formal-16x9-v1",
   "intent": {
@@ -80,8 +80,8 @@
     },
     {
       "id": "upgrade-20260715-local-sfx",
-      "decision": "applied-as-experiment",
-      "evidence": "动态卡片弹出、节点连接和关键转场已配本地音效；最终响度和峰值通过门槛。"
+      "decision": "failed-user-audibility-review",
+      "evidence": "用户完整观看 V2 后确认没有听到约定的动态卡片、节点连接和转场音效。机器响度与峰值只能证明总音轨合格，不能证明音效可感知；本条按音效未交付处理，用户将在剪映中补加。"
     },
     {
       "id": "upgrade-20260715-complete-take-direct-final",
@@ -97,14 +97,14 @@
   "userReview": {
     "previewApproved": true,
     "directFinalAuthorized": true,
-    "fullWatchConfirmed": false,
-    "notes": "用户已确认 40 秒关键预览方向并要求继续正式制作；V2 机器侧质检已通过，仍待用户完整观看确认。"
+    "fullWatchConfirmed": true,
+    "notes": "用户已完整观看 V2，确认成片画面、字幕和内容没有问题；同时指出约定的音效没有形成可感知结果。本条 Remotion V2 通过人工观看确认，但发布前用户会在剪映补加音效，剪映导出版本需重新做一次最终观看和音频检查。"
   },
   "publish": {
     "status": "not-published",
     "platform": "抖音",
     "publishedAt": null,
     "metrics24h": null,
-    "nextDecision": "用户完整观看确认后再发布；发布前按当日抖音后台重新核验 AI 内容声明、财经表达边界与 DOU+ 可投放性，24 小时后回填留存、完播、互动和有效咨询。"
+    "nextDecision": "用户在剪映补加音效并导出发布版后，重新检查人声清晰度、音效可听性、峰值和完整播放；发布前按当日抖音后台核验 AI 内容声明、财经表达边界与 DOU+ 可投放性，24 小时后回填留存、完播、互动和有效咨询。"
   }
 }
