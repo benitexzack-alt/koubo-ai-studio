@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260715_token-v5-talk01_16x9_v2",
+  "status": "ready-for-user-review",
+  "videoId": "TOKEN_20260715_talk01",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "topic": "Token产业链：普通人应该站在哪一层",
+    "serviceAudience": "希望理解 AI 产业链位置的普通人、甘肃本地创业者和企业经营者。",
+    "oneConclusion": "上游卖算力，中游卖模型，下游卖结果；普通人更现实的位置在下游真实业务应用。",
+    "cta": "关注超哥，在兰州记录 AI 创业。",
+    "factBoundary": "Token 是大模型处理信息的计量单位；甘肃算力枢纽与陇小郎成果转化只按本片引用的公开原页陈述，不承诺投资收益、流量或商业结果。"
+  },
+  "inputs": {
+    "sourceVideo": "source/TOKEN_20260715_talk01_16x9.MOV",
+    "transcript": "edit/transcripts/Token产业链_普通人应该站在哪一层_16x9_V5_final_v2.json",
+    "bilingualCaptions": "remotion/public/data/TOKEN_20260715_talk01_16x9.bilingual.v1.json",
+    "visualPlan": "workflow/visual-plans/20260715_token_v5_talk01.visual-plan.v1.json",
+    "assets": [
+      "remotion/public/generated/token-v5-20260715/chip-server-datacenter-cinematic-v1.png",
+      "remotion/public/screenshots/20260714_token_gansu_hub_approval.png",
+      "remotion/public/screenshots/20260714_token_longxiaolang_top.png"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/Token产业链_普通人应该站在哪一层_16x9_V5_final_v2.mp4",
+    "previewOutput": "outputs/Token产业链_V5实拍关键预览_开头40秒_v1.mp4",
+    "modules": [
+      "digital-camera",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "semantic-motion-card",
+      "bilingual-caption"
+    ],
+    "styleReferenceIds": [
+      "v4-definition-card",
+      "v4-three-column-card",
+      "v4-resource-flow",
+      "v5-token-data-rail"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "1920×1080、30fps、H.264/AAC、219.883 秒；全片解码无报错；未检出异常黑帧和超过 1.2 秒的 -50dB 静音；响度 -16.11 LUFS、真峰值 -1.40 dBTP。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "minimumScore": 0.75,
+      "evidence": "V1 与 V2 解码后 PCM 音轨 SHA-256 相同；以最终音轨转写校验 58 页双语字幕，最低同步分 0.75，高于 0.74 门槛。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "schema v2 视觉方案共 14 个图层、11 个风险抽帧，层级、标题拥有者和素材路径校验通过。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [
+        2.8,
+        11.2,
+        27.4,
+        36.4,
+        72.2,
+        116.4,
+        127.4,
+        142.6,
+        155.4,
+        199.8,
+        218.2
+      ],
+      "evidence": "已抽检宏大链路、三时代、Token 定义、三模型、上游、三层链路、Token 出海、甘肃枢纽、陇小郎、个人定位与 CTA；另复查 7 个字幕修订页，未见裁切、遮脸或文字溢出。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260715-v5-token-data-rail",
+      "decision": "applied-as-experiment",
+      "evidence": "Token 数据流、三层产业链与上游资源节点已进入正式成片，并通过关键帧复核。"
+    },
+    {
+      "id": "upgrade-20260715-local-sfx",
+      "decision": "applied-as-experiment",
+      "evidence": "动态卡片弹出、节点连接和关键转场已配本地音效；最终响度和峰值通过门槛。"
+    },
+    {
+      "id": "upgrade-20260715-complete-take-direct-final",
+      "decision": "applied",
+      "evidence": "按完整口播原片直接生成正式成片；用户已确认 40 秒关键预览。"
+    },
+    {
+      "id": "upgrade-v6-real-scene-and-generated-visuals",
+      "decision": "deferred",
+      "evidence": "宏大实景视频与更多 GPT 生图转场留到 V6 实验，不扩大本条 V5 的制作范围。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": true,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户已确认 40 秒关键预览方向并要求继续正式制作；V2 机器侧质检已通过，仍待用户完整观看确认。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "用户完整观看确认后再发布；发布前按当日抖音后台重新核验 AI 内容声明、财经表达边界与 DOU+ 可投放性，24 小时后回填留存、完播、互动和有效咨询。"
+  }
+}
