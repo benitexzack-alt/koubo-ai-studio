@@ -25,6 +25,7 @@
   "production": {
     "formalOutput": "outputs/Token产业链_普通人应该站在哪一层_16x9_V5_final_v2.mp4",
     "previewOutput": "outputs/Token产业链_V5实拍关键预览_开头40秒_v1.mp4",
+    "coverPrompt": "outputs/Token产业链_封面提示词_3x4_v1.md",
     "modules": [
       "digital-camera",
       "top-brand-bar",
@@ -84,6 +85,16 @@
       "evidence": "用户完整观看 V2 后确认没有听到约定的动态卡片、节点连接和转场音效。机器响度与峰值只能证明总音轨合格，不能证明音效可感知；本条按音效未交付处理，用户将在剪映中补加。"
     },
     {
+      "id": "upgrade-20260715-digital-camera",
+      "decision": "failed-user-perceptibility-review",
+      "evidence": "正式片虽然声明了 digital-camera 模块，但用户完整观看后没有感知到运镜。组件引用和单帧检查不能证明运镜可见，本条按运镜未交付处理。"
+    },
+    {
+      "id": "upgrade-20260715-cover-prompt",
+      "decision": "recovered-after-user-feedback",
+      "evidence": "正式成片首次交付遗漏封面提示词；用户指出后已补充 3:4 提示词文件，默认直接合成上传真人截图并保持人物外观不变。"
+    },
+    {
       "id": "upgrade-20260715-complete-take-direct-final",
       "decision": "applied",
       "evidence": "按完整口播原片直接生成正式成片；用户已确认 40 秒关键预览。"
@@ -98,7 +109,7 @@
     "previewApproved": true,
     "directFinalAuthorized": true,
     "fullWatchConfirmed": true,
-    "notes": "用户已完整观看 V2，确认成片画面、字幕和内容没有问题；同时指出约定的音效没有形成可感知结果。本条 Remotion V2 通过人工观看确认，但发布前用户会在剪映补加音效，剪映导出版本需重新做一次最终观看和音频检查。"
+    "notes": "用户已完整观看 V2，确认成片整体内容没有问题；同时指出约定音效没有形成可感知结果、数字运镜没有被感知、首次交付遗漏封面提示词。音效由用户在剪映补加，封面提示词已补交；剪映导出版本需重新做最终观看和音频检查。"
   },
   "publish": {
     "status": "not-published",
