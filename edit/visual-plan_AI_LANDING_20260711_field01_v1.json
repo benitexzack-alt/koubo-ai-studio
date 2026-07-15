@@ -1,0 +1,672 @@
+{
+  "schemaVersion": 2,
+  "status": "implementation-synced-awaiting-preview-and-user-review",
+  "videoId": "AI_LANDING_20260711_field01",
+  "videoTitle": "我如何把 AI 装进一家真实工作室",
+  "sourceVideo": "remotion/public/media/AI_LANDING_20260711_field01_rough_v1.mp4",
+  "baselineId": "koubo-formal-16x9-v1",
+  "timelineBasis": "基于 edit/edl_AI_LANDING_20260711_field01_rough_v1.json 的 12 段输出时间轴；Remotion composition 使用 283.289 秒粗剪文件，所有时间均为 output time。",
+  "styleReferenceIds": [
+    "v4-definition-card",
+    "v4-three-column-capability",
+    "v4-resource-network",
+    "v4-typical-question-overlay",
+    "v4-field-baseline-overlay",
+    "v4-action-input"
+  ],
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "style": {
+    "brandLine": "超哥 · 兰州 AI 落地现场",
+    "direction": "V4 蓝白科技信息设计；真实第一人称现场只承担环境与过程，确定性卡片承担解释，所有屏幕和人员信息保持不可读。",
+    "palette": {
+      "night": "#06111D",
+      "panel": "rgba(8, 24, 38, 0.95)",
+      "paper": "#F7FAFC",
+      "ink": "#112130",
+      "white": "#F7FBFF",
+      "muted": "#AFC4D5",
+      "cyan": "#55E6FF",
+      "blue": "#3E8DFF",
+      "green": "#62F5A3",
+      "yellow": "#FFD34E",
+      "orange": "#FF9C5A",
+      "red": "#FF7373"
+    },
+    "motion": {
+      "enter": "spring-and-interpolate",
+      "exit": "section-reset",
+      "avoidLinearEasing": true,
+      "oneNewElementAtATime": true
+    }
+  },
+  "safeAreas": {
+    "subtitle": {
+      "x": 450,
+      "y": 815,
+      "width": 1020,
+      "height": 175
+    },
+    "face": null,
+    "handsDynamic": {
+      "x": 260,
+      "y": 280,
+      "width": 1400,
+      "height": 600
+    },
+    "informationCard": {
+      "x": 76,
+      "y": 126,
+      "width": 1768,
+      "height": 750
+    },
+    "topBrandBar": {
+      "x": 54,
+      "y": 28,
+      "width": 1812,
+      "height": 52
+    }
+  },
+  "privacy": {
+    "mode": "full-frame-unreadable-field-protection",
+    "source": "ProtectedFieldVideo",
+    "filter": "blur(28px) brightness(0.5) saturate(0.78) contrast(1.08)",
+    "overlay": "dark radial-gradient plus grid",
+    "transformCoupling": "隐私滤镜与缩放、横移和纵移作用于同一个 Video 元素，避免运镜后从屏幕边缘露出信息。",
+    "protectedItems": [
+      "二维码",
+      "账号名与头像",
+      "手机号、联系人和通知",
+      "客户业务资料",
+      "终端路径、历史命令和授权信息",
+      "手机相册、应用和输入内容",
+      "未授权客户身份和独立声音"
+    ],
+    "audioMuteWindows": [
+      [0, 0.12],
+      [47.4, 47.62],
+      [54.68, 54.94],
+      [240.18, 240.46]
+    ],
+    "releaseBoundary": "风险帧未逐段确认、音频未完整复听或客户授权无法确认时，不得公开发布。"
+  },
+  "previewCoverage": [
+    "hook",
+    "complex-overlay",
+    "full-screen-asset",
+    "cta"
+  ],
+  "previewGate": {
+    "status": "pending-render-and-human-review",
+    "plannedRange": [0, 30],
+    "requiredVisuals": [
+      "v4-definition-two-task",
+      "v4-geo-definition-directed-chain",
+      "privacy-protected-field-background"
+    ],
+    "requiredCameraStates": [
+      "ordinary-push-or-drift",
+      "perceptible-scale-change",
+      "stable-section-reset"
+    ],
+    "requiredSoundTypes": [
+      "card-pop",
+      "node-connect",
+      "key-transition"
+    ],
+    "userVisualConfirmed": false,
+    "userCameraMotionConfirmed": false,
+    "userSfxAudibilityConfirmed": false
+  },
+  "digitalCamera": {
+    "implementation": "remotion/src/AILandingFieldTalk16x9.tsx:ProtectedFieldVideo",
+    "appliesTo": "只作用于不可读级处理后的现场底层视频；V4 卡片、栏目条、字幕和进度条保持稳定。",
+    "fps": 30,
+    "maxScale": 1.15,
+    "maxTranslateX": 14,
+    "maxTranslateY": 8,
+    "anchor": "50% 50%",
+    "privacyCoupling": true,
+    "machineReviewRequired": true,
+    "userPerceptibilityConfirmed": false,
+    "rules": [
+      "由于原片为第一人称手持现场，数字运镜只做段落间可感知推移，不叠加高频呼吸晃动。",
+      "每个 EDL 切点允许构图重置，字幕和信息卡不得随底层视频移动。",
+      "运镜前、中、后三帧必须同时复核隐私滤镜、手部安全区和字幕安全区。",
+      "机器参数存在不能替代正常速度下的人工观看确认。"
+    ],
+    "cues": [
+      {
+        "start": 0,
+        "end": 19.78,
+        "mode": "hook-push-right",
+        "scale": [1.1, 1.135],
+        "translateX": [-12, 12],
+        "translateY": [3, -7],
+        "reviewAt": 9.89
+      },
+      {
+        "start": 19.78,
+        "end": 35.54,
+        "mode": "geo-reset-left",
+        "scale": [1.135, 1.105],
+        "translateX": [12, -8],
+        "translateY": [-7, 4],
+        "reviewAt": 27.66
+      },
+      {
+        "start": 35.54,
+        "end": 47.52,
+        "mode": "discovery-push-right",
+        "scale": [1.105, 1.14],
+        "translateX": [-8, 14],
+        "translateY": [4, -8],
+        "reviewAt": 41.53
+      },
+      {
+        "start": 47.52,
+        "end": 67.3,
+        "mode": "bottleneck-reset-left",
+        "scale": [1.14, 1.11],
+        "translateX": [14, -10],
+        "translateY": [-8, 3],
+        "reviewAt": 57.41
+      },
+      {
+        "start": 67.3,
+        "end": 112.24,
+        "mode": "pipeline-long-push-right",
+        "scale": [1.11, 1.145],
+        "translateX": [-10, 12],
+        "translateY": [3, -7],
+        "reviewAt": 89.77
+      },
+      {
+        "start": 112.24,
+        "end": 147.92,
+        "mode": "install-result-reset-left",
+        "scale": [1.145, 1.115],
+        "translateX": [12, -8],
+        "translateY": [-7, 4],
+        "reviewAt": 130.08
+      },
+      {
+        "start": 147.92,
+        "end": 198.2,
+        "mode": "usage-long-push-right",
+        "scale": [1.115, 1.145],
+        "translateX": [-8, 14],
+        "translateY": [4, -8],
+        "reviewAt": 173.06
+      },
+      {
+        "start": 198.2,
+        "end": 228.64,
+        "mode": "handoff-reset-left",
+        "scale": [1.145, 1.11],
+        "translateX": [14, -10],
+        "translateY": [-8, 3],
+        "reviewAt": 213.42
+      },
+      {
+        "start": 228.64,
+        "end": 240.25,
+        "mode": "baseline-push-right",
+        "scale": [1.11, 1.14],
+        "translateX": [-10, 12],
+        "translateY": [3, -7],
+        "reviewAt": 234.45
+      },
+      {
+        "start": 240.25,
+        "end": 272.26,
+        "mode": "questions-reset-left",
+        "scale": [1.14, 1.115],
+        "translateX": [12, -8],
+        "translateY": [-7, 4],
+        "reviewAt": 256.26
+      },
+      {
+        "start": 272.26,
+        "end": 283.289,
+        "mode": "foundation-close-push",
+        "scale": [1.115, 1.15],
+        "translateX": [-8, 10],
+        "translateY": [4, -6],
+        "reviewAt": 277.78
+      }
+    ]
+  },
+  "layers": [
+    {
+      "id": "privacy-protected-field-background",
+      "start": 0,
+      "end": 283.289,
+      "spokenLine": "全片第一人称桌面实操；电脑、手机、二维码、账号、通知、文件名、终端和客户信息必须保持不可读。",
+      "purpose": "full-screen-asset",
+      "kind": "full-screen-asset",
+      "variant": "privacy-protected-field-background",
+      "titleOwner": false,
+      "overlapGroup": "global-privacy",
+      "zone": "full-screen",
+      "title": "",
+      "detail": "真实现场 · 屏幕与人员信息已做不可读处理",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:ProtectedFieldVideo"
+      },
+      "params": {
+        "blurPx": 28,
+        "brightness": 0.5,
+        "saturation": 0.78,
+        "contrast": 1.08,
+        "cameraCoupled": true
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 141.64,
+        "additionalReviewAt": [9.89, 27.66, 41.53, 57.41, 89.77, 117.42, 135.26, 173.06, 213.42, 234.45, 256.26, 277.78]
+      }
+    },
+    {
+      "id": "field-objective-definition",
+      "start": 0,
+      "end": 19.78,
+      "spokenLine": "今天主要做两件事情：把 Codex 装上，搭建一套剪辑工作流。",
+      "purpose": "hook",
+      "kind": "semantic-card",
+      "variant": "v4-definition-two-task",
+      "titleOwner": true,
+      "overlapGroup": "hook-objective",
+      "zone": "information-card",
+      "title": "不是先卖工具，而是先听懂问题",
+      "detail": "任务一：装上 Codex、搭剪辑工作流；任务二：梳理 GEO、增加被发现的机会。",
+      "items": ["装上 Codex", "剪辑工作流", "GEO 基线"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:DefinitionScene"
+      },
+      "params": {
+        "accent": "#55E6FF",
+        "motion": "spring-card-then-two-task-panels",
+        "cameraCue": "hook-push-right"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 9.89
+      }
+    },
+    {
+      "id": "geo-definition-directed-chain",
+      "start": 19.78,
+      "end": 35.54,
+      "spokenLine": "通过 GEO 生成式引擎优化，提高被豆包等 AI 发现的机会。",
+      "purpose": "complex-overlay",
+      "kind": "semantic-card",
+      "variant": "v4-geo-definition-directed-chain",
+      "titleOwner": true,
+      "overlapGroup": "geo-definition",
+      "zone": "information-card",
+      "title": "先让 AI 看懂你是谁、能解决什么",
+      "detail": "企业事实 → 公开内容 → AI 可理解；只提高被发现与引用的可能性。",
+      "items": ["企业事实", "公开内容", "AI 可理解"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:GeoDefinitionScene"
+      },
+      "params": {
+        "accent": "#62F5A3",
+        "motion": "directed-arrows",
+        "cameraCue": "geo-reset-left",
+        "riskDisclosure": "不承诺推荐、曝光、咨询或成交"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 27.66
+      }
+    },
+    {
+      "id": "discovery-volume-question",
+      "start": 35.54,
+      "end": 47.52,
+      "spokenLine": "如果客户来拍一个五分钟的视频，一天正常能拍几个人？",
+      "purpose": "typical-question",
+      "kind": "semantic-card",
+      "variant": "v4-typical-question-baseline",
+      "titleOwner": true,
+      "overlapGroup": "discovery-volume",
+      "zone": "information-card",
+      "title": "先问产能，再判断值不值得自动化",
+      "detail": "7–8 人次 / 天为客户现场口述，尚未独立核验。",
+      "items": ["五分钟成片", "一天能拍几人", "后期由谁完成"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:DiscoveryScene"
+      },
+      "params": {
+        "accent": "#FFD34E",
+        "motion": "baseline-number-enter",
+        "cameraCue": "discovery-push-right"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 41.53
+      }
+    },
+    {
+      "id": "manual-editing-three-column",
+      "start": 47.52,
+      "end": 67.3,
+      "spokenLine": "七八个人的拍摄最后都要手工剪；把模板和客户需求导进 AI 工作流，效率是否会提高仍需验证。",
+      "purpose": "complex-overlay",
+      "kind": "semantic-card",
+      "variant": "v4-three-column-capability",
+      "titleOwner": true,
+      "overlapGroup": "manual-editing-bottleneck",
+      "zone": "information-card",
+      "title": "重复，不等于应该盲目自动化",
+      "detail": "拍摄持续产生素材，剪映主要依赖手工，固定模板重复交付。",
+      "items": ["拍摄", "剪映", "模板"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:ThreeColumnScene"
+      },
+      "params": {
+        "accent": "#FFD34E",
+        "motion": "three-columns-enter",
+        "cameraCue": "bottleneck-reset-left"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 57.41
+      }
+    },
+    {
+      "id": "codex-resource-directed-pipeline",
+      "start": 67.3,
+      "end": 112.24,
+      "spokenLine": "素材拍完后仍用固定模板手工交付；能否让 Codex 调用 Skill 和 Agent，一起形成落地方案？",
+      "purpose": "complex-overlay",
+      "kind": "semantic-card",
+      "variant": "v4-resource-directed-map",
+      "titleOwner": true,
+      "overlapGroup": "codex-pipeline",
+      "zone": "information-card",
+      "title": "把需求变成一条可验证的交付链",
+      "detail": "真实需求 → 模板与素材 → Agent 讨论 → Skill 方案 → 人工验收。",
+      "items": ["真实需求", "模板与素材", "Agent 讨论", "Skill 方案", "人工验收"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:PipelineScene"
+      },
+      "params": {
+        "accent": "#55E6FF",
+        "motion": "nodes-then-directed-arrows",
+        "cameraCue": "pipeline-long-push-right",
+        "riskDisclosure": "现场生成的是初步方案；真正落地仍需真实素材、小步测试和人工验收"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 89.77
+      }
+    },
+    {
+      "id": "codex-official-download",
+      "start": 112.24,
+      "end": 122.6,
+      "spokenLine": "进入 OpenAI 官网，找到 Codex，下载 Windows 版本。",
+      "purpose": "tool-install",
+      "kind": "semantic-card",
+      "variant": "v4-install-step",
+      "titleOwner": true,
+      "overlapGroup": "codex-download",
+      "zone": "information-card",
+      "title": "从官方入口下载 Windows 版本",
+      "detail": "官方页面 → 产品 → Codex；安装与登录涉及账号、网络和系统权限，现场信息全部隐藏。",
+      "items": ["官方页面", "产品", "Codex"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:DownloadScene"
+      },
+      "params": {
+        "accent": "#3E8DFF",
+        "motion": "official-step-card",
+        "cameraCue": "install-result-reset-left"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 117.42
+      }
+    },
+    {
+      "id": "codex-field-result",
+      "start": 122.6,
+      "end": 147.92,
+      "spokenLine": "团队给出了剪映标准化流程方案，Codex 也已经安装好了。",
+      "purpose": "field-result",
+      "kind": "semantic-card",
+      "variant": "v4-status-result",
+      "titleOwner": true,
+      "overlapGroup": "codex-result",
+      "zone": "information-card",
+      "title": "先把剪辑流程写成可讨论的方案",
+      "detail": "流程被拆成明确步骤，方案与 Skill 可以交接；仍需在真实剪辑任务里验证与调整。",
+      "items": ["流程步骤", "方案交接", "真实任务验证"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:ResultScene"
+      },
+      "params": {
+        "accent": "#62F5A3",
+        "motion": "two-status-panels",
+        "cameraCue": "install-result-reset-left"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 135.26
+      }
+    },
+    {
+      "id": "codex-usage-four-step",
+      "start": 147.92,
+      "end": 198.2,
+      "spokenLine": "先把流程讲清楚，再让 Codex 规划；把素材位置、导入和剪辑这些重复动作沉淀成 Skill。",
+      "purpose": "tutorial",
+      "kind": "semantic-card",
+      "variant": "v4-four-step-method",
+      "titleOwner": true,
+      "overlapGroup": "codex-usage",
+      "zone": "information-card",
+      "title": "工具能力要放进真实流程里",
+      "detail": "先交流 → 再规划 → 小步测试 → 人工验收。",
+      "items": ["先交流", "再规划", "小步测试", "人工验收"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:UsageScene"
+      },
+      "params": {
+        "accent": "#3E8DFF",
+        "motion": "four-steps-enter",
+        "cameraCue": "usage-long-push-right",
+        "permissionDisclosure": "Computer Use 需用户明确授权，能力受系统权限、环境和安全设置限制"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 173.06
+      }
+    },
+    {
+      "id": "codex-plan-handoff",
+      "start": 198.2,
+      "end": 228.64,
+      "spokenLine": "Codex 汇总提升方案，再把方案交给对方的 Codex 继续识别和优化。",
+      "purpose": "handoff",
+      "kind": "semantic-card",
+      "variant": "v4-handoff-directed-chain",
+      "titleOwner": true,
+      "overlapGroup": "codex-handoff",
+      "zone": "information-card",
+      "title": "把现场理解，交给客户自己的 Codex",
+      "detail": "需求纪要 → 客户 Codex → 验证与迭代；客户保留自己的资料、理解与恢复能力。",
+      "items": ["需求纪要", "客户 Codex", "验证与迭代"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:HandoffScene"
+      },
+      "params": {
+        "accent": "#62F5A3",
+        "motion": "directed-handoff-chain",
+        "cameraCue": "handoff-reset-left"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 213.42
+      }
+    },
+    {
+      "id": "doubao-field-baseline",
+      "start": 228.64,
+      "end": 240.25,
+      "spokenLine": "先在豆包查看兰州相关工作室的当前回答，确认这家工作室是否已经被发现。",
+      "purpose": "field-baseline",
+      "kind": "semantic-card",
+      "variant": "v4-field-baseline-overlay",
+      "titleOwner": true,
+      "overlapGroup": "doubao-baseline",
+      "zone": "information-card",
+      "title": "先记录当前有没有被回答提及",
+      "detail": "当次结果未出现目标工作室；一次 AI 回答不等于市场排名。",
+      "items": ["当次结果", "未出现目标工作室", "不等于市场排名"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:BaselineScene"
+      },
+      "params": {
+        "accent": "#FF9C5A",
+        "motion": "result-then-boundary",
+        "cameraCue": "baseline-push-right"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 234.45
+      }
+    },
+    {
+      "id": "geo-typical-question-cards",
+      "start": 240.25,
+      "end": 272.26,
+      "spokenLine": "客户会用什么问题和关键词寻找虚拟影像服务？先从真实问题出发。",
+      "purpose": "typical-problems",
+      "kind": "semantic-card",
+      "variant": "v4-typical-question-three-card",
+      "titleOwner": true,
+      "overlapGroup": "geo-questions",
+      "zone": "information-card",
+      "title": "先收集客户真正会问的问题",
+      "detail": "这项服务叫什么？用户会搜哪些词？哪些问题值得做内容？AI 回答不等于真实搜索量，也不能直接作为投放依据。",
+      "items": ["服务叫什么", "用户会搜哪些词", "哪些问题值得做内容"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:QuestionsScene"
+      },
+      "params": {
+        "accent": "#FFD34E",
+        "motion": "three-question-cards",
+        "cameraCue": "questions-reset-left"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 256.26
+      }
+    },
+    {
+      "id": "geo-foundation-action-input",
+      "start": 272.26,
+      "end": 283.289,
+      "spokenLine": "先做数字化建设，把在做什么、服务内容是什么介绍清楚，再搭建公开事实平台。",
+      "purpose": "cta",
+      "kind": "semantic-card",
+      "variant": "v4-action-input",
+      "titleOwner": true,
+      "overlapGroup": "geo-foundation",
+      "zone": "information-card",
+      "title": "先把企业事实讲清楚，再谈曝光",
+      "detail": "做什么 → 服务谁 → 解决什么问题；数字化页面只是起点，持续验证才会形成可信内容。",
+      "items": ["做什么", "服务谁", "解决什么问题"],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AILandingFieldTalk16x9:FoundationScene"
+      },
+      "params": {
+        "accent": "#62F5A3",
+        "motion": "action-input-chain",
+        "cameraCue": "foundation-close-push",
+        "riskDisclosure": "不承诺推荐、曝光、咨询或成交"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 277.78
+      }
+    }
+  ],
+  "notApplicable": [
+    {
+      "item": "comment-or-case-overlay",
+      "reason": "没有经授权的真实评论或客户案例；本条只使用明确标注的典型问题和现场基线，不伪造评论或效果。"
+    },
+    {
+      "item": "ai-generated-concept-image",
+      "reason": "本条主线是真实第一人称现场落地，未强塞 AI 概念图或宏大生成视频，避免偏离需求—Codex—落地—GEO。"
+    }
+  ],
+  "deferred": [
+    "20–30 秒含三类音效的预览尚未生成和人工试听。",
+    "数字运镜尚未按正常速度完成人工可感知确认。",
+    "正式全片尚未完成逐段隐私复核、机器质检和用户完整观看确认。"
+  ]
+}
