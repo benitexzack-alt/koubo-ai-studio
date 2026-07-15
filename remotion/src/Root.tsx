@@ -1,5 +1,6 @@
 import React from 'react';
 import {Composition, Folder, Still} from 'remotion';
+import {AILandingFieldTalk16x9, AI_LANDING_DURATION_IN_FRAMES} from './AILandingFieldTalk16x9';
 import {AIBizTalk16x9} from './AIBizTalk16x9';
 import {AIStoreAssetPreview16x9} from './AIStoreAssetPreview16x9';
 import {AIStoreTalk16x9} from './AIStoreTalk16x9';
@@ -25,6 +26,14 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="AILandingFieldTalk16x9-Final"
+          component={AILandingFieldTalk16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_LANDING_DURATION_IN_FRAMES}
+        />
         <Composition
           id="TokenV5Talk16x9-Final"
           component={TokenV5Talk16x9}
