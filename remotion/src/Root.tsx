@@ -8,6 +8,7 @@ import {CoverStill3x4} from './CoverStill3x4';
 import {CoverStill9x16} from './CoverStill9x16';
 import {DigitalOneTalk16x9} from './DigitalOneTalk16x9';
 import {TokenV5AssetPreview16x9} from './TokenV5AssetPreview16x9';
+import {TokenV5Talk16x9} from './TokenV5Talk16x9';
 import {
   defaultTalkProps,
   gansuStoreAiTalk01Props,
@@ -24,6 +25,14 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="TokenV5Talk16x9-Final"
+          component={TokenV5Talk16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={6595}
+        />
         <Composition
           id="TokenV5AssetPreview16x9"
           component={TokenV5AssetPreview16x9}
