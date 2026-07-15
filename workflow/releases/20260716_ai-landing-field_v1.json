@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260716_ai-landing-field_16x9_v1",
+  "status": "ready-for-user-review",
+  "videoId": "AI_LANDING_20260711_field01",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "topic": "一次真实 AI 企业服务现场：从需求诊断到 Codex 工作流与 GEO 基线",
+    "serviceAudience": "甘肃本地小微企业、个体老板、创业者和正在尝试 AI 落地的一人公司。",
+    "oneConclusion": "AI 落地先听懂真实业务问题，再用 Codex 把重复流程描述清楚、做小步验证；GEO 先从企业事实和用户问题的数字化底座开始。",
+    "cta": "先把企业是谁、提供什么服务、解决什么问题说清楚，再持续验证哪些公开内容更容易被理解和引用。",
+    "factBoundary": "现场产能、豆包回答和搜索量均只按当次口述或演示呈现，不作为市场规模、排名或投放证据；GEO 只可能增加被发现、理解和引用的机会，不保证推荐、曝光、咨询或成交。"
+  },
+  "inputs": {
+    "sourceVideo": "source/AI_LANDING_20260711_field01_16x9.MOV",
+    "transcript": "edit/transcripts/AI落地现场_需求到Codex与GEO_16x9_final_v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_LANDING_20260711_field01_16x9.bilingual.v1.json",
+    "visualPlan": "edit/visual-plan_AI_LANDING_20260711_field01_v1.json",
+    "assets": [
+      "media/AI_LANDING_20260711_field01_rough_v1.mp4",
+      "remotion/public/audio/ai-landing-v1/whoosh-soft.wav",
+      "remotion/public/audio/ai-landing-v1/impact-low.wav",
+      "remotion/public/audio/ai-landing-v1/ui-pop.wav",
+      "remotion/public/audio/ai-landing-v1/data-pulse.wav",
+      "remotion/public/audio/ai-landing-v1/confirm-tick.wav"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/AI落地现场_需求到Codex与GEO_16x9_final_v1.mp4",
+    "previewOutput": "edit/exports/AI落地现场_V4首30秒试听预览_v1.mp4",
+    "coverPrompt": "outputs/AI落地现场_封面提示词_3x4_v1.md",
+    "modules": [
+      "digital-camera",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "semantic-motion-card",
+      "bilingual-caption"
+    ],
+    "styleReferenceIds": [
+      "v4-definition-card",
+      "v4-three-column-card",
+      "v4-resource-directed-map",
+      "v4-field-baseline-overlay",
+      "v4-action-input"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式字幕修订版为 1920×1080、30fps、H.264/AAC、283.349 秒、58,284,565 字节；完整解码无报错；未检出持续 0.4 秒以上黑场和超过 1.2 秒的 -50dB 静音；响度 -16.06 LUFS、真峰值 -1.42 dBTP。字幕层修订前后 PCM 音轨 SHA-256 同为 25d115cd19082515e9f6891b332677e14a9fcc7b627c9d478d10057e08259a0b。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "minimumScore": 0.75,
+      "evidence": "以正式成片最终混音重新上传转写，共 1379 个词级条目；62 页中英双语字幕逐页校验，最低同步分 0.75，高于 0.74 基线。184.76–189.80 秒漏字被机器拦截后已补齐并重绘字幕层。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "schema v2 视觉方案共 13 个图层、13 个风险抽帧，V4 定义卡、三列卡、资源导向图、现场基线浮层与行动输入卡均实际进入正式片；层级、标题拥有者、素材路径与隐私策略校验通过。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [
+        5.8,
+        24.6,
+        42.0,
+        57.2,
+        94.6,
+        117.3,
+        135.0,
+        172.0,
+        186.5,
+        213.0,
+        234.8,
+        256.0,
+        277.6
+      ],
+      "evidence": "从最终字幕修订版重新抽取 13 个关键帧，覆盖钩子、需求诊断、三列瓶颈、资源导向流程、安装、结果、使用、字幕补丁、方案交接、豆包基线、GEO 问题和结尾行动卡；未见卡片裁切、标题冲突、字幕越界或原始屏幕信息可读。"
+    },
+    "privacyReview": {
+      "status": "passed",
+      "evidence": "12 段原始素材均含设备屏幕风险；正式片对现场画面全程使用不可读级强模糊、暗化和重绘信息卡，客户局部面部、二维码、手机、终端、文件列表、账号和通知均未清晰呈现；4 处客户短声纹边界已静音。"
+    },
+    "soundAndCameraReview": {
+      "status": "pending-user-review",
+      "evidence": "15 个音效 cue 已实际混入，首 30 秒覆盖 card-pop、node-connect 和 key-transition；数字运镜使用显式缩放与平移关键帧。机器侧只能证明音轨存在、峰值合规和参数生效，不能代替用户正常播放下的可听性与可感知性确认。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260716-explicit-five-minute-rough-cut",
+      "decision": "applied",
+      "evidence": "用户明确要求从 44 分钟现场原片挑重点并压缩到五分钟以内，因此本条建立 12 段 EDL；粗剪主体 283.16 秒，符合显式剪辑请求。"
+    },
+    {
+      "id": "upgrade-20260716-v4-field-privacy-pack",
+      "decision": "applied",
+      "evidence": "全程高风险屏幕不直接展示，使用真实现场模糊背景和确定性 V4 卡片重绘需求、Codex、工作流与 GEO 信息。"
+    },
+    {
+      "id": "upgrade-20260716-v6-sfx-camera-gates",
+      "decision": "machine-side-passed-user-review-pending",
+      "evidence": "归一化后的 5 个本地音效按 15 个 cue 混入，数字运镜参数和关键帧已复核；仍待用户正常播放完整成片确认是否足够可听、可感知且不过度。"
+    },
+    {
+      "id": "upgrade-20260716-final-audio-caption-recheck",
+      "decision": "applied",
+      "evidence": "最终混音转写发现一页遗漏‘在哪个文件夹’，已停止首次交付、修正数据并只重绘对应 5 秒字幕层；修订后同步门槛通过。"
+    },
+    {
+      "id": "upgrade-20260716-cover-prompt",
+      "decision": "applied",
+      "evidence": "已同步交付 3:4 封面提示词，默认直接合成用户另行上传的本人真人截图，并要求保持五官、表情、衣服和姿态不变。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户明确要求在其休息期间持续执行，明早直接交付五分钟以内成片；制作侧据此跳过中间等待，但仍保留 30 秒预览、13 个正式片风险帧和完整机器质检。用户尚未完整观看正式片。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "用户完整观看确认后再决定发布；发布前按当日抖音后台分别核验允许公开、允许推荐/搜索、允许 DOU+、允许广告/交易四道门槛，并如实处理 AI 辅助剪辑、营销推广和广告可识别义务。豆包与 GEO 表述不得扩展为效果保证。"
+  }
+}
