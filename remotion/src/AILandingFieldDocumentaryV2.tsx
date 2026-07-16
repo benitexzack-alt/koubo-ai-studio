@@ -1,5 +1,5 @@
 import {Video} from '@remotion/media';
-import React, {type CSSProperties, type ReactNode} from 'react';
+import React, {type ReactNode} from 'react';
 import {
   AbsoluteFill,
   interpolate,
@@ -30,70 +30,6 @@ const chapters = [
 
 const fadeForSequence = (frame: number, duration: number, fadeFrames = 10) =>
   interpolate(frame, [0, fadeFrames, duration - fadeFrames, duration], [0, 1, 1, 0], clamp);
-
-const FrostedMask: React.FC<{
-  style: CSSProperties;
-  radius?: number;
-}> = ({style, radius = 24}) => (
-  <div
-    style={{
-      position: 'absolute',
-      borderRadius: radius,
-      background: 'rgba(4, 11, 18, 0.22)',
-      backdropFilter: 'blur(44px) saturate(0.32) brightness(0.72)',
-      WebkitBackdropFilter: 'blur(44px) saturate(0.32) brightness(0.72)',
-      boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.08), 0 10px 40px rgba(0,0,0,0.2)',
-      ...style,
-    }}
-  />
-);
-
-const PrivacyLabel: React.FC = () => (
-  <div
-    style={{
-      position: 'absolute',
-      right: 34,
-      top: 30,
-      padding: '9px 13px',
-      borderRadius: 9,
-      color: 'rgba(245,249,252,0.9)',
-      background: 'rgba(4,11,18,0.74)',
-      fontFamily,
-      fontSize: 18,
-      fontWeight: 700,
-      letterSpacing: 0.5,
-    }}
-  >
-    现场信息已脱敏
-  </div>
-);
-
-const BaseFootagePrivacy: React.FC = () => (
-  <AbsoluteFill style={{pointerEvents: 'none'}}>
-    <FrostedMask style={{left: -34, top: -28, width: 650, height: 560}} />
-    <FrostedMask style={{left: 286, top: 46, width: 1155, height: 850}} />
-    <FrostedMask style={{left: 1432, top: 46, width: 530, height: 1034}} />
-    <PrivacyLabel />
-  </AbsoluteFill>
-);
-
-const WalkthroughPrivacy: React.FC = () => (
-  <AbsoluteFill style={{pointerEvents: 'none'}}>
-    <FrostedMask style={{left: -30, top: 300, width: 1160, height: 810}} />
-    <FrostedMask style={{left: 1150, top: 155, width: 810, height: 690}} />
-    <PrivacyLabel />
-  </AbsoluteFill>
-);
-
-const ControlDeskPrivacy: React.FC = () => (
-  <AbsoluteFill style={{pointerEvents: 'none'}}>
-    <FrostedMask style={{left: 445, top: 425, width: 460, height: 390}} radius={20} />
-    <FrostedMask style={{left: 865, top: 355, width: 360, height: 330}} radius={18} />
-    <FrostedMask style={{left: 620, top: 140, width: 245, height: 245}} radius={90} />
-    <FrostedMask style={{left: 1230, top: 130, width: 260, height: 250}} radius={95} />
-    <PrivacyLabel />
-  </AbsoluteFill>
-);
 
 const OpeningTitle: React.FC = () => {
   const frame = useCurrentFrame();
@@ -257,7 +193,6 @@ const ThirdPersonOpening: React.FC = () => (
         volume={0}
         style={{width: '100%', height: '100%', objectFit: 'cover'}}
       />
-      <WalkthroughPrivacy />
     </Sequence>
     <Sequence from={frameAt(4.6)} durationInFrames={frameAt(3.7)}>
       <Video
@@ -266,7 +201,6 @@ const ThirdPersonOpening: React.FC = () => (
         volume={0}
         style={{width: '100%', height: '100%', objectFit: 'cover'}}
       />
-      <ControlDeskPrivacy />
     </Sequence>
     <Sequence from={0} durationInFrames={frameAt(8.3)}>
       <OpeningTitle />
@@ -282,9 +216,6 @@ export const AILandingFieldDocumentaryV2: React.FC = () => {
         src={staticFile('media/AI_LANDING_20260711_documentary_base_rough_v2.mp4')}
         style={{width: '100%', height: '100%', objectFit: 'cover'}}
       />
-      <Sequence from={frameAt(8.3)} durationInFrames={AI_LANDING_DOCUMENTARY_V2_DURATION_IN_FRAMES - frameAt(8.3)}>
-        <BaseFootagePrivacy />
-      </Sequence>
 
       <ThirdPersonOpening />
 
