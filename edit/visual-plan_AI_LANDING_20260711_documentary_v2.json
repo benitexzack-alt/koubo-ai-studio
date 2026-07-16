@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 2,
+  "status": "rendered-awaiting-user-full-watch",
+  "videoId": "AI_LANDING_20260711_documentary_v2",
+  "videoTitle": "本地 AI 落地服务现场纪实",
+  "sourceVideo": "edit/exports/AI落地现场_纪实V2_base_rough.mp4",
+  "baselineId": "documentary-rough-16x9-v1",
+  "timelineBasis": "基于 edit/edl_AI_LANDING_20260711_documentary_rough_v2.json 的 25 段输出时间轴，总时长 589.56 秒。",
+  "styleReferenceIds": [
+    "real-footage-first",
+    "third-person-field-proof-unmasked",
+    "v4-editorial-context"
+  ],
+  "previewCoverage": [
+    "hook",
+    "chapter",
+    "privacy",
+    "full-screen-asset",
+    "cta"
+  ],
+  "layers": [
+    {
+      "id": "third-person-control-desk-opening",
+      "start": 0,
+      "end": 4.6,
+      "spokenLine": "今天来，就是给你做两件事情。",
+      "purpose": "以第三人称现场镜头证明真实到场和工作环境。",
+      "kind": "full-screen-asset",
+      "overlapGroup": "opening",
+      "zone": "full-screen",
+      "titleOwner": true,
+      "asset": {
+        "sourceType": "local-video",
+        "source": "remotion/public/media/AI_LANDING_20260711_thirdperson_0132_sdr.mp4"
+      },
+      "checks": {
+        "needsFrameReview": true,
+        "reviewAt": 1
+      }
+    },
+    {
+      "id": "third-person-studio-walkthrough-opening",
+      "start": 4.6,
+      "end": 8.3,
+      "spokenLine": "一个是把整套 Codex 系统装给你。",
+      "purpose": "补充工作室环境与现场人物关系；按用户要求保留原画面，不做人物或屏幕打码。",
+      "kind": "full-screen-asset",
+      "overlapGroup": "opening",
+      "zone": "full-screen",
+      "titleOwner": false,
+      "asset": {
+        "sourceType": "local-video",
+        "source": "remotion/public/media/AI_LANDING_20260711_thirdperson_0128_sdr.mp4"
+      },
+      "checks": {
+        "needsFrameReview": true,
+        "reviewAt": 5
+      }
+    },
+    {
+      "id": "unmasked-first-person-base",
+      "start": 8.3,
+      "end": 589.67,
+      "spokenLine": "第一人称现场实录承担需求诊断、Codex 和 GEO 主线。",
+      "purpose": "保留真实工作过程和原始屏幕画面，不叠加打码、模糊或脱敏标识；公开授权另行核验。",
+      "kind": "full-screen-asset",
+      "overlapGroup": "field-base",
+      "zone": "full-screen",
+      "titleOwner": false,
+      "asset": {
+        "sourceType": "local-video",
+        "source": "edit/exports/AI落地现场_纪实V2_base_rough.mp4"
+      },
+      "checks": {
+        "needsFrameReview": true,
+        "reviewAt": 25
+      }
+    },
+    {
+      "id": "chapter-business-discovery",
+      "start": 24.46,
+      "end": 203.94,
+      "spokenLine": "先理解真实业务。",
+      "purpose": "把现场对话收束到业务流程、人员和重复动作。",
+      "kind": "chapter-navigation",
+      "overlapGroup": "chapter",
+      "zone": "top-left",
+      "titleOwner": false,
+      "asset": {
+        "sourceType": "deterministic-remotion"
+      },
+      "checks": {
+        "needsFrameReview": true,
+        "reviewAt": 120
+      }
+    },
+    {
+      "id": "chapter-translate-to-codex",
+      "start": 203.94,
+      "end": 300.14,
+      "spokenLine": "把需求翻译给 Codex。",
+      "purpose": "解释自然语言、目标、边界与工具协作。",
+      "kind": "chapter-navigation",
+      "overlapGroup": "chapter",
+      "zone": "top-left",
+      "titleOwner": false,
+      "asset": {
+        "sourceType": "deterministic-remotion"
+      },
+      "checks": {
+        "needsFrameReview": true,
+        "reviewAt": 205
+      }
+    },
+    {
+      "id": "chapter-install-workflow",
+      "start": 300.14,
+      "end": 476.72,
+      "spokenLine": "安装、实操与工作流。",
+      "purpose": "保留 Codex 安装、使用与业务流程交付的现场证据。",
+      "kind": "chapter-navigation",
+      "overlapGroup": "chapter",
+      "zone": "top-left",
+      "titleOwner": false,
+      "asset": {
+        "sourceType": "deterministic-remotion"
+      },
+      "checks": {
+        "needsFrameReview": true,
+        "reviewAt": 300.5
+      }
+    },
+    {
+      "id": "chapter-geo-boundary",
+      "start": 476.72,
+      "end": 559.28,
+      "spokenLine": "GEO 不等于 SEO。",
+      "purpose": "区分搜索理解与生成式 AI 引用机会，不承诺曝光或成交。",
+      "kind": "editorial-context-card",
+      "overlapGroup": "chapter",
+      "zone": "top-right",
+      "titleOwner": false,
+      "asset": {
+        "sourceType": "deterministic-remotion"
+      },
+      "checks": {
+        "needsFrameReview": true,
+        "reviewAt": 485
+      }
+    },
+    {
+      "id": "chapter-small-loop-handoff",
+      "start": 559.28,
+      "end": 589.67,
+      "spokenLine": "方案交接，先跑小闭环。",
+      "purpose": "以看现场、拆流程、工具介入、小步试跑、人工复核和持续验证收束。",
+      "kind": "editorial-context-card",
+      "overlapGroup": "chapter",
+      "zone": "top-right",
+      "titleOwner": false,
+      "asset": {
+        "sourceType": "deterministic-remotion"
+      },
+      "checks": {
+        "needsFrameReview": true,
+        "reviewAt": 585
+      }
+    }
+  ]
+}

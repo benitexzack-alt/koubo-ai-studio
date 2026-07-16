@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260716_ai-landing-field_documentary_rough_v2",
+  "status": "ready-for-user-review",
+  "videoId": "AI_LANDING_20260711_documentary_v2",
+  "baselineId": "documentary-rough-16x9-v1",
+  "intent": {
+    "topic": "本地 AI 落地服务现场纪实：从需求梳理到 Codex 工作流与 GEO 内容基础",
+    "serviceAudience": "甘肃本地小微企业、个体老板、创业者和正在寻找 AI 落地方法的一人公司。",
+    "oneConclusion": "本地 AI 落地不是先卖工具，而是先听懂真实业务，再把需求翻译成可执行流程，用 Codex 做小步验证，并从企业事实和用户问题开始建设 GEO 内容基础。",
+    "cta": "先看现场、拆流程、接入工具、跑一个可验证的小闭环，再决定是否扩大。",
+    "factBoundary": "现场产能、业务描述、豆包演示和 GEO 讨论均只按当次实录呈现，不作为市场规模、平台排名或获客效果证据；GEO 不保证推荐、曝光、咨询或成交。"
+  },
+  "inputs": {
+    "sourceVideo": "source/AI_LANDING_20260711_field01_16x9.MOV",
+    "transcript": "edit/transcripts/AI_LANDING_20260711_documentary_v2.timeline.json",
+    "bilingualCaptions": "remotion/public/data/AI_LANDING_20260711_documentary_v2.pages.json",
+    "visualPlan": "edit/visual-plan_AI_LANDING_20260711_documentary_v2.json",
+    "assets": [
+      "source/AI_LANDING_20260715_broll01_control-desk_16x9.MOV",
+      "source/AI_LANDING_20260715_broll02_studio-walkthrough_16x9.MOV",
+      "remotion/public/media/AI_LANDING_20260711_thirdperson_0128_sdr.mp4",
+      "remotion/public/media/AI_LANDING_20260711_thirdperson_0132_sdr.mp4",
+      "edit/exports/AI落地现场_纪实V2_base_rough.mp4"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/本地AI落地服务现场纪实_16x9_rough_v2.mp4",
+    "previewOutput": "edit/verify/AI_LANDING_20260711_documentary_v2_preview30",
+    "coverPrompt": null,
+    "modules": [
+      "third-person-documentary-opening",
+      "first-person-field-footage",
+      "chapter-navigation",
+      "word-level-caption",
+      "editorial-context-card",
+      "unmasked-original-footage"
+    ],
+    "styleReferenceIds": [
+      "real-footage-first-unmasked",
+      "v4-editorial-context",
+      "documentary-rough-cut"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "最终无打码版为 1920×1080、30fps、H.264/AAC、589.717 秒、895729907 字节；SHA-256 为 6b7c800e922e8fdbdabc5896eb644231fbf513dce7d095318b0950851046b4d3。完整音视频解码无报错；未检出持续 0.4 秒以上黑场和超过 1.2 秒的 -50dB 静音；响度 -15.99 LUFS、真峰值 -1.37 dBTP、LRA 8.80。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "minimumScore": 0.64,
+      "evidence": "2811 条词级字幕使用原实录时间轴按 25 段 EDL 映射到输出时间线，并生成 180 页中文审计字幕；自动时间窗比对最低分 0.64，高于纪实粗剪基线 0.62。制作侧抽查开场、章节转场、Codex、GEO 与结尾节点，字幕均位于安全区。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "25 段现场实录组成六章，第三人称素材只在开场各使用一次并静音；真实现场画面为主体，编辑补充卡只解释章节、Vibe Coding、GEO 边界和小闭环，不替代现场证据。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [
+        1,
+        5,
+        8.5,
+        25,
+        205,
+        300.5,
+        477.5,
+        485,
+        560,
+        585
+      ],
+      "evidence": "已从最终无打码版重新抽取 1、5、8.5、25、205、300.5、477.5、485、560、585 秒关键帧和 30 帧联系表；原始人物、电脑和手机画面均清晰保留，未叠加模糊、遮罩或脱敏标识，字幕、章节条与补充卡未见越界或相互遮挡。"
+    },
+    "privacyReview": {
+      "status": "pending-publication-authorization",
+      "evidence": "用户最新明确要求不做任何打码，制作侧已撤掉人物、电脑、手机和现场信息的全部模糊、遮罩及脱敏标识。该决定只授权制作无打码审片文件，不自动证明客户、第三方人物、屏幕内容、声音和场地已经取得公开发布授权。"
+    },
+    "soundAndCameraReview": {
+      "status": "pending-user-review",
+      "evidence": "本版定位为现场纪实粗剪，保留第一人称原声，第三人称开场素材静音；机器侧已确认音频连续、响度合规，但叙事节奏和听感仍需用户完整观看。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260716-documentary-theme-reset",
+      "decision": "applied",
+      "evidence": "按用户补充文字将主题从窄化的虚拟影棚工作流改造，提升为本地 AI 落地服务现场纪实，并将目标时长调整到 8—12 分钟。"
+    },
+    {
+      "id": "upgrade-20260716-third-person-field-broll",
+      "decision": "applied",
+      "evidence": "两段新增第三人称现场素材均已只读入库并在开场各使用一次，用于证明真实到场和工作环境，不循环、不替代主线。"
+    },
+    {
+      "id": "upgrade-20260716-final-mobile-screen-mask",
+      "decision": "superseded-by-user-direction",
+      "evidence": "制作侧曾按隐私规则扩大移动屏幕遮罩，但用户随后明确要求不做任何打码；最终交付改为无打码审片版，公开授权仍单独待确认。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户明确要求在休息期间持续执行并直接交付完整片；制作侧据此不等待中间确认，但仍保留首 30 秒预览、最终风险帧、完整解码和隐私复查。当前仍是待用户完整观看的 V2 粗剪。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "用户完整观看确认叙事、节奏和字幕后再决定是否进入正式发布；公开前还需确认客户及现场第三方的肖像、声音和场地授权，并按发布当日平台入口复核 AI 辅助剪辑、营销推广与广告可识别义务。"
+  }
+}

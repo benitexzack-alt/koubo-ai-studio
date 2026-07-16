@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "documentary-rough-16x9-v1",
+  "status": "active",
+  "effectiveFrom": "2026-07-16",
+  "appliesTo": "用户明确要求从长时现场实录中压缩、重排并形成 8—12 分钟真实纪实粗剪时使用；不替代正式横屏口播基线。",
+  "production": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "videoCodec": "h264",
+    "audioCodec": "aac",
+    "sourcePolicy": "原始素材只读；第三人称素材只承担现场证明，第一人称实录承担叙事主体；按用户明确要求保留原画面，不做打码或模糊。"
+  },
+  "requiredModules": [
+    "third-person-documentary-opening",
+    "first-person-field-footage",
+    "chapter-navigation",
+    "word-level-caption",
+    "editorial-context-card",
+    "unmasked-original-footage"
+  ],
+  "captionPolicy": {
+    "mode": "zh-word-level",
+    "timingSource": "原实录词级转写按 EDL 映射后的最终输出时间轴",
+    "minimumSyncScore": 0.62,
+    "punctuationBoundToPreviousCharacter": true,
+    "englishIsAuxiliary": false
+  },
+  "visualPolicy": {
+    "onePrimaryMessagePerScreen": true,
+    "maxSimultaneousTitleOwners": 1,
+    "requireSafeAreaChecks": [
+      "third-party-face-authorization",
+      "screen-content-authorization",
+      "subtitle"
+    ],
+    "dataAndListDefault": "real-footage-first-with-editorial-context",
+    "fullScreenAssetRule": "第三人称镜头不循环；无打码审片版不得在肖像、声音、屏幕内容和场地授权未确认前公开发布。"
+  },
+  "previewGate": {
+    "required": true,
+    "minimumCoverage": [
+      "hook",
+      "chapter",
+      "privacy",
+      "full-screen-asset",
+      "cta"
+    ],
+    "userApprovalRequiredBeforeFormalRender": false,
+    "skipCondition": "用户明确授权睡眠期间持续执行时，可由制作侧用低清预览和风险帧代替中间等待，但不能代替最终人工完整观看。"
+  },
+  "formalQa": {
+    "required": [
+      "output-decode",
+      "caption-timeline",
+      "visual-plan-validation",
+      "keyframe-review",
+      "public-authorization-review",
+      "user-full-watch"
+    ],
+    "keyframeReview": {
+      "minimumCount": 10,
+      "mustInclude": [
+        "third-person-opening",
+        "business-discovery",
+        "codex",
+        "geo",
+        "cta"
+      ]
+    }
+  },
+  "evolutionPolicy": {
+    "fix": "字幕越界、解码失败或公开授权不完整立即阻断公开发布。",
+    "experiment": "第三人称开场只作为单条纪实实验，不自动成为普通口播默认。",
+    "promotion": "连续三条纪实片稳定使用且用户确认后，才讨论升级为长期基线。"
+  }
+}
