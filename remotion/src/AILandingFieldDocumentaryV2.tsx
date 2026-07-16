@@ -39,9 +39,9 @@ const FrostedMask: React.FC<{
     style={{
       position: 'absolute',
       borderRadius: radius,
-      background: 'rgba(4, 11, 18, 0.82)',
-      backdropFilter: 'blur(34px) saturate(0.28)',
-      WebkitBackdropFilter: 'blur(34px) saturate(0.28)',
+      background: 'rgba(4, 11, 18, 0.22)',
+      backdropFilter: 'blur(44px) saturate(0.32) brightness(0.72)',
+      WebkitBackdropFilter: 'blur(44px) saturate(0.32) brightness(0.72)',
       boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.08), 0 10px 40px rgba(0,0,0,0.2)',
       ...style,
     }}
@@ -79,16 +79,16 @@ const BaseFootagePrivacy: React.FC = () => (
 
 const WalkthroughPrivacy: React.FC = () => (
   <AbsoluteFill style={{pointerEvents: 'none'}}>
-    <FrostedMask style={{left: 34, top: 452, width: 1080, height: 660}} />
-    <FrostedMask style={{left: 1140, top: 540, width: 820, height: 570}} />
+    <FrostedMask style={{left: -30, top: 300, width: 1160, height: 810}} />
+    <FrostedMask style={{left: 1150, top: 155, width: 810, height: 690}} />
     <PrivacyLabel />
   </AbsoluteFill>
 );
 
 const ControlDeskPrivacy: React.FC = () => (
   <AbsoluteFill style={{pointerEvents: 'none'}}>
-    <FrostedMask style={{left: 305, top: 348, width: 840, height: 705}} />
-    <FrostedMask style={{left: 1090, top: 340, width: 430, height: 590}} />
+    <FrostedMask style={{left: 620, top: 140, width: 245, height: 245}} radius={90} />
+    <FrostedMask style={{left: 1230, top: 130, width: 260, height: 250}} radius={95} />
     <PrivacyLabel />
   </AbsoluteFill>
 );
