@@ -71,8 +71,8 @@ const PrivacyLabel: React.FC = () => (
 const BaseFootagePrivacy: React.FC = () => (
   <AbsoluteFill style={{pointerEvents: 'none'}}>
     <FrostedMask style={{left: -34, top: -28, width: 650, height: 560}} />
-    <FrostedMask style={{left: 286, top: 46, width: 1155, height: 684}} />
-    <FrostedMask style={{left: 1432, top: 46, width: 530, height: 790}} />
+    <FrostedMask style={{left: 286, top: 46, width: 1155, height: 850}} />
+    <FrostedMask style={{left: 1432, top: 46, width: 530, height: 1034}} />
     <PrivacyLabel />
   </AbsoluteFill>
 );
