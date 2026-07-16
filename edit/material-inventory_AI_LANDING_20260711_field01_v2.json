@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "videoId": "AI_LANDING_20260711_field01_documentary_v2",
+  "sourcePolicy": "桌面原件不覆盖、不删除、不重命名；项目工作副本只读；最终导出移除全部定位与设备元数据。",
+  "sources": [
+    {
+      "role": "主叙事与唯一主音频",
+      "captureType": "第一人称桌面实操",
+      "originalPath": "/Users/pc/Desktop/口播1/7月11日(1).mov",
+      "workingCopy": "source/AI_LANDING_20260711_field01_16x9.MOV",
+      "sha256": "f20eb142151965fec09c191bfdad98c5b381a723368f7e2093b3215d008d0707",
+      "durationSeconds": 2663.119819,
+      "video": {
+        "codec": "h264",
+        "width": 3840,
+        "height": 2160,
+        "fps": 60,
+        "color": "BT.709"
+      },
+      "privacyRisks": [
+        "电脑与手机屏幕",
+        "二维码、账号、通知和联系人",
+        "客户业务资料",
+        "终端路径、文件名和授权信息"
+      ]
+    },
+    {
+      "role": "第三人称现场补充画面",
+      "captureType": "导播台与现场协作广角",
+      "originalPath": "/Users/pc/Desktop/口播1/IMG_0128.MOV",
+      "workingCopy": "source/AI_LANDING_20260715_broll01_control-desk_16x9.MOV",
+      "sha256": "ce5f984b14c7e235b14ef3766128c54c324efbef1df6f4ef79db14bd24e891fd",
+      "durationSeconds": 4.018333,
+      "sizeBytes": 26355411,
+      "video": {
+        "codec": "hevc",
+        "profile": "Main 10",
+        "width": 3840,
+        "height": 2160,
+        "fps": 59.97,
+        "pixelFormat": "yuv420p10le",
+        "color": "HLG / BT.2020",
+        "rotationDegrees": 0
+      },
+      "audio": {
+        "codec": "aac",
+        "sampleRate": 48000,
+        "channels": 2,
+        "useInEdit": false
+      },
+      "content": ["导播台", "操作人员", "蓝幕", "灯光", "相机", "监看画面"],
+      "privacyRisks": ["非用户人员肖像", "监看画面", "原文件含精确拍摄位置元数据"]
+    },
+    {
+      "role": "第三人称现场补充画面",
+      "captureType": "蓝幕影棚与监看流程移动镜头",
+      "originalPath": "/Users/pc/Desktop/口播1/IMG_0132.MOV",
+      "workingCopy": "source/AI_LANDING_20260715_broll02_studio-walkthrough_16x9.MOV",
+      "sha256": "edaf9751736935eaae712e586c6956a04c2dd70438204a5ec05c837fc9b5a445",
+      "durationSeconds": 14.408333,
+      "sizeBytes": 95033699,
+      "video": {
+        "codec": "hevc",
+        "profile": "Main 10",
+        "width": 3840,
+        "height": 2160,
+        "fps": 59.97,
+        "pixelFormat": "yuv420p10le",
+        "color": "HLG / BT.2020",
+        "rotationDegrees": 0
+      },
+      "audio": {
+        "codec": "aac",
+        "sampleRate": 48000,
+        "channels": 2,
+        "useInEdit": false
+      },
+      "content": ["蓝幕影棚", "灯光", "相机", "演员或工作人员", "监看画面", "现场走动"],
+      "privacyRisks": ["非用户人员肖像", "电脑界面", "原文件含精确拍摄位置元数据"]
+    }
+  ],
+  "editUse": {
+    "mainAudio": "只使用第一人称原片音轨。",
+    "thirdPersonAudio": "全部静音，只作真实现场 B-roll。",
+    "thirdPersonFrequency": "两条素材各使用一次；可拆分时间段，但不循环伪装成更多现场素材。",
+    "colorPipeline": "第三人称素材先转换为 SDR BT.709、1920×1080、30fps、H.264 代理后再合成。",
+    "privacyPolicy": "第三人称素材优先使用背影、远景和设备；无法确认授权的可识别人脸做裁切或局部遮挡。"
+  },
+  "releaseBoundary": "粗剪供内部内容确认；正式发布前必须复核客户肖像和声音授权，并逐段检查屏幕、二维码、账号、通知、文件名、联系人和定位元数据。"
+}
