@@ -87,6 +87,8 @@ const WalkthroughPrivacy: React.FC = () => (
 
 const ControlDeskPrivacy: React.FC = () => (
   <AbsoluteFill style={{pointerEvents: 'none'}}>
+    <FrostedMask style={{left: 445, top: 425, width: 460, height: 390}} radius={20} />
+    <FrostedMask style={{left: 865, top: 355, width: 360, height: 330}} radius={18} />
     <FrostedMask style={{left: 620, top: 140, width: 245, height: 245}} radius={90} />
     <FrostedMask style={{left: 1230, top: 130, width: 260, height: 250}} radius={95} />
     <PrivacyLabel />
