@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "baselineId": "field-documentary-short-16x9-v1",
+  "status": "active",
+  "effectiveFrom": "2026-07-17",
+  "appliesTo": "用户明确要求从长时第一人称企业现场中挑重点、压缩为五分钟以内的独立纪实短片时使用；不替代 V5、V6 或完整单条口播基线。",
+  "production": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "videoCodec": "h264",
+    "audioCodec": "aac",
+    "sourcePolicy": "原始素材只读；第一人称实录承担叙事主体，现场空镜只承担环境和业务证明。"
+  },
+  "requiredModules": [
+    "first-person-field-footage",
+    "supporting-broll",
+    "chapter-navigation",
+    "digital-camera",
+    "semantic-motion-card",
+    "word-level-caption",
+    "sfx-cue-sheet"
+  ],
+  "captionPolicy": {
+    "mode": "zh-word-level",
+    "timingSource": "原实录词级转写按 EDL 映射后的最终输出时间轴",
+    "minimumSyncScore": 0.5,
+    "punctuationBoundToPreviousCharacter": true,
+    "englishIsAuxiliary": false
+  },
+  "visualPolicy": {
+    "onePrimaryMessagePerScreen": true,
+    "maxSimultaneousTitleOwners": 1,
+    "requireSafeAreaChecks": [
+      "subtitle",
+      "information-card",
+      "public-authorization"
+    ],
+    "dataAndListDefault": "v4-deterministic-card-over-real-field-footage",
+    "fullScreenAssetRule": "空镜不循环、不承担未经核验的事实结论；企业事实口述段必须显示待资料复核边界。"
+  },
+  "previewGate": {
+    "required": true,
+    "minimumCoverage": [
+      "hook",
+      "semantic-card",
+      "full-screen-asset",
+      "cta"
+    ],
+    "userApprovalRequiredBeforeFormalRender": false,
+    "skipCondition": "用户明确授权休息期间持续执行并只接收成片时，可由制作侧用低清预览和风险帧完成内部门禁；不能替代用户最终完整观看。"
+  },
+  "formalQa": {
+    "required": [
+      "output-decode",
+      "caption-timeline",
+      "visual-plan-validation",
+      "keyframe-review",
+      "public-authorization-review",
+      "user-full-watch"
+    ],
+    "keyframeReview": {
+      "minimumCount": 10,
+      "mustInclude": [
+        "hook",
+        "enterprise-facts",
+        "user-questions",
+        "execution-path",
+        "cta"
+      ]
+    }
+  },
+  "evolutionPolicy": {
+    "fix": "解码失败、字幕越界或事实边界遗漏必须修正后再交付。",
+    "experiment": "本基线只服务独立现场纪实短片，不自动改动此前口播版本或后续 V6 升级要求。",
+    "promotion": "连续三条同类现场短片稳定使用并经用户确认后，才讨论升级。"
+  }
+}

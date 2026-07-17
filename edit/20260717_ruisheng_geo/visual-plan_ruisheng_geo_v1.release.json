@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 2,
+  "status": "implementation-synced-awaiting-user-full-watch",
+  "videoId": "RUISHENG_GEO_20260717_field",
+  "videoTitle": "GEO 落地第一步：先核对企业事实",
+  "sourceVideo": "edit/20260717_ruisheng_geo/exports/ruisheng_geo_rough_v1.mp4",
+  "baselineId": "field-documentary-short-16x9-v1",
+  "timelineBasis": "基于 edl_ruisheng_geo_rough_v1.json 的 15 段输出时间轴；全部秒点为 278.83 秒粗剪的输出时间。",
+  "styleReferenceIds": [
+    "v4-definition-card",
+    "v4-three-column-card",
+    "v4-resource-directed-map",
+    "v4-question-overlay",
+    "v4-action-input",
+    "v4-boundary-card"
+  ],
+  "previewCoverage": [
+    "hook",
+    "semantic-card",
+    "full-screen-asset",
+    "cta"
+  ],
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "style": {
+    "direction": "真实第一人称现场为主体，V4 确定性信息卡解释 GEO 核对逻辑，现场空镜只用于建立空间和业务语境。",
+    "palette": {
+      "background": "#07131A",
+      "panel": "#0D2430",
+      "text": "#F4F8FA",
+      "muted": "#A9BBC4",
+      "accent": "#35D0BA",
+      "accent2": "#FFB454",
+      "risk": "#FF7A6E"
+    }
+  },
+  "safeAreas": {
+    "subtitle": {"x": 300, "y": 780, "width": 1320, "height": 220},
+    "informationCard": {"x": 44, "y": 120, "width": 1050, "height": 700},
+    "topHud": {"x": 40, "y": 20, "width": 1840, "height": 100}
+  },
+  "privacy": {
+    "mode": "no-pixelation-safe-composition",
+    "rule": "不做马赛克或模糊；通过安全裁切、空镜、渐变和信息卡避免展示证照号码、手机号、聊天、后台密钥等敏感信息。",
+    "releaseBoundary": "无打码不等于已取得公开授权；企业、出镜人员、声音、场地和可辨识资料授权未确认前不得公开发布。"
+  },
+  "layers": [
+    {
+      "id": "first-person-field-footage",
+      "start": 0,
+      "end": 278.83,
+      "spokenLine": "从老板为什么想做 AI 与 GEO 开始，逐步核对企业事实、用户问题和执行资料。",
+      "purpose": "承载真实业务沟通主线",
+      "kind": "full-screen-asset",
+      "titleOwner": false,
+      "overlapGroup": "base-footage",
+      "zone": "full-screen",
+      "asset": {"sourceType": "video", "source": "edit/20260717_ruisheng_geo/exports/ruisheng_geo_rough_v1.mp4"},
+      "checks": {"needsFrameReview": true, "reviewAt": 15.8}
+    },
+    {
+      "id": "definition-card",
+      "start": 2,
+      "end": 9,
+      "spokenLine": "先了解真实需求，再核对企业事实。",
+      "purpose": "锁定全片结论",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "center",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 5.2}
+    },
+    {
+      "id": "enterprise-facts-card",
+      "start": 44.3,
+      "end": 53.3,
+      "spokenLine": "企业是谁、真正做什么、证据在哪里。",
+      "purpose": "把现场核对归纳为三项事实",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 48.2}
+    },
+    {
+      "id": "broll-business-scenes",
+      "start": 92.3,
+      "end": 94.7,
+      "spokenLine": "企业实际覆盖灯光、音响、舞美和会议等场景。",
+      "purpose": "用现场空镜支撑业务场景",
+      "kind": "full-screen-asset",
+      "titleOwner": false,
+      "overlapGroup": "supporting-broll",
+      "zone": "full-screen",
+      "asset": {"sourceType": "video", "source": "source/20260717_ruisheng_geo/broll/IMG_0193.MOV"},
+      "checks": {"needsFrameReview": true, "reviewAt": 93.5}
+    },
+    {
+      "id": "broll-visibility-gap",
+      "start": 130.3,
+      "end": 133.9,
+      "spokenLine": "做过的业务没有在线上形成清晰展示。",
+      "purpose": "建立真实业务空间与线上曝光断层的对照",
+      "kind": "full-screen-asset",
+      "titleOwner": false,
+      "overlapGroup": "supporting-broll",
+      "zone": "full-screen",
+      "asset": {"sourceType": "video", "source": "source/20260717_ruisheng_geo/broll/IMG_0195.MOV"},
+      "checks": {"needsFrameReview": true, "reviewAt": 132.1}
+    },
+    {
+      "id": "user-question-card",
+      "start": 153.3,
+      "end": 162.3,
+      "spokenLine": "客户会继续追问适用场景、参数、安装、调试和售后。",
+      "purpose": "说明 GEO 需要问题链而非单一关键词",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 157.5}
+    },
+    {
+      "id": "resource-map-card",
+      "start": 182.3,
+      "end": 193.3,
+      "spokenLine": "客户问题经过专业追问，形成事实答案、公开内容和重复验证。",
+      "purpose": "展示现实问题到数字资产的路径",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 187.2}
+    },
+    {
+      "id": "broll-execution-entry",
+      "start": 217.84,
+      "end": 222.64,
+      "spokenLine": "从核对进入资料负责人和执行路径。",
+      "purpose": "章节转场并建立企业空间",
+      "kind": "full-screen-asset",
+      "titleOwner": false,
+      "overlapGroup": "supporting-broll",
+      "zone": "full-screen",
+      "asset": {"sourceType": "video", "source": "source/20260717_ruisheng_geo/broll/IMG_0201.MOV"},
+      "checks": {"needsFrameReview": true, "reviewAt": 220.2}
+    },
+    {
+      "id": "action-input-card",
+      "start": 235.84,
+      "end": 246.84,
+      "spokenLine": "先指定事实负责人，再准备主体、服务、资质、官网和案例。",
+      "purpose": "给出初期资料清单",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 240.8}
+    },
+    {
+      "id": "boundary-card",
+      "start": 264.84,
+      "end": 275.84,
+      "spokenLine": "发布不等于被 AI 推荐，需要持续采样、复核和验证。",
+      "purpose": "收束效果边界",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 269.8}
+    },
+    {
+      "id": "broll-real-space-close",
+      "start": 273.54,
+      "end": 278.34,
+      "spokenLine": "最终回到真实业务空间和案例资料。",
+      "purpose": "以真实企业现场结束",
+      "kind": "full-screen-asset",
+      "titleOwner": false,
+      "overlapGroup": "supporting-broll",
+      "zone": "full-screen",
+      "asset": {"sourceType": "video", "source": "source/20260717_ruisheng_geo/broll/IMG_0202.MOV"},
+      "checks": {"needsFrameReview": true, "reviewAt": 276.4}
+    }
+  ]
+}

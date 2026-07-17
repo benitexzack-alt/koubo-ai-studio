@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260717_ruisheng_geo_field_16x9_v1",
+  "status": "ready-for-user-review",
+  "videoId": "RUISHENG_GEO_20260717_field",
+  "baselineId": "field-documentary-short-16x9-v1",
+  "intent": {
+    "topic": "一次真实 GEO 企业落地前期沟通：先核对企业事实，再整理用户问题、证据和执行资料",
+    "serviceAudience": "甘肃本地小微企业、实体企业老板、创业者和正在尝试 GEO 与 AI 搜索曝光的企业。",
+    "oneConclusion": "GEO 落地第一步不是先堆关键词或发文章，而是先把企业主体、真实业务、服务场景、用户问题和证据资料核对清楚。",
+    "cta": "先指定企业事实负责人，把主体、产品服务、资质授权、官网账号和真实案例整理出来，再进入持续发布、采样、复核与验证。",
+    "factBoundary": "老板现场口述的企业范围、业务能力和案例均待资料复核；发布内容不等于被 AI 推荐，本片不承诺排名、曝光、咨询、获客或成交。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260717_ruisheng_geo/RUISHENG_GEO_20260717_field_main_16x9.MP4",
+    "transcript": "edit/20260717_ruisheng_geo/transcripts/ruisheng_geo_rough_v1.mapped.json",
+    "bilingualCaptions": "remotion/public/data/ruisheng_geo_rough_v1.pages.json",
+    "visualPlan": "edit/20260717_ruisheng_geo/visual-plan_ruisheng_geo_v1.release.json",
+    "assets": [
+      "edit/20260717_ruisheng_geo/exports/ruisheng_geo_rough_v1.mp4",
+      "source/20260717_ruisheng_geo/broll/IMG_0186.MOV",
+      "source/20260717_ruisheng_geo/broll/IMG_0187.MOV",
+      "source/20260717_ruisheng_geo/broll/IMG_0193.MOV",
+      "source/20260717_ruisheng_geo/broll/IMG_0195.MOV",
+      "source/20260717_ruisheng_geo/broll/IMG_0201.MOV",
+      "source/20260717_ruisheng_geo/broll/IMG_0202.MOV",
+      "remotion/public/audio/ruisheng-geo-v1/card-pop.wav",
+      "remotion/public/audio/ruisheng-geo-v1/node-connect.wav",
+      "remotion/public/audio/ruisheng-geo-v1/key-transition.wav",
+      "remotion/public/audio/ruisheng-geo-v1/confirm.wav",
+      "remotion/public/audio/ruisheng-geo-v1/impact-low.wav"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/20260717_ruisheng_geo/瑞盛音箱_GEO落地第一步先核对企业事实_16x9_final_v1.mp4",
+    "previewOutput": "edit/20260717_ruisheng_geo/exports/ruisheng_geo_preview30_v1.mp4",
+    "coverPrompt": "outputs/20260717_ruisheng_geo/瑞盛音箱_GEO现场片_发布文案与提示词_v1.md",
+    "soundEffectCueSheet": "edit/20260717_ruisheng_geo/sfx-cue-sheet_ruisheng_geo_v1.json",
+    "modules": [
+      "first-person-field-footage",
+      "supporting-broll",
+      "chapter-navigation",
+      "digital-camera",
+      "semantic-motion-card",
+      "word-level-caption",
+      "sfx-cue-sheet"
+    ],
+    "styleReferenceIds": [
+      "v4-definition-card",
+      "v4-three-column-card",
+      "v4-resource-directed-map",
+      "v4-question-overlay",
+      "v4-action-input",
+      "v4-boundary-card"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式成片 1920×1080、30fps、H.264/AAC、278.890667 秒、500,653,717 字节；SHA-256=22cc967e2a7fff5775df99960db1faaefb58122bf00989aa82628aef6078bed7；完整解码无报错；未检出持续 0.4 秒以上黑场和超过 1.2 秒的 -50dB 静音；响度 -16.00 LUFS、真峰值 -1.48 dBTP、LRA 8.00。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "minimumScore": 0.5,
+      "evidence": "1767 条词级字幕、115 页中文分页均无负时间、倒序或越界；时间窗 LCS 最低分 0.50，达到独立现场纪实短片基线。三个低分页分别由‘五敏→舞美’纠错、相邻句边界重叠和‘这些账号’纠错造成，已人工对照。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "schema v2 视觉方案通过校验，共 11 个图层和 11 个风险抽帧；V4 定义卡、三列事实卡、问题卡、资源导向图、资料清单和边界卡均实际进入正式片。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [1.5, 5.2, 15.8, 48.2, 93.5, 132.1, 157.5, 187.2, 220.2, 240.8, 269.8, 276.4],
+      "evidence": "12 个正式片关键帧覆盖开场、需求、企业事实、业务场景、曝光断层、用户问题、执行路径、资料清单、GEO 边界和结尾现场；未见卡片裁切、字幕越界、章节条冲突或黑帧。"
+    },
+    "publicAuthorizationReview": {
+      "status": "pending-user-review",
+      "evidence": "本条不做马赛克或模糊；企业、出镜人员、声音、场地及可辨识资料的公开发布授权仍需用户在发布前确认。"
+    },
+    "soundAndCameraReview": {
+      "status": "pending-user-review",
+      "evidence": "13 个声效点位和数字运镜参数已进入 composition，机器侧确认文件、混音轨和参数存在；是否真正可听、可感知且不过度仍需用户正常播放完整片确认。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "independent-field-documentary-short-baseline",
+      "decision": "applied",
+      "evidence": "本条建立独立的五分钟现场纪实短片基线，不修改此前 V5、V6、完整单条口播或 2026-07-16 现场纪实片版本。"
+    },
+    {
+      "id": "explicit-rough-cut-edl",
+      "decision": "applied",
+      "evidence": "用户明确要求从 21 分 36 秒主素材抓取 GEO 核心并压缩到五分钟以内，因此使用 15 段 EDL，正式成片 4 分 38.89 秒。"
+    },
+    {
+      "id": "no-pixelation-safe-composition",
+      "decision": "applied",
+      "evidence": "按用户要求不做任何打码；制作侧仅使用安全裁切、渐变、现场空镜和信息卡组织画面，公开授权保持待确认。"
+    },
+    {
+      "id": "v4-field-visual-pack",
+      "decision": "applied",
+      "evidence": "使用 V4 确定性信息卡和章节 HUD，真实现场是主体，信息卡只解释核对与执行逻辑。"
+    },
+    {
+      "id": "cover-copy-outro-prompts",
+      "decision": "applied",
+      "evidence": "同步提供抖音标题、钩子、发布文案、话题、真人截图合成封面提示词和 Synthes 2.0 五秒动漫结尾提示词。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户明确要求持续执行、不询问中间问题并只接收最终成片；制作侧完成 30 秒预览、后段故障局部压力测试、正式全片渲染和机器质检，仍须用户完整观看。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "用户完整观看并确认公开授权后再决定发布；发布前按当日后台分别核验公开发布、推荐/搜索、DOU+、广告/交易四道门槛，并如实处理营销推广与 AI 生成封面或动漫结尾声明。"
+  }
+}

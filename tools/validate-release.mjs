@@ -124,7 +124,8 @@ if (exists(release.inputs?.transcript) && exists(release.inputs?.bilingualCaptio
   const captionCheck = run(process.execPath, [
     'tools/check-bilingual-caption-sync.mjs',
     release.inputs.transcript,
-    release.inputs.bilingualCaptions
+    release.inputs.bilingualCaptions,
+    String(baseline.captionPolicy?.minimumSyncScore ?? 0.62)
   ]);
   if (captionCheck.status !== 0) {
     errors.push(`字幕同步子校验失败：${captionCheck.stderr.trim() || captionCheck.stdout.trim()}`);
