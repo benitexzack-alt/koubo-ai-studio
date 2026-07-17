@@ -193,7 +193,10 @@ const toCaptionPages = (captions: Caption[]): CaptionPage[] => {
   return mergeCaptionPages(pages);
 };
 
-export const CaptionOverlay: React.FC<{captionsSrc: string}> = ({captionsSrc}) => {
+export const CaptionOverlay: React.FC<{captionsSrc: string; maxHoldMs?: number}> = ({
+  captionsSrc,
+  maxHoldMs = Number.POSITIVE_INFINITY,
+}) => {
   const [captions, setCaptions] = useState<Caption[] | null>(null);
   const [handle] = useState(() => delayRender('加载口播字幕'));
 
@@ -216,10 +219,10 @@ export const CaptionOverlay: React.FC<{captionsSrc: string}> = ({captionsSrc}) =
     return null;
   }
 
-  return <CaptionPages captions={captions} />;
+  return <CaptionPages captions={captions} maxHoldMs={maxHoldMs} />;
 };
 
-const CaptionPages: React.FC<{captions: Caption[]}> = ({captions}) => {
+const CaptionPages: React.FC<{captions: Caption[]; maxHoldMs: number}> = ({captions, maxHoldMs}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const nowMs = (frame / fps) * 1000;
@@ -227,7 +230,9 @@ const CaptionPages: React.FC<{captions: Caption[]}> = ({captions}) => {
 
   const current = pages.find((candidate, index) => {
     const next = pages[index + 1];
-    const end = next ? next.startMs : candidate.endMs + 240;
+    const normalEnd = next ? next.startMs : candidate.endMs + 240;
+    const holdLimit = Number.isFinite(maxHoldMs) ? candidate.endMs + maxHoldMs : Infinity;
+    const end = Math.min(normalEnd, holdLimit);
     return nowMs >= candidate.startMs && nowMs < end;
   });
 

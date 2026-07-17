@@ -14,6 +14,7 @@ import {CoverStill9x16} from './CoverStill9x16';
 import {DigitalOneTalk16x9} from './DigitalOneTalk16x9';
 import {TokenV5AssetPreview16x9} from './TokenV5AssetPreview16x9';
 import {TokenV5Talk16x9} from './TokenV5Talk16x9';
+import {RuishengGeoField16x9, RUISHENG_GEO_DURATION_IN_FRAMES} from './RuishengGeoField16x9';
 import {
   defaultTalkProps,
   gansuStoreAiTalk01Props,
@@ -30,6 +31,14 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="RuishengGeoField16x9-Final"
+          component={RuishengGeoField16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={RUISHENG_GEO_DURATION_IN_FRAMES}
+        />
         <Composition
           id="AILandingFieldDocumentaryV2-Rough"
           component={AILandingFieldDocumentaryV2}
