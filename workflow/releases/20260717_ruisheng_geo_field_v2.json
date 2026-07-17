@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260717_ruisheng_geo_field_16x9_v2",
+  "status": "ready-for-user-review",
+  "videoId": "RUISHENG_GEO_20260717_field",
+  "baselineId": "field-documentary-short-16x9-v1",
+  "intent": {
+    "topic": "一次真实 GEO 企业落地前期沟通：先核对企业事实，再整理用户问题、证据和执行资料",
+    "serviceAudience": "甘肃本地小微企业、实体企业老板、创业者和正在尝试 GEO 与 AI 搜索曝光的企业。",
+    "oneConclusion": "GEO 落地第一步不是先堆关键词或发文章，而是先把企业主体、真实业务、服务场景、用户问题和证据资料核对清楚。",
+    "cta": "关注超哥，继续看兰州本地企业的 AI 落地过程。",
+    "factBoundary": "老板现场口述的企业范围、业务能力和案例均待资料复核；发布内容不等于被 AI 推荐，本片不承诺排名、曝光、咨询、获客或成交。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260717_ruisheng_geo/RUISHENG_GEO_20260717_field_main_16x9.MP4",
+    "transcript": "edit/20260717_ruisheng_geo/transcripts/ruisheng_geo_rough_v1.mapped.json",
+    "bilingualCaptions": "remotion/public/data/ruisheng_geo_rough_v2.bilingual.json",
+    "visualPlan": "edit/20260717_ruisheng_geo/visual-plan_ruisheng_geo_v2.release.json",
+    "assets": [
+      "edit/20260717_ruisheng_geo/exports/ruisheng_geo_rough_v1.mp4",
+      "source/20260717_ruisheng_geo/broll/IMG_0186.MOV",
+      "source/20260717_ruisheng_geo/broll/IMG_0187.MOV",
+      "source/20260717_ruisheng_geo/broll/IMG_0193.MOV",
+      "source/20260717_ruisheng_geo/broll/IMG_0195.MOV",
+      "source/20260717_ruisheng_geo/broll/IMG_0201.MOV",
+      "source/20260717_ruisheng_geo/broll/IMG_0202.MOV",
+      "remotion/public/images/ruisheng-geo-v2/outro-bg.jpg",
+      "remotion/public/audio/ruisheng-geo-v1/card-pop.wav",
+      "remotion/public/audio/ruisheng-geo-v1/node-connect.wav",
+      "remotion/public/audio/ruisheng-geo-v1/key-transition.wav",
+      "remotion/public/audio/ruisheng-geo-v1/confirm.wav",
+      "remotion/public/audio/ruisheng-geo-v1/impact-low.wav",
+      "remotion/public/audio/ruisheng-geo-v1/outro-bed.wav"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/20260717_ruisheng_geo/瑞盛音箱_GEO落地第一步先核对企业事实_16x9_final_v2_双语稳定字幕.mp4",
+    "previewOutput": "edit/20260717_ruisheng_geo/exports/ruisheng_geo_v2_preview_outro_audiofix.mp4",
+    "coverPrompt": "outputs/20260717_ruisheng_geo/瑞盛音箱_GEO现场片_发布文案与提示词_v1.md",
+    "soundEffectCueSheet": "edit/20260717_ruisheng_geo/sfx-cue-sheet_ruisheng_geo_v2.json",
+    "modules": [
+      "first-person-field-footage",
+      "supporting-broll",
+      "chapter-navigation",
+      "digital-camera",
+      "semantic-motion-card",
+      "word-level-caption",
+      "sfx-cue-sheet"
+    ],
+    "styleReferenceIds": [
+      "v4-definition-card",
+      "v4-three-column-card",
+      "v4-resource-directed-map",
+      "v4-question-overlay",
+      "v4-action-input",
+      "v4-boundary-card"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式成片 1920×1080、30fps、H.264/AAC、285.333 秒、486,828,647 字节；SHA-256=e86c70d8519a36f95a4c4e0330d147022f08191e406fe03de17df5269af0cd4c；完整解码无报错；未检出持续 0.4 秒以上黑场和超过 1.2 秒的 -50dB 静音；响度 -16.03 LUFS、真峰值 -1.49 dBTP、LRA 8.20。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "minimumScore": 0.5,
+      "evidence": "115 页中英同窗字幕无负时间、倒序、空英文或越界；显示字幕中的目标水词残留为 0；时间窗同步最低分 0.50，达到独立现场纪实短片基线。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "schema v2 视觉方案通过校验，共 11 个图层和 11 个风险抽帧；V2 使用固定尺寸双语字幕容器和稳定信息卡，移除弹簧缩放与逐页位移。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [1.5, 5.2, 45.0, 48.2, 93.5, 132.1, 157.5, 187.2, 220.2, 240.8, 269.8, 278.6, 279.2, 282.0, 284.8],
+      "evidence": "15 个正式片关键帧覆盖开场、定义卡、企业事实、业务空镜、曝光断层、用户问题、执行路径、边界和完整结尾；未见卡片裁切、字幕越界、章节条冲突、结尾文字越界或黑帧。"
+    },
+    "publicAuthorizationReview": {
+      "status": "pending-user-review",
+      "evidence": "本条不做马赛克或模糊；企业、出镜人员、声音、场地及可辨识资料的公开发布授权仍需用户在发布前确认。"
+    },
+    "soundAndCameraReview": {
+      "status": "pending-user-review",
+      "evidence": "原 13 个声效点位保留，结尾新增持续尾音及 3 个语义提示；机器侧确认音视频等长、响度峰值合规且无异常静音，是否自然、可感知且不过度仍需用户正常播放完整片确认。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "independent-v2-preserve-v1",
+      "decision": "applied",
+      "evidence": "V2 使用新 composition、字幕数据和输出文件，V1 正式片和此前 V5、V6 均未覆盖。"
+    },
+    {
+      "id": "stable-bilingual-caption-shell",
+      "decision": "applied",
+      "evidence": "字幕改为固定 1480×118 像素容器、固定字号和固定底部位置，仅保留透明度淡入淡出；连续帧 1350—1352 已复查。"
+    },
+    {
+      "id": "display-filler-removal",
+      "decision": "applied",
+      "evidence": "中英字幕同窗分页，目标水词显示残留为 0；原现场声音保留，未做会造成跳音的逐词音频碎切。"
+    },
+    {
+      "id": "natural-real-scene-outro",
+      "decision": "applied",
+      "evidence": "结尾延长约 6.5 秒，以真实业务空间定格、个人身份、单一关注提示和低强度尾音自然收束。"
+    },
+    {
+      "id": "no-pixelation-safe-composition",
+      "decision": "applied",
+      "evidence": "按用户要求不做任何打码；制作侧使用安全裁切、渐变、现场空镜和信息卡组织画面，公开授权保持待确认。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户直接指出字幕抖动、水词显示、缺少双语和结尾突兀，并要求继续修改；制作侧完成三段风险预览、连续帧检查、V2 正式渲染和机器质检，仍须用户完整观看。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "用户完整观看并确认公开授权后再决定发布；发布前按当日后台分别核验公开发布、推荐/搜索、DOU+、广告/交易四道门槛。"
+  }
+}

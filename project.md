@@ -95,6 +95,10 @@
 - 瑞盛音箱 GEO 片使用独立基线 `workflow/production-baseline.field-documentary-short.v1.json`，不替代此前 V5、V6 或普通口播生产基线；发布记录 `workflow/releases/20260717_ruisheng_geo_field_v1.json` 已校验通过，状态为 `ready-for-user-review`。
 - 瑞盛音箱 GEO 片正式成片机器质检：1920×1080、30fps、H.264/AAC、500653717 字节，完整解码无报错，未检出持续 0.4 秒以上黑场和超过 1.2 秒的 -50dB 静音，综合响度 -16.00 LUFS、真峰值 -1.48 dBTP、LRA 8.00；SHA-256 为 `22cc967e2a7fff5775df99960db1faaefb58122bf00989aa82628aef6078bed7`。
 - 已同步交付瑞盛音箱 GEO 片抖音标题、开头钩子、发布文案、话题、真人截图合成封面提示词和 Synthes 2.0 五秒动漫结尾提示词：`outputs/20260717_ruisheng_geo/瑞盛音箱_GEO现场片_发布文案与提示词_v1.md`。
+- 用户复看 V1 后要求修复字幕抖动、隐藏水词、改为中英双语并让结尾更自然；已另建 V2 composition 和正式输出，V1 及此前 V5、V6 均保持不变。
+- V2 使用固定尺寸双语字幕容器，只做透明度淡入淡出；115 页中英文共用时间窗，目标水词显示残留为 0，原现场声音不做逐词碎切。
+- V2 正式成片：`outputs/20260717_ruisheng_geo/瑞盛音箱_GEO落地第一步先核对企业事实_16x9_final_v2_双语稳定字幕.mp4`，285.333 秒、486828647 字节；完整解码通过，黑场和超过 1.2 秒异常静音均为 0，响度 -16.03 LUFS、真峰值 -1.49 dBTP、LRA 8.20，SHA-256 为 `e86c70d8519a36f95a4c4e0330d147022f08191e406fe03de17df5269af0cd4c`。
+- V2 结尾延长约 6.5 秒，以真实业务空间画面、核心主张、`超哥 · 兰州 AI 创业`、单一关注提示和低强度尾音收束；发布记录 `workflow/releases/20260717_ruisheng_geo_field_v2.json` 已校验通过，状态为 `ready-for-user-review`。
 - Token V5 V2 已完成制作侧全片解码、黑帧、长静音、响度、11 个风险帧和 7 个修订字幕页检查；58 页字幕最低同步分 0.75。用户完整观看确认整体内容没有问题，但未听到约定音效、未感知到数字运镜，两项均按未交付处理。发布记录已标记为 `verified`，剪映补音效后的发布版仍需重新完整观看和检查音频。
 - Token V5 已补交 3:4 封面提示词：`outputs/Token产业链_封面提示词_3x4_v1.md`；提示词直接使用用户上传的真人截图进行合成，不重新生成或改变人物五官、衣服和姿态。
 - 已生成第三条测试口播词级时间轴字幕：`remotion/public/data/IMG_20260707_small_business_ai.edl.v2.captions.json`。

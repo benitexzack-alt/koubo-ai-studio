@@ -3,6 +3,7 @@ import React from 'react';
 import {
   AbsoluteFill,
   Easing,
+  Img,
   Sequence,
   interpolate,
   staticFile,
@@ -10,8 +11,10 @@ import {
   useVideoConfig,
 } from 'remotion';
 import {CaptionOverlay} from './components/CaptionOverlay';
+import {StableBilingualCaptionOverlay} from './components/StableBilingualCaptionOverlay';
 
 export const RUISHENG_GEO_DURATION_IN_FRAMES = 8365;
+export const RUISHENG_GEO_V2_DURATION_IN_FRAMES = 8560;
 
 const palette = {
   bg: '#07131A',
@@ -154,12 +157,17 @@ const broll = [
   {start: 273.54, duration: 4.8, file: 'IMG_0202.mp4', label: '真实业务空间'},
 ];
 
+const brollV2 = broll.map((item) =>
+  item.file === 'IMG_0202.mp4' ? {...item, duration: 5.3} : item,
+);
+
 const CardShell: React.FC<{
   duration: number;
   children: React.ReactNode;
   centered?: boolean;
   width?: number;
-}> = ({duration, children, centered = false, width = 760}) => {
+  stable?: boolean;
+}> = ({duration, children, centered = false, width = 760, stable = false}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const end = duration * fps;
@@ -167,12 +175,12 @@ const CardShell: React.FC<{
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
   });
-  const y = interpolate(frame, [0, 15], [34, 0], {
+  const y = stable ? 0 : interpolate(frame, [0, 15], [34, 0], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
     easing: Easing.bezier(0.16, 1, 0.3, 1),
   });
-  const scale = interpolate(frame, [0, 15], [0.965, 1], {
+  const scale = stable ? 1 : interpolate(frame, [0, 15], [0.965, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
     easing: Easing.bezier(0.16, 1, 0.3, 1),
@@ -212,8 +220,8 @@ const Eyebrow: React.FC<{children: React.ReactNode}> = ({children}) => (
   <div style={{fontSize: 23, fontWeight: 800, color: palette.teal, letterSpacing: 3}}>{children}</div>
 );
 
-const DefinitionCard: React.FC = () => (
-  <CardShell duration={7} centered width={1050}>
+const DefinitionCard: React.FC<{stable?: boolean}> = ({stable}) => (
+  <CardShell duration={7} centered width={1050} stable={stable}>
     <Eyebrow>GEO · 真实企业落地</Eyebrow>
     <div style={{fontSize: 70, fontWeight: 950, lineHeight: 1.08, marginTop: 14}}>第一步不是发文章</div>
     <div style={{fontSize: 48, fontWeight: 850, color: palette.amber, marginTop: 10}}>而是先核对企业事实</div>
@@ -221,14 +229,14 @@ const DefinitionCard: React.FC = () => (
   </CardShell>
 );
 
-const ThreeColumnCard: React.FC = () => {
+const ThreeColumnCard: React.FC<{stable?: boolean}> = ({stable}) => {
   const items = [
     ['企业是谁', '主体 · 品牌 · 渠道'],
     ['真实做什么', '产品 · 服务 · 场景'],
     ['证据在哪里', '资质 · 官网 · 案例'],
   ];
   return (
-    <CardShell duration={9} width={800}>
+    <CardShell duration={9} width={800} stable={stable}>
       <Eyebrow>先问清三件事</Eyebrow>
       <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginTop: 20}}>
         {items.map(([title, body], index) => (
@@ -243,8 +251,8 @@ const ThreeColumnCard: React.FC = () => {
   );
 };
 
-const QuestionCard: React.FC = () => (
-  <CardShell duration={9} width={760}>
+const QuestionCard: React.FC<{stable?: boolean}> = ({stable}) => (
+  <CardShell duration={9} width={760} stable={stable}>
     <Eyebrow>客户不会只问一个词</Eyebrow>
     <div style={{fontSize: 44, fontWeight: 930, marginTop: 12}}>问题会继续往下追</div>
     {['适合什么场景？', '参数怎么选？', '谁来安装、调试和售后？'].map((item, index) => (
@@ -255,10 +263,10 @@ const QuestionCard: React.FC = () => (
   </CardShell>
 );
 
-const ResourceMapCard: React.FC = () => {
+const ResourceMapCard: React.FC<{stable?: boolean}> = ({stable}) => {
   const nodes = ['客户怎么问', '专业追问', '事实答案', '公开内容', '重复验证'];
   return (
-    <CardShell duration={11} width={820}>
+    <CardShell duration={11} width={820} stable={stable}>
       <Eyebrow>现实问题 → 数字资产</Eyebrow>
       <div style={{fontSize: 39, fontWeight: 930, marginTop: 12}}>不是堆关键词，是建立可验证问题链</div>
       <div style={{display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 10, marginTop: 22}}>
@@ -273,8 +281,8 @@ const ResourceMapCard: React.FC = () => {
   );
 };
 
-const ActionCard: React.FC = () => (
-  <CardShell duration={11} width={790}>
+const ActionCard: React.FC<{stable?: boolean}> = ({stable}) => (
+  <CardShell duration={11} width={790} stable={stable}>
     <Eyebrow>初期资料清单</Eyebrow>
     <div style={{fontSize: 42, fontWeight: 930, marginTop: 12}}>先指定事实负责人，再开始优化</div>
     <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginTop: 18}}>
@@ -287,8 +295,8 @@ const ActionCard: React.FC = () => (
   </CardShell>
 );
 
-const BoundaryCard: React.FC = () => (
-  <CardShell duration={11} width={820}>
+const BoundaryCard: React.FC<{stable?: boolean}> = ({stable}) => (
+  <CardShell duration={11} width={820} stable={stable}>
     <Eyebrow>GEO 的边界</Eyebrow>
     <div style={{fontSize: 52, lineHeight: 1.12, fontWeight: 950, marginTop: 12}}>
       发布 <span style={{color: palette.red}}>≠</span> 被 AI 推荐
@@ -297,23 +305,23 @@ const BoundaryCard: React.FC = () => (
   </CardShell>
 );
 
-const SemanticCards: React.FC = () => (
+const SemanticCards: React.FC<{stable?: boolean}> = ({stable}) => (
   <>
-    <Sequence from={toFrame(2)} durationInFrames={toFrame(7)}><DefinitionCard /></Sequence>
-    <Sequence from={toFrame(44.3)} durationInFrames={toFrame(9)}><ThreeColumnCard /></Sequence>
-    <Sequence from={toFrame(153.3)} durationInFrames={toFrame(9)}><QuestionCard /></Sequence>
-    <Sequence from={toFrame(182.3)} durationInFrames={toFrame(11)}><ResourceMapCard /></Sequence>
-    <Sequence from={toFrame(235.84)} durationInFrames={toFrame(11)}><ActionCard /></Sequence>
-    <Sequence from={toFrame(264.84)} durationInFrames={toFrame(11)}><BoundaryCard /></Sequence>
+    <Sequence from={toFrame(2)} durationInFrames={toFrame(7)}><DefinitionCard stable={stable} /></Sequence>
+    <Sequence from={toFrame(44.3)} durationInFrames={toFrame(9)}><ThreeColumnCard stable={stable} /></Sequence>
+    <Sequence from={toFrame(153.3)} durationInFrames={toFrame(9)}><QuestionCard stable={stable} /></Sequence>
+    <Sequence from={toFrame(182.3)} durationInFrames={toFrame(11)}><ResourceMapCard stable={stable} /></Sequence>
+    <Sequence from={toFrame(235.84)} durationInFrames={toFrame(11)}><ActionCard stable={stable} /></Sequence>
+    <Sequence from={toFrame(264.84)} durationInFrames={toFrame(11)}><BoundaryCard stable={stable} /></Sequence>
   </>
 );
 
-const HeaderHud: React.FC = () => {
+const HeaderHud: React.FC<{contentDurationInFrames?: number}> = ({contentDurationInFrames}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
   const time = frame / fps;
   const chapter = chapters.find((item) => time >= item.start && time < item.end) ?? chapters.at(-1)!;
-  const progress = frame / Math.max(1, durationInFrames - 1);
+  const progress = frame / Math.max(1, (contentDurationInFrames ?? durationInFrames) - 1);
   const factPending = time >= 66.27 && time <= 138.05;
 
   return (
@@ -359,6 +367,123 @@ const SoundEffects: React.FC = () => (
   </>
 );
 
+const OutroCard: React.FC = () => {
+  const frame = useCurrentFrame();
+  const duration = 225;
+  const backgroundOpacity = interpolate(frame, [0, 28, duration - 20, duration], [0, 1, 1, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  const exitOpacity = interpolate(frame, [duration - 26, duration - 8], [1, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+  const headlineOpacity = Math.min(exitOpacity, interpolate(frame, [30, 48], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  }));
+  const identityOpacity = Math.min(exitOpacity, interpolate(frame, [50, 68], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  }));
+  const ctaOpacity = Math.min(exitOpacity, interpolate(frame, [92, 110], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  }));
+  const textY = interpolate(frame, [30, 54], [18, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+    easing: Easing.bezier(0.16, 1, 0.3, 1),
+  });
+  const scale = interpolate(frame, [0, duration], [1.02, 1.075], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+    easing: Easing.bezier(0.45, 0, 0.55, 1),
+  });
+
+  return (
+    <AbsoluteFill style={{backgroundColor: palette.bg, opacity: backgroundOpacity, overflow: 'hidden'}}>
+      <Img
+        src={staticFile('images/ruisheng-geo-v2/outro-bg.jpg')}
+        style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${scale})`}}
+      />
+      <AbsoluteFill
+        style={{
+          background:
+            'linear-gradient(90deg, rgba(3,13,19,0.94) 0%, rgba(3,13,19,0.78) 48%, rgba(3,13,19,0.36) 74%, rgba(3,13,19,0.48) 100%)',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          left: 110,
+          top: 184,
+          width: 980,
+          color: palette.text,
+          fontFamily,
+        }}
+      >
+        <div style={{opacity: headlineOpacity, transform: `translateY(${textY}px)`}}>
+          <div style={{fontSize: 24, fontWeight: 850, color: palette.teal, letterSpacing: 4}}>
+            GEO · 本地企业 AI 落地记录
+          </div>
+          <div style={{fontSize: 64, lineHeight: 1.12, fontWeight: 950, marginTop: 18}}>
+            企业做 GEO，
+            <br />
+            先把企业事实说清楚
+          </div>
+        </div>
+        <div style={{fontSize: 31, lineHeight: 1.45, color: palette.muted, marginTop: 22, opacity: identityOpacity}}>
+          超哥 · 兰州 AI 创业
+        </div>
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 12,
+            marginTop: 28,
+            padding: '12px 20px',
+            borderRadius: 999,
+            border: `1px solid ${palette.line}`,
+            background: 'rgba(7,28,37,0.74)',
+            color: palette.amber,
+            fontSize: 27,
+            fontWeight: 850,
+            opacity: ctaOpacity,
+          }}
+        >
+          关注我，看本地企业 AI 怎么一步步落地
+        </div>
+      </div>
+      <Sequence from={34} layout="none">
+        <Audio src={staticFile('audio/ruisheng-geo-v1/impact-low.wav')} volume={0.54} />
+      </Sequence>
+      <Sequence from={30} layout="none">
+        <Audio src={staticFile('audio/ruisheng-geo-v1/outro-bed.wav')} volume={0.7} />
+      </Sequence>
+      <Sequence from={76} layout="none">
+        <Audio src={staticFile('audio/ruisheng-geo-v1/node-connect.wav')} volume={0.34} />
+      </Sequence>
+      <Sequence from={112} layout="none">
+        <Audio src={staticFile('audio/ruisheng-geo-v1/confirm.wav')} volume={0.62} />
+      </Sequence>
+      <div
+        style={{
+          position: 'absolute',
+          right: 58,
+          bottom: 36,
+          color: 'rgba(244,248,250,0.64)',
+          fontFamily,
+          fontSize: 20,
+          fontWeight: 700,
+        }}
+      >
+        兰州 · 真实企业服务现场
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 export const RuishengGeoField16x9: React.FC = () => {
   return (
     <AbsoluteFill style={{backgroundColor: palette.bg}}>
@@ -372,6 +497,30 @@ export const RuishengGeoField16x9: React.FC = () => {
       <HeaderHud />
       <SoundEffects />
       <CaptionOverlay captionsSrc="data/ruisheng_geo_rough_v1.captions.json" maxHoldMs={500} />
+    </AbsoluteFill>
+  );
+};
+
+export const RuishengGeoField16x9V2: React.FC = () => {
+  return (
+    <AbsoluteFill style={{backgroundColor: palette.bg}}>
+      <Sequence durationInFrames={RUISHENG_GEO_DURATION_IN_FRAMES}>
+        <AbsoluteFill style={{backgroundColor: palette.bg}}>
+          <MainFootage />
+          {brollV2.map((item) => (
+            <Sequence key={`${item.start}-${item.file}`} from={toFrame(item.start)} durationInFrames={toFrame(item.duration)}>
+              <BrollClip file={item.file} duration={item.duration} label={item.label} />
+            </Sequence>
+          ))}
+          <SemanticCards stable />
+          <HeaderHud contentDurationInFrames={RUISHENG_GEO_DURATION_IN_FRAMES} />
+          <SoundEffects />
+          <StableBilingualCaptionOverlay captionsSrc="data/ruisheng_geo_rough_v2.bilingual.json" />
+        </AbsoluteFill>
+      </Sequence>
+      <Sequence from={RUISHENG_GEO_DURATION_IN_FRAMES - 30} durationInFrames={225}>
+        <OutroCard />
+      </Sequence>
     </AbsoluteFill>
   );
 };

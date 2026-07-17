@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 2,
+  "status": "implementation-synced-awaiting-preview-and-user-review",
+  "videoId": "RUISHENG_GEO_20260717_field_v2",
+  "videoTitle": "GEO 落地第一步：先核对企业事实 V2",
+  "sourceVideo": "edit/20260717_ruisheng_geo/exports/ruisheng_geo_rough_v1.mp4",
+  "baselineId": "field-documentary-short-16x9-v1",
+  "timelineBasis": "正文沿用 V1 的 278.83 秒 EDL 输出时间轴；V2 不改变音频和剪辑内容，只重做字幕与卡片稳定性，并从 277.83 秒交叉淡入 6.5 秒片尾，最终 285.33 秒。",
+  "styleReferenceIds": [
+    "v4-definition-card",
+    "v4-three-column-card",
+    "v4-resource-directed-map",
+    "v4-question-overlay",
+    "v4-action-input",
+    "v4-boundary-card",
+    "fixed-bilingual-caption-shell",
+    "field-documentary-outro"
+  ],
+  "previewCoverage": [
+    "hook",
+    "semantic-card",
+    "full-screen-asset",
+    "cta"
+  ],
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "style": {
+    "direction": "真实第一人称现场为主体；字幕使用固定尺寸中英同窗壳，不使用 spring、scale、逐字光晕或动态宽度；信息卡在 V2 中取消入场缩放；片尾使用真实现场静帧慢推和单一关注 CTA。",
+    "palette": {
+      "background": "#07131A",
+      "panel": "#0D2430",
+      "text": "#F4F8FA",
+      "muted": "#A9BBC4",
+      "accent": "#35D0BA",
+      "accent2": "#FFB454",
+      "risk": "#FF7A6E"
+    }
+  },
+  "safeAreas": {
+    "subtitle": {"x": 220, "y": 920, "width": 1480, "height": 118},
+    "informationCard": {"x": 44, "y": 120, "width": 1050, "height": 700},
+    "topHud": {"x": 40, "y": 20, "width": 1840, "height": 100},
+    "outroText": {"x": 110, "y": 184, "width": 980, "height": 650}
+  },
+  "privacy": {
+    "mode": "no-pixelation-safe-composition",
+    "rule": "不做马赛克或模糊；继续使用安全裁切、渐变、空镜和信息卡组织画面。",
+    "releaseBoundary": "无打码不等于已取得公开授权；企业、出镜人员、声音、场地和可辨识资料授权未确认前不得公开发布。"
+  },
+  "layers": [
+    {
+      "id": "first-person-field-footage-v2",
+      "start": 0,
+      "end": 278.83,
+      "spokenLine": "从老板为什么想做 AI 与 GEO 开始，逐步核对企业事实、用户问题和执行资料。",
+      "purpose": "承载真实业务沟通主线",
+      "kind": "full-screen-asset",
+      "titleOwner": false,
+      "overlapGroup": "base-footage",
+      "zone": "full-screen",
+      "asset": {"sourceType": "video", "source": "edit/20260717_ruisheng_geo/exports/ruisheng_geo_rough_v1.mp4"},
+      "checks": {"needsFrameReview": true, "reviewAt": 15.8}
+    },
+    {
+      "id": "supporting-broll-pack-v2",
+      "start": 0,
+      "end": 278.84,
+      "spokenLine": "在企业事实、业务场景、曝光断层、执行路径和结尾节点插入真实办公室与音响业务空镜。",
+      "purpose": "用真实现场支撑空间和业务语境，并让最后一段空镜覆盖到正文结束。",
+      "kind": "full-screen-asset",
+      "titleOwner": false,
+      "overlapGroup": "supporting-broll",
+      "zone": "full-screen",
+      "asset": {"sourceType": "multi-video", "source": "source/20260717_ruisheng_geo/broll/"},
+      "checks": {"needsFrameReview": true, "reviewAt": 278.6}
+    },
+    {
+      "id": "stable-bilingual-caption",
+      "start": 0.03,
+      "end": 278.64,
+      "spokenLine": "正文按同一输出时间轴显示去水词后的中文和简洁英文辅助翻译。",
+      "purpose": "修复字幕回弹、缩放和动态宽度导致的抖动，并清除嗯、啊、呃等无信息水词。",
+      "kind": "caption-overlay",
+      "titleOwner": false,
+      "overlapGroup": "global-caption",
+      "zone": "subtitle-safe-area",
+      "asset": {"sourceType": "json", "source": "remotion/public/data/ruisheng_geo_rough_v2.bilingual.json"},
+      "checks": {"needsFrameReview": true, "reviewAt": 45.0}
+    },
+    {
+      "id": "stable-definition-card",
+      "start": 2,
+      "end": 9,
+      "spokenLine": "先了解真实需求，再核对企业事实。",
+      "purpose": "锁定全片结论，V2 取消 scale 和回弹。",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "center",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 5.2}
+    },
+    {
+      "id": "stable-enterprise-facts-card",
+      "start": 44.3,
+      "end": 53.3,
+      "spokenLine": "企业是谁、真正做什么、证据在哪里。",
+      "purpose": "把现场核对归纳为三项事实，文字入场后保持像素位置稳定。",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 48.2}
+    },
+    {
+      "id": "stable-user-question-card",
+      "start": 153.3,
+      "end": 162.3,
+      "spokenLine": "客户会继续追问适用场景、参数、安装、调试和售后。",
+      "purpose": "说明 GEO 需要问题链而非单一关键词。",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 157.5}
+    },
+    {
+      "id": "stable-resource-map-card",
+      "start": 182.3,
+      "end": 193.3,
+      "spokenLine": "客户问题经过专业追问，形成事实答案、公开内容和重复验证。",
+      "purpose": "展示现实问题到数字资产的路径。",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 187.2}
+    },
+    {
+      "id": "stable-action-input-card",
+      "start": 235.84,
+      "end": 246.84,
+      "spokenLine": "先指定事实负责人，再准备主体、服务、资质、官网和案例。",
+      "purpose": "给出初期资料清单。",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 240.8}
+    },
+    {
+      "id": "stable-boundary-card",
+      "start": 264.84,
+      "end": 275.84,
+      "spokenLine": "发布不等于被 AI 推荐，需要持续采样、复核和验证。",
+      "purpose": "收束效果边界。",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "semantic-card",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 269.8}
+    },
+    {
+      "id": "outro-real-field-background",
+      "start": 277.83,
+      "end": 285.33,
+      "spokenLine": "最后一句口播结束后，用真实音响业务空间静帧承接并慢推。",
+      "purpose": "用交叉淡入消除突然结束，不新增虚构口播。",
+      "kind": "full-screen-asset",
+      "titleOwner": false,
+      "overlapGroup": "outro",
+      "zone": "full-screen",
+      "asset": {"sourceType": "image", "source": "remotion/public/images/ruisheng-geo-v2/outro-bg.jpg"},
+      "checks": {"needsFrameReview": true, "reviewAt": 279.2}
+    },
+    {
+      "id": "outro-single-cta",
+      "start": 278.83,
+      "end": 285.07,
+      "spokenLine": "企业做 GEO，先把企业事实说清楚。超哥，兰州 AI 创业。关注我，看本地企业 AI 怎么一步步落地。",
+      "purpose": "补齐结论、账号身份和单一关注行动。",
+      "kind": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "outro",
+      "zone": "left",
+      "asset": {"sourceType": "deterministic-remotion"},
+      "checks": {"needsFrameReview": true, "reviewAt": 282.0}
+    }
+  ]
+}
