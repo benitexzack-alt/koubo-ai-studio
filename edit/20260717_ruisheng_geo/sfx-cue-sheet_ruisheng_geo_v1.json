@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "videoId": "RUISHENG_GEO_20260717_field",
+  "version": "v1",
+  "status": "planned-awaiting-preview-audibility-review",
+  "composition": "RuishengGeoField16x9",
+  "timelineBasis": "output time, 30fps",
+  "requiredCueTypes": ["card-pop", "node-connect", "key-transition"],
+  "mixPolicy": {
+    "voicePriority": true,
+    "voiceDuckImplemented": false,
+    "voiceDuckDb": 0,
+    "overallTarget": "-16 LUFS / -1.5 dBTP",
+    "notes": "音效只落在语义节点，不给每个剪切配音；以正常播放音量试听为准。"
+  },
+  "assetLedger": {
+    "directory": "remotion/public/audio/ruisheng-geo-v1",
+    "source": "使用FFmpeg内置正弦波与粉红噪声在本项目内程序合成，未使用第三方录音或音乐。",
+    "licenseStatus": "project-original-generated-assets",
+    "files": [
+      {"file":"card-pop.wav","durationSeconds":0.14},
+      {"file":"node-connect.wav","durationSeconds":0.26},
+      {"file":"key-transition.wav","durationSeconds":0.48},
+      {"file":"confirm.wav","durationSeconds":0.18},
+      {"file":"impact-low.wav","durationSeconds":0.34}
+    ]
+  },
+  "cues": [
+    {"id":"sfx-001","start":0.25,"type":"key-transition","file":"impact-low.wav","volume":0.72,"visualAction":"真实办公室B-roll建立现场","previewCovered":true,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-002","start":2.00,"type":"card-pop","file":"card-pop.wav","volume":0.80,"visualAction":"定义大字卡落位","previewCovered":true,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-003","start":5.20,"type":"node-connect","file":"node-connect.wav","volume":0.76,"visualAction":"先核对企业事实的两层信息连接","previewCovered":true,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-004","start":20.84,"type":"key-transition","file":"key-transition.wav","volume":0.68,"visualAction":"需求钩子切入真实数据原则","previewCovered":true,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-005","start":45.00,"type":"card-pop","file":"card-pop.wav","volume":0.76,"visualAction":"三列企业事实卡进入","previewCovered":false,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-006","start":47.60,"type":"node-connect","file":"node-connect.wav","volume":0.72,"visualAction":"企业是谁、做什么、证据节点依次连接","previewCovered":false,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-007","start":122.66,"type":"key-transition","file":"key-transition.wav","volume":0.66,"visualAction":"企业画像切入曝光断层","previewCovered":false,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-008","start":149.00,"type":"card-pop","file":"card-pop.wav","volume":0.74,"visualAction":"典型问题浮层进入","previewCovered":false,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-009","start":183.00,"type":"node-connect","file":"node-connect.wav","volume":0.76,"visualAction":"问题到事实答案再到公开内容的资源图连接","previewCovered":false,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-010","start":215.20,"type":"key-transition","file":"key-transition.wav","volume":0.66,"visualAction":"用户问题切入执行路径","previewCovered":false,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-011","start":236.00,"type":"card-pop","file":"card-pop.wav","volume":0.76,"visualAction":"初期资料清单卡进入","previewCovered":false,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-012","start":245.72,"type":"confirmation","file":"confirm.wav","volume":0.80,"visualAction":"官网与标准账号执行步骤确认","previewCovered":false,"formalReviewed":false,"userAudibilityConfirmed":false},
+    {"id":"sfx-013","start":265.48,"type":"key-transition","file":"impact-low.wav","volume":0.70,"visualAction":"进入发布边界与案例证据收束","previewCovered":false,"formalReviewed":false,"userAudibilityConfirmed":false}
+  ],
+  "previewReview": {"output":"","containsAllRequiredCueTypes":false,"userAudibilityConfirmed":false,"notes":"待渲染30秒带声音预览并正常音量试听。"},
+  "formalReview": {"output":"","allCuePointsReviewed":false,"voiceClear":false,"effectsAudible":false,"effectsNotOverpowering":false,"reviewedBy":"","notes":""}
+}
