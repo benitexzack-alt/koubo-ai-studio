@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260718_waic_v6_talk01_v3",
+  "status": "ready-for-user-review",
+  "videoId": "WAIC_20260718_talk01_v6",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "topic": "AI读过一万篇论文，为什么还不如老师傅听一声？",
+    "serviceAudience": "普通从业者、甘肃本地小微企业经营者、制造农业物流和门店一线人员。",
+    "oneConclusion": "AI进入各个行业，最后都要回到现场；模型提供能力，真正干过这一行的人决定什么值得看、什么算异常、结果能不能用。",
+    "cta": "关注超哥，在兰州记录AI创业。",
+    "factBoundary": "WAIC、王坚演讲、NEOWISE与智慧药房使用公开证据画面；制造、农业、冷链和流程画面均标注AI概念画面，不冒充大会实拍、真实客户案例或自动结论。约150万个只指潜在新目标，不等于逐个确认的新天体。"
+  },
+  "inputs": {
+    "sourceVideo": "source/WAIC_20260718_talk01_16x9.MOV",
+    "transcript": "edit/transcripts/WAIC_20260718_talk01_16x9.final.v1.json",
+    "bilingualCaptions": "remotion/public/data/WAIC_20260718_talk01_16x9.bilingual.v1.json",
+    "visualPlan": "edit/visual-plan_WAIC_20260718_talk01_v1.json",
+    "assets": [
+      "media/waic2026-v6/V01-earthquake-hook.mp4",
+      "media/waic2026-v6/V02-machine-anomaly.mp4",
+      "media/waic2026-v6/V03-farm-leaf-soil-weather.mp4",
+      "media/waic2026-v6/V04-cold-chain-anomaly.mp4",
+      "media/waic2026-v6/V05-retired-telescope-data.mp4",
+      "media/waic2026-v6/V06-smart-pharmacy.mp4",
+      "media/waic2026-v6/V07-human-validation-loop.mp4",
+      "remotion/public/evidence/waic2026-v6/wang-jian-scientific-data-02m02s.jpg",
+      "remotion/public/evidence/waic2026-v6/wang-jian-geodata-10m25s.jpg",
+      "remotion/public/evidence/waic2026-v6/neowise-official-top-16x9.png",
+      "remotion/public/evidence/waic2026-v6/smart-pharmacy-report-top-16x9.png",
+      "remotion/public/generated/waic2026-v6/field-signal-strip-base.png",
+      "remotion/public/generated/waic2026-v6/text-vs-observation-base.png",
+      "remotion/public/generated/waic2026-v6/human-validation-loop-base.png",
+      "remotion/public/audio/waic2026-v6/card-pop.wav",
+      "remotion/public/audio/waic2026-v6/node-connect.wav",
+      "remotion/public/audio/waic2026-v6/section-whoosh.wav",
+      "remotion/public/audio/waic2026-v6/thesis-impact.wav",
+      "remotion/public/audio/waic2026-v6/correction-not-equal.wav"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/20260718_waic_v6/WAIC2026_AI为什么必须回到现场_16x9_V6_final_v3.mp4",
+    "previewOutput": "outputs/20260718_waic_v6/WAIC2026_V6_30秒有声运镜预览_v2_双语限峰.mp4",
+    "modules": [
+      "digital-camera",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "semantic-motion-card",
+      "bilingual-caption"
+    ],
+    "styleReferenceIds": [
+      "WAIC2026-V6-现场数据纪录片",
+      "FieldSignalStrip",
+      "TextVsObservation",
+      "HumanValidationLoop",
+      "ThreeQuestionsLens"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式v3为1920×1080、30fps、H.264/AAC、356.900秒、465,479,006字节；完整解码无报错；未检出持续0.3秒以上黑场和超过1.2秒的-50dB静音；响度-15.99 LUFS、真峰值-1.49 dBTP、LRA 5.70；SHA-256为f838ee7c9ffc674a369b3f02f4a23a76e53b9a7aec9864f970fa14d1a4f8f7e2。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "minimumScore": 0.8,
+      "evidence": "95页中英同窗字幕按成片编辑时间轴逐页校验，最低同步分0.80，高于0.74基线；最终v1混音全片重新转写确认重复句只剩一次，v3另对148—161秒纠错局部重新转写，明确识别为潜在新目标不等于已确认新天体。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "schema v2视觉方案共13个图层、13个风险节点；FieldSignalStrip、TextVsObservation、HumanValidationLoop与ThreeQuestionsLens实际进入正式片，7段AI视频与公开证据均按类型标识，视觉方案校验通过。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [6.4, 30.4, 38.1, 65.9, 77.2, 100.2, 108.7, 113.5, 136.5, 153.73, 210.4, 222.0, 226.5, 275.7, 282.4, 344.0],
+      "evidence": "从最终画面抽取16个关键帧，覆盖钩子、7段AI视频、两张王坚演讲帧、NEOWISE官方纠错页、智慧药房报道页、四种V6组件与结尾；未发现卡片裁切、主标题冲突、字幕越界、人物面部关键遮挡或AI/证据标识混淆。"
+    },
+    "privacyReview": {
+      "status": "passed",
+      "evidence": "真人原片仅含用户本人；AI概念视频无可识别公众人物和真实客户隐私；公开证据页面按公开用途呈现，未加入账号后台、客户名单、手机号、二维码或私密文件。"
+    },
+    "soundAndCameraReview": {
+      "status": "pending-user-review",
+      "evidence": "9个音效cue实际进入最终混音，30秒预览覆盖card-pop、node-connect、key-transition与thesis-impact；真人底层按语义节点进行约103%至106%的慢推、短促推进和稳定回落。机器侧已确认音轨存在、峰值合规和关键帧生效，仍待用户正常音量完整观看确认主观可听度与运镜感知度。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260718-seven-ai-brolls",
+      "decision": "applied",
+      "evidence": "用户放入的7段AI视频全部进入正式片；V02只使用已验收的3.367秒安全截短代理，末尾危险动作未恢复。"
+    },
+    {
+      "id": "upgrade-20260718-v6-field-data-cards",
+      "decision": "applied",
+      "evidence": "本条不再以旧mind-map、perspective、metric和flow为主包装，新增四种现场数据组件并通过风险帧复核。"
+    },
+    {
+      "id": "upgrade-20260718-perceptible-camera-and-sfx",
+      "decision": "machine-side-passed-user-review-pending",
+      "evidence": "数字运镜最高到106%，9个音效按源响度分别设置增益；最终混音-15.99 LUFS、-1.49 dBTP。"
+    },
+    {
+      "id": "upgrade-20260718-factual-audio-correction",
+      "decision": "applied-and-verified",
+      "evidence": "原片把潜在新目标与已确认新天体说反；使用同一原片111.05—111.74秒本人原声不等于修正，证据页遮盖口型，局部成片重新转写明确通过。"
+    },
+    {
+      "id": "upgrade-20260718-duplicate-line-removal",
+      "decision": "applied-and-verified",
+      "evidence": "274.72—278.48秒重复句删除第一遍、保留第二遍，由V07遮盖跳剪；成片全片重新转写确认目标句只剩一次。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户明确要求开始剪片并等待成片；制作侧据此跳过中途等待，但内部完成30秒双语限峰预览、四类音效覆盖、16个正式风险帧和完整机器质检。用户尚未完整观看正式v3。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "用户完整观看确认后再决定发布；发布时如实声明AI概念画面/AI辅助制作，不把AI概念演绎冒充WAIC现场或真实客户案例。发布、推荐搜索、DOU+和广告交易仍是四道独立门槛。"
+  }
+}

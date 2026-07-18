@@ -15,6 +15,12 @@ import {DigitalOneTalk16x9} from './DigitalOneTalk16x9';
 import {TokenV5AssetPreview16x9} from './TokenV5AssetPreview16x9';
 import {TokenV5Talk16x9} from './TokenV5Talk16x9';
 import {
+  WAICV6Preview16x9,
+  WAICV6Talk16x9,
+  WAIC_V6_DURATION_IN_FRAMES,
+  WAIC_V6_PREVIEW_DURATION_IN_FRAMES,
+} from './WAICV6Talk16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -36,6 +42,22 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="WAICV6Talk16x9-Final"
+          component={WAICV6Talk16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={WAIC_V6_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="WAICV6Talk16x9-Preview"
+          component={WAICV6Preview16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={WAIC_V6_PREVIEW_DURATION_IN_FRAMES}
+        />
         <Composition
           id="RuishengGeoField16x9-V2"
           component={RuishengGeoField16x9V2}
