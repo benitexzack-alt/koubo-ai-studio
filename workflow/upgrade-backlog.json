@@ -111,6 +111,15 @@
       "acceptance": "每次只处理未确认草稿；改写前建立事实锁；改写后新增事实、删除事实和口径变化均为零；用户在原稿与精修稿之间人工确认。连续三条使用后，只有事实保真均为 10/10 且用户确认表达更自然，才讨论进入默认流程。",
       "status": "in-progress",
       "baselineImpact": "experiment"
+    },
+    {
+      "id": "upgrade-20260718-portable-koubo-skills",
+      "type": "fix",
+      "source": "用户要求确认 GitHub 推送状态、补全口播自动化 Skill，并在相同 macOS、Codex 和国外网络环境下可复制；2026-07-18 便携化验收。",
+      "goal": "让口播内容门禁、事实安全精修、Remotion 导演、词级转写和工具链不依赖固定用户名、固定 Homebrew 路径或当前机器个人知识库，同时不覆盖现有全局 Skill 和私密配置。",
+      "acceptance": "三套项目 Skill 通过 skill-creator 结构校验；安装器在空白 Codex 目录可安装且重复执行幂等，遇到同名冲突整次停止且无部分写入；体检器在当前机器保留个人知识库优先级，在无个人知识库的新目录切换到项目快照；Git 提交导出的全新目录重新 npm ci 后，Node 工具语法、内容门禁6项回归、通过与拦截样例、离线转写预检、Remotion 工具链和无私密媒体编译合计49项通过。真实 ElevenLabs 上传因涉及素材授权和额度，不作为自动回归动作。",
+      "status": "validated",
+      "baselineImpact": "required"
     }
   ]
 }
