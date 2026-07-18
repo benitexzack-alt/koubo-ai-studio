@@ -7,20 +7,24 @@ description: 在事实、来源、个人经历和短视频结构全部锁定的�
 
 把上游 `humanizer-zh` 当作模式检查器，不把它当作事实生成器。目标是让稿子更像用户本人能自然说出口的话，同时保住口播的事实、证据、钩子和行动目标。
 
+## 项目根目录
+
+从当前工作目录向上查找同时包含 `AGENTS.md`、`knowledge/` 和 `skills/` 的目录，将它记为 `<project-root>`。项目文件全部从该根目录相对定位。
+
 ## 必读
 
 执行前读取：
 
-1. `/Users/pc/Documents/口播/AGENTS.md`
-2. `/Users/pc/Documents/口播/knowledge/02-个人事实与公开边界.md`
-3. `/Users/pc/Documents/口播/knowledge/05-合规隐私与证据规则.md`
-4. `/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md`
-5. `/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md`
-6. `/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md`
+1. `<project-root>/AGENTS.md`
+2. `<project-root>/knowledge/02-个人事实与公开边界.md`
+3. `<project-root>/knowledge/05-合规隐私与证据规则.md`
+4. `<project-root>/knowledge/06-选题脚本与风格规范.md`
+5. `<project-root>/knowledge/14-超哥口播声音档案.md`
+6. `<project-root>/skills/content-brain-gate/SKILL.md` 及其指定的内容门禁规则。
 7. 本条内容门禁卡与最近一次机器校验报告
 8. 待处理稿件的事实来源、证据表和用户已确认版本
 
-若存在 `/Users/pc/.codex/skills/humanizer-zh/SKILL.md`，读取其中的 AI 写作模式，仅用于发现问题。上游规则与本 Skill 冲突时，以本 Skill 和项目事实边界为准。
+若 `${CODEX_HOME:-$HOME/.codex}/skills/humanizer-zh/SKILL.md` 存在，读取其中的 AI 写作模式，仅用于发现问题。上游规则与本 Skill 冲突时，以本 Skill 和项目事实边界为准。
 
 ## 使用门槛
 
@@ -159,5 +163,5 @@ description: 在事实、来源、个人经历和短视频结构全部锁定的�
 
 - 来源：`https://github.com/op7418/Humanizer-zh`
 - 审计提交：`91f3d394db8419c20d67ebe22a96cf8fee0a404b`
-- 本机原版：`/Users/pc/.codex/skills/humanizer-zh`
+- 本机可选原版：`${CODEX_HOME:-$HOME/.codex}/skills/humanizer-zh`
 - 许可证：MIT

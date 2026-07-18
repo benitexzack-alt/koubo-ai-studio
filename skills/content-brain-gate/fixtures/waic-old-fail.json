@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "task_id": "waic-2026-old-draft-regression",
+  "target_stage": "draft",
+  "required_rules": [
+    {
+      "path": "<skill-root>/references/public-content-gate.md",
+      "read": true
+    },
+    {
+      "path": "<project-root>/knowledge/06-选题脚本与风格规范.md",
+      "read": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "douyin-1",
+      "title": "中美人工智能之争",
+      "completeness": "metadata-only",
+      "acquisition": "public-page",
+      "intended_uses": ["viewpoint", "talking-structure"],
+      "verification_status": "待核验"
+    },
+    {
+      "id": "douyin-2",
+      "title": "一条视频看懂大会",
+      "completeness": "metadata-only",
+      "acquisition": "public-page",
+      "intended_uses": ["talking-structure"],
+      "verification_status": "待核验"
+    },
+    {
+      "id": "douyin-3",
+      "title": "MiniMax M3",
+      "completeness": "metadata-only",
+      "acquisition": "public-page",
+      "intended_uses": ["viewpoint", "draft-evidence"],
+      "verification_status": "待核验"
+    },
+    {
+      "id": "douyin-4",
+      "title": "华为超节点真机",
+      "completeness": "metadata-only",
+      "acquisition": "public-page",
+      "intended_uses": ["viewpoint"],
+      "verification_status": "待核验"
+    },
+    {
+      "id": "douyin-5",
+      "title": "门票比演唱会难抢",
+      "completeness": "metadata-only",
+      "acquisition": "public-page",
+      "intended_uses": ["talking-structure"],
+      "verification_status": "待核验"
+    },
+    {
+      "id": "douyin-6",
+      "title": "十件镇馆之宝",
+      "completeness": "metadata-only",
+      "acquisition": "public-page",
+      "intended_uses": ["viewpoint"],
+      "verification_status": "待核验"
+    }
+  ],
+  "recent_six": [
+    {
+      "title": "实体店老板别被AI忽悠",
+      "audience_problem": "老板不知道如何开始用AI",
+      "main_claim": "先从重复小事开始",
+      "evidence": "本人尝试",
+      "deliverable": "七天试跑法",
+      "cta": "关注"
+    },
+    {
+      "title": "本地老板三件小事",
+      "audience_problem": "门店日常工作太多",
+      "main_claim": "把三件重复小事交给AI",
+      "evidence": "场景举例",
+      "deliverable": "三件事清单",
+      "cta": "评论行业"
+    },
+    {
+      "title": "OPC",
+      "audience_problem": "年轻人缺少创业入口",
+      "main_claim": "先做一个小闭环",
+      "evidence": "本地场景",
+      "deliverable": "一场景一交付",
+      "cta": "留言资源"
+    },
+    {
+      "title": "数字化1.0",
+      "audience_problem": "AI看不到企业数据",
+      "main_claim": "先记录一条流程再接AI",
+      "evidence": "公开口径",
+      "deliverable": "七天记录法",
+      "cta": "评论行业"
+    },
+    {
+      "title": "Token产业链",
+      "audience_problem": "普通人不理解Token机会",
+      "main_claim": "上游卖算力中游卖模型下游卖结果",
+      "evidence": "甘肃案例",
+      "deliverable": "产业链位置判断",
+      "cta": "关注"
+    },
+    {
+      "title": "AI超市",
+      "audience_problem": "普通人不懂AI超市怎么赚钱",
+      "main_claim": "跑通再标准化复制",
+      "evidence": "模式拆分",
+      "deliverable": "四层收入结构",
+      "cta": "关注"
+    }
+  ],
+  "topic": {
+    "audience": "普通人和小老板",
+    "problem": "不知道大会跟自己有什么关系",
+    "desired_change": "去试一个任务",
+    "novel_claim": "别追最强模型，先让AI完成一个真实任务",
+    "difference_from_recent": "换成了WAIC大会和四个新产品。",
+    "evidence_proves": "大会展示了产品",
+    "evidence_does_not_prove": "不能证明长期效果",
+    "audience_takeaway": "试跑七天",
+    "boundary": "不能保证有效",
+    "delete_candidates": []
+  },
+  "frozen_topic_hits": [
+    {
+      "topic": "高频重复小任务与七天试跑",
+      "usage": "main-claim",
+      "new_evidence": "",
+      "new_counterexample": "",
+      "conclusion_change": ""
+    }
+  ],
+  "mechanism_cards": [
+    {
+      "name": "Atlas 950",
+      "problem": "大模型需要很多卡",
+      "bottleneck": "",
+      "mechanism": "像一台机器协同",
+      "observable_change": "规模变大",
+      "evidence": "展台真机",
+      "evidence_proves": "展示了一台机器",
+      "evidence_does_not_prove": "",
+      "audience_relevance": "未来成本可能下降",
+      "boundary": ""
+    }
+  ],
+  "voice": {
+    "profile_path": "/tmp/not-read-voice-profile.md",
+    "read": false
+  },
+  "draft": {
+    "path": "<skill-root>/fixtures/section-scan.md",
+    "phrase_exemptions": []
+  }
+}

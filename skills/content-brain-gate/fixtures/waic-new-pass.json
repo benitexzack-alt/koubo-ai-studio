@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "task_id": "waic-2026-non-text-world-direction",
+  "target_stage": "draft",
+  "required_rules": [
+    {
+      "path": "<skill-root>/references/public-content-gate.md",
+      "read": true
+    },
+    {
+      "path": "<project-root>/knowledge/06-选题脚本与风格规范.md",
+      "read": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "wang-jian-local-transcript",
+      "title": "王坚院士WAIC演讲本地转写",
+      "completeness": "complete",
+      "acquisition": "local-asr",
+      "intended_uses": ["viewpoint", "talking-structure"],
+      "content_path": "<skill-root>/fixtures/section-scan.md",
+      "verification_status": "部分核验"
+    },
+    {
+      "id": "waic-evidence-index",
+      "title": "WAIC调研来源与证据等级",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "<skill-root>/fixtures/section-scan.md",
+      "verification_status": "部分核验"
+    },
+    {
+      "id": "douyin-waic-clues",
+      "title": "六条抖音大会参考",
+      "completeness": "metadata-only",
+      "acquisition": "public-page",
+      "intended_uses": ["title-clue", "source-index"],
+      "verification_status": "待核验"
+    }
+  ],
+  "recent_six": [
+    {
+      "title": "实体店老板别被AI忽悠",
+      "date": "2026-07-08",
+      "audience_problem": "老板不知道如何低风险开始用AI",
+      "main_claim": "先找一个重复小动作试跑",
+      "evidence": "真实口播中的个人实践立场",
+      "deliverable": "一周试跑判断",
+      "cta": "关注后续实践"
+    },
+    {
+      "title": "本地老板三件小事",
+      "date": "2026-07-10",
+      "audience_problem": "门店日常内容和评价无人整理",
+      "main_claim": "把三件日常任务交给AI",
+      "evidence": "餐饮门店场景举例",
+      "deliverable": "三件任务清单",
+      "cta": "评论行业"
+    },
+    {
+      "title": "OPC一人公司",
+      "date": "2026-07-11",
+      "audience_problem": "年轻人不知道如何借AI创业",
+      "main_claim": "先把身边资源变成一次真实交付",
+      "evidence": "兰州本地场景和技能组合",
+      "deliverable": "场景、交付、反馈三要素",
+      "cta": "留言城市技能资源"
+    },
+    {
+      "title": "数字化1.0",
+      "date": "2026-07-14",
+      "audience_problem": "企业资料分散导致AI看不到业务",
+      "main_claim": "先让一条关键流程留下数字记录",
+      "evidence": "工信部评测顺序和甘肃公开口径",
+      "deliverable": "三项资料自检",
+      "cta": "提交本地行业问题"
+    },
+    {
+      "title": "Token产业链",
+      "date": "2026-07-15",
+      "audience_problem": "普通人不懂Token与自己的关系",
+      "main_claim": "上游卖算力中游卖模型下游卖结果",
+      "evidence": "庆阳算力与陇小郎案例",
+      "deliverable": "产业链位置判断",
+      "cta": "关注后续下游拆解"
+    },
+    {
+      "title": "AI超市",
+      "date": "2026-07-16",
+      "audience_problem": "普通人不懂AI超市的服务和收入",
+      "main_claim": "AI超市的价值是选品、工作流、培训和持续负责",
+      "evidence": "四层商业结构拆分",
+      "deliverable": "收入与交付层级判断",
+      "cta": "关注"
+    }
+  ],
+  "topic": {
+    "audience": "只把AI理解成聊天工具、又被大会产品清单淹没的普通人和行业从业者",
+    "problem": "看了很多模型、机器人和参数，仍不知道这届大会真正发生了什么变化",
+    "desired_change": "从比较聊天能力，转向识别AI正在进入哪些非文字数据和真实世界",
+    "novel_claim": "这届WAIC真正值得注意的，不是AI更会聊天，而是它开始读懂那些从来没有被写成文字的世界",
+    "difference_from_recent": "最近六条都在讲企业如何开始用AI、产业链位置或服务模式；本条第一次解释基础模型从文字世界进入光谱、地震波、化石等科学观测数据的变化，并用王坚演讲和卫星数据案例支撑，交付的是判断下一波AI价值来源的方法，而不是七天试跑动作。",
+    "evidence_proves": "王坚演讲明确提出让科学数据成为基础模型的原住民，并给出旧卫星数据经新模型发现新天体的案例",
+    "evidence_does_not_prove": "不能证明所有非文字数据都已被基础模型充分理解，也不能证明某个展品已经形成稳定商业结果",
+    "audience_takeaway": "判断一个AI项目时，追问它能否直接理解该行业原始数据，而不只是读取已经整理成文字的材料",
+    "boundary": "这是技术方向和案例解释，不是投资建议，也不把单个演讲愿景说成全行业已经实现的事实",
+    "delete_candidates": [
+      "MiniMax M3价格段落",
+      "四个展品逐一盘点结构",
+      "高频重复任务与七天试跑结尾",
+      "固定兰州创业身份收尾"
+    ]
+  },
+  "frozen_topic_hits": [],
+  "audience_fit": {
+    "account_stage": "调查",
+    "speaker_position": "本地AI实践者和复杂信息翻译者，不以科学家或行业专家身份下结论",
+    "first_20s_connection": "用工厂老师傅听见设备异响、种植者看见叶色和土壤变化，让普通行业从业者在前20秒认出自己的现场经验",
+    "high_level_material_role": "evidence",
+    "ordinary_scenes": [
+      "工厂老师傅从设备异响和温度变化判断异常",
+      "种植者从叶色、土壤和天气变化判断作物状态",
+      "冷链工作人员关注温度曲线是否越界",
+      "药房工作人员对机器人取送结果进行人工复核"
+    ],
+    "audience_gain": "认识到行业经验不是AI之外的旧知识，而是决定AI该看什么、什么算异常、结果能不能信的关键",
+    "authority_boundary": "只解释公开大会材料与普通行业场景的连接，不声称现有通用模型已可靠理解所有现场数据，也不冒充科学家或各行业专家",
+    "requires_expert_authority": false
+  },
+  "mechanism_cards": [
+    {
+      "name": "科学数据成为基础模型的原住民",
+      "problem": "现有语言模型擅长处理论文和网页文字，却难以直接从光谱、地震波、卫星观测和化石记录中学习",
+      "bottleneck": "科学观测数据形态各异、采集条件复杂，很多规律没有被人先写成语言，单靠文本训练会丢失原始信息",
+      "mechanism": "把科学观测本身清洗、对齐和编码为基础训练对象，让模型直接学习数据内部的结构与关联，再由研究人员用专业问题和实验验证结果",
+      "observable_change": "同一批旧观测数据可能因为新的表示和模型能力暴露出过去未被编目的模式或对象",
+      "evidence": "王坚WAIC演讲本地完整转写及其中关于退役卫星数据识别约150万个未编目天体的案例，精确数字发布前仍需回听和一手核验",
+      "evidence_proves": "演讲提出了从文本基础模型走向科学数据基础模型的方向，并提供一个旧数据产生新发现的案例",
+      "evidence_does_not_prove": "不能证明该方法适用于所有学科，也不能证明案例已经形成普遍商业回报",
+      "audience_relevance": "观众可以用它判断下一波AI应用的价值是否来自行业原始数据和专业验证，而不是只看聊天界面和模型排行榜",
+      "boundary": "不把科学研究案例直接类比成任何企业数据都能自动产生洞见；不同数据仍需要采集质量、专业知识、权限和验证"
+    }
+  ],
+  "voice": {
+    "profile_path": "<project-root>/knowledge/14-超哥口播声音档案.md",
+    "read": true
+  },
+  "draft": {}
+}

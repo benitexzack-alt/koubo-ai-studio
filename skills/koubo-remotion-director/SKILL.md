@@ -1,9 +1,13 @@
 ---
 name: koubo-remotion-director
-description: 口播项目的 Remotion 视频包装导演流程。用于 /Users/pc/Documents/口播 中每条口播从转写、粗剪或完整原片进入 visual-plan.json、V4 视觉组件规划、风险帧预览、Remotion 包装、字幕/动效/遮挡质检、透明贴片实验和正式成片发布记录的场景；当用户要求优化口播剪辑流程、做 V4 视觉实验、把参考图落到成片、修复卡片裁切/挡脸/字幕错位、生成或校验 visual-plan/release 时使用。
+description: 口播项目的 Remotion 视频包装导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库，将转写、粗剪或完整原片推进到 visual-plan.json、V4/V5/V6 视觉规划、风险帧预览、Remotion 包装、字幕/动效/遮挡质检和 release 记录；当用户要求优化口播剪辑流程、做视觉实验、把参考图落到成片、修复卡片裁切/挡脸/字幕错位或生成与校验 visual-plan/release 时使用。
 ---
 
 # 口播 Remotion 导演
+
+## 项目根目录
+
+从当前工作目录向上查找同时包含 `AGENTS.md`、`remotion/`、`tools/` 和 `workflow/` 的目录，将它记为 `<project-root>`。后续路径都相对于该目录，不依赖固定用户名或克隆位置。
 
 ## 核心定位
 
@@ -13,7 +17,7 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 
 ## 必读顺序
 
-每次执行前读取：
+每次执行前从 `<project-root>` 读取：
 
 1. `AGENTS.md`
 2. `project.md`

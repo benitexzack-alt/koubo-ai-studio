@@ -5,7 +5,7 @@ import {promisify} from 'node:util';
 
 const execFileAsync = promisify(execFile);
 const requireFromRemotion = createRequire(new URL('../remotion/package.json', import.meta.url));
-const ffmpegBin = process.env.FFMPEG_BIN || '/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg';
+const ffmpegBin = process.env.FFMPEG_BIN || 'ffmpeg';
 
 const readPackageVersion = async (name) => {
   const packageJson = new URL(`../remotion/node_modules/${name}/package.json`, import.meta.url);

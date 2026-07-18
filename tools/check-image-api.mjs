@@ -48,7 +48,7 @@ if (missing.length > 0) {
         ok: false,
         status: 'missing-config',
         missing,
-        next: '请在 /Users/pc/Documents/口播/.env 填入中转站生图 API。不要把 Key 发到聊天或写进代码。',
+        next: '请在项目根目录的 .env 填入中转站生图 API。不要把 Key 发到聊天或写进代码。',
       },
       null,
       2,

@@ -38,7 +38,7 @@ const hasArg = (name) => args.includes(`--${name}`);
 
 const requireConfig = (name) => {
   if (!config[name]) {
-    throw new Error(`${name} 未配置，请先填写 /Users/pc/Documents/口播/.env`);
+    throw new Error(`${name} 未配置，请先填写项目根目录的 .env`);
   }
 
   return config[name];

@@ -342,13 +342,11 @@ const main = () => {
   const ffmpeg = firstExisting([
     args.ffmpeg,
     process.env.FFMPEG_BIN,
-    '/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg',
     'ffmpeg',
   ]);
   const ffprobe = firstExisting([
     args.ffprobe,
     process.env.FFPROBE_BIN,
-    '/opt/homebrew/opt/ffmpeg-full/bin/ffprobe',
     'ffprobe',
   ]);
   const ffmpegVersion = run(ffmpeg, ['-version']);

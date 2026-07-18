@@ -8,7 +8,7 @@
 
 ## 需要配置
 
-在 `/Users/pc/Documents/口播/.env` 填写：
+在项目根目录的 `.env` 填写：
 
 ```env
 IMAGE_API_TYPE=openai-compatible
@@ -24,14 +24,14 @@ IMAGE_API_TIMEOUT_MS=120000
 ## 验证命令
 
 ```bash
-cd /Users/pc/Documents/口播
+# 在项目根目录执行
 node tools/check-image-api.mjs
 ```
 
 ## 生图命令
 
 ```bash
-cd /Users/pc/Documents/口播
+# 在项目根目录执行
 node tools/generate-image.mjs \
   --prompt "甘肃本地小微企业AI提示卡背景，真实商业纪录片风格，深色科技蓝背景，暖黄色重点光线，干净高级，适合短视频口播包装，不要文字，不要logo，16:9构图" \
   --out outputs/generated/ai-card-smoke-test.png \
