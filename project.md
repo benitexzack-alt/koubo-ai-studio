@@ -1,7 +1,7 @@
 # 口播视频项目
 
 > 当前目标：按《WAIC 2026》拍摄定稿制作第一条“现场数据纪录片”风格V6口播，让宏大大会材料回到机器异响、叶色土壤、冷链温度和行业人员复核这些普通人可感知的现场。
-> 当前阶段：2026-07-18 用户已确认完整脚本方向和新增大会过渡；生产门禁返回`ready-for-production`。当前允许拍摄并预制V6卡片、音效和AI素材；正式秒点、数字运镜和音效点位仍须等待真人原片词级转写。唯一有效脚本与V6方案保存在`/Users/pc/Documents/个人知识库/01_项目实战/AI选题雷达/2026-07-18-WAIC2026/14-WAIC2026普通人行业经验口播第二稿.md`和`20-WAIC2026-V6现场数据纪录片制作方案.md`，旧大会盘点稿和旧V6方案继续禁止使用。
+> 当前阶段：2026-07-18 用户已确认完整脚本方向和新增大会过渡；生产门禁返回`ready-for-production`。当前允许拍摄并预制V6卡片、音效和AI素材；正式秒点、数字运镜和音效点位仍须等待真人原片词级转写。当前制作机的唯一有效脚本与V6方案保存在`<personal-kb>/01_项目实战/AI选题雷达/2026-07-18-WAIC2026/14-WAIC2026普通人行业经验口播第二稿.md`和`20-WAIC2026-V6现场数据纪录片制作方案.md`，旧大会盘点稿和旧V6方案继续禁止使用。以上是当前内容项目的私有依赖，不随 Git 分发；复制仓库只复制流程，接收方应建立自己的选题、事实和素材。
 
 ## 一、账号定位
 
@@ -54,10 +54,10 @@
 
 - 原片来自 iPhone 13 Pro Max。
 - 原片为 4K 横屏，约 79 秒，30fps，HEVC/HDR，约 674MB。
-- 当前项目目录：`/Users/pc/Documents/口播`
+- 当前项目目录：`<project-root>`，实际位置由仓库根目录动态确定。
 - GitHub 仓库：`git@github.com:benitexzack-alt/koubo-ai-studio.git`
 - 当前机器可用工具：FFmpeg、FFprobe、Node.js、npm。
-- ElevenLabs API Key 已配置到 `/Users/pc/.agents/skills/video-use/.env`，文件权限为 `600`，已通过 ElevenLabs 用户接口有效性验证。
+- ElevenLabs API Key 已在当前制作机的私密环境文件中配置并验证；仓库只保留 `.env.example`，不记录本机密钥路径。
 - 生图中转站 API 已配置到本机 `.env`，权限 `600`；已验证 `/v1/models` 可访问，模型为 `gpt-image-2`。
 - 已通过 `tools/generate-image.mjs` 完成一次真实生图，输出：`outputs/generated/ai-card-smoke-test.png`。
 - 已初始化本地 Git 仓库并推送到 GitHub：`benitexzack-alt/koubo-ai-studio`。
@@ -65,7 +65,7 @@
 - 已建立 Remotion 子工程：`remotion/`。
 - Remotion 依赖已安装：`remotion`、`@remotion/cli`、`@remotion/captions`、`@remotion/media`、`@remotion/fonts`。
 - 素材工具已安装/补齐：Playwright、Sharp、本地字体、素材台账。
-- 已安装项目专用 `ffmpeg-full 8.1.2`，路径为 `/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg`，已确认包含 `drawtext`、`subtitles/libass`、`zscale`、`tonemap`、`libplacebo`。
+- 当前制作机已安装 `ffmpeg-full 8.1.2`，并确认包含 `drawtext`、`subtitles/libass`、`zscale`、`tonemap`、`libplacebo`；便携工具默认从 `PATH` 定位，可用 `.env` 覆盖。
 
 ## 六、当前产出
 
@@ -104,7 +104,7 @@
 - 已生成第三条测试口播词级时间轴字幕：`remotion/public/data/IMG_20260707_small_business_ai.edl.v2.captions.json`。
 - 已生成第三条测试口播英文辅助字幕：`remotion/public/data/IMG_20260707_small_business_ai.edl.v2.english.json`。
 - 已生成第三条测试口播封面 GPT 出图提示词：`outputs/小企业用AI第一步不是买系统_封面GPT提示词_v1.md`。
-- 已同步交付文件到 Codex 输出目录：`/Users/pc/Documents/Codex/2026-07-03/claude/outputs/口播/`。
+- 曾同步交付文件到当前制作机的 Codex 输出目录；该本机交付副本不属于仓库流程依赖。
 - 技术自检通过：Remotion v4 全片输出 1920×1080、30fps、H.264/AAC、79.33 秒，完整解码通过；10 秒预览输出 1920×1080、30fps、H.264/AAC、10.09 秒。
 - 字幕问题已定位为 Remotion 默认 TikTok 分页不适合中文连续文本；已改为中文语义分页，已保护“甘肃 / 庆阳 / 兰州 / 重新 / OPC”等关键词，并消除少于 5 个有效字的短字幕页。
 - 生图 API 已补 `.env.example` 占位、`tools/check-image-api.mjs` 校验脚本和 `templates/02-生图API接入说明.md`。

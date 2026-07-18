@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { accessSync, constants, existsSync, lstatSync, realpathSync, statSync } from 'node:fs';
+import { accessSync, constants, existsSync, lstatSync, readFileSync, realpathSync, statSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
@@ -33,6 +33,7 @@ const requiredFiles = [
   'skills/content-brain-gate/SKILL.md',
   'skills/humanize-koubo-script/SKILL.md',
   'skills/koubo-remotion-director/SKILL.md',
+  'templates/03-复制与新账号接入清单.md',
 ];
 
 for (const relativePath of requiredFiles) {
@@ -73,7 +74,19 @@ for (const command of ['git', 'node', 'npm', 'python3', 'ffmpeg', 'ffprobe']) {
   }
 }
 
-const portableRoots = ['README.md', 'AGENTS.md', '.env.example', 'templates', 'tools', 'skills'];
+const portableRoots = [
+  'README.md',
+  'AGENTS.md',
+  '.env.example',
+  'project.md',
+  'assets/素材台账.csv',
+  'knowledge/00-项目知识索引.md',
+  'knowledge/10-AI时事选题与口播转化工作流.md',
+  'topic-bank/README.md',
+  'templates',
+  'tools',
+  'skills',
+];
 const personalPathPrefix = ['', 'Users', 'pc'].join('/');
 const fixedHomebrewPrefix = ['', 'opt', 'homebrew'].join('/');
 const forbiddenPatterns = [
@@ -160,10 +173,44 @@ if (personalKnowledgeBase) {
   add('警告', '知识库模式', '未检测到个人知识库，将使用项目内便携规则快照');
 }
 
+add(
+  '警告',
+  '账号资料边界',
+  '当前仓库包含“超哥”账号资料；用于独立账号前必须按 templates/03-复制与新账号接入清单.md 替换',
+);
+
 if (existsSync(path.join(projectRoot, '.env'))) {
   add('通过', '本机环境文件', '.env 已存在（内容未读取、未显示）');
 } else {
   add('警告', '本机环境文件', '.env 不存在；需要 API 时再由 .env.example 复制');
+}
+
+const hasConfiguredKey = (filePath, name) => {
+  if (!existsSync(filePath)) return false;
+  return readFileSync(filePath, 'utf8')
+    .split(/\r?\n/)
+    .some((line) => {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) return false;
+      const index = trimmed.indexOf('=');
+      return index > 0
+        && trimmed.slice(0, index).trim() === name
+        && trimmed.slice(index + 1).trim().replace(/^["']|["']$/g, '').length > 0;
+    });
+};
+const projectEnvPath = path.join(projectRoot, '.env');
+const agentsHome = process.env.AGENTS_HOME?.trim()
+  ? path.resolve(process.env.AGENTS_HOME)
+  : path.join(os.homedir(), '.agents');
+const videoUseEnvPath = path.join(agentsHome, 'skills', 'video-use', '.env');
+if (process.env.ELEVENLABS_API_KEY?.trim()) {
+  add('通过', 'ElevenLabs 配置', '已由环境变量提供（值未显示）');
+} else if (hasConfiguredKey(projectEnvPath, 'ELEVENLABS_API_KEY')) {
+  add('通过', 'ElevenLabs 配置', '项目 .env 已配置（值未显示）');
+} else if (hasConfiguredKey(videoUseEnvPath, 'ELEVENLABS_API_KEY')) {
+  add('警告', 'ElevenLabs 配置', '当前兼容读取本机 video-use 私密配置；复制到新机器时应写入项目 .env');
+} else {
+  add('警告', 'ElevenLabs 配置', '未配置；真实转写前写入项目 .env 或环境变量');
 }
 
 if (existsSync(path.join(projectRoot, 'remotion', 'node_modules'))) {

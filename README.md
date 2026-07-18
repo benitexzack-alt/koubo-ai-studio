@@ -28,11 +28,18 @@ cd ..
 
 复制 `.env.example` 为 `.env`，只在本机填写真实密钥和可选工具路径。`.env` 不得提交。
 
+缺少基础工具时可按需安装，不必安装在固定路径：
+
+```bash
+brew install git node python ffmpeg
+```
+
 统一使用以下命令注册和诊断 Skill：
 
 ```bash
 node tools/setup-koubo.mjs
 node tools/doctor-koubo.mjs
+node tools/test-portable.mjs
 ```
 
 先只看安装计划、不写入：
@@ -42,6 +49,8 @@ node tools/setup-koubo.mjs --dry-run
 ```
 
 安装器只会创建缺失的链接。如果 `~/.codex/skills/` 中已存在不同来源的同名 Skill，它会在写入前停止并报告，不覆盖、不移动、不删除。体检工具全程只读，也不会显示 `.env` 的内容。
+
+如果是另一台机器协作同一个账号，可以继续使用项目知识；如果对方要做自己的账号，必须先替换账号战略、个人事实、声音档案和最近六条，不能直接套用“超哥”的身份。完整步骤见 [`templates/03-复制与新账号接入清单.md`](templates/03-复制与新账号接入清单.md)。
 
 ## 本地私密文件
 
@@ -56,6 +65,16 @@ node tools/setup-koubo.mjs --dry-run
 - `knowledge/source-materials/`：个人知识库原始资料副本。
 
 ## 常用命令
+
+确认素材允许上传后，生成 ElevenLabs 词级转写。先做不联网预检：
+
+```bash
+node tools/transcribe-elevenlabs.mjs --input source/你的原片.MOV --dry-run
+node tools/transcribe-elevenlabs.mjs --input source/你的原片.MOV --language zh --num-speakers 1 --confirm-upload
+node tools/prepare-elevenlabs-captions.mjs edit/transcripts/你的原片.json remotion/public/data/你的原片.captions.json
+```
+
+转写脚本只上传提取出的临时音频，不上传原视频；没有 `--confirm-upload` 时会停止。默认使用 ElevenLabs 当前的 `scribe_v2`，可在 `.env` 中覆盖。为兼容现有制作机，项目未配置 Key 时也会只读检查 `${AGENTS_HOME:-$HOME/.agents}/skills/video-use/.env`；新机器仍建议把 Key 放在项目 `.env` 或环境变量中。
 
 ```bash
 cd remotion

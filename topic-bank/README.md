@@ -16,7 +16,7 @@
 ## 命令
 
 ```bash
-cd /Users/pc/Documents/口播
+# 在项目根目录执行
 node tools/score-topics.mjs
 ```
 
