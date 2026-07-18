@@ -43,6 +43,7 @@ const run = (name, command, args, options = {}) => {
     env: options.env ?? process.env,
     encoding: 'utf8',
     maxBuffer: 20 * 1024 * 1024,
+    timeout: options.timeoutMs ?? 120000,
   });
   const code = result.status ?? 1;
   const ok = !result.error && expectedCodes.includes(code);
@@ -189,10 +190,23 @@ try {
   console.log('[通过] 转写预检未上传且未写结果');
 
   run('Remotion 工具链', 'npm', ['run', 'toolchain'], { cwd: remotionRoot });
+  const bundleRoot = makeTemporaryRoot();
+  const emptyPublic = path.join(bundleRoot, 'empty-public');
+  const bundleOutput = path.join(bundleRoot, 'bundle');
+  mkdirSync(emptyPublic, { recursive: true });
   run(
-    'Remotion 工程可打包并枚举 compositions',
+    'Remotion 工程可编译',
     'npx',
-    ['--no-install', 'remotion', 'compositions', 'src/index.ts'],
+    [
+      '--no-install',
+      'remotion',
+      'bundle',
+      'src/index.ts',
+      '--public-dir',
+      emptyPublic,
+      '--out-dir',
+      bundleOutput,
+    ],
     { cwd: remotionRoot },
   );
 

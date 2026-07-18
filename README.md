@@ -50,6 +50,8 @@ node tools/setup-koubo.mjs --dry-run
 
 安装器只会创建缺失的链接。如果 `~/.codex/skills/` 中已存在不同来源的同名 Skill，它会在写入前停止并报告，不覆盖、不移动、不删除。体检工具全程只读，也不会显示 `.env` 的内容。
 
+便携回归只做无私密媒体的 Remotion 编译，不会复制 `remotion/public/media/`。第一次运行 Studio、still 或 render 时，Remotion 可能从 Google 下载 Chrome Headless Shell，需要保持国外网络可用。
+
 如果是另一台机器协作同一个账号，可以继续使用项目知识；如果对方要做自己的账号，必须先替换账号战略、个人事实、声音档案和最近六条，不能直接套用“超哥”的身份。完整步骤见 [`templates/03-复制与新账号接入清单.md`](templates/03-复制与新账号接入清单.md)。
 
 ## 本地私密文件
