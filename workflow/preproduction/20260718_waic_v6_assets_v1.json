@@ -1,0 +1,119 @@
+{
+  "project": "WAIC2026普通人行业经验口播V6",
+  "version": "v1",
+  "created_at": "2026-07-18",
+  "status": "six_clips_verified_one_clip_pending",
+  "visual_tone": "现场数据纪录片",
+  "source_folder": "/Users/pc/Desktop/口播素材/2026-07-18",
+  "proxy_folder": "/Users/pc/Documents/口播/remotion/public/media/waic2026-v6",
+  "global_usage_rules": [
+    "六段画面均按AI概念演绎使用，不冒充WAIC大会实拍、官方产品演示或真实新闻现场",
+    "成片统一添加AI概念画面标识；源片已有AI生成水印的，不进行遮挡或伪装",
+    "所有代理文件已去除源音轨，最终只使用口播、人声下音乐和定点音效",
+    "横版素材进入竖版成片时必须检查人物、设备和关键信号是否处于中心安全区"
+  ],
+  "clips": [
+    {
+      "id": "V01",
+      "topic": "地震波开场钩子",
+      "source": "616C4C88-62D0-4B6E-9B09-F3D99B3E9851.MP4",
+      "source_sha256": "8a0d2aa0760893d1d53c4149156ca2d104d961de59cf95aadc41c74c55c77ce5",
+      "proxy": "V01-earthquake-hook.mp4",
+      "proxy_sha256": "0a5fc8b57c024bf101f85333b5da72711f942f82c316ddb21c370ef24e0772d7",
+      "proxy_duration_seconds": 5.033,
+      "review": "可用"
+    },
+    {
+      "id": "V02",
+      "topic": "设备异响与现场经验",
+      "source": "C52BF936-1206-43B0-9471-8B1D01778B7E.MP4",
+      "source_sha256": "e5f44e106e73e08a75266f128fef45c38afcddfebf00013c9cb705fae191c6e7",
+      "proxy": "V02-machine-anomaly.mp4",
+      "proxy_sha256": "23dce44b5b49ada2aa34fe30abd0ea60391b7305ae8dc064aec0cde4df68929a",
+      "proxy_duration_seconds": 3.367,
+      "review": "可用，已做安全截短",
+      "edit_note": "源片末尾约1秒出现人员触碰设备轴部的画面，代理文件只保留前3.35秒；成片不得恢复该危险动作"
+    },
+    {
+      "id": "V03",
+      "topic": "叶色、土壤与天气变化",
+      "source": "EDC28F61-37C6-4BE5-8E3C-E3E39D3D1499.MP4",
+      "source_sha256": "f7924a9cdd7453853e103a2aabd2b2df3b4de38064eea40ff7ef9d1845777e3a",
+      "proxy": "V03-farm-leaf-soil-weather.mp4",
+      "proxy_sha256": "15b9c748302866922f2367b5fda69fd88d61c5fad1edb8abebdec7bda309e292",
+      "proxy_duration_seconds": 5.033,
+      "review": "可用"
+    },
+    {
+      "id": "V04",
+      "topic": "冷链温度异常",
+      "source": "49D121B3-F154-4A63-A44E-B8F0F4ABF771.MP4",
+      "source_sha256": "6478b2167c41cf43ac66e6c92c775fca1bc85f90f87955735dfdfb2e9443eb2e",
+      "proxy": "V04-cold-chain-anomaly.mp4",
+      "proxy_sha256": "c237856bf930b041353e32363f69d01ddab24d733abff23d6be35873a08f4acb",
+      "proxy_duration_seconds": 5.033,
+      "review": "可用"
+    },
+    {
+      "id": "V05",
+      "topic": "退役望远镜旧数据再发现",
+      "source": "76912D46-0DF0-4F26-8403-B71FA2BD67A6.MP4",
+      "source_sha256": "45fb1d947c56143bdf8197cb9a24f9b740e98e34ce443f336a75352ebc32cc76",
+      "proxy": "V05-retired-telescope-data.mp4",
+      "proxy_sha256": "67df3562b5ef9e155c344838207d0eb42eafb5690629d7ade8ffc8a96e96709d",
+      "proxy_duration_seconds": 5.033,
+      "review": "可用，必须标注AI概念画面，不冒充NEOWISE真实影像"
+    },
+    {
+      "id": "V06",
+      "topic": "智慧药房扫码、配药与复核",
+      "source": "3F21E698-0C0E-4AC4-89D7-F6A9054CD52D.MP4",
+      "source_sha256": "78e413490389c599112f3288a45b31613bfe49afc1f5e3b35053d03c99225875",
+      "proxy": "V06-smart-pharmacy.mp4",
+      "proxy_sha256": "321f90769a31453a1ae3aa4a483ad823f9ec5be815f8b21004b022f342eb1c07",
+      "proxy_duration_seconds": 5.033,
+      "review": "可用，必须标注AI概念画面，不冒充大会现场或真实医院实拍"
+    },
+    {
+      "id": "V07",
+      "topic": "AI提示与行业人现场复核闭环",
+      "source": null,
+      "proxy": null,
+      "review": "待生成",
+      "required_duration_seconds": "5-6",
+      "prompt_ref": "/Users/pc/Documents/个人知识库/01_项目实战/AI选题雷达/2026-07-18-WAIC2026/21-WAIC2026-V6六段AI视频验收与预制记录.md"
+    }
+  ],
+  "technical_checks": {
+    "source_count": 6,
+    "source_spec": "1280x720, 60fps, H.264, AAC",
+    "proxy_spec": "1920x1080, 30fps, H.264, 无音轨",
+    "full_decode": "通过",
+    "blackdetect": "未发现黑帧事件",
+    "freezedetect": "未发现冻结事件",
+    "contact_sheet": "/Users/pc/Documents/口播/edit/verify/waic2026-v6-preproduction/waic-v6-six-clips-contact.jpg"
+  },
+  "evidence_assets": [
+    {
+      "path": "/Users/pc/Documents/口播/remotion/public/evidence/waic2026-v6/wang-jian-scientific-data-02m02s.jpg",
+      "usage": "王坚演讲现场与大会来源转场"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/remotion/public/evidence/waic2026-v6/wang-jian-geodata-10m25s.jpg",
+      "usage": "王坚演讲现场PPT观点；75%以上只作为演讲者观点呈现"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/remotion/public/evidence/waic2026-v6/neowise-official-top-16x9.png",
+      "usage": "NEOWISE官方项目页证据画面"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/remotion/public/evidence/waic2026-v6/smart-pharmacy-report-top-16x9.png",
+      "usage": "智慧药房公开报道证据画面"
+    }
+  ],
+  "generated_stills": [
+    "FieldSignalStrip底图：待生成",
+    "TextVsObservation底图：待生成",
+    "HumanValidationLoop收束底图：待生成"
+  ]
+}
