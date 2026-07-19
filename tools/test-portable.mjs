@@ -78,6 +78,7 @@ try {
     for (const skillName of [
       'content-brain-gate',
       'humanize-koubo-script',
+      'koubo-asset-prep',
       'koubo-remotion-director',
     ]) {
       run(
@@ -137,13 +138,88 @@ try {
     env: { ...process.env, CODEX_HOME: conflictCodexHome },
     expectedCodes: [2],
   });
-  for (const skillName of ['humanize-koubo-script', 'koubo-remotion-director']) {
+  for (const skillName of [
+    'humanize-koubo-script',
+    'koubo-asset-prep',
+    'koubo-remotion-director',
+  ]) {
     if (existsSync(path.join(conflictCodexHome, 'skills', skillName))) {
       throw new Error(`冲突时发生部分安装：${skillName}`);
     }
   }
   steps.push({ name: '冲突时无部分写入', ok: true, code: 0 });
   console.log('[通过] 冲突时无部分写入');
+  run(
+    '同名冲突下定向安装新 Skill',
+    process.execPath,
+    ['tools/setup-koubo.mjs', '--skill', 'koubo-asset-prep'],
+    { env: { ...process.env, CODEX_HOME: conflictCodexHome } },
+  );
+
+  run('素材预处理脚本语法', process.execPath, [
+    '--check',
+    'skills/koubo-asset-prep/scripts/prepare-asset.mjs',
+  ]);
+  run('素材预处理离线体检', process.execPath, [
+    'skills/koubo-asset-prep/scripts/prepare-asset.mjs',
+    'doctor',
+  ], {
+    env: { ...process.env, EACHLABS_API_KEY: '' },
+  });
+  const assetPrepOutput = path.join(projectRoot, 'edit', '.portable-asset-prep-test.png');
+  run('素材预处理离线计划', process.execPath, [
+    'skills/koubo-asset-prep/scripts/prepare-asset.mjs',
+    'remove-background',
+    'assets/generated/token-v5-20260715/chip-server-datacenter-cinematic-v1.png',
+    '--output',
+    path.relative(projectRoot, assetPrepOutput),
+    '--asset-class',
+    'generated',
+    '--production-state',
+    'ready-for-production',
+    '--dry-run',
+  ], {
+    env: { ...process.env, EACHLABS_API_KEY: '' },
+  });
+  if (existsSync(assetPrepOutput) || existsSync(`${assetPrepOutput}.asset-prep.json`)) {
+    throw new Error('素材预处理 dry-run 不应生成输出或处理记录');
+  }
+  steps.push({ name: '素材预处理预检未上传且未写结果', ok: true, code: 0 });
+  console.log('[通过] 素材预处理预检未上传且未写结果');
+  run('素材预处理证据门禁', process.execPath, [
+    'skills/koubo-asset-prep/scripts/prepare-asset.mjs',
+    'upscale-image',
+    'assets/screenshots/waic2026-neowise-official.png',
+    '--output',
+    path.relative(projectRoot, assetPrepOutput),
+    '--asset-class',
+    'evidence',
+    '--production-state',
+    'ready-for-production',
+    '--dry-run',
+  ], {
+    expectedCodes: [1],
+    env: { ...process.env, EACHLABS_API_KEY: '' },
+  });
+  run('素材预处理无密钥停止', process.execPath, [
+    'skills/koubo-asset-prep/scripts/prepare-asset.mjs',
+    'upscale-image',
+    'assets/generated/token-v5-20260715/chip-server-datacenter-cinematic-v1.png',
+    '--output',
+    path.relative(projectRoot, assetPrepOutput),
+    '--asset-class',
+    'generated',
+    '--production-state',
+    'ready-for-production',
+    '--confirm-external-processing',
+    '--confirm-cost',
+  ], {
+    expectedCodes: [1],
+    env: { ...process.env, EACHLABS_API_KEY: '' },
+  });
+  if (existsSync(assetPrepOutput) || existsSync(`${assetPrepOutput}.asset-prep.json`)) {
+    throw new Error('无密钥门禁不应生成输出或处理记录');
+  }
 
   const mediaRoot = makeTemporaryRoot();
   const syntheticVideo = path.join(mediaRoot, 'synthetic.mp4');

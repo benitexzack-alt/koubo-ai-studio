@@ -20,13 +20,42 @@ const codexHome = process.env.CODEX_HOME?.trim()
   ? path.resolve(process.env.CODEX_HOME)
   : path.join(os.homedir(), '.codex');
 const skillsRoot = path.join(codexHome, 'skills');
-const dryRun = process.argv.includes('--dry-run');
+const args = process.argv.slice(2);
+const dryRun = args.includes('--dry-run');
 
 const skillNames = [
   'content-brain-gate',
   'humanize-koubo-script',
+  'koubo-asset-prep',
   'koubo-remotion-director',
 ];
+
+const requestedSkillNames = [];
+for (let index = 0; index < args.length; index += 1) {
+  const token = args[index];
+  if (token === '--dry-run') continue;
+  if (token === '--skill') {
+    const name = args[index + 1];
+    if (!name || name.startsWith('--')) {
+      console.error('参数 --skill 缺少 Skill 名称。');
+      process.exit(2);
+    }
+    requestedSkillNames.push(name);
+    index += 1;
+    continue;
+  }
+  console.error(`未知参数：${token}`);
+  process.exit(2);
+}
+
+const unknownSkillNames = requestedSkillNames.filter((name) => !skillNames.includes(name));
+if (unknownSkillNames.length > 0) {
+  console.error(`未知项目 Skill：${unknownSkillNames.join('、')}`);
+  process.exit(2);
+}
+const selectedSkillNames = requestedSkillNames.length > 0
+  ? [...new Set(requestedSkillNames)]
+  : skillNames;
 
 const exists = async (target) => {
   try {
@@ -80,7 +109,7 @@ const inspectTarget = async (name) => {
   };
 };
 
-const inspections = await Promise.all(skillNames.map(inspectTarget));
+const inspections = await Promise.all(selectedSkillNames.map(inspectTarget));
 const blocking = inspections.filter(({ state }) =>
   ['source-missing', 'conflict-existing', 'conflict-symlink'].includes(state),
 );

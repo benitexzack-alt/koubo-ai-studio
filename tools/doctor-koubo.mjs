@@ -32,6 +32,7 @@ const requiredFiles = [
   'remotion/package-lock.json',
   'skills/content-brain-gate/SKILL.md',
   'skills/humanize-koubo-script/SKILL.md',
+  'skills/koubo-asset-prep/SKILL.md',
   'skills/koubo-remotion-director/SKILL.md',
   'templates/03-复制与新账号接入清单.md',
 ];
@@ -139,7 +140,12 @@ if (hardcodedHits.length === 0) {
   add('失败', '便携路径检查', hardcodedHits.join('；'));
 }
 
-for (const name of ['content-brain-gate', 'humanize-koubo-script', 'koubo-remotion-director']) {
+for (const name of [
+  'content-brain-gate',
+  'humanize-koubo-script',
+  'koubo-asset-prep',
+  'koubo-remotion-director',
+]) {
   const source = path.join(projectRoot, 'skills', name);
   const target = path.join(skillsRoot, name);
   if (!existsSync(target)) {
@@ -211,6 +217,14 @@ if (process.env.ELEVENLABS_API_KEY?.trim()) {
   add('警告', 'ElevenLabs 配置', '当前兼容读取本机 video-use 私密配置；复制到新机器时应写入项目 .env');
 } else {
   add('警告', 'ElevenLabs 配置', '未配置；真实转写前写入项目 .env 或环境变量');
+}
+
+if (process.env.EACHLABS_API_KEY?.trim()) {
+  add('通过', 'each::labs 配置', '已由环境变量提供（值未显示）');
+} else if (hasConfiguredKey(projectEnvPath, 'EACHLABS_API_KEY')) {
+  add('通过', 'each::labs 配置', '项目 .env 已配置（值未显示）');
+} else {
+  add('警告', 'each::labs 配置', '未配置；不影响离线预检，真实抠图或升清前再配置');
 }
 
 if (existsSync(path.join(projectRoot, 'remotion', 'node_modules'))) {

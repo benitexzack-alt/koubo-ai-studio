@@ -16,6 +16,7 @@ AI 口播内容与 Remotion 生产工作流：内容门禁、事实安全精修�
 - `skills/koubo-remotion-director`：视觉方案、V4/V5/V6、Remotion 预览、质检和发布记录。
 - `skills/humanize-koubo-script`：事实锁定后的去 AI 味、朗读和留存风险审稿。
 - `skills/content-brain-gate`：来源、最近六条、内容增量、观众距离、机制和本人声音硬门禁。
+- `skills/koubo-asset-prep`：对指定且已授权的视觉素材执行抠图、图片升清或生成视频升清；证据截图和真人主口播禁止进入生成式增强。
 
 ## 快速开始
 
@@ -46,6 +47,13 @@ node tools/test-portable.mjs
 
 ```bash
 node tools/setup-koubo.mjs --dry-run
+```
+
+本机已有同名独立 Skill、只想注册本项目新增能力时，可限定安装范围：
+
+```bash
+node tools/setup-koubo.mjs --skill koubo-asset-prep --dry-run
+node tools/setup-koubo.mjs --skill koubo-asset-prep
 ```
 
 安装器只会创建缺失的链接。如果 `~/.codex/skills/` 中已存在不同来源的同名 Skill，它会在写入前停止并报告，不覆盖、不移动、不删除。体检工具全程只读，也不会显示 `.env` 的内容。
@@ -94,5 +102,7 @@ node tools/generate-image.mjs --prompt "提示卡背景，不要文字，不要l
 ## 注意
 
 真实素材、客户案例和生图提示词需要进入素材台账或 `shot-plan.json`，公开视频使用前必须确认来源、授权和证据等级。
+
+抠图或升清先运行 `node skills/koubo-asset-prep/scripts/prepare-asset.mjs doctor`。真实调用会把指定素材上传到 each::labs 及实际模型提供商并可能计费，必须达到 `ready-for-production`，再逐次显式确认外部处理和费用；`--dry-run` 不上传、不计费、不生成文件。
 
 本仓库不包含真实原片、客户素材、`.env`、本地字体和正式成片。历史 release 记录在新克隆中可能因对应私密媒体不存在而校验失败，这不代表校验器失效。
