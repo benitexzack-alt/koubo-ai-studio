@@ -50,8 +50,8 @@ export const V7LocalContrastVeil: React.FC<{
     <div
       style={{
         position: 'absolute',
-        top: 0,
-        bottom: 0,
+        top: -70,
+        bottom: -70,
         [side]: 0,
         width,
         pointerEvents: 'none',
@@ -59,6 +59,10 @@ export const V7LocalContrastVeil: React.FC<{
           side === 'left'
             ? `linear-gradient(90deg, ${solid} 0%, rgba(2, 7, 12, ${strength * 0.62}) 46%, ${transparent} 100%)`
             : `linear-gradient(270deg, ${solid} 0%, rgba(2, 7, 12, ${strength * 0.62}) 46%, ${transparent} 100%)`,
+        WebkitMaskImage:
+          'linear-gradient(180deg, transparent 0%, black 16%, black 84%, transparent 100%)',
+        maskImage:
+          'linear-gradient(180deg, transparent 0%, black 16%, black 84%, transparent 100%)',
       }}
     />
   );
