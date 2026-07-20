@@ -334,7 +334,8 @@ export const V7AnnotatedMediaStage: React.FC<{
           <Video
             src={staticFile(mediaSrc)}
             muted
-            style={{width: '100%', height: '100%', objectFit: mediaFit, transform: `scale(${mediaScale})`}}
+            objectFit={mediaFit}
+            style={{width: '100%', height: '100%', transform: `scale(${mediaScale})`}}
           />
         ) : (
           <Img
