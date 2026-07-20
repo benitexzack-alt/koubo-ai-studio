@@ -169,8 +169,7 @@ const V7Hud: React.FC = () => {
       >
         <div style={{width: 9, height: 9, background: '#62D8FF', boxShadow: '0 0 17px #62D8FF'}} />
         <div style={{marginLeft: 12, fontSize: 19, fontWeight: 950}}>超哥AI创业记</div>
-        <div style={{marginLeft: 22, color: '#62D8FF', fontSize: 17, fontWeight: 900}}>V7 · 透明信息舞台</div>
-        <div style={{marginLeft: 'auto', color: 'rgba(247,250,252,0.76)', fontSize: 15, fontWeight: 850}}>30秒样式测试</div>
+        <div style={{marginLeft: 22, color: '#62D8FF', fontSize: 17, fontWeight: 900}}>兰州AI创业者 · 啊超</div>
       </div>
       <div style={{position: 'absolute', left: 54, right: 54, bottom: 20, height: 3, background: 'rgba(255,255,255,0.14)', zIndex: 140}}>
         <div style={{width: `${progress}%`, height: '100%', background: 'linear-gradient(90deg, #62D8FF, #FFBE55)', boxShadow: '0 0 14px rgba(98,216,255,0.65)'}} />
