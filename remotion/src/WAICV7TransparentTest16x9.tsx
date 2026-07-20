@@ -63,10 +63,10 @@ const V7TalkFootage: React.FC = () => {
             src={staticFile('media/waic2026-v6/WAIC_20260718_talk01_30fps_loudness.mp4')}
             trimBefore={segment.trimBefore}
             volume={segment.volume}
+            objectFit="cover"
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
               filter: 'contrast(1.045) saturate(1.04) brightness(1.01)',
               transform: `translate3d(${x}px, ${y}px, 0) scale(${scale})`,
               transformOrigin: '55% 36%',
@@ -191,7 +191,7 @@ const V7SoundDesign: React.FC = () => (
       <Audio src={staticFile('audio/waic2026-v6/thesis-impact.wav')} volume={1.15} />
     </Sequence>
     <Sequence from={f(23.05)} durationInFrames={f(2)}>
-      <Audio src={staticFile('audio/waic2026-v6/correction-not-equal.wav')} volume={0.46} />
+      <Audio src={staticFile('audio/waic2026-v6/node-connect.wav')} volume={0.28} />
     </Sequence>
   </>
 );
