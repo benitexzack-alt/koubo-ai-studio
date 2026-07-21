@@ -25,6 +25,10 @@ import {
   WAIC_V7_TEST_DURATION_IN_FRAMES,
 } from './WAICV7TransparentTest16x9';
 import {
+  DazhiFormalV7Talk16x9,
+  DAZHI_FORMAL_DURATION_IN_FRAMES,
+} from './DazhiFormalV7Talk16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -46,6 +50,14 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="DazhiFormalV7Talk16x9"
+          component={DazhiFormalV7Talk16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={DAZHI_FORMAL_DURATION_IN_FRAMES}
+        />
         <Composition
           id="WAICV7TransparentTest16x9"
           component={WAICV7TransparentTest16x9}

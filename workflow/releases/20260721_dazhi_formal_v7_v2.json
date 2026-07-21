@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260721_dazhi_formal_v7_v2",
+  "status": "ready-for-user-review",
+  "videoId": "DAZHI_20260721_FORMAL_V7",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "topic": "设计师大志如何用AI锁住自己的灵感",
+    "serviceAudience": "设计师、本地创意从业者、需要沉淀个人经验与数字资产的小微企业经营者。",
+    "oneConclusion": "AI只是工具，先把一瞬间的设计灵感保存为可看、可选、可讨论的概念，再由设计师继续深化为可落地方案。",
+    "cta": "通过真实项目展示AI如何进入本地设计工作。",
+    "factBoundary": "片中设计流程、材料库、知识库和预算选择均来自现场讨论；草图、概念图和生成视频用于展示灵感演进，不冒充已经施工落地的真实项目。"
+  },
+  "inputs": {
+    "sourceVideo": "/Users/pc/Desktop/大志/7月21日.mov",
+    "transcript": "edit/20260721_dazhi_formal/transcripts/dazhi_20260721_main_small_words_for_qa_v1.json",
+    "bilingualCaptions": "remotion/public/data/dazhi_20260721_formal.bilingual.v2.json",
+    "visualPlan": "workflow/visual-plans/20260721_dazhi_formal_v7.visual-plan.v1.json",
+    "assets": [
+      "media/dazhi-20260721/main-30fps.mp4",
+      "media/dazhi-20260721/personal-knowledge-base-cropped-30fps.mp4",
+      "media/dazhi-20260721/inspiration-v1-30fps.mp4",
+      "media/dazhi-20260721/inspiration-sketch-v1.png",
+      "media/dazhi-20260721/灵感概念图_大志设计_v1.png",
+      "media/dazhi-20260721/inspiration-motion-v1.mp4"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/20260721_设计师大志_用AI锁住灵感_V7_正式版_v2.mp4",
+    "previewOutput": "edit/exports/20260721_dazhi_formal/大志正式版_V7_字幕复核预览_v2_60s.mp4",
+    "modules": [
+      "digital-camera",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "semantic-motion-card",
+      "bilingual-caption"
+    ],
+    "styleReferenceIds": [
+      "V7-transparent-information-stage",
+      "full-screen-material-takeover",
+      "sketch-concept-motion-chain",
+      "blue-white-data-cards"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式V2为1920x1080、30fps、H.264/AAC、366.677秒、471443901字节；完整解码通过；黑场0处、异常静音0处；响度-15.95 LUFS、真峰值-1.25 dBTP、LRA 10.10；SHA-256为25dc51b2a9e095f19efdd809095638e8d5e1e11c4d4cc120d3500ec8633541ef。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "verifier": "verbatim-v1",
+      "minimumScore": 0.76,
+      "averagePrecision": 0.921,
+      "averageCoverage": 0.631,
+      "evidence": "94页中英同窗字幕使用最终原声词级时间轴逐页复核；检查项拆为字幕贴合度、音轨覆盖度、页边界、页长和字数。硬失败0页；22条警告均为省略口头填充词或已知ASR专业词纠错。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "schema v2视觉方案共22个图层、14个风险抽帧；透明卡片、全屏素材接管、草图到概念图再到生成视频的链路均进入正式片，视觉方案校验通过。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [1, 5, 19, 60, 81, 110, 130, 134, 138, 160, 210, 259, 313, 338, 352, 365],
+      "evidence": "从最终编码文件抽取16个节点，覆盖开场人物介绍、透明信息卡、灵感界面、草图、概念图、生成视频、个人知识库、材料库、预算选择、设计框架、案例展示和结尾；未发现字幕溢出、卡片裁切或主要挡脸。"
+    },
+    "privacyReview": {
+      "status": "pending-user-review",
+      "evidence": "现场电脑屏幕和两位参与者肖像、声音均出现在成片中；公开发布前仍需确认大志肖像与声音授权，并由用户复核屏幕中是否存在不适合公开的信息。"
+    },
+    "soundAndCameraReview": {
+      "status": "pending-user-review",
+      "evidence": "机器侧确认原采访音频连续、无异常静音，数字运镜和视觉节点均成功渲染；运镜主观舒适度、字幕跟嘴听感和整体节奏仍待用户完整观看确认。"
+    },
+    "freezeReview": {
+      "status": "passed",
+      "evidence": "自动检测到122.40至124.53秒约2.13秒静止画面；四帧人工复核确认这是灵感系统全屏演示中两次操作之间的合法界面停留，字幕持续更新，124.8秒已正常切页。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260721-verbatim-bilingual-captions",
+      "decision": "applied-and-verified",
+      "evidence": "拦截了V1把原话润色成总结句的问题；V2改用Whisper small词级转写、专业词纠错和三指标逐页校验。"
+    },
+    {
+      "id": "upgrade-20260721-transparent-v7-stage",
+      "decision": "applied-and-verified",
+      "evidence": "透明信息卡、重点词和数字节点均实际进入画面；左上角只显示超哥AI创业记，不显示V7版本号。"
+    },
+    {
+      "id": "upgrade-20260721-full-screen-broll",
+      "decision": "applied-and-verified",
+      "evidence": "灵感V1、草图、概念图、生成视频和个人知识库均在对应语义处全屏接管画面，讲完后切回采访。"
+    },
+    {
+      "id": "upgrade-20260721-freeze-audit",
+      "decision": "applied-and-verified",
+      "evidence": "自动冻结事件必须落到具体秒点并抽帧判断；本条唯一事件确认是合法UI停留。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户连续要求继续形成正片，并已明确素材顺序与全屏接管方式；当前正式V2完成机器质检，仍待用户完整观看。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "先由用户完整观看V2；确认字幕、运镜、节奏、肖像授权和屏幕隐私后再决定公开发布。"
+  }
+}

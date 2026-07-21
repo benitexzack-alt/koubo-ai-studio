@@ -121,12 +121,21 @@ if (!passed(release.qa?.captionSync)) {
 }
 
 if (exists(release.inputs?.transcript) && exists(release.inputs?.bilingualCaptions)) {
-  const captionCheck = run(process.execPath, [
-    'tools/check-bilingual-caption-sync.mjs',
-    release.inputs.transcript,
-    release.inputs.bilingualCaptions,
-    String(baseline.captionPolicy?.minimumSyncScore ?? 0.62)
-  ]);
+  const captionVerifier = release.qa?.captionSync?.verifier ?? 'legacy-lcs';
+  const captionCheckArgs =
+    captionVerifier === 'verbatim-v1'
+      ? [
+          'tools/check-verbatim-caption-sync.mjs',
+          release.inputs.transcript,
+          release.inputs.bilingualCaptions,
+        ]
+      : [
+          'tools/check-bilingual-caption-sync.mjs',
+          release.inputs.transcript,
+          release.inputs.bilingualCaptions,
+          String(baseline.captionPolicy?.minimumSyncScore ?? 0.62),
+        ];
+  const captionCheck = run(process.execPath, captionCheckArgs);
   if (captionCheck.status !== 0) {
     errors.push(`字幕同步子校验失败：${captionCheck.stderr.trim() || captionCheck.stdout.trim()}`);
   }
