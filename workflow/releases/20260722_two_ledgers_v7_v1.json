@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260722_two_ledgers_v7_v1",
+  "status": "ready-for-user-review",
+  "videoId": "TWO_LEDGER_20260722_V7",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "topic": "150个粉丝时，如何判断该继续、调整还是停止",
+    "serviceAudience": "学了AI、持续发内容或做项目，但尚未得到稳定流量、咨询和变现结果的人。",
+    "oneConclusion": "不要只用粉丝数或一句坚持判断方向；同时记录外部结果账和内部资产账，让每次真实行动留下可验证、可复用的个人上下文。",
+    "cta": "今天开始建立自己的知识库。",
+    "factBoundary": "150个粉丝是用户本人当前阶段陈述；数字资产是有边界的个人判断，不承诺资料必然升值、涨粉、获客或变现。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260722_two_ledgers/TWO_LEDGER_20260722_talk01_16x9.MOV",
+    "transcript": "edit/transcripts/TWO_LEDGER_20260722_talk01_16x9.scribe_v2.json",
+    "bilingualCaptions": "remotion/public/data/TWO_LEDGER_20260722_talk01_16x9.bilingual.v1.json",
+    "visualPlan": "workflow/visual-plans/20260722_two_ledgers_v7.visual-plan.v1.json",
+    "assets": [
+      "media/two-ledgers-20260722/main-30fps.mp4",
+      "media/two-ledgers-20260722/personal-kb-graph-cropped-30fps.mp4"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/20260722_150粉丝_结果账与资产账_V7_正式版_A音效_v1.mp4",
+    "previewOutput": "edit/exports/20260722_two_ledgers/150粉丝_双账本_V7_30秒预览_新版音效_A.mp4",
+    "modules": [
+      "digital-camera",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "semantic-motion-card",
+      "bilingual-caption"
+    ],
+    "styleReferenceIds": [
+      "V7-transparent-information-stage",
+      "full-screen-knowledge-takeover",
+      "sourced-quote-stage",
+      "blue-white-data-cards",
+      "normalized-light-sfx"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式片为1920x1080、30fps、H.264/AAC、8745帧、291.562667秒、350401979字节；完整解码通过；黑场0处、异常冻结0处、超过2秒异常静音0处；响度-23.1 LUFS、真峰值-3.7 dBFS；SHA-256为1fbfb1bfb865a795e583ad32f07384de3627f07bb4268634deec1b4395b93907。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "verifier": "verbatim-v1",
+      "minimumScore": 0.81,
+      "averagePrecision": 0.978,
+      "averageCoverage": 0.920,
+      "evidence": "69页中英同窗字幕使用最终口播词级时间轴；硬失败0页。两条提示仅来自音轨口述一百五十、画面写150的数字表达差异。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "schema v2视觉方案共17个图层、13个风险抽帧；透明信息层、双账本、知识库全屏接管、古文引文和结尾行动均进入正式片，视觉方案校验通过。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [10.2, 27.2, 60, 75.8, 91, 118, 150, 162, 191, 209.2, 224, 262, 283.5, 290],
+      "evidence": "从最终编码文件抽取14个节点，覆盖首屏、决策卡、数字边界、结果账、资产账、知识库、数字垃圾、四类资产、真实验证、古文出处、三个不等于、个人上下文和结尾；未发现字幕溢出、卡片裁切或主要挡脸。"
+    },
+    "privacyReview": {
+      "status": "pending-user-review",
+      "evidence": "知识库录屏已裁掉左侧目录、顶部窗口栏和文件名，最终风险帧未见私人目录；正式公开前仍由用户完整观看确认。"
+    },
+    "soundAndCameraReview": {
+      "status": "passed-preview-pending-full-watch",
+      "evidence": "用户已在同画面A/B预览中选择A版轻量音效；整片响度和真峰值通过机器检查。数字运镜和全片主观听感仍待用户完整观看。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260722-verbatim-bilingual-captions",
+      "decision": "applied-and-verified",
+      "evidence": "按实际录音生成69页中英同窗字幕，不用拍摄稿覆盖音轨；逐页同步检查硬失败0页。"
+    },
+    {
+      "id": "upgrade-20260722-v7-two-ledger-stage",
+      "decision": "applied-and-verified",
+      "evidence": "结果账与资产账采用同一透明舞台切换，150粉丝、数字垃圾、四类资产和个人上下文均在对应语义处可视化。"
+    },
+    {
+      "id": "upgrade-20260722-private-knowledge-takeover",
+      "decision": "applied-and-verified",
+      "evidence": "真实知识库关系图全屏接管，已裁掉目录、文件名和窗口栏，口播主音轨保持连续。"
+    },
+    {
+      "id": "upgrade-20260722-normalized-sfx-ab-test",
+      "decision": "user-selected-a",
+      "evidence": "A/B预览视频流完全一致，仅声音不同；用户明确选择A版轻量音效。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": true,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户在A/B预览后明确回复A；正式片已完成机器质检，仍待完整观看确认。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "用户完整观看正式V1，确认字幕、运镜、音效、知识库隐私和整体节奏后再发布。"
+  }
+}
