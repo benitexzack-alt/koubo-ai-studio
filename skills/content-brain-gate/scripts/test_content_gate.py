@@ -36,6 +36,22 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertEqual(result["status"], "ready-for-draft")
         self.assertFalse(result["errors"])
 
+    def test_reference_structure_requires_brief_contract(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        del card["brief_contract"]
+        result = self.validate(card, "brief-contract-missing.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("brief_contract 必须是对象" in error for error in result["errors"]))
+
+    def test_brief_contract_rejects_unlocked_or_empty_reframes(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["brief_contract"]["status"] = "planned"
+        card["brief_contract"]["forbidden_reframes"] = []
+        result = self.validate(card, "brief-contract-unlocked.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("forbidden_reframes" in error for error in result["errors"]))
+        self.assertTrue(any("status 必须为 locked" in error for error in result["errors"]))
+
     def test_section_markers_ignore_audit_appendix(self) -> None:
         card = load_fixture("waic-new-pass.json")
         card["draft"] = {

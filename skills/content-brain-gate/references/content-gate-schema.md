@@ -100,6 +100,29 @@
 }
 ```
 
+## brief_contract
+
+当任一来源的 `intended_uses` 包含 `talking-structure` 时，本对象必填。它锁定用户原始任务，防止事实纠偏、参考资料或质量包装擅自改写主题。
+
+```json
+{
+  "user_goal": "用户真正要讲什么",
+  "reference_role": "参考内容在本稿中只承担什么作用",
+  "reference_forbidden_role": "参考内容明确不承担什么作用",
+  "required_arc": ["至少三段用户要求的故事线"],
+  "forbidden_reframes": ["至少两个禁止擅自改写的其他主题"],
+  "alignment_evidence": "成稿哪些段落逐项兑现了用户要求",
+  "status": "locked"
+}
+```
+
+固定规则：
+
+- `status` 必须为 `locked`；
+- 事实纠偏和风险边界默认只作护栏，不能自动升级为主题；
+- 精选质量目标只能验收既定主题，不能反向发明新主题；
+- 缺失、占位或故事线不足时，状态必须为 `blocked`。
+
 ## frozen_topic_hits
 
 ```json

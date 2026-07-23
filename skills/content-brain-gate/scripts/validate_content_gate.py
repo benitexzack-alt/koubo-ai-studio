@@ -22,6 +22,12 @@ DEEP_USES = {"viewpoint", "talking-structure"}
 ALL_USES = PARTIAL_USES | DEEP_USES | {"draft-evidence"}
 DOUYIN_QUALITY_TRAITS = ("gain", "surprise", "expression", "resonance")
 DOUYIN_QUALITY_FIELDS = ("target", "script_evidence", "viewer_test")
+BRIEF_CONTRACT_FIELDS = (
+    "user_goal",
+    "reference_role",
+    "reference_forbidden_role",
+    "alignment_evidence",
+)
 MECHANISM_FIELDS = (
     "name",
     "problem",
@@ -266,6 +272,48 @@ class GateValidator:
         if not any(error.startswith("recent_six") for error in self.errors):
             self.pass_check("最近六条主张、证据、交付物和行动引导已建台账")
 
+    def validate_brief_contract(self) -> None:
+        sources = self.card.get("sources")
+        uses_reference_structure = isinstance(sources, list) and any(
+            isinstance(source, dict)
+            and isinstance(source.get("intended_uses"), list)
+            and "talking-structure" in source["intended_uses"]
+            for source in sources
+        )
+        if not uses_reference_structure:
+            return
+
+        contract = self.card.get("brief_contract")
+        if not isinstance(contract, dict):
+            self.error(
+                "brief_contract 必须是对象；使用参考内容的 Talking 结构前必须锁定用户目标和参考内容角色"
+            )
+            return
+        for field in BRIEF_CONTRACT_FIELDS:
+            value = contract.get(field)
+            if not nonempty(value):
+                self.error(f"brief_contract.{field} 不能为空")
+            elif len(value.strip()) < 20:
+                self.error(f"brief_contract.{field} 过于空泛，必须具体对应本轮用户要求")
+
+        required_arc = contract.get("required_arc")
+        if not isinstance(required_arc, list) or len(required_arc) < 3:
+            self.error("brief_contract.required_arc 至少需要三段用户要求的故事线")
+        elif not all(nonempty(item) and len(item.strip()) >= 8 for item in required_arc):
+            self.error("brief_contract.required_arc 不能包含空白或占位故事线")
+
+        forbidden_reframes = contract.get("forbidden_reframes")
+        if not isinstance(forbidden_reframes, list) or len(forbidden_reframes) < 2:
+            self.error("brief_contract.forbidden_reframes 至少需要两个禁止擅自改写的主题")
+        elif not all(nonempty(item) and len(item.strip()) >= 4 for item in forbidden_reframes):
+            self.error("brief_contract.forbidden_reframes 不能包含空白或占位主题")
+
+        if contract.get("status") != "locked":
+            self.error("brief_contract.status 必须为 locked，未锁定用户原始意图时不得写稿")
+
+        if not any(error.startswith("brief_contract") for error in self.errors):
+            self.pass_check("参考内容角色、用户原始目标、故事线和禁止改写主题已锁定")
+
     def validate_topic(self) -> None:
         topic = self.card.get("topic")
         if not isinstance(topic, dict):
@@ -473,6 +521,7 @@ class GateValidator:
         stage = self.validate_header()
         self.validate_rules()
         self.validate_sources()
+        self.validate_brief_contract()
         self.validate_recent_six()
         self.validate_topic()
         self.validate_frozen_topics()
