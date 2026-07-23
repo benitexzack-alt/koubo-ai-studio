@@ -4,7 +4,7 @@
 
 ```json
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "task_id": "唯一任务标识",
   "target_stage": "outline | draft | production",
   "required_rules": [],
@@ -13,11 +13,14 @@
   "topic": {},
   "frozen_topic_hits": [],
   "audience_fit": {},
+  "douyin_quality": {},
   "mechanism_cards": [],
   "voice": {},
   "draft": {}
 }
 ```
+
+`schema_version: 2` 从 2026-07-23 起用于所有新内容。历史 `schema_version: 1` 卡只保留审计价值，重新进入写稿或制作时必须升级，不能自动继承抖音精选质量验收。
 
 ## required_rules
 
@@ -127,6 +130,48 @@
 ```
 
 高层技术、院士观点和大公司产品不得填写为主角。当前稿件必须不依赖讲述者并不具备的专家身份，并至少有两个普通人可感知场景。
+
+## douyin_quality
+
+四项特征来自抖音精选优质内容质量方向，但不是算法公式或入选保证。机器只校验目标、正文证据和验收方式是否完整。
+
+```json
+{
+  "source_scope": "quality-guidance-not-selection-guarantee",
+  "gain": {
+    "target": "primary",
+    "script_evidence": "正文中提供新信息、机制、经验或可带走动作的段落",
+    "viewer_test": "目标观众看完后能复述或完成什么"
+  },
+  "surprise": {
+    "target": "supporting",
+    "script_evidence": "有证据的新角度、新反差或新表达",
+    "viewer_test": "删掉夸张词后，新意是否仍成立"
+  },
+  "expression": {
+    "target": "primary",
+    "script_evidence": "唯一主张、具体场景和清晰结构",
+    "viewer_test": "陌生观众能否用一句话准确复述"
+  },
+  "resonance": {
+    "target": "supporting",
+    "script_evidence": "真实经历、冲突、选择或感受的来源",
+    "viewer_test": "共鸣是否来自真实处境，而不是煽情"
+  },
+  "integrity_boundary": "不得通过虚构、夸张、隐去边界或包装局部功能制造惊喜和感染力",
+  "review_status": "planned",
+  "selection_not_guaranteed": true
+}
+```
+
+固定规则：
+
+- `target` 只能是 `primary`、`supporting` 或 `not-targeted`；
+- 获得感 `gain` 和表达力 `expression` 必须为 `primary`；
+- 每项都必须填写 `script_evidence` 和 `viewer_test`，`not-targeted` 也要说明不采用原因和验收边界；
+- `review_status` 只能是 `planned`、`self-reviewed` 或 `human-reviewed`；
+- `production` 阶段必须为 `human-reviewed`；
+- `selection_not_guaranteed` 必须为 `true`。
 
 ## mechanism_cards
 

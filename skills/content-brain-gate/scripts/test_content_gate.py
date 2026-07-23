@@ -81,6 +81,60 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertTrue(any("ordinary_scenes" in error for error in result["errors"]))
         self.assertTrue(any("requires_expert_authority" in error for error in result["errors"]))
 
+    def test_douyin_quality_is_required_for_new_cards(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        del card["douyin_quality"]
+        result = self.validate(card, "douyin-quality-missing.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("douyin_quality 必须是对象" in error for error in result["errors"]))
+
+    def test_gain_and_expression_must_be_primary(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["douyin_quality"]["gain"]["target"] = "supporting"
+        card["douyin_quality"]["expression"]["target"] = "not-targeted"
+        result = self.validate(card, "douyin-quality-baseline-fail.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("gain.target 必须为 primary" in error for error in result["errors"]))
+        self.assertTrue(any("expression.target 必须为 primary" in error for error in result["errors"]))
+
+    def test_douyin_quality_cannot_claim_selection_guarantee(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["douyin_quality"]["selection_not_guaranteed"] = False
+        result = self.validate(card, "douyin-quality-guarantee-fail.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(
+            any("selection_not_guaranteed 必须为 true" in error for error in result["errors"])
+        )
+
+    def test_douyin_quality_rejects_placeholder_evidence(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["douyin_quality"]["surprise"]["script_evidence"] = "有反差"
+        card["douyin_quality"]["resonance"]["viewer_test"] = "能共鸣"
+        result = self.validate(card, "douyin-quality-placeholder-fail.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("script_evidence 过于空泛" in error for error in result["errors"]))
+        self.assertTrue(any("viewer_test 过于空泛" in error for error in result["errors"]))
+
+    def test_production_requires_human_quality_review(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["target_stage"] = "production"
+        card["draft"] = {
+            "path": str(SKILL_ROOT / "fixtures" / "section-scan.md"),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "fact_lock_passed": True,
+            "humanize_passed": True,
+            "read_aloud_passed": True,
+            "voice_match_passed": True,
+            "recent_six_recheck_passed": True,
+            "compliance_passed": True,
+            "user_script_approved": True,
+            "phrase_exemptions": [],
+        }
+        result = self.validate(card, "douyin-quality-human-review-fail.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("review_status 必须为 human-reviewed" in error for error in result["errors"]))
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

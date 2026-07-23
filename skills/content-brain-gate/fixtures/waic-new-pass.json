@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "task_id": "waic-2026-non-text-world-direction",
   "target_stage": "draft",
   "required_rules": [
@@ -128,6 +128,32 @@
     "audience_gain": "认识到行业经验不是AI之外的旧知识，而是决定AI该看什么、什么算异常、结果能不能信的关键",
     "authority_boundary": "只解释公开大会材料与普通行业场景的连接，不声称现有通用模型已可靠理解所有现场数据，也不冒充科学家或各行业专家",
     "requires_expert_authority": false
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {
+      "target": "primary",
+      "script_evidence": "从工厂异响、叶色和温度曲线切入，解释行业原始数据为什么需要一线人员定义异常，并交付判断AI项目是否读懂原始数据的方法",
+      "viewer_test": "目标观众看完后能追问一个AI项目读取的是行业原始数据，还是别人已经整理好的文字"
+    },
+    "surprise": {
+      "target": "supporting",
+      "script_evidence": "反差来自AI读过大量文字，却未必直接看过地震波、光谱和设备声音，且由演讲与案例证据支撑",
+      "viewer_test": "删掉大会名和夸张词后，观众仍能感到从文字模型转向行业原始数据这一变化有新意"
+    },
+    "expression": {
+      "target": "primary",
+      "script_evidence": "唯一主张是AI进入行业必须读懂原始数据并接受专业复核，普通场景、机制和边界沿同一条链展开",
+      "viewer_test": "陌生观众能用一句话复述行业经验决定AI应该看什么以及什么结果可信"
+    },
+    "resonance": {
+      "target": "supporting",
+      "script_evidence": "使用老师傅听设备异响和种植者观察叶色的真实职业处境，不虚构作者个人经历或客户结果",
+      "viewer_test": "行业从业者能认出自己的经验不是过时知识，而是AI落地时必须保留的判断"
+    },
+    "integrity_boundary": "不把演讲方向写成行业已经普遍实现，不虚构本人科研经历，不用未经核验的数字、情绪和成功结果制造惊喜或共鸣",
+    "review_status": "planned",
+    "selection_not_guaranteed": true
   },
   "mechanism_cards": [
     {

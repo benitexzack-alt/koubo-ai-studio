@@ -14,10 +14,14 @@ from typing import Any
 
 VALID_STAGES = {"outline", "draft", "production"}
 VALID_COMPLETENESS = {"metadata-only", "partial", "complete", "primary-source"}
+VALID_QUALITY_TARGETS = {"primary", "supporting", "not-targeted"}
+VALID_QUALITY_REVIEW_STATUSES = {"planned", "self-reviewed", "human-reviewed"}
 METADATA_USES = {"title-clue", "source-index"}
 PARTIAL_USES = METADATA_USES | {"partial-context"}
 DEEP_USES = {"viewpoint", "talking-structure"}
 ALL_USES = PARTIAL_USES | DEEP_USES | {"draft-evidence"}
+DOUYIN_QUALITY_TRAITS = ("gain", "surprise", "expression", "resonance")
+DOUYIN_QUALITY_FIELDS = ("target", "script_evidence", "viewer_test")
 MECHANISM_FIELDS = (
     "name",
     "problem",
@@ -162,8 +166,8 @@ class GateValidator:
         self.passed.append(message)
 
     def validate_header(self) -> str:
-        if self.card.get("schema_version") != 1:
-            self.error("schema_version 必须为 1")
+        if self.card.get("schema_version") != 2:
+            self.error("schema_version 必须为 2；历史卡重新进入写稿或制作时必须升级精选质量验收")
         if not nonempty(self.card.get("task_id")):
             self.error("task_id 不能为空")
         stage = self.card.get("target_stage")
@@ -328,6 +332,57 @@ class GateValidator:
         if not any(error.startswith("audience_fit") for error in self.errors):
             self.pass_check("观众距离、账号阶段、普通人场景和讲述身份匹配")
 
+    def validate_douyin_quality(self, stage: str) -> None:
+        quality = self.card.get("douyin_quality")
+        if not isinstance(quality, dict):
+            self.error("douyin_quality 必须是对象，用于登记抖音精选内容四项质量目标")
+            return
+        if quality.get("source_scope") != "quality-guidance-not-selection-guarantee":
+            self.error(
+                "douyin_quality.source_scope 必须明确为 quality-guidance-not-selection-guarantee"
+            )
+        if quality.get("selection_not_guaranteed") is not True:
+            self.error("douyin_quality.selection_not_guaranteed 必须为 true，内部验收不能冒充平台精选结果")
+
+        primary_traits: set[str] = set()
+        for trait in DOUYIN_QUALITY_TRAITS:
+            item = quality.get(trait)
+            label = f"douyin_quality.{trait}"
+            if not isinstance(item, dict):
+                self.error(f"{label} 必须是对象")
+                continue
+            for field in DOUYIN_QUALITY_FIELDS:
+                if not nonempty(item.get(field)):
+                    self.error(f"{label}.{field} 不能为空")
+            script_evidence = str(item.get("script_evidence") or "").strip()
+            viewer_test = str(item.get("viewer_test") or "").strip()
+            if script_evidence and len(script_evidence) < 30:
+                self.error(f"{label}.script_evidence 过于空泛，必须指向具体正文、事实或表达结构")
+            if viewer_test and len(viewer_test) < 20:
+                self.error(f"{label}.viewer_test 过于空泛，必须说明目标观众如何验收")
+            target = item.get("target")
+            if target not in VALID_QUALITY_TARGETS:
+                self.error(f"{label}.target 只能是 primary、supporting 或 not-targeted")
+            elif target == "primary":
+                primary_traits.add(trait)
+
+        for required_trait in ("gain", "expression"):
+            if required_trait not in primary_traits:
+                self.error(f"douyin_quality.{required_trait}.target 必须为 primary，作为本账号精品基线")
+
+        integrity_boundary = quality.get("integrity_boundary")
+        if not nonempty(integrity_boundary) or len(integrity_boundary.strip()) < 30:
+            self.error("douyin_quality.integrity_boundary 必须具体说明不得怎样制造惊喜感和感染力")
+
+        review_status = quality.get("review_status")
+        if review_status not in VALID_QUALITY_REVIEW_STATUSES:
+            self.error("douyin_quality.review_status 只能是 planned、self-reviewed 或 human-reviewed")
+        elif stage == "production" and review_status != "human-reviewed":
+            self.error("production 阶段 douyin_quality.review_status 必须为 human-reviewed")
+
+        if not any(error.startswith("douyin_quality") or "douyin_quality" in error for error in self.errors):
+            self.pass_check("抖音精选质量目标、正文证据、验收方式和非保证边界已登记")
+
     def validate_mechanisms(self, stage: str) -> None:
         cards = self.card.get("mechanism_cards")
         if stage in {"draft", "production"} and (not isinstance(cards, list) or not cards):
@@ -422,6 +477,7 @@ class GateValidator:
         self.validate_topic()
         self.validate_frozen_topics()
         self.validate_audience_fit()
+        self.validate_douyin_quality(stage)
         self.validate_mechanisms(stage)
         self.validate_voice()
         self.validate_draft(stage)

@@ -28,6 +28,7 @@ const requiredFiles = [
   'knowledge/05-合规隐私与证据规则.md',
   'knowledge/06-选题脚本与风格规范.md',
   'knowledge/14-超哥口播声音档案.md',
+  'knowledge/15-抖音精选内容质量验收.md',
   'remotion/package.json',
   'remotion/package-lock.json',
   'skills/content-brain-gate/SKILL.md',

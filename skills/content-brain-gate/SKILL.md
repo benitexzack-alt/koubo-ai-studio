@@ -1,6 +1,6 @@
 ---
 name: content-brain-gate
-description: 在任何公开内容进入选题、写稿或制作前，强制检查来源完整度、最近六条主张查重、唯一内容增量、核心对象机制解释、本人声音和制作顺序，并输出 blocked、ready-for-outline、ready-for-draft 或 ready-for-production 状态。用于口播、抖音短视频、公众号、图文、直播提纲、热点解读、参考视频改编、内容事故复盘，以及用户说“先找问题再写”“不要重复以前内容”“检查有没有读取知识库/MD/Skill”“这篇能不能拍”“先验证流程”时。
+description: 在任何公开内容进入选题、写稿或制作前，强制检查来源完整度、最近六条主张查重、唯一内容增量、核心对象机制解释、本人声音、抖音精选质量目标和制作顺序，并输出 blocked、ready-for-outline、ready-for-draft 或 ready-for-production 状态。用于口播、抖音短视频、公众号、图文、直播提纲、热点解读、参考视频改编、内容事故复盘，以及用户说“先找问题再写”“不要重复以前内容”“检查有没有读取知识库/MD/Skill”“这篇能不能拍”“先验证流程”时。
 ---
 
 # 内容大脑硬门禁
@@ -13,9 +13,10 @@ description: 在任何公开内容进入选题、写稿或制作前，强制检�
 2. 读取 `<project-root>/AGENTS.md`、项目内容规范和启动脚本列出的必读文档。
 3. 定位个人知识库：优先使用 `KOUBO_PERSONAL_KB`，否则检查 `<project-root>/../个人知识库`。如果存在，必须读取其 `AGENTS.md` 和 `00_规范与配置/12_公开内容生产大脑硬门禁.md`，并以个人知识库现行版为优先规则。
 4. 如果个人知识库不存在，读取项目内便携规则 [references/public-content-gate.md](references/public-content-gate.md)。
-5. 读取最近六条已发布、已拍摄或已确认内容。
-6. 读取当前账号声音档案。
-7. 读取本轮来源完整度报告、完整原文/转写和证据表。
+5. 读取 `<project-root>/knowledge/15-抖音精选内容质量验收.md`。
+6. 读取最近六条已发布、已拍摄或已确认内容。
+7. 读取当前账号声音档案。
+8. 读取本轮来源完整度报告、完整原文/转写和证据表。
 
 读取必须有实际路径或来源记录。不能用“应该读过”“知识库里有”代替。
 
@@ -104,6 +105,18 @@ description: 在任何公开内容进入选题、写稿或制作前，强制检�
 
 内容很正确但需要依赖科学家、架构师或成熟方法导师身份才能成立时，状态仍是 `blocked`。不能把“能讲明白”当成“当前账号适合讲”。
 
+### 5.6 建立抖音精选质量目标
+
+使用 `schema_version: 2`，按照项目 `knowledge/15-抖音精选内容质量验收.md` 填写 `douyin_quality`：
+
+- 获得感和表达力必须为 `primary`；
+- 惊喜感、感染力按真实素材填写 `primary`、`supporting` 或 `not-targeted`；
+- 每项都要写正文证据和观众验收方式；
+- 必须明确 `selection_not_guaranteed: true`；
+- `production` 阶段必须由用户人工复核，`review_status` 才能写为 `human-reviewed`。
+
+这一步只证明质量目标已经落到具体证据，不证明平台会标记精选、给流量或产生商业结果。事实、来源、合规和用户确认不通过时，质量卡不能反向放行。
+
 ### 6. 运行机器校验
 
 如果稿件 Markdown 同时包含口播正文、事实锁和审计附录，在 `draft` 中同时填写 `content_start_marker` 与 `content_end_marker`，避免把“已删除旧句式”的说明误判为正文。标记必须真实存在；不填写时默认扫描整份稿件。
@@ -124,7 +137,7 @@ python3 <project-root>/skills/content-brain-gate/scripts/validate_content_gate.p
 
 - `ready-for-outline`：只写提纲，不写拍摄终稿；
 - `ready-for-draft`：可以写文稿，但仍不能做 V6、音效和成片；
-- 写稿后建立事实锁，运行 `humanize-koubo-script`，做大声朗读、本人声音、最近六条和合规复核；
+- 写稿后建立事实锁，逐项标出四项质量特征的正文证据，运行 `humanize-koubo-script`，做大声朗读、本人声音、最近六条和合规复核；
 - 用户确认脚本且 `production` 校验通过，才升级为 `ready-for-production`。
 
 ## 与其他 Skill 的关系
