@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "task_id": "20260724-hokkaido-farm-three-local-projects-before-after-v6",
+  "status": "passed",
+  "reviewed_at": "2026-07-24T03:25:06Z",
+  "draft": {
+    "path": "<project-root>/notes/2026-07-24-北海道农场与三个AI项目-口播稿-v6.md",
+    "sha256": "7c643660d0759fb3223f1d7f815e2e8ea37a3b6b7ce069c6188b7121e2d41b97"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "304c64b8ec021246df7480c2023aaade7094267609b2e9c67bf4392de093a20b",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "开头先介绍原视频、Vibe Coding 和“500 万”，再解释数字因果",
+        "risk_level": "high",
+        "reason": "观众尚未进入农场故事，先被要求理解来源和数字纠偏，叙事像事实核查说明",
+        "candidates": {
+          "conservative": "先不看标题里的营收数字，这个案例真正值得看的，是农场里几件具体工作发生了变化。",
+          "direct": "删除整段数字说明，直接从温室温度查询开始。",
+          "vivid": "先讲 LINE 查温度、远程开窗、消息翻译和作业记录，再说明这些小工具为什么打动作者。"
+        },
+        "fact_difference": "不改变事实；约 500 万元不是 AI 新增收入继续保留在内部事实锁",
+        "recommendation": "采用生动版，让观众先看到工作变化，再进入三个本地项目"
+      },
+      {
+        "original": "三个项目连续使用“先说、再看、第三个”和“它想带来的改变”",
+        "risk_level": "medium",
+        "reason": "信息准确但句式和段落功能过于整齐，听感接近项目周报",
+        "candidates": {
+          "conservative": "保留三个项目顺序，只缩短状态说明。",
+          "direct": "每个项目只保留原来状态、正在连接的业务链和目标变化。",
+          "vivid": "用石头、漫展和设计师灵感三个相距很远的行业做桥，再进入各自人物和状态。"
+        },
+        "fact_difference": "不改变三个项目的业务链、当前状态和公开边界",
+        "recommendation": "用生动版过渡，再用直接版控制每个项目篇幅"
+      },
+      {
+        "original": "结尾从三个项目总结到“少跑一次、少丢一次”连续重复前后变化",
+        "risk_level": "medium",
+        "reason": "同一判断多次换词复述，行动引导出现得太晚，收束力度下降",
+        "candidates": {
+          "conservative": "保留三个项目前后变化，删除最后两段重复口号。",
+          "direct": "只保留一个判断问题和两行自测。",
+          "vivid": "用“项目为什么值得做，还得从每天真实发生的麻烦里找”一句收束。"
+        },
+        "fact_difference": "不改变核心主张和行动引导，只删除重复表达",
+        "recommendation": "采用直接版行动和生动版收尾"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "从公开口播正文删除约 500 万元的数字说明，继续保留在内部事实锁"
+    ],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": [
+      "标题是否采用当前推荐版本",
+      "整体自然度和两行自测是否符合本人真实说话习惯"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8.5,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
