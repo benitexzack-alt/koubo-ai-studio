@@ -403,3 +403,277 @@ export const V7TruthStatement: React.FC<{
     </div>
   );
 };
+
+export const V7ChapterMarker: React.FC<{
+  index: string;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  tone?: V7Tone;
+  style?: CSSProperties;
+}> = ({index, eyebrow, title, subtitle, tone = 'cyan', style}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const opacity = useSceneOpacity();
+  const indexIn = enterProgress(frame, fps, 0);
+  const titleIn = enterProgress(frame, fps, 8);
+  const lineProgress = interpolate(frame, [12, 34], [0, 1], clamp);
+  const accent = tones[tone];
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: 62,
+        top: 148,
+        width: 1040,
+        color: tones.white,
+        fontFamily,
+        opacity,
+        textShadow: '0 5px 28px rgba(0,0,0,0.98)',
+        ...style,
+      }}
+    >
+      <V7LocalContrastVeil strength={0.64} width={1160} />
+      <div style={{position: 'relative'}}>
+        <div style={{display: 'flex', alignItems: 'flex-end', gap: 24}}>
+          <div
+            style={{
+              color: accent,
+              fontSize: 164,
+              lineHeight: 0.82,
+              fontWeight: 950,
+              opacity: indexIn,
+              transform: `translateY(${interpolate(indexIn, [0, 1], [28, 0])}px)`,
+            }}
+          >
+            {index}
+          </div>
+          <div style={{paddingBottom: 9, opacity: titleIn}}>
+            <div style={{color: accent, fontSize: 18, fontWeight: 950}}>{eyebrow}</div>
+            <div style={{marginTop: 11, fontSize: 58, lineHeight: 1.06, fontWeight: 950}}>{title}</div>
+          </div>
+        </div>
+        <div
+          style={{
+            marginTop: 28,
+            width: `${lineProgress * 760}px`,
+            height: 4,
+            background: `linear-gradient(90deg, ${accent}, rgba(98,216,255,0))`,
+            boxShadow: `0 0 18px ${accent}66`,
+          }}
+        />
+        <div
+          style={{
+            marginTop: 18,
+            width: 820,
+            color: 'rgba(247,250,252,0.90)',
+            fontSize: 29,
+            lineHeight: 1.28,
+            fontWeight: 850,
+            opacity: titleIn,
+          }}
+        >
+          {subtitle}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export type V7ProcessStep = {
+  label: string;
+  detail: string;
+  tone?: V7Tone;
+};
+
+export const V7ProcessRail: React.FC<{
+  eyebrow: string;
+  title: string;
+  steps: V7ProcessStep[];
+  style?: CSSProperties;
+}> = ({eyebrow, title, steps, style}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const opacity = useSceneOpacity();
+  const titleIn = enterProgress(frame, fps, 2);
+  const beadProgress = (frame % 48) / 47;
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: 62,
+        top: 146,
+        width: 1160,
+        color: tones.white,
+        fontFamily,
+        opacity,
+        textShadow: '0 4px 24px rgba(0,0,0,0.98)',
+        ...style,
+      }}
+    >
+      <V7LocalContrastVeil strength={0.61} width={1280} />
+      <div style={{position: 'relative'}}>
+        <div style={{color: tones.cyan, fontSize: 18, fontWeight: 950, opacity: titleIn}}>{eyebrow}</div>
+        <div style={{marginTop: 10, fontSize: 48, lineHeight: 1.08, fontWeight: 950, opacity: titleIn}}>{title}</div>
+        <div style={{marginTop: 40, display: 'flex', alignItems: 'stretch'}}>
+          {steps.slice(0, 4).map((step, index) => {
+            const stepIn = enterProgress(frame, fps, 10 + index * 11);
+            const accent = tones[step.tone ?? (index === steps.length - 1 ? 'green' : 'cyan')];
+            return (
+              <React.Fragment key={`${step.label}-${index}`}>
+                <div
+                  style={{
+                    width: 244,
+                    minHeight: 205,
+                    boxSizing: 'border-box',
+                    padding: '18px 18px 20px',
+                    borderTop: `3px solid ${accent}`,
+                    borderLeft: `1px solid ${accent}88`,
+                    borderRight: `1px solid ${accent}44`,
+                    borderBottom: `1px solid ${accent}44`,
+                    background: 'rgba(3,9,14,0.30)',
+                    boxShadow: `0 0 28px ${accent}16`,
+                    opacity: stepIn,
+                    transform: `translateY(${interpolate(stepIn, [0, 1], [20, 0])}px)`,
+                  }}
+                >
+                  <div style={{color: accent, fontSize: 16, fontWeight: 950}}>{String(index + 1).padStart(2, '0')}</div>
+                  <div style={{marginTop: 14, color: accent, fontSize: 24, lineHeight: 1.08, fontWeight: 950}}>{step.label}</div>
+                  <div style={{marginTop: 12, fontSize: 26, lineHeight: 1.22, fontWeight: 900}}>{step.detail}</div>
+                </div>
+                {index < Math.min(steps.length, 4) - 1 ? (
+                  <div
+                    style={{
+                      position: 'relative',
+                      width: 54,
+                      height: 205,
+                      flexShrink: 0,
+                      opacity: stepIn,
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: 'absolute',
+                        left: 7,
+                        right: 9,
+                        top: 101,
+                        height: 2,
+                        background: 'rgba(98,216,255,0.55)',
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        right: 5,
+                        top: 96,
+                        width: 10,
+                        height: 10,
+                        borderTop: '2px solid rgba(98,216,255,0.78)',
+                        borderRight: '2px solid rgba(98,216,255,0.78)',
+                        transform: 'rotate(45deg)',
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        left: 7 + beadProgress * 34,
+                        top: 97,
+                        width: 10,
+                        height: 10,
+                        borderRadius: '50%',
+                        background: tones.cyan,
+                        boxShadow: `0 0 16px ${tones.cyan}`,
+                      }}
+                    />
+                  </div>
+                ) : null}
+              </React.Fragment>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const V7EvidenceQuote: React.FC<{
+  source: string;
+  quote: string;
+  caption: string;
+  marker?: string;
+  tone?: V7Tone;
+  style?: CSSProperties;
+}> = ({source, quote, caption, marker = 'SOURCE', tone = 'cyan', style}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const opacity = useSceneOpacity();
+  const panelIn = enterProgress(frame, fps, 4);
+  const accent = tones[tone];
+  const scan = interpolate(frame % 90, [0, 89], [-120, 880], clamp);
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: 62,
+        top: 168,
+        width: 900,
+        color: tones.white,
+        fontFamily,
+        opacity,
+        textShadow: '0 4px 22px rgba(0,0,0,0.96)',
+        ...style,
+      }}
+    >
+      <V7LocalContrastVeil strength={0.64} width={1040} />
+      <div
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          boxSizing: 'border-box',
+          padding: '25px 28px 28px',
+          border: `1px solid ${accent}88`,
+          borderLeft: `5px solid ${accent}`,
+          background: 'rgba(3,9,14,0.48)',
+          boxShadow: `0 20px 58px rgba(0,0,0,0.42), 0 0 30px ${accent}18`,
+          opacity: panelIn,
+          transform: `translateY(${interpolate(panelIn, [0, 1], [20, 0])}px)`,
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: scan,
+            width: 120,
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent)',
+            transform: 'skewX(-18deg)',
+          }}
+        />
+        <div style={{position: 'relative'}}>
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 18}}>
+            <div style={{color: accent, fontSize: 16, fontWeight: 950}}>{marker}</div>
+            <div style={{color: 'rgba(247,250,252,0.60)', fontSize: 15, fontWeight: 850}}>{source}</div>
+          </div>
+          <div style={{marginTop: 24, fontSize: 42, lineHeight: 1.24, fontWeight: 950}}>“{quote}”</div>
+          <div
+            style={{
+              marginTop: 24,
+              paddingTop: 17,
+              borderTop: `2px solid ${accent}77`,
+              color: 'rgba(247,250,252,0.86)',
+              fontSize: 25,
+              lineHeight: 1.28,
+              fontWeight: 850,
+            }}
+          >
+            {caption}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

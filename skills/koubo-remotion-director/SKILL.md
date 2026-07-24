@@ -1,6 +1,6 @@
 ---
 name: koubo-remotion-director
-description: 口播项目的 Remotion 视频包装导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库，将转写、粗剪或完整原片推进到 visual-plan.json、V4/V5/V6 视觉规划、风险帧预览、Remotion 包装、字幕/动效/遮挡质检和 release 记录；当用户要求优化口播剪辑流程、做视觉实验、把参考图落到成片、修复卡片裁切/挡脸/字幕错位或生成与校验 visual-plan/release 时使用。
+description: 口播项目的 Remotion 视频包装导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库，将转写、粗剪或完整原片推进到 visual-plan.json、V4/V5/V6/V7 视觉规划、风险帧预览、Remotion 包装、字幕/动效/遮挡质检和 release 记录；当用户要求优化口播剪辑流程、做视觉实验、把参考图落到成片、修复卡片裁切/挡脸/字幕错位或生成与校验 visual-plan/release 时使用。
 ---
 
 # 口播 Remotion 导演
@@ -25,7 +25,8 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 4. `knowledge/03-口播执行守则.md`
 5. `knowledge/04-内容生产SOP.md`
 6. `knowledge/12-Remotion协作与模板迭代机制.md`
-7. 与本条视频直接相关的转写、EDL、素材清单、视觉参考和发布记录
+7. `knowledge/16-V7.1透明信息包装与本地音效基线.md`
+8. 与本条视频直接相关的转写、EDL、素材清单、视觉参考和发布记录
 
 按任务需要再读：
 
@@ -41,6 +42,7 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 - 粗剪/字幕阶段：以词级转写和 EDL 输出时间轴为准，不手估字幕时间。
 - 视觉包装阶段：先写 `visual-plan.json`，再做 Remotion 组件或参数。
 - V4 实验阶段：优先读取 V4 参考与验收，不回退旧 `mind-map / perspective / metric / flow` 默认包。
+- V7 正式阶段：默认从 V7.1 透明信息组件中按语义选型；章节、流程、证据、数字和媒体标注不得全部挤进同一种卡片。
 - 正式导出阶段：先预览和风险帧，后全片；先机器质检，后用户完整观看。
 
 ### 2. 建立本条视频事实源
@@ -86,7 +88,7 @@ node tools/validate-visual-plan.mjs <visual-plan.json>
 
 - 钩子；
 - 最复杂叠层；
-- 每类 V4 卡片；
+- 本条实际采用的每类 V4 或 V7.1 组件；
 - 每段全屏素材；
 - 结尾 CTA。
 
@@ -109,4 +111,7 @@ node tools/validate-release.mjs <release.json>
 - 不用手工估字幕时间替代词级转写或 EDL 映射。
 - 不让参考图只停留在计划文字里；必须绑定原创组件变体和验收帧。
 - 不为了高级感强制生图；真实素材和确定性 Remotion 排版优先。
+- 不把二创参考视频当作事实原始信源；外部案例引用必须显示来源和证据边界。
+- 不在左上角显示 V7、V7.1 或模板名，只保留“超哥AI创业记”。
+- 本地音效必须先通过同画面 30 秒有/无音效 A/B 听感门禁，未确认前不得铺入全片。
 - 不把机器质检、编译成功或文件存在说成发布效果已验证。

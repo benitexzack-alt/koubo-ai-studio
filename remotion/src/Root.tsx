@@ -34,6 +34,11 @@ import {
   TWO_LEDGER_DURATION_IN_FRAMES,
 } from './TwoLedgersV7Talk16x9';
 import {
+  HokkaidoV71StylePreview16x9,
+  HokkaidoV71StylePreview16x9NoSfx,
+  HOKKAIDO_V71_PREVIEW_DURATION_IN_FRAMES,
+} from './HokkaidoV71StylePreview16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -55,6 +60,22 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="HokkaidoV71StylePreview16x9-WithSfx"
+          component={HokkaidoV71StylePreview16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={HOKKAIDO_V71_PREVIEW_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="HokkaidoV71StylePreview16x9-NoSfx"
+          component={HokkaidoV71StylePreview16x9NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={HOKKAIDO_V71_PREVIEW_DURATION_IN_FRAMES}
+        />
         <Composition
           id="TwoLedgersV7Talk16x9-WithSfx"
           component={TwoLedgersV7Talk16x9}
