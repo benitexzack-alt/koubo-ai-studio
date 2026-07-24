@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "task_id": "20260724-hokkaido-farm-three-local-projects-participation-chain-v7",
+  "status": "passed",
+  "reviewed_at": "2026-07-24T16:19:28Z",
+  "draft": {
+    "path": "<project-root>/notes/2026-07-24-北海道农场与三个AI项目-口播稿-v7.md",
+    "sha256": "9e7a3f3bc84debaa2fd083462ece4693aa805228d508a3a993ed6f68657acc5a"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "304c64b8ec021246df7480c2023aaade7094267609b2e9c67bf4392de093a20b",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "开头直接罗列温度机器人、远程开窗、翻译和作业记录",
+        "risk_level": "medium",
+        "reason": "只展示结果会让观众听不懂 AI 在案例中具体做了什么，技术名词过多又会降低首段理解速度",
+        "candidates": {
+          "conservative": "只讲聊天群查温度和发指令开窗，不出现部件名称。",
+          "direct": "保留现场麻烦、聊天群、传感器、电机和代码四个必要角色。",
+          "vivid": "从非工程师怎样把 AI 接进温室发问，再按说需求、买部件、拍照问、写代码和现场测试展开。"
+        },
+        "fact_difference": "三版不改变系统机制，只调整信息顺序和技术名词密度",
+        "recommendation": "采用生动版，先回答 AI 的作用，再用现场安装和测试保留人的责任"
+      },
+      {
+        "original": "今石缘、Bo2 和大志连续罗列目标功能",
+        "risk_level": "high",
+        "reason": "用户补充的功能很多，逐项平铺会重新变成产品说明书，人物需求和项目动机被功能盖住",
+        "candidates": {
+          "conservative": "每个项目只保留一项功能和当前状态。",
+          "direct": "每段按人的愿望、现实阻碍、AI 进入点、人工确认和结果留存组织。",
+          "vivid": "分别从石友想展示、漫展观众想留纪念和设计师想推进灵感进入，再讲完整链路。"
+        },
+        "fact_difference": "直接版和生动版保留完整业务目标，不新增结果或客户反馈",
+        "recommendation": "采用生动版建立人物场景，再用直接版讲机制和当前边界"
+      },
+      {
+        "original": "今石缘评选证书、Bo2 核验积分和大志专业深化链",
+        "risk_level": "high",
+        "reason": "这些目标如果没有时态和阶段标记，容易被观众听成已经上线并取得真实结果",
+        "candidates": {
+          "conservative": "从正文删除所有尚未验证的目标。",
+          "direct": "用我们要做、正在往下接和目前验证到这里分别标记目标与现状。",
+          "vivid": "先完整描述理想体验，最后统一说明三个项目都处于试验阶段。"
+        },
+        "fact_difference": "直接版与事实卡一致，既保留用户确认目标，也不把目标改写成结果",
+        "recommendation": "采用直接版，在每个项目内就近交代当前验证位置"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [
+      "北海道当事人把想实现的目标告诉 ChatGPT，按建议购买部件，并用照片继续询问安装问题",
+      "北海道远程开窗系统制作约两个月",
+      "今石缘每期评选、数字证书与奖品属于用户确认目标",
+      "Bo2 核验入场后发放 AI 海报积分属于用户确认目标",
+      "大志灯光、软硬装拆解、平面图和草图深化链属于用户确认目标"
+    ],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "今石缘使用长期展示，不承诺脱离平台运营条件的绝对永久保存",
+      "大志快速多视角明确为概念展示，不表述为严格几何一致或施工交付"
+    ],
+    "pending_user_confirmations": [
+      "标题是否采用当前版本",
+      "约三分四十五秒机器朗读时长是否符合本次拍摄计划",
+      "三个项目的篇幅比例和整体口语感是否符合本人表达"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8.5,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
