@@ -113,6 +113,59 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertEqual(result["status"], "ready-for-draft")
         self.assertFalse(result["errors"])
 
+    def test_candidate_generation_cannot_claim_itself_as_validation(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["candidate_generation"] = {
+            "used": True,
+            "method": "25-grid",
+            "selected_candidate": "AI大会与普通行业经验的关系",
+            "combination_basis": ["行业内容", "目标人群", "具体场景"],
+            "generation_is_not_validation": False,
+            "validation_checks": {
+                "audience_problem_confirmed": True,
+                "recent_six_increment_confirmed": False,
+                "evidence_or_personal_fact_confirmed": True,
+                "account_stage_fit_confirmed": True,
+                "deliverable_confirmed": True,
+            },
+            "rejected_or_deferred": [],
+        }
+
+        result = self.validate(card, "candidate-generation-self-validation.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "generation_is_not_validation 必须为 true" in error
+            for error in result["errors"]
+        ))
+        self.assertTrue(any(
+            "recent_six_increment_confirmed 必须为 true" in error
+            for error in result["errors"]
+        ))
+
+    def test_candidate_generation_with_five_gate_checks_can_continue(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["candidate_generation"] = {
+            "used": True,
+            "method": "25-grid",
+            "selected_candidate": "AI大会与普通行业经验的关系",
+            "combination_basis": ["行业内容", "目标人群", "具体场景"],
+            "generation_is_not_validation": True,
+            "validation_checks": {
+                "audience_problem_confirmed": True,
+                "recent_six_increment_confirmed": True,
+                "evidence_or_personal_fact_confirmed": True,
+                "account_stage_fit_confirmed": True,
+                "deliverable_confirmed": True,
+            },
+            "rejected_or_deferred": ["只做产品盘点"],
+        }
+
+        result = self.validate(card, "candidate-generation-gate-checked.json")
+
+        self.assertEqual(result["status"], "ready-for-draft")
+        self.assertFalse(result["errors"])
+
     def test_reference_structure_requires_brief_contract(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
         del card["brief_contract"]

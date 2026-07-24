@@ -72,6 +72,13 @@ RECENT_FIELDS = (
     "deliverable",
     "cta",
 )
+CANDIDATE_VALIDATION_CHECKS = (
+    "audience_problem_confirmed",
+    "recent_six_increment_confirmed",
+    "evidence_or_personal_fact_confirmed",
+    "account_stage_fit_confirmed",
+    "deliverable_confirmed",
+)
 PRODUCTION_CHECKS = (
     "fact_lock_passed",
     "humanize_passed",
@@ -308,6 +315,39 @@ class GateValidator:
                     self.error(f"recent_six[{index}].{field} 不能为空")
         if not any(error.startswith("recent_six") for error in self.errors):
             self.pass_check("最近六条主张、证据、交付物和行动引导已建台账")
+
+    def validate_candidate_generation(self) -> None:
+        candidate = self.card.get("candidate_generation")
+        if candidate is None:
+            return
+        if not isinstance(candidate, dict):
+            self.error("candidate_generation 必须是对象")
+            return
+        if candidate.get("used") is not True:
+            self.error("candidate_generation.used 必须为 true；未使用候选生成工具时应省略该对象")
+        if not nonempty(candidate.get("method")):
+            self.error("candidate_generation.method 不能为空")
+        if not nonempty(candidate.get("selected_candidate")):
+            self.error("candidate_generation.selected_candidate 必须记录唯一进入验证的候选题")
+        basis = candidate.get("combination_basis")
+        if not isinstance(basis, list) or len(basis) < 3:
+            self.error("candidate_generation.combination_basis 至少需要行业内容、人群和场景三个要素")
+        elif not all(nonempty(item) for item in basis):
+            self.error("candidate_generation.combination_basis 不能包含空要素")
+        if candidate.get("generation_is_not_validation") is not True:
+            self.error("candidate_generation.generation_is_not_validation 必须为 true；候选生成不能冒充选题验证")
+        checks = candidate.get("validation_checks")
+        if not isinstance(checks, dict):
+            self.error("candidate_generation.validation_checks 必须是对象")
+        else:
+            for field in CANDIDATE_VALIDATION_CHECKS:
+                if checks.get(field) is not True:
+                    self.error(f"candidate_generation.validation_checks.{field} 必须为 true")
+        deferred = candidate.get("rejected_or_deferred")
+        if not isinstance(deferred, list):
+            self.error("candidate_generation.rejected_or_deferred 必须是数组")
+        if not any(error.startswith("candidate_generation") for error in self.errors):
+            self.pass_check("候选生成已与选题验证分离，并完成五项验证记录")
 
     def validate_brief_contract(self) -> None:
         sources = self.card.get("sources")
@@ -716,6 +756,7 @@ class GateValidator:
         self.validate_sources()
         self.validate_brief_contract()
         self.validate_recent_six()
+        self.validate_candidate_generation()
         self.validate_topic()
         self.validate_frozen_topics()
         self.validate_audience_fit()

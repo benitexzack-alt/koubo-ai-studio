@@ -10,6 +10,7 @@
   "required_rules": [],
   "sources": [],
   "recent_six": [],
+  "candidate_generation": {},
   "topic": {},
   "frozen_topic_hits": [],
   "audience_fit": {},
@@ -99,6 +100,43 @@
   "delete_candidates": ["不服务主张、应删除的材料"]
 }
 ```
+
+## candidate_generation
+
+仅当本轮使用 25 格、曼陀罗、关键词组合或其他组合式方法生成候选题时填写；未使用时可省略。该对象只记录候选生成和后续验证，不得把组合动作本身写成“已验证”。
+
+```json
+{
+  "used": true,
+  "method": "25-grid",
+  "selected_candidate": "本轮唯一进入验证的候选题",
+  "combination_basis": [
+    "行业相关内容",
+    "目标人群",
+    "具体场景"
+  ],
+  "generation_is_not_validation": true,
+  "validation_checks": {
+    "audience_problem_confirmed": true,
+    "recent_six_increment_confirmed": true,
+    "evidence_or_personal_fact_confirmed": true,
+    "account_stage_fit_confirmed": true,
+    "deliverable_confirmed": true
+  },
+  "rejected_or_deferred": [
+    "未通过验证、暂不进入提纲的候选题"
+  ]
+}
+```
+
+固定规则：
+
+- 对象存在时 `used` 和 `generation_is_not_validation` 必须为 `true`；
+- `selected_candidate` 只能有一个明确候选题；
+- `combination_basis` 至少包含三个非空要素；
+- 五项 `validation_checks` 必须全部为 `true`，并继续接受 `topic`、`recent_six`、来源和账号阶段门禁的独立校验；
+- 该对象通过只表示“候选生成方法没有被误当成验证”，不表示整张内容门禁卡通过；
+- 单条高互动、同行采用或 AI 能生成文稿不能填写为验证依据。
 
 ## brief_contract
 
