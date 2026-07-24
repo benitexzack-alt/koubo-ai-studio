@@ -4,7 +4,7 @@
 
 ```json
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "task_id": "唯一任务标识",
   "target_stage": "outline | draft | production",
   "required_rules": [],
@@ -20,7 +20,7 @@
 }
 ```
 
-`schema_version: 2` 从 2026-07-23 起用于所有新内容。历史 `schema_version: 1` 卡只保留审计价值，重新进入写稿或制作时必须升级，不能自动继承抖音精选质量验收。
+`schema_version: 3` 从 2026-07-24 起用于所有新内容。历史卡只保留审计价值，重新进入写稿或制作时必须升级；不得自动继承抖音精选质量验收或文案双 Skill 执行状态。
 
 ## required_rules
 
@@ -35,7 +35,7 @@
 
 至少包含：全局公开内容硬门禁、项目内容规范。文件必须真实存在。
 
-路径可以使用绝对路径，也可以使用 `<project-root>/...` 和 `<skill-root>/...`。校验器会从门禁卡位置及当前工作目录向上定位项目根目录；也可用 `KOUBO_PROJECT_ROOT` 显式指定。
+路径可以使用绝对路径，也可以使用 `<project-root>/...`、`<skill-root>/...` 和 `<codex-home>/...`。校验器会从门禁卡位置及当前工作目录向上定位项目根目录；也可用 `KOUBO_PROJECT_ROOT` 显式指定。
 
 ## sources
 
@@ -226,13 +226,17 @@
 
 ## draft
 
-`production` 阶段必填：
+实际文稿一旦写入 `draft.path`，`draft.copy_review` 就必须存在；`production` 阶段还必须填写其余人工确认字段：
 
 ```json
 {
   "path": "<project-root>/notes/待拍文稿.md",
   "content_start_marker": "可选：正文开始标题",
   "content_end_marker": "可选：正文结束标题",
+  "copy_review": {
+    "required": true,
+    "report_path": "<project-root>/notes/待拍文稿.copy-review.json"
+  },
   "fact_lock_passed": true,
   "humanize_passed": true,
   "read_aloud_passed": true,
@@ -248,6 +252,17 @@
   ]
 }
 ```
+
+`copy_review.report_path` 指向 `humanize-koubo-script` 生成的机器报告，格式见 `<project-root>/skills/humanize-koubo-script/references/copy-review-report-schema.md`。校验器会真实检查：
+
+- 当前稿件 SHA-256；
+- `humanizer-zh` 与 `humanize-koubo-script` 的规定路径和当前 SHA-256；
+- 模式扫描、事实安全精修、留存风险审稿、朗读和本人声音五项执行状态；
+- 留存风险节点数量；
+- 事实差异四类数组；
+- 五项评分及事实保真 `10/10`。
+
+只写“已完成初检”或手填 `humanize_passed: true` 不再构成执行证据。稿件或任一 Skill 改动后，旧报告立即失效。
 
 当同一个 Markdown 同时包含正文、事实锁、复盘或已删除内容时，应同时填写 `content_start_marker` 和 `content_end_marker`。校验器只扫描两个标记之间真正会被拍摄的正文；只填一个标记、标记不存在或顺序错误时会失败。未填写时保持全文件扫描。
 

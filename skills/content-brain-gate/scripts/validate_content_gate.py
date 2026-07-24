@@ -4,10 +4,12 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -79,6 +81,26 @@ PRODUCTION_CHECKS = (
     "compliance_passed",
     "user_script_approved",
 )
+COPY_REVIEW_CHECKS = (
+    "humanizer_pattern_scan_completed",
+    "fact_safe_rewrite_completed",
+    "retention_risk_review_completed",
+    "read_aloud_completed",
+    "voice_match_completed",
+)
+COPY_REVIEW_SCORES = (
+    "directness",
+    "spoken_naturalness",
+    "rhythm",
+    "personal_voice",
+    "fact_fidelity",
+)
+COPY_REVIEW_FACT_CHANGE_FIELDS = (
+    "new_facts",
+    "removed_facts",
+    "wording_strength_changes",
+    "pending_user_confirmations",
+)
 FROZEN_PATTERNS = (
     (
         "first-not-buy-system",
@@ -134,6 +156,11 @@ def resolve_input_path(value: Any, anchor: Path) -> Path | None:
         return SKILL_ROOT
     if text.startswith("<skill-root>/"):
         return SKILL_ROOT / text.removeprefix("<skill-root>/")
+    if text == "<codex-home>" or text.startswith("<codex-home>/"):
+        codex_home = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex")).expanduser()
+        if text == "<codex-home>":
+            return codex_home
+        return codex_home / text.removeprefix("<codex-home>/")
     if text == "<project-root>" or text.startswith("<project-root>/"):
         project_root = discover_project_root(anchor)
         if project_root is None:
@@ -157,6 +184,14 @@ def existing_nonempty_file(value: Any, anchor: Path) -> bool:
         return False
 
 
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 class GateValidator:
     def __init__(self, card: dict[str, Any], card_path: Path):
         self.card = card
@@ -172,8 +207,10 @@ class GateValidator:
         self.passed.append(message)
 
     def validate_header(self) -> str:
-        if self.card.get("schema_version") != 2:
-            self.error("schema_version 必须为 2；历史卡重新进入写稿或制作时必须升级精选质量验收")
+        if self.card.get("schema_version") != 3:
+            self.error(
+                "schema_version 必须为 3；历史卡重新进入写稿或制作时必须升级文案双 Skill 执行凭证"
+            )
         if not nonempty(self.card.get("task_id")):
             self.error("task_id 不能为空")
         stage = self.card.get("target_stage")
@@ -474,6 +511,7 @@ class GateValidator:
                 resolved_draft_path = resolve_input_path(draft_path, self.card_path)
                 assert resolved_draft_path is not None
                 self.scan_frozen_phrases(resolved_draft_path, draft)
+                self.validate_copy_review(resolved_draft_path, draft)
         if stage != "production":
             return
         if not existing_nonempty_file(draft_path, self.card_path):
@@ -483,6 +521,161 @@ class GateValidator:
                 self.error(f"production 阶段 {field} 必须为 true")
         if not any(error.startswith("production 阶段") for error in self.errors):
             self.pass_check("事实锁、去 AI 味、朗读、本人声音、查重、合规和用户确认均通过")
+
+    def validate_copy_review(self, draft_path: Path, draft: dict[str, Any]) -> None:
+        copy_review = draft.get("copy_review")
+        if not isinstance(copy_review, dict):
+            self.error(
+                "draft.copy_review 必须是对象；实际文稿必须自动调阅 humanizer-zh 与 "
+                "humanize-koubo-script"
+            )
+            return
+        if copy_review.get("required") is not True:
+            self.error("draft.copy_review.required 必须为 true")
+
+        report_value = copy_review.get("report_path")
+        report_path = resolve_input_path(report_value, self.card_path)
+        if report_path is None or not existing_nonempty_file(report_value, self.card_path):
+            self.error(f"draft.copy_review.report_path 文件不存在或为空：{report_value}")
+            return
+
+        try:
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as error:
+            self.error(f"draft.copy_review 报告无法读取：{error}")
+            return
+        if not isinstance(report, dict):
+            self.error("draft.copy_review 报告顶层必须是对象")
+            return
+
+        if report.get("schema_version") != 1:
+            self.error("draft.copy_review.schema_version 必须为 1")
+        if report.get("task_id") != self.card.get("task_id"):
+            self.error("draft.copy_review.task_id 必须与内容门禁卡一致")
+        if report.get("status") != "passed":
+            self.error("draft.copy_review.status 必须为 passed")
+        reviewed_at = report.get("reviewed_at")
+        if not nonempty(reviewed_at):
+            self.error("draft.copy_review.reviewed_at 不能为空")
+        else:
+            try:
+                datetime.fromisoformat(reviewed_at.replace("Z", "+00:00"))
+            except ValueError:
+                self.error("draft.copy_review.reviewed_at 必须是 ISO 8601 时间")
+
+        report_draft = report.get("draft")
+        if not isinstance(report_draft, dict):
+            self.error("draft.copy_review.draft 必须是对象")
+        else:
+            bound_path = resolve_input_path(report_draft.get("path"), report_path)
+            if bound_path is None or bound_path.resolve() != draft_path.resolve():
+                self.error("draft.copy_review.draft.path 没有绑定当前稿件")
+            actual_draft_sha = file_sha256(draft_path)
+            if report_draft.get("sha256") != actual_draft_sha:
+                self.error("draft.copy_review.draft.sha256 与当前稿件不一致，必须重新审稿")
+
+        project_root = discover_project_root(self.card_path)
+        codex_home = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex")).expanduser().resolve()
+        expected_skill_paths = {
+            "humanizer_zh": codex_home / "skills" / "humanizer-zh" / "SKILL.md",
+            "humanize_koubo_script": (
+                project_root / "skills" / "humanize-koubo-script" / "SKILL.md"
+                if project_root is not None
+                else None
+            ),
+        }
+        skills = report.get("skills")
+        if not isinstance(skills, dict):
+            self.error("draft.copy_review.skills 必须是对象")
+        else:
+            for skill_name, expected_path in expected_skill_paths.items():
+                skill = skills.get(skill_name)
+                label = f"draft.copy_review.skills.{skill_name}"
+                if not isinstance(skill, dict):
+                    self.error(f"{label} 必须是对象")
+                    continue
+                if skill.get("read") is not True:
+                    self.error(f"{label}.read 必须为 true")
+                skill_path = resolve_input_path(skill.get("path"), report_path)
+                if expected_path is None or skill_path is None:
+                    self.error(f"{label}.path 无法解析")
+                    continue
+                if skill_path.resolve() != expected_path.resolve():
+                    self.error(f"{label}.path 必须指向当前规定的 Skill")
+                    continue
+                if not skill_path.is_file():
+                    self.error(f"{label}.path 文件不存在")
+                    continue
+                if skill.get("sha256") != file_sha256(skill_path):
+                    self.error(f"{label}.sha256 已过期，必须重新调阅当前 Skill")
+
+        checks = report.get("checks")
+        if not isinstance(checks, dict):
+            self.error("draft.copy_review.checks 必须是对象")
+        else:
+            for field in COPY_REVIEW_CHECKS:
+                if checks.get(field) is not True:
+                    self.error(f"draft.copy_review.checks.{field} 必须为 true")
+
+        retention_review = report.get("retention_review")
+        if not isinstance(retention_review, dict):
+            self.error("draft.copy_review.retention_review 必须是对象")
+        else:
+            node_count = retention_review.get("risk_node_count")
+            nodes = retention_review.get("nodes")
+            if isinstance(node_count, bool) or not isinstance(node_count, int) or not 0 <= node_count <= 3:
+                self.error("draft.copy_review.retention_review.risk_node_count 必须是 0 至 3")
+            if not isinstance(nodes, list):
+                self.error("draft.copy_review.retention_review.nodes 必须是数组")
+            elif isinstance(node_count, int) and len(nodes) != node_count:
+                self.error("draft.copy_review.retention_review.nodes 数量必须与 risk_node_count 一致")
+            elif isinstance(nodes, list):
+                for index, node in enumerate(nodes):
+                    label = f"draft.copy_review.retention_review.nodes[{index}]"
+                    if not isinstance(node, dict):
+                        self.error(f"{label} 必须是对象")
+                        continue
+                    for field in ("original", "reason", "fact_difference", "recommendation"):
+                        if not nonempty(node.get(field)):
+                            self.error(f"{label}.{field} 不能为空")
+                    if node.get("risk_level") not in {"high", "medium", "low"}:
+                        self.error(f"{label}.risk_level 必须是 high、medium 或 low")
+                    candidates = node.get("candidates")
+                    if not isinstance(candidates, dict):
+                        self.error(f"{label}.candidates 必须是对象")
+                    else:
+                        for candidate in ("conservative", "direct", "vivid"):
+                            if not nonempty(candidates.get(candidate)):
+                                self.error(f"{label}.candidates.{candidate} 不能为空")
+            if node_count == 0 and not nonempty(retention_review.get("no_high_risk_reason")):
+                self.error(
+                    "draft.copy_review.retention_review 没有风险节点时必须填写 no_high_risk_reason"
+                )
+
+        fact_changes = report.get("fact_changes")
+        if not isinstance(fact_changes, dict):
+            self.error("draft.copy_review.fact_changes 必须是对象")
+        else:
+            for field in COPY_REVIEW_FACT_CHANGE_FIELDS:
+                if not isinstance(fact_changes.get(field), list):
+                    self.error(f"draft.copy_review.fact_changes.{field} 必须是数组")
+
+        scores = report.get("scores")
+        if not isinstance(scores, dict):
+            self.error("draft.copy_review.scores 必须是对象")
+        else:
+            for field in COPY_REVIEW_SCORES:
+                score = scores.get(field)
+                if isinstance(score, bool) or not isinstance(score, (int, float)) or not 0 <= score <= 10:
+                    self.error(f"draft.copy_review.scores.{field} 必须是 0 至 10")
+            if scores.get("fact_fidelity") != 10:
+                self.error("draft.copy_review.scores.fact_fidelity 必须为 10")
+
+        copy_review_errors = [
+            error for error in self.errors if error.startswith("draft.copy_review")
+        ]
+        if not copy_review_errors:
+            self.pass_check("两项文案 Skill、当前稿件哈希、留存审稿和事实保真凭证均通过")
 
     def scan_frozen_phrases(self, draft_path: Path, draft: dict[str, Any]) -> None:
         text = draft_path.read_text(encoding="utf-8")

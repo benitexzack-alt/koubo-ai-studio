@@ -121,7 +121,7 @@ description: 在任何公开内容进入选题、写稿或制作前，强制检�
 
 ### 5.6 建立抖音精选质量目标
 
-使用 `schema_version: 2`，按照项目 `knowledge/15-抖音精选内容质量验收.md` 填写 `douyin_quality`：
+使用 `schema_version: 3`，按照项目 `knowledge/15-抖音精选内容质量验收.md` 填写 `douyin_quality`：
 
 - 获得感和表达力必须为 `primary`；
 - 惊喜感、感染力按真实素材填写 `primary`、`supporting` 或 `not-targeted`；
@@ -151,7 +151,8 @@ python3 <project-root>/skills/content-brain-gate/scripts/validate_content_gate.p
 
 - `ready-for-outline`：只写提纲，不写拍摄终稿；
 - `ready-for-draft`：可以写文稿，但仍不能做 V6、音效和成片；
-- 写稿后建立事实锁，逐项标出四项质量特征的正文证据，运行 `humanize-koubo-script`，做大声朗读、本人声音、最近六条和合规复核；
+- 写稿后建立事实锁，逐项标出四项质量特征的正文证据，自动调阅 `humanizer-zh` 与 `humanize-koubo-script`，强制完成模式扫描、事实安全精修、留存风险审稿、大声朗读、本人声音、最近六条和合规复核；
+- 每份实际文稿必须生成绑定当前稿件与两项 Skill SHA-256 的 `copy_review` 报告；没有报告、报告过期或事实保真不足 `10/10` 时停止交付；
 - 用户确认脚本且 `production` 校验通过，才升级为 `ready-for-production`。
 
 ## 与其他 Skill 的关系

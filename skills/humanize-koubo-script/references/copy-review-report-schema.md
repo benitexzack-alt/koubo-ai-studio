@@ -52,6 +52,23 @@
 }
 ```
 
+存在风险节点时，`nodes` 中每项使用：
+
+```json
+{
+  "original": "原句或位置",
+  "risk_level": "high | medium | low",
+  "reason": "具体的预测风险原因",
+  "candidates": {
+    "conservative": "保守版",
+    "direct": "直接版",
+    "vivid": "生动版"
+  },
+  "fact_difference": "三个候选与事实锁相比有无变化",
+  "recommendation": "推荐版本及理由"
+}
+```
+
 固定规则：
 
 - `draft.sha256` 必须与门禁当前读取到的稿件完全一致；改一个字都必须重新审稿并生成新报告。

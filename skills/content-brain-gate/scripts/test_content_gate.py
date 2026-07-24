@@ -6,7 +6,10 @@ from __future__ import annotations
 import copy
 import importlib.util
 import json
+import os
+import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -23,8 +26,82 @@ def load_fixture(name: str) -> dict:
 
 
 class ContentGateRegressionTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp_dir_context = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp_dir_context.cleanup)
+        self.temp_dir = Path(self.temp_dir_context.name)
+
     def validate(self, card: dict, name: str) -> dict:
         return MODULE.GateValidator(card, SKILL_ROOT / "fixtures" / name).run()
+
+    def attach_copy_review(self, card: dict, draft_path: Path) -> Path:
+        project_root = SKILL_ROOT.parent.parent
+        humanizer_path = (
+            Path(os.environ.get("CODEX_HOME", Path.home() / ".codex"))
+            / "skills"
+            / "humanizer-zh"
+            / "SKILL.md"
+        )
+        project_skill_path = (
+            project_root / "skills" / "humanize-koubo-script" / "SKILL.md"
+        )
+        report = {
+            "schema_version": 1,
+            "task_id": card["task_id"],
+            "status": "passed",
+            "reviewed_at": datetime.now(timezone.utc).isoformat(),
+            "draft": {
+                "path": str(draft_path),
+                "sha256": MODULE.file_sha256(draft_path),
+            },
+            "skills": {
+                "humanizer_zh": {
+                    "path": str(humanizer_path),
+                    "sha256": MODULE.file_sha256(humanizer_path),
+                    "read": True,
+                },
+                "humanize_koubo_script": {
+                    "path": str(project_skill_path),
+                    "sha256": MODULE.file_sha256(project_skill_path),
+                    "read": True,
+                },
+            },
+            "checks": {
+                "humanizer_pattern_scan_completed": True,
+                "fact_safe_rewrite_completed": True,
+                "retention_risk_review_completed": True,
+                "read_aloud_completed": True,
+                "voice_match_completed": True,
+            },
+            "retention_review": {
+                "risk_node_count": 0,
+                "nodes": [],
+                "no_high_risk_reason": "测试稿没有需要强行改写的高风险节点",
+            },
+            "fact_changes": {
+                "new_facts": [],
+                "removed_facts": [],
+                "wording_strength_changes": [],
+                "pending_user_confirmations": [],
+            },
+            "scores": {
+                "directness": 9,
+                "spoken_naturalness": 9,
+                "rhythm": 9,
+                "personal_voice": 9,
+                "fact_fidelity": 10,
+            },
+        }
+        report_path = self.temp_dir / f"{card['task_id']}-copy-review.json"
+        report_path.write_text(
+            json.dumps(report, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        card["draft"]["copy_review"] = {
+            "required": True,
+            "report_path": str(report_path),
+        }
+        return report_path
 
     def test_old_waic_sample_still_fails(self) -> None:
         result = self.validate(load_fixture("waic-old-fail.json"), "waic-old-fail.json")
@@ -54,22 +131,26 @@ class ContentGateRegressionTests(unittest.TestCase):
 
     def test_section_markers_ignore_audit_appendix(self) -> None:
         card = load_fixture("waic-new-pass.json")
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
         card["draft"] = {
-            "path": str(SKILL_ROOT / "fixtures" / "section-scan.md"),
+            "path": str(draft_path),
             "content_start_marker": "## 口播正文",
             "content_end_marker": "## 审计附录",
             "phrase_exemptions": [],
         }
+        self.attach_copy_review(card, draft_path)
         result = self.validate(card, "section-marker-pass.json")
         self.assertEqual(result["status"], "ready-for-draft")
         self.assertFalse(result["errors"])
 
     def test_without_markers_appendix_is_scanned(self) -> None:
         card = load_fixture("waic-new-pass.json")
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
         card["draft"] = {
-            "path": str(SKILL_ROOT / "fixtures" / "section-scan.md"),
+            "path": str(draft_path),
             "phrase_exemptions": [],
         }
+        self.attach_copy_review(card, draft_path)
         result = self.validate(card, "section-marker-missing.json")
         self.assertEqual(result["status"], "blocked")
         self.assertTrue(any("repeat-small-task" in error for error in result["errors"]))
@@ -77,11 +158,13 @@ class ContentGateRegressionTests(unittest.TestCase):
 
     def test_marker_pair_is_required(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
         card["draft"] = {
-            "path": str(SKILL_ROOT / "fixtures" / "section-scan.md"),
+            "path": str(draft_path),
             "content_start_marker": "## 口播正文",
             "phrase_exemptions": [],
         }
+        self.attach_copy_review(card, draft_path)
         result = self.validate(card, "section-marker-invalid.json")
         self.assertEqual(result["status"], "blocked")
         self.assertTrue(any("正文范围必须同时提供" in error for error in result["errors"]))
@@ -134,6 +217,41 @@ class ContentGateRegressionTests(unittest.TestCase):
     def test_production_requires_human_quality_review(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
         card["target_stage"] = "production"
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "fact_lock_passed": True,
+            "humanize_passed": True,
+            "read_aloud_passed": True,
+            "voice_match_passed": True,
+            "recent_six_recheck_passed": True,
+            "compliance_passed": True,
+            "user_script_approved": True,
+            "phrase_exemptions": [],
+        }
+        self.attach_copy_review(card, draft_path)
+        result = self.validate(card, "douyin-quality-human-review-fail.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("review_status 必须为 human-reviewed" in error for error in result["errors"]))
+
+    def test_written_draft_requires_copy_review(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["draft"] = {
+            "path": str(SKILL_ROOT / "fixtures" / "section-scan.md"),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "phrase_exemptions": [],
+        }
+        result = self.validate(card, "copy-review-missing.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("draft.copy_review 必须是对象" in error for error in result["errors"]))
+
+    def test_manual_humanize_boolean_without_receipt_is_blocked(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["target_stage"] = "production"
+        card["douyin_quality"]["review_status"] = "human-reviewed"
         card["draft"] = {
             "path": str(SKILL_ROOT / "fixtures" / "section-scan.md"),
             "content_start_marker": "## 口播正文",
@@ -147,9 +265,98 @@ class ContentGateRegressionTests(unittest.TestCase):
             "user_script_approved": True,
             "phrase_exemptions": [],
         }
-        result = self.validate(card, "douyin-quality-human-review-fail.json")
+        result = self.validate(card, "copy-review-manual-boolean.json")
         self.assertEqual(result["status"], "blocked")
-        self.assertTrue(any("review_status 必须为 human-reviewed" in error for error in result["errors"]))
+        self.assertTrue(any("draft.copy_review 必须是对象" in error for error in result["errors"]))
+
+    def test_copy_review_with_current_skill_and_draft_hashes_passes(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "phrase_exemptions": [],
+        }
+        self.attach_copy_review(card, draft_path)
+        result = self.validate(card, "copy-review-pass.json")
+        self.assertEqual(result["status"], "ready-for-draft")
+        self.assertFalse(result["errors"])
+        self.assertTrue(any("两项文案 Skill" in item for item in result["passed"]))
+
+    def test_copy_review_rejects_stale_draft_hash(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "phrase_exemptions": [],
+        }
+        report_path = self.attach_copy_review(card, draft_path)
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        report["draft"]["sha256"] = "0" * 64
+        report_path.write_text(
+            json.dumps(report, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        result = self.validate(card, "copy-review-stale-draft.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("draft.sha256 与当前稿件不一致" in error for error in result["errors"]))
+
+    def test_copy_review_rejects_stale_skill_hash(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "phrase_exemptions": [],
+        }
+        report_path = self.attach_copy_review(card, draft_path)
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        report["skills"]["humanizer_zh"]["sha256"] = "0" * 64
+        report_path.write_text(
+            json.dumps(report, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        result = self.validate(card, "copy-review-stale-skill.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("sha256 已过期" in error for error in result["errors"]))
+
+    def test_retention_node_requires_three_candidates(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "phrase_exemptions": [],
+        }
+        report_path = self.attach_copy_review(card, draft_path)
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        report["retention_review"] = {
+            "risk_node_count": 1,
+            "nodes": [
+                {
+                    "original": "原句",
+                    "risk_level": "high",
+                    "reason": "前置信息过多",
+                    "candidates": {"direct": "直接版"},
+                    "fact_difference": "无事实变化",
+                    "recommendation": "推荐直接版",
+                }
+            ],
+            "no_high_risk_reason": "",
+        }
+        report_path.write_text(
+            json.dumps(report, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        result = self.validate(card, "copy-review-retention-candidates.json")
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("candidates.conservative" in error for error in result["errors"]))
+        self.assertTrue(any("candidates.vivid" in error for error in result["errors"]))
 
 
 if __name__ == "__main__":
