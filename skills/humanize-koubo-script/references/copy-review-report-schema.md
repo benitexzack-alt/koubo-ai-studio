@@ -1,0 +1,64 @@
+# 文案双 Skill 执行报告
+
+每次生成或实质修改公开口播文案后，必须保存一份 JSON 报告，并在内容门禁卡的 `draft.copy_review.report_path` 中引用。
+
+```json
+{
+  "schema_version": 1,
+  "task_id": "与内容门禁卡一致",
+  "status": "passed",
+  "reviewed_at": "ISO 8601 时间",
+  "draft": {
+    "path": "<project-root>/notes/待审口播稿.md",
+    "sha256": "当前稿件文件 SHA-256"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "当前 Skill 文件 SHA-256",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "当前 Skill 文件 SHA-256",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 0,
+    "nodes": [],
+    "no_high_risk_reason": "没有高风险节点时必填；有节点时可为空"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": []
+  },
+  "scores": {
+    "directness": 0,
+    "spoken_naturalness": 0,
+    "rhythm": 0,
+    "personal_voice": 0,
+    "fact_fidelity": 10
+  }
+}
+```
+
+固定规则：
+
+- `draft.sha256` 必须与门禁当前读取到的稿件完全一致；改一个字都必须重新审稿并生成新报告。
+- 两项 Skill 的 `path`、`sha256` 和 `read` 必须与本机当前文件一致。
+- 五项 `checks` 必须全部为 `true`。
+- `risk_node_count` 只能为 `0` 至 `3`，并与 `nodes` 数量一致。
+- `risk_node_count` 为 `0` 时，`no_high_risk_reason` 不能为空。
+- `fact_changes` 四个数组必须如实填写，不得用缺失字段冒充“无变化”。
+- 五项评分取值为 `0` 至 `10`；`fact_fidelity` 必须等于 `10`。
+- 报告只证明规定步骤和文件绑定已完成，不替代用户对自然度、吸引力和本人感的最终判断。
