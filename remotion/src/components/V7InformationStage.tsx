@@ -272,7 +272,18 @@ export const V7AnnotatedMediaStage: React.FC<{
   mediaKind: 'video' | 'image';
   mediaLabel: string;
   mediaFit?: 'cover' | 'contain';
-}> = ({index, eyebrow, title, facts, mediaSrc, mediaKind, mediaLabel, mediaFit = 'cover'}) => {
+  mediaLoop?: boolean;
+}> = ({
+  index,
+  eyebrow,
+  title,
+  facts,
+  mediaSrc,
+  mediaKind,
+  mediaLabel,
+  mediaFit = 'cover',
+  mediaLoop = false,
+}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const opacity = useSceneOpacity(8);
@@ -334,6 +345,7 @@ export const V7AnnotatedMediaStage: React.FC<{
           <Video
             src={staticFile(mediaSrc)}
             muted
+            loop={mediaLoop}
             objectFit={mediaFit}
             style={{width: '100%', height: '100%', transform: `scale(${mediaScale})`}}
           />

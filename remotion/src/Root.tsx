@@ -43,6 +43,11 @@ import {
   HOKKAIDO_THREE_PROJECTS_PREFLIGHT_DURATION_IN_FRAMES,
 } from './HokkaidoThreeProjectsAssetPreflight16x9';
 import {
+  HokkaidoThreeProjectsTalk16x9,
+  HokkaidoThreeProjectsTalk16x9WithSfx,
+  HOKKAIDO_THREE_PROJECTS_DURATION_IN_FRAMES,
+} from './HokkaidoThreeProjectsTalk16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -64,6 +69,22 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="HokkaidoThreeProjectsTalk16x9-NoSfx"
+          component={HokkaidoThreeProjectsTalk16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={HOKKAIDO_THREE_PROJECTS_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="HokkaidoThreeProjectsTalk16x9-WithSfx"
+          component={HokkaidoThreeProjectsTalk16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={HOKKAIDO_THREE_PROJECTS_DURATION_IN_FRAMES}
+        />
         <Composition
           id="HokkaidoThreeProjectsAssetPreflight16x9"
           component={HokkaidoThreeProjectsAssetPreflight16x9}

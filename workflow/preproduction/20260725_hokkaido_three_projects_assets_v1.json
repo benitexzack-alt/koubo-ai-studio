@@ -4,7 +4,7 @@
   "project": "北海道农场与今石缘、Bo2、大志三个AI项目",
   "version": "v1",
   "created_at": "2026-07-25",
-  "status": "project-assets-prepared-waiting-talk-source",
+  "status": "final-rendered-machine-qa-passed-awaiting-user-review",
   "script_path": "notes/2026-07-24-北海道农场与三个AI项目-口播稿-v7.md",
   "production_gate": {
     "card": "notes/2026-07-25-北海道农场与三个AI项目-内容门禁卡-v7-production.json",
@@ -496,16 +496,32 @@
   },
   "talk_source": {
     "expected_folder": "/Users/pc/Desktop/口播素材/2026-07-25/01_口播原片",
-    "status": "pending-user-recording",
+    "source": "/Users/pc/Desktop/口播素材/2026-07-25/01_口播原片/copy_6D3F08E7-234C-4D15-9247-C162EC97C10A 2.MOV",
+    "source_sha256": "d74b75d73929b7d3319ce4c8d48ac30064c24b6335a02958d8222fa0b090397f",
+    "readonly_copy": "source/HOKKAIDO3_20260725_talk01_16x9.MOV",
+    "normalized_proxy": "remotion/public/media/hokkaido-three-projects-20260725/talk/HOKKAIDO3_20260725_talk01_30fps_loudness.mp4",
+    "normalized_proxy_sha256": "8968c7a0a9a9180ba33b7655fd8a5fd7430e863ecfd80a016830882b45e03de8",
+    "duration_seconds": 386.907474,
+    "status": "used-in-final",
     "edit_policy": "按原视频全量内容生成成片；无明确删减要求时不设粗剪确认门禁",
-    "timing_source": "待词级转写"
+    "timing_source": "本地 whisper.cpp small 词级转写与人工校正",
+    "caption_pages": 74,
+    "caption_sync_min_score": 0.8
   },
-  "pending_before_final_render": [
-    "口播原片技术检查、只读副本和30fps兼容代理",
-    "词级转写、中文字幕校正和逐句英文翻译",
-    "把语义槽位绑定到真实说话时间，不手估字幕和B-roll秒点",
-    "输出20至30秒正式片预览，检查字幕跟嘴、动效、卡片、B-roll和数字运镜",
-    "本地音效先做同画面有声与无声A/B，用户未确认前不铺全片",
-    "正式成片机器质检后仍需用户完整观看确认"
+  "final_output": {
+    "path": "outputs/一个北海道农民_把我这三个AI项目想明白了_16x9_V71_正片_v1.mp4",
+    "sha256": "0d29026d0b01b6b050fbdd4e0bf385ea4aae83bfa322fc4dbb4c33b3065703ab",
+    "duration_seconds": 386.944,
+    "spec": "1920x1080, CFR 30fps, H.264, AAC 48kHz 双声道",
+    "audio": "-15.99 LUFS, -1.42 dBTP",
+    "decode": "通过，0个错误",
+    "black_frames": "未检出持续0.08秒以上黑帧",
+    "silence": "未检出低于-42dB且持续0.8秒以上异常静音",
+    "risk_frame_review": "21/21通过",
+    "qa_report": "edit/verify/20260725_hokkaido_talk_final_review/qa_report.md",
+    "user_review": "pending"
+  },
+  "remaining_gate": [
+    "用户完整观看正片并确认"
   ]
 }
