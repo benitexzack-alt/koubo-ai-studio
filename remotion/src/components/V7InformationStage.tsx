@@ -2,6 +2,7 @@ import {Video} from '@remotion/media';
 import React, {type CSSProperties} from 'react';
 import {
   AbsoluteFill,
+  Easing,
   Img,
   interpolate,
   spring,
@@ -273,6 +274,7 @@ export const V7AnnotatedMediaStage: React.FC<{
   mediaLabel: string;
   mediaFit?: 'cover' | 'contain';
   mediaLoop?: boolean;
+  motionPreset?: 'v71' | 'v72';
 }> = ({
   index,
   eyebrow,
@@ -283,13 +285,43 @@ export const V7AnnotatedMediaStage: React.FC<{
   mediaLabel,
   mediaFit = 'cover',
   mediaLoop = false,
+  motionPreset = 'v71',
 }) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const opacity = useSceneOpacity(8);
   const railIn = enterProgress(frame, fps, 0);
   const mediaIn = enterProgress(frame, fps, 5);
-  const mediaScale = interpolate(frame, [0, 180], [1.025, 1.065], clamp);
+  const mediaScale =
+    motionPreset === 'v72'
+      ? interpolate(
+          frame,
+          [0, 72, 300],
+          mediaFit === 'contain'
+            ? [1.015, 1.055, 1.04]
+            : [1.025, 1.08, 1.055],
+          {...clamp, easing: Easing.inOut(Easing.cubic)},
+        )
+      : interpolate(frame, [0, 180], [1.025, 1.065], clamp);
+  const mediaX =
+    motionPreset === 'v72'
+      ? interpolate(
+          frame,
+          [0, 72, 300],
+          mediaFit === 'contain' ? [0, -8, -3] : [0, -16, -6],
+          {...clamp, easing: Easing.inOut(Easing.cubic)},
+        )
+      : 0;
+  const mediaY =
+    motionPreset === 'v72'
+      ? interpolate(
+          frame,
+          [0, 72, 300],
+          mediaFit === 'contain' ? [0, -4, -1] : [0, -7, -2],
+          {...clamp, easing: Easing.inOut(Easing.cubic)},
+        )
+      : 0;
+  const mediaTransform = `translate3d(${mediaX}px, ${mediaY}px, 0) scale(${mediaScale})`;
 
   return (
     <AbsoluteFill style={{fontFamily, color: tones.white, opacity}}>
@@ -347,12 +379,23 @@ export const V7AnnotatedMediaStage: React.FC<{
             muted
             loop={mediaLoop}
             objectFit={mediaFit}
-            style={{width: '100%', height: '100%', transform: `scale(${mediaScale})`}}
+            style={{
+              width: '100%',
+              height: '100%',
+              transform: mediaTransform,
+              transformOrigin: '50% 48%',
+            }}
           />
         ) : (
           <Img
             src={staticFile(mediaSrc)}
-            style={{width: '100%', height: '100%', objectFit: mediaFit, transform: `scale(${mediaScale})`}}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: mediaFit,
+              transform: mediaTransform,
+              transformOrigin: '50% 48%',
+            }}
           />
         )}
         <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(3,8,12,0.06), rgba(3,8,12,0) 58%, rgba(3,8,12,0.42))'}} />

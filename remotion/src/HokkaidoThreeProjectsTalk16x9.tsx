@@ -32,14 +32,69 @@ const fontFamily =
 
 export const HOKKAIDO_THREE_PROJECTS_DURATION_IN_FRAMES = f(386.9);
 
-const TalkFootage: React.FC = () => {
+type MotionPreset = 'v71' | 'v72';
+
+const semanticMotionCuts = [
+  0, 10.3, 17, 28.2, 43.8, 55.7, 67.7, 81.1, 85.8, 105, 127.6,
+  147.7, 158.9, 170.1, 195.4, 211.5, 218, 228.5, 235, 258.5, 269.5,
+  280.5, 291.5, 303.5, 319.5, 331.5, 342.5, 355.5, 372.5, 386.9,
+];
+
+const semanticMotion = (seconds: number) => {
+  const segmentIndex = Math.max(
+    0,
+    semanticMotionCuts.findIndex(
+      (cut, index) =>
+        seconds >= cut &&
+        seconds < (semanticMotionCuts[index + 1] ?? Number.POSITIVE_INFINITY),
+    ),
+  );
+  const start = semanticMotionCuts[segmentIndex] ?? 0;
+  const end =
+    semanticMotionCuts[segmentIndex + 1] ??
+    HOKKAIDO_THREE_PROJECTS_DURATION_IN_FRAMES / fps;
+  const duration = Math.max(0.6, end - start);
+  const progress = Math.min(1, Math.max(0, (seconds - start) / duration));
+  const accentAt = Math.min(0.34, Math.max(0.16, 1.5 / duration));
+  const settleAt = Math.max(accentAt + 0.16, 0.76);
+  const intensity =
+    progress <= accentAt
+      ? interpolate(progress, [0, accentAt], [0, 1], {
+          ...clamp,
+          easing: Easing.out(Easing.cubic),
+        })
+      : progress <= settleAt
+        ? interpolate(progress, [accentAt, settleAt], [1, 0.72], {
+            ...clamp,
+            easing: Easing.inOut(Easing.cubic),
+          })
+        : interpolate(progress, [settleAt, 1], [0.72, 0], {
+            ...clamp,
+            easing: Easing.inOut(Easing.cubic),
+          });
+  const peakScale = [1.08, 1.074, 1.084, 1.077][segmentIndex % 4];
+  const peakX = [-28, -16, 6, -22][segmentIndex % 4];
+  const peakY = [-6, -4, -5, -3][segmentIndex % 4];
+
+  return {
+    scale: 1.035 + (peakScale - 1.035) * intensity,
+    x: peakX * intensity,
+    y: peakY * intensity,
+  };
+};
+
+const V7MotionPresetContext = React.createContext<MotionPreset>('v71');
+
+const TalkFootage: React.FC<{motionPreset: MotionPreset}> = ({
+  motionPreset,
+}) => {
   const frame = useCurrentFrame();
   const seconds = frame / fps;
   const keyframes = [
     0, 10.3, 17, 28.2, 43.8, 67.7, 85.8, 105, 127.6, 147.7, 170.1,
     195.4, 211.5, 235, 258.5, 280.5, 303.5, 331.5, 355.5, 372.5, 386.9,
   ];
-  const scale = interpolate(
+  const legacyScale = interpolate(
     seconds,
     keyframes,
     [
@@ -49,7 +104,7 @@ const TalkFootage: React.FC = () => {
     ],
     {...clamp, easing: Easing.inOut(Easing.cubic)},
   );
-  const x = interpolate(
+  const legacyX = interpolate(
     seconds,
     keyframes,
     [
@@ -58,12 +113,16 @@ const TalkFootage: React.FC = () => {
     ],
     {...clamp, easing: Easing.inOut(Easing.cubic)},
   );
-  const y = interpolate(
+  const legacyY = interpolate(
     seconds,
     keyframes,
     [0, -2, 1, -2, 1, -1, 1, -2, 1, -1, 1, -2, 1, -1, 1, -2, 1, -1, 1, -2, 0],
     {...clamp, easing: Easing.inOut(Easing.cubic)},
   );
+  const v72Motion = semanticMotion(seconds);
+  const scale = motionPreset === 'v72' ? v72Motion.scale : legacyScale;
+  const x = motionPreset === 'v72' ? v72Motion.x : legacyX;
+  const y = motionPreset === 'v72' ? v72Motion.y : legacyY;
 
   return (
     <AbsoluteFill style={{overflow: 'hidden', background: '#05090E'}}>
@@ -92,17 +151,21 @@ const TalkFootage: React.FC = () => {
 
 type MediaStageProps = React.ComponentProps<typeof V7AnnotatedMediaStage>;
 
-const OpaqueMediaStage: React.FC<MediaStageProps> = (props) => (
-  <AbsoluteFill style={{background: '#05090E'}}>
-    <AbsoluteFill
-      style={{
-        background:
-          'linear-gradient(145deg, #07111A 0%, #03070B 56%, #071018 100%)',
-      }}
-    />
-    <V7AnnotatedMediaStage {...props} />
-  </AbsoluteFill>
-);
+const OpaqueMediaStage: React.FC<MediaStageProps> = (props) => {
+  const motionPreset = React.useContext(V7MotionPresetContext);
+
+  return (
+    <AbsoluteFill style={{background: '#05090E'}}>
+      <AbsoluteFill
+        style={{
+          background:
+            'linear-gradient(145deg, #07111A 0%, #03070B 56%, #071018 100%)',
+        }}
+      />
+      <V7AnnotatedMediaStage {...props} motionPreset={motionPreset} />
+    </AbsoluteFill>
+  );
+};
 
 const Scene: React.FC<{
   start: number;
@@ -671,7 +734,7 @@ const Hud: React.FC = () => {
   );
 };
 
-const OptionalSfx: React.FC = () => {
+const OptionalSfxV1: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps: localFps} = useVideoConfig();
   const opening = spring({
@@ -708,21 +771,101 @@ const OptionalSfx: React.FC = () => {
   );
 };
 
-const Talk: React.FC<{withSfx: boolean}> = ({withSfx}) => (
-  <AbsoluteFill style={{background: '#05090E', overflow: 'hidden'}}>
-    <LocalFont />
-    <TalkFootage />
-    <Scenes />
-    {withSfx ? <OptionalSfx /> : null}
-    <Hud />
-    <AdaptiveBilingualCaptionOverlay captionsSrc="data/HOKKAIDO3_20260725_talk01.bilingual.v1.json" />
-  </AbsoluteFill>
+type V72SfxCue = {
+  time: number;
+  file:
+    | 'section-sweep.wav'
+    | 'card-slide.wav'
+    | 'number-affirmation.wav'
+    | 'node-select.wav'
+    | 'ui-click.wav'
+    | 'evidence-shutter.wav'
+    | 'keyword-select.wav'
+    | 'zoom-out.wav';
+  volume: number;
+};
+
+const v72SfxCues: V72SfxCue[] = [
+  {time: 0.2, file: 'section-sweep.wav', volume: 0.16},
+  {time: 9.7, file: 'zoom-out.wav', volume: 0.24},
+  {time: 17, file: 'evidence-shutter.wav', volume: 0.18},
+  {time: 27.75, file: 'zoom-out.wav', volume: 0.2},
+  {time: 28.2, file: 'section-sweep.wav', volume: 0.16},
+  {time: 32.1, file: 'node-select.wav', volume: 0.1},
+  {time: 36, file: 'node-select.wav', volume: 0.1},
+  {time: 39.9, file: 'number-affirmation.wav', volume: 0.26},
+  {time: 43.8, file: 'card-slide.wav', volume: 0.22},
+  {time: 67.7, file: 'number-affirmation.wav', volume: 0.25},
+  {time: 81.1, file: 'evidence-shutter.wav', volume: 0.18},
+  {time: 85.8, file: 'keyword-select.wav', volume: 0.14},
+  {time: 105, file: 'section-sweep.wav', volume: 0.16},
+  {time: 127.6, file: 'evidence-shutter.wav', volume: 0.18},
+  {time: 147.7, file: 'card-slide.wav', volume: 0.18},
+  {time: 158.9, file: 'keyword-select.wav', volume: 0.14},
+  {time: 170.1, file: 'card-slide.wav', volume: 0.18},
+  {time: 195.4, file: 'keyword-select.wav', volume: 0.14},
+  {time: 211.5, file: 'section-sweep.wav', volume: 0.16},
+  {time: 218, file: 'card-slide.wav', volume: 0.18},
+  {time: 228.5, file: 'number-affirmation.wav', volume: 0.22},
+  {time: 235, file: 'card-slide.wav', volume: 0.18},
+  {time: 250.5, file: 'keyword-select.wav', volume: 0.14},
+  {time: 258.5, file: 'section-sweep.wav', volume: 0.16},
+  {time: 269.5, file: 'evidence-shutter.wav', volume: 0.18},
+  {time: 280.5, file: 'card-slide.wav', volume: 0.18},
+  {time: 291.5, file: 'keyword-select.wav', volume: 0.14},
+  {time: 303.5, file: 'card-slide.wav', volume: 0.18},
+  {time: 319.5, file: 'ui-click.wav', volume: 0.11},
+  {time: 331.5, file: 'section-sweep.wav', volume: 0.16},
+  {time: 346, file: 'node-select.wav', volume: 0.1},
+  {time: 349.1, file: 'node-select.wav', volume: 0.1},
+  {time: 352.2, file: 'number-affirmation.wav', volume: 0.22},
+  {time: 372.5, file: 'section-sweep.wav', volume: 0.16},
+];
+
+const SemanticSfxV2: React.FC = () => (
+  <>
+    {v72SfxCues.map((cue) => (
+      <Sequence key={`${cue.time}-${cue.file}`} from={f(cue.time)}>
+        <Audio
+          src={staticFile(`audio/koubo-sfx-v2/${cue.file}`)}
+          volume={cue.volume}
+        />
+      </Sequence>
+    ))}
+  </>
+);
+
+type SfxMode = 'none' | 'v1' | 'v2';
+
+const Talk: React.FC<{
+  motionPreset: MotionPreset;
+  sfxMode: SfxMode;
+}> = ({motionPreset, sfxMode}) => (
+  <V7MotionPresetContext.Provider value={motionPreset}>
+    <AbsoluteFill style={{background: '#05090E', overflow: 'hidden'}}>
+      <LocalFont />
+      <TalkFootage motionPreset={motionPreset} />
+      <Scenes />
+      {sfxMode === 'v1' ? <OptionalSfxV1 /> : null}
+      {sfxMode === 'v2' ? <SemanticSfxV2 /> : null}
+      <Hud />
+      <AdaptiveBilingualCaptionOverlay captionsSrc="data/HOKKAIDO3_20260725_talk01.bilingual.v1.json" />
+    </AbsoluteFill>
+  </V7MotionPresetContext.Provider>
 );
 
 export const HokkaidoThreeProjectsTalk16x9: React.FC = () => (
-  <Talk withSfx={false} />
+  <Talk motionPreset="v71" sfxMode="none" />
 );
 
 export const HokkaidoThreeProjectsTalk16x9WithSfx: React.FC = () => (
-  <Talk withSfx />
+  <Talk motionPreset="v71" sfxMode="v1" />
+);
+
+export const HokkaidoThreeProjectsTalk16x9V72NoSfx: React.FC = () => (
+  <Talk motionPreset="v72" sfxMode="none" />
+);
+
+export const HokkaidoThreeProjectsTalk16x9V72WithSfx: React.FC = () => (
+  <Talk motionPreset="v72" sfxMode="v2" />
 );

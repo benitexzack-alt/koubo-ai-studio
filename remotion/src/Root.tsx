@@ -44,6 +44,8 @@ import {
 } from './HokkaidoThreeProjectsAssetPreflight16x9';
 import {
   HokkaidoThreeProjectsTalk16x9,
+  HokkaidoThreeProjectsTalk16x9V72NoSfx,
+  HokkaidoThreeProjectsTalk16x9V72WithSfx,
   HokkaidoThreeProjectsTalk16x9WithSfx,
   HOKKAIDO_THREE_PROJECTS_DURATION_IN_FRAMES,
 } from './HokkaidoThreeProjectsTalk16x9';
@@ -80,6 +82,22 @@ export const RemotionRoot: React.FC = () => {
         <Composition
           id="HokkaidoThreeProjectsTalk16x9-WithSfx"
           component={HokkaidoThreeProjectsTalk16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={HOKKAIDO_THREE_PROJECTS_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="HokkaidoThreeProjectsTalk16x9-V72-NoSfx"
+          component={HokkaidoThreeProjectsTalk16x9V72NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={HOKKAIDO_THREE_PROJECTS_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="HokkaidoThreeProjectsTalk16x9-V72-WithSfx"
+          component={HokkaidoThreeProjectsTalk16x9V72WithSfx}
           width={1920}
           height={1080}
           fps={30}
