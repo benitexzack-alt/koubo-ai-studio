@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 3,
   "task_id": "20260722-150-followers-ai-digital-assets",
   "target_stage": "production",
   "required_rules": [
@@ -16,6 +16,24 @@
       "read": true
     }
   ],
+  "brief_contract": {
+    "user_goal": "从本人只有150个粉丝、尚无稳定变现结果的真实阶段出发，讲清没有即时正反馈时怎样判断继续、调整或停止",
+    "reference_role": "参考内容只承担判断结构和方法线索；本人当前数据、知识库实践和双账本机制承担正文证据",
+    "reference_forbidden_role": "不得把他人的收入、客户、方法效果或成功结果移植为本人经历，也不得把坚持写成必然成功",
+    "required_arc": [
+      "正面承认当前粉丝和变现结果，不把质疑者塑造成敌人",
+      "解释结果账与资产账分别记录什么、怎样被复用以及何时调整",
+      "明确数字资产不自动值钱，最后只留下建立两本账或知识库的行动"
+    ],
+    "forbidden_reframes": [
+      "粉丝少也一定会成功",
+      "数字资产保证升值或变现",
+      "旁观者不行动所以没有资格评价",
+      "把本人包装成已经稳定变现的方法导师"
+    ],
+    "alignment_evidence": "正文先承认当前结果，再用结果账和资产账解释判断机制，并保留两本账都不增长就调整、外部长期无响应就换方向的边界",
+    "status": "locked"
+  },
   "sources": [
     {
       "id": "user-current-brief",
@@ -161,6 +179,32 @@
     "authority_boundary": "只能讲本人当前行动、来源中的方法线索和有边界的判断；不能冒充已经实现稳定变现、流量增长或数字资产商业化的方法导师",
     "requires_expert_authority": false
   },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {
+      "target": "primary",
+      "script_evidence": "正文交付结果账与资产账的记录对象、判断方法和调整条件，观众当天可以开始执行",
+      "viewer_test": "目标观众看完能分别写下一条外部结果和一条可复用资产，并说明何时应该调整方向"
+    },
+    "surprise": {
+      "target": "supporting",
+      "script_evidence": "不回避150个粉丝和没有稳定变现结果，用双账本替代盲目自我否定或盲目坚持",
+      "viewer_test": "删掉150这个数字后，观众仍能复述双账本为什么比单看粉丝或收入多提供一层判断"
+    },
+    "expression": {
+      "target": "primary",
+      "script_evidence": "开头是具体质疑，中段按两本账展开，结尾明确两本账都不增长就调整，主线单一",
+      "viewer_test": "陌生观众能用自己的话区分结果账、资产账和数字垃圾"
+    },
+    "resonance": {
+      "target": "supporting",
+      "script_evidence": "感染力来自本人真实处在低粉丝、未形成稳定结果但仍持续做项目和复盘的阶段，不虚构成功",
+      "viewer_test": "同处早期阶段的观众能认出自己的焦虑，同时不会把内容理解成保证成功"
+    },
+    "integrity_boundary": "不承诺涨粉、变现、数字资产升值或知识库必然带来客户；不把个人观点包装成投资或收益建议",
+    "review_status": "human-reviewed",
+    "selection_not_guaranteed": true
+  },
   "mechanism_cards": [
     {
       "name": "结果账与资产账双账本",
@@ -183,6 +227,10 @@
     "path": "/Users/pc/Documents/口播/notes/2026-07-22-150粉丝与AI数字资产-口播稿-v1.md",
     "content_start_marker": "## 口播正文开始",
     "content_end_marker": "## 口播正文结束",
+    "copy_review": {
+      "required": true,
+      "report_path": "<project-root>/notes/2026-07-28-150粉丝与AI数字资产-口播稿-v1.copy-review.json"
+    },
     "fact_lock_passed": true,
     "humanize_passed": true,
     "read_aloud_passed": true,

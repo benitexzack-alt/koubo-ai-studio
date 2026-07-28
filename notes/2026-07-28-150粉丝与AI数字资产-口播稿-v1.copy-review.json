@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "task_id": "20260722-150-followers-ai-digital-assets",
+  "status": "passed",
+  "reviewed_at": "2026-07-28T13:12:00-04:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-07-22-150粉丝与AI数字资产-口播稿-v1.md",
+    "sha256": "92fb9a8c47c6929d6252ff4d1316c9384878e2f3f2c953ba9c1961e9828e45aa"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "304c64b8ec021246df7480c2023aaade7094267609b2e9c67bf4392de093a20b",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "过去，这些东西可能只是一堆笔记。现在，当AI能够检索、组合、重新调用它们时……",
+        "risk_level": "medium",
+        "reason": "数字资产解释连续较长，预测风险是抽象信息密度偏高；正式片已用真实知识库画面承接，现阶段不为追求刺激改写已确认稿。",
+        "candidates": {
+          "conservative": "过去它们只是一堆笔记。现在AI能把这些记录重新找出来，用在下一次选题、方案和交付里。",
+          "direct": "能被AI重新找到、再次用上，这些记录才开始像资产。",
+          "vivid": "下次再写稿、再见企业，不用从零想，AI先把我做过、错过、改过的记录找回来。"
+        },
+        "fact_difference": "三个候选都不新增事实，但会改变已录音字幕，未自动并入。",
+        "recommendation": "保留已确认原稿和原音，由知识库全屏画面承担解释；如完整观看仍觉得拖慢，再单独立项剪辑。"
+      },
+      {
+        "original": "到了AI时代，我判断，真正会越来越值钱的是通用模型没有的那一部分……",
+        "risk_level": "medium",
+        "reason": "结尾判断较长且接近价值主张重复，预测风险是行动出现前节奏放缓；但它包含本人观点和边界，不能未经确认直接删除。",
+        "candidates": {
+          "conservative": "我更看重通用模型里没有的那部分：你真实而连续的个人上下文。",
+          "direct": "通用模型人人能用，真正拉开差异的是你自己做过、改过、失败过的记录。",
+          "vivid": "模型是公用的，你走过的弯路、改过的判断，才是别人复制不了的部分。"
+        },
+        "fact_difference": "三个候选保留个人观点属性，不承诺价值或收益，但会改变已确认结尾，未自动并入。",
+        "recommendation": "本轮保持原稿；最终以用户完整观看正式片后的节奏判断为准。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": []
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
