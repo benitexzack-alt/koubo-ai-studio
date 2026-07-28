@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "task_id": "20260728-cycle-assets-field-access-validation-evidence-v1",
+  "status": "passed",
+  "reviewed_at": "2026-07-28T12:19:05-04:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-07-28-真正能穿越周期的两类资产-超哥口播稿-v1.md",
+    "sha256": "34b73453c0e3902a2a8d86890967efa115e0a932f2570d6afd778701e8cc79a6"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "304c64b8ec021246df7480c2023aaade7094267609b2e9c67bf4392de093a20b",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "我的判断是，AI越强，很多通用知识反而越容易被复制。",
+        "risk_level": "medium",
+        "reason": "开头有停留价值，但容易被听成学习知识已经没有意义，需要用个人判断口径和具体工具例子收紧。",
+        "candidates": {
+          "conservative": "AI正在让很多通用知识和工具用法变得更便宜。",
+          "direct": "AI越强，很多通用知识越容易被复制。",
+          "vivid": "你今天刚学会的提示词，下个月可能就成了模型的默认能力。"
+        },
+        "fact_difference": "三个候选均为趋势判断，不新增数字、人物、因果或收益；强度从可能的趋势依次增强。",
+        "recommendation": "正文保留个人判断，并紧接生动例子，避免把趋势说成已被证明的普遍定律。"
+      },
+      {
+        "original": "它用互联网时代的光纤和个人电脑，去类比今天的算力和大模型。这套判断最后会不会成立，现在谁也说不死。",
+        "risk_level": "medium",
+        "reason": "外部宏观材料若继续展开，会把账号拉离普通人的真实场景，也会引入尚未独立核验的行业预测。",
+        "candidates": {
+          "conservative": "今天看到一条讨论技术周期的视频，它让我重新想了一遍普通人能留下什么。",
+          "direct": "它用光纤和个人电脑类比算力和大模型，但我更关心普通人能留下什么。",
+          "vivid": "算力中心和大模型离普通人太远，我们手里到底能留下什么？"
+        },
+        "fact_difference": "候选只压缩来源介绍，不改变来源标题和本人提问；均删除未经核验的历史数字、淘汰比例和价格预测。",
+        "recommendation": "只保留来源、两层类比和一句证据边界，随后立刻转回普通人。"
+      },
+      {
+        "original": "今天再往前说一步：知识库只是容器。真正决定里面有没有价值的，是你有没有真实现场和验收结果。",
+        "risk_level": "medium",
+        "reason": "与上一条数字资产内容距离较近，若不点明结论推进，观众可能误以为仍在重复知识库复利。",
+        "candidates": {
+          "conservative": "知识库能保存资料，但价值仍取决于资料从哪里来、有没有被验证。",
+          "direct": "知识库只是容器，真实现场和验收结果才是里面最值钱的东西。",
+          "vivid": "没有真实现场和验收结果，知识库再整齐，也可能只是摆放漂亮的二手知识。"
+        },
+        "fact_difference": "三个候选都只调整表达力度，不新增项目结果；生动版使用比喻但不改变事实边界。",
+        "recommendation": "主动回扣上一条，并把结论明确推进到进场资格和验收证据，不重讲双账本。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "删除原视频关于光纤铺设规模和带宽增长的历史数字",
+      "删除原视频关于个人电脑价格与性能变化的历史数字",
+      "删除GPU必然过剩、价格必然下降和模型公司淘汰比例等未经核验预测"
+    ],
+    "wording_strength_changes": [
+      "把两类资产收紧为本人结合近期实践形成的判断，不表述为普遍规律",
+      "把资产明确限定为可复用的一手上下文和行动证据，不解释为金融资产或投资品"
+    ],
+    "pending_user_confirmations": [
+      "用户确认本稿主张、时长和本人是否自然说得出口后，才能升级为ready-for-production"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 9,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
