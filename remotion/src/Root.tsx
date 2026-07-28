@@ -50,6 +50,11 @@ import {
   HOKKAIDO_THREE_PROJECTS_DURATION_IN_FRAMES,
 } from './HokkaidoThreeProjectsTalk16x9';
 import {
+  ChildAIInterviewV72NoSfx,
+  ChildAIInterviewV72WithSfx,
+  CHILD_AI_INTERVIEW_DURATION_IN_FRAMES,
+} from './ChildAIInterviewV72';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -71,6 +76,22 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="ChildAIInterview16x9-V72-WithSfx"
+          component={ChildAIInterviewV72WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={CHILD_AI_INTERVIEW_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="ChildAIInterview16x9-V72-NoSfx"
+          component={ChildAIInterviewV72NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={CHILD_AI_INTERVIEW_DURATION_IN_FRAMES}
+        />
         <Composition
           id="HokkaidoThreeProjectsTalk16x9-NoSfx"
           component={HokkaidoThreeProjectsTalk16x9}

@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 2,
+  "videoId": "KOUBO_20260728_child_ai_interview",
+  "videoTitle": "一个小朋友眼里的AI",
+  "sourceVideo": "outputs/20260728_koubo/一个小朋友眼里的AI_16x9_粗剪_v2.mp4",
+  "baselineId": "koubo-formal-16x9-v1",
+  "styleReferenceIds": [
+    "v7.1-transparent-information-layer",
+    "v7.2-semantic-camera",
+    "v7.2-local-sfx"
+  ],
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "style": {
+    "brandLine": "超哥AI创业记",
+    "palette": {
+      "ink": "#F7FAFC",
+      "cyan": "#62D8FF",
+      "yellow": "#FFBE55",
+      "green": "#67D8A0",
+      "red": "#FF6B64",
+      "purple": "#B57CFF"
+    },
+    "motion": {
+      "enter": "spring",
+      "exit": "fade",
+      "avoidLinearEasing": true
+    }
+  },
+  "safeAreas": {
+    "subtitle": {
+      "x": 205,
+      "y": 914,
+      "width": 1510,
+      "height": 124
+    },
+    "face": {
+      "x": 320,
+      "y": 80,
+      "width": 850,
+      "height": 720
+    },
+    "hands": {
+      "x": 250,
+      "y": 560,
+      "width": 980,
+      "height": 330
+    }
+  },
+  "previewCoverage": [
+    "hook",
+    "complex-overlay",
+    "full-screen-asset",
+    "cta"
+  ],
+  "layers": [
+    {
+      "id": "base-interview-footage",
+      "start": 0,
+      "end": 90.27,
+      "spokenLine": "孩子关于AI的完整采访粗剪",
+      "purpose": "full-screen-asset",
+      "kind": "full-screen-asset",
+      "variant": "source-footage",
+      "titleOwner": false,
+      "overlapGroup": "base",
+      "zone": "full-screen",
+      "title": "",
+      "detail": "真实采访画面作为全片主体，不使用生成式替代素材。",
+      "items": [],
+      "asset": {
+        "sourceType": "local-file",
+        "source": "remotion/public/media/20260728-child-ai/rough_v2.mp4"
+      },
+      "params": {
+        "motionPreset": "v7.2-semantic-camera",
+        "baseScale": 1.035,
+        "peakScale": 1.084
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 14.8
+      }
+    },
+    {
+      "id": "hook-real-answer",
+      "start": 0.2,
+      "end": 8.9,
+      "spokenLine": "因为我希望有一个能哄我的AI，让我的心情更加好。",
+      "purpose": "hook",
+      "kind": "semantic-card",
+      "variant": "transparent-quote",
+      "titleOwner": true,
+      "overlapGroup": "hook",
+      "zone": "right",
+      "title": "我希望有一个能哄我的AI",
+      "detail": "让我的心情更加好",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "ChildAIHookQuote"
+      },
+      "params": {
+        "accent": "#FFBE55",
+        "maxWidth": 690,
+        "fontScale": 1,
+        "exportTransparent": false
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 3.8
+      }
+    },
+    {
+      "id": "understanding-ai-stack",
+      "start": 26.36,
+      "end": 44.76,
+      "spokenLine": "AI里面的知识好像有很多，而且源源不断，每次有新的问题都可以帮我解答。",
+      "purpose": "complex-overlay",
+      "kind": "semantic-card",
+      "variant": "transparent-info-stack",
+      "titleOwner": true,
+      "overlapGroup": "understanding",
+      "zone": "right",
+      "title": "她眼里的AI",
+      "detail": "只提取孩子原话中的三个重点",
+      "items": [
+        "解答新的问题",
+        "知识好像有很多",
+        "可以不断地问"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "V7TransparentInfoStack"
+      },
+      "params": {
+        "accent": "#62D8FF",
+        "maxWidth": 610,
+        "fontScale": 0.92,
+        "exportTransparent": false
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 34.2
+      }
+    },
+    {
+      "id": "used-ai-tools",
+      "start": 51.19,
+      "end": 60.16,
+      "spokenLine": "我用过豆包、元宝、千问，还有作业帮和小猿辅导。",
+      "purpose": "complex-overlay",
+      "kind": "semantic-card",
+      "variant": "transparent-tool-grid",
+      "titleOwner": true,
+      "overlapGroup": "tools",
+      "zone": "right",
+      "title": "她用过的AI工具",
+      "detail": "按孩子原话列出",
+      "items": [
+        "豆包",
+        "元宝",
+        "千问",
+        "作业帮",
+        "小猿辅导"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "ChildAIToolGrid"
+      },
+      "params": {
+        "accent": "#62D8FF",
+        "maxWidth": 650,
+        "fontScale": 1,
+        "exportTransparent": false
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 56.2
+      }
+    },
+    {
+      "id": "doubao-choice",
+      "start": 62.19,
+      "end": 70.56,
+      "spokenLine": "我觉得豆包最好用，我感觉豆包特别会哄人。",
+      "purpose": "takeaway",
+      "kind": "semantic-card",
+      "variant": "transparent-choice",
+      "titleOwner": true,
+      "overlapGroup": "choice",
+      "zone": "right",
+      "title": "她选了豆包",
+      "detail": "理由：特别会哄人",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "ChildAIChoiceCard"
+      },
+      "params": {
+        "accent": "#FFBE55",
+        "maxWidth": 650,
+        "fontScale": 1,
+        "exportTransparent": false
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 68.6
+      }
+    },
+    {
+      "id": "comfort-flow",
+      "start": 74.19,
+      "end": 90.16,
+      "spokenLine": "比如我哭了，然后我和豆包说，它会慢慢安慰我，直到我的情绪变得愉快和平静。",
+      "purpose": "cta",
+      "kind": "semantic-card",
+      "variant": "transparent-process-flow",
+      "titleOwner": true,
+      "overlapGroup": "ending",
+      "zone": "right",
+      "title": "她说的真实场景",
+      "detail": "个人体验，不扩写成产品能力结论",
+      "items": [
+        "哭了",
+        "告诉豆包",
+        "慢慢安慰",
+        "愉快、平静"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "ChildAIComfortFlow"
+      },
+      "params": {
+        "accent": "#67D8A0",
+        "maxWidth": 650,
+        "fontScale": 1,
+        "exportTransparent": false
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 84.2
+      }
+    },
+    {
+      "id": "experience-boundary",
+      "start": 85.19,
+      "end": 90.16,
+      "spokenLine": "直到我的情绪变得愉快和平静为止。",
+      "purpose": "fact-boundary",
+      "kind": "semantic-label",
+      "variant": "small-boundary-note",
+      "titleOwner": false,
+      "overlapGroup": "ending",
+      "zone": "right-bottom",
+      "title": "",
+      "detail": "个人体验，不等于专业心理支持",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "ChildAIExperienceBoundary"
+      },
+      "params": {
+        "accent": "#F7FAFC",
+        "maxWidth": 650,
+        "fontScale": 0.8,
+        "exportTransparent": false
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 87.5
+      }
+    },
+    {
+      "id": "bilingual-captions",
+      "start": 0,
+      "end": 90.16,
+      "spokenLine": "最终粗剪音轨的中英双语字幕",
+      "purpose": "captions",
+      "kind": "caption-overlay",
+      "variant": "zh-en-same-window",
+      "titleOwner": false,
+      "overlapGroup": "captions",
+      "zone": "bottom-safe",
+      "title": "",
+      "detail": "中文为主，英文为辅，标点与前字绑定。",
+      "items": [],
+      "asset": {
+        "sourceType": "local-file",
+        "source": "remotion/public/data/KOUBO_20260728_child_ai_interview.bilingual.v1.json"
+      },
+      "params": {
+        "accent": "#FFBE55",
+        "maxWidth": 1510,
+        "fontScale": 1,
+        "exportTransparent": false
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": false,
+        "needsFrameReview": true,
+        "reviewAt": 56.2
+      }
+    }
+  ],
+  "deferred": [
+    {
+      "id": "public-release",
+      "reason": "画面和声音涉及未成年人；正式公开发布前须确认监护人授权。"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "videoId": "KOUBO_20260728_CHILD_AI_INTERVIEW_ROUGH_V2",
+  "title": "一个小朋友眼里的AI",
+  "version": "rough_v2",
+  "status": "internal-review-only",
+  "strategy": "删除前58秒未完成试录和后半段现场提示语；把孩子关于情绪陪伴的结尾回答前置为冷开场，再按AI理解、使用工具、选择豆包、真实安慰体验展开。v2收紧冷开场起点，并补回“豆包会哄人”的回答，保证追问衔接完整。",
+  "targetRuntimeSeconds": 100,
+  "sourceDurationSeconds": 168.923991,
+  "sourcePolicy": "桌面原始MOV和source工作副本均只读；切点来自本机whisper.cpp small两轮转写与粗剪成片复核。",
+  "sources": {
+    "main": "../../source/KOUBO_20260728_talk01_16x9.MOV"
+  },
+  "sourceMeta": {
+    "sha256": "52c1b2041defbcca354730a8dab4f1041b429c6fd6cd974519f35abfc02dcaec",
+    "width": 1920,
+    "height": 1080,
+    "fps": "约60fps可变帧率",
+    "audio": "AAC 44.1kHz stereo",
+    "transcript": "../transcripts/KOUBO_20260728_talk01_16x9.whisper-small.json",
+    "transcriptMethod": "whisper.cpp ggml-small，本机离线，两轮中文转写"
+  },
+  "output": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "videoCodec": "h264",
+    "audioCodec": "aac",
+    "packaging": "none",
+    "captions": "none"
+  },
+  "privacy": {
+    "releaseStatus": "仅供内部审片；公开发布前必须确认未成年人监护人同意其肖像、声音和本次采访公开使用。",
+    "locationPolicy": "发布前复查车窗外精确位置、车牌、导航、电脑屏幕和其他可识别信息。",
+    "minorPolicy": "不公布年龄、学校、住址、账号等个人信息，不用标题和包装诱导儿童情绪依赖AI。",
+    "claimPolicy": "本片只呈现一个孩子的个人感受，不能外推为儿童使用AI的普遍结论或专业心理建议。"
+  },
+  "ranges": [
+    {
+      "source": "main",
+      "start": 158.78,
+      "end": 167.95,
+      "beat": "COLD_OPEN_WISH",
+      "quote": "因为我希望有一个能哄我的AI，让我的心情越来越好。",
+      "reason": "收紧到完整句起点，避免带入前一句尾音。"
+    },
+    {
+      "source": "main",
+      "start": 57.5,
+      "end": 73.95,
+      "beat": "INTRO_AI_VIEW",
+      "quote": "乐乐，你给我们讲一下你对AI的理解，好不好？我感觉它可以解答我的所有问题，感觉很厉害。",
+      "reason": "从第二次完整录制进入，删除前58秒未完成试录。"
+    },
+    {
+      "source": "main",
+      "start": 77.55,
+      "end": 96.95,
+      "beat": "KNOWLEDGE_AND_QUESTIONS",
+      "quote": "AI里面的知识好像有很多，而且源源不断。每次有新问题，AI都可以帮我解答。",
+      "reason": "删除现场提示语，保留孩子对AI答疑能力的完整解释。"
+    },
+    {
+      "source": "main",
+      "start": 96.55,
+      "end": 118.9,
+      "beat": "TOOLS_AND_CHOICE",
+      "quote": "我用过豆包、元宝、千问、作业帮、小猿辅导。我觉得豆包最好用。",
+      "reason": "保留工具使用和选择依据的提问，删除重复的第二遍“举个例子吧”。"
+    },
+    {
+      "source": "main",
+      "start": 127.55,
+      "end": 130.95,
+      "beat": "DOUBAO_CAN_COMFORT",
+      "quote": "我感觉豆包特别会哄人。",
+      "reason": "补回回答结论，保证后一句“它怎么哄你”有清晰前因。"
+    },
+    {
+      "source": "main",
+      "start": 130.55,
+      "end": 149.95,
+      "beat": "COMFORT_EXAMPLE",
+      "quote": "比如说我哭了，我和豆包说，它就会慢慢地安慰我，直到我的情绪变得愉快和平静为止。",
+      "reason": "保留孩子自己举出的真实使用场景，以具体体验收束。"
+    }
+  ]
+}
