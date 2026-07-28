@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "task_id": "20260728-cycle-assets-two-plus-two-v2",
+  "status": "passed",
+  "reviewed_at": "2026-07-28T13:04:53-04:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-07-28-真正能穿越周期的两类资产-超哥口播稿-v2.md",
+    "sha256": "ef030b8abd1b461cea9e739268bc33328e02c1a3d475d9dd860b7ca684e5eb1b"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "304c64b8ec021246df7480c2023aaade7094267609b2e9c67bf4392de093a20b",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "后来泡沫破了，一批公司退出，很多线路也暂时没人用。美联储的一份研究提到，上世纪90年代铺下的光纤，后来一度有超过九成处于闲置状态，所以有了一个名字，叫“暗光纤”。",
+        "risk_level": "medium",
+        "reason": "历史段落必须承担案例价值，但连续解释过长会像知识播报；需要迅速落到公司退出而光纤留下的画面。",
+        "candidates": {
+          "conservative": "泡沫破裂后，一批公司退出，已经铺下的光纤却继续留在地下，其中大量线路一度处于闲置状态。",
+          "direct": "公司可以倒，估值可以掉，但埋在地下的光纤不会跟着消失。",
+          "vivid": "当年一度没人使用的光纤有个名字，叫暗光纤。它看起来是过剩，后来却不用从零再挖一遍。"
+        },
+        "fact_difference": "候选只压缩经美联储资料支持的事实，不新增公司、金额、因果和后续收益。",
+        "recommendation": "正文保留一个核验数字建立可信度，紧接公司退出、光纤留下和后来不必从零建设的具体画面。"
+      },
+      {
+        "original": "现在围绕AI的投资确实在加速。以后会不会出现过剩，现在不能说死。但已经建下来的设施和积累下来的算力能力，不会因为某个热门名字消失就全部归零。",
+        "risk_level": "medium",
+        "reason": "AI投资与未来算力结论容易被听成产业预测，需要把已发生的投资加速与尚未发生的过剩明确分开。",
+        "candidates": {
+          "conservative": "当前AI驱动的投资正在加速，但未来是否形成明显过剩仍无法确定。",
+          "direct": "投资加速是事实，算力一定过剩不是事实。",
+          "vivid": "今天建下的是机房、芯片和供电能力，不会因为明天换了一个热门模型名字就凭空消失。"
+        },
+        "fact_difference": "候选均不预测GPU价格、产能过剩和模型公司数量，只调整已核验事实与本人判断的表达顺序。",
+        "recommendation": "正文先讲投资加速，再明确过剩不能说死，最后仅保留设施不会随单个热门名字一起归零的有限判断。"
+      },
+      {
+        "original": "算力再便宜，大模型再强，它们最后也是很多人都能用的时代公共能力。同一个模型大家都能打开，为什么有人只能得到一份通用答案，有人却能拿它解决真实问题？",
+        "risk_level": "medium",
+        "reason": "这是从参考视频转入本人新结论的关键桥梁，若太抽象就会再次出现突然转向和听感发干。",
+        "candidates": {
+          "conservative": "算力和大模型更接近所有人共享的时代能力，它们本身还不能解释个人差异。",
+          "direct": "算力和大模型就算都留下，也不自动变成你的差异。",
+          "vivid": "高速公路修到每个人门口，也不会自动决定谁的生意做得更好。"
+        },
+        "fact_difference": "三个候选都只解释公共能力与个人差异，不承诺竞争优势、收入或模型效果。",
+        "recommendation": "保留同一个模型为何产生不同结果的反问，随后立即用老板和设计师的一手场景解释进场资格。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [
+      "美联储研究记录20世纪90年代安装光纤在随后一段时期超过九成处于闲置状态",
+      "美联储公开讲话说明已铺光纤寿命长且当时长途光纤存在过剩",
+      "美国人口普查局1997年报告把个人电脑描述为工作、学校和家庭中的基础工具",
+      "美联储2026年研究支持当前AI驱动投资加速可与20世纪90年代IT投资热潮比较"
+    ],
+    "removed_facts": [
+      "删除互联网泡沫直接造成个人电脑家庭普及的因果关系",
+      "删除暗光纤直接造就全部云计算、流媒体和移动互联网的单线因果",
+      "删除GPU必然过剩、价格必然暴跌和模型公司淘汰比例"
+    ],
+    "wording_strength_changes": [
+      "把AI两类时代资产从确定结局收紧为一套有历史参照的观察框架",
+      "把两类个人资产明确标记为本人基于近期实践形成的判断",
+      "把资产限定为技术能力、使用入口、一手上下文和验收证据，不解释为金融资产"
+    ],
+    "pending_user_confirmations": [
+      "用户确认完整历史案例、AI映射和个人两类资产的篇幅比例",
+      "用户确认约五分钟左右的完整价值版是否符合本次拍摄时长",
+      "用户确认文稿自然说得出口后才能升级为ready-for-production"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
