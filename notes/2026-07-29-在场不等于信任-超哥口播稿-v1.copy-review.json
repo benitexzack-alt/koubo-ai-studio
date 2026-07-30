@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "task_id": "20260729-presence-is-not-trust-v1",
+  "status": "passed",
+  "reviewed_at": "2026-07-29T23:41:30-04:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-07-29-在场不等于信任-超哥口播稿-v1.md",
+    "sha256": "8531ddfb4e449b35759496d38ef766589e6b23d93715f1e7d56ac11d1229aefc"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "304c64b8ec021246df7480c2023aaade7094267609b2e9c67bf4392de093a20b",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "一家实体店，用 AI 一口气做出一堆海报和文案。东西很快就做出来了，发出去却没什么人看，顾客也没什么反应。还有人想做 OPC，周末用 AI 做了一个小程序，或者一个行业智能体。",
+        "risk_level": "medium",
+        "reason": "两个普通人场景能建立观众距离，但连续介绍人物和产物会推迟核心问题出现。",
+        "candidates": {
+          "conservative": "一家实体店很快做出海报和文案，发出去却没有顾客反应。",
+          "direct": "东西做出来了，为什么还是没人看、没人用？",
+          "vivid": "海报一口气做了一堆，小工具也能运行，可顾客没有反应，真实用户也还没有。"
+        },
+        "fact_difference": "三个候选都只压缩假设场景，不新增真实客户、数量、成交和效果。",
+        "recommendation": "正文保留两个短场景服务实体店老板和OPC尝试者，随后立即落到愿意看、愿意用、愿意交付的核心问题。"
+      },
+      {
+        "original": "新工具刚出来的时候，先学会复制一个做法，确实可能帮普通人更快入场。别人还不知道，你先知道；别人还不会做，你先做出来，可能就先拿到一段服务机会。",
+        "risk_level": "high",
+        "reason": "创造、复制、信息差、平台整合必须完整保留，但抽象名词连续出现时容易像理论课，也容易把短期机会讲成确定收益。",
+        "candidates": {
+          "conservative": "新工具早期的学习速度可能形成短期入场窗口，但窗口大小和持续时间并不确定。",
+          "direct": "信息差可以是早鸟票，不能被当成长期能力。",
+          "vivid": "别人还在问这是什么，你已经能帮人做一次；等教程铺开，这张早鸟票也就快到站了。"
+        },
+        "fact_difference": "候选均保留可能性口径，不承诺订单、收益、窗口长度和信息差必然消失。",
+        "recommendation": "正文使用早鸟票压缩抽象概念，并在服务机会前保留可能，随后马上转入教程普及与优势缩小。"
+      },
+      {
+        "original": "有一项 356 人参与的在线实验，研究社交媒体影响者怎样公开自己的私人信息。结果不是说得越多越可信。披露被认为合适时，可能提高可信度；被认为不合适时，反而可能伤害可信度。",
+        "risk_level": "medium",
+        "reason": "这项实验是纠正在场即信任的关键反证，但过多研究细节会打断口播节奏并产生论文播报感。",
+        "candidates": {
+          "conservative": "有研究发现，自我披露是否提升可信度，取决于内容是否合适。",
+          "direct": "说得更多，不一定更可信。",
+          "vivid": "把所有私生活都摊开，别人未必更信你，也可能只觉得这和眼前的问题无关。"
+        },
+        "fact_difference": "候选没有把实验外推到抖音算法、长期信任、流量和商业结果，只改变信息密度。",
+        "recommendation": "正文只保留样本量、研究对象和正反方向，紧接持续出现只是信任原料的本人判断。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [
+      "特定JavaScript编程任务受控实验中AI辅助组平均完成得更快",
+      "现行算法推荐规定明确包含个性化推送、排序精选和检索过滤等技术类型",
+      "356人在线实验显示自我披露对可信度的影响受披露合适性影响",
+      "本条来源在抖音知识中台中已有完整转写、分析资格、成稿证据资格和权利边界标记"
+    ],
+    "removed_facts": [
+      "删除普通人一定要做自媒体和一定要做AI的绝对要求",
+      "删除信息差一定消失的确定性表述",
+      "删除所有中间层产品都会被平台吸收的确定性表述",
+      "删除持续在场一定形成信任以及信任绝对无法复制的表述"
+    ],
+    "wording_strength_changes": [
+      "把AI降低创造成本收紧为缩短一部分制作环节",
+      "把信息差收益收紧为可能形成短期入场和服务机会",
+      "把平台整合收紧为通用标准化功能可能被整合",
+      "把在场即信任改为在场只是原料且需要相关、合适和可核验"
+    ],
+    "pending_user_confirmations": [
+      "标题是否采用《你一直在发内容，别人凭什么信你？》",
+      "是否在口播中保留作者归属与356人实验",
+      "最终交付物使用信任核验四问还是AI在场证据链五格卡"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
