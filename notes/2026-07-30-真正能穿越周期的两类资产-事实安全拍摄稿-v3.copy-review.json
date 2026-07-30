@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "task_id": "20260730-cycle-assets-regional-evidence-v3",
+  "status": "passed",
+  "reviewed_at": "2026-07-30T06:05:08-04:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-07-30-真正能穿越周期的两类资产-事实安全拍摄稿-v3.md",
+    "sha256": "e29350d7c3f0dcb02c85c5b9becfa77339b1742a14a27bd5d778927fc704bddd"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "304c64b8ec021246df7480c2023aaade7094267609b2e9c67bf4392de093a20b",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "开头连续提出AI热潮退去后留下什么、普通人拿走什么、两类资产是什么。",
+        "risk_level": "medium",
+        "reason": "三个问题连续出现时存在语义重复风险，但它们分别承担时代问题、个人问题和主题定义，不能简单删除。",
+        "candidates": {
+          "conservative": "保留全文，用短停顿区分三个问题。",
+          "direct": "保留前两个问题，第三个问题改由画面大字承担。",
+          "vivid": "三个问题保留，分别用热潮、普通人、两类资产三个画面层级推进。"
+        },
+        "fact_difference": "三个候选均不改变事实和核心问题。",
+        "recommendation": "用户已经确认原文，因此不改稿；用运镜和大字卡解决重复听感。"
+      },
+      {
+        "original": "互联网泡沫、暗光纤和个人电脑的连续历史段落。",
+        "risk_level": "medium",
+        "reason": "连续知识信息较多，只有人物和字幕时容易形成知识播报感。",
+        "candidates": {
+          "conservative": "保留正文，增加来源卡。",
+          "direct": "保留正文，用三段全屏素材分别承接光纤建设、暗光纤和个人电脑。",
+          "vivid": "用地下光纤重新点亮和90年代电脑日常的画面，让两层资产从抽象概念变成可见场景。"
+        },
+        "fact_difference": "画面只解释正文，不新增历史因果和投资数字。",
+        "recommendation": "不删正文，采用三段全屏素材和一次两层结构卡。"
+      },
+      {
+        "original": "前段时间字节跳动46亿在咱们宁夏中卫又设立两家新公司，主要是绿色算力低碳数据中心。",
+        "risk_level": "high",
+        "reason": "原句把46亿元注册资本写成可能被理解为投资额，并把中卫产业方向直接归因于两家新公司，强度超过公开证据。",
+        "candidates": {
+          "conservative": "字节跳动旗下公司近期在宁夏中卫新设两家公司，注册资本分别是22亿元和24亿元。",
+          "direct": "22亿加24亿，说的是注册资本，不是已经完成的投资。",
+          "vivid": "两家公司落在中卫这个绿色算力城市，但公司登记事实和当地产业方向要分开看。"
+        },
+        "fact_difference": "候选删除未经证实的投资和项目归属，只保留企业登记事实及当地公开规划方向。",
+        "recommendation": "正文采用两句话：先说两家公司及注册资本，再单独说中卫发展绿色算力和低碳数据中心。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [
+      "中卫塞上鸣沙科技有限公司和中卫朔方星河科技有限公司注册资本分别为22亿元和24亿元",
+      "两家公司由抖音集团香港主体间接全资持股",
+      "中卫公开规划材料把绿色算力和低碳数据中心列为当地发展方向"
+    ],
+    "removed_facts": [
+      "删除字节跳动已经在中卫投资46亿元的含混表达",
+      "删除两家新设公司已经确定建设绿色算力低碳数据中心的未经证实归因"
+    ],
+    "wording_strength_changes": [
+      "把46亿元改为两家公司注册资本分别为22亿元和24亿元",
+      "把公司设立事实与中卫产业方向拆成两句话",
+      "其余用户确认正文不做风格重写"
+    ],
+    "pending_user_confirmations": []
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
