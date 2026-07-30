@@ -55,6 +55,11 @@ import {
   CHILD_AI_INTERVIEW_DURATION_IN_FRAMES,
 } from './ChildAIInterviewV72';
 import {
+  CycleAssetsV72Talk16x9NoSfx,
+  CycleAssetsV72Talk16x9WithSfx,
+  CYCLE_ASSETS_DURATION_IN_FRAMES,
+} from './CycleAssetsV72Talk16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -76,6 +81,22 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="CycleAssets16x9-V72-WithSfx"
+          component={CycleAssetsV72Talk16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={CYCLE_ASSETS_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="CycleAssets16x9-V72-NoSfx"
+          component={CycleAssetsV72Talk16x9NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={CYCLE_ASSETS_DURATION_IN_FRAMES}
+        />
         <Composition
           id="ChildAIInterview16x9-V72-WithSfx"
           component={ChildAIInterviewV72WithSfx}
