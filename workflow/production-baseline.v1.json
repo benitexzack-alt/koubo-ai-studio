@@ -1,24 +1,29 @@
 {
   "schemaVersion": 1,
   "baselineId": "koubo-formal-16x9-v1",
+  "baselineRevision": "V7.2-20260730",
   "status": "active",
-  "effectiveFrom": "2026-07-11",
-  "appliesTo": "所有正式横屏口播；用户明确要求简版、纯中文或其他画幅时，必须在发布记录中写明降级原因。",
+  "effectiveFrom": "2026-07-30",
+  "appliesTo": "所有正式横屏完整口播；用户明确要求简版、纯中文、无音效或其他画幅时，必须在发布记录中写明降级原因。",
   "production": {
     "width": 1920,
     "height": 1080,
     "fps": 30,
     "videoCodec": "h264",
     "audioCodec": "aac",
-    "sourcePolicy": "原始素材只读；正式渲染使用高清兼容副本，不使用低清预览代理。"
+    "sourcePolicy": "原始素材只读；正式渲染使用完整分辨率兼容副本。低清代理只允许用于内部动态预览，不得进入正式成片。",
+    "editPolicy": "完整单条口播默认全量保留；只有用户明确要求删除、压缩、重排、重录或处理口误时才进入粗剪门禁。",
+    "formalComposition": "WithSfx"
   },
   "requiredModules": [
-    "digital-camera",
+    "semantic-digital-camera-v72",
     "top-brand-bar",
     "topic-bar",
     "progress-bar",
-    "semantic-motion-card",
-    "bilingual-caption"
+    "transparent-semantic-information",
+    "full-screen-real-or-ai-media",
+    "bilingual-caption",
+    "local-semantic-sfx-v2"
   ],
   "captionPolicy": {
     "mode": "zh-en-same-window",
@@ -32,13 +37,40 @@
     "maxSimultaneousTitleOwners": 1,
     "requireSafeAreaChecks": ["face", "hands", "subtitle"],
     "dataAndListDefault": "blue-white-infographic",
-    "fullScreenAssetRule": "同一时段如已有信息卡标题，全屏素材只能承担画面，不能重复标题。"
+    "fullScreenAssetRule": "同一时段如已有信息卡标题，全屏素材只能承担画面，不能重复标题。",
+    "brandLabel": "超哥AI创业记",
+    "forbidPublicVersionLabel": true,
+    "structureChangeSeconds": {
+      "minimum": 8,
+      "maximum": 12
+    }
+  },
+  "motionPolicy": {
+    "mode": "semantic-segment",
+    "baseScale": 1.035,
+    "peakScaleRange": [1.074, 1.084],
+    "horizontalShiftPixelsRange": [6, 28],
+    "mustPreview": ["ordinary-long-sentence", "emphasis-punch-in", "settle-back"]
+  },
+  "sfxPolicy": {
+    "default": "with-sfx",
+    "library": "koubo-sfx-v2",
+    "densityPer30Seconds": [3, 5],
+    "noSfxAllowedFor": ["故障排查", "同画面对照", "用户明确要求"],
+    "abPreviewRequiredWhen": ["音色变化", "音量策略变化", "新增音效类型", "用户要求"],
+    "formalTargets": {
+      "integratedLoudnessLufs": -16,
+      "truePeakMaxDbtp": -1.5,
+      "preferredTruePeakDbtp": -1.8
+    }
   },
   "previewGate": {
     "required": true,
     "minimumCoverage": ["hook", "complex-overlay", "full-screen-asset", "cta"],
     "userApprovalRequiredBeforeFormalRender": true,
-    "skipCondition": "完整单条口播且用户已明确授权直接成片时，可跳过中间预览确认；仍必须内部完成风险帧和机器质检。"
+    "defaultPreview": "20至30秒有音效低清动态预览，同时输出完整分辨率风险帧。",
+    "noSfxComparison": "只有音效方案本身发生变化、需要故障排查或用户明确要求时才渲染无音效对照版。",
+    "skipCondition": "完整单条口播且用户已明确授权直接成片时，可跳过中间预览确认；仍必须内部完成有音效动态预览、完整分辨率风险帧和机器质检。"
   },
   "formalQa": {
     "required": [
@@ -46,6 +78,9 @@
       "caption-sync",
       "visual-plan-validation",
       "keyframe-review",
+      "semantic-motion-review",
+      "sfx-cue-review",
+      "loudness-and-true-peak",
       "user-full-watch"
     ],
     "keyframeReview": {
@@ -53,9 +88,46 @@
       "mustInclude": ["hook", "data-or-list", "every-full-screen-asset", "cta"]
     }
   },
+  "lockedReference": {
+    "status": "user-full-playback-approved",
+    "videoId": "CYCLE_ASSETS_20260730_talk01",
+    "compositionId": "CycleAssets16x9-V72-WithSfx",
+    "output": {
+      "path": "outputs/真正能穿越周期的两类资产_16x9_V72_有音效_正式成片_v2.mp4",
+      "sha256": "e60b02858637f299bbffce680d5c0ccb03ce621de1c7fafc5c2df143e21ecd55",
+      "durationSeconds": 378.8
+    },
+    "source": {
+      "path": "source/20260730_cycle_assets/CYCLE_ASSETS_20260730_talk01_16x9.MOV",
+      "sha256": "9cbaa596d5ea85904003f09b4949aa381e460cb7645d279ed36ab9acb7c03eaa"
+    },
+    "renderProxy": {
+      "path": "remotion/public/media/cycle-assets-20260730/main-30fps.mp4",
+      "sha256": "f35dc4a36c526f34fbacca5ec653e7974e966d36652c55dd6d3b9246207992dd"
+    },
+    "component": {
+      "path": "remotion/src/CycleAssetsV72Talk16x9.tsx",
+      "sha256": "b5b17f34aae171a7acd6367413f2feb799edec6f4a9c3a9d516aec5118930c2d"
+    },
+    "bilingualCaptions": {
+      "path": "remotion/public/data/CYCLE_ASSETS_20260730_talk01.bilingual.v1.json",
+      "sha256": "5c62c7eb5548ef395b0a70b83454ff1309a0da0ff7eb2ccec47bb14a5c120d38"
+    },
+    "visualPlan": {
+      "path": "edit/20260730_cycle_assets/visual-plan_CYCLE_ASSETS_20260730_talk01_v1.json",
+      "sha256": "c6491cc1150754bde2b31877dd2bb9481048c9cf36d68ce45e50ff6747b74a2e"
+    },
+    "sfxCueSheet": {
+      "path": "edit/20260730_cycle_assets/sfx-cue-sheet_CYCLE_ASSETS_20260730_talk01_v1.json",
+      "sha256": "d13737599b3ddc6a8bf58c55bf4ebfc15f9bbaecf81ce31f64bdc9e29cef530a"
+    },
+    "qualityReport": "edit/20260730_cycle_assets/quality-report_CYCLE_ASSETS_20260730_talk01_v2.json",
+    "userFeedback": "完美，感觉是迄今为止最满意的版本"
+  },
   "evolutionPolicy": {
     "fix": "已验证缺陷立即修正并进入基线。",
     "experiment": "每条视频最多一个主实验；实验先出风险节点预览，不自动成为默认。",
-    "promotion": "连续三条稳定使用，且用户确认或发布数据支持后，才升级为下一版基线。"
+    "promotion": "连续三条稳定使用，且用户确认或发布数据支持后，才升级为下一版基线。",
+    "noRegression": "任何提速改动必须先通过 lockedReference 哈希检查和视听回归；未通过时不得用于下一条正式成片。"
   }
 }
