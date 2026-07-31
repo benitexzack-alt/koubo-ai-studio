@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20260731-lanzhou-opc-v72",
+  "videoId": "LANZHOU_OPC_20260731_talk01",
+  "title": "兰州AI创业，三个入口正在变清楚",
+  "purpose": "按用户明确授权，将完整口播与兰州OPC大会全部可用真实素材制作成V7.2正式横屏成片",
+  "productionState": "ready-for-production",
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "source/20260731_lanzhou_opc/LANZHOU_OPC_20260731_talk01_16x9.MOV",
+    "renderProxy": "remotion/public/media/lanzhou-opc-20260731/talk/LANZHOU_OPC_20260731_talk01_30fps_loudness.mp4",
+    "visualPlan": "edit/20260731_lanzhou_opc/visual-plan_LANZHOU_OPC_20260731_talk01_v1.json",
+    "bilingualCaptions": "remotion/public/data/LANZHOU_OPC_20260731_talk01.bilingual.v1.json",
+    "sfxCueSheet": "edit/20260731_lanzhou_opc/sfx-cue-sheet_LANZHOU_OPC_20260731_talk01_v1.json",
+    "fingerprintPaths": [
+      "source/20260731_lanzhou_opc/LANZHOU_OPC_20260731_talk01_16x9.MOV",
+      "remotion/src/Root.tsx",
+      "remotion/src/LanzhouOpcV72Talk16x9.tsx",
+      "remotion/src/components",
+      "remotion/public/data/LANZHOU_OPC_20260731_talk01.bilingual.v1.json",
+      "remotion/public/media/lanzhou-opc-20260731",
+      "remotion/public/audio/koubo-sfx-v2",
+      "edit/20260731_lanzhou_opc/visual-plan_LANZHOU_OPC_20260731_talk01_v1.json",
+      "edit/20260731_lanzhou_opc/sfx-cue-sheet_LANZHOU_OPC_20260731_talk01_v1.json"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/index.ts",
+    "compositionWithSfx": "LanzhouOpc16x9-V72-WithSfx",
+    "compositionWithoutSfx": "LanzhouOpc16x9-V72-NoSfx",
+    "durationSeconds": 260.5,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 3
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": true,
+    "scale": 0.5,
+    "crf": 23,
+    "ranges": [
+      {
+        "id": "hook",
+        "startSeconds": 0,
+        "endSeconds": 8
+      },
+      {
+        "id": "three-entrances-and-training-montage",
+        "startSeconds": 52.9,
+        "endSeconds": 76.9
+      },
+      {
+        "id": "cta-and-signoff",
+        "startSeconds": 245.9,
+        "endSeconds": 260.5
+      }
+    ],
+    "output": "work/production-runs/20260731-lanzhou-opc-v72/preview-with-sfx.mp4",
+    "renderWithoutSfxComparison": false
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt",
+    "fullResolution": true,
+    "outputDirectory": "work/production-runs/20260731-lanzhou-opc-v72/risk-frames"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": true,
+    "composition": "with-sfx",
+    "crf": 18,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "rawOutput": "work/production-runs/20260731-lanzhou-opc-v72/formal-raw.mp4",
+    "finalOutput": "outputs/兰州AI创业_三个入口正在变清楚_16x9_V72_有音效_正式成片_v1.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -1.7
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "directory": "work/production-cache",
+    "reuseOnlyOnExactFingerprint": true
+  },
+  "reports": {
+    "runManifest": "work/production-runs/20260731-lanzhou-opc-v72/run-manifest.json",
+    "timingReport": "work/production-runs/20260731-lanzhou-opc-v72/timing-report.json",
+    "regressionReport": "work/production-runs/20260731-lanzhou-opc-v72/regression-report.json"
+  }
+}

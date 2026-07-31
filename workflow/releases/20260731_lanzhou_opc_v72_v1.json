@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260731_lanzhou_opc_v72_v1",
+  "status": "ready-for-user-review",
+  "videoId": "LANZHOU_OPC_20260731_talk01",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "topic": "兰州OPC大会呈现的实训、协作和扶持三个本地入口",
+    "serviceAudience": "兰州及甘肃想学习AI、连接同行或了解AI创业机会的普通人、本地企业从业者和创业者。",
+    "oneConclusion": "判断AI未来不只看模型和算力，也要看普通人在本地是否已经有能动手、能协作、能继续核验创业支持的真实入口。",
+    "cta": "实训、协作、创业，这三个入口你现在最需要哪一个？评论区告诉我。",
+    "factBoundary": "扶持计划已经发布，但申请条件和运行方式以之后的公开信息为准；入口不等于结果，搭建智能体不等于已经拥有可经营的OPC。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260731_lanzhou_opc/LANZHOU_OPC_20260731_talk01_16x9.MOV",
+    "transcript": "edit/20260731_lanzhou_opc/transcripts/LANZHOU_OPC_20260731_talk01.cleaned.v1.json",
+    "bilingualCaptions": "remotion/public/data/LANZHOU_OPC_20260731_talk01.bilingual.v1.json",
+    "visualPlan": "edit/20260731_lanzhou_opc/visual-plan_LANZHOU_OPC_20260731_talk01_v1.json",
+    "assets": [
+      "media/lanzhou-opc-20260731/broll/video/L01_stage_red.mp4",
+      "media/lanzhou-opc-20260731/broll/video/L02_training_screen.mp4",
+      "media/lanzhou-opc-20260731/broll/video/L03_industry_screen.mp4",
+      "media/lanzhou-opc-20260731/broll/video/L04_support_screen.mp4",
+      "media/lanzhou-opc-20260731/broll/video/L05_closing_screen.mp4",
+      "media/lanzhou-opc-20260731/broll/video/V02_morning_wide.mp4",
+      "media/lanzhou-opc-20260731/broll/video/V03_morning_pan.mp4",
+      "media/lanzhou-opc-20260731/broll/video/V_101316_livp.mp4",
+      "media/lanzhou-opc-20260731/broll/video/V_101318_livp.mp4",
+      "media/lanzhou-opc-20260731/broll/video/V_101321_livp.mp4",
+      "media/lanzhou-opc-20260731/broll/video/V_101323_livp.mp4",
+      "media/lanzhou-opc-20260731/broll/video/V_151111_livp.mp4",
+      "media/lanzhou-opc-20260731/broll/video/V_151115_livp.mp4",
+      "media/lanzhou-opc-20260731/broll/video/V_151116_livp.mp4",
+      "media/lanzhou-opc-20260731/broll/stills/I08_event_01.jpg",
+      "media/lanzhou-opc-20260731/broll/stills/I09_event_02.jpg",
+      "media/lanzhou-opc-20260731/broll/stills/I10_event_03.jpg",
+      "media/lanzhou-opc-20260731/broll/stills/I11_event_04.jpg",
+      "media/lanzhou-opc-20260731/broll/stills/I_101316.jpg",
+      "media/lanzhou-opc-20260731/broll/stills/I_101318.jpg",
+      "media/lanzhou-opc-20260731/broll/stills/I_101321.jpg",
+      "media/lanzhou-opc-20260731/broll/stills/I_101323.jpg",
+      "media/lanzhou-opc-20260731/broll/stills/I_151111.jpg",
+      "media/lanzhou-opc-20260731/broll/stills/I_151115.jpg",
+      "media/lanzhou-opc-20260731/broll/stills/I_151116.jpg"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/兰州AI创业_三个入口正在变清楚_16x9_V72_有音效_正式成片_v1.mp4",
+    "previewOutput": "work/production-runs/20260731-lanzhou-opc-v72/preview-with-sfx.mp4",
+    "modules": [
+      "semantic-digital-camera-v72",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "transparent-semantic-information",
+      "full-screen-real-or-ai-media",
+      "bilingual-caption",
+      "local-semantic-sfx-v2"
+    ],
+    "styleReferenceIds": [
+      "V7.1-transparent-information-stage",
+      "V7.2-semantic-camera-motion",
+      "V7.2-local-sfx-v2",
+      "V7.2-full-screen-real-media"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式片1920x1080、30fps、H.264/AAC、260.6秒、364978316字节；完整解码通过；0.08秒和0.02秒阈值黑场均为0；响度-16.02 LUFS、真峰值-1.70 dBTP；SHA-256为59cb8bd1748a2a39ec7078c7fe997e3ae09b4ead09913ee7229ff1aaa97c1f31。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "verifier": "verbatim-v1",
+      "minimumScore": 0.77,
+      "averagePrecision": 0.999,
+      "averageCoverage": 0.999,
+      "evidence": "65页中英同窗字幕使用最终口播词级时间轴；严格逐字检查0失败0警告；同步最低分0.77，高于基线0.74。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "schema v2视觉方案共42个图层、30个风险抽帧；10个可用原始视频项和11张可用原始照片全部绑定，转为14段正式视频和11张正式照片进入成片。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [1.7,10,16.9,18.9,20.9,22.9,24.9,26.9,47,59.9,63.9,67.9,71.9,75.9,79.9,83.9,87.9,91.9,95.75,99.45,103.15,106.85,110.55,114.25,118,148,166,235.9,248,254.4],
+      "evidence": "逐项覆盖开场、普通人问题、每个全屏真实素材、实训、协作、扶持边界、字幕安全区和CTA；未发现字幕溢出、卡片裁切、主要挡脸或黑帧。"
+    },
+    "privacyReview": {
+      "status": "passed-machine-pending-user-full-watch",
+      "evidence": "30张全分辨率风险帧和正式片10秒间隔接触表未见证件、合同、财务资料、客户隐私或私人桌面；正式公开前仍由用户完整观看。"
+    },
+    "soundAndCameraReview": {
+      "status": "passed-machine-pending-full-watch",
+      "evidence": "正式片使用WithSfx组件；36个语义音效源全部存在，平均每30秒4.15个；数字运镜保持人物脸部和字幕安全区；主观听感仍待用户完整观看。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260731-all-usable-real-assets",
+      "decision": "applied-and-machine-verified",
+      "evidence": "大会文件夹中10个可用视频项和11张可用照片全部进入对应语义段；低清重复视频、第三方柱子哥原片、内部脑图和会议纪要不公开上屏。"
+    },
+    {
+      "id": "upgrade-20260731-zero-black-transition",
+      "decision": "applied-and-machine-verified",
+      "evidence": "把信息舞台的纯黑入场改为从人物原片自然过渡，最终片按0.02秒阈值检查仍为零黑场。"
+    },
+    {
+      "id": "upgrade-20260731-caption-reading-load",
+      "decision": "applied-and-machine-verified",
+      "evidence": "4页超长字幕拆成8页，最终65页严格逐字检查0失败0警告。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户明确要求按V7最高标准抓紧直接制作正片；内部预览、风险帧和机器质检已完成，仍待用户完整观看正式片。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "用户完整观看正式V1，确认字幕、运镜、全部大会素材节奏和36个语义音效听感后再发布。"
+  }
+}
