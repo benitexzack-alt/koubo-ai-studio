@@ -8,6 +8,7 @@
 素材/转写/EDL
 -> 内容与合规边界
 -> visual-plan.json
+-> production-job.json
 -> Remotion 预览/风险帧
 -> 正式导出
 -> release.json
@@ -32,7 +33,8 @@
 
 - 视觉方案：`edit/visual-plan_<video-id>_vN.json`
 - 字幕数据：`remotion/public/data/<video-id>.*.json`
-- 预览：`outputs/<title>_preview*.mp4`
+- 生产清单：`workflow/jobs/<video-id>.production.json`
+- 内部预览和质检报告：`work/production-runs/<video-id>/`
 - 正式片：`outputs/<title>_final*.mp4`
 - 发布记录：`workflow/releases/<video-id>_vN.json`
 - 关键帧证据：`edit/verify/` 或发布记录中声明的路径
@@ -54,10 +56,9 @@
 
 不得跳过：
 
-1. 剪辑策略确认；
-2. 粗剪或完整保留策略确认；
-3. 视觉包装方案确认；
-4. 20-30 秒预览或关键帧预览确认；
-5. 正式全片人工完整观看确认。
+1. 本条是完整保留还是内容剪辑；只有明确要求删除、压缩、重排、重录或处理口误时，才增加粗剪确认；
+2. 视觉包装方案确认；
+3. 20-30 秒预览或关键帧预览确认；
+4. 正式全片人工完整观看确认。
 
 如果用户明确授权某一步可由 Codex 先行生成，仍需在 final 中标记“待人工确认”的状态。
