@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "templateInstructions": "复制后填写所有尖括号占位符和数值；只有内容门禁、字幕、视觉方案和音效点位已确认时，才把 productionState 改为 ready-for-production。",
+  "jobId": "<YYYYMMDD-video-id-v72>",
+  "videoId": "<VIDEO_ID>",
+  "title": "<口播标题>",
+  "purpose": "完整口播按 V7.2 基线生成正式横屏成片",
+  "productionState": "blocked",
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "source/<date>/<source-file>",
+    "renderProxy": "remotion/public/media/<video-id>/main-30fps.mp4",
+    "visualPlan": "edit/<date>/visual-plan_<video-id>_v1.json",
+    "bilingualCaptions": "remotion/public/data/<video-id>.bilingual.v1.json",
+    "sfxCueSheet": "edit/<date>/sfx-cue-sheet_<video-id>_v1.json",
+    "fingerprintPaths": [
+      "source/<date>/<source-file>",
+      "remotion/src/Root.tsx",
+      "remotion/src/<CompositionFile>.tsx",
+      "remotion/src/components",
+      "remotion/public/data/<video-id>.bilingual.v1.json",
+      "remotion/public/media/<video-id>",
+      "remotion/public/audio/koubo-sfx-v2",
+      "edit/<date>/visual-plan_<video-id>_v1.json",
+      "edit/<date>/sfx-cue-sheet_<video-id>_v1.json"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/index.ts",
+    "compositionWithSfx": "<CompositionId-WithSfx>",
+    "compositionWithoutSfx": "<CompositionId-NoSfx>",
+    "durationSeconds": 0,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 3
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": true,
+    "scale": 0.5,
+    "crf": 23,
+    "ranges": [
+      {
+        "id": "hook",
+        "startSeconds": 0,
+        "endSeconds": 8
+      },
+      {
+        "id": "complex-overlay-and-sfx",
+        "startSeconds": 0,
+        "endSeconds": 0
+      },
+      {
+        "id": "cta",
+        "startSeconds": 0,
+        "endSeconds": 0
+      }
+    ],
+    "output": "work/production-runs/<job-id>/preview-with-sfx.mp4",
+    "renderWithoutSfxComparison": false
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt",
+    "fullResolution": true,
+    "outputDirectory": "work/production-runs/<job-id>/risk-frames"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": true,
+    "composition": "with-sfx",
+    "crf": 18,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "rawOutput": "work/production-runs/<job-id>/formal-raw.mp4",
+    "finalOutput": "outputs/<title>_16x9_V72_有音效_正式成片_v1.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -1.7
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "directory": "work/production-cache",
+    "reuseOnlyOnExactFingerprint": true
+  },
+  "reports": {
+    "runManifest": "work/production-runs/<job-id>/run-manifest.json",
+    "timingReport": "work/production-runs/<job-id>/timing-report.json",
+    "regressionReport": "work/production-runs/<job-id>/regression-report.json"
+  }
+}
