@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "task_id": "lanzhou-opc-conference-20260731",
+  "status": "passed",
+  "reviewed_at": "2026-07-31T09:49:34Z",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-07-31-兰州OPC大会三入口-超哥口播稿-v1.md",
+    "sha256": "948c0787f5f0d64d72658cefe016eb6bac893b58d510e584ab64bcedf5f88bd3"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "20971567ccbf4c96040661d92a920796cccfcf145c0d795ad8049666c86508d8",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "开场从兰州观众的三个现实问题进入大会",
+        "risk_level": "medium",
+        "reason": "如果继续增加职业、工具和背景说明，大会事实会出现得过晚。",
+        "candidates": {
+          "conservative": "如果你在兰州，想学AI、想做点跟AI有关的事，网上的信息其实很多。",
+          "direct": "可真想参与进去，最容易卡在三个问题：去哪里实训？去哪里找同行？又去哪里找创业支持？",
+          "vivid": "手机里每天都在讲AI，回到兰州真想动手时，先要找到实训、同行和创业支持。"
+        },
+        "fact_difference": "三个候选都只表达目标观众的常见处境，不新增具体人物、数据和结果。",
+        "recommendation": "采用保守版接直接版，先建立兰州观众的自我识别，再在20秒内进入大会事实。"
+      },
+      {
+        "original": "AI真正的大爆发到底开始了没有",
+        "risk_level": "medium",
+        "reason": "模型、算力和全球用户如果继续展开，会重复上一条内容并盖住本地大会。",
+        "candidates": {
+          "conservative": "现在大家经常讨论，AI真正的大爆发到底开始了没有。",
+          "direct": "对普通人来说，我更愿意看本地有没有地方实训、找同行、接资源。",
+          "vivid": "模型再热闹，落到普通人身上，先看自己所在的城市有没有入口。"
+        },
+        "fact_difference": "三个候选都不采用参考视频中的比例、期限和算力结论。",
+        "recommendation": "只保留一句宏观问题，立即转回本地入口，既回应参考视频又不把它当事实源。"
+      },
+      {
+        "original": "扶持计划已经发布，但申请条件和后续运行方式，公开报道里还没有完整细则。",
+        "risk_level": "low",
+        "reason": "如果连续强调不能保证，积极主线会突然变成风险说明。",
+        "candidates": {
+          "conservative": "公开报道里还没有完整申请细则。",
+          "direct": "我先把它看作入口，不提前把入口说成结果。",
+          "vivid": "门已经亮出来，接下来要看公开细则和真实项目怎样往前走。"
+        },
+        "fact_difference": "三个候选都不承诺申请资格、扶持效果和创业结果。",
+        "recommendation": "采用直接版，事实边界只占必要篇幅，随后回到值得关注的开始。"
+      }
+    ],
+    "no_high_risk_reason": "没有高风险节点；三个节点分别为两个中风险和一个低风险，均已在当前稿中做了保守处理。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "未采用AI会议纪要中的营收、客户数、成本和个人收入数字",
+      "未采用参考视频中的全球用户比例、红利期限和认知差利润判断"
+    ],
+    "wording_strength_changes": [
+      "把本地AI生态已经形成收紧为三个本地入口正在变清楚",
+      "把扶持计划写成已发布但细则待公开的入口，不写成已经产生结果"
+    ],
+    "pending_user_confirmations": [
+      "整体积极程度是否符合本人表达",
+      "约4分钟时长是否符合本次拍摄安排",
+      "结尾评论引导是否保留"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 9,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
