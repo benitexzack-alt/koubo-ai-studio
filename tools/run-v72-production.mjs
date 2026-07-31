@@ -1033,7 +1033,7 @@ const runFormalQa = async () =>
         '-i',
         output,
         '-vf',
-        'blackdetect=d=0.08:pic_th=0.98:pix_th=0.10',
+        'blackdetect=d=0.08:pic_th=0.999:pix_th=0.10',
         '-an',
         '-f',
         'null',
