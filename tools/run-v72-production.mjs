@@ -204,6 +204,7 @@ const persistRunReports = () => {
   if (dryRun) {
     return;
   }
+  const reportFinishedAt = runManifest.finishedAt ?? new Date().toISOString();
   writeJsonAtomic(reportPaths.runManifest, runManifest);
   writeJsonAtomic(reportPaths.timingReport, {
     schemaVersion: 1,
@@ -212,7 +213,9 @@ const persistRunReports = () => {
     startedAt: runManifest.startedAt,
     finishedAt: runManifest.finishedAt,
     status: runManifest.status,
-    totalDurationMs: runManifest.stages.reduce(
+    totalDurationMs:
+      Date.parse(reportFinishedAt) - Date.parse(runManifest.startedAt),
+    cumulativeStageDurationMs: runManifest.stages.reduce(
       (sum, stage) => sum + (stage.durationMs ?? 0),
       0,
     ),
@@ -1103,7 +1106,9 @@ const compareFrameMetric = (reference, candidate, time, filterName, metricPatter
   if (!match) {
     fail(`无法解析 ${filterName.toUpperCase()} 比较结果`);
   }
-  return Number(match[1]);
+  return match[1].toLowerCase() === 'inf'
+    ? Number.POSITIVE_INFINITY
+    : Number(match[1]);
 };
 
 const audioWindow = (input, start, duration = 0.8) =>
@@ -1204,7 +1209,7 @@ const runRegression = async () =>
         candidate,
         entry.time,
         'psnr',
-        /average:([0-9.]+)/,
+        /average:([0-9.]+|inf)/i,
       );
       frameResults.push({time: entry.time, layerIds: entry.layerIds, ssim, psnr});
     }
