@@ -26,7 +26,9 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 5. `knowledge/04-内容生产SOP.md`
 6. `knowledge/12-Remotion协作与模板迭代机制.md`
 7. `knowledge/16-V7.1透明信息包装与本地音效基线.md`
-8. 与本条视频直接相关的转写、EDL、素材清单、视觉参考和发布记录
+8. `knowledge/17-V7.2语义运镜与音效默认流程.md`
+9. `knowledge/18-V7.2保质提速生产流程.md`
+10. 与本条视频直接相关的转写、EDL、素材清单、视觉参考和发布记录
 
 按任务需要再读：
 
@@ -42,7 +44,7 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 - 粗剪/字幕阶段：以词级转写和 EDL 输出时间轴为准，不手估字幕时间。
 - 视觉包装阶段：先写 `visual-plan.json`，再做 Remotion 组件或参数。
 - V4 实验阶段：优先读取 V4 参考与验收，不回退旧 `mind-map / perspective / metric / flow` 默认包。
-- V7 正式阶段：默认从 V7.1 透明信息组件中按语义选型；章节、流程、证据、数字和媒体标注不得全部挤进同一种卡片。
+- V7.2 正式阶段：默认使用语义数字运镜、透明信息组件、全屏素材、中英文同窗字幕和本地音效 V2；章节、流程、证据、数字和媒体标注不得全部挤进同一种卡片。
 - 正式导出阶段：先预览和风险帧，后全片；先机器质检，后用户完整观看。
 
 ### 2. 建立本条视频事实源
@@ -84,6 +86,14 @@ node tools/validate-visual-plan.mjs <visual-plan.json>
 
 ### 4. 做预览和风险帧
 
+先为本条建立 `workflow/jobs/<id>.production.json`，然后统一执行：
+
+```bash
+node tools/run-v72-production.mjs <production-job.json> prepare
+```
+
+`prepare` 必须一次完成有音效动态预览、完整分辨率风险帧和音频预检。输入指纹完全一致时允许命中缓存；任一素材、字幕、组件、方案或音效变化时必须失效。
+
 正式片前必须输出 20-30 秒预览或覆盖关键节点的 still/range。预览至少覆盖：
 
 - 钩子；
@@ -95,6 +105,14 @@ node tools/validate-visual-plan.mjs <visual-plan.json>
 必须抽查 `reviewAt` 风险帧。发现卡片裁切、文字溢出、字幕错位、挡脸、挡手或标题叠层时，回到视觉方案或组件修正。
 
 ### 5. 导出与发布记录
+
+预览和风险帧通过后，只渲染一次 `WithSfx` 正式片：
+
+```bash
+node tools/run-v72-production.mjs <production-job.json> formal
+```
+
+`formal` 包含两遍响度处理和正式片机器质检。公共模板、渲染链路或基线参数变化时，还必须对锁定母版执行 `regression`。
 
 正式导出后填写或更新 `workflow/releases/<id>.json`，再执行：
 
@@ -113,5 +131,5 @@ node tools/validate-release.mjs <release.json>
 - 不为了高级感强制生图；真实素材和确定性 Remotion 排版优先。
 - 不把二创参考视频当作事实原始信源；外部案例引用必须显示来源和证据边界。
 - 不在左上角显示 V7、V7.1 或模板名，只保留“超哥AI创业记”。
-- 本地音效必须先通过同画面 30 秒有/无音效 A/B 听感门禁，未确认前不得铺入全片。
+- 沿用已验收的本地音效 V2 时，默认只出有音效动态预览；只有音色、音量策略或音效类型发生变化，或故障排查、用户明确要求时，才必须做同画面 30 秒 `WithSfx / NoSfx` A/B。
 - 不把机器质检、编译成功或文件存在说成发布效果已验证。
