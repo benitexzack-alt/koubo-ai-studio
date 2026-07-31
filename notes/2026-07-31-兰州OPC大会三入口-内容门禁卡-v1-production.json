@@ -1,0 +1,278 @@
+{
+  "schema_version": 3,
+  "task_id": "lanzhou-opc-conference-20260731",
+  "target_stage": "production",
+  "required_rules": [
+    {
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/03-口播执行守则.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/15-抖音精选内容质量验收.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/个人知识库/03_最佳实践/抖音口播内容与DOU+投放边界.md",
+      "read": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "ref-zhuzi",
+      "title": "柱子哥AI大爆发主题视频",
+      "completeness": "complete",
+      "acquisition": "local-asr",
+      "intended_uses": [
+        "viewpoint",
+        "talking-structure"
+      ],
+      "content_path": "/Users/pc/Documents/口播/edit/transcripts/20260731_lanzhou_opc/柱子哥_完整转写_whisper-small_v1.txt",
+      "verification_status": "不适用"
+    },
+    {
+      "id": "event-chinanews",
+      "title": "智启新未来 赋能创发展｜首届OPC技能交流大会在兰州举办",
+      "completeness": "primary-source",
+      "acquisition": "public-page",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/口播/edit/verify/20260731_lanzhou_opc/sources/中新网甘肃_大会报道全文.txt",
+      "verification_status": "已核验"
+    },
+    {
+      "id": "event-guanlan",
+      "title": "赋能数字创新 激活创业动能 首届OPC技能交流大会在兰州举办",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/口播/edit/verify/20260731_lanzhou_opc/sources/观澜新闻_大会报道全文.txt",
+      "verification_status": "已核验"
+    },
+    {
+      "id": "event-ad-association",
+      "title": "拥抱 AI 数字员工！甘肃省广告协会助力广告企业降本增效",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/口播/edit/verify/20260731_lanzhou_opc/sources/甘肃省广告协会_文章全文.txt",
+      "verification_status": "已核验"
+    },
+    {
+      "id": "event-local-video",
+      "title": "2026-07-30兰州OPC大会4K现场视频",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Desktop/兰州OPC/2026-07-30 140813.mp4",
+      "verification_status": "已核验"
+    },
+    {
+      "id": "event-ai-notes",
+      "title": "六份大会AI纪要与四张脑图",
+      "completeness": "partial",
+      "acquisition": "local-file",
+      "intended_uses": [
+        "partial-context"
+      ],
+      "content_path": "/Users/pc/Desktop/兰州OPC/智能纪要：AI智能体搭建实操分享 2026年7月30日.docx",
+      "verification_status": "部分核验"
+    },
+    {
+      "id": "material-inventory",
+      "title": "兰州OPC现场素材只读盘点",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": [
+        "source-index"
+      ],
+      "content_path": "/Users/pc/Documents/口播/edit/verify/20260731_lanzhou_opc/素材只读盘点.txt",
+      "verification_status": "已核验"
+    }
+  ],
+  "brief_contract": {
+    "user_goal": "把兰州7月30日OPC大会、现场素材和柱子哥参考视频结合，按账号既有口播风格形成一条本地AI创业解读，并尽量使用所有有信息价值且可公开的现场素材。",
+    "reference_role": "柱子哥视频只提供长口播的问题推进、章节节奏、数据可视化与真人/全屏素材交替的结构参考，并提供“宏观AI热潮如何落到普通人入口”这一问题线索。",
+    "reference_forbidden_role": "不把柱子哥视频中的全球比例、算力紧缺、十年红利、认知差利润等未独立核验主张当成本稿事实，也不复制原句、画面和音频。",
+    "required_arc": [
+      "前20秒从兰州普通人想学AI却不知道线下入口的具体处境开场",
+      "用7月30日大会的揭牌、扶持计划和现场实操形成三条本地证据",
+      "提出实训入口、协作入口、扶持入口三格判断，并说明有入口不等于已有结果",
+      "给出普通人可以核对本地AI生态的三入口清单和后续关注动作"
+    ],
+    "forbidden_reframes": [
+      "不改写成AI算力或泡沫是否存在的宏观预测",
+      "不改写成会搭一个智能体就能成为OPC或保证创业成功",
+      "不写成大会新闻通稿或机构宣传片"
+    ],
+    "alignment_evidence": "提纲须按普通人处境、现场三条证据、三入口判断、结果边界和可带走清单逐段对应；柱子哥参考只体现在节奏和视觉语法。",
+    "status": "locked"
+  },
+  "recent_six": [
+    {
+      "title": "真正能穿越周期的两类资产",
+      "date": "2026-07-30",
+      "audience_problem": "AI热潮退去后普通人该留下什么",
+      "main_claim": "时代可能留下算力底座和能力入口，个人应留下进场资格与验收证据",
+      "evidence": "互联网基础设施史、公开资料和本人近期项目",
+      "deliverable": "时代两层与个人两样的两张清单",
+      "cta": "列出愿意向自己开放的真实场景和已被使用者验收的结果"
+    },
+    {
+      "title": "孩子眼里的AI",
+      "date": "2026-07-28",
+      "audience_problem": "儿童实际怎样理解和使用AI",
+      "main_claim": "一个孩子把AI同时当作答案入口和情绪安慰对象",
+      "evidence": "车内真实采访原声",
+      "deliverable": "一个不外推的个体使用样本",
+      "cta": "只理解这名儿童的真实感受，不推广成儿童群体结论"
+    },
+    {
+      "title": "北海道农场与三个AI项目",
+      "date": "2026-07-25",
+      "audience_problem": "AI怎样进入农业和三个本地项目的完整参与过程",
+      "main_claim": "AI要接入需求、资料、处理、人工判断和结果留存的完整链条",
+      "evidence": "北海道农场完整案例和三个真实项目现状",
+      "deliverable": "需求到结果的参与链检查框架",
+      "cta": "留下自己的行业和被流量、技术或流程卡住的问题"
+    },
+    {
+      "title": "150个粉丝与AI数字资产",
+      "date": "2026-07-22",
+      "audience_problem": "暂时没有流量和收入结果时如何判断继续还是调整",
+      "main_claim": "同时记录结果账和资产账，不用一句坚持或一句否定代替证据",
+      "evidence": "账号150粉丝的真实状态和本人知识库实践",
+      "deliverable": "结果账与资产账",
+      "cta": "从真实问题、判断、行动和结果开始建立自己的知识库"
+    },
+    {
+      "title": "设计师大志如何用AI锁住灵感",
+      "date": "2026-07-21",
+      "audience_problem": "设计灵感怎样快速变得可看、可选、可讨论",
+      "main_claim": "AI负责让灵感显影，设计师继续选择、深化并对落地负责",
+      "evidence": "大志真实访谈、灵感系统演示和概念素材",
+      "deliverable": "灵感到概念再到深化的工作链",
+      "cta": "通过真实项目理解AI如何进入本地设计工作"
+    },
+    {
+      "title": "WAIC与行业现场数据",
+      "date": "2026-07-18",
+      "audience_problem": "普通行业经验在AI进入现场后还有什么价值",
+      "main_claim": "模型提供能力，行业人员决定什么值得看、什么算错、结果能不能用",
+      "evidence": "大会公开资料、科学数据案例和行业场景翻译",
+      "deliverable": "寻找眼睛和耳朵能识别但尚未被记录的现场数据",
+      "cta": "找出自己行业里一眼能看出或一听就觉得不对的信号"
+    }
+  ],
+  "topic": {
+    "audience": "兰州及甘肃想尝试AI创业、兼职转型或给小微企业应用AI的人",
+    "problem": "每天刷到AI红利和OPC概念，却不知道兰州本地是否已经有可学习、可连接、可获得扶持的真实入口",
+    "desired_change": "观众看完能用“实训、协作、扶持”三格判断一个本地AI活动是不是提供了真实入口，并知道本次大会公布了哪些入口、哪些细节仍需继续核验",
+    "novel_claim": "判断一座城市的AI创业是否开始形成可进入的本地生态，不只看模型和热词，更要看普通人能否找到实训入口、协作入口和扶持入口；7月30日大会把兰州这三个入口更清楚地摆到了大家面前，也让普通人看见一条可以积极参与的本地路径。",
+    "difference_from_recent": "新问题：兰州普通人去哪里接触本地AI创业资源；新信息：实训基地、AI产学研联盟兰州分会、OPC创业直通车与现场搭建智能体；新证据：三篇7月30日报道和用户现场视频照片；新交付物：本地AI生态“实训—协作—扶持”三入口核对表。删掉大会名称后，这仍是一条判断本地AI生态是否可进入的方法，不是换热点重讲算力、知识库、现场数据或AI落地。",
+    "evidence_proves": "官方报道与现场素材能证明大会举办、两个平台揭牌、创业直通车发布和现场实操发生；甘肃省广告协会文章能证明广告行业代表到场及其公开表达的应用需求。",
+    "evidence_does_not_prove": "不能证明扶持细则已经开放申请、平台已经产生创业订单、现场搭建者已经具备经营OPC的能力，也不能证明所有参与者都会降本增效或创业成功。",
+    "audience_takeaway": "一张三入口行动图：想先学会就关注实训，想把能力接进行业就进入协作网络，已经有创业想法就继续关注公开扶持细则；观众可以从适合自己的入口开始参与。",
+    "boundary": "本条是对公开活动和本人现场素材的调查性解读，不替主办方承诺申请资格、政策效果或商业结果；涉及机构名称、人物、现场屏幕与参会者肖像需按事实和授权最小使用。",
+    "delete_candidates": [
+      "柱子哥视频中的全球AI用户比例和算力供需数字",
+      "十年红利期、认知差就是利润等未经核验判断",
+      "六份AI纪要中的营收、成本、客户数和个案收入数字",
+      "OPC一定能降本增效、普通人一定能创业成功的宣传性表述",
+      "与当前三入口主张无关的智能体功能大全"
+    ]
+  },
+  "frozen_topic_hits": [
+    {
+      "topic": "AI要进入真实场景和流程",
+      "usage": "background",
+      "new_evidence": "本次只作为说明现场实操的背景证据",
+      "new_counterexample": "一次现场搭建不等于形成业务结果",
+      "conclusion_change": "主结论转向一座城市是否出现可进入的实训、协作和扶持节点"
+    }
+  ],
+  "audience_fit": {
+    "account_stage": "调查",
+    "speaker_position": "兰州本地AI实践者和复杂信息翻译者，以亲历会场和核对公开报道的位置发言",
+    "first_20s_connection": "兰州普通人每天在网上刷AI课程、进群听红利，却不知道线下去哪里学、找谁合作、有没有公开扶持",
+    "high_level_material_role": "background",
+    "ordinary_scenes": [
+      "兰州创业者刷了很多AI内容，却不知道本地可以去哪里实操和认识同行",
+      "小微企业负责人想试AI，但分不清一次活动、一个智能体和持续创业支持之间的区别"
+    ],
+    "audience_gain": "获得一张能核对本地AI活动真实价值的三入口清单，并知道本次大会已公开与尚未公开的边界",
+    "authority_boundary": "不代替主办方解释政策或申请细则，不代替创业导师承诺商业结果，不把本人现场观察包装成全市产业统计",
+    "requires_expert_authority": false
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {
+      "target": "primary",
+      "script_evidence": "用三篇报道和现场画面拆出实训、协作、扶持三个入口，并给出核对表",
+      "viewer_test": "目标观众看完能复述三个入口，并指出哪些申请细则和成效仍未确认"
+    },
+    "surprise": {
+      "target": "supporting",
+      "script_evidence": "把“AI大爆发”从全球模型热度改写为普通人在本地能否找到具体入口",
+      "viewer_test": "删掉“爆发、红利”等夸张词后，三入口判断仍能由现场证据成立"
+    },
+    "expression": {
+      "target": "primary",
+      "script_evidence": "开头使用兰州创业者刷了很多AI内容却不知道线下去哪的具体场景；中段逐项呈现实训基地、AI产学研联盟兰州分会、OPC创业直通车和现场搭建智能体四项事实；结尾压成“实训—协作—扶持”三格判断。",
+      "viewer_test": "陌生观众能用一句话复述“本地AI生态要看实训、协作、扶持入口”"
+    },
+    "resonance": {
+      "target": "supporting",
+      "script_evidence": "讲述者真实到场，素材包含兰州会场、参训者和本地机构，不虚构成功故事",
+      "viewer_test": "共鸣来自“网上知道很多、线下不知道去哪”的真实处境，而非煽情或焦虑"
+    },
+    "integrity_boundary": "不虚构申请方式、政策效果、订单、收入和成功案例；不以一次大会证明成熟生态或全民创业机会。",
+    "review_status": "human-reviewed",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {
+      "name": "兰州OPC本地三类入口",
+      "problem": "本地创业者知道AI概念，却不知道如何从线上讨论进入可到场的行动",
+      "bottleneck": "实操学习、同行协作和创业支持长期分散，普通人难以判断一次活动有没有后续入口",
+      "mechanism": "大会将现场搭建智能体、OPC实训基地与AI产学研联盟兰州分会揭牌、OPC创业直通车发布放在同一个本地节点，形成可观察的实训、协作和扶持三类入口",
+      "observable_change": "参会者可以现场完成基础智能体搭建，并知道金城青年创业谷出现了两个平台和一项公开扶持计划",
+      "evidence": "中新网甘肃、观澜新闻、甘肃省广告协会完整报道及用户现场4K视频和照片",
+      "evidence_proves": "证明活动、揭牌、计划发布和现场实操真实发生",
+      "evidence_does_not_prove": "不证明后续课程频率、联盟协作机制、扶持申请条件、项目成效和创业结果",
+      "audience_relevance": "帮助兰州普通人判断自己下一步是寻找实训、协作还是等待公开扶持细则",
+      "boundary": "只能说入口被公开提出和展示，不能写成成熟服务已经持续运行或保证任何人获得支持"
+    }
+  ],
+  "voice": {
+    "profile_path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+    "read": true
+  },
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-07-31-兰州OPC大会三入口-超哥口播稿-v1.md",
+    "content_start_marker": "## 口播正文开始",
+    "content_end_marker": "## 口播正文结束",
+    "copy_review": {
+      "required": true,
+      "report_path": "/Users/pc/Documents/口播/notes/2026-07-31-兰州OPC大会三入口-超哥口播稿-v1.copy-review.json"
+    },
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": true,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "compliance_passed": true,
+    "user_script_approved": true,
+    "phrase_exemptions": []
+  }
+}

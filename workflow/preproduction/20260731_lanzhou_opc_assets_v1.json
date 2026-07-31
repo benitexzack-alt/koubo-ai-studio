@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "project_id": "LANZHOU_OPC_20260731",
+  "project": "兰州首届OPC技能交流大会三入口",
+  "version": "v1",
+  "created_at": "2026-07-31",
+  "status": "preproduction-assets-ready-awaiting-talk-source",
+  "script_path": "notes/2026-07-31-兰州OPC大会三入口-超哥口播稿-v1.md",
+  "production_gate": {
+    "card": "notes/2026-07-31-兰州OPC大会三入口-内容门禁卡-v1-production.json",
+    "report": "notes/2026-07-31-兰州OPC大会三入口-门禁报告-v1-production.json",
+    "status": "ready-for-production",
+    "passed": 13,
+    "errors": 0,
+    "warnings": 0
+  },
+  "source_folder": "/Users/pc/Desktop/兰州OPC",
+  "proxy_folder": "edit/20260731_lanzhou_opc/proxies",
+  "reference_transcript": "edit/transcripts/20260731_lanzhou_opc/柱子哥_完整转写_whisper-small_v1.txt",
+  "global_usage_rules": [
+    "原始素材只读，不覆盖、不删除、不重命名",
+    "当前1080p代理仅用于素材筛选、语义匹配和低清动态预览；正式成片按最终词级时间点从原始4K或LIVP重新生成兼容片段",
+    "柱子哥视频只参考问题推进、章节节奏和真人与全屏素材交替的方法，不使用其原画面、原音频和逐句文案",
+    "四张AI脑图和六份AI纪要只作内部索引，不作为公开事实证据，不在画面中展示未经核验的数字",
+    "会场画面优先使用大全景和背影；选入正式片的每一帧都复核正脸、桌牌、手机、电脑、联系方式和演示账号",
+    "同一时刻的LIVP静态图与动态片可分别承担定格和短动态，但不在同一语义段连续堆叠相似画面",
+    "低清短视频副本属于重复备份，不计入独立素材数量，也不为凑素材使用",
+    "左上角只显示超哥AI创业记，不显示V7、V7.1、V7.2或模板名称",
+    "所有现场B-roll代理均去除源音轨，正式片只保留新录口播人声和通过门禁的本地音效"
+  ],
+  "source_summary": {
+    "conference_long_video": 1,
+    "standalone_4k_short_video": 2,
+    "livp_motion_video": 7,
+    "livp_still": 7,
+    "conference_still": 4,
+    "low_resolution_duplicate_video": 2,
+    "ai_mindmap_internal_only": 4,
+    "ai_notes_internal_only": 6,
+    "third_party_reference_video": 1
+  },
+  "video_assets": [
+    {
+      "id": "V01",
+      "topic": "下午大会完整固定机位",
+      "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 140813.mp4",
+      "source_spec": "3840x2160, HEVC, 59.97fps, 976.62秒, 含现场声",
+      "proxy": "edit/20260731_lanzhou_opc/proxies/video/conference_140813_full_proxy.mp4",
+      "proxy_sha256": "00c97384e62128b420f4011528b855d0f2732e91a2192d0ca15e721dd407ae02",
+      "proxy_spec": "1920x1080, H.264, CFR 30fps, 976.07秒, 无音轨",
+      "review": "可用；作为大会发生、屏幕内容变化和现场实操过程的主资源池，具体源时间待新口播词级对齐后精选"
+    },
+    {
+      "id": "V02",
+      "topic": "上午会场稳定宽景",
+      "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 100214.mov",
+      "source_spec": "3840x2160, 60fps, 13.24秒",
+      "proxy": "edit/20260731_lanzhou_opc/proxies/video/short_100214_4k_proxy.mp4",
+      "proxy_sha256": "26a2526df804adf648dddc56df885873d5c9334b7967c854a8d603bba8a2eeef",
+      "proxy_spec": "1920x1080, H.264, CFR 30fps, 13.23秒, 无音轨",
+      "review": "可用；优先承担大会开场和本地现场建立镜头"
+    },
+    {
+      "id": "V03",
+      "topic": "上午会场横移宽景",
+      "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 100232.mov",
+      "source_spec": "3840x2160, 60fps, 6.85秒",
+      "proxy": "edit/20260731_lanzhou_opc/proxies/video/short_100232_4k_proxy.mp4",
+      "proxy_sha256": "717e0f2e5f2065caefdda8c625a382efac5c413a70dee6a0c5332ec71a2449e7",
+      "proxy_spec": "1920x1080, H.264, CFR 30fps, 6.87秒, 无音轨",
+      "review": "可用；与V02形成静态宽景到轻移动的节奏变化"
+    },
+    {
+      "id": "V04",
+      "topic": "上午屏幕与参会者动态一",
+      "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 101316.livp",
+      "proxy": "edit/20260731_lanzhou_opc/proxies/video/livp_101316_proxy.mp4",
+      "proxy_sha256": "7085e5faf997d41bf88b7020dec2368a6ba932e151f3bf3b02681e9c7200319b",
+      "proxy_spec": "1440x1080, H.264, CFR 30fps, 2.93秒, 无音轨",
+      "review": "可用；屏幕和观众均为会场证据，正式片前复核屏幕小字"
+    },
+    {
+      "id": "V05",
+      "topic": "上午屏幕与参会者动态二",
+      "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 101318.livp",
+      "proxy": "edit/20260731_lanzhou_opc/proxies/video/livp_101318_proxy.mp4",
+      "proxy_sha256": "d035b3b981911e29d6da92c92699d0cb706aa3311c8827cec3eb5c3077f322e5",
+      "proxy_spec": "1440x1080, H.264, CFR 30fps, 3.00秒, 无音轨",
+      "review": "可用；可与V04择不同构图使用，避免连放相似帧"
+    },
+    {
+      "id": "V06",
+      "topic": "上午会场大全景动态",
+      "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 101321.livp",
+      "proxy": "edit/20260731_lanzhou_opc/proxies/video/livp_101321_proxy.mp4",
+      "proxy_sha256": "c1e505083cfa777691472004952a6376328fdc4962e59e40858dcd9a1c3a7795",
+      "proxy_spec": "1440x1080, H.264, CFR 30fps, 2.97秒, 无音轨",
+      "review": "可用；承担参训规模和真实线下场景，不外推人数"
+    },
+    {
+      "id": "V07",
+      "topic": "上午会场大全景动态二",
+      "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 101323.livp",
+      "proxy": "edit/20260731_lanzhou_opc/proxies/video/livp_101323_proxy.mp4",
+      "proxy_sha256": "a8c0b65a4d51126be8c3c7b56d5b8f1fc2486cfab314998cb6c58b1d883ec507",
+      "proxy_spec": "1440x1080, H.264, CFR 30fps, 1.90秒, 无音轨",
+      "review": "可用；适合作为短促段落切换"
+    },
+    {
+      "id": "V08",
+      "topic": "下午分享者竖屏动态一",
+      "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 151111.livp",
+      "proxy": "edit/20260731_lanzhou_opc/proxies/video/livp_151111_proxy.mp4",
+      "proxy_sha256": "f57e3ae422b672104ac413d51724d8ea24166638fd9149f7002029dc7fdb487b",
+      "proxy_spec": "810x1080, H.264, CFR 30fps, 2.97秒, 无音轨",
+      "review": "可用；证明现场有企业与实践分享，不根据屏幕小字扩写个人业绩"
+    },
+    {
+      "id": "V09",
+      "topic": "下午分享者竖屏动态二",
+      "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 151115.livp",
+      "proxy": "edit/20260731_lanzhou_opc/proxies/video/livp_151115_proxy.mp4",
+      "proxy_sha256": "82f84ae7ff96fabdb9080a85191ef314f3932e569e7f7f9f3eb6cd198566b044",
+      "proxy_spec": "810x1080, H.264, CFR 30fps, 2.80秒, 无音轨",
+      "review": "可用；正式片做横屏舞台式排版，不强行放大到满屏"
+    },
+    {
+      "id": "V10",
+      "topic": "下午分享者竖屏动态三",
+      "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 151116.livp",
+      "proxy": "edit/20260731_lanzhou_opc/proxies/video/livp_151116_proxy.mp4",
+      "proxy_sha256": "e6e37431e05b7eadcfbe90f456b409492fd09705bd807797327b34587af16ccc",
+      "proxy_spec": "810x1080, H.264, CFR 30fps, 1.77秒, 无音轨",
+      "review": "可用；与V08、V09轮换构图，避免三段连续重复"
+    }
+  ],
+  "still_assets": [
+    {"id": "I01", "topic": "上午屏幕与参会者定格一", "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 101316.livp", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/livp_101316_IMG_6547.jpg", "review": "可用"},
+    {"id": "I02", "topic": "上午屏幕与参会者定格二", "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 101318.livp", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/livp_101318_IMG_6548.jpg", "review": "可用"},
+    {"id": "I03", "topic": "上午会场大全景定格一", "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 101321.livp", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/livp_101321_IMG_6549.jpg", "review": "可用"},
+    {"id": "I04", "topic": "上午会场大全景定格二", "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 101323.livp", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/livp_101323_IMG_6550.jpg", "review": "可用"},
+    {"id": "I05", "topic": "下午分享者定格一", "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 151111.livp", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/livp_151111_IMG_6552.jpg", "review": "可用；屏幕小字不作事实依据"},
+    {"id": "I06", "topic": "下午分享者定格二", "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 151115.livp", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/livp_151115_IMG_6553.jpg", "review": "可用；横屏中按竖图舞台展示"},
+    {"id": "I07", "topic": "下午分享者定格三", "source": "/Users/pc/Desktop/兰州OPC/2026-07-30 151116.livp", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/livp_151116_IMG_6554.jpg", "review": "可用；横屏中按竖图舞台展示"},
+    {"id": "I08", "topic": "会场照片一", "source": "/Users/pc/Desktop/兰州OPC/微信图片_20260730071439_398_2243.jpg", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/event_photo_01.jpg", "review": "可用；大全景与背影为主"},
+    {"id": "I09", "topic": "会场照片二", "source": "/Users/pc/Desktop/兰州OPC/微信图片_20260730071440_400_2243.jpg", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/event_photo_02.jpg", "review": "可用；大全景与背影为主"},
+    {"id": "I10", "topic": "屏幕和参会者照片一", "source": "/Users/pc/Desktop/兰州OPC/微信图片_20260730071441_401_2243.jpg", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/event_photo_03.jpg", "review": "可用；屏幕文字只作现场背景"},
+    {"id": "I11", "topic": "屏幕和参会者照片二", "source": "/Users/pc/Desktop/兰州OPC/微信图片_20260730071442_402_2243.jpg", "proxy": "edit/20260731_lanzhou_opc/proxies/stills/event_photo_04.jpg", "review": "可用；屏幕文字只作现场背景"}
+  ],
+  "excluded_or_internal_only": [
+    {
+      "path": "/Users/pc/Desktop/兰州OPC/ee98b79a86c6c6a90aba7e17a7ebeee1.mp4",
+      "reason": "与4K短片2026-07-30 100214.mov内容近重复且分辨率仅1280x720，保留备份但不重复占用成片时长"
+    },
+    {
+      "path": "/Users/pc/Desktop/兰州OPC/e9380009e7d900d0f13b393b6a4f5e9d.mp4",
+      "reason": "与4K短片2026-07-30 100232.mov内容近重复且分辨率仅1280x720，保留备份但不重复占用成片时长"
+    },
+    {
+      "paths": [
+        "/Users/pc/Desktop/兰州OPC/微信图片_20260730071306_393_2243.jpg",
+        "/Users/pc/Desktop/兰州OPC/微信图片_20260730071321_394_2243.jpg",
+        "/Users/pc/Desktop/兰州OPC/微信图片_20260730071333_395_2243.jpg",
+        "/Users/pc/Desktop/兰州OPC/微信图片_20260730071345_396_2243.jpg"
+      ],
+      "reason": "AI脑图包含AI纪要中的姓名、数据和案例细节，未逐项核验前只作内部索引"
+    },
+    {
+      "path": "/Users/pc/Desktop/兰州OPC/柱子哥.MP4",
+      "reason": "第三方参考视频只作结构研究，不使用原画面、原音频和逐句文案"
+    },
+    {
+      "pattern": "/Users/pc/Desktop/兰州OPC/*纪要*.docx 与 export_1785409940176.docx",
+      "reason": "AI生成会议纪要存在相互冲突和未核验数字，只作内部检索，不直接入画或入稿"
+    }
+  ],
+  "technical_checks": {
+    "proxy_video_count": 10,
+    "proxy_still_count": 11,
+    "proxy_video_spec": "H.264, CFR 30fps, 无音轨；横竖比例按源素材保留",
+    "full_decode": "10/10通过",
+    "proxy_total_size": "约692MB",
+    "contact_sheets": [
+      "edit/verify/20260731_lanzhou_opc/contact-sheets/原始素材接触表.jpg",
+      "edit/verify/20260731_lanzhou_opc/contact-sheets/LIVP素材接触表.jpg"
+    ],
+    "privacy_review": [
+      "当前总览中主要为会场背影和远景，未发现需要立即剔除的近距离正脸素材",
+      "长视频最终选段仍需逐帧复核桌牌、手机、电脑、联系方式和演示账号",
+      "下午分享屏幕含个人工作内容，画面只证明分享发生，不把小字当作业绩或数据证据"
+    ],
+    "external_ai_processing": "未使用；素材预处理doctor确认未联网、未上传，现有4K和高分辨率素材无需外部升清"
+  },
+  "talk_source": {
+    "status": "awaiting-user-recording",
+    "edit_policy": "按用户已确认正文完整录制；无明确删减要求时全量保留，不设粗剪确认门禁",
+    "timing_source": "新录口播原片到位后的词级转写时间戳",
+    "next_outputs": [
+      "口播原片只读副本与30fps兼容副本",
+      "词级中文转写与人工校正",
+      "中英同窗字幕",
+      "正式visual-plan、音效点位和风险帧清单"
+    ]
+  }
+}
