@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "releaseId": "20260731_lanzhou_opc_v72_v1",
-  "status": "ready-for-user-review",
+  "status": "verified",
   "videoId": "LANZHOU_OPC_20260731_talk01",
   "baselineId": "koubo-formal-16x9-v1",
   "intent": {
@@ -87,12 +87,12 @@
       "evidence": "逐项覆盖开场、普通人问题、每个全屏真实素材、实训、协作、扶持边界、字幕安全区和CTA；未发现字幕溢出、卡片裁切、主要挡脸或黑帧。"
     },
     "privacyReview": {
-      "status": "passed-machine-pending-user-full-watch",
-      "evidence": "30张全分辨率风险帧和正式片10秒间隔接触表未见证件、合同、财务资料、客户隐私或私人桌面；正式公开前仍由用户完整观看。"
+      "status": "passed-user-confirmed",
+      "evidence": "30张全分辨率风险帧和正式片10秒间隔接触表未见证件、合同、财务资料、客户隐私或私人桌面；用户已完整观看正式片并确认满意。"
     },
     "soundAndCameraReview": {
-      "status": "passed-machine-pending-full-watch",
-      "evidence": "正式片使用WithSfx组件；36个语义音效源全部存在，平均每30秒4.15个；数字运镜保持人物脸部和字幕安全区；主观听感仍待用户完整观看。"
+      "status": "passed-user-confirmed",
+      "evidence": "正式片使用WithSfx组件；36个语义音效源全部存在，平均每30秒4.15个；数字运镜保持人物脸部和字幕安全区；用户已完整观看并确认整体满意。"
     }
   },
   "upgradeDecisions": [
@@ -115,14 +115,17 @@
   "userReview": {
     "previewApproved": false,
     "directFinalAuthorized": true,
-    "fullWatchConfirmed": false,
-    "notes": "用户明确要求按V7最高标准抓紧直接制作正片；内部预览、风险帧和机器质检已完成，仍待用户完整观看正式片。"
+    "fullWatchConfirmed": true,
+    "confirmedAt": "2026-07-31T14:29:19Z",
+    "notes": "用户完整观看正式片后明确确认满意，并继续索要发布文案、标题、话题和封面提示词；本条由ready-for-user-review升级为verified。"
   },
   "publish": {
     "status": "not-published",
     "platform": "抖音",
     "publishedAt": null,
     "metrics24h": null,
-    "nextDecision": "用户完整观看正式V1，确认字幕、运镜、全部大会素材节奏和36个语义音效听感后再发布。"
+    "releasePackaging": "notes/2026-07-31-兰州OPC大会三入口-发布包装-v1.md",
+    "copyReview": "notes/2026-07-31-兰州OPC大会三入口-发布包装-v1.copy-review.json",
+    "nextDecision": "按已复核的发布包装自然发布；发布后回填24小时数据，再评价三入口主题、标题和互动问题的真实效果。"
   }
 }
