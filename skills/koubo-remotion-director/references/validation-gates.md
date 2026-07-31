@@ -18,6 +18,14 @@ node tools/validate-visual-plan.mjs <visual-plan.json>
 
 ## 预览门禁
 
+V7.2 默认运行：
+
+```bash
+node tools/run-v72-production.mjs <production-job.json> prepare
+```
+
+该命令同时生成有音效动态预览、完整分辨率风险帧和音频预检报告。
+
 正式片前至少做一种：
 
 - 20-30 秒视频预览；
@@ -71,7 +79,7 @@ node tools/validate-release.mjs <release.json>
 - 音效文件来源、授权与实际音量；
 - 人声是否始终清晰，音效是否抢话或被背景声完全掩盖。
 
-20—30 秒预览必须实际包含动态卡片弹出、节点连接和重点转场三类音效。用户需要在正常播放音量下确认“听得见、不卡人声、不过响”，才能继续铺全片。
+20—30 秒预览必须实际包含本条使用的主要音效类型。沿用已验收的音效库和音量策略时，只出 `WithSfx` 预览；音色、音量策略或音效类型发生变化，或需要故障排查时，才加做同画面 `WithSfx / NoSfx` A/B。新方案仍需用户在正常播放音量下确认“听得见、不卡人声、不过响”。
 
 正式片导出后，必须在音效点位表对应秒点逐项复听。以下证据只能作为辅助，不能单独证明音效完成：
 
@@ -91,6 +99,24 @@ node tools/validate-release.mjs <release.json>
 - 一个运镜结束后稳定回落的画面。
 
 机器侧至少对比运镜前、中、后三帧的缩放和位移参数；人工侧必须按正常速度播放确认“能感知、不过度、不压迫、不把脸和手推出安全区”。只看到组件引用、配置文件或单帧截图，不能证明运镜已交付。用户完整观看后认为画面没有运镜感，一律按运镜未交付处理。
+
+## V7.2 正式片和回归门禁
+
+预览通过后运行：
+
+```bash
+node tools/run-v72-production.mjs <production-job.json> formal
+```
+
+`formal` 必须使用 `WithSfx`，并自动完成两遍响度处理、完整解码、近纯黑帧、编码、帧率、采样率、综合响度和真峰值检查。
+
+公共组件、运镜、音效路由、响度或渲染参数变化时，必须再对锁定母版运行：
+
+```bash
+node tools/run-v72-production.mjs workflow/jobs/20260730_cycle_assets_v72.production.json regression
+```
+
+回归必须同时通过风险帧 SSIM/PSNR、音效窗口相关性/误差/能量比、时长、综合响度和真峰值门禁。
 
 ## 封面提示词交付门禁
 
