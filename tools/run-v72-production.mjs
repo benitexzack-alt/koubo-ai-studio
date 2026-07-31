@@ -1147,7 +1147,11 @@ const audioSimilarity = (leftBuffer, rightBuffer) => {
     Math.floor(rightBuffer.length / 2),
   );
   if (!sampleCount) {
-    return {correlation: 0, normalizedRmse: Number.POSITIVE_INFINITY};
+    return {
+      correlation: 0,
+      normalizedRmse: Number.POSITIVE_INFINITY,
+      rmsRatio: 0,
+    };
   }
   let sumLeft = 0;
   let sumRight = 0;
@@ -1174,7 +1178,8 @@ const audioSimilarity = (leftBuffer, rightBuffer) => {
   const normalizedRmse =
     Math.sqrt(squareError / sampleCount) /
     Math.max(1, Math.sqrt(energyLeft / sampleCount));
-  return {correlation, normalizedRmse};
+  const rmsRatio = Math.sqrt(energyRight / Math.max(1, energyLeft));
+  return {correlation, normalizedRmse, rmsRatio};
 };
 
 const runRegression = async () =>
@@ -1227,6 +1232,7 @@ const runRegression = async () =>
         time: cue.start,
         correlation: similarity.correlation,
         normalizedRmse: similarity.normalizedRmse,
+        rmsRatio: similarity.rmsRatio,
       });
     }
 
@@ -1245,11 +1251,24 @@ const runRegression = async () =>
       }
     }
     for (const cue of audioResults) {
-      if (cue.correlation < 0.985 || cue.normalizedRmse > 0.18) {
+      const minimumCorrelation =
+        job.qualityReference.minimumAudioCorrelation ?? 0.985;
+      const maximumNormalizedRmse =
+        job.qualityReference.maximumAudioNormalizedRmse ?? 0.18;
+      const minimumRmsRatio = job.qualityReference.minimumAudioRmsRatio ?? 0.9;
+      const maximumRmsRatio = job.qualityReference.maximumAudioRmsRatio ?? 1.1;
+      if (
+        cue.correlation < minimumCorrelation ||
+        cue.normalizedRmse > maximumNormalizedRmse ||
+        cue.rmsRatio < minimumRmsRatio ||
+        cue.rmsRatio > maximumRmsRatio
+      ) {
         failures.push(
           `${cue.time}秒音效窗口 correlation=${cue.correlation.toFixed(
             4,
-          )}, nRMSE=${cue.normalizedRmse.toFixed(4)}`,
+          )}, nRMSE=${cue.normalizedRmse.toFixed(
+            4,
+          )}, RMS ratio=${cue.rmsRatio.toFixed(4)}`,
         );
       }
     }
