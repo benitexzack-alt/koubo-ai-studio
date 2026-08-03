@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260802_trust_v72_v1",
+  "status": "ready-for-user-review",
+  "videoId": "TRUST_20260802_V72",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "topic": "AI时代普通人真正不可复制的长期资产为什么是可核验的信任",
+    "serviceAudience": "正在学习AI、做内容或尝试真实项目，但尚未形成稳定结果的普通人和本地创业者。",
+    "oneConclusion": "AI会继续降低创造和复制成本；普通人更值得长期沉淀的是扎根真实问题、可供外人核验、明确标注尚未验证的完整时间线。",
+    "cta": "如果你正在借助AI做项目，评论区聊聊你目前最大的卡点。",
+    "factBoundary": "持续在场不自动等于信任，真实也不保证平台流量或客户选择；情景演示、研究结论和本人项目记录均按各自证据边界展示。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260802_trust/TRUST_20260802_talk01_16x9.MOV",
+    "transcript": "edit/20260802_trust/transcripts/TRUST_20260802_talk01.cleaned.v1.json",
+    "bilingualCaptions": "remotion/public/data/TRUST_20260802_talk01.bilingual.v1.json",
+    "visualPlan": "workflow/visual-plans/20260802_trust_v72.visual-plan.v1.json",
+    "assets": [
+      "media/trust-asset-20260802/01-store-output-no-response-v1.mp4",
+      "media/trust-asset-20260802/02-opc-demo-low-adoption-v1.mp4",
+      "media/trust-asset-20260802/03-three-gates-v1.mp4",
+      "media/trust-asset-20260802/04-verifiable-timeline-v1.mp4",
+      "media/trust-asset-20260802/05-nber-generative-ai-at-work-cover.png",
+      "media/two-ledgers-20260722/personal-kb-graph-cropped-30fps.mp4",
+      "media/hokkaido-three-projects-20260725/jinshiyuan/J01-entry-form-crop.mp4",
+      "media/hokkaido-three-projects-20260725/bo2/B02-ai-poster-flow.mp4",
+      "media/hokkaido-three-projects-20260725/dazhi/D03-refine-and-multiview.mp4"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/AI时代_普通人真正不可复制的资产是信任_16x9_V72_有音效_成片.mp4",
+    "previewOutput": "edit/20260802_trust/exports/TRUST_20260802_V72_opening_preview_v1.mp4",
+    "modules": [
+      "semantic-digital-camera-v72",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "transparent-semantic-information",
+      "full-screen-real-or-ai-media",
+      "bilingual-caption",
+      "local-semantic-sfx-v2"
+    ],
+    "styleReferenceIds": [
+      "V7.1-transparent-information-stage",
+      "V7.2-semantic-camera-motion",
+      "V7.2-local-sfx-v2",
+      "V7.2-full-screen-original-and-real-media"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式片1920x1080、30fps、H.264/AAC、351.722667秒、401602817字节；整片音视频完整解码0错误；响度-16.07 LUFS、真峰值-1.30 dBTP、LRA 5.70；SHA-256为7470bca2c177b3bc9ce0ba34e282f449df420698c140bf24d8ffc8c8326231ed。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "verifier": "verbatim-v1",
+      "minimumScore": 1.0,
+      "averagePrecision": 1.0,
+      "averageCoverage": 1.0,
+      "evidence": "104页中英同窗字幕来自实际口播词级时间轴；严格逐字检查平均贴合度1.000、平均覆盖度1.000、0失败、0警告。辅助双语窗口检查最低分0.71，短页受前后100毫秒扩窗影响，不作为逐字失败。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "schema v2视觉方案共25个图层、22个风险抽帧点，覆盖hook、complex-overlay、full-screen-asset和cta；机器校验通过。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [2.0, 15.0, 61.5, 99.0, 218.8, 227.8, 248.8, 305.8, 348.6],
+      "evidence": "正式成片抽帧覆盖开场、情景演示、NBER证据、三个大门、可核验时间线、真实项目、Wiley边界、长期资产和CTA；未发现黑帧、主卡裁切、遮脸或字幕冲突。"
+    },
+    "privacyReview": {
+      "status": "passed",
+      "evidence": "正式片风险帧未见证件、合同、财务资料、密钥或客户隐私；真实项目画面只展示已授权的过程素材。"
+    },
+    "soundAndCameraReview": {
+      "status": "passed",
+      "evidence": "正式片使用WithSfx组件和语义数字运镜；人物段轻推拉，全屏素材段不叠加人物运镜；20个本地音效点只用于结构变化、证据和关键结论。用户主观听感仍待完整观看确认。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260802-actual-speech-single-source",
+      "decision": "applied-and-machine-verified",
+      "evidence": "字幕和精确信息卡统一跟随实际口播；三个大门从书面稿的愿意持续使用改为实际口述的愿意使用。"
+    },
+    {
+      "id": "upgrade-20260802-evidence-card-face-safety",
+      "decision": "applied-and-machine-verified",
+      "evidence": "NBER证据卡缩小并降低底板不透明度，正式分辨率风险帧确认不再遮挡人物面部。"
+    },
+    {
+      "id": "upgrade-20260802-long-form-motion-density",
+      "decision": "applied-and-machine-verified",
+      "evidence": "长口播按25层视觉计划持续穿插透明信息、全屏原创动效、研究证据和真实项目记录，避免长时间只剩字幕。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "confirmedAt": null,
+    "notes": "用户明确要求继续并直接生成有音效正式片；当前已完成制作侧终检，等待用户完整观看。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "releasePackaging": "notes/2026-08-02-AI时代普通人不可复制的资产是信任-用户最终确认稿-v2.md",
+    "copyReview": "notes/2026-08-02-AI时代普通人不可复制的资产是信任-用户最终确认稿-v2.copy-review.json",
+    "nextDecision": "先由用户完整观看成片；确认后再发布并回填24小时真实数据，不能从机器质检推断推荐、DOU+或咨询结果。"
+  }
+}

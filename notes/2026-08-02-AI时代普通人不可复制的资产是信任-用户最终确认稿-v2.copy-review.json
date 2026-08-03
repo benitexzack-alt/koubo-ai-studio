@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "task_id": "20260802-trust-asset-v2",
+  "status": "passed",
+  "reviewed_at": "2026-08-02T11:54:00-04:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-08-02-AI时代普通人不可复制的资产是信任-用户最终确认稿-v2.md",
+    "sha256": "b3b8b426613d5326d6356844f87ae425963ee1aa19268815e0da00b628cd279e"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "20971567ccbf4c96040661d92a920796cccfcf145c0d795ad8049666c86508d8",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "开头从实体店海报和文案无反应，继续讲到OPC小程序、行业智能体和平台同质化功能。",
+        "risk_level": "medium",
+        "reason": "两个场景都能建立观众距离，但主问题出现前的信息量较大；用户已确认逐字稿，优先由画面提前呈现共同矛盾。",
+        "candidates": {
+          "conservative": "保留两个场景，画面只标注做出来但没人看、没人用。",
+          "direct": "工具会用了，东西也做出来了，为什么还是没人看、没人用？",
+          "vivid": "海报铺满屏幕，小程序运行流畅，旁边却没有真实反馈和持续使用记录。"
+        },
+        "fact_difference": "三个候选只改变表达或画面，不新增真实客户、数据、收入、平台名称和失败结果。",
+        "recommendation": "正文原样保留；开场使用两段明确标注为情景演示的全屏画面，并提前出现大字做出来不等于有人看、有人用。"
+      },
+      {
+        "original": "从创造成本、三道门继续推进到复制、信息差、红利窗口和中间层工具。",
+        "risk_level": "high",
+        "reason": "连续抽象概念如果只靠字幕，会像理论讲解；删减任何一段又会破坏用户确认的完整机制链。",
+        "candidates": {
+          "conservative": "每个概念只配一个简短定义卡。",
+          "direct": "能做、能被看见、愿意持续使用，是三道门；信息差只是早鸟票。",
+          "vivid": "三扇门依次打开，早鸟票随后被快速复制的模板和功能淹没。"
+        },
+        "fact_difference": "候选不改变信息差、平台整合和长期壁垒的观点强度，不增加确定性预测。",
+        "recommendation": "正文原样保留；拆成三道门、早鸟票、复制扩散三个不同组件，并以每8至12秒一次结构变化维持节奏。"
+      },
+      {
+        "original": "Build in Public定义、自我披露研究和持续在场不等于信任。",
+        "risk_level": "medium",
+        "reason": "这是本条结论成立的关键纠偏，但抽象名词和研究结论连续出现，容易造成理解负担。",
+        "candidates": {
+          "conservative": "持续公开真实项目过程，但公开多少要看语境和分寸。",
+          "direct": "持续出现只是原料，可核验的过程才给别人判断依据。",
+          "vivid": "不是把私生活全部摊开，而是把需求、尝试、失败、验证和迭代串成一条线。"
+        },
+        "fact_difference": "候选均保留不保证信任、流量和客户的边界，不把研究外推为抖音算法规律。",
+        "recommendation": "正文原样保留；用五节点时间线承接Build in Public，再用单独证据卡显示披露不是越多越好。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": []
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}

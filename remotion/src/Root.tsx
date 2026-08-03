@@ -65,6 +65,19 @@ import {
   V72_DATA_DRIVEN_PREVIEW_DURATION_IN_FRAMES,
 } from './V72DataDrivenPreview16x9';
 import {
+  TrustOpcScenarioAsset16x9,
+  TrustAssetPreflight16x9,
+  TrustStoreScenarioAsset16x9,
+  TrustThreeGatesAsset16x9,
+  TrustTimelineAsset16x9,
+  TRUST_ASSET_PREFLIGHT_DURATION_IN_FRAMES,
+} from './TrustAssetPreflight16x9';
+import {
+  TrustV72Talk16x9NoSfx,
+  TrustV72Talk16x9WithSfx,
+  TRUST_V72_DURATION_IN_FRAMES,
+} from './TrustV72Talk16x9';
+import {
   LanzhouOpcV72Talk16x9NoSfx,
   LanzhouOpcV72Talk16x9WithSfx,
   LANZHOU_OPC_DURATION_IN_FRAMES,
@@ -91,6 +104,62 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="Trust16x9-V72-WithSfx"
+          component={TrustV72Talk16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={TRUST_V72_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="Trust16x9-V72-NoSfx"
+          component={TrustV72Talk16x9NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={TRUST_V72_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="TrustAssetPreflight16x9"
+          component={TrustAssetPreflight16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={TRUST_ASSET_PREFLIGHT_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="TrustStoreScenarioAsset16x9"
+          component={TrustStoreScenarioAsset16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={240}
+        />
+        <Composition
+          id="TrustOpcScenarioAsset16x9"
+          component={TrustOpcScenarioAsset16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={240}
+        />
+        <Composition
+          id="TrustThreeGatesAsset16x9"
+          component={TrustThreeGatesAsset16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={210}
+        />
+        <Composition
+          id="TrustTimelineAsset16x9"
+          component={TrustTimelineAsset16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={210}
+        />
         <Composition
           id="LanzhouOpc16x9-V72-WithSfx"
           component={LanzhouOpcV72Talk16x9WithSfx}
