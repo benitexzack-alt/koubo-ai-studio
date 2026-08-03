@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "task_id": "20260803-ai-productivity-conversion-v1",
+  "status": "passed",
+  "reviewed_at": "2026-08-03T04:53:35-04:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-08-03-AI提效为什么没有变成生产力-超哥口播稿-v1.md",
+    "sha256": "1cec9c38247f15936bc9bd1567aa62594ba7e217c6261d17bb11fbdf858b8854"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "20971567ccbf4c96040661d92a920796cccfcf145c0d795ad8049666c86508d8",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "开场从方案和表格变快，推进到订单、利润和交付周期没有同步变化。",
+        "risk_level": "medium",
+        "reason": "具体场景能建立观众距离，但如果继续堆工具名和公司背景，宏观问题会被细节冲散。",
+        "candidates": {
+          "conservative": "每个人都感觉自己变快了，可整个项目没有同样变快。",
+          "direct": "个人快了，订单、利润和交付没有一起快。",
+          "vivid": "屏幕上的方案十分钟出了三版，月底的经营表却没有同步变好。"
+        },
+        "fact_difference": "三个候选均为一般情景，不新增本人客户、订单、利润和企业结果。",
+        "recommendation": "保留现版；拍摄时只强调个人变快、系统没变快，不新增虚构案例。"
+      },
+      {
+        "original": "5179名客服、约14%的任务提效与十年宏观全要素生产率估算连续出现。",
+        "risk_level": "high",
+        "reason": "数字证据很强，但连续两个研究口径容易让口播变成论文播报。",
+        "candidates": {
+          "conservative": "具体岗位可以明显提效，宏观转化却可能比较温和。",
+          "direct": "岗位快，社会慢，这就是反差。",
+          "vivid": "一张工位上的效率仪表盘快速上升，整个经济系统的曲线却只缓慢移动。"
+        },
+        "fact_difference": "简化版保留研究方向，但如果删除样本和数字，证据精度会下降。",
+        "recommendation": "保留两个核心数字；朗读时在14%后停顿，再用岗位快、社会慢翻译。"
+      },
+      {
+        "original": "任务到流程、供给到需求、降本到新价值、技术收益到广泛分享四道门连续推进。",
+        "risk_level": "high",
+        "reason": "四组抽象关系信息密度高，观众可能只记住分类，记不住怎样检查。",
+        "candidates": {
+          "conservative": "流程有没有缩短、需求是不是真的、有没有新价值、收益怎么分享。",
+          "direct": "别只看省时间，要看流程、需求、收入和分配。",
+          "vivid": "四扇门依次打开；只开第一扇，效率还出不了门。"
+        },
+        "fact_difference": "三个候选均保留四道转化门，不新增效果保证和企业结果。",
+        "recommendation": "正文保留完整解释；每一道门先给一个普通工作场景，再落一个判断问题。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [
+      "补入OpenAI官方上线日期，纠正发布时整整四年的说法。",
+      "补入NBER 5179名客服和平均约14%的任务层面提效证据。",
+      "补入Acemoglu十年全要素生产率增幅可能不超过0.66%的模型估算边界。",
+      "补入美国劳工统计局最新数据，明确生产率并非零增长。"
+    ],
+    "removed_facts": [
+      "删除全社会生产力几乎毫无增长的绝对结论。",
+      "删除AI只替代劳动、不创造岗位的绝对结论。",
+      "删除AI收益全部流向头部资本的因果结论。"
+    ],
+    "wording_strength_changes": [
+      "把AI没有创造新价值收紧为部分应用仍主要停留在旧任务提速。",
+      "把供给爆炸必然导致价格战收紧为需求未同步增长时可能出现同质化和价格压力。",
+      "把生产力革命失败改为效率向组织价值的转化尚未完成。"
+    ],
+    "pending_user_confirmations": [
+      "用户需确认四道门的口播长度、宏观研究数字是否保留，以及结尾的积极方向是否符合本人表达。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
