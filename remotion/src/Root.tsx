@@ -83,6 +83,11 @@ import {
   LANZHOU_OPC_DURATION_IN_FRAMES,
 } from './LanzhouOpcV72Talk16x9';
 import {
+  AIProductivityV73Talk16x9NoSfx,
+  AIProductivityV73Talk16x9WithSfx,
+  AI_PRODUCTIVITY_V73_DURATION_IN_FRAMES,
+} from './AIProductivityV73Talk16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -104,6 +109,22 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="AIProductivity16x9-V73-WithSfx"
+          component={AIProductivityV73Talk16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_PRODUCTIVITY_V73_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="AIProductivity16x9-V73-NoSfx"
+          component={AIProductivityV73Talk16x9NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_PRODUCTIVITY_V73_DURATION_IN_FRAMES}
+        />
         <Composition
           id="Trust16x9-V72-WithSfx"
           component={TrustV72Talk16x9WithSfx}

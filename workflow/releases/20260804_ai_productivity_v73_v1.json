@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260804_ai_productivity_v73_v1",
+  "status": "ready-for-user-review",
+  "videoId": "AI_PRODUCTIVITY_20260804_talk01",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "topic": "为什么个人AI效率明显提升，却还没有自动变成企业和社会层面的完整生产力",
+    "serviceAudience": "正在使用AI提效的普通人、本地实体商家和OPC项目实践者",
+    "oneConclusion": "AI单点提速之后，还要跨过流程、真实需求、新价值和收益分享四道门，才可能形成完整生产力。",
+    "cta": "评论区说说自己卡在四道门里的哪一道。",
+    "factBoundary": "岗位研究、宏观测算和官方生产率口径分别用于不同尺度，不能互相替代；情景演示不代表真实企业结果。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260804_ai_productivity/AI_PRODUCTIVITY_20260804_talk01_16x9.MOV",
+    "transcript": "edit/20260804_ai_productivity/transcripts/AI_PRODUCTIVITY_20260804_talk01.cleaned.v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_PRODUCTIVITY_20260804_talk01.bilingual.v1.json",
+    "visualPlan": "edit/20260804_ai_productivity/visual-plan_AI_PRODUCTIVITY_20260804_talk01_v1.json",
+    "assets": [
+      "source/20260804_ai_productivity/AI_PRODUCTIVITY_20260804_broll01_workload_16x9.mp4",
+      "source/20260804_ai_productivity/AI_PRODUCTIVITY_20260804_broll02_local_flow_16x9.mp4",
+      "remotion/public/media/ai-productivity-20260804/nber-w31161-cover.png",
+      "remotion/public/media/ai-productivity-20260804/nber-w32487-cover.png"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/AI效率不等于完整AI生产力_16x9_V73验证_有音效_正式成片_v1.mp4",
+    "previewOutput": "work/production-runs/20260804-ai-productivity-v73/preview-with-sfx.mp4",
+    "coverPrompt": "notes/2026-08-04-AI效率不等于完整AI生产力-用户最终确认稿-v2.md#3:4真人截图合成封面提示词",
+    "soundEffectCueSheet": "edit/20260804_ai_productivity/sfx-cue-sheet_AI_PRODUCTIVITY_20260804_talk01_v1.json",
+    "modules": [
+      "semantic-digital-camera-v72",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "transparent-semantic-information",
+      "full-screen-real-or-ai-media",
+      "bilingual-caption",
+      "local-semantic-sfx-v2",
+      "semantic-digital-camera-v73",
+      "explicit-scenario-demo-replacement",
+      "full-screen-user-generated-ai-media",
+      "actual-spoken-bilingual-caption",
+      "visual-event-bound-local-sfx-v3",
+      "top-brand-label",
+      "v73-production-timing-contract"
+    ],
+    "styleReferenceIds": [
+      "v72-user-verified-20260730",
+      "v73-transparent-events-and-sfx"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式片1920x1080、30fps、H.264/AAC、413.6秒、783016259字节；整片完整解码0错误、0黑帧；响度-16.16 LUFS、真峰值-1.60 dBTP、LRA 5.20；SHA-256为c54db9c4057a6c547a86561aec066e6ee1e80fcec4aea7fceda0613311cecc27。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "verifier": "verbatim-v1",
+      "minimumScore": 1.0,
+      "evidence": "119页中英同窗字幕来自实际口播词级时间轴；严格逐字检查平均贴合度1.000、覆盖度1.000、0失败、0警告。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "V7.3视觉方案共26个主视觉事件、19个风险抽帧点，覆盖钩子、缺失录屏替代、研究数据、四道门、两段全屏AI素材、四问清单和CTA。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [1, 16, 23, 87, 113, 174, 263, 291, 327, 365, 408, 413.2],
+      "evidence": "正式片首中尾抽帧未发现黑帧、主卡裁切、遮脸或字幕冲突；最终口播和账号落款完整。"
+    },
+    "cameraMotionReview": {
+      "status": "machine-passed-user-pending",
+      "previewPoints": [1, 87, 174, 291, 365, 408],
+      "userPerceptibilityConfirmed": false,
+      "evidence": "人物段使用语义切点轻推拉；全屏AI素材段不叠加人物运镜。"
+    },
+    "soundEffectAudibility": {
+      "status": "machine-passed-user-pending",
+      "cueTypes": [
+        "soft-card-pop",
+        "list-tick",
+        "line-connect",
+        "number-settle",
+        "media-whoosh",
+        "evidence-paper",
+        "chapter-sweep",
+        "cta-confirm"
+      ],
+      "userAudibilityConfirmed": false,
+      "evidence": "26个主视觉事件全部通过同一visualEventId绑定本地音效，机器同步误差上限2帧；主观听感仍待用户完整观看。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260804-missing-recording-fallback",
+      "decision": "applied-and-machine-verified",
+      "evidence": "未提供的三版方案和数据表录屏分别降级为情景示意与虚构字段动画，没有冒充真实客户后台。"
+    },
+    {
+      "id": "upgrade-20260804-event-bound-sfx",
+      "decision": "applied-and-machine-verified",
+      "evidence": "26个主视觉事件实现100%本地音效绑定，覆盖8种语义角色。"
+    },
+    {
+      "id": "upgrade-20260804-face-safe-process",
+      "decision": "applied-and-machine-verified",
+      "evidence": "风险帧发现横向流程卡遮脸后，正式渲染前改成左侧二乘二透明流程板并重新完成预览与风险帧检查。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "confirmedAt": null,
+    "notes": "用户明确要求使用现有素材尽快剪出正式片；制作侧已完成代表性预览、正式渲染和机器终检，等待用户完整观看。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "releasePackaging": "notes/2026-08-04-AI效率不等于完整AI生产力-用户最终确认稿-v2.md",
+    "copyReview": "notes/2026-08-04-AI效率不等于完整AI生产力-用户最终确认稿-v2.copy-review.json",
+    "nextDecision": "先由用户完整观看成片并确认画面和音效；确认后再发布并回填真实数据。"
+  }
+}

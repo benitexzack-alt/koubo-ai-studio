@@ -36,6 +36,7 @@ export type V72SfxCue = {
   id: string;
   time: number;
   file: string;
+  src?: string;
   volume: number;
 };
 
@@ -360,7 +361,7 @@ const V72SemanticSfx: React.FC<{cues: V72SfxCue[]; fps: number}> = ({
     {cues.map((cue) => (
       <Sequence key={cue.id} from={Math.round(cue.time * fps)}>
         <Audio
-          src={staticFile(`audio/koubo-sfx-v2/${cue.file}`)}
+          src={staticFile(cue.src ?? `audio/koubo-sfx-v2/${cue.file}`)}
           volume={cue.volume}
         />
       </Sequence>
