@@ -1329,6 +1329,16 @@ const doctor = async () =>
       ['tools/validate-visual-plan.mjs', job.inputs.visualPlan],
       {label: '视觉方案校验', runDuringDryRun: true},
     );
+    if (job.experiment?.id === 'v73-media-sfx-speed') {
+      runCommand(
+        process.execPath,
+        [
+          'tools/validate-v73-production-contract.mjs',
+          relativeToProject(jobPath),
+        ],
+        {label: 'V7.3生产合同校验', runDuringDryRun: true},
+      );
+    }
     const riskFrames = riskFrameEntries();
     if (riskFrames.length < baseline.formalQa.keyframeReview.minimumCount) {
       fail(

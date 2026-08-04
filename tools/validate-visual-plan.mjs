@@ -16,8 +16,17 @@ const warnings = [];
 const isNonEmptyString = (value) => typeof value === 'string' && value.trim().length > 0;
 const isNumber = (value) => typeof value === 'number' && Number.isFinite(value);
 
-if (plan.schemaVersion !== 2) {
-  errors.push('visual-plan 必须使用 schemaVersion=2。');
+if (![2, 3].includes(plan.schemaVersion)) {
+  errors.push('visual-plan 必须使用 schemaVersion=2 或 3。');
+}
+
+if (plan.schemaVersion === 3) {
+  if (plan.experiment?.id !== 'v73-media-sfx-speed') {
+    errors.push('schemaVersion=3 必须声明 experiment.id=v73-media-sfx-speed。');
+  }
+  if (plan.experiment?.status !== 'ready-for-next-video-validation') {
+    errors.push('V7.3 实验状态必须为 ready-for-next-video-validation。');
+  }
 }
 
 for (const key of ['videoId', 'videoTitle', 'sourceVideo', 'baselineId']) {
@@ -74,6 +83,98 @@ for (const [index, layer] of (layers ?? []).entries()) {
 
   if (!layer.checks || typeof layer.checks.needsFrameReview !== 'boolean') {
     errors.push(`${label} 必须声明 checks.needsFrameReview。`);
+  }
+
+  if (plan.schemaVersion === 3) {
+    const assetClasses = new Set([
+      'speaker',
+      'real-evidence',
+      'generated-video',
+      'remotion-information',
+    ]);
+    const producers = new Set(['existing', 'user', 'codex-remotion']);
+    const soundPolicies = new Set(['required', 'optional', 'none']);
+    const silentLayerKinds = new Set([
+      'speaker-base',
+      'camera-only',
+      'subtitle-only',
+      'ambient-overlay',
+    ]);
+
+    if (!assetClasses.has(layer.assetDecision?.class)) {
+      errors.push(`${label} 缺少有效的 assetDecision.class。`);
+    }
+    if (!producers.has(layer.assetDecision?.producer)) {
+      errors.push(`${label} 缺少有效的 assetDecision.producer。`);
+    }
+    if (!isNonEmptyString(layer.assetDecision?.fallback)) {
+      errors.push(`${label} 缺少 assetDecision.fallback。`);
+    }
+    if (
+      layer.assetDecision?.class === 'generated-video' &&
+      layer.assetDecision?.producer !== 'user'
+    ) {
+      errors.push(`${label} 的 generated-video 必须由 user 负责制作。`);
+    }
+    if (
+      layer.assetDecision?.class === 'remotion-information' &&
+      layer.assetDecision?.producer !== 'codex-remotion'
+    ) {
+      errors.push(`${label} 的 remotion-information 必须由 codex-remotion 负责。`);
+    }
+    if (
+      layer.assetDecision?.class === 'generated-video' &&
+      !isNonEmptyString(layer.assetDecision?.requestId)
+    ) {
+      errors.push(`${label} 的 generated-video 必须绑定用户素材执行单 requestId。`);
+    }
+
+    if (!isNonEmptyString(layer.visualEvent?.id)) {
+      errors.push(`${label} 缺少 visualEvent.id。`);
+    }
+    if (
+      !isNumber(layer.visualEvent?.enterAt) ||
+      layer.visualEvent.enterAt < layer.start ||
+      layer.visualEvent.enterAt > layer.end
+    ) {
+      errors.push(`${label} 的 visualEvent.enterAt 必须落在图层时间范围内。`);
+    }
+    if (typeof layer.visualEvent?.primary !== 'boolean') {
+      errors.push(`${label} 必须声明 visualEvent.primary。`);
+    }
+    if (
+      !silentLayerKinds.has(layer.kind) &&
+      layer.visualEvent?.primary !== true
+    ) {
+      errors.push(
+        `${label} 是可见信息或媒体单元，visualEvent.primary 必须为 true。`,
+      );
+    }
+
+    if (!soundPolicies.has(layer.sound?.policy)) {
+      errors.push(`${label} 缺少有效的 sound.policy。`);
+    }
+    if (layer.visualEvent?.primary && layer.sound?.policy !== 'required') {
+      errors.push(`${label} 是主视觉单元，sound.policy 必须为 required。`);
+    }
+    if (layer.sound?.policy === 'required') {
+      if (!isNonEmptyString(layer.sound?.role)) {
+        errors.push(`${label} 的必需音效缺少 sound.role。`);
+      }
+      if (!isNonEmptyString(layer.sound?.cueId)) {
+        errors.push(`${label} 的必需音效缺少 sound.cueId。`);
+      }
+      if (!Number.isInteger(layer.sound?.offsetFrames)) {
+        errors.push(`${label} 的 sound.offsetFrames 必须是整数。`);
+      }
+      if (
+        !Number.isInteger(layer.sound?.maxSyncErrorFrames) ||
+        layer.sound.maxSyncErrorFrames < 0 ||
+        layer.sound.maxSyncErrorFrames > 2
+      ) {
+        errors.push(`${label} 的 sound.maxSyncErrorFrames 必须是 0–2 的整数。`);
+      }
+    }
   }
 
   if (layer.checks?.needsFrameReview) {

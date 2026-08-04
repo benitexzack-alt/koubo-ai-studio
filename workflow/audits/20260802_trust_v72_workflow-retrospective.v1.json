@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "auditId": "20260802-trust-v72-workflow-retrospective-v1",
+  "createdAt": "2026-08-04",
+  "videoId": "TRUST_20260802_V72",
+  "scope": "仅复盘素材路由、生产计时和主视觉音效覆盖，不否定用户已认可的正式成片质量。",
+  "evidence": {
+    "visualPlan": "workflow/visual-plans/20260802_trust_v72.visual-plan.v1.json",
+    "component": "remotion/src/TrustV72Talk16x9.tsx",
+    "assetLedger": "workflow/preproduction/20260802_trust_assets_v1.json",
+    "release": "workflow/releases/20260802_trust_v72_v1.json",
+    "qaReport": "workflow/qa/20260802_trust_v72.qa-report.v1.json",
+    "productionJobSearch": "workflow/jobs中无20260802或TRUST任务",
+    "timingReportSearch": "work/production-runs中无本条运行报告"
+  },
+  "productionTiming": {
+    "jobManifestPresent": false,
+    "timingReportPresent": false,
+    "exactStageDurationsRecoverable": false,
+    "userObservedRangeHours": [
+      2,
+      3.5
+    ],
+    "rootCause": "本条没有通过tools/run-v72-production.mjs的production job路由生产，已有缓存和计时机制被绕过。",
+    "observedExtraStages": [
+      "4个Remotion全屏动画资产单独渲染",
+      "A03文案修正后重渲",
+      "30秒开场预览",
+      "5分52秒540P全长预览",
+      "风险帧抽查",
+      "NBER证据卡修正",
+      "1080P正式成片",
+      "手工机器质检"
+    ]
+  },
+  "assetRouting": {
+    "preparedRemotionAssets": 4,
+    "appropriateAsRemotionInformation": [
+      {
+        "id": "A03",
+        "topic": "做出来、被看见、愿意使用三个大门"
+      },
+      {
+        "id": "A04",
+        "topic": "Build in Public可核验时间线"
+      }
+    ],
+    "shouldDefaultToUserGeneratedVideoNextTime": [
+      {
+        "id": "A01",
+        "topic": "实体店用AI批量做内容但没有真实反馈",
+        "reason": "需要店铺、人物行为和真实反馈氛围，信息面板不能完整替代叙事镜头。"
+      },
+      {
+        "id": "A02",
+        "topic": "OPC产品演示正常但真实采用很少",
+        "reason": "需要真实使用场景、人机交互和低采用的行为反差，更适合用户生成叙事视频。"
+      }
+    ],
+    "nextRule": "人物、行动、场景、空间和氛围类画面默认由用户生成或提供；Remotion只默认承担数据、列表、流程、时间线、证据旁注和标题。"
+  },
+  "sfxCoverage": {
+    "visualLayerCount": 25,
+    "embeddedCueCount": 20,
+    "independentCueSheetPresent": false,
+    "localDistinctSfxFiles": 8,
+    "auditMethod": "仅用图层start和最近音效time进行±0.25秒代理比对；旧方案没有真实卡片enterAt，因此这是保守的缺口定位，不是新合同的精确帧级验收。",
+    "proxyCoveredLayerStarts": 16,
+    "proxyCoveragePercent": 64,
+    "uncoveredLayerStarts": [
+      "platform-integration",
+      "creation-cost-path",
+      "creation-boundary",
+      "copy-spread",
+      "middle-layer",
+      "trust-answer",
+      "trust-distribution",
+      "personal-history",
+      "presence-boundary"
+    ],
+    "rootCauses": [
+      "视觉方案没有主视觉单元enterAt和稳定visualEventId",
+      "音效点内嵌在TSX组件中，没有与视觉方案双向绑定",
+      "旧门禁只检查音效文件存在，不检查逐卡覆盖和同步帧差",
+      "8个独立音色可以完成精准触发，但不足以在高密度主卡下保持听感变化"
+    ]
+  },
+  "v73Replay": {
+    "newContractWouldBlock": true,
+    "blockingReasons": [
+      "无V7.3 production job和timingReport路径",
+      "25个视觉图层无assetDecision素材责任声明",
+      "无visualEvent.id和enterAt",
+      "无独立sfx cue sheet和visualEventId绑定",
+      "无法证明主视觉音效覆盖100%且同步偏差不超过2帧",
+      "A01和A02的叙事场景被交给Remotion资产生成"
+    ],
+    "conclusion": "新规则能在渲染前拦住本次素材路由、提速执行和音效覆盖缺口。"
+  },
+  "nextValidation": {
+    "experimentId": "v73-media-sfx-speed",
+    "status": "ready-for-next-video-validation",
+    "promotionRule": "下一条只记为首次真实验证；连续三条通过机器门禁、用户完整观看认可且无质量回退后，才讨论替换V7.2锁定母版。"
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 3,
+  "experiment": {
+    "id": "v73-media-sfx-speed",
+    "status": "ready-for-next-video-validation"
+  },
+  "videoId": "",
+  "videoTitle": "",
+  "sourceVideo": "",
+  "baselineId": "koubo-formal-16x9-v1",
+  "styleReferenceIds": [],
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "style": {
+    "brandLine": "超哥AI创业记",
+    "palette": {
+      "ink": "#F7FAFF",
+      "cyan": "#19D3FF",
+      "yellow": "#FFD23F",
+      "green": "#5CFF8F",
+      "orange": "#FF7A45",
+      "purple": "#B57CFF"
+    },
+    "motion": {
+      "enter": "spring",
+      "exit": "fade",
+      "avoidLinearEasing": true
+    }
+  },
+  "safeAreas": {
+    "subtitle": {
+      "x": 560,
+      "y": 815,
+      "width": 800,
+      "height": 170
+    },
+    "face": null,
+    "hands": null
+  },
+  "previewCoverage": [
+    "hook",
+    "complex-overlay",
+    "full-screen-asset",
+    "cta",
+    "all-new-sfx-roles"
+  ],
+  "layers": [
+    {
+      "id": "layer-001",
+      "start": 0,
+      "end": 5,
+      "spokenLine": "",
+      "purpose": "hook",
+      "kind": "semantic-motion-card",
+      "variant": "statement",
+      "titleOwner": true,
+      "overlapGroup": "hook",
+      "zone": "top-left",
+      "title": "",
+      "detail": "",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": ""
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "visual-event-001",
+        "enterAt": 0.2,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "soft-card-pop",
+        "cueId": "sfx-001",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "accent": "#FFD23F",
+        "maxWidth": 590,
+        "fontScale": 1,
+        "exportTransparent": false
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 2.5
+      }
+    }
+  ],
+  "deferred": []
+}

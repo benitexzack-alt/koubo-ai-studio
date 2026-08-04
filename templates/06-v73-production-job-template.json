@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "templateInstructions": "这是V7.3下一条验证任务模板。复制后填完所有尖括号和数值；任何动画预览前必须先建立本任务。",
+  "jobId": "<YYYYMMDD-video-id-v73>",
+  "videoId": "<VIDEO_ID>",
+  "title": "<口播标题>",
+  "purpose": "按V7.3素材协作、逐卡音效和保质提速合同生成下一条验证片",
+  "productionState": "blocked",
+  "experiment": {
+    "id": "v73-media-sfx-speed",
+    "status": "ready-for-next-video-validation",
+    "userMediaRequest": "edit/<date>/用户素材执行单_<video-id>_v1.md",
+    "fullLengthLowResPreview": {
+      "enabled": false,
+      "reason": null
+    },
+    "previewAuditionRoles": [
+      "soft-card-pop",
+      "list-tick",
+      "line-connect",
+      "number-settle",
+      "media-whoosh",
+      "evidence-paper",
+      "chapter-sweep",
+      "cta-confirm"
+    ]
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "source/<date>/<source-file>",
+    "renderProxy": "remotion/public/media/<video-id>/main-30fps.mp4",
+    "visualPlan": "edit/<date>/visual-plan_<video-id>_v1.json",
+    "bilingualCaptions": "remotion/public/data/<video-id>.bilingual.v1.json",
+    "sfxCueSheet": "edit/<date>/sfx-cue-sheet_<video-id>_v1.json",
+    "fingerprintPaths": [
+      "source/<date>/<source-file>",
+      "remotion/src/Root.tsx",
+      "remotion/src/<CompositionFile>.tsx",
+      "remotion/src/components",
+      "remotion/public/data/<video-id>.bilingual.v1.json",
+      "remotion/public/media/<video-id>",
+      "remotion/public/audio/koubo-sfx-v2",
+      "remotion/public/audio/koubo-sfx-v3-candidates",
+      "assets/sfx/koubo-sfx-v3-candidates/manifest.json",
+      "edit/<date>/visual-plan_<video-id>_v1.json",
+      "edit/<date>/sfx-cue-sheet_<video-id>_v1.json",
+      "edit/<date>/用户素材执行单_<video-id>_v1.md"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/index.ts",
+    "compositionWithSfx": "<CompositionId-WithSfx>",
+    "compositionWithoutSfx": "<CompositionId-NoSfx>",
+    "durationSeconds": 0,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 3
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": true,
+    "scale": 0.5,
+    "crf": 23,
+    "ranges": [
+      {
+        "id": "hook",
+        "startSeconds": 0,
+        "endSeconds": 8
+      },
+      {
+        "id": "complex-overlay-all-new-sfx-roles",
+        "startSeconds": 0,
+        "endSeconds": 0
+      },
+      {
+        "id": "generated-video-and-return",
+        "startSeconds": 0,
+        "endSeconds": 0
+      },
+      {
+        "id": "cta",
+        "startSeconds": 0,
+        "endSeconds": 0
+      }
+    ],
+    "output": "work/production-runs/<job-id>/preview-with-sfx.mp4",
+    "renderWithoutSfxComparison": true
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt",
+    "fullResolution": true,
+    "outputDirectory": "work/production-runs/<job-id>/risk-frames"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": true,
+    "composition": "with-sfx",
+    "crf": 18,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "rawOutput": "work/production-runs/<job-id>/formal-raw.mp4",
+    "finalOutput": "outputs/<title>_16x9_V73验证_有音效_正式成片_v1.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -1.7
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "directory": "work/production-cache",
+    "reuseOnlyOnExactFingerprint": true
+  },
+  "reports": {
+    "runManifest": "work/production-runs/<job-id>/run-manifest.json",
+    "timingReport": "work/production-runs/<job-id>/timing-report.json",
+    "regressionReport": "work/production-runs/<job-id>/regression-report.json"
+  }
+}
