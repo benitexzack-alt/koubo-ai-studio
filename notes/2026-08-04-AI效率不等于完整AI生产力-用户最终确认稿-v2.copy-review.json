@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "task_id": "20260804-ai-productivity-conversion-v2",
+  "status": "passed",
+  "reviewed_at": "2026-08-04T15:50:15+07:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-08-04-AI效率不等于完整AI生产力-用户最终确认稿-v2.md",
+    "sha256": "5618c1dbefd62ab938b75e46fa461d05de25a1e9df2dd677a6c73300f29b8bd0"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "20971567ccbf4c96040661d92a920796cccfcf145c0d795ad8049666c86508d8",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "开头连续使用‘人人、绝大多数人、所有人、几乎人人’建立反差。",
+        "risk_level": "medium",
+        "reason": "口语冲击力强，但容易被误读为已有调查统计；如果画面再补虚构比例，会超过现有证据。",
+        "candidates": {
+          "conservative": "很多人用AI以后做事变快了，可订单、利润和交付没有同步变化。",
+          "direct": "个人效率涨了，经营结果没有一起涨。",
+          "vivid": "屏幕上的方案十分钟出了三版，月底的经营表却没有同步变好。"
+        },
+        "fact_difference": "三个候选都把范围收紧为一般观察，不新增调查比例、客户案例和经营结果。",
+        "recommendation": "用户已经按现版录制，不改音轨；后期只做观点型反差标题，不制作‘绝大多数人’统计图。"
+      },
+      {
+        "original": "ChatGPT时间、美国官方生产率、5179名客服、14%和十年宏观估算连续出现。",
+        "risk_level": "high",
+        "reason": "证据完整但研究口径密集，纯口述容易变成论文播报，也容易把岗位效率和宏观估算混为一谈。",
+        "candidates": {
+          "conservative": "具体岗位可以明显提效，宏观转化却仍然温和。",
+          "direct": "岗位快，社会慢，这才是反差。",
+          "vivid": "一张工位上的效率表快速上升，整个商业系统的曲线却只缓慢移动。"
+        },
+        "fact_difference": "简化表达保留研究方向，但删除样本和数字会降低证据精度。",
+        "recommendation": "保留用户原话；用两张不同来源的证据卡分开呈现，明确‘特定客服场景’和‘单项宏观模型’。"
+      },
+      {
+        "original": "流程、需求、新价值、收益分享四道门连续讲解，结尾再重复四问。",
+        "risk_level": "high",
+        "reason": "四组抽象关系容易互相挤压，观众可能记得‘四道门’，却记不住每一道怎样检查。",
+        "candidates": {
+          "conservative": "流程有没有缩短、需求是不是真的、有没有新价值、收益怎么分享。",
+          "direct": "别只看省时间，要看流程、需求、收入和分配。",
+          "vivid": "四扇门依次打开，只开第一扇，效率还没有变成生产力。"
+        },
+        "fact_difference": "三个候选均保留四道转化门，不新增企业效果和收益保证。",
+        "recommendation": "正文不改；使用持续存在的四节点导航，每一章只高亮当前门，结尾再把四节点变成可收藏自检表。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "用户把第一版的‘很多人、不一定、可能’改成更强的口语观察；后期事实锁将这些句子限定为个人观察，不补统计数字。",
+      "用户把‘供给增加可能带来价格压力’强化为‘价格持续内卷下跌’；画面仍只表达供给与需求需要分别验证，不制作行业价格结论。",
+      "用户把‘收益怎样分享’扩展为企业、员工、客户三方核算；不外推为AI导致裁员或收入变化。"
+    ],
+    "pending_user_confirmations": [
+      "原片到位后核对实际录音是否与当前确认稿逐句一致；存在现场改口时以真实音轨为准。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
