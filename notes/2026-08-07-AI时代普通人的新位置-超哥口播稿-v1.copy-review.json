@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "task_id": "20260807-ai-cognitive-translator-v1",
+  "status": "passed",
+  "reviewed_at": "2026-08-07T01:12:55+08:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-08-07-AI时代普通人的新位置-超哥口播稿-v1.md",
+    "sha256": "5b59839eb0bc178a2dbd721ad6b682912cdc39858352c56f1ee87a5c3bba8504"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "20971567ccbf4c96040661d92a920796cccfcf145c0d795ad8049666c86508d8",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "如果 AI 真的是第四次工业革命，那普通人最该问的，可能不是哪家公司会赢，而是这一次我们能不能不只当一个消费者？",
+        "risk_level": "medium",
+        "reason": "钩子清楚，但第四次工业革命容易把观众带进宏大叙事，必须迅速回到普通人今天能碰到的入口。",
+        "candidates": {
+          "conservative": "很多人都在说第四次工业革命，可普通人今天到底能做什么？",
+          "direct": "AI 这次变化，普通人能不能不只当消费者？",
+          "vivid": "大公司在造模型，普通人难道只能负责点开聊天框？"
+        },
+        "fact_difference": "三个候选均不改变第四次工业革命不只等于 AI 的事实边界；生动版会新增对大公司角色的概括。",
+        "recommendation": "保留现版。正文紧接严格定义和普通人入口，既有张力，也没有把 AI 单独等同于整场工业革命。"
+      },
+      {
+        "original": "你只要比过去的自己更会借 AI 一点点，站在你背后的，就不只是一个聊天工具，而是人类已经积累下来的知识、案例和方法。",
+        "risk_level": "high",
+        "reason": "画面感强，也最接近用户原始表达，但若没有限制句，容易被理解为调用 AI 就自动拥有人类知识和专业能力。",
+        "candidates": {
+          "conservative": "AI 让普通人更容易接触人类已经积累的知识、案例和方法。",
+          "direct": "你借到的是知识入口，不是自动到账的能力。",
+          "vivid": "像站进一座巨大的图书馆，但书架不会替你走路。"
+        },
+        "fact_difference": "保守版最准确；直接版强调能力边界；生动版是比喻，不新增事实。",
+        "recommendation": "保留现版，并保留后一句‘有机会调用，不是自动变成能力’，两句必须连在一起拍。"
+      },
+      {
+        "original": "到了这里，钱才有可能出现。如果未来有人愿意付费，他买的通常不是你会不会问 AI，而是你替他完成了筛选、理解、翻译、适配和试错。",
+        "risk_level": "high",
+        "reason": "这是全文商业闭环的关键，但主题涉及赚钱，若失去条件句会变成收益暗示或付费保证。",
+        "candidates": {
+          "conservative": "只有形成真实使用和付费证据，才知道这次翻译是否有商业价值。",
+          "direct": "会问 AI 不值钱，替具体的人减少理解和试错成本才可能值钱。",
+          "vivid": "客户不会为聊天框买单，他只会为自己少绕的那段路买单。"
+        },
+        "fact_difference": "三个候选都不承诺收入；生动版把可能性说得更像普遍规律，风险略高。",
+        "recommendation": "保留现版和紧随其后的‘不代表做了就一定有人买’，不可删除真实使用、继续使用和付费三项验证。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [
+      "补入世界经济论坛对第四次工业革命的公开定义边界，明确其不只等于 AI。",
+      "补入 NBER 客服研究，支持 AI 在特定场景中对经验较少员工帮助更明显，并可能传播熟练者做法。",
+      "补入本轮五条本地视频已经完整转写和结构拆解的本人已验证事实。"
+    ],
+    "removed_facts": [
+      "删除前几次工业革命中普通人没有获益的绝对历史结论。",
+      "删除所谓高圈层赚钱方式可以直接复制的暗示。",
+      "删除任何具体 AI 赚钱方向、收益数字和成功案例外推。"
+    ],
+    "wording_strength_changes": [
+      "把整个文明站在背后收紧为有机会调用人类已有知识，并紧接能力不自动到账的边界。",
+      "把 AI 让普通人获益收紧为降低一部分知识获取、解释和初步加工门槛。",
+      "把通过认知差赚钱收紧为先完成筛选、翻译、适配和验证，且真实使用与付费仍待验证。"
+    ],
+    "pending_user_confirmations": [
+      "用户需确认‘认知翻译者’是否作为本条唯一角色命名。",
+      "用户需确认约五分钟的正文长度和四步结构是否符合今天的拍摄节奏。",
+      "用户需用本人朗读确认‘整个文明站在背后’附近的停顿和力度。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 9,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
+
