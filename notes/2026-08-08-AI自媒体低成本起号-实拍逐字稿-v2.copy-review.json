@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "task_id": "20260808-ai-selfmedia-lowcost-recorded-v2",
+  "status": "passed",
+  "reviewed_at": "2026-08-08T19:46:17+08:00",
+  "draft": {
+    "path": "<project-root>/edit/20260808_ai_selfmedia_lowcost/transcripts/AI_SELFMEDIA_20260808_talk01.cleaned.v1.txt",
+    "sha256": "56a26930c54cb2cbeb300df757394b92f7e7d123adf897cf66a56a269b37df22"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "20971567ccbf4c96040661d92a920796cccfcf145c0d795ad8049666c86508d8",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "YouTube 的 1000 亿美元、600 亿美元与抖音多项创作者入口连续出现。",
+        "risk_level": "high",
+        "reason": "平台总收入、累计支付和普通账号可获得的收益不是同一口径；入口名称密集时，观众可能误解为人人可开通。",
+        "candidates": {
+          "conservative": "平台存在面向符合条件创作者的激励和商业机制，具体资格与结果因账号而异。",
+          "direct": "有入口，不等于开通就有收入。",
+          "vivid": "入口是门，不是自动到账的按钮。"
+        },
+        "fact_difference": "三个候选只收紧解释强度，不改变官方数字，不新增平台规则或收益结论。",
+        "recommendation": "实拍原声不改；1000 亿美元与 600 亿美元分开呈现，抖音入口画面持续显示资格与结果边界。"
+      },
+      {
+        "original": "AI背后站着的是一整套文明级的认知能力。",
+        "risk_level": "medium",
+        "reason": "这是观点性大词，单独停留容易显得抽象，也可能让观众高估 AI 对真实验证和结果的替代能力。",
+        "candidates": {
+          "conservative": "AI汇集了大量知识，但能不能变成结果，仍取决于你怎样使用和验证。",
+          "direct": "AI能帮你处理知识，不能替你完成真实验证。",
+          "vivid": "它能把资料和方法递到你手里，最后那一步还得你自己走。"
+        },
+        "fact_difference": "三个候选都只解释能力边界，不新增工具效果、案例或结果。",
+        "recommendation": "实拍原声不改；画面只展示选题、脚本、封面、发布、复盘的具体任务流，紧接‘降低试错成本’完成边界收束。"
+      },
+      {
+        "original": "从‘你先成为一个被看见的人’转入 7 月 8 日至 8 月 8 日的个人实践结尾。",
+        "risk_level": "medium",
+        "reason": "主结论已经完成后又进入约 46 秒自述，存在结尾延长风险；其中粉丝和本地创业者属于本人观察，不能配成量化成果。",
+        "candidates": {
+          "conservative": "这一个月，我一直在用自己的账号验证 AI 到底能给内容创作带来什么。",
+          "direct": "我已经用一个月开始验证了，现在轮到你先发出第一条。",
+          "vivid": "从 7 月 8 日到今天，我没有等答案，我先把自己放进了这场实验。"
+        },
+        "fact_difference": "候选只压缩本人已说出的时间与实践，不新增粉丝数、客户、收入或变现结果。",
+        "recommendation": "按用户要求完整保留实拍原声；用个人时间线和‘个人实践记录’提升信息变化，禁止添加量化成果画面。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [
+      "实拍新增本人从 2026 年 7 月 8 日开始制作口播、至 2026 年 8 月 8 日刚好一个月的时间记录。",
+      "实拍新增本人持续验证 AI 赋能、连接到一些粉丝和兰州本地创业者的个人观察，未给出数量。"
+    ],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "实拍开头比确认稿更直接，但仍把核心问题落在平台为什么样的内容买单。"
+    ],
+    "pending_user_confirmations": []
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 10,
+    "fact_fidelity": 10
+  }
+}

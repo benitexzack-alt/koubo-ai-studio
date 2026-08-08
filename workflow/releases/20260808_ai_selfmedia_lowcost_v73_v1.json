@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260808_ai_selfmedia_lowcost_v73_v1",
+  "status": "ready-for-user-review",
+  "videoId": "AI_SELFMEDIA_20260808_talk01",
+  "baselineId": "koubo-formal-16x9-v1",
+  "intent": {
+    "topic": "普通人如何借助AI和自媒体，以较低成本开始内容试错并积累数字资产",
+    "serviceAudience": "没有团队、资本或成熟拍摄能力，但想低成本尝试自媒体的普通人",
+    "oneConclusion": "AI不会替人赚钱，但能降低内容生产和试错成本；普通人可以先用30条内容验证一个具体问题，再根据真实反馈决定下一步。",
+    "cta": "先开始发布并持续验证，让自己成为一个被看见的人。",
+    "factBoundary": "YouTube数据使用官方公开口径；抖音相关路径只说明存在内容、商业合作和交易入口，不代表人人可获得收益；实拍结尾只保留本人一个月实践中的定性收获，不补造粉丝量、收入或转化数据。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260808_ai_selfmedia_lowcost/01_口播原片/R01_AI自媒体低成本起号_口播原片.MOV",
+    "transcript": "edit/20260808_ai_selfmedia_lowcost/transcripts/AI_SELFMEDIA_20260808_talk01.cleaned.v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_SELFMEDIA_20260808_talk01.bilingual.v1.json",
+    "visualPlan": "edit/20260808_ai_selfmedia_lowcost/visual-plan_AI_SELFMEDIA_20260808_talk01_v1.json",
+    "assets": [
+      "assets/screenshots/20260808_youtube_creator_payout_100b.png",
+      "assets/screenshots/20260808_xingtu_creator_entry.png",
+      "assets/screenshots/20260808_douyin_ec_creator_path.png"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/AI时代_普通人最低成本的入场券_16x9_V73_正式成片_v1.mp4",
+    "previewOutput": "work/production-runs/20260808-ai-selfmedia-lowcost-v73/preview-with-sfx.mp4",
+    "coverPrompt": "notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md#3:4真人截图合成封面提示词",
+    "soundEffectCueSheet": "edit/20260808_ai_selfmedia_lowcost/sfx-cue-sheet_AI_SELFMEDIA_20260808_talk01_v1.json",
+    "modules": [
+      "semantic-digital-camera-v72",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "transparent-semantic-information",
+      "full-screen-real-or-ai-media",
+      "bilingual-caption",
+      "local-semantic-sfx-v2",
+      "semantic-digital-camera-v73",
+      "official-platform-evidence",
+      "recorded-personal-practice-ending",
+      "visual-event-bound-local-sfx-v3",
+      "v73-production-timing-contract"
+    ],
+    "styleReferenceIds": [
+      "v72-user-verified-20260730",
+      "v73-transparent-events-and-sfx"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式片1920x1080、30fps、H.264/AAC、384.8秒、512169415字节；整片完整解码0错误、黑帧0；响度-15.97 LUFS、真峰值-1.69 dBTP、LRA 6.30；SHA-256为5c615a6fc1c99036752bb96e956431d8d78d4a1139b920d05a8f2d29f4e2a6e8。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "verifier": "legacy-lcs",
+      "minimumScore": 0.75,
+      "evidence": "114页中英同窗字幕来自实际口播词级时间轴；贴合度最低0.75，高于0.74生产基线。严格逐字内容贴合度和覆盖度均为1.000，但其中1页停留6.09秒，因此未冒充严格逐页时长校验全通过。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "V7.3视觉方案共21个主视觉事件和21个风险抽帧点，覆盖平台闭环、YouTube官方数据、抖音相关路径、30条内容实验、三个问题、个人实践时间线和身份收口。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [1, 18, 55, 90, 188, 292, 346, 383],
+      "evidence": "正式片8个首中尾关键帧已检查，未发现黑帧、主卡裁切、文字越界、遮脸或字幕冲突；个人实践结尾和账号身份完整。"
+    },
+    "cameraMotionReview": {
+      "status": "machine-passed-user-pending",
+      "previewPoints": [1, 55, 188, 292, 346, 383],
+      "userPerceptibilityConfirmed": false,
+      "evidence": "人物段使用语义数字运镜，证据与流程画面按语义切点进入；动态自然度仍待用户完整观看确认。"
+    },
+    "soundEffectAudibility": {
+      "status": "machine-passed-user-pending",
+      "cueTypes": [
+        "soft-card-pop",
+        "list-tick",
+        "line-connect",
+        "number-settle",
+        "media-whoosh",
+        "evidence-paper",
+        "chapter-sweep",
+        "cta-confirm"
+      ],
+      "userAudibilityConfirmed": false,
+      "evidence": "21个主视觉事件通过同一visualEventId绑定21个本地音效，覆盖8种语义角色，机器同步误差上限2帧；主观听感仍待用户完整观看。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260808-recorded-script-as-source-of-truth",
+      "decision": "applied-and-machine-verified",
+      "evidence": "实际录制开头和一个月实践结尾均按真实音轨保留；确认稿只用于事实核对，没有反向覆盖实拍表达。"
+    },
+    {
+      "id": "upgrade-20260808-official-platform-evidence",
+      "decision": "applied-and-machine-verified",
+      "evidence": "YouTube累计支付口径、星图创作者入口和抖音电商创作者路径使用已归档官方页面截图；画面没有补造收益数字或平台承诺。"
+    },
+    {
+      "id": "upgrade-20260808-risk-frame-title-wrap",
+      "decision": "applied-and-machine-verified",
+      "evidence": "第一轮风险帧发现两处标题出现单字换行，正式渲染前改写标题并重新完成风险帧检查。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": false,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "confirmedAt": null,
+    "notes": "用户明确要求按已确认内容和实拍原片尽快直接剪出正式片；制作侧已完成代表性预览、风险帧检查、正式渲染和机器终检，等待用户完整观看。"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "releasePackaging": "notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+    "copyReview": "notes/2026-08-08-AI自媒体低成本起号-实拍逐字稿-v2.copy-review.json",
+    "nextDecision": "先由用户完整观看成片，重点确认音效、数字运镜和实拍新增结尾；确认后再进入发布，并按真实数据复盘。"
+  }
+}

@@ -1,0 +1,978 @@
+{
+  "schemaVersion": 3,
+  "experiment": {
+    "id": "v73-media-sfx-speed",
+    "status": "ready-for-next-video-validation"
+  },
+  "videoId": "AI_SELFMEDIA_20260808_talk01",
+  "videoTitle": "AI时代，普通人最低成本的入场券",
+  "sourceVideo": "source/20260808_ai_selfmedia_lowcost/01_口播原片/R01_AI自媒体低成本起号_口播原片.MOV",
+  "baselineId": "koubo-formal-16x9-v1",
+  "styleReferenceIds": [
+    "v72-user-verified-20260730",
+    "v73-transparent-events-and-sfx",
+    "aism-asset-preflight-20260808"
+  ],
+  "timingStatus": "word-timeline-bound-to-recorded-audio",
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "style": {
+    "brandLine": "超哥AI创业记",
+    "palette": {
+      "ink": "#F7FAFC",
+      "cyan": "#62D8FF",
+      "yellow": "#FFBE55",
+      "green": "#67D8A0",
+      "red": "#FF7068",
+      "graphite": "#090D12"
+    },
+    "motion": {
+      "enter": "spring",
+      "exit": "fade",
+      "avoidLinearEasing": true
+    }
+  },
+  "safeAreas": {
+    "subtitle": {
+      "x": 205,
+      "y": 914,
+      "width": 1510,
+      "height": 124
+    },
+    "face": {
+      "x": 930,
+      "y": 145,
+      "width": 520,
+      "height": 620
+    },
+    "hands": {
+      "x": 790,
+      "y": 510,
+      "width": 750,
+      "height": 390
+    }
+  },
+  "previewCoverage": [
+    "hook",
+    "complex-overlay",
+    "full-screen-asset",
+    "cta",
+    "all-new-sfx-roles"
+  ],
+  "deferred": [
+    {
+      "id": "user-full-playback",
+      "reason": "正式片机器质检通过后，仍需用户完整观看确认内容与音效听感。"
+    }
+  ],
+  "layers": [
+    {
+      "id": "hook-friction",
+      "start": 0.2,
+      "end": 13.5,
+      "spokenLine": "普通人误以为没团队、口才不好、不会拍、不敢出镜，所以迟迟没有开始",
+      "purpose": "hook",
+      "kind": "semantic-motion-card",
+      "variant": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-01",
+      "zone": "left-safe",
+      "title": "普通人的四个自媒体误区",
+      "detail": "普通人误以为没团队、口才不好、不会拍、不敢出镜，所以迟迟没有开始",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/semantic-motion-card/hook-friction"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v001",
+        "enterAt": 0.2,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "soft-card-pop",
+        "cueId": "aism-final-sfx-001",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 4.8
+      }
+    },
+    {
+      "id": "platform-question",
+      "start": 13.6,
+      "end": 22.35,
+      "spokenLine": "真正缺的是没看懂平台为什么样的内容买单",
+      "purpose": "mechanism",
+      "kind": "chapter-card",
+      "variant": "chapter-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-02",
+      "zone": "left-safe",
+      "title": "平台为什么愿意付钱",
+      "detail": "真正缺的是没看懂平台为什么样的内容买单",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/chapter-card/platform-question"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v002",
+        "enterAt": 13.6,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter-sweep",
+        "cueId": "aism-final-sfx-002",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 18.4
+      }
+    },
+    {
+      "id": "youtube-flywheel",
+      "start": 27.6,
+      "end": 43.3,
+      "spokenLine": "创作者、用户、商家和平台形成闭环",
+      "purpose": "mechanism",
+      "kind": "full-screen-asset",
+      "variant": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-03",
+      "zone": "full-screen",
+      "title": "YouTube平台闭环",
+      "detail": "创作者、用户、商家和平台形成闭环",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/Flywheel"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v003",
+        "enterAt": 27.6,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line-connect",
+        "cueId": "aism-final-sfx-003",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 35.5
+      }
+    },
+    {
+      "id": "youtube-100b-evidence",
+      "start": 50.9,
+      "end": 58.65,
+      "spokenLine": "YouTube过去四年支付超过1000亿美元",
+      "purpose": "evidence",
+      "kind": "full-screen-asset",
+      "variant": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-04",
+      "zone": "full-screen",
+      "title": "累计支付超1000亿美元",
+      "detail": "YouTube过去四年支付超过1000亿美元",
+      "items": [],
+      "asset": {
+        "sourceType": "official-screenshot",
+        "source": "remotion/public/screenshots/20260808_youtube_creator_payout_100b.png"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "official-text-evidence-card"
+      },
+      "visualEvent": {
+        "id": "aism-final-v004",
+        "enterAt": 50.9,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "evidence-paper",
+        "cueId": "aism-final-sfx-004",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 55.2
+      }
+    },
+    {
+      "id": "alphabet-60b-metric",
+      "start": 58.68,
+      "end": 66.45,
+      "spokenLine": "YouTube广告和订阅年收入超过600亿美元",
+      "purpose": "evidence",
+      "kind": "metric-card",
+      "variant": "metric-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-05",
+      "zone": "left-safe",
+      "title": "Alphabet 2025财报口径",
+      "detail": "YouTube广告和订阅年收入超过600亿美元",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/metric-card/alphabet-60b-metric"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v005",
+        "enterAt": 58.68,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "number-settle",
+        "cueId": "aism-final-sfx-005",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 62.6
+      }
+    },
+    {
+      "id": "douyin-entry",
+      "start": 70.2,
+      "end": 74.55,
+      "spokenLine": "回到抖音，逻辑类似但形式不同",
+      "purpose": "transition",
+      "kind": "chapter-card",
+      "variant": "chapter-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-06",
+      "zone": "left-safe",
+      "title": "抖音的入口形式不同",
+      "detail": "回到抖音，逻辑类似但形式不同",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/chapter-card/douyin-entry"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v006",
+        "enterAt": 70.2,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter-sweep",
+        "cueId": "aism-final-sfx-006",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 72.4
+      }
+    },
+    {
+      "id": "douyin-routes",
+      "start": 74.6,
+      "end": 84,
+      "spokenLine": "列出创作者伙伴计划、星图、商品橱窗等入口",
+      "purpose": "mechanism",
+      "kind": "semantic-motion-card",
+      "variant": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-07",
+      "zone": "left-safe",
+      "title": "入口不是躺赚按钮",
+      "detail": "列出创作者伙伴计划、星图、商品橱窗等入口",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/semantic-motion-card/douyin-routes"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v007",
+        "enterAt": 74.6,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list-tick",
+        "cueId": "aism-final-sfx-007",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 79.4
+      }
+    },
+    {
+      "id": "xingtu-evidence",
+      "start": 84,
+      "end": 91,
+      "spokenLine": "巨量星图存在公开达人商业合作入口",
+      "purpose": "evidence",
+      "kind": "full-screen-asset",
+      "variant": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-08",
+      "zone": "full-screen",
+      "title": "商业合作有明确规则",
+      "detail": "巨量星图存在公开达人商业合作入口",
+      "items": [],
+      "asset": {
+        "sourceType": "official-screenshot",
+        "source": "remotion/public/screenshots/20260808_xingtu_creator_entry.png"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "official-text-evidence-card"
+      },
+      "visualEvent": {
+        "id": "aism-final-v008",
+        "enterAt": 84,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media-whoosh",
+        "cueId": "aism-final-sfx-008",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 87.4
+      }
+    },
+    {
+      "id": "douyin-ec-evidence",
+      "start": 91,
+      "end": 98.2,
+      "spokenLine": "抖音电商存在公开达人交易路径",
+      "purpose": "evidence",
+      "kind": "full-screen-asset",
+      "variant": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-09",
+      "zone": "full-screen",
+      "title": "抖音电商官方入口",
+      "detail": "抖音电商存在公开达人交易路径",
+      "items": [],
+      "asset": {
+        "sourceType": "official-screenshot",
+        "source": "remotion/public/screenshots/20260808_douyin_ec_creator_path.png"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "official-text-evidence-card"
+      },
+      "visualEvent": {
+        "id": "aism-final-v009",
+        "enterAt": 91,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media-whoosh",
+        "cueId": "aism-final-sfx-009",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 94.5
+      }
+    },
+    {
+      "id": "content-cost",
+      "start": 103.5,
+      "end": 117.1,
+      "spokenLine": "内容生产包含选题、资料、文案、拍摄、剪辑、封面和复盘",
+      "purpose": "problem",
+      "kind": "process-card",
+      "variant": "process-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-10",
+      "zone": "left-safe",
+      "title": "内容生产为什么太贵",
+      "detail": "内容生产包含选题、资料、文案、拍摄、剪辑、封面和复盘",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/process-card/content-cost"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v010",
+        "enterAt": 103.5,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line-connect",
+        "cueId": "aism-final-sfx-010",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 110.3
+      }
+    },
+    {
+      "id": "ai-workflow",
+      "start": 126.3,
+      "end": 141.7,
+      "spokenLine": "AI把文案、选题和脚本门槛压低",
+      "purpose": "solution",
+      "kind": "semantic-motion-card",
+      "variant": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-11",
+      "zone": "left-safe",
+      "title": "AI辅助内容工作流",
+      "detail": "AI把文案、选题和脚本门槛压低",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/semantic-motion-card/ai-workflow"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v011",
+        "enterAt": 126.3,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "soft-card-pop",
+        "cueId": "aism-final-sfx-011",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 134.1
+      }
+    },
+    {
+      "id": "ai-core-truth",
+      "start": 160.65,
+      "end": 167.5,
+      "spokenLine": "AI不是替你赚钱，而是降低试错成本",
+      "purpose": "core-claim",
+      "kind": "truth-card",
+      "variant": "truth-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-12",
+      "zone": "left-safe",
+      "title": "AI降低的是试错成本",
+      "detail": "AI不是替你赚钱，而是降低试错成本",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/truth-card/ai-core-truth"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v012",
+        "enterAt": 160.65,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter-sweep",
+        "cueId": "aism-final-sfx-012",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 164.1
+      }
+    },
+    {
+      "id": "thirty-posts",
+      "start": 185.1,
+      "end": 194.75,
+      "spokenLine": "先用AI跑30条内容的小闭环",
+      "purpose": "deliverable",
+      "kind": "metric-card",
+      "variant": "metric-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-13",
+      "zone": "left-safe",
+      "title": "30条内容实验",
+      "detail": "先用AI跑30条内容的小闭环",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/metric-card/thirty-posts"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v013",
+        "enterAt": 185.1,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "number-settle",
+        "cueId": "aism-final-sfx-013",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 190.1
+      }
+    },
+    {
+      "id": "step-four-feedback",
+      "start": 228.1,
+      "end": 245.35,
+      "spokenLine": "看完、收藏、评论用得上、私信问下一步",
+      "purpose": "deliverable",
+      "kind": "semantic-motion-card",
+      "variant": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-14",
+      "zone": "left-safe",
+      "title": "四项真实反馈",
+      "detail": "看完、收藏、评论用得上、私信问下一步",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/semantic-motion-card/step-four-feedback"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v014",
+        "enterAt": 228.1,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list-tick",
+        "cueId": "aism-final-sfx-014",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 236.5
+      }
+    },
+    {
+      "id": "effort-vs-retention",
+      "start": 245.4,
+      "end": 256.55,
+      "spokenLine": "平台奖励用户愿意停留的内容，不是努力本身",
+      "purpose": "mechanism",
+      "kind": "truth-card",
+      "variant": "truth-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-15",
+      "zone": "left-safe",
+      "title": "努力不等于用户停留",
+      "detail": "平台奖励用户愿意停留的内容，不是努力本身",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/truth-card/effort-vs-retention"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v015",
+        "enterAt": 245.4,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter-sweep",
+        "cueId": "aism-final-sfx-015",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 250.8
+      }
+    },
+    {
+      "id": "digital-assets",
+      "start": 256.6,
+      "end": 267.35,
+      "spokenLine": "持续发布会积累公开表达、市场反馈和判断材料",
+      "purpose": "value",
+      "kind": "semantic-motion-card",
+      "variant": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-16",
+      "zone": "left-safe",
+      "title": "数字资产如何形成",
+      "detail": "持续发布会积累公开表达、市场反馈和判断材料",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/semantic-motion-card/digital-assets"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v016",
+        "enterAt": 256.6,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "soft-card-pop",
+        "cueId": "aism-final-sfx-016",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 261.9
+      }
+    },
+    {
+      "id": "three-questions",
+      "start": 281.25,
+      "end": 308,
+      "spokenLine": "先问能否讲清问题、连续发布30条、形成可判断的数字资产",
+      "purpose": "deliverable",
+      "kind": "semantic-motion-card",
+      "variant": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-17",
+      "zone": "left-safe",
+      "title": "普通人的三个自检问题",
+      "detail": "先问能否讲清问题、连续发布30条、形成可判断的数字资产",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/semantic-motion-card/three-questions"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v017",
+        "enterAt": 281.25,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list-tick",
+        "cueId": "aism-final-sfx-017",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 294.6
+      }
+    },
+    {
+      "id": "no-guarantees",
+      "start": 308.1,
+      "end": 331.8,
+      "spokenLine": "不保证变现和流量，但值得低成本测试",
+      "purpose": "boundary",
+      "kind": "semantic-motion-card",
+      "variant": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-18",
+      "zone": "left-safe",
+      "title": "低成本路径的结果边界",
+      "detail": "不保证变现和流量，但值得低成本测试",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/semantic-motion-card/no-guarantees"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v018",
+        "enterAt": 308.1,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "evidence-paper",
+        "cueId": "aism-final-sfx-018",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 320.1
+      }
+    },
+    {
+      "id": "personal-timeline",
+      "start": 338.1,
+      "end": 355.1,
+      "spokenLine": "本人从7月8日至8月8日持续验证AI内容实践",
+      "purpose": "personal-record",
+      "kind": "semantic-motion-card",
+      "variant": "semantic-motion-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-19",
+      "zone": "left-safe",
+      "title": "一个月个人实践记录",
+      "detail": "本人从7月8日至8月8日持续验证AI内容实践",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/semantic-motion-card/personal-timeline"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v019",
+        "enterAt": 338.1,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line-connect",
+        "cueId": "aism-final-sfx-019",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 346.6
+      }
+    },
+    {
+      "id": "start-now",
+      "start": 374.1,
+      "end": 381.4,
+      "spokenLine": "作为普通人，第一步一定要开始",
+      "purpose": "cta",
+      "kind": "chapter-card",
+      "variant": "chapter-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-20",
+      "zone": "left-safe",
+      "title": "第一步一定要开始",
+      "detail": "作为普通人，第一步一定要开始",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/chapter-card/start-now"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v020",
+        "enterAt": 374.1,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "cta-confirm",
+        "cueId": "aism-final-sfx-020",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 377.8
+      }
+    },
+    {
+      "id": "identity-close",
+      "start": 381.45,
+      "end": 384.733333,
+      "spokenLine": "我是超哥，我在兰州AI创业",
+      "purpose": "identity",
+      "kind": "chapter-card",
+      "variant": "chapter-card",
+      "titleOwner": true,
+      "overlapGroup": "aism-final-21",
+      "zone": "left-safe",
+      "title": "超哥在兰州AI创业",
+      "detail": "我是超哥，我在兰州AI创业",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaV73/chapter-card/identity-close"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-final-v021",
+        "enterAt": 381.45,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "soft-card-pop",
+        "cueId": "aism-final-sfx-021",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 383
+      }
+    }
+  ]
+}

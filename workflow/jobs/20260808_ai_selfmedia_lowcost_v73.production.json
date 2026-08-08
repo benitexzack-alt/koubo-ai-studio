@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20260808-ai-selfmedia-lowcost-v73",
+  "videoId": "AI_SELFMEDIA_20260808_talk01",
+  "title": "AI时代，普通人最低成本的入场券",
+  "purpose": "完整保留用户实拍原声，绑定本机离线词级字幕、平台官方证据、30条内容实验、个人实践结尾和V7.3语义音效，生成可完整观看确认的正式成片。",
+  "productionState": "ready-for-production",
+  "sourceStatus": "available-and-decoded",
+  "timingContext": {
+    "sourceDetectedAt": "2026-08-08T18:36:06+08:00",
+    "productionStartedAt": "2026-08-08T18:36:06+08:00",
+    "measurementBoundary": "从用户原片检出、完整解码、离线转写和实拍门禁复核开始，计至正式片机器质检完成。"
+  },
+  "experiment": {
+    "id": "v73-media-sfx-speed",
+    "status": "ready-for-next-video-validation",
+    "userMediaRequest": "notes/2026-08-08-AI自媒体低成本起号-素材与V7.3执行单-v2.md",
+    "fullLengthLowResPreview": {
+      "enabled": false,
+      "reason": null
+    },
+    "previewAuditionRoles": [
+      "soft-card-pop",
+      "list-tick",
+      "line-connect",
+      "number-settle",
+      "media-whoosh",
+      "evidence-paper",
+      "chapter-sweep",
+      "cta-confirm"
+    ]
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "source/20260808_ai_selfmedia_lowcost/01_口播原片/R01_AI自媒体低成本起号_口播原片.MOV",
+    "renderProxy": "remotion/public/media/ai-selfmedia-20260808/main-30fps.mp4",
+    "visualPlan": "edit/20260808_ai_selfmedia_lowcost/visual-plan_AI_SELFMEDIA_20260808_talk01_v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_SELFMEDIA_20260808_talk01.bilingual.v1.json",
+    "sfxCueSheet": "edit/20260808_ai_selfmedia_lowcost/sfx-cue-sheet_AI_SELFMEDIA_20260808_talk01_v1.json",
+    "fingerprintPaths": [
+      "notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+      "notes/2026-08-08-AI自媒体低成本起号-来源与事实锁-v1.md",
+      "notes/2026-08-08-AI自媒体低成本起号-实拍差异与事实补充-v2.md",
+      "notes/2026-08-08-AI自媒体低成本起号-实拍逐字稿-v2.copy-review.json",
+      "notes/2026-08-08-AI自媒体低成本起号-内容门禁卡-v2-recorded-production.json",
+      "notes/2026-08-08-AI自媒体低成本起号-门禁报告-v2-recorded-production.json",
+      "edit/20260808_ai_selfmedia_lowcost/transcripts/AI_SELFMEDIA_20260808_talk01.cleaned.v1.json",
+      "edit/20260808_ai_selfmedia_lowcost/transcripts/AI_SELFMEDIA_20260808_talk01.script-comparison.v1.json",
+      "assets/screenshots/20260808_youtube_creator_payout_100b.png",
+      "assets/screenshots/20260808_alphabet_youtube_60b.source.json",
+      "assets/screenshots/20260808_xingtu_creator_entry.png",
+      "assets/screenshots/20260808_douyin_ec_creator_path.png",
+      "remotion/src/Root.tsx",
+      "remotion/src/AISelfMediaV73Talk16x9.tsx",
+      "remotion/src/components",
+      "remotion/public/screenshots/20260808_youtube_creator_payout_100b.png",
+      "remotion/public/screenshots/20260808_xingtu_creator_entry.png",
+      "remotion/public/screenshots/20260808_douyin_ec_creator_path.png",
+      "remotion/public/data/AI_SELFMEDIA_20260808_talk01.bilingual.v1.json",
+      "remotion/public/media/ai-selfmedia-20260808/main-30fps.mp4",
+      "remotion/public/audio/koubo-sfx-v2",
+      "remotion/public/audio/koubo-sfx-v3-candidates",
+      "assets/sfx/koubo-sfx-v3-candidates/manifest.json",
+      "edit/20260808_ai_selfmedia_lowcost/visual-plan_AI_SELFMEDIA_20260808_talk01_v1.json",
+      "edit/20260808_ai_selfmedia_lowcost/sfx-cue-sheet_AI_SELFMEDIA_20260808_talk01_v1.json",
+      "notes/2026-08-08-AI自媒体低成本起号-素材与V7.3执行单-v2.md"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/index.ts",
+    "compositionWithSfx": "AISelfMedia16x9-V73-WithSfx",
+    "compositionWithoutSfx": "AISelfMedia16x9-V73-NoSfx",
+    "durationSeconds": 384.733333,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 3
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": true,
+    "scale": 0.5,
+    "crf": 23,
+    "ranges": [
+      {
+        "id": "hook-and-platform-question",
+        "startSeconds": 0,
+        "endSeconds": 22.35
+      },
+      {
+        "id": "youtube-flywheel",
+        "startSeconds": 27.2,
+        "endSeconds": 43.3
+      },
+      {
+        "id": "youtube-evidence-and-alphabet-metric",
+        "startSeconds": 50.5,
+        "endSeconds": 66.45
+      },
+      {
+        "id": "douyin-routes",
+        "startSeconds": 74.2,
+        "endSeconds": 84
+      },
+      {
+        "id": "xingtu-and-douyin-ec-evidence",
+        "startSeconds": 83.7,
+        "endSeconds": 98.2
+      },
+      {
+        "id": "thirty-posts-and-feedback",
+        "startSeconds": 184.7,
+        "endSeconds": 245.35
+      },
+      {
+        "id": "three-questions",
+        "startSeconds": 280.8,
+        "endSeconds": 308
+      },
+      {
+        "id": "personal-timeline",
+        "startSeconds": 337.8,
+        "endSeconds": 355.1
+      },
+      {
+        "id": "cta-and-identity",
+        "startSeconds": 373.8,
+        "endSeconds": 384.733333
+      }
+    ],
+    "output": "work/production-runs/20260808-ai-selfmedia-lowcost-v73/preview-with-sfx.mp4",
+    "renderWithoutSfxComparison": true
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt",
+    "fullResolution": true,
+    "outputDirectory": "work/production-runs/20260808-ai-selfmedia-lowcost-v73/risk-frames"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": true,
+    "composition": "with-sfx",
+    "crf": 18,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "rawOutput": "work/production-runs/20260808-ai-selfmedia-lowcost-v73/formal-raw.mp4",
+    "finalOutput": "outputs/AI时代_普通人最低成本的入场券_16x9_V73_正式成片_v1.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -1.7
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "directory": "work/production-cache",
+    "reuseOnlyOnExactFingerprint": true
+  },
+  "reports": {
+    "runManifest": "work/production-runs/20260808-ai-selfmedia-lowcost-v73/run-manifest.json",
+    "timingReport": "work/production-runs/20260808-ai-selfmedia-lowcost-v73/timing-report.json",
+    "regressionReport": "work/production-runs/20260808-ai-selfmedia-lowcost-v73/regression-report.json"
+  }
+}
