@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "task_id": "20260808-ai-selfmedia-lowcost-v1",
+  "status": "passed",
+  "reviewed_at": "2026-08-08T18:02:46+08:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+    "sha256": "3c46cc74b59df44084c44919abe0449316e15fa07ce3653db64dea85ac726b14"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "20971567ccbf4c96040661d92a920796cccfcf145c0d795ad8049666c86508d8",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "开头从普通人没资源、没团队、不敢出镜，推进到平台经济底层逻辑和 YouTube 闭环。",
+        "risk_level": "medium",
+        "reason": "受众识别清楚，但从痛点到核心结论需要一段解释；如果画面长期只有主播，首段信息变化可能不足。",
+        "candidates": {
+          "conservative": "很多人没开始，不一定是没设备，而是还没看懂平台为什么需要创作者。",
+          "direct": "普通人缺的可能不是设备，是没看懂平台为什么愿意为内容付钱。",
+          "vivid": "设备放在桌上不会自己变成账号，先看懂平台为什么需要你的内容。"
+        },
+        "fact_difference": "三个候选都只压缩原有观点，不新增数据、经历、因果或收益承诺。",
+        "recommendation": "用户已经确认并开始录制，正文不改；开场用五个卡点快速出现，再在‘底层逻辑’处切入平台闭环，解决画面节奏。"
+      },
+      {
+        "original": "YouTube 的 1000 亿美元、600 亿美元与抖音多项创作者入口连续出现。",
+        "risk_level": "high",
+        "reason": "平台总收入、支付规模和普通账号可获得的收益不是同一口径；计划名称密集时，观众也可能误解为人人可开通。",
+        "candidates": {
+          "conservative": "平台有面向符合条件创作者的多种激励和商业机制，但资格与结果因账号而异。",
+          "direct": "有入口，不等于你开通就有收入。",
+          "vivid": "入口是门，不是自动到账的按钮。"
+        },
+        "fact_difference": "三个候选都收紧解释强度，不改变官方数字，也不新增平台规则。",
+        "recommendation": "正文不改；1000 亿美元和 600 亿美元分成两张不同证据卡，抖音计划只归入四类入口，并持续显示‘具体开通条件以账号后台和现行规则为准’。"
+      },
+      {
+        "original": "‘AI 背后站着的是一整套文明级认知能力’之后，继续列举 AI 能做的内容任务，再进入 30 条内容四步法。",
+        "risk_level": "medium",
+        "reason": "‘文明级认知能力’是观点性大词，单独停留会显得抽象；后续任务与四步法信息量较大，纯口述容易被听成工具清单。",
+        "candidates": {
+          "conservative": "AI 汇集了大量公开知识，但能不能变成结果，仍取决于你怎样使用和验证。",
+          "direct": "AI 能帮你处理知识，不能替你完成真实验证。",
+          "vivid": "它能把资料和方法递到你手里，最后那一步还得你自己走。"
+        },
+        "fact_difference": "候选把观点性比喻收紧为能力与验证边界，不新增工具效果和使用结果。",
+        "recommendation": "保留用户原句；画面不做宏大文明叙事，只展示‘选题、脚本、封面、发布、复盘’的真实任务流，再用四步导轨承接 30 条实验。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": [
+      "原片到位后，以实际音轨核对是否存在现场改口、重录、口误或漏句；字幕和最终事实口径以用户确认后的真实音轨为准。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}

@@ -88,6 +88,11 @@ import {
   AI_PRODUCTIVITY_V73_DURATION_IN_FRAMES,
 } from './AIProductivityV73Talk16x9';
 import {
+  AISelfMediaAssetPreflight16x9NoSfx,
+  AISelfMediaAssetPreflight16x9WithSfx,
+  AI_SELF_MEDIA_ASSET_PREFLIGHT_DURATION_IN_FRAMES,
+} from './AISelfMediaAssetPreflight16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -109,6 +114,22 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="AISelfMediaAssetPreflight16x9-WithSfx"
+          component={AISelfMediaAssetPreflight16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_SELF_MEDIA_ASSET_PREFLIGHT_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="AISelfMediaAssetPreflight16x9-NoSfx"
+          component={AISelfMediaAssetPreflight16x9NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_SELF_MEDIA_ASSET_PREFLIGHT_DURATION_IN_FRAMES}
+        />
         <Composition
           id="AIProductivity16x9-V73-WithSfx"
           component={AIProductivityV73Talk16x9WithSfx}

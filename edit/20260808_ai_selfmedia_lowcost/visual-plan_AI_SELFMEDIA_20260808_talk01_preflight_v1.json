@@ -1,0 +1,677 @@
+{
+  "schemaVersion": 3,
+  "experiment": {
+    "id": "v73-media-sfx-speed",
+    "status": "ready-for-next-video-validation"
+  },
+  "videoId": "AI_SELFMEDIA_20260808_talk01",
+  "videoTitle": "AI时代，普通人最低成本的入场券",
+  "sourceVideo": "source/20260808_ai_selfmedia_lowcost/01_口播原片/R01_AI自媒体低成本起号_口播原片.MOV",
+  "baselineId": "koubo-formal-16x9-v1",
+  "styleReferenceIds": [
+    "v72-user-verified-20260730",
+    "v73-transparent-events-and-sfx"
+  ],
+  "timingStatus": "asset-preflight-only-awaiting-word-timeline",
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "style": {
+    "brandLine": "超哥AI创业记",
+    "palette": {
+      "ink": "#F7FAFC",
+      "cyan": "#62D8FF",
+      "yellow": "#FFBE55",
+      "green": "#67D8A0",
+      "red": "#FF7068",
+      "graphite": "#090D12"
+    },
+    "motion": {
+      "enter": "spring",
+      "exit": "fade",
+      "avoidLinearEasing": true
+    }
+  },
+  "safeAreas": {
+    "subtitle": {
+      "x": 300,
+      "y": 820,
+      "width": 1320,
+      "height": 190
+    },
+    "face": null,
+    "hands": null
+  },
+  "previewCoverage": [
+    "hook",
+    "complex-overlay",
+    "full-screen-asset",
+    "cta",
+    "all-new-sfx-roles"
+  ],
+  "layers": [
+    {
+      "id": "hook-five-frictions",
+      "start": 0,
+      "end": 6,
+      "spokenLine": "没资源、没团队、不会拍视频、不敢出镜",
+      "purpose": "hook",
+      "kind": "semantic-motion-card",
+      "variant": "friction-grid",
+      "titleOwner": true,
+      "overlapGroup": "preflight-hook",
+      "zone": "full-safe",
+      "title": "普通人为什么迟迟没开始？",
+      "detail": "设备不是唯一问题，先看懂平台和内容闭环。",
+      "items": [
+        "资源",
+        "团队",
+        "拍摄",
+        "出镜",
+        "剪辑"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaAssetPreflight/HookFriction"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-v001",
+        "enterAt": 0,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "soft-card-pop",
+        "cueId": "aism-sfx-001",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "hook-friction"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 3.2
+      }
+    },
+    {
+      "id": "youtube-platform-flywheel",
+      "start": 6,
+      "end": 14,
+      "spokenLine": "创作者持续生产内容，用户停留，商家投广告，平台再把一部分收益分给创作者",
+      "purpose": "explain-platform-mechanism",
+      "kind": "process-card",
+      "variant": "flywheel",
+      "titleOwner": true,
+      "overlapGroup": "preflight-flywheel",
+      "zone": "full-safe",
+      "title": "平台经济的创作者闭环",
+      "detail": "内容、停留、广告、平台收入和创作者收益形成循环。",
+      "items": [
+        "创作者内容",
+        "用户停留",
+        "商家广告",
+        "平台收入",
+        "创作者收益"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaAssetPreflight/PlatformFlywheel"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-v002",
+        "enterAt": 6,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line-connect",
+        "cueId": "aism-sfx-002",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "platform-flywheel"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 10.5
+      }
+    },
+    {
+      "id": "youtube-payout-evidence",
+      "start": 14,
+      "end": 22,
+      "spokenLine": "过去四年给创作者、艺术家和媒体公司支付超过一千亿美元",
+      "purpose": "official-evidence",
+      "kind": "full-screen-asset",
+      "variant": "annotated-evidence",
+      "titleOwner": true,
+      "overlapGroup": "preflight-youtube-evidence",
+      "zone": "full-screen",
+      "title": "过去四年，超过 1000 亿美元",
+      "detail": "官方口径同时包括创作者、艺术家和媒体公司。",
+      "items": [],
+      "asset": {
+        "sourceType": "official-screenshot",
+        "source": "remotion/public/screenshots/20260808_youtube_creator_payout_100b.png"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-text-evidence"
+      },
+      "visualEvent": {
+        "id": "aism-v003",
+        "enterAt": 14,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "evidence-paper",
+        "cueId": "aism-sfx-003",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "youtube-evidence"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 18.4
+      }
+    },
+    {
+      "id": "alphabet-sixty-billion",
+      "start": 22,
+      "end": 29,
+      "spokenLine": "YouTube 广告和订阅年收入超过六百亿美元",
+      "purpose": "official-number-boundary",
+      "kind": "evidence-card",
+      "variant": "metric-boundary",
+      "titleOwner": true,
+      "overlapGroup": "preflight-alphabet-evidence",
+      "zone": "full-safe",
+      "title": "广告 + 订阅年收入超过 600 亿美元",
+      "detail": "平台总收入不等于创作者可分配收入。",
+      "items": [
+        "Alphabet 2025 Q4 Earnings Call",
+        "文字口径已核验",
+        "不推算个人收入"
+      ],
+      "asset": {
+        "sourceType": "official-source-record",
+        "source": "assets/screenshots/20260808_alphabet_youtube_60b.source.json"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-text-evidence"
+      },
+      "visualEvent": {
+        "id": "aism-v004",
+        "enterAt": 22,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "number-settle",
+        "cueId": "aism-sfx-004",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "alphabet-metric"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 25.8
+      }
+    },
+    {
+      "id": "douyin-four-channels",
+      "start": 29,
+      "end": 39,
+      "spokenLine": "创作者伙伴计划、中视频相关收益、星图商单、全民任务、商品橱窗、精选联盟、直播带货",
+      "purpose": "group-dynamic-platform-entries",
+      "kind": "full-screen-asset",
+      "variant": "official-screenshots-with-rail",
+      "titleOwner": true,
+      "overlapGroup": "preflight-douyin-entries",
+      "zone": "full-screen",
+      "title": "平台入口很多，资格要逐项核验",
+      "detail": "统一归为内容激励、商业合作、商品交易和任务奖励。",
+      "items": [
+        "内容激励",
+        "商业合作",
+        "商品交易",
+        "任务奖励"
+      ],
+      "asset": {
+        "sourceType": "official-screenshots",
+        "source": "remotion/public/screenshots/20260808_xingtu_creator_entry.png"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-four-channel-card"
+      },
+      "visualEvent": {
+        "id": "aism-v005",
+        "enterAt": 29,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media-whoosh",
+        "cueId": "aism-sfx-005",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "douyin-channels",
+        "secondarySource": "remotion/public/screenshots/20260808_douyin_ec_creator_path.png"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 34.5
+      }
+    },
+    {
+      "id": "content-seven-costs",
+      "start": 39,
+      "end": 47,
+      "spokenLine": "选题、查资料、写文案、拍摄、剪辑、做封面、复盘数据",
+      "purpose": "show-content-production-cost",
+      "kind": "process-card",
+      "variant": "seven-stage-rail",
+      "titleOwner": true,
+      "overlapGroup": "preflight-content-cost",
+      "zone": "full-safe",
+      "title": "过去，内容生产卡在七个环节",
+      "detail": "任一环节停住，连续发布就会中断。",
+      "items": [
+        "选题",
+        "资料",
+        "文案",
+        "拍摄",
+        "剪辑",
+        "封面",
+        "复盘"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaAssetPreflight/ContentCostRail"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-v006",
+        "enterAt": 39,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list-tick",
+        "cueId": "aism-sfx-006",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "content-cost-rail"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 43.8
+      }
+    },
+    {
+      "id": "ai-content-workflow",
+      "start": 47,
+      "end": 55,
+      "spokenLine": "AI 可以帮你整理逻辑、拆选题、做脚本、找封面思路和复盘",
+      "purpose": "show-ai-assistance-boundary",
+      "kind": "process-card",
+      "variant": "human-ai-workflow",
+      "titleOwner": true,
+      "overlapGroup": "preflight-ai-workflow",
+      "zone": "full-safe",
+      "title": "AI 可以帮你处理内容任务",
+      "detail": "输入来自你，发布和验证也仍然由你完成。",
+      "items": [
+        "整理逻辑",
+        "拆选题",
+        "脚本提纲",
+        "封面思路",
+        "评论复盘"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaAssetPreflight/AIWorkflow"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-v007",
+        "enterAt": 47,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line-connect",
+        "cueId": "aism-sfx-007",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "ai-workflow"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 51.4
+      }
+    },
+    {
+      "id": "ai-not-money",
+      "start": 55,
+      "end": 63,
+      "spokenLine": "AI 不是替你赚钱，AI 是替你降低试错成本",
+      "purpose": "core-truth-statement",
+      "kind": "truth-card",
+      "variant": "not-equal",
+      "titleOwner": true,
+      "overlapGroup": "preflight-core-truth",
+      "zone": "full-safe",
+      "title": "AI 的真实作用",
+      "detail": "降低试错成本，不替代真实表达、发布和反馈。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaAssetPreflight/AITruth"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-v008",
+        "enterAt": 55,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter-sweep",
+        "cueId": "aism-sfx-008",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "ai-truth"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 59.2
+      }
+    },
+    {
+      "id": "thirty-post-experiment",
+      "start": 63,
+      "end": 73,
+      "spokenLine": "先用 AI 跑一个 30 条内容的小闭环",
+      "purpose": "deliver-action-framework",
+      "kind": "process-card",
+      "variant": "four-step-rail",
+      "titleOwner": true,
+      "overlapGroup": "preflight-thirty-posts",
+      "zone": "full-safe",
+      "title": "先跑 30 条内容的小闭环",
+      "detail": "这是个人实验方法，不是平台规则。",
+      "items": [
+        "选一个人群",
+        "只解一个问题",
+        "AI 降低成本",
+        "看真实反馈"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaAssetPreflight/ThirtyPostExperiment"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-v009",
+        "enterAt": 63,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line-connect",
+        "cueId": "aism-sfx-009",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "thirty-posts"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 68.4
+      }
+    },
+    {
+      "id": "four-real-feedbacks",
+      "start": 73,
+      "end": 80,
+      "spokenLine": "有没有人看完、收藏、评论、私信",
+      "purpose": "define-observable-feedback",
+      "kind": "metric-grid",
+      "variant": "four-signals",
+      "titleOwner": true,
+      "overlapGroup": "preflight-feedback",
+      "zone": "full-safe",
+      "title": "先看四个真实反馈",
+      "detail": "不填写虚构数据，只观察真实平台结果。",
+      "items": [
+        "看完",
+        "收藏",
+        "评论",
+        "私信"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaAssetPreflight/FeedbackSignals"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-v010",
+        "enterAt": 73,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list-tick",
+        "cueId": "aism-sfx-010",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "feedback-signals"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 76.8
+      }
+    },
+    {
+      "id": "digital-asset-timeline",
+      "start": 80,
+      "end": 89,
+      "spokenLine": "每一条内容、每一次复盘、每一个案例、观点、方法、失败记录，都会变成别人判断你的材料",
+      "purpose": "define-digital-asset",
+      "kind": "timeline-card",
+      "variant": "public-record-timeline",
+      "titleOwner": true,
+      "overlapGroup": "preflight-digital-assets",
+      "zone": "full-safe",
+      "title": "数字资产，是一条可见的记录",
+      "detail": "这里不是钱包和收益，而是别人判断你的材料。",
+      "items": [
+        "内容",
+        "复盘",
+        "案例",
+        "观点",
+        "方法",
+        "失败记录"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaAssetPreflight/DigitalAssetTimeline"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-v011",
+        "enterAt": 80,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "soft-card-pop",
+        "cueId": "aism-sfx-011",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "digital-asset-timeline"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 85
+      }
+    },
+    {
+      "id": "closing-three-questions",
+      "start": 89,
+      "end": 100,
+      "spokenLine": "能不能把问题讲清楚、连续发布 30 条、变成别人能看到能判断能信任的数字资产",
+      "purpose": "cta",
+      "kind": "cta-card",
+      "variant": "three-question-checklist",
+      "titleOwner": true,
+      "overlapGroup": "preflight-cta",
+      "zone": "full-safe",
+      "title": "先别问能不能赚钱",
+      "detail": "先成为一个被看见的人。",
+      "items": [
+        "把一个具体问题讲清楚",
+        "低成本连续发布 30 条",
+        "留下可看、可判断、可信任的记录"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "AISelfMediaAssetPreflight/ClosingQuestions"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "aism-v012",
+        "enterAt": 89,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "cta-confirm",
+        "cueId": "aism-sfx-012",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "closing-questions"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 95.2
+      }
+    }
+  ],
+  "deferred": [
+    {
+      "id": "real-word-timing",
+      "reason": "原片尚在录制，正式 start/end、字幕、运镜和回切点必须在词级转写后重建。"
+    },
+    {
+      "id": "face-and-hands-safe-area",
+      "reason": "待原片构图到位后，从代表帧测量脸、手和字幕安全区。"
+    }
+  ]
+}

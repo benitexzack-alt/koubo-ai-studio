@@ -1,0 +1,345 @@
+{
+  "schema_version": 3,
+  "task_id": "20260808-ai-selfmedia-lowcost-v1",
+  "target_stage": "production",
+  "required_rules": [
+    {
+      "path": "<project-root>/AGENTS.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "read": true
+    },
+    {
+      "path": "<project-root>/knowledge/03-口播执行守则.md",
+      "read": true
+    },
+    {
+      "path": "<project-root>/knowledge/05-合规隐私与证据规则.md",
+      "read": true
+    },
+    {
+      "path": "<project-root>/knowledge/06-选题脚本与风格规范.md",
+      "read": true
+    },
+    {
+      "path": "<project-root>/knowledge/14-超哥口播声音档案.md",
+      "read": true
+    },
+    {
+      "path": "<project-root>/knowledge/15-抖音精选内容质量验收.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/个人知识库/03_最佳实践/抖音口播内容与DOU+投放边界.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/08_抖音中国大陆规则全景库_2026-07-12.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/09_抖音公开规则与治理信息索引_2026-07-12.md",
+      "read": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "youtube-2026-letter",
+      "title": "YouTube CEO Neal Mohan's 2026 Letter: The Future of YouTube",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "<project-root>/assets/screenshots/20260808_youtube_creator_payout_100b.source.json",
+      "verification_status": "已核验"
+    },
+    {
+      "id": "alphabet-2025-q4",
+      "title": "Alphabet 2025 Q4 Earnings Call",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "<project-root>/assets/screenshots/20260808_alphabet_youtube_60b.source.json",
+      "verification_status": "已核验"
+    },
+    {
+      "id": "youtube-partner-overview",
+      "title": "YouTube partner earnings overview",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "<project-root>/assets/screenshots/20260808_youtube_partner_earnings_overview_fullpage.png",
+      "verification_status": "已核验"
+    },
+    {
+      "id": "xingtu-creator-entry",
+      "title": "巨量星图新达人入驻必读手册",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "<project-root>/assets/screenshots/20260808_xingtu_creator_entry.source.json",
+      "verification_status": "已核验"
+    },
+    {
+      "id": "douyin-ec-creator",
+      "title": "抖音电商达人公开页",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "<project-root>/assets/screenshots/20260808_douyin_ec_creator_path.source.json",
+      "verification_status": "已核验"
+    },
+    {
+      "id": "jiang-hu-shuo-7633813934260243753",
+      "title": "姜胡说：抓住科技红利窗口 + 正确方向上持续进步 = 普通人逆袭之路",
+      "completeness": "partial",
+      "acquisition": "local-file",
+      "intended_uses": [
+        "partial-context"
+      ],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/07/抖音-7633813934260243753.md",
+      "verification_status": "部分核验"
+    },
+    {
+      "id": "user-approved-script",
+      "title": "AI时代，普通人最低成本的入场券 用户最终确认稿",
+      "completeness": "complete",
+      "acquisition": "user-pasted",
+      "intended_uses": [
+        "viewpoint"
+      ],
+      "content_path": "<project-root>/notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+      "verification_status": "已核验"
+    },
+    {
+      "id": "fact-lock-v1",
+      "title": "AI自媒体低成本起号 来源与事实锁 v1",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "<project-root>/notes/2026-08-08-AI自媒体低成本起号-来源与事实锁-v1.md",
+      "verification_status": "已核验"
+    }
+  ],
+  "brief_contract": {
+    "user_goal": "让没有团队、资本和现成资源的普通人看懂平台激励闭环，理解 AI 降低的是内容试错成本，并拿走一个 30 条内容的低成本验证方法。",
+    "reference_role": "姜胡说相关材料只提供普通人痛点、机制解释、行动阶梯和误区纠正的高层叙事线索。",
+    "reference_forbidden_role": "不复述为姜胡说完整观点，不使用其粉丝、收入和必然赚钱说法，不模仿原句和个人经历。",
+    "required_arc": [
+      "从普通人没资源、没团队、不敢出镜的真实痛点切入",
+      "用 YouTube 和抖音说明平台为什么需要创作者及其收益分配机制",
+      "解释 AI 怎样降低选题、脚本、拍摄准备、封面和复盘成本",
+      "交付 30 条内容四步实验和四项真实反馈",
+      "收束为数字资产积累和三个自检问题"
+    ],
+    "forbidden_reframes": [
+      "AI 自动赚钱或平台暴富教程",
+      "辞职全职做自媒体的动员",
+      "抖音精选、流量或变现保证",
+      "单纯盘点平台计划和开通门槛"
+    ],
+    "alignment_evidence": "确认稿依次完成普通人痛点、YouTube 闭环、抖音入口、AI 降低试错成本、30 条四步实验、数字资产和三个问题，且两次明确不保证变现和流量。",
+    "status": "locked"
+  },
+  "recent_six": [
+    {
+      "title": "AI效率不等于完整AI生产力",
+      "date": "2026-08-04",
+      "audience_problem": "个人用 AI 变快后，为什么组织结果没有同步改变",
+      "main_claim": "单点效率要经过流程、需求、新价值和收益分享四道门，才可能成为完整生产力",
+      "evidence": "NBER研究、宏观研究、官方数据和本人项目验收经验",
+      "deliverable": "AI生产力四问",
+      "cta": "检查自己的AI应用卡在哪一道门"
+    },
+    {
+      "title": "AI时代普通人不可复制的资产是信任",
+      "date": "2026-08-02",
+      "audience_problem": "AI降低生产成本后，普通人还能积累什么差异",
+      "main_claim": "可验证的在场、判断和兑现记录会形成信任时间线",
+      "evidence": "本人持续公开实践和来源资料",
+      "deliverable": "信任时间线判断",
+      "cta": "开始记录真实承诺、判断和结果"
+    },
+    {
+      "title": "兰州OPC大会三入口",
+      "date": "2026-07-31",
+      "audience_problem": "兰州普通人从哪里接触本地AI创业资源",
+      "main_claim": "本地AI参与可以从实训、协作和扶持三个入口判断",
+      "evidence": "本地公开报道和用户现场素材",
+      "deliverable": "实训、协作、扶持三入口",
+      "cta": "按自身阶段核对入口"
+    },
+    {
+      "title": "真正能穿越周期的两类资产",
+      "date": "2026-07-30",
+      "audience_problem": "AI热潮退去后普通人应留下什么",
+      "main_claim": "时代可能留下算力底座和能力入口，个人应留下进场资格与验收证据",
+      "evidence": "基础设施资料和本人近期项目",
+      "deliverable": "时代两层与个人两样",
+      "cta": "列出真实场景和已验收结果"
+    },
+    {
+      "title": "北海道农场与三个AI项目",
+      "date": "2026-07-25",
+      "audience_problem": "AI怎样进入农业与本地项目的真实过程",
+      "main_claim": "AI必须进入需求、资料、处理、人工判断和结果留存的完整参与链",
+      "evidence": "北海道案例和三个真实项目事实卡",
+      "deliverable": "需求到结果的参与链",
+      "cta": "辨认自己行业当前卡点"
+    },
+    {
+      "title": "150个粉丝与AI数字资产",
+      "date": "2026-07-22",
+      "audience_problem": "没有流量和收入反馈时怎样判断继续还是调整",
+      "main_claim": "同时记录结果账和资产账，用证据替代一句坚持或否定",
+      "evidence": "账号真实粉丝状态和本人知识库实践",
+      "deliverable": "结果账与资产账",
+      "cta": "记录问题、判断、行动和结果"
+    }
+  ],
+  "topic": {
+    "audience": "没有团队、资本和现成资源，想尝试 AI 与自媒体但被出镜、选题、脚本、剪辑和坚持卡住的普通人",
+    "problem": "观众把没有开始归因于设备和资源，同时把平台入口与 AI 能力误解为自动变现工具，不知道怎样低成本验证自己能否持续产出有用内容。",
+    "desired_change": "观众能说清平台激励闭环与 AI 的真实作用，并能选定一个人群、一个问题，用 30 条内容观察看完、收藏、评论和私信反馈。",
+    "novel_claim": "普通人更现实的 AI 自媒体入场方式，不是先辞职、买课或追求变现，而是把平台激励理解为对优质注意力的购买，把 AI 用作降低内容试错成本的工具，再用 30 条内容验证真实需求并积累可核验的公开记录。",
+    "difference_from_recent": "相较最近六条，本条新增 YouTube 官方支付规模、Alphabet 平台收入、星图和抖音电商公开入口作为平台机制证据；把数字资产母题推进为一个 30 条内容、四步行动、四项反馈的可执行实验，不再只讨论资产或信任的定义。",
+    "evidence_proves": "官方来源证明平台存在创作者支付、商业合作和商品交易机制；用户确认稿提供一个有边界的 30 条内容实验建议。",
+    "evidence_does_not_prove": "不证明普通账号一定获得资格、流量、收入或客户，不证明 30 条一定起号，也不证明 AI 自动产生优质内容。",
+    "audience_takeaway": "一个人群、一个具体问题、AI 辅助的一套内容流程、30 条发布实验，以及看完、收藏、评论和私信四项真实反馈。",
+    "boundary": "这是低成本内容实验建议，不是就业、投资、培训、招商或收益承诺；平台计划和门槛以当日官方页面与账号后台为准。",
+    "delete_candidates": [
+      "各平台分成比例和推算收益",
+      "姜胡说粉丝量、收入与必然赚钱主张",
+      "收益后台、粉丝暴涨、现金和订单画面",
+      "与唯一主张无关的 AI 工具品牌盘点"
+    ]
+  },
+  "frozen_topic_hits": [
+    {
+      "topic": "AI时代普通人的数字资产与信任资产",
+      "usage": "background",
+      "new_evidence": "新增 YouTube 创作者支付规模、Alphabet 平台收入、巨量星图和抖音电商公开入口作为平台激励机制证据。",
+      "new_counterexample": "持续发布和形成数字记录仍不等于获得流量、收入、信任或商业结果。",
+      "conclusion_change": "从为什么要积累数字资产，推进到怎样用 30 条内容实验和四项反馈验证数字记录是否正在解决真实问题。"
+    },
+    {
+      "topic": "AI降低成本与普通人机会",
+      "usage": "background",
+      "new_evidence": "把 AI 能力拆到选题、资料、脚本、封面思路和复盘等具体内容任务，并明确平台侧的收益分配机制。",
+      "new_counterexample": "AI 降低操作门槛不等于降低内容质量门槛，也不替代发布、测试和接受反馈。",
+      "conclusion_change": "从一般性机会判断推进为先选人群、解决一个问题、发布 30 条并看四项反馈的实验方案。"
+    }
+  ],
+  "audience_fit": {
+    "account_stage": "试验",
+    "speaker_position": "正在持续使用 AI 做内容和项目验证的兰州本地 AI 实践者，分享平台公开机制与自己的低成本内容实验判断，不冒充平台官方、成熟变现导师或已经复制成功的方法专家。",
+    "first_20s_connection": "普通人想做账号，却因为没资源、没团队、不会拍视频和不敢出镜一直没有开始。",
+    "high_level_material_role": "evidence",
+    "ordinary_scenes": [
+      "上班族想到要选题、写稿、拍摄、剪辑和做封面，还没发布就先放弃",
+      "不愿出镜的人可以先从图文、录屏、字幕口播和知识卡片开始",
+      "个体户或本地老板围绕一个具体问题连续发布，再看收藏、评论和私信"
+    ],
+    "audience_gain": "观众能区分平台入口、AI 辅助和真实结果三件事，并拿走一个不要求辞职或重投入的 30 条内容验证方法。",
+    "authority_boundary": "只解释公开平台机制和一般内容实验；不判断个体账号资格，不预测流量、收入、客户和变现时间，不提供投放或交易放行结论。",
+    "requires_expert_authority": false
+  },
+  "mechanism_cards": [
+    {
+      "name": "平台创作者经济闭环",
+      "problem": "平台需要持续获得能让用户停留的内容，创作者也需要可持续的回报入口。",
+      "bottleneck": "平台不可能自己生产全部内容；创作者如果看不到任何回报机制，也难以长期供给。",
+      "mechanism": "创作者生产内容，用户停留，广告主或商家为触达用户付费，平台取得广告、订阅或交易收入，再通过符合条件的计划向创作者分配部分价值。",
+      "observable_change": "能在官方页面看到创作者支付、合作和商品交易入口，但每个账号的资格与结果需要单独核验。",
+      "evidence": "YouTube 2026 CEO 公开信、Alphabet 2025 Q4 Earnings、YouTube Partner 帮助页、巨量星图帮助页和抖音电商达人页。",
+      "evidence_proves": "证明平台存在可分配收益和商业合作机制。",
+      "evidence_does_not_prove": "不证明任何普通账号一定获得资格、流量和收入，也不能用平台总收入推算个人收入。",
+      "audience_relevance": "帮助普通人理解平台为什么需要创作者，同时停止把入口当成自动到账按钮。",
+      "boundary": "不同平台和计划的门槛、分配、结算与可见性不同，具体以当日官方页面和账号后台为准。"
+    },
+    {
+      "name": "AI降低内容试错成本",
+      "problem": "一个人容易在选题、资料、脚本、拍摄准备、封面和复盘任一环节停下来。",
+      "bottleneck": "任务分散、启动成本高、缺少结构和复盘能力，使普通人难以连续发布。",
+      "mechanism": "把人的经验、观点和目标作为输入，用 AI 辅助整理选题、资料和脚本，再由本人拍摄、发布、观察反馈和校正。",
+      "observable_change": "同一个人能更快得到可修改的提纲、脚本、封面思路和复盘记录，但内容是否有用仍看真实用户反馈。",
+      "evidence": "用户确认稿中的任务拆解和本人持续内容生产实践。",
+      "evidence_proves": "支持 AI 可作为内容任务辅助工具的实践性判断。",
+      "evidence_does_not_prove": "不证明 AI 自动生成优质内容、自动涨粉、自动获得信任或自动变现。",
+      "audience_relevance": "对应不敢出镜、不会写稿、不会找选题和不会复盘的普通人。",
+      "boundary": "本人必须负责事实核验、表达、发布和后续行动；涉及隐私、客户和平台规则时不能直接交给模型决定。"
+    },
+    {
+      "name": "30条内容反馈实验",
+      "problem": "普通人常在没有真实发布数据前，就判断自己不适合做内容，或反过来过早谈变现。",
+      "bottleneck": "没有固定人群、具体问题、连续样本和反馈指标，无法区分题目、表达、画面和需求的问题。",
+      "mechanism": "选择一个长期观察的人群，只解决一个具体问题，用 AI 降低每条内容成本，连续发布 30 条并观察看完、收藏、评论和私信。",
+      "observable_change": "形成 30 条公开样本及对应复盘，能看见哪些问题被使用、哪些表达被忽略、下一条该调整什么。",
+      "evidence": "用户确认的最小实验设计；发布后数据尚待真实验证。",
+      "evidence_proves": "只证明这是一套可执行、可记录和可调整的试验方法。",
+      "evidence_does_not_prove": "不证明 30 条是平台规则，不保证起号、精选、流量、咨询或变现。",
+      "audience_relevance": "把普通人的宏大焦虑转成一个可以下班后开始、按反馈调整的具体行动。",
+      "boundary": "30 条是本条建议的实验上限与样本目标，可按精力调整；不能用数量替代质量和事实。"
+    }
+  ],
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {
+      "target": "primary",
+      "script_evidence": "正文解释平台创作者经济闭环、AI 降低内容试错成本，并交付 30 条内容四步法和看完、收藏、评论、私信四项反馈。",
+      "viewer_test": "观众看完后能选一个人群和具体问题，列出一条内容的选题、脚本、封面思路与复盘，并知道发布后看哪四项反馈。"
+    },
+    "surprise": {
+      "target": "supporting",
+      "script_evidence": "把 AI 自媒体机会从自动赚钱改成平台购买优质注意力、AI 降低试错成本和先跑 30 条实验。",
+      "viewer_test": "删掉 1000 亿、600 亿和平台名称后，‘AI 不是替你赚钱，而是降低试错成本’和 30 条实验仍然成立。"
+    },
+    "expression": {
+      "target": "primary",
+      "script_evidence": "全文按普通人痛点、平台闭环、国内入口、内容成本、AI 作用、30 条四步实验、数字资产和三个自检问题推进。",
+      "viewer_test": "陌生观众能用一句话复述：先用 AI 降低内容成本，围绕一个具体问题跑 30 条，再看真实反馈。"
+    },
+    "resonance": {
+      "target": "supporting",
+      "script_evidence": "共鸣来自没团队、不会拍、不敢出镜，一想到选题、写稿、剪辑和坚持就放弃的真实处境。",
+      "viewer_test": "观众能认出自己迟迟没有开始的具体卡点，不依赖收入焦虑、辞职恐惧和暴富暗示。"
+    },
+    "integrity_boundary": "不把平台总收入和创作者支付规模外推个人收益，不把入口说成人人可开，不承诺流量、精选、起号和变现，不用假后台、假客户和假数据制造惊喜。",
+    "review_status": "human-reviewed",
+    "selection_not_guaranteed": true
+  },
+  "voice": {
+    "profile_path": "<project-root>/knowledge/14-超哥口播声音档案.md",
+    "read": true
+  },
+  "draft": {
+    "path": "<project-root>/notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+    "content_start_marker": "## 口播正文开始",
+    "content_end_marker": "## 口播正文结束",
+    "copy_review": {
+      "required": true,
+      "report_path": "<project-root>/notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.copy-review.json"
+    },
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": true,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "compliance_passed": true,
+    "user_script_approved": true,
+    "phrase_exemptions": []
+  }
+}

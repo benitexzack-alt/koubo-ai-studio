@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20260808-ai-selfmedia-lowcost-v73-preflight",
+  "videoId": "AI_SELFMEDIA_20260808_talk01",
+  "title": "AI时代，普通人最低成本的入场券",
+  "purpose": "在用户录制期间先完成平台证据、闭环、AI工作流、30条实验、反馈和数字资产信息动画的V7.3素材预制，原片到位后再绑定真实词级时间轴。",
+  "productionState": "ready-for-production",
+  "sourceStatus": "awaiting-user-file",
+  "timingContext": {
+    "contentLockedAt": "2026-08-08T18:02:46+08:00",
+    "assetPreflightStartedAt": "2026-08-08T18:02:46+08:00",
+    "measurementBoundary": "当前只计素材预制；正式片计时从原片检出开始。"
+  },
+  "experiment": {
+    "id": "v73-media-sfx-speed",
+    "status": "ready-for-next-video-validation",
+    "userMediaRequest": "notes/2026-08-08-AI自媒体低成本起号-素材与V7.3执行单-v2.md",
+    "fullLengthLowResPreview": {
+      "enabled": false,
+      "reason": null
+    },
+    "previewAuditionRoles": [
+      "soft-card-pop",
+      "list-tick",
+      "line-connect",
+      "number-settle",
+      "media-whoosh",
+      "evidence-paper",
+      "chapter-sweep",
+      "cta-confirm"
+    ]
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "source/20260808_ai_selfmedia_lowcost/01_口播原片/R01_AI自媒体低成本起号_口播原片.MOV",
+    "renderProxy": "remotion/public/media/ai-selfmedia-20260808/main-30fps.mp4",
+    "visualPlan": "edit/20260808_ai_selfmedia_lowcost/visual-plan_AI_SELFMEDIA_20260808_talk01_preflight_v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_SELFMEDIA_20260808_talk01.bilingual.v1.json",
+    "sfxCueSheet": "edit/20260808_ai_selfmedia_lowcost/sfx-cue-sheet_AI_SELFMEDIA_20260808_talk01_preflight_v1.json",
+    "fingerprintPaths": [
+      "notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+      "notes/2026-08-08-AI自媒体低成本起号-来源与事实锁-v1.md",
+      "assets/screenshots/20260808_youtube_creator_payout_100b.png",
+      "assets/screenshots/20260808_alphabet_youtube_60b.source.json",
+      "assets/screenshots/20260808_xingtu_creator_entry.png",
+      "assets/screenshots/20260808_douyin_ec_creator_path.png",
+      "remotion/src/Root.tsx",
+      "remotion/src/AISelfMediaAssetPreflight16x9.tsx",
+      "remotion/src/components",
+      "remotion/public/screenshots/20260808_youtube_creator_payout_100b.png",
+      "remotion/public/screenshots/20260808_xingtu_creator_entry.png",
+      "remotion/public/screenshots/20260808_douyin_ec_creator_path.png",
+      "remotion/public/audio/koubo-sfx-v2",
+      "remotion/public/audio/koubo-sfx-v3-candidates",
+      "assets/sfx/koubo-sfx-v3-candidates/manifest.json",
+      "edit/20260808_ai_selfmedia_lowcost/visual-plan_AI_SELFMEDIA_20260808_talk01_preflight_v1.json",
+      "edit/20260808_ai_selfmedia_lowcost/sfx-cue-sheet_AI_SELFMEDIA_20260808_talk01_preflight_v1.json",
+      "notes/2026-08-08-AI自媒体低成本起号-素材与V7.3执行单-v2.md"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/index.ts",
+    "compositionWithSfx": "AISelfMediaAssetPreflight16x9-WithSfx",
+    "compositionWithoutSfx": "AISelfMediaAssetPreflight16x9-NoSfx",
+    "durationSeconds": 100,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 3
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": true,
+    "scale": 0.5,
+    "crf": 23,
+    "ranges": [
+      {
+        "id": "hook-soft-card",
+        "startSeconds": 0,
+        "endSeconds": 3.2
+      },
+      {
+        "id": "flywheel-line-connect",
+        "startSeconds": 6,
+        "endSeconds": 9.2
+      },
+      {
+        "id": "youtube-evidence-paper",
+        "startSeconds": 14,
+        "endSeconds": 17.2
+      },
+      {
+        "id": "alphabet-number-settle",
+        "startSeconds": 22,
+        "endSeconds": 25.2
+      },
+      {
+        "id": "douyin-media-whoosh",
+        "startSeconds": 29,
+        "endSeconds": 32.2
+      },
+      {
+        "id": "content-list-tick",
+        "startSeconds": 39,
+        "endSeconds": 42.2
+      },
+      {
+        "id": "core-truth-chapter-sweep",
+        "startSeconds": 55,
+        "endSeconds": 58.2
+      },
+      {
+        "id": "cta-confirm",
+        "startSeconds": 89,
+        "endSeconds": 92.2
+      }
+    ],
+    "output": "work/production-runs/20260808-ai-selfmedia-lowcost-v73-preflight/preview-with-sfx.mp4",
+    "renderWithoutSfxComparison": true
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt",
+    "fullResolution": true,
+    "outputDirectory": "work/production-runs/20260808-ai-selfmedia-lowcost-v73-preflight/risk-frames"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": false,
+    "blockedReason": "等待真实口播原片、词级转写、字幕和正式秒点。",
+    "composition": "with-sfx",
+    "crf": 18,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "rawOutput": "work/production-runs/20260808-ai-selfmedia-lowcost-v73/formal-raw.mp4",
+    "finalOutput": "outputs/AI时代_普通人最低成本的入场券_16x9_V73验证_有音效_正式成片_v1.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -1.7
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "directory": "work/production-cache",
+    "reuseOnlyOnExactFingerprint": true
+  },
+  "reports": {
+    "runManifest": "work/production-runs/20260808-ai-selfmedia-lowcost-v73-preflight/run-manifest.json",
+    "timingReport": "work/production-runs/20260808-ai-selfmedia-lowcost-v73-preflight/timing-report.json",
+    "regressionReport": "work/production-runs/20260808-ai-selfmedia-lowcost-v73-preflight/regression-report.json"
+  }
+}
