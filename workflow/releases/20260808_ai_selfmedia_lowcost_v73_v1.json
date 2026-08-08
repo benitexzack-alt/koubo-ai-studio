@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "releaseId": "20260808_ai_selfmedia_lowcost_v73_v1",
-  "status": "ready-for-user-review",
+  "status": "published-revision-required",
   "videoId": "AI_SELFMEDIA_20260808_talk01",
   "baselineId": "koubo-formal-16x9-v1",
   "intent": {
@@ -65,7 +65,8 @@
     "keyframeReview": {
       "status": "passed",
       "frames": [1, 18, 55, 90, 188, 292, 346, 383],
-      "evidence": "正式片8个首中尾关键帧已检查，未发现黑帧、主卡裁切、文字越界、遮脸或字幕冲突；个人实践结尾和账号身份完整。"
+      "humanPlaybackOverride": "failed",
+      "evidence": "正式片8个离散关键帧的机器侧抽查当时未发现问题；用户随后在正常播放约3分24秒处确认四步流程板遮挡额头和眼部区域，证明离散抽帧存在漏检。该机器结论已被人工观看结果覆盖。"
     },
     "cameraMotionReview": {
       "status": "machine-passed-user-pending",
@@ -74,7 +75,7 @@
       "evidence": "人物段使用语义数字运镜，证据与流程画面按语义切点进入；动态自然度仍待用户完整观看确认。"
     },
     "soundEffectAudibility": {
-      "status": "machine-passed-user-pending",
+      "status": "machine-passed-user-rejected",
       "cueTypes": [
         "soft-card-pop",
         "list-tick",
@@ -86,7 +87,7 @@
         "cta-confirm"
       ],
       "userAudibilityConfirmed": false,
-      "evidence": "21个主视觉事件通过同一visualEventId绑定21个本地音效，覆盖8种语义角色，机器同步误差上限2帧；主观听感仍待用户完整观看。"
+      "evidence": "21个主视觉事件通过同一visualEventId绑定21个本地音效，覆盖8种语义角色，机器同步误差上限2帧；用户正常观看后明确反馈整体音效基本不可感知，因此文件存在和同步通过不能作为听感通过。"
     }
   },
   "upgradeDecisions": [
@@ -104,6 +105,21 @@
       "id": "upgrade-20260808-risk-frame-title-wrap",
       "decision": "applied-and-machine-verified",
       "evidence": "第一轮风险帧发现两处标题出现单字换行，正式渲染前改写标题并重新完成风险帧检查。"
+    },
+    {
+      "id": "upgrade-20260809-continuous-face-safe-overlay-gate",
+      "decision": "required-before-next-full-render",
+      "evidence": "用户在约3分24秒正常播放画面中确认横向流程板遮挡人物面部；下一版必须按完整持续区间验收，不再只看离散关键帧。"
+    },
+    {
+      "id": "upgrade-20260809-real-official-media-first",
+      "decision": "required-before-next-full-render",
+      "evidence": "用户明确拒绝用黑底Remotion图形长期替代YouTube等可使用真实或官方素材的重点对象。"
+    },
+    {
+      "id": "upgrade-20260809-subjective-sfx-audibility-gate",
+      "decision": "required-before-next-full-render",
+      "evidence": "本片机器记录21个音效点，但用户主观听感仍为基本没有；后续必须先通过正常音量同段有声/无声试听。"
     }
   ],
   "userReview": {
@@ -111,15 +127,29 @@
     "directFinalAuthorized": true,
     "fullWatchConfirmed": false,
     "confirmedAt": null,
-    "notes": "用户明确要求按已确认内容和实拍原片尽快直接剪出正式片；制作侧已完成代表性预览、风险帧检查、正式渲染和机器终检，等待用户完整观看。"
+    "reviewedAt": "2026-08-09",
+    "reviewOutcome": "revision-required",
+    "visualAcceptance": "failed",
+    "soundAcceptance": "failed",
+    "assetAcceptance": "failed",
+    "notes": "用户正常观看后指出三项阻断问题：约3分24秒流程动效挡脸；整体音效基本不可感知；YouTube等关键段缺少真实或官方视频素材，黑底Remotion图形替代过多且整体风格需要升级。原有机器抽帧和音效同步结论不能覆盖本次人工验收。"
   },
   "publish": {
-    "status": "not-published",
+    "status": "published",
     "platform": "抖音",
-    "publishedAt": null,
+    "publishedAt": "2026-08-08T22:07:00+08:00",
     "metrics24h": null,
+    "earlyMetrics": {
+      "capturedAt": "2026-08-09T00:36:55+08:00",
+      "observationWindow": "约发布后2小时30分钟",
+      "views": 217,
+      "averageWatchSeconds": 12,
+      "coverClickRateDisplayedPercent": 100,
+      "likes": 6,
+      "evidence": "用户提供的抖音作品分析截图；该时点过早，不能当作24小时或最终数据。"
+    },
     "releasePackaging": "notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
     "copyReview": "notes/2026-08-08-AI自媒体低成本起号-实拍逐字稿-v2.copy-review.json",
-    "nextDecision": "先由用户完整观看成片，重点确认音效、数字运镜和实拍新增结尾；确认后再进入发布，并按真实数据复盘。"
+    "nextDecision": "当前版本已经发布；先补24小时和7天数据，不用217次早期播放判断内容成败。制作升级从连续人物安全区、真实/官方素材优先和主观音效试听三项开始，未通过短预览前不再渲染下一条完整正式片。"
   }
 }
