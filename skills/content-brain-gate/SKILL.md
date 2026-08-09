@@ -135,7 +135,7 @@ description: 在任何公开内容进入选题、写稿或制作前，强制检�
 
 ### 5.6 建立抖音精选质量目标
 
-使用 `schema_version: 4`，按照项目 `knowledge/15-抖音精选内容质量验收.md` 填写 `douyin_quality`：
+使用 `schema_version: 3`，按照项目 `knowledge/15-抖音精选内容质量验收.md` 填写 `douyin_quality`：
 
 - 获得感和表达力必须为 `primary`；
 - 惊喜感、感染力按真实素材填写 `primary`、`supporting` 或 `not-targeted`；
