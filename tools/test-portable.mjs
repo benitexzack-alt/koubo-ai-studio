@@ -76,6 +76,7 @@ try {
   );
   if (existsSync(systemSkillValidator)) {
     for (const skillName of [
+      'source-essence-synthesis',
       'content-brain-gate',
       'humanize-koubo-script',
       'koubo-asset-prep',
@@ -91,6 +92,29 @@ try {
     steps.push({ name: 'Codex Skill 官方结构校验', ok: true, skipped: true });
     console.log('[跳过] 当前 Codex 未提供 skill-creator/quick_validate.py，保留项目文件体检');
   }
+
+  run(
+    '源头精髓单元回归',
+    pythonBin,
+    ['skills/source-essence-synthesis/scripts/test_source_essence.py'],
+  );
+  run(
+    '源头精髓应通过样例',
+    pythonBin,
+    [
+      'skills/source-essence-synthesis/scripts/validate_source_essence.py',
+      'skills/source-essence-synthesis/fixtures/ai007-outline-pass.json',
+    ],
+  );
+  run(
+    '源头精髓应拦截旧稿',
+    pythonBin,
+    [
+      'skills/source-essence-synthesis/scripts/validate_source_essence.py',
+      'skills/source-essence-synthesis/fixtures/ai007-v1-fail.json',
+    ],
+    { expectedCodes: [1] },
+  );
 
   run(
     '内容门禁单元回归',
@@ -139,6 +163,7 @@ try {
     expectedCodes: [2],
   });
   for (const skillName of [
+    'source-essence-synthesis',
     'humanize-koubo-script',
     'koubo-asset-prep',
     'koubo-remotion-director',

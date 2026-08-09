@@ -13,6 +13,7 @@ AI 口播内容与 Remotion 生产工作流：内容门禁、事实安全精修�
 
 ## 项目内 Skill
 
+- `skills/source-essence-synthesis`：完整访谈、长视频或文章进入深度口播改编前，提取母命题、认知节点、论证链、纠偏账本和普通人三层所得，并逐节点校验提纲覆盖。
 - `skills/koubo-remotion-director`：视觉方案、V4/V5/V6、Remotion 预览、质检和发布记录。
 - `skills/humanize-koubo-script`：事实锁定后的去 AI 味、朗读和留存风险审稿。
 - `skills/content-brain-gate`：来源、最近六条、内容增量、观众距离、机制和本人声音硬门禁。
@@ -52,8 +53,8 @@ node tools/setup-koubo.mjs --dry-run
 本机已有同名独立 Skill、只想注册本项目新增能力时，可限定安装范围：
 
 ```bash
-node tools/setup-koubo.mjs --skill koubo-asset-prep --dry-run
-node tools/setup-koubo.mjs --skill koubo-asset-prep
+node tools/setup-koubo.mjs --skill source-essence-synthesis --dry-run
+node tools/setup-koubo.mjs --skill source-essence-synthesis
 ```
 
 安装器只会创建缺失的链接。如果 `~/.codex/skills/` 中已存在不同来源的同名 Skill，它会在写入前停止并报告，不覆盖、不移动、不删除。体检工具全程只读，也不会显示 `.env` 的内容。

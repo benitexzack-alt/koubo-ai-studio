@@ -24,6 +24,7 @@ const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
 
 const skillNames = [
+  'source-essence-synthesis',
   'content-brain-gate',
   'humanize-koubo-script',
   'koubo-asset-prep',

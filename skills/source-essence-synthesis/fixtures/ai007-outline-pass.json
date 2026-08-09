@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "task_id": "regression:ai007:source-essence-pass",
+  "target_stage": "outline",
+  "mode": "deep-explainer",
+  "source": {
+    "title": "AI007与布林约尔松材料完整观点清单",
+    "path": "<skill-root>/fixtures/ai007-source-manifest.md",
+    "completeness": "complete",
+    "verification_scope": "回归样本只验证观点结构和覆盖关系；真实发布仍需回到访谈、论文和完整转写逐项核验"
+  },
+  "reader_brief": {
+    "audience": "担心AI冲击工作但不知道如何判断和行动的普通职场人、小老板与个体创业者",
+    "existing_belief": "把问题简化成AI会不会取代某个职业，或者学会几个工具就能安全",
+    "desired_change": "理解结果取决于部署方式、组织重构和人的位置，并能建立自己的长期行动方向",
+    "leave_with": [
+      "最好和最坏可以同时发生的完整机制",
+      "个人能行动与不能独自解决的边界",
+      "复合能力、可复用资产和持续学习三条方向"
+    ]
+  },
+  "mother_thesis": {
+    "statement": "AI不是自动通往繁荣或失业的单向力量，它会放大人的意图，而部署激励、组织重构、个人能力和分配制度共同决定未来十年的结果。",
+    "scope_boundary": "这是条件性判断，不是确定预言，也不承诺个人只要学习AI就能避免失业或获得收益。",
+    "supporting_node_ids": ["I01", "I02", "I05", "I10"]
+  },
+  "insight_nodes": [
+    {
+      "id": "I01",
+      "label": "最好与最坏十年悖论",
+      "source_ref": "观点清单2、12",
+      "source_claim": "同一轮AI进步可能同时扩大总福利和个人处境差异，结果仍取决于人的选择。",
+      "structural_function": "tension",
+      "viewer_gain": "不再把最好和最坏听成互相矛盾的预言。",
+      "emotional_function": "先制造冲突，再把宿命感改成条件判断。",
+      "importance": "must-preserve",
+      "verification": {"status": "source-backed", "evidence_ids": [], "accurate_replacement": ""}
+    },
+    {
+      "id": "I02",
+      "label": "图灵陷阱与部署分岔",
+      "source_ref": "观点清单3",
+      "source_claim": "AI被设计为替代人还是增强人，会产生不同的就业和价值分配结果。",
+      "structural_function": "mechanism",
+      "viewer_gain": "把抽象技术冲击落到企业部署激励这个可解释变量。",
+      "emotional_function": "把无力感转成对机制的辨认。",
+      "importance": "must-preserve",
+      "verification": {"status": "verified", "evidence_ids": ["evidence:turing-trap"], "accurate_replacement": ""}
+    },
+    {
+      "id": "I03",
+      "label": "客服实验与新人台阶",
+      "source_ref": "观点清单4、11",
+      "source_claim": "AI对低经验客服的生产率提升更明显；新人培养通道是否被压缩需要作为延伸风险而非实验直接结论。",
+      "structural_function": "example",
+      "viewer_gain": "理解AI既能缩小技能差距，也可能改变传统练级路径。",
+      "emotional_function": "让宏观机制变成普通人能代入的职业成长问题。",
+      "importance": "must-preserve",
+      "verification": {"status": "interpretation", "evidence_ids": ["evidence:customer-support-study"], "accurate_replacement": "实验支持低经验员工提升更明显；培养台阶变化是结合就业结构提出的风险判断。"}
+    },
+    {
+      "id": "I04",
+      "label": "年轻高暴露职业16%边界",
+      "source_ref": "观点清单5",
+      "source_claim": "22至25岁、AI暴露度最高职业的相对就业下降约16%，且自动化型应用压力更明显。",
+      "structural_function": "evidence",
+      "viewer_gain": "获得一条有边界的数据，而不是泛化的失业恐吓。",
+      "emotional_function": "用具体证据增加紧迫感，同时限制恐慌。",
+      "importance": "must-preserve",
+      "verification": {"status": "verified", "evidence_ids": ["evidence:stanford-canaries"], "accurate_replacement": ""}
+    },
+    {
+      "id": "I05",
+      "label": "生产率J曲线",
+      "source_ref": "观点清单7",
+      "source_claim": "通用技术的经济收益要等流程、技能、产品和组织完成互补性重构后才逐步显现。",
+      "structural_function": "mechanism",
+      "viewer_gain": "理解模型能力暴涨与企业真实收益、个人阵痛不同步。",
+      "emotional_function": "解释为什么当下感受混乱，避免简单乐观或悲观。",
+      "importance": "must-preserve",
+      "verification": {"status": "verified", "evidence_ids": ["evidence:productivity-j-curve"], "accurate_replacement": ""}
+    },
+    {
+      "id": "I06",
+      "label": "GDP-B与福利分裂",
+      "source_ref": "观点清单8",
+      "source_claim": "GDP-B补充衡量免费数字产品的消费者福利，但不能单独证明劳动者的技能价格或议价能力变化。",
+      "structural_function": "boundary",
+      "viewer_gain": "区分社会总福利、消费者福利和个人劳动收入不是同一件事。",
+      "emotional_function": "解释为什么社会看起来更富，个人却未必更有安全感。",
+      "importance": "must-preserve",
+      "verification": {"status": "partial", "evidence_ids": ["evidence:gdp-b"], "accurate_replacement": "GDP-B只补充消费者福利测量；劳动侧变化必须由其他就业和工资证据支持。"}
+    },
+    {
+      "id": "I07",
+      "label": "意图放大器",
+      "source_ref": "观点清单1、9",
+      "source_claim": "AI降低执行成本并放大人的意图，因此想解决什么问题变得更重要。",
+      "structural_function": "implication",
+      "viewer_gain": "从比拼执行速度转向定义目标和问题。",
+      "emotional_function": "把威胁叙事转成能动性。",
+      "importance": "must-preserve",
+      "verification": {"status": "source-backed", "evidence_ids": [], "accurate_replacement": ""}
+    },
+    {
+      "id": "I08",
+      "label": "人的关键输入升值",
+      "source_ref": "观点清单9",
+      "source_claim": "问题定义、品味、判断、连接和责任成为AI工作流的重要输入。",
+      "structural_function": "implication",
+      "viewer_gain": "知道应培养哪些比单一工具更耐久的能力。",
+      "emotional_function": "提供可建立的个人价值支点。",
+      "importance": "must-preserve",
+      "verification": {"status": "source-backed", "evidence_ids": [], "accurate_replacement": ""}
+    },
+    {
+      "id": "I09",
+      "label": "超级个体与多智能体边界",
+      "source_ref": "观点清单10",
+      "source_claim": "个人可能编排多个智能体，但产出上限仍受领域知识、协作和验收能力约束。",
+      "structural_function": "mechanism",
+      "viewer_gain": "不把智能体数量误当成个人能力本身。",
+      "emotional_function": "保留机会感，同时压住工具崇拜。",
+      "importance": "must-preserve",
+      "verification": {"status": "interpretation", "evidence_ids": [], "accurate_replacement": "可以把多智能体理解为工作方式趋势，不使用未经核实的固定人数或收益数字。"}
+    },
+    {
+      "id": "I10",
+      "label": "个人路径与系统边界",
+      "source_ref": "观点清单11、12",
+      "source_claim": "个人可建立复合能力、可复用资产和持续学习机制，但培养通道、集中和分配规则需要组织与公共制度共同处理。",
+      "structural_function": "action",
+      "viewer_gain": "获得可执行方向，同时不把结构性问题归咎于个人。",
+      "emotional_function": "以有边界的行动感收束，而不是鸡汤或宿命。",
+      "importance": "must-preserve",
+      "verification": {"status": "source-backed", "evidence_ids": [], "accurate_replacement": ""}
+    }
+  ],
+  "argument_chain": [
+    {"from": "I01", "to": "I02", "relation": "why", "bridge": "最好或最坏的分岔首先来自AI被用于替代还是增强人。"},
+    {"from": "I02", "to": "I03", "relation": "example", "bridge": "客服实验展示增强型AI如何改变不同经验者的生产率。"},
+    {"from": "I03", "to": "I04", "relation": "but", "bridge": "能力提升与就业入口承压可以同时发生。"},
+    {"from": "I04", "to": "I05", "relation": "why", "bridge": "短期就业变化要放进组织重构和收益滞后的过渡期理解。"},
+    {"from": "I05", "to": "I06", "relation": "therefore", "bridge": "宏观收益出现也不代表消费者福利和劳动收入同步变化。"},
+    {"from": "I06", "to": "I07", "relation": "but", "bridge": "分配存在风险，不等于个人没有能动空间。"},
+    {"from": "I07", "to": "I08", "relation": "therefore", "bridge": "执行便宜以后，人的关键输入成为新的价值来源。"},
+    {"from": "I08", "to": "I09", "relation": "enables", "bridge": "这些输入决定一个人能否有效编排和验收多个智能体。"},
+    {"from": "I09", "to": "I10", "relation": "limit", "bridge": "个人杠杆需要转成长期能力和资产，同时承认系统边界。"}
+  ],
+  "correction_ledger": [
+    {"node_id": "I03", "source_expression": "AI让资深员工不再重要并直接摧毁新人岗位", "issue": "把生产率实验扩大成了确定的职业结论", "action": "qualify", "accurate_replacement": "实验支持低经验员工提升更明显；培养台阶变化是结合就业结构提出的风险判断。", "insight_preserved": true},
+    {"node_id": "I06", "source_expression": "GDP-B证明技能价格一定会暴跌", "issue": "GDP-B衡量消费者福利，不能单独证明劳动侧变化", "action": "replace", "accurate_replacement": "GDP-B只补充消费者福利测量；劳动侧变化必须由其他就业和工资证据支持。", "insight_preserved": true},
+    {"node_id": "I09", "source_expression": "每个人都会成为管理固定数量智能体的超级个体", "issue": "固定数量和普遍结果缺少稳定依据", "action": "qualify", "accurate_replacement": "可以把多智能体理解为工作方式趋势，不使用未经核实的固定人数或收益数字。", "insight_preserved": true}
+  ],
+  "ordinary_person_gains": {
+    "explanation": {"statement": "看懂替代与增强、组织J曲线和福利分配如何共同制造最好与最坏两种结果。", "node_ids": ["I02", "I05", "I06"]},
+    "judgment": {"statement": "判断自己的价值是在廉价执行，还是在问题定义、领域判断、协作和责任。", "node_ids": ["I07", "I08", "I09"]},
+    "action": {"statement": "围绕真实领域建立复合能力、可复用资产和持续学习机制。", "node_ids": ["I10"]}
+  },
+  "adaptation": {
+    "path": "<skill-root>/fixtures/ai007-outline-pass.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "mappings": [
+      {"node_id": "I01", "draft_ref": "下一轮技术浪潮可能同时制造最好的十年和最坏的十年。", "function_preserved": true},
+      {"node_id": "I02", "draft_ref": "关键分岔不在 AI 能力本身，而在企业把它设计成替代人，还是增强人。", "function_preserved": true},
+      {"node_id": "I03", "draft_ref": "客服实验说明，AI 能让低经验者更快接近高经验者，但这也会压缩新人的练级台阶。", "function_preserved": true},
+      {"node_id": "I04", "draft_ref": "22 到 25 岁高 AI 暴露职业的相对就业下降约 16%，而增强型岗位相对更稳。", "function_preserved": true},
+      {"node_id": "I05", "draft_ref": "通用技术要变成生产率，企业还得重做流程、组织和技能，所以收益与痛苦不会同步到来。", "function_preserved": true},
+      {"node_id": "I06", "draft_ref": "GDP-B 提醒我们，免费数字产品创造的消费者福利可能没被传统 GDP 充分记录；它不能单独证明劳动者的技能价格如何变化。", "function_preserved": true},
+      {"node_id": "I07", "draft_ref": "AI 更像意图放大器：执行越来越便宜，真正稀缺的是你想完成什么。", "function_preserved": true},
+      {"node_id": "I08", "draft_ref": "问题定义、品味、判断、连接和责任，正在从软能力变成 AI 工作流的关键输入。", "function_preserved": true},
+      {"node_id": "I09", "draft_ref": "未来一个人可能编排多个智能体，但领域知识、协作能力和结果验收仍决定产出上限。", "function_preserved": true},
+      {"node_id": "I10", "draft_ref": "普通人的破局不是赌一个工具，而是建立复合能力、可复用资产和持续学习机制，同时承认培养通道与分配规则不是个人能独自解决的。", "function_preserved": true}
+    ]
+  }
+}

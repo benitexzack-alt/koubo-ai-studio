@@ -31,6 +31,7 @@ const requiredFiles = [
   'knowledge/15-抖音精选内容质量验收.md',
   'remotion/package.json',
   'remotion/package-lock.json',
+  'skills/source-essence-synthesis/SKILL.md',
   'skills/content-brain-gate/SKILL.md',
   'skills/humanize-koubo-script/SKILL.md',
   'skills/koubo-asset-prep/SKILL.md',
@@ -142,6 +143,7 @@ if (hardcodedHits.length === 0) {
 }
 
 for (const name of [
+  'source-essence-synthesis',
   'content-brain-gate',
   'humanize-koubo-script',
   'koubo-asset-prep',
