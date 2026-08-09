@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20260810-ai-cognitive-position-v73",
+  "videoId": "AI_COGNITIVE_POSITION_20260810_talk01",
+  "title": "AI在第四次工业革命里站哪一层",
+  "purpose": "完整保留用户口播原片，以真实口语时间轴驱动中英字幕、36组主视觉与逐卡音效；缺失的真实录屏明确降级为非真实平台录屏的来源树流程演示",
+  "productionState": "ready-for-production",
+  "timingContext": {
+    "sourceDetectedAt": "2026-08-10T01:20:00+08:00",
+    "productionStartedAt": "2026-08-10T02:05:00+08:00",
+    "measurementBoundary": "原片和四支AI素材预检至正式片机器质检完成"
+  },
+  "experiment": {
+    "id": "v73-media-sfx-speed",
+    "status": "ready-for-next-video-validation",
+    "userMediaRequest": "notes/2026-08-10-AI第四次工业革命普通人位置-素材与V7.3执行单-v1.md",
+    "missingRecordingFallback": "调用权来源树流程演示，常驻标注流程演示·非真实平台录屏",
+    "primaryVisualEventCount": 36,
+    "sfxCoveragePercent": 100,
+    "fullLengthLowResPreview": {
+      "enabled": false,
+      "reason": "先按生产基线审阅约41秒代表性动态预览；正式片仍须用户完整观看。"
+    },
+    "previewAuditionRoles": [
+      "soft-card-pop",
+      "list-tick",
+      "line-connect",
+      "number-settle",
+      "media-whoosh",
+      "evidence-paper",
+      "chapter-sweep",
+      "cta-confirm"
+    ]
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "source/20260810_ai_cognitive_position/R01_AI第四次工业革命_口播原片.MOV",
+    "renderProxy": "remotion/public/media/ai-cognitive-position-20260810/main-30fps.mp4",
+    "visualPlan": "edit/20260810_ai_cognitive_position/visual-plan_AI_COGNITIVE_POSITION_20260810_talk01_v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_COGNITIVE_POSITION_20260810_talk01.bilingual.v1.json",
+    "sfxCueSheet": "edit/20260810_ai_cognitive_position/sfx-cue-sheet_AI_COGNITIVE_POSITION_20260810_talk01_v1.json",
+    "fingerprintPaths": [
+      "source/20260810_ai_cognitive_position/R01_AI第四次工业革命_口播原片.MOV",
+      "remotion/public/media/ai-cognitive-position-20260810/main-30fps.mp4",
+      "remotion/public/media/ai-cognitive-position-20260810/S01_认知生产线进入个人设备_16x9.mp4",
+      "remotion/public/media/ai-cognitive-position-20260810/S02_AI与现实之间_16x9.mp4",
+      "remotion/public/media/ai-cognitive-position-20260810/S03_未经校准的判断被放大_16x9.mp4",
+      "remotion/public/media/ai-cognitive-position-20260810/S04_把AI能力送到现实_16x9.mp4",
+      "remotion/src/Root.tsx",
+      "remotion/src/AICognitivePositionV73Talk16x9.tsx",
+      "remotion/src/components",
+      "remotion/src/data/AICognitivePositionV73.visual-plan.v1.json",
+      "remotion/src/data/AICognitivePositionV73.sfx.v1.json",
+      "remotion/public/data/AI_COGNITIVE_POSITION_20260810_talk01.bilingual.v1.json",
+      "remotion/public/audio/koubo-sfx-v3-candidates",
+      "assets/sfx/koubo-sfx-v3-candidates/manifest.json",
+      "edit/20260810_ai_cognitive_position/visual-plan_AI_COGNITIVE_POSITION_20260810_talk01_v1.json",
+      "edit/20260810_ai_cognitive_position/sfx-cue-sheet_AI_COGNITIVE_POSITION_20260810_talk01_v1.json",
+      "notes/2026-08-10-AI第四次工业革命普通人位置-素材与V7.3执行单-v1.md"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/index.ts",
+    "compositionWithSfx": "AICognitivePosition16x9-V73-WithSfx",
+    "compositionWithoutSfx": "AICognitivePosition16x9-V73-NoSfx",
+    "durationSeconds": 305.968005,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 3
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": true,
+    "scale": 0.5,
+    "crf": 23,
+    "ranges": [
+      {"id": "hook-chapter", "startSeconds": 0.7, "endSeconds": 3.7},
+      {"id": "contrast-and-line", "startSeconds": 8.0, "endSeconds": 13.6},
+      {"id": "ai-video-paper-number", "startSeconds": 26.6, "endSeconds": 37.2},
+      {"id": "reality-question-grid", "startSeconds": 88.7, "endSeconds": 92.7},
+      {"id": "missing-recording-source-tree", "startSeconds": 149.5, "endSeconds": 155.5},
+      {"id": "ai-packaging-video", "startSeconds": 260.0, "endSeconds": 263.5},
+      {"id": "reality-video-and-cta", "startSeconds": 297.7, "endSeconds": 305.968005}
+    ],
+    "output": "work/production-runs/20260810-ai-cognitive-position-v73/preview-with-sfx.mp4",
+    "renderWithoutSfxComparison": true
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt",
+    "fullResolution": true,
+    "outputDirectory": "work/production-runs/20260810-ai-cognitive-position-v73/risk-frames"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": true,
+    "composition": "with-sfx",
+    "crf": 18,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "rawOutput": "work/production-runs/20260810-ai-cognitive-position-v73/formal-raw.mp4",
+    "finalOutput": "outputs/AI第四次工业革命普通人位置_16x9_V73_有音效_正式成片_v1.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -1.7
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "directory": "work/production-cache",
+    "reuseOnlyOnExactFingerprint": true
+  },
+  "reports": {
+    "runManifest": "work/production-runs/20260810-ai-cognitive-position-v73/run-manifest.json",
+    "timingReport": "work/production-runs/20260810-ai-cognitive-position-v73/timing-report.json",
+    "regressionReport": "work/production-runs/20260810-ai-cognitive-position-v73/regression-report.json"
+  }
+}
