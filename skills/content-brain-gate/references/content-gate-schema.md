@@ -4,11 +4,12 @@
 
 ```json
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "task_id": "唯一任务标识",
   "target_stage": "outline | draft | production",
   "required_rules": [],
   "sources": [],
+  "topic_authorization": {},
   "recent_six": [],
   "candidate_generation": {},
   "topic": {},
@@ -21,7 +22,7 @@
 }
 ```
 
-`schema_version: 3` 从 2026-07-24 起用于所有新内容。历史卡只保留审计价值，重新进入写稿或制作时必须升级；不得自动继承抖音精选质量验收或文案双 Skill 执行状态。
+`schema_version: 4` 从 2026-08-09 起用于所有重新进入写稿或制作的内容。v4 新增用户选题授权、主张 ID 和证据 ID 去重。历史卡只保留审计价值，不得自动继承选题许可、抖音精选质量验收或文案双 Skill 执行状态。
 
 ## required_rules
 
@@ -48,7 +49,9 @@
   "acquisition": "public-page | user-pasted | local-asr | official-page | local-file",
   "intended_uses": ["title-clue"],
   "content_path": "可选，完整转写或原文的绝对路径",
-  "verification_status": "待核验 | 部分核验 | 已核验 | 不适用"
+  "verification_status": "待核验 | 部分核验 | 已核验 | 不适用",
+  "canonical_ref": "作为成稿证据时必填的稳定来源引用",
+  "evidence_ids": ["evidence:来源域:稳定证据标识"]
 }
 ```
 
@@ -67,6 +70,26 @@
 - `partial` 只能使用 `title-clue`、`source-index`、`partial-context`；
 - `viewpoint` 和 `talking-structure` 需要 `complete` 且有非空 `content_path`；
 - `draft-evidence` 需要 `complete` 或 `primary-source`、有非空 `content_path`，且核验状态不是“待核验”。
+- `draft-evidence` 还必须提供稳定的 `canonical_ref` 和至少一个 `evidence_id`；改写标题或摘要不能产生新的证据 ID。
+
+## topic_authorization
+
+进入 `draft` 或 `production` 前必填。候选生成、历史召回和模型建议都不能替代用户明确选题。
+
+```json
+{
+  "status": "user-selected",
+  "selected_by": "user",
+  "selection_mode": "explicit-topic-request | explicit-candidate-choice | user-confirmed-assistant-candidate",
+  "selected_topic": "必须与 topic.novel_claim 完全一致",
+  "user_instruction": "可审计的用户原始指令",
+  "source_ref": "conversation:任务或会话:消息标识",
+  "confirmed_at": "ISO 8601 时间",
+  "candidate_only": false
+}
+```
+
+本字段提供可追踪审计门，不是密码学证明。执行环境若不能读取原始消息，只能将其标记为外部可信输入；不得由模型根据“继续”“好的”等模糊指令补写选题授权。
 
 ## recent_six
 
@@ -78,7 +101,9 @@
   "date": "2026-07-15",
   "audience_problem": "服务的具体问题",
   "main_claim": "唯一主张",
+  "claim_id": "claim:范围:稳定主张标识",
   "evidence": "核心证据",
+  "evidence_ids": ["evidence:来源域:稳定证据标识"],
   "deliverable": "观众带走什么",
   "cta": "唯一行动引导"
 }
@@ -92,6 +117,8 @@
   "problem": "当前具体问题",
   "desired_change": "看完后的可观察变化",
   "novel_claim": "本条唯一新主张",
+  "claim_id": "claim:范围:稳定主张标识",
+  "primary_evidence_ids": ["evidence:来源域:稳定证据标识"],
   "difference_from_recent": "与最近六条相比的新问题、新信息、新证据和新交付物",
   "evidence_proves": "当前证据只证明什么",
   "evidence_does_not_prove": "当前证据不能证明什么",
@@ -100,6 +127,8 @@
   "delete_candidates": ["不服务主张、应删除的材料"]
 }
 ```
+
+`claim_id` 与最近六条重复时直接阻断。`primary_evidence_ids` 必须已在 `sources` 登记；与最近六条重复时默认阻断。确有更新、反例或背景复用需要时，必须增加 `evidence_reuse_authorization`，记录用户批准来源、复用理由和本次新增贡献，不能仅靠换标题或改写 `difference_from_recent` 放行。
 
 ## candidate_generation
 

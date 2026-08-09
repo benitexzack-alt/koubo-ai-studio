@@ -166,6 +166,56 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertEqual(result["status"], "ready-for-draft")
         self.assertFalse(result["errors"])
 
+    def test_draft_requires_explicit_user_topic_authorization(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        del card["topic_authorization"]
+
+        result = self.validate(card, "missing-topic-authorization.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "topic_authorization" in error
+            for error in result["errors"]
+        ))
+
+    def test_reused_primary_evidence_from_recent_six_is_blocked(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["topic_authorization"] = {
+            "status": "user-selected",
+            "selected_by": "user",
+            "selection_mode": "explicit-topic-request",
+            "selected_topic": card["topic"]["novel_claim"],
+            "user_instruction": "请围绕大会中AI开始理解非文字数据这个主题写一条口播。",
+            "source_ref": "conversation:test:user-message-1",
+            "confirmed_at": "2026-08-09T19:30:00+08:00",
+            "candidate_only": False,
+        }
+        card["topic"]["claim_id"] = "claim:waic:non-text-world"
+        card["topic"]["primary_evidence_ids"] = ["evidence:nber:w31161"]
+        card["sources"][1]["evidence_ids"].append("evidence:nber:w31161")
+        for index, item in enumerate(card["recent_six"]):
+            item["claim_id"] = f"claim:recent:{index}"
+            item["evidence_ids"] = []
+        card["recent_six"][0]["evidence_ids"] = ["evidence:nber:w31161"]
+
+        result = self.validate(card, "reused-primary-evidence.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "evidence:nber:w31161" in error and "最近六条" in error
+            for error in result["errors"]
+        ))
+
+    def test_malformed_evidence_ids_are_blocked_without_crashing(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["sources"][1]["evidence_ids"] = None
+        card["recent_six"][0]["evidence_ids"] = None
+
+        result = self.validate(card, "malformed-evidence-ids.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("evidence_ids" in error for error in result["errors"]))
+
     def test_reference_structure_requires_brief_contract(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
         del card["brief_contract"]

@@ -63,6 +63,11 @@ AUDIENCE_FIT_FIELDS = (
 )
 VALID_ACCOUNT_STAGES = {"调查", "试验", "结果", "方法", "复制"}
 VALID_HIGH_LEVEL_ROLES = {"evidence", "background", "none"}
+VALID_SELECTION_MODES = {
+    "explicit-topic-request",
+    "explicit-candidate-choice",
+    "user-confirmed-assistant-candidate",
+}
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 RECENT_FIELDS = (
     "title",
@@ -214,9 +219,9 @@ class GateValidator:
         self.passed.append(message)
 
     def validate_header(self) -> str:
-        if self.card.get("schema_version") != 3:
+        if self.card.get("schema_version") != 4:
             self.error(
-                "schema_version 必须为 3；历史卡重新进入写稿或制作时必须升级文案双 Skill 执行凭证"
+                "schema_version 必须为 4；历史卡重新进入写稿或制作时必须升级用户选题授权与证据去重字段"
             )
         if not nonempty(self.card.get("task_id")):
             self.error("task_id 不能为空")
@@ -296,6 +301,13 @@ class GateValidator:
                     self.error(f"{label} 仍是待核验，不能直接作为公开成稿证据")
                 else:
                     evidence_source_count += 1
+                evidence_ids = source.get("evidence_ids")
+                if not isinstance(evidence_ids, list) or not evidence_ids or not all(
+                    nonempty(item) for item in evidence_ids
+                ):
+                    self.error(f"{label} 作为成稿证据时必须提供非空 evidence_ids")
+                if not nonempty(source.get("canonical_ref")):
+                    self.error(f"{label} 作为成稿证据时必须提供 canonical_ref")
         if deep_source_count == 0 and evidence_source_count == 0:
             self.error("没有一条来源具备深度分析或成稿证据资格")
         else:
@@ -313,8 +325,44 @@ class GateValidator:
             for field in RECENT_FIELDS:
                 if not nonempty(item.get(field)):
                     self.error(f"recent_six[{index}].{field} 不能为空")
+            if not nonempty(item.get("claim_id")):
+                self.error(f"recent_six[{index}].claim_id 不能为空")
+            evidence_ids = item.get("evidence_ids")
+            if not isinstance(evidence_ids, list) or not all(nonempty(value) for value in evidence_ids):
+                self.error(f"recent_six[{index}].evidence_ids 必须是仅含非空字符串的数组")
         if not any(error.startswith("recent_six") for error in self.errors):
             self.pass_check("最近六条主张、证据、交付物和行动引导已建台账")
+
+    def validate_topic_authorization(self, stage: str) -> None:
+        if stage == "outline":
+            return
+        authorization = self.card.get("topic_authorization")
+        if not isinstance(authorization, dict):
+            self.error("topic_authorization 必须是对象；未取得用户明确选题授权不得进入写稿")
+            return
+        if authorization.get("status") != "user-selected":
+            self.error("topic_authorization.status 必须为 user-selected")
+        if authorization.get("selected_by") != "user":
+            self.error("topic_authorization.selected_by 必须为 user")
+        if authorization.get("selection_mode") not in VALID_SELECTION_MODES:
+            self.error("topic_authorization.selection_mode 取值无效")
+        topic = self.card.get("topic")
+        selected_topic = authorization.get("selected_topic")
+        if not nonempty(selected_topic):
+            self.error("topic_authorization.selected_topic 不能为空")
+        elif isinstance(topic, dict) and selected_topic.strip() != str(topic.get("novel_claim") or "").strip():
+            self.error("topic_authorization.selected_topic 必须与 topic.novel_claim 完全一致")
+        instruction = authorization.get("user_instruction")
+        if not nonempty(instruction) or len(instruction.strip()) < 8:
+            self.error("topic_authorization.user_instruction 必须记录可审计的用户原始指令")
+        if not nonempty(authorization.get("source_ref")):
+            self.error("topic_authorization.source_ref 不能为空")
+        if not nonempty(authorization.get("confirmed_at")):
+            self.error("topic_authorization.confirmed_at 不能为空")
+        if authorization.get("candidate_only") is not False:
+            self.error("topic_authorization.candidate_only 必须为 false")
+        if not any(error.startswith("topic_authorization") for error in self.errors):
+            self.pass_check("用户已明确选择当前主题，候选题未越权进入写稿")
 
     def validate_candidate_generation(self) -> None:
         candidate = self.card.get("candidate_generation")
@@ -405,8 +453,75 @@ class GateValidator:
         delete_candidates = topic.get("delete_candidates")
         if not isinstance(delete_candidates, list):
             self.error("topic.delete_candidates 必须是数组，用于证明已执行删除动作")
+        claim_id = topic.get("claim_id")
+        if not nonempty(claim_id):
+            self.error("topic.claim_id 不能为空")
+        primary_evidence_ids = topic.get("primary_evidence_ids")
+        if not isinstance(primary_evidence_ids, list) or not primary_evidence_ids or not all(
+            nonempty(item) for item in primary_evidence_ids
+        ):
+            self.error("topic.primary_evidence_ids 必须是至少含一项非空证据 ID 的数组")
+        else:
+            source_evidence_ids = {
+                evidence_id
+                for source in self.card.get("sources", [])
+                if isinstance(source, dict)
+                for evidence_id in (
+                    source.get("evidence_ids")
+                    if isinstance(source.get("evidence_ids"), list)
+                    else []
+                )
+                if nonempty(evidence_id)
+            }
+            unknown_ids = sorted(set(primary_evidence_ids) - source_evidence_ids)
+            if unknown_ids:
+                self.error(f"topic.primary_evidence_ids 未在 sources 中登记：{'、'.join(unknown_ids)}")
+
+        recent = self.card.get("recent_six")
+        if isinstance(recent, list):
+            recent_claim_ids = {
+                item.get("claim_id")
+                for item in recent[:6]
+                if isinstance(item, dict) and nonempty(item.get("claim_id"))
+            }
+            if nonempty(claim_id) and claim_id in recent_claim_ids:
+                self.error(f"topic.claim_id 与最近六条重复：{claim_id}")
+            recent_evidence_ids = {
+                evidence_id
+                for item in recent[:6]
+                if isinstance(item, dict)
+                for evidence_id in (
+                    item.get("evidence_ids")
+                    if isinstance(item.get("evidence_ids"), list)
+                    else []
+                )
+                if nonempty(evidence_id)
+            }
+            duplicated_evidence = sorted(set(primary_evidence_ids or []) & recent_evidence_ids)
+            if duplicated_evidence and not self.valid_evidence_reuse_authorization(duplicated_evidence):
+                self.error(
+                    "topic.primary_evidence_ids 与最近六条重复且无用户复用授权："
+                    + "、".join(duplicated_evidence)
+                )
         if not any(error.startswith("topic.") for error in self.errors):
             self.pass_check("第一性原理选题卡完整")
+
+    def valid_evidence_reuse_authorization(self, duplicated_evidence: list[str]) -> bool:
+        authorization = self.card.get("evidence_reuse_authorization")
+        if not isinstance(authorization, dict):
+            return False
+        authorized_ids = authorization.get("evidence_ids")
+        return (
+            authorization.get("status") == "user-approved"
+            and isinstance(authorized_ids, list)
+            and all(nonempty(item) for item in authorized_ids)
+            and set(duplicated_evidence) <= set(authorized_ids)
+            and nonempty(authorization.get("source_ref"))
+            and nonempty(authorization.get("reason"))
+            and len(authorization["reason"].strip()) >= 20
+            and nonempty(authorization.get("new_contribution"))
+            and len(authorization["new_contribution"].strip()) >= 20
+        )
 
     def validate_frozen_topics(self) -> None:
         hits = self.card.get("frozen_topic_hits", [])
@@ -758,6 +873,7 @@ class GateValidator:
         self.validate_recent_six()
         self.validate_candidate_generation()
         self.validate_topic()
+        self.validate_topic_authorization(stage)
         self.validate_frozen_topics()
         self.validate_audience_fit()
         self.validate_douyin_quality(stage)
