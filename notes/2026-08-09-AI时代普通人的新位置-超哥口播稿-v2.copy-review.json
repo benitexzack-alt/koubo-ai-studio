@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "task_id": "20260809-ai-cognitive-translator-v2",
+  "status": "passed",
+  "reviewed_at": "2026-08-09T19:04:48+08:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-08-09-AI时代普通人的新位置-超哥口播稿-v2.md",
+    "sha256": "2517ba45e7e036310e232bff1271dddde0c54a4597266092a219f9a458f598aa"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "<codex-home>/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "20971567ccbf4c96040661d92a920796cccfcf145c0d795ad8049666c86508d8",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "AI 时代，普通人最现实的新位置，可能是做一个‘认知翻译者’。",
+        "risk_level": "medium",
+        "reason": "角色命名陌生，但必须在前30秒直接交付唯一结论；后文需要立即用五条完整转写和三问动作兑现，避免停在概念口号。",
+        "candidates": {
+          "conservative": "AI 时代，普通人可以试着把复杂知识翻译给一种具体的人。",
+          "direct": "普通人别只学工具，试着做一个认知翻译者。",
+          "vivid": "AI 能帮你找到知识，但你要负责把它送到真正需要的人手里。"
+        },
+        "fact_difference": "三个候选都保留知识翻译主轴；直接版语气更强，生动版不再使用角色命名。",
+        "recommendation": "保留现版。它最短地交付唯一结论，并由紧随其后的真实拆解动作和当天三问承接。"
+      },
+      {
+        "original": "一项针对5179名客服人员的研究发现，接入生成式AI助手后，经验较少的员工得到的帮助更明显。",
+        "risk_level": "medium",
+        "reason": "研究数字可能打断口播节奏，但它是本条‘经验出现新传播方式’的主要独立证据，不能只留下抽象判断。",
+        "candidates": {
+          "conservative": "一项客服现场研究发现，AI助手对经验较少的员工帮助更明显。",
+          "direct": "在5179名客服人员的研究里，新手得到的帮助更明显。",
+          "vivid": "同一个AI助手，在那项客服研究里，对新手的帮助更明显。"
+        },
+        "fact_difference": "保守版和生动版删去样本数但不改变方向；直接版保留样本数并压缩场景说明。",
+        "recommendation": "保留现版和下一句解释，同时保留‘特定客服场景’边界，画面用研究首页与样本标注承担信息密度。"
+      },
+      {
+        "original": "如果以后有人愿意付费，他买的也不是你会不会问AI，而是你替他减少了筛选、理解和试错的成本。",
+        "risk_level": "high",
+        "reason": "付费是商业闭环的必要边界，也最容易被误听成收益承诺，必须与后面的可能性和真人验证条件连续出现。",
+        "candidates": {
+          "conservative": "只有出现真实使用、继续使用和付费证据，才能判断这次翻译有没有商业价值。",
+          "direct": "会问AI不是结果，替具体的人减少理解和试错成本才可能有价值。",
+          "vivid": "聊天框不会替你证明价值，真实的人愿意继续用才算数。"
+        },
+        "fact_difference": "三个候选都不承诺收入；直接版删除付费条件，生动版只保留持续使用验证。",
+        "recommendation": "保留现版，并与‘不代表做了就一定有人买’及三项真人验证连续拍摄，不允许拆开剪辑。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "删除前几次工业革命中普通人位置的宏观铺垫。",
+      "删除农业第三场景和五条参考的逐项追问清单。",
+      "删除‘搭一座桥’等抽象收尾。"
+    ],
+    "wording_strength_changes": [
+      "把‘不是学更多工具，而是认知翻译者’收紧为‘可能是认知翻译者’，避免机械二元对立。",
+      "把约五至六分钟的宏观论述压缩为约三分半的单问题结构。",
+      "把三问动作提前到前30秒，并在结尾只保留同一个行动。"
+    ],
+    "pending_user_confirmations": [
+      "用户需确认‘认知翻译者’是否作为本条唯一角色命名。",
+      "用户需确认约三分半的结构是否符合本次拍摄节奏。",
+      "用户需确认当前正文后再进入录制和production门禁。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 9,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
