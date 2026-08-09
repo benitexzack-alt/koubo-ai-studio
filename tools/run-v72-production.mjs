@@ -272,7 +272,9 @@ const validateJob = () => {
     }
   };
 
-  if (job.schemaVersion !== 1) errors.push('只支持 schemaVersion=1');
+  if (![1, 2].includes(job.schemaVersion)) {
+    errors.push('只支持 schemaVersion=1 或 schemaVersion=2');
+  }
   requireText(job.jobId, 'jobId');
   requireText(job.videoId, 'videoId');
   requireText(job.title, 'title');
