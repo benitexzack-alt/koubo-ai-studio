@@ -34,6 +34,7 @@ const isNumber = (value) => typeof value === 'number' && Number.isFinite(value);
 let job;
 let plan;
 let cueSheet;
+let recordedSourceAudit;
 
 try {
   job = readJson(jobArgument, '生产任务');
@@ -42,6 +43,48 @@ try {
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
   process.exit(1);
+}
+
+if (job.schemaVersion === 2) {
+  if (!isText(job.inputs?.recordedSourceAudit)) {
+    errors.push('schemaVersion=2 的生产任务必须绑定 inputs.recordedSourceAudit。');
+  } else {
+    try {
+      recordedSourceAudit = readJson(
+        job.inputs.recordedSourceAudit,
+        '实拍源审计',
+      );
+    } catch (error) {
+      errors.push(error instanceof Error ? error.message : String(error));
+    }
+  }
+}
+
+if (recordedSourceAudit) {
+  if (recordedSourceAudit.schema_version !== 1) {
+    errors.push('实拍源审计只支持 schema_version=1。');
+  }
+  if (recordedSourceAudit.video_id !== job.videoId) {
+    errors.push('实拍源审计的 video_id 与生产任务不一致。');
+  }
+  if (recordedSourceAudit.recorded_source?.path !== job.inputs?.source) {
+    errors.push('实拍源审计绑定的原片与生产任务 inputs.source 不一致。');
+  }
+  if (recordedSourceAudit.recorded_source?.full_decode !== 'passed') {
+    errors.push('实拍源审计未通过原片完整解码。');
+  }
+  if (recordedSourceAudit.locked_script?.policy !== 'verbatim-lock') {
+    errors.push('实拍源审计未声明 verbatim-lock 锁稿策略。');
+  }
+  if (recordedSourceAudit.status !== 'passed') {
+    errors.push(`实拍源审计未通过：${recordedSourceAudit.status ?? '状态缺失'}。`);
+  }
+  const sourceMismatches = Array.isArray(recordedSourceAudit.blocking_mismatches)
+    ? recordedSourceAudit.blocking_mismatches
+    : [];
+  if (sourceMismatches.length > 0) {
+    errors.push(`实拍源审计仍有 ${sourceMismatches.length} 个阻断差异。`);
+  }
 }
 
 if (job.experiment?.id !== 'v73-media-sfx-speed') {
