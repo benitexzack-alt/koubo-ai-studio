@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260809T144628Z-86b87e79",
+  "status": "passed",
+  "reviewed_at": "2026-08-10T00:30:13+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-10-AI第四次工业革命普通人位置-用户最终确认原稿-v1.md",
+    "sha256": "0192d40b19366ae98ab8a394d1558aa43298073b23bb900f8e5369245f9f2443"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "20971567ccbf4c96040661d92a920796cccfcf145c0d795ad8049666c86508d8",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "千万别再只会单纯用AI搜答案了！90%的普通人都搞错了第四次工业革命的核心，一味跟风用AI、玩AI，最后只会被AI淘汰！",
+        "risk_level": "high",
+        "reason": "90%没有独立统计来源，且“只会被AI淘汰”是强预测；若做成官方数据卡会把观点误装成统计事实。",
+        "candidates": {
+          "conservative": "很多人只把AI当成搜答案的工具，但这可能把第四次工业革命真正重要的变化看窄了。",
+          "direct": "别再只会用AI搜答案了。只把AI当工具的人，可能正在错过真正的变化。",
+          "vivid": "AI把认知生产线送进了电脑，你却只拿它搜答案。"
+        },
+        "fact_difference": "三个候选都会删除未经核验的90%并降低淘汰预测强度；用户已明确要求原文一个字不改，因此候选不进入正文。",
+        "recommendation": "执行用户逐字锁稿：原句保留在声音和字幕中；后期不制作90%统计卡、研究角标或失业数据画面，并用个人观点声明控制误读。"
+      },
+      {
+        "original": "我最近看到一个特别准确的说法，叫“文明级认知能力”。",
+        "risk_level": "medium",
+        "reason": "该表达有记忆点，但不是正式学术概念；只靠口头解释，部分观众可能把它误听成已有权威分类。",
+        "candidates": {
+          "conservative": "我最近看到一个很有启发的说法，叫“文明级认知能力”。",
+          "direct": "有人把这种变化叫作“文明级认知能力”。",
+          "vivid": "过去要靠一个团队翻完的资料，现在一个人也有机会调用。"
+        },
+        "fact_difference": "候选只调整语气或改成解释，不新增事实；用户已锁定原句，正文不采用候选。",
+        "recommendation": "保留原句，画面紧跟“接触、读完、比较、调用”四个动作，并标注“观点表达”，不用论文或官方徽标包装。"
+      },
+      {
+        "original": "调用权、解释权、转化权、校准权四个连续章节",
+        "risk_level": "medium",
+        "reason": "四个抽象概念连续出现，信息密度高；若只有字幕，观众容易在第三个概念前失去结构感。",
+        "candidates": {
+          "conservative": "把四个权压缩成一张总览卡后逐项展开。",
+          "direct": "每进入一个权，只保留一个问题和一个动作。",
+          "vivid": "让四个权像四站路线一样逐站点亮。"
+        },
+        "fact_difference": "候选只属于后期表达方式，不改变口播事实或正文顺序。",
+        "recommendation": "正文逐字保留；拍摄时在四个章节标题前后自然停顿，Remotion使用同一条四站导航并逐站点亮，避免增加第五套概念。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": []
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 8,
+    "rhythm": 8.5,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}

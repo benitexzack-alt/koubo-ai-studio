@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "project_id": "AI_COGNITIVE_POSITION_20260810",
+  "project": "AI在第四次工业革命里站哪一层",
+  "version": "v1",
+  "created_at": "2026-08-10T00:31:00+08:00",
+  "status": "preproduction-ready-awaiting-user-assets-and-talk-source",
+  "script_path": "notes/2026-08-10-AI第四次工业革命普通人位置-用户最终确认原稿-v1.md",
+  "production_gate": {
+    "card": "notes/2026-08-10-AI第四次工业革命普通人位置-内容门禁卡-v4-production.json",
+    "report": "notes/2026-08-10-AI第四次工业革命普通人位置-门禁报告-v4-production.json",
+    "status": "ready-for-production"
+  },
+  "source_folder": "/Users/pc/Desktop/口播素材/2026-08-10_AI在第四次工业革命里站哪一层",
+  "global_usage_rules": [
+    "用户逐字确认正文不得改写，实拍声音只用于定位和核对",
+    "原始素材只读，不覆盖、不删除、不用转码文件替换原件",
+    "AI生成视频统一标注AI生成·概念画面，不作为新闻、历史、客户或效果证据",
+    "开头90%没有独立统计来源，只保留在声音和字幕中，不制作成统计图或官方数据卡",
+    "Remotion只负责层级、关系、清单、对照、流程和结论，不用大段黑底动画替代真人或真实视频",
+    "所有主要视觉事件与本地音效通过相同visualEventId一一绑定，覆盖率100%，同步误差不超过2帧",
+    "左上角只显示超哥AI创业记，不显示V7、V7.3或模板名称",
+    "中英字幕同窗进入和退出，以实拍声音的词级时间为准",
+    "所有叠加区间按不超过0.5秒间隔检查人脸和主要手势安全"
+  ],
+  "assets": [
+    {
+      "id": "R01",
+      "type": "real-talk-source",
+      "required": true,
+      "filename": "R01_AI第四次工业革命_口播原片.原扩展名",
+      "folder": "01_口播原片",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S01",
+      "type": "text-to-video",
+      "required": true,
+      "filename": "S01_认知生产线进入个人设备_16x9.mp4",
+      "folder": "02_AI生成视频",
+      "semantic_anchor": "普通人拿到的是可以装进电脑和手机里的认知生产线",
+      "usage": "full-screen",
+      "disclosure": "AI生成·概念画面",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S02",
+      "type": "text-to-video",
+      "required": true,
+      "filename": "S02_AI与现实之间_16x9.mp4",
+      "folder": "02_AI生成视频",
+      "semantic_anchor": "普通人站在AI和现实之间",
+      "usage": "full-screen",
+      "disclosure": "AI生成·概念画面",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S03",
+      "type": "text-to-video",
+      "required": true,
+      "filename": "S03_未经校准的判断被放大_16x9.mp4",
+      "folder": "02_AI生成视频",
+      "semantic_anchor": "未经现实校准的判断被AI包装得更快、更完整、更像真的",
+      "usage": "full-screen",
+      "disclosure": "AI生成·概念画面",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S04",
+      "type": "text-to-video",
+      "required": true,
+      "filename": "S04_把AI能力送到现实_16x9.mp4",
+      "folder": "02_AI生成视频",
+      "semantic_anchor": "把AI能力真正送到现实里",
+      "usage": "full-screen",
+      "disclosure": "AI生成·概念画面",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "R02",
+      "type": "real-screen-recording",
+      "required": false,
+      "priority": "high",
+      "filename": "R02_调用权真实录屏_16x9.mp4",
+      "folder": "03_真实录屏与现场素材",
+      "semantic_anchor": "让AI帮你找到原文、案例和反对意见",
+      "usage": "full-screen",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "R03",
+      "type": "authorized-real-field-footage",
+      "required": false,
+      "priority": "preferred-if-available",
+      "filename": "R03_真实需求与反馈现场_16x9.mp4",
+      "folder": "03_真实录屏与现场素材",
+      "semantic_anchor": "真实问题、真实反馈和现实验收",
+      "usage": "full-screen-or-safe-overlay",
+      "status": "awaiting-user"
+    }
+  ],
+  "timing_policy": {
+    "current": "semantic-anchors-only",
+    "formal_timing_source": "词级转写与实拍原音轨",
+    "no_script-time-estimation": true
+  },
+  "next_step": "用户把R01、S01至S04及可选R02、R03放入固定目录后，执行技术检查、转写、逐字核对和正式时间轴编排"
+}
