@@ -162,6 +162,21 @@ const baseJob = {
   },
 };
 
+const baseRecordedSourceAudit = {
+  schema_version: 1,
+  audit_id: 'v73-contract-recorded-source-test',
+  video_id: 'V73_CONTRACT_TEST',
+  status: 'passed',
+  locked_script: {
+    policy: 'verbatim-lock',
+  },
+  recorded_source: {
+    path: audioSource,
+    full_decode: 'passed',
+  },
+  blocking_mismatches: [],
+};
+
 const writeCase = (name, plan, cueSheet, job) => {
   const planPath = writeJson(`${name}.visual-plan.json`, plan);
   const cuePath = writeJson(`${name}.sfx-cues.json`, cueSheet);
@@ -182,6 +197,60 @@ try {
   assertPasses(
     '合法V7.3生产合同',
     run('tools/validate-v73-production-contract.mjs', validJob),
+  );
+
+  const validAuditPath = writeJson(
+    'valid.recorded-source-audit.json',
+    baseRecordedSourceAudit,
+  );
+  const validV2Job = clone(baseJob);
+  validV2Job.schemaVersion = 2;
+  validV2Job.inputs.source = audioSource;
+  validV2Job.inputs.recordedSourceAudit = validAuditPath;
+  const validV2JobPath = writeCase(
+    'valid-v2-recorded-source',
+    basePlan,
+    baseCueSheet,
+    validV2Job,
+  );
+  assertPasses(
+    '合法v2实拍源审计',
+    run('tools/validate-v73-production-contract.mjs', validV2JobPath),
+  );
+
+  const missingAuditJob = clone(validV2Job);
+  delete missingAuditJob.inputs.recordedSourceAudit;
+  const missingAuditJobPath = writeCase(
+    'missing-recorded-source-audit',
+    basePlan,
+    baseCueSheet,
+    missingAuditJob,
+  );
+  assertFailsWith(
+    'v2任务缺失实拍源审计',
+    run('tools/validate-v73-production-contract.mjs', missingAuditJobPath),
+    '必须绑定 inputs.recordedSourceAudit',
+  );
+
+  const blockedAudit = clone(baseRecordedSourceAudit);
+  blockedAudit.status = 'blocked-recording-revision-required';
+  blockedAudit.blocking_mismatches = [{id: 'RS-001'}];
+  const blockedAuditPath = writeJson(
+    'blocked.recorded-source-audit.json',
+    blockedAudit,
+  );
+  const blockedAuditJob = clone(validV2Job);
+  blockedAuditJob.inputs.recordedSourceAudit = blockedAuditPath;
+  const blockedAuditJobPath = writeCase(
+    'blocked-recorded-source-audit',
+    basePlan,
+    baseCueSheet,
+    blockedAuditJob,
+  );
+  assertFailsWith(
+    '实拍源仍有语义口误',
+    run('tools/validate-v73-production-contract.mjs', blockedAuditJobPath),
+    '实拍源审计未通过',
   );
 
   const missingCueSheet = clone(baseCueSheet);
@@ -317,6 +386,9 @@ try {
   lockedJob.jobId = 'v73-runner-integration-test';
   lockedJob.videoId = basePlan.videoId;
   lockedJob.title = 'V7.3生产器集成测试';
+  lockedJob.schemaVersion = 2;
+  lockedJob.inputs.source = audioSource;
+  lockedJob.inputs.recordedSourceAudit = validAuditPath;
   lockedJob.experiment = clone(baseJob.experiment);
   lockedJob.preview.ranges = [
     {
@@ -367,7 +439,7 @@ try {
     'V7.3生产合同校验',
   );
 
-  console.log('V7.3生产合同回归通过：9/9。');
+  console.log('V7.3生产合同回归通过：12/12。');
 } finally {
   rmSync(testRoot, {recursive: true, force: true});
 }
