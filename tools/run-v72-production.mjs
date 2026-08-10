@@ -788,45 +788,100 @@ const normalizeLoudness = (input, output, target) => {
 const renderPreview = async () =>
   withStage('有音效动态预览', async (stage) => {
     const output = resolveProjectPath(job.preview.output, '预览输出');
+    const comparisonOutput = job.preview.renderWithoutSfxComparison
+      ? path.join(
+          path.dirname(output),
+          'audio-ab',
+          'preview-without-sfx-matched-video.mp4',
+        )
+      : null;
+    const outputs = comparisonOutput ? [output, comparisonOutput] : [output];
     const stageConfig = {
       composition: job.remotion.compositionWithSfx,
+      comparisonComposition: comparisonOutput
+        ? job.remotion.compositionWithoutSfx
+        : null,
       ranges: job.preview.ranges,
       scale: job.preview.scale,
       crf: job.preview.crf,
       loudness: job.formal.loudness,
     };
-    if (await tryStageCache('preview', stageConfig, [output], stage)) {
+    if (await tryStageCache('preview', stageConfig, outputs, stage)) {
       return output;
     }
 
-    const rawOutput = `${output}.raw.mp4`;
-    const segmentDir = path.join(path.dirname(output), '.preview-segments');
-    const segments = [];
-    for (const [index, range] of job.preview.ranges.entries()) {
-      const segment = path.join(
-        segmentDir,
-        `${String(index + 1).padStart(2, '0')}-${range.id}.mp4`,
-      );
-      await renderVideoRange({
-        compositionId: job.remotion.compositionWithSfx,
-        output: segment,
-        startSeconds: range.startSeconds,
-        endSeconds: range.endSeconds,
-        scale: job.preview.scale,
-        crf: job.preview.crf,
+    const renderVariant = async ({compositionId, destination, segmentName}) => {
+      const rawOutput = `${destination}.raw.mp4`;
+      const segmentDir = path.join(path.dirname(destination), segmentName);
+      const segments = [];
+      for (const [index, range] of job.preview.ranges.entries()) {
+        const segment = path.join(
+          segmentDir,
+          `${String(index + 1).padStart(2, '0')}-${range.id}.mp4`,
+        );
+        await renderVideoRange({
+          compositionId,
+          output: segment,
+          startSeconds: range.startSeconds,
+          endSeconds: range.endSeconds,
+          scale: job.preview.scale,
+          crf: job.preview.crf,
+        });
+        segments.push(segment);
+      }
+      concatVideos(segments, rawOutput);
+      normalizeLoudness(rawOutput, destination, {
+        ...job.formal.loudness,
+        truePeakTargetDbtp: job.audioPreflight.preferredTruePeakDbtp,
       });
-      segments.push(segment);
-    }
-    concatVideos(segments, rawOutput);
-    normalizeLoudness(rawOutput, output, {
-      ...job.formal.loudness,
-      truePeakTargetDbtp: job.audioPreflight.preferredTruePeakDbtp,
+      if (!dryRun) {
+        rmSync(rawOutput, {force: true});
+        rmSync(segmentDir, {recursive: true, force: true});
+      }
+    };
+
+    await renderVariant({
+      compositionId: job.remotion.compositionWithSfx,
+      destination: output,
+      segmentName: '.preview-segments',
     });
-    if (!dryRun) {
-      rmSync(rawOutput, {force: true});
-      rmSync(segmentDir, {recursive: true, force: true});
+    if (comparisonOutput) {
+      await renderVariant({
+        compositionId: job.remotion.compositionWithoutSfx,
+        destination: comparisonOutput,
+        segmentName: '.preview-segments-no-sfx',
+      });
+      if (!dryRun) {
+        const matchedOutput = `${comparisonOutput}.matched.mp4`;
+        runCommand(
+          'ffmpeg',
+          [
+            '-hide_banner',
+            '-loglevel',
+            'error',
+            '-y',
+            '-i',
+            output,
+            '-i',
+            comparisonOutput,
+            '-map',
+            '0:v:0',
+            '-map',
+            '1:a:0',
+            '-c',
+            'copy',
+            '-shortest',
+            '-movflags',
+            '+faststart',
+            matchedOutput,
+          ],
+          {label: '音效A/B画面锁定'},
+        );
+        rmSync(comparisonOutput, {force: true});
+        renameSync(matchedOutput, comparisonOutput);
+      }
     }
-    await saveStageCache('preview', stageConfig, [output]);
+    await saveStageCache('preview', stageConfig, outputs);
     return output;
   });
 

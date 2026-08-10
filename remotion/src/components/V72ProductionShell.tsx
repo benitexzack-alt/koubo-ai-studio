@@ -433,7 +433,8 @@ export const V72ProductionShell: React.FC<{
   config: V72ProductionConfig;
   soundEnabled?: boolean;
   renderCustomScene?: (scene: V72CustomScene) => React.ReactNode;
-}> = ({config, soundEnabled = true, renderCustomScene}) => {
+  persistentOverlay?: React.ReactNode;
+}> = ({config, soundEnabled = true, renderCustomScene, persistentOverlay}) => {
   const {fps} = useVideoConfig();
 
   return (
@@ -451,6 +452,7 @@ export const V72ProductionShell: React.FC<{
       {soundEnabled ? (
         <V72SemanticSfx cues={config.sfxCues} fps={fps} />
       ) : null}
+      {persistentOverlay}
       <V72Hud
         durationSeconds={config.durationSeconds}
         brandLabel={config.brandLabel ?? '超哥AI创业记'}
