@@ -28,6 +28,7 @@ const supportedCommands = new Set([
   'preview',
   'risk-frames',
   'audio-preflight',
+  'formal-audio',
   'prepare',
   'formal',
   'qa',
@@ -51,6 +52,7 @@ const usage = () => {
       '  preview         渲染有音效动态预览并做响度预处理',
       '  risk-frames     按 visual-plan 的 reviewAt 渲染完整分辨率风险帧',
       '  audio-preflight 检查预览响度与真峰值',
+      '  formal-audio   复用已有 formal-raw，只重做正式片响度与机器质检',
       '  prepare         doctor + preview + risk-frames + audio-preflight',
       '  formal          渲染 WithSfx 正式片并执行两遍响度处理',
       '  qa              检查正式片规格、完整解码、黑帧、响度和真峰值',
@@ -989,7 +991,6 @@ const runAudioPreflight = async () =>
 
 const renderFormal = async () => {
   const rawOutput = resolveProjectPath(job.formal.rawOutput, '正式片原始输出');
-  const finalOutput = resolveProjectPath(job.formal.finalOutput, '正式片最终输出');
 
   await withStage('WithSfx正式渲染', async (stage) => {
     const stageConfig = {
@@ -1013,6 +1014,17 @@ const renderFormal = async () => {
     });
     await saveStageCache('formal-render', stageConfig, [rawOutput]);
   });
+
+  return normalizeFormalAudio();
+};
+
+const normalizeFormalAudio = async () => {
+  const rawOutput = resolveProjectPath(
+    job.formal.rawOutput,
+    '正式片原始输出',
+    true,
+  );
+  const finalOutput = resolveProjectPath(job.formal.finalOutput, '正式片最终输出');
 
   await withStage('正式片两遍响度处理', async (stage) => {
     const stageConfig = {
@@ -1461,6 +1473,10 @@ const execute = async () => {
   }
   if (command === 'formal' || command === 'all') {
     await renderFormal();
+    await runFormalQa();
+  }
+  if (command === 'formal-audio') {
+    await normalizeFormalAudio();
     await runFormalQa();
   }
   if (command === 'qa') {

@@ -415,7 +415,7 @@ const job = {
       enabled: true,
       integratedLoudnessTargetLufs: -16,
       loudnessRangeTargetLu: 11,
-      truePeakTargetDbtp: -1.7,
+      truePeakTargetDbtp: -2.2,
     },
   },
   cache: {
