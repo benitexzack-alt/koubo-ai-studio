@@ -203,6 +203,24 @@
       "acceptance": "先为三类内容各做一张基于真人实拍或真实界面的3:4版式样张和一段10—15秒动效样张；账号名位置保持稳定，但主素材、构图、色彩角色和信息密度必须明显不同；用户选定方向后只在下一批5条受控实验中使用，不在数据回填前提升为全局基线。",
       "status": "planned",
       "baselineImpact": "experiment"
+    },
+    {
+      "id": "upgrade-20260810-v8-semantic-continuity-and-sfx",
+      "type": "experiment",
+      "source": "用户于2026-08-10提供两条参考视频并指出当前动效持续倒退、音效老套重复、全屏Remotion说明页违背既定要求；逐帧机器审计共解码24917帧，人工复核每秒联系表与转场帧，并完成混合音轨瞬态分析。",
+      "goal": "把人物重新设为默认表达主体，以章节锚点、直接关键词、主数字、持续流程、激活脑图、证据画中画、对照条和媒体状态层组成连续语义动效；建立可感知、可轮换、与关键视觉落点绑定的本地音效策略。",
+      "acceptance": "所有说明型Remotion场景必须保留人物且局部覆盖不超过42%，禁止call-demo、全屏黑板和不透明说明页；同一布局族不得连续超过2次；同一音效25秒内不得重复，高频角色至少3个实际音色，候选音量0.20至0.55；先重做本期128至173秒同一连续画面，并输出完全一致的有声与无声A/B，用户正常播放确认不挡脸、不是PPT、音效听得见且不老套后，才允许完整渲染；连续三条完整观看通过前不得替换V7.2正式母版。",
+      "status": "in-progress",
+      "baselineImpact": "experiment",
+      "evidence": {
+        "referenceVideos": [
+          "/Users/pc/Downloads/ocDRaFF9gIdjAGTAEqwgcqDeFMfRABwZpE6r3k.MP4",
+          "/Users/pc/Downloads/oQUMZAenEwIhcK7bBRAeQqLIieSOHUDFG6BvC2.MP4"
+        ],
+        "auditReport": "work/reference-audit/20260810-v8/reference-motion-sfx-audit.json",
+        "decodedFrameCount": 24917,
+        "userPreviewStatus": "pending"
+      }
     }
   ]
 }

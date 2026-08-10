@@ -16,8 +16,8 @@ const warnings = [];
 const isNonEmptyString = (value) => typeof value === 'string' && value.trim().length > 0;
 const isNumber = (value) => typeof value === 'number' && Number.isFinite(value);
 
-if (![2, 3].includes(plan.schemaVersion)) {
-  errors.push('visual-plan 必须使用 schemaVersion=2 或 3。');
+if (![2, 3, 4].includes(plan.schemaVersion)) {
+  errors.push('visual-plan 必须使用 schemaVersion=2、3 或 4。');
 }
 
 if (plan.schemaVersion === 3) {
@@ -26,6 +26,15 @@ if (plan.schemaVersion === 3) {
   }
   if (plan.experiment?.status !== 'ready-for-next-video-validation') {
     errors.push('V7.3 实验状态必须为 ready-for-next-video-validation。');
+  }
+}
+
+if (plan.schemaVersion === 4) {
+  if (plan.experiment?.id !== 'v8-semantic-continuity-sfx') {
+    errors.push('schemaVersion=4 必须声明 experiment.id=v8-semantic-continuity-sfx。');
+  }
+  if (plan.experiment?.status !== 'candidate-preview-required') {
+    errors.push('V8 实验状态必须为 candidate-preview-required。');
   }
 }
 
@@ -85,7 +94,7 @@ for (const [index, layer] of (layers ?? []).entries()) {
     errors.push(`${label} 必须声明 checks.needsFrameReview。`);
   }
 
-  if (plan.schemaVersion === 3) {
+  if (plan.schemaVersion >= 3) {
     const assetClasses = new Set([
       'speaker',
       'real-evidence',

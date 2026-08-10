@@ -1339,6 +1339,16 @@ const doctor = async () =>
         {label: 'V7.3生产合同校验', runDuringDryRun: true},
       );
     }
+    if (job.experiment?.id === 'v8-semantic-continuity-sfx') {
+      runCommand(
+        process.execPath,
+        [
+          'tools/validate-v8-production-contract.mjs',
+          relativeToProject(jobPath),
+        ],
+        {label: 'V8生产合同校验', runDuringDryRun: true},
+      );
+    }
     const riskFrames = riskFrameEntries();
     if (riskFrames.length < baseline.formalQa.keyframeReview.minimumCount) {
       fail(
