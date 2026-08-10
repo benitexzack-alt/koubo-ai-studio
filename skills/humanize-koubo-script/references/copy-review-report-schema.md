@@ -26,10 +26,20 @@
   },
   "checks": {
     "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
     "fact_safe_rewrite_completed": true,
     "retention_risk_review_completed": true,
     "read_aloud_completed": true,
     "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "说明本稿如何把 AI 味改成人在现场判断、取舍和说话"
   },
   "retention_review": {
     "risk_node_count": 0,
@@ -73,7 +83,8 @@
 
 - `draft.sha256` 必须与门禁当前读取到的稿件完全一致；改一个字都必须重新审稿并生成新报告。
 - 两项 Skill 的 `path`、`sha256` 和 `read` 必须与本机当前文件一致。
-- 五项 `checks` 必须全部为 `true`。
+- 六项 `checks` 必须全部为 `true`。
+- `ai_boundary_review` 六个布尔字段必须全部为 `true`，并填写 `notes`；任一项无法通过时，不得把报告状态写为 `passed`，除非 `notes` 明确记录事实锁或用户原话理由。
 - `risk_node_count` 只能为 `0` 至 `3`，并与 `nodes` 数量一致。
 - `risk_node_count` 为 `0` 时，`no_high_risk_reason` 不能为空。
 - `fact_changes` 四个数组必须如实填写，不得用缺失字段冒充“无变化”。

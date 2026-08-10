@@ -68,10 +68,20 @@ class ContentGateRegressionTests(unittest.TestCase):
             },
             "checks": {
                 "humanizer_pattern_scan_completed": True,
+                "ai_boundary_review_completed": True,
                 "fact_safe_rewrite_completed": True,
                 "retention_risk_review_completed": True,
                 "read_aloud_completed": True,
                 "voice_match_completed": True,
+            },
+            "ai_boundary_review": {
+                "self_explanation_removed": True,
+                "defensive_boundary_embedded": True,
+                "generic_transitions_replaced": True,
+                "abstract_claims_grounded": True,
+                "source_insertions_contextualized": True,
+                "mechanical_completeness_reduced": True,
+                "notes": "测试稿已完成 AI 味边界审查，未保留自我说明、万能转场或资料插入式表达。",
             },
             "retention_review": {
                 "risk_node_count": 0,

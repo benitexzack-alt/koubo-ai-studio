@@ -166,7 +166,7 @@ python3 <project-root>/skills/content-brain-gate/scripts/validate_content_gate.p
 - `ready-for-outline`：只写提纲，不写拍摄终稿；
 - `ready-for-draft`：可以写文稿，但仍不能做 V6、音效和成片；
 - 写稿后建立事实锁，逐项标出四项质量特征的正文证据，自动调阅 `humanizer-zh` 与 `humanize-koubo-script`，强制完成模式扫描、事实安全精修、留存风险审稿、大声朗读、本人声音、最近六条和合规复核；
-- 每份实际文稿必须生成绑定当前稿件与两项 Skill SHA-256 的 `copy_review` 报告；没有报告、报告过期或事实保真不足 `10/10` 时停止交付；
+- 每份实际文稿必须生成绑定当前稿件与两项 Skill SHA-256 的 `copy_review` 报告；没有报告、报告过期、AI 味边界审查缺失或事实保真不足 `10/10` 时停止交付；
 - 用户确认脚本且 `production` 校验通过，才升级为 `ready-for-production`。
 
 ## 与其他 Skill 的关系

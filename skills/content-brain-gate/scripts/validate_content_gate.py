@@ -95,10 +95,19 @@ PRODUCTION_CHECKS = (
 )
 COPY_REVIEW_CHECKS = (
     "humanizer_pattern_scan_completed",
+    "ai_boundary_review_completed",
     "fact_safe_rewrite_completed",
     "retention_risk_review_completed",
     "read_aloud_completed",
     "voice_match_completed",
+)
+AI_BOUNDARY_REVIEW_FIELDS = (
+    "self_explanation_removed",
+    "defensive_boundary_embedded",
+    "generic_transitions_replaced",
+    "abstract_claims_grounded",
+    "source_insertions_contextualized",
+    "mechanical_completeness_reduced",
 )
 COPY_REVIEW_SCORES = (
     "directness",
@@ -771,6 +780,17 @@ class GateValidator:
             for field in COPY_REVIEW_CHECKS:
                 if checks.get(field) is not True:
                     self.error(f"draft.copy_review.checks.{field} 必须为 true")
+
+        ai_boundary_review = report.get("ai_boundary_review")
+        if not isinstance(ai_boundary_review, dict):
+            self.error("draft.copy_review.ai_boundary_review 必须是对象")
+        else:
+            for field in AI_BOUNDARY_REVIEW_FIELDS:
+                if ai_boundary_review.get(field) is not True:
+                    self.error(f"draft.copy_review.ai_boundary_review.{field} 必须为 true")
+            notes = ai_boundary_review.get("notes")
+            if not nonempty(notes) or len(notes.strip()) < 30:
+                self.error("draft.copy_review.ai_boundary_review.notes 必须具体说明 AI 味边界处理结果")
 
         retention_review = report.get("retention_review")
         if not isinstance(retention_review, dict):
