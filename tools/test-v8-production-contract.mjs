@@ -219,6 +219,32 @@ try {
     '连续音效不得复用',
   );
 
+  const approvedPlan = clone(basePlan);
+  approvedPlan.experiment.status = 'candidate-preview-approved';
+  const approvedCues = clone(baseCueSheet);
+  approvedCues.cues.forEach((cue) => {
+    cue.userAudibilityConfirmed = true;
+  });
+  const approvedJob = clone(baseJob);
+  approvedJob.experiment.status = 'candidate-preview-approved';
+  approvedJob.experiment.userPreviewApproved = true;
+  approvedJob.experiment.userPreviewApprovedAt = '2026-08-10T04:15:39Z';
+  approvedJob.formal.enabled = true;
+  const approvedCase = writeCase(
+    'preview-approved',
+    approvedPlan,
+    approvedCues,
+    approvedJob,
+  );
+  assertPasses(
+    '用户预览通过后的视觉方案',
+    run('tools/validate-visual-plan.mjs', approvedCase.planPath),
+  );
+  assertPasses(
+    '用户预览通过后的正式片解锁',
+    run('tools/validate-v8-production-contract.mjs', approvedCase.jobPath),
+  );
+
   const unlocked = clone(baseJob);
   unlocked.formal.enabled = true;
   const unlockedCase = writeCase('unlocked-formal', basePlan, baseCueSheet, unlocked);
@@ -228,7 +254,7 @@ try {
     'formal.enabled=false',
   );
 
-  console.log('V8生产合同回归通过：8/8。');
+  console.log('V8生产合同回归通过：9/9。');
 } finally {
   rmSync(testRoot, {recursive: true, force: true});
 }

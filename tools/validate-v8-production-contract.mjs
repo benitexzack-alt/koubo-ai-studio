@@ -35,12 +35,17 @@ try {
 const errors = [];
 const warnings = [];
 const experimentId = 'v8-semantic-continuity-sfx';
+const previewRequiredStatus = 'candidate-preview-required';
+const previewApprovedStatus = 'candidate-preview-approved';
+const previewApproved = job.experiment?.status === previewApprovedStatus;
 
 if (job.experiment?.id !== experimentId) {
   errors.push(`生产任务必须声明 experiment.id=${experimentId}。`);
 }
-if (job.experiment?.status !== 'candidate-preview-required') {
-  errors.push('V8 候选任务状态必须为 candidate-preview-required。');
+if (![previewRequiredStatus, previewApprovedStatus].includes(job.experiment?.status)) {
+  errors.push(
+    `V8 候选任务状态必须为 ${previewRequiredStatus} 或 ${previewApprovedStatus}。`,
+  );
 }
 if (plan.schemaVersion !== 4 || plan.experiment?.id !== experimentId) {
   errors.push('视觉方案必须为 schemaVersion=4 的 V8 连续语义方案。');
@@ -51,8 +56,23 @@ if (cueSheet.schemaVersion !== 3 || cueSheet.experimentId !== experimentId) {
 if (job.videoId !== plan.videoId || cueSheet.videoId !== plan.videoId) {
   errors.push('生产任务、视觉方案和音效点位表的 videoId 必须一致。');
 }
-if (job.formal?.enabled !== false || job.experiment?.userPreviewApproved !== false) {
-  errors.push('V8 候选预览在用户确认前必须保持 formal.enabled=false 且 userPreviewApproved=false。');
+if (previewApproved) {
+  if (
+    job.formal?.enabled !== true ||
+    job.experiment?.userPreviewApproved !== true ||
+    !isText(job.experiment?.userPreviewApprovedAt)
+  ) {
+    errors.push(
+      'V8 预览通过后必须同时记录 formal.enabled=true、userPreviewApproved=true 和确认时间。',
+    );
+  }
+} else if (
+  job.formal?.enabled !== false ||
+  job.experiment?.userPreviewApproved !== false
+) {
+  errors.push(
+    'V8 候选预览在用户确认前必须保持 formal.enabled=false 且 userPreviewApproved=false。',
+  );
 }
 
 const previewRanges = Array.isArray(job.preview?.ranges) ? job.preview.ranges : [];
@@ -112,8 +132,11 @@ for (const cue of cues) {
   if (!isNumber(cue.volume) || cue.volume < 0.2 || cue.volume > 0.55) {
     errors.push(`音效点 ${cue.id} 的候选音量必须在 0.20–0.55。`);
   }
-  if (cue.userAudibilityConfirmed !== false) {
-    errors.push(`候选阶段音效点 ${cue.id} 的 userAudibilityConfirmed 必须保持 false。`);
+  const expectedAudibility = previewApproved && inPreview(cue.start);
+  if (cue.userAudibilityConfirmed !== expectedAudibility) {
+    errors.push(
+      `音效点 ${cue.id} 的 userAudibilityConfirmed 必须与实际预览覆盖范围一致。`,
+    );
   }
 }
 
@@ -252,5 +275,9 @@ if (errors.length > 0) {
 
 console.log(
   `V8 生产合同校验通过：${plan.videoId}，${layers.length} 个视觉事件，` +
-    `${roleSources.size} 类音效，正式渲染仍被用户预览门禁锁定。`,
+    `${roleSources.size} 类音效，${
+      previewApproved
+        ? '用户预览已通过，完整候选片渲染已解锁'
+        : '正式渲染仍被用户预览门禁锁定'
+    }。`,
 );

@@ -2,6 +2,20 @@ import {mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 
 const projectRoot = path.resolve(import.meta.dirname, '..');
+const args = process.argv.slice(2);
+const previewApproved = args.includes('--preview-approved');
+const approvedAtArgument = args.find((argument) =>
+  argument.startsWith('--preview-approved-at='),
+);
+const userPreviewApprovedAt = approvedAtArgument?.slice(
+  '--preview-approved-at='.length,
+);
+if (previewApproved && !userPreviewApprovedAt) {
+  throw new Error('使用 --preview-approved 时必须同时提供 --preview-approved-at=<ISO时间>。');
+}
+const experimentStatus = previewApproved
+  ? 'candidate-preview-approved'
+  : 'candidate-preview-required';
 const sourcePlanPath = path.join(
   projectRoot,
   'remotion/src/data/AICognitivePositionV73.visual-plan.v1.json',
@@ -172,7 +186,7 @@ const plan = {
   schemaVersion: 4,
   experiment: {
     id: 'v8-semantic-continuity-sfx',
-    status: 'candidate-preview-required',
+    status: experimentStatus,
   },
   styleReferenceIds: [
     'v72-user-verified-20260730',
@@ -278,7 +292,7 @@ const cues = plan.layers.map((layer) => {
     voiceDuckDb: 0,
     previewCovered: start >= 123.72 && start <= 168.72,
     formalReviewed: false,
-    userAudibilityConfirmed: false,
+    userAudibilityConfirmed: previewApproved && start >= 123.72 && start <= 168.72,
   };
 });
 
@@ -295,7 +309,10 @@ const cueSheet = {
     coveragePercent: 100,
     maxSyncErrorFrames: 2,
     machineStatus: 'pending-validator',
-    userAudibilityConfirmed: false,
+    userAudibilityConfirmed: previewApproved,
+    confirmationScope: previewApproved
+      ? 'representative-preview-only'
+      : 'not-confirmed',
   },
 };
 
@@ -310,7 +327,8 @@ const job = {
   experiment: {
     id: plan.experiment.id,
     status: plan.experiment.status,
-    userPreviewApproved: false,
+    userPreviewApproved: previewApproved,
+    userPreviewApprovedAt: userPreviewApprovedAt ?? null,
     userMediaRequest: 'notes/2026-08-10-AI第四次工业革命普通人位置-素材与V7.3执行单-v1.md',
     primaryVisualEventCount: plan.layers.length,
     sfxCoveragePercent: 100,
@@ -382,9 +400,11 @@ const job = {
     preferredTruePeakDbtp: -1.8,
   },
   formal: {
-    enabled: false,
+    enabled: previewApproved,
     composition: 'with-sfx',
-    blockedReason: '等待用户确认V8连续动态预览和有声/无声A/B。',
+    blockedReason: previewApproved
+      ? null
+      : '等待用户确认V8连续动态预览和有声/无声A/B。',
     crf: 18,
     pixelFormat: 'yuv420p',
     audioCodec: 'aac',

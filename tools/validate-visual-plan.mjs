@@ -33,8 +33,14 @@ if (plan.schemaVersion === 4) {
   if (plan.experiment?.id !== 'v8-semantic-continuity-sfx') {
     errors.push('schemaVersion=4 必须声明 experiment.id=v8-semantic-continuity-sfx。');
   }
-  if (plan.experiment?.status !== 'candidate-preview-required') {
-    errors.push('V8 实验状态必须为 candidate-preview-required。');
+  if (
+    !['candidate-preview-required', 'candidate-preview-approved'].includes(
+      plan.experiment?.status,
+    )
+  ) {
+    errors.push(
+      'V8 实验状态必须为 candidate-preview-required 或 candidate-preview-approved。',
+    );
   }
 }
 
