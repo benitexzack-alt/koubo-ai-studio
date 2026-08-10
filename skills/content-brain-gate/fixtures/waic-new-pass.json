@@ -1,5 +1,5 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "task_id": "waic-2026-non-text-world-direction",
   "target_stage": "draft",
   "required_rules": [
@@ -171,6 +171,45 @@
     "audience_gain": "认识到行业经验不是AI之外的旧知识，而是决定AI该看什么、什么算异常、结果能不能信的关键",
     "authority_boundary": "只解释公开大会材料与普通行业场景的连接，不声称现有通用模型已可靠理解所有现场数据，也不冒充科学家或各行业专家",
     "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "learning_card_path": "<skill-root>/fixtures/account-learning-card.json",
+    "learning_card_sha256": "e953dc14997be779518d7c5dd4061bf39cb653304691ee7e01e25630e7e42a27",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "applied_lesson_ids": [
+      "lesson:opening:title-answer-before-background",
+      "lesson:hook:concrete-conflict-scene-object"
+    ],
+    "opening_plan": {
+      "answer_or_conflict_by_second": 4,
+      "proof_or_real_scene_by_second": 12,
+      "audience_relevance_by_second": 20,
+      "first_viewer_value_by_second": 28,
+      "title_answer_by_second": 12,
+      "delayed_payoff_risk_checked": true
+    },
+    "duration_plan": {
+      "planned_seconds": 210,
+      "single_core_problem": "普通行业从业者如何判断AI是否真正读懂行业原始数据",
+      "justification": "当前主题需要一个真实场景、一条大会证据、机制解释和边界，但标题答案与第一项判断仍在前30秒完整交付。",
+      "evidence_based_justification": true
+    },
+    "metric_plan": {
+      "primary_metric": "five_second_completion_rate",
+      "secondary_metrics": [
+        "average_watch_seconds",
+        "profile_visits"
+      ],
+      "observation_windows": [
+        "early-within-3h",
+        "24h",
+        "72h",
+        "7d"
+      ],
+      "hypothesis": "把设备异响和叶色等真实场景放进前12秒，并同步交付判断方法，应该比先解释大会背景更容易让目标观众继续观看。",
+      "early_vs_mature_windows_acknowledged": true
+    }
   },
   "douyin_quality": {
     "source_scope": "quality-guidance-not-selection-guarantee",

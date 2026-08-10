@@ -90,6 +90,7 @@ PRODUCTION_CHECKS = (
     "read_aloud_passed",
     "voice_match_passed",
     "recent_six_recheck_passed",
+    "performance_feedback_recheck_passed",
     "compliance_passed",
     "user_script_approved",
 )
@@ -169,6 +170,20 @@ def discover_project_root(anchor: Path) -> Path | None:
     return None
 
 
+def discover_personal_kb(anchor: Path) -> Path | None:
+    candidates: list[Path] = []
+    configured = os.environ.get("KOUBO_PERSONAL_KB")
+    if configured:
+        candidates.append(Path(configured).expanduser().resolve())
+    project_root = discover_project_root(anchor)
+    if project_root is not None:
+        candidates.append((project_root.parent / "个人知识库").resolve())
+    for candidate in candidates:
+        if (candidate / "AGENTS.md").is_file():
+            return candidate
+    return None
+
+
 def resolve_input_path(value: Any, anchor: Path) -> Path | None:
     if not nonempty(value):
         return None
@@ -189,6 +204,13 @@ def resolve_input_path(value: Any, anchor: Path) -> Path | None:
         if text == "<project-root>":
             return project_root
         return project_root / text.removeprefix("<project-root>/")
+    if text == "<personal-kb>" or text.startswith("<personal-kb>/"):
+        personal_kb = discover_personal_kb(anchor)
+        if personal_kb is None:
+            return None
+        if text == "<personal-kb>":
+            return personal_kb
+        return personal_kb / text.removeprefix("<personal-kb>/")
     path = Path(text).expanduser()
     if not path.is_absolute():
         path = anchor.resolve().parent / path
@@ -228,9 +250,9 @@ class GateValidator:
         self.passed.append(message)
 
     def validate_header(self) -> str:
-        if self.card.get("schema_version") != 4:
+        if self.card.get("schema_version") != 5:
             self.error(
-                "schema_version 必须为 4；历史卡重新进入写稿或制作时必须升级用户选题授权与证据去重字段"
+                "schema_version 必须为 5；历史卡重新进入选题、写稿或制作时必须补齐账号实测反馈字段"
             )
         if not nonempty(self.card.get("task_id")):
             self.error("task_id 不能为空")
@@ -581,6 +603,180 @@ class GateValidator:
         if not any(error.startswith("audience_fit") for error in self.errors):
             self.pass_check("观众距离、账号阶段、普通人场景和讲述身份匹配")
 
+    def validate_performance_feedback(self) -> None:
+        feedback = self.card.get("performance_feedback")
+        if not isinstance(feedback, dict):
+            self.error("performance_feedback 必须是对象；未读取账号实测学习卡不得进入选题或写稿")
+            return
+
+        learning_card_path_value = feedback.get("learning_card_path")
+        learning_card_path = resolve_input_path(learning_card_path_value, self.card_path)
+        if feedback.get("read") is not True:
+            self.error("performance_feedback.read 必须为 true")
+        if learning_card_path is None or not existing_nonempty_file(
+            learning_card_path_value, self.card_path
+        ):
+            self.error(
+                f"performance_feedback.learning_card_path 文件不存在或为空：{learning_card_path_value}"
+            )
+            return
+
+        expected_hash = feedback.get("learning_card_sha256")
+        if not nonempty(expected_hash) or not re.fullmatch(r"[0-9a-f]{64}", expected_hash):
+            self.error("performance_feedback.learning_card_sha256 必须是64位小写SHA-256")
+        elif file_sha256(learning_card_path) != expected_hash:
+            self.error("performance_feedback.learning_card_sha256 已过期，必须重新读取当前账号实测学习卡")
+
+        try:
+            learning_card = json.loads(learning_card_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as error:
+            self.error(f"performance_feedback 学习卡无法读取：{error}")
+            return
+        if not isinstance(learning_card, dict):
+            self.error("performance_feedback 学习卡顶层必须是对象")
+            return
+
+        if learning_card.get("schema_version") != 1:
+            self.error("performance_feedback 学习卡 schema_version 必须为 1")
+        if learning_card.get("type") != "douyin-account-performance-learning":
+            self.error("performance_feedback 学习卡 type 无效")
+        if learning_card.get("status") != "current":
+            self.error("performance_feedback 学习卡必须是 current 状态")
+        snapshot_at = learning_card.get("snapshot_at")
+        if not nonempty(snapshot_at) or feedback.get("snapshot_at") != snapshot_at:
+            self.error("performance_feedback.snapshot_at 必须与当前学习卡一致")
+
+        active_lesson_ids = {
+            lesson.get("id")
+            for lesson in learning_card.get("lessons", [])
+            if isinstance(lesson, dict)
+            and lesson.get("status") == "active"
+            and nonempty(lesson.get("id"))
+        }
+        applied_lesson_ids = feedback.get("applied_lesson_ids")
+        if not isinstance(applied_lesson_ids, list) or not applied_lesson_ids or not all(
+            nonempty(item) for item in applied_lesson_ids
+        ):
+            self.error("performance_feedback.applied_lesson_ids 至少需要一条有效学习ID")
+        else:
+            unknown_lesson_ids = sorted(set(applied_lesson_ids) - active_lesson_ids)
+            if unknown_lesson_ids:
+                self.error(
+                    "performance_feedback.applied_lesson_ids 不在当前学习卡："
+                    + "、".join(unknown_lesson_ids)
+                )
+
+        contract = learning_card.get("active_content_contract")
+        if not isinstance(contract, dict):
+            self.error("performance_feedback 学习卡缺少 active_content_contract")
+            return
+
+        opening_contract = contract.get("opening")
+        opening_plan = feedback.get("opening_plan")
+        opening_fields = {
+            "answer_or_conflict_by_second": "answer_or_conflict_by_second_max",
+            "proof_or_real_scene_by_second": "proof_or_real_scene_by_second_max",
+            "audience_relevance_by_second": "audience_relevance_by_second_max",
+            "first_viewer_value_by_second": "first_viewer_value_by_second_max",
+            "title_answer_by_second": "title_answer_by_second_max",
+        }
+        if not isinstance(opening_contract, dict) or not isinstance(opening_plan, dict):
+            self.error("performance_feedback.opening_plan 必须对应学习卡开头合同")
+        else:
+            for field, max_field in opening_fields.items():
+                value = opening_plan.get(field)
+                maximum = opening_contract.get(max_field)
+                if (
+                    not isinstance(value, (int, float))
+                    or isinstance(value, bool)
+                    or value < 0
+                ):
+                    self.error(f"performance_feedback.opening_plan.{field} 必须是非负秒数")
+                elif (
+                    not isinstance(maximum, (int, float))
+                    or isinstance(maximum, bool)
+                    or maximum < 0
+                ):
+                    self.error(f"performance_feedback 学习卡开头上限 {max_field} 无效")
+                elif value > maximum:
+                    self.error(
+                        f"performance_feedback.opening_plan.{field} 超过当前学习卡上限 {maximum} 秒"
+                    )
+            if opening_plan.get("delayed_payoff_risk_checked") is not True:
+                self.error("performance_feedback.opening_plan.delayed_payoff_risk_checked 必须为 true")
+
+        duration_plan = feedback.get("duration_plan")
+        if not isinstance(duration_plan, dict):
+            self.error("performance_feedback.duration_plan 必须是对象")
+        else:
+            planned_seconds = duration_plan.get("planned_seconds")
+            if (
+                not isinstance(planned_seconds, (int, float))
+                or isinstance(planned_seconds, bool)
+                or planned_seconds <= 0
+            ):
+                self.error("performance_feedback.duration_plan.planned_seconds 必须是正数")
+            if not nonempty(duration_plan.get("single_core_problem")):
+                self.error("performance_feedback.duration_plan.single_core_problem 不能为空")
+            justification = duration_plan.get("justification")
+            if not nonempty(justification) or len(justification.strip()) < 30:
+                self.error("performance_feedback.duration_plan.justification 必须用数据、证据和交付解释时长")
+            if duration_plan.get("evidence_based_justification") is not True:
+                self.error("performance_feedback.duration_plan.evidence_based_justification 必须为 true")
+
+        metrics_contract = contract.get("metrics")
+        metric_plan = feedback.get("metric_plan")
+        if not isinstance(metrics_contract, dict) or not isinstance(metric_plan, dict):
+            self.error("performance_feedback.metric_plan 必须对应学习卡指标合同")
+        else:
+            required_metrics_raw = metrics_contract.get("required_metrics")
+            if not isinstance(required_metrics_raw, list) or not all(
+                nonempty(item) for item in required_metrics_raw
+            ):
+                self.error("performance_feedback 学习卡 required_metrics 必须是非空字符串数组")
+                required_metrics: set[str] = set()
+            else:
+                required_metrics = set(required_metrics_raw)
+            primary_metric = metric_plan.get("primary_metric")
+            secondary_metrics = metric_plan.get("secondary_metrics")
+            if primary_metric not in required_metrics:
+                self.error("performance_feedback.metric_plan.primary_metric 不在学习卡指标范围")
+            if (
+                not isinstance(secondary_metrics, list)
+                or len(secondary_metrics) < 2
+                or not all(nonempty(item) for item in secondary_metrics)
+            ):
+                self.error("performance_feedback.metric_plan.secondary_metrics 至少需要两项")
+            elif not all(item in required_metrics for item in secondary_metrics):
+                self.error("performance_feedback.metric_plan.secondary_metrics 含未知指标")
+            required_windows_raw = metrics_contract.get("required_observation_windows")
+            if not isinstance(required_windows_raw, list) or not all(
+                nonempty(item) for item in required_windows_raw
+            ):
+                self.error(
+                    "performance_feedback 学习卡 required_observation_windows 必须是非空字符串数组"
+                )
+                required_windows: set[str] = set()
+            else:
+                required_windows = set(required_windows_raw)
+            observation_windows = metric_plan.get("observation_windows")
+            if (
+                not isinstance(observation_windows, list)
+                or not all(nonempty(item) for item in observation_windows)
+                or not required_windows <= set(observation_windows)
+            ):
+                self.error("performance_feedback.metric_plan.observation_windows 必须覆盖学习卡全部观察窗口")
+            hypothesis = metric_plan.get("hypothesis")
+            if not nonempty(hypothesis) or len(hypothesis.strip()) < 30:
+                self.error("performance_feedback.metric_plan.hypothesis 必须写清本条数据假设")
+            if metric_plan.get("early_vs_mature_windows_acknowledged") is not True:
+                self.error(
+                    "performance_feedback.metric_plan.early_vs_mature_windows_acknowledged 必须为 true"
+                )
+
+        if not any(error.startswith("performance_feedback") for error in self.errors):
+            self.pass_check("当前账号实测学习卡、开头合同、时长理由和发布指标假设已绑定")
+
     def validate_douyin_quality(self, stage: str) -> None:
         quality = self.card.get("douyin_quality")
         if not isinstance(quality, dict):
@@ -896,6 +1092,7 @@ class GateValidator:
         self.validate_topic_authorization(stage)
         self.validate_frozen_topics()
         self.validate_audience_fit()
+        self.validate_performance_feedback()
         self.validate_douyin_quality(stage)
         self.validate_mechanisms(stage)
         self.validate_voice()

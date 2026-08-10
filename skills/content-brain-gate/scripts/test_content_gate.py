@@ -293,6 +293,86 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertTrue(any("ordinary_scenes" in error for error in result["errors"]))
         self.assertTrue(any("requires_expert_authority" in error for error in result["errors"]))
 
+    def test_performance_feedback_is_required(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        del card["performance_feedback"]
+
+        result = self.validate(card, "performance-feedback-missing.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "performance_feedback 必须是对象" in error
+            for error in result["errors"]
+        ))
+
+    def test_stale_account_learning_card_hash_is_blocked(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["performance_feedback"]["learning_card_sha256"] = "0" * 64
+
+        result = self.validate(card, "performance-feedback-stale-hash.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "learning_card_sha256 已过期" in error
+            for error in result["errors"]
+        ))
+
+    def test_unknown_account_learning_id_is_blocked(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["performance_feedback"]["applied_lesson_ids"] = [
+            "lesson:not-in-current-card"
+        ]
+
+        result = self.validate(card, "performance-feedback-unknown-lesson.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "applied_lesson_ids 不在当前学习卡" in error
+            for error in result["errors"]
+        ))
+
+    def test_delayed_title_answer_plan_is_blocked(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["performance_feedback"]["opening_plan"]["title_answer_by_second"] = 84
+        card["performance_feedback"]["opening_plan"]["first_viewer_value_by_second"] = 90
+
+        result = self.validate(card, "performance-feedback-delayed-payoff.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "title_answer_by_second 超过当前学习卡上限" in error
+            for error in result["errors"]
+        ))
+        self.assertTrue(any(
+            "first_viewer_value_by_second 超过当前学习卡上限" in error
+            for error in result["errors"]
+        ))
+
+    def test_malformed_performance_metric_arrays_are_blocked_without_crashing(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["performance_feedback"]["metric_plan"]["secondary_metrics"] = [
+            {"metric": "average_watch_seconds"},
+            "profile_visits",
+        ]
+        card["performance_feedback"]["metric_plan"]["observation_windows"] = [
+            {"window": "early-within-3h"},
+            "24h",
+            "72h",
+            "7d",
+        ]
+
+        result = self.validate(card, "performance-feedback-malformed-metrics.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "secondary_metrics 至少需要两项" in error
+            for error in result["errors"]
+        ))
+        self.assertTrue(any(
+            "observation_windows 必须覆盖" in error
+            for error in result["errors"]
+        ))
+
     def test_douyin_quality_is_required_for_new_cards(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
         del card["douyin_quality"]

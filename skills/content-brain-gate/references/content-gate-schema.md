@@ -4,7 +4,7 @@
 
 ```json
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "task_id": "唯一任务标识",
   "target_stage": "outline | draft | production",
   "required_rules": [],
@@ -15,6 +15,7 @@
   "topic": {},
   "frozen_topic_hits": [],
   "audience_fit": {},
+  "performance_feedback": {},
   "douyin_quality": {},
   "mechanism_cards": [],
   "voice": {},
@@ -22,7 +23,7 @@
 }
 ```
 
-`schema_version: 4` 从 2026-08-09 起用于所有重新进入写稿或制作的内容。v4 新增用户选题授权、主张 ID 和证据 ID 去重。历史卡只保留审计价值，不得自动继承选题许可、抖音精选质量验收或文案双 Skill 执行状态。
+`schema_version: 5` 从 2026-08-11 起用于所有重新进入选题、写稿或制作的内容。v5 在 v4 的用户选题授权、主张 ID 和证据 ID 去重基础上，新增账号实测反馈硬门。历史卡只保留审计价值，不得自动继承账号数据学习、选题许可、抖音精选质量验收或文案双 Skill 执行状态。
 
 ## required_rules
 
@@ -37,7 +38,7 @@
 
 至少包含：全局公开内容硬门禁、项目内容规范。文件必须真实存在。
 
-路径可以使用绝对路径，也可以使用 `<project-root>/...`、`<skill-root>/...` 和 `<codex-home>/...`。校验器会从门禁卡位置及当前工作目录向上定位项目根目录；也可用 `KOUBO_PROJECT_ROOT` 显式指定。
+路径可以使用绝对路径，也可以使用 `<project-root>/...`、`<personal-kb>/...`、`<skill-root>/...` 和 `<codex-home>/...`。校验器会从门禁卡位置及当前工作目录向上定位项目根目录；个人知识库优先由 `KOUBO_PERSONAL_KB` 指定，否则检查项目同级的 `../个人知识库`；项目根目录也可用 `KOUBO_PROJECT_ROOT` 显式指定。
 
 ## sources
 
@@ -221,6 +222,62 @@
 
 高层技术、院士观点和大公司产品不得填写为主角。当前稿件必须不依赖讲述者并不具备的专家身份，并至少有两个普通人可感知场景。
 
+## performance_feedback
+
+每次进入选题、提纲、写稿或制作前都必须绑定当前账号实测学习卡。真实账号任务使用个人知识库中的当前卡；Skill 的 `fixtures/account-learning-card.json` 只用于回归测试，不得替代真实账号数据。
+
+```json
+{
+  "learning_card_path": "<personal-kb>/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+  "learning_card_sha256": "64位小写SHA-256",
+  "snapshot_at": "2026-08-10T22:52:59+08:00",
+  "read": true,
+  "applied_lesson_ids": [
+    "lesson:opening:title-answer-before-background",
+    "lesson:hook:concrete-conflict-scene-object"
+  ],
+  "opening_plan": {
+    "answer_or_conflict_by_second": 4,
+    "proof_or_real_scene_by_second": 12,
+    "audience_relevance_by_second": 20,
+    "first_viewer_value_by_second": 28,
+    "title_answer_by_second": 12,
+    "delayed_payoff_risk_checked": true
+  },
+  "duration_plan": {
+    "planned_seconds": 210,
+    "single_core_problem": "本条只解决的一个具体问题",
+    "justification": "用本条必要证据、机制、场景和交付物解释为什么需要这个时长，至少30字",
+    "evidence_based_justification": true
+  },
+  "metric_plan": {
+    "primary_metric": "five_second_completion_rate",
+    "secondary_metrics": [
+      "average_watch_seconds",
+      "profile_visits"
+    ],
+    "observation_windows": [
+      "early-within-3h",
+      "24h",
+      "72h",
+      "7d"
+    ],
+    "hypothesis": "本条改变了什么内容变量，预计影响哪个指标，什么结果会推翻这个判断，至少30字",
+    "early_vs_mature_windows_acknowledged": true
+  }
+}
+```
+
+固定规则：
+
+- `learning_card_sha256` 必须与当前文件完全一致；学习卡更新后旧门禁卡自动失效；
+- `snapshot_at` 必须与学习卡一致，学习卡状态必须为 `current`；
+- `applied_lesson_ids` 至少一项，且必须来自学习卡中状态为 `active` 的学习；
+- `opening_plan` 五个时间点不得超过学习卡当前上限；
+- 时长没有固定秒数，但必须只解决一个核心问题，并以证据和交付物解释；
+- 主指标和辅助指标必须来自学习卡指标合同，观察窗口必须全部覆盖；
+- 早期信号不能冒充成熟结果，一条作品不能自动升级为稳定规律。
+
 ## douyin_quality
 
 四项特征来自抖音精选优质内容质量方向，但不是算法公式或入选保证。机器只校验目标、正文证据和验收方式是否完整。
@@ -309,6 +366,7 @@
   "read_aloud_passed": true,
   "voice_match_passed": true,
   "recent_six_recheck_passed": true,
+  "performance_feedback_recheck_passed": true,
   "compliance_passed": true,
   "user_script_approved": true,
   "phrase_exemptions": [

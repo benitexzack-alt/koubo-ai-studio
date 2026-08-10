@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "type": "douyin-account-performance-learning",
+  "card_id": "douyin-learning:fixture:2026-08-10-v1",
+  "account": "测试账号",
+  "snapshot_at": "2026-08-10T22:52:59+08:00",
+  "updated_at": "2026-08-11T00:00:00+08:00",
+  "status": "current",
+  "lessons": [
+    {
+      "id": "lesson:opening:title-answer-before-background",
+      "status": "active"
+    },
+    {
+      "id": "lesson:hook:concrete-conflict-scene-object",
+      "status": "active"
+    },
+    {
+      "id": "lesson:metrics:separate-early-and-mature-windows",
+      "status": "active"
+    }
+  ],
+  "active_content_contract": {
+    "opening": {
+      "answer_or_conflict_by_second_max": 5,
+      "proof_or_real_scene_by_second_max": 15,
+      "audience_relevance_by_second_max": 25,
+      "first_viewer_value_by_second_max": 30,
+      "title_answer_by_second_max": 15,
+      "background_before_title_answer_forbidden": true
+    },
+    "duration": {
+      "default_duration_seconds": null,
+      "single_core_problem_required": true,
+      "evidence_based_justification_required": true,
+      "shorter_is_not_automatically_better": true,
+      "six_minutes_is_not_default": true
+    },
+    "metrics": {
+      "required_observation_windows": ["early-within-3h", "24h", "72h", "7d"],
+      "required_metrics": [
+        "views",
+        "two_second_bounce_rate",
+        "five_second_completion_rate",
+        "average_watch_seconds",
+        "completion_rate",
+        "shares",
+        "favorites",
+        "profile_visits",
+        "follower_gain"
+      ]
+    }
+  }
+}
