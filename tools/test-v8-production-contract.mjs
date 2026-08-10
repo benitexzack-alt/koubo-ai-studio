@@ -219,6 +219,16 @@ try {
     '连续音效不得复用',
   );
 
+  const voicePatch = clone(baseCueSheet);
+  voicePatch.cues[0].source =
+    'remotion/public/audio/koubo-sfx-v8/waic-correction-not-equal.wav';
+  const voicePatchCase = writeCase('voice-patch', basePlan, voicePatch, baseJob);
+  assertFailsWith(
+    '人声补丁误入音效池',
+    run('tools/validate-v8-production-contract.mjs', voicePatchCase.jobPath),
+    '引用了人声补丁',
+  );
+
   const approvedPlan = clone(basePlan);
   approvedPlan.experiment.status = 'candidate-preview-approved';
   const approvedCues = clone(baseCueSheet);
@@ -254,7 +264,7 @@ try {
     'formal.enabled=false',
   );
 
-  console.log('V8生产合同回归通过：9/9。');
+  console.log('V8生产合同回归通过：10/10。');
 } finally {
   rmSync(testRoot, {recursive: true, force: true});
 }

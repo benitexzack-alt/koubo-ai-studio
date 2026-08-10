@@ -47,6 +47,12 @@ A restrained low-frequency cinematic emphasis hit for a key statement, warm sub 
 - 原始节点音和转场音峰值过高，不能直接叠到人声上。
 - 当前没有本期拍摄人声，无法验证音色是否抢话、响度是否舒服，也不能据此说“音效效果已经做好”。
 
+## 明确禁止项
+
+- `remotion/public/audio/waic2026-v6/correction-not-equal.wav` 不是 ElevenLabs 音效，而是 WAIC V6 从本人原片截出的事实口误纠正补丁，内容为“不等于”。
+- 该文件只允许在 WAIC V6 历史时间线的原声纠错窗口使用，禁止进入任何音效包、动效角色或新视频混音。
+- 音效打包必须使用本页四个 API 文件的显式允许清单，禁止按目录全量扫描后默认认定为音效。
+
 ## 拍摄后的硬门禁
 
 1. 根据最终词级转写生成音效时间点，不凭脚本预估秒数。
@@ -59,4 +65,3 @@ A restrained low-frequency cinematic emphasis hit for a key statement, warm sub 
 
 - https://elevenlabs.io/docs/overview/capabilities/sound-effects
 - https://elevenlabs.io/docs/api-reference/text-to-sound-effects/convert
-

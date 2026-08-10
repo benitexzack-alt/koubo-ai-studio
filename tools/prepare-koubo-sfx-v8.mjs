@@ -38,6 +38,19 @@ const packs = [
     directory: 'remotion/public/audio/waic2026-v6',
     license: 'ElevenLabs API generated sound effect',
     licenseReference: 'assets/sfx/waic2026-test/README.md',
+    includeFileNames: [
+      'card-pop.wav',
+      'node-connect.wav',
+      'section-whoosh.wav',
+      'thesis-impact.wav',
+    ],
+    excludedFileMetadata: {
+      'correction-not-equal.wav': {
+        contentKind: 'voice-patch',
+        recognizedText: '不等于',
+        reason: 'WAIC V6 本人原声纠错补丁，不是音效。',
+      },
+    },
   },
 ];
 
@@ -77,12 +90,26 @@ mkdirSync(outputRoot, {recursive: true});
 mkdirSync(path.dirname(manifestPath), {recursive: true});
 
 const items = [];
+const excludedItems = [];
 for (const pack of packs) {
   const sourceDirectory = path.join(projectRoot, pack.directory);
   for (const fileName of readdirSync(sourceDirectory).sort((a, b) => a.localeCompare(b))) {
     if (!/\.wav$/i.test(fileName)) continue;
     const sourcePath = path.join(sourceDirectory, fileName);
     if (!statSync(sourcePath).isFile()) continue;
+    if (pack.includeFileNames && !pack.includeFileNames.includes(fileName)) {
+      const metadata = pack.excludedFileMetadata?.[fileName] ?? {};
+      excludedItems.push({
+        id: `${pack.id}-${path.parse(fileName).name}`,
+        source: path.relative(projectRoot, sourcePath),
+        contentKind: metadata.contentKind ?? 'non-sfx',
+        recognizedText: metadata.recognizedText ?? null,
+        eligibleForSfx: false,
+        reason: metadata.reason ?? '不在该音效包显式允许清单中。',
+        sourceSha256: sha256(sourcePath),
+      });
+      continue;
+    }
     const outputName = `${pack.id}-${fileName}`;
     const outputPath = path.join(outputRoot, outputName);
     const sourcePeakDbfs = probePeak(sourcePath);
@@ -112,6 +139,8 @@ for (const pack of packs) {
       id: `${pack.id}-${path.parse(fileName).name}`,
       source: path.relative(projectRoot, sourcePath),
       output: path.relative(projectRoot, outputPath),
+      contentKind: 'sound-effect',
+      eligibleForSfx: true,
       license: pack.license,
       licenseReference: pack.licenseReference,
       sourcePeakDbfs,
@@ -125,7 +154,7 @@ for (const pack of packs) {
 }
 
 const manifest = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   pack: 'koubo-sfx-v8',
   status: 'candidate-only-user-audition-required',
   createdAt: new Date().toISOString(),
@@ -137,7 +166,9 @@ const manifest = {
     note: '只统一格式和峰值，不改变来源许可；成片仍需同画面有声/无声试听。',
   },
   items,
+  excludedItems,
 };
 writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
 console.log(`V8候选音效：${items.length} 个`);
+console.log(`明确排除：${excludedItems.length} 个`);
 console.log(path.relative(projectRoot, manifestPath));

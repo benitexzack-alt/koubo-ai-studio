@@ -89,7 +89,6 @@ const roleFiles = {
     'remotion-mouse-click.wav',
   ],
   comparison: [
-    'waic-correction-not-equal.wav',
     'remotion-ui-switch.wav',
     'v2-card-slide.wav',
     'v1-card-reveal.wav',
@@ -143,7 +142,6 @@ const roleFiles = {
     'waic-section-whoosh.wav',
   ],
   correction: [
-    'waic-correction-not-equal.wav',
     'remotion-ui-switch.wav',
     'v2-keyword-select.wav',
   ],
@@ -345,6 +343,7 @@ const job = {
     visualPlan: path.relative(projectRoot, editPlanPath),
     bilingualCaptions: 'remotion/public/data/AI_COGNITIVE_POSITION_20260810_talk01.bilingual.v1.json',
     sfxCueSheet: path.relative(projectRoot, editSfxPath),
+    sfxManifest: 'assets/sfx/koubo-sfx-v8/manifest.json',
     fingerprintPaths: [
       'source/20260810_ai_cognitive_position/R01_AI第四次工业革命_口播原片.MOV',
       'remotion/public/media/ai-cognitive-position-20260810',

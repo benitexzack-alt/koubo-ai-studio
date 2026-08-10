@@ -23,10 +23,15 @@ const isNumber = (value) => typeof value === 'number' && Number.isFinite(value);
 let job;
 let plan;
 let cueSheet;
+let sfxManifest;
 try {
   job = readJson(jobArgument, '生产任务');
   plan = readJson(job.inputs?.visualPlan, '视觉方案');
   cueSheet = readJson(job.inputs?.sfxCueSheet, '音效点位表');
+  sfxManifest = readJson(
+    job.inputs?.sfxManifest ?? 'assets/sfx/koubo-sfx-v8/manifest.json',
+    'V8音效审核清单',
+  );
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
   process.exit(1);
@@ -114,6 +119,12 @@ for (const item of requiredCoverage) {
 
 const layers = Array.isArray(plan.layers) ? plan.layers : [];
 const cues = Array.isArray(cueSheet.cues) ? cueSheet.cues : [];
+const auditedSfxByOutput = new Map(
+  (Array.isArray(sfxManifest.items) ? sfxManifest.items : []).map((item) => [
+    item.output,
+    item,
+  ]),
+);
 const eventIds = new Set();
 const cueById = new Map();
 const cueIds = new Set();
@@ -128,6 +139,24 @@ for (const cue of cues) {
   cueById.set(cue.id, cue);
   if (!isText(cue.source) || !existsSync(toAbsolute(cue.source))) {
     errors.push(`音效点 ${cue.id} 的 source 不存在。`);
+  }
+  if (
+    /\/(?:[^/]+-)?(?:correction-not-equal|voice[-_ ]?patch|speech[-_ ]?patch)\.wav$/i.test(
+      cue.source,
+    )
+  ) {
+    errors.push(`音效点 ${cue.id} 引用了人声补丁，禁止作为动效音效：${cue.source}`);
+  }
+  if (cue.source.includes('/koubo-sfx-v8/')) {
+    const auditedItem = auditedSfxByOutput.get(cue.source);
+    if (!auditedItem) {
+      errors.push(`音效点 ${cue.id} 未进入 V8 音效审核清单：${cue.source}`);
+    } else if (
+      auditedItem.contentKind !== 'sound-effect' ||
+      auditedItem.eligibleForSfx !== true
+    ) {
+      errors.push(`音效点 ${cue.id} 的来源未获准作为音效：${cue.source}`);
+    }
   }
   if (!isNumber(cue.volume) || cue.volume < 0.2 || cue.volume > 0.55) {
     errors.push(`音效点 ${cue.id} 的候选音量必须在 0.20–0.55。`);
