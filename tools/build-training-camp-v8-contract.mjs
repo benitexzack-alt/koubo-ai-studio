@@ -171,7 +171,7 @@ const layers = sceneSpecs.map((scene, index) => {
 
 const plan = {
   schemaVersion: 4,
-  experiment: {id: experimentId, status: 'candidate-preview-required'},
+  experiment: {id: experimentId, status: 'candidate-preview-approved'},
   videoId,
   videoTitle: '在甘肃做企业，AI和信创离你到底有多远？',
   sourceVideo,
@@ -204,7 +204,7 @@ const cues = layers.map((layer) => {
     voiceDuckDb: 0,
     previewCovered: start >= previewStart && start <= previewEnd,
     formalReviewed: false,
-    userAudibilityConfirmed: false,
+    userAudibilityConfirmed: start >= previewStart && start <= previewEnd,
   };
 });
 const cueSheet = {
@@ -214,7 +214,7 @@ const cueSheet = {
   experimentId,
   normalizedPack: 'assets/sfx/koubo-sfx-v8/manifest.json',
   cues,
-  coverageReview: {primaryVisualEventCount: layers.length, coveredPrimaryVisualEventCount: cues.length, coveragePercent: 100, maxSyncErrorFrames: 2, machineStatus: 'pending-validator', userAudibilityConfirmed: false, confirmationScope: '字幕、打码和现场素材路由已变更，0至41秒返修预览待用户确认'},
+  coverageReview: {primaryVisualEventCount: layers.length, coveredPrimaryVisualEventCount: cues.length, coveragePercent: 100, maxSyncErrorFrames: 2, machineStatus: 'pending-validator', userAudibilityConfirmed: true, confirmationScope: '2026-08-11用户明确确认0至41秒返修有音效预览；仅该连续预览覆盖的cue标记为听感确认'},
 };
 
 const job = {
@@ -225,7 +225,7 @@ const job = {
   purpose: '以本人横屏口播为主，按V8连续语义规范使用训练营真实现场视频和四问分流卡；课程与研学结果留待第二集验证。',
   productionState: 'ready-for-production',
   productionProfile: {id: experimentId, version: 'V8'},
-  experiment: {id: experimentId, status: 'candidate-preview-required', userPreviewApproved: false, userPreviewApprovedAt: null, userPreviewApprovalEvidence: null, revisionReason: '用户要求去除全部打码、恢复透明黄字字幕，并将11段现场素材改为不循环短切。', primaryVisualEventCount: layers.length, sfxCoveragePercent: 100, previewAuditionRoles: ['media', 'keyword', 'list', 'evidence', 'line']},
+  experiment: {id: experimentId, status: 'candidate-preview-approved', userPreviewApproved: true, userPreviewApprovedAt: '2026-08-11T21:13:47+08:00', userPreviewApprovalEvidence: '用户观看返修预览后明确回复：好的，可以，赶紧渲染成片。', revisionReason: '用户要求去除全部打码、恢复透明黄字字幕，并将11段现场素材改为不循环短切。', primaryVisualEventCount: layers.length, sfxCoveragePercent: 100, previewAuditionRoles: ['media', 'keyword', 'list', 'evidence', 'line']},
   baseline: {path: 'workflow/production-baseline.v1.json', id: 'koubo-formal-16x9-v1', revision: 'V7.2-20260730'},
   inputs: {
     source: sourceVideo,
@@ -240,7 +240,7 @@ const job = {
   preview: {enabled: true, withSfxOnly: false, scale: 0.5, crf: 22, ranges: [{id: 'v8-revision-unmasked-transparent-captions-media-cuts', startSeconds: previewStart, endSeconds: previewEnd}], output: 'work/production-runs/20260811-training-camp-v80/revision-v2/preview-with-sfx.mp4', renderWithoutSfxComparison: true},
   riskFrames: {enabled: true, source: 'visual-plan-reviewAt', fullResolution: true, outputDirectory: 'work/production-runs/20260811-training-camp-v80/revision-v2/risk-frames'},
   audioPreflight: {enabled: true, source: 'preview', integratedLoudnessTargetLufs: -16, truePeakMaxDbtp: -1.5, preferredTruePeakDbtp: -1.8},
-  formal: {enabled: false, composition: 'with-sfx', blockedReason: '返修预览待用户确认', crf: 18, pixelFormat: 'yuv420p', audioCodec: 'aac', audioBitrate: '192k', rawOutput: 'work/production-runs/20260811-training-camp-v80/revision-v2/formal-raw.mp4', finalOutput: 'outputs/创业能力提升训练营第一集_16x9_V80_正式成片_v2.mp4', loudness: {enabled: true, integratedLoudnessTargetLufs: -16, loudnessRangeTargetLu: 11, truePeakTargetDbtp: -2.2}},
+  formal: {enabled: true, composition: 'with-sfx', blockedReason: null, crf: 18, pixelFormat: 'yuv420p', audioCodec: 'aac', audioBitrate: '192k', rawOutput: 'work/production-runs/20260811-training-camp-v80/revision-v2/formal-raw.mp4', finalOutput: 'outputs/创业能力提升训练营第一集_16x9_V80_正式成片_v2.mp4', loudness: {enabled: true, integratedLoudnessTargetLufs: -16, loudnessRangeTargetLu: 11, truePeakTargetDbtp: -2.2}},
   cache: {enabled: true, directory: 'work/production-cache', reuseOnlyOnExactFingerprint: true},
   reports: {runManifest: 'work/production-runs/20260811-training-camp-v80/run-manifest.json', timingReport: 'work/production-runs/20260811-training-camp-v80/timing-report.json', regressionReport: 'work/production-runs/20260811-training-camp-v80/regression-report.json'},
 };
