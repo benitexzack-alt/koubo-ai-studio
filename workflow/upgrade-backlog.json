@@ -223,6 +223,24 @@
         "activeProfile": "workflow/active-production-profile.v1.json",
         "promotionReconfirmedAt": "2026-08-11"
       }
+    },
+    {
+      "id": "upgrade-20260811-v8-final-delivery-package",
+      "type": "baseline",
+      "source": "用户于2026-08-11纠正封面画幅应为3:4，并明确要求以后每条视频最终交付时同步准备本条真实口播截图、封面提示词、标题、话题和抖音发布文案，写入V8最低执行版本。",
+      "goal": "把发布包装从聊天中的补交项升级为V8正式成片的固定完整交付包，避免比例写错、封面真人图遗漏以及标题、发布文案和话题分散补交。",
+      "acceptance": "每条新V8发布记录必须包含3:4真人截图合成封面提示词；一张来自本条正式成片、记录来源路径和时间点的真实口播截图；一个主标题和至少两个不重复备选标题；抖音发布文案；至少一个话题；以及绑定当前文本的双Skill审稿记录。缺少任一项时校验失败并保持incomplete-delivery。",
+      "status": "promoted",
+      "baselineImpact": "required",
+      "evidence": {
+        "activeProfile": "workflow/active-production-profile.v1.json",
+        "specification": "knowledge/20-V8连续语义动效与可感知音效基线.md",
+        "releaseTemplate": "workflow/release-template.json",
+        "validator": "tools/validate-release.mjs",
+        "regression": "tools/test-v8-delivery-package.mjs",
+        "regressionStatus": "2/2 passed",
+        "promotedAt": "2026-08-11"
+      }
     }
   ]
 }
