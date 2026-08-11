@@ -2,6 +2,14 @@
 
 ## 视觉方案门禁
 
+先运行当前生产档案校验：
+
+```bash
+node tools/validate-active-production-profile.mjs <production-job.json> doctor
+```
+
+新视频不是V8且没有完整用户降级批准时必须停止。该门禁对所有生产命令无条件执行，不能靠省略`experiment.id`绕过。
+
 运行：
 
 ```bash
@@ -18,19 +26,19 @@ node tools/validate-visual-plan.mjs <visual-plan.json>
 
 ## 预览门禁
 
-V7.2 默认运行：
+V8 默认运行（脚本名保留V7.2只是兼容历史调用）：
 
 ```bash
 node tools/run-v72-production.mjs <production-job.json> prepare
 ```
 
-该命令同时生成有音效动态预览、完整分辨率风险帧和音频预检报告。
+该命令先校验V8默认档案，再同时生成同画面有声/无声动态预览、完整分辨率风险帧和音频预检报告。
 
-正式片前至少做一种：
+正式片前必须完成：
 
-- 20-30 秒视频预览；
-- 覆盖所有 `reviewAt` 的 still 集合；
-- 关键风险时间段短视频预览。
+- 同一连续画面的30—45秒`WithSfx / NoSfx`视频对照；
+- 覆盖所有`reviewAt`的完整分辨率风险帧；
+- 用户正常播放确认人物、节奏、素材比例和音效听感。
 
 检查：
 
@@ -100,7 +108,7 @@ node tools/validate-release.mjs <release.json>
 
 机器侧至少对比运镜前、中、后三帧的缩放和位移参数；人工侧必须按正常速度播放确认“能感知、不过度、不压迫、不把脸和手推出安全区”。只看到组件引用、配置文件或单帧截图，不能证明运镜已交付。用户完整观看后认为画面没有运镜感，一律按运镜未交付处理。
 
-## V7.2 正式片和回归门禁
+## V8 正式片和历史母版回归门禁
 
 预览通过后运行：
 
@@ -110,7 +118,7 @@ node tools/run-v72-production.mjs <production-job.json> formal
 
 `formal` 必须使用 `WithSfx`，并自动完成两遍响度处理、完整解码、近纯黑帧、编码、帧率、采样率、综合响度和真峰值检查。
 
-公共组件、运镜、音效路由、响度或渲染参数变化时，必须再对锁定母版运行：
+公共组件、运镜、音效路由、响度或渲染参数变化时，必须再对V7.2历史锁定母版运行：
 
 ```bash
 node tools/run-v72-production.mjs workflow/jobs/20260730_cycle_assets_v72.production.json regression

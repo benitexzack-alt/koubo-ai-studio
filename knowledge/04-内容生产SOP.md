@@ -150,7 +150,10 @@
 
 ## 四点六、模板升级闭环
 
-所有正式横屏口播以 `workflow/production-baseline.v1.json` 为当前生产基线，以 `workflow/upgrade-backlog.json` 为唯一升级待办。
+所有新口播视频以 `workflow/active-production-profile.v1.json` 为当前唯一生产档案，并按 `knowledge/20-V8连续语义动效与可感知音效基线.md` 执行V8视觉与音效规范。`workflow/production-baseline.v1.json` 只保留通用技术参数、V7.2锁定母版回归和故障回滚能力；不得据此静默回退新视频。`workflow/upgrade-backlog.json` 继续作为升级待办。
+
+- 每个新生产任务必须明确声明当前V8档案；生产器对所有命令强制校验，不再依靠可选实验字段触发。
+- 如单条确需回退旧版，必须写入用户明确批准、批准时间、原因和适用范围；缺一项即停止生产。
 
 - 用户的新参考、反馈和问题，必须先登记为一个带验收标准的升级任务，不能只停留在聊天记录。
 - 已确认缺陷可直接修复并进入基线；审美或效果类想法先作为单条主实验，不能自动替换默认模板。

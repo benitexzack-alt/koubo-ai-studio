@@ -2,9 +2,10 @@
   "schemaVersion": 1,
   "baselineId": "koubo-formal-16x9-v1",
   "baselineRevision": "V7.2-20260730",
-  "status": "active",
+  "status": "historical-rollback-active",
   "effectiveFrom": "2026-07-30",
-  "appliesTo": "所有正式横屏完整口播；用户明确要求简版、纯中文、无音效或其他画幅时，必须在发布记录中写明降级原因。",
+  "authorityNote": "本文件保留V7.2技术参数和用户完整观看通过的锁定母版，供回归与故障回滚使用。新视频默认视觉和音效档案以workflow/active-production-profile.v1.json为唯一权威。",
+  "appliesTo": "锁定母版回归、故障回滚和V8仍复用的通用技术参数；不得据此把新视频静默回退到V7.2视觉包装。",
   "production": {
     "width": 1920,
     "height": 1080,

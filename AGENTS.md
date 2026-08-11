@@ -18,12 +18,13 @@
 8. `knowledge/06-选题脚本与风格规范.md`
 9. `knowledge/14-超哥口播声音档案.md`
 10. `knowledge/15-抖音精选内容质量验收.md`
-11. `skills/source-essence-synthesis/SKILL.md`。
-12. `skills/content-brain-gate/SKILL.md` 及 `skills/content-brain-gate/references/public-content-gate.md`。
-13. 如果 `KOUBO_PERSONAL_KB` 或项目同级的 `../个人知识库` 存在，必须额外读取该知识库 `AGENTS.md` 和现行《公开内容生产大脑硬门禁》；当其与项目便携快照冲突时，以个人知识库现行版为准。
-14. 当前账号实测学习卡：真实账号任务读取 `<personal-kb>/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json`，记录当前 SHA-256；不能用聊天记忆、复盘摘要或 Skill fixture 替代。
-15. 最近六条已发布、已拍摄或已确认内容的真实转写或确认稿。
-16. 与当前任务直接相关的原始资料，并核对每条来源的完整度和允许用途。
+11. `knowledge/20-V8连续语义动效与可感知音效基线.md` 与 `workflow/active-production-profile.v1.json`。V8是新视频默认制作基准；V7.2只用于锁定母版回归和故障回滚，任何降级必须有用户明确批准记录。
+12. `skills/source-essence-synthesis/SKILL.md`。
+13. `skills/content-brain-gate/SKILL.md` 及 `skills/content-brain-gate/references/public-content-gate.md`。
+14. 如果 `KOUBO_PERSONAL_KB` 或项目同级的 `../个人知识库` 存在，必须额外读取该知识库 `AGENTS.md` 和现行《公开内容生产大脑硬门禁》；当其与项目便携快照冲突时，以个人知识库现行版为准。
+15. 当前账号实测学习卡：真实账号任务读取 `<personal-kb>/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json`，记录当前 SHA-256；不能用聊天记忆、复盘摘要或 Skill fixture 替代。
+16. 最近六条已发布、已拍摄或已确认内容的真实转写或确认稿。
+17. 与当前任务直接相关的原始资料，并核对每条来源的完整度和允许用途。
 
 完整访谈、长视频、文章或参考口播的深度改编，必须先用项目内 `source-essence-synthesis` 生成并校验源头精髓卡；达到 `ready-for-outline` 后，再使用 `content-brain-gate` 生成并校验内容门禁卡。普通原创单点口播可直接进入内容门禁。两项能力都可通过 `tools/setup-koubo.mjs` 注册到 Codex。没有实际读取证据或校验结果时，不得只说“已经查过知识库”。
 

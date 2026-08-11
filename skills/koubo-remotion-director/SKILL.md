@@ -1,6 +1,6 @@
 ---
 name: koubo-remotion-director
-description: 口播项目的 Remotion 视频包装导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库，将转写、粗剪或完整原片推进到 visual-plan.json、V4/V5/V6/V7 视觉规划、风险帧预览、Remotion 包装、字幕/动效/遮挡质检和 release 记录；当用户要求优化口播剪辑流程、做视觉实验、把参考图落到成片、修复卡片裁切/挡脸/字幕错位或生成与校验 visual-plan/release 时使用。
+description: 口播项目的 Remotion 视频包装导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库，将转写、粗剪或完整原片推进到 visual-plan.json、V8连续语义视觉规划、风险帧预览、Remotion包装、字幕/动效/遮挡质检和release记录；当用户要求优化口播剪辑流程、按V8制作视频、把参考图落到成片、修复卡片裁切/挡脸/字幕错位或生成与校验visual-plan/release时使用。
 ---
 
 # 口播 Remotion 导演
@@ -29,7 +29,9 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 8. `knowledge/17-V7.2语义运镜与音效默认流程.md`
 9. `knowledge/18-V7.2保质提速生产流程.md`
 10. `knowledge/19-V7.3素材协作、逐卡音效与保质提速验证.md`
-11. 与本条视频直接相关的转写、EDL、素材清单、视觉参考和发布记录
+11. `knowledge/20-V8连续语义动效与可感知音效基线.md`
+12. `workflow/active-production-profile.v1.json`
+13. 与本条视频直接相关的转写、EDL、素材清单、视觉参考和发布记录
 
 按任务需要再读：
 
@@ -45,8 +47,9 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 - 粗剪/字幕阶段：以词级转写和 EDL 输出时间轴为准，不手估字幕时间。
 - 视觉包装阶段：先写 `visual-plan.json`，再做 Remotion 组件或参数。
 - V4 实验阶段：优先读取 V4 参考与验收，不回退旧 `mind-map / perspective / metric / flow` 默认包。
-- V7.2 正式阶段：默认使用语义数字运镜、透明信息组件、全屏素材、中英文同窗字幕和本地音效 V2；章节、流程、证据、数字和媒体标注不得全部挤进同一种卡片。
-- V7.3 验证阶段：只对声明 `experiment.id=v73-media-sfx-speed` 的下一条视频生效；叙事视频由用户生成或提供，Remotion 负责信息动画；每个主视觉单元与音效点用稳定事件 ID 绑定；未经用户完整观看和连续三条验证，不替换 V7.2 锁定母版。
+- V8 正式阶段：所有新视频默认使用人物主画面、局部连续语义动效、真实素材优先、逐主视觉声画绑定和可感知本地音效；说明型Remotion覆盖率不得超过42%，不得使用全屏黑板、`call-demo`或连续翻卡式PPT表达。
+- V7.2 历史阶段：只保留通用技术参数、锁定母版回归和故障回滚；不得因为参考“兰州OPC”或复用旧任务而把新视频静默降级。
+- 降级例外：必须在生产任务写入用户明确批准、时间、原因和单条适用范围；导演推断、旧知识条目和历史模板都不能替代批准。
 - 正式导出阶段：先预览和风险帧，后全片；先机器质检，后用户完整观看。
 
 ### 2. 建立本条视频事实源
@@ -69,9 +72,16 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 
 如果本条需要用户制作图片或视频，先使用 `templates/05-用户素材执行单模板.md` 生成单独执行单。每个项目必须写清“文生视频 / 图生视频 / 文生图 / 真实素材”、对应原句、时长、中文提示词、文件名和放置目录。不得向用户交付无编号、中英文混杂或无法判断生成类型的提示词。
 
-使用 `templates/03-visual-plan-template.json` 或已有方案递进生成 `edit/visual-plan_<id>_vN.json`。
+以已验证的 `workflow/jobs/20260810_ai_cognitive_position_v80.production.json`、对应V8视觉方案和音效点位表为结构参考，生成 `edit/visual-plan_<id>_v8.json`、`edit/sfx-cue-sheet_<id>_v8.json` 和 `workflow/jobs/<id>_v80.production.json`。只复制结构，不复制上一条文案、时间点、素材路径或画面内容。
 
-使用 V7.3 实验时，改用 `templates/04-v73-visual-plan-template.json`、`templates/06-v73-production-job-template.json` 和 `templates/07-v73-sfx-cue-sheet-template.json`，并在任何预览前建立对应的 `workflow/jobs/<id>.production.json`。
+每个新任务必须先声明：
+
+```json
+"productionProfile": {
+  "id": "v8-semantic-continuity-sfx",
+  "version": "V8"
+}
+```
 
 每个图层必须包含：
 
@@ -82,7 +92,7 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 - `checks.needsFrameReview` / `checks.reviewAt`
 - 避让对象：脸、手、底部字幕、安全区
 
-V7.3 实验每个图层还必须包含：
+V8每个图层还必须包含：
 
 - `assetDecision.class` / `assetDecision.producer` / `assetDecision.fallback`
 - `visualEvent.id` / `visualEvent.enterAt` / `visualEvent.primary`
@@ -95,13 +105,14 @@ V7.3 实验每个图层还必须包含：
 node tools/validate-visual-plan.mjs <visual-plan.json>
 ```
 
-V7.3 实验还必须执行：
+V8必须执行：
 
 ```bash
-node tools/validate-v73-production-contract.mjs <production-job.json>
+node tools/validate-active-production-profile.mjs <production-job.json> doctor
+node tools/validate-v8-production-contract.mjs <production-job.json>
 ```
 
-该门禁要求主视觉单元音效覆盖率 100%，且同步偏差不超过 2 帧；缺失事件、用 Remotion 冒充叙事视频或缺少计时报告路径时直接拦截。
+第一道门禁确认没有静默降级；第二道门禁要求主视觉单元音效覆盖率100%、同步偏差不超过2帧、人物局部信息层不超过42%、同一音效25秒内不重复，并强制同画面有声/无声30—45秒预览。
 
 校验失败时先修方案，不渲染全片。
 
@@ -115,7 +126,7 @@ node tools/validate-v73-production-contract.mjs <production-job.json>
 node tools/run-v72-production.mjs <production-job.json> prepare
 ```
 
-`prepare` 必须一次完成有音效动态预览、完整分辨率风险帧和音频预检。输入指纹完全一致时允许命中缓存；任一素材、字幕、组件、方案或音效变化时必须失效。
+`prepare` 必须先无条件校验当前V8生产档案，再一次完成同画面有声/无声动态预览、完整分辨率风险帧和音频预检。输入指纹完全一致时允许命中缓存；任一素材、字幕、组件、方案、音效、生产档案或档案校验器变化时必须失效。脚本名保留`run-v72-production.mjs`只是兼容历史调用，不代表当前视觉版本。
 
 正式片前必须输出 20-30 秒预览或覆盖关键节点的 still/range。默认不做全长低清预览；只有删减、重排、大量字幕不确定或全片结构风险时才允许，并在生产任务中写明原因。预览至少覆盖：
 
@@ -158,6 +169,6 @@ node tools/validate-release.mjs <release.json>
 - 不用 Remotion 信息动画默认替代需要人物、场景、行为、空间或氛围的叙事视频；素材缺失时要明确降级为主播 + 信息卡或“情景示意”。
 - 不把二创参考视频当作事实原始信源；外部案例引用必须显示来源和证据边界。
 - 不在左上角显示 V7、V7.1 或模板名，只保留“超哥AI创业记”。
-- 沿用已验收的本地音效 V2 时，默认只出有音效动态预览；只有音色、音量策略或音效类型发生变化，或故障排查、用户明确要求时，才必须做同画面 30 秒 `WithSfx / NoSfx` A/B。
-- V7.3 实验不要求每个字、字幕或卡内小项都发声，但所有标记为主视觉单元的动效卡必须有精确绑定音效；不得用“这一段里有一声”代替逐卡覆盖。
+- V8固定做同画面30—45秒`WithSfx / NoSfx` A/B；未经用户正常音量试听确认，正式渲染保持锁定。
+- V8不要求每个字、字幕或卡内小项都发声，但所有标记为主视觉单元的动效卡必须有精确绑定音效；不得用“这一段里有一声”代替逐卡覆盖。
 - 不把机器质检、编译成功或文件存在说成发布效果已验证。

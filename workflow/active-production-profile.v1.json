@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "profileId": "v8-semantic-continuity-sfx",
+  "profileVersion": "V8",
+  "status": "active-default",
+  "effectiveFrom": "2026-08-10",
+  "decision": {
+    "authority": "user-explicit",
+    "summary": "V8作为本次及以后所有口播视频的制作基准。",
+    "reconfirmedAt": "2026-08-11",
+    "supersedesDefaultProfile": "v72"
+  },
+  "specification": "knowledge/20-V8连续语义动效与可感知音效基线.md",
+  "validator": "tools/validate-v8-production-contract.mjs",
+  "requirements": {
+    "experimentId": "v8-semantic-continuity-sfx",
+    "visualPlanSchemaVersion": 4,
+    "sfxCueSheetSchemaVersion": 3,
+    "speakerIsDefaultPrimaryPicture": true,
+    "remotionInformationMaximumCoverageRatio": 0.42,
+    "sameFrameSfxComparisonRequired": true
+  },
+  "downgradePolicy": {
+    "default": "blocked",
+    "requiresExplicitUserApproval": true,
+    "requiredFields": [
+      "approved",
+      "approvedBy",
+      "approvedAt",
+      "reason",
+      "scope"
+    ]
+  },
+  "historicalRollbackBaseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730",
+    "lockedReferenceVideoId": "CYCLE_ASSETS_20260730_talk01",
+    "purpose": "仅用于锁定母版回归和故障回滚，不是新视频默认视觉档案。"
+  }
+}

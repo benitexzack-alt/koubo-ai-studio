@@ -424,6 +424,8 @@ const computeFingerprint = async () => {
   const requestedPaths = [
     relativeToProject(jobPath),
     relativeToProject(baselinePath),
+    'workflow/active-production-profile.v1.json',
+    'tools/validate-active-production-profile.mjs',
     relativeToProject(scriptPath),
     ...job.inputs.fingerprintPaths,
   ];
@@ -1425,7 +1427,7 @@ const doctor = async () =>
     const cueSheet = verifySfxSources();
     await verifyLockedReference();
     console.log(
-      `体检通过：V7.2基线、${riskFrames.length}个风险帧、${cueSheet.cues.length}个音效点`,
+      `体检通过：当前生产档案、历史锁定母版、${riskFrames.length}个风险帧、${cueSheet.cues.length}个音效点`,
     );
   });
 
@@ -1446,6 +1448,15 @@ const ensureFingerprint = async () => {
 
 const execute = async () => {
   validateJob();
+  runCommand(
+    process.execPath,
+    [
+      'tools/validate-active-production-profile.mjs',
+      relativeToProject(jobPath),
+      command,
+    ],
+    {label: '当前生产档案校验', runDuringDryRun: true},
+  );
 
   const needsDoctor = new Set(['doctor', 'prepare', 'formal', 'all']);
   const needsFingerprint = command !== 'doctor' || command === 'all';
