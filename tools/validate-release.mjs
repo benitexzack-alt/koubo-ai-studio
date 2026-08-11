@@ -12,6 +12,7 @@ if (!releasePath) {
 const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
 const release = readJson(releasePath);
 const baseline = readJson(baselinePath);
+const activeProfile = readJson('workflow/active-production-profile.v1.json');
 const errors = [];
 const warnings = [];
 
@@ -19,6 +20,9 @@ const exists = (relativePath) => isNonEmpty(relativePath) && fs.existsSync(path.
 const isNonEmpty = (value) => typeof value === 'string' && value.trim().length > 0;
 const passed = (value) => value?.status === 'passed';
 const run = (command, args) => spawnSync(command, args, {encoding: 'utf8'});
+const isActiveProfileRelease =
+  release.productionProfile?.id === activeProfile.profileId &&
+  release.productionProfile?.version === activeProfile.profileVersion;
 
 const probeVideo = (relativePath) => {
   const result = run('ffprobe', [
@@ -100,6 +104,71 @@ if (exists(release.production?.formalOutput)) {
     if (!Number.isFinite(formalDuration) || formalDuration <= 0) {
       errors.push('正式输出时长无效。');
     }
+  }
+}
+
+if (isActiveProfileRelease) {
+  const requirements = activeProfile.requirements?.finalDeliveryPackage;
+  const delivery = release.deliveryPackage;
+  const cover = delivery?.cover;
+  const titles = delivery?.titles;
+  const douyin = delivery?.douyin;
+  const expectedCover = requirements?.cover ?? {};
+  const expectedDouyin = requirements?.douyin ?? {};
+
+  if (delivery?.status !== 'ready-for-delivery') {
+    errors.push(
+      `V8完整交付包状态必须为 ready-for-delivery；缺项时应保持 ${requirements?.missingStatus ?? 'incomplete-delivery'}。`,
+    );
+  }
+
+  if (cover?.aspectRatio !== expectedCover.aspectRatio) {
+    errors.push(`V8封面提示词画幅必须为 ${expectedCover.aspectRatio ?? '3:4'}。`);
+  }
+  if (!exists(cover?.recommendedFrame)) {
+    errors.push(`V8缺少从本条正式成片截取的推荐封面人物图：${cover?.recommendedFrame ?? ''}`);
+  }
+  if (cover?.sourceVideo !== release.production?.formalOutput) {
+    errors.push('V8推荐封面人物图的 sourceVideo 必须与本条正式成片路径一致。');
+  }
+  if (cover?.sourceType !== expectedCover.recommendedFrameSource) {
+    errors.push(
+      `V8推荐封面人物图来源必须为 ${expectedCover.recommendedFrameSource ?? 'current-final-video-real-frame'}。`,
+    );
+  }
+  if (
+    !Number.isFinite(cover?.sourceTimeSeconds) ||
+    cover.sourceTimeSeconds < 0 ||
+    (formalDuration !== null && cover.sourceTimeSeconds > formalDuration)
+  ) {
+    errors.push('V8推荐封面人物图必须记录正式成片范围内的有效截取时间点。');
+  }
+  if (!exists(cover?.prompt)) {
+    errors.push(`V8缺少可直接复制的3:4真人截图合成封面提示词：${cover?.prompt ?? ''}`);
+  }
+
+  if (expectedDouyin.primaryTitleRequired && !isNonEmpty(titles?.primary)) {
+    errors.push('V8完整交付包缺少抖音主标题。');
+  }
+  const alternativeTitles = (titles?.alternatives ?? []).filter(isNonEmpty);
+  if (alternativeTitles.length < Number(expectedDouyin.minimumAlternativeTitles ?? 2)) {
+    errors.push(`V8完整交付包至少需要 ${expectedDouyin.minimumAlternativeTitles ?? 2} 个抖音备选标题。`);
+  }
+  if (new Set([titles?.primary, ...alternativeTitles]).size !== 1 + alternativeTitles.length) {
+    errors.push('V8主标题和备选标题不得重复。');
+  }
+  if (expectedDouyin.publishCopyRequired && !isNonEmpty(douyin?.publishCopy)) {
+    errors.push('V8完整交付包缺少抖音发布文案。');
+  }
+  const topics = (douyin?.topics ?? []).filter(isNonEmpty);
+  if (topics.length < Number(expectedDouyin.minimumTopics ?? 1)) {
+    errors.push(`V8完整交付包至少需要 ${expectedDouyin.minimumTopics ?? 1} 个抖音话题。`);
+  }
+  if (new Set(topics).size !== topics.length) {
+    errors.push('V8抖音话题不得重复。');
+  }
+  if (!exists(delivery?.copyReview)) {
+    errors.push(`V8标题、发布文案和话题缺少双Skill审稿记录：${delivery?.copyReview ?? ''}`);
   }
 }
 
