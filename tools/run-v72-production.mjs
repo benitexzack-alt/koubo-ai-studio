@@ -426,6 +426,7 @@ const computeFingerprint = async () => {
     relativeToProject(baselinePath),
     'workflow/active-production-profile.v1.json',
     'tools/validate-active-production-profile.mjs',
+    'tools/validate-production-command-gate.mjs',
     relativeToProject(scriptPath),
     ...job.inputs.fingerprintPaths,
   ];
@@ -1448,6 +1449,15 @@ const ensureFingerprint = async () => {
 
 const execute = async () => {
   validateJob();
+  runCommand(
+    process.execPath,
+    [
+      'tools/validate-production-command-gate.mjs',
+      relativeToProject(jobPath),
+      command,
+    ],
+    {label: '生产命令门禁校验', runDuringDryRun: true},
+  );
   runCommand(
     process.execPath,
     [

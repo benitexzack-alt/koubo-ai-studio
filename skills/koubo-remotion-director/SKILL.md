@@ -149,6 +149,8 @@ node tools/run-v72-production.mjs <production-job.json> formal
 
 `formal` 包含两遍响度处理和正式片机器质检。公共模板、渲染链路或基线参数变化时，还必须对锁定母版执行 `regression`。
 
+`formal`、`formal-audio`和`all`必须先经过生产命令硬门禁。任务中`formal.enabled=false`时，执行器必须在Remotion打包和渲染之前直接失败；只有用户确认同画面动态预览并同步更新V8合同后才能显式解锁。
+
 必须保留生产器写出的 `timing-report.json`。没有计时报告，不得宣称提速；因修正问题重渲正式片时，必须在运行记录中写明原因。
 
 正式导出后填写或更新 `workflow/releases/<id>.json`，再执行：
