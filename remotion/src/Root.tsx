@@ -108,6 +108,11 @@ import {
   AI_SELF_MEDIA_V73_DURATION_IN_FRAMES,
 } from './AISelfMediaV73Talk16x9';
 import {
+  TrainingCampV80Talk16x9NoSfx,
+  TrainingCampV80Talk16x9WithSfx,
+  TRAINING_CAMP_V80_DURATION_IN_FRAMES,
+} from './TrainingCampV80Talk16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -129,6 +134,22 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="TrainingCamp16x9-V80-WithSfx"
+          component={TrainingCampV80Talk16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={TRAINING_CAMP_V80_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="TrainingCamp16x9-V80-NoSfx"
+          component={TrainingCampV80Talk16x9NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={TRAINING_CAMP_V80_DURATION_IN_FRAMES}
+        />
         <Composition
           id="AICognitivePosition16x9-V80-WithSfx"
           component={AICognitivePositionV80Talk16x9WithSfx}

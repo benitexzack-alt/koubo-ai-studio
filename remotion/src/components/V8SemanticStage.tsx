@@ -36,6 +36,15 @@ export type V8SemanticLayer = {
     component: string;
     src?: string;
     disclosure?: string;
+    badge?: string;
+    privacyMasks?: Array<{
+      left: number;
+      top: number;
+      width: number;
+      height: number;
+    }>;
+    mediaScale?: number;
+    mediaTransformOrigin?: string;
   };
 };
 
@@ -751,7 +760,13 @@ export const V8MediaStage: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
   const {durationInFrames} = useVideoConfig();
   const opacity = useSceneOpacity();
   const reveal = useReveal(3);
-  const scale = interpolate(frame, [0, durationInFrames], [1.02, 1.075], clamp);
+  const mediaScale = layer.params.mediaScale ?? 1.02;
+  const scale = interpolate(
+    frame,
+    [0, durationInFrames],
+    [mediaScale, mediaScale + 0.055],
+    clamp,
+  );
   if (!layer.params.src) return null;
   return (
     <AbsoluteFill style={{overflow: 'hidden', background: '#03080D', opacity}}>
@@ -765,6 +780,7 @@ export const V8MediaStage: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
           height: '100%',
           filter: 'contrast(1.035) saturate(0.96) brightness(0.82)',
           transform: `scale(${scale})`,
+          transformOrigin: layer.params.mediaTransformOrigin ?? '50% 48%',
         }}
       />
       <AbsoluteFill
@@ -773,6 +789,21 @@ export const V8MediaStage: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
             'linear-gradient(90deg, rgba(2,7,12,0.84) 0%, rgba(2,7,12,0.38) 33%, rgba(2,7,12,0.04) 67%)',
         }}
       />
+      {(layer.params.privacyMasks ?? []).map((mask, index) => (
+        <div
+          key={`${layer.id}-privacy-${index}`}
+          style={{
+            position: 'absolute',
+            left: mask.left,
+            top: mask.top,
+            width: mask.width,
+            height: mask.height,
+            backdropFilter: 'blur(18px)',
+            WebkitBackdropFilter: 'blur(18px)',
+            background: 'rgba(5,10,15,0.18)',
+          }}
+        />
+      ))}
       <div
         style={{
           position: 'absolute',
@@ -819,7 +850,7 @@ export const V8MediaStage: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
           fontWeight: 900,
         }}
       >
-        场景演绎 · 不作事实证据
+        {layer.params.badge || '场景演绎 · 不作事实证据'}
       </div>
     </AbsoluteFill>
   );
