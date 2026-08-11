@@ -98,7 +98,8 @@ const englishFontSize = (length: number) => {
 
 export const AdaptiveBilingualCaptionOverlay: React.FC<{
   captionsSrc: string;
-}> = ({captionsSrc}) => {
+  variant?: 'boxed' | 'transparent-v8';
+}> = ({captionsSrc, variant = 'boxed'}) => {
   const [captions, setCaptions] = useState<CaptionPage[] | null>(null);
   const [handle] = useState(() => delayRender('加载自适应中英双语字幕'));
 
@@ -121,10 +122,13 @@ export const AdaptiveBilingualCaptionOverlay: React.FC<{
     return null;
   }
 
-  return <CaptionPages captions={captions} />;
+  return <CaptionPages captions={captions} variant={variant} />;
 };
 
-const CaptionPages: React.FC<{captions: CaptionPage[]}> = ({captions}) => {
+const CaptionPages: React.FC<{
+  captions: CaptionPage[];
+  variant: 'boxed' | 'transparent-v8';
+}> = ({captions, variant}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const nowMs = (frame / fps) * 1000;
@@ -167,6 +171,7 @@ const CaptionPages: React.FC<{captions: CaptionPage[]}> = ({captions}) => {
   const parts = splitByHighlights(current.zh, current.highlights ?? []);
   const zhSize = chineseFontSize([...current.zh].length);
   const enSize = englishFontSize(current.en.length);
+  const transparent = variant === 'transparent-v8';
 
   return (
     <div
@@ -175,14 +180,14 @@ const CaptionPages: React.FC<{captions: CaptionPage[]}> = ({captions}) => {
         left: '50%',
         bottom: 42,
         width: 1510,
-        height: 124,
+        height: transparent ? 108 : 124,
         transform: 'translateX(-50%)',
         boxSizing: 'border-box',
-        padding: '11px 30px 12px',
-        borderRadius: 8,
-        border: '1px solid rgba(255,255,255,0.09)',
-        background: 'rgba(0,0,0,0.64)',
-        boxShadow: '0 18px 54px rgba(0,0,0,0.46)',
+        padding: transparent ? '6px 24px 8px' : '11px 30px 12px',
+        borderRadius: transparent ? 0 : 8,
+        border: transparent ? 'none' : '1px solid rgba(255,255,255,0.09)',
+        background: transparent ? 'transparent' : 'rgba(0,0,0,0.64)',
+        boxShadow: transparent ? 'none' : '0 18px 54px rgba(0,0,0,0.46)',
         opacity,
         pointerEvents: 'none',
         fontFamily,
@@ -205,8 +210,12 @@ const CaptionPages: React.FC<{captions: CaptionPage[]}> = ({captions}) => {
           textAlign: 'center',
           whiteSpace: 'nowrap',
           fontVariantEastAsian: 'proportional-width',
-          WebkitTextStroke: '1px rgba(0,0,0,0.76)',
-          textShadow: '0 3px 10px rgba(0,0,0,0.94)',
+          WebkitTextStroke: transparent
+            ? '1.25px rgba(0,0,0,0.88)'
+            : '1px rgba(0,0,0,0.76)',
+          textShadow: transparent
+            ? '0 3px 7px rgba(0,0,0,1), 0 0 16px rgba(0,0,0,0.72)'
+            : '0 3px 10px rgba(0,0,0,0.94)',
         }}
       >
         {parts.map((part, index) => (
@@ -214,6 +223,9 @@ const CaptionPages: React.FC<{captions: CaptionPage[]}> = ({captions}) => {
             key={`${part.text}-${index}`}
             style={{
               color: part.highlighted ? colors.yellow : colors.ink,
+              textShadow: part.highlighted && transparent
+                ? '0 0 18px rgba(255,204,61,0.55), 0 3px 7px rgba(0,0,0,1)'
+                : undefined,
             }}
           >
             {part.text}
@@ -231,7 +243,9 @@ const CaptionPages: React.FC<{captions: CaptionPage[]}> = ({captions}) => {
           letterSpacing: 0,
           textAlign: 'center',
           whiteSpace: 'nowrap',
-          textShadow: '0 3px 10px rgba(0,0,0,0.95)',
+          textShadow: transparent
+            ? '0 2px 6px rgba(0,0,0,1), 0 0 13px rgba(0,0,0,0.78)'
+            : '0 3px 10px rgba(0,0,0,0.95)',
         }}
       >
         {current.en}

@@ -56,6 +56,7 @@ const config: V72ProductionConfig = {
   durationSeconds,
   sourceVideo: 'media/training-camp-20260811/talk/TRAINING_CAMP_20260811_talk01_corrected_16x9_h264.mp4',
   captionsSrc: 'data/TRAINING_CAMP_20260811_talk01.bilingual.v1.json',
+  captionVariant: 'transparent-v8',
   brandLabel: '超哥AI创业记',
   sourceFilter: 'contrast(1.025) saturate(1.01) brightness(0.995)',
   sourceOverlay: 'linear-gradient(90deg, rgba(2,7,12,0.15) 0%, rgba(2,7,12,0.025) 43%, rgba(2,7,12,0.01) 100%)',

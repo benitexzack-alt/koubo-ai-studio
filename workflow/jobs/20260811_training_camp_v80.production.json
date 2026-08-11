@@ -11,17 +11,19 @@
   },
   "experiment": {
     "id": "v8-semantic-continuity-sfx",
-    "status": "candidate-preview-approved",
-    "userPreviewApproved": true,
-    "userPreviewApprovedAt": "2026-08-11T20:12:54+08:00",
-    "userPreviewApprovalEvidence": "用户明确回复：可以，就按这个有音效版的这个版本来。",
+    "status": "candidate-preview-required",
+    "userPreviewApproved": false,
+    "userPreviewApprovedAt": null,
+    "userPreviewApprovalEvidence": null,
+    "revisionReason": "用户要求去除全部打码、恢复透明黄字字幕，并将11段现场素材改为不循环短切。",
     "primaryVisualEventCount": 26,
     "sfxCoveragePercent": 100,
     "previewAuditionRoles": [
       "media",
-      "line",
-      "number",
-      "list"
+      "keyword",
+      "list",
+      "evidence",
+      "line"
     ]
   },
   "baseline": {
@@ -72,19 +74,19 @@
     "crf": 22,
     "ranges": [
       {
-        "id": "v8-continuous-xinchuang-four-questions",
-        "startSeconds": 119,
-        "endSeconds": 164
+        "id": "v8-revision-unmasked-transparent-captions-media-cuts",
+        "startSeconds": 0,
+        "endSeconds": 41
       }
     ],
-    "output": "work/production-runs/20260811-training-camp-v80/preview-with-sfx.mp4",
+    "output": "work/production-runs/20260811-training-camp-v80/revision-v2/preview-with-sfx.mp4",
     "renderWithoutSfxComparison": true
   },
   "riskFrames": {
     "enabled": true,
     "source": "visual-plan-reviewAt",
     "fullResolution": true,
-    "outputDirectory": "work/production-runs/20260811-training-camp-v80/risk-frames"
+    "outputDirectory": "work/production-runs/20260811-training-camp-v80/revision-v2/risk-frames"
   },
   "audioPreflight": {
     "enabled": true,
@@ -94,15 +96,15 @@
     "preferredTruePeakDbtp": -1.8
   },
   "formal": {
-    "enabled": true,
+    "enabled": false,
     "composition": "with-sfx",
-    "blockedReason": null,
+    "blockedReason": "返修预览待用户确认",
     "crf": 18,
     "pixelFormat": "yuv420p",
     "audioCodec": "aac",
     "audioBitrate": "192k",
-    "rawOutput": "work/production-runs/20260811-training-camp-v80/formal-raw.mp4",
-    "finalOutput": "outputs/创业能力提升训练营第一集_16x9_V80_正式成片_v1.mp4",
+    "rawOutput": "work/production-runs/20260811-training-camp-v80/revision-v2/formal-raw.mp4",
+    "finalOutput": "outputs/创业能力提升训练营第一集_16x9_V80_正式成片_v2.mp4",
     "loudness": {
       "enabled": true,
       "integratedLoudnessTargetLufs": -16,

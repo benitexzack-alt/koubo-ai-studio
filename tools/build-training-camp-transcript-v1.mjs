@@ -326,6 +326,32 @@ const words = [];
 const segments = [];
 const bilingual = [];
 
+const highlightCandidates = [
+  '庆阳国家算力枢纽', '创业能力提升训练营', '训练还没有结束', '不会替你找到项目',
+  '人工智能+', '场景应用', '能力培训', '应用开发', '系统迁移', '兼容适配',
+  '数据安全', '后期运维', '数字化基础', '专业团队', '专业适配', '承担责任',
+  '50名创业者', '本地企业', '普通企业', '人工智能', '信创项目', '选哪个AI工具',
+  '工作没写清', '资料散', '谁能看出来', '最后谁负责', '四个问题', '四问卡',
+  '最耗时间', '每天重复', '很小的AI测试', '少走一步错路', '信创专家',
+  '知识库', '工作流', '小工具', '能复核', '不能急着下结论', '课程全部结束',
+  '实际学到了什么', '真正有用', '继续验证', '评论区', '兰州AI创业',
+  '早上听课', '下午动手', '晚上作业', '第一集', '第二集', '实操', '应用',
+  '协同', '带电脑', '课后作业', '创业和工作', '餐馆', '工厂', '工作室',
+  '检查结果', '提需求', '很真实', '换电脑', '一张纸', '国产系统',
+  '算力', '信创', 'AI', '兰州', '资料', '验收',
+];
+
+const highlightsFor = (text) => {
+  const selected = [];
+  for (const candidate of highlightCandidates) {
+    if (!text.includes(candidate)) continue;
+    if (selected.some((item) => item.includes(candidate) || candidate.includes(item))) continue;
+    selected.push(candidate);
+    if (selected.length === 2) break;
+  }
+  return selected;
+};
+
 rawSegments.forEach((segment, segmentIndex) => {
   const sourceStartMs = Math.min(sourceDurationMs, Number(segment.offsets?.from ?? 0));
   const sourceEndMs = Math.min(
@@ -369,7 +395,7 @@ rawSegments.forEach((segment, segmentIndex) => {
       endMs: pageEndMs,
       zh,
       en: enPages[pageIndex] ?? '',
-      highlights: [],
+      highlights: highlightsFor(zh),
     });
     pageStartMs = pageEndMs;
   });

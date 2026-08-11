@@ -146,6 +146,7 @@ export type V72ProductionConfig = {
   durationSeconds: number;
   sourceVideo: string;
   captionsSrc: string;
+  captionVariant?: 'boxed' | 'transparent-v8';
   brandLabel?: string;
   sourceObjectFit?: 'cover' | 'contain';
   sourceFilter?: string;
@@ -457,7 +458,10 @@ export const V72ProductionShell: React.FC<{
         durationSeconds={config.durationSeconds}
         brandLabel={config.brandLabel ?? '超哥AI创业记'}
       />
-      <AdaptiveBilingualCaptionOverlay captionsSrc={config.captionsSrc} />
+      <AdaptiveBilingualCaptionOverlay
+        captionsSrc={config.captionsSrc}
+        variant={config.captionVariant}
+      />
     </AbsoluteFill>
   );
 };

@@ -2,6 +2,7 @@ import {Video} from '@remotion/media';
 import React from 'react';
 import {
   AbsoluteFill,
+  Sequence,
   interpolate,
   spring,
   staticFile,
@@ -35,14 +36,13 @@ export type V8SemanticLayer = {
   params: {
     component: string;
     src?: string;
+    mediaClips?: Array<{
+      src: string;
+      durationSeconds: number;
+      trimBeforeSeconds?: number;
+    }>;
     disclosure?: string;
     badge?: string;
-    privacyMasks?: Array<{
-      left: number;
-      top: number;
-      width: number;
-      height: number;
-    }>;
     mediaScale?: number;
     mediaTransformOrigin?: string;
   };
@@ -757,7 +757,8 @@ export const V8StatusStack: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
 
 export const V8MediaStage: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
   const frame = useCurrentFrame();
-  const {durationInFrames} = useVideoConfig();
+  const {fps} = useVideoConfig();
+  const durationInFrames = Math.max(1, Math.round((layer.end - layer.start) * fps));
   const opacity = useSceneOpacity();
   const reveal = useReveal(3);
   const mediaScale = layer.params.mediaScale ?? 1.02;
@@ -767,43 +768,50 @@ export const V8MediaStage: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
     [mediaScale, mediaScale + 0.055],
     clamp,
   );
-  if (!layer.params.src) return null;
+  const mediaClips = layer.params.mediaClips?.length
+    ? layer.params.mediaClips
+    : layer.params.src
+      ? [{src: layer.params.src, durationSeconds: layer.end - layer.start}]
+      : [];
+  if (mediaClips.length === 0) return null;
+  let clipCursor = 0;
   return (
     <AbsoluteFill style={{overflow: 'hidden', background: '#03080D', opacity}}>
-      <Video
-        src={staticFile(layer.params.src)}
-        muted
-        loop
-        objectFit="cover"
-        style={{
-          width: '100%',
-          height: '100%',
-          filter: 'contrast(1.035) saturate(0.96) brightness(0.82)',
-          transform: `scale(${scale})`,
-          transformOrigin: layer.params.mediaTransformOrigin ?? '50% 48%',
-        }}
-      />
+      {mediaClips.map((clip, index) => {
+        const from = clipCursor;
+        const clipFrames = index === mediaClips.length - 1
+          ? Math.max(1, durationInFrames - from)
+          : Math.max(1, Math.round(clip.durationSeconds * fps));
+        clipCursor += clipFrames;
+        return (
+          <Sequence
+            key={`${layer.id}-media-${index}`}
+            from={from}
+            durationInFrames={clipFrames}
+            premountFor={12}
+          >
+            <Video
+              src={staticFile(clip.src)}
+              muted
+              trimBefore={Math.round((clip.trimBeforeSeconds ?? 0) * fps)}
+              objectFit="cover"
+              style={{
+                width: '100%',
+                height: '100%',
+                filter: 'contrast(1.035) saturate(0.96) brightness(0.82)',
+                transform: `scale(${scale})`,
+                transformOrigin: layer.params.mediaTransformOrigin ?? '50% 48%',
+              }}
+            />
+          </Sequence>
+        );
+      })}
       <AbsoluteFill
         style={{
           background:
             'linear-gradient(90deg, rgba(2,7,12,0.84) 0%, rgba(2,7,12,0.38) 33%, rgba(2,7,12,0.04) 67%)',
         }}
       />
-      {(layer.params.privacyMasks ?? []).map((mask, index) => (
-        <div
-          key={`${layer.id}-privacy-${index}`}
-          style={{
-            position: 'absolute',
-            left: mask.left,
-            top: mask.top,
-            width: mask.width,
-            height: mask.height,
-            backdropFilter: 'blur(18px)',
-            WebkitBackdropFilter: 'blur(18px)',
-            background: 'rgba(5,10,15,0.18)',
-          }}
-        />
-      ))}
       <div
         style={{
           position: 'absolute',
