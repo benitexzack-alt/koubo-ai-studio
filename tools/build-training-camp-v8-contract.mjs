@@ -165,7 +165,7 @@ const layers = sceneSpecs.map((scene, index) => {
 
 const plan = {
   schemaVersion: 4,
-  experiment: {id: experimentId, status: 'candidate-preview-required'},
+  experiment: {id: experimentId, status: 'candidate-preview-approved'},
   videoId,
   videoTitle: '在甘肃做企业，AI和信创离你到底有多远？',
   sourceVideo,
@@ -198,7 +198,7 @@ const cues = layers.map((layer) => {
     voiceDuckDb: 0,
     previewCovered: start >= previewStart && start <= previewEnd,
     formalReviewed: false,
-    userAudibilityConfirmed: false,
+    userAudibilityConfirmed: start >= previewStart && start <= previewEnd,
   };
 });
 const cueSheet = {
@@ -208,7 +208,7 @@ const cueSheet = {
   experimentId,
   normalizedPack: 'assets/sfx/koubo-sfx-v8/manifest.json',
   cues,
-  coverageReview: {primaryVisualEventCount: layers.length, coveredPrimaryVisualEventCount: cues.length, coveragePercent: 100, maxSyncErrorFrames: 2, machineStatus: 'pending-validator', userAudibilityConfirmed: false, confirmationScope: 'not-confirmed'},
+  coverageReview: {primaryVisualEventCount: layers.length, coveredPrimaryVisualEventCount: cues.length, coveragePercent: 100, maxSyncErrorFrames: 2, machineStatus: 'pending-validator', userAudibilityConfirmed: true, confirmationScope: '2026-08-11用户确认119至164秒同画面有音效版；仅预览覆盖的cue标记为已听感确认'},
 };
 
 const job = {
@@ -219,7 +219,7 @@ const job = {
   purpose: '以本人横屏口播为主，按V8连续语义规范使用训练营真实现场视频和四问分流卡；课程与研学结果留待第二集验证。',
   productionState: 'ready-for-production',
   productionProfile: {id: experimentId, version: 'V8'},
-  experiment: {id: experimentId, status: 'candidate-preview-required', userPreviewApproved: false, userPreviewApprovedAt: null, primaryVisualEventCount: layers.length, sfxCoveragePercent: 100, previewAuditionRoles: ['media', 'line', 'number', 'list']},
+  experiment: {id: experimentId, status: 'candidate-preview-approved', userPreviewApproved: true, userPreviewApprovedAt: '2026-08-11T20:12:54+08:00', userPreviewApprovalEvidence: '用户明确回复：可以，就按这个有音效版的这个版本来。', primaryVisualEventCount: layers.length, sfxCoveragePercent: 100, previewAuditionRoles: ['media', 'line', 'number', 'list']},
   baseline: {path: 'workflow/production-baseline.v1.json', id: 'koubo-formal-16x9-v1', revision: 'V7.2-20260730'},
   inputs: {
     source: sourceVideo,
@@ -234,7 +234,7 @@ const job = {
   preview: {enabled: true, withSfxOnly: false, scale: 0.5, crf: 22, ranges: [{id: 'v8-continuous-xinchuang-four-questions', startSeconds: previewStart, endSeconds: previewEnd}], output: 'work/production-runs/20260811-training-camp-v80/preview-with-sfx.mp4', renderWithoutSfxComparison: true},
   riskFrames: {enabled: true, source: 'visual-plan-reviewAt', fullResolution: true, outputDirectory: 'work/production-runs/20260811-training-camp-v80/risk-frames'},
   audioPreflight: {enabled: true, source: 'preview', integratedLoudnessTargetLufs: -16, truePeakMaxDbtp: -1.5, preferredTruePeakDbtp: -1.8},
-  formal: {enabled: false, composition: 'with-sfx', blockedReason: '等待用户确认V8同画面有声/无声动态预览。', crf: 18, pixelFormat: 'yuv420p', audioCodec: 'aac', audioBitrate: '192k', rawOutput: 'work/production-runs/20260811-training-camp-v80/formal-raw.mp4', finalOutput: 'outputs/创业能力提升训练营第一集_16x9_V80_正式成片_v1.mp4', loudness: {enabled: true, integratedLoudnessTargetLufs: -16, loudnessRangeTargetLu: 11, truePeakTargetDbtp: -2.2}},
+  formal: {enabled: true, composition: 'with-sfx', blockedReason: null, crf: 18, pixelFormat: 'yuv420p', audioCodec: 'aac', audioBitrate: '192k', rawOutput: 'work/production-runs/20260811-training-camp-v80/formal-raw.mp4', finalOutput: 'outputs/创业能力提升训练营第一集_16x9_V80_正式成片_v1.mp4', loudness: {enabled: true, integratedLoudnessTargetLufs: -16, loudnessRangeTargetLu: 11, truePeakTargetDbtp: -2.2}},
   cache: {enabled: true, directory: 'work/production-cache', reuseOnlyOnExactFingerprint: true},
   reports: {runManifest: 'work/production-runs/20260811-training-camp-v80/run-manifest.json', timingReport: 'work/production-runs/20260811-training-camp-v80/timing-report.json', regressionReport: 'work/production-runs/20260811-training-camp-v80/regression-report.json'},
 };
