@@ -113,6 +113,10 @@ import {
   TRAINING_CAMP_V80_DURATION_IN_FRAMES,
 } from './TrainingCampV80Talk16x9';
 import {
+  BestWorstV8PrimitivePreview16x9,
+  BEST_WORST_V8_PRIMITIVE_PREVIEW_DURATION_IN_FRAMES,
+} from './BestWorstV8PrimitivePreview16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -134,6 +138,14 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="BestWorstV8PrimitivePreview16x9"
+          component={BestWorstV8PrimitivePreview16x9}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={BEST_WORST_V8_PRIMITIVE_PREVIEW_DURATION_IN_FRAMES}
+        />
         <Composition
           id="TrainingCamp16x9-V80-WithSfx"
           component={TrainingCampV80Talk16x9WithSfx}

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260812T052740Z-5a237c9b",
+  "status": "passed",
+  "reviewed_at": "2026-08-12T14:20:00+08:00",
+  "draft": {
+    "path": "<project-root>/notes/2026-08-12-AI在支配你还是你掌控AI-用户最终录制稿-v1.md",
+    "sha256": "70c9fd11205f4194e8c639ff40ebbe2fa36c84109af3e0d5a49ade580badcf2b"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "<project-root>/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "9e128bca14deaff1606e5814861a824e3a91010ac1a5f106dfa80f8e208ba167",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "本轮用户已锁定录制正文，不进行再改写。扫描确认开头先给出AI支配与人掌控的分岔，再用最近一周任务、客服、16%边界和J曲线接住；来源都用于回答具体判断问题，边界已嵌入正文或事实锁。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "AI做出一版后？你补了什么？又做了哪些决定？最终采用了哪些？",
+        "risk_level": "medium",
+        "reason": "反问密度高，若录制时没有停顿，观众来不及对照自己的任务。",
+        "candidates": {
+          "conservative": "保留原文，录制时在三个问题之间留停顿。",
+          "direct": "AI做出一版以后，你补了什么？你做了哪些决定？最后用了哪些？",
+          "vivid": "AI先交了一版，你在上面留下了什么？判断、取舍，还是只点了一次复制？"
+        },
+        "fact_difference": "三个候选都不新增事实；用户已锁定原文，本轮不并入改稿。",
+        "recommendation": "保留原文，用录制停顿和逐项动效解决。"
+      },
+      {
+        "original": "斯坦福数字经济实验室有一项研究提到，在美国数据里，22到25岁、AI暴露度最高的一批职业，早期劳动者就业相对下降大约16%。",
+        "risk_level": "medium",
+        "reason": "数字显眼但限定多，若画面只放大16%，会把相对下降错看成全体下降。",
+        "candidates": {
+          "conservative": "保留原文，画面同时显示美国、22至25岁、高AI暴露职业、相对下降四项边界。",
+          "direct": "在这份美国数据里，22到25岁、AI暴露度最高职业的就业相对下降大约16%。",
+          "vivid": "16%这个数字只指向一小块人：美国22到25岁、高AI暴露职业的早期劳动者。"
+        },
+        "fact_difference": "三个候选保留同一研究边界；用户已锁定原文，本轮不并入改稿。",
+        "recommendation": "保留原文，强制使用带全部边界的证据卡，禁止单独放大16%。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": [
+      "正式字幕以用户实际录音为准，用户口头顺口调整不视为后期擅自改稿。",
+      "发布前按当日抖音后台复核AI内容声明与投放边界。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 8,
+    "rhythm": 8.5,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "project_id": "AI_BEST_WORST_20260812",
+  "project": "AI在支配你还是你掌控AI",
+  "version": "v1",
+  "created_at": "2026-08-12T15:10:00+08:00",
+  "status": "preproduction-ready-awaiting-user-assets-and-talk-source",
+  "script_path": "notes/2026-08-12-AI在支配你还是你掌控AI-用户最终录制稿-v1.md",
+  "script_sha256": "70c9fd11205f4194e8c639ff40ebbe2fa36c84109af3e0d5a49ade580badcf2b",
+  "production_profile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8",
+    "downgrade_allowed": false
+  },
+  "production_gate": {
+    "card": "notes/2026-08-12-AI在支配你还是你掌控AI-内容门禁卡-v1-production.json",
+    "report": "notes/2026-08-12-AI在支配你还是你掌控AI-内容门禁报告-v1-production.json",
+    "status": "ready-for-production"
+  },
+  "source_folder": "/Users/pc/Desktop/口播素材/2026-08-12_AI在支配你还是你掌控AI",
+  "global_usage_rules": [
+    "用户锁定正文不得改写，正式字幕以真实录音为准",
+    "原始素材只读，不覆盖、不删除、不重命名",
+    "AI生成视频统一标注AI生成·概念画面，不作为历史、新闻、客户或效果证据",
+    "真人是默认主画面，Remotion信息层覆盖率不超过0.42，禁止全屏Remotion说明页",
+    "16%必须与美国、22至25岁、高AI暴露职业、相对就业下降四项边界同屏",
+    "左上角只显示超哥AI创业记，不显示V8版本号",
+    "中英字幕共用真实词级时间窗",
+    "所有主视觉事件必须绑定一个且仅一个显式白名单音效",
+    "任何voice-patch、人声片段和未知来源文件禁止进入音效轨"
+  ],
+  "assets": [
+    {
+      "id": "R01",
+      "type": "real-talk-source",
+      "required": true,
+      "filename": "R01_AI在支配你还是你掌控AI_口播原片.原扩展名",
+      "folder": "01_口播原片",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S01",
+      "type": "text-to-video",
+      "required": true,
+      "filename": "S01_客服替代与增强双路径_16x9.mp4",
+      "folder": "02_AI生成视频",
+      "semantic_anchor": "客服任务被机器拆走与人的能力被放大",
+      "usage": "full-screen",
+      "disclosure": "AI生成·概念画面",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S02",
+      "type": "text-to-video",
+      "required": true,
+      "filename": "S02_电力进入工厂后的重构_16x9.mp4",
+      "folder": "02_AI生成视频",
+      "semantic_anchor": "通用技术需要布局、流程、管理和技能共同重构",
+      "usage": "full-screen",
+      "disclosure": "AI生成·概念画面",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S03",
+      "type": "text-to-video",
+      "required": true,
+      "filename": "S03_AI工具卡在旧流程_16x9.mp4",
+      "folder": "02_AI生成视频",
+      "semantic_anchor": "工具更新但客户、数据、复核、责任和纠错流程不变",
+      "usage": "full-screen",
+      "disclosure": "AI生成·概念画面",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "R02",
+      "type": "real-screen-recording",
+      "required": false,
+      "filename": "R02_真实AI工作流与资产沉淀_16x9.mp4",
+      "folder": "03_可选真实录屏",
+      "semantic_anchor": "AI初稿、人的补充判断和可复用资产沉淀",
+      "usage": "full-screen-or-safe-overlay",
+      "status": "optional-awaiting-user"
+    },
+    {
+      "id": "E01",
+      "type": "official-evidence-page",
+      "required": true,
+      "filename": "E01_斯坦福未来十年最好或最坏_第09页.png",
+      "folder": "04_官方证据素材",
+      "source": "Stanford HAI Future of Work 2021 page 9",
+      "status": "prepared-local"
+    },
+    {
+      "id": "E02",
+      "type": "official-evidence-page",
+      "required": true,
+      "filename": "E02_NBER客服实验_第02页.png",
+      "folder": "04_官方证据素材",
+      "source": "NBER Working Paper 31161 page 2",
+      "status": "prepared-local"
+    },
+    {
+      "id": "E03",
+      "type": "official-evidence-page",
+      "required": true,
+      "filename": "E03_斯坦福青年就业16边界_第01页.png",
+      "folder": "04_官方证据素材",
+      "source": "Stanford Digital Economy Lab Canaries page 1",
+      "status": "prepared-local"
+    },
+    {
+      "id": "E04",
+      "type": "official-evidence-page",
+      "required": true,
+      "filename": "E04_NBER生产率J曲线_第02页.png",
+      "folder": "04_官方证据素材",
+      "source": "NBER Working Paper 25148 page 2",
+      "status": "prepared-local"
+    }
+  ],
+  "timing_policy": {
+    "current": "semantic-anchors-only",
+    "formal_timing_source": "词级转写与真实原音轨",
+    "no_script_time_estimation": true
+  },
+  "next_step": "用户放入R01与S01至S03后，执行只读技术检查、本地词级转写、逐句核对和V8真实时间轴编排"
+}
