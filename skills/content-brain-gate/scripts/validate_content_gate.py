@@ -1331,12 +1331,19 @@ class GateValidator:
                 "draft": "ready-for-draft",
                 "production": "ready-for-production",
             }[stage]
+        draft = self.card.get("draft") if isinstance(self.card.get("draft"), dict) else {}
+        script_path = resolve_input_path(draft.get("path"), self.card_path)
+        script_is_file = script_path is not None and script_path.is_file()
         return {
             "ok": not self.errors,
             "status": status,
+            "validator_version": "content-brain-gate/1.0",
             "task_id": self.card.get("task_id"),
             "target_stage": stage,
             "card_path": str(self.card_path),
+            "card_sha256": file_sha256(self.card_path) if self.card_path.is_file() else None,
+            "script_path": str(script_path.resolve()) if script_is_file else None,
+            "script_sha256": file_sha256(script_path) if script_is_file else None,
             "passed": self.passed,
             "errors": self.errors,
             "warnings": self.warnings,

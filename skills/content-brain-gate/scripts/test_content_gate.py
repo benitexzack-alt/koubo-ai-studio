@@ -587,6 +587,29 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertEqual(result["status"], "blocked")
         self.assertTrue(any("sha256 已过期" in error for error in result["errors"]))
 
+    def test_validation_report_binds_current_card_and_draft_hashes(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "phrase_exemptions": [],
+        }
+        self.attach_copy_review(card, draft_path)
+        card_path = self.temp_dir / "current-card.json"
+        card_path.write_text(
+            json.dumps(card, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+        result = MODULE.GateValidator(card, card_path).run()
+
+        self.assertEqual(result["validator_version"], "content-brain-gate/1.0")
+        self.assertEqual(result["card_sha256"], MODULE.file_sha256(card_path))
+        self.assertEqual(result["script_path"], str(draft_path.resolve()))
+        self.assertEqual(result["script_sha256"], MODULE.file_sha256(draft_path))
+
     def test_retention_node_requires_three_candidates(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
         draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
