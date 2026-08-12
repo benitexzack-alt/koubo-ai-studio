@@ -11,6 +11,7 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from unittest import mock
 
 
 SKILL_ROOT = Path(__file__).resolve().parent.parent
@@ -312,7 +313,43 @@ class ContentGateRegressionTests(unittest.TestCase):
         }
         self.attach_copy_review(card, draft_path)
 
-        result = self.validate(card, "qingyang-anchor-repeat.json")
+        history_draft_path = self.temp_dir / "fixed-history.md"
+        history_draft_path.write_text(
+            "## 口播正文\n\n庆阳正在建设国家算力枢纽。\n\n## 审计附录\n",
+            encoding="utf-8",
+        )
+        history_path = self.temp_dir / "fixed-history.json"
+        history_path.write_text(
+            json.dumps({
+                "schema_version": 1,
+                "items": [{
+                    "id": "fixed-qingyang-history",
+                    "path": str(history_draft_path),
+                    "sha256": MODULE.file_sha256(history_draft_path),
+                    "content_start_marker": "## 口播正文",
+                    "content_end_marker": "## 审计附录",
+                }],
+            }, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        rules_path = self.temp_dir / "fixed-style-rules.json"
+        rules_path.write_text(
+            json.dumps({
+                "schema_version": 1,
+                "history_manifest": str(history_path),
+                "ai_tone_rules": [],
+                "anchor_rules": [{
+                    "id": "qingyang-compute",
+                    "pattern": "(?:庆阳.{0,20}(?:算力|数据中心|枢纽)|(?:算力|数据中心|枢纽).{0,20}庆阳)",
+                    "description": "庆阳算力、数据中心或国家枢纽锚点",
+                    "block_if_latest_match": True,
+                }],
+            }, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+        with mock.patch.object(MODULE, "PROJECT_STYLE_GATE_PATH", str(rules_path)):
+            result = self.validate(card, "qingyang-anchor-repeat.json")
 
         self.assertEqual(result["status"], "blocked")
         self.assertTrue(any(
