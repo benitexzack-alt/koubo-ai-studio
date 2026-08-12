@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260812T130201Z-d50e3e8d-v2",
+  "target_stage": "outline",
+  "mode": "deep-explainer",
+  "source": {
+    "title": "兰州信创产业参访一手素材、数据复核与官方公开证据",
+    "path": "/Users/pc/Documents/口播/notes/2026-08-12-兰州信创产业参访-数据复核与使用分层-v2.md",
+    "completeness": "complete",
+    "verification_scope": "17段现场视频和用户纪要完整盘点；英伟达对标数据按现场记忆、AI纪要、公开研报和海光官方披露分层；兰州园区企业、产线与产能数据来自甘肃省发改委主办网站转载报道；现场工艺参数保留现场讲解归因。"
+  },
+  "reader_brief": {
+    "audience": "对国产AI、硬件、信创和甘肃本地产业好奇，但平时只看到大模型应用、不理解AI底层产业链的普通观众、本地企业和创业者",
+    "existing_belief": "AI就是ChatGPT、豆包和软件应用；国产崛起只看一颗芯片跑分；甘肃只有庆阳算力，兰州没有可感知的AI制造与适配产业",
+    "desired_change": "观众看懂国产AI从芯片到服务器、基础软件和行业应用的完整链条，知道兰州在制造、适配和区域服务中的位置，并能把这套认知用于判断自己的企业方案或创业位置",
+    "leave_with": [
+      "海光DCU对标英伟达A100约八成的现场口径与适用边界",
+      "兰州8家企业、5条产线和公开产能的本地意外感",
+      "芯片、服务器、基础软件、行业应用四层认知地图",
+      "国产崛起从单点性能走向生态协同的机制",
+      "庆阳算力、兰州制造适配和甘肃应用场景的宏观连接",
+      "普通观众、本地企业和创业者各自的现实关联"
+    ]
+  },
+  "mother_thesis": {
+    "statement": "国产AI真正的崛起，不只是某一颗芯片跑出一个漂亮数字，而是芯片、服务器、操作系统、数据库、应用适配和本地服务开始连成一套可制造、可适配、可交付的生态；兰州的产线和适配中心，说明甘肃正在从算力资源继续走向制造与应用能力。",
+    "scope_boundary": "现场对标数据不能扩大为所有国产芯片的统一性能；园区规划产能不等于实际产量和销量；庆阳、兰州与行业场景的连接是分析框架，不代表已经形成统一商业闭环。",
+    "supporting_node_ids": ["I01", "I02", "I04", "I05", "I06", "I08"]
+  },
+  "insight_nodes": [
+    {
+      "id": "I01",
+      "label": "八成性能钩子",
+      "source_ref": "用户现场记忆；export_1786539161902.md；公开证券研究资料；海光信息2025年半年度报告",
+      "source_claim": "现场讲解把海光DCU与英伟达A100的性能比较概括到约八成左右；公开资料存在70%—80%的特定产品线索，但官方没有提供覆盖全部任务的统一百分比。",
+      "structural_function": "hook",
+      "viewer_gain": "通过一个强数字进入国产AI硬件，同时知道性能比较必须带型号、任务和软件栈条件。",
+      "emotional_function": "制造国产进步的振奋感，同时保留理性判断。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "interpretation",
+        "evidence_ids": ["evidence:onsite:hygon-dcu-a100-eighty-percent", "evidence:research:hygon-dcu-a100-70-80"],
+        "accurate_replacement": "现场讲解提到海光DCU对标英伟达A100约八成；不同型号、任务和软件栈结果不同，不能扩大为全部国产芯片的统一结论。"
+      }
+    },
+    {
+      "id": "I02",
+      "label": "兰州本地意外感",
+      "source_ref": "甘肃日报2025-08-06园区报道；IMG_4971、IMG_5131、IMG_5140",
+      "source_claim": "兰州创速空间信创产业园公开报道引入8家企业、布局5条智能生产线，现场可见服务器生产线和海光生态适配中心。",
+      "structural_function": "evidence",
+      "viewer_gain": "发现国产AI硬件和信创生态并非只在北上深，兰州也出现实体制造和适配节点。",
+      "emotional_function": "建立甘肃本地认同和地域惊喜。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "verified",
+        "evidence_ids": ["evidence:gansu:chuangsu-xinchuang-park-20250806", "evidence:local:visit-videos-20260812"],
+        "accurate_replacement": ""
+      }
+    },
+    {
+      "id": "I03",
+      "label": "公开产能与工艺细节",
+      "source_ref": "甘肃日报2025-08-06园区报道；现场工艺纪要和脑图",
+      "source_claim": "公开报道引用企业口径称生产线年产能可达万余台服务器和70多万台信创终端；现场讲解还展示前测、老化、复检、包装和入库工艺。",
+      "structural_function": "example",
+      "viewer_gain": "用产能和最长约48小时测试等可感知细节理解服务器不是展品，而是需要制造和质量链。",
+      "emotional_function": "把宏观产业落到真实机器和工位。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "partial",
+        "evidence_ids": ["evidence:gansu:chuangsu-xinchuang-park-20250806", "evidence:local:visit-notes-production-line"],
+        "accurate_replacement": "产能必须表述为公开报道中的可达产能，不等于实际产量或销量；48小时只表述为现场讲解中的部分测试时长。"
+      }
+    },
+    {
+      "id": "I04",
+      "label": "AI四层底座",
+      "source_ref": "海光信息2025年半年度报告；光合组织官网；现场产品和生态图谱",
+      "source_claim": "AI应用背后至少可以用芯片/算力卡、服务器/工作站、操作系统/数据库、AI平台与行业应用四层理解。",
+      "structural_function": "mechanism",
+      "viewer_gain": "第一次把平时看见的大模型应用与背后的硬件和基础软件连接起来。",
+      "emotional_function": "消除信创术语堆叠带来的距离感。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "interpretation",
+        "evidence_ids": ["evidence:hygon:2025-interim-report-products", "evidence:hieco:official-functions", "evidence:local:visit-notes-ecosystem"],
+        "accurate_replacement": "四层地图是面向普通观众的简化解释，不等于完整技术架构或官方信创分类。"
+      }
+    },
+    {
+      "id": "I05",
+      "label": "国产崛起是生态补缺",
+      "source_ref": "光合组织官网；海光官方披露；现场软件生态和产品展示",
+      "source_claim": "芯片性能只是起点，国产AI还要继续补齐服务器制造、多卡互联、软件栈、系统兼容、行业应用和本地服务。",
+      "structural_function": "tension",
+      "viewer_gain": "既不因单一跑分否定国产进步，也不把一个数字扩大成全面替代。",
+      "emotional_function": "把简单自豪感推进为对长期生态建设的认同。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "interpretation",
+        "evidence_ids": ["evidence:hieco:official-functions", "evidence:hygon:2025-interim-report-products"],
+        "accurate_replacement": "国产崛起在本稿中指产品与生态能力持续形成，不表示已经全面替代国际产品。"
+      }
+    },
+    {
+      "id": "I06",
+      "label": "甘肃AI版图连接",
+      "source_ref": "甘肃国家算力枢纽官方资料；兰州园区公开报道；甘肃2026人工智能+行动方案",
+      "source_claim": "庆阳提供国家算力枢纽基础，兰州出现制造和适配节点，省级行动方案强调场景应用，可形成算力供给、制造适配、行业应用的分析链。",
+      "structural_function": "implication",
+      "viewer_gain": "从单个园区上升到甘肃AI产业可能形成的区域分工。",
+      "emotional_function": "给本地观众一张更宏观、更有方向感的地图。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "interpretation",
+        "evidence_ids": ["evidence:ndrc:gansu-compute-hub-qingyang", "evidence:gansu:chuangsu-xinchuang-park-20250806", "evidence:gansu:ai-plus-2026"],
+        "accurate_replacement": "庆阳算力、兰州制造适配和甘肃行业场景是基于公开设施与政策方向形成的分析框架，不表示已形成统一商业闭环。"
+      }
+    },
+    {
+      "id": "I07",
+      "label": "三类观众现实关系",
+      "source_ref": "用户最新反馈；第一集普通企业四问卡；本次产业素材",
+      "source_claim": "普通观众需要认知地图，本地企业需要兼容、数据、验收与运维检查，创业者需要看见需求翻译、应用集成和专业协作位置。",
+      "structural_function": "action",
+      "viewer_gain": "不同身份都能把国产AI与自己的选择连接起来，而不是只获得参观新闻。",
+      "emotional_function": "从国家产业叙事回到我的工作和企业。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "interpretation",
+        "evidence_ids": ["evidence:interpretation:three-audience-relevance"],
+        "accurate_replacement": "这些关联只提供判断和调查方向，不承诺就业、订单、项目或投资收益。"
+      }
+    },
+    {
+      "id": "I08",
+      "label": "超哥的生态位置",
+      "source_ref": "knowledge/01、02、14；上一集确认稿；用户本轮要求",
+      "source_claim": "超哥以本地AI实践者和复杂信息翻译者身份，把企业需求、资料、验收条件与知识库、工作流和专业信创团队连接起来，不冒充芯片或系统专家。",
+      "structural_function": "implication",
+      "viewer_gain": "看见普通AI创业者可以在产业链中承担什么，又必须把什么交给专业团队。",
+      "emotional_function": "用诚实边界建立本人感和可信度。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "source-backed",
+        "evidence_ids": ["evidence:personal:local-ai-practitioner-position"],
+        "accurate_replacement": ""
+      }
+    }
+  ],
+  "argument_chain": [
+    {"from": "I01", "to": "I02", "relation": "but", "bridge": "八成性能制造技术好奇，更大的地域反差是相关产线和适配中心就在兰州。"},
+    {"from": "I02", "to": "I03", "relation": "example", "bridge": "8家企业和5条产线之外，公开产能与现场工艺把本地制造进一步落到具体尺度。"},
+    {"from": "I03", "to": "I04", "relation": "enables", "bridge": "从服务器实物继续向上解释，观众才能看懂AI背后的芯片、设备、软件与应用。"},
+    {"from": "I04", "to": "I05", "relation": "therefore", "bridge": "四层关系说明国产崛起不能只看单点性能，还要持续补齐生态缺口。"},
+    {"from": "I05", "to": "I06", "relation": "example", "bridge": "兰州制造适配、庆阳算力和甘肃场景方向提供了生态补缺的本地区域例子。"},
+    {"from": "I06", "to": "I07", "relation": "therefore", "bridge": "宏观区域版图必须回到不同观众的工作、企业方案和创业选择才有价值。"},
+    {"from": "I07", "to": "I08", "relation": "example", "bridge": "超哥的AI事业是创业者如何连接需求、应用和专业团队的真实例子。"}
+  ],
+  "correction_ledger": [
+    {"node_id": "I01", "source_expression": "国产AI芯片已经达到英伟达90%以上", "issue": "AI纪要与用户现场记忆不一致，且缺少型号、任务和软件栈口径。", "action": "replace", "accurate_replacement": "现场讲解提到海光DCU对标英伟达A100约八成；不同型号、任务和软件栈结果不同，不能扩大为全部国产芯片的统一结论。", "insight_preserved": true},
+    {"node_id": "I03", "source_expression": "园区每年生产并销售万余台服务器和70万台终端", "issue": "公开原文是产能可达，不是实际产量或销量。", "action": "qualify", "accurate_replacement": "产能必须表述为公开报道中的可达产能，不等于实际产量或销量；48小时只表述为现场讲解中的部分测试时长。", "insight_preserved": true},
+    {"node_id": "I04", "source_expression": "四层地图就是完整信创架构", "issue": "面向普通人的简图删除了网络、安全、中间件和服务等层次。", "action": "qualify", "accurate_replacement": "四层地图是面向普通观众的简化解释，不等于完整技术架构或官方信创分类。", "insight_preserved": true},
+    {"node_id": "I05", "source_expression": "国产化已经完成全面替代", "issue": "产品、软件和行业场景仍存在不同程度的生态与适配差异。", "action": "replace", "accurate_replacement": "国产崛起在本稿中指产品与生态能力持续形成，不表示已经全面替代国际产品。", "insight_preserved": true},
+    {"node_id": "I06", "source_expression": "庆阳、兰州与甘肃行业应用已经形成完整商业闭环", "issue": "现有证据只能分别证明设施、园区和政策方向，不能证明统一商业运行结果。", "action": "qualify", "accurate_replacement": "庆阳算力、兰州制造适配和甘肃行业场景是基于公开设施与政策方向形成的分析框架，不表示已形成统一商业闭环。", "insight_preserved": true},
+    {"node_id": "I07", "source_expression": "普通人都能进入信创项目", "issue": "不同岗位和项目需要产品、资质、技术、采购和售后责任。", "action": "qualify", "accurate_replacement": "这些关联只提供判断和调查方向，不承诺就业、订单、项目或投资收益。", "insight_preserved": true}
+  ],
+  "ordinary_person_gains": {
+    "explanation": {"statement": "用芯片、服务器、基础软件和行业应用四层地图看懂AI底座与信创生态。", "node_ids": ["I01", "I03", "I04", "I05"]},
+    "judgment": {"statement": "既看见国产技术进步和兰州本地产业变化，也能区分现场口径、公开产能与真实运行结果。", "node_ids": ["I02", "I05", "I06"]},
+    "action": {"statement": "普通观众检查生态与真实应用，本地企业追问兼容、数据、验收和运维，创业者明确需求翻译与专业协作位置。", "node_ids": ["I07", "I08"]}
+  },
+  "adaptation": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-12-兰州信创产业参访-观众价值框架-v2.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "mappings": [
+      {"node_id": "I01", "draft_ref": "现场讲解提到，海光DCU对标英伟达A100，性能大约做到八成左右。", "function_preserved": true},
+      {"node_id": "I02", "draft_ref": "但更让我意外的不是这个数字，而是这块国产AI芯片背后的服务器产线和生态适配中心，就在兰州。", "function_preserved": true},
+      {"node_id": "I03", "draft_ref": "公开报道里，这个产业园已经引入8家企业、布局5条智能生产线。其中一条国产化ICT生产线公布的产能，是每年万余台服务器和70多万台信创终端。", "function_preserved": true},
+      {"node_id": "I04", "draft_ref": "如果你平时只关注大模型，这次我想带你看清AI背后真正托底的四层东西：芯片负责算，服务器把算力组织起来，国产软件让系统能运行，最后还得把它接进医院、工厂和企业的真实业务。", "function_preserved": true},
+      {"node_id": "I05", "draft_ref": "国产崛起不是一夜替代，而是一层一层把缺口补齐。兰州的价值，是这套生态开始有了本地制造、适配和服务的物理落点。", "function_preserved": true},
+      {"node_id": "I06", "draft_ref": "庆阳国家算力枢纽解决的是大规模算力供给；", "function_preserved": true},
+      {"node_id": "I07", "draft_ref": "它跟三类普通人有什么关系", "function_preserved": true},
+      {"node_id": "I08", "draft_ref": "这才是本条与超哥AI事业的连接：不是借参访包装专家身份，而是补全自己对AI交付底座和合作边界的理解。", "function_preserved": true}
+    ]
+  }
+}
