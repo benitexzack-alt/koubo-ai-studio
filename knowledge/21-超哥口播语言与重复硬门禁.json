@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "description": "超哥公开口播的项目级语言失败样本与历史锚点规则。规则由用户明确否决的真实稿件生成，不是通用敏感词表。",
+  "history_manifest": "<project-root>/workflow/recent-content-history.v1.json",
+  "ai_tone_rules": [
+    {
+      "id": "editorial-capacity-boundary",
+      "pattern": "这里说的是.{0,24}(?:产能|数据|口径).{0,16}(?:不是|不等于).{0,24}(?:销量|产量|结果)",
+      "description": "事实锁的编辑备注泄漏进口播正文"
+    },
+    {
+      "id": "reported-source-scaffold",
+      "pattern": "公开报道(?:里|中).{0,120}(?:现场|对标|口径)",
+      "description": "用来源标签和口径说明拼接正文"
+    },
+    {
+      "id": "stacked-onsite-attribution",
+      "pattern": "我在现场看到.{0,180}(?:讲解中|现场讲解).{0,10}提到",
+      "description": "同一段叠加‘我看到’和‘讲解提到’两层来源证明"
+    },
+    {
+      "id": "meta-rethink-scaffold",
+      "pattern": "我(?:又|重新).{0,12}把.{0,28}(?:重新看|重新理解|再看).{0,12}(?:一遍|一次)?",
+      "description": "用假性思考过程代替直接判断"
+    },
+    {
+      "id": "meta-interpret-scaffold",
+      "pattern": "我更愿意(?:把|将).{0,36}(?:理解|看)成",
+      "description": "使用通用解释支架，没有直接给出本人判断"
+    }
+  ],
+  "anchor_rules": [
+    {
+      "id": "qingyang-compute",
+      "pattern": "(?:庆阳.{0,20}(?:算力|数据中心|枢纽)|(?:算力|数据中心|枢纽).{0,20}庆阳)",
+      "description": "庆阳算力、数据中心或国家枢纽锚点",
+      "block_if_latest_match": true
+    }
+  ]
+}

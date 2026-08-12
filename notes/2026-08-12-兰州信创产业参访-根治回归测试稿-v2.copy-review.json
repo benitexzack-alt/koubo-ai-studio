@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260812T155000Z-style-gate-v3",
+  "status": "passed",
+  "reviewed_at": "2026-08-12T23:50:00+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-12-兰州信创产业参访-根治回归测试稿-v2.md",
+    "sha256": "b478aa43cd457fe248f405829da35ab267c0d51d2a9ce5757a860559b3016140"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "de7f5c52bb42f7000a99438bafafdd7dc6741298c3df4897c1d6404bab8d0556",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "正文删除了来源标签、重复归因和假性思考支架；事实边界只保留对八成和产能数字有实际判断作用的部分；中段只围绕产线、适配和企业验证展开，不再追求产业全景完整。"
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "开头用现场对标 A100 约八成作钩子",
+        "risk_level": "high",
+        "reason": "容易被听成所有国产芯片和任务的通用结论。",
+        "candidates": {
+          "conservative": "现场介绍海光 DCU 时，拿 A100 做了一次特定条件下的对标。",
+          "direct": "一个国产 AI 芯片，现场拿 A100 作参照，特定测试下大约能到八成。",
+          "vivid": "在兰州的服务器产线旁边，我听到一个数：对标 A100，约八成。"
+        },
+        "fact_difference": "保守版弱化数字；直接版保留现场口径和特定条件；生动版会减少条件信息。",
+        "recommendation": "采用直接版，先兑现数字钩子，同时不把现场口径写成通用结论。"
+      },
+      {
+        "original": "产能数字的事实边界",
+        "risk_level": "medium",
+        "reason": "直接念来源和口径会像审稿附录，不说又可能被听成实际销量。",
+        "candidates": {
+          "conservative": "这是产线对外公布的设计产能。",
+          "direct": "年产能说的是这条线最多能做多少，不代表已经卖了这么多。",
+          "vivid": "产线能做多少，和市场真正买了多少，是两回事。"
+        },
+        "fact_difference": "三个版本都不改变产能与销量的边界；生动版会丢失园区公布口径。",
+        "recommendation": "采用直接版，让边界成为观众可用的判断，不念来源标签。"
+      },
+      {
+        "original": "芯片、服务器、基础软件和适配的中段解释",
+        "risk_level": "medium",
+        "reason": "层次过多容易听成行业课程，稀释兰州真实产线的新鲜感。",
+        "candidates": {
+          "conservative": "分别说明芯片、服务器、操作系统、数据库和行业应用。",
+          "direct": "芯片负责算，服务器组织硬件，基础软件让设备和应用能够配合。",
+          "vivid": "芯片算得快只是开头，企业要的是整台机器和原来的软件一起干活。"
+        },
+        "fact_difference": "保守版增加信息负担；直接版保留必要功能；生动版更口语但会弱化基础软件的角色。",
+        "recommendation": "采用直接版，三句功能后立即回到企业交付。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "正文删除庆阳国家算力枢纽与省级人工智能加政策链，原始证据仍保留在事实资料中"
+    ],
+    "wording_strength_changes": [
+      "对标八成从直接数字改为现场讲解在特定测试条件下的口径"
+    ],
+    "pending_user_confirmations": [
+      "整篇表达、时长与是否保留 48 小时细节"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}

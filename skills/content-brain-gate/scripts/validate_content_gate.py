@@ -150,6 +150,7 @@ FROZEN_PATTERNS = (
         "再次使用兰州 AI 创业身份句作为固定收尾",
     ),
 )
+PROJECT_STYLE_GATE_PATH = "knowledge/21-超哥口播语言与重复硬门禁.json"
 
 
 def nonempty(value: Any) -> bool:
@@ -645,6 +646,62 @@ class GateValidator:
         snapshot_at = learning_card.get("snapshot_at")
         if not nonempty(snapshot_at) or feedback.get("snapshot_at") != snapshot_at:
             self.error("performance_feedback.snapshot_at 必须与当前学习卡一致")
+        else:
+            try:
+                snapshot_date = datetime.fromisoformat(
+                    snapshot_at.replace("Z", "+00:00")
+                ).date()
+            except ValueError:
+                self.error("performance_feedback 学习卡 snapshot_at 必须是 ISO 8601 时间")
+            else:
+                project_root = discover_project_root(self.card_path)
+                history_path = (
+                    project_root / "workflow/recent-content-history.v1.json"
+                    if project_root is not None
+                    else None
+                )
+                if history_path is not None and history_path.is_file():
+                    try:
+                        history = json.loads(history_path.read_text(encoding="utf-8"))
+                    except (OSError, json.JSONDecodeError) as error:
+                        self.error(f"performance_feedback 无法读取最近内容台账：{error}")
+                    else:
+                        newer_ids: list[str] = []
+                        for item in history.get("items", []) if isinstance(history, dict) else []:
+                            if not isinstance(item, dict) or not nonempty(item.get("date")):
+                                continue
+                            try:
+                                item_date = datetime.fromisoformat(item["date"]).date()
+                            except ValueError:
+                                self.error(
+                                    "performance_feedback 最近内容台账存在无效 date："
+                                    f"{item.get('id', '未命名')}"
+                                )
+                                continue
+                            if item_date > snapshot_date and nonempty(item.get("id")):
+                                newer_ids.append(item["id"])
+                        if newer_ids:
+                            acknowledged_ids = feedback.get("newer_content_ids")
+                            missing_ids = sorted(
+                                set(newer_ids)
+                                - set(acknowledged_ids if isinstance(acknowledged_ids, list) else [])
+                            )
+                            if feedback.get("newer_content_acknowledged") is not True:
+                                self.error(
+                                    "performance_feedback 学习卡快照后已有新口播，"
+                                    "newer_content_acknowledged 必须为 true"
+                                )
+                            if missing_ids:
+                                self.error(
+                                    "performance_feedback.newer_content_ids 未覆盖学习卡之后的内容："
+                                    + "、".join(missing_ids)
+                                )
+                            metric_status = feedback.get("newer_content_metric_status")
+                            if not nonempty(metric_status) or len(metric_status.strip()) < 20:
+                                self.error(
+                                    "performance_feedback.newer_content_metric_status 必须说明新内容"
+                                    "有无完整观察窗口，不得让旧学习卡冒充已覆盖新作品"
+                                )
 
         active_lesson_ids = {
             lesson.get("id")
@@ -870,7 +927,10 @@ class GateValidator:
             else:
                 resolved_draft_path = resolve_input_path(draft_path, self.card_path)
                 assert resolved_draft_path is not None
-                self.scan_frozen_phrases(resolved_draft_path, draft)
+                draft_text = self.extract_draft_text(resolved_draft_path, draft)
+                if draft_text is not None:
+                    self.scan_frozen_phrases(draft_text, draft)
+                    self.scan_project_style_gate(draft_text, resolved_draft_path, draft)
                 self.validate_copy_review(resolved_draft_path, draft)
         if stage != "production":
             return
@@ -1046,9 +1106,12 @@ class GateValidator:
             error for error in self.errors if error.startswith("draft.copy_review")
         ]
         if not copy_review_errors:
-            self.pass_check("两项文案 Skill、当前稿件哈希、留存审稿和事实保真凭证均通过")
+            self.pass_check(
+                "copy_review 的稿件与 Skill 哈希、字段和事实保真凭证完整；"
+                "该结果不代表正文语义通过，仍须接受项目语言与历史锚点扫描"
+            )
 
-    def scan_frozen_phrases(self, draft_path: Path, draft: dict[str, Any]) -> None:
+    def extract_draft_text(self, draft_path: Path, draft: dict[str, Any]) -> str | None:
         text = draft_path.read_text(encoding="utf-8")
         start_marker = draft.get("content_start_marker")
         end_marker = draft.get("content_end_marker")
@@ -1064,8 +1127,11 @@ class GateValidator:
             end_index = text.find(end_marker, content_start)
             if end_index < 0:
                 self.error("draft.content_end_marker 未在起始标记之后找到")
-                return
+                return None
             text = text[content_start:end_index]
+        return text
+
+    def scan_frozen_phrases(self, text: str, draft: dict[str, Any]) -> None:
         exemptions = draft.get("phrase_exemptions", [])
         exemption_map = {
             item.get("pattern_id"): item.get("reason")
@@ -1080,6 +1146,167 @@ class GateValidator:
                 self.error(f"draft 命中 {pattern_id}：{description}；没有具体的新证据豁免理由")
             else:
                 self.warnings.append(f"draft 命中 {pattern_id}，已记录人工豁免：{reason}")
+
+    def scan_project_style_gate(
+        self,
+        text: str,
+        draft_path: Path,
+        draft: dict[str, Any],
+    ) -> None:
+        project_root = discover_project_root(self.card_path)
+        if project_root is None:
+            self.error("draft.style_gate 无法定位项目根目录")
+            return
+        rule_path = project_root / PROJECT_STYLE_GATE_PATH
+        if not rule_path.is_file():
+            self.error(f"draft.style_gate 规则文件不存在：{rule_path}")
+            return
+        try:
+            rules = json.loads(rule_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as error:
+            self.error(f"draft.style_gate 规则文件无法读取：{error}")
+            return
+        if not isinstance(rules, dict) or rules.get("schema_version") != 1:
+            self.error("draft.style_gate schema_version 必须为 1")
+            return
+
+        error_count_before = len(self.errors)
+        tone_exemptions = {
+            item.get("rule_id"): item
+            for item in draft.get("ai_tone_exemptions", [])
+            if isinstance(item, dict) and nonempty(item.get("rule_id"))
+        }
+        for index, rule in enumerate(rules.get("ai_tone_rules", [])):
+            if not isinstance(rule, dict):
+                self.error(f"draft.style_gate.ai_tone_rules[{index}] 必须是对象")
+                continue
+            rule_id = rule.get("id")
+            pattern_text = rule.get("pattern")
+            description = rule.get("description")
+            if not all(nonempty(value) for value in (rule_id, pattern_text, description)):
+                self.error(f"draft.style_gate.ai_tone_rules[{index}] 字段不完整")
+                continue
+            try:
+                matched = re.search(pattern_text, text, re.DOTALL)
+            except re.error as error:
+                self.error(f"draft.style_gate.ai_tone_rules[{index}] 正则无效：{error}")
+                continue
+            if not matched:
+                continue
+            exemption = tone_exemptions.get(rule_id)
+            approved = (
+                isinstance(exemption, dict)
+                and exemption.get("user_approved") is True
+                and nonempty(exemption.get("approval_ref"))
+                and nonempty(exemption.get("reason"))
+                and len(exemption["reason"].strip()) >= 20
+            )
+            if not approved:
+                self.error(
+                    f"draft 命中 {rule_id}：{description}；"
+                    "不能用 copy_review 自报通过绕过正文机器扫描"
+                )
+            else:
+                self.warnings.append(
+                    f"draft 命中 {rule_id}，已绑定用户明确豁免：{exemption['approval_ref']}"
+                )
+
+        history_value = rules.get("history_manifest")
+        history_path = resolve_input_path(history_value, draft_path)
+        if history_path is None or not history_path.is_file():
+            self.error(f"draft.style_gate 历史台账不存在：{history_value}")
+            return
+        try:
+            history = json.loads(history_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as error:
+            self.error(f"draft.style_gate 历史台账无法读取：{error}")
+            return
+        items = history.get("items") if isinstance(history, dict) else None
+        if not isinstance(history, dict) or history.get("schema_version") != 1:
+            self.error("draft.style_gate 历史台账 schema_version 必须为 1")
+            return
+        if not isinstance(items, list) or not items:
+            self.error("draft.style_gate 历史台账 items 不能为空")
+            return
+
+        history_texts: list[tuple[str, str]] = []
+        for index, item in enumerate(items):
+            label = f"draft.style_gate.history.items[{index}]"
+            if not isinstance(item, dict) or not nonempty(item.get("id")):
+                self.error(f"{label} 必须是带 id 的对象")
+                continue
+            content_path = resolve_input_path(item.get("path"), history_path)
+            if content_path is None or not content_path.is_file():
+                self.error(f"{label}.path 文件不存在：{item.get('path')}")
+                continue
+            if item.get("sha256") != file_sha256(content_path):
+                self.error(f"{label}.sha256 已过期，必须重建真实口播历史台账")
+                continue
+            history_text = content_path.read_text(encoding="utf-8")
+            start_marker = item.get("content_start_marker")
+            end_marker = item.get("content_end_marker")
+            if start_marker or end_marker:
+                if not nonempty(start_marker) or not nonempty(end_marker):
+                    self.error(f"{label} 正文标记必须成对提供")
+                    continue
+                start = history_text.find(start_marker)
+                end = history_text.find(end_marker, start + len(start_marker)) if start >= 0 else -1
+                if start < 0 or end < 0:
+                    self.error(f"{label} 正文标记未在历史稿件中找到")
+                    continue
+                history_text = history_text[start + len(start_marker):end]
+            history_texts.append((item["id"], history_text))
+
+        anchor_exemptions = {
+            item.get("anchor_id"): item
+            for item in draft.get("anchor_exemptions", [])
+            if isinstance(item, dict) and nonempty(item.get("anchor_id"))
+        }
+        for index, rule in enumerate(rules.get("anchor_rules", [])):
+            if not isinstance(rule, dict):
+                self.error(f"draft.style_gate.anchor_rules[{index}] 必须是对象")
+                continue
+            anchor_id = rule.get("id")
+            pattern_text = rule.get("pattern")
+            description = rule.get("description")
+            if not all(nonempty(value) for value in (anchor_id, pattern_text, description)):
+                self.error(f"draft.style_gate.anchor_rules[{index}] 字段不完整")
+                continue
+            try:
+                pattern = re.compile(pattern_text, re.DOTALL)
+            except re.error as error:
+                self.error(f"draft.style_gate.anchor_rules[{index}] 正则无效：{error}")
+                continue
+            if not pattern.search(text):
+                continue
+            matched_history_ids = [item_id for item_id, body in history_texts if pattern.search(body)]
+            latest_matches = bool(history_texts and pattern.search(history_texts[0][1]))
+            if not rule.get("block_if_latest_match") or not latest_matches:
+                if matched_history_ids:
+                    self.warnings.append(
+                        f"draft 命中历史锚点 {anchor_id}；已有 {len(matched_history_ids)} 条跟踪稿使用"
+                    )
+                continue
+            exemption = anchor_exemptions.get(anchor_id)
+            approved = (
+                isinstance(exemption, dict)
+                and exemption.get("user_approved") is True
+                and nonempty(exemption.get("approval_ref"))
+                and nonempty(exemption.get("new_contribution"))
+                and len(exemption["new_contribution"].strip()) >= 20
+            )
+            if not approved:
+                self.error(
+                    f"draft 命中 {anchor_id}：{description}；与最近一条真实口播连续复用，"
+                    f"当前可追踪历史中已有 {len(matched_history_ids)} 条命中，且缺少用户批准的新贡献"
+                )
+            else:
+                self.warnings.append(
+                    f"draft 连续复用 {anchor_id}，已绑定用户批准：{exemption['approval_ref']}"
+                )
+
+        if len(self.errors) == error_count_before:
+            self.pass_check("项目语言失败样本与历史锚点机器扫描已通过")
 
     def run(self) -> dict[str, Any]:
         stage = self.validate_header()

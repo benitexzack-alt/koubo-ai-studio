@@ -269,6 +269,57 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertTrue(any("repeat-small-task" in error for error in result["errors"]))
         self.assertTrue(any("lanzhou-ai-identity" in error for error in result["errors"]))
 
+    def test_user_rejected_ai_tone_patterns_are_blocked_even_when_review_self_reports_pass(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        draft_path = SKILL_ROOT / "fixtures" / "user-ai-tone-fail.md"
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "phrase_exemptions": [],
+        }
+        self.attach_copy_review(card, draft_path)
+
+        result = self.validate(card, "user-ai-tone-fail.json")
+
+        self.assertEqual(result["status"], "blocked")
+        expected_rule_ids = {
+            "editorial-capacity-boundary",
+            "reported-source-scaffold",
+            "stacked-onsite-attribution",
+            "meta-rethink-scaffold",
+            "meta-interpret-scaffold",
+        }
+        for rule_id in expected_rule_ids:
+            self.assertTrue(
+                any(rule_id in error for error in result["errors"]),
+                f"未拦截用户明确否决的 AI 腔规则：{rule_id}",
+            )
+
+    def test_consecutive_qingyang_compute_anchor_is_blocked_without_user_approval(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        draft_path = self.temp_dir / "qingyang-anchor.md"
+        draft_path.write_text(
+            "## 口播正文\n\n甘肃现在已经有庆阳国家算力枢纽。\n\n## 审计附录\n",
+            encoding="utf-8",
+        )
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "phrase_exemptions": [],
+            "anchor_exemptions": [],
+        }
+        self.attach_copy_review(card, draft_path)
+
+        result = self.validate(card, "qingyang-anchor-repeat.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "qingyang-compute" in error and "连续复用" in error
+            for error in result["errors"]
+        ))
+
     def test_marker_pair_is_required(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
         draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
@@ -314,6 +365,24 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertEqual(result["status"], "blocked")
         self.assertTrue(any(
             "learning_card_sha256 已过期" in error
+            for error in result["errors"]
+        ))
+
+    def test_learning_card_newer_content_requires_explicit_acknowledgement(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["performance_feedback"].pop("newer_content_acknowledged", None)
+        card["performance_feedback"].pop("newer_content_ids", None)
+        card["performance_feedback"].pop("newer_content_metric_status", None)
+
+        result = self.validate(card, "performance-feedback-newer-content-unacknowledged.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "newer_content_acknowledged" in error
+            for error in result["errors"]
+        ))
+        self.assertTrue(any(
+            "newer_content_ids" in error
             for error in result["errors"]
         ))
 
@@ -475,7 +544,8 @@ class ContentGateRegressionTests(unittest.TestCase):
         result = self.validate(card, "copy-review-pass.json")
         self.assertEqual(result["status"], "ready-for-draft")
         self.assertFalse(result["errors"])
-        self.assertTrue(any("两项文案 Skill" in item for item in result["passed"]))
+        self.assertTrue(any("copy_review" in item for item in result["passed"]))
+        self.assertTrue(any("不代表正文语义通过" in item for item in result["passed"]))
 
     def test_copy_review_rejects_stale_draft_hash(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))

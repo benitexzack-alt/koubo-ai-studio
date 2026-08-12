@@ -18,7 +18,7 @@
 8. `knowledge/06-选题脚本与风格规范.md`
 9. `knowledge/14-超哥口播声音档案.md`
 10. `knowledge/15-抖音精选内容质量验收.md`
-11. `knowledge/20-V8连续语义动效与可感知音效基线.md` 与 `workflow/active-production-profile.v1.json`。V8是新视频默认制作基准；V7.2只用于锁定母版回归和故障回滚，任何降级必须有用户明确批准记录。
+11. `knowledge/20-V8连续语义动效与可感知音效基线.md`、`workflow/active-production-profile.v1.json` 与 `knowledge/21-超哥口播语言与重复硬门禁.json`。V8是新视频默认制作基准；V7.2只用于锁定母版回归和故障回滚，任何降级必须有用户明确批准记录。公开正文还必须通过项目语言失败样本和 `workflow/recent-content-history.v1.json` 历史锚点扫描，不得用 `copy_review` 自报布尔值替代。
 12. `skills/source-essence-synthesis/SKILL.md`。
 13. `skills/content-brain-gate/SKILL.md` 及 `skills/content-brain-gate/references/public-content-gate.md`。
 14. 如果 `KOUBO_PERSONAL_KB` 或项目同级的 `../个人知识库` 存在，必须额外读取该知识库 `AGENTS.md` 和现行《公开内容生产大脑硬门禁》；当其与项目便携快照冲突时，以个人知识库现行版为准。

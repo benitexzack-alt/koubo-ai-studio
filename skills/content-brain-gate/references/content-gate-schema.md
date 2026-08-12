@@ -232,6 +232,9 @@
   "learning_card_sha256": "64位小写SHA-256",
   "snapshot_at": "2026-08-10T22:52:59+08:00",
   "read": true,
+  "newer_content_acknowledged": true,
+  "newer_content_ids": ["2026-08-11-training-camp-episode-1"],
+  "newer_content_metric_status": "新作品尚无完整观察窗口，只用于内容锚点去重，不升级为稳定表现规律。",
   "applied_lesson_ids": [
     "lesson:opening:title-answer-before-background",
     "lesson:hook:concrete-conflict-scene-object"
@@ -267,6 +270,8 @@
   }
 }
 ```
+
+如果 `workflow/recent-content-history.v1.json` 中存在晚于学习卡 `snapshot_at` 的已拍摄、已确认或已发布内容，必须显式填写 `newer_content_acknowledged`、全部 `newer_content_ids` 和 `newer_content_metric_status`。新作品还没有完整观察窗口时，只能用于内容和表达去重，不能当作新的稳定表现规律。
 
 固定规则：
 

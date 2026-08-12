@@ -22,8 +22,9 @@ description: 处理任何将要公开的中文口播文案时必须自动触发�
 5. `<project-root>/knowledge/14-超哥口播声音档案.md`
 6. `<project-root>/skills/content-brain-gate/SKILL.md` 及其指定的内容门禁规则。
 7. `<project-root>/skills/humanize-koubo-script/references/ai-writing-boundary.md`
-8. 本条内容门禁卡与最近一次机器校验报告
-9. 待处理稿件的事实来源、证据表和用户已确认版本
+8. `<project-root>/knowledge/21-超哥口播语言与重复硬门禁.json` 与 `<project-root>/workflow/recent-content-history.v1.json`
+9. 本条内容门禁卡与最近一次机器校验报告
+10. 待处理稿件的事实来源、证据表和用户已确认版本
 
 必须读取 `${CODEX_HOME:-$HOME/.codex}/skills/humanizer-zh/SKILL.md` 的当前版本，将其只用于发现 AI 写作模式。文件缺失或无法读取时状态为 `blocked`，不得继续交付文稿。上游规则与本 Skill 冲突时，以本 Skill 和项目事实边界为准。
 
@@ -122,6 +123,8 @@ description: 处理任何将要公开的中文口播文案时必须自动触发�
 - 是否把“完整优先”改为“观众认知变化优先”。
 
 任一项未通过时，除非有事实锁或用户原话理由，否则不得交付完整稿。
+
+六项人工审稿布尔值只是过程记录，不是正文通过证明。稿件必须再由 `content-brain-gate` 直接扫描项目语言失败样本和历史锚点；机器扫描失败时，`copy_review` 即使自报全部通过，整体状态仍必须为 `blocked`。
 
 ### 4. 只找真实存在的问题
 
