@@ -186,8 +186,12 @@ const CaptionPages: React.FC<{
         padding: transparent ? '6px 24px 8px' : '11px 30px 12px',
         borderRadius: transparent ? 0 : 8,
         border: transparent ? 'none' : '1px solid rgba(255,255,255,0.09)',
-        background: transparent ? 'transparent' : 'rgba(0,0,0,0.64)',
-        boxShadow: transparent ? 'none' : '0 18px 54px rgba(0,0,0,0.46)',
+        background: transparent
+          ? 'linear-gradient(90deg, rgba(2,7,12,0) 0%, rgba(2,7,12,0.38) 12%, rgba(2,7,12,0.38) 88%, rgba(2,7,12,0) 100%)'
+          : 'rgba(0,0,0,0.64)',
+        boxShadow: transparent
+          ? '0 8px 24px rgba(0,0,0,0.12)'
+          : '0 18px 54px rgba(0,0,0,0.46)',
         opacity,
         pointerEvents: 'none',
         fontFamily,
