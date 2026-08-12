@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260812T130201Z-d50e3e8d-v2",
+  "status": "passed",
+  "reviewed_at": "2026-08-12T22:02:54+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-12-兰州信创产业参访-口播正文-v1.md",
+    "sha256": "2802f1eda1db8417eed4a805afb7db2a2c3eb38edf59560ef331bf1f33ce7034"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "9e128bca14deaff1606e5814861a824e3a91010ac1a5f106dfa80f8e208ba167",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "正文从本人在兰州看到芯片、产线和适配中心的真实判断起笔；数据边界紧跟对应数字，不另设大段免责声明；四层生态压缩为一张口语地图，删除厂商名录、完整工位流水账和重复政策背景；结尾回到本地企业与本人可承担的现实位置。系统中文语音以每分钟230字模拟朗读约175秒，真人自然停顿预计约220至240秒。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "开头同时出现约八成、兰州产线、8家企业、5条产线和两组产能数据",
+        "risk_level": "medium",
+        "reason": "数据密度高，若先解释口径再给兰州反差，前十五秒会明显降速。",
+        "candidates": {
+          "conservative": "先说现场讲解提到约八成，再说明不同任务结果会变化，最后介绍兰州产线。",
+          "direct": "先给约八成和兰州产线的反差，再用一句话说明产能不是销量、八成不是统一结论。",
+          "vivid": "国产芯片追到英伟达八成，而且这条线就在兰州。"
+        },
+        "fact_difference": "保守版和直接版不改变事实；生动版删掉归因与适用条件，会把现场口径放大为确定结论。",
+        "recommendation": "采用正文中的直接版。它先兑现标题，再在同一段内补足事实边界。"
+      },
+      {
+        "original": "芯片、服务器、基础软件和行业应用四层解释",
+        "risk_level": "medium",
+        "reason": "逐层讲得过细会像课堂或行业报告，削弱真实参访感。",
+        "candidates": {
+          "conservative": "完整解释每层的技术模块和厂商生态。",
+          "direct": "每层只保留一个功能，用一段话讲完，马上回到服务器测试和现场画面。",
+          "vivid": "把AI比作一栋楼，用四层楼的比喻讲芯片到应用。"
+        },
+        "fact_difference": "保守版和直接版不新增事实；生动版属于解释性比喻，可能让观众误解为严格技术分层。",
+        "recommendation": "采用正文中的直接版。它交付认知地图，同时保留技术链只是普通人解释框架的边界。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "删除无统计口径的市场份额数字、100%国产化、金融行业全面国产化和园区未来规划",
+      "删除所有芯片型号、厂商Logo和完整工位清单"
+    ],
+    "wording_strength_changes": [
+      "将性能百分比固定为现场讲解口径，并补充型号、任务和软件环境差异",
+      "将公开产能与实际销量明确区分",
+      "将庆阳、兰州和行业场景表述为正在拼起来的分析地图，不表述为成熟商业闭环"
+    ],
+    "pending_user_confirmations": [
+      "用户需确认是否保留约八成的现场讲解原话；17段短视频未完整保留该句连续原声"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 9,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}

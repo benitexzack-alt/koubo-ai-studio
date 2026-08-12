@@ -1,7 +1,7 @@
 {
   "schema_version": 5,
   "task_id": "task-20260812T130201Z-d50e3e8d-v2",
-  "target_stage": "outline",
+  "target_stage": "draft",
   "required_rules": [
     {"path": "<personal-kb>/00_规范与配置/12_公开内容生产大脑硬门禁.md", "read": true},
     {"path": "<project-root>/knowledge/06-选题脚本与风格规范.md", "read": true},
@@ -123,7 +123,7 @@
     "selected_topic": "国产AI真正的崛起，不只是某一颗芯片跑出一个漂亮数字，而是芯片、服务器、基础软件、应用适配和本地服务开始形成生态；兰州的产线和适配中心说明甘肃正在从算力资源继续走向制造与应用能力。",
     "user_instruction": "以国产崛起和兰州本地居然有这样的企业为核心，用现场数据做钩子，让想了解AI的观众看懂硬件、信创和生态，再跟自身情况结合。",
     "source_ref": "conversation:2026-08-12:user-revision-after-v1-framework",
-    "confirmed_at": "2026-08-12T21:40:00+08:00",
+    "confirmed_at": "2026-08-12T21:48:00+08:00",
     "candidate_only": false
   },
   "brief_contract": {
@@ -330,7 +330,7 @@
       "viewer_test": "甘肃观众能产生本地认同，外地观众也能用同一框架理解一座城市在AI产业链中的位置"
     },
     "integrity_boundary": "数据钩子全部标明现场、公开报道或官方披露来源；不把约80%扩大为统一性能，不把产能写成产量销量，不用国产情绪替代兼容、生态和真实应用证据",
-    "review_status": "planned",
+    "review_status": "self-reviewed",
     "selection_not_guaranteed": true
   },
   "mechanism_cards": [
@@ -348,5 +348,27 @@
     }
   ],
   "voice": {"profile_path": "<project-root>/knowledge/14-超哥口播声音档案.md", "read": true},
-  "draft": {}
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-12-兰州信创产业参访-口播正文-v1.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "copy_review": {
+      "required": true,
+      "report_path": "/Users/pc/Documents/口播/notes/2026-08-12-兰州信创产业参访-口播正文-v1.copy-review.json"
+    },
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": true,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "performance_feedback_recheck_passed": true,
+    "compliance_passed": true,
+    "user_script_approved": false,
+    "phrase_exemptions": [
+      {
+        "pattern_id": "lanzhou-ai-identity",
+        "reason": "本句不是固定身份口号，而是用于区分芯片研发与本地AI需求翻译、应用连接和专业协作的现实位置；本条新增了真实服务器产线与适配中心证据。"
+      }
+    ]
+  }
 }
