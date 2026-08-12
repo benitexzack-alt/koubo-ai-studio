@@ -4,7 +4,7 @@
   "project": "AI在支配你还是你掌控AI",
   "version": "v1",
   "created_at": "2026-08-12T15:10:00+08:00",
-  "status": "preproduction-ready-awaiting-user-assets-and-talk-source",
+  "status": "talk-source-ready-awaiting-user-assets-and-v8-preview-approval",
   "script_path": "notes/2026-08-12-AI在支配你还是你掌控AI-用户最终录制稿-v1.md",
   "script_sha256": "70c9fd11205f4194e8c639ff40ebbe2fa36c84109af3e0d5a49ade580badcf2b",
   "production_profile": {
@@ -34,9 +34,12 @@
       "id": "R01",
       "type": "real-talk-source",
       "required": true,
-      "filename": "R01_AI在支配你还是你掌控AI_口播原片.原扩展名",
+      "filename": "R01_AI在支配你还是你掌控AI_口播原片.MOV",
       "folder": "01_口播原片",
-      "status": "awaiting-user"
+      "path": "/Users/pc/Desktop/口播素材/2026-08-12_AI在支配你还是你掌控AI/01_口播原片/R01_AI在支配你还是你掌控AI_口播原片.MOV",
+      "sha256": "7942825af44a009787e845e921e8f4dd8b2c1dd2e3ab68126b75d708cb0d94ab",
+      "duration_seconds": 525.234,
+      "status": "prepared-local-verified"
     },
     {
       "id": "S01",
@@ -119,9 +122,11 @@
     }
   ],
   "timing_policy": {
-    "current": "semantic-anchors-only",
+    "current": "actual-word-timestamps-locked",
     "formal_timing_source": "词级转写与真实原音轨",
-    "no_script_time_estimation": true
+    "no_script_time_estimation": true,
+    "transcript_path": "edit/20260812_ai_best_worst/transcripts/AI_BEST_WORST_20260812_talk01.cleaned.v1.json",
+    "transcript_sha256": "3e8e6871f915ca9bc0ee3784a52bcf6d97af64402a1cd0754713629dcd24e1ad"
   },
-  "next_step": "用户放入R01与S01至S03后，执行只读技术检查、本地词级转写、逐句核对和V8真实时间轴编排"
+  "next_step": "用户先验收前45秒同画面有音效/无音效预览，并放入S01至S03；两项均通过后才进入V8正式全片合成"
 }
