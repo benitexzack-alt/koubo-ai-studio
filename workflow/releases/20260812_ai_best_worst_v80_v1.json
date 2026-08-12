@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260812_ai_best_worst_v80_v1",
+  "status": "ready-for-user-review",
+  "videoId": "AI_BEST_WORST_20260812_talk01",
+  "baselineId": "koubo-formal-16x9-v1",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "intent": {
+    "topic": "同样使用AI，普通人为什么会走向能力被稀释或被放大两条路径",
+    "serviceAudience": "正在使用AI工作的普通人、中小企业经营者和本地创业者",
+    "oneConclusion": "真正决定个人位置的不是是否会用AI，而是能否在真实领域中判断取舍、留下可复用资产并对结果负责。",
+    "cta": "检查AI给出第一版以后，自己补了什么、做了哪些决定，并持续用真实任务校准。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260812_ai_best_worst/R01_AI在支配你还是你掌控AI_口播原片.MOV",
+    "transcript": "edit/20260812_ai_best_worst/transcripts/AI_BEST_WORST_20260812_talk01.cleaned.v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_BEST_WORST_20260812_talk01.bilingual.v1.json",
+    "visualPlan": "edit/20260812_ai_best_worst/visual-plan_AI_BEST_WORST_20260812_talk01_v8.json",
+    "assets": [
+      "media/ai-best-worst-20260812/S01_customer_service_dual_path_30fps_silent.mp4",
+      "media/ai-best-worst-20260812/S02_factory_restructure_30fps_silent.mp4",
+      "media/ai-best-worst-20260812/S03_old_process_bottleneck_30fps_silent.mp4",
+      "media/ai-best-worst-20260812/evidence/E01_斯坦福未来十年最好或最坏_第09页.png",
+      "media/ai-best-worst-20260812/evidence/E02_NBER客服实验_第02页.png",
+      "media/ai-best-worst-20260812/evidence/E03_斯坦福青年就业16边界_第01页.png",
+      "media/ai-best-worst-20260812/evidence/E04_NBER生产率J曲线_第02页.png"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/AI在支配你还是你掌控AI_16x9_V80_有音效_候选成片_v1.mp4",
+    "previewOutput": "work/production-runs/20260812-ai-best-worst-v80/preview45/with-sfx.mp4",
+    "coverPrompt": "notes/2026-08-12-AI在支配你还是你掌控AI-发布包装-v1.md#3:4-真人截图合成封面提示词",
+    "soundEffectCueSheet": "edit/20260812_ai_best_worst/sfx-cue-sheet_AI_BEST_WORST_20260812_talk01_v8.json",
+    "modules": [
+      "semantic-digital-camera-v72",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "transparent-semantic-information",
+      "full-screen-real-or-ai-media",
+      "bilingual-caption",
+      "local-semantic-sfx-v2",
+      "v8-continuous-semantic-information",
+      "v8-event-bound-audible-sfx",
+      "official-source-page-overlay",
+      "ai-generated-concept-media-disclosure"
+    ],
+    "styleReferenceIds": [
+      "v8-semantic-continuity-sfx",
+      "approved-45s-with-sfx-20260812"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "1920x1080、30fps、H.264/AAC、525.3秒、708991061字节；独立完整解码0错误、黑帧0；-16.17 LUFS、LRA 6.1 LU、真峰值-1.98 dBTP；SHA-256为9e2f85025f9d71cc6a231f2388474477e986268f596baec93ba1f43e65d11d88。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "verifier": "verbatim-v1",
+      "minimumScore": 1.0,
+      "evidence": "167页中英同窗字幕来自实际口播词级时间轴；逐字贴合度1.000、覆盖度1.000、0失败、0警告。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "V8视觉方案47个主视觉事件全部通过结构校验；人物为默认主画面，无全屏Remotion说明页；3段AI概念视频和4张官方出处页按语义进入。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [2.65, 8.9, 17.16, 24.6, 36.3, 50.34, 61.11, 67.95, 75.44, 89.15, 101.67, 112.17, 123.64, 138.67, 150.69, 161.12, 173.66, 185.58, 198.54, 208.09, 216.62, 229.84, 243.88, 251.87, 258.81, 269.13, 278.65, 291.75, 311.26, 326.25, 336.26, 346.76, 355.78, 365.27, 376.57, 389.69, 403.79, 419.65, 434.22, 443.7, 454.25, 468.82, 483.82, 498.88, 511.32, 518.67, 523.45],
+      "evidence": "47个风险帧及12个全片抽样帧已检查，当前未见明显信息卡裁切、主要挡脸、压字幕、AI素材空白或结尾缺失。"
+    },
+    "cameraMotionReview": {
+      "status": "machine-passed-user-pending-full-watch",
+      "evidence": "数字运镜按47个语义段重启，不使用固定间隔机械放大；前45秒已获用户确认，完整片仍待正常播放确认。"
+    },
+    "soundEffectAudibility": {
+      "status": "preview-user-approved-full-video-pending",
+      "cueCount": 47,
+      "distinctSourceCount": 32,
+      "maximumSyncErrorFrames": 2,
+      "evidence": "47个主视觉事件一对一绑定白名单音效；前45秒有音效版已获用户确认，AI视频自身音轨全部静音；完整片听感仍待用户确认。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260812-v8-audible-sfx-preview-lock",
+      "decision": "applied-and-preview-user-approved",
+      "evidence": "前45秒有音效版由用户明确回复通过；正式片沿用同一音色和同步规则，并扩展到47个事件。"
+    },
+    {
+      "id": "upgrade-20260812-ai-video-as-real-visual-replacement",
+      "decision": "applied-and-machine-verified",
+      "evidence": "客服双路径、电力工厂重构、旧流程演示层三段AI视频全屏替换人物画面，静音播放并明确标注概念演绎。"
+    },
+    {
+      "id": "upgrade-20260812-no-fullscreen-remotion-explainer",
+      "decision": "applied-and-machine-verified",
+      "evidence": "Remotion只承担局部透明信息和出处页排版，不使用全屏黑底说明页。"
+    },
+    {
+      "id": "upgrade-20260812-strict-caption-duration-fix",
+      "decision": "applied-and-machine-verified",
+      "evidence": "两页停留过长字幕拆成更短同窗页后重新渲染，严格逐字校验167页0失败0警告。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": true,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "confirmedAt": null,
+    "reviewedAt": "2026-08-12",
+    "reviewOutcome": "awaiting-full-watch",
+    "notes": "用户明确回复有音效版通过并已补齐AI视频；完整525.3秒正式候选片尚待用户正常播放确认。"
+  },
+  "deliveryPackage": {
+    "status": "ready-for-delivery",
+    "cover": {
+      "aspectRatio": "3:4",
+      "recommendedFrame": "edit/20260812_ai_best_worst/verify/recommended-cover-frame.jpg",
+      "sourceVideo": "outputs/AI在支配你还是你掌控AI_16x9_V80_有音效_候选成片_v1.mp4",
+      "sourceTimeSeconds": 18.8,
+      "sourceType": "current-final-video-real-frame",
+      "prompt": "notes/2026-08-12-AI在支配你还是你掌控AI-发布包装-v1.md"
+    },
+    "titles": {
+      "primary": "同样用AI，为什么有人更值钱，有人更便宜",
+      "alternatives": [
+        "AI在支配你，还是你在掌控AI？",
+        "未来十年，决定你位置的不是提示词"
+      ]
+    },
+    "douyin": {
+      "publishCopy": "同样一套AI，有人把自己变成更便宜的一段执行，有人却用它放大判断和能力。区别不在会不会提示词，而在你有没有真实领域、可复用资产，以及对结果负责的能力。回想最近一周：AI给出第一版以后，你补了什么，又做了哪些决定？",
+      "topics": ["人工智能", "AI创业", "职场成长", "兰州AI创业", "OPC一人公司"]
+    },
+    "copyReview": "notes/2026-08-12-AI在支配你还是你掌控AI-发布包装-v1.copy-review.json"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "aiContentDisclosureRequired": true,
+    "releasePackaging": "notes/2026-08-12-AI在支配你还是你掌控AI-发布包装-v1.md",
+    "nextDecision": "先由用户完整观看候选片；通过后再发布，并按早期、24小时、72小时和7天窗口回填数据。"
+  }
+}

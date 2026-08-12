@@ -122,6 +122,11 @@ import {
   AI_BEST_WORST_V80_PREVIEW_DURATION_IN_FRAMES,
 } from './AIBestWorstV80Preview45s16x9';
 import {
+  AIBestWorstV80Talk16x9NoSfx,
+  AIBestWorstV80Talk16x9WithSfx,
+  AI_BEST_WORST_V80_DURATION_IN_FRAMES,
+} from './AIBestWorstV80Talk16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -143,6 +148,22 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="AIBestWorst16x9-V80-WithSfx"
+          component={AIBestWorstV80Talk16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_BEST_WORST_V80_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="AIBestWorst16x9-V80-NoSfx"
+          component={AIBestWorstV80Talk16x9NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_BEST_WORST_V80_DURATION_IN_FRAMES}
+        />
         <Composition
           id="AIBestWorst16x9-V80-Preview45-WithSfx"
           component={AIBestWorstV80Preview45s16x9WithSfx}
