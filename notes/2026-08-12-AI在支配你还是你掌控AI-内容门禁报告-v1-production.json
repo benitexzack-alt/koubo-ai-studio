@@ -1,9 +1,13 @@
 {
-  "ok": true,
-  "status": "ready-for-production",
+  "ok": false,
+  "status": "blocked",
+  "validator_version": "content-brain-gate/1.0",
   "task_id": "task-20260812T052740Z-5a237c9b",
   "target_stage": "production",
   "card_path": "/Users/pc/Documents/口播/notes/2026-08-12-AI在支配你还是你掌控AI-内容门禁卡-v1-production.json",
+  "card_sha256": "9d3ab6cbfe092c1eec620d014d597d08399084fc4a32aa7fd9398ab00acfd95d",
+  "script_path": "/Users/pc/Documents/口播/notes/2026-08-12-AI在支配你还是你掌控AI-用户最终录制稿-v1.md",
+  "script_sha256": "70c9fd11205f4194e8c639ff40ebbe2fa36c84109af3e0d5a49ade580badcf2b",
   "passed": [
     "任务标识与目标阶段有效",
     "全局和项目规则已实际读取",
@@ -14,13 +18,17 @@
     "用户已明确选择当前主题，候选题未越权进入写稿",
     "冻结母题使用边界有效",
     "观众距离、账号阶段、普通人场景和讲述身份匹配",
-    "当前账号实测学习卡、开头合同、时长理由和发布指标假设已绑定",
     "抖音精选质量目标、正文证据、验收方式和非保证边界已登记",
     "核心对象的问题、瓶颈、机制、证据、关系和边界已讲清",
     "本人声音档案已实际读取",
-    "两项文案 Skill、当前稿件哈希、留存审稿和事实保真凭证均通过",
+    "项目语言失败样本与历史锚点机器扫描已通过",
     "事实锁、去 AI 味、朗读、本人声音、查重、合规和用户确认均通过"
   ],
-  "errors": [],
+  "errors": [
+    "performance_feedback 学习卡快照后已有新口播，newer_content_acknowledged 必须为 true",
+    "performance_feedback.newer_content_ids 未覆盖学习卡之后的内容：2026-08-11-training-camp-episode-1",
+    "performance_feedback.newer_content_metric_status 必须说明新内容有无完整观察窗口，不得让旧学习卡冒充已覆盖新作品",
+    "draft.copy_review.skills.humanize_koubo_script.sha256 已过期，必须重新调阅当前 Skill"
+  ],
   "warnings": []
 }

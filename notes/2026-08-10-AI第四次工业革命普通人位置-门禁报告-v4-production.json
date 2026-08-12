@@ -1,9 +1,13 @@
 {
-  "ok": true,
-  "status": "ready-for-production",
+  "ok": false,
+  "status": "blocked",
+  "validator_version": "content-brain-gate/1.0",
   "task_id": "task-20260809T144628Z-86b87e79",
   "target_stage": "production",
   "card_path": "/Users/pc/Documents/口播/notes/2026-08-10-AI第四次工业革命普通人位置-内容门禁卡-v4-production.json",
+  "card_sha256": "4a4d6a5861adf257ac1d38cda07f86f64b1de53530853b911bd9e9159e72ac7e",
+  "script_path": "/Users/pc/Documents/口播/notes/2026-08-10-AI第四次工业革命普通人位置-用户最终确认原稿-v1.md",
+  "script_sha256": "0192d40b19366ae98ab8a394d1558aa43298073b23bb900f8e5369245f9f2443",
   "passed": [
     "任务标识与目标阶段有效",
     "全局和项目规则已实际读取",
@@ -17,9 +21,15 @@
     "抖音精选质量目标、正文证据、验收方式和非保证边界已登记",
     "核心对象的问题、瓶颈、机制、证据、关系和边界已讲清",
     "本人声音档案已实际读取",
-    "两项文案 Skill、当前稿件哈希、留存审稿和事实保真凭证均通过",
-    "事实锁、去 AI 味、朗读、本人声音、查重、合规和用户确认均通过"
+    "项目语言失败样本与历史锚点机器扫描已通过"
   ],
-  "errors": [],
+  "errors": [
+    "schema_version 必须为 5；历史卡重新进入选题、写稿或制作时必须补齐账号实测反馈字段",
+    "performance_feedback 必须是对象；未读取账号实测学习卡不得进入选题或写稿",
+    "draft.copy_review.skills.humanize_koubo_script.sha256 已过期，必须重新调阅当前 Skill",
+    "draft.copy_review.checks.ai_boundary_review_completed 必须为 true",
+    "draft.copy_review.ai_boundary_review 必须是对象",
+    "production 阶段 performance_feedback_recheck_passed 必须为 true"
+  ],
   "warnings": []
 }
