@@ -7,6 +7,7 @@ import copy
 import importlib.util
 import json
 import os
+import re
 import tempfile
 import unittest
 from datetime import datetime, timezone
@@ -296,6 +297,121 @@ class ContentGateRegressionTests(unittest.TestCase):
                 any(rule_id in error for error in result["errors"]),
                 f"未拦截用户明确否决的 AI 腔规则：{rule_id}",
             )
+
+    def test_current_lanzhou_hardware_draft_is_blocked_by_new_ai_tone_rules(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        project_root = SKILL_ROOT.parent.parent
+        draft_path = (
+            project_root
+            / "notes"
+            / "2026-08-13-国产AI硬件接力赛与兰州节点-完整口播稿-v1.md"
+        )
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "<!-- CONTENT_START -->",
+            "content_end_marker": "<!-- CONTENT_END -->",
+            "phrase_exemptions": [],
+            "ai_tone_exemptions": [],
+            "anchor_exemptions": [],
+        }
+        self.attach_copy_review(card, draft_path)
+
+        result = self.validate(card, "current-lanzhou-hardware-ai-tone-fail.json")
+
+        self.assertEqual(result["status"], "blocked")
+        expected_rule_ids = {
+            "onsite-source-label-scaffold",
+            "attention-directing-transition",
+            "public-source-label-scaffold",
+            "banal-nonexpert-scaffold",
+        }
+        for rule_id in expected_rule_ids:
+            self.assertTrue(
+                any(rule_id in error for error in result["errors"]),
+                f"当前坏稿未命中新失败类别：{rule_id}",
+            )
+
+    def test_new_ai_tone_rule_families_block_near_variants(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        draft_path = self.temp_dir / "new-ai-tone-near-variants.md"
+        draft_path.write_text(
+            "## 口播正文\n\n"
+            "这次走访时，现场的口径是海光性能大概达到八成。\n\n"
+            "先拿这组数据把观众的注意力放到芯片上。\n\n"
+            "公开信息显示，园区已经布局了多条产线。\n\n"
+            "普通人既不做芯片设计，也不负责服务器生产。\n\n"
+            "## 审计附录\n",
+            encoding="utf-8",
+        )
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "phrase_exemptions": [],
+            "ai_tone_exemptions": [],
+            "anchor_exemptions": [],
+        }
+        self.attach_copy_review(card, draft_path)
+
+        result = self.validate(card, "new-ai-tone-near-variants.json")
+
+        self.assertEqual(result["status"], "blocked")
+        for rule_id in {
+            "onsite-source-label-scaffold",
+            "attention-directing-transition",
+            "public-source-label-scaffold",
+            "banal-nonexpert-scaffold",
+        }:
+            self.assertTrue(
+                any(rule_id in error for error in result["errors"]),
+                f"近义变体未命中新失败类别：{rule_id}",
+            )
+
+    def test_new_ai_tone_rules_do_not_hit_user_confirmed_gold_scripts(self) -> None:
+        project_root = SKILL_ROOT.parent.parent
+        rules = json.loads(
+            (project_root / MODULE.PROJECT_STYLE_GATE_PATH).read_text(encoding="utf-8")
+        )
+        required_rule_ids = {
+            "onsite-source-label-scaffold",
+            "attention-directing-transition",
+            "public-source-label-scaffold",
+            "banal-nonexpert-scaffold",
+        }
+        patterns = {
+            rule["id"]: re.compile(rule["pattern"], re.DOTALL)
+            for rule in rules["ai_tone_rules"]
+            if rule.get("id") in required_rule_ids
+        }
+        self.assertEqual(set(patterns), required_rule_ids)
+
+        gold_scripts = [
+            (
+                "notes/2026-08-10-AI第四次工业革命普通人位置-用户最终确认原稿-v1.md",
+                "## 口播正文开始",
+                "## 口播正文结束",
+            ),
+            (
+                "notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+                "## 口播正文开始",
+                "## 口播正文结束",
+            ),
+            (
+                "notes/2026-07-30-真正能穿越周期的两类资产-用户最终确认原稿-v3.md",
+                "## 口播正文开始",
+                "## 口播正文结束",
+            ),
+        ]
+        for relative_path, start_marker, end_marker in gold_scripts:
+            text = (project_root / relative_path).read_text(encoding="utf-8")
+            start = text.index(start_marker) + len(start_marker)
+            end = text.index(end_marker, start)
+            body = text[start:end]
+            for rule_id, pattern in patterns.items():
+                self.assertIsNone(
+                    pattern.search(body),
+                    f"新规则 {rule_id} 误伤用户确认稿：{relative_path}",
+                )
 
     def test_consecutive_qingyang_compute_anchor_is_blocked_without_user_approval(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
