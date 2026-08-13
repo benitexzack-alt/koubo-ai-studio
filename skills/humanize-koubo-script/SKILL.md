@@ -126,6 +126,8 @@ description: 处理任何将要公开的中文口播文案时必须自动触发�
 
 六项人工审稿布尔值只是过程记录，不是正文通过证明。稿件必须再由 `content-brain-gate` 直接扫描项目语言失败样本和历史锚点；机器扫描失败时，`copy_review` 即使自报全部通过，整体状态仍必须为 `blocked`。
 
+`copy_review.checks.read_aloud_completed` 只记录朗读检查已执行。电脑 TTS 只能帮助估算时长和检查明显断句，不能冒充用户本人朗读或真人听读，也不能作为 `ready-for-production` 的证据。稿件进入制作前，必须在内容门禁卡中另行绑定 `draft.read_aloud_evidence` 与用户对当前语言的明确确认记录 `draft.user_language_approval`。
+
 ### 4. 只找真实存在的问题
 
 重点检查：

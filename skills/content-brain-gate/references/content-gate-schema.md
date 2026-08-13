@@ -403,11 +403,22 @@ node <project-root>/tools/prepare-account-performance-preflight.mjs --task-id <�
   "fact_lock_passed": true,
   "humanize_passed": true,
   "read_aloud_passed": true,
+  "read_aloud_evidence": {
+    "mode": "user-read | human-listen",
+    "status": "confirmed",
+    "evidence_ref": "conversation:本人朗读确认或真人听读记录"
+  },
   "voice_match_passed": true,
   "recent_six_recheck_passed": true,
   "performance_feedback_recheck_passed": true,
   "compliance_passed": true,
   "user_script_approved": true,
+  "user_language_approval": {
+    "status": "approved",
+    "approved_by": "user",
+    "approval_ref": "conversation:用户确认当前稿件语言",
+    "approved_at": "ISO 8601 时间"
+  },
   "phrase_exemptions": [
     {
       "pattern_id": "run-seven-days",
@@ -428,6 +439,11 @@ node <project-root>/tools/prepare-account-performance-preflight.mjs --task-id <�
 - 五项评分及事实保真 `10/10`。
 
 只写“已完成初检”或手填 `humanize_passed: true` 不再构成执行证据。稿件或任一 Skill 改动后，旧报告立即失效。
+
+`read_aloud_evidence` 与 `user_language_approval` 是制作阶段的独立人工证据，不能由
+`copy_review` 的自报布尔值代替。电脑 TTS 只允许用于估算时长和发现明显断句，不能写成
+`user-read` 或 `human-listen`，也不能据此把状态升级为 `ready-for-production`。只有用户明确
+确认当前稿件语言，并留下可追溯的确认记录后，才允许进入制作。
 
 当同一个 Markdown 同时包含正文、事实锁、复盘或已删除内容时，应同时填写 `content_start_marker` 和 `content_end_marker`。校验器只扫描两个标记之间真正会被拍摄的正文；只填一个标记、标记不存在或顺序错误时会失败。未填写时保持全文件扫描。
 

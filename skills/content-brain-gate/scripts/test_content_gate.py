@@ -840,6 +840,87 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertEqual(result["status"], "blocked")
         self.assertTrue(any("review_status 必须为 human-reviewed" in error for error in result["errors"]))
 
+    def test_production_rejects_tts_as_human_read_aloud_and_pending_language_review(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["target_stage"] = "production"
+        card["douyin_quality"]["review_status"] = "human-reviewed"
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "fact_lock_passed": True,
+            "humanize_passed": True,
+            "read_aloud_passed": True,
+            "voice_match_passed": True,
+            "recent_six_recheck_passed": True,
+            "performance_feedback_recheck_passed": True,
+            "compliance_passed": True,
+            "user_script_approved": True,
+            "read_aloud_evidence": {
+                "mode": "tts-duration-only",
+                "status": "completed",
+                "evidence_ref": "local-tts:duration-check",
+            },
+            "user_language_approval": {
+                "status": "pending",
+                "approved_by": "",
+                "approval_ref": "",
+                "approved_at": "",
+            },
+            "phrase_exemptions": [],
+        }
+        self.attach_copy_review(card, draft_path)
+
+        result = self.validate(card, "production-tts-language-pending.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "read_aloud_evidence.mode" in error and "TTS" in error
+            for error in result["errors"]
+        ))
+        self.assertTrue(any(
+            "user_language_approval" in error
+            for error in result["errors"]
+        ))
+
+    def test_production_accepts_explicit_user_language_and_human_read_aloud_evidence(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["target_stage"] = "production"
+        card["douyin_quality"]["review_status"] = "human-reviewed"
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "fact_lock_passed": True,
+            "humanize_passed": True,
+            "read_aloud_passed": True,
+            "voice_match_passed": True,
+            "recent_six_recheck_passed": True,
+            "performance_feedback_recheck_passed": True,
+            "compliance_passed": True,
+            "user_script_approved": True,
+            "read_aloud_evidence": {
+                "mode": "user-read",
+                "status": "confirmed",
+                "evidence_ref": "conversation:test:user-read-confirmed",
+            },
+            "user_language_approval": {
+                "status": "approved",
+                "approved_by": "user",
+                "approval_ref": "conversation:test:user-approved-script",
+                "approved_at": "2026-08-13T18:30:00+08:00",
+            },
+            "phrase_exemptions": [],
+        }
+        self.attach_copy_review(card, draft_path)
+
+        result = self.validate(card, "production-human-language-approved.json")
+
+        self.assertEqual(result["status"], "ready-for-production")
+        self.assertFalse(result["errors"])
+
     def test_written_draft_requires_copy_review(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
         card["draft"] = {

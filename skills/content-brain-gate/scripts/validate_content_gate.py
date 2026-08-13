@@ -1196,8 +1196,45 @@ class GateValidator:
         for field in PRODUCTION_CHECKS:
             if draft.get(field) is not True:
                 self.error(f"production 阶段 {field} 必须为 true")
+
+        read_aloud_evidence = draft.get("read_aloud_evidence")
+        if not isinstance(read_aloud_evidence, dict):
+            self.error("production 阶段 read_aloud_evidence 必须是对象")
+        else:
+            mode = read_aloud_evidence.get("mode")
+            if mode not in {"user-read", "human-listen"}:
+                self.error(
+                    "production 阶段 read_aloud_evidence.mode 必须为 user-read 或 "
+                    "human-listen；TTS 只能做时长检查"
+                )
+            if read_aloud_evidence.get("status") != "confirmed":
+                self.error("production 阶段 read_aloud_evidence.status 必须为 confirmed")
+            if not nonempty(read_aloud_evidence.get("evidence_ref")):
+                self.error("production 阶段 read_aloud_evidence.evidence_ref 不能为空")
+
+        language_approval = draft.get("user_language_approval")
+        if not isinstance(language_approval, dict):
+            self.error("production 阶段 user_language_approval 必须是对象")
+        else:
+            if language_approval.get("status") != "approved":
+                self.error("production 阶段 user_language_approval.status 必须为 approved")
+            if language_approval.get("approved_by") != "user":
+                self.error("production 阶段 user_language_approval.approved_by 必须为 user")
+            if not nonempty(language_approval.get("approval_ref")):
+                self.error("production 阶段 user_language_approval.approval_ref 不能为空")
+            approved_at = language_approval.get("approved_at")
+            if not nonempty(approved_at):
+                self.error("production 阶段 user_language_approval.approved_at 不能为空")
+            else:
+                try:
+                    datetime.fromisoformat(approved_at.replace("Z", "+00:00"))
+                except ValueError:
+                    self.error("production 阶段 user_language_approval.approved_at 必须是 ISO 8601 时间")
         if not any(error.startswith("production 阶段") for error in self.errors):
-            self.pass_check("事实锁、去 AI 味、朗读、本人声音、查重、合规和用户确认均通过")
+            self.pass_check(
+                "事实锁、去 AI 味、真人朗读、本人声音、查重、合规"
+                "和用户语言确认均通过"
+            )
 
     def validate_copy_review(self, draft_path: Path, draft: dict[str, Any]) -> None:
         copy_review = draft.get("copy_review")

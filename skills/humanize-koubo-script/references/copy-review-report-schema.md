@@ -84,9 +84,14 @@
 - `draft.sha256` 必须与门禁当前读取到的稿件完全一致；改一个字都必须重新审稿并生成新报告。
 - 两项 Skill 的 `path`、`sha256` 和 `read` 必须与本机当前文件一致。
 - 六项 `checks` 必须全部为 `true`。
+- `checks.read_aloud_completed` 只表示审稿流程执行过朗读检查，不证明用户本人已经朗读或
+  真人已经听读，也不构成制作批准。TTS 只能记录时长；真正的人工证据必须写入内容门禁卡的
+  `draft.read_aloud_evidence`。
 - `ai_boundary_review` 六个布尔字段必须全部为 `true`，并填写 `notes`；任一项无法通过时，不得把报告状态写为 `passed`，除非 `notes` 明确记录事实锁或用户原话理由。
 - `risk_node_count` 只能为 `0` 至 `3`，并与 `nodes` 数量一致。
 - `risk_node_count` 为 `0` 时，`no_high_risk_reason` 不能为空。
 - `fact_changes` 四个数组必须如实填写，不得用缺失字段冒充“无变化”。
 - 五项评分取值为 `0` 至 `10`；`fact_fidelity` 必须等于 `10`。
 - 报告只证明规定步骤和文件绑定已完成，不替代用户对自然度、吸引力和本人感的最终判断。
+- 报告不得替代内容门禁卡的 `draft.user_language_approval`；该字段只能绑定用户对当前稿件的
+  明确确认记录。
