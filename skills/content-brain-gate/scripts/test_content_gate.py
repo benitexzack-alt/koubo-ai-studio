@@ -393,6 +393,195 @@ class ContentGateRegressionTests(unittest.TestCase):
             for error in result["errors"]
         ))
 
+    def test_account_data_preflight_is_required(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        del card["performance_feedback"]["account_data_preflight"]
+
+        result = self.validate(card, "account-data-preflight-missing.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "account_data_preflight 必须是对象" in error
+            for error in result["errors"]
+        ))
+
+    def test_account_data_application_is_required(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        del card["performance_feedback"]["account_data_application"]
+
+        result = self.validate(card, "account-data-application-missing.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "account_data_application 必须是对象" in error
+            for error in result["errors"]
+        ))
+
+    def test_account_data_application_rejects_fabricated_baseline_value(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["performance_feedback"]["account_data_application"][
+            "account_baseline_evidence"
+        ]["value"] = 999999
+
+        result = self.validate(card, "account-data-application-fabricated-baseline.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "全账号基线证据 value 与回执不一致" in error
+            for error in result["errors"]
+        ))
+
+    def test_account_data_application_rejects_unknown_recent_work(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["performance_feedback"]["account_data_application"][
+            "recent_work_evidence"
+        ]["video_key"] = "not-in-recent-six"
+
+        result = self.validate(card, "account-data-application-unknown-work.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "video_key 不在回执最近六条中" in error
+            for error in result["errors"]
+        ))
+
+    def test_tampered_automatic_reference_is_blocked(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        receipt = load_fixture("account-performance-preflight.json")
+        receipt["automaticReference"]["accountBaseline"]["totalPlays"] = 999999
+        temporary_receipt = self.temp_dir / "tampered-automatic-reference.json"
+        temporary_receipt.write_text(
+            json.dumps(receipt, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        card["performance_feedback"]["account_data_preflight"] = {
+            "receipt_path": str(temporary_receipt),
+            "receipt_sha256": MODULE.file_sha256(temporary_receipt),
+            "read": True,
+        }
+
+        result = self.validate(card, "tampered-automatic-reference-card.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "automaticReference 与全量证据快照不一致" in error
+            for error in result["errors"]
+        ))
+
+    def test_account_data_preflight_task_mismatch_is_blocked(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        receipt_path = SKILL_ROOT / "fixtures" / "account-performance-preflight.json"
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        receipt["taskId"] = "another-task"
+        temporary_receipt = self.temp_dir / "task-mismatch-preflight.json"
+        temporary_receipt.write_text(
+            json.dumps(receipt, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        card["performance_feedback"]["account_data_preflight"] = {
+            "receipt_path": str(temporary_receipt),
+            "receipt_sha256": MODULE.file_sha256(temporary_receipt),
+            "read": True,
+        }
+
+        result = self.validate(card, "account-data-preflight-task-mismatch.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "taskId 必须与内容门禁卡一致" in error
+            for error in result["errors"]
+        ))
+
+    def test_tampered_account_data_snapshot_is_blocked(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        receipt_path = SKILL_ROOT / "fixtures" / "account-performance-preflight.json"
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        snapshot = json.loads(
+            (SKILL_ROOT / "fixtures" / "account-performance-context.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        snapshot["allPublishedWorks"].pop()
+        temporary_snapshot = self.temp_dir / "tampered-account-context.json"
+        temporary_snapshot.write_text(
+            json.dumps(snapshot, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        receipt["accountContext"]["snapshotPath"] = str(temporary_snapshot)
+        receipt["accountContext"]["snapshotSha256"] = MODULE.file_sha256(
+            temporary_snapshot
+        )
+        temporary_receipt = self.temp_dir / "tampered-account-preflight.json"
+        temporary_receipt.write_text(
+            json.dumps(receipt, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        card["performance_feedback"]["account_data_preflight"] = {
+            "receipt_path": str(temporary_receipt),
+            "receipt_sha256": MODULE.file_sha256(temporary_receipt),
+            "read": True,
+        }
+
+        result = self.validate(card, "tampered-account-data-snapshot.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "作品数量与回执不一致" in error
+            for error in result["errors"]
+        ))
+
+    def test_non_object_account_data_snapshot_is_blocked_without_crashing(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        receipt = load_fixture("account-performance-preflight.json")
+        temporary_snapshot = self.temp_dir / "non-object-account-context.json"
+        temporary_snapshot.write_text("[]\n", encoding="utf-8")
+        receipt["accountContext"]["snapshotPath"] = str(temporary_snapshot)
+        receipt["accountContext"]["snapshotSha256"] = MODULE.file_sha256(
+            temporary_snapshot
+        )
+        temporary_receipt = self.temp_dir / "non-object-account-preflight.json"
+        temporary_receipt.write_text(
+            json.dumps(receipt, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        card["performance_feedback"]["account_data_preflight"] = {
+            "receipt_path": str(temporary_receipt),
+            "receipt_sha256": MODULE.file_sha256(temporary_receipt),
+            "read": True,
+        }
+
+        result = self.validate(card, "non-object-account-data-snapshot.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "证据快照顶层必须是对象" in error
+            for error in result["errors"]
+        ))
+
+    def test_stale_history_is_blocked_when_task_requires_current_data(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        receipt_path = SKILL_ROOT / "fixtures" / "account-performance-preflight.json"
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        receipt["requiresCurrentAccountData"] = True
+        temporary_receipt = self.temp_dir / "requires-current-preflight.json"
+        temporary_receipt.write_text(
+            json.dumps(receipt, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        card["performance_feedback"]["account_data_preflight"] = {
+            "receipt_path": str(temporary_receipt),
+            "receipt_sha256": MODULE.file_sha256(temporary_receipt),
+            "read": True,
+        }
+
+        result = self.validate(card, "stale-account-data-for-current-claim.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any(
+            "要求当前数据" in error
+            for error in result["errors"]
+        ))
+
     def test_stale_account_learning_card_hash_is_blocked(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
         card["performance_feedback"]["learning_card_sha256"] = "0" * 64
@@ -642,7 +831,7 @@ class ContentGateRegressionTests(unittest.TestCase):
 
         result = MODULE.GateValidator(card, card_path).run()
 
-        self.assertEqual(result["validator_version"], "content-brain-gate/1.0")
+        self.assertEqual(result["validator_version"], MODULE.VALIDATOR_VERSION)
         self.assertEqual(result["card_sha256"], MODULE.file_sha256(card_path))
         self.assertEqual(result["script_path"], str(draft_path.resolve()))
         self.assertEqual(result["script_sha256"], MODULE.file_sha256(draft_path))

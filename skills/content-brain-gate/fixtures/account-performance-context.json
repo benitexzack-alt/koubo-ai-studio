@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "douyin-account-performance-context/1.0",
+  "generatedAt": "2026-08-11T14:02:00.000Z",
+  "status": "historical-stale",
+  "sourceReceipt": {
+    "acceptedRunId": "fixture-accepted-run-2",
+    "collectedAt": "2026-08-11T14:00:00.000Z",
+    "sourceKind": "official-creator-export",
+    "sourceFileName": "作品列表-回归测试.xlsx",
+    "sourceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "sourceProvenance": "test-fixture",
+    "publishedWorkCount": 6,
+    "receiptSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "accountDataState": {
+    "status": "error",
+    "stale": true,
+    "ageMinutes": 1440,
+    "healthStatus": "error",
+    "totalFollowers": 295,
+    "boundary": "回归测试使用最后一次成功历史快照，不得冒充当前实时数据。"
+  },
+  "coverage": {
+    "allAcceptedHistoryUsed": true,
+    "allPublishedWorksIncluded": true,
+    "publishedWorkCount": 6,
+    "acceptedRunCount": 2,
+    "acceptedHistoryCoverageHours": 24,
+    "authoritativeDatabase": "douyin-account.sqlite3"
+  },
+  "accountBaseline": {
+    "workCount": 6,
+    "totalPlays": 2100,
+    "medianPlays": 350
+  },
+  "contentTypeBaselines": [
+    {
+      "contentType": "视频",
+      "workCount": 6,
+      "totalPlays": 2100
+    }
+  ],
+  "recentSix": [
+    {"videoKey": "video-6", "title": "作品6", "metrics": {"plays": 600}},
+    {"videoKey": "video-5", "title": "作品5", "metrics": {"plays": 500}},
+    {"videoKey": "video-4", "title": "作品4", "metrics": {"plays": 400}},
+    {"videoKey": "video-3", "title": "作品3", "metrics": {"plays": 300}},
+    {"videoKey": "video-2", "title": "作品2", "metrics": {"plays": 200}},
+    {"videoKey": "video-1", "title": "作品1", "metrics": {"plays": 100}}
+  ],
+  "allPublishedWorks": [
+    {"videoKey": "video-6", "title": "作品6", "metrics": {"plays": 600}},
+    {"videoKey": "video-5", "title": "作品5", "metrics": {"plays": 500}},
+    {"videoKey": "video-4", "title": "作品4", "metrics": {"plays": 400}},
+    {"videoKey": "video-3", "title": "作品3", "metrics": {"plays": 300}},
+    {"videoKey": "video-2", "title": "作品2", "metrics": {"plays": 200}},
+    {"videoKey": "video-1", "title": "作品1", "metrics": {"plays": 100}}
+  ],
+  "acceptedHistory": {
+    "status": "ready",
+    "snapshots": [
+      {"runId": "fixture-accepted-run-1", "collectedAt": "2026-08-10T14:00:00.000Z"},
+      {"runId": "fixture-accepted-run-2", "collectedAt": "2026-08-11T14:00:00.000Z"}
+    ],
+    "periods": {},
+    "latestVideoChanges": [],
+    "anomalies": [],
+    "boundary": "增量不自动证明因果。"
+  },
+  "interpretationBoundary": {
+    "descriptiveFactsOnly": true,
+    "causalLessonsRequireHumanConfirmation": true,
+    "singleWorkDoesNotEstablishStableRule": true,
+    "staleDataCannotBeDescribedAsCurrent": true,
+    "note": "回归测试只验证全量事实输入与人工学习分离。"
+  }
+}

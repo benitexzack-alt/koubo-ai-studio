@@ -14,7 +14,7 @@ description: 在任何公开内容进入选题、写稿或制作前，强制检�
 3. 定位个人知识库：优先使用 `KOUBO_PERSONAL_KB`，否则检查 `<project-root>/../个人知识库`。如果存在，必须读取其 `AGENTS.md` 和 `00_规范与配置/12_公开内容生产大脑硬门禁.md`，并以个人知识库现行版为优先规则。
 4. 如果个人知识库不存在，读取项目内便携规则 [references/public-content-gate.md](references/public-content-gate.md)。
 5. 读取 `<project-root>/knowledge/15-抖音精选内容质量验收.md`。
-6. 读取当前账号实测学习卡。真实账号任务优先使用 `<personal-kb>/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json`；读取后记录文件 SHA-256，不能只读复盘文章或聊天摘要。
+6. 在形成候选题、提纲或文稿前，自动运行 `node <project-root>/tools/prepare-account-performance-preflight.mjs --task-id <任务ID>`。工具必须读取 AI 选题雷达当前全量账号表现上下文和当前账号实测学习卡，固化全部已接纳快照、全部已发布作品、最近六条和任务级回执；用户无需额外提醒。真实账号学习卡优先使用 `<personal-kb>/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json`。
 7. 读取最近六条已发布、已拍摄或已确认内容。
 8. 读取当前账号声音档案。
 9. 读取 `<project-root>/knowledge/21-超哥口播语言与重复硬门禁.json` 与 `<project-root>/workflow/recent-content-history.v1.json`。
@@ -28,6 +28,7 @@ description: 在任何公开内容进入选题、写稿或制作前，强制检�
 
 - 参考素材只有 `metadata-only`，任务却要求拆观点、原意、Talking 链路或爆款机制；
 - 最近六条没有读够，或新主张与旧母题的差异说不清；
+- 全量账号数据自动预检回执缺失、任务 ID 不匹配、证据快照被修改、未覆盖全部已接纳历史或全部作品；
 - 当前账号实测学习卡缺失、未读取、哈希过期，或没有明确本条采用哪项学习；
 - 开头计划超过学习卡的当前上限，标题答案和首个观众价值仍被背景铺垫推迟；
 - 只凭单条早期数据下结论，或没有为本条声明观察窗口和指标假设；
@@ -79,7 +80,15 @@ description: 在任何公开内容进入选题、写稿或制作前，强制检�
 
 ### 2.8 绑定账号实测反馈
 
-在做候选题和写提纲前填写 `performance_feedback`，并把当前账号实测学习卡绑定到本轮内容：
+在做候选题和写提纲前自动生成任务级全量账号数据回执，再填写 `performance_feedback`：
+
+- 运行 `node <project-root>/tools/prepare-account-performance-preflight.mjs --task-id <任务ID>`；不要等待用户另行说“根据现有数据重做”；
+- 把输出的回执路径、当前 SHA-256 和 `read: true` 写入 `performance_feedback.account_data_preflight`；
+- 回执必须证明全部已接纳官方快照、全部已发布作品和最近六条均已加载，并绑定当前学习卡；
+- 从回执 `automaticReference` 选择一项全账号基线和一条最近作品数值，在 `performance_feedback.account_data_application` 中写明本条如何使用以及具体改动；
+- 应用数值必须与回执及不可变证据快照一致；只声明“已读数据”不算使用；
+- 任务要公开声称“现在/最新账号表现”时增加 `--requires-current`；普通选题可使用明确标记的过期历史进行比较，但不得冒充实时数据；
+- 自动数据上下文只产生描述性事实，选题、结构或剪辑的因果经验仍须人工确认后写入学习卡；
 
 - 记录学习卡路径、当前 SHA-256、快照时间和 `read: true`；
 - 学习卡快照之后如果已经拍摄、确认或发布了新内容，还必须显式登记新内容 ID 和数据观察状态；只有内容样本、没有完整观察窗口时，不得让旧学习卡冒充已覆盖新作品；
@@ -89,7 +98,7 @@ description: 在任何公开内容进入选题、写稿或制作前，强制检�
 - 指定主指标、至少两个辅助指标以及完整观察窗口，并写出本条可被发布数据证伪的假设；
 - 明确区分发布后 3 小时内的早期信号与 24 小时、72 小时、7 天的成熟结果。
 
-学习卡一旦更新，旧门禁卡中的哈希会失效，必须重新读取并重做反馈绑定。复盘文章负责解释，学习卡负责执行；两者不能互相替代。
+账号数据回执按任务固化，不会因下一次小时采集而静默改写；重新选题、改稿或重新制作时必须生成新回执。学习卡一旦更新，旧门禁卡中的哈希会失效，必须重新读取并重做反馈绑定。复盘文章负责解释，学习卡负责执行；两者不能互相替代。
 
 ### 3. 做最近六条主张级查重
 
@@ -154,7 +163,7 @@ description: 在任何公开内容进入选题、写稿或制作前，强制检�
 
 ### 5.6 建立抖音精选质量目标
 
-使用 `schema_version: 5`，按照项目 `knowledge/15-抖音精选内容质量验收.md` 填写 `douyin_quality`：
+使用 `schema_version: 6`，按照项目 `knowledge/15-抖音精选内容质量验收.md` 填写 `douyin_quality`：
 
 - 获得感和表达力必须为 `primary`；
 - 惊喜感、感染力按真实素材填写 `primary`、`supporting` 或 `not-targeted`；
@@ -186,7 +195,7 @@ python3 <project-root>/skills/content-brain-gate/scripts/validate_content_gate.p
 
 - `ready-for-outline`：只写提纲，不写拍摄终稿；
 - `ready-for-draft`：可以写文稿，但仍不能做 V6、音效和成片；
-- 重新选题、改提纲或改稿时重新核对 `performance_feedback`；学习卡哈希、开头合同、时长理由或数据假设不匹配时退回 `blocked`；
+- 重新选题、改提纲、改稿或重新制作时重新生成账号数据回执并核对 `performance_feedback`；回执、学习卡哈希、开头合同、时长理由或数据假设不匹配时退回 `blocked`；
 - 写稿后建立事实锁，逐项标出四项质量特征的正文证据，自动调阅 `humanizer-zh` 与 `humanize-koubo-script`，强制完成模式扫描、事实安全精修、留存风险审稿、大声朗读、本人声音、最近六条和合规复核；
 - 每份实际文稿必须生成绑定当前稿件与两项 Skill SHA-256 的 `copy_review` 报告；没有报告、报告过期、AI 味边界审查缺失或事实保真不足 `10/10` 时停止交付；
 - 用户确认脚本且 `production` 校验通过，才升级为 `ready-for-production`。

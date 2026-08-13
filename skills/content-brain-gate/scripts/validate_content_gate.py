@@ -151,10 +151,28 @@ FROZEN_PATTERNS = (
     ),
 )
 PROJECT_STYLE_GATE_PATH = "knowledge/21-超哥口播语言与重复硬门禁.json"
+VALIDATOR_VERSION = "content-brain-gate/1.2"
 
 
 def nonempty(value: Any) -> bool:
     return isinstance(value, str) and bool(value.strip())
+
+
+def meaningful_text(value: Any, minimum_characters: int) -> bool:
+    if not nonempty(value):
+        return False
+    return len(re.sub(r"\s+", "", value)) >= minimum_characters
+
+
+def value_at_path(value: Any, dotted_path: Any) -> Any:
+    if not nonempty(dotted_path):
+        return None
+    current = value
+    for part in dotted_path.split("."):
+        if not isinstance(current, dict) or part not in current:
+            return None
+        current = current[part]
+    return current
 
 
 def discover_project_root(anchor: Path) -> Path | None:
@@ -251,9 +269,9 @@ class GateValidator:
         self.passed.append(message)
 
     def validate_header(self) -> str:
-        if self.card.get("schema_version") != 5:
+        if self.card.get("schema_version") != 6:
             self.error(
-                "schema_version 必须为 5；历史卡重新进入选题、写稿或制作时必须补齐账号实测反馈字段"
+                "schema_version 必须为 6；历史卡重新进入选题、写稿或制作时必须补齐全量账号数据自动预检回执"
             )
         if not nonempty(self.card.get("task_id")):
             self.error("task_id 不能为空")
@@ -610,6 +628,236 @@ class GateValidator:
             self.error("performance_feedback 必须是对象；未读取账号实测学习卡不得进入选题或写稿")
             return
 
+        preflight = feedback.get("account_data_preflight")
+        preflight_path: Path | None = None
+        preflight_receipt: dict[str, Any] | None = None
+        context_snapshot: dict[str, Any] | None = None
+        if not isinstance(preflight, dict):
+            self.error(
+                "performance_feedback.account_data_preflight 必须是对象；"
+                "每次选题、改稿或重新制作前必须自动生成全量账号数据回执"
+            )
+        else:
+            preflight_path_value = preflight.get("receipt_path")
+            preflight_path = resolve_input_path(preflight_path_value, self.card_path)
+            if preflight.get("read") is not True:
+                self.error("performance_feedback.account_data_preflight.read 必须为 true")
+            if preflight_path is None or not existing_nonempty_file(
+                preflight_path_value, self.card_path
+            ):
+                self.error(
+                    "performance_feedback.account_data_preflight.receipt_path 文件不存在或为空："
+                    f"{preflight_path_value}"
+                )
+            else:
+                expected_preflight_hash = preflight.get("receipt_sha256")
+                if not nonempty(expected_preflight_hash) or not re.fullmatch(
+                    r"[0-9a-f]{64}", expected_preflight_hash
+                ):
+                    self.error(
+                        "performance_feedback.account_data_preflight.receipt_sha256 "
+                        "必须是64位小写SHA-256"
+                    )
+                elif file_sha256(preflight_path) != expected_preflight_hash:
+                    self.error(
+                        "performance_feedback.account_data_preflight.receipt_sha256 与当前回执不一致"
+                    )
+                try:
+                    loaded_preflight = json.loads(
+                        preflight_path.read_text(encoding="utf-8")
+                    )
+                except (OSError, json.JSONDecodeError) as error:
+                    self.error(f"performance_feedback 账号数据回执无法读取：{error}")
+                else:
+                    if isinstance(loaded_preflight, dict):
+                        preflight_receipt = loaded_preflight
+                    else:
+                        self.error("performance_feedback 账号数据回执顶层必须是对象")
+
+        if preflight_receipt is not None:
+            if preflight_receipt.get("schemaVersion") != "koubo-account-performance-preflight/1.1":
+                self.error("performance_feedback 账号数据回执 schemaVersion 无效")
+            if preflight_receipt.get("taskId") != self.card.get("task_id"):
+                self.error("performance_feedback 账号数据回执 taskId 必须与内容门禁卡一致")
+            if preflight_receipt.get("status") not in {
+                "ready-current",
+                "ready-historical-stale",
+            }:
+                self.error("performance_feedback 账号数据回执状态不可用")
+            account_context = preflight_receipt.get("accountContext")
+            if not isinstance(account_context, dict):
+                self.error("performance_feedback 账号数据回执缺少 accountContext")
+            else:
+                if account_context.get("allAcceptedHistoryUsed") is not True:
+                    self.error("performance_feedback 账号数据回执未覆盖全部已接纳历史")
+                if account_context.get("allPublishedWorksIncluded") is not True:
+                    self.error("performance_feedback 账号数据回执未覆盖全部已发布作品")
+                published_count = account_context.get("publishedWorkCount")
+                accepted_run_count = account_context.get("acceptedRunCount")
+                recent_six_count = account_context.get("recentSixCount")
+                if not isinstance(published_count, int) or isinstance(published_count, bool) or published_count < 1:
+                    self.error("performance_feedback 账号数据回执 publishedWorkCount 无效")
+                if not isinstance(accepted_run_count, int) or isinstance(accepted_run_count, bool) or accepted_run_count < 1:
+                    self.error("performance_feedback 账号数据回执 acceptedRunCount 无效")
+                if not isinstance(recent_six_count, int) or isinstance(recent_six_count, bool) or recent_six_count < 1:
+                    self.error("performance_feedback 账号数据回执 recentSixCount 无效")
+                snapshot_path_value = account_context.get("snapshotPath")
+                snapshot_path = resolve_input_path(snapshot_path_value, preflight_path or self.card_path)
+                snapshot_hash = account_context.get("snapshotSha256")
+                if snapshot_path is None or not existing_nonempty_file(
+                    snapshot_path_value, preflight_path or self.card_path
+                ):
+                    self.error("performance_feedback 账号数据证据快照不存在或为空")
+                elif not nonempty(snapshot_hash) or not re.fullmatch(r"[0-9a-f]{64}", snapshot_hash):
+                    self.error("performance_feedback 账号数据证据快照哈希无效")
+                elif file_sha256(snapshot_path) != snapshot_hash:
+                    self.error("performance_feedback 账号数据证据快照已被修改")
+                else:
+                    try:
+                        context_snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
+                    except (OSError, json.JSONDecodeError) as error:
+                        self.error(f"performance_feedback 账号数据证据快照无法读取：{error}")
+                    else:
+                        if not isinstance(context_snapshot, dict):
+                            self.error("performance_feedback 账号数据证据快照顶层必须是对象")
+                            context_snapshot = None
+                        else:
+                            if context_snapshot.get("schemaVersion") != "douyin-account-performance-context/1.0":
+                                self.error("performance_feedback 账号数据证据快照 schemaVersion 无效")
+                            coverage = context_snapshot.get("coverage")
+                            all_works = context_snapshot.get("allPublishedWorks")
+                            accepted_history = context_snapshot.get("acceptedHistory")
+                            accepted_snapshots = (
+                                accepted_history.get("snapshots")
+                                if isinstance(accepted_history, dict)
+                                else None
+                            )
+                            recent_six = context_snapshot.get("recentSix")
+                            if not isinstance(coverage, dict):
+                                self.error("performance_feedback 账号数据证据快照缺少 coverage")
+                            else:
+                                if coverage.get("allAcceptedHistoryUsed") is not True:
+                                    self.error("performance_feedback 账号数据证据快照未覆盖全部历史")
+                                if coverage.get("allPublishedWorksIncluded") is not True:
+                                    self.error("performance_feedback 账号数据证据快照未覆盖全部作品")
+                            if not isinstance(all_works, list) or len(all_works) != published_count:
+                                self.error("performance_feedback 账号数据证据快照作品数量与回执不一致")
+                            if not isinstance(accepted_snapshots, list) or len(accepted_snapshots) != accepted_run_count:
+                                self.error("performance_feedback 账号数据证据快照历史批次数与回执不一致")
+                            if not isinstance(recent_six, list) or len(recent_six) != recent_six_count:
+                                self.error("performance_feedback 账号数据证据快照最近六条与回执不一致")
+                            boundary = context_snapshot.get("interpretationBoundary")
+                            if not isinstance(boundary, dict) or (
+                                boundary.get("descriptiveFactsOnly") is not True
+                                or boundary.get("causalLessonsRequireHumanConfirmation") is not True
+                                or boundary.get("staleDataCannotBeDescribedAsCurrent") is not True
+                            ):
+                                self.error("performance_feedback 账号数据证据快照缺少事实与因果边界")
+                if (
+                    preflight_receipt.get("requiresCurrentAccountData") is True
+                    and (
+                        preflight_receipt.get("status") != "ready-current"
+                        or account_context.get("stale") is not False
+                    )
+                ):
+                    self.error("performance_feedback 本任务要求当前数据，但回执只包含过期历史数据")
+            automatic_contract = preflight_receipt.get("automaticUseContract")
+            if not isinstance(automatic_contract, dict) or any(
+                automatic_contract.get(field) is not True
+                for field in (
+                    "generatedBeforeTopicOrDraft",
+                    "descriptiveFactsLoadedAutomatically",
+                    "humanConfirmedLessonsLoadedAutomatically",
+                    "appliedLessonSelectionStillRequiredInContentGate",
+                    "causalLessonsNotAutoGenerated",
+                    "staleDataCannotBeDescribedAsCurrent",
+                )
+            ):
+                self.error("performance_feedback 账号数据回执缺少自动使用与因果边界合同")
+            automatic_reference = preflight_receipt.get("automaticReference")
+            if not isinstance(automatic_reference, dict):
+                self.error("performance_feedback 账号数据回执缺少 automaticReference")
+            elif context_snapshot is not None:
+                accepted_history = context_snapshot.get("acceptedHistory")
+                expected_reference = {
+                    "accountBaseline": context_snapshot.get("accountBaseline"),
+                    "contentTypeBaselines": context_snapshot.get("contentTypeBaselines"),
+                    "recentSix": context_snapshot.get("recentSix"),
+                    "acceptedHistorySignals": {
+                        "status": accepted_history.get("status"),
+                        "periods": accepted_history.get("periods"),
+                        "latestVideoChanges": accepted_history.get("latestVideoChanges"),
+                        "anomalies": accepted_history.get("anomalies"),
+                        "boundary": accepted_history.get("boundary"),
+                    } if isinstance(accepted_history, dict) else None,
+                }
+                if automatic_reference != expected_reference:
+                    self.error("performance_feedback 账号数据回执 automaticReference 与全量证据快照不一致")
+
+        data_application = feedback.get("account_data_application")
+        if not isinstance(data_application, dict):
+            self.error(
+                "performance_feedback.account_data_application 必须是对象；"
+                "必须说明本条具体使用了哪些账号数据，不能只声明已读回执"
+            )
+        elif preflight_receipt is not None:
+            automatic_reference = preflight_receipt.get("automaticReference")
+            if isinstance(automatic_reference, dict):
+                baseline = automatic_reference.get("accountBaseline")
+                recent_works = automatic_reference.get("recentSix")
+                baseline_evidence = data_application.get("account_baseline_evidence")
+                recent_evidence = data_application.get("recent_work_evidence")
+                if not isinstance(baseline_evidence, dict):
+                    self.error(
+                        "performance_feedback.account_data_application.account_baseline_evidence "
+                        "必须是对象"
+                    )
+                elif not isinstance(baseline, dict):
+                    self.error("performance_feedback 账号数据回执缺少全账号基线")
+                else:
+                    metric = baseline_evidence.get("metric")
+                    actual_value = value_at_path(baseline, metric)
+                    if not nonempty(metric) or actual_value is None:
+                        self.error("performance_feedback 全账号基线证据 metric 不存在")
+                    elif baseline_evidence.get("value") != actual_value:
+                        self.error("performance_feedback 全账号基线证据 value 与回执不一致")
+                    if not meaningful_text(baseline_evidence.get("use"), 8):
+                        self.error("performance_feedback 全账号基线证据必须说明本条如何使用")
+                if not isinstance(recent_evidence, dict):
+                    self.error(
+                        "performance_feedback.account_data_application.recent_work_evidence "
+                        "必须是对象"
+                    )
+                elif not isinstance(recent_works, list):
+                    self.error("performance_feedback 账号数据回执缺少最近六条")
+                else:
+                    video_key = recent_evidence.get("video_key")
+                    recent_work = next(
+                        (
+                            work
+                            for work in recent_works
+                            if isinstance(work, dict) and work.get("videoKey") == video_key
+                        ),
+                        None,
+                    )
+                    metric = recent_evidence.get("metric")
+                    actual_value = value_at_path(recent_work or {}, metric)
+                    if recent_work is None:
+                        self.error("performance_feedback 最近作品证据 video_key 不在回执最近六条中")
+                    elif not nonempty(metric) or actual_value is None:
+                        self.error("performance_feedback 最近作品证据 metric 不存在")
+                    elif recent_evidence.get("value") != actual_value:
+                        self.error("performance_feedback 最近作品证据 value 与回执不一致")
+                    if not meaningful_text(recent_evidence.get("use"), 8):
+                        self.error("performance_feedback 最近作品证据必须说明本条如何使用")
+                if not meaningful_text(data_application.get("planned_change"), 12):
+                    self.error("performance_feedback.account_data_application.planned_change 必须说明本条的具体改动")
+                if data_application.get("causal_claim") not in {"none", "human-confirmed-lesson-only"}:
+                    self.error(
+                        "performance_feedback.account_data_application.causal_claim "
+                        "只能是 none 或 human-confirmed-lesson-only"
+                    )
+
         learning_card_path_value = feedback.get("learning_card_path")
         learning_card_path = resolve_input_path(learning_card_path_value, self.card_path)
         if feedback.get("read") is not True:
@@ -643,6 +891,15 @@ class GateValidator:
             self.error("performance_feedback 学习卡 type 无效")
         if learning_card.get("status") != "current":
             self.error("performance_feedback 学习卡必须是 current 状态")
+        if preflight_receipt is not None:
+            receipt_learning_card = preflight_receipt.get("learningCard")
+            if not isinstance(receipt_learning_card, dict):
+                self.error("performance_feedback 账号数据回执缺少 learningCard")
+            else:
+                if receipt_learning_card.get("sha256") != expected_hash:
+                    self.error("performance_feedback 账号数据回执与当前学习卡哈希不一致")
+                if receipt_learning_card.get("snapshotAt") != learning_card.get("snapshot_at"):
+                    self.error("performance_feedback 账号数据回执与当前学习卡快照时间不一致")
         snapshot_at = learning_card.get("snapshot_at")
         if not nonempty(snapshot_at) or feedback.get("snapshot_at") != snapshot_at:
             self.error("performance_feedback.snapshot_at 必须与当前学习卡一致")
@@ -832,7 +1089,7 @@ class GateValidator:
                 )
 
         if not any(error.startswith("performance_feedback") for error in self.errors):
-            self.pass_check("当前账号实测学习卡、开头合同、时长理由和发布指标假设已绑定")
+            self.pass_check("全量账号数据回执、当前学习卡、开头合同、时长理由和发布指标假设已绑定")
 
     def validate_douyin_quality(self, stage: str) -> None:
         quality = self.card.get("douyin_quality")
@@ -1337,7 +1594,7 @@ class GateValidator:
         return {
             "ok": not self.errors,
             "status": status,
-            "validator_version": "content-brain-gate/1.0",
+            "validator_version": VALIDATOR_VERSION,
             "task_id": self.card.get("task_id"),
             "target_stage": stage,
             "card_path": str(self.card_path),

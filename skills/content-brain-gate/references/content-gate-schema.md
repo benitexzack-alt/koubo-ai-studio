@@ -4,7 +4,7 @@
 
 ```json
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "task_id": "唯一任务标识",
   "target_stage": "outline | draft | production",
   "required_rules": [],
@@ -23,7 +23,7 @@
 }
 ```
 
-`schema_version: 5` 从 2026-08-11 起用于所有重新进入选题、写稿或制作的内容。v5 在 v4 的用户选题授权、主张 ID 和证据 ID 去重基础上，新增账号实测反馈硬门。历史卡只保留审计价值，不得自动继承账号数据学习、选题许可、抖音精选质量验收或文案双 Skill 执行状态。
+`schema_version: 6` 从 2026-08-13 起用于所有重新进入选题、写稿或制作的内容。v6 在 v5 的账号实测学习卡硬门基础上，新增“全部已接纳官方快照 + 全部已发布作品 + 最近六条”的自动预检回执。历史 v1 至 v5 卡只保留审计和发布复盘价值，不得重新获得选题、改稿或制作权限。
 
 ## required_rules
 
@@ -226,8 +226,36 @@
 
 每次进入选题、提纲、写稿或制作前都必须绑定当前账号实测学习卡。真实账号任务使用个人知识库中的当前卡；Skill 的 `fixtures/account-learning-card.json` 只用于回归测试，不得替代真实账号数据。
 
+在填写其余字段前，自动运行：
+
+```bash
+node <project-root>/tools/prepare-account-performance-preflight.mjs --task-id <任务ID>
+```
+
+任务明确依赖“现在/最新账号表现”时增加 `--requires-current`。默认允许使用明确标记为过期的最后一次成功全量历史做比较，但禁止表述为实时状态。工具生成任务级不可变证据快照和回执；自动层只汇总描述性事实，因果规律仍须人工确认后进入学习卡。
+
 ```json
 {
+  "account_data_preflight": {
+    "receipt_path": "<project-root>/workflow/account-performance-preflights/<任务ID>.json",
+    "receipt_sha256": "64位小写SHA-256",
+    "read": true
+  },
+  "account_data_application": {
+    "account_baseline_evidence": {
+      "metric": "weightedMetrics.fiveSecondCompletionRate",
+      "value": 31.8711,
+      "use": "把全账号五秒完播基线作为本条开头调整的观察参照"
+    },
+    "recent_work_evidence": {
+      "video_key": "回执最近六条中的真实 videoKey",
+      "metric": "metrics.fiveSecondCompletionRate",
+      "value": 27.34,
+      "use": "对照这条最近作品，把标题答案和真实场景提前"
+    },
+    "planned_change": "本条前十二秒先交付标题答案和一个可感知场景，再进入背景和机制解释。",
+    "causal_claim": "human-confirmed-lesson-only"
+  },
   "learning_card_path": "<personal-kb>/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
   "learning_card_sha256": "64位小写SHA-256",
   "snapshot_at": "2026-08-10T22:52:59+08:00",
@@ -275,6 +303,12 @@
 
 固定规则：
 
+- `account_data_preflight` 回执必须与当前 `task_id` 一致，回执、账号数据证据快照和学习卡哈希必须真实匹配；
+- 回执必须覆盖全部已接纳快照、全部已发布作品和最近六条；缺一项即 `blocked`；
+- `account_data_application` 至少绑定回执中一项全账号基线、一条最近作品数值和本条具体改动；数值必须与不可变快照一致；
+- `causal_claim` 只能为 `none` 或 `human-confirmed-lesson-only`，禁止把单条作品数据直接升级为因果规律；
+- 过期历史只能作为历史比较，任务要求当前数据时必须是 `ready-current`；
+- 每次重新选题、改稿或重新制作生成新回执，不用用户重复下指令；
 - `learning_card_sha256` 必须与当前文件完全一致；学习卡更新后旧门禁卡自动失效；
 - `snapshot_at` 必须与学习卡一致，学习卡状态必须为 `current`；
 - `applied_lesson_ids` 至少一项，且必须来自学习卡中状态为 `active` 的学习；

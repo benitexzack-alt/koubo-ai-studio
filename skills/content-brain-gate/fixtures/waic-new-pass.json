@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "task_id": "waic-2026-non-text-world-direction",
   "target_stage": "draft",
   "required_rules": [
@@ -18,7 +18,10 @@
       "title": "王坚院士WAIC演讲本地转写",
       "completeness": "complete",
       "acquisition": "local-asr",
-      "intended_uses": ["viewpoint", "talking-structure"],
+      "intended_uses": [
+        "viewpoint",
+        "talking-structure"
+      ],
       "content_path": "<skill-root>/fixtures/section-scan.md",
       "verification_status": "部分核验"
     },
@@ -27,18 +30,25 @@
       "title": "WAIC调研来源与证据等级",
       "completeness": "primary-source",
       "acquisition": "official-page",
-      "intended_uses": ["draft-evidence"],
+      "intended_uses": [
+        "draft-evidence"
+      ],
       "content_path": "<skill-root>/fixtures/section-scan.md",
       "verification_status": "部分核验",
       "canonical_ref": "local:waic-evidence-index:2026",
-      "evidence_ids": ["evidence:waic:wang-jian-non-text-world"]
+      "evidence_ids": [
+        "evidence:waic:wang-jian-non-text-world"
+      ]
     },
     {
       "id": "douyin-waic-clues",
       "title": "六条抖音大会参考",
       "completeness": "metadata-only",
       "acquisition": "public-page",
-      "intended_uses": ["title-clue", "source-index"],
+      "intended_uses": [
+        "title-clue",
+        "source-index"
+      ],
       "verification_status": "待核验"
     }
   ],
@@ -77,7 +87,9 @@
       "main_claim": "先找一个重复小动作试跑",
       "claim_id": "claim:recent:repeat-small-action",
       "evidence": "真实口播中的个人实践立场",
-      "evidence_ids": ["evidence:personal:repeat-small-action"],
+      "evidence_ids": [
+        "evidence:personal:repeat-small-action"
+      ],
       "deliverable": "一周试跑判断",
       "cta": "关注后续实践"
     },
@@ -88,7 +100,9 @@
       "main_claim": "把三件日常任务交给AI",
       "claim_id": "claim:recent:three-daily-tasks",
       "evidence": "餐饮门店场景举例",
-      "evidence_ids": ["evidence:scene:restaurant-daily-tasks"],
+      "evidence_ids": [
+        "evidence:scene:restaurant-daily-tasks"
+      ],
       "deliverable": "三件任务清单",
       "cta": "评论行业"
     },
@@ -99,7 +113,9 @@
       "main_claim": "先把身边资源变成一次真实交付",
       "claim_id": "claim:recent:opc-real-delivery",
       "evidence": "兰州本地场景和技能组合",
-      "evidence_ids": ["evidence:local:lanzhou-skill-combination"],
+      "evidence_ids": [
+        "evidence:local:lanzhou-skill-combination"
+      ],
       "deliverable": "场景、交付、反馈三要素",
       "cta": "留言城市技能资源"
     },
@@ -110,7 +126,9 @@
       "main_claim": "先让一条关键流程留下数字记录",
       "claim_id": "claim:recent:digital-record-first",
       "evidence": "工信部评测顺序和甘肃公开口径",
-      "evidence_ids": ["evidence:public:digital-assessment-order"],
+      "evidence_ids": [
+        "evidence:public:digital-assessment-order"
+      ],
       "deliverable": "三项资料自检",
       "cta": "提交本地行业问题"
     },
@@ -121,7 +139,9 @@
       "main_claim": "上游卖算力中游卖模型下游卖结果",
       "claim_id": "claim:recent:token-value-chain",
       "evidence": "庆阳算力与陇小郎案例",
-      "evidence_ids": ["evidence:local:qingyang-compute-longxiaolang"],
+      "evidence_ids": [
+        "evidence:local:qingyang-compute-longxiaolang"
+      ],
       "deliverable": "产业链位置判断",
       "cta": "关注后续下游拆解"
     },
@@ -132,7 +152,9 @@
       "main_claim": "AI超市的价值是选品、工作流、培训和持续负责",
       "claim_id": "claim:recent:ai-supermarket-service-layers",
       "evidence": "四层商业结构拆分",
-      "evidence_ids": ["evidence:analysis:ai-supermarket-four-layers"],
+      "evidence_ids": [
+        "evidence:analysis:ai-supermarket-four-layers"
+      ],
       "deliverable": "收入与交付层级判断",
       "cta": "关注"
     }
@@ -143,7 +165,9 @@
     "desired_change": "从比较聊天能力，转向识别AI正在进入哪些非文字数据和真实世界",
     "novel_claim": "这届WAIC真正值得注意的，不是AI更会聊天，而是它开始读懂那些从来没有被写成文字的世界",
     "claim_id": "claim:waic:non-text-world",
-    "primary_evidence_ids": ["evidence:waic:wang-jian-non-text-world"],
+    "primary_evidence_ids": [
+      "evidence:waic:wang-jian-non-text-world"
+    ],
     "difference_from_recent": "最近六条都在讲企业如何开始用AI、产业链位置或服务模式；本条第一次解释基础模型从文字世界进入光谱、地震波、化石等科学观测数据的变化，并用王坚演讲和卫星数据案例支撑，交付的是判断下一波AI价值来源的方法，而不是七天试跑动作。",
     "evidence_proves": "王坚演讲明确提出让科学数据成为基础模型的原住民，并给出旧卫星数据经新模型发现新天体的案例",
     "evidence_does_not_prove": "不能证明所有非文字数据都已被基础模型充分理解，也不能证明某个展品已经形成稳定商业结果",
@@ -173,6 +197,26 @@
     "requires_expert_authority": false
   },
   "performance_feedback": {
+    "account_data_preflight": {
+      "receipt_path": "<skill-root>/fixtures/account-performance-preflight.json",
+      "receipt_sha256": "ffbc6ae5ccd4ab9c2f14f5cd4d5521ec51b0aebec88b1545ddcc51ff24dae507",
+      "read": true
+    },
+    "account_data_application": {
+      "account_baseline_evidence": {
+        "metric": "totalPlays",
+        "value": 2100,
+        "use": "用全账号播放基线约束本条的观察预期，不预设大流量"
+      },
+      "recent_work_evidence": {
+        "video_key": "video-6",
+        "metric": "metrics.plays",
+        "value": 600,
+        "use": "对照最近作品的真实播放，把标题答案和真实场景提前"
+      },
+      "planned_change": "本条前十二秒先交付标题答案和设备异响场景，再进入大会背景和机制解释。",
+      "causal_claim": "human-confirmed-lesson-only"
+    },
     "learning_card_path": "<skill-root>/fixtures/account-learning-card.json",
     "learning_card_sha256": "e953dc14997be779518d7c5dd4061bf39cb653304691ee7e01e25630e7e42a27",
     "snapshot_at": "2026-08-10T22:52:59+08:00",

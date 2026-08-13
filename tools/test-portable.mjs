@@ -138,6 +138,11 @@ try {
     ],
     { expectedCodes: [1] },
   );
+  run(
+    '账号表现自动预检回归',
+    process.execPath,
+    ['--test', 'tools/test-account-performance-preflight.mjs'],
+  );
 
   const cleanCodexHome = path.join(makeTemporaryRoot(), 'codex-home');
   const isolatedAgentsHome = path.join(makeTemporaryRoot(), 'agents-home');
