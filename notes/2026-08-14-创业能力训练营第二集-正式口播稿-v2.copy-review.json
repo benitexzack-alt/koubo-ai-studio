@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260814T044704Z-429bd581",
+  "status": "passed",
+  "reviewed_at": "2026-08-14T13:18:00+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v2.md",
+    "sha256": "0ac8e75cf672b577ee5769aeafb0bb92af0b39c2518346f93c024f8309720311"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "正文直接从海光DCU与A100的具体比较进入，没有念公开资料、现场口径或事实锁。性能边界嵌入型号、任务、精度和软件环境，产线与数据园分别解释整机交付和数据可用，课程范围只用一句话回收。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "讲解员把海光 DCU 和英伟达 A100 放在一起比较，给出的数是大约八成。",
+        "risk_level": "high",
+        "reason": "数字和英伟达能迅速建立注意，但若观众只截取第一句，容易误读为统一性能结论。",
+        "candidates": {
+          "conservative": "讲解员把海光DCU和英伟达A100放在一起比较，给出了一个约八成的参照。",
+          "direct": "海光DCU和英伟达A100被放在一起比较，讲解员给出的数是大约八成。",
+          "vivid": "在兰州一条服务器产线旁边，我听到了海光DCU对比A100的大约八成。"
+        },
+        "fact_difference": "三个候选都保留现场归因；生动版把地点提前，但会削弱讲解员来源，保守版仍不能替代下一段边界。",
+        "recommendation": "保留当前句，并保证紧接的型号、任务、精度和软件环境边界不被剪掉；字幕不得单独写成海光达到英伟达八成。"
+      },
+      {
+        "original": "客户愿意为什么结果付钱？AI 具体接进现有流程的哪一步？它运行在哪套硬件和软件环境，需要哪些数据，谁有权使用？出错、跑偏或者系统中断时，谁来接管？最后怎么验收，交付以后谁来维护？",
+        "risk_level": "medium",
+        "reason": "连续五问信息密度高，若只靠口播容易像念清单，也会降低中后段听感。",
+        "candidates": {
+          "conservative": "把客户结果、AI任务、运行环境与数据、人工接管、验收维护五项写清楚。",
+          "direct": "拿一张纸写五行：客户结果、AI任务、环境与数据、人工接管、验收维护。",
+          "vivid": "把工具名字全部遮住，只看客户、环境、数据、接管和验收，这个项目还站不站得住？"
+        },
+        "fact_difference": "保守版和直接版会损失每一行的具体检查动作；生动版会弱化填写工具的可操作性。",
+        "recommendation": "保留五问，用一张持续出现的五行卡承接，不拆成五张卡，也不让字幕逐项反复进出。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [
+      "加入用户确认的讲解员将海光DCU与英伟达A100比较并提到约八成，并同步加入适用边界。",
+      "用一句大白话补充DCU面向深度学习训练、推理和大模型计算，避免普通观众只听到缩写。",
+      "加入数据要素园关于采集、汇聚、加工、脱敏、权利、用途与流通的机制。"
+    ],
+    "removed_facts": [
+      "继续排除园区名称、投资额、产值、岗位、租金和薪酬等冲突或未核验数字。",
+      "不采用纪要中与用户记忆冲突的九成以上等性能数字。"
+    ],
+    "wording_strength_changes": [
+      "把国产芯片崛起从情绪判断改成芯片、整机、软件适配与企业运维的工程链。",
+      "把数据要素从园区介绍改成企业资料来源、版本、权限和安全的日常判断。",
+      "把OPC从工具能力改成组织专业协作并守住客户结果。"
+    ],
+    "pending_user_confirmations": [
+      "用户确认约八成是否与本人现场记忆完全一致，录制时不得改成统一性能结论。",
+      "用户确认当前正文是否符合本人真实说话方式，并完成真人朗读后再进入生产。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 9,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}

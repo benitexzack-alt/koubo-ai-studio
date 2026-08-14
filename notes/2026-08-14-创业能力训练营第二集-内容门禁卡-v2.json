@@ -1,0 +1,158 @@
+{
+  "schema_version": 6,
+  "task_id": "task-20260814T044704Z-429bd581",
+  "target_stage": "draft",
+  "required_rules": [
+    {"path": "<personal-kb>/00_规范与配置/12_公开内容生产大脑硬门禁.md", "read": true},
+    {"path": "<personal-kb>/03_最佳实践/抖音口播内容与DOU+投放边界.md", "read": true},
+    {"path": "<project-root>/knowledge/06-选题脚本与风格规范.md", "read": true},
+    {"path": "<project-root>/knowledge/14-超哥口播声音档案.md", "read": true},
+    {"path": "<project-root>/knowledge/15-抖音精选内容质量验收.md", "read": true},
+    {"path": "<project-root>/knowledge/21-超哥口播语言与重复硬门禁.json", "read": true},
+    {"path": "<skill-root>/references/public-content-gate.md", "read": true}
+  ],
+  "sources": [
+    {
+      "id": "source-training-camp-fact-base",
+      "title": "训练营完整总结与第二集事实底座",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": ["viewpoint", "draft-evidence"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/个人AI事业/2026-08_创业能力提升训练营/2026-08-14_训练营阶段总结与第二集事实底座.md",
+      "verification_status": "已按用户确认锁定8月14日实际收束，并完成跨课程事实分层",
+      "canonical_ref": "local:training-camp:episode2-fact-base-20260814",
+      "evidence_ids": ["evidence:training-camp:cross-course-mechanism", "evidence:training-camp:five-project-sheets", "evidence:pengchao:local-ai-delivery-position"]
+    },
+    {
+      "id": "source-hygon-lanzhou-fact-lock",
+      "title": "国产AI硬件接力赛与兰州节点证据事实锁",
+      "completeness": "complete",
+      "acquisition": "local-file-with-official-links",
+      "intended_uses": ["viewpoint", "draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-13-国产AI硬件接力赛与兰州节点-证据与事实锁-v4.md",
+      "verification_status": "已区分用户确认的约八成讲解、海光官方软件栈信息、兰州产线可见事实和禁止外推项",
+      "canonical_ref": "local:fact-lock:hygon-lanzhou-v4",
+      "evidence_ids": ["evidence:onsite:hygon-dcu-a100-about-80-user-confirmed", "evidence:hygon:2025-half-year-dcu-software-stack", "evidence:lanzhou:server-line-visible-process", "evidence:lanzhou:local-entry-points"]
+    },
+    {
+      "id": "source-data-element-park-note",
+      "title": "企业AI落地与数据要素园参访纪要",
+      "completeness": "complete",
+      "acquisition": "local-file-and-primary-policy-calibration",
+      "intended_uses": ["viewpoint", "draft-evidence"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/个人AI事业/2026-08_创业能力提升训练营/2026-08-13_企业AI落地与数据要素园参访纪要.md",
+      "verification_status": "已保留数据采集加工权限用途与安全机制，园区名称和投资产值岗位等冲突数字全部排除",
+      "canonical_ref": "local:data-element-park:20260813",
+      "evidence_ids": ["evidence:nda:data-lifecycle-rights-security", "evidence:synthesis:hardware-data-accountable-delivery"]
+    },
+    {
+      "id": "source-source-essence-card-v2",
+      "title": "创业能力训练营第二集源头精髓卡v2",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": ["viewpoint"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-源头精髓卡-v2.json",
+      "verification_status": "机器校验达到ready-for-draft并覆盖8个必须保留节点",
+      "canonical_ref": "local:training-camp:episode2-source-essence-v2",
+      "evidence_ids": ["evidence:audit:episode2-source-essence-v2-ready"]
+    }
+  ],
+  "topic_authorization": {
+    "status": "user-selected",
+    "selected_by": "user",
+    "selection_mode": "explicit-topic-request",
+    "selected_topic": "国产AI的竞争已经从单颗芯片延伸到整机、软件适配、数据和企业交付；企业AI与OPC真正的价值，是把这些能力接进客户业务并对结果负责。",
+    "user_instruction": "用户明确要求在第二集加入海光芯片对标英伟达、完整芯片与产线介绍以及数据要素产业园内容，因为这些都有真实镜头，并要求重新生成一版。",
+    "source_ref": "conversation:2026-08-14:episode2-add-hygon-nvidia-data-park",
+    "confirmed_at": "2026-08-14T12:58:00+08:00",
+    "candidate_only": false
+  },
+  "recent_six": [
+    {"title": "AI在支配你还是你在掌控AI", "date": "2026-08-12", "audience_problem": "使用AI的人不知道自己是在放大判断还是变成廉价执行", "main_claim": "真实领域、可复用资产和对结果负责的能力决定人能否掌控AI", "claim_id": "claim:recent:master-ai-with-domain-assets", "evidence": "账号历史快照", "evidence_ids": ["evidence:published:ai-best-worst-20260812"], "deliverable": "检查AI第一版之后自己补了什么和做了哪些决定", "cta": "回看最近一周的AI使用"},
+    {"title": "兰州50人带电脑学AI本地企业真正缺的是什么", "date": "2026-08-11", "audience_problem": "本地企业想用AI和信创但任务资料验收与兼容要求说不清", "main_claim": "先用四问卡说清任务资料验收和国产环境要求", "claim_id": "claim:recent:training-camp-four-questions", "evidence": "账号历史快照与用户确认稿", "evidence_ids": ["evidence:published:training-camp-episode1-20260811"], "deliverable": "企业AI与信创四问卡", "cta": "拿一项工作过四问"},
+    {"title": "AI在第四次工业革命里站哪一层", "date": "2026-08-10", "audience_problem": "普通人不知道自己在AI产业变化中的现实位置", "main_claim": "普通人的位置在AI与现实之间的调用解释转化和校准", "claim_id": "claim:recent:four-rights-between-ai-and-reality", "evidence": "账号历史快照与用户确认稿", "evidence_ids": ["evidence:published:fourth-industrial-revolution-20260810"], "deliverable": "调用权解释权转化权校准权", "cta": "检查自己掌握哪层能力"},
+    {"title": "AI给普通人最大的公平叫低成本试错", "date": "2026-08-08", "audience_problem": "普通人做AI自媒体急于变现但没有可控实验", "main_claim": "AI首先降低内容和项目试验成本并沉淀账号资产", "claim_id": "claim:recent:ai-content-low-cost-trial", "evidence": "账号历史快照", "evidence_ids": ["evidence:published:ai-selfmedia-lowcost-20260808"], "deliverable": "先做低成本内容实验", "cta": "开始一次内容或项目试验"},
+    {"title": "ChatGPT面世四年生产力革命为什么迟迟没来", "date": "2026-08-04", "audience_problem": "企业把旧任务提速误当成新生产力", "main_claim": "旧任务提速不等于创造新产品新市场和新需求", "claim_id": "claim:recent:speed-is-not-new-value", "evidence": "账号历史快照", "evidence_ids": ["evidence:published:productivity-revolution-20260804"], "deliverable": "区分省工时和新价值", "cta": "检查AI是否创造新结果"},
+    {"title": "学AI赚不到钱普通人做AI创业的真正壁垒", "date": "2026-08-03", "audience_problem": "普通人学了很多工具却没有可交付能力", "main_claim": "AI创业壁垒来自围绕真实内容和项目的持续实践", "claim_id": "claim:recent:ai-practice-barrier", "evidence": "账号历史快照", "evidence_ids": ["evidence:published:ai-practice-barrier-20260803"], "deliverable": "从最近一条内容或项目开始", "cta": "借助AI启动真实实践"}
+  ],
+  "topic": {
+    "audience": "想了解国产AI产业进展，并准备为企业做AI应用或OPC创业的人",
+    "problem": "观众容易把国产AI理解成芯片参数比赛，把企业AI理解成选模型和工具，却看不见整机适配、数据可用和交付责任",
+    "desired_change": "观众从单颗芯片和工具视角，转向检查硬件、数据与责任能否组成一条企业AI交付链",
+    "novel_claim": "国产AI的竞争已经从单颗芯片延伸到整机、软件适配、数据和企业交付；企业AI与OPC真正的价值，是把这些能力接进客户业务并对结果负责。",
+    "claim_id": "claim:domestic-ai-hardware-data-accountable-delivery",
+    "primary_evidence_ids": ["evidence:onsite:hygon-dcu-a100-about-80-user-confirmed", "evidence:hygon:2025-half-year-dcu-software-stack", "evidence:lanzhou:server-line-visible-process", "evidence:nda:data-lifecycle-rights-security", "evidence:synthesis:hardware-data-accountable-delivery"],
+    "difference_from_recent": "第一集只交付任务是否适合开始的四问卡；本条新增海光DCU与A100比较、兰州整机制造与软件栈、数据要素园权责机制，并交付覆盖环境与数据、人工接管和维护的五行项目接入单。",
+    "evidence_proves": "一手现场能证明兰州存在芯片展示、适配中心和服务器制造测试环节；官方与政策材料能证明芯片应用依赖软件栈，数据使用依赖权责与安全安排。",
+    "evidence_does_not_prove": "不能证明海光在所有任务达到英伟达八成，不能证明兰州已经形成成熟产业、稳定销量或订单，也不能证明填写接入单后项目一定成功。",
+    "audience_takeaway": "一张五行企业AI项目接入单：客户结果、AI任务、环境与数据、人工接管、验收维护。",
+    "boundary": "本条是训练营参访后的产业链解释和项目检查工具，不是厂商评测、园区招商、投资建议、就业承诺或OPC成功公式。",
+    "delete_candidates": ["庆阳算力枢纽重复背景", "园区名称和投资产值岗位等高风险数字", "把八成写成统一性能结论", "按日期复述课程", "我不是专家式防御段落"]
+  },
+  "frozen_topic_hits": [
+    {"topic": "训练营第一集四问卡", "usage": "background", "new_evidence": "新增海光芯片、服务器整机与数据要素园两组参访证据", "new_counterexample": "任务可以开始仍不等于硬件数据和维护条件齐全", "conclusion_change": "从开始前判断推进到五行项目接入与交付责任"},
+    {"topic": "学工具不等于会交付", "usage": "background", "new_evidence": "新增芯片进入整机、软件栈、数据权责与运维的完整工程链", "new_counterexample": "模型和硬件都具备仍可能因数据权限与责任缺失无法使用", "conclusion_change": "从持续实践推进到硬件数据责任三道关"}
+  ],
+  "audience_fit": {
+    "account_stage": "调查",
+    "speaker_position": "兰州本地AI实践者和复杂信息翻译者，用本人参训与现场素材讲清产业链，不借用芯片、信创或数据产权专家身份",
+    "first_20s_connection": "前20秒用海光DCU与A100约八成的具体比较、兰州服务器产线和数据园三组真实现场，马上回答国产AI不只是一颗芯片以及企业AI还缺哪几段。",
+    "high_level_material_role": "evidence",
+    "ordinary_scenes": ["企业买了服务器和模型，却发现原有软件接不上，也没人负责长期维护", "企业把合同、客户表和操作规程塞进知识库，却说不清版本、权限和错误接管"],
+    "audience_gain": "观众获得国产AI从芯片到企业的机制、识别园区入口与真实订单的判断，以及一张可填写的五行项目接入单",
+    "authority_boundary": "性能比例只按具体讲解归因，信创适配、数据安全和法律事项必须由具备责任能力的团队核验与承担",
+    "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "account_data_preflight": {"receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260814T044704Z-429bd581.json", "receipt_sha256": "8bac45b1b33dde00b0448649960b026bbecb8d68b2b6b359f146791ed392907d", "read": true},
+    "account_data_application": {
+      "account_baseline_evidence": {"metric": "weightedMetrics.fiveSecondCompletionRate", "value": 32.0918, "use": "把全账号五秒进入能力作为历史基线，开头第一句直接给芯片比较，不先介绍活动背景。"},
+      "recent_work_evidence": {"video_key": "6d3fd1032f7ff19f5bb4569a", "metric": "metrics.fiveSecondCompletionRate", "value": 38.48, "use": "第一集会议现场前五秒表现高于历史基线，本条继续用真实现场，但在前20秒加入国产芯片到企业的明确答案。"},
+      "planned_change": "前4秒交付海光DCU与A100的具体比较，15秒内出现兰州产线和数据园，20秒内说出国产AI不只是一颗芯片；中段不再铺活动流程。",
+      "causal_claim": "none"
+    },
+    "learning_card_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+    "learning_card_sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "newer_content_acknowledged": true,
+    "newer_content_ids": ["2026-08-11-training-camp-episode-1", "2026-08-12-ai-best-worst"],
+    "newer_content_metric_status": "本轮回执已包含8月11日和12日作品的最近成功快照，但回执为历史过期状态，只作描述性比较，不冒充当前实时数据。",
+    "applied_lesson_ids": ["lesson:opening:title-answer-before-background", "lesson:hook:concrete-conflict-scene-object", "lesson:duration:value-order-before-shortening", "lesson:metrics:separate-early-and-mature-windows"],
+    "opening_plan": {"answer_or_conflict_by_second": 4, "proof_or_real_scene_by_second": 10, "audience_relevance_by_second": 18, "first_viewer_value_by_second": 28, "title_answer_by_second": 15, "delayed_payoff_risk_checked": true},
+    "duration_plan": {"planned_seconds": 250, "single_core_problem": "国产AI从芯片进入企业还缺哪几段，想做企业AI和OPC的人应该负责什么", "justification": "正文需要依次解释约八成边界、芯片到整机与软件栈、数据要素可用条件、OPC责任和五行项目接入单；1233个非空白字符按本人正常语速约四分钟，价值顺序优先于机械压短。", "evidence_based_justification": true},
+    "metric_plan": {"primary_metric": "five_second_completion_rate", "secondary_metrics": ["average_watch_seconds", "favorites", "profile_visits", "shares"], "observation_windows": ["early-within-3h", "24h", "72h", "7d"], "hypothesis": "若用海光与A100具体比较和兰州真实产线在前20秒回答标题，并用五行卡承接收藏，五秒进入和收藏可能高于本账号历史同类基线；若两项均无改善，就否定这种数字入口与工具交付组合。", "early_vs_mature_windows_acknowledged": true}
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {"target": "primary", "script_evidence": "正文把约八成从参数胜负转成芯片、整机、软件栈、数据和维护的完整链条，最后交付五行项目接入单供企业AI和OPC项目逐行填写。", "viewer_test": "观众能用自己的项目回答客户结果、AI任务、环境与数据、人工接管和验收维护。"},
+    "surprise": {"target": "supporting", "script_evidence": "反差来自海光与A100的比较发生在兰州服务器产线旁边，但正文马上说明企业最终比的是稳定运行、软件接入、数据与维护。", "viewer_test": "删掉海光、英伟达和兰州名称后，芯片参数不能替企业应用作答的反差仍成立。"},
+    "expression": {"target": "primary", "script_evidence": "正文固定为芯片比较、整机与软件栈、数据要素、三道关、OPC责任和五行接入单六段，每段只解决一个问题。", "viewer_test": "陌生观众能用一句话复述国产AI进入企业还要经过整机、数据和有人负责的交付。"},
+    "resonance": {"target": "supporting", "script_evidence": "共鸣来自本人连续参训后在兰州真实看见芯片、服务器和数据园，却仍把判断收回到客户是否愿意使用与验收。", "viewer_test": "正在学AI或准备OPC创业的人能认出自己也可能有工具和演示，却缺环境数据与维护责任。"},
+    "integrity_boundary": "不把约八成写成统一性能结论，不用园区投资产值岗位制造机会感，不编造订单客户和本人成功案例，不用焦虑或收益承诺制造感染力。",
+    "review_status": "self-reviewed",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {"name": "国产AI进入企业的三道关", "problem": "观众只比较芯片和模型，却不知道一套AI能力为什么仍可能进不了企业", "bottleneck": "整机与软件适配、合法可用的数据、项目责任彼此断开，任何一段缺失都会让能力停在展台或演示", "mechanism": "先检查设备与软件环境能否稳定运行，再检查数据来源质量权限和用途，最后明确客户结果、人工接管、验收与维护责任", "observable_change": "项目从芯片参数和工具演示变成有运行环境、数据条件、责任人和验收办法的接入说明", "evidence": "海光官方软件栈信息、兰州服务器产线现场、国家数据局权责安全材料与训练营企业AI课程", "evidence_proves": "能证明企业应用需要芯片之外的工程与治理条件", "evidence_does_not_prove": "不能证明具体性能比例、项目成功、本地销量或成熟产业", "audience_relevance": "想做企业AI与OPC的人可判断自己缺的是设备适配、数据还是交付责任", "boundary": "三道关是本稿检查框架，不是官方分类；高责任专业环节由相应团队承担"},
+    {"name": "五行企业AI项目接入单", "problem": "观众听懂产业链后仍不知道怎样检查手里的真实项目", "bottleneck": "常见方案写满模型和功能，却没有客户结果、环境与数据、人工接管和验收维护", "mechanism": "用客户结果、AI任务、环境与数据、人工接管、验收维护五行建立项目缺口清单", "observable_change": "第一行缺失时停止把想法称为项目，后三行缺失时明确仍处于演示或待补条件状态", "evidence": "训练营跨课程五张表、两次参访与第一集之后的新增交付要求", "evidence_proves": "能帮助暴露项目进入企业前的条件缺口", "evidence_does_not_prove": "不能替代签约、专业评审、真实试用、验收和商业结果", "audience_relevance": "观众可以保存一张卡，对照正在谈的企业AI或OPC项目", "boundary": "这是本人总结的检查工具，不是官方标准、投资建议或收益保证"}
+  ],
+  "voice": {"profile_path": "<project-root>/knowledge/14-超哥口播声音档案.md", "read": true},
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v2.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "copy_review": {"required": true, "report_path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v2.copy-review.json"},
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": false,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "performance_feedback_recheck_passed": true,
+    "compliance_passed": true,
+    "user_script_approved": false,
+    "phrase_exemptions": [],
+    "ai_tone_exemptions": [],
+    "anchor_exemptions": []
+  }
+}
