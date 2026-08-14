@@ -94,7 +94,7 @@
 
 ## recent_six
 
-至少六条：
+至少六条。每条必须绑定真实正文、当前 SHA-256 和正文起止标记；标题、摘要或账号指标不能替代正文：
 
 ```json
 {
@@ -106,9 +106,15 @@
   "evidence": "核心证据",
   "evidence_ids": ["evidence:来源域:稳定证据标识"],
   "deliverable": "观众带走什么",
-  "cta": "唯一行动引导"
+  "cta": "唯一行动引导",
+  "content_path": "<project-root>/notes/真实确认稿.md",
+  "sha256": "64位小写SHA-256",
+  "content_start_marker": "## 口播正文开始",
+  "content_end_marker": "## 口播正文结束"
 }
 ```
+
+六条 `content_path` 必须各不相同。文件缺失、哈希过期、正文标记不存在或用同一篇稿件冒充多条时，状态为 `blocked`。
 
 ## topic
 
@@ -170,7 +176,7 @@
 
 ## brief_contract
 
-当任一来源的 `intended_uses` 包含 `talking-structure` 时，本对象必填。它锁定用户原始任务，防止事实纠偏、参考资料或质量包装擅自改写主题。
+所有公开内容进入 `outline`、`draft` 或 `production` 前，本对象都必填；同时必须有至少一条完整来源登记为 `talking-structure`。它锁定用户原始任务，防止事实纠偏、参考资料、账号指标或现场时间线擅自改写主题。
 
 ```json
 {
@@ -179,6 +185,26 @@
   "reference_forbidden_role": "参考内容明确不承担什么作用",
   "required_arc": ["至少三段用户要求的故事线"],
   "forbidden_reframes": ["至少两个禁止擅自改写的其他主题"],
+  "semantic_contract": {
+    "audience_conflict": "目标观众正在经历的具体矛盾",
+    "core_judgment": "本条唯一核心判断",
+    "training_interpretation": "活动、课程或参访最终说明了什么",
+    "ordinary_person_value": "观众看完增加的判断或行动能力",
+    "chronology_is_not_main_arc": true,
+    "material_role_map": [
+      {
+        "material": "现场材料名称",
+        "role": "hook-evidence | mechanism-evidence | local-proof | boundary | action-support",
+        "supports": "它具体证明哪一条判断"
+      }
+    ],
+    "alignment_refs": {
+      "audience_conflict": "写稿后绑定正文真实连续短句",
+      "core_judgment": "写稿后绑定正文真实连续短句",
+      "training_interpretation": "写稿后绑定正文真实连续短句",
+      "ordinary_person_value": "写稿后绑定正文真实连续短句"
+    }
+  },
   "alignment_evidence": "成稿哪些段落逐项兑现了用户要求",
   "status": "locked"
 }
@@ -187,6 +213,9 @@
 固定规则：
 
 - `status` 必须为 `locked`；
+- `semantic_contract` 四项判断必须具体，现场材料只能承担证据、例子、边界或行动支撑，不能承担主主题或时间线驱动；
+- 写出正文后，四项 `alignment_refs` 必须逐字存在于当前正文，且观众矛盾必须出现在前 320 个字符内；
+- 开头出现“隔一天又去了”“第一天、第二天”等参访时间线时直接阻断；
 - 事实纠偏和风险边界默认只作护栏，不能自动升级为主题；
 - 精选质量目标只能验收既定主题，不能反向发明新主题；
 - 缺失、占位或故事线不足时，状态必须为 `blocked`。

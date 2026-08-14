@@ -30,6 +30,20 @@ BRIEF_CONTRACT_FIELDS = (
     "reference_forbidden_role",
     "alignment_evidence",
 )
+SEMANTIC_CONTRACT_FIELDS = (
+    "audience_conflict",
+    "core_judgment",
+    "training_interpretation",
+    "ordinary_person_value",
+)
+SEMANTIC_ALIGNMENT_KEYS = SEMANTIC_CONTRACT_FIELDS
+VALID_MATERIAL_ROLES = {
+    "hook-evidence",
+    "mechanism-evidence",
+    "local-proof",
+    "boundary",
+    "action-support",
+}
 MECHANISM_FIELDS = (
     "name",
     "problem",
@@ -71,6 +85,7 @@ VALID_SELECTION_MODES = {
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 RECENT_FIELDS = (
     "title",
+    "date",
     "audience_problem",
     "main_claim",
     "evidence",
@@ -151,7 +166,7 @@ FROZEN_PATTERNS = (
     ),
 )
 PROJECT_STYLE_GATE_PATH = "knowledge/21-超哥口播语言与重复硬门禁.json"
-VALIDATOR_VERSION = "content-brain-gate/1.2"
+VALIDATOR_VERSION = "content-brain-gate/1.3"
 
 
 def nonempty(value: Any) -> bool:
@@ -368,6 +383,7 @@ class GateValidator:
         if not isinstance(recent, list) or len(recent) < 6:
             self.error("recent_six 至少需要最近六条真实内容")
             return
+        resolved_paths: set[Path] = set()
         for index, item in enumerate(recent[:6]):
             if not isinstance(item, dict):
                 self.error(f"recent_six[{index}] 必须是对象")
@@ -380,8 +396,28 @@ class GateValidator:
             evidence_ids = item.get("evidence_ids")
             if not isinstance(evidence_ids, list) or not all(nonempty(value) for value in evidence_ids):
                 self.error(f"recent_six[{index}].evidence_ids 必须是仅含非空字符串的数组")
+            content_path = resolve_input_path(item.get("content_path"), self.card_path)
+            if content_path is None or not content_path.is_file() or content_path.stat().st_size == 0:
+                self.error(f"recent_six[{index}].content_path 必须指向真实非空正文")
+                continue
+            resolved = content_path.resolve()
+            if resolved in resolved_paths:
+                self.error(f"recent_six[{index}].content_path 与其他最近内容重复，不能用同一篇正文冒充六条")
+            resolved_paths.add(resolved)
+            if item.get("sha256") != file_sha256(content_path):
+                self.error(f"recent_six[{index}].sha256 与当前正文不一致")
+            start_marker = item.get("content_start_marker")
+            end_marker = item.get("content_end_marker")
+            if not nonempty(start_marker) or not nonempty(end_marker):
+                self.error(f"recent_six[{index}] 必须同时提供正文起止标记")
+                continue
+            body = content_path.read_text(encoding="utf-8")
+            start = body.find(start_marker)
+            end = body.find(end_marker, start + len(start_marker)) if start >= 0 else -1
+            if start < 0 or end < 0:
+                self.error(f"recent_six[{index}] 的正文起止标记未在真实文件中找到")
         if not any(error.startswith("recent_six") for error in self.errors):
-            self.pass_check("最近六条主张、证据、交付物和行动引导已建台账")
+            self.pass_check("最近六条真实正文、哈希、主张、证据和行动引导已绑定")
 
     def validate_topic_authorization(self, stage: str) -> None:
         if stage == "outline":
@@ -447,7 +483,7 @@ class GateValidator:
         if not any(error.startswith("candidate_generation") for error in self.errors):
             self.pass_check("候选生成已与选题验证分离，并完成五项验证记录")
 
-    def validate_brief_contract(self) -> None:
+    def validate_brief_contract(self, stage: str) -> None:
         sources = self.card.get("sources")
         uses_reference_structure = isinstance(sources, list) and any(
             isinstance(source, dict)
@@ -455,15 +491,17 @@ class GateValidator:
             and "talking-structure" in source["intended_uses"]
             for source in sources
         )
-        if not uses_reference_structure:
-            return
-
         contract = self.card.get("brief_contract")
         if not isinstance(contract, dict):
             self.error(
-                "brief_contract 必须是对象；使用参考内容的 Talking 结构前必须锁定用户目标和参考内容角色"
+                "brief_contract 必须是对象；公开内容进入提纲前必须锁定用户目标、材料角色和故事线"
             )
             return
+        if not uses_reference_structure:
+            self.error(
+                "sources 必须至少登记一条 talking-structure 完整来源；"
+                "不得只读取事实材料和账号指标后直接写公开口播"
+            )
         for field in BRIEF_CONTRACT_FIELDS:
             value = contract.get(field)
             if not nonempty(value):
@@ -486,8 +524,75 @@ class GateValidator:
         if contract.get("status") != "locked":
             self.error("brief_contract.status 必须为 locked，未锁定用户原始意图时不得写稿")
 
+        semantic = contract.get("semantic_contract")
+        if not isinstance(semantic, dict):
+            self.error("brief_contract.semantic_contract 必须是对象，用于锁定观众矛盾、核心判断和普通人价值")
+        else:
+            for field in SEMANTIC_CONTRACT_FIELDS:
+                value = semantic.get(field)
+                if not nonempty(value) or len(value.strip()) < 20:
+                    self.error(f"brief_contract.semantic_contract.{field} 必须是至少20字的具体判断")
+            if semantic.get("chronology_is_not_main_arc") is not True:
+                self.error("brief_contract.semantic_contract.chronology_is_not_main_arc 必须为 true")
+            material_roles = semantic.get("material_role_map")
+            if not isinstance(material_roles, list) or len(material_roles) < 3:
+                self.error("brief_contract.semantic_contract.material_role_map 至少需要三项材料角色")
+            else:
+                for index, item in enumerate(material_roles):
+                    label = f"brief_contract.semantic_contract.material_role_map[{index}]"
+                    if not isinstance(item, dict):
+                        self.error(f"{label} 必须是对象")
+                        continue
+                    if not nonempty(item.get("material")):
+                        self.error(f"{label}.material 不能为空")
+                    if item.get("role") not in VALID_MATERIAL_ROLES:
+                        self.error(f"{label}.role 不能把现场材料设为主主题或时间线驱动")
+                    supports = item.get("supports")
+                    if not nonempty(supports) or len(supports.strip()) < 12:
+                        self.error(f"{label}.supports 必须说明材料在证明什么")
+            draft = self.card.get("draft")
+            has_written_draft = isinstance(draft, dict) and nonempty(draft.get("path"))
+            if stage == "production" or has_written_draft:
+                refs = semantic.get("alignment_refs")
+                if not isinstance(refs, dict):
+                    self.error("brief_contract.semantic_contract.alignment_refs 必须绑定当前正文真实句子")
+                else:
+                    for key in SEMANTIC_ALIGNMENT_KEYS:
+                        ref = refs.get(key)
+                        if not nonempty(ref) or len(ref.strip()) < 8:
+                            self.error(f"brief_contract.semantic_contract.alignment_refs.{key} 不能为空")
+
         if not any(error.startswith("brief_contract") for error in self.errors):
-            self.pass_check("参考内容角色、用户原始目标、故事线和禁止改写主题已锁定")
+            self.pass_check("参考结构、用户原始目标、材料角色、故事线和语义合同已锁定")
+
+    def validate_semantic_alignment(self, text: str, stage: str) -> None:
+        if stage not in {"draft", "production"}:
+            return
+        contract = self.card.get("brief_contract")
+        semantic = contract.get("semantic_contract") if isinstance(contract, dict) else None
+        refs = semantic.get("alignment_refs") if isinstance(semantic, dict) else None
+        if not isinstance(refs, dict):
+            return
+        error_count_before = len(self.errors)
+        for key in SEMANTIC_ALIGNMENT_KEYS:
+            ref = refs.get(key)
+            if nonempty(ref) and ref not in text:
+                self.error(f"brief_contract.semantic_contract.alignment_refs.{key} 未在当前正文中找到")
+        opening_ref = refs.get("audience_conflict")
+        if nonempty(opening_ref):
+            opening_position = text.find(opening_ref)
+            if opening_position < 0 or opening_position > 320:
+                self.error("观众矛盾必须在正文前320个字符内出现，不能先写活动背景或参访流水账")
+        opening = text[:360]
+        diary_patterns = (
+            r"隔了.{0,8}(?:天|一段时间).{0,16}(?:又|再).{0,8}(?:去|参观|来到)",
+            r"第一天.{0,120}第二天",
+            r"先去了.{0,120}(?:又|再)去了",
+        )
+        if any(re.search(pattern, opening, re.DOTALL) for pattern in diary_patterns):
+            self.error("正文开头命中参访时间线：现场材料必须服务观众问题，不能用行程顺序组织开场")
+        if len(self.errors) == error_count_before:
+            self.pass_check("观众矛盾、核心判断、培训解读和普通人价值已绑定当前正文")
 
     def validate_topic(self) -> None:
         topic = self.card.get("topic")
@@ -1186,6 +1291,7 @@ class GateValidator:
                 assert resolved_draft_path is not None
                 draft_text = self.extract_draft_text(resolved_draft_path, draft)
                 if draft_text is not None:
+                    self.validate_semantic_alignment(draft_text, stage)
                     self.scan_frozen_phrases(draft_text, draft)
                     self.scan_project_style_gate(draft_text, resolved_draft_path, draft)
                 self.validate_copy_review(resolved_draft_path, draft)
@@ -1606,7 +1712,7 @@ class GateValidator:
         stage = self.validate_header()
         self.validate_rules()
         self.validate_sources()
-        self.validate_brief_contract()
+        self.validate_brief_contract(stage)
         self.validate_recent_six()
         self.validate_candidate_generation()
         self.validate_topic()

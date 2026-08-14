@@ -113,6 +113,25 @@ class ContentGateRegressionTests(unittest.TestCase):
             "required": True,
             "report_path": str(report_path),
         }
+        text = draft_path.read_text(encoding="utf-8")
+        marker = card["draft"].get("content_start_marker")
+        if isinstance(marker, str) and marker in text:
+            text = text.split(marker, 1)[1]
+        first_sentence = next(
+            (
+                line.strip()
+                for line in text.splitlines()
+                if line.strip()
+                and not line.lstrip().startswith("#")
+                and not line.lstrip().startswith("<!--")
+            ),
+            "当前正文用于语义绑定回归测试。",
+        )
+        semantic = card["brief_contract"]["semantic_contract"]
+        semantic["alignment_refs"] = {
+            key: first_sentence
+            for key in MODULE.SEMANTIC_ALIGNMENT_KEYS
+        }
         return report_path
 
     def test_old_waic_sample_still_fails(self) -> None:
@@ -243,6 +262,48 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertEqual(result["status"], "blocked")
         self.assertTrue(any("forbidden_reframes" in error for error in result["errors"]))
         self.assertTrue(any("status 必须为 locked" in error for error in result["errors"]))
+
+    def test_public_outline_requires_registered_talking_structure(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["sources"][0]["intended_uses"] = ["viewpoint"]
+
+        result = self.validate(card, "talking-structure-missing.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("talking-structure" in error for error in result["errors"]))
+
+    def test_recent_six_requires_real_unique_content_and_current_hash(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        card["recent_six"][0].pop("content_path")
+        card["recent_six"][1]["content_path"] = card["recent_six"][2]["content_path"]
+        card["recent_six"][3]["sha256"] = "0" * 64
+
+        result = self.validate(card, "recent-six-real-content-required.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("content_path 必须指向真实非空正文" in error for error in result["errors"]))
+        self.assertTrue(any("同一篇正文冒充六条" in error for error in result["errors"]))
+        self.assertTrue(any("sha256 与当前正文不一致" in error for error in result["errors"]))
+
+    def test_semantic_contract_is_required_before_public_drafting(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        del card["brief_contract"]["semantic_contract"]
+
+        result = self.validate(card, "semantic-contract-missing.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("semantic_contract 必须是对象" in error for error in result["errors"]))
+
+    def test_current_training_episode_two_failure_is_blocked_by_new_contracts(self) -> None:
+        project_root = SKILL_ROOT.parent.parent
+        card_path = project_root / "notes" / "2026-08-14-创业能力训练营第二集-内容门禁卡-v2.json"
+        card = json.loads(card_path.read_text(encoding="utf-8"))
+
+        result = MODULE.GateValidator(card, card_path).run()
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("brief_contract 必须是对象" in error for error in result["errors"]))
+        self.assertTrue(any("recent_six[0].content_path" in error for error in result["errors"]))
 
     def test_section_markers_ignore_audit_appendix(self) -> None:
         card = load_fixture("waic-new-pass.json")
