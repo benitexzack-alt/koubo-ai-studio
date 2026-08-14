@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260814T033743Z-7f05bf07",
+  "status": "passed",
+  "reviewed_at": "2026-08-14T11:48:16+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v1.md",
+    "sha256": "de01c7d93175da85ca8a2606a40e290fe15d41d9344680af3f30f89ba6f882c6"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "正文没有念来源口径、事实锁或‘我不是专家’式辩解；开头直接进入企业智能客服的客户问题，中段把课程内容落到资料权限、流程、生产测试、知识产权和人工责任，活动日期与边界只在事实锁中完整说明。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "从8月10日到14日，课程从信创、知识库一路讲到企业AI和AIGC；参访看了服务器生产线、适配生态和数据要素园。",
+        "risk_level": "medium",
+        "reason": "连续课程名可能让观众误以为要进入活动流水账。",
+        "candidates": {
+          "conservative": "五天里，我们听了课程，也去了产线和园区。",
+          "direct": "五天的课程和参访，看起来很散，实际都在补同一条企业AI交付链。",
+          "vivid": "从课堂走到服务器产线，我发现大家讲的其实是同一件事：AI怎么进企业，最后谁对结果负责。"
+        },
+        "fact_difference": "三个候选都不新增事实；保守版会损失课程与参访范围，生动版会增加本人发现式情绪。",
+        "recommendation": "保留当前版本，并用下一句立即收束到同一条交付线，既兑现完整训练范围，也不展开课程盘点。"
+      },
+      {
+        "original": "客户愿意为什么结果付钱？AI具体负责现有流程里的哪一步？它需要哪些数据，谁有权提供？答错、跑偏或者系统中断时，谁能接管？最后怎么验收，交付以后谁来维护？",
+        "risk_level": "medium",
+        "reason": "连续五问信息密度高，若画面没有同一张卡片承接，口播容易像念清单。",
+        "candidates": {
+          "conservative": "先把客户结果、AI任务、数据权限、人工接管和验收维护写清楚。",
+          "direct": "拿一张纸写五行：客户结果、AI任务、数据权限、人工接管、验收维护。",
+          "vivid": "把工具名全部遮住，只看客户、数据、接管和验收，这个项目还站不站得住？"
+        },
+        "fact_difference": "三个候选都不改变事实；保守版和直接版会减少每项检查的具体含义，生动版会弱化交付动作。",
+        "recommendation": "保留当前五问；拍摄和剪辑时用一张持续出现的项目交付单承接，不拆成五页信息卡。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "将完整课程名长列表压缩为课程与参访两类范围，后文仍逐项解释真实机制。",
+      "将‘这恰恰是’改为‘对我来说’，删除通用强调词。",
+      "将‘留的不是课程清单’改为直接交付‘项目交付单’，减少否定式转场。"
+    ],
+    "pending_user_confirmations": [
+      "用户确认当前正文是否符合本人真实说话方式与个人事业边界。",
+      "用户完成当前正文真人朗读或提供录制文件后，再补制作阶段人工证据。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 9,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
