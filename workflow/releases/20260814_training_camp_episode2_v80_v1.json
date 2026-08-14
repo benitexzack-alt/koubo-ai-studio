@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "releaseId": "20260814_training_camp_episode2_v80_v1",
-  "status": "ready-for-user-review",
+  "status": "verified",
   "videoId": "TRAINING_CAMP_EP2_20260814_talk01",
   "baselineId": "koubo-formal-16x9-v1",
   "productionProfile": {
@@ -89,15 +89,15 @@
       "evidence": "32个全分辨率风险帧已检查，当前未见明显卡片裁切、主要挡脸、压字幕、现场素材空白或结尾缺失。"
     },
     "cameraMotionReview": {
-      "status": "machine-passed-user-pending-full-watch",
-      "evidence": "数字运镜按32个语义事件进入；前41秒已获用户确认，完整365.9秒正式片仍待正常播放确认。"
+      "status": "passed",
+      "evidence": "数字运镜按32个语义事件进入；用户于2026-08-15明确确认已完整观看365.9秒正式片并通过。"
     },
     "soundEffectAudibility": {
-      "status": "preview-user-approved-full-video-pending",
+      "status": "passed",
       "cueCount": 32,
       "distinctSourceCount": 23,
       "maximumSyncErrorFrames": 2,
-      "evidence": "32个主视觉事件逐一绑定本地白名单音效；用户明确确认前41秒有音效版并授权正式渲染，完整片听感仍待确认。"
+      "evidence": "32个主视觉事件逐一绑定本地白名单音效；用户先确认41秒有音效预览，后于2026-08-15明确确认已完整观看正式片并通过。"
     }
   },
   "upgradeDecisions": [
@@ -120,11 +120,11 @@
   "userReview": {
     "previewApproved": true,
     "directFinalAuthorized": true,
-    "fullWatchConfirmed": false,
-    "confirmedAt": null,
-    "reviewedAt": "2026-08-14",
-    "reviewOutcome": "awaiting-full-watch",
-    "notes": "用户已确认41秒有音效预览并授权正式渲染；完整365.9秒正式片尚待用户从头到尾正常播放确认。"
+    "fullWatchConfirmed": true,
+    "confirmedAt": "2026-08-15T00:24:40+08:00",
+    "reviewedAt": "2026-08-15",
+    "reviewOutcome": "passed",
+    "notes": "用户明确回复成片完整观看通过，并确认作品已经发布。"
   },
   "deliveryPackage": {
     "status": "ready-for-delivery",
@@ -150,10 +150,25 @@
     "copyReview": "notes/2026-08-14-创业能力训练营第二集-发布包装-v1.copy-review.json"
   },
   "publish": {
-    "status": "not-published",
+    "status": "published-user-confirmed",
     "platform": "抖音",
     "aiContentDisclosureRequired": false,
+    "publishedAt": null,
+    "publishedAtEvidence": "用户于2026-08-15确认作品已经发布；平台精确发布时间、作品ID和链接等待自动抓取后回填。",
+    "platformWorkId": null,
+    "publicUrl": null,
+    "metricsStatus": "pending-auto-capture",
+    "metrics": null,
+    "observationWindows": ["early", "24h", "72h", "7d"],
+    "autoCapture": {
+      "status": "degraded-waiting-next-scheduled-run",
+      "schedule": ["08:00", "12:00", "16:00", "20:00", "22:00"],
+      "lastSuccessfulAt": "2026-08-14T08:00:27+08:00",
+      "lastCheckedAt": "2026-08-14T22:00:15+08:00",
+      "lastError": "创作者中心首页未找到可核验的粉丝数",
+      "nextScheduledRun": "2026-08-15T08:00:00+08:00"
+    },
     "releasePackaging": "notes/2026-08-14-创业能力训练营第二集-发布包装-v1.md",
-    "nextDecision": "先由用户完整观看正式片；通过后再按客户端当日声明选项和音乐授权人工复核后发布，并按早期、24小时、72小时和7天窗口回填数据。"
+    "nextDecision": "等待抖音知识中台取得官方账号快照并精确绑定本条作品；分别在早期、24小时、72小时和7天窗口复盘，不把早期数据当终值。"
   }
 }
