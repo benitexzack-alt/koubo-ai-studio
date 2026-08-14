@@ -113,6 +113,11 @@ import {
   TRAINING_CAMP_V80_DURATION_IN_FRAMES,
 } from './TrainingCampV80Talk16x9';
 import {
+  TrainingCampEpisode2V80Talk16x9NoSfx,
+  TrainingCampEpisode2V80Talk16x9WithSfx,
+  TRAINING_CAMP_EP2_V80_DURATION_IN_FRAMES,
+} from './TrainingCampEpisode2V80Talk16x9';
+import {
   BestWorstV8PrimitivePreview16x9,
   BEST_WORST_V8_PRIMITIVE_PREVIEW_DURATION_IN_FRAMES,
 } from './BestWorstV8PrimitivePreview16x9';
@@ -203,6 +208,22 @@ export const RemotionRoot: React.FC = () => {
           height={1080}
           fps={30}
           durationInFrames={TRAINING_CAMP_V80_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="TrainingCampEpisode2-16x9-V80-WithSfx"
+          component={TrainingCampEpisode2V80Talk16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={TRAINING_CAMP_EP2_V80_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="TrainingCampEpisode2-16x9-V80-NoSfx"
+          component={TrainingCampEpisode2V80Talk16x9NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={TRAINING_CAMP_EP2_V80_DURATION_IN_FRAMES}
         />
         <Composition
           id="AICognitivePosition16x9-V80-WithSfx"

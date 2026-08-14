@@ -1,0 +1,2211 @@
+{
+  "schemaVersion": 4,
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required"
+  },
+  "videoId": "TRAINING_CAMP_EP2_20260814_talk01",
+  "videoTitle": "国产AI芯片，现在到底追到英伟达哪一步了？",
+  "sourceVideo": "source/20260814_training_camp_ep2/TRAINING_CAMP_EP2_talk01_16x9.MOV",
+  "transcript": "edit/transcripts/20260814_training_camp_ep2/TRAINING_CAMP_EP2_talk01.cleaned.v1.json",
+  "bilingualCaptions": "remotion/public/data/TRAINING_CAMP_EP2_talk01.bilingual.v1.json",
+  "baselineId": "koubo-formal-16x9-v1",
+  "styleReferenceIds": [
+    "v8-user-confirmed-default-20260811",
+    "v8-speaker-first-continuous-semantics",
+    "training-camp-episode2-user-approved-real-media"
+  ],
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "previewCoverage": [
+    "hook",
+    "complex-overlay",
+    "cta",
+    "full-screen-asset",
+    "speaker-overlay",
+    "media-fullscreen",
+    "progressive-process",
+    "source-evidence",
+    "hero-emphasis",
+    "sfx-ab"
+  ],
+  "editPolicy": "用户确认全部候选视频并提供一条连续正式口播；完整保留365.8秒口播，不删句、不重排。现场视频只作短时辅助，全部静音，不循环顶替不同语义。",
+  "assetCoverage": {
+    "approvedOriginalVideoItems": 22,
+    "assignedOriginalVideoItems": 22,
+    "generatedVideoItems": 0,
+    "generatedStillItems": 0,
+    "allRequiredClaimsCovered": true,
+    "note": "13段信创制造、3段训练营、6段永新国信数据要素产业园素材均为用户提供或已确认真实素材；无需AI视频或生图。"
+  },
+  "layers": [
+    {
+      "id": "camp2-001-statement",
+      "start": 0,
+      "end": 4,
+      "spokenLine": "国产AI芯片追到哪一步",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "statement",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v001",
+      "zone": "left-safe",
+      "title": "国产AI芯片追到哪一步",
+      "detail": "从真实产品、服务器和应用生态来判断。",
+      "items": [
+        "国产AI芯片",
+        "英伟达"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/direct-statement"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v001",
+        "enterAt": 0,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "camp2-sfx-001",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "statement",
+        "title": "国产AI芯片追到哪一步",
+        "detail": "从真实产品、服务器和应用生态来判断。",
+        "items": [
+          "国产AI芯片",
+          "英伟达"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 2
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "direct-statement",
+        "coverageRatio": 0.28,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-002-real-media",
+      "start": 4,
+      "end": 10.5,
+      "spokenLine": "训练营最后一天",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v002",
+      "zone": "full-screen",
+      "title": "训练营最后一天",
+      "detail": "把第一集留下的问题，用五天课程和两次参访来回答。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/training/B01.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v002",
+        "enterAt": 4,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "camp2-sfx-002",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "训练营最后一天",
+        "detail": "把第一集留下的问题，用五天课程和两次参访来回答。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/training/B01.mp4",
+            "durationSeconds": 6.5
+          }
+        ],
+        "disclosure": "创业能力提升训练营 · 现场资料",
+        "badge": "真实现场 · 辅助画面",
+        "mediaScale": 1.03
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 7.25
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "annotated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-003-real-media",
+      "start": 10.5,
+      "end": 19,
+      "spokenLine": "第一站 · 兰州市信创产业园",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v003",
+      "zone": "full-screen",
+      "title": "第一站 · 兰州市信创产业园",
+      "detail": "参访甘肃省信创适配基地和制造测试现场。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/manufacturing/A01.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v003",
+        "enterAt": 10.5,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "camp2-sfx-003",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "第一站 · 兰州市信创产业园",
+        "detail": "参访甘肃省信创适配基地和制造测试现场。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/manufacturing/A01.mp4",
+            "durationSeconds": 4
+          },
+          {
+            "src": "media/training-camp-ep2/manufacturing/A13.mp4",
+            "durationSeconds": 4.5
+          }
+        ],
+        "disclosure": "兰州信创产业园 · 现场实拍",
+        "badge": "企业参访 · 真实素材",
+        "mediaScale": 1.02
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 14.75
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "annotated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-004-real-media",
+      "start": 19,
+      "end": 27,
+      "spokenLine": "海光DCU对标A100",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v004",
+      "zone": "full-screen",
+      "title": "海光DCU对标A100",
+      "detail": "现场讲解口径约八成；具体结果随型号、任务和软件环境变化。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/manufacturing/A04.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v004",
+        "enterAt": 19,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "camp2-sfx-004",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "海光DCU对标A100",
+        "detail": "现场讲解口径约八成；具体结果随型号、任务和软件环境变化。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/manufacturing/A04.mp4",
+            "durationSeconds": 4
+          },
+          {
+            "src": "media/training-camp-ep2/manufacturing/A05.mp4",
+            "durationSeconds": 4
+          }
+        ],
+        "disclosure": "海光芯片 · 现场实拍",
+        "badge": "现场讲解口径 · 非统一跑分",
+        "mediaScale": 1.04
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 23
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "chip-evidence-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-005-definition",
+      "start": 27,
+      "end": 35,
+      "spokenLine": "约八成",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "definition",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v005",
+      "zone": "left-safe",
+      "title": "约八成",
+      "detail": "重点不只是一个数，而是国产算力已经进入真实产品和应用场景。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/hero-definition"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v005",
+        "enterAt": 27,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "number",
+        "cueId": "camp2-sfx-005",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "definition",
+        "title": "约八成",
+        "detail": "重点不只是一个数，而是国产算力已经进入真实产品和应用场景。",
+        "items": []
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 31
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "hero-definition",
+        "coverageRatio": 0.28,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-006-flow",
+      "start": 35,
+      "end": 44,
+      "spokenLine": "竞争已经进入全链条",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "flow",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v006",
+      "zone": "left-safe",
+      "title": "竞争已经进入全链条",
+      "detail": "从芯片一直走到企业最终能够使用。",
+      "items": [
+        "芯片",
+        "整机制造",
+        "软件生态",
+        "行业交付"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/process-rail"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v006",
+        "enterAt": 35,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line",
+        "cueId": "camp2-sfx-006",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "竞争已经进入全链条",
+        "detail": "从芯片一直走到企业最终能够使用。",
+        "items": [
+          "芯片",
+          "整机制造",
+          "软件生态",
+          "行业交付"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 39.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.38,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-007-real-media",
+      "start": 44,
+      "end": 52,
+      "spokenLine": "海光生态与产品矩阵",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v007",
+      "zone": "full-screen",
+      "title": "海光生态与产品矩阵",
+      "detail": "芯片能力需要整机、软件和伙伴生态共同接住。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/manufacturing/A02.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v007",
+        "enterAt": 44,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "camp2-sfx-007",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "海光生态与产品矩阵",
+        "detail": "芯片能力需要整机、软件和伙伴生态共同接住。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/manufacturing/A02.mp4",
+            "durationSeconds": 4
+          },
+          {
+            "src": "media/training-camp-ep2/manufacturing/A08.mp4",
+            "durationSeconds": 4
+          }
+        ],
+        "disclosure": "海光生态展示 · 现场实拍",
+        "badge": "真实展示 · 不外推全部合作",
+        "mediaScale": 1.03
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 48
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "annotated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-008-real-media",
+      "start": 52,
+      "end": 62,
+      "spokenLine": "兰州本地已经有产业入口",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v008",
+      "zone": "full-screen",
+      "title": "兰州本地已经有产业入口",
+      "detail": "服务器产线、适配中心和数据园区已经出现。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/manufacturing/A03.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v008",
+        "enterAt": 52,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "camp2-sfx-008",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "兰州本地已经有产业入口",
+        "detail": "服务器产线、适配中心和数据园区已经出现。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/manufacturing/A03.mp4",
+            "durationSeconds": 5
+          },
+          {
+            "src": "media/training-camp-ep2/manufacturing/A10.mp4",
+            "durationSeconds": 5
+          }
+        ],
+        "disclosure": "海光产业生态适配中心 · 现场实拍",
+        "badge": "现场名称 · 不扩大授权关系",
+        "mediaScale": 1.03
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 57
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "annotated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-009-question-grid",
+      "start": 62,
+      "end": 70,
+      "spokenLine": "为什么还串不成项目",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "question-grid",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v009",
+      "zone": "left-safe",
+      "title": "为什么还串不成项目",
+      "detail": "产业能力不会自动变成一家企业能用的结果。",
+      "items": [
+        "芯片有了",
+        "产线有了",
+        "数据园区有了",
+        "谁把它们接起来？"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/question-list"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v009",
+        "enterAt": 62,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "camp2-sfx-009",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "为什么还串不成项目",
+        "detail": "产业能力不会自动变成一家企业能用的结果。",
+        "items": [
+          "芯片有了",
+          "产线有了",
+          "数据园区有了",
+          "谁把它们接起来？"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 66
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.38,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-010-definition",
+      "start": 70,
+      "end": 81,
+      "spokenLine": "责任链条",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "definition",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v010",
+      "zone": "left-safe",
+      "title": "责任链条",
+      "detail": "这是五天训练带走的核心答案。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/hero-definition"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v010",
+        "enterAt": 70,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "camp2-sfx-010",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "definition",
+        "title": "责任链条",
+        "detail": "这是五天训练带走的核心答案。",
+        "items": []
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 75.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "hero-definition",
+        "coverageRatio": 0.28,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-011-layer-map",
+      "start": 81,
+      "end": 92,
+      "spokenLine": "五个责任节点",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "layer-map",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v011",
+      "zone": "left-safe",
+      "title": "五个责任节点",
+      "detail": "每一项都必须有人接住。",
+      "items": [
+        "业务翻译",
+        "数据边界",
+        "流程验证",
+        "验收交付",
+        "长期维护"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/activated-node-map"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v011",
+        "enterAt": 81,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "camp2-sfx-011",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "layer-map",
+        "title": "五个责任节点",
+        "detail": "每一项都必须有人接住。",
+        "items": [
+          "业务翻译",
+          "数据边界",
+          "流程验证",
+          "验收交付",
+          "长期维护"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 86.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "activated-node-map",
+        "coverageRatio": 0.4,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-012-real-media",
+      "start": 92,
+      "end": 103.8,
+      "spokenLine": "服务器不是装完就结束",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v012",
+      "zone": "full-screen",
+      "title": "服务器不是装完就结束",
+      "detail": "制造与测试是一整套连续交付流程。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/manufacturing/A06.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v012",
+        "enterAt": 92,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "camp2-sfx-012",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "服务器不是装完就结束",
+        "detail": "制造与测试是一整套连续交付流程。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/manufacturing/A06.mp4",
+            "durationSeconds": 5.8
+          },
+          {
+            "src": "media/training-camp-ep2/manufacturing/A07.mp4",
+            "durationSeconds": 6
+          }
+        ],
+        "disclosure": "服务器制造测试区 · 现场实拍",
+        "badge": "工序展示 · 不代表满产",
+        "mediaScale": 1.02
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 97.9
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "annotated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-013-real-media",
+      "start": 103.8,
+      "end": 107.6,
+      "spokenLine": "适配还要落到系统上",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v013",
+      "zone": "full-screen",
+      "title": "适配还要落到系统上",
+      "detail": "驱动、系统和软件都要经过真实环境验证。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/manufacturing/A09.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v013",
+        "enterAt": 103.8,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "camp2-sfx-013",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "适配还要落到系统上",
+        "detail": "驱动、系统和软件都要经过真实环境验证。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/manufacturing/A09.mp4",
+            "durationSeconds": 3.8
+          }
+        ],
+        "disclosure": "国产工作站演示 · 现场实拍",
+        "badge": "现场演示 · 不代表全部兼容",
+        "mediaScale": 1.02
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 105.7
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "annotated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-014-flow",
+      "start": 107.6,
+      "end": 116,
+      "spokenLine": "服务器交付六道关",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "flow",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v014",
+      "zone": "left-safe",
+      "title": "服务器交付六道关",
+      "detail": "芯片装进机箱只是第一步。",
+      "items": [
+        "装配",
+        "前测",
+        "老化",
+        "复检",
+        "系统安装",
+        "包装入库"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/process-rail"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v014",
+        "enterAt": 107.6,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line",
+        "cueId": "camp2-sfx-014",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "服务器交付六道关",
+        "detail": "芯片装进机箱只是第一步。",
+        "items": [
+          "装配",
+          "前测",
+          "老化",
+          "复检",
+          "系统安装",
+          "包装入库"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 111.8
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.38,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-015-real-media",
+      "start": 116,
+      "end": 134,
+      "spokenLine": "第二站 · 永新国信数据要素产业园",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v015",
+      "zone": "full-screen",
+      "title": "第二站 · 永新国信数据要素产业园",
+      "detail": "看数据如何从资料变成可用、可追溯的生产资料。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/data-park/D01.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v015",
+        "enterAt": 116,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "evidence",
+        "cueId": "camp2-sfx-015",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "第二站 · 永新国信数据要素产业园",
+        "detail": "看数据如何从资料变成可用、可追溯的生产资料。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/data-park/D01.mp4",
+            "durationSeconds": 6
+          },
+          {
+            "src": "media/training-camp-ep2/data-park/D02.mp4",
+            "durationSeconds": 5
+          },
+          {
+            "src": "media/training-camp-ep2/data-park/D03.mp4",
+            "durationSeconds": 7
+          }
+        ],
+        "disclosure": "永新国信数据要素产业园 · 现场实拍",
+        "badge": "真实园区 · 新增素材",
+        "mediaScale": 1.02
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 125
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "annotated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-016-real-media",
+      "start": 134,
+      "end": 147,
+      "spokenLine": "数据要素不是直接“喂给AI”",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v016",
+      "zone": "full-screen",
+      "title": "数据要素不是直接“喂给AI”",
+      "detail": "采集、授权、评估、安全和追溯缺一不可。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/data-park/D04.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v016",
+        "enterAt": 134,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "camp2-sfx-016",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "数据要素不是直接“喂给AI”",
+        "detail": "采集、授权、评估、安全和追溯缺一不可。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/data-park/D04.mp4",
+            "durationSeconds": 4
+          },
+          {
+            "src": "media/training-camp-ep2/data-park/D05.mp4",
+            "durationSeconds": 4
+          },
+          {
+            "src": "media/training-camp-ep2/data-park/D06.mp4",
+            "durationSeconds": 5
+          }
+        ],
+        "disclosure": "数据流转讲解 · 现场实拍",
+        "badge": "真实讲解 · 不展示敏感数据",
+        "mediaScale": 1.02
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 140.5
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "annotated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-017-question-grid",
+      "start": 147,
+      "end": 160,
+      "spokenLine": "企业资料能不能直接用",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "question-grid",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v017",
+      "zone": "left-safe",
+      "title": "企业资料能不能直接用",
+      "detail": "先回答版本、权限、脱敏和退回机制。",
+      "items": [
+        "哪个版本有效？",
+        "谁有权查看？",
+        "哪些能进模型？",
+        "错误怎么退回？"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/question-list"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v017",
+        "enterAt": 147,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "camp2-sfx-017",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "企业资料能不能直接用",
+        "detail": "先回答版本、权限、脱敏和退回机制。",
+        "items": [
+          "哪个版本有效？",
+          "谁有权查看？",
+          "哪些能进模型？",
+          "错误怎么退回？"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 153.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.38,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-018-layer-map",
+      "start": 160,
+      "end": 178,
+      "spokenLine": "完整责任链",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "layer-map",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v018",
+      "zone": "left-safe",
+      "title": "完整责任链",
+      "detail": "服务器再强、模型再新，也不能替代这些责任。",
+      "items": [
+        "业务场景",
+        "数据权限",
+        "流程接入",
+        "错误接管",
+        "结果验收"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/activated-node-map"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v018",
+        "enterAt": 160,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "camp2-sfx-018",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "layer-map",
+        "title": "完整责任链",
+        "detail": "服务器再强、模型再新，也不能替代这些责任。",
+        "items": [
+          "业务场景",
+          "数据权限",
+          "流程接入",
+          "错误接管",
+          "结果验收"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 169
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "activated-node-map",
+        "coverageRatio": 0.4,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-019-real-media",
+      "start": 178,
+      "end": 193,
+      "spokenLine": "课程其实在追问同一件事",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v019",
+      "zone": "full-screen",
+      "title": "课程其实在追问同一件事",
+      "detail": "知识、权利、流程和市场需求必须放进一个项目里。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/training/B02.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v019",
+        "enterAt": 178,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "camp2-sfx-019",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "课程其实在追问同一件事",
+        "detail": "知识、权利、流程和市场需求必须放进一个项目里。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/training/B02.mp4",
+            "durationSeconds": 7
+          },
+          {
+            "src": "media/training-camp-ep2/training/B03.mp4",
+            "durationSeconds": 8
+          }
+        ],
+        "disclosure": "训练营课程 · 现场实拍",
+        "badge": "课程环境 · 辅助画面",
+        "mediaScale": 1.04
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 185.5
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "annotated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-020-source-branches",
+      "start": 193,
+      "end": 206,
+      "spokenLine": "四门课，四个共同问题",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "source-branches",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v020",
+      "zone": "left-safe",
+      "title": "四门课，四个共同问题",
+      "detail": "它们最终都要落到一家企业的责任链里。",
+      "items": [
+        "知识库：拿什么做",
+        "知识产权：有没有权做",
+        "AI落地：做进哪段业务",
+        "营销AIGC：谁真正需要"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/source-branches"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v020",
+        "enterAt": 193,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "evidence",
+        "cueId": "camp2-sfx-020",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "source-branches",
+        "title": "四门课，四个共同问题",
+        "detail": "它们最终都要落到一家企业的责任链里。",
+        "items": [
+          "知识库：拿什么做",
+          "知识产权：有没有权做",
+          "AI落地：做进哪段业务",
+          "营销AIGC：谁真正需要"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 199.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "source-branches",
+        "coverageRatio": 0.41,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-021-question-grid",
+      "start": 206,
+      "end": 218,
+      "spokenLine": "项目先回答四问",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "question-grid",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v021",
+      "zone": "left-safe",
+      "title": "项目先回答四问",
+      "detail": "不是先争论用哪个工具。",
+      "items": [
+        "拿什么做？",
+        "有没有权做？",
+        "做进哪段业务？",
+        "最后谁验收？"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/question-list"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v021",
+        "enterAt": 206,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "camp2-sfx-021",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "项目先回答四问",
+        "detail": "不是先争论用哪个工具。",
+        "items": [
+          "拿什么做？",
+          "有没有权做？",
+          "做进哪段业务？",
+          "最后谁验收？"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 212
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.38,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-022-comparison",
+      "start": 218,
+      "end": 231,
+      "spokenLine": "企业和服务方各有责任",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "comparison",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v022",
+      "zone": "left-safe",
+      "title": "企业和服务方各有责任",
+      "detail": "需求、资料、流程和验收不能互相推给对方。",
+      "items": [
+        "企业：问题与合格标准",
+        "服务方：流程与可检验结果"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/comparison-bars"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v022",
+        "enterAt": 218,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "comparison",
+        "cueId": "camp2-sfx-022",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "comparison",
+        "title": "企业和服务方各有责任",
+        "detail": "需求、资料、流程和验收不能互相推给对方。",
+        "items": [
+          "企业：问题与合格标准",
+          "服务方：流程与可检验结果"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 224.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "comparison-bars",
+        "coverageRatio": 0.35,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-023-flow",
+      "start": 231,
+      "end": 246,
+      "spokenLine": "先做一个小范围验证",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "flow",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v023",
+      "zone": "left-safe",
+      "title": "先做一个小范围验证",
+      "detail": "再把系统、人员和合作方逐步串起来。",
+      "items": [
+        "业务需求",
+        "小范围数据",
+        "可检查结果",
+        "系统与人员"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/process-rail"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v023",
+        "enterAt": 231,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line",
+        "cueId": "camp2-sfx-023",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "先做一个小范围验证",
+        "detail": "再把系统、人员和合作方逐步串起来。",
+        "items": [
+          "业务需求",
+          "小范围数据",
+          "可检查结果",
+          "系统与人员"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 238.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.38,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-024-real-media",
+      "start": 246,
+      "end": 261,
+      "spokenLine": "专业部分必须有人承担",
+      "purpose": "real-scene-evidence",
+      "kind": "full-screen-asset",
+      "variant": "real-media",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v024",
+      "zone": "full-screen",
+      "title": "专业部分必须有人承担",
+      "detail": "迁移、适配、合规和运维要交给能测试、能售后的团队。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-owned-real-video",
+        "source": "remotion/public/media/training-camp-ep2/manufacturing/A11.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v024",
+        "enterAt": 246,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "camp2-sfx-024",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-media",
+        "title": "专业部分必须有人承担",
+        "detail": "迁移、适配、合规和运维要交给能测试、能售后的团队。",
+        "items": [],
+        "mediaClips": [
+          {
+            "src": "media/training-camp-ep2/manufacturing/A11.mp4",
+            "durationSeconds": 7.2
+          },
+          {
+            "src": "media/training-camp-ep2/manufacturing/A12.mp4",
+            "durationSeconds": 7
+          }
+        ],
+        "disclosure": "服务与参访现场 · 真实素材",
+        "badge": "协作证据 · 授权另行核验",
+        "mediaScale": 1.02
+      },
+      "checks": {
+        "avoidFace": false,
+        "avoidHands": false,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": null,
+        "reviewAt": 253.5
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "annotated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-025-statement",
+      "start": 261,
+      "end": 270,
+      "spokenLine": "协作不等于责任悬空",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "statement",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v025",
+      "zone": "left-safe",
+      "title": "协作不等于责任悬空",
+      "detail": "每一次交接，都要有具体的人把责任接住。",
+      "items": [
+        "责任接力",
+        "明确到人"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/direct-statement"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v025",
+        "enterAt": 261,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "camp2-sfx-025",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "statement",
+        "title": "协作不等于责任悬空",
+        "detail": "每一次交接，都要有具体的人把责任接住。",
+        "items": [
+          "责任接力",
+          "明确到人"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 265.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "direct-statement",
+        "coverageRatio": 0.28,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-026-question-grid",
+      "start": 270,
+      "end": 291,
+      "spokenLine": "给项目写一条责任链",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "question-grid",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v026",
+      "zone": "left-safe",
+      "title": "给项目写一条责任链",
+      "detail": "把五个责任人真正写出来。",
+      "items": [
+        "业务结果：谁提出",
+        "数据权限：谁批准",
+        "AI流程：谁搭建",
+        "系统出错：谁接管",
+        "验收维护：谁负责"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/question-list"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v026",
+        "enterAt": 270,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "camp2-sfx-026",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "给项目写一条责任链",
+        "detail": "把五个责任人真正写出来。",
+        "items": [
+          "业务结果：谁提出",
+          "数据权限：谁批准",
+          "AI流程：谁搭建",
+          "系统出错：谁接管",
+          "验收维护：谁负责"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 280.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.38,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-027-definition",
+      "start": 291,
+      "end": 298,
+      "spokenLine": "“到时候再说”",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "definition",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v027",
+      "zone": "left-safe",
+      "title": "“到时候再说”",
+      "detail": "只要还有一格这样写，项目就没有真正准备好。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/hero-definition"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v027",
+        "enterAt": 291,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "number",
+        "cueId": "camp2-sfx-027",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "definition",
+        "title": "“到时候再说”",
+        "detail": "只要还有一格这样写，项目就没有真正准备好。",
+        "items": []
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 294.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "hero-definition",
+        "coverageRatio": 0.28,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-028-flow",
+      "start": 298,
+      "end": 311,
+      "spokenLine": "第一集的答案",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "flow",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v028",
+      "zone": "left-safe",
+      "title": "第一集的答案",
+      "detail": "AI进入企业后，四件事必须完整连在一起。",
+      "items": [
+        "场景",
+        "数据",
+        "流程",
+        "责任"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/process-rail"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v028",
+        "enterAt": 298,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line",
+        "cueId": "camp2-sfx-028",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "第一集的答案",
+        "detail": "AI进入企业后，四件事必须完整连在一起。",
+        "items": [
+          "场景",
+          "数据",
+          "流程",
+          "责任"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 304.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.38,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-029-layer-map",
+      "start": 311,
+      "end": 320,
+      "spokenLine": "兰州已经出现真实产业入口",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "layer-map",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v029",
+      "zone": "left-safe",
+      "title": "兰州已经出现真实产业入口",
+      "detail": "前面的真实现场共同支撑这一判断，不重复播放同一镜头。",
+      "items": [
+        "国产芯片生态",
+        "制造测试",
+        "数据服务",
+        "落地培训"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/activated-node-map"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v029",
+        "enterAt": 311,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "camp2-sfx-029",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "layer-map",
+        "title": "兰州已经出现真实产业入口",
+        "detail": "前面的真实现场共同支撑这一判断，不重复播放同一镜头。",
+        "items": [
+          "国产芯片生态",
+          "制造测试",
+          "数据服务",
+          "落地培训"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 315.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "activated-node-map",
+        "coverageRatio": 0.4,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-030-flow",
+      "start": 320,
+      "end": 334,
+      "spokenLine": "我继续做的事",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "flow",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v030",
+      "zone": "left-safe",
+      "title": "我继续做的事",
+      "detail": "先陪本地企业把一项工作捋清楚。",
+      "items": [
+        "业务问题",
+        "资料边界",
+        "流程标准",
+        "验收条件"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/process-rail"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v030",
+        "enterAt": 320,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "line",
+        "cueId": "camp2-sfx-030",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "我继续做的事",
+        "detail": "先陪本地企业把一项工作捋清楚。",
+        "items": [
+          "业务问题",
+          "资料边界",
+          "流程标准",
+          "验收条件"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 327
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.38,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-031-statement",
+      "start": 334,
+      "end": 343,
+      "spokenLine": "先交付一个小结果",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "statement",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v031",
+      "zone": "left-safe",
+      "title": "先交付一个小结果",
+      "detail": "专业适配和长期运维，再与能负责的团队协作。",
+      "items": [
+        "能落地",
+        "能检查"
+      ],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/direct-statement"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v031",
+        "enterAt": 334,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "camp2-sfx-031",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "statement",
+        "title": "先交付一个小结果",
+        "detail": "专业适配和长期运维，再与能负责的团队协作。",
+        "items": [
+          "能落地",
+          "能检查"
+        ]
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 338.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "direct-statement",
+        "coverageRatio": 0.28,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "camp2-032-closing",
+      "start": 343,
+      "end": 365.833333,
+      "spokenLine": "你最缺哪个责任人",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "variant": "closing",
+      "titleOwner": true,
+      "overlapGroup": "camp2-v032",
+      "zone": "left-safe",
+      "title": "你最缺哪个责任人",
+      "detail": "把空着的那一格留在评论区，后面用真实项目继续拆解。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component",
+        "source": "TrainingCampEpisode2V80/closing-signature"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "camp2-v032",
+        "enterAt": 343,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "confirm",
+        "cueId": "camp2-sfx-032",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "closing",
+        "title": "你最缺哪个责任人",
+        "detail": "把空着的那一格留在评论区，后面用真实项目继续拆解。",
+        "items": []
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 354.42
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "closing-signature",
+        "coverageRatio": 0.26,
+        "progressiveReveal": true
+      }
+    }
+  ]
+}

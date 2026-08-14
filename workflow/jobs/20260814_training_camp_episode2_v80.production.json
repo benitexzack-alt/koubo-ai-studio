@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20260814-training-camp-episode2-v80",
+  "videoId": "TRAINING_CAMP_EP2_20260814_talk01",
+  "title": "国产AI芯片，现在到底追到英伟达哪一步了？",
+  "purpose": "以本人完整口播为主，用信创制造、海光生态、永新国信数据要素产业园和训练营实拍解释企业AI项目为什么需要完整责任链。",
+  "productionState": "ready-for-production",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "contentApproval": {
+    "userScriptApproved": true,
+    "userApprovedAt": "2026-08-14T19:20:00+08:00",
+    "evidence": "用户提供最终口播原文，随后上传完整真人口播并明确要求开始出成片；本条录音本身构成真人朗读证据。"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required",
+    "userPreviewApproved": false,
+    "userPreviewApprovedAt": null,
+    "userPreviewApprovalEvidence": null,
+    "revisionReason": "首次按已确认素材生成本条V8同画面有声/无声动态预览。",
+    "primaryVisualEventCount": 32,
+    "sfxCoveragePercent": 100,
+    "previewAuditionRoles": [
+      "keyword",
+      "media",
+      "number",
+      "line"
+    ]
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "source/20260814_training_camp_ep2/TRAINING_CAMP_EP2_talk01_16x9.MOV",
+    "renderProxy": "remotion/public/media/training-camp-ep2/talk/talk01.mp4",
+    "visualPlan": "edit/20260814_training_camp_episode2/visual-plan_TRAINING_CAMP_EP2_v8.json",
+    "bilingualCaptions": "remotion/public/data/TRAINING_CAMP_EP2_talk01.bilingual.v1.json",
+    "sfxCueSheet": "edit/20260814_training_camp_episode2/sfx-cue-sheet_TRAINING_CAMP_EP2_v8.json",
+    "sfxManifest": "assets/sfx/koubo-sfx-v8/manifest.json",
+    "fingerprintPaths": [
+      "source/20260814_training_camp_ep2/TRAINING_CAMP_EP2_talk01_16x9.MOV",
+      "remotion/public/media/training-camp-ep2/talk/talk01.mp4",
+      "remotion/public/media/training-camp-ep2/manufacturing",
+      "remotion/public/media/training-camp-ep2/data-park",
+      "remotion/public/media/training-camp-ep2/training",
+      "edit/transcripts/20260814_training_camp_ep2/TRAINING_CAMP_EP2_talk01.cleaned.v1.json",
+      "remotion/public/data/TRAINING_CAMP_EP2_talk01.bilingual.v1.json",
+      "remotion/src/Root.tsx",
+      "remotion/src/TrainingCampEpisode2V80Talk16x9.tsx",
+      "remotion/src/components/V8SemanticStage.tsx",
+      "remotion/src/components/V72ProductionShell.tsx",
+      "remotion/src/data/TrainingCampEpisode2V80.visual-plan.v1.json",
+      "remotion/src/data/TrainingCampEpisode2V80.sfx.v1.json",
+      "edit/20260814_training_camp_episode2/visual-plan_TRAINING_CAMP_EP2_v8.json",
+      "edit/20260814_training_camp_episode2/sfx-cue-sheet_TRAINING_CAMP_EP2_v8.json",
+      "remotion/public/audio/koubo-sfx-v8",
+      "assets/sfx/koubo-sfx-v8/manifest.json"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/index.ts",
+    "compositionWithSfx": "TrainingCampEpisode2-16x9-V80-WithSfx",
+    "compositionWithoutSfx": "TrainingCampEpisode2-16x9-V80-NoSfx",
+    "durationSeconds": 365.833333,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 3
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": false,
+    "scale": 0.5,
+    "crf": 22,
+    "ranges": [
+      {
+        "id": "v8-hook-chip-industry-chain",
+        "startSeconds": 0,
+        "endSeconds": 41
+      }
+    ],
+    "output": "work/production-runs/20260814-training-camp-episode2-v80/preview/preview-with-sfx.mp4",
+    "renderWithoutSfxComparison": true
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt",
+    "fullResolution": true,
+    "outputDirectory": "work/production-runs/20260814-training-camp-episode2-v80/preview/risk-frames"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": false,
+    "composition": "with-sfx",
+    "blockedReason": "等待用户确认同画面V8动态预览的字幕、素材比例、运镜和音效听感。",
+    "crf": 18,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "rawOutput": "work/production-runs/20260814-training-camp-episode2-v80/formal/formal-raw.mp4",
+    "finalOutput": "outputs/20260814_training_camp_episode2/国产AI芯片追到英伟达哪一步_16x9_V80_正式成片_v1.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -2.2
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "directory": "work/production-cache",
+    "reuseOnlyOnExactFingerprint": true
+  },
+  "reports": {
+    "runManifest": "work/production-runs/20260814-training-camp-episode2-v80/run-manifest.json",
+    "timingReport": "work/production-runs/20260814-training-camp-episode2-v80/timing-report.json",
+    "regressionReport": "work/production-runs/20260814-training-camp-episode2-v80/regression-report.json"
+  }
+}
