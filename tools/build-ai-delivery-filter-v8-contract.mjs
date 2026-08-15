@@ -2,6 +2,16 @@ import {mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '..');
+const approvedAtArgument = process.argv.find((argument) =>
+  argument.startsWith('--preview-approved-at='),
+);
+const userPreviewApprovedAt = approvedAtArgument?.slice(
+  '--preview-approved-at='.length,
+);
+const previewApproved = Boolean(userPreviewApprovedAt);
+const experimentStatus = previewApproved
+  ? 'candidate-preview-approved'
+  : 'candidate-preview-required';
 const videoId = 'AI_DELIVERY_FILTER_20260815_talk01';
 const durationSeconds = 332.333;
 const experimentId = 'v8-semantic-continuity-sfx';
@@ -304,13 +314,16 @@ const cues = layers.map((layer) => {
       layer.visualEvent.enterAt >= previewStart &&
       layer.visualEvent.enterAt <= previewEnd,
     formalReviewed: false,
-    userAudibilityConfirmed: false,
+    userAudibilityConfirmed:
+      previewApproved &&
+      layer.visualEvent.enterAt >= previewStart &&
+      layer.visualEvent.enterAt <= previewEnd,
   };
 });
 
 const plan = {
   schemaVersion: 4,
-  experiment: {id: experimentId, status: 'candidate-preview-required'},
+  experiment: {id: experimentId, status: experimentStatus},
   videoId,
   videoTitle: 'AI演示不等于生意答案',
   sourceVideo,
@@ -368,8 +381,10 @@ const cueSheet = {
     coveragePercent: 100,
     maxSyncErrorFrames: 2,
     machineStatus: 'pending-validator',
-    userAudibilityConfirmed: false,
-    confirmationScope: null,
+    userAudibilityConfirmed: previewApproved,
+    confirmationScope: previewApproved
+      ? '2026-08-15用户正常音量试听45秒同画面预览后，明确确认有音效版正式出片。'
+      : null,
   },
 };
 
@@ -390,12 +405,15 @@ const job = {
   },
   experiment: {
     id: experimentId,
-    status: 'candidate-preview-required',
-    userPreviewApproved: false,
-    userPreviewApprovedAt: null,
-    userPreviewApprovalEvidence: null,
-    revisionReason:
-      '首次按已确认素材生成本条V8同画面有声和无声动态预览。',
+    status: experimentStatus,
+    userPreviewApproved: previewApproved,
+    userPreviewApprovedAt: userPreviewApprovedAt ?? null,
+    userPreviewApprovalEvidence: previewApproved
+      ? '用户先回复“没问题，正式出片”，随后明确纠正版本为“音效”，确认按有音效版正式渲染。'
+      : null,
+    revisionReason: previewApproved
+      ? '将用户已通过的45秒有音效V8预览扩展为全长正式候选片。'
+      : '首次按已确认素材生成本条V8同画面有声和无声动态预览。',
     primaryVisualEventCount: layers.length,
     sfxCoveragePercent: 100,
     previewAuditionRoles: [
@@ -481,10 +499,11 @@ const job = {
     preferredTruePeakDbtp: -1.8,
   },
   formal: {
-    enabled: false,
+    enabled: previewApproved,
     composition: 'with-sfx',
-    blockedReason:
-      '等待用户确认本条45秒同画面有声和无声预览。',
+    blockedReason: previewApproved
+      ? null
+      : '等待用户确认本条45秒同画面有声和无声预览。',
     crf: 18,
     pixelFormat: 'yuv420p',
     audioCodec: 'aac',

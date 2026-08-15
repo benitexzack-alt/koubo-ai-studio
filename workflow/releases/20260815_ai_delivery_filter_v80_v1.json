@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260815_ai_delivery_filter_v80_v1",
+  "status": "ready-for-user-review",
+  "videoId": "AI_DELIVERY_FILTER_20260815_talk01",
+  "baselineId": "koubo-formal-16x9-v1",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "intent": {
+    "topic": "老板如何判断一个AI方案是工具演示，还是能进入真实生意并完成交付",
+    "serviceAudience": "正在接触AI课程、AI服务或准备给企业引入AI方案的本地老板和创业者",
+    "oneConclusion": "判断AI方案不能只看工具界面，要看能否形成可验收任务、是否有人愿意付出成本、能否沉出共性，以及出错后谁负责。",
+    "cta": "用四项判断检查正在接触的AI方案，不把工具动作直接当成经营建议。",
+    "factBoundary": "开头是行业观察和本人判断，不指向具体博主、课程或账号；三段AI生成情景视频只用于说明抽象场景，不冒充真实客户、项目或经营结果。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260815_ai_delivery_filter/R01_AI圈最魔幻的事_口播原片.MOV",
+    "transcript": "edit/20260815_ai_delivery_filter/transcripts/AI_DELIVERY_FILTER_20260815_talk01.cleaned.v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_DELIVERY_FILTER_20260815_talk01.bilingual.v1.json",
+    "visualPlan": "edit/20260815_ai_delivery_filter/visual-plan_AI_DELIVERY_FILTER_20260815_talk01_v8.json",
+    "assets": [
+      "media/ai-delivery-filter-20260815/S01-ai-hype-store-gap.mp4",
+      "media/ai-delivery-filter-20260815/S02-inquiry-fragmentation.mp4",
+      "media/ai-delivery-filter-20260815/S03-demo-no-adoption.mp4"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/AI演示不等于生意答案_16x9_V80_有音效_候选成片_v1.mp4",
+    "previewOutput": "work/production-runs/20260815-ai-delivery-filter-v80/preview45/with-sfx.mp4",
+    "coverPrompt": "notes/2026-08-15-AI演示不等于生意答案-V8发布包装-v1.md",
+    "soundEffectCueSheet": "edit/20260815_ai_delivery_filter/sfx-cue-sheet_AI_DELIVERY_FILTER_20260815_talk01_v8.json",
+    "modules": [
+      "semantic-digital-camera-v72",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "transparent-semantic-information",
+      "full-screen-real-or-ai-media",
+      "bilingual-caption",
+      "local-semantic-sfx-v2",
+      "v8-continuous-semantic-information",
+      "v8-event-bound-audible-sfx",
+      "user-generated-ai-context-media",
+      "generated-media-disclosure"
+    ],
+    "styleReferenceIds": [
+      "v8-semantic-continuity-sfx",
+      "approved-45s-with-sfx-20260815"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式片1920x1080、30fps、H.264/AAC、332.4秒、836947597字节；完整解码通过、黑帧0；响度-16.18 LUFS、LRA 4.7 LU、真峰值-2.03 dBTP；SHA-256为5804a5bddf3361daf7aa35dd0e957ea40ae2b9953437bc95ca63a3f5162c5281。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "verifier": "verbatim-v1",
+      "minimumScore": 1.0,
+      "evidence": "142页中英同窗字幕来自实际口播词级时间轴；逐字贴合度1.000、覆盖度1.000、0失败、0警告。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "V8视觉方案40个连续语义事件通过结构和合同校验；人物为默认主画面，三段AI情景视频按语义进入并保留AI生成声明，没有使用全屏Remotion信息页。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [
+        3.49,
+        11.35,
+        19.68,
+        27.91,
+        34.5,
+        40.73,
+        48.45,
+        56.24,
+        63.42,
+        71.16,
+        80.1,
+        89.11,
+        99.88,
+        113.84,
+        124.69,
+        131.19,
+        140.14,
+        149.12,
+        157.02,
+        165.05,
+        172.19,
+        180.08,
+        191.37,
+        200.47,
+        205.41,
+        211.98,
+        218.53,
+        227.78,
+        237.5,
+        245.01,
+        254.97,
+        265.04,
+        275.38,
+        285.81,
+        293.96,
+        300.33,
+        308.73,
+        318.89,
+        326.39,
+        330.84
+      ],
+      "evidence": "40个全分辨率风险帧和整片时间轴联系表已检查；当前未见明显卡片裁切、主要挡脸、压字幕、AI视频空白或结尾缺失。"
+    },
+    "cameraMotionReview": {
+      "status": "machine-passed-user-pending",
+      "previewPoints": [3.49, 11.35, 19.68, 27.91, 34.5, 40.73],
+      "userPerceptibilityConfirmed": false,
+      "evidence": "数字运镜与40个语义事件绑定；45秒预览已通过，整片自然度仍待用户完整观看确认。"
+    },
+    "soundEffectAudibility": {
+      "status": "preview-passed-formal-pending-user-review",
+      "cueCount": 40,
+      "distinctSourceCount": 30,
+      "roleCount": 9,
+      "maximumSyncErrorFrames": 2,
+      "userAudibilityConfirmed": false,
+      "evidence": "40个主视觉事件逐一绑定本地白名单音效，使用30个不同文件和9类语义角色；用户已确认45秒有音效预览，整片听感仍待完整观看确认。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260815-v8-preview-lock",
+      "decision": "applied-and-preview-user-approved",
+      "evidence": "用户明确确认按45秒有音效预览继续正式出片。"
+    },
+    {
+      "id": "upgrade-20260815-event-bound-sfx-diversity",
+      "decision": "applied-and-machine-verified",
+      "evidence": "40个视觉事件绑定40个音效点，覆盖30个不同本地白名单文件和9类语义角色；正式片响度与真峰值通过。"
+    },
+    {
+      "id": "upgrade-20260815-no-fullscreen-remotion-info-page",
+      "decision": "applied-and-machine-verified",
+      "evidence": "Remotion信息动效均以人物主画面上的透明语义层呈现；只有用户提供的三段AI情景视频按语义全屏切入。"
+    },
+    {
+      "id": "upgrade-20260815-new-piece-regression-boundary",
+      "decision": "baseline-regression-not-applicable-replaced-by-current-piece-checks",
+      "evidence": "本条没有同片锁定母版，旧片回归命令不适用；改用正式片完整解码、40帧全时间轴检查、结尾检查和已批准45秒预览同段SSIM一致性验证。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": true,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": false,
+    "confirmedAt": null,
+    "reviewedAt": "2026-08-15",
+    "reviewOutcome": "pending-full-watch",
+    "notes": "用户已确认45秒有音效预览并授权正式出片；正式候选成片尚待用户完整观看。"
+  },
+  "deliveryPackage": {
+    "status": "ready-for-delivery",
+    "cover": {
+      "aspectRatio": "3:4",
+      "recommendedFrame": "edit/20260815_ai_delivery_filter/verify/recommended-cover-frame.jpg",
+      "sourceVideo": "outputs/AI演示不等于生意答案_16x9_V80_有音效_候选成片_v1.mp4",
+      "sourceTimeSeconds": 27.91,
+      "sourceType": "current-final-video-real-frame",
+      "prompt": "notes/2026-08-15-AI演示不等于生意答案-V8发布包装-v1.md"
+    },
+    "titles": {
+      "primary": "AI圈最魔幻的事：热闹很多，交付太少",
+      "alternatives": [
+        "别把AI演示当成生意答案",
+        "老板判断AI方案，先看这四件事"
+      ]
+    },
+    "douyin": {
+      "publishCopy": "AI能做短视频、自动回复、管销售，也能把演示做得很漂亮。可把它放回真实生意，老板要看的不是界面，而是四件事：能不能交付、有没有人愿意付出成本、做过几次后能不能沉出共性，出了错谁来负责。工具动作可以学，别把工具动作当成经营建议。",
+      "topics": ["企业AI应用", "AI创业", "实体店经营", "老板思维", "OPC一人公司", "兰州AI创业"]
+    },
+    "copyReview": "notes/2026-08-15-AI演示不等于生意答案-V8发布包装-v1.copy-review.json"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "aiContentDisclosureRequired": true,
+    "publishedAt": null,
+    "platformWorkId": null,
+    "publicUrl": null,
+    "metricsStatus": "not-started",
+    "metrics": null,
+    "observationWindows": ["early", "24h", "72h", "7d"],
+    "releasePackaging": "notes/2026-08-15-AI演示不等于生意答案-V8发布包装-v1.md",
+    "nextDecision": "用户完整观看正式候选成片并确认后再升级为verified；发布前按客户端当日选项完成人工声明与授权复核，发布后按四个观察窗口归档数据。"
+  }
+}
