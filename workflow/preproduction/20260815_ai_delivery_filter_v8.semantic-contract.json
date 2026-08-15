@@ -1,0 +1,347 @@
+{
+  "schemaVersion": "koubo-v8-preproduction-semantic-contract/1.0",
+  "taskId": "task-20260815T094957Z-ac9373f4",
+  "status": "awaiting-recording",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8",
+    "source": "workflow/active-production-profile.v1.json"
+  },
+  "script": {
+    "path": "notes/2026-08-15-AI圈最魔幻的事-用户最终执行稿-v2.md",
+    "sha256": "865ecd7c3756118b38d7fd903d86b3f5e8d30c2d886c431573726e68e9a2afd0",
+    "bodySha256": "5e287348a3d8ae4b2ec792b4de904a8f9888e07c06cf7eed46f6c70dcb416a8c",
+    "contentStartMarker": "<!-- CONTENT_START -->",
+    "contentEndMarker": "<!-- CONTENT_END -->",
+    "verbatimRequired": true
+  },
+  "contentGate": {
+    "path": "notes/2026-08-15-AI圈最魔幻的事-内容门禁卡-v4-awaiting-recording.json",
+    "status": "ready-for-draft",
+    "productionBlocker": "等待真实口播原片和真人朗读证据"
+  },
+  "timeline": {
+    "absoluteTimingStatus": "blocked-until-word-alignment",
+    "spokenAnchorOnly": true,
+    "reason": "没有真实音轨时不臆造秒点；收到原片后以逐字转写和锁定正文双向对齐。"
+  },
+  "picturePolicy": {
+    "speakerIsDefaultPrimaryPicture": true,
+    "maximumRemotionCoverageRatio": 0.42,
+    "forbidFullScreenRemotionExplanation": true,
+    "allowedFullScreenMediaIds": [
+      "S01",
+      "S02",
+      "S03"
+    ],
+    "topLeftBrand": "超哥AI创业记",
+    "showVersionOnScreen": false,
+    "avoidFaceAndGesture": true,
+    "bilingualSubtitleSafeZoneRequired": true,
+    "defaultPanelOpacityMaximum": 0.38,
+    "smallTextBackingOpacityMaximum": 0.58
+  },
+  "externalAssets": [
+    {
+      "id": "R01",
+      "owner": "user",
+      "type": "real-talk-video",
+      "fileName": "R01_AI圈最魔幻的事_口播原片.原扩展名",
+      "required": true,
+      "status": "pending"
+    },
+    {
+      "id": "S01",
+      "owner": "user",
+      "type": "ai-generated-narrative-video",
+      "fileName": "S01_AI热闹与真实门店落差_16x9.mp4",
+      "spokenAnchor": "AI 可以帮你做短视频，帮你自动回复客户，帮你管销售，帮你把私域跑起来。",
+      "boundaryLabel": "AI生成·情景示意",
+      "required": true,
+      "status": "pending"
+    },
+    {
+      "id": "S02",
+      "owner": "user",
+      "type": "ai-generated-narrative-video",
+      "fileName": "S02_客户咨询散点与成交断点_16x9.mp4",
+      "spokenAnchor": "你的客户从哪里进来？咨询的问题散在哪些地方？员工哪句话经常答错？",
+      "boundaryLabel": "AI生成·情景示意",
+      "required": true,
+      "status": "pending"
+    },
+    {
+      "id": "S03",
+      "owner": "user",
+      "type": "ai-generated-narrative-video",
+      "fileName": "S03_炫酷演示回公司无人使用_16x9.mp4",
+      "spokenAnchor": "否则它就像一个会变魔术的页面，当场看着很厉害，回到公司没人会用。",
+      "boundaryLabel": "AI生成·情景示意",
+      "required": true,
+      "status": "pending"
+    }
+  ],
+  "visualEvents": [
+    {
+      "id": "V01",
+      "spokenAnchor": "现在 AI 圈最魔幻的事",
+      "family": "chapter-anchor",
+      "primaryText": "AI圈最魔幻的事",
+      "background": "talk",
+      "coverageRatioMaximum": 0.18,
+      "sfxRole": "chapter"
+    },
+    {
+      "id": "V02",
+      "spokenAnchor": "一群没做过生意的人",
+      "family": "progressive-list",
+      "primaryText": "做生意 / 管团队 / 自动成交",
+      "background": "talk",
+      "coverageRatioMaximum": 0.3,
+      "sfxRole": "list"
+    },
+    {
+      "id": "V03",
+      "spokenAnchor": "到底能不能交付",
+      "family": "comparison-bar",
+      "primaryText": "热闹 → 交付",
+      "background": "talk",
+      "coverageRatioMaximum": 0.26,
+      "sfxRole": "comparison"
+    },
+    {
+      "id": "V04",
+      "spokenAnchor": "你的客户从哪里进来",
+      "family": "activated-mind-map",
+      "primaryText": "真实生意",
+      "nodes": [
+        "入口",
+        "咨询",
+        "答复",
+        "成交",
+        "服务"
+      ],
+      "background": "talk-or-S02-media",
+      "coverageRatioMaximum": 0.4,
+      "sfxRole": "node"
+    },
+    {
+      "id": "V05",
+      "spokenAnchor": "别把工具动作当成经营建议",
+      "family": "direct-keyword",
+      "primaryText": "工具动作 ≠ 经营建议",
+      "background": "talk",
+      "coverageRatioMaximum": 0.22,
+      "sfxRole": "correction"
+    },
+    {
+      "id": "V06",
+      "spokenAnchor": "先看第一件事",
+      "family": "chapter-anchor",
+      "primaryText": "01 可交付",
+      "background": "talk",
+      "coverageRatioMaximum": 0.16,
+      "sfxRole": "chapter"
+    },
+    {
+      "id": "V07",
+      "spokenAnchor": "你给它什么资料，它处理哪一步",
+      "family": "process-rail",
+      "primaryText": "资料 → 处理 → 结果 → 验收",
+      "background": "talk",
+      "coverageRatioMaximum": 0.38,
+      "sfxRole": "line"
+    },
+    {
+      "id": "V08",
+      "spokenAnchor": "把哪些咨询整理出来",
+      "family": "activated-mind-map",
+      "primaryText": "AI客服边界",
+      "nodes": [
+        "咨询分类",
+        "客户跟进",
+        "人工确认",
+        "禁止自动回复"
+      ],
+      "background": "talk",
+      "coverageRatioMaximum": 0.4,
+      "sfxRole": "node"
+    },
+    {
+      "id": "V09",
+      "spokenAnchor": "第二件事",
+      "family": "chapter-anchor",
+      "primaryText": "02 付出成本",
+      "background": "talk",
+      "coverageRatioMaximum": 0.16,
+      "sfxRole": "chapter"
+    },
+    {
+      "id": "V10",
+      "spokenAnchor": "点赞，不等于客户愿意付钱",
+      "family": "progressive-comparison",
+      "primaryText": "点赞 ≠ 付钱 / 收藏 ≠ 试用 / 免费 ≠ 需求",
+      "background": "talk",
+      "coverageRatioMaximum": 0.38,
+      "sfxRole": "correction"
+    },
+    {
+      "id": "V11",
+      "spokenAnchor": "愿意拿出资料，愿意让员工配合",
+      "family": "token-row",
+      "primaryText": "资料 / 员工 / 时间 / 小预算",
+      "background": "talk",
+      "coverageRatioMaximum": 0.34,
+      "sfxRole": "keyword"
+    },
+    {
+      "id": "V12",
+      "spokenAnchor": "第三件事",
+      "family": "chapter-anchor",
+      "primaryText": "03 沉出共性",
+      "background": "talk",
+      "coverageRatioMaximum": 0.16,
+      "sfxRole": "chapter"
+    },
+    {
+      "id": "V13",
+      "spokenAnchor": "从一次服务里沉出共性",
+      "family": "process-rail",
+      "primaryText": "一次服务 → 多次验证 → 共性 → 模板 → 服务",
+      "background": "talk",
+      "coverageRatioMaximum": 0.4,
+      "sfxRole": "line"
+    },
+    {
+      "id": "V14",
+      "spokenAnchor": "每个老板都会问哪几类问题",
+      "family": "progressive-list",
+      "primaryText": "共性检查",
+      "nodes": [
+        "重复问题",
+        "开工资料",
+        "人工确认",
+        "模板输出",
+        "停止条件"
+      ],
+      "background": "talk",
+      "coverageRatioMaximum": 0.4,
+      "sfxRole": "list"
+    },
+    {
+      "id": "V15",
+      "spokenAnchor": "第四件事",
+      "family": "chapter-anchor",
+      "primaryText": "04 失败处理",
+      "background": "talk-after-S03-media",
+      "coverageRatioMaximum": 0.16,
+      "sfxRole": "chapter"
+    },
+    {
+      "id": "V16",
+      "spokenAnchor": "谁检查？谁兜底？谁来复盘？",
+      "family": "responsibility-chain",
+      "primaryText": "检查 → 兜底 → 复盘",
+      "background": "talk",
+      "coverageRatioMaximum": 0.36,
+      "sfxRole": "line"
+    },
+    {
+      "id": "V17",
+      "spokenAnchor": "是继续加钱，换工具，还是停下来查原因",
+      "family": "decision-tree",
+      "primaryText": "继续加钱 / 换工具 / 停下查因",
+      "defaultHighlightedNode": "停下查因",
+      "background": "talk",
+      "coverageRatioMaximum": 0.4,
+      "sfxRole": "correction"
+    },
+    {
+      "id": "V18",
+      "spokenAnchor": "最愿意讲开始，最不愿意讲失败",
+      "family": "comparison-bar",
+      "primaryText": "开始 ≠ 完整方案",
+      "secondaryText": "还要有失败处理",
+      "background": "talk",
+      "coverageRatioMaximum": 0.3,
+      "sfxRole": "comparison"
+    },
+    {
+      "id": "V19",
+      "spokenAnchor": "真正靠谱的人",
+      "family": "progressive-checklist",
+      "primaryText": "适合谁 / 准备什么 / 人工确认 / 怎么验收 / 如何查因",
+      "background": "talk",
+      "coverageRatioMaximum": 0.4,
+      "sfxRole": "confirm"
+    },
+    {
+      "id": "V20",
+      "spokenAnchor": "有人付成本，有人交结果，有人使用，有人负责",
+      "family": "closed-loop",
+      "primaryText": "成本 → 结果 → 使用 → 负责",
+      "conclusionStamp": "可验收",
+      "background": "talk",
+      "coverageRatioMaximum": 0.38,
+      "sfxRole": "confirm"
+    },
+    {
+      "id": "V21",
+      "spokenAnchor": "一把能把热闹筛掉的尺子",
+      "family": "summary-ruler",
+      "primaryText": "可交付 / 肯付成本 / 沉出共性 / 失败兜底",
+      "background": "talk",
+      "coverageRatioMaximum": 0.4,
+      "sfxRole": "confirm"
+    }
+  ],
+  "sfxPolicy": {
+    "manifest": "assets/sfx/koubo-sfx-v8/manifest.json",
+    "cueSheetSchemaVersion": 3,
+    "ordinarySubtitleGetsSfx": false,
+    "maximumMainSfxPerSemanticObject": 1,
+    "maximumLightNodeSfxPerSemanticObject": 1,
+    "sameFileMinimumGapSeconds": 25,
+    "sameFileConsecutiveUseForbidden": true,
+    "maximumUsesPerFile": 3,
+    "minimumVariantsPerRepeatedRole": 3,
+    "candidateVolumeRange": [
+      0.24,
+      0.48
+    ],
+    "forbiddenContentKinds": [
+      "voice-patch",
+      "human-voice",
+      "speech-like",
+      "unknown"
+    ],
+    "explicitlyExcludedAssetId": "waic-correction-not-equal",
+    "sameFrameWithAndWithoutSfxPreviewRequired": true,
+    "previewDurationSeconds": [
+      30,
+      45
+    ],
+    "userAudibilityConfirmed": false
+  },
+  "cameraPolicy": {
+    "enabledForTalkSegments": true,
+    "disabledForFullScreenMedia": true,
+    "longSentenceStyle": "轻微缓慢推移",
+    "keyJudgmentStyle": "短促推进后稳定",
+    "alternateDirection": true,
+    "amplitudeStatus": "awaiting-face-safe-zone-analysis"
+  },
+  "nextGate": {
+    "trigger": "R01原片到位",
+    "requiredActions": [
+      "媒体技术检查",
+      "逐字转写",
+      "正文一比一核对",
+      "真人朗读证据登记",
+      "人物安全区检测",
+      "真实秒点写入",
+      "升级ready-for-production",
+      "生成同画面有声和无声预览"
+    ]
+  }
+}
