@@ -1,0 +1,171 @@
+{
+  "schema_version": 6,
+  "task_id": "task-20260815T160648Z-f322a669",
+  "target_stage": "outline",
+  "required_rules": [
+    {"path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md", "read": true},
+    {"path": "/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md", "read": true},
+    {"path": "/Users/pc/Documents/口播/knowledge/05-合规隐私与证据规则.md", "read": true}
+  ],
+  "sources": [
+    {
+      "id": "source:bigv-problem-before-tool",
+      "title": "抖音《AI反向操作才是王炸！到底什么样的人才是用AI的高手》完整本机转写",
+      "completeness": "complete",
+      "acquisition": "local-asr",
+      "intended_uses": ["viewpoint", "talking-structure"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7624130957348877733.md",
+      "verification_status": "待核验",
+      "canonical_ref": "https://www.douyin.com/video/7624130957348877733",
+      "evidence_ids": ["evidence:source:7624130957348877733"]
+    },
+    {
+      "id": "source:bigv-task-validation",
+      "title": "抖音AI任务拆解与验收方法参考，完整本机转写",
+      "completeness": "complete",
+      "acquisition": "local-asr",
+      "intended_uses": ["viewpoint", "talking-structure"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/07/抖音-7664826482572741938.md",
+      "verification_status": "部分核验",
+      "canonical_ref": "抖音知识中台内部来源库：抖音-7664826482572741938",
+      "evidence_ids": ["evidence:source:7664826482572741938"]
+    },
+    {
+      "id": "source:official-ai-adoption-facts",
+      "title": "普通人学AI从哪里入手：官方数据与企业应用方向事实底稿",
+      "completeness": "primary-source",
+      "acquisition": "official-page-research",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-16-普通人学AI从哪里入手-事实与数据账本-v1.md",
+      "verification_status": "已核验",
+      "canonical_ref": "CNNIC第56、57次报告与工信部相关通知，原页链接已登记在事实与数据账本",
+      "evidence_ids": [
+        "evidence:official:cnnic-57-ai-users-20260205",
+        "evidence:official:cnnic-56-ai-purpose-20250721",
+        "evidence:official:miit-sme-ai-directions-2025",
+        "evidence:official:miit-ai-typical-cases-285-20260715"
+      ]
+    },
+    {
+      "id": "source:account-performance-preflight",
+      "title": "当前账号实测学习卡与任务级全量数据回执",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260815T160648Z-f322a669.json",
+      "verification_status": "已核验",
+      "canonical_ref": "抖音创作者中心官方导出固化的任务级回执，采集时点和解释边界见回执",
+      "evidence_ids": ["evidence:account:task-20260815T160648Z-f322a669"]
+    }
+  ],
+  "topic_authorization": {
+    "status": "user-selected",
+    "selected_by": "user",
+    "selection_mode": "user-confirmed-assistant-candidate",
+    "selected_topic": "普通人学AI的第一步，不是先学提示词、代码或一堆工具，而是选一项真实、重复、低风险的工作，完成一次有输入、有输出、有人验收的小闭环；只有闭环稳定后，才进入模板化、自动化或专业化学习。",
+    "user_instruction": "综合知识库、抖音中台大V拆解、此前抖音视频和外部调查数据，先整理一份普通人学AI从哪里入手的落地口播提纲。",
+    "source_ref": "conversation:2026-08-16:ordinary-ai-learning-outline",
+    "confirmed_at": "2026-08-16T00:00:00+08:00",
+    "candidate_only": false
+  },
+  "brief_contract": {
+    "user_goal": "为想学AI但不知道从基础、工具、提示词、代码还是Agent开始的普通人，整理一份有数据依据、能落到真实任务和小闭环的抖音口播提纲。",
+    "reference_role": "两条内部参考内容只提供问题先于工具、还原真实工作、定义输入输出验收和从重复动作沉淀能力的论证功能，不复制原句、案例、身份、收益表达或工具清单。",
+    "reference_forbidden_role": "参考内容不能替代全国数据和企业应用事实，不能让大V成为本条主角，不能把作者个人工作流、收入暗示和未经核验的效率结果移植给本账号。",
+    "required_arc": [
+      "开头直接回答从哪里入手，并用收藏课程工具却无法开始真实工作的小场景建立冲突",
+      "用全国生成式人工智能用户规模、主要使用目的和工信部企业应用方向说明为什么现在值得学但不必什么都学",
+      "把AI基础重新解释为问题定义、任务拆解、资料边界、结果验收和复盘沉淀，再按三类人给出不同入口",
+      "以真实任务五步入门路径卡收束，让观众今天写下一项重复任务并完成一次低风险小闭环"
+    ],
+    "forbidden_reframes": [
+      "不得写成全国有多少人想学AI的伪精确统计或制造学习焦虑",
+      "不得写成提示词、代码、Agent或工具排行榜，不得暗示工具越多越专业",
+      "不得承诺学AI必然赚钱、提效或获得职业优势，不得把一次生成成功当成稳定能力",
+      "不得把内部大V的案例、身份、收入和个人结果直接挪成超哥的公开经历"
+    ],
+    "semantic_contract": {
+      "audience_conflict": "收藏了一堆课程和工具，真正面对客户咨询、会议纪要、报价单、内容初稿或表格时，还是不知道第一步做什么。",
+      "core_judgment": "普通人学AI的第一步不是先学提示词、代码或一堆工具，而是先用一项真实、重复、低风险且可验收的工作完成小闭环。",
+      "training_interpretation": "AI入门的基础不是把所有工具学完，而是把任务说成输入、判断、输出、资料边界、验收和错误记录。",
+      "ordinary_person_value": "观众能拿一项自己的重复任务，写出原始输入、最终交付物、人工检查标准，再决定需要学习提示词、工具、Agent、模板还是代码。",
+      "chronology_is_not_main_arc": true,
+      "material_role_map": [
+        {"material": "两条抖音参考内容完整转写", "role": "mechanism-evidence", "supports": "证明问题先于工具、真实工作拆解和重复动作沉淀这条论证链适合承接本题"},
+        {"material": "CNNIC和工信部公开原页事实底稿", "role": "hook-evidence", "supports": "证明AI接触规模、主要使用目的和企业应用环节，限定全国数据的表达边界"},
+        {"material": "当前账号全量表现回执与最近六条", "role": "local-proof", "supports": "支持前5秒给答案、前15秒给具体场景和用价值密度而非固定时长设计开头"},
+        {"material": "普通人学AI入门路径卡", "role": "action-support", "supports": "把抽象判断收束成今天可以执行、可以检查和可以回滚的五步行动"}
+      ]
+    },
+    "alignment_evidence": "提纲先给标题答案，再用普通工作场景建立相关性；官方数据只负责证明入口普及和企业应用落地；主体始终围绕真实任务、小闭环、验收和沉淀，结尾交付一张可直接执行的入门路径卡。",
+    "status": "locked"
+  },
+  "recent_six": [
+    {"title": "国产AI落到兰州", "date": "2026-08-14", "audience_problem": "企业AI项目责任链缺位", "main_claim": "AI项目需要明确责任人和验收链", "claim_id": "claim:ai-project:responsibility-chain", "evidence": "本地产业园走访与责任链拆解", "evidence_ids": ["evidence:recent:20260814"], "deliverable": "五个责任人检查", "cta": "写出项目空缺责任格", "content_path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v3.md", "sha256": "82b0759bd3c093b4c70d44cf27903ba4bec4d46711292baaa2e73e154630461f", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "AI最好与最坏十年", "date": "2026-08-12", "audience_problem": "普通人如何不被AI降价", "main_claim": "人要保留判断和负责能力", "claim_id": "claim:ai-era:human-agency", "evidence": "AI007源头资料与个人任务拆解", "evidence_ids": ["evidence:recent:20260812"], "deliverable": "识别自己在AI链条中的位置", "cta": "回看本周自己做的决定", "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-AI007-AI双刃剑源头拆解/2026-08-11-AI最好与最坏十年-超哥原创口播稿-v5.md", "sha256": "aadf7c8763c4c9f43c4a7cf9c7f8df93dd4c548adc0377eb41c2e28cbb6bc1af", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "创业能力训练营第一集", "date": "2026-08-11", "audience_problem": "企业AI培训如何落到业务", "main_claim": "培训价值在真实业务问题", "claim_id": "claim:training:business-problem", "evidence": "训练营内容与现场观察", "evidence_ids": ["evidence:recent:20260811"], "deliverable": "四个业务问题", "cta": "带着问题进培训", "content_path": "/Users/pc/Documents/口播/notes/2026-08-11-创业能力训练营信创与AI-第一集完整口播稿-v2.md", "sha256": "46f624be7da56dae323428a689323120597c5242da6947328726937a106191df", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "AI在第四次工业革命里站哪一层", "date": "2026-08-10", "audience_problem": "普通人在AI产业中的位置", "main_claim": "普通人应掌握调用解释转化校准", "claim_id": "claim:ai-layer:four-rights", "evidence": "产业结构与能力分层", "evidence_ids": ["evidence:recent:20260810"], "deliverable": "四层能力判断", "cta": "判断自己当前能力层", "content_path": "/Users/pc/Documents/口播/notes/2026-08-10-AI第四次工业革命普通人位置-用户最终确认原稿-v1.md", "sha256": "0192d40b19366ae98ab8a394d1558aa43298073b23bb900f8e5369245f9f2443", "content_start_marker": "## 口播正文开始", "content_end_marker": "## 口播正文结束"},
+    {"title": "AI自媒体低成本起号", "date": "2026-08-08", "audience_problem": "普通人如何开始AI自媒体", "main_claim": "先用账号积累真实资产", "claim_id": "claim:ai-media:account-asset", "evidence": "账号实践和低成本试验", "evidence_ids": ["evidence:recent:20260808"], "deliverable": "低成本起号动作", "cta": "先完成账号首条内容", "content_path": "/Users/pc/Documents/口播/notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md", "sha256": "3c46cc74b59df44084c44919abe0449316e15fa07ce3653db64dea85ac726b14", "content_start_marker": "## 口播正文开始", "content_end_marker": "## 口播正文结束"},
+    {"title": "AI效率不等于完整AI生产力", "date": "2026-08-04", "audience_problem": "效率提升为何不等于新增价值", "main_claim": "旧任务提速不自动产生新价值", "claim_id": "claim:ai-productivity:value-gap", "evidence": "生产率观点和任务价值拆解", "evidence_ids": ["evidence:recent:20260804"], "deliverable": "区分效率与价值", "cta": "检查任务是否创造新交付", "content_path": "/Users/pc/Documents/口播/notes/2026-08-04-AI效率不等于完整AI生产力-用户最终确认稿-v2.md", "sha256": "5618c1dbefd62ab938b75e46fa461d05de25a1e9df2dd677a6c73300f29b8bd0", "content_start_marker": "## 口播正文开始", "content_end_marker": "## 口播正文结束"}
+  ],
+  "topic": {
+    "audience": "正在接触或想学习AI，但不知道从提示词、工具、代码、Agent还是业务任务开始的普通职场人、个体经营者、小微企业负责人、创作者和OPC。",
+    "problem": "观众容易把学习AI等同于报课、背提示词和追工具，面对自己的客户、文件、内容、会议或表格任务时仍然无法开始，也没有输入、输出和验收标准。",
+    "desired_change": "观众能从一项真实、重复、低风险且可验收的工作开始，写出输入、输出、资料边界、人工检查和错误记录，并据此决定下一步学什么。",
+    "novel_claim": "普通人学AI的第一步，不是先学提示词、代码或一堆工具，而是选一项真实、重复、低风险的工作，完成一次有输入、有输出、有人验收的小闭环；只有闭环稳定后，才进入模板化、自动化或专业化学习。",
+    "claim_id": "claim:ordinary-ai-learning:closed-loop-first",
+    "primary_evidence_ids": ["evidence:official:cnnic-57-ai-users-20260205", "evidence:official:cnnic-56-ai-purpose-20250721", "evidence:official:miit-sme-ai-directions-2025", "evidence:official:miit-ai-typical-cases-285-20260715"],
+    "difference_from_recent": "最近六条分别讲企业AI责任链、AI时代的人类判断、本地培训问题、普通人的产业位置、低成本试错和效率与生产力差距；本条新增的是学习入口问题，把‘从哪门基础开始’改造成一项真实任务的小闭环路径，并用全国用户数据、使用目的和企业应用方向建立外部依据，交付可直接执行的五步入门路径卡。",
+    "evidence_proves": "官方数据能证明生成式人工智能已被大量用户接触、问答仍是主要使用目的，工信部材料能证明AI应用要进入具体业务环节；内部参考内容能支持问题先于工具、还原真实工作和重复动作沉淀的结构。",
+    "evidence_does_not_prove": "本轮证据不能证明全国有多少人想学AI，不能证明某个工具适合所有人，不能证明学习AI必然赚钱或提效，也不能证明一次小闭环可以直接自动化高风险业务。",
+    "audience_takeaway": "先写一项重复任务，再用原始输入、AI第一版、人工检查、交付结果和错误记录完成一次低风险测试；闭环稳定后再学相应工具、模板、Skill、自动化或代码。",
+    "boundary": "医疗、法律、金融、招聘、敏感个人信息、账号登录、付款、公开发布和其他不可逆操作不作为第一次测试；涉及这些场景时必须保留人工负责、权限审查、验收和回滚。",
+    "delete_candidates": ["删除全国想学AI人数的伪精确推算", "删除工具排行榜与产品能力比较", "删除任何收益、提效比例和成功保证", "删除没有证据的‘基础就是提示词或代码’断言"]
+  },
+  "frozen_topic_hits": [],
+  "audience_fit": {
+    "account_stage": "调查",
+    "speaker_position": "甘肃兰州的本地AI实践者和复杂信息翻译者，把公开数据、企业AI落地观察和真实任务拆成普通人可以低风险验证的行动，不扮演模型专家、平台官方或收益导师。",
+    "first_20s_connection": "观众可能收藏了课程和工具，却在客户咨询、会议纪要、报价单、内容初稿或表格面前仍然不知道第一步做什么；前15秒先给出小闭环答案，再让他认出自己的任务卡住。",
+    "high_level_material_role": "evidence",
+    "ordinary_scenes": ["把一周的客户咨询整理成问题分类和跟进清单", "把会议记录变成决定事项、负责人和截止时间", "把已有资料整理成内容或项目初稿再由人逐项核对"],
+    "audience_gain": "观众不必先报大课或追完所有工具，而能今天从一项重复、低风险、可验收的任务开始，知道下一步基础学习应由真实任务暴露出来。",
+    "authority_boundary": "本条不替任何工具作效果承诺，不把内部参考作者的个人结果变成本账号经历，不用全国统计推导个人收益，涉及敏感资料和不可逆操作时保留人工负责与验收。",
+    "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "account_data_preflight": {"receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260815T160648Z-f322a669.json", "receipt_sha256": "18dea4449d937c121555cc3513c8c6c0861dc1bba5d7184a0d5feb48e59fcab7", "read": true},
+    "account_data_application": {
+      "account_baseline_evidence": {"metric": "weightedMetrics.fiveSecondCompletionRate", "value": 32.2906, "use": "用全账号5秒完播基线检验本条是否在前5秒给出学AI入口答案，而不是先讲宏大背景。"},
+      "recent_work_evidence": {"video_key": "6d3fd1032f7ff19f5bb4569a", "metric": "metrics.fiveSecondCompletionRate", "value": 37.95, "use": "参考最近一条具体训练场景的早期进入表现，把本条前15秒落到客户咨询、会议纪要等真实任务，而不是只讲AI概念。"},
+      "planned_change": "把‘从哪里学AI’直接回答为真实任务小闭环，前15秒出现课程工具收藏却无法开始工作的冲突，随后给出任务基础、三类入口和五步路径卡；不把全国数据放在开头抢走答案。",
+      "causal_claim": "human-confirmed-lesson-only"
+    },
+    "learning_card_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+    "learning_card_sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "newer_content_acknowledged": true,
+    "newer_content_ids": ["2026-08-11-training-camp-episode-1", "2026-08-12-ai-best-worst", "2026-08-14-training-camp-episode-2"],
+    "newer_content_metric_status": "学习卡快照后的三条作品已用于主题去重和开头设计参考，但新作品观察窗口不齐全，只作为描述性观察，不能升级为稳定平台规律。",
+    "applied_lesson_ids": ["lesson:opening:title-answer-before-background", "lesson:hook:concrete-conflict-scene-object", "lesson:duration:value-order-before-shortening", "lesson:metrics:separate-early-and-mature-windows", "lesson:conversion:narrow-high-intent-is-a-separate-win"],
+    "opening_plan": {"answer_or_conflict_by_second": 4, "proof_or_real_scene_by_second": 12, "audience_relevance_by_second": 18, "first_viewer_value_by_second": 28, "title_answer_by_second": 10, "delayed_payoff_risk_checked": true},
+    "duration_plan": {"planned_seconds": 270, "single_core_problem": "普通人想学AI却不知道从哪项基础开始，本条用真实任务小闭环给出学习入口。", "justification": "本条需要先给答案，再用全国数据说明入口普及、用企业应用方向说明必须落到流程，然后区分三类人并交付五步路径卡；时长暂按价值密度设计，后续以真人朗读和早期留存验证，不把短或长预设为规律。", "evidence_based_justification": true},
+    "metric_plan": {"primary_metric": "five_second_completion_rate", "secondary_metrics": ["average_watch_seconds", "profile_visits", "favorites"], "observation_windows": ["early-within-3h", "24h", "72h", "7d"], "hypothesis": "如果前5秒先给出‘从真实任务小闭环开始’的答案，前15秒再落到课程工具收藏却无法开始的具体冲突，早期5秒进入和平均播放时长可能优于仅讲AI趋势的开头；若没有改善且评论仍只追问工具名单，则需要推翻当前入口表达。", "early_vs_mature_windows_acknowledged": true}
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {"target": "primary", "script_evidence": "提纲交付一张五步入门路径卡，把真实任务、输入、输出、验收、错误记录和下一步学习串起来。", "viewer_test": "观众能拿自己的一个任务，填出输入、交付物、检查标准和第一次低风险测试。"},
+    "surprise": {"target": "supporting", "script_evidence": "把‘学AI先学工具’反转为‘先完成一项真实工作的小闭环’，并用6.02亿用户和80.9%问答目的形成接触与落地之间的反差。", "viewer_test": "删掉‘最强、革命、暴富’等热词后，观众仍能理解反差来自接触AI与嵌入工作的距离。"},
+    "expression": {"target": "primary", "script_evidence": "开头先回答、再给课程工具收藏和客户咨询等具体场景，主体用‘真实任务—小闭环—验收—沉淀’贯穿三类人和五步路径。", "viewer_test": "陌生观众能复述：学AI先拿一件重复工作做小闭环，再决定学什么工具。"},
+    "resonance": {"target": "supporting", "script_evidence": "客户咨询、会议纪要、报价单、内容初稿和表格都是普通人正在经历的任务，不用抽象焦虑代替共鸣。", "viewer_test": "观众能在开头20秒认出自己卡在‘工具很多但不知道从哪件事开始’。"},
+    "integrity_boundary": "不得用全国数据制造学习焦虑，不得虚构工具效果、用户收益、企业案例或个人成功，不得把大V原句和身份移植过来；惊喜感必须来自任务入口的重新解释，感染力必须来自真实场景和可执行路径。",
+    "review_status": "planned",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {"name": "真实任务小闭环入门", "problem": "普通人把学AI等同于报课、背提示词和追工具，接触了AI却无法把它放进自己的工作。", "bottleneck": "没有把模糊愿望拆成具体输入、输出、资料边界、人工验收和错误记录。", "mechanism": "先选一项真实、重复、低风险的任务，写清原始输入和最终交付物，运行一次AI第一版，由人检查并记录错误，闭环稳定后再沉淀为模板、Skill、自动化或代码。", "observable_change": "观众能从一项自己的任务开始，交回一份可检查结果，并知道下一次要修正什么。", "evidence": "CNNIC用户规模与使用目的、工信部AI应用方向和案例数量、两条内部参考内容的方法结构、当前账号实测开头学习。", "evidence_proves": "这些材料支持AI入口已普及、企业应用要落到流程，以及问题先于工具、任务需要验收的内容组织。", "evidence_does_not_prove": "不能证明任何工具必然有效、学习AI必然赚钱或所有人都适合相同学习顺序。", "audience_relevance": "客户咨询、会议纪要、报价单、内容初稿和表格都是普通人可立即识别和低风险拆解的任务。", "boundary": "第一次测试避开敏感资料、医疗法律金融等高风险判断、账号登录、付款和公开发布；任何扩大权限或自动化都必须有人负责验收和回滚。"}
+  ],
+  "voice": {"profile_path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md", "read": true},
+  "draft": {"path": null, "copy_review": {"required": false}, "user_script_approved": false}
+}
