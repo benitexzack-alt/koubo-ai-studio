@@ -1,0 +1,196 @@
+{
+  "schema_version": 6,
+  "task_id": "task-20260816T024541Z-78a2b5d1",
+  "target_stage": "draft",
+  "required_rules": [
+    {"path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md", "read": true},
+    {"path": "/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md", "read": true},
+    {"path": "/Users/pc/Documents/口播/knowledge/05-合规隐私与证据规则.md", "read": true}
+  ],
+  "sources": [
+    {
+      "id": "source:bigv-problem-before-tool",
+      "title": "抖音《AI反向操作才是王炸！到底什么样的人才是用AI的高手》完整本机转写",
+      "completeness": "complete",
+      "acquisition": "local-asr",
+      "intended_uses": ["viewpoint", "talking-structure"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7624130957348877733.md",
+      "verification_status": "待核验",
+      "canonical_ref": "https://www.douyin.com/video/7624130957348877733",
+      "evidence_ids": ["evidence:source:7624130957348877733"]
+    },
+    {
+      "id": "source:bigv-task-validation",
+      "title": "抖音AI任务拆解与验收方法参考，完整本机转写",
+      "completeness": "complete",
+      "acquisition": "local-asr",
+      "intended_uses": ["viewpoint", "talking-structure"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/07/抖音-7664826482572741938.md",
+      "verification_status": "部分核验",
+      "canonical_ref": "抖音知识中台内部来源库：抖音-7664826482572741938",
+      "evidence_ids": ["evidence:source:7664826482572741938"]
+    },
+    {
+      "id": "source:ai-microdrama-market-cost-ledger",
+      "title": "普通人学AI与AIGC漫剧入门：市场与成本账本",
+      "completeness": "primary-source",
+      "acquisition": "official-page-research-and-calculation",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-16-普通人学AI与AIGC漫剧入门-市场与成本账本-v1.md",
+      "verification_status": "已核验",
+      "canonical_ref": "账本内登记CNNIC、国家广电总局、北京市广电局、网视协、网信办和火山引擎原页链接；计算项均标注假设演算",
+      "evidence_ids": [
+        "evidence:official:cnnic-microdrama-users-20251215",
+        "evidence:official:beijing-microdrama-report-20260625",
+        "evidence:official:nrta-network-animation-2025",
+        "evidence:official:nrta-microdrama-management-20250205",
+        "evidence:official:ai-content-labeling-20250901",
+        "evidence:official:jimeng-price-sample-20260816"
+      ]
+    },
+    {
+      "id": "source:account-performance-preflight",
+      "title": "当前账号实测学习卡与任务级全量数据回执",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260816T024541Z-78a2b5d1.json",
+      "verification_status": "已核验",
+      "canonical_ref": "抖音创作者中心官方导出固化的任务级回执，采集时点和解释边界见回执",
+      "evidence_ids": ["evidence:account:task-20260816T024541Z-78a2b5d1"]
+    }
+  ],
+  "topic_authorization": {
+    "status": "user-selected",
+    "selected_by": "user",
+    "selection_mode": "explicit-topic-request",
+    "selected_topic": "普通人学AI要从想交付的结果开始：工作先完成真实任务的小闭环，AIGC漫剧先做30—60秒可验收样片；样片和成本被验证后，再决定自己做、找工作室、组团队，还是寻找平台和扶持。",
+    "user_instruction": "内容框架都可以，但是我还想加一个，就是也有很多咨询我想做AIGC的，就是说他们想做动漫、漫剧。我们再做一个漫剧这样的一个市场分析，然后普通人如何去加入这些漫剧市场里面，尤其是这种自己想在家里自己花钱去做的，讲一下每条视频和图片成本、前期烧钱、工作室、团队、资助资方，结合之前做一个口播内容。",
+    "source_ref": "conversation:2026-08-16:aigc-microdrama-expansion",
+    "confirmed_at": "2026-08-16T12:00:00+08:00",
+    "candidate_only": false
+  },
+  "brief_contract": {
+    "user_goal": "把原来的普通人学AI入门内容扩展为两条真实入口：日常工作闭环，以及想在家做动漫、漫剧、AIGC内容的人如何分析市场、测算成本和选择自制、工作室、团队或扶持路径。",
+    "reference_role": "抖音参考内容只提供问题先于工具、还原真实工作、重复动作再沉淀和按动作分工的论证功能；AIGC市场事实由官方原页和行业协会资料另行核验，不把参考作者的个人结果移植到本稿。",
+    "reference_forbidden_role": "参考内容不能替代市场规模、价格、监管、版权和项目扶持证据，不能把AIGC漫剧说成暴富赛道，不能把个人创意包装成已获平台或资方认可。",
+    "required_arc": [
+      "开头直接说明学AI有两种入口：完成工作，或做出一段可验收的AIGC漫剧样片",
+      "用AI普及数据和微短剧、网络动画市场数据说明市场存在，但市场体量不等于个人收益",
+      "先讲工作型AI的小闭环，再把同一套结果、输入、验收逻辑迁移到漫剧样片",
+      "用公开模型价格样本和明确假设测算60秒样片、3分钟试播的调用成本，并说明人工、返工、版权、审核和时间成本",
+      "给出自己做、找工作室、组团队、找平台扶持或资方四条路径，最后回到先做样片再扩大投入"
+    ],
+    "forbidden_reframes": [
+      "不得把微短剧市场规模、用户规模或AI漫剧案例改写成个人收益承诺",
+      "不得把模型调用价格改写成完整成片报价，所有测算必须保留假设和不确定性",
+      "不得把好创意改写成自然会获得团队、资方或平台投入",
+      "不得把未授权IP、动漫角色、音乐、真人肖像或平台合作写成可直接使用的案例"
+    ],
+    "semantic_contract": {
+      "audience_conflict": "有人收藏课程和工具却不会把AI放进工作，也有人有漫剧创意却不知道一张图、一段视频和一条样片到底要烧多少钱。",
+      "core_judgment": "学AI要从想交付的结果开始；漫剧入门要先做可验收的小样片，再决定是否自制、找工作室、组团队或找扶持。",
+      "training_interpretation": "工作型AI用输入、AI第一版、人工检查和错误记录形成闭环；漫剧型AI用创意、角色、分镜、样片、成本和反馈形成闭环。",
+      "ordinary_person_value": "观众能判断自己缺的是创意、导演判断、技术执行、后期还是资金，并按样片、预算、权利和责任选择下一步，而不是直接烧整部剧。",
+      "chronology_is_not_main_arc": true,
+      "material_role_map": [
+        {"material": "两条抖音参考内容完整转写", "role": "mechanism-evidence", "supports": "证明问题先于工具、真实任务拆解、重复动作沉淀和人机按动作分工的共同方法"},
+        {"material": "微短剧、网络动画、AI标识和扶持原页", "role": "hook-evidence", "supports": "证明市场供给和政策边界存在，但不能替代个人收益或项目成功证明"},
+        {"material": "即梦公开资源包价格与成本演算", "role": "action-support", "supports": "把一张图、一秒视频和样片调用成本讲清楚，并将模型费与完整制作成本分开"},
+        {"material": "账号全量回执与最近六条", "role": "local-proof", "supports": "支持前5秒给答案、前15秒落到具体场景和按价值密度设计时长"}
+      ],
+      "alignment_refs": {
+        "audience_conflict": "第一种人，收藏了一堆课程、提示词和工具，真正面对客户资料、会议记录或者一张表格的时候，还是不知道第一步做什么。",
+        "core_judgment": "你先问自己一句：我到底想让AI帮我交付什么？",
+        "training_interpretation": "这就形成了一个最小闭环：原始输入，AI第一版，人工检查，交付结果，记录错误。",
+        "ordinary_person_value": "漫剧的最低交付，不是几张好看的图，而是一个能看懂的样片：一句话故事，角色设定，六到十二个镜头，声音，剪辑，最后完成一个完整动作。"
+      }
+    },
+    "alignment_evidence": "正文开头先承接工作型和AIGC创作型两种咨询；中段用官方市场和监管资料证明边界；主体用小闭环和成本演算给普通人可执行判断；结尾不给投资承诺，只给样片验证和合作路径。",
+    "status": "locked"
+  },
+  "recent_six": [
+    {"title": "国产AI落到兰州", "date": "2026-08-14", "audience_problem": "企业AI项目责任链缺位", "main_claim": "AI项目需要明确责任人和验收链", "claim_id": "claim:ai-project:responsibility-chain", "evidence": "本地产业园走访与责任链拆解", "evidence_ids": ["evidence:recent:20260814"], "deliverable": "五个责任人检查", "cta": "写出项目空缺责任格", "content_path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v3.md", "sha256": "82b0759bd3c093b4c70d44cf27903ba4bec4d46711292baaa2e73e154630461f", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "AI最好与最坏十年", "date": "2026-08-12", "audience_problem": "普通人如何不被AI降价", "main_claim": "人要保留判断和负责能力", "claim_id": "claim:ai-era:human-agency", "evidence": "AI007源头资料与个人任务拆解", "evidence_ids": ["evidence:recent:20260812"], "deliverable": "识别自己在AI链条中的位置", "cta": "回看本周自己做的决定", "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-AI007-AI双刃剑源头拆解/2026-08-11-AI最好与最坏十年-超哥原创口播稿-v5.md", "sha256": "aadf7c8763c4c9f43c4a7cf9c7f8df93dd4c548adc0377eb41c2e28cbb6bc1af", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "创业能力训练营第一集", "date": "2026-08-11", "audience_problem": "企业AI培训如何落到业务", "main_claim": "培训价值在真实业务问题", "claim_id": "claim:training:business-problem", "evidence": "训练营内容与现场观察", "evidence_ids": ["evidence:recent:20260811"], "deliverable": "四个业务问题", "cta": "带着问题进培训", "content_path": "/Users/pc/Documents/口播/notes/2026-08-11-创业能力训练营信创与AI-第一集完整口播稿-v2.md", "sha256": "46f624be7da56dae323428a689323120597c5242da6947328726937a106191df", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "AI在第四次工业革命里站哪一层", "date": "2026-08-10", "audience_problem": "普通人在AI产业中的位置", "main_claim": "普通人应掌握调用解释转化校准", "claim_id": "claim:ai-layer:four-rights", "evidence": "产业结构与能力分层", "evidence_ids": ["evidence:recent:20260810"], "deliverable": "四层能力判断", "cta": "判断自己当前能力层", "content_path": "/Users/pc/Documents/口播/notes/2026-08-10-AI第四次工业革命普通人位置-用户最终确认原稿-v1.md", "sha256": "0192d40b19366ae98ab8a394d1558aa43298073b23bb900f8e5369245f9f2443", "content_start_marker": "## 口播正文开始", "content_end_marker": "## 口播正文结束"},
+    {"title": "AI自媒体低成本起号", "date": "2026-08-08", "audience_problem": "普通人如何开始AI自媒体", "main_claim": "先用账号积累真实资产", "claim_id": "claim:ai-media:account-asset", "evidence": "账号实践和低成本试验", "evidence_ids": ["evidence:recent:20260808"], "deliverable": "低成本起号动作", "cta": "先完成账号首条内容", "content_path": "/Users/pc/Documents/口播/notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md", "sha256": "3c46cc74b59df44084c44919abe0449316e15fa07ce3653db64dea85ac726b14", "content_start_marker": "## 口播正文开始", "content_end_marker": "## 口播正文结束"},
+    {"title": "AI效率不等于完整AI生产力", "date": "2026-08-04", "audience_problem": "效率提升为何不等于新增价值", "main_claim": "旧任务提速不自动产生新价值", "claim_id": "claim:ai-productivity:value-gap", "evidence": "生产率观点和任务价值拆解", "evidence_ids": ["evidence:recent:20260804"], "deliverable": "区分效率与价值", "cta": "检查任务是否创造新交付", "content_path": "/Users/pc/Documents/口播/notes/2026-08-04-AI效率不等于完整AI生产力-用户最终确认稿-v2.md", "sha256": "5618c1dbefd62ab938b75e46fa461d05de25a1e9df2dd677a6c73300f29b8bd0", "content_start_marker": "## 口播正文开始", "content_end_marker": "## 口播正文结束"}
+  ],
+  "topic": {
+    "audience": "想学AI提升工作，或想在家做动漫、漫剧、AIGC内容，但不知道从哪里入手、预算多大、该不该找工作室和团队的普通人、创作者、个体经营者和OPC。",
+    "problem": "观众把学AI等同于追工具，也把AIGC漫剧想象成低成本生成几张图就能进入市场；缺少对真实交付、样片验证、试错成本、团队分工、版权、备案和资金路径的判断。",
+    "desired_change": "观众能先区分工作型和漫剧型入口，分别完成工作小闭环或30—60秒样片，记录成本和问题，再选择自制、工作室、团队、平台或扶持路径。",
+    "novel_claim": "普通人学AI要从想交付的结果开始：工作先完成真实任务的小闭环，AIGC漫剧先做30—60秒可验收样片；样片和成本被验证后，再决定自己做、找工作室、组团队，还是寻找平台和扶持。",
+    "claim_id": "claim:ordinary-ai-and-aigc:result-sample-first",
+    "primary_evidence_ids": ["evidence:official:cnnic-microdrama-users-20251215", "evidence:official:beijing-microdrama-report-20260625", "evidence:official:nrta-network-animation-2025", "evidence:official:jimeng-price-sample-20260816", "evidence:official:nrta-microdrama-management-20250205", "evidence:official:ai-content-labeling-20250901"],
+    "difference_from_recent": "最近六条讲企业AI责任、人类判断、培训问题、产业位置、低成本起号和生产力价值差距；本条新增一个明确的创作者/漫剧入口，第一次把AI学习路径延伸到AIGC动漫和漫剧市场，并交付市场、成本、样片、工作室、团队、平台扶持六项判断，不复述旧的四问或四层能力框架。",
+    "evidence_proves": "公开资料能证明微短剧用户、企业、网络动画供给、AI生成内容标识和部分项目扶持/模型价格样本存在；成本账本能在公开价格和明确假设下演算样片调用费；内部参考内容支持问题先于工具和小闭环的结构。",
+    "evidence_does_not_prove": "不能证明AI漫剧市场规模等于AI漫剧个人收益，不能证明任何个人能复制传播案例，不能把调用费当完整成片报价，不能保证平台、工作室、资方或政府扶持会接受某个项目。",
+    "audience_takeaway": "工作型AI用真实任务小闭环入门；漫剧型AI先完成30—60秒样片，记录生成次数、成本、人工时间、修改和版权边界，再选择合作路径。",
+    "boundary": "未授权IP、真人肖像、音乐和字体不进入示例；公开发行前必须按平台和广电要求核验许可证/备案、AI生成标识、版权和内容审核；本条不提供收益或融资承诺。",
+    "delete_candidates": ["删除AI漫剧暴富与市场必赚表达", "删除没有来源的行业规模和单集报价", "删除工具排名与模型参数比较", "删除未经许可的动漫角色和真实项目案例"]
+  },
+  "frozen_topic_hits": [],
+  "audience_fit": {
+    "account_stage": "调查",
+    "speaker_position": "甘肃兰州的本地AI实践者和复杂信息翻译者，把普通人咨询中的工作型AI和AIGC内容创作问题拆成可验证的小结果，不扮演动画制片厂、平台官方、投资人或收益导师。",
+    "first_20s_connection": "有人收藏AI课程却不会把客户咨询、会议纪要做完，有人有动漫漫剧创意却不清楚一张图、一段视频和一条样片要烧多少钱；开头先给两条入口答案，再让观众认出自己的卡点。",
+    "high_level_material_role": "evidence",
+    "ordinary_scenes": ["把客户咨询整理成分类和跟进清单", "用一个原创创意做6到12个镜头的30到60秒漫剧样片", "拿样片、预算表和角色设定去找工作室、团队或平台沟通"],
+    "audience_gain": "观众知道自己缺的是任务、创意、导演判断、技术执行、后期还是资金，并能用一个小闭环或小样片验证，而不是先烧整部剧。",
+    "authority_boundary": "本条不代表平台、资方、政府或任何工具，不替工作室报价，不保证播放、分账、融资、扶持或商业结果；成本区间均为公开价格样本下的假设演算。",
+    "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "account_data_preflight": {"receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260816T024541Z-78a2b5d1.json", "receipt_sha256": "a0b703ee3ef7319e0ab4d83ea7ff61b0699dc80b31212f3d77f6f106b7194aee", "read": true},
+    "account_data_application": {
+      "account_baseline_evidence": {"metric": "weightedMetrics.fiveSecondCompletionRate", "value": 32.2934, "use": "用当前全账号5秒完播基线检验本条是否在前5秒直接给出两条AI入门答案，而不是先讲市场宏观背景。"},
+      "recent_work_evidence": {"video_key": "e183f1beb4665f48e3151de3", "metric": "metrics.fiveSecondCompletionRate", "value": 38.16, "use": "参考最近一条具体本地企业场景的进入表现，把本条前15秒落到工作任务和漫剧创意的具体卡点，而不是产品名。"},
+      "planned_change": "开头把目标人群从单一工作型扩展为工作型和AIGC创作型两条入口，前15秒给出交付物答案；中段用真实市场和成本算式承接漫剧咨询；结尾交付样片验证和合作路径。",
+      "causal_claim": "human-confirmed-lesson-only"
+    },
+    "learning_card_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+    "learning_card_sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "newer_content_acknowledged": true,
+    "newer_content_ids": ["2026-08-11-training-camp-episode-1", "2026-08-12-ai-best-worst", "2026-08-14-training-camp-episode-2"],
+    "newer_content_metric_status": "学习卡快照后的三条作品已用于主题去重和开头设计参考，但新作品观察窗口不齐全，只作为描述性观察，不能升级为稳定平台规律。",
+    "applied_lesson_ids": ["lesson:opening:title-answer-before-background", "lesson:hook:concrete-conflict-scene-object", "lesson:duration:value-order-before-shortening", "lesson:metrics:separate-early-and-mature-windows", "lesson:conversion:narrow-high-intent-is-a-separate-win"],
+    "opening_plan": {"answer_or_conflict_by_second": 4, "proof_or_real_scene_by_second": 12, "audience_relevance_by_second": 18, "first_viewer_value_by_second": 28, "title_answer_by_second": 10, "delayed_payoff_risk_checked": true},
+    "duration_plan": {"planned_seconds": 570, "single_core_problem": "普通人想学AI或做AIGC漫剧，却不知道应从真实交付、样片、成本还是团队路径开始。", "justification": "本条新增一个高意向的AIGC漫剧入口，需要同时解释市场存在、监管边界、公开模型价格样本、样片成本演算和四种合作路径；若压成工具清单会失去普通人判断价值，暂按两条入口的价值密度规划，后续以真人朗读和早期数据决定是否拆成上下集。", "evidence_based_justification": true},
+    "metric_plan": {"primary_metric": "five_second_completion_rate", "secondary_metrics": ["average_watch_seconds", "profile_visits", "favorites"], "observation_windows": ["early-within-3h", "24h", "72h", "7d"], "hypothesis": "如果前5秒先说清‘工作和漫剧是两条AI入口’，前15秒出现具体任务与样片成本冲突，早期进入和平均播放时长可能优于先讲AI趋势的开头；若收藏和主页访问没有改善、5秒完播也没有改善，则说明双入口过宽，需要拆成工作版和漫剧版。", "early_vs_mature_windows_acknowledged": true}
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {"target": "primary", "script_evidence": "提纲交付工作型AI小闭环、AIGC漫剧样片路径、模型调用费演算和四种合作方式。", "viewer_test": "观众能判断自己要做工作闭环还是漫剧样片，并写出第一步、预算上限和验收标准。"},
+    "surprise": {"target": "supporting", "script_evidence": "把‘一张图几毛钱’和‘一条漫剧成片很便宜’拆开，指出真正容易超预算的是返工、导演、后期、版权和审核。", "viewer_test": "删掉暴富和爆款词后，观众仍能理解模型调用便宜不等于完整成片便宜。"},
+    "expression": {"target": "primary", "script_evidence": "开头用两类咨询者并置，中段用60秒样片的公开价格演算，结尾用自己做、工作室、团队、平台扶持四条路收束。", "viewer_test": "陌生观众能复述：先做样片和算账，再决定要不要烧大钱。"},
+    "resonance": {"target": "supporting", "script_evidence": "客户咨询、会议纪要、动漫创意、家庭工作台和预算焦虑都是目标观众可以认出的处境。", "viewer_test": "观众能认出自己是缺创意、缺导演判断、缺执行，还是缺团队和资金，而不是只感到市场热闹。"},
+    "integrity_boundary": "不得用市场规模制造收益焦虑，不得虚构工作室报价、播放、分账、资方或扶持结果，不得把公开价格样本说成完整制作成本；AIGC内容的版权、标识、审核和备案边界必须保留。",
+    "review_status": "planned",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {"name": "按结果选择AI入口", "problem": "普通人不知道学AI是为了工作提效还是为了做AIGC内容，容易先追工具后找场景。", "bottleneck": "没有把目标拆成可交付工作或可验收样片，也没有成本、时间、版权和责任边界。", "mechanism": "工作型先完成真实任务小闭环；漫剧型先完成30—60秒样片，记录生成次数、模型费、人工时间、修改和权利边界，再选择工具与合作路径。", "observable_change": "观众能拿出一份可检查的工作结果或样片，并知道是否继续投入。", "evidence": "CNNIC、国家广电总局、北京市广电局、火山引擎公开页面、行业协会观察、两条内部参考内容和当前账号回执。", "evidence_proves": "市场、供给、监管和模型价格样本可以被核验；小闭环是可迁移的内容组织方法。", "evidence_does_not_prove": "不能证明任何个人收益、爆款、融资、扶持或完整成片报价。", "audience_relevance": "客户咨询、会议纪要、原创动漫创意、角色设定和60秒样片都是普通人可立即拆解的结果。", "boundary": "公开发行前核验版权、AI标识、平台审核、备案/许可和责任主体；第一次测试不使用未授权IP和敏感资料。"}
+  ],
+  "voice": {"profile_path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md", "read": true},
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-16-普通人学AI与AIGC漫剧入门-口播稿-v1.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "copy_review": {"required": true, "report_path": "/Users/pc/Documents/口播/notes/2026-08-16-普通人学AI与AIGC漫剧入门-文案双Skill审稿-v1.json"},
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": false,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "performance_feedback_recheck_passed": true,
+    "compliance_passed": false,
+    "user_script_approved": false,
+    "phrase_exemptions": [],
+    "ai_tone_exemptions": [],
+    "anchor_exemptions": []
+  }
+}
