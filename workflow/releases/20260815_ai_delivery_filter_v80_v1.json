@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "releaseId": "20260815_ai_delivery_filter_v80_v1",
-  "status": "ready-for-user-review",
+  "status": "verified",
   "videoId": "AI_DELIVERY_FILTER_20260815_talk01",
   "baselineId": "koubo-formal-16x9-v1",
   "productionProfile": {
@@ -112,19 +112,19 @@
       "evidence": "40个全分辨率风险帧和整片时间轴联系表已检查；当前未见明显卡片裁切、主要挡脸、压字幕、AI视频空白或结尾缺失。"
     },
     "cameraMotionReview": {
-      "status": "machine-passed-user-pending",
+      "status": "passed",
       "previewPoints": [3.49, 11.35, 19.68, 27.91, 34.5, 40.73],
-      "userPerceptibilityConfirmed": false,
-      "evidence": "数字运镜与40个语义事件绑定；45秒预览已通过，整片自然度仍待用户完整观看确认。"
+      "userPerceptibilityConfirmed": true,
+      "evidence": "数字运镜与40个语义事件绑定；用户于2026-08-16明确确认正式成片完整验收通过。"
     },
     "soundEffectAudibility": {
-      "status": "preview-passed-formal-pending-user-review",
+      "status": "passed",
       "cueCount": 40,
       "distinctSourceCount": 30,
       "roleCount": 9,
       "maximumSyncErrorFrames": 2,
-      "userAudibilityConfirmed": false,
-      "evidence": "40个主视觉事件逐一绑定本地白名单音效，使用30个不同文件和9类语义角色；用户已确认45秒有音效预览，整片听感仍待完整观看确认。"
+      "userAudibilityConfirmed": true,
+      "evidence": "40个主视觉事件逐一绑定本地白名单音效，使用30个不同文件和9类语义角色；用户先确认45秒有音效预览，后于2026-08-16明确确认正式成片完整验收通过。"
     }
   },
   "upgradeDecisions": [
@@ -152,11 +152,11 @@
   "userReview": {
     "previewApproved": true,
     "directFinalAuthorized": true,
-    "fullWatchConfirmed": false,
-    "confirmedAt": null,
-    "reviewedAt": "2026-08-15",
-    "reviewOutcome": "pending-full-watch",
-    "notes": "用户已确认45秒有音效预览并授权正式出片；正式候选成片尚待用户完整观看。"
+    "fullWatchConfirmed": true,
+    "confirmedAt": "2026-08-16T11:15:58+08:00",
+    "reviewedAt": "2026-08-16",
+    "reviewOutcome": "passed",
+    "notes": "用户明确回复“确认正式验收通过。今晚发布”，正式成片人工终验闭合；当前只登记发布计划，不提前登记为已经发布。"
   },
   "deliveryPackage": {
     "status": "ready-for-delivery",
@@ -185,6 +185,8 @@
     "status": "not-published",
     "platform": "抖音",
     "aiContentDisclosureRequired": true,
+    "plannedWindow": "2026-08-16晚间（Asia/Shanghai）",
+    "plannedWindowEvidence": "用户于2026-08-16明确表示今晚发布。",
     "publishedAt": null,
     "platformWorkId": null,
     "publicUrl": null,
@@ -192,6 +194,6 @@
     "metrics": null,
     "observationWindows": ["early", "24h", "72h", "7d"],
     "releasePackaging": "notes/2026-08-15-AI演示不等于生意答案-V8发布包装-v1.md",
-    "nextDecision": "用户完整观看正式候选成片并确认后再升级为verified；发布前按客户端当日选项完成人工声明与授权复核，发布后按四个观察窗口归档数据。"
+    "nextDecision": "今晚实际发布前按客户端当日选项完成人工声明与授权复核；发布后补录作品链接或作品ID，并按早期、24小时、72小时和7天窗口归档数据。"
   }
 }
