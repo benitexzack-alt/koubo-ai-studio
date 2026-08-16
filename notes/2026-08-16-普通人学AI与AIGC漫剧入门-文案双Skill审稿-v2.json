@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260816T024541Z-78a2b5d1",
+  "status": "pending-user-review",
+  "reviewed_at": "2026-08-16T12:00:00+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-16-普通人学AI与AIGC漫剧入门-口播稿-v2.md",
+    "sha256": "c005755ea9fe9c27c6ce85dc63f99c66bffff9f90bc5fdeeb0529a6e1909ca08"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": false,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "speaker_audience_contract": {
+      "speaker": "账号主讲人",
+      "audience": "抖音普通用户和AIGC创作者",
+      "forbidden_internal_references": ["你截图", "按你现在", "我前面用", "我们刚才", "你提供的截图"],
+      "status": "passed"
+    },
+    "notes": "正文统一为账号主讲人面向抖音观众讲解；2.0与2.5保留为两个模型的公开价格和能力比较，不依赖内部截图或协作上下文。"
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "先问自己一个问题：你学AI，是因为手上的工作已经忙不过来了，还是因为每天都看到别人学AI，网上铺天盖地，自己开始焦虑？",
+        "risk_level": "medium",
+        "reason": "动机识别贴近普通人，但句子较长，真人朗读需要在工作问题和外部焦虑之间停顿。",
+        "candidates": {
+          "conservative": "你学AI，是因为工作确实需要，还是只是看到别人都在学？",
+          "direct": "先问自己：我有一个具体工作问题，还是只是被‘大家都在学AI’这件事弄焦虑了？",
+          "vivid": "电脑前的工作没变，手机里的AI消息却一天比一天多，你到底是在解决问题，还是在追赶焦虑？"
+        },
+        "fact_difference": "不新增事实；只调整动机问题的表达和停顿。",
+        "recommendation": "保留，朗读时分成两个问句。"
+      },
+      {
+        "original": "Seedance 2.0和Seedance 2.5不能只按一个单价比较。",
+        "risk_level": "medium",
+        "reason": "模型比较有价值，但价格、档位和输出差异集中出现，画面需要同步展示比较卡，避免听成工具推荐。",
+        "candidates": {
+          "conservative": "Seedance 2.0和2.5的价格和适用场景不同，需要分别看。",
+          "direct": "这两个模型不能只比一个单价，还要比时长、画质、稳定性和实际输出。",
+          "vivid": "同样是4K，两个模型不是一张价目表，也不是同一种成片效果。"
+        },
+        "fact_difference": "不新增模型能力或效果结论；只改变比较维度的表达。",
+        "recommendation": "保留两个模型，画面分别标出模型、清晰度、时长、单次价格和测试维度。"
+      },
+      {
+        "original": "如果要用2.5做20秒内容，也不能直接把30秒价格简单除以30再乘20。",
+        "risk_level": "medium",
+        "reason": "这是计费边界，必须避免被理解为平台统一报价。",
+        "candidates": {
+          "conservative": "2.5做20秒内容时，要以实际时长档位和页面扣费为准。",
+          "direct": "30秒75.60元不能直接换算成20秒报价，最终要看平台实际提供的时长档位。",
+          "vivid": "价目表上的30秒，不一定能被你切成一个确定的20秒价格。"
+        },
+        "fact_difference": "不新增价格；保留平台档位不确定性的边界。",
+        "recommendation": "保留‘以当时页面和扣费记录为准’的边界，不把50.40元写成确定报价。"
+      }
+    ],
+    "no_high_risk_reason": "没有把内部截图、助手纠错或合作过程写给观众；模型价格均绑定具体模型、清晰度、时长和页面示例。"
+  },
+  "fact_changes": {
+    "new_facts": [
+      "保留用户提供的RunningHub Seedance 2.0与2.5界面价格示例，并分别绑定模型、清晰度、时长和扣费边界。"
+    ],
+    "removed_facts": [
+      "删除内部协作语境中的‘你截图’、‘按你现在’和‘我前面用即梦’表达。"
+    ],
+    "wording_strength_changes": [
+      "不把Seedance 2.5的30秒价格折算成确定的20秒报价。",
+      "将模型差异表述为需要通过同条件测试比较，不把价格直接等同于质量结论。"
+    ],
+    "pending_user_confirmations": [
+      "用户本人对v2正式口播语言、模型比较段和整体时长的确认。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}
