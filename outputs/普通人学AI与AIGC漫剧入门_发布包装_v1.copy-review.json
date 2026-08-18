@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "task_id": "20260818-ordinary-ai-aigc-release-package-v1",
+  "status": "passed",
+  "reviewed_at": "2026-08-18T00:00:00+08:00",
+  "draft": {
+    "path": "outputs/普通人学AI与AIGC漫剧入门_发布包装_v1.md",
+    "sha256": "9279080f06314403b7f8daef928a9d1506a8520c54f73585019b4c300330c306"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "发布包装只提取用户已确认口播稿中的标题、结论和行动引导，没有新增收入、客户、效果或平台保证。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "想从AI里面赚到钱",
+        "risk_level": "medium",
+        "reason": "容易被误读为收益承诺。",
+        "recommendation": "标题和发布文案立即回到“先判断学习起点”，不承诺赚钱结果。"
+      },
+      {
+        "original": "动漫、漫剧或者AIGC创意",
+        "risk_level": "medium",
+        "reason": "市场存在不等于个人项目自然成功。",
+        "recommendation": "保留30到60秒样片、预算上限、团队协作和合规边界。"
+      }
+    ],
+    "no_high_risk_reason": "未新增人物指向、收入数字、客户案例、平台推荐或投资结果。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": []
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}

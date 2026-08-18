@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260818_ordinary_ai_aigc_v80_v2",
+  "status": "ready-for-publication",
+  "videoId": "ORDINARY_AI_AIGC_20260818_talk01",
+  "baselineId": "koubo-formal-16x9-v1",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "intent": {
+    "topic": "普通人学AI，先问自己为什么学",
+    "serviceAudience": "想学AI的普通人、兰州本地创业者和AIGC内容创作者",
+    "oneConclusion": "先说清楚想改变的结果，再从真实工作任务或30到60秒AIGC样片开始。",
+    "cta": "评论区写下你想做的内容，以及目前最缺创意、技术还是团队。",
+    "factBoundary": "内容为个人观点、公开资料解读和用户本人实测制作过程，不承诺收益或平台结果。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260818_ordinary_ai_aigc/R01_普通人学AI与AIGC漫剧入门_口播原片.MOV",
+    "transcript": "edit/transcripts/ordinary-ai-aigc-20260818/ordinary-ai-aigc-20260818.cleaned.v1.json",
+    "bilingualCaptions": "remotion/public/data/ordinary_ai_aigc_20260818.bilingual.v2.release-qa.json",
+    "visualPlan": "edit/ordinary_ai_aigc_20260818/visual-plan_ORDINARY_AI_AIGC_20260818_talk01_v8.json",
+    "assets": [
+      "remotion/public/media/ordinary-ai-aigc-20260818/aigc",
+      "remotion/public/media/ordinary-ai-aigc-20260818/behind-scenes",
+      "remotion/public/media/ordinary-ai-aigc-20260818/evidence"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/普通人学AI与AIGC漫剧入门_16x9_V80_有音效_修正版_v2.mp4",
+    "previewOutput": "work/production-runs/20260818-ordinary-ai-aigc-v80/preview45/with-sfx.mp4",
+    "coverPrompt": "outputs/普通人学AI与AIGC漫剧入门_发布包装_v1.md",
+    "soundEffectCueSheet": "edit/ordinary_ai_aigc_20260818/sfx-cue-sheet_ORDINARY_AI_AIGC_20260818_talk01_v8.json",
+    "modules": [
+      "semantic-digital-camera-v72",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "transparent-semantic-information",
+      "full-screen-real-or-ai-media",
+      "bilingual-caption",
+      "local-semantic-sfx-v2",
+      "v8-continuous-semantic-information",
+      "v8-event-bound-audible-sfx",
+      "user-generated-ai-context-media",
+      "generated-media-disclosure",
+      "real-work-scene",
+      "runninghub-price-evidence"
+    ],
+    "styleReferenceIds": [
+      "v8-user-confirmed-default-20260812",
+      "v8-speaker-first-continuous-semantics"
+    ]
+  },
+  "deliveryPackage": {
+    "status": "ready-for-delivery",
+    "cover": {
+      "aspectRatio": "3:4",
+      "file": "outputs/普通人学AI与AIGC漫剧入门_封面3x4_v1.png",
+      "recommendedFrame": "edit/verify/ordinary-ai-aigc-20260818/cover-frame-04s.png",
+      "sourceVideo": "outputs/普通人学AI与AIGC漫剧入门_16x9_V80_有音效_修正版_v2.mp4",
+      "sourceTimeSeconds": 4,
+      "sourceType": "current-final-video-real-frame",
+      "prompt": "outputs/普通人学AI与AIGC漫剧入门_发布包装_v1.md"
+    },
+    "titles": {
+      "primary": "普通人学AI，先问自己为什么学",
+      "alternatives": [
+        "想靠AI赚钱，先别急着买课",
+        "在兰州，普通人学AI是不是机会？"
+      ]
+    },
+    "douyin": {
+      "publishCopy": "最近很多朋友问我：想学AI，怎么从AI里面赚到钱？\n\n但真正要先回答的，不是哪个工具最强，而是你为什么学。\n\n如果是工作忙不过来，就从一个真实任务开始；如果手里有动漫、漫剧或者AIGC创意，就先做一个30到60秒样片；如果只是被焦虑推着走，先别急着买课，也别急着堆工具。\n\n普通人学AI，先把想改变的结果说清楚，再决定学什么、用什么。",
+      "topics": [
+        "#人工智能",
+        "#普通人学AI",
+        "#AI创业",
+        "#AIGC",
+        "#AIGC漫剧",
+        "#兰州AI创业",
+        "#OPC一人公司"
+      ]
+    },
+    "packageFile": "outputs/普通人学AI与AIGC漫剧入门_发布包装_v1.md",
+    "copyReview": "outputs/普通人学AI与AIGC漫剧入门_发布包装_v1.copy-review.json"
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "run-manifest.json formal阶段通过；1920x1080、30fps、H.264/AAC、793.4秒。"
+    },
+    "captionSync": {
+      "status": "passed",
+      "verifier": "verbatim-v1",
+      "minimumScore": 1,
+      "evidence": "原字幕248段、发布包逐字校验侧车257段；仅拆分超过6秒的长页，中文内容与原字幕一致，未改成片。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "visual-plan校验通过，23个视觉事件。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [
+        2.9,
+        17,
+        31.5,
+        46.5,
+        66.5,
+        79,
+        101.5,
+        151.5,
+        190.5,
+        237.5,
+        315.5,
+        347.5,
+        364,
+        378,
+        408.3,
+        424.9,
+        454.4,
+        482.5,
+        511.3,
+        565.5,
+        600.5,
+        686.9,
+        726.1,
+        763.1
+      ],
+      "evidence": "冻结检测无结果，相邻采样帧无重复；覆盖开头、数据证据、模型价格、漫剧成本、团队路径与结尾。"
+    },
+    "cameraMotionReview": {
+      "status": "passed",
+      "previewPoints": [],
+      "userPerceptibilityConfirmed": true,
+      "evidence": "用户确认当前修正版先使用。"
+    },
+    "soundEffectAudibility": {
+      "status": "passed",
+      "cueTypes": [
+        "chapter",
+        "list",
+        "media"
+      ],
+      "userAudibilityConfirmed": true,
+      "evidence": "用户确认当前修正版先使用。"
+    }
+  },
+  "userReview": {
+    "previewApproved": true,
+    "fullWatchConfirmed": false,
+    "notes": "用户确认当前修正版先用于发布，但未留下完整观看书面验收记录。"
+  },
+  "publish": {
+    "status": "user-will-publish",
+    "platform": "抖音",
+    "publishedAt": null,
+    "metrics24h": null,
+    "nextDecision": "发布后回填作品链接和早期、24小时、72小时数据。"
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260818-v8-package",
+      "status": "applied",
+      "summary": "补齐V8完整发布包：封面、标题、文案、话题、双Skill审稿和模块清单。"
+    },
+    {
+      "id": "upgrade-20260818-caption-qa",
+      "status": "retained-with-evidence",
+      "summary": "保留当前用户确认版本，不改成片；字幕质检绑定现有逐字字幕清单和正式成片。"
+    }
+  ]
+}
