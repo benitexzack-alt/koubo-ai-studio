@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20260818-ordinary-ai-aigc-v80",
+  "videoId": "ORDINARY_AI_AIGC_20260818_talk01",
+  "title": "普通人学AI，先问自己为什么学",
+  "purpose": "完整保留本人口播，用V8连续语义动效、真实工作现场、原创AIGC画面和分开的RunningHub价格证据，讲清普通人学AI与进入AIGC漫剧的第一步。",
+  "productionState": "ready-for-production",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "contentApproval": {
+    "userScriptApproved": true,
+    "userApprovedAt": "2026-08-18T00:00:00+08:00",
+    "evidence": "用户此前明确锁定最终口播稿，本次提供完整真人口播原片并要求准备正式正片。"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-approved",
+    "userPreviewApproved": true,
+    "userPreviewApprovedAt": "2026-08-18T17:16:06+08:00",
+    "userPreviewApprovalEvidence": "用户确认新版45秒有音效/无音效预览，明确要求开始正式全片渲染。",
+    "revisionReason": "首次为本条建立V8候选预览；真人录音与锁定稿存在一处实录增补，已按原片保留并登记。",
+    "primaryVisualEventCount": 23,
+    "sfxCoveragePercent": 100,
+    "previewAuditionRoles": [
+      "chapter",
+      "list",
+      "media"
+    ]
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "source/20260818_ordinary_ai_aigc/R01_普通人学AI与AIGC漫剧入门_口播原片.MOV",
+    "renderProxy": "remotion/public/media/ordinary-ai-aigc-20260818/main-30fps.mp4",
+    "visualPlan": "edit/ordinary_ai_aigc_20260818/visual-plan_ORDINARY_AI_AIGC_20260818_talk01_v8.json",
+    "bilingualCaptions": "remotion/public/data/ordinary_ai_aigc_20260818.bilingual.v2.json",
+    "captions": "remotion/public/data/ordinary_ai_aigc_20260818.captions.v1.json",
+    "sfxCueSheet": "edit/ordinary_ai_aigc_20260818/sfx-cue-sheet_ORDINARY_AI_AIGC_20260818_talk01_v8.json",
+    "sfxManifest": "assets/sfx/koubo-sfx-v8/manifest.json",
+    "userAssetExecutionSheet": "/Users/pc/Desktop/口播素材/2026-08-17_普通人学AI与AIGC漫剧入门/05_执行说明/口播素材包与用户素材执行单-v1.md",
+    "fingerprintPaths": [
+      "source/20260818_ordinary_ai_aigc/R01_普通人学AI与AIGC漫剧入门_口播原片.MOV",
+      "remotion/public/media/ordinary-ai-aigc-20260818/main-30fps.mp4",
+      "edit/transcripts/ordinary-ai-aigc-20260818/ordinary-ai-aigc-20260818.cleaned.v1.json",
+      "remotion/public/data/ordinary_ai_aigc_20260818.bilingual.v2.json",
+      "remotion/public/data/ordinary_ai_aigc_20260818.captions.v1.json",
+      "edit/ordinary_ai_aigc_20260818/visual-plan_ORDINARY_AI_AIGC_20260818_talk01_v8.json",
+      "edit/ordinary_ai_aigc_20260818/sfx-cue-sheet_ORDINARY_AI_AIGC_20260818_talk01_v8.json",
+      "remotion/src/data/OrdinaryAiAigcV80.visual-plan.v1.json",
+      "remotion/src/data/OrdinaryAiAigcV80.sfx.v1.json",
+      "remotion/src/OrdinaryAiAigcV80Talk16x9.tsx",
+      "remotion/src/components/V8SemanticStage.tsx",
+      "remotion/src/components/V72ProductionShell.tsx",
+      "remotion/src/Root.tsx",
+      "remotion/public/audio/koubo-sfx-v8"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/index.ts",
+    "compositionWithSfx": "OrdinaryAiAigc16x9-V80-WithSfx",
+    "compositionWithoutSfx": "OrdinaryAiAigc16x9-V80-NoSfx",
+    "durationSeconds": 793.32,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 4
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": false,
+    "scale": 0.5,
+    "crf": 22,
+    "ranges": [
+      {
+        "id": "ordinary-ai-aigc-hook-and-media-45s",
+        "startSeconds": 0,
+        "endSeconds": 45
+      }
+    ],
+    "output": "work/production-runs/20260818-ordinary-ai-aigc-v80/preview45/with-sfx.mp4",
+    "renderWithoutSfxComparison": true
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt",
+    "fullResolution": true,
+    "outputDirectory": "work/production-runs/20260818-ordinary-ai-aigc-v80/preview45/risk-frames"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": true,
+    "composition": "with-sfx",
+    "blockedReason": null,
+    "crf": 18,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "rawOutput": "work/production-runs/20260818-ordinary-ai-aigc-v80/formal/revision-v2/formal-raw.mp4",
+    "finalOutput": "outputs/普通人学AI与AIGC漫剧入门_16x9_V80_有音效_修正版_v2.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -2.2
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "directory": "work/production-cache",
+    "reuseOnlyOnExactFingerprint": true
+  },
+  "reports": {
+    "runManifest": "work/production-runs/20260818-ordinary-ai-aigc-v80/run-manifest.json",
+    "timingReport": "work/production-runs/20260818-ordinary-ai-aigc-v80/timing-report.json",
+    "regressionReport": "work/production-runs/20260818-ordinary-ai-aigc-v80/regression-report.json"
+  }
+}

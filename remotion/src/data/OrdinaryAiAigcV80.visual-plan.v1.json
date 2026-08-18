@@ -1,0 +1,1588 @@
+{
+  "schemaVersion": 4,
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required"
+  },
+  "videoId": "ORDINARY_AI_AIGC_20260818_talk01",
+  "videoTitle": "普通人学AI，先问自己为什么学",
+  "sourceVideo": "source/20260818_ordinary_ai_aigc/R01_普通人学AI与AIGC漫剧入门_口播原片.MOV",
+  "transcript": "edit/transcripts/ordinary-ai-aigc-20260818/ordinary-ai-aigc-20260818.cleaned.v1.json",
+  "bilingualCaptions": "remotion/public/data/ordinary_ai_aigc_20260818.bilingual.v1.json",
+  "baselineId": "koubo-formal-16x9-v1",
+  "styleReferenceIds": [
+    "v8-user-confirmed-default-20260812",
+    "v8-speaker-first-continuous-semantics",
+    "v8-generated-video-fullscreen-with-disclosure"
+  ],
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "previewCoverage": [
+    "hook",
+    "complex-overlay",
+    "cta",
+    "full-screen-asset",
+    "speaker-overlay",
+    "media-fullscreen",
+    "progressive-process",
+    "source-evidence",
+    "hero-emphasis",
+    "sfx-ab"
+  ],
+  "editPolicy": "完整保留真人口播原片；新增现场和AIGC画面只在对应语义段使用，原口播音轨始终保留；RunningHub价格证据按2.0与2.5分别展示，原图只读，信息卡只做确定性标注。",
+  "assetCoverage": {
+    "usableOriginalVideoItems": 1,
+    "assignedOriginalVideoItems": 1,
+    "generatedVideoItems": 8,
+    "assignedGeneratedVideoItems": 8,
+    "generatedStillItems": 8,
+    "allRequiredClaimsCovered": true,
+    "note": "真人原片为主画面；用户补入的现场、原创AIGC视频和价格证据按用途绑定。"
+  },
+  "layers": [
+    {
+      "id": "ordinary-001-hook",
+      "start": 0.4,
+      "end": 14.5,
+      "spokenLine": "我也想学AI，到底怎么从AI里面赚到钱？",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-001-hook",
+      "zone": "left-safe",
+      "title": "先问：你为什么学AI？",
+      "detail": "工作问题、内容创意，还是被焦虑推着走？",
+      "items": [
+        "解决工作",
+        "做漫剧",
+        "没有目标"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-001-hook-event",
+        "enterAt": 0.4,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter",
+        "cueId": "ordinary-001-hook-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "definition",
+        "title": "先问：你为什么学AI？",
+        "detail": "工作问题、内容创意，还是被焦虑推着走？",
+        "items": [
+          "解决工作",
+          "做漫剧",
+          "没有目标"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 2.9
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "hero-definition",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-002-three-starts",
+      "start": 14.5,
+      "end": 29,
+      "spokenLine": "这三种情况，都叫我想学AI，但起点完全不是一回事。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-002-three-starts",
+      "zone": "left-safe",
+      "title": "三种“我想学AI”",
+      "detail": "起点不同，第一步也不同。",
+      "items": [
+        "手上工作忙不过来",
+        "手里有明确创意",
+        "只是焦虑还没有目标"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-002-three-starts-event",
+        "enterAt": 14.5,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "ordinary-002-three-starts-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "三种“我想学AI”",
+        "detail": "起点不同，第一步也不同。",
+        "items": [
+          "手上工作忙不过来",
+          "手里有明确创意",
+          "只是焦虑还没有目标"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 17
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-003-early-media",
+      "start": 29,
+      "end": 44,
+      "spokenLine": "一条是用AI改善现有工作，另一条是用AI做动漫、漫剧和AIGC内容。",
+      "purpose": "semantic-emphasis",
+      "kind": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-003-early-media",
+      "zone": "full-screen",
+      "title": "AI可以进入两条真实路径",
+      "detail": "改善现有工作，或者做一个能看懂的小样片。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-recorded-scene",
+        "source": "remotion/public/media/ordinary-ai-aigc-20260818/behind-scenes/IMG_2292.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "user",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "ordinary-003-early-media-event",
+        "enterAt": 29,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "ordinary-003-early-media-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "generated-media",
+        "title": "AI可以进入两条真实路径",
+        "detail": "改善现有工作，或者做一个能看懂的小样片。",
+        "items": [],
+        "tone": "cyan",
+        "mediaClips": [
+          {
+            "src": "media/ordinary-ai-aigc-20260818/behind-scenes/IMG_2292.mp4",
+            "durationSeconds": 12.5
+          },
+          {
+            "src": "media/ordinary-ai-aigc-20260818/behind-scenes/IMG_2293.mp4",
+            "durationSeconds": 2.5
+          }
+        ],
+        "src": "media/ordinary-ai-aigc-20260818/behind-scenes/IMG_2292.mp4",
+        "disclosure": "本人工作与拍摄现场 · 真实素材",
+        "badge": "真实过程 · 不作市场证据"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 31.5
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "generated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-004-work-entry",
+      "start": 44,
+      "end": 64,
+      "spokenLine": "有具体工作问题，就从一项真实任务开始。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-004-work-entry",
+      "zone": "left-safe",
+      "title": "先说工作这一条",
+      "detail": "基础不是背工具，而是把一项真实任务跑成闭环。",
+      "items": [
+        "问题",
+        "输入与判断",
+        "交付与验收"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-004-work-entry-event",
+        "enterAt": 44,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "ordinary-004-work-entry-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "statement",
+        "title": "先说工作这一条",
+        "detail": "基础不是背工具，而是把一项真实任务跑成闭环。",
+        "items": [
+          "问题",
+          "输入与判断",
+          "交付与验收"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 46.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "direct-statement",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-005-work-scene",
+      "start": 64,
+      "end": 99,
+      "spokenLine": "手上的工作已经忙不过来了，想解决一个具体的能力短板。",
+      "purpose": "semantic-emphasis",
+      "kind": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-005-work-scene",
+      "zone": "full-screen",
+      "title": "从真实工作场景开始",
+      "detail": "先让AI参与一个你每天都在做、而且能验收的动作。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-recorded-scene",
+        "source": "remotion/public/media/ordinary-ai-aigc-20260818/behind-scenes/IMG_2295.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "user",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "ordinary-005-work-scene-event",
+        "enterAt": 64,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "ordinary-005-work-scene-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "generated-media",
+        "title": "从真实工作场景开始",
+        "detail": "先让AI参与一个你每天都在做、而且能验收的动作。",
+        "items": [],
+        "tone": "cyan",
+        "mediaClips": [
+          {
+            "src": "media/ordinary-ai-aigc-20260818/behind-scenes/IMG_2295.mp4",
+            "durationSeconds": 11.1
+          },
+          {
+            "src": "media/ordinary-ai-aigc-20260818/behind-scenes/IMG_2294.mp4",
+            "durationSeconds": 3.7
+          },
+          {
+            "src": "media/ordinary-ai-aigc-20260818/behind-scenes/IMG_2292.mp4",
+            "durationSeconds": 12.5
+          },
+          {
+            "src": "media/ordinary-ai-aigc-20260818/behind-scenes/IMG_2293.mp4",
+            "durationSeconds": 7.7
+          }
+        ],
+        "src": "media/ordinary-ai-aigc-20260818/behind-scenes/IMG_2295.mp4",
+        "disclosure": "本人工作台与拍摄现场 · 真实素材",
+        "badge": "真实过程 · 不作效果承诺"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 66.5
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "generated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-006-adoption-data",
+      "start": 99,
+      "end": 149,
+      "spokenLine": "接触AI的人已经很多了，但会问问题，和让AI稳定参与一项真实工作，中间还有一段距离。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-006-adoption-data",
+      "zone": "left-safe",
+      "title": "6.02亿 / 42.8%",
+      "detail": "接触AI的人很多，不等于AI已经进入真实工作。",
+      "items": [
+        "生成式人工智能用户规模",
+        "普及率",
+        "回答问题占80.9%"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-006-adoption-data-event",
+        "enterAt": 99,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "comparison",
+        "cueId": "ordinary-006-adoption-data-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "comparison",
+        "title": "6.02亿 / 42.8%",
+        "detail": "接触AI的人很多，不等于AI已经进入真实工作。",
+        "items": [
+          "生成式人工智能用户规模",
+          "普及率",
+          "回答问题占80.9%"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 101.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "comparison-bars",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-007-five-things",
+      "start": 149,
+      "end": 188,
+      "spokenLine": "咋们先要学会五件事。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-007-five-things",
+      "zone": "left-safe",
+      "title": "普通人先学五件事",
+      "detail": "第五件：把错误沉淀成模板、清单或固定动作。",
+      "items": [
+        "问题是什么",
+        "输入、判断、交付",
+        "资料能不能上传",
+        "什么算做对、谁验收"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-007-five-things-event",
+        "enterAt": 149,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "ordinary-007-five-things-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "普通人先学五件事",
+        "detail": "第五件：把错误沉淀成模板、清单或固定动作。",
+        "items": [
+          "问题是什么",
+          "输入、判断、交付",
+          "资料能不能上传",
+          "什么算做对、谁验收"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 151.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-008-minimum-loop",
+      "start": 188,
+      "end": 235,
+      "spokenLine": "这就形成了一个最小闭环：原始输入，AI第一版，人工检查，交付结果，记录错误。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-008-minimum-loop",
+      "zone": "left-safe",
+      "title": "原始输入 → AI第一版 → 人工检查 → 交付",
+      "detail": "重复到标准稳定，再考虑模板、技能、智能体、自动化或代码。",
+      "items": [
+        "原始输入",
+        "AI第一版",
+        "人工检查",
+        "交付结果"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-008-minimum-loop-event",
+        "enterAt": 188,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "ordinary-008-minimum-loop-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "原始输入 → AI第一版 → 人工检查 → 交付",
+        "detail": "重复到标准稳定，再考虑模板、技能、智能体、自动化或代码。",
+        "items": [
+          "原始输入",
+          "AI第一版",
+          "人工检查",
+          "交付结果"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 190.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-009-market-exists",
+      "start": 235,
+      "end": 313,
+      "spokenLine": "这确实是一个值得研究的市场，但市场大，不等于个人做了就能赚钱。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-009-market-exists",
+      "zone": "left-safe",
+      "title": "市场存在，不等于个人必然赚钱",
+      "detail": "用户、企业、作品和产业链都存在，但创意仍要通过样片验证。",
+      "items": [
+        "用户",
+        "企业",
+        "作品",
+        "产业链"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-009-market-exists-event",
+        "enterAt": 235,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "ordinary-009-market-exists-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "statement",
+        "title": "市场存在，不等于个人必然赚钱",
+        "detail": "用户、企业、作品和产业链都存在，但创意仍要通过样片验证。",
+        "items": [
+          "用户",
+          "企业",
+          "作品",
+          "产业链"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 237.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "direct-statement",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-010-aigc-sample",
+      "start": 313,
+      "end": 345,
+      "spokenLine": "漫剧的最低交付，不是几张好看的图，而是一个能看懂的样片。",
+      "purpose": "concept-illustration",
+      "kind": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-010-aigc-sample",
+      "zone": "full-screen",
+      "title": "从漂亮图片到完整样片",
+      "detail": "一句话故事、角色设定、六到十二个镜头、声音、剪辑，完成一个完整动作。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-generated-video",
+        "source": "remotion/public/media/ordinary-ai-aigc-20260818/aigc/视频_3.mp4"
+      },
+      "assetDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "requestId": "S02",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "ordinary-010-aigc-sample-event",
+        "enterAt": 313,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "ordinary-010-aigc-sample-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "generated-media",
+        "title": "从漂亮图片到完整样片",
+        "detail": "一句话故事、角色设定、六到十二个镜头、声音、剪辑，完成一个完整动作。",
+        "items": [],
+        "tone": "cyan",
+        "mediaClips": [
+          {
+            "src": "media/ordinary-ai-aigc-20260818/aigc/视频_3.mp4",
+            "durationSeconds": 8
+          },
+          {
+            "src": "media/ordinary-ai-aigc-20260818/aigc/视频_4.mp4",
+            "durationSeconds": 8
+          },
+          {
+            "src": "media/ordinary-ai-aigc-20260818/aigc/视频.mp4",
+            "durationSeconds": 8
+          },
+          {
+            "src": "media/ordinary-ai-aigc-20260818/aigc/视频_2.mp4",
+            "durationSeconds": 8
+          }
+        ],
+        "src": "media/ordinary-ai-aigc-20260818/aigc/视频_3.mp4",
+        "disclosure": "用户原创AIGC概念画面 · 不作市场证据",
+        "badge": "原创样片示例 · 不代表平台效果"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 315.5
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "generated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-011-sample-standard",
+      "start": 345,
+      "end": 361.5,
+      "spokenLine": "通过标准也很简单：观众能不能看懂，人物能不能大体保持。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-011-sample-standard",
+      "zone": "left-safe",
+      "title": "样片先过五个标准",
+      "detail": "看懂、保持、接上、听清、记账。",
+      "items": [
+        "看得懂",
+        "人物大体保持",
+        "镜头接得上",
+        "声音听得清"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-011-sample-standard-event",
+        "enterAt": 345,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "ordinary-011-sample-standard-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "status",
+        "title": "样片先过五个标准",
+        "detail": "看懂、保持、接上、听清、记账。",
+        "items": [
+          "看得懂",
+          "人物大体保持",
+          "镜头接得上",
+          "声音听得清"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 347.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "status-stack",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-012-price-20",
+      "start": 361.5,
+      "end": 375.5,
+      "spokenLine": "Seedance 2.0选择4K、5秒、无音频、16比9，一次生成页面显示9.15元。",
+      "purpose": "semantic-emphasis",
+      "kind": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-012-price-20",
+      "zone": "full-screen",
+      "title": "Seedance 2.0：4K / 5秒 / 9.15元",
+      "detail": "RunningHub页面示例；原图只作本次价格证据。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-provided-price-evidence",
+        "source": "remotion/public/media/ordinary-ai-aigc-20260818/evidence/E01.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "user",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "ordinary-012-price-20-event",
+        "enterAt": 361.5,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "evidence",
+        "cueId": "ordinary-012-price-20-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "generated-media",
+        "title": "Seedance 2.0：4K / 5秒 / 9.15元",
+        "detail": "RunningHub页面示例；原图只作本次价格证据。",
+        "items": [],
+        "tone": "cyan",
+        "src": "media/ordinary-ai-aigc-20260818/evidence/E01.mp4",
+        "disclosure": "RunningHub用户实测价格证据 · 原图放大展示",
+        "badge": "本次页面示例 · 价格可能随页面和账户变化"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 364
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "evidence-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-013-cost-20",
+      "start": 375.5,
+      "end": 405.8,
+      "spokenLine": "20秒拆成4个5秒镜头，一次成功理想情况下，视频模型调用费等于36.60元。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-013-cost-20",
+      "zone": "left-safe",
+      "title": "20秒：4 × 9.15 = 36.60元",
+      "detail": "这是一次生成成功的理想单轮成本，不包含图片、声音和返工。",
+      "items": [
+        "4个5秒镜头",
+        "单轮理想情况",
+        "不含后期与失败返工"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-013-cost-20-event",
+        "enterAt": 375.5,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "comparison",
+        "cueId": "ordinary-013-cost-20-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "comparison",
+        "title": "20秒：4 × 9.15 = 36.60元",
+        "detail": "这是一次生成成功的理想单轮成本，不包含图片、声音和返工。",
+        "items": [
+          "4个5秒镜头",
+          "单轮理想情况",
+          "不含后期与失败返工"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 378
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "comparison-bars",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-014-cost-retry",
+      "start": 405.8,
+      "end": 422.4,
+      "spokenLine": "每个镜头平均生成4轮，视频模型费等于146.40元。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-014-cost-retry",
+      "zone": "left-safe",
+      "title": "返工一来，成本立刻变",
+      "detail": "4个镜头 × 4轮 × 9.15元 = 146.40元。",
+      "items": [
+        "一次成功 ≠ 一次交付",
+        "记录生成次数",
+        "先设预算上限"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-014-cost-retry-event",
+        "enterAt": 405.8,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "ordinary-014-cost-retry-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "statement",
+        "title": "返工一来，成本立刻变",
+        "detail": "4个镜头 × 4轮 × 9.15元 = 146.40元。",
+        "items": [
+          "一次成功 ≠ 一次交付",
+          "记录生成次数",
+          "先设预算上限"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 408.3
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "direct-statement",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-015-price-25",
+      "start": 422.4,
+      "end": 451.9,
+      "spokenLine": "Seedance 2.5是另一套模型和价格体系，4K、30秒，一次生成75.60元。",
+      "purpose": "semantic-emphasis",
+      "kind": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-015-price-25",
+      "zone": "full-screen",
+      "title": "Seedance 2.5：4K / 30秒 / 75.60元",
+      "detail": "2.0和2.5分开核算，不把两套价格体系混成一个单价。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-provided-price-evidence",
+        "source": "remotion/public/media/ordinary-ai-aigc-20260818/evidence/E03.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "user",
+        "requestId": null,
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "ordinary-015-price-25-event",
+        "enterAt": 422.4,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "evidence",
+        "cueId": "ordinary-015-price-25-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "generated-media",
+        "title": "Seedance 2.5：4K / 30秒 / 75.60元",
+        "detail": "2.0和2.5分开核算，不把两套价格体系混成一个单价。",
+        "items": [],
+        "tone": "cyan",
+        "src": "media/ordinary-ai-aigc-20260818/evidence/E03.mp4",
+        "disclosure": "RunningHub用户实测价格证据 · 原图放大展示",
+        "badge": "Seedance 2.5 · 另一套价格体系"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 424.9
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "evidence-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-016-cost-long",
+      "start": 451.9,
+      "end": 480,
+      "spokenLine": "60秒样片约439.20元，3分钟试播集约1317.60元。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-016-cost-long",
+      "zone": "left-safe",
+      "title": "60秒：439.20元｜3分钟：1317.60元",
+      "detail": "只计算Seedance 2.0视频模型调用费，不含图片、声音、剪辑、版权、审核和人工时间。",
+      "items": [
+        "12个5秒镜头 × 4轮",
+        "36个5秒镜头 × 4轮",
+        "真正超预算的常是返工"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-016-cost-long-event",
+        "enterAt": 451.9,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "comparison",
+        "cueId": "ordinary-016-cost-long-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "comparison",
+        "title": "60秒：439.20元｜3分钟：1317.60元",
+        "detail": "只计算Seedance 2.0视频模型调用费，不含图片、声音、剪辑、版权、审核和人工时间。",
+        "items": [
+          "12个5秒镜头 × 4轮",
+          "36个5秒镜头 × 4轮",
+          "真正超预算的常是返工"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 454.4
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "comparison-bars",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-017-aigc-hero",
+      "start": 480,
+      "end": 508.8,
+      "spokenLine": "如果你本身懂导演思维、镜头和节奏，你的优势就不只是会不会点生成按钮。",
+      "purpose": "concept-illustration",
+      "kind": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-017-aigc-hero",
+      "zone": "full-screen",
+      "title": "懂导演思维，试错方向就不同",
+      "detail": "角色什么时候出现、镜头怎么切、观众几秒看懂，都会影响返工次数。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-generated-video",
+        "source": "remotion/public/media/ordinary-ai-aigc-20260818/aigc/A03_8月12日_4K导出_20秒.mp4"
+      },
+      "assetDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "requestId": "S03",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "ordinary-017-aigc-hero-event",
+        "enterAt": 480,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "ordinary-017-aigc-hero-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "generated-media",
+        "title": "懂导演思维，试错方向就不同",
+        "detail": "角色什么时候出现、镜头怎么切、观众几秒看懂，都会影响返工次数。",
+        "items": [],
+        "tone": "cyan",
+        "mediaClips": [
+          {
+            "src": "media/ordinary-ai-aigc-20260818/aigc/A03_8月12日_4K导出_20秒.mp4",
+            "durationSeconds": 20.2
+          }
+        ],
+        "src": "media/ordinary-ai-aigc-20260818/aigc/A03_8月12日_4K导出_20秒.mp4",
+        "disclosure": "用户原创AIGC样片 · 不作商业结果证据",
+        "badge": "导演思维与镜头判断"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 482.5
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "generated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-018-four-paths",
+      "start": 508.8,
+      "end": 563,
+      "spokenLine": "普通人进入这个市场，大致有四条路。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-018-four-paths",
+      "zone": "left-safe",
+      "title": "普通人进入市场的四条路",
+      "detail": "先用小样片验证，再决定投入方式。",
+      "items": [
+        "自己在家做样片",
+        "借助工作室",
+        "组一个小团队",
+        "找平台、扶持或资方"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-018-four-paths-event",
+        "enterAt": 508.8,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "ordinary-018-four-paths-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "layer-map",
+        "title": "普通人进入市场的四条路",
+        "detail": "先用小样片验证，再决定投入方式。",
+        "items": [
+          "自己在家做样片",
+          "借助工作室",
+          "组一个小团队",
+          "找平台、扶持或资方"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 511.3
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "layer-map",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-019-home-studio",
+      "start": 563,
+      "end": 598,
+      "spokenLine": "自己在家做样片，或者借助工作室。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-019-home-studio",
+      "zone": "left-safe",
+      "title": "自己做，还是借助工作室？",
+      "detail": "交付秒数、镜头数、修改轮次、资产归属和商用边界都要问清楚。",
+      "items": [
+        "自己做：预算可控",
+        "工作室：买样片先验证",
+        "角色资产归谁",
+        "素材能不能商用"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-019-home-studio-event",
+        "enterAt": 563,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "ordinary-019-home-studio-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "自己做，还是借助工作室？",
+        "detail": "交付秒数、镜头数、修改轮次、资产归属和商用边界都要问清楚。",
+        "items": [
+          "自己做：预算可控",
+          "工作室：买样片先验证",
+          "角色资产归谁",
+          "素材能不能商用"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 565.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-020-team-fund",
+      "start": 598,
+      "end": 684.4,
+      "spokenLine": "组一个小团队，或者去找平台、扶持或者资方。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-020-team-fund",
+      "zone": "left-safe",
+      "title": "团队与资方，都要先看交付",
+      "detail": "好想法只是起点，还要有故事、样片、预算、版权、团队和发行计划。",
+      "items": [
+        "创意与编剧",
+        "导演与分镜",
+        "角色与视觉资产",
+        "生成、剪辑、声音、合规"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-020-team-fund-event",
+        "enterAt": 598,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "ordinary-020-team-fund-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "status",
+        "title": "团队与资方，都要先看交付",
+        "detail": "好想法只是起点，还要有故事、样片、预算、版权、团队和发行计划。",
+        "items": [
+          "创意与编剧",
+          "导演与分镜",
+          "角色与视觉资产",
+          "生成、剪辑、声音、合规"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 600.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "status-stack",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-021-boundaries",
+      "start": 684.4,
+      "end": 723.6,
+      "spokenLine": "还有两道边界要提前记住。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-021-boundaries",
+      "zone": "left-safe",
+      "title": "两道不能跳过的边界",
+      "detail": "微短剧公开传播与AI生成合成内容，都要按要求核验和标识。",
+      "items": [
+        "许可证、备案、审核、责任主体",
+        "生成合成内容标识",
+        "小说、角色、肖像、音乐、字体的授权"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-021-boundaries-event",
+        "enterAt": 684.4,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "ordinary-021-boundaries-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "两道不能跳过的边界",
+        "detail": "微短剧公开传播与AI生成合成内容，都要按要求核验和标识。",
+        "items": [
+          "许可证、备案、审核、责任主体",
+          "生成合成内容标识",
+          "小说、角色、肖像、音乐、字体的授权"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 686.9
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-022-final-loop",
+      "start": 723.6,
+      "end": 760.6,
+      "spokenLine": "如果想改善工作，就先完成一项真实任务的小闭环。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-022-final-loop",
+      "zone": "left-safe",
+      "title": "先选结果，再做小样",
+      "detail": "记录生成次数、模型费用、人工时间、返工问题和版权边界。",
+      "items": [
+        "选结果",
+        "做小样",
+        "记录成本",
+        "扩大投入前再验证"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-022-final-loop-event",
+        "enterAt": 723.6,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "ordinary-022-final-loop-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "先选结果，再做小样",
+        "detail": "记录生成次数、模型费用、人工时间、返工问题和版权边界。",
+        "items": [
+          "选结果",
+          "做小样",
+          "记录成本",
+          "扩大投入前再验证"
+        ],
+        "tone": "green"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 726.1
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "ordinary-023-closing",
+      "start": 760.6,
+      "end": 793.32,
+      "spokenLine": "先验证创意和协作，再决定要不要烧更大的钱。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "ordinary-023-closing",
+      "zone": "left-safe",
+      "title": "先把问题说清楚",
+      "detail": "我是超哥，在兰州AI创业。",
+      "items": [
+        "工作闭环",
+        "30—60秒样片",
+        "再决定投入"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "ordinary-023-closing-event",
+        "enterAt": 760.6,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "cta",
+        "cueId": "ordinary-023-closing-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "closing",
+        "title": "先把问题说清楚",
+        "detail": "我是超哥，在兰州AI创业。",
+        "items": [
+          "工作闭环",
+          "30—60秒样片",
+          "再决定投入"
+        ],
+        "tone": "green"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 763.1
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "closing",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    }
+  ]
+}
