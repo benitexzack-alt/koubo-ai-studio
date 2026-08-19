@@ -12,6 +12,7 @@ from typing import Any
 
 VALID_ROLES = {"account", "reference"}
 VALID_REVIEW = {"pending-user-review", "approved", "rework"}
+VALID_EXPERIMENTAL = {"disabled", "enabled-by-user"}
 REQUIRED_MECHANICS = (
     "hook_function",
     "audience_conflict",
@@ -154,10 +155,28 @@ class PilotValidator:
                 self.error(f"automation_boundary.forbidden_outputs 必须明确禁止：{required}")
         return not self.errors
 
+    def experimental_run_enabled(self) -> bool:
+        experimental = self.card.get("experimental_run")
+        if experimental is None:
+            return False
+        if not isinstance(experimental, dict):
+            self.error("experimental_run 必须是对象")
+            return False
+        if experimental.get("status") not in VALID_EXPERIMENTAL:
+            self.error("experimental_run.status 无效")
+            return False
+        if experimental["status"] == "disabled":
+            return False
+        for field in ("user_authorization", "scope", "boundary"):
+            if not nonempty(experimental.get(field)):
+                self.error(f"experimental_run.{field} 不能为空")
+        return not self.errors
+
     def result(self) -> dict[str, Any]:
         self.check_header()
         account_count, reference_count, jiang_count = self.check_samples()
         self.check_automation_boundary()
+        experimental_enabled = self.experimental_run_enabled()
         reviews = [
             item.get("manual_review", {}).get("status")
             for item in self.card.get("samples", [])
@@ -167,6 +186,8 @@ class PilotValidator:
             status = "blocked"
         elif reviews and all(item == "approved" for item in reviews):
             status = "ready-for-analysis-automation"
+        elif experimental_enabled:
+            status = "ready-for-experimental-analysis"
         else:
             status = "ready-for-manual-review"
         return {
@@ -179,6 +200,7 @@ class PilotValidator:
                 "reference_samples": reference_count,
                 "jiang_references": jiang_count,
                 "manual_reviews": reviews,
+                "experimental_run_enabled": experimental_enabled,
                 "generates_public_copy": False,
             },
         }

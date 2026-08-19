@@ -47,6 +47,7 @@ python3 <project-root>/skills/douyin-koubo-source-to-original/scripts/validate_p
 - `blocked`：样本缺失、来源不完整、样本配比错误、结构卡不完整，或出现试图直接生成公开稿的配置。
 - `ready-for-manual-review`：六样本资料完整，等待用户逐条确认结构拆解。
 - `ready-for-analysis-automation`：六条都经用户确认；仅允许每日来源分类、机制卡草案和选题/钩子候选。
+- `ready-for-experimental-analysis`：用户明确授权先运行，但样本尚未完成校准；允许输出来源分类、机制卡、最多三个候选，以及用户本轮明确要求时的一份 `discussion-only` 讨论稿。不得把实验稿视为可拍、可发或已经验证有效。
 
 ## 固定工作流
 
@@ -100,7 +101,7 @@ OPCD 检索结果只代表“候选召回”。候选包必须逐项列出本轮
 
 ## 每日自动化的允许输出
 
-在 `ready-for-analysis-automation` 后，每日可以输出：
+在 `ready-for-analysis-automation` 或 `ready-for-experimental-analysis` 后，每日可以输出：
 
 1. 来源资格清单和不完整来源的补料要求。
 2. 每条来源的口播机制卡草案。
@@ -108,6 +109,8 @@ OPCD 检索结果只代表“候选召回”。候选包必须逐项列出本轮
 4. 最多三个服务账号主线的选题候选，每个候选只给现实场景、核心矛盾、本人证据缺口和三个钩子方向。
 
 每日自动化不得输出：完整公开稿、虚构案例、工具实操步骤、收益/获客承诺、自动发布或制作指令。
+
+实验模式只在准入卡明确记录用户本轮授权、范围和边界时生效。它不是以“数据不足”为由绕过门禁：完整公开稿仍必须完成选题选择、源头精髓、内容门禁和双 Skill 审稿；用户只要求先讨论时，产物必须标记 `discussion-only`。
 
 ## 长期学习边界
 

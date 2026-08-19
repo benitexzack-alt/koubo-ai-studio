@@ -29,7 +29,8 @@ def run(card_path: Path) -> tuple[int, dict]:
 def main() -> int:
     exit_code, result = run(CARD)
     assert exit_code == 0, result
-    assert result["status"] == "ready-for-manual-review", result
+    assert result["status"] == "ready-for-experimental-analysis", result
+    assert result["summary"]["experimental_run_enabled"] is True, result
 
     invalid = json.loads(CARD.read_text(encoding="utf-8"))
     invalid["samples"] = invalid["samples"][:-1]
@@ -42,6 +43,18 @@ def main() -> int:
         assert result["status"] == "blocked", result
     finally:
         invalid_path.unlink(missing_ok=True)
+
+    disabled = json.loads(CARD.read_text(encoding="utf-8"))
+    disabled["experimental_run"]["status"] = "disabled"
+    with tempfile.NamedTemporaryFile("w", encoding="utf-8", suffix=".json", delete=False) as handle:
+        json.dump(disabled, handle, ensure_ascii=False)
+        disabled_path = Path(handle.name)
+    try:
+        exit_code, result = run(disabled_path)
+        assert exit_code == 0, result
+        assert result["status"] == "ready-for-manual-review", result
+    finally:
+        disabled_path.unlink(missing_ok=True)
     print("六样本自动化准入校验：通过")
     return 0
 

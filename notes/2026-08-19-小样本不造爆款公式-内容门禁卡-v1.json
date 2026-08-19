@@ -1,0 +1,368 @@
+{
+  "schema_version": 6,
+  "task_id": "task-20260819T054010Z-e5188d92",
+  "target_stage": "draft",
+  "required_rules": [
+    {
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md",
+      "read": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:account-preflight-20260819",
+      "title": "当前36条作品任务级账号数据回执",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260819T054010Z-e5188d92.json",
+      "verification_status": "已核验",
+      "canonical_ref": "抖音创作者中心官方导出的任务级不可变回执，采集时点、全量覆盖和数据边界见回执。",
+      "evidence_ids": ["evidence:account:task-20260819T054010Z-e5188d92"]
+    },
+    {
+      "id": "source:jiang-knowledge-rebuild",
+      "title": "姜胡说《踩着我的肩膀做知识主播》完整转写",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": ["viewpoint", "talking-structure"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7673119173723098419.md",
+      "verification_status": "已核验",
+      "canonical_ref": "完整本地转写仅供内部拆解“接触材料、重建、实践校正”的认知链；作者原句、案例、步骤名称和效果承诺不进入公开正文。",
+      "evidence_ids": ["evidence:douyin:7673119173723098419"]
+    }
+  ],
+  "topic_authorization": {
+    "status": "user-selected",
+    "selected_by": "user",
+    "selection_mode": "explicit-topic-request",
+    "selected_topic": "这条 Skill 的第一条价值，不是写出爆款，而是阻止我们用小样本给自己造公式。",
+    "user_instruction": "好的，那么就先跑起来，运行一下，然后先出一篇稿，我们先探讨一下。",
+    "source_ref": "conversation:2026-08-19:user-experimental-draft-request",
+    "confirmed_at": "2026-08-19T13:30:00+08:00",
+    "candidate_only": false
+  },
+  "candidate_generation": {
+    "used": true,
+    "method": "V1 源头机制拆解加当前账号数据和 OPCD 知识库候选包",
+    "selected_candidate": "candidate:small-sample-is-not-formula",
+    "combination_basis": [
+      "当前账号一条相对高于基线的视频数据与全账号描述性基线",
+      "新账号创作者容易从单条数据急于寻找固定公式的真实困境",
+      "完整参考内容中“材料需要重建并回到实践”的机制链"
+    ],
+    "generation_is_not_validation": true,
+    "validation_checks": {
+      "audience_problem_confirmed": true,
+      "recent_six_increment_confirmed": true,
+      "evidence_or_personal_fact_confirmed": true,
+      "account_stage_fit_confirmed": true,
+      "deliverable_confirmed": true
+    },
+    "rejected_or_deferred": [
+      "不在本次实验中直接把账号数据改写成抖音运营教学或爆款方法论。"
+    ]
+  },
+  "brief_contract": {
+    "user_goal": "先让这条选题与文稿 Skill 在当前小样本账号上真实运行，拿出一篇可讨论的稿件，重点验证它是否能把数据、源头和本人表达连成可审计的判断。",
+    "reference_role": "完整参考只提供“接触材料不等于拥有判断，必须重建并回到实践”的认知推进方式；正文用当前账号数据和自己的下一轮试验承载判断。",
+    "reference_forbidden_role": "不得复用参考作者原句、个人案例、步骤名称、效果承诺或账号经验；不得把结构研究伪装成自己已经验证的运营成果。",
+    "required_arc": [
+      "从一条2838播放的数据直接进入，先说它为什么不足以推出爆款公式",
+      "把后台数据、完整参考和连续试验放回各自该承担的位置",
+      "留下连续五条只验证一个内容变量的可证伪动作，并回扣不能过早下结论"
+    ],
+    "forbidden_reframes": [
+      "不得改写成保证播放量或完播率的运营教程",
+      "不得改写成企业AI交付四步法或重复上一条AI圈最魔幻的事",
+      "不得把一次相对高的数据包装成平台规律或爆款证明"
+    ],
+    "semantic_contract": {
+      "audience_conflict": "一条 2838 播放的视频，不够让我总结出爆款公式。",
+      "core_judgment": "它能告诉我：哪条视频有人多停了一会儿，哪条一开始就被划走了。",
+      "training_interpretation": "我现在真正要做的，是拿一个判断去连续发，回头看它在自己的账号、自己的表达里，到底站不站得住。",
+      "ordinary_person_value": "如果连续几条都站不住，那就把这条假设废掉。",
+      "chronology_is_not_main_arc": true,
+      "material_role_map": [
+        {
+          "material": "当前36条作品任务级账号数据回执",
+          "role": "hook-evidence",
+          "supports": "证明这条讨论来自当前账号的真实后台样本，而不是抽象运营观点。"
+        },
+        {
+          "material": "姜胡说完整转写与源头精髓卡",
+          "role": "mechanism-evidence",
+          "supports": "只支持材料必须被本人重建并回到实践检验的认知机制，不借用作者经历。"
+        },
+        {
+          "material": "当前账号实测学习卡的最小受控样本和观察窗口要求",
+          "role": "action-support",
+          "supports": "约束本条只提出连续五条、单变量和多时间窗口回看的下一步，而不承诺结果。"
+        }
+      ],
+      "alignment_refs": {
+        "audience_conflict": "一条 2838 播放的视频，不够让我总结出爆款公式。",
+        "core_judgment": "它能告诉我：哪条视频有人多停了一会儿，哪条一开始就被划走了。",
+        "training_interpretation": "我现在真正要做的，是拿一个判断去连续发，回头看它在自己的账号、自己的表达里，到底站不站得住。",
+        "ordinary_person_value": "如果连续几条都站不住，那就把这条假设废掉。"
+      }
+    },
+    "alignment_evidence": "正文开头用单条数据和全账号基线收紧结论；中段把参考材料限定为拆结构；结尾留下五条单变量实验并回扣“先不讲公式”。",
+    "status": "locked"
+  },
+  "recent_six": [
+    {
+      "title": "国产AI落到兰州",
+      "date": "2026-08-14",
+      "audience_problem": "企业AI项目责任链缺位",
+      "main_claim": "AI项目需要明确责任人和验收链",
+      "claim_id": "claim:ai-project:responsibility-chain",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260814"],
+      "deliverable": "五个责任人检查",
+      "cta": "写出项目空缺责任格",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v3.md",
+      "sha256": "82b0759bd3c093b4c70d44cf27903ba4bec4d46711292baaa2e73e154630461f",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "AI最好与最坏十年",
+      "date": "2026-08-12",
+      "audience_problem": "普通人如何不被AI降价",
+      "main_claim": "人要保留判断和负责能力",
+      "claim_id": "claim:ai-era:human-agency",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260812"],
+      "deliverable": "识别自己在AI链条中的位置",
+      "cta": "回看本周自己做的决定",
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-AI007-AI双刃剑源头拆解/2026-08-11-AI最好与最坏十年-超哥原创口播稿-v5.md",
+      "sha256": "aadf7c8763c4c9f43c4a7cf9c7f8df93dd4c548adc0377eb41c2e28cbb6bc1af",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "创业能力训练营第一集",
+      "date": "2026-08-11",
+      "audience_problem": "企业AI培训如何落到业务",
+      "main_claim": "培训价值在真实业务问题",
+      "claim_id": "claim:training:business-problem",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260811"],
+      "deliverable": "四个业务问题",
+      "cta": "带着问题进培训",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-11-创业能力训练营信创与AI-第一集完整口播稿-v2.md",
+      "sha256": "46f624be7da56dae323428a689323120597c5242da6947328726937a106191df",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "AI在第四次工业革命里站哪一层",
+      "date": "2026-08-10",
+      "audience_problem": "普通人在AI产业中的位置",
+      "main_claim": "普通人应掌握调用解释转化校准",
+      "claim_id": "claim:ai-layer:four-rights",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260810"],
+      "deliverable": "四层能力判断",
+      "cta": "判断自己当前能力层",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-10-AI第四次工业革命普通人位置-用户最终确认原稿-v1.md",
+      "sha256": "0192d40b19366ae98ab8a394d1558aa43298073b23bb900f8e5369245f9f2443",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    },
+    {
+      "title": "AI自媒体低成本起号",
+      "date": "2026-08-08",
+      "audience_problem": "普通人如何开始AI自媒体",
+      "main_claim": "先用账号积累真实资产",
+      "claim_id": "claim:ai-media:account-asset",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260808"],
+      "deliverable": "低成本起号动作",
+      "cta": "先完成账号首条内容",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+      "sha256": "3c46cc74b59df44084c44919abe0449316e15fa07ce3653db64dea85ac726b14",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    },
+    {
+      "title": "AI效率不等于完整AI生产力",
+      "date": "2026-08-04",
+      "audience_problem": "效率提升为何不等于新增价值",
+      "main_claim": "旧任务提速不自动产生新价值",
+      "claim_id": "claim:ai-productivity:value-gap",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260804"],
+      "deliverable": "区分效率与价值",
+      "cta": "检查任务是否创造新交付",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-04-AI效率不等于完整AI生产力-用户最终确认稿-v2.md",
+      "sha256": "5618c1dbefd62ab938b75e46fa461d05de25a1e9df2dd677a6c73300f29b8bd0",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    }
+  ],
+  "topic": {
+    "audience": "正在做AI内容、个人账号，或需要从小样本数据判断下一步的普通创作者、本地创业者和小微企业老板。",
+    "problem": "看到一条相对好的播放或留存数据后，很容易把一次现象解释成标题、题材或开头已经被验证，随后盲目照抄。",
+    "desired_change": "观众能把数据、参考内容和真实试验分开，只留下一个可以连续验证或废弃的下一步假设。",
+    "novel_claim": "这条 Skill 的第一条价值，不是写出爆款，而是阻止我们用小样本给自己造公式。",
+    "claim_id": "claim:account-experiment:small-sample-not-formula",
+    "primary_evidence_ids": ["evidence:account:task-20260819T054010Z-e5188d92"],
+    "difference_from_recent": "最近六条主要讲AI位置、企业责任、培训问题和工具如何进入业务；本条新增的是账号当前36条作品的描述性数据怎样被正确使用。新证据是本次全量账号回执，新交付物是连续五条只验证一个变量的记录法，不重复企业AI交付尺子或四层能力结论。",
+    "evidence_proves": "当前回执证明36条作品的全账号描述性基线，也证明《AI圈最魔幻的事》在回执采集时点的播放、五秒留存和平均观看数据。",
+    "evidence_does_not_prove": "不能证明标题、题材、开头、发布时间或某一个句子单独造成了数据差异；更不能承诺后续五条一定提高播放、完播、涨粉或获客。",
+    "audience_takeaway": "遇到一条相对好的数据时，先写成一个只改一个变量的假设，连续观察多个时间窗口；不成立就废掉，不把它急着做成公式。",
+    "boundary": "本条只讨论当前账号如何形成下一轮内容假设，不是抖音算法规律，也不是企业客户已经验证的AI服务方法。",
+    "delete_candidates": [
+      "删除平台算法解释和爆款承诺",
+      "删除虚构的客户、企业试点或服务效果",
+      "删除上一条已经讲过的AI交付四件事"
+    ]
+  },
+  "frozen_topic_hits": [],
+  "audience_fit": {
+    "account_stage": "试验",
+    "speaker_position": "正在公开记录账号判断、资料拆解和小样本试验的兰州AI实践者；不冒充平台运营专家，也不把尚未跑完的内容试验包装成企业交付经验。",
+    "first_20s_connection": "一个刚做账号的人，晚上打开后台，看到一条播放和留存都高一点的视频，很容易马上想：是不是终于找到爆款开头了？这条先把这个冲动按住。",
+    "high_level_material_role": "none",
+    "ordinary_scenes": [
+      "晚上打开创作者后台，看到某条数据高一点就想把下周所有选题都照着写。",
+      "小团队开会时拿一张后台数据表，很快把一次波动说成固定做法。",
+      "看到别人一条参考视频写得好，就想直接挪用对方的案例和结论。"
+    ],
+    "audience_gain": "听完能给任何一条相对好的数据留出正确位置：它只负责提出下一步假设，随后用单变量、连续发布和多个观察窗口决定保留还是废弃。",
+    "authority_boundary": "只说当前账号真实回执和自己的下一轮实验设计；不评价平台算法，不定义爆款，不声称已经替任何本地企业验证结果。",
+    "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "account_data_preflight": {
+      "receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260819T054010Z-e5188d92.json",
+      "receipt_sha256": "cb08e2707cc1de592e8f06204c87cef38e91976fc7be9aff0d05baf1391a65f9",
+      "read": true
+    },
+    "account_data_application": {
+      "account_baseline_evidence": {
+        "metric": "weightedMetrics.fiveSecondCompletionRate",
+        "value": 33.1391,
+        "use": "用全账号五秒留存描述性基线约束本条：开头先给一条具体数据和“不够公式”的判断，不能用背景铺垫拖到后面。"
+      },
+      "recent_work_evidence": {
+        "video_key": "4da298e8a29710e45a7f09fb",
+        "metric": "metrics.fiveSecondCompletionRate",
+        "value": 46.57,
+        "use": "用近期高于全账号基线的一条具体作品作为本条反思对象，只说明其值得提出假设，不复制主题、更不推断因果。"
+      },
+      "planned_change": "前五秒直接说“2838不够总结爆款公式”，十五秒内落到当前账号36条作品和没有足够受控样本的现实，把观众价值放在如何正确处理一条数据。",
+      "causal_claim": "human-confirmed-lesson-only"
+    },
+    "learning_card_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+    "learning_card_sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "newer_content_acknowledged": true,
+    "newer_content_ids": [
+      "2026-08-11-training-camp-episode-1",
+      "2026-08-12-ai-best-worst",
+      "2026-08-14-training-camp-episode-2",
+      "2026-08-16-ai-magic",
+      "2026-08-18-why-learn-ai"
+    ],
+    "newer_content_metric_status": "8月16日作品已纳入本次任务级回执，8月18日作品仍在早期窗口；两条都只能作为开头假设和去重输入，不能升级为稳定规律。",
+    "applied_lesson_ids": [
+      "lesson:opening:title-answer-before-background",
+      "lesson:hook:concrete-conflict-scene-object",
+      "lesson:duration:value-order-before-shortening",
+      "lesson:metrics:separate-early-and-mature-windows"
+    ],
+    "opening_plan": {
+      "answer_or_conflict_by_second": 3,
+      "proof_or_real_scene_by_second": 12,
+      "audience_relevance_by_second": 20,
+      "first_viewer_value_by_second": 28,
+      "title_answer_by_second": 3,
+      "delayed_payoff_risk_checked": true
+    },
+    "duration_plan": {
+      "planned_seconds": 150,
+      "single_core_problem": "单条后台数据只能提出下一轮假设，不能直接被写成内容或经营公式。",
+      "justification": "正文只解释一个“为什么不能急着下结论”的问题，保留一组当前数据、一次结构参考和一个连续五条的试验动作。电脑朗读约114秒，预留真人停顿后按两分半以内讨论稿处理。",
+      "evidence_based_justification": true
+    },
+    "metric_plan": {
+      "primary_metric": "five_second_completion_rate",
+      "secondary_metrics": ["average_watch_seconds", "profile_visits"],
+      "observation_windows": ["early-within-3h", "24h", "72h", "7d"],
+      "hypothesis": "将具体数据与“不够总结公式”的判断放在前三秒，并在十五秒内说清数据只能提出假设，可能让观众更早听懂本条要解决的问题；若多个窗口均未显示更清晰的早期信号，则放弃这个开头假设。",
+      "early_vs_mature_windows_acknowledged": true
+    }
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {
+      "target": "primary",
+      "script_evidence": "正文给出一条相对好的数据也不能直接成为公式的具体场景，并留下连续五条只改一个变量、按多个窗口回看的明确动作。",
+      "viewer_test": "观众能把自己的任意一条相对好数据写成单变量假设，而不是直接套用成固定结论。"
+    },
+    "surprise": {
+      "target": "supporting",
+      "script_evidence": "开头把“2838播放”与“不够总结爆款公式”放在同一句，反差来自真实后台数据和收紧后的判断，不靠虚构焦虑。",
+      "viewer_test": "删掉夸张词后，观众仍能复述这条反差：好一点的数据值得看，但不足以下定论。"
+    },
+    "expression": {
+      "target": "primary",
+      "script_evidence": "中段用“后台一打开”“我自己按住”“连续发、回头看”等具体动作，取代资料综述和整齐的概念三分法。",
+      "viewer_test": "陌生观众能用一句自然的话复述本条判断，不会只记住播放数字或抽象口号。"
+    },
+    "resonance": {
+      "target": "supporting",
+      "script_evidence": "正文抓住刚做账号时看到一条数据好一点，就想赶紧找到公式的真实冲动，并把它收回到可验证的下一步。",
+      "viewer_test": "共鸣来自观众自己打开后台后的判断困境，不依赖收益承诺、贬低同行或情绪对立。"
+    },
+    "integrity_boundary": "不得把2838播放说成爆款、平台认可或稳定能力；不得把单条与基线的差异写成因果；不得承诺五条实验提高任何账号数据、商业咨询或企业服务结果。",
+    "review_status": "self-reviewed",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {
+      "name": "小样本假设而非公式",
+      "problem": "创作者或老板看到一次相对好的数据、演示或案例后，容易跳过验证，直接把它说成可复制方法。",
+      "bottleneck": "描述性数据、参考结构和真实实践被混在一起，导致一次现象被误当成原因和稳定结论。",
+      "mechanism": "先让数据只提出一个待验证变量，再用完整参考帮助拆清表达结构，最后在自己的连续发布或业务条件里只改一个变量并回看。",
+      "observable_change": "下一轮内容能写清唯一变量、完整观察窗口和废弃条件；正文也不再把单条数字写成爆款公式。",
+      "evidence": "当前36条作品任务级回执、当前学习卡、完整参考转写和本条源头精髓卡。",
+      "evidence_proves": "这些材料证明当前账号数据、既有学习合同和参考内容的结构机制，足以形成一个待验证的下一步设计。",
+      "evidence_does_not_prove": "不能证明本条开头、连续五条设计或任何参考结构一定带来更高播放、留存、获客或企业交付结果。",
+      "audience_relevance": "普通创作者、OPC和本地老板都需要区分“值得继续查的线索”与“已经可以拿去复制的方法”。",
+      "boundary": "账号数据实验和企业业务试验都需要各自的真实输入、观察周期和人工复盘；本条没有企业客户实证，不把两者混为一谈。"
+    }
+  ],
+  "voice": {
+    "profile_path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+    "read": true
+  },
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-19-小样本不造爆款公式-讨论口播稿-v1.md",
+    "content_start_marker": "## 口播正文开始",
+    "content_end_marker": "## 口播正文结束",
+    "copy_review": {
+      "required": true,
+      "report_path": "/Users/pc/Documents/口播/notes/2026-08-19-小样本不造爆款公式-文案双Skill审稿-v1.json"
+    },
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": false,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "performance_feedback_recheck_passed": true,
+    "compliance_passed": true,
+    "user_script_approved": false,
+    "phrase_exemptions": [],
+    "ai_tone_exemptions": [],
+    "anchor_exemptions": []
+  }
+}
