@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260819T070251Z-9ba1c88f",
+  "status": "passed",
+  "reviewed_at": "2026-08-19T15:34:00+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-19-普通人学AI先算真实账-讨论口播稿-v1.md",
+    "sha256": "c55bbb9292f1f558b8ba305d9f9c4fa299682212a4bb8c4321996b19d04589cc"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "开头直接使用来访者的问题，不解释写作意图；投入、项目和未跑通边界都嵌进本人判断，没有念事实锁。抽象的学习建议分别落在下班后的具体工作和准备全职时的成本、作品、真实问题上。外部参考没有进入正文，段落只服务观众从焦虑到判断的变化。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "你得先问自己：我能承受多久没有收入？我能拿出什么作品？我手上有没有一个真实的问题，愿意让我反复去做、去改，直到有人愿意用？",
+        "risk_level": "medium",
+        "reason": "连续三个问题信息密度较高，朗读时可能让准备全职的观众只记住焦虑，而漏掉本段是在帮助他评估投入条件。",
+        "candidates": {
+          "conservative": "你得先问自己：没有收入的这段时间，我能不能扛住？我又能做出什么作品给别人看？",
+          "direct": "你得先问自己：我能承受多久没有收入？我能拿出什么作品？我手上有没有一个真实的问题，愿意让我反复去做、去改，直到有人愿意用？",
+          "vivid": "别只盯着别人收款截图。先看看自己：空窗期能撑多久，能拿什么作品出去见人，手里有没有一件事值得反复做。"
+        },
+        "fact_difference": "三种候选都不增加收入数字、客户、结果或行业事实；直接版最完整，生动版仅改变节奏。",
+        "recommendation": "保留直接版。这里需要让准备全职的人同时看到成本、作品和真实问题三项条件；用户朗读时可在每个问号后停顿。"
+      },
+      {
+        "original": "投入、作品质量、素材权利、内容规则、反复修改，都会摆在你面前。",
+        "risk_level": "low",
+        "reason": "并列项较多，若画面没有配合，容易像概念清单。",
+        "candidates": {
+          "conservative": "做下去以后，投入和反复修改先会找上来，作品也得经得起看。",
+          "direct": "投入、作品质量、素材权利、内容规则、反复修改，都会摆在你面前。",
+          "vivid": "你以为点完就结束了，后面还有改图、改视频、找素材、处理发布这些事。"
+        },
+        "fact_difference": "三种候选均未声称具体政策、平台规则或实际收入；生动版只用通用创作动作解释原句。",
+        "recommendation": "保留直接版，并在录制时配工具订阅、编辑时间轴或项目记录画面；正文不需要再扩写。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "删除用户口述中的精确费用、未核验证书和其他创作者停更判断。"
+    ],
+    "wording_strength_changes": [
+      "将“有人付费、做过项目”收紧为“有付费项目在做、在交付”，并明确不等于已经跑通。"
+    ],
+    "pending_user_confirmations": [
+      "需要用户本人朗读确认“空窗期能撑多久”一段是否符合个人表达；当前只完成机器流程朗读检查。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}

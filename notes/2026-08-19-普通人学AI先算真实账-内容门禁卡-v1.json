@@ -1,0 +1,408 @@
+{
+  "schema_version": 6,
+  "task_id": "task-20260819T070251Z-9ba1c88f",
+  "target_stage": "draft",
+  "required_rules": [
+    {
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md",
+      "read": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:user-fact-lock",
+      "title": "本轮用户真实经历与公开边界事实锁",
+      "completeness": "primary-source",
+      "acquisition": "conversation-and-local-fact-check",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-19-普通人学AI先算真实账-事实锁-v1.md",
+      "verification_status": "本人确认并已完成公开边界核对",
+      "canonical_ref": "本轮用户直接陈述与项目个人事实档案、GEO当前进度的交叉核对；正文不使用未核验费用、证书或结果。",
+      "evidence_ids": ["evidence:user:real-cost-and-current-stage"]
+    },
+    {
+      "id": "source:geo-current-progress",
+      "title": "GEO项目说明与当前进度",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/GEO/GEO项目说明与当前进度.md",
+      "verification_status": "已核验",
+      "canonical_ref": "记录三家已确认付费且正在正式交付，同时没有完整效果验证闭环；只用于收紧“有项目但未跑通”的表达。",
+      "evidence_ids": ["evidence:geo:current-progress"]
+    },
+    {
+      "id": "source:jiang-structure",
+      "title": "姜胡说完整口播转写：爆款是抄出来的",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": ["talking-structure"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7674218063343979791.md",
+      "verification_status": "已核验",
+      "canonical_ref": "只拆解“先把冲突交代清楚，再用具体材料承接判断，结尾回扣”的表达推进；作者原句、案例和方法论不进入正文。",
+      "evidence_ids": ["evidence:douyin:7674218063343979791"]
+    },
+    {
+      "id": "source:damon-structure",
+      "title": "Damon完整口播转写：OPC超级个体",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": ["talking-structure"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/07/抖音-7664826482572741938.md",
+      "verification_status": "已核验",
+      "canonical_ref": "只拆解把抽象选择拉回个人资源、真实任务和可验证行动的叙事功能；不使用其个人经历、客户案例或结果。",
+      "evidence_ids": ["evidence:douyin:7664826482572741938"]
+    },
+    {
+      "id": "source:account-preflight-20260819-real-cost",
+      "title": "当前36条作品任务级账号数据回执",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260819T070251Z-9ba1c88f.json",
+      "verification_status": "已核验",
+      "canonical_ref": "抖音创作者中心官方导出的任务级回执；只用来约束开头和时长假设，不把单条数据解释成因果规律。",
+      "evidence_ids": ["evidence:account:task-20260819T070251Z-9ba1c88f"]
+    }
+  ],
+  "topic_authorization": {
+    "status": "user-selected",
+    "selected_by": "user",
+    "selection_mode": "explicit-topic-request",
+    "selected_topic": "AI 值得学，但不同处境不能走同一条路：有工作的人先把它放进现有工作验证；准备靠它谋生的人先把成本、作品和真实交付周期算清。",
+    "user_instruction": "把这个我刚以上说的这些内容作为我们这期的一个口播，一定是一个真实的切身体会，让大家不要盲目，也不要悲观，要有共情、有价值、有意义。",
+    "source_ref": "conversation:2026-08-19:user-real-cost-script-request",
+    "confirmed_at": "2026-08-19T15:20:00+08:00",
+    "candidate_only": false
+  },
+  "candidate_generation": {
+    "used": true,
+    "method": "外部受众价值门加用户事实锁、当前账号回执、完整参考结构和OPCD检索",
+    "selected_candidate": "candidate:ordinary-person-ai-real-cost-and-path",
+    "combination_basis": [
+      "最近来访者对AI副业和转行的真实困惑",
+      "用户本人已投入、有局部付费交付但尚未跑通的真实位置",
+      "完整参考只提供冲突到行动的表达结构，不替代用户经历"
+    ],
+    "generation_is_not_validation": true,
+    "validation_checks": {
+      "audience_problem_confirmed": true,
+      "recent_six_increment_confirmed": true,
+      "evidence_or_personal_fact_confirmed": true,
+      "account_stage_fit_confirmed": true,
+      "deliverable_confirmed": true
+    },
+    "rejected_or_deferred": [
+      "拒绝把内部Skill、门禁或账号自我校准过程作为公开口播主题。",
+      "拒绝把普通人学AI写成工具清单、轻松副业或转行成功故事。"
+    ]
+  },
+  "brief_contract": {
+    "user_goal": "以本人真实投入、局部付费交付和尚未跑通的过程，给想通过AI改善收入或转行的普通人一个不盲目也不悲观的判断。",
+    "reference_role": "参考视频只借用先说清观众正在纠结什么、再把判断放到具体条件和下一步里的叙事节奏，正文的事实全部来自本人经历和当前项目边界。",
+    "reference_forbidden_role": "不得使用参考作者的原句、例子、身份、收入、客户、方法名或效果；不得把任何外部作者的选择包装成本人的实操经验。",
+    "required_arc": [
+      "从上班族和暂未上班者反复问学AI能否多挣一点钱切入，当场给出不卖捷径的答案。",
+      "摊开自己在课程、工具、API、生成素材和试错上的投入，也承认已有项目和付费交付但回报尚未成比例。",
+      "按已有工作与准备全职两种处境给不同的下一步，把AI放回一个真实工作或一个可承受的尝试。",
+      "回到兰州本地正在验证企业场景的现实，邀请有真实结果的人交流，不把自己说成已跑通样本。"
+    ],
+    "forbidden_reframes": [
+      "不得复用上一条的企业AI交付四问或把工具动作说成经营建议。",
+      "不得写成AI课程、会员、API或证书的购买推荐，也不承诺副业收入和转行成功。",
+      "不得把成本账本写成卖惨，或把局部项目写成稳定商业结果。"
+    ],
+    "semantic_contract": {
+      "audience_conflict": "大家既怕错过AI，又怕花钱和花时间以后没有结果，于是在立刻冲进去和干脆不碰之间摇摆。",
+      "core_judgment": "AI 值得学，但不同处境不能走同一条路：有工作的人先把它放进现有工作验证；准备靠它谋生的人先把成本、作品和真实交付周期算清。",
+      "training_interpretation": "我现在不敢劝你辞职干AI，因为我自己也还在用投入、项目和交付，一段一段地验证这条路。",
+      "ordinary_person_value": "先把AI用在一件真实事情上，能帮你把事做好一点，才值得继续往里投时间和钱。",
+      "chronology_is_not_main_arc": true,
+      "material_role_map": [
+        {
+          "material": "本轮用户真实经历与公开边界事实锁",
+          "role": "hook-evidence",
+          "supports": "证明开头的来访问题和本人投入、尚未跑通的现状来自用户直接陈述。"
+        },
+        {
+          "material": "GEO项目说明与当前进度",
+          "role": "boundary",
+          "supports": "收紧项目表述：可说有付费交付，不能说已经得到稳定效果。"
+        },
+        {
+          "material": "完整参考转写",
+          "role": "mechanism-evidence",
+          "supports": "只支持从观众困惑推进到个人条件和行动，不承载任何外部事实或作者经验。"
+        },
+        {
+          "material": "当前36条作品任务级账号数据回执",
+          "role": "action-support",
+          "supports": "约束本条开头先交付观众矛盾和答案，并为时长、观察窗口留下可证伪假设。"
+        }
+      ],
+      "alignment_refs": {
+        "audience_conflict": "大家既怕错过AI，又怕花钱和花时间以后没有结果，于是在立刻冲进去和干脆不碰之间摇摆。",
+        "core_judgment": "AI 值得学，但不同处境不能走同一条路：有工作的人先把它放进现有工作验证；准备靠它谋生的人先把成本、作品和真实交付周期算清。",
+        "training_interpretation": "我现在不敢劝你辞职干AI，因为我自己也还在用投入、项目和交付，一段一段地验证这条路。",
+        "ordinary_person_value": "先把AI用在一件真实事情上，能帮你把事做好一点，才值得继续往里投时间和钱。"
+      }
+    },
+    "alignment_evidence": "正文开头直接放出观众的两难和不同位置的判断；中段用自己的成本与项目状态承接，不播报工具或行业信息；结尾只落在真实工作与继续验证。",
+    "status": "locked"
+  },
+  "recent_six": [
+    {
+      "title": "国产AI落到兰州",
+      "date": "2026-08-14",
+      "audience_problem": "企业AI项目责任链缺位",
+      "main_claim": "AI项目需要明确责任人和验收链",
+      "claim_id": "claim:ai-project:responsibility-chain",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260814"],
+      "deliverable": "五个责任人检查",
+      "cta": "写出项目空缺责任格",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v3.md",
+      "sha256": "82b0759bd3c093b4c70d44cf27903ba4bec4d46711292baaa2e73e154630461f",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "AI最好与最坏十年",
+      "date": "2026-08-12",
+      "audience_problem": "普通人如何不被AI降价",
+      "main_claim": "人要保留判断和负责能力",
+      "claim_id": "claim:ai-era:human-agency",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260812"],
+      "deliverable": "识别自己在AI链条中的位置",
+      "cta": "回看本周自己做的决定",
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-AI007-AI双刃剑源头拆解/2026-08-11-AI最好与最坏十年-超哥原创口播稿-v5.md",
+      "sha256": "aadf7c8763c4c9f43c4a7cf9c7f8df93dd4c548adc0377eb41c2e28cbb6bc1af",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "创业能力训练营第一集",
+      "date": "2026-08-11",
+      "audience_problem": "企业AI培训如何落到业务",
+      "main_claim": "培训价值在真实业务问题",
+      "claim_id": "claim:training:business-problem",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260811"],
+      "deliverable": "四个业务问题",
+      "cta": "带着问题进培训",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-11-创业能力训练营信创与AI-第一集完整口播稿-v2.md",
+      "sha256": "46f624be7da56dae323428a689323120597c5242da6947328726937a106191df",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "AI在第四次工业革命里站哪一层",
+      "date": "2026-08-10",
+      "audience_problem": "普通人在AI产业中的位置",
+      "main_claim": "普通人应掌握调用解释转化校准",
+      "claim_id": "claim:ai-layer:four-rights",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260810"],
+      "deliverable": "四层能力判断",
+      "cta": "判断自己当前能力层",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-10-AI第四次工业革命普通人位置-用户最终确认原稿-v1.md",
+      "sha256": "0192d40b19366ae98ab8a394d1558aa43298073b23bb900f8e5369245f9f2443",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    },
+    {
+      "title": "AI自媒体低成本起号",
+      "date": "2026-08-08",
+      "audience_problem": "普通人如何开始AI自媒体",
+      "main_claim": "先用账号积累真实资产",
+      "claim_id": "claim:ai-media:account-asset",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260808"],
+      "deliverable": "低成本起号动作",
+      "cta": "先完成账号首条内容",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+      "sha256": "3c46cc74b59df44084c44919abe0449316e15fa07ce3653db64dea85ac726b14",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    },
+    {
+      "title": "AI效率不等于完整AI生产力",
+      "date": "2026-08-04",
+      "audience_problem": "效率提升为何不等于新增价值",
+      "main_claim": "旧任务提速不自动产生新价值",
+      "claim_id": "claim:ai-productivity:value-gap",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260804"],
+      "deliverable": "区分效率与价值",
+      "cta": "检查任务是否创造新交付",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-04-AI效率不等于完整AI生产力-用户最终确认稿-v2.md",
+      "sha256": "5618c1dbefd62ab938b75e46fa461d05de25a1e9df2dd677a6c73300f29b8bd0",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    }
+  ],
+  "topic": {
+    "audience": "对AI有兴趣、担心错过机会又害怕投入没有回报的上班族、自由职业者、待业者和本地创业者。",
+    "problem": "很多人把学工具、改善现有工作和靠AI谋生混成一个问题，于是用买课、开会员或辞职来替代对真实处境的判断。",
+    "desired_change": "观众能按自己是否已有工作和真实任务分路，先做一个可观察的尝试，再决定要不要继续投入成本。",
+    "novel_claim": "AI 值得学，但不同处境不能走同一条路：有工作的人先把它放进现有工作验证；准备靠它谋生的人先把成本、作品和真实交付周期算清。",
+    "claim_id": "claim:ordinary-ai:real-cost-and-path",
+    "primary_evidence_ids": ["evidence:user:real-cost-and-current-stage", "evidence:geo:current-progress"],
+    "difference_from_recent": "最近六条分别谈企业责任链、AI位置、培训问题和自媒体起号；本条新增的是讲述者本人投入、局部付费交付与未跑通现状，交付物也从能力框架变成按当前生活位置选择第一步。它不重复企业项目验收或AI效率结论。",
+    "evidence_proves": "用户本人确有持续学习和投入、正在做企业AI与GEO相关项目且有付费交付过程，同时当前不能把这说成稳定回本或完整业务闭环。",
+    "evidence_does_not_prove": "不能证明任何普通人学习AI都会增收、转行成功或获得副业，也不能证明讲述者已经形成成熟可复制服务。",
+    "audience_takeaway": "先把自己分到已有工作或准备全职的真实位置，再拿AI处理一个看得见的任务或建立可承受的尝试边界。",
+    "boundary": "本条是个人阶段性经验和判断，不是投资、职业保证、课程推荐或AI行业数据报告。",
+    "delete_candidates": [
+      "删除精确费用、未核验证书和未经证实的行业传闻。",
+      "删除工具清单、三列表模型和轻松变现暗示。",
+      "删除把本地市场体感放大为全国性结论的内容。"
+    ]
+  },
+  "frozen_topic_hits": [],
+  "audience_fit": {
+    "account_stage": "试验",
+    "speaker_position": "留在兰州、正在学习并验证企业AI应用的人；愿意说出投入、局部进展和没有跑通的部分，不冒充转行成功导师。",
+    "first_20s_connection": "下班以后想靠AI多挣一点钱的人，和暂时没有工作、想靠AI换条路的人，都会在开头听到自己正在问的那句话。",
+    "high_level_material_role": "none",
+    "ordinary_scenes": [
+      "下班后刷到AI副业视频，准备买课程或开会员，却说不清自己工作里有什么任务能先拿来用。",
+      "暂时没有上班，看到各种AI变现内容，开始考虑是否把积蓄和时间都押到一个还没有作品和客户的问题上。",
+      "本地老板想试AI，却还没有把自己的业务问题、资料和验收条件说清楚。"
+    ],
+    "audience_gain": "听完能把学AI的冲动换成一条更具体的判断：我现在是先改善一项工作，还是先准备成本、作品和真实问题。",
+    "authority_boundary": "只讲用户自己的投入、项目状态和阶段性判断；不以专家身份替观众承诺收入、职业选择或企业效果。",
+    "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "account_data_preflight": {
+      "receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260819T070251Z-9ba1c88f.json",
+      "receipt_sha256": "520772664390fdd47a29d6c3c40826c6cdfaaa9b1cb0bb89dde37cd5844afb38",
+      "read": true
+    },
+    "account_data_application": {
+      "account_baseline_evidence": {
+        "metric": "weightedMetrics.fiveSecondCompletionRate",
+        "value": 33.1391,
+        "use": "用全账号五秒留存描述性基线约束本条：前五秒直接说观众最关心的收入问题，不能用学习经历铺垫开场。"
+      },
+      "recent_work_evidence": {
+        "video_key": "4da298e8a29710e45a7f09fb",
+        "metric": "metrics.fiveSecondCompletionRate",
+        "value": 46.57,
+        "use": "参考近期作品先点明具体冲突的做法，但本条改用普通人收入焦虑和本人真实账本，不复制其主题或四问结构。"
+      },
+      "planned_change": "前三秒直接提出“学AI能不能多挣一点钱”的真实问题，十五秒内给出不同处境不能走同一路的答案，再进入本人账本和两条路径。",
+      "causal_claim": "human-confirmed-lesson-only"
+    },
+    "learning_card_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+    "learning_card_sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "newer_content_acknowledged": true,
+    "newer_content_ids": [
+      "2026-08-11-training-camp-episode-1",
+      "2026-08-12-ai-best-worst",
+      "2026-08-14-training-camp-episode-2",
+      "2026-08-16-ai-magic",
+      "2026-08-18-why-learn-ai"
+    ],
+    "newer_content_metric_status": "8月16日作品已纳入本次任务级回执，8月18日作品仍处早期窗口；两条只用于开头和查重输入，不能升级为平台规律。",
+    "applied_lesson_ids": [
+      "lesson:opening:title-answer-before-background",
+      "lesson:hook:concrete-conflict-scene-object",
+      "lesson:duration:value-order-before-shortening",
+      "lesson:metrics:separate-early-and-mature-windows"
+    ],
+    "opening_plan": {
+      "answer_or_conflict_by_second": 3,
+      "proof_or_real_scene_by_second": 12,
+      "audience_relevance_by_second": 18,
+      "first_viewer_value_by_second": 26,
+      "title_answer_by_second": 3,
+      "delayed_payoff_risk_checked": true
+    },
+    "duration_plan": {
+      "planned_seconds": 270,
+      "single_core_problem": "普通人学AI前，怎样按自己的真实位置决定先改善工作还是准备进入行业。",
+      "justification": "要交代本人真实账本、付费项目尚未跑通的边界，并分别给已有工作和准备全职的人一条动作，因此保留约四分半钟的口播空间；正文只解决一个选择问题，不扩成工具课。",
+      "evidence_based_justification": true
+    },
+    "metric_plan": {
+      "primary_metric": "five_second_completion_rate",
+      "secondary_metrics": ["average_watch_seconds", "profile_visits"],
+      "observation_windows": ["early-within-3h", "24h", "72h", "7d"],
+      "hypothesis": "开头用观众真实问题和自己的未跑通现状直接回答，而不是先铺行业背景，可能让目标观众更早理解本条与自己有关；若多个观察窗口没有更清晰的早期信号，就放弃这个开头假设。",
+      "early_vs_mature_windows_acknowledged": true
+    }
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {
+      "target": "primary",
+      "script_evidence": "正文将上班族和准备全职者分到不同的起点，并各自留下一个今天就能判断的真实动作，不要求观众购买任何工具。",
+      "viewer_test": "观众能说清自己下一步是先改善现有工作，还是先计算投入、作品和真实问题。"
+    },
+    "surprise": {
+      "target": "supporting",
+      "script_evidence": "开头不把AI说成机会或陷阱，而是由一个正在投入且已有项目却仍未跑通的人直接承认现状，反差来自真实边界。",
+      "viewer_test": "删掉夸张措辞后，观众仍能复述：有项目和有投入，不等于已经适合劝别人全职进入。"
+    },
+    "expression": {
+      "target": "primary",
+      "script_evidence": "用来访问题、本人账本、下班后的工作和本地找企业拆问题这些可见动作推进，不用行业大词和整齐三段论。",
+      "viewer_test": "陌生观众能自然复述本条判断，不会只记住成本或焦虑。"
+    },
+    "resonance": {
+      "target": "supporting",
+      "script_evidence": "正文承认想多挣一点钱和怕投入无结果的两面，同时不给“赶紧冲”或“别碰”的简单答案。",
+      "viewer_test": "共鸣来自真实处境的被看见，不依赖贬低同行、卖惨或收益承诺。"
+    },
+    "integrity_boundary": "不得把个人经验包装成职业保证，不用精确成本或未核验证书制造权威，不将局部付费项目说成稳定商业闭环。",
+    "review_status": "self-reviewed",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {
+      "name": "位置先于投入",
+      "problem": "普通人把AI当成同一条副业或转行路径，先花钱、先买工具，却没有确认自己现在能把它放进哪一件真实事情。",
+      "bottleneck": "学习、提效和谋生三种目标被混在一起；没有工作任务的人直接模仿有客户、有团队或已有作品的人，成本和风险无法对齐。",
+      "mechanism": "已有工作的人先用AI处理一件现成的、看得见结果的工作；准备靠AI谋生的人先接受成本、作品和交付周期，把投入从想象变成可承受的尝试。",
+      "observable_change": "观众能明确写下自己现有的一项工作任务，或明确写下可承受投入、能做出的作品和想验证的问题，而不是只继续搜工具和课程。",
+      "evidence": "本轮用户事实锁、GEO当前进度、当前账号数据回执和完整参考结构拆解。",
+      "evidence_proves": "这些材料足以说明讲述者本人仍在投入和验证，也足以支持把下一步收在个人位置与真实任务上。",
+      "evidence_does_not_prove": "不能证明两条路径中的任何一条必然赚钱、转行成功或能复制到所有行业。",
+      "audience_relevance": "对收入有压力的普通人需要先避免把AI当成想象中的救命稻草，也不必因短期没回报就错过把它用于真实工作的机会。",
+      "boundary": "这是阶段性个人判断，不替代就业、投资、课程购买或企业经营决策。"
+    }
+  ],
+  "voice": {
+    "profile_path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+    "read": true
+  },
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-19-普通人学AI先算真实账-讨论口播稿-v1.md",
+    "content_start_marker": "## 口播正文开始",
+    "content_end_marker": "## 口播正文结束",
+    "copy_review": {
+      "required": true,
+      "report_path": "/Users/pc/Documents/口播/notes/2026-08-19-普通人学AI先算真实账-文案双Skill审稿-v1.json"
+    },
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": false,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "performance_feedback_recheck_passed": true,
+    "compliance_passed": true,
+    "user_script_approved": false,
+    "phrase_exemptions": [],
+    "ai_tone_exemptions": [],
+    "anchor_exemptions": []
+  }
+}

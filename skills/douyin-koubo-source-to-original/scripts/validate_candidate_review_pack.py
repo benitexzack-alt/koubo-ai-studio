@@ -14,6 +14,13 @@ from typing import Any
 VALID_REVIEW = {"pending-user-selection", "approved", "rework"}
 VALID_FUNCTIONS = {"hook", "correction", "mechanism", "evidence", "boundary", "action", "callback"}
 FORBIDDEN_HOOKS = ("今天我讲", "AI时代已经到来", "未来已来", "抓住时代红利")
+INTERNAL_TOPIC_TERMS = ("这条 Skill", "这条skill", "口播工作流", "内容门禁", "候选包", "自动化准入")
+PUBLIC_VALUE_FIELDS = (
+    "external_audience",
+    "present_situation",
+    "viewer_decision",
+    "account_strategy_link",
+)
 
 
 def nonempty(value: Any) -> bool:
@@ -85,6 +92,18 @@ class Validator:
             for field in ("id", "topic", "real_scene", "audience_conflict", "original_judgment", "evidence_gap", "long_term_trust_path"):
                 if not nonempty(candidate.get(field)):
                     self.error(f"{prefix}.{field} 不能为空")
+            topic = candidate.get("topic", "")
+            if isinstance(topic, str) and any(term in topic for term in INTERNAL_TOPIC_TERMS):
+                self.error(f"{prefix}.topic 不能把内部 Skill、门禁或工作流当作公开口播主角")
+            public_value = candidate.get("public_value_contract")
+            if not isinstance(public_value, dict):
+                self.error(f"{prefix}.public_value_contract 必须是对象，实验候选不能只服务内部流程")
+            else:
+                for field in PUBLIC_VALUE_FIELDS:
+                    if not nonempty(public_value.get(field)):
+                        self.error(f"{prefix}.public_value_contract.{field} 不能为空")
+                if public_value.get("internal_process_is_not_topic") is not True:
+                    self.error(f"{prefix}.public_value_contract.internal_process_is_not_topic 必须为 true")
             source_ids = candidate.get("source_ids")
             if not isinstance(source_ids, list) or not source_ids or not all(item in context_source_ids for item in source_ids):
                 self.error(f"{prefix}.source_ids 必须引用任务上下文中的完整来源")

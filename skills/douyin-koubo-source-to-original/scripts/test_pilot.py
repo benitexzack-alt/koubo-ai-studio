@@ -14,11 +14,23 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 CARD = ROOT / "notes/2026-08-19-口播源头拆解六样本-自动化准入卡-v1.json"
 VALIDATOR = Path(__file__).with_name("validate_pilot.py")
+CANDIDATE_VALIDATOR = Path(__file__).with_name("validate_candidate_review_pack.py")
+INTERNAL_TOPIC_CANDIDATE = ROOT / "notes/2026-08-19-小样本不造爆款公式-候选包-v1.json"
 
 
 def run(card_path: Path) -> tuple[int, dict]:
     completed = subprocess.run(
         [sys.executable, str(VALIDATOR), str(card_path)],
+        check=False,
+        text=True,
+        capture_output=True,
+    )
+    return completed.returncode, json.loads(completed.stdout)
+
+
+def run_candidate(card_path: Path) -> tuple[int, dict]:
+    completed = subprocess.run(
+        [sys.executable, str(CANDIDATE_VALIDATOR), str(card_path)],
         check=False,
         text=True,
         capture_output=True,
@@ -55,6 +67,13 @@ def main() -> int:
         assert result["status"] == "ready-for-manual-review", result
     finally:
         disabled_path.unlink(missing_ok=True)
+
+    # Regression: a public topic cannot be an internal Skill or workflow review.
+    exit_code, result = run_candidate(INTERNAL_TOPIC_CANDIDATE)
+    assert exit_code == 1, result
+    assert result["status"] == "blocked", result
+    assert any("内部 Skill" in error for error in result["errors"]), result
+
     print("六样本自动化准入校验：通过")
     return 0
 
