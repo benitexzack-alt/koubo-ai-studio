@@ -24,7 +24,9 @@ def digest(path: Path) -> str:
 
 def invoke(command: list[str]) -> tuple[int, dict]:
     completed = subprocess.run(command, text=True, capture_output=True, check=False)
-    return completed.returncode, json.loads(completed.stdout)
+    if completed.stdout.strip():
+        return completed.returncode, json.loads(completed.stdout)
+    return completed.returncode, {'stderr': completed.stderr.strip()}
 
 
 def candidate_pack(context: Path, source_id: str, retrieval: dict) -> dict:
@@ -69,6 +71,34 @@ def candidate_pack(context: Path, source_id: str, retrieval: dict) -> dict:
 def main() -> int:
     with tempfile.TemporaryDirectory() as directory:
         temp = Path(directory)
+        confirmed_script = temp / 'confirmed-script.md'
+        confirmed_script.write_text('# 已确认口播稿\n\n仅用于结构分析。\n', encoding='utf-8')
+        missing_evidence_context = temp / 'missing-evidence.json'
+        code, _ = invoke([
+            sys.executable, str(SCRIPT_DIR / 'prepare_research_context.py'),
+            '--task-id', TASK_ID, '--preflight', str(PREFLIGHT), '--opcd-query', '本人确认稿 结构分析', '--source', str(confirmed_script), '--output', str(missing_evidence_context),
+        ])
+        assert code == 1, '本人确认稿缺少哈希证据清单时必须阻断'
+        evidence = temp / 'source-evidence.json'
+        evidence.write_text(json.dumps({
+            'schema_version': 1,
+            'records': [{
+                'path': str(confirmed_script),
+                'sha256': digest(confirmed_script),
+                'evidence_type': 'user-confirmed-script',
+                'source_completeness': 'complete',
+                'allowed_use': '仅用于本人已确认口播的结构分析。',
+            }],
+        }, ensure_ascii=False), encoding='utf-8')
+        confirmed_context = temp / 'confirmed-context.json'
+        code, result = invoke([
+            sys.executable, str(SCRIPT_DIR / 'prepare_research_context.py'),
+            '--task-id', TASK_ID, '--preflight', str(PREFLIGHT), '--opcd-query', '本人确认稿 结构分析', '--source-evidence', str(evidence), '--source', str(confirmed_script), '--output', str(confirmed_context),
+        ])
+        assert code == 0 and result['status'] == 'ready-for-candidate-review', result
+        confirmed_receipt = json.loads(confirmed_context.read_text(encoding='utf-8'))
+        assert confirmed_receipt['sources'][0]['evidence_type'] == 'user-confirmed-script'
+
         context = temp / 'context.json'
         code, result = invoke([
             sys.executable, str(SCRIPT_DIR / 'prepare_research_context.py'),

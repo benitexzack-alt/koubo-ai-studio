@@ -74,6 +74,7 @@ python3 <project-root>/skills/douyin-koubo-source-to-original/scripts/prepare_re
   --task-id <任务ID> \
   --preflight <任务级账号预检回执> \
   --opcd-query <本轮要检索的具体问题> \
+  --source-evidence <本人确认稿证据清单.json> \
   --source <抖音知识中台完整来源.md>
 ```
 
@@ -83,6 +84,8 @@ python3 <project-root>/skills/douyin-koubo-source-to-original/scripts/prepare_re
 - 账号数据预检回执及其当前快照；
 - 账号声音档案、最近内容历史和账号事业主线；
 - 本轮每一条完整来源的路径、哈希、完整度和允许用途。
+
+外部完整转写可由自身元数据声明 `source_completeness`。本人确认稿不要求改动正文补元数据，但必须通过 `--source-evidence` 传入独立证据清单；清单逐条绑定来源路径、当前 SHA-256、证据类型、完整度和允许用途。哈希不匹配、缺少清单或把清单当成公开事实授权时，任务必须阻断。
 
 再创建候选包。它最多允许三个候选，每个候选必须有现实场景、观众矛盾、本人新判断、证据计划和缺口、三个钩子、论证骨架、长期信任路径与不可声称内容：
 
