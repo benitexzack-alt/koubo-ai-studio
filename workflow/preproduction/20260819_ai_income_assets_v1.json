@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "project_id": "AI_INCOME_DECISION_20260819",
+  "project": "学AI到底能不能多挣一点钱",
+  "version": "v1",
+  "created_at": "2026-08-19T19:20:00+08:00",
+  "status": "awaiting-user-recording-and-assets",
+  "task_id": "task-20260819T110755Z-fef9cba9",
+  "script_path": "notes/2026-08-19-学AI到底能不能多挣一点钱-用户最终口播稿-v1.md",
+  "script_sha256": "994f569ba7566b3805126cb4b2205fc20e5e978b9dbb72692fd428390cc7f20d",
+  "account_performance_preflight": "workflow/account-performance-preflights/task-20260819T110755Z-fef9cba9.json",
+  "production_profile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8",
+    "downgrade_allowed": false
+  },
+  "source_folder": "/Users/pc/Desktop/口播素材/2026-08-19_AI到底能不能多挣钱",
+  "material_manifest": "workflow/asset-manifests/2026-08-19-ai-income-materials.v1.json",
+  "global_usage_rules": [
+    "用户锁定正文不得改写，字幕和视觉锚点以真实录音与锁定正文双向核对",
+    "原始素材只读，不覆盖、不删除、不重命名",
+    "真实费用、付费项目和交付证据不得AI重绘、AI超分或替换文字",
+    "任何客户名、手机号、账号、合同号、API Key和私人聊天必须脱敏",
+    "AI生成视频只作通用情景示意，不冒充超哥本人、真实客户、真实项目或收入证据",
+    "真人是默认主画面，纯Remotion全屏说明页禁止",
+    "左上角只显示超哥AI创业记，不显示V8版本号",
+    "中英字幕共用真实词级时间窗",
+    "音效必须来自显式白名单，任何人声、耳语、喘息、喊声或可辨识单词永久禁用",
+    "正式渲染前必须完成同画面有音效版与无音效版30至45秒预览并由用户试听确认"
+  ],
+  "assets": [
+    {
+      "id": "R01",
+      "type": "real-talk-source",
+      "required": true,
+      "folder": "01_口播原片",
+      "filename_prefix": "R01_学AI能否多挣钱_真人口播原片",
+      "semantic_anchor": "全文主线",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "R02-R06",
+      "type": "real-cost-evidence",
+      "required": true,
+      "folder": "02_真实费用截图",
+      "semantic_anchor": "证书、课程、订阅、API、生成积分、资料和社群的真实投入",
+      "usage": "dynamic-collage-with-source-preserving-crops",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "R07-R09",
+      "type": "real-project-evidence",
+      "required_for_public_claim": true,
+      "folder": "03_真实项目与交付证据",
+      "semantic_anchor": "有付费项目、有交付、仍在接单，但没有声称已经跑通",
+      "usage": "anonymized-evidence-overlay",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "R10-R13",
+      "type": "real-work-context",
+      "required": false,
+      "folder": "04_真实工作场景截图",
+      "semantic_anchor": "凌晨3点、真实任务前后、AIGC返工和兰州企业流程沟通",
+      "usage": "source-preserving-overlay-or-short-fullscreen",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S01",
+      "type": "user-generated-video",
+      "required": true,
+      "filename": "S01_下班后用AI处理重复工作_16x9.mp4",
+      "folder": "05_用户生成AI视频",
+      "semantic_anchor": "先把AI放进现有工作的一项重复任务",
+      "usage": "short-fullscreen",
+      "disclosure": "AI生成·情景示意",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S02",
+      "type": "user-generated-video",
+      "required": true,
+      "filename": "S02_全职转行前先算清楚_16x9.mp4",
+      "folder": "05_用户生成AI视频",
+      "semantic_anchor": "生存周期、作品、真实问题和需求方",
+      "usage": "short-fullscreen",
+      "disclosure": "AI生成·情景示意",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S03",
+      "type": "user-generated-video",
+      "required": true,
+      "filename": "S03_AIGC多轮制作与复核_16x9.mp4",
+      "folder": "05_用户生成AI视频",
+      "semantic_anchor": "投入、质量、权利、规则和反复修改",
+      "usage": "short-fullscreen-with-side-labels",
+      "disclosure": "AI生成·情景示意",
+      "status": "awaiting-user"
+    },
+    {
+      "id": "S04",
+      "type": "user-generated-video",
+      "required": false,
+      "filename": "S04_先岗位实战再判断创业_16x9.mp4",
+      "folder": "05_用户生成AI视频",
+      "semantic_anchor": "先面试岗位、进入实战、磨练技能，再判断创业",
+      "usage": "short-fullscreen",
+      "disclosure": "AI生成·情景示意",
+      "status": "optional-awaiting-user"
+    }
+  ],
+  "timing_policy": {
+    "current": "semantic-anchors-only",
+    "formal_timing_source": "word-level-transcript-and-original-audio",
+    "no_script_time_estimation": true,
+    "preview_range_seconds": [0, 45],
+    "preview_same_frame_ab_required": true
+  },
+  "next_step": "等待R01与素材到齐；先检查隐私、规格、播放与事实对位，再提取音频并进行逐字转写。"
+}

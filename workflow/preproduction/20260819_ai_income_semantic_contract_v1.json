@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "project_id": "AI_INCOME_DECISION_20260819",
+  "status": "pre-timing-semantic-contract",
+  "fps": 30,
+  "duration_seconds": null,
+  "source_sha256": null,
+  "transcript_path": null,
+  "brand_label": "超哥AI创业记",
+  "show_version_label": false,
+  "subtitle_mode": "bilingual-shared-window",
+  "speaker_is_default_primary_picture": true,
+  "remotion_information_maximum_coverage_ratio": 0.42,
+  "face_safety": {
+    "fail_on_face_overlap": true,
+    "fail_on_primary_gesture_overlap": true,
+    "safe_zone_source": "pending-actual-talk-source-analysis"
+  },
+  "visual_density": {
+    "semantic_change_interval_seconds_target": "8-14",
+    "one_primary_object_per_semantic_segment": true,
+    "no_decorative_filler": true,
+    "full_screen_remotion_explainer_forbidden": true,
+    "short_full_screen_user_assets_allowed": true
+  },
+  "sfx_contract": {
+    "library_manifest": "assets/sfx/koubo-sfx-v8/manifest.json",
+    "required_content_kind": "sound-effect",
+    "voice_like_audio_forbidden": true,
+    "voice_patch_forbidden": true,
+    "whitelist_only": true,
+    "same_source_minimum_gap_seconds": 25,
+    "same_source_maximum_whole_video": 3,
+    "background_music": false,
+    "same_frame_ab_preview_required": true,
+    "full_audio_listen_required": true,
+    "user_audibility_confirmation_required": true
+  },
+  "event_candidates": [
+    {"visual_event_id":"income-v001","anchor":"学AI，到底能不能多挣一点钱","type":"transparent-question-title","copy":"学AI，能多挣一点钱吗？","sfx_role":"chapter"},
+    {"visual_event_id":"income-v002","anchor":"有上班的朋友 / 暂时没有上班的朋友","type":"transparent-two-audience-paths","copy":"有工作 / 准备换路","sfx_role":"line"},
+    {"visual_event_id":"income-v003","anchor":"不同处境不能走同一条路","type":"transparent-decision-fork","copy":"现有工作验证 / 成本·作品·交付周期","sfx_role":"keyword"},
+    {"visual_event_id":"income-v004","anchor":"大量花费和每天凌晨3点","type":"real-evidence-cost-collage","asset_id":"R02-R06","copy":"钱的投入 / 时间的投入","sfx_role":"evidence"},
+    {"visual_event_id":"income-v005","anchor":"有付费项目、有交付、还在接单，但没有跑通","type":"transparent-evidence-boundary-ledger","asset_id":"R07-R09","copy":"已经发生 / 仍在验证","sfx_role":"list"},
+    {"visual_event_id":"income-v006","anchor":"一件反复在做的真实工作","type":"full-screen-user-asset","asset_id":"S01","copy":"先拿一件真事去练","sfx_role":"media"},
+    {"visual_event_id":"income-v007","anchor":"能不能看懂、会不会出错、少没少返工","type":"transparent-three-checks","copy":"看懂 / 不出错 / 少返工","sfx_role":"node"},
+    {"visual_event_id":"income-v008","anchor":"准备全职进这个行业","type":"transparent-runway-checklist","asset_id":"S02","copy":"生存周期 / 作品 / 真实问题 / 需求方","sfx_role":"list"},
+    {"visual_event_id":"income-v009","anchor":"只留下几个账号和没用完的积分","type":"transparent-unused-accounts","copy":"账号增加，不等于结果增加","sfx_role":"correction"},
+    {"visual_event_id":"income-v010","anchor":"AIGC不是点两下就能挣钱","type":"full-screen-user-asset-with-side-labels","asset_id":"S03","copy":"投入 / 质量 / 权利 / 规则 / 修改","sfx_role":"media"},
+    {"visual_event_id":"income-v011","anchor":"哪些地方AI能帮，哪些地方不能乱动","type":"transparent-help-boundary-map","asset_id":"R13","copy":"能帮 / 不能乱动","sfx_role":"line"},
+    {"visual_event_id":"income-v012","anchor":"有人愿意付费，有些事情还在验证","type":"transparent-paid-vs-validating","copy":"付费发生 / 验证继续","sfx_role":"confirm"},
+    {"visual_event_id":"income-v013","anchor":"好看、热闹变成对普通人有用","type":"transparent-noise-to-useful-route","copy":"热闹 → 真问题 → 真交付","sfx_role":"keyword"},
+    {"visual_event_id":"income-v014","anchor":"第九回创业","type":"transparent-number-nine-boundary","copy":"09｜仍在验证","sfx_role":"number"},
+    {"visual_event_id":"income-v015","anchor":"先去面试、先去实战、不要轻易创业","type":"talking-head-three-step-route","asset_id":"S04","copy":"先岗位 → 先实战 → 再判断创业","sfx_role":"confirm"}
+  ],
+  "timing_policy": {
+    "current": "anchors-only-awaiting-word-timestamps",
+    "formal_timing_source": "word-level-transcript-and-original-audio",
+    "no_script_time_estimation": true,
+    "preview_range_seconds": [0, 45],
+    "formal_render_blockers": [
+      "R01真人原片未提供",
+      "逐字转写未完成",
+      "真实费用与项目证据未完成隐私检查",
+      "用户生成视频未完成播放检查",
+      "有音效与无音效同画面预览未通过用户试听"
+    ]
+  }
+}
