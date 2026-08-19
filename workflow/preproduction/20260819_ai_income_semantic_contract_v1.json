@@ -1,11 +1,14 @@
 {
   "schema_version": 1,
   "project_id": "AI_INCOME_DECISION_20260819",
-  "status": "pre-timing-semantic-contract",
+  "status": "implemented-preview-approved-formal-candidate-rendered",
   "fps": 30,
-  "duration_seconds": null,
-  "source_sha256": null,
-  "transcript_path": null,
+  "duration_seconds": 365.7,
+  "source_sha256": "42d6a001fcb979bc5b70df007f1984bb37570f8b11f0495795eccbbeedce67dc",
+  "transcript_path": "edit/20260819_ai_income/transcripts/AI_INCOME_20260819_talk01.cleaned.v1.json",
+  "implemented_visual_plan": "remotion/src/data/AIIncomeV80.visual-plan.v1.json",
+  "implemented_sfx_contract": "remotion/src/data/AIIncomeV80.sfx.v1.json",
+  "formal_output": "outputs/学AI到底能不能多挣一点钱_16x9_V8_有音效_正式成片_v2.mp4",
   "brand_label": "超哥AI创业记",
   "show_version_label": false,
   "subtitle_mode": "bilingual-shared-window",
@@ -14,7 +17,7 @@
   "face_safety": {
     "fail_on_face_overlap": true,
     "fail_on_primary_gesture_overlap": true,
-    "safe_zone_source": "pending-actual-talk-source-analysis"
+    "safe_zone_source": "actual-talk-source-keyframes-and-full-timeline-contact-sheet"
   },
   "visual_density": {
     "semantic_change_interval_seconds_target": "8-14",
@@ -54,16 +57,14 @@
     {"visual_event_id":"income-v015","anchor":"先去面试、先去实战、不要轻易创业","type":"talking-head-three-step-route","asset_id":"S04","copy":"先岗位 → 先实战 → 再判断创业","sfx_role":"confirm"}
   ],
   "timing_policy": {
-    "current": "anchors-only-awaiting-word-timestamps",
+    "current": "implemented-from-actual-audio-time-windows",
     "formal_timing_source": "word-level-transcript-and-original-audio",
     "no_script_time_estimation": true,
     "preview_range_seconds": [0, 45],
-    "formal_render_blockers": [
-      "R01真人原片未提供",
-      "逐字转写未完成",
-      "真实费用与项目证据未完成隐私检查",
-      "用户生成视频未完成播放检查",
-      "有音效与无音效同画面预览未通过用户试听"
+    "formal_render_blockers": [],
+    "remaining_release_gates": [
+      "用户正常速度完整观看365.7秒正式候选片",
+      "发布前按抖音客户端当日选项完成人工AI内容声明与素材授权复核"
     ]
   }
 }

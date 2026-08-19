@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20260819-ai-income-v80",
+  "videoId": "AI_INCOME_20260819_talk01",
+  "title": "学AI到底能不能多挣一点钱",
+  "purpose": "完整保留用户真人口播，以V8连续语义动效、隐私安全投入证据和四段用户生成AI情景视频，说明不同处境学习AI的现实路径。",
+  "productionState": "ready-for-user-review",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "contentApproval": {
+    "userScriptApproved": true,
+    "userApprovedAt": "2026-08-19T00:00:00+08:00",
+    "evidence": "用户提供最终定稿、随后上传完整真人口播并明确要求按该稿制作；真人原片构成当前语言与朗读证据。"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-approved",
+    "userPreviewApproved": true,
+    "userPreviewApprovedAt": "2026-08-19T21:58:00+08:00",
+    "userPreviewApprovalEvidence": "用户明确回复“有音效版通过。”，批准沿用同一视觉、字幕、数字运镜与音效策略进入完整正式渲染。",
+    "revisionReason": "把用户已通过的45秒有音效预览扩展为全长正式候选片。",
+    "primaryVisualEventCount": 37,
+    "sfxCoveragePercent": 100,
+    "previewAuditionRoles": [
+      "keyword",
+      "line"
+    ]
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "source/20260819_ai_income/R01_学AI能否多挣钱_口播原片.MOV",
+    "renderProxy": "remotion/public/media/ai-income-20260819/main-30fps.mp4",
+    "visualPlan": "remotion/src/data/AIIncomeV80.visual-plan.v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_INCOME_20260819_talk01.bilingual.v1.json",
+    "sfxCueSheet": "remotion/src/data/AIIncomeV80.sfx.v1.json",
+    "sfxManifest": "assets/sfx/koubo-sfx-v8/manifest.json",
+    "fingerprintPaths": [
+      "source/20260819_ai_income/R01_学AI能否多挣钱_口播原片.MOV",
+      "remotion/public/media/ai-income-20260819/main-30fps.mp4",
+      "edit/20260819_ai_income/transcripts/AI_INCOME_20260819_talk01.cleaned.v1.json",
+      "remotion/public/data/AI_INCOME_20260819_talk01.bilingual.v1.json",
+      "remotion/src/AIIncomeV80Talk16x9.tsx",
+      "remotion/src/data/AIIncomeV80.visual-plan.v1.json",
+      "remotion/src/data/AIIncomeV80.sfx.v1.json",
+      "assets/sfx/koubo-sfx-v8/manifest.json"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/index.ts",
+    "compositionWithSfx": "AIIncome16x9-V80-WithSfx",
+    "compositionWithoutSfx": "AIIncome16x9-V80-NoSfx",
+    "durationSeconds": 365.6,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 4
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": false,
+    "scale": 0.6666666666666666,
+    "crf": 22,
+    "ranges": [
+      {
+        "id": "v8-ai-income-first-45-seconds",
+        "startSeconds": 0,
+        "endSeconds": 45
+      }
+    ],
+    "output": "outputs/previews/学AI能否多挣钱_V8_45秒预览_有音效.mp4",
+    "renderWithoutSfxComparison": true
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt-and-full-timeline-contact-sheet",
+    "fullResolution": true,
+    "outputDirectory": "edit/20260819_ai_income/verify"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": true,
+    "composition": "with-sfx",
+    "blockedReason": null,
+    "crf": 18,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "finalOutput": "outputs/学AI到底能不能多挣一点钱_16x9_V8_有音效_正式成片_v2.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -2.2,
+      "measuredIntegratedLoudnessLufs": -16.1,
+      "measuredLoudnessRangeLu": 4.7,
+      "measuredTruePeakDbtp": -2.2,
+      "videoStreamCopiedWithoutReencode": true
+    }
+  },
+  "reports": {
+    "formalProbe": "edit/20260819_ai_income/verify/formal/ffprobe.json",
+    "formalBlackDetect": "edit/20260819_ai_income/verify/formal/blackdetect.txt",
+    "formalSilenceDetect": "edit/20260819_ai_income/verify/formal/silencedetect.txt",
+    "formalVolumeDetect": "edit/20260819_ai_income/verify/formal/volumedetect.txt"
+  }
+}

@@ -137,6 +137,12 @@ import {
   AI_DELIVERY_FILTER_V80_DURATION_IN_FRAMES,
 } from './AIDeliveryFilterV80Talk16x9';
 import {
+  AIIncomeV80Talk16x9NoSfx,
+  AIIncomeV80Talk16x9WithSfx,
+  AI_INCOME_V80_DURATION_IN_FRAMES,
+  AI_INCOME_V80_PREVIEW_45S_DURATION_IN_FRAMES,
+} from './AIIncomeV80Talk16x9';
+import {
   RuishengGeoField16x9,
   RuishengGeoField16x9V2,
   RUISHENG_GEO_DURATION_IN_FRAMES,
@@ -158,6 +164,38 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Folder name="Koubo">
+        <Composition
+          id="AIIncome16x9-V80-Preview45-WithSfx"
+          component={AIIncomeV80Talk16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_INCOME_V80_PREVIEW_45S_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="AIIncome16x9-V80-Preview45-NoSfx"
+          component={AIIncomeV80Talk16x9NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_INCOME_V80_PREVIEW_45S_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="AIIncome16x9-V80-WithSfx"
+          component={AIIncomeV80Talk16x9WithSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_INCOME_V80_DURATION_IN_FRAMES}
+        />
+        <Composition
+          id="AIIncome16x9-V80-NoSfx"
+          component={AIIncomeV80Talk16x9NoSfx}
+          width={1920}
+          height={1080}
+          fps={30}
+          durationInFrames={AI_INCOME_V80_DURATION_IN_FRAMES}
+        />
         <Composition
           id="AIDeliveryFilter16x9-V80-WithSfx"
           component={AIDeliveryFilterV80Talk16x9WithSfx}
