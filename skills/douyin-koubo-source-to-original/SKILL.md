@@ -24,7 +24,7 @@ description: 在日常抓取的抖音与网站来源进入选题前，先用已�
 1. 外部参考必须有完整转写，且标明作者、来源完整度、允许用途和事实边界。
 2. 账号样本必须有完整确认稿或真实录音转写；仅有后台指标不能入样。
 3. 数据只作为描述性表现切面。指标口径、统计窗口或当前性不明时，必须显式标记，不能推出“这个钩子一定好”。
-4. 每轮分析都必须读取账号主线、声音档案、最近六条与当前账号学习卡。
+4. 每轮分析都必须读取 Obsidian 个人知识库（OPCD）、账号主线、声音档案、最近六条与当前账号学习卡，并生成任务级读取回执。
 5. 任何拟进入公开稿的事实仍须使用独立证据核验。
 
 ## 六样本自动化准入
@@ -52,6 +52,7 @@ python3 <project-root>/skills/douyin-koubo-source-to-original/scripts/validate_p
 
 ```text
 日常抓取与来源完整度核验
+-> V1 任务上下文回执（OPCD、账号数据、历史正文、声音档案、完整来源）
 -> 本 Skill：单条机制卡
 -> 本 Skill：跨源功能矩阵与账号主线筛选
 -> 用户确认问题、三个钩子与一个提纲骨架
@@ -64,6 +65,36 @@ python3 <project-root>/skills/douyin-koubo-source-to-original/scripts/validate_p
 
 本 Skill 是 `source-essence-synthesis` 的研究前置件，不替代后者的认知节点、论证链、事实纠偏和提纲覆盖校验。用户没有选定问题、钩子和提纲前，禁止进入完整稿。
 
+## V1 可执行回执与候选包
+
+先生成任务上下文回执：
+
+```bash
+python3 <project-root>/skills/douyin-koubo-source-to-original/scripts/prepare_research_context.py \
+  --task-id <任务ID> \
+  --preflight <任务级账号预检回执> \
+  --opcd-query <本轮要检索的具体问题> \
+  --source <抖音知识中台完整来源.md>
+```
+
+回执会读取并绑定：
+
+- OPCD（Obsidian 个人知识库）的当前根目录、账号学习卡及其 SHA-256，以及本轮问题的本机混合检索回执；
+- 账号数据预检回执及其当前快照；
+- 账号声音档案、最近内容历史和账号事业主线；
+- 本轮每一条完整来源的路径、哈希、完整度和允许用途。
+
+再创建候选包。它最多允许三个候选，每个候选必须有现实场景、观众矛盾、本人新判断、证据计划和缺口、三个钩子、论证骨架、长期信任路径与不可声称内容：
+
+```bash
+python3 <project-root>/skills/douyin-koubo-source-to-original/scripts/validate_candidate_review_pack.py \
+  <候选包.json>
+```
+
+候选包只会得到 `ready-for-manual-selection` 或 `ready-for-outline-gate`。后者表示用户已经选定候选，仍只允许创建源头精髓卡和内容门禁卡，不能直接生成公开正文。
+
+OPCD 检索结果只代表“候选召回”。候选包必须逐项列出本轮实际读取并应用的召回条目、当前文档哈希和具体用途；不能因为 RAG 命中过旧稿、失败稿或其他项目记录，就把它当作本条结论、事实或可复用表达。
+
 ## 每日自动化的允许输出
 
 在 `ready-for-analysis-automation` 后，每日可以输出：
@@ -74,6 +105,10 @@ python3 <project-root>/skills/douyin-koubo-source-to-original/scripts/validate_p
 4. 最多三个服务账号主线的选题候选，每个候选只给现实场景、核心矛盾、本人证据缺口和三个钩子方向。
 
 每日自动化不得输出：完整公开稿、虚构案例、工具实操步骤、收益/获客承诺、自动发布或制作指令。
+
+## 长期学习边界
+
+用户对机制卡、候选题、钩子、提纲或稿件的批准和否决，必须分别记录。批准样本只能作为结构和本人表达的参考；否决样本优先作为回归约束，不能被“同义改写”重新放行。单条数据或单次用户认可都不升级为平台规律，连续样本和人工复盘才允许修改稳定规则。
 
 ## 用户确认门
 
