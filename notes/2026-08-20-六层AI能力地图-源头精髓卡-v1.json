@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260820T080036Z-01fb6019",
+  "target_stage": "outline",
+  "mode": "deep-explainer",
+  "source": {
+    "title": "老纪AI实验室：都说自己会用AI，但很多人其实还停在第一层",
+    "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7667346805348207913.md",
+    "completeness": "complete",
+    "verification_scope": "完整本地ASR转写可用于拆解六层能力地图和叙事结构；转写准确度为medium，六层是作者解释框架，不是已独立核验的行业标准，工具能力、培训门槛和普遍效果不作为公开事实。"
+  },
+  "reader_brief": {
+    "audience": "已经在用豆包、Kimi或其他AI工具，却分不清自己是在拿答案、拿交付物还是在搭流程的普通人、本地老板和创业者。",
+    "existing_belief": "把会聊天、会写提示词或会调用某个工具，当成“已经会用AI”；又容易把Agent、代码、开源和企业系统混成同一种能力。",
+    "desired_change": "观众能按照AI实际承担的工作段落判断自己所在位置，并选择下一步是否需要从答案走向任务、流程、组装、改造或系统经营。",
+    "leave_with": [
+      "六层不是身份高低，而是AI进入工作的深度不同。",
+      "答案出来以后，人仍要手工承担的那一段，就是当前最值得补的能力缺口。"
+    ]
+  },
+  "mother_thesis": {
+    "statement": "AI使用的差别，不在于你打开了哪个工具，而在于AI已经替你走到工作、流程和系统中的哪一段；六层地图用来定位下一步，不用来给人排等级。",
+    "scope_boundary": "不能把六层说成行业统一标准、职业等级、收入排序或所有人必须从第一层走到第六层的升级路线。",
+    "supporting_node_ids": ["I01", "I02", "I03", "I04", "I05", "I06", "I07"]
+  },
+  "insight_nodes": [
+    {
+      "id": "I01",
+      "label": "答案停在聊天框",
+      "source_ref": "原始内容与内容拆解：00:00-01:01",
+      "source_claim": "第一层是人问AI答，复制、修改和执行仍主要由人完成。",
+      "structural_function": "hook",
+      "viewer_gain": "看见“会问AI”与“AI已经进入工作”之间的差别。",
+      "emotional_function": "先拆掉观众对自己会用AI的模糊自信，不贬低第一层价值。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "source-backed",
+        "evidence_ids": ["evidence:source:7667346805348207913:00:00-01:01"],
+        "accurate_replacement": "作为作者能力地图中的第一层，AI输出主要还是答案或参考；不同人的实际工作会有差异。"
+      }
+    },
+    {
+      "id": "I02",
+      "label": "从答案到任务",
+      "source_ref": "原始内容与内容拆解：00:00-01:01",
+      "source_claim": "第二层把资料、要求和输出交给办公Agent处理，得到文档、表格或汇报等交付物。",
+      "structural_function": "mechanism",
+      "viewer_gain": "知道下一层的变化不是换一个更贵的工具，而是把一件任务的输入和输出说清楚。",
+      "emotional_function": "让第一层用户看到可达的下一步，而不是被复杂技术吓退。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "source-backed",
+        "evidence_ids": ["evidence:source:7667346805348207913:00:00-01:01"],
+        "accurate_replacement": "拿到文档或表格不等于真实任务已经完成，仍需人工核对事实、口径和结果。"
+      }
+    },
+    {
+      "id": "I03",
+      "label": "从任务到流程",
+      "source_ref": "原始内容与内容拆解：01:01-01:52",
+      "source_claim": "第三层把新闻、邮件、表格和内容等接起来，形成每天自动运行的流程。",
+      "structural_function": "mechanism",
+      "viewer_gain": "区分“某次任务做得快”与“一个触发后多步自动往下走”。",
+      "emotional_function": "把自动化从炫技拉回重复搬运和交接问题。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "partial",
+        "evidence_ids": ["evidence:source:7667346805348207913:01:01-01:52"],
+        "accurate_replacement": "流程自动运行需要真实输入、权限、异常处理和人工接管；不能从作者演示外推为任何业务都可自动化。"
+      }
+    },
+    {
+      "id": "I04",
+      "label": "组装要跨过工程门槛",
+      "source_ref": "原始内容与内容拆解：01:52-03:05",
+      "source_claim": "第四层让AI读取文件、修改代码、制作网站、编写Skill、接入MCP和组装Agent，同时要处理文件、终端、代码、API、环境和排错。",
+      "structural_function": "tension",
+      "viewer_gain": "理解为什么从聊天界面走向定制能力，会开始碰到环境、权限和报错，而不只是提示词问题。",
+      "emotional_function": "降低“别人一键搭好，我为什么不行”的误解，解释真实门槛。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "source-backed",
+        "evidence_ids": ["evidence:source:7667346805348207913:01:52-03:05"],
+        "accurate_replacement": "工具组合和基础要求会因项目而变；安装或演示成功不等于已经完成业务交付。"
+      }
+    },
+    {
+      "id": "I05",
+      "label": "开源不是另一个聊天框",
+      "source_ref": "原始内容与内容拆解：03:05-03:47",
+      "source_claim": "第五层从GitHub安装、部署、修改和贡献项目，把零件改造成自己的产品。",
+      "structural_function": "example",
+      "viewer_gain": "理解开源生态提供的是可用零件和协作基础，不是点开即可得到的成品服务。",
+      "emotional_function": "把“开源很神秘”翻译成能否安装、维护和改造的实际判断。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "partial",
+        "evidence_ids": ["evidence:source:7667346805348207913:03:05-03:47"],
+        "accurate_replacement": "开源项目可被安装、部署或修改，但能否成为自己的产品仍取决于维护、安全、数据和适配条件。"
+      }
+    },
+    {
+      "id": "I06",
+      "label": "系统经营是责任问题",
+      "source_ref": "原始内容与内容拆解：03:47-04:19",
+      "source_claim": "第六层负责模型选择、任务分工、数据与知识库、权限、结果验证、成本和Agent故障恢复，让团队、Agent和业务流程共同使用AI。",
+      "structural_function": "implication",
+      "viewer_gain": "看懂企业AI难点会从工具使用转到数据、权限、责任和恢复。",
+      "emotional_function": "把“企业上AI”从万能承诺收紧为需要管理的系统工程。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "partial",
+        "evidence_ids": ["evidence:source:7667346805348207913:03:47-04:19"],
+        "accurate_replacement": "这是作者对系统经营的要素归纳；搭建知识库或Agent本身不能证明企业已经完成AI转型。"
+      }
+    },
+    {
+      "id": "I07",
+      "label": "地图不是排行榜",
+      "source_ref": "原始内容与内容拆解：04:19-05:04",
+      "source_claim": "六层不是工具等级比赛，关键是判断自己现在解决什么问题、还缺哪项能力，以及AI能否接入文件、工具、流程、数据和业务。",
+      "structural_function": "action",
+      "viewer_gain": "不再因自己只在第一层而焦虑，也不因追求第六层而脱离实际任务。",
+      "emotional_function": "把分层带来的比较焦虑，收回到个人真实问题和下一步。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "source-backed",
+        "evidence_ids": ["evidence:source:7667346805348207913:04:19-05:04"],
+        "accurate_replacement": "六层可作为理解工具，不作为给人贴能力、职业或收入等级的标准。"
+      }
+    }
+  ],
+  "argument_chain": [
+    {
+      "from": "I01",
+      "to": "I02",
+      "relation": "therefore",
+      "bridge": "既然答案出来后主要仍由人继续执行，下一层就要解释AI怎样从回答变成有输入和输出的任务。"
+    },
+    {
+      "from": "I02",
+      "to": "I03",
+      "relation": "therefore",
+      "bridge": "单件任务能交付以后，观众自然会问：每天重复发生的工作能否不用反复从头交代。"
+    },
+    {
+      "from": "I03",
+      "to": "I04",
+      "relation": "but",
+      "bridge": "当现成流程不能覆盖自己的文件、工具或业务时，人才会进入组装能力和工程基础。"
+    },
+    {
+      "from": "I04",
+      "to": "I05",
+      "relation": "enables",
+      "bridge": "能够处理环境和代码后，才有能力理解、安装、改造和维护开源项目里的组件。"
+    },
+    {
+      "from": "I05",
+      "to": "I06",
+      "relation": "therefore",
+      "bridge": "零件被接入多人协作、资料和业务后，核心问题就从能不能装，变成谁负责数据、权限、结果、成本和故障。"
+    },
+    {
+      "from": "I06",
+      "to": "I07",
+      "relation": "limit",
+      "bridge": "系统经营复杂不等于所有人都该追求第六层，六层必须回到当前任务和能力缺口。"
+    }
+  ],
+  "correction_ledger": [
+    {
+      "node_id": "I03",
+      "source_expression": "每天自动运行的流程",
+      "issue": "容易被听成只要连上工具就能无监督地稳定完成任何流程。",
+      "action": "qualify",
+      "accurate_replacement": "自动流程只说明预设步骤可在条件触发后继续执行，遇到异常、敏感数据或对外动作仍要设计人工接管。",
+      "insight_preserved": true
+    },
+    {
+      "node_id": "I05",
+      "source_expression": "把零件改造成自己的产品",
+      "issue": "容易把安装开源项目偷换成拥有可维护产品。",
+      "action": "qualify",
+      "accurate_replacement": "开源项目提供可用零件，是否能形成自己的产品仍要承担适配、维护、安全和数据责任。",
+      "insight_preserved": true
+    },
+    {
+      "node_id": "I06",
+      "source_expression": "让团队、Agent和业务流程共同使用AI",
+      "issue": "作者的要素枚举不是企业AI转型完成的证明。",
+      "action": "qualify",
+      "accurate_replacement": "多人、数据和业务进入同一套AI系统时，才会出现模型、权限、验证、成本和恢复等经营问题；是否做成要看真实使用和结果。",
+      "insight_preserved": true
+    }
+  ],
+  "ordinary_person_gains": {
+    "explanation": {
+      "statement": "看懂AI能力的差别不是工具名，而是AI从聊天框进入任务、流程、组装、开源和业务系统的深度。",
+      "node_ids": ["I01", "I02", "I03", "I04", "I05", "I06"]
+    },
+    "judgment": {
+      "statement": "判断自己是否需要向上，不看别人用什么炫酷工具，而看答案出来以后哪一段工作还必须由自己手工承担。",
+      "node_ids": ["I01", "I02", "I03", "I07"]
+    },
+    "action": {
+      "statement": "复盘最近一次AI工作，只圈出答案出来以后最费时间、最容易出错且必须人工接住的一步，用它决定下一次学习方向。",
+      "node_ids": ["I02", "I03", "I07"]
+    }
+  },
+  "adaptation": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-20-六层AI能力地图-超哥重组长提纲-v1.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "mappings": [
+      {
+        "node_id": "I01",
+        "draft_ref": "AI 很快给了答案。可接下来，人还得复制到表格里，补真实资料，改错字，发给客户，出了问题再自己兜底。",
+        "function_preserved": true
+      },
+      {
+        "node_id": "I02",
+        "draft_ref": "不再只问一个答案，而是把一件有输入、有要求、有产出的任务交出去。",
+        "function_preserved": true
+      },
+      {
+        "node_id": "I03",
+        "draft_ref": "不让同一件事每天从头问一遍，而是把触发、资料、处理和交接串起来。",
+        "function_preserved": true
+      },
+      {
+        "node_id": "I04",
+        "draft_ref": "中间隔着的不是一个提示词，而是文件放在哪儿、环境怎么配、权限怎么给、出错怎么查。",
+        "function_preserved": true
+      },
+      {
+        "node_id": "I05",
+        "draft_ref": "它更像一个零件库：有人把能用的部件放进去，有人拿出来装到自己的业务里，也有人把改好的东西再放回去。",
+        "function_preserved": true
+      },
+      {
+        "node_id": "I06",
+        "draft_ref": "企业里最难的往往不是选哪个模型，而是资料从哪来，谁有权限，AI 说错了谁接住，钱花在哪儿，出问题以后怎么恢复。",
+        "function_preserved": true
+      },
+      {
+        "node_id": "I07",
+        "draft_ref": "这不是升级打怪。六层只是帮你看清：AI 已经替你走到了哪一段，你下一步有没有必要再往上走。",
+        "function_preserved": true
+      }
+    ]
+  }
+}
