@@ -45,11 +45,22 @@
       "verification_status": "已核验",
       "canonical_ref": "抖音创作者中心官方导出的任务级回执，只用于当前开头、时长和观测假设，不解释成平台因果规律。",
       "evidence_ids": ["evidence:account:task-20260820T080036Z-01fb6019"]
+    },
+    {
+      "id": "source:tool-check-20260820",
+      "title": "六层AI能力地图工具核对 v1",
+      "completeness": "primary-source",
+      "acquisition": "official-product-docs",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-20-六层AI能力地图-工具核对-v1.md",
+      "verification_status": "已核对产品类别和能力边界；产品功能、地区、套餐和价格仍会变化",
+      "canonical_ref": "只支持六层中少量常见工具入口及其用途类别，不作产品参数横评、购买推荐、效果承诺或工具唯一归层。",
+      "evidence_ids": ["evidence:tool-check:20260820"]
     }
   ],
   "brief_contract": {
     "user_goal": "保持参考视频的六层逻辑不变，把“会用AI”重新组织成符合超哥表达的普通人能力定位内容。",
-    "reference_role": "参考视频承担六层递进、每层边界和最后回到个人位置的结构作用；正文换成工作段落、普通人场景和企业系统责任，不复用原句或工具盘点方式。",
+    "reference_role": "参考视频承担六层递进、每层边界和最后回到个人位置的结构作用；正文换成工作段落、普通人场景、企业系统责任和经核对的少量工具入口，不复用原句、原案例或原工具组合。",
     "reference_forbidden_role": "不得复用原作者标题、原句、案例、工具组合、能力等级评价或培训结论；不得把六层讲成行业统一标准、收入等级或所有人都要走完的路线。",
     "required_arc": [
       "从AI给出答案后人还要复制、修改、执行的具体场景进入。",
@@ -83,6 +94,11 @@
           "material": "当前36条作品任务级账号数据回执",
           "role": "action-support",
           "supports": "约束开头直接给具体工作场景和判断，不用技术背景或工具名铺垫。"
+        },
+        {
+          "material": "六层AI能力地图工具核对 v1",
+          "role": "boundary",
+          "supports": "工具名只作为每层的常见入口；正式表达始终回到任务、人工确认、权限和失败处理，避免写成产品清单。"
         }
       ],
       "alignment_refs": {
