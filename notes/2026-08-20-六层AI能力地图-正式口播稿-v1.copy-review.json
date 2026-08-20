@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260820T082257Z-a6fce7c2",
+  "status": "passed",
+  "reviewed_at": "2026-08-20T16:27:17+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-20-六层AI能力地图-正式口播稿-v1.md",
+    "sha256": "9c6b6a4df30d70f800ffb8bb2c58588c2da8f676f13d446d7a26904537c03f37"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "开头删除“我今天要讲什么”和“这不是”的自我说明，直接落在客户回复、资料、表格和责任仍由人承担的动作上。六层的产品名都紧跟具体工作段落，避免工具名单悬空；每层的边界写进相应场景，不集中堆免责声明。层级标题保留是为教学定位服务，段内改用不同的工作动作、后果和收束句，未用万能转场拼接。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "豆包、DeepSeek、Kimi、千问，这些聊天助手，大多数人都在这一层。",
+        "risk_level": "medium",
+        "reason": "产品名连续出现容易被误听成工具横评，削弱开头的工作场景。",
+        "candidates": {
+          "conservative": "豆包、DeepSeek、Kimi、千问，这些聊天助手，很多人每天都在用。",
+          "direct": "你手机里常用的豆包、DeepSeek、Kimi、千问，大多先解决的是问答。",
+          "vivid": "你手机里那几个 AI，不管叫豆包还是 Kimi，先干的多半都是问答。"
+        },
+        "fact_difference": "三个候选都只调整工具名与第一层的连接方式，不新增能力、排名或用户规模。",
+        "recommendation": "采用直接版，保留用户要求的工具入口，同时把判断拉回“先解决问答”。"
+      },
+      {
+        "original": "六层说完，你怎么判断自己在哪儿？",
+        "risk_level": "low",
+        "reason": "前面信息量较大，若直接再列六层，可能让观众觉得重复；但需要一个简短定位回收。",
+        "candidates": {
+          "conservative": "听到这儿，你只要回看自己最近一次工作。",
+          "direct": "你现在在哪层，不用猜，就看答案出来以后还剩哪段活。",
+          "vivid": "别看别人晒什么 Agent。你关掉聊天框以后，剩下那段活，就是你现在的位置。"
+        },
+        "fact_difference": "候选均保留“按AI之后仍需人工承担的工作定位”的原有行动，不新增事实或效果承诺。",
+        "recommendation": "采用直接版，减少一次机械复述，把结尾收回可立即判断的动作。"
+      }
+    ],
+    "no_high_risk_reason": "已列出两处需要保守调整的节点；其余层级信息虽多，但每层都有不同的工具入口、工作动作和责任边界，未发现需要重写的高风险句。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "将“不是AI没用”改为“AI确实帮你把最开始那一下做掉了”，保留第一层有价值的判断，减少防御性句式。",
+      "将“不是升级打怪”改为“这六层里，没有哪一层更有面子”，保留非等级边界，改为更直接的口播判断。"
+    ],
+    "pending_user_confirmations": [
+      "第四层“我自己做项目时”的第一人称表达已依据本人持续实践保留，仍请用户确认是否愿意在当前公开稿中使用。",
+      "用户尚未对当前稿件完成真人朗读和语言确认；本报告不构成制作批准。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  }
+}

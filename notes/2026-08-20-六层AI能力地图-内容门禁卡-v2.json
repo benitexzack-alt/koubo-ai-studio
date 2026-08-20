@@ -1,0 +1,386 @@
+{
+  "schema_version": 6,
+  "task_id": "task-20260820T082257Z-a6fce7c2",
+  "target_stage": "draft",
+  "required_rules": [
+    {
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md",
+      "read": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:laoji-six-layer-map",
+      "title": "老纪AI实验室：都说自己会用AI，但很多人其实还停在第一层",
+      "completeness": "complete",
+      "acquisition": "local-asr",
+      "intended_uses": ["viewpoint", "talking-structure"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7667346805348207913.md",
+      "verification_status": "作者框架待独立核验",
+      "canonical_ref": "完整转写只用于拆解六层的递进关系和定位功能；转写准确度medium，作者工具归类、能力门槛和普遍性判断不作为公开事实或行业统一标准。",
+      "evidence_ids": ["evidence:source:7667346805348207913"]
+    },
+    {
+      "id": "source:source-essence-card",
+      "title": "六层AI能力地图源头精髓卡",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-20-六层AI能力地图-源头精髓卡-v2.json",
+      "verification_status": "已核验结构覆盖，事实仍按原来源边界收紧",
+      "canonical_ref": "本卡记录七个必须保留节点、纠偏账本和不外推边界；只证明改编未丢失源头逻辑，不证明六层是行业标准。",
+      "evidence_ids": ["evidence:source-essence:task-20260820T082257Z-a6fce7c2"]
+    },
+    {
+      "id": "source:account-preflight-20260820",
+      "title": "当前36条作品任务级账号数据回执",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260820T082257Z-a6fce7c2.json",
+      "verification_status": "已核验",
+      "canonical_ref": "抖音创作者中心官方导出的任务级回执，只用于当前开头、时长和观测假设，不解释成平台因果规律。",
+      "evidence_ids": ["evidence:account:task-20260820T082257Z-a6fce7c2"]
+    },
+    {
+      "id": "source:tool-check-20260820",
+      "title": "六层AI能力地图工具核对 v1",
+      "completeness": "primary-source",
+      "acquisition": "official-product-docs",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-20-六层AI能力地图-工具核对-v1.md",
+      "verification_status": "已核对产品类别和能力边界；产品功能、地区、套餐和价格仍会变化",
+      "canonical_ref": "只支持六层中少量常见工具入口及其用途类别，不作产品参数横评、购买推荐、效果承诺或工具唯一归层。",
+      "evidence_ids": ["evidence:tool-check:20260820"]
+    }
+  ],
+  "topic_authorization": {
+    "status": "user-selected",
+    "selected_by": "user",
+    "selection_mode": "explicit-topic-request",
+    "selected_topic": "AI能力不是工具熟练度，而是AI已经替你走到工作、流程和系统中的哪一段。",
+    "user_instruction": "用户确认：好的，就按这个框架出正式文稿。",
+    "source_ref": "conversation:2026-08-20:user-approved-six-layer-outline-to-formal-script",
+    "confirmed_at": "2026-08-20T16:20:00+08:00",
+    "candidate_only": false
+  },
+  "brief_contract": {
+    "user_goal": "保持参考视频的六层逻辑不变，把“会用AI”重新组织成符合超哥表达的普通人能力定位内容。",
+    "reference_role": "参考视频承担六层递进、每层边界和最后回到个人位置的结构作用；正文换成工作段落、普通人场景、企业系统责任和经核对的少量工具入口，不复用原句、原案例或原工具组合。",
+    "reference_forbidden_role": "不得复用原作者标题、原句、案例、工具组合、能力等级评价或培训结论；不得把六层讲成行业统一标准、收入等级或所有人都要走完的路线。",
+    "required_arc": [
+      "从AI给出答案后人还要复制、修改、执行的具体场景进入。",
+      "按问答、任务、流程、组装、开源改造、系统经营六层逐级说明AI替人多走了哪一段。",
+      "每层都同时说明人仍要负责什么，特别收紧自动化、开源和企业系统的误用。",
+      "回到六层只是定位地图，观众只找出自己用完AI后仍要手工扛的一步。"
+    ],
+    "forbidden_reframes": [
+      "不得改成Agent工具推荐或六个产品参数盘点。",
+      "不得重复“普通人站在AI和现实之间”或“第四次工业革命四种能力”的旧结论。",
+      "不得把企业AI系统经营包装成超哥已经完成的客户成果。"
+    ],
+    "semantic_contract": {
+      "audience_conflict": "AI给了答案，为什么后面的活还是得我自己一点一点干？",
+      "core_judgment": "AI能力不是工具熟练度，而是AI已经替你走到工作、流程和系统中的哪一段。",
+      "training_interpretation": "六层不是升级打怪，答案出来以后还要你手工扛的那一段，才是你现在最该补的能力。",
+      "ordinary_person_value": "先圈出最近一次AI工作里最费时间、最容易出错且必须人工接住的一步，再决定要不要往上一层。",
+      "chronology_is_not_main_arc": true,
+      "material_role_map": [
+        {
+          "material": "老纪AI实验室完整转写",
+          "role": "mechanism-evidence",
+          "supports": "保留问答到系统经营的六层递进，不把作者表达原样带入正文。"
+        },
+        {
+          "material": "六层AI能力地图源头精髓卡",
+          "role": "boundary",
+          "supports": "保证流程、开源和系统经营段落带有不外推边界，六层不被讲成能力排行榜。"
+        },
+        {
+          "material": "当前36条作品任务级账号数据回执",
+          "role": "action-support",
+          "supports": "约束开头直接给具体工作场景和判断，不用技术背景或工具名铺垫。"
+        },
+        {
+          "material": "六层AI能力地图工具核对 v1",
+          "role": "boundary",
+          "supports": "工具名只作为每层的常见入口；正式表达始终回到任务、人工确认、权限和失败处理，避免写成产品清单。"
+        }
+      ],
+      "alignment_refs": {
+        "audience_conflict": "可你关掉对话框以后，资料还是得自己找，表格还是得自己填，客户还是得自己回。",
+        "core_judgment": "你先看一件事：你每次用完 AI，后面还有多少工作，是你自己一段一段接着干的？",
+        "training_interpretation": "这六层里，没有哪一层更有面子。",
+        "ordinary_person_value": "今天就拿一件你最近正在做的工作出来看：AI 给完答案以后，哪一步最费时间，最容易出错，还必须你自己接住？"
+      }
+    },
+    "alignment_evidence": "重组提纲在开头用回答后仍需人工执行的场景建立冲突，中段以每层“AI替人多走哪段、人仍负责哪段”推进，结尾收回一个定位动作。",
+    "status": "locked"
+  },
+  "recent_six": [
+    {
+      "title": "国产AI落到兰州",
+      "date": "2026-08-14",
+      "audience_problem": "企业AI项目责任链缺位",
+      "main_claim": "AI项目需要明确责任人和验收链",
+      "claim_id": "claim:ai-project:responsibility-chain",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260814"],
+      "deliverable": "五个责任人检查",
+      "cta": "写出项目空缺责任格",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v3.md",
+      "sha256": "82b0759bd3c093b4c70d44cf27903ba4bec4d46711292baaa2e73e154630461f",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "AI最好与最坏十年",
+      "date": "2026-08-12",
+      "audience_problem": "普通人如何不被AI降价",
+      "main_claim": "人要保留判断和负责能力",
+      "claim_id": "claim:ai-era:human-agency",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260812"],
+      "deliverable": "识别自己在AI链条中的位置",
+      "cta": "回看本周自己做的决定",
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-AI007-AI双刃剑源头拆解/2026-08-11-AI最好与最坏十年-超哥原创口播稿-v5.md",
+      "sha256": "aadf7c8763c4c9f43c4a7cf9c7f8df93dd4c548adc0377eb41c2e28cbb6bc1af",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "创业能力训练营第一集",
+      "date": "2026-08-11",
+      "audience_problem": "企业AI培训如何落到业务",
+      "main_claim": "培训价值在真实业务问题",
+      "claim_id": "claim:training:business-problem",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260811"],
+      "deliverable": "四个业务问题",
+      "cta": "带着问题进培训",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-11-创业能力训练营信创与AI-第一集完整口播稿-v2.md",
+      "sha256": "46f624be7da56dae323428a689323120597c5242da6947328726937a106191df",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "AI在第四次工业革命里站哪一层",
+      "date": "2026-08-10",
+      "audience_problem": "普通人在AI产业中的位置",
+      "main_claim": "普通人应掌握调用解释转化校准",
+      "claim_id": "claim:ai-layer:four-rights",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260810"],
+      "deliverable": "四层能力判断",
+      "cta": "判断自己当前能力层",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-10-AI第四次工业革命普通人位置-用户最终确认原稿-v1.md",
+      "sha256": "0192d40b19366ae98ab8a394d1558aa43298073b23bb900f8e5369245f9f2443",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    },
+    {
+      "title": "AI自媒体低成本起号",
+      "date": "2026-08-08",
+      "audience_problem": "普通人如何开始AI自媒体",
+      "main_claim": "先用账号积累真实资产",
+      "claim_id": "claim:ai-media:account-asset",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260808"],
+      "deliverable": "低成本起号动作",
+      "cta": "先完成账号首条内容",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+      "sha256": "3c46cc74b59df44084c44919abe0449316e15fa07ce3653db64dea85ac726b14",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    },
+    {
+      "title": "AI效率不等于完整AI生产力",
+      "date": "2026-08-04",
+      "audience_problem": "效率提升为何不等于新增价值",
+      "main_claim": "旧任务提速不自动产生新价值",
+      "claim_id": "claim:ai-productivity:value-gap",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": ["evidence:recent:20260804"],
+      "deliverable": "区分效率与价值",
+      "cta": "检查任务是否创造新交付",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-04-AI效率不等于完整AI生产力-用户最终确认稿-v2.md",
+      "sha256": "5618c1dbefd62ab938b75e46fa461d05de25a1e9df2dd677a6c73300f29b8bd0",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    }
+  ],
+  "topic": {
+    "audience": "已经会用聊天型AI、又在任务、自动化、Agent、开源和企业AI之间感到混乱的普通人、本地创业者与小微企业老板。",
+    "problem": "观众把工具熟练度当成能力，分不清AI现在是在给答案、交任务、跑流程还是进入多人业务系统，因此要么停在聊天框，要么盲目追求复杂Agent。",
+    "desired_change": "观众能依据AI替人承担的工作段落定位自己，并只选择一个真实缺口作为下一步。",
+    "novel_claim": "AI能力不是工具熟练度，而是AI已经替你走到工作、流程和系统中的哪一段。",
+    "claim_id": "claim:ai-use:work-segment-map",
+    "primary_evidence_ids": ["evidence:source:7667346805348207913", "evidence:source-essence:task-20260820T082257Z-a6fce7c2"],
+    "difference_from_recent": "最近六条讲AI产业位置、效率和价值、企业责任链、培训和起号；本条新增一张从聊天答案到系统经营的六层工作段落地图。观众带走的是一次真实工作中AI已承担与仍需人工承担的边界，不重复第四次工业革命的调用、解释、转化、校准四项能力。",
+    "evidence_proves": "完整参考内容与源头精髓卡证明六层递进是本轮可保留的作者解释结构，且每层的误用边界已经被收紧。",
+    "evidence_does_not_prove": "不能证明六层是行业标准、工具等级、收入层级，也不能证明任一工具、Agent、开源项目或企业系统一定能完成相应工作。",
+    "audience_takeaway": "回看最近一次AI工作，找出答案出来后仍最费时间、最易出错且必须人工接住的一步，决定自己的下一项学习。",
+    "boundary": "本条是能力定位解释，不是Agent购买建议、工具教程、企业交付承诺或职业收入建议。",
+    "delete_candidates": [
+      "删除原视频的工具逐一报名前置，避免把地图拍成产品盘点。",
+      "删除第六层等于最高级、所有人都必须学代码的暗示。",
+      "删除第四次工业革命原稿中的调用、解释、转化、校准四权复述。"
+    ]
+  },
+  "frozen_topic_hits": [],
+  "audience_fit": {
+    "account_stage": "调查",
+    "speaker_position": "在兰州学习、试错并解释企业AI应用的人，擅长把复杂能力拆成工作中的实际责任；不以已经完成企业系统交付的专家身份讲话。",
+    "first_20s_connection": "观众刚用AI写完一段话，却还要自己复制到文档、补资料、改错误、发给客户，立刻能认出“答案出来以后活还在”的场景。",
+    "high_level_material_role": "none",
+    "ordinary_scenes": [
+      "AI写完客户回复后，员工仍要自己找真实资料、改口径并承担发错的后果。",
+      "每天把客户咨询、表格和待办在不同软件里来回搬，想自动化却不知道从哪段开始。",
+      "老板看到Agent、知识库和开源项目，分不清哪些是一个人的工具问题，哪些已经是团队的责任问题。"
+    ],
+    "audience_gain": "能给自己当前的AI使用贴上更准确的工作标签，并找到一个不靠追工具的下一步。",
+    "authority_boundary": "只解释作者能力地图和公开的操作边界，不宣称自己或客户已经完成第六层系统经营，也不评价任何观众能力高低。",
+    "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "account_data_preflight": {
+      "receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260820T082257Z-a6fce7c2.json",
+      "receipt_sha256": "e1a821a4229aff571358e5b447b9c9d27535edfa3f15cb2000630acb5ee883e6",
+      "read": true
+    },
+    "account_data_application": {
+      "account_baseline_evidence": {
+        "metric": "weightedMetrics.fiveSecondCompletionRate",
+        "value": 33.1855,
+        "use": "用当前全账号五秒留存描述性基线约束开头：前五秒先给“答案出来以后活为什么还在”的工作场景，不能从六层定义或工具名单开始。"
+      },
+      "recent_work_evidence": {
+        "video_key": "4da298e8a29710e45a7f09fb",
+        "metric": "metrics.fiveSecondCompletionRate",
+        "value": 46.37,
+        "use": "借近期作品先点明具体经营问题的表达经验，但本条改为AI工作段落地图，不复用四问、企业服务结论或同一冲突。"
+      },
+      "planned_change": "开头直接放出一个AI写完后仍需复制、补资料、发客户的场景，十五秒内给出“AI替人走到哪一段”的主张，然后才解释六层。",
+      "causal_claim": "human-confirmed-lesson-only"
+    },
+    "learning_card_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+    "learning_card_sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "newer_content_acknowledged": true,
+    "newer_content_ids": [
+      "2026-08-11-training-camp-episode-1",
+      "2026-08-12-ai-best-worst",
+      "2026-08-14-training-camp-episode-2",
+      "2026-08-16-ai-magic",
+      "2026-08-18-why-learn-ai"
+    ],
+    "newer_content_metric_status": "学习卡快照后已有作品均已被本任务级回执覆盖；它们只用于开头假设和重复检查，不能升级为平台规律或效果因果。",
+    "applied_lesson_ids": [
+      "lesson:opening:title-answer-before-background",
+      "lesson:hook:concrete-conflict-scene-object",
+      "lesson:duration:value-order-before-shortening",
+      "lesson:metrics:separate-early-and-mature-windows"
+    ],
+    "opening_plan": {
+      "answer_or_conflict_by_second": 3,
+      "proof_or_real_scene_by_second": 12,
+      "audience_relevance_by_second": 18,
+      "first_viewer_value_by_second": 28,
+      "title_answer_by_second": 3,
+      "delayed_payoff_risk_checked": true
+    },
+    "duration_plan": {
+      "planned_seconds": 510,
+      "single_core_problem": "普通人怎样判断自己目前用AI是在拿答案、交任务、跑流程，还是已经触及组装和系统问题。",
+      "justification": "六层都必须保留，并且每层要说明常见工具入口、AI承担的工作、人仍负责的边界和普通人识别方式；按当前约2200字稿件，以8至9分钟承载完整地图，不压缩成工具清单或三列表模型。",
+      "evidence_based_justification": true
+    },
+    "metric_plan": {
+      "primary_metric": "five_second_completion_rate",
+      "secondary_metrics": ["average_watch_seconds", "profile_visits"],
+      "observation_windows": ["early-within-3h", "24h", "72h", "7d"],
+      "hypothesis": "先用AI给答案后人仍要完成的具体工作场景，再给出六层地图，可能比从工具名或定义进入更早让目标观众认出自己的问题；若多个窗口没有更清晰的早期信号，则废弃这个开头假设。",
+      "early_vs_mature_windows_acknowledged": true
+    }
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {
+      "target": "primary",
+      "script_evidence": "六层逐级交代AI替人承担的工作段落和人仍要负责的边界，结尾给出一次最近AI工作的定位动作。",
+      "viewer_test": "观众能辨认自己当前处在哪类工作段落，并写出一个不再只是搜工具的学习方向。"
+    },
+    "surprise": {
+      "target": "supporting",
+      "script_evidence": "开头承认会问AI已经有价值，却指出答案离真正工作还有后半段，反差来自日常工作场景而非贬低观众。",
+      "viewer_test": "观众能复述“答案出来不等于工作完成”，且不把第一层误解成无用或低级。"
+    },
+    "expression": {
+      "target": "primary",
+      "script_evidence": "每层使用一件工作在何处停住、谁接手、出了问题谁负责的解释方式，避免定义堆砌和产品参数盘点。",
+      "viewer_test": "陌生观众能用自己的工作描述其中一层，不会只记住一串工具名。"
+    },
+    "resonance": {
+      "target": "supporting",
+      "script_evidence": "把“我用过很多AI却还是很累”的困惑放在第一层和第三层，减少追工具带来的比较焦虑。",
+      "viewer_test": "共鸣来自观众自己的复制、修改、搬运和接锅经历，不依赖身份贬低或焦虑营销。"
+    },
+    "integrity_boundary": "不得把六层包装成标准、等级、收入或职业结论；不得用一键自动化、开源安装或知识库演示暗示已经完成企业AI转型。",
+    "review_status": "planned",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {
+      "name": "AI替人承担的工作段落",
+      "problem": "普通人把“会聊天”当作会用AI，又把Agent、自动化、开源和企业系统混为同一种能力。",
+      "bottleneck": "工具名和炫酷演示掩盖了真正的差别：AI输出后，复制、核对、交接、权限和责任仍由谁承担。",
+      "mechanism": "以问答、任务、流程、组装、开源改造、系统经营六层观察AI进入工作的深度；每一层同时看AI多走了哪一步、人仍必须接住哪一步。",
+      "observable_change": "观众能在最近一次AI工作中指出答案之后仍需人工承担的一步，并由此选择下一项学习或优化方向。",
+      "evidence": "完整参考转写、源头精髓卡和重组长提纲。",
+      "evidence_proves": "这些材料支持将六层作为本轮解释和定位框架，并证明每层有对应的边界提醒。",
+      "evidence_does_not_prove": "不能证明六层是统一标准，也不能证明观众、企业或任何工具一定可以或应该进入更高层。",
+      "audience_relevance": "普通人和小老板都能据此减少无效追工具，把学习投入放到工作真正停住的地方。",
+      "boundary": "当前账号只处于调查阶段，本条不把地图升级为企业交付方法或客户效果案例。"
+    }
+  ],
+  "voice": {
+    "profile_path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+    "read": true
+  },
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-20-六层AI能力地图-正式口播稿-v1.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "copy_review": {
+      "required": true,
+      "report_path": "/Users/pc/Documents/口播/notes/2026-08-20-六层AI能力地图-正式口播稿-v1.copy-review.json"
+    },
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": true,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "performance_feedback_recheck_passed": true,
+    "compliance_passed": true,
+    "user_script_approved": false,
+    "user_language_approval": {
+      "status": "pending",
+      "approved_by": null,
+      "approval_ref": null,
+      "approved_at": null
+    },
+    "read_aloud_evidence": {
+      "mode": "pending-user-read",
+      "status": "pending",
+      "evidence_ref": "待用户对当前稿件完成真人朗读并确认。"
+    },
+    "phrase_exemptions": [],
+    "ai_tone_exemptions": [],
+    "anchor_exemptions": []
+  }
+}
