@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "releaseId": "20260819_ai_income_v80_v2",
-  "status": "ready-for-user-review",
+  "status": "verified",
   "videoId": "AI_INCOME_20260819_talk01",
   "baselineId": "koubo-formal-16x9-v1",
   "productionProfile": {
@@ -121,8 +121,8 @@
       "status": "passed",
       "previewPoints": [3.2, 9.6, 16.8, 26.4, 36.6, 43],
       "userPerceptibilityConfirmed": true,
-      "fullVideoUserReviewPending": true,
-      "evidence": "用户确认45秒有音效预览通过；数字运镜与语义段绑定。完整六分钟画面仍待用户正常速度观看。"
+      "fullVideoUserReviewPending": false,
+      "evidence": "数字运镜与语义段绑定；用户先确认45秒有音效预览，后于2026-08-20明确回复“整篇验收通过”，完整六分钟画面人工终验闭合。"
     },
     "soundEffectAudibility": {
       "status": "passed",
@@ -131,8 +131,8 @@
       "roleCount": 5,
       "maximumSyncErrorFrames": 2,
       "userAudibilityConfirmed": true,
-      "fullVideoUserReviewPending": true,
-      "evidence": "37个主视觉事件一一绑定本地非人声音效，使用27个不同文件和5类语义角色；前45秒6个音效点由用户明确试听通过。全片母带达到-16.1 LUFS和-2.2 dBTP，完整听看仍待用户确认。"
+      "fullVideoUserReviewPending": false,
+      "evidence": "37个主视觉事件一一绑定本地非人声音效，使用27个不同文件和5类语义角色；用户先明确试听通过前45秒6个音效点，后于2026-08-20明确回复“整篇验收通过”。全片母带为-16.1 LUFS和-2.2 dBTP，完整听感人工终验闭合。"
     }
   },
   "upgradeDecisions": [
@@ -160,16 +160,21 @@
       "id": "upgrade-20260819-no-fullscreen-remotion-info-page",
       "decision": "applied-and-machine-verified",
       "evidence": "Remotion说明动效均为人物左侧透明语义层；只有用户提供的四段AI情景视频全屏切入。"
+    },
+    {
+      "id": "upgrade-20260820-full-watch-acceptance",
+      "decision": "applied-and-user-verified",
+      "evidence": "用户于2026-08-20完整观看正式候选片后明确回复“整篇验收通过”，整片画面、字幕、运镜、音效和结尾人工终验闭合。"
     }
   ],
   "userReview": {
     "previewApproved": true,
     "directFinalAuthorized": true,
-    "fullWatchConfirmed": false,
-    "confirmedAt": null,
-    "reviewedAt": null,
-    "reviewOutcome": "pending-full-watch",
-    "notes": "用户已批准45秒有音效预览并授权正式渲染；尚无完整六分钟正常速度观看确认，不能标记为verified。"
+    "fullWatchConfirmed": true,
+    "confirmedAt": "2026-08-20T10:51:00+08:00",
+    "reviewedAt": "2026-08-20",
+    "reviewOutcome": "passed",
+    "notes": "用户先批准45秒有音效预览并授权正式渲染，后于2026-08-20明确回复“整篇验收通过”；完整六分钟正式成片人工终验闭合。"
   },
   "deliveryPackage": {
     "status": "ready-for-delivery",
@@ -213,6 +218,6 @@
     "metrics": null,
     "observationWindows": ["early", "24h", "72h", "7d"],
     "releasePackaging": "notes/2026-08-19-学AI到底能不能多挣一点钱-V8发布包装-v1.md",
-    "nextDecision": "用户完整观看正式候选片后，若无问题再把release状态升级为verified；实际发布前按抖音客户端当日选项完成人工声明与授权复核。"
+    "nextDecision": "实际发布前按抖音客户端当日选项完成人工声明与授权复核；发布后补录作品链接或作品ID，并按早期、24小时、72小时和7天窗口归档数据。"
   }
 }
