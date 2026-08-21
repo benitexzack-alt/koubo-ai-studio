@@ -1,0 +1,423 @@
+{
+  "schema_version": 6,
+  "task_id": "task-20260821T145844Z-4e8bbe4f",
+  "target_stage": "draft",
+  "required_rules": [
+    {
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md",
+      "read": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "source:enterprise-ai-pricing-reference",
+      "title": "企业AI报价差异参考视频",
+      "completeness": "complete",
+      "acquisition": "local-asr",
+      "intended_uses": [
+        "talking-structure"
+      ],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7664943450047892206.md",
+      "verification_status": "完整本地ASR，准确度medium；仅作报价反差到交付范围的内部结构线索",
+      "canonical_ref": "正文不提这条视频、作者或具体价格；报价和项目层级不作为公开市场事实。",
+      "evidence_ids": [
+        "evidence:source:7664943450047892206"
+      ]
+    },
+    {
+      "id": "source:restaurant-operations-conversation",
+      "title": "2026-08-17 餐饮运营交流纪要",
+      "completeness": "complete",
+      "acquisition": "local-conversation-summary",
+      "intended_uses": [
+        "viewpoint",
+        "talking-structure"
+      ],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/个人AI事业/2026-08-17_兰州餐饮AI落地讨论纪要.md",
+      "verification_status": "一次交流的受控纪要；只能使用现场描述设计问题和试点假设",
+      "canonical_ref": "不提三姐弟品牌、门店数、营收、负责人身份、付费、上线或效果。",
+      "evidence_ids": [
+        "evidence:conversation:20260817"
+      ]
+    },
+    {
+      "id": "source:source-essence-card",
+      "title": "企业AI信息链路源头精髓卡",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-21-企业AI信息链路-源头精髓卡-v1.json",
+      "verification_status": "源头节点和纠偏边界已校验",
+      "canonical_ref": "只证明本轮改编保留信息到动作的论证链，不证明企业AI或信息工具包已经产生客户结果。",
+      "evidence_ids": [
+        "evidence:source-essence:task-20260821T145844Z-4e8bbe4f"
+      ]
+    },
+    {
+      "id": "source:account-preflight-20260821",
+      "title": "当前37条作品任务级账号数据回执",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260821T145844Z-4e8bbe4f.json",
+      "verification_status": "已核验",
+      "canonical_ref": "只用于开头场景、时长和发布后观察假设，不作平台因果规律。",
+      "evidence_ids": [
+        "evidence:account:task-20260821T145844Z-4e8bbe4f"
+      ]
+    }
+  ],
+  "topic_authorization": {
+    "status": "user-selected",
+    "selected_by": "user",
+    "selection_mode": "explicit-topic-request",
+    "selected_topic": "企业AI的差异不在工具名字，而在能否把信息进来、形成判断、进入动作、结果回来的具体工作接起来。",
+    "user_instruction": "用户确认：参考内容只作内部吸收，正文不提看到视频；按生活化框架先做，并以评论区领取行业信息获取工具包收尾。",
+    "source_ref": "conversation:2026-08-21:user-approved-enterprise-ai-information-chain-script",
+    "confirmed_at": "2026-08-21T22:58:00+08:00",
+    "candidate_only": false
+  },
+  "brief_contract": {
+    "user_goal": "以大白话讲企业AI从哪儿开始，避免教育老板和专业术语，把报价差异、餐饮交流和本人信息获取方法融成一条有认同感、可领取工具包的口播。",
+    "reference_role": "报价视频只承担开头反差与“比较交付范围”的结构作用；餐饮交流承担真实现场麻烦；本人平台承担信息获取方法样例。",
+    "reference_forbidden_role": "不得在正文说“后来我看到一条视频”，不得点名或复述参考作者、具体报价、原句和原案例；不得将餐饮交流包装为三姐弟客户案例、收费项目或经营成果。",
+    "required_arc": [
+      "从老板面对企业AI报价看不明白和每天信息太乱的生活场景进入。",
+      "用餐饮运营交流里的拉数据、对库存、补货和行业消息说明真正的麻烦。",
+      "用信息从哪来、谁判断、做什么动作、结果是否回来解释AI嵌入时机。",
+      "用本人抖音知识中台说明选信源、收信息、筛选和沉淀的方法，不展示成功数据。",
+      "用新品信号说明外部信息不是照搬指令，必须回到本店条件和小范围试验。",
+      "收回到先理一段信息工作，再决定是否做更深AI；评论区领取轻量信息获取工具包。"
+    ],
+    "forbidden_reframes": [
+      "不得写成企业AI报价表、工具推荐或老板培训课。",
+      "不得重复上一条AI课程服务四关筛选，或把本条讲成AI项目责任人清单。",
+      "不得把领取工具包写成已经验证有效的企业产品或自动化系统。"
+    ],
+    "semantic_contract": {
+      "audience_conflict": "老板不是没听过AI，是每天信息太杂，真正要做事的时候还是不知道先看什么、先动什么。",
+      "core_judgment": "企业AI的差异不在工具名字，而在能不能把一段信息进来、形成判断、进入动作、结果回来的工作接起来。",
+      "training_interpretation": "AI先帮人把该看的东西收回来、分一分、提个醒；真正要不要做，仍得回到自己的生意里。",
+      "ordinary_person_value": "先用一套行业信息获取工具把每天该看什么、怎么筛、看完怎么用理出来。",
+      "chronology_is_not_main_arc": true,
+      "material_role_map": [
+        {
+          "material": "企业AI报价差异参考",
+          "role": "hook-evidence",
+          "supports": "建立报价不能脱离交付范围和真实工作讨论的反差。"
+        },
+        {
+          "material": "餐饮运营交流纪要",
+          "role": "local-proof",
+          "supports": "提供人工拉数、库存销售断点和补货判断的现场问题。"
+        },
+        {
+          "material": "本人信息获取作战平台",
+          "role": "action-support",
+          "supports": "说明信源选择、收集、筛选、沉淀和调用的实际方法，不承诺效果。"
+        }
+      ],
+      "alignment_refs": {
+        "audience_conflict": "每天信息太多，真正到要做事的时候，你还是不知道先看什么，先动什么。",
+        "core_judgment": "企业AI真正的差别，不在工具名字上，在它能不能帮你把一段活接起来。",
+        "training_interpretation": "AI先帮你把该看的东西收回来、分一分、提个醒。",
+        "ordinary_person_value": "评论区留“信息”，我把这套轻量版整理好，免费发给大家。"
+      }
+    },
+    "alignment_evidence": "开头从报价困惑和经营忙乱进入，中段用餐饮内外信息说明方法，结尾用轻量工具包作为可执行动作。",
+    "status": "locked"
+  },
+  "recent_six": [
+    {
+      "title": "国产AI落到兰州",
+      "date": "2026-08-14",
+      "audience_problem": "企业AI项目责任链缺位",
+      "main_claim": "AI项目需要明确责任人和验收链",
+      "claim_id": "claim:ai-project:responsibility-chain",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": [
+        "evidence:recent:20260814"
+      ],
+      "deliverable": "五个责任人检查",
+      "cta": "写出项目空缺责任格",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v3.md",
+      "sha256": "82b0759bd3c093b4c70d44cf27903ba4bec4d46711292baaa2e73e154630461f",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "AI最好与最坏十年",
+      "date": "2026-08-12",
+      "audience_problem": "普通人如何不被AI降价",
+      "main_claim": "人要保留判断和负责能力",
+      "claim_id": "claim:ai-era:human-agency",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": [
+        "evidence:recent:20260812"
+      ],
+      "deliverable": "识别自己在AI链条中的位置",
+      "cta": "回看本周自己做的决定",
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-AI007-AI双刃剑源头拆解/2026-08-11-AI最好与最坏十年-超哥原创口播稿-v5.md",
+      "sha256": "aadf7c8763c4c9f43c4a7cf9c7f8df93dd4c548adc0377eb41c2e28cbb6bc1af",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "创业能力训练营第一集",
+      "date": "2026-08-11",
+      "audience_problem": "企业AI培训如何落到业务",
+      "main_claim": "培训价值在真实业务问题",
+      "claim_id": "claim:training:business-problem",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": [
+        "evidence:recent:20260811"
+      ],
+      "deliverable": "四个业务问题",
+      "cta": "带着问题进培训",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-11-创业能力训练营信创与AI-第一集完整口播稿-v2.md",
+      "sha256": "46f624be7da56dae323428a689323120597c5242da6947328726937a106191df",
+      "content_start_marker": "<!-- CONTENT_START -->",
+      "content_end_marker": "<!-- CONTENT_END -->"
+    },
+    {
+      "title": "AI在第四次工业革命里站哪一层",
+      "date": "2026-08-10",
+      "audience_problem": "普通人在AI产业中的位置",
+      "main_claim": "普通人应掌握调用解释转化校准",
+      "claim_id": "claim:ai-layer:four-rights",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": [
+        "evidence:recent:20260810"
+      ],
+      "deliverable": "四层能力判断",
+      "cta": "判断自己当前能力层",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-10-AI第四次工业革命普通人位置-用户最终确认原稿-v1.md",
+      "sha256": "0192d40b19366ae98ab8a394d1558aa43298073b23bb900f8e5369245f9f2443",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    },
+    {
+      "title": "AI自媒体低成本起号",
+      "date": "2026-08-08",
+      "audience_problem": "普通人如何开始AI自媒体",
+      "main_claim": "先用账号积累真实资产",
+      "claim_id": "claim:ai-media:account-asset",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": [
+        "evidence:recent:20260808"
+      ],
+      "deliverable": "低成本起号动作",
+      "cta": "先完成账号首条内容",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-08-AI自媒体低成本起号-用户最终确认稿-v1.md",
+      "sha256": "3c46cc74b59df44084c44919abe0449316e15fa07ce3653db64dea85ac726b14",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    },
+    {
+      "title": "AI效率不等于完整AI生产力",
+      "date": "2026-08-04",
+      "audience_problem": "效率提升为何不等于新增价值",
+      "main_claim": "旧任务提速不自动产生新价值",
+      "claim_id": "claim:ai-productivity:value-gap",
+      "evidence": "已确认稿及任务级账号回执",
+      "evidence_ids": [
+        "evidence:recent:20260804"
+      ],
+      "deliverable": "区分效率与价值",
+      "cta": "检查任务是否创造新交付",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-04-AI效率不等于完整AI生产力-用户最终确认稿-v2.md",
+      "sha256": "5618c1dbefd62ab938b75e46fa461d05de25a1e9df2dd677a6c73300f29b8bd0",
+      "content_start_marker": "## 口播正文开始",
+      "content_end_marker": "## 口播正文结束"
+    }
+  ],
+  "topic": {
+    "audience": "本地餐饮、零售、家具、服务行业的小微企业老板和运营人员，以及正考虑用AI但不知道先从哪里下手的人。",
+    "problem": "观众在企业AI报价、工具演示和行业信息之间来回看，仍没找到自己每天哪一段工作值得先理顺。",
+    "desired_change": "观众能从一段信息混乱的真实工作开始，判断是否先做资料整理、信息获取、日常判断辅助或小范围试验。",
+    "novel_claim": "企业AI的差异不在工具名字，而在能否把信息进来、形成判断、进入动作、结果回来的具体工作接起来。",
+    "claim_id": "claim:enterprise-ai:information-to-action",
+    "primary_evidence_ids": [
+      "evidence:conversation:20260817",
+      "evidence:source-essence:task-20260821T145844Z-4e8bbe4f"
+    ],
+    "difference_from_recent": "《AI圈最魔幻的事》讲如何筛AI课程和服务的交付责任；《国产AI落到兰州》讲企业项目的责任链。本条不评价课程和项目是否靠谱，而是从一次餐饮运营交流说明企业在上工具前怎样找一段信息到动作的工作，并送出信息获取工具包。",
+    "evidence_proves": "交流纪要证明存在这样的现场问题和本人讲过信息获取方法；源头精髓卡证明本条保留了报价反差、现场问题、信息判断、人工负责和工具包动作的论证链。",
+    "evidence_does_not_prove": "不能证明任意餐饮企业存在同样问题、愿意付费、工具包有效，或本人已经完成相关企业AI项目交付。",
+    "audience_takeaway": "拿到一个行业信息获取的起步工具，先写清自己每天该看什么、怎么筛、看完以后准备做什么。",
+    "boundary": "本条不是企业AI报价建议、餐饮经营建议、客户案例、工具效果承诺或自动化经营教学。",
+    "delete_candidates": [
+      "删除报价数字、平台功能细节、品牌信息和未确认经营数据。",
+      "删除对企业老板的命令式教学口吻。",
+      "删除把外部新品信号写成快速复制竞品的表述。"
+    ]
+  },
+  "frozen_topic_hits": [],
+  "audience_fit": {
+    "account_stage": "调查",
+    "speaker_position": "在兰州学习、试错并把AI方法放回本地企业真实工作里解释的人；能诚实展示自己如何处理信息，但不冒充已完成规模化企业AI交付的顾问。",
+    "first_20s_connection": "老板听到企业AI报价时发懵，回到公司却还在手工找数据、对库存、看同行消息，立刻认出这不是工具不够而是信息太乱。",
+    "high_level_material_role": "none",
+    "ordinary_scenes": [
+      "每天翻后台找昨天、上周和去年同期的数据。",
+      "销售、库存和补货信息散在不同地方，最后还是靠人去问和对。",
+      "看到同行新品或活动很热，但不知道自己该不该跟。"
+    ],
+    "audience_gain": "能从自己的行业选出一个信息入口，并知道AI只先帮到收集、整理和提醒，经营动作仍要自己判断。",
+    "authority_boundary": "只使用一次交流的现场描述和本人工作方法；不点名餐饮品牌、不讲客户成果、不承诺工具包或AI带来的经营效果。",
+    "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "account_data_preflight": {
+      "receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260821T145844Z-4e8bbe4f.json",
+      "receipt_sha256": "78a0c9cf9d5dd2a0b5752b551bba6466d8f0da2ea431fe0ed07acabf5b3e7e9e",
+      "read": true
+    },
+    "account_data_application": {
+      "account_baseline_evidence": {
+        "metric": "weightedMetrics.fiveSecondCompletionRate",
+        "value": 33.121,
+        "use": "用当前全账号五秒留存描述性基线约束开头：前三秒先抛出老板对企业AI报价看不明白和每天信息混乱的具体冲突，不从企业AI定义或平台功能进入。"
+      },
+      "recent_work_evidence": {
+        "video_key": "4da298e8a29710e45a7f09fb",
+        "metric": "metrics.fiveSecondCompletionRate",
+        "value": 46.29,
+        "use": "借近期“AI圈最魔幻的事”用具体经营问题进入的单条表现，保留开头的现实冲突；本条改为信息到动作的起点，不复用四关筛选或服务评价结论。"
+      },
+      "planned_change": "开头不出现参考视频、行业术语或工具名；先说老板面对报价和每天信息混乱的具体处境，二十秒内给出“先把一段信息工作理出来”的答案。",
+      "causal_claim": "human-confirmed-lesson-only"
+    },
+    "learning_card_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+    "learning_card_sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "newer_content_acknowledged": true,
+    "newer_content_ids": [
+      "2026-08-11-training-camp-episode-1",
+      "2026-08-12-ai-best-worst",
+      "2026-08-14-training-camp-episode-2",
+      "2026-08-16-ai-magic",
+      "2026-08-18-why-learn-ai"
+    ],
+    "newer_content_metric_status": "学习卡快照后已有作品均已被本任务级回执覆盖；它们只用于开头假设和重复检查，不能升级为平台规律或效果因果。",
+    "applied_lesson_ids": [
+      "lesson:opening:title-answer-before-background",
+      "lesson:hook:concrete-conflict-scene-object",
+      "lesson:duration:value-order-before-shortening",
+      "lesson:metrics:separate-early-and-mature-windows"
+    ],
+    "opening_plan": {
+      "answer_or_conflict_by_second": 3,
+      "proof_or_real_scene_by_second": 12,
+      "audience_relevance_by_second": 18,
+      "first_viewer_value_by_second": 28,
+      "title_answer_by_second": 3,
+      "delayed_payoff_risk_checked": true
+    },
+    "duration_plan": {
+      "planned_seconds": 390,
+      "single_core_problem": "小微企业面对企业AI工具和报价时，怎样先找到值得AI进入的一段信息到动作工作。",
+      "justification": "当前正文约1500字，需要保留报价反差、餐饮现场、内部与外部信息、本人方法、新品边界、AI与人分工和工具包行动；按本人自然口播预估约6至7分钟，不能压成工具介绍或课堂清单。",
+      "evidence_based_justification": true
+    },
+    "metric_plan": {
+      "primary_metric": "five_second_completion_rate",
+      "secondary_metrics": [
+        "average_watch_seconds",
+        "profile_visits"
+      ],
+      "observation_windows": [
+        "early-within-3h",
+        "24h",
+        "72h",
+        "7d"
+      ],
+      "hypothesis": "先从老板看不明白报价和每天信息太乱的真实处境进入，再给出信息到动作的方法，可能比从企业AI定义或软件功能进入更快让本地经营者认出自己；若多个窗口未出现更清晰的早期信号，则废弃这个开头假设。",
+      "early_vs_mature_windows_acknowledged": true
+    }
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {
+      "target": "primary",
+      "script_evidence": "正文把报价困惑翻成一段信息到动作的工作，并给出行业信息获取工具包的可执行起点。",
+      "viewer_test": "观众能说出自己行业每天要看的一类信息，以及看完后由谁做什么动作。"
+    },
+    "surprise": {
+      "target": "supporting",
+      "script_evidence": "不从AI软件或报价高低讲企业AI，而从老板的信息混乱和餐饮新品信号进入。",
+      "viewer_test": "删掉工具名后，观众仍能复述企业AI先要接住信息和动作之间的空档。"
+    },
+    "expression": {
+      "target": "primary",
+      "script_evidence": "用一次真实餐饮运营交流、本人日常信息方法和新品例子讲同一条信息线。",
+      "viewer_test": "陌生观众能用大白话复述本条主张，而不是只记住术语。"
+    },
+    "resonance": {
+      "target": "supporting",
+      "script_evidence": "正文写到“最早我刷信息，就是刷到什么看什么”，以及“最后收藏了一堆，真要做内容的时候，还是不知道哪些能用”，再转到本人定信源和筛选的实际变化。",
+      "viewer_test": "共鸣来自老板和经营者每天被数据、消息和判断拖住的处境，不依赖焦虑营销。"
+    },
+    "integrity_boundary": "不得拿报价数字、品牌经营数据、客户身份、产品效果或免费工具包的未完成状态制造冲击。",
+    "review_status": "planned",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {
+      "name": "信息到动作的企业AI起点",
+      "problem": "老板每天面对内部经营数据和外部行业消息，信息散、判断慢、动作靠经验，但AI项目讨论常从工具或报价开始。",
+      "bottleneck": "资料来源、筛选标准、人工判断、动作责任和结果回流没有被放在同一段真实工作里。",
+      "mechanism": "先选一段具体工作，顺着信息从哪来、谁收、谁判断、做什么动作、结果怎么回来拆开；AI先协助收集、归类、对比和提醒，人保留经营判断和确认。",
+      "observable_change": "观众能写出自己行业的一条信息入口和一次明确动作，而不是只记住工具名。",
+      "evidence": "餐饮运营交流纪要、本人信息获取方法说明和源头精髓卡。",
+      "evidence_proves": "支持本条用信息混乱和人工判断解释企业AI的起步位置。",
+      "evidence_does_not_prove": "不证明该方法已为任何餐饮品牌或企业节省成本、增加营收或完成系统上线。",
+      "audience_relevance": "小微企业可以先从一条可控信息线开始，不需要先购买大系统。",
+      "boundary": "不引导未授权采集、绕过后台权限、自动外发或照搬竞品；公开工具包只在实际可交付后承诺领取。"
+    }
+  ],
+  "voice": {
+    "profile_path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+    "read": true
+  },
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-21-企业AI不是先买工具-正式口播稿-v1.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "copy_review": {
+      "required": true,
+      "report_path": "/Users/pc/Documents/口播/notes/2026-08-21-企业AI不是先买工具-正式口播稿-v1.copy-review.json"
+    },
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": true,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "performance_feedback_recheck_passed": true,
+    "compliance_passed": true,
+    "user_script_approved": false,
+    "user_language_approval": {
+      "status": "pending",
+      "approved_by": null,
+      "approval_ref": null,
+      "approved_at": null
+    },
+    "read_aloud_evidence": {
+      "mode": "pending-user-read",
+      "status": "pending",
+      "evidence_ref": "待用户对当前稿件完成真人朗读并确认。"
+    },
+    "phrase_exemptions": [],
+    "ai_tone_exemptions": [],
+    "anchor_exemptions": []
+  }
+}
