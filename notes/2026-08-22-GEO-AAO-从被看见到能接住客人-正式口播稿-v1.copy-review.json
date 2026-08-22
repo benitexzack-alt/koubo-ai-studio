@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260822T074749Z-d2e9724e",
+  "status": "passed",
+  "reviewed_at": "2026-08-22T16:20:00+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-22-GEO-AAO-从被看见到能接住客人-正式口播稿-v1.md",
+    "sha256": "e4b2e2da746bb7e613d02c3cc3d6373ecfac6ff40ef73d65590371d2f811e061"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "正文不出现普通参考作者、参考视频或“我看到一条视频”；录屏作为用户授权的直观证据，直接从本地四人用餐需求进入。AAO术语不先定义成行业常识，而是在餐饮地图、菜单、订位和人工接待动作前说明本条使用的工作解释。自动下单、全面开放、渠道替代等高风险边界只在对应录屏场景处出现一次，随后转成门店是否接得住客人的具体判断。"
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "它现在还不是 AI 自动下单。录屏里它自己也说了，目前还不支持直接替用户操作下单。",
+        "risk_level": "medium",
+        "reason": "录屏边界必须说，但在开头连续解释可能压住观众对路径变化的理解。",
+        "candidates": {
+          "conservative": "它现在还不是 AI 自动下单。录屏里它自己也说了，目前还不支持直接替用户操作下单。",
+          "direct": "录屏走到店铺页就停了，下单这一步还得用户自己来。",
+          "vivid": "它把客人带到店门口了，点餐和付款这扇门，还没替人推开。"
+        },
+        "fact_difference": "三种表达均保留录屏尚不能代操作下单的边界，不新增支付、开放范围或产品能力。",
+        "recommendation": "保留原句。它比比喻更准确，并紧接“问答、地图、页面”的可见路径。"
+      },
+      {
+        "original": "我这次做元石科技这套讲解时，给它留了一个很简单的工作解释：当 AI 把客人带到你面前以后，你有没有在授权范围内，接住一件明确事情的入口。",
+        "risk_level": "medium",
+        "reason": "“AAO”缩写和长定义同句出现，口播时可能让小微企业观众短暂掉线。",
+        "candidates": {
+          "conservative": "我这次做元石科技这套讲解时，给它留了一个很简单的工作解释：当 AI 把客人带到你面前以后，你有没有在授权范围内，接住一件明确事情的入口。",
+          "direct": "我做这套讲解时，把AAO只当成一句大白话：客人过来了，你有没有一个地方接住他。",
+          "vivid": "别先背AAO。客人问到你、点到你，门开不开，里面有没有人，这就是它在这条里要解决的事。"
+        },
+        "fact_difference": "候选句均不把AAO升级为行业标准，也不新增腾讯、平台、API或交易能力。",
+        "recommendation": "保留原句后立刻连续说地址、菜单、订位、咨询四个短动作；录制时不要单独停在缩写上。"
+      },
+      {
+        "original": "评论区留“入口”，等我把这张《门店从 GEO 到服务入口自查单》整理好，免费发给大家。",
+        "risk_level": "high",
+        "reason": "自查单当前没有已交付证据，公开后会变成资料领取承诺。",
+        "candidates": {
+          "conservative": "评论区留“入口”，等我把这张《门店从 GEO 到服务入口自查单》整理好，免费发给大家。",
+          "direct": "先把这四项写下来：地图定位、公开信息、服务入口、人工责任人。",
+          "vivid": "你先别急着上系统，把这四个入口逐个打开看一遍，哪个地方堵客，先修哪个。"
+        },
+        "fact_difference": "三个候选都不承诺GEO效果、成交或自动化能力；前者保留未来资料承接，后两者删除承接承诺。",
+        "recommendation": "只有实际完成并核验自查单后才保留原句；否则使用直接版收尾。"
+      }
+    ],
+    "no_high_risk_reason": "没有虚构腾讯公告、产品能力、门店客户结果、支付下单、推荐效果或GEO业务效果。唯一高风险节点是尚未实际准备完成的免费自查单承接，已进入事实锁。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "移除了“腾讯已向所有客户开放”“AI可直接自动下单”“传统抖音和自媒体会被跳过”的未经核验表述。",
+      "未写入录屏里可见的餐厅名称、价格、评价、精确位置、聊天昵称、头像、订单内容或任何个人信息。"
+    ],
+    "wording_strength_changes": [
+      "把录屏能力收敛为“问答、地图定位、店铺小程序/点餐页面的测试路径”，并明确无法由AI直接代操作下单。",
+      "把AAO收敛为本次元石科技讲解的工作命名，不表述为行业统一标准。",
+      "把未来判断收敛为客户可能增加一条更短入口，不表述为传统内容渠道被取代。"
+    ],
+    "pending_user_confirmations": [
+      "请确认是否保留“我是超哥，在兰州，把这些 AI 的新东西，先放回一件件真实的生意里慢慢试。”这句结尾身份表达。",
+      "《门店从 GEO 到服务入口自查单》未被证明已准备完成；未完成前必须删除评论区“入口”领取承接。",
+      "进入制作前请逐段确认录屏中的聊天、地图、餐厅、小程序、菜单及交易画面是否可公开展示，哪些必须打码。",
+      "用户尚未对当前v1完成真人朗读和语言确认；本报告不构成制作或发布批准。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "read_aloud_note": "已按文本完成口播节奏和断句检查；这不替代用户对当前v1的真人朗读证据。"
+}
