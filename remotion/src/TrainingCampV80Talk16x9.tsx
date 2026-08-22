@@ -42,7 +42,11 @@ const scenes: V72ProductionScene[] = layers.map((layer) => ({
   kind: 'custom',
   customKey: layer.params.component,
   data: layer as unknown as Record<string, unknown>,
-  background: layer.params.component === 'real-media' ? 'opaque' : 'talk',
+  background:
+    layer.params.component === 'real-media' ||
+    layer.params.component === 'generated-media'
+      ? 'opaque'
+      : 'talk',
 }));
 const sfxCues: V72SfxCue[] = sfxContract.cues.map((cue) => ({
   id: cue.id,
@@ -65,7 +69,7 @@ const config: V72ProductionConfig = {
   sfxCues,
 };
 
-const renderCustomScene = (scene: V72CustomScene) => {
+export const renderCustomScene = (scene: V72CustomScene) => {
   const layer = scene.data as unknown as PlanLayer;
   switch (scene.customKey) {
     case 'comparison': return <V8ComparisonBars layer={layer} />;
@@ -74,7 +78,8 @@ const renderCustomScene = (scene: V72CustomScene) => {
     case 'layer-map': return <V8NodeMap layer={layer} />;
     case 'question-grid': return <V8QuestionList layer={layer} />;
     case 'source-branches': return <V8SourceBranches layer={layer} />;
-    case 'real-media': return <V8MediaStage layer={layer} />;
+    case 'real-media':
+    case 'generated-media': return <V8MediaStage layer={layer} />;
     case 'definition': return <V8HeroDefinition layer={layer} />;
     case 'closing': return <V8Closing layer={layer} />;
     case 'statement':

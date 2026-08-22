@@ -24,6 +24,55 @@ node tools/validate-visual-plan.mjs <visual-plan.json>
 - 风险帧缺失；
 - 时间段异常。
 
+## 纸构推演自动插片门禁
+
+只有 V8 `schemaVersion=4` 可以使用 `assetDecision.producer=codex-provider`。
+自动插片必须绑定 `koubo-paper-construct-v1`，用途固定为
+`concept-illustration / illustration-only`，失败降级固定为
+`speaker-plus-information`。
+
+先执行不联网、不扣费的计划门：
+
+```bash
+node tools/run-runninghub-generated-video.mjs compile --plan <generated-video-plan.json>
+node tools/run-runninghub-generated-video.mjs preflight --plan <generated-video-plan.json>
+node tools/validate-generated-video-plan.mjs <generated-video-plan.json> --phase plan
+```
+
+联网报价不等于费用授权，也不创建任务。用户对当前 `planId`、镜头数和金额上限
+明确确认后，还必须把授权绑定到当前 `generationDefinitionSha256`，设置不超过 24 小时
+的有效期，才允许执行 `run --confirm-paid`。每镜只允许一次付费记录；同一
+`approvalId` 有固定消费回执，不能换账本或换计划复用。每个镜头提交前必须刷新剩余
+镜头报价并重算单镜和累计上限；实际费用缺失、非法或无法对账时必须停止后续付费提交，
+不得用预估金额冒充实际扣费。失败、超时或下载中断只能恢复与当前计划定义完整绑定的
+同一 `taskId`，不得自动重试或静默加价。已有付费镜头后不得在同一账本中更换
+`approvalId`；报价越界时保留证据并建立新计划版本，由人工裁决既有素材。
+
+下载完成后运行：
+
+```bash
+node tools/qa-generated-video-plan.mjs prepare --plan <generated-video-plan.json>
+node tools/qa-generated-video-plan.mjs apply-review \
+  --plan <generated-video-plan.json> \
+  --review <qa-report.json>
+node tools/validate-generated-video-plan.mjs \
+  <generated-video-plan.json> \
+  --phase materialized
+```
+
+逐镜必须检查五点联系表、2K级近似16:9视频、单一动作、纸构风格签名、物体身份
+与形状稳定、施力接触连续、字幕安全区和禁止元素。逐镜视觉复核不等于最终成片
+用户验收。QA 必须绑定当前生成定义、visual-plan、风格卡、逐镜视频和联系表哈希，
+并记录复核类型与逐项观察；旧 QA 不得复用于改过语义的计划。
+
+V8 生产任务还必须：
+
+- 写入 `inputs.generatedVideoPlan`；
+- 图层显示 `AI生成·概念演绎` 与 `非真实业务证据`；
+- 把生成计划、风格卡、金额授权消费回执、账本、视频、逐镜/全局联系表和 QA 报告全部加入
+  `inputs.fingerprintPaths`；
+- 在计划未同时达到 `qa-passed` 且通过 `materialized` 门禁时拒绝 `prepare`。
+
 ## 预览门禁
 
 V8 默认运行（脚本名保留V7.2只是兼容历史调用）：

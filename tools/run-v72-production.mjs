@@ -3,15 +3,19 @@
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {
+  closeSync,
+  constants as fsConstants,
   createReadStream,
   existsSync,
+  fstatSync,
   lstatSync,
   mkdirSync,
+  openSync,
   readFileSync,
   readdirSync,
+  realpathSync,
   renameSync,
   rmSync,
-  statSync,
   writeFileSync,
 } from 'node:fs';
 import {createRequire} from 'node:module';
@@ -149,18 +153,124 @@ const hashFile = (absolutePath) =>
     stream.on('end', () => resolve(hash.digest('hex')));
   });
 
-const collectFiles = (absolutePath) => {
+const pathComponents = (absolutePath) => {
+  const resolved = path.resolve(absolutePath);
+  const parsed = path.parse(resolved);
+  const relative = resolved.slice(parsed.root.length);
+  const components = relative.split(path.sep).filter(Boolean);
+  const paths = [parsed.root];
+  let current = parsed.root;
+  for (const component of components) {
+    current = path.join(current, component);
+    paths.push(current);
+  }
+  return paths;
+};
+
+const assertNoSymlinkComponents = (absolutePath, label) => {
+  for (const componentPath of pathComponents(absolutePath)) {
+    let metadata;
+    try {
+      metadata = lstatSync(componentPath);
+    } catch (error) {
+      fail(
+        `${label}路径组件无法读取：${relativeToProject(componentPath)}\n${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      );
+    }
+    if (metadata.isSymbolicLink()) {
+      fail(`${label}禁止符号链接路径组件：${relativeToProject(componentPath)}`);
+    }
+  }
+};
+
+const fileIdentity = (metadata) => ({
+  dev: metadata.dev.toString(),
+  ino: metadata.ino.toString(),
+  mode: metadata.mode.toString(),
+  size: metadata.size.toString(),
+  mtimeNs: metadata.mtimeNs.toString(),
+});
+
+const hashFingerprintFile = async (absolutePath, label = '指纹输入') => {
+  assertNoSymlinkComponents(absolutePath, label);
+  const pathMetadata = lstatSync(absolutePath, {bigint: true});
+  if (!pathMetadata.isFile()) {
+    fail(`${label}必须是普通文件：${relativeToProject(absolutePath)}`);
+  }
+
+  let descriptor;
+  try {
+    descriptor = openSync(
+      absolutePath,
+      fsConstants.O_RDONLY | (fsConstants.O_NOFOLLOW ?? 0),
+    );
+    const openedMetadata = fstatSync(descriptor, {bigint: true});
+    if (!openedMetadata.isFile()) {
+      fail(`${label}必须是普通文件：${relativeToProject(absolutePath)}`);
+    }
+    if (stableJson(fileIdentity(openedMetadata)) !== stableJson(fileIdentity(pathMetadata))) {
+      fail(`${label}在打开时被替换：${relativeToProject(absolutePath)}`);
+    }
+    if (realpathSync(absolutePath) !== path.resolve(absolutePath)) {
+      fail(`${label}真实路径不一致：${relativeToProject(absolutePath)}`);
+    }
+
+    const digest = await new Promise((resolve, reject) => {
+      const hash = createHash('sha256');
+      const stream = createReadStream(absolutePath, {
+        fd: descriptor,
+        autoClose: false,
+      });
+      stream.on('error', reject);
+      stream.on('data', (chunk) => hash.update(chunk));
+      stream.on('end', () => resolve(hash.digest('hex')));
+    });
+
+    const afterDescriptor = fstatSync(descriptor, {bigint: true});
+    assertNoSymlinkComponents(absolutePath, label);
+    const afterPath = lstatSync(absolutePath, {bigint: true});
+    const expectedIdentity = stableJson(fileIdentity(openedMetadata));
+    if (
+      stableJson(fileIdentity(afterDescriptor)) !== expectedIdentity ||
+      stableJson(fileIdentity(afterPath)) !== expectedIdentity
+    ) {
+      fail(`${label}在计算指纹时发生变化：${relativeToProject(absolutePath)}`);
+    }
+    return digest;
+  } catch (error) {
+    if (error instanceof Error && error.message.includes(label)) {
+      throw error;
+    }
+    fail(
+      `${label}无法安全读取：${relativeToProject(absolutePath)}\n${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
+  } finally {
+    if (descriptor !== undefined) {
+      closeSync(descriptor);
+    }
+  }
+};
+
+const collectFiles = (absolutePath, label = '指纹输入') => {
+  assertNoSymlinkComponents(absolutePath, label);
   const metadata = lstatSync(absolutePath);
-  if (metadata.isFile() || metadata.isSymbolicLink()) {
+  if (metadata.isSymbolicLink()) {
+    fail(`${label}禁止符号链接：${relativeToProject(absolutePath)}`);
+  }
+  if (metadata.isFile()) {
     return [absolutePath];
   }
   if (!metadata.isDirectory()) {
-    return [];
+    fail(`${label}只允许普通文件或目录：${relativeToProject(absolutePath)}`);
   }
 
   return readdirSync(absolutePath, {withFileTypes: true})
     .sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'))
-    .flatMap((entry) => collectFiles(path.join(absolutePath, entry.name)));
+    .flatMap((entry) => collectFiles(path.join(absolutePath, entry.name), label));
 };
 
 const stableJson = (value) => {
@@ -428,12 +538,17 @@ const computeFingerprint = async () => {
     'tools/validate-active-production-profile.mjs',
     'tools/validate-production-command-gate.mjs',
     relativeToProject(scriptPath),
+    job.inputs.source,
+    job.inputs.renderProxy,
+    job.inputs.visualPlan,
+    job.inputs.bilingualCaptions,
+    job.inputs.sfxCueSheet,
     ...job.inputs.fingerprintPaths,
-  ];
+  ].filter((entry) => typeof entry === 'string' && entry.trim());
   const files = [
     ...new Set(
       requestedPaths.flatMap((entry) =>
-        collectFiles(resolveProjectPath(entry, '指纹输入', true)),
+        collectFiles(resolveProjectPath(entry, '指纹输入', true), '指纹输入'),
       ),
     ),
   ].sort((a, b) =>
@@ -442,11 +557,14 @@ const computeFingerprint = async () => {
 
   const entries = [];
   for (const absolutePath of files) {
-    const metadata = statSync(absolutePath);
+    const metadata = lstatSync(absolutePath);
+    if (!metadata.isFile()) {
+      fail(`指纹输入必须是普通文件：${relativeToProject(absolutePath)}`);
+    }
     entries.push({
       path: relativeToProject(absolutePath),
       sizeBytes: metadata.size,
-      sha256: await hashFile(absolutePath),
+      sha256: await hashFingerprintFile(absolutePath),
     });
   }
 
@@ -468,16 +586,137 @@ const stageCachePath = (stageName, stageKey) =>
 const outputSnapshot = async (absolutePaths) => {
   const snapshots = [];
   for (const absolutePath of absolutePaths) {
-    if (!existsSync(absolutePath) || !statSync(absolutePath).isFile()) {
+    if (!existsSync(absolutePath)) {
       return null;
     }
+    assertNoSymlinkComponents(absolutePath, '阶段产物');
+    const metadata = lstatSync(absolutePath);
+    if (!metadata.isFile()) return null;
     snapshots.push({
       path: relativeToProject(absolutePath),
-      sizeBytes: statSync(absolutePath).size,
-      sha256: await hashFile(absolutePath),
+      sizeBytes: metadata.size,
+      sha256: await hashFingerprintFile(absolutePath, '阶段产物'),
     });
   }
   return snapshots;
+};
+
+const stageSuccessDirectory = path.join(
+  path.dirname(reportPaths.runManifest),
+  'stage-success',
+);
+const safeJobId = String(job.jobId ?? 'unknown').replaceAll(/[^A-Za-z0-9._-]/g, '_');
+const stageSuccessPath = (stageId) =>
+  path.join(stageSuccessDirectory, `${safeJobId}.${stageId}.json`);
+const currentRunStageSuccesses = new Map();
+
+const assertCurrentFingerprint = async (label) => {
+  if (!runManifest.fingerprint) {
+    fail(`${label}无法复核：本轮尚未建立完整输入指纹`);
+  }
+  const current = await computeFingerprint();
+  if (current.fingerprint !== runManifest.fingerprint) {
+    fail(
+      `${label}检测到输入已变化，禁止复用或记录成功产物。\n` +
+        `本轮指纹 ${runManifest.fingerprint}\n当前指纹 ${current.fingerprint}`,
+    );
+  }
+  return current;
+};
+
+const withFingerprintGuard = async (label, action) => {
+  await assertCurrentFingerprint(`${label}开始前`);
+  const result = await action();
+  await assertCurrentFingerprint(`${label}完成后`);
+  return result;
+};
+
+const recordStageSuccess = async (stageId, outputPaths) => {
+  await assertCurrentFingerprint(`${stageId}成功回执写入前`);
+  if (dryRun) {
+    currentRunStageSuccesses.set(stageId, {
+      fingerprint: runManifest.fingerprint,
+      outputs: [],
+    });
+    return;
+  }
+  const outputs = await outputSnapshot(outputPaths);
+  if (!outputs) {
+    fail(`${stageId}无法记录成功回执：产物不存在或不是普通文件`);
+  }
+  await assertCurrentFingerprint(`${stageId}成功回执固化前`);
+  const manifestPath = stageSuccessPath(stageId);
+  writeJsonAtomic(manifestPath, {
+    schemaVersion: 1,
+    status: 'passed',
+    jobId: job.jobId,
+    stageId,
+    fingerprint: runManifest.fingerprint,
+    outputs,
+    createdAt: new Date().toISOString(),
+  });
+  try {
+    await assertCurrentFingerprint(`${stageId}成功回执固化后`);
+  } catch (error) {
+    rmSync(manifestPath, {force: true});
+    throw error;
+  }
+  currentRunStageSuccesses.set(stageId, {
+    fingerprint: runManifest.fingerprint,
+    outputs,
+  });
+};
+
+const requireStageSuccess = async (stageId, outputPaths) => {
+  await assertCurrentFingerprint(`${stageId}上游回执校验前`);
+  const currentRun = currentRunStageSuccesses.get(stageId);
+  if (currentRun?.fingerprint === runManifest.fingerprint) {
+    if (!dryRun) {
+      const currentOutputs = await outputSnapshot(outputPaths);
+      if (
+        !currentOutputs ||
+        stableJson(currentOutputs) !== stableJson(currentRun.outputs)
+      ) {
+        fail(`禁止复用 ${stageId} 当前轮次产物：成功回执后产物已变化`);
+      }
+    }
+    return currentRun;
+  }
+
+  const manifestPath = stageSuccessPath(stageId);
+  if (!existsSync(manifestPath)) {
+    fail(
+      `禁止复用 ${stageId} 旧产物：缺少上游成功回执 ${relativeToProject(
+        manifestPath,
+      )}`,
+    );
+  }
+  assertNoSymlinkComponents(manifestPath, `${stageId}成功回执`);
+  if (!lstatSync(manifestPath).isFile()) {
+    fail(`${stageId}成功回执不是普通文件`);
+  }
+  const manifest = readJson(manifestPath, `${stageId}成功回执`);
+  if (
+    manifest.schemaVersion !== 1 ||
+    manifest.status !== 'passed' ||
+    manifest.jobId !== job.jobId ||
+    manifest.stageId !== stageId
+  ) {
+    fail(`${stageId}成功回执身份或状态无效`);
+  }
+  if (manifest.fingerprint !== runManifest.fingerprint) {
+    fail(
+      `禁止复用 ${stageId} 旧产物：上游指纹 ${
+        manifest.fingerprint ?? '缺失'
+      } 与当前指纹 ${runManifest.fingerprint} 不一致`,
+    );
+  }
+  const currentOutputs = await outputSnapshot(outputPaths);
+  if (!currentOutputs || stableJson(currentOutputs) !== stableJson(manifest.outputs)) {
+    fail(`禁止复用 ${stageId} 旧产物：产物摘要与成功回执不一致`);
+  }
+  await assertCurrentFingerprint(`${stageId}上游回执校验后`);
+  return manifest;
 };
 
 const tryStageCache = async (stageName, stageConfig, outputPaths, stage) => {
@@ -792,6 +1031,7 @@ const normalizeLoudness = (input, output, target) => {
 
 const renderPreview = async () =>
   withStage('有音效动态预览', async (stage) => {
+    await assertCurrentFingerprint('有音效动态预览开始前');
     const output = resolveProjectPath(job.preview.output, '预览输出');
     const comparisonOutput = job.preview.renderWithoutSfxComparison
       ? path.join(
@@ -812,6 +1052,7 @@ const renderPreview = async () =>
       loudness: job.formal.loudness,
     };
     if (await tryStageCache('preview', stageConfig, outputs, stage)) {
+      await assertCurrentFingerprint('有音效动态预览缓存复用后');
       return output;
     }
 
@@ -886,12 +1127,15 @@ const renderPreview = async () =>
         renameSync(matchedOutput, comparisonOutput);
       }
     }
+    await assertCurrentFingerprint('有音效动态预览完成后');
     await saveStageCache('preview', stageConfig, outputs);
+    await assertCurrentFingerprint('有音效动态预览缓存固化后');
     return output;
   });
 
 const renderRiskFrames = async () =>
   withStage('完整分辨率风险帧', async (stage) => {
+    await assertCurrentFingerprint('完整分辨率风险帧开始前');
     const entries = riskFrameEntries();
     const outputDirectory = resolveProjectPath(
       job.riskFrames.outputDirectory,
@@ -911,6 +1155,7 @@ const renderRiskFrames = async () =>
       scale: 1,
     };
     if (await tryStageCache('risk-frames', stageConfig, outputs, stage)) {
+      await assertCurrentFingerprint('完整分辨率风险帧缓存复用后');
       return outputs;
     }
     if (dryRun) {
@@ -951,7 +1196,9 @@ const renderRiskFrames = async () =>
         )}秒`,
       );
     }
+    await assertCurrentFingerprint('完整分辨率风险帧完成后');
     await saveStageCache('risk-frames', stageConfig, outputs);
+    await assertCurrentFingerprint('完整分辨率风险帧缓存固化后');
     return outputs;
   });
 
@@ -996,6 +1243,7 @@ const renderFormal = async () => {
   const rawOutput = resolveProjectPath(job.formal.rawOutput, '正式片原始输出');
 
   await withStage('WithSfx正式渲染', async (stage) => {
+    await assertCurrentFingerprint('WithSfx正式渲染开始前');
     const stageConfig = {
       composition: job.remotion.compositionWithSfx,
       durationSeconds: job.remotion.durationSeconds,
@@ -1005,6 +1253,8 @@ const renderFormal = async () => {
       concurrency: job.remotion.concurrency,
     };
     if (await tryStageCache('formal-render', stageConfig, [rawOutput], stage)) {
+      await assertCurrentFingerprint('WithSfx正式渲染缓存复用后');
+      await recordStageSuccess('formal-render', [rawOutput]);
       return;
     }
     await renderVideoRange({
@@ -1015,7 +1265,9 @@ const renderFormal = async () => {
       scale: 1,
       crf: job.formal.crf,
     });
+    await assertCurrentFingerprint('WithSfx正式渲染完成后');
     await saveStageCache('formal-render', stageConfig, [rawOutput]);
+    await recordStageSuccess('formal-render', [rawOutput]);
   });
 
   return normalizeFormalAudio();
@@ -1030,6 +1282,8 @@ const normalizeFormalAudio = async () => {
   const finalOutput = resolveProjectPath(job.formal.finalOutput, '正式片最终输出');
 
   await withStage('正式片两遍响度处理', async (stage) => {
+    await requireStageSuccess('formal-render', [rawOutput]);
+    await assertCurrentFingerprint('正式片两遍响度处理开始前');
     const stageConfig = {
       input: relativeToProject(rawOutput),
       loudness: job.formal.loudness,
@@ -1038,10 +1292,15 @@ const normalizeFormalAudio = async () => {
     if (
       await tryStageCache('formal-loudness', stageConfig, [finalOutput], stage)
     ) {
+      await assertCurrentFingerprint('正式片响度缓存复用后');
+      await recordStageSuccess('formal-audio', [finalOutput]);
       return;
     }
-    normalizeLoudness(rawOutput, finalOutput, job.formal.loudness);
+    await withFingerprintGuard('正式片两遍响度处理', async () =>
+      normalizeLoudness(rawOutput, finalOutput, job.formal.loudness),
+    );
     await saveStageCache('formal-loudness', stageConfig, [finalOutput]);
+    await recordStageSuccess('formal-audio', [finalOutput]);
   });
 
   return finalOutput;
@@ -1067,6 +1326,8 @@ const probeMedia = (input) => {
 const runFormalQa = async () =>
   withStage('正式片机器质检', async () => {
     const output = resolveProjectPath(job.formal.finalOutput, '正式片输出', true);
+    await requireStageSuccess('formal-audio', [output]);
+    await assertCurrentFingerprint('正式片机器质检开始前');
     const probe = probeMedia(output);
     const video = probe.streams.find((stream) => stream.codec_type === 'video');
     const audio = probe.streams.find((stream) => stream.codec_type === 'audio');
@@ -1141,10 +1402,12 @@ const runFormalQa = async () =>
       errors,
       status: errors.length ? 'failed' : 'passed',
     };
-    runManifest.formalQa = qaReport;
     if (errors.length) {
       fail(`正式片机器质检未通过：\n- ${errors.join('\n- ')}`);
     }
+    await assertCurrentFingerprint('正式片机器质检完成后');
+    await recordStageSuccess('formal-qa', [output]);
+    runManifest.formalQa = qaReport;
     return qaReport;
   });
 
@@ -1393,6 +1656,7 @@ const runRegression = async () =>
 
 const doctor = async () =>
   withStage('生产前置体检', async () => {
+    await assertCurrentFingerprint('生产前置体检开始前');
     validateJob();
     runCommand(
       process.execPath,
@@ -1427,6 +1691,7 @@ const doctor = async () =>
     }
     const cueSheet = verifySfxSources();
     await verifyLockedReference();
+    await assertCurrentFingerprint('生产前置体检完成后');
     console.log(
       `体检通过：当前生产档案、历史锁定母版、${riskFrames.length}个风险帧、${cueSheet.cues.length}个音效点`,
     );
@@ -1469,13 +1734,10 @@ const execute = async () => {
   );
 
   const needsDoctor = new Set(['doctor', 'prepare', 'formal', 'all']);
-  const needsFingerprint = command !== 'doctor' || command === 'all';
 
+  await ensureFingerprint();
   if (needsDoctor.has(command)) {
     await doctor();
-  }
-  if (needsFingerprint) {
-    await ensureFingerprint();
   }
 
   if (command === 'fingerprint') return;
@@ -1511,6 +1773,7 @@ const execute = async () => {
 try {
   persistRunReports();
   await execute();
+  await assertCurrentFingerprint('成功运行清单写入前');
   runManifest.status = 'passed';
   runManifest.finishedAt = new Date().toISOString();
   persistRunReports();

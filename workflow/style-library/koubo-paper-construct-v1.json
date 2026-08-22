@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "koubo-style-card/v1",
+  "id": "koubo-paper-construct-v1",
+  "nameZh": "纸构推演 v1",
+  "status": "user-approved-style-reference",
+  "purpose": "为口播中的抽象机制、关系与因果提供可视化的 AI 概念演绎插片。",
+  "scope": {
+    "allowedAssetClass": "generated-video",
+    "allowedEvidenceUse": "illustration-only",
+    "allowed": [
+      "解释抽象概念之间的关系",
+      "演绎无法直接拍摄的机制",
+      "把口播中的因果链转成单一物理动作"
+    ],
+    "forbidden": [
+      "替代真人口播",
+      "替代真实界面、录屏或截图",
+      "替代真实数据、官方材料或其他来源证据",
+      "把演绎画面冒充真实发生的事件"
+    ],
+    "fallback": "speaker-plus-information"
+  },
+  "primaryEvidence": {
+    "kind": "user-approved-final-sample",
+    "fileName": "oMvzQBgiqE2X3ZNqAYQxEjIrfTAxvBANZDe9aF.MP4",
+    "sha256": "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949",
+    "observedDurationSeconds": 110.153991,
+    "observedFrame": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "aspectRatio": "16:9"
+    },
+    "evidenceBoundary": "只把经抽帧观察到的材质、配色、构图、镜头和动作规律固化为风格约束，不复制样片中的品牌、具体物件、照片、版式或镜头顺序。"
+  },
+  "visualLock": {
+    "styleFamily": "手工纸构微缩推演与编辑式纸张拼贴",
+    "materials": [
+      "可见纸纤维",
+      "自然撕边",
+      "纸板层厚",
+      "折痕与叠层",
+      "物体落在台面上的接触阴影",
+      "轻微半调印刷与纸面颗粒"
+    ],
+    "palette": {
+      "ratio": {
+        "warmPaper": 0.7,
+        "navy": 0.2,
+        "brickRed": 0.1
+      },
+      "approximateHex": [
+        "#D0C3B3",
+        "#C6B6A4",
+        "#314D6C",
+        "#2C2823",
+        "#D76254",
+        "#5D836A"
+      ],
+      "rule": "以暖纸色为大底，海军蓝承担结构与路径，砖红只标关键节点；炭黑勾线，灰绿色仅作少量辅助。"
+    },
+    "composition": {
+      "allowedViews": [
+        "front-miniature",
+        "top-down"
+      ],
+      "mainSubjectCount": 1,
+      "rule": "正面微缩舞台或垂直俯拍，单一主物件居中，保留负空间与清晰的横向机制关系。",
+      "subtitleSafeBottomRatio": 0.18,
+      "labels": "所有标签保持空白，由 Remotion 在后期加入准确中文。"
+    },
+    "camera": {
+      "allowedMovements": [
+        "fixed",
+        "slow-push"
+      ],
+      "rule": "固定机位为主，只允许极慢推近；使用微缩模型的中长焦观感、轻微景深，禁止手持晃动和超广角变形。"
+    },
+    "lighting": "暖色柔光从左上方落下，形成柔和接触阴影；低反差、轻暗角、轻纸面颗粒。",
+    "motion": {
+      "rule": "每镜只有一个肉眼可见的物理因果动作，动作带轻微定格步进、停顿和回弹。",
+      "mechanisms": [
+        "slide",
+        "fold",
+        "page-turn",
+        "pin",
+        "pull-line",
+        "roller",
+        "gear",
+        "lever",
+        "conveyor",
+        "film-extract",
+        "card-insert",
+        "card-reveal"
+      ],
+      "identityLock": "运动前后主物体身份、数量、颜色和基本形状保持一致。",
+      "shapeLock": "禁止物体在运动中融化、长出多余部件或变成另一种几何形状。",
+      "contactLock": "推动、拉动、夹取或传送必须保持施力点与受力物体的接触连续性。"
+    },
+    "timing": {
+      "establish": {
+        "startSeconds": 0,
+        "endSeconds": 0.8
+      },
+      "action": {
+        "startSeconds": 0.8,
+        "minimumDurationSeconds": 0.8
+      },
+      "finalHold": {
+        "minimumDurationSeconds": 0.8
+      },
+      "rule": "0—0.8 秒建立场景；0.8 秒开始唯一动作；动作完成后至少保留 0.8 秒稳定结果画面。"
+    }
+  },
+  "negativeLock": [
+    "真人",
+    "人的手",
+    "真实地点",
+    "随机文字",
+    "品牌标识",
+    "水印",
+    "液化或融化变形",
+    "多余肢体或零件",
+    "通用光滑三维渲染",
+    "像素风",
+    "8-bit",
+    "镜头抖动",
+    "随机转场"
+  ],
+  "promptContract": {
+    "requiredLiteralTokens": [
+      "纸构推演 v1",
+      "可见纸纤维",
+      "自然撕边",
+      "纸板层厚",
+      "接触阴影",
+      "暖纸色70%",
+      "海军蓝20%",
+      "砖红10%",
+      "#D0C3B3",
+      "#314D6C",
+      "#D76254",
+      "一镜一个可见物理因果动作",
+      "物体身份锁",
+      "形状锁",
+      "接触连续性锁",
+      "底部18%字幕安全区",
+      "标签保持空白",
+      "结尾至少0.8秒定格",
+      "禁止真人和人的手",
+      "禁止随机文字、品牌和水印",
+      "禁止液化、光滑通用3D、像素风和8-bit"
+    ],
+    "forbiddenShorthand": [
+      "同上",
+      "同前",
+      "保持上一镜",
+      "沿用前镜",
+      "same as above"
+    ],
+    "rule": "每个镜头必须独立编译完整提示词，不能依赖上一镜的省略表达。"
+  },
+  "qaLock": {
+    "requiredSignatures": [
+      "能看见纸纤维、撕边、纸板层厚和接触阴影",
+      "暖纸色、海军蓝、砖红比例关系稳定",
+      "正面微缩或俯拍构图成立",
+      "单一物理机制清楚表达因果"
+    ],
+    "continuity": [
+      "主物体身份稳定",
+      "主物体形状稳定",
+      "施力与受力接触连续",
+      "无闪烁、漂移、熔化和额外零件"
+    ],
+    "frameSampling": [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ],
+    "acceptance": "静音观看三秒内能理解关系；2K 画面仍能辨认纸纤维、纸板层次和接触阴影；底部字幕区无关键物体。"
+  },
+  "methodReferences": [
+    {
+      "name": "MiniMax H3 papercraft-stop-motion-explainer",
+      "url": "https://github.com/MiniMax-AI/MiniMax-H3/blob/main/skills/papercraft-stop-motion-explainer/SKILL.cn.md",
+      "license": "MiniMax H3 Community License Agreement",
+      "boundary": "只借鉴风格锁、单动作和镜头稳定的工作方法；本卡全部使用原创中文描述，不复制或捆绑上游 Skill 原文。"
+    },
+    {
+      "name": "MiniMax H3 paper-collage-explainer-generator",
+      "url": "https://github.com/MiniMax-AI/MiniMax-H3/blob/main/skills/paper-collage-explainer-generator/SKILL.cn.md",
+      "license": "MiniMax H3 Community License Agreement",
+      "boundary": "只借鉴纸张拼贴的一致性方法，不复制上游内容、资产或 Hub 专用流程。"
+    },
+    {
+      "name": "paper-collage-ad-codex",
+      "url": "https://github.com/Jane-xiaoer/paper-collage-ad-codex",
+      "license": "MIT",
+      "boundary": "只借鉴逐镜关键帧与本地质检思路，不引入其配音、接口、安装脚本或整套生产链。"
+    }
+  ],
+  "licenseBoundary": "本地风格卡由样片观察与原创规则组成；不再分发第三方 Skill 文本、模型、资产或品牌素材。"
+}

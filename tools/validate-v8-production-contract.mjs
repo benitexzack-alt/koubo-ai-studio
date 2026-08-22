@@ -1,6 +1,11 @@
-import {existsSync, readFileSync} from 'node:fs';
-import {dirname, isAbsolute, resolve} from 'node:path';
+import {existsSync, readFileSync, realpathSync} from 'node:fs';
+import {dirname, isAbsolute, relative, resolve, sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {
+  generatedVideoRenderSourceFor,
+  loadPlanAndStyle,
+  validateGeneratedVideoPlan,
+} from './generated-video-plan-core.mjs';
 
 const [jobArgument] = process.argv.slice(2);
 
@@ -19,6 +24,51 @@ const readJson = (filePath, label) => {
 };
 const isText = (value) => typeof value === 'string' && value.trim().length > 0;
 const isNumber = (value) => typeof value === 'number' && Number.isFinite(value);
+const generatedProviderPathInfo = (value) => {
+  if (!isText(value)) {
+    return {isGenerated: false, isExact: true, usesSymlink: false};
+  }
+  const absolutePath = toAbsolute(value);
+  const projectRelative = relative(projectRoot, absolutePath);
+  const insideProject =
+    projectRelative !== '' &&
+    projectRelative !== '..' &&
+    !projectRelative.startsWith(`..${sep}`) &&
+    !isAbsolute(projectRelative);
+  if (!insideProject) {
+    return {isGenerated: false, isExact: true, usesSymlink: false};
+  }
+  const canonicalRelative = projectRelative.split(sep).join('/');
+  let realRelative = canonicalRelative;
+  let usesSymlink = false;
+  if (existsSync(absolutePath)) {
+    const realAbsolute = realpathSync(absolutePath);
+    usesSymlink = realAbsolute !== absolutePath;
+    const relation = relative(projectRoot, realAbsolute);
+    if (
+      relation !== '' &&
+      relation !== '..' &&
+      !relation.startsWith(`..${sep}`) &&
+      !isAbsolute(relation)
+    ) {
+      realRelative = relation.split(sep).join('/');
+    }
+  }
+  const fixedPattern =
+    /^remotion\/public\/media\/[^/]+\/generated-video\/[^/]+\/G\d{2}\.mp4$/u;
+  return {
+    isGenerated:
+      fixedPattern.test(canonicalRelative) || fixedPattern.test(realRelative),
+    isExact:
+      !isAbsolute(value) && value.replaceAll('\\', '/') === canonicalRelative,
+    usesSymlink,
+  };
+};
+const isProviderGeneratedLayer = (layer) =>
+  (layer.assetDecision?.class === 'generated-video' &&
+    layer.assetDecision?.producer === 'codex-provider') ||
+  layer.asset?.sourceType === 'provider-generated-video' ||
+  generatedProviderPathInfo(layer.asset?.source).isGenerated;
 
 let job;
 let plan;
@@ -118,6 +168,7 @@ for (const item of requiredCoverage) {
 }
 
 const layers = Array.isArray(plan.layers) ? plan.layers : [];
+const providerLayers = layers.filter(isProviderGeneratedLayer);
 const cues = Array.isArray(cueSheet.cues) ? cueSheet.cues : [];
 const auditedSfxByOutput = new Map(
   (Array.isArray(sfxManifest.items) ? sfxManifest.items : []).map((item) => [
@@ -128,6 +179,145 @@ const auditedSfxByOutput = new Map(
 const eventIds = new Set();
 const cueById = new Map();
 const cueIds = new Set();
+
+if (providerLayers.length > 0) {
+  for (const layer of providerLayers) {
+    const providerPath = generatedProviderPathInfo(layer.asset?.source);
+    if (
+      providerPath.isGenerated &&
+      (!providerPath.isExact || providerPath.usesSymlink)
+    ) {
+      errors.push(
+        `图层 ${layer.id ?? '未命名'} 的自动生成视频必须使用项目内固定规范路径，不得使用等价别名或符号链接。`,
+      );
+    }
+    if (
+      layer.assetDecision?.class !== 'generated-video' ||
+      layer.assetDecision?.producer !== 'codex-provider'
+    ) {
+      errors.push(
+        `图层 ${layer.id ?? '未命名'} 引用了自动生成视频类型或固定路径，必须声明 generated-video + codex-provider。`,
+      );
+    }
+    if (layer.asset?.sourceType !== 'provider-generated-video') {
+      errors.push(
+        `图层 ${layer.id ?? '未命名'} 的自动生成插片 asset.sourceType 必须为 provider-generated-video。`,
+      );
+    }
+  }
+  const generatedPlanPath = job.inputs?.generatedVideoPlan;
+  if (!isText(generatedPlanPath)) {
+    errors.push('V8 自动生成插片必须提供 job.inputs.generatedVideoPlan。');
+  } else {
+    try {
+      const loaded = loadPlanAndStyle(generatedPlanPath);
+      const generatedPlan = loaded.plan;
+      const validation = validateGeneratedVideoPlan(generatedPlan, loaded.style, {
+        phase: 'materialized',
+      });
+      for (const error of validation.errors) {
+        errors.push(`生成视频计划未通过 materialized 校验：${error.code} ${error.message}`);
+      }
+      if (generatedPlan.productionStatus !== 'qa-passed') {
+        errors.push(
+          '生成视频计划 productionStatus 必须为 qa-passed，才能进入 V8 生产。',
+        );
+      }
+      if (
+        !isText(generatedPlan.visualPlan) ||
+        toAbsolute(generatedPlan.visualPlan) !== toAbsolute(job.inputs.visualPlan)
+      ) {
+        errors.push('生成视频计划 visualPlan 必须精确绑定当前 V8 视觉方案。');
+      }
+      if (generatedPlan.videoId !== plan.videoId) {
+        errors.push('生成视频计划与 V8 视觉方案的 videoId 必须一致。');
+      }
+
+      const shots = Array.isArray(generatedPlan.shots) ? generatedPlan.shots : [];
+      if (shots.length !== providerLayers.length) {
+        errors.push(
+          `V8 自动生成图层数 ${providerLayers.length} 与拆镜数 ${shots.length} 不一致。`,
+        );
+      }
+      const providerLayerById = new Map(
+        providerLayers.map((layer) => [layer.id, layer]),
+      );
+      const seenLayerIds = new Set();
+      const seenRequestIds = new Set();
+      for (const shot of shots) {
+        if (seenLayerIds.has(shot.layerId)) {
+          errors.push(`生成视频镜头 layerId 重复：${shot.layerId}`);
+        }
+        if (seenRequestIds.has(shot.requestId)) {
+          errors.push(`生成视频镜头 requestId 重复：${shot.requestId}`);
+        }
+        seenLayerIds.add(shot.layerId);
+        seenRequestIds.add(shot.requestId);
+        const layer = providerLayerById.get(shot.layerId);
+        if (!layer) {
+          errors.push(`生成视频镜头 ${shot.id ?? '未命名'} 找不到图层 ${shot.layerId ?? '未填写'}。`);
+          continue;
+        }
+        if (layer.assetDecision?.requestId !== shot.requestId) {
+          errors.push(
+            `图层 ${layer.id} 与生成镜头 ${shot.id ?? '未命名'} 的 requestId 不一致。`,
+          );
+        }
+        if (
+          !isText(shot.output?.videoPath) ||
+          !isText(layer.asset?.source) ||
+          toAbsolute(shot.output.videoPath) !== toAbsolute(layer.asset.source)
+        ) {
+          errors.push(`图层 ${layer.id} 的视频路径与生成镜头产物不一致。`);
+        }
+        const expectedRenderSource = generatedVideoRenderSourceFor(
+          generatedPlan.videoId,
+          generatedPlan.planId,
+          shot.id,
+        );
+        if (
+          layer.params?.src !== expectedRenderSource ||
+          (Array.isArray(layer.params?.mediaClips) &&
+            layer.params.mediaClips.length > 0)
+        ) {
+          errors.push(
+            `图层 ${layer.id} 的实际 Remotion 渲染源必须唯一绑定已QA视频 ${expectedRenderSource}。`,
+          );
+        }
+      }
+
+      const requiredFingerprintPaths = [
+        generatedPlanPath,
+        generatedPlan.styleReference?.path,
+        generatedPlan.outputs?.approvalReceiptPath,
+        generatedPlan.outputs?.ledgerPath,
+        generatedPlan.outputs?.contactSheetPath,
+        generatedPlan.outputs?.qaReportPath,
+        ...shots.flatMap((shot) => [
+          shot.output?.videoPath,
+          shot.qa?.contactSheetPath,
+          shot.qa?.reportPath,
+        ]),
+      ].filter(isText);
+      const fingerprintPaths = Array.isArray(job.inputs?.fingerprintPaths)
+        ? job.inputs.fingerprintPaths.filter(isText)
+        : [];
+      const fingerprintSet = new Set(fingerprintPaths.map(toAbsolute));
+      if (!Array.isArray(job.inputs?.fingerprintPaths)) {
+        errors.push('V8 自动生成插片必须提供 job.inputs.fingerprintPaths。');
+      }
+      for (const requiredPath of requiredFingerprintPaths) {
+        if (!fingerprintSet.has(toAbsolute(requiredPath))) {
+          errors.push(`自动生成插片产物未纳入 fingerprintPaths：${requiredPath}`);
+        }
+      }
+    } catch (error) {
+      errors.push(
+        `生成视频计划读取失败：${error instanceof Error ? error.message : String(error)}`,
+      );
+    }
+  }
+}
 
 for (const cue of cues) {
   if (!isText(cue.id)) {
@@ -219,10 +409,22 @@ for (const [index, layer] of layers.entries()) {
 
   if (layer.assetDecision?.class === 'generated-video') {
     if (presentation?.renderMode !== 'media-fullscreen') {
-      errors.push(`${label} 的用户生成视频必须使用 media-fullscreen。`);
+      errors.push(`${label} 的生成视频必须使用 media-fullscreen。`);
     }
     if (!isText(layer.asset?.source) || !existsSync(toAbsolute(layer.asset.source))) {
-      errors.push(`${label} 的用户生成视频不存在。`);
+      errors.push(`${label} 的生成视频不存在。`);
+    }
+    if (layer.assetDecision?.producer === 'codex-provider') {
+      if (layer.params?.disclosure !== 'AI生成·概念演绎') {
+        errors.push(
+          `${label} 的自动生成插片必须显示 disclosure=AI生成·概念演绎。`,
+        );
+      }
+      if (layer.params?.badge !== '非真实业务证据') {
+        errors.push(
+          `${label} 的自动生成插片必须显示 badge=非真实业务证据。`,
+        );
+      }
     }
   }
 

@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "generated-video-plan/v1",
+  "planId": "REPLACE_WITH_TASK_ID-generated-video",
+  "videoId": "REPLACE_WITH_VIDEO_ID",
+  "videoTitle": "REPLACE_WITH_VIDEO_TITLE",
+  "planPath": "edit/REPLACE_WITH_VIDEO_ID/generated-video-plan_REPLACE_WITH_VIDEO_ID_v1.json",
+  "visualPlan": "edit/visual-plan_REPLACE_WITH_VIDEO_ID_v8.json",
+  "productionStatus": "planned",
+  "scope": "ai-concept-explainer-inserts-only",
+  "styleReference": {
+    "id": "koubo-paper-construct-v1",
+    "nameZh": "纸构推演 v1",
+    "path": "workflow/style-library/koubo-paper-construct-v1.json",
+    "sourceSampleSha256": "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949"
+  },
+  "provider": {
+    "platform": "RunningHub",
+    "adapter": "wanxiang-zaojing-runninghub",
+    "model": "MiniMax-H3",
+    "resolution": "2K",
+    "aspectRatio": "16:9",
+    "clipDurationSeconds": {
+      "min": 5,
+      "max": 15
+    }
+  },
+  "costAuthorization": {
+    "status": "not-approved",
+    "approvalId": null,
+    "approvedBy": null,
+    "approvedAt": null,
+    "expiresAt": null,
+    "scope": {
+      "type": "plan-only",
+      "planId": "REPLACE_WITH_TASK_ID-generated-video",
+      "definitionSha256": null
+    },
+    "maxPerShotCny": null,
+    "maxAmountCny": null,
+    "currency": "CNY",
+    "maxAttemptsPerShot": 1,
+    "automaticRetry": false
+  },
+  "outputs": {
+    "rootDir": "remotion/public/media/REPLACE_WITH_VIDEO_ID/generated-video/REPLACE_WITH_TASK_ID-generated-video",
+    "ledgerPath": "edit/generated-video/REPLACE_WITH_TASK_ID-generated-video/generation-ledger.json",
+    "quotePath": "edit/generated-video/REPLACE_WITH_TASK_ID-generated-video/latest-quote.json",
+    "approvalReceiptPath": null,
+    "approvalReceiptSha256": null,
+    "contactSheetPath": "edit/generated-video/REPLACE_WITH_TASK_ID-generated-video/contact-sheet.jpg",
+    "qaReportPath": "edit/generated-video/REPLACE_WITH_TASK_ID-generated-video/qa-report.json"
+  },
+  "shots": [
+    {
+      "id": "G01",
+      "requestId": "G01",
+      "layerId": "REPLACE_WITH_VISUAL_PLAN_LAYER_ID",
+      "assetClass": "generated-video",
+      "spokenAnchor": {
+        "text": "REPLACE_WITH_VERBATIM_SPOKEN_ANCHOR",
+        "startSeconds": 0,
+        "endSeconds": 5
+      },
+      "selectionReason": "REPLACE_WITH_WHY_THIS_ABSTRACT_RELATION_NEEDS_GENERATED_ILLUSTRATION",
+      "evidenceUse": "illustration-only",
+      "causalChain": {
+        "initialState": "REPLACE_WITH_VISIBLE_INITIAL_STATE",
+        "physicalCause": "REPLACE_WITH_ONE_VISIBLE_PHYSICAL_CAUSE",
+        "resultState": "REPLACE_WITH_VISIBLE_RESULT_STATE"
+      },
+      "singleAction": {
+        "actions": [
+          {
+            "verb": "REPLACE_WITH_ONE_VERB",
+            "actor": "REPLACE_WITH_FORCE_SOURCE",
+            "object": "REPLACE_WITH_MOVING_OBJECT",
+            "visibleCause": "REPLACE_WITH_VISIBLE_CONTACT_OR_FORCE",
+            "visibleEffect": "REPLACE_WITH_ONE_VISIBLE_RESULT"
+          }
+        ]
+      },
+      "mechanism": "slide",
+      "composition": {
+        "view": "front-miniature",
+        "mainSubject": "REPLACE_WITH_ONE_MAIN_SUBJECT",
+        "mainSubjectCount": 1,
+        "negativeSpace": "REPLACE_WITH_RESERVED_NEGATIVE_SPACE",
+        "subtitleSafeBottomRatio": 0.18,
+        "labels": "blank-remotion-later"
+      },
+      "camera": {
+        "movement": "fixed",
+        "framing": "REPLACE_WITH_MEDIUM_OR_MACRO_MINIATURE_FRAMING"
+      },
+      "continuity": {
+        "objectIdentityLock": "REPLACE_WITH_IDENTITY_COLOR_AND_COUNT_LOCK",
+        "shapeLock": "REPLACE_WITH_SHAPE_LOCK",
+        "contactContinuity": "REPLACE_WITH_FORCE_CONTACT_CONTINUITY"
+      },
+      "timing": {
+        "durationSeconds": 6,
+        "establish": {
+          "startSeconds": 0,
+          "endSeconds": 0.8
+        },
+        "action": {
+          "startSeconds": 0.8,
+          "endSeconds": 5.2
+        },
+        "finalHold": {
+          "startSeconds": 5.2,
+          "endSeconds": 6
+        }
+      },
+      "promptCore": {
+        "concept": "REPLACE_WITH_ONE_CONCEPT",
+        "visualMetaphor": "REPLACE_WITH_ONE_PHYSICAL_METAPHOR",
+        "openingFrame": "REPLACE_WITH_OPENING_FRAME",
+        "actionInstruction": "REPLACE_WITH_THE_SINGLE_ACTION_ONLY",
+        "closingFrame": "REPLACE_WITH_STABLE_RESULT_FRAME",
+        "compiledPrompt": ""
+      },
+      "output": {
+        "providerTaskId": null,
+        "videoPath": "remotion/public/media/REPLACE_WITH_VIDEO_ID/generated-video/REPLACE_WITH_TASK_ID-generated-video/G01.mp4",
+        "sha256": null,
+        "attemptCount": 0,
+        "chargedCostCny": null,
+        "costBasis": null,
+        "probe": {
+          "width": null,
+          "height": null,
+          "durationSeconds": null,
+          "fps": null,
+          "codec": null
+        }
+      },
+      "qa": {
+        "status": "pending",
+        "contactSheetPath": null,
+        "reportPath": null,
+        "visualReview": {
+          "status": "pending",
+          "reviewer": null,
+          "reviewerKind": null,
+          "reviewerModel": null,
+          "reviewerVersion": null,
+          "reviewedAt": null,
+          "contactSheetSha256": null
+        },
+        "sampleFractions": [
+          0,
+          0.25,
+          0.5,
+          0.75,
+          1
+        ],
+        "checks": {
+          "styleSignature": false,
+          "singleAction": false,
+          "identityStable": false,
+          "shapeStable": false,
+          "contactContinuous": false,
+          "subtitleSafe": false,
+          "noForbiddenElements": false
+        }
+      },
+      "fallback": "speaker-plus-information"
+    }
+  ]
+}

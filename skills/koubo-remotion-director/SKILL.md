@@ -1,6 +1,6 @@
 ---
 name: koubo-remotion-director
-description: 口播项目的 Remotion 视频包装导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库，将转写、粗剪或完整原片推进到 visual-plan.json、V8连续语义视觉规划、风险帧预览、Remotion包装、字幕/动效/遮挡质检和release记录；当用户要求优化口播剪辑流程、按V8制作视频、把参考图落到成片、修复卡片裁切/挡脸/字幕错位或生成与校验visual-plan/release时使用。
+description: 口播项目的 Remotion 视频包装导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库，将转写、粗剪或完整原片推进到 visual-plan.json、纸构推演自动插片、V8连续语义视觉规划、风险帧预览、Remotion包装、字幕/动效/遮挡质检和release记录；当用户要求优化口播剪辑流程、按V8制作视频、把参考图或抽象机制落到成片、修复卡片裁切/挡脸/字幕错位或生成与校验visual-plan/release时使用。
 ---
 
 # 口播 Remotion 导演
@@ -38,6 +38,7 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 按任务需要再读：
 
 - [references/workflow-contract.md](references/workflow-contract.md)：需要生成或校验一条视频的导演流程时读取。
+- [references/paper-construct-generated-video.md](references/paper-construct-generated-video.md)：需要把抽象机制自动拆成“纸构推演 v1”插片并通过 RunningHub 生成时读取。
 - [references/v4-visual-pack.md](references/v4-visual-pack.md)：需要执行 V4 视觉实验、参考图落地或新增卡片时读取。
 - [references/validation-gates.md](references/validation-gates.md)：需要渲染预览、检查风险帧、导出正式片或填写 release 时读取。
 
@@ -65,8 +66,8 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 - 是否删减、是否全量保留、是否已有 EDL；
 - 最终字幕时间轴来源；
 - 参考图、真实 B-roll、截图、AI 素材的授权和用途；
-- 每个非主播画面先声明素材决策：`speaker | real-evidence | generated-video | remotion-information`，以及制作责任：`existing | user | codex-remotion`；
-- 需要人物、行动、场景、空间或氛围的 `generated-video` 默认由用户制作，录制前交付编号中文执行单；不得默认用 Remotion 信息动画冒充叙事视频；
+- 每个非主播画面先声明素材决策：`speaker | real-evidence | generated-video | remotion-information`，以及制作责任：`existing | user | codex-remotion | codex-provider`；`codex-provider` 仅允许用于 V8 的纸构概念演绎插片；
+- 需要人物、真实行动、场景、空间或氛围的 `generated-video` 仍由用户或授权真实素材负责；只有抽象机制、因果和关系可使用 `codex-provider`，不得默认用 Remotion 信息动画或生成画面冒充叙事事实；
 - 指定视觉素材是否确需抠图或升清；仅在 `ready-for-production` 后调用 `koubo-asset-prep`，证据截图和真人主口播保持原样；
 - 本条唯一主观点和行动引导；
 - 是否涉及抖音高风险垂类、AI 声明、商单、投放或交易。
@@ -74,6 +75,10 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 ### 3. 生成素材执行单和视觉方案
 
 如果本条需要用户制作图片或视频，先使用 `templates/05-用户素材执行单模板.md` 生成单独执行单。每个项目必须写清“文生视频 / 图生视频 / 文生图 / 真实素材”、对应原句、时长、中文提示词、文件名和放置目录。不得向用户交付无编号、中英文混杂或无法判断生成类型的提示词。
+
+如果本条存在需要解释的抽象机制，自动读取 `references/paper-construct-generated-video.md` 和 `workflow/style-library/koubo-paper-construct-v1.json`。先按语义选择最少必要的 `0—N` 个插片；`N=0` 时不建立生成计划，有镜头时才从 `templates/08-generated-video-plan-template.json` 建立机器计划。不得固定五镜或逐句平均切。每镜必须形成“初始状态 → 一个可见施力动作 → 稳定结果”，并锁定物体身份、形状和施力接触连续性。
+
+自动插片固定走 `RunningHub / MiniMax-H3 / 2K / 16:9`。先离线编译和预检，再全量报价并向用户报告当前计划总额；只有用户对当前 `planId` 明确确认费用上限，且授权绑定当前 `generationDefinitionSha256`、未超过 24 小时有效期后，才允许使用 `--confirm-paid` 提交。同一 `approvalId` 只保留一份固定消费回执；拆镜、提示词或输出定义变化后必须重新报价和授权。每个镜头真正提交前都必须刷新剩余镜头报价，重新核算单镜和累计上限；每镜最多一次付费任务，禁止自动重试。单镜、末镜或累计实际费用超限，以及实际费用缺失、非法或无法对账时，都必须落盘并停止后续付费提交，禁止把预估金额写成实际扣费。中断时只能恢复与当前计划、提示词、输出路径和授权完整绑定的同一 `taskId`，对既有文件先做哈希对账，冲突时隔离而不覆盖。下载后必须生成五点联系表并完成带逐项观察和证据哈希的视觉复核；计划同时达到 `qa-passed` 并通过 `materialized` 门禁后，才能进入 V8 `prepare`。`doctor`、`prepare`、校验和缓存失效不得隐式触发付费生成。
 
 以已验证的 `workflow/jobs/20260810_ai_cognitive_position_v80.production.json`、对应V8视觉方案和音效点位表为结构参考，生成 `edit/visual-plan_<id>_v8.json`、`edit/sfx-cue-sheet_<id>_v8.json` 和 `workflow/jobs/<id>_v80.production.json`。只复制结构，不复制上一条文案、时间点、素材路径或画面内容。
 
@@ -177,6 +182,8 @@ V8 有音效正式候选片生成后，必须立即完成最低交付包：从�
 - 不让参考图只停留在计划文字里；必须绑定原创组件变体和验收帧。
 - 不为了高级感强制生图；真实素材和确定性 Remotion 排版优先。
 - 不用 Remotion 信息动画默认替代需要人物、场景、行为、空间或氛围的叙事视频；素材缺失时要明确降级为主播 + 信息卡或“情景示意”。
+- 不用纸构推演插片替代真实界面、截图、数据、官方材料或现场证据；自动生成素材只允许标记为“AI生成·概念演绎 / 非真实业务证据”。
+- 不让 `doctor`、`prepare`、校验、缓存失效或自动重跑隐式提交 RunningHub 付费任务；必须先全量报价，再取得绑定当前计划的金额授权。
 - 不把二创参考视频当作事实原始信源；外部案例引用必须显示来源和证据边界。
 - 不在左上角显示 V7、V7.1 或模板名，只保留“超哥AI创业记”。
 - V8固定做同画面30—45秒`WithSfx / NoSfx` A/B；未经用户正常音量试听确认，正式渲染保持锁定。

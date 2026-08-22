@@ -50,7 +50,11 @@ const scenes: V72ProductionScene[] = layers.map((layer) => ({
   kind: 'custom',
   customKey: layer.params.component,
   data: layer as unknown as Record<string, unknown>,
-  background: layer.params.component === 'generated-broll' ? 'opaque' : 'talk',
+  background:
+    layer.params.component === 'generated-broll' ||
+    layer.params.component === 'generated-media'
+      ? 'opaque'
+      : 'talk',
 }));
 const sfxCues: V72SfxCue[] = sfxContract.cues.map((cue) => ({
   id: cue.id,
@@ -97,7 +101,7 @@ const config: V72ProductionConfig = {
   sfxCues,
 };
 
-const renderCustomScene = (scene: V72CustomScene) => {
+export const renderCustomScene = (scene: V72CustomScene) => {
   const layer = scene.data as unknown as PlanLayer;
   switch (scene.customKey) {
     case 'comparison':
@@ -117,6 +121,7 @@ const renderCustomScene = (scene: V72CustomScene) => {
     case 'three-feedbacks':
       return <V8StatusStack layer={layer} />;
     case 'generated-broll':
+    case 'generated-media':
       return <V8MediaStage layer={layer} />;
     case 'definition':
       return <V8HeroDefinition layer={layer} />;
