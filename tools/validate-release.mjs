@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
 
 const [releasePath, baselinePath = 'workflow/production-baseline.v1.json'] = process.argv.slice(2);
 
@@ -20,6 +21,8 @@ const exists = (relativePath) => isNonEmpty(relativePath) && fs.existsSync(path.
 const isNonEmpty = (value) => typeof value === 'string' && value.trim().length > 0;
 const passed = (value) => value?.status === 'passed';
 const run = (command, args) => spawnSync(command, args, {encoding: 'utf8'});
+const sha256 = (filePath) =>
+  createHash('sha256').update(fs.readFileSync(filePath)).digest('hex');
 const isActiveProfileRelease =
   release.productionProfile?.id === activeProfile.profileId &&
   release.productionProfile?.version === activeProfile.profileVersion;
@@ -109,6 +112,7 @@ if (exists(release.production?.formalOutput)) {
 
 if (isActiveProfileRelease) {
   const requirements = activeProfile.requirements?.finalDeliveryPackage;
+  const transcriptRequirements = activeProfile.requirements?.spokenTranscriptPolicy;
   const delivery = release.deliveryPackage;
   const cover = delivery?.cover;
   const titles = delivery?.titles;
@@ -145,6 +149,16 @@ if (isActiveProfileRelease) {
   }
   if (!exists(cover?.prompt)) {
     errors.push(`V8缺少可直接复制的3:4真人截图合成封面提示词：${cover?.prompt ?? ''}`);
+  } else {
+    const promptText = fs.readFileSync(path.resolve(cover.prompt), 'utf8');
+    for (const marker of expectedCover.requiredPromptMarkers ?? []) {
+      if (!promptText.includes(marker)) {
+        errors.push(`V8系列封面提示词缺少固定标记：${marker}`);
+      }
+    }
+  }
+  if (cover?.template !== expectedCover.seriesTemplate) {
+    errors.push(`V8封面提示词必须绑定系列母版：${expectedCover.seriesTemplate ?? ''}`);
   }
 
   if (expectedDouyin.primaryTitleRequired && !isNonEmpty(titles?.primary)) {
@@ -169,6 +183,93 @@ if (isActiveProfileRelease) {
   }
   if (!exists(delivery?.copyReview)) {
     errors.push(`V8标题、发布文案和话题缺少双Skill审稿记录：${delivery?.copyReview ?? ''}`);
+  } else {
+    try {
+      const review = readJson(delivery.copyReview);
+      if (review.status !== 'passed') {
+        errors.push('V8双Skill审稿记录状态必须为 passed。');
+      }
+      if (path.resolve(review.draft?.path ?? '') !== path.resolve(cover?.prompt ?? '')) {
+        errors.push('V8双Skill审稿记录必须绑定当前封面提示词文件。');
+      } else if (review.draft?.sha256 !== sha256(path.resolve(cover.prompt))) {
+        errors.push('V8双Skill审稿记录绑定的封面提示词哈希已经过期。');
+      }
+      for (const [key, label] of [
+        ['humanizer_zh', 'humanizer-zh'],
+        ['humanize_koubo_script', 'humanize-koubo-script'],
+      ]) {
+        const skill = review.skills?.[key];
+        if (!exists(skill?.path) || skill?.read !== true) {
+          errors.push(`V8双Skill审稿缺少已读取的 ${label} 当前文件。`);
+        } else if (skill.sha256 !== sha256(path.resolve(skill.path))) {
+          errors.push(`V8双Skill审稿中的 ${label} 哈希已经过期。`);
+        }
+      }
+      if (Number(review.scores?.fact_fidelity) !== 10) {
+        errors.push('V8双Skill审稿的事实保真必须为 10/10。');
+      }
+    } catch (error) {
+      errors.push(`V8双Skill审稿记录无法读取：${error.message}`);
+    }
+  }
+
+  const spokenPolicyPath = release.inputs?.spokenSourcePolicy;
+  if (!exists(spokenPolicyPath)) {
+    errors.push(`V8缺少实录来源策略文件：${spokenPolicyPath ?? ''}`);
+  } else {
+    const spokenPolicy = readJson(spokenPolicyPath);
+    for (const key of [
+      'canonicalSource',
+      'scriptRole',
+      'captionTextPolicy',
+      'englishTranslationSource',
+    ]) {
+      if (spokenPolicy[key] !== transcriptRequirements?.[key]) {
+        errors.push(
+          `V8实录来源策略 ${key} 必须为 ${transcriptRequirements?.[key] ?? ''}。`,
+        );
+      }
+    }
+
+    const spokenStatus = spokenPolicy.compliance?.status;
+    if (spokenStatus === 'passed') {
+      if (release.qa?.spokenSource?.status !== 'passed') {
+        errors.push('V8实录逐字保真质检未通过。');
+      }
+      if (release.qa?.spokenSource?.verifier !== transcriptRequirements?.verifier) {
+        errors.push(`V8实录逐字保真校验器必须为 ${transcriptRequirements?.verifier ?? ''}。`);
+      }
+      const spokenCheck = run(process.execPath, [
+        'tools/check-spoken-source-policy.mjs',
+        release.inputs.transcript,
+        release.inputs.bilingualCaptions,
+        spokenPolicyPath,
+      ]);
+      if (spokenCheck.status !== 0) {
+        errors.push(
+          `实录逐字保真子校验失败：${spokenCheck.stderr.trim() || spokenCheck.stdout.trim()}`,
+        );
+      }
+    } else if (spokenStatus === transcriptRequirements?.exceptionStatus) {
+      const exceptionIsScoped =
+        spokenPolicy.compliance?.exceptionReleaseId === release.releaseId;
+      const userAccepted =
+        release.status === 'verified' &&
+        release.userReview?.fullWatchConfirmed === true &&
+        release.userReview?.transcriptMismatchAccepted === true &&
+        isNonEmpty(release.userReview?.transcriptMismatchEvidence) &&
+        exceptionIsScoped;
+      if (!userAccepted) {
+        errors.push('V8实录偏差例外必须绑定当前release，并有用户完整观看后的明确接受证据。');
+      } else {
+        warnings.push('本条使用用户明确接受的实录偏差单条例外；该例外不得继承到下一条。');
+      }
+      if (release.qa?.spokenSource?.status !== transcriptRequirements?.exceptionStatus) {
+        errors.push('V8发布记录必须如实标记实录偏差例外，不能写成逐字校验通过。');
+      }
+    } else {
+      errors.push('V8实录来源策略状态必须为 passed，或使用用户明确接受的单条历史例外。');
+    }
   }
 }
 
@@ -183,13 +284,43 @@ if (!passed(release.qa?.technical)) {
   errors.push('技术质检未通过。');
 }
 
-if (!passed(release.qa?.captionSync)) {
+const captionSyncExceptionAccepted = (() => {
+  if (!isActiveProfileRelease) return false;
+  if (release.qa?.captionSync?.status !== activeProfile.requirements?.spokenTranscriptPolicy?.exceptionStatus) {
+    return false;
+  }
+  if (
+    release.status !== 'verified' ||
+    release.userReview?.fullWatchConfirmed !== true ||
+    release.userReview?.transcriptMismatchAccepted !== true ||
+    !isNonEmpty(release.userReview?.transcriptMismatchEvidence)
+  ) {
+    return false;
+  }
+  if (!exists(release.inputs?.spokenSourcePolicy)) return false;
+  const policy = readJson(release.inputs.spokenSourcePolicy);
+  return (
+    policy.compliance?.status === activeProfile.requirements?.spokenTranscriptPolicy?.exceptionStatus &&
+    policy.compliance?.exceptionReleaseId === release.releaseId
+  );
+})();
+
+if (!passed(release.qa?.captionSync) && !captionSyncExceptionAccepted) {
   errors.push('字幕同步质检未通过。');
-} else if (Number(release.qa.captionSync.minimumScore) < Number(baseline.captionPolicy?.minimumSyncScore ?? 0)) {
+} else if (
+  passed(release.qa?.captionSync) &&
+  Number(release.qa.captionSync.minimumScore) < Number(baseline.captionPolicy?.minimumSyncScore ?? 0)
+) {
   errors.push(`字幕同步分低于基线：${release.qa.captionSync.minimumScore}`);
+} else if (captionSyncExceptionAccepted) {
+  warnings.push('本条字幕文字与时间窗使用用户明确接受的单条例外；不得把它记为同步通过或继承到下一条。');
 }
 
-if (exists(release.inputs?.transcript) && exists(release.inputs?.bilingualCaptions)) {
+if (
+  exists(release.inputs?.transcript) &&
+  exists(release.inputs?.bilingualCaptions) &&
+  passed(release.qa?.captionSync)
+) {
   const captionVerifier = release.qa?.captionSync?.verifier ?? 'legacy-lcs';
   const captionCheckArgs =
     captionVerifier === 'verbatim-v1'

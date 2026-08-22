@@ -23,6 +23,7 @@
 
 - `source/` 中的原片或用户指定素材；
 - `edit/transcripts/` 中的词级转写；
+- 原片实际声音是拍摄后唯一正文，拍摄前文稿只作术语与差异核对；
 - 是否已有 EDL，是否全量保留；
 - 本条视频主观点、服务对象、行动引导；
 - B-roll、截图、参考图和生成素材的授权；
@@ -40,6 +41,7 @@
 - 内部预览和质检报告：`work/production-runs/<video-id>/`
 - 正式片：`outputs/<title>_final*.mp4`
 - 发布记录：`workflow/releases/<video-id>_vN.json`
+- 实录来源策略：`edit/<video-id>/transcripts/<video-id>.spoken-source-policy.v1.json`
 - 关键帧证据：`edit/verify/` 或发布记录中声明的路径
 
 ## visual-plan 必填逻辑
@@ -63,5 +65,7 @@
 2. 视觉包装方案确认；
 3. 同画面有声/无声30—45秒动态预览及关键帧确认；
 4. 正式全片人工完整观看确认。
+
+有音效正式候选片生成时同步形成完整发布包；该动作不替代第 4 项完整观看确认。候选阶段可进入 `ready-for-user-review`，用户终验后才进入 `verified`。
 
 如果用户明确授权某一步可由 Codex 先行生成，仍需在 final 中标记“待人工确认”的状态。

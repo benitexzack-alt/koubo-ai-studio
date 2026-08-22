@@ -19,15 +19,43 @@
     "speakerIsDefaultPrimaryPicture": true,
     "remotionInformationMaximumCoverageRatio": 0.42,
     "sameFrameSfxComparisonRequired": true,
+    "spokenTranscriptPolicy": {
+      "required": true,
+      "canonicalSource": "recorded-audio",
+      "scriptRole": "comparison-only",
+      "captionTextPolicy": "spoken-verbatim",
+      "englishTranslationSource": "canonical-spoken-chinese",
+      "verifier": "spoken-source-v1",
+      "minimumGlobalPrecision": 0.97,
+      "minimumGlobalCoverage": 0.95,
+      "minimumPagePrecision": 0.82,
+      "minimumPageCoverage": 0.72,
+      "allowScopedHistoricalException": true,
+      "exceptionStatus": "known-exception-user-accepted"
+    },
     "finalDeliveryPackage": {
       "required": true,
+      "trigger": "sound-enabled-formal-candidate-ready",
       "missingStatus": "incomplete-delivery",
       "cover": {
         "aspectRatio": "3:4",
         "promptRequired": true,
         "recommendedFrameRequired": true,
         "recommendedFrameSource": "current-final-video-real-frame",
-        "preserveRealPersonIdentity": true
+        "preserveRealPersonIdentity": true,
+        "seriesTemplate": "templates/10-超哥AI创业记_3比4系列封面提示词母版.md",
+        "seriesIdentity": "超哥AI创业记",
+        "knowledgeStructureRequired": true,
+        "requiredPromptMarkers": [
+          "超哥AI创业记",
+          "3:4",
+          "1080×1440",
+          "唯一人物素材",
+          "禁止重新生成人脸",
+          "知识结构",
+          "路径",
+          "真实场景"
+        ]
       },
       "douyin": {
         "primaryTitleRequired": true,

@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260820_ai_levels_v80_v1",
+  "status": "verified",
+  "videoId": "AI_LEVELS_20260820_talk01",
+  "baselineId": "koubo-formal-16x9-v1",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "intent": {
+    "topic": "从问答到系统经营，解释普通人和企业使用AI的六个能力层级",
+    "serviceAudience": "已经会使用豆包、DeepSeek、Kimi、千问等工具，但不清楚AI如何进入任务、流程和企业系统的人",
+    "oneConclusion": "先看AI已经替你做到哪一步，再决定自己应该补任务、流程、组装、开源改造还是系统经营能力。",
+    "cta": "说出自己目前所在的层级，以及AI给完答案后仍最费时间、最容易出错的一步。",
+    "factBoundary": "六层是本条用于解释能力差异的内容框架，不表述为官方行业标准、能力认证或固定工具排名；不承诺使用某个工具即可完成企业AI转型。"
+  },
+  "inputs": {
+    "sourceVideo": "source/20260820_ai_levels/R01_六层AI能力地图_口播原片.MOV",
+    "transcript": "edit/20260820_ai_levels/transcripts/AI_LEVELS_20260820_talk01.cleaned.v1.json",
+    "bilingualCaptions": "remotion/public/data/AI_LEVELS_20260820_talk01.bilingual.v1.json",
+    "visualPlan": "edit/20260820_ai_levels/visual-plan_AI_LEVELS_20260820_talk01_v8.json",
+    "spokenSourcePolicy": "edit/20260820_ai_levels/transcripts/AI_LEVELS_20260820_talk01.spoken-source-policy.v1.json",
+    "assets": [
+      "media/ai-levels-20260820/S01-answer-work-remains.mp4",
+      "media/ai-levels-20260820/S02-manual-to-flow.mp4",
+      "media/ai-levels-20260820/S03-alert-human-takeover.mp4"
+    ]
+  },
+  "production": {
+    "formalOutput": "outputs/AI六层能力地图_16x9_V80_有音效_候选成片_v1.mp4",
+    "previewOutput": "work/production-runs/20260820-ai-levels-v80/preview45/with-sfx.mp4",
+    "coverPrompt": "notes/2026-08-22-AI六层能力地图-V8发布包装-v1.md",
+    "soundEffectCueSheet": "edit/20260820_ai_levels/sfx-cue-sheet_AI_LEVELS_20260820_talk01_v8.json",
+    "modules": [
+      "semantic-digital-camera-v72",
+      "top-brand-bar",
+      "topic-bar",
+      "progress-bar",
+      "transparent-semantic-information",
+      "full-screen-real-or-ai-media",
+      "bilingual-caption",
+      "local-semantic-sfx-v2",
+      "v8-continuous-semantic-information",
+      "v8-event-bound-audible-sfx",
+      "user-generated-ai-context-media",
+      "generated-media-disclosure",
+      "two-pass-loudness-mastering"
+    ],
+    "styleReferenceIds": [
+      "v8-semantic-continuity-sfx",
+      "approved-text-logo-preview-20260822"
+    ]
+  },
+  "qa": {
+    "technical": {
+      "status": "passed",
+      "evidence": "正式候选片1920x1080、30fps、H.264/AAC、468.7秒、731349416字节；黑帧计数0；响度-15.99 LUFS、LRA 5.2 LU、真峰值-1.58 dBTP；SHA-256为a72bd476725bd937cb8389386d6a91094be3d0da8b88bb41acac09c863634dae。"
+    },
+    "captionSync": {
+      "status": "known-exception-user-accepted",
+      "verifier": "spoken-source-v1",
+      "minimumScore": 0,
+      "evidence": "当前字幕文字与清洗稿内部一致，但清洗稿曾向拍摄前文稿压缩、顺句，且旧字幕页中有36页停留时间超过现行上限。用户完整验收当前成片，本条作为同一release的一次性字幕文字与时间窗例外，不登记为同步通过。"
+    },
+    "spokenSource": {
+      "status": "known-exception-user-accepted",
+      "verifier": "spoken-source-v1",
+      "evidence": "用户完整验收当前成片，同时指出字幕曾按拍摄前文稿压缩和顺句，明确要求以后以实际声音为唯一正文。本条不伪报逐字通过，例外仅绑定20260820_ai_levels_v80_v1且不得继承。"
+    },
+    "visualPlan": {
+      "status": "passed",
+      "evidence": "现行V8视觉方案包含34个连续语义图层和34个风险抽帧节点；左侧文字及重点层级已放大，六层工具Logo卡已补入，参考截图未进入正式成片。"
+    },
+    "keyframeReview": {
+      "status": "passed",
+      "frames": [
+        2.5,
+        9.7,
+        17,
+        25.03,
+        31.3,
+        40.7,
+        53.78,
+        62.5,
+        75.62,
+        86.26,
+        97.62,
+        110.5,
+        128.34,
+        150.98,
+        164.66,
+        185.78,
+        198.58,
+        206.02,
+        220.66,
+        243.22,
+        258.42,
+        279.62,
+        294.02,
+        316.98,
+        330.74,
+        350.9,
+        361.78,
+        378.42,
+        393.9,
+        400.82,
+        408.12,
+        424.34,
+        438.1,
+        455.22
+      ],
+      "evidence": "34个语义风险帧、三段AI视频节点、六层工具卡和结尾已检查；用户确认文字和Logo修正版预览后授权全片渲染，并完整观看正式候选片验收通过。"
+    },
+    "cameraMotionReview": {
+      "status": "passed",
+      "previewPoints": [2.5, 9.7, 17, 25.03, 31.3, 40.7],
+      "userPerceptibilityConfirmed": true,
+      "fullVideoUserReviewPending": false,
+      "evidence": "数字运镜与语义段绑定；用户先确认V8文字和Logo修正版预览，后完整观看正式候选片并验收通过。"
+    },
+    "soundEffectAudibility": {
+      "status": "passed",
+      "cueCount": 34,
+      "distinctSourceCount": 29,
+      "roleCount": 7,
+      "maximumSyncErrorFrames": 0,
+      "userAudibilityConfirmed": true,
+      "fullVideoUserReviewPending": false,
+      "evidence": "34个主视觉事件绑定34个本地非人声音效，使用29个不同文件和7类语义角色；正式母带-15.99 LUFS、真峰值-1.58 dBTP。用户完整观看有音效正式候选片并验收通过。"
+    }
+  },
+  "upgradeDecisions": [
+    {
+      "id": "upgrade-20260822-text-logo-scale",
+      "decision": "applied-and-user-approved",
+      "evidence": "用户要求放大左侧主次文字并补回豆包、DeepSeek等工具Logo；修正版预览经用户明确回复通过。"
+    },
+    {
+      "id": "upgrade-20260822-v8-full-render",
+      "decision": "applied-and-user-verified",
+      "evidence": "用户授权正式渲染后完整观看有音效候选片，并明确表示正片验收通过。"
+    },
+    {
+      "id": "upgrade-20260822-spoken-source-gate",
+      "decision": "applied-with-scoped-historical-exception",
+      "evidence": "根因确认为字幕构建器把实录向拍摄前文稿压缩和顺句；现已把原片音频设为唯一正文并新增spoken-source-v1回归门禁。本条由用户接受为一次性历史例外。"
+    },
+    {
+      "id": "upgrade-20260822-series-cover-package",
+      "decision": "applied-and-machine-gated",
+      "evidence": "有音效正式候选片生成即触发本条真人帧、3:4系列封面提示词、主标题、两个备选标题、发布文案和话题的完整交付包。"
+    }
+  ],
+  "userReview": {
+    "previewApproved": true,
+    "directFinalAuthorized": true,
+    "fullWatchConfirmed": true,
+    "transcriptMismatchAccepted": true,
+    "transcriptMismatchEvidence": "用户明确表示正片验收通过，同时指出本条字幕没有严格按照实际语音转写，并要求从下一条起实际声音优先于拍摄前文稿；当前成片不要求返工。",
+    "confirmedAt": "2026-08-22T22:00:00+08:00",
+    "reviewedAt": "2026-08-22",
+    "reviewOutcome": "passed-with-known-caption-exception",
+    "notes": "画面、动效、工具Logo、数字运镜、音效和完整成片通过人工观看；字幕实录偏差作为本条单次例外保留，不得用于下一条。"
+  },
+  "deliveryPackage": {
+    "status": "ready-for-delivery",
+    "cover": {
+      "aspectRatio": "3:4",
+      "recommendedFrame": "outputs/发布素材/AI六层能力地图_推荐封面人物帧_33.0s.png",
+      "sourceVideo": "outputs/AI六层能力地图_16x9_V80_有音效_候选成片_v1.mp4",
+      "sourceTimeSeconds": 33,
+      "sourceType": "current-final-video-real-frame",
+      "prompt": "notes/2026-08-22-AI六层能力地图-V8发布包装-v1.md",
+      "template": "templates/10-超哥AI创业记_3比4系列封面提示词母版.md"
+    },
+    "titles": {
+      "primary": "会用豆包、Kimi，就算会用 AI 吗？",
+      "alternatives": [
+        "AI 给完答案以后，为什么活还在你手里？",
+        "从问答到系统经营，你用 AI 到了哪一层？"
+      ]
+    },
+    "douyin": {
+      "publishCopy": "会问豆包、DeepSeek，只是第一层。AI真正往工作里走，还要经过任务、流程、组装、开源改造和系统经营。别急着追更强的工具，先看看AI给完答案以后，哪一步还最费时间、最容易出错，又必须由你自己接住。你现在在哪一层？",
+      "topics": [
+        "AI工具",
+        "AI工作流",
+        "Agent",
+        "企业AI",
+        "兰州AI创业",
+        "超哥AI创业记"
+      ]
+    },
+    "copyReview": "notes/2026-08-22-AI六层能力地图-V8发布包装-v1.copy-review.json"
+  },
+  "publish": {
+    "status": "not-published",
+    "platform": "抖音",
+    "aiContentDisclosureRequired": true,
+    "plannedWindow": null,
+    "publishedAt": null,
+    "platformWorkId": null,
+    "publicUrl": null,
+    "metricsStatus": "not-started",
+    "metrics": null,
+    "observationWindows": ["early", "24h", "72h", "7d"],
+    "releasePackaging": "notes/2026-08-22-AI六层能力地图-V8发布包装-v1.md",
+    "nextDecision": "实际发布前按抖音客户端当日选项完成人工AI内容声明与素材授权复核；发布后补录作品链接或作品ID，并按早期、24小时、72小时和7天窗口归档数据。"
+  }
+}
