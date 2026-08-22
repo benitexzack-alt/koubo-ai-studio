@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260822T074749Z-d2e9724e",
+  "status": "passed",
+  "reviewed_at": "2026-08-22T17:10:00+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-22-GEO-AAO-微信变化到服务入口-正式口播稿-v2.md",
+    "sha256": "236bd378a8873c572e1b7bd81c77e9ea3e1263c5e9818f6ddc5f7ec0ae86ede0"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "从微信按住说话框的变化和本人录屏直接进入，不再先讲GEO或AAO定义。图片AI处理、餐饮问答、地图和门店入口按照画面发生顺序出现。录屏已经把“不能直接替用户操作下单”说清，正文只用一句收住，不堆成免责声明。AAO放在用户已经走到门店入口之后，翻成“下一步有没有地方办事”，不把缩写或资料背景当内容。未来确认和支付只明确为可能路径。"
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "最近有没有人发现，微信下面那个‘按住说话’的框，颜色跟以前不一样了？",
+        "risk_level": "medium",
+        "reason": "这是界面观察，必须在下一句马上进入录屏，否则只谈颜色会让非内测用户摸不着重点。",
+        "candidates": {
+          "conservative": "最近有没有人发现，微信下面那个‘按住说话’的框，颜色跟以前不一样了？",
+          "direct": "最近微信下面那个按住说话的框，有人发现它变了吗？",
+          "vivid": "微信下面那个按住说话的框，最近是不是有点不一样？"
+        },
+        "fact_difference": "三种候选都只是对用户授权录屏可见界面的主观提问，不宣称全面开放或全体用户一致变化。",
+        "recommendation": "保留原句，下一句立即接“你先看我这段录屏”，用画面而不是解释承接。"
+      },
+      {
+        "original": "未来这条路要是接得更顺，用户可能不用再一个软件一个软件地翻。AI 按你的习惯和这次的需求，把选择收窄；你最后确认一下，或者输入一次支付密码，事就办完了。",
+        "risk_level": "medium",
+        "reason": "用户要求说明未来便利，但这类句子容易被截取成现有能力或自动支付承诺。",
+        "candidates": {
+          "conservative": "未来这条路要是接得更顺，用户可能少翻几个软件，最后还是自己确认和支付。",
+          "direct": "以后可能只剩最后一次确认，但付款还是你自己点。",
+          "vivid": "以后也许不用来回翻页面，选项收窄了，你自己最后确认。"
+        },
+        "fact_difference": "三种候选均保留未来推测和用户确认，不新增当前自动下单、支付或平台开放事实。",
+        "recommendation": "保留正文并紧跟“录屏现在还没走到这一步”，口播时连续读，不单独剪成能力结论。"
+      },
+      {
+        "original": "我把 GEO 和 AAO 的整套讲解课件已经整理好了。做餐饮、零售、本地服务的朋友，评论区留‘GEO’，我免费发给大家。",
+        "risk_level": "medium",
+        "reason": "这是用户明确的资料领取承接，但发布前仍要确认课件公开版与评论承接确实可用。",
+        "candidates": {
+          "conservative": "我把 GEO 和 AAO 的整套讲解课件已经整理好了。做餐饮、零售、本地服务的朋友，评论区留‘GEO’，我免费发给大家。",
+          "direct": "先把地图、信息、入口、责任人这四项检查一遍。",
+          "vivid": "先别追名词，先把客人走进来的那条路打开。"
+        },
+        "fact_difference": "前者保留用户授权的免费课件承接，后两者删除领取动作；均不承诺推荐、订单或服务效果。",
+        "recommendation": "用户已说明课件整理完成，因此暂保留；发布前若无可公开领取版，改用直接版。"
+      }
+    ],
+    "no_high_risk_reason": "正文没有虚构腾讯开放范围、餐厅效果、客户反馈、自动下单或成交结果。三处风险都已限定为界面观察、未来推测和发布前资料承接。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "删除了上一版把录屏路径先讲成经营链条的开头，改为用户指定的微信界面变化和录屏先行。",
+      "未写入录屏中可见的餐厅名称、价格、评价、精确位置、聊天昵称、头像、订单内容或个人信息。"
+    ],
+    "wording_strength_changes": [
+      "自动下单、自动支付和输入密码全部明确为未来可能，当前录屏只证明问答到地图和门店服务入口。",
+      "GEO和AAO分别落到门店真实信息和后续服务入口，不宣称平台替代或商业效果。",
+      "评论区资料承接限定为用户确认已整理课件，仍保留发布前公开版本核验。"
+    ],
+    "pending_user_confirmations": [
+      "请对当前v2完成真人朗读并确认语言和断句。",
+      "请确认录屏可公开片段和需打码范围。",
+      "请在发布前确认课件公开发送版和评论区领取承接可用。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 9,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  },
+  "read_aloud_note": "已按文本完成口播断句和节奏检查；这不替代用户对当前v2的真人朗读证据。"
+}
