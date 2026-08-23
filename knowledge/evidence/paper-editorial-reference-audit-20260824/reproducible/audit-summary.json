@@ -4,17 +4,21 @@
   "definitionSha256Semantics": "SHA-256 of canonical UTF-8 JSON (sorted keys, compact separators, ensure_ascii=false) before definitionSha256 is added; this is not the byte SHA-256 of audit-summary.json",
   "implementation": {
     "algorithmId": "paper-editorial-reference-audit/2026-08-24-s16-center1024-v1",
-    "scriptPath": "/Users/pc/Documents/口播/tools/audit-paper-editorial-reference.py",
-    "scriptSha256": "e5c99b58e5a6e5ff63d4f5686ad5c441ac24d0e7bbf29d77de38a32f73e17bd6",
+    "script": {
+      "logicalId": "paper-editorial-reference-audit-implementation",
+      "projectRelativePath": "tools/audit-paper-editorial-reference.py",
+      "sha256": "d4f55fedb986cd9fdfdde88d49629bda44f1be860a2306045d94d5e64770e23b"
+    },
     "audio": "ffmpeg mono 16000Hz pcm_s16le; each 30fps video frame uses a 1024-sample Hann window centered at floor((frame+0.5)*16000/30); positive normalized-magnitude spectral flux; nearest-rank global threshold; inclusive +/-100ms boundary maximum"
   },
   "source": {
-    "path": "/Users/pc/Downloads/oMvzQBgiqE2X3ZNqAYQxEjIrfTAxvBANZDe9aF.MP4",
+    "logicalId": "paper-editorial-reference-f172d6dc",
     "sha256": "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949",
     "bytes": 27112016
   },
   "humanShotTable": {
-    "path": "/Users/pc/Documents/口播/knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv",
+    "logicalId": "paper-editorial-reference-primary-shots-detailed",
+    "projectRelativePath": "knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv",
     "sha256": "d1620de6b9f34c8f290b9f334b77584acd2f857957d1fd780e26272e203c25c3",
     "rowCount": 26,
     "boundary": "人工语义复核证据；不由机器 OCR 或场景分数代替。"
@@ -996,5 +1000,5 @@
     "shotCount": 26,
     "boundary": "机器 OCR 只作索引，不等于准确中文或人工验收。"
   },
-  "definitionSha256": "7afc3b259bf6c36a1fa81044f348ce9657c61b204881dc38ab8c4383fc45ab4f"
+  "definitionSha256": "ef55ae9b7dbced3a0a7aba2ce43ced38b0518a008ee5fbe4de137997a91367e5"
 }

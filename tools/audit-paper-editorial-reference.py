@@ -722,6 +722,15 @@ def main() -> int:
     )
 
     script_path = Path(__file__).resolve()
+    project_root = script_path.parent.parent
+    try:
+        script_project_path = script_path.relative_to(project_root).as_posix()
+        shot_table_project_path = shot_table.relative_to(project_root).as_posix()
+    except ValueError:
+        fail(
+            "审计脚本和人工镜头表必须位于同一项目根目录内，"
+            "以便定义哈希只绑定稳定的项目相对路径。"
+        )
     audio_alignment = boundary_audio_summary(audio_csv, boundaries)
     p75_alignment = float(audio_alignment["p75"]["ratio"])
     summary = {
@@ -734,8 +743,11 @@ def main() -> int:
         ),
         "implementation": {
             "algorithmId": ALGORITHM_ID,
-            "scriptPath": str(script_path),
-            "scriptSha256": sha256_file(script_path),
+            "script": {
+                "logicalId": "paper-editorial-reference-audit-implementation",
+                "projectRelativePath": script_project_path,
+                "sha256": sha256_file(script_path),
+            },
             "audio": (
                 "ffmpeg mono 16000Hz pcm_s16le; each 30fps video frame uses a "
                 "1024-sample Hann window centered at floor((frame+0.5)*16000/30); "
@@ -744,12 +756,13 @@ def main() -> int:
             ),
         },
         "source": {
-            "path": str(source),
+            "logicalId": "paper-editorial-reference-f172d6dc",
             "sha256": source_sha256,
             "bytes": source.stat().st_size,
         },
         "humanShotTable": {
-            "path": str(shot_table),
+            "logicalId": "paper-editorial-reference-primary-shots-detailed",
+            "projectRelativePath": shot_table_project_path,
             "sha256": sha256_file(shot_table),
             "rowCount": len(shots),
             "boundary": "人工语义复核证据；不由机器 OCR 或场景分数代替。",
