@@ -2,27 +2,55 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
 
-const [releasePath, baselinePath = 'workflow/production-baseline.v1.json'] = process.argv.slice(2);
+import {assertReleaseProductionGateV2} from './release-production-gate-v2.mjs';
 
-if (!releasePath) {
+const scriptPath = fileURLToPath(import.meta.url);
+const projectRoot = path.resolve(path.dirname(scriptPath), '..');
+const [releaseArgument, baselineArgument = 'workflow/production-baseline.v1.json'] = process.argv.slice(2);
+
+if (!releaseArgument) {
   console.error('用法：node tools/validate-release.mjs <release.json> [production-baseline.json]');
   process.exit(1);
 }
 
+const releasePath = path.isAbsolute(releaseArgument)
+  ? path.resolve(releaseArgument)
+  : path.resolve(projectRoot, releaseArgument);
+const baselinePath = path.isAbsolute(baselineArgument)
+  ? path.resolve(baselineArgument)
+  : path.resolve(projectRoot, baselineArgument);
 const readJson = (filePath) => JSON.parse(fs.readFileSync(filePath, 'utf8'));
 const release = readJson(releasePath);
+
+let releaseProductionGate;
+try {
+  releaseProductionGate = assertReleaseProductionGateV2({
+    projectRoot,
+    releasePath,
+    release,
+  });
+} catch (error) {
+  console.error(
+    `发布生产冻结门失败：[${error?.code ?? 'RPG2_UNEXPECTED'}] ${
+      error instanceof Error ? error.message : String(error)
+    }`,
+  );
+  process.exit(1);
+}
+
 const baseline = readJson(baselinePath);
-const activeProfile = readJson('workflow/active-production-profile.v1.json');
+const activeProfile = readJson(path.resolve(projectRoot, 'workflow/active-production-profile.v1.json'));
 const errors = [];
 const warnings = [];
 
-const exists = (relativePath) => isNonEmpty(relativePath) && fs.existsSync(path.resolve(relativePath));
+const exists = (relativePath) => isNonEmpty(relativePath) && fs.existsSync(path.resolve(projectRoot, relativePath));
 const isNonEmpty = (value) => typeof value === 'string' && value.trim().length > 0;
 const passed = (value) => value?.status === 'passed';
-const run = (command, args) => spawnSync(command, args, {encoding: 'utf8'});
+const run = (command, args) => spawnSync(command, args, {cwd: projectRoot, encoding: 'utf8'});
 const sha256 = (filePath) =>
-  createHash('sha256').update(fs.readFileSync(filePath)).digest('hex');
+  createHash('sha256').update(fs.readFileSync(path.resolve(projectRoot, filePath))).digest('hex');
 const isActiveProfileRelease =
   release.productionProfile?.id === activeProfile.profileId &&
   release.productionProfile?.version === activeProfile.profileVersion;
@@ -400,4 +428,7 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`发布记录校验通过：${release.releaseId}，状态=${release.status}`);
+console.log(
+  `发布记录校验通过：${release.releaseId}，状态=${release.status}，` +
+  `正式输出SHA=${releaseProductionGate.formalOutputSha256}`,
+);

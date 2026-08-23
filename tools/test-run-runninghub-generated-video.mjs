@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
@@ -12,12 +13,19 @@ import {
   generationDefinitionSha256,
 } from './generated-video-plan-core.mjs';
 import {
+  compilePlanFile,
   preflightPlan,
   quotePlan,
   readPlanStatus,
+  resumePlanShot,
   runPlan,
 } from './run-runninghub-generated-video.mjs';
-import {RUNNINGHUB_H3_PROVIDER} from './runninghub-generated-video-client.mjs';
+import {
+  approvalReceiptPathFor,
+  buildH3Request,
+  RUNNINGHUB_H3_PROVIDER,
+  stableJsonSha256 as providerStableJsonSha256,
+} from './runninghub-generated-video-client.mjs';
 
 const projectRoot = path.resolve(import.meta.dirname, '..');
 const readJson = (relativePath) =>
@@ -25,6 +33,8 @@ const readJson = (relativePath) =>
 const style = readJson('workflow/style-library/koubo-paper-construct-v1.json');
 const template = readJson('templates/08-generated-video-plan-template.json');
 const clone = (value) => JSON.parse(JSON.stringify(value));
+const retiredLegacyRunnerTest = (name, callback) =>
+  test(name, {skip: '纸构推演 v1 已退役；保留历史费用与并发 fixture 作失败回归档案。'}, callback);
 
 const jsonResponse = (body, status = 200) => ({
   ok: status >= 200 && status < 300,
@@ -208,7 +218,234 @@ const createPlanFixture = (
   return {plan, planPath, relativeRoot, absoluteRoot};
 };
 
-test('preflight 完全离线且不创建任务账本', (t) => {
+test('退役纸构计划阻断 compile/preflight/quote/run 且零联网零写入', async (t) => {
+  const fixture = createPlanFixture(t, {shotCount: 1});
+  const absolutePlanPath = path.resolve(projectRoot, fixture.planPath);
+  const before = fs.readFileSync(absolutePlanPath);
+  let networkCalls = 0;
+  const fetchImpl = async () => {
+    networkCalls += 1;
+    throw new Error('退役硬门后不应联网');
+  };
+
+  assert.throws(
+    () => compilePlanFile({planPath: fixture.planPath}),
+    /退役生成风格硬门.*RunningHub compile/s,
+  );
+  assert.throws(
+    () => preflightPlan({planPath: fixture.planPath}),
+    /退役生成风格硬门.*RunningHub preflight/s,
+  );
+  await assert.rejects(
+    quotePlan({
+      planPath: fixture.planPath,
+      apiKey: 'test-only-key',
+      fetchImpl,
+    }),
+    /退役生成风格硬门.*RunningHub quote/s,
+  );
+  await assert.rejects(
+    runPlan({
+      planPath: fixture.planPath,
+      apiKey: 'test-only-key',
+      confirmPaid: true,
+      fetchImpl,
+    }),
+    /退役生成风格硬门.*RunningHub run/s,
+  );
+
+  assert.equal(networkCalls, 0);
+  assert.deepEqual(fs.readFileSync(absolutePlanPath), before);
+  assert.equal(
+    fs.existsSync(path.resolve(projectRoot, fixture.plan.outputs.ledgerPath)),
+    false,
+  );
+  assert.equal(
+    fs.existsSync(path.resolve(projectRoot, fixture.plan.outputs.quotePath)),
+    false,
+  );
+  assert.equal(fs.existsSync(`${absolutePlanPath}.execution.lock`), false);
+});
+
+test('RunningHub 按改名文件内容 SHA 阻断并在 status 回执标记不可生产', (t) => {
+  const fixture = createPlanFixture(t, {shotCount: 1});
+  const retiredVideoSha256 =
+    'e0bb0900417c0a5f87d112ded4e3be56af4cd0ad0a9842a2349e15c0ffc70435';
+  const sourcePath = path.resolve(
+    projectRoot,
+    'remotion/public/media/wechat-geo-aao-20260823/user-generated-paper/G01.mp4',
+  );
+  assert.equal(
+    createHash('sha256').update(fs.readFileSync(sourcePath)).digest('hex'),
+    retiredVideoSha256,
+  );
+  const renamedRelative = `${fixture.relativeRoot}/renamed-retired-video.bin`;
+  fs.copyFileSync(sourcePath, path.resolve(projectRoot, renamedRelative));
+  const changed = readJson(fixture.planPath);
+  changed.retiredRegressionAsset = renamedRelative;
+  fs.writeFileSync(
+    path.resolve(projectRoot, fixture.planPath),
+    `${JSON.stringify(changed, null, 2)}\n`,
+  );
+
+  let compileError = null;
+  try {
+    compilePlanFile({planPath: fixture.planPath});
+  } catch (error) {
+    compileError = error;
+  }
+  assert.ok(compileError);
+  assert.equal(compileError.code, 'RETIRED_GENERATED_STYLE');
+  assert.ok(
+    compileError.hits.some((hit) => hit.sha256 === retiredVideoSha256),
+    'RunningHub compile 必须记录改名 G01 的目标 SHA-256。',
+  );
+  const status = readPlanStatus({planPath: fixture.planPath});
+  assert.equal(status.productionUsability, 'blocked-retired-style');
+  assert.ok(
+    status.retiredStyleFingerprints.includes(`sha256:${retiredVideoSha256}`),
+  );
+});
+
+test('退役纸构计划保留 status，并显式标记不可生产', (t) => {
+  const fixture = createPlanFixture(t, {shotCount: 1});
+  const result = readPlanStatus({planPath: fixture.planPath});
+  assert.equal(result.planId, fixture.plan.planId);
+  assert.equal(result.productionUsability, 'blocked-retired-style');
+  assert.ok(result.retiredStyleFingerprints.includes('koubo-paper-construct-v1'));
+});
+
+test('退役纸构 resume 没有已绑定 taskId 时在加锁前零联网失败', async (t) => {
+  const fixture = createPlanFixture(t, {shotCount: 1});
+  const absolutePlanPath = path.resolve(projectRoot, fixture.planPath);
+  const before = fs.readFileSync(absolutePlanPath);
+  let networkCalls = 0;
+  await assert.rejects(
+    resumePlanShot({
+      planPath: fixture.planPath,
+      shotId: 'G01',
+      apiKey: 'test-only-key',
+      fetchImpl: async () => {
+        networkCalls += 1;
+        throw new Error('无绑定 taskId 时不应联网');
+      },
+    }),
+    /退役生成风格硬门.*RunningHub resume/s,
+  );
+  assert.equal(networkCalls, 0);
+  assert.deepEqual(fs.readFileSync(absolutePlanPath), before);
+  assert.equal(fs.existsSync(`${absolutePlanPath}.execution.lock`), false);
+});
+
+test('退役纸构已有 taskId 的 resume 也在联网下载写入前阻断', async (t) => {
+  const fixture = createPlanFixture(t, {shotCount: 1});
+  const shot = fixture.plan.shots[0];
+  const planSha256 = generationDefinitionSha256(fixture.plan);
+  const ledgerPath = path.resolve(projectRoot, fixture.plan.outputs.ledgerPath);
+  const outputPath = path.resolve(projectRoot, shot.output.videoPath);
+  const receiptPath = approvalReceiptPathFor(
+    fixture.plan.costAuthorization.approvalId,
+  );
+  const authorization = clone(fixture.plan.costAuthorization);
+  const request = buildH3Request({
+    prompt: shot.promptCore.compiledPrompt,
+    durationSeconds: shot.timing.durationSeconds,
+  });
+  const taskId = 'retired-bound-task-G01';
+  fs.mkdirSync(path.dirname(ledgerPath), {recursive: true});
+  fs.writeFileSync(
+    ledgerPath,
+    `${JSON.stringify({
+      schemaVersion: 1,
+      provider: RUNNINGHUB_H3_PROVIDER.provider,
+      providerId: RUNNINGHUB_H3_PROVIDER.id,
+      model: RUNNINGHUB_H3_PROVIDER.model,
+      planId: fixture.plan.planId,
+      planSha256,
+      style: {id: 'koubo-paper-construct-v1'},
+      authorization,
+      policy: {
+        maximumPaidAttemptsPerShot: 1,
+        automaticPaidRetryAllowed: false,
+      },
+      attempts: {
+        G01: {
+          shotId: 'G01',
+          attemptNumber: 1,
+          status: 'submitted',
+          taskId,
+          providerId: RUNNINGHUB_H3_PROVIDER.id,
+          model: RUNNINGHUB_H3_PROVIDER.model,
+          modelRoute: RUNNINGHUB_H3_PROVIDER.modelRoute,
+          resolution: RUNNINGHUB_H3_PROVIDER.resolution,
+          ratio: RUNNINGHUB_H3_PROVIDER.ratio,
+          durationSeconds: shot.timing.durationSeconds,
+          requestSha256: providerStableJsonSha256(request),
+          promptSha256: createHash('sha256')
+            .update(Buffer.from(shot.promptCore.compiledPrompt))
+            .digest('hex'),
+          outputPath,
+          outputSha256: null,
+          actualCostCny: null,
+          actualCostStatus: 'missing',
+          authorization,
+        },
+      },
+    }, null, 2)}\n`,
+  );
+  fs.mkdirSync(path.dirname(receiptPath), {recursive: true});
+  fs.writeFileSync(
+    receiptPath,
+    `${JSON.stringify({
+      schemaVersion: 'generated-video-approval-consumption/v1',
+      approvalId: authorization.approvalId,
+      planId: fixture.plan.planId,
+      definitionSha256: planSha256,
+      ledgerPath,
+      approvedBy: authorization.approvedBy,
+      approvedAt: authorization.approvedAt,
+      expiresAt: authorization.expiresAt,
+      maxPerShotCny: Number(authorization.maxPerShotCny),
+      maxAmountCny: Number(authorization.maxAmountCny),
+      currency: authorization.currency,
+      providerId: RUNNINGHUB_H3_PROVIDER.id,
+      consumedAt: new Date().toISOString(),
+    }, null, 2)}\n`,
+  );
+
+  const absolutePlanPath = path.resolve(projectRoot, fixture.planPath);
+  const planBeforeResume = fs.readFileSync(absolutePlanPath);
+  const ledgerBeforeResume = fs.readFileSync(ledgerPath);
+  const remoteUrl = 'https://cdn.runninghub.example/retired-bound-G01.mp4';
+  let queryCalls = 0;
+  let paidSubmitCalls = 0;
+  await assert.rejects(
+    resumePlanShot({
+      planPath: fixture.planPath,
+      shotId: 'G01',
+      apiKey: 'test-only-key',
+      fetchImpl: async (url) => {
+        if (url.endsWith(RUNNINGHUB_H3_PROVIDER.queryRoute)) queryCalls += 1;
+        if (url.endsWith(RUNNINGHUB_H3_PROVIDER.modelRoute)) paidSubmitCalls += 1;
+        if (url === remoteUrl) throw new Error('退役恢复不得下载');
+        throw new Error(`退役恢复不应发起请求：${url}`);
+      },
+      pollIntervalMs: 0,
+      maximumPollCount: 1,
+      now: () => '2026-08-24T12:00:00.000Z',
+    }),
+    /退役生成风格硬门.*RunningHub resume/s,
+  );
+
+  assert.equal(queryCalls, 0);
+  assert.equal(paidSubmitCalls, 0);
+  assert.deepEqual(fs.readFileSync(absolutePlanPath), planBeforeResume);
+  assert.deepEqual(fs.readFileSync(ledgerPath), ledgerBeforeResume);
+  assert.equal(fs.existsSync(outputPath), false);
+  assert.equal(fs.existsSync(`${absolutePlanPath}.execution.lock`), false);
+});
+
+retiredLegacyRunnerTest('preflight 完全离线且不创建任务账本', (t) => {
   const fixture = createPlanFixture(t);
   const result = preflightPlan({planPath: fixture.planPath});
   assert.equal(result.shotCount, 2);
@@ -219,7 +456,7 @@ test('preflight 完全离线且不创建任务账本', (t) => {
   );
 });
 
-test('quote 只完成全部镜头报价，不提交任务', async (t) => {
+retiredLegacyRunnerTest('quote 只完成全部镜头报价，不提交任务', async (t) => {
   const fixture = createPlanFixture(t);
   const calls = [];
   const fetchImpl = async (url) => {
@@ -242,7 +479,7 @@ test('quote 只完成全部镜头报价，不提交任务', async (t) => {
   );
 });
 
-test('批次总报价超过授权上限时全部镜头均不提交', async (t) => {
+retiredLegacyRunnerTest('批次总报价超过授权上限时全部镜头均不提交', async (t) => {
   const fixture = createPlanFixture(t, {maxAmountCny: 3});
   const calls = [];
   const fetchImpl = async (url) => {
@@ -266,7 +503,7 @@ test('批次总报价超过授权上限时全部镜头均不提交', async (t) =
   );
 });
 
-test('计划执行锁已存在时禁止并发报价和付费', async (t) => {
+retiredLegacyRunnerTest('计划执行锁已存在时禁止并发报价和付费', async (t) => {
   const fixture = createPlanFixture(t, {shotCount: 1});
   const lockPath = `${path.resolve(projectRoot, fixture.planPath)}.execution.lock`;
   fs.writeFileSync(lockPath, '{"test":"busy"}\n');
@@ -287,7 +524,7 @@ test('计划执行锁已存在时禁止并发报价和付费', async (t) => {
   fs.rmSync(lockPath, {force: true});
 });
 
-test('全量报价期间计划被外部修改时零模型提交且释放执行锁', async (t) => {
+retiredLegacyRunnerTest('全量报价期间计划被外部修改时零模型提交且释放执行锁', async (t) => {
   const fixture = createPlanFixture(t, {shotCount: 1});
   const absolutePlanPath = path.resolve(projectRoot, fixture.planPath);
   const lockPath = `${absolutePlanPath}.execution.lock`;
@@ -321,7 +558,7 @@ test('全量报价期间计划被外部修改时零模型提交且释放执行�
   assert.equal(fs.existsSync(lockPath), false);
 });
 
-test('单镜权威报价等待期间计划变更时reserve前零模型提交', async (t) => {
+retiredLegacyRunnerTest('单镜权威报价等待期间计划变更时reserve前零模型提交', async (t) => {
   const fixture = createPlanFixture(t, {shotCount: 1});
   const absolutePlanPath = path.resolve(projectRoot, fixture.planPath);
   const lockPath = `${absolutePlanPath}.execution.lock`;
@@ -356,7 +593,7 @@ test('单镜权威报价等待期间计划变更时reserve前零模型提交', a
   assert.equal(fs.existsSync(lockPath), false);
 });
 
-test('首镜实际费用抬高后会停止后续新提交', async (t) => {
+retiredLegacyRunnerTest('首镜实际费用抬高后会停止后续新提交', async (t) => {
   const fixture = createPlanFixture(t, {
     maxAmountCny: 4.5,
     maxPerShotCny: 3.5,
@@ -405,7 +642,7 @@ test('首镜实际费用抬高后会停止后续新提交', async (t) => {
   assert.equal(updated.costLimitStop.type, 'forecast');
 });
 
-test('单镜实际费用超过单镜授权时即使已经下载也不得正常完成', async (t) => {
+retiredLegacyRunnerTest('单镜实际费用超过单镜授权时即使已经下载也不得正常完成', async (t) => {
   const fixture = createPlanFixture(t, {
     shotCount: 1,
     maxAmountCny: 4,
@@ -448,7 +685,7 @@ test('单镜实际费用超过单镜授权时即使已经下载也不得正常�
   );
 });
 
-test('第二镜提交前重新报价上涨时停止且不复用陈旧报价', async (t) => {
+retiredLegacyRunnerTest('第二镜提交前重新报价上涨时停止且不复用陈旧报价', async (t) => {
   const fixture = createPlanFixture(t, {
     maxAmountCny: 5,
     maxPerShotCny: 2.5,
@@ -498,7 +735,7 @@ for (const billingCase of [
   {name: '缺失', usage: undefined},
   {name: '负数', usage: {consumeMoney: '-1'}},
 ]) {
-  test(`首镜实际费用${billingCase.name}时停止后续付费且不拿预估冒充实扣`, async (t) => {
+  retiredLegacyRunnerTest(`首镜实际费用${billingCase.name}时停止后续付费且不拿预估冒充实扣`, async (t) => {
     const fixture = createPlanFixture(t, {
       maxAmountCny: 5,
       maxPerShotCny: 2.5,
@@ -543,7 +780,7 @@ for (const billingCase of [
   });
 }
 
-test('最后一镜使累计实际费用超总授权时不得返回 downloaded', async (t) => {
+retiredLegacyRunnerTest('最后一镜使累计实际费用超总授权时不得返回 downloaded', async (t) => {
   const fixture = createPlanFixture(t, {
     maxAmountCny: 4.5,
     maxPerShotCny: 3.5,
@@ -588,7 +825,7 @@ test('最后一镜使累计实际费用超总授权时不得返回 downloaded', 
   assert.equal(updated.costLimitStop.accumulatedActualCostCny, 5);
 });
 
-test('费用批准未绑定修改后的拆镜定义时网络调用为零', async (t) => {
+retiredLegacyRunnerTest('费用批准未绑定修改后的拆镜定义时网络调用为零', async (t) => {
   const fixture = createPlanFixture(t, {shotCount: 1});
   const changed = readJson(fixture.planPath);
   changed.shots[0].selectionReason += '定义被修改';
@@ -617,7 +854,7 @@ test('费用批准未绑定修改后的拆镜定义时网络调用为零', async
   assert.equal(networkCalls, 0);
 });
 
-test('报价路径与视觉方案冲突时原文件不变且网络调用为零', async (t) => {
+retiredLegacyRunnerTest('报价路径与视觉方案冲突时原文件不变且网络调用为零', async (t) => {
   const fixture = createPlanFixture(t, {shotCount: 1});
   const changed = readJson(fixture.planPath);
   changed.outputs.quotePath = changed.visualPlan;
@@ -644,7 +881,7 @@ test('报价路径与视觉方案冲突时原文件不变且网络调用为零',
   assert.deepEqual(fs.readFileSync(visualAbsolute), before);
 });
 
-test('任务输出目录经过符号链接时在联网前失败', async (t) => {
+retiredLegacyRunnerTest('任务输出目录经过符号链接时在联网前失败', async (t) => {
   const fixture = createPlanFixture(t, {shotCount: 1});
   const workflowRoot = path.dirname(
     path.resolve(projectRoot, fixture.plan.outputs.ledgerPath),
@@ -667,7 +904,7 @@ test('任务输出目录经过符号链接时在联网前失败', async (t) => {
   assert.equal(networkCalls, 0);
 });
 
-test('同一approvalId已有消费回执但账本缺失时禁止再次付费提交', async (t) => {
+retiredLegacyRunnerTest('同一approvalId已有消费回执但账本缺失时禁止再次付费提交', async (t) => {
   const fixture = createPlanFixture(t, {shotCount: 1, maxAmountCny: 3});
   const remoteUrl = 'https://cdn.runninghub.example/receipt-guard.mp4';
   const firstFetch = async (url) => {
@@ -726,7 +963,7 @@ test('同一approvalId已有消费回执但账本缺失时禁止再次付费提�
   assert.equal(paidSubmitCalls, 0);
 });
 
-test('任务已下载但计划写回中断时只从同一账本恢复证据且不再付费', async (t) => {
+retiredLegacyRunnerTest('任务已下载但计划写回中断时只从同一账本恢复证据且不再付费', async (t) => {
   const fixture = createPlanFixture(t, {shotCount: 1, maxAmountCny: 3});
   const remoteUrl = 'https://cdn.runninghub.example/writeback-recovery.mp4';
   const firstFetch = async (url) => {
@@ -788,7 +1025,7 @@ test('任务已下载但计划写回中断时只从同一账本恢复证据且�
   assert.match(updated.outputs.approvalReceiptSha256, /^[a-f0-9]{64}$/);
 });
 
-test('合法批次先完成全量报价，再逐镜各提交一次并同步本地结果', async (t) => {
+retiredLegacyRunnerTest('合法批次先完成全量报价，再逐镜各提交一次并同步本地结果', async (t) => {
   const fixture = createPlanFixture(t, {maxAmountCny: 4.5});
   const calls = [];
   let submitIndex = 0;

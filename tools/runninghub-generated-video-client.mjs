@@ -10,10 +10,22 @@ import {
   loadPlanAndStyle,
   validateGeneratedVideoPlan,
 } from './generated-video-plan-core.mjs';
-
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SECURITY_CLOCK_MAX_FUTURE_SKEW_MS = 5 * 60 * 1000;
 const COST_AUTHORIZATION_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+
+const failLegacyProductionScope = (code, message) => {
+  const error = new Error(message);
+  error.code = code;
+  throw error;
+};
+
+const assertLegacyProductionScope = () =>
+  failLegacyProductionScope(
+    'RH_V1_RETIRED',
+    '旧 RunningHub v1 客户端已永久退役：quote/run/resume 全部禁用；' +
+    '新 H3 只能走完整 v2 协议、外部授权、单次消费、查询下载与人工验收链。',
+  );
 
 export const RUNNINGHUB_APPROVAL_RECEIPT_DIRECTORY = path.resolve(
   projectRoot,
@@ -1085,6 +1097,7 @@ export const quoteH3Shot = async ({
   prompt,
   fetchImpl = fetch,
 }) => {
+  assertLegacyProductionScope();
   const payload = buildH3Request({
     prompt,
     durationSeconds: shot.durationSeconds,
@@ -1505,6 +1518,7 @@ export const runH3Shot = async ({
   maximumPollCount = 180,
   beforePaidReserve,
 }) => {
+  assertLegacyProductionScope();
   const securityClock = createSecurityClock();
   const secureNow = () => securityClock.nowIso();
   validateProvider(provider);
@@ -1704,6 +1718,7 @@ export const resumeH3Shot = async ({
   pollIntervalMs = 10_000,
   maximumPollCount = 180,
 }) => {
+  assertLegacyProductionScope();
   const securityClock = createSecurityClock();
   const secureNow = () => securityClock.nowIso();
   validateProvider(provider);

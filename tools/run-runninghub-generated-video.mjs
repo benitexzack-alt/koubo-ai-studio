@@ -24,6 +24,10 @@ import {
   runH3Shot,
   stableJsonSha256 as providerStableJsonSha256,
 } from './runninghub-generated-video-client.mjs';
+import {
+  assertNoRetiredGeneratedStyle,
+  findRetiredGeneratedStyleFingerprints,
+} from './generated-style-policy.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const isText = (value) => typeof value === 'string' && value.trim().length > 0;
@@ -177,6 +181,27 @@ const assertValid = (plan, style, phase, now) => {
   return result;
 };
 
+const assertRunningHubActionAllowed = ({loaded, planPath, operation}) =>
+  assertNoRetiredGeneratedStyle({
+    value: {plan: loaded.plan, style: loaded.style},
+    operation: `RunningHub ${operation}`,
+    location: '$runningHubPlan',
+    additionalStrings: [planPath, loaded.planPath, loaded.stylePath],
+    projectRoot,
+    documentPaths: [planPath, loaded.planPath, loaded.stylePath],
+  });
+
+const retiredStyleHitsFor = ({loaded, planPath}) =>
+  findRetiredGeneratedStyleFingerprints(
+    {plan: loaded.plan, style: loaded.style},
+    {
+      location: '$runningHubPlan',
+      additionalStrings: [planPath, loaded.planPath, loaded.stylePath],
+      projectRoot,
+      documentPaths: [planPath, loaded.planPath, loaded.stylePath],
+    },
+  );
+
 const requireApiKey = (apiKey) => {
   if (!isText(apiKey)) {
     throw new Error('缺少RUNNINGHUB_API_KEY；未执行联网报价或付费提交');
@@ -190,9 +215,16 @@ const runtimeShot = (shot) => ({
 });
 
 export const compilePlanFile = ({planPath}) => {
+  const prelockLoaded = loadPlanAndStyle(planPath);
+  assertRunningHubActionAllowed({
+    loaded: prelockLoaded,
+    planPath,
+    operation: 'compile',
+  });
   const releaseLock = acquirePlanExecutionLock(planPath);
   try {
     const loaded = loadPlanAndStyle(planPath);
+    assertRunningHubActionAllowed({loaded, planPath, operation: 'compile'});
     const planCas = createPlanCas({loaded, requestedPlanPath: planPath});
     const next = clone(loaded.plan);
     let changed = false;
@@ -242,6 +274,7 @@ export const compilePlanFile = ({planPath}) => {
 
 export const preflightPlan = ({planPath}) => {
   const loaded = loadPlanAndStyle(planPath);
+  assertRunningHubActionAllowed({loaded, planPath, operation: 'preflight'});
   const validation = assertValid(loaded.plan, loaded.style, 'plan');
   return {
     planId: loaded.plan.planId,
@@ -313,6 +346,7 @@ export const quotePlan = async ({
   writeReport = true,
 }) => {
   const loaded = loadPlanAndStyle(planPath);
+  assertRunningHubActionAllowed({loaded, planPath, operation: 'quote'});
   const key = requireApiKey(apiKey);
   const quotes = await quoteShots({
     plan: loaded.plan,
@@ -507,6 +541,7 @@ const runPlanLocked = async ({
     throw new Error('批次付费提交必须显式提供--confirm-paid');
   }
   const loaded = loadPlanAndStyle(planPath);
+  assertRunningHubActionAllowed({loaded, planPath, operation: 'run'});
   const planCas = createPlanCas({loaded, requestedPlanPath: planPath});
   assertValid(loaded.plan, loaded.style, 'submit', now);
   if (!['ready-for-submit', 'submitted'].includes(loaded.plan.productionStatus)) {
@@ -794,6 +829,12 @@ const runPlanLocked = async ({
 };
 
 export const runPlan = async (options) => {
+  const prelockLoaded = loadPlanAndStyle(options.planPath);
+  assertRunningHubActionAllowed({
+    loaded: prelockLoaded,
+    planPath: options.planPath,
+    operation: 'run',
+  });
   const releaseLock = acquirePlanExecutionLock(options.planPath);
   try {
     return await runPlanLocked(options);
@@ -812,6 +853,8 @@ const resumePlanShotLocked = async ({
   now,
 }) => {
   const loaded = loadPlanAndStyle(planPath);
+  const retiredStyleHits = retiredStyleHitsFor({loaded, planPath});
+  const retiredStyleRecoveryOnly = retiredStyleHits.length > 0;
   const planCas = createPlanCas({loaded, requestedPlanPath: planPath});
   assertValid(loaded.plan, loaded.style, 'plan');
   const key = requireApiKey(apiKey);
@@ -842,6 +885,16 @@ const resumePlanShotLocked = async ({
   syncApprovalReceiptEvidence({plan: loaded.plan});
   syncShotOutput({plan: loaded.plan, shotId, result});
   const ledger = loadGeneratedVideoLedger(ledgerPath);
+  if (retiredStyleRecoveryOnly) {
+    loaded.plan.retiredStyleRecovery = {
+      policyId: 'retired-generated-style/v1',
+      status: 'recovery-only-not-production-usable',
+      shotId,
+      taskId: attempt.taskId,
+      recoveredAt: timestamp(now),
+      fingerprints: [...new Set(retiredStyleHits.map((hit) => hit.fingerprint))],
+    };
+  }
   if (result.attempt.actualCostStatus !== 'reported') {
     loaded.plan.productionStatus = 'billing-reconciliation-required';
     loaded.plan.billingReconciliation = {
@@ -854,15 +907,29 @@ const resumePlanShotLocked = async ({
     };
   } else {
     loaded.plan.billingReconciliation = null;
-    loaded.plan.productionStatus = allDownloaded(loaded.plan, ledger)
-      ? 'downloaded'
-      : 'submitted';
+    loaded.plan.productionStatus = retiredStyleRecoveryOnly
+      ? 'retired-style-recovery-only'
+      : allDownloaded(loaded.plan, ledger)
+        ? 'downloaded'
+        : 'submitted';
   }
   planCas.write();
-  return result;
+  return retiredStyleRecoveryOnly
+    ? {
+        ...result,
+        recoveryOnly: true,
+        productionUsability: 'blocked-retired-style',
+      }
+    : result;
 };
 
 export const resumePlanShot = async (options) => {
+  const prelockLoaded = loadPlanAndStyle(options.planPath);
+  assertRunningHubActionAllowed({
+    loaded: prelockLoaded,
+    planPath: options.planPath,
+    operation: 'resume',
+  });
   const releaseLock = acquirePlanExecutionLock(options.planPath);
   try {
     return await resumePlanShotLocked(options);
@@ -873,6 +940,7 @@ export const resumePlanShot = async (options) => {
 
 export const readPlanStatus = ({planPath}) => {
   const loaded = loadPlanAndStyle(planPath);
+  const retiredStyleHits = retiredStyleHitsFor({loaded, planPath});
   assertValid(loaded.plan, loaded.style, 'plan');
   const ledger = loadGeneratedVideoLedger(toAbsolute(loaded.plan.outputs.ledgerPath));
   assertLedgerDefinition(loaded.plan, ledger);
@@ -883,6 +951,13 @@ export const readPlanStatus = ({planPath}) => {
   return {
     planId: loaded.plan.planId,
     productionStatus: loaded.plan.productionStatus,
+    productionUsability:
+      retiredStyleHits.length > 0
+        ? 'blocked-retired-style'
+        : 'eligible-subject-to-other-gates',
+    retiredStyleFingerprints: [
+      ...new Set(retiredStyleHits.map((hit) => hit.fingerprint)),
+    ],
     ledger,
   };
 };
