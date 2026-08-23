@@ -12,7 +12,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 import shutil
 import subprocess
 import sys
@@ -44,6 +43,22 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="milliseconds").replace(
         "+00:00", "Z"
     )
+
+
+def project_relative(project_root: Path, file_path: Path) -> str:
+    try:
+        return file_path.resolve().relative_to(project_root.resolve()).as_posix()
+    except ValueError as error:
+        raise RuntimeError(f"项目受控路径逃逸仓库：{file_path}") from error
+
+
+def git_text(project_root: Path, arguments: list[str]) -> str:
+    result = run_text(["git", "-C", str(project_root), *arguments])
+    if result["exitCode"] != 0:
+        raise RuntimeError(
+            f"无法读取 Git 生成基点：git {' '.join(arguments)}：{result['stderr']}"
+        )
+    return result["stdout"].strip()
 
 
 def run_text(command: list[str]) -> dict:
@@ -93,6 +108,7 @@ def make_run(
     shot_table: Path,
     manual_boundary: float,
     temp_parent: Path,
+    project_root: Path,
 ) -> tuple[dict, Path, list[dict]]:
     run_root = Path(tempfile.mkdtemp(prefix=f"koubo-reference-audit-{run_id}-", dir=temp_parent))
     output = run_root / "output"
@@ -130,14 +146,29 @@ def make_run(
     manifest = json.loads(manifest_path.read_text("utf-8"))
     run_receipt = {
         "runId": run_id,
-        "runRoot": str(run_root),
-        "outputDirectory": str(output),
+        "freshTemporaryDirectory": True,
+        "temporaryDirectoryPolicy": f"mkdtemp(koubo-reference-audit-{run_id}-*)",
+        "outputDirectory": f"<fresh-temp-{run_id}>/output",
         "outputExistedBefore": existed_before,
         "outputEntryCountBefore": entries_before,
         "startedAt": started_at,
         "finishedAt": finished_at,
         "elapsedSeconds": round(elapsed, 6),
-        "command": command,
+        "commandTemplate": [
+            "<python>",
+            f"<project-root>/{project_relative(project_root, script)}",
+            "--source",
+            "<external-reference-video>",
+            "--output",
+            f"<fresh-temp-{run_id}>/output",
+            "--expected-sha256",
+            expected_source_sha256,
+            "--manual-boundary",
+            str(manual_boundary),
+            "--shot-table",
+            f"<project-root>/{project_relative(project_root, shot_table)}",
+        ],
+        "resolvedAbsoluteCommandPersisted": False,
         "exitCode": result["exitCode"],
         "stdoutSha256": hashlib.sha256(result["stdout"].encode("utf-8")).hexdigest(),
         "stderrSha256": hashlib.sha256(result["stderr"].encode("utf-8")).hexdigest(),
@@ -165,12 +196,37 @@ def main() -> int:
     args = parser.parse_args()
 
     project_root = Path(__file__).resolve().parent.parent
+    reproducer = Path(__file__).resolve()
     script = project_root / "tools" / "audit-paper-editorial-reference.py"
     source = args.source.expanduser().resolve()
     shot_table = args.shot_table.expanduser().resolve()
     controlled_output = args.controlled_output.expanduser().resolve()
     receipt_path = args.receipt.expanduser().resolve()
     temp_parent = args.temp_parent.expanduser().resolve()
+
+    git_commit = git_text(project_root, ["rev-parse", "HEAD"])
+    git_tree = git_text(project_root, ["rev-parse", "HEAD^{tree}"])
+    git_status = git_text(
+        project_root,
+        ["status", "--porcelain=v1", "--untracked-files=all"],
+    )
+    provenance = {
+        "reproducer": {
+            "path": project_relative(project_root, reproducer),
+            "sha256": sha256_file(reproducer),
+        },
+        "gitCommit": git_commit,
+        "gitTree": git_tree,
+        "workingTreeDirtyAtStart": bool(git_status),
+        "workingTreeStatusEntryCountAtStart": len(git_status.splitlines()) if git_status else 0,
+        "workingTreeStatusPorcelainSha256AtStart": hashlib.sha256(
+            git_status.encode("utf-8")
+        ).hexdigest(),
+        "generationBase": (
+            "HEAD and HEAD^{tree} captured before the two audit runs, controlled-output "
+            "synchronisation and receipt write"
+        ),
+    }
 
     for label, file_path in (
         ("审计脚本", script),
@@ -193,6 +249,7 @@ def main() -> int:
         shot_table=shot_table,
         manual_boundary=args.manual_boundary,
         temp_parent=temp_parent,
+        project_root=project_root,
     )
     run_b, output_b, entries_b = make_run(
         run_id="B",
@@ -202,6 +259,7 @@ def main() -> int:
         shot_table=shot_table,
         manual_boundary=args.manual_boundary,
         temp_parent=temp_parent,
+        project_root=project_root,
     )
     if entries_a != entries_b:
         raise RuntimeError("A/B 两次运行的文件集合、字节数或 SHA-256 不一致。")
@@ -240,7 +298,7 @@ def main() -> int:
         ),
     }
     receipt = {
-        "schemaVersion": "paper-editorial-reference-audit-run-receipt/v1",
+        "schemaVersion": "paper-editorial-reference-audit-run-receipt/v2",
         "status": "blocked-reference-below-existing-threshold",
         "createdAt": utc_now(),
         "scope": (
@@ -254,23 +312,34 @@ def main() -> int:
                 "ensure_ascii=false, excluding the digest field itself"
             ),
         },
+        "provenance": provenance,
         "inputs": {
-            "source": {"path": str(source), "sha256": sha256_file(source)},
-            "script": {"path": str(script), "sha256": sha256_file(script)},
-            "shotTable": {"path": str(shot_table), "sha256": sha256_file(shot_table)},
+            "source": {
+                "logicalId": "external-reference-video",
+                "basename": source.name,
+                "sha256": sha256_file(source),
+            },
+            "script": {
+                "path": project_relative(project_root, script),
+                "sha256": sha256_file(script),
+            },
+            "shotTable": {
+                "path": project_relative(project_root, shot_table),
+                "sha256": sha256_file(shot_table),
+            },
         },
         "environment": environment,
         "runs": [run_a, run_b],
         "comparison": {
-            "runAOutput": str(output_a),
-            "runBOutput": str(output_b),
+            "runAOutput": "<fresh-temp-A>/output",
+            "runBOutput": "<fresh-temp-B>/output",
             "fileCountEach": len(entries_a),
             "pathSetsEqual": True,
             "allFileBytesEqual": True,
             "outputTreeCanonicalSha256": stable_json_sha256(entries_a),
         },
         "controlledCopy": {
-            "path": str(controlled_output),
+            "path": project_relative(project_root, controlled_output),
             "fileCount": len(controlled_entries),
             "matchesRunAAndRunB": True,
             "outputTreeCanonicalSha256": stable_json_sha256(controlled_entries),
