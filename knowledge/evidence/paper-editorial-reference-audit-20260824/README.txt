@@ -15,7 +15,7 @@
 二、唯一锁定算法
 
 - 算法 ID：paper-editorial-reference-audit/2026-08-24-s16-center1024-v1
-- 脚本：/Users/pc/Documents/口播/tools/audit-paper-editorial-reference.py
+- 脚本：tools/audit-paper-editorial-reference.py（相对项目根目录）
 - 脚本 SHA-256：d4f55fedb986cd9fdfdde88d49629bda44f1be860a2306045d94d5e64770e23b
 - 权威人工详细镜头表 SHA-256：d1620de6b9f34c8f290b9f334b77584acd2f857957d1fd780e26272e203c25c3
 - 机器镜头表 SHA-256：a237961e3878890ea8acceae400206c2d67f7c9294d70ec51d190a7938289cf8
@@ -23,7 +23,7 @@
 - artifact-manifest.json 文件字节 SHA-256：e9a2e879d5f2995c2211a4e46f4e52ab48eff4df77d477b4f8e320cf7523e26d
 - 审计定义规范 JSON SHA-256：ef55ae9b7dbced3a0a7aba2ce43ced38b0518a008ee5fbe4de137997a91367e5
 - audit-summary.json 文件字节 SHA-256：704618acc14c03c8c8b961fe12528f8a8f7f62e97d89d196fdf4ecf9dd77c5bb
-- 摘要定义只绑定算法逻辑 ID、项目相对脚本/镜头表路径及文件 SHA；执行时绝对路径只保留在受控目录外的 run-receipt.json 诊断字段，不进入 65 项机器输出定义。
+- 摘要定义只绑定算法逻辑 ID、项目相对脚本/镜头表路径及文件 SHA；65 项机器输出与 v2 运行回执都不持久化工作树或临时目录绝对路径。
 - 视觉：FFmpeg 缩放为 320×180 RGB24；3304/3304 帧逐帧计算 Rec.709 亮度、256 档熵、水平/垂直边缘差、RGB 逐帧 MAD 和运动像素比。
 - 音频：FFmpeg 解码为单声道 16000Hz pcm_s16le；每个 30fps 视频帧在 floor((frame+0.5)*16000/30) 处取居中 1024 样本 Hann 窗；使用归一化频谱正向通量。
 - 音频分位数：nearest-rank，索引 ceil(n*p)-1；边界值为包含端点的 ±100ms 窗内最大频谱通量。
@@ -33,17 +33,21 @@
 
 三、干净目录重跑回执
 
-复现器：/Users/pc/Documents/口播/tools/reproduce-paper-editorial-reference-audit.py
+复现器：tools/reproduce-paper-editorial-reference-audit.py（相对项目根目录）
 
-- 复现器 SHA-256：1160670ae024c3d483cdad1517cb451bf889c4bce87fa3e5747789dba1340c8f
+- 复现器 SHA-256：51e913942917da392ff85b035fb4975ae22839e279b9c5ef0d66a719dbac1720
 - 运行回执：run-receipt.json
-- 运行回执文件字节 SHA-256：70b094ab1d43afb3fbac3fdc3568c715978745fd9e6f0d68eb5d8c1291d9fe88
-- 运行回执定义规范 JSON SHA-256：76948e10834aa9c13e3a5f1ac1ef2887c27f0a870df6705c660edc4b34e46fe4
+- 运行回执 schema：paper-editorial-reference-audit-run-receipt/v2
+- 运行回执文件字节 SHA-256：c312e778c855802d47650682fd374f300eb5e35671f0b3d162c631699a4a002c
+- 运行回执定义规范 JSON SHA-256：2e0bee41088d3342549804358f9d97fac1e5add590c60f120d6554597fa15d50
+- 生成基点 commit：14ce96dfc22820bc7e856d91ef4dca0401b749d3
+- 生成基点 tree：8a1329dafb0acf95604823be095abe70567c7cc7
+- 起跑时工作树：dirty=true，764 项；porcelain 状态 SHA-256：323752b5df5e56f7e5af8fb457daca2f965995d5980a2a8c8c05a901a3768f30。该状态被如实绑定，未冒充 clean worktree；机器输出的跨 worktree 字节复现资格来自 ec6c04f 的独立 detached-worktree 复核。
 
 本次回执记录的两个全新目录：
 
-- /private/tmp/koubo-reference-audit-A-ngklww3y/output
-- /private/tmp/koubo-reference-audit-B-e08xl9pk/output
+- `<fresh-temp-A>/output`
+- `<fresh-temp-B>/output`
 
 输出目录约定：每次独立复核必须使用全新空目录；非空目录时脚本默认拒绝覆盖。`--force` 只用于明确重生受控派生物，不得指向原片、人工镜头表或事故证据目录。
 
@@ -51,7 +55,7 @@
 
 python3 tools/reproduce-paper-editorial-reference-audit.py --source '/Users/pc/Downloads/oMvzQBgiqE2X3ZNqAYQxEjIrfTAxvBANZDe9aF.MP4' --expected-source-sha256 f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949 --shot-table 'knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv' --controlled-output 'knowledge/evidence/paper-editorial-reference-audit-20260824/reproducible' --receipt 'knowledge/evidence/paper-editorial-reference-audit-20260824/run-receipt.json'
 
-回执同时固化了两次底层审计命令。两个 output 在起跑前都不存在，条目数均为 0；两次真实退出码均为 0，耗时分别为 19.526802s 与 20.333327s。两个目录各有 65 个文件，路径、字节数与每文件 SHA-256 全部一致，输出树规范 JSON SHA-256 均为 e02e8b3f98c3c67c50e9c25e8bf00d14d4681e295a9c0d96e2f7773c19ad3749。受控 reproducible/ 同步后与 A/B 输出树完全一致。
+回执同时固化了两次底层审计命令模板，真实解析后的绝对命令不持久化。两个 output 在起跑前都不存在，条目数均为 0；两次真实退出码均为 0，耗时分别为 20.792001s 与 21.793363s。两个目录各有 65 个文件，路径、字节数与每文件 SHA-256 全部一致，输出树规范 JSON SHA-256 均为 e02e8b3f98c3c67c50e9c25e8bf00d14d4681e295a9c0d96e2f7773c19ad3749。受控 reproducible/ 同步后与 A/B 输出树完全一致。
 
 锁定输出：
 

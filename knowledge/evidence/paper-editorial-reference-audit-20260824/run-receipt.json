@@ -1,23 +1,36 @@
 {
-  "schemaVersion": "paper-editorial-reference-audit-run-receipt/v1",
+  "schemaVersion": "paper-editorial-reference-audit-run-receipt/v2",
   "status": "blocked-reference-below-existing-threshold",
-  "createdAt": "2026-08-23T20:25:29.011Z",
+  "createdAt": "2026-08-23T20:57:35.698Z",
   "scope": "reproducibility and provenance only; this receipt does not override the failed P75>=90% reference threshold",
   "hashSemantics": {
     "fileByteSha256": "SHA-256 over exact file bytes",
     "canonicalJsonSha256": "SHA-256 over UTF-8 JSON with sorted keys, compact separators and ensure_ascii=false, excluding the digest field itself"
   },
+  "provenance": {
+    "reproducer": {
+      "path": "tools/reproduce-paper-editorial-reference-audit.py",
+      "sha256": "51e913942917da392ff85b035fb4975ae22839e279b9c5ef0d66a719dbac1720"
+    },
+    "gitCommit": "14ce96dfc22820bc7e856d91ef4dca0401b749d3",
+    "gitTree": "8a1329dafb0acf95604823be095abe70567c7cc7",
+    "workingTreeDirtyAtStart": true,
+    "workingTreeStatusEntryCountAtStart": 764,
+    "workingTreeStatusPorcelainSha256AtStart": "323752b5df5e56f7e5af8fb457daca2f965995d5980a2a8c8c05a901a3768f30",
+    "generationBase": "HEAD and HEAD^{tree} captured before the two audit runs, controlled-output synchronisation and receipt write"
+  },
   "inputs": {
     "source": {
-      "path": "/Users/pc/Downloads/oMvzQBgiqE2X3ZNqAYQxEjIrfTAxvBANZDe9aF.MP4",
+      "logicalId": "external-reference-video",
+      "basename": "oMvzQBgiqE2X3ZNqAYQxEjIrfTAxvBANZDe9aF.MP4",
       "sha256": "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949"
     },
     "script": {
-      "path": "/Users/pc/Documents/口播/tools/audit-paper-editorial-reference.py",
+      "path": "tools/audit-paper-editorial-reference.py",
       "sha256": "d4f55fedb986cd9fdfdde88d49629bda44f1be860a2306045d94d5e64770e23b"
     },
     "shotTable": {
-      "path": "/Users/pc/Documents/口播/knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv",
+      "path": "knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv",
       "sha256": "d1620de6b9f34c8f290b9f334b77584acd2f857957d1fd780e26272e203c25c3"
     }
   },
@@ -32,27 +45,29 @@
   "runs": [
     {
       "runId": "A",
-      "runRoot": "/private/tmp/koubo-reference-audit-A-ngklww3y",
-      "outputDirectory": "/private/tmp/koubo-reference-audit-A-ngklww3y/output",
+      "freshTemporaryDirectory": true,
+      "temporaryDirectoryPolicy": "mkdtemp(koubo-reference-audit-A-*)",
+      "outputDirectory": "<fresh-temp-A>/output",
       "outputExistedBefore": false,
       "outputEntryCountBefore": 0,
-      "startedAt": "2026-08-23T20:24:48.896Z",
-      "finishedAt": "2026-08-23T20:25:08.424Z",
-      "elapsedSeconds": 19.526802,
-      "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
-        "/Users/pc/Documents/口播/tools/audit-paper-editorial-reference.py",
+      "startedAt": "2026-08-23T20:56:52.728Z",
+      "finishedAt": "2026-08-23T20:57:13.520Z",
+      "elapsedSeconds": 20.792001,
+      "commandTemplate": [
+        "<python>",
+        "<project-root>/tools/audit-paper-editorial-reference.py",
         "--source",
-        "/Users/pc/Downloads/oMvzQBgiqE2X3ZNqAYQxEjIrfTAxvBANZDe9aF.MP4",
+        "<external-reference-video>",
         "--output",
-        "/private/tmp/koubo-reference-audit-A-ngklww3y/output",
+        "<fresh-temp-A>/output",
         "--expected-sha256",
         "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949",
         "--manual-boundary",
         "97.6",
         "--shot-table",
-        "/Users/pc/Documents/口播/knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv"
+        "<project-root>/knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv"
       ],
+      "resolvedAbsoluteCommandPersisted": false,
       "exitCode": 0,
       "stdoutSha256": "704618acc14c03c8c8b961fe12528f8a8f7f62e97d89d196fdf4ecf9dd77c5bb",
       "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -67,27 +82,29 @@
     },
     {
       "runId": "B",
-      "runRoot": "/private/tmp/koubo-reference-audit-B-e08xl9pk",
-      "outputDirectory": "/private/tmp/koubo-reference-audit-B-e08xl9pk/output",
+      "freshTemporaryDirectory": true,
+      "temporaryDirectoryPolicy": "mkdtemp(koubo-reference-audit-B-*)",
+      "outputDirectory": "<fresh-temp-B>/output",
       "outputExistedBefore": false,
       "outputEntryCountBefore": 0,
-      "startedAt": "2026-08-23T20:25:08.434Z",
-      "finishedAt": "2026-08-23T20:25:28.768Z",
-      "elapsedSeconds": 20.333327,
-      "command": [
-        "/opt/homebrew/opt/python@3.14/bin/python3.14",
-        "/Users/pc/Documents/口播/tools/audit-paper-editorial-reference.py",
+      "startedAt": "2026-08-23T20:57:13.531Z",
+      "finishedAt": "2026-08-23T20:57:35.325Z",
+      "elapsedSeconds": 21.793363,
+      "commandTemplate": [
+        "<python>",
+        "<project-root>/tools/audit-paper-editorial-reference.py",
         "--source",
-        "/Users/pc/Downloads/oMvzQBgiqE2X3ZNqAYQxEjIrfTAxvBANZDe9aF.MP4",
+        "<external-reference-video>",
         "--output",
-        "/private/tmp/koubo-reference-audit-B-e08xl9pk/output",
+        "<fresh-temp-B>/output",
         "--expected-sha256",
         "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949",
         "--manual-boundary",
         "97.6",
         "--shot-table",
-        "/Users/pc/Documents/口播/knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv"
+        "<project-root>/knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv"
       ],
+      "resolvedAbsoluteCommandPersisted": false,
       "exitCode": 0,
       "stdoutSha256": "704618acc14c03c8c8b961fe12528f8a8f7f62e97d89d196fdf4ecf9dd77c5bb",
       "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -102,18 +119,18 @@
     }
   ],
   "comparison": {
-    "runAOutput": "/private/tmp/koubo-reference-audit-A-ngklww3y/output",
-    "runBOutput": "/private/tmp/koubo-reference-audit-B-e08xl9pk/output",
+    "runAOutput": "<fresh-temp-A>/output",
+    "runBOutput": "<fresh-temp-B>/output",
     "fileCountEach": 65,
     "pathSetsEqual": true,
     "allFileBytesEqual": true,
     "outputTreeCanonicalSha256": "e02e8b3f98c3c67c50e9c25e8bf00d14d4681e295a9c0d96e2f7773c19ad3749"
   },
   "controlledCopy": {
-    "path": "/Users/pc/Documents/口播/knowledge/evidence/paper-editorial-reference-audit-20260824/reproducible",
+    "path": "knowledge/evidence/paper-editorial-reference-audit-20260824/reproducible",
     "fileCount": 65,
     "matchesRunAAndRunB": true,
     "outputTreeCanonicalSha256": "e02e8b3f98c3c67c50e9c25e8bf00d14d4681e295a9c0d96e2f7773c19ad3749"
   },
-  "receiptDefinitionCanonicalJsonSha256": "76948e10834aa9c13e3a5f1ac1ef2887c27f0a870df6705c660edc4b34e46fe4"
+  "receiptDefinitionCanonicalJsonSha256": "2e0bee41088d3342549804358f9d97fac1e5add590c60f120d6554597fa15d50"
 }
