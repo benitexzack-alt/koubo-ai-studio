@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "paper-editorial-reference-audit-run-receipt/v2",
+  "status": "blocked-reference-below-existing-threshold",
+  "createdAt": "2026-08-23T22:00:09.197Z",
+  "scope": "reproducibility and provenance only; this receipt does not override the failed P75>=90% reference threshold",
+  "hashSemantics": {
+    "fileByteSha256": "SHA-256 over exact file bytes",
+    "canonicalJsonSha256": "SHA-256 over UTF-8 JSON with sorted keys, compact separators and ensure_ascii=false, excluding the digest field itself"
+  },
+  "provenance": {
+    "reproducer": {
+      "path": "tools/reproduce-paper-editorial-reference-audit.py",
+      "sha256": "51e913942917da392ff85b035fb4975ae22839e279b9c5ef0d66a719dbac1720"
+    },
+    "gitCommit": "f167000c3db06745c46a19fa9f5ed90d83a78156",
+    "gitTree": "871cff03aab78e836c1e23f97cae72baf0c529fe",
+    "workingTreeDirtyAtStart": false,
+    "workingTreeStatusEntryCountAtStart": 0,
+    "workingTreeStatusPorcelainSha256AtStart": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "generationBase": "HEAD and HEAD^{tree} captured before the two audit runs, controlled-output synchronisation and receipt write"
+  },
+  "inputs": {
+    "source": {
+      "logicalId": "external-reference-video",
+      "basename": "oMvzQBgiqE2X3ZNqAYQxEjIrfTAxvBANZDe9aF.MP4",
+      "sha256": "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949"
+    },
+    "script": {
+      "path": "tools/audit-paper-editorial-reference.py",
+      "sha256": "d4f55fedb986cd9fdfdde88d49629bda44f1be860a2306045d94d5e64770e23b"
+    },
+    "shotTable": {
+      "path": "knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv",
+      "sha256": "d1620de6b9f34c8f290b9f334b77584acd2f857957d1fd780e26272e203c25c3"
+    }
+  },
+  "environment": {
+    "python": "Python 3.14.6",
+    "ffmpeg": "ffmpeg version 8.1.2 Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe": "ffprobe version 8.1.2 Copyright (c) 2007-2026 the FFmpeg developers",
+    "tesseract": "tesseract 5.5.2",
+    "numpy": "2.5.0",
+    "pillow": "12.3.0"
+  },
+  "runs": [
+    {
+      "runId": "A",
+      "freshTemporaryDirectory": true,
+      "temporaryDirectoryPolicy": "mkdtemp(koubo-reference-audit-A-*)",
+      "outputDirectory": "<fresh-temp-A>/output",
+      "outputExistedBefore": false,
+      "outputEntryCountBefore": 0,
+      "startedAt": "2026-08-23T21:59:28.363Z",
+      "finishedAt": "2026-08-23T21:59:50.240Z",
+      "elapsedSeconds": 21.876007,
+      "commandTemplate": [
+        "<python>",
+        "<project-root>/tools/audit-paper-editorial-reference.py",
+        "--source",
+        "<external-reference-video>",
+        "--output",
+        "<fresh-temp-A>/output",
+        "--expected-sha256",
+        "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949",
+        "--manual-boundary",
+        "97.6",
+        "--shot-table",
+        "<project-root>/knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv"
+      ],
+      "resolvedAbsoluteCommandPersisted": false,
+      "exitCode": 0,
+      "stdoutSha256": "704618acc14c03c8c8b961fe12528f8a8f7f62e97d89d196fdf4ecf9dd77c5bb",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outputFileCount": 65,
+      "outputTreeCanonicalSha256": "e02e8b3f98c3c67c50e9c25e8bf00d14d4681e295a9c0d96e2f7773c19ad3749",
+      "auditSummaryFileByteSha256": "704618acc14c03c8c8b961fe12528f8a8f7f62e97d89d196fdf4ecf9dd77c5bb",
+      "auditDefinitionCanonicalJsonSha256": "ef55ae9b7dbced3a0a7aba2ce43ced38b0518a008ee5fbe4de137997a91367e5",
+      "artifactManifestFileByteSha256": "e9a2e879d5f2995c2211a4e46f4e52ab48eff4df77d477b4f8e320cf7523e26d",
+      "artifactManifestCanonicalJsonSha256": "039d0c3b5ae24ba75f2f43217a85bb20b9e0a53dc71457049cf532eaac098dca",
+      "artifactManifestEntryCount": 63,
+      "auditStatus": "blocked-reference-below-existing-threshold"
+    },
+    {
+      "runId": "B",
+      "freshTemporaryDirectory": true,
+      "temporaryDirectoryPolicy": "mkdtemp(koubo-reference-audit-B-*)",
+      "outputDirectory": "<fresh-temp-B>/output",
+      "outputExistedBefore": false,
+      "outputEntryCountBefore": 0,
+      "startedAt": "2026-08-23T21:59:50.251Z",
+      "finishedAt": "2026-08-23T22:00:08.930Z",
+      "elapsedSeconds": 18.67892,
+      "commandTemplate": [
+        "<python>",
+        "<project-root>/tools/audit-paper-editorial-reference.py",
+        "--source",
+        "<external-reference-video>",
+        "--output",
+        "<fresh-temp-B>/output",
+        "--expected-sha256",
+        "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949",
+        "--manual-boundary",
+        "97.6",
+        "--shot-table",
+        "<project-root>/knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_detailed.csv"
+      ],
+      "resolvedAbsoluteCommandPersisted": false,
+      "exitCode": 0,
+      "stdoutSha256": "704618acc14c03c8c8b961fe12528f8a8f7f62e97d89d196fdf4ecf9dd77c5bb",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "outputFileCount": 65,
+      "outputTreeCanonicalSha256": "e02e8b3f98c3c67c50e9c25e8bf00d14d4681e295a9c0d96e2f7773c19ad3749",
+      "auditSummaryFileByteSha256": "704618acc14c03c8c8b961fe12528f8a8f7f62e97d89d196fdf4ecf9dd77c5bb",
+      "auditDefinitionCanonicalJsonSha256": "ef55ae9b7dbced3a0a7aba2ce43ced38b0518a008ee5fbe4de137997a91367e5",
+      "artifactManifestFileByteSha256": "e9a2e879d5f2995c2211a4e46f4e52ab48eff4df77d477b4f8e320cf7523e26d",
+      "artifactManifestCanonicalJsonSha256": "039d0c3b5ae24ba75f2f43217a85bb20b9e0a53dc71457049cf532eaac098dca",
+      "artifactManifestEntryCount": 63,
+      "auditStatus": "blocked-reference-below-existing-threshold"
+    }
+  ],
+  "comparison": {
+    "runAOutput": "<fresh-temp-A>/output",
+    "runBOutput": "<fresh-temp-B>/output",
+    "fileCountEach": 65,
+    "pathSetsEqual": true,
+    "allFileBytesEqual": true,
+    "outputTreeCanonicalSha256": "e02e8b3f98c3c67c50e9c25e8bf00d14d4681e295a9c0d96e2f7773c19ad3749"
+  },
+  "controlledCopy": {
+    "path": "work/.recovery-reference-audit.4RoiB7/controlled",
+    "fileCount": 65,
+    "matchesRunAAndRunB": true,
+    "outputTreeCanonicalSha256": "e02e8b3f98c3c67c50e9c25e8bf00d14d4681e295a9c0d96e2f7773c19ad3749"
+  },
+  "receiptDefinitionCanonicalJsonSha256": "9ddd2cbae7ba32e80d941118a051e4d67bfb5f2a52332f977610a0816d12a6f6"
+}
