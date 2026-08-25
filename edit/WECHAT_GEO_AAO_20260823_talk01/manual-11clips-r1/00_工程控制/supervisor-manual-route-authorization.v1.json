@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "koubo-supervisor-manual-route-authorization/v1",
+  "authorizationId": "20260826-wechat-geo-aao-manual-11clips-prepare",
+  "createdAt": "2026-08-26T01:26:56+08:00",
+  "status": "authorized-asset-preparation-only",
+  "userDecisionEvidence": {
+    "sourceThreadId": "019f3383-706c-78f3-9dbe-6c6b20affb59",
+    "sourceThreadTitle": "口播自动化",
+    "turnId": "01a039e7-eb84-7652-95ae-1009327c45f5",
+    "messageId": "item-1",
+    "confirmedByReadThread": true
+  },
+  "decision": {
+    "allowNewIndependentRevision": true,
+    "revisionId": "20260826-wechat-geo-aao-manual-11clips-r1",
+    "route": "manual-generated-11-clips",
+    "directorSkillRequiredForThisRevision": false,
+    "allowDirectoryAndProjectPreparation": true,
+    "allowReadonlyAssetInventory": true,
+    "allowLocalClipIntakeQaWhenFilesArrive": true,
+    "allowLowResolutionPreviewAfterAllClipIntakeGatesPass": true,
+    "automationHandoffEligibleNow": false,
+    "formalRenderEnabledNow": false,
+    "publicationEligibleNow": false
+  },
+  "requiredAuthorityBindings": [
+    {
+      "id": "R01",
+      "sha256": "a098a9e92bed474b56cecc2ca70cb1ba0b0d755a58d3318a2411965eff654ec4",
+      "durationSeconds": 331.466667,
+      "requireFullDecode": true,
+      "role": "canonical-spoken-source"
+    },
+    {
+      "id": "R02",
+      "sha256": "0a992254195c91eefebec1f0a8d1f91263890ec2910169470ec377a02640937e",
+      "durationSeconds": 274.243333,
+      "requireFullDecode": true,
+      "role": "full-timeline-screen-source"
+    },
+    {
+      "id": "T01",
+      "sha256": "4a53bd535fe90fd1f720e5f7533ad8fc558150bb31c92fd38f60c79c0c2ab5db",
+      "role": "canonical-spoken-transcript"
+    },
+    {
+      "id": "C01",
+      "sha256": "91ef153ec585e143baa7ef3636992371d6ea07ca9fee68c0a77ee65bb55fc517",
+      "role": "bilingual-captions"
+    },
+    {
+      "id": "SP01",
+      "sha256": "9fc35f96156db41008c9483efd3ad96d4486f9a410f6cf801a6403176eb2af7a",
+      "role": "spoken-source-policy"
+    }
+  ],
+  "promotionRequirements": [
+    "11 个槽位各有且仅有一个用户提供的视频文件",
+    "11 个文件全部绑定 SHA-256、规格、时长和完整解码回执",
+    "逐段 1.0 倍正常速度人工复核通过",
+    "无乱码、Logo、水印、假界面、虚假成交或支付证据",
+    "无超过 1.5 秒的无计划冻结，动作与对应实录语义一致",
+    "EDL 只绑定 R01、R02、T01、C01、SP01 与验收通过的 P01 至 P11",
+    "低清预览完成技术检查并由用户完整观看确认",
+    "另建的新修订不得引用旧事故 productionState、189 秒时间轴或已否决产物"
+  ],
+  "automationHandoffEligibleDefinition": {
+    "valueCanBecomeTrueOnlyAfter": [
+      "asset-intake-passed",
+      "all-eleven-clips-bound-by-sha256",
+      "full-decode-passed",
+      "normal-speed-visual-review-passed",
+      "edl-bound",
+      "low-resolution-preview-rendered",
+      "user-preview-accepted",
+      "technical-qa-passed",
+      "new-revision-freeze-and-release-receipt-created"
+    ],
+    "doesNotAuthorize": [
+      "formal-render",
+      "publication",
+      "external-upload",
+      "payment"
+    ]
+  },
+  "continuingProhibitions": {
+    "oldAccidentJobFormalFrozen": true,
+    "old189SecondChainPermanentlyExcluded": true,
+    "rejectedFilmPermanentlyExcluded": true,
+    "failedDirectorThirtySecondMasterEvidenceOnly": true,
+    "libtvRunningHubLoginUploadGenerationPaymentForbidden": true,
+    "externalPlatformActionsForbidden": true
+  },
+  "boundLocalArtifacts": {
+    "manifest": {
+      "path": "edit/WECHAT_GEO_AAO_20260823_talk01/manual-11clips-r1/00_工程控制/manual-11clips.manifest.v1.json",
+      "sha256": "3e4cc8b1ef25d05df1a989bb7951e0c4d9b8f52d5298d9dbf63b22bfe7a69269"
+    },
+    "editPlanTemplate": {
+      "path": "edit/WECHAT_GEO_AAO_20260823_talk01/manual-11clips-r1/04_剪辑工程/剪辑方案模板.v1.json",
+      "sha256": "c58c7529f2082d636d690b4d0ecbf2fe44b237ebded204868a8d18073e580ce2"
+    },
+    "readme": {
+      "path": "edit/WECHAT_GEO_AAO_20260823_talk01/manual-11clips-r1/README.md",
+      "sha256": "aaf637eab75e5d2edea2986eeba86e79987dbd3488c4619ccdcdc9ce0034ae03"
+    }
+  },
+  "nextAction": "口播自动化仅记录本授权并等待 11 段素材进入固定槽位；当前不得启动旧 job 或正式渲染。"
+}

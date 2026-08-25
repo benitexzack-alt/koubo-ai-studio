@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "koubo-manual-edit-plan/v1",
+  "revisionId": "20260826-wechat-geo-aao-manual-11clips-r1",
+  "status": "template-awaiting-eleven-clip-bindings",
+  "render": {
+    "durationSeconds": 331.466667,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "baseAudioSourceId": "R01",
+    "generatedClipAudioPolicy": "muted",
+    "captionSourceId": "C01"
+  },
+  "layers": [
+    {
+      "id": "L01",
+      "role": "base-real-talk",
+      "sourceId": "R01",
+      "coverage": [0, 331.466667]
+    },
+    {
+      "id": "L02",
+      "role": "full-timeline-real-screen-evidence",
+      "sourceId": "R02",
+      "policy": "只使用完整 274.243333 秒时间轴；逐段语义映射后再裁切"
+    },
+    {
+      "id": "L03",
+      "role": "manual-generated-concept-broll",
+      "sourceIds": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07",
+        "P08",
+        "P09",
+        "P10",
+        "P11"
+      ],
+      "policy": "只承担抽象机制演绎，不冒充真实微信界面、门店、成交或支付证据"
+    },
+    {
+      "id": "L04",
+      "role": "spoken-source-captions",
+      "sourceId": "C01",
+      "policy": "实录中文为唯一正文；英文只从实录中文翻译"
+    }
+  ],
+  "manualClipPlacements": [
+    {"clipId": "P01", "outputWindow": [33.76, 45.33], "recommendedFullScreenSeconds": [6, 7]},
+    {"clipId": "P02", "outputWindow": [62.96, 75.28], "recommendedFullScreenSeconds": [6, 7]},
+    {"clipId": "P03", "outputWindow": [82.56, 96.82], "recommendedFullScreenSeconds": [7, 8]},
+    {"clipId": "P04", "outputWindow": [96.82, 102.32], "recommendedFullScreenSeconds": [5, 5]},
+    {"clipId": "P05", "outputWindow": [125.74, 143.02], "recommendedFullScreenSeconds": [7, 8]},
+    {"clipId": "P06", "outputWindow": [143.02, 156.43], "recommendedFullScreenSeconds": [6, 7]},
+    {"clipId": "P07", "outputWindow": [173.01, 182.05], "recommendedFullScreenSeconds": [6, 7]},
+    {"clipId": "P08", "outputWindow": [195.6, 202.61], "recommendedFullScreenSeconds": [6, 7]},
+    {"clipId": "P09", "outputWindow": [216.59, 227.48], "recommendedFullScreenSeconds": [6, 7]},
+    {"clipId": "P10", "outputWindow": [227.48, 242.61], "recommendedFullScreenSeconds": [7, 8]},
+    {"clipId": "P11", "outputWindow": [296.52, 304.48], "recommendedFullScreenSeconds": [7, 8]}
+  ],
+  "realScreenCandidateWindows": [
+    {"outputWindow": [5.11, 15.4], "screenSourceWindow": [0, 13], "claim": "微信入口与 AI 处理状态"},
+    {"outputWindow": [15.4, 22.97], "screenSourceWindow": [40, 53], "claim": "图片风格变化与模型归因边界"},
+    {"outputWindow": [22.97, 33.76], "screenSourceWindow": [86, 98], "claim": "兰州中心、四人、不辣、清淡的真实提问"},
+    {"outputWindow": [45.33, 59.35], "screenSourceWindows": [[98, 132], [140, 150]], "claim": "推荐、地图、门店小程序与菜单路径"},
+    {"outputWindow": [202.61, 208.55], "screenSourceWindow": [242, 266], "claim": "地图与真实菜单的录屏展示范围"}
+  ],
+  "preview": {
+    "required": true,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "output": "edit/WECHAT_GEO_AAO_20260823_talk01/manual-11clips-r1/05_低清预览/微信GEO_AAO_人工11段_低清预览_v1.mp4",
+    "userAcceptanceRequiredBeforeFormal": true
+  },
+  "formalCandidate": {
+    "enabled": false,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "videoCodec": "h264",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakTargetDbtp": -2.2,
+    "output": "outputs/微信AI_GEO_AAO_16x9_人工11段_正式候选_v1.mp4"
+  },
+  "releasePackage": {
+    "requiredItems": [
+      "正式候选片",
+      "本条成片真人截图",
+      "3比4真人截图合成封面提示词",
+      "一个主标题",
+      "两个备选标题",
+      "抖音发布文案",
+      "抖音话题",
+      "发布记录"
+    ],
+    "publicationRequiresSeparateUserApproval": true
+  }
+}

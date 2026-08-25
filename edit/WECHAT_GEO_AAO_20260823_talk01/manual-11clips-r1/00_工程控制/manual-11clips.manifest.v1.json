@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "koubo-manual-video-intake/v1",
+  "revisionId": "20260826-wechat-geo-aao-manual-11clips-r1",
+  "createdAt": "2026-08-26T01:24:19+08:00",
+  "route": "manual-generated-11-clips",
+  "status": "asset-intake-required",
+  "productionState": "asset-intake-required",
+  "automationHandoffEligible": false,
+  "candidatePreviewRequired": true,
+  "candidatePreviewAuthorizedOnceIntakePasses": true,
+  "formalRenderEnabled": false,
+  "publicationEligible": false,
+  "externalPlatformActionAuthorized": false,
+  "directorSkillRequiredForThisRevision": false,
+  "userRouteDecision": {
+    "sourceThreadId": "019f3383-706c-78f3-9dbe-6c6b20affb59",
+    "sourceThreadTitle": "口播自动化",
+    "sourceTurnId": "01a039e7-eb84-7652-95ae-1009327c45f5",
+    "sourceMessageId": "item-1",
+    "decision": "停止当前导演 Skill 路线；用户手动生成 11 段视频，本项目建立原视频、素材和发布目录并负责剪成片。"
+  },
+  "authority": {
+    "spokenSource": {
+      "id": "R01",
+      "path": "source/20260823_wechat_geo_aao/copy_72D5690E-11F6-48D7-8B1B-67C9E1A0FD5F.MOV",
+      "sha256": "a098a9e92bed474b56cecc2ca70cb1ba0b0d755a58d3318a2411965eff654ec4",
+      "durationSeconds": 331.466667,
+      "video": {
+        "codec": "hevc",
+        "width": 1920,
+        "height": 1080,
+        "fps": 30
+      },
+      "audio": {
+        "codec": "aac",
+        "sampleRate": 44100,
+        "channels": 2
+      },
+      "verification": "hash-probe-full-decode-passed-2026-08-26",
+      "policy": "readonly-canonical-spoken-source"
+    },
+    "screenSource": {
+      "id": "R02",
+      "path": "source/20260823_wechat_geo_aao/R02_WECHAT_GEO_AAO_20260823_screen_full01_original.MP4",
+      "sha256": "0a992254195c91eefebec1f0a8d1f91263890ec2910169470ec377a02640937e",
+      "durationSeconds": 274.243333,
+      "video": {
+        "codec": "hevc",
+        "width": 888,
+        "height": 1920,
+        "fps": 120
+      },
+      "audio": {
+        "codec": "aac",
+        "sampleRate": 44100,
+        "channels": 2
+      },
+      "verification": "hash-probe-full-decode-passed-2026-08-26",
+      "policy": "readonly-full-timeline-screen-source"
+    },
+    "styleReference": {
+      "id": "R03",
+      "path": "source/20260823_wechat_geo_aao/R03_PAPER_EDITORIAL_STYLE_REFERENCE_f172d6dc.MP4",
+      "sha256": "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949",
+      "durationSeconds": 110.153991,
+      "role": "visual-reference-only"
+    },
+    "spokenTranscript": {
+      "id": "T01",
+      "path": "edit/20260823_wechat_geo_aao/transcripts/WECHAT_GEO_AAO_20260823_talk01.cleaned.v1.json",
+      "sha256": "4a53bd535fe90fd1f720e5f7533ad8fc558150bb31c92fd38f60c79c0c2ab5db",
+      "role": "canonical-spoken-transcript"
+    },
+    "bilingualCaptions": {
+      "id": "C01",
+      "path": "remotion/public/data/WECHAT_GEO_AAO_20260823.bilingual.v1.json",
+      "sha256": "91ef153ec585e143baa7ef3636992371d6ea07ca9fee68c0a77ee65bb55fc517",
+      "role": "captions-derived-from-spoken-source"
+    },
+    "spokenSourcePolicy": {
+      "id": "SP01",
+      "path": "edit/20260823_wechat_geo_aao/transcripts/WECHAT_GEO_AAO_20260823_talk01.spoken-source-policy.v1.json",
+      "sha256": "9fc35f96156db41008c9483efd3ad96d4486f9a410f6cf801a6403176eb2af7a",
+      "role": "subtitle-authority-policy"
+    },
+    "elevenShotBrief": {
+      "id": "D01",
+      "path": "edit/WECHAT_GEO_AAO_20260823_talk01/微信GEO_AAO_全片纸艺插片导演与静帧提示词_v2.md",
+      "sha256": "1e716b3f4a782a57050a867d1ce150ce92b3ae1324a56f3be8cda8a3702097e8",
+      "role": "manual-generation-brief"
+    }
+  },
+  "clipIntake": {
+    "root": "edit/WECHAT_GEO_AAO_20260823_talk01/manual-11clips-r1/02_人工生成视频待验收",
+    "oneMediaFilePerSlot": true,
+    "acceptedExtensions": [
+      ".mp4",
+      ".mov",
+      ".m4v"
+    ],
+    "minimumWidth": 1280,
+    "minimumHeight": 720,
+    "expectedAspectRatio": "16:9",
+    "aspectRatioTolerance": 0.03,
+    "minimumDurationSeconds": 4,
+    "maximumDurationSeconds": 10,
+    "useGeneratedClipAudio": false,
+    "requireSha256": true,
+    "requireFullDecode": true,
+    "requireNormalSpeedHumanReview": true,
+    "rejectVisibleTextLogoWatermark": true,
+    "rejectUnplannedFreezeAtOrAboveSeconds": 1.5,
+    "rejectFakeRealInterfaceOrTransactionEvidence": true,
+    "slots": [
+      {
+        "id": "P01",
+        "title": "一个需求拆成四路人工搜寻",
+        "slotDirectory": "P01_一个需求拆成四路人工搜寻",
+        "spokenWindow": [33.76, 45.33],
+        "recommendedClipDurationSeconds": [6, 7],
+        "status": "waiting-for-user-file"
+      },
+      {
+        "id": "P02",
+        "title": "问完以后还有一条路继续进店",
+        "slotDirectory": "P02_问完以后还有一条路继续进店",
+        "spokenWindow": [62.96, 75.28],
+        "recommendedClipDurationSeconds": [6, 7],
+        "status": "waiting-for-user-file"
+      },
+      {
+        "id": "P03",
+        "title": "多平台碎片合成一次完整需求",
+        "slotDirectory": "P03_多平台碎片合成一次完整需求",
+        "spokenWindow": [82.56, 96.82],
+        "recommendedClipDurationSeconds": [7, 8],
+        "status": "waiting-for-user-file"
+      },
+      {
+        "id": "P04",
+        "title": "很多选择收窄为少数匹配项",
+        "slotDirectory": "P04_很多选择收窄为少数匹配项",
+        "spokenWindow": [96.82, 102.32],
+        "recommendedClipDurationSeconds": [5, 5],
+        "status": "waiting-for-user-file"
+      },
+      {
+        "id": "P05",
+        "title": "GEO 多来源信息装配成同一家店",
+        "slotDirectory": "P05_GEO多来源信息装配成同一家店",
+        "spokenWindow": [125.74, 143.02],
+        "recommendedClipDurationSeconds": [7, 8],
+        "status": "waiting-for-user-file"
+      },
+      {
+        "id": "P06",
+        "title": "错误信息让路径在最后断掉",
+        "slotDirectory": "P06_错误信息让路径在最后断掉",
+        "spokenWindow": [143.02, 156.43],
+        "recommendedClipDurationSeconds": [6, 7],
+        "status": "waiting-for-user-file"
+      },
+      {
+        "id": "P07",
+        "title": "图片错误被工具继续读取",
+        "slotDirectory": "P07_图片错误被工具继续读取",
+        "spokenWindow": [173.01, 182.05],
+        "recommendedClipDurationSeconds": [6, 7],
+        "status": "waiting-for-user-file"
+      },
+      {
+        "id": "P08",
+        "title": "AAO 客人到门前仍需服务入口",
+        "slotDirectory": "P08_AAO客人到门前仍需服务入口",
+        "spokenWindow": [195.6, 202.61],
+        "recommendedClipDurationSeconds": [6, 7],
+        "status": "waiting-for-user-file"
+      },
+      {
+        "id": "P09",
+        "title": "只接住下一件小事",
+        "slotDirectory": "P09_只接住下一件小事",
+        "spokenWindow": [216.59, 227.48],
+        "recommendedClipDurationSeconds": [6, 7],
+        "status": "waiting-for-user-file"
+      },
+      {
+        "id": "P10",
+        "title": "多应用翻找折叠成一条短路径",
+        "slotDirectory": "P10_多应用翻找折叠成一条短路径",
+        "spokenWindow": [227.48, 242.61],
+        "recommendedClipDurationSeconds": [7, 8],
+        "status": "waiting-for-user-file"
+      },
+      {
+        "id": "P11",
+        "title": "GEO 识别后 AAO 接过同一令牌",
+        "slotDirectory": "P11_GEO识别后AAO接过同一令牌",
+        "spokenWindow": [296.52, 304.48],
+        "recommendedClipDurationSeconds": [7, 8],
+        "status": "waiting-for-user-file"
+      }
+    ]
+  },
+  "permanentlyForbidden": [
+    {
+      "path": "remotion/public/media/wechat-geo-aao-20260823/screen-30fps.mp4",
+      "sha256": "c62481e12b095462748d216c71b45cf8d81fe495a25a52a28a9fe763d948ea6c",
+      "reason": "189.066 秒非线性压时旧录屏代理"
+    },
+    {
+      "path": "source/20260823_wechat_geo_aao/copy_9AA2C74C-7E1B-40E7-8634-D6F4835F95CD.MOV",
+      "sha256": "3c1f91ad88577b951b20d341bace5893fbaaa3ba075b17360df1a09a8ce90355",
+      "reason": "189.066 秒剪映二次导出"
+    },
+    {
+      "sha256": "3ba5cef4e0c5ae26e2f70d27c8799cea5d736498d85dcbd00dba2050125e5488",
+      "reason": "用户已否决的事故成片"
+    },
+    {
+      "sha256": "70e7c7b885e55c28411d6c8b2381acea41a7859b6e1433344dda64b400b4e8d9",
+      "reason": "已停止导演 Skill 路线中的冻结失败 30 秒母版，仅作历史证据"
+    },
+    {
+      "fingerprint": "koubo-paper-construct-v1",
+      "reason": "退役风格"
+    }
+  ],
+  "promotionGates": {
+    "assetIntakePassed": false,
+    "allElevenClipsBoundBySha256": false,
+    "fullDecodePassed": false,
+    "normalSpeedVisualReviewPassed": false,
+    "editDecisionListBound": false,
+    "lowResolutionPreviewRendered": false,
+    "userPreviewAccepted": false,
+    "technicalQaPassed": false,
+    "automationHandoffEligible": false,
+    "formalRenderEnabled": false,
+    "publicationEligible": false
+  },
+  "nextAction": "等待 11 个素材槽位收到文件；通过素材验收后制作低清预览。"
+}
