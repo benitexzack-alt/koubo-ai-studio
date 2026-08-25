@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260826T-ai-product-to-delivery-v1",
+  "target_stage": "outline",
+  "mode": "deep-explainer",
+  "source": {
+    "title": "用户完整初稿、抖音知识中台完整转写与 AI 选题雷达当前候选池",
+    "path": "/Users/pc/Documents/口播/notes/2026-08-26-AI做得出到接得住-长提纲-v1.md",
+    "completeness": "complete",
+    "verification_scope": "用户完整初稿负责本轮核心问题；三条本地完整 ASR 仅用于内部论证结构，不在正文提作者、原句、原案例或把其观点写成公开事实；AI 选题雷达当前候选池只用于确认没有可直接支撑本条绝对市场结论的高置信数据。"
+  },
+  "reader_brief": {
+    "audience": "已经会一点 AI、想用 AI 做产品或接服务，但还没有稳定真实客户与交付经验的普通从业者；兼顾正在判断 AI 服务靠不靠谱的小微企业老板。",
+    "existing_belief": "把会搭工具、做演示、发内容与能做成一门服务混在一起，或者反过来把技术贬低成完全不重要。",
+    "desired_change": "观众能判断自己卡在做不出来、没人愿意试、还是交付接不住，并从对应位置做一个小动作。",
+    "leave_with": [
+      "技术解决能不能做出来，但不自动带来客户信任和交付能力。",
+      "一项 AI 服务要经过做得出、有人愿意试、接得住三段。",
+      "内容可以让过程和边界被看见，但不能替代真实能力与责任。"
+    ]
+  },
+  "mother_thesis": {
+    "statement": "AI 让做出第一个演示更容易，但真实业务是否交到你手里，仍取决于你能否把一个具体问题做出来、让人敢试、并在出错与协作中接得住；公开表达只是让这份能力被看见的入口。",
+    "scope_boundary": "不声称技术门槛已经消失，不说个人 IP 是唯一赛道，不承诺内容带来客户、收入或业务结果。",
+    "supporting_node_ids": ["N01", "N02", "N03", "N04", "N05", "N06", "N07", "N08"]
+  },
+  "insight_nodes": [
+    {
+      "id": "N01",
+      "label": "演示与业务是两回事",
+      "source_ref": "用户完整初稿与抖音知识中台完整 ASR：商业闭环结构",
+      "source_claim": "工具或内容被做出来、被看见，不等于有人愿意把真实工作交出来。",
+      "structural_function": "hook",
+      "viewer_gain": "从一个能跑的界面，转向追问真实业务是否能够交付。",
+      "emotional_function": "接住会做工具却接不到项目的挫败，不嘲讽技术能力。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "interpretation",
+        "evidence_ids": ["evidence:user-draft:20260826", "evidence:douyin:7677980980585581851"],
+        "accurate_replacement": "本条把它作为服务设计判断，不把它说成所有行业和所有人的统计规律。"
+      }
+    },
+    {
+      "id": "N02",
+      "label": "技术是起点，不是被删掉的变量",
+      "source_ref": "用户完整初稿",
+      "source_claim": "技术能力仍然重要，但只回答能否做出，不能独自回答客户是否信任或能否交付。",
+      "structural_function": "tension",
+      "viewer_gain": "不再把“技术不重要”当成反技术口号。",
+      "emotional_function": "避免观众觉得自己学工具被一票否定。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "interpretation",
+        "evidence_ids": ["evidence:user-draft:20260826"],
+        "accurate_replacement": "技术是否足够由具体任务决定；本条只讨论技术之外还需要解决的信任与交付问题。"
+      }
+    },
+    {
+      "id": "N03",
+      "label": "老板买的是能负责的工作",
+      "source_ref": "已确认内容：AI圈最魔幻的事；用户完整初稿",
+      "source_claim": "真实业务要问输入资料、人工确认、错误处理与验收，而不是只看工具界面。",
+      "structural_function": "mechanism",
+      "viewer_gain": "知道客户在判断的不是酷不酷，而是一段工作有没有人接住。",
+      "emotional_function": "把抽象信任落到老板熟悉的追问。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "source-backed",
+        "evidence_ids": ["evidence:published-script:20260815", "evidence:user-draft:20260826"],
+        "accurate_replacement": "这些是典型交付问题，不代表每个老板都会按同一顺序提问。"
+      }
+    },
+    {
+      "id": "N04",
+      "label": "第一段是做得出",
+      "source_ref": "用户完整初稿与服务交付结构",
+      "source_claim": "先把输入、处理、输出和人工检查讲清，才能谈一个可被验证的小样。",
+      "structural_function": "action",
+      "viewer_gain": "不会只堆工具名，能先做一个可展示的小任务。",
+      "emotional_function": "给刚开始的人一条不夸大的起步路。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "interpretation",
+        "evidence_ids": ["evidence:user-draft:20260826"],
+        "accurate_replacement": "小样只能验证一个窄场景，不等于已经形成产品或商业模式。"
+      }
+    },
+    {
+      "id": "N05",
+      "label": "第二段是有人敢试",
+      "source_ref": "抖音知识中台完整 ASR：窄门与能力市场匹配结构",
+      "source_claim": "能做的能力要与一个真实行业问题对应，别人才有理由给出资料、时间或小范围试用。",
+      "structural_function": "evidence",
+      "viewer_gain": "把“没人找我”从流量焦虑，改成行业问题与边界是否清楚的检查。",
+      "emotional_function": "解释拒绝不必然是能力差，也可能是对方看不懂你解决什么。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "partial",
+        "evidence_ids": ["evidence:douyin:7675749702352129321"],
+        "accurate_replacement": "本条建议找熟悉行业的一个小问题验证，不承诺一定获得试用或付费。"
+      }
+    },
+    {
+      "id": "N06",
+      "label": "第三段是接得住",
+      "source_ref": "已确认内容：AI圈最魔幻的事；用户完整初稿",
+      "source_claim": "真实资料、员工协作、错误处理和验收会让一次演示变成一次交付。",
+      "structural_function": "implication",
+      "viewer_gain": "知道交付不是把功能交出去，而是提前写明范围、确认、验收和异常处理。",
+      "emotional_function": "把对失败的害怕，变成可提前设计的责任边界。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "source-backed",
+        "evidence_ids": ["evidence:published-script:20260815", "evidence:user-draft:20260826"],
+        "accurate_replacement": "写清边界不能消除风险，但能让问题更早被发现和讨论。"
+      }
+    },
+    {
+      "id": "N07",
+      "label": "内容是可见的过程，不是唯一赛道",
+      "source_ref": "用户完整初稿；已确认内容：AI自媒体低成本起号",
+      "source_claim": "公开表达可以沉淀判断、过程、边界和复盘，使陌生人能判断合作可能性。",
+      "structural_function": "transition",
+      "viewer_gain": "理解做内容的现实作用，不把它等同于流量承诺或个人IP神话。",
+      "emotional_function": "给不想当网红的人留下合理位置。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "interpretation",
+        "evidence_ids": ["evidence:user-draft:20260826", "evidence:published-script:20260808"],
+        "accurate_replacement": "内容只是一个信任入口；它不能替代产品、服务、客户反馈或交付责任。"
+      }
+    },
+    {
+      "id": "N08",
+      "label": "先判断自己在哪一段",
+      "source_ref": "本轮用户明确要求",
+      "source_claim": "给观众按做得出、有人试、接得住定位，并给每一段一个最小动作。",
+      "structural_function": "action",
+      "viewer_gain": "能带走一个不是继续囤工具的下一步。",
+      "emotional_function": "从焦虑收回到可验证的小行动。",
+      "importance": "must-preserve",
+      "verification": {
+        "status": "source-backed",
+        "evidence_ids": ["evidence:user-instruction:20260826"],
+        "accurate_replacement": "这些动作是自检起点，不是获客、成交或收入保证。"
+      }
+    }
+  ],
+  "argument_chain": [
+    {"from": "N01", "to": "N02", "relation": "but", "bridge": "演示和业务不同，不是因为技术没用，而是技术只解决其中一段。"},
+    {"from": "N02", "to": "N03", "relation": "why", "bridge": "客户把真实业务交出来时，看的会是资料、责任、确认与验收。"},
+    {"from": "N03", "to": "N04", "relation": "therefore", "bridge": "先把一段工作做清楚，才能有一个可被验证的小样。"},
+    {"from": "N04", "to": "N05", "relation": "therefore", "bridge": "做得出来以后，对方还要看懂它和自己的问题有什么关系。"},
+    {"from": "N05", "to": "N06", "relation": "therefore", "bridge": "有人愿意试以后，真实资料、员工和错误才会真正进来。"},
+    {"from": "N06", "to": "N07", "relation": "enables", "bridge": "公开表达的价值，是把这份判断、过程和边界留下，而不是替代交付。"},
+    {"from": "N07", "to": "N08", "relation": "therefore", "bridge": "观众先判断自己在三段里的位置，再做一件小事。"}
+  ],
+  "correction_ledger": [
+    {"node_id": "N01", "source_expression": "AI把所有人的生产能力拉平", "issue": "绝对化且无本轮可公开证据。", "action": "replace", "accurate_replacement": "AI让一部分原型和演示更容易做出来，但不同任务的门槛、质量与责任并没有被拉平。", "insight_preserved": true},
+    {"node_id": "N07", "source_expression": "AI + 个人IP是唯一长线赛道", "issue": "绝对化，也与账号已有自媒体主题重叠。", "action": "replace", "accurate_replacement": "内容可以成为让能力与边界被看见的入口之一，不是唯一赛道，也不替代交付。", "insight_preserved": true},
+    {"node_id": "N03", "source_expression": "客户买的从来不是工具", "issue": "忽略不同客户购买软件、产品、能力或服务的差异。", "action": "qualify", "accurate_replacement": "当客户把真实业务交给你时，他通常不只看工具界面，还会看责任、协作和验收。", "insight_preserved": true}
+    ,{"node_id": "N02", "source_expression": "技术门槛已经彻底透明，技术不再是稀缺资源", "issue": "把技术能力和不同任务的难度说成已经消失。", "action": "replace", "accurate_replacement": "技术仍然重要；它先解决能不能做出来，而客户信任与稳定交付还要另外证明。", "insight_preserved": true}
+    ,{"node_id": "N04", "source_expression": "做一个产品就能验证价值", "issue": "小样只验证窄场景，不能直接推出产品、客户或商业模式成立。", "action": "qualify", "accurate_replacement": "先把一个小任务的输入、处理、输出和人工检查做清，作为被真实人指出问题的起点。", "insight_preserved": true}
+    ,{"node_id": "N05", "source_expression": "展示过程和边界就会有人愿意试", "issue": "没有本轮证据证明展示必然换来试用、付费或客户资料。", "action": "qualify", "accurate_replacement": "清楚展示行业问题、过程和边界，能让对方更有条件判断是否值得进行小范围试用。", "insight_preserved": true}
+  ],
+  "ordinary_person_gains": {
+    "explanation": {"statement": "看懂一项 AI 服务至少经历做得出、有人愿意试、交付接得住三段。", "node_ids": ["N01", "N02", "N03", "N04", "N05", "N06"]},
+    "judgment": {"statement": "判断自己卡住的位置，不再把缺客户、交付乱或功能不稳都归为不会工具或没有流量。", "node_ids": ["N04", "N05", "N06", "N08"]},
+    "action": {"statement": "选一个熟悉行业的小问题，写清输入、输出、人工确认和异常处理，并用内容记录这个过程而不夸大结果。", "node_ids": ["N04", "N05", "N06", "N07", "N08"]}
+  },
+  "adaptation": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-26-AI做得出到接得住-长提纲-v1.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "mappings": [
+      {"node_id": "N01", "draft_ref": "演示很容易，真实业务很难交到手上", "function_preserved": true},
+      {"node_id": "N02", "draft_ref": "技术当然重要，它解决的是“这件事能不能做出来”。", "function_preserved": true},
+      {"node_id": "N03", "draft_ref": "用老板视角解释：买的不是界面，是一段有人负责的工作", "function_preserved": true},
+      {"node_id": "N04", "draft_ref": "第一关：还做不出来", "function_preserved": true},
+      {"node_id": "N05", "draft_ref": "第二关：做得出来，但没人愿意给你真实业务试", "function_preserved": true},
+      {"node_id": "N06", "draft_ref": "第三关：有人愿意试，但交付接不住", "function_preserved": true},
+      {"node_id": "N07", "draft_ref": "内容和个人表达在这里的作用", "function_preserved": true},
+      {"node_id": "N08", "draft_ref": "做不出来：补基本功，先把一段工作讲明白。", "function_preserved": true}
+    ]
+  }
+}

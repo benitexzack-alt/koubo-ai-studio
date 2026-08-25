@@ -1,0 +1,200 @@
+{
+  "schema_version": 6,
+  "task_id": "task-20260826T-ai-product-to-delivery-v1",
+  "target_stage": "draft",
+  "required_rules": [
+    {"path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md", "read": true},
+    {"path": "/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md", "read": true}
+  ],
+  "sources": [
+    {
+      "id": "source:user-draft",
+      "title": "用户完整初稿：AI时代真正赚钱的核心，从来不是技术",
+      "completeness": "complete",
+      "acquisition": "complete-user-pasted",
+      "intended_uses": ["viewpoint", "talking-structure"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-26-AI做得出到接得住-用户原始初稿-v1.md",
+      "verification_status": "用户完整贴出；只保留“技术之外还要解决被信任与交付”这一问题，不保留绝对化市场判断。",
+      "canonical_ref": "正文不说技术无用、技术门槛消失、AI加个人IP是唯一赛道，亦不声称客户从来不买工具。",
+      "evidence_ids": ["evidence:user-draft:20260826"]
+    },
+    {
+      "id": "source:douyin-closed-loop",
+      "title": "抖音知识中台：几百万粉丝赚不着钱，问题出在商业闭环",
+      "completeness": "complete",
+      "acquisition": "local-asr",
+      "intended_uses": ["talking-structure"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7677980980585581851.md",
+      "verification_status": "完整本地 ASR，仅用于流量、被看见与业务结果不能直接互推的内部结构线索。",
+      "canonical_ref": "不在正文提作者、原句、粉丝数字或原案例；不把其中主张写成公开统计事实。",
+      "evidence_ids": ["evidence:douyin:7677980980585581851"]
+    },
+    {
+      "id": "source:douyin-narrow-door",
+      "title": "抖音知识中台：走窄门，技能是工具箱",
+      "completeness": "complete",
+      "acquisition": "local-asr",
+      "intended_uses": ["talking-structure"],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7675749702352129321.md",
+      "verification_status": "完整本地 ASR，仅用于能力与真实行业问题需要对上这一结构。",
+      "canonical_ref": "不复用原句、原案例或把试用、客户和收入写成必然结果。",
+      "evidence_ids": ["evidence:douyin:7675749702352129321"]
+    },
+    {
+      "id": "source:source-essence",
+      "title": "AI做得出到接得住源头精髓卡",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-08-26-AI做得出到接得住-源头精髓卡-v1.json",
+      "verification_status": "8个必保节点已完成提纲覆盖校验。",
+      "canonical_ref": "只证明本轮保留做得出、有人试、接得住的论证链与边界，不证明其为行业统一标准。",
+      "evidence_ids": ["evidence:source-essence:task-20260826T-ai-product-to-delivery-v1"]
+    },
+    {
+      "id": "source:account-preflight",
+      "title": "当前36条作品任务级账号数据回执",
+      "completeness": "primary-source",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260826T-ai-product-to-delivery-v1.json",
+      "verification_status": "已读取，状态为历史快照，不冒充实时账号数据。",
+      "canonical_ref": "只用于约束开头、时长与观察假设，不用作平台因果或公开业务结论。",
+      "evidence_ids": ["evidence:account:task-20260826T-ai-product-to-delivery-v1"]
+    }
+  ],
+  "topic_authorization": {
+    "status": "user-selected",
+    "selected_by": "user",
+    "selection_mode": "explicit-topic-request",
+    "selected_topic": "AI服务的供给方，先要通过做得出、有人愿意试、接得住三道门；内容只是让这套能力被看见的入口。",
+    "user_instruction": "用户确认主线：把原稿写得更丰满、更有逻辑，说明为什么拍、为谁拍、给用户什么价值；优先保证质量。",
+    "source_ref": "conversation:2026-08-26:user-confirmed-mainline",
+    "confirmed_at": "2026-08-26T00:00:00+08:00",
+    "candidate_only": false
+  },
+  "brief_contract": {
+    "user_goal": "给会一点AI、想做产品或服务却没有稳定真实业务的人，一条不贬低技术、也不鼓吹个人IP的自检路径。",
+    "reference_role": "用户初稿负责提出“技术、信任与交付”的矛盾；抖音知识中台完整转写负责内部论证结构；AI选题雷达只负责提醒本条不能硬写成市场数据结论。",
+    "reference_forbidden_role": "不得提参考作者、原视频、原句、原案例；不得改成AI赚钱课、个人IP培训或企业服务推销。",
+    "required_arc": [
+      "从一个AI演示能跑、老板一问真实问题就停住的场景进入。",
+      "纠正技术无用论：技术是做得出的前提，但不替代信任与交付。",
+      "按做得出、有人愿意试、接得住三段说明各自症状和一个最小动作。",
+      "解释内容只负责让过程和边界被看见，不能替代能力或交付。",
+      "回到观众此刻所在的一段，用做、试、交付作为评论引导。"
+    ],
+    "forbidden_reframes": [
+      "不得写成所有技术人员都该做自媒体或个人IP的动员。",
+      "不得重复8月16日面向老板的四项AI服务筛选；本条是面向供给方的自检。",
+      "不得承诺做小样、做内容或写边界就能获得客户、收入或交付结果。"
+    ],
+    "semantic_contract": {
+      "audience_conflict": "我能把AI演示做出来，为什么别人还是不把真实工作交给我？",
+      "core_judgment": "技术解决做不做得出；真实业务还要经过有人愿意试和能否接得住两道门。",
+      "training_interpretation": "内容是把判断、过程、边界和复盘放出来的入口，不替代能力和交付。",
+      "ordinary_person_value": "观众能用三道门判断自己当前最该补什么，而不是继续囤工具。",
+      "chronology_is_not_main_arc": true,
+      "material_role_map": [
+        {"material": "用户完整初稿", "role": "hook-evidence", "supports": "提出技术之外还有信任与交付的问题，但删除绝对化断言。"},
+        {"material": "抖音知识中台完整转写", "role": "mechanism-evidence", "supports": "内部保留能力、市场问题、内容沉淀之间的递进，不复述任何参考内容。"},
+        {"material": "源头精髓卡", "role": "boundary", "supports": "保证三道门、内容定位与普通人动作完整出现。"},
+        {"material": "任务级账号数据回执", "role": "action-support", "supports": "开头先放具体冲突，避免从抽象技术背景进入。"}
+      ],
+      "alignment_refs": {
+        "audience_conflict": "可老板一问：资料给谁？哪句话能自动回？说错了谁负责？原来的员工怎么接？",
+        "core_judgment": "但做出来以后，还有两道门：别人愿不愿意拿真实业务让你试；真让你试了，你能不能接得住。",
+        "training_interpretation": "它真正的作用，是把你怎么判断、怎么做、哪些事不接、出了问题怎么复盘，放出来。",
+        "ordinary_person_value": "做不出来，就先把一段工作拆清楚。"
+      }
+    },
+    "alignment_evidence": "正文在前15秒给演示与真实业务的冲突，随后以三段自检逐步把问题落到动作，最后限定内容的作用并回到观众位置。",
+    "status": "locked"
+  },
+  "recent_six": [
+    {"title": "AI 使用 6 段位", "date": "2026-08-22", "audience_problem": "如何定位AI使用层次", "main_claim": "AI能力看它替你走到工作哪一段", "claim_id": "claim:ai-use:work-segment-map", "evidence": "用户锁定稿", "evidence_ids": ["evidence:recent:20260822"], "deliverable": "六层定位", "cta": "找出下一层", "content_path": "/Users/pc/Documents/口播/notes/2026-08-20-六层AI能力地图-用户最终锁定稿-v3.md", "sha256": "70900216007158a9f50c3f1a6ded5997b855e200a53364343f42d5aea63d425a", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "学AI真能多挣钱吗", "date": "2026-08-20", "audience_problem": "学AI投入是否值得", "main_claim": "先让AI解决真实工作，再决定是否继续投入", "claim_id": "claim:learn-ai:real-work-before-investment", "evidence": "用户最终口播稿", "evidence_ids": ["evidence:recent:20260820"], "deliverable": "投入判断", "cta": "先完成一件真实工作", "content_path": "/Users/pc/Documents/口播/notes/2026-08-19-学AI到底能不能多挣一点钱-用户最终口播稿-v1.md", "sha256": "994f569ba7566b3805126cb4b2205fc20e5e978b9dbb72692fd428390cc7f20d", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "普通人学AI，先问自己为什么学", "date": "2026-08-18", "audience_problem": "普通人是否盲目进入AI行业", "main_claim": "不要把AI学习直接等同于赚钱路线", "claim_id": "claim:learn-ai:cost-and-boundary", "evidence": "用户锁定最终稿", "evidence_ids": ["evidence:recent:20260818"], "deliverable": "学习边界", "cta": "先检查自身目的", "content_path": "/Users/pc/Documents/口播/notes/2026-08-18-普通人学AI与AIGC漫剧入门-用户锁定最终口播稿-v1.md", "sha256": "ded8b9d9e2f5055bea1475a930a2bbdec5e2dcee3e053dfe163296e8beb2115a", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "AI圈最魔幻的事：热闹很多，交付太少", "date": "2026-08-16", "audience_problem": "老板怎么辨别AI服务", "main_claim": "工具动作不能当经营建议", "claim_id": "claim:ai-service:buyer-side-screening", "evidence": "用户最终执行稿", "evidence_ids": ["evidence:recent:20260816"], "deliverable": "买方四项筛选", "cta": "用问题验方案", "content_path": "/Users/pc/Documents/口播/notes/2026-08-15-AI圈最魔幻的事-用户最终执行稿-v2.md", "sha256": "865ecd7c3756118b38d7fd903d86b3f5e8d30c2d886c431573726e68e9a2afd0", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "国产AI落到兰州", "date": "2026-08-14", "audience_problem": "企业AI责任缺位", "main_claim": "AI项目要有责任人与验收链", "claim_id": "claim:ai-project:responsibility-chain", "evidence": "正式口播稿", "evidence_ids": ["evidence:recent:20260814"], "deliverable": "五格责任检查", "cta": "写出空缺责任格", "content_path": "/Users/pc/Documents/口播/notes/2026-08-14-创业能力训练营第二集-正式口播稿-v3.md", "sha256": "82b0759bd3c093b4c70d44cf27903ba4bec4d46711292baaa2e73e154630461f", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "AI在支配你，还是你在掌控AI", "date": "2026-08-12", "audience_problem": "普通人如何保留判断", "main_claim": "AI不能替人承担真实领域判断与结果责任", "claim_id": "claim:ai-era:human-agency", "evidence": "用户最终录制稿", "evidence_ids": ["evidence:recent:20260812"], "deliverable": "回看AI后自己补了什么", "cta": "复盘本周决定", "content_path": "/Users/pc/Documents/口播/notes/2026-08-12-AI在支配你还是你掌控AI-用户最终录制稿-v1.md", "sha256": "70c9fd11205f4194e8c639ff40ebbe2fa36c84109af3e0d5a49ade580badcf2b", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"}
+  ],
+  "topic": {
+    "audience": "会一点AI、想做AI产品或服务但还没有稳定真实项目的普通从业者；同时让本地小微企业老板理解为什么只看演示不够。",
+    "problem": "把会搭工具、能做演示、发内容和能承担真实交付混成一件事，卡住以后只能继续换工具或追流量。",
+    "desired_change": "观众能辨认自己卡在做得出、有人试还是接得住，并采取一件相称的小动作。",
+    "novel_claim": "AI服务的供给方，先要通过做得出、有人愿意试、接得住三道门；内容只是让这套能力被看见的入口。",
+    "claim_id": "claim:ai-service:supply-side-three-gates",
+    "primary_evidence_ids": ["evidence:user-draft:20260826", "evidence:source-essence:task-20260826T-ai-product-to-delivery-v1"],
+    "difference_from_recent": "8月16日教老板从买方筛AI服务；本条转向会做AI的人，解释为什么演示之后仍接不到真实业务，并分别给小样、试用与交付的动作。它不复述买方四问，也不重复8月8日“做AI自媒体积累资产”的结论。",
+    "evidence_proves": "本轮来源与精髓卡支持一条服务供给方的三段自检结构，并锁定不夸大技术、内容或结果的表达边界。",
+    "evidence_does_not_prove": "不证明所有AI产品都会经历同一过程，不证明内容会带来客户，不证明任何观众能获得试用、收入或规模化交付。",
+    "audience_takeaway": "用做得出、试、交付定位自己，今天只补一个真实缺口。",
+    "boundary": "不是AI赚钱课、个人IP课、工具推荐或企业服务承诺。",
+    "delete_candidates": ["删除技术门槛消失和唯一赛道的绝对表达", "删除没有公开证据的行业数据与收入承诺", "删除和8月16日买方四问重复的展开"]
+  },
+  "frozen_topic_hits": [],
+  "audience_fit": {
+    "account_stage": "试验",
+    "speaker_position": "兰州本地AI实践者和复杂信息翻译者，分享自己在产品、试用和交付问题上的判断，不冒充已规模化交付的AI服务专家。",
+    "first_20s_connection": "观众看着智能客服或自动跟进的录屏觉得能做，下一秒却被资料、自动回复和错误责任的问题问住。",
+    "high_level_material_role": "none",
+    "ordinary_scenes": ["用AI做出自动回复演示，但不知道哪类话能自动回。", "想让客户拿出资料试一试，对方却担心数据、员工和错误。", "交付时面对乱资料、原有习惯与异常处理，只能临时补。"],
+    "audience_gain": "把模糊的“我是不是不够强”换成一次具体位置判断。",
+    "authority_boundary": "不引用未验证客户案例，不把服务判断说成行业定律，不承诺获客与交付效果。",
+    "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "account_data_preflight": {"receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260826T-ai-product-to-delivery-v1.json", "receipt_sha256": "cff0eb3c5847f8aad09a26a46f7ccdf150519d2b9599f1ead6a9ed5e566fc1c2", "read": true},
+    "account_data_application": {
+      "account_baseline_evidence": {"metric": "weightedMetrics.fiveSecondCompletionRate", "value": 33.0917, "use": "历史全账号五秒留存基线只用于约束本条：前三秒先给演示与真实业务的反差，不能从AI趋势或个人IP定义开始。"},
+      "recent_work_evidence": {"video_key": "4da298e8a29710e45a7f09fb", "metric": "metrics.fiveSecondCompletionRate", "value": 44.49, "use": "8月16日同样从真实经营问题进入的历史表现较高；本条只借用“先放具体冲突”的已确认学习，转为供给方自检，不复用四项买方筛选。"},
+      "planned_change": "开头在12秒内给出能跑的演示和老板真实追问，并在20秒前说清本条不是技术无用论，而是三道门自检。",
+      "causal_claim": "human-confirmed-lesson-only"
+    },
+    "learning_card_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+    "learning_card_sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "newer_content_acknowledged": true,
+    "newer_content_ids": ["2026-08-11-training-camp-episode-1", "2026-08-12-ai-best-worst", "2026-08-14-training-camp-episode-2", "2026-08-16-ai-magic", "2026-08-18-why-learn-ai", "2026-08-20-learn-ai-real-account", "2026-08-22-ai-levels"],
+    "newer_content_metric_status": "学习卡快照后已发布内容由任务级回执覆盖；它们只用于内容差异和开头假设，不作为平台因果。",
+    "applied_lesson_ids": ["lesson:opening:title-answer-before-background", "lesson:hook:concrete-conflict-scene-object", "lesson:duration:value-order-before-shortening", "lesson:metrics:separate-early-and-mature-windows"],
+    "opening_plan": {"answer_or_conflict_by_second": 3, "proof_or_real_scene_by_second": 12, "audience_relevance_by_second": 18, "first_viewer_value_by_second": 28, "title_answer_by_second": 3, "delayed_payoff_risk_checked": true},
+    "duration_plan": {"planned_seconds": 230, "single_core_problem": "会一点AI的人怎样判断自己卡在产品、真实试用还是交付。", "justification": "三段每段都需要一个症状、一个现实场景和一个最小动作；四分钟内能讲清而不扩成工具课，也不压缩成一句口号。", "evidence_based_justification": true},
+    "metric_plan": {"primary_metric": "five_second_completion_rate", "secondary_metrics": ["average_watch_seconds", "profile_visits"], "observation_windows": ["early-within-3h", "24h", "72h", "7d"], "hypothesis": "演示与真实业务的冲突加上三段自检，可能让想做AI服务的人比抽象讨论技术或个人IP更早认出自己；若成熟窗口没有出现更清晰的讨论与观看信号，放弃此开头假设。", "early_vs_mature_windows_acknowledged": true}
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {"target": "primary", "script_evidence": "正文分别写出“先做出一个小样”“让对方有条件判断要不要给小范围试用”“给你什么资料，谁确认结果，什么算做完，出了异常先找谁”。", "viewer_test": "观众能用做得出、有人试、接得住说清自己卡在哪一段，并写出一个今天可做的动作。"},
+    "surprise": {"target": "supporting", "script_evidence": "开头连续写“录屏一跑，挺像回事”与“资料给谁？哪句话能自动回？说错了谁负责？原来的员工怎么接？”形成反差。", "viewer_test": "目标观众能在前15秒复述：一个演示跑通，不等于真实业务能交。"},
+    "expression": {"target": "primary", "script_evidence": "正文用“资料给谁”“员工会不会用”“谁来兜底”“拿什么验收”解释交付，而非只用信任、壁垒等名词。", "viewer_test": "不熟悉AI术语的观众仍能用自己的工作说出第一、第二或第三道门。"},
+    "resonance": {"target": "supporting", "script_evidence": "正文承认“能做几个效果，却说不清输入、处理、输出和谁检查”以及“客户一给真实资料就乱”的挫败。", "viewer_test": "观众的认同应来自真实资料、员工习惯和异常处理的经历，而不是被许诺收益。"},
+    "integrity_boundary": "不得虚构老板、客户、项目、收入、试用或交付结果来制造惊喜和感染力；不得把演示、小样或内容包装成必然获客、成交、涨粉或赚钱。",
+    "review_status": "planned",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {"name": "AI服务的三道门自检", "problem": "会做演示的人把接不到真实业务理解为缺工具、缺流量或技术没用。", "bottleneck": "小样可行性、客户试用意愿与交付责任被混为一件事。", "mechanism": "先把一个具体工作做成有输入、输出和人工检查的小样；再让对方能看见行业理解和边界；最后把资料范围、确认、验收和异常处理写清。", "observable_change": "观众能指出自己当前只卡住的一段，并写下一项真实小动作。", "evidence": "用户完整初稿、完整内部转写、源头精髓卡与已确认买方筛选稿。", "evidence_proves": "支持本条用三段区分演示、试用和交付。", "evidence_does_not_prove": "不证明三段适用于所有商业模式，也不保证任何一段完成就会产生业务结果。", "audience_relevance": "刚开始做AI产品或服务的人可以停止盲目囤工具，先补自己最短的一段。", "boundary": "不涉及真实客户资料、自动外发、收费、交易或商业承诺。"}
+  ],
+  "voice": {"profile_path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md", "read": true},
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-26-AI做得出不等于接得住-正式口播稿-v1.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "copy_review": {"required": true, "report_path": "/Users/pc/Documents/口播/notes/2026-08-26-AI做得出不等于接得住-文案双Skill审稿报告-v1.json"},
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": true,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "performance_feedback_recheck_passed": true,
+    "compliance_passed": true,
+    "user_script_approved": false,
+    "user_language_approval": {"status": "pending", "approved_by": null, "approval_ref": null, "approved_at": null},
+    "read_aloud_evidence": {"mode": "pending-user-read", "status": "pending", "evidence_ref": "待用户对当前稿件完成本人真人朗读与语言确认。"},
+    "phrase_exemptions": [],
+    "ai_tone_exemptions": [],
+    "anchor_exemptions": []
+  }
+}

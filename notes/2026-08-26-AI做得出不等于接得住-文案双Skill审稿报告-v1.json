@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260826T-ai-product-to-delivery-v1",
+  "status": "passed",
+  "reviewed_at": "2026-08-26T00:00:00+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-26-AI做得出不等于接得住-正式口播稿-v1.md",
+    "sha256": "b6ae041b122caebfdc957d6a5c0b63ff477eb0d3c04e760cab3239b4e290758e"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "删除了“技术门槛已透明”“唯一赛道”等大而全判断；开头直接用老板对资料、自动回复和责任的追问建立冲突。三段结构保留，因为它承担观众自检功能；每段均以具体症状和动作打断，不写成对称口号。内容段改为怎么判断、怎么做、哪些事不接、怎么复盘，避免“信任资产”等抽象名词。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "智能客服、报价助手、自动跟进，录屏一跑，挺像回事。",
+        "risk_level": "medium",
+        "reason": "非从业者可能把三个工具名听成又一段产品盘点；它需要紧接老板的追问，不能停在炫演示。",
+        "candidates": {
+          "conservative": "一个自动回复、一个报价小助手，录屏跑起来，看着都没问题。",
+          "direct": "演示里都能跑，真到业务里，问题才刚开始。",
+          "vivid": "录屏里一片顺，老板把资料往你面前一放，场面就变了。"
+        },
+        "fact_difference": "三句都不新增任何项目、客户或效果事实；当前版本保留常见场景并立即进入资料与责任追问。",
+        "recommendation": "保留当前版本。它有具体画面，下一句直接落到观众最关心的交付问题。"
+      },
+      {
+        "original": "那做内容，到底放在这儿干什么？",
+        "risk_level": "medium",
+        "reason": "这一段如果说得太长，会把供给方自检带回泛泛的个人IP讨论。",
+        "candidates": {
+          "conservative": "那内容在这件事里，能帮你做什么？",
+          "direct": "那为什么还要做内容？",
+          "vivid": "那视频不是为了热闹，它该留下什么？"
+        },
+        "fact_difference": "三个候选都保留内容是入口、不是结果的事实锁，不新增获客或收入承诺。",
+        "recommendation": "保留当前版本。它承接前三段后自然转向内容的有限作用，下一句已给出具体说明。"
+      }
+    ],
+    "no_high_risk_reason": "两处中风险均已在相邻句给出具体承接；未发现需要强改的高风险句。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": ["删除用户初稿中无本轮证据支持的技术门槛透明、生产能力拉平、唯一长线赛道等绝对表达。"],
+    "wording_strength_changes": ["将“客户买的从来不是工具”收紧为客户交出真实业务时通常还会看责任、协作和验收。"],
+    "pending_user_confirmations": ["用户对当前文稿的自然语言确认。", "用户本人对当前文稿的真人朗读确认。"]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  }
+}
