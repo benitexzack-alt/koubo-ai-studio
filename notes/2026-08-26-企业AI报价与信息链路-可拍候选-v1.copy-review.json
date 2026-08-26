@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260826T100817Z-1d1c2645",
+  "status": "passed",
+  "reviewed_at": "2026-08-26T18:24:45+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-08-26-企业AI报价与信息链路-可拍候选-v1.md",
+    "sha256": "c491964b87284c9d815bc98917d2c3e42bd995e0cd48ebc75fa340a1d1e272bb"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "正文从老板面对报价看不明白和餐饮运营每天拉数的具体处境进入，不引用参考视频或普通博主充当权威。餐饮交流只承担问题场景，AI只承担收集、归类、对比和提示；经营判断、执行和责任仍留给人。本人信息获取作战平台只作为当前方法，不包装成已验证的企业产品或客户结果。"
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "同样是企业AI落地，有的报价让人觉得便宜，有的又高得你连该问什么都不知道。",
+        "risk_level": "low",
+        "reason": "冲突直接，但不能让后续画面误导为价格高低判断或虚构报价单。",
+        "candidates": {
+          "conservative": "同样是企业AI落地，有的报价让人觉得便宜，有的又高得你连该问什么都不知道。",
+          "direct": "企业AI报价差很多，老板最难的不是嫌贵，是不知道自己到底买了什么。",
+          "vivid": "同样叫企业AI，有的像买个工具，有的像重新理一段业务，报价当然不像一回事。"
+        },
+        "fact_difference": "三种表达都不引入具体价格或市场结论；当前保留用户原句，视觉只呈现问号、范围和责任差异。",
+        "recommendation": "保留用户原句，用V8对照卡立即落到‘界面’与‘一段活’的差别。"
+      },
+      {
+        "original": "要看门店经营，到底哪些数据要看？从哪里拿？谁来整理？看完以后谁做判断？判断完以后，是补货、查损耗，还是先不动？做完以后，这个判断到底对不对，下一次还要不要继续这么做？",
+        "risk_level": "medium",
+        "reason": "连续问题较长，纯口播容易形成十秒以上无视觉变化。",
+        "candidates": {
+          "conservative": "保留整段原句，并按问题出现顺序逐项显示。",
+          "direct": "数据从哪来、谁整理、谁判断、做什么、结果怎么回来？",
+          "vivid": "从看见异常，到补货或不动，再到结果回来，这才是一整段活。"
+        },
+        "fact_difference": "候选只压缩表达，不新增自动化或经营效果；当前保留用户原句，由导演计划拆成连续六节点。",
+        "recommendation": "不改正文，用V8流程卡和节点推进解决留存风险。"
+      },
+      {
+        "original": "评论区留“信息”，我把这套轻量版整理好，免费发给大家。",
+        "risk_level": "high",
+        "reason": "这是现实交付承诺；若工具包发布前没有实际文件、说明和边界，观众无法领取。",
+        "candidates": {
+          "conservative": "评论区留“信息”，这套轻量版整理好后，我免费发给大家。",
+          "direct": "想先把自己行业的信息入口理出来，评论区留“信息”。",
+          "vivid": "别急着买系统，先把每天该看什么理出来。需要轻量版的，评论区留“信息”。"
+        },
+        "fact_difference": "三种表达均不承诺工具已经产生效果；当前原句只有在工具包v0.1实际交付后才能保留。",
+        "recommendation": "本轮同步建立信源表、筛选卡、信号验证表、使用说明和边界说明，完成后保留。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "不公开未独立核验的具体门店数量。",
+      "不在尚无公开仓库和许可证时宣称工具包已经开源。"
+    ],
+    "wording_strength_changes": [
+      "将‘昨天几十家店数据要看’收紧为‘昨天多家门店的数据要看’，保留现场问题但不公开具体数量。",
+      "将‘免费开源’收紧为‘免费分享’，与实际评论区发放方式一致。"
+    ],
+    "pending_user_confirmations": [
+      "用户需确认上述两处最小事实安全调整。",
+      "用户需对当前候选完成真人朗读或直接录制；实际说出口的内容将成为字幕唯一正文。",
+      "发布前须确认轻量版工具包文件实际可领取。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  },
+  "read_aloud_note": "已完成文本层面的停顿、连读和长句检查；这不替代用户本人真人朗读或录制证据。"
+}
