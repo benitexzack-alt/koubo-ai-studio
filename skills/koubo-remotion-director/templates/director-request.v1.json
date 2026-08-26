@@ -1,0 +1,413 @@
+{
+  "schemaVersion": "koubo-director-request/v1",
+  "templateOnly": true,
+  "_instructions": [
+    "复制本模板为任务级 request JSON；不要直接运行本模板。",
+    "所有时间均为样片相对秒；spoken.sourceIn/sourceOut 才使用媒体自身秒码。",
+    "本模板默认 execution.mode=plan-only；spoken 窗必须为20至30秒，render.durationSeconds、captions 和 semanticBeats 必须连续覆盖同一时长。",
+    "plan-only 只允许生成 validate-plan 命令，samplePlan.outputs 必须为 null；不得生成或宣称任何渲染、静帧、A/B打包或正式生产命令。",
+    "sha256 必须由当前真实文件计算，不接受占位值。",
+    "complex-explanation 必须有5至6组、9至13节点、至少3层和至少5级装配。",
+    "occluded-state-reveal 只在完全遮挡时切换已绑定状态；不得声称 mechanical-causality 或真实机械关节动画。",
+    "摄影状态图、遮挡物、用户接受回执、监督门回执和状态包回执都必须使用绝对路径与当前 SHA-256；visual-state-package 逐项绑定 sceneId、receiptStateId 和 visualStateAssetId。",
+    "录屏必须列出 excludedRanges；每张完成态必须列出 requiredStageIds 和至少30帧稳定时间。",
+    "execution.runtimeContractId 必须保持 koubo-director-runtime-files/v1；runtimeFiles 必须逐项填写当前真实文件路径和当前 SHA-256，不得删除条目、重复ID、保留空数组或写成可自动派生。",
+    "从 projectRoot 执行 shasum -a 256 -- <path> 逐文件计算 SHA-256；任何文件变化后必须重新计算并更新对应条目。",
+    "下列清单必须且只能包含16项 plan-only 公共运行时绑定；schema-validator-engine 是实际执行的 Ajv 单文件闭包。不得加入 remotion-cli、chrome-headless-shell、ab-packager、ffmpeg-binary、ffprobe-binary 或任何 public-* 绑定。",
+    "integrityAnchors 的三个路径固定为当前合同路径；三个 SHA-256 都必须在实例化任务请求时按当前真实文件重新计算，其中两个 registry SHA 还必须由独立环境锚点传入。",
+    "如需进入 renderable，必须由独立授权建立新的请求 revision；不得就地把本 plan-only 请求改成渲染授权。"
+  ],
+  "requestId": "replace-with-task-id",
+  "status": "candidate",
+  "productionEligible": false,
+  "projectRoot": "<ABSOLUTE_REPOSITORY_ROOT>",
+  "reference": {
+    "path": "<ABSOLUTE_APPROVED_REFERENCE_PATH>",
+    "sha256": "<CURRENT_REFERENCE_SHA256>"
+  },
+  "style": {
+    "id": "paper-editorial-constructive-narrative-v1",
+    "path": "skills/koubo-remotion-director/references/paper-editorial-style.v1.json",
+    "sha256": "<CURRENT_STYLE_FILE_SHA256>"
+  },
+  "authority": {
+    "transcriptPath": "<ABSOLUTE_AUTHORITY_TRANSCRIPT_PATH>",
+    "transcriptSha256": "<CURRENT_AUTHORITY_TRANSCRIPT_SHA256>",
+    "timelineWindow": {
+      "start": 0,
+      "end": 30,
+      "coordinateSystem": "authoritative-timeline"
+    },
+    "receipts": [
+      {
+        "id": "user-style-direction-acceptance",
+        "kind": "user-style-direction-acceptance",
+        "effect": "required-gate",
+        "path": "<ABSOLUTE_USER_STYLE_ACCEPTANCE_RECEIPT_PATH>",
+        "sha256": "<CURRENT_USER_STYLE_ACCEPTANCE_RECEIPT_SHA256>"
+      },
+      {
+        "id": "supervisor-static-gate",
+        "kind": "supervisor-static-gate",
+        "effect": "required-gate",
+        "path": "<ABSOLUTE_SUPERVISOR_STATIC_GATE_RECEIPT_PATH>",
+        "sha256": "<CURRENT_SUPERVISOR_STATIC_GATE_RECEIPT_SHA256>"
+      },
+      {
+        "id": "visual-state-package-receipt",
+        "kind": "visual-state-package",
+        "effect": "evidence-only",
+        "path": "<ABSOLUTE_VISUAL_STATE_PACKAGE_RECEIPT_PATH>",
+        "sha256": "<CURRENT_VISUAL_STATE_PACKAGE_RECEIPT_SHA256>",
+        "bindings": [
+          {
+            "sceneId": "occluded-scene",
+            "receiptStateId": "input-state",
+            "visualStateAssetId": "state-base"
+          },
+          {
+            "sceneId": "occluded-scene",
+            "receiptStateId": "output-state",
+            "visualStateAssetId": "state-revealed"
+          },
+          {
+            "sceneId": "occluded-scene",
+            "receiptStateId": "occluder-state",
+            "visualStateAssetId": "state-occluder"
+          }
+        ]
+      }
+    ],
+    "wordTimeToleranceSeconds": 0.35
+  },
+  "render": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 30,
+    "publicDir": "<ABSOLUTE_PUBLIC_MEDIA_DIRECTORY>",
+    "outputDirectory": "work/director-paper-editorial/<TASK_ID>/plan-only-output"
+  },
+  "media": {
+    "spoken": {
+      "path": "<ABSOLUTE_CANONICAL_PROXY_PATH>",
+      "staticFileName": "spoken-30fps.mp4",
+      "sha256": "<CURRENT_CANONICAL_PROXY_SHA256>",
+      "sourceIn": 0,
+      "sourceOut": 30,
+      "authoritativeOriginal": {
+        "path": "<ABSOLUTE_AUTHORITATIVE_ORIGINAL_PATH>",
+        "sha256": "<CURRENT_AUTHORITATIVE_ORIGINAL_SHA256>"
+      }
+    },
+    "screen": null,
+    "sfx": [
+      {
+        "id": "paper-lock",
+        "path": "<ABSOLUTE_SFX_PATH>",
+        "staticFileName": "sfx-paper-lock.wav",
+        "sha256": "<CURRENT_SFX_SHA256>",
+        "cues": [
+          {"id": "paper-lock-cue", "atSeconds": 23, "volume": 0.2}
+        ]
+      }
+    ],
+    "visualStateAssets": [
+      {
+        "id": "state-base",
+        "path": "<ABSOLUTE_STATE_BASE_PATH>",
+        "staticFileName": "state-base.png",
+        "sha256": "<CURRENT_STATE_BASE_SHA256>",
+        "role": "base-state"
+      },
+      {
+        "id": "state-revealed",
+        "path": "<ABSOLUTE_STATE_REVEALED_PATH>",
+        "staticFileName": "state-revealed.png",
+        "sha256": "<CURRENT_STATE_REVEALED_SHA256>",
+        "role": "revealed-state"
+      },
+      {
+        "id": "state-occluder",
+        "path": "<ABSOLUTE_STATE_OCCLUDER_PATH>",
+        "staticFileName": "state-occluder.png",
+        "sha256": "<CURRENT_STATE_OCCLUDER_SHA256>",
+        "role": "occluder"
+      }
+    ]
+  },
+  "captions": [
+    {
+      "id": "cue-001",
+      "start": 0,
+      "end": 15,
+      "text": "替换为实录前半段复杂解释原句"
+    },
+    {
+      "id": "cue-002",
+      "start": 15,
+      "end": 30,
+      "text": "替换为实录后半段遮挡换态原句"
+    }
+  ],
+  "semanticBeats": [
+    {
+      "id": "complex-scene",
+      "kind": "complex-explanation",
+      "start": 0,
+      "end": 15,
+      "spokenLine": "替换为实录前半段复杂解释原句",
+      "cognitiveIncrement": "观众静音时仍能看懂多个要素如何汇入同一个问题。",
+      "visualization": {
+        "layout": "converging-workbench",
+        "camera": "oblique-top-down",
+        "layers": 4,
+        "objectGroups": [
+          {
+            "id": "g1",
+            "label": "主问题",
+            "material": "撕边卡纸",
+            "visualPrimitive": "request-tray",
+            "visualRole": "context-input",
+            "items": [
+              {"id": "n1", "label": "问题", "role": "input"},
+              {"id": "n2", "label": "约束", "role": "constraint"}
+            ]
+          },
+          {
+            "id": "g2",
+            "label": "路径一",
+            "material": "打印胶片",
+            "visualPrimitive": "film-reel",
+            "visualRole": "source-channel",
+            "items": [
+              {"id": "n3", "label": "动作一", "role": "action"},
+              {"id": "n4", "label": "证据一", "role": "evidence"}
+            ]
+          },
+          {
+            "id": "g3",
+            "label": "路径二",
+            "material": "折叠地图",
+            "visualPrimitive": "folded-map",
+            "visualRole": "source-channel",
+            "items": [
+              {"id": "n5", "label": "动作二", "role": "action"},
+              {"id": "n6", "label": "证据二", "role": "evidence"}
+            ]
+          },
+          {
+            "id": "g4",
+            "label": "路径三",
+            "material": "压印纸签",
+            "visualPrimitive": "comment-magnifier",
+            "visualRole": "source-channel",
+            "items": [
+              {"id": "n7", "label": "动作三", "role": "action"},
+              {"id": "n8", "label": "证据三", "role": "evidence"}
+            ]
+          },
+          {
+            "id": "g5",
+            "label": "汇合",
+            "material": "纸雕托盘",
+            "visualPrimitive": "convergence-tray",
+            "visualRole": "result-convergence",
+            "items": [
+              {"id": "n9", "label": "共同结果", "role": "result"}
+            ]
+          }
+        ],
+        "assemblyStages": [
+          {"id": "s1", "atSeconds": 0.2, "action": "建立承载面", "targetIds": ["g1"]},
+          {"id": "s2", "atSeconds": 2.2, "action": "抽出", "targetIds": ["g2"]},
+          {"id": "s3", "atSeconds": 4.4, "action": "展开", "targetIds": ["g3"]},
+          {"id": "s4", "atSeconds": 6.6, "action": "盖章", "targetIds": ["g4"]},
+          {"id": "s5", "atSeconds": 11, "action": "汇入", "targetIds": ["g5", "n9"]}
+        ],
+        "relations": [
+          {"from": "g1", "to": "g2"},
+          {"from": "g1", "to": "g3"},
+          {"from": "g1", "to": "g4"},
+          {"from": "g2", "to": "g5"},
+          {"from": "g3", "to": "g5"},
+          {"from": "g4", "to": "g5"}
+        ]
+      }
+    },
+    {
+      "id": "occluded-scene",
+      "kind": "occluded-state-reveal",
+      "start": 15,
+      "end": 30,
+      "spokenLine": "替换为实录后半段遮挡换态原句",
+      "cognitiveIncrement": "观众能读出输入态、完全遮挡换态点和结果态，不得将它表述为真实机械连续运动。",
+      "visualization": {
+        "layout": "occluded-state-reveal",
+        "camera": "macro-oblique-paper-miniature",
+        "layers": 4,
+        "input": {
+          "id": "occluded-input-node",
+          "label": "输入状态",
+          "groupLabel": "输入票据",
+          "material": "纤维纸",
+          "visualPrimitive": "answer-tickets",
+          "visualRole": "causal-input"
+        },
+        "occluder": {
+          "id": "occluded-occluder-node",
+          "label": "纸板快门",
+          "groupLabel": "完全遮挡换态",
+          "material": "瓦楞纸板",
+          "visualPrimitive": "paper-shutter",
+          "visualRole": "transition-occluder"
+        },
+        "output": {
+          "id": "occluded-output-node",
+          "label": "结果证据",
+          "groupLabel": "实体证据卡",
+          "material": "照片纸",
+          "visualPrimitive": "screen-proof-strip",
+          "visualRole": "evidence-output"
+        },
+        "support": {
+          "id": "occluded-support-node",
+          "label": "事实边界",
+          "groupLabel": "证据承载面",
+          "material": "木件与厚卡纸",
+          "visualPrimitive": "path-base",
+          "visualRole": "causal-support"
+        },
+        "assemblyStages": [
+          {
+            "id": "o1",
+            "atSeconds": 15.2,
+            "action": "输入票进入",
+            "targetIds": ["occluded-scene-input", "occluded-input-node"]
+          },
+          {
+            "id": "o2",
+            "atSeconds": 22.8,
+            "action": "纸板快门完全遮挡",
+            "targetIds": ["occluded-scene-occluder", "occluded-occluder-node"]
+          },
+          {
+            "id": "o3",
+            "atSeconds": 23,
+            "action": "遮挡后显现证据",
+            "targetIds": ["occluded-scene-output", "occluded-output-node"]
+          },
+          {
+            "id": "o4",
+            "atSeconds": 24,
+            "action": "证据停留在承载面",
+            "targetIds": ["occluded-scene-support", "occluded-support-node"]
+          }
+        ],
+        "relations": [
+          {"from": "occluded-input-node", "to": "occluded-occluder-node"},
+          {"from": "occluded-occluder-node", "to": "occluded-output-node"},
+          {"from": "occluded-output-node", "to": "occluded-support-node"}
+        ],
+        "stateReveal": {
+          "method": "fully-occluded-hard-cut",
+          "occluderAssetId": "state-occluder",
+          "transitionFrames": {
+            "close": 6,
+            "occludedHold": 2,
+            "open": 6
+          },
+          "states": [
+            {
+              "id": "input-state",
+              "assetId": "state-base",
+              "stageId": "o1",
+              "atSeconds": 15.2
+            },
+            {
+              "id": "output-state",
+              "assetId": "state-revealed",
+              "stageId": "o3",
+              "atSeconds": 23
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "stills": [
+    {
+      "id": "complex-complete",
+      "atSeconds": 13.5,
+      "sceneId": "complex-scene",
+      "purpose": "复杂解释镜完成态",
+      "referenceFrameIds": ["REPLACE_WITH_APPROVED_REFERENCE_FRAME_ID"],
+      "requiredStageIds": ["s1", "s2", "s3", "s4", "s5"],
+      "minimumSettledFrames": 30
+    },
+    {
+      "id": "occluded-result-complete",
+      "atSeconds": 26.5,
+      "sceneId": "occluded-scene",
+      "purpose": "完全遮挡后的证据完成态",
+      "referenceFrameIds": ["REPLACE_WITH_APPROVED_REFERENCE_FRAME_ID"],
+      "requiredStageIds": ["o1", "o2", "o3", "o4"],
+      "minimumSettledFrames": 30
+    },
+    {
+      "id": "sample-complete",
+      "atSeconds": 28.5,
+      "sceneId": "occluded-scene",
+      "purpose": "样片最终锁定态",
+      "referenceFrameIds": ["REPLACE_WITH_APPROVED_REFERENCE_FRAME_ID"],
+      "requiredStageIds": ["o1", "o2", "o3", "o4"],
+      "minimumSettledFrames": 30
+    }
+  ],
+  "execution": {
+    "mode": "plan-only",
+    "runtimeContractId": "koubo-director-runtime-files/v1",
+    "integrityAnchors": {
+      "compiler": {
+        "path": "skills/koubo-remotion-director/scripts/compile-director-plan.mjs",
+        "sha256": "<CURRENT_COMPILER_SHA256>"
+      },
+      "requestIsolationRegistry": {
+        "path": "skills/koubo-remotion-director/registries/request-isolation-registry.v1.json",
+        "sha256": "<CURRENT_REQUEST_ISOLATION_REGISTRY_SHA256>"
+      },
+      "supervisorAcceptanceRegistry": {
+        "path": "skills/koubo-remotion-director/registries/supervisor-acceptance-anchor-registry.v1.json",
+        "sha256": "<CURRENT_SUPERVISOR_ACCEPTANCE_REGISTRY_SHA256>"
+      }
+    },
+    "requestPath": "work/director-paper-editorial/<TASK_ID>/director-request.v1.json",
+    "outputPlanPath": "work/director-paper-editorial/<TASK_ID>/director-output.v1.json",
+    "cwd": "remotion",
+    "entry": "skills/koubo-remotion-director/assets/remotion-paper-editorial/entry.tsx",
+    "nodeBinary": "<ABSOLUTE_NODE_BINARY_PATH>",
+    "compositions": {
+      "withSfx": "PaperEditorialDirector-Sample-WithSfx",
+      "noSfx": "PaperEditorialDirector-Sample-NoSfx",
+      "still": "PaperEditorialDirector-Still"
+    },
+    "runtimeFiles": [
+      {"id": "entry", "path": "skills/koubo-remotion-director/assets/remotion-paper-editorial/entry.tsx", "sha256": "<CURRENT_ENTRY_SHA256>"},
+      {"id": "composition", "path": "skills/koubo-remotion-director/assets/remotion-paper-editorial/DirectorComposition.tsx", "sha256": "<CURRENT_COMPOSITION_SHA256>"},
+      {"id": "primitives", "path": "skills/koubo-remotion-director/assets/remotion-paper-editorial/PaperPrimitives.tsx", "sha256": "<CURRENT_PRIMITIVES_SHA256>"},
+      {"id": "render-style", "path": "skills/koubo-remotion-director/assets/remotion-paper-editorial/style.ts", "sha256": "<CURRENT_RENDER_STYLE_SHA256>"},
+      {"id": "output-schema", "path": "skills/koubo-remotion-director/templates/director-output.v1.schema.json", "sha256": "<CURRENT_OUTPUT_SCHEMA_SHA256>"},
+      {"id": "validator", "path": "skills/koubo-remotion-director/scripts/validate-director-output.mjs", "sha256": "<CURRENT_VALIDATOR_SHA256>"},
+      {"id": "node-binary", "path": "<ABSOLUTE_NODE_BINARY_PATH>", "sha256": "<CURRENT_NODE_BINARY_SHA256>"},
+      {"id": "remotion-package", "path": "remotion/package.json", "sha256": "<CURRENT_REMOTION_PACKAGE_SHA256>"},
+      {"id": "remotion-lock", "path": "remotion/package-lock.json", "sha256": "<CURRENT_REMOTION_LOCK_SHA256>"},
+      {"id": "schema-validator-engine", "path": "skills/koubo-remotion-director/assets/schema-validator-engine.mjs", "sha256": "<CURRENT_SCHEMA_VALIDATOR_ENGINE_SHA256>"},
+      {"id": "remotion-offthread-video", "path": "remotion/node_modules/remotion/dist/cjs/video/OffthreadVideo.js", "sha256": "<CURRENT_REMOTION_OFFTHREAD_VIDEO_SHA256>"},
+      {"id": "remotion-offthread-video-rendering", "path": "remotion/node_modules/remotion/dist/cjs/video/OffthreadVideoForRendering.js", "sha256": "<CURRENT_REMOTION_OFFTHREAD_VIDEO_RENDERING_SHA256>"},
+      {"id": "remotion-get-current-time", "path": "remotion/node_modules/remotion/dist/cjs/video/get-current-time.js", "sha256": "<CURRENT_REMOTION_GET_CURRENT_TIME_SHA256>"},
+      {"id": "remotion-sequence", "path": "remotion/node_modules/remotion/dist/cjs/Sequence.js", "sha256": "<CURRENT_REMOTION_SEQUENCE_SHA256>"},
+      {"id": "remotion-cli-index", "path": "remotion/node_modules/@remotion/cli/dist/index.js", "sha256": "<CURRENT_REMOTION_CLI_INDEX_SHA256>"},
+      {"id": "remotion-cli-package", "path": "remotion/node_modules/@remotion/cli/package.json", "sha256": "<CURRENT_REMOTION_CLI_PACKAGE_SHA256>"}
+    ]
+  }
+}

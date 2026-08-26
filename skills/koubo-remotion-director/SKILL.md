@@ -1,184 +1,143 @@
 ---
 name: koubo-remotion-director
-description: 口播项目的 Remotion 视频包装导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库，将转写、粗剪或完整原片推进到 visual-plan.json、V8连续语义视觉规划、风险帧预览、Remotion包装、字幕/动效/遮挡质检和release记录；当用户要求优化口播剪辑流程、按V8制作视频、把参考图落到成片、修复卡片裁切/挡脸/字幕错位或生成与校验visual-plan/release时使用。
+description: 把真实口播实录与权威时间轴编译成摄影级手作纸艺微缩风格的分镜、完成态静帧、动态样片计划和可复现 Remotion 命令。适用于需要为口播自动拆镜、生成纸厚/遮挡/机械因果或遮挡换态插片、执行 WithSfx/NoSfx 同画面样片或验证换输入不改源码的任务。
 ---
 
-# 口播 Remotion 导演
+# 口播纸媒叙事装配导演
 
-## 项目根目录
+这项 Skill 的交付物不是一句提示词，也不是固定三段动画。它把一条真实口播的实录证据编译成可追溯、可换输入、可渲染的导演计划。
 
-从当前工作目录向上查找同时包含 `AGENTS.md`、`remotion/`、`tools/` 和 `workflow/` 的目录，将它记为 `<project-root>`。后续路径都相对于该目录，不依赖固定用户名或克隆位置。
+## 当前边界
 
-## 核心定位
+- 只接受拍摄后的真实音视频和实录权威时间轴；拍摄前稿只能标 `comparison-only`。
+- 最终参考片只学习纸材、空间、构图、装配、因果和声画机制，不复制品牌、照片、标题、具体版式、镜头顺序、机器外形或原音效。
+- 旧 paper v1、G01–G04、西北算格 V1/V2 和旧 V3 成片都不得作为新母版或输入资产。
+- 每条新样片都从 `candidate / awaiting-user-review` 开始。机器通过、静帧存在、视频能播放都不等于风格通过。
+- 本地静帧、Remotion、SFX 和技术 QA 可以执行；联网、付费模型、正式自动化、正式剪辑恢复必须另获授权。
 
-把 Codex + Remotion 从“临时写动效”变成口播项目的固定导演流程。优先保证真实口播、字幕时间轴、视觉可读性和发布门禁，再追求高级动画。
+## 必读
 
-Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有视觉方案、风险帧预览和机器质检；用户完整观看前，只能说“预览已生成”或“机器侧质检通过”。
+按顺序读取：
 
-## 必读顺序
+1. 项目 `AGENTS.md`、`project.md` 和与实录、字幕、V8 相关的现行知识条目。
+2. [paper-editorial-style.v1.json](references/paper-editorial-style.v1.json)。
+3. [acceptance.md](references/acceptance.md)。
+4. [workflow-contract.md](references/workflow-contract.md) 与 [validation-gates.md](references/validation-gates.md)。
+5. 本条真实媒体、实录权威时间轴、语义节拍和允许使用的实录画面窗口。
 
-每次执行前从 `<project-root>` 读取：
+[v4-visual-pack.md](references/v4-visual-pack.md) 是旧卡片包的退役说明，只用于识别并阻断历史路径，不是当前执行指南。
 
-1. `AGENTS.md`
-2. `project.md`
-3. `knowledge/00-项目知识索引.md`
-4. `knowledge/03-口播执行守则.md`
-5. `knowledge/04-内容生产SOP.md`
-6. `knowledge/12-Remotion协作与模板迭代机制.md`
-7. `knowledge/16-V7.1透明信息包装与本地音效基线.md`
-8. `knowledge/17-V7.2语义运镜与音效默认流程.md`
-9. `knowledge/18-V7.2保质提速生产流程.md`
-10. `knowledge/19-V7.3素材协作、逐卡音效与保质提速验证.md`
-11. `knowledge/20-V8连续语义动效与可感知音效基线.md`
-12. `knowledge/22-实录优先字幕与系列发布包硬门禁.md`
-13. `templates/10-超哥AI创业记_3比4系列封面提示词母版.md`
-14. `workflow/active-production-profile.v1.json`
-15. 与本条视频直接相关的转写、EDL、素材清单、视觉参考和发布记录
+## 输入合同
 
-按任务需要再读：
+从 [director-request.v1.json](templates/director-request.v1.json) 复制一份任务请求。至少绑定：
 
-- [references/workflow-contract.md](references/workflow-contract.md)：需要生成或校验一条视频的导演流程时读取。
-- [references/v4-visual-pack.md](references/v4-visual-pack.md)：需要执行 V4 视觉实验、参考图落地或新增卡片时读取。
-- [references/validation-gates.md](references/validation-gates.md)：需要渲染预览、检查风险帧、导出正式片或填写 release 时读取。
+- 真实口播媒体的绝对路径和 SHA-256；
+- 实录权威时间轴的绝对路径和 SHA-256；
+- 样片源时间窗和输出时长；
+- 每个语义节拍的原句、起止时间、认知增量和画面职责；
+- 参考片 SHA-256 与风格卡 SHA-256；
+- 允许使用的录屏片段和明确排除片段；
+- 本地 SFX 的路径、SHA-256、用途和相对落点。
+- 摄影级状态图、遮挡物和真实证据合成回执的路径、SHA-256、来源裁切与已披露光学处理。
+- 用户风格方向接受、监督静帧门和状态资产包回执的绝对路径、SHA-256、效力类型与逐资产绑定。
 
-## 工作流
+缺少任一真实证据时停止编译，不用计划稿补位。
 
-### 1. 识别任务类型
+## 分镜编译
 
-- 选题/脚本阶段：先做事实、合规和素材需求判断，不进入 Remotion。
-- 粗剪/字幕阶段：以词级转写和 EDL 输出时间轴为准，不手估字幕时间。
-- 视觉包装阶段：先写 `visual-plan.json`，再做 Remotion 组件或参数。
-- V4 实验阶段：优先读取 V4 参考与验收，不回退旧 `mind-map / perspective / metric / flow` 默认包。
-- V8 正式阶段：所有新视频默认使用人物主画面、局部连续语义动效、真实素材优先、逐主视觉声画绑定和可感知本地音效；说明型Remotion覆盖率不得超过42%，不得使用全屏黑板、`call-demo`或连续翻卡式PPT表达。
-- V7.2 历史阶段：只保留通用技术参数、锁定母版回归和故障回滚；不得因为参考“兰州OPC”或复用旧任务而把新视频静默降级。
-- 降级例外：必须在生产任务写入用户明确批准、时间、原因和单条适用范围；导演推断、旧知识条目和历史模板都不能替代批准。
-- 正式导出阶段：先预览和风险帧，后全片；先机器质检，后用户完整观看。
-
-### 2. 建立本条视频事实源
-
-只处理用户指定素材。不得扫描无关桌面、下载、证件、合同、财务目录。
-
-优先确认：
-
-- 原片路径和只读副本；
-- 拍摄后以原片实际声音作为唯一字幕正文，拍摄前文稿只作 `comparison-only`；
-- 是否删减、是否全量保留、是否已有 EDL；
-- 最终字幕时间轴来源；
-- 参考图、真实 B-roll、截图、AI 素材的授权和用途；
-- 每个非主播画面先声明素材决策：`speaker | real-evidence | generated-video | remotion-information`，以及制作责任：`existing | user | codex-remotion`；
-- 需要人物、行动、场景、空间或氛围的 `generated-video` 默认由用户制作，录制前交付编号中文执行单；不得默认用 Remotion 信息动画冒充叙事视频；
-- 指定视觉素材是否确需抠图或升清；仅在 `ready-for-production` 后调用 `koubo-asset-prep`，证据截图和真人主口播保持原样；
-- 本条唯一主观点和行动引导；
-- 是否涉及抖音高风险垂类、AI 声明、商单、投放或交易。
-
-### 3. 生成素材执行单和视觉方案
-
-如果本条需要用户制作图片或视频，先使用 `templates/05-用户素材执行单模板.md` 生成单独执行单。每个项目必须写清“文生视频 / 图生视频 / 文生图 / 真实素材”、对应原句、时长、中文提示词、文件名和放置目录。不得向用户交付无编号、中英文混杂或无法判断生成类型的提示词。
-
-以已验证的 `workflow/jobs/20260810_ai_cognitive_position_v80.production.json`、对应V8视觉方案和音效点位表为结构参考，生成 `edit/visual-plan_<id>_v8.json`、`edit/sfx-cue-sheet_<id>_v8.json` 和 `workflow/jobs/<id>_v80.production.json`。只复制结构，不复制上一条文案、时间点、素材路径或画面内容。
-
-每个新任务必须先声明：
-
-```json
-"productionProfile": {
-  "id": "v8-semantic-continuity-sfx",
-  "version": "V8"
-}
-```
-
-每个图层必须包含：
-
-- `start` / `end` / `spokenLine`
-- `purpose` / `kind` / `variant`
-- `titleOwner` / `overlapGroup` / `zone`
-- `asset.sourceType` / `asset.source`
-- `checks.needsFrameReview` / `checks.reviewAt`
-- 避让对象：脸、手、底部字幕、安全区
-
-V8每个图层还必须包含：
-
-- `assetDecision.class` / `assetDecision.producer` / `assetDecision.fallback`
-- `visualEvent.id` / `visualEvent.enterAt` / `visualEvent.primary`
-- `sound.policy` / `sound.role` / `sound.cueId` / `sound.offsetFrames` / `sound.maxSyncErrorFrames`
-- 音效点使用同一 `visualEventId` 反向绑定，不再仅靠文字描述猜测对应关系
-
-校验：
+运行：
 
 ```bash
-node tools/validate-visual-plan.mjs <visual-plan.json>
+node skills/koubo-remotion-director/scripts/compile-director-plan.mjs \
+  --request <director-request.json> \
+  --output <director-output.json> \
+  --repo-root <isolated-worktree>
+
+node skills/koubo-remotion-director/scripts/validate-director-output.mjs \
+  --plan <director-output.json> \
+  --request <director-request.json> \
+  --repo-root <isolated-worktree>
+
+node skills/koubo-remotion-director/scripts/emit-render-command.mjs \
+  --plan <director-output.json> \
+  --request <director-request.json> \
+  --repo-root <isolated-worktree>
 ```
 
-V8必须执行：
+`emit-render-command.mjs` 只对已通过正式 validator 的 `renderable` 计划输出固定 `cwd + argv`；`plan-only` 必须稳定拒绝。Schema 验证实际使用本地 Ajv 8.20.0 单文件闭包，第三方许可见 [Ajv-8.20.0-MIT.txt](assets/licenses/Ajv-8.20.0-MIT.txt)。
+
+编译器必须根据语义类型选镜，不按固定中文或固定秒码选镜：
+
+- `complex-explanation`：5–6 个物件组、9–13 个节点、至少 3 层空间、至少 5 级可见装配；每一级都增加认知，不用漂移、脉冲或装饰性浮动刷动态。
+- `mechanical-causality`：输入进入、一个明确机械动作、对应输出推出、环境闭合；不能用硬切或变形冒充因果。
+- `occluded-state-reveal`：只在遮挡物完全覆盖时切换已绑定的摄影级状态图；只能声称“遮挡换态/显现”，不得写成真实机械关节动画。输入态、遮挡态、结果态和事实边界必须分别绑定资产与 SHA-256。
+
+当纯 CSS/矢量原语达不到参考片的摄影级微缩质感时，使用“高保真完成态状态图 + 确定性真实证据/中文合成 + Remotion 遮挡换态、字幕和音效”的混合管线。图像生成只能生成原创、无品牌、无文字、无 UI 的底图；真实截图与中文必须由确定性合成层写入并留下回执。
+
+输出必须同时包含 `executionMode`、`scenes`、`captions`、`stillPlan`、`samplePlan`、固定 `cwd + argv` 的 `commands` 以及全链 SHA-256。`renderable` 才能生成渲染命令；`plan-only` 只允许 `validate-plan`。
+
+直接播放录屏片段时必须保留 `excludedRanges`，逐片派生 `trimBeforeFrame + trimAfterFrame + playbackRate`，并绑定覆盖完整输出窗的受控父层；任何片段与排除区间重叠即阻断。若真实画面已经通过确定性合成进入摄影状态图，不得再声明为运行时录屏层；应改为绑定上游代表帧、裁切坐标、合成脚本、字体与结果 SHA-256。
+
+## 静帧先行
+
+先核对每张 still 的 `requiredStageIds`、共享动画完成模型给出的 `completion.actualCompletionFrame`、`completion.lockEndExclusiveFrame` 和 `minimumSettledFrames >= fps`（当前 30 帧）；除下述唯一窄例外外，必须在关系真完成后留出完整 1 秒锁定窗，再原样执行输出中的 still 命令，生成三张完成态：
+
+唯一窄例外只适用于 `exact30 candidate-only`：请求必须绑定已经通过的 supervisor A acceptance，镜头必须是 canonical A 的 `progressive-local-assembly`，其权威终态严格为 `A16 = F463`、`endExclusive = F473`，因此该镜头 completion 及其全阶段完成态 still 的终态锁定窗可为 10 帧。只有 compiler、validator、renderer 使用同一判定，固定 acceptance registry 的双 SHA 锚、验收与独立复核回执、17 态路径/顺序/帧，以及 A16 终态资产 SHA-256 全部匹配时才允许该例外；9 帧仍拒绝，任何普通镜头的 29 帧仍拒绝。该例外只修正这条精确 30 秒候选的完成窗约束，不代表 `productionEligible=true`，也不授权正式生产、口播自动化解冻、外部平台动作或发布。
+
+1. 复杂多轨装配完成态；
+2. 遮挡换态后的证据完成态；
+3. 地图到菜单的事实边界完成态。
+
+再制作联系表，与参考片的锁定代表帧并排检查：
+
+- 纸厚、接触阴影和材质差异是否真实可感；
+- 前中后景遮挡是否成立；
+- 是否出现平面卡片/PPT 式重复版式；
+- 复杂镜是否真的有 5–6 组、9–13 节点和 5 级装配；
+- 真实机械镜能否在静音状态下读出输入、连续动作和输出；遮挡换态镜能否准确读出输入态、完全遮挡换态点和显现结果，且没有冒充机械关节动画。
+
+静帧没有达到参考片同一视觉语言时，不启动视频渲染；保留已完成分镜和完成态需求，转入外部生成报价与单独授权。
+
+## 动态样片
+
+三张静帧方向分别通过后，执行输出中的两条精确 30.0 秒视频命令：
+
+- `PaperEditorialDirector-Sample-WithSfx`
+- `PaperEditorialDirector-Sample-NoSfx`
+
+两条 Composition 必须共用同一视觉组件和同一 props；`withSfx` 只能增加 SFX 音轨，不能改变任何画面分支。NoSfx 仍保留真实口播。
+
+不得用空白纸擦除做长转场。优先使用同一物件、定位针、纸带或输出窗口的匹配连续。
+
+## 验收
+
+逐项执行 [acceptance.md](references/acceptance.md)。最低证据包括：
+
+- 快速包装校验和真实输入前向测试；
+- 输出命令在隔离工作树原样运行；
+- WithSfx/NoSfx 视频流逐帧一致；
+- 两片完整解码、黑白场、冻结、重复帧、字幕和音轨检查；
+- 与参考片并排人工审查；
+- 第二条不同真实输入不改编译器源码，生成不同计划和命令；
+- 独立 SHA-256 复核；
+- 用户按正常速度完整观看并明确接受。
+
+用户明确接受后，从 [director-user-style-acceptance.v1.json](templates/director-user-style-acceptance.v1.json) 实例化一张独立验收回执，绑定用户消息来源、选中的 WithSfx 路径与 SHA-256、同画面 NoSfx、请求、计划和机器 QA 回执。不得回写或改写已经生成的请求、计划、媒体 QA 回执来制造晋级状态。
+
+任何一项缺失时，只能写 `candidate` 或 `awaiting-user-review`，不能写 `complete`、`verified`、`promoted` 或 `production-ready`。
+
+## 第二输入前向测试
+
+第二输入只验证“数据变、计划变、源码不变”，必须使用 `execution.mode=plan-only`，输出不得包含视频或静帧渲染命令。除非用户后续明确要求，不复制其大体积媒体、不渲染第二条旧内容，不把其历史成片状态外推到本轮。
+
+运行：
 
 ```bash
-node tools/validate-active-production-profile.mjs <production-job.json> doctor
-node tools/validate-v8-production-contract.mjs <production-job.json>
+node skills/koubo-remotion-director/scripts/test-forward-real-input.mjs
 ```
 
-第一道门禁确认没有静默降级；第二道门禁要求主视觉单元音效覆盖率100%、同步偏差不超过2帧、人物局部信息层不超过42%、同一音效25秒内不重复，并强制同画面有声/无声30—45秒预览。
+脚本默认读取本次两份真实输入；需要换任务时再显式传入 `--wechat-request`、`--ai-request` 与 `--repo-root`。测试必须记录编译器 SHA、两份请求 SHA、两份计划 SHA、两份命令差异和源码前后 SHA；源码发生变化则测试失败。
 
-校验失败时先修方案，不渲染全片。
+## 付款与外部模型
 
-如果方案明确需要透明 PNG、授权低清图修复或生成式 B-roll 升清，先用 `koubo-asset-prep` 生成候选素材和 `.asset-prep.json`。人工检查透明边缘、虚构细节、文字、面部和运动稳定性后，才能把候选路径写入视觉方案；封面仍只交付提示词，不进入本机抠图或升清链路。
-
-### 4. 做预览和风险帧
-
-先为本条建立 `workflow/jobs/<id>.production.json`，然后统一执行：
-
-```bash
-node tools/run-v72-production.mjs <production-job.json> prepare
-```
-
-`prepare` 必须先无条件校验当前V8生产档案，再一次完成同画面有声/无声动态预览、完整分辨率风险帧和音频预检。输入指纹完全一致时允许命中缓存；任一素材、字幕、组件、方案、音效、生产档案或档案校验器变化时必须失效。脚本名保留`run-v72-production.mjs`只是兼容历史调用，不代表当前视觉版本。
-
-正式片前必须输出 20-30 秒预览或覆盖关键节点的 still/range。默认不做全长低清预览；只有删减、重排、大量字幕不确定或全片结构风险时才允许，并在生产任务中写明原因。预览至少覆盖：
-
-- 钩子；
-- 最复杂叠层；
-- 本条实际采用的每类 V4 或 V7.1 组件；
-- 每段全屏素材；
-- 结尾 CTA。
-- 本条实际使用的每种新音效角色。
-
-必须抽查 `reviewAt` 风险帧。发现卡片裁切、文字溢出、字幕错位、挡脸、挡手或标题叠层时，回到视觉方案或组件修正。
-
-### 5. 导出与发布记录
-
-预览和风险帧通过后，只渲染一次 `WithSfx` 正式片：
-
-```bash
-node tools/run-v72-production.mjs <production-job.json> formal
-```
-
-`formal` 包含两遍响度处理和正式片机器质检。公共模板、渲染链路或基线参数变化时，还必须对锁定母版执行 `regression`。
-
-`formal`、`formal-audio`和`all`必须先经过生产命令硬门禁。任务中`formal.enabled=false`时，执行器必须在Remotion打包和渲染之前直接失败；只有用户确认同画面动态预览并同步更新V8合同后才能显式解锁。
-
-必须保留生产器写出的 `timing-report.json`。没有计时报告，不得宣称提速；因修正问题重渲正式片时，必须在运行记录中写明原因。
-
-正式导出后填写或更新 `workflow/releases/<id>.json`，再执行：
-
-```bash
-node tools/validate-release.mjs <release.json>
-```
-
-V8 有音效正式候选片生成后，必须立即完成最低交付包：从本条候选片的本人真实口播画面中截取一张推荐封面人物图，记录候选片路径和截取时间点；按固定系列母版准备全中文 `3:4` 真人截图合成封面提示词、一个抖音主标题、两个备选标题、抖音发布文案和话题，并绑定当前文本的双 Skill 审稿记录。推荐截图优先选择正面清晰、眼睛自然睁开、口型不过度变形、无运动模糊、无遮挡脸、无隐私且有标题排版空间的帧。缺少任一项时，发布记录必须保持 `incomplete-delivery`，不得称为完整交付。
-
-发布记录还必须绑定 `spoken-source-policy.json`。新片必须通过 `spoken-source-v1`，证明中文字幕来自实录声音、英文从实录中文翻译；历史片只有用户明确接受单条偏差时才能登记与 release ID 绑定的已知例外。
-
-验证通过也只能说明机器侧通过。用户完整观看确认后，才允许把状态推进到已确认。
-
-## 硬边界
-
-- 不把旧卡片包当作下一条 V4 默认高级包装。
-- 不用固定高度和 `overflow: hidden` 掩盖内容超限。
-- 不用手工估字幕时间替代词级转写或 EDL 映射。
-- 不用拍摄前文稿替换、压缩或顺句实际口播；字幕和英文翻译都以实录为准。
-- 不让参考图只停留在计划文字里；必须绑定原创组件变体和验收帧。
-- 不为了高级感强制生图；真实素材和确定性 Remotion 排版优先。
-- 不用 Remotion 信息动画默认替代需要人物、场景、行为、空间或氛围的叙事视频；素材缺失时要明确降级为主播 + 信息卡或“情景示意”。
-- 不把二创参考视频当作事实原始信源；外部案例引用必须显示来源和证据边界。
-- 不在左上角显示 V7、V7.1 或模板名，只保留“超哥AI创业记”。
-- V8固定做同画面30—45秒`WithSfx / NoSfx` A/B；未经用户正常音量试听确认，正式渲染保持锁定。
-- V8不要求每个字、字幕或卡内小项都发声，但所有标记为主视觉单元的动效卡必须有精确绑定音效；不得用“这一段里有一声”代替逐卡覆盖。
-- 不把机器质检、编译成功或文件存在说成发布效果已验证。
+如果本地确定性方法达不到参考片同一质量维度，停止在完成态静帧/分镜/提示词阶段，并单独列出：模型、分辨率、镜数、每镜时长、准确费用、批准静帧路径与 SHA-256。用户明确授权前不得创建任务、联网调用或扣费。
