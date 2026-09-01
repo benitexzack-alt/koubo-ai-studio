@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "koubo-style-release/v3",
+  "styleId": "koubo-paper-editorial-assembly-v3",
+  "nameZh": "纸媒叙事装配 v3",
+  "status": "user-accepted-style",
+  "purpose": "把口播中的抽象机制、因果、关系和层级编译成有纸厚、真实遮挡、顺序装配和确定性中文叠字的摄影级纸艺插片。",
+  "inherits": {
+    "path": "skills/koubo-remotion-director/references/paper-editorial-style.v1.json",
+    "sha256": "68fbfe1cd7105cac6195be52c5c759c35b1dd858db91f4a9808ca374badf1d6d"
+  },
+  "eligibility": {
+    "styleDirectionAccepted": true,
+    "previsualizationEligible": true,
+    "taskCandidateEligibleByDefault": false,
+    "formalEligibleByDefault": false,
+    "externalProviderEligible": false
+  },
+  "acceptedDynamicAnchor": {
+    "selectedCandidate": "with-sfx",
+    "path": "/Users/pc/Documents/口播-paper-editorial-director-delivery-20260824/work/director-paper-editorial/20260824-wechat-real-input/director-skill-recovery/dynamic-gate-01/render-authored-motion-ab-freeze-scope-sfx-energy-fix/ab-delivery/director-30s-with-sfx.mp4",
+    "sha256": "764f1ad14bf35a4297ff974514666525b39a551dd5b976d4f66db42cc5c2fff6",
+    "acceptanceReceipt": {
+      "path": "/Users/pc/Documents/口播-paper-editorial-director-delivery-20260824/work/director-paper-editorial/20260824-wechat-real-input/director-skill-recovery/dynamic-gate-01/render-authored-motion-ab-freeze-scope-sfx-energy-fix/acceptance/director-skill-package-handoff.v1.json",
+      "sha256": "a8370f79022369f4a4e8002601ef1dc257788946461edf12dd275227fb60d8ef"
+    },
+    "evidenceBoundary": "只证明全局纸艺视觉和有声方向已获用户接受；新任务仍需新请求、新静帧、新动态候选和用户本条验收。"
+  },
+  "routing": {
+    "defaultFor": [
+      "abstract-mechanism",
+      "causal-chain",
+      "comparison",
+      "layered-system",
+      "decision-path",
+      "process-explanation"
+    ],
+    "neverReplaces": [
+      "official-evidence",
+      "real-interface",
+      "real-person-action",
+      "real-location",
+      "source-data"
+    ],
+    "fallback": "blocked",
+    "fallbackRequiresExplicitUserApproval": true
+  },
+  "textContract": {
+    "strategy": "remotion-deterministic-overlay",
+    "generatedReadableTextAllowed": false,
+    "nodeLabelsRequired": true,
+    "minimumNodeLabelCount": 1,
+    "maximumCharactersPerNodeLabel": 8,
+    "mustBindSpokenLine": true,
+    "mustRevalidateAgainstRecordedSpeech": true
+  },
+  "productionBoundary": {
+    "localPrevisualization": "allowed",
+    "localTaskCandidate": "requires-task-stills-and-ab-review",
+    "formalRender": "requires-current-task-user-acceptance",
+    "externalGeneration": "blocked-until-separate-authorization",
+    "publication": "never-automatic"
+  }
+}

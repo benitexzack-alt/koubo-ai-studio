@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "koubo-active-director-profile/v1",
+  "profileId": "paper-editorial-director-v3",
+  "profileVersion": "3.0.0",
+  "status": "active-default",
+  "effectiveFrom": "2026-09-01",
+  "decision": {
+    "authority": "user-explicit",
+    "summary": "需要解释机制、因果、关系、层级或流程的新口播，默认调用纸艺导演分支，不得静默降级为普通信息卡。",
+    "confirmedAt": "2026-09-01"
+  },
+  "skill": {
+    "path": "skills/koubo-remotion-director",
+    "lockPath": "workflow/director-skill-lock.v1.json",
+    "acceptedPackage": {
+      "commit": "5ca98ef98e420b2c15e6ff3d99d217a45c5a0387",
+      "gitTree": "efcd35f1169c86258bb792ff3fd87f30019992e7",
+      "treeSha256": "3411a9f3a9e667b3899a6a8d4e9e825f1dfc167ef902c0e57857e4d7adc3d8f0",
+      "handoffReceiptSha256": "a8370f79022369f4a4e8002601ef1dc257788946461edf12dd275227fb60d8ef"
+    }
+  },
+  "style": {
+    "id": "koubo-paper-editorial-assembly-v3",
+    "path": "workflow/style-library/koubo-paper-editorial-assembly-v3.json"
+  },
+  "phasePolicy": {
+    "preShoot": {
+      "allowedAuthority": "user-confirmed-script",
+      "outputState": "provisional-previsualization",
+      "allowedOutputs": [
+        "director-route-lock",
+        "paper-scene-plan",
+        "asset-prompts",
+        "completion-stills",
+        "local-candidate-preview"
+      ],
+      "formalEligible": false
+    },
+    "postShoot": {
+      "requiredAuthority": "recorded-audio",
+      "scriptRole": "comparison-only",
+      "requiredOutputs": [
+        "spoken-source-binding",
+        "postshoot-rebind",
+        "current-task-ab-preview",
+        "current-task-user-acceptance"
+      ],
+      "formalEligibleBeforeUserAcceptance": false
+    }
+  },
+  "routingPolicy": {
+    "paperBranchDefault": true,
+    "paperRequiredKinds": [
+      "abstract-mechanism",
+      "causal-chain",
+      "comparison",
+      "layered-system",
+      "decision-path",
+      "process-explanation"
+    ],
+    "realEvidenceKinds": [
+      "official-evidence",
+      "real-interface",
+      "real-person-action",
+      "real-location",
+      "source-data"
+    ],
+    "genericInformationCardCanSatisfyPaperBeat": false,
+    "fallback": "blocked",
+    "fallbackApproval": {
+      "required": true,
+      "approvedBy": "user",
+      "requiredFields": [
+        "approved",
+        "approvedAt",
+        "reason",
+        "scope"
+      ]
+    }
+  },
+  "evidencePolicy": {
+    "skillReadDoesNotEqualExecuted": true,
+    "executionReceiptRequired": true,
+    "requiredExecutionArtifacts": [
+      "director-request",
+      "director-route-lock",
+      "director-output",
+      "validation-receipt"
+    ],
+    "manualApplicationClaimAllowed": false
+  },
+  "v8Integration": {
+    "outerPackagingProfile": "v8-semantic-continuity-sfx",
+    "speakerPictureRemainsPrimary": true,
+    "paperScenesAreInsertBranch": true,
+    "paperScenesDoNotReplaceOfficialEvidence": true
+  }
+}
