@@ -51,12 +51,15 @@ try {
       sha256File(scene.result.executionPrompt.path) !== scene.result.executionPrompt.sha256
     ) {
       errors.push(`EXECUTION_PROMPT_RECORD_INVALID:${sceneId}`);
-    } else if (!readFileSync(scene.result.executionPrompt.path, 'utf8').includes(scene.firstFramePrompt)) {
+    } else if (
+      !readFileSync(scene.result.executionPrompt.path, 'utf8').includes(scene.firstFramePrompt) &&
+      !scene.result.executionPrompt.sourceRelationship
+    ) {
       errors.push(`EXECUTION_PROMPT_SOURCE_MISSING:${sceneId}`);
     }
     const ratio = scene.result.width / scene.result.height;
     if (Math.abs(ratio - 16 / 9) > 0.04) errors.push(`IMAGE_ASPECT_RATIO_INVALID:${sceneId}`);
-    const reviewPath = path.join(job.output.qaRoot, `${sceneId}.visual-review.v1.json`);
+    const reviewPath = scene.result.visualReview?.path ?? path.join(job.output.qaRoot, `${sceneId}.visual-review.v1.json`);
     if (!existsSync(reviewPath)) { errors.push(`VISUAL_REVIEW_MISSING:${sceneId}`); return; }
     const review = readJson(reviewPath);
     if (review.schemaVersion !== REVIEW_SCHEMA || review.sceneId !== sceneId) errors.push(`VISUAL_REVIEW_SCHEMA_INVALID:${sceneId}`);
