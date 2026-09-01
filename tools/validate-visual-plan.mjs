@@ -2,6 +2,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
+import {
+  findRetiredGeneratedStyleFingerprints,
+  retiredGeneratedStylePolicyMessage,
+} from './generated-style-policy.mjs';
+
 const [planPath, baselinePath = 'workflow/production-baseline.v1.json'] = process.argv.slice(2);
 
 if (!planPath) {
@@ -15,6 +20,18 @@ const plan = readJson(planPath);
 const baseline = readJson(baselinePath);
 const errors = [];
 const warnings = [];
+
+const retiredStyleHits = findRetiredGeneratedStyleFingerprints(plan, {
+  location: '$visualPlan',
+  additionalStrings: [planPath],
+  projectRoot,
+  documentPaths: [planPath],
+});
+if (retiredStyleHits.length > 0) {
+  errors.push(
+    retiredGeneratedStylePolicyMessage('视觉方案生产校验', retiredStyleHits),
+  );
+}
 
 const isNonEmptyString = (value) => typeof value === 'string' && value.trim().length > 0;
 const isNumber = (value) => typeof value === 'number' && Number.isFinite(value);

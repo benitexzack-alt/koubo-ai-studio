@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "koubo-remotion-director/director-contract-v2.schema.json",
+  "title": "口播导演合同 v2",
+  "description": "结构门只做基础形状约束；文件哈希、ffprobe、时间线覆盖、竖屏保真、视觉空窗、生成插片证据、A/B、人物安全区和状态机必须继续运行 Node validator。",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "contractId",
+    "executionGroupId",
+    "authorizedUserId",
+    "evidenceScope",
+    "productionEligible",
+    "spokenSource",
+    "semanticSegments",
+    "screenRecordings",
+    "screenMappings",
+    "screenPresentations",
+    "visualCoveragePolicy",
+    "visualEvents",
+    "generatedInsertions",
+    "sfxSubjectiveReview",
+    "continuousSpeakerSafety",
+    "previewAB",
+    "formal",
+    "lifecycle",
+    "rightsBoundary"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "director-contract/v2"},
+    "contractId": {"type": "string", "minLength": 1},
+    "contractRevisionId": {"type": "string", "minLength": 1, "description": "candidate-blocked 可暂缺；任何用户接受或自动化交接状态必须由 Node validator 强制绑定。"},
+    "executionGroupId": {"type": "string", "minLength": 1},
+    "authorizedUserId": {"type": "string", "minLength": 1},
+    "evidenceScope": {"enum": ["fixture-only", "real-e2e"]},
+    "productionEligible": {"type": "boolean"},
+    "spokenSource": {
+      "type": "object",
+      "required": ["audio", "transcript"],
+      "properties": {
+        "audio": {"$ref": "#/$defs/probedFile"},
+        "transcript": {"$ref": "#/$defs/hashedFile"}
+      }
+    },
+    "semanticSegments": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/timeSegment"}},
+    "screenRecordings": {"type": "array", "minItems": 1},
+    "screenMappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "recordingId", "recordingSegmentId", "sourceIn", "sourceOut", "outputIn", "outputOut", "playbackRate", "visualEventId", "semanticSegmentIds", "wordIds", "selectionReason"]
+      }
+    },
+    "screenPresentations": {"type": "array"},
+    "visualCoveragePolicy": {
+      "type": "object",
+      "required": ["minFullCoverageRatio", "minPerSemanticSegmentRatio", "maxUnexplainedWindowSeconds"],
+      "properties": {
+        "minFullCoverageRatio": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "minPerSemanticSegmentRatio": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "maxUnexplainedWindowSeconds": {"type": "number", "exclusiveMinimum": 0, "maximum": 15}
+      }
+    },
+    "visualEvents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "start", "end", "kind", "semanticSegmentIds", "wordIds", "cognitiveGain"]
+      }
+    },
+    "generatedInsertions": {"type": "array"},
+    "sfxSubjectiveReview": {"type": "object"},
+    "continuousSpeakerSafety": {"type": "object"},
+    "previewAB": {"type": "object"},
+    "formal": {
+      "type": "object",
+      "required": ["enabled", "lockReason"],
+      "properties": {
+        "enabled": {"const": false},
+        "lockReason": {"type": "string", "minLength": 1}
+      }
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": ["state", "candidate"],
+      "properties": {
+        "state": {"enum": ["candidate-blocked", "user-accepted-style", "automation-handoff-eligible"]},
+        "candidate": {"type": "object"},
+        "styleAcceptance": {"type": "object"},
+        "handoff": {"type": "object", "description": "只有受控外部人工/监督锚点注册表命中后才可存在；fixture/test/non-project 回执一律拒绝。"}
+      }
+    },
+    "rightsBoundary": {"type": "object"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "hashedFile": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "probedFile": {
+      "allOf": [
+        {"$ref": "#/$defs/hashedFile"},
+        {
+          "type": "object",
+          "required": ["ffprobe"],
+          "properties": {
+            "ffprobe": {
+              "type": "object",
+              "required": ["durationSeconds"],
+              "properties": {"durationSeconds": {"type": "number", "exclusiveMinimum": 0}}
+            }
+          }
+        }
+      ]
+    },
+    "timeSegment": {
+      "type": "object",
+      "required": ["id", "start", "end"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "start": {"type": "number", "minimum": 0},
+        "end": {"type": "number", "exclusiveMinimum": 0}
+      }
+    }
+  }
+}

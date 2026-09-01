@@ -5,6 +5,12 @@ import {existsSync, readFileSync} from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 
+import {
+  findRetiredGeneratedStyleFingerprints,
+  RETIRED_GENERATED_STYLE_POLICY,
+  retiredGeneratedStylePolicyMessage,
+} from './generated-style-policy.mjs';
+
 const projectRoot = path.resolve(import.meta.dirname, '..');
 const formalWriteCommands = new Set(['formal', 'formal-audio', 'all']);
 const contextRequiredCommands = new Set([
@@ -19,6 +25,9 @@ const contextRequiredCommands = new Set([
   'regression',
   'all',
 ]);
+const retiredStyleBlockedCommands = new Set(
+  RETIRED_GENERATED_STYLE_POLICY.productionCommands,
+);
 
 const fail = (message) => {
   console.error(`生产命令门禁失败：${message}`);
@@ -44,6 +53,16 @@ try {
   job = JSON.parse(readFileSync(jobPath, 'utf8'));
 } catch (error) {
   fail(`任务文件不是有效 JSON：${error instanceof Error ? error.message : String(error)}`);
+}
+
+const retiredStyleHits = findRetiredGeneratedStyleFingerprints(job, {
+  location: '$job',
+  additionalStrings: [jobArgument, jobPath],
+  projectRoot,
+  documentPaths: [jobPath],
+});
+if (retiredStyleBlockedCommands.has(command) && retiredStyleHits.length > 0) {
+  fail(retiredGeneratedStylePolicyMessage(`生产命令 ${command}`, retiredStyleHits));
 }
 
 const resolveInside = (root, relativePath, label) => {

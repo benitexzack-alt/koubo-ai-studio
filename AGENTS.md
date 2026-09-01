@@ -82,6 +82,24 @@
 
 未经 `ready-for-production`，不得开始分镜、V4/V5/V6、动效、音效、封面和正式成片。后期能力不能替代内容门禁。
 
+### 任务级知识上下文硬门
+
+- 每个重要口播生产 job 必须绑定 `knowledgeContext.taskId` 与 `.opc-rag/tasks/<task-id>/context.json`；只读 `doctor` 可在缺少上下文时运行，从 `fingerprint` 开始的预览、风险帧、音频、正式渲染、QA、回归、直出与 release 校验全部必须通过上下文复检。
+- 上下文必须是当前口播项目的 `important=true` 任务，状态为 `context-ready`，并由个人知识库 `opc_rag.py validate-context` 返回 `context-valid` 和 `formal_execution_allowed=true`。
+- 当前 production job 必须进入 `task_original_materials`，留下当前 SHA-256、`retrieved/read/applied=true` 与非空应用说明；job 或索引变化后旧回执立即失效，必须重新启动任务上下文。
+- 受控 `run-v72`、受控 Remotion 直出和 release 校验统一经过 V2 生产前置门；知识上下文校验器本身进入门禁哈希闭包。绕开包装脚本直接执行命令所得文件不得通过正式 release 校验，也不得登记为正式生产结果。
+- 不得给已经完成的历史视频补写并不存在的“已读取/已应用”证据；旧 release 只能保留为历史事实，新的闭环从下一条真实口播开始验证。
+
+### 纸艺导演双阶段硬门
+
+- `workflow/active-director-profile.v1.json` 是新口播的唯一导演路由档案。需要解释机制、因果、关系、层级、对照或流程时，默认使用 `paper-editorial`；真实界面、官方材料、地点、数据和人物行为仍使用真实证据。
+- 用户确认文稿后可以进入 `pre-shoot`，提前产出纸艺分镜、中文节点、静帧和素材提示词；该阶段一律为 `provisional-previsualization`，不得声称时间轴或正式片已锁定。
+- 拍摄后必须执行 `post-shoot` 重绑：原片声音是唯一正文，拍摄前文稿降为 `comparison-only`；所有纸艺镜头时点、节点文字和保留决策必须重新确认。
+- 普通 `remotion-information`、扁平卡片、PPT式关系图或通用信息动画不得满足纸艺节拍。纸艺分支失败时必须 `blocked`；任何降级都需用户针对本条的明确批准。
+- 纸艺镜头必须包含物件组、至少三层空间、4—7步可见装配、节点中文、`textPlan` 和逐动作音效。生成模型不得生成可读中文；精确中文统一由 Remotion 确定性叠加。
+- `skillRead=true` 不等于已调用。没有本条新建的 request、route lock、plan、compile receipt 和 `skillExecuted=true` validation receipt，任务必须停留在 `blocked`。
+- 2026-09-01 及以后的新 V8 job 必须通过 `tools/validate-director-production-binding.mjs`；预览前要求预拍与实录重绑证据，正式渲染前再要求本条动态候选的用户明确验收。历史 job 只作日期限定的回归豁免，不得用于新片。
+
 脚本固定交付包中的“文字版封面提示词”不等于已经启动封面制作，但只能在事实锁、双 Skill 和 `ready-for-draft` 均通过后生成。缺少抖音标题或封面提示词的文稿只能标记为 `incomplete-delivery`，不得称为完整口播稿。
 
 V8正式成片的最低完整交付固定为：`成片 + 本条成片真人截图 + 3:4封面提示词 + 一个主标题和两个备选标题 + 抖音发布文案 + 抖音话题`。截图必须记录本条正式成片路径和时间点，不得用历史照片、其他视频帧或AI重绘人物替代。缺少任一项时，成片交付同样只能标记为 `incomplete-delivery`。

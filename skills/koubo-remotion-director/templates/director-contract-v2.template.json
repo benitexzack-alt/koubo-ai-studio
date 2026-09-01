@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "director-contract/v2",
+  "contractId": "REPLACE_WITH_STABLE_TASK_ID",
+  "contractRevisionId": "REPLACE_WITH_NEW_REVISION_ID_BEFORE_ACCEPTANCE",
+  "executionGroupId": "REPLACE_EXECUTION_GROUP_ID",
+  "authorizedUserId": "REPLACE_AUTHORIZED_USER_ID",
+  "evidenceScope": "real-e2e",
+  "productionEligible": false,
+  "spokenSource": {
+    "audio": {
+      "path": "REPLACE/audio/full-spoken-source.m4a",
+      "sha256": "REPLACE_64_LOWERCASE_HEX",
+      "completeness": "full-recording",
+      "ffprobe": {
+        "durationSeconds": 0,
+        "hasAudio": true
+      }
+    },
+    "transcript": {
+      "path": "REPLACE/transcript/full-word-timeline.json",
+      "sha256": "REPLACE_64_LOWERCASE_HEX",
+      "fileSchema": "spoken-transcript/v2",
+      "authority": "recorded-audio",
+      "durationSeconds": 0,
+      "segments": [],
+      "words": []
+    }
+  },
+  "semanticSegments": [],
+  "screenRecordings": [
+    {
+      "id": "screen-001",
+      "path": "REPLACE/screen/full-recording.mp4",
+      "sha256": "REPLACE_64_LOWERCASE_HEX",
+      "completeness": "full-recording",
+      "ffprobe": {
+        "durationSeconds": 0,
+        "hasVideo": true,
+        "width": 1080,
+        "height": 1920,
+        "videoFrameRate": 30
+      },
+      "segments": [
+        {
+          "id": "screen-001-used-001",
+          "start": 0,
+          "end": 0,
+          "disposition": "used",
+          "semanticReason": "REPLACE"
+        },
+        {
+          "id": "screen-001-excluded-001",
+          "start": 0,
+          "end": 0,
+          "disposition": "excluded",
+          "semanticReason": "REPLACE"
+        }
+      ]
+    }
+  ],
+  "screenMappings": [
+    {
+      "id": "map-001",
+      "recordingId": "screen-001",
+      "recordingSegmentId": "screen-001-used-001",
+      "sourceIn": 0,
+      "sourceOut": 0,
+      "outputIn": 0,
+      "outputOut": 0,
+      "playbackRate": 1,
+      "visualEventId": "visual-screen-001",
+      "semanticSegmentIds": [],
+      "wordIds": [],
+      "selectionReason": "说到什么、使用录屏哪一段、为何使用、如何裁切。"
+    }
+  ],
+  "screenPresentations": [
+    {
+      "mappingId": "map-001",
+      "sourceDimensions": {"width": 1080, "height": 1920},
+      "targetDimensions": {"width": 1920, "height": 1080},
+      "fit": "contain",
+      "crop": "none",
+      "scale": 1
+    }
+  ],
+  "visualCoveragePolicy": {
+    "minFullCoverageRatio": 0.5,
+    "minPerSemanticSegmentRatio": 0.2,
+    "maxUnexplainedWindowSeconds": 15
+  },
+  "visualEvents": [
+    {
+      "id": "visual-screen-001",
+      "start": 0,
+      "end": 0,
+      "kind": "screen-recording",
+      "screenMappingId": "map-001",
+      "semanticSegmentIds": [],
+      "wordIds": [],
+      "cognitiveGain": "REPLACE_WITH_SPECIFIC_COGNITIVE_GAIN"
+    }
+  ],
+  "generatedInsertions": [],
+  "sfxSubjectiveReview": {
+    "normalSpeed": true,
+    "reviewedBy": "REPLACE",
+    "reviewedAt": "REPLACE_ISO_8601",
+    "decision": "revise",
+    "notes": "未完成真实主观试听时保持 revise。",
+    "withSound": {"path": "REPLACE/preview/with-sfx.mp4", "sha256": "REPLACE_64_LOWERCASE_HEX", "ffprobe": {"durationSeconds": 30, "hasVideo": true, "width": 1920, "height": 1080, "videoFrameRate": 30}},
+    "withoutSound": {"path": "REPLACE/preview/without-sfx.mp4", "sha256": "REPLACE_DIFFERENT_64_LOWERCASE_HEX", "ffprobe": {"durationSeconds": 30, "hasVideo": true, "width": 1920, "height": 1080, "videoFrameRate": 30}}
+  },
+  "continuousSpeakerSafety": {
+    "source": {"path": "REPLACE/video/full-speaker.mp4", "sha256": "REPLACE_64_LOWERCASE_HEX", "ffprobe": {"durationSeconds": 0, "hasVideo": true, "width": 1920, "height": 1080, "videoFrameRate": 30}},
+    "sampleFrames": []
+  },
+  "previewAB": {
+    "durationSeconds": 30,
+    "samePictureReceipt": {"path": "REPLACE/preview/same-picture-receipt.json", "sha256": "REPLACE_64_LOWERCASE_HEX"},
+    "variants": [
+      {"id": "A-with-sfx", "path": "REPLACE/preview/with-sfx.mp4", "sha256": "REPLACE_64_LOWERCASE_HEX", "visualTimelineSha256": "REPLACE_SHARED_64_LOWERCASE_HEX", "ffprobe": {"durationSeconds": 30, "hasVideo": true, "width": 1920, "height": 1080, "videoFrameRate": 30}},
+      {"id": "B-without-sfx", "path": "REPLACE/preview/without-sfx.mp4", "sha256": "REPLACE_DIFFERENT_64_LOWERCASE_HEX", "visualTimelineSha256": "REPLACE_SHARED_64_LOWERCASE_HEX", "ffprobe": {"durationSeconds": 30, "hasVideo": true, "width": 1920, "height": 1080, "videoFrameRate": 30}}
+    ]
+  },
+  "formal": {
+    "enabled": false,
+    "lockReason": "风格晋级不等于正式任务授权；formal 必须另行取得单条授权。"
+  },
+  "lifecycle": {
+    "state": "candidate-blocked",
+    "candidate": {
+      "qualityClass": "low-fidelity-prototype",
+      "media": {"path": "REPLACE/candidate/sample.mp4", "sha256": "REPLACE_64_LOWERCASE_HEX", "ffprobe": {"durationSeconds": 0, "hasVideo": true, "width": 1920, "height": 1080, "videoFrameRate": 30}},
+      "technicalQaStatus": "pending"
+    },
+    "styleAcceptance": {"status": "pending"}
+  },
+  "rightsBoundary": {
+    "internalMechanismStudyOnly": true,
+    "copyBrandAssets": false,
+    "copySpecificLayouts": false,
+    "copySpecificShots": false,
+    "copyPhotographs": false,
+    "originalTransformationPlan": "只借鉴信息层级、连续装配、节奏和材质机制；对象、版式、镜头、色彩与素材全部独立设计。"
+  }
+}

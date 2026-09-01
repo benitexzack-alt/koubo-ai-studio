@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "koubo-director-user-style-acceptance/v1",
+  "acceptanceId": "<UNIQUE_ACCEPTANCE_ID>",
+  "status": "user-accepted-style",
+  "recordedAt": "<ISO_8601_WITH_TIMEZONE>",
+  "authority": {
+    "kind": "direct-user-message",
+    "sourceThreadId": "<CODEX_THREAD_ID>",
+    "sourceMessageId": "<CODEX_MESSAGE_ID_OR_NULL>",
+    "sourceMessageIdAvailable": false,
+    "messageText": "<EXACT_USER_ACCEPTANCE_TEXT>",
+    "messageTextSha256": "<SHA256>"
+  },
+  "watchEvidence": {
+    "candidateDurationSeconds": 0,
+    "userDeclaredSelectedCandidatePassed": true,
+    "normalSpeedFullWatchExplicitlyRestatedInSameMessage": false,
+    "fullWatchExplicitlyRestatedInSameMessage": false,
+    "evidenceBoundary": "<STATE_ONLY_WHAT_THE_USER_EXPLICITLY_CONFIRMED>"
+  },
+  "bindings": {
+    "withSfx": {
+      "path": "<ABSOLUTE_WITH_SFX_PATH>",
+      "bytes": 0,
+      "sha256": "<SHA256>",
+      "userAcceptanceClaimed": true
+    },
+    "noSfx": {
+      "path": "<ABSOLUTE_NO_SFX_PATH>",
+      "bytes": 0,
+      "sha256": "<SHA256>",
+      "userAcceptanceClaimed": false,
+      "bindingRole": "same-frame-technical-control-only"
+    },
+    "request": {
+      "path": "<ABSOLUTE_REQUEST_PATH>",
+      "rawSha256": "<SHA256>",
+      "canonicalSha256": "<SHA256>"
+    },
+    "plan": {
+      "path": "<ABSOLUTE_PLAN_PATH>",
+      "sha256": "<SHA256>",
+      "chainSha256": "<SHA256>"
+    },
+    "machineQaReceipt": {
+      "path": "<ABSOLUTE_QA_RECEIPT_PATH>",
+      "sha256": "<SHA256>"
+    },
+    "independentMediaReview": {
+      "path": "<ABSOLUTE_INDEPENDENT_MEDIA_REVIEW_PATH>",
+      "sha256": "<SHA256>"
+    }
+  },
+  "acceptanceScope": [
+    "photographic-handcrafted-paper-miniature-visual-language",
+    "paper-stop-motion-rhythm",
+    "occluded-state-reveal",
+    "selected-with-sfx-candidate"
+  ],
+  "claimBoundary": {
+    "occludedStateRevealIsMechanicalCausality": false,
+    "realJointAnimationClaimAllowed": false
+  },
+  "authorizationBoundary": {
+    "productionEligible": false,
+    "formalAutomationUnlocked": false,
+    "externalPlatformAuthorized": false,
+    "publicationAuthorized": false,
+    "newProductionRevisionRequired": true,
+    "forbiddenInputsRemainForbidden": [
+      "incident-revision",
+      "legacy-189-second-chain",
+      "paper-v1",
+      "G01-G04",
+      "rejected-director-masters"
+    ]
+  }
+}

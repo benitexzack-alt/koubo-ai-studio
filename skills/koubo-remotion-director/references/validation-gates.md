@@ -24,23 +24,22 @@ node tools/validate-visual-plan.mjs <visual-plan.json>
 - 风险帧缺失；
 - 时间段异常。
 
-## 纸构推演自动插片门禁
+## 生成插片退役门与候选门
 
-只有 V8 `schemaVersion=4` 可以使用 `assetDecision.producer=codex-provider`。
-自动插片必须绑定 `koubo-paper-construct-v1`，用途固定为
-`concept-illustration / illustration-only`，失败降级固定为
-`speaker-plus-information`。
+`koubo-paper-construct-v1`、`paper-construct-video` 和 `/user-generated-paper/` 已退役。视觉方案、V8 合同、生产命令、RunningHub 新任务和 QA 状态推进只要命中任一指纹都必须返回 `STYLE_RETIRED`；不能依赖 `producer` 或 `sourceType` 才检查。
 
-先执行不联网、不扣费的计划门：
+当前 `纸媒叙事装配 v2` 为 `productionEligible=false`。在以下证据齐全前，只能做离线方案和一条受控动态压力测试，不能进入 V8 正式生产：
 
-```bash
-node tools/run-runninghub-generated-video.mjs compile --plan <generated-video-plan.json>
-node tools/run-runninghub-generated-video.mjs preflight --plan <generated-video-plan.json>
-node tools/validate-generated-video-plan.mjs <generated-video-plan.json> --phase plan
-```
+- 3—5 个创意方向及用户选择；
+- 用户确认的 Brief、视觉节奏轨和分镜；
+- 1—3 张预览；
+- 每镜完成态静帧及用户确认；
+- 静帧路径和 SHA-256；
+- H3 实际请求中的图像字段与请求回执；
+- 动态样片与参考片、批准静帧并排验收；
+- 用户明确通过动态样片。
 
-联网报价不等于费用授权，也不创建任务。用户对当前 `planId`、镜头数和金额上限
-明确确认后，还必须把授权绑定到当前 `generationDefinitionSha256`，设置不超过 24 小时
+未来候选晋级后，联网报价仍不等于费用授权，也不创建任务。用户对当前 `planId`、镜头数和金额上限明确确认后，还必须把授权绑定到当前 `generationDefinitionSha256`，设置不超过 24 小时
 的有效期，才允许执行 `run --confirm-paid`。每镜只允许一次付费记录；同一
 `approvalId` 有固定消费回执，不能换账本或换计划复用。每个镜头提交前必须刷新剩余
 镜头报价并重算单镜和累计上限；实际费用缺失、非法或无法对账时必须停止后续付费提交，
@@ -60,10 +59,7 @@ node tools/validate-generated-video-plan.mjs \
   --phase materialized
 ```
 
-逐镜必须检查五点联系表、2K级近似16:9视频、单一动作、纸构风格签名、物体身份
-与形状稳定、施力接触连续、字幕安全区和禁止元素。逐镜视觉复核不等于最终成片
-用户验收。QA 必须绑定当前生成定义、visual-plan、风格卡、逐镜视频和联系表哈希，
-并记录复核类型与逐项观察；旧 QA 不得复用于改过语义的计划。
+逐镜必须检查联系表、首尾帧、批准完成态静帧、2K 近似 16:9 视频、3—6 个物件组、至少三层、顺序装配、物体身份与形状稳定、接触连续、准确中文、字幕安全区和禁止元素。复杂解释镜至少达到 5—6 物件组、9—13 节点、三层和 5 级动作。逐镜视觉复核不等于最终用户验收。QA 必须绑定当前生成定义、visual-plan、风格卡、批准静帧、实际图像请求、逐镜视频和联系表哈希；旧 QA 不得复用。
 
 V8 生产任务还必须：
 
@@ -72,6 +68,20 @@ V8 生产任务还必须：
 - 把生成计划、风格卡、金额授权消费回执、账本、视频、逐镜/全局联系表和 QA 报告全部加入
   `inputs.fingerprintPaths`；
 - 在计划未同时达到 `qa-passed` 且通过 `materialized` 门禁时拒绝 `prepare`。
+
+## 摄影级纸艺导演编译门
+
+摄影级纸艺导演与上述退役自动插片链隔离。新任务必须使用全新 `candidate-preview-required` revision，并从当前 `director-request.v1.json` 实例化：
+
+- 默认 `execution.mode=plan-only`、`productionEligible=false`；
+- 绑定真实媒体、实录权威时间轴、当前 compiler、request-isolation registry 和 supervisor registry 的实际 SHA-256；
+- `compile-director-plan.mjs` 生成的命令只能是 `validate-plan`，`samplePlan.outputs` 必须为 `null`；
+- `emit-render-command.mjs` 对 plan-only 必须非零退出，且不能触发 Remotion；
+- 旧 exact30 request、plan、QA、事故 revision、189 秒链、paper v1、G01-G04 和失败导演母版永久禁用。
+
+只有新 revision 的完成态静帧、同画面精确 30 秒 WithSfx/NoSfx 候选、独立机器复核和用户正常速度确认全部齐全，才允许另建 `renderable` request。这个晋级仍不等于 V8 正式片授权；正式片继续经过现有 production job、director-contract/preflight v2 和用户完整观看门。
+
+Skill 的既有 30 秒 WithSfx 用户验收只证明风格方向可接受。它不得被写成“新输入已复现”“production-ready”或“formal 已解锁”。
 
 ## 预览门禁
 
@@ -147,7 +157,7 @@ node tools/validate-release.mjs <release.json>
 - 音效文件来源、授权与实际音量；
 - 人声是否始终清晰，音效是否抢话或被背景声完全掩盖。
 
-20—30 秒预览必须实际包含本条使用的主要音效类型。沿用已验收的音效库和音量策略时，只出 `WithSfx` 预览；音色、音量策略或音效类型发生变化，或需要故障排查时，才加做同画面 `WithSfx / NoSfx` A/B。新方案仍需用户在正常播放音量下确认“听得见、不卡人声、不过响”。
+V8 固定制作同画面 30—45 秒 `WithSfx / NoSfx` A/B 动态预览，并实际包含本条使用的主要音效类型；沿用旧音效库或音量策略也不得省略 `NoSfx`。新方案仍需用户在正常播放音量下完整试听并确认“听得见、不卡人声、不过响”。
 
 正式片导出后，必须在音效点位表对应秒点逐项复听。以下证据只能作为辅助，不能单独证明音效完成：
 

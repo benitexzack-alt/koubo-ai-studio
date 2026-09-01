@@ -1,0 +1,85 @@
+{
+  "schema": "runninghub-h3-official-protocol-recording/v1",
+  "sourceKind": "official-documentation-shape-transcription",
+  "evidenceScope": "offline-protocol-regression-only",
+  "notLiveProviderReceipt": true,
+  "recordedAt": "2026-08-24T00:00:00.000Z",
+  "provenance": {
+    "observedAt": "2026-08-24",
+    "h3Detail": "https://www.runninghub.cn/call-api/api-detail/2133100000000504201",
+    "pricePreview": "https://www.runninghub.cn/runninghub-api-doc-cn/api-454850620",
+    "queryV2": "https://www.runninghub.cn/call-api/api-detail/2012030892408893442?activeTab=api",
+    "queryGeneral": "https://www.runninghub.cn/runninghub-api-doc-cn/api-425767306",
+    "boundary": "这些页面只证明协议字段形状，不证明真实账户 transport、授权或回执。"
+  },
+  "productRoute": "/minimax/hailuo-h3/multimodal-to-video",
+  "records": {
+    "pricePreview": {
+      "method": "POST",
+      "path": "/openapi/v2/price-preview/minimax/hailuo-h3/multimodal-to-video",
+      "response": {
+        "errorCode": "",
+        "errorMessage": "",
+        "estimatedPrice": 3.1,
+        "currency": "CNY",
+        "priceText": "3.1元",
+        "priceTextEn": null,
+        "freeLimit": 0,
+        "freeLimitCount": 0,
+        "remainingFreeLimitCount": 0,
+        "isFreeThisCall": false
+      }
+    },
+    "submit": {
+      "method": "POST",
+      "path": "/openapi/v2/minimax/hailuo-h3/multimodal-to-video",
+      "response": {
+        "taskId": "recorded-task-001",
+        "status": "QUEUED",
+        "errorCode": 0,
+        "errorMessage": ""
+      }
+    },
+    "query": {
+      "method": "POST",
+      "path": "/openapi/v2/query",
+      "request": {
+        "taskId": "recorded-task-001"
+      },
+      "response": {
+        "taskId": "recorded-task-001",
+        "status": "SUCCESS",
+        "errorCode": 0,
+        "errorMessage": "",
+        "results": [
+          {
+            "url": "https://recorded.cos.ap-guangzhou.myqcloud.com/results/recorded-task-001.mp4",
+            "outputType": "mp4"
+          }
+        ],
+        "clientId": "recorded-client",
+        "promptTips": ""
+      }
+    },
+    "upload": {
+      "method": "POST",
+      "path": "/openapi/v2/media/upload/binary",
+      "response": {
+        "code": 0,
+        "message": "success",
+        "data": {
+          "type": "image",
+          "download_url": "https://recorded.cos.ap-guangzhou.myqcloud.com/stills/recorded-still.png",
+          "fileName": "recorded-still.png",
+          "size": 1
+        }
+      }
+    },
+    "download": {
+      "method": "GET",
+      "url": "https://recorded.cos.ap-guangzhou.myqcloud.com/results/recorded-task-001.mp4",
+      "contentType": "video/mp4",
+      "body": "ffmpeg-generated-real-mp4-at-test-runtime"
+    }
+  }
+}

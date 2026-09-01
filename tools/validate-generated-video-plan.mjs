@@ -1,9 +1,21 @@
 #!/usr/bin/env node
 
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+
 import {
   loadPlanAndStyle,
   validateGeneratedVideoPlan,
 } from './generated-video-plan-core.mjs';
+import {
+  findRetiredGeneratedStyleFingerprints,
+  retiredGeneratedStylePolicyMessage,
+} from './generated-style-policy.mjs';
+
+const projectRoot = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '..',
+);
 
 const args = process.argv.slice(2);
 const positional = args.filter((arg) => !arg.startsWith('--'));
@@ -31,6 +43,30 @@ if (!planPath) {
 
 try {
   const loaded = loadPlanAndStyle(planPath, explicitStylePath);
+  const retiredStyleHits = findRetiredGeneratedStyleFingerprints(
+    {plan: loaded.plan, style: loaded.style},
+    {
+      location: '$generatedVideoPlan',
+      additionalStrings: [
+        planPath,
+        explicitStylePath,
+        loaded.planPath,
+        loaded.stylePath,
+      ],
+      projectRoot,
+      documentPaths: [planPath, loaded.planPath, loaded.stylePath],
+    },
+  );
+  if (retiredStyleHits.length > 0) {
+    console.error(`生成视频拆镜计划校验失败：phase=${phase}，1 项`);
+    console.error(
+      `- [STYLE_RETIRED] ${retiredGeneratedStylePolicyMessage(
+        '生成视频计划只读校验',
+        retiredStyleHits,
+      )}`,
+    );
+    process.exit(1);
+  }
   const result = validateGeneratedVideoPlan(loaded.plan, loaded.style, {phase});
 
   for (const warning of result.warnings) {

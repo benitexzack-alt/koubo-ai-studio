@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "koubo-director-ab-synthetic-fixture/v1",
+  "executionMode": "renderable",
+  "render": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 30,
+    "durationInFrames": 900
+  },
+  "media": {
+    "spoken": {
+      "path": "__SPOKEN_PATH__",
+      "sha256": "__SPOKEN_SHA256__",
+      "sourceIn": 1,
+      "sourceOut": 31
+    },
+    "sfx": [
+      {
+        "id": "synthetic-paper-tick",
+        "path": "__SFX_PATH__",
+        "sha256": "__SFX_SHA256__",
+        "cues": [
+          {"id": "tick-head", "atSeconds": 0, "volume": 0.1},
+          {"id": "tick-overlap", "atSeconds": 0.08, "volume": 0.12},
+          {"id": "tick-middle", "atSeconds": 10, "volume": 0.14},
+          {"id": "tick-tail", "atSeconds": 29.82, "volume": 0.16}
+        ]
+      }
+    ]
+  },
+  "samplePlan": {
+    "outputs": {
+      "visualMaster": "__VISUAL_MASTER_PATH__"
+    }
+  },
+  "provenance": {
+    "requestPath": "__REQUEST_PATH__",
+    "requestCanonicalSha256": "__REQUEST_SHA256__",
+    "styleSha256": "__STYLE_SHA256__",
+    "referenceSha256": "__REFERENCE_SHA256__",
+    "authorityTranscriptSha256": "__TRANSCRIPT_SHA256__",
+    "fileBindings": [],
+    "fileBindingsSha256": "__FILE_BINDINGS_SHA256__"
+  },
+  "chain": {
+    "schemaVersion": "koubo-director-chain/v1",
+    "requestCanonicalSha256": "__REQUEST_SHA256__",
+    "styleSha256": "__STYLE_SHA256__",
+    "referenceSha256": "__REFERENCE_SHA256__",
+    "authorityTranscriptSha256": "__TRANSCRIPT_SHA256__",
+    "fileBindingsSha256": "__FILE_BINDINGS_SHA256__",
+    "planPayloadSha256": "__PLAN_PAYLOAD_SHA256__",
+    "chainSha256": "__CHAIN_SHA256__"
+  }
+}

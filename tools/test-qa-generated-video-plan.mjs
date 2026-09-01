@@ -37,7 +37,108 @@ const run = (binary, args) => {
   }
 };
 
-test('真实 ffprobe/ffmpeg 联系表与逐镜视觉复核可把下载产物推进到 qa-passed', (t) => {
+test('退役纸构计划的 prepare/apply-review 在任何QA状态写入前失败', (t) => {
+  const relativeRoot = `work/.retired-generated-video-qa-test-${process.pid}`;
+  const absoluteRoot = path.resolve(projectRoot, relativeRoot);
+  const videoId = `RETIRED_QA_TEST_${process.pid}`;
+  const planId = `retired-qa-test-${process.pid}`;
+  const planPath = generatedVideoPlanPathFor(videoId);
+  const workflowRoot = generatedVideoWorkflowRootFor(planId);
+  const mediaRoot = generatedVideoMediaRootFor(videoId, planId);
+  const plan = clone(template);
+  plan.planId = planId;
+  plan.videoId = videoId;
+  plan.planPath = planPath;
+  plan.visualPlan = `${relativeRoot}/visual-plan.json`;
+  plan.outputs = {
+    rootDir: mediaRoot,
+    ledgerPath: `${workflowRoot}/generation-ledger.json`,
+    quotePath: `${workflowRoot}/latest-quote.json`,
+    approvalReceiptPath: null,
+    approvalReceiptSha256: null,
+    contactSheetPath: `${workflowRoot}/contact-sheet.jpg`,
+    qaReportPath: `${workflowRoot}/qa-report.json`,
+  };
+  plan.shots = [];
+  fs.mkdirSync(absoluteRoot, {recursive: true});
+  const retiredVideoSha256 =
+    'e0bb0900417c0a5f87d112ded4e3be56af4cd0ad0a9842a2349e15c0ffc70435';
+  const retiredVideoSource = path.resolve(
+    projectRoot,
+    'remotion/public/media/wechat-geo-aao-20260823/user-generated-paper/G01.mp4',
+  );
+  assert.equal(sha256File(retiredVideoSource), retiredVideoSha256);
+  const renamedRetiredVideo = path.join(absoluteRoot, 'renamed-retired-video.bin');
+  fs.copyFileSync(retiredVideoSource, renamedRetiredVideo);
+  plan.retiredRegressionAsset = path.relative(projectRoot, renamedRetiredVideo);
+  fs.writeFileSync(
+    path.resolve(projectRoot, plan.visualPlan),
+    `${JSON.stringify({
+      schemaVersion: 4,
+      videoId,
+      styleReferenceIds: ['koubo-paper-construct-v1'],
+      layers: [],
+    }, null, 2)}\n`,
+  );
+  fs.mkdirSync(path.dirname(path.resolve(projectRoot, planPath)), {recursive: true});
+  fs.writeFileSync(
+    path.resolve(projectRoot, planPath),
+    `${JSON.stringify(plan, null, 2)}\n`,
+  );
+  t.after(() => {
+    fs.rmSync(absoluteRoot, {recursive: true, force: true});
+    fs.rmSync(path.resolve(projectRoot, `edit/${videoId}`), {
+      recursive: true,
+      force: true,
+    });
+    fs.rmSync(path.resolve(projectRoot, workflowRoot), {
+      recursive: true,
+      force: true,
+    });
+    fs.rmSync(path.resolve(projectRoot, mediaRoot), {
+      recursive: true,
+      force: true,
+    });
+  });
+
+  const absolutePlanPath = path.resolve(projectRoot, planPath);
+  const before = fs.readFileSync(absolutePlanPath);
+  let prepareError = null;
+  try {
+    prepareGeneratedVideoQa({planPath});
+  } catch (error) {
+    prepareError = error;
+  }
+  assert.ok(prepareError);
+  assert.equal(prepareError.code, 'RETIRED_GENERATED_STYLE');
+  assert.match(prepareError.message, /退役生成风格硬门.*QA prepare/s);
+  assert.ok(
+    prepareError.hits.some((hit) => hit.sha256 === retiredVideoSha256),
+    'QA prepare 必须记录改名 G01 的目标 SHA-256。',
+  );
+  assert.throws(
+    () =>
+      applyGeneratedVideoVisualReview({
+        planPath,
+        reviewPath: plan.outputs.qaReportPath,
+      }),
+    /退役生成风格硬门.*QA apply-review/s,
+  );
+  assert.deepEqual(fs.readFileSync(absolutePlanPath), before);
+  assert.equal(fs.existsSync(`${absolutePlanPath}.execution.lock`), false);
+  assert.equal(
+    fs.existsSync(path.resolve(projectRoot, plan.outputs.qaReportPath)),
+    false,
+  );
+  assert.equal(
+    fs.existsSync(path.resolve(projectRoot, plan.outputs.contactSheetPath)),
+    false,
+  );
+});
+
+test.skip('真实 ffprobe/ffmpeg 联系表与逐镜视觉复核可把下载产物推进到 qa-passed', {
+  skip: '纸构推演 v1 已退役；保留该端到端 fixture 作历史失败档案。',
+}, (t) => {
   const relativeRoot = `work/.generated-video-qa-test-${process.pid}`;
   const absoluteRoot = path.resolve(projectRoot, relativeRoot);
   fs.mkdirSync(absoluteRoot, {recursive: true});

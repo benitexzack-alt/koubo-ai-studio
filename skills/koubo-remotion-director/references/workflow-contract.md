@@ -9,7 +9,7 @@
 -> 内容与合规边界
 -> 当前生产档案校验
 -> visual-plan.json
--> 必要时纸构推演自动拆镜/报价/金额授权/生成/逐镜QA
+-> 必要时新建纸艺导演 plan-only request；旧纸构推演不得生成，旧 request/plan/QA 不得复用
 -> production-job.json
 -> Remotion 预览/风险帧
 -> 正式导出
@@ -39,10 +39,10 @@
 - 视觉方案：`edit/visual-plan_<video-id>_vN.json`
 - 字幕数据：`remotion/public/data/<video-id>.*.json`
 - 生产清单：`workflow/jobs/<video-id>.production.json`
-- 自动插片计划：`edit/<video-id>/generated-video-plan_<video-id>_v1.json`
-- 自动插片任务账本、报价与 QA：`edit/generated-video/<plan-id>/`
-- 自动插片视频：`remotion/public/media/<video-id>/generated-video/<plan-id>/Gxx.mp4`
-- 自动插片风格卡：`workflow/style-library/koubo-paper-construct-v1.json`
+- 旧自动插片计划、账本、视频和风格卡：只作失败回归证据，不得建立新任务
+- 摄影级纸艺导演合同：`skills/koubo-remotion-director/templates/director-request.v1.json`
+- 纸艺导演计划与候选证据：`work/director-paper-editorial/<revision-id>/`
+- 逐帧质量基线：`knowledge/23-参考片逐帧审计与纸媒叙事装配最低标准.md`
 - 内部预览和质检报告：`work/production-runs/<video-id>/`
 - 正式片：`outputs/<title>_final*.mp4`
 - 发布记录：`workflow/releases/<video-id>_vN.json`
@@ -62,12 +62,13 @@
 
 同一个 `overlapGroup` 最多一个 `titleOwner=true`。
 
-V8 使用 `codex-provider` 时，必须先读取
-`references/paper-construct-generated-video.md`。生成计划须与 visual-plan 的
-`requestId`、`layerId`、实录原句、起止时间和含 `plan-id` 的本地视频路径一一对应；只允许
-`illustration-only` 概念演绎。只有逐镜联系表复核完成、状态达到
-`qa-passed` 且通过 `materialized` 门禁后，才把生成计划写入
-`job.inputs.generatedVideoPlan` 并进入生产任务。
+V8 使用 `codex-provider` 前，风格必须明确标记 `productionEligible=true`，并绑定用户已经通过的动态样片证据。`koubo-paper-construct-v1`、`paper-construct-video` 和 `/user-generated-paper/` 永久命中退役门；`纸媒叙事装配 v2` 当前为 `blocked-candidate`，只能做创意方向、分镜、预览、完成态静帧和一条受控压力测试，不能写入正式 `job.inputs.generatedVideoPlan`。
+
+摄影级纸艺导演是与旧自动插片链隔离的新编译分支。它从真实实录和权威时间轴建立新的 `director-request`，默认 `plan-only`、`productionEligible=false`，输出只能包含 `validate-plan`。已验收的 30 秒 WithSfx 样片只作为风格方向锚；新口播必须重新实例化 request、plan、静帧和 QA，不能把旧候选复制为新任务完成证据。
+
+纸艺导演候选通过后，只能作为 V8 `real-evidence` 或 `generated-video` 插片素材进入新的生产 revision；人物主画面、连续语义卡、字幕、数字运镜和正式发布包仍由 V8 分支负责。V8 的 director-contract/preflight v2、同画面 A/B 和用户完整观看门不得被纸艺导演结果替代。
+
+未来新合同仍须把 `requestId`、`layerId`、实录原句、起止时间、完成态静帧路径与 SHA-256、H3 实际图像输入字段、任务回执、本地视频和逐镜 QA 一一绑定；用途只能是 `illustration-only`。用户通过动态样片后，才允许重新设计并启用新的生成计划 schema。
 
 自动生成属于 `prepare` 之前的显式素材阶段。任何生产诊断、预览、正式渲染、
 缓存失效和回归命令都不得顺带提交新的付费任务。

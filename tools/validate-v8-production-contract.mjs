@@ -6,6 +6,10 @@ import {
   loadPlanAndStyle,
   validateGeneratedVideoPlan,
 } from './generated-video-plan-core.mjs';
+import {
+  findRetiredGeneratedStyleFingerprints,
+  retiredGeneratedStylePolicyMessage,
+} from './generated-style-policy.mjs';
 
 const [jobArgument] = process.argv.slice(2);
 
@@ -74,6 +78,7 @@ let job;
 let plan;
 let cueSheet;
 let sfxManifest;
+let declaredGeneratedPlan = null;
 try {
   job = readJson(jobArgument, '生产任务');
   plan = readJson(job.inputs?.visualPlan, '视觉方案');
@@ -82,6 +87,15 @@ try {
     job.inputs?.sfxManifest ?? 'assets/sfx/koubo-sfx-v8/manifest.json',
     'V8音效审核清单',
   );
+  if (
+    isText(job.inputs?.generatedVideoPlan) &&
+    existsSync(toAbsolute(job.inputs.generatedVideoPlan))
+  ) {
+    declaredGeneratedPlan = readJson(
+      job.inputs.generatedVideoPlan,
+      '生成视频计划',
+    );
+  }
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
   process.exit(1);
@@ -89,6 +103,24 @@ try {
 
 const errors = [];
 const warnings = [];
+const retiredStyleHits = findRetiredGeneratedStyleFingerprints(
+  {job, plan, generatedVideoPlan: declaredGeneratedPlan},
+  {
+    location: '$v8Contract',
+    additionalStrings: [jobArgument],
+    projectRoot,
+    documentPaths: [
+      jobArgument,
+      job.inputs?.visualPlan,
+      job.inputs?.generatedVideoPlan,
+    ],
+  },
+);
+if (retiredStyleHits.length > 0) {
+  errors.push(
+    retiredGeneratedStylePolicyMessage('V8 生产合同校验', retiredStyleHits),
+  );
+}
 const experimentId = 'v8-semantic-continuity-sfx';
 const previewRequiredStatus = 'candidate-preview-required';
 const previewApprovedStatus = 'candidate-preview-approved';

@@ -1,6 +1,6 @@
 ---
 name: koubo-remotion-director
-description: 口播项目的 Remotion 视频包装导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库，将转写、粗剪或完整原片推进到 visual-plan.json、纸构推演自动插片、V8连续语义视觉规划、风险帧预览、Remotion包装、字幕/动效/遮挡质检和release记录；当用户要求优化口播剪辑流程、按V8制作视频、把参考图或抽象机制落到成片、修复卡片裁切/挡脸/字幕错位或生成与校验visual-plan/release时使用。
+description: 口播项目的 Remotion 视频包装与摄影级纸艺叙事导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库：拍摄前把用户确认稿编译成可验证的纸艺分镜、节点中文和素材提示词，拍摄后再以真实实录重绑时间轴，并推进到 V8 连续语义视觉、风险帧、字幕/动效/音效质检和 release 记录。旧纸构推演 v1 已退役；纸艺 v3 预拍可执行，但不能绕过本条动态候选、实录优先和 V8 正式生产门禁。
 ---
 
 # 口播 Remotion 导演
@@ -12,6 +12,11 @@ description: 口播项目的 Remotion 视频包装导演流程。用于包含本
 ## 核心定位
 
 把 Codex + Remotion 从“临时写动效”变成口播项目的固定导演流程。优先保证真实口播、字幕时间轴、视觉可读性和发布门禁，再追求高级动画。
+
+本 Skill 有两条互不替代的执行分支：
+
+- `V8 production`：负责人物主画面、连续语义卡、真实素材、字幕、数字运镜、音效、候选片和发布包；
+- `paper-editorial director`：只负责把适合视觉解释的实录片段编译成摄影级纸艺分镜、静帧与候选插片。它不能替换 V8 包装，也不能把已验收旧样片直接套到新实录。
 
 Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有视觉方案、风险帧预览和机器质检；用户完整观看前，只能说“预览已生成”或“机器侧质检通过”。
 
@@ -33,12 +38,16 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 12. `knowledge/22-实录优先字幕与系列发布包硬门禁.md`
 13. `templates/10-超哥AI创业记_3比4系列封面提示词母版.md`
 14. `workflow/active-production-profile.v1.json`
-15. 与本条视频直接相关的转写、EDL、素材清单、视觉参考和发布记录
+15. `workflow/active-director-profile.v1.json` 与其绑定的纸艺风格发行记录
+16. 与本条视频直接相关的转写、EDL、素材清单、视觉参考和发布记录
 
 按任务需要再读：
 
 - [references/workflow-contract.md](references/workflow-contract.md)：需要生成或校验一条视频的导演流程时读取。
-- [references/paper-construct-generated-video.md](references/paper-construct-generated-video.md)：需要把抽象机制自动拆成“纸构推演 v1”插片并通过 RunningHub 生成时读取。
+- [references/paper-construct-generated-video.md](references/paper-construct-generated-video.md)：旧“纸构推演 v1”退役记录；只用于失败复盘和防止再次启用，不得按其中历史命令创建新任务。
+- [references/paper-editorial-style.v1.json](references/paper-editorial-style.v1.json) 与 [references/acceptance.md](references/acceptance.md)：进入摄影级纸艺导演分支时必读。
+- [templates/director-request.v1.json](templates/director-request.v1.json)：纸艺导演的新任务必须从当前模板实例化，不得复用旧 request、plan 或 QA。
+- [../../knowledge/23-参考片逐帧审计与纸媒叙事装配最低标准.md](../../knowledge/23-参考片逐帧审计与纸媒叙事装配最低标准.md)：涉及抽象机制插片时必读；已验收样片只锁定风格方向，不自动授予新任务渲染权。
 - [references/v4-visual-pack.md](references/v4-visual-pack.md)：需要执行 V4 视觉实验、参考图落地或新增卡片时读取。
 - [references/validation-gates.md](references/validation-gates.md)：需要渲染预览、检查风险帧、导出正式片或填写 release 时读取。
 
@@ -46,10 +55,12 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 
 ### 1. 识别任务类型
 
-- 选题/脚本阶段：先做事实、合规和素材需求判断，不进入 Remotion。
+- 选题/脚本阶段：先做事实、合规和素材需求判断。用户尚未确认文稿时不进入导演生产；用户已确认文稿并要求提前准备视觉素材时，必须进入 `pre-shoot` 纸艺预拍合同，产物只能是 `provisional-previsualization`。
 - 粗剪/字幕阶段：以词级转写和 EDL 输出时间轴为准，不手估字幕时间。
 - 视觉包装阶段：先写 `visual-plan.json`，再做 Remotion 组件或参数。
-- V4 实验阶段：优先读取 V4 参考与验收，不回退旧 `mind-map / perspective / metric / flow` 默认包。
+- V4 历史阶段：只用于识别旧卡片包和回归风险，不得作为新视频默认高级包装，也不得覆盖 V8 或摄影级纸艺导演分支。
+- 摄影级纸艺导演阶段：只为确实需要解释关系、因果或状态变化的实录节点建立独立 `candidate-preview-required` revision；先 `plan-only`，再静帧，再同画面 A/B 动态候选。不得与旧事故 revision 共用 request、plan、QA 或 productionState。
+- 纸艺分支失败时状态必须是 `blocked`。普通 `remotion-information`、扁平卡片或 PPT 关系图不得满足纸艺节拍；只有用户对本条明确批准才能降级。
 - V8 正式阶段：所有新视频默认使用人物主画面、局部连续语义动效、真实素材优先、逐主视觉声画绑定和可感知本地音效；说明型Remotion覆盖率不得超过42%，不得使用全屏黑板、`call-demo`或连续翻卡式PPT表达。
 - V7.2 历史阶段：只保留通用技术参数、锁定母版回归和故障回滚；不得因为参考“兰州OPC”或复用旧任务而把新视频静默降级。
 - 降级例外：必须在生产任务写入用户明确批准、时间、原因和单条适用范围；导演推断、旧知识条目和历史模板都不能替代批准。
@@ -66,7 +77,7 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 - 是否删减、是否全量保留、是否已有 EDL；
 - 最终字幕时间轴来源；
 - 参考图、真实 B-roll、截图、AI 素材的授权和用途；
-- 每个非主播画面先声明素材决策：`speaker | real-evidence | generated-video | remotion-information`，以及制作责任：`existing | user | codex-remotion | codex-provider`；`codex-provider` 仅允许用于 V8 的纸构概念演绎插片；
+- 每个非主播画面先声明素材决策：`speaker | real-evidence | generated-video | paper-editorial | remotion-information`，以及制作责任：`existing | user | codex-remotion | codex-provider`。纸艺 v3 已获得全局风格方向验收，因此允许 `codex-remotion` 在本地生成预拍候选；`codex-provider` 外部生成仍为禁用，未获单独授权时不得联网、上传或付费。
 - 需要人物、真实行动、场景、空间或氛围的 `generated-video` 仍由用户或授权真实素材负责；只有抽象机制、因果和关系可使用 `codex-provider`，不得默认用 Remotion 信息动画或生成画面冒充叙事事实；
 - 指定视觉素材是否确需抠图或升清；仅在 `ready-for-production` 后调用 `koubo-asset-prep`，证据截图和真人主口播保持原样；
 - 本条唯一主观点和行动引导；
@@ -76,9 +87,57 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 
 如果本条需要用户制作图片或视频，先使用 `templates/05-用户素材执行单模板.md` 生成单独执行单。每个项目必须写清“文生视频 / 图生视频 / 文生图 / 真实素材”、对应原句、时长、中文提示词、文件名和放置目录。不得向用户交付无编号、中英文混杂或无法判断生成类型的提示词。
 
-如果本条存在需要解释的抽象机制，自动读取 `references/paper-construct-generated-video.md` 和 `workflow/style-library/koubo-paper-construct-v1.json`。先按语义选择最少必要的 `0—N` 个插片；`N=0` 时不建立生成计划，有镜头时才从 `templates/08-generated-video-plan-template.json` 建立机器计划。不得固定五镜或逐句平均切。每镜必须形成“初始状态 → 一个可见施力动作 → 稳定结果”，并锁定物体身份、形状和施力接触连续性。
+`koubo-paper-construct-v1`、`paper-construct-video` 和 `/user-generated-paper/` 已退役并由生产硬门阻断。不得从 `templates/08-generated-video-plan-template.json` 创建新的 v1 计划，不得通过 `producer=user`、本地文件改名或删除 `generatedVideoPlan` 绕过退役门。
 
-自动插片固定走 `RunningHub / MiniMax-H3 / 2K / 16:9`。先离线编译和预检，再全量报价并向用户报告当前计划总额；只有用户对当前 `planId` 明确确认费用上限，且授权绑定当前 `generationDefinitionSha256`、未超过 24 小时有效期后，才允许使用 `--confirm-paid` 提交。同一 `approvalId` 只保留一份固定消费回执；拆镜、提示词或输出定义变化后必须重新报价和授权。每个镜头真正提交前都必须刷新剩余镜头报价，重新核算单镜和累计上限；每镜最多一次付费任务，禁止自动重试。单镜、末镜或累计实际费用超限，以及实际费用缺失、非法或无法对账时，都必须落盘并停止后续付费提交，禁止把预估金额写成实际扣费。中断时只能恢复与当前计划、提示词、输出路径和授权完整绑定的同一 `taskId`，对既有文件先做哈希对账，冲突时隔离而不覆盖。下载后必须生成五点联系表并完成带逐项观察和证据哈希的视觉复核；计划同时达到 `qa-passed` 并通过 `materialized` 门禁后，才能进入 V8 `prepare`。`doctor`、`prepare`、校验和缓存失效不得隐式触发付费生成。
+如果本条存在需要解释的抽象机制，先读取 `knowledge/23-参考片逐帧审计与纸媒叙事装配最低标准.md`、`references/paper-editorial-style.v1.json` 和 `references/acceptance.md`。从 `templates/director-request.v1.json` 建立全新任务 request，默认保持 `execution.mode=plan-only`、`productionEligible=false`；编译器输出只能包含 `validate-plan`，`emit-render-command.mjs` 必须稳定拒绝。每镜只讲一个知识节拍，但复杂镜允许 4—7 级顺序装配，不能再把“一镜一个知识点”误写成“一镜只准一个物理动作”。
+
+纸艺导演计划的固定入口：
+
+```bash
+node tools/validate-active-director-profile.mjs
+
+node skills/koubo-remotion-director/scripts/compile-preproduction-director.mjs \
+  --request <director-preproduction-request.json> \
+  --repo-root <project-root>
+
+node skills/koubo-remotion-director/scripts/validate-preproduction-director.mjs \
+  --request <director-preproduction-request.json> \
+  --repo-root <project-root>
+```
+
+预拍请求必须使用 [templates/director-preproduction-request.v1.json](templates/director-preproduction-request.v1.json) 建立新 revision。所有需要解释机制、因果、层级、对照或流程的节拍，都必须输出 `paperScene`、`objectGroups`、`nodes`、`stages`、`textPlan` 和两类提示词。节点中文必须由 Remotion 确定性叠加；生成模型不得自行生成可读中文。
+
+拍摄完成后，再从 [templates/director-postshoot-rebind-request.v1.json](templates/director-postshoot-rebind-request.v1.json) 建立实录重绑请求：
+
+```bash
+node skills/koubo-remotion-director/scripts/rebind-postshoot-director.mjs \
+  --request <director-postshoot-rebind-request.json> \
+  --repo-root <project-root>
+
+node skills/koubo-remotion-director/scripts/validate-postshoot-director.mjs \
+  --request <director-postshoot-rebind-request.json> \
+  --repo-root <project-root>
+```
+
+只有实录重绑验证通过后，才可继续使用原有实录纸艺编译器：
+
+```bash
+node skills/koubo-remotion-director/scripts/compile-director-plan.mjs \
+  --request <director-request.json> \
+  --output <director-output.json> \
+  --repo-root <project-root>
+
+node skills/koubo-remotion-director/scripts/validate-director-output.mjs \
+  --plan <director-output.json> \
+  --request <director-request.json> \
+  --repo-root <project-root>
+```
+
+`skillRead=true` 不等于执行。必须同时存在新 request、route lock、plan、compile receipt 和 validation receipt，且验证回执中 `skillExecuted=true`，才可对外说本条已调用导演 Skill。
+
+只有新 revision 逐项绑定真实媒体、实录权威时间轴、当前 compiler/registry SHA、批准静帧与独立验收证据后，才能另行申请 `renderable` 候选。旧 exact30 request/plan/QA 保持不可变；已验收 WithSfx 样片只是风格锚，不证明当前源码复现了旧候选，也不授权正式全片。
+
+未来若候选晋级，提供商仍可走 `RunningHub / MiniMax-H3 / 2K / 16:9`，但必须先证明批准完成态静帧及其 SHA-256 真实进入 H3 图生视频请求；当前请求合同只有文本 prompt，未达到这一前提。费用授权、单次任务、禁止自动重试、逐镜报价、账本、对账、恢复、哈希隔离和 AI 披露等安全能力继续保留。视觉门没有通过前不得联网报价或提交；费用确认不能替代分镜、静帧和动态样片确认。
 
 以已验证的 `workflow/jobs/20260810_ai_cognitive_position_v80.production.json`、对应V8视觉方案和音效点位表为结构参考，生成 `edit/visual-plan_<id>_v8.json`、`edit/sfx-cue-sheet_<id>_v8.json` 和 `workflow/jobs/<id>_v80.production.json`。只复制结构，不复制上一条文案、时间点、素材路径或画面内容。
 
@@ -116,11 +175,13 @@ node tools/validate-visual-plan.mjs <visual-plan.json>
 V8必须执行：
 
 ```bash
+node tools/validate-active-director-profile.mjs
+node tools/validate-director-production-binding.mjs <production-job.json> <command>
 node tools/validate-active-production-profile.mjs <production-job.json> doctor
 node tools/validate-v8-production-contract.mjs <production-job.json>
 ```
 
-第一道门禁确认没有静默降级；第二道门禁要求主视觉单元音效覆盖率100%、同步偏差不超过2帧、人物局部信息层不超过42%、同一音效25秒内不重复，并强制同画面有声/无声30—45秒预览。
+第一道门禁锁定导演 Skill 版本与用户已验收的纸艺风格锚；第二道要求本条同时绑定预拍纸艺计划、实录重绑和当前任务验收；第三道确认没有降级 V8；第四道要求主视觉单元音效覆盖率100%、同步偏差不超过2帧、人物局部信息层不超过42%、同一音效25秒内不重复，并强制同画面有声/无声30—45秒预览。
 
 校验失败时先修方案，不渲染全片。
 
@@ -136,11 +197,11 @@ node tools/run-v72-production.mjs <production-job.json> prepare
 
 `prepare` 必须先无条件校验当前V8生产档案，再一次完成同画面有声/无声动态预览、完整分辨率风险帧和音频预检。输入指纹完全一致时允许命中缓存；任一素材、字幕、组件、方案、音效、生产档案或档案校验器变化时必须失效。脚本名保留`run-v72-production.mjs`只是兼容历史调用，不代表当前视觉版本。
 
-正式片前必须输出 20-30 秒预览或覆盖关键节点的 still/range。默认不做全长低清预览；只有删减、重排、大量字幕不确定或全片结构风险时才允许，并在生产任务中写明原因。预览至少覆盖：
+正式片前必须固定输出同画面 30—45 秒 `WithSfx / NoSfx` A/B 动态预览；still/range 只能补充风险帧证据，不能替代动态 A/B。默认不做全长低清预览；只有删减、重排、大量字幕不确定或全片结构风险时才允许，并在生产任务中写明原因。预览至少覆盖：
 
 - 钩子；
 - 最复杂叠层；
-- 本条实际采用的每类 V4 或 V7.1 组件；
+- 本条实际采用的每类 V8 语义视觉组件；
 - 每段全屏素材；
 - 结尾 CTA。
 - 本条实际使用的每种新音效角色。
@@ -182,7 +243,8 @@ V8 有音效正式候选片生成后，必须立即完成最低交付包：从�
 - 不让参考图只停留在计划文字里；必须绑定原创组件变体和验收帧。
 - 不为了高级感强制生图；真实素材和确定性 Remotion 排版优先。
 - 不用 Remotion 信息动画默认替代需要人物、场景、行为、空间或氛围的叙事视频；素材缺失时要明确降级为主播 + 信息卡或“情景示意”。
-- 不用纸构推演插片替代真实界面、截图、数据、官方材料或现场证据；自动生成素材只允许标记为“AI生成·概念演绎 / 非真实业务证据”。
+- 不用生成插片替代真实界面、截图、数据、官方材料或现场证据；自动生成素材只允许标记为“AI生成·概念演绎 / 非真实业务证据”。旧纸构推演 v1 不得以任何 producer 或本地路径重新进入生产。
+- 不把纸艺导演的 `plan-only`、完成态静帧、30 秒候选或用户风格确认等同于 V8 正式片授权；新内容必须新建 request 和候选 revision，正式生产仍经过现有 director-contract/preflight v2。
 - 不让 `doctor`、`prepare`、校验、缓存失效或自动重跑隐式提交 RunningHub 付费任务；必须先全量报价，再取得绑定当前计划的金额授权。
 - 不把二创参考视频当作事实原始信源；外部案例引用必须显示来源和证据边界。
 - 不在左上角显示 V7、V7.1 或模板名，只保留“超哥AI创业记”。

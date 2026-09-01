@@ -1,6 +1,12 @@
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync} from 'node:fs';
+import {
+  copyFileSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import path from 'node:path';
 import {
   approvalReceiptRelativePathFor,
@@ -611,330 +617,102 @@ try {
     run('tools/validate-v8-production-contract.mjs', legacyUserCase.jobPath),
   );
 
-  const provider = writeProviderCase('provider-valid');
-  assertPasses(
-    '合法 codex-provider 视觉方案',
+  const provider = writeProviderCase('provider-retired');
+  assertFailsWith(
+    '纸构推演 v1 视觉方案已退役',
     run('tools/validate-visual-plan.mjs', provider.planPath),
+    '退役生成风格硬门',
   );
-  assertPasses(
-    '合法 codex-provider V8 生产合同',
+  assertFailsWith(
+    '纸构推演 v1 不得进入 V8 生产',
     run('tools/validate-v8-production-contract.mjs', provider.jobPath),
+    '退役生成风格硬门',
   );
 
-  const schema3Provider = writeProviderCase('provider-schema3', ({plan}) => {
-    plan.schemaVersion = 3;
-    plan.experiment = {
-      id: 'v73-media-sfx-speed',
-      status: 'ready-for-next-video-validation',
-    };
-  });
+  const retiredComponentPlan = clone(basePlan);
+  retiredComponentPlan.layers[0].params.component = 'paper-construct-video';
+  retiredComponentPlan.layers[0].asset.sourceType = 'local-video';
+  retiredComponentPlan.layers[0].assetDecision = {
+    class: 'real-evidence',
+    producer: 'existing',
+    fallback: 'speaker-plus-information',
+  };
+  const retiredComponentCase = writeCase(
+    'retired-component-spoof',
+    retiredComponentPlan,
+    baseCueSheet,
+    baseJob,
+  );
   assertFailsWith(
-    'schemaVersion=3 禁止 codex-provider',
-    run('tools/validate-visual-plan.mjs', schema3Provider.planPath),
-    '只允许历史 user 路由',
+    '退役组件不能靠producer/sourceType错标绕过视觉门',
+    run('tools/validate-visual-plan.mjs', retiredComponentCase.planPath),
+    'paper-construct-video',
+  );
+  assertFailsWith(
+    '退役组件不能靠producer/sourceType错标绕过V8合同',
+    run('tools/validate-v8-production-contract.mjs', retiredComponentCase.jobPath),
+    'paper-construct-video',
   );
 
-  const wrongPurpose = writeProviderCase('provider-wrong-purpose', ({plan}) => {
-    plan.layers[0].purpose = 'source-evidence';
-  });
+  const retiredPathPlan = clone(basePlan);
+  retiredPathPlan.layers[0].asset = {
+    sourceType: 'local-video',
+    source: 'remotion/public/media/test/user-generated-paper/G01.mp4',
+  };
+  retiredPathPlan.layers[0].assetDecision = {
+    class: 'real-evidence',
+    producer: 'existing',
+    fallback: 'speaker-plus-information',
+  };
+  const retiredPathCase = writeCase(
+    'retired-path-spoof',
+    retiredPathPlan,
+    baseCueSheet,
+    baseJob,
+  );
   assertFailsWith(
-    '自动插片禁止证据用途',
-    run('tools/validate-visual-plan.mjs', wrongPurpose.planPath),
-    'purpose 必须为 concept-illustration',
+    '退役路径段不能靠producer/sourceType错标绕过',
+    run('tools/validate-visual-plan.mjs', retiredPathCase.planPath),
+    '/user-generated-paper/',
   );
 
-  const wrongSourceType = writeProviderCase(
-    'provider-wrong-source-type',
-    ({plan}) => {
-      plan.layers[0].asset.sourceType = 'user-generated-video';
-    },
+  const retiredSource =
+    'remotion/public/media/wechat-geo-aao-20260823/user-generated-paper/G01.mp4';
+  const retiredSha256 =
+    'e0bb0900417c0a5f87d112ded4e3be56af4cd0ad0a9842a2349e15c0ffc70435';
+  if (sha256(retiredSource) !== retiredSha256) {
+    throw new Error('V8 内容哈希回归源 G01 已漂移。');
+  }
+  const renamedRetiredSource = `${testRootRelative}/renamed-retired-source.bin`;
+  copyFileSync(
+    path.join(projectRoot, retiredSource),
+    path.join(projectRoot, renamedRetiredSource),
+  );
+  const retiredHashPlan = clone(basePlan);
+  retiredHashPlan.layers[0].asset = {
+    sourceType: 'local-video',
+    source: renamedRetiredSource,
+  };
+  retiredHashPlan.layers[0].assetDecision = {
+    class: 'generated-video',
+    producer: 'user',
+    fallback: 'speaker-plus-information',
+  };
+  const retiredHashCase = writeCase(
+    'retired-content-sha',
+    retiredHashPlan,
+    baseCueSheet,
+    baseJob,
   );
   assertFailsWith(
-    '自动插片来源类型失效',
-    run('tools/validate-visual-plan.mjs', wrongSourceType.planPath),
-    'asset.sourceType 必须为 provider-generated-video',
-  );
-
-  const wrongEvidenceUse = writeProviderCase(
-    'provider-wrong-evidence-use',
-    ({plan}) => {
-      plan.layers[0].assetDecision.evidenceUse = 'source-evidence';
-    },
-  );
-
-  const misclassifiedProviderType = writeProviderCase(
-    'provider-misclassified-type',
-    ({plan}) => {
-      plan.layers[0].assetDecision.class = 'real-evidence';
-      plan.layers[0].assetDecision.producer = 'existing';
-    },
+    '改名 G01 仍被视觉方案内容哈希门阻断',
+    run('tools/validate-visual-plan.mjs', retiredHashCase.planPath),
+    retiredSha256,
   );
   assertFailsWith(
-    '自动生成来源类型不得错标为真实证据',
-    run('tools/validate-visual-plan.mjs', misclassifiedProviderType.planPath),
-    '必须声明 class=generated-video 且 producer=codex-provider',
-  );
-  assertFailsWith(
-    'V8合同不得以错分类绕过生成计划门',
-    run('tools/validate-v8-production-contract.mjs', misclassifiedProviderType.jobPath),
-    '必须声明 generated-video + codex-provider',
-  );
-
-  const misclassifiedProviderPath = writeProviderCase(
-    'provider-misclassified-path',
-    ({plan}) => {
-      plan.layers[0].asset.sourceType = 'local-video';
-      plan.layers[0].assetDecision.class = 'real-evidence';
-      plan.layers[0].assetDecision.producer = 'existing';
-    },
-  );
-  assertFailsWith(
-    '自动生成固定路径不得错标为本地真实素材',
-    run('tools/validate-visual-plan.mjs', misclassifiedProviderPath.planPath),
-    '必须声明 class=generated-video 且 producer=codex-provider',
-  );
-  assertFailsWith(
-    'V8合同不得以固定路径错分类绕过生成计划门',
-    run('tools/validate-v8-production-contract.mjs', misclassifiedProviderPath.jobPath),
-    '必须声明 generated-video + codex-provider',
-  );
-
-  const aliasedGeneratedPath = writeProviderCase(
-    'provider-aliased-generated-path',
-    ({plan, job, paths}) => {
-      const mediaDirectory = path.posix.dirname(paths.outputVideoPath);
-      const planSegment = path.posix.basename(mediaDirectory);
-      plan.layers[0].asset.source =
-        `${mediaDirectory}/../${planSegment}/G01.mp4`;
-      plan.layers[0].asset.sourceType = 'local-video';
-      plan.layers[0].assetDecision.class = 'real-evidence';
-      plan.layers[0].assetDecision.producer = 'existing';
-      delete job.inputs.generatedVideoPlan;
-    },
-  );
-  assertFailsWith(
-    '等价路径不得把自动生成片伪装成真实素材',
-    run('tools/validate-visual-plan.mjs', aliasedGeneratedPath.planPath),
-    '不得使用等价别名或符号链接',
-  );
-  assertFailsWith(
-    'V8合同不得被自动生成等价路径绕过',
-    run('tools/validate-v8-production-contract.mjs', aliasedGeneratedPath.jobPath),
-    '不得使用等价别名或符号链接',
-  );
-
-  const symlinkedGeneratedPath = writeProviderCase(
-    'provider-symlinked-generated-path',
-    ({plan, job, paths}) => {
-      const linkPath = `${testRootRelative}/provider-generated-link.mp4`;
-      symlinkSync(
-        path.resolve(projectRoot, paths.outputVideoPath),
-        path.resolve(projectRoot, linkPath),
-      );
-      plan.layers[0].asset.source = linkPath;
-      plan.layers[0].asset.sourceType = 'local-video';
-      plan.layers[0].assetDecision.class = 'real-evidence';
-      plan.layers[0].assetDecision.producer = 'existing';
-      delete job.inputs.generatedVideoPlan;
-    },
-  );
-  assertFailsWith(
-    '符号链接不得把自动生成片伪装成真实素材',
-    run('tools/validate-visual-plan.mjs', symlinkedGeneratedPath.planPath),
-    '不得使用等价别名或符号链接',
-  );
-  assertFailsWith(
-    'V8合同不得被自动生成符号链接绕过',
-    run('tools/validate-v8-production-contract.mjs', symlinkedGeneratedPath.jobPath),
-    '不得使用等价别名或符号链接',
-  );
-  assertFailsWith(
-    '自动插片 evidenceUse 越界',
-    run('tools/validate-visual-plan.mjs', wrongEvidenceUse.planPath),
-    'evidenceUse 必须为 illustration-only',
-  );
-
-  const wrongStyle = writeProviderCase('provider-wrong-style', ({plan}) => {
-    plan.layers[0].assetDecision.styleReferenceId = 'another-style';
-  });
-  assertFailsWith(
-    '自动插片风格锁失效',
-    run('tools/validate-visual-plan.mjs', wrongStyle.planPath),
-    'styleReferenceId 必须为 koubo-paper-construct-v1',
-  );
-
-  const wrongFallback = writeProviderCase('provider-wrong-fallback', ({plan}) => {
-    plan.layers[0].assetDecision.fallback = 'black-frame';
-  });
-  assertFailsWith(
-    '自动插片降级路由失效',
-    run('tools/validate-visual-plan.mjs', wrongFallback.planPath),
-    'fallback 必须为 speaker-plus-information',
-  );
-
-  const missingStyleReference = writeProviderCase(
-    'provider-missing-style-reference',
-    ({plan}) => {
-      plan.styleReferenceIds = plan.styleReferenceIds.filter(
-        (item) => item !== 'koubo-paper-construct-v1',
-      );
-    },
-  );
-  assertFailsWith(
-    '自动插片缺少全局风格引用',
-    run('tools/validate-visual-plan.mjs', missingStyleReference.planPath),
-    'styleReferenceIds 必须包含自动插片风格',
-  );
-
-  const missingGeneratedPlan = writeProviderCase(
-    'provider-missing-generated-plan',
-    ({job}) => {
-      delete job.inputs.generatedVideoPlan;
-    },
-  );
-  assertFailsWith(
-    '自动插片缺少生成计划',
-    run('tools/validate-v8-production-contract.mjs', missingGeneratedPlan.jobPath),
-    'job.inputs.generatedVideoPlan',
-  );
-
-  const wrongDisclosure = writeProviderCase(
-    'provider-wrong-disclosure',
-    ({plan}) => {
-      plan.layers[0].params.disclosure = '普通插片';
-    },
-  );
-  assertFailsWith(
-    '自动插片缺少披露',
-    run('tools/validate-visual-plan.mjs', wrongDisclosure.planPath),
-    'disclosure=AI生成·概念演绎',
-  );
-  assertFailsWith(
-    '自动插片V8合同缺少披露',
-    run('tools/validate-v8-production-contract.mjs', wrongDisclosure.jobPath),
-    'disclosure=AI生成·概念演绎',
-  );
-
-  const wrongBadge = writeProviderCase('provider-wrong-badge', ({plan}) => {
-    plan.layers[0].params.badge = '普通证据';
-  });
-  assertFailsWith(
-    '自动插片缺少证据边界标识',
-    run('tools/validate-visual-plan.mjs', wrongBadge.planPath),
-    'badge=非真实业务证据',
-  );
-  assertFailsWith(
-    '自动插片V8合同缺少证据边界标识',
-    run('tools/validate-v8-production-contract.mjs', wrongBadge.jobPath),
-    'badge=非真实业务证据',
-  );
-
-  const missingRenderSource = writeProviderCase(
-    'provider-missing-render-source',
-    ({plan}) => {
-      delete plan.layers[0].params.src;
-    },
-  );
-  assertFailsWith(
-    '自动插片不得通过合同却渲染空画面',
-    run('tools/validate-visual-plan.mjs', missingRenderSource.planPath),
-    'params.src 唯一渲染',
-  );
-  assertFailsWith(
-    'V8合同必须绑定实际Remotion渲染源',
-    run('tools/validate-v8-production-contract.mjs', missingRenderSource.jobPath),
-    '实际 Remotion 渲染源',
-  );
-
-  const overriddenRenderSource = writeProviderCase(
-    'provider-overridden-render-source',
-    ({plan, paths}) => {
-      plan.layers[0].params.mediaClips = [{
-        src: paths.alternateVideoPath,
-        durationSeconds: 6,
-      }];
-    },
-  );
-  assertFailsWith(
-    'mediaClips不得覆盖已QA生成片',
-    run('tools/validate-visual-plan.mjs', overriddenRenderSource.planPath),
-    '不得缺失或被 mediaClips 覆盖',
-  );
-  assertFailsWith(
-    'V8合同不得渲染未QA的另一文件',
-    run('tools/validate-v8-production-contract.mjs', overriddenRenderSource.jobPath),
-    '实际 Remotion 渲染源',
-  );
-
-  const wrongLayerBinding = writeProviderCase(
-    'provider-wrong-layer-binding',
-    ({generatedPlan}) => {
-      generatedPlan.shots[0].layerId = 'missing-layer';
-    },
-  );
-  assertFailsWith(
-    '生成镜头与图层绑定不一致',
-    run('tools/validate-v8-production-contract.mjs', wrongLayerBinding.jobPath),
-    'VISUAL_PLAN_LAYER_BINDING_MISSING',
-  );
-
-  const wrongRequestBinding = writeProviderCase(
-    'provider-wrong-request-binding',
-    ({generatedPlan}) => {
-      generatedPlan.shots[0].requestId = 'G99';
-    },
-  );
-  assertFailsWith(
-    '生成镜头与图层 requestId 不一致',
-    run('tools/validate-v8-production-contract.mjs', wrongRequestBinding.jobPath),
-    'VISUAL_PLAN_REQUEST_ID_MISMATCH',
-  );
-
-  const wrongVideoBinding = writeProviderCase(
-    'provider-wrong-video-binding',
-    ({plan, paths}) => {
-      plan.layers[0].asset.source = paths.alternateVideoPath;
-    },
-  );
-  assertFailsWith(
-    '生成镜头与图层视频不一致',
-    run('tools/validate-v8-production-contract.mjs', wrongVideoBinding.jobPath),
-    '视频路径与生成镜头产物不一致',
-  );
-
-  const wrongRenderMode = writeProviderCase(
-    'provider-wrong-render-mode',
-    ({plan}) => {
-      plan.layers[0].presentation.renderMode = 'speaker-overlay';
-    },
-  );
-  assertFailsWith(
-    '自动插片禁止局部叠加渲染',
-    run('tools/validate-v8-production-contract.mjs', wrongRenderMode.jobPath),
-    '生成视频必须使用 media-fullscreen',
-  );
-
-  const qaFailed = writeProviderCase('provider-qa-failed', ({generatedPlan}) => {
-    generatedPlan.shots[0].qa.status = 'pending';
-  });
-  assertFailsWith(
-    '自动插片 QA 未通过',
-    run('tools/validate-v8-production-contract.mjs', qaFailed.jobPath),
-    'SHOT_QA_NOT_PASSED',
-  );
-
-  const missingFingerprint = writeProviderCase(
-    'provider-missing-fingerprint',
-    ({job, paths}) => {
-      job.inputs.fingerprintPaths = job.inputs.fingerprintPaths.filter(
-        (item) => item !== paths.shotQaReportPath,
-      );
-    },
-  );
-  assertFailsWith(
-    '自动插片 QA 报告未纳入指纹',
-    run('tools/validate-v8-production-contract.mjs', missingFingerprint.jobPath),
-    '自动生成插片产物未纳入 fingerprintPaths',
+    '改名 G01 仍被 V8 合同内容哈希门阻断',
+    run('tools/validate-v8-production-contract.mjs', retiredHashCase.jobPath),
+    retiredSha256,
   );
 
   const opaque = clone(basePlan);
@@ -1027,7 +805,7 @@ try {
     'formal.enabled=false',
   );
 
-  console.log('V8生产合同回归通过：历史路由与自动插片合同全部通过。');
+  console.log('V8生产合同回归通过：通用V8、普通user视频与退役生成风格隔离均通过。');
 } finally {
   rmSync(testRoot, {recursive: true, force: true});
   for (const relativeRoot of externalTestRoots) {

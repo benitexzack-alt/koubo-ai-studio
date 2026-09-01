@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
+import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {
+  copyFileSync,
   mkdirSync,
   readFileSync,
   rmSync,
@@ -23,6 +25,7 @@ import {
   stableJsonSha256,
   validateGeneratedVideoPlan,
 } from './generated-video-plan-core.mjs';
+import {findRetiredGeneratedStyleFingerprints} from './generated-style-policy.mjs';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = (relativePath) =>
@@ -931,6 +934,61 @@ assert.equal(
   'stableJsonSha256 必须忽略对象键顺序。',
 );
 
+const retiredCliPlan = makePlan(1, {
+  planId: `retired-cli-plan-${process.pid}`,
+  videoId: `RETIRED_CLI_PLAN_${process.pid}`,
+  visualSuffix: 'retired-cli',
+});
+const retiredCliPlanPath = resolve(projectRoot, retiredCliPlan.planPath);
+mkdirSync(dirname(retiredCliPlanPath), {recursive: true});
+writeFileSync(
+  retiredCliPlanPath,
+  `${JSON.stringify(retiredCliPlan, null, 2)}\n`,
+);
+try {
+  const retiredValidation = spawnSync(
+    process.execPath,
+    [
+      'tools/validate-generated-video-plan.mjs',
+      retiredCliPlan.planPath,
+      '--phase',
+      'plan',
+    ],
+    {cwd: projectRoot, encoding: 'utf8'},
+  );
+  const retiredValidationOutput =
+    `${retiredValidation.stdout ?? ''}${retiredValidation.stderr ?? ''}`;
+  assert.notEqual(retiredValidation.status, 0, '退役风格不得再显示计划有效。');
+  assert.match(retiredValidationOutput, /\[STYLE_RETIRED\]/u);
+  assert.match(retiredValidationOutput, /退役生成风格硬门/u);
+} finally {
+  rmSync(resolve(projectRoot, `edit/${retiredCliPlan.videoId}`), {
+    recursive: true,
+    force: true,
+  });
+}
+
+const failedPlanSha256 =
+  'ddb5e242f25038dd8b58910fe58427c2e094e056947d9db7fd51d652c6d9e7cd';
+const failedPlanSource =
+  'edit/WECHAT_GEO_AAO_20260823_talk01/generated-video-plan_WECHAT_GEO_AAO_20260823_talk01_v1.json';
+assert.equal(sha256File(failedPlanSource), failedPlanSha256);
+const renamedFailedPlanPath = resolve(bindingRoot, 'renamed-failed-plan.bin');
+copyFileSync(resolve(projectRoot, failedPlanSource), renamedFailedPlanPath);
+const renamedFailedPlan = JSON.parse(readFileSync(renamedFailedPlanPath, 'utf8'));
+const renamedPlanHits = findRetiredGeneratedStyleFingerprints(
+  renamedFailedPlan,
+  {
+    location: '$renamedFailedPlan',
+    projectRoot,
+    documentPaths: [renamedFailedPlanPath],
+  },
+);
+assert.ok(
+  renamedPlanHits.some((hit) => hit.sha256 === failedPlanSha256),
+  '改名后的失败计划必须按文件内容 SHA-256 命中退役门。',
+);
+
 console.log(
-  'generated-video-plan 测试通过：合法计划、可变镜数、完整风格锁、单动作、证据边界、连续性、结尾定格、费用门、物化产物与 QA 均已覆盖。',
+  'generated-video-plan 测试通过：历史核心合同保留为失败档案，CLI 对名称及内容哈希退役证据返回 STYLE_RETIRED。',
 );

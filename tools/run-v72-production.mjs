@@ -24,6 +24,9 @@ import path from 'node:path';
 import process from 'node:process';
 import {fileURLToPath} from 'node:url';
 
+import {assertProductionEntryPreflightV2} from '../skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs';
+import {assertDirectorProductionBinding} from './director-production-binding-core.mjs';
+
 const scriptPath = fileURLToPath(import.meta.url);
 const projectRoot = path.resolve(path.dirname(scriptPath), '..');
 const supportedCommands = new Set([
@@ -293,6 +296,40 @@ const job = readJson(jobPath, '生产任务清单');
 const baselinePath = resolveProjectPath(job.baseline?.path, '生产基线', true);
 const baseline = readJson(baselinePath, '生产基线');
 
+let productionGatePreflight;
+try {
+  productionGatePreflight = assertProductionEntryPreflightV2({
+    projectRoot,
+    jobPath,
+    job,
+    command,
+    entrypoint: 'tools/run-v72-production.mjs',
+  });
+} catch (error) {
+  console.error(
+    `生产入口冻结门禁失败：[${error?.code ?? 'DPG2_UNEXPECTED'}] ${
+      error instanceof Error ? error.message : String(error)
+    }`,
+  );
+  process.exit(1);
+}
+
+let directorProductionBinding;
+try {
+  directorProductionBinding = assertDirectorProductionBinding({
+    projectRoot,
+    job,
+    command,
+  });
+} catch (error) {
+  console.error(
+    `导演生产绑定门禁失败：[${error?.code ?? 'DIRECTOR_PRODUCTION_BINDING_UNEXPECTED'}] ${
+      error instanceof Error ? error.message : String(error)
+    }`,
+  );
+  process.exit(1);
+}
+
 const reportPaths = {
   runManifest: resolveProjectPath(job.reports?.runManifest, '运行清单路径'),
   timingReport: resolveProjectPath(job.reports?.timingReport, '计时报告路径'),
@@ -308,6 +345,7 @@ const runManifest = {
   startedAt: new Date().toISOString(),
   finishedAt: null,
   status: 'running',
+  directorProductionBinding,
   fingerprint: null,
   stages: [],
 };
@@ -425,6 +463,7 @@ const validateJob = () => {
     ['双语字幕', job.inputs?.bilingualCaptions],
     ['音效点位表', job.inputs?.sfxCueSheet],
     ['Remotion 根目录', job.remotion?.root],
+    ['Remotion publicDir', job.remotion?.publicDir],
   ];
   for (const [label, value] of requiredPaths) {
     try {
@@ -538,11 +577,17 @@ const computeFingerprint = async () => {
     'tools/validate-active-production-profile.mjs',
     'tools/validate-production-command-gate.mjs',
     relativeToProject(scriptPath),
+    ...productionGatePreflight.gateClosureFiles.map((entry) => entry.path),
+    job.productionGate?.directorContract?.path,
+    job.productionGate?.handoffReceipt?.path,
+    job.productionGate?.freezeReceipt?.path,
+    job.productionGate?.formalAuthorization?.path,
     job.inputs.source,
     job.inputs.renderProxy,
     job.inputs.visualPlan,
     job.inputs.bilingualCaptions,
     job.inputs.sfxCueSheet,
+    job.remotion.publicDir,
     ...job.inputs.fingerprintPaths,
   ].filter((entry) => typeof entry === 'string' && entry.trim());
   const files = [
@@ -791,7 +836,7 @@ const openRenderContext = async () => {
   const {openBrowser, renderMedia, renderStill, selectComposition} =
     requireFromRemotion('@remotion/renderer');
   const entryPoint = path.resolve(remotionRoot, job.remotion.entry);
-  const publicDir = path.join(remotionRoot, 'public');
+  const publicDir = resolveProjectPath(job.remotion.publicDir, 'Remotion publicDir', true);
 
   const serveUrl = await withStage('Remotion打包', async () =>
     bundle({

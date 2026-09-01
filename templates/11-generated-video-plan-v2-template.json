@@ -1,0 +1,53 @@
+{
+  "schema": "generated-video-plan/v2",
+  "schemaVersion": "generated-video-plan/v2",
+  "templateStatus": "candidate-offline-only",
+  "executionMode": "style-sample",
+  "planId": "REPLACE_WITH_PLAN_ID",
+  "videoId": "REPLACE_WITH_VIDEO_ID",
+  "planPath": "edit/generated-video/REPLACE_WITH_PLAN_ID/plan.json",
+  "styleReference": {
+    "id": "koubo-paper-editorial-assembly-v2-candidate",
+    "path": "workflow/style-library/koubo-paper-editorial-assembly-v2.candidate.json",
+    "sha256": "REPLACE_WITH_REAL_STYLE_FILE_SHA256"
+  },
+  "provider": {
+    "platform": "RunningHub",
+    "model": "MiniMax-H3",
+    "modelRoute": "/minimax/hailuo-h3/multimodal-to-video",
+    "resolution": "2K",
+    "aspectRatio": "16:9",
+    "durationSeconds": {"min": 5, "max": 15},
+    "aigcWatermark": false
+  },
+  "productionEligibility": {
+    "productionEligible": false,
+    "state": "candidate-blocked"
+  },
+  "shots": [
+    {
+      "id": "G01",
+      "spokenAnchor": {
+        "text": "REPLACE_WITH_VERBATIM_SPOKEN_SENTENCE",
+        "startSeconds": 0,
+        "endSeconds": 6
+      },
+      "prompt": "REPLACE_WITH_COMPLETE_MINIMAX_H3_MULTIMODAL_PROMPT",
+      "durationSeconds": 6,
+      "approvedStill": {
+        "path": "edit/generated-video/REPLACE_WITH_PLAN_ID/stills/G01-approved.png",
+        "sha256": "REPLACE_WITH_REAL_STILL_SHA256",
+        "width": 1920,
+        "height": 1080,
+        "approvalReceipt": {
+          "path": "edit/generated-video/REPLACE_WITH_PLAN_ID/still-approvals/G01.json",
+          "sha256": "REPLACE_WITH_REAL_APPROVAL_RECEIPT_SHA256"
+        }
+      },
+      "uploadReceipt": {
+        "path": "edit/generated-video/REPLACE_WITH_PLAN_ID/upload-receipts/G01.json",
+        "sha256": "REPLACE_WITH_REAL_UPLOAD_RECEIPT_SHA256"
+      }
+    }
+  ]
+}

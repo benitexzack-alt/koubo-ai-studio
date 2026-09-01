@@ -1,0 +1,71 @@
+{
+  "schema": "director-production-freeze-registry/v2",
+  "policyRevision": "2026-08-24-p0-recovery-01",
+  "fixtureMirrorOf": "workflow/director-production-freeze-registry.v2.json",
+  "supportedCommands": [
+    "doctor",
+    "fingerprint",
+    "preview",
+    "risk-frames",
+    "audio-preflight",
+    "formal-audio",
+    "prepare",
+    "formal",
+    "qa",
+    "regression",
+    "all",
+    "direct-remotion-preview",
+    "direct-remotion-render",
+    "release-validation"
+  ],
+  "candidateRevisionAllowedCommands": [
+    "doctor",
+    "fingerprint",
+    "preview",
+    "risk-frames",
+    "audio-preflight",
+    "prepare",
+    "direct-remotion-preview"
+  ],
+  "formalCommandsRequireSeparateAuthorization": [
+    "formal-audio",
+    "formal",
+    "qa",
+    "regression",
+    "all",
+    "direct-remotion-render",
+    "release-validation"
+  ],
+  "controlledRemotionCli": {
+    "linkPath": "remotion/node_modules/.bin/remotion",
+    "allowedRealpath": "remotion/node_modules/@remotion/cli/remotion-cli.js",
+    "targetSha256": "a10a711f052487d302dcf52dc08729c84c4deca0dc41c5b708edd1a7b7b48bfa"
+  },
+  "entrypointByCommand": {
+    "doctor": "tools/run-v72-production.mjs",
+    "fingerprint": "tools/run-v72-production.mjs",
+    "preview": "tools/run-v72-production.mjs",
+    "risk-frames": "tools/run-v72-production.mjs",
+    "audio-preflight": "tools/run-v72-production.mjs",
+    "formal-audio": "tools/run-v72-production.mjs",
+    "prepare": "tools/run-v72-production.mjs",
+    "formal": "tools/run-v72-production.mjs",
+    "qa": "tools/run-v72-production.mjs",
+    "regression": "tools/run-v72-production.mjs",
+    "all": "tools/run-v72-production.mjs",
+    "direct-remotion-preview": "skills/koubo-remotion-director/scripts/run-remotion-production-v2.mjs",
+    "direct-remotion-render": "skills/koubo-remotion-director/scripts/run-remotion-production-v2.mjs",
+    "release-validation": "tools/validate-release.mjs"
+  },
+  "blockedJobFiles": [
+    {
+      "jobId": "20260823-wechat-geo-aao-v80",
+      "jobFileSha256": "b1b519f1c5e773e6eeb4f576ef9c4cb885ac882b49f4ee3a1d4145307cb31263",
+      "state": "frozen-rejected-revision",
+      "reason": "旧 productionState、旧预览批准与已否决成片属于事故修订；必须新建 candidate-preview-required 修订和独立回执。"
+    }
+  ],
+  "retiredOutputSha256": [
+    "3ba5cef4e0c5ae26e2f70d27c8799cea5d736498d85dcbd00dba2050125e5488"
+  ]
+}

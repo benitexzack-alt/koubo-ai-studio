@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "paper-editorial-style/v1",
+  "styleId": "paper-editorial-constructive-narrative-v1",
+  "status": "candidate-reference-study",
+  "productionEligible": false,
+  "reference": {
+    "path": "<REQUEST_BOUND_ABSOLUTE_REFERENCE_PATH>",
+    "sha256": "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949",
+    "usage": "internal-mechanism-study-only",
+    "frameAudit": {
+      "decodedFrames": 3304,
+      "expectedFrames": 3304,
+      "audioBoundaryP75Aligned": 23,
+      "audioBoundaryCount": 25,
+      "audioBoundaryRate": 0.92,
+      "audioBoundaryP90Aligned": 18,
+      "audioBoundaryP90Rate": 0.72,
+      "audioBoundaryStatus": "passed-reference-audio-boundary-policy",
+      "integerFrameAuditCommit": "a86d2ced9a648c8c8207cb60b137f9c2e1a31c85",
+      "auditSummaryFileSha256": "607d67a11a71c19b6c90fe1dc33b842b76707bdf9a82904d621e9bf169aa56de",
+      "runReceiptFileSha256": "309fa8c9f53ec01e02166eefb737f01b8999261134e9765f3f7b152f6c0e9332",
+      "outputTreeCanonicalSha256": "d5afdf7a46704c97935307038f3338decd8e036833559fd9487bbb5ae4f05650",
+      "evidenceBoundary": "该通过只证明参考片的音频边界策略与3304帧机器审计，不等于新样片视觉风格通过。"
+    }
+  },
+  "visualLanguage": {
+    "nameZh": "纸媒编辑式因果装配",
+    "oneSentence": "用有厚度的纸材、真实遮挡、可追踪装配和明确机械因果，把抽象口播变成可静音理解的微缩编辑世界。",
+    "materials": [
+      "纤维卡纸",
+      "撕边便签",
+      "折叠地图",
+      "打印胶片",
+      "压印标签",
+      "金属纸钉",
+      "棉线连接",
+      "纸雕机械件",
+      "经二色化处理的真实录屏证据"
+    ],
+    "space": {
+      "minimumDepthLayers": 3,
+      "preferredDepthLayers": 4,
+      "requirements": [
+        "前景物件必须遮挡中景连接或后景结构",
+        "纸片必须有可见厚度、接触阴影和落地关系",
+        "完成态必须保留主次层级，不能把所有信息铺成同一平面",
+        "复杂解释镜优先斜俯视；机械因果镜优先低机位或侧斜视"
+      ]
+    },
+    "composition": {
+      "informationDensity": "一镜一个认知增量；完成态允许高密度，但装配过程必须分级出现。",
+      "screenEvidence": "真实录屏只作为纸框、胶片或折页内的证据层，保持比例与关键文字可读，不冒充实时推荐。",
+      "negativeSpace": "空白必须承担视线引导或装配路径，不允许连续大面积空纸擦屏。"
+    }
+  },
+  "sceneArchetypes": {
+    "complexExplanation": {
+      "id": "complex-explanation",
+      "requiredObjectGroups": {
+        "minimum": 5,
+        "maximum": 6
+      },
+      "requiredNodes": {
+        "minimum": 9,
+        "maximum": 13
+      },
+      "minimumDepthLayers": 3,
+      "minimumAssemblyStages": 5,
+      "requiredMechanism": "多个语义物件按话音出现，建立关系后汇入同一承载结构；完成态静音可复述原句逻辑。"
+    },
+    "mechanicalCausality": {
+      "id": "mechanical-causality",
+      "minimumDepthLayers": 3,
+      "requiredCore": [
+        "input",
+        "one-explicit-mechanical-action",
+        "corresponding-output"
+      ],
+      "requiredMechanism": "输入必须经过一个肉眼可指认的机械动作后才产生对应输出；禁止仅靠淡入、漂移或图标替换表达因果。"
+    },
+    "occludedStateReveal": {
+      "id": "occluded-state-reveal",
+      "minimumDepthLayers": 3,
+      "requiredCore": [
+        "photographic-base-state",
+        "fully-opaque-paper-occluder",
+        "photographic-revealed-state"
+      ],
+      "requiredMechanism": "仅允许在不透明纸材完整遮挡差异区域时切换状态；对外只能声称遮挡换态或纸艺停格，不得声称真实机械关节连续运动。",
+      "forbiddenClaims": [
+        "mechanical-causality",
+        "real-joint-animation",
+        "continuous-visible-mechanical-motion"
+      ]
+    }
+  },
+  "assemblyGrammar": {
+    "defaultStages": [
+      "建立纸质空间与承载面",
+      "按口播放入主语义物件",
+      "补齐关系、路径或约束",
+      "执行压合、拨杆、翻页、穿线或折叠动作",
+      "产生结果并锁定完成态至少一秒"
+    ],
+    "allowedMotionVerbs": [
+      "抽出",
+      "折叠",
+      "穿线",
+      "压合",
+      "拨动",
+      "翻面",
+      "盖章",
+      "卡入",
+      "汇入",
+      "展开"
+    ],
+    "forbiddenShortcuts": [
+      "无因果漂浮",
+      "通用脉冲",
+      "只靠透明度淡入",
+      "无意义抖动刷运动指标",
+      "相同卡片版式重复替换文字",
+      "大面积空纸转场"
+    ]
+  },
+  "soundGrammar": {
+    "policy": "WithSfx 与 NoSfx 必须共用同一视觉时间线；音效只强化已发生的物理事件。",
+    "eventFamilies": [
+      "纸张抽出",
+      "纸钉或节点扣合",
+      "翻页",
+      "机械拨杆",
+      "压印或盖章"
+    ],
+    "forbidden": [
+      "用音效掩盖静音不可理解的画面",
+      "与视觉事件错帧",
+      "持续底噪冒充触感"
+    ]
+  },
+  "acceptance": {
+    "firstVisibleGate": "three-completion-stills-and-contact-sheet",
+    "sampleDurationSeconds": {
+      "renderableExact": 30,
+      "planOnlyMinimum": 20,
+      "planOnlyMaximum": 30
+    },
+    "requiresSameFrameAb": true,
+    "requiresUserNormalSpeedFullWatch": true,
+    "machineQaDoesNotEqualStyleAcceptance": true
+  },
+  "generationRoutes": {
+    "localDeterministic": "摄影级原创纸艺底图＋确定性真实证据/中文合成＋本地 Remotion 遮挡换态＋本地音效。",
+    "h3Optional": "只在本地路线无法达到已验收质量且用户另行授权付费时使用；当前冻结，不是本样片前置。"
+  },
+  "originalityAndRights": {
+    "policy": "只借鉴材料、空间、装配、镜头和音画关系机制；不得复制参考片品牌、照片、具体版式、镜头顺序或素材。",
+    "referenceLicenseStatus": "not-provided",
+    "publicReuseAllowed": false
+  },
+  "retiredOrRejectedInputs": [
+    "paper-v1",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "xibei-suangge-v1",
+    "xibei-suangge-v2",
+    "paper-editorial-v3-30s-low-fidelity"
+  ]
+}

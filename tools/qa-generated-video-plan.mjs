@@ -13,6 +13,7 @@ import {
   sha256File,
   validateGeneratedVideoPlan,
 } from './generated-video-plan-core.mjs';
+import {assertNoRetiredGeneratedStyle} from './generated-style-policy.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sampleFractions = [0, 0.25, 0.5, 0.75, 1];
@@ -28,6 +29,19 @@ const checkNames = [
 const isText = (value) => typeof value === 'string' && value.trim().length > 0;
 const toAbsolute = (filePath) =>
   path.isAbsolute(filePath) ? filePath : path.resolve(projectRoot, filePath);
+
+const loadQaPlanForAction = ({planPath, operation}) => {
+  const loaded = loadPlanAndStyle(planPath);
+  assertNoRetiredGeneratedStyle({
+    value: {plan: loaded.plan, style: loaded.style},
+    operation: `生成视频 QA ${operation}`,
+    location: '$generatedVideoQa',
+    additionalStrings: [planPath, loaded.planPath, loaded.stylePath],
+    projectRoot,
+    documentPaths: [planPath, loaded.planPath, loaded.stylePath],
+  });
+  return loaded;
+};
 
 const assertQaDerivedPathSafe = (loaded, filePath, label) =>
   assertGeneratedVideoPlanPathIsolation({
@@ -264,7 +278,7 @@ const prepareGeneratedVideoQaLocked = ({
   now = () => new Date().toISOString(),
   beforeQaMutation = null,
 }) => {
-  const loaded = loadPlanAndStyle(planPath);
+  const loaded = loadQaPlanForAction({planPath, operation: 'prepare'});
   const assertPlanCurrent = createPlanCas(loaded);
   const planValidation = validateGeneratedVideoPlan(loaded.plan, loaded.style, {
     phase: 'plan',
@@ -436,6 +450,7 @@ const prepareGeneratedVideoQaLocked = ({
 };
 
 export const prepareGeneratedVideoQa = (options) => {
+  loadQaPlanForAction({planPath: options.planPath, operation: 'prepare'});
   const releaseLock = acquirePlanExecutionLock(options.planPath);
   try {
     return prepareGeneratedVideoQaLocked(options);
@@ -445,7 +460,7 @@ export const prepareGeneratedVideoQa = (options) => {
 };
 
 const applyGeneratedVideoVisualReviewLocked = ({planPath, reviewPath}) => {
-  const loaded = loadPlanAndStyle(planPath);
+  const loaded = loadQaPlanForAction({planPath, operation: 'apply-review'});
   const assertPlanCurrent = createPlanCas(loaded);
   if (
     toAbsolute(reviewPath) !== toAbsolute(loaded.plan.outputs.qaReportPath)
@@ -557,6 +572,10 @@ const applyGeneratedVideoVisualReviewLocked = ({planPath, reviewPath}) => {
 };
 
 export const applyGeneratedVideoVisualReview = (options) => {
+  loadQaPlanForAction({
+    planPath: options.planPath,
+    operation: 'apply-review',
+  });
   const releaseLock = acquirePlanExecutionLock(options.planPath);
   try {
     return applyGeneratedVideoVisualReviewLocked(options);
