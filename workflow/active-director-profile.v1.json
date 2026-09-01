@@ -30,7 +30,10 @@
       "allowedOutputs": [
         "director-route-lock",
         "paper-scene-plan",
-        "asset-prompts",
+        "paper-asset-sheet",
+        "first-frame-prompt-manifest",
+        "runninghub-image-to-video-prompt-manifest",
+        "runninghub-image-to-video-prompt-sheet",
         "completion-stills",
         "local-candidate-preview"
       ],
@@ -88,6 +91,19 @@
       "validation-receipt"
     ],
     "manualApplicationClaimAllowed": false
+  },
+  "promptHandoffPolicy": {
+    "firstFrameConsumer": "first-frame-image-automation",
+    "imageToVideoConsumer": "runninghub-manual-image-to-video",
+    "separateArtifactsRequired": true,
+    "pairingFields": [
+      "sceneId",
+      "pairId",
+      "pairSha256",
+      "firstFramePromptSha256"
+    ],
+    "generatedReadableTextAllowed": false,
+    "deterministicTextOwner": "remotion"
   },
   "v8Integration": {
     "outerPackagingProfile": "v8-semantic-continuity-sfx",

@@ -4,9 +4,12 @@ import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {
+  buildFirstFramePromptManifest,
   buildRouteLock,
+  buildRunningHubPromptManifest,
   compilePreproductionPlan,
   renderAssetSheet,
+  renderRunningHubPromptSheet,
   resolveDeclared,
   sha256File,
   sha256Json,
@@ -57,11 +60,37 @@ try {
   const planPath = resolveDeclared(projectRoot, request.outputs.planPath);
   const routeLockPath = resolveDeclared(projectRoot, request.outputs.routeLockPath);
   const assetSheetPath = resolveDeclared(projectRoot, request.outputs.assetSheetPath);
+  const firstFramePromptManifestPath = resolveDeclared(
+    projectRoot,
+    request.outputs.firstFramePromptManifestPath,
+  );
+  const runningHubPromptManifestPath = resolveDeclared(
+    projectRoot,
+    request.outputs.runningHubPromptManifestPath,
+  );
+  const runningHubPromptSheetPath = resolveDeclared(
+    projectRoot,
+    request.outputs.runningHubPromptSheetPath,
+  );
   const compileReceiptPath = resolveDeclared(projectRoot, request.outputs.compileReceiptPath);
+  const firstFramePromptManifest = buildFirstFramePromptManifest(plan);
+  const runningHubPromptManifest = buildRunningHubPromptManifest(plan);
 
   writeNew(routeLockPath, `${JSON.stringify(routeLock, null, 2)}\n`);
   writeNew(planPath, `${JSON.stringify(plan, null, 2)}\n`);
   writeNew(assetSheetPath, renderAssetSheet(plan));
+  writeNew(
+    firstFramePromptManifestPath,
+    `${JSON.stringify(firstFramePromptManifest, null, 2)}\n`,
+  );
+  writeNew(
+    runningHubPromptManifestPath,
+    `${JSON.stringify(runningHubPromptManifest, null, 2)}\n`,
+  );
+  writeNew(
+    runningHubPromptSheetPath,
+    renderRunningHubPromptSheet(plan, runningHubPromptManifest),
+  );
 
   const receipt = {
     schemaVersion: 'koubo-director-compile-receipt/v1',
@@ -79,11 +108,34 @@ try {
     routeLock: {path: routeLockPath, sha256: sha256File(routeLockPath)},
     plan: {path: planPath, sha256: sha256File(planPath), canonicalSha256: sha256Json(plan)},
     assetSheet: {path: assetSheetPath, sha256: sha256File(assetSheetPath)},
+    firstFramePromptManifest: {
+      path: firstFramePromptManifestPath,
+      sha256: sha256File(firstFramePromptManifestPath),
+    },
+    runningHubPromptManifest: {
+      path: runningHubPromptManifestPath,
+      sha256: sha256File(runningHubPromptManifestPath),
+    },
+    runningHubPromptSheet: {
+      path: runningHubPromptSheetPath,
+      sha256: sha256File(runningHubPromptSheetPath),
+    },
     formalEligible: false,
     postShootRebindRequired: true,
   };
   writeNew(compileReceiptPath, `${JSON.stringify(receipt, null, 2)}\n`);
-  console.log(JSON.stringify({ok: true, planPath, routeLockPath, assetSheetPath, compileReceiptPath}));
+  console.log(
+    JSON.stringify({
+      ok: true,
+      planPath,
+      routeLockPath,
+      assetSheetPath,
+      firstFramePromptManifestPath,
+      runningHubPromptManifestPath,
+      runningHubPromptSheetPath,
+      compileReceiptPath,
+    }),
+  );
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
   process.exit(1);

@@ -107,6 +107,14 @@ node skills/koubo-remotion-director/scripts/validate-preproduction-director.mjs 
 
 预拍请求必须使用 [templates/director-preproduction-request.v1.json](templates/director-preproduction-request.v1.json) 建立新 revision。所有需要解释机制、因果、层级、对照或流程的节拍，都必须输出 `paperScene`、`objectGroups`、`nodes`、`stages`、`textPlan` 和两类提示词。节点中文必须由 Remotion 确定性叠加；生成模型不得自行生成可读中文。
 
+两类提示词不得再混装成一份给生成工具使用的执行单。编译器必须同时生成并校验：
+
+- `first-frame-prompts.v1.json`：只给首帧生图自动化读取，每镜只含 `firstFramePrompt`、预期图片文件名和后期叠字元数据，不得出现 `imageToVideoPrompt`；
+- `runninghub-image-to-video-prompts.v1.json`：只绑定用户手动 RunningHub 图生视频，每镜只含 `imageToVideoPrompt`、对应首帧文件名和时长，不得出现 `firstFramePrompt`；
+- `runninghub-image-to-video-prompts.md`：供用户复制的中文清单，只展示图生视频动作提示词，不重复首帧场景描述。
+
+同一镜头的两份清单必须共享 `sceneId`、`pairId` 与 `pairSha256`，并用首帧提示词 SHA-256 把 RunningHub 输入图片回绑到对应首帧。首帧生图描述静态完成态；图生视频提示词只描述基于该首帧发生的动作、顺序、镜头运动和禁止项。任何缺镜、串镜、配对哈希不一致或两类字段互相混入，都必须阻断预拍验证。
+
 拍摄完成后，再从 [templates/director-postshoot-rebind-request.v1.json](templates/director-postshoot-rebind-request.v1.json) 建立实录重绑请求：
 
 ```bash

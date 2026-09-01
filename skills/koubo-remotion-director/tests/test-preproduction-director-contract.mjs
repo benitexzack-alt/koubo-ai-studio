@@ -5,8 +5,11 @@ import {mkdtempSync, rmSync, writeFileSync} from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {
+  buildFirstFramePromptManifest,
+  buildRunningHubPromptManifest,
   compilePreproductionPlan,
   sha256File,
+  validatePromptHandoffManifests,
   validatePreproductionRequest,
 } from '../scripts/preproduction-director-core.mjs';
 
@@ -51,6 +54,9 @@ const makeRequest = (scriptPath) => ({
     routeLockPath: 'out/route.json',
     planPath: 'out/plan.json',
     assetSheetPath: 'out/assets.md',
+    firstFramePromptManifestPath: 'out/first-frame-prompts.json',
+    runningHubPromptManifestPath: 'out/runninghub-prompts.json',
+    runningHubPromptSheetPath: 'out/runninghub-prompts.md',
     compileReceiptPath: 'out/compile.json',
     validationReceiptPath: 'out/validation.json',
   },
@@ -144,6 +150,37 @@ try {
   assert.equal(plan.formalEligible, false);
   assert.equal(plan.postShootRebindRequired, true);
 
+  const firstFrameManifest = buildFirstFramePromptManifest(plan);
+  const runningHubManifest = buildRunningHubPromptManifest(plan);
+  const handoffResult = validatePromptHandoffManifests({
+    plan,
+    firstFrameManifest,
+    runningHubManifest,
+  });
+  assert.equal(handoffResult.ok, true, handoffResult.errors.join('\n'));
+  assert.equal(firstFrameManifest.scenes.length, 1);
+  assert.equal(runningHubManifest.scenes.length, 1);
+  assert.equal(
+    firstFrameManifest.scenes[0].pairId,
+    runningHubManifest.scenes[0].pairId,
+  );
+  assert.ok(Object.hasOwn(firstFrameManifest.scenes[0], 'firstFramePrompt'));
+  assert.ok(!Object.hasOwn(firstFrameManifest.scenes[0], 'imageToVideoPrompt'));
+  assert.ok(Object.hasOwn(runningHubManifest.scenes[0], 'imageToVideoPrompt'));
+  assert.ok(!Object.hasOwn(runningHubManifest.scenes[0], 'firstFramePrompt'));
+
+  const mismatchedPair = structuredClone(runningHubManifest);
+  mismatchedPair.scenes[0].pairId = 'P99-B99';
+  const mismatchedPairResult = validatePromptHandoffManifests({
+    plan,
+    firstFrameManifest,
+    runningHubManifest: mismatchedPair,
+  });
+  assert.equal(mismatchedPairResult.ok, false);
+  assert.ok(
+    mismatchedPairResult.errors.includes('RUNNINGHUB_PAIR_ID_MISMATCH:P01'),
+  );
+
   const genericFallback = structuredClone(request);
   genericFallback.beats[0].visualDecision.class = 'remotion-information';
   const genericResult = validatePreproductionRequest({
@@ -186,6 +223,8 @@ try {
       genericInformationFallbackRejected: true,
       missingNodeTextRejected: true,
       scriptDriftRejected: true,
+      firstFrameAndImageToVideoPromptsSeparated: true,
+      promptPairMismatchRejected: true,
     }),
   );
 } finally {

@@ -6,6 +6,10 @@ export const PREPRODUCTION_REQUEST_SCHEMA =
   'koubo-director-preproduction-request/v1';
 export const PREPRODUCTION_PLAN_SCHEMA = 'koubo-director-preproduction-plan/v1';
 export const DIRECTOR_ROUTE_LOCK_SCHEMA = 'koubo-director-route-lock/v1';
+export const FIRST_FRAME_PROMPT_MANIFEST_SCHEMA =
+  'koubo-paper-first-frame-prompt-manifest/v1';
+export const RUNNINGHUB_PROMPT_MANIFEST_SCHEMA =
+  'koubo-runninghub-image-to-video-prompt-manifest/v1';
 
 export const sha256Buffer = (buffer) =>
   createHash('sha256').update(buffer).digest('hex');
@@ -228,8 +232,29 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
     }
   }
 
-  const outputPaths = Object.values(request.outputs ?? {});
-  push(errors, outputPaths.length === 5, 'PREPRODUCTION_OUTPUT_PATHS_INCOMPLETE');
+  const requiredOutputKeys = [
+    'routeLockPath',
+    'planPath',
+    'assetSheetPath',
+    'firstFramePromptManifestPath',
+    'runningHubPromptManifestPath',
+    'runningHubPromptSheetPath',
+    'compileReceiptPath',
+    'validationReceiptPath',
+  ];
+  const outputKeys = Object.keys(request.outputs ?? {});
+  const outputPaths = requiredOutputKeys.map((key) => request.outputs?.[key]);
+  push(
+    errors,
+    requiredOutputKeys.every((key) => isText(request.outputs?.[key])),
+    'PREPRODUCTION_OUTPUT_PATHS_INCOMPLETE',
+  );
+  push(
+    errors,
+    outputKeys.length === requiredOutputKeys.length &&
+      outputKeys.every((key) => requiredOutputKeys.includes(key)),
+    'PREPRODUCTION_OUTPUT_PATHS_UNEXPECTED',
+  );
   outputPaths.forEach((outputPath, index) =>
     push(errors, isText(outputPath), `PREPRODUCTION_OUTPUT_PATH_MISSING:${index}`),
   );
@@ -379,8 +404,10 @@ export function renderAssetSheet(plan) {
     lines.push(`- 镜头类型：${scene.archetype}`);
     lines.push(`- 建议时长：${scene.durationSeconds}秒`);
     lines.push(`- 节点文字：${scene.nodes.map((node) => node.label).join(' / ')}`);
-    lines.push(`- 首帧提示词：${scene.prompt.firstFrame}`);
-    lines.push(`- 动态提示词：${scene.prompt.motion}`);
+    lines.push(
+      `- 首帧生图交付：${buildSceneIdentity(scene, index).firstFrameOutputFileName}（提示词只在独立首帧清单中）`,
+    );
+    lines.push('- 图生视频交付：提示词只在独立 RunningHub 清单中');
     lines.push('- 装配步骤：');
     scene.stages.forEach((stage) => {
       lines.push(`  ${stage.order}. ${stage.action}；音效：${stage.sfxRole}`);
@@ -396,5 +423,210 @@ export function renderAssetSheet(plan) {
     });
     lines.push('');
   }
+  return `${lines.join('\n').replace(/\n+$/, '')}\n`;
+}
+
+function buildSceneIdentity(scene, index) {
+  const sceneId = `P${String(index + 1).padStart(2, '0')}`;
+  const pairId = `${sceneId}-${scene.beatId}`;
+  const firstFrameOutputFileName = `${sceneId}_${scene.beatId}_first-frame.png`;
+  const firstFramePromptSha256 = sha256Buffer(
+    Buffer.from(scene.prompt.firstFrame, 'utf8'),
+  );
+  const imageToVideoPromptSha256 = sha256Buffer(
+    Buffer.from(scene.prompt.motion, 'utf8'),
+  );
+  const pairSha256 = sha256Json({
+    pairId,
+    firstFramePromptSha256,
+    imageToVideoPromptSha256,
+  });
+  return {
+    sceneId,
+    pairId,
+    firstFrameOutputFileName,
+    firstFramePromptSha256,
+    imageToVideoPromptSha256,
+    pairSha256,
+  };
+}
+
+const buildTextOverlayPlan = (scene) =>
+  scene.textPlan.map((item) => ({
+    nodeId: item.nodeId,
+    text: item.text,
+    enterStageId: item.enterStageId,
+    position: item.position,
+  }));
+
+export function buildFirstFramePromptManifest(plan) {
+  return {
+    schemaVersion: FIRST_FRAME_PROMPT_MANIFEST_SCHEMA,
+    requestId: plan.requestId,
+    taskId: plan.taskId,
+    phase: 'pre-shoot',
+    status: 'automation-input-ready',
+    consumer: 'first-frame-image-automation',
+    promptRole: 'completed-static-reference-only',
+    generatedReadableTextAllowed: false,
+    sourcePlanCanonicalSha256: sha256Json(plan),
+    sceneCount: plan.paperScenes.length,
+    scenes: plan.paperScenes.map((scene, index) => {
+      const identity = buildSceneIdentity(scene, index);
+      return {
+        sceneId: identity.sceneId,
+        pairId: identity.pairId,
+        beatId: scene.beatId,
+        title: scene.title,
+        spokenLine: scene.spokenLine,
+        aspectRatio: '16:9',
+        outputFileName: identity.firstFrameOutputFileName,
+        firstFramePrompt: scene.prompt.firstFrame,
+        firstFramePromptSha256: identity.firstFramePromptSha256,
+        pairSha256: identity.pairSha256,
+        generatedReadableTextAllowed: false,
+        postProductionTextOverlay: buildTextOverlayPlan(scene),
+      };
+    }),
+  };
+}
+
+export function buildRunningHubPromptManifest(plan) {
+  return {
+    schemaVersion: RUNNINGHUB_PROMPT_MANIFEST_SCHEMA,
+    requestId: plan.requestId,
+    taskId: plan.taskId,
+    phase: 'pre-shoot',
+    status: 'manual-runninghub-input-ready',
+    consumer: 'runninghub-manual-image-to-video',
+    generationMode: 'image-to-video',
+    executionOwner: 'user-manual',
+    codexExternalSubmissionAllowed: false,
+    sourcePlanCanonicalSha256: sha256Json(plan),
+    sceneCount: plan.paperScenes.length,
+    scenes: plan.paperScenes.map((scene, index) => {
+      const identity = buildSceneIdentity(scene, index);
+      return {
+        sceneId: identity.sceneId,
+        pairId: identity.pairId,
+        beatId: scene.beatId,
+        title: scene.title,
+        spokenLine: scene.spokenLine,
+        inputFirstFrameFileName: identity.firstFrameOutputFileName,
+        inputFirstFramePromptSha256: identity.firstFramePromptSha256,
+        durationSeconds: scene.durationSeconds,
+        imageToVideoPrompt: scene.prompt.motion,
+        imageToVideoPromptSha256: identity.imageToVideoPromptSha256,
+        pairSha256: identity.pairSha256,
+        generatedReadableTextAllowed: false,
+        postProductionTextOverlay: buildTextOverlayPlan(scene),
+      };
+    }),
+  };
+}
+
+export function validatePromptHandoffManifests({
+  plan,
+  firstFrameManifest,
+  runningHubManifest,
+}) {
+  const errors = [];
+  push(
+    errors,
+    firstFrameManifest?.schemaVersion === FIRST_FRAME_PROMPT_MANIFEST_SCHEMA,
+    'FIRST_FRAME_PROMPT_MANIFEST_SCHEMA_INVALID',
+  );
+  push(
+    errors,
+    runningHubManifest?.schemaVersion === RUNNINGHUB_PROMPT_MANIFEST_SCHEMA,
+    'RUNNINGHUB_PROMPT_MANIFEST_SCHEMA_INVALID',
+  );
+  const firstFrameScenes = Array.isArray(firstFrameManifest?.scenes)
+    ? firstFrameManifest.scenes
+    : [];
+  const runningHubScenes = Array.isArray(runningHubManifest?.scenes)
+    ? runningHubManifest.scenes
+    : [];
+  push(
+    errors,
+    firstFrameScenes.length === plan.paperScenes.length,
+    'FIRST_FRAME_PROMPT_SCENE_COUNT_MISMATCH',
+  );
+  push(
+    errors,
+    runningHubScenes.length === plan.paperScenes.length,
+    'RUNNINGHUB_PROMPT_SCENE_COUNT_MISMATCH',
+  );
+  plan.paperScenes.forEach((scene, index) => {
+    const identity = buildSceneIdentity(scene, index);
+    const firstFrame = firstFrameScenes[index] ?? {};
+    const runningHub = runningHubScenes[index] ?? {};
+    const suffix = identity.sceneId;
+    push(errors, firstFrame.sceneId === identity.sceneId, `FIRST_FRAME_SCENE_ID_MISMATCH:${suffix}`);
+    push(errors, runningHub.sceneId === identity.sceneId, `RUNNINGHUB_SCENE_ID_MISMATCH:${suffix}`);
+    push(errors, firstFrame.pairId === identity.pairId, `FIRST_FRAME_PAIR_ID_MISMATCH:${suffix}`);
+    push(errors, runningHub.pairId === identity.pairId, `RUNNINGHUB_PAIR_ID_MISMATCH:${suffix}`);
+    push(
+      errors,
+      firstFrame.pairSha256 === identity.pairSha256 &&
+        runningHub.pairSha256 === identity.pairSha256,
+      `PROMPT_PAIR_SHA_MISMATCH:${suffix}`,
+    );
+    push(
+      errors,
+      firstFrame.firstFramePrompt === scene.prompt.firstFrame &&
+        firstFrame.firstFramePromptSha256 === identity.firstFramePromptSha256,
+      `FIRST_FRAME_PROMPT_MISMATCH:${suffix}`,
+    );
+    push(
+      errors,
+      runningHub.imageToVideoPrompt === scene.prompt.motion &&
+        runningHub.imageToVideoPromptSha256 === identity.imageToVideoPromptSha256,
+      `RUNNINGHUB_PROMPT_MISMATCH:${suffix}`,
+    );
+    push(
+      errors,
+      runningHub.inputFirstFrameFileName === identity.firstFrameOutputFileName &&
+        runningHub.inputFirstFramePromptSha256 === identity.firstFramePromptSha256,
+      `RUNNINGHUB_FIRST_FRAME_BINDING_MISMATCH:${suffix}`,
+    );
+    push(
+      errors,
+      !Object.hasOwn(firstFrame, 'imageToVideoPrompt'),
+      `FIRST_FRAME_MANIFEST_CONTAINS_VIDEO_PROMPT:${suffix}`,
+    );
+    push(
+      errors,
+      !Object.hasOwn(runningHub, 'firstFramePrompt'),
+      `RUNNINGHUB_MANIFEST_CONTAINS_FIRST_FRAME_PROMPT:${suffix}`,
+    );
+  });
+  return {ok: errors.length === 0, errors};
+}
+
+export function renderRunningHubPromptSheet(plan, runningHubManifest) {
+  const lines = [
+    `# ${plan.taskId} RunningHub 图生视频提示词`,
+    '',
+    '> 本文件只包含图生视频动作提示词，不包含首帧生图提示词。请按同一 P 编号选择对应首帧图片。',
+    '> 生成模型不得写中文；节点文字由 Remotion 后期按清单确定性叠加。',
+    '',
+  ];
+  runningHubManifest.scenes.forEach((scene) => {
+    lines.push(`## ${scene.sceneId} ${scene.title}`);
+    lines.push('');
+    lines.push(`- 配对编号：${scene.pairId}`);
+    lines.push(`- 输入首帧：${scene.inputFirstFrameFileName}`);
+    lines.push(`- 建议时长：${scene.durationSeconds}秒`);
+    lines.push(
+      `- 后期叠字：${scene.postProductionTextOverlay.map((item) => item.text).join(' / ')}`,
+    );
+    lines.push('- 图生视频提示词（RunningHub）：');
+    lines.push('');
+    lines.push('```text');
+    lines.push(scene.imageToVideoPrompt);
+    lines.push('```');
+    lines.push('');
+  });
   return `${lines.join('\n').replace(/\n+$/, '')}\n`;
 }
