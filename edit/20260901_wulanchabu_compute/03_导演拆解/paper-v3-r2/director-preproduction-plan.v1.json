@@ -1,0 +1,4122 @@
+{
+  "schemaVersion": "koubo-director-preproduction-plan/v1",
+  "requestId": "wulanchabu-compute-paper-v3-r2-pre-shoot",
+  "taskId": "20260901-wulanchabu-compute",
+  "phase": "pre-shoot",
+  "status": "provisional-previsualization",
+  "formalEligible": false,
+  "postShootRebindRequired": true,
+  "provenance": {
+    "requestPath": "/Users/pc/Documents/口播/edit/20260901_wulanchabu_compute/03_导演拆解/paper-v3-r2/director-preproduction-request.v1.json",
+    "requestSha256": "eafacc838ddd779aa271b8be13a4f8971cf433af5a58bd4b998b97f84208cb36",
+    "scriptPath": "edit/20260901_wulanchabu_compute/00_工程控制/乌兰察布算力_用户原稿_v1.md",
+    "scriptSha256": "d246783c2e29536568617786a0e3ec1fa4fc0303caee8fa2ba0c0d04d4a4e950",
+    "profileId": "paper-editorial-director-v3",
+    "profileVersion": "3.0.0",
+    "styleId": "koubo-paper-editorial-assembly-v3",
+    "acceptedDynamicAnchorSha256": "764f1ad14bf35a4297ff974514666525b39a551dd5b976d4f66db42cc5c2fff6"
+  },
+  "routeSummary": {
+    "totalBeats": 15,
+    "paperBeatCount": 10,
+    "realEvidenceBeatCount": 5,
+    "otherBeatCount": 0,
+    "fallback": "blocked",
+    "genericInformationCardCanSatisfyPaperBeat": false
+  },
+  "beats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "spokenLine": "最近AI圈爆火了一座草原城市，乌兰察布。",
+      "coreMeaning": "用草原、风机和数据中心建立真实地点感，不用概念动画冒充现场。",
+      "kind": "official-evidence",
+      "visualDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [
+        "O10/B01 新华网草原风机与城市开场",
+        "O01/B03 央视机房走廊与调度界面"
+      ]
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "spokenLine": "华为、阿里、快手、DeepSeek一大批AI大厂，几百亿资金扎堆往这里砸",
+      "coreMeaning": "只展示已核实的布局与算力使用关系，DeepSeek不写成签约投资方。",
+      "kind": "official-evidence",
+      "visualDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [
+        "S03 新华网《从算力工厂到词元牧场》",
+        "S02 内蒙古政府《算力产业新标杆》"
+      ]
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "spokenLine": "以前乌兰察布，大家印象就是土豆之乡、草原。现在大家叫它“草原云谷、词元牧场”。",
+      "coreMeaning": "用真实城市与机房群画面完成身份转换。",
+      "kind": "official-evidence",
+      "visualDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [
+        "O10/B01 草原风机与城市",
+        "O05 中金数据低碳算力基地"
+      ]
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "spokenLine": "为什么全中国的AI大厂，都跑到草原上建智算中心？核心就这三件事。",
+      "coreMeaning": "绿电、低温和低时延三项条件同时汇入智算中心。",
+      "kind": "layered-system",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "complex-explanation",
+        "title": "三项条件汇入智算中心",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "绿电底座",
+            "material": "靛蓝与黄色纸片",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "冷空气层",
+            "material": "半透冷青硫酸纸",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "光缆路径",
+            "material": "蓝色细棉线与节点钉",
+            "depth": 2
+          },
+          {
+            "id": "G4",
+            "name": "智算机房",
+            "material": "深蓝瓦楞纸机柜",
+            "depth": 3
+          },
+          {
+            "id": "G5",
+            "name": "任务输出",
+            "material": "暖白卡纸任务盒",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "风电",
+            "groupId": "G1",
+            "role": "source"
+          },
+          {
+            "id": "N2",
+            "label": "光伏",
+            "groupId": "G1",
+            "role": "source"
+          },
+          {
+            "id": "N3",
+            "label": "冷空气",
+            "groupId": "G2",
+            "role": "condition"
+          },
+          {
+            "id": "N4",
+            "label": "乌兰察布",
+            "groupId": "G3",
+            "role": "origin"
+          },
+          {
+            "id": "N5",
+            "label": "北京",
+            "groupId": "G3",
+            "role": "destination"
+          },
+          {
+            "id": "N6",
+            "label": "双路光缆",
+            "groupId": "G3",
+            "role": "path"
+          },
+          {
+            "id": "N7",
+            "label": "智算中心",
+            "groupId": "G4",
+            "role": "core"
+          },
+          {
+            "id": "N8",
+            "label": "训练",
+            "groupId": "G5",
+            "role": "output"
+          },
+          {
+            "id": "N9",
+            "label": "推理",
+            "groupId": "G5",
+            "role": "output"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "草原底座展开，风机与光伏片弹起",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1",
+              "N2"
+            ],
+            "sfxRole": "paper-unfold"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "冷青空气层从后景向机房滑入",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N3"
+            ],
+            "sfxRole": "air-soft-sweep"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "光缆棉线从乌兰察布沿节点拉向北京",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N4",
+              "N5",
+              "N6"
+            ],
+            "sfxRole": "twine-pull"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "多排纸机柜逐排立起并点亮纸质指示灯",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N7"
+            ],
+            "sfxRole": "paper-rack-clicks"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "训练与推理任务卡从机房前方弹出并锁定",
+            "subject": "G5",
+            "landingNodeIds": [
+              "N8",
+              "N9"
+            ],
+            "sfxRole": "paper-lock"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "风电",
+            "enterStageId": "S1",
+            "position": "left-back"
+          },
+          {
+            "nodeId": "N2",
+            "text": "光伏",
+            "enterStageId": "S1",
+            "position": "left-front"
+          },
+          {
+            "nodeId": "N3",
+            "text": "冷空气",
+            "enterStageId": "S2",
+            "position": "upper-left"
+          },
+          {
+            "nodeId": "N4",
+            "text": "乌兰察布",
+            "enterStageId": "S3",
+            "position": "path-left"
+          },
+          {
+            "nodeId": "N5",
+            "text": "北京",
+            "enterStageId": "S3",
+            "position": "path-right"
+          },
+          {
+            "nodeId": "N6",
+            "text": "双路光缆",
+            "enterStageId": "S3",
+            "position": "path-center"
+          },
+          {
+            "nodeId": "N7",
+            "text": "智算中心",
+            "enterStageId": "S4",
+            "position": "center"
+          },
+          {
+            "nodeId": "N8",
+            "text": "训练",
+            "enterStageId": "S5",
+            "position": "right-top"
+          },
+          {
+            "nodeId": "N9",
+            "text": "推理",
+            "enterStageId": "S5",
+            "position": "right-bottom"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "完成态参考图：16:9摄影级手作纸艺微缩场景，暖灰纸台上从左到右分层摆放风机、光伏板、冷青空气纸带、蓝色光缆棉线、深蓝纸机柜和暖白任务卡，前中后至少三层空间，可见纸纤维、瓦楞厚度和真实接触阴影，低机位35毫米镜头，禁止任何可读文字、Logo、人手和塑料3D。",
+          "motion": "以完成态为唯一物件参考，7秒纸艺定格动画：草原底座先展开，风机与光伏片弹起；冷青纸带滑入机房；蓝棉线沿节点向北京延伸；机柜逐排立起；两张任务卡弹出并稳定停留。物件身份、数量、颜色和接触关系全程不变，轻微手作步进感，镜头只做2%慢推，禁止生成可读文字。精确中文由Remotion后期分节点叠加。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "spokenLine": "第一，电便宜，而且还是绿色风电和光伏。",
+      "coreMeaning": "风光发电经电网和调度送入机房，影响整体运行成本。",
+      "kind": "causal-chain",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "mechanical-causality",
+        "title": "绿电进入机房",
+        "durationSeconds": 6,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "风光发电",
+            "material": "蓝黄叠纸",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "电网调度",
+            "material": "铜色细纸带",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "机房负载",
+            "material": "深蓝瓦楞纸",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "成本表",
+            "material": "暖白抽拉卡",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "风电",
+            "groupId": "G1",
+            "role": "input"
+          },
+          {
+            "id": "N2",
+            "label": "光伏",
+            "groupId": "G1",
+            "role": "input"
+          },
+          {
+            "id": "N3",
+            "label": "绿电调度",
+            "groupId": "G2",
+            "role": "process"
+          },
+          {
+            "id": "N4",
+            "label": "算力负载",
+            "groupId": "G3",
+            "role": "load"
+          },
+          {
+            "id": "N5",
+            "label": "运行成本",
+            "groupId": "G4",
+            "role": "result"
+          },
+          {
+            "id": "N6",
+            "label": "持续用电",
+            "groupId": "G3",
+            "role": "constraint"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "风机和光伏板从底座弹起",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1",
+              "N2"
+            ],
+            "sfxRole": "paper-pop"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "铜色电流纸带沿轨道向变电节点滑行",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N3"
+            ],
+            "sfxRole": "paper-slide"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "电流纸带接入三排机柜，纸质指示片逐个翻起",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N4"
+            ],
+            "sfxRole": "rack-ticks"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "连续用电轮缓慢转动一格",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N6"
+            ],
+            "sfxRole": "paper-ratchet"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "成本抽拉卡向外滑出并停在人工核算位",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N5"
+            ],
+            "sfxRole": "paper-drawer-stop"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "风电",
+            "enterStageId": "S1",
+            "position": "left-back"
+          },
+          {
+            "nodeId": "N2",
+            "text": "光伏",
+            "enterStageId": "S1",
+            "position": "left-front"
+          },
+          {
+            "nodeId": "N3",
+            "text": "绿电调度",
+            "enterStageId": "S2",
+            "position": "center-path"
+          },
+          {
+            "nodeId": "N4",
+            "text": "算力负载",
+            "enterStageId": "S3",
+            "position": "right-center"
+          },
+          {
+            "nodeId": "N5",
+            "text": "运行成本",
+            "enterStageId": "S5",
+            "position": "right-front"
+          },
+          {
+            "nodeId": "N6",
+            "text": "持续用电",
+            "enterStageId": "S4",
+            "position": "right-top"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "完成态参考图：16:9低机位手作纸艺沙盘，左侧是蓝白风机与黄色光伏板，中间铜色纸带经变电节点通向右侧深蓝机柜，前景一张暖白成本抽拉卡，三层景深、可见纸厚和接触阴影，禁止任何可读文字和虚假电价数字。",
+          "motion": "6秒纸艺定格：风机与光伏板先弹起，铜色电流纸带沿轨道滑入变电节点，再连到机柜，机柜指示片逐个翻起，前景成本卡滑出后稳定。不展示具体电价或降幅，禁止可读文字，中文节点后期Remotion叠加。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "spokenLine": "第二，天气冷，天然省空调钱。",
+      "coreMeaning": "外部冷源进入制冷回路，带走服务器热量，降低制冷负荷。",
+      "kind": "causal-chain",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "mechanical-causality",
+        "title": "自然冷源带走机房热量",
+        "durationSeconds": 6,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "外部冷源",
+            "material": "冷青半透纸扇",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "换热回路",
+            "material": "蓝色细纸管",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "服务器热端",
+            "material": "深蓝机柜与红橙热片",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "能耗指示",
+            "material": "暖白纸质仪表",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "草原冷源",
+            "groupId": "G1",
+            "role": "input"
+          },
+          {
+            "id": "N2",
+            "label": "换热回路",
+            "groupId": "G2",
+            "role": "process"
+          },
+          {
+            "id": "N3",
+            "label": "服务器",
+            "groupId": "G3",
+            "role": "load"
+          },
+          {
+            "id": "N4",
+            "label": "机房热量",
+            "groupId": "G3",
+            "role": "heat"
+          },
+          {
+            "id": "N5",
+            "label": "制冷负荷",
+            "groupId": "G4",
+            "role": "metric"
+          },
+          {
+            "id": "N6",
+            "label": "自然冷却",
+            "groupId": "G2",
+            "role": "result"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "深蓝机柜立起，红橙热片向上翻",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N3",
+              "N4"
+            ],
+            "sfxRole": "heat-paper-flick"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "冷青纸扇从后景展开",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-fan-open"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "蓝色纸管沿换热回路向机柜侧面接入",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2"
+            ],
+            "sfxRole": "tube-slide"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "红橙热片被蓝色纸管抽离并收起",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N6"
+            ],
+            "sfxRole": "paper-suction"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "前景仪表的制冷负荷指示片向下落一档",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N5"
+            ],
+            "sfxRole": "paper-meter-step"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "草原冷源",
+            "enterStageId": "S2",
+            "position": "left-back"
+          },
+          {
+            "nodeId": "N2",
+            "text": "换热回路",
+            "enterStageId": "S3",
+            "position": "center-path"
+          },
+          {
+            "nodeId": "N3",
+            "text": "服务器",
+            "enterStageId": "S1",
+            "position": "right-center"
+          },
+          {
+            "nodeId": "N4",
+            "text": "机房热量",
+            "enterStageId": "S1",
+            "position": "right-top"
+          },
+          {
+            "nodeId": "N5",
+            "text": "制冷负荷",
+            "enterStageId": "S5",
+            "position": "front"
+          },
+          {
+            "nodeId": "N6",
+            "text": "自然冷却",
+            "enterStageId": "S4",
+            "position": "center-front"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "完成态参考图：16:9手作纸艺换热模型，右侧三排深蓝纸机柜，上方红橙热片，左后方冷青纸扇，蓝色纸管连接换热回路，前景一只纸质能耗仪表，至少三层景深，真实纸纤维与柔和侧光，无可读文字。",
+          "motion": "6秒纸艺定格：机柜先立起并翻出红橙热片，冷青纸扇展开，蓝色纸管连入机柜，红橙热片被逐步抽离，能耗指示向下移一档后稳定。不生成统计数字、不演绎空调品牌，禁止可读文字，准确中文由Remotion叠加。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "spokenLine": "第三点至关重要：离北京很近，网络延迟极低，光缆直通北京，数据来回只有4毫秒左右，几乎感觉不到延迟。",
+      "coreMeaning": "乌兰察布与北京之间通过双回路光缆往返任务，数字只按官方“低于4.2毫秒”叠字。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "mechanical-causality",
+        "title": "乌兰察布到北京的光缆往返",
+        "durationSeconds": 6,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "乌兰察布端",
+            "material": "深蓝城市纸模",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "双回路光缆",
+            "material": "两条蓝金棉线",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "北京端",
+            "material": "暖白城市纸模",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "任务票卡",
+            "material": "白色小卡片",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "乌兰察布",
+            "groupId": "G1",
+            "role": "origin"
+          },
+          {
+            "id": "N2",
+            "label": "双回路",
+            "groupId": "G2",
+            "role": "path"
+          },
+          {
+            "id": "N3",
+            "label": "北京亦庄",
+            "groupId": "G3",
+            "role": "destination"
+          },
+          {
+            "id": "N4",
+            "label": "计算任务",
+            "groupId": "G4",
+            "role": "input"
+          },
+          {
+            "id": "N5",
+            "label": "返回结果",
+            "groupId": "G4",
+            "role": "output"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "两端城市纸模从地图底板弹起",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-city-pop"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "北京端纸模锁定在右侧节点",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N3"
+            ],
+            "sfxRole": "paper-lock"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "两条光缆棉线同时沿路径铺开",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2"
+            ],
+            "sfxRole": "twine-zip"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "计算任务卡沿上行线滑向乌兰察布",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N4"
+            ],
+            "sfxRole": "ticket-slide"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "结果卡沿另一条线返回北京并盖上时延口径标记位",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N5"
+            ],
+            "sfxRole": "ticket-return-stop"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "乌兰察布",
+            "enterStageId": "S1",
+            "position": "left"
+          },
+          {
+            "nodeId": "N2",
+            "text": "双回路",
+            "enterStageId": "S3",
+            "position": "center-path"
+          },
+          {
+            "nodeId": "N3",
+            "text": "北京亦庄",
+            "enterStageId": "S2",
+            "position": "right"
+          },
+          {
+            "nodeId": "N4",
+            "text": "计算任务",
+            "enterStageId": "S4",
+            "position": "upper-path"
+          },
+          {
+            "nodeId": "N5",
+            "text": "返回结果",
+            "enterStageId": "S5",
+            "position": "lower-path"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "完成态参考图：16:9纸艺地图沙盘，左侧乌兰察布深蓝城市纸模，右侧北京暖白城市纸模，两条蓝金棉线独立连接，两张小任务卡分居上下路径，斜俯视镜头，真实纸纤维和接触阴影，画面无可读文字与虚假延迟数字。",
+          "motion": "6秒纸艺定格：两端城市纸模依次弹起，两条光缆棉线沿预设路径同时铺开，任务卡沿一条线发出，结果卡沿另一条线返回，最后两条路径同时锁定。不自动生成“4毫秒”文字，后期只叠加已核实的“低于4.2毫秒”口径。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "spokenLine": "现在投运算力已经十几万P，智能算力占比超过95%，一大批大模型训练、AI应用都在这一片机房里面跑起来。",
+      "coreMeaning": "直接展示官方资料与机房，数据叠字标注2026年8月报道口径。",
+      "kind": "official-evidence",
+      "visualDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [
+        "S03 2026-08-22 新华网：17.2万P、智算超过95%",
+        "O01/B05 央视服务器机柜",
+        "O11 国家发改委内蒙古枢纽复函截图"
+      ]
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "spokenLine": "乌兰察布这类算力集群真正带来的改变，就是算力正在变成像水电一样，可以按需租用的公共资源。",
+      "coreMeaning": "从一次性重资产购置，转为按实际任务调用算力，但总成本仍需核算。",
+      "kind": "comparison",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "complex-explanation",
+        "title": "自建GPU与按需租用",
+        "durationSeconds": 8,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "自建硬件",
+            "material": "深灰厚卡纸",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "固定成本",
+            "material": "橙色票据纸",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "算力资源池",
+            "material": "深蓝瓦楞纸池",
+            "depth": 2
+          },
+          {
+            "id": "G4",
+            "name": "企业任务",
+            "material": "暖白任务卡",
+            "depth": 3
+          },
+          {
+            "id": "G5",
+            "name": "人工核算",
+            "material": "绿色审批栏",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "GPU服务器",
+            "groupId": "G1",
+            "role": "asset"
+          },
+          {
+            "id": "N2",
+            "label": "电费",
+            "groupId": "G2",
+            "role": "cost"
+          },
+          {
+            "id": "N3",
+            "label": "运维",
+            "groupId": "G2",
+            "role": "cost"
+          },
+          {
+            "id": "N4",
+            "label": "利用率",
+            "groupId": "G2",
+            "role": "cost"
+          },
+          {
+            "id": "N5",
+            "label": "算力资源池",
+            "groupId": "G3",
+            "role": "pool"
+          },
+          {
+            "id": "N6",
+            "label": "按需租用",
+            "groupId": "G3",
+            "role": "rule"
+          },
+          {
+            "id": "N7",
+            "label": "知识库",
+            "groupId": "G4",
+            "role": "task"
+          },
+          {
+            "id": "N8",
+            "label": "智能体",
+            "groupId": "G4",
+            "role": "task"
+          },
+          {
+            "id": "N9",
+            "label": "总成本",
+            "groupId": "G5",
+            "role": "decision"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "左侧GPU机柜与三张成本票据逐层堆起",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-stack"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "电费、运维和利用率卡依次扣在机柜旁",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2",
+              "N3",
+              "N4"
+            ],
+            "sfxRole": "ticket-clicks"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "右侧算力资源池展开，按需租用滑块卡入",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N5",
+              "N6"
+            ],
+            "sfxRole": "paper-pool-open"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "知识库和智能体任务卡只滑入所需容量",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N7",
+              "N8"
+            ],
+            "sfxRole": "task-card-slide"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "两条路径同时连到前景总成本审批栏",
+            "subject": "G5",
+            "landingNodeIds": [
+              "N9"
+            ],
+            "sfxRole": "stamp-soft"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "GPU服务器",
+            "enterStageId": "S1",
+            "position": "left-back"
+          },
+          {
+            "nodeId": "N2",
+            "text": "电费",
+            "enterStageId": "S2",
+            "position": "left-top"
+          },
+          {
+            "nodeId": "N3",
+            "text": "运维",
+            "enterStageId": "S2",
+            "position": "left-middle"
+          },
+          {
+            "nodeId": "N4",
+            "text": "利用率",
+            "enterStageId": "S2",
+            "position": "left-bottom"
+          },
+          {
+            "nodeId": "N5",
+            "text": "算力资源池",
+            "enterStageId": "S3",
+            "position": "right-back"
+          },
+          {
+            "nodeId": "N6",
+            "text": "按需租用",
+            "enterStageId": "S3",
+            "position": "right-center"
+          },
+          {
+            "nodeId": "N7",
+            "text": "知识库",
+            "enterStageId": "S4",
+            "position": "right-top"
+          },
+          {
+            "nodeId": "N8",
+            "text": "智能体",
+            "enterStageId": "S4",
+            "position": "right-bottom"
+          },
+          {
+            "nodeId": "N9",
+            "text": "总成本",
+            "enterStageId": "S5",
+            "position": "front-center"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "完成态参考图：16:9纸艺左右对照沙盘，左侧是深灰GPU机柜和三张橙色成本票据，右侧是深蓝算力资源池、滑动分配栏与两张暖白任务卡，前景绿色人工审批栏同时连接两侧，三层空间、纸纤维和接触阴影清晰，禁止价格、收益数字和可读文字。",
+          "motion": "8秒纸艺定格：左侧GPU机柜立起，三张成本票据依次扣上；右侧算力资源池展开，分配滑块卡入，两张任务卡滑入所需容量；两路最后一起连到总成本审批栏。不把按需租用演绎成必然更便宜，禁止可读文字，精确中文后期叠加。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "spokenLine": "对于我们西北的企业来说，有3个实实在在的变化：",
+      "coreMeaning": "算力供给、部署选择和下游服务三条路同时向本地企业展开。",
+      "kind": "layered-system",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "complex-explanation",
+        "title": "西北企业的三条变化",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "算力底座",
+            "material": "深蓝纸机房",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "算力供给",
+            "material": "冷青轨道纸带",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "部署选择",
+            "material": "白色分岔卡",
+            "depth": 2
+          },
+          {
+            "id": "G4",
+            "name": "应用服务",
+            "material": "绿色工具箱纸盒",
+            "depth": 3
+          },
+          {
+            "id": "G5",
+            "name": "本地企业",
+            "material": "暖白店铺与工厂纸模",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "算力底座",
+            "groupId": "G1",
+            "role": "source"
+          },
+          {
+            "id": "N2",
+            "label": "按需调用",
+            "groupId": "G2",
+            "role": "change"
+          },
+          {
+            "id": "N3",
+            "label": "前期投入",
+            "groupId": "G2",
+            "role": "boundary"
+          },
+          {
+            "id": "N4",
+            "label": "本地部署",
+            "groupId": "G3",
+            "role": "option"
+          },
+          {
+            "id": "N5",
+            "label": "专属资源",
+            "groupId": "G3",
+            "role": "option"
+          },
+          {
+            "id": "N6",
+            "label": "受控云",
+            "groupId": "G3",
+            "role": "option"
+          },
+          {
+            "id": "N7",
+            "label": "知识库",
+            "groupId": "G4",
+            "role": "service"
+          },
+          {
+            "id": "N8",
+            "label": "工作流",
+            "groupId": "G4",
+            "role": "service"
+          },
+          {
+            "id": "N9",
+            "label": "本地企业",
+            "groupId": "G5",
+            "role": "beneficiary"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "算力底座从后景展开",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-platform-open"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "按需调用轨道拉到企业前方",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2",
+              "N3"
+            ],
+            "sfxRole": "paper-track-pull"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "三张部署选择卡从同一中枢分岔",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N4",
+              "N5",
+              "N6"
+            ],
+            "sfxRole": "paper-fan-cards"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "知识库和工作流工具从绿色纸盒弹出",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N7",
+              "N8"
+            ],
+            "sfxRole": "toolbox-pop"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "店铺与工厂纸模立起，三条路只连到对应入口",
+            "subject": "G5",
+            "landingNodeIds": [
+              "N9"
+            ],
+            "sfxRole": "paper-building-lock"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "算力底座",
+            "enterStageId": "S1",
+            "position": "back-center"
+          },
+          {
+            "nodeId": "N2",
+            "text": "按需调用",
+            "enterStageId": "S2",
+            "position": "left-path"
+          },
+          {
+            "nodeId": "N3",
+            "text": "前期投入",
+            "enterStageId": "S2",
+            "position": "left-front"
+          },
+          {
+            "nodeId": "N4",
+            "text": "本地部署",
+            "enterStageId": "S3",
+            "position": "center-top"
+          },
+          {
+            "nodeId": "N5",
+            "text": "专属资源",
+            "enterStageId": "S3",
+            "position": "center-middle"
+          },
+          {
+            "nodeId": "N6",
+            "text": "受控云",
+            "enterStageId": "S3",
+            "position": "center-bottom"
+          },
+          {
+            "nodeId": "N7",
+            "text": "知识库",
+            "enterStageId": "S4",
+            "position": "right-top"
+          },
+          {
+            "nodeId": "N8",
+            "text": "工作流",
+            "enterStageId": "S4",
+            "position": "right-bottom"
+          },
+          {
+            "nodeId": "N9",
+            "text": "本地企业",
+            "enterStageId": "S5",
+            "position": "front-right"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "完成态参考图：16:9纸艺产业分层沙盘，后景深蓝算力机房，中景三条分岔路纸卡，右侧绿色工具箱，前景两座暖白店铺和工厂纸模，空间层次清楚、纸厚与投影真实，禁止收益数字、真实企业Logo和可读文字。",
+          "motion": "7秒纸艺定格：机房底座展开，一条按需轨道拉向前方，三张部署卡呈扇形分开，工具箱弹出知识库和工作流小件，最后店铺与工厂立起并与对应路径连接。不演绎“全部变便宜”，禁止可读文字，中文由Remotion逐节点叠加。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "spokenLine": "现在很多大模型厂商，就是跑在乌兰察布这类算力底座之上，可以给企业做本地私有化部署，数据不出本地服务器，兼顾AI能力和数据安全。",
+      "coreMeaning": "数据是否外流由部署位置、网络、权限、日志和合同共同决定，不由“私有化”三个字自动保证。",
+      "kind": "decision-path",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "occluded-state-reveal",
+        "title": "企业数据边界五项检查",
+        "durationSeconds": 8,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "业务数据",
+            "material": "暖白密封纸盒",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "部署选项",
+            "material": "三张深蓝选项卡",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "权限门",
+            "material": "冷青可开合纸门",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "日志与合同",
+            "material": "灰色记录本和印章",
+            "depth": 3
+          },
+          {
+            "id": "G5",
+            "name": "人工决策",
+            "material": "绿色复核台",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "业务数据",
+            "groupId": "G1",
+            "role": "asset"
+          },
+          {
+            "id": "N2",
+            "label": "本地部署",
+            "groupId": "G2",
+            "role": "option"
+          },
+          {
+            "id": "N3",
+            "label": "专属资源",
+            "groupId": "G2",
+            "role": "option"
+          },
+          {
+            "id": "N4",
+            "label": "受控云",
+            "groupId": "G2",
+            "role": "option"
+          },
+          {
+            "id": "N5",
+            "label": "权限网络",
+            "groupId": "G3",
+            "role": "control"
+          },
+          {
+            "id": "N6",
+            "label": "日志合同",
+            "groupId": "G4",
+            "role": "control"
+          },
+          {
+            "id": "N7",
+            "label": "人工复核",
+            "groupId": "G5",
+            "role": "decision"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "密封数据盒落在左侧起点并扣合",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-box-close"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "三张部署选项卡从遮挡板后分别露出",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2",
+              "N3",
+              "N4"
+            ],
+            "sfxRole": "paper-reveal"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "冷青权限门先关闭，检查后只向允许路径打开",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N5"
+            ],
+            "sfxRole": "paper-gate-click"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "日志本展开并在合同页盖章",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N6"
+            ],
+            "sfxRole": "page-and-stamp"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "复核台的绿色指示片在所有检查后才翻起",
+            "subject": "G5",
+            "landingNodeIds": [
+              "N7"
+            ],
+            "sfxRole": "review-lock"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "业务数据",
+            "enterStageId": "S1",
+            "position": "left-front"
+          },
+          {
+            "nodeId": "N2",
+            "text": "本地部署",
+            "enterStageId": "S2",
+            "position": "center-top"
+          },
+          {
+            "nodeId": "N3",
+            "text": "专属资源",
+            "enterStageId": "S2",
+            "position": "center-middle"
+          },
+          {
+            "nodeId": "N4",
+            "text": "受控云",
+            "enterStageId": "S2",
+            "position": "center-bottom"
+          },
+          {
+            "nodeId": "N5",
+            "text": "权限网络",
+            "enterStageId": "S3",
+            "position": "right-center"
+          },
+          {
+            "nodeId": "N6",
+            "text": "日志合同",
+            "enterStageId": "S4",
+            "position": "right-back"
+          },
+          {
+            "nodeId": "N7",
+            "text": "人工复核",
+            "enterStageId": "S5",
+            "position": "front-right"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "完成态参考图：16:9纸艺安全边界沙盘，左侧暖白密封数据盒，中间三张深蓝部署选项卡，右侧冷青权限门、灰色日志本和合同印章，前景绿色人工复核台，纸层遮挡关系清楚，真实纸纤维和侧光，禁止锁头特效、绿色“绝对安全”暗示和可读文字。",
+          "motion": "8秒纸艺遮挡状态揭示：数据盒先扣合，三张部署选项卡从遮挡板后依次露出，权限门保持关闭，日志本展开、合同盖章后，权限门只向通过检查的路径打开，最后人工复核片翻起。不演绎数据必然不外流，禁止可读文字，节点中文后期叠加。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "spokenLine": "但是把算力包装成行业解决方案，给本地企业做培训、做知识库、做工作流改造，做AIGC内容赋能，这恰恰是我们这类服务商的机会。",
+      "coreMeaning": "上游算力经模型和工具，被翻译成本地企业可验收的知识库、工作流和内容服务。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "complex-explanation",
+        "title": "算力到本地交付的服务链",
+        "durationSeconds": 8,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "算力底座",
+            "material": "深蓝纸机房",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "模型与API",
+            "material": "冷青接口纸桥",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "行业翻译",
+            "material": "灰白拆解桌",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "交付模块",
+            "material": "三个绿色纸盒",
+            "depth": 3
+          },
+          {
+            "id": "G5",
+            "name": "企业现场",
+            "material": "暖白店铺纸模与验收台",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "算力底座",
+            "groupId": "G1",
+            "role": "source"
+          },
+          {
+            "id": "N2",
+            "label": "模型API",
+            "groupId": "G2",
+            "role": "interface"
+          },
+          {
+            "id": "N3",
+            "label": "行业问题",
+            "groupId": "G3",
+            "role": "input"
+          },
+          {
+            "id": "N4",
+            "label": "人工判断",
+            "groupId": "G3",
+            "role": "boundary"
+          },
+          {
+            "id": "N5",
+            "label": "知识库",
+            "groupId": "G4",
+            "role": "deliverable"
+          },
+          {
+            "id": "N6",
+            "label": "工作流",
+            "groupId": "G4",
+            "role": "deliverable"
+          },
+          {
+            "id": "N7",
+            "label": "AIGC内容",
+            "groupId": "G4",
+            "role": "deliverable"
+          },
+          {
+            "id": "N8",
+            "label": "本地企业",
+            "groupId": "G5",
+            "role": "user"
+          },
+          {
+            "id": "N9",
+            "label": "真实使用",
+            "groupId": "G5",
+            "role": "evidence"
+          },
+          {
+            "id": "N10",
+            "label": "结果验收",
+            "groupId": "G5",
+            "role": "result"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "算力机房底座展开",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-platform-open"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "模型与API纸桥从机房向前铺开",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2"
+            ],
+            "sfxRole": "paper-bridge-slide"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "行业问题卡落在拆解桌，人工判断标记翻起",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N3",
+              "N4"
+            ],
+            "sfxRole": "ticket-and-marker"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "三个交付纸盒依次弹出",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N5",
+              "N6",
+              "N7"
+            ],
+            "sfxRole": "three-paper-pops"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "本地店铺纸模立起，交付纸盒通过棉线连到现场",
+            "subject": "G5",
+            "landingNodeIds": [
+              "N8"
+            ],
+            "sfxRole": "twine-connect"
+          },
+          {
+            "id": "S6",
+            "order": 6,
+            "action": "使用与验收两张卡在现场前方依次盖章",
+            "subject": "G5",
+            "landingNodeIds": [
+              "N9",
+              "N10"
+            ],
+            "sfxRole": "double-stamp"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "算力底座",
+            "enterStageId": "S1",
+            "position": "back-left"
+          },
+          {
+            "nodeId": "N2",
+            "text": "模型API",
+            "enterStageId": "S2",
+            "position": "bridge"
+          },
+          {
+            "nodeId": "N3",
+            "text": "行业问题",
+            "enterStageId": "S3",
+            "position": "center-left"
+          },
+          {
+            "nodeId": "N4",
+            "text": "人工判断",
+            "enterStageId": "S3",
+            "position": "center-right"
+          },
+          {
+            "nodeId": "N5",
+            "text": "知识库",
+            "enterStageId": "S4",
+            "position": "right-top"
+          },
+          {
+            "nodeId": "N6",
+            "text": "工作流",
+            "enterStageId": "S4",
+            "position": "right-middle"
+          },
+          {
+            "nodeId": "N7",
+            "text": "AIGC内容",
+            "enterStageId": "S4",
+            "position": "right-bottom"
+          },
+          {
+            "nodeId": "N8",
+            "text": "本地企业",
+            "enterStageId": "S5",
+            "position": "front-right"
+          },
+          {
+            "nodeId": "N9",
+            "text": "真实使用",
+            "enterStageId": "S6",
+            "position": "front-left"
+          },
+          {
+            "nodeId": "N10",
+            "text": "结果验收",
+            "enterStageId": "S6",
+            "position": "front-center"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "完成态参考图：16:9纸艺服务链沙盘，画面从左后方深蓝算力机房出发，经冷青纸桥到中景灰白行业拆解桌，再到右侧三个绿色交付纸盒，最后连到前景暖白本地店铺与验收台，层次丰富、比例稳定、纸纤维清晰，无任何可读文字和收益暗示。",
+          "motion": "8秒纸艺定格：机房底座展开，模型API纸桥向前铺开，行业问题卡落到拆解桌，人工判断标记翻起，三个交付纸盒依次弹出，棉线连到本地店铺，使用与验收卡最后盖章。不展示订单或收入，禁止可读文字，准确节点文字由Remotion后期叠加。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "spokenLine": "但产业链拉长之后，普通人的机会，不在上游烧钱建机房，而是下游。",
+      "coreMeaning": "用官方下游办公、标注和运维场景做证据，不用动画承诺就业。",
+      "kind": "official-evidence",
+      "visualDecision": {
+        "class": "real-evidence",
+        "producer": "existing",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [
+        "O09/B10 央视下游办公场景",
+        "S03 数据标注、审核、运维等产业链现状"
+      ]
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "spokenLine": "第一种，技能岗位：数据标注、AI训练师、内容审核，这一类岗位依托算力集群大量释放，可以远程接单，普通人经过培训可以切入，是普通人进入AI行业的入门路径。",
+      "coreMeaning": "展示“技能岗位”与“OPC服务”两条下游路径，并把招聘、能力和客户验证作为必经检查。",
+      "kind": "decision-path",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "complex-explanation",
+        "title": "普通人的两条下游路",
+        "durationSeconds": 8,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "下游起点",
+            "material": "深蓝分岔底板",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "技能岗位路",
+            "material": "灰白工作台纸模",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "OPC服务路",
+            "material": "绿色工具箱与客户卡",
+            "depth": 2
+          },
+          {
+            "id": "G4",
+            "name": "真实门槛",
+            "material": "两座可开合纸门",
+            "depth": 3
+          },
+          {
+            "id": "G5",
+            "name": "行业现场",
+            "material": "暖白店铺纸模",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "下游路径",
+            "groupId": "G1",
+            "role": "origin"
+          },
+          {
+            "id": "N2",
+            "label": "数据标注",
+            "groupId": "G2",
+            "role": "skill"
+          },
+          {
+            "id": "N3",
+            "label": "内容审核",
+            "groupId": "G2",
+            "role": "skill"
+          },
+          {
+            "id": "N4",
+            "label": "运维支持",
+            "groupId": "G2",
+            "role": "skill"
+          },
+          {
+            "id": "N5",
+            "label": "OPC服务",
+            "groupId": "G3",
+            "role": "service"
+          },
+          {
+            "id": "N6",
+            "label": "行业理解",
+            "groupId": "G3",
+            "role": "capability"
+          },
+          {
+            "id": "N7",
+            "label": "真实招聘",
+            "groupId": "G4",
+            "role": "gate"
+          },
+          {
+            "id": "N8",
+            "label": "客户验证",
+            "groupId": "G4",
+            "role": "gate"
+          },
+          {
+            "id": "N9",
+            "label": "企业现场",
+            "groupId": "G5",
+            "role": "destination"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "下游底板展开成左右两条路",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-fork-open"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "左路三张技能卡依次落位",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2",
+              "N3",
+              "N4"
+            ],
+            "sfxRole": "three-card-lands"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "右路OPC工具箱打开，行业理解卡弹出",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N5",
+              "N6"
+            ],
+            "sfxRole": "toolbox-open"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "两条路各自遇到一座门，只在真实证据卡插入后打开",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N7",
+              "N8"
+            ],
+            "sfxRole": "paper-gate-double"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "两条路在企业现场前汇合，稳定停留",
+            "subject": "G5",
+            "landingNodeIds": [
+              "N9"
+            ],
+            "sfxRole": "paper-merge-lock"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "下游路径",
+            "enterStageId": "S1",
+            "position": "back-center"
+          },
+          {
+            "nodeId": "N2",
+            "text": "数据标注",
+            "enterStageId": "S2",
+            "position": "left-top"
+          },
+          {
+            "nodeId": "N3",
+            "text": "内容审核",
+            "enterStageId": "S2",
+            "position": "left-middle"
+          },
+          {
+            "nodeId": "N4",
+            "text": "运维支持",
+            "enterStageId": "S2",
+            "position": "left-bottom"
+          },
+          {
+            "nodeId": "N5",
+            "text": "OPC服务",
+            "enterStageId": "S3",
+            "position": "right-top"
+          },
+          {
+            "nodeId": "N6",
+            "text": "行业理解",
+            "enterStageId": "S3",
+            "position": "right-bottom"
+          },
+          {
+            "nodeId": "N7",
+            "text": "真实招聘",
+            "enterStageId": "S4",
+            "position": "left-gate"
+          },
+          {
+            "nodeId": "N8",
+            "text": "客户验证",
+            "enterStageId": "S4",
+            "position": "right-gate"
+          },
+          {
+            "nodeId": "N9",
+            "text": "企业现场",
+            "enterStageId": "S5",
+            "position": "front-center"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "完成态参考图：16:9纸艺分岔路沙盘，深蓝底板从后景分成左右两路，左侧灰白工作台上有三张技能卡，右侧绿色工具箱和客户卡，中景两座纸门，前景暖白企业店铺纸模，真实纸厚、遮挡和接触阴影，不出现收入、高薪、远程接单承诺或可读文字。",
+          "motion": "8秒纸艺定格：底板先分成两条路，左路三张技能卡依次落位，右路工具箱打开并弹出OPC与行业理解小件，两座门在真实证据卡插入后才打开，两路最后在企业现场汇合。不表达普遍可远程接单或保证就业，禁止可读文字。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "spokenLine": "大厂负责砸钱造“发电厂”，生产源源不断的算力。",
+      "coreMeaning": "大厂建设算力底座，中小企业和超级个体通过调用与行业理解把它转成业务改造。",
+      "kind": "causal-chain",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "mechanical-causality",
+        "title": "算力底座通向真实业务",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "算力发电厂",
+            "material": "深蓝机房纸厂",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "按需接入",
+            "material": "蓝金轨道与纸质电表",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "行业判断",
+            "material": "绿色调度台",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "业务改造",
+            "material": "暖白店铺与流程纸模",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "算力底座",
+            "groupId": "G1",
+            "role": "source"
+          },
+          {
+            "id": "N2",
+            "label": "按需接入",
+            "groupId": "G2",
+            "role": "path"
+          },
+          {
+            "id": "N3",
+            "label": "使用量",
+            "groupId": "G2",
+            "role": "meter"
+          },
+          {
+            "id": "N4",
+            "label": "行业理解",
+            "groupId": "G3",
+            "role": "judgment"
+          },
+          {
+            "id": "N5",
+            "label": "人工负责",
+            "groupId": "G3",
+            "role": "boundary"
+          },
+          {
+            "id": "N6",
+            "label": "业务改造",
+            "groupId": "G4",
+            "role": "result"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "深蓝纸厂与机柜从后景展开",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-factory-open"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "蓝金轨道从纸厂向前铺设，电表纸片卡入",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2",
+              "N3"
+            ],
+            "sfxRole": "track-and-meter"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "企业问题卡落在绿色调度台",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N4"
+            ],
+            "sfxRole": "ticket-land"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "人工负责标记翻起后，轨道才向对应流程分支",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N5"
+            ],
+            "sfxRole": "review-click"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "店铺与流程纸模立起，一枚改造卡稳定落位",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N6"
+            ],
+            "sfxRole": "paper-result-lock"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "算力底座",
+            "enterStageId": "S1",
+            "position": "back-left"
+          },
+          {
+            "nodeId": "N2",
+            "text": "按需接入",
+            "enterStageId": "S2",
+            "position": "center-path"
+          },
+          {
+            "nodeId": "N3",
+            "text": "使用量",
+            "enterStageId": "S2",
+            "position": "center-front"
+          },
+          {
+            "nodeId": "N4",
+            "text": "行业理解",
+            "enterStageId": "S3",
+            "position": "right-center"
+          },
+          {
+            "nodeId": "N5",
+            "text": "人工负责",
+            "enterStageId": "S4",
+            "position": "right-front"
+          },
+          {
+            "nodeId": "N6",
+            "text": "业务改造",
+            "enterStageId": "S5",
+            "position": "front-right"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "完成态参考图：16:9纸艺“发电厂”比喻沙盘，左后方深蓝纸厂与机柜，蓝金轨道经纸质电表通向中景绿色行业调度台，再连到前景暖白店铺与流程纸模，低机位、真实纸纤维、三层空间，禁止金币、收益数字、虚假大屏和可读文字。",
+          "motion": "7秒纸艺定格：纸厂与机柜展开，蓝金轨道向前铺设并卡入使用量纸表，企业问题卡落在调度台，人工负责标记翻起后轨道才转向对应业务，店铺与流程纸模立起并稳定。不演绎“接电就成功”，禁止可读文字，中文由Remotion叠加。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    }
+  ],
+  "paperScenes": [
+    {
+      "beatId": "B04",
+      "spokenLine": "为什么全中国的AI大厂，都跑到草原上建智算中心？核心就这三件事。",
+      "coreMeaning": "绿电、低温和低时延三项条件同时汇入智算中心。",
+      "archetype": "complex-explanation",
+      "title": "三项条件汇入智算中心",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "绿电底座",
+          "material": "靛蓝与黄色纸片",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "冷空气层",
+          "material": "半透冷青硫酸纸",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "光缆路径",
+          "material": "蓝色细棉线与节点钉",
+          "depth": 2
+        },
+        {
+          "id": "G4",
+          "name": "智算机房",
+          "material": "深蓝瓦楞纸机柜",
+          "depth": 3
+        },
+        {
+          "id": "G5",
+          "name": "任务输出",
+          "material": "暖白卡纸任务盒",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "风电",
+          "groupId": "G1",
+          "role": "source"
+        },
+        {
+          "id": "N2",
+          "label": "光伏",
+          "groupId": "G1",
+          "role": "source"
+        },
+        {
+          "id": "N3",
+          "label": "冷空气",
+          "groupId": "G2",
+          "role": "condition"
+        },
+        {
+          "id": "N4",
+          "label": "乌兰察布",
+          "groupId": "G3",
+          "role": "origin"
+        },
+        {
+          "id": "N5",
+          "label": "北京",
+          "groupId": "G3",
+          "role": "destination"
+        },
+        {
+          "id": "N6",
+          "label": "双路光缆",
+          "groupId": "G3",
+          "role": "path"
+        },
+        {
+          "id": "N7",
+          "label": "智算中心",
+          "groupId": "G4",
+          "role": "core"
+        },
+        {
+          "id": "N8",
+          "label": "训练",
+          "groupId": "G5",
+          "role": "output"
+        },
+        {
+          "id": "N9",
+          "label": "推理",
+          "groupId": "G5",
+          "role": "output"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "草原底座展开，风机与光伏片弹起",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1",
+            "N2"
+          ],
+          "sfxRole": "paper-unfold"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "冷青空气层从后景向机房滑入",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N3"
+          ],
+          "sfxRole": "air-soft-sweep"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "光缆棉线从乌兰察布沿节点拉向北京",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N4",
+            "N5",
+            "N6"
+          ],
+          "sfxRole": "twine-pull"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "多排纸机柜逐排立起并点亮纸质指示灯",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N7"
+          ],
+          "sfxRole": "paper-rack-clicks"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "训练与推理任务卡从机房前方弹出并锁定",
+          "subject": "G5",
+          "landingNodeIds": [
+            "N8",
+            "N9"
+          ],
+          "sfxRole": "paper-lock"
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "风电",
+          "enterStageId": "S1",
+          "position": "left-back"
+        },
+        {
+          "nodeId": "N2",
+          "text": "光伏",
+          "enterStageId": "S1",
+          "position": "left-front"
+        },
+        {
+          "nodeId": "N3",
+          "text": "冷空气",
+          "enterStageId": "S2",
+          "position": "upper-left"
+        },
+        {
+          "nodeId": "N4",
+          "text": "乌兰察布",
+          "enterStageId": "S3",
+          "position": "path-left"
+        },
+        {
+          "nodeId": "N5",
+          "text": "北京",
+          "enterStageId": "S3",
+          "position": "path-right"
+        },
+        {
+          "nodeId": "N6",
+          "text": "双路光缆",
+          "enterStageId": "S3",
+          "position": "path-center"
+        },
+        {
+          "nodeId": "N7",
+          "text": "智算中心",
+          "enterStageId": "S4",
+          "position": "center"
+        },
+        {
+          "nodeId": "N8",
+          "text": "训练",
+          "enterStageId": "S5",
+          "position": "right-top"
+        },
+        {
+          "nodeId": "N9",
+          "text": "推理",
+          "enterStageId": "S5",
+          "position": "right-bottom"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "完成态参考图：16:9摄影级手作纸艺微缩场景，暖灰纸台上从左到右分层摆放风机、光伏板、冷青空气纸带、蓝色光缆棉线、深蓝纸机柜和暖白任务卡，前中后至少三层空间，可见纸纤维、瓦楞厚度和真实接触阴影，低机位35毫米镜头，禁止任何可读文字、Logo、人手和塑料3D。",
+        "motion": "以完成态为唯一物件参考，7秒纸艺定格动画：草原底座先展开，风机与光伏片弹起；冷青纸带滑入机房；蓝棉线沿节点向北京延伸；机柜逐排立起；两张任务卡弹出并稳定停留。物件身份、数量、颜色和接触关系全程不变，轻微手作步进感，镜头只做2%慢推，禁止生成可读文字。精确中文由Remotion后期分节点叠加。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B05",
+      "spokenLine": "第一，电便宜，而且还是绿色风电和光伏。",
+      "coreMeaning": "风光发电经电网和调度送入机房，影响整体运行成本。",
+      "archetype": "mechanical-causality",
+      "title": "绿电进入机房",
+      "durationSeconds": 6,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "风光发电",
+          "material": "蓝黄叠纸",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "电网调度",
+          "material": "铜色细纸带",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "机房负载",
+          "material": "深蓝瓦楞纸",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "成本表",
+          "material": "暖白抽拉卡",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "风电",
+          "groupId": "G1",
+          "role": "input"
+        },
+        {
+          "id": "N2",
+          "label": "光伏",
+          "groupId": "G1",
+          "role": "input"
+        },
+        {
+          "id": "N3",
+          "label": "绿电调度",
+          "groupId": "G2",
+          "role": "process"
+        },
+        {
+          "id": "N4",
+          "label": "算力负载",
+          "groupId": "G3",
+          "role": "load"
+        },
+        {
+          "id": "N5",
+          "label": "运行成本",
+          "groupId": "G4",
+          "role": "result"
+        },
+        {
+          "id": "N6",
+          "label": "持续用电",
+          "groupId": "G3",
+          "role": "constraint"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "风机和光伏板从底座弹起",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1",
+            "N2"
+          ],
+          "sfxRole": "paper-pop"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "铜色电流纸带沿轨道向变电节点滑行",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N3"
+          ],
+          "sfxRole": "paper-slide"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "电流纸带接入三排机柜，纸质指示片逐个翻起",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N4"
+          ],
+          "sfxRole": "rack-ticks"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "连续用电轮缓慢转动一格",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N6"
+          ],
+          "sfxRole": "paper-ratchet"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "成本抽拉卡向外滑出并停在人工核算位",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N5"
+          ],
+          "sfxRole": "paper-drawer-stop"
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "风电",
+          "enterStageId": "S1",
+          "position": "left-back"
+        },
+        {
+          "nodeId": "N2",
+          "text": "光伏",
+          "enterStageId": "S1",
+          "position": "left-front"
+        },
+        {
+          "nodeId": "N3",
+          "text": "绿电调度",
+          "enterStageId": "S2",
+          "position": "center-path"
+        },
+        {
+          "nodeId": "N4",
+          "text": "算力负载",
+          "enterStageId": "S3",
+          "position": "right-center"
+        },
+        {
+          "nodeId": "N5",
+          "text": "运行成本",
+          "enterStageId": "S5",
+          "position": "right-front"
+        },
+        {
+          "nodeId": "N6",
+          "text": "持续用电",
+          "enterStageId": "S4",
+          "position": "right-top"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "完成态参考图：16:9低机位手作纸艺沙盘，左侧是蓝白风机与黄色光伏板，中间铜色纸带经变电节点通向右侧深蓝机柜，前景一张暖白成本抽拉卡，三层景深、可见纸厚和接触阴影，禁止任何可读文字和虚假电价数字。",
+        "motion": "6秒纸艺定格：风机与光伏板先弹起，铜色电流纸带沿轨道滑入变电节点，再连到机柜，机柜指示片逐个翻起，前景成本卡滑出后稳定。不展示具体电价或降幅，禁止可读文字，中文节点后期Remotion叠加。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B06",
+      "spokenLine": "第二，天气冷，天然省空调钱。",
+      "coreMeaning": "外部冷源进入制冷回路，带走服务器热量，降低制冷负荷。",
+      "archetype": "mechanical-causality",
+      "title": "自然冷源带走机房热量",
+      "durationSeconds": 6,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "外部冷源",
+          "material": "冷青半透纸扇",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "换热回路",
+          "material": "蓝色细纸管",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "服务器热端",
+          "material": "深蓝机柜与红橙热片",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "能耗指示",
+          "material": "暖白纸质仪表",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "草原冷源",
+          "groupId": "G1",
+          "role": "input"
+        },
+        {
+          "id": "N2",
+          "label": "换热回路",
+          "groupId": "G2",
+          "role": "process"
+        },
+        {
+          "id": "N3",
+          "label": "服务器",
+          "groupId": "G3",
+          "role": "load"
+        },
+        {
+          "id": "N4",
+          "label": "机房热量",
+          "groupId": "G3",
+          "role": "heat"
+        },
+        {
+          "id": "N5",
+          "label": "制冷负荷",
+          "groupId": "G4",
+          "role": "metric"
+        },
+        {
+          "id": "N6",
+          "label": "自然冷却",
+          "groupId": "G2",
+          "role": "result"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "深蓝机柜立起，红橙热片向上翻",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N3",
+            "N4"
+          ],
+          "sfxRole": "heat-paper-flick"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "冷青纸扇从后景展开",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-fan-open"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "蓝色纸管沿换热回路向机柜侧面接入",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2"
+          ],
+          "sfxRole": "tube-slide"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "红橙热片被蓝色纸管抽离并收起",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N6"
+          ],
+          "sfxRole": "paper-suction"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "前景仪表的制冷负荷指示片向下落一档",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N5"
+          ],
+          "sfxRole": "paper-meter-step"
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "草原冷源",
+          "enterStageId": "S2",
+          "position": "left-back"
+        },
+        {
+          "nodeId": "N2",
+          "text": "换热回路",
+          "enterStageId": "S3",
+          "position": "center-path"
+        },
+        {
+          "nodeId": "N3",
+          "text": "服务器",
+          "enterStageId": "S1",
+          "position": "right-center"
+        },
+        {
+          "nodeId": "N4",
+          "text": "机房热量",
+          "enterStageId": "S1",
+          "position": "right-top"
+        },
+        {
+          "nodeId": "N5",
+          "text": "制冷负荷",
+          "enterStageId": "S5",
+          "position": "front"
+        },
+        {
+          "nodeId": "N6",
+          "text": "自然冷却",
+          "enterStageId": "S4",
+          "position": "center-front"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "完成态参考图：16:9手作纸艺换热模型，右侧三排深蓝纸机柜，上方红橙热片，左后方冷青纸扇，蓝色纸管连接换热回路，前景一只纸质能耗仪表，至少三层景深，真实纸纤维与柔和侧光，无可读文字。",
+        "motion": "6秒纸艺定格：机柜先立起并翻出红橙热片，冷青纸扇展开，蓝色纸管连入机柜，红橙热片被逐步抽离，能耗指示向下移一档后稳定。不生成统计数字、不演绎空调品牌，禁止可读文字，准确中文由Remotion叠加。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B07",
+      "spokenLine": "第三点至关重要：离北京很近，网络延迟极低，光缆直通北京，数据来回只有4毫秒左右，几乎感觉不到延迟。",
+      "coreMeaning": "乌兰察布与北京之间通过双回路光缆往返任务，数字只按官方“低于4.2毫秒”叠字。",
+      "archetype": "mechanical-causality",
+      "title": "乌兰察布到北京的光缆往返",
+      "durationSeconds": 6,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "乌兰察布端",
+          "material": "深蓝城市纸模",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "双回路光缆",
+          "material": "两条蓝金棉线",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "北京端",
+          "material": "暖白城市纸模",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "任务票卡",
+          "material": "白色小卡片",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "乌兰察布",
+          "groupId": "G1",
+          "role": "origin"
+        },
+        {
+          "id": "N2",
+          "label": "双回路",
+          "groupId": "G2",
+          "role": "path"
+        },
+        {
+          "id": "N3",
+          "label": "北京亦庄",
+          "groupId": "G3",
+          "role": "destination"
+        },
+        {
+          "id": "N4",
+          "label": "计算任务",
+          "groupId": "G4",
+          "role": "input"
+        },
+        {
+          "id": "N5",
+          "label": "返回结果",
+          "groupId": "G4",
+          "role": "output"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "两端城市纸模从地图底板弹起",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-city-pop"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "北京端纸模锁定在右侧节点",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N3"
+          ],
+          "sfxRole": "paper-lock"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "两条光缆棉线同时沿路径铺开",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2"
+          ],
+          "sfxRole": "twine-zip"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "计算任务卡沿上行线滑向乌兰察布",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N4"
+          ],
+          "sfxRole": "ticket-slide"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "结果卡沿另一条线返回北京并盖上时延口径标记位",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N5"
+          ],
+          "sfxRole": "ticket-return-stop"
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "乌兰察布",
+          "enterStageId": "S1",
+          "position": "left"
+        },
+        {
+          "nodeId": "N2",
+          "text": "双回路",
+          "enterStageId": "S3",
+          "position": "center-path"
+        },
+        {
+          "nodeId": "N3",
+          "text": "北京亦庄",
+          "enterStageId": "S2",
+          "position": "right"
+        },
+        {
+          "nodeId": "N4",
+          "text": "计算任务",
+          "enterStageId": "S4",
+          "position": "upper-path"
+        },
+        {
+          "nodeId": "N5",
+          "text": "返回结果",
+          "enterStageId": "S5",
+          "position": "lower-path"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "完成态参考图：16:9纸艺地图沙盘，左侧乌兰察布深蓝城市纸模，右侧北京暖白城市纸模，两条蓝金棉线独立连接，两张小任务卡分居上下路径，斜俯视镜头，真实纸纤维和接触阴影，画面无可读文字与虚假延迟数字。",
+        "motion": "6秒纸艺定格：两端城市纸模依次弹起，两条光缆棉线沿预设路径同时铺开，任务卡沿一条线发出，结果卡沿另一条线返回，最后两条路径同时锁定。不自动生成“4毫秒”文字，后期只叠加已核实的“低于4.2毫秒”口径。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B09",
+      "spokenLine": "乌兰察布这类算力集群真正带来的改变，就是算力正在变成像水电一样，可以按需租用的公共资源。",
+      "coreMeaning": "从一次性重资产购置，转为按实际任务调用算力，但总成本仍需核算。",
+      "archetype": "complex-explanation",
+      "title": "自建GPU与按需租用",
+      "durationSeconds": 8,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "自建硬件",
+          "material": "深灰厚卡纸",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "固定成本",
+          "material": "橙色票据纸",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "算力资源池",
+          "material": "深蓝瓦楞纸池",
+          "depth": 2
+        },
+        {
+          "id": "G4",
+          "name": "企业任务",
+          "material": "暖白任务卡",
+          "depth": 3
+        },
+        {
+          "id": "G5",
+          "name": "人工核算",
+          "material": "绿色审批栏",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "GPU服务器",
+          "groupId": "G1",
+          "role": "asset"
+        },
+        {
+          "id": "N2",
+          "label": "电费",
+          "groupId": "G2",
+          "role": "cost"
+        },
+        {
+          "id": "N3",
+          "label": "运维",
+          "groupId": "G2",
+          "role": "cost"
+        },
+        {
+          "id": "N4",
+          "label": "利用率",
+          "groupId": "G2",
+          "role": "cost"
+        },
+        {
+          "id": "N5",
+          "label": "算力资源池",
+          "groupId": "G3",
+          "role": "pool"
+        },
+        {
+          "id": "N6",
+          "label": "按需租用",
+          "groupId": "G3",
+          "role": "rule"
+        },
+        {
+          "id": "N7",
+          "label": "知识库",
+          "groupId": "G4",
+          "role": "task"
+        },
+        {
+          "id": "N8",
+          "label": "智能体",
+          "groupId": "G4",
+          "role": "task"
+        },
+        {
+          "id": "N9",
+          "label": "总成本",
+          "groupId": "G5",
+          "role": "decision"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "左侧GPU机柜与三张成本票据逐层堆起",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-stack"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "电费、运维和利用率卡依次扣在机柜旁",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2",
+            "N3",
+            "N4"
+          ],
+          "sfxRole": "ticket-clicks"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "右侧算力资源池展开，按需租用滑块卡入",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N5",
+            "N6"
+          ],
+          "sfxRole": "paper-pool-open"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "知识库和智能体任务卡只滑入所需容量",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N7",
+            "N8"
+          ],
+          "sfxRole": "task-card-slide"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "两条路径同时连到前景总成本审批栏",
+          "subject": "G5",
+          "landingNodeIds": [
+            "N9"
+          ],
+          "sfxRole": "stamp-soft"
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "GPU服务器",
+          "enterStageId": "S1",
+          "position": "left-back"
+        },
+        {
+          "nodeId": "N2",
+          "text": "电费",
+          "enterStageId": "S2",
+          "position": "left-top"
+        },
+        {
+          "nodeId": "N3",
+          "text": "运维",
+          "enterStageId": "S2",
+          "position": "left-middle"
+        },
+        {
+          "nodeId": "N4",
+          "text": "利用率",
+          "enterStageId": "S2",
+          "position": "left-bottom"
+        },
+        {
+          "nodeId": "N5",
+          "text": "算力资源池",
+          "enterStageId": "S3",
+          "position": "right-back"
+        },
+        {
+          "nodeId": "N6",
+          "text": "按需租用",
+          "enterStageId": "S3",
+          "position": "right-center"
+        },
+        {
+          "nodeId": "N7",
+          "text": "知识库",
+          "enterStageId": "S4",
+          "position": "right-top"
+        },
+        {
+          "nodeId": "N8",
+          "text": "智能体",
+          "enterStageId": "S4",
+          "position": "right-bottom"
+        },
+        {
+          "nodeId": "N9",
+          "text": "总成本",
+          "enterStageId": "S5",
+          "position": "front-center"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "完成态参考图：16:9纸艺左右对照沙盘，左侧是深灰GPU机柜和三张橙色成本票据，右侧是深蓝算力资源池、滑动分配栏与两张暖白任务卡，前景绿色人工审批栏同时连接两侧，三层空间、纸纤维和接触阴影清晰，禁止价格、收益数字和可读文字。",
+        "motion": "8秒纸艺定格：左侧GPU机柜立起，三张成本票据依次扣上；右侧算力资源池展开，分配滑块卡入，两张任务卡滑入所需容量；两路最后一起连到总成本审批栏。不把按需租用演绎成必然更便宜，禁止可读文字，精确中文后期叠加。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B10",
+      "spokenLine": "对于我们西北的企业来说，有3个实实在在的变化：",
+      "coreMeaning": "算力供给、部署选择和下游服务三条路同时向本地企业展开。",
+      "archetype": "complex-explanation",
+      "title": "西北企业的三条变化",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "算力底座",
+          "material": "深蓝纸机房",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "算力供给",
+          "material": "冷青轨道纸带",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "部署选择",
+          "material": "白色分岔卡",
+          "depth": 2
+        },
+        {
+          "id": "G4",
+          "name": "应用服务",
+          "material": "绿色工具箱纸盒",
+          "depth": 3
+        },
+        {
+          "id": "G5",
+          "name": "本地企业",
+          "material": "暖白店铺与工厂纸模",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "算力底座",
+          "groupId": "G1",
+          "role": "source"
+        },
+        {
+          "id": "N2",
+          "label": "按需调用",
+          "groupId": "G2",
+          "role": "change"
+        },
+        {
+          "id": "N3",
+          "label": "前期投入",
+          "groupId": "G2",
+          "role": "boundary"
+        },
+        {
+          "id": "N4",
+          "label": "本地部署",
+          "groupId": "G3",
+          "role": "option"
+        },
+        {
+          "id": "N5",
+          "label": "专属资源",
+          "groupId": "G3",
+          "role": "option"
+        },
+        {
+          "id": "N6",
+          "label": "受控云",
+          "groupId": "G3",
+          "role": "option"
+        },
+        {
+          "id": "N7",
+          "label": "知识库",
+          "groupId": "G4",
+          "role": "service"
+        },
+        {
+          "id": "N8",
+          "label": "工作流",
+          "groupId": "G4",
+          "role": "service"
+        },
+        {
+          "id": "N9",
+          "label": "本地企业",
+          "groupId": "G5",
+          "role": "beneficiary"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "算力底座从后景展开",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-platform-open"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "按需调用轨道拉到企业前方",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2",
+            "N3"
+          ],
+          "sfxRole": "paper-track-pull"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "三张部署选择卡从同一中枢分岔",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N4",
+            "N5",
+            "N6"
+          ],
+          "sfxRole": "paper-fan-cards"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "知识库和工作流工具从绿色纸盒弹出",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N7",
+            "N8"
+          ],
+          "sfxRole": "toolbox-pop"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "店铺与工厂纸模立起，三条路只连到对应入口",
+          "subject": "G5",
+          "landingNodeIds": [
+            "N9"
+          ],
+          "sfxRole": "paper-building-lock"
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "算力底座",
+          "enterStageId": "S1",
+          "position": "back-center"
+        },
+        {
+          "nodeId": "N2",
+          "text": "按需调用",
+          "enterStageId": "S2",
+          "position": "left-path"
+        },
+        {
+          "nodeId": "N3",
+          "text": "前期投入",
+          "enterStageId": "S2",
+          "position": "left-front"
+        },
+        {
+          "nodeId": "N4",
+          "text": "本地部署",
+          "enterStageId": "S3",
+          "position": "center-top"
+        },
+        {
+          "nodeId": "N5",
+          "text": "专属资源",
+          "enterStageId": "S3",
+          "position": "center-middle"
+        },
+        {
+          "nodeId": "N6",
+          "text": "受控云",
+          "enterStageId": "S3",
+          "position": "center-bottom"
+        },
+        {
+          "nodeId": "N7",
+          "text": "知识库",
+          "enterStageId": "S4",
+          "position": "right-top"
+        },
+        {
+          "nodeId": "N8",
+          "text": "工作流",
+          "enterStageId": "S4",
+          "position": "right-bottom"
+        },
+        {
+          "nodeId": "N9",
+          "text": "本地企业",
+          "enterStageId": "S5",
+          "position": "front-right"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "完成态参考图：16:9纸艺产业分层沙盘，后景深蓝算力机房，中景三条分岔路纸卡，右侧绿色工具箱，前景两座暖白店铺和工厂纸模，空间层次清楚、纸厚与投影真实，禁止收益数字、真实企业Logo和可读文字。",
+        "motion": "7秒纸艺定格：机房底座展开，一条按需轨道拉向前方，三张部署卡呈扇形分开，工具箱弹出知识库和工作流小件，最后店铺与工厂立起并与对应路径连接。不演绎“全部变便宜”，禁止可读文字，中文由Remotion逐节点叠加。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B11",
+      "spokenLine": "现在很多大模型厂商，就是跑在乌兰察布这类算力底座之上，可以给企业做本地私有化部署，数据不出本地服务器，兼顾AI能力和数据安全。",
+      "coreMeaning": "数据是否外流由部署位置、网络、权限、日志和合同共同决定，不由“私有化”三个字自动保证。",
+      "archetype": "occluded-state-reveal",
+      "title": "企业数据边界五项检查",
+      "durationSeconds": 8,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "业务数据",
+          "material": "暖白密封纸盒",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "部署选项",
+          "material": "三张深蓝选项卡",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "权限门",
+          "material": "冷青可开合纸门",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "日志与合同",
+          "material": "灰色记录本和印章",
+          "depth": 3
+        },
+        {
+          "id": "G5",
+          "name": "人工决策",
+          "material": "绿色复核台",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "业务数据",
+          "groupId": "G1",
+          "role": "asset"
+        },
+        {
+          "id": "N2",
+          "label": "本地部署",
+          "groupId": "G2",
+          "role": "option"
+        },
+        {
+          "id": "N3",
+          "label": "专属资源",
+          "groupId": "G2",
+          "role": "option"
+        },
+        {
+          "id": "N4",
+          "label": "受控云",
+          "groupId": "G2",
+          "role": "option"
+        },
+        {
+          "id": "N5",
+          "label": "权限网络",
+          "groupId": "G3",
+          "role": "control"
+        },
+        {
+          "id": "N6",
+          "label": "日志合同",
+          "groupId": "G4",
+          "role": "control"
+        },
+        {
+          "id": "N7",
+          "label": "人工复核",
+          "groupId": "G5",
+          "role": "decision"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "密封数据盒落在左侧起点并扣合",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-box-close"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "三张部署选项卡从遮挡板后分别露出",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2",
+            "N3",
+            "N4"
+          ],
+          "sfxRole": "paper-reveal"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "冷青权限门先关闭，检查后只向允许路径打开",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N5"
+          ],
+          "sfxRole": "paper-gate-click"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "日志本展开并在合同页盖章",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N6"
+          ],
+          "sfxRole": "page-and-stamp"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "复核台的绿色指示片在所有检查后才翻起",
+          "subject": "G5",
+          "landingNodeIds": [
+            "N7"
+          ],
+          "sfxRole": "review-lock"
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "业务数据",
+          "enterStageId": "S1",
+          "position": "left-front"
+        },
+        {
+          "nodeId": "N2",
+          "text": "本地部署",
+          "enterStageId": "S2",
+          "position": "center-top"
+        },
+        {
+          "nodeId": "N3",
+          "text": "专属资源",
+          "enterStageId": "S2",
+          "position": "center-middle"
+        },
+        {
+          "nodeId": "N4",
+          "text": "受控云",
+          "enterStageId": "S2",
+          "position": "center-bottom"
+        },
+        {
+          "nodeId": "N5",
+          "text": "权限网络",
+          "enterStageId": "S3",
+          "position": "right-center"
+        },
+        {
+          "nodeId": "N6",
+          "text": "日志合同",
+          "enterStageId": "S4",
+          "position": "right-back"
+        },
+        {
+          "nodeId": "N7",
+          "text": "人工复核",
+          "enterStageId": "S5",
+          "position": "front-right"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "完成态参考图：16:9纸艺安全边界沙盘，左侧暖白密封数据盒，中间三张深蓝部署选项卡，右侧冷青权限门、灰色日志本和合同印章，前景绿色人工复核台，纸层遮挡关系清楚，真实纸纤维和侧光，禁止锁头特效、绿色“绝对安全”暗示和可读文字。",
+        "motion": "8秒纸艺遮挡状态揭示：数据盒先扣合，三张部署选项卡从遮挡板后依次露出，权限门保持关闭，日志本展开、合同盖章后，权限门只向通过检查的路径打开，最后人工复核片翻起。不演绎数据必然不外流，禁止可读文字，节点中文后期叠加。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B12",
+      "spokenLine": "但是把算力包装成行业解决方案，给本地企业做培训、做知识库、做工作流改造，做AIGC内容赋能，这恰恰是我们这类服务商的机会。",
+      "coreMeaning": "上游算力经模型和工具，被翻译成本地企业可验收的知识库、工作流和内容服务。",
+      "archetype": "complex-explanation",
+      "title": "算力到本地交付的服务链",
+      "durationSeconds": 8,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "算力底座",
+          "material": "深蓝纸机房",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "模型与API",
+          "material": "冷青接口纸桥",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "行业翻译",
+          "material": "灰白拆解桌",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "交付模块",
+          "material": "三个绿色纸盒",
+          "depth": 3
+        },
+        {
+          "id": "G5",
+          "name": "企业现场",
+          "material": "暖白店铺纸模与验收台",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "算力底座",
+          "groupId": "G1",
+          "role": "source"
+        },
+        {
+          "id": "N2",
+          "label": "模型API",
+          "groupId": "G2",
+          "role": "interface"
+        },
+        {
+          "id": "N3",
+          "label": "行业问题",
+          "groupId": "G3",
+          "role": "input"
+        },
+        {
+          "id": "N4",
+          "label": "人工判断",
+          "groupId": "G3",
+          "role": "boundary"
+        },
+        {
+          "id": "N5",
+          "label": "知识库",
+          "groupId": "G4",
+          "role": "deliverable"
+        },
+        {
+          "id": "N6",
+          "label": "工作流",
+          "groupId": "G4",
+          "role": "deliverable"
+        },
+        {
+          "id": "N7",
+          "label": "AIGC内容",
+          "groupId": "G4",
+          "role": "deliverable"
+        },
+        {
+          "id": "N8",
+          "label": "本地企业",
+          "groupId": "G5",
+          "role": "user"
+        },
+        {
+          "id": "N9",
+          "label": "真实使用",
+          "groupId": "G5",
+          "role": "evidence"
+        },
+        {
+          "id": "N10",
+          "label": "结果验收",
+          "groupId": "G5",
+          "role": "result"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "算力机房底座展开",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-platform-open"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "模型与API纸桥从机房向前铺开",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2"
+          ],
+          "sfxRole": "paper-bridge-slide"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "行业问题卡落在拆解桌，人工判断标记翻起",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N3",
+            "N4"
+          ],
+          "sfxRole": "ticket-and-marker"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "三个交付纸盒依次弹出",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N5",
+            "N6",
+            "N7"
+          ],
+          "sfxRole": "three-paper-pops"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "本地店铺纸模立起，交付纸盒通过棉线连到现场",
+          "subject": "G5",
+          "landingNodeIds": [
+            "N8"
+          ],
+          "sfxRole": "twine-connect"
+        },
+        {
+          "id": "S6",
+          "order": 6,
+          "action": "使用与验收两张卡在现场前方依次盖章",
+          "subject": "G5",
+          "landingNodeIds": [
+            "N9",
+            "N10"
+          ],
+          "sfxRole": "double-stamp"
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "算力底座",
+          "enterStageId": "S1",
+          "position": "back-left"
+        },
+        {
+          "nodeId": "N2",
+          "text": "模型API",
+          "enterStageId": "S2",
+          "position": "bridge"
+        },
+        {
+          "nodeId": "N3",
+          "text": "行业问题",
+          "enterStageId": "S3",
+          "position": "center-left"
+        },
+        {
+          "nodeId": "N4",
+          "text": "人工判断",
+          "enterStageId": "S3",
+          "position": "center-right"
+        },
+        {
+          "nodeId": "N5",
+          "text": "知识库",
+          "enterStageId": "S4",
+          "position": "right-top"
+        },
+        {
+          "nodeId": "N6",
+          "text": "工作流",
+          "enterStageId": "S4",
+          "position": "right-middle"
+        },
+        {
+          "nodeId": "N7",
+          "text": "AIGC内容",
+          "enterStageId": "S4",
+          "position": "right-bottom"
+        },
+        {
+          "nodeId": "N8",
+          "text": "本地企业",
+          "enterStageId": "S5",
+          "position": "front-right"
+        },
+        {
+          "nodeId": "N9",
+          "text": "真实使用",
+          "enterStageId": "S6",
+          "position": "front-left"
+        },
+        {
+          "nodeId": "N10",
+          "text": "结果验收",
+          "enterStageId": "S6",
+          "position": "front-center"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "完成态参考图：16:9纸艺服务链沙盘，画面从左后方深蓝算力机房出发，经冷青纸桥到中景灰白行业拆解桌，再到右侧三个绿色交付纸盒，最后连到前景暖白本地店铺与验收台，层次丰富、比例稳定、纸纤维清晰，无任何可读文字和收益暗示。",
+        "motion": "8秒纸艺定格：机房底座展开，模型API纸桥向前铺开，行业问题卡落到拆解桌，人工判断标记翻起，三个交付纸盒依次弹出，棉线连到本地店铺，使用与验收卡最后盖章。不展示订单或收入，禁止可读文字，准确节点文字由Remotion后期叠加。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B14",
+      "spokenLine": "第一种，技能岗位：数据标注、AI训练师、内容审核，这一类岗位依托算力集群大量释放，可以远程接单，普通人经过培训可以切入，是普通人进入AI行业的入门路径。",
+      "coreMeaning": "展示“技能岗位”与“OPC服务”两条下游路径，并把招聘、能力和客户验证作为必经检查。",
+      "archetype": "complex-explanation",
+      "title": "普通人的两条下游路",
+      "durationSeconds": 8,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "下游起点",
+          "material": "深蓝分岔底板",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "技能岗位路",
+          "material": "灰白工作台纸模",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "OPC服务路",
+          "material": "绿色工具箱与客户卡",
+          "depth": 2
+        },
+        {
+          "id": "G4",
+          "name": "真实门槛",
+          "material": "两座可开合纸门",
+          "depth": 3
+        },
+        {
+          "id": "G5",
+          "name": "行业现场",
+          "material": "暖白店铺纸模",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "下游路径",
+          "groupId": "G1",
+          "role": "origin"
+        },
+        {
+          "id": "N2",
+          "label": "数据标注",
+          "groupId": "G2",
+          "role": "skill"
+        },
+        {
+          "id": "N3",
+          "label": "内容审核",
+          "groupId": "G2",
+          "role": "skill"
+        },
+        {
+          "id": "N4",
+          "label": "运维支持",
+          "groupId": "G2",
+          "role": "skill"
+        },
+        {
+          "id": "N5",
+          "label": "OPC服务",
+          "groupId": "G3",
+          "role": "service"
+        },
+        {
+          "id": "N6",
+          "label": "行业理解",
+          "groupId": "G3",
+          "role": "capability"
+        },
+        {
+          "id": "N7",
+          "label": "真实招聘",
+          "groupId": "G4",
+          "role": "gate"
+        },
+        {
+          "id": "N8",
+          "label": "客户验证",
+          "groupId": "G4",
+          "role": "gate"
+        },
+        {
+          "id": "N9",
+          "label": "企业现场",
+          "groupId": "G5",
+          "role": "destination"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "下游底板展开成左右两条路",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-fork-open"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "左路三张技能卡依次落位",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2",
+            "N3",
+            "N4"
+          ],
+          "sfxRole": "three-card-lands"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "右路OPC工具箱打开，行业理解卡弹出",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N5",
+            "N6"
+          ],
+          "sfxRole": "toolbox-open"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "两条路各自遇到一座门，只在真实证据卡插入后打开",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N7",
+            "N8"
+          ],
+          "sfxRole": "paper-gate-double"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "两条路在企业现场前汇合，稳定停留",
+          "subject": "G5",
+          "landingNodeIds": [
+            "N9"
+          ],
+          "sfxRole": "paper-merge-lock"
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "下游路径",
+          "enterStageId": "S1",
+          "position": "back-center"
+        },
+        {
+          "nodeId": "N2",
+          "text": "数据标注",
+          "enterStageId": "S2",
+          "position": "left-top"
+        },
+        {
+          "nodeId": "N3",
+          "text": "内容审核",
+          "enterStageId": "S2",
+          "position": "left-middle"
+        },
+        {
+          "nodeId": "N4",
+          "text": "运维支持",
+          "enterStageId": "S2",
+          "position": "left-bottom"
+        },
+        {
+          "nodeId": "N5",
+          "text": "OPC服务",
+          "enterStageId": "S3",
+          "position": "right-top"
+        },
+        {
+          "nodeId": "N6",
+          "text": "行业理解",
+          "enterStageId": "S3",
+          "position": "right-bottom"
+        },
+        {
+          "nodeId": "N7",
+          "text": "真实招聘",
+          "enterStageId": "S4",
+          "position": "left-gate"
+        },
+        {
+          "nodeId": "N8",
+          "text": "客户验证",
+          "enterStageId": "S4",
+          "position": "right-gate"
+        },
+        {
+          "nodeId": "N9",
+          "text": "企业现场",
+          "enterStageId": "S5",
+          "position": "front-center"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "完成态参考图：16:9纸艺分岔路沙盘，深蓝底板从后景分成左右两路，左侧灰白工作台上有三张技能卡，右侧绿色工具箱和客户卡，中景两座纸门，前景暖白企业店铺纸模，真实纸厚、遮挡和接触阴影，不出现收入、高薪、远程接单承诺或可读文字。",
+        "motion": "8秒纸艺定格：底板先分成两条路，左路三张技能卡依次落位，右路工具箱打开并弹出OPC与行业理解小件，两座门在真实证据卡插入后才打开，两路最后在企业现场汇合。不表达普遍可远程接单或保证就业，禁止可读文字。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B15",
+      "spokenLine": "大厂负责砸钱造“发电厂”，生产源源不断的算力。",
+      "coreMeaning": "大厂建设算力底座，中小企业和超级个体通过调用与行业理解把它转成业务改造。",
+      "archetype": "mechanical-causality",
+      "title": "算力底座通向真实业务",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "算力发电厂",
+          "material": "深蓝机房纸厂",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "按需接入",
+          "material": "蓝金轨道与纸质电表",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "行业判断",
+          "material": "绿色调度台",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "业务改造",
+          "material": "暖白店铺与流程纸模",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "算力底座",
+          "groupId": "G1",
+          "role": "source"
+        },
+        {
+          "id": "N2",
+          "label": "按需接入",
+          "groupId": "G2",
+          "role": "path"
+        },
+        {
+          "id": "N3",
+          "label": "使用量",
+          "groupId": "G2",
+          "role": "meter"
+        },
+        {
+          "id": "N4",
+          "label": "行业理解",
+          "groupId": "G3",
+          "role": "judgment"
+        },
+        {
+          "id": "N5",
+          "label": "人工负责",
+          "groupId": "G3",
+          "role": "boundary"
+        },
+        {
+          "id": "N6",
+          "label": "业务改造",
+          "groupId": "G4",
+          "role": "result"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "深蓝纸厂与机柜从后景展开",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-factory-open"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "蓝金轨道从纸厂向前铺设，电表纸片卡入",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2",
+            "N3"
+          ],
+          "sfxRole": "track-and-meter"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "企业问题卡落在绿色调度台",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N4"
+          ],
+          "sfxRole": "ticket-land"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "人工负责标记翻起后，轨道才向对应流程分支",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N5"
+          ],
+          "sfxRole": "review-click"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "店铺与流程纸模立起，一枚改造卡稳定落位",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N6"
+          ],
+          "sfxRole": "paper-result-lock"
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "算力底座",
+          "enterStageId": "S1",
+          "position": "back-left"
+        },
+        {
+          "nodeId": "N2",
+          "text": "按需接入",
+          "enterStageId": "S2",
+          "position": "center-path"
+        },
+        {
+          "nodeId": "N3",
+          "text": "使用量",
+          "enterStageId": "S2",
+          "position": "center-front"
+        },
+        {
+          "nodeId": "N4",
+          "text": "行业理解",
+          "enterStageId": "S3",
+          "position": "right-center"
+        },
+        {
+          "nodeId": "N5",
+          "text": "人工负责",
+          "enterStageId": "S4",
+          "position": "right-front"
+        },
+        {
+          "nodeId": "N6",
+          "text": "业务改造",
+          "enterStageId": "S5",
+          "position": "front-right"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "完成态参考图：16:9纸艺“发电厂”比喻沙盘，左后方深蓝纸厂与机柜，蓝金轨道经纸质电表通向中景绿色行业调度台，再连到前景暖白店铺与流程纸模，低机位、真实纸纤维、三层空间，禁止金币、收益数字、虚假大屏和可读文字。",
+        "motion": "7秒纸艺定格：纸厂与机柜展开，蓝金轨道向前铺设并卡入使用量纸表，企业问题卡落在调度台，人工负责标记翻起后轨道才转向对应业务，店铺与流程纸模立起并稳定。不演绎“接电就成功”，禁止可读文字，中文由Remotion叠加。",
+        "generatedReadableTextAllowed": false
+      }
+    }
+  ],
+  "realEvidenceAssignments": [
+    {
+      "beatId": "B01",
+      "spokenLine": "最近AI圈爆火了一座草原城市，乌兰察布。",
+      "evidenceRefs": [
+        "O10/B01 新华网草原风机与城市开场",
+        "O01/B03 央视机房走廊与调度界面"
+      ]
+    },
+    {
+      "beatId": "B02",
+      "spokenLine": "华为、阿里、快手、DeepSeek一大批AI大厂，几百亿资金扎堆往这里砸",
+      "evidenceRefs": [
+        "S03 新华网《从算力工厂到词元牧场》",
+        "S02 内蒙古政府《算力产业新标杆》"
+      ]
+    },
+    {
+      "beatId": "B03",
+      "spokenLine": "以前乌兰察布，大家印象就是土豆之乡、草原。现在大家叫它“草原云谷、词元牧场”。",
+      "evidenceRefs": [
+        "O10/B01 草原风机与城市",
+        "O05 中金数据低碳算力基地"
+      ]
+    },
+    {
+      "beatId": "B08",
+      "spokenLine": "现在投运算力已经十几万P，智能算力占比超过95%，一大批大模型训练、AI应用都在这一片机房里面跑起来。",
+      "evidenceRefs": [
+        "S03 2026-08-22 新华网：17.2万P、智算超过95%",
+        "O01/B05 央视服务器机柜",
+        "O11 国家发改委内蒙古枢纽复函截图"
+      ]
+    },
+    {
+      "beatId": "B13",
+      "spokenLine": "但产业链拉长之后，普通人的机会，不在上游烧钱建机房，而是下游。",
+      "evidenceRefs": [
+        "O09/B10 央视下游办公场景",
+        "S03 数据标注、审核、运维等产业链现状"
+      ]
+    }
+  ],
+  "nextGate": "completion-stills-and-local-candidate-preview"
+}
