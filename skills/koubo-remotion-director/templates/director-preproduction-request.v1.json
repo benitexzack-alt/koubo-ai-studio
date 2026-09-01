@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "koubo-director-preproduction-request/v1",
+  "requestId": "<NEW_REQUEST_ID>",
+  "taskId": "<TASK_ID>",
+  "phase": "pre-shoot",
+  "status": "candidate-preview-required",
+  "inputScript": {
+    "path": "<ABSOLUTE_OR_PROJECT_RELATIVE_SCRIPT_PATH>",
+    "sha256": "<SHA256>",
+    "authority": "user-confirmed-script",
+    "role": "provisional-authority"
+  },
+  "directorProfile": {
+    "path": "workflow/active-director-profile.v1.json",
+    "profileId": "paper-editorial-director-v3",
+    "profileVersion": "3.0.0"
+  },
+  "policy": {
+    "branch": "paper-editorial",
+    "fallback": "blocked",
+    "textStrategy": "remotion-deterministic-overlay",
+    "generatedReadableTextAllowed": false,
+    "postShootRebindRequired": true
+  },
+  "outputs": {
+    "routeLockPath": "<NEW_ROUTE_LOCK_PATH>",
+    "planPath": "<NEW_PLAN_PATH>",
+    "assetSheetPath": "<NEW_ASSET_SHEET_PATH>",
+    "compileReceiptPath": "<NEW_COMPILE_RECEIPT_PATH>",
+    "validationReceiptPath": "<NEW_VALIDATION_RECEIPT_PATH>"
+  },
+  "beats": []
+}
