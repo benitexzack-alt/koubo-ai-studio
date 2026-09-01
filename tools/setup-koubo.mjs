@@ -29,6 +29,7 @@ const skillNames = [
   'humanize-koubo-script',
   'koubo-asset-prep',
   'koubo-remotion-director',
+  'koubo-paper-firstframe-producer',
 ];
 
 const requestedSkillNames = [];
