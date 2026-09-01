@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "koubo-director-postshoot-rebind-request/v1",
+  "requestId": "<NEW_POSTSHOOT_REQUEST_ID>",
+  "taskId": "<TASK_ID>",
+  "phase": "post-shoot",
+  "sourcePreproduction": {
+    "requestPath": "<PREPRODUCTION_REQUEST_PATH>",
+    "requestSha256": "<SHA256>",
+    "planPath": "<PREPRODUCTION_PLAN_PATH>",
+    "planSha256": "<SHA256>",
+    "validationReceiptPath": "<PREPRODUCTION_VALIDATION_RECEIPT_PATH>",
+    "validationReceiptSha256": "<SHA256>"
+  },
+  "recordedMedia": {
+    "path": "<RECORDED_MEDIA_PATH>",
+    "sha256": "<SHA256>",
+    "durationSeconds": 0
+  },
+  "spokenTimeline": {
+    "path": "<AUTHORITATIVE_SPOKEN_TIMELINE_PATH>",
+    "sha256": "<SHA256>",
+    "authority": "recorded-audio",
+    "scriptRole": "comparison-only"
+  },
+  "mappings": [],
+  "outputs": {
+    "rebindPlanPath": "<NEW_REBIND_PLAN_PATH>",
+    "validationReceiptPath": "<NEW_POSTSHOOT_VALIDATION_RECEIPT_PATH>"
+  }
+}
