@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260901T024123Z-484cdd19",
+  "status": "passed",
+  "reviewed_at": "2026-09-01T11:12:00+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-09-01-乌兰察布算力中心-正式口播稿-v1.md",
+    "sha256": "999251a97ea28b373a1136b7b8415feac1ba2b0889f01e5069d2cc5811a6d4e5"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "开头不播报大厂、投资额和机房规模，直接落到老板会不会买GPU的动作。保留用户三段主体，但每段只完成一个功能：解释选址条件、区分企业资源选择、落到普通人的行业动作。数据只放在解释算力基础设施为何成立的位置，并紧接“它不等于企业立刻少花钱”的边界；删除了“关键在于”“今天讲透”“总结一句”等自我说明和万能转场。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "截至2025年6月，当地公开过一组数据：已经签约落地大型算力中心项目66个，算力规模突破7.1万P。",
+        "risk_level": "medium",
+        "reason": "数字本身没有普通人场景，若画面也只是机房，会把前段拉回新闻播报。",
+        "candidates": {
+          "conservative": "当地到2025年中已经落地了一批大型算力中心，规模不小。",
+          "direct": "项目已经不少了，但这组数字不等于你的公司现在就该花钱上GPU。",
+          "vivid": "机柜多了，老板的第一道题反而更具体：这台AI到底要替我干哪一段活？"
+        },
+        "fact_difference": "保守版删除精确数，直接版和生动版不新增事实；当前版本保留可核验数字并紧接基础设施含义，录制时应配官方来源卡或机房实拍。",
+        "recommendation": "保留当前版本，但画面用来源卡承接，口播不要加第二组规模数字。"
+      },
+      {
+        "original": "云服务、租用算力、专属资源这些选择。",
+        "risk_level": "medium",
+        "reason": "连续三个资源名可能让非技术老板觉得又进入了选型课。",
+        "candidates": {
+          "conservative": "你以后会多一些不用自己买机器的办法。",
+          "direct": "你可以先租着用，不用一上来就买机器。",
+          "vivid": "先像租车一样用一段，别先把车库盖起来。"
+        },
+        "fact_difference": "三种候选都不改变外部资源选择这一判断；生动版只是类比，不涉及价格、性能或安全承诺。",
+        "recommendation": "保留当前版本。后句已立即转入选择条件，避免工具盘点；若本人朗读卡顿，优先换成直接版。"
+      }
+    ],
+    "no_high_risk_reason": "两个中风险节点都有具体场景和事实边界承接；未发现需要改变用户锁定结构的高风险句。"
+  },
+  "fact_changes": {
+    "new_facts": ["补入经官方页面核验的内蒙古枢纽起步区定位、乌兰察布绿电协同和截至2025年6月的项目规模。"],
+    "removed_facts": ["删除未经本轮逐项核验的大厂名单、投资额、固定时延、固定气温、制冷月份、岗位释放和数据不出本地的断言。"],
+    "wording_strength_changes": ["将“算力成本整体往下走”收紧为“资源选择变多”；将“私有化数据不出本地”改为部署、权限和存储需要分别核验；将“普通人有远程接单岗位”改为不作就业承诺。"],
+    "pending_user_confirmations": ["用户对当前文稿的自然语言确认。", "用户本人对当前文稿的真人朗读确认。", "“GPU”“私有化”“专属资源”的最终口播用词。"]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260901T024123Z-484cdd19",
+  "target_stage": "outline",
+  "mode": "deep-explainer",
+  "source": {
+    "title": "用户原始口播初稿：乌兰察布算力中心火爆，跟普通人和中小企业到底有什么关系？",
+    "path": "/Users/pc/Documents/口播/notes/2026-09-01-乌兰察布算力中心-用户原始初稿-v1.md",
+    "completeness": "complete",
+    "verification_scope": "用户已提供完整结构和主要论点；涉及国家枢纽定位、企业名单、投资额、网络时延、气候和算力规模的事实以官方来源重新校正。"
+  },
+  "reader_brief": {
+    "audience": "西北本地中小企业老板、创业者和希望理解AI产业变化的普通人",
+    "existing_belief": "把大型算力中心当作离自己的生意很远的新闻，或误以为企业上AI就该先买GPU和服务器。",
+    "desired_change": "知道算力基础设施解决什么、不解决什么，并能把企业的部署和投入判断拉回实际业务任务。",
+    "leave_with": [
+      "算力中心解决的是计算供给，不会自动解决企业流程和数据问题。",
+      "中小企业先判断任务、数据、频率和责任，再选租用、专属或本地方案。",
+      "普通人的位置在行业问题翻译、复核和交付，不是对机房新闻产生暴富想象。"
+    ]
+  },
+  "mother_thesis": {
+    "statement": "乌兰察布算力产业的意义，是让算力供给更成熟；但中小企业和普通人的价值，仍取决于能否把本地业务问题、资料和责任接成一段真正能用的工作。",
+    "scope_boundary": "不把区域算力建设直接推导为某个企业成本必降、数据必安全、普通人必有岗位或AI项目必成功。",
+    "supporting_node_ids": ["I01", "I04", "I06", "I08"]
+  },
+  "insight_nodes": [
+    {
+      "id": "I01",
+      "label": "新闻回到老板",
+      "source_ref": "用户原稿：开头",
+      "source_claim": "大型算力基建是否与普通创业者和西北本地中小企业有关。",
+      "structural_function": "hook",
+      "viewer_gain": "先从自己会不会买服务器、AI要做哪段工作进入，而不是被机房规模带走。",
+      "emotional_function": "降低宏大产业新闻带来的距离感。",
+      "importance": "must-preserve",
+      "verification": {"status": "source-backed", "evidence_ids": ["evidence:user-draft:20260901"], "accurate_replacement": ""}
+    },
+    {
+      "id": "I02",
+      "label": "三笔基础账",
+      "source_ref": "用户原稿：第一部分",
+      "source_claim": "电力、气候和网络条件是算力中心落地的重要原因。",
+      "structural_function": "mechanism",
+      "viewer_gain": "知道机房选址首先在算能源、散热和连接，不是只看城市名。",
+      "emotional_function": "把陌生的算力产业拉回可理解的成本逻辑。",
+      "importance": "must-preserve",
+      "verification": {"status": "verified", "evidence_ids": ["evidence:nmg-gov:20250625", "evidence:nmg-energy:20240409"], "accurate_replacement": "乌兰察布的绿电项目、气候条件和面向北京的网络基础设施，是当地发展算力产业的现实条件。"}
+    },
+    {
+      "id": "I03",
+      "label": "区域定位纠偏",
+      "source_ref": "用户原稿：东数西算段",
+      "source_claim": "乌兰察布就是八大国家算力枢纽节点之一。",
+      "structural_function": "boundary",
+      "viewer_gain": "不把内蒙古国家枢纽、和林格尔集群、集宁产业园和乌兰察布混成一个概念。",
+      "emotional_function": "建立讲产业新闻时该有的分寸。",
+      "importance": "must-preserve",
+      "verification": {"status": "partial", "evidence_ids": ["evidence:ndrc:20211229"], "accurate_replacement": "国家层面的内蒙古枢纽为和林格尔数据中心集群，起步区包括集宁大数据产业园；乌兰察布是区域算力布局的重要承载地。"}
+    },
+    {
+      "id": "I04",
+      "label": "别先买GPU",
+      "source_ref": "用户原稿：第二部分开头",
+      "source_claim": "多数中小企业不应以买一堆GPU作为AI落地的第一反应。",
+      "structural_function": "implication",
+      "viewer_gain": "先把企业的具体任务说清，再讨论资源和部署。",
+      "emotional_function": "把老板从硬件焦虑中拉出来。",
+      "importance": "must-preserve",
+      "verification": {"status": "interpretation", "evidence_ids": ["evidence:user-draft:20260901"], "accurate_replacement": "对多数还没验证AI任务的中小企业，先算任务、频率、数据和预算，通常比先购置GPU更稳妥。"}
+    },
+    {
+      "id": "I05",
+      "label": "算力不是安全",
+      "source_ref": "用户原稿：私有化与数据段",
+      "source_claim": "算力在乌兰察布可以直接推导为数据不出本地服务器。",
+      "structural_function": "boundary",
+      "viewer_gain": "区分云端租用、专属资源和本地部署，知道数据边界不能被地名替代。",
+      "emotional_function": "避免把技术名词当成安全承诺。",
+      "importance": "must-preserve",
+      "verification": {"status": "partial", "evidence_ids": ["evidence:ndrc:20210526"], "accurate_replacement": "部署方式要看数据存放、访问权限、传输、合同和运维责任；远程算力不等于数据自动留在企业本地。"}
+    },
+    {
+      "id": "I06",
+      "label": "机房不替你交付",
+      "source_ref": "用户原稿：应用服务段",
+      "source_claim": "算力下游的应用、培训、知识库和流程改造才与本地企业更直接相关。",
+      "structural_function": "implication",
+      "viewer_gain": "知道计算资源、业务资料、人工复核和结果责任是不同层。",
+      "emotional_function": "把注意力从大厂投资转到自己的经营问题。",
+      "importance": "must-preserve",
+      "verification": {"status": "interpretation", "evidence_ids": ["evidence:user-draft:20260901"], "accurate_replacement": "算力可以提供计算能力，但企业还要自己处理资料、流程、复核和责任，这些才决定项目能否被用起来。"}
+    },
+    {
+      "id": "I07",
+      "label": "别许诺岗位",
+      "source_ref": "用户原稿：普通人技能岗位段",
+      "source_claim": "算力集群会大量释放可远程接单的数据标注、AI训练师和内容审核岗位。",
+      "structural_function": "boundary",
+      "viewer_gain": "不把产业扩张听成普通人立刻能获得的工作和收入。",
+      "emotional_function": "去掉暴富和就业焦虑。",
+      "importance": "must-preserve",
+      "verification": {"status": "partial", "evidence_ids": ["evidence:user-draft:20260901"], "accurate_replacement": "运维、网络和模型训练有不同专业门槛，产业新闻本身不能构成岗位或收入承诺。"}
+    },
+    {
+      "id": "I08",
+      "label": "普通人下游位置",
+      "source_ref": "用户原稿：OPC段与结尾",
+      "source_claim": "普通人更现实的位置是借外部算力放大行业理解、客户服务和交付能力。",
+      "structural_function": "action",
+      "viewer_gain": "今天就能从自己行业的一段混乱工作开始找AI能接住的部分。",
+      "emotional_function": "保留机会感，但不制造捷径幻觉。",
+      "importance": "must-preserve",
+      "verification": {"status": "interpretation", "evidence_ids": ["evidence:user-draft:20260901"], "accurate_replacement": "普通人可以在熟悉行业里练习定义问题、组织资料、检查结果和承担交付责任，外部算力只放大这些能力。"}
+    },
+    {
+      "id": "I09",
+      "label": "规模只作背景",
+      "source_ref": "内蒙古自治区政府：2025年6月乌兰察布市算力产业信息",
+      "source_claim": "截至2025年6月，乌兰察布市签约落地大型算力中心项目66个，算力规模突破7.1万P。",
+      "structural_function": "evidence",
+      "viewer_gain": "知道产业规模可以作为背景证据，但不能直接换算成企业成本、数据安全或个人收入。",
+      "emotional_function": "让宏观信息有落点，不靠夸大数字制造冲击。",
+      "importance": "supporting",
+      "verification": {"status": "verified", "evidence_ids": ["evidence:nmg-gov:20250625"], "accurate_replacement": ""}
+    }
+  ],
+  "argument_chain": [
+    {"from": "I01", "to": "I02", "relation": "why", "bridge": "先说明算力中心为什么会落在这类区域。"},
+    {"from": "I02", "to": "I03", "relation": "but", "bridge": "产业条件成立，也不能把国家节点口径混为一谈。"},
+    {"from": "I03", "to": "I04", "relation": "therefore", "bridge": "区域基础设施成熟后，企业首先面对的是资源选择，而不是自建冲动。"},
+    {"from": "I04", "to": "I05", "relation": "limit", "bridge": "资源可租不等于数据、权限和部署边界自动成立。"},
+    {"from": "I05", "to": "I06", "relation": "therefore", "bridge": "计算能力之外，企业仍要解决业务资料、流程和责任。"},
+    {"from": "I06", "to": "I07", "relation": "but", "bridge": "下游价值存在，也不能把它说成人人可得的岗位承诺。"},
+    {"from": "I07", "to": "I08", "relation": "therefore", "bridge": "普通人更可控的切入点是自己的行业能力与交付能力。"}
+  ],
+  "correction_ledger": [
+    {"node_id": "I03", "source_expression": "乌兰察布就是八大国家算力枢纽节点之一", "issue": "国家复函定位的是内蒙古枢纽与和林格尔数据中心集群，起步区包括集宁大数据产业园。", "action": "replace", "accurate_replacement": "内蒙古枢纽的起步区包括集宁大数据产业园，乌兰察布是区域算力布局的重要承载地。", "insight_preserved": true},
+    {"node_id": "I05", "source_expression": "数据不出本地服务器", "issue": "远程算力位置不能替代企业对数据存储、访问、传输和责任的核验。", "action": "replace", "accurate_replacement": "是否本地部署、专属资源还是云端租用，要单独核对数据与运维边界。", "insight_preserved": true},
+    {"node_id": "I07", "source_expression": "算力集群大量释放远程接单岗位", "issue": "没有充分证据支撑岗位规模、远程可得性和收入结果。", "action": "replace", "accurate_replacement": "产业新闻不构成岗位和收入承诺，普通人先从行业任务和可交付能力找位置。", "insight_preserved": true}
+    ,{"node_id": "I04", "source_expression": "中小企业都不需要买GPU", "issue": "是否购置资源取决于任务频率、数据、响应要求、预算和长期运维，不能作绝对判断。", "action": "qualify", "accurate_replacement": "多数尚未验证任务的中小企业，先核算需求再选择资源，比先采购硬件更稳妥。", "insight_preserved": true}
+    ,{"node_id": "I06", "source_expression": "下游服务就是确定机会", "issue": "本地服务是否成立仍需真实需求、交付能力和责任边界验证。", "action": "qualify", "accurate_replacement": "算力不替代业务资料、流程、复核和责任，这些仍是企业能否用起来的条件。", "insight_preserved": true}
+    ,{"node_id": "I08", "source_expression": "普通人只要懂业务就能获得机会", "issue": "行业理解不自动产生订单、岗位或收入。", "action": "qualify", "accurate_replacement": "普通人可以先在熟悉行业练习问题定义、资料组织和结果检查，不把它说成收益承诺。", "insight_preserved": true}
+  ],
+  "ordinary_person_gains": {
+    "explanation": {"statement": "算力中心的核心作用是提供规模化计算供给，电力、散热和网络是它的基础账。", "node_ids": ["I02", "I03"]},
+    "judgment": {"statement": "中小企业不能把算力位置误当作成本和数据安全的答案。", "node_ids": ["I04", "I05", "I06"]},
+    "action": {"statement": "先找一段真实业务工作，确认输入、输出、人工复核和责任，再决定是否使用外部算力或服务。", "node_ids": ["I06", "I08"]}
+  },
+  "adaptation": {
+    "path": "/Users/pc/Documents/口播/notes/2026-09-01-乌兰察布算力中心-长提纲-v1.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "mappings": [
+      {"node_id": "I01", "draft_ref": "刷到乌兰察布一排排机房，很多老板很容易顺手想到：算力这么热，我是不是也该买GPU、做私有化、搞一套自己的AI？", "function_preserved": true},
+      {"node_id": "I02", "draft_ref": "电从哪里来，机器发热怎么处理，算力怎样连到主要需求地。", "function_preserved": true},
+      {"node_id": "I03", "draft_ref": "国家层面的内蒙古枢纽是和林格尔数据中心集群，起步区包括集宁大数据产业园。", "function_preserved": true},
+      {"node_id": "I04", "draft_ref": "以前一说知识库、智能体、私有化，很多老板先问要买多少张卡。这个顺序倒了。", "function_preserved": true},
+      {"node_id": "I05", "draft_ref": "也不是因为算力在乌兰察布就自动安全。", "function_preserved": true},
+      {"node_id": "I06", "draft_ref": "机房替你解决的是计算，替不了你整理资料、确认流程、规定谁复核和谁负责。", "function_preserved": true},
+      {"node_id": "I07", "draft_ref": "运维、网络和模型训练有各自的专业门槛，不能把产业新闻说成就业承诺。", "function_preserved": true},
+      {"node_id": "I08", "draft_ref": "算力是公共底座，行业理解、客户关系和结果责任，仍然在本地。", "function_preserved": true},
+      {"node_id": "I09", "draft_ref": "当地官方在2025年6月披露，已签约落地大型算力中心项目66个、算力规模突破7.1万P；这只能说明产业建设的规模，不能直接等于每家企业立刻能少花多少钱。", "function_preserved": true}
+    ]
+  }
+}
