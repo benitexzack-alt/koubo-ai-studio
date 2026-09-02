@@ -1,0 +1,473 @@
+#!/usr/bin/env node
+
+import {createHash} from 'node:crypto';
+import {existsSync, readFileSync, writeFileSync} from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const projectRoot = path.resolve(here, '../../../..');
+const scriptPath = path.resolve(
+  projectRoot,
+  'edit/20260902_local_ai_services/00_工程控制/兰州本地AI服务_用户确认原稿_v1.md',
+);
+const outputPath = path.resolve(here, 'director-preproduction-request.v1.json');
+
+if (existsSync(outputPath)) {
+  throw new Error(`OUTPUT_ALREADY_EXISTS:${outputPath}`);
+}
+
+const sha256File = (filePath) =>
+  createHash('sha256').update(readFileSync(filePath)).digest('hex');
+
+const quads = [
+  [[0.08, 0.12], [0.28, 0.12], [0.28, 0.22], [0.08, 0.22]],
+  [[0.38, 0.12], [0.60, 0.12], [0.60, 0.22], [0.38, 0.22]],
+  [[0.68, 0.12], [0.90, 0.12], [0.90, 0.22], [0.68, 0.22]],
+  [[0.38, 0.72], [0.60, 0.72], [0.60, 0.82], [0.38, 0.82]],
+];
+
+const makeTextPlan = ({labels, stageIds}) =>
+  labels.map((label, index) => ({
+    nodeId: `N${index + 1}`,
+    text: label,
+    role: 'diegetic-node-label',
+    groupId: `G${index + 1}`,
+    surfaceId: `G${index + 1}-rigid-label-card`,
+    anchorQuad: quads[index],
+    maxChars: 8,
+    persistence: `${stageIds[index]}-to-end`,
+    occlusionOwner: 'none',
+    ocrRequired: true,
+    motionConstraint: 'rigid-surface',
+    embeddingMode: 'first-frame-baked',
+    trackingKeyframesRequired: false,
+    enterStageId: stageIds[index],
+    stageOffsetFrames: 0,
+  }));
+
+const makePaperBeat = ({
+  id,
+  order,
+  spokenLine,
+  coreMeaning,
+  kind,
+  title,
+  durationSeconds,
+  labels,
+  visualNode,
+  groups,
+  stages,
+  firstFrame,
+  motion,
+  archetype = 'mechanical-causality',
+}) => {
+  const labelNodes = labels.map((label, index) => ({
+    id: `N${index + 1}`,
+    label,
+    groupId: `G${index + 1}`,
+    role: index === 0 ? 'input' : index === labels.length - 1 ? 'result' : 'process',
+    textVisibility: 'paper-label',
+  }));
+  const visualNodes = visualNode.map((node, index) => ({
+    id: `N${labels.length + index + 1}`,
+    label: node.label,
+    groupId: node.groupId,
+    role: node.role,
+    textVisibility: 'visual-only',
+  }));
+  const stageIdsByLabel = labels.map((_, index) => stages[Math.min(index, stages.length - 1)].id);
+
+  return {
+    id,
+    order,
+    spokenLine,
+    coreMeaning,
+    kind,
+    visualDecision: {
+      class: 'paper-editorial',
+      producer: 'codex-remotion',
+      fallback: 'blocked',
+    },
+    evidenceRefs: [],
+    paperScene: {
+      archetype,
+      title,
+      durationSeconds,
+      objectGroups: groups,
+      nodes: [...labelNodes, ...visualNodes],
+      stages,
+      readableTextPolicy: {
+        maximumSimultaneousLabels: 4,
+        slashMergeForbidden: true,
+        silentTruncationForbidden: true,
+      },
+      textPlan: makeTextPlan({labels, stageIds: stageIdsByLabel}),
+      screenTextPlan: [
+        {role: 'screen-title', text: title, embeddingMode: 'screen-overlay'},
+      ],
+      prompt: {
+        firstFrame,
+        motion,
+        generatedReadableTextAllowed: false,
+      },
+    },
+  };
+};
+
+const realBeat = ({id, order, spokenLine, coreMeaning, kind, producer, evidenceRefs}) => ({
+  id,
+  order,
+  spokenLine,
+  coreMeaning,
+  kind,
+  visualDecision: {
+    class: kind === 'real-person-action' ? 'real-evidence' : 'speaker',
+    producer,
+    fallback: 'blocked',
+  },
+  evidenceRefs,
+});
+
+const request = {
+  schemaVersion: 'koubo-director-preproduction-request/v1',
+  requestId: 'local-ai-services-paper-v3-r1-pre-shoot',
+  taskId: '20260902-local-ai-services',
+  phase: 'pre-shoot',
+  status: 'candidate-preview-required',
+  inputScript: {
+    path: path.relative(projectRoot, scriptPath),
+    sha256: sha256File(scriptPath),
+    authority: 'user-confirmed-script',
+    role: 'provisional-authority',
+  },
+  directorProfile: {
+    path: 'workflow/active-director-profile.v1.json',
+    profileId: 'paper-editorial-director-v3',
+    profileVersion: '3.1.0',
+  },
+  policy: {
+    branch: 'paper-editorial',
+    fallback: 'blocked',
+    textStrategy: 'deterministic-paper-surface-v3.1',
+    generatedReadableTextAllowed: false,
+    modelGeneratedReadableTextAllowed: false,
+    deterministicTextMayBeBakedIntoFirstFrame: true,
+    defaultPaperTextMode: 'tracked-paper-surface',
+    paperNodeScreenOverlayAllowed: false,
+    postShootRebindRequired: true,
+  },
+  outputs: {
+    routeLockPath: 'edit/20260902_local_ai_services/03_导演拆解/paper-v3-r1/director-route-lock.v1.json',
+    planPath: 'edit/20260902_local_ai_services/03_导演拆解/paper-v3-r1/director-preproduction-plan.v1.json',
+    assetSheetPath: 'edit/20260902_local_ai_services/03_导演拆解/paper-v3-r1/纸艺素材执行单_v3-r1.md',
+    firstFramePromptManifestPath: 'edit/generated-video/20260902_local_ai_services_paper-v3-r1/first-frame-prompts.v1.json',
+    runningHubPromptManifestPath: 'edit/generated-video/20260902_local_ai_services_paper-v3-r1/runninghub-image-to-video-prompts.v1.json',
+    runningHubPromptSheetPath: 'edit/generated-video/20260902_local_ai_services_paper-v3-r1/runninghub-image-to-video-prompts.md',
+    compileReceiptPath: 'edit/20260902_local_ai_services/03_导演拆解/paper-v3-r1/director-compile-receipt.v1.json',
+    validationReceiptPath: 'edit/20260902_local_ai_services/03_导演拆解/paper-v3-r1/director-validation-receipt.v1.json',
+  },
+  beats: [
+    realBeat({
+      id: 'B01',
+      order: 1,
+      spokenLine: '现在做AIGC的人，是不是全都陷入内卷？',
+      coreMeaning: '真人直接提出冲突，配用户自己的工具、token与内容后台素材，不用动画冒充收益证据。',
+      kind: 'real-person-action',
+      producer: 'user',
+      evidenceRefs: ['U01 用户已有AIGC工具或内容后台素材，待回填'],
+    }),
+    makePaperBeat({
+      id: 'B02',
+      order: 2,
+      spokenLine: '烧大量token、投入时间精力，指望短视频播放变现，结果万播也就几块钱。',
+      coreMeaning: '把投入、内容生产、平台分发和不确定结果串成一条公域流量链，不把固定收益数字画成事实。',
+      kind: 'causal-chain',
+      title: '公域流量链不等于稳定收入',
+      durationSeconds: 7,
+      labels: ['时间投入', '内容产出', '平台分发', '结果不定'],
+      visualNode: [{label: '平台规则', groupId: 'G3', role: 'constraint'}],
+      groups: [
+        {id: 'G1', name: '投入容器', material: '深蓝瓦楞纸漏斗', depth: 1},
+        {id: 'G2', name: '内容流水线', material: '暖白纸带与作品卡', depth: 2},
+        {id: 'G3', name: '平台分发门', material: '灰蓝可开合纸门', depth: 3},
+        {id: 'G4', name: '结果托盘', material: '冷灰纸质刻度盘', depth: 4},
+      ],
+      stages: [
+        {id: 'S1', order: 1, action: '时间筹码和token小片落入投入漏斗', subject: 'G1', landingNodeIds: ['N1'], sfxRole: 'paper-tokens-drop'},
+        {id: 'S2', order: 2, action: '作品卡沿纸带依次送出', subject: 'G2', landingNodeIds: ['N2'], sfxRole: 'paper-conveyor'},
+        {id: 'S3', order: 3, action: '作品卡进入平台分发门并被分成不同路径', subject: 'G3', landingNodeIds: ['N3', 'N5'], sfxRole: 'paper-gate-sort'},
+        {id: 'S4', order: 4, action: '结果托盘左右轻摆后停在不确定区', subject: 'G4', landingNodeIds: ['N4'], sfxRole: 'paper-scale-settle'},
+      ],
+      firstFrame: '16:9摄影级手作纸艺微缩场景，深海军蓝与工业灰主色，左侧深蓝投入漏斗，中间暖白内容纸带，右侧灰蓝平台分发门与冷灰结果托盘，前景整齐叠放四张无字刚性标签卡并预留中文写入空间，至少三层景深，可见纸纤维、瓦楞厚度、真实接触阴影，禁止金币、收益数字、平台Logo、可读文字、机器人和廉价霓虹。',
+      motion: '基于首帧完成7秒纸艺定格动画：时间筹码和token纸片先落入漏斗，作品卡沿纸带送出，平台分发门把作品卡导向不同路径，结果托盘轻摆后停稳；四张首帧已有中文标签卡按顺序滑到对应纸面位置，所有中文必须逐字保持首帧内容，不得新增、改写、乱码或变形。镜头只做2%缓慢推进，物件身份、颜色和数量不变。',
+    }),
+    makePaperBeat({
+      id: 'B03',
+      order: 3,
+      spokenLine: '真正能快速拿到现金的，是做本地化AI服务。客户就在你身边，做完一单收一单的钱。',
+      coreMeaning: '只展示本地服务从需求到交付与验收的闭环，不承诺每次都成交或立即回款。',
+      kind: 'process-explanation',
+      title: '本地服务先跑一条可验收闭环',
+      durationSeconds: 7,
+      labels: ['本地客户', '真实需求', '明确交付', '现场验收'],
+      visualNode: [{label: '是否付费', groupId: 'G4', role: 'decision'}],
+      groups: [
+        {id: 'G1', name: '本地客户', material: '暖白店铺与人物纸模', depth: 1},
+        {id: 'G2', name: '需求拆解', material: '灰白访谈桌与需求票', depth: 2},
+        {id: 'G3', name: '服务交付', material: '冷青交付纸盒', depth: 3},
+        {id: 'G4', name: '验收决定', material: '绿色验收台与双向门', depth: 4},
+      ],
+      stages: [
+        {id: 'S1', order: 1, action: '本地店铺与客户纸模从底座立起', subject: 'G1', landingNodeIds: ['N1'], sfxRole: 'paper-shop-pop'},
+        {id: 'S2', order: 2, action: '需求票落到访谈桌并被拆成一件具体任务', subject: 'G2', landingNodeIds: ['N2'], sfxRole: 'paper-ticket-split'},
+        {id: 'S3', order: 3, action: '交付纸盒沿棉线路径滑向客户', subject: 'G3', landingNodeIds: ['N3'], sfxRole: 'paper-box-slide'},
+        {id: 'S4', order: 4, action: '客户在验收台检查后决定通过或退回修改', subject: 'G4', landingNodeIds: ['N4', 'N5'], sfxRole: 'paper-review-gate'},
+      ],
+      firstFrame: '16:9手作纸艺服务沙盘，左后方暖白本地店铺和客户纸模，中景灰白访谈桌与需求票，右侧冷青交付纸盒，前景绿色验收台与可开合双向门，四张无字刚性标签卡整齐叠放并留足中文写入区域，至少三层空间，真实纸张纤维和接触阴影，禁止现金、订单数字、成交保证、可读文字。',
+      motion: '7秒纸艺定格：店铺和客户立起，需求票落桌并拆成具体任务，交付盒沿棉线滑向客户，验收门在检查后分为通过或退回修改两条路径；四张首帧已有中文标签卡依次落到对应节点，必须原样保留中文，禁止重写或乱码。不得演绎必然成交或立即回款。',
+    }),
+    realBeat({
+      id: 'B04',
+      order: 4,
+      spokenLine: '听好了第一个方向：AI家庭故事动画、婚礼定制短片。',
+      coreMeaning: '先展示用户自有家庭故事与婚礼素材；缺口才使用已许可的婚礼新人场景示意。',
+      kind: 'real-person-action',
+      producer: 'user',
+      evidenceRefs: ['U02 用户已有家庭故事或婚礼短片，待回填', 'R01 Pexels婚礼新人花园竖屏备用'],
+    }),
+    makePaperBeat({
+      id: 'B05',
+      order: 5,
+      spokenLine: '把一个人从读书、相遇、工作、结婚生子，这一生的点点滴滴，整理成故事脚本，用AIGC生成专属动画。',
+      coreMeaning: '把零散照片与口述材料组织为时间线，再转成专属动画，不把模板换脸当成定制。',
+      kind: 'process-explanation',
+      title: '家庭故事从素材到专属动画',
+      durationSeconds: 7,
+      labels: ['家庭照片', '口述故事', '人生时间线', '专属动画'],
+      visualNode: [{label: '读书相遇工作', groupId: 'G3', role: 'milestones'}],
+      groups: [
+        {id: 'G1', name: '照片素材', material: '暖白旧照片纸片', depth: 1},
+        {id: 'G2', name: '口述记录', material: '灰蓝录音带与访谈卡', depth: 2},
+        {id: 'G3', name: '人生时间线', material: '蓝金折叠纸带与节点钉', depth: 3},
+        {id: 'G4', name: '动画成片', material: '冷青纸质银幕与胶片框', depth: 4},
+      ],
+      stages: [
+        {id: 'S1', order: 1, action: '散落家庭照片被按人物和年代归拢', subject: 'G1', landingNodeIds: ['N1'], sfxRole: 'photo-paper-gather'},
+        {id: 'S2', order: 2, action: '口述记录卡从录音带旁依次翻起', subject: 'G2', landingNodeIds: ['N2'], sfxRole: 'paper-transcript-flip'},
+        {id: 'S3', order: 3, action: '折叠时间线展开并卡入读书相遇工作节点', subject: 'G3', landingNodeIds: ['N3', 'N5'], sfxRole: 'timeline-unfold'},
+        {id: 'S4', order: 4, action: '时间线末端接入纸质银幕并形成动画胶片框', subject: 'G4', landingNodeIds: ['N4'], sfxRole: 'paper-film-lock'},
+      ],
+      firstFrame: '16:9温暖纪实纸艺微缩场景，左侧散落暖白旧照片纸片，中间灰蓝录音带和访谈卡，蓝金折叠时间线贯穿到右侧冷青纸质银幕与胶片框，前景四张无字刚性标签卡叠放并预留中文写入区域，至少三层景深，纸纤维和照片白边清晰，禁止真实人脸特写、可读文字、塑料3D和模板化爱心装饰。',
+      motion: '7秒纸艺定格：家庭照片先按年代归拢，口述记录卡翻起，折叠时间线展开并卡入读书、相遇、工作等图形节点，时间线最后接入纸质银幕形成动画胶片框；四张首帧已有中文标签卡按阶段移动到对应纸面，逐字保持不变，不得新增或改写文字。',
+    }),
+    makePaperBeat({
+      id: 'B06',
+      order: 6,
+      spokenLine: '还有婚礼，可以做婚前预告短片，曾经动辄几万十几万的影视巨作，几千就搞定了，如果做了本地部署，成本更低',
+      coreMeaning: '只解释婚礼定制短片的制作链，不用纸艺证明价格或普遍成本优势。',
+      kind: 'process-explanation',
+      title: '婚礼定制短片的制作链',
+      durationSeconds: 7,
+      labels: ['婚礼素材', '故事脚本', 'AI初版', '人工精修'],
+      visualNode: [{label: '婚前短片', groupId: 'G4', role: 'deliverable'}],
+      groups: [
+        {id: 'G1', name: '新人素材', material: '暖白照片与录音卡', depth: 1},
+        {id: 'G2', name: '故事脚本', material: '深蓝分镜折页', depth: 2},
+        {id: 'G3', name: 'AI生成台', material: '冷青纸质生成机', depth: 3},
+        {id: 'G4', name: '人工交付', material: '绿色剪辑台与银幕', depth: 4},
+      ],
+      stages: [
+        {id: 'S1', order: 1, action: '新人照片和口述卡进入素材盘', subject: 'G1', landingNodeIds: ['N1'], sfxRole: 'paper-photo-load'},
+        {id: 'S2', order: 2, action: '分镜折页展开并排出故事顺序', subject: 'G2', landingNodeIds: ['N2'], sfxRole: 'storyboard-unfold'},
+        {id: 'S3', order: 3, action: '纸质生成机吐出多张候选画面', subject: 'G3', landingNodeIds: ['N3'], sfxRole: 'paper-frame-output'},
+        {id: 'S4', order: 4, action: '人工剪辑台删选镜头并锁定婚前短片', subject: 'G4', landingNodeIds: ['N4', 'N5'], sfxRole: 'paper-edit-lock'},
+      ],
+      firstFrame: '16:9优雅但克制的纸艺婚礼制作台，左侧暖白新人照片与录音卡，中间深蓝分镜折页，右侧冷青纸质生成机，前景绿色人工剪辑台和小型银幕，四张无字刚性标签卡叠放并预留中文写入区域，三层空间，真实纸张接触阴影，禁止价格数字、豪华炫富、真实Logo、可读文字和AI人脸。',
+      motion: '7秒纸艺定格：婚礼照片与口述卡进入素材盘，分镜折页展开，生成机吐出候选画面，人工剪辑台完成删选并把婚前短片卡锁定；四张首帧已有中文标签必须保持原样并依次落位。画面只表达制作流程，不出现价格、成本降低或必然成交结论。',
+    }),
+    realBeat({
+      id: 'B07',
+      order: 7,
+      spokenLine: '还有一个非常有温度的赛道：AI长辈人生数字回忆录。',
+      coreMeaning: '使用长辈与家人翻相册、讲故事的真实场景示意，不冒充本人的客户案例。',
+      kind: 'real-person-action',
+      producer: 'existing',
+      evidenceRefs: ['R02 Pexels长辈与年轻人翻相册', 'S01 中国传媒大学AI口述史项目'],
+    }),
+    makePaperBeat({
+      id: 'B08',
+      order: 8,
+      spokenLine: '你就上门访谈，听老人讲述自己的一生，童年、求学、工作时代、家庭变迁，录音收集口述素材。再借助AI整理时间线、润色文稿，修复老照片。',
+      coreMeaning: '完整呈现采集、整理、修复和家族归档流程，并保留人工核对。',
+      kind: 'process-explanation',
+      title: '长辈人生回忆录的制作流程',
+      durationSeconds: 8,
+      labels: ['上门访谈', '人生时间线', '老照片修复', '家族档案'],
+      visualNode: [
+        {label: '录音', groupId: 'G1', role: 'input'},
+        {label: '逐字稿', groupId: 'G2', role: 'process'},
+        {label: '人工校对', groupId: 'G3', role: 'boundary'},
+        {label: '电子手册', groupId: 'G4', role: 'output'},
+        {label: '纸质回忆录', groupId: 'G5', role: 'output'},
+      ],
+      groups: [
+        {id: 'G1', name: '访谈采集', material: '暖灰会客桌与录音纸盘', depth: 1},
+        {id: 'G2', name: '时间整理', material: '深蓝时间线与逐字卡', depth: 2},
+        {id: 'G3', name: '照片修复', material: '冷青修复台与校对放大镜', depth: 3},
+        {id: 'G4', name: '数字交付', material: '绿色电子手册纸模', depth: 4},
+        {id: 'G5', name: '实体归档', material: '暖白装订册与档案盒', depth: 5},
+      ],
+      stages: [
+        {id: 'S1', order: 1, action: '会客桌展开，录音纸盘开始转动', subject: 'G1', landingNodeIds: ['N1', 'N5'], sfxRole: 'paper-recorder-start'},
+        {id: 'S2', order: 2, action: '逐字卡落到时间线并按年代归位', subject: 'G2', landingNodeIds: ['N2', 'N6'], sfxRole: 'timeline-card-sort'},
+        {id: 'S3', order: 3, action: '旧照片进入修复台，人工校对放大镜压下确认', subject: 'G3', landingNodeIds: ['N3', 'N7'], sfxRole: 'photo-repair-review'},
+        {id: 'S4', order: 4, action: '电子手册从数字交付盒中展开', subject: 'G4', landingNodeIds: ['N8'], sfxRole: 'paper-book-open'},
+        {id: 'S5', order: 5, action: '装订册进入家族档案盒并锁定', subject: 'G5', landingNodeIds: ['N4', 'N9'], sfxRole: 'archive-box-lock'},
+      ],
+      firstFrame: '16:9电影级手作纸艺口述史工作台，左后方暖灰访谈桌与录音纸盘，中景深蓝时间线和逐字卡，右侧冷青照片修复台与放大镜，前景绿色电子手册和暖白装订档案盒，四张无字刚性标签卡叠放并留足中文写入空间，五层纵深、柔和侧光、纸纤维清晰，禁止真实老人面孔、隐私信息、可读文字和虚假档案编号。',
+      motion: '8秒纸艺定格：访谈桌展开，录音盘转动，逐字卡按年代落入时间线，旧照片进入修复台并由人工放大镜确认，电子手册展开，装订册最后进入家族档案盒；四张首帧已有中文标签按步骤移动到对应节点，逐字保持首帧内容，禁止乱码、重写或漂浮屏幕字幕。',
+      archetype: 'complex-explanation',
+    }),
+    realBeat({
+      id: 'B09',
+      order: 9,
+      spokenLine: '第二个就更牛了：面向银发群体的AI教育培训、营销赋能。',
+      coreMeaning: '用银发店主经营、记录和使用手机的真实动作建立场景，不把培训画面冒充付费客户。',
+      kind: 'real-person-action',
+      producer: 'existing',
+      evidenceRefs: ['R03 Pexels银发店主处理账目', 'R04 Pexels长辈与年轻人使用手机', 'S02 地方政府银发AI课程案例'],
+    }),
+    makePaperBeat({
+      id: 'B10',
+      order: 10,
+      spokenLine: '而是教他们实实在在怎么用AI：整理一套豆包提示词，写短视频文案、生成宣传图片、生成跟客户沟通销售话术，帮实体店主解决获客宣传的实际痛点。',
+      coreMeaning: '从门店真实任务出发，形成可检查的文案、海报和沟通话术，不用抽象大模型课程取代业务。',
+      kind: 'process-explanation',
+      title: '银发店主需要的是具体任务交付',
+      durationSeconds: 8,
+      labels: ['门店产品', '短视频文案', '宣传海报', '沟通话术'],
+      visualNode: [
+        {label: '提示词卡', groupId: 'G2', role: 'tool'},
+        {label: '人工确认', groupId: 'G3', role: 'boundary'},
+        {label: '发布检查', groupId: 'G4', role: 'check'},
+        {label: '客户反馈', groupId: 'G5', role: 'feedback'},
+        {label: '继续调整', groupId: 'G5', role: 'iteration'},
+      ],
+      groups: [
+        {id: 'G1', name: '门店现场', material: '暖白柜台与产品纸模', depth: 1},
+        {id: 'G2', name: '任务拆解', material: '深蓝提示词抽屉', depth: 2},
+        {id: 'G3', name: '内容生成', material: '冷青文案与海报工作台', depth: 3},
+        {id: 'G4', name: '沟通交付', material: '绿色话术卡与发布门', depth: 4},
+        {id: 'G5', name: '真实反馈', material: '灰白客户反馈盘', depth: 5},
+      ],
+      stages: [
+        {id: 'S1', order: 1, action: '门店柜台与产品纸模立起', subject: 'G1', landingNodeIds: ['N1'], sfxRole: 'paper-counter-pop'},
+        {id: 'S2', order: 2, action: '提示词抽屉拉开并取出一张任务卡', subject: 'G2', landingNodeIds: ['N5'], sfxRole: 'paper-drawer-pull'},
+        {id: 'S3', order: 3, action: '文案卡和海报纸片依次落到人工确认位', subject: 'G3', landingNodeIds: ['N2', 'N3', 'N6'], sfxRole: 'content-card-land'},
+        {id: 'S4', order: 4, action: '沟通话术卡通过发布检查门', subject: 'G4', landingNodeIds: ['N4', 'N7'], sfxRole: 'paper-gate-check'},
+        {id: 'S5', order: 5, action: '客户反馈盘转动后把调整卡送回工作台', subject: 'G5', landingNodeIds: ['N8', 'N9'], sfxRole: 'feedback-wheel-return'},
+      ],
+      firstFrame: '16:9克制的手作纸艺实体门店工作台，左后方暖白柜台和产品纸模，中间深蓝提示词抽屉，右侧冷青文案海报台，前景绿色话术卡与灰白反馈盘，四张无字刚性标签卡叠放并预留中文写入区域，五层空间、纸纤维清晰，禁止保健疗效暗示、虚假订单、二维码、真实平台Logo和可读文字。',
+      motion: '8秒纸艺定格：门店柜台立起，提示词抽屉拉开，文案卡和海报片落到人工确认位，沟通话术卡通过发布检查门，客户反馈盘转动后把调整卡送回工作台；四张首帧已有中文标签必须逐字保留并按阶段落位，禁止新增文字或营销承诺。',
+      archetype: 'complex-explanation',
+    }),
+    makePaperBeat({
+      id: 'B11',
+      order: 11,
+      spokenLine: '线上卷播放，是跟全国几百万创作者去竞争；做本地服务，你的竞争对手反而很少。',
+      coreMeaning: '对比公域分发与本地关系两种路径，但不把竞争数量或成功率做成确定事实。',
+      kind: 'comparison',
+      title: '公域分发与本地服务是两条路',
+      durationSeconds: 7,
+      labels: ['公域分发', '算法筛选', '本地关系', '真实验收'],
+      visualNode: [{label: '竞争强弱未核实', groupId: 'G4', role: 'caution'}],
+      groups: [
+        {id: 'G1', name: '公域入口', material: '深蓝密集作品卡', depth: 1},
+        {id: 'G2', name: '算法筛选', material: '灰蓝多层纸筛', depth: 2},
+        {id: 'G3', name: '本地关系', material: '暖白城市街区与棉线', depth: 3},
+        {id: 'G4', name: '验收结果', material: '绿色现场验收台', depth: 4},
+      ],
+      stages: [
+        {id: 'S1', order: 1, action: '大量作品卡同时进入公域入口', subject: 'G1', landingNodeIds: ['N1'], sfxRole: 'paper-cards-rush'},
+        {id: 'S2', order: 2, action: '多层纸筛依次开合并改变分发方向', subject: 'G2', landingNodeIds: ['N2'], sfxRole: 'paper-filter-steps'},
+        {id: 'S3', order: 3, action: '本地街区立起，关系棉线连接到一间店铺', subject: 'G3', landingNodeIds: ['N3'], sfxRole: 'twine-local-connect'},
+        {id: 'S4', order: 4, action: '两条路径都进入各自验收台而非收益终点', subject: 'G4', landingNodeIds: ['N4', 'N5'], sfxRole: 'paper-review-double'},
+      ],
+      firstFrame: '16:9纸艺左右对照沙盘，左侧深蓝密集作品卡与灰蓝多层纸筛，右侧暖白本地街区和连接店铺的棉线，前景绿色双验收台，四张无字刚性标签卡叠放并留足中文写入区域，至少三层深度，禁止播放量数字、收益数字、竞争者数量、金币、可读文字和紫色霓虹。',
+      motion: '7秒纸艺定格：左侧大量作品卡进入多层纸筛并被导向不同方向，右侧本地街区立起并用棉线连接到店铺，两条路最后都落到各自验收台；四张首帧已有中文标签按顺序落位且逐字保持不变。不得演绎本地服务必然竞争少或必然成交。',
+    }),
+    makePaperBeat({
+      id: 'B12',
+      order: 12,
+      spokenLine: '线上账号用来展示你的案例，作为你的名片，积累数字资产和个人知识库，真正成交，落地在线下本地。',
+      coreMeaning: '线上内容承担展示和信任证据，线下沟通、小单试做与验收才构成业务闭环。',
+      kind: 'causal-chain',
+      title: '线上名片通向线下验证',
+      durationSeconds: 7,
+      labels: ['线上案例', '内容名片', '线下沟通', '小单验证'],
+      visualNode: [{label: '是否继续', groupId: 'G4', role: 'decision'}],
+      groups: [
+        {id: 'G1', name: '线上案例库', material: '深蓝内容卡册', depth: 1},
+        {id: 'G2', name: '个人名片', material: '冷青折叠名片纸', depth: 2},
+        {id: 'G3', name: '线下沟通', material: '暖白会谈桌与城市地图', depth: 3},
+        {id: 'G4', name: '小单验证', material: '绿色试做台与复盘卡', depth: 4},
+      ],
+      stages: [
+        {id: 'S1', order: 1, action: '线上案例卡逐张装入内容卡册', subject: 'G1', landingNodeIds: ['N1'], sfxRole: 'paper-case-file'},
+        {id: 'S2', order: 2, action: '内容卡册折成一张个人名片', subject: 'G2', landingNodeIds: ['N2'], sfxRole: 'paper-card-fold'},
+        {id: 'S3', order: 3, action: '名片沿城市地图棉线到达线下会谈桌', subject: 'G3', landingNodeIds: ['N3'], sfxRole: 'paper-map-travel'},
+        {id: 'S4', order: 4, action: '一张小单试做卡进入验收台并决定继续或停止', subject: 'G4', landingNodeIds: ['N4', 'N5'], sfxRole: 'pilot-review-click'},
+      ],
+      firstFrame: '16:9纸艺线上到线下路径，左后方深蓝内容案例卡册，中景冷青折叠名片，城市地图棉线通向右侧暖白会谈桌，前景绿色小单试做与复盘台，四张无字刚性标签卡叠放并预留中文写入区域，三层以上空间，禁止粉丝数、成交金额、联系方式、二维码、可读文字。',
+      motion: '7秒纸艺定格：案例卡装入内容卡册，卡册折成个人名片，名片沿城市棉线抵达线下会谈桌，小单试做卡进入验收台并分出继续或停止；四张首帧已有中文标签逐字保持不变并顺序落位。不得演绎内容发布后自动成交。',
+    }),
+    makePaperBeat({
+      id: 'B13',
+      order: 13,
+      spokenLine: 'AI只是工具，赚钱的核心，永远不是工具本身，而是找到真实人的真实需求。',
+      coreMeaning: 'AI工具只有经过真实需求、人工判断和使用验收，才可能形成可用服务。',
+      kind: 'causal-chain',
+      title: '从真实需求到可用结果',
+      durationSeconds: 6,
+      labels: ['真实需求', 'AI工具', '人工判断', '可用结果'],
+      visualNode: [{label: '用户验收', groupId: 'G4', role: 'evidence'}],
+      groups: [
+        {id: 'G1', name: '真实需求', material: '暖白人物与问题票', depth: 1},
+        {id: 'G2', name: 'AI工具箱', material: '深蓝纸质工具箱', depth: 2},
+        {id: 'G3', name: '人工判断台', material: '冷青检查尺与选择门', depth: 3},
+        {id: 'G4', name: '使用结果', material: '绿色交付盒与验收章', depth: 4},
+      ],
+      stages: [
+        {id: 'S1', order: 1, action: '真实人物问题票落到桌面', subject: 'G1', landingNodeIds: ['N1'], sfxRole: 'paper-problem-land'},
+        {id: 'S2', order: 2, action: 'AI工具箱打开并推出三个候选方案', subject: 'G2', landingNodeIds: ['N2'], sfxRole: 'toolbox-candidates'},
+        {id: 'S3', order: 3, action: '人工检查尺筛掉不合适方案并选择一条', subject: 'G3', landingNodeIds: ['N3'], sfxRole: 'paper-review-select'},
+        {id: 'S4', order: 4, action: '可用结果进入现场并在用户检查后盖章', subject: 'G4', landingNodeIds: ['N4', 'N5'], sfxRole: 'paper-user-accept'},
+      ],
+      firstFrame: '16:9手作纸艺结论场景，左侧暖白人物问题票，中间深蓝AI工具箱，右侧冷青人工检查尺与选择门，前景绿色交付盒和验收章，四张无字刚性标签卡叠放并留足中文写入区域，四层空间、真实纸纤维与柔和侧光，禁止机器人、魔法按钮、金币、收益保证、可读文字。',
+      motion: '6秒纸艺定格：问题票落下，AI工具箱打开并推出候选方案，人工检查尺筛选后只保留一条，可用结果进入现场并由用户检查盖章；四张首帧已有中文标签必须逐字保留并按阶段落位，禁止新增文字和“一键成功”效果。',
+    }),
+    realBeat({
+      id: 'B14',
+      order: 14,
+      spokenLine: '你身边有没有类似的本地需求？你觉得在咱们本地，AI还能做哪些生意，评论区我们一起交流。',
+      coreMeaning: '回到真人提出开放问题，不用动画给出未经验证的项目清单。',
+      kind: 'real-person-action',
+      producer: 'user',
+      evidenceRefs: ['U03 本条用户原片结尾真人画面，待拍摄后绑定'],
+    }),
+  ],
+};
+
+writeFileSync(outputPath, `${JSON.stringify(request, null, 2)}\n`, {
+  encoding: 'utf8',
+  flag: 'wx',
+  mode: 0o600,
+});
+
+console.log(JSON.stringify({
+  ok: true,
+  outputPath,
+  scriptSha256: request.inputScript.sha256,
+  paperSceneCount: request.beats.filter((beat) => beat.visualDecision.class === 'paper-editorial').length,
+}));
