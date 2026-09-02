@@ -7,6 +7,16 @@ import {
   validateDirectorRenderPlanInput,
 } from './style';
 export {validateDirectorRenderPlanInput} from './style';
+export {
+  PaperSurfaceText,
+  quadToCssMatrix3d,
+} from './PaperSurfaceText';
+export type {
+  NormalizedPoint,
+  NormalizedQuad,
+  PaperSurfaceTextKeyframe,
+  PaperSurfaceTextProps,
+} from './PaperSurfaceText';
 
 export type DirectorInput = Partial<DirectorPlan> | {plan?: unknown};
 

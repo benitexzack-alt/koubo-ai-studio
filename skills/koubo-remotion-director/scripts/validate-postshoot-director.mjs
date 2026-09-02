@@ -48,7 +48,24 @@ try {
   if (plan.formalEligible !== false || plan.status !== 'candidate-preview-required') {
     errors.push('POSTSHOOT_PLAN_STATE_INVALID');
   }
-  if (plan.beats.length !== request.mappings.length) errors.push('POSTSHOOT_PLAN_COVERAGE_INVALID');
+  const planBeats = Array.isArray(plan.beats) ? plan.beats : [];
+  if (planBeats.length !== request.mappings.length) errors.push('POSTSHOOT_PLAN_COVERAGE_INVALID');
+  const paperBeats = planBeats.filter((beat) => beat.paperScene);
+  const paperScenes = Array.isArray(plan.paperScenes) ? plan.paperScenes : [];
+  if (paperScenes.length !== paperBeats.length) {
+    errors.push('POSTSHOOT_PAPER_SCENE_EXPORT_COVERAGE_INVALID');
+  }
+  paperBeats.forEach((beat, index) => {
+    const scene = paperScenes[index];
+    if (
+      scene?.beatId !== beat.id ||
+      scene?.spokenLine !== beat.spokenLine ||
+      !Array.isArray(scene?.textPlan) ||
+      scene.textPlan.some((item) => !item.postshootBinding)
+    ) {
+      errors.push(`POSTSHOOT_PAPER_SCENE_EXPORT_INVALID:${beat.id}`);
+    }
+  });
   if (errors.length > 0) throw new Error(`POSTSHOOT_PLAN_INVALID:${errors.join('|')}`);
 
   const receipt = {
@@ -76,6 +93,13 @@ try {
       allPreproductionBeatsMapped: true,
       recordedSpeechBound: true,
       deterministicNodeTextReconfirmed: true,
+      declaredCaptionWindowsBound: true,
+      exactSpokenTermsBoundPerNode: true,
+      visualClaimLeadAtMost300Ms: true,
+      nodeLabelStageOffsetAtMost3Frames: true,
+      mismatchRejectedAndPartialRequiresUserException: true,
+      postshootPaperScenesReadyForAssetBinding: true,
+      formalAssetIntakeRequired: true,
       formalEligible: false,
       nextGate: 'current-task-withsfx-nosfx-preview-and-user-acceptance',
     },

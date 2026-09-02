@@ -31,6 +31,7 @@ try {
 }
 
 if (profile.status !== 'active-default') errors.push('DIRECTOR_PROFILE_NOT_ACTIVE_DEFAULT');
+if (profile.profileVersion !== '3.1.0') errors.push('DIRECTOR_PROFILE_VERSION_NOT_V3_1');
 if (profile.routingPolicy?.fallback !== 'blocked') {
   errors.push('DIRECTOR_PROFILE_FALLBACK_NOT_BLOCKED');
 }
@@ -39,6 +40,47 @@ if (profile.routingPolicy?.genericInformationCardCanSatisfyPaperBeat !== false) 
 }
 if (profile.evidencePolicy?.skillReadDoesNotEqualExecuted !== true) {
   errors.push('DIRECTOR_PROFILE_EXECUTION_EVIDENCE_WEAK');
+}
+if (profile.promptHandoffPolicy?.modelGeneratedReadableTextAllowed !== false) {
+  errors.push('DIRECTOR_PROFILE_MODEL_TEXT_NOT_BLOCKED');
+}
+if (profile.promptHandoffPolicy?.defaultPaperTextMode !== 'tracked-paper-surface') {
+  errors.push('DIRECTOR_PROFILE_TRACKED_TEXT_NOT_DEFAULT');
+}
+if (profile.promptHandoffPolicy?.firstFrameBakeOnlyForRigidSurface !== true) {
+  errors.push('DIRECTOR_PROFILE_FIRST_FRAME_BAKE_NOT_RIGID_ONLY');
+}
+if (profile.promptHandoffPolicy?.ocrRequiredForFirstFrameBake !== true) {
+  errors.push('DIRECTOR_PROFILE_FIRST_FRAME_OCR_NOT_REQUIRED');
+}
+if (profile.promptHandoffPolicy?.paperNodeScreenOverlayAllowed !== false) {
+  errors.push('DIRECTOR_PROFILE_PAPER_NODE_SCREEN_OVERLAY_ALLOWED');
+}
+if (profile.semanticTimingPolicy?.maximumVisualClaimLeadMs !== 300) {
+  errors.push('DIRECTOR_PROFILE_VISUAL_LEAD_NOT_300MS');
+}
+if (profile.semanticTimingPolicy?.maximumNodeLabelStageOffsetFrames !== 3) {
+  errors.push('DIRECTOR_PROFILE_NODE_STAGE_OFFSET_NOT_3_FRAMES');
+}
+if (profile.semanticTimingPolicy?.mismatchAllowed !== false) {
+  errors.push('DIRECTOR_PROFILE_SEMANTIC_MISMATCH_ALLOWED');
+}
+if (profile.generatedAssetAcceptancePolicy?.formalAssetShaBindingRequired !== true) {
+  errors.push('DIRECTOR_PROFILE_FORMAL_ASSET_SHA_NOT_REQUIRED');
+}
+if (profile.generatedAssetAcceptancePolicy?.silentViewRetellingRequired !== true) {
+  errors.push('DIRECTOR_PROFILE_SILENT_RETELLING_NOT_REQUIRED');
+}
+if (profile.generatedAssetAcceptancePolicy?.inputActionResultRequired !== true) {
+  errors.push('DIRECTOR_PROFILE_INPUT_ACTION_RESULT_NOT_REQUIRED');
+}
+const upgradeAuditPath = resolveDeclared(profile.skill?.contractUpgrade?.auditReport?.path);
+if (
+  !upgradeAuditPath ||
+  !existsSync(upgradeAuditPath) ||
+  sha256File(upgradeAuditPath) !== profile.skill?.contractUpgrade?.auditReport?.sha256
+) {
+  errors.push('DIRECTOR_PROFILE_CONTRACT_UPGRADE_AUDIT_MISMATCH');
 }
 if (style.styleId !== profile.style.id) errors.push('DIRECTOR_STYLE_ID_MISMATCH');
 if (style.eligibility?.styleDirectionAccepted !== true) {
@@ -49,6 +91,15 @@ if (style.eligibility?.previsualizationEligible !== true) {
 }
 if (style.eligibility?.formalEligibleByDefault !== false) {
   errors.push('DIRECTOR_STYLE_FORMAL_DEFAULT_MUST_BE_FALSE');
+}
+if (style.textContract?.strategy !== 'deterministic-paper-surface-v3.1') {
+  errors.push('DIRECTOR_STYLE_TEXT_STRATEGY_INVALID');
+}
+if (style.textContract?.modelGeneratedReadableTextAllowed !== false) {
+  errors.push('DIRECTOR_STYLE_MODEL_TEXT_NOT_BLOCKED');
+}
+if (style.generatedAssetContract?.contactSheetMustBindFormalAssetSha !== true) {
+  errors.push('DIRECTOR_STYLE_CONTACT_SHEET_SHA_NOT_REQUIRED');
 }
 
 const inheritedPath = resolveDeclared(style.inherits.path);

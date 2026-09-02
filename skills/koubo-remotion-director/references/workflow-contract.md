@@ -10,6 +10,8 @@
 -> 当前生产档案校验
 -> visual-plan.json
 -> 必要时新建纸艺导演 plan-only request；旧纸构推演不得生成，旧 request/plan/QA 不得复用
+-> 拍摄后以实录字幕时窗重绑每个纸面节点
+-> 生成资产入场：正式视频SHA + 首/中/尾帧 + 静音复述 + 输入/动作/结果 + OCR
 -> production-job.json
 -> Remotion 预览/风险帧
 -> 正式导出
@@ -42,6 +44,8 @@
 - 旧自动插片计划、账本、视频和风格卡：只作失败回归证据，不得建立新任务
 - 摄影级纸艺导演合同：`skills/koubo-remotion-director/templates/director-request.v1.json`
 - 纸艺导演计划与候选证据：`work/director-paper-editorial/<revision-id>/`
+- 纸艺中文策略：`textPlan`、本地首帧写入回执或 Remotion 纸面跟踪组件
+- 纸艺正式资产入场回执与哈希联系表：当前 revision 的受控证据目录
 - 逐帧质量基线：`knowledge/23-参考片逐帧审计与纸媒叙事装配最低标准.md`
 - 内部预览和质检报告：`work/production-runs/<video-id>/`
 - 正式片：`outputs/<title>_final*.mp4`
@@ -65,6 +69,10 @@
 V8 使用 `codex-provider` 前，风格必须明确标记 `productionEligible=true`，并绑定用户已经通过的动态样片证据。`koubo-paper-construct-v1`、`paper-construct-video` 和 `/user-generated-paper/` 永久命中退役门；`纸媒叙事装配 v2` 当前为 `blocked-candidate`，只能做创意方向、分镜、预览、完成态静帧和一条受控压力测试，不能写入正式 `job.inputs.generatedVideoPlan`。
 
 摄影级纸艺导演是与旧自动插片链隔离的新编译分支。它从真实实录和权威时间轴建立新的 `director-request`，默认 `plan-only`、`productionEligible=false`，输出只能包含 `validate-plan`。已验收的 30 秒 WithSfx 样片只作为风格方向锚；新口播必须重新实例化 request、plan、静帧和 QA，不能把旧候选复制为新任务完成证据。
+
+v3.1 对每个纸面节点另加三层硬绑定：预拍时绑定纸片组/表面/动作阶段；实拍后绑定实际字幕 ID、说出的词和时间窗；候选视频到齐后绑定正式视频 SHA-256、首/中/尾帧、静音复述和文字 OCR。任一层发生替换，后续联系表和验收回执都必须重建。
+
+生成模型不承担可读中文。运动纸片默认用 Remotion `tracked-paper-surface` 以四角透视跟踪；仅刚性、低运动纸片允许本地 `first-frame-baked`，并必须通过中文 OCR。屏幕浮层只能做标题和来源，不能替代纸面节点。
 
 纸艺导演候选通过后，只能作为 V8 `real-evidence` 或 `generated-video` 插片素材进入新的生产 revision；人物主画面、连续语义卡、字幕、数字运镜和正式发布包仍由 V8 分支负责。V8 的 director-contract/preflight v2、同画面 A/B 和用户完整观看门不得被纸艺导演结果替代。
 

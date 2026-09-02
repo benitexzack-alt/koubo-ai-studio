@@ -1,7 +1,7 @@
 {
   "schemaVersion": "koubo-active-director-profile/v1",
   "profileId": "paper-editorial-director-v3",
-  "profileVersion": "3.0.0",
+  "profileVersion": "3.1.0",
   "status": "active-default",
   "effectiveFrom": "2026-09-01",
   "decision": {
@@ -17,6 +17,15 @@
       "gitTree": "efcd35f1169c86258bb792ff3fd87f30019992e7",
       "treeSha256": "3411a9f3a9e667b3899a6a8d4e9e825f1dfc167ef902c0e57857e4d7adc3d8f0",
       "handoffReceiptSha256": "a8370f79022369f4a4e8002601ef1dc257788946461edf12dd275227fb60d8ef"
+    },
+    "contractUpgrade": {
+      "version": "3.1.0",
+      "scope": "实录时间窗、纸面节点文字、中文OCR、生成资产身份与静音复述门禁",
+      "auditReport": {
+        "path": "edit/20260901_wulanchabu_compute/10_导演复盘/2026-09-02_纸艺语义文字与导演Skill审查.md",
+        "sha256": "52760b5cbba534cc772586695cc478b667bdaa7eef341767e6e0a98528a9515b"
+      },
+      "currentTaskVisualAcceptanceStillRequired": true
     }
   },
   "style": {
@@ -31,6 +40,9 @@
         "director-route-lock",
         "paper-scene-plan",
         "paper-asset-sheet",
+        "deterministic-paper-text-plan",
+        "first-frame-text-bake-plan",
+        "tracked-paper-surface-text-plan",
         "first-frame-prompt-manifest",
         "runninghub-image-to-video-prompt-manifest",
         "runninghub-image-to-video-prompt-sheet",
@@ -45,6 +57,12 @@
       "requiredOutputs": [
         "spoken-source-binding",
         "postshoot-rebind",
+        "declared-caption-window-binding",
+        "per-node-spoken-term-binding",
+        "paper-generated-asset-intake",
+        "paper-asset-sha-contact-sheet",
+        "silent-view-retelling-review",
+        "input-action-result-review",
         "current-task-ab-preview",
         "current-task-user-acceptance"
       ],
@@ -88,7 +106,9 @@
       "director-request",
       "director-route-lock",
       "director-output",
-      "validation-receipt"
+      "validation-receipt",
+      "paper-generated-asset-intake",
+      "paper-asset-contact-sheet-manifest"
     ],
     "manualApplicationClaimAllowed": false
   },
@@ -100,10 +120,43 @@
       "sceneId",
       "pairId",
       "pairSha256",
-      "firstFramePromptSha256"
+      "firstFramePromptSha256",
+      "textPlanSha256"
     ],
     "generatedReadableTextAllowed": false,
-    "deterministicTextOwner": "remotion"
+    "modelGeneratedReadableTextAllowed": false,
+    "deterministicTextOwner": "remotion-or-local-first-frame-baker",
+    "defaultPaperTextMode": "tracked-paper-surface",
+    "allowedPaperTextModes": [
+      "tracked-paper-surface",
+      "first-frame-baked"
+    ],
+    "firstFrameBakeOnlyForRigidSurface": true,
+    "ocrRequiredForFirstFrameBake": true,
+    "paperNodeScreenOverlayAllowed": false,
+    "screenOverlayAllowedRoles": [
+      "screen-title",
+      "fact-source-caveat"
+    ],
+    "silentTruncationAllowed": false
+  },
+  "semanticTimingPolicy": {
+    "recordedSpeechIsAuthority": true,
+    "declaredCaptionWindowRequired": true,
+    "exactSpokenTermBindingRequiredPerNode": true,
+    "maximumVisualClaimLeadMs": 300,
+    "maximumNodeLabelStageOffsetFrames": 3,
+    "mismatchAllowed": false,
+    "partialRequiresExplicitUserException": true
+  },
+  "generatedAssetAcceptancePolicy": {
+    "sourcePlanOrderRequired": true,
+    "formalAssetShaBindingRequired": true,
+    "firstMiddleLastEvidenceRequired": true,
+    "silentViewRetellingRequired": true,
+    "inputActionResultRequired": true,
+    "textFirstMiddleLastOcrRequired": true,
+    "contactSheetMustBindFormalAssetSha": true
   },
   "v8Integration": {
     "outerPackagingProfile": "v8-semantic-continuity-sfx",

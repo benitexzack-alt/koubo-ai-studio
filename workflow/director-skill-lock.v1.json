@@ -1,12 +1,12 @@
 {
   "schemaVersion": "koubo-director-skill-lock/v1",
   "profileId": "paper-editorial-director-v3",
-  "profileVersion": "3.0.0",
+  "profileVersion": "3.1.0",
   "skillRoot": "skills/koubo-remotion-director",
-  "generatedAt": "2026-09-01T12:29:37.750Z",
-  "fileCount": 59,
-  "totalBytes": 1611538,
-  "packageSha256": "c582e90ceaa8c00d5cab00123fce29aa7b2897d715a0e00477efa70a74523f1f",
+  "generatedAt": "2026-09-02T02:45:30.177Z",
+  "fileCount": 68,
+  "totalBytes": 1698352,
+  "packageSha256": "b6b8876ccbf7e277ecb041c2b1d9f137f748547e24b304003b33f51c700ea19f",
   "entries": [
     {
       "path": "agents/openai.yaml",
@@ -25,13 +25,18 @@
     },
     {
       "path": "assets/remotion-paper-editorial/entry.tsx",
-      "bytes": 1967,
-      "sha256": "ca5f2ee507a4c85b4ade79228a4b191db3e61673b16af5d15455abb17aa2a8e3"
+      "bytes": 2179,
+      "sha256": "8be74fbe97234f5235c424d58ba9cd45ea63e2822d3c3fa4f62024fa9b074506"
     },
     {
       "path": "assets/remotion-paper-editorial/PaperPrimitives.tsx",
       "bytes": 15998,
       "sha256": "5d459181a7bd101eee79769ad18b94bba4a89be531bdd3d55a8456b353004651"
+    },
+    {
+      "path": "assets/remotion-paper-editorial/PaperSurfaceText.tsx",
+      "bytes": 4717,
+      "sha256": "7951992f03af7cf533c8596e3e7280ec9a7a22f7ec6026d6e20da17c178da1ad"
     },
     {
       "path": "assets/remotion-paper-editorial/style.ts",
@@ -95,13 +100,13 @@
     },
     {
       "path": "references/validation-gates.md",
-      "bytes": 10767,
-      "sha256": "c3430bb36188093a7694cb2b1044179b6a1985f8a6bef9841afa592a3c5e8804"
+      "bytes": 12089,
+      "sha256": "e8848946bc9ffee39364022eb195b330d22d2ad17fc58e34999020891d997580"
     },
     {
       "path": "references/workflow-contract.md",
-      "bytes": 4966,
-      "sha256": "856a9276e6877ecf91143255689200af0dc70a79ae1b8cdeca869440152c1497"
+      "bytes": 5907,
+      "sha256": "b5873191d4837049915c82f0a18cafcf17790d98c6c846a653a8c5c1461fb64c"
     },
     {
       "path": "registries/request-isolation-registry.v1.json",
@@ -112,6 +117,16 @@
       "path": "registries/supervisor-acceptance-anchor-registry.v1.json",
       "bytes": 1510,
       "sha256": "5c4541191497a626cb4344e707e82b1bf0153b66022fbe7e2ed7ed53adb23817"
+    },
+    {
+      "path": "scripts/bake-firstframe-text.mjs",
+      "bytes": 11159,
+      "sha256": "ca0c895cd3d343ec8e3744712b242f238a89cd0d12d9848aa8b188a336fb963d"
+    },
+    {
+      "path": "scripts/build-paper-asset-contact-sheet.mjs",
+      "bytes": 5198,
+      "sha256": "fb4d36b63a1180f73689a6be610fb3082872b8f4dfcffae194ad72ec7cb1b4c7"
     },
     {
       "path": "scripts/compile-director-plan.mjs",
@@ -144,14 +159,19 @@
       "sha256": "5f70109be8a0df4b5a7cee5c53e439ca01285c30df54e25c7c950751051358f7"
     },
     {
+      "path": "scripts/paper-asset-intake-core.mjs",
+      "bytes": 12286,
+      "sha256": "843b390867375b29c8eca0de77e9218ff10225d0bc4c4fedc13743920fd48512"
+    },
+    {
       "path": "scripts/postshoot-rebind-core.mjs",
-      "bytes": 7775,
-      "sha256": "fe3320b6e16a94ac72cee7e1c4d4868e44b5137bf94426ef2e02237b7816b5b6"
+      "bytes": 20462,
+      "sha256": "2ba40a856432c1d5bca12af2cc1734dca49ad24a31a84f47b8669e13451949c0"
     },
     {
       "path": "scripts/preproduction-director-core.mjs",
-      "bytes": 22786,
-      "sha256": "ed3a55b719028e2441fe7a5344fe4ac52098b27a55a952b52aaf5ca41ae26ecb"
+      "bytes": 30495,
+      "sha256": "b5450f5915e8afe03fffda9837eaa22181f5092e05b04e5210750330249090e3"
     },
     {
       "path": "scripts/rebind-postshoot-director.mjs",
@@ -204,19 +224,24 @@
       "sha256": "b75ea7387993720be79927ae068d7e6772c2424b44673ffe7a9ba1bac88749c4"
     },
     {
+      "path": "scripts/validate-paper-generated-asset-intake.mjs",
+      "bytes": 2755,
+      "sha256": "280074a6bf2841d0c510ddbc56726fdeb8d44764d1b486977f4667c81a076469"
+    },
+    {
       "path": "scripts/validate-postshoot-director.mjs",
-      "bytes": 3793,
-      "sha256": "0ece1729900078eb3bdcf711f39392b2e9d079dce72bf09018a2536f99344a87"
+      "bytes": 4806,
+      "sha256": "481ae363eb5b9000c9bcf81b0664da5e99ec67013a66f475d52e847b0191577f"
     },
     {
       "path": "scripts/validate-preproduction-director.mjs",
-      "bytes": 7588,
-      "sha256": "b15093acceed5652800ffcb45115b809e7c6f1fc076e871c740bf407d9453387"
+      "bytes": 7914,
+      "sha256": "9f54d3990179c42f763e623dc88b914c5fb9862647880ceca2917accc557b41f"
     },
     {
       "path": "SKILL.md",
-      "bytes": 19945,
-      "sha256": "1b237848abbac5e9ec1716e0b97856f4349e24d805cddab32863b61b93a89d7e"
+      "bytes": 22296,
+      "sha256": "5f9f1edcdd41888d682482a9630131ac27c2f53b36b9b03daa8aae43f605cf30"
     },
     {
       "path": "templates/director-contract-v2.schema.json",
@@ -229,19 +254,29 @@
       "sha256": "9c889b819f5176fe548468425a0b9d620c71f8ffd36b553ce329d63e492bcb87"
     },
     {
+      "path": "templates/director-firstframe-text-bake-request.v1.json",
+      "bytes": 1022,
+      "sha256": "fa4b0119339bf4c2b6a657d68bbbf47849b2fd7e3de4fe074b2032e1ac5cb579"
+    },
+    {
       "path": "templates/director-output.v1.schema.json",
       "bytes": 31670,
       "sha256": "d8c4779fa4f9b2ad5e132f34d03d4d47af515b3f6170da143d35c499b0a56afb"
     },
     {
+      "path": "templates/director-paper-asset-intake.v1.json",
+      "bytes": 2104,
+      "sha256": "171e718113bbe701c2c07084e81adb66f22a0662ee798e900fc13e292acfd56b"
+    },
+    {
       "path": "templates/director-postshoot-rebind-request.v1.json",
-      "bytes": 915,
-      "sha256": "eda4469b85f1ebbe03700b83b2e7551f6c999da09c5d417e482c35a7b9949a4a"
+      "bytes": 1853,
+      "sha256": "a289b146d52e247b225d57119409ebfabfdc0f3191f66744d8ef329303917b99"
     },
     {
       "path": "templates/director-preproduction-request.v1.json",
-      "bytes": 1258,
-      "sha256": "44f6e155aece013cf9c4af3b6092afbe2be6b0cbce65f54d15b7ee35538befe7"
+      "bytes": 1460,
+      "sha256": "1be7c5be6fd3720b9df532c42a7514b0a1cc326af5f1ad6be481fd7a4ba63424"
     },
     {
       "path": "templates/director-request.v1.json",
@@ -269,19 +304,29 @@
       "sha256": "49572fdeef650ba0573a609d3361197f90398b4253b1fe6c202f8b5b88ca6e22"
     },
     {
+      "path": "tests/test-firstframe-text-bake.mjs",
+      "bytes": 4372,
+      "sha256": "4475ef60bc93ca0712bb2d3a64baa5b742b9f4b238091724b14e384c9f7073b0"
+    },
+    {
       "path": "tests/test-integrity-anchor-trust-root.mjs",
       "bytes": 13878,
       "sha256": "23cfbb974502b8aed94510d357e68ce19707ff320fb5ab0b282f04c538c01884"
     },
     {
+      "path": "tests/test-paper-asset-intake.mjs",
+      "bytes": 7614,
+      "sha256": "aa098477c81ebc2730a9f63d8488d64825ab6376d0e92d53ac9c9f1fe4e2341f"
+    },
+    {
       "path": "tests/test-postshoot-rebind-contract.mjs",
-      "bytes": 4529,
-      "sha256": "e1d943ae19f96273730b684487c4faeb09b72079b890d9ad3e2ded196f173ed3"
+      "bytes": 8901,
+      "sha256": "c163ca223c271b752e1949d0425ec14854aca050c980b96b1330cb368ce67d8f"
     },
     {
       "path": "tests/test-preproduction-director-contract.mjs",
-      "bytes": 8673,
-      "sha256": "ae31e6aeaa5ee44172971f2b4278afc735a2edd90a42b077c21724d3c9455c7c"
+      "bytes": 12187,
+      "sha256": "9b4d39b4674f13c9f3606856300822210c2db6a1cf28cb2a1b61877617a3b44f"
     },
     {
       "path": "tests/test-progressive-local-motion-contract.mjs",

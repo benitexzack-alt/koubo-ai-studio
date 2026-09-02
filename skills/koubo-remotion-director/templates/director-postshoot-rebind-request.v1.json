@@ -3,6 +3,7 @@
   "requestId": "<NEW_POSTSHOOT_REQUEST_ID>",
   "taskId": "<TASK_ID>",
   "phase": "post-shoot",
+  "timelineFps": 30,
   "sourcePreproduction": {
     "requestPath": "<PREPRODUCTION_REQUEST_PATH>",
     "requestSha256": "<SHA256>",
@@ -22,7 +23,37 @@
     "authority": "recorded-audio",
     "scriptRole": "comparison-only"
   },
-  "mappings": [],
+  "mappings": [
+    {
+      "beatId": "<BEAT_ID>",
+      "order": 1,
+      "startSeconds": 0,
+      "endSeconds": 0,
+      "actualCaptionIds": ["<CAPTION_ID>"],
+      "anchorStartMs": 0,
+      "anchorEndMs": 0,
+      "actualSpokenLine": "<ACTUAL_RECORDED_WORDING>",
+      "semanticAnchorText": "<EXACT_TEXT_INSIDE_DECLARED_CAPTION_WINDOW>",
+      "alignmentStatus": "exact",
+      "nodeTextBindings": [
+        {
+          "nodeId": "<NODE_ID>",
+          "resolvedText": "<2_TO_8_CHINESE_CHARACTERS>",
+          "enterStageId": "<STAGE_ID>",
+          "actualCaptionIds": ["<CAPTION_ID>"],
+          "actualSpokenTerms": ["<EXACT_RECORDED_TERM>"],
+          "anchorStartMs": 0,
+          "anchorEndMs": 0,
+          "visualEnterMs": 0,
+          "stageActionFrame": 0,
+          "labelEnterFrame": 0,
+          "alignmentStatus": "exact"
+        }
+      ],
+      "textDecision": "confirmed",
+      "visualDecision": "keep"
+    }
+  ],
   "outputs": {
     "rebindPlanPath": "<NEW_REBIND_PLAN_PATH>",
     "validationReceiptPath": "<NEW_POSTSHOOT_VALIDATION_RECEIPT_PATH>"

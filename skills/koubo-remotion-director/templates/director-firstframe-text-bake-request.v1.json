@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-text-bake-request/v1",
+  "taskId": "<TASK_ID>",
+  "sourcePlan": {
+    "path": "<PREPRODUCTION_OR_POSTSHOOT_PLAN_PATH>",
+    "sha256": "<SHA256>"
+  },
+  "fontPath": "<EMBEDDABLE_CHINESE_FONT_PATH>",
+  "receiptPath": "<NEW_RECEIPT_PATH>",
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "pairId": "<PAIR_ID>",
+      "pairSha256": "<PAIR_SHA256>",
+      "textPlanSha256": "<TEXT_PLAN_SHA256>",
+      "labelsSha256": "<BAKED_LABELS_SHA256>",
+      "sourceImage": {
+        "path": "<APPROVED_RAW_FIRST_FRAME_PATH>",
+        "sha256": "<SHA256>"
+      },
+      "outputImage": {
+        "path": "<NEW_TEXT_BAKED_FIRST_FRAME_PATH>"
+      },
+      "labels": [
+        {
+          "nodeId": "<NODE_ID>",
+          "text": "<2_TO_8_CHINESE_CHARACTERS>",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "anchorQuad": [[0.1, 0.2], [0.3, 0.2], [0.3, 0.35], [0.1, 0.35]],
+          "ocrRequired": true
+        }
+      ]
+    }
+  ]
+}

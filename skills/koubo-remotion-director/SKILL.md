@@ -105,7 +105,7 @@ node skills/koubo-remotion-director/scripts/validate-preproduction-director.mjs 
   --repo-root <project-root>
 ```
 
-预拍请求必须使用 [templates/director-preproduction-request.v1.json](templates/director-preproduction-request.v1.json) 建立新 revision。所有需要解释机制、因果、层级、对照或流程的节拍，都必须输出 `paperScene`、`objectGroups`、`nodes`、`stages`、`textPlan` 和两类提示词。节点中文必须由 Remotion 确定性叠加；生成模型不得自行生成可读中文。
+预拍请求必须使用 [templates/director-preproduction-request.v1.json](templates/director-preproduction-request.v1.json) 建立新 revision。所有需要解释机制、因果、层级、对照或流程的节拍，都必须输出 `paperScene`、`objectGroups`、`nodes`、`stages`、`textPlan` 和两类提示词。生成模型仍不得自行生成可读中文；精确中文只有两种合法路径：运动纸片默认由 Remotion 使用 `tracked-paper-surface` 透视跟踪叠在纸面，低运动刚性纸片可使用 `first-frame-baked` 本地确定性写入首帧。后者必须通过中文 OCR，两者都必须把 `nodeId`、`groupId`、`surfaceId`、`enterStageId` 和纸面四角坐标绑定；屏幕浮层不得冒充纸面节点文字。
 
 两类提示词不得再混装成一份给生成工具使用的执行单。编译器必须同时生成并校验：
 
@@ -114,6 +114,16 @@ node skills/koubo-remotion-director/scripts/validate-preproduction-director.mjs 
 - `runninghub-image-to-video-prompts.md`：供用户复制的中文清单，只展示图生视频动作提示词，不重复首帧场景描述。
 
 同一镜头的两份清单必须共享 `sceneId`、`pairId` 与 `pairSha256`，并用首帧提示词 SHA-256 把 RunningHub 输入图片回绑到对应首帧。首帧生图描述静态完成态；图生视频提示词只描述基于该首帧发生的动作、顺序、镜头运动和禁止项。任何缺镜、串镜、配对哈希不一致或两类字段互相混入，都必须阻断预拍验证。
+
+`textPlan` 不得再按固定列数裁切，也不得用斜杠合并多个节点。每个可读节点必须显式声明 `paper-label`，普通镜 3–6 个、复杂镜 4–6 个，同时可读不超过 4 个。只有标题和事实来源可使用 `screenTextPlan`。使用刚性纸片写入时，从 [templates/director-firstframe-text-bake-request.v1.json](templates/director-firstframe-text-bake-request.v1.json) 实例化请求并运行：
+
+```bash
+node skills/koubo-remotion-director/scripts/bake-firstframe-text.mjs \
+  --request <director-firstframe-text-bake-request.json> \
+  --repo-root <project-root>
+```
+
+运动纸片使用 [assets/remotion-paper-editorial/PaperSurfaceText.tsx](assets/remotion-paper-editorial/PaperSurfaceText.tsx)，逐帧跟踪四角透视和遮挡层级；不允许把同一标签回退成屏幕固定坐标。
 
 拍摄完成后，再从 [templates/director-postshoot-rebind-request.v1.json](templates/director-postshoot-rebind-request.v1.json) 建立实录重绑请求：
 
@@ -142,6 +152,22 @@ node skills/koubo-remotion-director/scripts/validate-director-output.mjs \
 ```
 
 `skillRead=true` 不等于执行。必须同时存在新 request、route lock、plan、compile receipt 和 validation receipt，且验证回执中 `skillExecuted=true`，才可对外说本条已调用导演 Skill。
+
+实录重绑后，每个纸面节点必须绑定明确字幕 ID、实际说出的词、语义时窗和入场帧。画面结论最多只能比实录语义提前 300ms，纸片动作与节点文字偏差不得超过 3 帧；`mismatch` 直接失败，`partial` 只能由用户对当前节拍明确特例。
+
+所有生成纸艺视频到齐后，必须从 [templates/director-paper-asset-intake.v1.json](templates/director-paper-asset-intake.v1.json) 实例化资产验收请求，先生成绑定正式资产 SHA-256 的联系表，再校验：
+
+```bash
+node skills/koubo-remotion-director/scripts/build-paper-asset-contact-sheet.mjs \
+  --request <director-paper-asset-intake.json> \
+  --repo-root <project-root>
+
+node skills/koubo-remotion-director/scripts/validate-paper-generated-asset-intake.mjs \
+  --request <director-paper-asset-intake.json> \
+  --repo-root <project-root>
+```
+
+逐镜必须通过：正式视频哈希、首/中/尾三帧、静音复述“对象+关系或变化+与口播的一致性”、输入→动作→结果的可见变化，以及中文在首/中/尾的 OCR 和漂移复核。文件名、顺序或单张截图都不能替代这些证据。
 
 只有新 revision 逐项绑定真实媒体、实录权威时间轴、当前 compiler/registry SHA、批准静帧与独立验收证据后，才能另行申请 `renderable` 候选。旧 exact30 request/plan/QA 保持不可变；已验收 WithSfx 样片只是风格锚，不证明当前源码复现了旧候选，也不授权正式全片。
 

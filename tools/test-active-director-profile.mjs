@@ -17,7 +17,7 @@ try {
   writeFileSync(path.join(skillRoot, 'SKILL.md'), '# test\n');
   const profile = {
     profileId: 'paper-editorial-director-v3',
-    profileVersion: '3.0.0',
+    profileVersion: '3.1.0',
     skill: {path: 'skills/koubo-remotion-director'},
   };
   const lock = buildSkillLock({projectRoot: root, profile});

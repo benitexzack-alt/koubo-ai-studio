@@ -96,7 +96,7 @@
 - 用户确认文稿后可以进入 `pre-shoot`，提前产出纸艺分镜、中文节点、静帧和素材提示词；该阶段一律为 `provisional-previsualization`，不得声称时间轴或正式片已锁定。
 - 拍摄后必须执行 `post-shoot` 重绑：原片声音是唯一正文，拍摄前文稿降为 `comparison-only`；所有纸艺镜头时点、节点文字和保留决策必须重新确认。
 - 普通 `remotion-information`、扁平卡片、PPT式关系图或通用信息动画不得满足纸艺节拍。纸艺分支失败时必须 `blocked`；任何降级都需用户针对本条的明确批准。
-- 纸艺镜头必须包含物件组、至少三层空间、4—7步可见装配、节点中文、`textPlan` 和逐动作音效。生成模型不得生成可读中文；精确中文统一由 Remotion 确定性叠加。
+- 纸艺镜头必须包含物件组、至少三层空间、4—7步可见装配、节点中文、`textPlan` 和逐动作音效。生成模型不得生成可读中文；运动纸片的精确中文由 Remotion 透视跟踪到纸面，低运动刚性纸片可由本地工具确定性写入首帧并通过中文 OCR；屏幕浮层不得冒充纸面节点文字。
 - `skillRead=true` 不等于已调用。没有本条新建的 request、route lock、plan、compile receipt 和 `skillExecuted=true` validation receipt，任务必须停留在 `blocked`。
 - 2026-09-01 及以后的新 V8 job 必须通过 `tools/validate-director-production-binding.mjs`；预览前要求预拍与实录重绑证据，正式渲染前再要求本条动态候选的用户明确验收。历史 job 只作日期限定的回归豁免，不得用于新片。
 

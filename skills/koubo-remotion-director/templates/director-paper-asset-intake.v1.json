@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "koubo-paper-generated-asset-intake/v1",
+  "taskId": "<TASK_ID>",
+  "sourcePlan": {"path": "<POSTSHOOT_REBIND_PLAN_PATH>", "sha256": "<SHA256>"},
+  "contactSheetFontPath": "<EMBEDDABLE_CHINESE_FONT_PATH>",
+  "assets": [
+    {
+      "sceneId": "P01",
+      "pairId": "<PAIR_ID>",
+      "pairSha256": "<PAIR_SHA256>",
+      "textPlanSha256": "<TEXT_PLAN_SHA256>",
+      "inputFirstFrame": {"path": "<PATH>", "sha256": "<SHA256>", "pHash": "<PHASH>"},
+      "generatedVideo": {"path": "<ORIGINAL_EXPORT_PATH>", "sha256": "<SHA256>"},
+      "productionCandidate": {"path": "<P01__PAIRSHA8.mp4>", "sha256": "<SHA256>", "canonicalFileName": "<P01__PAIRSHA8.mp4>"},
+      "evidenceFrames": [
+        {"moment": "first", "path": "<PATH>", "sha256": "<SHA256>"},
+        {"moment": "middle", "path": "<PATH>", "sha256": "<SHA256>"},
+        {"moment": "last", "path": "<PATH>", "sha256": "<SHA256>"}
+      ],
+      "mediaQaReceipt": {"path": "<FULL_DECODE_QA_RECEIPT>", "sha256": "<SHA256>"},
+      "expectedObjectGroupIds": [],
+      "expectedStageIds": [],
+      "semanticReview": {"status": "exact", "object": "<OBJECT>", "change": "<CHANGE>", "spokenConsistency": "<WHY_IT_MATCHES>", "ownSceneClosest": true, "mostSimilarSceneId": "P01"},
+      "silentViewReview": {"status": "passed", "objectAnswer": "<WHAT_OBJECT>", "relationshipOrChangeAnswer": "<WHAT_CHANGED>", "spokenConsistencyAnswer": "<WHY_IT_MATCHES_THE_CURRENT_SPEECH>"},
+      "mechanismEvidence": {"inputMoment": "first", "actionMoment": "middle", "outputMoment": "last", "visibleStateChange": true},
+      "textQa": {"status": "passed", "driftFree": true, "samples": [{"moment": "first", "expectedTexts": [], "recognizedTexts": [], "exact": true}, {"moment": "middle", "expectedTexts": [], "recognizedTexts": [], "exact": true}, {"moment": "last", "expectedTexts": [], "recognizedTexts": [], "exact": true}]}
+    }
+  ],
+  "outputs": {
+    "contactSheetPath": "<NEW_CONTACT_SHEET_PATH>",
+    "contactSheetManifestPath": "<NEW_CONTACT_SHEET_MANIFEST_PATH>",
+    "validationReceiptPath": "<NEW_VALIDATION_RECEIPT_PATH>"
+  }
+}

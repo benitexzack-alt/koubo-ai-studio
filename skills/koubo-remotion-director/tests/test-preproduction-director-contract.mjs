@@ -15,7 +15,7 @@ import {
 
 const profile = {
   profileId: 'paper-editorial-director-v3',
-  profileVersion: '3.0.0',
+  profileVersion: '3.1.0',
   routingPolicy: {
     paperRequiredKinds: ['abstract-mechanism', 'causal-chain'],
   },
@@ -46,8 +46,12 @@ const makeRequest = (scriptPath) => ({
   policy: {
     branch: 'paper-editorial',
     fallback: 'blocked',
-    textStrategy: 'remotion-deterministic-overlay',
-    generatedReadableTextAllowed: false,
+      textStrategy: 'deterministic-paper-surface-v3.1',
+      generatedReadableTextAllowed: false,
+      modelGeneratedReadableTextAllowed: false,
+      deterministicTextMayBeBakedIntoFirstFrame: true,
+      defaultPaperTextMode: 'tracked-paper-surface',
+      paperNodeScreenOverlayAllowed: false,
     postShootRebindRequired: true,
   },
   outputs: {
@@ -85,15 +89,15 @@ const makeRequest = (scriptPath) => ({
           {id: 'G5', name: '业务结果', material: '暖白纸盒', depth: 3},
         ],
         nodes: [
-          {id: 'N1', label: '智算中心', groupId: 'G1', role: 'source'},
-          {id: 'N2', label: '算力资源池', groupId: 'G2', role: 'pool'},
-          {id: 'N3', label: '按需租用', groupId: 'G2', role: 'rule'},
-          {id: 'N4', label: '知识库', groupId: 'G3', role: 'need'},
-          {id: 'N5', label: '智能体', groupId: 'G3', role: 'need'},
-          {id: 'N6', label: '工作流', groupId: 'G3', role: 'need'},
-          {id: 'N7', label: '调度', groupId: 'G4', role: 'path'},
-          {id: 'N8', label: '结果', groupId: 'G5', role: 'output'},
-          {id: 'N9', label: '人工确认', groupId: 'G5', role: 'boundary'},
+          {id: 'N1', label: '智算中心', groupId: 'G1', role: 'source', textVisibility: 'paper-label'},
+          {id: 'N2', label: '算力资源池', groupId: 'G2', role: 'pool', textVisibility: 'paper-label'},
+          {id: 'N3', label: '按需租用', groupId: 'G2', role: 'rule', textVisibility: 'paper-label'},
+          {id: 'N4', label: '知识库', groupId: 'G3', role: 'need', textVisibility: 'visual-only'},
+          {id: 'N5', label: '智能体', groupId: 'G3', role: 'need', textVisibility: 'visual-only'},
+          {id: 'N6', label: '工作流', groupId: 'G3', role: 'need', textVisibility: 'visual-only'},
+          {id: 'N7', label: '调度', groupId: 'G4', role: 'path', textVisibility: 'visual-only'},
+          {id: 'N8', label: '结果', groupId: 'G5', role: 'output', textVisibility: 'paper-label'},
+          {id: 'N9', label: '人工确认', groupId: 'G5', role: 'boundary', textVisibility: 'paper-label'},
         ],
         stages: [
           {id: 'S1', order: 1, action: '底座展开', subject: 'G1', landingNodeIds: ['N1'], sfxRole: 'paper-unfold'},
@@ -101,22 +105,37 @@ const makeRequest = (scriptPath) => ({
           {id: 'S3', order: 3, action: '需求卡进入', subject: 'G3', landingNodeIds: ['N4', 'N5', 'N6'], sfxRole: 'paper-slide'},
           {id: 'S4', order: 4, action: '棉线连接并盖章', subject: 'G4', landingNodeIds: ['N7', 'N8', 'N9'], sfxRole: 'stamp'},
         ],
+        readableTextPolicy: {
+          maximumSimultaneousLabels: 4,
+          slashMergeForbidden: true,
+          silentTruncationForbidden: true,
+        },
         textPlan: [
-          ['N1', '智算中心', 'S1', 'left-back'],
-          ['N2', '算力资源池', 'S2', 'center'],
-          ['N3', '按需租用', 'S2', 'center-front'],
-          ['N4', '知识库', 'S3', 'right-top'],
-          ['N5', '智能体', 'S3', 'right-middle'],
-          ['N6', '工作流', 'S3', 'right-bottom'],
-          ['N7', '调度', 'S4', 'path'],
-          ['N8', '结果', 'S4', 'front'],
-          ['N9', '人工确认', 'S4', 'front-right'],
-        ].map(([nodeId, text, enterStageId, position]) => ({
+          ['N1', '智算中心', 'G1', 'S1', 'first-frame-baked', 'rigid-surface'],
+          ['N2', '算力资源池', 'G2', 'S2', 'tracked-paper-surface', 'tracked-moving-surface'],
+          ['N3', '按需租用', 'G2', 'S2', 'tracked-paper-surface', 'tracked-moving-surface'],
+          ['N8', '结果', 'G5', 'S4', 'tracked-paper-surface', 'rigid-surface'],
+          ['N9', '人工确认', 'G5', 'S4', 'tracked-paper-surface', 'rigid-surface'],
+        ].map(([nodeId, text, groupId, enterStageId, embeddingMode, motionConstraint], index) => ({
           nodeId,
           text,
+          role: 'diegetic-node-label',
+          groupId,
+          surfaceId: `${groupId}-surface-${index + 1}`,
+          anchorQuad: [[0.1, 0.1], [0.3, 0.1], [0.3, 0.2], [0.1, 0.2]],
+          maxChars: 8,
+          persistence: `${enterStageId}-to-end`,
+          occlusionOwner: 'none',
+          ocrRequired: true,
+          motionConstraint,
+          embeddingMode,
+          trackingKeyframesRequired: embeddingMode === 'tracked-paper-surface',
           enterStageId,
-          position,
+          stageOffsetFrames: 0,
         })),
+        screenTextPlan: [
+          {role: 'screen-title', text: '算力按需租用', embeddingMode: 'screen-overlay'},
+        ],
         prompt: {
           firstFrame: '摄影级手作纸艺微缩场景，算力资源池与企业需求卡分层摆放，无可读文字。',
           motion: '纸质底座展开，资源池卡入，需求卡顺序滑入，棉线连接到结果盒并盖章。',
@@ -168,6 +187,15 @@ try {
   assert.ok(!Object.hasOwn(firstFrameManifest.scenes[0], 'imageToVideoPrompt'));
   assert.ok(Object.hasOwn(runningHubManifest.scenes[0], 'imageToVideoPrompt'));
   assert.ok(!Object.hasOwn(runningHubManifest.scenes[0], 'firstFramePrompt'));
+  assert.equal(firstFrameManifest.scenes[0].deterministicTextBake.enabled, true);
+  assert.equal(
+    runningHubManifest.scenes[0].inputFirstFrameFileName,
+    firstFrameManifest.scenes[0].deterministicTextBake.outputImageFileName,
+  );
+  assert.equal(
+    firstFrameManifest.scenes[0].textPlanSha256,
+    runningHubManifest.scenes[0].inputFirstFrameTextPlanSha256,
+  );
 
   const mismatchedPair = structuredClone(runningHubManifest);
   mismatchedPair.scenes[0].pairId = 'P99-B99';
@@ -206,6 +234,50 @@ try {
   assert.equal(textResult.ok, false);
   assert.ok(textResult.errors.some((error) => error.startsWith('PAPER_TEXT_NODE_LABEL_MISMATCH')));
 
+  const movingBakedText = structuredClone(request);
+  movingBakedText.beats[0].paperScene.textPlan[0].motionConstraint = 'tracked-moving-surface';
+  const movingBakedResult = validatePreproductionRequest({
+    request: movingBakedText,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(movingBakedResult.ok, false);
+  assert.ok(
+    movingBakedResult.errors.includes('PAPER_FIRST_FRAME_BAKED_REQUIRES_RIGID_SURFACE:B01:N1'),
+  );
+
+  const screenNodeText = structuredClone(request);
+  screenNodeText.beats[0].paperScene.textPlan[0].embeddingMode = 'screen-overlay';
+  const screenNodeResult = validatePreproductionRequest({
+    request: screenNodeText,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(screenNodeResult.ok, false);
+  assert.ok(
+    screenNodeResult.errors.includes('PAPER_TEXT_EMBEDDING_MODE_INVALID:B01:N1'),
+  );
+
+  const lateText = structuredClone(request);
+  lateText.beats[0].paperScene.textPlan[0].stageOffsetFrames = 4;
+  const lateTextResult = validatePreproductionRequest({
+    request: lateText,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(lateTextResult.ok, false);
+  assert.ok(lateTextResult.errors.includes('PAPER_TEXT_STAGE_OFFSET_INVALID:B01:N1'));
+
+  const modelWritesText = structuredClone(request);
+  modelWritesText.policy.modelGeneratedReadableTextAllowed = true;
+  const modelTextResult = validatePreproductionRequest({
+    request: modelWritesText,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(modelTextResult.ok, false);
+  assert.ok(modelTextResult.errors.includes('PREPRODUCTION_MODEL_GENERATED_TEXT_NOT_BLOCKED'));
+
   const scriptDrift = structuredClone(request);
   writeFileSync(scriptPath, '文稿已经变更。\n');
   const driftResult = validatePreproductionRequest({
@@ -225,6 +297,12 @@ try {
       scriptDriftRejected: true,
       firstFrameAndImageToVideoPromptsSeparated: true,
       promptPairMismatchRejected: true,
+      paperSurfaceBindingsRequired: true,
+      silentTextTruncationRejected: true,
+      movingFirstFrameBakeRejected: true,
+      paperNodeScreenOverlayRejected: true,
+      nodeStageOffsetOverThreeFramesRejected: true,
+      modelGeneratedChineseRemainsBlocked: true,
     }),
   );
 } finally {

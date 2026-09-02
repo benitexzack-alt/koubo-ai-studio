@@ -3,7 +3,7 @@
   "styleId": "koubo-paper-editorial-assembly-v3",
   "nameZh": "纸媒叙事装配 v3",
   "status": "user-accepted-style",
-  "purpose": "把口播中的抽象机制、因果、关系和层级编译成有纸厚、真实遮挡、顺序装配和确定性中文叠字的摄影级纸艺插片。",
+  "purpose": "把口播中的抽象机制、因果、关系和层级编译成有纸厚、真实遮挡、顺序装配和确定性纸面中文的摄影级纸艺插片。",
   "inherits": {
     "path": "skills/koubo-remotion-director/references/paper-editorial-style.v1.json",
     "sha256": "68fbfe1cd7105cac6195be52c5c759c35b1dd858db91f4a9808ca374badf1d6d"
@@ -45,13 +45,45 @@
     "fallbackRequiresExplicitUserApproval": true
   },
   "textContract": {
-    "strategy": "remotion-deterministic-overlay",
+    "strategy": "deterministic-paper-surface-v3.1",
     "generatedReadableTextAllowed": false,
+    "modelGeneratedReadableTextAllowed": false,
     "nodeLabelsRequired": true,
-    "minimumNodeLabelCount": 1,
+    "minimumNodeLabelCount": 3,
+    "minimumComplexSceneNodeLabelCount": 4,
+    "maximumReadableNodeLabelCount": 6,
+    "maximumSimultaneousNodeLabels": 4,
     "maximumCharactersPerNodeLabel": 8,
     "mustBindSpokenLine": true,
-    "mustRevalidateAgainstRecordedSpeech": true
+    "mustRevalidateAgainstRecordedSpeech": true,
+    "defaultEmbeddingMode": "tracked-paper-surface",
+    "allowedEmbeddingModes": [
+      "tracked-paper-surface",
+      "first-frame-baked"
+    ],
+    "firstFrameBakeOnlyForRigidSurface": true,
+    "firstFrameBakeRequiresOcr": true,
+    "paperNodeScreenOverlayAllowed": false,
+    "silentTruncationAllowed": false,
+    "slashMergeAllowed": false
+  },
+  "semanticTimingContract": {
+    "recordedSpeechAuthority": true,
+    "declaredCaptionWindowRequired": true,
+    "exactSpokenTermRequiredPerNode": true,
+    "maximumVisualClaimLeadMs": 300,
+    "maximumNodeLabelStageOffsetFrames": 3,
+    "mismatchAllowed": false,
+    "partialRequiresExplicitUserException": true
+  },
+  "generatedAssetContract": {
+    "formalAssetShaBindingRequired": true,
+    "sourcePlanOrderRequired": true,
+    "firstMiddleLastEvidenceRequired": true,
+    "silentViewRetellingRequired": true,
+    "inputActionResultRequired": true,
+    "textFirstMiddleLastOcrRequired": true,
+    "contactSheetMustBindFormalAssetSha": true
   },
   "productionBoundary": {
     "localPrevisualization": "allowed",

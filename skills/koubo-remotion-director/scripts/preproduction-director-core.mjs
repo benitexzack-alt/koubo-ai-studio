@@ -46,6 +46,25 @@ function push(errors, condition, code) {
   if (!condition) errors.push(code);
 }
 
+const PAPER_TEXT_EMBEDDING_MODES = new Set([
+  'first-frame-baked',
+  'tracked-paper-surface',
+]);
+const SCREEN_TEXT_ROLES = new Set(['screen-title', 'fact-source-caveat']);
+const PAPER_MOTION_CONSTRAINTS = new Set(['rigid-surface', 'tracked-moving-surface']);
+
+const isNormalizedQuad = (quad) =>
+  Array.isArray(quad) &&
+  quad.length === 4 &&
+  quad.every(
+    (point) =>
+      Array.isArray(point) &&
+      point.length === 2 &&
+      point.every((value) => Number.isFinite(value) && value >= 0 && value <= 1),
+  );
+
+const containsSlashMerge = (value) => /[\/／]/u.test(String(value ?? ''));
+
 function validatePaperScene(scene, beat, errors) {
   push(errors, scene && typeof scene === 'object', `PAPER_SCENE_MISSING:${beat.id}`);
   if (!scene || typeof scene !== 'object') return;
@@ -67,6 +86,7 @@ function validatePaperScene(scene, beat, errors) {
   const nodes = Array.isArray(scene.nodes) ? scene.nodes : [];
   const stages = Array.isArray(scene.stages) ? scene.stages : [];
   const textPlan = Array.isArray(scene.textPlan) ? scene.textPlan : [];
+  const screenTextPlan = Array.isArray(scene.screenTextPlan) ? scene.screenTextPlan : [];
   const minimumGroups = scene.archetype === 'complex-explanation' ? 5 : 3;
   const minimumNodes = scene.archetype === 'complex-explanation' ? 9 : 3;
 
@@ -105,6 +125,7 @@ function validatePaperScene(scene, beat, errors) {
   push(errors, depthCount >= 3, `PAPER_DEPTH_LAYER_COUNT_INVALID:${beat.id}`);
 
   const nodeIds = new Set();
+  const nodeById = new Map();
   for (const node of nodes) {
     push(errors, isText(node.id), `PAPER_NODE_ID_MISSING:${beat.id}`);
     push(errors, isText(node.label), `PAPER_NODE_LABEL_MISSING:${beat.id}:${node.id ?? 'unknown'}`);
@@ -118,9 +139,15 @@ function validatePaperScene(scene, beat, errors) {
       ids.has(node.groupId),
       `PAPER_NODE_GROUP_UNKNOWN:${beat.id}:${node.id ?? 'unknown'}`,
     );
+    push(
+      errors,
+      ['paper-label', 'visual-only'].includes(node.textVisibility),
+      `PAPER_NODE_TEXT_VISIBILITY_INVALID:${beat.id}:${node.id ?? 'unknown'}`,
+    );
     if (isText(node.id)) {
       push(errors, !nodeIds.has(node.id), `PAPER_NODE_ID_DUPLICATE:${beat.id}:${node.id}`);
       nodeIds.add(node.id);
+      nodeById.set(node.id, node);
     }
   }
 
@@ -134,6 +161,34 @@ function validatePaperScene(scene, beat, errors) {
     if (isText(stage.id)) stageIds.add(stage.id);
   });
 
+  push(
+    errors,
+    scene.readableTextPolicy?.silentTruncationForbidden === true,
+    `PAPER_TEXT_SILENT_TRUNCATION_NOT_BLOCKED:${beat.id}`,
+  );
+  push(
+    errors,
+    scene.readableTextPolicy?.slashMergeForbidden === true,
+    `PAPER_TEXT_SLASH_MERGE_NOT_BLOCKED:${beat.id}`,
+  );
+  push(
+    errors,
+    Number.isInteger(scene.readableTextPolicy?.maximumSimultaneousLabels) &&
+      scene.readableTextPolicy.maximumSimultaneousLabels >= 1 &&
+      scene.readableTextPolicy.maximumSimultaneousLabels <= 4,
+    `PAPER_TEXT_SIMULTANEOUS_LIMIT_INVALID:${beat.id}`,
+  );
+
+  const requiredTextNodeIds = new Set(
+    nodes.filter((node) => node.textVisibility === 'paper-label').map((node) => node.id),
+  );
+  const minimumReadableLabels = scene.archetype === 'complex-explanation' ? 4 : 3;
+  push(
+    errors,
+    requiredTextNodeIds.size >= minimumReadableLabels && requiredTextNodeIds.size <= 6,
+    `PAPER_READABLE_NODE_COUNT_INVALID:${beat.id}`,
+  );
+
   const textByNode = new Map();
   for (const item of textPlan) {
     push(errors, nodeIds.has(item.nodeId), `PAPER_TEXT_NODE_UNKNOWN:${beat.id}:${item.nodeId}`);
@@ -145,18 +200,122 @@ function validatePaperScene(scene, beat, errors) {
     );
     push(
       errors,
+      !containsSlashMerge(item.text),
+      `PAPER_TEXT_SLASH_MERGE_FORBIDDEN:${beat.id}:${item.nodeId}`,
+    );
+    push(
+      errors,
       stageIds.has(item.enterStageId),
       `PAPER_TEXT_STAGE_UNKNOWN:${beat.id}:${item.nodeId}`,
     );
-    push(errors, isText(item.position), `PAPER_TEXT_POSITION_MISSING:${beat.id}:${item.nodeId}`);
-    if (isText(item.nodeId)) textByNode.set(item.nodeId, item.text);
-  }
-  for (const node of nodes) {
     push(
       errors,
-      textByNode.get(node.id) === node.label,
-      `PAPER_TEXT_NODE_LABEL_MISMATCH:${beat.id}:${node.id}`,
+      item.role === 'diegetic-node-label',
+      `PAPER_TEXT_ROLE_INVALID:${beat.id}:${item.nodeId}`,
     );
+    push(
+      errors,
+      item.groupId === nodeById.get(item.nodeId)?.groupId,
+      `PAPER_TEXT_GROUP_BINDING_MISMATCH:${beat.id}:${item.nodeId}`,
+    );
+    push(
+      errors,
+      isText(item.surfaceId),
+      `PAPER_TEXT_SURFACE_MISSING:${beat.id}:${item.nodeId}`,
+    );
+    push(
+      errors,
+      isNormalizedQuad(item.anchorQuad),
+      `PAPER_TEXT_ANCHOR_QUAD_INVALID:${beat.id}:${item.nodeId}`,
+    );
+    push(
+      errors,
+      Number.isInteger(item.maxChars) &&
+        item.maxChars >= [...String(item.text ?? '')].length &&
+        item.maxChars <= 8,
+      `PAPER_TEXT_MAX_CHARS_INVALID:${beat.id}:${item.nodeId}`,
+    );
+    push(
+      errors,
+      isText(item.persistence),
+      `PAPER_TEXT_PERSISTENCE_MISSING:${beat.id}:${item.nodeId}`,
+    );
+    push(
+      errors,
+      isText(item.occlusionOwner),
+      `PAPER_TEXT_OCCLUSION_OWNER_MISSING:${beat.id}:${item.nodeId}`,
+    );
+    push(
+      errors,
+      item.ocrRequired === true,
+      `PAPER_TEXT_OCR_NOT_REQUIRED:${beat.id}:${item.nodeId}`,
+    );
+    push(
+      errors,
+      PAPER_MOTION_CONSTRAINTS.has(item.motionConstraint),
+      `PAPER_TEXT_MOTION_CONSTRAINT_INVALID:${beat.id}:${item.nodeId}`,
+    );
+    push(
+      errors,
+      PAPER_TEXT_EMBEDDING_MODES.has(item.embeddingMode),
+      `PAPER_TEXT_EMBEDDING_MODE_INVALID:${beat.id}:${item.nodeId}`,
+    );
+    push(
+      errors,
+      Number.isInteger(item.stageOffsetFrames) && Math.abs(item.stageOffsetFrames) <= 3,
+      `PAPER_TEXT_STAGE_OFFSET_INVALID:${beat.id}:${item.nodeId}`,
+    );
+    if (item.embeddingMode === 'first-frame-baked') {
+      push(
+        errors,
+        item.motionConstraint === 'rigid-surface',
+        `PAPER_FIRST_FRAME_BAKED_REQUIRES_RIGID_SURFACE:${beat.id}:${item.nodeId}`,
+      );
+    }
+    if (item.embeddingMode === 'tracked-paper-surface') {
+      push(
+        errors,
+        item.trackingKeyframesRequired === true,
+        `PAPER_TRACKED_TEXT_KEYFRAMES_NOT_REQUIRED:${beat.id}:${item.nodeId}`,
+      );
+    }
+    if (isText(item.nodeId)) {
+      push(
+        errors,
+        !textByNode.has(item.nodeId),
+        `PAPER_TEXT_NODE_DUPLICATE:${beat.id}:${item.nodeId}`,
+      );
+      textByNode.set(item.nodeId, item.text);
+    }
+  }
+  for (const node of nodes) {
+    if (node.textVisibility === 'paper-label') {
+      push(
+        errors,
+        textByNode.get(node.id) === node.label,
+        `PAPER_TEXT_NODE_LABEL_MISMATCH:${beat.id}:${node.id}`,
+      );
+    } else {
+      push(
+        errors,
+        !textByNode.has(node.id),
+        `PAPER_VISUAL_ONLY_NODE_HAS_TEXT:${beat.id}:${node.id}`,
+      );
+    }
+  }
+
+  for (const item of screenTextPlan) {
+    push(
+      errors,
+      SCREEN_TEXT_ROLES.has(item.role),
+      `PAPER_SCREEN_TEXT_ROLE_INVALID:${beat.id}`,
+    );
+    push(
+      errors,
+      item.embeddingMode === 'screen-overlay',
+      `PAPER_SCREEN_TEXT_MODE_INVALID:${beat.id}:${item.role ?? 'unknown'}`,
+    );
+    push(errors, isText(item.text), `PAPER_SCREEN_TEXT_EMPTY:${beat.id}:${item.role ?? 'unknown'}`);
   }
 
   push(
@@ -207,13 +366,33 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
   push(errors, request.policy?.fallback === 'blocked', 'PREPRODUCTION_FALLBACK_NOT_BLOCKED');
   push(
     errors,
-    request.policy?.textStrategy === 'remotion-deterministic-overlay',
+    request.policy?.textStrategy === 'deterministic-paper-surface-v3.1',
     'PREPRODUCTION_TEXT_STRATEGY_INVALID',
   );
   push(
     errors,
     request.policy?.generatedReadableTextAllowed === false,
     'PREPRODUCTION_GENERATED_TEXT_NOT_BLOCKED',
+  );
+  push(
+    errors,
+    request.policy?.modelGeneratedReadableTextAllowed === false,
+    'PREPRODUCTION_MODEL_GENERATED_TEXT_NOT_BLOCKED',
+  );
+  push(
+    errors,
+    request.policy?.deterministicTextMayBeBakedIntoFirstFrame === true,
+    'PREPRODUCTION_FIRST_FRAME_TEXT_BAKE_NOT_ALLOWED',
+  );
+  push(
+    errors,
+    request.policy?.defaultPaperTextMode === 'tracked-paper-surface',
+    'PREPRODUCTION_DEFAULT_PAPER_TEXT_MODE_INVALID',
+  );
+  push(
+    errors,
+    request.policy?.paperNodeScreenOverlayAllowed === false,
+    'PREPRODUCTION_PAPER_NODE_SCREEN_OVERLAY_ALLOWED',
   );
   push(
     errors,
@@ -426,38 +605,65 @@ export function renderAssetSheet(plan) {
   return `${lines.join('\n').replace(/\n+$/, '')}\n`;
 }
 
-function buildSceneIdentity(scene, index) {
+export function buildSceneIdentity(scene, index) {
   const sceneId = `P${String(index + 1).padStart(2, '0')}`;
   const pairId = `${sceneId}-${scene.beatId}`;
   const firstFrameOutputFileName = `${sceneId}_${scene.beatId}_first-frame.png`;
+  const bakedFirstFrameOutputFileName = `${sceneId}_${scene.beatId}_first-frame-text-baked.png`;
   const firstFramePromptSha256 = sha256Buffer(
     Buffer.from(scene.prompt.firstFrame, 'utf8'),
   );
   const imageToVideoPromptSha256 = sha256Buffer(
     Buffer.from(scene.prompt.motion, 'utf8'),
   );
+  const textPlanSha256 = sha256Json({
+    textPlan: scene.textPlan,
+    screenTextPlan: scene.screenTextPlan ?? [],
+  });
+  const hasFirstFrameBakedText = scene.textPlan.some(
+    (item) => item.embeddingMode === 'first-frame-baked',
+  );
   const pairSha256 = sha256Json({
     pairId,
     firstFramePromptSha256,
     imageToVideoPromptSha256,
+    textPlanSha256,
   });
   return {
     sceneId,
     pairId,
     firstFrameOutputFileName,
+    bakedFirstFrameOutputFileName,
+    runningHubInputFileName: hasFirstFrameBakedText
+      ? bakedFirstFrameOutputFileName
+      : firstFrameOutputFileName,
     firstFramePromptSha256,
     imageToVideoPromptSha256,
+    textPlanSha256,
+    hasFirstFrameBakedText,
     pairSha256,
   };
 }
 
 const buildTextOverlayPlan = (scene) =>
   scene.textPlan.map((item) => ({
-    nodeId: item.nodeId,
-    text: item.text,
-    enterStageId: item.enterStageId,
-    position: item.position,
+    ...item,
   }));
+
+const buildFirstFrameBakePlan = (scene, identity) => {
+  const labels = buildTextOverlayPlan(scene).filter(
+    (item) => item.embeddingMode === 'first-frame-baked',
+  );
+  return {
+    enabled: identity.hasFirstFrameBakedText,
+    sourceImageFileName: identity.firstFrameOutputFileName,
+    outputImageFileName: identity.bakedFirstFrameOutputFileName,
+    textPlanSha256: identity.textPlanSha256,
+    labelsSha256: sha256Json(labels),
+    labels,
+    ocrRequired: identity.hasFirstFrameBakedText,
+  };
+};
 
 export function buildFirstFramePromptManifest(plan) {
   return {
@@ -469,6 +675,8 @@ export function buildFirstFramePromptManifest(plan) {
     consumer: 'first-frame-image-automation',
     promptRole: 'completed-static-reference-only',
     generatedReadableTextAllowed: false,
+    modelGeneratedReadableTextAllowed: false,
+    deterministicTextMayBeBakedIntoFirstFrame: true,
     sourcePlanCanonicalSha256: sha256Json(plan),
     sceneCount: plan.paperScenes.length,
     scenes: plan.paperScenes.map((scene, index) => {
@@ -483,8 +691,11 @@ export function buildFirstFramePromptManifest(plan) {
         outputFileName: identity.firstFrameOutputFileName,
         firstFramePrompt: scene.prompt.firstFrame,
         firstFramePromptSha256: identity.firstFramePromptSha256,
+        textPlanSha256: identity.textPlanSha256,
         pairSha256: identity.pairSha256,
         generatedReadableTextAllowed: false,
+        modelGeneratedReadableTextAllowed: false,
+        deterministicTextBake: buildFirstFrameBakePlan(scene, identity),
         postProductionTextOverlay: buildTextOverlayPlan(scene),
       };
     }),
@@ -512,13 +723,16 @@ export function buildRunningHubPromptManifest(plan) {
         beatId: scene.beatId,
         title: scene.title,
         spokenLine: scene.spokenLine,
-        inputFirstFrameFileName: identity.firstFrameOutputFileName,
+        inputFirstFrameFileName: identity.runningHubInputFileName,
         inputFirstFramePromptSha256: identity.firstFramePromptSha256,
+        inputFirstFrameTextPlanSha256: identity.textPlanSha256,
         durationSeconds: scene.durationSeconds,
         imageToVideoPrompt: scene.prompt.motion,
         imageToVideoPromptSha256: identity.imageToVideoPromptSha256,
         pairSha256: identity.pairSha256,
         generatedReadableTextAllowed: false,
+        modelGeneratedReadableTextAllowed: false,
+        inputContainsDeterministicBakedText: identity.hasFirstFrameBakedText,
         postProductionTextOverlay: buildTextOverlayPlan(scene),
       };
     }),
@@ -586,9 +800,22 @@ export function validatePromptHandoffManifests({
     );
     push(
       errors,
-      runningHub.inputFirstFrameFileName === identity.firstFrameOutputFileName &&
-        runningHub.inputFirstFramePromptSha256 === identity.firstFramePromptSha256,
+      runningHub.inputFirstFrameFileName === identity.runningHubInputFileName &&
+        runningHub.inputFirstFramePromptSha256 === identity.firstFramePromptSha256 &&
+        runningHub.inputFirstFrameTextPlanSha256 === identity.textPlanSha256,
       `RUNNINGHUB_FIRST_FRAME_BINDING_MISMATCH:${suffix}`,
+    );
+    push(
+      errors,
+      firstFrame.textPlanSha256 === identity.textPlanSha256 &&
+        firstFrame.deterministicTextBake?.textPlanSha256 === identity.textPlanSha256,
+      `FIRST_FRAME_TEXT_PLAN_BINDING_MISMATCH:${suffix}`,
+    );
+    push(
+      errors,
+      firstFrame.deterministicTextBake?.enabled === identity.hasFirstFrameBakedText &&
+        runningHub.inputContainsDeterministicBakedText === identity.hasFirstFrameBakedText,
+      `FIRST_FRAME_TEXT_BAKE_MODE_MISMATCH:${suffix}`,
     );
     push(
       errors,
@@ -609,7 +836,7 @@ export function renderRunningHubPromptSheet(plan, runningHubManifest) {
     `# ${plan.taskId} RunningHub 图生视频提示词`,
     '',
     '> 本文件只包含图生视频动作提示词，不包含首帧生图提示词。请按同一 P 编号选择对应首帧图片。',
-    '> 生成模型不得写中文；节点文字由 Remotion 后期按清单确定性叠加。',
+    '> 生成模型不得自由写中文；节点文字只能使用清单声明的首帧确定性烧字或 Remotion 纸面跟踪。',
     '',
   ];
   runningHubManifest.scenes.forEach((scene) => {
@@ -619,7 +846,10 @@ export function renderRunningHubPromptSheet(plan, runningHubManifest) {
     lines.push(`- 输入首帧：${scene.inputFirstFrameFileName}`);
     lines.push(`- 建议时长：${scene.durationSeconds}秒`);
     lines.push(
-      `- 后期叠字：${scene.postProductionTextOverlay.map((item) => item.text).join(' / ')}`,
+      `- 文字模式：${scene.inputContainsDeterministicBakedText ? '首帧已确定性烧字；其余节点纸面跟踪' : 'Remotion 纸面跟踪'}`,
+    );
+    lines.push(
+      `- 精确节点：${scene.postProductionTextOverlay.map((item) => `${item.text}（${item.embeddingMode}）`).join(' / ')}`,
     );
     lines.push('- 图生视频提示词（RunningHub）：');
     lines.push('');

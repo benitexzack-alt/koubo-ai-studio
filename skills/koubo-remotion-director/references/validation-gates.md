@@ -28,7 +28,7 @@ node tools/validate-visual-plan.mjs <visual-plan.json>
 
 `koubo-paper-construct-v1`、`paper-construct-video` 和 `/user-generated-paper/` 已退役。视觉方案、V8 合同、生产命令、RunningHub 新任务和 QA 状态推进只要命中任一指纹都必须返回 `STYLE_RETIRED`；不能依赖 `producer` 或 `sourceType` 才检查。
 
-当前 `纸媒叙事装配 v2` 为 `productionEligible=false`。在以下证据齐全前，只能做离线方案和一条受控动态压力测试，不能进入 V8 正式生产：
+旧 `纸媒叙事装配 v2` 保持 `productionEligible=false`；它的历史证据不得冒充当前 v3.1 的任务验收。在以下证据齐全前，只能做离线方案和一条受控动态压力测试，不能进入 V8 正式生产：
 
 - 3—5 个创意方向及用户选择；
 - 用户确认的 Brief、视觉节奏轨和分镜；
@@ -82,6 +82,15 @@ V8 生产任务还必须：
 只有新 revision 的完成态静帧、同画面精确 30 秒 WithSfx/NoSfx 候选、独立机器复核和用户正常速度确认全部齐全，才允许另建 `renderable` request。这个晋级仍不等于 V8 正式片授权；正式片继续经过现有 production job、director-contract/preflight v2 和用户完整观看门。
 
 Skill 的既有 30 秒 WithSfx 用户验收只证明风格方向可接受。它不得被写成“新输入已复现”“production-ready”或“formal 已解锁”。
+
+## 纸艺 v3.1 语义、文字与资产门
+
+- 实录是拍摄后唯一正文。每个节拍和纸面节点必须声明字幕 ID 与起止毫秒，只在该窗口内检查实际词句；全文其他地方出现过同词不算通过。
+- 画面结论不得比语义锨点提前超过 300ms，纸片动作与节点标签不得错开超过 3 帧。`mismatch` 直接失败；`partial` 必须有用户对本节拍的明确例外。
+- 模型生成可读中文仍然禁止。运动纸片使用 Remotion `tracked-paper-surface`；低运动刚性纸片才能使用本地 `first-frame-baked`，且必须通过中文 OCR。
+- 每个可读节点必须绑定纸片组、表面、入场阶段和四角透视。屏幕浮层只能承担标题或事实来源，不得完成纸面节点任务。静默截断和斜杠合并节点均为失败。
+- 候选插片必须绑定 `sceneId + pairSha256 + textPlanSha256 + 正式视频SHA-256`，联系表只能按源计划顺序生成。替换视频、文字计划或证据帧后，旧联系表必须失效。
+- 逐镜必须在静音观看时说清对象、关系或变化、与口播的一致性，并以首/中/尾三帧证明输入→动作→结果。“风格好看”、“大概对应”或只检查开头帧，都不足以放行。
 
 ## 预览门禁
 
