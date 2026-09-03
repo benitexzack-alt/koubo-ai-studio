@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-text-bake-recovery-attempts/v1",
+  "taskId": "20260902-local-ai-services",
+  "purpose": "记录在不覆盖无字基础图和旧失败证据的前提下，修复最终合成图中文 OCR 假阴性的可追溯尝试。",
+  "attempts": [
+    {
+      "artifactVersion": 3,
+      "requestSha256": "e457b0d6b64351824540200123ba985a8fa7abccafb2370fc4c807764d5904b0",
+      "font": "Arial Unicode.ttf",
+      "outcome": "failed",
+      "failureNode": "P02/N1",
+      "expected": "本地客户",
+      "lesson": "字体在纸纹与透视合成后不利于本地中文 OCR。"
+    },
+    {
+      "artifactVersion": 4,
+      "requestSha256": "9e63d3eb1a31ee3ac50cc4cbad766fe8fd2ba910a73bdc58783c892dca09d803",
+      "font": "NotoSansCJKsc-Bold.otf",
+      "outcome": "failed",
+      "failureNode": "P01/N4",
+      "expected": "结果不定",
+      "lesson": "只更换中文字体不能解决所有最终合成图 OCR 假阴性。"
+    },
+    {
+      "artifactVersion": 5,
+      "requestSha256": "86117eebaa5f482ce68cf9d2095163891de92b4443d24048c9d1c6e242090d8d",
+      "font": "NotoSansCJKsc-Bold.otf",
+      "outcome": "failed",
+      "failureNode": "P03/N1",
+      "expected": "上门访谈",
+      "lesson": "固定多预处理档位仍会对个别汉字产生假阴性。"
+    },
+    {
+      "artifactVersion": 6,
+      "requestSha256": "7e9ae0b6909d1a8a6cd931ee090eb8abfa0e11d2cdf8da2be29d0171b3b0eee2",
+      "font": "NotoSansCJKsc-Regular.otf",
+      "outcome": "failed",
+      "failureNode": "P01/N4",
+      "expected": "结果不定",
+      "lesson": "字重改变有帮助，但仍需要第二个独立本地 OCR 引擎复核。"
+    },
+    {
+      "artifactVersion": 7,
+      "requestSha256": "08ed271df7f43bc9fe516af93e3215685085b81fe6656f322e6b0352edbac1b1",
+      "font": "NotoSansCJKsc-Regular.otf",
+      "outcome": "failed",
+      "failureNode": "P03/N3",
+      "expected": "老照片修复",
+      "lesson": "Tesseract 在肉眼清晰的反透视最终图上仍会误识别单个汉字。"
+    },
+    {
+      "artifactVersion": 8,
+      "requestSha256": "36af00af2808d501bbdd871a42baab47d4e2544ae0f205a3cfaabb548c1f84b8",
+      "font": "NotoSansCJKsc-Regular.otf",
+      "outcome": "passed",
+      "sceneCount": 7,
+      "labelCount": 28,
+      "exactMatchCount": 28,
+      "policy": "tesseract-then-apple-vision-exact-match-v1"
+    }
+  ],
+  "rawImagesPreserved": true,
+  "partialFailedOutputsCommitted": false,
+  "runningHubActionsPerformed": false,
+  "generatedAt": "2026-09-03T07:46:27Z"
+}

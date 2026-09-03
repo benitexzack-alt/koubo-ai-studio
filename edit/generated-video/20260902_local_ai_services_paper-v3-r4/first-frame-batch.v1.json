@@ -2,7 +2,7 @@
   "schemaVersion": "koubo-paper-firstframe-batch/v1",
   "taskId": "20260902-local-ai-services",
   "requestId": "local-ai-services-paper-v3-r4-pre-shoot",
-  "status": "text-bake-blocked-after-raw-pass",
+  "status": "text-baked-firstframes-awaiting-user-review",
   "generationMode": "image_gen-one-call-per-scene",
   "maximumConcurrency": 2,
   "automaticRetryAllowed": false,
@@ -1357,6 +1357,43 @@
       "type": "image-result-recorded",
       "sceneId": "P06",
       "at": "2026-09-03T06:09:24.414Z"
+    },
+    {
+      "type": "deterministic-text-bake-passed",
+      "phase": "full",
+      "sceneIds": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07"
+      ],
+      "at": "2026-09-03T07:41:02.830Z"
+    }
+  ],
+  "textBakeReceipts": [
+    {
+      "phase": "full",
+      "request": {
+        "path": "/Users/pc/Documents/口播/edit/generated-video/20260902_local_ai_services_paper-v3-r4/first-frame-qa/full-text-bake-request.v8.json",
+        "sha256": "36af00af2808d501bbdd871a42baab47d4e2544ae0f205a3cfaabb548c1f84b8"
+      },
+      "receipt": {
+        "path": "/Users/pc/Documents/口播/edit/generated-video/20260902_local_ai_services_paper-v3-r4/first-frame-qa/full-text-bake-receipt.v8.json",
+        "sha256": "0a9a9a72bddcf43480a06cf784eb56c801b8c9ed967e25b9f3ae43cc356701e1"
+      },
+      "sceneIds": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05",
+        "P06",
+        "P07"
+      ],
+      "recordedAt": "2026-09-03T07:41:02.829Z"
     }
   ]
 }
