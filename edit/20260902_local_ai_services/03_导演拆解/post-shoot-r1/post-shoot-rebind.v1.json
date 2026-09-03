@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "koubo-director-post-shoot-rebind/v1",
+  "revisionId": "20260904-local-ai-services-post-shoot-r1",
+  "status": "ready-for-candidate-preview",
+  "formalEligible": false,
+  "canonicalSpokenSource": {
+    "path": "/Users/pc/Documents/口播/edit/20260902_local_ai_services/01_口播原片待放/copy_3F3E7580-B0D3-4922-A052-49F299E23BCA.MOV",
+    "sha256": "cfb3f0e467a2bfdfd2b91756d67566dbd5383acecc7ae2e814b05cdee0891f95",
+    "durationSeconds": 279.433333,
+    "authority": "recorded-audio"
+  },
+  "preShootPlan": {
+    "path": "/Users/pc/Documents/口播/edit/20260902_local_ai_services/03_导演拆解/paper-v3-r4/director-preproduction-plan.v1.json",
+    "role": "comparison-only-after-recording"
+  },
+  "transcript": {
+    "path": "/Users/pc/Documents/口播/edit/20260902_local_ai_services/06_转写与字幕/LOCAL_AI_SERVICES_20260902.actual.cleaned.v1.json",
+    "captions": "/Users/pc/Documents/口播/remotion/public/data/LOCAL_AI_SERVICES_20260902.actual.bilingual.v1.json",
+    "policy": "/Users/pc/Documents/口播/edit/20260902_local_ai_services/06_转写与字幕/LOCAL_AI_SERVICES_20260902.spoken-source-policy.v1.json"
+  },
+  "routingRules": {
+    "paper": "全屏播放已烘焙中文的纸艺原画面，不叠加第二套节点卡，不循环，不冻结延长。",
+    "userRealMedia": "U02、U03作为主画面播放，真人从全景收至右下角继续讲，素材原声低增益保留。",
+    "generatedVideo": "U04、U05全屏播放，标注AI生成情景演绎，不作为真实事件证据。",
+    "speaker": "其余段落保持稳定V8真人语义动效，避免长时间空讲。"
+  },
+  "lockedInsertions": [
+    {"beat":"B02","assetId":"P01","start":4.508,"end":11.8,"route":"paper-fullscreen","spokenMeaning":"投入内容生产后，平台结果仍不确定"},
+    {"beat":"B03","assetId":"P02","start":35.6,"end":42.6,"route":"paper-fullscreen","spokenMeaning":"本地服务形成做一单、验一单的路径"},
+    {"beat":"B05","assetId":"U02","start":52.6,"end":68.4,"route":"real-media-with-presenter-inset","spokenMeaning":"家庭故事动画把人生经历整理成专属故事"},
+    {"beat":"B06","assetId":"U03","start":73.6,"end":82.66,"route":"real-media-with-presenter-inset","spokenMeaning":"婚礼预告短片的实际成片展示"},
+    {"beat":"B07","assetId":"U04","start":107.2,"end":113.784,"route":"generated-video-fullscreen","spokenMeaning":"长辈数字回忆录的上门访谈情景"},
+    {"beat":"B08","assetId":"P03","start":126.4,"end":134.4,"route":"paper-fullscreen","spokenMeaning":"访谈、时间线、照片修复与家族档案流程"},
+    {"beat":"B09","assetId":"U05","start":155.6,"end":162.184,"route":"generated-video-fullscreen","spokenMeaning":"银发经营者学习使用AI完成经营宣传任务"},
+    {"beat":"B10","assetId":"P04","start":182.6,"end":190.6,"route":"paper-fullscreen","spokenMeaning":"豆包提示词、文案、海报和沟通话术"},
+    {"beat":"B11","assetId":"P05","start":211.6,"end":218.892,"route":"paper-fullscreen","spokenMeaning":"本地客户从真实需求走向明确交付和现场验收"},
+    {"beat":"B12","assetId":"P06","start":241.44,"end":248.44,"route":"paper-fullscreen","spokenMeaning":"线上案例和内容名片通向线下小单验证"},
+    {"beat":"B13","assetId":"P07","start":253.856,"end":260.44,"route":"paper-fullscreen","spokenMeaning":"真实需求经AI工具和人工判断形成可用结果"}
+  ],
+  "gates": {
+    "materialGate": "passed",
+    "actualTranscriptBound": true,
+    "paperTextBaked": true,
+    "candidatePreviewRequired": true,
+    "humanFullWatchRequired": true,
+    "formalRenderEnabled": false
+  }
+}
