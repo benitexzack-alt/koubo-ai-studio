@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-text-bake-qa-receipt/v1",
+  "taskId": "20260902-local-ai-services",
+  "requestId": "local-ai-services-paper-v3-r4-pre-shoot",
+  "status": "failed-blocked",
+  "exactChineseOcrPassed": false,
+  "outputCommitted": false,
+  "bakedOutputCount": 0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "requestPath": "/Users/pc/Documents/口播/edit/generated-video/20260902_local_ai_services_paper-v3-r4/first-frame-qa/full-text-bake-request.failed-v1.json",
+      "requestSha256": "80a9ee1e933ac3deb34810a017acc169508516424fbd03633e87940b000985a8",
+      "error": "TEXT_BAKE_OCR_MISMATCH:P01:N3"
+    },
+    {
+      "attempt": 2,
+      "requestPath": "/Users/pc/Documents/口播/edit/generated-video/20260902_local_ai_services_paper-v3-r4/first-frame-qa/full-text-bake-request.failed-v2.json",
+      "requestSha256": "5032da35e3fbcc8e54e654f3c7cba581b8b1c6d2040e87dfb7f5182cf72404d2",
+      "error": "TEXT_BAKE_OCR_MISMATCH:P01:N3"
+    }
+  ],
+  "failedCheck": {
+    "sceneId": "P01",
+    "beatId": "B02",
+    "nodeId": "N3",
+    "expected": "平台分发",
+    "recognizedNormalized": ""
+  },
+  "rootCause": "现行最终合成 OCR 流程直接对带纸纹和透视的裁剪运行 Tesseract PSM 7，没有先做反透视矫正、二值化与边框预处理；文字本身已可视化渲染，但 OCR 精确匹配不稳定。",
+  "thirdBlindAttemptPerformed": false,
+  "rawImagesPreserved": true,
+  "p0": ["P0-TEXT-BAKE-OCR"],
+  "p1": [],
+  "generatedAt": "2026-09-03T06:50:22Z"
+}

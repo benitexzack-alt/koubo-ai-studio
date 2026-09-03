@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-batch-qa-summary/v1",
+  "taskId": "20260902-local-ai-services",
+  "requestId": "local-ai-services-paper-v3-r4-pre-shoot",
+  "overallStatus": "revision-required",
+  "maximumAllowedStatus": "ready-for-user-review",
+  "rawFirstframes": {
+    "status": "PASS",
+    "sceneCount": 7,
+    "passedSceneCount": 7,
+    "failedSceneCount": 0,
+    "contactSheet": "/Users/pc/Documents/口播/edit/generated-video/20260902_local_ai_services_paper-v3-r4/first-frame-qa/full-contact-sheet.jpg"
+  },
+  "deterministicTextBake": {
+    "status": "FAIL",
+    "failedSceneId": "P01",
+    "failedNodeId": "N3",
+    "expectedText": "平台分发",
+    "attemptCount": 2,
+    "bakedOutputCount": 0,
+    "failureLog": "/Users/pc/Documents/口播/edit/generated-video/20260902_local_ai_services_paper-v3-r4/first-frame-qa/text-bake-failure-log.v1.json"
+  },
+  "hardChecks": {
+    "P03_B08": {
+      "status": "PASS",
+      "labelCardCount": 4,
+      "mapping": [
+        "G1=上门访谈",
+        "G2=人生时间线",
+        "G3=老照片修复",
+        "G5=家族档案"
+      ],
+      "G4ElectronicGuideHasFifthLabelOrBlankPlate": false
+    },
+    "P07_B13": {
+      "status": "PASS",
+      "demandCardBlankNoGraphicNoMark": true,
+      "confirmationPressBlankNoText": true,
+      "blankCandidateSlipCount": 3,
+      "candidateSlipsDistinguishedOnlyByColorAndPosition": true,
+      "forbiddenQuestionNumberCheckCrossStampWarningPresent": false
+    }
+  },
+  "p0": [
+    {
+      "id": "P0-TEXT-BAKE-OCR",
+      "status": "open",
+      "scope": "batch",
+      "description": "P01/N3“平台分发”在最终纸纹合成裁剪上无法通过当前 Tesseract 精确 OCR，导致全批文字烘焙不能提交。"
+    }
+  ],
+  "p1": [],
+  "runningHub": {
+    "configured": false,
+    "uploaded": false,
+    "submitted": false,
+    "generated": false,
+    "paid": false
+  },
+  "generatedAt": "2026-09-03T06:50:22Z"
+}

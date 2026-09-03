@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-text-bake-failure-log/v1",
+  "phase": "full",
+  "attempts": [
+    {
+      "attempt": 1,
+      "request": {
+        "path": "/Users/pc/Documents/口播/edit/generated-video/20260902_local_ai_services_paper-v3-r4/first-frame-qa/full-text-bake-request.failed-v1.json",
+        "sha256": "80a9ee1e933ac3deb34810a017acc169508516424fbd03633e87940b000985a8"
+      },
+      "calibrationChange": "首次按实际画面四边形写入。",
+      "error": "TEXT_BAKE_OCR_MISMATCH:P01:N3"
+    },
+    {
+      "attempt": 2,
+      "request": {
+        "path": "/Users/pc/Documents/口播/edit/generated-video/20260902_local_ai_services_paper-v3-r4/first-frame-qa/full-text-bake-request.failed-v2.json",
+        "sha256": "5032da35e3fbcc8e54e654f3c7cba581b8b1c6d2040e87dfb7f5182cf72404d2"
+      },
+      "calibrationChange": "扩大 P01/N3 纸牌内部安全写入四边形。",
+      "error": "TEXT_BAKE_OCR_MISMATCH:P01:N3"
+    }
+  ],
+  "status": "blocked-after-two-failures-before-output-commit",
+  "failedNodeExpectedText": "平台分发",
+  "outputCommitted": false,
+  "rawImagesModified": false,
+  "diagnosedRootCause": {
+    "category": "final-composite-ocr-robustness",
+    "finding": "中文“平台分发”已能被 ImageMagick 正常渲染到纸牌上，但现行 Tesseract chi_sim+eng、PSM 7 对带纸纹和透视背景的最终合成裁剪返回空结果；扩大写入区域仍未改变该结果。",
+    "notPromptFailure": true,
+    "notRawImageGenerationFailure": true,
+    "evidence": [
+      "两次批量烘焙均在同一 P01/N3 OCR 精确匹配门禁失败。",
+      "调试中可见“平台分发”确实已写入最终合成画面。",
+      "同字体同文本在纯白平面上可被 Tesseract 精确识别，而在最终纸纹合成裁剪中返回空结果。"
+    ]
+  },
+  "recommendedCorrection": "修改 Skill 的最终图 OCR 步骤：先按实际 anchorQuad 将最终合成区域反透视矫正到正视矩形，再按 Tesseract 官方建议做放大、二值化、留白边框和 PSM 7 精确识别；通过测试后创建新的文字烘焙请求版本。",
+  "stoppedWithoutThirdAttempt": true,
+  "loggedAt": "2026-09-03T06:50:22Z"
+}
