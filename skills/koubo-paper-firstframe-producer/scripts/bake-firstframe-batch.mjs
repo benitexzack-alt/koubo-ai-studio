@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import {spawnSync} from 'node:child_process';
-import {existsSync, readFileSync, statSync} from 'node:fs';
+import {existsSync, readFileSync, readdirSync, statSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {
@@ -30,6 +30,21 @@ const isQuad = (quad) =>
       point.every((value) => Number.isFinite(value) && value >= 0 && value <= 1),
   );
 
+const nextArtifactVersion = (qaRoot, phase) => {
+  const escapedPhase = phase.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
+  const patterns = [
+    new RegExp(`^${escapedPhase}-text-bake-request\\.v(\\d+)\\.json$`, 'u'),
+    new RegExp(`^${escapedPhase}-text-bake-request\\.failed-v(\\d+)\\.json$`, 'u'),
+    new RegExp(`^${escapedPhase}-text-bake-receipt\\.v(\\d+)\\.json$`, 'u'),
+  ];
+  const usedVersions = readdirSync(qaRoot, {withFileTypes: true})
+    .filter((entry) => entry.isFile())
+    .flatMap((entry) => patterns.map((pattern) => entry.name.match(pattern)))
+    .filter(Boolean)
+    .map((match) => Number(match[1]));
+  return (usedVersions.length === 0 ? 0 : Math.max(...usedVersions)) + 1;
+};
+
 try {
   const args = parseArgs(process.argv.slice(2));
   const projectRoot = path.resolve(args['project-root'] ?? defaultProjectRoot);
@@ -48,11 +63,15 @@ try {
   if (!existsSync(fontPath) || !statSync(fontPath).isFile()) {
     throw new Error(`TEXT_BAKE_FONT_MISSING:${fontPath}`);
   }
-  const requestPath = path.join(job.output.qaRoot, `${phase}-text-bake-request.v1.json`);
-  const receiptPath = path.join(job.output.qaRoot, `${phase}-text-bake-receipt.v1.json`);
-  if (existsSync(requestPath) || existsSync(receiptPath)) {
-    throw new Error('TEXT_BAKE_PHASE_ALREADY_EXECUTED');
-  }
+  const artifactVersion = nextArtifactVersion(job.output.qaRoot, phase);
+  const requestPath = path.join(
+    job.output.qaRoot,
+    `${phase}-text-bake-request.v${artifactVersion}.json`,
+  );
+  const receiptPath = path.join(
+    job.output.qaRoot,
+    `${phase}-text-bake-receipt.v${artifactVersion}.json`,
+  );
 
   const scenes = sceneIds.map((sceneId) => {
     const scene = job.scenes.find((item) => item.sceneId === sceneId);
@@ -127,6 +146,7 @@ try {
 
   const request = {
     schemaVersion: 'koubo-paper-firstframe-text-bake-request/v1',
+    artifactVersion,
     taskId: job.taskId,
     sourcePlan: {path: sourcePlanPath, sha256: sha256File(sourcePlanPath)},
     fontPath,
@@ -165,7 +185,14 @@ try {
   });
   job.events.push({type: 'deterministic-text-bake-passed', phase, sceneIds, at: new Date().toISOString()});
   replaceJson(jobPath, job);
-  console.log(JSON.stringify({ok: true, phase, requestPath, receiptPath, sceneCount: scenes.length}));
+  console.log(JSON.stringify({
+    ok: true,
+    phase,
+    artifactVersion,
+    requestPath,
+    receiptPath,
+    sceneCount: scenes.length,
+  }));
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
   process.exit(1);

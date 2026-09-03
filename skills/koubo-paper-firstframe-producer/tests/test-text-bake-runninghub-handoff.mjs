@@ -142,6 +142,15 @@ try {
     events: [],
   }, null, 2)}\n`);
 
+  writeFileSync(
+    path.join(qaRoot, 'full-text-bake-request.failed-v1.json'),
+    `${JSON.stringify({status: 'historical-failure'})}\n`,
+  );
+  writeFileSync(
+    path.join(qaRoot, 'full-text-bake-request.failed-v2.json'),
+    `${JSON.stringify({status: 'historical-failure'})}\n`,
+  );
+
   const bake = run(bakeBatchScript, [
     '--project-root', repoRoot,
     '--job', jobPath,
@@ -153,6 +162,8 @@ try {
   assert.equal(existsSync(bakedImagePath), true);
   const updatedJob = JSON.parse(readFileSync(jobPath, 'utf8'));
   assert.equal(updatedJob.textBakeReceipts.length, 1);
+  assert.match(updatedJob.textBakeReceipts[0].request.path, /request\.v3\.json$/u);
+  assert.match(updatedJob.textBakeReceipts[0].receipt.path, /receipt\.v3\.json$/u);
   const bakeReceipt = JSON.parse(
     readFileSync(updatedJob.textBakeReceipts[0].receipt.path, 'utf8'),
   );

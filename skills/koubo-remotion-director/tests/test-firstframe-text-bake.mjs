@@ -28,13 +28,22 @@ try {
   const outputPath = path.join(testRoot, 'baked.png');
   const receiptPath = path.join(testRoot, 'receipt.json');
   const requestPath = path.join(testRoot, 'request.json');
-  const imageResult = run('magick', ['-size', '1280x720', 'xc:#E8D6AF', sourcePath]);
+  const imageResult = run('magick', [
+    '-size',
+    '1280x720',
+    'xc:#10243A',
+    '-fill',
+    '#E8D6AF',
+    '-draw',
+    'polygon 256,216 1049,245 998,468 205,432',
+    sourcePath,
+  ]);
   assert.equal(imageResult.status, 0, imageResult.stderr);
 
   const labels = [
     {
       nodeId: 'N1',
-      text: '人工',
+      text: '平台分发',
       groupId: 'G1',
       surfaceId: 'surface-1',
       enterStageId: 'S1',
@@ -45,7 +54,7 @@ try {
       embeddingMode: 'first-frame-baked',
       motionConstraint: 'rigid-surface',
       stageOffsetFrames: 0,
-      anchorQuad: [[0.2, 0.3], [0.8, 0.3], [0.8, 0.62], [0.2, 0.62]],
+      anchorQuad: [[0.2, 0.3], [0.82, 0.34], [0.78, 0.65], [0.16, 0.6]],
       ocrRequired: true,
     },
   ];
@@ -103,6 +112,14 @@ try {
   const receipt = JSON.parse(readFileSync(receiptPath, 'utf8'));
   assert.equal(receipt.status, 'deterministic-first-frame-text-baked-and-ocr-passed');
   assert.equal(receipt.scenes[0].ocr[0].matched, true);
+  assert.equal(
+    receipt.scenes[0].ocr[0].preprocessing.mode,
+    'inverse-perspective-binarized-v1',
+  );
+  assert.deepEqual(
+    receipt.scenes[0].ocr[0].preprocessing.rectifiedSize,
+    {width: 1000, height: 240},
+  );
   assert.equal(receipt.scenes[0].outputImage.sha256, sha256File(outputPath));
   assert.equal(receipt.scenes[0].anchorCalibration.sha256, sha256File(calibrationPath));
 

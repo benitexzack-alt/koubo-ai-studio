@@ -134,6 +134,7 @@ node skills/koubo-paper-firstframe-producer/scripts/bake-firstframe-batch.mjs \
 ```
 
 脚本会组装并调用导演 Skill 的确定性写字器，输出 `text-baked-first-frames/`、写字请求和 OCR 回执。目标中文必须逐字相等；位置偏离纸面、溢字、缺字、多字或 OCR 不通过都必须阻断。
+最终图 OCR 必须先按实际 `anchorQuad` 反透视成正视纸牌，再放大、二值化、加白边并使用单行模式精确识别。每次执行会自动选择下一个未使用的请求/回执版本号，失败记录和旧产物保持不变。
 
 用户确认带字样图后，再对 `--phase full` 执行同样流程。联系表应优先使用带字图，不能拿无字基础图申请 RunningHub 交接。
 

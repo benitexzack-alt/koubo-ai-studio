@@ -24,6 +24,11 @@ import {
 
 const SCHEMA = 'koubo-paper-firstframe-text-bake-request/v1';
 const CALIBRATION_SCHEMA = 'koubo-paper-firstframe-anchor-calibration/v1';
+const LABEL_WIDTH = 1000;
+const LABEL_HEIGHT = 240;
+const OCR_SCALE_PERCENT = 300;
+const OCR_THRESHOLD_PERCENT = 50;
+const OCR_BORDER_PIXELS = 120;
 const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultProjectRoot = path.resolve(skillRoot, '../..');
 
@@ -73,27 +78,15 @@ const identify = (imagePath) => {
   return {width, height};
 };
 
-const cropBounds = (quad, width, height) => {
-  const xs = quad.map((point) => point[0] * width);
-  const ys = quad.map((point) => point[1] * height);
-  const left = Math.max(0, Math.floor(Math.min(...xs)) - 12);
-  const top = Math.max(0, Math.floor(Math.min(...ys)) - 12);
-  const right = Math.min(width, Math.ceil(Math.max(...xs)) + 12);
-  const bottom = Math.min(height, Math.ceil(Math.max(...ys)) + 12);
-  return {left, top, width: Math.max(1, right - left), height: Math.max(1, bottom - top)};
-};
-
 const renderLabel = ({label, anchorQuad, canvas, fontPath, inputPath, outputPath, workRoot, index}) => {
-  const labelWidth = 1000;
-  const labelHeight = 240;
   const labelPath = path.join(workRoot, `label-${index}.png`);
   const warpedPath = path.join(workRoot, `warped-${index}.png`);
   const destination = anchorQuad.map(([x, y]) => [x * canvas.width, y * canvas.height]);
   const points = [
     [0, 0, ...destination[0]],
-    [labelWidth, 0, ...destination[1]],
-    [labelWidth, labelHeight, ...destination[2]],
-    [0, labelHeight, ...destination[3]],
+    [LABEL_WIDTH, 0, ...destination[1]],
+    [LABEL_WIDTH, LABEL_HEIGHT, ...destination[2]],
+    [0, LABEL_HEIGHT, ...destination[3]],
   ]
     .map((point) => `${point[0]},${point[1]} ${point[2]},${point[3]}`)
     .join(' ');
@@ -102,7 +95,7 @@ const renderLabel = ({label, anchorQuad, canvas, fontPath, inputPath, outputPath
     'magick',
     [
       '-size',
-      `${labelWidth}x${labelHeight}`,
+      `${LABEL_WIDTH}x${LABEL_HEIGHT}`,
       'xc:none',
       '-font',
       fontPath,
@@ -137,6 +130,54 @@ const renderLabel = ({label, anchorQuad, canvas, fontPath, inputPath, outputPath
     'TEXT_BAKE_PERSPECTIVE_FAILED',
   );
   run('magick', [inputPath, warpedPath, '-composite', outputPath], 'TEXT_BAKE_COMPOSITE_FAILED');
+};
+
+const rectifyLabelForOcr = ({inputPath, anchorQuad, canvas, outputPath}) => {
+  const source = anchorQuad.map(([x, y]) => [x * canvas.width, y * canvas.height]);
+  const destination = [
+    [0, 0],
+    [LABEL_WIDTH - 1, 0],
+    [LABEL_WIDTH - 1, LABEL_HEIGHT - 1],
+    [0, LABEL_HEIGHT - 1],
+  ];
+  const points = source
+    .map(([sourceX, sourceY], index) => {
+      const [destinationX, destinationY] = destination[index];
+      return `${sourceX},${sourceY} ${destinationX},${destinationY}`;
+    })
+    .join(' ');
+
+  run(
+    'magick',
+    [
+      inputPath,
+      '-alpha',
+      'off',
+      '-virtual-pixel',
+      'white',
+      '-filter',
+      'Lanczos',
+      '-define',
+      `distort:viewport=${LABEL_WIDTH}x${LABEL_HEIGHT}+0+0`,
+      '-distort',
+      'Perspective',
+      points,
+      '-colorspace',
+      'Gray',
+      '-resize',
+      `${OCR_SCALE_PERCENT}%`,
+      '-contrast-stretch',
+      '1%x1%',
+      '-threshold',
+      `${OCR_THRESHOLD_PERCENT}%`,
+      '-bordercolor',
+      'white',
+      '-border',
+      String(OCR_BORDER_PIXELS),
+      outputPath,
+    ],
+    'TEXT_BAKE_OCR_RECTIFICATION_FAILED',
+  );
 };
 
 const args = parseArgs(process.argv.slice(2));
@@ -288,24 +329,16 @@ try {
       const effectiveAnchorQuad = scene.anchorCalibrationRequired === true
         ? calibratedByNode.get(label.nodeId)
         : label.anchorQuad;
-      const bounds = cropBounds(effectiveAnchorQuad, canvas.width, canvas.height);
-      const cropPath = path.join(workRoot, `${scene.sceneId}-ocr-${index}.png`);
-      run(
-        'magick',
-        [
-          currentPath,
-          '-crop',
-          `${bounds.width}x${bounds.height}+${bounds.left}+${bounds.top}`,
-          '+repage',
-          '-resize',
-          '200%',
-          cropPath,
-        ],
-        'TEXT_BAKE_OCR_CROP_FAILED',
-      );
+      const ocrInputPath = path.join(workRoot, `${scene.sceneId}-ocr-${index}.png`);
+      rectifyLabelForOcr({
+        inputPath: currentPath,
+        anchorQuad: effectiveAnchorQuad,
+        canvas,
+        outputPath: ocrInputPath,
+      });
       const text = run(
         'tesseract',
-        [cropPath, 'stdout', '-l', 'chi_sim+eng', '--psm', '7'],
+        [ocrInputPath, 'stdout', '-l', 'chi_sim+eng', '--psm', '7'],
         'TEXT_BAKE_OCR_FAILED',
       );
       const matched = normalizeOcr(text) === normalizeOcr(label.text);
@@ -314,7 +347,20 @@ try {
           `TEXT_BAKE_OCR_MISMATCH:${scene.sceneId}:${label.nodeId}:${normalizeOcr(text)}`,
         );
       }
-      ocr.push({nodeId: label.nodeId, expected: label.text, recognized: text, matched});
+      ocr.push({
+        nodeId: label.nodeId,
+        expected: label.text,
+        recognized: text,
+        matched,
+        preprocessing: {
+          mode: 'inverse-perspective-binarized-v1',
+          rectifiedSize: {width: LABEL_WIDTH, height: LABEL_HEIGHT},
+          scalePercent: OCR_SCALE_PERCENT,
+          thresholdPercent: OCR_THRESHOLD_PERCENT,
+          borderPixels: OCR_BORDER_PIXELS,
+          pageSegmentationMode: 7,
+        },
+      });
     }
     sceneReceipts.push({
       sceneId: scene.sceneId,
