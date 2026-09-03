@@ -15,7 +15,7 @@ import {
 
 const profile = {
   profileId: 'paper-editorial-director-v3',
-  profileVersion: '3.1.0',
+  profileVersion: '3.2.0',
   routingPolicy: {
     paperRequiredKinds: ['abstract-mechanism', 'causal-chain'],
   },
@@ -46,11 +46,13 @@ const makeRequest = (scriptPath) => ({
   policy: {
     branch: 'paper-editorial',
     fallback: 'blocked',
-      textStrategy: 'deterministic-paper-surface-v3.1',
+      textStrategy: 'deterministic-first-frame-text-v3.2',
       generatedReadableTextAllowed: false,
       modelGeneratedReadableTextAllowed: false,
       deterministicTextMayBeBakedIntoFirstFrame: true,
-      defaultPaperTextMode: 'tracked-paper-surface',
+      defaultPaperTextMode: 'first-frame-baked',
+      actualImageAnchorCalibrationRequired: true,
+      runningHubRequiresTextBakeReceipt: true,
       paperNodeScreenOverlayAllowed: false,
     postShootRebindRequired: true,
   },
@@ -151,7 +153,7 @@ try {
   const scriptPath = path.join(root, 'script.md');
   writeFileSync(
     scriptPath,
-    '中小企业不用自己买服务器，算力正在变成可以按需租用的公共资源。\n',
+    '中小企业不用自己买服务器，算力正在变成可以按需租用的公共资源。\n现在看这段真实婚礼短片。\n没有真实素材时，用情景演绎说明老人接受访谈。\n',
   );
   const request = makeRequest(scriptPath);
   const positive = validatePreproductionRequest({request, projectRoot: root, profile});
@@ -179,6 +181,7 @@ try {
   assert.equal(handoffResult.ok, true, handoffResult.errors.join('\n'));
   assert.equal(firstFrameManifest.scenes.length, 1);
   assert.equal(runningHubManifest.scenes.length, 1);
+  assert.equal(runningHubManifest.status, 'awaiting-text-baked-firstframes');
   assert.equal(
     firstFrameManifest.scenes[0].pairId,
     runningHubManifest.scenes[0].pairId,
@@ -196,6 +199,66 @@ try {
     firstFrameManifest.scenes[0].textPlanSha256,
     runningHubManifest.scenes[0].inputFirstFrameTextPlanSha256,
   );
+  assert.equal(firstFrameManifest.scenes[0].deterministicTextBake.anchorCalibrationRequired, true);
+
+  const routedRequest = structuredClone(request);
+  routedRequest.beats.push(
+    {
+      id: 'B02',
+      order: 2,
+      spokenLine: '现在看这段真实婚礼短片。',
+      coreMeaning: '用用户真实素材作为主画面，本人在右下角继续讲解。',
+      kind: 'real-person-action',
+      visualDecision: {class: 'real-evidence', producer: 'user', fallback: 'blocked'},
+      evidenceRefs: ['U01 用户婚礼短片'],
+      presentation: {
+        mode: 'real-media-with-presenter-inset',
+        materialAudioMode: 'duck-under-narration',
+        speakerIsExplainingThisAsset: true,
+        minimumDurationSeconds: 3,
+        presenter: {
+          source: 'authoritative-talk-source',
+          audioOwner: 'base-talk-only',
+          duplicateVideoMuted: true,
+          anchor: 'bottom-right',
+          shape: 'circle',
+        },
+        transition: {enterFrames: 16, exitFrames: 12, hardCutForbidden: true},
+        captions: {overlapForbidden: true, minimumGapPx: 24},
+      },
+    },
+    {
+      id: 'B03',
+      order: 3,
+      spokenLine: '没有真实素材时，用情景演绎说明老人接受访谈。',
+      coreMeaning: '只作人物和环境情景演绎，不充当需求证据。',
+      kind: 'real-person-action',
+      visualDecision: {class: 'generated-video', producer: 'user', fallback: 'blocked'},
+      evidenceRefs: [],
+      generatedVideoBrief: {
+        role: 'illustration-only',
+        presentationMode: 'full-screen',
+        evidenceEligible: false,
+        purpose: '表现上门访谈的动作与情绪',
+        prompt: '真实纪实风格，子女与老人围坐访谈，不出现可读文字。',
+        disclosureRequired: true,
+      },
+    },
+  );
+  const routedResult = validatePreproductionRequest({
+    request: routedRequest,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(routedResult.ok, true, routedResult.errors.join('\n'));
+  const routedPlan = compilePreproductionPlan({
+    request: routedRequest,
+    requestPath,
+    profile,
+    style,
+  });
+  assert.equal(routedPlan.routeSummary.presenterInsetBeatCount, 1);
+  assert.equal(routedPlan.routeSummary.generatedVideoBeatCount, 1);
 
   const mismatchedPair = structuredClone(runningHubManifest);
   mismatchedPair.scenes[0].pairId = 'P99-B99';
@@ -303,6 +366,9 @@ try {
       paperNodeScreenOverlayRejected: true,
       nodeStageOffsetOverThreeFramesRejected: true,
       modelGeneratedChineseRemainsBlocked: true,
+      realMaterialPresenterInsetValidated: true,
+      generatedVideoIllustrationBoundaryValidated: true,
+      runningHubPrematureReadinessBlocked: true,
     }),
   );
 } finally {

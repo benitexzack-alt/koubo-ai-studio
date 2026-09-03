@@ -20,6 +20,16 @@ const manifest = {
     title: '测试', aspectRatio: '16:9', outputFileName: 'P01_B01_first-frame.png',
     firstFramePrompt: prompt, firstFramePromptSha256: sha256Text(prompt),
     generatedReadableTextAllowed: false,
+    deterministicTextBake: {
+      enabled: true,
+      sourceImageFileName: 'P01_B01_first-frame.png',
+      outputImageFileName: 'P01_B01_first-frame-text-baked.png',
+      textPlanSha256: 'b'.repeat(64),
+      labelsSha256: 'c'.repeat(64),
+      labels: [{nodeId: 'N1', text: '真实需求'}],
+      ocrRequired: true,
+      anchorCalibrationRequired: true,
+    },
   }],
 };
 
@@ -34,6 +44,11 @@ const duplicate = structuredClone(manifest);
 duplicate.scenes.push(structuredClone(duplicate.scenes[0]));
 duplicate.sceneCount = 2;
 assert.ok(validateManifest(duplicate).includes('SCENE_ID_DUPLICATE:P01'));
+const noCalibrationGate = structuredClone(manifest);
+noCalibrationGate.scenes[0].deterministicTextBake.anchorCalibrationRequired = false;
+assert.ok(
+  validateManifest(noCalibrationGate).includes('TEXT_BAKE_ANCHOR_CALIBRATION_NOT_REQUIRED:P01'),
+);
 
 const temporaryRoot = mkdtempSync(path.join(os.tmpdir(), 'firstframe-test-'));
 try {
@@ -44,4 +59,4 @@ try {
   rmSync(temporaryRoot, {recursive: true, force: true});
 }
 
-console.log(JSON.stringify({ok: true, manifestValidation: true, videoPromptLeakRejected: true, promptDriftRejected: true, duplicateSceneRejected: true}));
+console.log(JSON.stringify({ok: true, manifestValidation: true, videoPromptLeakRejected: true, promptDriftRejected: true, duplicateSceneRejected: true, missingAnchorCalibrationGateRejected: true}));

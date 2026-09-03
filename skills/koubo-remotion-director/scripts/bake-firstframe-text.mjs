@@ -23,6 +23,7 @@ import {
 } from './preproduction-director-core.mjs';
 
 const SCHEMA = 'koubo-paper-firstframe-text-bake-request/v1';
+const CALIBRATION_SCHEMA = 'koubo-paper-firstframe-anchor-calibration/v1';
 const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultProjectRoot = path.resolve(skillRoot, '../..');
 
@@ -82,12 +83,12 @@ const cropBounds = (quad, width, height) => {
   return {left, top, width: Math.max(1, right - left), height: Math.max(1, bottom - top)};
 };
 
-const renderLabel = ({label, canvas, fontPath, inputPath, outputPath, workRoot, index}) => {
+const renderLabel = ({label, anchorQuad, canvas, fontPath, inputPath, outputPath, workRoot, index}) => {
   const labelWidth = 1000;
   const labelHeight = 240;
   const labelPath = path.join(workRoot, `label-${index}.png`);
   const warpedPath = path.join(workRoot, `warped-${index}.png`);
-  const destination = label.anchorQuad.map(([x, y]) => [x * canvas.width, y * canvas.height]);
+  const destination = anchorQuad.map(([x, y]) => [x * canvas.width, y * canvas.height]);
   const points = [
     [0, 0, ...destination[0]],
     [labelWidth, 0, ...destination[1]],
@@ -217,12 +218,62 @@ try {
     ) {
       throw new Error(`TEXT_BAKE_LABELS_SHA_MISMATCH:${scene.sceneId}`);
     }
+    const calibratedAnchors = Array.isArray(scene.calibratedAnchors)
+      ? scene.calibratedAnchors
+      : [];
+    if (scene.anchorCalibrationRequired === true) {
+      const calibrationPath = resolveDeclared(projectRoot, scene.anchorCalibration?.path);
+      if (
+        !calibrationPath ||
+        !scene.anchorCalibration?.sha256 ||
+        !existsSync(calibrationPath) ||
+        sha256File(calibrationPath) !== scene.anchorCalibration.sha256
+      ) {
+        throw new Error(`TEXT_BAKE_ANCHOR_CALIBRATION_INVALID:${scene.sceneId}`);
+      }
+      const calibration = JSON.parse(readFileSync(calibrationPath, 'utf8'));
+      if (
+        calibration.schemaVersion !== CALIBRATION_SCHEMA ||
+        calibration.sceneId !== scene.sceneId ||
+        calibration.status !== 'passed' ||
+        resolveDeclared(projectRoot, calibration.sourceImage?.path) !== sourcePath ||
+        calibration.sourceImage?.sha256 !== scene.sourceImage.sha256
+      ) {
+        throw new Error(`TEXT_BAKE_ANCHOR_CALIBRATION_CONTENT_INVALID:${scene.sceneId}`);
+      }
+      if (calibratedAnchors.length !== labels.length) {
+        throw new Error(`TEXT_BAKE_CALIBRATED_ANCHOR_COUNT_INVALID:${scene.sceneId}`);
+      }
+      const calibrationLabels = Array.isArray(calibration.labels) ? calibration.labels : [];
+      if (
+        calibrationLabels.length !== calibratedAnchors.length ||
+        calibrationLabels.some((item, index) => {
+          const declared = calibratedAnchors[index];
+          return item.nodeId !== declared?.nodeId ||
+            item.placementChecked !== true ||
+            !validateQuad(item.anchorQuad) ||
+            JSON.stringify(item.anchorQuad) !== JSON.stringify(declared.anchorQuad);
+        })
+      ) {
+        throw new Error(`TEXT_BAKE_ANCHOR_CALIBRATION_BINDING_INVALID:${scene.sceneId}`);
+      }
+    }
+    const calibratedByNode = new Map(
+      calibratedAnchors.map((item) => [item.nodeId, item.anchorQuad]),
+    );
     const canvas = identify(sourcePath);
     let currentPath = sourcePath;
     labels.forEach((label, index) => {
+      const effectiveAnchorQuad = scene.anchorCalibrationRequired === true
+        ? calibratedByNode.get(label.nodeId)
+        : label.anchorQuad;
+      if (!validateQuad(effectiveAnchorQuad)) {
+        throw new Error(`TEXT_BAKE_EFFECTIVE_ANCHOR_INVALID:${scene.sceneId}:${label.nodeId}`);
+      }
       const nextPath = path.join(workRoot, `${scene.sceneId}-${index}.png`);
       renderLabel({
         label,
+        anchorQuad: effectiveAnchorQuad,
         canvas,
         fontPath,
         inputPath: currentPath,
@@ -234,7 +285,10 @@ try {
     });
     const ocr = [];
     for (const [index, label] of labels.entries()) {
-      const bounds = cropBounds(label.anchorQuad, canvas.width, canvas.height);
+      const effectiveAnchorQuad = scene.anchorCalibrationRequired === true
+        ? calibratedByNode.get(label.nodeId)
+        : label.anchorQuad;
+      const bounds = cropBounds(effectiveAnchorQuad, canvas.width, canvas.height);
       const cropPath = path.join(workRoot, `${scene.sceneId}-ocr-${index}.png`);
       run(
         'magick',
@@ -254,7 +308,7 @@ try {
         [cropPath, 'stdout', '-l', 'chi_sim+eng', '--psm', '7'],
         'TEXT_BAKE_OCR_FAILED',
       );
-      const matched = normalizeOcr(text).includes(normalizeOcr(label.text));
+      const matched = normalizeOcr(text) === normalizeOcr(label.text);
       if (!matched) {
         throw new Error(
           `TEXT_BAKE_OCR_MISMATCH:${scene.sceneId}:${label.nodeId}:${normalizeOcr(text)}`,
@@ -268,6 +322,12 @@ try {
       pairSha256: scene.pairSha256,
       textPlanSha256: scene.textPlanSha256,
       labelsSha256: scene.labelsSha256,
+      anchorCalibration: scene.anchorCalibrationRequired === true
+        ? scene.anchorCalibration
+        : null,
+      calibratedAnchors: scene.anchorCalibrationRequired === true
+        ? calibratedAnchors
+        : [],
       sourceImage: {path: sourcePath, sha256: scene.sourceImage.sha256, ...canvas},
       outputImage: {path: outputPath, sha256: sha256File(currentPath), ...canvas},
       ocr,

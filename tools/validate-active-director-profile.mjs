@@ -31,7 +31,7 @@ try {
 }
 
 if (profile.status !== 'active-default') errors.push('DIRECTOR_PROFILE_NOT_ACTIVE_DEFAULT');
-if (profile.profileVersion !== '3.1.0') errors.push('DIRECTOR_PROFILE_VERSION_NOT_V3_1');
+if (profile.profileVersion !== '3.2.0') errors.push('DIRECTOR_PROFILE_VERSION_NOT_V3_2');
 if (profile.routingPolicy?.fallback !== 'blocked') {
   errors.push('DIRECTOR_PROFILE_FALLBACK_NOT_BLOCKED');
 }
@@ -44,14 +44,20 @@ if (profile.evidencePolicy?.skillReadDoesNotEqualExecuted !== true) {
 if (profile.promptHandoffPolicy?.modelGeneratedReadableTextAllowed !== false) {
   errors.push('DIRECTOR_PROFILE_MODEL_TEXT_NOT_BLOCKED');
 }
-if (profile.promptHandoffPolicy?.defaultPaperTextMode !== 'tracked-paper-surface') {
-  errors.push('DIRECTOR_PROFILE_TRACKED_TEXT_NOT_DEFAULT');
+if (profile.promptHandoffPolicy?.defaultPaperTextMode !== 'first-frame-baked') {
+  errors.push('DIRECTOR_PROFILE_FIRST_FRAME_BAKED_TEXT_NOT_DEFAULT');
 }
 if (profile.promptHandoffPolicy?.firstFrameBakeOnlyForRigidSurface !== true) {
   errors.push('DIRECTOR_PROFILE_FIRST_FRAME_BAKE_NOT_RIGID_ONLY');
 }
 if (profile.promptHandoffPolicy?.ocrRequiredForFirstFrameBake !== true) {
   errors.push('DIRECTOR_PROFILE_FIRST_FRAME_OCR_NOT_REQUIRED');
+}
+if (profile.promptHandoffPolicy?.actualImageAnchorCalibrationRequired !== true) {
+  errors.push('DIRECTOR_PROFILE_ACTUAL_ANCHOR_CALIBRATION_NOT_REQUIRED');
+}
+if (profile.promptHandoffPolicy?.runningHubReadyPackRequired !== true) {
+  errors.push('DIRECTOR_PROFILE_RUNNINGHUB_READY_PACK_NOT_REQUIRED');
 }
 if (profile.promptHandoffPolicy?.paperNodeScreenOverlayAllowed !== false) {
   errors.push('DIRECTOR_PROFILE_PAPER_NODE_SCREEN_OVERLAY_ALLOWED');
@@ -73,6 +79,24 @@ if (profile.generatedAssetAcceptancePolicy?.silentViewRetellingRequired !== true
 }
 if (profile.generatedAssetAcceptancePolicy?.inputActionResultRequired !== true) {
   errors.push('DIRECTOR_PROFILE_INPUT_ACTION_RESULT_NOT_REQUIRED');
+}
+if (profile.routingPolicy?.remotionInformationIsOverlayOnly !== true) {
+  errors.push('DIRECTOR_PROFILE_REMOTION_INFORMATION_NOT_OVERLAY_ONLY');
+}
+if (
+  profile.routingPolicy?.realMaterialPresenterInset?.mode !==
+    'real-media-with-presenter-inset' ||
+  profile.routingPolicy?.realMaterialPresenterInset?.duplicatePresenterVideoMuted !== true ||
+  profile.routingPolicy?.realMaterialPresenterInset?.presenterAudioOwner !== 'base-talk-only'
+) {
+  errors.push('DIRECTOR_PROFILE_PRESENTER_INSET_CONTRACT_INVALID');
+}
+if (
+  profile.routingPolicy?.generatedVideo?.role !== 'illustration-only' ||
+  profile.routingPolicy?.generatedVideo?.evidenceEligible !== false ||
+  profile.routingPolicy?.generatedVideo?.presentationMode !== 'full-screen'
+) {
+  errors.push('DIRECTOR_PROFILE_GENERATED_VIDEO_CONTRACT_INVALID');
 }
 const upgradeAuditPath = resolveDeclared(profile.skill?.contractUpgrade?.auditReport?.path);
 if (

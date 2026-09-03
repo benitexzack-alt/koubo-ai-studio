@@ -52,6 +52,122 @@ const PAPER_TEXT_EMBEDDING_MODES = new Set([
 ]);
 const SCREEN_TEXT_ROLES = new Set(['screen-title', 'fact-source-caveat']);
 const PAPER_MOTION_CONSTRAINTS = new Set(['rigid-surface', 'tracked-moving-surface']);
+const MAIN_VISUAL_CLASSES = new Set([
+  'speaker',
+  'real-evidence',
+  'generated-video',
+  'paper-editorial',
+]);
+const REAL_MEDIA_PRESENTATION_MODES = new Set([
+  'full-screen-real-media',
+  'real-media-with-presenter-inset',
+]);
+const MATERIAL_AUDIO_MODES = new Set([
+  'muted',
+  'duck-under-narration',
+  'feature-audio-window',
+]);
+
+function validateOverlayDecision(overlay, beat, errors) {
+  if (overlay == null) return;
+  push(
+    errors,
+    overlay.class === 'remotion-information',
+    `BEAT_OVERLAY_CLASS_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    overlay.producer === 'codex-remotion',
+    `BEAT_OVERLAY_PRODUCER_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    ['chapter-anchor', 'keyword', 'source', 'risk-caveat', 'cta'].includes(overlay.role),
+    `BEAT_OVERLAY_ROLE_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    !Array.isArray(overlay.items) || overlay.items.length <= 3,
+    `BEAT_OVERLAY_ITEM_COUNT_INVALID:${beat.id}`,
+  );
+}
+
+function validateRealMediaPresentation(presentation, beat, errors) {
+  push(
+    errors,
+    presentation && typeof presentation === 'object',
+    `REAL_MEDIA_PRESENTATION_MISSING:${beat.id}`,
+  );
+  if (!presentation || typeof presentation !== 'object') return;
+  push(
+    errors,
+    REAL_MEDIA_PRESENTATION_MODES.has(presentation.mode),
+    `REAL_MEDIA_PRESENTATION_MODE_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    MATERIAL_AUDIO_MODES.has(presentation.materialAudioMode),
+    `REAL_MEDIA_AUDIO_MODE_INVALID:${beat.id}`,
+  );
+  if (presentation.mode !== 'real-media-with-presenter-inset') return;
+  push(
+    errors,
+    presentation.speakerIsExplainingThisAsset === true,
+    `PRESENTER_INSET_EXPLANATION_BINDING_MISSING:${beat.id}`,
+  );
+  push(
+    errors,
+    presentation.minimumDurationSeconds >= 2.8,
+    `PRESENTER_INSET_DURATION_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    presentation.presenter?.source === 'authoritative-talk-source' &&
+      presentation.presenter?.audioOwner === 'base-talk-only' &&
+      presentation.presenter?.duplicateVideoMuted === true,
+    `PRESENTER_INSET_AUDIO_OWNERSHIP_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    presentation.presenter?.anchor === 'bottom-right' &&
+      ['circle', 'rounded-rectangle'].includes(presentation.presenter?.shape),
+    `PRESENTER_INSET_PLACEMENT_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    Number.isInteger(presentation.transition?.enterFrames) &&
+      presentation.transition.enterFrames >= 8 &&
+      Number.isInteger(presentation.transition?.exitFrames) &&
+      presentation.transition.exitFrames >= 8 &&
+      presentation.transition.hardCutForbidden === true,
+    `PRESENTER_INSET_TRANSITION_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    presentation.captions?.overlapForbidden === true &&
+      presentation.captions?.minimumGapPx >= 24,
+    `PRESENTER_INSET_CAPTION_SAFETY_INVALID:${beat.id}`,
+  );
+}
+
+function validateGeneratedVideoBrief(brief, beat, errors) {
+  push(
+    errors,
+    brief && typeof brief === 'object',
+    `GENERATED_VIDEO_BRIEF_MISSING:${beat.id}`,
+  );
+  if (!brief || typeof brief !== 'object') return;
+  push(errors, brief.role === 'illustration-only', `GENERATED_VIDEO_ROLE_INVALID:${beat.id}`);
+  push(errors, brief.presentationMode === 'full-screen', `GENERATED_VIDEO_MODE_INVALID:${beat.id}`);
+  push(errors, brief.evidenceEligible === false, `GENERATED_VIDEO_EVIDENCE_ROLE_INVALID:${beat.id}`);
+  push(errors, isText(brief.purpose), `GENERATED_VIDEO_PURPOSE_MISSING:${beat.id}`);
+  push(errors, isText(brief.prompt), `GENERATED_VIDEO_PROMPT_MISSING:${beat.id}`);
+  push(
+    errors,
+    brief.disclosureRequired === true,
+    `GENERATED_VIDEO_DISCLOSURE_NOT_REQUIRED:${beat.id}`,
+  );
+}
 
 const isNormalizedQuad = (quad) =>
   Array.isArray(quad) &&
@@ -366,7 +482,7 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
   push(errors, request.policy?.fallback === 'blocked', 'PREPRODUCTION_FALLBACK_NOT_BLOCKED');
   push(
     errors,
-    request.policy?.textStrategy === 'deterministic-paper-surface-v3.1',
+    request.policy?.textStrategy === 'deterministic-first-frame-text-v3.2',
     'PREPRODUCTION_TEXT_STRATEGY_INVALID',
   );
   push(
@@ -386,8 +502,18 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
   );
   push(
     errors,
-    request.policy?.defaultPaperTextMode === 'tracked-paper-surface',
+    request.policy?.defaultPaperTextMode === 'first-frame-baked',
     'PREPRODUCTION_DEFAULT_PAPER_TEXT_MODE_INVALID',
+  );
+  push(
+    errors,
+    request.policy?.actualImageAnchorCalibrationRequired === true,
+    'PREPRODUCTION_ACTUAL_IMAGE_ANCHOR_CALIBRATION_NOT_REQUIRED',
+  );
+  push(
+    errors,
+    request.policy?.runningHubRequiresTextBakeReceipt === true,
+    'PREPRODUCTION_RUNNINGHUB_TEXT_BAKE_RECEIPT_NOT_REQUIRED',
   );
   push(
     errors,
@@ -470,8 +596,14 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
     }
     const decision = beat.visualDecision ?? {};
     push(errors, isText(decision.class), `BEAT_VISUAL_CLASS_MISSING:${beat.id}`);
+    push(
+      errors,
+      MAIN_VISUAL_CLASSES.has(decision.class),
+      `BEAT_VISUAL_CLASS_INVALID:${beat.id}`,
+    );
     push(errors, isText(decision.producer), `BEAT_VISUAL_PRODUCER_MISSING:${beat.id}`);
     push(errors, decision.fallback === 'blocked', `BEAT_FALLBACK_NOT_BLOCKED:${beat.id}`);
+    validateOverlayDecision(beat.overlayDecision, beat, errors);
 
     if (paperRequiredKinds.has(beat.kind)) {
       push(
@@ -492,6 +624,10 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
         Array.isArray(beat.evidenceRefs) && beat.evidenceRefs.length > 0,
         `REAL_EVIDENCE_REFERENCE_MISSING:${beat.id}`,
       );
+      validateRealMediaPresentation(beat.presentation, beat, errors);
+    }
+    if (decision.class === 'generated-video') {
+      validateGeneratedVideoBrief(beat.generatedVideoBrief, beat, errors);
     }
   });
 
@@ -504,6 +640,15 @@ export function compilePreproductionPlan({request, requestPath, profile, style})
   );
   const realEvidenceBeats = request.beats.filter(
     (beat) => beat.visualDecision?.class === 'real-evidence',
+  );
+  const presenterInsetBeats = realEvidenceBeats.filter(
+    (beat) => beat.presentation?.mode === 'real-media-with-presenter-inset',
+  );
+  const generatedVideoBeats = request.beats.filter(
+    (beat) => beat.visualDecision?.class === 'generated-video',
+  );
+  const speakerBeats = request.beats.filter(
+    (beat) => beat.visualDecision?.class === 'speaker',
   );
   return {
     schemaVersion: PREPRODUCTION_PLAN_SCHEMA,
@@ -527,7 +672,12 @@ export function compilePreproductionPlan({request, requestPath, profile, style})
       totalBeats: request.beats.length,
       paperBeatCount: paperBeats.length,
       realEvidenceBeatCount: realEvidenceBeats.length,
-      otherBeatCount: request.beats.length - paperBeats.length - realEvidenceBeats.length,
+      presenterInsetBeatCount: presenterInsetBeats.length,
+      generatedVideoBeatCount: generatedVideoBeats.length,
+      speakerBeatCount: speakerBeats.length,
+      otherBeatCount:
+        request.beats.length - paperBeats.length - realEvidenceBeats.length -
+        generatedVideoBeats.length - speakerBeats.length,
       fallback: 'blocked',
       genericInformationCardCanSatisfyPaperBeat: false,
     },
@@ -542,6 +692,14 @@ export function compilePreproductionPlan({request, requestPath, profile, style})
       beatId: beat.id,
       spokenLine: beat.spokenLine,
       evidenceRefs: beat.evidenceRefs,
+      presentation: beat.presentation,
+      overlayDecision: beat.overlayDecision ?? null,
+    })),
+    generatedVideoAssignments: generatedVideoBeats.map((beat) => ({
+      beatId: beat.id,
+      spokenLine: beat.spokenLine,
+      coreMeaning: beat.coreMeaning,
+      generatedVideoBrief: beat.generatedVideoBrief,
     })),
     nextGate: 'completion-stills-and-local-candidate-preview',
   };
@@ -563,6 +721,10 @@ export function buildRouteLock({request, requestPath, profile, style, plan}) {
     styleId: style.styleId,
     paperBeatIds: plan.paperScenes.map((scene) => scene.beatId),
     realEvidenceBeatIds: plan.realEvidenceAssignments.map((item) => item.beatId),
+    presenterInsetBeatIds: plan.realEvidenceAssignments
+      .filter((item) => item.presentation?.mode === 'real-media-with-presenter-inset')
+      .map((item) => item.beatId),
+    generatedVideoBeatIds: plan.generatedVideoAssignments.map((item) => item.beatId),
     formalEligible: false,
     postShootRebindRequired: true,
   };
@@ -584,7 +746,10 @@ export function renderAssetSheet(plan) {
     lines.push(`- 建议时长：${scene.durationSeconds}秒`);
     lines.push(`- 节点文字：${scene.nodes.map((node) => node.label).join(' / ')}`);
     lines.push(
-      `- 首帧生图交付：${buildSceneIdentity(scene, index).firstFrameOutputFileName}（提示词只在独立首帧清单中）`,
+      `- 首帧基础图：${buildSceneIdentity(scene, index).firstFrameOutputFileName}（自动化内部中间文件，模型不负责写中文）`,
+    );
+    lines.push(
+      `- 最终带字首帧：${buildSceneIdentity(scene, index).bakedFirstFrameOutputFileName}（本地确定性写字并通过OCR后，才可送入RunningHub）`,
     );
     lines.push('- 图生视频交付：提示词只在独立 RunningHub 清单中');
     lines.push('- 装配步骤：');
@@ -599,6 +764,19 @@ export function renderAssetSheet(plan) {
     plan.realEvidenceAssignments.forEach((item) => {
       lines.push(`- ${item.beatId}：${item.spokenLine}`);
       lines.push(`  素材：${item.evidenceRefs.join(' / ')}`);
+      lines.push(`  呈现：${item.presentation.mode}`);
+      lines.push(`  素材原声：${item.presentation.materialAudioMode}`);
+    });
+    lines.push('');
+  }
+  if (plan.generatedVideoAssignments.length > 0) {
+    lines.push('## AI生成视频（仅作情景演绎）');
+    lines.push('');
+    plan.generatedVideoAssignments.forEach((item) => {
+      lines.push(`- ${item.beatId}：${item.spokenLine}`);
+      lines.push(`  用途：${item.generatedVideoBrief.purpose}`);
+      lines.push(`  画面：全屏；证据资格：无；需要AI内容声明：是`);
+      lines.push(`  提示词：${item.generatedVideoBrief.prompt}`);
     });
     lines.push('');
   }
@@ -662,6 +840,9 @@ const buildFirstFrameBakePlan = (scene, identity) => {
     labelsSha256: sha256Json(labels),
     labels,
     ocrRequired: identity.hasFirstFrameBakedText,
+    anchorCalibrationRequired: identity.hasFirstFrameBakedText,
+    plannedAnchorQuadsAreProvisional: identity.hasFirstFrameBakedText,
+    calibratedAnchorField: 'calibratedAnchorQuad',
   };
 };
 
@@ -673,7 +854,8 @@ export function buildFirstFramePromptManifest(plan) {
     phase: 'pre-shoot',
     status: 'automation-input-ready',
     consumer: 'first-frame-image-automation',
-    promptRole: 'completed-static-reference-only',
+    promptRole: 'raw-paper-scene-before-deterministic-text-bake',
+    finalDeliverableRole: 'text-baked-first-frame-for-runninghub',
     generatedReadableTextAllowed: false,
     modelGeneratedReadableTextAllowed: false,
     deterministicTextMayBeBakedIntoFirstFrame: true,
@@ -708,11 +890,18 @@ export function buildRunningHubPromptManifest(plan) {
     requestId: plan.requestId,
     taskId: plan.taskId,
     phase: 'pre-shoot',
-    status: 'manual-runninghub-input-ready',
+    status: 'awaiting-text-baked-firstframes',
     consumer: 'runninghub-manual-image-to-video',
     generationMode: 'image-to-video',
     executionOwner: 'user-manual',
     codexExternalSubmissionAllowed: false,
+    submissionBlockedUntil: [
+      'raw-first-frame-visual-review-passed',
+      'actual-paper-surface-anchor-calibration-passed',
+      'deterministic-text-bake-receipt-passed',
+      'text-baked-first-frame-ocr-passed',
+      'runninghub-ready-pack-issued',
+    ],
     sourcePlanCanonicalSha256: sha256Json(plan),
     sceneCount: plan.paperScenes.length,
     scenes: plan.paperScenes.map((scene, index) => {
@@ -733,6 +922,7 @@ export function buildRunningHubPromptManifest(plan) {
         generatedReadableTextAllowed: false,
         modelGeneratedReadableTextAllowed: false,
         inputContainsDeterministicBakedText: identity.hasFirstFrameBakedText,
+        handoffState: 'awaiting-text-baked-firstframe-and-ocr',
         postProductionTextOverlay: buildTextOverlayPlan(scene),
       };
     }),
@@ -754,6 +944,11 @@ export function validatePromptHandoffManifests({
     errors,
     runningHubManifest?.schemaVersion === RUNNINGHUB_PROMPT_MANIFEST_SCHEMA,
     'RUNNINGHUB_PROMPT_MANIFEST_SCHEMA_INVALID',
+  );
+  push(
+    errors,
+    runningHubManifest?.status === 'awaiting-text-baked-firstframes',
+    'RUNNINGHUB_PROMPT_MANIFEST_PREMATURELY_READY',
   );
   const firstFrameScenes = Array.isArray(firstFrameManifest?.scenes)
     ? firstFrameManifest.scenes
@@ -819,6 +1014,13 @@ export function validatePromptHandoffManifests({
     );
     push(
       errors,
+      firstFrame.deterministicTextBake?.anchorCalibrationRequired ===
+          identity.hasFirstFrameBakedText &&
+        runningHub.handoffState === 'awaiting-text-baked-firstframe-and-ocr',
+      `FIRST_FRAME_TEXT_BAKE_GATE_MISMATCH:${suffix}`,
+    );
+    push(
+      errors,
       !Object.hasOwn(firstFrame, 'imageToVideoPrompt'),
       `FIRST_FRAME_MANIFEST_CONTAINS_VIDEO_PROMPT:${suffix}`,
     );
@@ -836,7 +1038,8 @@ export function renderRunningHubPromptSheet(plan, runningHubManifest) {
     `# ${plan.taskId} RunningHub 图生视频提示词`,
     '',
     '> 本文件只包含图生视频动作提示词，不包含首帧生图提示词。请按同一 P 编号选择对应首帧图片。',
-    '> 生成模型不得自由写中文；节点文字只能使用清单声明的首帧确定性烧字或 Remotion 纸面跟踪。',
+    '> 当前状态不是可提交状态。只有 runninghub-ready-pack.v1.json 生成后，才可把其中已通过OCR的带字首帧交给 RunningHub。',
+    '> 生成模型不得自由改写中文；带字纸片只允许刚性滑入、平移、小角度旋转、抽屉推出与拼图扣合。',
     '',
   ];
   runningHubManifest.scenes.forEach((scene) => {
@@ -845,8 +1048,9 @@ export function renderRunningHubPromptSheet(plan, runningHubManifest) {
     lines.push(`- 配对编号：${scene.pairId}`);
     lines.push(`- 输入首帧：${scene.inputFirstFrameFileName}`);
     lines.push(`- 建议时长：${scene.durationSeconds}秒`);
+    lines.push(`- 当前门禁：${scene.handoffState}`);
     lines.push(
-      `- 文字模式：${scene.inputContainsDeterministicBakedText ? '首帧已确定性烧字；其余节点纸面跟踪' : 'Remotion 纸面跟踪'}`,
+      `- 文字模式：${scene.inputContainsDeterministicBakedText ? '输入首帧已确定性带字；RunningHub只做刚性纸片动作' : 'Remotion 纸面跟踪'}`,
     );
     lines.push(
       `- 精确节点：${scene.postProductionTextOverlay.map((item) => `${item.text}（${item.embeddingMode}）`).join(' / ')}`,

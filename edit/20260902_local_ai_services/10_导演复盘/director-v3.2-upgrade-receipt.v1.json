@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "koubo-director-v3.2-upgrade-receipt/v1",
+  "taskId": "task-20260903T010332Z-e3c94f38",
+  "createdAt": "2026-09-03T10:29:44+08:00",
+  "status": "implementation-validated-awaiting-real-asset-candidates",
+  "decision": {
+    "paperFinalFirstFrameMustContainExactChinese": true,
+    "runningHubOwnsMotionOnly": true,
+    "realMaterialPresenterInsetEnabled": true,
+    "generatedVideoRestoredForIllustrativeScenes": true,
+    "sharedV8ComponentsModified": false
+  },
+  "activeProfile": {
+    "path": "workflow/active-director-profile.v1.json",
+    "sha256": "513c97bcdfa78c93813ac65302cb1f3148f9db2754bee0212a15cf8f5fd45479",
+    "profileVersion": "3.2.0"
+  },
+  "skillLock": {
+    "path": "workflow/director-skill-lock.v1.json",
+    "sha256": "31eb9c1f89575fa848fe6c01e8fa3e8e6df4fe42abfbab735d1eef27fee8e59e",
+    "packageSha256": "c1c50ee3575efe91643b4fdedcf0674f216982613ff71ad9fd4afaee92dfba5b"
+  },
+  "presenterInsetComponent": {
+    "path": "skills/koubo-remotion-director/assets/remotion-presenter-media/PresenterMediaStage.tsx",
+    "sha256": "d0b9e8d5b0bb8baf55e10fb35c390dd278f0d4e55473b8318fff0aeda4cf4be4",
+    "buildValidated": true,
+    "realFootageCandidateStillRequired": true
+  },
+  "currentTaskR3": {
+    "directorValidationReceipt": {
+      "path": "edit/20260902_local_ai_services/03_导演拆解/paper-v3-r3/director-validation-receipt.v1.json",
+      "sha256": "54a9be3dfc74864b1a3d5c22c41cf4229619e1f523662dd9a3dd1731469951fc"
+    },
+    "firstFrameManifest": {
+      "path": "edit/generated-video/20260902_local_ai_services_paper-v3-r3/first-frame-prompts.v1.json",
+      "sha256": "e44517c0a3770bda65cf7af6651890ab0ed336acd2409e4b3f2353556acee9e4"
+    },
+    "runningHubMotionManifest": {
+      "path": "edit/generated-video/20260902_local_ai_services_paper-v3-r3/runninghub-image-to-video-prompts.v1.json",
+      "sha256": "02d2b856a88ae05a43e9bbb789af912957f7c232ad6926a0e3a1db68e9492f07",
+      "status": "awaiting-text-baked-firstframes"
+    },
+    "routeCounts": {
+      "speaker": 3,
+      "paperEditorial": 7,
+      "realEvidenceWithPresenterInset": 2,
+      "generatedVideo": 2
+    }
+  },
+  "verification": {
+    "directorTestsPassed": 9,
+    "directorTestsSkippedForMissingExternalImmutableEvidence": 2,
+    "firstFrameProducerTestsPassed": 2,
+    "deterministicTextBakeAndChineseOcrPassed": true,
+    "anchorCalibrationTamperRejected": true,
+    "runningHubReadyPackEndToEndPassed": true,
+    "activeProfileValidationPassed": true,
+    "activeSkillLockDriftTestPassed": true,
+    "presenterInsetComponentBundlePassed": true
+  },
+  "externalActions": {
+    "imagesGenerated": false,
+    "runningHubCalled": false,
+    "uploaded": false,
+    "paid": false
+  },
+  "remainingGates": [
+    "generate-three-raw-first-frame-samples",
+    "calibrate-actual-paper-surfaces",
+    "bake-exact-chinese-and-pass-ocr",
+    "user-review-text-baked-sample-contact-sheet",
+    "generate-and-review-remaining-first-frames",
+    "issue-runninghub-ready-pack",
+    "post-shoot-rebind-to-recorded-audio",
+    "build-and-review-real-footage-presenter-inset-candidate"
+  ]
+}

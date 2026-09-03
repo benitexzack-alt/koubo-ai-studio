@@ -13,16 +13,18 @@
   "directorProfile": {
     "path": "workflow/active-director-profile.v1.json",
     "profileId": "paper-editorial-director-v3",
-    "profileVersion": "3.1.0"
+    "profileVersion": "3.2.0"
   },
   "policy": {
     "branch": "paper-editorial",
     "fallback": "blocked",
-    "textStrategy": "deterministic-paper-surface-v3.1",
+    "textStrategy": "deterministic-first-frame-text-v3.2",
     "generatedReadableTextAllowed": false,
     "modelGeneratedReadableTextAllowed": false,
     "deterministicTextMayBeBakedIntoFirstFrame": true,
-    "defaultPaperTextMode": "tracked-paper-surface",
+    "defaultPaperTextMode": "first-frame-baked",
+    "actualImageAnchorCalibrationRequired": true,
+    "runningHubRequiresTextBakeReceipt": true,
     "paperNodeScreenOverlayAllowed": false,
     "postShootRebindRequired": true
   },

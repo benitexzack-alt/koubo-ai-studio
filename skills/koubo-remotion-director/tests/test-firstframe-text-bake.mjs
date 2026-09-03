@@ -58,6 +58,15 @@ try {
   const sourcePlanPath = path.join(testRoot, 'source-plan.json');
   const sourcePlan = {taskId: 'firstframe-bake-test', paperScenes: [sourceScene]};
   writeFileSync(sourcePlanPath, `${JSON.stringify(sourcePlan, null, 2)}\n`);
+  const calibrationPath = path.join(testRoot, 'calibration.json');
+  const calibration = {
+    schemaVersion: 'koubo-paper-firstframe-anchor-calibration/v1',
+    sceneId: 'P01',
+    status: 'passed',
+    sourceImage: {path: sourcePath, sha256: sha256File(sourcePath)},
+    labels: [{nodeId: 'N1', anchorQuad: labels[0].anchorQuad, placementChecked: true}],
+  };
+  writeFileSync(calibrationPath, `${JSON.stringify(calibration, null, 2)}\n`);
   const identity = buildSceneIdentity(sourceScene, 0);
   const request = {
     schemaVersion: 'koubo-paper-firstframe-text-bake-request/v1',
@@ -75,6 +84,9 @@ try {
         sourceImage: {path: sourcePath, sha256: sha256File(sourcePath)},
         outputImage: {path: outputPath},
         labels,
+        anchorCalibrationRequired: true,
+        anchorCalibration: {path: calibrationPath, sha256: sha256File(calibrationPath)},
+        calibratedAnchors: [{nodeId: 'N1', anchorQuad: labels[0].anchorQuad}],
       },
     ],
   };
@@ -92,6 +104,7 @@ try {
   assert.equal(receipt.status, 'deterministic-first-frame-text-baked-and-ocr-passed');
   assert.equal(receipt.scenes[0].ocr[0].matched, true);
   assert.equal(receipt.scenes[0].outputImage.sha256, sha256File(outputPath));
+  assert.equal(receipt.scenes[0].anchorCalibration.sha256, sha256File(calibrationPath));
 
   const rejectedRequestPath = path.join(testRoot, 'request-rejected.json');
   const rejected = structuredClone(request);
@@ -110,6 +123,28 @@ try {
   assert.match(negative.stderr, /TEXT_BAKE_SOURCE_SHA_MISMATCH/u);
   assert.equal(existsSync(rejected.scenes[0].outputImage.path), false);
 
+  const calibrationMismatchPath = path.join(testRoot, 'request-calibration-mismatch.json');
+  const calibrationMismatch = structuredClone(request);
+  calibrationMismatch.receiptPath = path.join(testRoot, 'receipt-calibration-mismatch.json');
+  calibrationMismatch.scenes[0].outputImage.path = path.join(testRoot, 'calibration-mismatch.png');
+  calibrationMismatch.scenes[0].calibratedAnchors[0].anchorQuad = [
+    [0.1, 0.2], [0.9, 0.2], [0.9, 0.7], [0.1, 0.7],
+  ];
+  writeFileSync(
+    calibrationMismatchPath,
+    `${JSON.stringify(calibrationMismatch, null, 2)}\n`,
+  );
+  const calibrationNegative = run(process.execPath, [
+    scriptPath,
+    '--request',
+    calibrationMismatchPath,
+    '--repo-root',
+    testRoot,
+  ]);
+  assert.notEqual(calibrationNegative.status, 0);
+  assert.match(calibrationNegative.stderr, /TEXT_BAKE_ANCHOR_CALIBRATION_BINDING_INVALID/u);
+  assert.equal(existsSync(calibrationMismatch.scenes[0].outputImage.path), false);
+
   console.log(
     JSON.stringify({
       ok: true,
@@ -117,6 +152,7 @@ try {
       chineseOcrMatched: true,
       sourceTextPlanBound: true,
       sourceShaMismatchRejected: true,
+      calibrationMismatchRejected: true,
     }),
   );
 } finally {

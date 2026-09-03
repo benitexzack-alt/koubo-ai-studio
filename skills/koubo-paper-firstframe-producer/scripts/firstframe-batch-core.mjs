@@ -5,6 +5,12 @@ import path from 'node:path';
 export const MANIFEST_SCHEMA = 'koubo-paper-first-frame-prompt-manifest/v1';
 export const JOB_SCHEMA = 'koubo-paper-firstframe-batch/v1';
 export const REVIEW_SCHEMA = 'koubo-paper-firstframe-visual-review/v1';
+export const TEXT_BAKE_CALIBRATION_SCHEMA =
+  'koubo-paper-firstframe-anchor-calibration/v1';
+export const TEXT_BAKE_RECEIPT_SCHEMA =
+  'koubo-paper-firstframe-text-bake-receipt/v1';
+export const RUNNINGHUB_READY_PACK_SCHEMA =
+  'koubo-paper-runninghub-ready-pack/v1';
 
 export const sha256Buffer = (buffer) =>
   createHash('sha256').update(buffer).digest('hex');
@@ -74,6 +80,7 @@ export function validateManifest(manifest) {
   const sceneIds = new Set();
   const pairIds = new Set();
   const outputNames = new Set();
+  const bakedOutputNames = new Set();
   manifest.scenes.forEach((scene, index) => {
     const suffix = scene.sceneId || String(index);
     if (!/^P\d{2,}$/.test(scene.sceneId ?? '')) errors.push(`SCENE_ID_INVALID:${suffix}`);
@@ -95,6 +102,29 @@ export function validateManifest(manifest) {
     }
     if (outputNames.has(scene.outputFileName)) errors.push(`OUTPUT_FILE_NAME_DUPLICATE:${suffix}`);
     outputNames.add(scene.outputFileName);
+    const bake = scene.deterministicTextBake;
+    if (!bake || bake.enabled !== true) errors.push(`TEXT_BAKE_PLAN_MISSING:${suffix}`);
+    if (bake?.sourceImageFileName !== scene.outputFileName) {
+      errors.push(`TEXT_BAKE_SOURCE_NAME_MISMATCH:${suffix}`);
+    }
+    if (
+      typeof bake?.outputImageFileName !== 'string' ||
+      path.basename(bake.outputImageFileName) !== bake.outputImageFileName ||
+      bake.outputImageFileName === scene.outputFileName
+    ) {
+      errors.push(`TEXT_BAKE_OUTPUT_FILE_NAME_INVALID:${suffix}`);
+    } else if (bakedOutputNames.has(bake.outputImageFileName)) {
+      errors.push(`TEXT_BAKE_OUTPUT_FILE_NAME_DUPLICATE:${suffix}`);
+    } else {
+      bakedOutputNames.add(bake.outputImageFileName);
+    }
+    if (bake?.anchorCalibrationRequired !== true) {
+      errors.push(`TEXT_BAKE_ANCHOR_CALIBRATION_NOT_REQUIRED:${suffix}`);
+    }
+    if (bake?.ocrRequired !== true) errors.push(`TEXT_BAKE_OCR_NOT_REQUIRED:${suffix}`);
+    if (!Array.isArray(bake?.labels) || bake.labels.length === 0) {
+      errors.push(`TEXT_BAKE_LABELS_EMPTY:${suffix}`);
+    }
   });
   return errors;
 }

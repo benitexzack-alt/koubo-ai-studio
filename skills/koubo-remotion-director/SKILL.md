@@ -50,6 +50,7 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 - [../../knowledge/23-参考片逐帧审计与纸媒叙事装配最低标准.md](../../knowledge/23-参考片逐帧审计与纸媒叙事装配最低标准.md)：涉及抽象机制插片时必读；已验收样片只锁定风格方向，不自动授予新任务渲染权。
 - [references/v4-visual-pack.md](references/v4-visual-pack.md)：需要执行 V4 视觉实验、参考图落地或新增卡片时读取。
 - [references/validation-gates.md](references/validation-gates.md)：需要渲染预览、检查风险帧、导出正式片或填写 release 时读取。
+- [references/visual-routing-v3.2.md](references/visual-routing-v3.2.md)：需要在真人、真实素材讲解小窗、AI生成视频、纸艺与 Remotion 信息层之间做路由时必读。
 
 ## 工作流
 
@@ -77,8 +78,10 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 - 是否删减、是否全量保留、是否已有 EDL；
 - 最终字幕时间轴来源；
 - 参考图、真实 B-roll、截图、AI 素材的授权和用途；
-- 每个非主播画面先声明素材决策：`speaker | real-evidence | generated-video | paper-editorial | remotion-information`，以及制作责任：`existing | user | codex-remotion | codex-provider`。纸艺 v3 已获得全局风格方向验收，因此允许 `codex-remotion` 在本地生成预拍候选；`codex-provider` 外部生成仍为禁用，未获单独授权时不得联网、上传或付费。
+- 每个节拍先声明四种互斥主画面之一：`speaker | real-evidence | generated-video | paper-editorial`，以及制作责任：`existing | user | codex-remotion | codex-provider`。`remotion-information` 只能作为章节、关键词、来源、风险说明或 CTA 叠加层，不能冒充主画面。
+- 当本人正在解释用户提供且已验收的真实视频、录屏或官方素材时，`real-evidence` 还必须声明 `presentation.mode=real-media-with-presenter-inset` 或 `full-screen-real-media`。小窗模式中真实素材占主画面，本人从全景平滑缩到右下角；权威口播始终是唯一人声来源，右下角真人副本必须静音。
 - 需要人物、真实行动、场景、空间或氛围的 `generated-video` 仍由用户或授权真实素材负责；只有抽象机制、因果和关系可使用 `codex-provider`，不得默认用 Remotion 信息动画或生成画面冒充叙事事实；
+- 没有真实素材但确需人物、行为、环境或情绪时，可以建立 `generated-video` 全屏情景演绎；必须标记 `illustration-only`、`evidenceEligible=false` 和 AI 内容声明。真实素材一旦可用，优先替换生成演绎。
 - 指定视觉素材是否确需抠图或升清；仅在 `ready-for-production` 后调用 `koubo-asset-prep`，证据截图和真人主口播保持原样；
 - 本条唯一主观点和行动引导；
 - 是否涉及抖音高风险垂类、AI 声明、商单、投放或交易。
@@ -105,7 +108,7 @@ node skills/koubo-remotion-director/scripts/validate-preproduction-director.mjs 
   --repo-root <project-root>
 ```
 
-预拍请求必须使用 [templates/director-preproduction-request.v1.json](templates/director-preproduction-request.v1.json) 建立新 revision。所有需要解释机制、因果、层级、对照或流程的节拍，都必须输出 `paperScene`、`objectGroups`、`nodes`、`stages`、`textPlan` 和两类提示词。生成模型仍不得自行生成可读中文；精确中文只有两种合法路径：运动纸片默认由 Remotion 使用 `tracked-paper-surface` 透视跟踪叠在纸面，低运动刚性纸片可使用 `first-frame-baked` 本地确定性写入首帧。后者必须通过中文 OCR，两者都必须把 `nodeId`、`groupId`、`surfaceId`、`enterStageId` 和纸面四角坐标绑定；屏幕浮层不得冒充纸面节点文字。
+预拍请求必须使用 [templates/director-preproduction-request.v1.json](templates/director-preproduction-request.v1.json) 建立新 revision。所有需要解释机制、因果、层级、对照或流程的节拍，都必须输出 `paperScene`、`objectGroups`、`nodes`、`stages`、`textPlan` 和两类提示词。生成模型仍不得自行生成可读中文；默认路径改为：无字基础图生成后，按实际图片标定纸面四角，再用 `first-frame-baked` 本地确定性写入中文并通过 OCR。只有无法保持刚性、确需随运动表面透视变化的标签才可使用 `tracked-paper-surface`。两者都必须把 `nodeId`、`groupId`、`surfaceId`、`enterStageId` 和纸面四角坐标绑定；屏幕浮层不得冒充纸面节点文字。
 
 两类提示词不得再混装成一份给生成工具使用的执行单。编译器必须同时生成并校验：
 
@@ -113,9 +116,9 @@ node skills/koubo-remotion-director/scripts/validate-preproduction-director.mjs 
 - `runninghub-image-to-video-prompts.v1.json`：只绑定用户手动 RunningHub 图生视频，每镜只含 `imageToVideoPrompt`、对应首帧文件名和时长，不得出现 `firstFramePrompt`；
 - `runninghub-image-to-video-prompts.md`：供用户复制的中文清单，只展示图生视频动作提示词，不重复首帧场景描述。
 
-同一镜头的两份清单必须共享 `sceneId`、`pairId` 与 `pairSha256`，并用首帧提示词 SHA-256 把 RunningHub 输入图片回绑到对应首帧。首帧生图描述静态完成态；图生视频提示词只描述基于该首帧发生的动作、顺序、镜头运动和禁止项。任何缺镜、串镜、配对哈希不一致或两类字段互相混入，都必须阻断预拍验证。
+同一镜头的两份清单必须共享 `sceneId`、`pairId` 与 `pairSha256`，并用首帧提示词 SHA-256 把 RunningHub 输入图片回绑到对应首帧。首帧生图描述静态完成态；图生视频提示词只描述基于该首帧发生的动作、顺序、镜头运动和禁止项。RunningHub 清单初始状态固定为 `awaiting-text-baked-firstframes`，它不能作为提交入口；只有首帧生产 Skill 生成 `runninghub-ready-pack.v1.json` 后才能手工提交。任何缺镜、串镜、配对哈希不一致、两类字段互相混入、带字首帧缺失或 OCR 未通过，都必须阻断。
 
-`textPlan` 不得再按固定列数裁切，也不得用斜杠合并多个节点。每个可读节点必须显式声明 `paper-label`，普通镜 3–6 个、复杂镜 4–6 个，同时可读不超过 4 个。只有标题和事实来源可使用 `screenTextPlan`。使用刚性纸片写入时，从 [templates/director-firstframe-text-bake-request.v1.json](templates/director-firstframe-text-bake-request.v1.json) 实例化请求并运行：
+`textPlan` 不得再按固定列数裁切，也不得用斜杠合并多个节点。每个可读节点必须显式声明 `paper-label`，普通镜 3–6 个、复杂镜 4–6 个，同时可读不超过 4 个。只有标题和事实来源可使用 `screenTextPlan`。计划中的 `anchorQuad` 只表示构图意图；基础图生成后必须逐镜查看并建立实际纸面四角标定，禁止所有镜头复制同一套坐标。使用刚性纸片写入时，由 `koubo-paper-firstframe-producer` 组装请求并调用：
 
 ```bash
 node skills/koubo-remotion-director/scripts/bake-firstframe-text.mjs \
@@ -124,6 +127,10 @@ node skills/koubo-remotion-director/scripts/bake-firstframe-text.mjs \
 ```
 
 运动纸片使用 [assets/remotion-paper-editorial/PaperSurfaceText.tsx](assets/remotion-paper-editorial/PaperSurfaceText.tsx)，逐帧跟踪四角透视和遮挡层级；不允许把同一标签回退成屏幕固定坐标。
+
+带字纸片只允许刚性滑入、平移、小角度旋转、抽屉推出和刚性拼图扣合。禁止折叠、弯曲、卷曲、揉皱、拉伸、快速翻面、强运动模糊和重新生成文字；需要展开时，只展开无字底板，再让带字标签卡滑入。RunningHub 输出仍需首、中、尾和动作边界 OCR，任何改字、缺字或明显文字形变都阻断入场。
+
+真实素材讲解小窗使用隔离实现 [assets/remotion-presenter-media/PresenterMediaStage.tsx](assets/remotion-presenter-media/PresenterMediaStage.tsx)。不得为接入它直接改写共享 `V72ProductionShell.tsx` 或 `V8SemanticStage.tsx`；先在本条独立 candidate revision 做 10—15 秒样片，核对人物缩放、字幕避让、裁脸、口型同步和双音轨后再晋级。
 
 拍摄完成后，再从 [templates/director-postshoot-rebind-request.v1.json](templates/director-postshoot-rebind-request.v1.json) 建立实录重绑请求：
 

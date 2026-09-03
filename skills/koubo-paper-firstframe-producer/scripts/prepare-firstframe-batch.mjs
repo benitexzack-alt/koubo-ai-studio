@@ -52,10 +52,14 @@ try {
 
   const handoffRoot = path.dirname(manifestPath);
   const imageRoot = path.join(handoffRoot, 'first-frames');
+  const bakedImageRoot = path.join(handoffRoot, 'text-baked-first-frames');
   const qaRoot = path.join(handoffRoot, 'first-frame-qa');
+  const calibrationRoot = path.join(qaRoot, 'anchor-calibrations');
   const jobPath = path.join(handoffRoot, 'first-frame-batch.v1.json');
   mkdirSync(imageRoot, {recursive: true});
+  mkdirSync(bakedImageRoot, {recursive: true});
   mkdirSync(qaRoot, {recursive: true});
+  mkdirSync(calibrationRoot, {recursive: true});
 
   const job = {
     schemaVersion: JOB_SCHEMA,
@@ -71,7 +75,7 @@ try {
       path: directorReceiptPath,
       sha256: sha256File(directorReceiptPath),
     },
-    output: {handoffRoot, imageRoot, qaRoot},
+    output: {handoffRoot, imageRoot, bakedImageRoot, qaRoot, calibrationRoot},
     sampleSceneIds,
     fullBatchAuthorized: false,
     scenes: manifest.scenes.map((scene) => ({
@@ -85,6 +89,15 @@ try {
       outputPath: path.join(imageRoot, scene.outputFileName),
       firstFramePrompt: scene.firstFramePrompt,
       firstFramePromptSha256: scene.firstFramePromptSha256,
+      textPlanSha256: scene.textPlanSha256,
+      deterministicTextBake: {
+        ...scene.deterministicTextBake,
+        outputPath: path.join(
+          bakedImageRoot,
+          scene.deterministicTextBake.outputImageFileName,
+        ),
+        calibrationPath: path.join(calibrationRoot, `${scene.sceneId}.v1.json`),
+      },
       selectedForSample: sampleSceneIds.includes(scene.sceneId),
       result: null,
     })),
