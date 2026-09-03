@@ -1,0 +1,4427 @@
+{
+  "schemaVersion": "koubo-director-preproduction-plan/v1",
+  "requestId": "local-ai-services-paper-v3-r4-pre-shoot",
+  "taskId": "20260902-local-ai-services",
+  "phase": "pre-shoot",
+  "status": "provisional-previsualization",
+  "formalEligible": false,
+  "postShootRebindRequired": true,
+  "provenance": {
+    "requestPath": "/Users/pc/Documents/口播/edit/20260902_local_ai_services/03_导演拆解/paper-v3-r4/director-preproduction-request.v1.json",
+    "requestSha256": "3b0c2dfc0cbda73d343b5c9b5ff85d0151d111bf321b6fd4423e77979f56c094",
+    "scriptPath": "edit/20260902_local_ai_services/00_工程控制/兰州本地AI服务_用户确认原稿_v1.md",
+    "scriptSha256": "f0377acd9f6d261dc2464fad4b1152feaa15e671fd65edff1705d35c40c1f73f",
+    "profileId": "paper-editorial-director-v3",
+    "profileVersion": "3.2.0",
+    "styleId": "koubo-paper-editorial-assembly-v3",
+    "acceptedDynamicAnchorSha256": "764f1ad14bf35a4297ff974514666525b39a551dd5b976d4f66db42cc5c2fff6"
+  },
+  "routeSummary": {
+    "totalBeats": 14,
+    "paperBeatCount": 7,
+    "realEvidenceBeatCount": 2,
+    "presenterInsetBeatCount": 2,
+    "generatedVideoBeatCount": 2,
+    "speakerBeatCount": 3,
+    "otherBeatCount": 0,
+    "fallback": "blocked",
+    "genericInformationCardCanSatisfyPaperBeat": false
+  },
+  "beats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "spokenLine": "现在做AIGC的人，是不是全都陷入内卷？",
+      "coreMeaning": "真人直接提出冲突，配用户自己的工具、token与内容后台素材，不用动画冒充收益证据。",
+      "kind": "real-person-action",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": [
+          "AIGC内卷",
+          "投入不确定"
+        ]
+      }
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "spokenLine": "烧大量token、投入时间精力，指望短视频播放变现，结果万播也就几块钱。",
+      "coreMeaning": "把投入、内容生产、平台分发和不确定结果串成一条公域流量链，不把固定收益数字画成事实。",
+      "kind": "causal-chain",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "mechanical-causality",
+        "title": "公域流量链不等于稳定收入",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "投入容器",
+            "material": "深蓝瓦楞纸漏斗",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "内容流水线",
+            "material": "暖白纸带与作品卡",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "平台分发门",
+            "material": "灰蓝可开合纸门",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "结果托盘",
+            "material": "冷灰纸质刻度盘",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "时间投入",
+            "groupId": "G1",
+            "role": "input",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "内容产出",
+            "groupId": "G2",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "平台分发",
+            "groupId": "G3",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "结果不定",
+            "groupId": "G4",
+            "role": "result",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N5",
+            "label": "平台规则",
+            "groupId": "G3",
+            "role": "constraint",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "时间筹码和token小片落入投入漏斗",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-tokens-drop"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "作品卡沿纸带依次送出",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2"
+            ],
+            "sfxRole": "paper-conveyor"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "作品卡进入平台分发门并被分成不同路径",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N3",
+              "N5"
+            ],
+            "sfxRole": "paper-gate-sort"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "结果托盘左右轻摆后停在不确定区",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N4"
+            ],
+            "sfxRole": "paper-scale-settle"
+          }
+        ],
+        "readableTextPolicy": {
+          "maximumSimultaneousLabels": 4,
+          "slashMergeForbidden": true,
+          "silentTruncationForbidden": true
+        },
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "时间投入",
+            "role": "diegetic-node-label",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.08,
+                0.12
+              ],
+              [
+                0.28,
+                0.12
+              ],
+              [
+                0.28,
+                0.22
+              ],
+              [
+                0.08,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S1",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N2",
+            "text": "内容产出",
+            "role": "diegetic-node-label",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.12
+              ],
+              [
+                0.6,
+                0.12
+              ],
+              [
+                0.6,
+                0.22
+              ],
+              [
+                0.38,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S2",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N3",
+            "text": "平台分发",
+            "role": "diegetic-node-label",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.68,
+                0.12
+              ],
+              [
+                0.9,
+                0.12
+              ],
+              [
+                0.9,
+                0.22
+              ],
+              [
+                0.68,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S3",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N4",
+            "text": "结果不定",
+            "role": "diegetic-node-label",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.72
+              ],
+              [
+                0.6,
+                0.72
+              ],
+              [
+                0.6,
+                0.82
+              ],
+              [
+                0.38,
+                0.82
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S4",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          }
+        ],
+        "screenTextPlan": [
+          {
+            "role": "screen-title",
+            "text": "公域流量链不等于稳定收入",
+            "embeddingMode": "screen-overlay"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "16:9摄影级手作纸艺微缩场景，深海军蓝与工业灰主色，左侧深蓝投入漏斗，中间暖白内容纸带，右侧灰蓝平台分发门与冷灰结果托盘，四张无字刚性标签卡分别放在对应节点旁，正面朝向镜头并预留中文写入空间，至少三层景深，可见纸纤维、瓦楞厚度、真实接触阴影，禁止金币、收益数字、平台Logo、可读文字、机器人和廉价霓虹。 每个需要标注的节点都放置一张独立、正面可见、无遮挡、面积足够的空白刚性纸牌，并贴近其对应物件；纸牌彼此分离，四角完整可见。不得在纸牌或背景生成任何可读文字、乱码、字母、数字、Logo或水印，准确中文将在本地确定性写入。",
+          "motion": "基于首帧完成7秒纸艺定格动画：时间筹码和token纸片先落入漏斗，作品卡沿纸带送出，平台分发门把作品卡导向不同路径，结果托盘轻摆后停稳；四张首帧已有中文标签卡按顺序滑到对应纸面位置，所有中文必须逐字保持首帧内容，不得新增、改写、乱码或变形。镜头只做2%缓慢推进，物件身份、颜色和数量不变。 首帧中已经写入的全部中文必须逐字保持不变。带字纸牌只能作为完整刚性物件滑入、平移、小角度旋转、从抽屉推出或刚性拼图扣合；禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、遮挡文字、重新生成文字和强运动模糊。需要展开时只展开无字底板，再让带字纸牌滑入。结尾稳定停留至少0.8秒，保证所有中文清楚可读。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "spokenLine": "真正能快速拿到现金的，是做本地化AI服务。客户就在你身边，做完一单收一单的钱。",
+      "coreMeaning": "只展示本地服务从需求到交付与验收的闭环，不承诺每次都成交或立即回款。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "mechanical-causality",
+        "title": "本地服务先跑一条可验收闭环",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "本地客户",
+            "material": "暖白店铺与人物纸模",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "需求拆解",
+            "material": "灰白访谈桌与需求票",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "服务交付",
+            "material": "冷青交付纸盒",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "验收决定",
+            "material": "绿色验收台与双向门",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "本地客户",
+            "groupId": "G1",
+            "role": "input",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "真实需求",
+            "groupId": "G2",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "明确交付",
+            "groupId": "G3",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "现场验收",
+            "groupId": "G4",
+            "role": "result",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N5",
+            "label": "是否付费",
+            "groupId": "G4",
+            "role": "decision",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "本地店铺与客户纸模从底座立起",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-shop-pop"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "需求票落到访谈桌并被拆成一件具体任务",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2"
+            ],
+            "sfxRole": "paper-ticket-split"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "交付纸盒沿棉线路径滑向客户",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N3"
+            ],
+            "sfxRole": "paper-box-slide"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "客户在验收台检查后决定通过或退回修改",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N4",
+              "N5"
+            ],
+            "sfxRole": "paper-review-gate"
+          }
+        ],
+        "readableTextPolicy": {
+          "maximumSimultaneousLabels": 4,
+          "slashMergeForbidden": true,
+          "silentTruncationForbidden": true
+        },
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "本地客户",
+            "role": "diegetic-node-label",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.08,
+                0.12
+              ],
+              [
+                0.28,
+                0.12
+              ],
+              [
+                0.28,
+                0.22
+              ],
+              [
+                0.08,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S1",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N2",
+            "text": "真实需求",
+            "role": "diegetic-node-label",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.12
+              ],
+              [
+                0.6,
+                0.12
+              ],
+              [
+                0.6,
+                0.22
+              ],
+              [
+                0.38,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S2",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N3",
+            "text": "明确交付",
+            "role": "diegetic-node-label",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.68,
+                0.12
+              ],
+              [
+                0.9,
+                0.12
+              ],
+              [
+                0.9,
+                0.22
+              ],
+              [
+                0.68,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S3",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N4",
+            "text": "现场验收",
+            "role": "diegetic-node-label",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.72
+              ],
+              [
+                0.6,
+                0.72
+              ],
+              [
+                0.6,
+                0.82
+              ],
+              [
+                0.38,
+                0.82
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S4",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          }
+        ],
+        "screenTextPlan": [
+          {
+            "role": "screen-title",
+            "text": "本地服务先跑一条可验收闭环",
+            "embeddingMode": "screen-overlay"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "16:9手作纸艺服务沙盘，左后方暖白本地店铺和客户纸模，中景灰白访谈桌与需求票，右侧冷青交付纸盒，前景绿色验收台与可开合双向门，四张无字刚性标签卡分别放在对应节点旁，正面朝向镜头并留足中文写入区域，至少三层空间，真实纸张纤维和接触阴影，禁止现金、订单数字、成交保证、可读文字。 每个需要标注的节点都放置一张独立、正面可见、无遮挡、面积足够的空白刚性纸牌，并贴近其对应物件；纸牌彼此分离，四角完整可见。不得在纸牌或背景生成任何可读文字、乱码、字母、数字、Logo或水印，准确中文将在本地确定性写入。",
+          "motion": "7秒纸艺定格：店铺和客户立起，需求票落桌并拆成具体任务，交付盒沿棉线滑向客户，验收门在检查后分为通过或退回修改两条路径；四张首帧已有中文标签卡依次落到对应节点，必须原样保留中文，禁止重写或乱码。不得演绎必然成交或立即回款。 首帧中已经写入的全部中文必须逐字保持不变。带字纸牌只能作为完整刚性物件滑入、平移、小角度旋转、从抽屉推出或刚性拼图扣合；禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、遮挡文字、重新生成文字和强运动模糊。需要展开时只展开无字底板，再让带字纸牌滑入。结尾稳定停留至少0.8秒，保证所有中文清楚可读。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "spokenLine": "听好了第一个方向：AI家庭故事动画、婚礼定制短片。",
+      "coreMeaning": "用用户提供的家庭故事动画和婚礼定制短片原片建立第一方向，不再生成同主题纸艺替代画面。",
+      "kind": "real-person-action",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "chapter-anchor",
+        "items": [
+          "方向一",
+          "家庭故事与婚礼"
+        ]
+      }
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "spokenLine": "把一个人从读书、相遇、工作、结婚生子，这一生的点点滴滴，整理成故事脚本，用AIGC生成专属动画。",
+      "coreMeaning": "用户家庭故事动画作为主画面，本人平滑缩到右下角继续讲解，不重新生成同主题素材。",
+      "kind": "real-person-action",
+      "visualDecision": {
+        "class": "real-evidence",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [
+        "U02 用户家庭故事动画原片，待回填、授权与内容验收"
+      ],
+      "presentation": {
+        "mode": "real-media-with-presenter-inset",
+        "materialAudioMode": "duck-under-narration",
+        "speakerIsExplainingThisAsset": true,
+        "minimumDurationSeconds": 3,
+        "presenter": {
+          "source": "authoritative-talk-source",
+          "audioOwner": "base-talk-only",
+          "duplicateVideoMuted": true,
+          "anchor": "bottom-right",
+          "shape": "circle"
+        },
+        "transition": {
+          "enterFrames": 16,
+          "exitFrames": 12,
+          "hardCutForbidden": true
+        },
+        "captions": {
+          "overlapForbidden": true,
+          "minimumGapPx": 24
+        }
+      }
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "spokenLine": "还有婚礼，可以做婚前预告短片，曾经动辄几万十几万的影视巨作，几千就搞定了，如果做了本地部署，成本更低",
+      "coreMeaning": "用户婚礼定制短片作为主画面，本人平滑缩到右下角讲解成片用途；素材不能证明价格、成本或成交。",
+      "kind": "real-person-action",
+      "visualDecision": {
+        "class": "real-evidence",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [
+        "U03 用户婚礼定制短片原片，待回填、授权与内容验收"
+      ],
+      "presentation": {
+        "mode": "real-media-with-presenter-inset",
+        "materialAudioMode": "duck-under-narration",
+        "speakerIsExplainingThisAsset": true,
+        "minimumDurationSeconds": 3,
+        "presenter": {
+          "source": "authoritative-talk-source",
+          "audioOwner": "base-talk-only",
+          "duplicateVideoMuted": true,
+          "anchor": "bottom-right",
+          "shape": "circle"
+        },
+        "transition": {
+          "enterFrames": 16,
+          "exitFrames": 12,
+          "hardCutForbidden": true
+        },
+        "captions": {
+          "overlapForbidden": true,
+          "minimumGapPx": 24
+        }
+      }
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "spokenLine": "还有一个非常有温度的赛道：AI长辈人生数字回忆录。",
+      "coreMeaning": "使用长辈与家人翻相册、讲故事的真实场景示意，不冒充本人的客户案例。",
+      "kind": "real-person-action",
+      "visualDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "generatedVideoBrief": {
+        "role": "illustration-only",
+        "presentationMode": "full-screen",
+        "evidenceEligible": false,
+        "purpose": "用人物、家庭环境和老照片表现长辈人生数字回忆录的情感场景",
+        "prompt": "16:9真实商业纪实摄影风格，中国西北普通家庭客厅，一位成年子女与长辈并肩坐在桌边，桌上摊开数张旧照片和一本空白纪念册，子女认真倾听并用小型录音设备记录，长辈自然讲述往事，暖色窗光与克制侧光，真实年龄感和生活细节，镜头缓慢推进，情绪温暖但不煽情，不出现可读文字、品牌、Logo、水印、收益暗示或虚构客户背书。",
+        "disclosureRequired": true
+      }
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "spokenLine": "你就上门访谈，听老人讲述自己的一生，童年、求学、工作时代、家庭变迁，录音收集口述素材。再借助AI整理时间线、润色文稿，修复老照片。最终交付可以是电子纪念手册、家族数字档案，也可以做成动画短片，甚至印刷成纸质回忆录，作为家族的一份数字资产留给后代。",
+      "coreMeaning": "完整呈现访谈采集、时间整理、照片修复、数字交付和家族归档流程，并保留人工核对。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "complex-explanation",
+        "title": "长辈人生回忆录的制作流程",
+        "durationSeconds": 8,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "访谈采集",
+            "material": "暖灰会客桌与录音纸盘",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "时间整理",
+            "material": "深蓝时间线与逐字卡",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "照片修复",
+            "material": "冷青修复台与校对放大镜",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "数字交付",
+            "material": "绿色电子手册纸模",
+            "depth": 4
+          },
+          {
+            "id": "G5",
+            "name": "实体归档",
+            "material": "暖白装订册与档案盒",
+            "depth": 5
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "上门访谈",
+            "groupId": "G1",
+            "role": "input",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "人生时间线",
+            "groupId": "G2",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "老照片修复",
+            "groupId": "G3",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "家族档案",
+            "groupId": "G5",
+            "role": "result",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N5",
+            "label": "录音",
+            "groupId": "G1",
+            "role": "input",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "N6",
+            "label": "逐字稿",
+            "groupId": "G2",
+            "role": "process",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "N7",
+            "label": "人工校对",
+            "groupId": "G3",
+            "role": "boundary",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "N8",
+            "label": "电子手册",
+            "groupId": "G4",
+            "role": "output",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "N9",
+            "label": "纸质回忆录",
+            "groupId": "G5",
+            "role": "output",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "会客桌展开，录音纸盘开始转动",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1",
+              "N5"
+            ],
+            "sfxRole": "paper-recorder-start"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "逐字卡落到时间线并按年代归位",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2",
+              "N6"
+            ],
+            "sfxRole": "timeline-card-sort"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "旧照片进入修复台，人工校对放大镜压下确认",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N3",
+              "N7"
+            ],
+            "sfxRole": "photo-repair-review"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "电子手册从数字交付盒中展开",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N8"
+            ],
+            "sfxRole": "paper-book-open"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "装订册进入家族档案盒并锁定",
+            "subject": "G5",
+            "landingNodeIds": [
+              "N4",
+              "N9"
+            ],
+            "sfxRole": "archive-box-lock"
+          }
+        ],
+        "readableTextPolicy": {
+          "maximumSimultaneousLabels": 4,
+          "slashMergeForbidden": true,
+          "silentTruncationForbidden": true
+        },
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "上门访谈",
+            "role": "diegetic-node-label",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.08,
+                0.12
+              ],
+              [
+                0.28,
+                0.12
+              ],
+              [
+                0.28,
+                0.22
+              ],
+              [
+                0.08,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S1",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N2",
+            "text": "人生时间线",
+            "role": "diegetic-node-label",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.12
+              ],
+              [
+                0.6,
+                0.12
+              ],
+              [
+                0.6,
+                0.22
+              ],
+              [
+                0.38,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S2",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N3",
+            "text": "老照片修复",
+            "role": "diegetic-node-label",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.68,
+                0.12
+              ],
+              [
+                0.9,
+                0.12
+              ],
+              [
+                0.9,
+                0.22
+              ],
+              [
+                0.68,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S3",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N4",
+            "text": "家族档案",
+            "role": "diegetic-node-label",
+            "groupId": "G5",
+            "surfaceId": "G5-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.72
+              ],
+              [
+                0.6,
+                0.72
+              ],
+              [
+                0.6,
+                0.82
+              ],
+              [
+                0.38,
+                0.82
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S5-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S5",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          }
+        ],
+        "screenTextPlan": [
+          {
+            "role": "screen-title",
+            "text": "长辈人生回忆录的制作流程",
+            "embeddingMode": "screen-overlay"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "16:9电影级手作纸艺口述史工作台，五组物件沿由左后向右前的路径清楚分层：暖灰访谈桌与录音纸盘、深蓝时间线与逐字卡、冷青照片修复台与校对放大镜、绿色电子手册纸模、暖白装订册与档案盒。严格只设置四张独立空白刚性标签牌：第一张固定在访谈桌与录音纸盘旁，第二张固定在时间线与逐字卡旁，第三张固定在照片修复台与放大镜旁，第四张固定在装订册与档案盒旁。绿色电子手册纸模只作无字物件，周围不得出现第五张标签牌。四张标签牌正面朝向镜头、互不遮挡、四角完整、面积足够，五层纵深、柔和侧光、纸纤维清晰。不得生成真实老人面孔、隐私信息、可读文字、乱码、字母、数字、Logo、水印或虚假档案编号，准确中文将在本地确定性写入。",
+          "motion": "8秒纸艺定格。保持首帧五组物件、四张带字标签牌的位置关系和数量不变：访谈桌展开且录音纸盘缓慢转动；逐字卡按年代落入时间线；旧照片滑入修复台，校对放大镜压下确认；绿色电子手册作为无字刚性物件从交付盒中展开；暖白装订册最后进入档案盒，第四张标签牌随档案盒刚性扣合。四张首帧已有中文标签必须逐字保持，不新增第五张标签牌，不改写、不遮挡、不翻面、不弯曲、不拉伸，不产生乱码或漂浮屏幕字幕；结尾稳定停留至少0.8秒。",
+          "generatedReadableTextAllowed": false
+        },
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": [
+            {
+              "groupId": "G4",
+              "reason": "电子手册由绿色电子手册纸模直接表达，只作无字数字交付物件，不配置第五张标签牌。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "spokenLine": "第二个就更牛了：面向银发群体的AI教育培训、营销赋能。",
+      "coreMeaning": "用银发店主经营、记录和使用手机的真实动作建立场景，不把培训画面冒充付费客户。",
+      "kind": "real-person-action",
+      "visualDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "generatedVideoBrief": {
+        "role": "illustration-only",
+        "presentationMode": "full-screen",
+        "evidenceEligible": false,
+        "purpose": "表现中老年实体店经营者学习用AI完成具体宣传任务的真实动作",
+        "prompt": "16:9真实商业纪实摄影风格，中国西北社区实体小店内，一位中老年店主坐在柜台前使用手机和电脑，先整理商品照片，再查看短视频脚本草稿与宣传海报版式，旁边纸笔记录客户沟通要点，神态专注而不夸张，背景可见真实货架与日常经营环境，镜头从中景轻缓移到手部操作特写，不展示任何可读界面文字、平台Logo、医疗功效、收益数字或虚假成交。",
+        "disclosureRequired": true
+      }
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "spokenLine": "而是教他们实实在在怎么用AI：整理一套豆包提示词，写短视频文案、生成宣传图片、生成跟客户沟通销售话术，帮实体店主解决获客宣传的实际痛点。",
+      "coreMeaning": "从门店真实任务出发，形成可检查的文案、海报和沟通话术，不用抽象大模型课程取代业务。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "complex-explanation",
+        "title": "银发店主需要的是具体任务交付",
+        "durationSeconds": 8,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "门店现场",
+            "material": "暖白柜台与产品纸模",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "任务拆解",
+            "material": "深蓝提示词抽屉",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "内容生成",
+            "material": "冷青文案与海报工作台",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "沟通交付",
+            "material": "绿色话术卡与发布门",
+            "depth": 4
+          },
+          {
+            "id": "G5",
+            "name": "真实反馈",
+            "material": "灰白客户反馈盘",
+            "depth": 5
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "门店产品",
+            "groupId": "G1",
+            "role": "input",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "短视频文案",
+            "groupId": "G3",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "宣传海报",
+            "groupId": "G3",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "沟通话术",
+            "groupId": "G4",
+            "role": "result",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N5",
+            "label": "提示词卡",
+            "groupId": "G2",
+            "role": "tool",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "N6",
+            "label": "人工确认",
+            "groupId": "G3",
+            "role": "boundary",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "N7",
+            "label": "发布检查",
+            "groupId": "G4",
+            "role": "check",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "N8",
+            "label": "客户反馈",
+            "groupId": "G5",
+            "role": "feedback",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "N9",
+            "label": "继续调整",
+            "groupId": "G5",
+            "role": "iteration",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "门店柜台与产品纸模立起",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-counter-pop"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "提示词抽屉拉开并取出一张任务卡",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N5"
+            ],
+            "sfxRole": "paper-drawer-pull"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "文案卡和海报纸片依次落到人工确认位",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N2",
+              "N3",
+              "N6"
+            ],
+            "sfxRole": "content-card-land"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "沟通话术卡通过发布检查门",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N4",
+              "N7"
+            ],
+            "sfxRole": "paper-gate-check"
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "action": "客户反馈盘转动后把调整卡送回工作台",
+            "subject": "G5",
+            "landingNodeIds": [
+              "N8",
+              "N9"
+            ],
+            "sfxRole": "feedback-wheel-return"
+          }
+        ],
+        "readableTextPolicy": {
+          "maximumSimultaneousLabels": 4,
+          "slashMergeForbidden": true,
+          "silentTruncationForbidden": true
+        },
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "门店产品",
+            "role": "diegetic-node-label",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.08,
+                0.12
+              ],
+              [
+                0.28,
+                0.12
+              ],
+              [
+                0.28,
+                0.22
+              ],
+              [
+                0.08,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S1",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N2",
+            "text": "短视频文案",
+            "role": "diegetic-node-label",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card-copy",
+            "anchorQuad": [
+              [
+                0.38,
+                0.12
+              ],
+              [
+                0.6,
+                0.12
+              ],
+              [
+                0.6,
+                0.22
+              ],
+              [
+                0.38,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S3",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N3",
+            "text": "宣传海报",
+            "role": "diegetic-node-label",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card-poster",
+            "anchorQuad": [
+              [
+                0.68,
+                0.12
+              ],
+              [
+                0.9,
+                0.12
+              ],
+              [
+                0.9,
+                0.22
+              ],
+              [
+                0.68,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S3",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N4",
+            "text": "沟通话术",
+            "role": "diegetic-node-label",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.72
+              ],
+              [
+                0.6,
+                0.72
+              ],
+              [
+                0.6,
+                0.82
+              ],
+              [
+                0.38,
+                0.82
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S4",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          }
+        ],
+        "screenTextPlan": [
+          {
+            "role": "screen-title",
+            "text": "银发店主需要的是具体任务交付",
+            "embeddingMode": "screen-overlay"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "16:9克制的手作纸艺实体门店工作台，左后方为暖白柜台和产品纸模，中间为深蓝提示词抽屉，右侧为冷青文案与海报双工位，前景为绿色沟通交付门和灰白反馈盘。严格只设置四张独立空白刚性标签牌：第一张放在柜台产品旁；第二张放在冷青工作台左侧文案位；第三张放在同一工作台右侧海报位；第四张放在绿色沟通交付门旁。深蓝提示词抽屉和灰白反馈盘均不配置标签牌。四张纸牌正面朝向镜头、互不遮挡、四角完整、面积足够，五层空间、真实纸纤维、柔和侧光。不得生成保健疗效暗示、虚假订单、二维码、真实平台Logo、可读文字、乱码、字母、数字或水印，准确中文将在本地确定性写入。",
+          "motion": "8秒纸艺定格。保持首帧四张带字标签牌和五组物件的对应关系：门店柜台与产品纸模立起；深蓝提示词抽屉拉开并推出一张完全空白任务卡；冷青工作台上的文案纸片和海报纸片依次滑到各自工位；绿色沟通纸片穿过交付门；灰白反馈盘转动后送回一张无字调整纸片。四张首帧已有中文标签必须逐字保持且只随各自刚性物件移动，不新增标签、不改写、不遮挡、不翻面、不弯曲、不拉伸，不产生乱码、营销承诺或漂浮屏幕字幕；结尾稳定停留至少0.8秒。",
+          "generatedReadableTextAllowed": false
+        },
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": [
+            {
+              "groupId": "G2",
+              "reason": "提示词抽屉与无字任务卡只负责启动任务，节点含义由造型和动作表达，不配置标签牌。"
+            },
+            {
+              "groupId": "G5",
+              "reason": "反馈盘与回流纸片只表达复盘动作，不增加第五张标签牌。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "spokenLine": "线上卷播放，是跟全国几百万创作者去竞争；做本地服务，你的竞争对手反而很少。",
+      "coreMeaning": "对比公域分发与本地关系两种路径，但不把竞争数量或成功率做成确定事实。",
+      "kind": "comparison",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "mechanical-causality",
+        "title": "公域分发与本地服务是两条路",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "公域入口",
+            "material": "深蓝密集作品卡",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "算法筛选",
+            "material": "灰蓝多层纸筛",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "本地关系",
+            "material": "暖白城市街区与棉线",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "验收结果",
+            "material": "绿色现场验收台",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "公域分发",
+            "groupId": "G1",
+            "role": "input",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "算法筛选",
+            "groupId": "G2",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "本地关系",
+            "groupId": "G3",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "真实验收",
+            "groupId": "G4",
+            "role": "result",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N5",
+            "label": "竞争强弱未核实",
+            "groupId": "G4",
+            "role": "caution",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "大量作品卡同时进入公域入口",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-cards-rush"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "多层纸筛依次开合并改变分发方向",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2"
+            ],
+            "sfxRole": "paper-filter-steps"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "本地街区立起，关系棉线连接到一间店铺",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N3"
+            ],
+            "sfxRole": "twine-local-connect"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "两条路径都进入各自验收台而非收益终点",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N4",
+              "N5"
+            ],
+            "sfxRole": "paper-review-double"
+          }
+        ],
+        "readableTextPolicy": {
+          "maximumSimultaneousLabels": 4,
+          "slashMergeForbidden": true,
+          "silentTruncationForbidden": true
+        },
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "公域分发",
+            "role": "diegetic-node-label",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.08,
+                0.12
+              ],
+              [
+                0.28,
+                0.12
+              ],
+              [
+                0.28,
+                0.22
+              ],
+              [
+                0.08,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S1",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N2",
+            "text": "算法筛选",
+            "role": "diegetic-node-label",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.12
+              ],
+              [
+                0.6,
+                0.12
+              ],
+              [
+                0.6,
+                0.22
+              ],
+              [
+                0.38,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S2",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N3",
+            "text": "本地关系",
+            "role": "diegetic-node-label",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.68,
+                0.12
+              ],
+              [
+                0.9,
+                0.12
+              ],
+              [
+                0.9,
+                0.22
+              ],
+              [
+                0.68,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S3",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N4",
+            "text": "真实验收",
+            "role": "diegetic-node-label",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.72
+              ],
+              [
+                0.6,
+                0.72
+              ],
+              [
+                0.6,
+                0.82
+              ],
+              [
+                0.38,
+                0.82
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S4",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          }
+        ],
+        "screenTextPlan": [
+          {
+            "role": "screen-title",
+            "text": "公域分发与本地服务是两条路",
+            "embeddingMode": "screen-overlay"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "16:9纸艺左右对照沙盘，左侧深蓝密集作品卡与灰蓝多层纸筛，右侧暖白本地街区和连接店铺的棉线，前景绿色双验收台，四张无字刚性标签卡分别放在对应节点旁，正面朝向镜头并留足中文写入区域，至少三层深度，禁止播放量数字、收益数字、竞争者数量、金币、可读文字和紫色霓虹。 每个需要标注的节点都放置一张独立、正面可见、无遮挡、面积足够的空白刚性纸牌，并贴近其对应物件；纸牌彼此分离，四角完整可见。不得在纸牌或背景生成任何可读文字、乱码、字母、数字、Logo或水印，准确中文将在本地确定性写入。",
+          "motion": "7秒纸艺定格：左侧大量作品卡进入多层纸筛并被导向不同方向，右侧本地街区立起并用棉线连接到店铺，两条路最后都落到各自验收台；四张首帧已有中文标签按顺序落位且逐字保持不变。不得演绎本地服务必然竞争少或必然成交。 首帧中已经写入的全部中文必须逐字保持不变。带字纸牌只能作为完整刚性物件滑入、平移、小角度旋转、从抽屉推出或刚性拼图扣合；禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、遮挡文字、重新生成文字和强运动模糊。需要展开时只展开无字底板，再让带字纸牌滑入。结尾稳定停留至少0.8秒，保证所有中文清楚可读。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "spokenLine": "线上账号用来展示你的案例，作为你的名片，积累数字资产和个人知识库，真正成交，落地在线下本地。",
+      "coreMeaning": "线上内容承担展示和信任证据，线下沟通、小单试做与验收才构成业务闭环。",
+      "kind": "causal-chain",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "mechanical-causality",
+        "title": "线上名片通向线下验证",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "线上案例库",
+            "material": "深蓝内容卡册",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "个人名片",
+            "material": "冷青折叠名片纸",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "线下沟通",
+            "material": "暖白会谈桌与城市地图",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "小单验证",
+            "material": "绿色试做台与复盘卡",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "线上案例",
+            "groupId": "G1",
+            "role": "input",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "内容名片",
+            "groupId": "G2",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "线下沟通",
+            "groupId": "G3",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "小单验证",
+            "groupId": "G4",
+            "role": "result",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N5",
+            "label": "是否继续",
+            "groupId": "G4",
+            "role": "decision",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "线上案例卡逐张装入内容卡册",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-case-file"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "内容卡册折成一张个人名片",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2"
+            ],
+            "sfxRole": "paper-card-fold"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "名片沿城市地图棉线到达线下会谈桌",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N3"
+            ],
+            "sfxRole": "paper-map-travel"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "一张小单试做卡进入验收台并决定继续或停止",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N4",
+              "N5"
+            ],
+            "sfxRole": "pilot-review-click"
+          }
+        ],
+        "readableTextPolicy": {
+          "maximumSimultaneousLabels": 4,
+          "slashMergeForbidden": true,
+          "silentTruncationForbidden": true
+        },
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "线上案例",
+            "role": "diegetic-node-label",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.08,
+                0.12
+              ],
+              [
+                0.28,
+                0.12
+              ],
+              [
+                0.28,
+                0.22
+              ],
+              [
+                0.08,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S1",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N2",
+            "text": "内容名片",
+            "role": "diegetic-node-label",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.12
+              ],
+              [
+                0.6,
+                0.12
+              ],
+              [
+                0.6,
+                0.22
+              ],
+              [
+                0.38,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S2",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N3",
+            "text": "线下沟通",
+            "role": "diegetic-node-label",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.68,
+                0.12
+              ],
+              [
+                0.9,
+                0.12
+              ],
+              [
+                0.9,
+                0.22
+              ],
+              [
+                0.68,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S3",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N4",
+            "text": "小单验证",
+            "role": "diegetic-node-label",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.72
+              ],
+              [
+                0.6,
+                0.72
+              ],
+              [
+                0.6,
+                0.82
+              ],
+              [
+                0.38,
+                0.82
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S4",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          }
+        ],
+        "screenTextPlan": [
+          {
+            "role": "screen-title",
+            "text": "线上名片通向线下验证",
+            "embeddingMode": "screen-overlay"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "16:9纸艺线上到线下路径，左后方深蓝内容案例卡册，中景冷青折叠名片，城市地图棉线通向右侧暖白会谈桌，前景绿色小单试做与复盘台，四张无字刚性标签卡分别放在对应节点旁，正面朝向镜头并留足中文写入区域，三层以上空间，禁止粉丝数、成交金额、联系方式、二维码、可读文字。 每个需要标注的节点都放置一张独立、正面可见、无遮挡、面积足够的空白刚性纸牌，并贴近其对应物件；纸牌彼此分离，四角完整可见。不得在纸牌或背景生成任何可读文字、乱码、字母、数字、Logo或水印，准确中文将在本地确定性写入。",
+          "motion": "7秒纸艺定格：案例卡装入内容卡册，卡册折成个人名片，名片沿城市棉线抵达线下会谈桌，小单试做卡进入验收台并分出继续或停止；四张首帧已有中文标签逐字保持不变并顺序落位。不得演绎内容发布后自动成交。 首帧中已经写入的全部中文必须逐字保持不变。带字纸牌只能作为完整刚性物件滑入、平移、小角度旋转、从抽屉推出或刚性拼图扣合；禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、遮挡文字、重新生成文字和强运动模糊。需要展开时只展开无字底板，再让带字纸牌滑入。结尾稳定停留至少0.8秒，保证所有中文清楚可读。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "spokenLine": "AI只是工具，赚钱的核心，永远不是工具本身，而是找到真实人的真实需求。",
+      "coreMeaning": "AI工具只有经过真实需求、人工判断和使用验收，才可能形成可用服务。",
+      "kind": "causal-chain",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "codex-remotion",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "paperScene": {
+        "archetype": "mechanical-causality",
+        "title": "从真实需求到可用结果",
+        "durationSeconds": 6,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "真实需求",
+            "material": "暖白人物与纯空白需求卡",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "AI工具箱",
+            "material": "深蓝纸质工具箱",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "人工判断台",
+            "material": "冷青检查尺与选择门",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "使用结果",
+            "material": "绿色交付盒与无字确认压板",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "真实需求",
+            "groupId": "G1",
+            "role": "input",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "AI工具",
+            "groupId": "G2",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "人工判断",
+            "groupId": "G3",
+            "role": "process",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "可用结果",
+            "groupId": "G4",
+            "role": "result",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N5",
+            "label": "用户验收",
+            "groupId": "G4",
+            "role": "evidence",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "action": "一张完全空白、无图形无印记的需求卡落到人物旁的桌面",
+            "subject": "G1",
+            "landingNodeIds": [
+              "N1"
+            ],
+            "sfxRole": "paper-problem-land"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "action": "AI工具箱打开并推出三张靠颜色和位置区分的纯空白候选纸片",
+            "subject": "G2",
+            "landingNodeIds": [
+              "N2"
+            ],
+            "sfxRole": "toolbox-candidates"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "action": "人工检查尺筛掉不合适方案并选择一条",
+            "subject": "G3",
+            "landingNodeIds": [
+              "N3"
+            ],
+            "sfxRole": "paper-review-select"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "action": "可用结果进入现场，无字确认压板在用户检查后落下锁定",
+            "subject": "G4",
+            "landingNodeIds": [
+              "N4",
+              "N5"
+            ],
+            "sfxRole": "paper-user-accept"
+          }
+        ],
+        "readableTextPolicy": {
+          "maximumSimultaneousLabels": 4,
+          "slashMergeForbidden": true,
+          "silentTruncationForbidden": true
+        },
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "真实需求",
+            "role": "diegetic-node-label",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.08,
+                0.12
+              ],
+              [
+                0.28,
+                0.12
+              ],
+              [
+                0.28,
+                0.22
+              ],
+              [
+                0.08,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S1",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N2",
+            "text": "AI工具",
+            "role": "diegetic-node-label",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.12
+              ],
+              [
+                0.6,
+                0.12
+              ],
+              [
+                0.6,
+                0.22
+              ],
+              [
+                0.38,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S2",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N3",
+            "text": "人工判断",
+            "role": "diegetic-node-label",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.68,
+                0.12
+              ],
+              [
+                0.9,
+                0.12
+              ],
+              [
+                0.9,
+                0.22
+              ],
+              [
+                0.68,
+                0.22
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S3",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          },
+          {
+            "nodeId": "N4",
+            "text": "可用结果",
+            "role": "diegetic-node-label",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.38,
+                0.72
+              ],
+              [
+                0.6,
+                0.72
+              ],
+              [
+                0.6,
+                0.82
+              ],
+              [
+                0.38,
+                0.82
+              ]
+            ],
+            "maxChars": 8,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "none",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "trackingKeyframesRequired": false,
+            "enterStageId": "S4",
+            "stageOffsetFrames": 0,
+            "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+          }
+        ],
+        "screenTextPlan": [
+          {
+            "role": "screen-title",
+            "text": "从真实需求到可用结果",
+            "embeddingMode": "screen-overlay"
+          }
+        ],
+        "prompt": {
+          "firstFrame": "16:9手作纸艺结论场景，左侧为暖白无脸纸片人物，人物旁放一张完全空白、无图形无印记的需求卡；中间为深蓝纸质AI工具箱，箱内横向摆放三张纯空白候选纸片，深蓝纸片在左、冷青纸片居中、灰白纸片在右，只靠颜色和位置区分；右侧为冷青人工检查尺与选择门；前景为绿色交付盒和一块无字确认压板。四张独立空白刚性标签牌分别固定在人物需求区、工具箱、人工判断区和交付盒旁，正面朝向镜头、互不遮挡、四角完整、面积足够。四层空间、真实纸纤维与柔和侧光。不得生成机器人、魔法按钮、金币、收益保证、可读文字、乱码、字母、数字、Logo、水印，也不得在需求卡或三张候选纸片上生成任何图形、印记、编号、图标或勾叉；准确中文将在本地确定性写入。",
+          "motion": "6秒纸艺定格。暖白人物旁的一张完全空白需求卡先滑入桌面；深蓝AI工具箱打开，三张纯空白候选纸片按左、中、右位置依次推出；冷青检查尺逐张经过，只把居中的冷青纸片送过选择门，其余两张退回工具箱；绿色交付盒滑入现场，无字确认压板在用户检查动作后垂直落下完成机械锁定。四张首帧已有中文标签必须逐字保持且只随各自刚性物件移动；需求卡与候选纸片始终保持纯空白，不新增图形、印记、编号、图标、勾叉、文字或漂浮屏幕字幕，不改写、不遮挡、不翻面、不弯曲、不拉伸；结尾稳定停留至少0.8秒。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "spokenLine": "你身边有没有类似的本地需求？你觉得在咱们本地，AI还能做哪些生意，评论区我们一起交流。",
+      "coreMeaning": "回到真人提出开放问题，不用动画给出未经验证的项目清单。",
+      "kind": "real-person-action",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "evidenceRefs": [],
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "cta",
+        "items": [
+          "本地真实需求",
+          "评论区交流"
+        ]
+      }
+    }
+  ],
+  "paperScenes": [
+    {
+      "beatId": "B02",
+      "spokenLine": "烧大量token、投入时间精力，指望短视频播放变现，结果万播也就几块钱。",
+      "coreMeaning": "把投入、内容生产、平台分发和不确定结果串成一条公域流量链，不把固定收益数字画成事实。",
+      "archetype": "mechanical-causality",
+      "title": "公域流量链不等于稳定收入",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "投入容器",
+          "material": "深蓝瓦楞纸漏斗",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "内容流水线",
+          "material": "暖白纸带与作品卡",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "平台分发门",
+          "material": "灰蓝可开合纸门",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "结果托盘",
+          "material": "冷灰纸质刻度盘",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "时间投入",
+          "groupId": "G1",
+          "role": "input",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "内容产出",
+          "groupId": "G2",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "平台分发",
+          "groupId": "G3",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "结果不定",
+          "groupId": "G4",
+          "role": "result",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N5",
+          "label": "平台规则",
+          "groupId": "G3",
+          "role": "constraint",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "时间筹码和token小片落入投入漏斗",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-tokens-drop"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "作品卡沿纸带依次送出",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2"
+          ],
+          "sfxRole": "paper-conveyor"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "作品卡进入平台分发门并被分成不同路径",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N3",
+            "N5"
+          ],
+          "sfxRole": "paper-gate-sort"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "结果托盘左右轻摆后停在不确定区",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N4"
+          ],
+          "sfxRole": "paper-scale-settle"
+        }
+      ],
+      "readableTextPolicy": {
+        "maximumSimultaneousLabels": 4,
+        "slashMergeForbidden": true,
+        "silentTruncationForbidden": true
+      },
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "时间投入",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.08,
+              0.12
+            ],
+            [
+              0.28,
+              0.12
+            ],
+            [
+              0.28,
+              0.22
+            ],
+            [
+              0.08,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N2",
+          "text": "内容产出",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.22
+            ],
+            [
+              0.38,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N3",
+          "text": "平台分发",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.68,
+              0.12
+            ],
+            [
+              0.9,
+              0.12
+            ],
+            [
+              0.9,
+              0.22
+            ],
+            [
+              0.68,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N4",
+          "text": "结果不定",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.72
+            ],
+            [
+              0.6,
+              0.72
+            ],
+            [
+              0.6,
+              0.82
+            ],
+            [
+              0.38,
+              0.82
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        }
+      ],
+      "screenTextPlan": [
+        {
+          "role": "screen-title",
+          "text": "公域流量链不等于稳定收入",
+          "embeddingMode": "screen-overlay"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "16:9摄影级手作纸艺微缩场景，深海军蓝与工业灰主色，左侧深蓝投入漏斗，中间暖白内容纸带，右侧灰蓝平台分发门与冷灰结果托盘，四张无字刚性标签卡分别放在对应节点旁，正面朝向镜头并预留中文写入空间，至少三层景深，可见纸纤维、瓦楞厚度、真实接触阴影，禁止金币、收益数字、平台Logo、可读文字、机器人和廉价霓虹。 每个需要标注的节点都放置一张独立、正面可见、无遮挡、面积足够的空白刚性纸牌，并贴近其对应物件；纸牌彼此分离，四角完整可见。不得在纸牌或背景生成任何可读文字、乱码、字母、数字、Logo或水印，准确中文将在本地确定性写入。",
+        "motion": "基于首帧完成7秒纸艺定格动画：时间筹码和token纸片先落入漏斗，作品卡沿纸带送出，平台分发门把作品卡导向不同路径，结果托盘轻摆后停稳；四张首帧已有中文标签卡按顺序滑到对应纸面位置，所有中文必须逐字保持首帧内容，不得新增、改写、乱码或变形。镜头只做2%缓慢推进，物件身份、颜色和数量不变。 首帧中已经写入的全部中文必须逐字保持不变。带字纸牌只能作为完整刚性物件滑入、平移、小角度旋转、从抽屉推出或刚性拼图扣合；禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、遮挡文字、重新生成文字和强运动模糊。需要展开时只展开无字底板，再让带字纸牌滑入。结尾稳定停留至少0.8秒，保证所有中文清楚可读。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B03",
+      "spokenLine": "真正能快速拿到现金的，是做本地化AI服务。客户就在你身边，做完一单收一单的钱。",
+      "coreMeaning": "只展示本地服务从需求到交付与验收的闭环，不承诺每次都成交或立即回款。",
+      "archetype": "mechanical-causality",
+      "title": "本地服务先跑一条可验收闭环",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "本地客户",
+          "material": "暖白店铺与人物纸模",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "需求拆解",
+          "material": "灰白访谈桌与需求票",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "服务交付",
+          "material": "冷青交付纸盒",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "验收决定",
+          "material": "绿色验收台与双向门",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "本地客户",
+          "groupId": "G1",
+          "role": "input",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "真实需求",
+          "groupId": "G2",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "明确交付",
+          "groupId": "G3",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "现场验收",
+          "groupId": "G4",
+          "role": "result",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N5",
+          "label": "是否付费",
+          "groupId": "G4",
+          "role": "decision",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "本地店铺与客户纸模从底座立起",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-shop-pop"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "需求票落到访谈桌并被拆成一件具体任务",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2"
+          ],
+          "sfxRole": "paper-ticket-split"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "交付纸盒沿棉线路径滑向客户",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N3"
+          ],
+          "sfxRole": "paper-box-slide"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "客户在验收台检查后决定通过或退回修改",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N4",
+            "N5"
+          ],
+          "sfxRole": "paper-review-gate"
+        }
+      ],
+      "readableTextPolicy": {
+        "maximumSimultaneousLabels": 4,
+        "slashMergeForbidden": true,
+        "silentTruncationForbidden": true
+      },
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "本地客户",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.08,
+              0.12
+            ],
+            [
+              0.28,
+              0.12
+            ],
+            [
+              0.28,
+              0.22
+            ],
+            [
+              0.08,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N2",
+          "text": "真实需求",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.22
+            ],
+            [
+              0.38,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N3",
+          "text": "明确交付",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.68,
+              0.12
+            ],
+            [
+              0.9,
+              0.12
+            ],
+            [
+              0.9,
+              0.22
+            ],
+            [
+              0.68,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N4",
+          "text": "现场验收",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.72
+            ],
+            [
+              0.6,
+              0.72
+            ],
+            [
+              0.6,
+              0.82
+            ],
+            [
+              0.38,
+              0.82
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        }
+      ],
+      "screenTextPlan": [
+        {
+          "role": "screen-title",
+          "text": "本地服务先跑一条可验收闭环",
+          "embeddingMode": "screen-overlay"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "16:9手作纸艺服务沙盘，左后方暖白本地店铺和客户纸模，中景灰白访谈桌与需求票，右侧冷青交付纸盒，前景绿色验收台与可开合双向门，四张无字刚性标签卡分别放在对应节点旁，正面朝向镜头并留足中文写入区域，至少三层空间，真实纸张纤维和接触阴影，禁止现金、订单数字、成交保证、可读文字。 每个需要标注的节点都放置一张独立、正面可见、无遮挡、面积足够的空白刚性纸牌，并贴近其对应物件；纸牌彼此分离，四角完整可见。不得在纸牌或背景生成任何可读文字、乱码、字母、数字、Logo或水印，准确中文将在本地确定性写入。",
+        "motion": "7秒纸艺定格：店铺和客户立起，需求票落桌并拆成具体任务，交付盒沿棉线滑向客户，验收门在检查后分为通过或退回修改两条路径；四张首帧已有中文标签卡依次落到对应节点，必须原样保留中文，禁止重写或乱码。不得演绎必然成交或立即回款。 首帧中已经写入的全部中文必须逐字保持不变。带字纸牌只能作为完整刚性物件滑入、平移、小角度旋转、从抽屉推出或刚性拼图扣合；禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、遮挡文字、重新生成文字和强运动模糊。需要展开时只展开无字底板，再让带字纸牌滑入。结尾稳定停留至少0.8秒，保证所有中文清楚可读。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B08",
+      "spokenLine": "你就上门访谈，听老人讲述自己的一生，童年、求学、工作时代、家庭变迁，录音收集口述素材。再借助AI整理时间线、润色文稿，修复老照片。最终交付可以是电子纪念手册、家族数字档案，也可以做成动画短片，甚至印刷成纸质回忆录，作为家族的一份数字资产留给后代。",
+      "coreMeaning": "完整呈现访谈采集、时间整理、照片修复、数字交付和家族归档流程，并保留人工核对。",
+      "archetype": "complex-explanation",
+      "title": "长辈人生回忆录的制作流程",
+      "durationSeconds": 8,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "访谈采集",
+          "material": "暖灰会客桌与录音纸盘",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "时间整理",
+          "material": "深蓝时间线与逐字卡",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "照片修复",
+          "material": "冷青修复台与校对放大镜",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "数字交付",
+          "material": "绿色电子手册纸模",
+          "depth": 4
+        },
+        {
+          "id": "G5",
+          "name": "实体归档",
+          "material": "暖白装订册与档案盒",
+          "depth": 5
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "上门访谈",
+          "groupId": "G1",
+          "role": "input",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "人生时间线",
+          "groupId": "G2",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "老照片修复",
+          "groupId": "G3",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "家族档案",
+          "groupId": "G5",
+          "role": "result",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N5",
+          "label": "录音",
+          "groupId": "G1",
+          "role": "input",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "N6",
+          "label": "逐字稿",
+          "groupId": "G2",
+          "role": "process",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "N7",
+          "label": "人工校对",
+          "groupId": "G3",
+          "role": "boundary",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "N8",
+          "label": "电子手册",
+          "groupId": "G4",
+          "role": "output",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "N9",
+          "label": "纸质回忆录",
+          "groupId": "G5",
+          "role": "output",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "会客桌展开，录音纸盘开始转动",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1",
+            "N5"
+          ],
+          "sfxRole": "paper-recorder-start"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "逐字卡落到时间线并按年代归位",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2",
+            "N6"
+          ],
+          "sfxRole": "timeline-card-sort"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "旧照片进入修复台，人工校对放大镜压下确认",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N3",
+            "N7"
+          ],
+          "sfxRole": "photo-repair-review"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "电子手册从数字交付盒中展开",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N8"
+          ],
+          "sfxRole": "paper-book-open"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "装订册进入家族档案盒并锁定",
+          "subject": "G5",
+          "landingNodeIds": [
+            "N4",
+            "N9"
+          ],
+          "sfxRole": "archive-box-lock"
+        }
+      ],
+      "readableTextPolicy": {
+        "maximumSimultaneousLabels": 4,
+        "slashMergeForbidden": true,
+        "silentTruncationForbidden": true
+      },
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "上门访谈",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.08,
+              0.12
+            ],
+            [
+              0.28,
+              0.12
+            ],
+            [
+              0.28,
+              0.22
+            ],
+            [
+              0.08,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N2",
+          "text": "人生时间线",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.22
+            ],
+            [
+              0.38,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N3",
+          "text": "老照片修复",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.68,
+              0.12
+            ],
+            [
+              0.9,
+              0.12
+            ],
+            [
+              0.9,
+              0.22
+            ],
+            [
+              0.68,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N4",
+          "text": "家族档案",
+          "role": "diegetic-node-label",
+          "groupId": "G5",
+          "surfaceId": "G5-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.72
+            ],
+            [
+              0.6,
+              0.72
+            ],
+            [
+              0.6,
+              0.82
+            ],
+            [
+              0.38,
+              0.82
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S5-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S5",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        }
+      ],
+      "screenTextPlan": [
+        {
+          "role": "screen-title",
+          "text": "长辈人生回忆录的制作流程",
+          "embeddingMode": "screen-overlay"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "16:9电影级手作纸艺口述史工作台，五组物件沿由左后向右前的路径清楚分层：暖灰访谈桌与录音纸盘、深蓝时间线与逐字卡、冷青照片修复台与校对放大镜、绿色电子手册纸模、暖白装订册与档案盒。严格只设置四张独立空白刚性标签牌：第一张固定在访谈桌与录音纸盘旁，第二张固定在时间线与逐字卡旁，第三张固定在照片修复台与放大镜旁，第四张固定在装订册与档案盒旁。绿色电子手册纸模只作无字物件，周围不得出现第五张标签牌。四张标签牌正面朝向镜头、互不遮挡、四角完整、面积足够，五层纵深、柔和侧光、纸纤维清晰。不得生成真实老人面孔、隐私信息、可读文字、乱码、字母、数字、Logo、水印或虚假档案编号，准确中文将在本地确定性写入。",
+        "motion": "8秒纸艺定格。保持首帧五组物件、四张带字标签牌的位置关系和数量不变：访谈桌展开且录音纸盘缓慢转动；逐字卡按年代落入时间线；旧照片滑入修复台，校对放大镜压下确认；绿色电子手册作为无字刚性物件从交付盒中展开；暖白装订册最后进入档案盒，第四张标签牌随档案盒刚性扣合。四张首帧已有中文标签必须逐字保持，不新增第五张标签牌，不改写、不遮挡、不翻面、不弯曲、不拉伸，不产生乱码或漂浮屏幕字幕；结尾稳定停留至少0.8秒。",
+        "generatedReadableTextAllowed": false
+      },
+      "labelBindingPolicy": {
+        "unlabeledObjectGroups": [
+          {
+            "groupId": "G4",
+            "reason": "电子手册由绿色电子手册纸模直接表达，只作无字数字交付物件，不配置第五张标签牌。"
+          }
+        ]
+      }
+    },
+    {
+      "beatId": "B10",
+      "spokenLine": "而是教他们实实在在怎么用AI：整理一套豆包提示词，写短视频文案、生成宣传图片、生成跟客户沟通销售话术，帮实体店主解决获客宣传的实际痛点。",
+      "coreMeaning": "从门店真实任务出发，形成可检查的文案、海报和沟通话术，不用抽象大模型课程取代业务。",
+      "archetype": "complex-explanation",
+      "title": "银发店主需要的是具体任务交付",
+      "durationSeconds": 8,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "门店现场",
+          "material": "暖白柜台与产品纸模",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "任务拆解",
+          "material": "深蓝提示词抽屉",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "内容生成",
+          "material": "冷青文案与海报工作台",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "沟通交付",
+          "material": "绿色话术卡与发布门",
+          "depth": 4
+        },
+        {
+          "id": "G5",
+          "name": "真实反馈",
+          "material": "灰白客户反馈盘",
+          "depth": 5
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "门店产品",
+          "groupId": "G1",
+          "role": "input",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "短视频文案",
+          "groupId": "G3",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "宣传海报",
+          "groupId": "G3",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "沟通话术",
+          "groupId": "G4",
+          "role": "result",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N5",
+          "label": "提示词卡",
+          "groupId": "G2",
+          "role": "tool",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "N6",
+          "label": "人工确认",
+          "groupId": "G3",
+          "role": "boundary",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "N7",
+          "label": "发布检查",
+          "groupId": "G4",
+          "role": "check",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "N8",
+          "label": "客户反馈",
+          "groupId": "G5",
+          "role": "feedback",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "N9",
+          "label": "继续调整",
+          "groupId": "G5",
+          "role": "iteration",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "门店柜台与产品纸模立起",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-counter-pop"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "提示词抽屉拉开并取出一张任务卡",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N5"
+          ],
+          "sfxRole": "paper-drawer-pull"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "文案卡和海报纸片依次落到人工确认位",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N2",
+            "N3",
+            "N6"
+          ],
+          "sfxRole": "content-card-land"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "沟通话术卡通过发布检查门",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N4",
+            "N7"
+          ],
+          "sfxRole": "paper-gate-check"
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "action": "客户反馈盘转动后把调整卡送回工作台",
+          "subject": "G5",
+          "landingNodeIds": [
+            "N8",
+            "N9"
+          ],
+          "sfxRole": "feedback-wheel-return"
+        }
+      ],
+      "readableTextPolicy": {
+        "maximumSimultaneousLabels": 4,
+        "slashMergeForbidden": true,
+        "silentTruncationForbidden": true
+      },
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "门店产品",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.08,
+              0.12
+            ],
+            [
+              0.28,
+              0.12
+            ],
+            [
+              0.28,
+              0.22
+            ],
+            [
+              0.08,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N2",
+          "text": "短视频文案",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card-copy",
+          "anchorQuad": [
+            [
+              0.38,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.22
+            ],
+            [
+              0.38,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N3",
+          "text": "宣传海报",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card-poster",
+          "anchorQuad": [
+            [
+              0.68,
+              0.12
+            ],
+            [
+              0.9,
+              0.12
+            ],
+            [
+              0.9,
+              0.22
+            ],
+            [
+              0.68,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N4",
+          "text": "沟通话术",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.72
+            ],
+            [
+              0.6,
+              0.72
+            ],
+            [
+              0.6,
+              0.82
+            ],
+            [
+              0.38,
+              0.82
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        }
+      ],
+      "screenTextPlan": [
+        {
+          "role": "screen-title",
+          "text": "银发店主需要的是具体任务交付",
+          "embeddingMode": "screen-overlay"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "16:9克制的手作纸艺实体门店工作台，左后方为暖白柜台和产品纸模，中间为深蓝提示词抽屉，右侧为冷青文案与海报双工位，前景为绿色沟通交付门和灰白反馈盘。严格只设置四张独立空白刚性标签牌：第一张放在柜台产品旁；第二张放在冷青工作台左侧文案位；第三张放在同一工作台右侧海报位；第四张放在绿色沟通交付门旁。深蓝提示词抽屉和灰白反馈盘均不配置标签牌。四张纸牌正面朝向镜头、互不遮挡、四角完整、面积足够，五层空间、真实纸纤维、柔和侧光。不得生成保健疗效暗示、虚假订单、二维码、真实平台Logo、可读文字、乱码、字母、数字或水印，准确中文将在本地确定性写入。",
+        "motion": "8秒纸艺定格。保持首帧四张带字标签牌和五组物件的对应关系：门店柜台与产品纸模立起；深蓝提示词抽屉拉开并推出一张完全空白任务卡；冷青工作台上的文案纸片和海报纸片依次滑到各自工位；绿色沟通纸片穿过交付门；灰白反馈盘转动后送回一张无字调整纸片。四张首帧已有中文标签必须逐字保持且只随各自刚性物件移动，不新增标签、不改写、不遮挡、不翻面、不弯曲、不拉伸，不产生乱码、营销承诺或漂浮屏幕字幕；结尾稳定停留至少0.8秒。",
+        "generatedReadableTextAllowed": false
+      },
+      "labelBindingPolicy": {
+        "unlabeledObjectGroups": [
+          {
+            "groupId": "G2",
+            "reason": "提示词抽屉与无字任务卡只负责启动任务，节点含义由造型和动作表达，不配置标签牌。"
+          },
+          {
+            "groupId": "G5",
+            "reason": "反馈盘与回流纸片只表达复盘动作，不增加第五张标签牌。"
+          }
+        ]
+      }
+    },
+    {
+      "beatId": "B11",
+      "spokenLine": "线上卷播放，是跟全国几百万创作者去竞争；做本地服务，你的竞争对手反而很少。",
+      "coreMeaning": "对比公域分发与本地关系两种路径，但不把竞争数量或成功率做成确定事实。",
+      "archetype": "mechanical-causality",
+      "title": "公域分发与本地服务是两条路",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "公域入口",
+          "material": "深蓝密集作品卡",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "算法筛选",
+          "material": "灰蓝多层纸筛",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "本地关系",
+          "material": "暖白城市街区与棉线",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "验收结果",
+          "material": "绿色现场验收台",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "公域分发",
+          "groupId": "G1",
+          "role": "input",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "算法筛选",
+          "groupId": "G2",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "本地关系",
+          "groupId": "G3",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "真实验收",
+          "groupId": "G4",
+          "role": "result",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N5",
+          "label": "竞争强弱未核实",
+          "groupId": "G4",
+          "role": "caution",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "大量作品卡同时进入公域入口",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-cards-rush"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "多层纸筛依次开合并改变分发方向",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2"
+          ],
+          "sfxRole": "paper-filter-steps"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "本地街区立起，关系棉线连接到一间店铺",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N3"
+          ],
+          "sfxRole": "twine-local-connect"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "两条路径都进入各自验收台而非收益终点",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N4",
+            "N5"
+          ],
+          "sfxRole": "paper-review-double"
+        }
+      ],
+      "readableTextPolicy": {
+        "maximumSimultaneousLabels": 4,
+        "slashMergeForbidden": true,
+        "silentTruncationForbidden": true
+      },
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "公域分发",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.08,
+              0.12
+            ],
+            [
+              0.28,
+              0.12
+            ],
+            [
+              0.28,
+              0.22
+            ],
+            [
+              0.08,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N2",
+          "text": "算法筛选",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.22
+            ],
+            [
+              0.38,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N3",
+          "text": "本地关系",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.68,
+              0.12
+            ],
+            [
+              0.9,
+              0.12
+            ],
+            [
+              0.9,
+              0.22
+            ],
+            [
+              0.68,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N4",
+          "text": "真实验收",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.72
+            ],
+            [
+              0.6,
+              0.72
+            ],
+            [
+              0.6,
+              0.82
+            ],
+            [
+              0.38,
+              0.82
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        }
+      ],
+      "screenTextPlan": [
+        {
+          "role": "screen-title",
+          "text": "公域分发与本地服务是两条路",
+          "embeddingMode": "screen-overlay"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "16:9纸艺左右对照沙盘，左侧深蓝密集作品卡与灰蓝多层纸筛，右侧暖白本地街区和连接店铺的棉线，前景绿色双验收台，四张无字刚性标签卡分别放在对应节点旁，正面朝向镜头并留足中文写入区域，至少三层深度，禁止播放量数字、收益数字、竞争者数量、金币、可读文字和紫色霓虹。 每个需要标注的节点都放置一张独立、正面可见、无遮挡、面积足够的空白刚性纸牌，并贴近其对应物件；纸牌彼此分离，四角完整可见。不得在纸牌或背景生成任何可读文字、乱码、字母、数字、Logo或水印，准确中文将在本地确定性写入。",
+        "motion": "7秒纸艺定格：左侧大量作品卡进入多层纸筛并被导向不同方向，右侧本地街区立起并用棉线连接到店铺，两条路最后都落到各自验收台；四张首帧已有中文标签按顺序落位且逐字保持不变。不得演绎本地服务必然竞争少或必然成交。 首帧中已经写入的全部中文必须逐字保持不变。带字纸牌只能作为完整刚性物件滑入、平移、小角度旋转、从抽屉推出或刚性拼图扣合；禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、遮挡文字、重新生成文字和强运动模糊。需要展开时只展开无字底板，再让带字纸牌滑入。结尾稳定停留至少0.8秒，保证所有中文清楚可读。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B12",
+      "spokenLine": "线上账号用来展示你的案例，作为你的名片，积累数字资产和个人知识库，真正成交，落地在线下本地。",
+      "coreMeaning": "线上内容承担展示和信任证据，线下沟通、小单试做与验收才构成业务闭环。",
+      "archetype": "mechanical-causality",
+      "title": "线上名片通向线下验证",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "线上案例库",
+          "material": "深蓝内容卡册",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "个人名片",
+          "material": "冷青折叠名片纸",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "线下沟通",
+          "material": "暖白会谈桌与城市地图",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "小单验证",
+          "material": "绿色试做台与复盘卡",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "线上案例",
+          "groupId": "G1",
+          "role": "input",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "内容名片",
+          "groupId": "G2",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "线下沟通",
+          "groupId": "G3",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "小单验证",
+          "groupId": "G4",
+          "role": "result",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N5",
+          "label": "是否继续",
+          "groupId": "G4",
+          "role": "decision",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "线上案例卡逐张装入内容卡册",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-case-file"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "内容卡册折成一张个人名片",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2"
+          ],
+          "sfxRole": "paper-card-fold"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "名片沿城市地图棉线到达线下会谈桌",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N3"
+          ],
+          "sfxRole": "paper-map-travel"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "一张小单试做卡进入验收台并决定继续或停止",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N4",
+            "N5"
+          ],
+          "sfxRole": "pilot-review-click"
+        }
+      ],
+      "readableTextPolicy": {
+        "maximumSimultaneousLabels": 4,
+        "slashMergeForbidden": true,
+        "silentTruncationForbidden": true
+      },
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "线上案例",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.08,
+              0.12
+            ],
+            [
+              0.28,
+              0.12
+            ],
+            [
+              0.28,
+              0.22
+            ],
+            [
+              0.08,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N2",
+          "text": "内容名片",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.22
+            ],
+            [
+              0.38,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N3",
+          "text": "线下沟通",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.68,
+              0.12
+            ],
+            [
+              0.9,
+              0.12
+            ],
+            [
+              0.9,
+              0.22
+            ],
+            [
+              0.68,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N4",
+          "text": "小单验证",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.72
+            ],
+            [
+              0.6,
+              0.72
+            ],
+            [
+              0.6,
+              0.82
+            ],
+            [
+              0.38,
+              0.82
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        }
+      ],
+      "screenTextPlan": [
+        {
+          "role": "screen-title",
+          "text": "线上名片通向线下验证",
+          "embeddingMode": "screen-overlay"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "16:9纸艺线上到线下路径，左后方深蓝内容案例卡册，中景冷青折叠名片，城市地图棉线通向右侧暖白会谈桌，前景绿色小单试做与复盘台，四张无字刚性标签卡分别放在对应节点旁，正面朝向镜头并留足中文写入区域，三层以上空间，禁止粉丝数、成交金额、联系方式、二维码、可读文字。 每个需要标注的节点都放置一张独立、正面可见、无遮挡、面积足够的空白刚性纸牌，并贴近其对应物件；纸牌彼此分离，四角完整可见。不得在纸牌或背景生成任何可读文字、乱码、字母、数字、Logo或水印，准确中文将在本地确定性写入。",
+        "motion": "7秒纸艺定格：案例卡装入内容卡册，卡册折成个人名片，名片沿城市棉线抵达线下会谈桌，小单试做卡进入验收台并分出继续或停止；四张首帧已有中文标签逐字保持不变并顺序落位。不得演绎内容发布后自动成交。 首帧中已经写入的全部中文必须逐字保持不变。带字纸牌只能作为完整刚性物件滑入、平移、小角度旋转、从抽屉推出或刚性拼图扣合；禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、遮挡文字、重新生成文字和强运动模糊。需要展开时只展开无字底板，再让带字纸牌滑入。结尾稳定停留至少0.8秒，保证所有中文清楚可读。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B13",
+      "spokenLine": "AI只是工具，赚钱的核心，永远不是工具本身，而是找到真实人的真实需求。",
+      "coreMeaning": "AI工具只有经过真实需求、人工判断和使用验收，才可能形成可用服务。",
+      "archetype": "mechanical-causality",
+      "title": "从真实需求到可用结果",
+      "durationSeconds": 6,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "真实需求",
+          "material": "暖白人物与纯空白需求卡",
+          "depth": 1
+        },
+        {
+          "id": "G2",
+          "name": "AI工具箱",
+          "material": "深蓝纸质工具箱",
+          "depth": 2
+        },
+        {
+          "id": "G3",
+          "name": "人工判断台",
+          "material": "冷青检查尺与选择门",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "使用结果",
+          "material": "绿色交付盒与无字确认压板",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "真实需求",
+          "groupId": "G1",
+          "role": "input",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "AI工具",
+          "groupId": "G2",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "人工判断",
+          "groupId": "G3",
+          "role": "process",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "可用结果",
+          "groupId": "G4",
+          "role": "result",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N5",
+          "label": "用户验收",
+          "groupId": "G4",
+          "role": "evidence",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "action": "一张完全空白、无图形无印记的需求卡落到人物旁的桌面",
+          "subject": "G1",
+          "landingNodeIds": [
+            "N1"
+          ],
+          "sfxRole": "paper-problem-land"
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "action": "AI工具箱打开并推出三张靠颜色和位置区分的纯空白候选纸片",
+          "subject": "G2",
+          "landingNodeIds": [
+            "N2"
+          ],
+          "sfxRole": "toolbox-candidates"
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "action": "人工检查尺筛掉不合适方案并选择一条",
+          "subject": "G3",
+          "landingNodeIds": [
+            "N3"
+          ],
+          "sfxRole": "paper-review-select"
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "action": "可用结果进入现场，无字确认压板在用户检查后落下锁定",
+          "subject": "G4",
+          "landingNodeIds": [
+            "N4",
+            "N5"
+          ],
+          "sfxRole": "paper-user-accept"
+        }
+      ],
+      "readableTextPolicy": {
+        "maximumSimultaneousLabels": 4,
+        "slashMergeForbidden": true,
+        "silentTruncationForbidden": true
+      },
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "真实需求",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.08,
+              0.12
+            ],
+            [
+              0.28,
+              0.12
+            ],
+            [
+              0.28,
+              0.22
+            ],
+            [
+              0.08,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N2",
+          "text": "AI工具",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.22
+            ],
+            [
+              0.38,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N3",
+          "text": "人工判断",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.68,
+              0.12
+            ],
+            [
+              0.9,
+              0.12
+            ],
+            [
+              0.9,
+              0.22
+            ],
+            [
+              0.68,
+              0.22
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        },
+        {
+          "nodeId": "N4",
+          "text": "可用结果",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.38,
+              0.72
+            ],
+            [
+              0.6,
+              0.72
+            ],
+            [
+              0.6,
+              0.82
+            ],
+            [
+              0.38,
+              0.82
+            ]
+          ],
+          "maxChars": 8,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "none",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0,
+          "anchorRole": "provisional-layout-intent-requires-actual-image-calibration"
+        }
+      ],
+      "screenTextPlan": [
+        {
+          "role": "screen-title",
+          "text": "从真实需求到可用结果",
+          "embeddingMode": "screen-overlay"
+        }
+      ],
+      "prompt": {
+        "firstFrame": "16:9手作纸艺结论场景，左侧为暖白无脸纸片人物，人物旁放一张完全空白、无图形无印记的需求卡；中间为深蓝纸质AI工具箱，箱内横向摆放三张纯空白候选纸片，深蓝纸片在左、冷青纸片居中、灰白纸片在右，只靠颜色和位置区分；右侧为冷青人工检查尺与选择门；前景为绿色交付盒和一块无字确认压板。四张独立空白刚性标签牌分别固定在人物需求区、工具箱、人工判断区和交付盒旁，正面朝向镜头、互不遮挡、四角完整、面积足够。四层空间、真实纸纤维与柔和侧光。不得生成机器人、魔法按钮、金币、收益保证、可读文字、乱码、字母、数字、Logo、水印，也不得在需求卡或三张候选纸片上生成任何图形、印记、编号、图标或勾叉；准确中文将在本地确定性写入。",
+        "motion": "6秒纸艺定格。暖白人物旁的一张完全空白需求卡先滑入桌面；深蓝AI工具箱打开，三张纯空白候选纸片按左、中、右位置依次推出；冷青检查尺逐张经过，只把居中的冷青纸片送过选择门，其余两张退回工具箱；绿色交付盒滑入现场，无字确认压板在用户检查动作后垂直落下完成机械锁定。四张首帧已有中文标签必须逐字保持且只随各自刚性物件移动；需求卡与候选纸片始终保持纯空白，不新增图形、印记、编号、图标、勾叉、文字或漂浮屏幕字幕，不改写、不遮挡、不翻面、不弯曲、不拉伸；结尾稳定停留至少0.8秒。",
+        "generatedReadableTextAllowed": false
+      }
+    }
+  ],
+  "realEvidenceAssignments": [
+    {
+      "beatId": "B05",
+      "spokenLine": "把一个人从读书、相遇、工作、结婚生子，这一生的点点滴滴，整理成故事脚本，用AIGC生成专属动画。",
+      "evidenceRefs": [
+        "U02 用户家庭故事动画原片，待回填、授权与内容验收"
+      ],
+      "presentation": {
+        "mode": "real-media-with-presenter-inset",
+        "materialAudioMode": "duck-under-narration",
+        "speakerIsExplainingThisAsset": true,
+        "minimumDurationSeconds": 3,
+        "presenter": {
+          "source": "authoritative-talk-source",
+          "audioOwner": "base-talk-only",
+          "duplicateVideoMuted": true,
+          "anchor": "bottom-right",
+          "shape": "circle"
+        },
+        "transition": {
+          "enterFrames": 16,
+          "exitFrames": 12,
+          "hardCutForbidden": true
+        },
+        "captions": {
+          "overlapForbidden": true,
+          "minimumGapPx": 24
+        }
+      },
+      "overlayDecision": null
+    },
+    {
+      "beatId": "B06",
+      "spokenLine": "还有婚礼，可以做婚前预告短片，曾经动辄几万十几万的影视巨作，几千就搞定了，如果做了本地部署，成本更低",
+      "evidenceRefs": [
+        "U03 用户婚礼定制短片原片，待回填、授权与内容验收"
+      ],
+      "presentation": {
+        "mode": "real-media-with-presenter-inset",
+        "materialAudioMode": "duck-under-narration",
+        "speakerIsExplainingThisAsset": true,
+        "minimumDurationSeconds": 3,
+        "presenter": {
+          "source": "authoritative-talk-source",
+          "audioOwner": "base-talk-only",
+          "duplicateVideoMuted": true,
+          "anchor": "bottom-right",
+          "shape": "circle"
+        },
+        "transition": {
+          "enterFrames": 16,
+          "exitFrames": 12,
+          "hardCutForbidden": true
+        },
+        "captions": {
+          "overlapForbidden": true,
+          "minimumGapPx": 24
+        }
+      },
+      "overlayDecision": null
+    }
+  ],
+  "generatedVideoAssignments": [
+    {
+      "beatId": "B07",
+      "spokenLine": "还有一个非常有温度的赛道：AI长辈人生数字回忆录。",
+      "coreMeaning": "使用长辈与家人翻相册、讲故事的真实场景示意，不冒充本人的客户案例。",
+      "generatedVideoBrief": {
+        "role": "illustration-only",
+        "presentationMode": "full-screen",
+        "evidenceEligible": false,
+        "purpose": "用人物、家庭环境和老照片表现长辈人生数字回忆录的情感场景",
+        "prompt": "16:9真实商业纪实摄影风格，中国西北普通家庭客厅，一位成年子女与长辈并肩坐在桌边，桌上摊开数张旧照片和一本空白纪念册，子女认真倾听并用小型录音设备记录，长辈自然讲述往事，暖色窗光与克制侧光，真实年龄感和生活细节，镜头缓慢推进，情绪温暖但不煽情，不出现可读文字、品牌、Logo、水印、收益暗示或虚构客户背书。",
+        "disclosureRequired": true
+      }
+    },
+    {
+      "beatId": "B09",
+      "spokenLine": "第二个就更牛了：面向银发群体的AI教育培训、营销赋能。",
+      "coreMeaning": "用银发店主经营、记录和使用手机的真实动作建立场景，不把培训画面冒充付费客户。",
+      "generatedVideoBrief": {
+        "role": "illustration-only",
+        "presentationMode": "full-screen",
+        "evidenceEligible": false,
+        "purpose": "表现中老年实体店经营者学习用AI完成具体宣传任务的真实动作",
+        "prompt": "16:9真实商业纪实摄影风格，中国西北社区实体小店内，一位中老年店主坐在柜台前使用手机和电脑，先整理商品照片，再查看短视频脚本草稿与宣传海报版式，旁边纸笔记录客户沟通要点，神态专注而不夸张，背景可见真实货架与日常经营环境，镜头从中景轻缓移到手部操作特写，不展示任何可读界面文字、平台Logo、医疗功效、收益数字或虚假成交。",
+        "disclosureRequired": true
+      }
+    }
+  ],
+  "nextGate": "completion-stills-and-local-candidate-preview"
+}

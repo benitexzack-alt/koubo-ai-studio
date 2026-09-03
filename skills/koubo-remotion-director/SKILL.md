@@ -120,6 +120,10 @@ node skills/koubo-remotion-director/scripts/validate-preproduction-director.mjs 
 
 `textPlan` 不得再按固定列数裁切，也不得用斜杠合并多个节点。每个可读节点必须显式声明 `paper-label`，普通镜 3–6 个、复杂镜 4–6 个，同时可读不超过 4 个。只有标题和事实来源可使用 `screenTextPlan`。计划中的 `anchorQuad` 只表示构图意图；基础图生成后必须逐镜查看并建立实际纸面四角标定，禁止所有镜头复制同一套坐标。使用刚性纸片写入时，由 `koubo-paper-firstframe-producer` 组装请求并调用：
 
+每个 `paper-label` 还必须通过 `nodeId → groupId → surfaceId → enterStageId` 唯一绑定到同一物件组和唯一入场阶段；该阶段必须实际包含此节点，`persistence` 必须从同一阶段开始。物件组数量多于标签数时，必须在 `paperScene.labelBindingPolicy.unlabeledObjectGroups` 中逐组声明不设标签的 `groupId` 和非空原因，禁止用“分别放在对应节点旁”代替结构绑定。任一处错绑或漏声明必须报 `LABEL_OBJECT_BINDING_AMBIGUOUS` 并阻断生成。
+
+当 `generatedReadableTextAllowed=false` 时，物件材料、阶段动作、首帧提示词和图生视频提示词都不得用会诱导模型生成符号的正向词，例如“问题票、问号牌、编号卡、验收章、勾选、警告牌”。必须改成“纯空白需求卡、靠颜色和位置区分的纯空白卡片、无字确认压板、纯色风险挡板”等无字替代物；后置再写“禁止文字或符号”不能抵消前面的正向诱导。验证器只忽略明确位于禁止项语境中的词，发现正向冲突时报 `SYMBOL_CUE_CONFLICT` 并阻断生成。
+
 ```bash
 node skills/koubo-remotion-director/scripts/bake-firstframe-text.mjs \
   --request <director-firstframe-text-bake-request.json> \

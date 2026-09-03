@@ -99,14 +99,21 @@ const makeRequest = (scriptPath) => ({
           {id: 'N6', label: '工作流', groupId: 'G3', role: 'need', textVisibility: 'visual-only'},
           {id: 'N7', label: '调度', groupId: 'G4', role: 'path', textVisibility: 'visual-only'},
           {id: 'N8', label: '结果', groupId: 'G5', role: 'output', textVisibility: 'paper-label'},
-          {id: 'N9', label: '人工确认', groupId: 'G5', role: 'boundary', textVisibility: 'paper-label'},
+          {id: 'N9', label: '人工确认', groupId: 'G5', role: 'boundary', textVisibility: 'visual-only'},
         ],
         stages: [
           {id: 'S1', order: 1, action: '底座展开', subject: 'G1', landingNodeIds: ['N1'], sfxRole: 'paper-unfold'},
           {id: 'S2', order: 2, action: '资源池卡入', subject: 'G2', landingNodeIds: ['N2', 'N3'], sfxRole: 'paper-click'},
           {id: 'S3', order: 3, action: '需求卡进入', subject: 'G3', landingNodeIds: ['N4', 'N5', 'N6'], sfxRole: 'paper-slide'},
-          {id: 'S4', order: 4, action: '棉线连接并盖章', subject: 'G4', landingNodeIds: ['N7', 'N8', 'N9'], sfxRole: 'stamp'},
+          {id: 'S4', order: 4, action: '棉线连接到结果盒', subject: 'G4', landingNodeIds: ['N7'], sfxRole: 'paper-slide'},
+          {id: 'S5', order: 5, action: '结果盒卡入并由无字确认压板锁定', subject: 'G5', landingNodeIds: ['N8', 'N9'], sfxRole: 'paper-click'},
         ],
+        labelBindingPolicy: {
+          unlabeledObjectGroups: [
+            {groupId: 'G3', reason: '企业需求使用三张无字造型卡区分，不设置可读标签牌。'},
+            {groupId: 'G4', reason: '调度路径由棉线本体表达，不设置可读标签牌。'},
+          ],
+        },
         readableTextPolicy: {
           maximumSimultaneousLabels: 4,
           slashMergeForbidden: true,
@@ -116,8 +123,7 @@ const makeRequest = (scriptPath) => ({
           ['N1', '智算中心', 'G1', 'S1', 'first-frame-baked', 'rigid-surface'],
           ['N2', '算力资源池', 'G2', 'S2', 'tracked-paper-surface', 'tracked-moving-surface'],
           ['N3', '按需租用', 'G2', 'S2', 'tracked-paper-surface', 'tracked-moving-surface'],
-          ['N8', '结果', 'G5', 'S4', 'tracked-paper-surface', 'rigid-surface'],
-          ['N9', '人工确认', 'G5', 'S4', 'tracked-paper-surface', 'rigid-surface'],
+          ['N8', '结果', 'G5', 'S5', 'tracked-paper-surface', 'rigid-surface'],
         ].map(([nodeId, text, groupId, enterStageId, embeddingMode, motionConstraint], index) => ({
           nodeId,
           text,
@@ -140,7 +146,7 @@ const makeRequest = (scriptPath) => ({
         ],
         prompt: {
           firstFrame: '摄影级手作纸艺微缩场景，算力资源池与企业需求卡分层摆放，无可读文字。',
-          motion: '纸质底座展开，资源池卡入，需求卡顺序滑入，棉线连接到结果盒并盖章。',
+          motion: '纸质底座展开，资源池卡入，需求卡顺序滑入，棉线连接到结果盒，无字确认压板落下锁定。',
           generatedReadableTextAllowed: false,
         },
       },
@@ -158,6 +164,101 @@ try {
   const request = makeRequest(scriptPath);
   const positive = validatePreproductionRequest({request, projectRoot: root, profile});
   assert.equal(positive.ok, true, positive.errors.join('\n'));
+
+  const missingUnlabeledDeclaration = structuredClone(request);
+  delete missingUnlabeledDeclaration.beats[0].paperScene.labelBindingPolicy;
+  const missingUnlabeledResult = validatePreproductionRequest({
+    request: missingUnlabeledDeclaration,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(missingUnlabeledResult.ok, false);
+  assert.ok(
+    missingUnlabeledResult.errors.includes(
+      'LABEL_OBJECT_BINDING_AMBIGUOUS:B01:UNLABELED_GROUPS_UNDECLARED_OR_MISMATCHED',
+    ),
+  );
+
+  const crossBoundLabel = structuredClone(request);
+  Object.assign(
+    crossBoundLabel.beats[0].paperScene.nodes.find((node) => node.id === 'N4'),
+    {groupId: 'G4', textVisibility: 'paper-label'},
+  );
+  crossBoundLabel.beats[0].paperScene.nodes.find((node) => node.id === 'N3').textVisibility =
+    'visual-only';
+  crossBoundLabel.beats[0].paperScene.textPlan = crossBoundLabel.beats[0].paperScene.textPlan
+    .filter((item) => item.nodeId !== 'N3')
+    .concat({
+      nodeId: 'N4',
+      text: '家族档案',
+      role: 'diegetic-node-label',
+      groupId: 'G4',
+      surfaceId: 'G4-rigid-label-card',
+      anchorQuad: [[0.1, 0.1], [0.3, 0.1], [0.3, 0.2], [0.1, 0.2]],
+      maxChars: 8,
+      persistence: 'S5-to-end',
+      occlusionOwner: 'none',
+      ocrRequired: true,
+      motionConstraint: 'rigid-surface',
+      embeddingMode: 'first-frame-baked',
+      trackingKeyframesRequired: false,
+      enterStageId: 'S5',
+      stageOffsetFrames: 0,
+    });
+  crossBoundLabel.beats[0].paperScene.stages.find((stage) => stage.id === 'S3').landingNodeIds = [
+    'N5',
+    'N6',
+  ];
+  crossBoundLabel.beats[0].paperScene.stages.find((stage) => stage.id === 'S5').landingNodeIds = [
+    'N4',
+    'N8',
+    'N9',
+  ];
+  crossBoundLabel.beats[0].paperScene.labelBindingPolicy.unlabeledObjectGroups = [
+    {groupId: 'G3', reason: '该组仅保留无字需求物件。'},
+  ];
+  const crossBoundResult = validatePreproductionRequest({
+    request: crossBoundLabel,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(crossBoundResult.ok, false);
+  assert.ok(
+    crossBoundResult.errors.includes(
+      'LABEL_OBJECT_BINDING_AMBIGUOUS:B01:N4:STAGE_GROUP_MISMATCH',
+    ),
+  );
+
+  const symbolCueConflict = structuredClone(request);
+  symbolCueConflict.beats[0].paperScene.objectGroups[2].material = '暖白人物与问题票';
+  symbolCueConflict.beats[0].paperScene.stages[2].action = '真实人物问题票落到桌面';
+  const symbolCueResult = validatePreproductionRequest({
+    request: symbolCueConflict,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(symbolCueResult.ok, false);
+  assert.ok(
+    symbolCueResult.errors.some(
+      (error) =>
+        error ===
+        'SYMBOL_CUE_CONFLICT:B01:objectGroups.G3.material:问题票:USE_纯空白需求卡',
+    ),
+  );
+
+  const correctedNoTextFixture = structuredClone(request);
+  correctedNoTextFixture.beats[0].paperScene.objectGroups[2].material =
+    '暖白人物与纯空白需求卡';
+  correctedNoTextFixture.beats[0].paperScene.stages[2].action =
+    '一张完全空白、无图形无印记的需求卡落到人物旁的桌面';
+  correctedNoTextFixture.beats[0].paperScene.prompt.firstFrame +=
+    ' 禁止问题票、问号牌、编号卡、验收章、勾选、警告牌和二维码。';
+  const correctedNoTextResult = validatePreproductionRequest({
+    request: correctedNoTextFixture,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(correctedNoTextResult.ok, true, correctedNoTextResult.errors.join('\n'));
 
   const requestPath = path.join(root, 'request.json');
   writeFileSync(requestPath, `${JSON.stringify(request, null, 2)}\n`);
@@ -355,6 +456,10 @@ try {
     JSON.stringify({
       ok: true,
       positivePaperPlanCompiled: true,
+      unlabeledObjectGroupsMustBeDeclared: true,
+      crossBoundLabelRejected: true,
+      symbolCueConflictRejected: true,
+      correctedNoTextFixtureValidated: true,
       genericInformationFallbackRejected: true,
       missingNodeTextRejected: true,
       scriptDriftRejected: true,
