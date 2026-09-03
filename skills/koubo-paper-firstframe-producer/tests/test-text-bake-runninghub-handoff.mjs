@@ -161,6 +161,7 @@ try {
   assert.equal(bake.status, 0, bake.stderr);
   assert.equal(existsSync(bakedImagePath), true);
   const updatedJob = JSON.parse(readFileSync(jobPath, 'utf8'));
+  assert.equal(updatedJob.status, 'text-baked-firstframes-awaiting-user-review');
   assert.equal(updatedJob.textBakeReceipts.length, 1);
   assert.match(updatedJob.textBakeReceipts[0].request.path, /request\.v3\.json$/u);
   assert.match(updatedJob.textBakeReceipts[0].receipt.path, /receipt\.v3\.json$/u);

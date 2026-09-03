@@ -2,7 +2,15 @@
 
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
-import {existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
+import {
+  chmodSync,
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -16,11 +24,12 @@ const testRoot = mkdtempSync(path.join(os.tmpdir(), 'koubo-firstframe-bake-test-
 const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const scriptPath = path.join(skillRoot, 'scripts/bake-firstframe-text.mjs');
 
-const run = (binary, args) =>
+const run = (binary, args, options = {}) =>
   spawnSync(binary, args, {
     encoding: 'utf8',
     maxBuffer: 16 * 1024 * 1024,
     stdio: ['ignore', 'pipe', 'pipe'],
+    ...options,
   });
 
 try {
@@ -114,14 +123,52 @@ try {
   assert.equal(receipt.scenes[0].ocr[0].matched, true);
   assert.equal(
     receipt.scenes[0].ocr[0].preprocessing.mode,
-    'inverse-perspective-binarized-v1',
+    'inverse-perspective-dual-ocr-v1',
   );
   assert.deepEqual(
     receipt.scenes[0].ocr[0].preprocessing.rectifiedSize,
     {width: 1000, height: 240},
   );
+  assert.equal(receipt.scenes[0].ocr[0].preprocessing.language, 'chi_sim');
+  assert.ok(['tesseract', 'apple-vision'].includes(
+    receipt.scenes[0].ocr[0].preprocessing.selectedEngine,
+  ));
+  assert.equal(
+    receipt.scenes[0].ocr[0].preprocessing.recognitionPolicy,
+    'tesseract-then-apple-vision-exact-match-v1',
+  );
+  assert.ok(receipt.scenes[0].ocr[0].preprocessing.selectedVariantId);
+  assert.ok(receipt.scenes[0].ocr[0].preprocessing.typographyAttempts.length >= 1);
+  assert.ok(receipt.scenes[0].ocr[0].rendering.pointSize);
   assert.equal(receipt.scenes[0].outputImage.sha256, sha256File(outputPath));
   assert.equal(receipt.scenes[0].anchorCalibration.sha256, sha256File(calibrationPath));
+
+  if (process.platform === 'darwin') {
+    const mockBinPath = path.join(testRoot, 'mock-bin');
+    mkdirSync(mockBinPath);
+    const mockTesseractPath = path.join(mockBinPath, 'tesseract');
+    writeFileSync(mockTesseractPath, '#!/bin/sh\nprintf "错误\\n"\n');
+    chmodSync(mockTesseractPath, 0o755);
+    const visionOutputPath = path.join(testRoot, 'vision-baked.png');
+    const visionReceiptPath = path.join(testRoot, 'vision-receipt.json');
+    const visionRequestPath = path.join(testRoot, 'vision-request.json');
+    const visionRequest = structuredClone(request);
+    visionRequest.receiptPath = visionReceiptPath;
+    visionRequest.scenes[0].outputImage.path = visionOutputPath;
+    writeFileSync(visionRequestPath, `${JSON.stringify(visionRequest, null, 2)}\n`);
+    const visionFallback = run(
+      process.execPath,
+      [scriptPath, '--request', visionRequestPath, '--repo-root', testRoot],
+      {env: {...process.env, PATH: `${mockBinPath}:${process.env.PATH}`}},
+    );
+    assert.equal(visionFallback.status, 0, visionFallback.stderr);
+    const visionReceipt = JSON.parse(readFileSync(visionReceiptPath, 'utf8'));
+    assert.equal(visionReceipt.scenes[0].ocr[0].matched, true);
+    assert.equal(
+      visionReceipt.scenes[0].ocr[0].preprocessing.selectedEngine,
+      'apple-vision',
+    );
+  }
 
   const rejectedRequestPath = path.join(testRoot, 'request-rejected.json');
   const rejected = structuredClone(request);
@@ -167,6 +214,7 @@ try {
       ok: true,
       deterministicTextBaked: true,
       chineseOcrMatched: true,
+      appleVisionFallbackMatched: process.platform === 'darwin',
       sourceTextPlanBound: true,
       sourceShaMismatchRejected: true,
       calibrationMismatchRejected: true,

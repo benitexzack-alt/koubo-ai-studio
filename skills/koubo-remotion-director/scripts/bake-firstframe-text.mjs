@@ -26,11 +26,19 @@ const SCHEMA = 'koubo-paper-firstframe-text-bake-request/v1';
 const CALIBRATION_SCHEMA = 'koubo-paper-firstframe-anchor-calibration/v1';
 const LABEL_WIDTH = 1000;
 const LABEL_HEIGHT = 240;
-const OCR_SCALE_PERCENT = 300;
-const OCR_THRESHOLD_PERCENT = 50;
-const OCR_BORDER_PIXELS = 120;
+const OCR_SCALE_PERCENT = 400;
+const OCR_BORDER_PIXELS = 160;
+const TEXT_POINT_SIZE_CANDIDATES = [108, 120, 96, 132];
+const OCR_VARIANTS = [
+  {id: 'lanczos-t50', filter: 'Lanczos', thresholdPercent: 50},
+  {id: 'box-t50', filter: 'Box', thresholdPercent: 50},
+  {id: 'lanczos-t60', filter: 'Lanczos', thresholdPercent: 60},
+  {id: 'box-t35', filter: 'Box', thresholdPercent: 35},
+  {id: 'point-t55', filter: 'Point', thresholdPercent: 55},
+];
 const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultProjectRoot = path.resolve(skillRoot, '../..');
+const visionOcrSourcePath = path.join(skillRoot, 'scripts/recognize-text-vision.swift');
 
 const parseArgs = (argv) => {
   const values = {};
@@ -78,7 +86,17 @@ const identify = (imagePath) => {
   return {width, height};
 };
 
-const renderLabel = ({label, anchorQuad, canvas, fontPath, inputPath, outputPath, workRoot, index}) => {
+const renderLabel = ({
+  label,
+  anchorQuad,
+  canvas,
+  fontPath,
+  inputPath,
+  outputPath,
+  workRoot,
+  index,
+  pointSize,
+}) => {
   const labelPath = path.join(workRoot, `label-${index}.png`);
   const warpedPath = path.join(workRoot, `warped-${index}.png`);
   const destination = anchorQuad.map(([x, y]) => [x * canvas.width, y * canvas.height]);
@@ -104,7 +122,7 @@ const renderLabel = ({label, anchorQuad, canvas, fontPath, inputPath, outputPath
       '-gravity',
       'center',
       '-pointsize',
-      '108',
+      String(pointSize),
       '-annotate',
       '0',
       label.text,
@@ -132,7 +150,7 @@ const renderLabel = ({label, anchorQuad, canvas, fontPath, inputPath, outputPath
   run('magick', [inputPath, warpedPath, '-composite', outputPath], 'TEXT_BAKE_COMPOSITE_FAILED');
 };
 
-const rectifyLabelForOcr = ({inputPath, anchorQuad, canvas, outputPath}) => {
+const rectifyLabelForOcr = ({inputPath, anchorQuad, canvas, outputPath, variant}) => {
   const source = anchorQuad.map(([x, y]) => [x * canvas.width, y * canvas.height]);
   const destination = [
     [0, 0],
@@ -156,7 +174,7 @@ const rectifyLabelForOcr = ({inputPath, anchorQuad, canvas, outputPath}) => {
       '-virtual-pixel',
       'white',
       '-filter',
-      'Lanczos',
+      variant.filter,
       '-define',
       `distort:viewport=${LABEL_WIDTH}x${LABEL_HEIGHT}+0+0`,
       '-distort',
@@ -169,7 +187,7 @@ const rectifyLabelForOcr = ({inputPath, anchorQuad, canvas, outputPath}) => {
       '-contrast-stretch',
       '1%x1%',
       '-threshold',
-      `${OCR_THRESHOLD_PERCENT}%`,
+      `${variant.thresholdPercent}%`,
       '-bordercolor',
       'white',
       '-border',
@@ -178,6 +196,82 @@ const rectifyLabelForOcr = ({inputPath, anchorQuad, canvas, outputPath}) => {
     ],
     'TEXT_BAKE_OCR_RECTIFICATION_FAILED',
   );
+};
+
+const createVisionRecognizer = (workRoot) => {
+  if (process.platform !== 'darwin' || !existsSync(visionOcrSourcePath)) return null;
+  let binaryPath = null;
+  return (imagePath) => {
+    if (!binaryPath) {
+      binaryPath = path.join(workRoot, 'recognize-text-vision');
+      run(
+        'swiftc',
+        [visionOcrSourcePath, '-o', binaryPath],
+        'TEXT_BAKE_VISION_OCR_COMPILE_FAILED',
+      );
+    }
+    return run(binaryPath, [imagePath], 'TEXT_BAKE_VISION_OCR_FAILED');
+  };
+};
+
+const recognizeLabel = ({
+  inputPath,
+  anchorQuad,
+  canvas,
+  workRoot,
+  artifactPrefix,
+  expectedText,
+  visionRecognize,
+}) => {
+  const attempts = [];
+  const rectifiedInputs = [];
+  for (const variant of OCR_VARIANTS) {
+    const ocrInputPath = path.join(workRoot, `${artifactPrefix}-${variant.id}.png`);
+    rectifyLabelForOcr({
+      inputPath,
+      anchorQuad,
+      canvas,
+      outputPath: ocrInputPath,
+      variant,
+    });
+    rectifiedInputs.push({variant, ocrInputPath});
+    const text = run(
+      'tesseract',
+      [ocrInputPath, 'stdout', '-l', 'chi_sim', '--psm', '7'],
+      'TEXT_BAKE_OCR_FAILED',
+    );
+    const attempt = {
+      engine: 'tesseract',
+      variantId: variant.id,
+      filter: variant.filter,
+      thresholdPercent: variant.thresholdPercent,
+      recognized: text,
+      normalized: normalizeOcr(text),
+    };
+    attempts.push(attempt);
+    if (attempt.normalized === normalizeOcr(expectedText)) {
+      return {matched: true, selectedAttempt: attempt, attempts};
+    }
+  }
+  if (visionRecognize) {
+    for (const {variant, ocrInputPath} of rectifiedInputs) {
+      const text = visionRecognize(ocrInputPath);
+      const attempt = {
+        engine: 'apple-vision',
+        variantId: `vision-${variant.id}`,
+        sourceVariantId: variant.id,
+        filter: variant.filter,
+        thresholdPercent: variant.thresholdPercent,
+        recognized: text,
+        normalized: normalizeOcr(text),
+      };
+      attempts.push(attempt);
+      if (attempt.normalized === normalizeOcr(expectedText)) {
+        return {matched: true, selectedAttempt: attempt, attempts};
+      }
+    }
+  }
+  return {matched: false, selectedAttempt: null, attempts};
 };
 
 const args = parseArgs(process.argv.slice(2));
@@ -211,6 +305,7 @@ try {
   const scenes = Array.isArray(request.scenes) ? request.scenes : [];
   if (scenes.length === 0) throw new Error('TEXT_BAKE_SCENES_EMPTY');
   workRoot = mkdtempSync(path.join(os.tmpdir(), 'koubo-paper-text-bake-'));
+  const visionRecognize = createVisionRecognizer(workRoot);
   const sceneReceipts = [];
 
   for (const scene of scenes) {
@@ -304,61 +399,76 @@ try {
     );
     const canvas = identify(sourcePath);
     let currentPath = sourcePath;
-    labels.forEach((label, index) => {
+    const ocr = [];
+    for (const [index, label] of labels.entries()) {
       const effectiveAnchorQuad = scene.anchorCalibrationRequired === true
         ? calibratedByNode.get(label.nodeId)
         : label.anchorQuad;
       if (!validateQuad(effectiveAnchorQuad)) {
         throw new Error(`TEXT_BAKE_EFFECTIVE_ANCHOR_INVALID:${scene.sceneId}:${label.nodeId}`);
       }
-      const nextPath = path.join(workRoot, `${scene.sceneId}-${index}.png`);
-      renderLabel({
-        label,
-        anchorQuad: effectiveAnchorQuad,
-        canvas,
-        fontPath,
-        inputPath: currentPath,
-        outputPath: nextPath,
-        workRoot,
-        index: `${scene.sceneId}-${index}`,
-      });
-      currentPath = nextPath;
-    });
-    const ocr = [];
-    for (const [index, label] of labels.entries()) {
-      const effectiveAnchorQuad = scene.anchorCalibrationRequired === true
-        ? calibratedByNode.get(label.nodeId)
-        : label.anchorQuad;
-      const ocrInputPath = path.join(workRoot, `${scene.sceneId}-ocr-${index}.png`);
-      rectifyLabelForOcr({
-        inputPath: currentPath,
-        anchorQuad: effectiveAnchorQuad,
-        canvas,
-        outputPath: ocrInputPath,
-      });
-      const text = run(
-        'tesseract',
-        [ocrInputPath, 'stdout', '-l', 'chi_sim+eng', '--psm', '7'],
-        'TEXT_BAKE_OCR_FAILED',
-      );
-      const matched = normalizeOcr(text) === normalizeOcr(label.text);
-      if (!matched) {
+      const typographyAttempts = [];
+      let selectedTypography = null;
+      for (const pointSize of TEXT_POINT_SIZE_CANDIDATES) {
+        const artifactPrefix = `${scene.sceneId}-${index}-ps${pointSize}`;
+        const candidatePath = path.join(workRoot, `${artifactPrefix}.png`);
+        renderLabel({
+          label,
+          anchorQuad: effectiveAnchorQuad,
+          canvas,
+          fontPath,
+          inputPath: currentPath,
+          outputPath: candidatePath,
+          workRoot,
+          index: artifactPrefix,
+          pointSize,
+        });
+        const recognition = recognizeLabel({
+          inputPath: candidatePath,
+          anchorQuad: effectiveAnchorQuad,
+          canvas,
+          workRoot,
+          artifactPrefix: `${artifactPrefix}-ocr`,
+          expectedText: label.text,
+          visionRecognize,
+        });
+        typographyAttempts.push({pointSize, ocrAttempts: recognition.attempts});
+        if (recognition.matched) {
+          selectedTypography = {
+            pointSize,
+            candidatePath,
+            selectedOcrAttempt: recognition.selectedAttempt,
+          };
+          break;
+        }
+      }
+      if (!selectedTypography) {
         throw new Error(
-          `TEXT_BAKE_OCR_MISMATCH:${scene.sceneId}:${label.nodeId}:${normalizeOcr(text)}`,
+          `TEXT_BAKE_OCR_MISMATCH:${scene.sceneId}:${label.nodeId}:${typographyAttempts.map((typography) => `ps${typography.pointSize}[${typography.ocrAttempts.map((attempt) => `${attempt.variantId}=${attempt.normalized}`).join(',')}]`).join(';')}`,
         );
       }
+      currentPath = selectedTypography.candidatePath;
       ocr.push({
         nodeId: label.nodeId,
         expected: label.text,
-        recognized: text,
-        matched,
+        recognized: selectedTypography.selectedOcrAttempt.recognized,
+        matched: true,
+        rendering: {
+          fontPath,
+          pointSize: selectedTypography.pointSize,
+          pointSizeCandidates: TEXT_POINT_SIZE_CANDIDATES,
+        },
         preprocessing: {
-          mode: 'inverse-perspective-binarized-v1',
+          mode: 'inverse-perspective-dual-ocr-v1',
           rectifiedSize: {width: LABEL_WIDTH, height: LABEL_HEIGHT},
           scalePercent: OCR_SCALE_PERCENT,
-          thresholdPercent: OCR_THRESHOLD_PERCENT,
           borderPixels: OCR_BORDER_PIXELS,
           pageSegmentationMode: 7,
+          language: 'chi_sim',
+          selectedEngine: selectedTypography.selectedOcrAttempt.engine,
+          recognitionPolicy: 'tesseract-then-apple-vision-exact-match-v1',
+          selectedVariantId: selectedTypography.selectedOcrAttempt.variantId,
+          typographyAttempts,
         },
       });
     }

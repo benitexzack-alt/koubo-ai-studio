@@ -183,6 +183,9 @@ try {
     sceneIds,
     recordedAt: new Date().toISOString(),
   });
+  job.status = phase === 'full'
+    ? 'text-baked-firstframes-awaiting-user-review'
+    : 'candidate-text-baked-firstframes-awaiting-user-review';
   job.events.push({type: 'deterministic-text-bake-passed', phase, sceneIds, at: new Date().toISOString()});
   replaceJson(jobPath, job);
   console.log(JSON.stringify({
