@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "authorized-phrase-cut-verification/v1",
+  "taskId": "20260904-gpt6-cybercab",
+  "status": "technical-check-passed-awaiting-join-review",
+  "authorization": "把没有人负责的这一段原视频剪裁掉",
+  "mediaQa": {
+    "path": "media-qa.v1.json",
+    "sha256": "a161a047bdd9320f62d7552494e490a22ffc56f62bd17a97b687f36aed9d2d0b"
+  },
+  "localAsr": {
+    "engine": "whisper.cpp small; zh; local-only",
+    "removedAudioRecognizedText": "没有人负责",
+    "finalJoinReport": "核验_成片剪口ASR.json",
+    "finalJoinReportSha256": "82b1d84534e5a028567ffb2b8df64d9e11349f4e5f5447157446dc3ff8f4e9bf",
+    "preservedPhrases": ["没有人驾驶", "没有人干预", "眼睛是摄像头"],
+    "removedPhraseAbsentFromFinalJoin": true,
+    "humanListeningClaimed": false
+  },
+  "visualInspection": {
+    "path": "剪口两侧输出帧.jpg",
+    "sha256": "660074a2e15f81102338a52360eb887b58f275d9b33f491f1c678bcdcabae42f",
+    "outputFrames": [3537, 3538],
+    "sourceFrames": [3537, 3566],
+    "viewed": true,
+    "finding": "正常真人原画面硬切，未增加遮挡、文字、黑帧或运镜。"
+  },
+  "joinAudioCheck": {"outputStartSeconds": 114, "durationSeconds": 8, "meanDb": -25.5, "peakDb": -6.5},
+  "remaining": ["用户检查剪口自然度", "本次不裁决其他事实审阅项", "后续字幕重绑剪后时间轴"],
+  "formalProductionAuthorizedByThisCut": false,
+  "published": false
+}

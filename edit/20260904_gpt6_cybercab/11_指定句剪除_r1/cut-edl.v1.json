@@ -1,0 +1,45 @@
+{
+  "schema": "authorized-phrase-removal-v1",
+  "authorization": "把没有人负责的这一段原视频剪裁掉",
+  "source": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/01_口播原片/R01_口播原片.MOV",
+  "sourceSha256": "403e295fd1eb73769fe9b3c64000179f5c1b791f016a621afeaa69aa7859ebde",
+  "sourceFrames": 7858,
+  "fps": 30,
+  "remove": {
+    "text": "没有人负责",
+    "startFrameInclusive": 3538,
+    "endFrameExclusive": 3566,
+    "startSeconds": 117.93333333333334,
+    "endSeconds": 118.86666666666666,
+    "durationSeconds": 0.9333333333333333
+  },
+  "keep": [
+    {
+      "sourceStartFrame": 0,
+      "sourceEndFrameExclusive": 3538,
+      "outputStartFrame": 0
+    },
+    {
+      "sourceStartFrame": 3566,
+      "sourceEndFrameExclusive": 7858,
+      "outputStartFrame": 3538
+    }
+  ],
+  "preservedAdjacentSpeech": [
+    "没有人驾驶",
+    "没有人干预",
+    "眼睛是摄像头"
+  ],
+  "expectedOutputFrames": 7830,
+  "expectedOutputDuration": 261,
+  "audio": {
+    "sampleRate": 44100,
+    "stereo": true,
+    "cutStartSample": 5200860,
+    "cutEndSample": 5242020,
+    "joinDeclickFadeSecondsPerSide": 0.003,
+    "endPaddingMaximumSeconds": 0.014,
+    "otherGainChange": false
+  },
+  "scope": "原片指定句剪除副本，非正式包装成片；其他内容不改；不替代事实审阅和用户验收"
+}

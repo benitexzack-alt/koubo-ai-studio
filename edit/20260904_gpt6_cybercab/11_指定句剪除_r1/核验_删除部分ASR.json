@@ -1,0 +1,129 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | DOTPROD = 1 | ACCELERATE = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "small",
+		"multilingual": true,
+		"vocab": 51865,
+		"audio": {
+			"ctx": 1500,
+			"state": 768,
+			"head": 12,
+			"layer": 12
+		},
+		"text": {
+			"ctx": 448,
+			"state": 768,
+			"head": 12,
+			"layer": 12
+		},
+		"mels": 80,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/pc/.cache/whisper-cpp/ggml-small.bin",
+		"language": "zh",
+		"translate": false
+	},
+	"result": {
+		"language": "zh"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:00,760"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 760
+			},
+			"text": "没有人负责",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50364,
+					"p": 0.965703,
+					"t_dtw": -1
+				},
+				{
+					"text": "没有",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,300"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 300
+					},
+					"id": 17944,
+					"p": 0.260677,
+					"t_dtw": -1
+				},
+				{
+					"text": "人",
+					"timestamps": {
+						"from": "00:00:00,300",
+						"to": "00:00:00,380"
+					},
+					"offsets": {
+						"from": 300,
+						"to": 380
+					},
+					"id": 4035,
+					"p": 0.979047,
+					"t_dtw": -1
+				},
+				{
+					"text": "负",
+					"timestamps": {
+						"from": "00:00:00,480",
+						"to": "00:00:00,550"
+					},
+					"offsets": {
+						"from": 480,
+						"to": 550
+					},
+					"id": 18464,
+					"p": 0.99372,
+					"t_dtw": -1
+				},
+				{
+					"text": "责",
+					"timestamps": {
+						"from": "00:00:00,600",
+						"to": "00:00:00,710"
+					},
+					"offsets": {
+						"from": 600,
+						"to": 710
+					},
+					"id": 18464,
+					"p": 0.994911,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_38]",
+					"timestamps": {
+						"from": "00:00:00,760",
+						"to": "00:00:00,760"
+					},
+					"offsets": {
+						"from": 760,
+						"to": 760
+					},
+					"id": 50402,
+					"p": 0.0557395,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}
