@@ -144,6 +144,32 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertEqual(result["status"], "ready-for-draft")
         self.assertFalse(result["errors"])
 
+    def test_public_draft_requires_source_to_original_research_intake(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        del card["research_intake"]
+
+        result = self.validate(card, "research-intake-missing.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("research_intake" in error for error in result["errors"]))
+
+    def test_public_draft_requires_applied_douyin_knowledge_hub_material(self) -> None:
+        card = copy.deepcopy(load_fixture("waic-new-pass.json"))
+        candidate_path = SKILL_ROOT / "fixtures" / "candidate-review-pack-pass.json"
+        candidate = json.loads(candidate_path.read_text(encoding="utf-8"))
+        candidate["candidates"][0]["opcd_read_refs"][0]["application"] = ""
+        altered_path = self.temp_dir / "candidate-without-applied-hub-material.json"
+        altered_path.write_text(json.dumps(candidate, ensure_ascii=False), encoding="utf-8")
+        card["research_intake"]["candidate_pack"] = {
+            "path": str(altered_path),
+            "sha256": MODULE.file_sha256(altered_path),
+        }
+
+        result = self.validate(card, "research-intake-hub-not-applied.json")
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("知识中台材料如何实际改变" in error for error in result["errors"]))
+
     def test_candidate_generation_cannot_claim_itself_as_validation(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
         card["candidate_generation"] = {

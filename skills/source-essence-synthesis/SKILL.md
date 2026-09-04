@@ -74,7 +74,8 @@ python3 <project-root>/skills/source-essence-synthesis/scripts/validate_source_e
 
 ```text
 完整素材取得
--> source-essence-synthesis
+-> douyin-koubo-source-to-original（Obsidian 回执、知识中台材料、机制卡、候选包、用户选择）
+-> source-essence-synthesis（完整参考需要保留认知节点时）
 -> content-brain-gate
 -> humanizer-zh + humanize-koubo-script
 -> 用户本人朗读确认
@@ -82,6 +83,7 @@ python3 <project-root>/skills/source-essence-synthesis/scripts/validate_source_e
 ```
 
 - `ingest-douyin-knowledge` 负责取得和标记素材完整度；
+- `douyin-koubo-source-to-original` 负责在源头精髓前把 Obsidian、知识中台、账号样本与用户选择连成可审计输入；
 - 本 Skill 负责源头认知保真；
 - `content-brain-gate` 负责这条内容是否值得公开写、是否与最近作品重复；
 - `humanize-koubo-script` 负责事实锁定后的本人声音和口语表达；

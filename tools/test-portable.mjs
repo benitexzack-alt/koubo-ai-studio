@@ -76,6 +76,7 @@ try {
   );
   if (existsSync(systemSkillValidator)) {
     for (const skillName of [
+      'douyin-koubo-source-to-original',
       'source-essence-synthesis',
       'content-brain-gate',
       'humanize-koubo-script',
@@ -93,6 +94,16 @@ try {
     console.log('[跳过] 当前 Codex 未提供 skill-creator/quick_validate.py，保留项目文件体检');
   }
 
+  run(
+    '源头拆解与原创合成单元回归',
+    pythonBin,
+    ['skills/douyin-koubo-source-to-original/scripts/test_v1.py'],
+  );
+  run(
+    '源头拆解六样本准入回归',
+    pythonBin,
+    ['skills/douyin-koubo-source-to-original/scripts/test_pilot.py'],
+  );
   run(
     '源头精髓单元回归',
     pythonBin,
@@ -168,6 +179,7 @@ try {
     expectedCodes: [2],
   });
   for (const skillName of [
+    'douyin-koubo-source-to-original',
     'source-essence-synthesis',
     'humanize-koubo-script',
     'koubo-asset-prep',

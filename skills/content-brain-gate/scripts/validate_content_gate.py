@@ -82,6 +82,9 @@ VALID_SELECTION_MODES = {
     "explicit-candidate-choice",
     "user-confirmed-assistant-candidate",
 }
+RESEARCH_CONTEXT_STATUS = "ready-for-candidate-review"
+RESEARCH_SELECTION_STATUS = "approved"
+KNOWLEDGE_HUB_PATH_MARKER = "01_项目实战/抖音知识中台/"
 SKILL_ROOT = Path(__file__).resolve().parent.parent
 RECENT_FIELDS = (
     "title",
@@ -166,7 +169,7 @@ FROZEN_PATTERNS = (
     ),
 )
 PROJECT_STYLE_GATE_PATH = "knowledge/21-超哥口播语言与重复硬门禁.json"
-VALIDATOR_VERSION = "content-brain-gate/1.3"
+VALIDATOR_VERSION = "content-brain-gate/1.4"
 
 
 def nonempty(value: Any) -> bool:
@@ -321,6 +324,173 @@ class GateValidator:
             self.error("required_rules 缺少全局《公开内容生产大脑硬门禁》")
         if not any(error.startswith("required_rules") for error in self.errors) and has_global_gate:
             self.pass_check("全局和项目规则已实际读取")
+
+    def validate_research_intake(self) -> None:
+        """Require source-to-original evidence before any public-copy gate."""
+        intake = self.card.get("research_intake")
+        if not isinstance(intake, dict):
+            self.error(
+                "research_intake 必须绑定源头拆解任务回执；没有 Obsidian 检索、知识中台材料和用户选择，不得进入公开口播门禁"
+            )
+            return
+
+        project_root = discover_project_root(self.card_path)
+        expected_skill = (
+            project_root / "skills/douyin-koubo-source-to-original/SKILL.md"
+            if project_root is not None
+            else None
+        )
+        source_skill = intake.get("source_to_original_skill")
+        if not isinstance(source_skill, dict):
+            self.error("research_intake.source_to_original_skill 必须是对象")
+        elif expected_skill is None or not expected_skill.is_file():
+            self.error("无法定位项目内 douyin-koubo-source-to-original Skill")
+        else:
+            resolved = resolve_input_path(source_skill.get("path"), self.card_path)
+            if resolved is None or resolved.resolve() != expected_skill.resolve():
+                self.error("research_intake.source_to_original_skill.path 必须绑定项目内源头拆解 Skill")
+            elif source_skill.get("sha256") != file_sha256(expected_skill):
+                self.error("源头拆解 Skill 哈希已变化，必须重新生成研究上下文和候选包")
+            elif source_skill.get("read") is not True:
+                self.error("research_intake.source_to_original_skill.read 必须为 true")
+
+        context_ref = intake.get("context")
+        context: dict[str, Any] | None = None
+        context_path: Path | None = None
+        if not isinstance(context_ref, dict):
+            self.error("research_intake.context 必须是对象")
+        else:
+            context_path = resolve_input_path(context_ref.get("path"), self.card_path)
+            if context_path is None or not context_path.is_file() or not context_path.stat().st_size:
+                self.error("research_intake.context.path 必须指向当前非空研究上下文回执")
+            elif context_ref.get("sha256") != file_sha256(context_path):
+                self.error("research_intake.context.sha256 与当前研究上下文不一致")
+            else:
+                try:
+                    loaded = json.loads(context_path.read_text(encoding="utf-8"))
+                except json.JSONDecodeError:
+                    self.error("research_intake.context 不是有效 JSON")
+                else:
+                    if not isinstance(loaded, dict):
+                        self.error("research_intake.context 顶层必须是对象")
+                    elif loaded.get("task_id") != self.card.get("task_id"):
+                        self.error("研究上下文 task_id 与内容门禁卡不一致")
+                    elif loaded.get("status") != RESEARCH_CONTEXT_STATUS:
+                        self.error("研究上下文尚未达到 ready-for-candidate-review")
+                    elif loaded.get("public_copy_generation") is not False:
+                        self.error("研究上下文必须明确禁止直接生成公开稿")
+                    else:
+                        context = loaded
+
+        if context is not None:
+            retrieval = context.get("opcd", {}).get("retrieval", {})
+            retrieval_items = retrieval.get("results") if isinstance(retrieval, dict) else None
+            if not isinstance(retrieval_items, list) or not retrieval_items:
+                self.error("研究上下文缺少 Obsidian 检索结果")
+            elif not any(
+                isinstance(item, dict)
+                and isinstance(item.get("path"), str)
+                and KNOWLEDGE_HUB_PATH_MARKER in item["path"]
+                for item in retrieval_items
+            ):
+                self.error("Obsidian 检索未包含抖音知识中台材料，不能只拿账号指标或外部资料写稿")
+            if not isinstance(context.get("sources"), list) or not context["sources"]:
+                self.error("研究上下文缺少本轮完整来源")
+
+        pack_ref = intake.get("candidate_pack")
+        pack: dict[str, Any] | None = None
+        if not isinstance(pack_ref, dict):
+            self.error("research_intake.candidate_pack 必须是对象")
+        else:
+            pack_path = resolve_input_path(pack_ref.get("path"), self.card_path)
+            if pack_path is None or not pack_path.is_file() or not pack_path.stat().st_size:
+                self.error("research_intake.candidate_pack.path 必须指向当前非空候选包")
+            elif pack_ref.get("sha256") != file_sha256(pack_path):
+                self.error("research_intake.candidate_pack.sha256 与当前候选包不一致")
+            else:
+                try:
+                    loaded = json.loads(pack_path.read_text(encoding="utf-8"))
+                except json.JSONDecodeError:
+                    self.error("research_intake.candidate_pack 不是有效 JSON")
+                else:
+                    if not isinstance(loaded, dict):
+                        self.error("research_intake.candidate_pack 顶层必须是对象")
+                    elif loaded.get("task_id") != self.card.get("task_id"):
+                        self.error("候选包 task_id 与内容门禁卡不一致")
+                    elif loaded.get("public_copy_generated") is not False:
+                        self.error("候选包不能在用户选择前生成公开稿")
+                    else:
+                        pack = loaded
+
+        if context is None or pack is None:
+            return
+        pack_context = pack.get("research_context")
+        if not isinstance(pack_context, dict):
+            self.error("候选包缺少 research_context")
+            return
+        pack_context_path = resolve_input_path(pack_context.get("path"), self.card_path)
+        if context_path is None or pack_context_path is None or pack_context_path.resolve() != context_path.resolve():
+            self.error("候选包未绑定当前研究上下文路径")
+        elif pack_context.get("sha256") != file_sha256(context_path):
+            self.error("候选包绑定的研究上下文哈希已过期")
+
+        selected_candidate_id = intake.get("selected_candidate_id")
+        selected_hook_id = intake.get("selected_hook_id")
+        if not nonempty(selected_candidate_id) or not nonempty(selected_hook_id):
+            self.error("research_intake 必须记录用户选择的候选题和钩子")
+            return
+        candidates = pack.get("candidates")
+        candidate = next(
+            (
+                item for item in candidates
+                if isinstance(item, dict) and item.get("id") == selected_candidate_id
+            ),
+            None,
+        ) if isinstance(candidates, list) else None
+        if candidate is None:
+            self.error("research_intake.selected_candidate_id 未在候选包中找到")
+            return
+        manual = candidate.get("manual_selection")
+        if not isinstance(manual, dict) or manual.get("status") != RESEARCH_SELECTION_STATUS:
+            self.error("当前候选尚未得到用户批准，不能进入公开口播门禁")
+        elif manual.get("selected_hook_id") != selected_hook_id:
+            self.error("research_intake.selected_hook_id 与用户批准的候选钩子不一致")
+        elif not nonempty(manual.get("authorization_ref")):
+            self.error("用户选择必须保留可审计的 authorization_ref")
+
+        retrieval_by_path = {
+            item.get("path"): item
+            for item in context.get("opcd", {}).get("retrieval", {}).get("results", [])
+            if isinstance(item, dict) and nonempty(item.get("path"))
+        }
+        applied_hub_material = False
+        opcd_refs = candidate.get("opcd_read_refs")
+        for ref in opcd_refs if isinstance(opcd_refs, list) else []:
+            if not isinstance(ref, dict):
+                continue
+            path = ref.get("path")
+            retrieved = retrieval_by_path.get(path)
+            if retrieved is None or ref.get("document_sha256") != retrieved.get("document_sha256"):
+                self.error("候选包的 Obsidian 应用记录未绑定当前检索结果")
+                continue
+            if not nonempty(ref.get("application")):
+                self.error("候选包的 Obsidian 应用记录不能为空")
+            if isinstance(path, str) and KNOWLEDGE_HUB_PATH_MARKER in path and nonempty(ref.get("application")):
+                applied_hub_material = True
+        if not applied_hub_material:
+            self.error("候选必须说明至少一条抖音知识中台材料如何实际改变本条判断或结构")
+
+        research_errors = (
+            "research_intake",
+            "研究上下文",
+            "候选包",
+            "Obsidian",
+            "当前候选",
+            "用户选择",
+            "源头拆解",
+        )
+        if not any(any(token in error for token in research_errors) for error in self.errors):
+            self.pass_check("源头拆解、Obsidian 知识库、抖音知识中台与用户选择回执已交叉校验")
 
     def validate_sources(self) -> None:
         sources = self.card.get("sources")
@@ -1711,6 +1881,7 @@ class GateValidator:
     def run(self) -> dict[str, Any]:
         stage = self.validate_header()
         self.validate_rules()
+        self.validate_research_intake()
         self.validate_sources()
         self.validate_brief_contract(stage)
         self.validate_recent_six()

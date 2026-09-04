@@ -24,6 +24,7 @@ const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
 
 const skillNames = [
+  'douyin-koubo-source-to-original',
   'source-essence-synthesis',
   'content-brain-gate',
   'humanize-koubo-script',

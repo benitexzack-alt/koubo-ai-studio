@@ -13,7 +13,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 SCRIPT_DIR = Path(__file__).resolve().parent
-SOURCE = Path('/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7673119173723098419.md')
+SOURCE = (
+    ROOT.parent
+    / '个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7673119173723098419.md'
+)
 PREFLIGHT = ROOT / 'workflow/account-performance-preflights/task-20260819T022553Z-92ad7b23.json'
 TASK_ID = 'task-20260819T022553Z-92ad7b23'
 
@@ -62,6 +65,13 @@ def candidate_pack(context: Path, source_id: str, retrieval: dict) -> dict:
                 {'function': 'callback', 'statement': '回到老板追问，收束为先把来源翻成自己的问题。'}
             ],
             'long_term_trust_path': '展示超哥如何区分来源、判断和真实业务证据，为企业知识库与AI陪跑建立可信入口。',
+            'public_value_contract': {
+                'external_audience': '兰州本地企业老板、创业者和想把 AI 用进实际工作的人。',
+                'present_situation': '他们收藏了很多 AI 内容，却仍回答不了一条工具建议放到自身业务后由谁执行、如何验收。',
+                'viewer_decision': '看完能先判断一条内容是在提供可验证的业务问题，还是只是在重复别人的工具结论。',
+                'account_strategy_link': '把账号定位为能把来源翻成业务判断的本地 AI 实践者，为后续知识库和落地服务建立可信入口。',
+                'internal_process_is_not_topic': True,
+            },
             'non_claims': ['不声称已有企业客户案例。', '不承诺知识整理会带来获客或成交。'],
             'manual_selection': {'status': 'pending-user-selection'}
         }]

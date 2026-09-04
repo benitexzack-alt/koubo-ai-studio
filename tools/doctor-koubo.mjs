@@ -33,6 +33,7 @@ const requiredFiles = [
   'workflow/recent-content-history.v1.json',
   'remotion/package.json',
   'remotion/package-lock.json',
+  'skills/douyin-koubo-source-to-original/SKILL.md',
   'skills/source-essence-synthesis/SKILL.md',
   'skills/content-brain-gate/SKILL.md',
   'skills/humanize-koubo-script/SKILL.md',
@@ -147,6 +148,7 @@ if (hardcodedHits.length === 0) {
 }
 
 for (const name of [
+  'douyin-koubo-source-to-original',
   'source-essence-synthesis',
   'content-brain-gate',
   'humanize-koubo-script',

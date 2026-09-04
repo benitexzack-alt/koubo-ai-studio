@@ -112,7 +112,7 @@ def source_record(
 
 def retrieve_opcd(query: str, opcd_root: Path) -> dict[str, Any]:
     if not query.strip():
-        raise ValueError("OPCD 检索问题不能为空")
+        raise ValueError("Obsidian 检索问题不能为空")
     command = [
         sys.executable,
         str(opcd_root / "04_Claude Code日常操作/scripts/opc_rag.py"),
@@ -124,10 +124,10 @@ def retrieve_opcd(query: str, opcd_root: Path) -> dict[str, Any]:
     ]
     completed = subprocess.run(command, text=True, capture_output=True, check=False)
     if completed.returncode != 0:
-        raise ValueError(f"OPCD 检索失败：{completed.stderr.strip() or completed.stdout.strip()}")
+        raise ValueError(f"Obsidian 检索失败：{completed.stderr.strip() or completed.stdout.strip()}")
     payload = json.loads(completed.stdout)
     if payload.get("status") != "sufficient" or not isinstance(payload.get("results"), list) or not payload["results"]:
-        raise ValueError("OPCD 检索未返回足够的当前候选")
+        raise ValueError("Obsidian 检索未返回足够的当前候选")
     results = []
     for item in payload["results"]:
         if not isinstance(item, dict):
@@ -144,7 +144,7 @@ def retrieve_opcd(query: str, opcd_root: Path) -> dict[str, Any]:
             "score": item.get("score"),
         })
     if not results:
-        raise ValueError("OPCD 检索结果格式无效")
+        raise ValueError("Obsidian 检索结果格式无效")
     return {"query": query, "status": payload["status"], "results": results, "use_boundary": "仅为候选召回；拟使用前必须读取原文并按当前事实、来源和内容门禁核验。"}
 
 
@@ -161,7 +161,7 @@ def main() -> int:
 
     try:
         if not args.opcd_root.is_dir():
-            raise ValueError(f"OPCD（Obsidian个人知识库）不存在：{args.opcd_root}")
+            raise ValueError(f"Obsidian 个人知识库不存在：{args.opcd_root}")
         preflight = read_json(args.preflight)
         if preflight.get("taskId") != args.task_id:
             raise ValueError("账号预检回执 taskId 与当前任务不一致")
@@ -193,7 +193,7 @@ def main() -> int:
         "generated_at": datetime.now(timezone.utc).astimezone().isoformat(),
         "public_copy_generation": False,
         "opcd": {
-            "meaning": "Obsidian个人知识库",
+            "meaning": "Obsidian 个人知识库（兼容字段名：opcd）",
             "root": str(args.opcd_root.resolve()),
             "learning_card": learning_info,
             "retrieval": opcd_retrieval,
