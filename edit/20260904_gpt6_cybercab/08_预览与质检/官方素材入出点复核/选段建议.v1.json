@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "local-broll-still-review/v1",
+  "status": "五条内部选段建议，待父任务连续播放与讲解复核",
+  "formalEnabled": false,
+  "fullSpeedWatched": false,
+  "finalAccepted": false,
+  "reviewMethod": "实际查看15张候选入中出抽帧、12张细化抽帧及1张B1建议末端抽帧；未听源声，未连续播放",
+  "rangeConvention": "源片秒数，左闭右开；抽帧秒数是ffmpeg请求位置，不冒充逐帧实测切点",
+  "frameEvidence": "frame-evidence.v1.json",
+  "refineEvidence": "refine-evidence.v1.json",
+  "sourceAuthority": "来源身份沿用工程回执及来源补充文档，本子任务没有外网重新核验",
+  "sourceLabels": {
+    "U01": "来源：OpenAI官方演示（本地为含译字幕版本）",
+    "T01": "来源：Tesla官网宣传片｜拍摄日期未披露",
+    "T02": "来源：Tesla｜2024年10月10日发布会回顾（历史画面）"
+  },
+  "sourceBoundaries": {
+    "U01": "来源补充已匹配官方原视频，但非逐帧/字节等同证明；本地内嵌中英译文、转载和音乐权利待审。不能称我方实测或客户交付。",
+    "T01": "仅官方宣传素材，不是本期今日实测或已完成公众运营的证据；1920×960、2:1，必须等比完整呈现，不拉伸；无音轨，不伪造现场声。",
+    "T02": "只做2024历史备选；未进入本次五条建议，不自动替换T01；本次只验证文件技术元数据与哈希，没有新增画面验收。"
+  },
+  "u01Layout": {
+    "embeddedCaptionsObserved": true,
+    "conservativeNoOverlayBandNormalized": {"x": 0, "y": 0.72, "width": 1, "height": 0.28},
+    "bandBasis": "静帧人工估计的保守保护带，非OCR精确边界，不代表中间帧全部通过",
+    "recommendation": "保留完整16:9源画；原字幕、UI及人物均不裁不遮。本人口播字幕与来源标注放源画外的独立区域，不叠第二套翻译；U01默认不加右下真人小窗，画面右侧已有演示者或UI。最终需风险帧复核。"
+  },
+  "shots": [
+    {
+      "id": "B1", "assetId": "U01",
+      "candidateRange": {"in": 33.64, "outExclusive": 43.96},
+      "recommendedRange": {"in": 33.64, "outExclusive": 39.373333333333335},
+      "speed": 1, "durationSeconds": 5.733333333333335,
+      "outputSlot": {"startFrame": 829, "endFrameExclusive": 1001, "fps": 30},
+      "unfilledSeconds": 0,
+      "observedObjects": ["33.640/35.500：男性演示者及内嵌中英Blender指令", "38.350/38.800/39.340：投影三维网格、被选中的黄色圆柱模型及电脑"],
+      "notEstablished": ["本窗口未见完整火箭成品", "未通过静帧验证连续操作成功率或自主执行全过程"],
+      "currentLectureCueIds": ["C006"],
+      "fit": "可配电脑/三维软件操作的官方演示；不能单凭镜头证明最核心突破或任意任务能力。",
+      "adjustmentReason": "候选尾部41.200已进入ASTRA片头转场，43.927切到雨衣提案；提前收至39.373，且满足原172帧槽位。",
+      "selectedTailEvidence": "B1-selected-out-before-39.340.jpg",
+      "sourceLabelKey": "U01",
+      "status": "可作对应软件演示候选，需连续复核"
+    },
+    {
+      "id": "B2", "assetId": "U01",
+      "candidateRange": {"in": 43.96, "outExclusive": 56.84},
+      "recommendedRange": {"in": 50.6, "outExclusive": 56.833333333333336},
+      "speed": 1, "durationSeconds": 6.233333333333334,
+      "outputSlot": {"startFrame": 1645, "endFrameExclusive": 1832, "fps": 30},
+      "unfilledSeconds": 0,
+      "observedObjects": ["43.960：ASTRA大字及制作雨衣提案的内嵌字幕", "50.400/50.600：女性演示者提出视觉质感要求", "53.700：浏览器空白/载入页", "56.800/56.807：Google Slides模板选择界面"],
+      "notEstablished": ["本候选抽帧没有完成的雨衣视觉提案或雨衣实物", "无业务SOP或获客结果证据"],
+      "currentLectureCueIds": ["C013"],
+      "fit": "仅能配提出视觉要求、调用幻灯片工具的过程；对输出完成的视觉方案只能部分配合，对数据整理/SOP/获客文案不构成证明。",
+      "adjustmentReason": "从50.600起避免重复片头，保留187帧；仍包含人物指令和空白页，不应包装成成品展示。若父任务要求必须展示成品，本窗口不满足，不擅自外扩找素材。",
+      "sourceLabelKey": "U01",
+      "status": "过程性候选，不是雨衣成品证据"
+    },
+    {
+      "id": "B3", "assetId": "T01",
+      "candidateRange": {"in": 0, "outExclusive": 13},
+      "recommendedRange": {"in": 0, "outExclusive": 13},
+      "speed": 1, "durationSeconds": 13,
+      "outputSlot": {"startFrame": 2437, "endFrameExclusive": 2827, "fps": 30},
+      "unfilledSeconds": 0,
+      "observedObjects": ["0.000/12.958：金色Cybercab车身及城市道路", "3.000：手持手机", "6.500：走近车辆的四名人物", "8.500：车门升起，门洞内可见乘坐者与座椅局部", "10.500：车辆侧面"],
+      "notEstablished": ["抽帧未清晰展示完整座舱控制区", "无法证明没有制动系统、没有踏板或人类完全不能驾驶", "未验证车辆运动连续性、拍摄日期或今日运营"],
+      "currentLectureCueIds": ["C022", "C023", "C024", "C025"],
+      "fit": "可配Cybercab车型、外观与开门登乘介绍；不能给没有刹车、人类完全不能驾驶等说法背书。该语义风险交父任务裁决，本子任务不改字幕。",
+      "adjustmentReason": "原0–13秒保留，额外8.500秒抽帧确认确有开门和乘坐者局部；不能把局部座椅升格为完整座舱核验。",
+      "sourceLabelKey": "T01",
+      "status": "车型与登乘候选可用，当前讲解有独立事实风险"
+    },
+    {
+      "id": "B4", "assetId": "T01",
+      "candidateRange": {"in": 18, "outExclusive": 26},
+      "recommendedRange": {"in": 18, "outExclusive": 26},
+      "speed": 1, "durationSeconds": 8,
+      "outputSlot": {"startFrame": 3544, "endFrameExclusive": 3784, "fps": 30},
+      "unfilledSeconds": 0,
+      "observedObjects": ["18.000：车侧和车窗，后方另一车辆", "22.000：夜间座舱内男性乘坐者", "25.958：夜间城市道路中的Cybercab外观"],
+      "notEstablished": ["没有摄像头结构特写或FSD内部决策证据", "不能证明决策全部交给AI或无人干预", "静帧不能证明行驶连续性"],
+      "currentLectureCueIds": ["C034", "C035", "C036"],
+      "fit": "仅作道路/乘坐语境的官方宣传配画，不作为摄像头感知、FSD架构或全自主决策的证明。",
+      "adjustmentReason": "保留18–26秒，画面对象符合道路与乘坐用途；不追加虚构技术结构，保留拍摄日期未披露标注。",
+      "sourceLabelKey": "T01",
+      "status": "宣传性配画候选，技术机制与绝对化讲解不获证实"
+    },
+    {
+      "id": "B5", "assetId": "U01",
+      "candidateRange": {"in": 130.96, "outExclusive": 140.2},
+      "recommendedRange": {"in": 132, "outExclusive": 135.6},
+      "speed": 1, "durationSeconds": 3.6,
+      "outputSlot": {"startFrame": 5691, "endFrameExclusive": 5887, "fps": 30},
+      "proposedUseAtSlotStart": {"startFrame": 5691, "endFrameExclusive": 5799},
+      "unfilledSeconds": 2.933333333333333,
+      "unfilledFrames": 88,
+      "observedObjects": ["130.960：太空/火箭游戏投影，并非雨衣提案", "132.000：女性演示者提出改变背景颜色的要求", "135.250/135.580：Google Slides背景设置对话框及雨衣人物幻灯片", "138.500：切回游戏投影", "140.167：男性人物询问预订"],
+      "notEstablished": ["没有业务SOP、数据分析、获客或全部平台流程自动优化证据", "静帧不能证明完成了背景变更的完整交互"],
+      "currentLectureCueIds": ["C058", "C059", "C060", "C061"],
+      "fit": "只能对应自动做设计中的演示文稿背景调整例子；不能覆盖后续SOP/数据/所有流程承诺。",
+      "adjustmentReason": "缩至132.000–135.600，排除游戏开场和预订收尾。按槽位起点暂放108帧，余88帧交父任务回真人或重新对齐；本建议不修改原时间轴，不冻结不变速凑长。",
+      "sourceLabelKey": "U01",
+      "status": "短段候选可用，但不足填满原槽位且语义须重对齐"
+    }
+  ],
+  "parentHandoff": [
+    "所有槽位讲解仅只读引用当前ASR待复听稿，未当作最终实录正文；父任务以实录复听为准。",
+    "五条均须连续播放检查转场、字幕避让与混音，静帧抽查不是1倍完整观看。",
+    "B3/B4的事实风险、B2成品证据不足、B5余88帧和语义匹配交父任务处理；不擅改字幕或共享组件。",
+    "转载、译文和音乐使用边界仍待审核；这些建议不构成公开发布许可。"
+  ]
+}

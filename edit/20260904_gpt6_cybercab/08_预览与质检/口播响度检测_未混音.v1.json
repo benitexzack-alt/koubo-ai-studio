@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "source-audio-measurement/v1",
+  "measuredAt": "2026-09-04T15:04:01.509Z",
+  "input": {
+    "path": "11_指定句剪除_r1/01_口播原片_仅剪除没有人负责_r1.mp4",
+    "sha256": "5cc1564f54abff9171ba705c11c94f08f52dc7964bb39eddaaa8185b99b00be6"
+  },
+  "method": "ffmpeg loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json -f null -",
+  "exitCode": 0,
+  "inputMeasurements": {
+    "integratedLUFS": -23.84,
+    "truePeakDBTP": -3.92,
+    "loudnessRangeLU": 6.4,
+    "thresholdLUFS": -34.7
+  },
+  "analysisFilterOutput": {
+    "integratedLUFS": -16.31,
+    "truePeakDBTP": -1.5,
+    "loudnessRangeLU": 5.3,
+    "thresholdLUFS": -27.15,
+    "normalizationType": "dynamic",
+    "targetOffset": 0.31
+  },
+  "appliedToSource": false,
+  "renderedMix": false,
+  "humanListeningCompleted": false,
+  "status": "measurement-only-mix-gain-unassigned",
+  "next": "纸艺视频到齐后保留原声，逐段测量并可回溯混音，检查人声清晰和真峰值；不继承其他期音量验收。"
+}
