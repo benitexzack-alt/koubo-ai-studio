@@ -1,0 +1,1295 @@
+{
+  "schemaVersion": "paper-asset-intake/v1",
+  "createdAt": "2026-09-04T15:22:35.915Z",
+  "status": "六镜映射与机器检查完成；P02时长接入阻断，全部待原速听看",
+  "formalEnabled": false,
+  "finalAccepted": false,
+  "fullSpeedWatched": false,
+  "audioListened": false,
+  "planPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/04_导演拆解/剪后261秒_素材与镜头对位.v2.json",
+  "planSha256": "af33a3b7b71ac1be2147c912c69ff107677101148dc9ca773640d3640aa80c42",
+  "planUnchanged": true,
+  "machineReport": "machine-intake.v1.json",
+  "visualEvidence": "六张0.5秒间隔联系表共90格及六张7.250秒末帧已实际查看；参考首帧总览已查看",
+  "priorityDefinitions": {
+    "P0": "阻断当前计划直接接入",
+    "P1": "使用前需处理或明确接受",
+    "P2": "提醒及待连续复核"
+  },
+  "issues": {
+    "P0": [
+      {
+        "id": "P0-01",
+        "slots": [
+          "P02"
+        ],
+        "finding": "视频_4.mp4仅7.291667秒，当前P02槽位8秒；在原速且禁止冻结延长的约束下无法填满。",
+        "action": "阻断直接按原8秒槽位接入。父任务裁决缩短覆盖/重排既有覆盖；本子任务不改时间轴。"
+      }
+    ],
+    "P1": [
+      {
+        "id": "P1-01",
+        "slots": [
+          "P01"
+        ],
+        "finding": "源音轨真峰值约+0.1 dB；未进行原速听审，不能证明无爆音。",
+        "action": "保留原声文件，混音前听审，避免直接加增益。"
+      },
+      {
+        "id": "P1-02",
+        "slots": [
+          "P05"
+        ],
+        "finding": "末段约5.167秒起近静止，5.416秒后静音；背景重复任务轨道动态未从抽帧建立。",
+        "action": "父任务确认动作意义与尾部节奏，不能用机器无黑场替代动态验收。"
+      },
+      {
+        "id": "P1-03",
+        "slots": [
+          "P03"
+        ],
+        "finding": "画面有独立方向盘及驾驶员手中方向盘两套道具，参考首帧已记录该问题。",
+        "action": "确认是否接受，不能登记为没有既有视觉问题。"
+      },
+      {
+        "id": "P1-04",
+        "slots": [
+          "P01",
+          "P02",
+          "P03",
+          "P04",
+          "P05",
+          "P06"
+        ],
+        "finding": "本次只有完整解码、信号检测和静帧序列查看，没有原速完整听看，未确认逐动作音效、瞬时变形与字幕合成后避让。",
+        "action": "状态维持机器检查与映射完成、动态听看待验；不得正式验收。"
+      }
+    ],
+    "P2": [
+      {
+        "id": "P2-01",
+        "slots": [
+          "P01",
+          "P02",
+          "P03",
+          "P04",
+          "P05",
+          "P06"
+        ],
+        "finding": "Tesseract末帧OCR大量漏识；目视六组节点字均可读，未发现确定错字。",
+        "action": "保留原OCR，不把漏识转成错字工单。"
+      },
+      {
+        "id": "P2-02",
+        "slots": [
+          "P01",
+          "P03",
+          "P04",
+          "P06"
+        ],
+        "finding": "检测到至少0.5秒近静止区间，可能是有意留白，不等同复制帧故障。",
+        "action": "按动作和讲解判断保留，禁止额外冻结延长。"
+      },
+      {
+        "id": "P2-03",
+        "slots": [
+          "P01"
+        ],
+        "finding": "红色任务片首帧已位于电脑/浏览器之间，未严格从入口开始。",
+        "action": "沿用参考首帧边界，不夸称完整装配起点。"
+      },
+      {
+        "id": "P2-04",
+        "slots": [
+          "P01",
+          "P02",
+          "P03",
+          "P04",
+          "P05",
+          "P06"
+        ],
+        "finding": "24fps源片接30fps工程需正常时间采样；源声响度跨度约10 LU，未按听感统一。",
+        "action": "父任务保持时长与画幅，勿以改帧率误改速度。"
+      }
+    ]
+  },
+  "assets": [
+    {
+      "fileId": "F6",
+      "file": "视频_6.mp4",
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/06_用户生成视频/视频_6.mp4",
+      "sha256": "2a5fba466d01385058b79fc560852aa194f39622666df7d629b83aab2cd72fd4",
+      "bytes": 4739566,
+      "durationSeconds": 7.291667,
+      "width": 2560,
+      "height": 1440,
+      "fps": 24,
+      "videoFrames": "175",
+      "audio": [
+        {
+          "index": 1,
+          "codec_name": "aac",
+          "codec_long_name": "AAC (Advanced Audio Coding)",
+          "profile": "LC",
+          "codec_type": "audio",
+          "codec_tag_string": "mp4a",
+          "codec_tag": "0x6134706d",
+          "mime_codec_string": "mp4a.40.2",
+          "sample_fmt": "fltp",
+          "sample_rate": "32000",
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 0,
+          "initial_padding": 0,
+          "id": "0x2",
+          "r_frame_rate": "0/0",
+          "avg_frame_rate": "0/0",
+          "time_base": "1/32000",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 233344,
+          "duration": "7.292000",
+          "bit_rate": "118157",
+          "nb_frames": "229",
+          "extradata_size": 5,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "SoundHandler"
+          }
+        }
+      ],
+      "fullDecodeExitCode": 0,
+      "decodeError": null,
+      "signalThresholds": {
+        "blackMinimumSeconds": 0.15,
+        "blackPixelLuma": 0.1,
+        "blackPictureRatio": 0.98,
+        "freezeNoiseDb": -50,
+        "freezeMinimumSeconds": 0.5,
+        "silenceDb": -50,
+        "silenceMinimumSeconds": 0.3
+      },
+      "signalEvents": [
+        "[Parsed_silencedetect_0 @ 0x134f04900] silence_start: 0",
+        "[Parsed_silencedetect_0 @ 0x134f04900] silence_end: 0.796375 | silence_duration: 0.796375",
+        "[Parsed_freezedetect_1 @ 0x135805570] lavfi.freezedetect.freeze_start: 5.083333",
+        "[Parsed_freezedetect_1 @ 0x135805570] lavfi.freezedetect.freeze_duration: 0.5",
+        "[Parsed_freezedetect_1 @ 0x135805570] lavfi.freezedetect.freeze_end: 5.583333",
+        "[Parsed_silencedetect_0 @ 0x134f04900] silence_start: 6.963687",
+        "[Parsed_silencedetect_0 @ 0x134f04900] silence_end: 7.296 | silence_duration: 0.332313",
+        "[Parsed_freezedetect_1 @ 0x135805570] lavfi.freezedetect.freeze_start: 6.541667"
+      ],
+      "loudnessSummary": "Summary:\n\n  Integrated loudness:\n    I:         -25.0 LUFS\n    Threshold: -40.2 LUFS\n\n  Loudness range:\n    LRA:        16.7 LU\n    Threshold: -55.4 LUFS\n    LRA low:   -43.9 LUFS\n    LRA high:  -27.2 LUFS\n\n  True peak:\n    Peak:        0.1 dBFS\n[Parsed_freezedetect_1 @ 0x135805570] lavfi.freezedetect.freeze_start: 6.541667\n[out#0/null @ 0x135905690] video:72KiB audio:912KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  175 fps=0.0 q=-0.0 Lsize=N/A time=00:00:07.29 bitrate=N/A speed=9.48x elapsed=0:00:00.76    \n",
+      "contactSheet": "F6-contact-0.5s.jpg",
+      "contactExitCode": 0,
+      "contactSampleIntervalSeconds": 0.5,
+      "contactReadingOrder": "从左至右，再从上至下，约0、0.5、1.0秒递增；fps重采样非精确动作边界",
+      "frames": [
+        {
+          "role": "first",
+          "requestedTimeSeconds": 0,
+          "file": "F6-first-0.000.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "middle",
+          "requestedTimeSeconds": 3.6458335,
+          "file": "F6-middle-3.646.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "last",
+          "requestedTimeSeconds": 7.250000333333333,
+          "file": "F6-last-7.250.jpg",
+          "exitCode": 0
+        }
+      ],
+      "ocr": {
+        "engine": "tesseract chi_sim+eng psm11",
+        "exitCode": 0,
+        "text": "a\n\neee\n\n—\n\n—-)        Pama\n\n避一\n\n浏\n\nWe\n\n业务软件\n",
+        "interpretation": "仅识别结果，不据识别遗漏认定错字"
+      },
+      "mappedSlot": "P01",
+      "mappingBasis": "六组画面物件、牌面语义及参考首帧对应；不是文件名顺序",
+      "mappingConfidence": "高",
+      "reference": {
+        "id": "P01",
+        "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/05_首帧图片/P01.png",
+        "sha256": "2583ba5a2eaa384cadc16b3b0ca82e334aed0bdf18f248ee839a4f7e397ad4ff"
+      },
+      "referenceShaUnchanged": true,
+      "sourceShaUnchanged": true,
+      "labelsExpected": [
+        "一问一答",
+        "电脑",
+        "浏览器",
+        "业务软件"
+      ],
+      "labelsVisualCheck": {
+        "status": "末帧目视可读，未发现确定错字",
+        "observed": [
+          "一问一答",
+          "电脑",
+          "浏览器",
+          "业务软件"
+        ],
+        "scope": "已查看每半秒联系表与7.250秒末帧；非每帧OCR通过"
+      },
+      "visualReview": {
+        "meaning": "左侧一问一答物件与右侧电脑、浏览器、业务软件对照；纸片经浏览器区域进入抽屉。",
+        "actionBoundaries": [
+          "约0–1.5秒：左侧对话物件位移",
+          "约2–3秒：浏览器面板翻动，红纸向右移",
+          "约3–4.5秒：红纸进入业务软件抽屉",
+          "约5秒后：以定姿/小变化收尾"
+        ],
+        "boundaryPrecision": "约0.5秒级抽帧观察，非精确切点",
+        "deformation": "任务红纸起点已在电脑与浏览器之间，继承参考首帧问题，不能称从空白入口开始完整装配；文字牌面在抽查帧可读，未見明确崩坏。",
+        "concerns": [
+          "源声真峰值约+0.1 dB，需听审并保留混音余量，不能直接加增益",
+          "纸片起点位置与完整流程预期存在偏差；5秒后含近静止段"
+        ]
+      },
+      "durationFit": {
+        "slotSeconds": 7,
+        "marginSeconds": 0.29166700000000034,
+        "sourceFrameCount": 175,
+        "sourceFps": 24,
+        "recommendedSourceRange": {
+          "in": 0,
+          "outExclusive": 7
+        },
+        "speed": 1,
+        "freezeExtensionAllowed": false
+      },
+      "signalAnalysis": {
+        "blackIntervalsDetected": [],
+        "nearStillIntervals": [
+          {
+            "start": 5.083333,
+            "end": 5.583333,
+            "endInferredFromEof": false
+          },
+          {
+            "start": 6.541667,
+            "end": 7.291667,
+            "endInferredFromEof": true
+          }
+        ],
+        "interpretation": "-50dB、至少0.5秒近静止检测；不等于像素完全相同或异常卡死",
+        "integratedLufs": -25,
+        "loudnessRangeLu": 16.7,
+        "truePeakDb": 0.1
+      },
+      "audioReview": {
+        "hasSourceAudio": true,
+        "listened": false,
+        "contentType": "未听审，不能确定是配乐、动作音效、语音或混合",
+        "perActionSoundSyncAccepted": false,
+        "mixingGainChosen": false
+      },
+      "status": "mapped-machine-checked-human-playback-pending"
+    },
+    {
+      "fileId": "F4",
+      "file": "视频_4.mp4",
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/06_用户生成视频/视频_4.mp4",
+      "sha256": "4cc73d2023d0d52b46f84751f7fdb53936459920db7167109378afb65e1f40e0",
+      "bytes": 3491179,
+      "durationSeconds": 7.291667,
+      "width": 2560,
+      "height": 1440,
+      "fps": 24,
+      "videoFrames": "175",
+      "audio": [
+        {
+          "index": 1,
+          "codec_name": "aac",
+          "codec_long_name": "AAC (Advanced Audio Coding)",
+          "profile": "LC",
+          "codec_type": "audio",
+          "codec_tag_string": "mp4a",
+          "codec_tag": "0x6134706d",
+          "mime_codec_string": "mp4a.40.2",
+          "sample_fmt": "fltp",
+          "sample_rate": "32000",
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 0,
+          "initial_padding": 0,
+          "id": "0x2",
+          "r_frame_rate": "0/0",
+          "avg_frame_rate": "0/0",
+          "time_base": "1/32000",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 233344,
+          "duration": "7.292000",
+          "bit_rate": "129376",
+          "nb_frames": "229",
+          "extradata_size": 5,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "SoundHandler"
+          }
+        }
+      ],
+      "fullDecodeExitCode": 0,
+      "decodeError": null,
+      "signalThresholds": {
+        "blackMinimumSeconds": 0.15,
+        "blackPixelLuma": 0.1,
+        "blackPictureRatio": 0.98,
+        "freezeNoiseDb": -50,
+        "freezeMinimumSeconds": 0.5,
+        "silenceDb": -50,
+        "silenceMinimumSeconds": 0.3
+      },
+      "signalEvents": [
+        "[Parsed_freezedetect_1 @ 0x144e072c0] lavfi.freezedetect.freeze_start: 4.625",
+        "[Parsed_freezedetect_1 @ 0x144e072c0] lavfi.freezedetect.freeze_duration: 0.625",
+        "[Parsed_freezedetect_1 @ 0x144e072c0] lavfi.freezedetect.freeze_end: 5.25"
+      ],
+      "loudnessSummary": "Summary:\n\n  Integrated loudness:\n    I:         -35.0 LUFS\n    Threshold: -45.7 LUFS\n\n  Loudness range:\n    LRA:         7.6 LU\n    Threshold: -58.3 LUFS\n    LRA low:   -41.1 LUFS\n    LRA high:  -33.5 LUFS\n\n  True peak:\n    Peak:       -8.7 dBFS\n[out#0/null @ 0x144f04250] video:72KiB audio:912KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  175 fps=0.0 q=-0.0 Lsize=N/A time=00:00:07.29 bitrate=N/A speed=12.5x elapsed=0:00:00.58    \n",
+      "contactSheet": "F4-contact-0.5s.jpg",
+      "contactExitCode": 0,
+      "contactSampleIntervalSeconds": 0.5,
+      "contactReadingOrder": "从左至右，再从上至下，约0、0.5、1.0秒递增；fps重采样非精确动作边界",
+      "frames": [
+        {
+          "role": "first",
+          "requestedTimeSeconds": 0,
+          "file": "F4-first-0.000.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "middle",
+          "requestedTimeSeconds": 3.6458335,
+          "file": "F4-middle-3.646.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "last",
+          "requestedTimeSeconds": 7.250000333333333,
+          "file": "F4-last-7.250.jpg",
+          "exitCode": 0
+        }
+      ],
+      "ocr": {
+        "engine": "tesseract chi_sim+eng psm11",
+        "exitCode": 0,
+        "text": "  7\n\ny/\n\n——_———\n\n1\n\n<< me\n\n=\n\nq 业务任务 | 。 操作软件\n\npane\n",
+        "interpretation": "仅识别结果，不据识别遗漏认定错字"
+      },
+      "mappedSlot": "P02",
+      "mappingBasis": "六组画面物件、牌面语义及参考首帧对应；不是文件名顺序",
+      "mappingConfidence": "高",
+      "reference": {
+        "id": "P02",
+        "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/05_首帧图片/P02.png",
+        "sha256": "cbd7c76e30abdb8cf4872f60b2a7b3c0174a0429d4e89d77864121448ed00d81"
+      },
+      "referenceShaUnchanged": true,
+      "sourceShaUnchanged": true,
+      "labelsExpected": [
+        "业务任务",
+        "操作软件",
+        "排查问题",
+        "交付结果"
+      ],
+      "labelsVisualCheck": {
+        "status": "末帧目视可读，未发现确定错字",
+        "observed": [
+          "业务任务",
+          "操作软件",
+          "排查问题",
+          "交付结果"
+        ],
+        "scope": "已查看每半秒联系表与7.250秒末帧；非每帧OCR通过"
+      },
+      "visualReview": {
+        "meaning": "业务任务红纸移到电脑；资料从中间整理槽经过排查框，到右侧交付盒。",
+        "actionBoundaries": [
+          "约0–1.5秒：电脑打开，红任务纸落到电脑台面",
+          "约2–3.5秒：中间资料纸弹起并汇聚",
+          "约3.5–5.5秒：资料堆经过排查框",
+          "约6–7秒：资料堆移入交付结果盒，末帧已装入"
+        ],
+        "boundaryPrecision": "约0.5秒级抽帧观察，非精确切点",
+        "deformation": "电脑由闭到开与纸张由散到叠是动作变化；牌面与五站布局对应参考首帧。未发现确定错字；检查框在资料前后关系需连续复核。",
+        "concerns": [
+          "原片7.291667秒小于8秒槽位，缺0.708333秒；原速不能填满，不许冻结补齐",
+          "交付动作接近末尾，不能随意裁掉末段；父任务需缩短纸艺覆盖或重排已有覆盖，本子任务不改时间轴"
+        ]
+      },
+      "durationFit": {
+        "slotSeconds": 8,
+        "marginSeconds": -0.7083329999999997,
+        "sourceFrameCount": 175,
+        "sourceFps": 24,
+        "recommendedSourceRange": null,
+        "speed": 1,
+        "freezeExtensionAllowed": false
+      },
+      "signalAnalysis": {
+        "blackIntervalsDetected": [],
+        "nearStillIntervals": [
+          {
+            "start": 4.625,
+            "end": 5.25,
+            "endInferredFromEof": false
+          }
+        ],
+        "interpretation": "-50dB、至少0.5秒近静止检测；不等于像素完全相同或异常卡死",
+        "integratedLufs": -35,
+        "loudnessRangeLu": 7.6,
+        "truePeakDb": -8.7
+      },
+      "audioReview": {
+        "hasSourceAudio": true,
+        "listened": false,
+        "contentType": "未听审，不能确定是配乐、动作音效、语音或混合",
+        "perActionSoundSyncAccepted": false,
+        "mixingGainChosen": false
+      },
+      "status": "blocked-duration-fit"
+    },
+    {
+      "fileId": "F1",
+      "file": "视频.mp4",
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/06_用户生成视频/视频.mp4",
+      "sha256": "8f3086232148210f86ec4d5a1b9867111b3f6b1dec5891ebf996e1e6f8c4c96a",
+      "bytes": 3203412,
+      "durationSeconds": 7.291667,
+      "width": 2560,
+      "height": 1440,
+      "fps": 24,
+      "videoFrames": "175",
+      "audio": [
+        {
+          "index": 1,
+          "codec_name": "aac",
+          "codec_long_name": "AAC (Advanced Audio Coding)",
+          "profile": "LC",
+          "codec_type": "audio",
+          "codec_tag_string": "mp4a",
+          "codec_tag": "0x6134706d",
+          "mime_codec_string": "mp4a.40.2",
+          "sample_fmt": "fltp",
+          "sample_rate": "32000",
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 0,
+          "initial_padding": 0,
+          "id": "0x2",
+          "r_frame_rate": "0/0",
+          "avg_frame_rate": "0/0",
+          "time_base": "1/32000",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 233344,
+          "duration": "7.292000",
+          "bit_rate": "118806",
+          "nb_frames": "229",
+          "extradata_size": 5,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "SoundHandler"
+          }
+        }
+      ],
+      "fullDecodeExitCode": 0,
+      "decodeError": null,
+      "signalThresholds": {
+        "blackMinimumSeconds": 0.15,
+        "blackPixelLuma": 0.1,
+        "blackPictureRatio": 0.98,
+        "freezeNoiseDb": -50,
+        "freezeMinimumSeconds": 0.5,
+        "silenceDb": -50,
+        "silenceMinimumSeconds": 0.3
+      },
+      "signalEvents": [
+        "[Parsed_silencedetect_0 @ 0x141b6d470] silence_start: 6.410906",
+        "[Parsed_silencedetect_0 @ 0x141b6d470] silence_end: 7.296 | silence_duration: 0.885094",
+        "[Parsed_freezedetect_1 @ 0x141b6f1e0] lavfi.freezedetect.freeze_start: 6.083333",
+        "[Parsed_freezedetect_1 @ 0x141b6f1e0] lavfi.freezedetect.freeze_duration: 0.5",
+        "[Parsed_freezedetect_1 @ 0x141b6f1e0] lavfi.freezedetect.freeze_end: 6.583333",
+        "[Parsed_freezedetect_1 @ 0x141b6f1e0] lavfi.freezedetect.freeze_start: 6.583333"
+      ],
+      "loudnessSummary": "Summary:\n\n  Integrated loudness:\n    I:         -25.6 LUFS\n    Threshold: -38.6 LUFS\n\n  Loudness range:\n    LRA:         3.1 LU\n    Threshold: -47.8 LUFS\n    LRA low:   -29.6 LUFS\n    LRA high:  -26.5 LUFS\n\n  True peak:\n    Peak:       -0.6 dBFS\n[Parsed_freezedetect_1 @ 0x141b6f1e0] lavfi.freezedetect.freeze_start: 6.083333\n[Parsed_freezedetect_1 @ 0x141b6f1e0] lavfi.freezedetect.freeze_duration: 0.5\n[Parsed_freezedetect_1 @ 0x141b6f1e0] lavfi.freezedetect.freeze_end: 6.583333\n[Parsed_freezedetect_1 @ 0x141b6f1e0] lavfi.freezedetect.freeze_start: 6.583333\n[out#0/null @ 0x120e05460] video:72KiB audio:912KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  175 fps=171 q=-0.0 Lsize=N/A time=00:00:07.29 bitrate=N/A speed=7.13x elapsed=0:00:01.02    \n",
+      "contactSheet": "F1-contact-0.5s.jpg",
+      "contactExitCode": 0,
+      "contactSampleIntervalSeconds": 0.5,
+      "contactReadingOrder": "从左至右，再从上至下，约0、0.5、1.0秒递增；fps重采样非精确动作边界",
+      "frames": [
+        {
+          "role": "first",
+          "requestedTimeSeconds": 0,
+          "file": "F1-first-0.000.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "middle",
+          "requestedTimeSeconds": 3.6458335,
+          "file": "F1-middle-3.646.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "last",
+          "requestedTimeSeconds": 7.250000333333333,
+          "file": "F1-last-7.250.jpg",
+          "exitCode": 0
+        }
+      ],
+      "ocr": {
+        "engine": "tesseract chi_sim+eng psm11",
+        "exitCode": 0,
+        "text": "EM\n\nbe\n\nyy\n\n-y\n\nca\n\nsel\n\n|\n\n人开车\n\n人负责\n",
+        "interpretation": "仅识别结果，不据识别遗漏认定错字"
+      },
+      "mappedSlot": "P03",
+      "mappingBasis": "六组画面物件、牌面语义及参考首帧对应；不是文件名顺序",
+      "mappingConfidence": "高",
+      "reference": {
+        "id": "P03",
+        "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/05_首帧图片/P03.png",
+        "sha256": "4a1b07dfd26bc3d65c32409c53dcbe2e46371327121b84d7228c43315f63e4f6"
+      },
+      "referenceShaUnchanged": true,
+      "sourceShaUnchanged": true,
+      "labelsExpected": [
+        "人开车",
+        "人判断",
+        "人负责",
+        "人决策"
+      ],
+      "labelsVisualCheck": {
+        "status": "末帧目视可读，未发现确定错字",
+        "observed": [
+          "人开车",
+          "人判断",
+          "人负责",
+          "人决策"
+        ],
+        "scope": "已查看每半秒联系表与7.250秒末帧；非每帧OCR通过"
+      },
+      "visualReview": {
+        "meaning": "四种人的驾驶职责；方向盘、道路判断窗、驾驶员、分岔决策杆对应四牌。",
+        "actionBoundaries": [
+          "约0–1.5秒：左方向盘角度变化",
+          "约1.5–3秒：道路窗遮片切换",
+          "约3.5–5秒：驾驶员伸手拨动右侧决策杆",
+          "约5.5秒后：手臂收回，末段主要定格"
+        ],
+        "boundaryPrecision": "约0.5秒级抽帧观察，非精确切点",
+        "deformation": "左侧独立方向盘与驾驶员手中方向盘重复，继承参考首帧的已知问题；伸臂动作看得出关节变化，未据抽帧发现确定性崩坏，但未连续检验手部。",
+        "concerns": [
+          "重复方向盘须父任务确认表达是否可接受",
+          "6.083秒后检测到多段近静止，不能称全程持续动作"
+        ]
+      },
+      "durationFit": {
+        "slotSeconds": 7,
+        "marginSeconds": 0.29166700000000034,
+        "sourceFrameCount": 175,
+        "sourceFps": 24,
+        "recommendedSourceRange": {
+          "in": 0,
+          "outExclusive": 7
+        },
+        "speed": 1,
+        "freezeExtensionAllowed": false
+      },
+      "signalAnalysis": {
+        "blackIntervalsDetected": [],
+        "nearStillIntervals": [
+          {
+            "start": 6.083333,
+            "end": 6.583333,
+            "endInferredFromEof": false
+          },
+          {
+            "start": 6.583333,
+            "end": 7.291667,
+            "endInferredFromEof": true
+          }
+        ],
+        "interpretation": "-50dB、至少0.5秒近静止检测；不等于像素完全相同或异常卡死",
+        "integratedLufs": -25.6,
+        "loudnessRangeLu": 3.1,
+        "truePeakDb": -0.6
+      },
+      "audioReview": {
+        "hasSourceAudio": true,
+        "listened": false,
+        "contentType": "未听审，不能确定是配乐、动作音效、语音或混合",
+        "perActionSoundSyncAccepted": false,
+        "mixingGainChosen": false
+      },
+      "status": "mapped-machine-checked-human-playback-pending"
+    },
+    {
+      "fileId": "F2",
+      "file": "视频_2.mp4",
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/06_用户生成视频/视频_2.mp4",
+      "sha256": "e8613d36b55a98b3a5dfec769af561b4f189e0571a05fd288c811a3e4ca727d2",
+      "bytes": 3786373,
+      "durationSeconds": 7.291667,
+      "width": 2560,
+      "height": 1440,
+      "fps": 24,
+      "videoFrames": "175",
+      "audio": [
+        {
+          "index": 1,
+          "codec_name": "aac",
+          "codec_long_name": "AAC (Advanced Audio Coding)",
+          "profile": "LC",
+          "codec_type": "audio",
+          "codec_tag_string": "mp4a",
+          "codec_tag": "0x6134706d",
+          "mime_codec_string": "mp4a.40.2",
+          "sample_fmt": "fltp",
+          "sample_rate": "32000",
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 0,
+          "initial_padding": 0,
+          "id": "0x2",
+          "r_frame_rate": "0/0",
+          "avg_frame_rate": "0/0",
+          "time_base": "1/32000",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 233344,
+          "duration": "7.292000",
+          "bit_rate": "126000",
+          "nb_frames": "229",
+          "extradata_size": 5,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "SoundHandler"
+          }
+        }
+      ],
+      "fullDecodeExitCode": 0,
+      "decodeError": null,
+      "signalThresholds": {
+        "blackMinimumSeconds": 0.15,
+        "blackPixelLuma": 0.1,
+        "blackPictureRatio": 0.98,
+        "freezeNoiseDb": -50,
+        "freezeMinimumSeconds": 0.5,
+        "silenceDb": -50,
+        "silenceMinimumSeconds": 0.3
+      },
+      "signalEvents": [
+        "[Parsed_freezedetect_1 @ 0x13ca051b0] lavfi.freezedetect.freeze_start: 2.333333",
+        "[Parsed_freezedetect_1 @ 0x13ca051b0] lavfi.freezedetect.freeze_duration: 0.541667",
+        "[Parsed_freezedetect_1 @ 0x13ca051b0] lavfi.freezedetect.freeze_end: 2.875",
+        "[Parsed_silencedetect_0 @ 0x13ca05f90] silence_start: 3.774125",
+        "[Parsed_silencedetect_0 @ 0x13ca05f90] silence_end: 4.132625 | silence_duration: 0.3585",
+        "[Parsed_silencedetect_0 @ 0x13ca05f90] silence_start: 6.854125",
+        "[Parsed_silencedetect_0 @ 0x13ca05f90] silence_end: 7.296 | silence_duration: 0.441875",
+        "[Parsed_freezedetect_1 @ 0x13ca051b0] lavfi.freezedetect.freeze_start: 6.583333"
+      ],
+      "loudnessSummary": "Summary:\n\n  Integrated loudness:\n    I:         -29.2 LUFS\n    Threshold: -40.3 LUFS\n\n  Loudness range:\n    LRA:         2.3 LU\n    Threshold: -49.6 LUFS\n    LRA low:   -30.9 LUFS\n    LRA high:  -28.6 LUFS\n\n  True peak:\n    Peak:       -1.8 dBFS\n[Parsed_freezedetect_1 @ 0x13ca051b0] lavfi.freezedetect.freeze_start: 6.583333\n[out#0/null @ 0x13b722600] video:72KiB audio:912KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  175 fps=0.0 q=-0.0 Lsize=N/A time=00:00:07.29 bitrate=N/A speed=12.4x elapsed=0:00:00.58    \n",
+      "contactSheet": "F2-contact-0.5s.jpg",
+      "contactExitCode": 0,
+      "contactSampleIntervalSeconds": 0.5,
+      "contactReadingOrder": "从左至右，再从上至下，约0、0.5、1.0秒递增；fps重采样非精确动作边界",
+      "frames": [
+        {
+          "role": "first",
+          "requestedTimeSeconds": 0,
+          "file": "F2-first-0.000.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "middle",
+          "requestedTimeSeconds": 3.6458335,
+          "file": "F2-middle-3.646.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "last",
+          "requestedTimeSeconds": 7.250000333333333,
+          "file": "F2-last-7.250.jpg",
+          "exitCode": 0
+        }
+      ],
+      "ocr": {
+        "engine": "tesseract chi_sim+eng psm11",
+        "exitCode": 0,
+        "text": "ri\n\nee\n\na\n\nh\n\n商业\n\nne at\n\n.\n\n©)\n\n‘@\n\nsafes\n\n现实世界\n\n执行身体\n",
+        "interpretation": "仅识别结果，不据识别遗漏认定错字"
+      },
+      "mappedSlot": "P04",
+      "mappingBasis": "六组画面物件、牌面语义及参考首帧对应；不是文件名顺序",
+      "mappingConfidence": "高",
+      "reference": {
+        "id": "P04",
+        "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/05_首帧图片/P04.png",
+        "sha256": "69ad5f910435d225acc1c220faca196ffeb865375aefac255e901dfc13074477"
+      },
+      "referenceShaUnchanged": true,
+      "sourceShaUnchanged": true,
+      "labelsExpected": [
+        "软件系统",
+        "商业工作",
+        "现实世界",
+        "执行身体"
+      ],
+      "labelsVisualCheck": {
+        "status": "末帧目视可读，未发现确定错字",
+        "observed": [
+          "软件系统",
+          "商业工作",
+          "现实世界",
+          "执行身体"
+        ],
+        "scope": "已查看每半秒联系表与7.250秒末帧；非每帧OCR通过"
+      },
+      "visualReview": {
+        "meaning": "上层软件向商业工作交付纸片，下层门/汽车独立运动，空间隔板保持，无跨层控制线。",
+        "actionBoundaries": [
+          "约0–2秒：软件端文件翻出，红纸沿上层轨道进入商业工作托盘",
+          "约2.5–4秒：下层门开合",
+          "约4–6秒：汽车由右侧向左侧移动并压到红片附近",
+          "约6.5秒后：收束近静止"
+        ],
+        "boundaryPrecision": "约0.5秒级抽帧观察，非精确切点",
+        "deformation": "上下层、托盘和车辆身份保持；汽车离开执行身体牌位是运动结果，不是牌面错配证据。未见确定性文字变形。",
+        "concerns": [
+          "只表达软件与现实执行对照，不推导已经完全打通或全自主",
+          "2.333–2.875秒及尾部检测近静止"
+        ]
+      },
+      "durationFit": {
+        "slotSeconds": 7,
+        "marginSeconds": 0.29166700000000034,
+        "sourceFrameCount": 175,
+        "sourceFps": 24,
+        "recommendedSourceRange": {
+          "in": 0,
+          "outExclusive": 7
+        },
+        "speed": 1,
+        "freezeExtensionAllowed": false
+      },
+      "signalAnalysis": {
+        "blackIntervalsDetected": [],
+        "nearStillIntervals": [
+          {
+            "start": 2.333333,
+            "end": 2.875,
+            "endInferredFromEof": false
+          },
+          {
+            "start": 6.583333,
+            "end": 7.291667,
+            "endInferredFromEof": true
+          }
+        ],
+        "interpretation": "-50dB、至少0.5秒近静止检测；不等于像素完全相同或异常卡死",
+        "integratedLufs": -29.2,
+        "loudnessRangeLu": 2.3,
+        "truePeakDb": -1.8
+      },
+      "audioReview": {
+        "hasSourceAudio": true,
+        "listened": false,
+        "contentType": "未听审，不能确定是配乐、动作音效、语音或混合",
+        "perActionSoundSyncAccepted": false,
+        "mixingGainChosen": false
+      },
+      "status": "mapped-machine-checked-human-playback-pending"
+    },
+    {
+      "fileId": "F5",
+      "file": "视频_5.mp4",
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/06_用户生成视频/视频_5.mp4",
+      "sha256": "4329545761ce27fea8e28c7d8718121616293b6230cce26b49222cf8c5066d75",
+      "bytes": 2862302,
+      "durationSeconds": 7.291667,
+      "width": 2560,
+      "height": 1440,
+      "fps": 24,
+      "videoFrames": "175",
+      "audio": [
+        {
+          "index": 1,
+          "codec_name": "aac",
+          "codec_long_name": "AAC (Advanced Audio Coding)",
+          "profile": "LC",
+          "codec_type": "audio",
+          "codec_tag_string": "mp4a",
+          "codec_tag": "0x6134706d",
+          "mime_codec_string": "mp4a.40.2",
+          "sample_fmt": "fltp",
+          "sample_rate": "32000",
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 0,
+          "initial_padding": 0,
+          "id": "0x2",
+          "r_frame_rate": "0/0",
+          "avg_frame_rate": "0/0",
+          "time_base": "1/32000",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 233344,
+          "duration": "7.292000",
+          "bit_rate": "107320",
+          "nb_frames": "229",
+          "extradata_size": 5,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "SoundHandler"
+          }
+        }
+      ],
+      "fullDecodeExitCode": 0,
+      "decodeError": null,
+      "signalThresholds": {
+        "blackMinimumSeconds": 0.15,
+        "blackPixelLuma": 0.1,
+        "blackPictureRatio": 0.98,
+        "freezeNoiseDb": -50,
+        "freezeMinimumSeconds": 0.5,
+        "silenceDb": -50,
+        "silenceMinimumSeconds": 0.3
+      },
+      "signalEvents": [
+        "[Parsed_silencedetect_0 @ 0x104104390] silence_start: 0",
+        "[Parsed_silencedetect_0 @ 0x104104390] silence_end: 0.430156 | silence_duration: 0.430156",
+        "[Parsed_silencedetect_0 @ 0x104104390] silence_start: 5.415563",
+        "[Parsed_freezedetect_1 @ 0x120743880] lavfi.freezedetect.freeze_start: 5.166667",
+        "[Parsed_freezedetect_1 @ 0x120743880] lavfi.freezedetect.freeze_duration: 0.875",
+        "[Parsed_freezedetect_1 @ 0x120743880] lavfi.freezedetect.freeze_end: 6.041667",
+        "[Parsed_silencedetect_0 @ 0x104104390] silence_end: 7.296 | silence_duration: 1.880437",
+        "[Parsed_freezedetect_1 @ 0x120743880] lavfi.freezedetect.freeze_start: 6.041667"
+      ],
+      "loudnessSummary": "Summary:\n\n  Integrated loudness:\n    I:         -30.5 LUFS\n    Threshold: -42.9 LUFS\n\n  Loudness range:\n    LRA:        13.4 LU\n    Threshold: -53.2 LUFS\n    LRA low:   -43.7 LUFS\n    LRA high:  -30.3 LUFS\n\n  True peak:\n    Peak:       -0.1 dBFS\n[Parsed_freezedetect_1 @ 0x120743880] lavfi.freezedetect.freeze_start: 6.041667\n[out#0/null @ 0x103f05440] video:72KiB audio:912KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  175 fps=0.0 q=-0.0 Lsize=N/A time=00:00:07.29 bitrate=N/A speed=10.2x elapsed=0:00:00.71    \n",
+      "contactSheet": "F5-contact-0.5s.jpg",
+      "contactExitCode": 0,
+      "contactSampleIntervalSeconds": 0.5,
+      "contactReadingOrder": "从左至右，再从上至下，约0、0.5、1.0秒递增；fps重采样非精确动作边界",
+      "frames": [
+        {
+          "role": "first",
+          "requestedTimeSeconds": 0,
+          "file": "F5-first-0.000.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "middle",
+          "requestedTimeSeconds": 3.6458335,
+          "file": "F5-middle-3.646.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "last",
+          "requestedTimeSeconds": 7.250000333333333,
+          "file": "F5-last-7.250.jpg",
+          "exitCode": 0
+        }
+      ],
+      "ocr": {
+        "engine": "tesseract chi_sim+eng psm11",
+        "exitCode": 0,
+        "text": "De\n\n3 _os_e___\n\noS\n\n”Ch\n\naa |\n\nfs\n\n—\n\n决策\n\nFURR\n\n服\n\n经营\n",
+        "interpretation": "仅识别结果，不据识别遗漏认定错字"
+      },
+      "mappedSlot": "P05",
+      "mappingBasis": "六组画面物件、牌面语义及参考首帧对应；不是文件名顺序",
+      "mappingConfidence": "高",
+      "reference": {
+        "id": "P05",
+        "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/05_首帧图片/P05.png",
+        "sha256": "108943ba5f40e8d5fdfed867c4d365c419b9fd5321c92cf8c48ad363fa4d53a0"
+      },
+      "referenceShaUnchanged": true,
+      "sourceShaUnchanged": true,
+      "labelsExpected": [
+        "决策",
+        "判断",
+        "服务",
+        "经营"
+      ],
+      "labelsVisualCheck": {
+        "status": "末帧目视可读，未发现确定错字",
+        "observed": [
+          "决策",
+          "判断",
+          "服务",
+          "经营"
+        ],
+        "scope": "已查看每半秒联系表与7.250秒末帧；非每帧OCR通过"
+      },
+      "visualReview": {
+        "meaning": "前景决策杆、判断样板、服务座椅、经营册依次变化；人物保留。",
+        "actionBoundaries": [
+          "约0–1.5秒：决策杆与判断样板变化",
+          "约1.5–3秒：服务座椅旋转、经营册翻开",
+          "约3–4.5秒：座椅与书页回落",
+          "约5秒后：前景动作基本结束，尾部近静止"
+        ],
+        "boundaryPrecision": "约0.5秒级抽帧观察，非精确切点",
+        "deformation": "末帧四牌均可读；人物与物件身份保持。背景重复任务轨道的连续运行未从这些抽帧建立，不能宣称该机制已完整展示。",
+        "concerns": [
+          "5.167–7.292秒几乎连续近静止，7秒采用窗口内约1.833秒属于近静止尾段",
+          "源声5.416秒起静音至片尾，可能是收束设计，不等于损坏",
+          "背景重复任务动态证据不足，应作表达风险交父任务"
+        ]
+      },
+      "durationFit": {
+        "slotSeconds": 7,
+        "marginSeconds": 0.29166700000000034,
+        "sourceFrameCount": 175,
+        "sourceFps": 24,
+        "recommendedSourceRange": {
+          "in": 0,
+          "outExclusive": 7
+        },
+        "speed": 1,
+        "freezeExtensionAllowed": false
+      },
+      "signalAnalysis": {
+        "blackIntervalsDetected": [],
+        "nearStillIntervals": [
+          {
+            "start": 5.166667,
+            "end": 6.041667,
+            "endInferredFromEof": false
+          },
+          {
+            "start": 6.041667,
+            "end": 7.291667,
+            "endInferredFromEof": true
+          }
+        ],
+        "interpretation": "-50dB、至少0.5秒近静止检测；不等于像素完全相同或异常卡死",
+        "integratedLufs": -30.5,
+        "loudnessRangeLu": 13.4,
+        "truePeakDb": -0.1
+      },
+      "audioReview": {
+        "hasSourceAudio": true,
+        "listened": false,
+        "contentType": "未听审，不能确定是配乐、动作音效、语音或混合",
+        "perActionSoundSyncAccepted": false,
+        "mixingGainChosen": false
+      },
+      "status": "mapped-machine-checked-human-playback-pending"
+    },
+    {
+      "fileId": "F3",
+      "file": "视频_3.mp4",
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/06_用户生成视频/视频_3.mp4",
+      "sha256": "23d7d66d942ea0a7f1dd345153c2b705ed6e0cf2621d6c29f541198f04d2c86e",
+      "bytes": 2900448,
+      "durationSeconds": 7.291667,
+      "width": 2560,
+      "height": 1440,
+      "fps": 24,
+      "videoFrames": "175",
+      "audio": [
+        {
+          "index": 1,
+          "codec_name": "aac",
+          "codec_long_name": "AAC (Advanced Audio Coding)",
+          "profile": "LC",
+          "codec_type": "audio",
+          "codec_tag_string": "mp4a",
+          "codec_tag": "0x6134706d",
+          "mime_codec_string": "mp4a.40.2",
+          "sample_fmt": "fltp",
+          "sample_rate": "32000",
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 0,
+          "initial_padding": 0,
+          "id": "0x2",
+          "r_frame_rate": "0/0",
+          "avg_frame_rate": "0/0",
+          "time_base": "1/32000",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 233344,
+          "duration": "7.292000",
+          "bit_rate": "119881",
+          "nb_frames": "229",
+          "extradata_size": 5,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "SoundHandler"
+          }
+        }
+      ],
+      "fullDecodeExitCode": 0,
+      "decodeError": null,
+      "signalThresholds": {
+        "blackMinimumSeconds": 0.15,
+        "blackPixelLuma": 0.1,
+        "blackPictureRatio": 0.98,
+        "freezeNoiseDb": -50,
+        "freezeMinimumSeconds": 0.5,
+        "silenceDb": -50,
+        "silenceMinimumSeconds": 0.3
+      },
+      "signalEvents": [
+        "[Parsed_silencedetect_0 @ 0x105f04290] silence_start: 0",
+        "[Parsed_silencedetect_0 @ 0x105f04290] silence_end: 0.440844 | silence_duration: 0.440844",
+        "[Parsed_silencedetect_0 @ 0x105f04290] silence_start: 3.604844",
+        "[Parsed_silencedetect_0 @ 0x105f04290] silence_end: 3.981688 | silence_duration: 0.376844",
+        "[Parsed_freezedetect_1 @ 0x113e073f0] lavfi.freezedetect.freeze_start: 3",
+        "[Parsed_freezedetect_1 @ 0x113e073f0] lavfi.freezedetect.freeze_duration: 0.708333",
+        "[Parsed_freezedetect_1 @ 0x113e073f0] lavfi.freezedetect.freeze_end: 3.708333",
+        "[Parsed_silencedetect_0 @ 0x105f04290] silence_start: 6.676281",
+        "[Parsed_silencedetect_0 @ 0x105f04290] silence_end: 7.296 | silence_duration: 0.619719",
+        "[Parsed_freezedetect_1 @ 0x113e073f0] lavfi.freezedetect.freeze_start: 6.458333"
+      ],
+      "loudnessSummary": "Summary:\n\n  Integrated loudness:\n    I:         -32.6 LUFS\n    Threshold: -44.2 LUFS\n\n  Loudness range:\n    LRA:         9.0 LU\n    Threshold: -54.9 LUFS\n    LRA low:   -42.3 LUFS\n    LRA high:  -33.3 LUFS\n\n  True peak:\n    Peak:       -6.7 dBFS\n[Parsed_freezedetect_1 @ 0x113e073f0] lavfi.freezedetect.freeze_start: 6.458333\n[out#0/null @ 0x113e04710] video:72KiB audio:912KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  175 fps=0.0 q=-0.0 Lsize=N/A time=00:00:07.29 bitrate=N/A speed=9.65x elapsed=0:00:00.75    \n",
+      "contactSheet": "F3-contact-0.5s.jpg",
+      "contactExitCode": 0,
+      "contactSampleIntervalSeconds": 0.5,
+      "contactReadingOrder": "从左至右，再从上至下，约0、0.5、1.0秒递增；fps重采样非精确动作边界",
+      "frames": [
+        {
+          "role": "first",
+          "requestedTimeSeconds": 0,
+          "file": "F3-first-0.000.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "middle",
+          "requestedTimeSeconds": 3.6458335,
+          "file": "F3-middle-3.646.jpg",
+          "exitCode": 0
+        },
+        {
+          "role": "last",
+          "requestedTimeSeconds": 7.250000333333333,
+          "file": "F3-last-7.250.jpg",
+          "exitCode": 0
+        }
+      ],
+      "ocr": {
+        "engine": "tesseract chi_sim+eng psm11",
+        "exitCode": 0,
+        "text": "WW\n\ni\n\ng\n\n——\n\nVea\n\nPwa,\n\n|\n\n(SE\n\n——_\n\nL\n\nSOP搭建\n\n营销策划\n\nEs\n\n数据复盘 三\n",
+        "interpretation": "仅识别结果，不据识别遗漏认定错字"
+      },
+      "mappedSlot": "P06",
+      "mappingBasis": "六组画面物件、牌面语义及参考首帧对应；不是文件名顺序",
+      "mappingConfidence": "高",
+      "reference": {
+        "id": "P06",
+        "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/05_首帧图片/P06.png",
+        "sha256": "c983e7153648b84f3afedafd64025c5a63b335bf920f3c56c74850f85800db7d"
+      },
+      "referenceShaUnchanged": true,
+      "sourceShaUnchanged": true,
+      "labelsExpected": [
+        "营销策划",
+        "视觉设计",
+        "SOP搭建",
+        "数据复盘"
+      ],
+      "labelsVisualCheck": {
+        "status": "末帧目视可读，未发现确定错字",
+        "observed": [
+          "营销策划",
+          "视觉设计",
+          "SOP搭建",
+          "数据复盘"
+        ],
+        "scope": "已查看每半秒联系表与7.250秒末帧；非每帧OCR通过"
+      },
+      "visualReview": {
+        "meaning": "营销资料、视觉色样、SOP折页、数据册分别变化，四类服务对象对应清楚，不显示结果承诺。",
+        "actionBoundaries": [
+          "约0–1秒：左侧资料纸竖起/进入资料夹",
+          "约0.5–2秒：SOP折页展开，视觉色样落到画架前",
+          "约2–4秒：四组物件收束，数据册翻动开始",
+          "约4.5–6秒：右侧数据册翻页并回落"
+        ],
+        "boundaryPrecision": "约0.5秒级抽帧观察，非精确切点",
+        "deformation": "纸张折叠、展开和翻页属于设计动作；抽帧未见明确文字错字或失去对象身份。运动过渡的穿插/闪烁未原速验收。",
+        "concerns": [
+          "6秒槽位截取建议为0–6秒，联系表6秒附近已有四组物件；精确动作收尾仍需原速复核",
+          "全片比槽位多1.291667秒，不代表都能无损删除"
+        ]
+      },
+      "durationFit": {
+        "slotSeconds": 6,
+        "marginSeconds": 1.2916670000000003,
+        "sourceFrameCount": 175,
+        "sourceFps": 24,
+        "recommendedSourceRange": {
+          "in": 0,
+          "outExclusive": 6
+        },
+        "speed": 1,
+        "freezeExtensionAllowed": false
+      },
+      "signalAnalysis": {
+        "blackIntervalsDetected": [],
+        "nearStillIntervals": [
+          {
+            "start": 3,
+            "end": 3.708333,
+            "endInferredFromEof": false
+          },
+          {
+            "start": 6.458333,
+            "end": 7.291667,
+            "endInferredFromEof": true
+          }
+        ],
+        "interpretation": "-50dB、至少0.5秒近静止检测；不等于像素完全相同或异常卡死",
+        "integratedLufs": -32.6,
+        "loudnessRangeLu": 9,
+        "truePeakDb": -6.7
+      },
+      "audioReview": {
+        "hasSourceAudio": true,
+        "listened": false,
+        "contentType": "未听审，不能确定是配乐、动作音效、语音或混合",
+        "perActionSoundSyncAccepted": false,
+        "mixingGainChosen": false
+      },
+      "status": "mapped-machine-checked-human-playback-pending"
+    }
+  ]
+}

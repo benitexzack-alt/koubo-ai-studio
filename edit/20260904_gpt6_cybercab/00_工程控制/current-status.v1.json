@@ -1,12 +1,12 @@
 {
   "schemaVersion": "koubo-preparation-status/v1",
   "taskId": "20260904-gpt6-cybercab",
-  "updatedAt": "2026-09-04T15:07:08.924Z",
+  "updatedAt": "2026-09-04T15:40:58Z",
   "parentReceipt": {
     "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/00_工程控制/preparation-receipt.v1.json",
     "sha256": "a69cbf6038a9999197a894e2ea9d1abe005f6628857639fc2ad9f7641710db9e"
   },
-  "state": "local-preparation-progress-assets-and-transcript-review-required",
+  "state": "assets-mapped-transcript-and-controlled-preview-entry-required",
   "completed": [
     "两份用户素材副本及原文件哈希一致",
     "两份Tesla官方短片已下载",
@@ -17,7 +17,10 @@
     "首帧/图生视频清单一一配对，已交接简化RunningHub批量流程",
     "手工带字首帧与独立动作提示词已交付",
     "94条ASR草案按剪后261秒重算时间，未冒充最终字幕",
-    "三个等比例参考代理完整解码通过，六段纸艺与五处证据画面粗对位"
+    "三个等比例参考代理完整解码通过，当前保留三处证据画面粗对位",
+    "六段用户视频已按真实画面唯一映射，哈希与完整解码通过，均有音轨",
+    "已查看六张0.5秒间隔联系表；未冒充原速观看或复听",
+    "v3准备计划已修正P02时长与P05末尾停留，7830帧连续覆盖，无冻结延长"
   ],
   "sourceUpdate": {
     "assetId": "U01",
@@ -125,14 +128,16 @@
     "需用户裁决实录绝对化事实与效果承诺",
     "第三方素材转载与音乐使用边界待审",
     "实录字幕尚未逐句复听确认",
-    "R1/R2停止并保留；六张带字首帧已入库但非全部验收通过，用户报告六段视频生成中，待回传验收文字与语义",
+    "R1/R2停止并保留；六段人工视频已接收并抽帧核对，待原速连续观看和原声混音复听",
     "新动效仅本条候选测试许可，尚无本条视觉验收",
-    "U01逐帧与内嵌翻译/原声采用边界仍需审阅"
+    "U01逐帧与内嵌翻译/原声采用边界仍需审阅",
+    "本机有强模型缓存但缺少已定位的mlx_whisper运行库；尚未新增强模型识别结果",
+    "本条job、知识上下文、拍后重绑及独立监督交接未齐备，受控预览入口未就绪；不是缺少用户开工授权"
   ],
   "documents": [
     {
       "file": "先看这里.md",
-      "sha256": "96e478256dad38a08fc74121f3d28f6b4cd5f48baef11726b9899bb58b9c40af"
+      "sha256": "a54d2784ffb749d3449077bcdd4fd6e4e9aa88f221e04138c39f34c1131f4b4f"
     },
     {
       "file": "03_事实与来源核验/事实核验与待裁决.md",
@@ -169,13 +174,15 @@
     "authority": "用户要求提示词交给本人手工生成，同时继续其他准备",
     "firstFramePrompts": "04_导演拆解/手工生成_01_六段带字首帧提示词.md",
     "imageToVideoPrompts": "04_导演拆解/手工生成_02_六段图生视频提示词.md",
-    "status": "user-reported-six-videos-generating-awaiting-intake",
+    "status": "six-videos-received-decoded-and-mapped-not-final-accepted",
     "generationPerformedByThisTurn": false,
     "route": "manual-user-candidates-only",
     "automaticContractsUnchanged": true,
     "automaticRetryAllowed": false,
     "textAccuracyReviewRequired": true,
     "motionReviewRequired": true,
+    "videoIntakeReceipt": "08_预览与质检/纸艺接收_r1/asset-intake.v1.json",
+    "preparationReceipt": "00_工程控制/six-paper-intake-preparation.v1.json",
     "firstFrameIntake": "05_首帧图片",
     "videoIntake": "06_用户生成视频",
     "firstFrameReviewFromReceiver": "05_首帧图片/逐图检查.v1.md",
@@ -187,13 +194,19 @@
   },
   "localEditingPreparation": {
     "receipt": "00_工程控制/manual-preparation-check.v1.json",
-    "state": "second-asr-bilingual-draft-and-source-selection-prepared-review-pending",
+    "state": "six-assets-mapped-preview-entry-and-transcript-review-pending",
     "editedDurationSeconds": 261,
     "editedFrameCount": 7830,
     "captionCueCount": 94,
     "proxiesFullDecodePassed": 3,
-    "plan": "04_导演拆解/剪后261秒_素材与镜头对位.v2.json",
-    "latestReceipt": "00_工程控制/parallel-preparation-receipt.v1.json",
+    "plan": "04_导演拆解/剪后261秒_素材与镜头对位.v3.json",
+    "latestReceipt": "00_工程控制/six-paper-intake-preparation.v1.json",
+    "latestReceiptSha256": "71103b678babb2b7d164238f3727c386a8f3a540311cfc3b5404e8418169998e",
+    "sixPaperSourceFilesPresent": true,
+    "sixPaperFullDecodePassed": true,
+    "fullSpeedPaperReviewCompleted": false,
+    "previewRendered": false,
+    "controlledPreviewEntryReady": false,
     "englishDraftPages": 73,
     "unresolvedTranscriptPages": 21,
     "sourceAudioMeasuredNotMixed": true,
@@ -204,6 +217,12 @@
     "fullVideoRendered": false
   },
   "history": [
+    {
+      "at": "2026-09-04T15:40:58Z",
+      "from": "local-preparation-progress-assets-and-transcript-review-required",
+      "to": "assets-mapped-transcript-and-controlled-preview-entry-required",
+      "reason": "用户交回六段视频，已映射、解码、抽帧核对和修正准备时间线；实际未完成强模型转写、受控预览接入或渲染。"
+    },
     {
       "at": "2026-09-04T15:07:08.924Z",
       "from": "manual-firstframe-handoff-local-edit-prepared",
