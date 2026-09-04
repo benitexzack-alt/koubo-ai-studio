@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "koubo-paper-thread-handoff/v1",
+  "createdAt": "2026-09-04T13:56:20Z",
+  "requestId": "20260904-gpt6-cybercab-paper-v3-r2",
+  "status": "controlled-sample-revision-dispatched",
+  "authorizationQuote": "好的，继续",
+  "confirmedProposal": "只修正两镜，验证通过后再继续整批",
+  "receiver": {
+    "threadId": "01a05ce8-84ee-7112-bbc5-309c3e660c77",
+    "hostId": "local",
+    "title": "简化RunningHub批量流程",
+    "sendMessageAccepted": true,
+    "observedTurnId": "01a06cb4-2a65-7c21-8977-3ac9622639d1",
+    "observedTurnStatus": "inProgress",
+    "snapshotCursor": "e0c24773-55c5-48ff-bd20-ce4bf20d6ada:2"
+  },
+  "files": {
+    "instructions": {"file": "交给批量流程_受控修订.md", "sha256": "4c38a0a8d079c5d713582989391ad2a8d671b23570f71d3c7bf9f06634e2dc78"},
+    "firstFrameManifest": {"file": "first-frame-prompts.v1.json", "sha256": "20fdf2a4cca7a6cfdc22829c5cbe567d140ea48e7fb71a849c10ab4481bccbeb"},
+    "imageToVideoManifest": {"file": "runninghub-image-to-video-prompts.v1.json", "sha256": "f49bbdb449f0ac603bb7581a48d760f22a413941d49d80d0f8e3e7828c8d5c79"},
+    "directorValidation": {"file": "director-validation-receipt.v1.json", "sha256": "bfc6d765c0fe3524761764191234a679604f7946e284bd09d301f486df4097fc"},
+    "revisionDiff": {"file": "revision-diff-receipt.v1.json", "sha256": "dcc2ccdb58ee7eea2b71e605c64bea8469f308cca14fa12d66e0004d753e4293"}
+  },
+  "controlledSceneIds": ["P01", "P02"],
+  "callsPerControlledScene": 1,
+  "maximumConcurrency": 2,
+  "conditionalNextSample": "P05-only-after-P01-and-P02-visual-pass",
+  "otherScenesRequireUserSampleAcceptance": true,
+  "automaticRetryAllowed": false,
+  "sameFailureAfterThisRevisionRequiresInvestigation": true,
+  "contractTestFilesPassed": 3,
+  "contractTestFilesFailed": 0,
+  "actualR2ImagesVerified": false,
+  "oldRevisionSnapshotFilesVerified": 24,
+  "runningHubAllowed": false,
+  "formalEnabled": false,
+  "publicationAllowed": false
+}
