@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "shotcraft-adapters/v1",
+  "defaultEnabled": false,
+  "effects": [
+    {"id":"marker-underline","name":"关键词划线","upstream":"marker-underline-title","component":"MarkerUnderline","contexts":["speaker"],"status":"candidate-only"},
+    {"id":"keyword-reveal","name":"逐项呈现","upstream":"list-reveal","component":"KeywordReveal","contexts":["speaker"],"status":"candidate-only"},
+    {"id":"evidence-scan","name":"真实证据框选","upstream":"scanline-annotate-focus","component":"EvidenceScan","contexts":["real-evidence"],"status":"candidate-only"},
+    {"id":"line-carry","name":"线条连接","upstream":"line-carry-transition","component":"LineCarry","contexts":["speaker"],"status":"candidate-only"},
+    {"id":"paper-tape-pin","name":"纸胶带固定","upstream":"paper-craft-moves","component":"PaperTapePin","contexts":["speaker","real-evidence"],"status":"candidate-only"}
+  ]
+}

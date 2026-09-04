@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "shotcraft-integration-receipt/v1",
+  "checkedAt": "2026-09-04T06:33:54.918Z",
+  "status": "implemented-render-blocked",
+  "scope": "optional-candidate-effects-only",
+  "catalog": {
+    "cards": 157,
+    "styles": 214,
+    "adapters": 5
+  },
+  "tests": {
+    "exitCode": 0,
+    "log": "edit/shotcraft-integration-20260904/unit-tests.log"
+  },
+  "types": {
+    "exitCode": 0,
+    "log": "edit/shotcraft-integration-20260904/typecheck.log"
+  },
+  "plan": {
+    "exitCode": 0,
+    "log": "edit/shotcraft-integration-20260904/candidate-contract.log"
+  },
+  "gateRegression": {
+    "exitCode": 0,
+    "log": "edit/shotcraft-integration-20260904/director-gate-regression.log"
+  },
+  "browserCases": 60,
+  "mirrorMatches": true,
+  "captionsMatch": true,
+  "planSha256": "9856950ce61f49f48fb99d1ffa77137105113b375f5370eb5c7da34c1f39dcb6",
+  "upstreamLockSha256": "56848e0762c792aea43bc9b92d4f1ddc0e019de7fff21a473266d8a4e1984198",
+  "existingGate": {
+    "exitCode": 1,
+    "log": "edit/shotcraft-integration-20260904/existing-director-gate.log"
+  },
+  "existingGateErrors": [
+    "DIRECTOR_SKILL_LOCK_FILE_DRIFT:scripts/bake-firstframe-text.mjs",
+    "DIRECTOR_SKILL_LOCK_FILE_DRIFT:tests/test-firstframe-text-bake.mjs",
+    "DIRECTOR_SKILL_LOCK_UNDECLARED_FILE:scripts/recognize-text-vision.swift",
+    "DIRECTOR_SKILL_LOCK_PACKAGE_SHA_MISMATCH",
+    "DIRECTOR_SKILL_LOCK_FILE_COUNT_MISMATCH"
+  ],
+  "independentTrustRootExists": false,
+  "protectedFileCurrentHashes": [
+    {
+      "path": "workflow/active-production-profile.v1.json",
+      "sha256": "35966590ab57c6c4e5c0560781de181b99ed465c66a0cf3e4ae5dbb45e3ecf64",
+      "changedByThisTask": false
+    },
+    {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "513c97bcdfa78c93813ac65302cb1f3148f9db2754bee0212a15cf8f5fd45479",
+      "changedByThisTask": false
+    },
+    {
+      "path": "workflow/director-skill-lock.v1.json",
+      "sha256": "c855337547e37241bd27b70fa032642380c660942cf5a8930ace749befa3e589",
+      "changedByThisTask": false
+    },
+    {
+      "path": "skills/koubo-remotion-director/SKILL.md",
+      "sha256": "06f146e2d6b634560b1396e0a0df5634c23cab6d99f5d03e0837771a00ba78e3",
+      "changedByThisTask": false
+    },
+    {
+      "path": "remotion/src/Root.tsx",
+      "sha256": "a7beaf58757b3fbc1a1f1a0f070193887ea2d83e53ac5337a55953b8fe448861",
+      "changedByThisTask": false
+    },
+    {
+      "path": "remotion/src/components/V72ProductionShell.tsx",
+      "sha256": "3d51da15f3bb13223dfbf8bb993a146c7ae2d0f6b36b568547311f9ca6e9e939",
+      "changedByThisTask": false
+    },
+    {
+      "path": "remotion/src/components/V8SemanticStage.tsx",
+      "sha256": "9687886275befd7649afd3a06b10bcf409aaeb4ea5217c3fa396a72c2c660be4",
+      "changedByThisTask": false
+    }
+  ],
+  "sample": {
+    "plannedSeconds": 31,
+    "sourceFrames": [
+      1278,
+      2207
+    ],
+    "rendered": false,
+    "decoded": false,
+    "spokenPlaybackChecked": false,
+    "wordCueListeningConfirmed": false,
+    "userApproved": false
+  },
+  "productionEligible": false,
+  "formalEnabled": false,
+  "published": false,
+  "paidGeneration": false,
+  "remaining": [
+    "由原维护/监督方复核现有OCR改动后更新导演包锁，不在本任务批量接纳",
+    "独立监督方补齐当前受控入口要求的信任与授权链，不自签、不绕过",
+    "新候选实际生成后复核声画、字幕、裁切、完整音效与用户观看"
+  ]
+}
