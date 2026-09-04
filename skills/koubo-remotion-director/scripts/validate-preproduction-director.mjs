@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 import {
   DIRECTOR_ROUTE_LOCK_SCHEMA,
   PREPRODUCTION_PLAN_SCHEMA,
+  renderAiGeneratedVideoPromptSheet,
   resolveDeclared,
   sha256File,
   validatePromptHandoffManifests,
@@ -43,6 +44,7 @@ try {
   if (!requestValidation.ok) {
     throw new Error(`PREPRODUCTION_REQUEST_INVALID:${requestValidation.errors.join('|')}`);
   }
+  const v9ContractEnabled = request.policy?.v9ContractEnabled === true;
 
   const planPath = resolveDeclared(projectRoot, request.outputs.planPath);
   const routeLockPath = resolveDeclared(projectRoot, request.outputs.routeLockPath);
@@ -59,12 +61,18 @@ try {
     projectRoot,
     request.outputs.runningHubPromptSheetPath,
   );
+  const aiGeneratedVideoPromptManifestPath = v9ContractEnabled
+    ? resolveDeclared(projectRoot, request.outputs.aiGeneratedVideoPromptManifestPath)
+    : null;
+  const aiGeneratedVideoPromptSheetPath = v9ContractEnabled
+    ? resolveDeclared(projectRoot, request.outputs.aiGeneratedVideoPromptSheetPath)
+    : null;
   const compileReceiptPath = resolveDeclared(projectRoot, request.outputs.compileReceiptPath);
   const validationReceiptPath = resolveDeclared(
     projectRoot,
     request.outputs.validationReceiptPath,
   );
-  for (const requiredPath of [
+  const requiredArtifactPaths = [
     planPath,
     routeLockPath,
     assetSheetPath,
@@ -72,7 +80,11 @@ try {
     runningHubPromptManifestPath,
     runningHubPromptSheetPath,
     compileReceiptPath,
-  ]) {
+    ...(v9ContractEnabled
+      ? [aiGeneratedVideoPromptManifestPath, aiGeneratedVideoPromptSheetPath]
+      : []),
+  ];
+  for (const requiredPath of requiredArtifactPaths) {
     if (!existsSync(requiredPath)) throw new Error(`PREPRODUCTION_ARTIFACT_MISSING:${requiredPath}`);
   }
   if (existsSync(validationReceiptPath)) {
@@ -88,6 +100,9 @@ try {
   const runningHubPromptManifest = JSON.parse(
     readFileSync(runningHubPromptManifestPath, 'utf8'),
   );
+  const aiGeneratedVideoPromptManifest = v9ContractEnabled
+    ? JSON.parse(readFileSync(aiGeneratedVideoPromptManifestPath, 'utf8'))
+    : null;
   const errors = [];
   if (plan.schemaVersion !== PREPRODUCTION_PLAN_SCHEMA) errors.push('PLAN_SCHEMA_INVALID');
   if (routeLock.schemaVersion !== DIRECTOR_ROUTE_LOCK_SCHEMA) errors.push('ROUTE_LOCK_SCHEMA_INVALID');
@@ -96,6 +111,12 @@ try {
   }
   if (plan.status !== 'provisional-previsualization' || plan.formalEligible !== false) {
     errors.push('PLAN_STATE_INVALID');
+  }
+  if (v9ContractEnabled && plan.v9Contract?.enabled !== true) {
+    errors.push('PLAN_V9_CONTRACT_MARKER_MISSING');
+  }
+  if (!v9ContractEnabled && Object.hasOwn(plan, 'v9Contract')) {
+    errors.push('LEGACY_PLAN_CONTAINS_V9_CONTRACT_MARKER');
   }
   if (routeLock.branch !== 'paper-editorial' || routeLock.fallback !== 'blocked') {
     errors.push('ROUTE_LOCK_BRANCH_INVALID');
@@ -135,10 +156,31 @@ try {
   ) {
     errors.push('COMPILE_RECEIPT_RUNNINGHUB_SHEET_SHA_MISMATCH');
   }
+  if (v9ContractEnabled) {
+    if (
+      compileReceipt.aiGeneratedVideoPromptManifest?.sha256 !==
+      sha256File(aiGeneratedVideoPromptManifestPath)
+    ) {
+      errors.push('COMPILE_RECEIPT_AI_VIDEO_PROMPT_SHA_MISMATCH');
+    }
+    if (
+      compileReceipt.aiGeneratedVideoPromptSheet?.sha256 !==
+      sha256File(aiGeneratedVideoPromptSheetPath)
+    ) {
+      errors.push('COMPILE_RECEIPT_AI_VIDEO_SHEET_SHA_MISMATCH');
+    }
+    if (
+      readFileSync(aiGeneratedVideoPromptSheetPath, 'utf8') !==
+      renderAiGeneratedVideoPromptSheet(plan, aiGeneratedVideoPromptManifest)
+    ) {
+      errors.push('AI_VIDEO_PROMPT_SHEET_CONTENT_MISMATCH');
+    }
+  }
   const handoffValidation = validatePromptHandoffManifests({
     plan,
     firstFrameManifest: firstFramePromptManifest,
     runningHubManifest: runningHubPromptManifest,
+    aiGeneratedVideoManifest: aiGeneratedVideoPromptManifest,
   });
   errors.push(...handoffValidation.errors);
   if (plan.routeSummary.paperBeatCount !== routeLock.paperBeatIds.length) {
@@ -174,6 +216,18 @@ try {
         path: runningHubPromptSheetPath,
         sha256: sha256File(runningHubPromptSheetPath),
       },
+      ...(v9ContractEnabled
+        ? {
+            aiGeneratedVideoPromptManifest: {
+              path: aiGeneratedVideoPromptManifestPath,
+              sha256: sha256File(aiGeneratedVideoPromptManifestPath),
+            },
+            aiGeneratedVideoPromptSheet: {
+              path: aiGeneratedVideoPromptSheetPath,
+              sha256: sha256File(aiGeneratedVideoPromptSheetPath),
+            },
+          }
+        : {}),
       compileReceipt: {path: compileReceiptPath, sha256: sha256File(compileReceiptPath)},
     },
     gates: {
@@ -191,6 +245,13 @@ try {
       silentTextTruncationBlocked: true,
       firstFrameAndImageToVideoPromptsSeparated: true,
       promptPairsBoundOneToOne: true,
+      ...(v9ContractEnabled
+        ? {
+            normalizedPaperLayoutContractsRequired: true,
+            firstFrameNumericSafetyTermsRequired: true,
+            aiGeneratedVideoPromptPackageSeparated: true,
+          }
+        : {}),
       postShootRebindRequired: true,
       formalAssetIntakeRequired: true,
       formalEligible: false,

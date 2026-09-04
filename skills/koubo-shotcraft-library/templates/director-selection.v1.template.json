@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "koubo-shotcraft-director-selection/v1",
+  "taskId": "REPLACE_WITH_TASK_ID",
+  "revisionId": "REPLACE_WITH_REVISION_ID",
+  "directorProfile": {
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.0.0"
+  },
+  "subtitleAuthority": "actual-recording",
+  "registry": {
+    "path": "skills/koubo-shotcraft-library/registry.v1.json",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+  },
+  "captions": {
+    "path": "REPLACE_WITH_REPO_RELATIVE_ACTUAL_CAPTIONS_PATH",
+    "sha256": "REPLACE_WITH_64_CHARACTER_SHA256"
+  },
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInFrames": 900
+  },
+  "beats": [
+    {
+      "beatId": "beat-001",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 0,
+        "endFrameExclusive": 90
+      },
+      "decision": "apply",
+      "effectId": "marker-underline",
+      "purpose": "强调实录中本段唯一需要记住的关键词",
+      "quote": "REPLACE_WITH_EXACT_SPOKEN_QUOTE",
+      "texts": ["REPLACE_WITH_TEXT_FOUND_IN_QUOTE"],
+      "region": {"x": 60, "y": 140, "width": 620, "height": 250},
+      "protectedRegions": [
+        {"x": 800, "y": 0, "width": 900, "height": 850},
+        {"x": 0, "y": 900, "width": 1920, "height": 180}
+      ],
+      "fallback": "blocked"
+    },
+    {
+      "beatId": "beat-002",
+      "mainVisual": "real-evidence",
+      "frames": {
+        "startFrame": 90,
+        "endFrameExclusive": 180
+      },
+      "decision": "not-needed",
+      "reason": "本段真实界面本身已清楚呈现目标，附加框线会遮挡关键控件"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: koubo-remotion-director
-description: 口播项目的 Remotion 视频包装与摄影级纸艺叙事导演流程。用于包含本项目 AGENTS.md、knowledge/、remotion/、tools/ 和 workflow/ 的口播仓库：拍摄前把用户确认稿编译成可验证的纸艺分镜、节点中文和素材提示词，拍摄后再以真实实录重绑时间轴，并推进到 V8 连续语义视觉、风险帧、字幕/动效/音效质检和 release 记录。旧纸构推演 v1 已退役；纸艺 v3 预拍可执行，但不能绕过本条动态候选、实录优先和 V8 正式生产门禁。
+description: 口播项目的 V9 候选导演与 Remotion 视频包装流程。拍摄前把用户确认稿编译成纸艺首帧、RunningHub 图生视频和 AI 情景视频三套独立提示词，拍摄后以真实实录重绑画面、Shotcraft、字幕与音效，并按小样确认后再正式渲染和整理发布包。V8 正式档案在 V9 实片验收前保留为回退基线；旧纸构推演 v1 已退役。
 ---
 
 # 口播 Remotion 导演
@@ -13,9 +13,10 @@ description: 口播项目的 Remotion 视频包装与摄影级纸艺叙事导演
 
 把 Codex + Remotion 从“临时写动效”变成口播项目的固定导演流程。优先保证真实口播、字幕时间轴、视觉可读性和发布门禁，再追求高级动画。
 
-本 Skill 有两条互不替代的执行分支：
+本 Skill 有三条互不替代的执行层：
 
-- `V8 production`：负责人物主画面、连续语义卡、真实素材、字幕、数字运镜、音效、候选片和发布包；
+- `V9 director candidate`：负责三套提示词、安全区、Shotcraft 选择与应用证据、生产阶段顺序；
+- `V8 production rollback`：在 V9 尚未完成真实新片验收前，继续负责已验证的人物主画面、连续语义卡、字幕、音效和正式发布包能力；
 - `paper-editorial director`：只负责把适合视觉解释的实录片段编译成摄影级纸艺分镜、静帧与候选插片。它不能替换 V8 包装，也不能把已验收旧样片直接套到新实录。
 
 Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有视觉方案、风险帧预览和机器质检；用户完整观看前，只能说“预览已生成”或“机器侧质检通过”。
@@ -51,6 +52,9 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 - [references/v4-visual-pack.md](references/v4-visual-pack.md)：需要执行 V4 视觉实验、参考图落地或新增卡片时读取。
 - [references/validation-gates.md](references/validation-gates.md)：需要渲染预览、检查风险帧、导出正式片或填写 release 时读取。
 - [references/visual-routing-v3.2.md](references/visual-routing-v3.2.md)：需要在真人、真实素材讲解小窗、AI生成视频、纸艺与 Remotion 信息层之间做路由时必读。
+- [references/platform-safe-areas.v1.json](references/platform-safe-areas.v1.json)：使用抖音横屏内容讲解小窗时必读；平台界面变化后必须建立新版本，不得静默移动旧边界。
+- [references/v9-workflow-contract.md](references/v9-workflow-contract.md)：下一条新口播的固定阶段、三套提示词和正式渲染门禁。
+- [../koubo-shotcraft-library/references/v9-director-selection-and-application.md](../koubo-shotcraft-library/references/v9-director-selection-and-application.md)：需要选择或核验 Shotcraft 动效时必读。
 
 ## 工作流
 
@@ -108,15 +112,18 @@ node skills/koubo-remotion-director/scripts/validate-preproduction-director.mjs 
   --repo-root <project-root>
 ```
 
-预拍请求必须使用 [templates/director-preproduction-request.v1.json](templates/director-preproduction-request.v1.json) 建立新 revision。所有需要解释机制、因果、层级、对照或流程的节拍，都必须输出 `paperScene`、`objectGroups`、`nodes`、`stages`、`textPlan` 和两类提示词。生成模型仍不得自行生成可读中文；默认路径改为：无字基础图生成后，按实际图片标定纸面四角，再用 `first-frame-baked` 本地确定性写入中文并通过 OCR。只有无法保持刚性、确需随运动表面透视变化的标签才可使用 `tracked-paper-surface`。两者都必须把 `nodeId`、`groupId`、`surfaceId`、`enterStageId` 和纸面四角坐标绑定；屏幕浮层不得冒充纸面节点文字。
+预拍请求必须使用 [templates/director-preproduction-request.v1.json](templates/director-preproduction-request.v1.json) 建立新 revision。所有需要解释机制、因果、层级、对照或流程的节拍，都必须输出 `paperScene`、`objectGroups`、`nodes`、`stages`、`textPlan`、`layoutContract` 和三类提示词。`layoutContract` 必须声明归一化内容安全区、字幕保留区、每个物件组的构图宽区、每张纸面标签的预留区和 `generatedDecorationPolicy=forbidden`；安全区与字幕区是硬边界，组内矩形只作宽区指导，不要求生成模型逐像素复刻。任何缺组、越界或侵入字幕区必须在生图前阻断。生成模型仍不得自行生成可读中文；默认路径是无字基础图通过后，按实际图片标定纸面四角，再用 `first-frame-baked` 本地确定性写入中文并通过 OCR。只有无法保持刚性、确需随运动表面透视变化的标签才可使用 `tracked-paper-surface`。两者都必须把 `nodeId`、`groupId`、`surfaceId`、`enterStageId` 和纸面四角坐标绑定；屏幕浮层不得冒充纸面节点文字。
 
-两类提示词不得再混装成一份给生成工具使用的执行单。编译器必须同时生成并校验：
+三类提示词不得混装成一份给生成工具使用的执行单。V9 请求必须设置 `policy.v9ContractEnabled=true`，编译器必须同时生成并校验：
 
 - `first-frame-prompts.v1.json`：只给首帧生图自动化读取，每镜只含 `firstFramePrompt`、预期图片文件名和后期叠字元数据，不得出现 `imageToVideoPrompt`；
 - `runninghub-image-to-video-prompts.v1.json`：只绑定用户手动 RunningHub 图生视频，每镜只含 `imageToVideoPrompt`、对应首帧文件名和时长，不得出现 `firstFramePrompt`；
 - `runninghub-image-to-video-prompts.md`：供用户复制的中文清单，只展示图生视频动作提示词，不重复首帧场景描述。
+- `ai-generated-video-prompts.json` 与 `ai-generated-video-prompts.md`：只给需要人物、真实行动替代演绎、空间或情绪的 AI 情景视频；逐镜写清模式、时长、用途、正负提示词、文件名、人工执行和 AI 披露。没有此类镜头也必须输出 `not-required` 空包。
 
-同一镜头的两份清单必须共享 `sceneId`、`pairId` 与 `pairSha256`，并用首帧提示词 SHA-256 把 RunningHub 输入图片回绑到对应首帧。首帧生图描述静态完成态；图生视频提示词只描述基于该首帧发生的动作、顺序、镜头运动和禁止项。RunningHub 清单初始状态固定为 `awaiting-text-baked-firstframes`，它不能作为提交入口；只有首帧生产 Skill 生成 `runninghub-ready-pack.v1.json` 后才能手工提交。任何缺镜、串镜、配对哈希不一致、两类字段互相混入、带字首帧缺失或 OCR 未通过，都必须阻断。
+同一纸艺镜头的两份清单必须共享 `sceneId`、`pairId` 与 `pairSha256`，并用首帧提示词 SHA-256 把 RunningHub 输入图片回绑到对应首帧。首帧生图描述静态完成态；图生视频提示词只描述基于该首帧发生的动作、顺序、镜头运动和禁止项。RunningHub 清单初始状态固定为 `awaiting-text-baked-firstframes`，它不能作为提交入口；只有首帧生产 Skill 生成 `runninghub-ready-pack.v1.json` 后才能手工提交。任何缺镜、串镜、配对哈希不一致、三类字段互相混入、带字首帧缺失或 OCR 未通过，都必须阻断。
+
+首帧批量流程固定先试一张代表镜头，视觉门通过后才允许剩余批次；生成端不得自动重试。无字原图已经通过、只有文字烘焙或 OCR 失败时，必须复用已验收原图，不能重新消耗生图。
 
 `textPlan` 不得再按固定列数裁切，也不得用斜杠合并多个节点。每个可读节点必须显式声明 `paper-label`，普通镜 3–6 个、复杂镜 4–6 个，同时可读不超过 4 个。只有标题和事实来源可使用 `screenTextPlan`。计划中的 `anchorQuad` 只表示构图意图；基础图生成后必须逐镜查看并建立实际纸面四角标定，禁止所有镜头复制同一套坐标。使用刚性纸片写入时，由 `koubo-paper-firstframe-producer` 组装请求并调用：
 
@@ -134,7 +141,19 @@ node skills/koubo-remotion-director/scripts/bake-firstframe-text.mjs \
 
 带字纸片只允许刚性滑入、平移、小角度旋转、抽屉推出和刚性拼图扣合。禁止折叠、弯曲、卷曲、揉皱、拉伸、快速翻面、强运动模糊和重新生成文字；需要展开时，只展开无字底板，再让带字标签卡滑入。RunningHub 输出仍需首、中、尾和动作边界 OCR，任何改字、缺字或明显文字形变都阻断入场。
 
-真实素材讲解小窗使用隔离实现 [assets/remotion-presenter-media/PresenterMediaStage.tsx](assets/remotion-presenter-media/PresenterMediaStage.tsx)。不得为接入它直接改写共享 `V72ProductionShell.tsx` 或 `V8SemanticStage.tsx`；先在本条独立 candidate revision 做 10—15 秒样片，核对人物缩放、字幕避让、裁脸、口型同步和双音轨后再晋级。
+真实素材讲解小窗使用隔离实现 [assets/remotion-presenter-media/PresenterMediaStage.tsx](assets/remotion-presenter-media/PresenterMediaStage.tsx)。默认人物槽为 `278×278, right=360, bottom=202`，左侧回退槽为 `left=64, bottom=202`；右侧 `x>=1600` 为平台保留带。人物只能在固定槽内做透明度和缩放，禁止从全屏位置扫掠到右下角。不得为接入它直接改写共享 `V72ProductionShell.tsx` 或 `V8SemanticStage.tsx`；先在本条独立 candidate revision 做 10—15 秒样片，核对平台头像避让、字幕避让、裁脸、口型同步和双音轨后再晋级。
+
+Shotcraft 只作为 `speaker` 与 `real-evidence` 上方的辅助信息层。拍摄前不得拿确认稿代替实录做选择；完成实录字幕与 post-shoot 重绑后，每个适用 beat 都必须在独立选择合同中写 `apply` 或 `not-needed`，不使用时也要给出具体语义理由。`paper-editorial` 和 `generated-video` 内部禁止套 Shotcraft。若选择 `apply`，候选片必须生成实际应用回执，完全匹配 `beatId`、`effectId`、帧窗、注册组件和输出文件哈希；`SHOTCRAFT_SELECTED_NOT_APPLIED` 直接阻断。禁止为了显得“用了新能力”设置最低数量或机械配额。
+
+下一条新任务从 [templates/v9-production-state.v1.json](templates/v9-production-state.v1.json) 建立唯一状态文件，并在每次阶段晋级前运行：
+
+```bash
+node skills/koubo-remotion-director/scripts/validate-v9-production-state.mjs \
+  --state <v9-production-state.json> \
+  --repo-root <project-root>
+```
+
+阶段只能按“文稿确认 → 三套提示词 → 生成交接 → 素材门 → 实录重绑 → 低清候选 → 用户确认 → 正式渲染 → 发布包”连续前进。任何跳级、证据缺失或哈希漂移都必须阻断；公开发布始终不自动执行。
 
 拍摄完成后，再从 [templates/director-postshoot-rebind-request.v1.json](templates/director-postshoot-rebind-request.v1.json) 建立实录重绑请求：
 

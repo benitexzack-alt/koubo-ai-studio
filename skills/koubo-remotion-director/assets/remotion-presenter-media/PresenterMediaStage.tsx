@@ -1,6 +1,7 @@
 import {Video} from '@remotion/media';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, staticFile, useCurrentFrame} from 'remotion';
+import platformSafeAreasDocument from '../../references/platform-safe-areas.v1.json';
 
 const clamp = {
   extrapolateLeft: 'clamp' as const,
@@ -16,9 +17,34 @@ export type PresenterMediaStageProps = {
   materialAudioMode?: 'muted' | 'duck-under-narration';
   presenterShape?: 'circle' | 'rounded-rectangle';
   presenterObjectPosition?: string;
+  presenterPlacement?: 'default' | 'fallback';
   enterFrames?: number;
   exitFrames?: number;
 };
+
+type PresenterSlot = {
+  anchor: 'bottom-right' | 'bottom-left';
+  right?: number;
+  left?: number;
+  bottom: number;
+};
+
+type PlatformSafeAreaProfile = {
+  id: string;
+  presenter: {
+    size: {width: number; height: number};
+    slots: {default: PresenterSlot; fallback: PresenterSlot};
+    transition: {minimumScale: number; maximumScale: number};
+  };
+};
+
+const safeAreaProfile = (
+  platformSafeAreasDocument as {profiles: PlatformSafeAreaProfile[]}
+).profiles.find(({id}) => id === 'douyin-feed-landscape-16x9-v1');
+
+if (!safeAreaProfile) {
+  throw new Error('缺少 douyin-feed-landscape-16x9-v1 平台安全区合同');
+}
 
 const dbToGain = (db: number) => 10 ** (db / 20);
 
@@ -31,30 +57,37 @@ export const PresenterMediaStage: React.FC<PresenterMediaStageProps> = ({
   materialAudioMode = 'muted',
   presenterShape = 'circle',
   presenterObjectPosition = '59% 41%',
+  presenterPlacement = 'default',
   enterFrames = 16,
   exitFrames = 12,
 }) => {
   const frame = useCurrentFrame();
-  const enter = interpolate(frame, [0, enterFrames], [0, 1], {
+  const enter = interpolate(frame, [0, Math.max(1, enterFrames)], [0, 1], {
     ...clamp,
     easing: Easing.inOut(Easing.cubic),
   });
   const exit = interpolate(
     frame,
-    [Math.max(0, durationInFrames - exitFrames), durationInFrames],
+    [Math.max(0, durationInFrames - Math.max(1, exitFrames)), durationInFrames],
     [1, 0],
     {...clamp, easing: Easing.inOut(Easing.cubic)},
   );
-  const inset = Math.min(enter, exit);
-  const targetSize = presenterShape === 'circle' ? 296 : 360;
-  const targetHeight = presenterShape === 'circle' ? 296 : 230;
-  const width = interpolate(inset, [0, 1], [1920, targetSize], clamp);
-  const height = interpolate(inset, [0, 1], [1080, targetHeight], clamp);
-  const right = interpolate(inset, [0, 1], [0, 72], clamp);
-  const bottom = interpolate(inset, [0, 1], [0, 188], clamp);
-  const radius = presenterShape === 'circle'
-    ? interpolate(inset, [0, 1], [0, 999], clamp)
-    : interpolate(inset, [0, 1], [0, 18], clamp);
+  const visibility = Math.min(enter, exit);
+  const slot = safeAreaProfile.presenter.slots[presenterPlacement];
+  const width = safeAreaProfile.presenter.size.width;
+  const height = safeAreaProfile.presenter.size.height;
+  const scale = interpolate(
+    visibility,
+    [0, 1],
+    [
+      safeAreaProfile.presenter.transition.minimumScale,
+      safeAreaProfile.presenter.transition.maximumScale,
+    ],
+    clamp,
+  );
+  const horizontalPosition = slot.anchor === 'bottom-right'
+    ? {right: slot.right}
+    : {left: slot.left};
   const materialGain = materialAudioMode === 'duck-under-narration' ? dbToGain(-15) : 0;
 
   return (
@@ -68,19 +101,25 @@ export const PresenterMediaStage: React.FC<PresenterMediaStageProps> = ({
       <div
         style={{
           position: 'absolute',
-          right,
-          bottom,
+          ...horizontalPosition,
+          bottom: slot.bottom,
           width,
           height,
+          boxSizing: 'border-box',
           overflow: 'hidden',
-          borderRadius: radius,
-          border: `${interpolate(inset, [0, 1], [0, 5], clamp)}px solid rgba(255,255,255,0.92)`,
-          boxShadow: inset > 0.8 ? '0 14px 42px rgba(0,0,0,0.38)' : 'none',
+          borderRadius: presenterShape === 'circle' ? '50%' : 18,
+          border: '5px solid rgba(255,255,255,0.92)',
+          boxShadow: '0 14px 42px rgba(0,0,0,0.38)',
+          opacity: visibility,
+          transform: `scale(${scale})`,
+          transformOrigin: slot.anchor === 'bottom-right' ? 'bottom right' : 'bottom left',
         }}
+        data-platform-safe-area-profile={safeAreaProfile.id}
+        data-presenter-slot={presenterPlacement}
       >
         <Video
           src={staticFile(presenterSrc)}
-          startFrom={speakerStartFromFrame}
+          trimBefore={speakerStartFromFrame}
           muted
           volume={0}
           style={{

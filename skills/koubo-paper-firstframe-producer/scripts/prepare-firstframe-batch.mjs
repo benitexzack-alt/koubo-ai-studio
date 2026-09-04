@@ -9,6 +9,7 @@ import {
   resolveInside,
   sha256File,
   validateManifest,
+  validateSampleSceneIds,
   writeNewJson,
 } from './firstframe-batch-core.mjs';
 
@@ -42,13 +43,8 @@ try {
   if (errors.length) throw new Error(`FIRSTFRAME_MANIFEST_INVALID:${errors.join('|')}`);
 
   const sampleSceneIds = String(args.sample ?? '').split(',').map((value) => value.trim()).filter(Boolean);
-  if (sampleSceneIds.length !== 3 || new Set(sampleSceneIds).size !== 3) {
-    throw new Error('SAMPLE_MUST_CONTAIN_THREE_UNIQUE_SCENE_IDS');
-  }
-  const knownSceneIds = new Set(manifest.scenes.map((scene) => scene.sceneId));
-  sampleSceneIds.forEach((sceneId) => {
-    if (!knownSceneIds.has(sceneId)) throw new Error(`SAMPLE_SCENE_UNKNOWN:${sceneId}`);
-  });
+  const sampleErrors = validateSampleSceneIds(manifest, sampleSceneIds);
+  if (sampleErrors.length) throw new Error(`FIRSTFRAME_SAMPLE_INVALID:${sampleErrors.join('|')}`);
 
   const handoffRoot = path.dirname(manifestPath);
   const imageRoot = path.join(handoffRoot, 'first-frames');
@@ -69,6 +65,9 @@ try {
     generationMode: 'image_gen-one-call-per-scene',
     maximumConcurrency: 2,
     automaticRetryAllowed: false,
+    samplePolicy: manifest.v9ContractEnabled === true
+      ? 'one-representative-scene'
+      : 'legacy-three-representative-scenes',
     generatedReadableTextAllowed: false,
     sourceManifest: {path: manifestPath, sha256: sha256File(manifestPath)},
     directorValidationReceipt: {
@@ -98,6 +97,13 @@ try {
         ),
         calibrationPath: path.join(calibrationRoot, `${scene.sceneId}.v1.json`),
       },
+      ...(manifest.v9ContractEnabled === true
+        ? {
+            v9ContractEnabled: true,
+            layoutContract: scene.layoutContract,
+            layoutContractSha256: scene.layoutContractSha256,
+          }
+        : {}),
       selectedForSample: sampleSceneIds.includes(scene.sceneId),
       result: null,
     })),

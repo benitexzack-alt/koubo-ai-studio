@@ -17,6 +17,20 @@ export const sha256Buffer = (buffer) =>
 export const sha256File = (filePath) => sha256Buffer(readFileSync(filePath));
 export const sha256Text = (value) => sha256Buffer(Buffer.from(value, 'utf8'));
 
+export function stableStringify(value) {
+  if (Array.isArray(value)) return `[${value.map(stableStringify).join(',')}]`;
+  if (value && typeof value === 'object') {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`)
+      .join(',')}}`;
+  }
+  return JSON.stringify(value);
+}
+
+export const sha256Json = (value) =>
+  sha256Buffer(Buffer.from(stableStringify(value), 'utf8'));
+
 export function readJson(filePath) {
   return JSON.parse(readFileSync(filePath, 'utf8'));
 }
@@ -81,6 +95,7 @@ export function validateManifest(manifest) {
   const pairIds = new Set();
   const outputNames = new Set();
   const bakedOutputNames = new Set();
+  const v9ContractEnabled = manifest.v9ContractEnabled === true;
   manifest.scenes.forEach((scene, index) => {
     const suffix = scene.sceneId || String(index);
     if (!/^P\d{2,}$/.test(scene.sceneId ?? '')) errors.push(`SCENE_ID_INVALID:${suffix}`);
@@ -125,6 +140,71 @@ export function validateManifest(manifest) {
     if (!Array.isArray(bake?.labels) || bake.labels.length === 0) {
       errors.push(`TEXT_BAKE_LABELS_EMPTY:${suffix}`);
     }
+    if (v9ContractEnabled) {
+      const layout = scene.layoutContract;
+      if (!layout || typeof layout !== 'object') {
+        errors.push(`V9_LAYOUT_CONTRACT_MISSING:${suffix}`);
+      } else {
+        if (sha256Json(layout) !== scene.layoutContractSha256) {
+          errors.push(`V9_LAYOUT_CONTRACT_SHA_MISMATCH:${suffix}`);
+        }
+        if (
+          layout.coordinateSpace !== 'normalized-0-to-1' ||
+          layout.generatedDecorationPolicy !== 'forbidden' ||
+          layout.layoutInterpretation?.objectGroupBoxes !== 'broad-composition-zones' ||
+          layout.layoutInterpretation?.paperLabelSurfaceBoxes !== 'reserved-placement-zones' ||
+          layout.layoutInterpretation?.exactPixelMatchRequired !== false ||
+          layout.layoutInterpretation?.contentAndSubtitleContainmentIsHard !== true ||
+          !Array.isArray(layout.objectGroupBoxes) ||
+          layout.objectGroupBoxes.length === 0 ||
+          !Array.isArray(layout.paperLabelSurfaceBoxes) ||
+          layout.paperLabelSurfaceBoxes.length !== bake.labels.length
+        ) {
+          errors.push(`V9_LAYOUT_CONTRACT_INVALID:${suffix}`);
+        }
+        for (const label of bake.labels ?? []) {
+          const bindings = layout.paperLabelSurfaceBoxes?.filter(
+            (entry) =>
+              entry?.nodeId === label.nodeId &&
+              entry?.groupId === label.groupId &&
+              entry?.surfaceId === label.surfaceId,
+          ) ?? [];
+          if (bindings.length !== 1) {
+            errors.push(`V9_LABEL_LAYOUT_BINDING_INVALID:${suffix}:${label.nodeId ?? 'unknown'}`);
+          }
+        }
+      }
+      if (
+        !scene.firstFramePrompt.includes('V9布局合同') ||
+        !scene.firstFramePrompt.includes('字幕保留区') ||
+        !scene.firstFramePrompt.includes('generatedDecorationPolicy=forbidden')
+      ) {
+        errors.push(`V9_LAYOUT_PROMPT_CLAUSE_MISSING:${suffix}`);
+      }
+    } else if (Object.hasOwn(scene, 'layoutContract') || Object.hasOwn(scene, 'layoutContractSha256')) {
+      errors.push(`V9_LAYOUT_WITHOUT_MANIFEST_MARKER:${suffix}`);
+    }
+  });
+  return errors;
+}
+
+export function validateSampleSceneIds(manifest, sampleSceneIds) {
+  const errors = [];
+  const requiredCount = manifest.v9ContractEnabled === true ? 1 : 3;
+  if (
+    sampleSceneIds.length !== requiredCount ||
+    new Set(sampleSceneIds).size !== requiredCount
+  ) {
+    errors.push(
+      manifest.v9ContractEnabled === true
+        ? 'V9_SAMPLE_MUST_CONTAIN_ONE_UNIQUE_SCENE_ID'
+        : 'LEGACY_SAMPLE_MUST_CONTAIN_THREE_UNIQUE_SCENE_IDS',
+    );
+    return errors;
+  }
+  const knownSceneIds = new Set(manifest.scenes.map((scene) => scene.sceneId));
+  sampleSceneIds.forEach((sceneId) => {
+    if (!knownSceneIds.has(sceneId)) errors.push(`SAMPLE_SCENE_UNKNOWN:${sceneId}`);
   });
   return errors;
 }

@@ -4,11 +4,13 @@ import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {
+  buildAiGeneratedVideoPromptManifest,
   buildFirstFramePromptManifest,
   buildRouteLock,
   buildRunningHubPromptManifest,
   compilePreproductionPlan,
   renderAssetSheet,
+  renderAiGeneratedVideoPromptSheet,
   renderRunningHubPromptSheet,
   resolveDeclared,
   sha256File,
@@ -56,6 +58,7 @@ try {
   }
 
   const plan = compilePreproductionPlan({request, requestPath, profile, style});
+  const v9ContractEnabled = request.policy?.v9ContractEnabled === true;
   const routeLock = buildRouteLock({request, requestPath, profile, style, plan});
   const planPath = resolveDeclared(projectRoot, request.outputs.planPath);
   const routeLockPath = resolveDeclared(projectRoot, request.outputs.routeLockPath);
@@ -72,9 +75,18 @@ try {
     projectRoot,
     request.outputs.runningHubPromptSheetPath,
   );
+  const aiGeneratedVideoPromptManifestPath = v9ContractEnabled
+    ? resolveDeclared(projectRoot, request.outputs.aiGeneratedVideoPromptManifestPath)
+    : null;
+  const aiGeneratedVideoPromptSheetPath = v9ContractEnabled
+    ? resolveDeclared(projectRoot, request.outputs.aiGeneratedVideoPromptSheetPath)
+    : null;
   const compileReceiptPath = resolveDeclared(projectRoot, request.outputs.compileReceiptPath);
   const firstFramePromptManifest = buildFirstFramePromptManifest(plan);
   const runningHubPromptManifest = buildRunningHubPromptManifest(plan);
+  const aiGeneratedVideoPromptManifest = v9ContractEnabled
+    ? buildAiGeneratedVideoPromptManifest(plan)
+    : null;
 
   writeNew(routeLockPath, `${JSON.stringify(routeLock, null, 2)}\n`);
   writeNew(planPath, `${JSON.stringify(plan, null, 2)}\n`);
@@ -91,6 +103,16 @@ try {
     runningHubPromptSheetPath,
     renderRunningHubPromptSheet(plan, runningHubPromptManifest),
   );
+  if (v9ContractEnabled) {
+    writeNew(
+      aiGeneratedVideoPromptManifestPath,
+      `${JSON.stringify(aiGeneratedVideoPromptManifest, null, 2)}\n`,
+    );
+    writeNew(
+      aiGeneratedVideoPromptSheetPath,
+      renderAiGeneratedVideoPromptSheet(plan, aiGeneratedVideoPromptManifest),
+    );
+  }
 
   const receipt = {
     schemaVersion: 'koubo-director-compile-receipt/v1',
@@ -120,6 +142,18 @@ try {
       path: runningHubPromptSheetPath,
       sha256: sha256File(runningHubPromptSheetPath),
     },
+    ...(v9ContractEnabled
+      ? {
+          aiGeneratedVideoPromptManifest: {
+            path: aiGeneratedVideoPromptManifestPath,
+            sha256: sha256File(aiGeneratedVideoPromptManifestPath),
+          },
+          aiGeneratedVideoPromptSheet: {
+            path: aiGeneratedVideoPromptSheetPath,
+            sha256: sha256File(aiGeneratedVideoPromptSheetPath),
+          },
+        }
+      : {}),
     formalEligible: false,
     postShootRebindRequired: true,
   };
@@ -133,6 +167,9 @@ try {
       firstFramePromptManifestPath,
       runningHubPromptManifestPath,
       runningHubPromptSheetPath,
+      ...(v9ContractEnabled
+        ? {aiGeneratedVideoPromptManifestPath, aiGeneratedVideoPromptSheetPath}
+        : {}),
       compileReceiptPath,
     }),
   );

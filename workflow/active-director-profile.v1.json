@@ -1,13 +1,13 @@
 {
   "schemaVersion": "koubo-active-director-profile/v1",
-  "profileId": "paper-editorial-director-v3",
-  "profileVersion": "3.2.0",
+  "profileId": "paper-editorial-director-v9",
+  "profileVersion": "9.0.0",
   "status": "active-default",
-  "effectiveFrom": "2026-09-01",
+  "effectiveFrom": "2026-09-05",
   "decision": {
     "authority": "user-explicit",
-    "summary": "按语义在真人、真实素材讲解小窗、AI情景演绎和纸艺之间路由；纸艺最终首帧必须确定性带字并通过OCR后才可交给RunningHub。",
-    "confirmedAt": "2026-09-03"
+    "summary": "下一条新口播按V9试点：三套提示词独立交接，纸艺先校验安全布局，真实素材讲解小窗避开抖音平台覆盖层，Shotcraft选中后必须有实际应用证据，并严格按小样确认后再正式渲染。",
+    "confirmedAt": "2026-09-05"
   },
   "skill": {
     "path": "skills/koubo-remotion-director",
@@ -19,13 +19,14 @@
       "handoffReceiptSha256": "a8370f79022369f4a4e8002601ef1dc257788946461edf12dd275227fb60d8ef"
     },
     "contractUpgrade": {
-      "version": "3.2.0",
-      "scope": "纸艺首帧带字闭环、实际纸面坐标标定、RunningHub交接阻断、真实素材讲解小窗与AI情景演绎路由",
+      "version": "9.0.0",
+      "scope": "抖音平台安全区、纸艺首帧布局合同、三套提示词交接、Shotcraft选择与落片回执、九阶段生产状态机",
       "auditReport": {
-        "path": "edit/20260902_local_ai_services/10_导演复盘/2026-09-03_纸艺带字与素材小窗路由升级审查.md",
-        "sha256": "17669a4c83123a45163114eac1e310bc3e206edc8d542e8b0eb695b6932e64fb"
+        "path": "workflow/audits/director-v9-upgrade-20260905.v1.md",
+        "sha256": "e21888ad7efd36708581d6ee0cee00e2a8e5c6b48d8046458b73c0ad9a18771e"
       },
-      "currentTaskVisualAcceptanceStillRequired": true
+      "nextVideoEndToEndAcceptanceRequired": true,
+      "formalProductionProfileStillV8": true
     }
   },
   "style": {
@@ -49,6 +50,11 @@
         "first-frame-prompt-manifest",
         "runninghub-image-to-video-prompt-manifest",
         "runninghub-image-to-video-prompt-sheet",
+        "ai-generated-video-prompt-manifest",
+        "ai-generated-video-prompt-sheet",
+        "paper-layout-contract",
+        "platform-safe-area-plan",
+        "v9-production-state",
         "completion-stills",
         "local-candidate-preview"
       ],
@@ -66,6 +72,9 @@
         "paper-asset-sha-contact-sheet",
         "silent-view-retelling-review",
         "input-action-result-review",
+        "platform-safe-area-validation",
+        "shotcraft-director-selection-plan",
+        "shotcraft-application-receipt",
         "current-task-ab-preview",
         "current-task-user-acceptance"
       ],
@@ -100,12 +109,27 @@
       "mode": "real-media-with-presenter-inset",
       "requiresSpeakerExplainingAsset": true,
       "minimumDurationSeconds": 2.8,
-      "presenterAnchor": "bottom-right",
+      "presenterAnchor": "douyin-right-safe",
+      "platformSafeAreaProfilePath": "skills/koubo-remotion-director/references/platform-safe-areas.v1.json",
+      "platformSafeAreaProfileId": "douyin-feed-landscape-16x9-v1",
+      "presenterSlot": {
+        "width": 278,
+        "height": 278,
+        "right": 360,
+        "bottom": 202
+      },
+      "fallbackPresenterSlot": {
+        "width": 278,
+        "height": 278,
+        "left": 64,
+        "bottom": 202
+      },
       "presenterAudioOwner": "base-talk-only",
       "duplicatePresenterVideoMuted": true,
       "enterFrames": 16,
       "exitFrames": 12,
-      "minimumCaptionGapPx": 24,
+      "minimumCaptionGapPx": 32,
+      "transitionMode": "fixed-slot-opacity-scale",
       "hardCutForbidden": true
     },
     "generatedVideo": {
@@ -114,6 +138,21 @@
       "evidenceEligible": false,
       "disclosureRequired": true,
       "preferVerifiedRealMaterialWhenAvailable": true
+    },
+    "shotcraft": {
+      "registryPath": "skills/koubo-shotcraft-library/registry.v1.json",
+      "eligibleMainVisualClasses": [
+        "speaker",
+        "real-evidence"
+      ],
+      "forbiddenInsideMainVisualClasses": [
+        "paper-editorial",
+        "generated-video"
+      ],
+      "explicitDecisionRequiredForEligibleBeats": true,
+      "selectedEffectMustHaveApplicationReceipt": true,
+      "mechanicalQuotaForbidden": true,
+      "fallback": "blocked"
     },
     "genericInformationCardCanSatisfyPaperBeat": false,
     "fallback": "blocked",
@@ -144,7 +183,10 @@
   "promptHandoffPolicy": {
     "firstFrameConsumer": "first-frame-image-automation",
     "imageToVideoConsumer": "runninghub-manual-image-to-video",
+    "aiGeneratedVideoConsumer": "user-authorized-manual-generation",
     "separateArtifactsRequired": true,
+    "independentPromptArtifactCount": 3,
+    "zeroSceneManifestRequired": true,
     "pairingFields": [
       "sceneId",
       "pairId",
@@ -172,6 +214,34 @@
     ],
     "silentTruncationAllowed": false
   },
+  "paperLayoutPolicy": {
+    "coordinateSpace": "normalized-0-to-1",
+    "contentSafeRectRequired": true,
+    "subtitleReservedRectRequired": true,
+    "objectGroupBoxRequired": true,
+    "paperLabelSurfaceBoxRequired": true,
+    "layoutInterpretation": {
+      "objectGroupBoxes": "broad-composition-zones",
+      "paperLabelSurfaceBoxes": "reserved-placement-zones",
+      "exactPixelMatchRequired": false,
+      "contentAndSubtitleContainmentIsHard": true
+    },
+    "generatedDecorationPolicy": "forbidden",
+    "layoutFailureBlocksGeneration": true,
+    "reusePassedRawImageWhenOnlyTextBakeFails": true,
+    "v9SampleSceneCount": 1,
+    "automaticRetryAllowed": false
+  },
+  "workflowPolicy": {
+    "schemaVersion": "koubo-v9-production-state/v1",
+    "templatePath": "skills/koubo-remotion-director/templates/v9-production-state.v1.json",
+    "validatorPath": "skills/koubo-remotion-director/scripts/validate-v9-production-state.mjs",
+    "strictStageOrder": true,
+    "candidatePreviewRequired": true,
+    "formalRequiresUserPreviewAcceptance": true,
+    "releasePackageRequiresFormalQa": true,
+    "automaticPublicationAllowed": false
+  },
   "semanticTimingPolicy": {
     "recordedSpeechIsAuthority": true,
     "declaredCaptionWindowRequired": true,
@@ -192,6 +262,9 @@
   },
   "v8Integration": {
     "outerPackagingProfile": "v8-semantic-continuity-sfx",
+    "role": "formal-production-rollback-baseline-during-v9-pilot",
+    "v9CandidateForNextNewRevision": true,
+    "v9FormalEligibleBeforeRealPilotAcceptance": false,
     "speakerPictureRemainsPrimary": true,
     "realMaterialPresenterInsetSupported": true,
     "realMaterialPresenterInsetComponent": "skills/koubo-remotion-director/assets/remotion-presenter-media/PresenterMediaStage.tsx",

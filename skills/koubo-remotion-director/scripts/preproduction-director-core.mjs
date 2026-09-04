@@ -10,6 +10,8 @@ export const FIRST_FRAME_PROMPT_MANIFEST_SCHEMA =
   'koubo-paper-first-frame-prompt-manifest/v1';
 export const RUNNINGHUB_PROMPT_MANIFEST_SCHEMA =
   'koubo-runninghub-image-to-video-prompt-manifest/v1';
+export const AI_GENERATED_VIDEO_PROMPT_MANIFEST_SCHEMA =
+  'koubo-ai-generated-video-prompt-manifest/v1';
 
 export const sha256Buffer = (buffer) =>
   createHash('sha256').update(buffer).digest('hex');
@@ -44,6 +46,211 @@ export const normalizeSpokenText = (value) =>
 
 function push(errors, condition, code) {
   if (!condition) errors.push(code);
+}
+
+const v9RequestEnabled = (request) => request.policy?.v9ContractEnabled === true;
+const v9PlanEnabled = (plan) => plan.v9Contract?.enabled === true;
+const hasExactKeys = (value, expectedKeys) => {
+  if (!value || typeof value !== 'object') return false;
+  const actualKeys = Object.keys(value).sort();
+  const sortedExpectedKeys = [...expectedKeys].sort();
+  return actualKeys.length === sortedExpectedKeys.length &&
+    actualKeys.every((key, index) => key === sortedExpectedKeys[index]);
+};
+
+const NORMALIZED_RECT_EPSILON = 1e-9;
+
+const isNormalizedRect = (rect) =>
+  rect &&
+  typeof rect === 'object' &&
+  ['x', 'y', 'width', 'height'].every((key) => Number.isFinite(rect[key])) &&
+  rect.x >= 0 &&
+  rect.y >= 0 &&
+  rect.width > 0 &&
+  rect.height > 0 &&
+  rect.x + rect.width <= 1 + NORMALIZED_RECT_EPSILON &&
+  rect.y + rect.height <= 1 + NORMALIZED_RECT_EPSILON;
+
+const rectContains = (outer, inner) =>
+  inner.x + NORMALIZED_RECT_EPSILON >= outer.x &&
+  inner.y + NORMALIZED_RECT_EPSILON >= outer.y &&
+  inner.x + inner.width <= outer.x + outer.width + NORMALIZED_RECT_EPSILON &&
+  inner.y + inner.height <= outer.y + outer.height + NORMALIZED_RECT_EPSILON;
+
+const rectsOverlap = (left, right) =>
+  Math.min(left.x + left.width, right.x + right.width) > Math.max(left.x, right.x) &&
+  Math.min(left.y + left.height, right.y + right.height) > Math.max(left.y, right.y);
+
+function validateV9PaperLayoutContract(scene, beat, errors) {
+  const layout = scene.layoutContract;
+  push(
+    errors,
+    layout && typeof layout === 'object',
+    `PAPER_LAYOUT_CONTRACT_MISSING:${beat.id}`,
+  );
+  if (!layout || typeof layout !== 'object') return;
+
+  push(
+    errors,
+    layout.coordinateSpace === 'normalized-0-to-1',
+    `PAPER_LAYOUT_COORDINATE_SPACE_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    layout.generatedDecorationPolicy === 'forbidden',
+    `PAPER_LAYOUT_GENERATED_DECORATION_NOT_FORBIDDEN:${beat.id}`,
+  );
+  push(
+    errors,
+    layout.layoutInterpretation?.objectGroupBoxes === 'broad-composition-zones' &&
+      layout.layoutInterpretation?.paperLabelSurfaceBoxes === 'reserved-placement-zones' &&
+      layout.layoutInterpretation?.exactPixelMatchRequired === false &&
+      layout.layoutInterpretation?.contentAndSubtitleContainmentIsHard === true,
+    `PAPER_LAYOUT_INTERPRETATION_INVALID:${beat.id}`,
+  );
+  const contentSafeRectValid = isNormalizedRect(layout.contentSafeRect);
+  const subtitleReservedRectValid = isNormalizedRect(layout.subtitleReservedRect);
+  push(
+    errors,
+    contentSafeRectValid,
+    `PAPER_LAYOUT_CONTENT_SAFE_RECT_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    subtitleReservedRectValid,
+    `PAPER_LAYOUT_SUBTITLE_RESERVED_RECT_INVALID:${beat.id}`,
+  );
+  if (contentSafeRectValid && subtitleReservedRectValid) {
+    push(
+      errors,
+      !rectsOverlap(layout.contentSafeRect, layout.subtitleReservedRect),
+      `PAPER_LAYOUT_SAFE_RECT_OVERLAPS_SUBTITLE:${beat.id}`,
+    );
+  }
+
+  const objectGroups = Array.isArray(scene.objectGroups) ? scene.objectGroups : [];
+  const textPlan = Array.isArray(scene.textPlan) ? scene.textPlan : [];
+  const objectGroupBoxes = Array.isArray(layout.objectGroupBoxes)
+    ? layout.objectGroupBoxes
+    : [];
+  const labelSurfaceBoxes = Array.isArray(layout.paperLabelSurfaceBoxes)
+    ? layout.paperLabelSurfaceBoxes
+    : [];
+  push(
+    errors,
+    Array.isArray(layout.objectGroupBoxes),
+    `PAPER_LAYOUT_GROUP_BOXES_MISSING:${beat.id}`,
+  );
+  push(
+    errors,
+    Array.isArray(layout.paperLabelSurfaceBoxes),
+    `PAPER_LAYOUT_LABEL_SURFACE_BOXES_MISSING:${beat.id}`,
+  );
+  push(
+    errors,
+    objectGroupBoxes.length === objectGroups.length,
+    `PAPER_LAYOUT_GROUP_BOX_COUNT_MISMATCH:${beat.id}`,
+  );
+  push(
+    errors,
+    labelSurfaceBoxes.length === textPlan.length,
+    `PAPER_LAYOUT_LABEL_SURFACE_BOX_COUNT_MISMATCH:${beat.id}`,
+  );
+
+  const knownGroupIds = new Set(objectGroups.map((group) => group.id));
+  const groupBoxById = new Map();
+  for (const group of objectGroups) {
+    const matches = objectGroupBoxes.filter((entry) => entry?.groupId === group.id);
+    push(
+      errors,
+      matches.length === 1,
+      `PAPER_LAYOUT_GROUP_BOX_BINDING_INVALID:${beat.id}:${group.id}`,
+    );
+    if (matches.length !== 1) continue;
+    const entry = matches[0];
+    const boxValid = isNormalizedRect(entry.box);
+    push(errors, boxValid, `PAPER_LAYOUT_GROUP_BOX_INVALID:${beat.id}:${group.id}`);
+    if (!boxValid) continue;
+    groupBoxById.set(group.id, entry.box);
+    if (contentSafeRectValid) {
+      push(
+        errors,
+        rectContains(layout.contentSafeRect, entry.box),
+        `PAPER_LAYOUT_GROUP_BOX_OUTSIDE_CONTENT_SAFE_RECT:${beat.id}:${group.id}`,
+      );
+    }
+    if (subtitleReservedRectValid) {
+      push(
+        errors,
+        !rectsOverlap(entry.box, layout.subtitleReservedRect),
+        `PAPER_LAYOUT_GROUP_BOX_INTRUDES_SUBTITLE:${beat.id}:${group.id}`,
+      );
+    }
+  }
+  for (const entry of objectGroupBoxes) {
+    push(
+      errors,
+      knownGroupIds.has(entry?.groupId),
+      `PAPER_LAYOUT_GROUP_BOX_UNKNOWN:${beat.id}:${entry?.groupId ?? 'unknown'}`,
+    );
+  }
+
+  for (const item of textPlan) {
+    const matches = labelSurfaceBoxes.filter(
+      (entry) =>
+        entry?.surfaceId === item.surfaceId &&
+        entry?.nodeId === item.nodeId &&
+        entry?.groupId === item.groupId,
+    );
+    push(
+      errors,
+      matches.length === 1,
+      `PAPER_LAYOUT_LABEL_SURFACE_BOX_BINDING_INVALID:${beat.id}:${item.nodeId}`,
+    );
+    if (matches.length !== 1) continue;
+    const entry = matches[0];
+    const boxValid = isNormalizedRect(entry.box);
+    push(
+      errors,
+      boxValid,
+      `PAPER_LAYOUT_LABEL_SURFACE_BOX_INVALID:${beat.id}:${item.nodeId}`,
+    );
+    if (!boxValid) continue;
+    if (contentSafeRectValid) {
+      push(
+        errors,
+        rectContains(layout.contentSafeRect, entry.box),
+        `PAPER_LAYOUT_LABEL_SURFACE_BOX_OUTSIDE_CONTENT_SAFE_RECT:${beat.id}:${item.nodeId}`,
+      );
+    }
+    if (subtitleReservedRectValid) {
+      push(
+        errors,
+        !rectsOverlap(entry.box, layout.subtitleReservedRect),
+        `PAPER_LAYOUT_LABEL_SURFACE_BOX_INTRUDES_SUBTITLE:${beat.id}:${item.nodeId}`,
+      );
+    }
+    const groupBox = groupBoxById.get(item.groupId);
+    if (groupBox) {
+      push(
+        errors,
+        rectContains(groupBox, entry.box),
+        `PAPER_LAYOUT_LABEL_SURFACE_BOX_OUTSIDE_GROUP:${beat.id}:${item.nodeId}`,
+      );
+    }
+  }
+  for (const entry of labelSurfaceBoxes) {
+    push(
+      errors,
+      textPlan.some(
+        (item) =>
+          item.surfaceId === entry?.surfaceId &&
+          item.nodeId === entry?.nodeId &&
+          item.groupId === entry?.groupId,
+      ),
+      `PAPER_LAYOUT_LABEL_SURFACE_BOX_UNKNOWN:${beat.id}:${entry?.surfaceId ?? 'unknown'}`,
+    );
+  }
 }
 
 const PAPER_TEXT_EMBEDDING_MODES = new Set([
@@ -150,7 +357,7 @@ function validateRealMediaPresentation(presentation, beat, errors) {
   );
 }
 
-function validateGeneratedVideoBrief(brief, beat, errors) {
+function validateGeneratedVideoBrief(brief, beat, errors, {v9ContractEnabled = false} = {}) {
   push(
     errors,
     brief && typeof brief === 'object',
@@ -166,6 +373,25 @@ function validateGeneratedVideoBrief(brief, beat, errors) {
     errors,
     brief.disclosureRequired === true,
     `GENERATED_VIDEO_DISCLOSURE_NOT_REQUIRED:${beat.id}`,
+  );
+  if (!v9ContractEnabled) return;
+  push(errors, isText(brief.mode), `GENERATED_VIDEO_MODE_MISSING:${beat.id}`);
+  push(
+    errors,
+    Number.isFinite(brief.durationSeconds) &&
+      brief.durationSeconds >= 1 &&
+      brief.durationSeconds <= 30,
+    `GENERATED_VIDEO_DURATION_INVALID:${beat.id}`,
+  );
+  push(
+    errors,
+    isText(brief.negativePrompt),
+    `GENERATED_VIDEO_NEGATIVE_PROMPT_MISSING:${beat.id}`,
+  );
+  push(
+    errors,
+    brief.manualExecutionRequired === true,
+    `GENERATED_VIDEO_MANUAL_EXECUTION_NOT_REQUIRED:${beat.id}`,
   );
 }
 
@@ -260,7 +486,7 @@ function validateSymbolCueConflicts(scene, beat, errors) {
   }
 }
 
-function validatePaperScene(scene, beat, errors) {
+function validatePaperScene(scene, beat, errors, {v9ContractEnabled = false} = {}) {
   push(errors, scene && typeof scene === 'object', `PAPER_SCENE_MISSING:${beat.id}`);
   if (!scene || typeof scene !== 'object') return;
   push(
@@ -282,6 +508,7 @@ function validatePaperScene(scene, beat, errors) {
   const stages = Array.isArray(scene.stages) ? scene.stages : [];
   const textPlan = Array.isArray(scene.textPlan) ? scene.textPlan : [];
   const screenTextPlan = Array.isArray(scene.screenTextPlan) ? scene.screenTextPlan : [];
+  if (v9ContractEnabled) validateV9PaperLayoutContract(scene, beat, errors);
   const minimumGroups = scene.archetype === 'complex-explanation' ? 5 : 3;
   const minimumNodes = scene.archetype === 'complex-explanation' ? 9 : 3;
 
@@ -631,6 +858,10 @@ function validatePaperScene(scene, beat, errors) {
 
 export function validatePreproductionRequest({request, projectRoot, profile}) {
   const errors = [];
+  const v9ContractEnabled = v9RequestEnabled(request);
+  const profileRequiresV9 =
+    profile?.profileId === 'paper-editorial-director-v9' ||
+    profile?.profileVersion === '9.0.0';
   push(errors, request.schemaVersion === PREPRODUCTION_REQUEST_SCHEMA, 'PREPRODUCTION_SCHEMA_INVALID');
   push(errors, isText(request.requestId), 'PREPRODUCTION_REQUEST_ID_MISSING');
   push(errors, isText(request.taskId), 'PREPRODUCTION_TASK_ID_MISSING');
@@ -660,7 +891,10 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
   push(errors, request.policy?.fallback === 'blocked', 'PREPRODUCTION_FALLBACK_NOT_BLOCKED');
   push(
     errors,
-    request.policy?.textStrategy === 'deterministic-first-frame-text-v3.2',
+    request.policy?.textStrategy ===
+      (v9ContractEnabled
+        ? 'deterministic-first-frame-text-v9'
+        : 'deterministic-first-frame-text-v3.2'),
     'PREPRODUCTION_TEXT_STRATEGY_INVALID',
   );
   push(
@@ -703,6 +937,17 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
     request.policy?.postShootRebindRequired === true,
     'PREPRODUCTION_POSTSHOOT_REBIND_NOT_REQUIRED',
   );
+  push(
+    errors,
+    request.policy?.v9ContractEnabled === undefined ||
+      typeof request.policy.v9ContractEnabled === 'boolean',
+    'PREPRODUCTION_V9_CONTRACT_SWITCH_INVALID',
+  );
+  push(
+    errors,
+    !profileRequiresV9 || v9ContractEnabled,
+    'PREPRODUCTION_V9_CONTRACT_REQUIRED_BY_PROFILE',
+  );
 
   const scriptPath = resolveDeclared(projectRoot, request.inputScript?.path);
   let scriptText = '';
@@ -715,7 +960,7 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
     }
   }
 
-  const requiredOutputKeys = [
+  const legacyOutputKeys = [
     'routeLockPath',
     'planPath',
     'assetSheetPath',
@@ -725,6 +970,13 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
     'compileReceiptPath',
     'validationReceiptPath',
   ];
+  const requiredOutputKeys = v9ContractEnabled
+    ? [
+        ...legacyOutputKeys,
+        'aiGeneratedVideoPromptManifestPath',
+        'aiGeneratedVideoPromptSheetPath',
+      ]
+    : legacyOutputKeys;
   const outputKeys = Object.keys(request.outputs ?? {});
   const outputPaths = requiredOutputKeys.map((key) => request.outputs?.[key]);
   push(
@@ -794,7 +1046,12 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
         decision.class !== 'remotion-information',
         `GENERIC_CARD_CANNOT_SATISFY_PAPER_BEAT:${beat.id}`,
       );
-      validatePaperScene(beat.paperScene, beat, errors);
+      validatePaperScene(beat.paperScene, beat, errors, {v9ContractEnabled});
+    } else if (
+      v9ContractEnabled &&
+      decision.class === 'paper-editorial'
+    ) {
+      validatePaperScene(beat.paperScene, beat, errors, {v9ContractEnabled});
     }
     if (decision.class === 'real-evidence') {
       push(
@@ -805,7 +1062,9 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
       validateRealMediaPresentation(beat.presentation, beat, errors);
     }
     if (decision.class === 'generated-video') {
-      validateGeneratedVideoBrief(beat.generatedVideoBrief, beat, errors);
+      validateGeneratedVideoBrief(beat.generatedVideoBrief, beat, errors, {
+        v9ContractEnabled,
+      });
     }
   });
 
@@ -813,6 +1072,7 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
 }
 
 export function compilePreproductionPlan({request, requestPath, profile, style}) {
+  const v9ContractEnabled = v9RequestEnabled(request);
   const paperBeats = request.beats.filter(
     (beat) => beat.visualDecision?.class === 'paper-editorial',
   );
@@ -836,6 +1096,16 @@ export function compilePreproductionPlan({request, requestPath, profile, style})
     status: 'provisional-previsualization',
     formalEligible: false,
     postShootRebindRequired: true,
+    ...(v9ContractEnabled
+      ? {
+          v9Contract: {
+            enabled: true,
+            paperLayoutCoordinateSpace: 'normalized-0-to-1',
+            generatedDecorationPolicy: 'forbidden',
+            aiGeneratedVideoPromptPackageRequired: true,
+          },
+        }
+      : {}),
     provenance: {
       requestPath,
       requestSha256: sha256File(requestPath),
@@ -961,13 +1231,46 @@ export function renderAssetSheet(plan) {
   return `${lines.join('\n').replace(/\n+$/, '')}\n`;
 }
 
-export function buildSceneIdentity(scene, index) {
+const formatNormalizedRect = (rect) =>
+  `x=${rect.x.toFixed(4)}, y=${rect.y.toFixed(4)}, width=${rect.width.toFixed(4)}, height=${rect.height.toFixed(4)}`;
+
+function renderV9LayoutSafetyClause(scene) {
+  const layout = scene.layoutContract;
+  const groupClauses = layout.objectGroupBoxes.map(
+    (entry) => `${entry.groupId}[${formatNormalizedRect(entry.box)}]`,
+  );
+  const labelClauses = layout.paperLabelSurfaceBoxes.map(
+    (entry) =>
+      `${entry.nodeId}/${entry.groupId}/${entry.surfaceId}[${formatNormalizedRect(entry.box)}]`,
+  );
+  return [
+    'V9布局合同：以下坐标均为0到1归一化坐标，原点在画面左上角。',
+    `内容安全区：${formatNormalizedRect(layout.contentSafeRect)}。所有物件组和纸面标签必须完整位于该区域内。`,
+    `字幕保留区：${formatNormalizedRect(layout.subtitleReservedRect)}。任何物件、标签、影子或装饰不得进入该区域。`,
+    `物件组构图宽区：${groupClauses.join('；')}。这些是宽区指导，物件在各自区域内自然排布，不要求逐像素贴合矩形边缘。`,
+    `纸面标签预留区：${labelClauses.join('；')}。标签纸完整落在对应预留区内，不要求逐像素贴合矩形边缘。`,
+    '硬条件只有：所有主体完整入画、标签不串组、不得侵入字幕保留区；不要为了追求坐标精度挤压或裁切物件。',
+    'generatedDecorationPolicy=forbidden：禁止生成任何未在物件组中声明的植物、云朵、圆点、摆件或背景装饰。',
+  ].join('\n');
+}
+
+function buildEffectiveFirstFramePrompt(scene, v9ContractEnabled) {
+  if (!v9ContractEnabled) return scene.prompt.firstFrame;
+  return `${scene.prompt.firstFrame.trim()}\n\n${renderV9LayoutSafetyClause(scene)}`;
+}
+
+export function buildSceneIdentity(
+  scene,
+  index,
+  {v9ContractEnabled = false} = {},
+) {
   const sceneId = `P${String(index + 1).padStart(2, '0')}`;
   const pairId = `${sceneId}-${scene.beatId}`;
   const firstFrameOutputFileName = `${sceneId}_${scene.beatId}_first-frame.png`;
   const bakedFirstFrameOutputFileName = `${sceneId}_${scene.beatId}_first-frame-text-baked.png`;
+  const firstFramePrompt = buildEffectiveFirstFramePrompt(scene, v9ContractEnabled);
   const firstFramePromptSha256 = sha256Buffer(
-    Buffer.from(scene.prompt.firstFrame, 'utf8'),
+    Buffer.from(firstFramePrompt, 'utf8'),
   );
   const imageToVideoPromptSha256 = sha256Buffer(
     Buffer.from(scene.prompt.motion, 'utf8'),
@@ -990,6 +1293,7 @@ export function buildSceneIdentity(scene, index) {
     pairId,
     firstFrameOutputFileName,
     bakedFirstFrameOutputFileName,
+    firstFramePrompt,
     runningHubInputFileName: hasFirstFrameBakedText
       ? bakedFirstFrameOutputFileName
       : firstFrameOutputFileName,
@@ -1025,6 +1329,7 @@ const buildFirstFrameBakePlan = (scene, identity) => {
 };
 
 export function buildFirstFramePromptManifest(plan) {
+  const v9ContractEnabled = v9PlanEnabled(plan);
   return {
     schemaVersion: FIRST_FRAME_PROMPT_MANIFEST_SCHEMA,
     requestId: plan.requestId,
@@ -1037,10 +1342,11 @@ export function buildFirstFramePromptManifest(plan) {
     generatedReadableTextAllowed: false,
     modelGeneratedReadableTextAllowed: false,
     deterministicTextMayBeBakedIntoFirstFrame: true,
+    ...(v9ContractEnabled ? {v9ContractEnabled: true} : {}),
     sourcePlanCanonicalSha256: sha256Json(plan),
     sceneCount: plan.paperScenes.length,
     scenes: plan.paperScenes.map((scene, index) => {
-      const identity = buildSceneIdentity(scene, index);
+      const identity = buildSceneIdentity(scene, index, {v9ContractEnabled});
       return {
         sceneId: identity.sceneId,
         pairId: identity.pairId,
@@ -1049,7 +1355,7 @@ export function buildFirstFramePromptManifest(plan) {
         spokenLine: scene.spokenLine,
         aspectRatio: '16:9',
         outputFileName: identity.firstFrameOutputFileName,
-        firstFramePrompt: scene.prompt.firstFrame,
+        firstFramePrompt: identity.firstFramePrompt,
         firstFramePromptSha256: identity.firstFramePromptSha256,
         textPlanSha256: identity.textPlanSha256,
         pairSha256: identity.pairSha256,
@@ -1057,12 +1363,19 @@ export function buildFirstFramePromptManifest(plan) {
         modelGeneratedReadableTextAllowed: false,
         deterministicTextBake: buildFirstFrameBakePlan(scene, identity),
         postProductionTextOverlay: buildTextOverlayPlan(scene),
+        ...(v9ContractEnabled
+          ? {
+              layoutContract: scene.layoutContract,
+              layoutContractSha256: sha256Json(scene.layoutContract),
+            }
+          : {}),
       };
     }),
   };
 }
 
 export function buildRunningHubPromptManifest(plan) {
+  const v9ContractEnabled = v9PlanEnabled(plan);
   return {
     schemaVersion: RUNNINGHUB_PROMPT_MANIFEST_SCHEMA,
     requestId: plan.requestId,
@@ -1083,7 +1396,7 @@ export function buildRunningHubPromptManifest(plan) {
     sourcePlanCanonicalSha256: sha256Json(plan),
     sceneCount: plan.paperScenes.length,
     scenes: plan.paperScenes.map((scene, index) => {
-      const identity = buildSceneIdentity(scene, index);
+      const identity = buildSceneIdentity(scene, index, {v9ContractEnabled});
       return {
         sceneId: identity.sceneId,
         pairId: identity.pairId,
@@ -1107,12 +1420,131 @@ export function buildRunningHubPromptManifest(plan) {
   };
 }
 
+function buildAiGeneratedVideoIdentity(assignment, index) {
+  const sceneId = `A${String(index + 1).padStart(2, '0')}`;
+  const outputFileName = `${sceneId}_ai-generated-video.mp4`;
+  const promptSha256 = sha256Buffer(
+    Buffer.from(String(assignment.generatedVideoBrief.prompt ?? ''), 'utf8'),
+  );
+  const negativePromptSha256 = sha256Buffer(
+    Buffer.from(String(assignment.generatedVideoBrief.negativePrompt ?? ''), 'utf8'),
+  );
+  return {
+    sceneId,
+    outputFileName,
+    promptSha256,
+    negativePromptSha256,
+  };
+}
+
+const AI_GENERATED_VIDEO_MANIFEST_KEYS = [
+  'schemaVersion',
+  'requestId',
+  'taskId',
+  'phase',
+  'status',
+  'consumer',
+  'promptRole',
+  'sourcePlanCanonicalSha256',
+  'itemCount',
+  'items',
+];
+
+const AI_GENERATED_VIDEO_ITEM_KEYS = [
+  'sceneId',
+  'beatId',
+  'mode',
+  'outputFileName',
+  'durationSeconds',
+  'purpose',
+  'prompt',
+  'promptSha256',
+  'negativePrompt',
+  'negativePromptSha256',
+  'disclosureRequired',
+  'evidenceEligible',
+  'manualExecutionRequired',
+];
+
+export function buildAiGeneratedVideoPromptManifest(plan) {
+  const items = plan.generatedVideoAssignments.map((assignment, index) => {
+    const identity = buildAiGeneratedVideoIdentity(assignment, index);
+    const brief = assignment.generatedVideoBrief;
+    return {
+      sceneId: identity.sceneId,
+      beatId: assignment.beatId,
+      mode: brief.mode,
+      outputFileName: identity.outputFileName,
+      durationSeconds: brief.durationSeconds,
+      purpose: brief.purpose,
+      prompt: brief.prompt,
+      promptSha256: identity.promptSha256,
+      negativePrompt: brief.negativePrompt,
+      negativePromptSha256: identity.negativePromptSha256,
+      disclosureRequired: true,
+      evidenceEligible: false,
+      manualExecutionRequired: true,
+    };
+  });
+  return {
+    schemaVersion: AI_GENERATED_VIDEO_PROMPT_MANIFEST_SCHEMA,
+    requestId: plan.requestId,
+    taskId: plan.taskId,
+    phase: 'pre-shoot',
+    status: items.length === 0 ? 'not-required' : 'manual-execution-required',
+    consumer: 'manual-ai-generated-video',
+    promptRole: 'ai-generated-video-only',
+    sourcePlanCanonicalSha256: sha256Json(plan),
+    itemCount: items.length,
+    items,
+  };
+}
+
+export function renderAiGeneratedVideoPromptSheet(plan, manifest) {
+  const lines = [
+    `# ${plan.taskId} AI生成视频提示词`,
+    '',
+    '> 本文件只包含独立AI生成视频提示词，不包含纸艺首帧提示词或RunningHub图生视频动作提示词。',
+    '> 所有条目均需人工执行，必须披露AI生成身份，且不得作为事实证据。',
+    `> 状态：${manifest.status}`,
+    '',
+  ];
+  if (manifest.items.length === 0) {
+    lines.push('本计划不需要独立AI生成视频。', '');
+  } else {
+    manifest.items.forEach((item) => {
+      lines.push(`## ${item.sceneId} ${item.beatId}`);
+      lines.push('');
+      lines.push(`- 模式：${item.mode}`);
+      lines.push(`- 文件名：${item.outputFileName}`);
+      lines.push(`- 时长：${item.durationSeconds}秒`);
+      lines.push(`- 用途：${item.purpose}`);
+      lines.push('- 人工执行：是；AI披露：是；事实证据资格：无');
+      lines.push('- 提示词：');
+      lines.push('');
+      lines.push('```text');
+      lines.push(item.prompt);
+      lines.push('```');
+      lines.push('');
+      lines.push('- 负面提示词：');
+      lines.push('');
+      lines.push('```text');
+      lines.push(item.negativePrompt);
+      lines.push('```');
+      lines.push('');
+    });
+  }
+  return `${lines.join('\n').replace(/\n+$/, '')}\n`;
+}
+
 export function validatePromptHandoffManifests({
   plan,
   firstFrameManifest,
   runningHubManifest,
+  aiGeneratedVideoManifest,
 }) {
   const errors = [];
+  const v9ContractEnabled = v9PlanEnabled(plan);
   push(
     errors,
     firstFrameManifest?.schemaVersion === FIRST_FRAME_PROMPT_MANIFEST_SCHEMA,
@@ -1128,6 +1560,38 @@ export function validatePromptHandoffManifests({
     runningHubManifest?.status === 'awaiting-text-baked-firstframes',
     'RUNNINGHUB_PROMPT_MANIFEST_PREMATURELY_READY',
   );
+  if (v9ContractEnabled) {
+    push(
+      errors,
+      aiGeneratedVideoManifest?.schemaVersion ===
+        AI_GENERATED_VIDEO_PROMPT_MANIFEST_SCHEMA,
+      'AI_GENERATED_VIDEO_PROMPT_MANIFEST_SCHEMA_INVALID',
+    );
+    push(
+      errors,
+      firstFrameManifest?.v9ContractEnabled === true,
+      'FIRST_FRAME_V9_CONTRACT_MARKER_MISSING',
+    );
+    push(
+      errors,
+      !Object.hasOwn(firstFrameManifest ?? {}, 'items') &&
+        !Object.hasOwn(runningHubManifest ?? {}, 'items') &&
+        !Object.hasOwn(aiGeneratedVideoManifest ?? {}, 'scenes'),
+      'PROMPT_PACKAGE_COLLECTIONS_MIXED',
+    );
+    push(
+      errors,
+      hasExactKeys(aiGeneratedVideoManifest, AI_GENERATED_VIDEO_MANIFEST_KEYS),
+      'AI_GENERATED_VIDEO_PROMPT_MANIFEST_FIELDS_INVALID',
+    );
+    push(
+      errors,
+      firstFrameManifest?.sourcePlanCanonicalSha256 === sha256Json(plan) &&
+        runningHubManifest?.sourcePlanCanonicalSha256 === sha256Json(plan) &&
+        aiGeneratedVideoManifest?.sourcePlanCanonicalSha256 === sha256Json(plan),
+      'PROMPT_PACKAGE_PLAN_SHA_MISMATCH',
+    );
+  }
   const firstFrameScenes = Array.isArray(firstFrameManifest?.scenes)
     ? firstFrameManifest.scenes
     : [];
@@ -1145,7 +1609,7 @@ export function validatePromptHandoffManifests({
     'RUNNINGHUB_PROMPT_SCENE_COUNT_MISMATCH',
   );
   plan.paperScenes.forEach((scene, index) => {
-    const identity = buildSceneIdentity(scene, index);
+    const identity = buildSceneIdentity(scene, index, {v9ContractEnabled});
     const firstFrame = firstFrameScenes[index] ?? {};
     const runningHub = runningHubScenes[index] ?? {};
     const suffix = identity.sceneId;
@@ -1161,7 +1625,7 @@ export function validatePromptHandoffManifests({
     );
     push(
       errors,
-      firstFrame.firstFramePrompt === scene.prompt.firstFrame &&
+      firstFrame.firstFramePrompt === identity.firstFramePrompt &&
         firstFrame.firstFramePromptSha256 === identity.firstFramePromptSha256,
       `FIRST_FRAME_PROMPT_MISMATCH:${suffix}`,
     );
@@ -1207,7 +1671,123 @@ export function validatePromptHandoffManifests({
       !Object.hasOwn(runningHub, 'firstFramePrompt'),
       `RUNNINGHUB_MANIFEST_CONTAINS_FIRST_FRAME_PROMPT:${suffix}`,
     );
+    if (v9ContractEnabled) {
+      push(
+        errors,
+        stableStringify(firstFrame.layoutContract) ===
+            stableStringify(scene.layoutContract) &&
+          firstFrame.layoutContractSha256 === sha256Json(scene.layoutContract),
+        `FIRST_FRAME_LAYOUT_CONTRACT_MISMATCH:${suffix}`,
+      );
+      push(
+        errors,
+        !Object.hasOwn(runningHub, 'layoutContract'),
+        `RUNNINGHUB_MANIFEST_CONTAINS_LAYOUT_CONTRACT:${suffix}`,
+      );
+      push(
+        errors,
+        !Object.hasOwn(firstFrame, 'prompt') &&
+          !Object.hasOwn(firstFrame, 'negativePrompt') &&
+          !Object.hasOwn(firstFrame, 'mode'),
+        `FIRST_FRAME_MANIFEST_CONTAINS_AI_VIDEO_FIELDS:${suffix}`,
+      );
+      push(
+        errors,
+        !Object.hasOwn(runningHub, 'prompt') &&
+          !Object.hasOwn(runningHub, 'negativePrompt') &&
+          !Object.hasOwn(runningHub, 'mode'),
+        `RUNNINGHUB_MANIFEST_CONTAINS_AI_VIDEO_FIELDS:${suffix}`,
+      );
+    }
   });
+  if (v9ContractEnabled) {
+    const assignments = Array.isArray(plan.generatedVideoAssignments)
+      ? plan.generatedVideoAssignments
+      : [];
+    const aiItems = Array.isArray(aiGeneratedVideoManifest?.items)
+      ? aiGeneratedVideoManifest.items
+      : [];
+    const expectedAiStatus = assignments.length === 0
+      ? 'not-required'
+      : 'manual-execution-required';
+    push(
+      errors,
+      aiGeneratedVideoManifest?.status === expectedAiStatus,
+      'AI_GENERATED_VIDEO_PROMPT_MANIFEST_STATUS_INVALID',
+    );
+    push(
+      errors,
+      aiGeneratedVideoManifest?.consumer === 'manual-ai-generated-video' &&
+        aiGeneratedVideoManifest?.promptRole === 'ai-generated-video-only',
+      'AI_GENERATED_VIDEO_PROMPT_MANIFEST_ROLE_INVALID',
+    );
+    push(
+      errors,
+      aiItems.length === assignments.length &&
+        aiGeneratedVideoManifest?.itemCount === assignments.length,
+      'AI_GENERATED_VIDEO_PROMPT_ITEM_COUNT_MISMATCH',
+    );
+    assignments.forEach((assignment, index) => {
+      const item = aiItems[index] ?? {};
+      const identity = buildAiGeneratedVideoIdentity(assignment, index);
+      const brief = assignment.generatedVideoBrief;
+      const suffix = identity.sceneId;
+      push(errors, item.sceneId === identity.sceneId, `AI_VIDEO_SCENE_ID_MISMATCH:${suffix}`);
+      push(errors, item.beatId === assignment.beatId, `AI_VIDEO_BEAT_ID_MISMATCH:${suffix}`);
+      push(errors, item.mode === brief.mode, `AI_VIDEO_MODE_MISMATCH:${suffix}`);
+      push(
+        errors,
+        item.outputFileName === identity.outputFileName,
+        `AI_VIDEO_OUTPUT_FILE_NAME_MISMATCH:${suffix}`,
+      );
+      push(
+        errors,
+        item.durationSeconds === brief.durationSeconds,
+        `AI_VIDEO_DURATION_MISMATCH:${suffix}`,
+      );
+      push(errors, item.purpose === brief.purpose, `AI_VIDEO_PURPOSE_MISMATCH:${suffix}`);
+      push(
+        errors,
+        item.prompt === brief.prompt && item.promptSha256 === identity.promptSha256,
+        `AI_VIDEO_PROMPT_MISMATCH:${suffix}`,
+      );
+      push(
+        errors,
+        item.negativePrompt === brief.negativePrompt &&
+          item.negativePromptSha256 === identity.negativePromptSha256,
+        `AI_VIDEO_NEGATIVE_PROMPT_MISMATCH:${suffix}`,
+      );
+      push(
+        errors,
+        item.disclosureRequired === true &&
+          item.evidenceEligible === false &&
+          item.manualExecutionRequired === true,
+        `AI_VIDEO_SAFETY_BOUNDARY_INVALID:${suffix}`,
+      );
+      push(
+        errors,
+        hasExactKeys(item, AI_GENERATED_VIDEO_ITEM_KEYS),
+        `AI_VIDEO_PROMPT_FIELDS_INVALID:${suffix}`,
+      );
+      push(
+        errors,
+        !Object.hasOwn(item, 'firstFramePrompt') &&
+          !Object.hasOwn(item, 'imageToVideoPrompt') &&
+          !Object.hasOwn(item, 'inputFirstFrameFileName') &&
+          !Object.hasOwn(item, 'layoutContract') &&
+          !Object.hasOwn(item, 'postProductionTextOverlay') &&
+          !Object.hasOwn(item, 'pairId') &&
+          !Object.hasOwn(item, 'pairSha256'),
+        `AI_VIDEO_PROMPT_MANIFEST_CONTAINS_PAPER_FIELDS:${suffix}`,
+      );
+    });
+    const paperSceneIds = new Set(firstFrameScenes.map((scene) => scene.sceneId));
+    push(
+      errors,
+      aiItems.every((item) => !paperSceneIds.has(item.sceneId)),
+      'PROMPT_PACKAGE_SCENE_ID_COLLISION',
+    );
+  }
   return {ok: errors.length === 0, errors};
 }
 

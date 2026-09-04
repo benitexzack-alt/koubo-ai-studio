@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "koubo-platform-safe-areas/v1",
+  "profiles": [
+    {
+      "id": "douyin-feed-landscape-16x9-v1",
+      "platform": "douyin",
+      "surface": "feed",
+      "aspectRatio": "16:9",
+      "status": "measured-minimum-with-conservative-margin",
+      "coordinateSystem": {
+        "origin": "top-left",
+        "unit": "pixel",
+        "canvas": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "calibration": {
+        "observedAt": "2026-09-05",
+        "sourceScreenshot": {
+          "width": 1290,
+          "height": 2796,
+          "sha256": "f0cbbf14c0d73e192783d6cf422d7219bd168f8832bb898c2ba358da6f2d1677"
+        },
+        "videoViewportInScreenshot": {
+          "x": 0,
+          "yApprox": 827,
+          "width": 1290,
+          "heightApprox": 726,
+          "scaleFromComposition": 0.671875
+        },
+        "observedCreatorAvatar": {
+          "screenshotCircle": {
+            "cx": 1202,
+            "cy": 1388,
+            "radius": 69
+          },
+          "compositionCircle": {
+            "cx": 1789,
+            "cy": 835,
+            "radius": 103
+          },
+          "measurementTolerancePixels": 3
+        },
+        "scopeNote": "这是当前截图可验证的最低合同；平台界面变化后必须用新截图建立新版本，不能静默改写本版本。"
+      },
+      "regions": {
+        "reservedPresenterRightBand": {
+          "x": 1600,
+          "y": 0,
+          "width": 320,
+          "height": 1080
+        },
+        "subtitle": {
+          "x": 205,
+          "y": 930,
+          "width": 1510,
+          "height": 108
+        }
+      },
+      "platformOverlays": [
+        {
+          "id": "douyin-creator-avatar",
+          "shape": "circle",
+          "observedCircle": {
+            "cx": 1789,
+            "cy": 835,
+            "radius": 103
+          },
+          "safetyMarginPixels": 32,
+          "hardMaskCircle": {
+            "cx": 1789,
+            "cy": 835,
+            "radius": 135
+          }
+        }
+      ],
+      "presenter": {
+        "size": {
+          "width": 278,
+          "height": 278,
+          "circleRadius": 139
+        },
+        "minimumSubtitleGapPixels": 32,
+        "slots": {
+          "default": {
+            "id": "right-safe",
+            "anchor": "bottom-right",
+            "right": 360,
+            "bottom": 202,
+            "expectedRect": {
+              "x": 1282,
+              "y": 600,
+              "width": 278,
+              "height": 278
+            }
+          },
+          "fallback": {
+            "id": "left-safe",
+            "anchor": "bottom-left",
+            "left": 64,
+            "bottom": 202,
+            "expectedRect": {
+              "x": 64,
+              "y": 600,
+              "width": 278,
+              "height": 278
+            }
+          }
+        },
+        "transition": {
+          "mode": "fixed-slot-opacity-scale",
+          "allowedAnimatedProperties": [
+            "opacity",
+            "scale"
+          ],
+          "forbiddenAnimatedProperties": [
+            "x",
+            "y",
+            "left",
+            "right",
+            "top",
+            "bottom",
+            "width",
+            "height"
+          ],
+          "minimumScale": 0.92,
+          "maximumScale": 1
+        }
+      },
+      "machineRules": {
+        "presenterMustStayOutsideReservedRightBand": true,
+        "presenterMustStayOutsidePlatformHardMasks": true,
+        "presenterMustRemainAboveSubtitle": true,
+        "validateEveryActiveFrame": true
+      }
+    }
+  ]
+}

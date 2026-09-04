@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "koubo-director-v9-readiness/v1",
+  "createdAt": "2026-09-05T04:17:25+08:00",
+  "status": "candidate-ready-for-next-video-test",
+  "scope": "下一条新口播的V9导演候选路线，不追溯修改已发布视频",
+  "activeDirectorProfile": {
+    "path": "workflow/active-director-profile.v1.json",
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.0.0",
+    "formalEligibleByDefault": false
+  },
+  "formalProductionBaseline": {
+    "path": "workflow/active-production-profile.v1.json",
+    "sha256": "35966590ab57c6c4e5c0560781de181b99ed465c66a0cf3e4ae5dbb45e3ecf64",
+    "profileId": "v8-semantic-continuity-sfx",
+    "profileVersion": "V8",
+    "unchangedByThisUpgrade": true
+  },
+  "evidence": {
+    "publishedFrameScreenshot": {
+      "path": "/Users/pc/Downloads/截屏 2026-09-05 02.19.37.png",
+      "sha256": "f0cbbf14c0d73e192783d6cf422d7219bd168f8832bb898c2ba358da6f2d1677"
+    },
+    "upgradeAudit": {
+      "path": "workflow/audits/director-v9-upgrade-20260905.v1.md",
+      "sha256": "e21888ad7efd36708581d6ee0cee00e2a8e5c6b48d8046458b73c0ad9a18771e"
+    },
+    "directorSkillLock": {
+      "path": "workflow/director-skill-lock.v1.json",
+      "fileCount": 79,
+      "packageSha256": "d61c0028f261b02f441a25f5d9084e13b7c1ed61a99accc5ce979bd3a5c50657"
+    }
+  },
+  "implementedContracts": {
+    "promptPacks": [
+      "paper-first-frame",
+      "runninghub-image-to-video",
+      "ai-generated-video"
+    ],
+    "paperFirstFrame": {
+      "layoutContractRequired": true,
+      "labelObjectBindingRequired": true,
+      "symbolCueConflictRejected": true,
+      "representativeSampleCount": 1,
+      "automaticRetryAllowed": false,
+      "passedRawImageMayBeReusedAfterTextBakeFailure": true
+    },
+    "presenterInset": {
+      "platformProfileId": "douyin-feed-landscape-16x9-v1",
+      "defaultSlot": {
+        "width": 278,
+        "height": 278,
+        "right": 360,
+        "bottom": 202
+      },
+      "fixedSlotTransitionOnly": true
+    },
+    "shotcraft": {
+      "selectionStage": "postshoot-rebound",
+      "actualRecordingCaptionRequired": true,
+      "eligibleVisualClasses": [
+        "speaker",
+        "real-evidence"
+      ],
+      "forbiddenInsideVisualClasses": [
+        "paper-editorial",
+        "generated-video"
+      ],
+      "applicationReceiptRequired": true
+    },
+    "productionOrder": [
+      "script-confirmed",
+      "director-prompt-packs-ready",
+      "generation-handoff-ready",
+      "asset-intake-passed",
+      "postshoot-rebound",
+      "candidate-preview-rendered",
+      "candidate-preview-user-approved",
+      "formal-rendered",
+      "release-package-ready"
+    ]
+  },
+  "verification": {
+    "directorTestSuites": {
+      "command": "node --test skills/koubo-remotion-director/tests/*.mjs",
+      "passed": 17,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "firstFrameProducerTests": {
+      "command": "node --test skills/koubo-paper-firstframe-producer/tests/*.mjs",
+      "passed": 2,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "shotcraftTests": {
+      "command": "node --test skills/koubo-shotcraft-library/tests/*.test.mjs",
+      "passed": 89,
+      "failed": 0,
+      "exitCode": 0
+    },
+    "activeDirectorProfileValidation": {
+      "command": "node tools/validate-active-director-profile.mjs",
+      "exitCode": 0
+    },
+    "activeDirectorProfileLockRegression": {
+      "command": "node tools/test-active-director-profile.mjs",
+      "exitCode": 0
+    },
+    "presenterComponentBundle": {
+      "entry": "skills/koubo-remotion-director/assets/remotion-presenter-media/PresenterMediaStage.tsx",
+      "exitCode": 0
+    },
+    "repositoryRemotionTypecheck": {
+      "command": "npx tsc --noEmit --pretty false",
+      "exitCode": 2,
+      "blockingForThisUpgrade": false,
+      "preExistingUnrelatedErrors": [
+        "remotion/src/local-ai-services-v8-candidate-r1/LocalAIServicesV8CandidateR1.tsx:189 startFrom",
+        "remotion/src/local-ai-services-v8-candidate-r1/LocalAIServicesV8CandidateR1.tsx:239 startFrom",
+        "remotion/src/local-ai-services-v8-candidate-r1/LocalAIServicesV8CandidateR1.tsx:256 startFrom",
+        "remotion/src/local-ai-services-v8-candidate-r1/LocalAIServicesV8CandidateR1.tsx:283 startFrom"
+      ],
+      "newPresenterComponentUsesTrimBefore": true
+    }
+  },
+  "remainingGates": {
+    "realNextVideoEndToEndTestPending": true,
+    "representativeFirstFrameHumanAcceptanceRequired": true,
+    "generatedAssetIntakeRequired": true,
+    "actualRecordingPostshootRebindRequired": true,
+    "candidatePreviewQaRequired": true,
+    "candidatePreviewUserAcceptanceRequired": true,
+    "formalRenderAuthorizationRequired": true,
+    "releasePackageRequiredAfterFormal": true,
+    "publicationAuthorizationRequired": true
+  },
+  "externalMediaActions": {
+    "runningHubOpened": false,
+    "uploaded": false,
+    "generated": false,
+    "paid": false,
+    "published": false
+  }
+}

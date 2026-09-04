@@ -9,6 +9,11 @@ import {
   assertSkillLock,
   sha256File,
 } from './director-skill-lock-core.mjs';
+import {
+  getPlatformSafeAreaProfile,
+  validatePlatformSafeAreasDocument,
+  validatePresenterSlot,
+} from '../skills/koubo-remotion-director/scripts/platform-safe-area-core.mjs';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const profilePath = path.resolve(projectRoot, 'workflow/active-director-profile.v1.json');
@@ -31,7 +36,10 @@ try {
 }
 
 if (profile.status !== 'active-default') errors.push('DIRECTOR_PROFILE_NOT_ACTIVE_DEFAULT');
-if (profile.profileVersion !== '3.2.0') errors.push('DIRECTOR_PROFILE_VERSION_NOT_V3_2');
+if (profile.profileId !== 'paper-editorial-director-v9') {
+  errors.push('DIRECTOR_PROFILE_ID_NOT_V9');
+}
+if (profile.profileVersion !== '9.0.0') errors.push('DIRECTOR_PROFILE_VERSION_NOT_V9');
 if (profile.routingPolicy?.fallback !== 'blocked') {
   errors.push('DIRECTOR_PROFILE_FALLBACK_NOT_BLOCKED');
 }
@@ -62,6 +70,33 @@ if (profile.promptHandoffPolicy?.runningHubReadyPackRequired !== true) {
 if (profile.promptHandoffPolicy?.paperNodeScreenOverlayAllowed !== false) {
   errors.push('DIRECTOR_PROFILE_PAPER_NODE_SCREEN_OVERLAY_ALLOWED');
 }
+if (
+  profile.promptHandoffPolicy?.independentPromptArtifactCount !== 3 ||
+  profile.promptHandoffPolicy?.zeroSceneManifestRequired !== true ||
+  profile.promptHandoffPolicy?.aiGeneratedVideoConsumer !==
+    'user-authorized-manual-generation'
+) {
+  errors.push('DIRECTOR_PROFILE_THREE_PROMPT_PACK_CONTRACT_INVALID');
+}
+if (
+  profile.paperLayoutPolicy?.coordinateSpace !== 'normalized-0-to-1' ||
+  profile.paperLayoutPolicy?.contentSafeRectRequired !== true ||
+  profile.paperLayoutPolicy?.subtitleReservedRectRequired !== true ||
+  profile.paperLayoutPolicy?.objectGroupBoxRequired !== true ||
+  profile.paperLayoutPolicy?.paperLabelSurfaceBoxRequired !== true ||
+  profile.paperLayoutPolicy?.layoutInterpretation?.objectGroupBoxes !==
+    'broad-composition-zones' ||
+  profile.paperLayoutPolicy?.layoutInterpretation?.paperLabelSurfaceBoxes !==
+    'reserved-placement-zones' ||
+  profile.paperLayoutPolicy?.layoutInterpretation?.exactPixelMatchRequired !== false ||
+  profile.paperLayoutPolicy?.layoutInterpretation?.contentAndSubtitleContainmentIsHard !== true ||
+  profile.paperLayoutPolicy?.generatedDecorationPolicy !== 'forbidden' ||
+  profile.paperLayoutPolicy?.layoutFailureBlocksGeneration !== true ||
+  profile.paperLayoutPolicy?.v9SampleSceneCount !== 1 ||
+  profile.paperLayoutPolicy?.automaticRetryAllowed !== false
+) {
+  errors.push('DIRECTOR_PROFILE_PAPER_LAYOUT_CONTRACT_INVALID');
+}
 if (profile.semanticTimingPolicy?.maximumVisualClaimLeadMs !== 300) {
   errors.push('DIRECTOR_PROFILE_VISUAL_LEAD_NOT_300MS');
 }
@@ -87,7 +122,11 @@ if (
   profile.routingPolicy?.realMaterialPresenterInset?.mode !==
     'real-media-with-presenter-inset' ||
   profile.routingPolicy?.realMaterialPresenterInset?.duplicatePresenterVideoMuted !== true ||
-  profile.routingPolicy?.realMaterialPresenterInset?.presenterAudioOwner !== 'base-talk-only'
+  profile.routingPolicy?.realMaterialPresenterInset?.presenterAudioOwner !== 'base-talk-only' ||
+  profile.routingPolicy?.realMaterialPresenterInset?.presenterAnchor !== 'douyin-right-safe' ||
+  profile.routingPolicy?.realMaterialPresenterInset?.minimumCaptionGapPx !== 32 ||
+  profile.routingPolicy?.realMaterialPresenterInset?.transitionMode !==
+    'fixed-slot-opacity-scale'
 ) {
   errors.push('DIRECTOR_PROFILE_PRESENTER_INSET_CONTRACT_INVALID');
 }
@@ -97,6 +136,88 @@ if (
   profile.routingPolicy?.generatedVideo?.presentationMode !== 'full-screen'
 ) {
   errors.push('DIRECTOR_PROFILE_GENERATED_VIDEO_CONTRACT_INVALID');
+}
+if (
+  profile.routingPolicy?.shotcraft?.explicitDecisionRequiredForEligibleBeats !== true ||
+  profile.routingPolicy?.shotcraft?.selectedEffectMustHaveApplicationReceipt !== true ||
+  profile.routingPolicy?.shotcraft?.mechanicalQuotaForbidden !== true ||
+  profile.routingPolicy?.shotcraft?.fallback !== 'blocked'
+) {
+  errors.push('DIRECTOR_PROFILE_SHOTCRAFT_CONTRACT_INVALID');
+}
+if (
+  profile.workflowPolicy?.schemaVersion !== 'koubo-v9-production-state/v1' ||
+  profile.workflowPolicy?.strictStageOrder !== true ||
+  profile.workflowPolicy?.candidatePreviewRequired !== true ||
+  profile.workflowPolicy?.formalRequiresUserPreviewAcceptance !== true ||
+  profile.workflowPolicy?.releasePackageRequiresFormalQa !== true ||
+  profile.workflowPolicy?.automaticPublicationAllowed !== false
+) {
+  errors.push('DIRECTOR_PROFILE_V9_WORKFLOW_CONTRACT_INVALID');
+}
+for (const declaredPath of [
+  profile.workflowPolicy?.templatePath,
+  profile.workflowPolicy?.validatorPath,
+]) {
+  if (!declaredPath || !existsSync(resolveDeclared(declaredPath))) {
+    errors.push(`DIRECTOR_PROFILE_V9_WORKFLOW_FILE_MISSING:${declaredPath ?? 'unknown'}`);
+  }
+}
+
+try {
+  const safeAreaPath = resolveDeclared(
+    profile.routingPolicy.realMaterialPresenterInset.platformSafeAreaProfilePath,
+  );
+  const safeAreaDocument = readJson(safeAreaPath);
+  const safeAreaDocumentResult = validatePlatformSafeAreasDocument(safeAreaDocument);
+  if (!safeAreaDocumentResult.passed) {
+    errors.push('DIRECTOR_PROFILE_PLATFORM_SAFE_AREA_DOCUMENT_INVALID');
+  } else {
+    const safeAreaProfile = getPlatformSafeAreaProfile(
+      safeAreaDocument,
+      profile.routingPolicy.realMaterialPresenterInset.platformSafeAreaProfileId,
+    );
+    for (const slotName of ['default', 'fallback']) {
+      if (!validatePresenterSlot(safeAreaProfile, slotName).passed) {
+        errors.push(`DIRECTOR_PROFILE_PLATFORM_SAFE_AREA_SLOT_INVALID:${slotName}`);
+      }
+    }
+  }
+} catch (error) {
+  errors.push(`DIRECTOR_PROFILE_PLATFORM_SAFE_AREA_LOAD_FAILED:${error.message}`);
+}
+
+try {
+  const shotcraftRegistry = readJson(
+    resolveDeclared(profile.routingPolicy.shotcraft.registryPath),
+  );
+  if (
+    shotcraftRegistry.defaultEnabled !== false ||
+    !Array.isArray(shotcraftRegistry.effects) ||
+    shotcraftRegistry.effects.length < 5 ||
+    shotcraftRegistry.effects.some((effect) => effect.status !== 'candidate-only')
+  ) {
+    errors.push('DIRECTOR_PROFILE_SHOTCRAFT_REGISTRY_INVALID');
+  }
+} catch (error) {
+  errors.push(`DIRECTOR_PROFILE_SHOTCRAFT_REGISTRY_LOAD_FAILED:${error.message}`);
+}
+
+try {
+  const productionProfile = readJson(
+    path.resolve(projectRoot, 'workflow/active-production-profile.v1.json'),
+  );
+  if (
+    productionProfile.profileId !== 'v8-semantic-continuity-sfx' ||
+    productionProfile.profileVersion !== 'V8' ||
+    profile.v8Integration?.role !== 'formal-production-rollback-baseline-during-v9-pilot' ||
+    profile.v8Integration?.v9CandidateForNextNewRevision !== true ||
+    profile.v8Integration?.v9FormalEligibleBeforeRealPilotAcceptance !== false
+  ) {
+    errors.push('DIRECTOR_PROFILE_V8_ROLLBACK_BASELINE_INVALID');
+  }
+} catch (error) {
+  errors.push(`DIRECTOR_PROFILE_V8_ROLLBACK_LOAD_FAILED:${error.message}`);
 }
 const upgradeAuditPath = resolveDeclared(profile.skill?.contractUpgrade?.auditReport?.path);
 if (

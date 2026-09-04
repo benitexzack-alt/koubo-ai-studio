@@ -1,12 +1,12 @@
 {
   "schemaVersion": "koubo-director-skill-lock/v1",
-  "profileId": "paper-editorial-director-v3",
-  "profileVersion": "3.2.0",
+  "profileId": "paper-editorial-director-v9",
+  "profileVersion": "9.0.0",
   "skillRoot": "skills/koubo-remotion-director",
-  "generatedAt": "2026-09-04T07:59:43.508Z",
-  "fileCount": 71,
-  "totalBytes": 1746654,
-  "packageSha256": "babbfe9fd0c9df57affcf079cfaba952b79cb5c33c239e0a3c5711f9bd0daec8",
+  "generatedAt": "2026-09-04T20:13:30.592Z",
+  "fileCount": 79,
+  "totalBytes": 1828098,
+  "packageSha256": "d61c0028f261b02f441a25f5d9084e13b7c1ed61a99accc5ce979bd3a5c50657",
   "entries": [
     {
       "path": "agents/openai.yaml",
@@ -45,8 +45,8 @@
     },
     {
       "path": "assets/remotion-presenter-media/PresenterMediaStage.tsx",
-      "bytes": 3044,
-      "sha256": "d0b9e8d5b0bb8baf55e10fb35c390dd278f0d4e55473b8318fff0aeda4cf4be4"
+      "bytes": 4130,
+      "sha256": "a15f6a41dddda1ada34a29c39cecc085a9ea02ec49b782cc8d57750c36a647b5"
     },
     {
       "path": "assets/schema-validator-engine.mjs",
@@ -99,9 +99,19 @@
       "sha256": "68fbfe1cd7105cac6195be52c5c759c35b1dd858db91f4a9808ca374badf1d6d"
     },
     {
+      "path": "references/platform-safe-areas.v1.json",
+      "bytes": 3560,
+      "sha256": "276d4bf151798bd4971c13560a8f3411589df0c839cdf19fc8b5665a0b8ea49c"
+    },
+    {
       "path": "references/v4-visual-pack.md",
       "bytes": 1500,
       "sha256": "3e3157aaa7e7bb91000bd48381ef3ccdaf622b85cd28df8a665a9704300393cc"
+    },
+    {
+      "path": "references/v9-workflow-contract.md",
+      "bytes": 3088,
+      "sha256": "a001547938c8a57884999aeffe6c61b8acd00678a1abe5f7f31fff5ac61df3b8"
     },
     {
       "path": "references/validation-gates.md",
@@ -145,8 +155,8 @@
     },
     {
       "path": "scripts/compile-preproduction-director.mjs",
-      "bytes": 5165,
-      "sha256": "fbb0179a43746e294a4c772aa3e1c1592e8ba30c3707e9a3f7db21affcb9b50f"
+      "bytes": 6584,
+      "sha256": "3099074e7a39e6993b5ebc02744bad6bf036da9dde39666c7e146a8ddc6f2d40"
     },
     {
       "path": "scripts/director-contract-v2-core.mjs",
@@ -155,8 +165,8 @@
     },
     {
       "path": "scripts/director-production-preflight-v2.mjs",
-      "bytes": 31827,
-      "sha256": "b4bb9596d316028f809c6e28c7713b868bf45437d6ac208ec58f85fd3374d017"
+      "bytes": 33991,
+      "sha256": "760c8f56ffd239c081951f443a64041fb3e912294b81dac14d241664134e0532"
     },
     {
       "path": "scripts/emit-render-command.mjs",
@@ -174,14 +184,19 @@
       "sha256": "843b390867375b29c8eca0de77e9218ff10225d0bc4c4fedc13743920fd48512"
     },
     {
+      "path": "scripts/platform-safe-area-core.mjs",
+      "bytes": 9812,
+      "sha256": "9dc164eb544f65c3526ea8e4eb0a3a581587ee5c849c65ea34e9288f3a42fcf4"
+    },
+    {
       "path": "scripts/postshoot-rebind-core.mjs",
       "bytes": 20462,
       "sha256": "2ba40a856432c1d5bca12af2cc1734dca49ad24a31a84f47b8669e13451949c0"
     },
     {
       "path": "scripts/preproduction-director-core.mjs",
-      "bytes": 44849,
-      "sha256": "238e5106614734b80657e0529b699f9fc3dc5110abae4efaef7a390028a16448"
+      "bytes": 65262,
+      "sha256": "cd89594ae04c57532e2127bab7621706f70836fd12ade04479b2f52a76b6cb24"
     },
     {
       "path": "scripts/rebind-postshoot-director.mjs",
@@ -229,6 +244,11 @@
       "sha256": "4fd988c8d67560fccd4da512665782ae8211c4fe603ea8b39fa6f32e9c2968c5"
     },
     {
+      "path": "scripts/v9-workflow-state-core.mjs",
+      "bytes": 6484,
+      "sha256": "46c8038c23d92662ef0a3b8c614e66bf5eafcbe9aa881591272c15242afab7e2"
+    },
+    {
       "path": "scripts/validate-director-contract-v2.mjs",
       "bytes": 1446,
       "sha256": "cc56d383329836fee3ddf73f3868c8e848a2fc938f2120179a98fddedd2ef14f"
@@ -250,13 +270,18 @@
     },
     {
       "path": "scripts/validate-preproduction-director.mjs",
-      "bytes": 8050,
-      "sha256": "7905f7f3bd4df516500702a174c565c2c769daaf0beac5d11cff7cbbdeb25aa6"
+      "bytes": 10441,
+      "sha256": "207a844ba30ad327b75a1fc1611917a41d707f20047fdbf8ab5fc51a730ce078"
+    },
+    {
+      "path": "scripts/validate-v9-production-state.mjs",
+      "bytes": 1389,
+      "sha256": "b8fc0f4ea130e2d569568dd57bed3dcfa112a62841ea3f4f2291f88dd5f4eb00"
     },
     {
       "path": "SKILL.md",
-      "bytes": 25262,
-      "sha256": "06f146e2d6b634560b1396e0a0df5634c23cab6d99f5d03e0837771a00ba78e3"
+      "bytes": 28317,
+      "sha256": "8e6a8f2ea351eb60c59bf7c853e93b739f7966635e4ada057ea46382f288c79d"
     },
     {
       "path": "templates/director-contract-v2.schema.json",
@@ -290,8 +315,8 @@
     },
     {
       "path": "templates/director-preproduction-request.v1.json",
-      "bytes": 1556,
-      "sha256": "a8e71ea6f66d49a22c5f7c74735c10452d1efed8d1055030ae70f9643e66f0e7"
+      "bytes": 1761,
+      "sha256": "4b8960e5c2d301582f3f169938b02245794d20a71c2ea536e6cdbd017e2a8c5c"
     },
     {
       "path": "templates/director-request.v1.json",
@@ -302,6 +327,11 @@
       "path": "templates/director-user-style-acceptance.v1.json",
       "bytes": 2335,
       "sha256": "ab2b7a10069a5d90ed1092d1176d3a48e3437c4ba0b0aeec0abefb07061bde72"
+    },
+    {
+      "path": "templates/v9-production-state.v1.json",
+      "bytes": 1107,
+      "sha256": "3f9551dc682c30167f10218cca16353c6e77bddf98f4ab26bb2eddf704d2c9ee"
     },
     {
       "path": "tests/fixtures/exact30-ab-synthetic-plan.json",
@@ -334,14 +364,19 @@
       "sha256": "aa098477c81ebc2730a9f63d8488d64825ab6376d0e92d53ac9c9f1fe4e2341f"
     },
     {
+      "path": "tests/test-platform-safe-area.mjs",
+      "bytes": 4751,
+      "sha256": "345822fa5b1650eac0d7481ec0a2d81fe54cae3c474e742decc943cb67903588"
+    },
+    {
       "path": "tests/test-postshoot-rebind-contract.mjs",
       "bytes": 8901,
       "sha256": "c163ca223c271b752e1949d0425ec14854aca050c980b96b1330cb368ce67d8f"
     },
     {
       "path": "tests/test-preproduction-director-contract.mjs",
-      "bytes": 18972,
-      "sha256": "aac1b2f96c5820325a15b18a9665d13bb451da331e388c326563e23bdbf3c149"
+      "bytes": 35033,
+      "sha256": "a5a164a55049fe26833d975bc780b531602cabf17aeb8c922c372560713130ce"
     },
     {
       "path": "tests/test-progressive-local-motion-contract.mjs",
@@ -362,6 +397,11 @@
       "path": "tests/test-supervisor-a-acceptance-gate.mjs",
       "bytes": 57824,
       "sha256": "380dc16d91d66394a0a4fe517ed3b83de70efcaa769e712f6975cbb00830f962"
+    },
+    {
+      "path": "tests/test-v9-workflow-state.mjs",
+      "bytes": 4459,
+      "sha256": "fa6654038bae2cd611751b001a665e41a80fbebcd6771d36564f546ae318e656"
     }
   ]
 }

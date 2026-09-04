@@ -1,13 +1,17 @@
 #!/usr/bin/env node
 
 import assert from 'node:assert/strict';
-import {mkdtempSync, rmSync, writeFileSync} from 'node:fs';
+import {spawnSync} from 'node:child_process';
+import {existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {
+  buildAiGeneratedVideoPromptManifest,
   buildFirstFramePromptManifest,
   buildRunningHubPromptManifest,
   compilePreproductionPlan,
+  renderAiGeneratedVideoPromptSheet,
   sha256File,
   validatePromptHandoffManifests,
   validatePreproductionRequest,
@@ -154,6 +158,96 @@ const makeRequest = (scriptPath) => ({
   ],
 });
 
+const buildV9LayoutContract = () => ({
+  coordinateSpace: 'normalized-0-to-1',
+  contentSafeRect: {x: 0.05, y: 0.05, width: 0.9, height: 0.7},
+  subtitleReservedRect: {x: 0, y: 0.8, width: 1, height: 0.2},
+  objectGroupBoxes: [
+    {groupId: 'G1', box: {x: 0.07, y: 0.1, width: 0.16, height: 0.5}},
+    {groupId: 'G2', box: {x: 0.25, y: 0.1, width: 0.23, height: 0.5}},
+    {groupId: 'G3', box: {x: 0.5, y: 0.1, width: 0.14, height: 0.5}},
+    {groupId: 'G4', box: {x: 0.66, y: 0.1, width: 0.1, height: 0.5}},
+    {groupId: 'G5', box: {x: 0.78, y: 0.1, width: 0.15, height: 0.5}},
+  ],
+  paperLabelSurfaceBoxes: [
+    {
+      nodeId: 'N1',
+      groupId: 'G1',
+      surfaceId: 'G1-surface-1',
+      box: {x: 0.08, y: 0.45, width: 0.14, height: 0.08},
+    },
+    {
+      nodeId: 'N2',
+      groupId: 'G2',
+      surfaceId: 'G2-surface-2',
+      box: {x: 0.26, y: 0.42, width: 0.1, height: 0.08},
+    },
+    {
+      nodeId: 'N3',
+      groupId: 'G2',
+      surfaceId: 'G2-surface-3',
+      box: {x: 0.37, y: 0.42, width: 0.1, height: 0.08},
+    },
+    {
+      nodeId: 'N8',
+      groupId: 'G5',
+      surfaceId: 'G5-surface-4',
+      box: {x: 0.8, y: 0.44, width: 0.11, height: 0.08},
+    },
+  ],
+  layoutInterpretation: {
+    objectGroupBoxes: 'broad-composition-zones',
+    paperLabelSurfaceBoxes: 'reserved-placement-zones',
+    exactPixelMatchRequired: false,
+    contentAndSubtitleContainmentIsHard: true,
+  },
+  generatedDecorationPolicy: 'forbidden',
+});
+
+const enableV9 = (sourceRequest, outputRoot = 'out-v9') => {
+  const request = structuredClone(sourceRequest);
+  request.policy.v9ContractEnabled = true;
+  request.policy.textStrategy = 'deterministic-first-frame-text-v9';
+  request.beats
+    .filter((beat) => beat.visualDecision?.class === 'paper-editorial')
+    .forEach((beat) => {
+      beat.paperScene.layoutContract = buildV9LayoutContract();
+    });
+  request.outputs = {
+    routeLockPath: `${outputRoot}/route.json`,
+    planPath: `${outputRoot}/plan.json`,
+    assetSheetPath: `${outputRoot}/assets.md`,
+    firstFramePromptManifestPath: `${outputRoot}/first-frame-prompts.json`,
+    runningHubPromptManifestPath: `${outputRoot}/runninghub-prompts.json`,
+    runningHubPromptSheetPath: `${outputRoot}/runninghub-prompts.md`,
+    aiGeneratedVideoPromptManifestPath: `${outputRoot}/ai-generated-video-prompts.json`,
+    aiGeneratedVideoPromptSheetPath: `${outputRoot}/ai-generated-video-prompts.md`,
+    compileReceiptPath: `${outputRoot}/compile.json`,
+    validationReceiptPath: `${outputRoot}/validation.json`,
+  };
+  return request;
+};
+
+const testDirectory = path.dirname(fileURLToPath(import.meta.url));
+const requestTemplate = JSON.parse(
+  readFileSync(
+    path.resolve(testDirectory, '../templates/director-preproduction-request.v1.json'),
+    'utf8',
+  ),
+);
+assert.equal(requestTemplate.policy.v9ContractEnabled, true);
+assert.equal(requestTemplate.directorProfile.profileId, 'paper-editorial-director-v9');
+assert.equal(requestTemplate.directorProfile.profileVersion, '9.0.0');
+assert.equal(requestTemplate.policy.textStrategy, 'deterministic-first-frame-text-v9');
+assert.equal(
+  requestTemplate.outputs.aiGeneratedVideoPromptManifestPath,
+  '<NEW_AI_GENERATED_VIDEO_PROMPT_MANIFEST_PATH>',
+);
+assert.equal(
+  requestTemplate.outputs.aiGeneratedVideoPromptSheetPath,
+  '<NEW_AI_GENERATED_VIDEO_PROMPT_SHEET_PATH>',
+);
+
 const root = mkdtempSync(path.join(os.tmpdir(), 'koubo-preproduction-test-'));
 try {
   const scriptPath = path.join(root, 'script.md');
@@ -164,6 +258,117 @@ try {
   const request = makeRequest(scriptPath);
   const positive = validatePreproductionRequest({request, projectRoot: root, profile});
   assert.equal(positive.ok, true, positive.errors.join('\n'));
+
+  const v9Profile = {
+    ...profile,
+    profileId: 'paper-editorial-director-v9',
+    profileVersion: '9.0.0',
+  };
+  const v9ProfileWithoutContract = structuredClone(request);
+  v9ProfileWithoutContract.directorProfile.profileId = v9Profile.profileId;
+  v9ProfileWithoutContract.directorProfile.profileVersion = v9Profile.profileVersion;
+  const v9ProfileWithoutContractResult = validatePreproductionRequest({
+    request: v9ProfileWithoutContract,
+    projectRoot: root,
+    profile: v9Profile,
+  });
+  assert.equal(v9ProfileWithoutContractResult.ok, false);
+  assert.ok(
+    v9ProfileWithoutContractResult.errors.includes(
+      'PREPRODUCTION_V9_CONTRACT_REQUIRED_BY_PROFILE',
+    ),
+  );
+
+  const v9MissingLayout = structuredClone(request);
+  v9MissingLayout.policy.v9ContractEnabled = true;
+  Object.assign(v9MissingLayout.outputs, {
+    aiGeneratedVideoPromptManifestPath: 'out-v9-missing/ai-generated-video-prompts.json',
+    aiGeneratedVideoPromptSheetPath: 'out-v9-missing/ai-generated-video-prompts.md',
+  });
+  const v9MissingLayoutResult = validatePreproductionRequest({
+    request: v9MissingLayout,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(v9MissingLayoutResult.ok, false);
+  assert.ok(v9MissingLayoutResult.errors.includes('PAPER_LAYOUT_CONTRACT_MISSING:B01'));
+
+  const v9Request = enableV9(request);
+  const v9Positive = validatePreproductionRequest({request: v9Request, projectRoot: root, profile});
+  assert.equal(v9Positive.ok, true, v9Positive.errors.join('\n'));
+
+  const v9MissingGroupBox = structuredClone(v9Request);
+  v9MissingGroupBox.beats[0].paperScene.layoutContract.objectGroupBoxes.pop();
+  const v9MissingGroupBoxResult = validatePreproductionRequest({
+    request: v9MissingGroupBox,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(v9MissingGroupBoxResult.ok, false);
+  assert.ok(
+    v9MissingGroupBoxResult.errors.includes(
+      'PAPER_LAYOUT_GROUP_BOX_BINDING_INVALID:B01:G5',
+    ),
+  );
+
+  const v9MissingLabelBox = structuredClone(v9Request);
+  v9MissingLabelBox.beats[0].paperScene.layoutContract.paperLabelSurfaceBoxes.pop();
+  const v9MissingLabelBoxResult = validatePreproductionRequest({
+    request: v9MissingLabelBox,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(v9MissingLabelBoxResult.ok, false);
+  assert.ok(
+    v9MissingLabelBoxResult.errors.includes(
+      'PAPER_LAYOUT_LABEL_SURFACE_BOX_BINDING_INVALID:B01:N8',
+    ),
+  );
+
+  const v9GroupOutsideSafeRect = structuredClone(v9Request);
+  v9GroupOutsideSafeRect.beats[0].paperScene.layoutContract.objectGroupBoxes[0].box.x = 0;
+  const v9GroupOutsideSafeRectResult = validatePreproductionRequest({
+    request: v9GroupOutsideSafeRect,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(v9GroupOutsideSafeRectResult.ok, false);
+  assert.ok(
+    v9GroupOutsideSafeRectResult.errors.includes(
+      'PAPER_LAYOUT_GROUP_BOX_OUTSIDE_CONTENT_SAFE_RECT:B01:G1',
+    ),
+  );
+
+  const v9LabelInSubtitle = structuredClone(v9Request);
+  const subtitleLayout = v9LabelInSubtitle.beats[0].paperScene.layoutContract;
+  subtitleLayout.contentSafeRect.height = 0.85;
+  subtitleLayout.objectGroupBoxes[0].box.height = 0.8;
+  subtitleLayout.paperLabelSurfaceBoxes[0].box.y = 0.81;
+  const v9LabelInSubtitleResult = validatePreproductionRequest({
+    request: v9LabelInSubtitle,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(v9LabelInSubtitleResult.ok, false);
+  assert.ok(
+    v9LabelInSubtitleResult.errors.includes(
+      'PAPER_LAYOUT_LABEL_SURFACE_BOX_INTRUDES_SUBTITLE:B01:N1',
+    ),
+  );
+
+  const v9DecorationAllowed = structuredClone(v9Request);
+  v9DecorationAllowed.beats[0].paperScene.layoutContract.generatedDecorationPolicy = 'allowed';
+  const v9DecorationAllowedResult = validatePreproductionRequest({
+    request: v9DecorationAllowed,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(v9DecorationAllowedResult.ok, false);
+  assert.ok(
+    v9DecorationAllowedResult.errors.includes(
+      'PAPER_LAYOUT_GENERATED_DECORATION_NOT_FORBIDDEN:B01',
+    ),
+  );
 
   const missingUnlabeledDeclaration = structuredClone(request);
   delete missingUnlabeledDeclaration.beats[0].paperScene.labelBindingPolicy;
@@ -302,6 +507,56 @@ try {
   );
   assert.equal(firstFrameManifest.scenes[0].deterministicTextBake.anchorCalibrationRequired, true);
 
+  const v9RequestPath = path.join(root, 'v9-request.json');
+  writeFileSync(v9RequestPath, `${JSON.stringify(v9Request, null, 2)}\n`);
+  const v9Plan = compilePreproductionPlan({
+    request: v9Request,
+    requestPath: v9RequestPath,
+    profile,
+    style,
+  });
+  const v9FirstFrameManifest = buildFirstFramePromptManifest(v9Plan);
+  const v9RunningHubManifest = buildRunningHubPromptManifest(v9Plan);
+  const v9AiManifest = buildAiGeneratedVideoPromptManifest(v9Plan);
+  const v9HandoffResult = validatePromptHandoffManifests({
+    plan: v9Plan,
+    firstFrameManifest: v9FirstFrameManifest,
+    runningHubManifest: v9RunningHubManifest,
+    aiGeneratedVideoManifest: v9AiManifest,
+  });
+  assert.equal(v9HandoffResult.ok, true, v9HandoffResult.errors.join('\n'));
+  assert.equal(v9AiManifest.status, 'not-required');
+  assert.equal(v9AiManifest.itemCount, 0);
+  assert.deepEqual(v9AiManifest.items, []);
+  assert.equal(v9FirstFrameManifest.v9ContractEnabled, true);
+  assert.deepEqual(
+    v9FirstFrameManifest.scenes[0].layoutContract,
+    v9Request.beats[0].paperScene.layoutContract,
+  );
+  assert.ok(
+    v9FirstFrameManifest.scenes[0].firstFramePrompt.startsWith(
+      v9Request.beats[0].paperScene.prompt.firstFrame,
+    ),
+  );
+  assert.match(
+    v9FirstFrameManifest.scenes[0].firstFramePrompt,
+    /内容安全区：x=0\.0500, y=0\.0500, width=0\.9000, height=0\.7000/,
+  );
+  assert.match(
+    v9FirstFrameManifest.scenes[0].firstFramePrompt,
+    /字幕保留区：x=0\.0000, y=0\.8000, width=1\.0000, height=0\.2000/,
+  );
+  assert.match(
+    v9FirstFrameManifest.scenes[0].firstFramePrompt,
+    /generatedDecorationPolicy=forbidden/,
+  );
+  assert.match(
+    v9FirstFrameManifest.scenes[0].firstFramePrompt,
+    /宽区指导.*不要求逐像素贴合/,
+  );
+  assert.ok(!Object.hasOwn(v9RunningHubManifest.scenes[0], 'layoutContract'));
+  assert.match(renderAiGeneratedVideoPromptSheet(v9Plan, v9AiManifest), /not-required/);
+
   const routedRequest = structuredClone(request);
   routedRequest.beats.push(
     {
@@ -360,6 +615,108 @@ try {
   });
   assert.equal(routedPlan.routeSummary.presenterInsetBeatCount, 1);
   assert.equal(routedPlan.routeSummary.generatedVideoBeatCount, 1);
+
+  const v9AiRequest = structuredClone(v9Request);
+  v9AiRequest.beats.push({
+    id: 'B02',
+    order: 2,
+    spokenLine: '没有真实素材时，用情景演绎说明老人接受访谈。',
+    coreMeaning: '只作人物和环境情景演绎，不充当需求证据。',
+    kind: 'real-person-action',
+    visualDecision: {class: 'generated-video', producer: 'user', fallback: 'blocked'},
+    evidenceRefs: [],
+    generatedVideoBrief: {
+      role: 'illustration-only',
+      presentationMode: 'full-screen',
+      evidenceEligible: false,
+      mode: 'text-to-video',
+      durationSeconds: 6,
+      purpose: '表现上门访谈的动作与情绪',
+      prompt: '真实纪实风格，子女与老人围坐访谈，不出现可读文字。',
+      negativePrompt: '禁止品牌标志、可读文字、医疗诊断和事实证明暗示。',
+      disclosureRequired: true,
+      manualExecutionRequired: true,
+    },
+  });
+  const v9AiRequestResult = validatePreproductionRequest({
+    request: v9AiRequest,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(v9AiRequestResult.ok, true, v9AiRequestResult.errors.join('\n'));
+  const v9AiRequestPath = path.join(root, 'v9-ai-request.json');
+  writeFileSync(v9AiRequestPath, `${JSON.stringify(v9AiRequest, null, 2)}\n`);
+  const v9AiPlan = compilePreproductionPlan({
+    request: v9AiRequest,
+    requestPath: v9AiRequestPath,
+    profile,
+    style,
+  });
+  const v9AiFirstFrameManifest = buildFirstFramePromptManifest(v9AiPlan);
+  const v9AiRunningHubManifest = buildRunningHubPromptManifest(v9AiPlan);
+  const v9AiVideoManifest = buildAiGeneratedVideoPromptManifest(v9AiPlan);
+  assert.equal(v9AiVideoManifest.status, 'manual-execution-required');
+  assert.equal(v9AiVideoManifest.itemCount, 1);
+  assert.deepEqual(
+    Object.keys(v9AiVideoManifest.items[0]).sort(),
+    [
+      'beatId',
+      'disclosureRequired',
+      'durationSeconds',
+      'evidenceEligible',
+      'manualExecutionRequired',
+      'mode',
+      'negativePrompt',
+      'negativePromptSha256',
+      'outputFileName',
+      'prompt',
+      'promptSha256',
+      'purpose',
+      'sceneId',
+    ].sort(),
+  );
+  assert.equal(v9AiVideoManifest.items[0].sceneId, 'A01');
+  assert.equal(v9AiVideoManifest.items[0].beatId, 'B02');
+  assert.equal(v9AiVideoManifest.items[0].outputFileName, 'A01_ai-generated-video.mp4');
+  assert.equal(v9AiVideoManifest.items[0].manualExecutionRequired, true);
+  assert.equal(v9AiVideoManifest.items[0].disclosureRequired, true);
+  assert.equal(v9AiVideoManifest.items[0].evidenceEligible, false);
+  const v9AiHandoffResult = validatePromptHandoffManifests({
+    plan: v9AiPlan,
+    firstFrameManifest: v9AiFirstFrameManifest,
+    runningHubManifest: v9AiRunningHubManifest,
+    aiGeneratedVideoManifest: v9AiVideoManifest,
+  });
+  assert.equal(v9AiHandoffResult.ok, true, v9AiHandoffResult.errors.join('\n'));
+
+  const v9AiMissingNegativePrompt = structuredClone(v9AiRequest);
+  delete v9AiMissingNegativePrompt.beats[1].generatedVideoBrief.negativePrompt;
+  const v9AiMissingNegativePromptResult = validatePreproductionRequest({
+    request: v9AiMissingNegativePrompt,
+    projectRoot: root,
+    profile,
+  });
+  assert.equal(v9AiMissingNegativePromptResult.ok, false);
+  assert.ok(
+    v9AiMissingNegativePromptResult.errors.includes(
+      'GENERATED_VIDEO_NEGATIVE_PROMPT_MISSING:B02',
+    ),
+  );
+
+  const mixedAiVideoManifest = structuredClone(v9AiVideoManifest);
+  mixedAiVideoManifest.items[0].firstFramePrompt = '不得混入第三套提示词包';
+  const mixedAiVideoManifestResult = validatePromptHandoffManifests({
+    plan: v9AiPlan,
+    firstFrameManifest: v9AiFirstFrameManifest,
+    runningHubManifest: v9AiRunningHubManifest,
+    aiGeneratedVideoManifest: mixedAiVideoManifest,
+  });
+  assert.equal(mixedAiVideoManifestResult.ok, false);
+  assert.ok(
+    mixedAiVideoManifestResult.errors.includes(
+      'AI_VIDEO_PROMPT_MANIFEST_CONTAINS_PAPER_FIELDS:A01',
+    ),
+  );
 
   const mismatchedPair = structuredClone(runningHubManifest);
   mismatchedPair.scenes[0].pairId = 'P99-B99';
@@ -442,6 +799,60 @@ try {
   assert.equal(modelTextResult.ok, false);
   assert.ok(modelTextResult.errors.includes('PREPRODUCTION_MODEL_GENERATED_TEXT_NOT_BLOCKED'));
 
+  const cliProfilePath = path.join(root, 'profile.json');
+  const cliStylePath = path.join(root, 'style.json');
+  writeFileSync(
+    cliProfilePath,
+    `${JSON.stringify({...profile, style: {path: 'style.json'}}, null, 2)}\n`,
+  );
+  writeFileSync(cliStylePath, `${JSON.stringify(style, null, 2)}\n`);
+  const cliRequest = enableV9(v9AiRequest, 'out-v9-cli');
+  cliRequest.directorProfile.path = 'profile.json';
+  const cliRequestPath = path.join(root, 'v9-cli-request.json');
+  writeFileSync(cliRequestPath, `${JSON.stringify(cliRequest, null, 2)}\n`);
+  const scriptsRoot = path.resolve(testDirectory, '../scripts');
+  const compileResult = spawnSync(
+    process.execPath,
+    [
+      path.join(scriptsRoot, 'compile-preproduction-director.mjs'),
+      '--request',
+      cliRequestPath,
+      '--repo-root',
+      root,
+    ],
+    {encoding: 'utf8'},
+  );
+  assert.equal(compileResult.status, 0, compileResult.stderr || compileResult.stdout);
+  const cliAiManifestPath = path.join(root, cliRequest.outputs.aiGeneratedVideoPromptManifestPath);
+  const cliAiSheetPath = path.join(root, cliRequest.outputs.aiGeneratedVideoPromptSheetPath);
+  assert.equal(existsSync(cliAiManifestPath), true);
+  assert.equal(existsSync(cliAiSheetPath), true);
+  const cliAiManifest = JSON.parse(readFileSync(cliAiManifestPath, 'utf8'));
+  assert.equal(cliAiManifest.status, 'manual-execution-required');
+  assert.equal(cliAiManifest.itemCount, 1);
+  assert.equal(cliAiManifest.items[0].beatId, 'B02');
+  const validateResult = spawnSync(
+    process.execPath,
+    [
+      path.join(scriptsRoot, 'validate-preproduction-director.mjs'),
+      '--request',
+      cliRequestPath,
+      '--repo-root',
+      root,
+    ],
+    {encoding: 'utf8'},
+  );
+  assert.equal(validateResult.status, 0, validateResult.stderr || validateResult.stdout);
+  const cliValidationReceipt = JSON.parse(
+    readFileSync(path.join(root, cliRequest.outputs.validationReceiptPath), 'utf8'),
+  );
+  assert.equal(cliValidationReceipt.gates.normalizedPaperLayoutContractsRequired, true);
+  assert.equal(cliValidationReceipt.gates.aiGeneratedVideoPromptPackageSeparated, true);
+  assert.equal(
+    cliValidationReceipt.artifacts.aiGeneratedVideoPromptManifest.sha256,
+    sha256File(cliAiManifestPath),
+  );
+
   const scriptDrift = structuredClone(request);
   writeFileSync(scriptPath, '文稿已经变更。\n');
   const driftResult = validatePreproductionRequest({
@@ -474,6 +885,13 @@ try {
       realMaterialPresenterInsetValidated: true,
       generatedVideoIllustrationBoundaryValidated: true,
       runningHubPrematureReadinessBlocked: true,
+      legacyFixtureCompatibleWithoutV9: true,
+      normalizedV9LayoutContractValidated: true,
+      v9LayoutFailuresRejected: true,
+      firstFrameNumericSafetyTermsAppended: true,
+      aiGeneratedVideoPromptPackageSeparated: true,
+      zeroAiVideoPackageMarkedNotRequired: true,
+      v9CompilerAndValidatorExecuted: true,
     }),
   );
 } finally {

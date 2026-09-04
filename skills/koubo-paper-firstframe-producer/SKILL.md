@@ -32,6 +32,7 @@ description: 执行口播纸艺导演输出的首帧生图清单：先生成无�
 - `generatedReadableTextAllowed=false`，且每镜有 `deterministicTextBake.enabled=true`；
 - `deterministicTextBake.anchorCalibrationRequired=true`，RunningHub 清单状态为 `awaiting-text-baked-firstframes`；
 - 同 revision 的导演验证回执存在且 `skillExecuted=true`。
+- V9 清单必须有 `v9ContractEnabled=true`；每镜的 `layoutContract`、哈希、构图宽区、标签预留区和禁装饰策略必须完整一致。执行端不得忽略或自行改写该合同。
 
 运行：
 
@@ -40,14 +41,14 @@ node skills/koubo-paper-firstframe-producer/scripts/prepare-firstframe-batch.mjs
   --manifest <first-frame-prompts.v1.json> \
   --director-receipt <director-validation-receipt.v1.json> \
   --project-root <口播项目根目录> \
-  --sample P01,P03,P07
+  --sample P03
 ```
 
 脚本只在清单同级创建 `first-frames/`、`first-frame-qa/` 和新的 `first-frame-batch.v1.json`，不调用生图工具。
 
-### 2. 三张代表性样图门
+### 2. 一张代表性样图门
 
-每个新任务先选三张，尽量覆盖 `complex-explanation`、`mechanical-causality`、`occluded-state-reveal`。如果清单不携带 archetype，从同 revision 的导演 plan 读取；仍无法判断时，选择首、中、末三镜并在批次记录中声明限制。
+每个 V9 新任务只先选一张结构最复杂、标签最多或遮挡关系最强的代表镜头。优先级依次为 `complex-explanation`、`mechanical-causality`、`occluded-state-reveal`；如果清单不携带 archetype，从同 revision 的导演 plan 读取，仍无法判断时选择中段复杂镜并在批次记录中声明限制。旧版非 V9 清单仍保持三张样图门，不得借此改写历史批次。
 
 使用内置 `image_gen`，每张图片必须是独立调用。默认最多同时执行两张，禁止把多条提示词拼进同一调用。提示词可追加统一质量锁和禁止项，但不得改变核心物件、数量、颜色、关系或事实边界；原始提示词与实际执行提示词都要留存并计算哈希。
 
@@ -86,7 +87,7 @@ node skills/koubo-paper-firstframe-producer/scripts/validate-firstframe-batch.mj
   --job <first-frame-batch.v1.json> --phase sample
 ```
 
-三张全部通过也只能写 `candidate-stills-awaiting-user-review`。用户看过联系表和原图并明确确认后，才能生成剩余图片。
+代表样图通过也只能写 `candidate-stills-awaiting-user-review`。用户看过样图和原图并明确确认后，才能生成剩余图片。失败即停，禁止自动重试；先回到导演布局或提示词修订。
 
 ### 4. 剩余图片批量执行
 
@@ -178,6 +179,6 @@ node skills/koubo-paper-firstframe-producer/scripts/build-runninghub-ready-pack.
 ## 完成用语
 
 - 只建批次：`首帧批次已建立，尚未生图`。
-- 三张样图完成：`三张候选首帧已生成并完成初检，待用户看图确认`。
+- V9 代表样图完成：`一张候选首帧已生成并完成初检，待用户看图确认`。
 - 全批机器侧通过：`首帧批次机器侧与逐图初检通过，待用户整批确认`。
 - 用户确认后：`首帧交接包已达到 ready-for-runninghub-manual；RunningHub 视频仍由用户手动生成和另行验收`。

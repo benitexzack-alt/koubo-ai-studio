@@ -1,6 +1,6 @@
 ---
 name: koubo-shotcraft-library
-description: 为口播导演检索和选择可选的 Shotcraft 信息层动效。用于关键词强调、逐项呈现、真实证据框选、章节连接、纸胶带固定；不替代摄影级纸艺、真实素材或 RunningHub。只允许隔离样片，逐效果经用户确认后再申请本条生产接入。
+description: 为口播导演检索和选择可选的 Shotcraft 信息层动效。用于关键词强调、逐项呈现、真实证据框选、章节连接、纸胶带固定；不替代摄影级纸艺、真实素材或 RunningHub。默认关闭；本条实际使用必须通过 V9 逐 beat 选择与应用回执闭环。
 ---
 
 # 可选动效库
@@ -19,6 +19,27 @@ description: 为口播导演检索和选择可选的 Shotcraft 信息层动效�
 4. 运行 `validate-plan.mjs <计划.json> <项目根>`。它只验本库合同，不替代现有知识上下文、生产前置和实录源校验。
 5. 只读导入 `assets/ShotcraftEffects.tsx`，外部显式传入帧数、帧率和时长；不改 V8 公共组件。禁止 CSS 实时时钟、随机结果、素材循环或冻结补时。
 6. 先看风险帧，再做 30–45 秒同画面的有/无附加音效样片，核对声画、字词、遮挡与手机小尺寸。样片只能标记待用户审阅。用户确认具体效果后，才可在新片计划中申请使用，不能直接重做已完成影片。
+
+## V9 导演选择与实际应用闭环
+
+本闭环不设全片效果配额，也不自行改变注册效果的 `candidate-only` 状态或授予生产权限。它只把已经取得本条权限的导演决定变成可校验合同，并证明最终成片确实消费了所选组件。
+
+1. 复制 `templates/director-selection.v1.template.json`，完整列出本条主画面 beat。V9 固定 eligible 类 `speaker`、`real-evidence` 中的每个 beat 都必须显式选择 `apply` 或 `not-needed`；后者必须说明该 beat 为什么不需要信息层，不能漏列 beat 规避选择。
+2. `apply` 必须绑定注册效果、用途、实录原句与效果文字、半开帧区间、叠层区域、人物/字幕等保护区，以及 `fallback: "blocked"`。`paper-editorial`、`generated-video` 内部禁止应用。
+3. 运行：
+
+   ```bash
+   node skills/koubo-shotcraft-library/scripts/validate-director-selection.mjs <选择合同.json> <项目根>
+   ```
+
+4. 渲染完成后复制 `templates/application-receipt.v1.template.json`。每个已选 `apply` 必须在同一成片哈希下回执同 `beatId`、`effectId`、`frames` 和注册组件；未选择任何效果时，空 `applications` 合法。
+5. 运行：
+
+   ```bash
+   node skills/koubo-shotcraft-library/scripts/validate-application-receipt.mjs <应用回执.json> <项目根>
+   ```
+
+字段定义、错误码与完整约束见 `references/v9-director-selection-and-application.md`。`SHOTCRAFT_SELECTED_NOT_APPLIED` 必须阻断，不能用渲染成功、人工口头确认或不同版本组件回执代替。
 
 ## 不可越界
 
