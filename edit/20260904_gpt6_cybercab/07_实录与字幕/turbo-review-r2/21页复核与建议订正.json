@@ -1,0 +1,2623 @@
+{
+  "schemaVersion": "asr-review-recommendations/v1",
+  "status": "machine-review-complete-parent-decision-pending",
+  "canonicalSource": "recorded-audio",
+  "scope": "原音频完整识别及21页疑点机器复核；不负责剪辑实现或成片放行",
+  "evidencePath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/21页精确ASR依据.json",
+  "evidenceSha256": "7d003c42a202c1c1f08d4c689d601a501dd24a1f88f6e054b706f3c118bff215",
+  "rawResultPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+  "rawResultSha256": "20740f8f1eefc1469fff05b68ac5d1cd53f8a3b72217d70d349719d22b97b8eb",
+  "categoryCounts": {
+    "两次识别支持的订正候选": 10,
+    "同音写法候选，未定稿": 3,
+    "局部订正，尾字不补": 1,
+    "尾字冲突，待裁决": 1,
+    "助词冲突，待裁决": 1,
+    "两次识别支持保留原话": 2,
+    "尾词冲突，待裁决": 1,
+    "整词无法裁决，禁止猜补": 1,
+    "核心词可订正，尾词冲突": 1
+  },
+  "pagesWithRemainingUncertainty": [
+    "C004",
+    "C005",
+    "C011",
+    "C013",
+    "C035",
+    "C055",
+    "C061",
+    "C064",
+    "C082"
+  ],
+  "humanListeningPerformed": false,
+  "scriptProvidedToAsr": false,
+  "sharedFilesEdited": false,
+  "gitCommitPerformed": false,
+  "sameModelTwoContexts": true,
+  "independentModelCorroboration": false,
+  "rows": [
+    {
+      "id": "C003",
+      "category": "两次识别支持的订正候选",
+      "fullNeedles": [
+        "重磅发布"
+      ],
+      "focusedNeedles": [
+        "重磅发布"
+      ],
+      "suggestion": "重爆发布 → 重磅发布；保留 v2 已规范的 GPT-6 Astra 拼写。",
+      "remaining": "仅修正识别写法，不核验产品发布事实。",
+      "unresolvedConflict": false,
+      "v2Text": "一件是OpenAI重爆发布的GPT-6 Astra,全新旗舰模型",
+      "editedPageWindowSeconds": [
+        8.833333333333334,
+        14.566666666666666
+      ],
+      "sourcePageWindowSeconds": [
+        8.833333333333334,
+        14.566666666666666
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "重磅发布",
+          "verbatimWordText": "重磅发布",
+          "sourceStartSeconds": 10.5,
+          "sourceEndSeconds": 11.32,
+          "editedStartSeconds": 10.5,
+          "editedEndSeconds": 11.32,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/2/words/5",
+              "word": "重",
+              "sourceStartSeconds": 10.5,
+              "sourceEndSeconds": 10.82,
+              "probability": 0.99462890625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/2/words/6",
+              "word": "磅",
+              "sourceStartSeconds": 10.82,
+              "sourceEndSeconds": 10.98,
+              "probability": 0.9853515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/2/words/7",
+              "word": "发",
+              "sourceStartSeconds": 10.98,
+              "sourceEndSeconds": 11.14,
+              "probability": 1.0
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/2/words/8",
+              "word": "布",
+              "sourceStartSeconds": 11.14,
+              "sourceEndSeconds": 11.32,
+              "probability": 0.9990234375
+            }
+          ],
+          "minModelWordProbability": 0.9853515625
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "重磅发布",
+          "verbatimWordText": "重磅发布",
+          "sourceStartSeconds": 10.4933125,
+          "sourceEndSeconds": 11.3333125,
+          "editedStartSeconds": 10.4933125,
+          "editedEndSeconds": 11.3333125,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C003.raw.json",
+              "jsonPointer": "/segments/1/words/5",
+              "word": "重",
+              "sourceStartSeconds": 10.4933125,
+              "sourceEndSeconds": 10.793312499999999,
+              "probability": 0.95068359375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C003.raw.json",
+              "jsonPointer": "/segments/1/words/6",
+              "word": "磅",
+              "sourceStartSeconds": 10.793312499999999,
+              "sourceEndSeconds": 10.9933125,
+              "probability": 0.99072265625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C003.raw.json",
+              "jsonPointer": "/segments/1/words/7",
+              "word": "发",
+              "sourceStartSeconds": 10.9933125,
+              "sourceEndSeconds": 11.1533125,
+              "probability": 0.998046875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C003.raw.json",
+              "jsonPointer": "/segments/1/words/8",
+              "word": "布",
+              "sourceStartSeconds": 11.1533125,
+              "sourceEndSeconds": 11.3333125,
+              "probability": 0.99755859375
+            }
+          ],
+          "minModelWordProbability": 0.95068359375
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C004",
+      "category": "同音写法候选，未定稿",
+      "fullNeedles": [
+        "正式落地落策"
+      ],
+      "focusedNeedles": [
+        "正式落地路侧"
+      ],
+      "suggestion": "落地入侧的订正候选为“落地路测”；两次新识别分别为“落地落策 / 落地路侧”，并非直接识别出“路测”。",
+      "remaining": "路测是结合近音和上下文提出的候选，不标记为人耳确认。保留 Cybercab 专名拼写，不改“机器人”为“车”。",
+      "unresolvedConflict": true,
+      "v2Text": "一件是特斯拉的Cybercab无人驾驶机器人正式落地入侧",
+      "editedPageWindowSeconds": [
+        14.566666666666666,
+        20.566666666666666
+      ],
+      "sourcePageWindowSeconds": [
+        14.566666666666666,
+        20.566666666666666
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "正式落地落策",
+          "verbatimWordText": "正式落地落策",
+          "sourceStartSeconds": 19.02,
+          "sourceEndSeconds": 20.4,
+          "editedStartSeconds": 19.02,
+          "editedEndSeconds": 20.4,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/3/words/19",
+              "word": "正",
+              "sourceStartSeconds": 19.02,
+              "sourceEndSeconds": 19.56,
+              "probability": 0.97802734375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/3/words/20",
+              "word": "式",
+              "sourceStartSeconds": 19.56,
+              "sourceEndSeconds": 19.82,
+              "probability": 0.9912109375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/3/words/21",
+              "word": "落",
+              "sourceStartSeconds": 19.82,
+              "sourceEndSeconds": 19.96,
+              "probability": 0.99951171875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/3/words/22",
+              "word": "地",
+              "sourceStartSeconds": 19.96,
+              "sourceEndSeconds": 20.12,
+              "probability": 0.99951171875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/3/words/23",
+              "word": "落",
+              "sourceStartSeconds": 20.12,
+              "sourceEndSeconds": 20.24,
+              "probability": 0.9619140625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/3/words/24",
+              "word": "策",
+              "sourceStartSeconds": 20.24,
+              "sourceEndSeconds": 20.4,
+              "probability": 0.72265625
+            }
+          ],
+          "minModelWordProbability": 0.72265625
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "正式落地路侧",
+          "verbatimWordText": "正式落地路侧",
+          "sourceStartSeconds": 19.026625,
+          "sourceEndSeconds": 20.406625,
+          "editedStartSeconds": 19.026625,
+          "editedEndSeconds": 20.406625,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C004.raw.json",
+              "jsonPointer": "/segments/2/words/7",
+              "word": "正",
+              "sourceStartSeconds": 19.026625,
+              "sourceEndSeconds": 19.566625000000002,
+              "probability": 0.9013671875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C004.raw.json",
+              "jsonPointer": "/segments/2/words/8",
+              "word": "式",
+              "sourceStartSeconds": 19.566625000000002,
+              "sourceEndSeconds": 19.806625,
+              "probability": 0.9697265625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C004.raw.json",
+              "jsonPointer": "/segments/2/words/9",
+              "word": "落",
+              "sourceStartSeconds": 19.806625,
+              "sourceEndSeconds": 19.966625,
+              "probability": 0.99365234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C004.raw.json",
+              "jsonPointer": "/segments/2/words/10",
+              "word": "地",
+              "sourceStartSeconds": 19.966625,
+              "sourceEndSeconds": 20.106625,
+              "probability": 0.994140625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C004.raw.json",
+              "jsonPointer": "/segments/2/words/11",
+              "word": "路",
+              "sourceStartSeconds": 20.106625,
+              "sourceEndSeconds": 20.246625,
+              "probability": 0.5625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C004.raw.json",
+              "jsonPointer": "/segments/2/words/12",
+              "word": "侧",
+              "sourceStartSeconds": 20.246625,
+              "sourceEndSeconds": 20.406625,
+              "probability": 0.6826171875
+            }
+          ],
+          "minModelWordProbability": 0.5625
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C005",
+      "category": "局部订正，尾字不补",
+      "fullNeedles": [
+        "叠在一起",
+        "分水"
+      ],
+      "focusedNeedles": [
+        "叠在一起",
+        "分水"
+      ],
+      "suggestion": "跌在一起 → 叠在一起；句尾暂保留“分水”，不得仅按常用词补“岭”。",
+      "remaining": "两次新识别均未给出“岭”；缺字不能据语义补齐。是否存在未识出的弱尾音仍未人耳确认。",
+      "unresolvedConflict": true,
+      "v2Text": "这两件事情跌在一起是未来三年所有生意所有行业所有普通人的分水",
+      "editedPageWindowSeconds": [
+        20.566666666666666,
+        27.633333333333333
+      ],
+      "sourcePageWindowSeconds": [
+        20.566666666666666,
+        27.633333333333333
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "叠在一起",
+          "verbatimWordText": "叠在一起",
+          "sourceStartSeconds": 21.7,
+          "sourceEndSeconds": 22.68,
+          "editedStartSeconds": 21.7,
+          "editedEndSeconds": 22.68,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/4/words/3",
+              "word": "叠",
+              "sourceStartSeconds": 21.7,
+              "sourceEndSeconds": 22.12,
+              "probability": 0.7392578125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/4/words/4",
+              "word": "在",
+              "sourceStartSeconds": 22.12,
+              "sourceEndSeconds": 22.3,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/4/words/5",
+              "word": "一起",
+              "sourceStartSeconds": 22.3,
+              "sourceEndSeconds": 22.68,
+              "probability": 1.0
+            }
+          ],
+          "minModelWordProbability": 0.7392578125
+        },
+        {
+          "searchedPhrase": "分水",
+          "verbatimWordText": "分水",
+          "sourceStartSeconds": 27.18,
+          "sourceEndSeconds": 27.46,
+          "editedStartSeconds": 27.18,
+          "editedEndSeconds": 27.46,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/5/words/16",
+              "word": "分",
+              "sourceStartSeconds": 27.18,
+              "sourceEndSeconds": 27.32,
+              "probability": 0.982421875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/5/words/17",
+              "word": "水",
+              "sourceStartSeconds": 27.32,
+              "sourceEndSeconds": 27.46,
+              "probability": 0.490478515625
+            }
+          ],
+          "minModelWordProbability": 0.490478515625
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "叠在一起",
+          "verbatimWordText": "叠在一起",
+          "sourceStartSeconds": 21.706625,
+          "sourceEndSeconds": 22.666624999999996,
+          "editedStartSeconds": 21.706625,
+          "editedEndSeconds": 22.666624999999996,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C005.raw.json",
+              "jsonPointer": "/segments/1/words/3",
+              "word": "叠",
+              "sourceStartSeconds": 21.706625,
+              "sourceEndSeconds": 22.126624999999997,
+              "probability": 0.6416015625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C005.raw.json",
+              "jsonPointer": "/segments/1/words/4",
+              "word": "在",
+              "sourceStartSeconds": 22.126624999999997,
+              "sourceEndSeconds": 22.286624999999997,
+              "probability": 0.99755859375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C005.raw.json",
+              "jsonPointer": "/segments/1/words/5",
+              "word": "一起",
+              "sourceStartSeconds": 22.286624999999997,
+              "sourceEndSeconds": 22.666624999999996,
+              "probability": 0.99951171875
+            }
+          ],
+          "minModelWordProbability": 0.6416015625
+        },
+        {
+          "searchedPhrase": "分水",
+          "verbatimWordText": "分水",
+          "sourceStartSeconds": 27.186625,
+          "sourceEndSeconds": 27.466625,
+          "editedStartSeconds": 27.186625,
+          "editedEndSeconds": 27.466625,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C005.raw.json",
+              "jsonPointer": "/segments/4/words/5",
+              "word": "分",
+              "sourceStartSeconds": 27.186625,
+              "sourceEndSeconds": 27.306624999999997,
+              "probability": 0.96533203125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C005.raw.json",
+              "jsonPointer": "/segments/4/words/6",
+              "word": "水",
+              "sourceStartSeconds": 27.306624999999997,
+              "sourceEndSeconds": 27.466625,
+              "probability": 0.460205078125
+            }
+          ],
+          "minModelWordProbability": 0.460205078125
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C009",
+      "category": "两次识别支持的订正候选",
+      "fullNeedles": [
+        "完整业务工作"
+      ],
+      "focusedNeedles": [
+        "完整业务工作"
+      ],
+      "suggestion": "句尾“完整业务工作人” → “完整业务工作”；不补“流”。前半沿用 v2 的“自主跑完”，不要把局部识别的“自主批办”整句覆盖上去。",
+      "remaining": "两次新识别的尾部均为“工作”；局部上下文中“跑完/批办”另有模型差异。",
+      "unresolvedConflict": false,
+      "v2Text": "自主跑完完整业务工作人",
+      "editedPageWindowSeconds": [
+        39.2,
+        41.733333333333334
+      ],
+      "sourcePageWindowSeconds": [
+        39.2,
+        41.733333333333334
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "完整业务工作",
+          "verbatimWordText": "完整业务工作",
+          "sourceStartSeconds": 39.94,
+          "sourceEndSeconds": 41.02,
+          "editedStartSeconds": 39.94,
+          "editedEndSeconds": 41.02,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/12/words/4",
+              "word": "完",
+              "sourceStartSeconds": 39.94,
+              "sourceEndSeconds": 40.2,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/12/words/5",
+              "word": "整",
+              "sourceStartSeconds": 40.2,
+              "sourceEndSeconds": 40.42,
+              "probability": 1.0
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/12/words/6",
+              "word": "业",
+              "sourceStartSeconds": 40.42,
+              "sourceEndSeconds": 40.62,
+              "probability": 0.998046875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/12/words/7",
+              "word": "务",
+              "sourceStartSeconds": 40.62,
+              "sourceEndSeconds": 40.74,
+              "probability": 1.0
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/12/words/8",
+              "word": "工作",
+              "sourceStartSeconds": 40.74,
+              "sourceEndSeconds": 41.02,
+              "probability": 0.9990234375
+            }
+          ],
+          "minModelWordProbability": 0.998046875
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "完整业务工作",
+          "verbatimWordText": "完整业务工作",
+          "sourceStartSeconds": 39.96,
+          "sourceEndSeconds": 41.02,
+          "editedStartSeconds": 39.96,
+          "editedEndSeconds": 41.02,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C009.raw.json",
+              "jsonPointer": "/segments/1/words/4",
+              "word": "完",
+              "sourceStartSeconds": 39.96,
+              "sourceEndSeconds": 40.160000000000004,
+              "probability": 0.99267578125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C009.raw.json",
+              "jsonPointer": "/segments/1/words/5",
+              "word": "整",
+              "sourceStartSeconds": 40.160000000000004,
+              "sourceEndSeconds": 40.42,
+              "probability": 1.0
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C009.raw.json",
+              "jsonPointer": "/segments/1/words/6",
+              "word": "业",
+              "sourceStartSeconds": 40.42,
+              "sourceEndSeconds": 40.620000000000005,
+              "probability": 0.98876953125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C009.raw.json",
+              "jsonPointer": "/segments/1/words/7",
+              "word": "务",
+              "sourceStartSeconds": 40.620000000000005,
+              "sourceEndSeconds": 40.760000000000005,
+              "probability": 1.0
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C009.raw.json",
+              "jsonPointer": "/segments/1/words/8",
+              "word": "工作",
+              "sourceStartSeconds": 40.760000000000005,
+              "sourceEndSeconds": 41.02,
+              "probability": 0.99560546875
+            }
+          ],
+          "minModelWordProbability": 0.98876953125
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C011",
+      "category": "同音写法候选，未定稿",
+      "fullNeedles": [
+        "自我效对复盘"
+      ],
+      "focusedNeedles": [
+        "自我效对复盘"
+      ],
+      "suggestion": "副盘 → 复盘；校队的规范写法候选为“校对”。按实际连续说法排标点，不删词或改语序。",
+      "remaining": "两次原始输出均为“效对”，不是直接识别出“校对”；校对属于近音与词义订正候选。",
+      "unresolvedConflict": true,
+      "v2Text": "它可以自己拆解任务、自主、操作、软件、搜集资料、排查问题、自我、校队、副盘",
+      "editedPageWindowSeconds": [
+        44.53333333333333,
+        51.53333333333333
+      ],
+      "sourcePageWindowSeconds": [
+        44.53333333333333,
+        51.53333333333333
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "自我效对复盘",
+          "verbatimWordText": "自我效对复盘",
+          "sourceStartSeconds": 49.22,
+          "sourceEndSeconds": 50.82,
+          "editedStartSeconds": 49.22,
+          "editedEndSeconds": 50.82,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/18/words/0",
+              "word": "自",
+              "sourceStartSeconds": 49.22,
+              "sourceEndSeconds": 49.5,
+              "probability": 0.990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/18/words/1",
+              "word": "我",
+              "sourceStartSeconds": 49.5,
+              "sourceEndSeconds": 49.78,
+              "probability": 0.9833984375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/18/words/2",
+              "word": "效",
+              "sourceStartSeconds": 49.78,
+              "sourceEndSeconds": 50.2,
+              "probability": 0.470458984375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/18/words/3",
+              "word": "对",
+              "sourceStartSeconds": 50.2,
+              "sourceEndSeconds": 50.4,
+              "probability": 0.3916015625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/18/words/4",
+              "word": "复",
+              "sourceStartSeconds": 50.4,
+              "sourceEndSeconds": 50.6,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/18/words/5",
+              "word": "盘",
+              "sourceStartSeconds": 50.6,
+              "sourceEndSeconds": 50.82,
+              "probability": 0.9990234375
+            }
+          ],
+          "minModelWordProbability": 0.3916015625
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "自我效对复盘",
+          "verbatimWordText": "自我效对复盘",
+          "sourceStartSeconds": 49.233312500000004,
+          "sourceEndSeconds": 50.833312500000005,
+          "editedStartSeconds": 49.233312500000004,
+          "editedEndSeconds": 50.833312500000005,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C011.raw.json",
+              "jsonPointer": "/segments/5/words/0",
+              "word": "自",
+              "sourceStartSeconds": 49.233312500000004,
+              "sourceEndSeconds": 49.4933125,
+              "probability": 0.97265625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C011.raw.json",
+              "jsonPointer": "/segments/5/words/1",
+              "word": "我",
+              "sourceStartSeconds": 49.4933125,
+              "sourceEndSeconds": 49.7933125,
+              "probability": 0.978515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C011.raw.json",
+              "jsonPointer": "/segments/5/words/2",
+              "word": "效",
+              "sourceStartSeconds": 49.7933125,
+              "sourceEndSeconds": 50.193312500000005,
+              "probability": 0.5244140625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C011.raw.json",
+              "jsonPointer": "/segments/5/words/3",
+              "word": "对",
+              "sourceStartSeconds": 50.193312500000005,
+              "sourceEndSeconds": 50.4133125,
+              "probability": 0.421630859375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C011.raw.json",
+              "jsonPointer": "/segments/5/words/4",
+              "word": "复",
+              "sourceStartSeconds": 50.4133125,
+              "sourceEndSeconds": 50.6133125,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C011.raw.json",
+              "jsonPointer": "/segments/5/words/5",
+              "word": "盘",
+              "sourceStartSeconds": 50.6133125,
+              "sourceEndSeconds": 50.833312500000005,
+              "probability": 0.9990234375
+            }
+          ],
+          "minModelWordProbability": 0.421630859375
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C013",
+      "category": "尾字冲突，待裁决",
+      "fullNeedles": [
+        "产出或课文"
+      ],
+      "focusedNeedles": [
+        "产出获克文案"
+      ],
+      "suggestion": "铲出 → 产出；“货客”的写法候选为“获客”。整词候选“产出获客文案”，但不能把“案”当作两次一致的实录结果。",
+      "remaining": "全量只识别到“文”；局部识别出“案”，原片 59.153313–59.353313 秒，模型概率约 0.978。概率不是人耳证据，保留有无“案”的冲突。",
+      "unresolvedConflict": true,
+      "v2Text": "那么做数据整理搭建业务SOP、铲出货客文、输出视觉方案",
+      "editedPageWindowSeconds": [
+        54.833333333333336,
+        61.06666666666667
+      ],
+      "sourcePageWindowSeconds": [
+        54.833333333333336,
+        61.06666666666667
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "产出或课文",
+          "verbatimWordText": "产出或课文",
+          "sourceStartSeconds": 57.78,
+          "sourceEndSeconds": 59.18,
+          "editedStartSeconds": 57.78,
+          "editedEndSeconds": 59.18,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/22/words/2",
+              "word": "产",
+              "sourceStartSeconds": 57.78,
+              "sourceEndSeconds": 58.22,
+              "probability": 0.95068359375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/22/words/3",
+              "word": "出",
+              "sourceStartSeconds": 58.22,
+              "sourceEndSeconds": 58.54,
+              "probability": 0.99853515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/22/words/4",
+              "word": "或",
+              "sourceStartSeconds": 58.54,
+              "sourceEndSeconds": 58.78,
+              "probability": 0.5283203125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/22/words/5",
+              "word": "课",
+              "sourceStartSeconds": 58.78,
+              "sourceEndSeconds": 58.98,
+              "probability": 0.8798828125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/22/words/6",
+              "word": "文",
+              "sourceStartSeconds": 58.98,
+              "sourceEndSeconds": 59.18,
+              "probability": 0.99755859375
+            }
+          ],
+          "minModelWordProbability": 0.5283203125
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "产出获克文案",
+          "verbatimWordText": "产出获克文案",
+          "sourceStartSeconds": 57.7933125,
+          "sourceEndSeconds": 59.3533125,
+          "editedStartSeconds": 57.7933125,
+          "editedEndSeconds": 59.3533125,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C013.raw.json",
+              "jsonPointer": "/segments/2/words/6",
+              "word": "产",
+              "sourceStartSeconds": 57.7933125,
+              "sourceEndSeconds": 58.2333125,
+              "probability": 0.951171875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C013.raw.json",
+              "jsonPointer": "/segments/2/words/7",
+              "word": "出",
+              "sourceStartSeconds": 58.2333125,
+              "sourceEndSeconds": 58.5533125,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C013.raw.json",
+              "jsonPointer": "/segments/2/words/8",
+              "word": "获",
+              "sourceStartSeconds": 58.5533125,
+              "sourceEndSeconds": 58.7933125,
+              "probability": 0.77392578125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C013.raw.json",
+              "jsonPointer": "/segments/2/words/9",
+              "word": "克",
+              "sourceStartSeconds": 58.7933125,
+              "sourceEndSeconds": 58.9733125,
+              "probability": 0.916015625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C013.raw.json",
+              "jsonPointer": "/segments/2/words/10",
+              "word": "文",
+              "sourceStartSeconds": 58.9733125,
+              "sourceEndSeconds": 59.1533125,
+              "probability": 0.99755859375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C013.raw.json",
+              "jsonPointer": "/segments/2/words/11",
+              "word": "案",
+              "sourceStartSeconds": 59.1533125,
+              "sourceEndSeconds": 59.3533125,
+              "probability": 0.9775390625
+            }
+          ],
+          "minModelWordProbability": 0.77392578125
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C035",
+      "category": "助词冲突，待裁决",
+      "fullNeedles": [
+        "决策全部交给AI"
+      ],
+      "focusedNeedles": [
+        "决策的全部交给业"
+      ],
+      "suggestion": "不自动增删“的”；暂保留 v2 的“决策全部交给AI”为未定稿候选，同时交付含“的”的另一路证据。",
+      "remaining": "局部“的”在原片 124.340000–124.480000 秒，模型概率约 0.557；全量无“的”。局部“业”不得替换现有 AI 专名。",
+      "unresolvedConflict": true,
+      "v2Text": "决策全部交给AI",
+      "editedPageWindowSeconds": [
+        123.06666666666666,
+        124.7
+      ],
+      "sourcePageWindowSeconds": [
+        124.0,
+        125.63333333333334
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "决策全部交给AI",
+          "verbatimWordText": "决策全部交给AI",
+          "sourceStartSeconds": 123.54,
+          "sourceEndSeconds": 125.3,
+          "editedStartSeconds": 122.60666666666667,
+          "editedEndSeconds": 124.36666666666666,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/61/words/0",
+              "word": "决",
+              "sourceStartSeconds": 123.54,
+              "sourceEndSeconds": 124.18,
+              "probability": 0.99951171875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/61/words/1",
+              "word": "策",
+              "sourceStartSeconds": 124.18,
+              "sourceEndSeconds": 124.32,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/61/words/2",
+              "word": "全部",
+              "sourceStartSeconds": 124.32,
+              "sourceEndSeconds": 124.66,
+              "probability": 0.53466796875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/61/words/3",
+              "word": "交",
+              "sourceStartSeconds": 124.66,
+              "sourceEndSeconds": 125.0,
+              "probability": 0.99853515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/61/words/4",
+              "word": "给",
+              "sourceStartSeconds": 125.0,
+              "sourceEndSeconds": 125.14,
+              "probability": 0.9970703125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/61/words/5",
+              "word": "AI",
+              "sourceStartSeconds": 125.14,
+              "sourceEndSeconds": 125.3,
+              "probability": 0.97119140625
+            }
+          ],
+          "minModelWordProbability": 0.53466796875
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "决策的全部交给业",
+          "verbatimWordText": "决策的全部交给业",
+          "sourceStartSeconds": 123.54,
+          "sourceEndSeconds": 125.26,
+          "editedStartSeconds": 122.60666666666667,
+          "editedEndSeconds": 124.32666666666667,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C035.raw.json",
+              "jsonPointer": "/segments/1/words/0",
+              "word": "决",
+              "sourceStartSeconds": 123.54,
+              "sourceEndSeconds": 124.18,
+              "probability": 0.9755859375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C035.raw.json",
+              "jsonPointer": "/segments/1/words/1",
+              "word": "策",
+              "sourceStartSeconds": 124.18,
+              "sourceEndSeconds": 124.34,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C035.raw.json",
+              "jsonPointer": "/segments/1/words/2",
+              "word": "的",
+              "sourceStartSeconds": 124.34,
+              "sourceEndSeconds": 124.48,
+              "probability": 0.556640625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C035.raw.json",
+              "jsonPointer": "/segments/1/words/3",
+              "word": "全部",
+              "sourceStartSeconds": 124.48,
+              "sourceEndSeconds": 124.84,
+              "probability": 0.96875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C035.raw.json",
+              "jsonPointer": "/segments/1/words/4",
+              "word": "交",
+              "sourceStartSeconds": 124.84,
+              "sourceEndSeconds": 124.98,
+              "probability": 0.99462890625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C035.raw.json",
+              "jsonPointer": "/segments/1/words/5",
+              "word": "给",
+              "sourceStartSeconds": 124.98,
+              "sourceEndSeconds": 125.14,
+              "probability": 0.97021484375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C035.raw.json",
+              "jsonPointer": "/segments/1/words/6",
+              "word": "业",
+              "sourceStartSeconds": 125.14,
+              "sourceEndSeconds": 125.26,
+              "probability": 0.78466796875
+            }
+          ],
+          "minModelWordProbability": 0.556640625
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C049",
+      "category": "两次识别支持的订正候选",
+      "fullNeedles": [
+        "误区"
+      ],
+      "focusedNeedles": [
+        "误区"
+      ],
+      "suggestion": "舞曲 → 误区。",
+      "remaining": "两次新识别对目标词一致。",
+      "unresolvedConflict": false,
+      "v2Text": "很多老板一直有个舞曲AI大模型机器人",
+      "editedPageWindowSeconds": [
+        161.66666666666666,
+        165.7
+      ],
+      "sourcePageWindowSeconds": [
+        162.6,
+        166.63333333333333
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "误区",
+          "verbatimWordText": "误区",
+          "sourceStartSeconds": 164.18,
+          "sourceEndSeconds": 164.48,
+          "editedStartSeconds": 163.24666666666667,
+          "editedEndSeconds": 163.54666666666665,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/77/words/6",
+              "word": "误",
+              "sourceStartSeconds": 164.18,
+              "sourceEndSeconds": 164.28,
+              "probability": 0.966796875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/77/words/7",
+              "word": "区",
+              "sourceStartSeconds": 164.28,
+              "sourceEndSeconds": 164.48,
+              "probability": 0.9482421875
+            }
+          ],
+          "minModelWordProbability": 0.9482421875
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "误区",
+          "verbatimWordText": "误区",
+          "sourceStartSeconds": 164.18,
+          "sourceEndSeconds": 164.73999999999998,
+          "editedStartSeconds": 163.24666666666667,
+          "editedEndSeconds": 163.80666666666664,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C049.raw.json",
+              "jsonPointer": "/segments/1/words/6",
+              "word": "误",
+              "sourceStartSeconds": 164.18,
+              "sourceEndSeconds": 164.28,
+              "probability": 0.978515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C049.raw.json",
+              "jsonPointer": "/segments/1/words/7",
+              "word": "区",
+              "sourceStartSeconds": 164.28,
+              "sourceEndSeconds": 164.73999999999998,
+              "probability": 0.978515625
+            }
+          ],
+          "minModelWordProbability": 0.978515625
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C051",
+      "category": "两次识别支持保留原话",
+      "fullNeedles": [
+        "小店们没关系"
+      ],
+      "focusedNeedles": [
+        "小店们没关系"
+      ],
+      "suggestion": "保留“小店们”，不为了通顺改为“小门店”。",
+      "remaining": "两次新识别均为“小店们”；这只支持保留实录候选，不判定其语法。",
+      "unresolvedConflict": false,
+      "v2Text": "跟我们实体店小工厂小店们没关系",
+      "editedPageWindowSeconds": [
+        167.86666666666667,
+        171.8
+      ],
+      "sourcePageWindowSeconds": [
+        168.8,
+        172.73333333333335
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "小店们没关系",
+          "verbatimWordText": "小店们没关系",
+          "sourceStartSeconds": 170.12,
+          "sourceEndSeconds": 172.04,
+          "editedStartSeconds": 169.18666666666667,
+          "editedEndSeconds": 171.10666666666665,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/81/words/0",
+              "word": "小",
+              "sourceStartSeconds": 170.12,
+              "sourceEndSeconds": 170.74,
+              "probability": 0.99853515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/81/words/1",
+              "word": "店",
+              "sourceStartSeconds": 170.74,
+              "sourceEndSeconds": 170.9,
+              "probability": 0.99853515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/81/words/2",
+              "word": "们",
+              "sourceStartSeconds": 170.9,
+              "sourceEndSeconds": 171.08,
+              "probability": 0.94091796875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/81/words/3",
+              "word": "没",
+              "sourceStartSeconds": 171.08,
+              "sourceEndSeconds": 171.58,
+              "probability": 0.99755859375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/81/words/4",
+              "word": "关",
+              "sourceStartSeconds": 171.58,
+              "sourceEndSeconds": 171.76,
+              "probability": 0.99951171875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/81/words/5",
+              "word": "系",
+              "sourceStartSeconds": 171.76,
+              "sourceEndSeconds": 172.04,
+              "probability": 0.99951171875
+            }
+          ],
+          "minModelWordProbability": 0.94091796875
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "小店们没关系",
+          "verbatimWordText": "小店们没关系",
+          "sourceStartSeconds": 170.14000000000001,
+          "sourceEndSeconds": 172.04000000000002,
+          "editedStartSeconds": 169.20666666666668,
+          "editedEndSeconds": 171.10666666666668,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C051.raw.json",
+              "jsonPointer": "/segments/1/words/8",
+              "word": "小",
+              "sourceStartSeconds": 170.14000000000001,
+              "sourceEndSeconds": 170.74,
+              "probability": 0.958984375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C051.raw.json",
+              "jsonPointer": "/segments/1/words/9",
+              "word": "店",
+              "sourceStartSeconds": 170.74,
+              "sourceEndSeconds": 170.9,
+              "probability": 0.98876953125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C051.raw.json",
+              "jsonPointer": "/segments/1/words/10",
+              "word": "们",
+              "sourceStartSeconds": 170.9,
+              "sourceEndSeconds": 171.08,
+              "probability": 0.80224609375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C051.raw.json",
+              "jsonPointer": "/segments/1/words/11",
+              "word": "没",
+              "sourceStartSeconds": 171.08,
+              "sourceEndSeconds": 171.54000000000002,
+              "probability": 0.978515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C051.raw.json",
+              "jsonPointer": "/segments/1/words/12",
+              "word": "关",
+              "sourceStartSeconds": 171.54000000000002,
+              "sourceEndSeconds": 171.76000000000002,
+              "probability": 0.998046875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C051.raw.json",
+              "jsonPointer": "/segments/1/words/13",
+              "word": "系",
+              "sourceStartSeconds": 171.76000000000002,
+              "sourceEndSeconds": 172.04000000000002,
+              "probability": 0.9912109375
+            }
+          ],
+          "minModelWordProbability": 0.80224609375
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C052",
+      "category": "两次识别支持的订正候选",
+      "fullNeedles": [
+        "有钱人"
+      ],
+      "focusedNeedles": [
+        "有钱人"
+      ],
+      "suggestion": "有前人 → 有钱人；保留 v2 的“大厂”，不引入局部误识“大潮”。",
+      "remaining": "只订正目标词，不整段替换局部结果。",
+      "unresolvedConflict": false,
+      "v2Text": "但是真正的变革从来不是先淘汰有前人淘汰大厂",
+      "editedPageWindowSeconds": [
+        171.8,
+        177.23333333333332
+      ],
+      "sourcePageWindowSeconds": [
+        172.73333333333335,
+        178.16666666666666
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "有钱人",
+          "verbatimWordText": "有钱人",
+          "sourceStartSeconds": 176.34,
+          "sourceEndSeconds": 176.98,
+          "editedStartSeconds": 175.40666666666667,
+          "editedEndSeconds": 176.04666666666665,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/83/words/6",
+              "word": "有",
+              "sourceStartSeconds": 176.34,
+              "sourceEndSeconds": 176.58,
+              "probability": 0.99853515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/83/words/7",
+              "word": "钱",
+              "sourceStartSeconds": 176.58,
+              "sourceEndSeconds": 176.78,
+              "probability": 0.99560546875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/83/words/8",
+              "word": "人",
+              "sourceStartSeconds": 176.78,
+              "sourceEndSeconds": 176.98,
+              "probability": 1.0
+            }
+          ],
+          "minModelWordProbability": 0.99560546875
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "有钱人",
+          "verbatimWordText": "有钱人",
+          "sourceStartSeconds": 176.35331250000002,
+          "sourceEndSeconds": 176.97331250000002,
+          "editedStartSeconds": 175.41997916666668,
+          "editedEndSeconds": 176.03997916666668,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C052.raw.json",
+              "jsonPointer": "/segments/2/words/6",
+              "word": "有",
+              "sourceStartSeconds": 176.35331250000002,
+              "sourceEndSeconds": 176.59331250000002,
+              "probability": 0.98876953125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C052.raw.json",
+              "jsonPointer": "/segments/2/words/7",
+              "word": "钱",
+              "sourceStartSeconds": 176.59331250000002,
+              "sourceEndSeconds": 176.7733125,
+              "probability": 0.986328125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C052.raw.json",
+              "jsonPointer": "/segments/2/words/8",
+              "word": "人",
+              "sourceStartSeconds": 176.7733125,
+              "sourceEndSeconds": 176.97331250000002,
+              "probability": 0.99951171875
+            }
+          ],
+          "minModelWordProbability": 0.986328125
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C055",
+      "category": "尾词冲突，待裁决",
+      "fullNeedles": [
+        "传统经营者"
+      ],
+      "focusedNeedles": [
+        "传统经济"
+      ],
+      "suggestion": "优先复核候选“传统经营者”，暂不把它登记为已确认订正。",
+      "remaining": "全量识别“经营者”，其中“者”原片 184.960000–185.200000 秒；局部仍为“经济”且没有“者”。两路冲突保留。",
+      "unresolvedConflict": true,
+      "v2Text": "还在用老方法苦熬的传统经济",
+      "editedPageWindowSeconds": [
+        180.6,
+        185.0
+      ],
+      "sourcePageWindowSeconds": [
+        181.53333333333333,
+        185.93333333333334
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "传统经营者",
+          "verbatimWordText": "传统经营者",
+          "sourceStartSeconds": 183.9,
+          "sourceEndSeconds": 185.2,
+          "editedStartSeconds": 182.96666666666667,
+          "editedEndSeconds": 184.26666666666665,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/87/words/9",
+              "word": "传",
+              "sourceStartSeconds": 183.9,
+              "sourceEndSeconds": 184.42,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/87/words/10",
+              "word": "统",
+              "sourceStartSeconds": 184.42,
+              "sourceEndSeconds": 184.64,
+              "probability": 0.99951171875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/87/words/11",
+              "word": "经",
+              "sourceStartSeconds": 184.64,
+              "sourceEndSeconds": 184.82,
+              "probability": 0.875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/87/words/12",
+              "word": "营",
+              "sourceStartSeconds": 184.82,
+              "sourceEndSeconds": 184.96,
+              "probability": 0.7626953125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/87/words/13",
+              "word": "者",
+              "sourceStartSeconds": 184.96,
+              "sourceEndSeconds": 185.2,
+              "probability": 0.99267578125
+            }
+          ],
+          "minModelWordProbability": 0.7626953125
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "传统经济",
+          "verbatimWordText": "传统经济",
+          "sourceStartSeconds": 183.8933125,
+          "sourceEndSeconds": 185.0333125,
+          "editedStartSeconds": 182.95997916666667,
+          "editedEndSeconds": 184.09997916666666,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C055.raw.json",
+              "jsonPointer": "/segments/2/words/9",
+              "word": "传",
+              "sourceStartSeconds": 183.8933125,
+              "sourceEndSeconds": 184.45331249999998,
+              "probability": 0.99658203125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C055.raw.json",
+              "jsonPointer": "/segments/2/words/10",
+              "word": "统",
+              "sourceStartSeconds": 184.45331249999998,
+              "sourceEndSeconds": 184.6533125,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C055.raw.json",
+              "jsonPointer": "/segments/2/words/11",
+              "word": "经",
+              "sourceStartSeconds": 184.6533125,
+              "sourceEndSeconds": 184.8133125,
+              "probability": 0.55322265625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C055.raw.json",
+              "jsonPointer": "/segments/2/words/12",
+              "word": "济",
+              "sourceStartSeconds": 184.8133125,
+              "sourceEndSeconds": 185.0333125,
+              "probability": 0.7861328125
+            }
+          ],
+          "minModelWordProbability": 0.55322265625
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C059",
+      "category": "两次识别支持的订正候选",
+      "fullNeedles": [
+        "梳理"
+      ],
+      "focusedNeedles": [
+        "梳理"
+      ],
+      "suggestion": "输离 → 梳理；保留企业 SOP 的原有语序。",
+      "remaining": "两次新识别对“梳理”一致；标点可独立整理。",
+      "unresolvedConflict": false,
+      "v2Text": "自动输离企业SOP",
+      "editedPageWindowSeconds": [
+        190.5,
+        192.06666666666666
+      ],
+      "sourcePageWindowSeconds": [
+        191.43333333333334,
+        193.0
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "梳理",
+          "verbatimWordText": "梳理",
+          "sourceStartSeconds": 191.72,
+          "sourceEndSeconds": 192.04,
+          "editedStartSeconds": 190.78666666666666,
+          "editedEndSeconds": 191.10666666666665,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/92/words/2",
+              "word": "梳",
+              "sourceStartSeconds": 191.72,
+              "sourceEndSeconds": 191.9,
+              "probability": 0.8994140625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/92/words/3",
+              "word": "理",
+              "sourceStartSeconds": 191.9,
+              "sourceEndSeconds": 192.04,
+              "probability": 0.9990234375
+            }
+          ],
+          "minModelWordProbability": 0.8994140625
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "梳理",
+          "verbatimWordText": "梳理,",
+          "sourceStartSeconds": 191.7133125,
+          "sourceEndSeconds": 192.0533125,
+          "editedStartSeconds": 190.77997916666666,
+          "editedEndSeconds": 191.11997916666667,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C059.raw.json",
+              "jsonPointer": "/segments/0/words/12",
+              "word": "梳",
+              "sourceStartSeconds": 191.7133125,
+              "sourceEndSeconds": 191.8933125,
+              "probability": 0.9228515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C059.raw.json",
+              "jsonPointer": "/segments/0/words/13",
+              "word": "理,",
+              "sourceStartSeconds": 191.8933125,
+              "sourceEndSeconds": 192.0533125,
+              "probability": 0.99951171875
+            }
+          ],
+          "minModelWordProbability": 0.9228515625
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C061",
+      "category": "整词无法裁决，禁止猜补",
+      "fullNeedles": [
+        "平反内容"
+      ],
+      "focusedNeedles": [
+        "平均内存"
+      ],
+      "suggestion": "“平台流程”没有获得稳定的新 ASR 支持。禁止自动选用“平反内容”“平均内存”或按拍摄稿恢复词语。",
+      "remaining": "关键原片 196.100000–196.700000 秒；全量四字概率约 0.507/0.270/0.326/0.110。C062 的邻接局部结果又为“频繁内存”，仍不稳定。保留待裁决。",
+      "unresolvedConflict": true,
+      "v2Text": "自动优化所有的平台流程",
+      "editedPageWindowSeconds": [
+        193.43333333333334,
+        196.23333333333332
+      ],
+      "sourcePageWindowSeconds": [
+        194.36666666666667,
+        197.16666666666666
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "平反内容",
+          "verbatimWordText": "平反内容",
+          "sourceStartSeconds": 196.1,
+          "sourceEndSeconds": 196.7,
+          "editedStartSeconds": 195.16666666666666,
+          "editedEndSeconds": 195.76666666666665,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/95/words/6",
+              "word": "平",
+              "sourceStartSeconds": 196.1,
+              "sourceEndSeconds": 196.24,
+              "probability": 0.50732421875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/95/words/7",
+              "word": "反",
+              "sourceStartSeconds": 196.24,
+              "sourceEndSeconds": 196.38,
+              "probability": 0.27001953125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/95/words/8",
+              "word": "内",
+              "sourceStartSeconds": 196.38,
+              "sourceEndSeconds": 196.54,
+              "probability": 0.326171875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/95/words/9",
+              "word": "容",
+              "sourceStartSeconds": 196.54,
+              "sourceEndSeconds": 196.7,
+              "probability": 0.109619140625
+            }
+          ],
+          "minModelWordProbability": 0.109619140625
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "平均内存",
+          "verbatimWordText": "平均内存",
+          "sourceStartSeconds": 196.086625,
+          "sourceEndSeconds": 196.706625,
+          "editedStartSeconds": 195.15329166666666,
+          "editedEndSeconds": 195.77329166666667,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C061.raw.json",
+              "jsonPointer": "/segments/1/words/6",
+              "word": "平",
+              "sourceStartSeconds": 196.086625,
+              "sourceEndSeconds": 196.226625,
+              "probability": 0.93310546875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C061.raw.json",
+              "jsonPointer": "/segments/1/words/7",
+              "word": "均",
+              "sourceStartSeconds": 196.226625,
+              "sourceEndSeconds": 196.386625,
+              "probability": 0.50634765625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C061.raw.json",
+              "jsonPointer": "/segments/1/words/8",
+              "word": "内",
+              "sourceStartSeconds": 196.386625,
+              "sourceEndSeconds": 196.50662499999999,
+              "probability": 0.301025390625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C061.raw.json",
+              "jsonPointer": "/segments/1/words/9",
+              "word": "存",
+              "sourceStartSeconds": 196.50662499999999,
+              "sourceEndSeconds": 196.706625,
+              "probability": 0.87744140625
+            }
+          ],
+          "minModelWordProbability": 0.301025390625
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C062",
+      "category": "两次识别支持的订正候选",
+      "fullNeedles": [
+        "更残酷的真相"
+      ],
+      "focusedNeedles": [
+        "更残酷的真相"
+      ],
+      "suggestion": "争响 → 真相；保留 v2 已规范的 Cybercab。",
+      "remaining": "两次目标词一致；CyberCup/CIPCAP 是各自原始专名误识，保留在证据中。",
+      "unresolvedConflict": false,
+      "v2Text": "Cybercab告诉我们一个更残酷的争响",
+      "editedPageWindowSeconds": [
+        196.23333333333332,
+        199.5
+      ],
+      "sourcePageWindowSeconds": [
+        197.16666666666666,
+        200.43333333333334
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "更残酷的真相",
+          "verbatimWordText": "更残酷的真相",
+          "sourceStartSeconds": 198.76,
+          "sourceEndSeconds": 199.9,
+          "editedStartSeconds": 197.82666666666665,
+          "editedEndSeconds": 198.96666666666667,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/96/words/8",
+              "word": "更",
+              "sourceStartSeconds": 198.76,
+              "sourceEndSeconds": 198.98,
+              "probability": 0.998046875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/96/words/9",
+              "word": "残",
+              "sourceStartSeconds": 198.98,
+              "sourceEndSeconds": 199.28,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/96/words/10",
+              "word": "酷",
+              "sourceStartSeconds": 199.28,
+              "sourceEndSeconds": 199.44,
+              "probability": 1.0
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/96/words/11",
+              "word": "的",
+              "sourceStartSeconds": 199.44,
+              "sourceEndSeconds": 199.56,
+              "probability": 1.0
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/96/words/12",
+              "word": "真",
+              "sourceStartSeconds": 199.56,
+              "sourceEndSeconds": 199.68,
+              "probability": 0.97705078125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/96/words/13",
+              "word": "相",
+              "sourceStartSeconds": 199.68,
+              "sourceEndSeconds": 199.9,
+              "probability": 0.9951171875
+            }
+          ],
+          "minModelWordProbability": 0.97705078125
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "更残酷的真相",
+          "verbatimWordText": "更残酷的真相",
+          "sourceStartSeconds": 198.766625,
+          "sourceEndSeconds": 199.90662500000002,
+          "editedStartSeconds": 197.83329166666667,
+          "editedEndSeconds": 198.97329166666668,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C062.raw.json",
+              "jsonPointer": "/segments/1/words/7",
+              "word": "更",
+              "sourceStartSeconds": 198.766625,
+              "sourceEndSeconds": 198.986625,
+              "probability": 0.99853515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C062.raw.json",
+              "jsonPointer": "/segments/1/words/8",
+              "word": "残",
+              "sourceStartSeconds": 198.986625,
+              "sourceEndSeconds": 199.266625,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C062.raw.json",
+              "jsonPointer": "/segments/1/words/9",
+              "word": "酷",
+              "sourceStartSeconds": 199.266625,
+              "sourceEndSeconds": 199.446625,
+              "probability": 1.0
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C062.raw.json",
+              "jsonPointer": "/segments/1/words/10",
+              "word": "的",
+              "sourceStartSeconds": 199.446625,
+              "sourceEndSeconds": 199.546625,
+              "probability": 1.0
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C062.raw.json",
+              "jsonPointer": "/segments/1/words/11",
+              "word": "真",
+              "sourceStartSeconds": 199.546625,
+              "sourceEndSeconds": 199.666625,
+              "probability": 0.9814453125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C062.raw.json",
+              "jsonPointer": "/segments/1/words/12",
+              "word": "相",
+              "sourceStartSeconds": 199.666625,
+              "sourceEndSeconds": 199.90662500000002,
+              "probability": 0.99658203125
+            }
+          ],
+          "minModelWordProbability": 0.9814453125
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C064",
+      "category": "核心词可订正，尾词冲突",
+      "fullNeedles": [
+        "赋能你的生意"
+      ],
+      "focusedNeedles": [
+        "赋能你的生命"
+      ],
+      "suggestion": "负能力的 → 赋能你的；句尾优先保留原 v2 和全量识别均支持的“生意”，仍标注局部“生命”冲突，不擅改为“生命”。",
+      "remaining": "两路对“赋能你的”一致，生意/生命不一致；只提交局部订正建议。",
+      "unresolvedConflict": true,
+      "v2Text": "而是你会不会用AI负能力的生意",
+      "editedPageWindowSeconds": [
+        202.53333333333333,
+        205.86666666666667
+      ],
+      "sourcePageWindowSeconds": [
+        203.46666666666667,
+        206.8
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "赋能你的生意",
+          "verbatimWordText": "赋能你的生意",
+          "sourceStartSeconds": 204.88,
+          "sourceEndSeconds": 206.0,
+          "editedStartSeconds": 203.94666666666666,
+          "editedEndSeconds": 205.06666666666666,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/98/words/7",
+              "word": "赋",
+              "sourceStartSeconds": 204.88,
+              "sourceEndSeconds": 205.26,
+              "probability": 0.8876953125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/98/words/8",
+              "word": "能",
+              "sourceStartSeconds": 205.26,
+              "sourceEndSeconds": 205.4,
+              "probability": 0.9052734375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/98/words/9",
+              "word": "你的",
+              "sourceStartSeconds": 205.4,
+              "sourceEndSeconds": 205.66,
+              "probability": 0.9609375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/98/words/10",
+              "word": "生",
+              "sourceStartSeconds": 205.66,
+              "sourceEndSeconds": 205.84,
+              "probability": 0.54541015625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/98/words/11",
+              "word": "意",
+              "sourceStartSeconds": 205.84,
+              "sourceEndSeconds": 206.0,
+              "probability": 0.99072265625
+            }
+          ],
+          "minModelWordProbability": 0.54541015625
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "赋能你的生命",
+          "verbatimWordText": "赋能你的生命",
+          "sourceStartSeconds": 204.72662499999998,
+          "sourceEndSeconds": 206.326625,
+          "editedStartSeconds": 203.79329166666665,
+          "editedEndSeconds": 205.39329166666667,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C064.raw.json",
+              "jsonPointer": "/segments/1/words/7",
+              "word": "赋",
+              "sourceStartSeconds": 204.72662499999998,
+              "sourceEndSeconds": 205.266625,
+              "probability": 0.818359375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C064.raw.json",
+              "jsonPointer": "/segments/1/words/8",
+              "word": "能",
+              "sourceStartSeconds": 205.266625,
+              "sourceEndSeconds": 205.406625,
+              "probability": 0.953125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C064.raw.json",
+              "jsonPointer": "/segments/1/words/9",
+              "word": "你的",
+              "sourceStartSeconds": 205.406625,
+              "sourceEndSeconds": 205.66662499999998,
+              "probability": 0.81103515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C064.raw.json",
+              "jsonPointer": "/segments/1/words/10",
+              "word": "生",
+              "sourceStartSeconds": 205.66662499999998,
+              "sourceEndSeconds": 205.826625,
+              "probability": 0.7265625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C064.raw.json",
+              "jsonPointer": "/segments/1/words/11",
+              "word": "命",
+              "sourceStartSeconds": 205.826625,
+              "sourceEndSeconds": 206.326625,
+              "probability": 0.92578125
+            }
+          ],
+          "minModelWordProbability": 0.7265625
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C065",
+      "category": "两次识别支持的订正候选",
+      "fullNeedles": [
+        "重复的事"
+      ],
+      "focusedNeedles": [
+        "重复的事"
+      ],
+      "suggestion": "机器干重复的是 → 机器干重复的事。",
+      "remaining": "两次新识别均为“事”。",
+      "unresolvedConflict": false,
+      "v2Text": "机器干重复的是",
+      "editedPageWindowSeconds": [
+        205.86666666666667,
+        207.53333333333333
+      ],
+      "sourcePageWindowSeconds": [
+        206.8,
+        208.46666666666667
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "重复的事",
+          "verbatimWordText": "重复的事",
+          "sourceStartSeconds": 207.3,
+          "sourceEndSeconds": 207.88,
+          "editedStartSeconds": 206.36666666666667,
+          "editedEndSeconds": 206.94666666666666,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/99/words/3",
+              "word": "重",
+              "sourceStartSeconds": 207.3,
+              "sourceEndSeconds": 207.48,
+              "probability": 0.99951171875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/99/words/4",
+              "word": "复",
+              "sourceStartSeconds": 207.48,
+              "sourceEndSeconds": 207.6,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/99/words/5",
+              "word": "的",
+              "sourceStartSeconds": 207.6,
+              "sourceEndSeconds": 207.74,
+              "probability": 0.9970703125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/99/words/6",
+              "word": "事",
+              "sourceStartSeconds": 207.74,
+              "sourceEndSeconds": 207.88,
+              "probability": 0.99951171875
+            }
+          ],
+          "minModelWordProbability": 0.9970703125
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "重复的事",
+          "verbatimWordText": "重复的事",
+          "sourceStartSeconds": 207.3,
+          "sourceEndSeconds": 207.88000000000002,
+          "editedStartSeconds": 206.36666666666667,
+          "editedEndSeconds": 206.9466666666667,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C065.raw.json",
+              "jsonPointer": "/segments/1/words/3",
+              "word": "重",
+              "sourceStartSeconds": 207.3,
+              "sourceEndSeconds": 207.48000000000002,
+              "probability": 0.9990234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C065.raw.json",
+              "jsonPointer": "/segments/1/words/4",
+              "word": "复",
+              "sourceStartSeconds": 207.48000000000002,
+              "sourceEndSeconds": 207.64000000000001,
+              "probability": 0.998046875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C065.raw.json",
+              "jsonPointer": "/segments/1/words/5",
+              "word": "的",
+              "sourceStartSeconds": 207.64000000000001,
+              "sourceEndSeconds": 207.72,
+              "probability": 0.9931640625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C065.raw.json",
+              "jsonPointer": "/segments/1/words/6",
+              "word": "事",
+              "sourceStartSeconds": 207.72,
+              "sourceEndSeconds": 207.88000000000002,
+              "probability": 0.99755859375
+            }
+          ],
+          "minModelWordProbability": 0.9931640625
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C077",
+      "category": "两次识别支持的订正候选",
+      "fullNeedles": [
+        "陪跑执行"
+      ],
+      "focusedNeedles": [
+        "PayPal执行"
+      ],
+      "suggestion": "之心 → 执行；保留原“陪跑”，不引入局部音译误识 PayPal。",
+      "remaining": "两次均识别到“执行”；陪跑/PayPal 差异如实保留，不能整句搬运局部结果。",
+      "unresolvedConflict": false,
+      "v2Text": "优化陪跑之心",
+      "editedPageWindowSeconds": [
+        225.43333333333334,
+        226.83333333333334
+      ],
+      "sourcePageWindowSeconds": [
+        226.36666666666667,
+        227.76666666666668
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "陪跑执行",
+          "verbatimWordText": "陪跑执行",
+          "sourceStartSeconds": 226.86,
+          "sourceEndSeconds": 227.62,
+          "editedStartSeconds": 225.92666666666668,
+          "editedEndSeconds": 226.68666666666667,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/111/words/0",
+              "word": "陪",
+              "sourceStartSeconds": 226.86,
+              "sourceEndSeconds": 227.1,
+              "probability": 0.7998046875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/111/words/1",
+              "word": "跑",
+              "sourceStartSeconds": 227.1,
+              "sourceEndSeconds": 227.28,
+              "probability": 0.53125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/111/words/2",
+              "word": "执",
+              "sourceStartSeconds": 227.28,
+              "sourceEndSeconds": 227.5,
+              "probability": 0.9814453125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/111/words/3",
+              "word": "行",
+              "sourceStartSeconds": 227.5,
+              "sourceEndSeconds": 227.62,
+              "probability": 0.99951171875
+            }
+          ],
+          "minModelWordProbability": 0.53125
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "PayPal执行",
+          "verbatimWordText": "PayPal执行",
+          "sourceStartSeconds": 226.846625,
+          "sourceEndSeconds": 227.626625,
+          "editedStartSeconds": 225.91329166666665,
+          "editedEndSeconds": 226.69329166666665,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C077.raw.json",
+              "jsonPointer": "/segments/0/words/9",
+              "word": "P",
+              "sourceStartSeconds": 226.846625,
+              "sourceEndSeconds": 227.026625,
+              "probability": 0.438232421875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C077.raw.json",
+              "jsonPointer": "/segments/0/words/10",
+              "word": "ay",
+              "sourceStartSeconds": 227.026625,
+              "sourceEndSeconds": 227.126625,
+              "probability": 0.953125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C077.raw.json",
+              "jsonPointer": "/segments/0/words/11",
+              "word": "Pal",
+              "sourceStartSeconds": 227.126625,
+              "sourceEndSeconds": 227.266625,
+              "probability": 0.69287109375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C077.raw.json",
+              "jsonPointer": "/segments/0/words/12",
+              "word": "执",
+              "sourceStartSeconds": 227.266625,
+              "sourceEndSeconds": 227.50662499999999,
+              "probability": 0.71240234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C077.raw.json",
+              "jsonPointer": "/segments/0/words/13",
+              "word": "行",
+              "sourceStartSeconds": 227.50662499999999,
+              "sourceEndSeconds": 227.626625,
+              "probability": 0.99609375
+            }
+          ],
+          "minModelWordProbability": 0.438232421875
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C082",
+      "category": "同音写法候选，未定稿",
+      "fullNeedles": [
+        "门店或客"
+      ],
+      "focusedNeedles": [
+        "门店或客"
+      ],
+      "suggestion": "门电 → 门店；货客的订正候选为“获客”。",
+      "remaining": "两次均为“门店或客”，不是直接识别出“获客”；获客属于同音与上下文写法候选，不冒充人耳确认。",
+      "unresolvedConflict": true,
+      "v2Text": "你的门电货客",
+      "editedPageWindowSeconds": [
+        236.86666666666667,
+        238.26666666666668
+      ],
+      "sourcePageWindowSeconds": [
+        237.8,
+        239.20000000000002
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "门店或客",
+          "verbatimWordText": "门店或客",
+          "sourceStartSeconds": 238.1,
+          "sourceEndSeconds": 238.78,
+          "editedStartSeconds": 237.16666666666666,
+          "editedEndSeconds": 237.84666666666666,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/115/words/1",
+              "word": "门",
+              "sourceStartSeconds": 238.1,
+              "sourceEndSeconds": 238.28,
+              "probability": 1.0
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/115/words/2",
+              "word": "店",
+              "sourceStartSeconds": 238.28,
+              "sourceEndSeconds": 238.42,
+              "probability": 0.98974609375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/115/words/3",
+              "word": "或",
+              "sourceStartSeconds": 238.42,
+              "sourceEndSeconds": 238.56,
+              "probability": 0.63427734375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/115/words/4",
+              "word": "客",
+              "sourceStartSeconds": 238.56,
+              "sourceEndSeconds": 238.78,
+              "probability": 0.9921875
+            }
+          ],
+          "minModelWordProbability": 0.63427734375
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "门店或客",
+          "verbatimWordText": "门店或客",
+          "sourceStartSeconds": 238.08,
+          "sourceEndSeconds": 238.78,
+          "editedStartSeconds": 237.14666666666668,
+          "editedEndSeconds": 237.84666666666666,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C082.raw.json",
+              "jsonPointer": "/segments/1/words/1",
+              "word": "门",
+              "sourceStartSeconds": 238.08,
+              "sourceEndSeconds": 238.28,
+              "probability": 0.998046875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C082.raw.json",
+              "jsonPointer": "/segments/1/words/2",
+              "word": "店",
+              "sourceStartSeconds": 238.28,
+              "sourceEndSeconds": 238.42000000000002,
+              "probability": 0.99658203125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C082.raw.json",
+              "jsonPointer": "/segments/1/words/3",
+              "word": "或",
+              "sourceStartSeconds": 238.42000000000002,
+              "sourceEndSeconds": 238.58,
+              "probability": 0.91455078125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C082.raw.json",
+              "jsonPointer": "/segments/1/words/4",
+              "word": "客",
+              "sourceStartSeconds": 238.58,
+              "sourceEndSeconds": 238.78,
+              "probability": 0.98974609375
+            }
+          ],
+          "minModelWordProbability": 0.91455078125
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C085",
+      "category": "两次识别支持的订正候选",
+      "fullNeedles": [
+        "流程简化"
+      ],
+      "focusedNeedles": [
+        "流程简化"
+      ],
+      "suggestion": "流程讲话 → 流程简化。",
+      "remaining": "两次新识别一致。",
+      "unresolvedConflict": false,
+      "v2Text": "流程讲话",
+      "editedPageWindowSeconds": [
+        239.8,
+        240.6
+      ],
+      "sourcePageWindowSeconds": [
+        240.73333333333335,
+        241.53333333333333
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "流程简化",
+          "verbatimWordText": "流程简化",
+          "sourceStartSeconds": 240.66,
+          "sourceEndSeconds": 241.48,
+          "editedStartSeconds": 239.72666666666666,
+          "editedEndSeconds": 240.54666666666665,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/118/words/0",
+              "word": "流",
+              "sourceStartSeconds": 240.66,
+              "sourceEndSeconds": 240.94,
+              "probability": 0.9560546875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/118/words/1",
+              "word": "程",
+              "sourceStartSeconds": 240.94,
+              "sourceEndSeconds": 241.1,
+              "probability": 0.998046875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/118/words/2",
+              "word": "简",
+              "sourceStartSeconds": 241.1,
+              "sourceEndSeconds": 241.3,
+              "probability": 0.9931640625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/118/words/3",
+              "word": "化",
+              "sourceStartSeconds": 241.3,
+              "sourceEndSeconds": 241.48,
+              "probability": 0.9912109375
+            }
+          ],
+          "minModelWordProbability": 0.9560546875
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "流程简化",
+          "verbatimWordText": "流程简化",
+          "sourceStartSeconds": 240.69331250000002,
+          "sourceEndSeconds": 241.4933125,
+          "editedStartSeconds": 239.75997916666668,
+          "editedEndSeconds": 240.55997916666666,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C085.raw.json",
+              "jsonPointer": "/segments/0/words/8",
+              "word": "流",
+              "sourceStartSeconds": 240.69331250000002,
+              "sourceEndSeconds": 240.91331250000002,
+              "probability": 0.7431640625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C085.raw.json",
+              "jsonPointer": "/segments/0/words/9",
+              "word": "程",
+              "sourceStartSeconds": 240.91331250000002,
+              "sourceEndSeconds": 241.1133125,
+              "probability": 0.99658203125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C085.raw.json",
+              "jsonPointer": "/segments/0/words/10",
+              "word": "简",
+              "sourceStartSeconds": 241.1133125,
+              "sourceEndSeconds": 241.2933125,
+              "probability": 0.99609375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C085.raw.json",
+              "jsonPointer": "/segments/0/words/11",
+              "word": "化",
+              "sourceStartSeconds": 241.2933125,
+              "sourceEndSeconds": 241.4933125,
+              "probability": 0.99072265625
+            }
+          ],
+          "minModelWordProbability": 0.7431640625
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C090",
+      "category": "两次识别支持保留原话",
+      "fullNeedles": [
+        "降本增效"
+      ],
+      "focusedNeedles": [
+        "降本增效"
+      ],
+      "suggestion": "保留“降本增效”，不采用旧二遍的“降本增销”。",
+      "remaining": "两次新识别对目标词一致。",
+      "unresolvedConflict": false,
+      "v2Text": "想让自己的生意降本增效",
+      "editedPageWindowSeconds": [
+        247.6,
+        249.7
+      ],
+      "sourcePageWindowSeconds": [
+        248.53333333333333,
+        250.63333333333333
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "降本增效",
+          "verbatimWordText": "降本增效",
+          "sourceStartSeconds": 249.74,
+          "sourceEndSeconds": 250.54,
+          "editedStartSeconds": 248.80666666666667,
+          "editedEndSeconds": 249.60666666666665,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/125/words/0",
+              "word": "降",
+              "sourceStartSeconds": 249.74,
+              "sourceEndSeconds": 250.04,
+              "probability": 0.90478515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/125/words/1",
+              "word": "本",
+              "sourceStartSeconds": 250.04,
+              "sourceEndSeconds": 250.24,
+              "probability": 0.994140625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/125/words/2",
+              "word": "增",
+              "sourceStartSeconds": 250.24,
+              "sourceEndSeconds": 250.4,
+              "probability": 0.95654296875
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/125/words/3",
+              "word": "效",
+              "sourceStartSeconds": 250.4,
+              "sourceEndSeconds": 250.54,
+              "probability": 0.96484375
+            }
+          ],
+          "minModelWordProbability": 0.90478515625
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "降本增效",
+          "verbatimWordText": "降本增效",
+          "sourceStartSeconds": 249.7533125,
+          "sourceEndSeconds": 250.5533125,
+          "editedStartSeconds": 248.81997916666666,
+          "editedEndSeconds": 249.61997916666667,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C090.raw.json",
+              "jsonPointer": "/segments/2/words/0",
+              "word": "降",
+              "sourceStartSeconds": 249.7533125,
+              "sourceEndSeconds": 250.0333125,
+              "probability": 0.92236328125
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C090.raw.json",
+              "jsonPointer": "/segments/2/words/1",
+              "word": "本",
+              "sourceStartSeconds": 250.0333125,
+              "sourceEndSeconds": 250.23331249999998,
+              "probability": 0.99462890625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C090.raw.json",
+              "jsonPointer": "/segments/2/words/2",
+              "word": "增",
+              "sourceStartSeconds": 250.23331249999998,
+              "sourceEndSeconds": 250.3933125,
+              "probability": 0.8115234375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C090.raw.json",
+              "jsonPointer": "/segments/2/words/3",
+              "word": "效",
+              "sourceStartSeconds": 250.3933125,
+              "sourceEndSeconds": 250.5533125,
+              "probability": 0.95458984375
+            }
+          ],
+          "minModelWordProbability": 0.8115234375
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    },
+    {
+      "id": "C094",
+      "category": "两次识别支持的订正候选",
+      "fullNeedles": [
+        "深耕"
+      ],
+      "focusedNeedles": [
+        "深耕"
+      ],
+      "suggestion": "生根 → 深耕；保留 AI 专名，不引入局部的 AA。",
+      "remaining": "两次对“深耕”一致；末尾按实际 WAV 截止 261.919625 秒，不生成最后约 13.7 毫秒的不存在音频。",
+      "unresolvedConflict": false,
+      "v2Text": "一个在兰州生根AI实体落地的创业者",
+      "editedPageWindowSeconds": [
+        256.6666666666667,
+        261.0
+      ],
+      "sourcePageWindowSeconds": [
+        257.6,
+        261.93333333333334
+      ],
+      "fullPassEvidence": [
+        {
+          "searchedPhrase": "深耕",
+          "verbatimWordText": "深耕",
+          "sourceStartSeconds": 259.12,
+          "sourceEndSeconds": 259.66,
+          "editedStartSeconds": 258.18666666666667,
+          "editedEndSeconds": 258.7266666666667,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/130/words/4",
+              "word": "深",
+              "sourceStartSeconds": 259.12,
+              "sourceEndSeconds": 259.48,
+              "probability": 0.978515625
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+              "jsonPointer": "/segments/130/words/5",
+              "word": "耕",
+              "sourceStartSeconds": 259.48,
+              "sourceEndSeconds": 259.66,
+              "probability": 0.9296875
+            }
+          ],
+          "minModelWordProbability": 0.9296875
+        }
+      ],
+      "focusedPassEvidence": [
+        {
+          "searchedPhrase": "深耕",
+          "verbatimWordText": "深耕",
+          "sourceStartSeconds": 259.1,
+          "sourceEndSeconds": 259.71999999999997,
+          "editedStartSeconds": 258.1666666666667,
+          "editedEndSeconds": 258.78666666666663,
+          "wordReferences": [
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C094.raw.json",
+              "jsonPointer": "/segments/1/words/4",
+              "word": "深",
+              "sourceStartSeconds": 259.1,
+              "sourceEndSeconds": 259.44,
+              "probability": 0.974609375
+            },
+            {
+              "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/focused/C094.raw.json",
+              "jsonPointer": "/segments/1/words/5",
+              "word": "耕",
+              "sourceStartSeconds": 259.44,
+              "sourceEndSeconds": 259.71999999999997,
+              "probability": 0.8779296875
+            }
+          ],
+          "minModelWordProbability": 0.8779296875
+        }
+      ],
+      "appliedToSharedSubtitles": false,
+      "humanListeningPerformed": false,
+      "formalCaptionApproval": false
+    }
+  ]
+}

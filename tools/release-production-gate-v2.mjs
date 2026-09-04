@@ -11,6 +11,7 @@ import {fileURLToPath} from 'node:url';
 
 import {assertNoRetiredGeneratedStyle} from './generated-style-policy.mjs';
 import {assertProductionEntryPreflightV2} from '../skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs';
+import {assertScopedDirectExportRelease} from './scoped-direct-export-core.mjs';
 
 export const RELEASE_PRODUCTION_GATE_SCHEMA = 'release-production-gate/v2';
 export const RELEASE_RISK_FRAME_RECEIPT_SCHEMA = 'release-risk-frame-receipt/v2';
@@ -268,6 +269,7 @@ export const validateReleaseProductionGateV2 = ({
       command: 'release-validation',
       entrypoint: 'tools/validate-release.mjs',
     });
+    const scopedDirectExport = assertScopedDirectExportRelease({release: parsedRelease, preflight});
     if (
       gate.jobSnapshotSha256 !== preflight.jobSnapshotSha256 ||
       gate.directorContractSha256 !== preflight.directorContractSha256 ||
@@ -284,7 +286,7 @@ export const validateReleaseProductionGateV2 = ({
     if (parsedRelease.production?.formalOutput !== expectedFormalPath) {
       fail('RPG2_FORMAL_OUTPUT_ROUTE_MISMATCH', 'release 正式输出没有绑定 job.formal.finalOutput。');
     }
-    if (parsedRelease.production?.previewOutput !== expectedPreviewPath) {
+    if (!scopedDirectExport && parsedRelease.production?.previewOutput !== expectedPreviewPath) {
       fail('RPG2_PREVIEW_OUTPUT_ROUTE_MISMATCH', 'release 预览输出没有绑定 job.preview.output。');
     }
     const formalOutput = assertBoundMedia({
@@ -294,7 +296,7 @@ export const validateReleaseProductionGateV2 = ({
       label: '正式输出',
       hashFile,
     });
-    const previewOutput = assertBoundMedia({
+    const previewOutput = scopedDirectExport ? null : assertBoundMedia({
       projectRoot: canonicalRoot,
       reference: gate.previewOutput,
       expectedPath: expectedPreviewPath,
@@ -306,8 +308,8 @@ export const validateReleaseProductionGateV2 = ({
       operation: 'release-validation',
       location: '$.releaseValidation',
       projectRoot: canonicalRoot,
-      documentPaths: [releaseFile.absolutePath, jobFile.absolutePath, formalOutput.absolutePath, previewOutput.absolutePath],
-      additionalStrings: [formalOutput.relativePath, previewOutput.relativePath],
+      documentPaths: [releaseFile.absolutePath, jobFile.absolutePath, formalOutput.absolutePath, ...(previewOutput ? [previewOutput.absolutePath] : [])],
+      additionalStrings: [formalOutput.relativePath, ...(previewOutput ? [previewOutput.relativePath] : [])],
     });
 
     const runManifest = readBoundJson({projectRoot: canonicalRoot, reference: gate.runManifest, label: '正式运行清单', hashFile});
@@ -364,6 +366,8 @@ export const validateReleaseProductionGateV2 = ({
     return {
       ok: true,
       code: 'RPG2_OK',
+      route: preflight.route ?? 'director-automation-v2',
+      scopedDirectExportSha256: preflight.scopedDirectExportSha256 ?? null,
       releasePath: releaseFile.relativePath,
       releaseSha256: releaseFile.sha256,
       jobPath: jobFile.relativePath,
@@ -374,7 +378,7 @@ export const validateReleaseProductionGateV2 = ({
       freezeReceiptSha256: preflight.freezeReceiptSha256,
       runFingerprint: gate.runFingerprint,
       formalOutputSha256: formalOutput.sha256,
-      previewOutputSha256: previewOutput.sha256,
+      previewOutputSha256: previewOutput?.sha256 ?? null,
       riskFrameReceiptSha256: riskFrameReceipt.sha256,
     };
   } catch (error) {

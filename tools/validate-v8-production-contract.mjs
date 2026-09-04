@@ -1,6 +1,7 @@
 import {existsSync, readFileSync, realpathSync} from 'node:fs';
 import {dirname, isAbsolute, relative, resolve, sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {assertScopedDirectExport, isScopedDirectExportJob, SCOPED_DIRECT_EXPORT} from './scoped-direct-export-core.mjs';
 import {
   generatedVideoRenderSourceFor,
   loadPlanAndStyle,
@@ -103,6 +104,16 @@ try {
 
 const errors = [];
 const warnings = [];
+let scopedDirectExport = false;
+if (isScopedDirectExportJob(job)) {
+  try {
+    assertScopedDirectExport({projectRoot, job, jobPath: jobArgument, command: 'formal'});
+    scopedDirectExport = true;
+  } catch (error) {
+    console.error(`[${error.code ?? 'SDE_INVALID'}] ${error.message}`);
+    process.exit(1);
+  }
+}
 const retiredStyleHits = findRetiredGeneratedStyleFingerprints(
   {job, plan, generatedVideoPlan: declaredGeneratedPlan},
   {
@@ -129,7 +140,7 @@ const previewApproved = job.experiment?.status === previewApprovedStatus;
 if (job.experiment?.id !== experimentId) {
   errors.push(`生产任务必须声明 experiment.id=${experimentId}。`);
 }
-if (![previewRequiredStatus, previewApprovedStatus].includes(job.experiment?.status)) {
+if (![previewRequiredStatus, previewApprovedStatus, ...(scopedDirectExport ? [SCOPED_DIRECT_EXPORT.state] : [])].includes(job.experiment?.status)) {
   errors.push(
     `V8 候选任务状态必须为 ${previewRequiredStatus} 或 ${previewApprovedStatus}。`,
   );
@@ -153,10 +164,10 @@ if (previewApproved) {
       'V8 预览通过后必须同时记录 formal.enabled=true、userPreviewApproved=true 和确认时间。',
     );
   }
-} else if (
+} else if (!scopedDirectExport && (
   job.formal?.enabled !== false ||
   job.experiment?.userPreviewApproved !== false
-) {
+)) {
   errors.push(
     'V8 候选预览在用户确认前必须保持 formal.enabled=false 且 userPreviewApproved=false。',
   );
@@ -170,10 +181,10 @@ const continuousPreview = previewRanges.find(
     range.endSeconds - range.startSeconds >= 30 &&
     range.endSeconds - range.startSeconds <= 45.1,
 );
-if (!continuousPreview) {
+if (!scopedDirectExport && !continuousPreview) {
   errors.push('V8 必须提供同一连续画面的 30–45 秒动态试听预览。');
 }
-if (job.preview?.renderWithoutSfxComparison !== true) {
+if (!scopedDirectExport && job.preview?.renderWithoutSfxComparison !== true) {
   errors.push('V8 预览必须生成完全同画面的无音效对照。');
 }
 const inPreview = (time) =>
@@ -193,7 +204,7 @@ const requiredCoverage = [
   'hero-emphasis',
   'sfx-ab',
 ];
-for (const item of requiredCoverage) {
+for (const item of scopedDirectExport ? [] : requiredCoverage) {
   if (!plan.previewCoverage?.includes(item)) {
     errors.push(`V8 预览覆盖缺少：${item}`);
   }
@@ -201,6 +212,9 @@ for (const item of requiredCoverage) {
 
 const layers = Array.isArray(plan.layers) ? plan.layers : [];
 const providerLayers = layers.filter(isProviderGeneratedLayer);
+if (scopedDirectExport && providerLayers.length > 0) {
+  errors.push('本条人工素材直出不得冒用 codex-provider 自动生成合同或固定自动生成路径。');
+}
 const cues = Array.isArray(cueSheet.cues) ? cueSheet.cues : [];
 const auditedSfxByOutput = new Map(
   (Array.isArray(sfxManifest.items) ? sfxManifest.items : []).map((item) => [
@@ -515,7 +529,7 @@ for (const [role, sources] of roleSources) {
   }
 }
 
-for (const role of job.experiment?.previewAuditionRoles ?? []) {
+for (const role of scopedDirectExport ? [] : job.experiment?.previewAuditionRoles ?? []) {
   const matching = cues.filter((cue) => cue.role === role);
   if (!matching.some((cue) => inPreview(cue.start))) {
     errors.push(`试听角色未进入代表性预览：${role}`);
@@ -525,7 +539,7 @@ for (const role of job.experiment?.previewAuditionRoles ?? []) {
 if (primaryCount === 0 || coveredPrimaryCount !== primaryCount) {
   errors.push(`主视觉音效覆盖 ${coveredPrimaryCount}/${primaryCount}，要求 100%。`);
 }
-if (layers.length > 0 && layers.filter((layer) => inPreview(layer.start)).length < 5) {
+if (!scopedDirectExport && layers.length > 0 && layers.filter((layer) => inPreview(layer.start)).length < 5) {
   warnings.push('连续预览内少于 5 个视觉事件，可能不足以判断节奏层级。');
 }
 
@@ -539,7 +553,7 @@ if (errors.length > 0) {
 console.log(
   `V8 生产合同校验通过：${plan.videoId}，${layers.length} 个视觉事件，` +
     `${roleSources.size} 类音效，${
-      previewApproved
+      scopedDirectExport ? '本条已授权直接导出，未执行预览验收，成片仍待人工观看' : previewApproved
         ? '用户预览已通过，完整候选片渲染已解锁'
         : '正式渲染仍被用户预览门禁锁定'
     }。`,

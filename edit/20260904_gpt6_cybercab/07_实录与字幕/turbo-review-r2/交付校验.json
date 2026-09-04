@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "local-asr-delivery-validation/v1",
+  "status": "passed-machine-evidence-only",
+  "checkedAt": "2026-09-04T16:40:28.068295+00:00",
+  "checks": [
+    {
+      "name": "完整推理真实完成",
+      "passed": true
+    },
+    {
+      "name": "原始JSON哈希匹配运行回执",
+      "passed": true
+    },
+    {
+      "name": "音频哈希前后及当前一致",
+      "passed": true
+    },
+    {
+      "name": "局部21窗完整完成",
+      "passed": true
+    },
+    {
+      "name": "21页复核ID唯一",
+      "passed": true
+    },
+    {
+      "name": "未把机器复核写成人耳听审",
+      "passed": true
+    },
+    {
+      "name": "完整识别词单元数一致",
+      "passed": true
+    },
+    {
+      "name": "全部词时码有效",
+      "passed": true
+    },
+    {
+      "name": "原始文本与分段文本一致",
+      "passed": true
+    },
+    {
+      "name": "识别末端覆盖原音频",
+      "passed": true
+    },
+    {
+      "name": "正式视频时间映射为261秒",
+      "passed": true
+    },
+    {
+      "name": "剪后词片段时码有效",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C003",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C004",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C005",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C009",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C011",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C013",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C035",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C049",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C051",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C052",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C055",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C059",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C061",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C062",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C064",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C065",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C077",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C082",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C085",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C090",
+      "passed": true
+    },
+    {
+      "name": "局部原始哈希:C094",
+      "passed": true
+    },
+    {
+      "name": "所有词级JSON指针及偏移可回溯",
+      "passed": true
+    },
+    {
+      "name": "本轮脚本语法通过",
+      "passed": true
+    },
+    {
+      "name": "局部运行库依赖一致",
+      "passed": true
+    },
+    {
+      "name": "v2快照与逐页复核原文一致",
+      "passed": true
+    },
+    {
+      "name": "最新94页只剩C061未决",
+      "passed": true
+    }
+  ],
+  "wordReferencesChecked": 186,
+  "dependencyCheck": {
+    "command": [
+      "uv",
+      "pip",
+      "check",
+      "--python",
+      "/Users/pc/Documents/口播/.cache/whisper-runtime/venv/bin/python"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "Using Python 3.12.11 environment at: .cache/whisper-runtime/venv\nChecked 35 packages in 13ms\nAll installed packages are compatible\n"
+  },
+  "remainingUncertainty": [
+    "C061"
+  ],
+  "humanListeningPerformed": false,
+  "productionApproved": false,
+  "cutBoundaryWarning": [
+    {
+      "word": "没有",
+      "start": 117.88,
+      "end": 118.12,
+      "probability": 0.99462890625,
+      "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+      "jsonPointer": "/segments/58/words/0",
+      "rawStart": 117.88,
+      "rawEnd": 118.12,
+      "editedPieces": [
+        {
+          "sourceStart": 117.88,
+          "sourceEnd": 117.93333333333334,
+          "editedStart": 117.88,
+          "editedEnd": 117.93333333333334
+        }
+      ],
+      "overlapsDeletedInterval": true,
+      "zeroDuration": false
+    },
+    {
+      "word": "人",
+      "start": 118.12,
+      "end": 118.3,
+      "probability": 1.0,
+      "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+      "jsonPointer": "/segments/58/words/1",
+      "rawStart": 118.12,
+      "rawEnd": 118.3,
+      "editedPieces": [],
+      "overlapsDeletedInterval": true,
+      "zeroDuration": false
+    },
+    {
+      "word": "负",
+      "start": 118.3,
+      "end": 118.46,
+      "probability": 0.9990234375,
+      "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+      "jsonPointer": "/segments/58/words/2",
+      "rawStart": 118.3,
+      "rawEnd": 118.46,
+      "editedPieces": [],
+      "overlapsDeletedInterval": true,
+      "zeroDuration": false
+    },
+    {
+      "word": "责",
+      "start": 118.46,
+      "end": 118.64,
+      "probability": 0.99951171875,
+      "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/R01.mlx-whisper-large-v3-turbo.full.raw.json",
+      "jsonPointer": "/segments/58/words/3",
+      "rawStart": 118.46,
+      "rawEnd": 118.64,
+      "editedPieces": [],
+      "overlapsDeletedInterval": true,
+      "zeroDuration": false
+    }
+  ]
+}

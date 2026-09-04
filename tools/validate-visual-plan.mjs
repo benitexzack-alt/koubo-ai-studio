@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {assertScopedDirectExport, SCOPED_DIRECT_EXPORT} from './scoped-direct-export-core.mjs';
 
 import {
   findRetiredGeneratedStyleFingerprints,
@@ -20,6 +21,22 @@ const plan = readJson(planPath);
 const baseline = readJson(baselinePath);
 const errors = [];
 const warnings = [];
+let scopedDirectExport = false;
+if (plan.experiment?.status === SCOPED_DIRECT_EXPORT.state) {
+  try {
+    const job = readJson(path.resolve(projectRoot, SCOPED_DIRECT_EXPORT.jobPath));
+    assertScopedDirectExport({projectRoot, job, command: 'formal'});
+    if (path.resolve(projectRoot, job.inputs?.visualPlan ?? '') !== path.resolve(planPath) ||
+      plan.videoId !== SCOPED_DIRECT_EXPORT.episodeId ||
+      (plan.previewCoverage != null && (!Array.isArray(plan.previewCoverage) || plan.previewCoverage.length !== 0))) {
+      throw new Error('本条直出视觉方案必须绑定当前 job，且不能填写未执行的预览覆盖');
+    }
+    scopedDirectExport = true;
+  } catch (error) {
+    console.error(`[${error.code ?? 'SDE_VISUAL_PLAN'}] ${error.message}`);
+    process.exit(1);
+  }
+}
 
 const retiredStyleHits = findRetiredGeneratedStyleFingerprints(plan, {
   location: '$visualPlan',
@@ -98,7 +115,7 @@ if (plan.schemaVersion === 4) {
     errors.push('schemaVersion=4 必须声明 experiment.id=v8-semantic-continuity-sfx。');
   }
   if (
-    !['candidate-preview-required', 'candidate-preview-approved'].includes(
+    !['candidate-preview-required', 'candidate-preview-approved', ...(scopedDirectExport ? [SCOPED_DIRECT_EXPORT.state] : [])].includes(
       plan.experiment?.status,
     )
   ) {
@@ -122,9 +139,9 @@ if (!Array.isArray(plan.styleReferenceIds)) {
   errors.push('styleReferenceIds 必须是数组。');
 }
 
-if (!Array.isArray(plan.previewCoverage)) {
+if (!scopedDirectExport && !Array.isArray(plan.previewCoverage)) {
   errors.push('previewCoverage 必须是数组。');
-} else {
+} else if (!scopedDirectExport) {
   for (const required of baseline.previewGate.minimumCoverage ?? []) {
     if (!plan.previewCoverage.includes(required)) {
       errors.push(`预览覆盖缺少：${required}`);
@@ -374,7 +391,7 @@ for (let left = 0; left < titleLayers.length; left += 1) {
   }
 }
 
-if ((layers ?? []).some((layer) => layer.kind === 'full-screen-asset') && !plan.previewCoverage?.includes('full-screen-asset')) {
+if (!scopedDirectExport && (layers ?? []).some((layer) => layer.kind === 'full-screen-asset') && !plan.previewCoverage?.includes('full-screen-asset')) {
   errors.push('存在全屏素材，但预览没有覆盖 full-screen-asset。');
 }
 

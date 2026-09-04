@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "task_id": "20260904-gpt6-cybercab",
+  "draft_path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/10_发布包/发布包文字.v1.md",
+  "draft_sha256": "e56d8e42f58c808b3b5ec89378da973343f20ebf2d9c0b7fb72fbc99e8da4585",
+  "copy_review_path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/10_发布包/发布包文字.copy_review.v1.json",
+  "copy_review_sha256": "96806c5b2abe3ad489c081b57dbcba2b788b9f1c025b64b309f0f2ffa0ba156f",
+  "validator_path": "/Users/pc/Documents/口播/skills/content-brain-gate/scripts/validate_content_gate.py",
+  "validator_sha256": "7706e59a1cc32635e5b492bdca96291919e0fe397dd95bbbeb5c606d8480cb32",
+  "scope": "现有校验器子检查及本期文字绑定核验，不是完整内容门或release放行",
+  "execution": {
+    "interpreter": "python3 -B",
+    "method": "在内存中import既有校验器，调用extract_draft_text、scan_frozen_phrases、scan_project_style_gate、validate_copy_review；未写源码、门禁卡或__pycache__",
+    "shell_exit_code": 0,
+    "exit_code_meaning": "八项限定断言通过，其中包含对严格copy_review如实未通过的核对；不表示严格copy_review或整条生产已通过",
+    "source_code_changed": false,
+    "render_started": false
+  },
+  "checks": {
+    "all_input_hashes_match": true,
+    "draft_hash_matches": true,
+    "two_skills_hashes_match": true,
+    "style_and_frozen_scan_passed": true,
+    "unsupported_public_claims_absent": true,
+    "strict_copy_review_has_only_declared_incomplete_items": true,
+    "screenshot_not_claimed": true,
+    "publication_not_claimed": true
+  },
+  "hash_mismatches": [],
+  "public_risk_pattern_hits": {
+    "C061-content": [],
+    "unsupported-claims": []
+  },
+  "public_risk_patterns": {
+    "C061-content": "C061|自动优化所有|平台流程",
+    "unsupported-claims": "AGI|全部成熟|全部替代|所有问题|指数级|今天|无人负责|没有人负责|没有人干预|保证|自动获客|降本增效|弯道超车"
+  },
+  "style_errors": [],
+  "style_passed": ["项目语言失败样本与历史锚点机器扫描已通过"],
+  "style_warnings": [],
+  "strict_copy_review_passed": false,
+  "strict_copy_review_errors": [
+    "draft.copy_review.status 必须为 passed",
+    "draft.copy_review.checks.read_aloud_completed 必须为 true"
+  ],
+  "full_content_gate_executed": false,
+  "overall_assertions_passed": true,
+  "limitations": [
+    "没有真人朗读或新文案的用户语言确认，不自动改成passed",
+    "历史锚点扫描不等于当前最近六条完整语义审查，现有历史台账截至8月",
+    "C061仍未确认；本次只证明新增copy未使用其内容，不证明最终字幕已闭合",
+    "未听审原声、未生成视频、未抽取正式片截图，原声事实风险并未因包装文案收紧而消失",
+    "截图路径、时间点与哈希由父任务补齐；整包状态为incomplete-delivery，未验收、未公开发布",
+    "任何被绑定文件变化后需重新核验；此回执不代替生产门禁、独立签名或发布批准"
+  ]
+}

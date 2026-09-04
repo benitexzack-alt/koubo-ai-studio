@@ -11,6 +11,12 @@ import {fileURLToPath} from 'node:url';
 
 import {assertNoRetiredGeneratedStyle} from '../../../tools/generated-style-policy.mjs';
 import {validateKnowledgeContextForProductionV2} from '../../../tools/knowledge-context-production-gate.mjs';
+import {assertDirectorProductionBinding} from '../../../tools/director-production-binding-core.mjs';
+import {
+  assertScopedDirectExport,
+  isScopedDirectExportJob,
+  SCOPED_DIRECT_EXPORT_GATE_FILES,
+} from '../../../tools/scoped-direct-export-core.mjs';
 import {
   computeHandoffBindingSha256,
   validateDirectorExternalMessageAnchorV2,
@@ -463,6 +469,36 @@ export const validateProductionEntryPreflightV2 = ({
     if (!isText(gate.revisionId)) fail('DPG2_REVISION_ID_REQUIRED', '生产门绑定必须有新 revisionId。');
     if (!isText(parsedJob.remotion?.publicDir)) {
       fail('DPG2_REMOTION_PUBLIC_DIR_REQUIRED', '生产 job 必须显式绑定 Remotion publicDir；禁止使用隐式默认目录。');
+    }
+
+    // This is a separate, pinned single-episode contract, never a signature fallback.
+    if (isScopedDirectExportJob(parsedJob)) {
+      const scoped = assertScopedDirectExport({projectRoot, job: parsedJob, jobPath, command});
+      const directorBinding = assertDirectorProductionBinding({projectRoot, job: parsedJob, command});
+      const closure = computeProductionGateClosureV2({projectRoot});
+      const gateClosureFiles = [...new Map([
+        ...closure.files,
+        ...SCOPED_DIRECT_EXPORT_GATE_FILES.map((pathValue) => {
+          const {path, sha256, bytes} = hashRegularFile(projectRoot, pathValue, '本条直出门禁闭包');
+          return {path, sha256, bytes};
+        }),
+      ].map((entry) => [entry.path, entry])).values()].sort((a, b) => a.path.localeCompare(b.path, 'zh-CN'));
+      const knowledgeContext = validateKnowledgeContextForProductionV2({
+        projectRoot, jobPath: jobFile.absolutePath, job: parsedJob, command,
+      });
+      const evidence = {
+        ok: true, code: 'DPG2_SCOPED_DIRECT_EXPORT_OK', route: scoped.route, command, entrypoint,
+        jobId: parsedJob.jobId, revisionId: gate.revisionId, jobFileSha256: jobFile.sha256,
+        jobSnapshotSha256: scoped.jobSnapshotSha256,
+        scopedDirectExportSha256: scoped.manifestSha256,
+        directorContractSha256: null, handoffBindingSha256: null, freezeReceiptSha256: null,
+        boundFilesSha256: stableJsonSha256ForProductionGateV2(scoped.boundFiles),
+        gateClosureSha256: stableJsonSha256ForProductionGateV2(gateClosureFiles), gateClosureFiles,
+        compositionBindingSha256: stableJsonSha256ForProductionGateV2(scoped.compositionBinding),
+        userPreviewApproved: false, fullWatchConfirmed: false, publishAuthorized: false,
+        directorBinding, knowledgeContext,
+      };
+      return {...evidence, integritySealSha256: stableJsonSha256ForProductionGateV2(evidence)};
     }
 
     const director = readBoundJson(projectRoot, gate.directorContract, '导演合同');

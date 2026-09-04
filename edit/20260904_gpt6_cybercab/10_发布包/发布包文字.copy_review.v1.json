@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "task_id": "20260904-gpt6-cybercab",
+  "status": "reviewed-text-only",
+  "reviewed_at": "2026-09-05T00:55:43+08:00",
+  "scope": "仅本期新增发布包文字与真人截图合成提示词；不是口播正文改稿、字幕验收、生产授权或公开发布批准",
+  "text_review_verdict": "本次文字范围未发现需强改的高风险句；真人朗读未执行，因此不填完整passed",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/10_发布包/发布包文字.v1.md",
+    "sha256": "e56d8e42f58c808b3b5ec89378da973343f20ebf2d9c0b7fb72fbc99e8da4585",
+    "content_start_marker": "<!-- PUBLIC_COPY_START -->",
+    "content_end_marker": "<!-- PUBLIC_COPY_END -->",
+    "hash_scope": "完整UTF-8文件字节，含封面提示词与非公开交接说明",
+    "machine_language_scan_scope": "PUBLIC_COPY标记内实际发布文字；封面指令和禁用词列表不作为公开正文扫描，已单独人工式语义审稿"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true,
+      "read_scope": "本轮完整读取"
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true,
+      "read_scope": "本轮完整读取，连同AI味边界与报告格式"
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": false,
+    "voice_match_completed": true
+  },
+  "reading_limits": {
+    "text_articulation_check_completed": true,
+    "text_articulation_method": "检查标题负载、句长、问句与停顿，发布文案只保留一个评论动作；这是文字层检查，不冒充出声朗读或音频听审",
+    "human_read_aloud_completed": false,
+    "tts_generated": false,
+    "source_audio_listened_this_turn": false,
+    "user_language_approval_for_new_copy": false
+  },
+  "input_bindings": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/corrected-caption-pages.v1.json",
+      "sha256": "914fc5c0fd99e99799c5caa170f68aa5b4293a3aa631d155ac937848a190c74d",
+      "read_scope": "结构化读取94页ID、时间和zh字段；93页非空正文全读，C061=null；不是全部wordIds或原始音频的听审",
+      "applied": "只用已读正文的主题、任务动作、人做判断及评论引导；实录存在不等于主张事实成立"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/03_事实与来源核验/事实核验与待裁决.md",
+      "sha256": "c009545fa9c07743cc900599cc19de8a0d533ab076c07460b475ebf0e55d7d2c",
+      "read_scope": "全文",
+      "applied": "模型发布与能力、Cybercab身份和时间线、人工支持及企业收益边界；旧U01来源状态由下条补充记录取代"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/03_事实与来源核验/U01官方来源补充.md",
+      "sha256": "276ff50adee3e82444bbcaff565037348af0d2ef68ec14c1a6b6626e0ad2e9d5",
+      "read_scope": "全文",
+      "applied": "官方演示定位成立，不扩展为逐帧一致、译文授权或AGI引语成立"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/templates/10-超哥AI创业记_3比4系列封面提示词母版.md",
+      "sha256": "a2677e98ac83b4670450505befc644d747135726465e91a039b3d02a7ca5dbbc",
+      "read_scope": "全文",
+      "applied": "人物38%-45%、结构20%-35%、3:4、1080x1440、三级文字、四个节点、路径、真实背景、固定色彩与禁用项"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+      "sha256": "c90d07dfb414707035ddd59b6bea6faf88a35f9551649199b9a92d433785bb0d",
+      "read_scope": "全文",
+      "applied": "用具体任务和直接问题承接老板视角，不新增导师身份、客户结果、情绪或经历"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/21-超哥口播语言与重复硬门禁.json",
+      "sha256": "fe5031697546ff9cd8f5154200d3588540e34877ab3ac2a28c119e6a74efe4e7",
+      "read_scope": "全文",
+      "applied": "交给现有校验器执行项目语言与历史锚点扫描"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/workflow/recent-content-history.v1.json",
+      "sha256": "fb618bf4518f908d154d40dd7abff3675ce948a2fe2d9c92a51fcf3b36077691",
+      "read_scope": "全文台账，非当前最近六条全文",
+      "applied": "仅现有历史锚点机器扫描；台账截至8月，不冒充9月5日全量最近六条语义审查"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/references/ai-writing-boundary.md",
+      "sha256": "5b3adb26c5d688f3a7a30be912893fa808440a1306627c3c265e6e016abea64e",
+      "read_scope": "全文",
+      "applied": "逐项检查六类边界和审稿备注泄漏"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/references/copy-review-report-schema.md",
+      "sha256": "e3d03fa833ee62383b02b35f9fcd3c63b0b16a8cce6a394dd47b71416b2ff19b",
+      "read_scope": "全文",
+      "applied": "绑定当前文字与两项Skill哈希；缺失朗读不伪造true或passed"
+    }
+  ],
+  "fact_lock": {
+    "allowed": [
+      {"claim": "GPT-6 Astra演示了软件操作", "caption_ids": ["C003", "C006", "C008", "C011"], "source": "OpenAI官方发布页及U01官方来源补充", "strength": "官方发布和演示，不是本地企业实测或任意任务保证"},
+      {"claim": "Cybercab面向无人驾驶", "caption_ids": ["C004", "C022"], "source": "事实核验与待裁决.md的Tesla官方资料核验", "strength": "车型方向；不表述当天路测、公众运营完成或无人干预"},
+      {"claim": "数据、文案这些工作，AI能帮到哪一步", "caption_ids": ["C013", "C014", "C060", "C083", "C087"], "strength": "需求问题，不是效果承诺"},
+      {"claim": "人还得做判断，看结果", "caption_ids": ["C012", "C066"], "strength": "本期经营判断，不作全部工作分配或法律责任结论"},
+      {"claim": "评论区留下落地", "caption_ids": ["C091"], "strength": "保留原有单一评论动作，不新增交付承诺"}
+    ],
+    "excluded_caption_ids": ["C061"],
+    "excluded_claim_groups": [
+      "AGI正式到来、大脑身体全部成熟、欢迎AGI为官方原话",
+      "今天首发、今天路测及预告事件已经完成",
+      "零成本、指数级效率、全部替代及自动获客结果",
+      "没有刹车等同没有制动系统、无人干预、无人负责",
+      "所有行业被接管、所有问题都能解决、保证降本增效或弯道超车"
+    ],
+    "original_recording_unchanged": true,
+    "caption_text_unchanged": true
+  },
+  "humanizer_pattern_review": {
+    "patterns_checked": 24,
+    "removed_or_not_carried_over": ["时代宣告与颠覆性大词", "零成本和成功保证", "恐惧淘汰式营销", "全部/所有的无边界外推", "新闻时间词今天", "机械排比与泛化行业权威"],
+    "retained_functional_forms": ["主标题用反问明确人应做什么，正文承接人工判断", "数据与文案只作两类已录任务，不凑三点清单", "落地只保留为用户原有评论关键词"],
+    "scope_note": "审的是新发布文字，未把原声改成这些安全摘要，也未声称原声已纠错"
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "直接从软件操作和无人驾驶主题进入，落到数据、文案和人工判断；用演示与问题句控制证据强度，不把免责声明堆进文案。事实锁、截图占位和制作限制留在非公开段，删除时代口号、收益承诺及万能转场；只保留原实录的一个评论动作。"
+  },
+  "retention_review": {
+    "risk_node_count": 0,
+    "nodes": [],
+    "no_high_risk_reason": "未发现需要强改的高风险句。本次是短发布说明而非重写261秒口播，标题提出老板角色问题，文案用两项具体任务接住并给出人工判断，结尾一个动作。模型名和车型名有阅读负担，但用于准确识别本期真实对象，不另加术语解释挤占正文。此为文字预测，不是实际留存数据。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "发布包装不沿用实录中的全部成熟、全部替代或全部问题解决，采用演示、需求问题和人的判断；不修改或删除原声事实记录",
+      "把人只干的绝对分工收紧为人还得做判断；只限新增包装文字",
+      "移除今天与路测结果的时点暗示，不把9月4日预告升级为已验证运营"
+    ],
+    "pending_user_confirmations": [
+      "本轮新标题、发布文案与封面文字尚无用户最终选择记录",
+      "正式片真人截图尚未抽取和绑定",
+      "C061仍待确认，未用于本次copy",
+      "原声其余绝对化主张的处理和第三方素材权利仍需主任务分别裁决；本报告不代替"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "score_basis": "仅为已审新文字的编辑判断，不评价原声全部主张，不证明真人已读、观众喜欢或商业有效。事实保真10分依据逐条事实锁，无新增经历、数据、收益或未经证实引语。",
+  "cover_binding": {
+    "mode": "真人截图合成",
+    "aspect_ratio": "3:4",
+    "width": 1080,
+    "height": 1440,
+    "expected_source_directory": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/09_正式成片",
+    "expected_directory_is_placeholder": true,
+    "formal_video_path": null,
+    "formal_video_sha256": null,
+    "screenshot_path": null,
+    "screenshot_sha256": null,
+    "screenshot_time_seconds": null,
+    "screenshot_extracted": false,
+    "visual_acceptance_completed": false,
+    "note": "父任务以实际正式片位置补齐，不将目录占位当成已存在成片或截图；改本稿文字后必须重新审稿及计算hash"
+  },
+  "upstream_scope": {
+    "user_formal_production_authorization_inherited": true,
+    "production_or_route_reapproval_requested": false,
+    "content_gate_revalidated_this_turn": false,
+    "account_preflight_regenerated_this_turn": false,
+    "current_recent_six_full_text_review_completed": false,
+    "note": "这是已授权生产任务下的发布包装文字委派，不另起选题或改口播主线，不代填父任务内容门、账号数据、知识上下文、独立信任或已读证据。机器校验仅运行现有校验器的copy_review及语言扫描子检查，不称为完整内容门通过。"
+  },
+  "official_recheck": [
+    {"url": "https://openai.com/index/gpt-6-astra/", "result": "本轮重新读取发布页，电脑操作、多步工作和演示能力有直接依据，不外推任意企业结果"},
+    {"url": "https://www.tesla.com/robotaxi", "result": "本轮网页正文抽取为空；本稿Cybercab身份依本条既存官方资料核验，不将空页冒充新证据"}
+  ],
+  "delivery": {
+    "main_title_count": 1,
+    "alternative_title_count": 2,
+    "description_present": true,
+    "topics_present": true,
+    "cover_prompt_present": true,
+    "complete_package_status": "incomplete-delivery",
+    "published": false,
+    "release_verified": false
+  }
+}

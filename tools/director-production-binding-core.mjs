@@ -1,6 +1,7 @@
 import {existsSync, readFileSync} from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import {assertScopedDirectExport, isScopedDirectExportJob} from './scoped-direct-export-core.mjs';
 import {
   assertActiveSkillLink,
   assertSkillLock,
@@ -69,6 +70,9 @@ export function assertDirectorProductionBinding({
     throw error;
   }
   const profile = readJson(profilePath);
+  const scoped = isScopedDirectExportJob(job)
+    ? assertScopedDirectExport({projectRoot, job, command})
+    : null;
   const effectiveDate = normalizeDate(profile.effectiveFrom);
   const jobDate = parseJobDate(job.jobId);
   if (jobDate && jobDate < effectiveDate) {
@@ -88,7 +92,7 @@ export function assertDirectorProductionBinding({
     errors.push('DIRECTOR_PROFILE_FALLBACK_NOT_BLOCKED');
   }
 
-  if (!skipSkillLock) {
+  if (!skipSkillLock && !scoped) {
     const lockPath = resolveDeclared(projectRoot, profile.skill.lockPath);
     if (!lockPath || !existsSync(lockPath)) {
       errors.push('DIRECTOR_SKILL_LOCK_MISSING');
@@ -164,7 +168,7 @@ export function assertDirectorProductionBinding({
   if (bound.preValidation?.value.skillExecuted !== true) {
     errors.push('DIRECTOR_PRODUCTION_PRE_SKILL_NOT_EXECUTED');
   }
-  if (bound.postValidation?.value.skillExecuted !== true) {
+  if (!scoped && bound.postValidation?.value.skillExecuted !== true) {
     errors.push('DIRECTOR_PRODUCTION_POST_SKILL_NOT_EXECUTED');
   }
   if (bound.postPlan?.value.spokenAuthority !== 'recorded-audio') {
@@ -174,7 +178,7 @@ export function assertDirectorProductionBinding({
     errors.push('DIRECTOR_PRODUCTION_SCRIPT_ROLE_INVALID');
   }
 
-  if (formalCommands.has(command)) {
+  if (formalCommands.has(command) && !scoped) {
     const acceptance = bindArtifact(
       projectRoot,
       director?.currentTaskUserAcceptance,
@@ -198,12 +202,13 @@ export function assertDirectorProductionBinding({
   }
   return {
     ok: true,
-    status: formalCommands.has(command)
+    status: scoped ? 'direct-export-authorized-director-bound' : formalCommands.has(command)
       ? 'formal-entry-director-bound'
       : 'candidate-entry-director-bound',
     command,
     taskId: director.taskId,
     paperSceneCount: bound.prePlan.value.paperScenes.length,
     spokenAuthority: bound.postPlan.value.spokenAuthority,
+    ...(scoped ? {postshootEvidence: 'manual-import-bound', skillPackageAccepted: false, userPreviewApproved: false} : {}),
   };
 }

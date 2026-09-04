@@ -1,0 +1,127 @@
+[
+  {
+    "id": "C003", "category": "两次识别支持的订正候选",
+    "fullNeedles": ["重磅发布"], "focusedNeedles": ["重磅发布"],
+    "suggestion": "重爆发布 → 重磅发布；保留 v2 已规范的 GPT-6 Astra 拼写。",
+    "remaining": "仅修正识别写法，不核验产品发布事实。", "unresolvedConflict": false
+  },
+  {
+    "id": "C004", "category": "同音写法候选，未定稿",
+    "fullNeedles": ["正式落地落策"], "focusedNeedles": ["正式落地路侧"],
+    "suggestion": "落地入侧的订正候选为“落地路测”；两次新识别分别为“落地落策 / 落地路侧”，并非直接识别出“路测”。",
+    "remaining": "路测是结合近音和上下文提出的候选，不标记为人耳确认。保留 Cybercab 专名拼写，不改“机器人”为“车”。", "unresolvedConflict": true
+  },
+    {
+    "id": "C005", "category": "局部订正，尾字不补",
+    "fullNeedles": ["叠在一起", "分水"], "focusedNeedles": ["叠在一起", "分水"],
+    "suggestion": "跌在一起 → 叠在一起；句尾暂保留“分水”，不得仅按常用词补“岭”。",
+    "remaining": "两次新识别均未给出“岭”；缺字不能据语义补齐。是否存在未识出的弱尾音仍未人耳确认。", "unresolvedConflict": true
+  },
+  {
+    "id": "C009", "category": "两次识别支持的订正候选",
+    "fullNeedles": ["完整业务工作"], "focusedNeedles": ["完整业务工作"],
+    "suggestion": "句尾“完整业务工作人” → “完整业务工作”；不补“流”。前半沿用 v2 的“自主跑完”，不要把局部识别的“自主批办”整句覆盖上去。",
+    "remaining": "两次新识别的尾部均为“工作”；局部上下文中“跑完/批办”另有模型差异。", "unresolvedConflict": false
+  },
+  {
+    "id": "C011", "category": "同音写法候选，未定稿",
+    "fullNeedles": ["自我效对复盘"], "focusedNeedles": ["自我效对复盘"],
+    "suggestion": "副盘 → 复盘；校队的规范写法候选为“校对”。按实际连续说法排标点，不删词或改语序。",
+    "remaining": "两次原始输出均为“效对”，不是直接识别出“校对”；校对属于近音与词义订正候选。", "unresolvedConflict": true
+  },
+  {
+    "id": "C013", "category": "尾字冲突，待裁决",
+    "fullNeedles": ["产出或课文"], "focusedNeedles": ["产出获克文案"],
+    "suggestion": "铲出 → 产出；“货客”的写法候选为“获客”。整词候选“产出获客文案”，但不能把“案”当作两次一致的实录结果。",
+    "remaining": "全量只识别到“文”；局部识别出“案”，原片 59.153313–59.353313 秒，模型概率约 0.978。概率不是人耳证据，保留有无“案”的冲突。", "unresolvedConflict": true
+  },
+  {
+    "id": "C035", "category": "助词冲突，待裁决",
+    "fullNeedles": ["决策全部交给AI"], "focusedNeedles": ["决策的全部交给业"],
+    "suggestion": "不自动增删“的”；暂保留 v2 的“决策全部交给AI”为未定稿候选，同时交付含“的”的另一路证据。",
+    "remaining": "局部“的”在原片 124.340000–124.480000 秒，模型概率约 0.557；全量无“的”。局部“业”不得替换现有 AI 专名。", "unresolvedConflict": true
+  },
+  {
+    "id": "C049", "category": "两次识别支持的订正候选",
+    "fullNeedles": ["误区"], "focusedNeedles": ["误区"],
+    "suggestion": "舞曲 → 误区。", "remaining": "两次新识别对目标词一致。", "unresolvedConflict": false
+  },
+  {
+    "id": "C051", "category": "两次识别支持保留原话",
+    "fullNeedles": ["小店们没关系"], "focusedNeedles": ["小店们没关系"],
+    "suggestion": "保留“小店们”，不为了通顺改为“小门店”。",
+    "remaining": "两次新识别均为“小店们”；这只支持保留实录候选，不判定其语法。", "unresolvedConflict": false
+  },
+  {
+    "id": "C052", "category": "两次识别支持的订正候选",
+    "fullNeedles": ["有钱人"], "focusedNeedles": ["有钱人"],
+    "suggestion": "有前人 → 有钱人；保留 v2 的“大厂”，不引入局部误识“大潮”。",
+    "remaining": "只订正目标词，不整段替换局部结果。", "unresolvedConflict": false
+  },
+  {
+    "id": "C055", "category": "尾词冲突，待裁决",
+    "fullNeedles": ["传统经营者"], "focusedNeedles": ["传统经济"],
+    "suggestion": "优先复核候选“传统经营者”，暂不把它登记为已确认订正。",
+    "remaining": "全量识别“经营者”，其中“者”原片 184.960000–185.200000 秒；局部仍为“经济”且没有“者”。两路冲突保留。", "unresolvedConflict": true
+  },
+  {
+    "id": "C059", "category": "两次识别支持的订正候选",
+    "fullNeedles": ["梳理"], "focusedNeedles": ["梳理"],
+    "suggestion": "输离 → 梳理；保留企业 SOP 的原有语序。",
+    "remaining": "两次新识别对“梳理”一致；标点可独立整理。", "unresolvedConflict": false
+  },
+  {
+    "id": "C061", "category": "整词无法裁决，禁止猜补",
+    "fullNeedles": ["平反内容"], "focusedNeedles": ["平均内存"],
+    "suggestion": "“平台流程”没有获得稳定的新 ASR 支持。禁止自动选用“平反内容”“平均内存”或按拍摄稿恢复词语。",
+    "remaining": "关键原片 196.100000–196.700000 秒；全量四字概率约 0.507/0.270/0.326/0.110。C062 的邻接局部结果又为“频繁内存”，仍不稳定。保留待裁决。", "unresolvedConflict": true
+  },
+  {
+    "id": "C062", "category": "两次识别支持的订正候选",
+    "fullNeedles": ["更残酷的真相"], "focusedNeedles": ["更残酷的真相"],
+    "suggestion": "争响 → 真相；保留 v2 已规范的 Cybercab。",
+    "remaining": "两次目标词一致；CyberCup/CIPCAP 是各自原始专名误识，保留在证据中。", "unresolvedConflict": false
+  },
+  {
+    "id": "C064", "category": "核心词可订正，尾词冲突",
+    "fullNeedles": ["赋能你的生意"], "focusedNeedles": ["赋能你的生命"],
+    "suggestion": "负能力的 → 赋能你的；句尾优先保留原 v2 和全量识别均支持的“生意”，仍标注局部“生命”冲突，不擅改为“生命”。",
+    "remaining": "两路对“赋能你的”一致，生意/生命不一致；只提交局部订正建议。", "unresolvedConflict": true
+  },
+  {
+    "id": "C065", "category": "两次识别支持的订正候选",
+    "fullNeedles": ["重复的事"], "focusedNeedles": ["重复的事"],
+    "suggestion": "机器干重复的是 → 机器干重复的事。",
+    "remaining": "两次新识别均为“事”。", "unresolvedConflict": false
+  },
+  {
+    "id": "C077", "category": "两次识别支持的订正候选",
+    "fullNeedles": ["陪跑执行"], "focusedNeedles": ["PayPal执行"],
+    "suggestion": "之心 → 执行；保留原“陪跑”，不引入局部音译误识 PayPal。",
+    "remaining": "两次均识别到“执行”；陪跑/PayPal 差异如实保留，不能整句搬运局部结果。", "unresolvedConflict": false
+  },
+  {
+    "id": "C082", "category": "同音写法候选，未定稿",
+    "fullNeedles": ["门店或客"], "focusedNeedles": ["门店或客"],
+    "suggestion": "门电 → 门店；货客的订正候选为“获客”。",
+    "remaining": "两次均为“门店或客”，不是直接识别出“获客”；获客属于同音与上下文写法候选，不冒充人耳确认。", "unresolvedConflict": true
+  },
+  {
+    "id": "C085", "category": "两次识别支持的订正候选",
+    "fullNeedles": ["流程简化"], "focusedNeedles": ["流程简化"],
+    "suggestion": "流程讲话 → 流程简化。",
+    "remaining": "两次新识别一致。", "unresolvedConflict": false
+  },
+  {
+    "id": "C090", "category": "两次识别支持保留原话",
+    "fullNeedles": ["降本增效"], "focusedNeedles": ["降本增效"],
+    "suggestion": "保留“降本增效”，不采用旧二遍的“降本增销”。",
+    "remaining": "两次新识别对目标词一致。", "unresolvedConflict": false
+  },
+  {
+    "id": "C094", "category": "两次识别支持的订正候选",
+    "fullNeedles": ["深耕"], "focusedNeedles": ["深耕"],
+    "suggestion": "生根 → 深耕；保留 AI 专名，不引入局部的 AA。",
+    "remaining": "两次对“深耕”一致；末尾按实际 WAV 截止 261.919625 秒，不生成最后约 13.7 毫秒的不存在音频。", "unresolvedConflict": false
+  }
+]

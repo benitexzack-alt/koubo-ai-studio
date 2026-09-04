@@ -1,0 +1,329 @@
+{
+  "schemaVersion": "local-edited-video-join-check/v1",
+  "status": "completed",
+  "startedAt": "2026-09-04T17:44:47.224360+00:00",
+  "command": [
+    "/Users/pc/Documents/口播/.cache/whisper-runtime/venv/bin/python",
+    "edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/join-check/run-join-check.py"
+  ],
+  "sourceVideoPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/11_指定句剪除_r1/01_口播原片_仅剪除没有人负责_r1.mp4",
+  "editedVideoIntervalSeconds": [
+    113.5,
+    121
+  ],
+  "playbackRate": 1,
+  "scriptProvidedToAsr": false,
+  "initialPrompt": null,
+  "networkDisabled": true,
+  "modelDownloaded": false,
+  "humanListeningCompleted": false,
+  "protectedHashesBefore": {
+    "actual-bilingual.v1.json": "598d1c8f95a48146268fa25a238a8dac067fa63c8913eccb86a311e59f559712",
+    "canonical-transcript.v1.json": "d9ee43fd965b0c91e654e180deacad14591398748f3bc480d0451a5eb03073b0",
+    "corrected-caption-pages.v1.json": "914fc5c0fd99e99799c5caa170f68aa5b4293a3aa631d155ac937848a190c74d",
+    "spoken-source-policy.machine.v1.json": "880bb2a6ed5ec90e146f284f3136274684376945cc5742352edc1bb3ecf3dd35"
+  },
+  "modelPath": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+  "sourceVideoSha256": "5cc1564f54abff9171ba705c11c94f08f52dc7964bb39eddaaa8185b99b00be6",
+  "audioPreparation": {
+    "command": [
+      "ffmpeg",
+      "-nostdin",
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-threads",
+      "1",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/11_指定句剪除_r1/01_口播原片_仅剪除没有人负责_r1.mp4",
+      "-ss",
+      "113.5",
+      "-t",
+      "7.5",
+      "-map",
+      "0:a:0",
+      "-vn",
+      "-ar",
+      "16000",
+      "-ac",
+      "1",
+      "-c:a",
+      "pcm_s16le",
+      "-n",
+      "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/join-check/edited-video.113.5-121.16k-mono.wav"
+    ],
+    "exitCode": 0,
+    "stderr": ""
+  },
+  "versions": {
+    "mlx-whisper": "0.4.3",
+    "mlx": "0.32.2",
+    "numpy": "2.5.2"
+  },
+  "audioDurationSeconds": 7.5,
+  "audioSha256": "710def681686b618c5e61980a28ebd93707cb058d587710e47bf75d78b3c9a28",
+  "inferenceCallAt": "2026-09-04T17:44:53.279537+00:00",
+  "options": {
+    "language": "zh",
+    "task": "transcribe",
+    "word_timestamps": true,
+    "initial_prompt": null,
+    "condition_on_previous_text": false,
+    "temperature": 0.0,
+    "verbose": true
+  },
+  "completedAt": "2026-09-04T17:44:57.891780+00:00",
+  "elapsedSeconds": 10.67,
+  "rawPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/join-check/edited-video.113.5-121.turbo.raw.json",
+  "rawSha256": "de9fea518466f454c02296ee54cc13838a038bb43256ebae0a0745a9ceb31161",
+  "text": "彻底推翻了百年规则没有人驾驶没有人干预眼睛是摄像头大脑是",
+  "words": [
+    {
+      "word": "彻",
+      "start": 0.0,
+      "end": 0.68,
+      "probability": 0.74365234375,
+      "editedVideoStart": 113.5,
+      "editedVideoEnd": 114.18,
+      "jsonPointer": "/segments/0/words/0"
+    },
+    {
+      "word": "底",
+      "start": 0.68,
+      "end": 0.86,
+      "probability": 0.99951171875,
+      "editedVideoStart": 114.18,
+      "editedVideoEnd": 114.36,
+      "jsonPointer": "/segments/0/words/1"
+    },
+    {
+      "word": "推",
+      "start": 0.86,
+      "end": 1.04,
+      "probability": 0.99609375,
+      "editedVideoStart": 114.36,
+      "editedVideoEnd": 114.54,
+      "jsonPointer": "/segments/0/words/2"
+    },
+    {
+      "word": "翻",
+      "start": 1.04,
+      "end": 1.24,
+      "probability": 0.99951171875,
+      "editedVideoStart": 114.54,
+      "editedVideoEnd": 114.74,
+      "jsonPointer": "/segments/0/words/3"
+    },
+    {
+      "word": "了",
+      "start": 1.24,
+      "end": 1.38,
+      "probability": 0.994140625,
+      "editedVideoStart": 114.74,
+      "editedVideoEnd": 114.88,
+      "jsonPointer": "/segments/0/words/4"
+    },
+    {
+      "word": "百",
+      "start": 1.38,
+      "end": 1.78,
+      "probability": 0.97216796875,
+      "editedVideoStart": 114.88,
+      "editedVideoEnd": 115.28,
+      "jsonPointer": "/segments/0/words/5"
+    },
+    {
+      "word": "年",
+      "start": 1.78,
+      "end": 1.94,
+      "probability": 0.99755859375,
+      "editedVideoStart": 115.28,
+      "editedVideoEnd": 115.44,
+      "jsonPointer": "/segments/0/words/6"
+    },
+    {
+      "word": "规",
+      "start": 1.94,
+      "end": 2.1,
+      "probability": 0.9580078125,
+      "editedVideoStart": 115.44,
+      "editedVideoEnd": 115.6,
+      "jsonPointer": "/segments/0/words/7"
+    },
+    {
+      "word": "则",
+      "start": 2.1,
+      "end": 2.28,
+      "probability": 0.9990234375,
+      "editedVideoStart": 115.6,
+      "editedVideoEnd": 115.78,
+      "jsonPointer": "/segments/0/words/8"
+    },
+    {
+      "word": "没有",
+      "start": 2.28,
+      "end": 3.0,
+      "probability": 0.88916015625,
+      "editedVideoStart": 115.78,
+      "editedVideoEnd": 116.5,
+      "jsonPointer": "/segments/1/words/0"
+    },
+    {
+      "word": "人",
+      "start": 3.0,
+      "end": 3.18,
+      "probability": 0.9990234375,
+      "editedVideoStart": 116.5,
+      "editedVideoEnd": 116.68,
+      "jsonPointer": "/segments/1/words/1"
+    },
+    {
+      "word": "驾",
+      "start": 3.18,
+      "end": 3.4,
+      "probability": 0.99853515625,
+      "editedVideoStart": 116.68,
+      "editedVideoEnd": 116.9,
+      "jsonPointer": "/segments/1/words/2"
+    },
+    {
+      "word": "驶",
+      "start": 3.4,
+      "end": 3.62,
+      "probability": 0.998046875,
+      "editedVideoStart": 116.9,
+      "editedVideoEnd": 117.12,
+      "jsonPointer": "/segments/1/words/3"
+    },
+    {
+      "word": "没有",
+      "start": 3.62,
+      "end": 3.84,
+      "probability": 0.62109375,
+      "editedVideoStart": 117.12,
+      "editedVideoEnd": 117.34,
+      "jsonPointer": "/segments/2/words/0"
+    },
+    {
+      "word": "人",
+      "start": 3.84,
+      "end": 4.0,
+      "probability": 0.9990234375,
+      "editedVideoStart": 117.34,
+      "editedVideoEnd": 117.5,
+      "jsonPointer": "/segments/2/words/1"
+    },
+    {
+      "word": "干",
+      "start": 4.0,
+      "end": 4.16,
+      "probability": 0.99755859375,
+      "editedVideoStart": 117.5,
+      "editedVideoEnd": 117.66,
+      "jsonPointer": "/segments/2/words/2"
+    },
+    {
+      "word": "预",
+      "start": 4.16,
+      "end": 4.4,
+      "probability": 0.998046875,
+      "editedVideoStart": 117.66,
+      "editedVideoEnd": 117.9,
+      "jsonPointer": "/segments/2/words/3"
+    },
+    {
+      "word": "眼",
+      "start": 4.4,
+      "end": 5.2,
+      "probability": 0.76953125,
+      "editedVideoStart": 117.9,
+      "editedVideoEnd": 118.7,
+      "jsonPointer": "/segments/3/words/0"
+    },
+    {
+      "word": "睛",
+      "start": 5.2,
+      "end": 5.44,
+      "probability": 0.99609375,
+      "editedVideoStart": 118.7,
+      "editedVideoEnd": 118.94,
+      "jsonPointer": "/segments/3/words/1"
+    },
+    {
+      "word": "是",
+      "start": 5.44,
+      "end": 5.7,
+      "probability": 0.99169921875,
+      "editedVideoStart": 118.94,
+      "editedVideoEnd": 119.2,
+      "jsonPointer": "/segments/3/words/2"
+    },
+    {
+      "word": "摄",
+      "start": 5.7,
+      "end": 6.04,
+      "probability": 0.9970703125,
+      "editedVideoStart": 119.2,
+      "editedVideoEnd": 119.54,
+      "jsonPointer": "/segments/3/words/3"
+    },
+    {
+      "word": "像",
+      "start": 6.04,
+      "end": 6.16,
+      "probability": 0.99853515625,
+      "editedVideoStart": 119.54,
+      "editedVideoEnd": 119.66,
+      "jsonPointer": "/segments/3/words/4"
+    },
+    {
+      "word": "头",
+      "start": 6.16,
+      "end": 6.42,
+      "probability": 0.99755859375,
+      "editedVideoStart": 119.66,
+      "editedVideoEnd": 119.92,
+      "jsonPointer": "/segments/3/words/5"
+    },
+    {
+      "word": "大",
+      "start": 6.42,
+      "end": 7.06,
+      "probability": 0.79833984375,
+      "editedVideoStart": 119.92,
+      "editedVideoEnd": 120.56,
+      "jsonPointer": "/segments/4/words/0"
+    },
+    {
+      "word": "脑",
+      "start": 7.06,
+      "end": 7.32,
+      "probability": 0.9990234375,
+      "editedVideoStart": 120.56,
+      "editedVideoEnd": 120.82,
+      "jsonPointer": "/segments/4/words/1"
+    },
+    {
+      "word": "是",
+      "start": 7.32,
+      "end": 7.48,
+      "probability": 0.9833984375,
+      "editedVideoStart": 120.82,
+      "editedVideoEnd": 120.98,
+      "jsonPointer": "/segments/4/words/2"
+    }
+  ],
+  "postInferencePhraseChecks": {
+    "没有人负责": false,
+    "没有人驾驶": true,
+    "没有人干预": true,
+    "眼睛是摄像头": true
+  },
+  "limitation": "单次本地机器识别证据，不等同于人工听审或绝对声学缺失证明；目标短语仅在识别完成后做字符串核对。",
+  "protectedHashesAfter": {
+    "actual-bilingual.v1.json": "598d1c8f95a48146268fa25a238a8dac067fa63c8913eccb86a311e59f559712",
+    "canonical-transcript.v1.json": "d9ee43fd965b0c91e654e180deacad14591398748f3bc480d0451a5eb03073b0",
+    "corrected-caption-pages.v1.json": "914fc5c0fd99e99799c5caa170f68aa5b4293a3aa631d155ac937848a190c74d",
+    "spoken-source-policy.machine.v1.json": "880bb2a6ed5ec90e146f284f3136274684376945cc5742352edc1bb3ecf3dd35"
+  }
+}

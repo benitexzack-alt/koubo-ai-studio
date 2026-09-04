@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "canonicalSource": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "scriptUsedForRecognitionOrTranslation": false,
+  "captionTextPolicy": "spoken-verbatim",
+  "englishTranslationSource": "canonical-spoken-chinese",
+  "humanListeningCompleted": false,
+  "machineSourceValidation": {
+    "status": "passed-machine-source-validation-with-explicit-c061-exception",
+    "validationPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/actual-bilingual.validation.v1.json",
+    "validationSha256": "be42a93ac34997ce029e695b937cf5895a8835d17028845da94ccb1d781323ab",
+    "projectSpokenSourceValidatorExecuted": true,
+    "command": "node tools/check-spoken-source-policy.mjs edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/canonical-transcript.v1.json edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/actual-bilingual.v1.json edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/spoken-source-policy.machine.v1.json",
+    "cwd": "/Users/pc/Documents/口播",
+    "exitCode": 0,
+    "audioCharacters": 1112,
+    "captionCharacters": 1112,
+    "matchedCharacters": 1108,
+    "precision": 0.9964028776978417,
+    "coverage": 0.9964028776978417,
+    "asrCorrections": 11,
+    "limitation": "全局机器字符匹配阈值通过；C061四字仍不确定，未冒充真人听辨通过。"
+  },
+  "compliance": {
+    "status": "passed",
+    "scope": "machine-source-contract-only",
+    "reason": "仅表示按既有实录和已授权订正接受机器来源契约校验，不表示全词听辨或发布验收通过。唯一C061四字未听辨确认；按用户指令使用明确中英占位，其余93条已翻译。不得声称人工听审通过。",
+    "humanAudioReviewStatus": "pending-c061-user-audio-clarification",
+    "publicationApproval": false
+  },
+  "exception": {
+    "id": "C061-four-characters",
+    "status": "pending-user-not-accepted-exception",
+    "sourceStartSeconds": 196.1,
+    "sourceEndSeconds": 196.7,
+    "zhPlaceholder": "自动优化所有的[语音不清]",
+    "enPlaceholder": "Automatically optimize all [unclear audio].",
+    "candidateSuggestedByParentQuestion": "繁琐流程",
+    "candidateAcceptedAsSpokenText": false
+  },
+  "verification": {
+    "minimumGlobalPrecision": 0.97,
+    "minimumGlobalCoverage": 0.95,
+    "humanListeningCompleted": false,
+    "correctionClassificationNote": "类型沿用项目校验器的固定枚举；同音字订正依据实际ASR、上下文及本任务明确授权，并非人工听审结论。精确页码、源时间和原始JSON指针见绑定的corrections.v1.json。C061不列入订正、不把任一猜测认定为实录。",
+    "corrections": [
+      {
+        "from": "GPT6 Astra",
+        "to": "GPT-6 Astra",
+        "type": "proper-noun-spelling",
+        "evidence": "corrections.v1.json W001/W006：C003/C038全量本地ASR，合并原词并按明确授权规范专名拼写；不是新闻真实性核验。"
+      },
+      {
+        "from": "GPT6Astra",
+        "to": "GPT-6 Astra",
+        "type": "proper-noun-spelling",
+        "evidence": "corrections.v1.json W008：C056全量本地ASR，按明确授权规范同一专名拼写。"
+      },
+      {
+        "from": "GP6Austra",
+        "to": "GPT-6 Astra",
+        "type": "proper-noun-spelling",
+        "evidence": "corrections.v1.json W003：C006全量本地ASR，依据同一专名上下文及明确授权规范拼写。"
+      },
+      {
+        "from": "CyberCup",
+        "to": "Cybercab",
+        "type": "proper-noun-spelling",
+        "evidence": "corrections.v1.json W002/W007/W009：C004/C040/C062全量本地ASR，特斯拉车辆专名上下文及明确授权拼写订正。"
+      },
+      {
+        "from": "CyberCard",
+        "to": "Cybercab",
+        "type": "proper-noun-spelling",
+        "evidence": "corrections.v1.json W004：C022全量本地ASR，同一车辆专名上下文及明确授权拼写订正。"
+      },
+      {
+        "from": "Zepcab",
+        "to": "Cybercab",
+        "type": "proper-noun-spelling",
+        "evidence": "corrections.v1.json W005：C032全量本地ASR，同一车辆专名上下文及明确授权拼写订正。"
+      },
+      {
+        "from": "落策",
+        "to": "路测",
+        "type": "unmistakable-asr-error",
+        "evidence": "corrections.v1.json W010：C004原识别落策；本任务明确要求按同音及车辆测试语境订正路测。属于已授权上下文推断，未进行人工听审。"
+      },
+      {
+        "from": "效对",
+        "to": "校对",
+        "type": "unmistakable-asr-error",
+        "evidence": "corrections.v1.json W011：C011原识别效对；本任务明确要求按同音及自我校对语境订正。属于已授权上下文推断，未进行人工听审。"
+      },
+      {
+        "from": "克",
+        "to": "客",
+        "type": "unmistakable-asr-error",
+        "evidence": "corrections.v1.json W014：C013局部真实ASR获克文案；保留局部案和词时码，获客语境下克订正客。限定绑定canonical的W0215；运行前确认无其他含克的原词，未进行人工听审。",
+        "canonicalWordIds": ["W0215"]
+      },
+      {
+        "from": "PayPal",
+        "to": "陪跑",
+        "type": "unmistakable-asr-error",
+        "evidence": "corrections.v1.json W012：C081全量ASR原词PayPal，实际业务服务陪跑语境下按近音订正；不借用拍摄稿重写实录，未进行人工听审。"
+      },
+      {
+        "from": "或客",
+        "to": "获客",
+        "type": "unmistakable-asr-error",
+        "evidence": "corrections.v1.json W013：C082原识别或客；本任务明确要求按同音及门店获客语境订正。属于已授权上下文推断，未进行人工听审。"
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/canonical-transcript.v1.json",
+      "sha256": "d9ee43fd965b0c91e654e180deacad14591398748f3bc480d0451a5eb03073b0"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/actual-bilingual.v1.json",
+      "sha256": "598d1c8f95a48146268fa25a238a8dac067fa63c8913eccb86a311e59f559712"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/corrections.v1.json",
+      "sha256": "ed85d7001fcd61d60f9721296ba149d06f1cdaa81d6cd67cb3be5fa3da1c6129"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/actual-bilingual.receipt.v1.json",
+      "sha256": "45df6abda6e85bde116ba1158b98e205a154010a19699585d48b223e7da0cf1e"
+    }
+  ],
+  "formalUserListeningApproval": false
+}

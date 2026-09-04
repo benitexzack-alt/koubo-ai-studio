@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 
 import {assertReleaseProductionGateV2} from './release-production-gate-v2.mjs';
+import {SCOPED_DIRECT_EXPORT} from './scoped-direct-export-core.mjs';
 
 const scriptPath = fileURLToPath(import.meta.url);
 const projectRoot = path.resolve(path.dirname(scriptPath), '..');
@@ -105,7 +106,7 @@ if (!exists(release.production?.formalOutput)) {
   errors.push(`正式输出不存在：${release.production?.formalOutput ?? ''}`);
 }
 
-if (!exists(release.production?.previewOutput)) {
+if (releaseProductionGate.route !== SCOPED_DIRECT_EXPORT.route && !exists(release.production?.previewOutput)) {
   errors.push(`预览输出不存在：${release.production?.previewOutput ?? ''}`);
 }
 

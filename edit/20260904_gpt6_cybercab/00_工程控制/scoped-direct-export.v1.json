@@ -1,0 +1,593 @@
+{
+  "schema": "koubo-scoped-direct-export/v1",
+  "route": "scoped-direct-export",
+  "episodeId": "20260904_gpt6_cybercab",
+  "jobId": "20260904-gpt6-cybercab-v8-r1",
+  "revisionId": "gpt6-cybercab-v8-r1",
+  "jobPath": "workflow/jobs/20260904_gpt6_cybercab_v80.production.json",
+  "jobSnapshotSha256": "6ea4ff613e5d79b385dddd776b37dec8bb5c1cacd388be249f91e0ace47ea42d",
+  "boundFiles": [
+    {
+      "path": "assets/sfx/koubo-sfx-v8/manifest.json",
+      "sha256": "329f38d60802dc50a0fc3d1440a5c176bb909dd4deb23f95cd3694c7b163d4ae",
+      "bytes": 23507
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/00_工程控制/direct-export-user-events.jsonl",
+      "sha256": "7e59ad8051ce5fc8e8cc4cc0ebf43429c053f2be68b231699d4a7cb4fe4fc6f5",
+      "bytes": 597
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/00_工程控制/spoken-source-policy.v1.json",
+      "sha256": "57756030e5f626f5cf0646a5a065fecb6c2d34a383105e348034b01c30074965",
+      "bytes": 1400
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/01_口播原片/R01_口播原片.MOV",
+      "sha256": "403e295fd1eb73769fe9b3c64000179f5c1b791f016a621afeaa69aa7859ebde",
+      "bytes": 415630110
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/04_导演拆解/剪后261秒_素材与镜头对位.v3.json",
+      "sha256": "da2540ae5ad9047762468e6062e59fb96e187babb03aec634b656eb0a1c257d5",
+      "bytes": 29684
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/04_导演拆解/paper-v3-r2/director-preproduction-plan.v1.json",
+      "sha256": "fe8818d908e5dbd3c5d14882b27f45bb7e05f0c20d39b69c1426c4d1722646ec",
+      "bytes": 147928
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/04_导演拆解/paper-v3-r2/director-preproduction-request.v1.json",
+      "sha256": "b8f586563e7524a91e911dca073edf0c258659c5b2e4f1a1dde67ab64c5b66f2",
+      "bytes": 81520
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/04_导演拆解/paper-v3-r2/director-route-lock.v1.json",
+      "sha256": "cf0ff86813b2650078f4e51d689ee9d5387104abf2a32c6cec543401cc02b687",
+      "bytes": 889
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/04_导演拆解/paper-v3-r2/director-validation-receipt.v1.json",
+      "sha256": "bfc6d765c0fe3524761764191234a679604f7946e284bd09d301f486df4097fc",
+      "bytes": 3114
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/04_导演拆解/postshoot-manual-r1/manual-postshoot-plan.v1.json",
+      "sha256": "5b9c6f37b93b51ec20cffdc0328547e56be8a9a3d96d22775726a344e8a3edcc",
+      "bytes": 18224
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/04_导演拆解/postshoot-manual-r1/manual-postshoot-request.v1.json",
+      "sha256": "0dbcb607d9e6d75f863869197aa628430e546d5a191a9a373cc2b077015e766c",
+      "bytes": 3520
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/04_导演拆解/postshoot-manual-r1/manual-postshoot-validation.v1.json",
+      "sha256": "60070089844b9ae4dd94a6c17c86be4226e62fde5852840bb28dc311067867f4",
+      "bytes": 4476
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/04_导演拆解/sfx-cues.formal-r1.json",
+      "sha256": "26a0b8af42701dd7fb7ea937e116c7d13d7c685af8037aaf6f0e6524af749de7",
+      "bytes": 20302
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/04_导演拆解/visual-plan.formal-r1.json",
+      "sha256": "16288b07bf46eb38623e3413a2e8aa6e3dc346435642a4df088601d445f20bef",
+      "bytes": 58035
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频_2.mp4",
+      "sha256": "e8613d36b55a98b3a5dfec769af561b4f189e0571a05fd288c811a3e4ca727d2",
+      "bytes": 3786373
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频_3.mp4",
+      "sha256": "23d7d66d942ea0a7f1dd345153c2b705ed6e0cf2621d6c29f541198f04d2c86e",
+      "bytes": 2900448
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频_4.mp4",
+      "sha256": "4cc73d2023d0d52b46f84751f7fdb53936459920db7167109378afb65e1f40e0",
+      "bytes": 3491179
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频_5.mp4",
+      "sha256": "4329545761ce27fea8e28c7d8718121616293b6230cce26b49222cf8c5066d75",
+      "bytes": 2862302
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频_6.mp4",
+      "sha256": "2a5fba466d01385058b79fc560852aa194f39622666df7d629b83aab2cd72fd4",
+      "bytes": 4739566
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频.mp4",
+      "sha256": "8f3086232148210f86ec4d5a1b9867111b3f6b1dec5891ebf996e1e6f8c4c96a",
+      "bytes": 3203412
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/actual-bilingual.v1.json",
+      "sha256": "598d1c8f95a48146268fa25a238a8dac067fa63c8913eccb86a311e59f559712",
+      "bytes": 21421
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/canonical-transcript.v1.json",
+      "sha256": "d9ee43fd965b0c91e654e180deacad14591398748f3bc480d0451a5eb03073b0",
+      "bytes": 639628
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/11_指定句剪除_r1/01_口播原片_仅剪除没有人负责_r1.mp4",
+      "sha256": "5cc1564f54abff9171ba705c11c94f08f52dc7964bb39eddaaa8185b99b00be6",
+      "bytes": 654483579
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/11_指定句剪除_r1/cut-edl.v1.json",
+      "sha256": "2c68851aea991ce7e99c23df91a94e6ffd0ff36953768911aa0a5a1605b2676b",
+      "bytes": 1355
+    },
+    {
+      "path": "remotion/package-lock.json",
+      "sha256": "4e6f036581cb88ad22b3d421bdedf8cacf112e3c4eeeadece9326764ad859566",
+      "bytes": 128993
+    },
+    {
+      "path": "remotion/package.json",
+      "sha256": "fb96873ad84a8351b45bc7d49f58b9a6f5fb4ca1f0269c2e8086876af70dea8a",
+      "bytes": 2409
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/remotion-mouse-click.wav",
+      "sha256": "08a43d15a9b7b3d94feacb66dc20e228391e441c6088903842bdf902fb9ac4e7",
+      "bytes": 76306
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/remotion-page-turn.wav",
+      "sha256": "712036deb5343f319090be4e4b28362b6d4ff028fb0ff2758fd1a4384c31ec20",
+      "bytes": 76826
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/remotion-ui-switch.wav",
+      "sha256": "f6901a0d40ea7dba785684e87f39b2499e4d0987110c31087059b3d148c7e5b3",
+      "bytes": 63438
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/remotion-whoosh.wav",
+      "sha256": "9e6524de3cd7453b6b23d0e48a338b4a27ff0c32a4b12c249fa075647f28fc1d",
+      "bytes": 29558
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v1-camera-shutter.wav",
+      "sha256": "e8b497a2c27ee5ea0d5baa2abcbf160931c5e4eeed1309e7b0c459d831e0ff7a",
+      "bytes": 93978
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v1-card-reveal.wav",
+      "sha256": "ee2cd1a4d78d60a4d81391d0ea3a1873f02fc907d61667b8897df9f56f4ff896",
+      "bytes": 76826
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v1-confirm-soft.wav",
+      "sha256": "d24d1aaa18c22874986f97d87c2ff92aebbbe03fa87e931047b29042f46c186d",
+      "bytes": 43278
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v1-keyword-tick.wav",
+      "sha256": "1ed414d9a26793d3bab087f6226f83a4e0566fac05a14552aebc43d0ac7cdff5",
+      "bytes": 39940
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v1-node-connect.wav",
+      "sha256": "9432d37654181c4e4627c3c466271895d28f7dde650c3c9cd307eb77fb283fdc",
+      "bytes": 86478
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v1-section-air.wav",
+      "sha256": "24bef1f0e81e0060e410ea9a35a38df5bf6ab96ff9d982f900861f542e9317d4",
+      "bytes": 50846
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v1-ui-click.wav",
+      "sha256": "733c87b7774298859a80db60e09fd658a5feb8f170dd95656819722d13ac9d65",
+      "bytes": 76306
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v2-card-slide.wav",
+      "sha256": "cd0b7dbca5017a63777a10feb320d2df63b44d47a931522a799b855b0e26affd",
+      "bytes": 316918
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v2-evidence-shutter.wav",
+      "sha256": "30258fefc8557818745093e089f097722b6a05cc5146c59ee51cc1b3ff9d70f3",
+      "bytes": 67422
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v2-keyword-select.wav",
+      "sha256": "08677d4e8a81366169cb1500b2bc1786da00660b7d2402e540dab9edaa01c2ed",
+      "bytes": 96118
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v2-node-select.wav",
+      "sha256": "00bafbbcccf8c2242a57088b8378f56db1664939ce54d7ed27b4d7c6835815cb",
+      "bytes": 298338
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v2-number-affirmation.wav",
+      "sha256": "3429f88c552cf347dbde64b19f660b05e85e7145a25889f6e6dfc68f09bafe7e",
+      "bytes": 406706
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v2-section-sweep.wav",
+      "sha256": "1fe9e56651377c50ca98e935313c0eb54e0043e4c476a388828ffad3b32bad44",
+      "bytes": 116430
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v2-ui-click.wav",
+      "sha256": "496088a566da7ce869f39c26984666d5b644a5e148ac017f589a9a85bf2e6f11",
+      "bytes": 212142
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v2-zoom-out.wav",
+      "sha256": "e8ad4a3f59ae91d50c9b3319c48553b29cb78f389402f550fed4eb6644bbe375",
+      "bytes": 220686
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-chapter-sweep-a.wav",
+      "sha256": "c6d490b36b43f1548dde4f7eb110ddb8f7a58fd39400b1cf6e17d401e967b37b",
+      "bytes": 150126
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-cta-confirm-a.wav",
+      "sha256": "74a5846bc4952f8b0d09fa78bf4535680867cdea0d806c2d1d2c75527bdd6344",
+      "bytes": 310954
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-evidence-paper-a.wav",
+      "sha256": "50040fef7fab234f0fc7ef6e9f57c2e2c204b44ac90cfcdc4a681dec9dd5f57b",
+      "bytes": 210178
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-line-connect-a.wav",
+      "sha256": "25cf2fb54fbe59d6cccd92a8a45a0d0f818b355000795e699b4b4334ef08e6b3",
+      "bytes": 211158
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-list-tick-a.wav",
+      "sha256": "a94576ec7523d53964a301f39a0b3d0e8ac3bf49a85d746d18b79aa522eb40f7",
+      "bytes": 45582
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-list-tick-b.wav",
+      "sha256": "0d5289d6990f07d95153b68b556076e097d9a49472acf7ce310799339197cc9a",
+      "bytes": 38418
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-media-whoosh-a.wav",
+      "sha256": "da65304f79ccae82533963fd89b01acbff6668239675157109c6a4d63d052728",
+      "bytes": 337370
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-media-whoosh-b.wav",
+      "sha256": "627a43bc7b46088a0dde83fdccf0d2218a296bcb59cbdd8628d076a2f21298f9",
+      "bytes": 34942
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-number-settle-a.wav",
+      "sha256": "79458cf26da84c5233a7b7ad437c6ed872d593be61baba17f748b444bf10745f",
+      "bytes": 247142
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-soft-card-pop-a.wav",
+      "sha256": "b60c4a4bbd4ba307a2fc584878fb5dfbde6bc8f77c372bb82957e2bc83edfed3",
+      "bytes": 205714
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/v3-soft-card-pop-b.wav",
+      "sha256": "f0ba360c47c9247e264935981a1c3d9ceaa8a7265faeb2d7377e7a854122524a",
+      "bytes": 73446
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/waic-card-pop.wav",
+      "sha256": "1cef9135c94d1563afc09e04422fedc3015437caa2786575597363da965c2156",
+      "bytes": 130686
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/waic-node-connect.wav",
+      "sha256": "08788078226e5eb9a4369ede50897af422be56d07b92b96eb11acbf9731e75a4",
+      "bytes": 169038
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/waic-section-whoosh.wav",
+      "sha256": "8436dad11fda846340cce0d172dc4e40c63a4e022475e2d5213c02755a675af9",
+      "bytes": 207438
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/audio/waic-thesis-impact.wav",
+      "sha256": "314091cf6d41cb8f153885168857f97f836a972797a27a5c54a954671492c9fa",
+      "bytes": 192078
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/data/actual-bilingual.v1.json",
+      "sha256": "598d1c8f95a48146268fa25a238a8dac067fa63c8913eccb86a311e59f559712",
+      "bytes": 21421
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/fonts/STHeiti-Medium.ttc",
+      "sha256": "f8fa4a63e2cf500e98e64d4c73260daaba049306cf85dec9e3729bc285b7d645",
+      "bytes": 55754164
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/media/P01.mp4",
+      "sha256": "2a5fba466d01385058b79fc560852aa194f39622666df7d629b83aab2cd72fd4",
+      "bytes": 4739566
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/media/P02.mp4",
+      "sha256": "4cc73d2023d0d52b46f84751f7fdb53936459920db7167109378afb65e1f40e0",
+      "bytes": 3491179
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/media/P03.mp4",
+      "sha256": "8f3086232148210f86ec4d5a1b9867111b3f6b1dec5891ebf996e1e6f8c4c96a",
+      "bytes": 3203412
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/media/P04.mp4",
+      "sha256": "e8613d36b55a98b3a5dfec769af561b4f189e0571a05fd288c811a3e4ca727d2",
+      "bytes": 3786373
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/media/P05.mp4",
+      "sha256": "4329545761ce27fea8e28c7d8718121616293b6230cce26b49222cf8c5066d75",
+      "bytes": 2862302
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/media/P06.mp4",
+      "sha256": "23d7d66d942ea0a7f1dd345153c2b705ed6e0cf2621d6c29f541198f04d2c86e",
+      "bytes": 2900448
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/media/R01-cut.mp4",
+      "sha256": "5cc1564f54abff9171ba705c11c94f08f52dc7964bb39eddaaa8185b99b00be6",
+      "bytes": 654483579
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/media/T01.mp4",
+      "sha256": "b1310661d9c86cc49c1f2a383c68699b2c9ed6d7143af1af07232fa8c82afc74",
+      "bytes": 5222833
+    },
+    {
+      "path": "remotion/public-gpt6-cybercab-v8-r1/media/U01.mp4",
+      "sha256": "df14213a3861a43fe0d59c03ea88ba6eba30ea33dbdfaad3350afc57ac983841",
+      "bytes": 16630167
+    },
+    {
+      "path": "remotion/src/components/AdaptiveBilingualCaptionOverlay.tsx",
+      "sha256": "e9fd51cd5d36cd1b98a6d08a3f5eced851992e26f65739e6c3bbdbb766d0570f",
+      "bytes": 6757
+    },
+    {
+      "path": "remotion/src/components/CaptionOverlay.tsx",
+      "sha256": "edbb3865ea5b34dd5b41182134f1ff629ea6c39b53db40aca71f44687dc08e88",
+      "bytes": 8653
+    },
+    {
+      "path": "remotion/src/components/LocalFont.tsx",
+      "sha256": "202bc7846addf055a75f139ece42a8a18ef628bbbd0626071fce7118f45a5b7d",
+      "bytes": 336
+    },
+    {
+      "path": "remotion/src/components/V72ProductionShell.tsx",
+      "sha256": "3d51da15f3bb13223dfbf8bb993a146c7ae2d0f6b36b568547311f9ca6e9e939",
+      "bytes": 12080
+    },
+    {
+      "path": "remotion/src/components/V7InformationStage.tsx",
+      "sha256": "fef72c13409be54d953e45b1d32efe8b1764ad09bc50040bfb93007831cc17f7",
+      "bytes": 23845
+    },
+    {
+      "path": "remotion/src/components/V8SemanticStage.tsx",
+      "sha256": "9687886275befd7649afd3a06b10bcf409aaeb4ea5217c3fa396a72c2c660be4",
+      "bytes": 27914
+    },
+    {
+      "path": "remotion/src/data/story.ts",
+      "sha256": "39f098ebc7176324bc19ba12a2be39bd751e1f94405e41d753bc6db277d6dacd",
+      "bytes": 33070
+    },
+    {
+      "path": "remotion/src/gpt6-cybercab-v8-r1/candidate-plan.v1.json",
+      "sha256": "4c768ba2187ed9352700957f46d9614fe66b8859634b63d050378d9974721b7c",
+      "bytes": 26936
+    },
+    {
+      "path": "remotion/src/gpt6-cybercab-v8-r1/GPT6CybercabV8R1.tsx",
+      "sha256": "b537800e488f8a3ea88ad0b953aca6db054cbceebca1a1e8194d0f3891062f8b",
+      "bytes": 6205
+    },
+    {
+      "path": "remotion/src/gpt6-cybercab-v8-r1/index.tsx",
+      "sha256": "628f9fe5001aeeaaf21b1669b1ab7f512cb6139d67239752abc56f79a4556323",
+      "bytes": 541
+    },
+    {
+      "path": "remotion/src/gpt6-cybercab-v8-r1/tsconfig.check.json",
+      "sha256": "2e094175d465a61f499f9f3337b107d60f8d2e0ebbac658742e8f3f9970e9e4c",
+      "bytes": 108
+    },
+    {
+      "path": "remotion/src/shotcraft-candidate-v1/ShotcraftEffects.generated.tsx",
+      "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4",
+      "bytes": 20315
+    },
+    {
+      "path": "remotion/src/styles.ts",
+      "sha256": "a377ed474a0481caae0d5e4b54ac2ec1cd0a2235ff8d29dc56d29e556ec58246",
+      "bytes": 328
+    },
+    {
+      "path": "remotion/tsconfig.json",
+      "sha256": "1d74eb7aea6d15c33672a1d5970e76ebd6df9783f054e110cb8350d3f41965c6",
+      "bytes": 507
+    },
+    {
+      "path": "skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs",
+      "sha256": "760c8f56ffd239c081951f443a64041fb3e912294b81dac14d241664134e0532",
+      "bytes": 33991
+    },
+    {
+      "path": "tools/check-spoken-source-policy.mjs",
+      "sha256": "68c134d35e8f3ab18a422df983929f8638f7b02dbae344c21ebe637be6b58c18",
+      "bytes": 5358
+    },
+    {
+      "path": "tools/director-production-binding-core.mjs",
+      "sha256": "92a08db1504c90ad551dbf432e82a46003692a20e8c9826d1bc609ab404fbe16",
+      "bytes": 7466
+    },
+    {
+      "path": "tools/director-skill-lock-core.mjs",
+      "sha256": "0e1d27b83aaceae0241e74c1828278a8dc26aecc3f332eab0cb4cfb38d248a4d",
+      "bytes": 4592
+    },
+    {
+      "path": "tools/run-v72-production.mjs",
+      "sha256": "b2c3104a8b309dd00b5c890ad4ae6461d5018a75a6ed6c1a1bbb7995131e9d2d",
+      "bytes": 57075
+    },
+    {
+      "path": "tools/validate-active-production-profile.mjs",
+      "sha256": "33359140e3fb559eded8662c4dfd5918ddd17780fb2e1018d81ddbf4718af8d8",
+      "bytes": 3210
+    },
+    {
+      "path": "tools/validate-production-command-gate.mjs",
+      "sha256": "1bf84ddf3bf93ec57d287185d1a03721daaaf594a4faf3f55bec3540799a71eb",
+      "bytes": 5707
+    },
+    {
+      "path": "tools/validate-visual-plan.mjs",
+      "sha256": "d3dc11d8e57a0577717b7e79fda4b845db2c39d36e469fa37cd4dd84fbd07cf4",
+      "bytes": 15021
+    },
+    {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "513c97bcdfa78c93813ac65302cb1f3148f9db2754bee0212a15cf8f5fd45479",
+      "bytes": 6994
+    },
+    {
+      "path": "workflow/active-production-profile.v1.json",
+      "sha256": "35966590ab57c6c4e5c0560781de181b99ed465c66a0cf3e4ae5dbb45e3ecf64",
+      "bytes": 2883
+    }
+  ],
+  "compositionBinding": {
+    "root": "remotion",
+    "entry": "src/gpt6-cybercab-v8-r1/index.tsx",
+    "publicDir": "remotion/public-gpt6-cybercab-v8-r1",
+    "compositionWithSfx": "GPT6CybercabV8R1WithSfx",
+    "compositionWithoutSfx": "GPT6CybercabV8R1NoSfx",
+    "durationSeconds": 261,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "controlledRemotionCli": {
+      "linkPath": "remotion/node_modules/.bin/remotion",
+      "realTarget": "remotion/node_modules/@remotion/cli/remotion-cli.js",
+      "targetSha256": "a10a711f052487d302dcf52dc08729c84c4deca0dc41c5b708edd1a7b7b48bfa",
+      "bytes": 225
+    }
+  },
+  "authorization": {
+    "kind": "verified-user-direct-export",
+    "evidence": {
+      "path": "edit/20260904_gpt6_cybercab/00_工程控制/direct-export-user-events.jsonl",
+      "sha256": "7e59ad8051ce5fc8e8cc4cc0ebf43429c053f2be68b231699d4a7cb4fe4fc6f5"
+    },
+    "format": "codex-rollout-jsonl",
+    "directExportMessage": {
+      "line": 2,
+      "quote": "那就抓紧修复呀，赶紧出片呀。\n"
+    },
+    "skipPreviewMessage": {
+      "line": 1,
+      "quote": "再不用给我出预览了，直接给我出成片，时间已经来不及了。\n"
+    },
+    "independentSignature": false
+  },
+  "media": {
+    "source": {
+      "path": "edit/20260904_gpt6_cybercab/01_口播原片/R01_口播原片.MOV",
+      "sha256": "403e295fd1eb73769fe9b3c64000179f5c1b791f016a621afeaa69aa7859ebde"
+    },
+    "renderProxy": {
+      "path": "edit/20260904_gpt6_cybercab/11_指定句剪除_r1/01_口播原片_仅剪除没有人负责_r1.mp4",
+      "sha256": "5cc1564f54abff9171ba705c11c94f08f52dc7964bb39eddaaa8185b99b00be6"
+    },
+    "transcript": {
+      "path": "edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/canonical-transcript.v1.json",
+      "sha256": "d9ee43fd965b0c91e654e180deacad14591398748f3bc480d0451a5eb03073b0"
+    },
+    "bilingualCaptions": {
+      "path": "edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/actual-bilingual.v1.json",
+      "sha256": "598d1c8f95a48146268fa25a238a8dac067fa63c8913eccb86a311e59f559712"
+    },
+    "spokenSourcePolicy": {
+      "path": "edit/20260904_gpt6_cybercab/00_工程控制/spoken-source-policy.v1.json",
+      "sha256": "57756030e5f626f5cf0646a5a065fecb6c2d34a383105e348034b01c30074965"
+    }
+  },
+  "generatedVideos": [
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频_6.mp4",
+      "sha256": "2a5fba466d01385058b79fc560852aa194f39622666df7d629b83aab2cd72fd4",
+      "provenance": "user-generated-manual-import"
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频_4.mp4",
+      "sha256": "4cc73d2023d0d52b46f84751f7fdb53936459920db7167109378afb65e1f40e0",
+      "provenance": "user-generated-manual-import"
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频.mp4",
+      "sha256": "8f3086232148210f86ec4d5a1b9867111b3f6b1dec5891ebf996e1e6f8c4c96a",
+      "provenance": "user-generated-manual-import"
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频_2.mp4",
+      "sha256": "e8613d36b55a98b3a5dfec769af561b4f189e0571a05fd288c811a3e4ca727d2",
+      "provenance": "user-generated-manual-import"
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频_5.mp4",
+      "sha256": "4329545761ce27fea8e28c7d8718121616293b6230cce26b49222cf8c5066d75",
+      "provenance": "user-generated-manual-import"
+    },
+    {
+      "path": "edit/20260904_gpt6_cybercab/06_用户生成视频/视频_3.mp4",
+      "sha256": "23d7d66d942ea0a7f1dd345153c2b705ed6e0cf2621d6c29f541198f04d2c86e",
+      "provenance": "user-generated-manual-import"
+    }
+  ],
+  "outputs": {
+    "rawOutput": "edit/20260904_gpt6_cybercab/09_正式成片/GPT6与Cybercab_V8_正式渲染原始音轨_v1.mp4",
+    "finalOutput": "edit/20260904_gpt6_cybercab/09_正式成片/GPT6与Cybercab_V8_有音效_正式候选_v1.mp4"
+  },
+  "allowedCommands": [
+    "doctor",
+    "fingerprint",
+    "risk-frames",
+    "formal",
+    "formal-audio",
+    "qa",
+    "release-validation"
+  ],
+  "constraints": {
+    "previewApproved": false,
+    "fullWatchConfirmed": false,
+    "publishAuthorized": false,
+    "providerCallsAllowed": false
+  }
+}

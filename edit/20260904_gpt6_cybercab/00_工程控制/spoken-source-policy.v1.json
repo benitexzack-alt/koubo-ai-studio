@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "canonicalSource": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "captionTextPolicy": "spoken-verbatim",
+  "englishTranslationSource": "canonical-spoken-chinese",
+  "compliance": {
+    "status": "passed",
+    "scope": "实录来源与不以文稿覆盖字幕的制作规范；不表示全部文字听辨或人工验收通过"
+  },
+  "verification": {
+    "minimumGlobalPrecision": 0.97,
+    "minimumGlobalCoverage": 0.95,
+    "corrections": [],
+    "correctionLedger": "edit/20260904_gpt6_cybercab/07_实录与字幕/turbo-review-r2/corrections.v1.json",
+    "evidence": "本机large-v3-turbo整条967词与21处局部复核，原片真实音轨，未向ASR输入文稿；canonical保留原始词和逐项来源指针。",
+    "humanListeningCompleted": false,
+    "userFullWatchConfirmed": false
+  },
+  "knownLimitations": [
+    {
+      "id": "C061-four-characters",
+      "originalStartSeconds": 196.1,
+      "originalEndSeconds": 196.7,
+      "editedStartSeconds": 195.166667,
+      "editedEndSeconds": 195.766667,
+      "status": "awaiting-user-word-confirmation",
+      "treatment": "保留全部原声，字幕暂使用[语音不清]，不擅自用拍摄稿补成繁琐流程；已向用户异步询问。"
+    }
+  ],
+  "authorizedEdit": "仅删除原片117.933333至118.866667秒的没有人负责；其余音频不删改。",
+  "publishAuthorized": false
+}
