@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "packageId": "20260904_local_ai_services_v8_r1",
+  "validatedAt": "2026-09-04T10:46:39+08:00",
+  "status": "passed-ready-for-user-review",
+  "packageRoot": "edit/20260902_local_ai_services/09_发布包/2026-09-04_兰州本地AI服务_V8_R1",
+  "manifest": {
+    "path": "edit/20260902_local_ai_services/09_发布包/2026-09-04_兰州本地AI服务_V8_R1/发布包清单.v1.json",
+    "sha256": "3c11b8436694926547f0c2e73e99d5d2755489898f864123e4170bf3fa062a2a",
+    "declaredItemCount": 10,
+    "verifiedItemCount": 10
+  },
+  "checks": {
+    "manifestFilesExist": "passed",
+    "manifestSizeMatches": "passed",
+    "manifestSha256Matches": "passed",
+    "declaredHardlinksMatchSourceInodes": "passed",
+    "jsonSyntax": "passed",
+    "formalWithSfxFullDecode": "passed",
+    "formalWithoutAddedSfxFullDecode": "passed",
+    "formalVideoStreamsIdentical": "passed",
+    "spokenSourcePrecisionAndCoverage": "passed-1.000",
+    "formalRiskFrameReview": "passed-16-frames",
+    "allElevenInsertionsCovered": "passed",
+    "allElevenNativeAudioBindingsPositive": "passed",
+    "allTwentyOneSfxCuesDetected": "passed",
+    "copyReviewCurrent": "passed",
+    "copyReviewFactFidelity": "passed-10-of-10",
+    "coverFrameFromCurrentFormalVideo": "passed-271.750s",
+    "coverPromptRequiredMarkers": "passed",
+    "primaryAndAlternativeTitles": "passed",
+    "publishCopyAndTopics": "passed",
+    "releaseStatusNotOverstated": "passed-ready-for-user-review",
+    "publicReleaseNotPerformed": "passed"
+  },
+  "boundEvidence": {
+    "releaseRecord": {
+      "path": "workflow/releases/20260904_local_ai_services_v8_r1_v1.json",
+      "sha256": "30d167b59e4ce29580bf184446adc6ddcc53df696623ed8cd8e04bb20e145421"
+    },
+    "formalQa": {
+      "path": "edit/20260902_local_ai_services/08_正式成片/渲染审计/正式全片质检回执.v1.json",
+      "sha256": "10097193aacfd9b7ae39442f7ea80c987687aa9fbbd1fdbd2f708e52f697e002"
+    },
+    "copyReview": {
+      "path": "edit/20260902_local_ai_services/09_发布包/2026-09-04_兰州本地AI服务_V8_R1/发布包装.copy-review.json",
+      "sha256": "8da16a51c5b03d98f788b3754abfa5477546847860df306b157df695646c7133"
+    },
+    "previewApproval": {
+      "path": "edit/20260902_local_ai_services/07_预览与质检/candidate-preview-r1/用户低清预览确认.v1.json",
+      "sha256": "6f8fce223ab30a9ed32b067fc91fbb32f77c3ef793553849c77276991f597886",
+      "verbatim": "通过通过"
+    }
+  },
+  "controlledGateBoundary": {
+    "releaseProductionGateV2Claimed": false,
+    "reason": "本条依照用户确认的隔离候选路线完成，没有伪造受控production job、运行清单或阶段回执；本回执只证明本发布目录的文件完整性和已执行的媒体QA。"
+  },
+  "remainingHumanGates": [
+    "用户以正常速度完整观看正式有声候选片后，才能把release状态升级为verified。",
+    "公开发布前核对用户提供素材的使用授权。",
+    "公开发布时按抖音客户端当日选项如实选择AI生成内容声明。"
+  ],
+  "deliveryState": {
+    "formalCandidateReady": true,
+    "releasePackageComplete": true,
+    "verified": false,
+    "published": false,
+    "externalUploadPerformed": false
+  }
+}
