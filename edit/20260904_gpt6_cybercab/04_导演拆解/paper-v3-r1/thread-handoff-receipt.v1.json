@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "koubo-paper-thread-handoff/v1",
+  "createdAt": "2026-09-04T13:24:52Z",
+  "requestId": "20260904-gpt6-cybercab-paper-v3-r1",
+  "status": "sample-generation-dispatched",
+  "authorizationQuote": "好的，那你先把这6段纸艺动画发给简化Running Hop批量流程的这个项目里面，让他去做。",
+  "receiver": {
+    "threadId": "01a05ce8-84ee-7112-bbc5-309c3e660c77",
+    "hostId": "local",
+    "title": "简化RunningHub批量流程",
+    "sendMessageAccepted": true,
+    "observedTurnId": "01a06c97-17e7-78e3-9a55-f99ccfa09459",
+    "observedTurnStatus": "inProgress",
+    "snapshotCursor": "e0c24773-55c5-48ff-bd20-ce4bf20d6ada:1"
+  },
+  "files": {
+    "handoffInstructions": {
+      "file": "交给批量流程_先读我.md",
+      "sha256": "cf93b1384dc344a38baa6cb9be8234f88d0d02bdf4ad3382a8c359dfe9d5b259"
+    },
+    "firstFrameManifest": {
+      "file": "first-frame-prompts.v1.json",
+      "sha256": "59fa6ed48063e43d100c7a1771cef9e5faa83c1201ca4253861439bc984acf78"
+    },
+    "imageToVideoManifest": {
+      "file": "runninghub-image-to-video-prompts.v1.json",
+      "sha256": "4b0131cc1622fefeae408fd809a43e7e955639a5251c59c15a5cf16ca33e5180"
+    },
+    "directorValidation": {
+      "file": "director-validation-receipt.v1.json",
+      "sha256": "e834e193f81ffe14d269665e45c4bbc99c8ae7705697a43d48493030baf6fedd"
+    }
+  },
+  "sceneIds": ["P01", "P02", "P03", "P04", "P05", "P06"],
+  "sampleSceneIds": ["P01", "P02", "P05"],
+  "suggestedDurationsSeconds": [7, 8, 7, 7, 7, 6],
+  "maximumGenerationConcurrency": 2,
+  "automaticRetryAllowed": false,
+  "remainingImagesRequireSampleUserAcceptance": true,
+  "finalDeliverable": "text-baked-firstframes-with-ocr-and-contact-sheet",
+  "contractTests": {
+    "passedFiles": [
+      "skills/koubo-remotion-director/tests/test-preproduction-director-contract.mjs",
+      "skills/koubo-paper-firstframe-producer/tests/test-firstframe-batch.mjs",
+      "skills/koubo-paper-firstframe-producer/tests/test-text-bake-runninghub-handoff.mjs"
+    ],
+    "pass": 3,
+    "fail": 0,
+    "actualBatchImagesValidated": false
+  },
+  "gates": {
+    "runningHubLoginAllowed": false,
+    "runningHubUploadAllowed": false,
+    "runningHubSubmissionAllowed": false,
+    "paidVideoGenerationAllowed": false,
+    "formalEnabled": false,
+    "publicationAllowed": false
+  }
+}

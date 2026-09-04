@@ -1,0 +1,4039 @@
+{
+  "schemaVersion": "koubo-director-preproduction-plan/v1",
+  "requestId": "20260904-gpt6-cybercab-paper-v3-r1",
+  "taskId": "20260904-gpt6-cybercab-paper-assets",
+  "phase": "pre-shoot",
+  "status": "provisional-previsualization",
+  "formalEligible": false,
+  "postShootRebindRequired": true,
+  "provenance": {
+    "requestPath": "/Users/pc/Documents/口播/edit/20260904_gpt6_cybercab/04_导演拆解/paper-v3-r1/director-preproduction-request.v1.json",
+    "requestSha256": "cf0f52cd0137c1a5fac0617f53a6a01492bed53a4ae19444c5e0679fdd1f5648",
+    "scriptPath": "edit/20260904_gpt6_cybercab/04_导演拆解/paper-v3-r1/素材授权与原句.md",
+    "scriptSha256": "ee21698776bebaa00a37eedfb1b6fd372a8e4c1b8bfdbd3a79481d55e7be8db1",
+    "profileId": "paper-editorial-director-v3",
+    "profileVersion": "3.2.0",
+    "styleId": "koubo-paper-editorial-assembly-v3",
+    "acceptedDynamicAnchorSha256": "764f1ad14bf35a4297ff974514666525b39a551dd5b976d4f66db42cc5c2fff6"
+  },
+  "routeSummary": {
+    "totalBeats": 6,
+    "paperBeatCount": 6,
+    "realEvidenceBeatCount": 0,
+    "presenterInsetBeatCount": 0,
+    "generatedVideoBeatCount": 0,
+    "speakerBeatCount": 0,
+    "otherBeatCount": 0,
+    "fallback": "blocked",
+    "genericInformationCardCanSatisfyPaperBeat": false
+  },
+  "beats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "spokenLine": "不再单纯靠你一问一答，它可以直接操控电脑、浏览器、各类业务软件，自主跑完完整业务工作流。",
+      "coreMeaning": "对照单个回答出口与连接电脑、浏览器和业务软件的操作路径，只解释任务形态。",
+      "kind": "abstract-mechanism",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "assetUse": {
+        "role": "illustration-only",
+        "evidenceEligible": false,
+        "aiDisclosureRequired": true
+      },
+      "provisionalTiming": {
+        "sourceWindowSeconds": [
+          33.36,
+          41.72
+        ],
+        "editedWindowSeconds": [
+          33.36,
+          41.72
+        ],
+        "notAnEditDecision": true,
+        "wordLevelBindingVerified": false,
+        "finalClipInOutLocked": false
+      },
+      "paperScene": {
+        "title": "从问答到软件操作",
+        "archetype": "complex-explanation",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "对话出口",
+            "material": "暖白对话轮廓纸件与单口靛蓝浅托盘",
+            "depth": 2
+          },
+          {
+            "id": "G2",
+            "name": "电脑工位",
+            "material": "灰白纸雕显示器及瓦楞纸键盘底座",
+            "depth": 3
+          },
+          {
+            "id": "G3",
+            "name": "浏览器工位",
+            "material": "灰绿叠层空白窗口纸框与侧轨",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "业务软件工位",
+            "material": "靛蓝多层软件抽屉、珊瑚红结果薄片",
+            "depth": 4
+          },
+          {
+            "id": "G5",
+            "name": "路径桥",
+            "material": "前景瓦楞轨道和暖白连接纸桥",
+            "depth": 1
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "一问一答",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "电脑",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "浏览器",
+            "groupId": "G3",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "业务软件",
+            "groupId": "G4",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "V1",
+            "label": "对话出口",
+            "groupId": "G1",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V2",
+            "label": "电脑工位",
+            "groupId": "G2",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V3",
+            "label": "浏览器工位",
+            "groupId": "G3",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V4",
+            "label": "业务软件工位",
+            "groupId": "G4",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V5",
+            "label": "路径桥",
+            "groupId": "G5",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "action": "对话托盘吐出一张无字薄片，薄片停在本托盘中，不飞向右侧",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N1"
+            ]
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "subject": "G2",
+            "action": "右侧任务滑块进入电脑底座的实体槽口，显示器保持原位",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N2"
+            ]
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "subject": "G3",
+            "action": "同一个滑块沿纸轨到达浏览器工位，窗口底层无字薄片被抽出一小段",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N3"
+            ]
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "subject": "G4",
+            "action": "滑块进入软件抽屉，抽屉推出无字交付薄片并停住",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N4"
+            ]
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "subject": "G5",
+            "action": "前景纸桥扣合，左右两个不同出口保持清楚",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": []
+          },
+          {
+            "id": "S6",
+            "order": 6,
+            "subject": "G5",
+            "action": "全体停止，保留左右对照和四张纸牌",
+            "sfxRole": "completion-hold-no-new-sound",
+            "landingNodeIds": []
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "一问一答",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "enterStageId": "S1",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.07,
+                0.55
+              ],
+              [
+                0.28,
+                0.55
+              ],
+              [
+                0.28,
+                0.65
+              ],
+              [
+                0.07,
+                0.65
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "电脑",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "enterStageId": "S2",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.36,
+                0.28
+              ],
+              [
+                0.51,
+                0.28
+              ],
+              [
+                0.51,
+                0.38
+              ],
+              [
+                0.36,
+                0.38
+              ]
+            ],
+            "maxChars": 2,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "浏览器",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "enterStageId": "S3",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.55,
+                0.4
+              ],
+              [
+                0.72,
+                0.4
+              ],
+              [
+                0.72,
+                0.5
+              ],
+              [
+                0.55,
+                0.5
+              ]
+            ],
+            "maxChars": 3,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N4",
+            "text": "业务软件",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "enterStageId": "S4",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.74,
+                0.56
+              ],
+              [
+                0.94,
+                0.56
+              ],
+              [
+                0.94,
+                0.66
+              ],
+              [
+                0.74,
+                0.66
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": [
+            {
+              "groupId": "G5",
+              "reason": "路径桥只承载动作关系，不产生第五张标签。"
+            }
+          ]
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 4
+        },
+        "firstFrameState": {
+          "kind": "fully-arranged-scene-with-input-object-at-start",
+          "labelsPresentAtFrameZero": true,
+          "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+        },
+        "postShootCaveats": [
+          "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+          "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+        ],
+        "prompt": {
+          "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n35度斜俯视完成态。左侧约三分之一宽是对话出口，回答薄片停在独立托盘，托盘无通向右侧的轨道。右侧电脑、浏览器纸框、软件抽屉由前景实体纸桥顺次连接，四组主物件保持可分离。一个无字珊瑚红任务滑块停在电脑工位轨道起点。四张空白牌位置逐一限定：对话托盘正前方一张；电脑底座前沿一张；浏览器纸框下沿一张；软件抽屉面板一张。路径桥无牌。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+          "motion": "0至0.5秒保持首帧。0.5至1.3秒左侧对话托盘只推出一张无字回答薄片并停止。1.3至2.4秒右侧无字任务滑块进入电脑底座槽口；2.4至3.5秒同一滑块沿实体轨道经过浏览器工位，底层薄片抽出；3.5至4.7秒进入业务软件抽屉，抽屉推出无字交付薄片；4.7至5.7秒前景连接桥轻扣合；5.7至7秒锁定。左侧与右侧是对照而不是彼此变形，禁止把对话牌变成电脑牌。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "spokenLine": "下达一个复杂业务任务，它可以自己拆解目标、自主操作软件、搜集资料、排查问题、自我校对复盘，最后直接交付成品结果。",
+      "coreMeaning": "同一任务经历操作、资料归集和检查后才输出，不能跳过中间环节或表示每项任务保证成功。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "assetUse": {
+        "role": "illustration-only",
+        "evidenceEligible": false,
+        "aiDisclosureRequired": true
+      },
+      "provisionalTiming": {
+        "sourceWindowSeconds": [
+          41.72,
+          54.84
+        ],
+        "editedWindowSeconds": [
+          41.72,
+          54.84
+        ],
+        "notAnEditDecision": true,
+        "wordLevelBindingVerified": false,
+        "finalClipInOutLocked": false
+      },
+      "paperScene": {
+        "title": "任务到交付",
+        "archetype": "complex-explanation",
+        "durationSeconds": 8,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "任务入口",
+            "material": "暖白任务托盘和无字珊瑚红任务薄片",
+            "depth": 2
+          },
+          {
+            "id": "G2",
+            "name": "操作工位",
+            "material": "靛蓝纸雕电脑和灰色短行程推杆",
+            "depth": 3
+          },
+          {
+            "id": "G3",
+            "name": "资料归集",
+            "material": "灰绿资料纸堆、三层文件槽和棉线束",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "检查工位",
+            "material": "前景刚性检视窗、无字透明薄片和定位槽",
+            "depth": 1
+          },
+          {
+            "id": "G5",
+            "name": "交付出口",
+            "material": "后景暖白交付盒和刚性抽屉",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "业务任务",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "操作软件",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "排查问题",
+            "groupId": "G4",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "交付结果",
+            "groupId": "G5",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "V1",
+            "label": "任务入口",
+            "groupId": "G1",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V2",
+            "label": "操作工位",
+            "groupId": "G2",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V3",
+            "label": "资料归集",
+            "groupId": "G3",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V4",
+            "label": "检查工位",
+            "groupId": "G4",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V5",
+            "label": "交付出口",
+            "groupId": "G5",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "action": "任务薄片进入入口托盘",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N1"
+            ]
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "subject": "G2",
+            "action": "推杆把同一任务薄片推进操作槽",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N2"
+            ]
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "subject": "G3",
+            "action": "三份资料薄片汇入一个文件槽并与任务一同推进",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": []
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "subject": "G4",
+            "action": "资料经过刚性检视窗，偏离的薄片退回槽内重新对齐",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N3"
+            ]
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "subject": "G5",
+            "action": "对齐后的纸束进入交付盒，抽屉推出",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N4"
+            ]
+          },
+          {
+            "id": "S6",
+            "order": 6,
+            "subject": "G5",
+            "action": "保持输入、检查和输出全路径",
+            "sfxRole": "completion-hold-no-new-sound",
+            "landingNodeIds": []
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "业务任务",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "enterStageId": "S1",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.05,
+                0.26
+              ],
+              [
+                0.25,
+                0.26
+              ],
+              [
+                0.25,
+                0.36
+              ],
+              [
+                0.05,
+                0.36
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "操作软件",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "enterStageId": "S2",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.32,
+                0.2
+              ],
+              [
+                0.53,
+                0.2
+              ],
+              [
+                0.53,
+                0.3
+              ],
+              [
+                0.32,
+                0.3
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "排查问题",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "enterStageId": "S4",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.39,
+                0.64
+              ],
+              [
+                0.61,
+                0.64
+              ],
+              [
+                0.61,
+                0.74
+              ],
+              [
+                0.39,
+                0.74
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N4",
+            "text": "交付结果",
+            "groupId": "G5",
+            "surfaceId": "G5-rigid-label-card",
+            "enterStageId": "S5",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.73,
+                0.46
+              ],
+              [
+                0.94,
+                0.46
+              ],
+              [
+                0.94,
+                0.56
+              ],
+              [
+                0.73,
+                0.56
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S5-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": [
+            {
+              "groupId": "G3",
+              "reason": "搜集资料用三份无字纸片汇入一个文件槽表达；完整说法保留口播和字幕，不再添加第五张牌。"
+            }
+          ]
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 4
+        },
+        "firstFrameState": {
+          "kind": "fully-arranged-scene-with-input-object-at-start",
+          "labelsPresentAtFrameZero": true,
+          "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+        },
+        "postShootCaveats": [
+          "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+          "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+        ],
+        "prompt": {
+          "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n斜俯视S形实体工作台，五个大物件组从左后向右后形成一条经过前景的连续路径：任务入口、电脑操作、资料槽、检视窗、交付盒。资料槽内三份不同纸色的无字资料可辨认，不像软件截图。检视窗有明确入槽和出槽，无标记、无印记。首帧无字任务薄片放在左侧入口，交付盒为空但结构完整。四张空白牌逐一固定在任务入口前沿、电脑底座、检视窗下沿、交付盒面板。资料组只有纸堆和文件槽，没有标签牌。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+          "motion": "从首帧连续开始。0至0.5秒读图；0.5至1.4秒任务薄片滑入入口；1.4至2.4秒推杆把它推进电脑操作槽；2.4至3.8秒三份无字资料顺次汇入文件槽；3.8至5.0秒纸束穿过检视窗，一张偏斜薄片退回后重新对齐，禁止冒出勾叉；5.0至6.6秒纸束进入交付盒，抽屉推出；6.6至8秒完成态锁定。资料不凭空消失，出口不能提前跳出结果。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "spokenLine": "人开车、人判断、人负责、人决策。",
+      "coreMeaning": "解释传统驾驶的四类职责围绕同一个驾驶者，不涉及Cybercab是否无人负责的事实宣称。",
+      "kind": "comparison",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "assetUse": {
+        "role": "illustration-only",
+        "evidenceEligible": false,
+        "aiDisclosureRequired": true
+      },
+      "provisionalTiming": {
+        "sourceWindowSeconds": [
+          100.36,
+          112.08
+        ],
+        "editedWindowSeconds": [
+          100.36,
+          112.08
+        ],
+        "notAnEditDecision": true,
+        "wordLevelBindingVerified": false,
+        "finalClipInOutLocked": false
+      },
+      "paperScene": {
+        "title": "传统驾驶中的人",
+        "archetype": "complex-explanation",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "驾驶控制",
+            "material": "灰白瓦楞方向盘和短纸轴",
+            "depth": 2
+          },
+          {
+            "id": "G2",
+            "name": "道路判断",
+            "material": "后景灰绿道路模型、观察窗和分岔槽",
+            "depth": 3
+          },
+          {
+            "id": "G3",
+            "name": "责任承托",
+            "material": "前景深灰实体承托座及暖白连接支架",
+            "depth": 1
+          },
+          {
+            "id": "G4",
+            "name": "路线决策",
+            "material": "右侧靛蓝双路径拨杆和无字定位滑块",
+            "depth": 2
+          },
+          {
+            "id": "G5",
+            "name": "驾驶者",
+            "material": "中央暖白无脸纸偶、座椅和立体驾驶台",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "人开车",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "人判断",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "人负责",
+            "groupId": "G3",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "人决策",
+            "groupId": "G4",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "V1",
+            "label": "驾驶控制",
+            "groupId": "G1",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V2",
+            "label": "道路判断",
+            "groupId": "G2",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V3",
+            "label": "责任承托",
+            "groupId": "G3",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V4",
+            "label": "路线决策",
+            "groupId": "G4",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V5",
+            "label": "驾驶者",
+            "groupId": "G5",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "action": "方向盘绕原纸轴轻转并回正",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N1"
+            ]
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "subject": "G2",
+            "action": "观察窗后的一条道路薄片平移对齐驾驶者视线",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N2"
+            ]
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "subject": "G3",
+            "action": "前景承托座扣紧与驾驶台相连的两根棉线",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N3"
+            ]
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "subject": "G4",
+            "action": "路线拨杆把无字滑块导入一条分支后停住",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N4"
+            ]
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "subject": "G5",
+            "action": "中央纸偶和驾驶台保持同一主体，不变脸不变形",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": []
+          },
+          {
+            "id": "S6",
+            "order": 6,
+            "subject": "G5",
+            "action": "锁定四类职责围绕驾驶者的完成关系",
+            "sfxRole": "completion-hold-no-new-sound",
+            "landingNodeIds": []
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "人开车",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "enterStageId": "S1",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.06,
+                0.33
+              ],
+              [
+                0.25,
+                0.33
+              ],
+              [
+                0.25,
+                0.44
+              ],
+              [
+                0.06,
+                0.44
+              ]
+            ],
+            "maxChars": 3,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "人判断",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "enterStageId": "S2",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.35,
+                0.15
+              ],
+              [
+                0.55,
+                0.15
+              ],
+              [
+                0.55,
+                0.25
+              ],
+              [
+                0.35,
+                0.25
+              ]
+            ],
+            "maxChars": 3,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "人负责",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "enterStageId": "S3",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.32,
+                0.64
+              ],
+              [
+                0.54,
+                0.64
+              ],
+              [
+                0.54,
+                0.75
+              ],
+              [
+                0.32,
+                0.75
+              ]
+            ],
+            "maxChars": 3,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N4",
+            "text": "人决策",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "enterStageId": "S4",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.71,
+                0.38
+              ],
+              [
+                0.92,
+                0.38
+              ],
+              [
+                0.92,
+                0.49
+              ],
+              [
+                0.71,
+                0.49
+              ]
+            ],
+            "maxChars": 3,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": [
+            {
+              "groupId": "G5",
+              "reason": "中央纸偶是四类职责的共同主体，不另加身份标签。"
+            }
+          ]
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 4
+        },
+        "firstFrameState": {
+          "kind": "fully-arranged-scene-with-input-object-at-start",
+          "labelsPresentAtFrameZero": true,
+          "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+        },
+        "postShootCaveats": [
+          "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+          "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+        ],
+        "prompt": {
+          "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n低机位斜正视微缩驾驶台，中央无脸纸偶坐在座椅上，不驾驶具体品牌车辆。左侧方向盘、后侧观察道路、前侧责任承托座、右侧路线拨杆围绕同一纸偶，承托座压住棉线联接的前端，三层以上有落地遮挡。四张空白牌逐一固定在方向盘底座、后侧观察窗下方、前景承托座正面、右侧路线拨杆底座。纸偶没有第五张牌。道路不出现交通文字或符号。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+          "motion": "0至0.6秒保持首帧；0.6至1.6秒方向盘绕纸轴小角转动后回正；1.6至2.6秒后侧道路薄片通过观察窗对齐；2.6至3.6秒前景承托座扣紧棉线连接；3.6至4.8秒右侧拨杆把无字滑块引向一条分支；4.8至5.8秒四个支架轻轻贴合中央驾驶台；5.8至7秒保持。纸偶始终在中央，不能撤走人、改成机器人或生成无人驾驶事实镜头。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "spokenLine": "GPT‑6 Astra，是虚拟世界的超级智能大脑，能在软件系统里面完成整套商业工作。\nCybercab，是现实世界的超级执行身体。",
+      "coreMeaning": "两个领域的类比，不是同一系统，也不是通用智能成熟证明。",
+      "kind": "comparison",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "assetUse": {
+        "role": "illustration-only",
+        "evidenceEligible": false,
+        "aiDisclosureRequired": true
+      },
+      "provisionalTiming": {
+        "sourceWindowSeconds": [
+          135.56,
+          143.56
+        ],
+        "editedWindowSeconds": [
+          134.62666666666667,
+          142.62666666666667
+        ],
+        "notAnEditDecision": true,
+        "wordLevelBindingVerified": false,
+        "finalClipInOutLocked": false
+      },
+      "paperScene": {
+        "title": "软件与现实两条路径",
+        "archetype": "complex-explanation",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "软件系统",
+            "material": "上层靛蓝纸雕电脑和刚性文件槽",
+            "depth": 3
+          },
+          {
+            "id": "G2",
+            "name": "商业工作",
+            "material": "上层右端暖白成果托盘和无字纸束",
+            "depth": 4
+          },
+          {
+            "id": "G3",
+            "name": "现实环境",
+            "material": "下层灰绿无字道路与路面起点",
+            "depth": 1
+          },
+          {
+            "id": "G4",
+            "name": "执行物件",
+            "material": "下层右端无品牌灰白四轮纸车与独立纸轨",
+            "depth": 2
+          },
+          {
+            "id": "G5",
+            "name": "领域分隔",
+            "material": "贯穿全宽的灰色硬纸隔板与独立底座",
+            "depth": 2
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "软件系统",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "商业工作",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "现实世界",
+            "groupId": "G3",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "执行身体",
+            "groupId": "G4",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "V1",
+            "label": "软件系统",
+            "groupId": "G1",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V2",
+            "label": "商业工作",
+            "groupId": "G2",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V3",
+            "label": "现实环境",
+            "groupId": "G3",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V4",
+            "label": "执行物件",
+            "groupId": "G4",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V5",
+            "label": "领域分隔",
+            "groupId": "G5",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "action": "上层任务薄片进入电脑文件槽",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N1"
+            ]
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "subject": "G2",
+            "action": "上层纸束从槽口送到右端工作托盘",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N2"
+            ]
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "subject": "G3",
+            "action": "下层独立道路的无字底板沿折痕展开一小段",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N3"
+            ]
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "subject": "G4",
+            "action": "下层无品牌纸车沿自身轨道前移，车轮绕原轴滚动",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N4"
+            ]
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "subject": "G5",
+            "action": "分隔板保持完全隔开两条路径",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": []
+          },
+          {
+            "id": "S6",
+            "order": 6,
+            "subject": "G5",
+            "action": "上下结果各自锁定，不合并",
+            "sfxRole": "completion-hold-no-new-sound",
+            "landingNodeIds": []
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "软件系统",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "enterStageId": "S1",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.07,
+                0.18
+              ],
+              [
+                0.29,
+                0.18
+              ],
+              [
+                0.29,
+                0.29
+              ],
+              [
+                0.07,
+                0.29
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "商业工作",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "enterStageId": "S2",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.66,
+                0.18
+              ],
+              [
+                0.89,
+                0.18
+              ],
+              [
+                0.89,
+                0.29
+              ],
+              [
+                0.66,
+                0.29
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "现实世界",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "enterStageId": "S3",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.07,
+                0.64
+              ],
+              [
+                0.29,
+                0.64
+              ],
+              [
+                0.29,
+                0.75
+              ],
+              [
+                0.07,
+                0.75
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N4",
+            "text": "执行身体",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "enterStageId": "S4",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.66,
+                0.64
+              ],
+              [
+                0.89,
+                0.64
+              ],
+              [
+                0.89,
+                0.75
+              ],
+              [
+                0.66,
+                0.75
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": [
+            {
+              "groupId": "G5",
+              "reason": "分隔板只显示两个独立领域，不产生关系结论或第五张牌。"
+            }
+          ]
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 4
+        },
+        "firstFrameState": {
+          "kind": "fully-arranged-scene-with-input-object-at-start",
+          "labelsPresentAtFrameZero": true,
+          "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+        },
+        "postShootCaveats": [
+          "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+          "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+        ],
+        "prompt": {
+          "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n近正视上下双层纸艺舞台。上层电脑在左、文件输出托盘在右；下层道路在左、无品牌四轮纸车在右。中央是一条贯穿全宽的实体灰色隔板，上下轨道完全不相接，不能共享棉线或箭头。上层无字任务薄片停在电脑入口，下层小车停在短路起点。四张空白牌逐一放在上层电脑底座前沿、上层成果托盘前沿、下层道路左侧台阶、下层小车轨道右侧台阶。中央隔板无牌，不能出现平台Logo或AGI结论。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+          "motion": "0至0.5秒保持首帧；0.5至1.5秒上层无字薄片进入电脑槽口；1.5至2.7秒上层纸束送入右侧托盘；2.7至3.7秒仅下层无字道路底板展开；3.7至5.0秒下层纸车沿独立纸轨前行；5.0至5.8秒两侧各自停稳；5.8至7秒锁定。中央隔板全程存在，禁止上下路径连通、电脑控制下方纸车、两者合体或新增结论牌。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "spokenLine": "机器干重复的事，\n人只干：决策、判断、资源、服务、经营！",
+      "coreMeaning": "重复任务进入独立处理轨，人的决策、判断、资源组织、服务和经营保持在主工作台。",
+      "kind": "abstract-mechanism",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "assetUse": {
+        "role": "illustration-only",
+        "evidenceEligible": false,
+        "aiDisclosureRequired": true
+      },
+      "provisionalTiming": {
+        "sourceWindowSeconds": [
+          206.8,
+          213.72
+        ],
+        "editedWindowSeconds": [
+          205.86666666666667,
+          212.78666666666666
+        ],
+        "notAnEditDecision": true,
+        "wordLevelBindingVerified": false,
+        "finalClipInOutLocked": false
+      },
+      "paperScene": {
+        "title": "人的工作不能消失",
+        "archetype": "complex-explanation",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "决策工位",
+            "material": "左侧靛蓝双路选择槽和暖白刚性拨片",
+            "depth": 2
+          },
+          {
+            "id": "G2",
+            "name": "判断工位",
+            "material": "后侧灰绿对照纸样和检视支架",
+            "depth": 3
+          },
+          {
+            "id": "G3",
+            "name": "资源连接",
+            "material": "前景棉线调度桥、三种无字物件、独立重复任务短轨",
+            "depth": 1
+          },
+          {
+            "id": "G4",
+            "name": "服务工位",
+            "material": "右侧两张暖白椅子与纸雕交接台",
+            "depth": 2
+          },
+          {
+            "id": "G5",
+            "name": "经营工位",
+            "material": "中央暖白无脸纸偶、工作台和无字记录册",
+            "depth": 4
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "决策",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "判断",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "服务",
+            "groupId": "G4",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "经营",
+            "groupId": "G5",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "V1",
+            "label": "决策工位",
+            "groupId": "G1",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V2",
+            "label": "判断工位",
+            "groupId": "G2",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V3",
+            "label": "资源连接",
+            "groupId": "G3",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V4",
+            "label": "服务工位",
+            "groupId": "G4",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V5",
+            "label": "经营工位",
+            "groupId": "G5",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "action": "左侧拨片把一张无字备选片送入选定槽口",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N1"
+            ]
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "subject": "G2",
+            "action": "后侧对照纸样滑到检视支架下并列对齐",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N2"
+            ]
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "subject": "G3",
+            "action": "前景相同任务薄片进入独立短轨，三条棉线连到人的工作台",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": []
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "subject": "G4",
+            "action": "右侧一张无字交接片在双椅之间的交接台上移交",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N3"
+            ]
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "subject": "G5",
+            "action": "中央记录册翻开无字页面，纸偶保持原位",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N4"
+            ]
+          },
+          {
+            "id": "S6",
+            "order": 6,
+            "subject": "G5",
+            "action": "人的工作台与重复任务轨分别停稳",
+            "sfxRole": "completion-hold-no-new-sound",
+            "landingNodeIds": []
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "决策",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "enterStageId": "S1",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.06,
+                0.34
+              ],
+              [
+                0.24,
+                0.34
+              ],
+              [
+                0.24,
+                0.46
+              ],
+              [
+                0.06,
+                0.46
+              ]
+            ],
+            "maxChars": 2,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "判断",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "enterStageId": "S2",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.35,
+                0.15
+              ],
+              [
+                0.53,
+                0.15
+              ],
+              [
+                0.53,
+                0.27
+              ],
+              [
+                0.35,
+                0.27
+              ]
+            ],
+            "maxChars": 2,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "服务",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "enterStageId": "S4",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.72,
+                0.35
+              ],
+              [
+                0.9,
+                0.35
+              ],
+              [
+                0.9,
+                0.47
+              ],
+              [
+                0.72,
+                0.47
+              ]
+            ],
+            "maxChars": 2,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N4",
+            "text": "经营",
+            "groupId": "G5",
+            "surfaceId": "G5-rigid-label-card",
+            "enterStageId": "S5",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.42,
+                0.62
+              ],
+              [
+                0.61,
+                0.62
+              ],
+              [
+                0.61,
+                0.74
+              ],
+              [
+                0.42,
+                0.74
+              ]
+            ],
+            "maxChars": 2,
+            "persistence": "S5-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": [
+            {
+              "groupId": "G3",
+              "reason": "资源用连接三种物件的棉线调度桥表达，重复任务用相同无字纸片的独立短轨表达；原词仍在口播字幕，不增加第五张牌。"
+            }
+          ]
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 4
+        },
+        "firstFrameState": {
+          "kind": "fully-arranged-scene-with-input-object-at-start",
+          "labelsPresentAtFrameZero": true,
+          "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+        },
+        "postShootCaveats": [
+          "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+          "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+        ],
+        "prompt": {
+          "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n顶视偏20度的中心放射纸艺工作台，中央无脸纸偶和经营台仍是主角。左侧选择槽、后侧对照支架、右侧双椅交接台通过前景棉线调度桥连接中央。前景左下还有只承接相同无字薄片的短轨，和人的工作台保持分区，不能让整个人或其工位滑走。四张空白牌逐一在选择槽、对照支架、双椅交接台和中央经营台正前方。棉线资源桥与重复任务短轨均没有额外牌。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+          "motion": "0至0.5秒保持首帧；0.5至1.5秒左侧刚性拨片选择一条槽口；1.5至2.5秒后侧两张无字纸样对齐比较；2.5至3.6秒前景相同任务薄片沿独立短轨滑走，棉线把资源物件留接在人工作台；3.6至4.7秒右侧交接台传递一张无字纸片；4.7至5.8秒中央记录册展开无字页；5.8至7秒保持。纸偶和四张中文牌始终保留，不能把人推离画面，也不能用成功标记替代经营。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "spokenLine": "你的门店获客、营销策划、视觉设计、流程简化、SOP搭建、数据复盘，所有问题，AI全部能解决。",
+      "coreMeaning": "只说明四类工作项目，不证明获客、盈利或所有问题均能解决。",
+      "kind": "abstract-mechanism",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked"
+      },
+      "assetUse": {
+        "role": "illustration-only",
+        "evidenceEligible": false,
+        "aiDisclosureRequired": true
+      },
+      "provisionalTiming": {
+        "sourceWindowSeconds": [
+          239.2,
+          243.88
+        ],
+        "editedWindowSeconds": [
+          238.26666666666665,
+          242.94666666666666
+        ],
+        "notAnEditDecision": true,
+        "wordLevelBindingVerified": false,
+        "finalClipInOutLocked": false
+      },
+      "paperScene": {
+        "title": "四类服务工作",
+        "archetype": "complex-explanation",
+        "durationSeconds": 6,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "营销策划",
+            "material": "左后方灰绿策划纸册和三条无字提纲纸条",
+            "depth": 3
+          },
+          {
+            "id": "G2",
+            "name": "视觉设计",
+            "material": "右后方暖白画板、三张纯色色样和靛蓝支脚",
+            "depth": 4
+          },
+          {
+            "id": "G3",
+            "name": "流程搭建",
+            "material": "左前方工业灰折页索引、阶梯槽与无字纸块",
+            "depth": 1
+          },
+          {
+            "id": "G4",
+            "name": "数据复盘",
+            "material": "右前方暖白记录册、两张无数字对照纸样",
+            "depth": 2
+          },
+          {
+            "id": "G5",
+            "name": "服务承托",
+            "material": "中部靛蓝瓦楞工具底座与横向纸梁",
+            "depth": 2
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "营销策划",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "视觉设计",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "SOP搭建",
+            "groupId": "G3",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "数据复盘",
+            "groupId": "G4",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "V1",
+            "label": "营销策划",
+            "groupId": "G1",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V2",
+            "label": "视觉设计",
+            "groupId": "G2",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V3",
+            "label": "流程搭建",
+            "groupId": "G3",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V4",
+            "label": "数据复盘",
+            "groupId": "G4",
+            "textVisibility": "visual-only"
+          },
+          {
+            "id": "V5",
+            "label": "服务承托",
+            "groupId": "G5",
+            "textVisibility": "visual-only"
+          }
+        ],
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "action": "三条无字提纲纸条插入策划纸册的三个浅槽",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N1"
+            ]
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "subject": "G2",
+            "action": "纯色色样依次叠入设计画板边框",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N2"
+            ]
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "subject": "G3",
+            "action": "无字底板折页展开，刚性流程标签不弯折",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": [
+              "N3"
+            ]
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "subject": "G4",
+            "action": "两张无字对照纸样滑入复盘册左右页",
+            "sfxRole": "paper-slot-click",
+            "landingNodeIds": [
+              "N4"
+            ]
+          },
+          {
+            "id": "S5",
+            "order": 5,
+            "subject": "G5",
+            "action": "中央横梁轻扣合四个工位",
+            "sfxRole": "paper-slide",
+            "landingNodeIds": []
+          },
+          {
+            "id": "S6",
+            "order": 6,
+            "subject": "G5",
+            "action": "四类服务物件锁定，保持无结果保证",
+            "sfxRole": "completion-hold-no-new-sound",
+            "landingNodeIds": []
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "营销策划",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "enterStageId": "S1",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.09,
+                0.2
+              ],
+              [
+                0.32,
+                0.2
+              ],
+              [
+                0.32,
+                0.31
+              ],
+              [
+                0.09,
+                0.31
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S1-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "视觉设计",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "enterStageId": "S2",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.61,
+                0.2
+              ],
+              [
+                0.84,
+                0.2
+              ],
+              [
+                0.84,
+                0.31
+              ],
+              [
+                0.61,
+                0.31
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S2-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "SOP搭建",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "enterStageId": "S3",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.09,
+                0.6
+              ],
+              [
+                0.32,
+                0.6
+              ],
+              [
+                0.32,
+                0.72
+              ],
+              [
+                0.09,
+                0.72
+              ]
+            ],
+            "maxChars": 5,
+            "persistence": "S3-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          },
+          {
+            "nodeId": "N4",
+            "text": "数据复盘",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "enterStageId": "S4",
+            "role": "diegetic-node-label",
+            "anchorQuad": [
+              [
+                0.61,
+                0.6
+              ],
+              [
+                0.84,
+                0.6
+              ],
+              [
+                0.84,
+                0.72
+              ],
+              [
+                0.61,
+                0.72
+              ]
+            ],
+            "maxChars": 4,
+            "persistence": "S4-to-end",
+            "occlusionOwner": "own-rigid-card-above-own-group",
+            "ocrRequired": true,
+            "motionConstraint": "rigid-surface",
+            "embeddingMode": "first-frame-baked",
+            "stageOffsetFrames": 0,
+            "anchorCalibrationRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": [
+            {
+              "groupId": "G5",
+              "reason": "承托底座仅组织四个服务物件，不增加能力总包标题或第五张标签。"
+            }
+          ]
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 4
+        },
+        "firstFrameState": {
+          "kind": "fully-arranged-scene-with-input-object-at-start",
+          "labelsPresentAtFrameZero": true,
+          "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+        },
+        "postShootCaveats": [
+          "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+          "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+        ],
+        "prompt": {
+          "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n略高于桌面的斜俯视微缩工坊，四个不同大物件前后错层排列，不是平铺PPT卡片：左后策划纸册、右后设计画板、左前流程折页索引、右前复盘记录册。中间瓦楞横梁承托四个工位且有真实遮挡。画板只含纯色色样，纸册和纸样完全无图无字。四张空白牌逐一放在策划册下沿、画板底座、流程索引前沿、复盘册下沿，矩形正面留足中文空间。中间横梁没有牌，不出现订单、数字、效果章或产品Logo。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+          "motion": "0至0.4秒保持首帧；0.4至1.3秒左后提纲纸条依次插入策划册；1.3至2.2秒右后纯色色样滑入设计画板；2.2至3.1秒左前只有无字底板折页展开，中文牌保持刚性；3.1至4.1秒右前两张无字纸样进入复盘册；4.1至5.0秒中央承托横梁轻扣合；5.0至6秒保持。仅展示工作类别，不添加收入、客户量、增长图形或保证效果的任何新文字。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+          "generatedReadableTextAllowed": false
+        }
+      }
+    }
+  ],
+  "paperScenes": [
+    {
+      "beatId": "B01",
+      "spokenLine": "不再单纯靠你一问一答，它可以直接操控电脑、浏览器、各类业务软件，自主跑完完整业务工作流。",
+      "coreMeaning": "对照单个回答出口与连接电脑、浏览器和业务软件的操作路径，只解释任务形态。",
+      "title": "从问答到软件操作",
+      "archetype": "complex-explanation",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "对话出口",
+          "material": "暖白对话轮廓纸件与单口靛蓝浅托盘",
+          "depth": 2
+        },
+        {
+          "id": "G2",
+          "name": "电脑工位",
+          "material": "灰白纸雕显示器及瓦楞纸键盘底座",
+          "depth": 3
+        },
+        {
+          "id": "G3",
+          "name": "浏览器工位",
+          "material": "灰绿叠层空白窗口纸框与侧轨",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "业务软件工位",
+          "material": "靛蓝多层软件抽屉、珊瑚红结果薄片",
+          "depth": 4
+        },
+        {
+          "id": "G5",
+          "name": "路径桥",
+          "material": "前景瓦楞轨道和暖白连接纸桥",
+          "depth": 1
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "一问一答",
+          "groupId": "G1",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "电脑",
+          "groupId": "G2",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "浏览器",
+          "groupId": "G3",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "业务软件",
+          "groupId": "G4",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "V1",
+          "label": "对话出口",
+          "groupId": "G1",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V2",
+          "label": "电脑工位",
+          "groupId": "G2",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V3",
+          "label": "浏览器工位",
+          "groupId": "G3",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V4",
+          "label": "业务软件工位",
+          "groupId": "G4",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V5",
+          "label": "路径桥",
+          "groupId": "G5",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "subject": "G1",
+          "action": "对话托盘吐出一张无字薄片，薄片停在本托盘中，不飞向右侧",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N1"
+          ]
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "subject": "G2",
+          "action": "右侧任务滑块进入电脑底座的实体槽口，显示器保持原位",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N2"
+          ]
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "subject": "G3",
+          "action": "同一个滑块沿纸轨到达浏览器工位，窗口底层无字薄片被抽出一小段",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N3"
+          ]
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "subject": "G4",
+          "action": "滑块进入软件抽屉，抽屉推出无字交付薄片并停住",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N4"
+          ]
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "subject": "G5",
+          "action": "前景纸桥扣合，左右两个不同出口保持清楚",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": []
+        },
+        {
+          "id": "S6",
+          "order": 6,
+          "subject": "G5",
+          "action": "全体停止，保留左右对照和四张纸牌",
+          "sfxRole": "completion-hold-no-new-sound",
+          "landingNodeIds": []
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "一问一答",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "enterStageId": "S1",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.07,
+              0.55
+            ],
+            [
+              0.28,
+              0.55
+            ],
+            [
+              0.28,
+              0.65
+            ],
+            [
+              0.07,
+              0.65
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "电脑",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "enterStageId": "S2",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.36,
+              0.28
+            ],
+            [
+              0.51,
+              0.28
+            ],
+            [
+              0.51,
+              0.38
+            ],
+            [
+              0.36,
+              0.38
+            ]
+          ],
+          "maxChars": 2,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "浏览器",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "enterStageId": "S3",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.55,
+              0.4
+            ],
+            [
+              0.72,
+              0.4
+            ],
+            [
+              0.72,
+              0.5
+            ],
+            [
+              0.55,
+              0.5
+            ]
+          ],
+          "maxChars": 3,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N4",
+          "text": "业务软件",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "enterStageId": "S4",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.74,
+              0.56
+            ],
+            [
+              0.94,
+              0.56
+            ],
+            [
+              0.94,
+              0.66
+            ],
+            [
+              0.74,
+              0.66
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        }
+      ],
+      "screenTextPlan": [],
+      "labelBindingPolicy": {
+        "unlabeledObjectGroups": [
+          {
+            "groupId": "G5",
+            "reason": "路径桥只承载动作关系，不产生第五张标签。"
+          }
+        ]
+      },
+      "readableTextPolicy": {
+        "silentTruncationForbidden": true,
+        "slashMergeForbidden": true,
+        "maximumSimultaneousLabels": 4
+      },
+      "firstFrameState": {
+        "kind": "fully-arranged-scene-with-input-object-at-start",
+        "labelsPresentAtFrameZero": true,
+        "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+      },
+      "postShootCaveats": [
+        "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+        "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+      ],
+      "prompt": {
+        "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n35度斜俯视完成态。左侧约三分之一宽是对话出口，回答薄片停在独立托盘，托盘无通向右侧的轨道。右侧电脑、浏览器纸框、软件抽屉由前景实体纸桥顺次连接，四组主物件保持可分离。一个无字珊瑚红任务滑块停在电脑工位轨道起点。四张空白牌位置逐一限定：对话托盘正前方一张；电脑底座前沿一张；浏览器纸框下沿一张；软件抽屉面板一张。路径桥无牌。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+        "motion": "0至0.5秒保持首帧。0.5至1.3秒左侧对话托盘只推出一张无字回答薄片并停止。1.3至2.4秒右侧无字任务滑块进入电脑底座槽口；2.4至3.5秒同一滑块沿实体轨道经过浏览器工位，底层薄片抽出；3.5至4.7秒进入业务软件抽屉，抽屉推出无字交付薄片；4.7至5.7秒前景连接桥轻扣合；5.7至7秒锁定。左侧与右侧是对照而不是彼此变形，禁止把对话牌变成电脑牌。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B02",
+      "spokenLine": "下达一个复杂业务任务，它可以自己拆解目标、自主操作软件、搜集资料、排查问题、自我校对复盘，最后直接交付成品结果。",
+      "coreMeaning": "同一任务经历操作、资料归集和检查后才输出，不能跳过中间环节或表示每项任务保证成功。",
+      "title": "任务到交付",
+      "archetype": "complex-explanation",
+      "durationSeconds": 8,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "任务入口",
+          "material": "暖白任务托盘和无字珊瑚红任务薄片",
+          "depth": 2
+        },
+        {
+          "id": "G2",
+          "name": "操作工位",
+          "material": "靛蓝纸雕电脑和灰色短行程推杆",
+          "depth": 3
+        },
+        {
+          "id": "G3",
+          "name": "资料归集",
+          "material": "灰绿资料纸堆、三层文件槽和棉线束",
+          "depth": 3
+        },
+        {
+          "id": "G4",
+          "name": "检查工位",
+          "material": "前景刚性检视窗、无字透明薄片和定位槽",
+          "depth": 1
+        },
+        {
+          "id": "G5",
+          "name": "交付出口",
+          "material": "后景暖白交付盒和刚性抽屉",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "业务任务",
+          "groupId": "G1",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "操作软件",
+          "groupId": "G2",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "排查问题",
+          "groupId": "G4",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "交付结果",
+          "groupId": "G5",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "V1",
+          "label": "任务入口",
+          "groupId": "G1",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V2",
+          "label": "操作工位",
+          "groupId": "G2",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V3",
+          "label": "资料归集",
+          "groupId": "G3",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V4",
+          "label": "检查工位",
+          "groupId": "G4",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V5",
+          "label": "交付出口",
+          "groupId": "G5",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "subject": "G1",
+          "action": "任务薄片进入入口托盘",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N1"
+          ]
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "subject": "G2",
+          "action": "推杆把同一任务薄片推进操作槽",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N2"
+          ]
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "subject": "G3",
+          "action": "三份资料薄片汇入一个文件槽并与任务一同推进",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": []
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "subject": "G4",
+          "action": "资料经过刚性检视窗，偏离的薄片退回槽内重新对齐",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N3"
+          ]
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "subject": "G5",
+          "action": "对齐后的纸束进入交付盒，抽屉推出",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N4"
+          ]
+        },
+        {
+          "id": "S6",
+          "order": 6,
+          "subject": "G5",
+          "action": "保持输入、检查和输出全路径",
+          "sfxRole": "completion-hold-no-new-sound",
+          "landingNodeIds": []
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "业务任务",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "enterStageId": "S1",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.05,
+              0.26
+            ],
+            [
+              0.25,
+              0.26
+            ],
+            [
+              0.25,
+              0.36
+            ],
+            [
+              0.05,
+              0.36
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "操作软件",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "enterStageId": "S2",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.32,
+              0.2
+            ],
+            [
+              0.53,
+              0.2
+            ],
+            [
+              0.53,
+              0.3
+            ],
+            [
+              0.32,
+              0.3
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "排查问题",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "enterStageId": "S4",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.39,
+              0.64
+            ],
+            [
+              0.61,
+              0.64
+            ],
+            [
+              0.61,
+              0.74
+            ],
+            [
+              0.39,
+              0.74
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N4",
+          "text": "交付结果",
+          "groupId": "G5",
+          "surfaceId": "G5-rigid-label-card",
+          "enterStageId": "S5",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.73,
+              0.46
+            ],
+            [
+              0.94,
+              0.46
+            ],
+            [
+              0.94,
+              0.56
+            ],
+            [
+              0.73,
+              0.56
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S5-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        }
+      ],
+      "screenTextPlan": [],
+      "labelBindingPolicy": {
+        "unlabeledObjectGroups": [
+          {
+            "groupId": "G3",
+            "reason": "搜集资料用三份无字纸片汇入一个文件槽表达；完整说法保留口播和字幕，不再添加第五张牌。"
+          }
+        ]
+      },
+      "readableTextPolicy": {
+        "silentTruncationForbidden": true,
+        "slashMergeForbidden": true,
+        "maximumSimultaneousLabels": 4
+      },
+      "firstFrameState": {
+        "kind": "fully-arranged-scene-with-input-object-at-start",
+        "labelsPresentAtFrameZero": true,
+        "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+      },
+      "postShootCaveats": [
+        "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+        "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+      ],
+      "prompt": {
+        "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n斜俯视S形实体工作台，五个大物件组从左后向右后形成一条经过前景的连续路径：任务入口、电脑操作、资料槽、检视窗、交付盒。资料槽内三份不同纸色的无字资料可辨认，不像软件截图。检视窗有明确入槽和出槽，无标记、无印记。首帧无字任务薄片放在左侧入口，交付盒为空但结构完整。四张空白牌逐一固定在任务入口前沿、电脑底座、检视窗下沿、交付盒面板。资料组只有纸堆和文件槽，没有标签牌。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+        "motion": "从首帧连续开始。0至0.5秒读图；0.5至1.4秒任务薄片滑入入口；1.4至2.4秒推杆把它推进电脑操作槽；2.4至3.8秒三份无字资料顺次汇入文件槽；3.8至5.0秒纸束穿过检视窗，一张偏斜薄片退回后重新对齐，禁止冒出勾叉；5.0至6.6秒纸束进入交付盒，抽屉推出；6.6至8秒完成态锁定。资料不凭空消失，出口不能提前跳出结果。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B03",
+      "spokenLine": "人开车、人判断、人负责、人决策。",
+      "coreMeaning": "解释传统驾驶的四类职责围绕同一个驾驶者，不涉及Cybercab是否无人负责的事实宣称。",
+      "title": "传统驾驶中的人",
+      "archetype": "complex-explanation",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "驾驶控制",
+          "material": "灰白瓦楞方向盘和短纸轴",
+          "depth": 2
+        },
+        {
+          "id": "G2",
+          "name": "道路判断",
+          "material": "后景灰绿道路模型、观察窗和分岔槽",
+          "depth": 3
+        },
+        {
+          "id": "G3",
+          "name": "责任承托",
+          "material": "前景深灰实体承托座及暖白连接支架",
+          "depth": 1
+        },
+        {
+          "id": "G4",
+          "name": "路线决策",
+          "material": "右侧靛蓝双路径拨杆和无字定位滑块",
+          "depth": 2
+        },
+        {
+          "id": "G5",
+          "name": "驾驶者",
+          "material": "中央暖白无脸纸偶、座椅和立体驾驶台",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "人开车",
+          "groupId": "G1",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "人判断",
+          "groupId": "G2",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "人负责",
+          "groupId": "G3",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "人决策",
+          "groupId": "G4",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "V1",
+          "label": "驾驶控制",
+          "groupId": "G1",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V2",
+          "label": "道路判断",
+          "groupId": "G2",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V3",
+          "label": "责任承托",
+          "groupId": "G3",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V4",
+          "label": "路线决策",
+          "groupId": "G4",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V5",
+          "label": "驾驶者",
+          "groupId": "G5",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "subject": "G1",
+          "action": "方向盘绕原纸轴轻转并回正",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N1"
+          ]
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "subject": "G2",
+          "action": "观察窗后的一条道路薄片平移对齐驾驶者视线",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N2"
+          ]
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "subject": "G3",
+          "action": "前景承托座扣紧与驾驶台相连的两根棉线",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N3"
+          ]
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "subject": "G4",
+          "action": "路线拨杆把无字滑块导入一条分支后停住",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N4"
+          ]
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "subject": "G5",
+          "action": "中央纸偶和驾驶台保持同一主体，不变脸不变形",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": []
+        },
+        {
+          "id": "S6",
+          "order": 6,
+          "subject": "G5",
+          "action": "锁定四类职责围绕驾驶者的完成关系",
+          "sfxRole": "completion-hold-no-new-sound",
+          "landingNodeIds": []
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "人开车",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "enterStageId": "S1",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.06,
+              0.33
+            ],
+            [
+              0.25,
+              0.33
+            ],
+            [
+              0.25,
+              0.44
+            ],
+            [
+              0.06,
+              0.44
+            ]
+          ],
+          "maxChars": 3,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "人判断",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "enterStageId": "S2",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.35,
+              0.15
+            ],
+            [
+              0.55,
+              0.15
+            ],
+            [
+              0.55,
+              0.25
+            ],
+            [
+              0.35,
+              0.25
+            ]
+          ],
+          "maxChars": 3,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "人负责",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "enterStageId": "S3",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.32,
+              0.64
+            ],
+            [
+              0.54,
+              0.64
+            ],
+            [
+              0.54,
+              0.75
+            ],
+            [
+              0.32,
+              0.75
+            ]
+          ],
+          "maxChars": 3,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N4",
+          "text": "人决策",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "enterStageId": "S4",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.71,
+              0.38
+            ],
+            [
+              0.92,
+              0.38
+            ],
+            [
+              0.92,
+              0.49
+            ],
+            [
+              0.71,
+              0.49
+            ]
+          ],
+          "maxChars": 3,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        }
+      ],
+      "screenTextPlan": [],
+      "labelBindingPolicy": {
+        "unlabeledObjectGroups": [
+          {
+            "groupId": "G5",
+            "reason": "中央纸偶是四类职责的共同主体，不另加身份标签。"
+          }
+        ]
+      },
+      "readableTextPolicy": {
+        "silentTruncationForbidden": true,
+        "slashMergeForbidden": true,
+        "maximumSimultaneousLabels": 4
+      },
+      "firstFrameState": {
+        "kind": "fully-arranged-scene-with-input-object-at-start",
+        "labelsPresentAtFrameZero": true,
+        "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+      },
+      "postShootCaveats": [
+        "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+        "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+      ],
+      "prompt": {
+        "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n低机位斜正视微缩驾驶台，中央无脸纸偶坐在座椅上，不驾驶具体品牌车辆。左侧方向盘、后侧观察道路、前侧责任承托座、右侧路线拨杆围绕同一纸偶，承托座压住棉线联接的前端，三层以上有落地遮挡。四张空白牌逐一固定在方向盘底座、后侧观察窗下方、前景承托座正面、右侧路线拨杆底座。纸偶没有第五张牌。道路不出现交通文字或符号。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+        "motion": "0至0.6秒保持首帧；0.6至1.6秒方向盘绕纸轴小角转动后回正；1.6至2.6秒后侧道路薄片通过观察窗对齐；2.6至3.6秒前景承托座扣紧棉线连接；3.6至4.8秒右侧拨杆把无字滑块引向一条分支；4.8至5.8秒四个支架轻轻贴合中央驾驶台；5.8至7秒保持。纸偶始终在中央，不能撤走人、改成机器人或生成无人驾驶事实镜头。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B04",
+      "spokenLine": "GPT‑6 Astra，是虚拟世界的超级智能大脑，能在软件系统里面完成整套商业工作。\nCybercab，是现实世界的超级执行身体。",
+      "coreMeaning": "两个领域的类比，不是同一系统，也不是通用智能成熟证明。",
+      "title": "软件与现实两条路径",
+      "archetype": "complex-explanation",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "软件系统",
+          "material": "上层靛蓝纸雕电脑和刚性文件槽",
+          "depth": 3
+        },
+        {
+          "id": "G2",
+          "name": "商业工作",
+          "material": "上层右端暖白成果托盘和无字纸束",
+          "depth": 4
+        },
+        {
+          "id": "G3",
+          "name": "现实环境",
+          "material": "下层灰绿无字道路与路面起点",
+          "depth": 1
+        },
+        {
+          "id": "G4",
+          "name": "执行物件",
+          "material": "下层右端无品牌灰白四轮纸车与独立纸轨",
+          "depth": 2
+        },
+        {
+          "id": "G5",
+          "name": "领域分隔",
+          "material": "贯穿全宽的灰色硬纸隔板与独立底座",
+          "depth": 2
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "软件系统",
+          "groupId": "G1",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "商业工作",
+          "groupId": "G2",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "现实世界",
+          "groupId": "G3",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "执行身体",
+          "groupId": "G4",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "V1",
+          "label": "软件系统",
+          "groupId": "G1",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V2",
+          "label": "商业工作",
+          "groupId": "G2",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V3",
+          "label": "现实环境",
+          "groupId": "G3",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V4",
+          "label": "执行物件",
+          "groupId": "G4",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V5",
+          "label": "领域分隔",
+          "groupId": "G5",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "subject": "G1",
+          "action": "上层任务薄片进入电脑文件槽",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N1"
+          ]
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "subject": "G2",
+          "action": "上层纸束从槽口送到右端工作托盘",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N2"
+          ]
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "subject": "G3",
+          "action": "下层独立道路的无字底板沿折痕展开一小段",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N3"
+          ]
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "subject": "G4",
+          "action": "下层无品牌纸车沿自身轨道前移，车轮绕原轴滚动",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N4"
+          ]
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "subject": "G5",
+          "action": "分隔板保持完全隔开两条路径",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": []
+        },
+        {
+          "id": "S6",
+          "order": 6,
+          "subject": "G5",
+          "action": "上下结果各自锁定，不合并",
+          "sfxRole": "completion-hold-no-new-sound",
+          "landingNodeIds": []
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "软件系统",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "enterStageId": "S1",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.07,
+              0.18
+            ],
+            [
+              0.29,
+              0.18
+            ],
+            [
+              0.29,
+              0.29
+            ],
+            [
+              0.07,
+              0.29
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "商业工作",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "enterStageId": "S2",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.66,
+              0.18
+            ],
+            [
+              0.89,
+              0.18
+            ],
+            [
+              0.89,
+              0.29
+            ],
+            [
+              0.66,
+              0.29
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "现实世界",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "enterStageId": "S3",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.07,
+              0.64
+            ],
+            [
+              0.29,
+              0.64
+            ],
+            [
+              0.29,
+              0.75
+            ],
+            [
+              0.07,
+              0.75
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N4",
+          "text": "执行身体",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "enterStageId": "S4",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.66,
+              0.64
+            ],
+            [
+              0.89,
+              0.64
+            ],
+            [
+              0.89,
+              0.75
+            ],
+            [
+              0.66,
+              0.75
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        }
+      ],
+      "screenTextPlan": [],
+      "labelBindingPolicy": {
+        "unlabeledObjectGroups": [
+          {
+            "groupId": "G5",
+            "reason": "分隔板只显示两个独立领域，不产生关系结论或第五张牌。"
+          }
+        ]
+      },
+      "readableTextPolicy": {
+        "silentTruncationForbidden": true,
+        "slashMergeForbidden": true,
+        "maximumSimultaneousLabels": 4
+      },
+      "firstFrameState": {
+        "kind": "fully-arranged-scene-with-input-object-at-start",
+        "labelsPresentAtFrameZero": true,
+        "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+      },
+      "postShootCaveats": [
+        "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+        "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+      ],
+      "prompt": {
+        "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n近正视上下双层纸艺舞台。上层电脑在左、文件输出托盘在右；下层道路在左、无品牌四轮纸车在右。中央是一条贯穿全宽的实体灰色隔板，上下轨道完全不相接，不能共享棉线或箭头。上层无字任务薄片停在电脑入口，下层小车停在短路起点。四张空白牌逐一放在上层电脑底座前沿、上层成果托盘前沿、下层道路左侧台阶、下层小车轨道右侧台阶。中央隔板无牌，不能出现平台Logo或AGI结论。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+        "motion": "0至0.5秒保持首帧；0.5至1.5秒上层无字薄片进入电脑槽口；1.5至2.7秒上层纸束送入右侧托盘；2.7至3.7秒仅下层无字道路底板展开；3.7至5.0秒下层纸车沿独立纸轨前行；5.0至5.8秒两侧各自停稳；5.8至7秒锁定。中央隔板全程存在，禁止上下路径连通、电脑控制下方纸车、两者合体或新增结论牌。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B05",
+      "spokenLine": "机器干重复的事，\n人只干：决策、判断、资源、服务、经营！",
+      "coreMeaning": "重复任务进入独立处理轨，人的决策、判断、资源组织、服务和经营保持在主工作台。",
+      "title": "人的工作不能消失",
+      "archetype": "complex-explanation",
+      "durationSeconds": 7,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "决策工位",
+          "material": "左侧靛蓝双路选择槽和暖白刚性拨片",
+          "depth": 2
+        },
+        {
+          "id": "G2",
+          "name": "判断工位",
+          "material": "后侧灰绿对照纸样和检视支架",
+          "depth": 3
+        },
+        {
+          "id": "G3",
+          "name": "资源连接",
+          "material": "前景棉线调度桥、三种无字物件、独立重复任务短轨",
+          "depth": 1
+        },
+        {
+          "id": "G4",
+          "name": "服务工位",
+          "material": "右侧两张暖白椅子与纸雕交接台",
+          "depth": 2
+        },
+        {
+          "id": "G5",
+          "name": "经营工位",
+          "material": "中央暖白无脸纸偶、工作台和无字记录册",
+          "depth": 4
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "决策",
+          "groupId": "G1",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "判断",
+          "groupId": "G2",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "服务",
+          "groupId": "G4",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "经营",
+          "groupId": "G5",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "V1",
+          "label": "决策工位",
+          "groupId": "G1",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V2",
+          "label": "判断工位",
+          "groupId": "G2",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V3",
+          "label": "资源连接",
+          "groupId": "G3",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V4",
+          "label": "服务工位",
+          "groupId": "G4",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V5",
+          "label": "经营工位",
+          "groupId": "G5",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "subject": "G1",
+          "action": "左侧拨片把一张无字备选片送入选定槽口",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N1"
+          ]
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "subject": "G2",
+          "action": "后侧对照纸样滑到检视支架下并列对齐",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N2"
+          ]
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "subject": "G3",
+          "action": "前景相同任务薄片进入独立短轨，三条棉线连到人的工作台",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": []
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "subject": "G4",
+          "action": "右侧一张无字交接片在双椅之间的交接台上移交",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N3"
+          ]
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "subject": "G5",
+          "action": "中央记录册翻开无字页面，纸偶保持原位",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N4"
+          ]
+        },
+        {
+          "id": "S6",
+          "order": 6,
+          "subject": "G5",
+          "action": "人的工作台与重复任务轨分别停稳",
+          "sfxRole": "completion-hold-no-new-sound",
+          "landingNodeIds": []
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "决策",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "enterStageId": "S1",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.06,
+              0.34
+            ],
+            [
+              0.24,
+              0.34
+            ],
+            [
+              0.24,
+              0.46
+            ],
+            [
+              0.06,
+              0.46
+            ]
+          ],
+          "maxChars": 2,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "判断",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "enterStageId": "S2",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.35,
+              0.15
+            ],
+            [
+              0.53,
+              0.15
+            ],
+            [
+              0.53,
+              0.27
+            ],
+            [
+              0.35,
+              0.27
+            ]
+          ],
+          "maxChars": 2,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "服务",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "enterStageId": "S4",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.72,
+              0.35
+            ],
+            [
+              0.9,
+              0.35
+            ],
+            [
+              0.9,
+              0.47
+            ],
+            [
+              0.72,
+              0.47
+            ]
+          ],
+          "maxChars": 2,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N4",
+          "text": "经营",
+          "groupId": "G5",
+          "surfaceId": "G5-rigid-label-card",
+          "enterStageId": "S5",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.42,
+              0.62
+            ],
+            [
+              0.61,
+              0.62
+            ],
+            [
+              0.61,
+              0.74
+            ],
+            [
+              0.42,
+              0.74
+            ]
+          ],
+          "maxChars": 2,
+          "persistence": "S5-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        }
+      ],
+      "screenTextPlan": [],
+      "labelBindingPolicy": {
+        "unlabeledObjectGroups": [
+          {
+            "groupId": "G3",
+            "reason": "资源用连接三种物件的棉线调度桥表达，重复任务用相同无字纸片的独立短轨表达；原词仍在口播字幕，不增加第五张牌。"
+          }
+        ]
+      },
+      "readableTextPolicy": {
+        "silentTruncationForbidden": true,
+        "slashMergeForbidden": true,
+        "maximumSimultaneousLabels": 4
+      },
+      "firstFrameState": {
+        "kind": "fully-arranged-scene-with-input-object-at-start",
+        "labelsPresentAtFrameZero": true,
+        "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+      },
+      "postShootCaveats": [
+        "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+        "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+      ],
+      "prompt": {
+        "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n顶视偏20度的中心放射纸艺工作台，中央无脸纸偶和经营台仍是主角。左侧选择槽、后侧对照支架、右侧双椅交接台通过前景棉线调度桥连接中央。前景左下还有只承接相同无字薄片的短轨，和人的工作台保持分区，不能让整个人或其工位滑走。四张空白牌逐一在选择槽、对照支架、双椅交接台和中央经营台正前方。棉线资源桥与重复任务短轨均没有额外牌。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+        "motion": "0至0.5秒保持首帧；0.5至1.5秒左侧刚性拨片选择一条槽口；1.5至2.5秒后侧两张无字纸样对齐比较；2.5至3.6秒前景相同任务薄片沿独立短轨滑走，棉线把资源物件留接在人工作台；3.6至4.7秒右侧交接台传递一张无字纸片；4.7至5.8秒中央记录册展开无字页；5.8至7秒保持。纸偶和四张中文牌始终保留，不能把人推离画面，也不能用成功标记替代经营。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+        "generatedReadableTextAllowed": false
+      }
+    },
+    {
+      "beatId": "B06",
+      "spokenLine": "你的门店获客、营销策划、视觉设计、流程简化、SOP搭建、数据复盘，所有问题，AI全部能解决。",
+      "coreMeaning": "只说明四类工作项目，不证明获客、盈利或所有问题均能解决。",
+      "title": "四类服务工作",
+      "archetype": "complex-explanation",
+      "durationSeconds": 6,
+      "objectGroups": [
+        {
+          "id": "G1",
+          "name": "营销策划",
+          "material": "左后方灰绿策划纸册和三条无字提纲纸条",
+          "depth": 3
+        },
+        {
+          "id": "G2",
+          "name": "视觉设计",
+          "material": "右后方暖白画板、三张纯色色样和靛蓝支脚",
+          "depth": 4
+        },
+        {
+          "id": "G3",
+          "name": "流程搭建",
+          "material": "左前方工业灰折页索引、阶梯槽与无字纸块",
+          "depth": 1
+        },
+        {
+          "id": "G4",
+          "name": "数据复盘",
+          "material": "右前方暖白记录册、两张无数字对照纸样",
+          "depth": 2
+        },
+        {
+          "id": "G5",
+          "name": "服务承托",
+          "material": "中部靛蓝瓦楞工具底座与横向纸梁",
+          "depth": 2
+        }
+      ],
+      "nodes": [
+        {
+          "id": "N1",
+          "label": "营销策划",
+          "groupId": "G1",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N2",
+          "label": "视觉设计",
+          "groupId": "G2",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N3",
+          "label": "SOP搭建",
+          "groupId": "G3",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "N4",
+          "label": "数据复盘",
+          "groupId": "G4",
+          "textVisibility": "paper-label"
+        },
+        {
+          "id": "V1",
+          "label": "营销策划",
+          "groupId": "G1",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V2",
+          "label": "视觉设计",
+          "groupId": "G2",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V3",
+          "label": "流程搭建",
+          "groupId": "G3",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V4",
+          "label": "数据复盘",
+          "groupId": "G4",
+          "textVisibility": "visual-only"
+        },
+        {
+          "id": "V5",
+          "label": "服务承托",
+          "groupId": "G5",
+          "textVisibility": "visual-only"
+        }
+      ],
+      "stages": [
+        {
+          "id": "S1",
+          "order": 1,
+          "subject": "G1",
+          "action": "三条无字提纲纸条插入策划纸册的三个浅槽",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N1"
+          ]
+        },
+        {
+          "id": "S2",
+          "order": 2,
+          "subject": "G2",
+          "action": "纯色色样依次叠入设计画板边框",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N2"
+          ]
+        },
+        {
+          "id": "S3",
+          "order": 3,
+          "subject": "G3",
+          "action": "无字底板折页展开，刚性流程标签不弯折",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": [
+            "N3"
+          ]
+        },
+        {
+          "id": "S4",
+          "order": 4,
+          "subject": "G4",
+          "action": "两张无字对照纸样滑入复盘册左右页",
+          "sfxRole": "paper-slot-click",
+          "landingNodeIds": [
+            "N4"
+          ]
+        },
+        {
+          "id": "S5",
+          "order": 5,
+          "subject": "G5",
+          "action": "中央横梁轻扣合四个工位",
+          "sfxRole": "paper-slide",
+          "landingNodeIds": []
+        },
+        {
+          "id": "S6",
+          "order": 6,
+          "subject": "G5",
+          "action": "四类服务物件锁定，保持无结果保证",
+          "sfxRole": "completion-hold-no-new-sound",
+          "landingNodeIds": []
+        }
+      ],
+      "textPlan": [
+        {
+          "nodeId": "N1",
+          "text": "营销策划",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "enterStageId": "S1",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.09,
+              0.2
+            ],
+            [
+              0.32,
+              0.2
+            ],
+            [
+              0.32,
+              0.31
+            ],
+            [
+              0.09,
+              0.31
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "视觉设计",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "enterStageId": "S2",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.61,
+              0.2
+            ],
+            [
+              0.84,
+              0.2
+            ],
+            [
+              0.84,
+              0.31
+            ],
+            [
+              0.61,
+              0.31
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "SOP搭建",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "enterStageId": "S3",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.09,
+              0.6
+            ],
+            [
+              0.32,
+              0.6
+            ],
+            [
+              0.32,
+              0.72
+            ],
+            [
+              0.09,
+              0.72
+            ]
+          ],
+          "maxChars": 5,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        },
+        {
+          "nodeId": "N4",
+          "text": "数据复盘",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "enterStageId": "S4",
+          "role": "diegetic-node-label",
+          "anchorQuad": [
+            [
+              0.61,
+              0.6
+            ],
+            [
+              0.84,
+              0.6
+            ],
+            [
+              0.84,
+              0.72
+            ],
+            [
+              0.61,
+              0.72
+            ]
+          ],
+          "maxChars": 4,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "stageOffsetFrames": 0,
+          "anchorCalibrationRequired": true
+        }
+      ],
+      "screenTextPlan": [],
+      "labelBindingPolicy": {
+        "unlabeledObjectGroups": [
+          {
+            "groupId": "G5",
+            "reason": "承托底座仅组织四个服务物件，不增加能力总包标题或第五张标签。"
+          }
+        ]
+      },
+      "readableTextPolicy": {
+        "silentTruncationForbidden": true,
+        "slashMergeForbidden": true,
+        "maximumSimultaneousLabels": 4
+      },
+      "firstFrameState": {
+        "kind": "fully-arranged-scene-with-input-object-at-start",
+        "labelsPresentAtFrameZero": true,
+        "stageIdsDescribeObjectActionLandingsNotProofOfFirstTextAppearance": true
+      },
+      "postShootCaveats": [
+        "首帧四张标签已存在，stage入场字段不能冒充文字首次出现的逐帧证据。正式重绑须按真实视频可见文字和实录复核。",
+        "本条为资产预制，时长不等于最终插片时窗；不得冻结末帧或拉伸视频凑口播时长。"
+      ],
+      "prompt": {
+        "firstFrame": "横向16:9，摄影级微缩纸艺定格场景，真实纤维卡纸、瓦楞纸切面、可见纸厚、棉线、柔和侧光与接触阴影。至少前景纸边、中景机构、后景承托三层互相遮挡。系列靛蓝、暖白、工业灰为主体，少量珊瑚红与灰绿区分功能，不做旧、不泛黄、不用霓虹。纸牌是独立硬质暖白矩形，正面近乎朝向镜头，留完整清洁书写区。全部物件须在画内，底部16%留给后续字幕，不摆关键物件。\n略高于桌面的斜俯视微缩工坊，四个不同大物件前后错层排列，不是平铺PPT卡片：左后策划纸册、右后设计画板、左前流程折页索引、右前复盘记录册。中间瓦楞横梁承托四个工位且有真实遮挡。画板只含纯色色样，纸册和纸样完全无图无字。四张空白牌逐一放在策划册下沿、画板底座、流程索引前沿、复盘册下沿，矩形正面留足中文空间。中间横梁没有牌，不出现订单、数字、效果章或产品Logo。\n本次只生成无字基础图，所有纸片表面均为纯空白，无图形、无印记；不画任何可读文字、数字、字母、Logo、水印或符号。严格只有四张目标空白标签牌，不能为无标签组补牌，也不能生成额外标题横幅。不能生成人类手、写实人物脸或真实软件界面。",
+        "motion": "0至0.4秒保持首帧；0.4至1.3秒左后提纲纸条依次插入策划册；1.3至2.2秒右后纯色色样滑入设计画板；2.2至3.1秒左前只有无字底板折页展开，中文牌保持刚性；3.1至4.1秒右前两张无字纸样进入复盘册；4.1至5.0秒中央承托横梁轻扣合；5.0至6秒保持。仅展示工作类别，不添加收入、客户量、增长图形或保证效果的任何新文字。\n严格以带字首帧为唯一身份、构图和材质基准，四张中文牌始终属于原物件，不重写文字，不添字、不漏字、不串牌。文字牌仅允许刚性小幅平移、抽屉式滑入或小角度扣合，不折叠、卷曲、拉伸、翻面或模糊中文；仅无字底板可以展开。不开新镜、不数字变焦、不旋转整场景。保留纸片摩擦、槽口轻碰、压合等同步原生拟音，不生成配音、音乐、字幕或屏幕浮字。末尾锁住完成关系至少1秒。",
+        "generatedReadableTextAllowed": false
+      }
+    }
+  ],
+  "realEvidenceAssignments": [],
+  "generatedVideoAssignments": [],
+  "nextGate": "completion-stills-and-local-candidate-preview"
+}
