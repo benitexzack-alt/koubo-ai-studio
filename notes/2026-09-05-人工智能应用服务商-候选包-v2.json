@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260904T181604Z-339e9da8",
+  "status": "discussion-only",
+  "public_copy_generated": false,
+  "research_context": {
+    "path": "/Users/pc/Documents/口播/workflow/koubo-research-contexts/task-20260904T181604Z-339e9da8-ai-service-provider-v2.json",
+    "sha256": "ef9e9982bfb533cef01ab3ce49ae2ac959c1d7e685402f385b3c2840d1d6f450"
+  },
+  "candidates": [
+    {
+      "id": "C1-service-screening",
+      "topic": "老板找AI服务商，先别看他会多少工具",
+      "real_scene": "一个服务商在会议室演示智能体。老板不问功能多不多，只追问：你先要我给什么资料，最后交回什么，员工谁来用，答错了谁管。对方答不完整，演示再顺也不能直接签。",
+      "audience_conflict": "本地老板想用AI，又看不出对方是在卖工具、卖演示，还是能接住一段真实业务。",
+      "original_judgment": "政策把咨询规划、交付实施、运营管理、安全治理写成四段工作；对老板而言，它们可以翻成四个验收问题。看不清这四件事，先不急着比较模型和报价。",
+      "evidence_gap": "四段服务和资源池数字需在成稿前重新核对工信部原通知；四问只是本账号的通俗验收尺子，不是官方模板，也没有真实客户验收数据。",
+      "source_ids": ["source:dd799ce7fc8ce0a2"],
+      "opcd_read_refs": [
+        {
+          "path": "01_项目实战/抖音知识中台/知识点库/知识-7664943450047892206-enterprise-ai-start-with-process.md",
+          "document_sha256": "9c1bb76fd7f2269f95f7dc42ed39783d1ad03dfe7a92344c0d3df24c6452ea5b",
+          "application": "把候选从泛泛的服务商评价，改成先找一段高耗时流程，再让服务商说明它如何被接入、交付和验收；不把该知识点当作某企业一定适配AI的证据。"
+        }
+      ],
+      "hook_options": [
+        {
+          "id": "C1-H1",
+          "text": "老板找AI服务商，先别看他会多少工具，先让他把这四句话答明白。",
+          "concrete_anchor": "一次服务商演示后的四个追问",
+          "promise": "给老板一把能带进沟通现场的筛选尺子"
+        },
+        {
+          "id": "C1-H2",
+          "text": "有些AI方案，PPT翻得很漂亮，老板一问谁来管、错了谁负责，现场就没话了。",
+          "concrete_anchor": "会议室演示与责任追问的反差",
+          "promise": "解释演示和交付之间差在哪里"
+        },
+        {
+          "id": "C1-H3",
+          "text": "别急着问一套AI多少钱。你先看对方愿不愿意把交付这件事说清楚。",
+          "concrete_anchor": "老板开口问价的常见场景",
+          "promise": "把比价前最该问的事情讲明白"
+        }
+      ],
+      "outline_spine": [
+        {"function": "hook", "statement": "从一场看似顺利、但经不起追问的AI演示切入。"},
+        {"function": "correction", "statement": "纠正只看工具、模型和报价的比较方式。"},
+        {"function": "mechanism", "statement": "把咨询、交付、运营、安全翻成业务、交付物、日常负责人、资料与错误四个问题。"},
+        {"function": "evidence", "statement": "说明这四段工作来自工信部对人工智能应用服务商的定义，资源池数量不等于市场名额。"},
+        {"function": "boundary", "statement": "四问不是让老板当天决定买不买，也不是对任何服务效果的保证。"},
+        {"function": "action", "statement": "让老板拿出一段最耗人的流程，把四个问题写在需求单上再谈方案。"},
+        {"function": "callback", "statement": "回到开头：演示会结束，责任不会；答案答不清，先别把它当成能落地的方案。"}
+      ],
+      "long_term_trust_path": "让本地企业先记住超哥讲的是业务、验收和责任，而不是替任何工具站台；为后续流程诊断、知识库和陪跑建立低承诺的信任入口。",
+      "public_value_contract": {
+        "external_audience": "正在考虑AI工具、培训或服务的兰州及甘肃中小企业老板",
+        "present_situation": "看了很多演示和报价，仍不清楚方案交到公司后谁来接、怎么验收",
+        "viewer_decision": "先用四个问题筛掉讲不清输入、输出、日常责任和风险边界的方案",
+        "account_strategy_link": "把AI从概念翻译为企业现场可检查的工作",
+        "internal_process_is_not_topic": true
+      },
+      "non_claims": [
+        "不承诺四问能选出唯一正确的服务商。",
+        "不把政策资源池数字说成订单、名额或资格。",
+        "不把外部案例和能力说成超哥已完成的企业交付。"
+      ],
+      "manual_selection": {"status": "pending-user-selection"}
+    },
+    {
+      "id": "C2-demo-to-use",
+      "topic": "一场AI演示很顺，为什么回公司三天就没人用了",
+      "real_scene": "老板在现场看见AI能自动整理资料、写回复；回到公司，资料没人持续补，员工不知道遇到例外找谁，结果三天后页面还在，人已经不用了。",
+      "audience_conflict": "老板以为自己买的是一个现成功能，员工以为这是额外负担，服务商只交了一个能打开的界面。",
+      "original_judgment": "很多项目不是AI当场不能做，而是没有把它接到资料、人员和异常处理上。演示的终点是点击成功，企业使用的起点才是这三件事。",
+      "evidence_gap": "这是根据政策四段服务和知识中台方法线索提出的解释，不等同于某一客户项目复盘；没有本地企业连续使用数据，不能说三天是普遍规律。",
+      "source_ids": ["source:dd799ce7fc8ce0a2"],
+      "opcd_read_refs": [
+        {
+          "path": "01_项目实战/抖音知识中台/知识点库/知识-7664943450047892206-enterprise-ai-start-with-process.md",
+          "document_sha256": "9c1bb76fd7f2269f95f7dc42ed39783d1ad03dfe7a92344c0d3df24c6452ea5b",
+          "application": "用输入、等待、重复、错误、交接和结果六个观察点，把“员工不用”从一句抱怨拆成可排查的现场问题；不把它包装成已验证诊断体系。"
+        }
+      ],
+      "hook_options": [
+        {
+          "id": "C2-H1",
+          "text": "有些AI方案，会议室里一演示很厉害，回到公司三天就没人碰了。",
+          "concrete_anchor": "演示成功与实际弃用的反差",
+          "promise": "把AI项目容易断在什么地方讲具体"
+        },
+        {
+          "id": "C2-H2",
+          "text": "AI项目最尴尬的一刻，不是它答错，是老板问：这个东西以后谁管？",
+          "concrete_anchor": "老板对日常归属的追问",
+          "promise": "让观众看懂运营责任为什么不能等上线后再补"
+        },
+        {
+          "id": "C2-H3",
+          "text": "一套AI能不能用下去，不看演示那十分钟，要看第二天谁还在用。",
+          "concrete_anchor": "演示当天和第二天实际工作之间的切换",
+          "promise": "给企业一套上线前就能检查的使用条件"
+        }
+      ],
+      "outline_spine": [
+        {"function": "hook", "statement": "展示演示当天热闹、回到公司无人继续使用的常见反差。"},
+        {"function": "correction", "statement": "解释问题不只在模型回答对不对，还在它有没有进入真实工作的资料和责任链。"},
+        {"function": "mechanism", "statement": "按资料从哪来、谁每天用、碰到例外怎么转人三处拆开讲。"},
+        {"function": "evidence", "statement": "用政策中的交付实施、运营管理、安全治理说明，服务角色本来不止一次部署。"},
+        {"function": "boundary", "statement": "不是让企业因为怕麻烦就不用AI，也不宣称任何一套流程都能自动跑。"},
+        {"function": "action", "statement": "建议老板在上线前指定一个真实负责人，并把一类例外问题先写出来。"},
+        {"function": "callback", "statement": "回扣到开头：第二天还有人用，才是演示真正开始兑现的时候。"}
+      ],
+      "long_term_trust_path": "把账号定位为能看见企业AI在使用阶段卡点的人，避免把服务说成一次交付就结束，为后续陪跑和流程改造建立可信预期。",
+      "public_value_contract": {
+        "external_audience": "已经买过、正在试用或准备采购AI工具的本地企业负责人和一线管理者",
+        "present_situation": "现场演示顺利，但担心员工不用、资料不全或出错没人接",
+        "viewer_decision": "在方案开始前确认资料来源、日常负责人和异常转人工方式",
+        "account_strategy_link": "用真实使用条件解释企业AI落地，而非把工具功能当作终点",
+        "internal_process_is_not_topic": true
+      },
+      "non_claims": [
+        "不宣称所有AI项目三天后都会弃用。",
+        "不把“有人负责”简化为单个人能解决全部技术和合规问题。",
+        "不承诺建立负责人就一定提升效率或回本。"
+      ],
+      "manual_selection": {"status": "pending-user-selection"}
+    },
+    {
+      "id": "C3-first-process",
+      "topic": "企业第一单AI，别从一套大系统开始",
+      "real_scene": "老板一开口就问：给我公司整套AI要多少钱？但他自己还没说清员工每天最费时间的是整理报价、回重复咨询，还是把资料来回找。项目一开始就被问大了。",
+      "audience_conflict": "企业想一次解决所有问题，服务商也容易把方案讲得很大；双方都没先确认哪一段工作最适合做一个可验收的小尝试。",
+      "original_judgment": "AI第一步不必从大系统开始，而应先找一段高频、耗时、边界能说清的工作。把输入、重复、交接、错误和结果走一遍，才知道AI该不该进来、该进到哪。",
+      "evidence_gap": "“高频、急需、可复用”来自政策方向，但不证明某流程低成本或必然适配；候选不提供工具选型、报价或改造效果承诺。",
+      "source_ids": ["source:dd799ce7fc8ce0a2"],
+      "opcd_read_refs": [
+        {
+          "path": "01_项目实战/抖音知识中台/知识点库/知识-7664943450047892206-enterprise-ai-start-with-process.md",
+          "document_sha256": "9c1bb76fd7f2269f95f7dc42ed39783d1ad03dfe7a92344c0d3df24c6452ea5b",
+          "application": "将行动建议固定为一次流程走查：记录输入、等待、重复、错误、交接和结果，避免把“先找流程”讲成一句空的经营口号。"
+        }
+      ],
+      "hook_options": [
+        {
+          "id": "C3-H1",
+          "text": "很多老板一上来就问：给我公司整套AI要多少钱？这句话，往往把项目问大了。",
+          "concrete_anchor": "企业老板第一次问AI报价",
+          "promise": "说明第一步为什么不该先从大系统和总报价开始"
+        },
+        {
+          "id": "C3-H2",
+          "text": "你公司最该先做的AI，可能不是知识库，也不是智能体，是一件员工每天都在反复干的事。",
+          "concrete_anchor": "员工每日重复的报价、咨询或资料整理",
+          "promise": "给老板一个找到AI第一步的具体方法"
+        },
+        {
+          "id": "C3-H3",
+          "text": "别急着给公司上AI，先把最浪费时间的那段工作翻出来。",
+          "concrete_anchor": "一次真实流程走查",
+          "promise": "用六个现场观察点判断从哪里试起"
+        }
+      ],
+      "outline_spine": [
+        {"function": "hook", "statement": "从“整套AI多少钱”这个常见开场，指出项目被问大后的失焦。"},
+        {"function": "correction", "statement": "不否定大系统，但先解释第一步不等于一次性上全套。"},
+        {"function": "mechanism", "statement": "用输入、等待、重复、错误、交接、结果，带老板走查一段日常工作。"},
+        {"function": "evidence", "statement": "结合政策对高频、急需、可复用服务的鼓励，说明为什么要先把业务边界说清。"},
+        {"function": "boundary", "statement": "流程耗时不等于立刻适合自动化，仍要看授权、数据、人工确认和成本。"},
+        {"function": "action", "statement": "今天只选一段工作，写出六个观察点后再约服务商谈小范围方案。"},
+        {"function": "callback", "statement": "回到开头：不是先买一套大AI，而是先把一段真实工作做明白。"}
+      ],
+      "long_term_trust_path": "以“先走查业务再谈工具”为长期内容入口，便于后续自然承接企业流程诊断、知识库、培训和小范围陪跑，而不承诺一开始做全案。",
+      "public_value_contract": {
+        "external_audience": "刚开始考虑AI、但尚未形成明确需求的本地小微企业老板",
+        "present_situation": "对AI有兴趣，却只有“做一套”“上一个知识库”这类大而空的需求",
+        "viewer_decision": "先选一段高频工作完成一次流程走查，再判断是否值得进入AI试验",
+        "account_strategy_link": "把AI服务前的业务拆解能力变成看得见、能执行的内容价值",
+        "internal_process_is_not_topic": true
+      },
+      "non_claims": [
+        "不承诺每家企业都应从同一种流程开始。",
+        "不把流程走查当成技术、合规或商业可行性的最终结论。",
+        "不承诺小范围试验一定能形成长期项目。"
+      ],
+      "manual_selection": {"status": "pending-user-selection"}
+    }
+  ]
+}
