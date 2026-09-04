@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260904T174637Z-b9fdd646",
+  "status": "passed",
+  "reviewed_at": "2026-09-05T02:03:28+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-09-05-人工智能应用服务商-正式口播稿-v1.md",
+    "sha256": "b9006f4e91a1de446316cf34211a2610beacea785dcc2199a34a3989b6b87ecb"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "开头先用观众会误听的“2000家”进入，立即纠正为资源池目标，不先念文件背景。四段官方定义紧接咨询、报价、售后这一假设场景，不以政策名词占住正文。边界分散在“不是名额”“不是所有项目都便宜”“哪些资料能放”这些判断里，未把事实锁搬进正文。删除“很多人”的模糊范围，改为“我刷到有些解读”；将“第一步不是打开模型”改为更自然的“先别急着打开哪个模型”。“小快轻准”只说明服务应被标准化、模块化，不再重复账号已冻结的“小任务打法”。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "工信部最近这份文件，我刷到有些解读讲成了：AI 服务商要爆发，2000 个名额来了。",
+        "risk_level": "medium",
+        "reason": "“爆发、名额”容易把观众带到参考视频的情绪里；若纠偏不够快，会像在复述营销话术。",
+        "candidates": {
+          "conservative": "工信部最近这份文件，有些解读把重点放到了“2000家”上。",
+          "direct": "工信部这份文件里有个数字，很多人听成了创业名额。",
+          "vivid": "一看到“2000家”，有人已经开始算：这是不是轮到我了？"
+        },
+        "fact_difference": "三种候选都只指向参考视频中已出现的误读；不新增市场热度、人数、订单或收益事实。当前版本紧接“这个听法不对”和资源池目标解释。",
+        "recommendation": "保留当前版本。它有具体冲突，且第二个停顿后立即完成纠偏；录制时不要把“爆发”加重到像认同该判断。"
+      },
+      {
+        "original": "你要先问：这些资料从哪儿来？AI 整理完，最后交回来的是一张什么表，还是一份什么提醒？客户问到它答不了的地方，谁接过去？员工每天谁看？哪些资料能放进去，出了错谁来停？",
+        "risk_level": "medium",
+        "reason": "这段是核心获得感，但单句问题密度高，连续读可能让老板只记住“资料”两个字。",
+        "candidates": {
+          "conservative": "资料从哪儿来？AI 最后交什么？谁每天看？出了错谁来停？",
+          "direct": "先把资料、交付物、负责人和错误处理问清，再谈工具。",
+          "vivid": "别先看它会不会答，先看资料往哪儿进、结果交给谁、说错了谁按停。"
+        },
+        "fact_difference": "三种候选都保留官方四段服务对应的检查功能，不新增企业案例、功能效果或安全结论。",
+        "recommendation": "保留当前版本的完整问题，但真人朗读时按四个短停顿处理；若仍卡顿，再改用保守版。"
+      }
+    ],
+    "no_high_risk_reason": "政策日期、资源池目标、官方定义和安全要求均已由一手来源锁定；没有将资源池、人才方向或小快轻准推导为认证、补贴、岗位和收益。"
+  },
+  "fact_changes": {
+    "new_facts": ["补入工信部 2026 年 8 月 31 日通知中资源池目标、四段服务定义、小快轻准方向和全流程安全合规要求。"],
+    "removed_facts": ["删除参考视频中资源池缺口、创业红利、认证名额、固定准入门槛、清退机制、就业爆发和低成本低风险承诺。"],
+    "wording_strength_changes": ["将“很多人讲成”收紧为“我刷到有些解读讲成”；将“行业变天”改为文件对服务角色的具体定义；将通俗场景标注为假设而非客户案例。"],
+    "pending_user_confirmations": ["用户对当前文稿的自然语言确认。", "用户本人对当前文稿的真人朗读确认。", "第二个风险节点的长问题串是否需要换成保守版。"]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  }
+}

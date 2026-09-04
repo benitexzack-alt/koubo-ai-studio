@@ -1,0 +1,215 @@
+{
+  "schema_version": 6,
+  "task_id": "task-20260904T174637Z-b9fdd646",
+  "target_stage": "draft",
+  "required_rules": [
+    {"path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md", "read": true},
+    {"path": "/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md", "read": true},
+    {"path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md", "read": true},
+    {"path": "/Users/pc/Documents/口播/knowledge/15-抖音精选内容质量验收.md", "read": true}
+  ],
+  "sources": [
+    {
+      "id": "source:reference-video",
+      "title": "用户提供的《人工智能应用服务商培育专项行动》短视频参考",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": ["viewpoint", "talking-structure"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-09-05-人工智能应用服务商-参考视频拆解与来源记录-v1.md",
+      "verification_status": "完整视频已作本地 OCR 叙事核对；二次政策表达已由一手通知纠偏。",
+      "canonical_ref": "本地用户授权素材：/Users/pc/Downloads/oYAQfdIgNWAF0EBIEo93omfwACDkABAIHATqKw.MP4，SHA-256 f7f6a219db85fc2f636279ee9d6a63cafe2d7a86f5dff88279b611941366af8d",
+      "evidence_ids": ["evidence:user-video:20260905"]
+    },
+    {
+      "id": "source:miit-notice",
+      "title": "工业和信息化部办公厅关于开展人工智能应用服务商培育专项行动的通知",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-09-05-人工智能应用服务商-事实证据表-v1.md",
+      "verification_status": "已核对工信部 2026-08-31 发布原文中定义、资源池目标、服务供给、安全治理和人才服务条款。",
+      "canonical_ref": "https://www.miit.gov.cn/zwgk/zcwj/wjfb/tz/art/2026/art_6fbc038bf15c445ab53b2a94a3f9d4e4.html",
+      "evidence_ids": ["evidence:miit:20260831"]
+    },
+    {
+      "id": "source:state-council-ai-plus",
+      "title": "国务院关于深入实施“人工智能+”行动的意见",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-09-05-人工智能应用服务商-事实证据表-v1.md",
+      "verification_status": "只用于说明国家层面已提出模型即服务、智能体即服务和应用服务链方向。",
+      "canonical_ref": "https://www.miit.gov.cn/xwfb/szyw/art/2025/art_f8bd63905b384841a84e643c1b9455c7.html",
+      "evidence_ids": ["evidence:state-council-ai-plus:202508"]
+    },
+    {
+      "id": "source:gansu-ai-plus",
+      "title": "甘肃省人民政府关于印发深入实施“人工智能+”行动方案的通知",
+      "completeness": "primary-source",
+      "acquisition": "official-page",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-09-05-人工智能应用服务商-事实证据表-v1.md",
+      "verification_status": "只作为本地服务对象的背景，不在正文夸大本地成熟度或支持资格。",
+      "canonical_ref": "https://zwfw.gansu.gov.cn/guanghe/sbqd/gg/art/2026/art_69adfdba9218485b82cdd38c4336e0ff.html",
+      "evidence_ids": ["evidence:gansu-ai-plus:20260112"]
+    },
+    {
+      "id": "source:source-essence",
+      "title": "人工智能应用服务商源头精髓卡",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-09-05-人工智能应用服务商-源头精髓卡-v1.json",
+      "verification_status": "八个必须保留认知节点、纠偏账本和长提纲映射已经机器校验为 ready-for-draft。",
+      "canonical_ref": "本条任务本地审计文件。",
+      "evidence_ids": ["evidence:source-essence:task-20260904T174637Z-b9fdd646"]
+    },
+    {
+      "id": "source:account-preflight",
+      "title": "超哥AI创业记任务级账号数据回执",
+      "completeness": "complete",
+      "acquisition": "local-file",
+      "intended_uses": ["draft-evidence"],
+      "content_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260904T174637Z-b9fdd646.json",
+      "verification_status": "状态 ready-current，覆盖 36 条公开作品、89 个已接纳快照和最近六条。",
+      "canonical_ref": "本条任务级不可变本地回执。",
+      "evidence_ids": ["evidence:account:task-20260904T174637Z-b9fdd646"]
+    }
+  ],
+  "topic_authorization": {
+    "status": "user-selected",
+    "selected_by": "user",
+    "selection_mode": "explicit-topic-request",
+    "selected_topic": "工信部这份人工智能应用服务商通知真正划线的，不是谁会演示工具，而是谁能把咨询、交付、运营和安全接进企业现场并负责。",
+    "user_instruction": "拆解用户提供的视频，搜索相关新闻、信源、信息，结合超哥AI创业记现有视频风格、内容和AI事业主线，形成自己的口播文案。",
+    "source_ref": "conversation:2026-09-05:user-request-ai-application-service-provider-script",
+    "confirmed_at": "2026-09-05T00:00:00+08:00",
+    "candidate_only": false
+  },
+  "recent_six": [
+    {"title": "会做AI产品，为什么还是难变现", "date": "2026-08-30", "audience_problem": "会做 AI 产品却难以获得信任和持续交付", "main_claim": "技术只是入门，理解需求、信任和交付能力更难复制", "claim_id": "claim:ai-product:trust-and-delivery", "evidence": "用户正式口播稿", "evidence_ids": ["evidence:recent:20260830"], "deliverable": "判断曝光、信任或交付的卡点", "cta": "定位当前最卡的一段", "content_path": "/Users/pc/Documents/口播/notes/2026-08-26-AI做得出不等于接得住-正式口播稿-v1.md", "sha256": "b6ae041b122caebfdc957d6a5c0b63ff477eb0d3c04e760cab3239b4e290758e", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "超级个体，不是AI造出来的", "date": "2026-08-29", "audience_problem": "普通人误把 AI 工具等同于超级个体能力", "main_claim": "AI 放大综合适配、陌生领域破局和资源组织，而不自动制造能力", "claim_id": "claim:super-individual:ai-amplifies-existing-capability", "evidence": "用户实录词序列", "evidence_ids": ["evidence:recent:20260829"], "deliverable": "识别综合适配、陌生破局和资源组织能力", "cta": "判断最需补的能力", "content_path": "/Users/pc/Documents/口播/edit/20260828_super_individual/06_转写与字幕/超级个体_实录词序列.v1.json", "sha256": "0f5f5c393085c3c13f7eccfffed3439a7e402c67a1b617728794c471e88d5895", "content_start_marker": "我想跟大家聊一个，所有人都在听，但90%的人都理解错误的词，超级个体，", "content_end_marker": "我是超哥在兰州AA创业"},
+    {"title": "企业AI报价差这么大，差的不是工具", "date": "2026-08-28", "audience_problem": "老板看不懂企业 AI 报价与信息链路", "main_claim": "报价差异背后是资料、判断、执行和复盘能否接成可验收工作", "claim_id": "claim:enterprise-ai:information-chain-and-delivery", "evidence": "用户确认候选正文", "evidence_ids": ["evidence:recent:20260828"], "deliverable": "区分工具动作与信息链路", "cta": "领取信息获取工具包", "content_path": "/Users/pc/Documents/口播/notes/2026-08-26-企业AI报价与信息链路-可拍候选-v1.md", "sha256": "c491964b87284c9d815bc98917d2c3e42bd995e0cd48ebc75fa340a1d1e272bb", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "AI就算推荐了你，客户为什么还会走丢", "date": "2026-08-26", "audience_problem": "本地商家被 AI 推荐后如何接住客户", "main_claim": "GEO 让 AI 识别真实信息，AAO 把客户接到地图、预约、点餐或人工服务", "claim_id": "claim:local-business:geo-to-service-entry", "evidence": "用户正式口播稿", "evidence_ids": ["evidence:recent:20260826"], "deliverable": "检查商户事实与下一步入口", "cta": "领取讲解课件", "content_path": "/Users/pc/Documents/口播/notes/2026-08-22-GEO-AAO-从被看见到能接住客人-正式口播稿-v1.md", "sha256": "e4b2e2da746bb7e613d02c3cc3d6373ecfac6ff40ef73d65590371d2f811e061", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "AI使用6段位，自测你在哪一层", "date": "2026-08-22", "audience_problem": "普通人无法判断 AI 已替自己走到哪一段工作", "main_claim": "AI 能力不看工具数量，看 AI 替人走到工作、流程和系统的哪一段", "claim_id": "claim:ai-use:work-segment-map", "evidence": "用户最终锁定稿", "evidence_ids": ["evidence:recent:20260822"], "deliverable": "六层定位", "cta": "找到下一层", "content_path": "/Users/pc/Documents/口播/notes/2026-08-20-六层AI能力地图-用户最终锁定稿-v3.md", "sha256": "70900216007158a9f50c3f1a6ded5997b855e200a53364343f42d5aea63d425a", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"},
+    {"title": "学AI真能多挣钱吗", "date": "2026-08-20", "audience_problem": "普通人判断 AI 学习投入是否值得", "main_claim": "有工作和准备全职进入 AI 的人不该走同一路，先让 AI 解决真实工作再决定投入", "claim_id": "claim:learn-ai:real-work-before-investment", "evidence": "用户最终口播稿", "evidence_ids": ["evidence:recent:20260820"], "deliverable": "学习投入判断", "cta": "先解决一件真实工作", "content_path": "/Users/pc/Documents/口播/notes/2026-08-19-学AI到底能不能多挣一点钱-用户最终口播稿-v1.md", "sha256": "994f569ba7566b3805126cb4b2205fc20e5e978b9dbb72692fd428390cc7f20d", "content_start_marker": "<!-- CONTENT_START -->", "content_end_marker": "<!-- CONTENT_END -->"}
+  ],
+  "brief_contract": {
+    "user_goal": "把用户提供的视频与工信部等一手信源拆开后，做一条面向本地老板和准备进入 AI 服务的人、能听懂也能实际判断的政策解读口播。",
+    "reference_role": "参考视频只提供新闻钩子、政策解释顺序和“把抽象角色落到企业现场”的结构功能。",
+    "reference_forbidden_role": "不得照搬其夸张钩子、创业红利、认证名额、岗位爆发、补贴和行业清退结论。",
+    "required_arc": ["先纠正“2000家”被听成创业名额或市场缺口的误会。", "用官方四段定义说明应用服务商到底干什么。", "用一个假设的商贸公司咨询、报价、售后场景，把四段服务翻成老板可检查的问题。", "说明小快轻准与安全要求的真实边界。", "分别给老板和准备入行的人留下一个动作，回扣“谁能负责”。"],
+    "forbidden_reframes": ["不得改成泛泛的 AI 创业机会或政策红利解读。", "不得改成工具选型、补贴申报、AI 服务商认证或就业推荐。", "不得用本地产业新闻替代企业现场的解释。"],
+    "semantic_contract": {
+      "audience_conflict": "老板刷到“2000家应用服务商”后，担心自己错过政策，又分不清该找人做服务、买工具，还是先不动。",
+      "core_judgment": "工信部这份人工智能应用服务商通知真正划线的，不是谁会演示工具，而是谁能把咨询、交付、运营和安全接进企业现场并负责。",
+      "training_interpretation": "政策把应用服务的四段工作写清楚，帮助企业用更具体的问题筛选服务，也让准备入行的人看清能力不是工具清单。",
+      "ordinary_person_value": "老板能拿走四个筛选问题；准备入行的人能把学习目标从会演示，换成理解行业、交付、运营和安全。",
+      "chronology_is_not_main_arc": true,
+      "material_role_map": [
+        {"material": "用户提供完整参考视频", "role": "hook-evidence", "supports": "说明市场上对政策的兴奋和误读如何出现。"},
+        {"material": "工信部原文", "role": "mechanism-evidence", "supports": "定义、资源池目标、小快轻准、安全和人才要求。"},
+        {"material": "甘肃人工智能+方案", "role": "local-proof", "supports": "账号立足本地、把场景应用作为落点的背景；不在正文夸大。"},
+        {"material": "源头精髓卡", "role": "boundary", "supports": "保留结构功能并排除参考视频的不当推导。"}
+      ],
+      "alignment_refs": {
+        "audience_conflict": "有人一看到“到 2026 年底资源池服务商超 2000 家”，马上觉得，这是两千个创业名额。",
+        "core_judgment": "它真正划线的，不是谁会演示几个工具，而是谁能把咨询、交付、运营和安全，接进企业现场，还愿意负责。",
+        "training_interpretation": "它把企业用 AI 时最容易被跳过去的四段活，写到了一个服务商该干什么里面。",
+        "ordinary_person_value": "你就先问四句：你先问不问我的业务？最后交给我什么？谁天天管？资料和错误怎么处理？"
+      }
+    },
+    "alignment_evidence": "正文将按上述四段连续短句兑现：先纠正数字，再定义角色，再落到假设业务场景，最后交付四问。",
+    "status": "locked"
+  },
+  "topic": {
+    "audience": "兰州及甘肃本地中小企业老板、创业者，以及想进入 AI 服务的人",
+    "problem": "看见政策数字和 AI 服务商热度后，不知道这和自己的企业、学习或转行有什么真实关系，也不会筛选服务。",
+    "desired_change": "观众能把政策从“机会口号”变成四个验收问题，并知道自己今天先检查什么。",
+    "novel_claim": "工信部这份人工智能应用服务商通知真正划线的，不是谁会演示工具，而是谁能把咨询、交付、运营和安全接进企业现场并负责。",
+    "claim_id": "claim:ai-service-provider:four-service-responsibilities",
+    "primary_evidence_ids": ["evidence:miit:20260831"],
+    "difference_from_recent": "最近六条讲过做得出和接得住、AI 报价、GEO 入口与 AI 使用层级。本条新增的不是再次说“要交付”，而是用刚发布的政策定义把服务拆成咨询规划、交付实施、运营管理、安全治理四段，并把这四段变成老板筛服务的四个问题。删掉政策后，四问仍可用；政策为这把尺子的来源和角色边界提供了一手依据。",
+    "evidence_proves": "工信部通知证明四段定义、资源池时间目标、小快轻准服务方向、全流程安全合规要求和复合型人才方向。",
+    "evidence_does_not_prove": "不证明资源池等于缺口、认证、订单或补贴，不证明服务必然成功、任何企业都适合、普通人必然就业或获得收入。",
+    "audience_takeaway": "老板用业务、交付物、日常运营、安全和错误处理四个问题筛服务；准备入行的人用四段服务检查自己缺哪段能力。",
+    "boundary": "不构成政府资格认定、补贴申报、服务商推荐、项目报价、数据安全、工具选型、就业或收入建议。",
+    "delete_candidates": ["删除参考视频中的红利、缺口、爆发、国家队等话术。", "删除不必要的政策条款、行业名单和补贴信息。", "删除以本地项目或客户效果做背书的未经授权案例。"]
+  },
+  "frozen_topic_hits": [],
+  "audience_fit": {
+    "account_stage": "试验",
+    "speaker_position": "兰州本地 AI 实践者和复杂信息翻译者，解释公开政策与企业现场的关系，不冒充政策制定者、认证机构、合规专家或成熟 AI 服务商。",
+    "first_20s_connection": "老板刷到“2000家服务商”后，分不清这是创业名额，还是自己要立刻花钱上 AI 的信号。",
+    "high_level_material_role": "evidence",
+    "ordinary_scenes": ["商贸公司想把客户咨询、报价资料和售后问题先理顺。", "门店想找人把重复咨询交给 AI，却担心说错话和资料外发。", "准备转行的人会几个工具，但说不清怎么到企业现场做服务。"],
+    "audience_gain": "能用四问判断服务、定位自己需要补的能力，而不是被政策数字推着选工具或转行。",
+    "authority_boundary": "不对单家企业的适配、价格、数据安全、补贴资格、岗位收入或项目结果下结论。",
+    "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "account_data_preflight": {"receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260904T174637Z-b9fdd646.json", "receipt_sha256": "568ff91f73cb295c3d6496a4e8c0c947a6e197ce043b085f81b48c7f586d8472", "read": true},
+    "account_data_application": {
+      "account_baseline_evidence": {"metric": "weightedMetrics.fiveSecondCompletionRate", "value": 33.6201, "use": "把全账号五秒完播基线作为开头观察参照，所以前五秒先纠正“2000家”听法，不用政策背景起稿。"},
+      "recent_work_evidence": {"video_key": "f755378aaad18ec9f9b906b7", "metric": "metrics.fiveSecondCompletionRate", "value": 37.16, "use": "8月30日的“会做AI产品”开头较早交代了问题；本条继续让老板的具体误会在第一句出现，但不重复其信任变现结论。"},
+      "planned_change": "前五秒给出“2000家不是创业名额”的答案，15秒内给出官方四段定义，30秒内让老板拿到第一把筛选尺子，再进入政策和场景解释。",
+      "causal_claim": "human-confirmed-lesson-only"
+    },
+    "learning_card_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+    "learning_card_sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "newer_content_acknowledged": true,
+    "newer_content_ids": ["2026-08-11-training-camp-episode-1", "2026-08-12-ai-best-worst", "2026-08-14-training-camp-episode-2", "2026-08-22-ai-levels", "2026-08-26-geo-aao", "2026-08-28-enterprise-ai-quote", "2026-08-29-super-individual", "2026-08-30-ai-product-ip", "2026-09-02-ulanqab-compute"],
+    "newer_content_metric_status": "学习卡快照后的作品由当前任务回执覆盖；本条只把它们用于表达去重和开头实验，不把单条数据当作稳定平台规律。",
+    "applied_lesson_ids": ["lesson:opening:title-answer-before-background", "lesson:hook:concrete-conflict-scene-object", "lesson:duration:value-order-before-shortening"],
+    "opening_plan": {"answer_or_conflict_by_second": 3, "proof_or_real_scene_by_second": 10, "audience_relevance_by_second": 15, "first_viewer_value_by_second": 24, "title_answer_by_second": 8, "delayed_payoff_risk_checked": true},
+    "duration_plan": {"planned_seconds": 265, "single_core_problem": "这份应用服务商通知对老板找服务、普通人准备入行到底新增了什么真实判断。", "justification": "需要先纠正资源池数字的误读，再解释四段官方定义，用一个假设业务现场把它讲明白，最后分别给老板和准备入行的人留下动作；压成一分钟会只剩政策口号。", "evidence_based_justification": true},
+    "metric_plan": {"primary_metric": "five_second_completion_rate", "secondary_metrics": ["average_watch_seconds", "profile_visits"], "observation_windows": ["early-within-3h", "24h", "72h", "7d"], "hypothesis": "把“2000家不是创业名额”和四段服务放在开头，比先播报政策背景更能让本地老板认出自己；若四个窗口中开头停留与有效业务问题讨论都没有改善，应放弃这一开头假设。", "early_vs_mature_windows_acknowledged": true}
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {"target": "primary", "script_evidence": "正文会把咨询、交付、运营、安全翻成老板四问和从业者能力检查。", "viewer_test": "老板能复述四问，准备入行的人能指出自己缺的是哪一段能力。"},
+    "surprise": {"target": "supporting", "script_evidence": "开头先说“有人一看到到2026年底资源池服务商超2000家，马上觉得是两千个创业名额；这个听法不对”，再立即给出资源池目标的准确含义。", "viewer_test": "观众能在评论或复述中区分“资源池目标”与“创业名额、订单或岗位缺口”，而不是只重复2000这个数字。"},
+    "expression": {"target": "primary", "script_evidence": "用咨询、报价、售后、谁持续看和出错怎么处理等现场问题替代术语堆砌。", "viewer_test": "不懂技术的老板能听懂四段服务分别在干什么。"},
+    "resonance": {"target": "supporting", "script_evidence": "正文用“资料从哪来、最后交什么、谁每天看、客户问到边界外怎么转人、资料和错误谁管”这一串现场问题，承接老板既怕错过又怕买完没人管的焦虑。", "viewer_test": "目标老板能指出自己正在卡住的一项责任问题，准备入行的人能指出自己目前只会演示还是能承担后续工作；不把点赞量当作共鸣证明。"},
+    "integrity_boundary": "不夸大资源池、认证、补贴、就业或项目收益；不把一份政策通知说成行业结果。",
+    "review_status": "planned",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {"name": "人工智能应用服务商的四段工作", "problem": "企业和从业者把会用模型、会搭智能体、会演示，误认为等于已经能做 AI 服务。", "bottleneck": "咨询、实施、日常运营和安全责任常被压缩成一次工具演示。", "mechanism": "工信部通知把服务商定义为围绕用户单位智能化需求，提供咨询规划、交付实施、运营管理和安全治理；本条把它转成业务、交付物、日常负责人、安全和错误处理的可检查问题。", "observable_change": "观众不再只问哪个工具，而能追问谁负责什么、何时验收、出错如何处理。", "evidence": "工信部 2026-08-31 通知。", "evidence_proves": "证明政策定义和培育方向。", "evidence_does_not_prove": "不证明任何服务商已具备能力、进入资源池、可获得订单或适合具体企业。", "audience_relevance": "本地老板能用四问看服务，准备入行的人能用四段检查能力缺口。", "boundary": "不构成政策资格、服务商推荐、项目验收或数据安全方案。"}
+  ],
+  "voice": {"profile_path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md", "read": true},
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-09-05-人工智能应用服务商-正式口播稿-v1.md",
+    "content_start_marker": "<!-- CONTENT_START -->",
+    "content_end_marker": "<!-- CONTENT_END -->",
+    "copy_review": {
+      "required": true,
+      "report_path": "/Users/pc/Documents/口播/notes/2026-09-05-人工智能应用服务商-文案双Skill审稿报告-v1.json"
+    },
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": true,
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "performance_feedback_recheck_passed": true,
+    "compliance_passed": true,
+    "user_script_approved": false,
+    "user_language_approval": {
+      "status": "pending",
+      "approved_by": null,
+      "approval_ref": null,
+      "approved_at": null
+    },
+    "read_aloud_evidence": {
+      "mode": "pending-user-read",
+      "status": "pending",
+      "evidence_ref": "待用户对当前稿件进行真人朗读确认"
+    },
+    "phrase_exemptions": [],
+    "ai_tone_exemptions": [],
+    "anchor_exemptions": []
+  }
+}
