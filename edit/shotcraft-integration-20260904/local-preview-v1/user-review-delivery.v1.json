@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "shotcraft-user-review-delivery/v1",
+  "date": "2026-09-04",
+  "status": "ready-for-user-review",
+  "scope": "local-experiment-only",
+  "formalEnabled": false,
+  "productionEligible": false,
+  "published": false,
+  "userPostReview": "pending",
+  "userRenderAuthorization": {
+    "quote": "好的，按照建议继续。",
+    "path": "edit/shotcraft-integration-20260904/local-preview-authorization.v1.json",
+    "sha256": "c128a3159d3956c347a5883015a579121c33d03ba023063b6524082049c5e504"
+  },
+  "desktopEntry": {
+    "path": "/Users/pc/Desktop/口播素材/2026-09-04_Shotcraft动效31秒审片",
+    "kind": "single-directory-symlink",
+    "target": "/Users/pc/Documents/口播/edit/shotcraft-integration-20260904/local-preview-v1",
+    "preexisting": false,
+    "readlinkAndRealpathVerified": true
+  },
+  "reviewFiles": [
+    {
+      "path": "edit/shotcraft-integration-20260904/local-preview-v1/01_动效样片_有附加音效_31秒.mp4",
+      "sha256": "ad411fbdecafafbdb9e03f9879be984a512eaae40af6a7ba07eb1c93e18884a5",
+      "role": "preferred-with-sfx"
+    },
+    {
+      "path": "edit/shotcraft-integration-20260904/local-preview-v1/02_动效样片_无附加音效对照_31秒.mp4",
+      "sha256": "b0ac81a9479491effab0d3123a2a784d91479cb1759f8c5732b82c5b180898e2",
+      "role": "same-picture-without-added-sfx-not-muted"
+    }
+  ],
+  "specification": {
+    "durationSeconds": 31,
+    "frames": 930,
+    "fps": 30,
+    "width": 960,
+    "height": 540,
+    "codec": "h264",
+    "profile": "High",
+    "actualPixelFormat": "yuvj420p",
+    "colorRange": "pc",
+    "audio": "AAC stereo 48000Hz 320kbps target",
+    "reviewGainDb": 5,
+    "integratedLufsBoth": -19.5,
+    "truePeakDbfsBoth": -1.6
+  },
+  "evidence": [
+    {
+      "path": "edit/shotcraft-integration-20260904/local-preview-v1/render-ab.finish.json",
+      "sha256": "a4894931bee6a96d821b854a9d65b16f28a4fcd2f6d4f680733ac1038abebd25"
+    },
+    {
+      "path": "edit/shotcraft-integration-20260904/local-preview-v1/qa/machine-qa.v1.json",
+      "sha256": "f3c13af91136099421a7df89154c81e8f7bd51f1f1bc0766d083cdd3e994568a"
+    },
+    {
+      "path": "edit/shotcraft-integration-20260904/local-preview-v1/review-qa/review-copy-qa.v1.json",
+      "sha256": "75ec8a883fafe22d2b78e8e6609fff3302b20f2c037b7d5f4ab2d3bada783e47"
+    }
+  ],
+  "checks": {
+    "automatedTests": {"passed": 69, "failed": 0},
+    "isolatedTypecheckExitCode": 0,
+    "rawAndReviewFullDecode": "passed",
+    "all930DecodedFramesIdenticalAcrossFourFiles": true,
+    "blackEvents": 0,
+    "freezeOverOneSecondEvents": 0,
+    "silenceOverPointEightSecondsEvents": 0,
+    "sevenCueAudioDifferencesPresent": true,
+    "sourceBindingsStillMatch": 45,
+    "sharedProductionPathsChangedByThisWork": false,
+    "normalSpeedAuditoryAcceptance": "pending-user"
+  },
+  "visualReview": {
+    "primary": "7张风险帧及31个每秒抽帧实际查看，未见新增挡脸或字幕越界。",
+    "independentReviewerId": "01a06afd-dee1-7403-b9f5-e7082e505f2a",
+    "independentScope": "独立只读查看7帧并核对代码与哈希；未作正常速度声音验收。",
+    "independentConclusion": "静帧未发现新增P0/P1；两处标签保持偏短为P2。",
+    "P0Observed": 0,
+    "P1Observed": 0,
+    "P2": [
+      {"id": "short-label-hold", "detail": "故事脚本与动画短片完全显现后保持约0.70秒、0.73秒，待用户原速确认可读性。"}
+    ]
+  },
+  "limitations": [
+    "样片技术通过不等于五项效果已获用户接纳，更不等于正式生产接入。",
+    "素材显示只说明该案例内容，不证明商业效果或客户关系。",
+    "AAC差分不作为精确声学对齐证明，7处音效时机仍待用户试听。",
+    "每秒联系表末尾绿色格是拼图填充，不是视频帧。",
+    "原始渲染末尾AAC填充保留；试听副本仅去掉画面31秒之外的填充。",
+    "全局知识库可能在其他任务复盘后变动；保存的是本次执行时的有效回执，不能复用为将来生产许可。"
+  ],
+  "ownedSourceChanges": [
+    "skills/koubo-shotcraft-library/SKILL.md",
+    "skills/koubo-shotcraft-library/scripts/run-local-preview.mjs",
+    "skills/koubo-shotcraft-library/tests/local-preview.test.mjs",
+    "edit/shotcraft-integration-20260904/audit-local-preview.mjs",
+    "edit/shotcraft-integration-20260904/prepare-review-copies.mjs",
+    "edit/shotcraft-integration-20260904/context-requirements.v1.json",
+    "edit/shotcraft-integration-20260904/read-receipts.v1.json",
+    "edit/shotcraft-integration-20260904/首次样片实验执行决定.md",
+    "edit/shotcraft-integration-20260904/local-preview-authorization.v1.json",
+    "edit/shotcraft-integration-20260904/local-preview-independent-code-review.v1.json"
+  ]
+}
