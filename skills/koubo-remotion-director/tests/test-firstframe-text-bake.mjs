@@ -141,6 +141,9 @@ try {
   assert.ok(receipt.scenes[0].ocr[0].preprocessing.typographyAttempts.length >= 1);
   assert.ok(receipt.scenes[0].ocr[0].rendering.pointSize);
   assert.equal(receipt.scenes[0].outputImage.sha256, sha256File(outputPath));
+  assert.equal(receipt.scenes[0].ocr[0].evaluationStage, 'final-composite');
+  assert.equal(receipt.scenes[0].ocr[0].inputImageSha256, sha256File(outputPath));
+  assert.ok(receipt.scenes[0].ocr[0].preprocessing.finalImageAttempts.length >= 1);
   assert.equal(receipt.scenes[0].anchorCalibration.sha256, sha256File(calibrationPath));
 
   if (process.platform === 'darwin') {
@@ -168,6 +171,77 @@ try {
       visionReceipt.scenes[0].ocr[0].preprocessing.selectedEngine,
       'apple-vision',
     );
+    assert.equal(visionReceipt.scenes[0].ocr[0].evaluationStage, 'final-composite');
+    assert.equal(visionReceipt.scenes[0].ocr[0].inputImageSha256, sha256File(visionOutputPath));
+  }
+
+  const multiSourcePath = path.join(testRoot, 'multi-source.png');
+  const multiImage = run('magick', ['-size', '1280x720', 'xc:#E8D6AF', multiSourcePath]);
+  assert.equal(multiImage.status, 0, multiImage.stderr);
+  for (const fixture of [
+    {
+      id: 'separate',
+      quads: [
+        [[0.1, 0.1], [0.9, 0.1], [0.9, 0.38], [0.1, 0.38]],
+        [[0.1, 0.6], [0.9, 0.6], [0.9, 0.88], [0.1, 0.88]],
+      ],
+    },
+    {
+      id: 'overlap',
+      quads: [
+        [[0.1, 0.3], [0.9, 0.3], [0.9, 0.62], [0.1, 0.62]],
+        [[0.6, 0.3], [1, 0.3], [1, 0.62], [0.6, 0.62]],
+      ],
+    },
+  ]) {
+    const multiLabels = ['平台', '需求'].map((text, index) => ({
+      ...structuredClone(labels[0]),
+      nodeId: `N${index + 1}`,
+      text,
+      anchorQuad: fixture.quads[index],
+    }));
+    const multiScene = {...sourceScene, textPlan: multiLabels};
+    const multiIdentity = buildSceneIdentity(multiScene, 0);
+    const multiPlanPath = path.join(testRoot, `${fixture.id}-plan.json`);
+    writeFileSync(multiPlanPath, JSON.stringify({...sourcePlan, paperScenes: [multiScene]}));
+    const multiCalibrationPath = path.join(testRoot, `${fixture.id}-calibration.json`);
+    writeFileSync(multiCalibrationPath, JSON.stringify({
+      ...calibration,
+      sourceImage: {path: multiSourcePath, sha256: sha256File(multiSourcePath)},
+      labels: multiLabels.map(({nodeId, anchorQuad}) => ({nodeId, anchorQuad, placementChecked: true})),
+    }));
+    const multiRequest = structuredClone(request);
+    multiRequest.sourcePlan = {path: multiPlanPath, sha256: sha256File(multiPlanPath)};
+    multiRequest.receiptPath = path.join(testRoot, `${fixture.id}-receipt.json`);
+    Object.assign(multiRequest.scenes[0], {
+      pairId: multiIdentity.pairId,
+      pairSha256: multiIdentity.pairSha256,
+      textPlanSha256: multiIdentity.textPlanSha256,
+      labelsSha256: sha256Json(multiLabels),
+      labels: multiLabels,
+      sourceImage: {path: multiSourcePath, sha256: sha256File(multiSourcePath)},
+      outputImage: {path: path.join(testRoot, `${fixture.id}-baked.png`)},
+      anchorCalibration: {path: multiCalibrationPath, sha256: sha256File(multiCalibrationPath)},
+      calibratedAnchors: multiLabels.map(({nodeId, anchorQuad}) => ({nodeId, anchorQuad})),
+    });
+    const multiRequestPath = path.join(testRoot, `${fixture.id}-request.json`);
+    writeFileSync(multiRequestPath, JSON.stringify(multiRequest));
+    const result = run(process.execPath, [scriptPath, '--request', multiRequestPath, '--repo-root', testRoot]);
+    if (fixture.id === 'overlap') {
+      assert.notEqual(result.status, 0, 'Later labels must not inherit an earlier OCR pass');
+      assert.match(result.stderr, /TEXT_BAKE_OCR_MISMATCH:P01:N1:final-composite/u);
+      assert.equal(existsSync(multiRequest.receiptPath), false);
+      assert.equal(existsSync(multiRequest.scenes[0].outputImage.path), false);
+    } else {
+      assert.equal(result.status, 0, result.stderr);
+      const multiReceipt = JSON.parse(readFileSync(multiRequest.receiptPath, 'utf8'));
+      assert.equal(multiReceipt.scenes[0].ocr.length, 2);
+      for (const item of multiReceipt.scenes[0].ocr) {
+        assert.equal(item.matched, true);
+        assert.equal(item.evaluationStage, 'final-composite');
+        assert.equal(item.inputImageSha256, sha256File(multiRequest.scenes[0].outputImage.path));
+      }
+    }
   }
 
   const rejectedRequestPath = path.join(testRoot, 'request-rejected.json');
@@ -218,6 +292,9 @@ try {
       sourceTextPlanBound: true,
       sourceShaMismatchRejected: true,
       calibrationMismatchRejected: true,
+      finalCompositeOcrBound: true,
+      separateLabelsPassed: true,
+      laterLabelContaminationRejected: true,
     }),
   );
 } finally {

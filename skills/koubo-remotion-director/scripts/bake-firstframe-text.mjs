@@ -472,6 +472,32 @@ try {
         },
       });
     }
+    // Later labels may obscure earlier ones; only the complete image can pass QA.
+    const finalImageSha256 = sha256File(currentPath);
+    for (const [index, label] of labels.entries()) {
+      const recognition = recognizeLabel({
+        inputPath: currentPath,
+        anchorQuad: scene.anchorCalibrationRequired === true
+          ? calibratedByNode.get(label.nodeId)
+          : label.anchorQuad,
+        canvas,
+        workRoot,
+        artifactPrefix: `${scene.sceneId}-${index}-final-ocr`,
+        expectedText: label.text,
+        visionRecognize,
+      });
+      if (!recognition.matched) {
+        throw new Error(
+          `TEXT_BAKE_OCR_MISMATCH:${scene.sceneId}:${label.nodeId}:final-composite:${recognition.attempts.map((attempt) => `${attempt.variantId}=${attempt.normalized}`).join(',')}`,
+        );
+      }
+      ocr[index].recognized = recognition.selectedAttempt.recognized;
+      ocr[index].evaluationStage = 'final-composite';
+      ocr[index].inputImageSha256 = finalImageSha256;
+      ocr[index].preprocessing.selectedEngine = recognition.selectedAttempt.engine;
+      ocr[index].preprocessing.selectedVariantId = recognition.selectedAttempt.variantId;
+      ocr[index].preprocessing.finalImageAttempts = recognition.attempts;
+    }
     sceneReceipts.push({
       sceneId: scene.sceneId,
       pairId: scene.pairId,
@@ -485,7 +511,7 @@ try {
         ? calibratedAnchors
         : [],
       sourceImage: {path: sourcePath, sha256: scene.sourceImage.sha256, ...canvas},
-      outputImage: {path: outputPath, sha256: sha256File(currentPath), ...canvas},
+      outputImage: {path: outputPath, sha256: finalImageSha256, ...canvas},
       ocr,
       stagedOutputPath: currentPath,
     });

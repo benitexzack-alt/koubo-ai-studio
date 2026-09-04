@@ -1,0 +1,184 @@
+{
+  "schemaVersion": "shotcraft-lock-and-preview-entry-audit/v2",
+  "checkedAt": "2026-09-04T08:01:37.388Z",
+  "head": "cfcc89f06c26d964be2a711767c5f347715794e5",
+  "files": [
+    {
+      "path": "workflow/director-skill-lock.v1.json",
+      "sha256": "3312dd531f8221afdbaba387d6e9a9b8d203f0e21294c896b65927860f5fc57f"
+    },
+    {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "513c97bcdfa78c93813ac65302cb1f3148f9db2754bee0212a15cf8f5fd45479"
+    },
+    {
+      "path": "workflow/active-production-profile.v1.json",
+      "sha256": "35966590ab57c6c4e5c0560781de181b99ed465c66a0cf3e4ae5dbb45e3ecf64"
+    },
+    {
+      "path": "skills/koubo-remotion-director/scripts/bake-firstframe-text.mjs",
+      "sha256": "0bde81a1a20eba2e0350be41e41137b9ffda90f70dcc47bb6207added27f3daf"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-firstframe-text-bake.mjs",
+      "sha256": "55d80a8a8d505e06b2198686cb1cdbf7c23c02680ba752df45ca4a4b57ad46fc"
+    },
+    {
+      "path": "skills/koubo-remotion-director/scripts/recognize-text-vision.swift",
+      "sha256": "b045c56e50a4e784f65c7aa98dd09dbbab3c76b9a56f2d10ba2d9119e60faa14"
+    },
+    {
+      "path": "skills/koubo-remotion-director/fixtures/external-acceptance-anchor-registry.v2.json",
+      "sha256": "ed6a7f6cf13133d79557f04d74ea6d05d02de8a9a3039d0ebed2f77465722137"
+    },
+    {
+      "path": "remotion/src/shotcraft-candidate-v1/candidate-plan.v1.json",
+      "sha256": "9856950ce61f49f48fb99d1ffa77137105113b375f5370eb5c7da34c1f39dcb6"
+    },
+    {
+      "path": "remotion/src/components/V72ProductionShell.tsx",
+      "sha256": "3d51da15f3bb13223dfbf8bb993a146c7ae2d0f6b36b568547311f9ca6e9e939"
+    },
+    {
+      "path": "remotion/src/components/V8SemanticStage.tsx",
+      "sha256": "9687886275befd7649afd3a06b10bcf409aaeb4ea5217c3fa396a72c2c660be4"
+    },
+    {
+      "path": "remotion/src/Root.tsx",
+      "sha256": "a7beaf58757b3fbc1a1f1a0f070193887ea2d83e53ac5337a55953b8fe448861"
+    }
+  ],
+  "oldLockSha256": "c855337547e37241bd27b70fa032642380c660942cf5a8930ace749befa3e589",
+  "trustRootExists": false,
+  "newLock": {
+    "schemaVersion": "koubo-director-skill-lock/v1",
+    "profileId": "paper-editorial-director-v3",
+    "profileVersion": "3.2.0",
+    "skillRoot": "skills/koubo-remotion-director",
+    "generatedAt": "2026-09-04T07:59:43.508Z",
+    "fileCount": 71,
+    "totalBytes": 1746654,
+    "packageSha256": "babbfe9fd0c9df57affcf079cfaba952b79cb5c33c239e0a3c5711f9bd0daec8"
+  },
+  "status": "lock-repaired-first-preview-entry-blocked",
+  "scope": "OCR最终图回归修复和导演锁同步；只读核查首次31秒样片入口",
+  "previousReceipt": "edit/shotcraft-integration-20260904/integration-receipt.v1.json",
+  "previousReceiptPreserved": true,
+  "rootCauses": [
+    {
+      "issue": "导演锁滞后于37e0399与8c7ba21的已提交OCR修复",
+      "status": "resolved-by-reviewed-lock-refresh"
+    },
+    {
+      "issue": "8c7ba21逐标签即时OCR被错误地沿用到全标签最终图",
+      "status": "regression-test-passed",
+      "fix": "全部装配后再对最终图逐项OCR；回执逐项绑定最终图SHA；失败不输出"
+    },
+    {
+      "issue": "首次候选入口要求先有已验收候选及handoff，存在首次渲染依赖循环",
+      "status": "open-route-decision-required"
+    },
+    {
+      "issue": "独立系统Ed25519信任根未配置且外部锚点注册表为空",
+      "status": "open-independent-administration-required"
+    }
+  ],
+  "validation": [
+    {
+      "command": "node skills/koubo-remotion-director/tests/test-firstframe-text-bake.mjs",
+      "exitCode": 0,
+      "checks": [
+        "单标签OCR",
+        "Vision备选",
+        "分离双标签最终图绑定",
+        "重叠后N1最终OCR失败无输出",
+        "源图和坐标漂移拒绝"
+      ]
+    },
+    {
+      "command": "node skills/koubo-paper-firstframe-producer/tests/test-text-bake-runninghub-handoff.mjs",
+      "exitCode": 0,
+      "scope": "合成夹具真实本地OCR到投递清单，非业务图片重烘焙"
+    },
+    {
+      "command": "node skills/koubo-paper-firstframe-producer/tests/test-firstframe-batch.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node skills/koubo-remotion-director/tests/test-preproduction-director-contract.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node tools/test-active-director-profile.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "node tools/validate-active-director-profile.mjs",
+      "exitCode": 0,
+      "formalEligibleByDefault": false
+    },
+    {
+      "command": "node --test skills/koubo-shotcraft-library/tests/plan.test.mjs skills/koubo-shotcraft-library/tests/components.test.mjs",
+      "exitCode": 0,
+      "passed": 38,
+      "failed": 0
+    },
+    {
+      "command": "node remotion/node_modules/typescript/bin/tsc -p remotion/src/shotcraft-candidate-v1/tsconfig.json",
+      "exitCode": 0
+    },
+    {
+      "command": "node skills/koubo-shotcraft-library/scripts/validate-plan.mjs remotion/src/shotcraft-candidate-v1/candidate-plan.v1.json .",
+      "exitCode": 0
+    }
+  ],
+  "independentCodeReview": {
+    "ocr": {
+      "reviewerAgentId": "01a06afd-dee1-7403-b9f5-e7082e505f2a",
+      "result": "原P1设计闭合；主任务实测通过后允许重建锁",
+      "p0": 0,
+      "p1": 0
+    },
+    "entry": {
+      "reviewerAgentId": "01a06afe-bc5f-77d0-8fe1-7a5afb307300",
+      "result": "当前无已证明可达的首次31秒受控入口；用户制作授权不等于渲染后的完整观看验收"
+    },
+    "isIndependentCryptographicAcceptance": false
+  },
+  "supervisorContact": {
+    "threadId": "01a02ff1-c799-7700-8e52-04f10392fd29",
+    "result": "tool-rejected-thread-archived",
+    "delivered": false,
+    "unarchived": false
+  },
+  "production": {
+    "userPreRenderBusinessAuthorizationRecorded": true,
+    "formalEnabled": false,
+    "productionEligible": false,
+    "sampleSeconds": 31,
+    "sampleFrames": 930,
+    "rendered": false,
+    "decoded": false,
+    "userViewed": false,
+    "rawCliBypass": false,
+    "keysCreated": false,
+    "trustRegistryModified": false,
+    "existingBusinessImagesModified": false,
+    "existingVideoModified": false,
+    "externalUpload": false,
+    "paidGeneration": false,
+    "published": false
+  },
+  "nextDecision": {
+    "status": "not-implemented",
+    "proposal": "独立设计仅服务首次效果审片的隔离入口：预渲染许可与代码/素材哈希先审；生成后再做媒体QA及用户完整观看，禁止将后验收作为首渲染前提",
+    "authorizationStillRequired": "更改现行受控入口的架构及信任方式须单独裁决，不能把同步锁授权扩张成解除V2硬门",
+    "preserve": [
+      "共享V8组件",
+      "现有正式入口",
+      "旧事故冻结",
+      "真实素材和已完成成片",
+      "用户最终观看门"
+    ]
+  }
+}
