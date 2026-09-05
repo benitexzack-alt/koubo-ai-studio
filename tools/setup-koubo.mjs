@@ -31,7 +31,12 @@ const skillNames = [
   'koubo-asset-prep',
   'koubo-remotion-director',
   'koubo-paper-firstframe-producer',
+  'koubo-shotcraft-library',
+  'koubo-runninghub-video-batch',
 ];
+
+// RunningHub 保留现有独立安装，只有明确选择时才注册仓库快照。
+const optionalSkillNames = new Set(['koubo-runninghub-video-batch']);
 
 const requestedSkillNames = [];
 for (let index = 0; index < args.length; index += 1) {
@@ -58,7 +63,7 @@ if (unknownSkillNames.length > 0) {
 }
 const selectedSkillNames = requestedSkillNames.length > 0
   ? [...new Set(requestedSkillNames)]
-  : skillNames;
+  : skillNames.filter((name) => !optionalSkillNames.has(name));
 
 const exists = async (target) => {
   try {

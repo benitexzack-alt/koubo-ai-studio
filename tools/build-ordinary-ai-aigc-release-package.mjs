@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import crypto from 'node:crypto';
 import {createRequire} from 'node:module';
 
@@ -182,12 +183,12 @@ const copyReview = {
   draft: {path: path.relative(root, packagePath), sha256: sha256(packagePath)},
   skills: {
     humanizer_zh: {
-      path: '/Users/pc/.codex/skills/humanizer-zh/SKILL.md',
+      path: path.resolve(process.env.CODEX_HOME || path.join(os.homedir(), '.codex'), 'skills/humanizer-zh/SKILL.md'),
       sha256: 'e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb',
       read: true,
     },
     humanize_koubo_script: {
-      path: '/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md',
+      path: path.join(root, 'skills/humanize-koubo-script/SKILL.md'),
       sha256: '235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581',
       read: true,
     },

@@ -39,6 +39,9 @@ const requiredFiles = [
   'skills/humanize-koubo-script/SKILL.md',
   'skills/koubo-asset-prep/SKILL.md',
   'skills/koubo-remotion-director/SKILL.md',
+  'skills/koubo-paper-firstframe-producer/SKILL.md',
+  'skills/koubo-shotcraft-library/SKILL.md',
+  'skills/koubo-runninghub-video-batch/SKILL.md',
   'templates/03-复制与新账号接入清单.md',
 ];
 
@@ -154,6 +157,9 @@ for (const name of [
   'humanize-koubo-script',
   'koubo-asset-prep',
   'koubo-remotion-director',
+  'koubo-paper-firstframe-producer',
+  'koubo-shotcraft-library',
+  'koubo-runninghub-video-batch',
 ]) {
   const source = path.join(projectRoot, 'skills', name);
   const target = path.join(skillsRoot, name);

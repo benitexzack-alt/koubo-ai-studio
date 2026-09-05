@@ -82,6 +82,9 @@ try {
       'humanize-koubo-script',
       'koubo-asset-prep',
       'koubo-remotion-director',
+      'koubo-paper-firstframe-producer',
+      'koubo-shotcraft-library',
+      'koubo-runninghub-video-batch',
     ]) {
       run(
         `Skill 结构 ${skillName}`,
@@ -168,6 +171,10 @@ try {
   run('Codex Skill 重复安装幂等', process.execPath, ['tools/setup-koubo.mjs'], {
     env: isolatedEnv,
   });
+  run('可选 RunningHub Skill 定向注册', process.execPath,
+    ['tools/setup-koubo.mjs', '--skill', 'koubo-runninghub-video-batch'], {
+      env: isolatedEnv,
+    });
   run('隔离 Codex 环境体检', process.execPath, ['tools/doctor-koubo.mjs'], {
     env: isolatedEnv,
   });
@@ -184,6 +191,8 @@ try {
     'humanize-koubo-script',
     'koubo-asset-prep',
     'koubo-remotion-director',
+    'koubo-paper-firstframe-producer',
+    'koubo-shotcraft-library',
   ]) {
     if (existsSync(path.join(conflictCodexHome, 'skills', skillName))) {
       throw new Error(`冲突时发生部分安装：${skillName}`);

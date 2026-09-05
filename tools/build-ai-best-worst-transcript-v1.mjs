@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 
 const projectRoot = path.resolve(import.meta.dirname, '..');
 const rawPath = path.join(
@@ -352,8 +353,10 @@ const cleaned = {
 
 const comparison = {
   schema_version: 1,
-  source_video:
-    '/Users/pc/Desktop/口播素材/2026-08-12_AI在支配你还是你掌控AI/01_口播原片/R01_AI在支配你还是你掌控AI_口播原片.MOV',
+  source_video: path.resolve(
+    process.env.KOUBO_MATERIALS_ROOT || path.join(os.homedir(), 'Desktop', '口播素材'),
+    '2026-08-12_AI在支配你还是你掌控AI/01_口播原片/R01_AI在支配你还是你掌控AI_口播原片.MOV',
+  ),
   source_sha256: '7942825af44a009787e845e921e8f4dd8b2c1dd2e3ab68126b75d708cb0d94ab',
   approved_script: 'notes/2026-08-12-AI在支配你还是你掌控AI-用户最终录制稿-v1.md',
   policy: '正片全量保留真实原声；字幕按实际口播校正；研究结论继续保留地域、年龄、职业暴露度和相对变化边界。',

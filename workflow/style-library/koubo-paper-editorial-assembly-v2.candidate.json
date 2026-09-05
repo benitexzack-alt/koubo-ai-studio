@@ -1,0 +1,268 @@
+{
+  "schemaVersion": "koubo-style-candidate/v2",
+  "id": "koubo-paper-editorial-assembly-v2",
+  "nameZh": "纸媒叙事装配 v2",
+  "status": "blocked-candidate",
+  "productionEligible": false,
+  "purpose": "把口播中的抽象机制、关系和知识节拍转成编辑式纸拼贴与可触摸纸艺定格结合的概念演绎插片。",
+  "scope": {
+    "allowedAssetClass": "generated-video",
+    "allowedEvidenceUse": "illustration-only",
+    "allowed": [
+      "解释抽象机制、因果、层级、关系和尺度变化",
+      "把实录旁白拆成可见的语义节点、物件组和顺序装配",
+      "使用匿名纸偶、抽象剪影、原创漫画格或合法来源的半调剪影"
+    ],
+    "forbidden": [
+      "真人表演或写实真人场景",
+      "可识别真人脸和未经授权的照片",
+      "替代真实界面、录屏、截图、数据、客户、地点、官方材料或业务证据",
+      "复制参考片中的品牌、照片、标题、具体版式或镜头顺序",
+      "由生成模型自行编造可读中文、数字、品牌或水印"
+    ],
+    "fallback": "speaker-plus-information"
+  },
+  "sourceEvidence": {
+    "referenceVideo": {
+      "fileName": "oMvzQBgiqE2X3ZNqAYQxEjIrfTAxvBANZDe9aF.MP4",
+      "sha256": "f172d6dc4831ce51bdecfe1359b1187666cad23c098c402edfc6836e3e553949",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 110.153991,
+      "frameCount": 3304,
+      "auditReport": "knowledge/23-参考片逐帧审计与纸媒叙事装配最低标准.md",
+      "contactSheet": "knowledge/evidence/paper-editorial-reference-audit-20260824/primary_shots_contact_sheet.jpg"
+    },
+    "officialSkills": {
+      "repository": "MiniMax-AI/MiniMax-H3",
+      "commit": "d21241f0a4b3acbb34c97dae47fa417b7065e438",
+      "items": [
+        {
+          "name": "papercraft-stop-motion-explainer",
+          "version": "0.6.5",
+          "url": "https://github.com/MiniMax-AI/MiniMax-H3/blob/d21241f0a4b3acbb34c97dae47fa417b7065e438/skills/papercraft-stop-motion-explainer/SKILL.cn.md"
+        },
+        {
+          "name": "paper-collage-explainer-generator",
+          "version": "0.3.9",
+          "url": "https://github.com/MiniMax-AI/MiniMax-H3/blob/d21241f0a4b3acbb34c97dae47fa417b7065e438/skills/paper-collage-explainer-generator/SKILL.cn.md"
+        }
+      ],
+      "integrationBoundary": "只把官方阶段门、视觉语法和验收方法适配为本项目原创合同；官方 Skill 依赖 MiniMax Hub 原生图像、视频、音频与画布能力，不能靠复制文本宣称已经接通。"
+    }
+  },
+  "semanticContract": {
+    "oneKnowledgeBeatPerShot": true,
+    "requiredInputs": [
+      "实录原句与准确起止时间",
+      "核心含义",
+      "情绪",
+      "动作动词",
+      "不用文字也能成立的视觉隐喻",
+      "3—6个主要物件组",
+      "独立语义节点",
+      "预计组装顺序",
+      "触感音效含义",
+      "最终完成态关系"
+    ],
+    "creativeDirectionCount": {
+      "min": 3,
+      "max": 5
+    },
+    "complexExplainerTarget": {
+      "objectGroupCount": {
+        "min": 5,
+        "max": 6
+      },
+      "semanticNodeCount": {
+        "min": 9,
+        "max": 13
+      },
+      "minimumDepthPlanes": 3,
+      "minimumAssemblyBeats": 5
+    },
+    "singleActionMechanicalRule": "每次可以只演示一个动作，但整镜必须同时包含输入、机制、输出和环境承托，不能退化为一个居中齿轮。"
+  },
+  "visualGrammar": {
+    "styleFamily": "高级编辑式纸拼贴与可触摸纸艺定格装配",
+    "mandatorySignatures": [
+      "大色块纸面",
+      "半调剪影、匿名纸偶或原创漫画主体",
+      "暖白描边",
+      "柔和实体纸影",
+      "精致撕边与细纸纤维",
+      "可见纸板厚度",
+      "层叠纸缝与真实接触阴影",
+      "可分离的大物件组"
+    ],
+    "composition": {
+      "minimumDepthPlanes": 3,
+      "papercraftTypicalDepthPlanes": {
+        "min": 4,
+        "max": 7
+      },
+      "objectGroupCount": {
+        "min": 3,
+        "max": 6
+      },
+      "allowedFamilies": [
+        "top-down-editorial-desk",
+        "front-mechanical-stage",
+        "low-angle-miniature-world",
+        "torn-paper-split-screen",
+        "center-radial-map",
+        "horizontal-style-lineage",
+        "evidence-network",
+        "exploded-blueprint",
+        "layered-book-or-cross-section"
+      ],
+      "variationRule": "连续镜头必须按语义轮换构图；禁止把固定俯拍、单物件和大留白当成系列模板。",
+      "textRule": "生成画面只保留纸质标签载体；所有精确中文、数字和标题由确定性后期合成。"
+    },
+    "palette": {
+      "seriesAnchors": [
+        "暖米白或中性纸面",
+        "黑灰结构",
+        "海军蓝",
+        "珊瑚红",
+        "少量灰绿"
+      ],
+      "rule": "色板由本镜情绪、主题和已经批准的完成态静帧决定，不设全片固定百分比，不自动引入偏棕、发黄或过度做旧纸底。",
+      "materialVariationAllowed": [
+        "paper-collage",
+        "papercraft-miniature",
+        "clay-stop-motion",
+        "cyanotype-blueprint",
+        "ink-scroll",
+        "minimal-motion-graphics"
+      ],
+      "variationLock": "跨材料变化时保持核心主体、主色锚、主体位置和转场节拍连续。"
+    }
+  },
+  "motionGrammar": {
+    "assemblySequence": [
+      "与批准静帧匹配的干净色场",
+      "背景与承托结构进入",
+      "主体物件组逐片滑入、弹入或压入",
+      "关系线、标注载体和次要物件补全",
+      "轻微回弹、压平和短暂停顿",
+      "全部物件锁回批准完成态构图",
+      "至少1秒完成态停留"
+    ],
+    "complexShotAssemblyBeats": {
+      "min": 4,
+      "max": 7
+    },
+    "allowedCameraLanguage": [
+      "fixed",
+      "subtle-push",
+      "subtle-horizontal-pan",
+      "macro-detail",
+      "layered-parallax",
+      "match-cut"
+    ],
+    "forbidden": [
+      "泛泛漂浮",
+      "全局淡入代替组装",
+      "顺滑数字图层平移或缩放",
+      "液化、融化或无因变形",
+      "混乱飞散",
+      "未经分镜批准的场景切换",
+      "新增物件或物件身份漂移"
+    ],
+    "keywordLandingToleranceMs": 300,
+    "finalHoldMinimumSeconds": 1
+  },
+  "soundGrammar": {
+    "default": "tactile-collage-sfx-only",
+    "cues": [
+      "paper-slide",
+      "pop-in",
+      "press-flat-tap",
+      "light-rustle",
+      "tiny-paper-snap"
+    ],
+    "defaultBgm": false,
+    "defaultVoiceover": false,
+    "defaultGeneratedSubtitles": false,
+    "rule": "触感音效与每个纸片动作同步；口播原声和准确字幕由口播主时间线负责。"
+  },
+  "productionGates": [
+    "用户确认3—5个创意方向中的一个方向与时长",
+    "用户确认Brief、视觉节奏轨与分镜",
+    "用户确认1—3张风格或机制预览",
+    "每镜生成未来动画的完成态静帧",
+    "用户逐镜确认完成态静帧",
+    "记录静帧路径与SHA-256",
+    "适配层证明批准静帧真实进入MiniMax-H3请求",
+    "先生成一条4—5秒动态压力测试",
+    "把动态样片与参考片、批准静帧并排复核",
+    "用户明确通过动态样片",
+    "重新报价并取得当前计划费用授权后才允许批量生成"
+  ],
+  "adapterContract": {
+    "completedStateStillRequired": true,
+    "requestMustCarryApprovedStill": true,
+    "requiredEvidence": [
+      "approvedStillPath",
+      "approvedStillSha256",
+      "requestImageField",
+      "requestDefinitionSha256",
+      "providerTaskId",
+      "providerResponseReceipt",
+      "downloadedVideoSha256"
+    ],
+    "currentVerification": "failed",
+    "currentBlocker": "当前 buildH3RequestDefinition 只构造 prompt、resolution、duration、ratio 和 aigc_watermark，没有图像输入字段；未实现前禁止晋级。"
+  },
+  "machineQa": {
+    "comparisonResolution": "320x180",
+    "decodeRate": 1,
+    "timestampMonotonic": true,
+    "undeclaredBlackOrWhiteFrames": 0,
+    "maximumUndeclaredDuplicateHoldSeconds": 0.2,
+    "normalShotMedianDurationSeconds": {
+      "min": 3,
+      "max": 5
+    },
+    "minimumSequenceMedianGrayscaleEntropyBits": 6.5,
+    "referenceMedianGrayscaleEntropyBits": 6.84,
+    "minimumSequenceMedianEdgeStrength": 5.8,
+    "referenceMedianEdgeStrength": 7.42,
+    "audioVisualBoundary": {
+      "windowMs": 100,
+      "minimumP75Coverage": 0.9,
+      "minimumP90Coverage": 0.7
+    },
+    "ocrMatchRequired": 1,
+    "requiredArtifacts": [
+      "contact-sheet",
+      "first-frame",
+      "final-frame",
+      "approved-still",
+      "request-receipt",
+      "video-sha256",
+      "dynamic-qa-report"
+    ],
+    "boundary": "灰度熵、边缘强度和音频瞬变只负责筛掉明显低于参考的结果，不能代替人工视觉验收。"
+  },
+  "humanQa": [
+    "静音观看能理解当前旁白的核心含义",
+    "纸张、瓦楞纸、粘土、蓝晒或水墨材料可辨，不是统一塑料CGI",
+    "前中后景有真实遮挡、纸厚和接触阴影",
+    "物件、关系和动作链完整，无无因生物、变形和错装",
+    "构图随内容变化，同时保留统一视觉锚点",
+    "准确中文在正常播放速度下可读",
+    "与参考片并排时，信息密度、层级、动作链和完成度处在同一维度",
+    "用户明确通过动态样片"
+  ],
+  "promotionCriteria": {
+    "requiredStressTests": [
+      "复杂解释镜：5—6物件组、9—13节点、三层、至少5级顺序装配",
+      "单动作机械镜：批准完成态图真实送入H3，输入、机制与胶片结果逐项对应"
+    ],
+    "maximumControlledRevisionRoundsPerHardFailure": 1,
+    "rule": "任一压力测试命中硬失败即保持blocked；同一硬失败经一次受控修订仍复现则退役本候选，不得批量碰运气。"
+  }
+}

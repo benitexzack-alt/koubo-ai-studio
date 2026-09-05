@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 
 const root = path.resolve(import.meta.dirname, '..');
 const rawPath = path.join(
@@ -204,7 +205,10 @@ const comparison = {
     'Docker',
   ],
   asset_exclusions: [
-    '/Users/pc/Desktop/口播素材/2026-08-20_AI六层能力地图/04_参考图',
+    path.resolve(
+      process.env.KOUBO_MATERIALS_ROOT || path.join(os.homedir(), 'Desktop', '口播素材'),
+      '2026-08-20_AI六层能力地图/04_参考图',
+    ),
   ],
   notes: [
     '三条用户生成AI视频仅作为情景演绎，统一静音，保留真人口播主音轨。',

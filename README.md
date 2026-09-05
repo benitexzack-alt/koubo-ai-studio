@@ -1,109 +1,114 @@
-# koubo-ai-studio
+# koubo-ai-studio · AI 口播工作室
 
-AI 口播内容与 Remotion 生产工作流：内容门禁、事实安全精修、词级转写、视觉方案、双语字幕、数字运镜、Remotion 包装、机器质检和发布记录。
+面向真人口播的内容与视频生产工程。把来源研究、账号反馈、脚本审阅、实录字幕、纸艺分镜、Remotion 包装和发布复盘接在同一套可检查的流程里，让每条内容都能追溯到来源、实际录音、素材和验收记录。
 
-## 适用环境
+项目来自「超哥AI创业记」的真实制作实践，主要服务甘肃本地小微企业、创业者和希望看懂 AI 应用的普通人。仓库提供工作流、Skill、代码、模板和校验器；新账号需要替换个人事实与账号资料。
 
-- macOS + Homebrew。
-- Codex 桌面端或 CLI。
-- Git、Node.js、npm、Python 3、FFmpeg/FFprobe。
-- 可访问 GitHub、npm 和 Remotion Chrome 下载地址的网络。
+## 当前版本：V8 生产基线 + V9 导演试点
 
-项目不依赖固定用户名或固定克隆目录。本文中的命令均假定终端已位于 Git 仓库根目录。
+更新日期：2026-09-05。生产版本和导演版本分别管理。
 
-## 项目内 Skill
+| 层级 | 当前状态 | 解决的问题 |
+| --- | --- | --- |
+| 内容流程 | 来源研究、候选选择、源头精髓、内容门禁、双 Skill 审稿 | 写稿前确认来源、内容增量、事实和本人表达 |
+| 正式生产 | V8 活动基线 | 真人主画面、连续语义动效、实录中英字幕、数字运镜、逐视觉音效与发布包 |
+| 导演流程 | V9 / 9.0.0，下一条新视频试点 | 三套提示词、安全区、纸艺布局、Shotcraft 应用证据、九阶段状态机 |
+| 历史基线 | V7.2 锁定母版 | 历史回归与故障回滚 |
 
-- `skills/source-essence-synthesis`：完整访谈、长视频或文章进入深度口播改编前，提取母命题、认知节点、论证链、纠偏账本和普通人三层所得，并逐节点校验提纲覆盖。
-- `skills/koubo-remotion-director`：视觉方案、V4/V5/V6、Remotion 预览、质检和发布记录。
-- `skills/humanize-koubo-script`：事实锁定后的去 AI 味、朗读和留存风险审稿。
-- `skills/content-brain-gate`：来源、最近六条、内容增量、观众距离、机制和本人声音硬门禁。
-- `skills/koubo-asset-prep`：对指定且已授权的视觉素材执行抠图、图片升清或生成视频升清；证据截图和真人主口播禁止进入生成式增强。
+V9 已有代码、模板和校验器，仍须下一条真实素材完成端到端制作、小样观看和用户终验。现阶段不能称为「V9 正式生产已全面验收」。版本依据见 [生产档案](workflow/active-production-profile.v1.json)、[导演档案](workflow/active-director-profile.v1.json) 和 [V9 升级审计](workflow/audits/director-v9-upgrade-20260905.v1.md)。
 
-## 快速开始
+## 能完成什么
+
+- 研究与选题：绑定知识库阅读记录、已接纳账号数据和最近六条内容；建立机制卡、跨源矩阵及候选题，用户选定题目、钩子和提纲后继续。
+- 脚本审阅：完整来源适用时先提炼源头精髓，再核查事实、观点增量、重复与语言；保留事实锁、稿件哈希和审稿报告。
+- 实录字幕：拍摄后以真实声音为唯一正文，拍摄前文稿只作核对；英文从确认后的实录中文翻译。
+- 视觉导演：分别选择真人、真实证据、AI 情景演绎和摄影级纸艺；纸艺解释机制，真实材料承担证据。
+- 纸艺首帧：模型生成无字基础图，本地按实际纸面四角写入中文，经 OCR 和人工检查形成带字首帧交接包。
+- 视频包装：人物讲解小窗、局部连续语义动效、声画绑定、响度处理、风险帧与媒体质检；Shotcraft 作为按需启用的辅助信息层。
+- 交付复盘：候选成片、当期真人截图、3:4 封面提示词、主标题与两个备选标题、发布文案、话题和发布记录一次整理。
+
+## V9 的制作顺序
+
+```text
+文稿确认 → 三套提示词 → 生成交接 → 素材验收 → 实录重绑
+→ 低清候选 → 用户确认 → 正式渲染 → 发布包
+```
+
+三套提示词分别用于纸艺首帧、RunningHub 图生视频和 AI 情景视频，即使某类镜头为零也保留对应空清单。首帧先试一张代表图；图片、文字、配对和用户验收齐全后，才形成 RunningHub 交接包。
+
+本地生成文件、机器检查通过、用户完整观看、平台发布是不同状态。生产校验器检查阶段顺序和证据绑定；公开视频发布由用户单独决定。完整单条口播默认保留实录，只有明确要求删减、重排或修正口误时才进入内容剪辑。
+
+## 随仓库分发的 9 项 Skill
+
+| Skill | 职责 |
+| --- | --- |
+| [douyin-koubo-source-to-original](skills/douyin-koubo-source-to-original/SKILL.md) | 来源研究、机制拆解、原创候选与用户选择 |
+| [source-essence-synthesis](skills/source-essence-synthesis/SKILL.md) | 完整来源的母命题、认知节点与论证链保真 |
+| [content-brain-gate](skills/content-brain-gate/SKILL.md) | 事实、账号数据、内容增量、声音与生产准入 |
+| [humanize-koubo-script](skills/humanize-koubo-script/SKILL.md) | 事实安全精修、本人表达与留存风险审稿 |
+| [koubo-remotion-director](skills/koubo-remotion-director/SKILL.md) | V9 导演、实录重绑与 V8 生产衔接 |
+| [koubo-paper-firstframe-producer](skills/koubo-paper-firstframe-producer/SKILL.md) | 首帧批次、纸面中文、OCR 与交接包 |
+| [koubo-asset-prep](skills/koubo-asset-prep/SKILL.md) | 授权素材的抠图、图片或生成视频升清 |
+| [koubo-shotcraft-library](skills/koubo-shotcraft-library/SKILL.md) | 动效检索、逐节拍选择与实际应用回执 |
+| [koubo-runninghub-video-batch](skills/koubo-runninghub-video-batch/SKILL.md) | RHTV 图片与提示词逐节点配置、参数回读；默认停在生成前 |
+
+`humanizer-zh` 是文案双 Skill 流程所需的独立全局依赖，未随本仓库分发。公开稿审阅前必须准备并读取其当前版本；缺失时不能声称双 Skill 审稿已经完成。RunningHub 批量 Skill 的来源与同步边界见 [快照说明](skills/koubo-runninghub-video-batch/SNAPSHOT.md)。
+
+## 本地接入
+
+当前主要验证环境为 macOS。需要 Git、Node.js、npm、Python 3、FFmpeg / FFprobe；Remotion 依赖版本由 `remotion/package-lock.json` 锁定。纸面中文还需要可用中文字体、Tesseract 及中文识别数据；Apple Vision 复核仅适用于 macOS。
+
+以下命令在仓库根目录执行：
 
 ```bash
 cd remotion
 npm ci
 npm run toolchain
 cd ..
-```
-
-复制 `.env.example` 为 `.env`，只在本机填写真实密钥和可选工具路径。`.env` 不得提交。
-
-缺少基础工具时可按需安装，不必安装在固定路径：
-
-```bash
-brew install git node python ffmpeg
-```
-
-统一使用以下命令注册和诊断 Skill：
-
-```bash
+node tools/setup-koubo.mjs --dry-run
 node tools/setup-koubo.mjs
 node tools/doctor-koubo.mjs
+```
+
+安装器默认注册 8 项项目 Skill。它只创建缺失的链接；同名独立目录或不同来源链接会报告冲突，不覆盖已有安装。可选的 RunningHub 批量 Skill 单独注册：
+
+```bash
+node tools/setup-koubo.mjs --skill koubo-runninghub-video-batch --dry-run
+node tools/setup-koubo.mjs --skill koubo-runninghub-video-batch
+```
+
+按 `.env.example` 建立本机 `.env`，只填写实际需要的环境变量。个人知识库优先由 `KOUBO_PERSONAL_KB` 指定，否则检查项目同级的 `个人知识库`。完整生产需要任务级上下文、授权素材与真实验收记录；克隆仓库只提供代码和模板。
+
+新账号接入请读 [复制与新账号清单](templates/03-复制与新账号接入清单.md)。项目入口为 [AGENTS.md](AGENTS.md)、[项目状态](project.md) 和 [知识索引](knowledge/00-项目知识索引.md)。
+
+## 验证与受控生产入口
+
+```bash
 node tools/test-portable.mjs
+node tools/validate-active-director-profile.mjs
+node --test skills/koubo-remotion-director/tests/*.mjs
+node --test skills/koubo-shotcraft-library/tests/*.test.mjs
 ```
 
-先只看安装计划、不写入：
+便携回归检查语法、Skill、门禁、安装保护及不含私密媒体的 Remotion 打包；它不替代真实视频的观看验收。历史任务可能引用本机媒体，缺少这些素材时不能复现对应历史成片。
+
+新生产任务必须通过当前导演、实录来源与知识上下文检查，再使用受控入口：
 
 ```bash
-node tools/setup-koubo.mjs --dry-run
+node tools/run-v72-production.mjs <production-job.json> doctor
+node tools/run-v72-production.mjs <production-job.json> prepare
+node tools/run-v72-production.mjs <production-job.json> formal
+node tools/validate-release.mjs <release.json>
 ```
 
-本机已有同名独立 Skill、只想注册本项目新增能力时，可限定安装范围：
+`run-v72-production.mjs` 保留历史文件名，实际执行受活动 V8 档案和当前门禁控制。正式渲染要求本条预览与用户确认。不要用 `remotion/package.json` 里的历史样片快捷命令替代新任务生产流程。
 
-```bash
-node tools/setup-koubo.mjs --skill source-essence-synthesis --dry-run
-node tools/setup-koubo.mjs --skill source-essence-synthesis
-```
+## 数据与素材边界
 
-安装器只会创建缺失的链接。如果 `~/.codex/skills/` 中已存在不同来源的同名 Skill，它会在写入前停止并报告，不覆盖、不移动、不删除。体检工具全程只读，也不会显示 `.env` 的内容。
+原片、导出成片、代理视频、本地字体、缓存和 `.env` 不作为代码同步内容。仓库中有历史任务描述、字幕数据、素材台账和发布回执，部分 `edit/`、`outputs/` 文件已被历史提交跟踪，不能把这些目录理解为「全部为空」或「全部私密」。添加文件前应检查实际暂存清单。
 
-便携回归只做无私密媒体的 Remotion 编译，不会复制 `remotion/public/media/`。第一次运行 Studio、still 或 render 时，Remotion 可能从 Google 下载 Chrome Headless Shell，需要保持国外网络可用。
+ElevenLabs 转写会上传提取出的音频；素材增强和 RunningHub 可能上传文件并计费。相关工具按本次授权执行。素材来源、使用许可、AI 演绎标识和用户终验记录需要单独核查。
 
-如果是另一台机器协作同一个账号，可以继续使用项目知识；如果对方要做自己的账号，必须先替换账号战略、个人事实、声音档案和最近六条，不能直接套用“超哥”的身份。完整步骤见 [`templates/03-复制与新账号接入清单.md`](templates/03-复制与新账号接入清单.md)。
+仓库当前没有授予整体代码再分发的统一开源许可证；Remotion 工程标记为 `UNLICENSED / private`。Shotcraft 上游的 Apache-2.0 许可和归属保留在其目录内，不能推定覆盖整个仓库。
 
-## 本地私密文件
-
-以下内容不进入 Git：
-
-- `.env`：API Key 和本机路径。
-- `source/`：原始口播视频。
-- `outputs/`：导出成片、封面和生成图。
-- `edit/`：转写、验证截图和中间文件。
-- `remotion/public/media/`：代理视频素材。
-- `remotion/public/fonts/`：本地字体。
-- `knowledge/source-materials/`：个人知识库原始资料副本。
-
-## 常用命令
-
-确认素材允许上传后，生成 ElevenLabs 词级转写。先做不联网预检：
-
-```bash
-node tools/transcribe-elevenlabs.mjs --input source/你的原片.MOV --dry-run
-node tools/transcribe-elevenlabs.mjs --input source/你的原片.MOV --language zh --num-speakers 1 --confirm-upload
-node tools/prepare-elevenlabs-captions.mjs edit/transcripts/你的原片.json remotion/public/data/你的原片.captions.json
-```
-
-转写脚本只上传提取出的临时音频，不上传原视频；没有 `--confirm-upload` 时会停止。默认使用 ElevenLabs 当前的 `scribe_v2`，可在 `.env` 中覆盖。为兼容现有制作机，项目未配置 Key 时也会只读检查 `${AGENTS_HOME:-$HOME/.agents}/skills/video-use/.env`；新机器仍建议把 Key 放在项目 `.env` 或环境变量中。
-
-```bash
-cd remotion
-npm run toolchain
-npm run render:preview10
-npm run render:sample
-cd ..
-```
-
-```bash
-node tools/check-image-api.mjs
-node tools/generate-image.mjs --prompt "提示卡背景，不要文字，不要logo" --size 1536x1024
-```
-
-## 注意
-
-真实素材、客户案例和生图提示词需要进入素材台账或 `shot-plan.json`，公开视频使用前必须确认来源、授权和证据等级。
-
-抠图或升清先运行 `node skills/koubo-asset-prep/scripts/prepare-asset.mjs doctor`。真实调用会把指定素材上传到 each::labs 及实际模型提供商并可能计费，必须达到 `ready-for-production`，再逐次显式确认外部处理和费用；`--dry-run` 不上传、不计费、不生成文件。
-
-本仓库不包含真实原片、客户素材、`.env`、本地字体和正式成片。历史 release 记录在新克隆中可能因对应私密媒体不存在而校验失败，这不代表校验器失效。
+版本变化见 [更新记录](CHANGELOG.md)。

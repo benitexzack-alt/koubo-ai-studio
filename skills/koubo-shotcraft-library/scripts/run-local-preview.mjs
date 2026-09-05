@@ -132,7 +132,21 @@ function readJson(root, name) {
   return JSON.parse(fs.readFileSync(absolute, 'utf8'));
 }
 
-export function contextValidationCommand(python = process.env.PYTHON || '/opt/homebrew/bin/python3') {
+// 从 PATH 解析一次，执行与回执仍使用绝对路径；忽略空项和相对目录。
+export function resolvePythonExecutable(searchPath = process.env.PATH || '') {
+  for (const directory of searchPath.split(path.delimiter).filter((entry) => path.isAbsolute(entry))) {
+    const executable = path.join(directory, 'python3');
+    try {
+      fs.accessSync(executable, fs.constants.X_OK);
+      if (fs.statSync(executable).isFile()) return executable;
+    } catch (error) {
+      if (!['ENOENT', 'ENOTDIR', 'EACCES'].includes(error.code)) throw error;
+    }
+  }
+  fail('CONTEXT_PYTHON_NOT_FOUND');
+}
+
+export function contextValidationCommand(python = process.env.PYTHON || resolvePythonExecutable()) {
   ensure(typeof python === 'string' && path.isAbsolute(python), 'CONTEXT_PYTHON_ABSOLUTE_REQUIRED');
   return {executable: python, args: ['-I', '-B', RAG_SCRIPT, '--config', RAG_CONFIG, 'validate-context', '--context', CONTEXT_PATH],
     cwd: KB_ROOT, env: {PATH: '/usr/bin:/bin:/usr/sbin:/sbin'}};

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""End-to-end regression for the V1 research context and candidate pack gates."""
+"""V1 compiler/validator regression with synthetic private-KB dependencies.
+
+The RAG CLI is a test double, not an evaluation of real knowledge retrieval.
+All synthetic evidence and receipts live in a disposable temporary directory.
+"""
 
 from __future__ import annotations
 
@@ -11,14 +15,8 @@ import tempfile
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[3]
 SCRIPT_DIR = Path(__file__).resolve().parent
-SOURCE = (
-    ROOT.parent
-    / '个人知识库/01_项目实战/抖音知识中台/来源库/2026/08/抖音-7673119173723098419.md'
-)
-PREFLIGHT = ROOT / 'workflow/account-performance-preflights/task-20260819T022553Z-92ad7b23.json'
-TASK_ID = 'task-20260819T022553Z-92ad7b23'
+TASK_ID = 'synthetic-test-v1-research-context'
 
 
 def digest(path: Path) -> str:
@@ -30,6 +28,58 @@ def invoke(command: list[str]) -> tuple[int, dict]:
     if completed.stdout.strip():
         return completed.returncode, json.loads(completed.stdout)
     return completed.returncode, {'stderr': completed.stderr.strip()}
+
+
+def synthetic_inputs(temp: Path) -> tuple[Path, Path, Path]:
+    """Replace only external/private inputs; exercise the real production gates."""
+    kb = temp / 'synthetic-kb'
+    kb.mkdir()
+    source = kb / '完整来源-仅合成测试.md'
+    source.write_text(
+        '---\nsource_completeness: complete\nrights_status: synthetic-test-only\n---\n'
+        '# 合成来源\n\n来源必须回到完整转写和已确认边界；本文件不是账号事实或客户证据。\n',
+        encoding='utf-8',
+    )
+    learning = kb / 'synthetic-learning-card.json'
+    learning.write_text(json.dumps({'evidence_scope': 'synthetic-test-only'}), encoding='utf-8')
+    snapshot = kb / 'synthetic-snapshot.json'
+    snapshot.write_text(json.dumps({'evidence_scope': 'synthetic-test-only'}), encoding='utf-8')
+    preflight = temp / 'synthetic-preflight.json'
+    preflight.write_text(json.dumps({
+        'taskId': TASK_ID,
+        'status': 'ready-current',
+        'evidence_scope': 'synthetic-test-only',
+        'learningCard': {'path': str(learning), 'sha256': digest(learning)},
+        'accountContext': {'snapshotPath': str(snapshot), 'snapshotSha256': digest(snapshot)},
+    }, ensure_ascii=False), encoding='utf-8')
+    rag = kb / '04_Claude Code日常操作/scripts/opc_rag.py'
+    rag.parent.mkdir(parents=True)
+    rag.write_text('''"""Synthetic retrieval CLI test double; never production evidence."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+
+parser = argparse.ArgumentParser()
+parser.add_argument('command', choices=['search'])
+parser.add_argument('--query', required=True)
+parser.add_argument('--limit', type=int, required=True)
+args = parser.parse_args()
+assert args.query.strip() and args.limit == 5
+source = Path(__file__).resolve().parents[2] / '完整来源-仅合成测试.md'
+text = source.read_text(encoding='utf-8')
+print(json.dumps({
+    'status': 'sufficient',
+    'evidence_scope': 'synthetic-test-only',
+    'results': [{
+        'path': str(source), 'line_start': 1, 'line_end': len(text.splitlines()),
+        'heading': '合成来源', 'status': 'synthetic-test-only',
+        'authority': 'synthetic-test-only', 'lifecycle_layer': 'test-fixture',
+        'document_sha256': hashlib.sha256(source.read_bytes()).hexdigest(), 'score': 1.0,
+    }],
+}, ensure_ascii=False))
+''', encoding='utf-8')
+    return kb, preflight, source
 
 
 def candidate_pack(context: Path, source_id: str, retrieval: dict) -> dict:
@@ -80,15 +130,21 @@ def candidate_pack(context: Path, source_id: str, retrieval: dict) -> dict:
 
 def main() -> int:
     with tempfile.TemporaryDirectory() as directory:
-        temp = Path(directory)
+        temp = Path(directory).resolve()
+        kb, preflight, source = synthetic_inputs(temp)
+        compile_command = [
+            sys.executable, str(SCRIPT_DIR / 'prepare_research_context.py'),
+            '--task-id', TASK_ID, '--preflight', str(preflight), '--opcd-root', str(kb),
+        ]
         confirmed_script = temp / 'confirmed-script.md'
         confirmed_script.write_text('# 已确认口播稿\n\n仅用于结构分析。\n', encoding='utf-8')
         missing_evidence_context = temp / 'missing-evidence.json'
-        code, _ = invoke([
-            sys.executable, str(SCRIPT_DIR / 'prepare_research_context.py'),
-            '--task-id', TASK_ID, '--preflight', str(PREFLIGHT), '--opcd-query', '本人确认稿 结构分析', '--source', str(confirmed_script), '--output', str(missing_evidence_context),
+        code, result = invoke([
+            *compile_command,
+            '--opcd-query', '本人确认稿 结构分析', '--source', str(confirmed_script), '--output', str(missing_evidence_context),
         ])
-        assert code == 1, '本人确认稿缺少哈希证据清单时必须阻断'
+        assert code == 1 and '本人确认稿需通过 --source-evidence' in result.get('stderr', ''), result
+        assert not missing_evidence_context.exists()
         evidence = temp / 'source-evidence.json'
         evidence.write_text(json.dumps({
             'schema_version': 1,
@@ -102,8 +158,8 @@ def main() -> int:
         }, ensure_ascii=False), encoding='utf-8')
         confirmed_context = temp / 'confirmed-context.json'
         code, result = invoke([
-            sys.executable, str(SCRIPT_DIR / 'prepare_research_context.py'),
-            '--task-id', TASK_ID, '--preflight', str(PREFLIGHT), '--opcd-query', '本人确认稿 结构分析', '--source-evidence', str(evidence), '--source', str(confirmed_script), '--output', str(confirmed_context),
+            *compile_command,
+            '--opcd-query', '本人确认稿 结构分析', '--source-evidence', str(evidence), '--source', str(confirmed_script), '--output', str(confirmed_context),
         ])
         assert code == 0 and result['status'] == 'ready-for-candidate-review', result
         confirmed_receipt = json.loads(confirmed_context.read_text(encoding='utf-8'))
@@ -111,11 +167,15 @@ def main() -> int:
 
         context = temp / 'context.json'
         code, result = invoke([
-            sys.executable, str(SCRIPT_DIR / 'prepare_research_context.py'),
-            '--task-id', TASK_ID, '--preflight', str(PREFLIGHT), '--opcd-query', 'AI内容来源重建 真实业务判断', '--source', str(SOURCE), '--output', str(context),
+            *compile_command,
+            '--opcd-query', 'AI内容来源重建 真实业务判断', '--source', str(source), '--output', str(context),
         ])
         assert code == 0 and result['status'] == 'ready-for-candidate-review', result
         receipt = json.loads(context.read_text(encoding='utf-8'))
+        assert receipt['opcd']['root'] == str(kb)
+        retrieval = receipt['opcd']['retrieval']['results'][0]
+        assert retrieval['status'] == 'synthetic-test-only'
+        assert retrieval['document_sha256'] == digest(source)
         pack = temp / 'candidate-pack.json'
         pack.write_text(json.dumps(candidate_pack(context, receipt['sources'][0]['id'], receipt['opcd']['retrieval']['results'][0]), ensure_ascii=False), encoding='utf-8')
         code, result = invoke([sys.executable, str(SCRIPT_DIR / 'validate_candidate_review_pack.py'), str(pack)])
@@ -127,7 +187,17 @@ def main() -> int:
         bad_path.write_text(json.dumps(bad, ensure_ascii=False), encoding='utf-8')
         code, result = invoke([sys.executable, str(SCRIPT_DIR / 'validate_candidate_review_pack.py'), str(bad_path)])
         assert code == 1 and result['status'] == 'blocked', result
-    print('V1任务上下文与候选包端到端回归：通过')
+
+        learning = kb / 'synthetic-learning-card.json'
+        learning.write_text('{"evidence_scope":"synthetic-changed"}', encoding='utf-8')
+        stale_context = temp / 'stale-learning-context.json'
+        code, result = invoke([
+            *compile_command, '--opcd-query', '合成学习卡漂移',
+            '--source', str(source), '--output', str(stale_context),
+        ])
+        assert code == 1 and '账号学习卡哈希已变化' in result.get('stderr', ''), result
+        assert not stale_context.exists()
+    print('V1任务上下文与候选包隔离合成回归：通过（不代表真实知识检索验证）')
     return 0
 
 

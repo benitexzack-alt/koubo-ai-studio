@@ -21,7 +21,7 @@
 ```bash
 node skills/koubo-shotcraft-library/scripts/validate-director-selection.mjs \
   <仓库内选择合同.json> \
-  /Users/pc/Documents/口播
+  .
 ```
 
 成功状态为 `director-selection-valid`。任何错误均以退出码 `1` 阻断。
@@ -42,7 +42,7 @@ node skills/koubo-shotcraft-library/scripts/validate-director-selection.mjs \
 ```bash
 node skills/koubo-shotcraft-library/scripts/validate-application-receipt.mjs \
   <仓库内应用回执.json> \
-  /Users/pc/Documents/口播
+  .
 ```
 
 成功状态为 `application-receipt-valid`。校验器会重新核对选择合同、字幕、注册表、组件和成片文件哈希；它只读这些文件，不生成或修改视频。

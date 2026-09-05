@@ -186,7 +186,7 @@ const GeneratedVideoScene: React.FC<{scene: CandidateScene}> = ({scene}) => {
     >
       <Video
         src={staticFile(`media/local-ai-services-20260902-r1/${scene.asset}`)}
-        startFrom={f(scene.trimStart ?? 0)}
+        trimBefore={f(scene.trimStart ?? 0)}
         volume={plan.generatedVideoVolume}
         style={{width: '100%', height: '100%', objectFit: scene.fit ?? 'cover'}}
       />
@@ -236,7 +236,7 @@ const RealMediaScene: React.FC<{scene: CandidateScene}> = ({scene}) => {
       {scene.fit === 'contain' && !scene.renderAsset ? (
         <Video
           src={source}
-          startFrom={trimStart}
+          trimBefore={trimStart}
           muted
           volume={0}
           style={{
@@ -253,7 +253,7 @@ const RealMediaScene: React.FC<{scene: CandidateScene}> = ({scene}) => {
       ) : null}
       <Video
         src={source}
-        startFrom={trimStart}
+        trimBefore={trimStart}
         volume={plan.realMediaVolume}
         objectFit={scene.renderAsset ? 'cover' : scene.fit ?? 'cover'}
         style={{
@@ -280,7 +280,7 @@ const RealMediaScene: React.FC<{scene: CandidateScene}> = ({scene}) => {
       >
         <Video
           src={staticFile(scene.presenterAsset ?? plan.sourceVideo)}
-          startFrom={scene.presenterAsset ? 0 : f(scene.start)}
+          trimBefore={scene.presenterAsset ? 0 : f(scene.start)}
           muted
           volume={0}
           objectFit="cover"

@@ -17,7 +17,7 @@ import {
   ENTRY, IMPLEMENTER_AGENT_ID, LOCAL_BROWSER, LOOPBACK_PRELOAD, REMOTION_PORT_CONFIG,
   LOCAL_CLI, NETWORK_SANDBOX, OUTPUT_ROOT, PLAN, REQUIRED_BINDINGS, STILL_FRAMES,
   assertOutputsAvailable, assertSnapshot, buildCommands, checkedPath, collectImportClosure,
-  parseCommand, validateLocalPreview, assertContextValidation, contextValidationCommand,
+  parseCommand, validateLocalPreview, assertContextValidation, contextValidationCommand, resolvePythonExecutable,
 } from '../scripts/run-local-preview.mjs';
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -466,9 +466,10 @@ test('导入闭包函数不执行候选源码', (t) => {
 });
 
 test('固定知识上下文 CLI 只执行 validate-context，Python 路径是唯一环境选择', () => {
-  const spec = contextValidationCommand('/opt/homebrew/bin/python3');
+  const python = path.join(os.tmpdir(), 'configured-python', 'python3');
+  const spec = contextValidationCommand(python);
   assert.equal(CONTEXT_TASK_ID, 'task-20260904T084602Z-be40d4d5');
-  assert.equal(spec.executable, '/opt/homebrew/bin/python3');
+  assert.equal(spec.executable, python);
   assert.deepEqual(spec.args.slice(0, 2), ['-I', '-B']);
   assert.ok(spec.args[2].endsWith('/04_Claude Code日常操作/scripts/opc_rag.py'));
   assert.deepEqual(spec.args.slice(-3), ['validate-context', '--context', CONTEXT_PATH]);
@@ -479,6 +480,22 @@ test('固定知识上下文 CLI 只执行 validate-context，Python 路径是唯
   assert.ok(CONTEXT_EVIDENCE_PATHS.some((p) => p.endsWith('/context-requirements.v1.json')));
   assert.ok(CONTEXT_EVIDENCE_PATHS.some((p) => p.endsWith('/read-receipts.v1.json')));
   assert.ok(REQUIRED_BINDINGS.every((p) => !path.isAbsolute(p)));
+});
+
+test('Python 默认从 PATH 解析绝对可执行文件，忽略空项、相对目录及不可执行候选', (t) => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'shotcraft-python-path-'));
+  t.after(() => fs.rmSync(root, {recursive: true, force: true}));
+  const blocked = path.join(root, 'blocked');
+  const executableDir = path.join(root, 'valid');
+  fs.mkdirSync(blocked);
+  fs.mkdirSync(executableDir);
+  fs.writeFileSync(path.join(blocked, 'python3'), 'synthetic-only', {mode: 0o600});
+  const executable = path.join(executableDir, 'python3');
+  fs.writeFileSync(executable, 'synthetic-only', {mode: 0o700});
+  assert.equal(resolvePythonExecutable(['', 'relative-bin', blocked, executableDir].join(path.delimiter)), executable);
+  assert.equal(contextValidationCommand(resolvePythonExecutable(executableDir)).executable, executable);
+  assert.throws(() => resolvePythonExecutable(['', 'relative-bin', blocked].join(path.delimiter)), /CONTEXT_PYTHON_NOT_FOUND/);
+  assert.throws(() => resolvePythonExecutable(''), /CONTEXT_PYTHON_NOT_FOUND/);
 });
 
 test('上下文复检必须 exit0 且 context-valid，不能凭旧 context-ready 或伪布尔值放行', () => {

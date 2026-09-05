@@ -10,6 +10,7 @@ import {
   useVideoConfig,
 } from 'remotion';
 import {AdaptiveBilingualCaptionOverlay} from './AdaptiveBilingualCaptionOverlay';
+import {CaptionOverlay} from './CaptionOverlay';
 import {LocalFont} from './LocalFont';
 import {
   V7AnnotatedMediaStage,
@@ -147,6 +148,7 @@ export type V72ProductionConfig = {
   sourceVideo: string;
   captionsSrc: string;
   captionVariant?: 'boxed' | 'transparent-v8';
+  captionMode?: 'bilingual' | 'chinese';
   brandLabel?: string;
   sourceObjectFit?: 'cover' | 'contain';
   sourceFilter?: string;
@@ -458,10 +460,14 @@ export const V72ProductionShell: React.FC<{
         durationSeconds={config.durationSeconds}
         brandLabel={config.brandLabel ?? '超哥AI创业记'}
       />
-      <AdaptiveBilingualCaptionOverlay
-        captionsSrc={config.captionsSrc}
-        variant={config.captionVariant}
-      />
+      {config.captionMode === 'chinese' ? (
+        <CaptionOverlay captionsSrc={config.captionsSrc} />
+      ) : (
+        <AdaptiveBilingualCaptionOverlay
+          captionsSrc={config.captionsSrc}
+          variant={config.captionVariant}
+        />
+      )}
     </AbsoluteFill>
   );
 };

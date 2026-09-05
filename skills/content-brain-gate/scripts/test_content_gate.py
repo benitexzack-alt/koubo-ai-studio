@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Regression tests for the content-brain gate validator."""
+"""Content-gate regression with isolated test history and Skill hash inputs.
+
+Synthetic review evidence tests contracts only, not real editorial acceptance.
+"""
 
 from __future__ import annotations
 
@@ -31,7 +34,47 @@ class ContentGateRegressionTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp_dir_context = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp_dir_context.cleanup)
-        self.temp_dir = Path(self.temp_dir_context.name)
+        self.temp_dir = Path(self.temp_dir_context.name).resolve()
+        project_root = SKILL_ROOT.parent.parent
+
+        # 保留现行机器扫描规则；历史输入使用仓库自带测试稿，不读取私人知识库。
+        rules = json.loads(
+            (project_root / MODULE.PROJECT_STYLE_GATE_PATH).read_text(encoding="utf-8")
+        )
+        self.history_path = self.temp_dir / "synthetic-history.json"
+        history = {
+            "schema_version": 1,
+            "evidence_scope": "synthetic-test-only",
+            "items": [
+                {
+                    "id": f"synthetic-history-{index:02d}",
+                    "path": str(SKILL_ROOT / "fixtures" / f"recent-script-{index:02d}.md"),
+                    "sha256": MODULE.file_sha256(
+                        SKILL_ROOT / "fixtures" / f"recent-script-{index:02d}.md"
+                    ),
+                }
+                for index in range(1, 7)
+            ],
+        }
+        self.history_path.write_text(json.dumps(history, ensure_ascii=False), encoding="utf-8")
+        rules["history_manifest"] = str(self.history_path)
+        rules_path = self.temp_dir / "synthetic-history-style-rules.json"
+        rules_path.write_text(json.dumps(rules, ensure_ascii=False), encoding="utf-8")
+        rule_patch = mock.patch.object(MODULE, "PROJECT_STYLE_GATE_PATH", str(rules_path))
+        rule_patch.start()
+        self.addCleanup(rule_patch.stop)
+
+        # 外部 humanizer 安装只参与路径与当前哈希合同；测试不证明真实 Skill 审稿。
+        codex_home = self.temp_dir / "synthetic-codex-home"
+        humanizer = codex_home / "skills" / "humanizer-zh" / "SKILL.md"
+        humanizer.parent.mkdir(parents=True)
+        humanizer.write_text("# 合成 Skill 哈希样本\n\n仅用于测试，不是审稿能力或真实验收证据。\n", encoding="utf-8")
+        environment_patch = mock.patch.dict(os.environ, {
+            "CODEX_HOME": str(codex_home),
+            "KOUBO_PROJECT_ROOT": str(project_root),
+        })
+        environment_patch.start()
+        self.addCleanup(environment_patch.stop)
 
     def validate(self, card: dict, name: str) -> dict:
         return MODULE.GateValidator(card, SKILL_ROOT / "fixtures" / name).run()
@@ -357,6 +400,32 @@ class ContentGateRegressionTests(unittest.TestCase):
         self.assertEqual(result["status"], "blocked")
         self.assertTrue(any("repeat-small-task" in error for error in result["errors"]))
         self.assertTrue(any("lanzhou-ai-identity" in error for error in result["errors"]))
+
+    def test_isolated_history_still_rejects_missing_file_and_stale_hash(self) -> None:
+        card = load_fixture("waic-new-pass.json")
+        draft_path = SKILL_ROOT / "fixtures" / "section-scan.md"
+        card["draft"] = {
+            "path": str(draft_path),
+            "content_start_marker": "## 口播正文",
+            "content_end_marker": "## 审计附录",
+            "phrase_exemptions": [],
+        }
+        self.attach_copy_review(card, draft_path)
+        history = json.loads(self.history_path.read_text(encoding="utf-8"))
+        for label, change, expected in [
+            ("missing", {"path": str(self.temp_dir / "missing-history.md")}, ".path 文件不存在"),
+            ("stale", {"sha256": "0" * 64}, ".sha256 已过期"),
+        ]:
+            with self.subTest(label=label):
+                altered = copy.deepcopy(history)
+                altered["items"][0].update(change)
+                self.history_path.write_text(json.dumps(altered, ensure_ascii=False), encoding="utf-8")
+                result = self.validate(card, f"isolated-history-{label}.json")
+                self.assertEqual(result["status"], "blocked", result["errors"])
+                self.assertTrue(any(
+                    "draft.style_gate.history.items[0]" in error and expected in error
+                    for error in result["errors"]
+                ), result["errors"])
 
     def test_user_rejected_ai_tone_patterns_are_blocked_even_when_review_self_reports_pass(self) -> None:
         card = copy.deepcopy(load_fixture("waic-new-pass.json"))
