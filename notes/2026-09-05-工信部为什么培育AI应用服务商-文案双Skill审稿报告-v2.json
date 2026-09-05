@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260904T181604Z-339e9da8",
+  "status": "passed",
+  "reviewed_at": "2026-09-05T03:18:00+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-09-05-工信部为什么培育AI应用服务商-正式口播稿-v2.md",
+    "sha256": "7f9288c9e72a49e5097119afee2461c60048b9de9b1ad1515b16ff2d18184c3f"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "开头直接用政策反差和本地老板的选择困境进入，没有解释“今天要讲什么”。2000家、四段服务和安全边界各自只在需要的位置出现；抽象定义后立即接咨询、报价、资料、员工确认和错误转人工的现场。删除了资源池红利、万能系统和成熟交付承诺，把服务宣传收在“先走查一段工作、能试再设小范围”的真实边界内。"
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "8 月 31 号，工信部发了一份通知：到 2026 年底，全国服务商资源池里的人工智能应用服务商，要突破 2000 家。",
+        "risk_level": "medium",
+        "reason": "新闻数字必须紧接本地老板的困惑，否则会变成政策播报，观众无法知道和自己有什么关系。",
+        "candidates": {
+          "conservative": "8 月 31 号，工信部发了这份通知，年底前全国服务商资源池要突破 2000 家。",
+          "direct": "8 月 31 号，工信部发了一份通知：到 2026 年底，全国服务商资源池里的人工智能应用服务商，要突破 2000 家。",
+          "vivid": "8 月 31 号这份通知给了一个数：2000 家。老板先别急着把它听成机会名额。"
+        },
+        "fact_difference": "三个版本均保留日期、机构、时间目标和资源池口径，不新增政策效果。",
+        "recommendation": "保留直接版。下一句立刻给出本地老板的困惑，政策数字不会单独占据开头。"
+      },
+      {
+        "original": "咨询规划、交付实施、运营管理、安全治理。",
+        "risk_level": "medium",
+        "reason": "四个正式词连着出现，口播中容易像念文件；若后面不立即翻译，观众会在定义处离开。",
+        "candidates": {
+          "conservative": "通知把应用服务商要做的工作分成四段：咨询、交付、运营和安全。",
+          "direct": "这份通知里面，最有用的不是那个数字，而是它把“应用服务商”这件事说得很明白：咨询规划、交付实施、运营管理、安全治理。",
+          "vivid": "文件没讲什么高深词，翻下来就是四件事：先问清、做出来、有人管、别出事。"
+        },
+        "fact_difference": "保守版压缩官方术语；生动版只作通俗概括。当前稿保留完整官方术语，并逐段翻译，事实强度不变。",
+        "recommendation": "保留直接版，随后用四段各自对应的企业动作解释，避免把通俗概括误当官方原话。"
+      },
+      {
+        "original": "这就是我们做本地企业 AI 服务，能先给大家提供的价值。",
+        "risk_level": "medium",
+        "reason": "若只讲“我们能提供价值”，会突然从公共政策滑向自我宣传，削弱前面建立的信任。",
+        "candidates": {
+          "conservative": "对本地企业来说，先把这段工作拆开，至少能少走一圈工具采购的弯路。",
+          "direct": "这就是我们做本地企业 AI 服务，能先给大家提供的价值。",
+          "vivid": "所以别急着问我们能装什么，先把你公司那段最费人的活摆到桌上。"
+        },
+        "fact_difference": "三个版本不新增服务范围、案例、效果或收入承诺。",
+        "recommendation": "保留直接版，但前后各用“先走查一段业务”和“能试再设小范围”承接，明确服务边界而不做能力夸张。"
+      }
+    ]
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "将政策术语放在工信部通知的事实框架中，再以通俗工作动作解释；未将政策方向加强为企业收益或服务能力结论。",
+      "删除固定身份收尾，避免与近期内容重复；不影响政策事实、服务边界或行动引导。"
+    ],
+    "pending_user_confirmations": [
+      "当前稿待用户按本人语速完整朗读，确认“我们现在跟本地企业聊AI”和结尾评论引导是否符合本人对外表达。"
+    ]
+  },
+  "scores": {
+    "directness": 8.5,
+    "spoken_naturalness": 8,
+    "rhythm": 7.8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  }
+}
