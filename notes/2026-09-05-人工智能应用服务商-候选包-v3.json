@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260904T181604Z-339e9da8",
+  "status": "discussion-only",
+  "supersedes": "notes/2026-09-05-人工智能应用服务商-候选包-v2.json",
+  "rework_reason": "v2 将工信部专项行动降为事实备注，未把政策事件、文件定义和企业现场连成主叙事链，不能代表用户提供参考视频的内容功能。",
+  "public_copy_generated": false,
+  "research_context": {
+    "path": "/Users/pc/Documents/口播/workflow/koubo-research-contexts/task-20260904T181604Z-339e9da8-ai-service-provider-v2.json",
+    "sha256": "ef9e9982bfb533cef01ab3ce49ae2ac959c1d7e685402f385b3c2840d1d6f450"
+  },
+  "policy_anchor": {
+    "source": "工业和信息化部办公厅《关于开展人工智能应用服务商培育专项行动的通知》",
+    "published_at": "2026-08-31",
+    "verified_url": "https://www.miit.gov.cn/zwgk/zcwj/wjfb/tz/art/2026/art_6fbc038bf15c445ab53b2a94a3f9d4e4.html",
+    "usable_facts": [
+      "文件定义人工智能应用服务商为围绕用户单位智能化需求，提供咨询规划、交付实施、运营管理、安全治理等服务的企业或机构。",
+      "文件提出到2026年底全国服务商资源池内服务商数量突破2000家，到2027年底不少于3000家。",
+      "文件鼓励搭建前线部署工程师团队，扎根用户现场，保障场景落地。"
+    ],
+    "do_not_infer": [
+      "资源池数量不是订单、创业名额、职业资格、补贴资格或收入承诺。",
+      "文件不证明任何企业已具备成熟AI改造条件。"
+    ]
+  },
+  "candidates": [
+    {
+      "id": "C1-why-service-provider",
+      "topic": "工信部为什么要专门培育AI应用服务商",
+      "real_scene": "一个老板已经看过模型、智能体和自动回复的演示，最后仍只有四个问题：我的业务到底先改哪一段，资料给谁，员工谁来接，出错了怎么办。工具能演示，现场的这些问题没有人接。",
+      "audience_conflict": "很多人把新通知听成又多了一个AI概念或一批入池名额，却没看见文件实际在补企业从“看见能力”到“用进业务”之间那段没人负责的工作。",
+      "original_judgment": "这份通知的看点不在2000家，而在国家把咨询、交付、运营、安全四段工作单独写出来了：模型和工具之外，企业现场还需要有人把问题问明白、把东西交出来、让人用下去、把风险接住。",
+      "evidence_gap": "政策定义和数字已由工信部原页复核；“企业现场没人接”是对四段服务的通俗解释，不是对所有企业的调查结论；不得说为任何企业提供过完整四段服务。",
+      "source_ids": ["source:dd799ce7fc8ce0a2"],
+      "opcd_read_refs": [
+        {
+          "path": "01_项目实战/抖音知识中台/知识点库/知识-7664943450047892206-enterprise-ai-start-with-process.md",
+          "document_sha256": "9c1bb76fd7f2269f95f7dc42ed39783d1ad03dfe7a92344c0d3df24c6452ea5b",
+          "application": "把政策中的“咨询规划”落成企业可听懂的第一步：先走查一段最耗时的工作，而不是先把镜头停在模型功能上。"
+        }
+      ],
+      "hook_options": [
+        {
+          "id": "C1-H1",
+          "text": "工信部刚发了一个AI新通知：到今年底，要培育超过2000家应用服务商。它要补的，不是模型公司的数量。",
+          "concrete_anchor": "工信部8月31日通知与2000家资源池目标",
+          "promise": "解释政策数字背后，企业真正缺的那段工作"
+        },
+        {
+          "id": "C1-H2",
+          "text": "模型、算力、智能体都出来了，工信部为什么还专门开始培育AI应用服务商？",
+          "concrete_anchor": "工具已经很多，政策却新增服务商培育的反差",
+          "promise": "把“应用服务商”翻成老板能对照的现场工作"
+        },
+        {
+          "id": "C1-H3",
+          "text": "工信部这份AI通知里，最值得老板看的不是2000家，是后面这四个字：交付、运营、安全。",
+          "concrete_anchor": "文件对服务职责的四段定义",
+          "promise": "说明企业AI不能只停在演示和采购"
+        }
+      ],
+      "outline_spine": [
+        {"function": "hook", "statement": "用工信部最新专项行动和2000家资源池目标提出反问：为什么模型已有，还要专门培育服务商。"},
+        {"function": "correction", "statement": "先把数字从名额、订单和暴富机会拉回政策原意：它是服务供给培育目标。"},
+        {"function": "evidence", "statement": "亮出文件定义的咨询规划、交付实施、运营管理、安全治理四段服务。"},
+        {"function": "mechanism", "statement": "用一个企业准备上自动回复或知识库的场景，逐一翻译四段工作各在解决什么。"},
+        {"function": "boundary", "statement": "不说买一个工具就能完成四段工作，也不把文件说成服务商资格证。"},
+        {"function": "action", "statement": "老板今天先挑一段最耗时的工作，把业务目标、资料、日常负责人和异常处理写出来。"},
+        {"function": "callback", "statement": "回到开头：政策要补的不是模型数量，而是把AI接进企业现场并能负责的人。"}
+      ],
+      "long_term_trust_path": "政策解释不是终点，最终让本地老板记住：超哥能把宏观文件翻成企业该先问什么、先准备什么，为流程诊断与小范围验证建立信任入口。",
+      "public_value_contract": {
+        "external_audience": "兰州及甘肃正在观望AI、但尚未形成清晰行动路径的中小企业老板",
+        "present_situation": "看见大量工具和政策新闻，却不知道它和自己一段具体业务有什么关系",
+        "viewer_decision": "不拿资源池数量判断机会，先用四段服务检查自己缺的是工具还是现场交付",
+        "account_strategy_link": "把政策、技术和本地企业真实工作之间的关系讲清楚",
+        "internal_process_is_not_topic": true
+      },
+      "non_claims": [
+        "不把资源池数量说成市场订单或个人名额。",
+        "不称超哥已具备或交付了全部四段服务。",
+        "不承诺企业照做即可获得政策支持或AI效果。"
+      ],
+      "manual_selection": {"status": "pending-user-selection"}
+    },
+    {
+      "id": "C2-policy-to-demo-gap",
+      "topic": "为什么AI演示跑通了，工信部还要强调交付和运营",
+      "real_scene": "会上AI把一份资料整理得很快，大家都说好。第二天资料没人持续更新，员工不知道哪些结果能直接用，客户问到边界外的问题也没人接，页面还在，流程却停了。",
+      "audience_conflict": "企业常把一次功能演示当作AI项目完成；而文件首次把交付实施、运营管理和安全治理放在服务商定义里，说明部署之后那段工作不能被省略。",
+      "original_judgment": "这份政策不是在说“所有AI都要做得很重”，而是在提醒一件朴素的事：能跑一次和能被公司持续使用，是两件事。前者看功能，后者还要看资料、人员和责任。",
+      "evidence_gap": "政策定义已复核；“第二天没人用”是代表性场景，不是超哥客户案例或行业统计；成稿前须避免把服务链说成固定的标准项目周期。",
+      "source_ids": ["source:dd799ce7fc8ce0a2"],
+      "opcd_read_refs": [
+        {
+          "path": "01_项目实战/抖音知识中台/知识点库/知识-7664943450047892206-enterprise-ai-start-with-process.md",
+          "document_sha256": "9c1bb76fd7f2269f95f7dc42ed39783d1ad03dfe7a92344c0d3df24c6452ea5b",
+          "application": "把抽象的“运营管理”拆成一次流程走查中的输入、等待、重复、错误、交接和结果，避免只说“要持续运营”。"
+        }
+      ],
+      "hook_options": [
+        {
+          "id": "C2-H1",
+          "text": "一套AI会议室里跑得挺好，为什么工信部的新通知里，还专门写了交付实施和运营管理？",
+          "concrete_anchor": "演示成功与文件强调交付运营的反差",
+          "promise": "讲明白AI从演示到公司日常使用，中间少不了什么"
+        },
+        {
+          "id": "C2-H2",
+          "text": "工信部这次培育AI服务商，里面有个信号很明确：演示跑通，不等于企业用起来。",
+          "concrete_anchor": "专项行动对服务职责的明确要求",
+          "promise": "用真实工作场景拆开“能用”和“能持续用”"
+        },
+        {
+          "id": "C2-H3",
+          "text": "老板最容易被AI演示打动，但工信部这份文件盯住的，恰恰是演示结束后的那段事。",
+          "concrete_anchor": "老板看演示后的持续使用问题",
+          "promise": "说明资料、负责人和异常处理为什么提前就要讲"
+        }
+      ],
+      "outline_spine": [
+        {"function": "hook", "statement": "从工信部通知中交付实施和运营管理两项，提出演示成功为什么还不够。"},
+        {"function": "correction", "statement": "不把政策理解为给所有企业增加复杂流程，而是纠正“功能演示等于落地”。"},
+        {"function": "evidence", "statement": "引用文件对应用服务商四段服务的定义，特别点出交付、运营和安全。"},
+        {"function": "mechanism", "statement": "用资料更新、员工使用、异常转人三个真实工作点解释使用阶段会断在哪里。"},
+        {"function": "boundary", "statement": "不承诺每个场景都需要大项目，也不说指定一个负责人就能解决技术和合规问题。"},
+        {"function": "action", "statement": "让老板在买工具前先写下：谁持续维护资料、谁能确认结果、例外由谁接。"},
+        {"function": "callback", "statement": "回扣通知：它把交付和运营写进定义，就是不让AI只停在演示的十分钟里。"}
+      ],
+      "long_term_trust_path": "让账号从“会介绍工具”走向“看得见落地后使用问题”，为后续企业知识库、陪跑和人工确认边界建立可信预期。",
+      "public_value_contract": {
+        "external_audience": "已经看过AI方案、准备采购或正在试用的本地企业负责人",
+        "present_situation": "容易被演示吸引，却没提前处理资料维护、人员使用和异常责任",
+        "viewer_decision": "把交付、运营和安全的具体责任写进沟通，而非只比较功能列表",
+        "account_strategy_link": "从政策的服务定义切入，解释企业AI为什么需要进入真实流程",
+        "internal_process_is_not_topic": true
+      },
+      "non_claims": [
+        "不说所有演示成功的AI项目都会失败。",
+        "不把工信部通知说成某种项目验收标准。",
+        "不承诺做完三项检查就能提升效率或回本。"
+      ],
+      "manual_selection": {"status": "pending-user-selection"}
+    },
+    {
+      "id": "C3-policy-to-first-step",
+      "topic": "工信部开始培育AI服务商，企业第一步到底先做什么",
+      "real_scene": "老板问服务商：给我公司做一整套AI多少钱？员工却说不清哪件工作最费时间，是反复找资料、整理报价、回重复咨询，还是跨部门交接。方案还没开始，需求已经被说成一团。",
+      "audience_conflict": "政策在推动应用服务链，企业却容易把它理解成购买一套大系统；结果服务商讲得很大，老板也不知道先从哪里验收。",
+      "original_judgment": "文件提倡培育能交付的服务商，不等于企业要一口气上全套。对普通中小企业，更现实的起点是找一段高频、急需、边界能讲清的工作，先把它走明白，再谈AI怎么进入。",
+      "evidence_gap": "“高频、急需、可复用”是政策支持方向，不是所有企业的技术路线；没有本地客户的真实数据时，不能承诺改造成本、效率或可复制结果。",
+      "source_ids": ["source:dd799ce7fc8ce0a2"],
+      "opcd_read_refs": [
+        {
+          "path": "01_项目实战/抖音知识中台/知识点库/知识-7664943450047892206-enterprise-ai-start-with-process.md",
+          "document_sha256": "9c1bb76fd7f2269f95f7dc42ed39783d1ad03dfe7a92344c0d3df24c6452ea5b",
+          "application": "候选的行动部分不讲“先做流程”这种空话，而是按输入、等待、重复、错误、交接、结果六项带老板找第一段值得讨论的工作。"
+        }
+      ],
+      "hook_options": [
+        {
+          "id": "C3-H1",
+          "text": "工信部开始专门培育AI应用服务商了，企业第一步却不是给公司上一整套AI。",
+          "concrete_anchor": "专项行动与企业一上来要做全套AI的反差",
+          "promise": "给老板一个从政策新闻回到自己公司现场的起步方法"
+        },
+        {
+          "id": "C3-H2",
+          "text": "工信部这份通知说要把AI用进场景。可很多老板一开口“给我整套AI”，项目反而不知道从哪下手。",
+          "concrete_anchor": "政策强调场景与企业模糊大需求的反差",
+          "promise": "拆出一段可以先走查、先验证的真实工作"
+        },
+        {
+          "id": "C3-H3",
+          "text": "别只盯着工信部培育了多少AI服务商。对企业老板来说，先找到哪一段工作值得改，才是第一步。",
+          "concrete_anchor": "资源池数字与企业内部流程的对照",
+          "promise": "说明政策方向怎样落到今天能做的一件事"
+        }
+      ],
+      "outline_spine": [
+        {"function": "hook", "statement": "从工信部培育应用服务商这一事件，直接问企业第一步为什么不是买一整套AI。"},
+        {"function": "correction", "statement": "把政策资源池与企业采购动作分开：服务供给扩张，不等于企业要一次性做大项目。"},
+        {"function": "evidence", "statement": "说明文件定义服务商要围绕用户单位智能化需求，并鼓励面向高频、急需、可复用业务的服务。"},
+        {"function": "mechanism", "statement": "让老板用输入、等待、重复、错误、交接、结果走查一段工作，形成可讨论的第一步。"},
+        {"function": "boundary", "statement": "耗时工作不等于必然适合AI，仍需要判断授权、数据、人工确认和成本。"},
+        {"function": "action", "statement": "今天只选一段最耗人的工作，写清六项观察点再和服务商谈小范围方案。"},
+        {"function": "callback", "statement": "回到政策：应用服务链的价值，不是让企业买更多工具，而是让一段真实工作终于能被说明白、被交付、被持续使用。"}
+      ],
+      "long_term_trust_path": "以政策引出企业的第一步，把账号长期定位在先拆业务、再谈工具和服务，为本地流程诊断、培训和小范围试验提供可信入口。",
+      "public_value_contract": {
+        "external_audience": "对AI有兴趣、但不知道该从什么地方开始的兰州及甘肃中小企业老板",
+        "present_situation": "把AI理解成一整套采购项目，需求大而空，难以判断服务商是否讲得明白",
+        "viewer_decision": "先走查一段高频工作，再决定是否值得进入AI的小范围尝试",
+        "account_strategy_link": "把国家政策方向翻译为企业今天能执行的第一步",
+        "internal_process_is_not_topic": true
+      },
+      "non_claims": [
+        "不说所有企业都应该从同一种流程开始。",
+        "不承诺小范围AI尝试一定会变成长期项目。",
+        "不把政策鼓励理解成任何企业都能获得补贴或低成本改造。"
+      ],
+      "manual_selection": {"status": "pending-user-selection"}
+    }
+  ]
+}
