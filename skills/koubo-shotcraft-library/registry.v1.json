@@ -2,10 +2,65 @@
   "schemaVersion": "shotcraft-adapters/v1",
   "defaultEnabled": false,
   "effects": [
-    {"id":"marker-underline","name":"关键词划线","upstream":"marker-underline-title","component":"MarkerUnderline","contexts":["speaker"],"status":"candidate-only"},
-    {"id":"keyword-reveal","name":"逐项呈现","upstream":"list-reveal","component":"KeywordReveal","contexts":["speaker"],"status":"candidate-only"},
-    {"id":"evidence-scan","name":"真实证据框选","upstream":"scanline-annotate-focus","component":"EvidenceScan","contexts":["real-evidence"],"status":"candidate-only"},
-    {"id":"line-carry","name":"线条连接","upstream":"line-carry-transition","component":"LineCarry","contexts":["speaker"],"status":"candidate-only"},
-    {"id":"paper-tape-pin","name":"纸胶带固定","upstream":"paper-craft-moves","component":"PaperTapePin","contexts":["speaker","real-evidence"],"status":"candidate-only"}
+    {
+      "id": "marker-underline",
+      "name": "关键词划线",
+      "upstream": "marker-underline-title",
+      "component": "MarkerUnderline",
+      "contexts": ["speaker"],
+      "status": "candidate-only",
+      "semanticIntents": ["emphasis", "correction", "conclusion"],
+      "materialClasses": ["talking-head", "generic"],
+      "minimumDurationSeconds": 1.2,
+      "maximumDurationSeconds": 6
+    },
+    {
+      "id": "keyword-reveal",
+      "name": "逐项呈现",
+      "upstream": "list-reveal",
+      "component": "KeywordReveal",
+      "contexts": ["speaker"],
+      "status": "candidate-only",
+      "semanticIntents": ["list", "process", "reveal"],
+      "materialClasses": ["talking-head", "generic"],
+      "minimumDurationSeconds": 2.4,
+      "maximumDurationSeconds": 10
+    },
+    {
+      "id": "evidence-scan",
+      "name": "真实证据框选",
+      "upstream": "scanline-annotate-focus",
+      "component": "EvidenceScan",
+      "contexts": ["real-evidence"],
+      "status": "candidate-only",
+      "semanticIntents": ["evidence", "selection", "reveal"],
+      "materialClasses": ["interface", "screen-recording", "document", "data-visualization"],
+      "minimumDurationSeconds": 2.5,
+      "maximumDurationSeconds": 8
+    },
+    {
+      "id": "line-carry",
+      "name": "线条连接",
+      "upstream": "line-carry-transition",
+      "component": "LineCarry",
+      "contexts": ["speaker"],
+      "status": "candidate-only",
+      "semanticIntents": ["causal", "process", "transformation", "convergence"],
+      "materialClasses": ["talking-head", "generic"],
+      "minimumDurationSeconds": 2.8,
+      "maximumDurationSeconds": 9
+    },
+    {
+      "id": "paper-tape-pin",
+      "name": "纸胶带固定",
+      "upstream": "paper-craft-moves",
+      "component": "PaperTapePin",
+      "contexts": ["speaker", "real-evidence"],
+      "status": "candidate-only",
+      "semanticIntents": ["evidence", "emphasis", "reveal"],
+      "materialClasses": ["image", "document", "screen-recording", "generic"],
+      "minimumDurationSeconds": 2.5,
+      "maximumDurationSeconds": 8
+    }
   ]
 }

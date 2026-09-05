@@ -24,13 +24,19 @@ const requiredArtifacts = {
     'spokenSourceBinding',
     'postshootRebindReceipt',
     'shotcraftSelectionPlan',
+    'shotcraftAutoMatchRequest',
+    'shotcraftAutoMatchReceipt',
+    'shotcraftExperienceLookupReceipt',
   ],
   'candidate-preview-rendered': [
     'candidatePreview',
     'candidateQaReceipt',
     'shotcraftApplicationReceipt',
   ],
-  'candidate-preview-user-approved': ['candidateUserAcceptance'],
+  'candidate-preview-user-approved': [
+    'candidateUserAcceptance',
+    'shotcraftExperienceWriteReceipt',
+  ],
   'formal-rendered': ['formalVideo', 'formalQaReceipt'],
   'release-package-ready': ['releaseRecord', 'releasePackageReceipt'],
 };
@@ -58,7 +64,7 @@ function buildState(stageCount, gateOverrides = {}) {
         : previewApproved
           ? 'formal-authorized'
           : 'candidate-preview-required',
-    directorProfile: {profileId: 'paper-editorial-director-v9', profileVersion: '9.0.0'},
+    directorProfile: {profileId: 'paper-editorial-director-v9', profileVersion: '9.1.0'},
     currentStage: stageHistory.at(-1).stage,
     stageHistory,
     gates: {
@@ -86,6 +92,22 @@ test('V9 accepts the script-confirmed start state', () => {
   assert.equal(result.ok, true);
   assert.equal(result.nextStage, 'director-prompt-packs-ready');
   assert.equal(result.formalEnabled, false);
+});
+
+test('V9.1 requires automatic matching and experience lookup at postshoot rebound', () => {
+  const state = buildState(5);
+  delete state.stageHistory[4].artifacts.shotcraftAutoMatchReceipt;
+  const result = validateV9ProductionState({state});
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.includes('V9_ARTIFACT_BINDING_INVALID:postshoot-rebound:shotcraftAutoMatchReceipt'));
+});
+
+test('V9.1 requires the accepted preview to be written into the experience ledger', () => {
+  const state = buildState(7);
+  delete state.stageHistory[6].artifacts.shotcraftExperienceWriteReceipt;
+  const result = validateV9ProductionState({state});
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.includes('V9_ARTIFACT_BINDING_INVALID:candidate-preview-user-approved:shotcraftExperienceWriteReceipt'));
 });
 
 test('V9 rejects skipped or reordered stages', () => {

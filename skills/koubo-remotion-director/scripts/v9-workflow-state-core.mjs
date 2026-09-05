@@ -47,6 +47,15 @@ const REQUIRED_ARTIFACTS = Object.freeze({
   'release-package-ready': ['releaseRecord', 'releasePackageReceipt'],
 });
 
+const V91_REQUIRED_ARTIFACTS = Object.freeze({
+  'postshoot-rebound': [
+    'shotcraftAutoMatchRequest',
+    'shotcraftAutoMatchReceipt',
+    'shotcraftExperienceLookupReceipt',
+  ],
+  'candidate-preview-user-approved': ['shotcraftExperienceWriteReceipt'],
+});
+
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const isSha256 = (value) => /^[a-f0-9]{64}$/.test(String(value ?? ''));
 
@@ -91,7 +100,7 @@ export function validateV9ProductionState({state, projectRoot = null, verifyFile
 
   fail(state?.schemaVersion === V9_PRODUCTION_STATE_SCHEMA, 'V9_STATE_SCHEMA_INVALID');
   fail(state?.directorProfile?.profileId === 'paper-editorial-director-v9', 'V9_PROFILE_ID_INVALID');
-  fail(state?.directorProfile?.profileVersion === '9.0.0', 'V9_PROFILE_VERSION_INVALID');
+  fail(['9.0.0', '9.1.0'].includes(state?.directorProfile?.profileVersion), 'V9_PROFILE_VERSION_INVALID');
   fail(typeof state?.taskId === 'string' && state.taskId.trim(), 'V9_TASK_ID_REQUIRED');
   fail(typeof state?.revisionId === 'string' && state.revisionId.trim(), 'V9_REVISION_ID_REQUIRED');
   const history = Array.isArray(state?.stageHistory) ? state.stageHistory : [];
@@ -108,7 +117,11 @@ export function validateV9ProductionState({state, projectRoot = null, verifyFile
       errors.push(`V9_STAGE_COMPLETION_TIME_REQUIRED:${record.stage}`);
     }
     const artifacts = record.artifacts ?? {};
-    for (const key of REQUIRED_ARTIFACTS[record.stage] ?? []) {
+    const required = [
+      ...(REQUIRED_ARTIFACTS[record.stage] ?? []),
+      ...(state?.directorProfile?.profileVersion === '9.1.0' ? (V91_REQUIRED_ARTIFACTS[record.stage] ?? []) : []),
+    ];
+    for (const key of required) {
       verifyArtifactBinding({
         binding: artifacts[key],
         projectRoot: verifyFiles ? projectRoot : null,

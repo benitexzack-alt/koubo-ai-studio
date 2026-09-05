@@ -1,12 +1,12 @@
-# V9 Shotcraft 导演选择与实际应用合同
+# V9.1 Shotcraft 导演选择与实际应用合同
 
 本合同只负责 Shotcraft 的逐 beat 选择和实际消费证明，不修改生产路由、活动档案、纸艺导演核心、Presenter 或共享 V8，也不授予本条以外的生产权限。
 
 ## 选择合同
 
-复制 `templates/director-selection.v1.template.json`，按当前 V9 task 与 revision 填写真实值，并保持 `paper-editorial-director-v9@9.0.0` 身份一致。
+由 `templates/auto-match-request.v1.template.json` 建立本条自动匹配请求，并保持 `paper-editorial-director-v9@9.1.0` 身份一致。选择合同应由匹配器自动生成；手工编写只用于 fixture 和故障定位，不得冒充自动匹配证据。
 
-- 本合同的 V9 eligible 主画面固定为 `speaker`、`real-evidence`，与 `paper-editorial-director-v9@9.0.0` 的路由策略一致；注册表的 `contexts` 进一步限制每个效果能用在哪一类画面。
+- 本合同的 V9.1 eligible 主画面固定为 `speaker`、`real-evidence`；注册表的 `contexts` 进一步限制每个效果能用在哪一类画面。
 - `beats` 必须列出本条完整主画面清单，并保持同一时间轴的唯一 `beatId` 与半开帧区间；不能通过漏列 beat 规避选择。
 - 每个 eligible beat 必须显式写 `decision: "apply"` 或 `decision: "not-needed"`。
 - `apply` 必须绑定已注册的 `effectId`、具体 `purpose`、实录 `quote` 和 `texts`、帧窗、画面 `region`、全部 `protectedRegions`，并固定 `fallback: "blocked"`。
@@ -15,6 +15,8 @@
 - `paper-editorial` 与 `generated-video` 内部不得选择 Shotcraft。
 - 非 `apply` beat 不得残留效果、区域或证据等应用字段。
 - 允许所有 eligible beat 都选择 `not-needed`。合同禁止设置最低应用数、效果数或类似全片机械配额。
+- 选择合同中的 `sourceCard`、`matchContext`和 `componentProps` 必须与当前注册表、匹配语境和组件要求一致。
+- 匹配回执必须证明全部 157 张卡都已分析，并分开记录可渲染选择与尚需适配的候选。
 
 校验命令：
 

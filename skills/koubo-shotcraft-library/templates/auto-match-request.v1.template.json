@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "koubo-shotcraft-auto-match-request/v1",
+  "taskId": "<TASK_ID>",
+  "revisionId": "<NEW_CANDIDATE_REVISION_ID>",
+  "directorProfile": {
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0"
+  },
+  "subtitleAuthority": "actual-recording",
+  "registry": {"path": "skills/koubo-shotcraft-library/registry.v1.json", "sha256": "<CURRENT_SHA256>"},
+  "library": {"path": "skills/koubo-shotcraft-library/upstream/gallery/api/library.json", "sha256": "<CURRENT_SHA256>"},
+  "capabilityIndex": {"path": "skills/koubo-shotcraft-library/card-capability-index.v2.json", "sha256": "<CURRENT_SHA256>"},
+  "experienceLedger": {"path": "skills/koubo-shotcraft-library/experience/shotcraft-acceptance-ledger.v1.json", "sha256": "<CURRENT_SHA256>"},
+  "componentModule": {"path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx", "sha256": "<CURRENT_SHA256>"},
+  "captions": {"path": "<ACTUAL_RECORDING_CAPTIONS_PATH>", "sha256": "<CURRENT_SHA256>"},
+  "canvas": {"width": 1920, "height": 1080, "fps": 30, "durationInFrames": 900},
+  "beats": [
+    {
+      "beatId": "beat-001",
+      "mainVisual": "speaker",
+      "frames": {"startFrame": 0, "endFrameExclusive": 90},
+      "quote": "<EXACT_ACTUAL_SPOKEN_QUOTE>",
+      "purpose": "<WHAT_THE_AUDIENCE_MUST_UNDERSTAND>",
+      "semanticIntents": ["emphasis"],
+      "materialClass": "talking-head",
+      "energy": "medium",
+      "existingVisualSufficiency": "low",
+      "keyPhrases": ["<EXACT_SUBSTRING_FROM_QUOTE>"],
+      "region": {"x": 60, "y": 140, "width": 620, "height": 250},
+      "protectedRegions": [
+        {"x": 800, "y": 0, "width": 900, "height": 850},
+        {"x": 0, "y": 900, "width": 1920, "height": 180}
+      ]
+    }
+  ]
+}

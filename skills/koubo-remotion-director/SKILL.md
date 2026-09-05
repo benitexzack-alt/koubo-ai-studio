@@ -1,6 +1,6 @@
 ---
 name: koubo-remotion-director
-description: 口播项目的 V9 候选导演与 Remotion 视频包装流程。拍摄前把用户确认稿编译成纸艺首帧、RunningHub 图生视频和 AI 情景视频三套独立提示词，拍摄后以真实实录重绑画面、Shotcraft、字幕与音效，并按小样确认后再正式渲染和整理发布包。V8 正式档案在 V9 实片验收前保留为回退基线；旧纸构推演 v1 已退役。
+description: 口播项目的 V9.1 候选导演与 Remotion 视频包装流程。拍摄前编译纸艺首帧、RunningHub 图生视频和 AI 情景视频三套独立提示词，拍摄后以真实实录和素材自动检索 Shotcraft 全库、选择可用动效，并把用户的通过或否决沉淀为可校验经验。小样确认后才可正式渲染和整理发布包；V8 正式档案在 V9.1 实片验收前保留为回退基线。
 ---
 
 # 口播 Remotion 导演
@@ -15,7 +15,7 @@ description: 口播项目的 V9 候选导演与 Remotion 视频包装流程。�
 
 本 Skill 有三条互不替代的执行层：
 
-- `V9 director candidate`：负责三套提示词、安全区、Shotcraft 选择与应用证据、生产阶段顺序；
+- `V9.1 director candidate`：负责三套提示词、安全区、Shotcraft 157 卡自动匹配、应用证据、用户验收经验和生产阶段顺序；
 - `V8 production rollback`：在 V9 尚未完成真实新片验收前，继续负责已验证的人物主画面、连续语义卡、字幕、音效和正式发布包能力；
 - `paper-editorial director`：只负责把适合视觉解释的实录片段编译成摄影级纸艺分镜、静帧与候选插片。它不能替换 V8 包装，也不能把已验收旧样片直接套到新实录。
 
@@ -55,6 +55,7 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 - [references/platform-safe-areas.v1.json](references/platform-safe-areas.v1.json)：使用抖音横屏内容讲解小窗时必读；平台界面变化后必须建立新版本，不得静默移动旧边界。
 - [references/v9-workflow-contract.md](references/v9-workflow-contract.md)：下一条新口播的固定阶段、三套提示词和正式渲染门禁。
 - [../koubo-shotcraft-library/references/v9-director-selection-and-application.md](../koubo-shotcraft-library/references/v9-director-selection-and-application.md)：需要选择或核验 Shotcraft 动效时必读。
+- [../koubo-shotcraft-library/references/v9.1-auto-match-and-learning.md](../koubo-shotcraft-library/references/v9.1-auto-match-and-learning.md)：需要自动匹配全库、沉淀验收案例或复用历史经验时必读。
 
 ## 工作流
 
@@ -143,7 +144,7 @@ node skills/koubo-remotion-director/scripts/bake-firstframe-text.mjs \
 
 真实素材讲解小窗使用隔离实现 [assets/remotion-presenter-media/PresenterMediaStage.tsx](assets/remotion-presenter-media/PresenterMediaStage.tsx)。默认人物槽为 `278×278, right=360, bottom=202`，左侧回退槽为 `left=64, bottom=202`；右侧 `x>=1600` 为平台保留带。人物只能在固定槽内做透明度和缩放，禁止从全屏位置扫掠到右下角。不得为接入它直接改写共享 `V72ProductionShell.tsx` 或 `V8SemanticStage.tsx`；先在本条独立 candidate revision 做 10—15 秒样片，核对平台头像避让、字幕避让、裁脸、口型同步和双音轨后再晋级。
 
-Shotcraft 只作为 `speaker` 与 `real-evidence` 上方的辅助信息层。拍摄前不得拿确认稿代替实录做选择；完成实录字幕与 post-shoot 重绑后，每个适用 beat 都必须在独立选择合同中写 `apply` 或 `not-needed`，不使用时也要给出具体语义理由。`paper-editorial` 和 `generated-video` 内部禁止套 Shotcraft。若选择 `apply`，候选片必须生成实际应用回执，完全匹配 `beatId`、`effectId`、帧窗、注册组件和输出文件哈希；`SHOTCRAFT_SELECTED_NOT_APPLIED` 直接阻断。禁止为了显得“用了新能力”设置最低数量或机械配额。
+Shotcraft 只作为 `speaker` 与 `real-evidence` 上方的辅助信息层。拍摄前不得拿确认稿代替实录做选择；完成实录字幕与 post-shoot 重绑后，必须由 V9.1 匹配器结合原句、语义意图、主画面、实际素材与验收账本检索全部 157 张卡，自动产生每个 beat 的 `apply` 或 `not-needed`。不需要用户手工找卡，也不允许导演为凑效果跳过检索。当最匹配卡尚未适配时，应输出适配候选并保留原画面，不得用次优效果硬套。`paper-editorial` 和 `generated-video` 内部禁止套 Shotcraft。若选择 `apply`，候选片必须生成实际应用回执，完全匹配 `beatId`、`effectId`、帧窗、注册组件和输出文件哈希；`SHOTCRAFT_SELECTED_NOT_APPLIED` 直接阻断。用户看完候选片后，每个已应用 beat 的通过或否决都必须写入经验账本；一次通过可优先精确复用，两个不同任务的同类通过才可晋级为可复用规则，最新否决优先。禁止设置最低数量或机械配额。
 
 下一条新任务从 [templates/v9-production-state.v1.json](templates/v9-production-state.v1.json) 建立唯一状态文件，并在每次阶段晋级前运行：
 

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "koubo-shotcraft-experience-decision/v1",
+  "taskId": "<TASK_ID>",
+  "revisionId": "<REVISION_ID>",
+  "selection": {"path": "<DIRECTOR_SELECTION_PATH>", "sha256": "<SHA256>"},
+  "applicationReceipt": {"path": "<SHOTCRAFT_APPLICATION_RECEIPT_PATH>", "sha256": "<SHA256>"},
+  "candidate": {"path": "<USER_REVIEWED_CANDIDATE_PATH>", "sha256": "<SHA256>"},
+  "userEvidence": {
+    "source": "direct-user-message",
+    "quote": "<USER_EXPLICIT_ACCEPTANCE_OR_REJECTION>",
+    "quoteSha256": "<SHA256_OF_EXACT_QUOTE>",
+    "recordedAt": "<ISO8601>"
+  },
+  "beatDecisions": [
+    {"beatId": "beat-001", "outcome": "accepted", "reason": "用户完整观看后确认该语义与效果匹配"}
+  ]
+}

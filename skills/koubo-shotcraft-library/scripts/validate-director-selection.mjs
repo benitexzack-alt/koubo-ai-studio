@@ -4,11 +4,13 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {contextFingerprint, normalizeContextSignature} from './experience-ledger-core.mjs';
 
 export const DIRECTOR_SELECTION_SCHEMA = 'koubo-shotcraft-director-selection/v1';
 export const CANONICAL_REGISTRY_PATH = 'skills/koubo-shotcraft-library/registry.v1.json';
 export const CANONICAL_COMPONENT_MODULE_PATH = 'skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx';
-export const V9_DIRECTOR_PROFILE = Object.freeze({profileId: 'paper-editorial-director-v9', profileVersion: '9.0.0'});
+export const V9_DIRECTOR_PROFILE = Object.freeze({profileId: 'paper-editorial-director-v9', profileVersion: '9.1.0'});
+export const SUPPORTED_V9_DIRECTOR_VERSIONS = Object.freeze(['9.0.0', '9.1.0']);
 export const ELIGIBLE_MAIN_VISUALS = Object.freeze(['speaker', 'real-evidence']);
 export const FORBIDDEN_MAIN_VISUALS = Object.freeze(['paper-editorial', 'generated-video']);
 
@@ -82,6 +84,9 @@ const APPLICATION_FIELDS = Object.freeze([
   'protectedRegions',
   'fallback',
   'evidence',
+  'sourceCard',
+  'matchContext',
+  'componentProps',
 ]);
 
 const registryEffects = (registry, errors) => {
@@ -109,7 +114,7 @@ export function validateDirectorSelection(selection, captions, registry) {
   }
   if (!isText(selection.taskId)) errors.push('SHOTCRAFT_TASK_ID_REQUIRED');
   if (!isText(selection.revisionId)) errors.push('SHOTCRAFT_REVISION_ID_REQUIRED');
-  if (selection.directorProfile?.profileId !== V9_DIRECTOR_PROFILE.profileId || selection.directorProfile?.profileVersion !== V9_DIRECTOR_PROFILE.profileVersion) {
+  if (selection.directorProfile?.profileId !== V9_DIRECTOR_PROFILE.profileId || !SUPPORTED_V9_DIRECTOR_VERSIONS.includes(selection.directorProfile?.profileVersion)) {
     errors.push('SHOTCRAFT_V9_DIRECTOR_PROFILE_REQUIRED');
   }
   if (selection.subtitleAuthority !== 'actual-recording') errors.push('SHOTCRAFT_SPOKEN_SOURCE_REQUIRED');
@@ -196,6 +201,31 @@ export function validateDirectorSelection(selection, captions, registry) {
       const evidence = beat.evidence;
       if (!isRecord(evidence) || !validBinding(evidence.asset) || !validRect(evidence.rect) || !validRect(beat.region) || !inside(evidence.rect, {x: 0, y: 0, width: beat.region.width, height: beat.region.height}) || !isText(evidence.claimBoundary)) {
         errors.push(issue('SHOTCRAFT_EVIDENCE_BINDING_REQUIRED', beatId));
+      }
+    }
+    if (selection.directorProfile.profileVersion === '9.1.0') {
+      const context = normalizeContextSignature(beat.matchContext);
+      if (
+        !isRecord(beat.sourceCard) || beat.sourceCard.cardName !== adapter?.upstream ||
+        !isRecord(beat.matchContext) || beat.matchContext.fingerprint !== contextFingerprint(context) ||
+        !['catalog-match', 'validated-case', 'reusable-pattern'].includes(beat.matchContext.origin) ||
+        !isRecord(beat.componentProps)
+      ) errors.push(issue('SHOTCRAFT_AUTO_MATCH_METADATA_REQUIRED', beatId));
+      const props = beat.componentProps;
+      if (beat.effectId === 'marker-underline' && (props.keyword !== beat.texts?.[0] || `${props.before ?? ''}${props.keyword ?? ''}${props.after ?? ''}` !== beat.quote)) {
+        errors.push(issue('SHOTCRAFT_COMPONENT_PROPS_INVALID', beatId));
+      }
+      if (beat.effectId === 'keyword-reveal' && (!Array.isArray(props.items) || props.items.map((item) => item?.text).join('\n') !== beat.texts?.join('\n') || props.items.some((item) => !Number.isInteger(item.atFrame) || item.atFrame < 0 || item.atFrame >= beat.frames.endFrameExclusive - beat.frames.startFrame))) {
+        errors.push(issue('SHOTCRAFT_COMPONENT_PROPS_INVALID', beatId));
+      }
+      if (beat.effectId === 'evidence-scan' && (props.width !== beat.region?.width || props.height !== beat.region?.height || props.label !== beat.texts?.[0] || JSON.stringify(props.rect) !== JSON.stringify(beat.evidence?.rect))) {
+        errors.push(issue('SHOTCRAFT_COMPONENT_PROPS_INVALID', beatId));
+      }
+      if (beat.effectId === 'line-carry' && (props.fromLabel !== beat.texts?.[0] || props.toLabel !== beat.texts?.[1] || props.width !== beat.region?.width)) {
+        errors.push(issue('SHOTCRAFT_COMPONENT_PROPS_INVALID', beatId));
+      }
+      if (beat.effectId === 'paper-tape-pin' && (!Number.isFinite(props.width) || props.width < 240 || props.width > beat.region?.width)) {
+        errors.push(issue('SHOTCRAFT_COMPONENT_PROPS_INVALID', beatId));
       }
     }
     if (frameValid && validRect(beat.region)) appliedBeats.push(beat);

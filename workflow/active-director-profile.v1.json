@@ -1,12 +1,12 @@
 {
   "schemaVersion": "koubo-active-director-profile/v1",
   "profileId": "paper-editorial-director-v9",
-  "profileVersion": "9.0.0",
+  "profileVersion": "9.1.0",
   "status": "active-default",
   "effectiveFrom": "2026-09-05",
   "decision": {
     "authority": "user-explicit",
-    "summary": "下一条新口播按V9试点：三套提示词独立交接，纸艺先校验安全布局，真实素材讲解小窗避开抖音平台覆盖层，Shotcraft选中后必须有实际应用证据，并严格按小样确认后再正式渲染。",
+    "summary": "下一条新口播按V9.1试点：三套提示词独立交接，纸艺先校验安全布局，真实素材讲解小窗避开抖音平台覆盖层，Shotcraft根据实录和素材自动检索157张卡，选中后必须有实际应用证据，用户通过或否决写入经验账本，并严格按小样确认后再正式渲染。",
     "confirmedAt": "2026-09-05"
   },
   "skill": {
@@ -19,11 +19,11 @@
       "handoffReceiptSha256": "a8370f79022369f4a4e8002601ef1dc257788946461edf12dd275227fb60d8ef"
     },
     "contractUpgrade": {
-      "version": "9.0.0",
-      "scope": "抖音平台安全区、纸艺首帧布局合同、三套提示词交接、Shotcraft选择与落片回执、九阶段生产状态机",
+      "version": "9.1.0",
+      "scope": "抖音平台安全区、纸艺首帧布局合同、三套提示词交接、Shotcraft 157卡自动匹配、落片回执、用户验收经验复用与九阶段生产状态机",
       "auditReport": {
-        "path": "workflow/audits/director-v9-upgrade-20260905.v1.md",
-        "sha256": "e21888ad7efd36708581d6ee0cee00e2a8e5c6b48d8046458b73c0ad9a18771e"
+        "path": "workflow/audits/director-v9.1-shotcraft-learning-20260905.v1.md",
+        "sha256": "92d5b826409c0953036b4fbceff5a9035c81d83f4048bb8cf327a076ed46a0bc"
       },
       "nextVideoEndToEndAcceptanceRequired": true,
       "formalProductionProfileStillV8": true
@@ -73,10 +73,14 @@
         "silent-view-retelling-review",
         "input-action-result-review",
         "platform-safe-area-validation",
+        "shotcraft-auto-match-request",
+        "shotcraft-auto-match-receipt",
+        "shotcraft-experience-lookup-receipt",
         "shotcraft-director-selection-plan",
         "shotcraft-application-receipt",
         "current-task-ab-preview",
-        "current-task-user-acceptance"
+        "current-task-user-acceptance",
+        "shotcraft-experience-write-receipt"
       ],
       "formalEligibleBeforeUserAcceptance": false
     }
@@ -141,6 +145,15 @@
     },
     "shotcraft": {
       "registryPath": "skills/koubo-shotcraft-library/registry.v1.json",
+      "libraryPath": "skills/koubo-shotcraft-library/upstream/gallery/api/library.json",
+      "capabilityIndexPath": "skills/koubo-shotcraft-library/card-capability-index.v2.json",
+      "experienceLedgerPath": "skills/koubo-shotcraft-library/experience/shotcraft-acceptance-ledger.v1.json",
+      "matcherPath": "skills/koubo-shotcraft-library/scripts/match-director-effects.mjs",
+      "experienceRecorderPath": "skills/koubo-shotcraft-library/scripts/record-experience.mjs",
+      "cardCount": 157,
+      "styleCount": 214,
+      "candidateRenderableCardCount": 5,
+      "adaptationRequiredCardCount": 152,
       "eligibleMainVisualClasses": [
         "speaker",
         "real-evidence"
@@ -149,8 +162,21 @@
         "paper-editorial",
         "generated-video"
       ],
+      "automaticSemanticMatchingRequired": true,
+      "fullCatalogScanRequired": true,
+      "validatedExperienceReuseFirst": true,
+      "referenceOnlyCardsRequireAdapter": true,
+      "lowerRelevanceSubstitutionForbidden": true,
+      "manualCatalogSearchIsProductionEvidence": false,
       "explicitDecisionRequiredForEligibleBeats": true,
       "selectedEffectMustHaveApplicationReceipt": true,
+      "exactReuseMinimumAcceptedCases": 1,
+      "patternPromotionMinimumAcceptedCases": 2,
+      "patternPromotionMinimumDistinctTasks": 2,
+      "latestRejectionBlocksExactReuse": true,
+      "candidatePreviewStillRequired": true,
+      "automaticFormalApproval": false,
+      "automaticPublicationApproval": false,
       "mechanicalQuotaForbidden": true,
       "fallback": "blocked"
     },

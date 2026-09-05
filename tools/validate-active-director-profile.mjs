@@ -39,7 +39,7 @@ if (profile.status !== 'active-default') errors.push('DIRECTOR_PROFILE_NOT_ACTIV
 if (profile.profileId !== 'paper-editorial-director-v9') {
   errors.push('DIRECTOR_PROFILE_ID_NOT_V9');
 }
-if (profile.profileVersion !== '9.0.0') errors.push('DIRECTOR_PROFILE_VERSION_NOT_V9');
+if (profile.profileVersion !== '9.1.0') errors.push('DIRECTOR_PROFILE_VERSION_NOT_V91');
 if (profile.routingPolicy?.fallback !== 'blocked') {
   errors.push('DIRECTOR_PROFILE_FALLBACK_NOT_BLOCKED');
 }
@@ -140,10 +140,38 @@ if (
 if (
   profile.routingPolicy?.shotcraft?.explicitDecisionRequiredForEligibleBeats !== true ||
   profile.routingPolicy?.shotcraft?.selectedEffectMustHaveApplicationReceipt !== true ||
+  profile.routingPolicy?.shotcraft?.automaticSemanticMatchingRequired !== true ||
+  profile.routingPolicy?.shotcraft?.fullCatalogScanRequired !== true ||
+  profile.routingPolicy?.shotcraft?.validatedExperienceReuseFirst !== true ||
+  profile.routingPolicy?.shotcraft?.referenceOnlyCardsRequireAdapter !== true ||
+  profile.routingPolicy?.shotcraft?.lowerRelevanceSubstitutionForbidden !== true ||
+  profile.routingPolicy?.shotcraft?.manualCatalogSearchIsProductionEvidence !== false ||
+  profile.routingPolicy?.shotcraft?.cardCount !== 157 ||
+  profile.routingPolicy?.shotcraft?.styleCount !== 214 ||
+  profile.routingPolicy?.shotcraft?.candidateRenderableCardCount !== 5 ||
+  profile.routingPolicy?.shotcraft?.adaptationRequiredCardCount !== 152 ||
+  profile.routingPolicy?.shotcraft?.exactReuseMinimumAcceptedCases !== 1 ||
+  profile.routingPolicy?.shotcraft?.patternPromotionMinimumAcceptedCases !== 2 ||
+  profile.routingPolicy?.shotcraft?.patternPromotionMinimumDistinctTasks !== 2 ||
+  profile.routingPolicy?.shotcraft?.latestRejectionBlocksExactReuse !== true ||
+  profile.routingPolicy?.shotcraft?.candidatePreviewStillRequired !== true ||
+  profile.routingPolicy?.shotcraft?.automaticFormalApproval !== false ||
+  profile.routingPolicy?.shotcraft?.automaticPublicationApproval !== false ||
   profile.routingPolicy?.shotcraft?.mechanicalQuotaForbidden !== true ||
   profile.routingPolicy?.shotcraft?.fallback !== 'blocked'
 ) {
   errors.push('DIRECTOR_PROFILE_SHOTCRAFT_CONTRACT_INVALID');
+}
+for (const declaredPath of [
+  profile.routingPolicy?.shotcraft?.libraryPath,
+  profile.routingPolicy?.shotcraft?.capabilityIndexPath,
+  profile.routingPolicy?.shotcraft?.experienceLedgerPath,
+  profile.routingPolicy?.shotcraft?.matcherPath,
+  profile.routingPolicy?.shotcraft?.experienceRecorderPath,
+]) {
+  if (!declaredPath || !existsSync(resolveDeclared(declaredPath))) {
+    errors.push(`DIRECTOR_PROFILE_SHOTCRAFT_FILE_MISSING:${declaredPath ?? 'unknown'}`);
+  }
 }
 if (
   profile.workflowPolicy?.schemaVersion !== 'koubo-v9-production-state/v1' ||
@@ -201,6 +229,28 @@ try {
   }
 } catch (error) {
   errors.push(`DIRECTOR_PROFILE_SHOTCRAFT_REGISTRY_LOAD_FAILED:${error.message}`);
+}
+try {
+  const shotcraftIndex = readJson(resolveDeclared(profile.routingPolicy.shotcraft.capabilityIndexPath));
+  const experienceLedger = readJson(resolveDeclared(profile.routingPolicy.shotcraft.experienceLedgerPath));
+  if (
+    shotcraftIndex.schemaVersion !== 'koubo-shotcraft-card-capability-index/v2' ||
+    shotcraftIndex.stats?.cardCount !== 157 ||
+    shotcraftIndex.stats?.styleCount !== 214 ||
+    shotcraftIndex.stats?.candidateRenderableCount !== 5 ||
+    shotcraftIndex.stats?.adaptationRequiredCount !== 152
+  ) errors.push('DIRECTOR_PROFILE_SHOTCRAFT_INDEX_INVALID');
+  if (
+    experienceLedger.schemaVersion !== 'koubo-shotcraft-experience-ledger/v1' ||
+    experienceLedger.policy?.exactReuseMinimumAcceptedCases !== 1 ||
+    experienceLedger.policy?.patternPromotionMinimumAcceptedCases !== 2 ||
+    experienceLedger.policy?.patternPromotionMinimumDistinctTasks !== 2 ||
+    experienceLedger.policy?.latestRejectionBlocksExactReuse !== true ||
+    experienceLedger.policy?.candidatePreviewStillRequired !== true ||
+    experienceLedger.policy?.automaticFormalApproval !== false
+  ) errors.push('DIRECTOR_PROFILE_SHOTCRAFT_EXPERIENCE_INVALID');
+} catch (error) {
+  errors.push(`DIRECTOR_PROFILE_SHOTCRAFT_MATCHING_LOAD_FAILED:${error.message}`);
 }
 
 try {
