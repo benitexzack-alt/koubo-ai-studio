@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "koubo-v9-production-state/v1",
+  "taskId": "task-20260906T154937Z-69f6ebf8",
+  "revisionId": "20260906-lanzhou-ai-services-v91-pre-shoot-r2",
+  "status": "candidate-preview-required",
+  "directorProfile": {
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0"
+  },
+  "currentStage": "director-prompt-packs-ready",
+  "stageHistory": [
+    {
+      "stage": "script-confirmed",
+      "completedAt": "2026-09-06T17:10:47.391Z",
+      "artifacts": {
+        "script": {
+          "path": "edit/20260906_lanzhou_ai_services/01_文稿/用户确认稿_仅预拍权威.txt",
+          "sha256": "55bad7768c22dcbc634fb8c275b8dfe3ddaabbbf6b8144d049960d34f65cedab"
+        },
+        "scriptUserConfirmation": {
+          "path": "edit/20260906_lanzhou_ai_services/00_工程控制/用户预拍授权.v1.json",
+          "sha256": "db30ba9eb5e66fdcfae788dbde3e85681665c5adbacc9ed650d82bac90e623ed"
+        }
+      }
+    },
+    {
+      "stage": "director-prompt-packs-ready",
+      "completedAt": "2026-09-06T17:44:30.032Z",
+      "artifacts": {
+        "directorRequest": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r2/director-preproduction-request.v1.json",
+          "sha256": "fc0ad9d3b46453f89d8519b648001e5ccbfc73c40ee054b325138deb614e13f6"
+        },
+        "directorPlan": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r2/director-preproduction-plan.v1.json",
+          "sha256": "3f12440f9d6baaa907e240d3451b5783fc282d94d77a406e23654e780f2f3d2d"
+        },
+        "directorValidation": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r2/director-validation-receipt.v1.json",
+          "sha256": "4cc33c4afa28f6af982ca70b5e98fdbc8496d33c8bdb6556959d3946d74c1f41"
+        },
+        "firstFramePromptManifest": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r2/first-frame-prompts.v1.json",
+          "sha256": "bbabfce13e060540421790abdc484f44fd4f025397da490da37345ac1943be53"
+        },
+        "imageToVideoPromptManifest": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r2/runninghub-image-to-video-prompts.v1.json",
+          "sha256": "89d702a6b7704f350842555deb89e2a779e1f8b1bc9bab929c71d12fdc556ab7"
+        },
+        "aiVideoPromptManifest": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r2/ai-generated-video-prompts.v1.json",
+          "sha256": "f50d41c840f8e10645b3d7af409f75d1d6f2d94ac2d481f7a44560bd19be6ac7"
+        }
+      }
+    }
+  ],
+  "gates": {
+    "formalEnabled": false,
+    "releasePackageEnabled": false,
+    "publicationEnabled": false,
+    "externalActionsRequireExplicitAuthorization": true
+  },
+  "spokenSourcePolicy": {
+    "subtitleAuthority": "actual-recording",
+    "preShootScriptRoleAfterRecording": "comparison-only"
+  },
+  "exclusions": {
+    "old189SecondChainExcluded": true,
+    "retiredPaperV1Excluded": true,
+    "failedDirectorMastersExcluded": true,
+    "supersededRevisionReuseForbidden": true
+  },
+  "revisionHistory": [
+    {
+      "revisionId": "20260906-lanzhou-ai-services-v91-pre-shoot-r1",
+      "status": "superseded-before-generation",
+      "reason": "独立审计修正P05纸页起始位置；历史合同不覆盖"
+    }
+  ]
+}

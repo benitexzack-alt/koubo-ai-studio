@@ -1,0 +1,802 @@
+{
+  "schemaVersion": "koubo-runninghub-image-to-video-prompt-manifest/v1",
+  "requestId": "20260906-lanzhou-ai-services-v91-pre-shoot-r1",
+  "taskId": "task-20260906T154937Z-69f6ebf8",
+  "phase": "pre-shoot",
+  "status": "awaiting-text-baked-firstframes",
+  "consumer": "runninghub-manual-image-to-video",
+  "generationMode": "image-to-video",
+  "executionOwner": "user-manual",
+  "codexExternalSubmissionAllowed": false,
+  "submissionBlockedUntil": [
+    "raw-first-frame-visual-review-passed",
+    "actual-paper-surface-anchor-calibration-passed",
+    "deterministic-text-bake-receipt-passed",
+    "text-baked-first-frame-ocr-passed",
+    "runninghub-ready-pack-issued"
+  ],
+  "sourcePlanCanonicalSha256": "2ed9af4c711b2cca7e033cc50e8de59a69b97b3ff796746a43473159e580f8f5",
+  "sceneCount": 5,
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "pairId": "P01-B11",
+      "beatId": "B11",
+      "title": "先分版本，再进知识库",
+      "spokenLine": "遇到这一类问题，我可以先跟你们一起，把有效的资料和已经作废的资料分清楚，再看哪些适合整理进企业知识库。",
+      "inputFirstFrameFileName": "P01_B11_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "cfb6d9c52f28baef4cdc38a2c98888caa725df37ba57a2bfa0cda864884e82b0",
+      "inputFirstFrameTextPlanSha256": "890d7c6dd0e39875f1954e29131b80f525cec8453dbdc82dcbfafd88073db728",
+      "durationSeconds": 8,
+      "imageToVideoPrompt": "输入首帧是唯一视觉与文字基准。所有中文已是纸面的一部分，逐字保持字体、内容、顺序、颜色、相对纸面位置，不生成新字、不改写、不抹掉文字。四块带字硬纸牌只允许整体平移和轻微刚体转动，不折叠、卷曲、拉伸、拼字、遮字或出画；只有无字纸件可展开、对齐、卡合。固定机位，真实手作逐格运动，物件数量和身份不变，禁止滤镜、霓虹、漂浮字幕、蒙版换景和人物。\n0至1秒保留可读起始构图；1至2.5秒左侧散页轻轻归拢；2.5至4秒有效纸页沿上路滑入青绿托盘；4至5.5秒旧页沿下路滑入灰盒；5.5至7秒仅青绿托盘的纸页卡入右侧书架；7至8秒结果停留。带字牌始终与所属托盘或书架绑定。\n只说明分类与筛选方法，不表示所有有效资料自动全量入库，不表示已实施某个客户项目，也不把作废资料销毁。\n保留轻而清楚的纸张滑动、折页、卡合原生音效，不生成对白、口播、背景音乐。",
+      "imageToVideoPromptSha256": "582c98ee175651629f92998e586643899814264b16c93bbca7da7ac2c771f33d",
+      "pairSha256": "78812c51f1a51b2c5d1aaec56b48f36de7ab712adea8f885ccd1d7d4cfb0fec1",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "散落资料",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.085,
+              0.545
+            ],
+            [
+              0.255,
+              0.545
+            ],
+            [
+              0.255,
+              0.625
+            ],
+            [
+              0.085,
+              0.625
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N2",
+          "text": "有效资料",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.35500000000000004,
+              0.265
+            ],
+            [
+              0.5750000000000001,
+              0.265
+            ],
+            [
+              0.5750000000000001,
+              0.34500000000000003
+            ],
+            [
+              0.35500000000000004,
+              0.34500000000000003
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N3",
+          "text": "作废资料",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.35500000000000004,
+              0.605
+            ],
+            [
+              0.5750000000000001,
+              0.605
+            ],
+            [
+              0.5750000000000001,
+              0.6849999999999999
+            ],
+            [
+              0.35500000000000004,
+              0.6849999999999999
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N4",
+          "text": "企业知识库",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.715,
+              0.5850000000000001
+            ],
+            [
+              0.915,
+              0.5850000000000001
+            ],
+            [
+              0.915,
+              0.665
+            ],
+            [
+              0.715,
+              0.665
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0
+        }
+      ]
+    },
+    {
+      "sceneId": "P02",
+      "pairId": "P02-B12",
+      "beatId": "B12",
+      "title": "答复带依据，确认后再发",
+      "spokenLine": "员工提问时，让 AI 去这些资料里找相关内容，整理成答复，把依据也带出来。员工能顺着出处核对，涉及价格、交期和售后承诺，确认后再发给客户。资料里没有的，就留给人来处理。",
+      "inputFirstFrameFileName": "P02_B12_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "8ee55c0b09039dec0555d403f3c3a3be450c4d3c496b897d1a193b39fc357af0",
+      "inputFirstFrameTextPlanSha256": "42c318aa847120440124c42f8825c71ecf24f560b5e1e0d0f3b775952789e72c",
+      "durationSeconds": 9,
+      "imageToVideoPrompt": "输入首帧是唯一视觉与文字基准。所有中文已是纸面的一部分，逐字保持字体、内容、顺序、颜色、相对纸面位置，不生成新字、不改写、不抹掉文字。四块带字硬纸牌只允许整体平移和轻微刚体转动，不折叠、卷曲、拉伸、拼字、遮字或出画；只有无字纸件可展开、对齐、卡合。固定机位，真实手作逐格运动，物件数量和身份不变，禁止滤镜、霓虹、漂浮字幕、蒙版换景和人物。\n0至1秒读构图；1至2.5秒无字资料页展开；2.5至4秒答复页带着棉线移到确认台前；4至6秒在闭合闸片前停住，随后无字压板落下、闸片机械移开；6至8秒答复完整滑进收件盒；8至9秒稳住结果。四张带字牌始终可读。\n必须先停在人工确认处，再出现发给客户的结果；不能画成AI直接发送。价格、交期、售后承诺和资料没有答案交回人工，由原声和真人语义卡说明，不伪造第五张牌。\n保留轻而清楚的纸张滑动、折页、卡合原生音效，不生成对白、口播、背景音乐。",
+      "imageToVideoPromptSha256": "26732adba73c624a684557e6d976e4bc83ec19542afd6dabf70b54279788595d",
+      "pairSha256": "920cc893dcaf07707a66775345df22f66a0c085c13a00c9dc65ba19bc59f1257",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "资料出处",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.085,
+              0.5850000000000001
+            ],
+            [
+              0.255,
+              0.5850000000000001
+            ],
+            [
+              0.255,
+              0.665
+            ],
+            [
+              0.085,
+              0.665
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N2",
+          "text": "整理答复",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.305,
+              0.5850000000000001
+            ],
+            [
+              0.475,
+              0.5850000000000001
+            ],
+            [
+              0.475,
+              0.665
+            ],
+            [
+              0.305,
+              0.665
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N3",
+          "text": "人工确认",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.525,
+              0.5850000000000001
+            ],
+            [
+              0.6950000000000001,
+              0.5850000000000001
+            ],
+            [
+              0.6950000000000001,
+              0.665
+            ],
+            [
+              0.525,
+              0.665
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N4",
+          "text": "发给客户",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.745,
+              0.5850000000000001
+            ],
+            [
+              0.915,
+              0.5850000000000001
+            ],
+            [
+              0.915,
+              0.665
+            ],
+            [
+              0.745,
+              0.665
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0
+        }
+      ]
+    },
+    {
+      "sceneId": "P03",
+      "pairId": "P03-B13",
+      "beatId": "B13",
+      "title": "交付后，用真实问题继续试",
+      "spokenLine": "交到员工手里以后，也得拿他们每天遇到的问题来试。哪里查不到，哪里容易理解错，资料变了谁来更新，都要在使用中继续处理。",
+      "inputFirstFrameFileName": "P03_B13_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "9f183d88f9699f5444dac1af485fef8d95d358c6a7fd62446b49574d9b3333e3",
+      "inputFirstFrameTextPlanSha256": "c2a0cce2a92f4ec37341ad85869b6dbc1af10af2d6f2749981e400329ba21776",
+      "durationSeconds": 8,
+      "imageToVideoPrompt": "输入首帧是唯一视觉与文字基准。所有中文已是纸面的一部分，逐字保持字体、内容、顺序、颜色、相对纸面位置，不生成新字、不改写、不抹掉文字。四块带字硬纸牌只允许整体平移和轻微刚体转动，不折叠、卷曲、拉伸、拼字、遮字或出画；只有无字纸件可展开、对齐、卡合。固定机位，真实手作逐格运动，物件数量和身份不变，禁止滤镜、霓虹、漂浮字幕、蒙版换景和人物。\n0至1秒稳定构图；1至2.5秒纸页从左上小本滑到右上翻页架；2.5至4秒翻页架展开，露出一个缺少资料的空位；4至5.5秒对应纸页移到右下分类槽，与另一张无字纸页叠合；5.5至7秒替换页卡回左下本子，棉线轻轻收紧连回试用台；7至8秒停留。\n表现持续发现与处理问题，不能出现一次交付后全部解决的奖章、胜利符号或成功保证。\n保留轻而清楚的纸张滑动、折页、卡合原生音效，不生成对白、口播、背景音乐。",
+      "imageToVideoPromptSha256": "a48185d60a7e8727f08298155c209e82351a4b8ae5e4dd7a9c8e7613ac8a14f8",
+      "pairSha256": "bf7b9639c753d257a5449c0df9ba59d0a2ad08e5df824664c9e64db00eead6eb",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "日常问题",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.085,
+              0.24500000000000005
+            ],
+            [
+              0.3950000000000001,
+              0.24500000000000005
+            ],
+            [
+              0.3950000000000001,
+              0.32500000000000007
+            ],
+            [
+              0.085,
+              0.32500000000000007
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N2",
+          "text": "实际试用",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.605,
+              0.24500000000000005
+            ],
+            [
+              0.915,
+              0.24500000000000005
+            ],
+            [
+              0.915,
+              0.32500000000000007
+            ],
+            [
+              0.605,
+              0.32500000000000007
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N3",
+          "text": "查漏纠错",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.605,
+              0.595
+            ],
+            [
+              0.915,
+              0.595
+            ],
+            [
+              0.915,
+              0.6749999999999999
+            ],
+            [
+              0.605,
+              0.6749999999999999
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N4",
+          "text": "更新资料",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.085,
+              0.595
+            ],
+            [
+              0.3950000000000001,
+              0.595
+            ],
+            [
+              0.3950000000000001,
+              0.6749999999999999
+            ],
+            [
+              0.085,
+              0.6749999999999999
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0
+        }
+      ]
+    },
+    {
+      "sceneId": "P04",
+      "pairId": "P04-B16",
+      "beatId": "B16",
+      "title": "GEO先把真实信息整理清楚",
+      "spokenLine": "你到底做什么业务，服务哪些地方，有哪些真实案例，客户想进一步了解该从哪里联系，这些内容得整理清楚。我在做的 GEO，也是在围绕这些真实信息做整理和优化。至于 AI 最后怎么回答、会不会推荐，还要实际查、持续看。",
+      "inputFirstFrameFileName": "P04_B16_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "d0833cf46b2405834495addf61b18c838517ac07975c371b609a9709ef61521e",
+      "inputFirstFrameTextPlanSha256": "c9496f4106e288d40f512d53e687ee43454e392988fe452b1eb6e07fdaac1c4e",
+      "durationSeconds": 8,
+      "imageToVideoPrompt": "输入首帧是唯一视觉与文字基准。所有中文已是纸面的一部分，逐字保持字体、内容、顺序、颜色、相对纸面位置，不生成新字、不改写、不抹掉文字。四块带字硬纸牌只允许整体平移和轻微刚体转动，不折叠、卷曲、拉伸、拼字、遮字或出画；只有无字纸件可展开、对齐、卡合。固定机位，真实手作逐格运动，物件数量和身份不变，禁止滤镜、霓虹、漂浮字幕、蒙版换景和人物。\n0至1秒读清布局；1至2.2秒左上文件夹向中间靠近；2.2至3.4秒右上无字纸条展开；3.4至4.6秒左下纸册平移；4.6至5.8秒右下纸槽对齐；5.8至7秒四条棉线轻轻收紧接入中央无字档案夹；7至8秒停留完整结构。只动无字部件和整组硬牌，不折带字牌。\n只演示企业真实信息整理，不表示AI必然推荐、不生成平台搜索界面或排名。本镜结束回到真人继续讲实际查、持续看。\n保留轻而清楚的纸张滑动、折页、卡合原生音效，不生成对白、口播、背景音乐。",
+      "imageToVideoPromptSha256": "edc3c26018e1d2c17441ad041d6e2042aadd99199255170183834858389b41a6",
+      "pairSha256": "529d00a6b885129bea934687689f7b5464a75d71a077394d29e306ae0e38a730",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "做什么业务",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.085,
+              0.25500000000000006
+            ],
+            [
+              0.335,
+              0.25500000000000006
+            ],
+            [
+              0.335,
+              0.3350000000000001
+            ],
+            [
+              0.085,
+              0.3350000000000001
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N2",
+          "text": "服务哪些地方",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.665,
+              0.25500000000000006
+            ],
+            [
+              0.915,
+              0.25500000000000006
+            ],
+            [
+              0.915,
+              0.3350000000000001
+            ],
+            [
+              0.665,
+              0.3350000000000001
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N3",
+          "text": "真实案例",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.085,
+              0.605
+            ],
+            [
+              0.335,
+              0.605
+            ],
+            [
+              0.335,
+              0.6849999999999999
+            ],
+            [
+              0.085,
+              0.6849999999999999
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N4",
+          "text": "从哪里联系",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.665,
+              0.605
+            ],
+            [
+              0.915,
+              0.605
+            ],
+            [
+              0.915,
+              0.6849999999999999
+            ],
+            [
+              0.665,
+              0.6849999999999999
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0
+        }
+      ]
+    },
+    {
+      "sceneId": "P05",
+      "pairId": "P05-B18",
+      "beatId": "B18",
+      "title": "资料权限接好后，人来定下一步",
+      "spokenLine": "比如以后你跟 AI 说：“把这周的客户咨询整理一下，看看还有哪些问题没答完。”在资料和权限接好的情况下，它有机会把查记录、做归类、列出待跟进事项连着做。你拿到结果，再决定哪些客户要联系，哪些问题要处理。",
+      "inputFirstFrameFileName": "P05_B18_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "83e021377484849d64de02f84c711578c5e7b401cb9d6b9b58072008dc093ab8",
+      "inputFirstFrameTextPlanSha256": "6e6fa6151bad64ecf61fa3f43ad45009b7c84765f04f7065e04ddea0326d4f7e",
+      "durationSeconds": 9,
+      "imageToVideoPrompt": "输入首帧是唯一视觉与文字基准。所有中文已是纸面的一部分，逐字保持字体、内容、顺序、颜色、相对纸面位置，不生成新字、不改写、不抹掉文字。四块带字硬纸牌只允许整体平移和轻微刚体转动，不折叠、卷曲、拉伸、拼字、遮字或出画；只有无字纸件可展开、对齐、卡合。固定机位，真实手作逐格运动，物件数量和身份不变，禁止滤镜、霓虹、漂浮字幕、蒙版换景和人物。\n0至1秒稳定；1至2.5秒G1两枚无字插片先后卡入，只有第二枚卡稳后纸路才展开；2.5至4.5秒空白咨询页沿路进入G2三格槽；4.5至6.5秒未完成纸页移到G3托盘排成层次；6.5至8秒托盘停在G4拨片前，拨片不做选择；8至9秒停留等待人工决定的状态。\n这是有前提的未来场景，不是已实现的客户项目。必须先有资料和权限，再出现整理结果；最后只到人来决定，不自动联系客户、不夸大成全自动经营。\n保留轻而清楚的纸张滑动、折页、卡合原生音效，不生成对白、口播、背景音乐。",
+      "imageToVideoPromptSha256": "ca2a85cf9a16c4b28d97ed1e09789ef7e7e044d97aec5846748fb3f07ac6266e",
+      "pairSha256": "a980a13c14904be4ebc598327f937e2739e58e86090df9a1ffc59777a7e41d90",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "资料和权限",
+          "role": "diegetic-node-label",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.085,
+              0.5850000000000001
+            ],
+            [
+              0.255,
+              0.5850000000000001
+            ],
+            [
+              0.255,
+              0.665
+            ],
+            [
+              0.085,
+              0.665
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S1-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S1",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N2",
+          "text": "查记录归类",
+          "role": "diegetic-node-label",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.305,
+              0.5850000000000001
+            ],
+            [
+              0.475,
+              0.5850000000000001
+            ],
+            [
+              0.475,
+              0.665
+            ],
+            [
+              0.305,
+              0.665
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S2-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S2",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N3",
+          "text": "待跟进事项",
+          "role": "diegetic-node-label",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.525,
+              0.5850000000000001
+            ],
+            [
+              0.6950000000000001,
+              0.5850000000000001
+            ],
+            [
+              0.6950000000000001,
+              0.665
+            ],
+            [
+              0.525,
+              0.665
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S3-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S3",
+          "stageOffsetFrames": 0
+        },
+        {
+          "nodeId": "N4",
+          "text": "人来决定",
+          "role": "diegetic-node-label",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.745,
+              0.5850000000000001
+            ],
+            [
+              0.915,
+              0.5850000000000001
+            ],
+            [
+              0.915,
+              0.665
+            ],
+            [
+              0.745,
+              0.665
+            ]
+          ],
+          "maxChars": 6,
+          "persistence": "S4-to-end",
+          "occlusionOwner": "own-rigid-card-above-own-group",
+          "ocrRequired": true,
+          "motionConstraint": "rigid-surface",
+          "embeddingMode": "first-frame-baked",
+          "trackingKeyframesRequired": false,
+          "enterStageId": "S4",
+          "stageOffsetFrames": 0
+        }
+      ]
+    }
+  ]
+}

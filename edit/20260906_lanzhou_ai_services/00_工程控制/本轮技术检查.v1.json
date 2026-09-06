@@ -1,0 +1,50 @@
+{
+  "taskId": "task-20260906T154937Z-69f6ebf8",
+  "createdAt": "2026-09-06T17:29:26.148Z",
+  "phase": "pre-shoot",
+  "status": "director-prompt-packs-ready",
+  "verbatimParagraphs": 23,
+  "paperScenes": 5,
+  "paperLabels": 20,
+  "paperPlannedDurationSeconds": 42,
+  "officialSavedItems": 15,
+  "officialShaCheck": "pass",
+  "firstFrameAndMotionPaired": true,
+  "skillValidation": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r1/director-validation-receipt.v1.json",
+    "sha256": "dba5cb002e1fc82e9e40b173f3e5bd2fe81b38cd4329cf48ed04b7f2001c5c62"
+  },
+  "stateValidation": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/v9-state-validation.v1.json",
+    "sha256": "fc1f12fe4b5de2dee8ec30cd7b8ad0c688680b7470d4772d2506df2c16555b92"
+  },
+  "skillLock": {
+    "path": "workflow/director-skill-lock.v1.json",
+    "sha256": "dd15851e0c87983022cc1174b9ff04f592efa0b71345fe0b1b892239d1beaf88"
+  },
+  "lockRepair": {
+    "cause": "已提交1df7352渲染入口加固后四个文件的锁未同步",
+    "scope": "仅重建四个哈希记录与派生汇总，未改Skill代码、未改正式门禁",
+    "tests": [
+      "正式渲染入口边界回归通过",
+      "生产preflight 28/28通过",
+      "活动档案锁回归通过",
+      "预拍合同回归通过",
+      "当前V9.1活动档案校验通过"
+    ],
+    "realAuthorizedRenderTested": false
+  },
+  "knownLimits": [
+    "视频号短链正文不可读，不声称还原原视频内容",
+    "尚未生图，文字清晰与动态稳定性待验证",
+    "未收到原片，拍后实录重绑/字幕/157卡自动匹配待执行",
+    "原始长图1069x14601只能局部取用，不能缩整图播放",
+    "五份WPS附件原样存档，只做文件类型/哈希检查，未逐页审阅"
+  ],
+  "externalActions": {
+    "generation": 0,
+    "uploads": 0,
+    "payments": 0,
+    "published": false
+  }
+}

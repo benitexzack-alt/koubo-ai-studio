@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "koubo-v9-production-state/v1",
+  "taskId": "task-20260906T154937Z-69f6ebf8",
+  "revisionId": "20260906-lanzhou-ai-services-v91-pre-shoot-r1",
+  "status": "candidate-preview-required",
+  "directorProfile": {
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0"
+  },
+  "currentStage": "director-prompt-packs-ready",
+  "stageHistory": [
+    {
+      "stage": "script-confirmed",
+      "completedAt": "2026-09-06T17:10:47.391Z",
+      "artifacts": {
+        "script": {
+          "path": "edit/20260906_lanzhou_ai_services/01_文稿/用户确认稿_仅预拍权威.txt",
+          "sha256": "55bad7768c22dcbc634fb8c275b8dfe3ddaabbbf6b8144d049960d34f65cedab"
+        },
+        "scriptUserConfirmation": {
+          "path": "edit/20260906_lanzhou_ai_services/00_工程控制/用户预拍授权.v1.json",
+          "sha256": "db30ba9eb5e66fdcfae788dbde3e85681665c5adbacc9ed650d82bac90e623ed"
+        }
+      }
+    },
+    {
+      "stage": "director-prompt-packs-ready",
+      "completedAt": "2026-09-06T17:29:26.144Z",
+      "artifacts": {
+        "directorRequest": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r1/director-preproduction-request.v1.json",
+          "sha256": "66c4377d99655dc107712844bc4af1ba83e10b5943305b50035da24a5dd63354"
+        },
+        "directorPlan": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r1/director-preproduction-plan.v1.json",
+          "sha256": "d0794e925bbc1e12644b70fb91b84460ae8d5021a4c11a923d3c02c37a10cec8"
+        },
+        "directorValidation": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r1/director-validation-receipt.v1.json",
+          "sha256": "dba5cb002e1fc82e9e40b173f3e5bd2fe81b38cd4329cf48ed04b7f2001c5c62"
+        },
+        "firstFramePromptManifest": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r1/first-frame-prompts.v1.json",
+          "sha256": "4b7e9fdb951f1e79b96fef74b32ceea258c85f59f32966947e1ade54258bb572"
+        },
+        "imageToVideoPromptManifest": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r1/runninghub-image-to-video-prompts.v1.json",
+          "sha256": "889f5662c44111d9b8740fbd310bb6d01e97594acda1c50f2f11c5b9d51d7579"
+        },
+        "aiVideoPromptManifest": {
+          "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r1/ai-generated-video-prompts.v1.json",
+          "sha256": "48d85e990d2a6d9600cd6d8e1281f1bade13a9b52bae46c4b09eb3dd0beefe54"
+        }
+      }
+    }
+  ],
+  "gates": {
+    "formalEnabled": false,
+    "releasePackageEnabled": false,
+    "publicationEnabled": false,
+    "externalActionsRequireExplicitAuthorization": true
+  },
+  "spokenSourcePolicy": {
+    "subtitleAuthority": "actual-recording",
+    "preShootScriptRoleAfterRecording": "comparison-only"
+  },
+  "exclusions": {
+    "old189SecondChainExcluded": true,
+    "retiredPaperV1Excluded": true,
+    "failedDirectorMastersExcluded": true,
+    "supersededRevisionReuseForbidden": true
+  }
+}
