@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260906T142312Z-cbbd9d4b",
+  "status": "passed",
+  "reviewed_at": "2026-09-06T22:42:00+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-09-06-请给予我包容和支持-口播稿-v1.md",
+    "sha256": "15ad1d0560f929957da0b9c61e53974c6c6003b7ca5f969ac7d3525acb291af8"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "保留用户开头，第二段立即交代老板的资料、报表和咨询麻烦。将‘中间需要有人帮忙’改成接入资料与员工使用的具体动作；删除知识库解释后的自我总结、服务清单后的重复总结。政策只用一段回应为什么需要服务人员。未来展望落到整理一周咨询，不声称AI全自动经营。"
+  },
+  "retention_review": {
+    "risk_node_count": 3,
+    "nodes": [
+      {
+        "original": "请给予我包容和支持。",
+        "risk_level": "high",
+        "reason": "用户指定情感开头，陌生观众若迟迟不知道与自己关系，可能离开。属于预测，不是账号实测。",
+        "candidates": {
+          "conservative": "请给予我包容和支持。我想在兰州，把企业AI应用这件事做下去。",
+          "direct": "请给予我包容和支持。我想帮本地老板，把员工找资料、整理咨询这些麻烦解决得更好一点。",
+          "vivid": "请给予我包容和支持。员工反复找资料，老板每天看报表，这些事情，我想在兰州跟大家一起做明白。"
+        },
+        "fact_difference": "均保留用户原话和本地服务意图，没有新增经历或效果。",
+        "recommendation": "保留用户指定第一句，正文第二段连着给业务麻烦，避免一开始展开长篇自述。"
+      },
+      {
+        "original": "这样，老板才看得见，我们做的知识库具体在帮哪一步，哪些事情还得自己把关。",
+        "risk_level": "medium",
+        "reason": "前面已经解释查资料、出处和人工确认，再总结会降低推进速度。",
+        "candidates": {
+          "conservative": "老板可以用员工平时的问题，看看答复是否有出处。",
+          "direct": "交到员工手里以后，也得拿他们每天遇到的问题来试。",
+          "vivid": "让员工把平时卡住自己的问题拿来问一遍，哪里查不到，再接着补。"
+        },
+        "fact_difference": "都是试用方法，没有假造客户测试结果。",
+        "recommendation": "删除原总结句，顺接当前稿已经存在的员工试用段。"
+      },
+      {
+        "original": "这些工作做下来，企业能拿到的，就不只是听过一场讲解。",
+        "risk_level": "medium",
+        "reason": "容易恢复到泛化服务推销和重复前面知识库、培训清单。",
+        "candidates": {
+          "conservative": "这些服务需要跟着企业的实际使用继续调整。",
+          "direct": "我看好往后几年的AI应用，会越来越贴近这些日常工作。",
+          "vivid": "以后老板提出一项日常任务，AI有机会把查资料和做整理连着做。"
+        },
+        "fact_difference": "保持服务与个人展望边界，没有新增交付保证。",
+        "recommendation": "删除整段重复总结，直接衔接已有未来展望，用下一段客户咨询的例子支撑判断。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "相较上一版不再保留2000家目标与四段政策定义，它们不是本轮用户选定叙事的必要内容。"
+    ],
+    "wording_strength_changes": [
+      "将服务效果写成具体可讨论方案和目标；未来用本人判断及条件表达，不声称自动经营或必然推荐。"
+    ],
+    "pending_user_confirmations": [
+      "本人是否认可新稿的语气、公开服务范围及真人朗读效果",
+      "视频号全文未取得，不能核对其具体叙事"
+    ]
+  },
+  "scores": {
+    "directness": 8,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "read_aloud_check_detail": {
+    "mode": "local-tts-duration-only-plus-text-rhythm-review",
+    "voice": "Tingting",
+    "configured_rate": 250,
+    "audio_path": "/tmp/chaoge-support-20260906-final-readcheck.aiff",
+    "duration_seconds": 143.445351,
+    "human_listened": false,
+    "user_read_confirmed": false,
+    "scope": "本地TTS仅检查能完整生成及机器语速下时长；人工朗读与声音自然度未确认，不能作为制作批准。"
+  },
+  "revision_application": "本轮允许从真实已确认经历添加事实依据；new_facts为空指精修阶段没有新增无依据事实。所有正文来源见事实锁。"
+}
