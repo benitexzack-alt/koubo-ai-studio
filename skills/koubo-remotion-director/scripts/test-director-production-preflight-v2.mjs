@@ -102,6 +102,7 @@ test('建立真媒体但执行器自造验收回执的恢复候选', () => {
   writeFileSync(join(testRoot, 'remotion', 'package.json'), '{"name":"director-preflight-case","private":true}\n');
   writeFileSync(join(testRoot, 'remotion', 'package-lock.json'), '{"name":"director-preflight-case","lockfileVersion":3}\n');
   writeFileSync(join(testRoot, 'remotion', 'tsconfig.json'), '{"compilerOptions":{}}\n');
+  writeFileSync(join(testRoot, 'remotion', 'remotion.config.ts'), 'export const controlled = true;\n');
   const publicDir = join(testRoot, 'remotion', 'public');
   mkdirSync(publicDir, {recursive: true});
   writeFileSync(join(publicDir, 'bound-public-asset.txt'), 'public-dir-full-tree-binding\n');
@@ -257,13 +258,13 @@ test('命令不能由非固定 entrypoint 冒充调用', () => {
   assert.equal(result.code, 'DPG2_COMMAND_ENTRYPOINT_MISMATCH');
 });
 
-test('Remotion entry 递归 import 图与三份锁文件全量绑定且深层漂移可见', () => {
+test('Remotion entry 递归 import 图与锁/配置文件全量绑定且深层漂移可见', () => {
   const before = collectRemotionRuntimeGraphV2({projectRoot, job});
   const paths = before.map((item) => item.path);
   assert.ok(paths.some((item) => item.endsWith('/remotion/entry.tsx')));
   assert.ok(paths.some((item) => item.endsWith('/remotion/runtime/component.tsx')));
   assert.ok(paths.some((item) => item.endsWith('/remotion/runtime/data.json')));
-  for (const name of ['package.json', 'package-lock.json', 'tsconfig.json']) {
+  for (const name of ['package.json', 'package-lock.json', 'tsconfig.json', 'remotion.config.ts']) {
     assert.ok(paths.some((item) => item.endsWith(`/remotion/${name}`)));
   }
   const nestedPath = join(testRoot, 'remotion', 'runtime', 'data.json');

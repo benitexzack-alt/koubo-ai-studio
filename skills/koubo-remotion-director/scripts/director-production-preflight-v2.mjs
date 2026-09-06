@@ -242,8 +242,14 @@ export const collectRemotionRuntimeGraphV2 = ({projectRoot = DEFAULT_PRODUCTION_
       if (!visited.has(resolvedImport)) queue.push(resolvedImport);
     }
   }
-  const lockPaths = ['package.json', 'package-lock.json', 'tsconfig.json'].map((name) =>
-    assertInsideProject(projectRoot, resolve(remotionRoot, name), `Remotion ${name}`));
+  const lockPaths = [
+    ...['package.json', 'package-lock.json', 'tsconfig.json'].map((name) =>
+      assertInsideProject(projectRoot, resolve(remotionRoot, name), `Remotion ${name}`)),
+    ...['remotion.config.ts', 'remotion.config.js']
+      .map((name) => resolve(remotionRoot, name))
+      .filter((pathValue) => existsSync(pathValue))
+      .map((pathValue) => assertInsideProject(projectRoot, pathValue, 'Remotion 配置')),
+  ];
   return [...visited, ...lockPaths]
     .map((pathValue) => hashRegularFile(projectRoot, pathValue, 'Remotion import/锁文件运行图'))
     .sort((a, b) => a.path.localeCompare(b.path, 'zh-CN'));

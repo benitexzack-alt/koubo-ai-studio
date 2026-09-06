@@ -52,7 +52,7 @@ const resolveInside = (pathValue, label, {mustExist = true} = {}) => {
   return absolute;
 };
 
-const safeRenderEnvironment = () => {
+const safeRenderEnvironment = ({claimPath, claimId, preflightIntegritySealSha256}) => {
   const env = {};
   for (const key of ['PATH', 'HOME', 'TMPDIR', 'TMP', 'TEMP', 'LANG', 'LC_ALL']) {
     if (typeof process.env[key] === 'string') env[key] = process.env[key];
@@ -60,6 +60,9 @@ const safeRenderEnvironment = () => {
   env.NODE_ENV = 'production';
   env.NO_PROXY = '127.0.0.1,localhost';
   env.no_proxy = '127.0.0.1,localhost';
+  env.KOUBO_CONTROLLED_RENDER_CLAIM_PATH = claimPath;
+  env.KOUBO_CONTROLLED_RENDER_CLAIM_ID = claimId;
+  env.KOUBO_CONTROLLED_RENDER_PREFLIGHT_SHA256 = preflightIntegritySealSha256;
   return env;
 };
 
@@ -148,7 +151,11 @@ try {
   const result = spawnSync(cli.realTarget, renderArgs, {
     cwd: remotionRoot,
     stdio: 'inherit',
-    env: safeRenderEnvironment(),
+    env: safeRenderEnvironment({
+      claimPath,
+      claimId,
+      preflightIntegritySealSha256: preSpawn.integritySealSha256,
+    }),
   });
   if (result.error || result.status !== 0) {
     fail('RRPV2_REMOTION_RENDER_FAILED', `Remotion 渲染失败，退出码 ${result.status ?? 'unknown'}。`);
