@@ -1,0 +1,51 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import {ROOT, CONTROL, RUNTIME_FILES, collectRuntime, digest, hashFile, readJson, requestIntentSha256} from '../runner-core.mjs';
+import {validateKnowledge} from '../runner.mjs';
+
+const outputRoot=path.dirname(fileURLToPath(import.meta.url));
+const requestPath=path.join(ROOT,CONTROL,'request.v2.json');
+const startedAt=new Date().toISOString();
+const result={schemaVersion:'candidate-knowledge-v2-independent-check/v1',startedAt,decision:'pending',formalEnabled:false};
+try {
+  const request=readJson(requestPath);
+  const priorRequest=readJson(path.join(ROOT,CONTROL,'request.v1.json'));
+  const intent=readJson(path.join(ROOT,CONTROL,'review-request-intent.v2.json'));
+  const snapshot=readJson(path.join(ROOT,CONTROL,'runtime-snapshot.v2.json'));
+  const priorSnapshot=readJson(path.join(ROOT,CONTROL,'runtime-snapshot.v1.json'));
+  const omitReviewRuntime=r=>Object.fromEntries(Object.entries(r).filter(([key])=>!['runtimeSha256','independentReview'].includes(key)));
+  assert.equal(digest(omitReviewRuntime(request)),digest(omitReviewRuntime(priorRequest)),'v2扩大了请求范围');
+  assert.equal(request.runtimeSha256,'ed21cafce06b36a5f77ef8b24f8e692216ccf81346b3874c2a0489962f35ed6d');
+  assert.equal(requestIntentSha256(request),intent.requestIntentSha256);
+  assert.equal(request.runtimeSha256,intent.runtimeSha256);
+  assert.equal(digest(snapshot.files),snapshot.sha256);
+  const oldFiles=new Map(priorSnapshot.files.map(f=>[f.path,f]));
+  const newFiles=new Map(snapshot.files.map(f=>[f.path,f]));
+  result.runtimeDelta=[...new Set([...oldFiles.keys(),...newFiles.keys()])].filter(p=>digest(oldFiles.get(p)??null)!==digest(newFiles.get(p)??null)).map(p=>({path:p,before:oldFiles.get(p)??null,after:newFiles.get(p)??null}));
+  assert(result.runtimeDelta.every(d=>RUNTIME_FILES.includes(d.path)),'runtime还有未读的非候选改动');
+  const runtime=collectRuntime();
+  assert.equal(runtime.sha256,request.runtimeSha256,'当前runtime与v2声明不一致');
+  result.runtimeSha256=runtime.sha256;
+  result.runtimeFileCount=runtime.files.length;
+  result.requestPath=requestPath;
+  result.requestSha256=hashFile(requestPath);
+  result.requestIntentSha256=requestIntentSha256(request);
+  result.requestScopeUnchangedExceptRuntimeAndReview=true;
+  result.changedCodeHashes=RUNTIME_FILES.map(p=>({path:p,sha256:hashFile(path.join(ROOT,p))}));
+  result.knowledge=validateKnowledge({request},runtime);
+  assert.equal(result.knowledge.status,'context-valid');
+  assert.deepEqual(result.knowledge.problems,[]);
+  assert.equal(hashFile(requestPath),result.requestSha256,'审阅期间request发生变化');
+  for(const item of result.changedCodeHashes)assert.equal(hashFile(path.join(ROOT,item.path)),item.sha256);
+  result.decision='knowledge-p1-resolved-for-v2';
+} catch(error) {
+  result.decision='blocked';
+  result.error={message:error.message,stack:error.stack};
+  process.exitCode=1;
+}
+result.endedAt=new Date().toISOString();
+const output=path.join(outputRoot,'knowledge-v2-independent-check.json');
+fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({output,decision:result.decision,runtimeSha256:result.runtimeSha256,requestIntentSha256:result.requestIntentSha256,knowledgeStatus:result.knowledge?.status,runtimeDelta:result.runtimeDelta?.map(x=>x.path),error:result.error?.message},null,2));

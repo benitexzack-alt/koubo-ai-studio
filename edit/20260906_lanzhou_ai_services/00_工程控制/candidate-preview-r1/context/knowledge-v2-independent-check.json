@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "candidate-knowledge-v2-independent-check/v1",
+  "startedAt": "2026-09-07T15:25:32.295Z",
+  "decision": "blocked",
+  "formalEnabled": false,
+  "runtimeDelta": [
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner-core.mjs",
+      "before": {
+        "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner-core.mjs",
+        "sha256": "d721c9c542db5bde7892135570034ca63fecc724a6b9efef492b48987d394799"
+      },
+      "after": {
+        "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner-core.mjs",
+        "sha256": "25a4c6f310575f7dad9fece5333aec3cb2a1dbe333dc638461800d23e565230e"
+      }
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner.mjs",
+      "before": {
+        "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner.mjs",
+        "sha256": "acb9200bd921ddd72bc1e32573b7bd842cfcdfee88512b1871e7b0d19a7e7e26"
+      },
+      "after": {
+        "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner.mjs",
+        "sha256": "fd1c772cd5094e60a1af9d86d436d64bb6ac2e3a20e5d5dceeb6216886d1be06"
+      }
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/knowledge-readonly.py",
+      "before": null,
+      "after": {
+        "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/knowledge-readonly.py",
+        "sha256": "ada2954b863b5fd0e68b6780ead581c5e837147825e95cfe55c30456e499a115"
+      }
+    }
+  ],
+  "runtimeSha256": "ed21cafce06b36a5f77ef8b24f8e692216ccf81346b3874c2a0489962f35ed6d",
+  "runtimeFileCount": 10861,
+  "requestPath": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/request.v2.json",
+  "requestSha256": "d21693e5b31430e8b56aacc46271188b2d63a4ba69cf422f51c669a133cf6e96",
+  "requestIntentSha256": "2e84dcf2782e8b170e618d07cd05707f1a3c5b2f65e9030b85a8e2aca118df89",
+  "requestScopeUnchangedExceptRuntimeAndReview": true,
+  "changedCodeHashes": [
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner.mjs",
+      "sha256": "fd1c772cd5094e60a1af9d86d436d64bb6ac2e3a20e5d5dceeb6216886d1be06"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner-core.mjs",
+      "sha256": "25a4c6f310575f7dad9fece5333aec3cb2a1dbe333dc638461800d23e565230e"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/worker.mjs",
+      "sha256": "71c8f419e0d8beb5a1cd1ec2087677fccf85274496654af8a71b4b7848b26224"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/network-probe.mjs",
+      "sha256": "80550d758d7349d48d1d9f9b8ccd66859b5de8fd654bef56530f514f390beed2"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/knowledge-readonly.py",
+      "sha256": "ada2954b863b5fd0e68b6780ead581c5e837147825e95cfe55c30456e499a115"
+    }
+  ],
+  "error": {
+    "message": "LOCAL_CHECK_FAILED:{\"schema_version\": \"opc-task-context-validation/1.0\", \"status\": \"blocked-context-stale\", \"summary\": \"任务上下文已经失效，正式执行保持阻断\", \"context_path\": \"/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260907-lanzhou-candidate-preview-r1-context/context.json\", \"task\": {\"id\": \"opc-task-20260907-lanzhou-candidate-preview-r1-context\", \"project\": \"口播\", \"objective\": \"20260906_lanzhou_ai_services 独立候选知识上下文：本地全长有声低清小样，用户接受五段既有纸艺瑕疵且不重生不增费；formal=false；待最终request和独立代码闭包审查，不冒用导演原task或正式job。\", \"cwd\": \"/Users/pc/Documents/口播\", \"important\": true, \"external_action\": false}, \"project_route\": {\"project_id\": \"koubo\", \"project_root\": \"/Users/pc/Documents/口播\", \"match_status\": \"matched\", \"execution_scope\": {\"primary_project_id\": \"koubo\", \"primary_project_root\": \"/Users/pc/Documents/口播\", \"primary_access_mode\": \"task-scoped-read-write\", \"write_allowed_roots\": [\"/Users/pc/Documents/口播\"], \"read_only_roots\": [], \"related_project_rule\": \"关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。\", \"write_escalation_rule\": \"确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。\"}}, \"index_generation\": null, \"problems\": [{\"code\": \"index-not-current\", \"status\": \"stale\"}], \"gate\": {\"formal_execution_allowed\": false}, \"next_actions\": [\"重新运行 start、重新读取变化材料并生成新回执\"], \"artifacts\": [\"/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260907-lanzhou-candidate-preview-r1-context/context.json\"]}\n",
+    "stack": "Error: LOCAL_CHECK_FAILED:{\"schema_version\": \"opc-task-context-validation/1.0\", \"status\": \"blocked-context-stale\", \"summary\": \"任务上下文已经失效，正式执行保持阻断\", \"context_path\": \"/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260907-lanzhou-candidate-preview-r1-context/context.json\", \"task\": {\"id\": \"opc-task-20260907-lanzhou-candidate-preview-r1-context\", \"project\": \"口播\", \"objective\": \"20260906_lanzhou_ai_services 独立候选知识上下文：本地全长有声低清小样，用户接受五段既有纸艺瑕疵且不重生不增费；formal=false；待最终request和独立代码闭包审查，不冒用导演原task或正式job。\", \"cwd\": \"/Users/pc/Documents/口播\", \"important\": true, \"external_action\": false}, \"project_route\": {\"project_id\": \"koubo\", \"project_root\": \"/Users/pc/Documents/口播\", \"match_status\": \"matched\", \"execution_scope\": {\"primary_project_id\": \"koubo\", \"primary_project_root\": \"/Users/pc/Documents/口播\", \"primary_access_mode\": \"task-scoped-read-write\", \"write_allowed_roots\": [\"/Users/pc/Documents/口播\"], \"read_only_roots\": [], \"related_project_rule\": \"关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。\", \"write_escalation_rule\": \"确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。\"}}, \"index_generation\": null, \"problems\": [{\"code\": \"index-not-current\", \"status\": \"stale\"}], \"gate\": {\"formal_execution_allowed\": false}, \"next_actions\": [\"重新运行 start、重新读取变化材料并生成新回执\"], \"artifacts\": [\"/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260907-lanzhou-candidate-preview-r1-context/context.json\"]}\n\n    at ensure (file:///Users/pc/Documents/%E5%8F%A3%E6%92%AD/edit/20260906_lanzhou_ai_services/00_%E5%B7%A5%E7%A8%8B%E6%8E%A7%E5%88%B6/candidate-preview-r1/runner-core.mjs:31:81)\n    at runLocal (file:///Users/pc/Documents/%E5%8F%A3%E6%92%AD/edit/20260906_lanzhou_ai_services/00_%E5%B7%A5%E7%A8%8B%E6%8E%A7%E5%88%B6/candidate-preview-r1/runner.mjs:24:3)\n    at validateKnowledge (file:///Users/pc/Documents/%E5%8F%A3%E6%92%AD/edit/20260906_lanzhou_ai_services/00_%E5%B7%A5%E7%A8%8B%E6%8E%A7%E5%88%B6/candidate-preview-r1/runner.mjs:34:18)\n    at file:///Users/pc/Documents/%E5%8F%A3%E6%92%AD/edit/20260906_lanzhou_ai_services/00_%E5%B7%A5%E7%A8%8B%E6%8E%A7%E5%88%B6/candidate-preview-r1/context/verify-knowledge-v2.mjs:37:20\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)"
+  },
+  "endedAt": "2026-09-07T15:25:35.550Z"
+}

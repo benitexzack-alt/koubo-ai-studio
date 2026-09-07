@@ -1,0 +1,231 @@
+{
+  "status": "exact-output-frames-extracted-not-yet-visually-reviewed",
+  "startedAt": "2026-09-07T16:11:33.112Z",
+  "finishedAt": "2026-09-07T16:11:37.986Z",
+  "video": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+    "sha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4"
+  },
+  "machineQA": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/candidate-machine-qa.v1.json",
+    "sha256": "666d1326801a36e94bac00454281584ac27b26668598228994d8467cf7235803"
+  },
+  "selection": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-selection.derived.v2.json",
+    "sha256": "4802b7bcb6b6c046827cea50d0921684a35cd01073c7779a305c2445a23c81ce"
+  },
+  "command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-nostdin",
+    "-n",
+    "-threads",
+    "2",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+    "-map",
+    "0:v:0",
+    "-an",
+    "-sn",
+    "-dn",
+    "-filter_threads",
+    "1",
+    "-vf",
+    "select=eq(n\\,3072)+eq(n\\,3140)+eq(n\\,3185)+eq(n\\,5000)+eq(n\\,5055)+eq(n\\,7123)+eq(n\\,7200)+eq(n\\,7706)+eq(n\\,7745)+eq(n\\,7909)+eq(n\\,7970)+eq(n\\,8204)+eq(n\\,8260)",
+    "-fps_mode",
+    "vfr",
+    "-frames:v",
+    "13",
+    "-start_number",
+    "0",
+    "-compression_level",
+    "2",
+    "-threads",
+    "1",
+    "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/selected-%03d.png"
+  ],
+  "exitCode": 0,
+  "stderr": "",
+  "stdout": "",
+  "checks": [
+    {
+      "beatId": "output-c022",
+      "effectId": "keyword-reveal",
+      "frames": {
+        "startFrame": 3069,
+        "endFrameExclusive": 3217
+      },
+      "requestedFrame": 3140,
+      "earlyFrame": 3072,
+      "representativeFrame": 3185
+    },
+    {
+      "beatId": "output-c035",
+      "effectId": "marker-underline",
+      "frames": {
+        "startFrame": 4997,
+        "endFrameExclusive": 5124
+      },
+      "requestedFrame": 5055,
+      "earlyFrame": 5000,
+      "representativeFrame": 5055
+    },
+    {
+      "beatId": "output-c048",
+      "effectId": "marker-underline",
+      "frames": {
+        "startFrame": 7120,
+        "endFrameExclusive": 7288
+      },
+      "requestedFrame": 7200,
+      "earlyFrame": 7123,
+      "representativeFrame": 7200
+    },
+    {
+      "beatId": "output-c052",
+      "effectId": "marker-underline",
+      "frames": {
+        "startFrame": 7703,
+        "endFrameExclusive": 7794
+      },
+      "requestedFrame": 7745,
+      "earlyFrame": 7706,
+      "representativeFrame": 7745
+    },
+    {
+      "beatId": "output-c054",
+      "effectId": "marker-underline",
+      "frames": {
+        "startFrame": 7906,
+        "endFrameExclusive": 8038
+      },
+      "requestedFrame": 7970,
+      "earlyFrame": 7909,
+      "representativeFrame": 7970
+    },
+    {
+      "beatId": "output-c056",
+      "effectId": "marker-underline",
+      "frames": {
+        "startFrame": 8201,
+        "endFrameExclusive": 8344
+      },
+      "requestedFrame": 8260,
+      "earlyFrame": 8204,
+      "representativeFrame": 8260
+    }
+  ],
+  "images": [
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-03072.png",
+      "sha256": "511401ab2d380be3fc477e27f5d808a4888a54e18aff0d1405bd620e1847c3d7",
+      "frame": 3072,
+      "seconds": 102.4,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-03140.png",
+      "sha256": "0e1d4f45888e75da1906059b267c3483bcbf81b6417327d37582f2d958ef64ff",
+      "frame": 3140,
+      "seconds": 104.66666666666667,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-03185.png",
+      "sha256": "a842580aedb77fca7527f7c47166bb76201035a3c77b8589540c976dba65d01e",
+      "frame": 3185,
+      "seconds": 106.16666666666667,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-05000.png",
+      "sha256": "8f115191aaa501998b5dd871f7a5921285fedd7b26cb6b6cea93a2f9c49a81da",
+      "frame": 5000,
+      "seconds": 166.66666666666666,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-05055.png",
+      "sha256": "a1bcfcaadd24b1540af35651702b5a375f179cd203eccf155d949e8a63d887bf",
+      "frame": 5055,
+      "seconds": 168.5,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07123.png",
+      "sha256": "1ea103a89b096ab5530507ce279aedd35b17adf9d8fcc01d1a7174ed9898d165",
+      "frame": 7123,
+      "seconds": 237.43333333333334,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07200.png",
+      "sha256": "34008081b42959ba1cb12bddd436c3a885e6a0c44d79d74d4c7190177188e5cd",
+      "frame": 7200,
+      "seconds": 240,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07706.png",
+      "sha256": "3f19e72be2b71d046400667adbb104a42997d7639f1ca34c7e9a6f14ebfb7772",
+      "frame": 7706,
+      "seconds": 256.8666666666667,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07745.png",
+      "sha256": "c82f1c429ddda7b3ee0aaafd6ddc0288d8ab2d6c71bd4e3618bee20ae6922742",
+      "frame": 7745,
+      "seconds": 258.1666666666667,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07909.png",
+      "sha256": "2b8804411430e8ee6a598431b37c4a3f6f4ae02528c535b65afe7bbe768bc83d",
+      "frame": 7909,
+      "seconds": 263.6333333333333,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07970.png",
+      "sha256": "fc1388f236c1725aa906d8c69e6c8bf81f8e6ab47c55589dfd10a6183451c9d7",
+      "frame": 7970,
+      "seconds": 265.6666666666667,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-08204.png",
+      "sha256": "9382c72985c520ec6fcdd5f931759742cf251b92fc958740fcdc1f3f780fdae4",
+      "frame": 8204,
+      "seconds": 273.46666666666664,
+      "width": 960,
+      "height": 540
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-08260.png",
+      "sha256": "89c9df1b120283a8a6319e4fbb5656d8d53d86d58f1b28fb96fcd7fe4721aaa2",
+      "frame": 8260,
+      "seconds": 275.3333333333333,
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "extractionMethod": "单次完整解码，select按零起始解码帧号精确选择；无seek近似、无缩放或图像重绘。",
+  "authorization": "父任务已确认固定视频完整媒体QA通过；允许六项效果入场早帧与代表帧对照。",
+  "originalRunnerSuccessClaimed": false,
+  "applicationReceiptGenerated": false,
+  "formalAllowed": false
+}

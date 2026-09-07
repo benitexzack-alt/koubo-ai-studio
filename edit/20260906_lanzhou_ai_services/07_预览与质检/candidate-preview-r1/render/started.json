@@ -1,0 +1,316 @@
+{
+  "pid": 10123,
+  "command": "render",
+  "requestIntentSha256": "c74311a5a0e3f68d1668337b5ab5b36ae1ef7af9142fce4ede4e87c76c46c220",
+  "startedAt": "2026-09-07T15:58:58.435Z",
+  "formalEnabled": false,
+  "productionEligible": false,
+  "cryptographicProductionAuthorization": false,
+  "userPreviewApproved": false,
+  "publishAuthorized": false,
+  "permission": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/permission.v1.json",
+    "sha256": "71c8dd0bdffa32ec05b10a8ad9a0811f99a7ed15e563fbd372732b7d3cf0ab4b"
+  },
+  "independentReview": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/independent-review.v5.json",
+    "sha256": "907099f93fe63cf1e4dc8358fd844d93b1266b05fb7630e5d10fd32b74fa0aaa"
+  },
+  "runtimeSha256": "e1b32bb53dacfe318aa0d5637a09f35a9e4ee3fd5d5ee6d051f19eaf14a546ce",
+  "knowledge": {
+    "schema_version": "opc-task-context-validation/1.0",
+    "status": "context-valid",
+    "summary": "任务上下文、索引代际和必读文件哈希仍然有效",
+    "context_path": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260907-lanzhou-candidate-preview-r1-context-v3/context.json",
+    "task": {
+      "id": "opc-task-20260907-lanzhou-candidate-preview-r1-context-v3",
+      "project": "口播",
+      "objective": "20260906_lanzhou_ai_services 候选context v3：仅因跨项目daily导致索引过期续绑。复用22份SHA未变的真实读取应用回执；既有v4 runtime和28静帧不重审。仅本地全长有声低清候选，五段纸艺已接受缺陷、13项ASR仍待核、formal=false。等待request.v5绑定，不冒用导演原task或正式job。",
+      "cwd": "/Users/pc/Documents/口播",
+      "important": true,
+      "external_action": false
+    },
+    "project_route": {
+      "project_id": "koubo",
+      "project_root": "/Users/pc/Documents/口播",
+      "match_status": "matched",
+      "execution_scope": {
+        "primary_project_id": "koubo",
+        "primary_project_root": "/Users/pc/Documents/口播",
+        "primary_access_mode": "task-scoped-read-write",
+        "write_allowed_roots": [
+          "/Users/pc/Documents/口播"
+        ],
+        "read_only_roots": [],
+        "related_project_rule": "关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。",
+        "write_escalation_rule": "确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。"
+      }
+    },
+    "index_generation": {
+      "manifest_sha256": "15f47ae177f76b0a6f96af3474d5a7165ffecf6cc8901ed828df7ce91b91898b",
+      "config_sha256": "7d80e391da915c1f4363776317039cad5b742609403f0a671c1ffb0fbc4e500d",
+      "embedding_model": "nomic-embed-text:latest",
+      "indexed_at": "2026-09-07T15:54:15.803871+00:00",
+      "database_sha256": "d91b8189004dfbe28de5f960748e1511dded822e77bd86377050355037c00bcd",
+      "id": "be38f09d5606a391e7087ab8f1af9f5e86d549db84305f19ed47588c232aa9d4"
+    },
+    "problems": [],
+    "gate": {
+      "formal_execution_allowed": true
+    },
+    "next_actions": [
+      "继续执行项目自身的质量、安全和人工验收门禁"
+    ],
+    "artifacts": [
+      "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260907-lanzhou-candidate-preview-r1-context-v3/context.json"
+    ]
+  },
+  "sandbox": {
+    "loopbackAllowed": true,
+    "otherLoopbackDenied": true,
+    "secretEnvironmentAbsent": true,
+    "secretFileDenied": true
+  },
+  "acceptedPaperExceptions": [
+    {
+      "sceneId": "P01",
+      "sha256": "05c9b4b23659dae804111b5cfb53a8be5ca463e7c87961f9623ce26d5e43a2f2",
+      "seconds": [
+        4.5,
+        6
+      ],
+      "defect": "作废资料也流向知识库，与只整理有效资料的原意不一致。",
+      "disposition": "本条按用户决定保留；不是语义检查通过。"
+    },
+    {
+      "sceneId": "P02",
+      "sha256": "d09074f2132c21438343ec39c2a53c9a2f72561466db88096a3a5599bf8b6aef",
+      "defect": "确认因果先后不够清楚，底部纸片进入原规划字幕保留区，最终字幕遮挡仍须检查。",
+      "disposition": "接受源片既有瑕疵；不豁免合成新增遮挡。"
+    },
+    {
+      "sceneId": "P03",
+      "sha256": "c237f8901f509d1a865725c50ada9b02d413605710dfa3d37b58c20c9e88d623",
+      "seconds": [
+        4,
+        5
+      ],
+      "defect": "运动纸片短时遮住实际试用标签。",
+      "disposition": "本条保留，不能记为文字全程可读。"
+    },
+    {
+      "sceneId": "P04",
+      "sha256": "95f74224a778a1d9ce5115ebc97ffbe432a00384281f0347aafce30b808c757f",
+      "seconds": [
+        2,
+        3.5
+      ],
+      "defect": "服务哪些地方标签随展开变形，不符合原刚性牌约束。",
+      "disposition": "本条保留原画面。"
+    },
+    {
+      "sceneId": "P05",
+      "sha256": "b96c2e7da8dbf382916523ef0553196fd9b1ad014d1057888af33365469e2c15",
+      "seconds": [
+        2,
+        3
+      ],
+      "defect": "资料和权限标签短时消失后返回。",
+      "disposition": "本条保留，不伪造连续可见或OCR全通过。"
+    }
+  ],
+  "postshootRepresentation": {
+    "preshootB23": "recorded-absence-not-output",
+    "labelVisibility": "first-frame-baked-visible-from-source-frame-zero",
+    "labelActionIsFirstReveal": false,
+    "currentSharedPostshootValidatorPassed": false,
+    "method": "独立候选合同如实记录未说节拍、首帧标签与本条例外；不篡改旧合同字段含义。"
+  },
+  "unresolvedAsrMustRemainVisibleInReceipt": true,
+  "boundInputs": [
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/public-assets.v1.json",
+      "sha256": "c9aa97ba9c274d14b3c878e55b1621d2a43b38baac85f05f489c3d66314b30ef"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/paper-asset-intake.v1.json",
+      "sha256": "97eed68cd81269f08dc41e17d0f76d932740cd3418138c1e55db761f5f821f59"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/02_原片/copy_3257E7D6-476D-4668-93F2-0CA1BD79F373.MOV",
+      "sha256": "9e220b1e93a5eb49759827faf5a47aaef71ca030f674c6c8b549c9e0e159c07b"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/03_官方素材/O01_扎根用户现场_原文段落.png",
+      "sha256": "6f369d929ccac7c2c8dccf5c566f32ea775a3b093ad148f90a1a7a678fdf9b43"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/03_官方素材/O01_通知标题与日期.png",
+      "sha256": "5124f9ae565b20e2bd4b8a21baa3f7183455d070f4df9a60c0be64314efc2324"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/captions.json",
+      "sha256": "22c16b97e9a4d9267e892e13cecbe2c29037903511ed903ad24697642c62f33e"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/data.v1.json",
+      "sha256": "7322b3844efcd89b47ea653855cb4c34c6a20135ebb739923c1d3a2a2e4e4992"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/final-consumption.v2.json",
+      "sha256": "0877fdccbe81df3798353e7155d4763b3f2904acda14d0d137df09afbbe71b84"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-selection.derived.v2.json",
+      "sha256": "4802b7bcb6b6c046827cea50d0921684a35cd01073c7779a305c2445a23c81ce"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/05_纸艺视频/视频.mp4",
+      "sha256": "c237f8901f509d1a865725c50ada9b02d413605710dfa3d37b58c20c9e88d623"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/05_纸艺视频/视频_2.mp4",
+      "sha256": "d09074f2132c21438343ec39c2a53c9a2f72561466db88096a3a5599bf8b6aef"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/05_纸艺视频/视频_3.mp4",
+      "sha256": "b96c2e7da8dbf382916523ef0553196fd9b1ad014d1057888af33365469e2c15"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/05_纸艺视频/视频_4.mp4",
+      "sha256": "95f74224a778a1d9ce5115ebc97ffbe432a00384281f0347aafce30b808c757f"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/05_纸艺视频/视频_5.mp4",
+      "sha256": "05c9b4b23659dae804111b5cfb53a8be5ca463e7c87961f9623ce26d5e43a2f2"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/06_补充实拍素材/开头引用_v1/stodownload.MP4",
+      "sha256": "0034f072955abc10db1a4a422fb70c6766f365ec47988f2e9e9d464a8bef9770"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/host-intake-r1/R01_960x540_响度处理代理.mp4",
+      "sha256": "5c5939aebea81f0416aacad6927063f5de9f2953b7b396a8670f20167c294805"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/09_实录与字幕/actual-bilingual.v1.json",
+      "sha256": "8e23acf33e03a4c3fa4a40daa7486214adc77539a94164bfd35e9a8c70421940"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/09_实录与字幕/canonical-spoken.v1.json",
+      "sha256": "15d86d2fb9204464c1260c0afd1cd0afaaa75ec03ee28d126a11d162d5eac135"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/09_实录与字幕/transcription-review.v1.json",
+      "sha256": "fe0326b4dd10be3df1eae1a70acd337f4b2cae8505943d2db72999a5f28c9d43"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/O01-onsite.png",
+      "sha256": "6f369d929ccac7c2c8dccf5c566f32ea775a3b093ad148f90a1a7a678fdf9b43"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/O01-title.png",
+      "sha256": "5124f9ae565b20e2bd4b8a21baa3f7183455d070f4df9a60c0be64314efc2324"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/P01.mp4",
+      "sha256": "05c9b4b23659dae804111b5cfb53a8be5ca463e7c87961f9623ce26d5e43a2f2"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/P02.mp4",
+      "sha256": "d09074f2132c21438343ec39c2a53c9a2f72561466db88096a3a5599bf8b6aef"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/P03.mp4",
+      "sha256": "c237f8901f509d1a865725c50ada9b02d413605710dfa3d37b58c20c9e88d623"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/P04.mp4",
+      "sha256": "95f74224a778a1d9ce5115ebc97ffbe432a00384281f0347aafce30b808c757f"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/P05.mp4",
+      "sha256": "b96c2e7da8dbf382916523ef0553196fd9b1ad014d1057888af33365469e2c15"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/R01.mp4",
+      "sha256": "5c5939aebea81f0416aacad6927063f5de9f2953b7b396a8670f20167c294805"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/U01.mp4",
+      "sha256": "0034f072955abc10db1a4a422fb70c6766f365ec47988f2e9e9d464a8bef9770"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/captions.json",
+      "sha256": "22c16b97e9a4d9267e892e13cecbe2c29037903511ed903ad24697642c62f33e"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/fonts/STHeiti-Medium.ttc",
+      "sha256": "f8fa4a63e2cf500e98e64d4c73260daaba049306cf85dec9e3729bc285b7d645"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/sfx/card.wav",
+      "sha256": "b60c4a4bbd4ba307a2fc584878fb5dfbde6bc8f77c372bb82957e2bc83edfed3"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r1/sfx/tick.wav",
+      "sha256": "a94576ec7523d53964a301f39a0b3d0e8ac3bf49a85d746d18b79aa522eb40f7"
+    },
+    {
+      "path": "remotion/src/components/AdaptiveBilingualCaptionOverlay.tsx",
+      "sha256": "e9fd51cd5d36cd1b98a6d08a3f5eced851992e26f65739e6c3bbdbb766d0570f"
+    },
+    {
+      "path": "remotion/src/components/LocalFont.tsx",
+      "sha256": "202bc7846addf055a75f139ece42a8a18ef628bbbd0626071fce7118f45a5b7d"
+    },
+    {
+      "path": "remotion/src/components/V8SemanticStage.tsx",
+      "sha256": "9687886275befd7649afd3a06b10bcf409aaeb4ea5217c3fa396a72c2c660be4"
+    },
+    {
+      "path": "remotion/src/lanzhou-services-v91-candidate-r1/LanzhouServicesCandidate.tsx",
+      "sha256": "794315373fa204567c393c751a4965a4e3d10d463352507540f6234a0e185589"
+    },
+    {
+      "path": "remotion/src/lanzhou-services-v91-candidate-r1/ShotcraftEffects.generated.tsx",
+      "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+    },
+    {
+      "path": "remotion/src/lanzhou-services-v91-candidate-r1/index.tsx",
+      "sha256": "a2fc16805b1b4318eea43bbe04b9a69841fbc2d7a4c4aa653c979d30345771d9"
+    },
+    {
+      "path": "remotion/src/lanzhou-services-v91-candidate-r1/tsconfig.json",
+      "sha256": "7d26de46578673f6bcd498f649fecb8199fbc0f419a6fc1188ce96d09f723e13"
+    },
+    {
+      "path": "remotion/src/lanzhou-services-v91-candidate-r1/visual-plan.v1.json",
+      "sha256": "6f79a81b564a2008f83fd2dda04cbdcc269490bb4507ae95c2ccf6c07ec6ecb8"
+    },
+    {
+      "path": "remotion/src/styles.ts",
+      "sha256": "a377ed474a0481caae0d5e4b54ac2ec1cd0a2235ff8d29dc56d29e556ec58246"
+    },
+    {
+      "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+      "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/permission.v1.json",
+      "sha256": "71c8dd0bdffa32ec05b10a8ad9a0811f99a7ed15e563fbd372732b7d3cf0ab4b"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/independent-review.v5.json",
+      "sha256": "907099f93fe63cf1e4dc8358fd844d93b1266b05fb7630e5d10fd32b74fa0aaa"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/independent-review-evidence.v5.md",
+      "sha256": "3509f2b5d7ccb7c9b8464c839a3464e6e0cdfafd4371ab4664827e34252fff66"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/request.v5.json",
+      "sha256": "cb3eaba4e41949ec2a9a43b96ae9d37d01f1001b4a7b8db0e384bb981d87754f"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "koubo-lanzhou-candidate-code-review/v1",
+  "episodeId": "20260906_lanzhou_ai_services",
+  "revisionId": "20260907-lanzhou-services-candidate-preview-r1",
+  "decision": "allow-candidate-preview",
+  "reviewerId": "independent-context-reviewer",
+  "implementerId": "Linnaeus-runner-and-parent-composition",
+  "requestIntentSha256": "911864f53f6ce093cc1fe1e8cecfa37394ef41c487f202801dc2f714776ca507",
+  "runtimeSha256": "ed21cafce06b36a5f77ef8b24f8e692216ccf81346b3874c2a0489962f35ed6d",
+  "reviewedAt": "2026-09-07T15:35:19.697Z",
+  "expiresAt": "2026-09-08T03:35:19.698Z",
+  "evidence": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/independent-review-evidence.v3.md",
+    "sha256": "7f4c9fe507a69c5c75737ea5968da3a5a4c40d19ab92e451bad384567ebadb7f"
+  },
+  "quote": "结论：本条request.v3绑定的独立代码审查通过，仅允许既有permission范围内的本地低清候选stills/render；不构成formal渲染、成片验收或发布授权。",
+  "allowedCommands": ["stills", "render"],
+  "cryptographicProductionAuthorization": false,
+  "formalEnabled": false,
+  "productionEligible": false,
+  "userPreviewApproved": false,
+  "publishAuthorized": false,
+  "machineEvidence": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/context/knowledge-v3-independent-check.json",
+    "sha256": "0e3820951a0f010e83caefc1a6c52839a4180c117025ea393d435c66698c5ce2"
+  },
+  "knowledgeStatus": "context-valid",
+  "openP0P1": [],
+  "retainedLimitations": [
+    "五段纸艺缺陷仅本条接受，不代表OCR或语义全部通过，不重生不增费。",
+    "13项ASR疑点仍待核验，未宣称原速人耳听验。",
+    "实际沙箱执行探针、静帧画面及有声全长小样尚待父任务执行和确认。"
+  ]
+}

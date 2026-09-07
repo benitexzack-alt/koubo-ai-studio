@@ -1,0 +1,67 @@
+{
+  "status": "actual-attempts-and-local-failure-preserved",
+  "attempts": [
+    {
+      "id": "output-match-r2",
+      "startedAt": "2026-09-07T12:45:57.798Z",
+      "finishedAt": "2026-09-07T12:45:58.014Z",
+      "command": [
+        "/Users/pc/.local/node-v22.22.3-darwin-arm64/bin/node",
+        "/Users/pc/Documents/口播/skills/koubo-shotcraft-library/scripts/match-director-effects.mjs",
+        "--request",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-match-request.v2.json",
+        "--selection",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-match-selection.raw.v2.json",
+        "--receipt",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-match-receipt.v2.json",
+        "--lookup",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-experience-lookup.v2.json",
+        "--repo-root",
+        "/Users/pc/Documents/口播"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-match-r2.stdout.txt",
+        "sha256": "7f1a0000232a1f4327c250e95c6ab5482ab53f56d80e9a64baa7f540e00da184"
+      },
+      "stderr": {
+        "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-match-r2.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "output-derived-validation-r2",
+      "startedAt": "2026-09-07T12:45:58.019Z",
+      "finishedAt": "2026-09-07T12:45:58.070Z",
+      "command": [
+        "/Users/pc/.local/node-v22.22.3-darwin-arm64/bin/node",
+        "/Users/pc/Documents/口播/skills/koubo-shotcraft-library/scripts/validate-director-selection.mjs",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-selection.derived.v2.json",
+        "/Users/pc/Documents/口播"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-derived-validation-r2.stdout.txt",
+        "sha256": "0a6d2c9bb0dea52151fe7ed8885e5835696f09c64d526d889462abdb59d5cfc8"
+      },
+      "stderr": {
+        "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-derived-validation-r2.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "baselineFailure": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/keyword-readability-failure.v1.json",
+    "sha256": "18f5657d123e0f2f0fedfa6c493d4b1573ffe191bf3470004afd2eb023449039"
+  },
+  "repair": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-derived-validation.v2.json",
+    "sha256": "2de0b6fc3b3d7856fddaf5af424b578586303dc4b81fb5e383f230a804c7040c"
+  },
+  "rawMatcherModified": false,
+  "formalAllowed": false
+}

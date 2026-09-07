@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "candidate-context-delta-review/v1",
+  "startedAt": "2026-09-07T15:56:54.047Z",
+  "decision": "context-delta-and-live-knowledge-passed",
+  "staticReviewRepeated": false,
+  "formalEnabled": false,
+  "renderExecuted": false,
+  "requestSha256BeforeReviewBinding": "0ad794305df1cec42900ad3229f6032f8cb39fb0628b5aad295f7a248c3c31f8",
+  "requestIntentSha256": "c74311a5a0e3f68d1668337b5ab5b36ae1ef7af9142fce4ede4e87c76c46c220",
+  "runtimeSha256": "e1b32bb53dacfe318aa0d5637a09f35a9e4ee3fd5d5ee6d051f19eaf14a546ce",
+  "runtimeFileCount": 10861,
+  "contextBinding": {
+    "taskId": "opc-task-20260907-lanzhou-candidate-preview-r1-context-v3",
+    "contextPath": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260907-lanzhou-candidate-preview-r1-context-v3/context.json",
+    "sha256": "4defbd3ede69b421b7327a430e71e21e6461041c6a4db17eea540edb6fab44fb"
+  },
+  "priorIndependentReview": {
+    "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/independent-review.v4.json",
+    "sha256": "1b16c72319d51a496d1e73380ce8050116021df17cf12f7ffdd66739b6b8c204"
+  },
+  "onlyContextAndReviewBindingChanged": true,
+  "knowledge": {
+    "schema_version": "opc-task-context-validation/1.0",
+    "status": "context-valid",
+    "summary": "任务上下文、索引代际和必读文件哈希仍然有效",
+    "context_path": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260907-lanzhou-candidate-preview-r1-context-v3/context.json",
+    "task": {
+      "id": "opc-task-20260907-lanzhou-candidate-preview-r1-context-v3",
+      "project": "口播",
+      "objective": "20260906_lanzhou_ai_services 候选context v3：仅因跨项目daily导致索引过期续绑。复用22份SHA未变的真实读取应用回执；既有v4 runtime和28静帧不重审。仅本地全长有声低清候选，五段纸艺已接受缺陷、13项ASR仍待核、formal=false。等待request.v5绑定，不冒用导演原task或正式job。",
+      "cwd": "/Users/pc/Documents/口播",
+      "important": true,
+      "external_action": false
+    },
+    "project_route": {
+      "project_id": "koubo",
+      "project_root": "/Users/pc/Documents/口播",
+      "match_status": "matched",
+      "execution_scope": {
+        "primary_project_id": "koubo",
+        "primary_project_root": "/Users/pc/Documents/口播",
+        "primary_access_mode": "task-scoped-read-write",
+        "write_allowed_roots": [
+          "/Users/pc/Documents/口播"
+        ],
+        "read_only_roots": [],
+        "related_project_rule": "关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。",
+        "write_escalation_rule": "确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。"
+      }
+    },
+    "index_generation": {
+      "manifest_sha256": "15f47ae177f76b0a6f96af3474d5a7165ffecf6cc8901ed828df7ce91b91898b",
+      "config_sha256": "7d80e391da915c1f4363776317039cad5b742609403f0a671c1ffb0fbc4e500d",
+      "embedding_model": "nomic-embed-text:latest",
+      "indexed_at": "2026-09-07T15:54:15.803871+00:00",
+      "database_sha256": "d91b8189004dfbe28de5f960748e1511dded822e77bd86377050355037c00bcd",
+      "id": "be38f09d5606a391e7087ab8f1af9f5e86d549db84305f19ed47588c232aa9d4"
+    },
+    "problems": [],
+    "gate": {
+      "formal_execution_allowed": true
+    },
+    "next_actions": [
+      "继续执行项目自身的质量、安全和人工验收门禁"
+    ],
+    "artifacts": [
+      "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260907-lanzhou-candidate-preview-r1-context-v3/context.json"
+    ]
+  },
+  "endedAt": "2026-09-07T15:56:57.427Z"
+}

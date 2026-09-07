@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "koubo-candidate-consumption-manifest/v1",
+  "status": "candidate-data-and-derived-selection-ready",
+  "data": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/data.v1.json",
+    "sha256": "7322b3844efcd89b47ea653855cb4c34c6a20135ebb739923c1d3a2a2e4e4992"
+  },
+  "captions": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/captions.json",
+    "sha256": "22c16b97e9a4d9267e892e13cecbe2c29037903511ed903ad24697642c62f33e"
+  },
+  "selection": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-selection.derived.v2.json",
+    "sha256": "4802b7bcb6b6c046827cea50d0921684a35cd01073c7779a305c2445a23c81ce"
+  },
+  "request": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-match-request.v2.json",
+    "sha256": "2c5cca4428ea1ea53dba9a21ba5b504f5df66a690702a7dfbd6a35fb8a16c618"
+  },
+  "rawMatchReceipt": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-match-receipt.v2.json",
+    "sha256": "f37ca6fc24cc5438d684913e1e3c86e68eefe0ddee15665ce6a31fc47c49404e"
+  },
+  "derivedValidation": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-derived-validation.v2.json",
+    "sha256": "2de0b6fc3b3d7856fddaf5af424b578586303dc4b81fb5e383f230a804c7040c"
+  },
+  "supersedesOnlyShotcraftPathsInImmutableData": true,
+  "consumption": {
+    "selectionShape": "原koubo-shotcraft-director-selection/v1；beats数组及componentProps原合同，新增derivation只供审计。",
+    "frame": "frame = globalFrame - beat.frames.startFrame；durationInFrames = endFrameExclusive - startFrame；fps=30。",
+    "marker": "必须传入完整componentProps，包括before、keyword、after，不能只取texts[0]。",
+    "keyword": "必须传入全部componentProps.items，atFrame已是局部显示帧；不能在消费时再次均分或重新推算。",
+    "evidence": "componentProps.rect与evidence.rect已相同；父任务按evidence.presentation.sourceCrop/outputImageRect布置真实源图。",
+    "captions": "只显示zh/en；reviewRequired、uncertainIds、exceptions等审计字段不得出现在公开视频画面。",
+    "applicationReceipt": "实际应用回执应绑定本manifest.selection的路径、SHA与revisionId；原matcher receipt仍绑定raw selection，不能改写成衍生选择由matcher原生生成。"
+  },
+  "paperTimingNotes": [
+    {
+      "paperId": "P02",
+      "sourceStartSeconds": 128.7,
+      "outputStartFrame": 4105,
+      "note": "按本次contextual-summary保留。流程与人工确认纸片跨到试用、出错处理话题，不是该段每个字或动作的精确对应；未把跨beat误称postshoot逐字合格。"
+    },
+    {
+      "paperId": "P03",
+      "sourceStartSeconds": 143.64,
+      "outputStartFrame": 4553,
+      "note": "此时实录开始培训段，纸片回顾前段试用、纠错和更新，按contextual-summary保留，不移动时点。"
+    }
+  ],
+  "outputFrames": 8393,
+  "transcriptUncertainCount": 13,
+  "paperPositionsUnchanged": true,
+  "oldPostshootPassed": false,
+  "B23": "recorded-absence",
+  "formalAllowed": false,
+  "renderPerformed": false
+}

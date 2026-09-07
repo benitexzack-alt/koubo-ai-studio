@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "candidate-independent-input-review/v1",
+  "requestIntentSha256": "3c92ccf6e95c492b405385a4dcc08f7296679b36c474bce20cb60ff350b68f8d",
+  "scope": "P1知识复检阻断发现后，继续本条既有输入的独立只读校验；不重做媒体QA，不执行render或stills。",
+  "method": "实际调用hashFile/checked/validatePermission/collectLocalImports并读取真实request、permission、context、data和public captions进行结构化比对，命令退出0。",
+  "bindingCount": 42,
+  "hashFailures": [],
+  "permissionHashMatches": true,
+  "imports": [
+    "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/data.v1.json",
+    "remotion/src/components/AdaptiveBilingualCaptionOverlay.tsx",
+    "remotion/src/components/LocalFont.tsx",
+    "remotion/src/components/V8SemanticStage.tsx",
+    "remotion/src/lanzhou-services-v91-candidate-r1/LanzhouServicesCandidate.tsx",
+    "remotion/src/lanzhou-services-v91-candidate-r1/ShotcraftEffects.generated.tsx",
+    "remotion/src/lanzhou-services-v91-candidate-r1/index.tsx",
+    "remotion/src/lanzhou-services-v91-candidate-r1/visual-plan.v1.json",
+    "remotion/src/styles.ts"
+  ],
+  "coreContext": {"entry": true, "data": true, "visualPlan": true, "meaning": "当前SHA与真实retrieved/read/applied回执匹配"},
+  "paperMappingShaMatches": {"P01": true, "P02": true, "P03": true, "P04": true, "P05": true},
+  "captionCount": 57,
+  "captionContentAndTimingMatchesData": true,
+  "asrUncertainCount": 13,
+  "newP0P1Findings": [],
+  "existingP1": "KNOWLEDGE_SQLITE_READONLY_SANDBOX_FAILURE",
+  "reviewerRenderedOrListened": false,
+  "formalEnabled": false,
+  "allow": false,
+  "disposition": "原independent-review.v1.json及证据MD保留历史；等待Linnaeus最小修复和父任务v2重新绑定，不覆盖旧阻断。"
+}

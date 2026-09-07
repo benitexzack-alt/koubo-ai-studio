@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "lanzhou-services-first-preview-permission/v1",
+  "episodeId": "20260906_lanzhou_ai_services",
+  "revisionId": "20260907-lanzhou-services-candidate-preview-r1",
+  "directorTaskId": "task-20260906T154937Z-69f6ebf8",
+  "recordedDate": "2026-09-07",
+  "evidence": {
+    "kind": "current-conversation-direct-user-confirmation",
+    "userQuote": "是的是的",
+    "confirmedQuestion": "现有视频全部保留，不再重新生成、不增加生成费用。按现有素材继续剪辑，这次先接受已指出的动画瑕疵，修复预览入口后出小样给你看，对吗？",
+    "messageId": null,
+    "note": "对话消息未提供可验证的平台消息ID；本记录不是独立数字签名，也不是候选观看通过。"
+  },
+  "scope": {
+    "localOnly": true,
+    "allowedCommands": ["preflight", "stills", "render"],
+    "canvas": {"width": 1920, "height": 1080, "fps": 30, "durationInFrames": 8393},
+    "output": {"width": 960, "height": 540, "fps": 30},
+    "outputRoot": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1",
+    "keepAllHostFrames": 8149,
+    "openingInsert": {"afterSourceFrameExclusive": 69, "sourceVideoFrames": 243, "outputFrames": 244, "reason": "保留8.102993秒完整新闻原声；只为不足一帧的音频尾部补1帧，不延长纸艺。"},
+    "preserveExistingFivePaperClips": true,
+    "allowNewGeneration": false,
+    "allowExternalNetwork": false,
+    "allowPayments": false,
+    "allowOverwrite": false
+  },
+  "acceptedPaperExceptions": [
+    {"sceneId": "P01", "sha256": "05c9b4b23659dae804111b5cfb53a8be5ca463e7c87961f9623ce26d5e43a2f2", "seconds": [4.5, 6], "defect": "作废资料也流向知识库，与只整理有效资料的原意不一致。", "disposition": "本条按用户决定保留；不是语义检查通过。"},
+    {"sceneId": "P02", "sha256": "d09074f2132c21438343ec39c2a53c9a2f72561466db88096a3a5599bf8b6aef", "defect": "确认因果先后不够清楚，底部纸片进入原规划字幕保留区，最终字幕遮挡仍须检查。", "disposition": "接受源片既有瑕疵；不豁免合成新增遮挡。"},
+    {"sceneId": "P03", "sha256": "c237f8901f509d1a865725c50ada9b02d413605710dfa3d37b58c20c9e88d623", "seconds": [4, 5], "defect": "运动纸片短时遮住实际试用标签。", "disposition": "本条保留，不能记为文字全程可读。"},
+    {"sceneId": "P04", "sha256": "95f74224a778a1d9ce5115ebc97ffbe432a00384281f0347aafce30b808c757f", "seconds": [2, 3.5], "defect": "服务哪些地方标签随展开变形，不符合原刚性牌约束。", "disposition": "本条保留原画面。"},
+    {"sceneId": "P05", "sha256": "b96c2e7da8dbf382916523ef0553196fd9b1ad014d1057888af33365469e2c15", "seconds": [2, 3], "defect": "资料和权限标签短时消失后返回。", "disposition": "本条保留，不伪造连续可见或OCR全通过。"}
+  ],
+  "exceptionInheritance": "forbidden-other-episodes-or-assets",
+  "postshootRepresentation": {
+    "preshootB23": "recorded-absence-not-output",
+    "labelVisibility": "first-frame-baked-visible-from-source-frame-zero",
+    "labelActionIsFirstReveal": false,
+    "currentSharedPostshootValidatorPassed": false,
+    "method": "独立候选合同如实记录未说节拍、首帧标签与本条例外；不篡改旧合同字段含义。"
+  },
+  "subtitleAuthority": "actual-recording",
+  "scriptRole": "comparison-only",
+  "unresolvedAsrMustRemainVisibleInReceipt": true,
+  "formalEnabled": false,
+  "productionEligible": false,
+  "cryptographicProductionAuthorization": false,
+  "userPreviewApproved": false,
+  "publishAuthorized": false
+}

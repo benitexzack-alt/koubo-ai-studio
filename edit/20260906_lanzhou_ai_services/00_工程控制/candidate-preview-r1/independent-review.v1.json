@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "koubo-lanzhou-candidate-code-review/v1",
+  "episodeId": "20260906_lanzhou_ai_services",
+  "revisionId": "20260907-lanzhou-services-candidate-preview-r1",
+  "decision": "blocked",
+  "reviewerId": "independent-context-reviewer",
+  "implementerId": "Linnaeus-runner-and-parent-composition",
+  "requestIntentSha256": "3c92ccf6e95c492b405385a4dcc08f7296679b36c474bce20cb60ff350b68f8d",
+  "runtimeSha256": "35bc5b4a7f35ebe9c71aded1c5a6503f50e52d6882a5674fb490a3a92f1a76ba",
+  "reviewedAt": "2026-09-07T15:18:41.817Z",
+  "expiresAt": "2026-09-07T21:18:41.817Z",
+  "evidence": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/independent-review-evidence.v1.md",
+    "sha256": "2c92c642fb8e487f91d77addfba1fb5b3e61fb1c31ebf46000fea5cfd2280b91"
+  },
+  "quote": "本次候选执行保持阻断，仅有一项P1：runner真实知识复检在只读沙箱内无法打开当前SQLite索引；不构成stills或render放行。",
+  "cryptographicProductionAuthorization": false,
+  "formalEnabled": false,
+  "productionEligible": false,
+  "userPreviewApproved": false,
+  "publishAuthorized": false,
+  "allowedCommands": [],
+  "allowedScopeAfterNewReviewOnly": [
+    "stills",
+    "render"
+  ],
+  "findings": [
+    {
+      "severity": "P1",
+      "file": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner.mjs",
+      "line": 32,
+      "code": "KNOWLEDGE_SQLITE_READONLY_SANDBOX_FAILURE",
+      "message": "真实validateKnowledge调用在SQLite SELECT meta阶段报unable to open database file；当前不放行候选执行。"
+    }
+  ],
+  "note": "结构沿用runner评审回执字段；decision=blocked将被validateRequest拒绝，不能为了满足allow检查伪造放行。没有修改request的独立审查占位SHA。"
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "koubo-candidate-data-independent-check/v1",
+  "status": "machine-data-and-selection-checks-complete-not-rendered",
+  "checkedAt": "2026-09-07T12:49:13.326Z",
+  "generator": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/verify-candidate-data.v2.mjs",
+    "sha256": "1db69410429f165695731cd991eeb99b16a1cd11c11e71d05fb7007a69d02e15"
+  },
+  "manifest": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/final-consumption.v2.json",
+    "sha256": "0877fdccbe81df3798353e7155d4763b3f2904acda14d0d137df09afbbe71b84"
+  },
+  "data": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/data.v1.json",
+    "sha256": "7322b3844efcd89b47ea653855cb4c34c6a20135ebb739923c1d3a2a2e4e4992"
+  },
+  "captions": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/captions.json",
+    "sha256": "22c16b97e9a4d9267e892e13cecbe2c29037903511ed903ad24697642c62f33e"
+  },
+  "selection": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-selection.derived.v2.json",
+    "sha256": "4802b7bcb6b6c046827cea50d0921684a35cd01073c7779a305c2445a23c81ce"
+  },
+  "checks": [
+    {
+      "name": "所有数据输入、原片和新闻SHA仍匹配",
+      "passed": true
+    },
+    {
+      "name": "57页原文英文、分页、词元编号及uncertain不变，纯数组完全相同",
+      "passed": true
+    },
+    {
+      "name": "1019词元仅平移，保留源token证据与原零时长，不做比例插值",
+      "passed": true
+    },
+    {
+      "name": "13项疑点原样保留且未听验，B23未说无伪造字幕",
+      "passed": true
+    },
+    {
+      "name": "8149+244=8393且插入三段无缺口重叠，新闻尾pad仅1帧",
+      "passed": true
+    },
+    {
+      "name": "五纸片位置、publicPath和原生全片范围固定，无循环或冻帧声明",
+      "passed": true
+    },
+    {
+      "name": "10项纸片缺陷绑定原SHA和观察包络，未伪称精确缺陷起止或已修",
+      "passed": true
+    },
+    {
+      "name": "157卡真实匹配、33参与与24保护排除合计覆盖57页",
+      "passed": true
+    },
+    {
+      "name": "全套新旧回执与最终manifest的SHA诚实匹配，不改raw为derived",
+      "passed": true
+    },
+    {
+      "name": "每个关键词修订都绑定完整连续canonical词元，至少30帧稳定显示",
+      "passed": true
+    },
+    {
+      "name": "官方图裁切与父任务指定一致，PNG尺寸及SHA有效，未伪称自己观看",
+      "passed": true
+    },
+    {
+      "name": "现有shared selection校验真实通过，未渲染且formal=false",
+      "passed": true
+    }
+  ],
+  "checkCount": 12,
+  "failureCount": 0,
+  "uniqueFileHashesChecked": 29,
+  "humanListeningPerformed": false,
+  "renderPerformed": false,
+  "formalAllowed": false,
+  "limits": [
+    "仅本地数据、哈希与组件参数检查，不是有声成片或视觉阅读端到端验收。",
+    "13项实录疑点和10项媒体缺陷仍保留，不在公开视频叠内部待审文字。"
+  ]
+}

@@ -1,0 +1,15 @@
+# 既有低清候选恢复复核
+
+结论：现有with-sfx-960x540.mp4可恢复登记为技术检查通过、待用户观看的低清候选；不重渲染，不改原runner失败记录，不授权formal或新生产入口。
+
+本worker独立复核render/started.json、failed.json和当前46项启动绑定的SHA，permission、request.v5、context v3文件及完整runtime均未变。runtime=e1b32bb53dacfe318aa0d5637a09f35a9e4ee3fd5d5ee6d051f19eaf14a546ce；intent=c74311a5a0e3f68d1668337b5ab5b36ae1ef7af9142fce4ede4e87c76c46c220。启动时原知识门context-valid及四项沙箱探针通过。根据已审runner控制流，记录中的bundled ffprobe错误发生于受控worker成功退出之后；不是另走生产入口生成的视频。
+
+原runner exit 1及blocked保留：失败为后置ffprobe在ROOT工作目录定位libavdevice.dylib失败。started SHA=7b4b53b5149a9db1063862c50e3df7cc7ef134fc9d38e38211ea64e6b150fd02；failed SHA=cae65a9c982e0f46796ba35e3799fe718aec8d111ffc028e7a2cbb9c5a2bb30b。没有写入或替换render/receipt.json，也不宣称原runner整体exit 0。
+
+独立读取父任务Homebrew ffprobe原始输出和命令记录：960x540、H.264、30fps、8393实际计数帧、视频279.766667秒；AAC双声道279.829333秒。ffmpeg同时完整解码视频与音频，启用-xerror，exit 0且stderr为空。信号扫描exit 0；blackdetect d=0.2/pix_th=0.1、freezedetect -50dB/2秒、silencedetect -50dB/2秒范围内无事件；响度-15.9 LUFS、真峰值-1.1 dBFS。yuvj420p、全范围pc如实保留，未转码或冒称yuv420p；跨播放器颜色观感仍待用户观看。
+
+独立读取Linnaeus的原沙箱bundled ffprobe补验记录：仅probe cwd改为原BINARIES目录，exit 0、stderr为空，8393帧与Homebrew结果一致，视频/started/failed/job/runtime源前后SHA未变。证据runtime/tests/bundled-ffprobe-readonly-2026-09-07T16-11-02-600Z.json，SHA=81f7c43ead7e36d85e6bfc8d99194765f0952023df837d96ac84032532aabf5c。本worker没有重复这些媒体命令，仅复核原始证据与当前产物SHA。
+
+本worker机器复核证据：context/recovery-binding-check.v1.json，SHA=279c412599f9afcd4d18e591c52a91082841d77391a27b43bb7300b6b1fc561c；context/recovery-qa-evidence-check.v1.json，SHA=5ba3bd344cec20db60d8f70e5085c65b452283ad21b0a9ff2539ed7ed2be25b9。后者记录完整QA证据文件的当前SHA。
+
+唯一产物SHA=9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4，45336630字节。此恢复只绑定该既有文件，不豁免未来生产门禁。未修改runner、permission、context、知识文档或daily；没有当前知识索引刷新或新渲染。五段本条已接受缺陷、13项ASR待核及未整片人耳听验的边界不变；人工观看、内容正确性、正式制作与发布均未通过。

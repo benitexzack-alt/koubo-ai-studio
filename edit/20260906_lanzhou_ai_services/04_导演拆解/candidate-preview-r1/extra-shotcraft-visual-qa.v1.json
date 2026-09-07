@@ -1,0 +1,580 @@
+{
+  "schemaVersion": "koubo-extra-shotcraft-visual-qa/v1",
+  "status": "six-effects-sampled-visual-checks-passed-ready-for-parent-merge",
+  "reviewedAt": "2026-09-07T16:14:22.313Z",
+  "reviewer": "assistant-actual-view_image-inspection-not-human-listening",
+  "video": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+    "sha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4"
+  },
+  "machineQA": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/candidate-machine-qa.v1.json",
+    "sha256": "666d1326801a36e94bac00454281584ac27b26668598228994d8467cf7235803"
+  },
+  "extraction": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/extra-shotcraft-extraction.v1.json",
+    "sha256": "bce1f77c7de9252ada07176b07aabc2c6d2a8278d80500acda1fab60f5a9e5d8"
+  },
+  "selection": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/output-selection.derived.v2.json",
+    "sha256": "4802b7bcb6b6c046827cea50d0921684a35cd01073c7779a305c2445a23c81ce"
+  },
+  "component": {
+    "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+    "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+  },
+  "componentCopy": {
+    "path": "remotion/src/lanzhou-services-v91-candidate-r1/ShotcraftEffects.generated.tsx",
+    "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+  },
+  "applications": [
+    {
+      "beatId": "output-c022",
+      "effectId": "keyword-reveal",
+      "frames": {
+        "startFrame": 3069,
+        "endFrameExclusive": 3217
+      },
+      "component": {
+        "name": "KeywordReveal",
+        "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "actualComponentCopy": {
+        "path": "remotion/src/lanzhou-services-v91-candidate-r1/ShotcraftEffects.generated.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "componentProps": {
+        "items": [
+          {
+            "text": "新员工",
+            "atFrame": 0
+          },
+          {
+            "text": "老员工",
+            "atFrame": 77
+          }
+        ]
+      },
+      "outputSha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4",
+      "sourceCaptionId": "c022",
+      "expectedCaption": {
+        "zh": "新员工遇到客户提问，还得反复找老员工。资料更新了，",
+        "en": "New employees still have to keep asking experienced employees when customers have questions. When information changes,"
+      },
+      "imageInspection": "actual-view_image-on-all-listed-full-resolution-images",
+      "evidence": [
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-03072.png",
+          "sha256": "511401ab2d380be3fc477e27f5d808a4888a54e18aff0d1405bd620e1847c3d7",
+          "frame": 3072,
+          "seconds": 102.4,
+          "width": 960,
+          "height": 540
+        },
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-03140.png",
+          "sha256": "0e1d4f45888e75da1906059b267c3483bcbf81b6417327d37582f2d958ef64ff",
+          "frame": 3140,
+          "seconds": 104.66666666666667,
+          "width": 960,
+          "height": 540
+        },
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-03185.png",
+          "sha256": "a842580aedb77fca7527f7c47166bb76201035a3c77b8589540c976dba65d01e",
+          "frame": 3185,
+          "seconds": 106.16666666666667,
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "observation": {
+        "before": "3072帧左上可见青色“新员工”，第二行尚未出现；3140帧仍仅第一项可见，与第二项尚未到入场帧一致。",
+        "after": "3185帧左上两行“新员工”“老员工”完整可读，青色和白色区分明确；没有挡住右侧脸部，底部中英字幕完整可见。",
+        "limitation": "3140帧不能单独证明第二项已出现，因此另实看3185帧；本组证实前后两个状态，不称逐帧动态验收。",
+        "allPropsVisibleAtRepresentativeFrame": true
+      },
+      "sampledVisualCheckPassed": true,
+      "addedFaceOcclusionObserved": false,
+      "addedTextClippingObserved": false,
+      "subtitleClippingObserved": false,
+      "sampledStatesMatchExpectedComponentProps": true,
+      "fullDynamicReviewPerformed": false,
+      "humanListeningPerformed": false,
+      "finalWorkingClaimDeferredToParentMergedReceipt": true
+    },
+    {
+      "beatId": "output-c035",
+      "effectId": "marker-underline",
+      "frames": {
+        "startFrame": 4997,
+        "endFrameExclusive": 5124
+      },
+      "component": {
+        "name": "MarkerUnderline",
+        "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "actualComponentCopy": {
+        "path": "remotion/src/lanzhou-services-v91-candidate-r1/ShotcraftEffects.generated.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "componentProps": {
+        "before": "对外还有一件事。",
+        "keyword": "客户通过AI了解你的公司",
+        "after": "时，"
+      },
+      "outputSha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4",
+      "sourceCaptionId": "c035",
+      "expectedCaption": {
+        "zh": "对外还有一件事。客户通过AI了解你的公司时，",
+        "en": "There is also something on the external side. When customers learn about your company through AI,"
+      },
+      "imageInspection": "actual-view_image-on-all-listed-full-resolution-images",
+      "evidence": [
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-05000.png",
+          "sha256": "8f115191aaa501998b5dd871f7a5921285fedd7b26cb6b6cea93a2f9c49a81da",
+          "frame": 5000,
+          "seconds": 166.66666666666666,
+          "width": 960,
+          "height": 540
+        },
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-05055.png",
+          "sha256": "a1bcfcaadd24b1540af35651702b5a375f179cd203eccf155d949e8a63d887bf",
+          "frame": 5055,
+          "seconds": 168.5,
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "observation": {
+        "before": "5000帧marker处于低透明度入场，前文、青色关键词及后文已有对应字形。",
+        "after": "5055帧完整显示“对外还有一件事。客户通过AI了解你的公司时，”，关键词青色加黄色下划线，前文及末尾“时，”没有被省略。文字在左侧，未压住右侧脸部。",
+        "limitation": "末尾“时，”单独换到第三行，但仍可见，没有裁切；不据此要求重做。",
+        "allPropsVisibleAtRepresentativeFrame": true
+      },
+      "sampledVisualCheckPassed": true,
+      "addedFaceOcclusionObserved": false,
+      "addedTextClippingObserved": false,
+      "subtitleClippingObserved": false,
+      "sampledStatesMatchExpectedComponentProps": true,
+      "fullDynamicReviewPerformed": false,
+      "humanListeningPerformed": false,
+      "finalWorkingClaimDeferredToParentMergedReceipt": true
+    },
+    {
+      "beatId": "output-c048",
+      "effectId": "marker-underline",
+      "frames": {
+        "startFrame": 7120,
+        "endFrameExclusive": 7288
+      },
+      "component": {
+        "name": "MarkerUnderline",
+        "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "actualComponentCopy": {
+        "path": "remotion/src/lanzhou-services-v91-candidate-r1/ShotcraftEffects.generated.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "componentProps": {
+        "before": "我觉得",
+        "keyword": "这样的变化就值得做",
+        "after": "。我愿意在兰州继续做下去，"
+      },
+      "outputSha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4",
+      "sourceCaptionId": "c048",
+      "expectedCaption": {
+        "zh": "我觉得这样的变化就值得做。我愿意在兰州继续做下去，",
+        "en": "I think that kind of change is worth making. I am willing to keep doing this in Lanzhou,"
+      },
+      "imageInspection": "actual-view_image-on-all-listed-full-resolution-images",
+      "evidence": [
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07123.png",
+          "sha256": "1ea103a89b096ab5530507ce279aedd35b17adf9d8fcc01d1a7174ed9898d165",
+          "frame": 7123,
+          "seconds": 237.43333333333334,
+          "width": 960,
+          "height": 540
+        },
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07200.png",
+          "sha256": "34008081b42959ba1cb12bddd436c3a885e6a0c44d79d74d4c7190177188e5cd",
+          "frame": 7200,
+          "seconds": 240,
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "observation": {
+        "before": "7123帧可见低透明度marker入场，所在区域与后帧一致，真人和底部字幕保持可见。",
+        "after": "7200帧“我觉得”“这样的变化就值得做”以及“。我愿意在兰州继续做下去，”均显示，关键词青色加下划线，整段仍在左侧，未挡脸或截断底部字幕。",
+        "limitation": "句号落到下一行开头，末尾“去，”另换一行；属于本帧可见换行，不是缺字，不新增修订条件。",
+        "allPropsVisibleAtRepresentativeFrame": true
+      },
+      "sampledVisualCheckPassed": true,
+      "addedFaceOcclusionObserved": false,
+      "addedTextClippingObserved": false,
+      "subtitleClippingObserved": false,
+      "sampledStatesMatchExpectedComponentProps": true,
+      "fullDynamicReviewPerformed": false,
+      "humanListeningPerformed": false,
+      "finalWorkingClaimDeferredToParentMergedReceipt": true
+    },
+    {
+      "beatId": "output-c052",
+      "effectId": "marker-underline",
+      "frames": {
+        "startFrame": 7703,
+        "endFrameExclusive": 7794
+      },
+      "component": {
+        "name": "MarkerUnderline",
+        "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "actualComponentCopy": {
+        "path": "remotion/src/lanzhou-services-v91-candidate-r1/ShotcraftEffects.generated.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "componentProps": {
+        "before": "我还有需要",
+        "keyword": "学习和改进",
+        "after": "的地方。视频里哪句话"
+      },
+      "outputSha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4",
+      "sourceCaptionId": "c052",
+      "expectedCaption": {
+        "zh": "我还有需要学习和改进的地方。视频里哪句话",
+        "en": "I still have things to learn and improve. If something I say in a video"
+      },
+      "imageInspection": "actual-view_image-on-all-listed-full-resolution-images",
+      "evidence": [
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07706.png",
+          "sha256": "3f19e72be2b71d046400667adbb104a42997d7639f1ca34c7e9a6f14ebfb7772",
+          "frame": 7706,
+          "seconds": 256.8666666666667,
+          "width": 960,
+          "height": 540
+        },
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07745.png",
+          "sha256": "c82f1c429ddda7b3ee0aaafd6ddc0288d8ab2d6c71bd4e3618bee20ae6922742",
+          "frame": 7745,
+          "seconds": 258.1666666666667,
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "observation": {
+        "before": "7706帧marker低透明度入场，脸部和手部动作位于文字右侧。",
+        "after": "7745帧完整显示“我还有需要学习和改进的地方。视频里哪句话”，关键词“学习和改进”青色加下划线，前后文保留；底部实录中英字幕完整。",
+        "limitation": "“地方”跨行显示为上一行末尾“地”和下一行“方”，没有裁字；不视为内容被修改。",
+        "allPropsVisibleAtRepresentativeFrame": true
+      },
+      "sampledVisualCheckPassed": true,
+      "addedFaceOcclusionObserved": false,
+      "addedTextClippingObserved": false,
+      "subtitleClippingObserved": false,
+      "sampledStatesMatchExpectedComponentProps": true,
+      "fullDynamicReviewPerformed": false,
+      "humanListeningPerformed": false,
+      "finalWorkingClaimDeferredToParentMergedReceipt": true
+    },
+    {
+      "beatId": "output-c054",
+      "effectId": "marker-underline",
+      "frames": {
+        "startFrame": 7906,
+        "endFrameExclusive": 8038
+      },
+      "component": {
+        "name": "MarkerUnderline",
+        "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "actualComponentCopy": {
+        "path": "remotion/src/lanzhou-services-v91-candidate-r1/ShotcraftEffects.generated.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "componentProps": {
+        "before": "",
+        "keyword": "欢迎直接指出来",
+        "after": "。大家愿意把真实的问题拿出来聊，"
+      },
+      "outputSha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4",
+      "sourceCaptionId": "c054",
+      "expectedCaption": {
+        "zh": "欢迎直接指出来。大家愿意把真实的问题拿出来聊，",
+        "en": "please point it out directly. Being willing to bring real problems out for discussion"
+      },
+      "imageInspection": "actual-view_image-on-all-listed-full-resolution-images",
+      "evidence": [
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07909.png",
+          "sha256": "2b8804411430e8ee6a598431b37c4a3f6f4ae02528c535b65afe7bbe768bc83d",
+          "frame": 7909,
+          "seconds": 263.6333333333333,
+          "width": 960,
+          "height": 540
+        },
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-07970.png",
+          "sha256": "fc1388f236c1725aa906d8c69e6c8bf81f8e6ab47c55589dfd10a6183451c9d7",
+          "frame": 7970,
+          "seconds": 265.6666666666667,
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "observation": {
+        "before": "7909帧可见marker渐入字形，未盖住真人脸部。",
+        "after": "7970帧“欢迎直接指出来。”及后文“大家愿意把真实的问题拿出来聊，”完整显示，关键词高亮和下划线可见，左上文字与真人、底部双语字幕分离。",
+        "limitation": "只验证本组早帧与代表帧的可见状态，没有声称全段逐帧无任何遮挡。",
+        "allPropsVisibleAtRepresentativeFrame": true
+      },
+      "sampledVisualCheckPassed": true,
+      "addedFaceOcclusionObserved": false,
+      "addedTextClippingObserved": false,
+      "subtitleClippingObserved": false,
+      "sampledStatesMatchExpectedComponentProps": true,
+      "fullDynamicReviewPerformed": false,
+      "humanListeningPerformed": false,
+      "finalWorkingClaimDeferredToParentMergedReceipt": true
+    },
+    {
+      "beatId": "output-c056",
+      "effectId": "marker-underline",
+      "frames": {
+        "startFrame": 8201,
+        "endFrameExclusive": 8344
+      },
+      "component": {
+        "name": "MarkerUnderline",
+        "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "actualComponentCopy": {
+        "path": "remotion/src/lanzhou-services-v91-candidate-r1/ShotcraftEffects.generated.tsx",
+        "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+      },
+      "componentProps": {
+        "before": "员工正在用AI，或者是",
+        "keyword": "企业信息整理",
+        "after": "这方面的需求，"
+      },
+      "outputSha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4",
+      "sourceCaptionId": "c056",
+      "expectedCaption": {
+        "zh": "员工正在用AI，或者是企业信息整理这方面的需求，",
+        "en": "employees are using AI, or needs around organizing company information,"
+      },
+      "imageInspection": "actual-view_image-on-all-listed-full-resolution-images",
+      "evidence": [
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-08204.png",
+          "sha256": "9382c72985c520ec6fcdd5f931759742cf251b92fc958740fcdc1f3f780fdae4",
+          "frame": 8204,
+          "seconds": 273.46666666666664,
+          "width": 960,
+          "height": 540
+        },
+        {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/extra-shotcraft-frames/frame-08260.png",
+          "sha256": "89c9df1b120283a8a6319e4fbb5656d8d53d86d58f1b28fb96fcd7fe4721aaa2",
+          "frame": 8260,
+          "seconds": 275.3333333333333,
+          "width": 960,
+          "height": 540
+        }
+      ],
+      "observation": {
+        "before": "8204帧marker低透明度入场，前文保留实录“员工正在用AI，或者是”，未改成预拍稿说法。",
+        "after": "8260帧完整显示“员工正在用AI，或者是企业信息整理这方面的需求，”，关键词青色加下划线。最后“求，”另行仍完整可见；没有压住脸部，底部中英字幕可见且未截字。",
+        "limitation": "保留本条实录字幕原话及已有待核边界，不借视觉检查声称听验或改正文。",
+        "allPropsVisibleAtRepresentativeFrame": true
+      },
+      "sampledVisualCheckPassed": true,
+      "addedFaceOcclusionObserved": false,
+      "addedTextClippingObserved": false,
+      "subtitleClippingObserved": false,
+      "sampledStatesMatchExpectedComponentProps": true,
+      "fullDynamicReviewPerformed": false,
+      "humanListeningPerformed": false,
+      "finalWorkingClaimDeferredToParentMergedReceipt": true
+    }
+  ],
+  "summary": {
+    "independentlyInspectedEffectCount": 6,
+    "individuallyViewedImageCount": 13,
+    "additionalP0Count": 0,
+    "additionalP1Count": 0,
+    "sampledVisualFailures": 0,
+    "sourceCaptionContentChanged": false,
+    "originalVideoHashUnchanged": true
+  },
+  "parentMerge": {
+    "parentVisualReview": {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/keyframe-visual-review.v1.json",
+      "sha256": "bc16ef6600beef127730951ddf7dbb944287459df70dfdb4da78f48130c97c56"
+    },
+    "parentReportedCoverage": [
+      {
+        "beatId": "output-c002",
+        "effectId": "marker-underline",
+        "frame": 370,
+        "evidence": {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills/frame-00370.png",
+          "frame": 370,
+          "sha256": "741b64613f919cefe69047a9b9afbdd0fbc65fb8a5df7ce1cfb88930de0f8a31",
+          "width": 960,
+          "height": 540,
+          "inspection": "contact-sheet"
+        },
+        "attribution": "父任务报告已通过；该9项图像不冒称由本子任务重新实看。"
+      },
+      {
+        "beatId": "output-c011",
+        "effectId": "keyword-reveal",
+        "frame": 1625,
+        "evidence": {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills/frame-01625.png",
+          "frame": 1625,
+          "sha256": "df4a23196876c149876cde0144a661ae9c44931f7a0f8cb0edceb3cd75269a05",
+          "width": 960,
+          "height": 540,
+          "inspection": "contact-sheet"
+        },
+        "attribution": "父任务报告已通过；该9项图像不冒称由本子任务重新实看。"
+      },
+      {
+        "beatId": "output-c017",
+        "effectId": "evidence-scan",
+        "frame": 2415,
+        "evidence": {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills/frame-02415.png",
+          "frame": 2415,
+          "sha256": "fc34fa1b288f2d59ef808075553f4415a1db6ef08eca96f4fb55142a5743512f",
+          "width": 960,
+          "height": 540,
+          "inspection": "contact-and-individual-image"
+        },
+        "attribution": "父任务报告已通过；该9项图像不冒称由本子任务重新实看。"
+      },
+      {
+        "beatId": "output-c018",
+        "effectId": "evidence-scan",
+        "frame": 2540,
+        "evidence": {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills/frame-02540.png",
+          "frame": 2540,
+          "sha256": "ea9e9d4105fde75b372fd584fbf903cba08af9d28a7863e14bd8c7bb01dc0ac4",
+          "width": 960,
+          "height": 540,
+          "inspection": "contact-and-individual-image"
+        },
+        "attribution": "父任务报告已通过；该9项图像不冒称由本子任务重新实看。"
+      },
+      {
+        "beatId": "output-c021",
+        "effectId": "keyword-reveal",
+        "frame": 2995,
+        "evidence": {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills/frame-02995.png",
+          "frame": 2995,
+          "sha256": "e85df77e5a4b43ba963a333a3c4bb61498a967bff719348f243e86f8edcaa66c",
+          "width": 960,
+          "height": 540,
+          "inspection": "contact-sheet"
+        },
+        "attribution": "父任务报告已通过；该9项图像不冒称由本子任务重新实看。"
+      },
+      {
+        "beatId": "output-c037",
+        "effectId": "keyword-reveal",
+        "frame": 5350,
+        "evidence": {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills/frame-05350.png",
+          "frame": 5350,
+          "sha256": "62e0e079d9f99e794ac0772f68e94469e25fe03767b2b362b43780104b6038df",
+          "width": 960,
+          "height": 540,
+          "inspection": "contact-sheet"
+        },
+        "attribution": "父任务报告已通过；该9项图像不冒称由本子任务重新实看。"
+      },
+      {
+        "beatId": "output-c043",
+        "effectId": "marker-underline",
+        "frame": 6290,
+        "evidence": {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills/frame-06290.png",
+          "frame": 6290,
+          "sha256": "e4996f2b5905aecc39a81dc9bef283f952b6dd4d3cd2506f1f87705ff1880bbf",
+          "width": 960,
+          "height": 540,
+          "inspection": "contact-sheet"
+        },
+        "attribution": "父任务报告已通过；该9项图像不冒称由本子任务重新实看。"
+      },
+      {
+        "beatId": "output-c053",
+        "effectId": "keyword-reveal",
+        "frame": 7880,
+        "evidence": {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills/frame-07880.png",
+          "frame": 7880,
+          "sha256": "69411332b90a400d59d23261e086bf5e32899deebd3b6e26ead04569c71e1bc8",
+          "width": 960,
+          "height": 540,
+          "inspection": "contact-sheet"
+        },
+        "attribution": "父任务报告已通过；该9项图像不冒称由本子任务重新实看。"
+      },
+      {
+        "beatId": "output-c055",
+        "effectId": "marker-underline",
+        "frame": 8175,
+        "evidence": {
+          "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills/frame-08175.png",
+          "frame": 8175,
+          "sha256": "c58ff5482a84f2eb68c69d9d8e67388ef893ebcca2e017537b3adc5ffd094296",
+          "width": 960,
+          "height": 540,
+          "inspection": "contact-sheet"
+        },
+        "attribution": "父任务报告已通过；该9项图像不冒称由本子任务重新实看。"
+      }
+    ],
+    "totalDistinctEffectCoverage": 15,
+    "coverageProvenance": "父任务9项stills检查 + 本子任务6项最终视频抽帧实看，不能描述成15项全由本子任务或真人逐帧检查。",
+    "readyForParentToMergeApplicationReceipt": true,
+    "applicationReceiptGeneratedByThisScript": false
+  },
+  "originalRunner": {
+    "failure": {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/failed.json",
+      "sha256": "cae65a9c982e0f46796ba35e3799fe718aec8d111ffc028e7a2cbb9c5a2bb30b"
+    },
+    "successReceiptClaimed": false,
+    "recoveryEvidence": {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/candidate-machine-qa.v1.json",
+      "sha256": "666d1326801a36e94bac00454281584ac27b26668598228994d8467cf7235803"
+    },
+    "note": "原runner后置bundled ffprobe动态库加载错误保留；本次抽帧依据父任务确认的独立完整媒体QA和固定视频SHA，不伪造原runner成功。"
+  },
+  "limitations": [
+    "只检查列明的早帧和代表帧，不是全片动态逐帧验收，也不是手机端完整阅读测试。",
+    "字幕及纸片既有问题保持本条例外与13项待核；本次六项均为真人主画面效果，不把纸片缺陷升级为合格。",
+    "没有人耳或模型音频感知听验，媒体QA中的响度/静音扫描不是内容听验。"
+  ],
+  "userPreviewApproved": false,
+  "formalAllowed": false,
+  "publicationApproved": false
+}

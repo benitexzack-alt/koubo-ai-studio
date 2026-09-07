@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "candidate-context-read-observations/v1",
+  "episodeId": "20260906_lanzhou_ai_services",
+  "taskId": "opc-task-20260907-lanzhou-candidate-preview-r1-context",
+  "directorTaskId": "task-20260906T154937Z-69f6ebf8",
+  "boundary": "普通源码及政策文档记录实际全文读取；大型数据JSON明确记录实际结构化读取范围，不宣称逐词ASR溯源证据全部人工复核。摘要、截断输出、读取脚本和散列计算本身不构成人工阅读证据。此表不是代码审查放行。",
+  "observations": [
+    {"root":"kb","path":"AGENTS.md","application_note":"遵守只读来源与实际证据边界；本轮仅写候选上下文及获准派生缓存，不触发知识结论晋级、发布或复盘越权写入。"},
+    {"root":"kb","path":"00_规范与配置/03_-毛选方法论/00-总纲.md","application_note":"本轮首要成果限定为可复核的候选知识上下文；将真实读取、校验结果与候选观看验收分别记录，不以文件存在代替实践通过。"},
+    {"root":"kb","path":"00_规范与配置/12_公开内容生产大脑硬门禁.md","application_note":"候选上下文不得替代文稿、实录与人工验收门禁；本轮不改写公开稿，不用检索命中或自报状态伪造上游已应用。"},
+    {"root":"kb","path":"01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json","application_note":"采用时长先看价值顺序、不同观察窗口分开解释的历史学习；遵守本条保留完整实录授权，不由过期指标机械缩短，也不推断单条表现的因果。"},
+    {"root":"kb","path":"07_知识库治理/2026-07-18_口播内容大脑事故根因与修复验收.md","application_note":"应用事故中的状态误判教训：bootstrap 就绪不等于任务上下文通过，索引或来源卡存在不等于已经阅读，不把包装权限提升成正式发布权限。"},
+    {"root":"project","path":"AGENTS.md","application_note":"本条仍执行实录优先、预拍比较用、纸艺独立分支与候选观看后才可另行讨论正式制作；不改共享 Skill 和原片，保持明确写集。"},
+    {"root":"project","path":"README.md","application_note":"确认唯一口播项目入口与原素材只读规则；README 的旧版本叙述只作导航，当前导演版本取现行机器档案，不据旧说明重做素材。"},
+    {"root":"project","path":"knowledge/00-项目知识索引.md","application_note":"将索引用作真实文档定位，不把索引等同全部文档已读；现行实录策略及导演档案另外独立绑定，缺失读取保留待完成。"},
+    {"root":"project","path":"knowledge/22-实录优先字幕与系列发布包硬门禁.md","application_note":"保持原始声音为中文字幕和英文翻译的唯一正文；13项识别疑点不靠预拍稿抹平；有声低清小样不冒充正式候选发布包。"},
+    {"root":"project","path":"workflow/active-production-profile.v1.json","application_note":"确认外层制作基准仍为 V8，V7.2 仅历史回滚；本条候选不得凭知识校验字段获得 formal、发布包或公开发布权限。"},
+    {"root":"project","path":"workflow/active-director-profile.v1.json","application_note":"确认导演现行版本9.1.0；保留纸艺保护窗口、实录重绑、157卡选用与实际应用分离，源片缺陷例外不等于共享校验器通过。"},
+    {"root":"episode","path":"README_先看这里.md","application_note":"定位完整实录、五段纸艺、开头新闻和13项待核字幕；其中修复许可尚未确认是旧状态，本轮以新 permission 和当前直接授权为准，不改旧说明。"},
+    {"root":"episode","path":"07_预览与质检/paper-intake-r1/入场核验报告.md","application_note":"沿用真实P01至P05映射与已披露动作、遮字、消字、音频机器边界，不复做大QA；用户接受本条缺陷不回写中文OCR或语义PASS，不假称试听。"},
+    {"root":"control","path":"permission.v1.json","application_note":"应用本条授权：本地全长有声低清候选、现有五段保留、不重生不增费、原实录全保留；formalEnabled/productionEligible/userPreviewApproved/publishAuthorized 均维持false，例外不继承。"},
+    {"root":"project","path":"remotion/src/lanzhou-services-v91-candidate-r1/index.tsx","group":"task_original_materials","application_note":"全文读取6行入口，确认只注册LanzhouServicesV91CandidateR1，1920x1080/30fps/8393帧；它是本地候选入口，不是正式job入口。"},
+    {"root":"project","path":"remotion/src/lanzhou-services-v91-candidate-r1/LanzhouServicesCandidate.tsx","group":"task_original_materials","application_note":"全文读取118行，含最新EvidenceScan区域overflow约束；确认data/visual静态导入、主持音轨分段、新闻独立原声与纸艺原声0.1增益，不能凭源码断言实际听验或画面通过。"},
+    {"root":"project","path":"remotion/src/lanzhou-services-v91-candidate-r1/ShotcraftEffects.generated.tsx","group":"task_original_materials","application_note":"全文读取419行：效果使用外部局部frame及帧长，列表atFrame不再均分；扫描框1.75倍起始变换需要外层限域。读取本地代码不等于已经核验上游复制一致性或完整许可交付。"},
+    {"root":"project","path":"remotion/src/lanzhou-services-v91-candidate-r1/tsconfig.json","group":"task_original_materials","application_note":"全文读取5行，extends ../../tsconfig.json并只纳入当前目录tsx/json；父任务报告tsc通过，本worker未将其冒称独立执行结果。"},
+    {"root":"project","path":"remotion/src/lanzhou-services-v91-candidate-r1/visual-plan.v1.json","group":"task_original_materials","read_scope":"全部JSON字段分两次无截断结构化输出读取，包括36条semantic、15条effects、51条sfx、2条official、6条chapters及音频和风险边界。","application_note":"绑定当前视觉消费计划完整SHA；保留13项ASR待核，纸艺窗口不叠普通效果；读取所有效果props、wordFrames和sfx时点用于后续独立对位核验，不宣称成片音画通过。"},
+    {"root":"episode","path":"04_导演拆解/candidate-preview-r1/data.v1.json","group":"task_original_materials","read_scope":"结构化实际读取：全部顶层键和数组规模；authority/canvas/inputs/papers/timeline/honestRebinding/shotcraftPaths完整值；57条字幕zh/en/时点/待核项；13项ASR疑点的候选、理由和输出范围；recordedAbsence与labelTiming。words仅首项示例，未逐项阅读1019词的嵌套证据；不声明原速听验或逐词正确。composition直接消费的papers完整读取。","application_note":"绑定整个静态导入JSON的完整SHA防变更，实际应用其完整papers和timeline消费合同：P01=视频_5、P02=视频_2、P03=视频、P04=视频_4、P05=视频_3；源帧后移244帧，B23原录缺省，五镜仅上下文小结，13项ASR仍未人工确认。"},
+    {"root":"episode","path":"04_导演拆解/candidate-preview-r1/output-selection.derived.v2.json","group":"task_original_materials","read_scope":"全部JSON字段经无截断紧凑结构化输出读取，含33条beats和完整derivation。","application_note":"确认15条apply与18条not-needed、3种动效props、所有派生局部入场帧及出处；视觉预滚不是300ms逐字同步，衍生选择不是原matcher原生结果，实际应用回执另行绑定。"},
+    {"root":"episode","path":"04_导演拆解/candidate-preview-r1/final-consumption.v2.json","group":"task_original_materials","application_note":"全文读取59行，使用v2衍生选择替代不可变data中的旧shotcraft路径；保留marker完整前中后文本和keyword指定atFrame；P02跨试用、P03位于培训段是已记录上下文回顾而非精确逐字机制通过。"}
+  ],
+  "partialReads": [
+    {"root":"context","path":"bootstrap.v1.json","scope":"must_read、similar_cases、account_performance_preflight及路由/状态字段；首次完整输出被截断，不声明全文已读。"},
+    {"root":"context","path":"account-feedback/preflights/opc-task-20260907-lanzhou-candidate-preview-r1-context.json","scope":"status、accountContext、learningCard、automaticReference.accountBaseline、automaticReference.recentSix、automaticUseContract、boundary；未声明完整97轮历史逐条阅读。"},
+    {"root":"kb","path":"04_Claude Code日常操作/scripts/project_bootstrap.py","scope":"本任务涉及的CLI参数、项目路由、account preflight输出位置与落盘流程；未全文审计共享脚本。"},
+    {"root":"kb","path":"04_Claude Code日常操作/scripts/opc_rag.py","scope":"start_task_context、ensure_fresh_index、derive_receipt_requirements、CLI参数、上下文校验及索引刷新相关流程；未全文审计共享脚本。"}
+  ]
+}

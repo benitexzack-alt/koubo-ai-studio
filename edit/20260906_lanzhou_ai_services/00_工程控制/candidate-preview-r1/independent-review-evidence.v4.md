@@ -1,0 +1,19 @@
+# 候选 v4 最小独立复核
+
+审查者independent-context-reviewer；实现者Linnaeus-runner-and-parent-composition。审查者未修改实现代码。
+
+结论：本条request.v4三行cwd修复与独立native smoke通过，允许既有permission内的本地低清候选stills/render；formal渲染、成片验收和发布均不授权。
+
+完整runtime闭包匹配e1b32bb53dacfe318aa0d5637a09f35a9e4ee3fd5d5ee6d051f19eaf14a546ce。相比v3仅runner.mjs变化：44行新增cwd参数、46行spawn使用cwd、124行唯一调用传path.join(stageRoot,'remotion')。将这三处逆替换后的完整源码SHA与v3精确一致。runner-core及sandboxProfile未变，无新增home/仓库根读取或网络权限；stageRoot/remotion位于既有允许的scratch内，由原stageInputs创建。
+
+独立实际运行context/verify-cwd-v4.mjs，exit 0。使用原sandboxProfile、cleanEnvironment、真实node与既有scratch，在新cwd执行process.cwd()和require('@remotion/bundler')；输出bundlerLoaded=true、repositoryReadDenied=true，stderr为空。没有加载composition、渲染、截图或重读42项原输入。
+
+机器输出context/cwd-v4-independent-check.json，SHA为7089700418520a54e361cbf56392e32124a917cb966e75854b2d1c89cb3d9dbd，保留完整探针命令、stdout/stderr、profile SHA及退出码。
+
+request.v4与v3仅runtimeSha256和independentReview不同；context v2 SHA实核未变，42项输入及permission声明未变，沿用v3独立输入与真实validateKnowledge证据，不宣称本轮重跑知识门。v3机器证据SHA仍为0e3820951a0f010e83caefc1a6c52839a4180c117025ea393d435c66698c5ce2。父任务仍须用补reviewSHA的request.v4实际preflight复检。
+
+作者Linnaeus另回报同沙箱Chrome native smoke exit 0、stderr为空：about:blank成功打开、debugPort=54092、browserClosed=true、compositionLoaded=false、imagesProduced=false。本worker未独立重跑Chrome探针，不将此报告扩大为实际静帧或渲染通过。
+
+本轮范围未发现P0/P1阻断。requestIntentSha256为348f388b35aed04a60ae9e21cd8175673078664dd4281b65c095a436ea0bf445。历史回执、context及request占位SHA未改，未移动或覆盖失败目录，未写daily。
+
+五段已接受缺陷与13项ASR疑点仍保留；未人耳听验、未完成静帧画面验收。formalEnabled、productionEligible、cryptographicProductionAuthorization、userPreviewApproved、publishAuthorized全部false。本回执只绑定本条v4意图与runtime，不继承至其他版本或正式job。

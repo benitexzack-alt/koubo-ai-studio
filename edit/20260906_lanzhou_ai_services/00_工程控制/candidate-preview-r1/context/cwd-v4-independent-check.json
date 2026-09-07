@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "candidate-cwd-v4-independent-check/v1",
+  "startedAt": "2026-09-07T15:45:14.251Z",
+  "decision": "cwd-fix-and-native-smoke-passed",
+  "formalEnabled": false,
+  "inputReviewRepeated": false,
+  "renderExecuted": false,
+  "requestSha256BeforeReviewBinding": "3cef09a682e32b8159523358e7db37e1ce2155c21fb405f3e6b15fcdb4f4980a",
+  "inheritedEvidence": {
+    "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/context/knowledge-v3-independent-check.json",
+    "sha256": "0e3820951a0f010e83caefc1a6c52839a4180c117025ea393d435c66698c5ce2",
+    "scope": "v3实际42输入与permission、9静态导入、validateKnowledge证据；本轮不重读原输入，不声称重跑知识门。"
+  },
+  "runtimeSha256": "e1b32bb53dacfe318aa0d5637a09f35a9e4ee3fd5d5ee6d051f19eaf14a546ce",
+  "requestIntentSha256": "348f388b35aed04a60ae9e21cd8175673078664dd4281b65c095a436ea0bf445",
+  "runtimeDelta": [
+    "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner.mjs"
+  ],
+  "exactThreeLineDiffVerified": true,
+  "contextBindingUnchanged": {
+    "taskId": "opc-task-20260907-lanzhou-candidate-preview-r1-context-v2",
+    "contextPath": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260907-lanzhou-candidate-preview-r1-context-v2/context.json",
+    "sha256": "1b6ad721acb36a8d39ca7cbc2447597492c9b4aa4d0550b82b8be4cf6fba4883"
+  },
+  "nativeSmoke": {
+    "command": [
+      "/usr/bin/sandbox-exec",
+      "-p",
+      "(version 1)\n(allow default)\n(deny network*)\n(allow network-outbound (remote ip \"localhost:54091\"))\n(allow network-inbound (local ip \"localhost:54091\"))\n(allow network-outbound (remote ip \"localhost:54092\"))\n(allow network-inbound (local ip \"localhost:54092\"))\n(deny mach-lookup (global-name \"com.apple.securityd\") (global-name \"com.apple.security.agent\") (global-name \"com.apple.cfprefsd.agent\"))\n(deny file-write*)\n(allow file-write* (subpath \"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/runs/stills-70HhJ7\") (subpath \"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills\") (literal \"/dev/null\"))\n(deny file-read-data (subpath \"/Users/pc\"))\n(allow file-read-data (subpath \"/Users/pc/Documents/口播/remotion/node_modules\") (subpath \"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/runs/stills-70HhJ7\") (subpath \"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/stills\") (literal \"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner.mjs\") (literal \"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runner-core.mjs\") (literal \"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/worker.mjs\") (literal \"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/network-probe.mjs\") (literal \"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/knowledge-readonly.py\") (literal \"/Users/pc/.local/node-v22.22.3-darwin-arm64/bin/node\") (literal \"/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/bin/python3.14\") (literal \"/Users/pc/Documents/口播/remotion/package.json\") (literal \"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/active.lock\"))\n(deny file-read-data (regex #\"(^|/)\\.env($|\\.)\") (subpath \"/Users/pc/.ssh\") (subpath \"/Users/pc/.aws\"))\n",
+      "/Users/pc/.local/node-v22.22.3-darwin-arm64/bin/node",
+      "-e",
+      "const fs=require('node:fs');const {createRequire}=require('node:module');const root=\"/Users/pc/Documents/口播\";const cwd=process.cwd();const bundler=createRequire(root+'/remotion/package.json')('@remotion/bundler');let repositoryReadDenied=false;try{fs.readdirSync(root)}catch(e){if(!['EPERM','EACCES'].includes(e.code))throw e;repositoryReadDenied=true}if(cwd!==\"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/runs/stills-70HhJ7/project/remotion\"||typeof bundler.bundle!=='function'||!repositoryReadDenied)throw new Error('CWD_SMOKE_FAILED');console.log(JSON.stringify({cwd,bundlerLoaded:true,repositoryReadDenied}));"
+    ],
+    "cwd": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/runs/stills-70HhJ7/project/remotion",
+    "descriptor": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/runs/stills-70HhJ7/job.json",
+    "descriptorSha256": "3d80a574ada11e373fa42d7df8b3ccf239f47aeabead88929864bc4d1001682f",
+    "profileSha256": "70f859cfba759a79976d68b5fe7e691765231d715a119f79f62c5f8bd917082a",
+    "exitCode": 0,
+    "signal": null,
+    "stdout": "{\"cwd\":\"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/runs/stills-70HhJ7/project/remotion\",\"bundlerLoaded\":true,\"repositoryReadDenied\":true}\n",
+    "stderr": "",
+    "error": null,
+    "parsed": {
+      "cwd": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/runtime/runs/stills-70HhJ7/project/remotion",
+      "bundlerLoaded": true,
+      "repositoryReadDenied": true
+    }
+  },
+  "endedAt": "2026-09-07T15:45:18.550Z"
+}

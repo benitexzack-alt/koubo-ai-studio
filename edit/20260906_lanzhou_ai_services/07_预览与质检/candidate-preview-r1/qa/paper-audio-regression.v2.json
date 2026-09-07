@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "lanzhou-candidate-paper-audio-regression/v1",
+  "video": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+    "sha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4"
+  },
+  "method": "在每个纸艺窗口中排除首尾0.2秒，用解码到16kHz单声道的权威口播和0.1倍源片音频，对最终AAC混音作双源最小二乘拟合；先在正负0.5秒搜索真实解码偏移，再细化至单采样。该数值检测不是人耳试听或字幕验收。",
+  "results": [
+    {
+      "id": "P01",
+      "lagSamples": 678,
+      "hostCoefficient": 0.9952634190492015,
+      "materialCoefficientRelativeToDeclaredGain": 0.8820379751726958,
+      "estimatedMaterialGain": 0.08820379751726959,
+      "modelFitR2": 0.9921973467157198,
+      "materialToHostDb": -46.429708613586264,
+      "sourceSha256": "05c9b4b23659dae804111b5cfb53a8be5ca463e7c87961f9623ce26d5e43a2f2",
+      "lagMilliseconds": 42.375,
+      "statisticallyConsistentWithMaterialInMix": true
+    },
+    {
+      "id": "P02",
+      "lagSamples": 678,
+      "hostCoefficient": 0.9960897380965754,
+      "materialCoefficientRelativeToDeclaredGain": 0.9947350778285146,
+      "estimatedMaterialGain": 0.09947350778285147,
+      "modelFitR2": 0.9944151686376854,
+      "materialToHostDb": -34.5031055329035,
+      "sourceSha256": "d09074f2132c21438343ec39c2a53c9a2f72561466db88096a3a5599bf8b6aef",
+      "lagMilliseconds": 42.375,
+      "statisticallyConsistentWithMaterialInMix": true
+    },
+    {
+      "id": "P03",
+      "lagSamples": 677,
+      "hostCoefficient": 0.9954302720231678,
+      "materialCoefficientRelativeToDeclaredGain": 0.10871165459872505,
+      "estimatedMaterialGain": 0.010871165459872505,
+      "modelFitR2": 0.9928598610063065,
+      "materialToHostDb": -44.54181686481086,
+      "sourceSha256": "c237f8901f509d1a865725c50ada9b02d413605710dfa3d37b58c20c9e88d623",
+      "lagMilliseconds": 42.3125,
+      "statisticallyConsistentWithMaterialInMix": false
+    },
+    {
+      "id": "P04",
+      "lagSamples": 678,
+      "hostCoefficient": 0.9957998538884736,
+      "materialCoefficientRelativeToDeclaredGain": 0.9907209043720104,
+      "estimatedMaterialGain": 0.09907209043720105,
+      "modelFitR2": 0.9934035714562551,
+      "materialToHostDb": -40.48283678283855,
+      "sourceSha256": "95f74224a778a1d9ce5115ebc97ffbe432a00384281f0347aafce30b808c757f",
+      "lagMilliseconds": 42.375,
+      "statisticallyConsistentWithMaterialInMix": true
+    },
+    {
+      "id": "P05",
+      "lagSamples": 677,
+      "hostCoefficient": 0.9964598944507251,
+      "materialCoefficientRelativeToDeclaredGain": 0.46930011482866124,
+      "estimatedMaterialGain": 0.04693001148286613,
+      "modelFitR2": 0.9948289165962139,
+      "materialToHostDb": -38.51896898048526,
+      "sourceSha256": "b96c2e7da8dbf382916523ef0553196fd9b1ad014d1057888af33365469e2c15",
+      "lagMilliseconds": 42.3125,
+      "statisticallyConsistentWithMaterialInMix": true
+    }
+  ],
+  "humanListeningPerformed": false,
+  "formalEnabled": false
+}

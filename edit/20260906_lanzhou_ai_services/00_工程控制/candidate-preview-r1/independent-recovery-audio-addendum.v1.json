@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "koubo-lanzhou-candidate-audio-evidence-addendum/v1",
+  "episodeId": "20260906_lanzhou_ai_services",
+  "reviewerId": "independent-context-reviewer",
+  "reviewedAt": "2026-09-07T16:16:38.545Z",
+  "status": "technical-candidate-status-unchanged-user-listening-required",
+  "baseRecoveryReview": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r1/independent-recovery-review.v1.json",
+    "sha256": "88e2d22fa41cd5c90552b293ce5b3d2e5b5a9c88a807b6520bfbce5df6b4cda1"
+  },
+  "video": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+    "sha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4"
+  },
+  "measurementEvidence": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/paper-audio-regression.v2.json",
+    "sha256": "b2dd53debcd008a0d2f7e6950f40622c1f4055cdba831c178e52fb7446ed2a8b",
+    "readScope": "完整读取v2的method、五段拟合结果及明确未人耳试听的边界；本worker未重跑测量。"
+  },
+  "observations": {
+    "modelFitR2Range": [0.9921973467157198, 0.9948289165962139],
+    "hostCoefficientRange": [0.9952634190492015, 0.9964598944507251],
+    "commonDecodedLagMillisecondsRange": [42.3125, 42.375],
+    "materialDetectionConsistentWithModel": ["P01", "P02", "P04", "P05"],
+    "scope": "双源拟合结果不是人耳验收，R2主要反映强主声的拟合；统计检出不等于精确0.1增益或主观可闻性已确认。"
+  },
+  "retainedIssue": {
+    "sceneId": "P03",
+    "priority": "P2",
+    "status": "awaiting-user-listening",
+    "materialToHostDb": -44.54181686481086,
+    "materialCoefficientRelativeToDeclaredGain": 0.10871165459872505,
+    "estimatedMaterialGain": 0.010871165459872505,
+    "modelFitR2": 0.9928598610063065,
+    "lagMilliseconds": 42.3125,
+    "statisticallyConsistentWithMaterialInMix": false,
+    "interpretation": "素材系数不稳定，当前数值检测不足以确认P03素材声的实际听感，也不足以断言素材声缺失；待用户试听裁决。",
+    "blocksExistingCandidate": false,
+    "newRetryOrRerenderAuthorized": false
+  },
+  "historicalMeasurement": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/qa/paper-audio-regression.v1.json",
+    "sha256": "40c1f79238c4146d81d1b88bac16d7c6d78e88e085b51fb783eb670d03d69792",
+    "status": "invalid-measurement-for-material-presence-conclusion",
+    "reason": "v1方法只搜索正负12采样；16kHz下约正负0.75ms，未覆盖v2检出的约42.3ms共同偏移。该历史拟合失效不代表素材声缺失。",
+    "originalEvidencePreserved": true
+  },
+  "priorMainVoiceDecodeAndSignalChecksNotRevoked": true,
+  "humanListeningPerformed": false,
+  "allFivePaperAudioHumanAccepted": false,
+  "videoModified": false,
+  "measurementRerunByReviewer": false,
+  "newExecutionAuthorized": false,
+  "formalEnabled": false,
+  "productionEligible": false,
+  "cryptographicProductionAuthorization": false,
+  "userPreviewApproved": false,
+  "publishAuthorized": false
+}
