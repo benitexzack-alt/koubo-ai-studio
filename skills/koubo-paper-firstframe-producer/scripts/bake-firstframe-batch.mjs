@@ -72,6 +72,43 @@ try {
     job.output.qaRoot,
     `${phase}-text-bake-receipt.v${artifactVersion}.json`,
   );
+  const reusableSceneReceipts = new Map();
+
+  const findReusableSceneReceipt = (scene, bake) => {
+    if (phase !== 'full' || !existsSync(bake.outputPath)) return null;
+    for (const record of job.textBakeReceipts ?? []) {
+      if (!existsSync(record.receipt?.path)) continue;
+      if (sha256File(record.receipt.path) !== record.receipt.sha256) continue;
+      const priorReceipt = readJson(record.receipt.path);
+      const priorScene = priorReceipt.scenes?.find((item) => item.sceneId === scene.sceneId);
+      if (!priorScene) continue;
+      if (
+        priorScene.pairId !== scene.pairId ||
+        priorScene.pairSha256 !== scene.pairSha256 ||
+        priorScene.textPlanSha256 !== scene.textPlanSha256 ||
+        priorScene.labelsSha256 !== bake.labelsSha256 ||
+        priorScene.sourceImage?.path !== scene.result.imagePath ||
+        priorScene.sourceImage?.sha256 !== scene.result.imageSha256 ||
+        priorScene.outputImage?.path !== bake.outputPath ||
+        priorScene.outputImage?.sha256 !== sha256File(bake.outputPath) ||
+        priorScene.anchorCalibration?.path !== bake.calibrationPath ||
+        priorScene.anchorCalibration?.sha256 !== sha256File(bake.calibrationPath) ||
+        priorScene.ocr?.length !== bake.labels.length ||
+        priorScene.ocr.some((item) => item.matched !== true)
+      ) {
+        continue;
+      }
+      return {
+        ...priorScene,
+        reusedFromPriorReceipt: {
+          phase: record.phase,
+          path: record.receipt.path,
+          sha256: record.receipt.sha256,
+        },
+      };
+    }
+    return null;
+  };
 
   const scenes = sceneIds.map((sceneId) => {
     const scene = job.scenes.find((item) => item.sceneId === sceneId);
@@ -121,6 +158,11 @@ try {
     ) {
       throw new Error(`ANCHOR_CALIBRATION_LABELS_INVALID:${sceneId}`);
     }
+    const reusableSceneReceipt = findReusableSceneReceipt(scene, bake);
+    if (reusableSceneReceipt) {
+      reusableSceneReceipts.set(sceneId, reusableSceneReceipt);
+      return null;
+    }
     if (existsSync(bake.outputPath)) throw new Error(`TEXT_BAKED_OUTPUT_EXISTS:${sceneId}`);
 
     return {
@@ -142,7 +184,9 @@ try {
         anchorQuad,
       })),
     };
-  });
+  }).filter(Boolean);
+
+  if (scenes.length === 0) throw new Error('TEXT_BAKE_NO_NEW_SCENES');
 
   const request = {
     schemaVersion: 'koubo-paper-firstframe-text-bake-request/v1',
@@ -168,10 +212,22 @@ try {
     throw new Error(`TEXT_BAKE_EXECUTION_FAILED:${String(result.stderr ?? result.error?.message ?? '').trim()}`);
   }
   if (!existsSync(receiptPath)) throw new Error('TEXT_BAKE_RECEIPT_MISSING');
-  const receipt = JSON.parse(readFileSync(receiptPath, 'utf8'));
+  let receipt = JSON.parse(readFileSync(receiptPath, 'utf8'));
+  if (reusableSceneReceipts.size > 0) {
+    const freshSceneReceipts = new Map(
+      receipt.scenes.map((sceneReceipt) => [sceneReceipt.sceneId, sceneReceipt]),
+    );
+    receipt.scenes = sceneIds.map(
+      (sceneId) => freshSceneReceipts.get(sceneId) ?? reusableSceneReceipts.get(sceneId),
+    );
+    receipt.reusedSceneIds = [...reusableSceneReceipts.keys()];
+    replaceJson(receiptPath, receipt);
+    receipt = readJson(receiptPath);
+  }
   if (
     receipt.status !== 'deterministic-first-frame-text-baked-and-ocr-passed' ||
-    receipt.scenes?.length !== scenes.length
+    receipt.scenes?.length !== sceneIds.length ||
+    receipt.scenes.some((sceneReceipt) => !sceneReceipt)
   ) {
     throw new Error('TEXT_BAKE_RECEIPT_INVALID');
   }
