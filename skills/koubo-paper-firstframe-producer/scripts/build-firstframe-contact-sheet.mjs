@@ -31,7 +31,11 @@ try {
   );
   const layout = scenes.map((_, index) => `${(index % columns) * cellWidth}_${Math.floor(index / columns) * cellHeight}`).join('|');
   const inputs = scenes.map((_, index) => `[v${index}]`).join('');
-  filters.push(`${inputs}xstack=inputs=${scenes.length}:layout=${layout}:fill=white[out]`);
+  filters.push(
+    scenes.length === 1
+      ? '[v0]copy[out]'
+      : `${inputs}xstack=inputs=${scenes.length}:layout=${layout}:fill=white[out]`,
+  );
   const outputPath = path.join(
     job.output.qaRoot,
     imageKind === 'text-baked'

@@ -294,9 +294,13 @@ try {
   }
   const sourcePlan = JSON.parse(readFileSync(sourcePlanPath, 'utf8'));
   if (sourcePlan.taskId !== request.taskId) throw new Error('TEXT_BAKE_SOURCE_PLAN_TASK_MISMATCH');
+  const v9ContractEnabled = sourcePlan.v9Contract?.enabled === true;
   const sourceScenes = Array.isArray(sourcePlan.paperScenes) ? sourcePlan.paperScenes : [];
   const sourceSceneById = new Map(
-    sourceScenes.map((scene, index) => [buildSceneIdentity(scene, index).sceneId, {scene, index}]),
+    sourceScenes.map((scene, index) => [
+      buildSceneIdentity(scene, index, {v9ContractEnabled}).sceneId,
+      {scene, index},
+    ]),
   );
   const fontPath = resolveDeclared(projectRoot, request.fontPath);
   if (!fontPath || !existsSync(fontPath)) throw new Error('TEXT_BAKE_FONT_MISSING');
@@ -314,7 +318,9 @@ try {
     }
     const sourceEntry = sourceSceneById.get(scene.sceneId);
     if (!sourceEntry) throw new Error(`TEXT_BAKE_SOURCE_SCENE_MISSING:${scene.sceneId}`);
-    const identity = buildSceneIdentity(sourceEntry.scene, sourceEntry.index);
+    const identity = buildSceneIdentity(sourceEntry.scene, sourceEntry.index, {
+      v9ContractEnabled,
+    });
     if (
       scene.pairId !== identity.pairId ||
       scene.pairSha256 !== identity.pairSha256 ||
