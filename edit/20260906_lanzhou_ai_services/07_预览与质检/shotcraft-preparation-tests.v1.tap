@@ -1,0 +1,646 @@
+TAP version 13
+# Subtest: 同 beat、效果、帧窗、组件与成片哈希的应用回执通过
+ok 1 - 同 beat、效果、帧窗、组件与成片哈希的应用回执通过
+  ---
+  duration_ms: 2.9245
+  type: 'test'
+  ...
+# Subtest: 导演已选 apply 而成片回执未应用时失败
+ok 2 - 导演已选 apply 而成片回执未应用时失败
+  ---
+  duration_ms: 0.232917
+  type: 'test'
+  ...
+# Subtest: 已选择项的 effectId 失配时报告未实际应用
+ok 3 - 已选择项的 effectId 失配时报告未实际应用
+  ---
+  duration_ms: 0.097916
+  type: 'test'
+  ...
+# Subtest: 已选择项的 frames 失配时报告未实际应用
+ok 4 - 已选择项的 frames 失配时报告未实际应用
+  ---
+  duration_ms: 1.957958
+  type: 'test'
+  ...
+# Subtest: 已选择项的 component 失配时报告未实际应用
+ok 5 - 已选择项的 component 失配时报告未实际应用
+  ---
+  duration_ms: 0.1905
+  type: 'test'
+  ...
+# Subtest: 计划零选择且所有 eligible beat 有显式理由时，零应用回执合法
+ok 6 - 计划零选择且所有 eligible beat 有显式理由时，零应用回执合法
+  ---
+  duration_ms: 0.263792
+  type: 'test'
+  ...
+# Subtest: 计划零选择时不得反向出现未选择应用
+ok 7 - 计划零选择时不得反向出现未选择应用
+  ---
+  duration_ms: 0.085667
+  type: 'test'
+  ...
+# Subtest: 文件级回执复检选择、字幕、注册表、组件与成片哈希
+ok 8 - 文件级回执复检选择、字幕、注册表、组件与成片哈希
+  ---
+  duration_ms: 22.573917
+  type: 'test'
+  ...
+# Subtest: 文件级组件哈希失配同时报告已选择但未应用
+ok 9 - 文件级组件哈希失配同时报告已选择但未应用
+  ---
+  duration_ms: 5.37225
+  type: 'test'
+  ...
+# Subtest: CLI完成全157卡匹配、验收入账和下次精确复用
+ok 10 - CLI完成全157卡匹配、验收入账和下次精确复用
+  ---
+  duration_ms: 305.886958
+  type: 'test'
+  ...
+# Subtest: 能力索引完整覆盖当前157张卡和214个样式，且构建结果确定
+ok 11 - 能力索引完整覆盖当前157张卡和214个样式，且构建结果确定
+  ---
+  duration_ms: 105.148166
+  type: 'test'
+  ...
+# Subtest: 请求必须使用实录权威和V9.1导演档案
+ok 12 - 请求必须使用实录权威和V9.1导演档案
+  ---
+  duration_ms: 2.322708
+  type: 'test'
+  ...
+# Subtest: 列举型实录自动选择逐项呈现，并生成可直接消费的组件参数
+ok 13 - 列举型实录自动选择逐项呈现，并生成可直接消费的组件参数
+  ---
+  duration_ms: 20.554458
+  type: 'test'
+  ...
+# Subtest: 真实界面证据自动选择证据扫描，并保留真实素材绑定
+ok 14 - 真实界面证据自动选择证据扫描，并保留真实素材绑定
+  ---
+  duration_ms: 19.327625
+  type: 'test'
+  ...
+# Subtest: 最匹配但尚未适配的卡只进入适配队列，不冒充可渲染组件
+ok 15 - 最匹配但尚未适配的卡只进入适配队列，不冒充可渲染组件
+  ---
+  duration_ms: 22.641833
+  type: 'test'
+  ...
+# Subtest: 纸艺和生成视频主画面永远不套Shotcraft
+ok 16 - 纸艺和生成视频主画面永远不套Shotcraft
+  ---
+  duration_ms: 20.935792
+  type: 'test'
+  ...
+# Subtest: 一次已验收案例优先复用，但仍保持候选预览门
+ok 17 - 一次已验收案例优先复用，但仍保持候选预览门
+  ---
+  duration_ms: 16.16175
+  type: 'test'
+  ...
+# Subtest: 同语境的最新否决会阻断该效果直接复用
+ok 18 - 同语境的最新否决会阻断该效果直接复用
+  ---
+  duration_ms: 11.976208
+  type: 'test'
+  ...
+# Subtest: 任何自动apply都只能来自当前注册表，不设置机械配额
+ok 19 - 任何自动apply都只能来自当前注册表，不设置机械配额
+  ---
+  duration_ms: 15.900625
+  type: 'test'
+  ...
+# Subtest: 组件严格类型检查及运行时依赖清单
+ok 20 - 组件严格类型检查及运行时依赖清单
+  ---
+  duration_ms: 516.219875
+  type: 'test'
+  ...
+# Subtest: MarkerUnderline：245 组跨帧确定性、时间边界与外盒声明尺寸
+ok 21 - MarkerUnderline：245 组跨帧确定性、时间边界与外盒声明尺寸
+  ---
+  duration_ms: 80.573958
+  type: 'test'
+  ...
+# Subtest: MarkerUnderline：非法时间输入必须抛错
+ok 22 - MarkerUnderline：非法时间输入必须抛错
+  ---
+  duration_ms: 1.093958
+  type: 'test'
+  ...
+# Subtest: KeywordReveal：245 组跨帧确定性、时间边界与外盒声明尺寸
+ok 23 - KeywordReveal：245 组跨帧确定性、时间边界与外盒声明尺寸
+  ---
+  duration_ms: 61.567
+  type: 'test'
+  ...
+# Subtest: KeywordReveal：非法时间输入必须抛错
+ok 24 - KeywordReveal：非法时间输入必须抛错
+  ---
+  duration_ms: 0.423875
+  type: 'test'
+  ...
+# Subtest: EvidenceScan：245 组跨帧确定性、时间边界与外盒声明尺寸
+ok 25 - EvidenceScan：245 组跨帧确定性、时间边界与外盒声明尺寸
+  ---
+  duration_ms: 46.032625
+  type: 'test'
+  ...
+# Subtest: EvidenceScan：非法时间输入必须抛错
+ok 26 - EvidenceScan：非法时间输入必须抛错
+  ---
+  duration_ms: 0.432125
+  type: 'test'
+  ...
+# Subtest: LineCarry：245 组跨帧确定性、时间边界与外盒声明尺寸
+ok 27 - LineCarry：245 组跨帧确定性、时间边界与外盒声明尺寸
+  ---
+  duration_ms: 71.903084
+  type: 'test'
+  ...
+# Subtest: LineCarry：非法时间输入必须抛错
+ok 28 - LineCarry：非法时间输入必须抛错
+  ---
+  duration_ms: 0.642125
+  type: 'test'
+  ...
+# Subtest: PaperTapePin：245 组跨帧确定性、时间边界与外盒声明尺寸
+ok 29 - PaperTapePin：245 组跨帧确定性、时间边界与外盒声明尺寸
+  ---
+  duration_ms: 65.17675
+  type: 'test'
+  ...
+# Subtest: PaperTapePin：非法时间输入必须抛错
+ok 30 - PaperTapePin：非法时间输入必须抛错
+  ---
+  duration_ms: 0.434417
+  type: 'test'
+  ...
+# Subtest: 马克笔：标题落定后再划线，最终状态保持且帧率换算一致
+ok 31 - 马克笔：标题落定后再划线，最终状态保持且帧率换算一致
+  ---
+  duration_ms: 0.742416
+  type: 'test'
+  ...
+# Subtest: 逐项呈现：真实局部帧起点、末帧与窗外项目不互相挪动
+ok 32 - 逐项呈现：真实局部帧起点、末帧与窗外项目不互相挪动
+  ---
+  duration_ms: 0.613083
+  type: 'test'
+  ...
+# Subtest: 证据扫描：扫描线越过矩形下缘后才收框，文字随后出现
+ok 33 - 证据扫描：扫描线越过矩形下缘后才收框，文字随后出现
+  ---
+  duration_ms: 0.48475
+  type: 'test'
+  ...
+# Subtest: 证据扫描：越界、非有限值和无效尺寸必须拒绝，贴边矩形允许
+ok 34 - 证据扫描：越界、非有限值和无效尺寸必须拒绝，贴边矩形允许
+  ---
+  duration_ms: 1.286584
+  type: 'test'
+  ...
+# Subtest: 线条接力：围框后再显示终点标签，笔头卸载且保持最终状态
+ok 35 - 线条接力：围框后再显示终点标签，笔头卸载且保持最终状态
+  ---
+  duration_ms: 0.592292
+  type: 'test'
+  ...
+# Subtest: 纸胶带：落帧压扁跨帧率可见，拍定后外壳停止但原图卡始终挂载
+ok 36 - 纸胶带：落帧压扁跨帧率可见，拍定后外壳停止但原图卡始终挂载
+  ---
+  duration_ms: 0.898042
+  type: 'test'
+  ...
+# Subtest: 长中文：马克笔与逐项文字完整保留，允许换行而非省略或缩小字号
+ok 37 - 长中文：马克笔与逐项文字完整保留，允许换行而非省略或缩小字号
+  ---
+  duration_ms: 0.397792
+  type: 'test'
+  ...
+# Subtest: 长中文：证据标注折行不丢字，声明的标签矩形位于画面内
+ok 38 - 长中文：证据标注折行不丢字，声明的标签矩形位于画面内
+  ---
+  duration_ms: 0.327167
+  type: 'test'
+  ...
+# Subtest: 长中文：接力两端折行容量和高度匹配，图卡正文不被组件改写
+ok 39 - 长中文：接力两端折行容量和高度匹配，图卡正文不被组件改写
+  ---
+  duration_ms: 1.001709
+  type: 'test'
+  ...
+# Subtest: 已注册效果在允许的主画面上下文通过
+ok 40 - 已注册效果在允许的主画面上下文通过
+  ---
+  duration_ms: 3.193584
+  type: 'test'
+  ...
+# Subtest: eligible beat 缺少显式决定时失败
+ok 41 - eligible beat 缺少显式决定时失败
+  ---
+  duration_ms: 0.573292
+  type: 'test'
+  ...
+# Subtest: 效果与主画面上下文错配时失败
+ok 42 - 效果与主画面上下文错配时失败
+  ---
+  duration_ms: 0.244708
+  type: 'test'
+  ...
+# Subtest: 非 V9 导演上下文失败
+ok 43 - 非 V9 导演上下文失败
+  ---
+  duration_ms: 2.298208
+  type: 'test'
+  ...
+# Subtest: paper-editorial 内部禁止应用 Shotcraft
+ok 44 - paper-editorial 内部禁止应用 Shotcraft
+  ---
+  duration_ms: 0.625958
+  type: 'test'
+  ...
+# Subtest: generated-video 内部禁止应用 Shotcraft
+ok 45 - generated-video 内部禁止应用 Shotcraft
+  ---
+  duration_ms: 0.113708
+  type: 'test'
+  ...
+# Subtest: 禁入主画面不能靠省略 decision 保留 Shotcraft 应用字段
+ok 46 - 禁入主画面不能靠省略 decision 保留 Shotcraft 应用字段
+  ---
+  duration_ms: 0.200791
+  type: 'test'
+  ...
+# Subtest: 零选择时，eligible beat 的具体 not-needed 理由通过
+ok 47 - 零选择时，eligible beat 的具体 not-needed 理由通过
+  ---
+  duration_ms: 0.265333
+  type: 'test'
+  ...
+# Subtest: 占位式 not-needed 理由失败
+ok 48 - 占位式 not-needed 理由失败
+  ---
+  duration_ms: 0.836416
+  type: 'test'
+  ...
+# Subtest: 未注册效果失败
+ok 49 - 未注册效果失败
+  ---
+  duration_ms: 0.584708
+  type: 'test'
+  ...
+# Subtest: 任何层级的机械配额字段都失败
+ok 50 - 任何层级的机械配额字段都失败
+  ---
+  duration_ms: 0.302209
+  type: 'test'
+  ...
+# Subtest: 空经验库合法，且一条验收不会直接晋级通用规则
+ok 51 - 空经验库合法，且一条验收不会直接晋级通用规则
+  ---
+  duration_ms: 2.696125
+  type: 'test'
+  ...
+# Subtest: 两个不同任务的同类成功案例晋级为可复用规则
+ok 52 - 两个不同任务的同类成功案例晋级为可复用规则
+  ---
+  duration_ms: 1.10275
+  type: 'test'
+  ...
+# Subtest: 最新同语境否决覆盖旧验收并阻断精确复用
+ok 53 - 最新同语境否决覆盖旧验收并阻断精确复用
+  ---
+  duration_ms: 12.784083
+  type: 'test'
+  ...
+# Subtest: 组件哈希变化后旧案例只作为过期证据，不参与直接复用
+ok 54 - 组件哈希变化后旧案例只作为过期证据，不参与直接复用
+  ---
+  duration_ms: 0.473625
+  type: 'test'
+  ...
+# Subtest: 篡改派生规则或关闭预览门会被拒绝
+ok 55 - 篡改派生规则或关闭预览门会被拒绝
+  ---
+  duration_ms: 0.306667
+  type: 'test'
+  ...
+# Subtest: 经验账本不接受绝对路径绑定
+ok 56 - 经验账本不接受绝对路径绑定
+  ---
+  duration_ms: 0.109875
+  type: 'test'
+  ...
+# Subtest: 合法合成预检可重复且只读，不需要影片后验收、系统密钥或生产解冻
+ok 57 - 合法合成预检可重复且只读，不需要影片后验收、系统密钥或生产解冻
+  ---
+  duration_ms: 151.631125
+  type: 'test'
+  ...
+# Subtest: 每一个必需绑定都不能省略
+ok 58 - 每一个必需绑定都不能省略
+  ---
+  duration_ms: 251.226084
+  type: 'test'
+  ...
+# Subtest: 所有绑定均实际读哈希，保护生产文件漂移也必须失败
+ok 59 - 所有绑定均实际读哈希，保护生产文件漂移也必须失败
+  ---
+  duration_ms: 128.293791
+  type: 'test'
+  ...
+# Subtest: 额外 source-policy/transcript 绑定也逐项读取，不能静默忽略
+ok 60 - 额外 source-policy/transcript 绑定也逐项读取，不能静默忽略
+  ---
+  duration_ms: 40.357292
+  type: 'test'
+  ...
+# Subtest: 拒绝缺失、错误类型、重复、伪造及越界绑定
+ok 61 - 拒绝缺失、错误类型、重复、伪造及越界绑定
+  ---
+  duration_ms: 33.580625
+  type: 'test'
+  ...
+# Subtest: 所有权限字段均严格校验，不接受真假值转换或正式授权
+ok 62 - 所有权限字段均严格校验，不接受真假值转换或正式授权
+  ---
+  duration_ms: 28.630541
+  type: 'test'
+  ...
+# Subtest: 独立审查需真实身份字段、正确决策和原顺序清单哈希，不充当密码学生产授权
+ok 63 - 独立审查需真实身份字段、正确决策和原顺序清单哈希，不充当密码学生产授权
+  ---
+  duration_ms: 56.011375
+  type: 'test'
+  ...
+# Subtest: 审查路径不能越界、指向输出或混入被审查清单形成循环
+ok 64 - 审查路径不能越界、指向输出或混入被审查清单形成循环
+  ---
+  duration_ms: 34.786708
+  type: 'test'
+  ...
+# Subtest: 31秒、930帧、30fps、源起点和原尺寸全部固定，不能仅靠总秒数相等
+ok 65 - 31秒、930帧、30fps、源起点和原尺寸全部固定，不能仅靠总秒数相等
+  ---
+  duration_ms: 50.139708
+  type: 'test'
+  ...
+# Subtest: 复用 validateFiles，实录引语、字幕时间及遮挡错误仍然阻断
+ok 66 - 复用 validateFiles，实录引语、字幕时间及遮挡错误仍然阻断
+  ---
+  duration_ms: 55.660833
+  type: 'test'
+  ...
+# Subtest: 媒体 publicPath 必须对应实际受锁路径，拒绝外网、编码越界和换源
+ok 67 - 媒体 publicPath 必须对应实际受锁路径，拒绝外网、编码越界和换源
+  ---
+  duration_ms: 36.788417
+  type: 'test'
+  ...
+# Subtest: 字幕和效果镜像必须字节相同，即使新哈希已经重新绑定并审查
+ok 68 - 字幕和效果镜像必须字节相同，即使新哈希已经重新绑定并审查
+  ---
+  duration_ms: 23.112416
+  type: 'test'
+  ...
+# Subtest: 媒体窗口和音效非法帧、资产或增益不能进入渲染
+ok 69 - 媒体窗口和音效非法帧、资产或增益不能进入渲染
+  ---
+  duration_ms: 41.307125
+  type: 'test'
+  ...
+# Subtest: 文件、父目录、授权和审查的符号链接均拒绝，包含断链
+ok 70 - 文件、父目录、授权和审查的符号链接均拒绝，包含断链
+  ---
+  duration_ms: 58.747625
+  type: 'test'
+  ...
+# Subtest: 绑定目录而非文件、实际文件缺失均失败
+ok 71 - 绑定目录而非文件、实际文件缺失均失败
+  ---
+  duration_ms: 15.639917
+  type: 'test'
+  ...
+# Subtest: 两个 Composition 的身份、尺寸、时钟和 A/B 属性不得改变
+ok 72 - 两个 Composition 的身份、尺寸、时钟和 A/B 属性不得改变
+  ---
+  duration_ms: 38.380875
+  type: 'test'
+  ...
+# Subtest: 候选静态导入闭包必须绑定；重新审查后允许局部可读性修改及本地辅助模块
+ok 73 - 候选静态导入闭包必须绑定；重新审查后允许局部可读性修改及本地辅助模块
+  ---
+  duration_ms: 35.7685
+  type: 'test'
+  ...
+# Subtest: 外部资源、动态导入、额外包和生产目录导入均阻断
+ok 74 - 外部资源、动态导入、额外包和生产目录导入均阻断
+  ---
+  duration_ms: 39.753292
+  type: 'test'
+  ...
+# Subtest: 校验器自身新增的本地模块也必须绑定，不能先执行再补验哈希
+ok 75 - 校验器自身新增的本地模块也必须绑定，不能先执行再补验哈希
+  ---
+  duration_ms: 40.376833
+  type: 'test'
+  ...
+# Subtest: 配置必须保持已核实不存在，tsconfig 不得增加外部继承或插件
+ok 76 - 配置必须保持已核实不存在，tsconfig 不得增加外部继承或插件
+  ---
+  duration_ms: 16.792042
+  type: 'test'
+  ...
+# Subtest: 预检后再次检查所有输入及授权/审查，拒绝在渲染前漂移
+ok 77 - 预检后再次检查所有输入及授权/审查，拒绝在渲染前漂移
+  ---
+  duration_ms: 28.961833
+  type: 'test'
+  ...
+# Subtest: 已有输出、失败日志、并行锁和输出父级越界不能被覆盖或删除
+ok 78 - 已有输出、失败日志、并行锁和输出父级越界不能被覆盖或删除
+  ---
+  duration_ms: 117.664083
+  type: 'test'
+  ...
+# Subtest: 固定命令契约：只渲染指定两版、七个静帧、960x540 和固定编码
+ok 79 - 固定命令契约：只渲染指定两版、七个静帧、960x540 和固定编码
+  ---
+  duration_ms: 0.551
+  type: 'test'
+  ...
+# Subtest: 禁止任何额外 CLI 参数；真实 runner 参数拒绝路径也无文件副作用
+ok 80 - 禁止任何额外 CLI 参数；真实 runner 参数拒绝路径也无文件副作用
+  ---
+  duration_ms: 139.007916
+  type: 'test'
+  ...
+# Subtest: 预渲染拒绝路径不创建目录或执行未验哈希校验器
+ok 81 - 预渲染拒绝路径不创建目录或执行未验哈希校验器
+  ---
+  duration_ms: 16.079708
+  type: 'test'
+  ...
+# Subtest: 导入闭包函数不执行候选源码
+ok 82 - 导入闭包函数不执行候选源码
+  ---
+  duration_ms: 21.473792
+  type: 'test'
+  ...
+# Subtest: 固定知识上下文 CLI 只执行 validate-context，Python 路径是唯一环境选择
+ok 83 - 固定知识上下文 CLI 只执行 validate-context，Python 路径是唯一环境选择
+  ---
+  duration_ms: 0.273833
+  type: 'test'
+  ...
+# Subtest: Python 默认从 PATH 解析绝对可执行文件，忽略空项、相对目录及不可执行候选
+ok 84 - Python 默认从 PATH 解析绝对可执行文件，忽略空项、相对目录及不可执行候选
+  ---
+  duration_ms: 1.479958
+  type: 'test'
+  ...
+# Subtest: 上下文复检必须 exit0 且 context-valid，不能凭旧 context-ready 或伪布尔值放行
+ok 85 - 上下文复检必须 exit0 且 context-valid，不能凭旧 context-ready 或伪布尔值放行
+  ---
+  duration_ms: 0.309167
+  type: 'test'
+  ...
+# Subtest: 真实 CLI 在创建目录及每次启动渲染前均复检 context，不调用生产门
+ok 86 - 真实 CLI 在创建目录及每次启动渲染前均复检 context，不调用生产门
+  ---
+  duration_ms: 0.311583
+  type: 'test'
+  ...
+# Subtest: 真实入站负例：旧 Remotion 配置在非回环返回200，固定预加载后只接受127.0.0.1
+ok 87 - 真实入站负例：旧 Remotion 配置在非回环返回200，固定预加载后只接受127.0.0.1
+  ---
+  duration_ms: 204.556542
+  type: 'test'
+  ...
+# Subtest: macOS 网络沙箱允许本地回环服务，不启动浏览器或媒体工具
+ok 88 - macOS 网络沙箱允许本地回环服务，不启动浏览器或媒体工具
+  ---
+  duration_ms: 50.514833
+  type: 'test'
+  ...
+# Subtest: 合法样片计划
+ok 89 - 合法样片计划
+  ---
+  duration_ms: 2.421167
+  type: 'test'
+  ...
+# Subtest: 未知效果
+ok 90 - 未知效果
+  ---
+  duration_ms: 0.499917
+  type: 'test'
+  ...
+# Subtest: 不能用于纸艺
+ok 91 - 不能用于纸艺
+  ---
+  duration_ms: 0.114291
+  type: 'test'
+  ...
+# Subtest: 不能用于生成视频
+ok 92 - 不能用于生成视频
+  ---
+  duration_ms: 0.080458
+  type: 'test'
+  ...
+# Subtest: 不能越权正式
+ok 93 - 不能越权正式
+  ---
+  duration_ms: 0.32025
+  type: 'test'
+  ...
+# Subtest: 不能借旧稿
+ok 94 - 不能借旧稿
+  ---
+  duration_ms: 1.135459
+  type: 'test'
+  ...
+# Subtest: 不能捏造文字
+ok 95 - 不能捏造文字
+  ---
+  duration_ms: 0.511541
+  type: 'test'
+  ...
+# Subtest: 不能脱离时间
+ok 96 - 不能脱离时间
+  ---
+  duration_ms: 0.094792
+  type: 'test'
+  ...
+# Subtest: 纯标点不算引文
+ok 97 - 纯标点不算引文
+  ---
+  duration_ms: 1.274625
+  type: 'test'
+  ...
+# Subtest: 不能遮脸
+ok 98 - 不能遮脸
+  ---
+  duration_ms: 0.48225
+  type: 'test'
+  ...
+# Subtest: 不能越界
+ok 99 - 不能越界
+  ---
+  duration_ms: 0.124709
+  type: 'test'
+  ...
+# Subtest: 不能循环
+ok 100 - 不能循环
+  ---
+  duration_ms: 0.061209
+  type: 'test'
+  ...
+# Subtest: 不能冻帧
+ok 101 - 不能冻帧
+  ---
+  duration_ms: 0.055458
+  type: 'test'
+  ...
+# Subtest: 必须避让
+ok 102 - 必须避让
+  ---
+  duration_ms: 0.042541
+  type: 'test'
+  ...
+# Subtest: 必须声明证据
+ok 103 - 必须声明证据
+  ---
+  duration_ms: 0.042375
+  type: 'test'
+  ...
+# Subtest: 倒序字幕不能参与匹配
+ok 104 - 倒序字幕不能参与匹配
+  ---
+  duration_ms: 0.095125
+  type: 'test'
+  ...
+# Subtest: 素材必须为自有绑定，原型属性不算证据
+ok 105 - 素材必须为自有绑定，原型属性不算证据
+  ---
+  duration_ms: 2.275708
+  type: 'test'
+  ...
+# Subtest: 上游快照哈希与数量
+ok 106 - 上游快照哈希与数量
+  ---
+  duration_ms: 9.21525
+  type: 'test'
+  ...
+1..106
+# tests 106
+# suites 0
+# pass 106
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2000.749875

@@ -1,0 +1,2397 @@
+{
+  "schemaVersion": 1,
+  "taskId": "20260906_lanzhou_ai_services",
+  "createdAt": "2026-09-07T09:25:47.583Z",
+  "status": "needs-user-audio-review",
+  "permittedUse": "local-low-resolution-candidate-only",
+  "formalAllowed": false,
+  "canonicalSource": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "preshootScriptReadInThisSubtask": false,
+  "captionTextPolicy": "spoken-verbatim-candidate-with-explicit-asr-corrections",
+  "englishTranslationSource": "canonical-spoken-chinese",
+  "source": {
+    "audioPath": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+    "audioSha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+    "baselineASRPath": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+    "baselineASRSha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+    "recordingDurationMs": 271633.333,
+    "recordingDurationEvidence": "父任务提供271.633333秒；本子任务未重新读取原视频",
+    "audioDurationMs": 271625.563,
+    "audioDurationEvidence": "本轮ffprobe读取16kHz单声道PCM文件",
+    "audioVideoDurationDifferenceMs": 7.77,
+    "originOffsetMs": 0
+  },
+  "humanListeningPerformed": false,
+  "audioPerceptionPerformed": false,
+  "userAudioReviewConfirmed": false,
+  "reviewPath": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/transcription-review.v1.json",
+  "scope": {
+    "writeDirectory": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕",
+    "networkUsed": false,
+    "paidServicesUsed": false,
+    "formalRendered": false,
+    "gitCommitPerformed": false,
+    "originalAudioModified": false
+  },
+  "timing": {
+    "unit": "milliseconds",
+    "resolutionMs": 10,
+    "measuredAccuracyMs": null,
+    "phonemeLevel": false,
+    "characterProportionalTimingUsed": false,
+    "wordUnit": "原始ASR词元；更正覆盖多个词元时作为整体时间包络，不宣称自然词或音素级精度。",
+    "zeroDurationPolicy": "保留原模型零时长词元；字幕页使用整页词元的最小起点和最大终点，不补造单词时长。",
+    "sourceAlignment": "原音频连续时基，无剪辑、变速或长度比例映射。"
+  },
+  "verification": {
+    "schemaVersion": 1,
+    "result": "structural-checks-only",
+    "audioFidelityStatus": "not-verified",
+    "originalFilesUnchanged": true,
+    "originalHashes": {
+      "host_16k.wav": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+      "host_whisper_small_raw_v1.json": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+      "host_whisper_small_raw_v1.txt": "9cca0d0561fcf2aaeafd3cae6202ba6327966b7a911d6010bd62cac79a4e9e22",
+      "host_whisper_small_raw_v1.srt": "bb7b47669c16f7e02fe9bd30e461705de4d624a544d71e019f637b590cc1a38f"
+    },
+    "exactCaptionWordTextMatch": true,
+    "originalASRRecoverableFromWords": true,
+    "bilingualIdsAndTimingMatch": true,
+    "captionsCount": 57,
+    "wordsCount": 1019,
+    "correctionsCount": 15,
+    "uncertainItemsCount": 13,
+    "uncertainCaptionsCount": 15,
+    "maxCaptionCharactersExcludingPunctuation": 24,
+    "shortCaptionIds": [
+      "c001",
+      "c057"
+    ],
+    "zeroDurationASRUnits": 65,
+    "negativeOrReversedWordSpans": 0,
+    "lastSpokenText": "可以来找我。",
+    "lastCaptionEndMs": 271230,
+    "noScriptTailAdded": true,
+    "noHumanListeningClaim": true,
+    "strictSpokenSourcePolicyCheckerRun": false,
+    "strictCheckerNotRunReason": "尚有正文疑点且未人工听验，不制造compliance.status=passed来运行严格发布门禁。"
+  },
+  "corrections": [
+    {
+      "id": "C01",
+      "segmentIndex": 2,
+      "from": "货客",
+      "to": "获客",
+      "type": "术语正字候选",
+      "startMs": 9430,
+      "endMs": 9880,
+      "status": "candidate-not-human-verified",
+      "reason": "三次识别保留 huoke 音近写法，父任务将该词列为疑似识别错误；获客为上下文正字候选，不是用户逐项听验或确认的结论。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 9430,
+        "endMs": 9880,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 2,
+            "localStartMs": 7440,
+            "localEndMs": 9880,
+            "sourceStartMs": 7440,
+            "sourceEndMs": 9880,
+            "text": "咱们本地的老板想通过AI货客"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 21400,
+              "sourceStartMs": 0,
+              "sourceEndMs": 21400,
+              "text": "请给我包容和支持 我想在兰州把企业AI应用落地这件事 做下去咱们本地的老板想通过AI或客想让员工手花点时间整理资料 整理报表 想让客户资讯处理的更明白 这些具体的麻烦 就是我想帮大家解决的是"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 1,
+              "localStartMs": 2440,
+              "localEndMs": 7480,
+              "sourceStartMs": 2440,
+              "sourceEndMs": 7480,
+              "text": "我想在兰州 把企业AI应用落地这件事做下去"
+            },
+            {
+              "segmentIndex": 2,
+              "localStartMs": 7480,
+              "localEndMs": 9880,
+              "sourceStartMs": 7480,
+              "sourceEndMs": 9880,
+              "text": "咱们本地的老板想通过AI货客"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_opening_v1.json",
+          "sha256": "1c646ff3b6b4f09814382b0ad9433a78ef3a14d1846fe2f41a74ebd75eb88340",
+          "sourceOffsetMs": 6000,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 15000,
+              "sourceStartMs": 6000,
+              "sourceEndMs": 21000,
+              "text": "作决,我们本地的老板想通过AI货客,想让员工手花点时间整理资料,整理报表,想让客户资寻处理的更明白,这些具体的麻烦,就是我想帮大家解决的事。"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C02",
+      "segmentIndex": 3,
+      "from": "手花",
+      "to": "少花",
+      "type": "近音错字候选",
+      "startMs": 10790,
+      "endMs": 11110,
+      "status": "candidate-not-human-verified",
+      "reason": "多模型仍写手花，父任务将该词列为疑似识别错误；少花点时间是上下文候选，尚无用户逐项听验，仍须听原声核定。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 10790,
+        "endMs": 11110,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 3,
+            "localStartMs": 9880,
+            "localEndMs": 13840,
+            "sourceStartMs": 9880,
+            "sourceEndMs": 13840,
+            "text": "想让员工手花点时间整理资料整理报表"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 21400,
+              "sourceStartMs": 0,
+              "sourceEndMs": 21400,
+              "text": "请给我包容和支持 我想在兰州把企业AI应用落地这件事 做下去咱们本地的老板想通过AI或客想让员工手花点时间整理资料 整理报表 想让客户资讯处理的更明白 这些具体的麻烦 就是我想帮大家解决的是"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 3,
+              "localStartMs": 9880,
+              "localEndMs": 13880,
+              "sourceStartMs": 9880,
+              "sourceEndMs": 13880,
+              "text": "想让员工手花点时间整理资料 整理报表"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_opening_v1.json",
+          "sha256": "1c646ff3b6b4f09814382b0ad9433a78ef3a14d1846fe2f41a74ebd75eb88340",
+          "sourceOffsetMs": 6000,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 15000,
+              "sourceStartMs": 6000,
+              "sourceEndMs": 21000,
+              "text": "作决,我们本地的老板想通过AI货客,想让员工手花点时间整理资料,整理报表,想让客户资寻处理的更明白,这些具体的麻烦,就是我想帮大家解决的事。"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C03",
+      "segmentIndex": 4,
+      "from": "资讯",
+      "to": "咨询",
+      "type": "同音正字候选",
+      "startMs": 14690,
+      "endMs": 15070,
+      "status": "candidate-not-human-verified",
+      "reason": "该时段局部模型识别为资寻，客户提问语境支持咨询；不是依照预拍稿。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 14690,
+        "endMs": 15070,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 4,
+            "localStartMs": 13840,
+            "localEndMs": 16400,
+            "sourceStartMs": 13840,
+            "sourceEndMs": 16400,
+            "text": "想让客户资讯处理得更明白"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 21400,
+              "sourceStartMs": 0,
+              "sourceEndMs": 21400,
+              "text": "请给我包容和支持 我想在兰州把企业AI应用落地这件事 做下去咱们本地的老板想通过AI或客想让员工手花点时间整理资料 整理报表 想让客户资讯处理的更明白 这些具体的麻烦 就是我想帮大家解决的是"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 3,
+              "localStartMs": 9880,
+              "localEndMs": 13880,
+              "sourceStartMs": 9880,
+              "sourceEndMs": 13880,
+              "text": "想让员工手花点时间整理资料 整理报表"
+            },
+            {
+              "segmentIndex": 4,
+              "localStartMs": 13880,
+              "localEndMs": 16440,
+              "sourceStartMs": 13880,
+              "sourceEndMs": 16440,
+              "text": "想让客户资讯处理得更明白"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_opening_v1.json",
+          "sha256": "1c646ff3b6b4f09814382b0ad9433a78ef3a14d1846fe2f41a74ebd75eb88340",
+          "sourceOffsetMs": 6000,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 15000,
+              "sourceStartMs": 6000,
+              "sourceEndMs": 21000,
+              "text": "作决,我们本地的老板想通过AI货客,想让员工手花点时间整理资料,整理报表,想让客户资寻处理的更明白,这些具体的麻烦,就是我想帮大家解决的事。"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C04",
+      "segmentIndex": 8,
+      "from": "既有",
+      "to": "GEO",
+      "type": "专有名词拼写候选",
+      "startMs": 28390,
+      "endMs": 28760,
+      "status": "candidate-not-human-verified",
+      "reason": "本句模型仍为既有；父任务将该词列为疑似识别错误，后文同一服务被独立识别为GEO/Gio。GEO为术语上下文候选，不是用户逐项听验；早段读法仍单列待核。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 28390,
+        "endMs": 28760,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 8,
+            "localStartMs": 25840,
+            "localEndMs": 28760,
+            "sourceStartMs": 25840,
+            "sourceEndMs": 28760,
+            "text": "后来我决定做企业AI应用和既有"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 1,
+              "localStartMs": 21400,
+              "localEndMs": 25880,
+              "sourceStartMs": 21400,
+              "sourceEndMs": 25880,
+              "text": "今天开始学习和实际上挂了不少的时间也付出了不少的成本"
+            },
+            {
+              "segmentIndex": 2,
+              "localStartMs": 25880,
+              "localEndMs": 28880,
+              "sourceStartMs": 25880,
+              "sourceEndMs": 28880,
+              "text": "后来我决定做企业应用和既有"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 8,
+              "localStartMs": 24320,
+              "localEndMs": 25960,
+              "sourceStartMs": 24320,
+              "sourceEndMs": 25960,
+              "text": "也付出了不少的成本"
+            },
+            {
+              "segmentIndex": 9,
+              "localStartMs": 25960,
+              "localEndMs": 28920,
+              "sourceStartMs": 25960,
+              "sourceEndMs": 28920,
+              "text": "后来我决定做企业AI应用和既有"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_opening_v1.json",
+          "sha256": "1c646ff3b6b4f09814382b0ad9433a78ef3a14d1846fe2f41a74ebd75eb88340",
+          "sourceOffsetMs": 6000,
+          "segments": [
+            {
+              "segmentIndex": 1,
+              "localStartMs": 15000,
+              "localEndMs": 29000,
+              "sourceStartMs": 21000,
+              "sourceEndMs": 35000,
+              "text": "今天开始学习和实践了AI花了不少的时间,也付出了不少的成本,后来我决定做企业AI应用和既有,也做过付费项目,也有过交付,这条路我还在走,经验呢,也还在激烈。"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C05",
+      "segmentIndex": 11,
+      "from": "激烈",
+      "to": "积累",
+      "type": "模型对照错字修正",
+      "startMs": 34220,
+      "endMs": 34680,
+      "status": "candidate-not-human-verified",
+      "reason": "带限定术语的small全文将同一时段识别为积累；术语提示未含该词。保留前面的的字和连接词。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 34220,
+        "endMs": 34680,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 11,
+            "localStartMs": 33040,
+            "localEndMs": 34680,
+            "sourceStartMs": 33040,
+            "sourceEndMs": 34680,
+            "text": "经验的也还在激烈"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 11,
+              "localStartMs": 31520,
+              "localEndMs": 35000,
+              "sourceStartMs": 31520,
+              "sourceEndMs": 35000,
+              "text": "这条路我还在走 经验的也还在积累"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C06",
+      "segmentIndex": 25,
+      "from": "工薪部",
+      "to": "工信部",
+      "type": "专有名词拼写",
+      "startMs": 70890,
+      "endMs": 71300,
+      "status": "candidate-not-human-verified",
+      "reason": "限定术语small全文在同一时段识别为工信部；提示影响已明示，未核验通知事实。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 70890,
+        "endMs": 71300,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 25,
+            "localStartMs": 69480,
+            "localEndMs": 72360,
+            "sourceStartMs": 69480,
+            "sourceEndMs": 72360,
+            "text": "今年8月底工薪部专门发了通知"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 25,
+              "localStartMs": 66600,
+              "localEndMs": 69680,
+              "sourceStartMs": 66600,
+              "sourceEndMs": 69680,
+              "text": "这些活儿也需要有人来做"
+            },
+            {
+              "segmentIndex": 26,
+              "localStartMs": 69680,
+              "localEndMs": 72360,
+              "sourceStartMs": 69680,
+              "sourceEndMs": 72360,
+              "text": "今年8月底 工信部专门发了通知"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C07",
+      "segmentIndex": 40,
+      "from": "设计",
+      "to": "涉及",
+      "type": "模型对照错字修正",
+      "startMs": 123340,
+      "endMs": 123700,
+      "status": "candidate-not-human-verified",
+      "reason": "base和限定术语small全文均识别为涉及。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 123340,
+        "endMs": 123700,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 40,
+            "localStartMs": 123160,
+            "localEndMs": 126640,
+            "sourceStartMs": 123160,
+            "sourceEndMs": 126640,
+            "text": "设计价格交付售后承诺"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 24,
+              "localStartMs": 118360,
+              "localEndMs": 123200,
+              "sourceStartMs": 118360,
+              "sourceEndMs": 123200,
+              "text": "把依据也带出人 员工能顺着出处和对"
+            },
+            {
+              "segmentIndex": 25,
+              "localStartMs": 123200,
+              "localEndMs": 128560,
+              "sourceStartMs": 123200,
+              "sourceEndMs": 128560,
+              "text": "涉及价格交付 社会承诺 确定后再发给客户"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 40,
+              "localStartMs": 120440,
+              "localEndMs": 123240,
+              "sourceStartMs": 120440,
+              "sourceEndMs": 123240,
+              "text": "员工能顺着出处合对"
+            },
+            {
+              "segmentIndex": 41,
+              "localStartMs": 123240,
+              "localEndMs": 126760,
+              "sourceStartMs": 123240,
+              "sourceEndMs": 126760,
+              "text": "涉及价格交付售后承诺"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C08",
+      "segmentIndex": 46,
+      "from": "其AI",
+      "to": "企业AI",
+      "type": "局部模型补字候选",
+      "startMs": 143850,
+      "endMs": 144010,
+      "status": "candidate-not-human-verified",
+      "reason": "129秒起的局部音频识别为企业AI培训和陪跑；全文识别仅其AI，差异仍待听验。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 143850,
+        "endMs": 144010,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 46,
+            "localStartMs": 143640,
+            "localEndMs": 145280,
+            "sourceStartMs": 143640,
+            "sourceEndMs": 145280,
+            "text": "其AI培训和陪跑"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_training_v1.json",
+          "sha256": "beec28325a7ac6af1c8452ee6af60c082760519f172da3672fdef4758bf54d51",
+          "sourceOffsetMs": 129000,
+          "segments": [
+            {
+              "segmentIndex": 7,
+              "localStartMs": 14000,
+              "localEndMs": 16000,
+              "sourceStartMs": 143000,
+              "sourceEndMs": 145000,
+              "text": "企业AI培训和陪跑"
+            },
+            {
+              "segmentIndex": 8,
+              "localStartMs": 16000,
+              "localEndMs": 17000,
+              "sourceStartMs": 145000,
+              "sourceEndMs": 146000,
+              "text": "我也想这样做"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 46,
+              "localStartMs": 139000,
+              "localEndMs": 143840,
+              "sourceStartMs": 139000,
+              "sourceEndMs": 143840,
+              "text": "资料变了谁来更新 都要在使用中持续处理"
+            },
+            {
+              "segmentIndex": 47,
+              "localStartMs": 143840,
+              "localEndMs": 146560,
+              "sourceStartMs": 143840,
+              "sourceEndMs": 146560,
+              "text": "其AI培训和陪跑 我也想这样做"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C09",
+      "segmentIndex": 49,
+      "from": "资讯",
+      "to": "咨询",
+      "type": "同音正字",
+      "startMs": 152880,
+      "endMs": 153240,
+      "status": "candidate-not-human-verified",
+      "reason": "局部模型同一时段输出整理一次咨询。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 152880,
+        "endMs": 153240,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 49,
+            "localStartMs": 148480,
+            "localEndMs": 154000,
+            "sourceStartMs": 148480,
+            "sourceEndMs": 154000,
+            "text": "员工学会以后能不能自己整理一次资讯查一次资料"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_training_v1.json",
+          "sha256": "beec28325a7ac6af1c8452ee6af60c082760519f172da3672fdef4758bf54d51",
+          "sourceOffsetMs": 129000,
+          "segments": [
+            {
+              "segmentIndex": 10,
+              "localStartMs": 19000,
+              "localEndMs": 21000,
+              "sourceStartMs": 148000,
+              "sourceEndMs": 150000,
+              "text": "员工学会以后"
+            },
+            {
+              "segmentIndex": 11,
+              "localStartMs": 21000,
+              "localEndMs": 24000,
+              "sourceStartMs": 150000,
+              "sourceEndMs": 153000,
+              "text": "能不能自己整理一次咨询"
+            },
+            {
+              "segmentIndex": 12,
+              "localStartMs": 24000,
+              "localEndMs": 25000,
+              "sourceStartMs": 153000,
+              "sourceEndMs": 154000,
+              "text": "查一次资料"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C10",
+      "segmentIndex": 60,
+      "from": "GO",
+      "to": "GEO",
+      "type": "专有名词拼写",
+      "startMs": 177360,
+      "endMs": 177440,
+      "status": "candidate-not-human-verified",
+      "reason": "small全文同一时段输出GEO，base输出Gio；仅统一术语拼写。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 177360,
+        "endMs": 177440,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 60,
+            "localStartMs": 175760,
+            "localEndMs": 180080,
+            "sourceStartMs": 175760,
+            "sourceEndMs": 180080,
+            "text": "我在做的GO也是在围绕这些真实的信息"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 55,
+              "localStartMs": 171840,
+              "localEndMs": 175880,
+              "sourceStartMs": 171840,
+              "sourceEndMs": 175880,
+              "text": "该从哪里联系 这些内容都得整理清楚"
+            },
+            {
+              "segmentIndex": 56,
+              "localStartMs": 175880,
+              "localEndMs": 180200,
+              "sourceStartMs": 175880,
+              "sourceEndMs": 180200,
+              "text": "我在做的GEO也是在围绕这些真实的信息"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 34,
+              "localStartMs": 175600,
+              "localEndMs": 181640,
+              "sourceStartMs": 175600,
+              "sourceEndMs": 181640,
+              "text": "我在做的Gio 也是在围绕这些真实的信息做整理和优惶"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C11",
+      "segmentIndex": 68,
+      "from": "资讯",
+      "to": "咨询",
+      "type": "同音正字",
+      "startMs": 198020,
+      "endMs": 198350,
+      "status": "candidate-not-human-verified",
+      "reason": "限定术语small同一时段输出繁体諮詢，按简体字幕写咨询。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 198020,
+        "endMs": 198350,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 68,
+            "localStartMs": 197120,
+            "localEndMs": 199160,
+            "sourceStartMs": 197120,
+            "sourceEndMs": 199160,
+            "text": "把这周客户资讯整理一下"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 62,
+              "localStartMs": 194800,
+              "localEndMs": 199240,
+              "sourceStartMs": 194800,
+              "sourceEndMs": 199240,
+              "text": "比如以后你跟AI说 把这周客户諮詢整理一下"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C12",
+      "segmentIndex": 71,
+      "from": "他",
+      "to": "它",
+      "type": "同音正字",
+      "startMs": 205850,
+      "endMs": 205900,
+      "status": "candidate-not-human-verified",
+      "reason": "small同一时段为它有机会，指代前文AI，不改变音节。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 205850,
+        "endMs": 205900,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 71,
+            "localStartMs": 205640,
+            "localEndMs": 207800,
+            "sourceStartMs": 205640,
+            "sourceEndMs": 207800,
+            "text": "他有机会把查记录"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 64,
+              "localStartMs": 203160,
+              "localEndMs": 205720,
+              "sourceStartMs": 203160,
+              "sourceEndMs": 205720,
+              "text": "在资料和权限接好的情况下"
+            },
+            {
+              "segmentIndex": 65,
+              "localStartMs": 205720,
+              "localEndMs": 208640,
+              "sourceStartMs": 205720,
+              "sourceEndMs": 208640,
+              "text": "它有机会把查记录做归类"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C13",
+      "segmentIndex": 73,
+      "from": "带跟进",
+      "to": "待跟进",
+      "type": "同音正字候选",
+      "startMs": 209720,
+      "endMs": 210290,
+      "status": "candidate-not-human-verified",
+      "reason": "带/待同音；根据列出事项的实录上下文选择待，模型并未输出待，不宣称模型证实。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 209720,
+        "endMs": 210290,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 73,
+            "localStartMs": 209560,
+            "localEndMs": 212160,
+            "sourceStartMs": 209560,
+            "sourceEndMs": 212160,
+            "text": "带跟进事项连着走"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 66,
+              "localStartMs": 208640,
+              "localEndMs": 212280,
+              "sourceStartMs": 208640,
+              "sourceEndMs": 212280,
+              "text": "列出带跟进 事项连着走"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 38,
+              "localStartMs": 202040,
+              "localEndMs": 212040,
+              "sourceStartMs": 202040,
+              "sourceEndMs": 212040,
+              "text": "在资料和全线结好的情况下 他有机会把查记录 做规律 列出 带根进 世上联着走"
+            },
+            {
+              "segmentIndex": 39,
+              "localStartMs": 212040,
+              "localEndMs": 217600,
+              "sourceStartMs": 212040,
+              "sourceEndMs": 217600,
+              "text": "你拿到结果 再决定哪些客户要联系 哪些问题要处理"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C14",
+      "segmentIndex": 75,
+      "from": "出流",
+      "to": "处理",
+      "type": "模型对照错字修正",
+      "startMs": 217150,
+      "endMs": 217680,
+      "status": "candidate-not-human-verified",
+      "reason": "base与限定术语small全文同一时段均输出处理。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 217150,
+        "endMs": 217680,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 75,
+            "localStartMs": 215920,
+            "localEndMs": 217680,
+            "sourceStartMs": 215920,
+            "sourceEndMs": 217680,
+            "text": "哪些问题要出流"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 39,
+              "localStartMs": 212040,
+              "localEndMs": 217600,
+              "sourceStartMs": 212040,
+              "sourceEndMs": 217600,
+              "text": "你拿到结果 再决定哪些客户要联系 哪些问题要处理"
+            },
+            {
+              "segmentIndex": 40,
+              "localStartMs": 217600,
+              "localEndMs": 225320,
+              "sourceStartMs": 217600,
+              "sourceEndMs": 225320,
+              "text": "公司不会因为用了AI就把原来的业务全部推倒 让员工原来费进的那几步变得好做一点"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 67,
+              "localStartMs": 212280,
+              "localEndMs": 216000,
+              "sourceStartMs": 212280,
+              "sourceEndMs": 216000,
+              "text": "你拿到结果 再决定哪些客户要联系"
+            },
+            {
+              "segmentIndex": 68,
+              "localStartMs": 216000,
+              "localEndMs": 217800,
+              "sourceStartMs": 216000,
+              "sourceEndMs": 217800,
+              "text": "哪些问题要处理"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    },
+    {
+      "id": "C15",
+      "segmentIndex": 77,
+      "from": "退到",
+      "to": "推倒",
+      "type": "模型对照错字修正",
+      "startMs": 220720,
+      "endMs": 220960,
+      "status": "candidate-not-human-verified",
+      "reason": "base与限定术语small全文同一时段均输出推倒。",
+      "audioEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_16k.wav",
+        "sha256": "5ebf79c578ba8941ab692c34e64d6ca84144ad80bec01f59dd492c38aac06add",
+        "startMs": 220720,
+        "endMs": 220960,
+        "humanListeningPerformed": false
+      },
+      "originalEvidence": {
+        "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+        "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+        "sourceOffsetMs": 0,
+        "segments": [
+          {
+            "segmentIndex": 77,
+            "localStartMs": 219120,
+            "localEndMs": 220960,
+            "sourceStartMs": 219120,
+            "sourceEndMs": 220960,
+            "text": "就把原来的业务全部退到"
+          }
+        ]
+      },
+      "comparisonEvidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 40,
+              "localStartMs": 217600,
+              "localEndMs": 225320,
+              "sourceStartMs": 217600,
+              "sourceEndMs": 225320,
+              "text": "公司不会因为用了AI就把原来的业务全部推倒 让员工原来费进的那几步变得好做一点"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 69,
+              "localStartMs": 217800,
+              "localEndMs": 221080,
+              "sourceStartMs": 217800,
+              "sourceEndMs": 221080,
+              "text": "公司不会因为用了AI就把原来的业务全部推倒"
+            }
+          ]
+        }
+      ],
+      "timingMethod": "沿用覆盖原识别的真实ASR词元时间包络；不拆分替换文字，不按字数分摊。"
+    }
+  ],
+  "uncertain": [
+    {
+      "id": "U01",
+      "sourceSegmentIndices": [
+        6
+      ],
+      "startMs": 21360,
+      "endMs": 23200,
+      "retained": "今年",
+      "alternatives": [
+        "今天"
+      ],
+      "reason": "全文small为今年，base和开头局部为今天；保留原识别今年。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 6,
+              "localStartMs": 21360,
+              "localEndMs": 23200,
+              "sourceStartMs": 21360,
+              "sourceEndMs": 23200,
+              "text": "今年开始学习和实践了"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 21400,
+              "sourceStartMs": 0,
+              "sourceEndMs": 21400,
+              "text": "请给我包容和支持 我想在兰州把企业AI应用落地这件事 做下去咱们本地的老板想通过AI或客想让员工手花点时间整理资料 整理报表 想让客户资讯处理的更明白 这些具体的麻烦 就是我想帮大家解决的是"
+            },
+            {
+              "segmentIndex": 1,
+              "localStartMs": 21400,
+              "localEndMs": 25880,
+              "sourceStartMs": 21400,
+              "sourceEndMs": 25880,
+              "text": "今天开始学习和实际上挂了不少的时间也付出了不少的成本"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 6,
+              "localStartMs": 18240,
+              "localEndMs": 21440,
+              "sourceStartMs": 18240,
+              "sourceEndMs": 21440,
+              "text": "就是我想帮大家解决的事"
+            },
+            {
+              "segmentIndex": 7,
+              "localStartMs": 21440,
+              "localEndMs": 24320,
+              "sourceStartMs": 21440,
+              "sourceEndMs": 24320,
+              "text": "今年开始学习和实践了 AI花了不少的时间"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_opening_v1.json",
+          "sha256": "1c646ff3b6b4f09814382b0ad9433a78ef3a14d1846fe2f41a74ebd75eb88340",
+          "sourceOffsetMs": 6000,
+          "segments": [
+            {
+              "segmentIndex": 1,
+              "localStartMs": 15000,
+              "localEndMs": 29000,
+              "sourceStartMs": 21000,
+              "sourceEndMs": 35000,
+              "text": "今天开始学习和实践了AI花了不少的时间,也付出了不少的成本,后来我决定做企业AI应用和既有,也做过付费项目,也有过交付,这条路我还在走,经验呢,也还在激烈。"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c005",
+        "c006"
+      ]
+    },
+    {
+      "id": "U02",
+      "sourceSegmentIndices": [
+        11
+      ],
+      "startMs": 33040,
+      "endMs": 34680,
+      "retained": "经验的也还在积累",
+      "alternatives": [
+        "经验呢也还在积累",
+        "经验也还在积累"
+      ],
+      "reason": "连接词有分歧；只修正取得模型支持的积累，的不擅自删改。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 11,
+              "localStartMs": 33040,
+              "localEndMs": 34680,
+              "sourceStartMs": 33040,
+              "sourceEndMs": 34680,
+              "text": "经验的也还在激烈"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 4,
+              "localStartMs": 31520,
+              "localEndMs": 34960,
+              "sourceStartMs": 31520,
+              "sourceEndMs": 34960,
+              "text": "这条路我还在做 经验也还在激烈"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 11,
+              "localStartMs": 31520,
+              "localEndMs": 35000,
+              "sourceStartMs": 31520,
+              "sourceEndMs": 35000,
+              "text": "这条路我还在走 经验的也还在积累"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_opening_v1.json",
+          "sha256": "1c646ff3b6b4f09814382b0ad9433a78ef3a14d1846fe2f41a74ebd75eb88340",
+          "sourceOffsetMs": 6000,
+          "segments": [
+            {
+              "segmentIndex": 1,
+              "localStartMs": 15000,
+              "localEndMs": 29000,
+              "sourceStartMs": 21000,
+              "sourceEndMs": 35000,
+              "text": "今天开始学习和实践了AI花了不少的时间,也付出了不少的成本,后来我决定做企业AI应用和既有,也做过付费项目,也有过交付,这条路我还在走,经验呢,也还在激烈。"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c008"
+      ]
+    },
+    {
+      "id": "U03",
+      "sourceSegmentIndices": [
+        18
+      ],
+      "startMs": 49720,
+      "endMs": 52920,
+      "retained": "经理",
+      "alternatives": [
+        "经营"
+      ],
+      "reason": "base全文为经营，small全文与局部均为经理；保留经理，不凭顺口替换。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 18,
+              "localStartMs": 49720,
+              "localEndMs": 52920,
+              "sourceStartMs": 49720,
+              "sourceEndMs": 52920,
+              "text": "你每天忙着客户员工和经理"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 7,
+              "localStartMs": 46040,
+              "localEndMs": 49960,
+              "sourceStartMs": 46040,
+              "sourceEndMs": 49960,
+              "text": "出了问题能不能找到人 这些事都得说清楚"
+            },
+            {
+              "segmentIndex": 8,
+              "localStartMs": 49960,
+              "localEndMs": 53080,
+              "sourceStartMs": 49960,
+              "sourceEndMs": 53080,
+              "text": "你每天忙着客户 员工和经营"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 18,
+              "localStartMs": 48120,
+              "localEndMs": 50000,
+              "sourceStartMs": 48120,
+              "sourceEndMs": 50000,
+              "text": "这些事都得说清楚"
+            },
+            {
+              "segmentIndex": 19,
+              "localStartMs": 50000,
+              "localEndMs": 53040,
+              "sourceStartMs": 50000,
+              "sourceEndMs": 53040,
+              "text": "你每天忙着客户 员工和经理"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_business_v1.json",
+          "sha256": "11712fb70c493d975238477de83edffb687f82933c6a3f6da93764cbcfa19433",
+          "sourceOffsetMs": 48000,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 1880,
+              "sourceStartMs": 48000,
+              "sourceEndMs": 49880,
+              "text": "这些事都得说清楚"
+            },
+            {
+              "segmentIndex": 1,
+              "localStartMs": 1880,
+              "localEndMs": 4960,
+              "sourceStartMs": 49880,
+              "sourceEndMs": 52960,
+              "text": "你每天忙着客户 员工和经理"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c012"
+      ]
+    },
+    {
+      "id": "U04",
+      "sourceSegmentIndices": [
+        36
+      ],
+      "startMs": 106920,
+      "endMs": 112000,
+      "retained": "整理已经企业知识",
+      "alternatives": [
+        "整理进去的企业知识库",
+        "整理性企业之手",
+        "整理已经企业之手"
+      ],
+      "reason": "识别未收敛，涉及实质正文；保留原始候选，不补进、的或库。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 36,
+              "localStartMs": 106920,
+              "localEndMs": 112000,
+              "sourceStartMs": 106920,
+              "sourceEndMs": 112000,
+              "text": "然后再看哪些适合整理已经企业知识"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 22,
+              "localStartMs": 106840,
+              "localEndMs": 112080,
+              "sourceStartMs": 106840,
+              "sourceEndMs": 112080,
+              "text": "然后再看哪些适合整理性企业之手"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 37,
+              "localStartMs": 106800,
+              "localEndMs": 112120,
+              "sourceStartMs": 106800,
+              "sourceEndMs": 112120,
+              "text": "然后再看哪些适合整理已经企业之手"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_knowledge_v1.json",
+          "sha256": "59d81d203ef6efb2a256208ca711aae8af521873e1994984c430ecbd09cab538",
+          "sourceOffsetMs": 99000,
+          "segments": [
+            {
+              "segmentIndex": 3,
+              "localStartMs": 7800,
+              "localEndMs": 12920,
+              "sourceStartMs": 106800,
+              "sourceEndMs": 111920,
+              "text": "然后再看哪些适合整理进去的企业知识库"
+            },
+            {
+              "segmentIndex": 4,
+              "localStartMs": 12920,
+              "localEndMs": 19200,
+              "sourceStartMs": 111920,
+              "sourceEndMs": 118200,
+              "text": "员工提问是让AI去把这些资料里找相关的一些内容整理成答复"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c025"
+      ]
+    },
+    {
+      "id": "U05",
+      "sourceSegmentIndices": [
+        86
+      ],
+      "startMs": 241320,
+      "endMs": 244440,
+      "retained": "时间过的方法",
+      "alternatives": [
+        "实践过的方法"
+      ],
+      "reason": "所有本地识别均为时间过；实践过只是上下文疑问，没有模型支持，未应用。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 86,
+              "localStartMs": 241320,
+              "localEndMs": 244440,
+              "sourceStartMs": 241320,
+              "sourceEndMs": 244440,
+              "text": "我把我自己学到的和时间过的方法"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 43,
+              "localStartMs": 240120,
+              "localEndMs": 244880,
+              "sourceStartMs": 240120,
+              "sourceEndMs": 244880,
+              "text": "你熟悉你的生意 我把我自己学到的和时间过的方法拿出来"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 76,
+              "localStartMs": 240320,
+              "localEndMs": 241400,
+              "sourceStartMs": 240320,
+              "sourceEndMs": 241400,
+              "text": "你熟悉你的生意"
+            },
+            {
+              "segmentIndex": 77,
+              "localStartMs": 241400,
+              "localEndMs": 244920,
+              "sourceStartMs": 241400,
+              "sourceEndMs": 244920,
+              "text": "我把我自己学到的和时间过的方法拿出来"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_practice_v1.json",
+          "sha256": "329a7a2f6d3ca0ffc9f96d2e5768871c2beb278c60a6c20f36364e382f7e0470",
+          "sourceOffsetMs": 237000,
+          "segments": [
+            {
+              "segmentIndex": 2,
+              "localStartMs": 4000,
+              "localEndMs": 8000,
+              "sourceStartMs": 241000,
+              "sourceEndMs": 245000,
+              "text": "我把我自己学到的和时间过的方法拿出来"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c050",
+        "c051"
+      ]
+    },
+    {
+      "id": "U06",
+      "sourceSegmentIndices": [
+        2
+      ],
+      "startMs": 7440,
+      "endMs": 9880,
+      "retained": "获客",
+      "alternatives": [
+        "货客",
+        "或客"
+      ],
+      "reason": "正字候选，模型未直接识别为获客；需对照原声确认。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 2,
+              "localStartMs": 7440,
+              "localEndMs": 9880,
+              "sourceStartMs": 7440,
+              "sourceEndMs": 9880,
+              "text": "咱们本地的老板想通过AI货客"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 21400,
+              "sourceStartMs": 0,
+              "sourceEndMs": 21400,
+              "text": "请给我包容和支持 我想在兰州把企业AI应用落地这件事 做下去咱们本地的老板想通过AI或客想让员工手花点时间整理资料 整理报表 想让客户资讯处理的更明白 这些具体的麻烦 就是我想帮大家解决的是"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 1,
+              "localStartMs": 2440,
+              "localEndMs": 7480,
+              "sourceStartMs": 2440,
+              "sourceEndMs": 7480,
+              "text": "我想在兰州 把企业AI应用落地这件事做下去"
+            },
+            {
+              "segmentIndex": 2,
+              "localStartMs": 7480,
+              "localEndMs": 9880,
+              "sourceStartMs": 7480,
+              "sourceEndMs": 9880,
+              "text": "咱们本地的老板想通过AI货客"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_opening_v1.json",
+          "sha256": "1c646ff3b6b4f09814382b0ad9433a78ef3a14d1846fe2f41a74ebd75eb88340",
+          "sourceOffsetMs": 6000,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 15000,
+              "sourceStartMs": 6000,
+              "sourceEndMs": 21000,
+              "text": "作决,我们本地的老板想通过AI货客,想让员工手花点时间整理资料,整理报表,想让客户资寻处理的更明白,这些具体的麻烦,就是我想帮大家解决的事。"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c003"
+      ]
+    },
+    {
+      "id": "U07",
+      "sourceSegmentIndices": [
+        3
+      ],
+      "startMs": 9880,
+      "endMs": 13840,
+      "retained": "少花",
+      "alternatives": [
+        "手花"
+      ],
+      "reason": "多轮识别仍为手花；少花仅为父任务疑点提醒后的上下文暂定候选，不代表用户逐项听验或确认。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 3,
+              "localStartMs": 9880,
+              "localEndMs": 13840,
+              "sourceStartMs": 9880,
+              "sourceEndMs": 13840,
+              "text": "想让员工手花点时间整理资料整理报表"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 21400,
+              "sourceStartMs": 0,
+              "sourceEndMs": 21400,
+              "text": "请给我包容和支持 我想在兰州把企业AI应用落地这件事 做下去咱们本地的老板想通过AI或客想让员工手花点时间整理资料 整理报表 想让客户资讯处理的更明白 这些具体的麻烦 就是我想帮大家解决的是"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 3,
+              "localStartMs": 9880,
+              "localEndMs": 13880,
+              "sourceStartMs": 9880,
+              "sourceEndMs": 13880,
+              "text": "想让员工手花点时间整理资料 整理报表"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_opening_v1.json",
+          "sha256": "1c646ff3b6b4f09814382b0ad9433a78ef3a14d1846fe2f41a74ebd75eb88340",
+          "sourceOffsetMs": 6000,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 15000,
+              "sourceStartMs": 6000,
+              "sourceEndMs": 21000,
+              "text": "作决,我们本地的老板想通过AI货客,想让员工手花点时间整理资料,整理报表,想让客户资寻处理的更明白,这些具体的麻烦,就是我想帮大家解决的事。"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c003",
+        "c004"
+      ]
+    },
+    {
+      "id": "U08",
+      "sourceSegmentIndices": [
+        4
+      ],
+      "startMs": 13840,
+      "endMs": 16400,
+      "retained": "咨询",
+      "alternatives": [
+        "资讯",
+        "资寻"
+      ],
+      "reason": "同音词的文字选择来自上下文，需用户确认所指是客户咨询。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 4,
+              "localStartMs": 13840,
+              "localEndMs": 16400,
+              "sourceStartMs": 13840,
+              "sourceEndMs": 16400,
+              "text": "想让客户资讯处理得更明白"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 21400,
+              "sourceStartMs": 0,
+              "sourceEndMs": 21400,
+              "text": "请给我包容和支持 我想在兰州把企业AI应用落地这件事 做下去咱们本地的老板想通过AI或客想让员工手花点时间整理资料 整理报表 想让客户资讯处理的更明白 这些具体的麻烦 就是我想帮大家解决的是"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 3,
+              "localStartMs": 9880,
+              "localEndMs": 13880,
+              "sourceStartMs": 9880,
+              "sourceEndMs": 13880,
+              "text": "想让员工手花点时间整理资料 整理报表"
+            },
+            {
+              "segmentIndex": 4,
+              "localStartMs": 13880,
+              "localEndMs": 16440,
+              "sourceStartMs": 13880,
+              "sourceEndMs": 16440,
+              "text": "想让客户资讯处理得更明白"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_opening_v1.json",
+          "sha256": "1c646ff3b6b4f09814382b0ad9433a78ef3a14d1846fe2f41a74ebd75eb88340",
+          "sourceOffsetMs": 6000,
+          "segments": [
+            {
+              "segmentIndex": 0,
+              "localStartMs": 0,
+              "localEndMs": 15000,
+              "sourceStartMs": 6000,
+              "sourceEndMs": 21000,
+              "text": "作决,我们本地的老板想通过AI货客,想让员工手花点时间整理资料,整理报表,想让客户资寻处理的更明白,这些具体的麻烦,就是我想帮大家解决的事。"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c004"
+      ]
+    },
+    {
+      "id": "U09",
+      "sourceSegmentIndices": [
+        8
+      ],
+      "startMs": 25840,
+      "endMs": 28760,
+      "retained": "GEO",
+      "alternatives": [
+        "既有"
+      ],
+      "reason": "早段缩略词始终被识别为既有；后文术语证据不能代替本时点听验。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 8,
+              "localStartMs": 25840,
+              "localEndMs": 28760,
+              "sourceStartMs": 25840,
+              "sourceEndMs": 28760,
+              "text": "后来我决定做企业AI应用和既有"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 1,
+              "localStartMs": 21400,
+              "localEndMs": 25880,
+              "sourceStartMs": 21400,
+              "sourceEndMs": 25880,
+              "text": "今天开始学习和实际上挂了不少的时间也付出了不少的成本"
+            },
+            {
+              "segmentIndex": 2,
+              "localStartMs": 25880,
+              "localEndMs": 28880,
+              "sourceStartMs": 25880,
+              "sourceEndMs": 28880,
+              "text": "后来我决定做企业应用和既有"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 8,
+              "localStartMs": 24320,
+              "localEndMs": 25960,
+              "sourceStartMs": 24320,
+              "sourceEndMs": 25960,
+              "text": "也付出了不少的成本"
+            },
+            {
+              "segmentIndex": 9,
+              "localStartMs": 25960,
+              "localEndMs": 28920,
+              "sourceStartMs": 25960,
+              "sourceEndMs": 28920,
+              "text": "后来我决定做企业AI应用和既有"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_opening_v1.json",
+          "sha256": "1c646ff3b6b4f09814382b0ad9433a78ef3a14d1846fe2f41a74ebd75eb88340",
+          "sourceOffsetMs": 6000,
+          "segments": [
+            {
+              "segmentIndex": 1,
+              "localStartMs": 15000,
+              "localEndMs": 29000,
+              "sourceStartMs": 21000,
+              "sourceEndMs": 35000,
+              "text": "今天开始学习和实践了AI花了不少的时间,也付出了不少的成本,后来我决定做企业AI应用和既有,也做过付费项目,也有过交付,这条路我还在走,经验呢,也还在激烈。"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c007"
+      ]
+    },
+    {
+      "id": "U10",
+      "sourceSegmentIndices": [
+        46
+      ],
+      "startMs": 143640,
+      "endMs": 145280,
+      "retained": "企业AI",
+      "alternatives": [
+        "其AI",
+        "且AI"
+      ],
+      "reason": "局部模型识别出企业AI，全文模型存在缺字；补字候选待核。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 46,
+              "localStartMs": 143640,
+              "localEndMs": 145280,
+              "sourceStartMs": 143640,
+              "sourceEndMs": 145280,
+              "text": "其AI培训和陪跑"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 29,
+              "localStartMs": 143640,
+              "localEndMs": 150280,
+              "sourceStartMs": 143640,
+              "sourceEndMs": 150280,
+              "text": "且AI培训和培跑 我也想这样做 拿你们自己的工作来练 员工学会以后"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 46,
+              "localStartMs": 139000,
+              "localEndMs": 143840,
+              "sourceStartMs": 139000,
+              "sourceEndMs": 143840,
+              "text": "资料变了谁来更新 都要在使用中持续处理"
+            },
+            {
+              "segmentIndex": 47,
+              "localStartMs": 143840,
+              "localEndMs": 146560,
+              "sourceStartMs": 143840,
+              "sourceEndMs": 146560,
+              "text": "其AI培训和陪跑 我也想这样做"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_training_v1.json",
+          "sha256": "beec28325a7ac6af1c8452ee6af60c082760519f172da3672fdef4758bf54d51",
+          "sourceOffsetMs": 129000,
+          "segments": [
+            {
+              "segmentIndex": 7,
+              "localStartMs": 14000,
+              "localEndMs": 16000,
+              "sourceStartMs": 143000,
+              "sourceEndMs": 145000,
+              "text": "企业AI培训和陪跑"
+            },
+            {
+              "segmentIndex": 8,
+              "localStartMs": 16000,
+              "localEndMs": 17000,
+              "sourceStartMs": 145000,
+              "sourceEndMs": 146000,
+              "text": "我也想这样做"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c032"
+      ]
+    },
+    {
+      "id": "U11",
+      "sourceSegmentIndices": [
+        43
+      ],
+      "startMs": 131840,
+      "endMs": 136320,
+      "retained": "就到员工手里以后",
+      "alternatives": [
+        "交到员工手里以后"
+      ],
+      "reason": "模型一致为就到，疑似口语或近音；不凭语法改成交到。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 43,
+              "localStartMs": 131840,
+              "localEndMs": 136320,
+              "sourceStartMs": 131840,
+              "sourceEndMs": 136320,
+              "text": "就到员工手里以后也得拿他们每天遇到的问题来试"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 27,
+              "localStartMs": 131840,
+              "localEndMs": 139000,
+              "sourceStartMs": 131840,
+              "sourceEndMs": 139000,
+              "text": "就到员工手里以后 也得拿他们每天遇到的问题来使 哪里查不到 哪里容易出错"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 43,
+              "localStartMs": 128680,
+              "localEndMs": 132040,
+              "sourceStartMs": 128680,
+              "sourceEndMs": 132040,
+              "text": "资料里没有的就留给人来处理"
+            },
+            {
+              "segmentIndex": 44,
+              "localStartMs": 132040,
+              "localEndMs": 136320,
+              "sourceStartMs": 132040,
+              "sourceEndMs": 136320,
+              "text": "就到员工手里以后也得拿他们每天遇到的问题来试"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_focus_training_v1.json",
+          "sha256": "beec28325a7ac6af1c8452ee6af60c082760519f172da3672fdef4758bf54d51",
+          "sourceOffsetMs": 129000,
+          "segments": [
+            {
+              "segmentIndex": 1,
+              "localStartMs": 2000,
+              "localEndMs": 4000,
+              "sourceStartMs": 131000,
+              "sourceEndMs": 133000,
+              "text": "就到员工手里以后"
+            },
+            {
+              "segmentIndex": 2,
+              "localStartMs": 4000,
+              "localEndMs": 7000,
+              "sourceStartMs": 133000,
+              "sourceEndMs": 136000,
+              "text": "也得拿他们每天遇到的问题来试"
+            },
+            {
+              "segmentIndex": 3,
+              "localStartMs": 7000,
+              "localEndMs": 8000,
+              "sourceStartMs": 136000,
+              "sourceEndMs": 137000,
+              "text": "哪里查不到"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c029",
+        "c030"
+      ]
+    },
+    {
+      "id": "U12",
+      "sourceSegmentIndices": [
+        24
+      ],
+      "startMs": 66520,
+      "endMs": 69480,
+      "retained": "这些活",
+      "alternatives": [
+        "这些活儿"
+      ],
+      "reason": "限定术语small多一个儿，其他全文无；保留原识别，不主动增减儿化。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 24,
+              "localStartMs": 66520,
+              "localEndMs": 69480,
+              "sourceStartMs": 66520,
+              "sourceEndMs": 69480,
+              "text": "这些活也需要有人来做"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 11,
+              "localStartMs": 63160,
+              "localEndMs": 66720,
+              "sourceStartMs": 63160,
+              "sourceEndMs": 66720,
+              "text": "把模型的接到公司的资料里面在交员工怎么去用"
+            },
+            {
+              "segmentIndex": 12,
+              "localStartMs": 66720,
+              "localEndMs": 69680,
+              "sourceStartMs": 66720,
+              "sourceEndMs": 69680,
+              "text": "这些活也需要有人来做"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 24,
+              "localStartMs": 63240,
+              "localEndMs": 66600,
+              "sourceStartMs": 63240,
+              "sourceEndMs": 66600,
+              "text": "把模型接到公司的资料里面再教员工怎么去用"
+            },
+            {
+              "segmentIndex": 25,
+              "localStartMs": 66600,
+              "localEndMs": 69680,
+              "sourceStartMs": 66600,
+              "sourceEndMs": 69680,
+              "text": "这些活儿也需要有人来做"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c016"
+      ]
+    },
+    {
+      "id": "U13",
+      "sourceSegmentIndices": [
+        73
+      ],
+      "startMs": 209560,
+      "endMs": 212160,
+      "retained": "待跟进",
+      "alternatives": [
+        "带跟进"
+      ],
+      "reason": "仅上下文同音正字，不是声音确认。",
+      "status": "needs-user-audio-review",
+      "humanListeningPerformed": false,
+      "evidence": [
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/host_whisper_small_raw_v1.json",
+          "sha256": "d319e760846b810fff4b507d47daa49c1c8dcb77f88ea0d5cf32c066784e99ed",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 73,
+              "localStartMs": 209560,
+              "localEndMs": 212160,
+              "sourceStartMs": 209560,
+              "sourceEndMs": 212160,
+              "text": "带跟进事项连着走"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+          "sha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 38,
+              "localStartMs": 202040,
+              "localEndMs": 212040,
+              "sourceStartMs": 202040,
+              "sourceEndMs": 212040,
+              "text": "在资料和全线结好的情况下 他有机会把查记录 做规律 列出 带根进 世上联着走"
+            },
+            {
+              "segmentIndex": 39,
+              "localStartMs": 212040,
+              "localEndMs": 217600,
+              "sourceStartMs": 212040,
+              "sourceEndMs": 217600,
+              "text": "你拿到结果 再决定哪些客户要联系 哪些问题要处理"
+            }
+          ]
+        },
+        {
+          "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+          "sha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+          "sourceOffsetMs": 0,
+          "segments": [
+            {
+              "segmentIndex": 66,
+              "localStartMs": 208640,
+              "localEndMs": 212280,
+              "sourceStartMs": 208640,
+              "sourceEndMs": 212280,
+              "text": "列出带跟进 事项连着走"
+            }
+          ]
+        }
+      ],
+      "captionIds": [
+        "c044"
+      ]
+    }
+  ],
+  "punctuationAndPagination": "仅增补阅读标点并在真实ASR词元边界合并或分页，未将分页断句当作音频删改。",
+  "preservedNonstandardSpeech": [
+    "今年开始学习和实践了AI",
+    "经验的也还在积累",
+    "员工提问时让AI去把这些资料里找相关的一些内容整理成答复",
+    "就到员工手里以后",
+    "会越来越贴近这些日常生活",
+    "我把我自己学到的和时间过的方法拿出来",
+    "员工正在用AI",
+    "可以来找我"
+  ],
+  "fullPassRuns": [
+    {
+      "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_base_terms_v1.json",
+      "model": "/Users/pc/.cache/whisper-cpp/ggml-base.bin",
+      "prompt": "兰州，企业AI，GEO，工信部，知识库",
+      "carryInitialPrompt": false,
+      "outputSha256": "3ea18dea1a16fce80b3eac3eac9e0fb5aba39f6b8bd6f873a20f41d294cc94bd",
+      "exitCode": 0
+    },
+    {
+      "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr_review_small_terms_v1.json",
+      "model": "/Users/pc/.cache/whisper-cpp/ggml-small.bin",
+      "prompt": "兰州，企业AI，GEO，工信部，知识库",
+      "carryInitialPrompt": true,
+      "outputSha256": "dcb2973c42a0c5fcf9b225bd75576d419e6b85893e9604e17bb41eddb38e9e06",
+      "exitCode": 0
+    }
+  ],
+  "focusedRunsReceipt": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/asr-review-runs.v1.json",
+  "limitations": [
+    "没有人工或模型音频感知听验，只进行了本地ASR交叉识别和文字证据复核。",
+    "同一家族模型可能共有同一种识别偏差；一致结果也不等于已确认实际说法。",
+    "术语提示仅使用父任务限定的五项；这不是用户对词语的逐项听验或确认，没有向模型输入预拍稿或整篇文本。",
+    "英文基于尚有疑点的中文候选，不能视为正式可发布译文。",
+    "本报告只证明文件内部一致和来源可追踪，不能证明字幕跟嘴、音素时间或整段语音准确。"
+  ],
+  "nextGate": "用户对uncertain时段听原声核验；父任务保留低清候选限制，不得升级formal或passed。"
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-09-07T09:34:22.794Z",
+  "status": "machine-structural-checks-complete",
+  "audioFidelityStatus": "not-human-verified",
+  "formalAllowed": false,
+  "checks": [
+    {
+      "name": "四个只读原文件SHA256未改变",
+      "result": "ok"
+    },
+    {
+      "name": "每个实际识别词元时间均可追溯且未按字数推算",
+      "result": "ok"
+    },
+    {
+      "name": "所有非标点中文差异都在更正清单内且原识别无丢失",
+      "result": "ok"
+    },
+    {
+      "name": "中英文页编号文字和时窗一致且未新增尾句",
+      "result": "ok"
+    },
+    {
+      "name": "55页18至24字且开场结尾短页有明确理由",
+      "result": "ok"
+    },
+    {
+      "name": "字幕页只覆盖所绑定真实词元且无倒序重叠或越界",
+      "result": "ok"
+    },
+    {
+      "name": "待核编号双向关联且无人工听验或正式发布通过声明",
+      "result": "ok"
+    },
+    {
+      "name": "经理外贸员工正在用AI均保留而非恢复预拍稿",
+      "result": "ok"
+    },
+    {
+      "name": "复核引用的文件与本次识别回执哈希一致",
+      "result": "ok"
+    },
+    {
+      "name": "六个局部音频PCM逐字节匹配原音频对应区间",
+      "result": "ok"
+    }
+  ],
+  "deliverables": [
+    {
+      "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/canonical-spoken.v1.json",
+      "sha256": "15d86d2fb9204464c1260c0afd1cd0afaaa75ec03ee28d126a11d162d5eac135"
+    },
+    {
+      "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/actual-bilingual.v1.json",
+      "sha256": "8e23acf33e03a4c3fa4a40daa7486214adc77539a94164bfd35e9a8c70421940"
+    },
+    {
+      "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/transcription-review.v1.json",
+      "sha256": "fe0326b4dd10be3df1eae1a70acd337f4b2cae8505943d2db72999a5f28c9d43"
+    },
+    {
+      "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/actual-spoken.v1.txt",
+      "sha256": "558e6340692ba67dc1020dfce262dc4dfa355c97ed7a9b4b7ad9d8f4c694fdc4"
+    },
+    {
+      "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/actual-spoken.review-marked.v1.txt",
+      "sha256": "55e4cd44716b5e61835a275f84d8a0be877559eeb33c738f644d9d5c1f4de18c"
+    },
+    {
+      "file": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/transcription-validation.v1.json",
+      "sha256": "43202bc0f196a982d57ac800fca1842c617de51200fb4135d7ad105a383e3af8"
+    }
+  ],
+  "summary": {
+    "captions": 57,
+    "words": 1019,
+    "corrections": 15,
+    "uncertain": 13,
+    "zeroDurationASRUnits": 65
+  },
+  "scopeNote": "仅验证本子任务文件、真实PCM片段和ASR记录对应关系；父任务生产入口问题不在本次修复范围，未绕过任何制作门禁。"
+}

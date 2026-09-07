@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "koubo-production-preparation-attempt/v1",
+  "createdAt": "2026-09-07T09:43:55.869Z",
+  "episodeId": "20260906_lanzhou_ai_services",
+  "taskId": "task-20260906T154937Z-69f6ebf8",
+  "status": "blocked-before-candidate",
+  "userRequest": "所有文稿文件都准备好了，开始制作。",
+  "desktopEntry": {
+    "path": "/Users/pc/Desktop/口播素材/2026-09-06_在兰州把企业AI服务做下去",
+    "linkTarget": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services",
+    "realpath": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services"
+  },
+  "source": {
+    "path": "edit/20260906_lanzhou_ai_services/02_原片/copy_3257E7D6-476D-4668-93F2-0CA1BD79F373.MOV",
+    "sha256": "9e220b1e93a5eb49759827faf5a47aaef71ca030f674c6c8b549c9e0e159c07b",
+    "durationSeconds": 271.633333,
+    "frames": 8149
+  },
+  "localReviewProxy": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/host-intake-r1/R01_960x540_响度处理代理.mp4",
+    "sha256": "5c5939aebea81f0416aacad6927063f5de9f2953b7b396a8670f20167c294805",
+    "ffprobe": "edit/20260906_lanzhou_ai_services/07_预览与质检/host-intake-r1/proxy-ffprobe.v1.json",
+    "fullDecodeExitCode": 0
+  },
+  "inputReceipts": [
+    {
+      "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/host-intake-r1/host-intake-receipt.v1.json",
+      "sha256": "a37b9f7ffde401a7820feaa96d2b3923fed24c125dd0d7a91ba3ef97cbd0307b",
+      "bytes": 7060
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/paper-asset-intake.v1.json",
+      "sha256": "97eed68cd81269f08dc41e17d0f76d932740cd3418138c1e55db761f5f821f59",
+      "bytes": 164837
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/09_实录与字幕/transcription-independent-check.v1.json",
+      "sha256": "e2bb4388de1bf20245418ddc51d7c5853bd01be226ccd575249ef10112f7330e",
+      "bytes": 2969
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/shotcraft-source-audit-r2/source-match-receipt.v1.json",
+      "sha256": "fe7d64a21fc319635570d21fb40224a8b89de42df0a1c89cf04809591782359a",
+      "bytes": 150404
+    }
+  ],
+  "summary": {
+    "hostFramesPreserved": 8149,
+    "paperDecodePassed": 5,
+    "paperMaterialAccepted": 0,
+    "captions": 57,
+    "transcriptUncertainItems": 13,
+    "catalogCardsSearched": 157,
+    "captionsSearched": 33,
+    "captionsDeferred": 24,
+    "proposedEffects": 15,
+    "effectsApplied": 0
+  },
+  "materialDecisions": [
+    {
+      "sceneId": "P01",
+      "file": "edit/20260906_lanzhou_ai_services/05_纸艺视频/视频_5.mp4",
+      "sha256": "05c9b4b23659dae804111b5cfb53a8be5ca463e7c87961f9623ce26d5e43a2f2",
+      "decision": "blocked-semantic-contradiction",
+      "summary": "不可作为计划中的版本筛选镜头放行。上下两路纸页都进入知识库，含义与计划直接相反。"
+    },
+    {
+      "sceneId": "P02",
+      "file": "edit/20260906_lanzhou_ai_services/05_纸艺视频/视频_2.mp4",
+      "sha256": "d09074f2132c21438343ec39c2a53c9a2f72561466db88096a3a5599bf8b6aef",
+      "decision": "hold-for-mechanism-and-layout-review",
+      "summary": "可辨认答复溯源与确认节点，但人工确认的因果动作及前景落纸需复核，不能直接写exact放行。"
+    },
+    {
+      "sceneId": "P03",
+      "file": "edit/20260906_lanzhou_ai_services/05_纸艺视频/视频.mp4",
+      "sha256": "c237f8901f509d1a865725c50ada9b02d413605710dfa3d37b58c20c9e88d623",
+      "decision": "blocked-action-text-occlusion",
+      "summary": "试用、纠错、更新主线可辨，但中间动作遮挡实际试用中文，严格入场未通过。"
+    },
+    {
+      "sceneId": "P04",
+      "file": "edit/20260906_lanzhou_ai_services/05_纸艺视频/视频_4.mp4",
+      "sha256": "95f74224a778a1d9ce5115ebc97ffbe432a00384281f0347aafce30b808c757f",
+      "decision": "hold-for-rigid-label-deviation",
+      "summary": "GEO四类信息与归档关系一致，但服务哪些地方的带字牌变成展开纸片，偏离带字硬牌仅刚性移动的要求。"
+    },
+    {
+      "sceneId": "P05",
+      "file": "edit/20260906_lanzhou_ai_services/05_纸艺视频/视频_3.mp4",
+      "sha256": "b96c2e7da8dbf382916523ef0553196fd9b1ad014d1057888af33365469e2c15",
+      "decision": "blocked-permission-label-disappearance",
+      "summary": "咨询整理到人来决定的主线可辨，但资料和权限牌在展开时消失，双插片先接好才开路的机制也未清晰兑现。"
+    }
+  ],
+  "postshootTiming": {
+    "draft": {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/postshoot-preparation-r1/postshoot-layout-preparation.v1.json",
+      "sha256": "cee70c4f03ac54cfe262654fc681cc85eb6f4a0bd3b0b8a2e96b01b9847136d0",
+      "bytes": 16157
+    },
+    "actualTimelineApproved": false,
+    "firstCandidateRendered": false
+  },
+  "entryAudit": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/production-entry-audit-r1.md",
+    "sha256": "d7ee74185ce440a853bd33a29b556e5396ac509db2e87bac3e684800a2b8a896",
+    "bytes": 22199
+  },
+  "pendingUserDecisions": [
+    "本条首次预览入口与真实重绑合同修复许可，已询问未确认",
+    "P01语义返修及其他纸艺视觉偏差处置",
+    "实录字幕13项疑点，未人工听验"
+  ],
+  "sourceMatchFailure": {
+    "request": {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/shotcraft-source-audit-r1/source-match-request.v1.json",
+      "sha256": "790d55587b39a703520c769b30464c66fed47466a5a0e2f722dadb71a7d07f58",
+      "bytes": 45775
+    },
+    "error": "SHOTCRAFT_COVERAGE_EXCEEDED",
+    "cause": "相邻相同毫秒边界向外取整后重叠一帧",
+    "correction": "仅本条准备脚本统一最近帧取整；第二次匹配通过，旧失败请求保留"
+  },
+  "gates": {
+    "materialGatePassed": false,
+    "postshootRebindPassed": false,
+    "firstCandidateEntryAuthorized": false,
+    "candidateRendered": false,
+    "formalEnabled": false,
+    "publicationEnabled": false,
+    "externalGenerationStarted": false
+  },
+  "historicalSnapshot": {
+    "binding": {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/交付清单_SHA256.v4.json",
+      "sha256": "3b7d0fda4e764f24cba8f55ef67581e4d83f0f62bfa0d166a5961eb5cf61d61c",
+      "bytes": 18196
+    },
+    "changedHistoricalPaths": [
+      "edit/20260906_lanzhou_ai_services/README_先看这里.md"
+    ],
+    "archivedContractsPreserved": true
+  },
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--check",
+        "edit/20260906_lanzhou_ai_services/00_工程控制/prepare-host-intake.v1.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "edit/20260906_lanzhou_ai_services/00_工程控制/prepare-postshoot-layout.v1.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "edit/20260906_lanzhou_ai_services/00_工程控制/prepare-source-effect-audit.v1.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "edit/20260906_lanzhou_ai_services/00_工程控制/finalize-preparation.v1.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "edit/20260906_lanzhou_ai_services/09_实录与字幕/build-actual-transcript.v1.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "edit/20260906_lanzhou_ai_services/09_实录与字幕/check-actual-transcript.v1.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "skills/koubo-shotcraft-library/scripts/validate-director-selection.mjs",
+        "edit/20260906_lanzhou_ai_services/04_导演拆解/shotcraft-source-audit-r2/source-match-selection.v1.json",
+        "."
+      ],
+      "exitCode": 0,
+      "result": {
+        "status": "director-selection-valid",
+        "selectionSha256": "9ee6f3da1517fa69f72adb4861dc6e1c1a96fd4de0f34117b886c644db9a5a44",
+        "applyCount": 15,
+        "notNeededCount": 18,
+        "errors": []
+      }
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "skills/koubo-shotcraft-library/tests/application-receipt.test.mjs",
+        "skills/koubo-shotcraft-library/tests/auto-match-cli-flow.test.mjs",
+        "skills/koubo-shotcraft-library/tests/auto-match.test.mjs",
+        "skills/koubo-shotcraft-library/tests/components.test.mjs",
+        "skills/koubo-shotcraft-library/tests/director-selection.test.mjs",
+        "skills/koubo-shotcraft-library/tests/experience-ledger.test.mjs",
+        "skills/koubo-shotcraft-library/tests/local-preview.test.mjs",
+        "skills/koubo-shotcraft-library/tests/plan.test.mjs"
+      ],
+      "exitCode": 0,
+      "tests": 106,
+      "passed": 106,
+      "failed": 0,
+      "log": {
+        "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/shotcraft-preparation-tests.v1.tap",
+        "sha256": "dea102726d624177a961ff3fb5af80c891cdeddf678ed666c3f91d6aaf44d461",
+        "bytes": 20327
+      }
+    }
+  ],
+  "testScope": "本地准备脚本、已有匹配器与素材证据检查；未改前端和共享生产代码，未运行Vite/前端16项测试/部署，不将这些无关流程声称通过。",
+  "actualViewingBoundary": "图像抽帧检查和机器音频检测；没有声称原速完整人工听看、用户验收或正式字幕通过。"
+}
