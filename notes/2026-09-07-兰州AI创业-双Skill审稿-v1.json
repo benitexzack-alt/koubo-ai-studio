@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260907T160742Z-0dc04f5e",
+  "status": "passed",
+  "reviewed_at": "2026-09-07T16:21:31.128Z",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-09-07-兰州AI创业-口播稿-v1.md",
+    "sha256": "1410c44e2a32182a4ae00cd322caefab6c1145fb57525e48541c1145706a95af"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "review_method": {
+    "scope": "编辑流程和事实一致性检查通过，不是文稿质量已获用户认可。",
+    "read_aloud": "对当前稿逐句按中文口语停顿审读，拆分服务费用并列长句；无真人听读或用户朗读证据。",
+    "tts": "初稿用本地Tingting 250词速生成，193.056190秒，仅用于机器计时；四处文字修改后未使用旧音频证明当前稿朗读或时长。人工实际语速预计6分钟上下，仍须实读。"
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "删掉“你看…已经是几项具体工作”的总结，把“接起来”改成“交完视频就不管了”；一个餐馆举例承载内容、咨询和员工使用，不列八节点清单。首句按用户指定保留，下一句明确个人判断，风险尚需用户裁决。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "AI将成为普通人的最后一次创业风口。",
+        "risk_level": "high",
+        "reason": "最后一次无法证实，可能让目标老板把账号误读为风口课程营销；后文只能支持具体机会，不支持穷尽未来。",
+        "candidates": {
+          "conservative": "AI可能是普通人值得认真尝试的一次创业机会。",
+          "direct": "在兰州，普通人做AI生意，可以从自己熟悉的行业开始。",
+          "vivid": "老板干了这么多年的经验，能不能用AI做成一项新服务？"
+        },
+        "fact_difference": "三个候选均不新增事实，但会改变用户锁定开头或其强度，因此未自动替换。",
+        "recommendation": "按本轮指令保留原话并紧接个人判断；发布前请用户决定是否仍接受其信任风险。不把原话包装为数据结论。"
+      },
+      {
+        "original": "门店对外的信息也一样。网上写的地址、经营项目、服务内容，不能跟店里实际情况对不上。",
+        "risk_level": "medium",
+        "reason": "从员工资料转到GEO可能短暂偏离创业路径；本条仅保留一段，避免变成服务项目广告目录。",
+        "candidates": {
+          "conservative": "同一份门店资料，对外介绍和内部使用都得核对清楚。",
+          "direct": "地址、经营项目和服务内容，都得与门店实际对得上。",
+          "vivid": "店里没有的服务，不能在网上写得什么都能做。"
+        },
+        "fact_difference": "均是准确资料要求，不增加被推荐、接单或获客事实。",
+        "recommendation": "保留当前短段，承接用户既有GEO业务；后续本人朗读若拖慢可压缩该段，不拓展AAO教程。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "县城来源的收入和低成本普遍断言不沿用，转成条件性建议。",
+      "用户三线表述改为非一线，官方报告不再分级的校正已说明。",
+      "费用段用“要是因此省下”取代“少支出才有余地”的过强必然表达。"
+    ],
+    "pending_user_confirmations": [
+      "强钩子最后一次的可信度风险。",
+      "真人朗读是否像本人以及实际时长。",
+      "本地服务承接语是否覆盖当前能接的范围。"
+    ]
+  },
+  "scores": {
+    "directness": 8,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "manual_changes": [
+    {"before":"我是超哥，在兰州AI创业。","after":"咱们兰州的老板，需要做企业AI应用，可以来找超哥。","reason":"机器查重命中固定身份收尾；删去重复结束语，保留具体服务承接，未改变首句或核心主张。"},
+    {
+      "before": "你看，帮老板做内容…这些就已经是几项具体工作了。",
+      "after": "我做企业AI应用，想参与的就是这些事：帮老板整理资料和内容，带着员工用起来。",
+      "reason": "删除总结式转场，直接解释本人的参与方向。"
+    },
+    {
+      "before": "不把这些接起来",
+      "after": "如果交完视频就不管了",
+      "reason": "用可观察动作代替抽象连接。"
+    },
+    {
+      "before": "你接下来的活，老板什么时候能拿到…",
+      "after": "这笔服务费包含哪些东西，什么时候交？",
+      "reason": "拆长句，明确交付与费用对应，不新增金额。"
+    }
+  ]
+}
