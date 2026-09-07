@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "koubo-opening-addendum/v1",
+  "taskId": "task-20260906T154937Z-69f6ebf8",
+  "baseRevisionId": "20260906-lanzhou-ai-services-v91-pre-shoot-r2",
+  "addendumId": "20260907-opening-source-insert-v1",
+  "status": "provisional-previsualization",
+  "scope": "B01与B02之间插入用户提供的完整新闻素材，其余方向不变",
+  "userAuthorization": "首句请给予我包容和支持之后播放这段画面，播放完之后继续口播；其他方向不变",
+  "baseDirectorPlan": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r2/director-preproduction-plan.v1.json",
+    "sha256": "3f12440f9d6baaa907e240d3451b5783fc282d94d77a406e23654e780f2f3d2d"
+  },
+  "paperPromptsUnchanged": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/v9.1-r2/first-frame-prompts.v1.json",
+    "sha256": "bbabfce13e060540421790abdc484f44fd4f025397da490da37345ac1943be53"
+  },
+  "source": {
+    "originalPath": "/Users/pc/Downloads/stodownload.MP4",
+    "path": "edit/20260906_lanzhou_ai_services/06_补充实拍素材/开头引用_v1/stodownload.MP4",
+    "sha256": "0034f072955abc10db1a4a422fb70c6766f365ec47988f2e9e9d464a8bef9770",
+    "role": "user-provided-news-reference",
+    "visiblePublisher": "金融投资报",
+    "visibleDateLabel": "9月4日消息 资料画面",
+    "publisherVerified": false,
+    "reuseRightsVerified": false,
+    "clipSpeechTranscriptionVerified": false,
+    "range": {"startFrame": 0, "endFrameExclusive": 243, "fps": 30},
+    "audioEndSeconds": 8.102993,
+    "playbackRate": 1,
+    "preserveOriginalAudio": true,
+    "cropMainSource": false
+  },
+  "sequence": [
+    {"id": "host-opening", "source": "awaiting-host-recording", "anchor": "请给予我包容和支持。", "absoluteFrame": null},
+    {"id": "opening-evidence", "source": "source.path", "startAfter": "host-opening-actual-speech-end", "durationFrames": 243, "hostPictureInPicture": false, "hostNarrationDuringInsert": false},
+    {"id": "host-body", "source": "awaiting-host-recording", "anchor": "我想在兰州，把企业 AI 应用这件事做下去。", "startAfter": "opening-evidence-all-video-and-audio-ended", "absoluteFrame": null}
+  ],
+  "layoutCandidate": {
+    "canvas": {"width": 1920, "height": 1080},
+    "mainSource": {"x": 64, "y": 60, "width": 540, "height": 960, "fit": "contain"},
+    "synchronizedDetail": {
+      "sourceRect": {"x": 60, "y": 280, "width": 960, "height": 240},
+      "destination": {"x": 688, "y": 344, "width": 1056, "height": 264},
+      "frameOffset": 0,
+      "mutedDuplicate": true,
+      "newReadableText": false,
+      "enterAfterSourceFrame": 6,
+      "enterDurationFrames": 8
+    }
+  },
+  "shotcraftOpportunity": {
+    "status": "pending-post-shoot-auto-match",
+    "semanticIntent": "evidence",
+    "materialClass": "screen-recording",
+    "candidateToEvaluate": "evidence-scan",
+    "target": "新闻原标题第三行中的给予包容支持",
+    "sourceRelativeFramesProvisional": [54, 132],
+    "selected": false,
+    "applied": false,
+    "sourceTextIsNotHostTranscript": true,
+    "failurePolicy": "若现行匹配合同不能接受来源文字锚点，保留原画面并报告适配缺口，不伪造口播字幕或绕过验证器"
+  },
+  "preserved": {"originalScript": true, "paperScenes": 5, "paperSeconds": 42, "extraAiRealisticScenes": 0, "bodyPolicyBeat": "B08", "v8SpeakerPackaging": true},
+  "gates": {"actualTranscriptBound": false, "candidateRendered": false, "formalEnabled": false, "publicationEnabled": false}
+}
