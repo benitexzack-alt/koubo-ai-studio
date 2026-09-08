@@ -1,0 +1,598 @@
+{
+  "schemaVersion": "lanzhou-r2-protected-output-comparison/v1",
+  "generatedAt": "2026-09-08T00:42:01.297Z",
+  "status": "requires-review",
+  "oldVideo": {
+    "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+    "sha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4"
+  },
+  "newVideo": {
+    "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+    "sha256": "92cc6930a509a7e9ec498230d03e0c4e1b9bb99db400798caa8dd985afc9dc6a"
+  },
+  "comparisons": [
+    {
+      "id": "NEWS",
+      "from": 69,
+      "frames": 244,
+      "seconds": [
+        2.3,
+        10.433333333333334
+      ],
+      "visual": {
+        "ssim": 1,
+        "pass": true
+      },
+      "audio": {
+        "samples": 65067,
+        "sameSampleCount": true,
+        "correlation": 1,
+        "relativeRmsError": 0,
+        "gainDb": 0,
+        "noTimeShiftApplied": true,
+        "pass": true
+      }
+    },
+    {
+      "id": "P01",
+      "from": 3595,
+      "frames": 240,
+      "seconds": [
+        119.83333333333333,
+        127.83333333333333
+      ],
+      "visual": {
+        "ssim": 0.995467,
+        "pass": true
+      },
+      "audio": {
+        "samples": 64000,
+        "sameSampleCount": true,
+        "correlation": 1,
+        "relativeRmsError": 0,
+        "gainDb": 0,
+        "noTimeShiftApplied": true,
+        "pass": true
+      }
+    },
+    {
+      "id": "P02",
+      "from": 4105,
+      "frames": 283,
+      "seconds": [
+        136.83333333333334,
+        146.26666666666668
+      ],
+      "visual": {
+        "ssim": 0.996554,
+        "pass": true
+      },
+      "audio": {
+        "samples": 75467,
+        "sameSampleCount": true,
+        "correlation": 1,
+        "relativeRmsError": 0,
+        "gainDb": 0,
+        "noTimeShiftApplied": true,
+        "pass": true
+      }
+    },
+    {
+      "id": "P03",
+      "from": 4553,
+      "frames": 240,
+      "seconds": [
+        151.76666666666668,
+        159.76666666666668
+      ],
+      "visual": {
+        "ssim": 0.991832,
+        "pass": false
+      },
+      "audio": {
+        "samples": 64000,
+        "sameSampleCount": true,
+        "correlation": 1,
+        "relativeRmsError": 0,
+        "gainDb": 0,
+        "noTimeShiftApplied": true,
+        "pass": true
+      }
+    },
+    {
+      "id": "P04",
+      "from": 5455,
+      "frames": 240,
+      "seconds": [
+        181.83333333333334,
+        189.83333333333334
+      ],
+      "visual": {
+        "ssim": 0.987809,
+        "pass": false
+      },
+      "audio": {
+        "samples": 64000,
+        "sameSampleCount": true,
+        "correlation": 1,
+        "relativeRmsError": 0,
+        "gainDb": 0,
+        "noTimeShiftApplied": true,
+        "pass": true
+      }
+    },
+    {
+      "id": "P05",
+      "from": 6722,
+      "frames": 283,
+      "seconds": [
+        224.06666666666666,
+        233.5
+      ],
+      "visual": {
+        "ssim": 0.994245,
+        "pass": false
+      },
+      "audio": {
+        "samples": 75467,
+        "sameSampleCount": true,
+        "correlation": 1,
+        "relativeRmsError": 0,
+        "gainDb": 0,
+        "noTimeShiftApplied": true,
+        "pass": true
+      }
+    }
+  ],
+  "commands": [
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-hide_banner",
+        "-nostats",
+        "-ss",
+        "2.3",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-ss",
+        "2.3",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-filter_complex",
+        "[0:v]trim=end_frame=244,setpts=PTS-STARTPTS[a];[1:v]trim=end_frame=244,setpts=PTS-STARTPTS[b];[a][b]ssim",
+        "-t",
+        "8.133333333333333",
+        "-an",
+        "-f",
+        "null",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 171,
+      "stderr": "Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1296 kb/s\n  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 970 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nInput #1, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1314 kb/s\n  Stream #1:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 988 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #1:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nStream mapping:\n  Stream #0:0 (h264) -> trim:default\n  Stream #1:0 (h264) -> trim:default\n  ssim:default -> Stream #0:0 (wrapped_avframe)\nPress [q] to stop, [?] for help\nOutput #0, null, to 'pipe:':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    comment         : Made with Remotion 4.0.484\n    encoder         : Lavf62.12.102\n  Stream #0:0: Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 30 fps, 30 tbn\n    Metadata:\n      encoder         : Lavc62.28.102 wrapped_avframe\n    Side data:\n      ICC Profile: (456 bytes)\n[Parsed_ssim_4 @ 0x143a08ab0] SSIM Y:1.000000 (inf) U:1.000000 (inf) V:1.000000 (inf) All:1.000000 (inf)\n[out#0/null @ 0x1427141e0] video:101KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  244 fps=0.0 q=-0.0 Lsize=N/A time=00:00:08.13 bitrate=N/A speed=90.1x elapsed=0:00:00.09    \n"
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "2.3",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-t",
+        "8.133333333333333",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 44,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "2.3",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-t",
+        "8.133333333333333",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 38,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-hide_banner",
+        "-nostats",
+        "-ss",
+        "119.83333333333333",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-ss",
+        "119.83333333333333",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-filter_complex",
+        "[0:v]trim=end_frame=240,setpts=PTS-STARTPTS[a];[1:v]trim=end_frame=240,setpts=PTS-STARTPTS[b];[a][b]ssim",
+        "-t",
+        "8",
+        "-an",
+        "-f",
+        "null",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 137,
+      "stderr": "Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1296 kb/s\n  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 970 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nInput #1, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1314 kb/s\n  Stream #1:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 988 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #1:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nStream mapping:\n  Stream #0:0 (h264) -> trim:default\n  Stream #1:0 (h264) -> trim:default\n  ssim:default -> Stream #0:0 (wrapped_avframe)\nPress [q] to stop, [?] for help\nOutput #0, null, to 'pipe:':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    comment         : Made with Remotion 4.0.484\n    encoder         : Lavf62.12.102\n  Stream #0:0: Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 30 fps, 30 tbn\n    Metadata:\n      encoder         : Lavc62.28.102 wrapped_avframe\n    Side data:\n      ICC Profile: (456 bytes)\n[Parsed_ssim_4 @ 0x10de0b050] SSIM Y:0.994046 (22.251583) U:0.998066 (27.136146) V:0.998555 (28.402146) All:0.995467 (23.436429)\n[out#0/null @ 0x12de04620] video:99KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  240 fps=0.0 q=-0.0 Lsize=N/A time=00:00:08.00 bitrate=N/A speed=77.7x elapsed=0:00:00.10    \n"
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "119.83333333333333",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-t",
+        "8",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 39,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "119.83333333333333",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-t",
+        "8",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 39,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-hide_banner",
+        "-nostats",
+        "-ss",
+        "136.83333333333334",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-ss",
+        "136.83333333333334",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-filter_complex",
+        "[0:v]trim=end_frame=283,setpts=PTS-STARTPTS[a];[1:v]trim=end_frame=283,setpts=PTS-STARTPTS[b];[a][b]ssim",
+        "-t",
+        "9.433333333333334",
+        "-an",
+        "-f",
+        "null",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 162,
+      "stderr": "Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1296 kb/s\n  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 970 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nInput #1, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1314 kb/s\n  Stream #1:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 988 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #1:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nStream mapping:\n  Stream #0:0 (h264) -> trim:default\n  Stream #1:0 (h264) -> trim:default\n  ssim:default -> Stream #0:0 (wrapped_avframe)\nPress [q] to stop, [?] for help\nOutput #0, null, to 'pipe:':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    comment         : Made with Remotion 4.0.484\n    encoder         : Lavf62.12.102\n  Stream #0:0: Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 30 fps, 30 tbn\n    Metadata:\n      encoder         : Lavc62.28.102 wrapped_avframe\n    Side data:\n      ICC Profile: (456 bytes)\n[Parsed_ssim_4 @ 0x103d05410] SSIM Y:0.995483 (23.451795) U:0.998641 (28.668634) V:0.998748 (29.024076) All:0.996554 (24.626537)\n[out#0/null @ 0x132604650] video:117KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  283 fps=0.0 q=-0.0 Lsize=N/A time=00:00:09.43 bitrate=N/A speed=74.3x elapsed=0:00:00.12    \n"
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "136.83333333333334",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-t",
+        "9.433333333333334",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 42,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "136.83333333333334",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-t",
+        "9.433333333333334",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 41,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-hide_banner",
+        "-nostats",
+        "-ss",
+        "151.76666666666668",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-ss",
+        "151.76666666666668",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-filter_complex",
+        "[0:v]trim=end_frame=240,setpts=PTS-STARTPTS[a];[1:v]trim=end_frame=240,setpts=PTS-STARTPTS[b];[a][b]ssim",
+        "-t",
+        "8",
+        "-an",
+        "-f",
+        "null",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 139,
+      "stderr": "Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1296 kb/s\n  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 970 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nInput #1, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1314 kb/s\n  Stream #1:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 988 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #1:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nStream mapping:\n  Stream #0:0 (h264) -> trim:default\n  Stream #1:0 (h264) -> trim:default\n  ssim:default -> Stream #0:0 (wrapped_avframe)\nPress [q] to stop, [?] for help\nOutput #0, null, to 'pipe:':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    comment         : Made with Remotion 4.0.484\n    encoder         : Lavf62.12.102\n  Stream #0:0: Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 30 fps, 30 tbn\n    Metadata:\n      encoder         : Lavc62.28.102 wrapped_avframe\n    Side data:\n      ICC Profile: (456 bytes)\n[Parsed_ssim_4 @ 0x119e054b0] SSIM Y:0.989062 (19.610760) U:0.997150 (25.451653) V:0.997594 (26.186281) All:0.991832 (20.878936)\n[out#0/null @ 0x12b0044c0] video:99KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  240 fps=0.0 q=-0.0 Lsize=N/A time=00:00:08.00 bitrate=N/A speed=77.1x elapsed=0:00:00.10    \n"
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "151.76666666666668",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-t",
+        "8",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 38,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "151.76666666666668",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-t",
+        "8",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 38,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-hide_banner",
+        "-nostats",
+        "-ss",
+        "181.83333333333334",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-ss",
+        "181.83333333333334",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-filter_complex",
+        "[0:v]trim=end_frame=240,setpts=PTS-STARTPTS[a];[1:v]trim=end_frame=240,setpts=PTS-STARTPTS[b];[a][b]ssim",
+        "-t",
+        "8",
+        "-an",
+        "-f",
+        "null",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 147,
+      "stderr": "Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1296 kb/s\n  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 970 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nInput #1, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1314 kb/s\n  Stream #1:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 988 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #1:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nStream mapping:\n  Stream #0:0 (h264) -> trim:default\n  Stream #1:0 (h264) -> trim:default\n  ssim:default -> Stream #0:0 (wrapped_avframe)\nPress [q] to stop, [?] for help\nOutput #0, null, to 'pipe:':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    comment         : Made with Remotion 4.0.484\n    encoder         : Lavf62.12.102\n  Stream #0:0: Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 30 fps, 30 tbn\n    Metadata:\n      encoder         : Lavc62.28.102 wrapped_avframe\n    Side data:\n      ICC Profile: (456 bytes)\n[Parsed_ssim_4 @ 0x121f1d690] SSIM Y:0.984853 (18.196793) U:0.993366 (21.781936) V:0.994076 (22.274103) All:0.987809 (19.139648)\n[out#0/null @ 0x121f05570] video:99KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  240 fps=0.0 q=-0.0 Lsize=N/A time=00:00:08.00 bitrate=N/A speed=  72x elapsed=0:00:00.11    \n"
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "181.83333333333334",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-t",
+        "8",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 42,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "181.83333333333334",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-t",
+        "8",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 42,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-hide_banner",
+        "-nostats",
+        "-ss",
+        "224.06666666666666",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-ss",
+        "224.06666666666666",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-filter_complex",
+        "[0:v]trim=end_frame=283,setpts=PTS-STARTPTS[a];[1:v]trim=end_frame=283,setpts=PTS-STARTPTS[b];[a][b]ssim",
+        "-t",
+        "9.433333333333334",
+        "-an",
+        "-f",
+        "null",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 175,
+      "stderr": "Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1296 kb/s\n  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 970 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nInput #1, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    encoder         : Lavf61.7.100\n    comment         : Made with Remotion 4.0.484\n  Duration: 00:04:39.83, start: 0.000000, bitrate: 1314 kb/s\n  Stream #1:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], 988 kb/s, 30 fps, 30 tbr, 90k tbn (default)\n    Metadata:\n      handler_name    : VideoHandler\n      encoder         : Lavc61.19.100 libx264\n    Side data:\n      ICC Profile: (456 bytes)\n  Stream #1:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s (default)\n    Metadata:\n      handler_name    : SoundHandler\nStream mapping:\n  Stream #0:0 (h264) -> trim:default\n  Stream #1:0 (h264) -> trim:default\n  ssim:default -> Stream #0:0 (wrapped_avframe)\nPress [q] to stop, [?] for help\nOutput #0, null, to 'pipe:':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2avc1mp41\n    comment         : Made with Remotion 4.0.484\n    encoder         : Lavf62.12.102\n  Stream #0:0: Video: wrapped_avframe, yuvj420p(pc, bt470bg/unknown/unknown, progressive), 960x540 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 30 fps, 30 tbn\n    Metadata:\n      encoder         : Lavc62.28.102 wrapped_avframe\n    Side data:\n      ICC Profile: (456 bytes)\n[Parsed_ssim_4 @ 0x101d069e0] SSIM Y:0.992910 (21.493425) U:0.996733 (24.858704) V:0.997096 (25.369561) All:0.994245 (22.399307)\n[out#0/null @ 0x101c07b20] video:117KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  283 fps=0.0 q=-0.0 Lsize=N/A time=00:00:09.43 bitrate=N/A speed=67.4x elapsed=0:00:00.13    \n"
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "224.06666666666666",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r1/render/with-sfx-960x540.mp4",
+        "-t",
+        "9.433333333333334",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 42,
+      "stderr": ""
+    },
+    {
+      "executable": "/opt/homebrew/bin/ffmpeg",
+      "args": [
+        "-v",
+        "error",
+        "-ss",
+        "224.06666666666666",
+        "-i",
+        "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+        "-t",
+        "9.433333333333334",
+        "-vn",
+        "-ac",
+        "1",
+        "-ar",
+        "8000",
+        "-f",
+        "f32le",
+        "-"
+      ],
+      "exitCode": 0,
+      "elapsedMs": 40,
+      "stderr": ""
+    }
+  ],
+  "sourceDefectsReclassifiedAsPass": false,
+  "evidenceScope": "对两版已输出文件的6个保护区间做全区间SSIM及同时间PCM对照；证明版本间一致性，不证明原有源动画语义正确或P03原声清晰可闻。",
+  "humanListeningPerformed": false,
+  "userPreviewApproved": false,
+  "formalEnabled": false
+}

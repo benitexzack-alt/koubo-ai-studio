@@ -1,0 +1,136 @@
+{
+  "schemaVersion": "candidate-r2-independent-generation-delta/v3",
+  "checkedAt": "2026-09-08T00:23:59.739Z",
+  "status": "delta-checks-passed",
+  "requestIntentSha256": "1452a3820d3a14dd3c1b893cb1b84a12671568d7a1e958485b4a538f736b5270",
+  "runtimeSha256": "f0649c76836fec6059a3757bd42d50e6a4104877873609cc9a2f3410c3ae5597",
+  "captures": [
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/request.v3.json",
+      "sha256": "6368734e4dfa61be2a87bda3c325182b18a67c15b48df1b9fb5d53d5b5f512bd"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/runtime-snapshot.v3.json",
+      "sha256": "e55bb798f1ae4f63b79aa12a0c859909e6b77979a65e1247d1119f20d0178f07"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/still-coverage.v3.json",
+      "sha256": "7ceb8df4ff4fee8c4ed89b323de6151c3f9ec00a2b9d0589335d2c8177d4c425"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/review-request-intent.v3.json",
+      "sha256": "3cdf307495482981ee404f9450a73dc3243928bd86f440cff5d87df3f203f7e6"
+    }
+  ],
+  "bindingDelta": [
+    {
+      "before": {
+        "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/context/context-binding.v2.json",
+        "sha256": "cf14bafe500ab1b8a58de554c7afc3da476d3a1585adcfb4581ab9cff3fc8501"
+      },
+      "after": {
+        "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/context/context-binding.v3.json",
+        "sha256": "a926883e8d3fb9031a9ec528fb08b1931a2f66f0502e49615de5f1b21dc158c2"
+      }
+    },
+    {
+      "before": {
+        "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/still-coverage.v2.json",
+        "sha256": "7ceb8df4ff4fee8c4ed89b323de6151c3f9ec00a2b9d0589335d2c8177d4c425"
+      },
+      "after": {
+        "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/still-coverage.v3.json",
+        "sha256": "7ceb8df4ff4fee8c4ed89b323de6151c3f9ec00a2b9d0589335d2c8177d4c425"
+      }
+    }
+  ],
+  "boundInputCount": 51,
+  "unchangedSamePathBindings": 49,
+  "coverageBytesUnchanged": true,
+  "contextBinding": {
+    "taskId": "opc-task-20260908-lanzhou-candidate-preview-r2-context-v3",
+    "contextPath": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260908-lanzhou-candidate-preview-r2-context-v3/context.json",
+    "sha256": "09610a604896763181f6f66f1bb684b4044de7488ce81d55792d7710f88a2838"
+  },
+  "contextStatus": "context-valid",
+  "priorValidateExitCode": 0,
+  "contextFreshnessHashesCurrent": true,
+  "runtimeCaptureCommand": "node prepare-request.v1.mjs v3 v3 --capture",
+  "runtimeFiles": 10861,
+  "runtimeVerifiedByCurrentCapture": true,
+  "secondFullRuntimeCollectionPerformed": false,
+  "inheritedReview": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/independent-review.v2.json",
+    "sha256": "4f7f2a1f3a9bd8b631fffda3a731039dab5a1eb9f81b989698a3ef3fe081df62"
+  },
+  "inheritedMachineEvidence": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/independent-review.delta-check.v2.json",
+    "sha256": "4b50b747e2d5861c0c5ebaf919945c71d30f5830694c2dd69366cd72fdd6c7dd"
+  },
+  "sourceVisualPublicSfxUnchanged": true,
+  "stillHashCount": 62,
+  "stillImagesReopened": false,
+  "stillsRerendered": false,
+  "priorP2": [
+    {
+      "id": "MARKER_PUNCTUATION_WRAP",
+      "description": "个别长马克笔句出现独立标点行或短尾行（如6360帧）；文字完整、无重叠，但排版仍可改进。"
+    }
+  ],
+  "unresolvedAsrItems": 13,
+  "acceptedPaperExceptions": [
+    {
+      "sceneId": "P01",
+      "sha256": "05c9b4b23659dae804111b5cfb53a8be5ca463e7c87961f9623ce26d5e43a2f2",
+      "seconds": [
+        4.5,
+        6
+      ],
+      "defect": "作废资料也流向知识库，与只整理有效资料的原意不一致。",
+      "disposition": "本条按用户决定保留；不是语义检查通过。"
+    },
+    {
+      "sceneId": "P02",
+      "sha256": "d09074f2132c21438343ec39c2a53c9a2f72561466db88096a3a5599bf8b6aef",
+      "defect": "确认因果先后不够清楚，底部纸片进入原规划字幕保留区，最终字幕遮挡仍须检查。",
+      "disposition": "接受源片既有瑕疵；不豁免合成新增遮挡。"
+    },
+    {
+      "sceneId": "P03",
+      "sha256": "c237f8901f509d1a865725c50ada9b02d413605710dfa3d37b58c20c9e88d623",
+      "seconds": [
+        4,
+        5
+      ],
+      "defect": "运动纸片短时遮住实际试用标签。",
+      "disposition": "本条保留，不能记为文字全程可读。"
+    },
+    {
+      "sceneId": "P04",
+      "sha256": "95f74224a778a1d9ce5115ebc97ffbe432a00384281f0347aafce30b808c757f",
+      "seconds": [
+        2,
+        3.5
+      ],
+      "defect": "服务哪些地方标签随展开变形，不符合原刚性牌约束。",
+      "disposition": "本条保留原画面。"
+    },
+    {
+      "sceneId": "P05",
+      "sha256": "b96c2e7da8dbf382916523ef0553196fd9b1ad014d1057888af33365469e2c15",
+      "seconds": [
+        2,
+        3
+      ],
+      "defect": "资料和权限标签短时消失后返回。",
+      "disposition": "本条保留，不伪造连续可见或OCR全通过。"
+    }
+  ],
+  "fullDynamicReviewPerformed": false,
+  "humanListeningPerformed": false,
+  "formalEnabled": false,
+  "productionEligible": false,
+  "publishAuthorized": false,
+  "requestModified": false,
+  "reviewShaBound": false
+}

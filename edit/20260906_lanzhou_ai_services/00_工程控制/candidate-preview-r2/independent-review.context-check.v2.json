@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "candidate-r2-readonly-context-blocker/v1",
+  "command": [
+    "python3",
+    "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/runtime/knowledge-readonly.py",
+    "--context",
+    "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260908-lanzhou-candidate-preview-r2-context-v2/context.json",
+    "--context-sha256",
+    "74e4b8b8040bb9a4ea54bcf5bca6518334cbce0e3a326c4b78926662c96b184a"
+  ],
+  "workingDirectory": "/Users/pc/Documents/口播",
+  "executionEvidence": "本轮exec_command真实返回，耗时0.718077042秒；以下为结构化摘录，非伪造完整stdout。",
+  "exitCode": 1,
+  "status": "blocked-context-stale",
+  "problems": [{"code": "index-not-current", "status": "stale"}],
+  "gate": {"formal_execution_allowed": false},
+  "changedFile": {
+    "path": "/Users/pc/Documents/个人知识库/06_每日复盘/2026-09-08.md",
+    "boundSha256": "0ffb072405ec78587150c05be8fd8f4ace0ab70ccd2a7ffdbbbddfe8a257cdfa",
+    "currentSha256": "31210731bd3185c64d059152dabfbd698f3b2efdfd35efcb32eab9db7ff6a45b",
+    "modifiedAtLocal": "2026-09-08 08:02:31 +0800",
+    "bytes": 20522,
+    "writerTaskId": null,
+    "attribution": "本worker未写日结；末48行未出现能确认08:02写入者的新署名，不沿用07:19监督追加的身份归因。"
+  },
+  "newContextStartPerformed": false,
+  "sharedToolsModified": false,
+  "formalEnabled": false
+}

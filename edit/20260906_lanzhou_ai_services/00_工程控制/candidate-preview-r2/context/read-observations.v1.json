@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "candidate-r2-incremental-observations/v1",
+  "status": "frozen-input-incremental-read-complete",
+  "note": "只记录本轮实际读到的范围，不把截断输出登记为全文。冻结前读过不等于最终输入已经冻结；SHA变化必须补读差异。",
+  "observations": [
+    {
+      "path": "edit/20260906_lanzhou_ai_services/README_先看这里.md",
+      "sha256": "3b60630debcb9267ddc1ba79432484a955839bc1a9441bf040da96ea3c369a96",
+      "read_completed_at": "2026-09-07T22:58:40.213Z",
+      "read_scope": "全文工具输出读取，随后核对当前SHA；R1历史交付与后续授权边界。",
+      "application_note": "只采用已生成R1小样、五段保留、13项识别疑点、待用户观看的状态；不改README，不把历史小样晋级为正式成片。"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/permission.v1.json",
+      "sha256": "b21ac969939553edc46f80acddde8faea595bb07a583b89be81273f4d893fa2e",
+      "read_completed_at": "2026-09-07T22:58:40.213Z",
+      "read_scope": "全文工具输出读取，随后核对当前SHA；含原话、五段纸艺SHA与例外、保留源文件、全部授权布尔值。",
+      "application_note": "仅工信部文件放大、左上字级和音效调整的本地960x540候选；formal和发布保持false。当前publicDir仍为R1且附加音效为空，必须等待父任务更新后差异读取，不能据此启动。"
+    },
+    {
+      "path": "remotion/src/lanzhou-services-v91-candidate-r2/index.tsx",
+      "sha256": "aec78fb65aafaa11b0bcbe5e761c643c5354e0c24cd546d30cdd9c75a39ad8ee",
+      "read_completed_at": "2026-09-07T22:58:40.213Z",
+      "read_scope": "全文6行工具输出读取，随后核对当前SHA。",
+      "application_note": "只注册R2候选Composition，1920x1080、30fps、8393帧；不复用R1入口或正式job身份。"
+    },
+    {
+      "path": "remotion/src/lanzhou-services-v91-candidate-r2/LanzhouServicesCandidate.tsx",
+      "sha256": "285b48c2444a0a6e45897b08500660130439cc165f6a9a1e263ff84b3c21774b",
+      "read_completed_at": "2026-09-07T22:58:40.213Z",
+      "read_scope": "全文工具输出读取，随后核对当前SHA；局部字级覆盖、新闻、官方两阶段、全部Sequence和音频消费。",
+      "application_note": "确认data仍只读R1，host/news/paper为1/0.62/0.1；新音效消费源偏移、实际时长和尾淡出。官方摘录与实录label分开，父任务仍在收紧输入，源码读取不等于画面或试听通过。"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/sfx-plan.v1.json",
+      "sha256": "c0f98c61533711c2d6af7b9f00bb8961f79ba927112523db487dc7d01c80d46f",
+      "read_completed_at": "2026-09-07T22:57:52.313Z",
+      "read_scope": "无截断结构化读取26条cue的ID、帧、时长、文件、增益、源偏移、淡出、visualId、短语、词帧及疑点；完整源声增益、6个保护区、visualSource、最终混音/试听边界。另读noCue原因、9项资产出处；不声明逐词证据全文或试听。",
+      "application_note": "26新卡点0.26至0.36，替换R1附加声但不改原声；新闻及5纸艺禁止新增SFX。当前selection绑定仍指v1且generatedVisual待复核，冻结后须补差异；13项ASR、P03原声偏轻与用户试听仍待核。"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/output-selection.derived.v2.json",
+      "sha256": "bf067945ca2fd01bae6a83b1cb5633cbe9219cbb90561a0c611740dc42c18c9e",
+      "read_completed_at": "2026-09-07T22:58:18.948Z",
+      "read_scope": "结构化读取34条beat的ID、主视觉、帧窗与决策，全部15项apply的文字、quote、region、componentProps、implementationProps；v2变化与真实状态。未重读matchContext候选评分及继承的逐词嵌套证据。",
+      "application_note": "保留R1的15个效果帧窗与逐项atFrame；c017/c018实录label恢复且口播前缀仅R2局部CSS，不假称共享库新能力、正式绑定或动态验收。"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/evidence-layout-plan.v1.json",
+      "sha256": "f7f2ecf4cdd7571fa13ccb988deb9d020e88c44d202dc2fc5b0dfc92af9a4418",
+      "read_completed_at": "2026-09-07T22:58:19.049Z",
+      "read_scope": "无截断结构化读取authority、timeline、全部字级合同、官方帧窗/区域/8项原文标识、7行文字/来源/时点/尺寸/关系、2506内部阶段转换、两处效果框、newsOpening与handoff。未重新抓取官方网页或复查整个157卡目录。",
+      "application_note": "正文官方通知与开头新闻标题分开；未说出的FDE与保障场景落地仅为官方摘录，不补进字幕。官方展示2336至2614帧、2506焦点转换，真实画面可读性留待父任务静帧验收。"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/permission.v1.json",
+      "sha256": "8a7507e8b8ba6d2ed710527413cc816dd64560dffc405ab240cb61fe47323398",
+      "read_completed_at": "2026-09-07T23:04:18.507Z",
+      "read_scope": "冻结后结构化补读完整scope、9项approvedAdditionalPublicSfx及其原话、preservedInputs、正式/发布/用户验收布尔值与纸艺例外边界；其余沿用本轮先前全文读取，不声明重新全文听验。",
+      "application_note": "publicDir现为独立R2，9个既有SFX有逐项路径和SHA；仍仅960x540本地小样，原片字幕不动、五段纸艺例外不扩张，formal/productionEligible/publishAuthorized/userPreviewApproved保持false。"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/public-assets.v1.json",
+      "sha256": "fdbad4b12e37198c0ab8be1f56b6da66181abfd89ec53efae48f8268cdeff1c1",
+      "read_completed_at": "2026-09-07T23:05:10.985Z",
+      "read_scope": "全部JSON字段无截断读取，含22项source/publicPath/SHA/bytes/method及9项历史许可证和素材清单引用；另实际核验22项同dev/ino、非symlink、长度和当前文件SHA。",
+      "application_note": "确认独立R2目录为13个R1保留资产加9个既有SFX的硬链接，字节不变。硬链接增加link count不等于修改源内容，禁止写入这些素材；清单不是最终混音时点或试听验收。"
+    },
+    {
+      "path": "remotion/src/lanzhou-services-v91-candidate-r2/visual-plan.v1.json",
+      "sha256": "dd95136822b70db50db78290700b105a2f4445711f86c9074c5cfc7b420e47b0",
+      "read_completed_at": "2026-09-07T23:05:10.985Z",
+      "read_scope": "全部36项semantic与15项effects完整字段无截断读取；全部非sfx顶层字段（sfxPlan另读路径和SHA）；26项sfx实际消费字段及visualId/短语/词帧/疑点结构化读取。程序深比较visual.sfx与已绑定sfx-plan.cues完全一致，不冒充逐词嵌套证据全文阅读。",
+      "application_note": "绑定最终R2入口消费JSON及selection v2；保留R1 data/实录与15处原效果时点，核对字级和官方关键帧。26个音效cue与独立计划一致、不落新闻及五纸艺保护区；正式授权及用户试听仍为false。"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/sfx-plan.v1.json",
+      "sha256": "6fe44d29faeb234d44d9c89c76e66d5a14407789065714fc832eaeb88f0b00c5",
+      "read_completed_at": "2026-09-07T23:05:10.985Z",
+      "read_scope": "冻结后补读visualSource的prepareVisual与selection v2路径/SHA、完整validation及源声增益；26项cue的全部消费字段、visualId、短语、词帧和疑点无截断读取；最终混音/试听边界与13项待核保留。未声明完整逐词阅读或人耳试听。",
+      "application_note": "selection现绑定v2，visualPlan反向绑定本文件当前SHA，26条cue深比较一致；源声1/0.62/0.1不变，新cue增益0.26至0.36且避开保护区。r2GeneratedVisualRevalidationPending字段保留原始状态，实际静态一致性证据另存本回执，不改父输入或假称动态验收。"
+    }
+  ]
+}

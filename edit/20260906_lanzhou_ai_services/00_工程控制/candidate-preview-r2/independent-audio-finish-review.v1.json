@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "lanzhou-r2-independent-audio-finish-plan-review/v1",
+  "episodeId": "20260906_lanzhou_ai_services",
+  "revisionId": "20260907-lanzhou-services-candidate-preview-r2",
+  "reviewedAt": "2026-09-08T00:43:42.693Z",
+  "reviewerId": "independent-context-reviewer-r2-resumed",
+  "implementerId": "parent-r2-visual-public-runner",
+  "decision": "allow-one-local-audio-finish-pending-measured-qa",
+  "scope": "只允许将本回执SHA绑定的R2低清raw现有完整混音统一衰减0.3dB并重编码AAC 320k；视频流直接复制到R2新audio-finish文件。不授权执行本轮审查者渲染，不授权改画面、源码、全局门禁或正式生产。",
+  "input": {
+    "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+    "sha256": "92cc6930a509a7e9ec498230d03e0c4e1b9bb99db400798caa8dd985afc9dc6a",
+    "actualShaVerified": true,
+    "video": {"width": 960, "height": 540, "fps": "30/1", "frames": 8393, "durationSeconds": "279.766667", "codec": "h264"},
+    "audio": {"codec": "aac", "sampleRate": 48000, "channels": 2, "startSeconds": "0.000000", "durationSeconds": "279.829333"}
+  },
+  "renderReceipt": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/receipt.json",
+    "sha256": "5d8781bfdefc8768d0b5cfcac133654c5ec8ac5a99b12f6e04485fed853c8138",
+    "postRenderContextStatus": "context-valid"
+  },
+  "rawQa": {
+    "path": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/qa/candidate-machine-qa.v1.json",
+    "sha256": "81c94887e2033faa2ec9c6395b80765061893e1b8ea779ac0c67dbdf75bb3d5e",
+    "status": "technical-review-required",
+    "onlyFailedCheck": "truePeakHeadroom",
+    "loudnessLufs": -15.9,
+    "truePeakDbFS": -0.9,
+    "existingMaximumTruePeakDbFS": -1.0,
+    "decodeBlackFreezeLongSilenceChecksPassed": true,
+    "mustPreserveFailedResult": true
+  },
+  "allowedOperation": {
+    "attempts": 1,
+    "localOnly": true,
+    "outputRoot": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/audio-finish",
+    "overwrite": false,
+    "videoCodec": "copy",
+    "audioFilter": "volume=-0.3dB:precision=double",
+    "gainDb": -0.3,
+    "gainLinear": 0.9660508789898133,
+    "audioCodec": "aac",
+    "audioBitrate": "320k",
+    "preserveSampleRateAndChannels": true,
+    "streamMaps": ["0:v:0", "0:a:0"],
+    "ffmpeg": {"path": "/opt/homebrew/bin/ffmpeg", "sha256": "329fa7360b28a067a0cd7281474bb18cd868932d5173646a674466bcb56d6e93", "volumeFilterHelpActuallyChecked": true},
+    "forbidden": ["-y", "-shortest", "-ss", "-t", "-to", "audio-trim-or-pad", "audio-resampling", "channel-remix", "limiter-or-compressor", "loudness-normalization", "per-source-or-per-cue-gain-change", "video-filter-or-reencode", "frame-rate-change", "new-material", "external-network", "overwrite-raw-or-old-qa"]
+  },
+  "requiredChecks": [
+    {"id": "provenance", "must": "执行前后复核raw/receipt/旧QA的当前SHA不变；记录新文件SHA、完整命令、ffmpeg身份、开始结束时间及真实exit。新文件通过自己的派生链回执关联raw，不改原render/receipt冒充受控原始渲染。"},
+    {"id": "context", "must": "执行前后使用现有固定只读wrapper验证v3 context；失败即停止，不修改校验器、不重建索引或循环重试。"},
+    {"id": "decode", "must": "新文件probe及完整音视频解码均exit 0，规格仍960x540、30fps、8393帧、H.264及48kHz双声道AAC；不得用文件存在或旧raw QA代替。"},
+    {"id": "video-identity", "must": "对raw与新文件比较视频码流/packet payload SHA及按时间基归一的PTS/DTS/duration，再比较全部8393帧的解码帧hash与顺序；容器总SHA变化不等于画面变化。任何帧、显示时间或颜色/旋转等呈现元数据差异阻断。"},
+    {"id": "audio-integrity", "must": "比较首尾时间、有效解码样本和AAC priming/skip_samples/discard_padding；保持整个raw音轨，不能将其比视频长约63ms的尾部直接截掉。编码填充差异须由元数据及解码对齐解释，任何无法解释的时移、缺样或内容裁切阻断。"},
+    {"id": "gain", "must": "记录唯一全局线性volume滤镜，无单轨/单cue变更；按时间戳和编码延迟对齐后，复核全段及已有host/news/5纸艺/26cue时间窗的有效信号RMS或最小二乘增益，相对变化应接近-0.3dB。容差与低能量窗口排除规则须先记录，异常不得靠事后放宽掩盖；不能从混合音频声称已独立分离验证各音源。"},
+    {"id": "final-true-peak", "must": "对最终AAC解码后的完整输出重跑ebur128真峰值和响度测量，实际TP必须满足既有<=-1.0dBFS阈值；不以线性推算-1.2或修改阈值代替，不把显示舍入值当更高精度证据。结果或测量异常即保留失败并报告，不自动再衰减。"},
+    {"id": "signal-regression", "must": "新文件复检黑场、冻结和长静音，记录真实出口；审查音频首尾及原长静音检测的尾部未闭合事件，不将解析遗漏记为通过。视频逐帧一致时沿用既有62帧视觉结论，不重复看图。"},
+    {"id": "delivery", "must": "仅全部必要技术检查通过后标记低清候选待用户审阅；完整动态与正常速度听感未实际执行不得写已验收。原raw和失败QA保持原样。"}
+  ],
+  "encodingCaveat": "AAC重编码后的PCM不可能据本方案声明逐样本无损相同；统一-0.3dB保证的是编码前的混音相对比例和时点不被主动修改，最终峰值、延迟及感知质量仍须实测。",
+  "retainedIssues": {"nonBlockingP2": "MARKER_PUNCTUATION_WRAP", "unresolvedAsrItems": 13, "acceptedPaperSourceExceptions": 5, "sourceExceptionsCountAsQaPassed": false, "exceptionInheritance": "forbidden-other-episodes-or-assets"},
+  "contextBinding": {
+    "taskId": "opc-task-20260908-lanzhou-candidate-preview-r2-context-v3",
+    "contextPath": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260908-lanzhou-candidate-preview-r2-context-v3/context.json",
+    "sha256": "09610a604896763181f6f66f1bb684b4044de7488ce81d55792d7710f88a2838"
+  },
+  "planReviewOnly": true,
+  "finishExecutedByReviewer": false,
+  "finalPeakVerified": false,
+  "humanListeningPerformed": false,
+  "userPreviewApproved": false,
+  "formalEnabled": false,
+  "formalRequiresSeparateExplicitUserAuthorization": true,
+  "productionEligible": false,
+  "cryptographicProductionAuthorization": false,
+  "publishAuthorized": false
+}

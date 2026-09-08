@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "koubo-lanzhou-candidate-code-review/v1",
+  "episodeId": "20260906_lanzhou_ai_services",
+  "revisionId": "20260907-lanzhou-services-candidate-preview-r2",
+  "decision": "allow-candidate-preview",
+  "reviewerId": "independent-context-reviewer-r2-resumed",
+  "implementerId": "parent-r2-visual-public-runner",
+  "requestIntentSha256": "eda2ae3ffe2b17c24ced57fdcca412a6e76394131fb9596a9963b515074d733a",
+  "runtimeSha256": "f0649c76836fec6059a3757bd42d50e6a4104877873609cc9a2f3410c3ae5597",
+  "reviewedAt": "2026-09-07T23:10:09.427Z",
+  "expiresAt": "2026-09-08T11:10:09.427Z",
+  "evidence": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/independent-review.evidence.v1.md",
+    "sha256": "d47d2f81b1866e252f002c0411443544ef160f114db5bb656386591c4538b9b8"
+  },
+  "quote": "结论：R2冻结输入静态复核通过，仅允许本地低清候选preflight/stills；不代表画面、动态、人耳、正式成片或公开发布验收，render仍须先经父任务静帧审阅。",
+  "allowedCommands": [
+    "preflight",
+    "stills"
+  ],
+  "allowedCommandsRuntimeEnforced": false,
+  "fullRenderPendingParentStillReview": true,
+  "cryptographicProductionAuthorization": false,
+  "formalEnabled": false,
+  "productionEligible": false,
+  "userPreviewApproved": false,
+  "publishAuthorized": false,
+  "visualReviewPassed": false,
+  "audibleContentVerified": false,
+  "openP0P1": [],
+  "scope": "本次冻结R2输入、request、runtime、context与26音效静态绑定；不重审历史研究。",
+  "machineEvidence": {
+    "path": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/context/independent-input-check.v1.json",
+    "sha256": "00845579778655007ff9cb59918192d421b5fa2739661e68e033178dd3067adc",
+    "exitCode": 0
+  },
+  "requestFileSha256BeforeParentBinding": "d14dc26ca058cdcbbf354d87c479b1a9a75da019ba8d3fb1b0aee1ed7365d0e5",
+  "pendingHumanReview": {
+    "plannedStillFrames": 62,
+    "unresolvedAsrItems": 13,
+    "acceptedPaperExceptions": 5,
+    "normalSpeedListeningPerformed": false
+  },
+  "nonBlockingBoundary": "当前runner不强制过滤review.allowedCommands；此回执只支持父任务随后preflight/stills，不能代替父静帧审阅或自动放行render。"
+}

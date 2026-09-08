@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "R2-director-selection-validation-execution/v1",
+  "generatedAt": "2026-09-07T17:08:33.721Z",
+  "executable": "/Users/pc/.local/node-v22.22.3-darwin-arm64/bin/node",
+  "args": [
+    "skills/koubo-shotcraft-library/scripts/validate-director-selection.mjs",
+    "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/output-selection.derived.v1.json",
+    "/Users/pc/Documents/口播"
+  ],
+  "exit": 1,
+  "error": null,
+  "result": {
+    "status": "blocked",
+    "selectionSha256": "7dbd890a825e54c72b83380781881551e800129cc7838a40f59c9b6087371ea6",
+    "applyCount": 15,
+    "notNeededCount": 19,
+    "errors": [
+      "SHOTCRAFT_COMPONENT_PROPS_INVALID:output-c017",
+      "SHOTCRAFT_COMPONENT_PROPS_INVALID:output-c018"
+    ]
+  },
+  "selection": {
+    "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/output-selection.derived.v1.json",
+    "sha256": "7dbd890a825e54c72b83380781881551e800129cc7838a40f59c9b6087371ea6"
+  },
+  "semanticScope": "selection-contract-only-not-render-or-audio-qa",
+  "formal": false
+}

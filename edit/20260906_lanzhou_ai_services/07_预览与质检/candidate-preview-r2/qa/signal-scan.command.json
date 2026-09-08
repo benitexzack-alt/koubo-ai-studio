@@ -1,0 +1,19 @@
+{
+  "tool": "/opt/homebrew/bin/ffmpeg",
+  "args": [
+    "-hide_banner",
+    "-nostats",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+    "-vf",
+    "blackdetect=d=0.2:pix_th=0.1,freezedetect=n=-50dB:d=2",
+    "-af",
+    "silencedetect=noise=-50dB:d=2,ebur128=peak=true",
+    "-f",
+    "null",
+    "-"
+  ],
+  "exitCode": 0,
+  "elapsedMs": 3679,
+  "error": null
+}

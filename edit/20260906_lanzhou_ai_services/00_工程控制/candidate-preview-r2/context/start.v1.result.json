@@ -1,0 +1,1097 @@
+{
+  "schema_version": "opc-task-context/1.0",
+  "status": "context-ready",
+  "summary": "任务级项目上下文与读取回执已就绪",
+  "task": {
+    "id": "opc-task-20260908-lanzhou-candidate-preview-r2-context-v1",
+    "project": "口播",
+    "objective": "20260906_lanzhou_ai_services R2低清候选：只修R1官方文件/左上文字大小及音效。R1未变SHA读取复用，R2增量实读；完整实录保留，五段纸艺本条例外及13项ASR待核不变。formal=false，不渲染、不发布、不写日结；等待父request独立复核。",
+    "cwd": "/Users/pc/Documents/口播",
+    "important": true,
+    "external_action": false
+  },
+  "project_route": {
+    "project_id": "koubo",
+    "project_root": "/Users/pc/Documents/口播",
+    "match_status": "matched",
+    "execution_scope": {
+      "primary_project_id": "koubo",
+      "primary_project_root": "/Users/pc/Documents/口播",
+      "primary_access_mode": "task-scoped-read-write",
+      "write_allowed_roots": [
+        "/Users/pc/Documents/口播"
+      ],
+      "read_only_roots": [],
+      "related_project_rule": "关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。",
+      "write_escalation_rule": "确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。"
+    }
+  },
+  "index_freshness": {
+    "schema_version": "opc-rag-freshness/1.0",
+    "status": "current",
+    "summary": "检索前索引已与当前安全候选保持一致",
+    "before_status": "stale",
+    "updated": true,
+    "update_attempts": 1,
+    "full_rebuild": false,
+    "changed_documents": 1,
+    "removed_documents": 0,
+    "generation": {
+      "manifest_sha256": "f54850e463d1eb9ba75c5b43ed51de6ae1548f16b756b51a01a2db4607dcbd1d",
+      "config_sha256": "7d80e391da915c1f4363776317039cad5b742609403f0a671c1ffb0fbc4e500d",
+      "embedding_model": "nomic-embed-text:latest",
+      "indexed_at": "2026-09-07T23:06:17.891385+00:00",
+      "database_sha256": "bc814c39feae038bc4c1ce11cfb60d13ae99d2dbb1a776214c1d232a95306607",
+      "id": "b2155af196c3607d568370167cae34d571d46329f9e324ba07cf6499b1793ea2"
+    },
+    "artifacts": [
+      "/Users/pc/Documents/个人知识库/.opc-rag/opc_rag.sqlite3"
+    ]
+  },
+  "rag_role": "candidate-retrieval-only",
+  "rag_candidates": [
+    {
+      "path": "06_每日复盘/2026-08-25.md",
+      "line_start": 396,
+      "line_end": 416,
+      "heading": "本轮产出与验证",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- 转写边界：第二条中“骨架”多次被 ASR 识别成同音词，第一条云存储案例的专有名词也存在识别不稳定；来源卡保留 local-asr/medium 状态，公开引用前需人工听原片核对专有词。\n- 内容边界：两位作者关于创业成功率、产品上市、粉丝增长和收费转化的表述均为待核验观点，不作为收益承诺、普遍规律或公开案例证据。\n- 下一步：若用于口播，只能把两条内容作为内部方法参考，先完成最近六条查重、本人声音与事实门禁，再用真实发布反馈验证“需求—结构—单变量—复盘”是否适合本人账号。\n\n## 三姐弟餐饮公开尽调与沟通版方案增量\n\n### 已验证事实\n\n- 已重新读取 2026-08-17 三姐弟餐饮讨论全量归档及既有 V0.1 可行性报告、甲方沟通稿；甲方四项需求仍为经营日报与定向分发、评价预警与多店周复盘、品牌相关内容简报、竞对周期对比。\n- 豆包、DeepSeek 仅用于发现线索，已用公开原页和官方文档交叉复核；模型输出中出现过无关链接、门店数冲突、直营／加盟关系误判和平台状态误判，均未写成确认事实。\n- 本轮公开检索能够支持“多门店扩张和标准化阶段”的初步判断，但招聘自述的 20 余家门店不是门店审计；公开网络只识别到 8 座城市、9 个同品牌或近似品牌点位线索，不能替代甲方最新门店总表。\n- 抖音开放平台存在需能力申请和商家授权的餐饮评价／评分接口；美团公开了授权后汇总销售、评价和营销数据形成报告的同类路径。官方文档不等于三姐弟账号已经开通。\n- 经营日报高度可行；评价预警、品牌内容和竞对分析均需按平台授权、合法数据来源、范围与指标逐项验证。开源组件只能处理取得数据后的清洗、计算、看板和调度，不能替代平台准入与数据许可。\n\n### 本轮产出与验证\n\n- 完成内部尽调底稿 `work/due_diligence/三姐弟公开信息尽调底稿_2026-08-25.md`。\n- 完成 7 页甲方沟通版 `outputs/元石科技_三姐弟餐饮AI应用初步方案_公开尽调沟通版_V0.2_2026-08-25.docx`，逐项回答四项需求，并加入尽调方法、企业现状、实施前提、真实边界、试点、通过标准和停止条件。\n- 文档已逐页渲染检查，中文字体、表格、页眉页脚、分页和 8 个来源链接正常；DOCX 压缩结构无错误，个人元数据、RSID、手机号／邮箱和占位符均未检出；可访问性高风险项为 0。\n- 最终 DOCX SHA-256 为 `86165d60e5c8f988e689f7d30e787b1f6463cad3efe59009222fc510358946e8`；Codex 仓库提交为 `9857735 docs: 完成三姐弟餐饮公开尽调沟通方案`，仓库无远端，因此未推送。",
+      "document_sha256": "b5233d885e27914d730cd857766724c58073fe30f97985cbc9f0f130754c85c4",
+      "score": 0.02244669,
+      "lexical_rank": 39,
+      "vector_rank": 21,
+      "vector_similarity": 0.69751433,
+      "lexical_anchor": false
+    },
+    {
+      "path": "01_项目实战/餐饮AI应用平台/餐饮AI应用平台-项目总览.md",
+      "line_start": 1,
+      "line_end": 30,
+      "heading": "待补事实",
+      "status": "current",
+      "authority": "project-current",
+      "lifecycle_layer": "layer-1-current",
+      "text": "# 餐饮AI应用平台-项目总览\n\n> 状态：补位主档\n> 更新日期：2026-08-17\n> 证据边界：本页连接项目入口和复盘线索，不替代真实种子用户和端到端业务验证。\n\n## 当前主线\n\n餐饮AI应用平台围绕餐饮库存、损耗、AI员工和种子用户验证。真实判断必须来自用户访谈、真实数据、节省时间、错误成本和可持续使用情况。\n\n## 外部权威目录\n\n- 当前根目录：`/Users/pc/Documents/餐饮AI应用平台`\n- clean 根目录：`/Users/pc/Documents/restaurant-ai-platform-clean`\n\n## 已有知识库入口\n\n- 端口登记：[[00_规范与配置/08_本地项目端口登记表]]\n- 技术积累：[[02_技术积累/API资产完整审计_2026-06-24]]\n- 现场讨论纪要：[[01_项目实战/个人AI事业/2026-08-17_兰州餐饮AI落地讨论纪要]]\n- 可召回观察卡：[[01_项目实战/个人AI事业/主题卡_兰州餐饮AI落地观察]]\n- 每日复盘索引：[[06_每日复盘/00_每日复盘索引]]\n- 项目总览：[[01_项目实战/00_项目总览]]\n\n## 待补事实\n\n- 当前代码分支、部署状态和测试命令。\n- 种子用户名单、访谈证据和真实需求。\n- 库存预测或 AI 员工的真实准确率。\n- 节省时间、减少损耗、错误成本和付费意愿。",
+      "document_sha256": "a6c974af7fc9a0b83497abc2419b23a8c5848efe4c48f6a20eef60b44e45eb71",
+      "score": 0.01944853,
+      "lexical_rank": null,
+      "vector_rank": 8,
+      "vector_similarity": 0.70809441,
+      "lexical_anchor": false
+    },
+    {
+      "path": "01_项目实战/抖音知识中台/工作区/2026-08-09-AI007-AI双刃剑源头拆解/2026-08-10-AI最好与最坏十年-超哥原创口播稿-v2.md",
+      "line_start": 204,
+      "line_end": 217,
+      "heading": "合规检查",
+      "status": "current",
+      "authority": "project-record",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- 如果后续计划 DOU+、广告、商单或获客转化，必须按当日账号后台、产品分支和行业规则重新复核，当前文稿不能替代投放审核。\n\n## 合规检查\n\n- 内容属性：事实 + 个人观点 + AI 辅助整理\n- 风险等级：绿偏黄，原因是涉及就业趋势和 AI 影响判断，需要保留数据边界\n- 需用标识：待发布当日按实际制作方式确认；若平台认为文案或画面显著 AI 辅助，应使用对应 AI 声明\n- 事实来源：布林约尔松访谈整理稿、Stanford DEL 相关研究页、AI007 本地 ASR 拆解、姜胡说结构拆解\n- 素材授权：本阶段无第三方画面使用；封面提示词仅用于用户本人截图合成\n- 高风险垂类：否；不提供财经、医疗、法律、就业保证或商业投放承诺\n- 是否计划 DOU+：否\n- 是否含广告或交易：否\n- 待人工确认：用户本人朗读自然度、标题强度、是否保留全部十节点信息密度\n- 证据包位置：`/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-AI007-AI双刃剑源头拆解/`",
+      "document_sha256": "4a8f83f477e4ab6976ff50f09b73e25c61fa6d4a0066f26857cca1c185781e93",
+      "score": 0.01796875,
+      "lexical_rank": null,
+      "vector_rank": 4,
+      "vector_similarity": 0.71349791,
+      "lexical_anchor": false
+    },
+    {
+      "path": "06_每日复盘/2026-08-28.md",
+      "line_start": 254,
+      "line_end": 275,
+      "heading": "口播",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "?? edit/20260815_ai_delivery_filter/AI_DELIVERY_FILTER_20260815_talk01_16k_mono.wav\n?? edit/20260820_ai_levels/sfx-cue-sheet_AI_LEVELS_20260820_talk01_v8.json\n?? edit/20260820_ai_levels/visual-plan_AI_LEVELS_20260820_talk01_v8.json\n?? edit/20260826_enterprise_ai_information_chain/00_工程控制/build-actual-bilingual-captions.v1.mjs\n?? edit/20260826_enterprise_ai_information_chain/00_工程控制/实录字幕修正记录.v1.json\n?? edit/20260826_enterprise_ai_information_chain/00_工程控制/实录逐词转写.v1.json\n?? edit/20260826_enterprise_ai_information_chain/01_口播原片/\n?? edit/20260826_enterprise_ai_information_chain/02_真实录屏/\n?? edit/20260826_enterprise_ai_information_chain/03_用户生成视频/\n?? edit/20260826_enterprise_ai_information_chain/04_Remotion规划/\n?? edit/20260826_enterprise_ai_information_chain/06_预览与质检/\n?? edit/20260826_enterprise_ai_information_chain/07_正式成片/\n?? edit/20260826_enterprise_ai_information_chain/08_发布包/\n?? edit/20260828_super_individual/\n?? edit/WECHAT_GEO_AAO_20260823_talk01/RunningHub纸构提示词包/\n?? edit/WECHAT_GEO_AAO_20260823_talk01/director-treatment_WECHAT_GEO_AAO_20260823_v1.md\n?? edit/WECHAT_GEO_AAO_20260823_talk01/generated-video-plan_WECHAT_GEO_AAO_20260823_talk01_v1.json\n?? edit/WECHAT_GEO_AAO_20260823_talk01/manual-11clips-r1/00_工程控制/candidate-preview-r1.manifest.json\n?? edit/WECHAT_GEO_AAO_20260823_talk01/manual-11clips-r1/00_工程控制/candidate-preview-r2.manifest.json\n?? edit/WECHAT_GEO_AAO_20260823_talk01/manual-11clips-r1/02_人工生成视频待验收/\n?? edit/WECHAT_GEO_AAO_20260823_talk01/manual-11clips-r1/04_剪辑工程/candidate-preview-r1/\n?? edit/WECHAT_GEO_AAO_20260823_talk01/manual-11clips-r1/05_低清预览/",
+      "document_sha256": "11aed73883feaab52ad58a7e59e62ed9cf1f4d2fad7826fe82e6d58c98b14594",
+      "score": 0.01904935,
+      "lexical_rank": 46,
+      "vector_rank": 44,
+      "vector_similarity": 0.68992435,
+      "lexical_anchor": false
+    },
+    {
+      "path": "06_每日复盘/2026-09-04.md",
+      "line_start": 521,
+      "line_end": 532,
+      "heading": "九、兰州本地 AI 服务口播正式交付",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- 当前决策：该批次暂时通关并停止继续操作；不再触发 RunningHub 生成、付款、下载或修改。\n\n## 九、兰州本地 AI 服务口播正式交付\n\n- 已验证事实：用户已确认低清预览并授权正式出片；正式有音效候选片与无附加音效备份均已生成，规格为 `1920x1080`、`30fps`、`8383` 帧，时间轴 `279.433333` 秒。\n- 已验证事实：两版均通过完整解码；视频裸流哈希一致，黑场事件、超过 1.5 秒异常冻结和超过 2.5 秒全局静音均为 `0`。\n- 已验证事实：有音效正式候选片 SHA-256 为 `285a7711cab334fef3908b5090db0e7d35f3294485d1f53d5c80582a9722c8da`；无附加音效备份 SHA-256 为 `211265904c264bdd178b72433cdea6083557d685f547e1c24c1a9172d9380f67`。\n- 已验证事实：完整发布包已建立于 `/Users/pc/Documents/口播/edit/20260902_local_ai_services/09_发布包/2026-09-04_兰州本地AI服务_V8_R1`，桌面符号链接入口可正常解析到同一目录。\n- 已验证事实：正式全片机器质检为 `P0=0`、`P1=0`；发布包 12 项必需文件齐全，清单哈希、文件大小和硬链接核验通过。\n- 已验证事实：Git 提交 `c20ab900f42a7b22c173eb0f77cd921227a3ca96` 已与远端分支 `codex/director-paper-preproduction-v3` 对齐。\n- 当前状态：`ready-for-user-review`。尚未替用户公开发布；正式 1080p 全片仍需用户正常速度完整观看后，才能升级为 `verified`。",
+      "document_sha256": "30f87c334b7019df09aa594a1729ed5485ab732b0f4c6b7eca7f6ff2023d1e36",
+      "score": 0.02518854,
+      "lexical_rank": 42,
+      "vector_rank": 5,
+      "vector_similarity": 0.71272925,
+      "lexical_anchor": false
+    },
+    {
+      "path": "06_每日复盘/2026-09-02.md",
+      "line_start": 460,
+      "line_end": 481,
+      "heading": "R2 素材修订",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- 已取得 4 段 Pexels 许可范围内的婚礼、长辈相册、银发店主和长辈使用手机备用素材，完成哈希、媒体探测、完整解码和中帧人工检查；仅可作场景示意，不得包装成用户客户或真实案例。\n\n### 本轮产出\n\n- 唯一工程：`/Users/pc/Documents/口播/edit/20260902_local_ai_services`\n- 素材交接单：`03_导演拆解/素材执行单_预拍交接_v1.md`\n- 纸艺导演请求、路由锁、计划、编译与验证回执：`03_导演拆解/paper-v3-r1/`\n- 分离提示词包：`/Users/pc/Documents/口播/edit/generated-video/20260902_local_ai_services_paper-v3-r1`\n- 本地提交：`48a7c21 feat(koubo): prepare local AI services pre-shoot package`，未推送；大体积视频和网页来源快照保留为本地未跟踪证据，未混入提交。\n\n### 风险与下一步\n\n- 原稿中的“万播几块钱”“马上能变现”“做完一单收一单”“需求特别旺盛”等强收益或市场判断已进入发布风险锁；保留用户原文不等于已完成事实核验，正式发布前仍需复核。\n- 等用户放入口播原片和自有视频后，先转写实录并执行 post-shoot 重绑，再决定每段纸艺和实拍素材的准确时点；当前状态只到 `provisional-previsualization`，不是正式成片。\n\n### R2 素材修订\n\n- 用户确认家庭故事动画和婚礼定制短片均已有自有原片；两段已从纸艺生成链删除，改为 `U02`、`U03` 用户原片槽位。\n- 新建 `paper-v3-r2`，纸艺镜头由 9 段缩减为连续编号的 P01-P07；首帧与图生视频清单均已重新生成，配对、字段隔离和导演合同回归检查通过。\n- 首帧清单只交给本地首帧自动化；图生视频清单必须等待首帧生成、写入中文并验收后，再交给 Codex 的 RunningHub 批量任务。仅把文件放入目录不会自动触发，RunningHub 网站自己的 Agent 对话框也不是稳定的本地 JSON 批量入口。\n- R2 本地提交：`bb75587 fix(koubo): use real clips for family and wedding scenes`，未推送；当前仍未生图、未写入 RunningHub、未生成视频、未付费。",
+      "document_sha256": "2292da51edd4643c696d3155312e7629f9928690907d965e1070722660691c3b",
+      "score": 0.02903091,
+      "lexical_rank": 16,
+      "vector_rank": 3,
+      "vector_similarity": 0.72777951,
+      "lexical_anchor": false
+    },
+    {
+      "path": "06_每日复盘/2026-09-07.md",
+      "line_start": 53,
+      "line_end": 85,
+      "heading": "漫展小程序 2",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- `b328f4f 2026-09-07 12:32:31 +0800 制作KT海报回忆录样品及18张展示候选并记录待修项`\n\n#### 个人知识库\n\n- `a557e2e 2026-09-07 11:25:37 +0200 摄取七条姜胡说视频并保存原文拆解与验收索引`\n\n#### 口播\n\n- `e486479 2026-09-07 18:28:33 +0200 交付兰州企业AI服务有声低清候选及独立质检证据`\n- `8662416 2026-09-07 18:23:25 +0200 docs: draft Lanzhou AI service script from county sources`\n- `d083b98 2026-09-07 11:49:08 +0200 更新兰州口播待裁决制作状态索引`\n- `dad2d2a 2026-09-07 11:46:16 +0200 记录兰州口播实录准备、素材问题与动效预匹配`\n- `ceefbc8 2026-09-07 10:41:59 +0200 chore: 记录兰州首帧 RunningHub 待生成配置`\n- `f36e048 2026-09-07 10:16:54 +0200 fix: reuse approved sample in full text bake`\n- `ab32232 2026-09-07 09:09:20 +0200 fix: support V9 first-frame text baking`\n- `6d7d4c3 2026-09-07 08:25:58 +0200 feat(koubo): 增补包容支持开头引用与素材核验`\n\n#### 漫展小程序 2\n\n- `b6d763d 2026-09-07 18:58:55 +0200 docs: 记录一小时测试窗口到期回退与未完成验收项`\n- `ad6cd5f 2026-09-07 18:36:59 +0200 docs: 记录本人登录及唯一待支付订单实证`\n- `ae8a6cc 2026-09-07 18:30:34 +0200 docs: 补记同窗口新扫码预览回执`\n- `ff92bda 2026-09-07 18:29:31 +0200 docs: 记录手机返回复测及会话核验阻断`\n- `427c92d 2026-09-07 18:04:10 +0200 docs: 记录独立一小时测试入口及新样本实证`\n- `6d49d5b 2026-09-07 11:49:49 +0200 docs: 记录非AI临时服务授权回退与实测`\n- `0eb5b03 2026-09-07 11:40:19 +0200 docs: 记录手机测试到期与只读核账受阻`\n- `e1d3a8f 2026-09-07 11:11:31 +0200 docs: 补充投屏恢复与首页刷新待验收状态`\n- `bf9ea96 2026-09-07 11:00:52 +0200 docs: 记录独立手机合成场次与票种创建实证`\n- `7a016fd 2026-09-07 10:45:24 +0200 docs: 记录三页真机显示与受控账号登录实证`\n- `62e7d65 2026-09-07 10:01:53 +0200 docs: 补充电子票页面真机显示证据`\n- `14ea8f5 2026-09-07 09:26:44 +0200 docs: 记录手机首页投屏实测与上传待验收`\n- `5c49d78 2026-09-07 09:01:41 +0200 docs: 记录手机白屏根因与修正预览待验收`\n- `61eedd1 2026-09-07 08:59:17 +0200 fix: 修正测试包JSON模块引用导致页面无法注册`",
+      "document_sha256": "c32bcd9c0ff834ce7c8fbbf92aad9d752aebca06a472a9b8392bce821c780ec8",
+      "score": 0.02614053,
+      "lexical_rank": 31,
+      "vector_rank": 6,
+      "vector_similarity": 0.711839,
+      "lexical_anchor": true
+    },
+    {
+      "path": "06_每日复盘/2026-09-06.md",
+      "line_start": 85,
+      "line_end": 115,
+      "heading": "漫展小程序 2",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- `664c298 2026-09-06 02:03:39 +0800 docs: 生成九月六日知识治理候选报告`\n\n#### 口播\n\n- `366342d 2026-09-06 23:04:25 +0800 docs: draft personal Lanzhou AI service introduction`\n- `1df7352 2026-09-06 22:55:34 +0800 fix(koubo): 封住隔离候选裸渲染入口`\n\n#### 漫展小程序 2\n\n- `2084004 2026-09-06 23:10:41 +0800 fix: 修正严格umask下代理目录权限并限定一次续接`\n- `f77569f 2026-09-06 21:55:29 +0800 feat: 增加限时非AI手机入口与精确失败回退`\n- `f443115 2026-09-06 21:25:53 +0800 test: 验证真实Requests代理鉴权与TLS证书校验`\n- `89ab14a 2026-09-06 21:18:37 +0800 feat: 独立手机测试入口配置与原始路径保护`\n- `345ba2b 2026-09-06 20:32:06 +0800 feat: 固定非AI准入后端代码更新与精确回退`\n- `af0e1b2 2026-09-06 20:32:05 +0800 fix: 微信测试出站代理增加独立口令鉴权`\n- `63f296f 2026-09-06 16:59:36 +0800 docs: 记录非AI隔离联调准备与真实验收缺口`\n- `1f3b654 2026-09-06 16:32:50 +0800 fix: 限制微信测试代理解析时间并阻止过期连接`\n- `aa6dd78 2026-09-06 15:17:16 +0800 test: 验证固定非AI后端包的独立准入与业务路由`\n- `8047a7b 2026-09-06 14:54:12 +0800 fix: 限制非AI测试入口路径并在截止后关闭匿名访问`\n- `e34c45c 2026-09-06 14:53:15 +0800 feat: 增加限时单目标微信测试出站组件`\n- `0a1c81c 2026-09-06 14:18:15 +0800 feat: 构建仅开发版可用的非AI隔离联调候选`\n- `540ee0f 2026-09-06 14:06:52 +0800 feat: 增加非AI独立测试登录名单与短时准入`\n- `42deb8a 2026-09-06 11:47:04 +0800 docs: 核验非AI真机联调缺口与受控接入方案`\n- `2ffca8e 2026-09-06 11:20:58 +0800 docs: 记录非AI服务器修复更新与80项合成复验`\n- `562b85b 2026-09-06 11:08:48 +0800 feat: 新增非AI固定修复更新事务与严格服务器复验`\n- `16e66ac 2026-09-06 10:20:11 +0800 test: 记录非AI缺陷修复与本地PG合成验收`\n- `dce11fb 2026-09-06 10:11:11 +0800 fix: 保留运营保存活动时的受限售票设置`\n- `c756f46 2026-09-06 10:11:11 +0800 fix: 将积分流水后台设为不可增改删`\n- `3d7a4d5 2026-09-06 10:10:13 +0800 fix: 防止迟到支付通知回退退款账本`\n- `6df49a3 2026-09-06 01:07:30 +0800 test: 验证独立非AI业务并记录上线阻断缺陷`",
+      "document_sha256": "abbc47c328c96a9aac85f8f194dc657f47df4038ae77ce8ef081cb6e0d54bece",
+      "score": 0.01639344,
+      "lexical_rank": null,
+      "vector_rank": 1,
+      "vector_similarity": 0.74148485,
+      "lexical_anchor": false
+    }
+  ],
+  "knowledge_use_ledger": [
+    {
+      "group": "current_project_index",
+      "path": "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+      "resolved_path": "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+      "sha256": "e32c3d48c8f506a4293fe5e226cf0a73a1f04275cfd5bb5e86e9ca67dcff2715",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement",
+        "project-bootstrap"
+      ],
+      "application_note": "将索引用作真实文档定位，不把索引等同全部文档已读；现行实录策略及导演档案另外独立绑定，缺失读取保留待完成。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "current_project_summary",
+      "path": "/Users/pc/Documents/口播/README.md",
+      "resolved_path": "/Users/pc/Documents/口播/README.md",
+      "sha256": "2a2a6ce341e3ee4fa796363c4ca10ccd9b085f27299ac86f39e93917315add23",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement",
+        "project-bootstrap"
+      ],
+      "application_note": "确认唯一口播项目入口与原素材只读规则；README 的旧版本叙述只作导航，当前导演版本取现行机器档案，不据旧说明重做素材。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "current_project_summary",
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/README_先看这里.md",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/README_先看这里.md",
+      "sha256": "3b60630debcb9267ddc1ba79432484a955839bc1a9441bf040da96ea3c369a96",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "只采用已生成R1小样、五段保留、13项识别疑点、待用户观看的状态；不改README，不把历史小样晋级为正式成片。",
+      "problems": []
+    },
+    {
+      "group": "latest_update",
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/permission.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/permission.v1.json",
+      "sha256": "8a7507e8b8ba6d2ed710527413cc816dd64560dffc405ab240cb61fe47323398",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "publicDir现为独立R2，9个既有SFX有逐项路径和SHA；仍仅960x540本地小样，原片字幕不动、五段纸艺例外不扩张，formal/productionEligible/publishAuthorized/userPreviewApproved保持false。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/个人知识库/AGENTS.md",
+      "resolved_path": "/Users/pc/Documents/个人知识库/AGENTS.md",
+      "sha256": "99bc1aefb748c441a54259b0db57555ba0d56934db02d72caf322917f06cafee",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "遵守只读来源与实际证据边界；本轮仅写候选上下文及获准派生缓存，不触发知识结论晋级、发布或复盘越权写入。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/03_-毛选方法论/00-总纲.md",
+      "resolved_path": "/Users/pc/Documents/个人知识库/00_规范与配置/03_-毛选方法论/00-总纲.md",
+      "sha256": "c6d4cda4c5462e4aa2afbe1693a2b445c204cd3ee5c678e729b7b6c698631206",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "本轮首要成果限定为可复核的候选知识上下文；将真实读取、校验结果与候选观看验收分别记录，不以文件存在代替实践通过。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "resolved_path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "sha256": "c0d738dbb7858b78c92249afb8d7def8adad7ad5340e93b9e10b41a1e624f353",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "候选上下文不得替代文稿、实录与人工验收门禁；本轮不改写公开稿，不用检索命中或自报状态伪造上游已应用。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+      "resolved_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+      "sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "采用时长先看价值顺序、不同观察窗口分开解释的历史学习；遵守本条保留完整实录授权，不由过期指标机械缩短，也不推断单条表现的因果。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/口播/AGENTS.md",
+      "resolved_path": "/Users/pc/Documents/口播/AGENTS.md",
+      "sha256": "aba939b70a619d808e6d67ebae0fff17714e4e27ab24b08b4d95e3a3be2738d5",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement",
+        "project-bootstrap"
+      ],
+      "application_note": "本条仍执行实录优先、预拍比较用、纸艺独立分支与候选观看后才可另行讨论正式制作；不改共享 Skill 和原片，保持明确写集。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/口播/knowledge/22-实录优先字幕与系列发布包硬门禁.md",
+      "resolved_path": "/Users/pc/Documents/口播/knowledge/22-实录优先字幕与系列发布包硬门禁.md",
+      "sha256": "031f85daf74c62297daa8d501954f11572c1b10924d6fb274df28199f07cd260",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "保持原始声音为中文字幕和英文翻译的唯一正文；13项识别疑点不靠预拍稿抹平；有声低清小样不冒充正式候选发布包。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/口播/workflow/active-production-profile.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/workflow/active-production-profile.v1.json",
+      "sha256": "35966590ab57c6c4e5c0560781de181b99ed465c66a0cf3e4ae5dbb45e3ecf64",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "确认外层制作基准仍为 V8，V7.2 仅历史回滚；本条候选不得凭知识校验字段获得 formal、发布包或公开发布权限。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/口播/workflow/active-director-profile.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/workflow/active-director-profile.v1.json",
+      "sha256": "d8fc28222919e01341d6b9dc025c2cc6bf3b68cf48ab286898aba19c98135eb1",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "确认导演现行版本9.1.0；保留纸艺保护窗口、实录重绑、157卡选用与实际应用分离，源片缺陷例外不等于共享校验器通过。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "historical_failures",
+      "path": "/Users/pc/Documents/个人知识库/07_知识库治理/2026-07-18_口播内容大脑事故根因与修复验收.md",
+      "resolved_path": "/Users/pc/Documents/个人知识库/07_知识库治理/2026-07-18_口播内容大脑事故根因与修复验收.md",
+      "sha256": "2153a523865e119915cb0a60cfa17711c4122b447cc0885c60d0ab62215702bc",
+      "states": {
+        "indexed": true,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "应用事故中的状态误判教训：bootstrap 就绪不等于任务上下文通过，索引或来源卡存在不等于已经阅读，不把包装权限提升成正式发布权限。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "historical_failures",
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/paper-intake-r1/入场核验报告.md",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/paper-intake-r1/入场核验报告.md",
+      "sha256": "11397bf963d51d4e91559572611af31591e870352de35c524f2ccc2bdf04fe90",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "沿用真实P01至P05映射与已披露动作、遮字、消字、音频机器边界，不复做大QA；用户接受本条缺陷不回写中文OCR或语义PASS，不假称试听。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/permission.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/permission.v1.json",
+      "sha256": "8a7507e8b8ba6d2ed710527413cc816dd64560dffc405ab240cb61fe47323398",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "publicDir现为独立R2，9个既有SFX有逐项路径和SHA；仍仅960x540本地小样，原片字幕不动、五段纸艺例外不扩张，formal/productionEligible/publishAuthorized/userPreviewApproved保持false。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/index.tsx",
+      "resolved_path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/index.tsx",
+      "sha256": "aec78fb65aafaa11b0bcbe5e761c643c5354e0c24cd546d30cdd9c75a39ad8ee",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "只注册R2候选Composition，1920x1080、30fps、8393帧；不复用R1入口或正式job身份。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/LanzhouServicesCandidate.tsx",
+      "resolved_path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/LanzhouServicesCandidate.tsx",
+      "sha256": "285b48c2444a0a6e45897b08500660130439cc165f6a9a1e263ff84b3c21774b",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "确认data仍只读R1，host/news/paper为1/0.62/0.1；新音效消费源偏移、实际时长和尾淡出。官方摘录与实录label分开，父任务仍在收紧输入，源码读取不等于画面或试听通过。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/ShotcraftEffects.generated.tsx",
+      "resolved_path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/ShotcraftEffects.generated.tsx",
+      "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "全文读取419行：效果使用外部局部frame及帧长，列表atFrame不再均分；扫描框1.75倍起始变换需要外层限域。读取本地代码不等于已经核验上游复制一致性或完整许可交付。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/tsconfig.json",
+      "resolved_path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/tsconfig.json",
+      "sha256": "7d26de46578673f6bcd498f649fecb8199fbc0f419a6fc1188ce96d09f723e13",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "全文读取5行，extends ../../tsconfig.json并只纳入当前目录tsx/json；父任务报告tsc通过，本worker未将其冒称独立执行结果。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/visual-plan.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/visual-plan.v1.json",
+      "sha256": "dd95136822b70db50db78290700b105a2f4445711f86c9074c5cfc7b420e47b0",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "绑定最终R2入口消费JSON及selection v2；保留R1 data/实录与15处原效果时点，核对字级和官方关键帧。26个音效cue与独立计划一致、不落新闻及五纸艺保护区；正式授权及用户试听仍为false。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/data.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/data.v1.json",
+      "sha256": "7322b3844efcd89b47ea653855cb4c34c6a20135ebb739923c1d3a2a2e4e4992",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "绑定整个静态导入JSON的完整SHA防变更，实际应用其完整papers和timeline消费合同：P01=视频_5、P02=视频_2、P03=视频、P04=视频_4、P05=视频_3；源帧后移244帧，B23原录缺省，五镜仅上下文小结，13项ASR仍未人工确认。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/output-selection.derived.v2.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/output-selection.derived.v2.json",
+      "sha256": "bf067945ca2fd01bae6a83b1cb5633cbe9219cbb90561a0c611740dc42c18c9e",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "保留R1的15个效果帧窗与逐项atFrame；c017/c018实录label恢复且口播前缀仅R2局部CSS，不假称共享库新能力、正式绑定或动态验收。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/evidence-layout-plan.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/evidence-layout-plan.v1.json",
+      "sha256": "f7f2ecf4cdd7571fa13ccb988deb9d020e88c44d202dc2fc5b0dfc92af9a4418",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "正文官方通知与开头新闻标题分开；未说出的FDE与保障场景落地仅为官方摘录，不补进字幕。官方展示2336至2614帧、2506焦点转换，真实画面可读性留待父任务静帧验收。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/sfx-plan.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/sfx-plan.v1.json",
+      "sha256": "6fe44d29faeb234d44d9c89c76e66d5a14407789065714fc832eaeb88f0b00c5",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "selection现绑定v2，visualPlan反向绑定本文件当前SHA，26条cue深比较一致；源声1/0.62/0.1不变，新cue增益0.26至0.36且避开保护区。r2GeneratedVisualRevalidationPending字段保留原始状态，实际静态一致性证据另存本回执，不改父输入或假称动态验收。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/public-assets.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/public-assets.v1.json",
+      "sha256": "fdbad4b12e37198c0ab8be1f56b6da66181abfd89ec53efae48f8268cdeff1c1",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "确认独立R2目录为13个R1保留资产加9个既有SFX的硬链接，字节不变。硬链接增加link count不等于修改源内容，禁止写入这些素材；清单不是最终混音时点或试听验收。",
+      "problems": []
+    }
+  ],
+  "receipt_groups": {
+    "current_project_index": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "current_project_index",
+          "path": "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+          "resolved_path": "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+          "sha256": "e32c3d48c8f506a4293fe5e226cf0a73a1f04275cfd5bb5e86e9ca67dcff2715",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement",
+            "project-bootstrap"
+          ],
+          "application_note": "将索引用作真实文档定位，不把索引等同全部文档已读；现行实录策略及导演档案另外独立绑定，缺失读取保留待完成。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        }
+      ]
+    },
+    "current_project_summary": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "current_project_summary",
+          "path": "/Users/pc/Documents/口播/README.md",
+          "resolved_path": "/Users/pc/Documents/口播/README.md",
+          "sha256": "2a2a6ce341e3ee4fa796363c4ca10ccd9b085f27299ac86f39e93917315add23",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement",
+            "project-bootstrap"
+          ],
+          "application_note": "确认唯一口播项目入口与原素材只读规则；README 的旧版本叙述只作导航，当前导演版本取现行机器档案，不据旧说明重做素材。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "current_project_summary",
+          "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/README_先看这里.md",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/README_先看这里.md",
+          "sha256": "3b60630debcb9267ddc1ba79432484a955839bc1a9441bf040da96ea3c369a96",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "只采用已生成R1小样、五段保留、13项识别疑点、待用户观看的状态；不改README，不把历史小样晋级为正式成片。",
+          "problems": []
+        }
+      ]
+    },
+    "latest_update": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "latest_update",
+          "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/permission.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/permission.v1.json",
+          "sha256": "8a7507e8b8ba6d2ed710527413cc816dd64560dffc405ab240cb61fe47323398",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "publicDir现为独立R2，9个既有SFX有逐项路径和SHA；仍仅960x540本地小样，原片字幕不动、五段纸艺例外不扩张，formal/productionEligible/publishAuthorized/userPreviewApproved保持false。",
+          "problems": []
+        }
+      ]
+    },
+    "applicable_rules_or_skills": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/个人知识库/AGENTS.md",
+          "resolved_path": "/Users/pc/Documents/个人知识库/AGENTS.md",
+          "sha256": "99bc1aefb748c441a54259b0db57555ba0d56934db02d72caf322917f06cafee",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "遵守只读来源与实际证据边界；本轮仅写候选上下文及获准派生缓存，不触发知识结论晋级、发布或复盘越权写入。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/个人知识库/00_规范与配置/03_-毛选方法论/00-总纲.md",
+          "resolved_path": "/Users/pc/Documents/个人知识库/00_规范与配置/03_-毛选方法论/00-总纲.md",
+          "sha256": "c6d4cda4c5462e4aa2afbe1693a2b445c204cd3ee5c678e729b7b6c698631206",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "本轮首要成果限定为可复核的候选知识上下文；将真实读取、校验结果与候选观看验收分别记录，不以文件存在代替实践通过。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+          "resolved_path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+          "sha256": "c0d738dbb7858b78c92249afb8d7def8adad7ad5340e93b9e10b41a1e624f353",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "候选上下文不得替代文稿、实录与人工验收门禁；本轮不改写公开稿，不用检索命中或自报状态伪造上游已应用。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+          "resolved_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+          "sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "采用时长先看价值顺序、不同观察窗口分开解释的历史学习；遵守本条保留完整实录授权，不由过期指标机械缩短，也不推断单条表现的因果。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/口播/AGENTS.md",
+          "resolved_path": "/Users/pc/Documents/口播/AGENTS.md",
+          "sha256": "aba939b70a619d808e6d67ebae0fff17714e4e27ab24b08b4d95e3a3be2738d5",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement",
+            "project-bootstrap"
+          ],
+          "application_note": "本条仍执行实录优先、预拍比较用、纸艺独立分支与候选观看后才可另行讨论正式制作；不改共享 Skill 和原片，保持明确写集。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/口播/knowledge/22-实录优先字幕与系列发布包硬门禁.md",
+          "resolved_path": "/Users/pc/Documents/口播/knowledge/22-实录优先字幕与系列发布包硬门禁.md",
+          "sha256": "031f85daf74c62297daa8d501954f11572c1b10924d6fb274df28199f07cd260",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "保持原始声音为中文字幕和英文翻译的唯一正文；13项识别疑点不靠预拍稿抹平；有声低清小样不冒充正式候选发布包。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/口播/workflow/active-production-profile.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/workflow/active-production-profile.v1.json",
+          "sha256": "35966590ab57c6c4e5c0560781de181b99ed465c66a0cf3e4ae5dbb45e3ecf64",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "确认外层制作基准仍为 V8，V7.2 仅历史回滚；本条候选不得凭知识校验字段获得 formal、发布包或公开发布权限。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/口播/workflow/active-director-profile.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/workflow/active-director-profile.v1.json",
+          "sha256": "d8fc28222919e01341d6b9dc025c2cc6bf3b68cf48ab286898aba19c98135eb1",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "确认导演现行版本9.1.0；保留纸艺保护窗口、实录重绑、157卡选用与实际应用分离，源片缺陷例外不等于共享校验器通过。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        }
+      ]
+    },
+    "historical_failures": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "historical_failures",
+          "path": "/Users/pc/Documents/个人知识库/07_知识库治理/2026-07-18_口播内容大脑事故根因与修复验收.md",
+          "resolved_path": "/Users/pc/Documents/个人知识库/07_知识库治理/2026-07-18_口播内容大脑事故根因与修复验收.md",
+          "sha256": "2153a523865e119915cb0a60cfa17711c4122b447cc0885c60d0ab62215702bc",
+          "states": {
+            "indexed": true,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "应用事故中的状态误判教训：bootstrap 就绪不等于任务上下文通过，索引或来源卡存在不等于已经阅读，不把包装权限提升成正式发布权限。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "historical_failures",
+          "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/paper-intake-r1/入场核验报告.md",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/paper-intake-r1/入场核验报告.md",
+          "sha256": "11397bf963d51d4e91559572611af31591e870352de35c524f2ccc2bdf04fe90",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "沿用真实P01至P05映射与已披露动作、遮字、消字、音频机器边界，不复做大QA；用户接受本条缺陷不回写中文OCR或语义PASS，不假称试听。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        }
+      ]
+    },
+    "task_original_materials": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/permission.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/permission.v1.json",
+          "sha256": "8a7507e8b8ba6d2ed710527413cc816dd64560dffc405ab240cb61fe47323398",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "publicDir现为独立R2，9个既有SFX有逐项路径和SHA；仍仅960x540本地小样，原片字幕不动、五段纸艺例外不扩张，formal/productionEligible/publishAuthorized/userPreviewApproved保持false。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/index.tsx",
+          "resolved_path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/index.tsx",
+          "sha256": "aec78fb65aafaa11b0bcbe5e761c643c5354e0c24cd546d30cdd9c75a39ad8ee",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "只注册R2候选Composition，1920x1080、30fps、8393帧；不复用R1入口或正式job身份。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/LanzhouServicesCandidate.tsx",
+          "resolved_path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/LanzhouServicesCandidate.tsx",
+          "sha256": "285b48c2444a0a6e45897b08500660130439cc165f6a9a1e263ff84b3c21774b",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "确认data仍只读R1，host/news/paper为1/0.62/0.1；新音效消费源偏移、实际时长和尾淡出。官方摘录与实录label分开，父任务仍在收紧输入，源码读取不等于画面或试听通过。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/ShotcraftEffects.generated.tsx",
+          "resolved_path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/ShotcraftEffects.generated.tsx",
+          "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "全文读取419行：效果使用外部局部frame及帧长，列表atFrame不再均分；扫描框1.75倍起始变换需要外层限域。读取本地代码不等于已经核验上游复制一致性或完整许可交付。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/tsconfig.json",
+          "resolved_path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/tsconfig.json",
+          "sha256": "7d26de46578673f6bcd498f649fecb8199fbc0f419a6fc1188ce96d09f723e13",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "全文读取5行，extends ../../tsconfig.json并只纳入当前目录tsx/json；父任务报告tsc通过，本worker未将其冒称独立执行结果。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/visual-plan.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/remotion/src/lanzhou-services-v91-candidate-r2/visual-plan.v1.json",
+          "sha256": "dd95136822b70db50db78290700b105a2f4445711f86c9074c5cfc7b420e47b0",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "绑定最终R2入口消费JSON及selection v2；保留R1 data/实录与15处原效果时点，核对字级和官方关键帧。26个音效cue与独立计划一致、不落新闻及五纸艺保护区；正式授权及用户试听仍为false。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/data.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/data.v1.json",
+          "sha256": "7322b3844efcd89b47ea653855cb4c34c6a20135ebb739923c1d3a2a2e4e4992",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "绑定整个静态导入JSON的完整SHA防变更，实际应用其完整papers和timeline消费合同：P01=视频_5、P02=视频_2、P03=视频、P04=视频_4、P05=视频_3；源帧后移244帧，B23原录缺省，五镜仅上下文小结，13项ASR仍未人工确认。 本轮只在相同字节下继承该应用边界，R2输入及权限另行绑定。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/output-selection.derived.v2.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/output-selection.derived.v2.json",
+          "sha256": "bf067945ca2fd01bae6a83b1cb5633cbe9219cbb90561a0c611740dc42c18c9e",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "保留R1的15个效果帧窗与逐项atFrame；c017/c018实录label恢复且口播前缀仅R2局部CSS，不假称共享库新能力、正式绑定或动态验收。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/evidence-layout-plan.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r2/evidence-layout-plan.v1.json",
+          "sha256": "f7f2ecf4cdd7571fa13ccb988deb9d020e88c44d202dc2fc5b0dfc92af9a4418",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "正文官方通知与开头新闻标题分开；未说出的FDE与保障场景落地仅为官方摘录，不补进字幕。官方展示2336至2614帧、2506焦点转换，真实画面可读性留待父任务静帧验收。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/sfx-plan.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/sfx-plan.v1.json",
+          "sha256": "6fe44d29faeb234d44d9c89c76e66d5a14407789065714fc832eaeb88f0b00c5",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "selection现绑定v2，visualPlan反向绑定本文件当前SHA，26条cue深比较一致；源声1/0.62/0.1不变，新cue增益0.26至0.36且避开保护区。r2GeneratedVisualRevalidationPending字段保留原始状态，实际静态一致性证据另存本回执，不改父输入或假称动态验收。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/public-assets.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/public-assets.v1.json",
+          "sha256": "fdbad4b12e37198c0ab8be1f56b6da66181abfd89ec53efae48f8268cdeff1c1",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "确认独立R2目录为13个R1保留资产加9个既有SFX的硬链接，字节不变。硬链接增加link count不等于修改源内容，禁止写入这些素材；清单不是最终混音时点或试听验收。",
+          "problems": []
+        }
+      ]
+    }
+  },
+  "gate": {
+    "status": "context-ready",
+    "missing_groups": [],
+    "formal_execution_allowed": true,
+    "rule": "indexed、retrieved、read、applied 四态独立；RAG 命中或文件指纹不能替代读取与应用回执。"
+  },
+  "bootstrap": {
+    "schema_version": "2.1",
+    "status": "context-ready",
+    "task_id": "task-20260907T230606Z-a3f1804b",
+    "read_receipt": {
+      "status": "pending-executor-read",
+      "selected_document_count": 22,
+      "required_document_count": 17,
+      "verified_required_document_count": 0,
+      "project_truth_status": "not-applicable",
+      "rule": "文件被检索和计算哈希不等于执行者已读；阅读凭证必须包含当前文件哈希、status=read 和 read_completed_at，四类项目事实未齐不得进入跨项目公开内容生产。"
+    }
+  },
+  "next_actions": [
+    "继续执行其他内容、质量、安全和人工验收门禁"
+  ],
+  "artifacts": [
+    "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260908-lanzhou-candidate-preview-r2-context-v1/context.json"
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "lanzhou-r2-audio-audit-recommendations/v1",
+  "status": "audit-findings-retained-cue-proposals-superseded-by-sfx-plan.v1.json",
+  "currentCueAuthority": "sfx-plan.v1.json",
+  "episodeId": "20260906_lanzhou_ai_services",
+  "sourceVideoSha256": "9d6342ac4456f362406e3b0b4da00eeeb09812265fae02cf203d01740e69d2e4",
+  "measurementsPath": "edit/20260906_lanzhou_ai_services/00_工程控制/candidate-preview-r2/audio-audit.measurements.json",
+  "sourceGainsLocked": {"host": 1, "news": 0.62, "paper": 0.1},
+  "rootCauses": [
+    "51个语义/效果点共用0.13增益，再衰减17.7211dB，未按不同源文件RMS与有效能量分配。",
+    "card文件1.071秒但90%能量只有6.54毫秒，tick文件0.237秒但90%能量只有30.38毫秒；1.5秒Sequence不会延长实际音效。",
+    "card在0.13时源声道RMS约-52.28dBFS、最强50毫秒RMS约-38.97dBFS；tick对应-42.76/-36.20dBFS。",
+    "在统一单声道分析域、相同长度的口播窗口中，计划SFX RMS相对主声中位数约card低36.48dB、tick低23.40dB；这是电平模型，不是心理声学可闻阈值。",
+    "card重复36次、tick重复15次；同文件相邻间隔小于25秒分别34/9次，全序列连续同文件32次，违反知识20的变体/重复纪律。",
+    "以视觉起点后2帧启动文件，叠加文件主要能量前的静音：card主要能量约晚133ms、tick约晚167ms；文件开始并非音效的感知落点。"
+  ],
+  "metricValidity": {
+    "nativeFilePeakAndRms": "48kHz双声道PCM实测，峰值为sample peak，不是true peak。",
+    "relativeSpeechLevel": "16kHz ffmpeg默认下混的同域、同长窗口RMS；包含源文件无声尾部，须结合50ms能量与90%能量长度解读。",
+    "doNotUseAsStereoClippingEvidence": "measurements中单声道mix峰值可能因默认下混相加及重采样超过0dBFS，不是原MP4双声道削波证据；原双声道真峰值沿用已核QA的-1.1dBFS。",
+    "excludedExploratoryFields": ["cueResults[].model"],
+    "exclusionReason": "附带联合拟合的粗偏移搜索可能错过窄相关峰，且微弱瞬态易受AAC/主声残差影响；全部model字段不用于判断音效有无、真实增益或听感。未据此重试或下素材缺失结论。"
+  },
+  "gainPolicy": {
+    "meaning": "下列仅为绑定文件的候选A/B起测值，不是已通过听验的最终参数；不可机械用于其他文件。",
+    "mainAccentTarget": "优先选择短暂停顿；重音所在50-100ms窗口SFX RMS暂以低于同期主声约8-14dB为试验目标。",
+    "lightNodeTarget": "轻节点暂以低于同期主声约14-20dB为试验目标；低于噪声且不可闻则换源/改点，不无限增加gain。",
+    "headroom": "这是本次混音试验目标而非知识20的硬数值。源轨不降音；加SFX后重新测合成true peak，目标不高于-1dBTP，越界仅减SFX或改点。",
+    "noUniformBoost": true,
+    "noSpeechDucking": true,
+    "noLoopOrTimeStretch": true
+  },
+  "types": [
+    {
+      "type": "开头判断/一级重音",
+      "assetId": "v3-soft-card-pop-b",
+      "gainStart": 0.36, "gainRange": [0.32, 0.40],
+      "sourceRangeSeconds": [0, 0.3806458333],
+      "energy90DurationSeconds": 0.2118333333,
+      "predictedSamplePeakAtStartDbfs": -14.889,
+      "reason": "同为约-6dBFS峰值，但RMS较R1 card高约13.99dB，有效声音更长；不靠极短尖峰硬撑音量。"
+    },
+    {
+      "type": "真人画面轻节点变体",
+      "assetId": "v3-media-whoosh-b",
+      "gainStart": 0.28, "gainRange": [0.24, 0.32],
+      "sourceRangeSeconds": [0, 0.1801041667],
+      "energy90DurationSeconds": 0.0495833333,
+      "predictedSamplePeakAtStartDbfs": -17.070,
+      "reason": "短于0.2秒，仅用于真人画面的关键词；最新授权禁止在新闻及纸艺期间新增SFX。"
+    },
+    {
+      "type": "章节/媒体返回",
+      "assetId": "v1-section-air",
+      "gainStart": 0.32, "gainRange": [0.28, 0.36],
+      "sourceRangeSeconds": [0, 0.2644166667],
+      "energy90DurationSeconds": 0.0705208333,
+      "predictedSamplePeakAtStartDbfs": -15.867,
+      "reason": "整段不足0.3秒；应把约0.09秒的内部起效延迟算入视觉落点。"
+    },
+    {
+      "type": "文件放大/证据首次出现",
+      "assetId": "v1-card-reveal",
+      "gainStart": 0.30, "gainRange": [0.28, 0.34],
+      "sourceRangeSeconds": [0, 0.3997291667],
+      "energy90DurationSeconds": 0.1497708333,
+      "predictedSamplePeakAtStartDbfs": -16.492,
+      "reason": "现有本地纸页来源记录，能量较R1 card更充足。只在文档首次展开发主声，不能每行翻一声。"
+    },
+    {
+      "type": "关键词/逐行最后关键节点",
+      "assetId": "v1-keyword-tick",
+      "gainStart": 0.28, "gainRange": [0.24, 0.34],
+      "sourceRangeSeconds": [0, 0.2069791667],
+      "energy90DurationSeconds": 0.032,
+      "predictedSamplePeakAtStartDbfs": -17.066,
+      "reason": "主要能量约17ms起，较R1 tick约101ms起更易对齐；一语义对象最多一主声加一轻节点。"
+    },
+    {
+      "type": "轻节点变体",
+      "assetId": "v3-list-tick-b",
+      "gainStart": 0.32, "gainRange": [0.28, 0.36],
+      "sourceRangeSeconds": [0, 0.1994791667],
+      "energy90DurationSeconds": 0.0186875,
+      "predictedSamplePeakAtStartDbfs": -15.875,
+      "reason": "仅低优先级短节点；不能代替开头重音，也不能在每行循环。"
+    },
+    {
+      "type": "连线/数字落定",
+      "assetId": "v3-number-settle-a",
+      "gainStart": 0.26, "gainRange": [0.24, 0.30],
+      "sourceRangeSeconds": [0, 0.36],
+      "fadeOutSeconds": 0.02,
+      "energy90DurationSeconds": 0.245375,
+      "predictedSamplePeakAtStartDbfs": -17.722,
+      "reason": "原文件1.287秒，核心能量在约0.013-0.258秒；建议只在未来composition做短包络/截取，不另合成源文件。"
+    }
+  ],
+  "openingCueProposal": [
+    {"referenceFrame": 29, "assetId": "v3-soft-card-pop-b", "gain": 0.36, "durationInFrames": 12, "action": "实录包容词点30帧，内部起效补偿后29帧开声；替换旧声，不叠放。"},
+    {"referenceFrame": 51, "assetId": "v1-keyword-tick", "gain": 0.30, "durationInFrames": 7, "action": "实录支持词点52帧，51帧开声，58帧结束；新闻69帧前已结束。"},
+    {"referenceFrame": 323, "assetId": "v1-section-air", "gain": 0.32, "durationInFrames": 8, "action": "新闻结束后，绑定output-c002在兰州词点326帧；没有新闻进入音效。"}
+  ],
+  "documentCueProposal": {
+    "spokenAndVisualAnchorFrames": [2427, 2557],
+    "r2TimingStatus": "以当前sfx-plan.v1.json绑定的R2实际selection和官方行布局为准。",
+    "rule": "同一文件在人工智能行强调处一主声、扎根行进入处一轻声；原通知2406和用户2578均不再配声，其余行仅视觉推进。"
+  },
+  "globalDensityAndVariation": "不要把51个旧点全部增大；按知识20逐语义对象删减重复点，同源25秒内不重复、不连续触发，单文件原则上最多3次，重复角色至少3个有本地许可记录的不同源变体。三项R2调整之外的删减范围交父任务裁决，不在本审计实施。",
+  "notPreferred": [
+    {"assetId": "v3-evidence-paper-a", "reason": "名字适合证据，但本次测得全段RMS-37.86dBFS、最强50ms RMS-26.15dBFS；不可仅凭纸页名称选它替代开头或重音。"},
+    {"assetId": "v1-camera-shutter", "reason": "本次RMS-35.15dBFS，不比原短尖峰可靠；本条也不需要相机语义。"}
+  ],
+  "sourceAndLicenseBoundary": "所有建议来自现有koubo-sfx-v8本地文件，SHA已实核；来源及CC0/Mixkit记录见measurements.candidateAssets与许可manifest。只是历史本地来源记录，未联网核验现行许可、不复制素材、不自动批准正式使用。",
+  "acceptance": "由父在用户授权内实现少量音效后，用同画面前30-45秒有声/无新增SFX A/B，手机正常外放核对重点清楚、四类可区分、不抢主声；无新增SFX版仍保留host/news/paper原声。本轮不生成该预览。",
+  "noEarListeningPerformed": true,
+  "userAudibilityConfirmed": false,
+  "audibilityConfirmedByUser": false,
+  "formalEnabled": false,
+  "productionEligible": false,
+  "noR2KnowledgeStartYet": true
+}

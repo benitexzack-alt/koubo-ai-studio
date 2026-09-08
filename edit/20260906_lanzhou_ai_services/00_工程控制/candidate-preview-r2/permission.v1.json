@@ -1,0 +1,247 @@
+{
+  "schemaVersion": "lanzhou-services-revision-preview-permission/v1",
+  "episodeId": "20260906_lanzhou_ai_services",
+  "revisionId": "20260907-lanzhou-services-candidate-preview-r2",
+  "directorTaskId": "task-20260906T154937Z-69f6ebf8",
+  "recordedDate": "2026-09-07",
+  "evidence": {
+    "kind": "current-conversation-direct-user-confirmation",
+    "userQuote": "首先呢，就是这个工信部的文件展示啊。你看咱们动效库里面有那么多的动效，可以把这个文件放大，关键字做成那种逐行体现出来。你这个直接放进去，那么小一点点，能看见吗？其次，左上角的这些Remotion的动效的这个词汇，字体太小，重点没有突出，没有差异化。所以再调整一下吧。其次呢，整体的这个音效的话也不太好，很多地方都没有音效。然后尤其是开头的这些重点的标注音效，它都不是特别的能够吸引和让人注意。所以从这几个方面来重新再调整一下。",
+    "requestedChangesSummary": "根据本轮用户对R1的反馈，仅调整工信部文件展示、左上角文字层级与音效可感知度，生成独立R2低清候选；不是正式渲染或发布授权。",
+    "messageId": null,
+    "retrieval": {
+      "threadId": "019f3383-706c-78f3-9dbe-6c6b20affb59",
+      "turnId": "01a07cbd-bcbf-73b2-b65c-6d4ceb141242",
+      "itemId": "item-1"
+    },
+    "note": "原话通过父任务read_thread逐字读取，仅去除消息尾部换行；retrieval为本地对话定位，不是可验证平台消息ID或数字签名。R1的历史确认不充当本轮执行授权。"
+  },
+  "scope": {
+    "localOnly": true,
+    "allowedCommands": [
+      "preflight",
+      "stills",
+      "render"
+    ],
+    "canvas": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationInFrames": 8393
+    },
+    "output": {
+      "width": 960,
+      "height": 540,
+      "fps": 30
+    },
+    "outputRoot": "edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2",
+    "keepAllHostFrames": 8149,
+    "openingInsert": {
+      "afterSourceFrameExclusive": 69,
+      "sourceVideoFrames": 243,
+      "outputFrames": 244,
+      "reason": "保留8.102993秒完整新闻原声；只为不足一帧的音频尾部补1帧，不延长纸艺。"
+    },
+    "preserveExistingFivePaperClips": true,
+    "allowNewGeneration": false,
+    "allowExternalNetwork": false,
+    "allowPayments": false,
+    "allowOverwrite": false,
+    "publicDir": "remotion/public/lanzhou-services-candidate-r2",
+    "preserveOriginalFramesAndSubtitleTiming": true,
+    "allowedAdjustments": [
+      "official-document-magnification-line-emphasis",
+      "top-left-type-size-hierarchy",
+      "sfx-audibility-opening-emphasis"
+    ],
+    "preservePriorCandidate": true
+  },
+  "acceptedPaperExceptions": [
+    {
+      "sceneId": "P01",
+      "sha256": "05c9b4b23659dae804111b5cfb53a8be5ca463e7c87961f9623ce26d5e43a2f2",
+      "seconds": [
+        4.5,
+        6
+      ],
+      "defect": "作废资料也流向知识库，与只整理有效资料的原意不一致。",
+      "disposition": "本条按用户决定保留；不是语义检查通过。"
+    },
+    {
+      "sceneId": "P02",
+      "sha256": "d09074f2132c21438343ec39c2a53c9a2f72561466db88096a3a5599bf8b6aef",
+      "defect": "确认因果先后不够清楚，底部纸片进入原规划字幕保留区，最终字幕遮挡仍须检查。",
+      "disposition": "接受源片既有瑕疵；不豁免合成新增遮挡。"
+    },
+    {
+      "sceneId": "P03",
+      "sha256": "c237f8901f509d1a865725c50ada9b02d413605710dfa3d37b58c20c9e88d623",
+      "seconds": [
+        4,
+        5
+      ],
+      "defect": "运动纸片短时遮住实际试用标签。",
+      "disposition": "本条保留，不能记为文字全程可读。"
+    },
+    {
+      "sceneId": "P04",
+      "sha256": "95f74224a778a1d9ce5115ebc97ffbe432a00384281f0347aafce30b808c757f",
+      "seconds": [
+        2,
+        3.5
+      ],
+      "defect": "服务哪些地方标签随展开变形，不符合原刚性牌约束。",
+      "disposition": "本条保留原画面。"
+    },
+    {
+      "sceneId": "P05",
+      "sha256": "b96c2e7da8dbf382916523ef0553196fd9b1ad014d1057888af33365469e2c15",
+      "seconds": [
+        2,
+        3
+      ],
+      "defect": "资料和权限标签短时消失后返回。",
+      "disposition": "本条保留，不伪造连续可见或OCR全通过。"
+    }
+  ],
+  "exceptionInheritance": "forbidden-other-episodes-or-assets",
+  "postshootRepresentation": {
+    "preshootB23": "recorded-absence-not-output",
+    "labelVisibility": "first-frame-baked-visible-from-source-frame-zero",
+    "labelActionIsFirstReveal": false,
+    "currentSharedPostshootValidatorPassed": false,
+    "method": "独立候选合同如实记录未说节拍、首帧标签与本条例外；不篡改旧合同字段含义。"
+  },
+  "subtitleAuthority": "actual-recording",
+  "scriptRole": "comparison-only",
+  "unresolvedAsrMustRemainVisibleInReceipt": true,
+  "formalEnabled": false,
+  "productionEligible": false,
+  "cryptographicProductionAuthorization": false,
+  "userPreviewApproved": false,
+  "publishAuthorized": false,
+  "preservedInputs": [
+    {
+      "path": "edit/20260906_lanzhou_ai_services/02_原片/copy_3257E7D6-476D-4668-93F2-0CA1BD79F373.MOV",
+      "sha256": "9e220b1e93a5eb49759827faf5a47aaef71ca030f674c6c8b549c9e0e159c07b"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/09_实录与字幕/canonical-spoken.v1.json",
+      "sha256": "15d86d2fb9204464c1260c0afd1cd0afaaa75ec03ee28d126a11d162d5eac135"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/09_实录与字幕/actual-bilingual.v1.json",
+      "sha256": "8e23acf33e03a4c3fa4a40daa7486214adc77539a94164bfd35e9a8c70421940"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/data.v1.json",
+      "sha256": "7322b3844efcd89b47ea653855cb4c34c6a20135ebb739923c1d3a2a2e4e4992"
+    },
+    {
+      "path": "edit/20260906_lanzhou_ai_services/04_导演拆解/candidate-preview-r1/captions.json",
+      "sha256": "22c16b97e9a4d9267e892e13cecbe2c29037903511ed903ad24697642c62f33e"
+    }
+  ],
+  "preservedPublicFiles": [
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/R01.mp4",
+      "sha256": "5c5939aebea81f0416aacad6927063f5de9f2953b7b396a8670f20167c294805"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/U01.mp4",
+      "sha256": "0034f072955abc10db1a4a422fb70c6766f365ec47988f2e9e9d464a8bef9770"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/P01.mp4",
+      "sha256": "05c9b4b23659dae804111b5cfb53a8be5ca463e7c87961f9623ce26d5e43a2f2"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/P02.mp4",
+      "sha256": "d09074f2132c21438343ec39c2a53c9a2f72561466db88096a3a5599bf8b6aef"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/P03.mp4",
+      "sha256": "c237f8901f509d1a865725c50ada9b02d413605710dfa3d37b58c20c9e88d623"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/P04.mp4",
+      "sha256": "95f74224a778a1d9ce5115ebc97ffbe432a00384281f0347aafce30b808c757f"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/P05.mp4",
+      "sha256": "b96c2e7da8dbf382916523ef0553196fd9b1ad014d1057888af33365469e2c15"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/O01-title.png",
+      "sha256": "5124f9ae565b20e2bd4b8a21baa3f7183455d070f4df9a60c0be64314efc2324"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/O01-onsite.png",
+      "sha256": "6f369d929ccac7c2c8dccf5c566f32ea775a3b093ad148f90a1a7a678fdf9b43"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/captions.json",
+      "sha256": "22c16b97e9a4d9267e892e13cecbe2c29037903511ed903ad24697642c62f33e"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/fonts/STHeiti-Medium.ttc",
+      "sha256": "f8fa4a63e2cf500e98e64d4c73260daaba049306cf85dec9e3729bc285b7d645"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/card.wav",
+      "sha256": "b60c4a4bbd4ba307a2fc584878fb5dfbde6bc8f77c372bb82957e2bc83edfed3"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/tick.wav",
+      "sha256": "a94576ec7523d53964a301f39a0b3d0e8ac3bf49a85d746d18b79aa522eb40f7"
+    }
+  ],
+  "approvedAdditionalPublicSfx": [
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/v3-soft-card-pop-b.wav",
+      "sha256": "f0ba360c47c9247e264935981a1c3d9ceaa8a7265faeb2d7377e7a854122524a",
+      "confirmationQuote": "首先呢，就是这个工信部的文件展示啊。你看咱们动效库里面有那么多的动效，可以把这个文件放大，关键字做成那种逐行体现出来。你这个直接放进去，那么小一点点，能看见吗？其次，左上角的这些Remotion的动效的这个词汇，字体太小，重点没有突出，没有差异化。所以再调整一下吧。其次呢，整体的这个音效的话也不太好，很多地方都没有音效。然后尤其是开头的这些重点的标注音效，它都不是特别的能够吸引和让人注意。所以从这几个方面来重新再调整一下。"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/v1-keyword-tick.wav",
+      "sha256": "1ed414d9a26793d3bab087f6226f83a4e0566fac05a14552aebc43d0ac7cdff5",
+      "confirmationQuote": "首先呢，就是这个工信部的文件展示啊。你看咱们动效库里面有那么多的动效，可以把这个文件放大，关键字做成那种逐行体现出来。你这个直接放进去，那么小一点点，能看见吗？其次，左上角的这些Remotion的动效的这个词汇，字体太小，重点没有突出，没有差异化。所以再调整一下吧。其次呢，整体的这个音效的话也不太好，很多地方都没有音效。然后尤其是开头的这些重点的标注音效，它都不是特别的能够吸引和让人注意。所以从这几个方面来重新再调整一下。"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/v1-section-air.wav",
+      "sha256": "24bef1f0e81e0060e410ea9a35a38df5bf6ab96ff9d982f900861f542e9317d4",
+      "confirmationQuote": "首先呢，就是这个工信部的文件展示啊。你看咱们动效库里面有那么多的动效，可以把这个文件放大，关键字做成那种逐行体现出来。你这个直接放进去，那么小一点点，能看见吗？其次，左上角的这些Remotion的动效的这个词汇，字体太小，重点没有突出，没有差异化。所以再调整一下吧。其次呢，整体的这个音效的话也不太好，很多地方都没有音效。然后尤其是开头的这些重点的标注音效，它都不是特别的能够吸引和让人注意。所以从这几个方面来重新再调整一下。"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/v3-media-whoosh-b.wav",
+      "sha256": "627a43bc7b46088a0dde83fdccf0d2218a296bcb59cbdd8628d076a2f21298f9",
+      "confirmationQuote": "首先呢，就是这个工信部的文件展示啊。你看咱们动效库里面有那么多的动效，可以把这个文件放大，关键字做成那种逐行体现出来。你这个直接放进去，那么小一点点，能看见吗？其次，左上角的这些Remotion的动效的这个词汇，字体太小，重点没有突出，没有差异化。所以再调整一下吧。其次呢，整体的这个音效的话也不太好，很多地方都没有音效。然后尤其是开头的这些重点的标注音效，它都不是特别的能够吸引和让人注意。所以从这几个方面来重新再调整一下。"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/v1-card-reveal.wav",
+      "sha256": "ee2cd1a4d78d60a4d81391d0ea3a1873f02fc907d61667b8897df9f56f4ff896",
+      "confirmationQuote": "首先呢，就是这个工信部的文件展示啊。你看咱们动效库里面有那么多的动效，可以把这个文件放大，关键字做成那种逐行体现出来。你这个直接放进去，那么小一点点，能看见吗？其次，左上角的这些Remotion的动效的这个词汇，字体太小，重点没有突出，没有差异化。所以再调整一下吧。其次呢，整体的这个音效的话也不太好，很多地方都没有音效。然后尤其是开头的这些重点的标注音效，它都不是特别的能够吸引和让人注意。所以从这几个方面来重新再调整一下。"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/v3-list-tick-b.wav",
+      "sha256": "0d5289d6990f07d95153b68b556076e097d9a49472acf7ce310799339197cc9a",
+      "confirmationQuote": "首先呢，就是这个工信部的文件展示啊。你看咱们动效库里面有那么多的动效，可以把这个文件放大，关键字做成那种逐行体现出来。你这个直接放进去，那么小一点点，能看见吗？其次，左上角的这些Remotion的动效的这个词汇，字体太小，重点没有突出，没有差异化。所以再调整一下吧。其次呢，整体的这个音效的话也不太好，很多地方都没有音效。然后尤其是开头的这些重点的标注音效，它都不是特别的能够吸引和让人注意。所以从这几个方面来重新再调整一下。"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/v3-number-settle-a.wav",
+      "sha256": "79458cf26da84c5233a7b7ad437c6ed872d593be61baba17f748b444bf10745f",
+      "confirmationQuote": "首先呢，就是这个工信部的文件展示啊。你看咱们动效库里面有那么多的动效，可以把这个文件放大，关键字做成那种逐行体现出来。你这个直接放进去，那么小一点点，能看见吗？其次，左上角的这些Remotion的动效的这个词汇，字体太小，重点没有突出，没有差异化。所以再调整一下吧。其次呢，整体的这个音效的话也不太好，很多地方都没有音效。然后尤其是开头的这些重点的标注音效，它都不是特别的能够吸引和让人注意。所以从这几个方面来重新再调整一下。"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/v3-line-connect-a.wav",
+      "sha256": "25cf2fb54fbe59d6cccd92a8a45a0d0f818b355000795e699b4b4334ef08e6b3",
+      "confirmationQuote": "首先呢，就是这个工信部的文件展示啊。你看咱们动效库里面有那么多的动效，可以把这个文件放大，关键字做成那种逐行体现出来。你这个直接放进去，那么小一点点，能看见吗？其次，左上角的这些Remotion的动效的这个词汇，字体太小，重点没有突出，没有差异化。所以再调整一下吧。其次呢，整体的这个音效的话也不太好，很多地方都没有音效。然后尤其是开头的这些重点的标注音效，它都不是特别的能够吸引和让人注意。所以从这几个方面来重新再调整一下。"
+    },
+    {
+      "path": "remotion/public/lanzhou-services-candidate-r2/sfx/v3-chapter-sweep-a.wav",
+      "sha256": "c6d490b36b43f1548dde4f7eb110ddb8f7a58fd39400b1cf6e17d401e967b37b",
+      "confirmationQuote": "首先呢，就是这个工信部的文件展示啊。你看咱们动效库里面有那么多的动效，可以把这个文件放大，关键字做成那种逐行体现出来。你这个直接放进去，那么小一点点，能看见吗？其次，左上角的这些Remotion的动效的这个词汇，字体太小，重点没有突出，没有差异化。所以再调整一下吧。其次呢，整体的这个音效的话也不太好，很多地方都没有音效。然后尤其是开头的这些重点的标注音效，它都不是特别的能够吸引和让人注意。所以从这几个方面来重新再调整一下。"
+    }
+  ],
+  "paperExceptionBoundary": "同一episode、同一五视频SHA的已披露源片缺陷按本轮保持原素材要求保留；不构成QA通过，不继承到其他episode/资产，也不产生formal授权。"
+}

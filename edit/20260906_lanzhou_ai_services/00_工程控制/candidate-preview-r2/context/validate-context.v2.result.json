@@ -1,0 +1,48 @@
+{
+  "schema_version": "opc-task-context-validation/1.0",
+  "status": "context-valid",
+  "summary": "任务上下文、索引代际和必读文件哈希仍然有效",
+  "context_path": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260908-lanzhou-candidate-preview-r2-context-v2/context.json",
+  "task": {
+    "id": "opc-task-20260908-lanzhou-candidate-preview-r2-context-v2",
+    "project": "口播",
+    "objective": "20260906_lanzhou_ai_services R2低清context v2：仅因外部新增06_每日复盘/2026-09-08.md导致索引stale续绑。24份本条输入当前SHA未变，复用真实读取；62静帧已生成，等待新request的delta审核。不得重审历史、修改知识正文或工具；formal=false，原声、五段纸艺本条例外及13项ASR待核不变。",
+    "cwd": "/Users/pc/Documents/口播",
+    "important": true,
+    "external_action": false
+  },
+  "project_route": {
+    "project_id": "koubo",
+    "project_root": "/Users/pc/Documents/口播",
+    "match_status": "matched",
+    "execution_scope": {
+      "primary_project_id": "koubo",
+      "primary_project_root": "/Users/pc/Documents/口播",
+      "primary_access_mode": "task-scoped-read-write",
+      "write_allowed_roots": [
+        "/Users/pc/Documents/口播"
+      ],
+      "read_only_roots": [],
+      "related_project_rule": "关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。",
+      "write_escalation_rule": "确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。"
+    }
+  },
+  "index_generation": {
+    "manifest_sha256": "0b13a1c6fc64a18d3688899d2493b37a3dc5e53c17fd4f91fd352cb6e021c620",
+    "config_sha256": "7d80e391da915c1f4363776317039cad5b742609403f0a671c1ffb0fbc4e500d",
+    "embedding_model": "nomic-embed-text:latest",
+    "indexed_at": "2026-09-07T23:24:13.267579+00:00",
+    "database_sha256": "e1ec4a1271331f8beb3a10e971702eb688378e55cf1510b7c4918b5ac72a2985",
+    "id": "a1ed68cb169ced28a4787ed2a227e1960919b0342d440e87916943da9305b2cd"
+  },
+  "problems": [],
+  "gate": {
+    "formal_execution_allowed": true
+  },
+  "next_actions": [
+    "继续执行项目自身的质量、安全和人工验收门禁"
+  ],
+  "artifacts": [
+    "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260908-lanzhou-candidate-preview-r2-context-v2/context.json"
+  ]
+}
