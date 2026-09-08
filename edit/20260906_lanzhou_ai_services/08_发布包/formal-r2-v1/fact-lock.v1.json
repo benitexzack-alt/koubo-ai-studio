@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "task_id": "20260906_lanzhou_ai_services",
+  "scope": "仅发布包装文本，不改已录文稿、字幕、音频、制作或总发布记录",
+  "status": "text-facts-locked-pending-parent-source-binding",
+  "source_priority": "实录中文及其字幕文本为拍摄后内容依据；预拍确认稿仅作对照，不恢复未说内容",
+  "sources": [
+    {"id":"S1","path":"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/actual-spoken.v1.txt","sha256":"558e6340692ba67dc1020dfce262dc4dfa355c97ed7a9b4b7ad9d8f4c694fdc4","use":"已读本条完整实录文本，限定发布文案涉及的内容，不处理识别疑点"},
+    {"id":"S2","path":"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/09_实录与字幕/canonical-spoken.v1.json","sha256":"15d86d2fb9204464c1260c0afd1cd0afaaa75ec03ee28d126a11d162d5eac135","use":"结构化读取状态、来源和全部57条中文字幕；不把旧候选状态覆盖成正式已验收"},
+    {"id":"S3","path":"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/01_文稿/用户确认稿_仅预拍权威.txt","sha256":"55bad7768c22dcbc634fb8c275b8dfe3ddaabbbf6b8144d049960d34f65cedab","use":"已读，仅对照概念和事实边界，不作字幕正文"},
+    {"id":"S4","path":"/Users/pc/Documents/口播/knowledge/02-个人事实与公开边界.md","sha256":"653ccb1d2af772b526e025e5132ef61d0f8d17d658ea39f176157d5e156886ed","use":"实践者身份，不增客户数、收益、认证和官方关系"},
+    {"id":"S5","path":"/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md","sha256":"c90d07dfb414707035ddd59b6bea6faf88a35f9551649199b9a92d433785bb0d","use":"以具体动作和本地业务交流为主，不造成功学判断"}
+  ],
+  "claims": [
+    {"id":"F1","copy":"在兰州，把企业AI服务做下去","type":"用户已锁定的主标题及本人方向","evidence":"当前旁路指令；S2:c002、c048、c049","boundary":"不是业务效果或成熟服务体系证明"},
+    {"id":"F2","copy":"在兰州，陪企业把AI用到工作里","type":"备选标题，服务方向","evidence":"S2:c015、c016、c033、c034、c049","boundary":"不声称已经陪跑成功，不增加培训资质或客户结果"},
+    {"id":"F3","copy":"企业用AI，资料和答复都得有人核对","type":"本条工作方法概括","evidence":"S2:c023、c024、c027、c028","boundary":"不是自动无错答复，不保证具体系统能接入"},
+    {"id":"F4","copy":"企业资料怎么整理，员工用AI时怎么核对答复，这些具体的工作，我想在兰州继续做下去。","type":"本条服务方向与本人意愿","evidence":"S2:c024、c027、c028、c034、c048","boundary":"保留我想，不升级成已经实现或普遍有效"},
+    {"id":"F5","copy":"有这方面的需求，可以来找我，聊聊你手头的问题。","type":"平台内业务交流邀请","evidence":"S2:c054、c055、c056、c057","boundary":"不加联系电话、二维码、外链，不许诺回复时限或效果"},
+    {"id":"F6","copy":"有效资料 → 查找依据 → 员工核对 → 客户答复","type":"封面解释性流程","evidence":"S2:c024、c026、c027、c028","boundary":"四个节点各4字；人工核对不可省略；不能绘制为已实施客户案例"},
+    {"id":"F7","copy":"一起看业务","type":"封面副标题，交流方式","evidence":"S2:c049","boundary":"不虚构正在服务的企业现场"}
+  ],
+  "exclusions": ["政策原文与官方推荐或认证","付费交付、金额、盈利、客户数和客户结果","保证获客、推荐、成交或增收","未来自动经营的确定承诺","预拍稿中未在实录出现的追加行动要求","实录中的识别疑点及其擅自订正"],
+  "upstream_reuse": {
+    "content_gate_path": "/Users/pc/Documents/口播/notes/2026-09-06-请给予我包容和支持-内容门禁-v1.json",
+    "content_gate_sha256": "9d44d38400e86b02bbc995c67b16e024375064cc0314d2376ddf58fabc56361e",
+    "validation_path": "/Users/pc/Documents/口播/notes/2026-09-06-请给予我包容和支持-成稿校验-v1.json",
+    "validation_sha256": "f05589aa6078f641284c3978911e92d9d07e952f5e122199a03fe2fb21a4c161",
+    "observed_validation_status": "ready-for-draft",
+    "scope": "沿用本条已存在的选题、机制与写稿依据；不是本次重跑研究，不据此宣布正式成片已验收",
+    "latest_user_authorization_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/00_工程控制/formal-r2-v1/user-authorization.evidence.json",
+    "latest_user_authorization_sha256": "afd49c868cc92360d10c67247c64180bd2154ac652789195eaf9c4761404ff51",
+    "latest_user_quote": "其他都没有问题，现在就是音效，抓紧把音效改完之后直接出成片。",
+    "canonical_record_status_preserved": "needs-user-audio-review",
+    "formal_state_owner": "父任务；本旁路不重绑实录或升级发布状态"
+  },
+  "unverified": ["本条正式成片与真人截图尚未绑定到本发布包","封面尚未生成或人工验收","新发布包装语言尚未取得单独用户确认","未运行平台当前发布、推荐、投放或交易核验"]
+}

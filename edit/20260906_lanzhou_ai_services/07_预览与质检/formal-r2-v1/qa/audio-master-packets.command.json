@@ -1,0 +1,20 @@
+{
+  "exe": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+  "args": [
+    "-v",
+    "error",
+    "-select_streams",
+    "a:0",
+    "-show_packets",
+    "-show_data_hash",
+    "sha256",
+    "-show_entries",
+    "packet=pts,dts,duration,size,data_hash",
+    "-of",
+    "json",
+    "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/formal-r2-v1/mix-minus-0.3dB.m4a"
+  ],
+  "exitCode": 0,
+  "error": null,
+  "at": "2026-09-08T04:03:13.682Z"
+}

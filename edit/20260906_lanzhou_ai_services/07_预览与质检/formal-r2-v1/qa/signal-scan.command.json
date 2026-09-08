@@ -1,0 +1,19 @@
+{
+  "exe": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+  "args": [
+    "-hide_banner",
+    "-nostats",
+    "-i",
+    "/Users/pc/Documents/口播/outputs/在兰州把企业AI服务做下去_V9.1_R2_音效修订_1080P正式候选.mp4",
+    "-vf",
+    "blackdetect=d=0.2:pix_th=0.1,freezedetect=n=-50dB:d=2",
+    "-af",
+    "silencedetect=noise=-50dB:d=2,ebur128=peak=true",
+    "-f",
+    "null",
+    "-"
+  ],
+  "exitCode": 0,
+  "error": null,
+  "at": "2026-09-08T04:03:09.365Z"
+}

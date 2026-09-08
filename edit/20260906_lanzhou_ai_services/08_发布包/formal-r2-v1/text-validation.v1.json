@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "task_id": "20260906_lanzhou_ai_services",
+  "checked_at": "2026-09-08T03:40:12.919Z",
+  "status": "scoped-text-checks-passed-full-copy-gate-not-passed",
+  "scope": "只读局部文案检查，不运行研究、账号预检、KB索引、音频或制作验证，不改变父任务已批准的正式渲染",
+  "inputs": [
+    {"file":"publishing-copy.v1.txt","sha256":"998d31dea904de46835f9e3086d4bc57c2fd2ab322a30c3603ed6c511e44098d"},
+    {"file":"cover-prompt.v1.txt","sha256":"04a43fed617f81f4b4f71a265b534fc1897b9f9d381e81c4e93f83739930cb6f"},
+    {"file":"fact-lock.v1.json","sha256":"7a130e0dbb75dbd6ddaf3f7ba2671c94c6f4cec062f192160d1d452e50714fb6"},
+    {"file":"copy_review.v1.json","sha256":"80e930d9a12d915be5085cbb4fd6967ea8e73a7bf04b66bdc8d394825ec0c982"},
+    {"file":"parent-binding.pending.v1.json","sha256":"c457089fd7ef2e135c0cca50fecd0cc5ad470da7fb73d60a574b3de4ae892ed5"}
+  ],
+  "structural_check": {
+    "runtime": "本机Node.js，只读文件、解析JSON、计算SHA-256并运行断言；未写入脚本或日志",
+    "assertion_count": 19,
+    "exit_code": 0,
+    "checks": ["锁定主标题未改","恰好两个备选标题","五个话题","公开文字未包含新增官方推荐、认证、收益或保证强结论","正文哈希匹配","封面提示词哈希匹配","事实锁哈希匹配","两项Skill各自哈希匹配","五项原始事实与声音来源各自哈希匹配且未改变","封面母版哈希匹配","母版正文仅替换八个方括号字段，与预期替换后逐字相等","未伪造截图存在","未伪造朗读通过","正式成片和截图字段仍待绑定"],
+    "publish_caption_characters": 64
+  },
+  "project_validator": {
+    "path": "/Users/pc/Documents/口播/skills/content-brain-gate/scripts/validate_content_gate.py",
+    "sha256": "996326f0531635071982098a813688cc360b60b458108322e2d4dd742cf8bf93",
+    "invocation_mode": "python3 -B导入现存GateValidator，仅调用validate_copy_review、scan_frozen_phrases、scan_project_style_gate；禁用字节码写入，不执行完整内容门禁或任何索引",
+    "style_scan": {
+      "scope": "publishing-copy.v1.txt全文，加封面实际可见副标题和四个中文节点；主标题已包含在正文文件",
+      "errors": [],
+      "warnings": [],
+      "passed": ["项目语言失败样本与历史锚点机器扫描已通过"]
+    },
+    "copy_review_schema": {
+      "status": "not-passed",
+      "errors": ["draft.copy_review.status 必须为 passed","draft.copy_review.checks.read_aloud_completed 必须为 true"],
+      "warnings": [],
+      "interpretation": "两项为如实保留的范围限制：本旁路没有朗读或音频操作，故没有将报告标为passed。其余哈希、字段、双Skill和事实保真校验未报错。不能拿本报告冒充完整制作门禁已通过。"
+    }
+  },
+  "not_verified_here": ["真人朗读和新包装语言的用户确认","正式成片与截图同源绑定","封面成图及最终人工验收","真实平台公开发布、推荐、投放或交易资格"],
+  "write_boundary": "本任务只新建当前formal-r2-v1目录内的txt和json，未覆写任何原始文稿、字幕、图片、音频、KB或总发布记录。"
+}

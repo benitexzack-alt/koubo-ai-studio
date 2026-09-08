@@ -1,0 +1,48 @@
+{
+  "schema_version": "opc-task-context-validation/1.0",
+  "status": "context-valid",
+  "summary": "任务上下文、索引代际和必读文件哈希仍然有效",
+  "context_path": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260908-lanzhou-r2-formal-v2/context.json",
+  "task": {
+    "id": "opc-task-20260908-lanzhou-r2-formal-v2",
+    "project": "口播",
+    "objective": "兰州企业AI服务R2正式交付：用户已确认其他内容且明确要求音效改完直接成片。当前新job绑定8393帧、8149帧完整原口播、244帧新闻、5条本条已接受纸艺、实录字幕及R2完整混音。仅全局-0.3dB和原1920视频输出，不改文案或视觉，不复用旧事故链，不外部调用，不发布；旧预览formal=false保持。",
+    "cwd": "/Users/pc/Documents/口播",
+    "important": true,
+    "external_action": false
+  },
+  "project_route": {
+    "project_id": "koubo",
+    "project_root": "/Users/pc/Documents/口播",
+    "match_status": "matched",
+    "execution_scope": {
+      "primary_project_id": "koubo",
+      "primary_project_root": "/Users/pc/Documents/口播",
+      "primary_access_mode": "task-scoped-read-write",
+      "write_allowed_roots": [
+        "/Users/pc/Documents/口播"
+      ],
+      "read_only_roots": [],
+      "related_project_rule": "关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。",
+      "write_escalation_rule": "确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。"
+    }
+  },
+  "index_generation": {
+    "manifest_sha256": "31afeb76b60d5a20167d07b30855d4e6662add5ea3eba1e4e77cc2e1e5646b69",
+    "config_sha256": "7d80e391da915c1f4363776317039cad5b742609403f0a671c1ffb0fbc4e500d",
+    "embedding_model": "nomic-embed-text:latest",
+    "indexed_at": "2026-09-08T03:30:46.998335+00:00",
+    "database_sha256": "f1a767428a94c173db9d14456e961893f9eb3a3a85571d99e405754d3af0d184",
+    "id": "f5f4467b0ef81994e751731bcf078bb775f101380a5af5a0d9bec0c8bb72b584"
+  },
+  "problems": [],
+  "gate": {
+    "formal_execution_allowed": true
+  },
+  "next_actions": [
+    "继续执行项目自身的质量、安全和人工验收门禁"
+  ],
+  "artifacts": [
+    "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260908-lanzhou-r2-formal-v2/context.json"
+  ]
+}

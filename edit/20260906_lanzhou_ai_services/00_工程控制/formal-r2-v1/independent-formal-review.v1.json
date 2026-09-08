@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "lanzhou-r2-independent-scoped-formal-review/v1",
+  "decision": "allow-scoped-formal",
+  "reviewerId": "independent-context-reviewer-r2-resumed",
+  "implementerId": "019f3383-706c-78f3-9dbe-6c6b20affb59",
+  "reviewedAt": "2026-09-08T03:36:25.219Z",
+  "episode": "20260906_lanzhou_ai_services",
+  "jobPath": "edit/20260906_lanzhou_ai_services/00_工程控制/formal-r2-v1/job.v2.json",
+  "jobSha256": "1ce95b6568e8705eb717b804d1c88bedebc2df5b2f78bf86acb83b2483897b13",
+  "priorJobSha256": "5c2608e68673ad9365bfbad25e3101d71b5870198c7f4eaf7dd7b6733a4aa9cc",
+  "p0": 0,
+  "p1": 0,
+  "scope": "承接前轮六个正式执行文件及 job.v1 的静态审查；本轮仅复核 FFmpeg 固定真实路径及 SHA、调用前核验、拒绝测试，以及 job.v2 与 context-v2 的绑定代际差异。不重审历史研究、R2 源码视觉或既有 62 静帧，不宣称完成正式片 QA。",
+  "resolvedFindings": [
+    {
+      "id": "P1-FFMPEG-IDENTITY",
+      "status": "closed",
+      "evidence": "formal-core 固定音频处理器真实路径及 SHA；verifyJob 严格核对 job.ffmpeg 并检查实际字节；runLog 在每次 FFmpeg 调用前核验身份。错误路径及错误字节均被测试拒绝，实际身份校验通过。",
+      "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+      "sha256": "329fa7360b28a067a0cd7281474bb18cd868932d5173646a674466bcb56d6e93"
+    }
+  ],
+  "verification": {
+    "testCommand": "node --test edit/20260906_lanzhou_ai_services/00_工程控制/formal-r2-v1/test.mjs",
+    "testExitCode": 0,
+    "testsPassed": 5,
+    "testsFailed": 0,
+    "verifyJobExitCode": 0,
+    "verifyFfmpegExitCode": 0,
+    "boundInputsVerified": 60,
+    "runtimeSha256": "f0649c76836fec6059a3757bd42d50e6a4104877873609cc9a2f3410c3ae5597",
+    "jobDelta": "仅四项执行代码绑定 SHA 更新、增加 ffmpeg 身份及修订原因；媒体、渲染参数、许可和输入集合未变。worker 与 prepare 未变。",
+    "changedCodeSha256": {
+      "formal-core.mjs": "4f67bd544863e750ebbafc426ee2388762a3384d68735f8dbb39e5a847812728",
+      "run.mjs": "3e2b1cb4e6ce515f80a1ae712d4d8213ac222db740a8ec00610c4fa51682c8eb",
+      "start-context.mjs": "610e6d052a0997a35e771664f9e910cdb14a70941f76bae254a96d9b164f8b0a",
+      "test.mjs": "ca441c5d92de03d9076d7dd519d575cb22f088c3d4638ee1b14cb6cd9da83d66"
+    },
+    "contextBinding": {
+      "taskId": "opc-task-20260908-lanzhou-r2-formal-v2",
+      "contextPath": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/opc-task-20260908-lanzhou-r2-formal-v2/context.json",
+      "sha256": "36f2651eda8e78762dac2c9dc511536be6b18cf2c80b5f7b35f34a5b305aefe7",
+      "recordedStartExitCode": 0,
+      "recordedValidationStatus": "context-valid",
+      "recordedValidationProblems": [],
+      "contextFileHashMatched": true,
+      "indexDatabaseHashMatchedAtReview": true,
+      "taskOriginalMaterialJobV2HashMatched": true,
+      "officialStartOrValidateRepeatedByReviewer": false,
+      "boundary": "读取既有真实回执并核对当前绑定，不替代执行时的只读 context-before/after。"
+    }
+  },
+  "authorizedExecution": {
+    "scope": "仅本条本地隔离正式执行器，不放宽共享门禁，不授权公开发布。",
+    "visual": "保持 R2 组件字节；独立 staging 仅 R01 替换为已绑定 1920 原 MOV 字节，其余 21 项资产不变；同帧时序，1920x1080、30fps、8393 帧、CRF16、muted 完整渲染。",
+    "audio": "仅复用已绑定 R2 raw 完整混音，统一 volume=-0.3dB:precision=double，AAC320k 编码一次；不调整 26 声卡相对配比、时点或保护原声内容。",
+    "preRenderCondition": "先对收尾 AAC 实测真峰值 <= -1dBFS 才进入高清视频渲染；任一身份、上下文或音频检查失败即停止。",
+    "mux": "高清视频与已检查 AAC 显式选流后 -c copy 封装；不裁剪、不使用 shortest，保留既有约 63ms 音频尾巴。",
+    "remainingChecksOwner": "父任务负责最终解码、帧数及时序、视频流复制一致性、音频增益及真峰值、正式源替换差异检查和听感验收；本回执不替代这些证据。"
+  },
+  "knownExceptions": [
+    "保留本条 13 项 ASR 未解疑点及既有用户接受边界，不因音量调整或视觉确认自动消除。",
+    "保留本条五段纸艺源例外：P01 无效纸片流向知识库；P02 确认因果不清及源片下方纸片区域；P03 试用标签短时遮挡；P04 展开时标签变形；P05 权限标签消失后返回。仅限既有本条资产，不是通用 QA 豁免。",
+    "非阻断 P2：部分 marker 长句的标点或尾字单独换行，既有静帧中内容完整且不遮挡。",
+    "R1/R2 纸艺存在真实像素差异：P01/P02/P03/P04/P05 的 SSIM 分别为 .995467/.996554/.991832/.987809/.994245；NEWS 为 1。.995 是父任务保守筛查值而非项目硬阈值。父任务报告 P03/P04/P05 首中尾九对图未见物件、标签、位置或字幕内容变化；有损编码原因未证实，不宣称逐帧像素相等。",
+    "既有六区间 PCM 相等证据限于 8kHz 单声道 f32le 对照，不冒充原始 48kHz 双声道逐样本相等；不能替代本次正式输出 QA。",
+    "R2 raw 真峰值 -0.9dBFS 的未闭合事实保留；收尾输出尚不能宣称达标，必须以后续实测为准。"
+  ],
+  "formalEnabled": true,
+  "publishAuthorized": false,
+  "externalActionsAllowed": false,
+  "currentSharedPostshootValidatorPassed": false,
+  "cryptographicProductionAuthorization": false,
+  "finalQaPassed": false,
+  "userFinalFullWatchAccepted": false,
+  "renderPerformedByReviewer": false,
+  "additionalStillsReviewedThisDelta": false,
+  "finalStatusCeiling": "ready-for-user-review"
+}

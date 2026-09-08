@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "task_id": "20260906_lanzhou_ai_services",
+  "status": "reviewed-with-scope-limits",
+  "reviewed_at": "2026-09-08T03:37:08Z",
+  "scope": "发布包装文案和封面中的可见文字；不改实录、字幕、声音和已锁定主标题，不替代父任务生产门禁",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/publishing-copy.v1.txt",
+    "sha256": "998d31dea904de46835f9e3086d4bc57c2fd2ab322a30c3603ed6c511e44098d"
+  },
+  "additional_reviewed_texts": [
+    {"path":"/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/cover-prompt.v1.txt","sha256":"04a43fed617f81f4b4f71a265b534fc1897b9f9d381e81c4e93f83739930cb6f","use":"全文核查母版遵从、未绑定截图状态和实际将绘制的标题、副标题、四节点；制作指令不当作口播句子"}
+  ],
+  "fact_lock": {
+    "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/fact-lock.v1.json",
+    "sha256": "7a130e0dbb75dbd6ddaf3f7ba2671c94c6f4cec062f192160d1d452e50714fb6"
+  },
+  "skills": {
+    "humanizer_zh": {"path":"/Users/pc/.codex/skills/humanizer-zh/SKILL.md","sha256":"e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb","read":true},
+    "humanize_koubo_script": {"path":"/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md","sha256":"235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581","read":true}
+  },
+  "execution_order": ["读取实录及现存门禁、事实和声音依据","建立F1至F7事实锁","执行humanizer-zh模式扫描","执行humanize-koubo-script事实差异与本人声音复核","执行留存风险审稿","绑定当前两份文本的SHA-256","调用现存校验器的只读文案审稿与语言扫描方法"],
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": false,
+    "voice_match_completed": true
+  },
+  "read_aloud_boundary": {
+    "text_rhythm_review_completed": true,
+    "audio_generated_or_changed": false,
+    "human_read_aloud_performed": false,
+    "user_language_approval": null,
+    "reason": "本旁路明确不触碰音频。已逐句做文字口语节奏检查，但未进行大声朗读、真人听读或合成语音，不把文字默读冒充朗读完成。此报告不能直接替换要求六项检查全真的完整口播制作报告。"
+  },
+  "humanizer_pattern_scan": {
+    "reviewed_units": ["主标题","备选标题一","备选标题二","发布文案第一句","发布文案第二句","五个话题","封面标题、副标题及四个节点"],
+    "patterns_1_to_6": "未用时代意义、知名度、空泛分析、宣传形容、模糊权威或挑战展望结构；不复制实录的政策段。",
+    "patterns_7_to_12": "保留必要的AI术语；未用否定式排比、三段式凑数、同义词循环或虚假跨度。四节点承担实际工作顺序，不为形式凑列表。",
+    "patterns_13_to_18": "公开文字没有破折号、表情装饰和机械粗体；中文引号仅在提示词排版说明中用于锁定文字。",
+    "patterns_19_to_24": "没有聊天机器人客套、训练截止免责声明、谄媚、填充词、多重可能性或泛化积极结论。保留我想以维持本人意愿口径。",
+    "template_exception": "封面母版中的电影级、商业感等是已锁定的视觉制作指令，不进入标题或发布文案，也不是本人业绩主张；固定中文系列名称中的AI及母版原有UI、PPT、Logo术语原样保留，未新增英文提示段。",
+    "substantive_rewrites_to_recorded_script": [],
+    "finding": "未发现需要为了去AI味而改写已锁定主标题或实录正文的问题。"
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "各项表示已检查且无遗留问题，不声称每项都发生了删除。发布文案直接说企业资料和答复核对，没有解释我准备怎么讲；保留我想表达方向，官方身份等审稿边界留在事实锁；没有万能转场或插入政策材料；一条具体工作线配一次交流邀请，不把全部口播段落压成服务清单。"
+  },
+  "retention_review": {
+    "risk_node_count": 0,
+    "nodes": [],
+    "no_high_risk_reason": "未发现需要强改的高风险句。仅审发布入口文字，不评价整段已录口播留存：正文第一句即出现资料整理和员工核对答复，第二句只留一个交流邀请；没有夸张成果钩子、突兀政策引用或长篇术语铺垫。主标题已由用户锁定，不以吸引力预测为由改动。",
+    "prediction_only": true,
+    "lower_risk_observations": ["主标题偏本人选择，陌生观众的具体所得相对不显眼，发布文案用资料和答复核对补充对象；不预测实际完播率或流量。","封面主标题较长，已明确三行分组；最终小尺寸可读性、人物无遮挡必须由父任务绑定截图后再验收。"]
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": ["两个备选标题、简短发布文案及封面可见文字是本旁路新整理，待父任务一并交用户确认；主标题沿用当前锁定值。"]
+  },
+  "fact_comparison_notes": [
+    "本报告的无新增事实指F1至F7相对现有实录事实底座；包装是摘要，不是逐字字幕。",
+    "未改动已录正文，因此不存在删除已录事实。政策、学习投入、既往付费交付和未来展望未选入包装，不代表从视频删去。",
+    "备选一的陪企业对应服务方向，不使用已经、成功或结果数字；备选二由资料版本确认与人工核对答复概括。",
+    "封面流程保留员工核对，最终客户答复以前置人工确认为条件；不生成虚假企业后台。",
+    "截图身份、服饰、表情、姿态遵从母版；未声称截图已生成，source待父任务绑定。"
+  ],
+  "voice_match": {
+    "basis": "本条S2:c024、c027、c028、c048、c049、c054至c057及当前声音档案",
+    "evidence": "使用整理资料、核对答复、聊手头问题等具体动作；我想保留实践者位置，不增我已经成功或导师身份。",
+    "locked_title_exception": "本条沿用用户明确锁定的兰州服务主标题，不将历史身份母题当作本旁路重新选题。"
+  },
+  "scores": {"directness":9,"spoken_naturalness":9,"rhythm":8,"personal_voice":9,"fact_fidelity":10},
+  "score_boundary": "五项为本轮编辑判断，不是用户评分、真实留存数据或商业效果。",
+  "production_or_publication_approval_granted": false,
+  "binding_rule": "任一包装文本或Skill改变一个字都须重审并更新SHA-256；父任务不得将本报告的局部编辑审查解释为published或verified。"
+}

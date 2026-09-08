@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "task_id": "20260906_lanzhou_ai_services",
+  "checked_at": "2026-09-08T03:56:10.545Z",
+  "status": "passed",
+  "type": "local-tts-duration-check",
+  "scope": "父任务已经生成的本地机器朗读文件，仅作时长、容器和完整解码技术检查；不播放、不生成新音频、不入成片",
+  "read_aloud_completed": true,
+  "humanRead": false,
+  "userLanguageApproval": null,
+  "input_text": {
+    "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/publishing-copy.v1.txt",
+    "sha256": "998d31dea904de46835f9e3086d4bc57c2fd2ab322a30c3603ed6c511e44098d",
+    "bytes": 470,
+    "scope": "完整publishing-copy.v1.txt，含主标题、备选标题、发布文案及话题，不是仅64字发布文案"
+  },
+  "audio": {
+    "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/发布文字_机器朗读检查_不入成片.aiff",
+    "sha256": "51ade451222c3bb4e42d84288195c7744b6001221986e7a7ca3003757267db74",
+    "bytes": 1263756,
+    "format_name": "aiff",
+    "apple_file_type": "AIFC",
+    "codec_name": "pcm_s16be",
+    "sample_rate_hz": 22050,
+    "channels": 1,
+    "bits_per_sample": 16,
+    "sample_count": 629830,
+    "duration_seconds": 28.563719,
+    "pcm_audio_bytes": 1259660,
+    "audio_data_offset_bytes": 4096
+  },
+  "generation_provenance": {
+    "reported_by": "父任务当前明确消息",
+    "engine": "本机macOS say",
+    "voice": "Tingting",
+    "rate": 190,
+    "reported_exit_code": 0,
+    "independently_observed_generation_exit_code": null,
+    "independently_regenerated": false,
+    "source_binding_basis": "父任务明确报告由publishing-copy.v1.txt生成；本次独立复核该文本当前SHA-256与v1审稿绑定一致，并绑定实际AIFF文件SHA-256。",
+    "acoustic_transcription_match_performed": false,
+    "boundary": "本次未重跑合成、没有逐字ASR或真人听读；双文件哈希与父任务生成来源说明不冒充逐字声学一致性认证。"
+  },
+  "technical_checks": [
+    {
+      "method": "ffprobe",
+      "command": "/opt/homebrew/bin/ffprobe -v error -show_entries format=format_name,duration,size:stream=index,codec_name,codec_type,sample_rate,channels,bits_per_sample,duration,duration_ts,time_base -of json '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/发布文字_机器朗读检查_不入成片.aiff'",
+      "exit_code": 0,
+      "result": "单声道22050Hz、16位大端PCM，629830个采样，时长28.563719秒。"
+    },
+    {
+      "method": "ffmpeg-full-decode",
+      "command": "/opt/homebrew/bin/ffmpeg -hide_banner -nostdin -v error -xerror -err_detect explode -i '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/发布文字_机器朗读检查_不入成片.aiff' -map 0:a:0 -f null -",
+      "exit_code": 0,
+      "stderr": "",
+      "complete_input_decoded": true,
+      "output_target": "空输出，不生成文件",
+      "result": "完整输入解码退出码0，无解码错误输出。"
+    },
+    {
+      "method": "afinfo",
+      "command": "/usr/bin/afinfo '/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/发布文字_机器朗读检查_不入成片.aiff'",
+      "exit_code": 0,
+      "result": "AIFC容器，单声道22050Hz、16位大端PCM，629830个音频包，1259660字节音频数据，时长28.563719秒，与ffprobe一致。"
+    },
+    {
+      "method": "sha256",
+      "result": "实际AIFF与发布文本分别计算并绑定SHA-256，发布文本与copy_review.v1.json记录一致。"
+    }
+  ],
+  "limitations": {
+    "human_listening_performed": false,
+    "user_read_aloud_performed": false,
+    "tts_used_in_video": false,
+    "subjective_pronunciation_or_naturalness_verified": false,
+    "full_content_gate_passed": false,
+    "ready_for_production_granted": false,
+    "publication_authorized": false
+  },
+  "interpretation": "read_aloud_completed=true仅记录本地TTS时长技术检查已执行；不等于真人朗读、真人听读、用户语言确认或完整内容门禁通过。仅供发布包ready-review的局部审稿证据。"
+}

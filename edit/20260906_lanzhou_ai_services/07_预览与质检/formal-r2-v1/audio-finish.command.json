@@ -1,0 +1,25 @@
+{
+  "exe": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+  "args": [
+    "-hide_banner",
+    "-nostdin",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/candidate-preview-r2/render/with-sfx-960x540.mp4",
+    "-map",
+    "0:a:0",
+    "-vn",
+    "-af",
+    "volume=-0.3dB:precision=double",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "320k",
+    "-movflags",
+    "+faststart",
+    "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/07_预览与质检/formal-r2-v1/mix-minus-0.3dB.m4a"
+  ],
+  "exitCode": 0,
+  "error": null,
+  "at": "2026-09-08T03:40:41.228Z"
+}

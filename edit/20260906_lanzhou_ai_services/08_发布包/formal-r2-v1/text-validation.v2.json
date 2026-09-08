@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "task_id": "20260906_lanzhou_ai_services",
+  "revision": 2,
+  "checked_at": "2026-09-08T03:59:08.214Z",
+  "status": "passed",
+  "scope": "仅双Skill局部文案、项目语言/历史扫描和本地TTS技术证据，不是完整内容门禁或生产验收",
+  "package_status": "ready-review",
+  "humanRead": false,
+  "userLanguageApproval": null,
+  "full_content_gate_run": false,
+  "full_content_gate_passed": false,
+  "ready_for_production_granted": false,
+  "supersedes": {
+    "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/text-validation.v1.json",
+    "sha256": "14571c62be67b1c873e716dd41e914575f3b81a2980105e5ad21b18ccf2a46f4",
+    "history_preserved": true,
+    "reason": "新增父任务TTS实物技术证据，局部copy_review检查重新执行并通过；原回执不覆盖。"
+  },
+  "inputs": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/read-aloud-technical.v1.json",
+      "sha256": "de28aa38af43be7b8c78b7aa0a81006f2cad968ba31fa9f30504cbf35cbc83c7"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/copy_review.v2.json",
+      "sha256": "4a2a87b65899ba56e64a453054bde6ae6f228be8b8e05180535c8400f622dab7"
+    }
+  ],
+  "protected_baseline": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/copy_review.v1.json",
+      "sha256": "80e930d9a12d915be5085cbb4fd6967ea8e73a7bf04b66bdc8d394825ec0c982",
+      "bytes": 7217
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/cover-prompt.v1.txt",
+      "sha256": "04a43fed617f81f4b4f71a265b534fc1897b9f9d381e81c4e93f83739930cb6f",
+      "bytes": 6115
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/fact-lock.v1.json",
+      "sha256": "7a130e0dbb75dbd6ddaf3f7ba2671c94c6f4cec062f192160d1d452e50714fb6",
+      "bytes": 5188
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/parent-binding.pending.v1.json",
+      "sha256": "c457089fd7ef2e135c0cca50fecd0cc5ad470da7fb73d60a574b3de4ae892ed5",
+      "bytes": 2008
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/publishing-copy.v1.txt",
+      "sha256": "998d31dea904de46835f9e3086d4bc57c2fd2ab322a30c3603ed6c511e44098d",
+      "bytes": 470
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/text-validation.v1.json",
+      "sha256": "14571c62be67b1c873e716dd41e914575f3b81a2980105e5ad21b18ccf2a46f4",
+      "bytes": 3235
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/发布文字_机器朗读检查_不入成片.aiff",
+      "sha256": "51ade451222c3bb4e42d84288195c7744b6001221986e7a7ca3003757267db74",
+      "bytes": 1263756
+    }
+  ],
+  "structural_and_binding_check": {
+    "runtime": "本机Node.js，只读JSON解析、SHA-256和断言；未创建脚本或缓存",
+    "exit_code": 0,
+    "assertion_count": 32,
+    "checks": [
+      "既有文件未改变:copy_review.v1.json",
+      "既有文件未改变:cover-prompt.v1.txt",
+      "既有文件未改变:fact-lock.v1.json",
+      "既有文件未改变:parent-binding.pending.v1.json",
+      "既有文件未改变:publishing-copy.v1.txt",
+      "既有文件未改变:text-validation.v1.json",
+      "既有文件未改变:发布文字_机器朗读检查_不入成片.aiff",
+      "哈希绑定:publishing-copy.v1.txt",
+      "哈希绑定:发布文字_机器朗读检查_不入成片.aiff",
+      "哈希绑定:publishing-copy.v1.txt",
+      "哈希绑定:fact-lock.v1.json",
+      "哈希绑定:cover-prompt.v1.txt",
+      "哈希绑定:SKILL.md",
+      "哈希绑定:SKILL.md",
+      "哈希绑定:read-aloud-technical.v1.json",
+      "本地TTS技术类型",
+      "仅技术朗读已执行",
+      "不冒充真人朗读",
+      "用户语言确认保持空值",
+      "事实保真10分",
+      "局部审稿状态passed",
+      "发布包仅ready-review",
+      "机器朗读不入成片",
+      "封面保留v1待绑定",
+      "PCM样本时长一致",
+      "音频数据与文件大小一致",
+      "完整解码退出码为0",
+      "实录与原始依据未改变:S1",
+      "实录与原始依据未改变:S2",
+      "实录与原始依据未改变:S3",
+      "实录与原始依据未改变:S4",
+      "实录与原始依据未改变:S5"
+    ]
+  },
+  "technical_audio_summary": {
+    "type": "local-tts-duration-check",
+    "duration_seconds": 28.563719,
+    "sample_rate_hz": 22050,
+    "sample_count": 629830,
+    "full_decode_exit_code": 0,
+    "afinfo_duration_agrees": true,
+    "read_aloud_completed": true,
+    "humanRead": false,
+    "userLanguageApproval": null,
+    "tts_used_in_video": false,
+    "evidence_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/read-aloud-technical.v1.json",
+    "evidence_sha256": "de28aa38af43be7b8c78b7aa0a81006f2cad968ba31fa9f30504cbf35cbc83c7"
+  },
+  "project_validator": {
+    "path": "/Users/pc/Documents/口播/skills/content-brain-gate/scripts/validate_content_gate.py",
+    "sha256": "996326f0531635071982098a813688cc360b60b458108322e2d4dd742cf8bf93",
+    "invocation_mode": "python3 -B通过importlib导入现存GateValidator，仅调用validate_copy_review、scan_frozen_phrases、scan_project_style_gate；未执行完整内容门禁或任何研究、KB索引、制作命令。",
+    "copy_review": {
+      "errors": [],
+      "warnings": [],
+      "passed": [
+        "copy_review 的稿件与 Skill 哈希、字段和事实保真凭证完整；该结果不代表正文语义通过，仍须接受项目语言与历史锚点扫描"
+      ]
+    },
+    "language_and_history": {
+      "errors": [],
+      "warnings": [],
+      "passed": [
+        "项目语言失败样本与历史锚点机器扫描已通过"
+      ]
+    },
+    "language_scan_scope": "publishing-copy.v1.txt全文，加封面实际可见副标题和四个中文节点；主标题已包含于发布文字，未将提示词制作说明冒充口播正文。",
+    "exit_code": 0
+  },
+  "cover": {
+    "prompt_path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/08_发布包/formal-r2-v1/cover-prompt.v1.txt",
+    "prompt_sha256": "04a43fed617f81f4b4f71a265b534fc1897b9f9d381e81c4e93f83739930cb6f",
+    "source": null,
+    "status": "pending-parent-source-binding",
+    "next_action": "由父任务从正式MP4提取本条真人截图后进行v3最终绑定；本轮不改cover。"
+  },
+  "remaining_boundaries": [
+    "机器技术检查不证明真人听读、逐字声学一致性或用户语言确认",
+    "发布包仅ready-review，不是新稿ready-production；完整内容门禁没有在本旁路运行",
+    "正式MP4、截图、时间点和来源哈希仍待父任务绑定",
+    "最终人工验收和公开发布不在本旁路权限内"
+  ],
+  "owned_writes": [
+    "read-aloud-technical.v1.json",
+    "copy_review.v2.json",
+    "text-validation.v2.json"
+  ],
+  "prohibited_actions_not_performed": [
+    "覆盖v1",
+    "修改AIFF或制作音频",
+    "修改原片、实录或字幕",
+    "修改共享工程或工具",
+    "写全局KB或索引",
+    "网络或付费调用",
+    "Git提交"
+  ]
+}
