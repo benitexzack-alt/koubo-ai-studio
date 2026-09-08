@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260908T005854Z-49aee259",
+  "status": "passed",
+  "reviewed_at": "2026-09-08T01:13:33.266Z",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-09-08-兰州AI创业-口播稿-v2.md",
+    "sha256": "1b7ca961d48cb414d0dde2eb00a0154c48810c75c6021354f1446640ef3745d3"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "review_method": {
+    "scope": "本条编辑审查和文件绑定，不证明真人认可、文案能提高留存或发布准入。",
+    "tts_timing": "当前最终正文以本机Tingting、速率220合成为264.397279秒；仅为机器计时，不是本人实际口播时长、真人试听或朗读确认。",
+    "read_aloud": "按中文呼吸和停顿逐句进行编辑审读，检查长并列与问句衔接；不是本人朗读，不是模型已听到真实人声。机器计时另记录，不作为用户证据。",
+    "source_semantics": "原文、摘要、提纲、正文逐节点独立比较，见保真对照；不再用机器计数代替源头保真。"
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "不使用‘今天不讲/关键在于/更现实的判断’；将‘那什么样的人’换成客户已会用AI后的付费问题。两条方向早段交代、异地市场中段展开；价格压力回扣差异。边界放入远程与现场、看见与成交的判断中，来源标签和首句风险留附录。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "AI将成为普通人的最后一次创业风口。",
+        "risk_level": "high",
+        "reason": "最后一次无法验证，可能使观众误读为催促创业或风口课程；正文提供条件与路径，不能证明未来不再有机会。",
+        "candidates": {
+          "conservative": "AI可能是普通人值得认真尝试的一次创业机会。",
+          "direct": "留在兰州，用AI做生意，可以看看这两条路。",
+          "vivid": "人在兰州，能不能用AI把生意做到外地？"
+        },
+        "fact_difference": "不新增事实，但均改变锁定钩子或强度；未擅自替换。",
+        "recommendation": "本轮按用户指定保留，紧接‘我看好的是’表达具体个人判断；风险未被消除，待用户审阅与发布前单独裁决。"
+      },
+      {
+        "original": "那什么样的人，比较有可能把这件事做下去？",
+        "risk_level": "medium",
+        "reason": "原转场对象空泛，容易变成导师总结；当前段需要承接客户为何付费。",
+        "candidates": {
+          "conservative": "只会用工具，还不够把服务做好。",
+          "direct": "客户自己也会用AI了，他还需要你做什么？",
+          "vivid": "客户打开同样的工具，你还准备替他干哪些活？"
+        },
+        "fact_difference": "均使用同一‘工具可得、服务仍需行业判断’底座，没有新增客户经历或效果。",
+        "recommendation": "采用直接版，把提问放回付费者，后文用理解问题、核对输出和交付作回答。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "不沿用来源关于AI改变交易范围的排他因果：补充远程服务早已存在，AI只是增加部分制作能力。",
+      "原片低成本普遍优势改为居住与搬迁条件下可能节省。",
+      "原片简单服务价格会下降改为收费可能更难，非价格统计。"
+    ],
+    "pending_user_confirmations": [
+      "当前稿语言是否像本人、实际朗读时长。",
+      "锁定首句的绝对化与信任风险。",
+      "结尾当前可承担服务范围。"
+    ]
+  },
+  "scores": {
+    "directness": 8,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "score_boundary": "事实保真10指未在事实锁之外增造经历或把观点升级为事实，不指首句预测被证实；本人感等为编辑自评，最终由用户判断。",
+  "manual_changes": [
+    {
+      "before": "那什么样的人，比较有可能把这件事做下去？",
+      "after": "客户自己也会用AI了，他还需要你做什么？",
+      "reason": "从泛化筛选人群变成客户付费问题。"
+    },
+    {
+      "before": "咱们在本地，能到店里聊，能看到实际怎么干，这是了解需求的条件。",
+      "after": "咱们在本地，可以去店里聊，看看他们平时到底怎么干。",
+      "reason": "删除抽象条件解释，直接保留动作，不虚构已发生到店。"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20260908T005854Z-49aee259",
+  "status": "ready-for-candidate-review",
+  "generated_at": "2026-09-08T01:04:55.556Z",
+  "public_copy_generation": false,
+  "compilation": {
+    "mode": "manual-audited-historical-context",
+    "automatic_compiler_result": "任务上下文编译失败：账号预检不是 ready-current：ready-historical-stale",
+    "basis": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md 第五节允许过期历史用于历史比较",
+    "reason": "用户确认来源结构重写，不依赖当前实时账号表现；自动编译器拒绝ready-historical-stale，依据知识库现行第五节手工绑定真实历史回执，不改状态、不声明自动编译成功。",
+    "requires_current_metrics": false
+  },
+  "opcd": {
+    "meaning": "Obsidian 个人知识库（兼容字段名：opcd）",
+    "root": "/Users/pc/Documents/个人知识库",
+    "learning_card": {
+      "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+      "sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724"
+    },
+    "retrieval": {
+      "query": "县城 本地经验 交易半径 服务交付",
+      "status": "sufficient",
+      "results": [
+        {
+          "path": "01_项目实战/抖音知识中台/知识点库/知识-7677854791981198309-local-tacit-knowledge-moat.md",
+          "document_sha256": "7d408526973d7ac9b19c1bfa3cec2b6f17bb8a68c54b9fe09f09ff15538ef870",
+          "line_start": 1,
+          "line_end": 35,
+          "heading": "证据与核验",
+          "status": "active",
+          "authority": "project-record",
+          "lifecycle_layer": "layer-2-synthesis"
+        }
+      ],
+      "use_boundary": "2026-09-08实际运行opc_rag search同一查询，返回5个候选；已阅读并应用首项隐性知识，完整源头单独读取。"
+    }
+  },
+  "account_performance_preflight": {
+    "path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20260908T005854Z-49aee259.json",
+    "sha256": "977b07003b344161469dcf6c1948a88adb16435f16f7b14844eca0ff0109ab9d",
+    "snapshot_path": "/Users/pc/Documents/口播/workflow/account-performance-snapshots/7d70ae9fc345d592ef2f04da96aa9668cff44ca8278704821f06d5b721f7bac4.json",
+    "snapshot_sha256": "7d70ae9fc345d592ef2f04da96aa9668cff44ca8278704821f06d5b721f7bac4",
+    "status": "ready-historical-stale"
+  },
+  "project_inputs": {
+    "strategy": {
+      "path": "/Users/pc/Documents/口播/knowledge/01-账号战略与事业主线.md",
+      "sha256": "902ba0947bf02aa6602ca0fef2d955f607cc771dcbae6f90a5b4e3653d872797"
+    },
+    "voice": {
+      "path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+      "sha256": "c90d07dfb414707035ddd59b6bea6faf88a35f9551649199b9a92d433785bb0d"
+    },
+    "recent_history": {
+      "path": "/Users/pc/Documents/口播/workflow/recent-content-history.v1.json",
+      "sha256": "5ab8b58fa26f2b1a9627c453cd4af1b103927528ac1c26b8d31ec617e73166a5"
+    }
+  },
+  "sources": [
+    {
+      "id": "source:7d24c3eea56a8d82",
+      "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/09/抖音-7661598683578147264.md",
+      "sha256": "7d24c3eea56a8d824c203cbb664249acaace00b8b8aa0b42e2bace4af6a178a1",
+      "source_completeness": "complete",
+      "rights_status": "internal-research",
+      "allowed_use": "仅观点与叙事机制分析，不照搬原句、案例数字或收入结果",
+      "evidence_type": "source-frontmatter"
+    },
+    {
+      "id": "source:cfae5118ad9b25c0",
+      "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/09/抖音-7677854791981198309.md",
+      "sha256": "cfae5118ad9b25c0484d872c742b3ac8227ab857c3d91203881910e8928f4b0f",
+      "source_completeness": "complete",
+      "rights_status": "internal-research",
+      "allowed_use": "仅观点与叙事机制分析，不照搬原句、案例数字或收入结果",
+      "evidence_type": "source-frontmatter"
+    }
+  ],
+  "next_gate": "先候选确认及源头精髓，再内容门禁；手工研究回执需接受同一校验器验证。"
+}
