@@ -1,0 +1,44 @@
+# 纸艺动作事故修订
+
+## 目标与边界
+
+本修订针对2026-09-06五镜中反义流向、确认顺序不明、文字遮挡、带字牌折叠和标签消失。不是换成无字动画，不是用屏幕浮层补救，也不是把纸艺改成普通Remotion卡片。首帧仍交付带字图片，RunningHub只负责无字机构动作；主体文字留在独立固定支架上。
+
+新请求必须声明 `policy.incidentPreventionVersion="1"`；当前活动档案不允许删除此标记来走旧验证器。已发布节目、失败中间文件和原验收记录不变。实录仍是拍摄后唯一正文。
+
+## 生成前
+
+每镜 `motionContract.schemaVersion="koubo-paper-motion-contract/v1"`：
+
+- `meaning`：原句引用、观众应理解的含义、明确不能出现的相反结果。引用必须来自本节拍，语义理解仍需独立审阅，不能把字符串匹配称为语义证明。
+- `parts`：逐件区分 `label` 与 `blank-part`，标签绑定唯一纸面和物件组，`mount=independent-fixed-stand`。固定标签使用 `first-frame-baked`、`enterStageId=initial`、`persistence=initial-to-end`、`firstReadableFrame=0`。
+- `initialLocations / finalLocations`：每个无字部件的初始和最终位置。
+- `allowedTransfers / forbiddenTransfers`：允许和禁止的对象流向；禁止流向带原句依据。不能把作废资料画进有效知识库，也不能通过中间节点绕过禁止终点。
+- `requiredPredecessors`：有“确认后再发”等条件的镜头，显式绑定先后动作及依据。没有条件时允许空数组，但必须独立审阅确实不存在遗漏条件。
+- `actions`：每个动作绑定ID、阶段、对象、操作、起止组、起止秒和运动包围区 `sweptRect`。运动区不得碰标签或字幕区。包围区是规划，不是生成画面已合规的证据。
+
+用 `scripts/paper-motion-contract.mjs` 的 `renderMotionFirstFrame`、`renderMotionAction` 和 `renderMotionPrompt` 编译首帧、阶段动作及图生视频提示词，禁止另写一套相反关系。首帧的初始位置、固定支架与隔离关系直接来自合同，不再把一段自由机构指令与后置禁词拼接。禁止列表里的逗号不能使后面的“问题票滑入”逃过正向符号检查。
+
+生成前还须独立检查“这套关系真的符合口播吗”，将结果写入 `motionContract.semanticReview={path,sha256}` 指向的只读机制审阅文件。文件类型为 `koubo-paper-mechanism-review/v1`、状态 `reviewed-mechanism`；绑定当前 taskId/revisionId/beatId/sourceScriptSha256、完整 sourceQuote 和 `sha256Json(paperMechanismSnapshot(scene))`，记录不同的 authorId/reviewerId、真实 reviewedAt、semanticRationale 与空 findings。`generationAuthorized/formalAuthorized` 必须仍为 false。改初态、正负流向或全部动作后，即使提示词重新编译且结构自洽，也必须重新审阅，不能继承旧机制锁。身份字段本身不证明审阅人真的理解语义；真实审阅来源与后续生产独立授权仍要保留，禁止自己伪造第二个名字签通过。
+
+当前试点每次模型调用最多4个活动动作，总阶段1至7。复杂解释可以拆成多个短镜头，不再强迫每镜凑够4步。这个上限是本次保守试点限制，不是模型能力的统计结论；放宽须另做真实动态验证。带字表面运动或透视追踪不在本修订默认通路内，不能借旧模板静默启用。
+
+可执行的结构示例见 `tests/fixtures/paper-motion-request.mjs`；它只在隔离测试中从事故原请求派生，不应当作新节目的内容模板复制。
+
+## 交接和动态验收
+
+首帧提示词、带字图、文字表、OCR和图生视频提示词逐项绑定当前SHA。中文OCR必须覆盖全部标签并有非空结果；批准必须绑定实际图像集合。原图合格而写字失败时复用原图，不重新生成。
+
+先完成最容易失败的代表镜动态试验，再放行本批剩余镜头。当前复用依据是完整动作合同SHA完全相同，不是“看起来像同一机构”；不同原句或审查绑定通常意味着逐镜独立试验，不能宣称已有跨镜自动泛化。每条通过的试验视频直接复用，不再为成批而重复生成；不同合同的下一镜用指定sceneId继续试验。静图批准不等于动态批准，上一节目通过不等于本批通过。外部提交、付费和重试仍需单独授权，不自动重试。具体CLI和验收索引见 `incident-handoff-state-integration.v1.md`。
+
+验收必须从当前视频真实解码抽帧，核对动作前、中、后以及持续可读区间；逐节点OCR、独立静音复述和输入/动作/结果审阅都绑定视频及帧哈希。接触表只作索引，不能靠接触表三张图证明全程正确。镜头有过渡状态，既查最终结果也查过程是否反义。
+
+`paper-motion-incident-registry.v1.json` 保存本次五个失败源SHA，只作拒绝回归，不作成功复用。用户对某一期容忍缺陷不等于效果合格，不能跨任务继承例外。
+
+## 实录与生产
+
+初始已写好的概念、动作强调和条件成立是不同时间。文字可见时间如实从0算；若其构成尚未说到的主张，必须调整剪入点、拆镜或停止，不能放宽300ms上限。未说出的文稿段落以 `disposition=omit`、`reason=not-spoken` 加完整实录审阅证据处理，不硬插素材。
+
+首次候选只检查输入是否齐备，不要求一个尚未生成的候选已经通过；独立授权、签名、冻结清单、知识上下文和代码/媒体哈希照常检查。首次候选通行不等于正式授权。
+
+状态推进必须检查回执正文、任务、修订、状态及依赖哈希。失败回执即使路径存在、哈希正确也不能晋级。代码回归通过只能记录本地合同测试通过；最终还需当前批动态审阅、用户正常速度确认及单独正式渲染授权。

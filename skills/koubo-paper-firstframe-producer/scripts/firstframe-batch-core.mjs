@@ -81,6 +81,10 @@ export function replaceJson(filePath, value) {
 
 export function validateManifest(manifest) {
   const errors = [];
+  if (manifest.policy?.incidentPreventionVersion !== undefined) {
+    if (manifest.policy.incidentPreventionVersion !== '1') errors.push('INCIDENT_POLICY_VERSION_INVALID');
+    if (typeof manifest.revisionId !== 'string' || !manifest.revisionId.trim()) errors.push('INCIDENT_REVISION_ID_REQUIRED');
+  }
   if (manifest.schemaVersion !== MANIFEST_SCHEMA) errors.push('MANIFEST_SCHEMA_INVALID');
   if (manifest.status !== 'automation-input-ready') errors.push('MANIFEST_STATUS_INVALID');
   if (manifest.consumer !== 'first-frame-image-automation') errors.push('MANIFEST_CONSUMER_INVALID');

@@ -14,6 +14,9 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {
   PAPER_CONTACT_SHEET_SCHEMA,
+  PAPER_CONTACT_PAGE_SIZE,
+  paperContactFrames,
+  paperContactCellBinding,
   validatePaperAssetIntake,
 } from './paper-asset-intake-core.mjs';
 import {resolveDeclared, sha256File} from './preproduction-director-core.mjs';
@@ -58,17 +61,17 @@ try {
   if (!fontPath || !existsSync(fontPath)) throw new Error('PAPER_ASSET_CONTACT_SHEET_FONT_MISSING');
   temporaryRoot = mkdtempSync(path.join(os.tmpdir(), 'koubo-paper-contact-sheet-'));
   const cells = [];
-  for (const [index, asset] of validation.orderedAssets.entries()) {
-    const middle = asset.evidenceFrames.find((frame) => frame.moment === 'middle');
-    const middlePath = resolveDeclared(projectRoot, middle.path);
+  const incidentPrevention = validation.incidentPreventionVersion === '1';
+  for (const [index, {asset, frame}] of paperContactFrames(validation.orderedAssets, incidentPrevention).entries()) {
+    const framePath = resolveDeclared(projectRoot, frame.path);
     const cellPath = path.join(temporaryRoot, `cell-${String(index + 1).padStart(2, '0')}.png`);
     run(
       'magick',
       [
-        middlePath,
+        framePath,
         '-auto-orient',
         '-resize',
-        '640x360^',
+        '640x360',
         '-gravity',
         'center',
         '-extent',
@@ -87,7 +90,7 @@ try {
         '0x72',
         '-annotate',
         '+0+18',
-        `${asset.sceneId}  ${asset.productionCandidate.sha256.slice(0, 12)}`,
+        `${asset.sceneId}${incidentPrevention ? `  f${frame.frameIndex}` : ''}  ${asset.productionCandidate.sha256.slice(0, 12)}`,
         '-bordercolor',
         '#0B1014',
         '-border',
@@ -97,9 +100,8 @@ try {
       'PAPER_ASSET_CONTACT_SHEET_CELL_FAILED',
     );
     cells.push({
-      sceneId: asset.sceneId,
-      productionCandidateSha256: asset.productionCandidate.sha256,
-      middleFrameSha256: middle.sha256,
+      ...paperContactCellBinding(asset, frame, incidentPrevention),
+      ...(incidentPrevention ? {pageIndex: Math.floor(index / PAPER_CONTACT_PAGE_SIZE)} : {}),
       cellPath,
     });
   }
@@ -123,11 +125,17 @@ try {
     );
     rowPaths.push(rowPath);
   }
-  run(
-    'magick',
-    [...rowPaths, '-append', outputPath],
-    'PAPER_ASSET_CONTACT_SHEET_BUILD_FAILED',
-  );
+  const pageSize = incidentPrevention ? PAPER_CONTACT_PAGE_SIZE / 2 : rowPaths.length;
+  const outputName = path.parse(outputPath);
+  const pagePaths = Array.from({length: Math.ceil(rowPaths.length / pageSize)}, (_, index) => index === 0 ? outputPath :
+    path.join(outputName.dir, `${outputName.name}.page-${String(index + 1).padStart(3, '0')}${outputName.ext}`));
+  if (pagePaths.some(file => existsSync(file))) throw new Error('PAPER_ASSET_CONTACT_SHEET_PAGE_EXISTS');
+  const pages = [];
+  for (const [pageIndex, pagePath] of pagePaths.entries()) {
+    run('magick', [...rowPaths.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize), '-append', pagePath],
+      'PAPER_ASSET_CONTACT_SHEET_BUILD_FAILED');
+    pages.push({pageIndex, image: {path: pagePath, sha256: sha256File(pagePath)}});
+  }
   const manifest = {
     schemaVersion: PAPER_CONTACT_SHEET_SCHEMA,
     taskId: request.taskId,
@@ -135,7 +143,8 @@ try {
     assetSetSha256: validation.assetSetSha256,
     image: {path: outputPath, sha256: sha256File(outputPath)},
     cells: cells.map(({cellPath: _cellPath, ...cell}) => cell),
-    ordering: 'source-plan-scene-order',
+    ordering: incidentPrevention ? 'source-plan-scene-order-then-frame-index' : 'source-plan-scene-order',
+    ...(incidentPrevention ? {revisionId: validation.revisionId, policy: {incidentPreventionVersion: '1'}, pages, dynamicEvidence: validation.dynamicEvidence} : {}),
     filesystemSortUsed: false,
   };
   mkdirSync(path.dirname(manifestPath), {recursive: true});

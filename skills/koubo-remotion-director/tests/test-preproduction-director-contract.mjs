@@ -237,7 +237,8 @@ const requestTemplate = JSON.parse(
 );
 assert.equal(requestTemplate.policy.v9ContractEnabled, true);
 assert.equal(requestTemplate.directorProfile.profileId, 'paper-editorial-director-v9');
-assert.equal(requestTemplate.directorProfile.profileVersion, '9.0.0');
+assert.equal(requestTemplate.directorProfile.profileVersion, '9.1.0');
+assert.equal(requestTemplate.policy.incidentPreventionVersion, '1');
 assert.equal(requestTemplate.policy.textStrategy, 'deterministic-first-frame-text-v9');
 assert.equal(
   requestTemplate.outputs.aiGeneratedVideoPromptManifestPath,

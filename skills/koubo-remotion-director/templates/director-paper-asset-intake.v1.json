@@ -1,6 +1,8 @@
 {
   "schemaVersion": "koubo-paper-generated-asset-intake/v1",
   "taskId": "<TASK_ID>",
+  "revisionId": "<SOURCE_PLAN_REVISION_ID>",
+  "policy": {"incidentPreventionVersion": "1"},
   "sourcePlan": {"path": "<POSTSHOOT_REBIND_PLAN_PATH>", "sha256": "<SHA256>"},
   "contactSheetFontPath": "<EMBEDDABLE_CHINESE_FONT_PATH>",
   "assets": [
@@ -13,22 +15,80 @@
       "generatedVideo": {"path": "<ORIGINAL_EXPORT_PATH>", "sha256": "<SHA256>"},
       "productionCandidate": {"path": "<P01__PAIRSHA8.mp4>", "sha256": "<SHA256>", "canonicalFileName": "<P01__PAIRSHA8.mp4>"},
       "evidenceFrames": [
-        {"moment": "first", "path": "<PATH>", "sha256": "<SHA256>"},
-        {"moment": "middle", "path": "<PATH>", "sha256": "<SHA256>"},
-        {"moment": "last", "path": "<PATH>", "sha256": "<SHA256>"}
+        {"moment": "first", "frameIndex": 0, "path": "<PATH>", "sha256": "<SHA256>", "ocrReceipt": {"path": "<FRAME_OCR_JSON>", "sha256": "<SHA256>"}},
+        {"moment": "middle", "frameIndex": "<FLOOR_FRAME_COUNT_DIV_2>", "path": "<PATH>", "sha256": "<SHA256>", "ocrReceipt": {"path": "<FRAME_OCR_JSON>", "sha256": "<SHA256>"}},
+        {"moment": "last", "frameIndex": "<FRAME_COUNT_MINUS_1>", "path": "<PATH>", "sha256": "<SHA256>", "ocrReceipt": {"path": "<FRAME_OCR_JSON>", "sha256": "<SHA256>"}},
+        {"moment": "action-boundary", "frameIndex": "<REQUIRED_INTEGER_FRAME_INDEX>", "path": "<PATH>", "sha256": "<SHA256>", "ocrReceipt": {"path": "<FRAME_OCR_JSON>", "sha256": "<SHA256>"}}
       ],
       "mediaQaReceipt": {"path": "<FULL_DECODE_QA_RECEIPT>", "sha256": "<SHA256>"},
+      "extractionReceipt": {"path": "<FRAME_EXTRACTION_RECEIPT>", "sha256": "<SHA256>"},
       "expectedObjectGroupIds": [],
       "expectedStageIds": [],
-      "semanticReview": {"status": "exact", "object": "<OBJECT>", "change": "<CHANGE>", "spokenConsistency": "<WHY_IT_MATCHES>", "ownSceneClosest": true, "mostSimilarSceneId": "P01"},
-      "silentViewReview": {"status": "passed", "objectAnswer": "<WHAT_OBJECT>", "relationshipOrChangeAnswer": "<WHAT_CHANGED>", "spokenConsistencyAnswer": "<WHY_IT_MATCHES_THE_CURRENT_SPEECH>"},
-      "mechanismEvidence": {"inputMoment": "first", "actionMoment": "middle", "outputMoment": "last", "visibleStateChange": true},
-      "textQa": {"status": "passed", "driftFree": true, "samples": [{"moment": "first", "expectedTexts": [], "recognizedTexts": [], "exact": true}, {"moment": "middle", "expectedTexts": [], "recognizedTexts": [], "exact": true}, {"moment": "last", "expectedTexts": [], "recognizedTexts": [], "exact": true}]}
+      "semanticReviewReceipt": {"path": "<ACTUAL_SEMANTIC_REVIEW_JSON>", "sha256": "<SHA256>"},
+      "silentViewReviewReceipt": {"path": "<ACTUAL_SILENT_VIDEO_REVIEW_JSON>", "sha256": "<SHA256>"}
     }
   ],
   "outputs": {
     "contactSheetPath": "<NEW_CONTACT_SHEET_PATH>",
     "contactSheetManifestPath": "<NEW_CONTACT_SHEET_MANIFEST_PATH>",
     "validationReceiptPath": "<NEW_VALIDATION_RECEIPT_PATH>"
+  },
+  "evidenceFormatGuide": {
+    "boundary": "以下为未填模板，不是通过回执；只能用本条真实测量及实际审查替换。不得复制生成虚假读取或验收证据。",
+    "sampling": "调用 requiredPaperIntakeFrames(scene, mediaQa) 取得全部必需帧。候选视频零基帧号；首中尾、全片不大于0.5秒间隔、全部动作和高风险窗不大于0.25秒间隔、起止边界floor/ceil前后各一帧。可加密，不得漏帧或重复帧号。",
+    "mediaQaReceipt": {
+      "revisionId": "<SOURCE_PLAN_REVISION_ID>",
+      "fullDecodePassed": false,
+      "videoSha256": "<CANDIDATE_VIDEO_SHA256>",
+      "frameCount": "<ACTUAL_INTEGER>",
+      "fpsNumerator": "<ACTUAL_INTEGER>",
+      "fpsDenominator": "<ACTUAL_INTEGER>",
+      "width": "<ACTUAL_INTEGER>",
+      "height": "<ACTUAL_INTEGER>",
+      "probe": {"path": "<RAW_FFPROBE_JSON_WITH_COUNTED_VIDEO_FRAMES_AND_RATES>", "sha256": "<SHA256>"}
+    },
+    "extractionReceipt": {
+      "schemaVersion": "koubo-paper-frame-extraction/v1",
+      "revisionId": "<SOURCE_PLAN_REVISION_ID>",
+      "sceneId": "P01",
+      "videoSha256": "<CANDIDATE_VIDEO_SHA256>",
+      "planSha256": "<SOURCE_PLAN_SHA256>",
+      "media": {"frameCount": "<ACTUAL_INTEGER>", "fpsNumerator": "<ACTUAL_INTEGER>", "fpsDenominator": "<ACTUAL_INTEGER>"},
+      "frames": [{"frameIndex": "<ACTUAL_INTEGER>", "imageSha256": "<ACTUAL_IMAGE_SHA256>"}]
+    },
+    "frameOcrReceipt": {
+      "schemaVersion": "koubo-paper-frame-ocr/v1",
+      "revisionId": "<SOURCE_PLAN_REVISION_ID>",
+      "sceneId": "P01",
+      "videoSha256": "<CANDIDATE_VIDEO_SHA256>",
+      "planSha256": "<SOURCE_PLAN_SHA256>",
+      "frameIndex": "<ACTUAL_INTEGER>",
+      "imageSha256": "<ACTUAL_IMAGE_SHA256>",
+      "engine": {"name": "<ACTUAL_ENGINE>", "version": "<ACTUAL_VERSION>"},
+      "results": [{"nodeId": "<PLAN_NODE_ID>", "expected": "<PLAN_TEXT>", "recognized": "<ACTUAL_OCR_TEXT>", "visibility": "pending-review", "raw": {"path": "<RAW_NODE_OCR_TSV>", "sha256": "<SHA256>", "format": "tesseract-tsv"}}]
+    },
+    "dynamicReviewReceipt": {
+      "schemaVersion": "koubo-paper-dynamic-review/v1",
+      "revisionId": "<SOURCE_PLAN_REVISION_ID>",
+      "kind": "<semantic_OR_silent>",
+      "method": "<video-and-plan_OR_silent-video>",
+      "sceneId": "P01",
+      "videoSha256": "<CANDIDATE_VIDEO_SHA256>",
+      "planSha256": "<SOURCE_PLAN_SHA256>",
+      "evidenceSetSha256": "<computePaperEvidenceSetSha256(evidenceFrames)>",
+      "reviewerId": "<ACTUAL_REVIEWER>",
+      "reviewedAt": "<ACTUAL_ISO_TIMESTAMP>",
+      "status": "pending-review",
+      "reviewedFrameIndices": [],
+      "findings": [],
+      "playbackCoverage": [{"startFrame": 0, "endFrame": "<ACTUAL_LAST_FRAME>", "observation": "<ACTUAL_FULL_INTERVAL_OBSERVATION>"}],
+      "observations": [{"actionId": "<PLAN_ACTION_ID>", "stageId": "<PLAN_STAGE_ID>", "startFrame": "<FLOOR_START_SECONDS_TIMES_FPS>", "endFrame": "<MIN_LAST_CEIL_END_SECONDS_TIMES_FPS>", "object": "<ACTUALLY_OBSERVED_OBJECT>", "change": "<ACTUALLY_OBSERVED_CHANGE>", "spokenConsistency": "<ACTUAL_PLAN_COMPARISON>", "verdict": "pending-review"}],
+      "observedEvents": [{"actionId": "<PLAN_ACTION_ID>", "partId": "<OBSERVED_PART_ID>", "operation": "<OBSERVED_OPERATION>", "fromGroupId": "<OBSERVED_FROM_GROUP>", "toGroupId": "<OBSERVED_TO_GROUP>", "startFrame": "<OBSERVED_START_FRAME>", "endFrame": "<OBSERVED_END_FRAME>", "evidenceFrameIndices": [], "observation": "<ACTUAL_MOTION_OBSERVATION_NOT_PLANNED_SWEPT_RECT>"}],
+      "textObservations": [{"frameIndex": "<ACTUAL_INTEGER>", "nodes": [{"nodeId": "<PLAN_NODE_ID>", "status": "pending-review", "shape": "pending-review", "observation": "<ACTUAL_VISIBILITY_AND_RIGIDITY_OBSERVATION>"}]}]
+    },
+    "passingValues": "仅真实审查后可使用：OCR visibility及逐帧文字status为visible-readable且shape为rigid-unchanged；动作verdict为matches-plan；两种审查产物status为passed且findings为空。initial标签从第0帧到末帧每个样本全部覆盖。观测动作须绑定起止及前后相邻帧证据、匹配计划对象与去向、满足实际前置动作顺序；playbackCoverage须有完整无空档的实际观看记录。失字、遮挡、翻折、提前出结论、未审查均不得填成通过。",
+    "collectionEntry": "collect-paper-asset-intake-evidence.mjs --plan <POSTSHOOT_PLAN> --scene-id P01 --video <EXISTING_VIDEO> --out <NEW_DIRECTORY>。只读已有源视频；实际probe/全解码/抽帧/节点ROI OCR，输出asset-evidence.json及pending审查模板，绝不自动填通过审查。",
+    "independence": "语义与静音审查必须不同reviewerId；真实观看后另存新回执，不把pending模板或计划矩形当实测。",
+    "limits": "固定事故registry按SHA拒绝旧失败源成功复用。validate CLI对新版再次实际探测/全解码并比较源帧RGB24像素SHA；纯core校验仅检查登记一致性。CFR采样不能证明未采样帧无故障，独立审查ID也不能证明真实独立身份，不代表正式发布资格。"
   }
 }

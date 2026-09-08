@@ -21,6 +21,10 @@ description: 口播项目的 V9.1 候选导演与 Remotion 视频包装流程。
 
 Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有视觉方案、风险帧预览和机器质检；用户完整观看前，只能说“预览已生成”或“机器侧质检通过”。
 
+### 当前事故修订
+
+2026-09-08 起新预拍请求启用 `policy.incidentPreventionVersion="1"`。进入纸艺分支前读取 [references/paper-motion-incident-prevention.md](references/paper-motion-incident-prevention.md)：动作由结构合同编译，中文牌采用独立固定支架，动态先试代表镜再批量，验收绑定实际视频与动作边界。交接与原生V9状态接口另见 [references/incident-handoff-state-integration.v1.md](references/incident-handoff-state-integration.v1.md)。当前只复用完整动作合同一致的已验收样片，不自动泛化不同机构；已通过样片不重复生成。以下历史运动文字和多级装配说明不能绕过此修订；历史产物只读保留，不补造新验收。代码测试通过不代表生成模型已遵守动作，也不授权付费或正式渲染。
+
 ## 必读顺序
 
 每次执行前从 `<project-root>` 读取：
@@ -122,7 +126,7 @@ node skills/koubo-remotion-director/scripts/validate-preproduction-director.mjs 
 - `runninghub-image-to-video-prompts.md`：供用户复制的中文清单，只展示图生视频动作提示词，不重复首帧场景描述。
 - `ai-generated-video-prompts.json` 与 `ai-generated-video-prompts.md`：只给需要人物、真实行动替代演绎、空间或情绪的 AI 情景视频；逐镜写清模式、时长、用途、正负提示词、文件名、人工执行和 AI 披露。没有此类镜头也必须输出 `not-required` 空包。
 
-同一纸艺镜头的两份清单必须共享 `sceneId`、`pairId` 与 `pairSha256`，并用首帧提示词 SHA-256 把 RunningHub 输入图片回绑到对应首帧。首帧生图描述静态完成态；图生视频提示词只描述基于该首帧发生的动作、顺序、镜头运动和禁止项。RunningHub 清单初始状态固定为 `awaiting-text-baked-firstframes`，它不能作为提交入口；只有首帧生产 Skill 生成 `runninghub-ready-pack.v1.json` 后才能手工提交。任何缺镜、串镜、配对哈希不一致、三类字段互相混入、带字首帧缺失或 OCR 未通过，都必须阻断。
+同一纸艺镜头的两份清单必须共享 `sceneId`、`pairId` 与 `pairSha256`，并用首帧提示词 SHA-256 把 RunningHub 输入图片回绑到对应首帧。首帧生图描述物件初态，不能提前画出尚未发生的结果；图生视频提示词只描述基于该首帧发生的动作、顺序和禁止项。RunningHub 清单初始状态固定为 `awaiting-text-baked-firstframes`，它不能作为提交入口；只有首帧生产 Skill 生成 `runninghub-ready-pack.v1.json` 后才能按其中范围手工投递。任何缺镜、串镜、配对哈希不一致、三类字段互相混入、带字首帧缺失或 OCR 未通过，都必须阻断。
 
 首帧批量流程固定先试一张代表镜头，视觉门通过后才允许剩余批次；生成端不得自动重试。无字原图已经通过、只有文字烘焙或 OCR 失败时，必须复用已验收原图，不能重新消耗生图。
 
@@ -184,7 +188,7 @@ node skills/koubo-remotion-director/scripts/validate-director-output.mjs \
 
 `skillRead=true` 不等于执行。必须同时存在新 request、route lock、plan、compile receipt 和 validation receipt，且验证回执中 `skillExecuted=true`，才可对外说本条已调用导演 Skill。
 
-实录重绑后，每个纸面节点必须绑定明确字幕 ID、实际说出的词、语义时窗和入场帧。画面结论最多只能比实录语义提前 300ms，纸片动作与节点文字偏差不得超过 3 帧；`mismatch` 直接失败，`partial` 只能由用户对当前节拍明确特例。
+实录重绑后，每个纸面节点必须绑定明确字幕 ID、实际说出的词、语义时窗和首次可读帧。画面主张最多只能比实录语义提前 300ms；初始烘焙文字从第0帧可见，不能伪造延迟入场。动作强调与初始可见性分别校验，不能为满足旧3帧规则谎报文字出现时间。`mismatch` 直接失败，`partial` 只能由用户对当前任务、修订与实际资产哈希作明确特例；实录没说出的节拍必须有证据地省略。
 
 所有生成纸艺视频到齐后，必须从 [templates/director-paper-asset-intake.v1.json](templates/director-paper-asset-intake.v1.json) 实例化资产验收请求，先生成绑定正式资产 SHA-256 的联系表，再校验：
 
@@ -198,7 +202,7 @@ node skills/koubo-remotion-director/scripts/validate-paper-generated-asset-intak
   --repo-root <project-root>
 ```
 
-逐镜必须通过：正式视频哈希、首/中/尾三帧、静音复述“对象+关系或变化+与口播的一致性”、输入→动作→结果的可见变化，以及中文在首/中/尾的 OCR 和漂移复核。文件名、顺序或单张截图都不能替代这些证据。
+逐镜必须通过：实际视频哈希、首/中/尾与每个动作前中后及持续可读区间证据、静音复述“对象+关系或变化+与口播的一致性”、输入→动作→结果的可见变化，以及绑定实际抽帧和全部节点的 OCR。仅首/中/尾三帧不能证明中途没遮字；文件名、手填“通过”和无文字结果的 OCR 记录都不能替代证据。事故负样本不得因改名或用户单片例外进入成功经验库。
 
 只有新 revision 逐项绑定真实媒体、实录权威时间轴、当前 compiler/registry SHA、批准静帧与独立验收证据后，才能另行申请 `renderable` 候选。旧 exact30 request/plan/QA 保持不可变；已验收 WithSfx 样片只是风格锚，不证明当前源码复现了旧候选，也不授权正式全片。
 

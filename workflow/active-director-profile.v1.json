@@ -3,6 +3,20 @@
   "profileId": "paper-editorial-director-v9",
   "profileVersion": "9.1.0",
   "status": "active-default",
+  "incidentPreventionPolicy": {
+    "version": "1",
+    "effectiveFrom": "2026-09-08",
+    "requiredForNewPreproduction": true,
+    "scope": "本地合同加固，真实动态复验仍待完成，不改历史节目验收",
+    "typedMotionContractRequired": true,
+    "fixedIndependentTextStandsRequired": true,
+    "dynamicPilotBeforeBatchRequired": true,
+    "actionBoundaryEvidenceRequired": true,
+    "negativeRegistryPath": "skills/koubo-remotion-director/references/paper-motion-incident-registry.v1.json",
+    "historicalOutputsImmutable": true,
+    "automaticRetryAllowed": false,
+    "formalAuthorizationUnchanged": true
+  },
   "effectiveFrom": "2026-09-05",
   "decision": {
     "authority": "user-explicit",
@@ -274,6 +288,8 @@
     "exactSpokenTermBindingRequiredPerNode": true,
     "maximumVisualClaimLeadMs": 300,
     "maximumNodeLabelStageOffsetFrames": 3,
+    "initialBakedTextMustDeclareFirstReadableFrameZero": true,
+    "initialVisibilityAndActionEmphasisMustBeSeparate": true,
     "mismatchAllowed": false,
     "partialRequiresExplicitUserException": true
   },

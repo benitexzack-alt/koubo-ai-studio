@@ -1,7 +1,11 @@
 {
   "schemaVersion": "koubo-director-postshoot-rebind-request/v1",
   "requestId": "<NEW_POSTSHOOT_REQUEST_ID>",
+  "revisionId": "<NEW_POSTSHOOT_REVISION_ID>",
   "taskId": "<TASK_ID>",
+  "policy": {
+    "incidentPreventionVersion": "1"
+  },
   "phase": "post-shoot",
   "timelineFps": 30,
   "sourcePreproduction": {
@@ -27,6 +31,8 @@
     {
       "beatId": "<BEAT_ID>",
       "order": 1,
+      "disposition": "keep",
+      "semanticTimingMode": "contextual-summary-after-spoken-terms",
       "startSeconds": 0,
       "endSeconds": 0,
       "actualCaptionIds": ["<CAPTION_ID>"],
@@ -39,19 +45,32 @@
         {
           "nodeId": "<NODE_ID>",
           "resolvedText": "<2_TO_8_CHINESE_CHARACTERS>",
-          "enterStageId": "<STAGE_ID>",
+          "enterStageId": "initial",
           "actualCaptionIds": ["<CAPTION_ID>"],
           "actualSpokenTerms": ["<EXACT_RECORDED_TERM>"],
           "anchorStartMs": 0,
           "anchorEndMs": 0,
           "visualEnterMs": 0,
-          "stageActionFrame": 0,
+          "firstReadableFrame": 0,
+          "stageActionFrame": null,
           "labelEnterFrame": 0,
+          "emphasisStageId": null,
+          "emphasisFrame": null,
           "alignmentStatus": "exact"
         }
       ],
       "textDecision": "confirmed",
       "visualDecision": "keep"
+    },
+    {
+      "beatId": "<NOT_SPOKEN_PREPRODUCTION_BEAT_ID>",
+      "order": 2,
+      "disposition": "omit",
+      "reason": "not-spoken",
+      "omissionEvidence": {
+        "path": "<FULL_RECORDING_OMISSION_REVIEW_JSON_PATH>",
+        "sha256": "<SHA256>"
+      }
     }
   ],
   "outputs": {

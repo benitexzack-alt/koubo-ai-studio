@@ -6,11 +6,12 @@ import os from 'node:os';
 import path from 'node:path';
 import {
   compilePostshootRebindPlan,
-  validatePostshootRebindRequest,
+  validatePostshootRebindRequest as validateRequest,
 } from '../scripts/postshoot-rebind-core.mjs';
 import {sha256File} from '../scripts/preproduction-director-core.mjs';
 
 const root = mkdtempSync(path.join(os.tmpdir(), 'koubo-postshoot-test-'));
+const validatePostshootRebindRequest = input => validateRequest({...input, allowLegacyRead: true});
 try {
   const preRequestPath = path.join(root, 'pre-request.json');
   const prePlanPath = path.join(root, 'pre-plan.json');
@@ -31,7 +32,8 @@ try {
           spokenLine: '预拍文稿说法',
           paperScene: {
             nodes: [{id: 'N1', label: '按需租用'}],
-            textPlan: [{nodeId: 'N1', text: '按需租用', enterStageId: 'S1'}],
+            textPlan: [{nodeId: 'N1', text: '按需租用', enterStageId: 'S1',
+              embeddingMode: 'tracked-paper-surface'}],
           },
         },
       ],
@@ -42,6 +44,11 @@ try {
     JSON.stringify({
       status: 'validated-provisional-previsualization',
       skillExecuted: true,
+      taskId: 'task-1',
+      artifacts: {
+        request: {path: preRequestPath, sha256: sha256File(preRequestPath)},
+        plan: {path: prePlanPath, sha256: sha256File(prePlanPath)},
+      },
     }),
   );
   writeFileSync(mediaPath, 'not-a-real-video-but-hash-bound-in-unit-test');
@@ -60,6 +67,7 @@ try {
   const request = {
     schemaVersion: 'koubo-director-postshoot-rebind-request/v1',
     requestId: 'post-request-1',
+    revisionId: 'post-revision-1',
     taskId: 'task-1',
     phase: 'post-shoot',
     timelineFps: 30,
@@ -86,6 +94,7 @@ try {
       {
         beatId: 'B01',
         order: 1,
+        disposition: 'keep',
         startSeconds: 1,
         endSeconds: 5,
         actualCaptionIds: ['C001', 'C002'],
@@ -106,6 +115,7 @@ try {
             visualEnterMs: 2_500,
             stageActionFrame: 45,
             labelEnterFrame: 45,
+            firstReadableFrame: 45,
             alignmentStatus: 'exact',
           },
         ],
@@ -122,17 +132,11 @@ try {
 
   const positive = validatePostshootRebindRequest({request, projectRoot: root});
   assert.equal(positive.ok, true, positive.errors.join('\n'));
-  const plan = compilePostshootRebindPlan({
+  assert.throws(() => compilePostshootRebindPlan({
     request,
     requestPath: postRequestPath,
     validation: positive,
-  });
-  assert.equal(plan.spokenAuthority, 'recorded-audio');
-  assert.equal(plan.beats[0].spokenLine, request.mappings[0].actualSpokenLine);
-  assert.equal(plan.beats[0].paperScene.textPlan[0].text, '按需租用');
-  assert.equal(plan.paperScenes[0].spokenLine, request.mappings[0].actualSpokenLine);
-  assert.equal(plan.paperScenes[0].textPlan[0].text, '按需租用');
-  assert.equal(plan.formalEligible, false);
+  }), /POSTSHOOT_COMPILE_REQUIRES_CURRENT_SAFE_VALIDATION/);
 
   const scriptAuthority = structuredClone(request);
   scriptAuthority.spokenTimeline.authority = 'script';
@@ -189,6 +193,7 @@ try {
   captionOutsideNodeAnchor.mappings[0].nodeTextBindings[0].visualEnterMs = 1_000;
   captionOutsideNodeAnchor.mappings[0].nodeTextBindings[0].stageActionFrame = 0;
   captionOutsideNodeAnchor.mappings[0].nodeTextBindings[0].labelEnterFrame = 0;
+  captionOutsideNodeAnchor.mappings[0].nodeTextBindings[0].firstReadableFrame = 0;
   const captionOutsideNodeAnchorResult = validatePostshootRebindRequest({
     request: captionOutsideNodeAnchor,
     projectRoot: root,
@@ -213,6 +218,7 @@ try {
 
   const stageDrift = structuredClone(request);
   stageDrift.mappings[0].nodeTextBindings[0].labelEnterFrame = 49;
+  stageDrift.mappings[0].nodeTextBindings[0].firstReadableFrame = 49;
   stageDrift.mappings[0].nodeTextBindings[0].visualEnterMs = 1_000 + (49 / 30) * 1_000;
   const stageDriftResult = validatePostshootRebindRequest({
     request: stageDrift,
@@ -232,11 +238,24 @@ try {
   assert.equal(mismatchResult.ok, false);
   assert.ok(mismatchResult.errors.includes('POSTSHOOT_ALIGNMENT_MISMATCH:B01:beat'));
 
+  const legacy = structuredClone(request);
+  delete legacy.policy;
+  delete legacy.revisionId;
+  delete legacy.mappings[0].disposition;
+  delete legacy.mappings[0].nodeTextBindings[0].firstReadableFrame;
+  assert.equal(validateRequest({request: legacy, projectRoot: root}).ok, false);
+  const legacyRead = validatePostshootRebindRequest({request: legacy, projectRoot: root, allowLegacyRead: true});
+  assert.equal(legacyRead.ok, true, legacyRead.errors.join('\n'));
+  assert.equal(legacyRead.legacyReadOnly, true);
+  assert.throws(() => compilePostshootRebindPlan({request: legacy, requestPath: postRequestPath,
+    validation: legacyRead}), /POSTSHOOT_COMPILE_REQUIRES_CURRENT_SAFE_VALIDATION/);
+
   console.log(
     JSON.stringify({
       ok: true,
       recordedSpeechAuthoritative: true,
-      postshootPaperScenesExportedForAssetBinding: true,
+      legacyReadOnlyCompatibility: true,
+      legacyCompilationRejected: true,
       unconfirmedNodeTextRejected: true,
       incompleteBeatMappingRejected: true,
       wholeTimelineFalsePositiveRejected: true,

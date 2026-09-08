@@ -6,9 +6,12 @@ import {fileURLToPath} from 'node:url';
 import {
   DIRECTOR_ROUTE_LOCK_SCHEMA,
   PREPRODUCTION_PLAN_SCHEMA,
+  compilePreproductionPlan,
+  buildRouteLock,
   renderAiGeneratedVideoPromptSheet,
   resolveDeclared,
   sha256File,
+  sha256Json,
   validatePromptHandoffManifests,
   validatePreproductionRequest,
 } from './preproduction-director-core.mjs';
@@ -112,6 +115,15 @@ try {
   if (plan.status !== 'provisional-previsualization' || plan.formalEligible !== false) {
     errors.push('PLAN_STATE_INVALID');
   }
+  if (request.policy?.incidentPreventionVersion === '1') {
+    const style = JSON.parse(readFileSync(resolveDeclared(projectRoot, profile.style.path), 'utf8'));
+    const expectedPlan = compilePreproductionPlan({request, requestPath, profile, style});
+    const expectedRoute = buildRouteLock({request, requestPath, profile, style, plan: expectedPlan});
+    if (sha256Json(plan) !== sha256Json(expectedPlan)) errors.push('INCIDENT_PLAN_REQUEST_RECOMPILE_MISMATCH');
+    if (sha256Json(routeLock) !== sha256Json(expectedRoute)) errors.push('INCIDENT_ROUTE_REQUEST_RECOMPILE_MISMATCH');
+    if (compileReceipt.policy?.incidentPreventionVersion !== '1') errors.push('INCIDENT_COMPILE_POLICY_MISSING');
+    if (compileReceipt.revisionId !== request.revisionId) errors.push('INCIDENT_COMPILE_REVISION_MISMATCH');
+  }
   if (v9ContractEnabled && plan.v9Contract?.enabled !== true) {
     errors.push('PLAN_V9_CONTRACT_MARKER_MISSING');
   }
@@ -193,7 +205,9 @@ try {
     schemaVersion: 'koubo-director-validation-receipt/v1',
     requestId: request.requestId,
     taskId: request.taskId,
+    ...(request.policy?.incidentPreventionVersion === '1' ? {revisionId: request.revisionId} : {}),
     phase: 'pre-shoot',
+    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
     status: 'validated-provisional-previsualization',
     skillRead: true,
     skillExecuted: true,

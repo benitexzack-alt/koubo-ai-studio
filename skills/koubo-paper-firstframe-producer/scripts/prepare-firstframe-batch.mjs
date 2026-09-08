@@ -25,6 +25,10 @@ try {
   const manifest = readJson(manifestPath);
   const directorReceipt = readJson(directorReceiptPath);
   const errors = validateManifest(manifest);
+  if (manifest.policy?.incidentPreventionVersion === '1' &&
+    (directorReceipt.policy?.incidentPreventionVersion !== '1' || directorReceipt.revisionId !== manifest.revisionId)) {
+    errors.push('DIRECTOR_INCIDENT_IDENTITY_MISMATCH');
+  }
   if (directorReceipt.schemaVersion !== 'koubo-director-validation-receipt/v1') {
     errors.push('DIRECTOR_RECEIPT_SCHEMA_INVALID');
   }
@@ -61,6 +65,8 @@ try {
     schemaVersion: JOB_SCHEMA,
     taskId: manifest.taskId,
     requestId: manifest.requestId,
+    ...(manifest.revisionId !== undefined ? {revisionId: manifest.revisionId} : {}),
+    ...(manifest.policy !== undefined ? {policy: structuredClone(manifest.policy)} : {}),
     status: 'sample-generation-authorized',
     generationMode: 'image_gen-one-call-per-scene',
     maximumConcurrency: 2,

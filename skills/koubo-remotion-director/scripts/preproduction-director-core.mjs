@@ -1,6 +1,7 @@
 import {createHash} from 'node:crypto';
 import {existsSync, readFileSync} from 'node:fs';
 import path from 'node:path';
+import {renderStillMechanismConstraints, validatePaperMotionContract, paperMechanismSnapshot} from './paper-motion-contract.mjs';
 
 export const PREPRODUCTION_REQUEST_SCHEMA =
   'koubo-director-preproduction-request/v1';
@@ -424,7 +425,7 @@ const SYMBOL_CUE_NEGATION_PATTERN =
   /(?:禁止|不得|不要|避免|不含|不出现|不生成|不使用|去除|排除)/gu;
 const SYMBOL_CUE_NEGATION_BREAK_PATTERN =
   /(?:但|但是|仍|仍然|保留|改为|改用|使用|放置|加入|呈现)/u;
-const SYMBOL_CUE_CLAUSE_BOUNDARIES = ['。', '；', ';', '.', '!', '！', '?', '？', '\n'];
+const SYMBOL_CUE_CLAUSE_BOUNDARIES = ['。', '；', ';', '，', ',', '.', '!', '！', '?', '？', '\n'];
 
 function cueIsOnlyProhibited(value, cueIndex) {
   const prefix = String(value).slice(0, cueIndex);
@@ -433,7 +434,15 @@ function cueIsOnlyProhibited(value, cueIndex) {
   );
   const clausePrefix = prefix.slice(clauseStart + 1);
   const matches = [...clausePrefix.matchAll(SYMBOL_CUE_NEGATION_PATTERN)];
-  if (matches.length === 0) return false;
+  if (matches.length === 0) {
+    // A comma can separate either a prohibition list or a new positive action.
+    const sentenceStart = Math.max(...['。', '；', ';', '.', '!', '！', '\n'].map((b) => prefix.lastIndexOf(b)));
+    const sentence = String(value).slice(sentenceStart + 1).split(/[。；;.!！\n]/u)[0];
+    const prohibitedList = sentence.match(/^\s*(?:禁止|不得出现|不含|不出现|不生成)\s*(.*)$/u)?.[1];
+    if (!prohibitedList) return false;
+    const nouns = new Set([...SYMBOL_CUE_RULES.map((rule) => rule.cue), '文字', '字幕', '中文', '字母', '数字', '图标', '符号', 'Logo', '水印']);
+    return prohibitedList.split(/[，,、及和]/u).every((item) => nouns.has(item.trim()));
+  }
   const last = matches.at(-1);
   const afterNegation = clausePrefix.slice((last.index ?? 0) + last[0].length);
   return !SYMBOL_CUE_NEGATION_BREAK_PATTERN.test(afterNegation);
@@ -486,7 +495,7 @@ function validateSymbolCueConflicts(scene, beat, errors) {
   }
 }
 
-function validatePaperScene(scene, beat, errors, {v9ContractEnabled = false} = {}) {
+function validatePaperScene(scene, beat, errors, {v9ContractEnabled = false, incidentPrevention = false} = {}) {
   push(errors, scene && typeof scene === 'object', `PAPER_SCENE_MISSING:${beat.id}`);
   if (!scene || typeof scene !== 'object') return;
   push(
@@ -524,7 +533,7 @@ function validatePaperScene(scene, beat, errors, {v9ContractEnabled = false} = {
   );
   push(
     errors,
-    stages.length >= 4 && stages.length <= 7,
+    stages.length >= (incidentPrevention ? 1 : 4) && stages.length <= 7,
     `PAPER_STAGE_COUNT_INVALID:${beat.id}`,
   );
 
@@ -625,6 +634,8 @@ function validatePaperScene(scene, beat, errors, {v9ContractEnabled = false} = {
   const textItemsByNode = new Map();
   const usedSurfaceIds = new Set();
   for (const item of textPlan) {
+    const initiallyBaked = incidentPrevention && item.embeddingMode === 'first-frame-baked' &&
+      item.enterStageId === 'initial' && item.firstReadableFrame === 0;
     push(errors, nodeIds.has(item.nodeId), `PAPER_TEXT_NODE_UNKNOWN:${beat.id}:${item.nodeId}`);
     push(errors, isText(item.text), `PAPER_TEXT_EMPTY:${beat.id}:${item.nodeId}`);
     push(
@@ -639,7 +650,7 @@ function validatePaperScene(scene, beat, errors, {v9ContractEnabled = false} = {
     );
     push(
       errors,
-      stageIds.has(item.enterStageId),
+      initiallyBaked || stageIds.has(item.enterStageId),
       `PAPER_TEXT_STAGE_UNKNOWN:${beat.id}:${item.nodeId}`,
     );
     push(
@@ -715,12 +726,12 @@ function validatePaperScene(scene, beat, errors, {v9ContractEnabled = false} = {
     const enterStage = stageById.get(item.enterStageId);
     push(
       errors,
-      enterStage?.subject === item.groupId,
+      initiallyBaked || enterStage?.subject === item.groupId,
       `LABEL_OBJECT_BINDING_AMBIGUOUS:${beat.id}:${item.nodeId}:STAGE_GROUP_MISMATCH`,
     );
     push(
       errors,
-      Array.isArray(enterStage?.landingNodeIds) && enterStage.landingNodeIds.includes(item.nodeId),
+      initiallyBaked || (Array.isArray(enterStage?.landingNodeIds) && enterStage.landingNodeIds.includes(item.nodeId)),
       `LABEL_OBJECT_BINDING_AMBIGUOUS:${beat.id}:${item.nodeId}:ENTER_STAGE_NOT_LANDING_STAGE`,
     );
     push(
@@ -763,6 +774,8 @@ function validatePaperScene(scene, beat, errors, {v9ContractEnabled = false} = {
       );
       const boundItems = textItemsByNode.get(node.id) ?? [];
       const landingStages = landingStageIdsByNode.get(node.id) ?? [];
+      const initiallyBaked = incidentPrevention && boundItems[0]?.embeddingMode === 'first-frame-baked' &&
+        boundItems[0]?.enterStageId === 'initial' && boundItems[0]?.firstReadableFrame === 0;
       push(
         errors,
         boundItems.length === 1,
@@ -770,7 +783,8 @@ function validatePaperScene(scene, beat, errors, {v9ContractEnabled = false} = {
       );
       push(
         errors,
-        landingStages.length === 1 && landingStages[0] === boundItems[0]?.enterStageId,
+        initiallyBaked ? landingStages.length === 0 :
+          landingStages.length === 1 && landingStages[0] === boundItems[0]?.enterStageId,
         `LABEL_OBJECT_BINDING_AMBIGUOUS:${beat.id}:${node.id}:LANDING_STAGE_COUNT_OR_BINDING`,
       );
     } else {
@@ -854,11 +868,47 @@ function validatePaperScene(scene, beat, errors, {v9ContractEnabled = false} = {
     `PAPER_PROMPT_GENERATED_TEXT_NOT_BLOCKED:${beat.id}`,
   );
   validateSymbolCueConflicts(scene, beat, errors);
+  errors.push(...validatePaperMotionContract({scene, beat, required: incidentPrevention}));
+}
+
+export function validatePaperMeaningReview({request, beat, projectRoot}) {
+  const errors = [];
+  const reference = beat.paperScene?.motionContract?.semanticReview;
+  try {
+    const reviewPath = resolveDeclared(projectRoot, reference?.path);
+    if (!reviewPath || sha256File(reviewPath) !== reference?.sha256) throw new Error('binding');
+    const review = JSON.parse(readFileSync(reviewPath, 'utf8'));
+    push(errors, review.schemaVersion === 'koubo-paper-mechanism-review/v1' &&
+      review.status === 'reviewed-mechanism' && review.taskId === request.taskId &&
+      review.revisionId === request.revisionId && review.beatId === beat.id &&
+      review.sourceScriptSha256 === request.inputScript?.sha256 &&
+      review.sourceQuote === beat.spokenLine, `PAPER_SEMANTIC_REVIEW_SOURCE_MISMATCH:${beat.id}`);
+    push(errors, review.mechanismSha256 === sha256Json(paperMechanismSnapshot(beat.paperScene)),
+      `PAPER_SEMANTIC_REVIEW_GRAPH_MISMATCH:${beat.id}`);
+    push(errors, isText(review.authorId) && isText(review.reviewerId) && review.authorId !== review.reviewerId &&
+      Number.isFinite(Date.parse(review.reviewedAt)) && Array.isArray(review.findings) && review.findings.length === 0 &&
+      isText(review.semanticRationale) && review.generationAuthorized === false && review.formalAuthorized === false,
+      `PAPER_SEMANTIC_REVIEW_NOT_INDEPENDENT_OR_NOT_CLEAN:${beat.id}`);
+  } catch {
+    errors.push(`PAPER_SEMANTIC_REVIEW_FILE_OR_SHA_INVALID:${beat.id}`);
+  }
+  return {ok: errors.length === 0, errors};
 }
 
 export function validatePreproductionRequest({request, projectRoot, profile}) {
   const errors = [];
+  const incidentPrevention = request.policy?.incidentPreventionVersion === '1' ||
+    profile?.incidentPreventionPolicy?.requiredForNewPreproduction === true;
+  if (incidentPrevention && request.policy?.incidentPreventionVersion !== '1') {
+    errors.push('PAPER_INCIDENT_PREVENTION_POLICY_REQUIRED');
+  }
+  if (incidentPrevention && !isText(request.revisionId)) errors.push('PAPER_INCIDENT_REVISION_REQUIRED');
   const v9ContractEnabled = v9RequestEnabled(request);
+  if (incidentPrevention) {
+    for (const beat of Array.isArray(request.beats) ? request.beats : []) {
+      if (beat.paperScene) errors.push(...validatePaperMeaningReview({request, beat, projectRoot}).errors);
+    }
+  }
   const profileRequiresV9 =
     profile?.profileId === 'paper-editorial-director-v9' ||
     profile?.profileVersion === '9.0.0';
@@ -1046,12 +1096,12 @@ export function validatePreproductionRequest({request, projectRoot, profile}) {
         decision.class !== 'remotion-information',
         `GENERIC_CARD_CANNOT_SATISFY_PAPER_BEAT:${beat.id}`,
       );
-      validatePaperScene(beat.paperScene, beat, errors, {v9ContractEnabled});
+      validatePaperScene(beat.paperScene, beat, errors, {v9ContractEnabled, incidentPrevention});
     } else if (
       v9ContractEnabled &&
       decision.class === 'paper-editorial'
     ) {
-      validatePaperScene(beat.paperScene, beat, errors, {v9ContractEnabled});
+      validatePaperScene(beat.paperScene, beat, errors, {v9ContractEnabled, incidentPrevention});
     }
     if (decision.class === 'real-evidence') {
       push(
@@ -1092,10 +1142,12 @@ export function compilePreproductionPlan({request, requestPath, profile, style})
     schemaVersion: PREPRODUCTION_PLAN_SCHEMA,
     requestId: request.requestId,
     taskId: request.taskId,
+    ...(request.policy?.incidentPreventionVersion === '1' ? {revisionId: request.revisionId} : {}),
     phase: 'pre-shoot',
     status: 'provisional-previsualization',
     formalEligible: false,
     postShootRebindRequired: true,
+    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
     ...(v9ContractEnabled
       ? {
           v9Contract: {
@@ -1158,7 +1210,9 @@ export function buildRouteLock({request, requestPath, profile, style, plan}) {
     schemaVersion: DIRECTOR_ROUTE_LOCK_SCHEMA,
     requestId: request.requestId,
     taskId: request.taskId,
+    ...(request.policy?.incidentPreventionVersion === '1' ? {revisionId: request.revisionId} : {}),
     phase: 'pre-shoot',
+    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
     branch: 'paper-editorial',
     fallback: 'blocked',
     genericInformationCardCanSatisfyPaperBeat: false,
@@ -1256,7 +1310,8 @@ function renderV9LayoutSafetyClause(scene) {
 
 function buildEffectiveFirstFramePrompt(scene, v9ContractEnabled) {
   if (!v9ContractEnabled) return scene.prompt.firstFrame;
-  return `${scene.prompt.firstFrame.trim()}\n\n${renderV9LayoutSafetyClause(scene)}`;
+  return [scene.prompt.firstFrame.trim(), renderV9LayoutSafetyClause(scene), renderStillMechanismConstraints(scene)]
+    .filter(Boolean).join('\n\n');
 }
 
 export function buildSceneIdentity(
@@ -1334,6 +1389,7 @@ export function buildFirstFramePromptManifest(plan) {
     schemaVersion: FIRST_FRAME_PROMPT_MANIFEST_SCHEMA,
     requestId: plan.requestId,
     taskId: plan.taskId,
+    ...(plan.policy?.incidentPreventionVersion === '1' ? {revisionId: plan.revisionId} : {}),
     phase: 'pre-shoot',
     status: 'automation-input-ready',
     consumer: 'first-frame-image-automation',
@@ -1342,6 +1398,7 @@ export function buildFirstFramePromptManifest(plan) {
     generatedReadableTextAllowed: false,
     modelGeneratedReadableTextAllowed: false,
     deterministicTextMayBeBakedIntoFirstFrame: true,
+    ...(plan.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
     ...(v9ContractEnabled ? {v9ContractEnabled: true} : {}),
     sourcePlanCanonicalSha256: sha256Json(plan),
     sceneCount: plan.paperScenes.length,
@@ -1380,12 +1437,14 @@ export function buildRunningHubPromptManifest(plan) {
     schemaVersion: RUNNINGHUB_PROMPT_MANIFEST_SCHEMA,
     requestId: plan.requestId,
     taskId: plan.taskId,
+    ...(plan.policy?.incidentPreventionVersion === '1' ? {revisionId: plan.revisionId} : {}),
     phase: 'pre-shoot',
     status: 'awaiting-text-baked-firstframes',
     consumer: 'runninghub-manual-image-to-video',
     generationMode: 'image-to-video',
     executionOwner: 'user-manual',
     codexExternalSubmissionAllowed: false,
+    ...(plan.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
     submissionBlockedUntil: [
       'raw-first-frame-visual-review-passed',
       'actual-paper-surface-anchor-calibration-passed',
@@ -1415,6 +1474,10 @@ export function buildRunningHubPromptManifest(plan) {
         inputContainsDeterministicBakedText: identity.hasFirstFrameBakedText,
         handoffState: 'awaiting-text-baked-firstframe-and-ocr',
         postProductionTextOverlay: buildTextOverlayPlan(scene),
+        ...(scene.motionContract ? {
+          motionContractSha256: sha256Json(scene.motionContract),
+          dynamicValidation: scene.motionContract.dynamicValidation,
+        } : {}),
       };
     }),
   };
@@ -1490,6 +1553,7 @@ export function buildAiGeneratedVideoPromptManifest(plan) {
     schemaVersion: AI_GENERATED_VIDEO_PROMPT_MANIFEST_SCHEMA,
     requestId: plan.requestId,
     taskId: plan.taskId,
+    ...(plan.policy?.incidentPreventionVersion === '1' ? {revisionId: plan.revisionId, policy: {incidentPreventionVersion: '1'}} : {}),
     phase: 'pre-shoot',
     status: items.length === 0 ? 'not-required' : 'manual-execution-required',
     consumer: 'manual-ai-generated-video',
@@ -1545,6 +1609,19 @@ export function validatePromptHandoffManifests({
 }) {
   const errors = [];
   const v9ContractEnabled = v9PlanEnabled(plan);
+  if (plan.policy?.incidentPreventionVersion === '1') {
+    for (const manifest of [firstFrameManifest, runningHubManifest, ...(v9ContractEnabled ? [aiGeneratedVideoManifest] : [])]) {
+      push(errors, manifest?.policy?.incidentPreventionVersion === '1', 'PROMPT_INCIDENT_POLICY_MISSING');
+      push(errors, isText(plan.revisionId) && manifest?.revisionId === plan.revisionId, 'PROMPT_INCIDENT_REVISION_MISMATCH');
+    }
+    for (const [index, scene] of plan.paperScenes.entries()) {
+      errors.push(...validatePaperMotionContract({scene, beat: {id: scene.beatId, spokenLine: scene.spokenLine}, required: true}));
+      const handed = runningHubManifest?.scenes?.[index];
+      push(errors, handed?.motionContractSha256 === sha256Json(scene.motionContract) &&
+        stableStringify(handed?.dynamicValidation) === stableStringify(scene.motionContract?.dynamicValidation),
+      `RUNNINGHUB_MOTION_CONTRACT_BINDING_MISMATCH:${scene.beatId}`);
+    }
+  }
   push(
     errors,
     firstFrameManifest?.schemaVersion === FIRST_FRAME_PROMPT_MANIFEST_SCHEMA,
@@ -1581,7 +1658,8 @@ export function validatePromptHandoffManifests({
     );
     push(
       errors,
-      hasExactKeys(aiGeneratedVideoManifest, AI_GENERATED_VIDEO_MANIFEST_KEYS),
+      hasExactKeys(aiGeneratedVideoManifest, [...AI_GENERATED_VIDEO_MANIFEST_KEYS,
+        ...(plan.policy?.incidentPreventionVersion === '1' ? ['revisionId', 'policy'] : [])]),
       'AI_GENERATED_VIDEO_PROMPT_MANIFEST_FIELDS_INVALID',
     );
     push(

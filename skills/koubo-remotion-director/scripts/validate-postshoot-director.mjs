@@ -4,8 +4,8 @@ import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {
-  POSTSHOOT_PLAN_SCHEMA,
   validatePostshootRebindRequest,
+  validatePostshootRebindPlan,
 } from './postshoot-rebind-core.mjs';
 import {resolveDeclared, sha256File} from './preproduction-director-core.mjs';
 
@@ -37,41 +37,17 @@ try {
   if (!existsSync(planPath)) throw new Error(`POSTSHOOT_PLAN_MISSING:${planPath}`);
   if (existsSync(receiptPath)) throw new Error(`POSTSHOOT_RECEIPT_ALREADY_EXISTS:${receiptPath}`);
   const plan = JSON.parse(readFileSync(planPath, 'utf8'));
-  const errors = [];
-  if (plan.schemaVersion !== POSTSHOOT_PLAN_SCHEMA) errors.push('POSTSHOOT_PLAN_SCHEMA_INVALID');
-  if (plan.requestId !== request.requestId || plan.taskId !== request.taskId) {
-    errors.push('POSTSHOOT_PLAN_BINDING_MISMATCH');
+  const planValidation = validatePostshootRebindPlan({request, requestPath, validation, plan});
+  if (!planValidation.ok) {
+    throw new Error(`POSTSHOOT_PLAN_INVALID:${planValidation.errors.join('|')}`);
   }
-  if (plan.spokenAuthority !== 'recorded-audio' || plan.scriptRole !== 'comparison-only') {
-    errors.push('POSTSHOOT_SPOKEN_AUTHORITY_INVALID');
-  }
-  if (plan.formalEligible !== false || plan.status !== 'candidate-preview-required') {
-    errors.push('POSTSHOOT_PLAN_STATE_INVALID');
-  }
-  const planBeats = Array.isArray(plan.beats) ? plan.beats : [];
-  if (planBeats.length !== request.mappings.length) errors.push('POSTSHOOT_PLAN_COVERAGE_INVALID');
-  const paperBeats = planBeats.filter((beat) => beat.paperScene);
-  const paperScenes = Array.isArray(plan.paperScenes) ? plan.paperScenes : [];
-  if (paperScenes.length !== paperBeats.length) {
-    errors.push('POSTSHOOT_PAPER_SCENE_EXPORT_COVERAGE_INVALID');
-  }
-  paperBeats.forEach((beat, index) => {
-    const scene = paperScenes[index];
-    if (
-      scene?.beatId !== beat.id ||
-      scene?.spokenLine !== beat.spokenLine ||
-      !Array.isArray(scene?.textPlan) ||
-      scene.textPlan.some((item) => !item.postshootBinding)
-    ) {
-      errors.push(`POSTSHOOT_PAPER_SCENE_EXPORT_INVALID:${beat.id}`);
-    }
-  });
-  if (errors.length > 0) throw new Error(`POSTSHOOT_PLAN_INVALID:${errors.join('|')}`);
 
   const receipt = {
     schemaVersion: 'koubo-director-postshoot-validation-receipt/v1',
     requestId: request.requestId,
     taskId: request.taskId,
+    revisionId: request.revisionId,
+    policy: {incidentPreventionVersion: '1'},
     phase: 'post-shoot',
     status: 'validated-candidate-preview-required',
     skillExecuted: true,
@@ -88,16 +64,24 @@ try {
         path: validation.spokenTimelinePath,
         sha256: sha256File(validation.spokenTimelinePath),
       },
+      scopedEvidence: validation.boundInputs.slice(5),
     },
     gates: {
       allPreproductionBeatsMapped: true,
+      allKeptBeatsMatchDerivedPlan: true,
+      omittedBeatsRemainInDispositionLedgerOnly: true,
+      omissionRequiresFullRecordingReviewEvidence: true,
       recordedSpeechBound: true,
       deterministicNodeTextReconfirmed: true,
       declaredCaptionWindowsBound: true,
       exactSpokenTermsBoundPerNode: true,
       visualClaimLeadAtMost300Ms: true,
-      nodeLabelStageOffsetAtMost3Frames: true,
+      firstReadableFrameIsIndependentOfAction: true,
+      movingLabelAndEmphasisOffsetAtMost3Frames: true,
+      initialStaticLabelsDoNotRequireFakeActions: true,
       mismatchRejectedAndPartialRequiresUserException: true,
+      partialExceptionBoundToCurrentRevisionAndSource: true,
+      renderedAssetTimingVerified: false,
       postshootPaperScenesReadyForAssetBinding: true,
       formalAssetIntakeRequired: true,
       formalEligible: false,

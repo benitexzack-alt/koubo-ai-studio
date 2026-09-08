@@ -1,0 +1,33 @@
+{
+  "schema": "director-first-candidate-authorization/v1",
+  "role": "user",
+  "decision": "approved-first-candidate-inputs",
+  "evidenceScope": "real-e2e",
+  "actorId": "<AUTHORIZED_USER_ID>",
+  "authorizedUserId": "<AUTHORIZED_USER_ID>",
+  "issuerGroupId": "<INDEPENDENT_USER_GROUP>",
+  "sourceThreadId": "<REAL_THREAD_ID>",
+  "sourceMessageId": "<REAL_MESSAGE_ID>",
+  "explicitAuthorizationQuote": "<真实原话，不得由执行者代填批准>",
+  "sourceMessageSha256": "<QUOTE_SHA256>",
+  "reviewedAt": "<REAL_REVIEW_TIME>",
+  "expiresAt": "<EXPIRY_TIME>",
+  "revisionId": "<NEW_REVISION_ID>",
+  "allowedCommands": ["preview"],
+  "binding": {
+    "episodeId": "<EPISODE_ID>",
+    "taskId": "<ORIGINAL_DIRECTOR_TASK_ID>",
+    "jobId": "<NEW_JOB_ID>",
+    "revisionId": "<NEW_REVISION_ID>",
+    "firstCandidateInputSha256": "<INPUT_CONTRACT_SHA256>",
+    "jobSnapshotSha256": "<V2_JOB_SNAPSHOT_SHA256>",
+    "boundFiles": [],
+    "boundFilesSha256": "<V2_ALL_INPUTS_SHA256>",
+    "gateClosure": [],
+    "gateClosureSha256": "<CURRENT_V2_GATE_CLOSURE_SHA256>",
+    "compositionBinding": {},
+    "productionEligible": false,
+    "formalEnabled": false,
+    "candidateAccepted": false
+  }
+}

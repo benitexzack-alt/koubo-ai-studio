@@ -40,6 +40,15 @@ if (profile.profileId !== 'paper-editorial-director-v9') {
   errors.push('DIRECTOR_PROFILE_ID_NOT_V9');
 }
 if (profile.profileVersion !== '9.1.0') errors.push('DIRECTOR_PROFILE_VERSION_NOT_V91');
+const incidentPolicy = profile.incidentPreventionPolicy;
+if (incidentPolicy?.version !== '1' || incidentPolicy.requiredForNewPreproduction !== true ||
+  incidentPolicy.typedMotionContractRequired !== true || incidentPolicy.fixedIndependentTextStandsRequired !== true ||
+  incidentPolicy.dynamicPilotBeforeBatchRequired !== true || incidentPolicy.actionBoundaryEvidenceRequired !== true ||
+  incidentPolicy.historicalOutputsImmutable !== true || incidentPolicy.automaticRetryAllowed !== false ||
+  incidentPolicy.formalAuthorizationUnchanged !== true ||
+  incidentPolicy.negativeRegistryPath !== 'skills/koubo-remotion-director/references/paper-motion-incident-registry.v1.json') {
+  errors.push('DIRECTOR_INCIDENT_PREVENTION_POLICY_REQUIRED');
+}
 if (profile.routingPolicy?.fallback !== 'blocked') {
   errors.push('DIRECTOR_PROFILE_FALLBACK_NOT_BLOCKED');
 }

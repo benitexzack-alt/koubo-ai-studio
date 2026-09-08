@@ -16,6 +16,7 @@ import {
   sha256File,
   sha256Json,
   validatePreproductionRequest,
+  validatePromptHandoffManifests,
 } from './preproduction-director-core.mjs';
 
 const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -88,6 +89,10 @@ try {
     ? buildAiGeneratedVideoPromptManifest(plan)
     : null;
 
+  const handoff = validatePromptHandoffManifests({plan, firstFrameManifest: firstFramePromptManifest,
+    runningHubManifest: runningHubPromptManifest, aiGeneratedVideoManifest: aiGeneratedVideoPromptManifest});
+  if (!handoff.ok) throw new Error(`PREPRODUCTION_HANDOFF_INVALID:${handoff.errors.join('|')}`);
+
   writeNew(routeLockPath, `${JSON.stringify(routeLock, null, 2)}\n`);
   writeNew(planPath, `${JSON.stringify(plan, null, 2)}\n`);
   writeNew(assetSheetPath, renderAssetSheet(plan));
@@ -118,7 +123,9 @@ try {
     schemaVersion: 'koubo-director-compile-receipt/v1',
     requestId: request.requestId,
     taskId: request.taskId,
+    ...(request.policy?.incidentPreventionVersion === '1' ? {revisionId: request.revisionId} : {}),
     phase: 'pre-shoot',
+    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
     compilerExecuted: true,
     skillExecuted: false,
     skillExecutionBoundary: '需等独立验证器通过后才能记录 skillExecuted=true',

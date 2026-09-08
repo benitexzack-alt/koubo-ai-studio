@@ -183,6 +183,35 @@ try {
   assert.equal(receipt.gates.silentViewRetellingPassed, true);
   assert.equal(receipt.gates.inputActionOutputPassed, true);
 
+  const enforcedProfile = {incidentPreventionPolicy: {version: '1', requiredForNewPreproduction: true}};
+  const legacyUnderNewProfile = validatePaperAssetIntake({request, requestPath, projectRoot: root,
+    requireContactSheet: false, profile: enforcedProfile});
+  assert.equal(legacyUnderNewProfile.ok, false);
+  assert.ok(legacyUnderNewProfile.errors.includes('PAPER_ASSET_INCIDENT_REQUEST_POLICY_REQUIRED'));
+  const activeProfilePath = path.resolve(skillRoot, '../../workflow/active-director-profile.v1.json');
+  if (existsSync(activeProfilePath)) {
+    const activeProfile = JSON.parse(readFileSync(activeProfilePath, 'utf8'));
+    if (activeProfile.incidentPreventionPolicy?.requiredForNewPreproduction === true) {
+      assert.equal(validatePaperAssetIntake({request, requestPath, projectRoot: root,
+        requireContactSheet: false, profile: activeProfile}).ok, false);
+    }
+  }
+
+  // Synthetic engineering regressions, not media acceptance evidence.
+  const extraFramesRequest = structuredClone(request);
+  extraFramesRequest.assets[0].evidenceFrames.push({
+    moment: 'action-grid', path: firstPath, sha256: sha256File(firstPath),
+  });
+  assert.equal(validatePaperAssetIntake({
+    request: extraFramesRequest, requestPath, projectRoot: root, requireContactSheet: false,
+  }).ok, true, 'Additional action evidence must not be rejected by an exact-three limit');
+
+  const declaredIncidentRequest = structuredClone(request);
+  declaredIncidentRequest.policy = {incidentPreventionVersion: '1'};
+  assert.equal(validatePaperAssetIntake({
+    request: declaredIncidentRequest, requestPath, projectRoot: root, requireContactSheet: false,
+  }).ok, false, 'Version 1 must reject first/middle/last with only inline review booleans');
+
   const falseOcrRequest = structuredClone(request);
   falseOcrRequest.assets[0].textQa.samples[1].recognizedTexts = ['错误节点'];
   const falseOcr = validatePaperAssetIntake({
@@ -214,6 +243,8 @@ try {
       textFirstMiddleLastRequired: true,
       falseOcrDeclarationRejected: true,
       staleCandidateRejected: true,
+      activeIncidentProfileRejectsLegacyNewIntake: true,
+      legacyFixtureUsesIsolatedUnchangedProfile: true,
     }),
   );
 } finally {

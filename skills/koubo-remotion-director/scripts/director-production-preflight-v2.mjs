@@ -22,6 +22,12 @@ import {
   validateDirectorExternalMessageAnchorV2,
   validateDirectorContractV2,
 } from './director-contract-v2-core.mjs';
+import {
+  FIRST_CANDIDATE_AUTHORIZATION_SCHEMA,
+  FIRST_CANDIDATE_COMMANDS,
+  FIRST_CANDIDATE_GATE_STATE,
+  validateFirstCandidateInputContract,
+} from './first-candidate-input-contract.mjs';
 
 export const DIRECTOR_PRODUCTION_ENTRY_BINDING_SCHEMA = 'director-production-entry-binding/v2';
 export const DIRECTOR_PRODUCTION_FREEZE_RECEIPT_SCHEMA = 'director-production-freeze-receipt/v2';
@@ -49,6 +55,17 @@ const GATE_CLOSURE_PATHS = Object.freeze([
   'tools/video-quality-metrics-v2.mjs',
   'skills/koubo-remotion-director/scripts/director-contract-v2-core.mjs',
   'skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs',
+  'skills/koubo-remotion-director/scripts/first-candidate-input-contract.mjs',
+  'skills/koubo-remotion-director/scripts/preproduction-director-core.mjs',
+  'skills/koubo-remotion-director/scripts/paper-motion-contract.mjs',
+  'skills/koubo-remotion-director/scripts/postshoot-rebind-core.mjs',
+  'skills/koubo-remotion-director/scripts/paper-asset-intake-core.mjs',
+  'skills/koubo-remotion-director/scripts/paper-asset-intake-incident.mjs',
+  'skills/koubo-remotion-director/scripts/paper-asset-intake-media.mjs',
+  'skills/koubo-remotion-director/scripts/collect-paper-asset-intake-evidence.mjs',
+  'skills/koubo-remotion-director/references/paper-motion-incident-registry.v1.json',
+  'tools/director-production-binding-core.mjs',
+  'tools/director-skill-lock-core.mjs',
   'skills/koubo-remotion-director/scripts/run-remotion-production-v2.mjs',
   'skills/koubo-remotion-director/scripts/remotion-production-command-v2.mjs',
   'skills/koubo-remotion-director/templates/director-contract-v2.schema.json',
@@ -438,6 +455,89 @@ const assertExactStable = (actual, expected, code, label) => {
   }
 };
 
+const validateFirstCandidatePreflight = ({projectRoot, parsedJob, jobFile, registry, command, entrypoint}) => {
+  const gate = parsedJob.productionGate;
+  if (!FIRST_CANDIDATE_COMMANDS.includes(command) ||
+      !registry.body.candidateRevisionAllowedCommands.includes(command)) {
+    fail('FCI_COMMAND_FORBIDDEN', '首次候选只允许注册表内明确授权的预览命令。');
+  }
+  const input = readBoundJson(projectRoot, gate.firstCandidateInput, '首次候选输入合同');
+  const checked = validateFirstCandidateInputContract({projectRoot, contract: input.body, job: parsedJob, command});
+  const directorBinding = assertDirectorProductionBinding({projectRoot, job: parsedJob, command});
+  if (directorBinding.status !== 'candidate-entry-director-bound') {
+    fail('FCI_DIRECTOR_BINDING_REQUIRED', '首次候选不得利用历史日期或本条例外绕开当前导演绑定与包锁。');
+  }
+  const profile = readBoundJson(projectRoot, input.body.profile, '当前导演档案');
+  const lockFile = hashRegularFile(projectRoot, profile.body.skill?.lockPath, '当前导演包锁');
+  const boundFiles = [...new Map([
+    ...collectProductionBoundFilesV2({projectRoot, job: parsedJob}),
+    ...checked.files,
+    ...[input, lockFile].map(({path, sha256, bytes}) => ({path, sha256, bytes})),
+  ].map((item) => [item.path, item])).values()].sort((a, b) => a.path.localeCompare(b.path, 'zh-CN'));
+  if (boundFiles.some((item) => registry.body.retiredOutputSha256?.includes(item.sha256))) {
+    fail('FCI_RETIRED_OUTPUT', '首次候选不得使用旧事故或已退役输出，即使文件已改名。');
+  }
+  assertNoRetiredGeneratedStyle({
+    value: {job: parsedJob, input: input.body, documents: checked.documents.map((item) => item.body)},
+    operation: `first-candidate-${command}`, projectRoot,
+    documentPaths: [jobFile.absolutePath, input.absolutePath],
+    additionalStrings: boundFiles.map((item) => item.path),
+  });
+  const closure = computeProductionGateClosureV2({projectRoot});
+  const composition = computeProductionCompositionBindingV2(parsedJob, {projectRoot});
+  const binding = {
+    episodeId: input.body.episodeId, taskId: input.body.taskId, jobId: parsedJob.jobId,
+    revisionId: gate.revisionId, firstCandidateInputSha256: input.sha256,
+    jobSnapshotSha256: computeProductionJobSnapshotSha256V2(parsedJob),
+    boundFiles, boundFilesSha256: stableJsonSha256ForProductionGateV2(boundFiles),
+    gateClosure: closure.files, gateClosureSha256: closure.sha256, compositionBinding: composition,
+    productionEligible: false, formalEnabled: false, candidateAccepted: false,
+  };
+  const user = readBoundJson(projectRoot, gate.firstCandidateAuthorization, '首次候选用户授权');
+  const freeze = readBoundJson(projectRoot, gate.freezeReceipt, '首次候选监督冻结回执');
+  const approvals = [
+    {file: user, role: 'user', decision: 'approved-first-candidate-inputs', kind: 'director-first-candidate-input-authorization'},
+    {file: freeze, role: 'supervisor', decision: 'approved-first-candidate-revision', kind: 'director-production-freeze-authorization'},
+  ];
+  for (const {file, role, decision, kind} of approvals) {
+    const body = file.body;
+    if (body.schema !== FIRST_CANDIDATE_AUTHORIZATION_SCHEMA || body.role !== role ||
+        body.authorizedUserId !== input.body.authorizedUserId ||
+        (role === 'user' && body.actorId !== input.body.authorizedUserId)) {
+      fail('FCI_AUTHORIZATION_IDENTITY_INVALID', '首次候选授权必须区分真实用户与独立监督，不能冒充候选验收。');
+    }
+    assertExactStable(body.binding, binding, 'FCI_AUTHORIZATION_BINDING_MISMATCH', '首次候选输入/代码/媒体全闭包');
+    if (!Array.isArray(body.allowedCommands) || body.allowedCommands.length === 0 ||
+        new Set(body.allowedCommands).size !== body.allowedCommands.length ||
+        !body.allowedCommands.includes(command) || body.allowedCommands.some((item) =>
+          !FIRST_CANDIDATE_COMMANDS.includes(item) || !registry.body.candidateRevisionAllowedCommands.includes(item))) {
+      fail('FCI_AUTHORIZATION_COMMAND_INVALID', '用户和监督都必须明确批准当前预览命令，且不得夹带正式命令。');
+    }
+    assertProductionExternalMessageV2({body, executionGroupId: input.body.executionGroupId,
+      decision, revisionId: gate.revisionId, kind, codePrefix: `FCI_${role.toUpperCase()}`});
+  }
+  if (freeze.body.userAuthorizationSha256 !== user.sha256 ||
+      freeze.body.issuerGroupId === user.body.issuerGroupId ||
+      (freeze.body.sourceThreadId === user.body.sourceThreadId && freeze.body.sourceMessageId === user.body.sourceMessageId)) {
+    fail('FCI_SUPERVISION_NOT_INDEPENDENT', '监督必须独立于用户许可消息并绑定当前用户授权 SHA。');
+  }
+  const knowledgeContext = validateKnowledgeContextForProductionV2({projectRoot,
+    jobPath: jobFile.absolutePath, job: parsedJob, command});
+  const evidence = {
+    ok: true, code: 'DPG2_FIRST_CANDIDATE_OK', route: 'v2-first-candidate-input', command, entrypoint,
+    jobId: parsedJob.jobId, revisionId: gate.revisionId, jobFileSha256: jobFile.sha256,
+    jobSnapshotSha256: binding.jobSnapshotSha256, firstCandidateInputSha256: input.sha256,
+    firstCandidateAuthorizationSha256: user.sha256, freezeReceiptSha256: freeze.sha256,
+    directorContractSha256: null, handoffBindingSha256: null,
+    boundFilesSha256: binding.boundFilesSha256, gateClosureSha256: closure.sha256, gateClosureFiles: closure.files,
+    compositionBindingSha256: stableJsonSha256ForProductionGateV2(composition),
+    productionEligible: false, formalEnabled: false, candidateAccepted: false,
+    userPreviewApproved: false, fullWatchConfirmed: false, publishAuthorized: false,
+    directorBinding, knowledgeContext,
+  };
+  return {...evidence, integritySealSha256: stableJsonSha256ForProductionGateV2(evidence)};
+};
+
 export const validateProductionEntryPreflightV2 = ({
   projectRoot = DEFAULT_PRODUCTION_PROJECT_ROOT,
   jobPath,
@@ -475,6 +575,10 @@ export const validateProductionEntryPreflightV2 = ({
     if (!isText(gate.revisionId)) fail('DPG2_REVISION_ID_REQUIRED', '生产门绑定必须有新 revisionId。');
     if (!isText(parsedJob.remotion?.publicDir)) {
       fail('DPG2_REMOTION_PUBLIC_DIR_REQUIRED', '生产 job 必须显式绑定 Remotion publicDir；禁止使用隐式默认目录。');
+    }
+
+    if (gate.state === FIRST_CANDIDATE_GATE_STATE || gate.firstCandidateInput) {
+      return validateFirstCandidatePreflight({projectRoot, parsedJob, jobFile, registry, command, entrypoint});
     }
 
     // This is a separate, pinned single-episode contract, never a signature fallback.

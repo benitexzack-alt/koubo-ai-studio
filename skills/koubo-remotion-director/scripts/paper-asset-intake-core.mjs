@@ -7,9 +7,15 @@ import {
   sha256File,
   sha256Json,
 } from './preproduction-director-core.mjs';
+import {
+  resolvePaperIntakeIncidentPolicy,
+  validatePaperIncidentAsset,
+  validatePaperIncidentRegistryAssets,
+} from './paper-asset-intake-incident.mjs';
 
 export const PAPER_ASSET_INTAKE_SCHEMA = 'koubo-paper-generated-asset-intake/v1';
 export const PAPER_CONTACT_SHEET_SCHEMA = 'koubo-paper-asset-contact-sheet/v1';
+export const PAPER_CONTACT_PAGE_SIZE = 12;
 
 const push = (errors, condition, code) => {
   if (!condition) errors.push(code);
@@ -37,7 +43,7 @@ const bindFrame = ({projectRoot, frame, label, errors}) => {
   const absolutePath = bindFile({projectRoot, reference: frame, label, errors});
   push(
     errors,
-    ['first', 'middle', 'last'].includes(frame?.moment),
+    ['first', 'middle', 'last', 'action-grid', 'action-boundary', 'high-risk'].includes(frame?.moment),
     `${label}_MOMENT_INVALID`,
   );
   return absolutePath;
@@ -54,16 +60,35 @@ const canonicalAssetSet = (assets) =>
     evidenceFrames: (asset?.evidenceFrames ?? []).map((frame) => ({
       moment: frame.moment,
       sha256: frame.sha256,
+      ...(frame.frameIndex !== undefined ? {frameIndex: frame.frameIndex, ocrReceiptSha256: frame.ocrReceipt?.sha256 ?? null} : {}),
     })),
+    ...(asset?.extractionReceipt ? {
+      extractionReceiptSha256: asset.extractionReceipt.sha256,
+      mediaQaReceiptSha256: asset.mediaQaReceipt?.sha256 ?? null,
+      semanticReviewReceiptSha256: asset.semanticReviewReceipt?.sha256 ?? null,
+      silentViewReviewReceiptSha256: asset.silentViewReviewReceipt?.sha256 ?? null,
+    } : {}),
   }));
 
 export const computePaperAssetSetSha256 = (assets) => sha256Json(canonicalAssetSet(assets));
+
+export const paperContactFrames = (assets, incidentPrevention) => assets.flatMap(asset =>
+  (incidentPrevention ? [...(asset.evidenceFrames ?? [])].sort((a, b) => a.frameIndex - b.frameIndex) :
+    [asset.evidenceFrames?.find(frame => frame.moment === 'middle')]).map(frame => ({asset, frame})));
+
+export const paperContactCellBinding = (asset, frame, incidentPrevention) => ({
+  sceneId: asset.sceneId,
+  productionCandidateSha256: asset.productionCandidate?.sha256,
+  ...(incidentPrevention ? {frameIndex: frame?.frameIndex, imageSha256: frame?.sha256,
+    ocrReceiptSha256: frame?.ocrReceipt?.sha256} : {middleFrameSha256: frame?.sha256}),
+});
 
 export function validatePaperAssetIntake({
   request,
   requestPath,
   projectRoot,
   requireContactSheet = true,
+  profile,
 }) {
   const errors = [];
   push(errors, request.schemaVersion === PAPER_ASSET_INTAKE_SCHEMA, 'PAPER_ASSET_SCHEMA_INVALID');
@@ -91,8 +116,13 @@ export function validatePaperAssetIntake({
   );
   const paperScenes = Array.isArray(plan?.paperScenes) ? plan.paperScenes : [];
   push(errors, paperScenes.length > 0, 'PAPER_ASSET_SOURCE_SCENES_EMPTY');
+  const incidentPolicy = resolvePaperIntakeIncidentPolicy({request, plan, projectRoot, profile});
+  errors.push(...incidentPolicy.errors);
+  const incidentPrevention = incidentPolicy.required;
 
   const assets = Array.isArray(request.assets) ? request.assets : [];
+  const incidentRegistry = incidentPrevention ? validatePaperIncidentRegistryAssets({assets, projectRoot}) : null;
+  errors.push(...(incidentRegistry?.errors ?? []));
   push(errors, assets.length === paperScenes.length, 'PAPER_ASSET_SCENE_COUNT_MISMATCH');
   const assetBySceneId = new Map();
   for (const asset of assets) {
@@ -106,6 +136,7 @@ export function validatePaperAssetIntake({
   }
 
   const orderedAssets = [];
+  const dynamicEvidence = [];
   paperScenes.forEach((scene, index) => {
     const identity = buildSceneIdentity(scene, index);
     const asset = assetBySceneId.get(identity.sceneId) ?? {};
@@ -169,7 +200,7 @@ export function validatePaperAssetIntake({
     });
     push(
       errors,
-      ['first', 'middle', 'last'].every((moment) => frameByMoment.has(moment)) && frames.length === 3,
+      ['first', 'middle', 'last'].every((moment) => frameByMoment.has(moment)) && frames.length >= 3,
       `PAPER_ASSET_EVIDENCE_FRAME_COVERAGE_INVALID:${suffix}`,
     );
 
@@ -179,9 +210,10 @@ export function validatePaperAssetIntake({
       label: `PAPER_ASSET_MEDIA_QA:${suffix}`,
       errors,
     });
+    let mediaQa;
     if (mediaQaPath) {
       try {
-        const mediaQa = JSON.parse(readFileSync(mediaQaPath, 'utf8'));
+        mediaQa = JSON.parse(readFileSync(mediaQaPath, 'utf8'));
         push(
           errors,
           mediaQa.fullDecodePassed === true &&
@@ -206,6 +238,16 @@ export function validatePaperAssetIntake({
       sameSet(asset.expectedStageIds ?? [], scene.stages.map((stage) => stage.id)),
       `PAPER_ASSET_STAGE_BINDING_MISMATCH:${suffix}`,
     );
+
+    if (incidentPrevention) {
+      const result = validatePaperIncidentAsset({asset, scene, sceneId: suffix, request, projectRoot, mediaQa});
+      errors.push(...result.errors);
+      dynamicEvidence.push({sceneId: suffix, videoSha256: asset.productionCandidate?.sha256,
+        requiredFrameIndices: result.requiredFrameIndices, evidenceSetSha256: result.evidenceSetSha256,
+        extractionReceipt: asset.extractionReceipt, semanticReviewReceipt: asset.semanticReviewReceipt,
+        silentViewReviewReceipt: asset.silentViewReviewReceipt});
+      return;
+    }
 
     const semantic = asset.semanticReview ?? {};
     push(errors, semantic.status === 'exact', `PAPER_ASSET_SEMANTIC_NOT_EXACT:${suffix}`);
@@ -318,14 +360,27 @@ export function validatePaperAssetIntake({
     });
     push(errors, Boolean(contactImagePath), 'PAPER_ASSET_CONTACT_SHEET_IMAGE_UNBOUND');
     const cells = Array.isArray(contactSheetManifest?.cells) ? contactSheetManifest.cells : [];
-    push(errors, cells.length === orderedAssets.length, 'PAPER_ASSET_CONTACT_SHEET_CELL_COUNT_INVALID');
-    orderedAssets.forEach((asset, index) => {
+    const expectedCells = paperContactFrames(orderedAssets, incidentPrevention);
+    push(errors, cells.length === expectedCells.length, 'PAPER_ASSET_CONTACT_SHEET_CELL_COUNT_INVALID');
+    if (incidentPrevention) {
+      const pages = Array.isArray(contactSheetManifest?.pages) ? contactSheetManifest.pages : [];
+      push(errors, contactSheetManifest?.policy?.incidentPreventionVersion === '1' &&
+        contactSheetManifest?.revisionId === request.revisionId &&
+        pages.length === Math.ceil(expectedCells.length / PAPER_CONTACT_PAGE_SIZE), 'PAPER_ASSET_CONTACT_SHEET_PAGES_INVALID');
+      pages.forEach((page, index) => {
+        bindFile({projectRoot, reference: page?.image, label: `PAPER_ASSET_CONTACT_SHEET_PAGE:${index}`, errors});
+        push(errors, page?.pageIndex === index, `PAPER_ASSET_CONTACT_SHEET_PAGE_ORDER_INVALID:${index}`);
+      });
+      push(errors, pages[0]?.image?.sha256 === contactSheetManifest?.image?.sha256 &&
+        pages[0]?.image?.path === contactSheetManifest?.image?.path, 'PAPER_ASSET_CONTACT_SHEET_FIRST_PAGE_MISMATCH');
+    }
+    expectedCells.forEach(({asset, frame}, index) => {
       const cell = cells[index] ?? {};
+      const expected = paperContactCellBinding(asset, frame, incidentPrevention);
       push(
         errors,
-        cell.sceneId === asset.sceneId &&
-          cell.productionCandidateSha256 === asset.productionCandidate?.sha256 &&
-          cell.middleFrameSha256 === asset.evidenceFrames?.find((frame) => frame.moment === 'middle')?.sha256,
+        Object.entries(expected).every(([key, value]) => cell[key] === value) &&
+          (!incidentPrevention || cell.pageIndex === Math.floor(index / PAPER_CONTACT_PAGE_SIZE)),
         `PAPER_ASSET_CONTACT_SHEET_CELL_BINDING_MISMATCH:${asset.sceneId ?? index}`,
       );
     });
@@ -348,6 +403,12 @@ export function validatePaperAssetIntake({
     errors,
     plan,
     planPath,
+    incidentPreventionVersion: incidentPrevention ? '1' : null,
+    revisionId: incidentPrevention ? request.revisionId : null,
+    sourceFrameExecutionVerificationRequired: incidentPrevention,
+    sourceFramesVerified: false,
+    incidentRegistry: incidentRegistry?.registry ?? null,
+    dynamicEvidence,
     orderedAssets,
     assetSetSha256,
     contactSheetManifest,
