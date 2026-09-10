@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-visual-review/v1",
+  "sceneId": "P02",
+  "imagePath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/first-frames/P02_B07_first-frame.png",
+  "imageSha256": "e65a37f9b05ad74e6ca6739f3e2cececd66fd6b8afe0d4b71692750b90b8850f",
+  "reviewer": "codex-visual-inspection",
+  "status": "revision-required",
+  "criteria": {
+    "semanticMatch": "failed",
+    "paperMaterial": "passed",
+    "depthAndContact": "passed",
+    "cleanTextAndBrand": "passed",
+    "compositionAndReadability": "passed",
+    "videoReadiness": "failed"
+  },
+  "notes": "实际打开生成图并对照 B07 motionContract。四张独立空白标签、深蓝纸台、三层接触关系、无文字与标志基本成立。但左侧 G1 已有回答纸叠，G3 老板台面又出现可辨认的多层纸页，违反 draft 唯一初始位于 G1 的要求。G4 取景框内另有完整暖白纸面，与未摆放成品的初态存在歧义。G2 生成竖向分隔的开口文件槽，槽壁及 G3 台面侧栏未体现一叠宽纸由左向右平移的连续净空通道，视频模型可能需要穿墙、越栏或重塑纸页。不能把这张图作为合格动作起点。",
+  "issues": [
+    {
+      "id": "P0-P02-INITIAL-DUPLICATION",
+      "severity": "P0",
+      "status": "confirmed",
+      "observation": "G1 与 G3 同时有独立纸叠。",
+      "expected": "同一叠 draft 仅在 G1，G2/G3/G4 初态不持有 draft。",
+      "source": "director-plan.v1.json beats[B07].paperScene.motionContract.initialLocations"
+    },
+    {
+      "id": "P1-P02-DISPLAY-NOT-EMPTY",
+      "severity": "P1",
+      "status": "needs-director-clarification",
+      "observation": "G4 框内为完整暖白纸面，可能被模型视为已有展示成品。",
+      "expected": "初态未摆放成品；需要明确无背板镂空框或明确非成品的固定结构。"
+    },
+    {
+      "id": "P1-P02-TRANSPORT-CLEARANCE",
+      "severity": "P1",
+      "status": "visual-risk",
+      "observation": "G2 竖向分隔和 G3 侧栏与横向整叠平移路径存在冲突风险。",
+      "expected": "确保 draft 不穿过固体或变形的可见净空通道。"
+    }
+  ],
+  "scope": {
+    "rawImageInspected": true,
+    "textBaked": false,
+    "ocrPerformed": false,
+    "videoGenerated": false,
+    "dynamicQualityClaimed": false
+  },
+  "nextAction": "停止此图写字、整批扩展与上传；回到导演确认构图/提示词修订。原图保留，不自动重试。"
+}
