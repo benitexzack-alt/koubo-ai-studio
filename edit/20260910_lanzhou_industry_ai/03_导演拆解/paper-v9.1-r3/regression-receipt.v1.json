@@ -1,0 +1,775 @@
+{
+  "schemaVersion": "koubo-local-contract-regression/v1",
+  "startedAt": "2026-09-10T14:52:01.213Z",
+  "completedAt": "2026-09-10T14:52:47.165Z",
+  "command": [
+    "/Users/pc/.local/node-v22.22.3-darwin-arm64/bin/node",
+    "--test",
+    "--test-reporter=spec",
+    "--test-concurrency=2",
+    "skills/koubo-remotion-director/tests/test-paper-projection-contract.mjs",
+    "skills/koubo-remotion-director/tests/test-paper-physical-contract.mjs",
+    "skills/koubo-remotion-director/tests/test-paper-motion-contract.mjs",
+    "skills/koubo-remotion-director/tests/test-preproduction-director-contract.mjs",
+    "skills/koubo-remotion-director/tests/test-postshoot-incident-prevention.mjs",
+    "skills/koubo-remotion-director/tests/test-postshoot-rebind-contract.mjs",
+    "skills/koubo-remotion-director/tests/test-paper-asset-intake-incident.mjs",
+    "skills/koubo-remotion-director/tests/test-v9-workflow-state.mjs",
+    "skills/koubo-remotion-director/tests/test-firstframe-text-bake.mjs",
+    "skills/koubo-paper-firstframe-producer/tests/test-raw-visual-review.mjs",
+    "skills/koubo-paper-firstframe-producer/tests/test-firstframe-batch.mjs",
+    "skills/koubo-paper-firstframe-producer/tests/test-native-compiler-handoff.mjs",
+    "skills/koubo-paper-firstframe-producer/tests/test-text-bake-runninghub-handoff.mjs"
+  ],
+  "exitCode": 0,
+  "processExitCode": 0,
+  "sourcePackages": [
+    {
+      "path": "skills/koubo-remotion-director",
+      "packageSha256": "7379e299be26efbf4321e668bd9fa99ecac7e3de0680c5ad626e7b8efde831ce",
+      "entries": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 427,
+          "sha256": "334506491361766b2f904240c95f9929c65ed6564f021365a6c85d3f00882461"
+        },
+        {
+          "path": "assets/licenses/Ajv-8.20.0-MIT.txt",
+          "bytes": 1089,
+          "sha256": "9b6a90e9be78799534e4030d71b6817271fb99aa10e261f9f9f6dec1cff4177a"
+        },
+        {
+          "path": "assets/remotion-paper-editorial/DirectorComposition.tsx",
+          "bytes": 35782,
+          "sha256": "aa1edc32325f0dc5a9e7999bd9e4e1e5555bd8a2859e583d8564a1f3b2dba783"
+        },
+        {
+          "path": "assets/remotion-paper-editorial/entry.tsx",
+          "bytes": 2179,
+          "sha256": "8be74fbe97234f5235c424d58ba9cd45ea63e2822d3c3fa4f62024fa9b074506"
+        },
+        {
+          "path": "assets/remotion-paper-editorial/PaperPrimitives.tsx",
+          "bytes": 15998,
+          "sha256": "5d459181a7bd101eee79769ad18b94bba4a89be531bdd3d55a8456b353004651"
+        },
+        {
+          "path": "assets/remotion-paper-editorial/PaperSurfaceText.tsx",
+          "bytes": 4717,
+          "sha256": "7951992f03af7cf533c8596e3e7280ec9a7a22f7ec6026d6e20da17c178da1ad"
+        },
+        {
+          "path": "assets/remotion-paper-editorial/style.ts",
+          "bytes": 82791,
+          "sha256": "1b709741e6b6684ef6f00712bd24f62c89bdd9e850c8a1380b4b777cd50b6a85"
+        },
+        {
+          "path": "assets/remotion-presenter-media/PresenterMediaStage.tsx",
+          "bytes": 4130,
+          "sha256": "a15f6a41dddda1ada34a29c39cecc085a9ea02ec49b782cc8d57750c36a647b5"
+        },
+        {
+          "path": "assets/schema-validator-engine.mjs",
+          "bytes": 268472,
+          "sha256": "e0361694ca2c098b485d3b872172f8de198145b6d995faab06254ce3e6d2fd95"
+        },
+        {
+          "path": "examples/production-render-entry-boundary.md",
+          "bytes": 1320,
+          "sha256": "9f1faed331aad3bf3e83d4842ef632a909e18c423949a6ec0c4e490001ddb0ee"
+        },
+        {
+          "path": "examples/README.md",
+          "bytes": 2815,
+          "sha256": "343c3aba7fdb54b167bf97256b53b191d29509764c6bb60f5acf0ccc866f8765"
+        },
+        {
+          "path": "fixtures/external-acceptance-anchor-registry.v2.json",
+          "bytes": 236,
+          "sha256": "ed6a7f6cf13133d79557f04d74ea6d05d02de8a9a3039d0ebed2f77465722137"
+        },
+        {
+          "path": "fixtures/incident-regression-manifest.v2.json",
+          "bytes": 4707,
+          "sha256": "6974148f1fc07715dbfdb8dfcd9284f8cd96e68981c8afc8a568902b1c7f7ab1"
+        },
+        {
+          "path": "fixtures/production-freeze-registry.v2.json",
+          "bytes": 2400,
+          "sha256": "213f1f8e6bdabf72089d6f305bd34550c2d579067ee9c03ecd67e8ca476838c2"
+        },
+        {
+          "path": "fixtures/runninghub-h3-official-protocol-recording.v1.json",
+          "bytes": 2747,
+          "sha256": "3f6b35ff9bb3e722c93d75d7a2488514126ef92c098811a6d50e43f9022b5072"
+        },
+        {
+          "path": "references/acceptance.md",
+          "bytes": 6576,
+          "sha256": "9084fdd8fb71e98754ec4f7cb550ff37323b865b9b46ec194d600f8e2e95c919"
+        },
+        {
+          "path": "references/incident-handoff-state-integration.v1.md",
+          "bytes": 13456,
+          "sha256": "393bc29099f2b050b6812b6e89930966e1a53a1dbcd4e5ba32d26c85981d4667"
+        },
+        {
+          "path": "references/paper-construct-generated-video.md",
+          "bytes": 3261,
+          "sha256": "bdc2d499c3edb586a4d93add0b3518c760c2b70b441c4c9d8e02cb28e3540e79"
+        },
+        {
+          "path": "references/paper-editorial-style.v1.json",
+          "bytes": 6269,
+          "sha256": "68fbfe1cd7105cac6195be52c5c759c35b1dd858db91f4a9808ca374badf1d6d"
+        },
+        {
+          "path": "references/paper-motion-incident-prevention.md",
+          "bytes": 10227,
+          "sha256": "472083bca2b5855a21dbf3451776c367a4a2ce850fed8c782ebbd4854220ec99"
+        },
+        {
+          "path": "references/paper-motion-incident-registry.v1.json",
+          "bytes": 1241,
+          "sha256": "2c684179854287d7642d243a5aa69a9adc0ed8d46f2ad4dd29c8bb4d32c8a597"
+        },
+        {
+          "path": "references/platform-safe-areas.v1.json",
+          "bytes": 3560,
+          "sha256": "276d4bf151798bd4971c13560a8f3411589df0c839cdf19fc8b5665a0b8ea49c"
+        },
+        {
+          "path": "references/v4-visual-pack.md",
+          "bytes": 1500,
+          "sha256": "3e3157aaa7e7bb91000bd48381ef3ccdaf622b85cd28df8a665a9704300393cc"
+        },
+        {
+          "path": "references/v9-workflow-contract.md",
+          "bytes": 3304,
+          "sha256": "f3c1e0462971127f01936e4227c605fc97575f5d1ad4059eedd29c863360350f"
+        },
+        {
+          "path": "references/validation-gates.md",
+          "bytes": 12089,
+          "sha256": "e8848946bc9ffee39364022eb195b330d22d2ad17fc58e34999020891d997580"
+        },
+        {
+          "path": "references/visual-routing-v3.2.md",
+          "bytes": 2731,
+          "sha256": "28b683e7f566f6dec743b7b8df855e1389558b46f36fe6e6c1d4c2d74b412e0e"
+        },
+        {
+          "path": "references/workflow-contract.md",
+          "bytes": 5907,
+          "sha256": "b5873191d4837049915c82f0a18cafcf17790d98c6c846a653a8c5c1461fb64c"
+        },
+        {
+          "path": "registries/request-isolation-registry.v1.json",
+          "bytes": 1856,
+          "sha256": "56a62ae3a6e65e3533b9afbf4b44122092a93be42f8b9dedc73c6a09c3530e8b"
+        },
+        {
+          "path": "registries/supervisor-acceptance-anchor-registry.v1.json",
+          "bytes": 1510,
+          "sha256": "5c4541191497a626cb4344e707e82b1bf0153b66022fbe7e2ed7ed53adb23817"
+        },
+        {
+          "path": "scripts/bake-firstframe-text.mjs",
+          "bytes": 19756,
+          "sha256": "c71c5bae902fb8896cfb918c32e6e45891ea74a1068b84eb74466ed970730e99"
+        },
+        {
+          "path": "scripts/build-paper-asset-contact-sheet.mjs",
+          "bytes": 6308,
+          "sha256": "61ea8ff2b1cee82c6e63d7893fac118a67cbc262a123ca969dbbc2516ebc69c9"
+        },
+        {
+          "path": "scripts/build-v9-preproduction-state.mjs",
+          "bytes": 3354,
+          "sha256": "33cd434cbf20b3fb26266292144c833d04b3163ad74211eabf1a05d0d8604282"
+        },
+        {
+          "path": "scripts/collect-paper-asset-intake-evidence.mjs",
+          "bytes": 9588,
+          "sha256": "c9045999acdd91cc3c9b3e4c2a7bac02677933283bdc2eff7dc9c6083dd2627a"
+        },
+        {
+          "path": "scripts/compile-director-plan.mjs",
+          "bytes": 210399,
+          "sha256": "ee754aa1698a0163e061e0951e6e73bdf82a48ab59111d0889555eac7adaf699"
+        },
+        {
+          "path": "scripts/compile-preproduction-director.mjs",
+          "bytes": 7147,
+          "sha256": "06ced4955a8d9cd510acb87c997deb4269c0433a222771fa1d03870a920d8f52"
+        },
+        {
+          "path": "scripts/director-contract-v2-core.mjs",
+          "bytes": 88417,
+          "sha256": "57555858f6f757c5054e7b3690981058bcd9cc8083e20ccf4a38748353d21806"
+        },
+        {
+          "path": "scripts/director-production-preflight-v2.mjs",
+          "bytes": 41305,
+          "sha256": "a5bffd415a9b8601d9c3f3691ea067ee307cce7b95d6026046058cbadd45680f"
+        },
+        {
+          "path": "scripts/emit-render-command.mjs",
+          "bytes": 3323,
+          "sha256": "2bd94d06773f28a1572213ac4ce8b3a1796f74f9f2e684967ad839a84814fbdb"
+        },
+        {
+          "path": "scripts/first-candidate-input-contract.mjs",
+          "bytes": 18578,
+          "sha256": "1f7e80702aa879b6187a206fcc715880875f6de3853cc6a94d01706c4b477644"
+        },
+        {
+          "path": "scripts/incident-evidence-core.mjs",
+          "bytes": 1552,
+          "sha256": "5daebd53d4242145c46cd2813fcf1c468df1552735db2b8df490510626f01f26"
+        },
+        {
+          "path": "scripts/package-and-qa-director-ab.mjs",
+          "bytes": 175451,
+          "sha256": "5f70109be8a0df4b5a7cee5c53e439ca01285c30df54e25c7c950751051358f7"
+        },
+        {
+          "path": "scripts/paper-asset-intake-core.mjs",
+          "bytes": 15950,
+          "sha256": "0b84f4b2e83c63661036443a003995cf0b881f754672e9f808aa4ae8582cea52"
+        },
+        {
+          "path": "scripts/paper-asset-intake-incident.mjs",
+          "bytes": 17796,
+          "sha256": "9581b0c50c1bb2cf9c753f4d9c98a54b93a9550e7449caadf4aca409371d3787"
+        },
+        {
+          "path": "scripts/paper-asset-intake-media.mjs",
+          "bytes": 6793,
+          "sha256": "d893f72e577646000291cbe93b4f407efee148f5dbc4b5757a675ce89f4d4043"
+        },
+        {
+          "path": "scripts/paper-motion-contract.mjs",
+          "bytes": 14234,
+          "sha256": "858c1127939cba284eb8a4666ca000e9e77b615bd3fd613188e558bc3e4f3c5f"
+        },
+        {
+          "path": "scripts/paper-physical-contract.mjs",
+          "bytes": 14633,
+          "sha256": "a94448c513ce7f7549eaa2f2755b574cb191ebd816beca2afd6bd86acfde6e60"
+        },
+        {
+          "path": "scripts/paper-projection-contract.mjs",
+          "bytes": 10237,
+          "sha256": "460134beffb642c59ebac5c3aa00f4c49a9a970702aa34ac85236e25415bd654"
+        },
+        {
+          "path": "scripts/platform-safe-area-core.mjs",
+          "bytes": 9812,
+          "sha256": "9dc164eb544f65c3526ea8e4eb0a3a581587ee5c849c65ea34e9288f3a42fcf4"
+        },
+        {
+          "path": "scripts/postshoot-rebind-core.mjs",
+          "bytes": 35475,
+          "sha256": "6edc4da735a0c6b197297c38ef37a946c6657948e02edca9eae32a44a9a96647"
+        },
+        {
+          "path": "scripts/preproduction-director-core.mjs",
+          "bytes": 74005,
+          "sha256": "ddf0612bdadd9f26ed70592dfce5db7df0cdb4136eaafc1660d6da332f90d949"
+        },
+        {
+          "path": "scripts/rebind-postshoot-director.mjs",
+          "bytes": 1996,
+          "sha256": "0142a0212253e2d51e06d6b4de408564d0bb680e91473a87a36568d5647926bd"
+        },
+        {
+          "path": "scripts/recognize-text-vision.swift",
+          "bytes": 1407,
+          "sha256": "b045c56e50a4e784f65c7aa98dd09dbbab3c76b9a56f2d10ba2d9119e60faa14"
+        },
+        {
+          "path": "scripts/remotion-production-command-v2.mjs",
+          "bytes": 505,
+          "sha256": "0f6ce4606dbec1d955b17d03ef6080fe28b6c74591d36406cc2779c16e7e34a6"
+        },
+        {
+          "path": "scripts/run-remotion-production-v2.mjs",
+          "bytes": 8839,
+          "sha256": "85d7705d4c89d35e5eff8931533a999d3fc273030e42ae3abaf23266202cb12d"
+        },
+        {
+          "path": "scripts/test-authored-local-stop-motion-runtime.mjs",
+          "bytes": 8966,
+          "sha256": "897eb234a7399a23cff42b2daa5a5d040c265318818b4e24262db2e21483c52f"
+        },
+        {
+          "path": "scripts/test-director-contract-v2.mjs",
+          "bytes": 42393,
+          "sha256": "8865f873b630e4d657ae7e55cd38889a1f4cb4741e4a9001182a134e9bcf9ab3"
+        },
+        {
+          "path": "scripts/test-director-production-preflight-v2.mjs",
+          "bytes": 21565,
+          "sha256": "76b506d28e053e64d3b64917b031d0d3652ab946717d1a1578ff63c6454d87bd"
+        },
+        {
+          "path": "scripts/test-forward-real-input.mjs",
+          "bytes": 109576,
+          "sha256": "f7e615d44967fc6fd248039420d531da1acf218481a223375dbe094a026e90c3"
+        },
+        {
+          "path": "scripts/test-package-and-qa-director-ab.mjs",
+          "bytes": 117311,
+          "sha256": "4fd988c8d67560fccd4da512665782ae8211c4fe603ea8b39fa6f32e9c2968c5"
+        },
+        {
+          "path": "scripts/v9-native-handoff-core.mjs",
+          "bytes": 5427,
+          "sha256": "118f40df6554545b35b631af6e58316d242ce08e099ca55bf0862fb4687f3ef6"
+        },
+        {
+          "path": "scripts/v9-native-preproduction-core.mjs",
+          "bytes": 9283,
+          "sha256": "e47fd91872f7b0ec7390003c2bb9898cab3b007f22eaba24e41e416bbb647382"
+        },
+        {
+          "path": "scripts/v9-workflow-state-core.mjs",
+          "bytes": 15966,
+          "sha256": "be952c7a8771fe616398d5994cffb487e6b2a42ef986fa63e11d485063b1887d"
+        },
+        {
+          "path": "scripts/validate-director-contract-v2.mjs",
+          "bytes": 1446,
+          "sha256": "cc56d383329836fee3ddf73f3868c8e848a2fc938f2120179a98fddedd2ef14f"
+        },
+        {
+          "path": "scripts/validate-director-output.mjs",
+          "bytes": 38237,
+          "sha256": "b75ea7387993720be79927ae068d7e6772c2424b44673ffe7a9ba1bac88749c4"
+        },
+        {
+          "path": "scripts/validate-paper-generated-asset-intake.mjs",
+          "bytes": 4658,
+          "sha256": "41fe817d3a5f49d63ef5d5e982d13e85fe5cd99816f80fbf18ef6d738f52666c"
+        },
+        {
+          "path": "scripts/validate-postshoot-director.mjs",
+          "bytes": 4109,
+          "sha256": "be65a490fec294e56ffae1607479b3bcd1bfbf35e7ff0a42a92b588110bef490"
+        },
+        {
+          "path": "scripts/validate-preproduction-director.mjs",
+          "bytes": 11664,
+          "sha256": "e5cfa585bf52eddf93b59d9b466414fde7ac16ee14a0609caaafe5a106b33e69"
+        },
+        {
+          "path": "scripts/validate-v9-production-state.mjs",
+          "bytes": 1389,
+          "sha256": "b8fc0f4ea130e2d569568dd57bed3dcfa112a62841ea3f4f2291f88dd5f4eb00"
+        },
+        {
+          "path": "SKILL.md",
+          "bytes": 31334,
+          "sha256": "9405099433783843912eae4c101e156d51fdaae53cb1589176de036b2e0bb5da"
+        },
+        {
+          "path": "templates/director-contract-v2.schema.json",
+          "bytes": 4799,
+          "sha256": "22b0812b70c58bac01aac57f492590cc5d6f2c69435a2df377643e3e4b794bbc"
+        },
+        {
+          "path": "templates/director-contract-v2.template.json",
+          "bytes": 5378,
+          "sha256": "9c889b819f5176fe548468425a0b9d620c71f8ffd36b553ce329d63e492bcb87"
+        },
+        {
+          "path": "templates/director-first-candidate-authorization.v1.template.json",
+          "bytes": 1194,
+          "sha256": "74db44008293deaf1930cf5ac15539b440605d1d65e5f79f2e8c62b5c624bb41"
+        },
+        {
+          "path": "templates/director-first-candidate-input.v1.template.json",
+          "bytes": 1587,
+          "sha256": "c728ab34d3e8aa5eea81d950b8f13ef4ea19572eb9ebfefeba16dc24eb763cb4"
+        },
+        {
+          "path": "templates/director-firstframe-text-bake-request.v1.json",
+          "bytes": 1354,
+          "sha256": "72e4c0657957a88514940516f1fe320b753b6ba35dea24f10ae0ca5b24f6de64"
+        },
+        {
+          "path": "templates/director-output.v1.schema.json",
+          "bytes": 31670,
+          "sha256": "d8c4779fa4f9b2ad5e132f34d03d4d47af515b3f6170da143d35c499b0a56afb"
+        },
+        {
+          "path": "templates/director-paper-asset-intake.v1.json",
+          "bytes": 7225,
+          "sha256": "0668243f241533f117491cff146ed397cf00eaee3f38f94a37c22d69f4c5205d"
+        },
+        {
+          "path": "templates/director-postshoot-rebind-request.v1.json",
+          "bytes": 2428,
+          "sha256": "3f214c791abb7cedc4b637dc6eb90a4b7c362ed68be0160d76d73a6f2bdb7cf6"
+        },
+        {
+          "path": "templates/director-preproduction-request.v1.json",
+          "bytes": 1884,
+          "sha256": "4932bea39a0b547ed201f7dbb90fce24ca8f7f7d15a6f936d3b32faa19cd750f"
+        },
+        {
+          "path": "templates/director-request.v1.json",
+          "bytes": 17377,
+          "sha256": "ddbf9764eb8ea57bad59affae96f9210ee152f3749938287454c8256c9dcac0d"
+        },
+        {
+          "path": "templates/director-user-style-acceptance.v1.json",
+          "bytes": 2335,
+          "sha256": "ab2b7a10069a5d90ed1092d1176d3a48e3437c4ba0b0aeec0abefb07061bde72"
+        },
+        {
+          "path": "templates/first-candidate-input-contract.v1.md",
+          "bytes": 4541,
+          "sha256": "d1ca9175645c151cab9aa5b2df86a79b62deae967bd486068e89c362fcd9c824"
+        },
+        {
+          "path": "templates/v9-production-state.v1.json",
+          "bytes": 1155,
+          "sha256": "5a6d6e1716a6c38098f7ed59d420035e4627c5c4bc6f553f99650a5c4886ec01"
+        },
+        {
+          "path": "tests/fixtures/exact30-ab-synthetic-plan.json",
+          "bytes": 1645,
+          "sha256": "c678211c88e5226d265b4dab0dca2fab189ef679e12b3b7fa9ffc54db1393b0c"
+        },
+        {
+          "path": "tests/fixtures/paper-motion-request.mjs",
+          "bytes": 5159,
+          "sha256": "773eaf377e2efaa4d645485286e06d3b8f3a90a5f36bde365a789d0dc847264f"
+        },
+        {
+          "path": "tests/fixtures/v9-native-preproduction.mjs",
+          "bytes": 4812,
+          "sha256": "9733f893c1f90817fdf1d2be7002c9bbb3ea7b6a96727fbebc429d7b42fc925d"
+        },
+        {
+          "path": "tests/test-compiler-publication-state-machine.mjs",
+          "bytes": 20056,
+          "sha256": "0860d62089d2adc791b69d1579b710752724e6828513df0a9135dc70af0bc433"
+        },
+        {
+          "path": "tests/test-director-request-template-plan-only.mjs",
+          "bytes": 8055,
+          "sha256": "49572fdeef650ba0573a609d3361197f90398b4253b1fe6c202f8b5b88ca6e22"
+        },
+        {
+          "path": "tests/test-first-candidate-input-contract.mjs",
+          "bytes": 27705,
+          "sha256": "db5143e779c8178175ae074dd734bf33eec682b5fc89adae4de613d692c4bc38"
+        },
+        {
+          "path": "tests/test-first-candidate-producer-integration.mjs",
+          "bytes": 20499,
+          "sha256": "0d8b25ef76b12903983b9ca0f364c4c54ca35cafe0dd2e567e1e1a96b451ea70"
+        },
+        {
+          "path": "tests/test-first-candidate-runtime-tool-closure.mjs",
+          "bytes": 3457,
+          "sha256": "ff36145f71f4767f94ee6cf725b8b56c4838a7cfd5cc33c74f01fffa08d4d378"
+        },
+        {
+          "path": "tests/test-firstframe-text-bake.mjs",
+          "bytes": 12369,
+          "sha256": "55d80a8a8d505e06b2198686cb1cdbf7c23c02680ba752df45ca4a4b57ad46fc"
+        },
+        {
+          "path": "tests/test-integrity-anchor-trust-root.mjs",
+          "bytes": 13878,
+          "sha256": "23cfbb974502b8aed94510d357e68ce19707ff320fb5ab0b282f04c538c01884"
+        },
+        {
+          "path": "tests/test-paper-asset-intake-incident.mjs",
+          "bytes": 17938,
+          "sha256": "ecddec7e4cbcef26c1862ff863c351835967968b7dc443c75b74e2f479ac8ebb"
+        },
+        {
+          "path": "tests/test-paper-asset-intake-media.mjs",
+          "bytes": 5513,
+          "sha256": "fb5279c602d6eaf7b3cf9f831f8b50d645d83a3fd78702eeb8ce544ea0733f7b"
+        },
+        {
+          "path": "tests/test-paper-asset-intake-real-negatives.mjs",
+          "bytes": 5454,
+          "sha256": "2fe9748fa9dda8d53ca21b58c8e003b054f20dcff1b80027a8c5ccee84e136b1"
+        },
+        {
+          "path": "tests/test-paper-asset-intake.mjs",
+          "bytes": 9468,
+          "sha256": "fd4dddc7426ca51383f716b771d7fb24819886e499be8fc1d7fdccc65c0953c9"
+        },
+        {
+          "path": "tests/test-paper-motion-contract.mjs",
+          "bytes": 11187,
+          "sha256": "024243159fa10f0d7782c76f2b6b5a1a459533102f20d4d5d258b160b7dd675b"
+        },
+        {
+          "path": "tests/test-paper-physical-contract.mjs",
+          "bytes": 17350,
+          "sha256": "5fe3f899ab6baa94afd4057dc3f80708ea8dff1347b5098e9de8666e5748bb57"
+        },
+        {
+          "path": "tests/test-paper-projection-contract.mjs",
+          "bytes": 15503,
+          "sha256": "e519ca3006b176d619ce34fdb8b908b88ad01ab4709f658de19671529c9a377b"
+        },
+        {
+          "path": "tests/test-platform-safe-area.mjs",
+          "bytes": 4751,
+          "sha256": "345822fa5b1650eac0d7481ec0a2d81fe54cae3c474e742decc943cb67903588"
+        },
+        {
+          "path": "tests/test-postshoot-incident-prevention.mjs",
+          "bytes": 18889,
+          "sha256": "cb977aeb9bc1ac10fa1818ece09fe11447f7f73e60b055c4c4ef7e747357522c"
+        },
+        {
+          "path": "tests/test-postshoot-rebind-contract.mjs",
+          "bytes": 9896,
+          "sha256": "9344163136e8d15051701c6e5d60fb8e6c68e533daf1346fceae01749c0dec9f"
+        },
+        {
+          "path": "tests/test-preproduction-director-contract.mjs",
+          "bytes": 34872,
+          "sha256": "31f7fd2541cd3bc53fdec1d106987c97d3f7d63679eb85cc87dd6fce177689fb"
+        },
+        {
+          "path": "tests/test-progressive-local-motion-contract.mjs",
+          "bytes": 18147,
+          "sha256": "938642ee21a44680da2cca240f096fc40f30bb287ff116f8290f91a8f4f599ad"
+        },
+        {
+          "path": "tests/test-publication-consumer-gate.mjs",
+          "bytes": 13278,
+          "sha256": "4fac4fcff907e5de7a37bfe063ca7098f79fe2d8ad6c0e4068529cc7dbe85704"
+        },
+        {
+          "path": "tests/test-request-isolation.mjs",
+          "bytes": 17726,
+          "sha256": "2882f048a2c461d9eb4ef396d51daaed3428e902e353d47548b8633704c44e5d"
+        },
+        {
+          "path": "tests/test-supervisor-a-acceptance-gate.mjs",
+          "bytes": 57824,
+          "sha256": "380dc16d91d66394a0a4fe517ed3b83de70efcaa769e712f6975cbb00830f962"
+        },
+        {
+          "path": "tests/test-v9-workflow-state.mjs",
+          "bytes": 17938,
+          "sha256": "49ca28ee1e57f20983cde1e41ba7bfac1fefc5b38bcbe1d6ed6363953bd17162"
+        }
+      ]
+    },
+    {
+      "path": "skills/koubo-paper-firstframe-producer",
+      "packageSha256": "1347c3b20b48d04eeefb5dfab458a8654b0468570705c380046cc6e818cfcb08",
+      "entries": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 355,
+          "sha256": "ca31bbea563cfd3a787634dee1b232cc20276c99861ef17a320479cba8965b1b"
+        },
+        {
+          "path": "references/quality-contract.md",
+          "bytes": 5628,
+          "sha256": "43360d6a8cdf5ed5883a13601648f79788374aae55419ffd17e3b8be1bb071ee"
+        },
+        {
+          "path": "scripts/bake-firstframe-batch.mjs",
+          "bytes": 10046,
+          "sha256": "b7ef5b49ab9140c3f02d64e176a9fd23c56259b22255ccf4d9a13c17c8f9c06d"
+        },
+        {
+          "path": "scripts/build-firstframe-contact-sheet.mjs",
+          "bytes": 2719,
+          "sha256": "be70ed83a7aa71bd048d15ae75e8c40d53b845ad488e42d80cb01eab75f9e86e"
+        },
+        {
+          "path": "scripts/build-runninghub-canvas-preparation-pack.mjs",
+          "bytes": 6607,
+          "sha256": "14e36ceea762c739d72bae49d09cea2e5e8835a4c117a4a364c1f5c6e4ad5fd8"
+        },
+        {
+          "path": "scripts/build-runninghub-ready-pack.mjs",
+          "bytes": 6866,
+          "sha256": "2767905432f0ef1369892e1554da722078e26745788fff51a2695fab0417a28d"
+        },
+        {
+          "path": "scripts/firstframe-batch-core.mjs",
+          "bytes": 16223,
+          "sha256": "5859e92905ed50f184cd0b485efa1e542a19dd8463ab32136ffa31c8a8173df3"
+        },
+        {
+          "path": "scripts/prepare-firstframe-batch.mjs",
+          "bytes": 5285,
+          "sha256": "a4d7b63294d918b3bf99267b43f0aed9b27b47a0b86bd66b0e806600acb5f2aa"
+        },
+        {
+          "path": "scripts/record-firstframe-result.mjs",
+          "bytes": 2789,
+          "sha256": "1c0b24f7d5f620970fb4f0d541e0e6bcfa6ac9cfd941550051ecac4ac7235c0b"
+        },
+        {
+          "path": "scripts/runninghub-handoff-incident-core.mjs",
+          "bytes": 19642,
+          "sha256": "a1d98f670f5912fbdfd305cb917ac4a382f294cc9d6f4cbac487686065e92456"
+        },
+        {
+          "path": "scripts/validate-firstframe-batch.mjs",
+          "bytes": 3839,
+          "sha256": "da81cb83d17451e814229c48f571f28bfd4a36b3b663bb5ced4b22881a544ccd"
+        },
+        {
+          "path": "SKILL.md",
+          "bytes": 13291,
+          "sha256": "0377c796d27d925592aec1fa9a7df2263fa1e33cea0bc8bfee4121abafeb6870"
+        },
+        {
+          "path": "tests/test-firstframe-batch.mjs",
+          "bytes": 7672,
+          "sha256": "4696b719c3f6cb3cda0e70e06d644a1c94bd2d9de6b49c13799be9a0d06a3346"
+        },
+        {
+          "path": "tests/test-native-compiler-handoff.mjs",
+          "bytes": 10332,
+          "sha256": "2d078c1bfa2ee14a9e3dbe07a27982c14ba0497e037db89f3ed55d45c5de5f2a"
+        },
+        {
+          "path": "tests/test-raw-visual-review.mjs",
+          "bytes": 6761,
+          "sha256": "53406204ee6c8b9cf627d5504137f327b6e7303eedad4440ff93d0be65adaee6"
+        },
+        {
+          "path": "tests/test-text-bake-runninghub-handoff.mjs",
+          "bytes": 34326,
+          "sha256": "1d3419999deb5c7d62d02ec1f509e6bcf19bcb5d702fbb2f884fcd87de43cc57"
+        }
+      ]
+    },
+    {
+      "path": "skills/koubo-runninghub-video-batch",
+      "packageSha256": "2ac24df39e886c1dd5c1b7c96093fd1c31b4fd0aa324697bf3bdf381058ec70b",
+      "entries": [
+        {
+          "path": "agents/openai.yaml",
+          "bytes": 339,
+          "sha256": "e1864c26699896bd0497edb2f9a59ea60030524a0bc476c4b3560fb2b6aac97a"
+        },
+        {
+          "path": "references/rhtv-browser-procedure.md",
+          "bytes": 2921,
+          "sha256": "daec507a5aca1784dadb64a0e6c64112f9154a4434613489736b8834d87a0788"
+        },
+        {
+          "path": "SKILL.md",
+          "bytes": 5308,
+          "sha256": "528e9b19bf81ab9b00b680ae152cb91b60f5a4f7acaaa225627129322304bae5"
+        },
+        {
+          "path": "SNAPSHOT.md",
+          "bytes": 748,
+          "sha256": "d84cd83ba9229d7647d37ad335273b66f822d3277c6af0cd4b2a33c5c0f66a5a"
+        }
+      ]
+    }
+  ],
+  "sourceStableDuringRun": true,
+  "stdout": "{\"ok\":true,\"manifestValidation\":true,\"videoPromptLeakRejected\":true,\"promptDriftRejected\":true,\"duplicateSceneRejected\":true,\"missingAnchorCalibrationGateRejected\":true,\"v9LayoutContractValidated\":true,\"v9OneSceneSampleValidated\":true,\"v9PrepareCliValidated\":true}\n✔ skills/koubo-paper-firstframe-producer/tests/test-firstframe-batch.mjs (112.967792ms)\n{\"nativeCompiler\":true,\"nativePrepare\":true,\"nativeBakeOcrNodes\":8,\"nativeReadyScenes\":[\"P01\",\"P02\"],\"nativeV9Stage\":\"generation-handoff-ready\",\"signedOriginalsUnchanged\":true,\"semanticReviewDriftRejected\":true,\"externalGeneration\":false}\n✔ 真实compiler到prepare、baker及P01/P02 ready CLI完整离线回归 (45681.831416ms)\n✔ 完整逐项观察结构可以通过；不宣称自动视觉识别 (2.356333ms)\n✔ 顶层passed不能掩盖semanticMatch失败或缺失 (0.269625ms)\n✔ 顶层passed不能掩盖paperMaterial失败或缺失 (0.837584ms)\n✔ 顶层passed不能掩盖depthAndContact失败或缺失 (0.078959ms)\n✔ 顶层passed不能掩盖cleanTextAndBrand失败或缺失 (0.156708ms)\n✔ 顶层passed不能掩盖compositionAndReadability失败或缺失 (0.055917ms)\n✔ 顶层passed不能掩盖videoReadiness失败或缺失 (0.117791ms)\n✔ 整图失败、空观察、旧图SHA和串镜均阻断 (0.143083ms)\n✔ 真实烘焙CLI在创建请求或调用写字器前拒绝顶层passed下的单项失败 (53.003084ms)\n✔ 实体观察记录逐项对应合同，不把结构自检当作实际动态验收 (0.709834ms)\n✔ 删除批次实体字段不能降级绕过源清单 (0.132333ms)\n✔ 实际图像观察拒绝两叠纸，即使顶层仍passed (0.168417ms)\n✔ 实际图像观察拒绝多处起点，即使顶层仍passed (0.157291ms)\n✔ 实际图像观察拒绝接收处已有纸，即使顶层仍passed (0.076834ms)\n✔ 实际图像观察拒绝存在挡边，即使顶层仍passed (0.129292ms)\n✔ 实际图像观察拒绝无法确定高差，即使顶层仍passed (0.185292ms)\n✔ 实际图像观察拒绝未记录通道图像位置，即使顶层仍passed (0.076541ms)\n✔ 实际图像观察拒绝照抄通过无具体观察，即使顶层仍passed (0.071292ms)\n✔ 实际图像观察拒绝缺少固定牌，即使顶层仍passed (0.067375ms)\n✔ 实际图像观察拒绝绑定旧图，即使顶层仍passed (0.060583ms)\n{\"ok\":true,\"rawImageReviewed\":true,\"actualImageAnchorCalibrationBound\":true,\"deterministicChineseTextBaked\":true,\"chineseOcrMatched\":true,\"runningHubReadyPackIssued\":true}\n✔ 旧本地中文烘焙与真实OCR集成夹具 (1949.693583ms)\n✔ 强化交接拒绝改提示词不改摘要 (56.527166ms)\n✔ 强化交接拒绝改提示词并重算自身摘要 (58.170708ms)\n✔ 强化交接拒绝源计划漂移 (45.652459ms)\n✔ 强化交接拒绝伪造配对摘要 (50.547875ms)\n✔ 强化交接拒绝文字计划摘要漂移 (74.048125ms)\n✔ 强化交接拒绝空识别数组 (61.78775ms)\n✔ 强化交接拒绝识别漏节点 (55.700459ms)\n✔ 强化交接拒绝同节点重复冒充覆盖 (57.801083ms)\n✔ 强化交接拒绝空识别文本但声称匹配 (64.960667ms)\n✔ 强化交接拒绝识别来自旧图 (64.565834ms)\n✔ 强化交接拒绝仅镜头编号批准 (68.172583ms)\n✔ 强化交接拒绝批准后换图并更新机器回执 (52.720542ms)\n✔ 强化交接拒绝识别镜头重复 (52.7165ms)\n✔ 强化交接拒绝动态视频漂移 (55.702291ms)\n✔ 强化交接拒绝动态回执错版本 (55.173125ms)\n✔ 强化交接拒绝动态回执保留例外 (56.366583ms)\n✔ 强化交接拒绝未知强化策略 (52.361667ms)\n✔ 强化交接拒绝移除上游清单策略 (55.897416ms)\n✔ 强化交接拒绝动作合同摘要漂移 (70.458042ms)\n✔ 强化交接拒绝静态批准冒充动态通过 (56.955041ms)\n✔ 强化交接拒绝首帧提示词改动未重算摘要 (87.453291ms)\n✔ 强化交接拒绝清单规范化计划摘要漂移 (58.050334ms)\n✔ 强化交接拒绝烘焙节点与计划不一致 (61.331417ms)\n✔ 强化交接拒绝外部机构审查文件漂移 (56.708291ms)\n✔ 强化交接拒绝首帧清单跨版本 (53.378375ms)\n✔ 强化交接拒绝动作清单跨版本 (56.04725ms)\n✔ 未验收代表性新机构时禁止全批交接 (64.737459ms)\n✔ 移除job自身策略不能绕过上游动态门 (59.331333ms)\n✔ 实际项目档案强制策略时移除所有输入flag仍不能降级签发 (46.890917ms)\n✔ 允许仅交接首条试片，不声称动态通过且不能付费生成 (57.895334ms)\n✔ 当前图片集合与代表性动态验收齐备才可全批交接，但仍非全批动态成功 (62.609792ms)\n✔ 本期固定负例视频SHA不得成为动态验收成功证据 (282.750583ms)\n✔ 不同动作合同不能借用首条机构的动态验收 (62.35825ms)\n✔ 首条试片只需要本条sample烘焙回执，不要求剩余图片已生成 (58.148334ms)\n✔ 旧纯哈希夹具仍可读取交接，不伪称动态已验收 (56.369459ms)\n✔ 可显式交接P02单镜试验，首镜不是唯一允许入口 (60.522583ms)\n✔ 已有P01验收时仍可试P02，但不得再次交接已通过的P01 (113.646166ms)\n✔ 动态索引自身的已接纳例外不能被子验收掩盖 (52.720833ms)\n✔ 源计划反写首帧且重算全链摘要仍不能绕过canonical prompt (53.066458ms)\n✔ 独立trial验收索引可闭合不同动作合同，整批不再生成已通过代表片 (59.19075ms)\n✔ 仅准备画布包不要求提前伪造用户看图或动态验收，且不具备生成权限 (59.67825ms)\n✔ 画布准备拒绝没有上传授权 (57.507875ms)\n✔ 画布准备拒绝扩大成付费授权 (61.800542ms)\n✔ 画布准备拒绝伪造用户已验收 (55.402042ms)\n✔ 画布准备拒绝授权旧修订 (52.327667ms)\n✔ 画布准备拒绝缺少原图逐项QA (79.431292ms)\n✔ 画布准备拒绝最终文字不在纸面 (58.4155ms)\n✔ 画布准备拒绝OCR空识别 (55.261584ms)\n{\"ok\":true,\"deterministicTextBaked\":true,\"chineseOcrMatched\":true,\"appleVisionFallbackMatched\":true,\"sourceTextPlanBound\":true,\"sourceShaMismatchRejected\":true,\"calibrationMismatchRejected\":true,\"finalCompositeOcrBound\":true,\"separateLabelsPassed\":true,\"laterLabelContaminationRejected\":true}\n✔ skills/koubo-remotion-director/tests/test-firstframe-text-bake.mjs (29505.519417ms)\nPASS valid bound dynamic engineering fixture\nPASS equal pixel byte counts cannot hide wrong PNG dimensions\nPASS request version cannot be stripped\nPASS unknown version rejected\nPASS request revision cannot be stripped\nPASS request cannot switch revision\nPASS extraction cannot come from another revision\nPASS OCR cannot come from another revision\nPASS review cannot come from another revision\nPASS three samples cannot replace action evidence\nPASS missing boundary plus one frame rejected\nPASS missing high-risk frame rejected\nPASS wrong frame number rejected\nPASS changed image bytes rejected\nPASS another video extraction rejected\nPASS probe contradicts receipt rejected\nPASS OCR bool cannot hide disappearance\nPASS OCR text cannot contradict raw output\nPASS OCR needs every node every active sample\nPASS stale OCR video receipt rejected\nPASS explicit failed OCR cannot hide behind matching text\nPASS inline semantic bool is insufficient\nPASS inline silent bool is insufficient\nPASS semantic and silent reviewers must differ\nPASS wrong review plan rejected\nPASS review must cover all actions\nPASS review cannot hide occlusion behind passed\nPASS explicit P1 cannot hide behind empty findings\nPASS review text visibility must be checked\nPASS OCR readable but folded label still rejected\nPASS planned sweep is not observed motion evidence\nPASS output before prerequisite completion rejected\nPASS wrong actual transfer destination rejected\nPASS unviewed interval cannot pass\nPASS initial-to-end cannot be narrowed by request\nPASS fixed registry cannot be overridden by request path\nPASS isolated engineering contact and receipt CLI include every frame\nPASS profile forces version even when plan and request stripped\nPASS asset hash includes frame coordinate and OCR/review evidence\n{\"ok\":true,\"tests\":39,\"evidenceClass\":\"synthetic-engineering-only\",\"actualMediaAccepted\":false}\n✔ skills/koubo-remotion-director/tests/test-paper-asset-intake-incident.mjs (2654.820667ms)\n{\"ok\":true,\"tests\":40,\"scope\":\"local-contract-only\",\"generatedMedia\":false}\n✔ skills/koubo-remotion-director/tests/test-paper-motion-contract.mjs (248.804125ms)\n{\"ok\":true,\"tests\":248,\"scope\":\"physical-contract-only\",\"generatedMedia\":false,\"dynamicAcceptance\":false}\n✔ skills/koubo-remotion-director/tests/test-paper-physical-contract.mjs (45.913666ms)\n{\"ok\":true,\"tests\":130,\"scope\":\"projection-reference-contract-only\",\"generatedMedia\":false,\"dynamicAcceptance\":false}\n✔ skills/koubo-remotion-director/tests/test-paper-projection-contract.mjs (55.338083ms)\n✔ safe initial labels and evidence-backed omission compile without invented motion or speech (9.496791ms)\n✔ new requests cannot silently use legacy mode (3.181542ms)\n✔ top-level safety version is accepted when policy is absent (2.717791ms)\n✔ omission cannot contain output timing or borrowed actual speech (2.314625ms)\n✔ omission rejects missing evidence (2.232208ms)\n✔ omission rejects wrong-source evidence (2.641084ms)\n✔ omission rejects incomplete-transcript evidence (2.413458ms)\n✔ omission rejects spoken-match evidence (2.135583ms)\n✔ a partial approval cannot be inherited from another revision (4.337209ms)\n✔ legacy generic partial exception cannot authorize the safety contract (2.231708ms)\n✔ first-frame-baked labels cannot be falsely declared as appearing later (2.358542ms)\n✔ rigid label action and emphasis may occur after genuine frame-zero readability (3.404292ms)\n✔ frame-zero visibility still enforces the 300ms semantic limit (2.236792ms)\n✔ compiler rejects mutated request after validation (3.509709ms)\n✔ whole-transcript exact spoken match defeats a false not-spoken review (2.295125ms)\n✔ partial approval rejects replay with changed taskId (2.428375ms)\n✔ partial approval rejects replay with changed requestId (2.930583ms)\n✔ partial approval rejects replay with changed revisionId (2.239042ms)\n✔ partial approval rejects replay with changed recordedMediaSha256 (2.511875ms)\n✔ partial approval rejects replay with changed spokenTimelineSha256 (3.222417ms)\n✔ partial approval rejects replay with changed preproductionPlanSha256 (2.546667ms)\n✔ partial approval rejects replay with changed beatId (2.493084ms)\n✔ partial approval rejects replay with changed target (3.968167ms)\n✔ partial approval quote must exist in its bound source message (2.450667ms)\n✔ partial acceptance never waives first readability or the 300ms limit (2.202333ms)\n✔ declaring an earlier semantic anchor cannot invent word timestamps (2.225625ms)\n✔ initial is not a real action or emphasis stage (1.807042ms)\n✔ legacy labelEnterFrame cannot contradict firstReadableFrame (1.576041ms)\n✔ output validator rejects altered speech, timing, omitted-beat ledger and policy (7.701583ms)\n✔ compiler rejects source or omission evidence drift after validation (2.9195ms)\n✔ CLI only writes a safe receipt for the exact derived output, without overwriting (99.3555ms)\n✔ CLI rejects a tampered plan before creating any receipt (52.61575ms)\n✔ compiler rereads source data instead of trusting mutated validation objects (3.192167ms)\n✔ duplicated caption ids cannot fabricate repeated recorded speech (2.916667ms)\n✔ 300ms boundary uses real first-readable frame, not a later claimed timestamp (4.026833ms)\n✔ new safety mode cannot accept an old preproduction plan by stripping its policy (3.024417ms)\n✔ neutral-background self-report does not waive a future visible claim (2.37175ms)\n✔ existing rebind CLI and validator round-trip the new contract in an isolated fixture (102.128375ms)\n{\"ok\":true,\"recordedSpeechAuthoritative\":true,\"legacyReadOnlyCompatibility\":true,\"legacyCompilationRejected\":true,\"unconfirmedNodeTextRejected\":true,\"incompleteBeatMappingRejected\":true,\"wholeTimelineFalsePositiveRejected\":true,\"earlyVisualClaimRejected\":true,\"nodeCaptionOutsideDeclaredAnchorRejected\":true,\"spokenTermSubstitutionRejected\":true,\"nodeStageOffsetOverThreeFramesRejected\":true,\"mismatchAlignmentRejected\":true,\"formalRemainsLocked\":true}\n✔ skills/koubo-remotion-director/tests/test-postshoot-rebind-contract.mjs (53.321625ms)\n{\"ok\":true,\"positivePaperPlanCompiled\":true,\"unlabeledObjectGroupsMustBeDeclared\":true,\"crossBoundLabelRejected\":true,\"symbolCueConflictRejected\":true,\"correctedNoTextFixtureValidated\":true,\"genericInformationFallbackRejected\":true,\"missingNodeTextRejected\":true,\"scriptDriftRejected\":true,\"firstFrameAndImageToVideoPromptsSeparated\":true,\"promptPairMismatchRejected\":true,\"paperSurfaceBindingsRequired\":true,\"silentTextTruncationRejected\":true,\"movingFirstFrameBakeRejected\":true,\"paperNodeScreenOverlayRejected\":true,\"nodeStageOffsetOverThreeFramesRejected\":true,\"modelGeneratedChineseRemainsBlocked\":true,\"realMaterialPresenterInsetValidated\":true,\"generatedVideoIllustrationBoundaryValidated\":true,\"runningHubPrematureReadinessBlocked\":true,\"legacyFixtureCompatibleWithoutV9\":true,\"normalizedV9LayoutContractValidated\":true,\"v9LayoutFailuresRejected\":true,\"firstFrameNumericSafetyTermsAppended\":true,\"aiGeneratedVideoPromptPackageSeparated\":true,\"zeroAiVideoPackageMarkedNotRequired\":true,\"historicalFixtureExportAndReceiptBlocked\":true}\n✔ skills/koubo-remotion-director/tests/test-preproduction-director-contract.mjs (158.254958ms)\n✔ V9 accepts the script-confirmed start state (1.229709ms)\n✔ V9.1 requires automatic matching and experience lookup at postshoot rebound (0.37925ms)\n✔ V9.1 requires the accepted preview to be written into the experience ledger (0.346875ms)\n✔ V9 rejects skipped or reordered stages (0.154541ms)\n✔ V9 rejects formal enablement before the user accepts the candidate preview (0.098584ms)\n✔ V9 rejects a missing director prompt pack (0.072666ms)\n✔ V9 accepts the complete release-package state while publication stays disabled (0.298416ms)\n✔ 强化模板必须硬开启事故预防策略 (0.578625ms)\n✔ 原生AI清单不能删除已传播的强化策略再重算外层哈希 (135.97225ms)\n✔ 强化状态支持完整的当前版本证据链，发布仍关闭 (147.414667ms)\n✔ 强化状态拒绝失败回执，即使文件哈希重新算对 (1.682833ms)\n✔ 强化状态拒绝错类型，即使文件哈希重新算对 (1.20175ms)\n✔ 强化状态拒绝跨任务，即使文件哈希重新算对 (1.237084ms)\n✔ 强化状态拒绝旧版本，即使文件哈希重新算对 (1.357709ms)\n✔ 强化状态拒绝空绑定，即使文件哈希重新算对 (2.1375ms)\n✔ 强化状态拒绝错脚本哈希，即使文件哈希重新算对 (1.625167ms)\n✔ 强化状态拒绝错脚本路径，即使文件哈希重新算对 (1.157083ms)\n✔ 强化状态拒绝批准布尔值缺失，即使文件哈希重新算对 (1.001959ms)\n✔ 强化状态拒绝例外伪装成功，即使文件哈希重新算对 (0.847666ms)\n✔ 强化状态拒绝失败结果伪装成功，即使文件哈希重新算对 (0.821458ms)\n✔ 强化状态不能跳过内部文件检查或省略项目根目录 (0.267083ms)\n✔ 未知策略版本不能静默降级旧夹具模式 (0.048708ms)\n✔ 每一种结构化产物均拒绝错类型或失败状态 (606.278333ms)\n✔ 用户保留例外不能写为可复用成功经验 (137.064458ms)\n✔ 候选批准不自动等于正式授权 (146.436417ms)\n✔ 状态本身去掉策略不能把带强化策略的上游回执降级为旧读 (1.304083ms)\n✔ 旧纯夹具只读兼容不等于内容校验或推进权限 (0.106292ms)\n✔ 当前真实编译器及独立校验器原件可进入V9状态，不补写通用envelope (290.089625ms)\nℹ tests 144\nℹ suites 0\nℹ pass 144\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 45768.308291\n",
+  "stderr": "",
+  "error": null,
+  "tests": [
+    {
+      "path": "skills/koubo-remotion-director/tests/test-paper-projection-contract.mjs",
+      "sha256": "e519ca3006b176d619ce34fdb8b908b88ad01ab4709f658de19671529c9a377b"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-paper-physical-contract.mjs",
+      "sha256": "5fe3f899ab6baa94afd4057dc3f80708ea8dff1347b5098e9de8666e5748bb57"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-paper-motion-contract.mjs",
+      "sha256": "024243159fa10f0d7782c76f2b6b5a1a459533102f20d4d5d258b160b7dd675b"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-preproduction-director-contract.mjs",
+      "sha256": "31f7fd2541cd3bc53fdec1d106987c97d3f7d63679eb85cc87dd6fce177689fb"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-postshoot-incident-prevention.mjs",
+      "sha256": "cb977aeb9bc1ac10fa1818ece09fe11447f7f73e60b055c4c4ef7e747357522c"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-postshoot-rebind-contract.mjs",
+      "sha256": "9344163136e8d15051701c6e5d60fb8e6c68e533daf1346fceae01749c0dec9f"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-paper-asset-intake-incident.mjs",
+      "sha256": "ecddec7e4cbcef26c1862ff863c351835967968b7dc443c75b74e2f479ac8ebb"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-v9-workflow-state.mjs",
+      "sha256": "49ca28ee1e57f20983cde1e41ba7bfac1fefc5b38bcbe1d6ed6363953bd17162"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-firstframe-text-bake.mjs",
+      "sha256": "55d80a8a8d505e06b2198686cb1cdbf7c23c02680ba752df45ca4a4b57ad46fc"
+    },
+    {
+      "path": "skills/koubo-paper-firstframe-producer/tests/test-raw-visual-review.mjs",
+      "sha256": "53406204ee6c8b9cf627d5504137f327b6e7303eedad4440ff93d0be65adaee6"
+    },
+    {
+      "path": "skills/koubo-paper-firstframe-producer/tests/test-firstframe-batch.mjs",
+      "sha256": "4696b719c3f6cb3cda0e70e06d644a1c94bd2d9de6b49c13799be9a0d06a3346"
+    },
+    {
+      "path": "skills/koubo-paper-firstframe-producer/tests/test-native-compiler-handoff.mjs",
+      "sha256": "2d078c1bfa2ee14a9e3dbe07a27982c14ba0497e037db89f3ed55d45c5de5f2a"
+    },
+    {
+      "path": "skills/koubo-paper-firstframe-producer/tests/test-text-bake-runninghub-handoff.mjs",
+      "sha256": "1d3419999deb5c7d62d02ec1f509e6bcf19bcb5d702fbb2f884fcd87de43cc57"
+    }
+  ],
+  "actualCases": [
+    {
+      "name": "当前r3请求与三清单通过",
+      "passed": true
+    },
+    {
+      "name": "r2的旧动作框与新投影联验被拒绝",
+      "passed": true
+    },
+    {
+      "name": "r3删P02投影合同不可绕过请求入口",
+      "passed": true
+    },
+    {
+      "name": "r3计划删P02投影合同不可绕过清单入口",
+      "passed": true
+    },
+    {
+      "name": "清单投影覆盖范围被篡改必须拒绝",
+      "passed": true
+    },
+    {
+      "name": "签发的r2证据保持不变",
+      "passed": true
+    }
+  ],
+  "scope": "本地导演、上下游合同及本条r3真实计划回归；夹具媒体不等于本期实际图片或动态通过",
+  "episodeImagesGenerated": 0,
+  "episodeVideosGenerated": 0,
+  "externalCalls": false,
+  "formalAuthorized": false
+}

@@ -12,7 +12,7 @@ const rectangle = (item) => ({x0: item.xMm, x1: item.xMm + item.widthMm,
 const validRectangle = (r) => Object.values(r).every(finite) && r.x1 > r.x0 && r.y1 > r.y0;
 const overlaps = (a0, a1, b0, b1) => Math.min(a1, b1) > Math.max(a0, b0);
 const sameDockPosition = (a, b) => a.xMm === b.xMm && a.yMm === b.yMm && a.supportHeightMm === b.supportHeightMm;
-const sweptVolume = (from, to, envelope, clearance) => ({
+export const sweptVolume = (from, to, envelope, clearance) => ({
   x0: Math.min(from.xMm, to.xMm) - envelope.width / 2 - clearance,
   x1: Math.max(from.xMm, to.xMm) + envelope.width / 2 + clearance,
   y0: from.yMm - envelope.depth / 2 - clearance,

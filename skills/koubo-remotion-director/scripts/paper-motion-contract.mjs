@@ -1,4 +1,5 @@
 import {renderPhysicalConstraints, validatePaperPhysicalContract} from './paper-physical-contract.mjs';
+import {renderProjectionConstraints, validatePaperProjectionContract} from './paper-projection-contract.mjs';
 
 const text = (value) => typeof value === 'string' && value.trim().length > 0;
 const list = (value) => Array.isArray(value) ? value : [];
@@ -48,6 +49,7 @@ export function renderMotionPrompt(scene) {
     '以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。',
     '所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。',
     renderPhysicalConstraints(scene),
+    ...[renderProjectionConstraints(scene)].filter(Boolean),
     ...actions.map((action) => `${action.startSeconds}至${action.endSeconds}秒：${renderMotionAction(scene, action)}`),
   ];
   for (const edge of list(contract.forbiddenTransfers)) {
@@ -73,6 +75,7 @@ export function renderStillMechanismConstraints(scene) {
   return [
     '机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。',
     renderPhysicalConstraints(scene),
+    ...[renderProjectionConstraints(scene)].filter(Boolean),
     ...parts.filter((part) => part.kind === 'blank-part').map((part) => {
       const initial = list(contract.initialLocations).find((state) => state.partId === part.id);
       return `${part.name}初始位于${groups.find((group) => group.id === initial?.groupId)?.name ?? initial?.groupId}。`;
@@ -84,7 +87,10 @@ export function renderStillMechanismConstraints(scene) {
 
 // Validate typed transitions first; prompts are compiled from them, not a second free-form program.
 export function validatePaperMotionContract({scene, beat, required = false, physicalRequired = required}) {
-  const errors = validatePaperPhysicalContract({scene, beat, required: physicalRequired});
+  const errors = [
+    ...validatePaperPhysicalContract({scene, beat, required: physicalRequired}),
+    ...validatePaperProjectionContract({scene, beat}),
+  ];
   const fail = (ok, code) => {if (!ok) errors.push(`${code}:${beat.id}`);};
   const contract = scene?.motionContract;
   if (!contract) {

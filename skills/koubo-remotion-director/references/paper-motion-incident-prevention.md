@@ -33,6 +33,16 @@
 
 - `coordinateSystem=tabletop-mm`，`minimumClearanceMm>=1`。
 - `inventory`：每个无字活动件唯一列出 `partId`、`quantity=1`、`unit=rigid-assembly`、运输姿态最大 `envelopeMm={width,depth,height}`。一叠纸作为一个固定组合，不按每页重复计数；固定标签不计入活动件。包络数值只用于跨组滑动，不声称已验算本组折叠、旋转的全部临时姿态；局部动作仍需投影动作区与真实动态检查。
+
+### 毫米与画面联验
+
+请求用 `policy.projectionRequiredBeatIds` 列出本次必须联验的镜头；该清单透传到计划及上下游提示词清单。列出的镜头缺失投影合同时，请求和清单校验都必须阻断；不可把未列出的历史镜头记为已覆盖。
+
+不能把毫米物理合同和归一化运动区分别通过解释为两者兼容。使用确定性布局参考的镜头须声明`motionContract.projectionContract`，将同一完整运动包络投影成画面矩形，再加明确像素余量推导`sweptRect`；不准为了放入旧矩形缩小纸叠。跨组滑动使用起终对接点、运输包络及物理净空；局部转动须引用已声明的完整运动障碍包络，不得以单个起始姿态代替全程。
+
+联验同时检查动作区、固定牌、字幕、内容区、支承面及跨组移动与障碍的投影关系。保守的障碍投影包围框不是实际人物轮廓，不得仅凭静态包围框重叠宣称已经发生三维碰撞；真实姿态、材质和动态仍须另验。未配置投影的镜头应明确为未做此项联验，不以兼容路径返回零错误冒充覆盖。
+
+参数及动作区进入完整机构哈希。任何投影、物理包络或动作区改变，必须在新的导演修订中重算、重新独立审阅并编译，不能在执行批次中暗改已签请求。首帧清单携带完整`motionContract`和哈希；下游只能据当前合同制作参考并继续实际检查。
 - `stations`：每个物件组恰好一项 `groupId/initialPartIds`。无活动件的组必须明确空数组；逐项与 `initialLocations` 对照。不能只写“同一叠纸在起点”，却允许其他站再摆一叠。
 - `docks`：入口/出口的 `id/groupId/xMm/yMm/supportHeightMm/openingWidthMm/openingHeightMm`。正面字牌另在后侧独立支撑，不兼作通道挡板。
 - `supports`：`id/xMm/yMm/widthMm/depthMm/topHeightMm`；`obstacles`：`id/xMm/yMm/zMm/widthMm/depthMm/heightMm`。如无障碍明确空数组，实际图像仍须检查有无生成未声明挡板。

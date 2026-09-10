@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "koubo-paper-projection-derivation/v1",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r3",
+  "sourceRequest": {
+    "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/director-request.v1.json",
+    "sha256": "30d859af206a074b0c395eef471c5fbe4622c3682c02f8fb7bb37c47fc5c2fc9"
+  },
+  "projectedBeatIds": [
+    "B07"
+  ],
+  "unprojectedBeatIds": [
+    "B04",
+    "B10",
+    "B11",
+    "B15",
+    "B17"
+  ],
+  "physicalContractSha256": "58c0457099b22c07b3da4750b02f86e5da932c2fab3d54f709b802b8802b60c0",
+  "mechanismSha256": "54cf113eca73be4a992e20cfa7dfe80ce1e761a21270df9f90179307c9e02fe6",
+  "projectionContract": {
+    "schemaVersion": "koubo-paper-projection/v1",
+    "type": "axis-aligned-affine-reference",
+    "frame": {
+      "width": 1920,
+      "height": 1080
+    },
+    "xScale": 3.4,
+    "yScale": 2.8,
+    "zScale": 2.6,
+    "originX": 76,
+    "originY": 400,
+    "paddingPx": 4,
+    "localActionEnvelopes": [
+      {
+        "actionId": "A3",
+        "obstacleId": "lever-full-rotation-envelope"
+      }
+    ]
+  },
+  "projection": {
+    "ok": true,
+    "errors": [],
+    "actionRects": [
+      {
+        "actionId": "A1",
+        "rect": {
+          "x": 0.13135416666666666,
+          "y": 0.6048148148148148,
+          "width": 0.31229166666666663,
+          "height": 0.09444444444444455
+        }
+      },
+      {
+        "actionId": "A2",
+        "rect": {
+          "x": 0.3438541666666666,
+          "y": 0.6048148148148148,
+          "width": 0.3122916666666667,
+          "height": 0.09444444444444455
+        }
+      },
+      {
+        "actionId": "A3",
+        "rect": {
+          "x": 0.5776041666666667,
+          "y": 0.4388888888888889,
+          "width": 0.075,
+          "height": 0.10740740740740741
+        }
+      },
+      {
+        "actionId": "A4",
+        "rect": {
+          "x": 0.5563541666666666,
+          "y": 0.6048148148148148,
+          "width": 0.31229166666666675,
+          "height": 0.09444444444444455
+        }
+      }
+    ],
+    "supportRects": [
+      {
+        "supportId": "deck-G1",
+        "rect": {
+          "x": 0.12604166666666666,
+          "y": 0.6088888888888888,
+          "width": 0.16354166666666667,
+          "height": 0.1007407407407408
+        }
+      },
+      {
+        "supportId": "deck-G2",
+        "rect": {
+          "x": 0.28541666666666665,
+          "y": 0.6088888888888888,
+          "width": 0.21666666666666667,
+          "height": 0.1007407407407408
+        }
+      },
+      {
+        "supportId": "deck-G3",
+        "rect": {
+          "x": 0.4979166666666667,
+          "y": 0.6088888888888888,
+          "width": 0.21666666666666667,
+          "height": 0.1007407407407408
+        }
+      },
+      {
+        "supportId": "deck-G4",
+        "rect": {
+          "x": 0.7104166666666667,
+          "y": 0.6088888888888888,
+          "width": 0.16354166666666667,
+          "height": 0.1007407407407408
+        }
+      }
+    ],
+    "obstacleRects": [
+      {
+        "obstacleId": "owner-behind-lane",
+        "rect": {
+          "x": 0.5510416666666667,
+          "y": 0.17777777777777778,
+          "width": 0.1015625,
+          "height": 0.29074074074074074
+        }
+      },
+      {
+        "obstacleId": "lever-full-rotation-envelope",
+        "rect": {
+          "x": 0.5776041666666667,
+          "y": 0.4388888888888889,
+          "width": 0.075,
+          "height": 0.10740740740740741
+        }
+      }
+    ]
+  },
+  "oldRectsRejected": [
+    "PAPER_PROJECTION_ACTION_RECT_MISMATCH:A1:B07",
+    "PAPER_PROJECTION_ACTION_RECT_MISMATCH:A2:B07",
+    "PAPER_PROJECTION_ACTION_RECT_MISMATCH:A3:B07",
+    "PAPER_PROJECTION_ACTION_RECT_MISMATCH:A4:B07"
+  ],
+  "conflictEvidence": {
+    "model": "X=originX+xScale*x",
+    "oldA1Right": 806.4,
+    "oldA4Left": 1075.2,
+    "worldA1Right": 227,
+    "worldA4Left": 293,
+    "requiredMinScale": 4.072727272727274,
+    "oldA2Width": 595.2,
+    "worldA2Width": 174,
+    "requiredMaxScale": 3.420689655172414,
+    "limitation": "证明旧边界在同一均匀仿射投影下不相容，不声称穷尽所有透视映射"
+  },
+  "limitations": [
+    "投影是制作参考，不是生成图测量",
+    "只有P02启用本次坐标联验，其余五镜保留原合同",
+    "人物障碍包围盒不是实际人物轮廓；实际标签遮挡、手部与完整旋转包络间距仍须看图验证",
+    "局部A3使用完整旋转包络，不用初态杆件轮廓代替",
+    "几何通过不能代替正常速度动态验收"
+  ],
+  "generatedMedia": false,
+  "formalAuthorized": false
+}

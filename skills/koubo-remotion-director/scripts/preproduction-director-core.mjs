@@ -21,6 +21,7 @@ export const sha256File = (filePath) => sha256Buffer(readFileSync(filePath));
 export const incidentPolicy = (document) => ({
   incidentPreventionVersion: '1',
   ...(document.policy?.physicalContinuityVersion === '1' ? {physicalContinuityVersion: '1'} : {}),
+  ...(document.policy?.projectionRequiredBeatIds !== undefined ? {projectionRequiredBeatIds: document.policy.projectionRequiredBeatIds} : {}),
 });
 
 export function stableStringify(value) {
@@ -900,6 +901,18 @@ export function validatePaperMeaningReview({request, beat, projectRoot}) {
   return {ok: errors.length === 0, errors};
 }
 
+function validateProjectionCoverage(policy, scenes) {
+  const ids = policy?.projectionRequiredBeatIds;
+  if (ids === undefined) return [];
+  if (!Array.isArray(ids) || ids.length === 0 || !ids.every(isText) || new Set(ids).size !== ids.length) {
+    return ['PAPER_PROJECTION_COVERAGE_INVALID'];
+  }
+  return ids.flatMap((id) => {
+    const scene = scenes.find((s) => s.beatId === id);
+    return scene?.motionContract?.projectionContract ? [] : [`PAPER_PROJECTION_REQUIRED:${id}`];
+  });
+}
+
 export function validatePreproductionRequest({request, projectRoot, profile, historicalReadOnly = false}) {
   const errors = [];
   // Only in-memory historical regression may opt out. No CLI passes this option.
@@ -913,6 +926,8 @@ export function validatePreproductionRequest({request, projectRoot, profile, his
   if (newPaperRequest && request.policy?.physicalContinuityVersion !== '1') {
     errors.push('PAPER_PHYSICAL_POLICY_REQUIRED');
   }
+  errors.push(...validateProjectionCoverage(request.policy, (request.beats ?? []).filter((b) => b.paperScene)
+    .map((b) => ({...b.paperScene, beatId: b.id}))));
   const v9ContractEnabled = v9RequestEnabled(request);
   if (incidentPrevention) {
     for (const beat of Array.isArray(request.beats) ? request.beats : []) {
@@ -1626,6 +1641,7 @@ export function validatePromptHandoffManifests({
   aiGeneratedVideoManifest,
 }) {
   const errors = [];
+  errors.push(...validateProjectionCoverage(plan.policy, plan.paperScenes ?? []));
   const v9ContractEnabled = v9PlanEnabled(plan);
   if (plan.policy?.incidentPreventionVersion === '1') {
     for (const manifest of [firstFrameManifest, runningHubManifest, ...(v9ContractEnabled ? [aiGeneratedVideoManifest] : [])]) {

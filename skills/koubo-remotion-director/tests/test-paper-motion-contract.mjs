@@ -76,6 +76,11 @@ reject((s) => {s.motionContract.parts.pop();}, 'PAPER_INITIAL_STATE_INVALID');
 reject((s) => {delete s.motionContract.physicalContract;}, 'PAPER_PHYSICAL_CONTRACT_REQUIRED');
 reject((_s, _b, r) => {delete r.policy.physicalContinuityVersion;}, 'PAPER_PHYSICAL_POLICY_REQUIRED');
 reject((_s, _b, r) => {r.historicalReadOnly = true; delete r.policy.physicalContinuityVersion;}, 'PAPER_PHYSICAL_POLICY_REQUIRED');
+reject((_s, b, r) => {r.policy.projectionRequiredBeatIds = [b.id];}, 'PAPER_PROJECTION_REQUIRED');
+reject((_s, _b, r) => {r.policy.projectionRequiredBeatIds = ['unknown-beat'];}, 'PAPER_PROJECTION_REQUIRED');
+for (const invalid of [null, [], ['B11', 'B11'], [''], 'B11']) {
+  reject((_s, _b, r) => {r.policy.projectionRequiredBeatIds = invalid;}, 'PAPER_PROJECTION_COVERAGE_INVALID');
+}
 const prohibitionList = structuredClone(valid);
 prohibitionList.beats[0].paperScene.prompt.firstFrame += '禁止文字，问号，编号卡。';
 assert(!check(prohibitionList).errors.some((error) => error.includes('SYMBOL_CUE_CONFLICT')), '纯禁止列表不应被当作正向符号诱导');
