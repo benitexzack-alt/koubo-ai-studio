@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "koubo-firstframe-production-stop/v1",
+  "status": "blocked-awaiting-layout-repair-choice",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "requestId": "20260910-lanzhou-industry-ai-paper-v9.1-r2-pre-shoot",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r2",
+  "productionAttemptId": "first-frame-production-r3",
+  "recordedAt": "2026-09-10T14:02:47.486Z",
+  "authorization": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-production-r3/targeted-edit-authorization.v1.json",
+    "sha256": "26b7736778609742178193506f4ae2566a8842d8623e92462cf61e50204e905f"
+  },
+  "inputImage": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames/P02_B07_first-frame.png",
+    "sha256": "11409539b2898e34feaa61c2e15c645a35d495a77925eb1d7138533454cc58bd"
+  },
+  "outputImage": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-production-r3/first-frames/P02_B07_first-frame.png",
+    "sha256": "e9949045557febc11784f03cdb9f366afbd8ee9d552cf71ea720b14fc241fc12",
+    "width": 1672,
+    "height": 941,
+    "bytes": 1731916
+  },
+  "executionPrompt": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-production-r3/first-frame-qa/P02.execution-prompt.txt",
+    "sha256": "1866ccb2240bd91f2bce85580b26bf202a7b1e31ecd209fba03f4ce93e24087a"
+  },
+  "visualReview": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-production-r3/first-frame-qa/P02.visual-review.v1.json",
+    "sha256": "bc61efe8a79905a9eeabafcc79fec0ccac37d6312a89afe9bdfdda04502d7244"
+  },
+  "validation": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-production-r3/first-frame-qa/sample-validation-receipt.v1.json",
+    "sha256": "e46845db797ce50d9fe9657b491bf338bef2999dbb2d7a769432e6c973e0d723",
+    "exitCode": 2,
+    "status": "revision-required"
+  },
+  "contactSheet": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-production-r3/first-frame-qa/sample-contact-sheet.jpg",
+    "sha256": "83a57d81af5a0fb2d579edc749bef105b542c3335988f1dd1f11efd1b837aba3",
+    "scope": "本次唯一P02编辑图"
+  },
+  "sourceManifest": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-production-r3/first-frame-prompts.v1.json",
+    "sha256": "50e1a63b6dd48c56f48e80c7c9a4f145bb6c7ce3855afe1914a2f9d26b5e2e66"
+  },
+  "resolved": [
+    "四站抬高托盘侧壁已消失",
+    "第三张牌面不再被头部遮挡"
+  ],
+  "issues": [
+    {
+      "id": "P1-P02-CONTENT-SAFE-RECT",
+      "severity": "P1",
+      "status": "confirmed",
+      "observation": "G1/G4彩色工作面约x16至1654，合同安全区约x67至1605。",
+      "expected": "这些被声明为物件组的语义承托面完整落入安全区，不能临时改称背景以放行。"
+    },
+    {
+      "id": "P1-P02-HAND-TRANSPORT-CLEARANCE",
+      "severity": "P1",
+      "status": "unknown-clearance",
+      "observation": "老板双手与纸叠水平扫掠的后部深度范围在图中交叠，无法可靠确认净空。",
+      "expected": "固定老板和手均在输送通道外，完整纸叠不穿手、不变形。"
+    }
+  ],
+  "attemptCounts": {
+    "targetedEditCalls": 1,
+    "automaticRetryCalls": 0,
+    "remainingFiveImagesGenerated": 0,
+    "textBaked": 0,
+    "ocr": 0,
+    "uploads": 0,
+    "newCanvasNodes": 0,
+    "videoSubmissions": 0,
+    "paymentActions": 0
+  },
+  "sceneStatuses": [
+    {
+      "sceneId": "P01",
+      "status": "not-generated"
+    },
+    {
+      "sceneId": "P02",
+      "status": "revision-required"
+    },
+    {
+      "sceneId": "P03",
+      "status": "not-generated"
+    },
+    {
+      "sceneId": "P04",
+      "status": "not-generated"
+    },
+    {
+      "sceneId": "P05",
+      "status": "not-generated"
+    },
+    {
+      "sceneId": "P06",
+      "status": "not-generated"
+    }
+  ],
+  "permissions": {
+    "userVisualAcceptance": "pending",
+    "automaticRetryAllowed": false,
+    "submissionAllowed": false,
+    "paidVideoGenerationAllowed": false
+  },
+  "nextAction": "仅进行证据存档与导演只读复核；建议用户选择先制作明确的布局参考，锁定安全区及手部在移动范围外的位置。未获选择不启动下一次编辑或其余五张。"
+}

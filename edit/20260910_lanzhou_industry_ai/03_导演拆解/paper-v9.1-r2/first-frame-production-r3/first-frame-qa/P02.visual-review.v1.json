@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-visual-review/v1",
+  "sceneId": "P02",
+  "imagePath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-production-r3/first-frames/P02_B07_first-frame.png",
+  "imageSha256": "e9949045557febc11784f03cdb9f366afbd8ee9d552cf71ea720b14fc241fc12",
+  "reviewer": "codex-visual-inspection",
+  "status": "revision-required",
+  "reviewedAt": "2026-09-10T14:00:35.194Z",
+  "criteria": {
+    "semanticMatch": "passed",
+    "paperMaterial": "passed",
+    "depthAndContact": "passed",
+    "cleanTextAndBrand": "passed",
+    "compositionAndReadability": "failed",
+    "videoReadiness": "failed"
+  },
+  "notes": "实际看图：本次图像编辑去掉了四站托盘抬高侧边，四个色区已呈现连续齐平承托面，第三张标签不再被老板头部遮挡。保留一叠G1纸页、一个G3控制杆、一个老板和四张空白固定牌；其余接收面为空。材质、纸厚、三层空间和无字状态成立。但G1/G4语义色区约x=16与x=1654越过内容安全区；G3老板双手接触核对面的位置与纸叠横移的后部范围在图像中重叠，无法确认真实净空。不能把移除托盘侧壁等同于整条运动路线已通过。此处纸面像素框是视觉近似，不是毫米测量。",
+  "physicalObservations": {
+    "imageSha256": "e9949045557febc11784f03cdb9f366afbd8ee9d552cf71ea720b14fc241fc12",
+    "physicalContractSha256": "58c0457099b22c07b3da4750b02f86e5da932c2fab3d54f709b802b8802b60c0",
+    "coordinateSystem": "normalized-image-xywh",
+    "inventory": [
+      {
+        "partId": "draft",
+        "observedQuantity": 1,
+        "observedGroupIds": [
+          "G1"
+        ],
+        "imageBoxes": [
+          [
+            0.05323,
+            0.545165,
+            0.163278,
+            0.111583
+          ]
+        ],
+        "notes": "唯一回答纸叠保持在最左暖白色区，无其他活动纸叠。"
+      },
+      {
+        "partId": "lever",
+        "observedQuantity": 1,
+        "observedGroupIds": [
+          "G3"
+        ],
+        "imageBoxes": [
+          [
+            0.681818,
+            0.387885,
+            0.073565,
+            0.151966
+          ]
+        ],
+        "notes": "唯一控制杆在G3后侧，未复制。"
+      }
+    ],
+    "stations": [
+      {
+        "groupId": "G1",
+        "observedPartIds": [
+          "draft"
+        ],
+        "imageBox": [
+          0.009569,
+          0.217853,
+          0.271531,
+          0.455898
+        ],
+        "notes": "暖白平放收集区只有一叠纸；左前角越内容安全区。"
+      },
+      {
+        "groupId": "G2",
+        "observedPartIds": [],
+        "imageBox": [
+          0.254187,
+          0.217853,
+          0.248804,
+          0.455898
+        ],
+        "notes": "空的深蓝平面，左右衔接无抬高隔栏。"
+      },
+      {
+        "groupId": "G3",
+        "observedPartIds": [
+          "lever"
+        ],
+        "imageBox": [
+          0.501794,
+          0.217853,
+          0.253589,
+          0.455898
+        ],
+        "notes": "空的暖白核对面，控制杆和老板在后侧；老板双手接触此面后缘，活动净空尚未明确。"
+      },
+      {
+        "groupId": "G4",
+        "observedPartIds": [],
+        "imageBox": [
+          0.725478,
+          0.216791,
+          0.264952,
+          0.456961
+        ],
+        "notes": "空的黄色接收面，无预置成品；右前角越内容安全区。"
+      }
+    ],
+    "transfers": [
+      {
+        "actionId": "A1",
+        "imageBox": [
+          0.05323,
+          0.537726,
+          0.449761,
+          0.137088
+        ],
+        "notes": "G1到G2可见连续齐平支承，移除全部抬高侧边。单张图只能核查可见几何，动态与毫米级测量仍后置。",
+        "checks": {
+          "continuousSupport": "passed",
+          "compatibleHeight": "passed",
+          "noBlockingEdges": "passed",
+          "openingFitsPart": "passed"
+        }
+      },
+      {
+        "actionId": "A2",
+        "imageBox": [
+          0.254187,
+          0.537726,
+          0.493421,
+          0.137088
+        ],
+        "notes": "G2到G3支承面连续无托盘墙，但老板双手约y=491至527，而原纸叠约y=513至618；手与纸叠平移扫掠在图像中存在交叠，无法确认手后退到输送面外或留有净空。",
+        "checks": {
+          "continuousSupport": "passed",
+          "compatibleHeight": "passed",
+          "noBlockingEdges": "unknown",
+          "openingFitsPart": "unknown"
+        }
+      },
+      {
+        "actionId": "A4",
+        "imageBox": [
+          0.501794,
+          0.537726,
+          0.488636,
+          0.137088
+        ],
+        "notes": "G3到G4支承面连续齐平，但G3出发处仍受到老板双手净空不明影响，不能以终点空白替代全程检查。",
+        "checks": {
+          "continuousSupport": "passed",
+          "compatibleHeight": "passed",
+          "noBlockingEdges": "unknown",
+          "openingFitsPart": "unknown"
+        }
+      }
+    ],
+    "fixedLabels": [
+      {
+        "nodeId": "N1",
+        "imageBox": [
+          0.061603,
+          0.217853,
+          0.162081,
+          0.10627
+        ],
+        "independentStandObserved": true,
+        "notes": "第一张空白固定牌完整可见。"
+      },
+      {
+        "nodeId": "N2",
+        "imageBox": [
+          0.309809,
+          0.217853,
+          0.157895,
+          0.10627
+        ],
+        "independentStandObserved": true,
+        "notes": "第二张空白固定牌完整可见。"
+      },
+      {
+        "nodeId": "N3",
+        "imageBox": [
+          0.537081,
+          0.217853,
+          0.154306,
+          0.10627
+        ],
+        "independentStandObserved": true,
+        "notes": "第三张空白固定牌完整可见，老板头部已降到牌面下方，两者有可见间隔。"
+      },
+      {
+        "nodeId": "N4",
+        "imageBox": [
+          0.77811,
+          0.216791,
+          0.159689,
+          0.10627
+        ],
+        "independentStandObserved": true,
+        "notes": "第四张空白固定牌完整可见。"
+      }
+    ]
+  },
+  "issues": [
+    {
+      "id": "P1-P02-CONTENT-SAFE-RECT",
+      "severity": "P1",
+      "status": "confirmed",
+      "observation": "G1/G4彩色工作面约x16至1654，合同安全区约x67至1605。",
+      "expected": "这些被声明为物件组的语义承托面完整落入安全区，不能临时改称背景以放行。"
+    },
+    {
+      "id": "P1-P02-HAND-TRANSPORT-CLEARANCE",
+      "severity": "P1",
+      "status": "unknown-clearance",
+      "observation": "老板双手与纸叠水平扫掠的后部深度范围在图中交叠，无法可靠确认净空。",
+      "expected": "固定老板和手均在输送通道外，完整纸叠不穿手、不变形。"
+    }
+  ],
+  "resolvedPreviousIssues": [
+    "四站抬高托盘侧壁已消失",
+    "第三张牌面不再被头部遮挡"
+  ],
+  "scope": {
+    "rawImageInspected": true,
+    "textBaked": false,
+    "ocrPerformed": false,
+    "videoGenerated": false,
+    "dynamicQualityClaimed": false
+  },
+  "nextAction": "本次已授权的单次定点编辑用完，硬项未全过即停；保留新attempt原图/回执，等待导演只读核对及用户选择下一修复方法，不自动再编辑或生成其余五张。"
+}

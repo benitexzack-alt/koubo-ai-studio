@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "koubo-received-director-review/v1",
+  "sourceThreadId": "019f3383-706c-78f3-9dbe-6c6b20affb59",
+  "sourceTurnId": "01a08b9d-b176-7f93-a218-a979b3535e40",
+  "receivedAt": "2026-09-10T14:04:26.126Z",
+  "scope": "已收到口播自动化任务实际开图后的只读复核，不是本任务伪造独立审查；原任务没有改文件或再次生成。",
+  "sceneId": "P02",
+  "imageSha256": "e9949045557febc11784f03cdb9f366afbd8ee9d552cf71ea720b14fc241fc12",
+  "status": "revision-required",
+  "findings": [
+    {
+      "issue": "content-safe-rect",
+      "status": "confirmed-failure",
+      "note": "G1收集垫和G4展示垫是具名功能物件，即使静止仍须计入安全区；不能将其改称背景豁免。左右界66.88和1605.12，图中垫面外缘约16和1654。"
+    },
+    {
+      "issue": "hand-clearance",
+      "status": "unverified",
+      "note": "双手在核对垫后缘，纸叠后上缘投影与手部接近或重合。单张透视图不能证明三维碰撞，也不能证明满足2毫米净空；A2/A4保持待证，不得通过。"
+    }
+  ],
+  "confirmedImprovements": [
+    "无重复纸叠",
+    "无明显托盘侧壁",
+    "N3无遮挡",
+    "同高承托视觉上成立但不是毫米实测"
+  ],
+  "generationAuthorized": false
+}
