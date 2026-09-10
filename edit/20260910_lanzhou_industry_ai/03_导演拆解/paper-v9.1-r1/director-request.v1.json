@@ -1,0 +1,3152 @@
+{
+  "schemaVersion": "koubo-director-preproduction-request/v1",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r1",
+  "requestId": "20260910-lanzhou-industry-ai-paper-v9.1-r1-pre-shoot",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "phase": "pre-shoot",
+  "status": "candidate-preview-required",
+  "inputScript": {
+    "path": "edit/20260910_lanzhou_industry_ai/00_文稿与控制/用户确认原稿.txt",
+    "sha256": "c1ebc6f3f9f82a405a1c7c7564097a62585601c31b3ee17edd07334695dcb3b9",
+    "authority": "user-confirmed-script",
+    "role": "provisional-authority"
+  },
+  "directorProfile": {
+    "path": "workflow/active-director-profile.v1.json",
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0"
+  },
+  "policy": {
+    "incidentPreventionVersion": "1",
+    "branch": "paper-editorial",
+    "fallback": "blocked",
+    "v9ContractEnabled": true,
+    "textStrategy": "deterministic-first-frame-text-v9",
+    "generatedReadableTextAllowed": false,
+    "modelGeneratedReadableTextAllowed": false,
+    "deterministicTextMayBeBakedIntoFirstFrame": true,
+    "defaultPaperTextMode": "first-frame-baked",
+    "actualImageAnchorCalibrationRequired": true,
+    "runningHubRequiresTextBakeReceipt": true,
+    "paperNodeScreenOverlayAllowed": false,
+    "postShootRebindRequired": true
+  },
+  "outputs": {
+    "routeLockPath": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/director-route-lock.v1.json",
+    "planPath": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/director-plan.v1.json",
+    "assetSheetPath": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/导演素材执行单.md",
+    "firstFramePromptManifestPath": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/first-frame-prompts.v1.json",
+    "runningHubPromptManifestPath": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/runninghub-image-to-video-prompts.v1.json",
+    "runningHubPromptSheetPath": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/图生视频提示词.md",
+    "aiGeneratedVideoPromptManifestPath": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/ai-generated-video-prompts.v1.json",
+    "aiGeneratedVideoPromptSheetPath": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/AI情景视频清单.md",
+    "compileReceiptPath": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/compile-receipt.v1.json",
+    "validationReceiptPath": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/validation-receipt.v1.json"
+  },
+  "beats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "spokenLine": "AI将成为普通人的最后一次创业风口。",
+      "coreMeaning": "开场是个人趋势判断，未证实最后一次；不配不可逆淘汰或财富倒计时。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "risk-caveat",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "spokenLine": "我看好的是，在兰州这个三线城市，用自己熟悉的行业加上AI，就是降维打击，既能服务本地，也能尝试接外地的业务。",
+      "coreMeaning": "本人看好熟悉行业加AI服务本地、尝试外地；不是收益承诺。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "spokenLine": "你以前干过什么，能帮别人做到哪一步，这些差别，到了AI这里不会自动消失，收入上的差距反而可能拉开。",
+      "coreMeaning": "既有经历和服务能力的差别不会因同用AI自动消失。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "spokenLine": "所以，你以前做过销售、开过店，或者在一个行业干了很多年，别觉得学AI就得把这些全扔了，从头转行。你对客户的了解，恰恰可能派上用场。",
+      "coreMeaning": "销售、开店等经历中的客户了解可继续使用，不是学AI就归零。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "从既有销售、开店经历中取用客户了解，原经验纸架仍保留，不将经验扔掉重来。"
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      },
+      "paperScene": {
+        "title": "经验留下来，客户了解用起来",
+        "archetype": "mechanical-causality",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "销售经历档案架",
+            "material": "暖白厚纸页立架，前景纸页边缘遮住后方棉线；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "门店经验纸盒",
+            "material": "浅灰纤维纸盒，盒内少量无字经验纸页；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "客户了解汇集台",
+            "material": "深蓝低台和暖黄承接凹槽，背后是高低错落的实心纸层；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组",
+            "depth": 3
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "销售",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "开过店",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "客户的了解",
+            "groupId": "G3",
+            "textVisibility": "paper-label"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "销售",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.33,
+                0.2
+              ],
+              [
+                0.33,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "开过店",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.365,
+                0.2
+              ],
+              [
+                0.635,
+                0.2
+              ],
+              [
+                0.635,
+                0.305
+              ],
+              [
+                0.365,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "客户的了解",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.67,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.305
+              ],
+              [
+                0.67,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": []
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 3
+        },
+        "layoutContract": {
+          "coordinateSpace": "normalized-0-to-1",
+          "contentSafeRect": {
+            "x": 0.04,
+            "y": 0.12,
+            "width": 0.92,
+            "height": 0.64
+          },
+          "subtitleReservedRect": {
+            "x": 0.04,
+            "y": 0.81,
+            "width": 0.92,
+            "height": 0.17
+          },
+          "generatedDecorationPolicy": "forbidden",
+          "layoutInterpretation": {
+            "objectGroupBoxes": "broad-composition-zones",
+            "paperLabelSurfaceBoxes": "reserved-placement-zones",
+            "exactPixelMatchRequired": false,
+            "contentAndSubtitleContainmentIsHard": true
+          },
+          "objectGroupBoxes": [
+            {
+              "groupId": "G1",
+              "box": {
+                "x": 0.055,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G2",
+              "box": {
+                "x": 0.36,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G3",
+              "box": {
+                "x": 0.665,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            }
+          ],
+          "paperLabelSurfaceBoxes": [
+            {
+              "nodeId": "N1",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "box": {
+                "x": 0.06,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N2",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "box": {
+                "x": 0.365,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N3",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "box": {
+                "x": 0.67,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            }
+          ]
+        },
+        "prompt": {
+          "generatedReadableTextAllowed": false,
+          "firstFrame": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为销售经历档案架，材料为暖白厚纸页立架，前景纸页边缘遮住后方棉线；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为门店经验纸盒，材料为浅灰纤维纸盒，盒内少量无字经验纸页；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为客户了解汇集台，材料为深蓝低台和暖黄承接凹槽，背后是高低错落的实心纸层；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n来自销售经历的无字经验纸片初始位于销售经历档案架。\n来自开店经历的无字经验纸片初始位于门店经验纸盒。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。",
+          "motion": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n1至3秒：来自销售经历的无字经验纸片从销售经历档案架移至客户了解汇集台，整体滑动。\n3.5至5.5秒：来自开店经历的无字经验纸片从门店经验纸盒移至客户了解汇集台，整体滑动。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。"
+        },
+        "motionContract": {
+          "schemaVersion": "koubo-paper-motion-contract/v1",
+          "meaning": {
+            "sourceQuote": "所以，你以前做过销售、开过店，或者在一个行业干了很多年，别觉得学AI就得把这些全扔了，从头转行。你对客户的了解，恰恰可能派上用场。",
+            "viewerTakeaway": "从既有销售、开店经历中取用客户了解，原经验纸架仍保留，不将经验扔掉重来。",
+            "excludedOutcomes": [
+              "AI凭空生成经历",
+              "把经验丢弃",
+              "客户了解保证收入"
+            ]
+          },
+          "parts": [
+            {
+              "id": "L1",
+              "name": "销售固定纸牌",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L2",
+              "name": "开过店固定纸牌",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L3",
+              "name": "客户的了解固定纸牌",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "sales",
+              "name": "来自销售经历的无字经验纸片",
+              "groupId": "G1",
+              "kind": "blank-part"
+            },
+            {
+              "id": "store",
+              "name": "来自开店经历的无字经验纸片",
+              "groupId": "G2",
+              "kind": "blank-part"
+            }
+          ],
+          "initialLocations": [
+            {
+              "partId": "sales",
+              "groupId": "G1"
+            },
+            {
+              "partId": "store",
+              "groupId": "G2"
+            }
+          ],
+          "actions": [
+            {
+              "id": "A1",
+              "stageId": "S1",
+              "partId": "sales",
+              "fromGroupId": "G1",
+              "toGroupId": "G3",
+              "startSeconds": 1,
+              "endSeconds": 3,
+              "operation": "slide",
+              "sweptRect": {
+                "x": 0.1,
+                "y": 0.42,
+                "width": 0.74,
+                "height": 0.1
+              }
+            },
+            {
+              "id": "A2",
+              "stageId": "S2",
+              "partId": "store",
+              "fromGroupId": "G2",
+              "toGroupId": "G3",
+              "startSeconds": 3.5,
+              "endSeconds": 5.5,
+              "operation": "slide",
+              "sweptRect": {
+                "x": 0.4,
+                "y": 0.57,
+                "width": 0.46,
+                "height": 0.1
+              }
+            }
+          ],
+          "allowedTransfers": [
+            {
+              "partId": "sales",
+              "fromGroupId": "G1",
+              "toGroupId": "G3"
+            },
+            {
+              "partId": "store",
+              "fromGroupId": "G2",
+              "toGroupId": "G3"
+            }
+          ],
+          "forbiddenTransfers": [],
+          "requiredPredecessors": [],
+          "finalLocations": [
+            {
+              "partId": "sales",
+              "groupId": "G3"
+            },
+            {
+              "partId": "store",
+              "groupId": "G3"
+            }
+          ],
+          "dynamicValidation": {
+            "requiredBeforeBatch": true,
+            "staticApprovalIsNotDynamicApproval": true,
+            "automaticRetryAllowed": false
+          }
+        },
+        "editorialScope": {
+          "illustrationOnly": true,
+          "noRealClientEvidence": true,
+          "noGuaranteedOutcome": true,
+          "timestamps": "pending-post-shoot-rebind",
+          "firstReadableFrame": 0,
+          "insertOnlyAfterAllLabelConceptsHaveBeenSpoken": true,
+          "noFreezeExtension": true,
+          "shortSpokenWindowDisposition": "return-to-speaker-or-replan-not-speedup",
+          "requiredInspection": [
+            "首帧中文字逐字核对",
+            "每个动作开始中间结束抽帧",
+            "正常速度静音复述",
+            "与实录原句对位",
+            "全程文字无遮挡"
+          ],
+          "explanation": "从既有销售、开店经历中取用客户了解，原经验纸架仍保留，不将经验扔掉重来。"
+        },
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "landingNodeIds": [],
+            "action": "来自销售经历的无字经验纸片从销售经历档案架移至客户了解汇集台，整体滑动。",
+            "sfxRole": "paper-slide"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "subject": "G2",
+            "landingNodeIds": [],
+            "action": "来自开店经历的无字经验纸片从门店经验纸盒移至客户了解汇集台，整体滑动。",
+            "sfxRole": "paper-slide"
+          }
+        ]
+      }
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "spokenLine": "就拿帮本地老板做内容来说。你让AI写一句“品质好、服务好”，谁都能写。客户看完，还是不知道为什么要选这家。",
+      "coreMeaning": "通用赞美句不能讲清这家产品为什么适合客户。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "spokenLine": "但老板平时怎么回答客户，他手里是有东西的。为什么价格不一样，什么人适合这个产品，哪些要求确实做不到。这些问题，他可能已经解释过很多遍。",
+      "coreMeaning": "老板对价格、适用人群和能力边界的回答才是内容原料。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "spokenLine": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。",
+      "coreMeaning": "老板回答经过AI整理和老板核对后，才作为对外内容讲出去。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "同一材料先收集和归类，再让老板核对，完成核对动作后才移往讲解展示架；不表示所有文稿天然正确。"
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      },
+      "paperScene": {
+        "title": "回答整理成内容，必须经过老板核对",
+        "archetype": "mechanical-causality",
+        "durationSeconds": 8,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "老板回答收集盘",
+            "material": "几层暖白无字纸页放在前景低托盘；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "AI整理槽",
+            "material": "深蓝卡纸分格槽，入口与出口在牌面下方；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "老板人工核对台",
+            "material": "暖白台面、侧旁无脸纸质人物和完全无字的机械压板；压板仅轻压纸页，不留下印记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "对外内容展示架",
+            "material": "暖黄空槽与竖立的纸质取景框，框上无标志，未摆放成品；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第四组",
+            "depth": 1
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "回答",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "归类",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "老板核对",
+            "groupId": "G3",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "讲出去",
+            "groupId": "G4",
+            "textVisibility": "paper-label"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "回答",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.255,
+                0.2
+              ],
+              [
+                0.255,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "归类",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.29,
+                0.2
+              ],
+              [
+                0.485,
+                0.2
+              ],
+              [
+                0.485,
+                0.305
+              ],
+              [
+                0.29,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "老板核对",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.52,
+                0.2
+              ],
+              [
+                0.715,
+                0.2
+              ],
+              [
+                0.715,
+                0.305
+              ],
+              [
+                0.52,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N4",
+            "text": "讲出去",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.75,
+                0.2
+              ],
+              [
+                0.945,
+                0.2
+              ],
+              [
+                0.945,
+                0.305
+              ],
+              [
+                0.75,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": []
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 4
+        },
+        "layoutContract": {
+          "coordinateSpace": "normalized-0-to-1",
+          "contentSafeRect": {
+            "x": 0.04,
+            "y": 0.12,
+            "width": 0.92,
+            "height": 0.64
+          },
+          "subtitleReservedRect": {
+            "x": 0.04,
+            "y": 0.81,
+            "width": 0.92,
+            "height": 0.17
+          },
+          "generatedDecorationPolicy": "forbidden",
+          "layoutInterpretation": {
+            "objectGroupBoxes": "broad-composition-zones",
+            "paperLabelSurfaceBoxes": "reserved-placement-zones",
+            "exactPixelMatchRequired": false,
+            "contentAndSubtitleContainmentIsHard": true
+          },
+          "objectGroupBoxes": [
+            {
+              "groupId": "G1",
+              "box": {
+                "x": 0.055,
+                "y": 0.17,
+                "width": 0.205,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G2",
+              "box": {
+                "x": 0.285,
+                "y": 0.17,
+                "width": 0.205,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G3",
+              "box": {
+                "x": 0.515,
+                "y": 0.17,
+                "width": 0.205,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G4",
+              "box": {
+                "x": 0.745,
+                "y": 0.17,
+                "width": 0.205,
+                "height": 0.54
+              }
+            }
+          ],
+          "paperLabelSurfaceBoxes": [
+            {
+              "nodeId": "N1",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "box": {
+                "x": 0.06,
+                "y": 0.2,
+                "width": 0.19499999999999998,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N2",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "box": {
+                "x": 0.29,
+                "y": 0.2,
+                "width": 0.19499999999999998,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N3",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "box": {
+                "x": 0.52,
+                "y": 0.2,
+                "width": 0.19499999999999998,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N4",
+              "groupId": "G4",
+              "surfaceId": "G4-rigid-label-card",
+              "box": {
+                "x": 0.75,
+                "y": 0.2,
+                "width": 0.19499999999999998,
+                "height": 0.105
+              }
+            }
+          ]
+        },
+        "prompt": {
+          "generatedReadableTextAllowed": false,
+          "firstFrame": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为老板回答收集盘，材料为几层暖白无字纸页放在前景低托盘；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为AI整理槽，材料为深蓝卡纸分格槽，入口与出口在牌面下方；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为老板人工核对台，材料为暖白台面、侧旁无脸纸质人物和完全无字的机械压板；压板仅轻压纸页，不留下印记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\nG4为对外内容展示架，材料为暖黄空槽与竖立的纸质取景框，框上无标志，未摆放成品；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第四组，位于第1层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n同一叠无字回答纸页初始位于老板回答收集盘。\n由老板纸人位置伸出的无字确认压板初始位于老板人工核对台。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。",
+          "motion": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n0.6至1.7秒：同一叠无字回答纸页从老板回答收集盘移至AI整理槽，整体滑动。\n2至3.1秒：同一叠无字回答纸页从AI整理槽移至老板人工核对台，整体滑动。\n3.4至4.7秒：由老板纸人位置伸出的无字确认压板在老板人工核对台，小角度刚性转动。\n5.1至6.5秒：同一叠无字回答纸页从老板人工核对台移至对外内容展示架，整体滑动。\n先完成“同一叠无字回答纸页从AI整理槽移至老板人工核对台，整体滑动。”，才可开始“由老板纸人位置伸出的无字确认压板在老板人工核对台，小角度刚性转动。”。\n先完成“由老板纸人位置伸出的无字确认压板在老板人工核对台，小角度刚性转动。”，才可开始“同一叠无字回答纸页从老板人工核对台移至对外内容展示架，整体滑动。”。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。"
+        },
+        "motionContract": {
+          "schemaVersion": "koubo-paper-motion-contract/v1",
+          "meaning": {
+            "sourceQuote": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。",
+            "viewerTakeaway": "同一材料先收集和归类，再让老板核对，完成核对动作后才移往讲解展示架；不表示所有文稿天然正确。",
+            "excludedOutcomes": [
+              "跳过老板核对",
+              "AI自行盖章当成人工确认",
+              "讲出去等于成交"
+            ]
+          },
+          "parts": [
+            {
+              "id": "L1",
+              "name": "回答固定纸牌",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L2",
+              "name": "归类固定纸牌",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L3",
+              "name": "老板核对固定纸牌",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L4",
+              "name": "讲出去固定纸牌",
+              "groupId": "G4",
+              "surfaceId": "G4-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "draft",
+              "name": "同一叠无字回答纸页",
+              "groupId": "G1",
+              "kind": "blank-part"
+            },
+            {
+              "id": "press",
+              "name": "由老板纸人位置伸出的无字确认压板",
+              "groupId": "G3",
+              "kind": "blank-part"
+            }
+          ],
+          "initialLocations": [
+            {
+              "partId": "draft",
+              "groupId": "G1"
+            },
+            {
+              "partId": "press",
+              "groupId": "G3"
+            }
+          ],
+          "actions": [
+            {
+              "id": "A1",
+              "stageId": "S1",
+              "partId": "draft",
+              "fromGroupId": "G1",
+              "toGroupId": "G2",
+              "startSeconds": 0.6,
+              "endSeconds": 1.7,
+              "operation": "slide",
+              "sweptRect": {
+                "x": 0.1,
+                "y": 0.46,
+                "width": 0.32,
+                "height": 0.12
+              }
+            },
+            {
+              "id": "A2",
+              "stageId": "S2",
+              "partId": "draft",
+              "fromGroupId": "G2",
+              "toGroupId": "G3",
+              "startSeconds": 2,
+              "endSeconds": 3.1,
+              "operation": "slide",
+              "sweptRect": {
+                "x": 0.33,
+                "y": 0.46,
+                "width": 0.31,
+                "height": 0.12
+              }
+            },
+            {
+              "id": "A3",
+              "stageId": "S3",
+              "partId": "press",
+              "fromGroupId": "G3",
+              "toGroupId": "G3",
+              "startSeconds": 3.4,
+              "endSeconds": 4.7,
+              "operation": "rotate-rigid",
+              "sweptRect": {
+                "x": 0.55,
+                "y": 0.4,
+                "width": 0.14,
+                "height": 0.22
+              }
+            },
+            {
+              "id": "A4",
+              "stageId": "S4",
+              "partId": "draft",
+              "fromGroupId": "G3",
+              "toGroupId": "G4",
+              "startSeconds": 5.1,
+              "endSeconds": 6.5,
+              "operation": "slide",
+              "sweptRect": {
+                "x": 0.56,
+                "y": 0.46,
+                "width": 0.33,
+                "height": 0.12
+              }
+            }
+          ],
+          "allowedTransfers": [
+            {
+              "partId": "draft",
+              "fromGroupId": "G1",
+              "toGroupId": "G2"
+            },
+            {
+              "partId": "draft",
+              "fromGroupId": "G2",
+              "toGroupId": "G3"
+            },
+            {
+              "partId": "draft",
+              "fromGroupId": "G3",
+              "toGroupId": "G4"
+            }
+          ],
+          "forbiddenTransfers": [],
+          "requiredPredecessors": [
+            {
+              "beforeActionId": "A2",
+              "actionId": "A3",
+              "sourceQuote": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。"
+            },
+            {
+              "beforeActionId": "A3",
+              "actionId": "A4",
+              "sourceQuote": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。"
+            }
+          ],
+          "finalLocations": [
+            {
+              "partId": "draft",
+              "groupId": "G4"
+            },
+            {
+              "partId": "press",
+              "groupId": "G3"
+            }
+          ],
+          "dynamicValidation": {
+            "requiredBeforeBatch": true,
+            "staticApprovalIsNotDynamicApproval": true,
+            "automaticRetryAllowed": false
+          }
+        },
+        "editorialScope": {
+          "illustrationOnly": true,
+          "noRealClientEvidence": true,
+          "noGuaranteedOutcome": true,
+          "timestamps": "pending-post-shoot-rebind",
+          "firstReadableFrame": 0,
+          "insertOnlyAfterAllLabelConceptsHaveBeenSpoken": true,
+          "noFreezeExtension": true,
+          "shortSpokenWindowDisposition": "return-to-speaker-or-replan-not-speedup",
+          "requiredInspection": [
+            "首帧中文字逐字核对",
+            "每个动作开始中间结束抽帧",
+            "正常速度静音复述",
+            "与实录原句对位",
+            "全程文字无遮挡"
+          ],
+          "explanation": "同一材料先收集和归类，再让老板核对，完成核对动作后才移往讲解展示架；不表示所有文稿天然正确。"
+        },
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "landingNodeIds": [],
+            "action": "同一叠无字回答纸页从老板回答收集盘移至AI整理槽，整体滑动。",
+            "sfxRole": "paper-slide"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "subject": "G1",
+            "landingNodeIds": [],
+            "action": "同一叠无字回答纸页从AI整理槽移至老板人工核对台，整体滑动。",
+            "sfxRole": "paper-slide"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "subject": "G3",
+            "landingNodeIds": [],
+            "action": "由老板纸人位置伸出的无字确认压板在老板人工核对台，小角度刚性转动。",
+            "sfxRole": "paper-click"
+          },
+          {
+            "id": "S4",
+            "order": 4,
+            "subject": "G1",
+            "landingNodeIds": [],
+            "action": "同一叠无字回答纸页从老板人工核对台移至对外内容展示架，整体滑动。",
+            "sfxRole": "paper-slide"
+          }
+        ]
+      }
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "spokenLine": "以前这些经验，可能只有进过店、跟他聊过的客户才知道。现在有机会让没来过的人也看到，搜相关问题的时候，也能找到他的介绍。",
+      "coreMeaning": "经验有机会被更多人看见，不等于搜索推荐或曝光必达。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "spokenLine": "这种内容不一定每条都要追着爆。一个本地客户，先看懂你的产品，再看见你怎么处理问题，慢慢对你有了印象。等他真有需要的时，你才有机会进去他的选择。",
+      "coreMeaning": "理解、印象与真实需求可能形成选择机会，不保证成交。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "spokenLine": "这既是老板可以尝试的内容做法，也给懂这个行业的人留出了一种服务机会。你帮他把经验讲清楚、持续做成内容，省下他自己摸索和制作的工夫。但他本身没有能交给客户的产品或服务，光发内容也接不住生意。",
+      "coreMeaning": "只有内容而无产品或服务，不能接住客户的生意。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "这是缺少产品服务时的反例：内容折页到止挡就停下，中间缺口不补齐，客户不会被动画自动带过来。"
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      },
+      "paperScene": {
+        "title": "只有内容，缺产品服务就接不住",
+        "archetype": "mechanical-causality",
+        "durationSeconds": 6,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "内容介绍起点",
+            "material": "暖白折页和左侧短轨，短轨尽头有固定止挡；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "缺少产品服务的空承台",
+            "material": "中景只有空承台，中央缺口可见，不提供跨越缺口的桥板；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "客户侧等待区",
+            "material": "远景暖白无脸纸人留在低台上；与左侧轨道隔着空承台缺口，没有订单或钱币；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组",
+            "depth": 3
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "内容",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "产品或服务",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "客户",
+            "groupId": "G3",
+            "textVisibility": "paper-label"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "内容",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.33,
+                0.2
+              ],
+              [
+                0.33,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "产品或服务",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.365,
+                0.2
+              ],
+              [
+                0.635,
+                0.2
+              ],
+              [
+                0.635,
+                0.305
+              ],
+              [
+                0.365,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "客户",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.67,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.305
+              ],
+              [
+                0.67,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": []
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 3
+        },
+        "layoutContract": {
+          "coordinateSpace": "normalized-0-to-1",
+          "contentSafeRect": {
+            "x": 0.04,
+            "y": 0.12,
+            "width": 0.92,
+            "height": 0.64
+          },
+          "subtitleReservedRect": {
+            "x": 0.04,
+            "y": 0.81,
+            "width": 0.92,
+            "height": 0.17
+          },
+          "generatedDecorationPolicy": "forbidden",
+          "layoutInterpretation": {
+            "objectGroupBoxes": "broad-composition-zones",
+            "paperLabelSurfaceBoxes": "reserved-placement-zones",
+            "exactPixelMatchRequired": false,
+            "contentAndSubtitleContainmentIsHard": true
+          },
+          "objectGroupBoxes": [
+            {
+              "groupId": "G1",
+              "box": {
+                "x": 0.055,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G2",
+              "box": {
+                "x": 0.36,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G3",
+              "box": {
+                "x": 0.665,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            }
+          ],
+          "paperLabelSurfaceBoxes": [
+            {
+              "nodeId": "N1",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "box": {
+                "x": 0.06,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N2",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "box": {
+                "x": 0.365,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N3",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "box": {
+                "x": 0.67,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            }
+          ]
+        },
+        "prompt": {
+          "generatedReadableTextAllowed": false,
+          "firstFrame": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为内容介绍起点，材料为暖白折页和左侧短轨，短轨尽头有固定止挡；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为缺少产品服务的空承台，材料为中景只有空承台，中央缺口可见，不提供跨越缺口的桥板；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为客户侧等待区，材料为远景暖白无脸纸人留在低台上；与左侧轨道隔着空承台缺口，没有订单或钱币；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n只在左侧止挡内滑动的无字内容折页初始位于内容介绍起点。\n只在左侧止挡内滑动的无字内容折页所在路线与客户侧等待区物理隔离，中间保留可见间隙，不设置相连纸路。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。",
+          "motion": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n1至4秒：只在左侧止挡内滑动的无字内容折页在内容介绍起点，整体滑动。\n只在左侧止挡内滑动的无字内容折页始终留在被允许的位置，与客户侧等待区隔离。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。"
+        },
+        "motionContract": {
+          "schemaVersion": "koubo-paper-motion-contract/v1",
+          "meaning": {
+            "sourceQuote": "这既是老板可以尝试的内容做法，也给懂这个行业的人留出了一种服务机会。你帮他把经验讲清楚、持续做成内容，省下他自己摸索和制作的工夫。但他本身没有能交给客户的产品或服务，光发内容也接不住生意。",
+            "viewerTakeaway": "这是缺少产品服务时的反例：内容折页到止挡就停下，中间缺口不补齐，客户不会被动画自动带过来。",
+            "excludedOutcomes": [
+              "用内容补造不存在的产品",
+              "跨过缺口直接成交",
+              "所有商家都缺产品"
+            ]
+          },
+          "parts": [
+            {
+              "id": "L1",
+              "name": "内容固定纸牌",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L2",
+              "name": "产品或服务固定纸牌",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L3",
+              "name": "客户固定纸牌",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "leaflet",
+              "name": "只在左侧止挡内滑动的无字内容折页",
+              "groupId": "G1",
+              "kind": "blank-part"
+            }
+          ],
+          "initialLocations": [
+            {
+              "partId": "leaflet",
+              "groupId": "G1"
+            }
+          ],
+          "actions": [
+            {
+              "id": "A1",
+              "stageId": "S1",
+              "partId": "leaflet",
+              "fromGroupId": "G1",
+              "toGroupId": "G1",
+              "startSeconds": 1,
+              "endSeconds": 4,
+              "operation": "slide",
+              "sweptRect": {
+                "x": 0.09,
+                "y": 0.43,
+                "width": 0.23,
+                "height": 0.15
+              }
+            }
+          ],
+          "allowedTransfers": [],
+          "forbiddenTransfers": [
+            {
+              "partId": "leaflet",
+              "fromGroupId": "G1",
+              "toGroupId": "G3",
+              "sourceQuote": "这既是老板可以尝试的内容做法，也给懂这个行业的人留出了一种服务机会。你帮他把经验讲清楚、持续做成内容，省下他自己摸索和制作的工夫。但他本身没有能交给客户的产品或服务，光发内容也接不住生意。"
+            }
+          ],
+          "requiredPredecessors": [],
+          "finalLocations": [
+            {
+              "partId": "leaflet",
+              "groupId": "G1"
+            }
+          ],
+          "dynamicValidation": {
+            "requiredBeforeBatch": true,
+            "staticApprovalIsNotDynamicApproval": true,
+            "automaticRetryAllowed": false
+          }
+        },
+        "editorialScope": {
+          "illustrationOnly": true,
+          "noRealClientEvidence": true,
+          "noGuaranteedOutcome": true,
+          "timestamps": "pending-post-shoot-rebind",
+          "firstReadableFrame": 0,
+          "insertOnlyAfterAllLabelConceptsHaveBeenSpoken": true,
+          "noFreezeExtension": true,
+          "shortSpokenWindowDisposition": "return-to-speaker-or-replan-not-speedup",
+          "requiredInspection": [
+            "首帧中文字逐字核对",
+            "每个动作开始中间结束抽帧",
+            "正常速度静音复述",
+            "与实录原句对位",
+            "全程文字无遮挡"
+          ],
+          "explanation": "这是缺少产品服务时的反例：内容折页到止挡就停下，中间缺口不补齐，客户不会被动画自动带过来。"
+        },
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "landingNodeIds": [],
+            "action": "只在左侧止挡内滑动的无字内容折页在内容介绍起点，整体滑动。",
+            "sfxRole": "paper-slide"
+          }
+        ]
+      }
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "spokenLine": "如果你能听懂一个行业的问题，也能把约定的工作做好，就可以试着把这项服务介绍给外地同行。同样需要整理客户问题、制作产品内容的人。",
+      "coreMeaning": "具备行业理解和履约能力后，可以尝试向外地同行介绍服务。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "在具备行业理解和工作能力的前提下，把服务展开介绍给远方的潜在同行；对方仍在待沟通位置，没有成交动作。"
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      },
+      "paperScene": {
+        "title": "向外地介绍服务，不是订单自动到来",
+        "archetype": "mechanical-causality",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "已有工作展示台",
+            "material": "前景厚纸作品册，册页完全无字，没有证书与印记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "服务介绍展开区",
+            "material": "中景浅灰纸质展台，面对右侧的独立空白服务折页；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "外地同行待沟通桌",
+            "material": "后景另一张纸质小桌与无脸人物，和左方保持距离，没有握手、订单和付款物件；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组",
+            "depth": 3
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "工作做好",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "介绍",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "外地同行",
+            "groupId": "G3",
+            "textVisibility": "paper-label"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "工作做好",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.33,
+                0.2
+              ],
+              [
+                0.33,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "介绍",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.365,
+                0.2
+              ],
+              [
+                0.635,
+                0.2
+              ],
+              [
+                0.635,
+                0.305
+              ],
+              [
+                0.365,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "外地同行",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.67,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.305
+              ],
+              [
+                0.67,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": []
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 3
+        },
+        "layoutContract": {
+          "coordinateSpace": "normalized-0-to-1",
+          "contentSafeRect": {
+            "x": 0.04,
+            "y": 0.12,
+            "width": 0.92,
+            "height": 0.64
+          },
+          "subtitleReservedRect": {
+            "x": 0.04,
+            "y": 0.81,
+            "width": 0.92,
+            "height": 0.17
+          },
+          "generatedDecorationPolicy": "forbidden",
+          "layoutInterpretation": {
+            "objectGroupBoxes": "broad-composition-zones",
+            "paperLabelSurfaceBoxes": "reserved-placement-zones",
+            "exactPixelMatchRequired": false,
+            "contentAndSubtitleContainmentIsHard": true
+          },
+          "objectGroupBoxes": [
+            {
+              "groupId": "G1",
+              "box": {
+                "x": 0.055,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G2",
+              "box": {
+                "x": 0.36,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G3",
+              "box": {
+                "x": 0.665,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            }
+          ],
+          "paperLabelSurfaceBoxes": [
+            {
+              "nodeId": "N1",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "box": {
+                "x": 0.06,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N2",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "box": {
+                "x": 0.365,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N3",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "box": {
+                "x": 0.67,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            }
+          ]
+        },
+        "prompt": {
+          "generatedReadableTextAllowed": false,
+          "firstFrame": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为已有工作展示台，材料为前景厚纸作品册，册页完全无字，没有证书与印记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为服务介绍展开区，材料为中景浅灰纸质展台，面对右侧的独立空白服务折页；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为外地同行待沟通桌，材料为后景另一张纸质小桌与无脸人物，和左方保持距离，没有握手、订单和付款物件；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n无字服务折页初始位于服务介绍展开区。\n无字服务折页所在路线与外地同行待沟通桌物理隔离，中间保留可见间隙，不设置相连纸路。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。",
+          "motion": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n1至4.8秒：无字服务折页在服务介绍展开区，展开。\n无字服务折页始终留在被允许的位置，与外地同行待沟通桌隔离。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。"
+        },
+        "motionContract": {
+          "schemaVersion": "koubo-paper-motion-contract/v1",
+          "meaning": {
+            "sourceQuote": "如果你能听懂一个行业的问题，也能把约定的工作做好，就可以试着把这项服务介绍给外地同行。同样需要整理客户问题、制作产品内容的人。",
+            "viewerTakeaway": "在具备行业理解和工作能力的前提下，把服务展开介绍给远方的潜在同行；对方仍在待沟通位置，没有成交动作。",
+            "excludedOutcomes": [
+              "全国订单自动到来",
+              "介绍就等于被接受",
+              "AI发明远程接单"
+            ]
+          },
+          "parts": [
+            {
+              "id": "L1",
+              "name": "工作做好固定纸牌",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L2",
+              "name": "介绍固定纸牌",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L3",
+              "name": "外地同行固定纸牌",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "portfolio",
+              "name": "无字服务折页",
+              "groupId": "G2",
+              "kind": "blank-part"
+            }
+          ],
+          "initialLocations": [
+            {
+              "partId": "portfolio",
+              "groupId": "G2"
+            }
+          ],
+          "actions": [
+            {
+              "id": "A1",
+              "stageId": "S1",
+              "partId": "portfolio",
+              "fromGroupId": "G2",
+              "toGroupId": "G2",
+              "startSeconds": 1,
+              "endSeconds": 4.8,
+              "operation": "unfold",
+              "sweptRect": {
+                "x": 0.39,
+                "y": 0.43,
+                "width": 0.22,
+                "height": 0.24
+              }
+            }
+          ],
+          "allowedTransfers": [],
+          "forbiddenTransfers": [
+            {
+              "partId": "portfolio",
+              "fromGroupId": "G2",
+              "toGroupId": "G3",
+              "sourceQuote": "如果你能听懂一个行业的问题，也能把约定的工作做好，就可以试着把这项服务介绍给外地同行。同样需要整理客户问题、制作产品内容的人。"
+            }
+          ],
+          "requiredPredecessors": [],
+          "finalLocations": [
+            {
+              "partId": "portfolio",
+              "groupId": "G2"
+            }
+          ],
+          "dynamicValidation": {
+            "requiredBeforeBatch": true,
+            "staticApprovalIsNotDynamicApproval": true,
+            "automaticRetryAllowed": false
+          }
+        },
+        "editorialScope": {
+          "illustrationOnly": true,
+          "noRealClientEvidence": true,
+          "noGuaranteedOutcome": true,
+          "timestamps": "pending-post-shoot-rebind",
+          "firstReadableFrame": 0,
+          "insertOnlyAfterAllLabelConceptsHaveBeenSpoken": true,
+          "noFreezeExtension": true,
+          "shortSpokenWindowDisposition": "return-to-speaker-or-replan-not-speedup",
+          "requiredInspection": [
+            "首帧中文字逐字核对",
+            "每个动作开始中间结束抽帧",
+            "正常速度静音复述",
+            "与实录原句对位",
+            "全程文字无遮挡"
+          ],
+          "explanation": "在具备行业理解和工作能力的前提下，把服务展开介绍给远方的潜在同行；对方仍在待沟通位置，没有成交动作。"
+        },
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G2",
+            "landingNodeIds": [],
+            "action": "无字服务折页在服务介绍展开区，展开。",
+            "sfxRole": "paper-unfold"
+          }
+        ]
+      }
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "spokenLine": "远程接业务早就有了，不是AI才发明的。AI增加的可能性，是帮一个人、一个小团队，多承担一些过去做不过来的整理和制作工作。至于客户怎么找到你、为什么信你，还得靠你自己的作品和服务。",
+      "coreMeaning": "AI增加整理制作的承载能力，客户信任仍依赖作品和服务。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "spokenLine": "这么一想，留在兰州就不只有“本地能给我多少岗位”这一个问题了。还可以想：我会做的这些事，外地有没有人需要？",
+      "coreMeaning": "人在兰州可以主动调查外地是否有人需要自己会做的事。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "spokenLine": "如果你的住处、生活已经在这里，留在本地能少一些搬迁和生活开支，那省下来的钱，就能给找客户、改作品、磨合服务多留一点时间。很多事情要做了、改了，才知道适不适合继续。刚开始没有结果的时候，手里还有没有余地，很重要。",
+      "coreMeaning": "已有本地生活条件可能节省开支、留出试错时间；不是人人更便宜。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "spokenLine": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。",
+      "coreMeaning": "真实学习制作有成本，省一些钱只能多留几次尝试，不是零成本。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "修改需要消耗投入，有限余地允许把作品带入下一次尝试，末端只是继续试，不是成功或盈利。"
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      },
+      "paperScene": {
+        "title": "不是零成本，留出继续尝试的余地",
+        "archetype": "mechanical-causality",
+        "durationSeconds": 7,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "制作成本纸槽",
+            "material": "前景三层无字矩形纸垫，不用钱币、金额或计数标记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "继续修改工作台",
+            "material": "中景纤维纸工作台，带一份需调整的完全无字折页；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "下一次尝试承台",
+            "material": "后景深蓝空承台，有一个空白作品容纳槽，未摆出成功结果；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组",
+            "depth": 3
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "成本",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "继续改",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "多试几次",
+            "groupId": "G3",
+            "textVisibility": "paper-label"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "成本",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.33,
+                0.2
+              ],
+              [
+                0.33,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "继续改",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.365,
+                0.2
+              ],
+              [
+                0.635,
+                0.2
+              ],
+              [
+                0.635,
+                0.305
+              ],
+              [
+                0.365,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "多试几次",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.67,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.305
+              ],
+              [
+                0.67,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": []
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 3
+        },
+        "layoutContract": {
+          "coordinateSpace": "normalized-0-to-1",
+          "contentSafeRect": {
+            "x": 0.04,
+            "y": 0.12,
+            "width": 0.92,
+            "height": 0.64
+          },
+          "subtitleReservedRect": {
+            "x": 0.04,
+            "y": 0.81,
+            "width": 0.92,
+            "height": 0.17
+          },
+          "generatedDecorationPolicy": "forbidden",
+          "layoutInterpretation": {
+            "objectGroupBoxes": "broad-composition-zones",
+            "paperLabelSurfaceBoxes": "reserved-placement-zones",
+            "exactPixelMatchRequired": false,
+            "contentAndSubtitleContainmentIsHard": true
+          },
+          "objectGroupBoxes": [
+            {
+              "groupId": "G1",
+              "box": {
+                "x": 0.055,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G2",
+              "box": {
+                "x": 0.36,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G3",
+              "box": {
+                "x": 0.665,
+                "y": 0.17,
+                "width": 0.28,
+                "height": 0.54
+              }
+            }
+          ],
+          "paperLabelSurfaceBoxes": [
+            {
+              "nodeId": "N1",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "box": {
+                "x": 0.06,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N2",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "box": {
+                "x": 0.365,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N3",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "box": {
+                "x": 0.67,
+                "y": 0.2,
+                "width": 0.27,
+                "height": 0.105
+              }
+            }
+          ]
+        },
+        "prompt": {
+          "generatedReadableTextAllowed": false,
+          "firstFrame": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为制作成本纸槽，材料为前景三层无字矩形纸垫，不用钱币、金额或计数标记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为继续修改工作台，材料为中景纤维纸工作台，带一份需调整的完全无字折页；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为下一次尝试承台，材料为后景深蓝空承台，有一个空白作品容纳槽，未摆出成功结果；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n成本纸槽最上层的无字薄纸垫初始位于制作成本纸槽。\n需要修改的无字作品折页初始位于继续修改工作台。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。",
+          "motion": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n0.8至2.2秒：成本纸槽最上层的无字薄纸垫从制作成本纸槽移至继续修改工作台，整体滑动。\n2.7至4秒：需要修改的无字作品折页在继续修改工作台，展开。\n4.4至5.6秒：需要修改的无字作品折页从继续修改工作台移至下一次尝试承台，整体滑动。\n先完成“成本纸槽最上层的无字薄纸垫从制作成本纸槽移至继续修改工作台，整体滑动。”，才可开始“需要修改的无字作品折页在继续修改工作台，展开。”。\n先完成“需要修改的无字作品折页在继续修改工作台，展开。”，才可开始“需要修改的无字作品折页从继续修改工作台移至下一次尝试承台，整体滑动。”。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。"
+        },
+        "motionContract": {
+          "schemaVersion": "koubo-paper-motion-contract/v1",
+          "meaning": {
+            "sourceQuote": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。",
+            "viewerTakeaway": "修改需要消耗投入，有限余地允许把作品带入下一次尝试，末端只是继续试，不是成功或盈利。",
+            "excludedOutcomes": [
+              "零成本",
+              "投入会自动回本",
+              "试几次必成",
+              "成本数量等于具体金额"
+            ]
+          },
+          "parts": [
+            {
+              "id": "L1",
+              "name": "成本固定纸牌",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L2",
+              "name": "继续改固定纸牌",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L3",
+              "name": "多试几次固定纸牌",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "reserve",
+              "name": "成本纸槽最上层的无字薄纸垫",
+              "groupId": "G1",
+              "kind": "blank-part"
+            },
+            {
+              "id": "work",
+              "name": "需要修改的无字作品折页",
+              "groupId": "G2",
+              "kind": "blank-part"
+            }
+          ],
+          "initialLocations": [
+            {
+              "partId": "reserve",
+              "groupId": "G1"
+            },
+            {
+              "partId": "work",
+              "groupId": "G2"
+            }
+          ],
+          "actions": [
+            {
+              "id": "A1",
+              "stageId": "S1",
+              "partId": "reserve",
+              "fromGroupId": "G1",
+              "toGroupId": "G2",
+              "startSeconds": 0.8,
+              "endSeconds": 2.2,
+              "operation": "slide",
+              "sweptRect": {
+                "x": 0.1,
+                "y": 0.41,
+                "width": 0.45,
+                "height": 0.1
+              }
+            },
+            {
+              "id": "A2",
+              "stageId": "S2",
+              "partId": "work",
+              "fromGroupId": "G2",
+              "toGroupId": "G2",
+              "startSeconds": 2.7,
+              "endSeconds": 4,
+              "operation": "unfold",
+              "sweptRect": {
+                "x": 0.41,
+                "y": 0.52,
+                "width": 0.17,
+                "height": 0.18
+              }
+            },
+            {
+              "id": "A3",
+              "stageId": "S3",
+              "partId": "work",
+              "fromGroupId": "G2",
+              "toGroupId": "G3",
+              "startSeconds": 4.4,
+              "endSeconds": 5.6,
+              "operation": "slide",
+              "sweptRect": {
+                "x": 0.43,
+                "y": 0.52,
+                "width": 0.44,
+                "height": 0.17
+              }
+            }
+          ],
+          "allowedTransfers": [
+            {
+              "partId": "reserve",
+              "fromGroupId": "G1",
+              "toGroupId": "G2"
+            },
+            {
+              "partId": "work",
+              "fromGroupId": "G2",
+              "toGroupId": "G3"
+            }
+          ],
+          "forbiddenTransfers": [],
+          "requiredPredecessors": [
+            {
+              "beforeActionId": "A1",
+              "actionId": "A2",
+              "sourceQuote": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。"
+            },
+            {
+              "beforeActionId": "A2",
+              "actionId": "A3",
+              "sourceQuote": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。"
+            }
+          ],
+          "finalLocations": [
+            {
+              "partId": "reserve",
+              "groupId": "G2"
+            },
+            {
+              "partId": "work",
+              "groupId": "G3"
+            }
+          ],
+          "dynamicValidation": {
+            "requiredBeforeBatch": true,
+            "staticApprovalIsNotDynamicApproval": true,
+            "automaticRetryAllowed": false
+          }
+        },
+        "editorialScope": {
+          "illustrationOnly": true,
+          "noRealClientEvidence": true,
+          "noGuaranteedOutcome": true,
+          "timestamps": "pending-post-shoot-rebind",
+          "firstReadableFrame": 0,
+          "insertOnlyAfterAllLabelConceptsHaveBeenSpoken": true,
+          "noFreezeExtension": true,
+          "shortSpokenWindowDisposition": "return-to-speaker-or-replan-not-speedup",
+          "requiredInspection": [
+            "首帧中文字逐字核对",
+            "每个动作开始中间结束抽帧",
+            "正常速度静音复述",
+            "与实录原句对位",
+            "全程文字无遮挡"
+          ],
+          "explanation": "修改需要消耗投入，有限余地允许把作品带入下一次尝试，末端只是继续试，不是成功或盈利。"
+        },
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "landingNodeIds": [],
+            "action": "成本纸槽最上层的无字薄纸垫从制作成本纸槽移至继续修改工作台，整体滑动。",
+            "sfxRole": "paper-slide"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "subject": "G2",
+            "landingNodeIds": [],
+            "action": "需要修改的无字作品折页在继续修改工作台，展开。",
+            "sfxRole": "paper-unfold"
+          },
+          {
+            "id": "S3",
+            "order": 3,
+            "subject": "G2",
+            "landingNodeIds": [],
+            "action": "需要修改的无字作品折页从继续修改工作台移至下一次尝试承台，整体滑动。",
+            "sfxRole": "paper-slide"
+          }
+        ]
+      }
+    },
+    {
+      "id": "B16",
+      "order": 16,
+      "spokenLine": "客户自己也会用AI了，他还需要你做什么？",
+      "coreMeaning": "提问转场：客户会用AI以后，服务还承担什么。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B17",
+      "order": 17,
+      "spokenLine": "你得听得懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案。AI给出的内容，也得看得出哪里不符合实际。到了收服务费的时候，还要把做哪些工作、谁配合、交什么东西讲清楚。客户拿到以后用不上，你得能继续查问题。",
+      "coreMeaning": "谈清工作范围、协作和交付；用不上时仍需查问题。",
+      "kind": "process-explanation",
+      "visualDecision": {
+        "class": "paper-editorial",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "把工作范围与谁来配合放到交付约定里；复查工作台保持开放作为后续责任，不演成验收已经通过，也不演成所有交付都失败。"
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      },
+      "paperScene": {
+        "title": "服务先说清楚范围、协作和交付",
+        "archetype": "mechanical-causality",
+        "durationSeconds": 8,
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "工作范围纸盘",
+            "material": "前景暖白盘与一张完全无字的范围卡；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "双方协作纸盘",
+            "material": "中景浅灰盘与一张完全无字的协作卡；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "交付约定文件夹",
+            "material": "后景纸质文件夹，开始为空，夹子保持打开；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组",
+            "depth": 3
+          },
+          {
+            "id": "G4",
+            "name": "问题复查工作台",
+            "material": "暖黄独立台面和无字放大镜形纸框，不出现通过印记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第四组",
+            "depth": 1
+          }
+        ],
+        "nodes": [
+          {
+            "id": "N1",
+            "label": "做哪些工作",
+            "groupId": "G1",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N2",
+            "label": "谁配合",
+            "groupId": "G2",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N3",
+            "label": "交什么东西",
+            "groupId": "G3",
+            "textVisibility": "paper-label"
+          },
+          {
+            "id": "N4",
+            "label": "查问题",
+            "groupId": "G4",
+            "textVisibility": "paper-label"
+          }
+        ],
+        "textPlan": [
+          {
+            "nodeId": "N1",
+            "text": "做哪些工作",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.255,
+                0.2
+              ],
+              [
+                0.255,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "谁配合",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.29,
+                0.2
+              ],
+              [
+                0.485,
+                0.2
+              ],
+              [
+                0.485,
+                0.305
+              ],
+              [
+                0.29,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "交什么东西",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.52,
+                0.2
+              ],
+              [
+                0.715,
+                0.2
+              ],
+              [
+                0.715,
+                0.305
+              ],
+              [
+                0.52,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N4",
+            "text": "查问题",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.75,
+                0.2
+              ],
+              [
+                0.945,
+                0.2
+              ],
+              [
+                0.945,
+                0.305
+              ],
+              [
+                0.75,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "screenTextPlan": [],
+        "labelBindingPolicy": {
+          "unlabeledObjectGroups": []
+        },
+        "readableTextPolicy": {
+          "silentTruncationForbidden": true,
+          "slashMergeForbidden": true,
+          "maximumSimultaneousLabels": 4
+        },
+        "layoutContract": {
+          "coordinateSpace": "normalized-0-to-1",
+          "contentSafeRect": {
+            "x": 0.04,
+            "y": 0.12,
+            "width": 0.92,
+            "height": 0.64
+          },
+          "subtitleReservedRect": {
+            "x": 0.04,
+            "y": 0.81,
+            "width": 0.92,
+            "height": 0.17
+          },
+          "generatedDecorationPolicy": "forbidden",
+          "layoutInterpretation": {
+            "objectGroupBoxes": "broad-composition-zones",
+            "paperLabelSurfaceBoxes": "reserved-placement-zones",
+            "exactPixelMatchRequired": false,
+            "contentAndSubtitleContainmentIsHard": true
+          },
+          "objectGroupBoxes": [
+            {
+              "groupId": "G1",
+              "box": {
+                "x": 0.055,
+                "y": 0.17,
+                "width": 0.205,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G2",
+              "box": {
+                "x": 0.285,
+                "y": 0.17,
+                "width": 0.205,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G3",
+              "box": {
+                "x": 0.515,
+                "y": 0.17,
+                "width": 0.205,
+                "height": 0.54
+              }
+            },
+            {
+              "groupId": "G4",
+              "box": {
+                "x": 0.745,
+                "y": 0.17,
+                "width": 0.205,
+                "height": 0.54
+              }
+            }
+          ],
+          "paperLabelSurfaceBoxes": [
+            {
+              "nodeId": "N1",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "box": {
+                "x": 0.06,
+                "y": 0.2,
+                "width": 0.19499999999999998,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N2",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "box": {
+                "x": 0.29,
+                "y": 0.2,
+                "width": 0.19499999999999998,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N3",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "box": {
+                "x": 0.52,
+                "y": 0.2,
+                "width": 0.19499999999999998,
+                "height": 0.105
+              }
+            },
+            {
+              "nodeId": "N4",
+              "groupId": "G4",
+              "surfaceId": "G4-rigid-label-card",
+              "box": {
+                "x": 0.75,
+                "y": 0.2,
+                "width": 0.19499999999999998,
+                "height": 0.105
+              }
+            }
+          ]
+        },
+        "prompt": {
+          "generatedReadableTextAllowed": false,
+          "firstFrame": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为工作范围纸盘，材料为前景暖白盘与一张完全无字的范围卡；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为双方协作纸盘，材料为中景浅灰盘与一张完全无字的协作卡；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为交付约定文件夹，材料为后景纸质文件夹，开始为空，夹子保持打开；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\nG4为问题复查工作台，材料为暖黄独立台面和无字放大镜形纸框，不出现通过印记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第四组，位于第1层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n无字工作范围卡初始位于工作范围纸盘。\n无字配合约定卡初始位于双方协作纸盘。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。",
+          "motion": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n0.8至2.4秒：无字工作范围卡从工作范围纸盘移至交付约定文件夹，整体滑动。\n2.8至4.2秒：无字配合约定卡从双方协作纸盘移至交付约定文件夹，整体滑动。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。"
+        },
+        "motionContract": {
+          "schemaVersion": "koubo-paper-motion-contract/v1",
+          "meaning": {
+            "sourceQuote": "你得听得懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案。AI给出的内容，也得看得出哪里不符合实际。到了收服务费的时候，还要把做哪些工作、谁配合、交什么东西讲清楚。客户拿到以后用不上，你得能继续查问题。",
+            "viewerTakeaway": "把工作范围与谁来配合放到交付约定里；复查工作台保持开放作为后续责任，不演成验收已经通过，也不演成所有交付都失败。",
+            "excludedOutcomes": [
+              "只有工具生成就收费",
+              "自动通过验收",
+              "无人承担后续问题"
+            ]
+          },
+          "parts": [
+            {
+              "id": "L1",
+              "name": "做哪些工作固定纸牌",
+              "groupId": "G1",
+              "surfaceId": "G1-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L2",
+              "name": "谁配合固定纸牌",
+              "groupId": "G2",
+              "surfaceId": "G2-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L3",
+              "name": "交什么东西固定纸牌",
+              "groupId": "G3",
+              "surfaceId": "G3-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "L4",
+              "name": "查问题固定纸牌",
+              "groupId": "G4",
+              "surfaceId": "G4-rigid-label-card",
+              "kind": "label",
+              "mount": "independent-fixed-stand"
+            },
+            {
+              "id": "scope",
+              "name": "无字工作范围卡",
+              "groupId": "G1",
+              "kind": "blank-part"
+            },
+            {
+              "id": "cooperation",
+              "name": "无字配合约定卡",
+              "groupId": "G2",
+              "kind": "blank-part"
+            }
+          ],
+          "initialLocations": [
+            {
+              "partId": "scope",
+              "groupId": "G1"
+            },
+            {
+              "partId": "cooperation",
+              "groupId": "G2"
+            }
+          ],
+          "actions": [
+            {
+              "id": "A1",
+              "stageId": "S1",
+              "partId": "scope",
+              "fromGroupId": "G1",
+              "toGroupId": "G3",
+              "startSeconds": 0.8,
+              "endSeconds": 2.4,
+              "operation": "slide",
+              "sweptRect": {
+                "x": 0.1,
+                "y": 0.4,
+                "width": 0.55,
+                "height": 0.1
+              }
+            },
+            {
+              "id": "A2",
+              "stageId": "S2",
+              "partId": "cooperation",
+              "fromGroupId": "G2",
+              "toGroupId": "G3",
+              "startSeconds": 2.8,
+              "endSeconds": 4.2,
+              "operation": "slide",
+              "sweptRect": {
+                "x": 0.34,
+                "y": 0.54,
+                "width": 0.31,
+                "height": 0.1
+              }
+            }
+          ],
+          "allowedTransfers": [
+            {
+              "partId": "scope",
+              "fromGroupId": "G1",
+              "toGroupId": "G3"
+            },
+            {
+              "partId": "cooperation",
+              "fromGroupId": "G2",
+              "toGroupId": "G3"
+            }
+          ],
+          "forbiddenTransfers": [],
+          "requiredPredecessors": [],
+          "finalLocations": [
+            {
+              "partId": "scope",
+              "groupId": "G3"
+            },
+            {
+              "partId": "cooperation",
+              "groupId": "G3"
+            }
+          ],
+          "dynamicValidation": {
+            "requiredBeforeBatch": true,
+            "staticApprovalIsNotDynamicApproval": true,
+            "automaticRetryAllowed": false
+          }
+        },
+        "editorialScope": {
+          "illustrationOnly": true,
+          "noRealClientEvidence": true,
+          "noGuaranteedOutcome": true,
+          "timestamps": "pending-post-shoot-rebind",
+          "firstReadableFrame": 0,
+          "insertOnlyAfterAllLabelConceptsHaveBeenSpoken": true,
+          "noFreezeExtension": true,
+          "shortSpokenWindowDisposition": "return-to-speaker-or-replan-not-speedup",
+          "requiredInspection": [
+            "首帧中文字逐字核对",
+            "每个动作开始中间结束抽帧",
+            "正常速度静音复述",
+            "与实录原句对位",
+            "全程文字无遮挡"
+          ],
+          "explanation": "把工作范围与谁来配合放到交付约定里；复查工作台保持开放作为后续责任，不演成验收已经通过，也不演成所有交付都失败。"
+        },
+        "stages": [
+          {
+            "id": "S1",
+            "order": 1,
+            "subject": "G1",
+            "landingNodeIds": [],
+            "action": "无字工作范围卡从工作范围纸盘移至交付约定文件夹，整体滑动。",
+            "sfxRole": "paper-slide"
+          },
+          {
+            "id": "S2",
+            "order": 2,
+            "subject": "G2",
+            "landingNodeIds": [],
+            "action": "无字配合约定卡从双方协作纸盘移至交付约定文件夹，整体滑动。",
+            "sfxRole": "paper-slide"
+          }
+        ]
+      }
+    },
+    {
+      "id": "B18",
+      "order": 18,
+      "spokenLine": "而且，工具越容易用，只靠生成几段文字、几张图收费，以后可能更难。老板自己也能试。你得比他自己试，多承担一些他没时间做、不会检查、没办法持续做下去的工作。",
+      "coreMeaning": "服务需承担客户没时间做、不会检查和难持续的工作。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B19",
+      "order": 19,
+      "spokenLine": "咱们在本地，可以去店里聊，看看他们平时到底怎么干。把这些情况问明白，才知道网上那些通用方案，哪些地方在这家店根本用不了。能不能帮上忙，得照着实际情况改。",
+      "coreMeaning": "到店了解实际情况后，才知道通用方案哪里不适用。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B20",
+      "order": 20,
+      "spokenLine": "我已经做过企业AI应用和GEO的付费项目，也做过交付。这是我愿意继续做下去的原因。但有过交付，不等于生意已经做稳了。接下来，服务怎么做好，客户能不能持续用，还得继续下工夫。",
+      "coreMeaning": "本人已有付费交付但不等于已经营稳定，不虚构客户或收入。",
+      "kind": "personal-experience",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B21",
+      "order": 21,
+      "spokenLine": "你有工作，就先在熟悉的业务里练；你已经做着生意，可以看看哪些经验还没让客户知道。完全没接触过一个行业的人，先去了解实际工作，别因为AI能给方案，就急着给老板当顾问。",
+      "coreMeaning": "先在熟悉业务中练习，未了解行业不能急着给老板当顾问。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "keyword",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    },
+    {
+      "id": "B22",
+      "order": 22,
+      "spokenLine": "我选择继续留在兰州做这件事。把本地企业的问题弄明白，把自己能承担的工作做好，再去争取更多客户。咱们兰州的老板，需要做企业AI应用，可以来找我，带着实际碰到的问题聊。我能参与哪一段、哪些还做不了，咱们当面说清楚。我是超哥在兰州AI创业",
+      "coreMeaning": "本人留在兰州继续服务，明确能承担与做不了的边界。",
+      "kind": "speaker-judgment",
+      "visualDecision": {
+        "class": "speaker",
+        "producer": "user",
+        "fallback": "blocked",
+        "reason": "保留本人判断、经历和解释；未收到真实补充素材，不伪造证据。"
+      },
+      "overlayDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "role": "cta",
+        "items": []
+      },
+      "postShoot": {
+        "status": "awaiting-recorded-audio",
+        "shotcraft": "pending-recorded-audio-and-asset-intake",
+        "keepOriginalWording": true
+      }
+    }
+  ]
+}

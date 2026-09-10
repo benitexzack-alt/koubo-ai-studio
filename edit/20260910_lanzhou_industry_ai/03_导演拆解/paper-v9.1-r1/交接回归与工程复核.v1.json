@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "koubo-preproduction-local-checks/v1",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r1",
+  "executedOn": "2026-09-10",
+  "command": "node --test --test-reporter=spec skills/koubo-paper-firstframe-producer/tests/test-native-compiler-handoff.mjs skills/koubo-remotion-director/tests/test-v9-workflow-state.mjs",
+  "exitCode": 0,
+  "tests": 29,
+  "passed": 29,
+  "failed": 0,
+  "skipped": 0,
+  "durationMs": 40233.879958,
+  "nativeHandoffTest": {
+    "inputIsSyntheticFixture": true,
+    "nativeCompiler": true,
+    "nativePrepare": true,
+    "nativeBakeOcrNodes": 8,
+    "nativeReadyScenes": ["P01", "P02"],
+    "signedOriginalsUnchanged": true,
+    "semanticReviewDriftRejected": true,
+    "externalGeneration": false
+  },
+  "engineeringReviewer": {
+    "agentId": "01a07f92-2ff6-7dd3-9c13-3d071f1b4dd9",
+    "scope": "当前v2局部机构合同与原生提示词一致性，不替代真实动态图验收",
+    "conclusion": "本轮已报两项已闭合，当前 v2 局部复核通过。",
+    "paperMotionContractsPassed": 6,
+    "firstFrameStageAndMotionCompilationMatched": true,
+    "reviewerWroteFiles": false
+  },
+  "scriptSyntaxChecks": {
+    "buildPreproduction": "node --check 退出0",
+    "packagePreproduction": "node --check 退出0"
+  },
+  "currentEpisodeImagesGenerated": 0,
+  "currentEpisodeVideosGenerated": 0,
+  "dynamicVisualAcceptance": "not-performed",
+  "formalAuthorized": false
+}

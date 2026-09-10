@@ -1,0 +1,862 @@
+{
+  "schemaVersion": "koubo-runninghub-image-to-video-prompt-manifest/v1",
+  "requestId": "20260910-lanzhou-industry-ai-paper-v9.1-r1-pre-shoot",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r1",
+  "phase": "pre-shoot",
+  "status": "awaiting-text-baked-firstframes",
+  "consumer": "runninghub-manual-image-to-video",
+  "generationMode": "image-to-video",
+  "executionOwner": "user-manual",
+  "codexExternalSubmissionAllowed": false,
+  "policy": {
+    "incidentPreventionVersion": "1"
+  },
+  "submissionBlockedUntil": [
+    "raw-first-frame-visual-review-passed",
+    "actual-paper-surface-anchor-calibration-passed",
+    "deterministic-text-bake-receipt-passed",
+    "text-baked-first-frame-ocr-passed",
+    "runninghub-ready-pack-issued"
+  ],
+  "sourcePlanCanonicalSha256": "8e14257b49656b23bb99b24d483aa970b7f6884187d619b9341cd40428aeb2ca",
+  "sceneCount": 6,
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "pairId": "P01-B04",
+      "beatId": "B04",
+      "title": "经验留下来，客户了解用起来",
+      "spokenLine": "所以，你以前做过销售、开过店，或者在一个行业干了很多年，别觉得学AI就得把这些全扔了，从头转行。你对客户的了解，恰恰可能派上用场。",
+      "inputFirstFrameFileName": "P01_B04_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "943630226304852497452e01ef52c88196ae78374315dc02e990e8ac2ed683f1",
+      "inputFirstFrameTextPlanSha256": "b54ef349295790240e81cc4b5222b6498248457d00a1cbebbbaccb357df1d209",
+      "durationSeconds": 7,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n1至3秒：来自销售经历的无字经验纸片从销售经历档案架移至客户了解汇集台，整体滑动。\n3.5至5.5秒：来自开店经历的无字经验纸片从门店经验纸盒移至客户了解汇集台，整体滑动。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "b0d52fa980fadaceee1597f5d1f0b92348573079842252307b428e46ae105745",
+      "pairSha256": "593811b7b4ecc1d13c67bf80972e1610a6fe9a9bb41bf4ca6be3dc396003aa87",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "销售",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.33,
+              0.2
+            ],
+            [
+              0.33,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "开过店",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.365,
+              0.2
+            ],
+            [
+              0.635,
+              0.2
+            ],
+            [
+              0.635,
+              0.305
+            ],
+            [
+              0.365,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "客户的了解",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.67,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.305
+            ],
+            [
+              0.67,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "e6106e7ecff09e24a2eae8b5c6458ca3817733d2aa9d91d1318ba272685b48d1",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    },
+    {
+      "sceneId": "P02",
+      "pairId": "P02-B07",
+      "beatId": "B07",
+      "title": "回答整理成内容，必须经过老板核对",
+      "spokenLine": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。",
+      "inputFirstFrameFileName": "P02_B07_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "e0d7fc9ea11fd0d5dc882695b15db7d6f1569ab3e8b6d0c13775e32fa3f85705",
+      "inputFirstFrameTextPlanSha256": "6cabf8112f55f793d051cb297773bbff430592960db5997c8247183a9ba4375a",
+      "durationSeconds": 8,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n0.6至1.7秒：同一叠无字回答纸页从老板回答收集盘移至AI整理槽，整体滑动。\n2至3.1秒：同一叠无字回答纸页从AI整理槽移至老板人工核对台，整体滑动。\n3.4至4.7秒：老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）在老板人工核对台，小角度刚性转动。\n5.1至6.5秒：同一叠无字回答纸页从老板人工核对台移至对外内容展示架，整体滑动。\n先完成“同一叠无字回答纸页从AI整理槽移至老板人工核对台，整体滑动。”，才可开始“老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）在老板人工核对台，小角度刚性转动。”。\n先完成“老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）在老板人工核对台，小角度刚性转动。”，才可开始“同一叠无字回答纸页从老板人工核对台移至对外内容展示架，整体滑动。”。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "73ede03456e15a9355d3ea513d94f7580300609068829b59922ff2eee9f5faea",
+      "pairSha256": "adfeba18641a8a7fdc131e5361c36338c7d7542eac8ab630b878e14b9328ca22",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "回答",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.255,
+              0.2
+            ],
+            [
+              0.255,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "归类",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.29,
+              0.2
+            ],
+            [
+              0.485,
+              0.2
+            ],
+            [
+              0.485,
+              0.305
+            ],
+            [
+              0.29,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "老板核对",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.52,
+              0.2
+            ],
+            [
+              0.715,
+              0.2
+            ],
+            [
+              0.715,
+              0.305
+            ],
+            [
+              0.52,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N4",
+          "text": "讲出去",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.75,
+              0.2
+            ],
+            [
+              0.945,
+              0.2
+            ],
+            [
+              0.945,
+              0.305
+            ],
+            [
+              0.75,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "29755a8903e0b2ac8b20817fcd8716cb352f302d345e2071f6288c2c0aa84152",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    },
+    {
+      "sceneId": "P03",
+      "pairId": "P03-B10",
+      "beatId": "B10",
+      "title": "只有内容，缺产品服务就接不住",
+      "spokenLine": "这既是老板可以尝试的内容做法，也给懂这个行业的人留出了一种服务机会。你帮他把经验讲清楚、持续做成内容，省下他自己摸索和制作的工夫。但他本身没有能交给客户的产品或服务，光发内容也接不住生意。",
+      "inputFirstFrameFileName": "P03_B10_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "06fffb1b4897c2dc1f8f841850ae04ffeb2af004eb3e18dd42b00a502bf16fd7",
+      "inputFirstFrameTextPlanSha256": "8785eec932836cc7ea3ed0d46330264e92d2c96bb704539fc16a253081ac53e8",
+      "durationSeconds": 6,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n0.6至2.4秒：无字内容折页从内容介绍起点移至客户侧等待区，整体滑动。\n2.8至4.5秒：无字客户咨询纸片（不是交付成品）从客户侧等待区移至缺少产品服务的空承台，整体滑动。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "04027c6153899fc29c27a9cf20b184177edb1bcd4c2add587dc371a1c4cb34f7",
+      "pairSha256": "0f55123451b5458a8d081ba018d1026bace85a05800a087ea6ef040da110c51b",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "内容",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.33,
+              0.2
+            ],
+            [
+              0.33,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "产品或服务",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.365,
+              0.2
+            ],
+            [
+              0.635,
+              0.2
+            ],
+            [
+              0.635,
+              0.305
+            ],
+            [
+              0.365,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "客户",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.67,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.305
+            ],
+            [
+              0.67,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "0dd22ea0b85de76fff01155bad2b90e6d5945ab7225337982f007d7d0f2ce722",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    },
+    {
+      "sceneId": "P04",
+      "pairId": "P04-B11",
+      "beatId": "B11",
+      "title": "向外地介绍服务，不是订单自动到来",
+      "spokenLine": "如果你能听懂一个行业的问题，也能把约定的工作做好，就可以试着把这项服务介绍给外地同行。同样需要整理客户问题、制作产品内容的人。",
+      "inputFirstFrameFileName": "P04_B11_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "4bd58aa3a0170798af9d6832f2494a302f4c35d7f19a7541aaf9832201d63dc1",
+      "inputFirstFrameTextPlanSha256": "aef245637a021293fb69a714f2def7ce23ea871675a9e789583588b57beec697",
+      "durationSeconds": 7,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n1至4.8秒：无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）在服务介绍展开区，展开。\n无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）始终留在被允许的位置，与外地同行待沟通桌隔离。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "eb60910770b419ac7ec00514e303c29d2fb2c7dd8214e081e259ef2765d814ed",
+      "pairSha256": "57ebd3f4d74937030311d2ad9679d5b4de172450301b184f7ee60539a52a4646",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "工作做好",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.33,
+              0.2
+            ],
+            [
+              0.33,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "介绍",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.365,
+              0.2
+            ],
+            [
+              0.635,
+              0.2
+            ],
+            [
+              0.635,
+              0.305
+            ],
+            [
+              0.365,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "外地同行",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.67,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.305
+            ],
+            [
+              0.67,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "709abb314ad72024d34116c6eaf0ed7aabf0064665cc16bb95a0d5db49b8ce54",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    },
+    {
+      "sceneId": "P05",
+      "pairId": "P05-B15",
+      "beatId": "B15",
+      "title": "不是零成本，留出继续尝试的余地",
+      "spokenLine": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。",
+      "inputFirstFrameFileName": "P05_B15_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "ef04e8ef0daf2baaaa68986baac928e877a6c133c7b649e74c8907db3dfa9310",
+      "inputFirstFrameTextPlanSha256": "1f87c5e40d7c5e9bfd1bc28fc78b045dc8ad410090418581056ce1975bae89bb",
+      "durationSeconds": 7,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n0.8至2.2秒：朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）在制作成本纸槽，整体滑动。\n2.7至4秒：无字作品折页（中央折轴，展开终态宽0.14高0.14）在继续修改工作台，展开。\n4.4至5.6秒：无字作品折页（中央折轴，展开终态宽0.14高0.14）从继续修改工作台移至下一次尝试承台，整体滑动。\n先完成“朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）在制作成本纸槽，整体滑动。”，才可开始“无字作品折页（中央折轴，展开终态宽0.14高0.14）在继续修改工作台，展开。”。\n先完成“无字作品折页（中央折轴，展开终态宽0.14高0.14）在继续修改工作台，展开。”，才可开始“无字作品折页（中央折轴，展开终态宽0.14高0.14）从继续修改工作台移至下一次尝试承台，整体滑动。”。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "26a2a90837ecfbd03b3d858d922e21262a345310519dc83653695cfd4a8cdc9b",
+      "pairSha256": "63fc45f85c3c0172a6bb350a3552b3cf4fc0aa2b4d250de069039488424f3be7",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "成本",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.33,
+              0.2
+            ],
+            [
+              0.33,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "继续改",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.365,
+              0.2
+            ],
+            [
+              0.635,
+              0.2
+            ],
+            [
+              0.635,
+              0.305
+            ],
+            [
+              0.365,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "多试几次",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.67,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.305
+            ],
+            [
+              0.67,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "c6682141ba082bd62db4007b06aab879726ac3d71702e956397daaa4668a88ff",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    },
+    {
+      "sceneId": "P06",
+      "pairId": "P06-B17",
+      "beatId": "B17",
+      "title": "服务先说清楚范围、协作和交付",
+      "spokenLine": "你得听得懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案。AI给出的内容，也得看得出哪里不符合实际。到了收服务费的时候，还要把做哪些工作、谁配合、交什么东西讲清楚。客户拿到以后用不上，你得能继续查问题。",
+      "inputFirstFrameFileName": "P06_B17_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "6215a75aeebd9064b4c0faed14f4575130c5bef16568bd7e59e5ef1a712d45a0",
+      "inputFirstFrameTextPlanSha256": "2976ce4366c9fb6cb86fce0f5b16266a018cd8e556e53e6edb4f32de4814ef3d",
+      "durationSeconds": 6,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n0.8至2.4秒：无字工作范围卡从工作范围纸盘移至交付约定文件夹，整体滑动。\n2.8至4.2秒：无字配合约定卡从双方协作纸盘移至交付约定文件夹，整体滑动。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "fd532cce87ac756f8bbb3f151e83d0c6e6bc7a52de8fd66945b480eb3e86796f",
+      "pairSha256": "8566f67f59cf91c0292fb7c22f43ed624ceedfebec784e6fae6baf878fd5b3b4",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "做哪些工作",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.255,
+              0.2
+            ],
+            [
+              0.255,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "谁配合",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.29,
+              0.2
+            ],
+            [
+              0.485,
+              0.2
+            ],
+            [
+              0.485,
+              0.305
+            ],
+            [
+              0.29,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "交什么东西",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.52,
+              0.2
+            ],
+            [
+              0.715,
+              0.2
+            ],
+            [
+              0.715,
+              0.305
+            ],
+            [
+              0.52,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N4",
+          "text": "查问题",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.75,
+              0.2
+            ],
+            [
+              0.945,
+              0.2
+            ],
+            [
+              0.945,
+              0.305
+            ],
+            [
+              0.75,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "31316e2334af280e0ca267b85038ec44673f4f4e70a5f49ce31d4c686bfbd0c7",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    }
+  ]
+}
