@@ -4,22 +4,13 @@ import {existsSync, readFileSync, statSync} from 'node:fs';
 import path from 'node:path';
 import {
   JOB_SCHEMA,
-  REVIEW_SCHEMA,
   parseArgs,
   readJson,
   requiredSceneIds,
   sha256File,
+  validateRawVisualReview,
   writeNewJson,
 } from './firstframe-batch-core.mjs';
-
-const criteriaNames = [
-  'semanticMatch',
-  'paperMaterial',
-  'depthAndContact',
-  'cleanTextAndBrand',
-  'compositionAndReadability',
-  'videoReadiness',
-];
 
 try {
   const args = parseArgs(process.argv.slice(2));
@@ -29,6 +20,7 @@ try {
   if (sha256File(job.sourceManifest.path) !== job.sourceManifest.sha256) {
     throw new Error('SOURCE_MANIFEST_SHA_MISMATCH');
   }
+  const sourceManifest = readJson(job.sourceManifest.path);
   if (
     !job.directorValidationReceipt?.path ||
     sha256File(job.directorValidationReceipt.path) !== job.directorValidationReceipt.sha256
@@ -62,12 +54,9 @@ try {
     const reviewPath = scene.result.visualReview?.path ?? path.join(job.output.qaRoot, `${sceneId}.visual-review.v1.json`);
     if (!existsSync(reviewPath)) { errors.push(`VISUAL_REVIEW_MISSING:${sceneId}`); return; }
     const review = readJson(reviewPath);
-    if (review.schemaVersion !== REVIEW_SCHEMA || review.sceneId !== sceneId) errors.push(`VISUAL_REVIEW_SCHEMA_INVALID:${sceneId}`);
-    if (review.imageSha256 !== scene.result.imageSha256) errors.push(`VISUAL_REVIEW_IMAGE_SHA_MISMATCH:${sceneId}`);
-    if (review.status !== 'passed') errors.push(`VISUAL_REVIEW_NOT_PASSED:${sceneId}`);
-    criteriaNames.forEach((name) => {
-      if (review.criteria?.[name] !== 'passed') errors.push(`VISUAL_CRITERION_FAILED:${sceneId}:${name}`);
-    });
+    errors.push(...validateRawVisualReview(scene, review, {
+      sourceScene: sourceManifest.scenes?.find((item) => item.sceneId === sceneId), policy: sourceManifest.policy,
+    }));
     checks.push({sceneId, imagePath, imageSha256: scene.result.imageSha256, reviewPath});
   });
   const receipt = {

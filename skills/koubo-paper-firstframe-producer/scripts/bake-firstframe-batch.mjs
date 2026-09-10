@@ -6,7 +6,6 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {
   JOB_SCHEMA,
-  REVIEW_SCHEMA,
   TEXT_BAKE_CALIBRATION_SCHEMA,
   parseArgs,
   readJson,
@@ -14,6 +13,7 @@ import {
   requiredSceneIds,
   resolveInside,
   sha256File,
+  validateRawVisualReview,
   writeNewJson,
 } from './firstframe-batch-core.mjs';
 
@@ -56,6 +56,7 @@ try {
   if (sha256File(job.sourceManifest.path) !== job.sourceManifest.sha256) {
     throw new Error('SOURCE_MANIFEST_SHA_MISMATCH');
   }
+  const sourceManifest = readJson(job.sourceManifest.path);
 
   const phase = args.phase;
   const sceneIds = requiredSceneIds(job, phase);
@@ -121,14 +122,10 @@ try {
       path.join(job.output.qaRoot, `${sceneId}.visual-review.v1.json`);
     if (!existsSync(reviewPath)) throw new Error(`RAW_VISUAL_REVIEW_MISSING:${sceneId}`);
     const review = readJson(reviewPath);
-    if (
-      review.schemaVersion !== REVIEW_SCHEMA ||
-      review.sceneId !== sceneId ||
-      review.imageSha256 !== scene.result.imageSha256 ||
-      review.status !== 'passed'
-    ) {
-      throw new Error(`RAW_VISUAL_REVIEW_INVALID:${sceneId}`);
-    }
+    const reviewErrors = validateRawVisualReview(scene, review, {
+      sourceScene: sourceManifest.scenes?.find((item) => item.sceneId === sceneId), policy: sourceManifest.policy,
+    });
+    if (reviewErrors.length) throw new Error(`RAW_VISUAL_REVIEW_INVALID:${sceneId}:${reviewErrors.join('|')}`);
 
     const bake = scene.deterministicTextBake;
     if (!bake?.enabled || bake.anchorCalibrationRequired !== true) {

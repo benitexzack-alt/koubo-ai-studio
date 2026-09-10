@@ -114,7 +114,8 @@ try {
       textPlanSha256: motion.inputFirstFrameTextPlanSha256,
       textOcrPassed: true,
       ...(incident ? {motionContractSha256: motion.motionContractSha256, dynamicValidation: motion.dynamicValidation} : {}),
-      allowedMotion: [
+      textLabelMotion: incident ? 'fixed-independent-stands' : 'rigid-surface',
+      allowedMotion: incident ? ['blank-part-contract-actions-only'] : [
         'rigid-slide',
         'rigid-translate',
         'small-angle-rotate',

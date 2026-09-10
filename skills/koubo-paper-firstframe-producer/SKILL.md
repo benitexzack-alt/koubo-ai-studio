@@ -7,6 +7,8 @@ description: 执行口播纸艺导演输出的首帧生图清单：先生成无�
 
 把导演的纸艺分镜变成可供 RunningHub 手动图生视频使用的**准确带字完成态首帧**。模型先生成无字纸艺基础图，本地工具再把导演锁定的中文写到真实纸面上；RunningHub 只负责纸片运动，不负责创造、改写或重绘文字。
 
+当前 `incidentPreventionVersion=1` 的文字牌必须从首帧起固定在独立支架上，只有指定无字部件运动。下文历史刚性带字牌运动说明不适用于该策略；首帧应是动作开始前的初态，不是提前画出终态。
+
 ## 职责边界
 
 - 上游唯一权威是 `koubo-remotion-director` 生成并验证的 `first-frame-prompts.v1.json`。
@@ -33,6 +35,7 @@ description: 执行口播纸艺导演输出的首帧生图清单：先生成无�
 - `deterministicTextBake.anchorCalibrationRequired=true`，RunningHub 清单状态为 `awaiting-text-baked-firstframes`；
 - 同 revision 的导演验证回执存在且 `skillExecuted=true`。
 - V9 清单必须有 `v9ContractEnabled=true`；每镜的 `layoutContract`、哈希、构图宽区、标签预留区和禁装饰策略必须完整一致。执行端不得忽略或自行改写该合同。
+- `policy.physicalContinuityVersion="1"` 的新清单还必须保留每镜 `physicalContract`、`motionContract` 及各自哈希，实际图像复核不得删除或忽略这些字段。
 
 运行：
 
@@ -74,7 +77,8 @@ node skills/koubo-paper-firstframe-producer/scripts/record-firstframe-result.mjs
 - 材质是否像纸张、瓦楞纸、棉线、硫酸纸等，而不是塑料 CGI；
 - 是否出现模型生成的乱码、可读文字、Logo、水印、人手或未要求人物；
 - 静音看图是否能理解该镜核心关系；
-- 是否适合后续按 4—7 步装配，关键物件没有粘连或缺失。
+- 是否符合本镜实际动作合同，关键物件没有粘连或缺失；事故预防版最多4个活动动作，不强凑步骤。
+- 启用实体合同后，按质量合同记录 `physicalObservations`：实际图中的活动件数量、各组占用、空接收位、固定牌和移动通道。计划里的数量、坐标与“净空”说明不能当作实际图像观察。
 
 把逐图视觉结论写入 `first-frame-qa/<sceneId>.visual-review.v1.json`。任何硬项失败，该镜状态为 `revision-required`；不得自动补跑。
 
@@ -88,6 +92,8 @@ node skills/koubo-paper-firstframe-producer/scripts/validate-firstframe-batch.mj
 ```
 
 代表样图通过也只能写 `candidate-stills-awaiting-user-review`。用户看过样图和原图并明确确认后，才能生成剩余图片。失败即停，禁止自动重试；先回到导演布局或提示词修订。
+
+若用户明确要求“整批首帧和画布准备好，最后再确认”，可在代表图实际QA通过后按该授权继续剩余首帧与本地烘焙，不再重复申请中途审美确认。必须记录原话、当前任务和修订范围，用户视觉验收始终为 `pending`，不得伪造“用户看过/已批准图片”。本例外不豁免任何硬失败、写字/OCR检查，也不授权视频提交、付款或自动重试。
 
 ### 4. 剩余图片批量执行
 
@@ -139,6 +145,8 @@ node skills/koubo-paper-firstframe-producer/scripts/bake-firstframe-batch.mjs \
 
 用户确认带字样图后，再对 `--phase full` 执行同样流程。联系表应优先使用带字图，不能拿无字基础图申请 RunningHub 交接。
 
+写字入口与批次验证使用同一逐项视觉门；顶层 `status=passed` 不得掩盖失败或缺失的质量项。启用实体合同的图片缺少实际观察绑定时也不得写字。
+
 ### 6. RunningHub 交接
 
 全部图片完成、无字图 QA、实际纸面标定、确定性写字、OCR 和用户整批确认全部通过后，才运行：
@@ -159,19 +167,32 @@ node skills/koubo-paper-firstframe-producer/scripts/build-runninghub-ready-pack.
 - 对应 RunningHub 动态提示词 SHA-256；
 - 用户验收状态。
 
-带字标签只允许刚性滑入、平移、小角度旋转、抽屉推出和刚性拼图扣合。禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、强运动模糊和重新生成文字；需要“展开”时，只展开无字底板，再让带字纸牌滑入。
+事故预防版的带字标签全程固定，仅无字件按动作合同运动。历史非事故预防版才允许带字标签刚性滑入、平移、小角度旋转、抽屉推出和刚性拼图扣合；始终禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、强运动模糊和重新生成文字。
 
 最终文件夹至少包含首帧清单、全部图片、联系表、生成回执、逐图质检、RunningHub JSON/Markdown 清单和交接包。只有这些齐全，状态才可写 `ready-for-runninghub-manual`。
+
+### 7. 用户最后确认的画布准备模式
+
+用户已明确授权上传首帧和准备画布、但尚未看图或验收动态时，不生成伪造的用户验收回执，不使用可提交的ready pack。全部首帧逐项QA、实际标定、写字、OCR和带字视觉检查通过后，调用：
+
+```bash
+node skills/koubo-paper-firstframe-producer/scripts/build-runninghub-canvas-preparation-pack.mjs \
+  --project-root <口播项目根目录> --job <first-frame-batch.v1.json> \
+  --runninghub-manifest <runninghub-image-to-video-prompts.v1.json> \
+  --authorization <canvas-preparation-authorization.v1.json>
+```
+
+授权结构和实际观察结构见 [references/quality-contract.md](references/quality-contract.md)。输出为独立的 `runninghub-canvas-preparation-pack.v1.json`，只能用于上传、连线和填写；`userAcceptance=pending`、`dynamicValidation=pending`、提交与付费权限为false。它不能满足V9的生成交接或视频验收，不得通过改名冒充ready pack。画布填好后交由用户检查，运行仍需独立授权。
 
 ## 停止条件
 
 - 导演清单、验证回执、提示词哈希或配对关系不一致；
 - 目标目录不在用户指定的口播项目内；
 - 目标图片已存在；
-- 样图有任一硬项失败或用户未确认；
+- 样图有任一硬项失败，或用户未确认且没有明确的整批准备授权；
 - 实际纸面四角未登记、沿用计划坐标或多镜复制同一坐标；
 - 带字首帧不存在、哈希不一致、中文OCR不通过或文字没有落在对应纸面；
-- RunningHub 清单仍为 `awaiting-text-baked-firstframes` 且没有 `runninghub-ready-pack.v1.json`；
+- RunningHub 清单仍为 `awaiting-text-baked-firstframes` 且没有符合本轮动作范围的ready pack或独立画布准备包；画布准备包永远不能用于提交视频；
 - 生图返回不确定、文件损坏、画幅明显不符；
 - 连续一次受控修订仍复现同一硬失败；
 - 需要 RunningHub 上传、付费、重试或其他外部动作但没有单独授权。

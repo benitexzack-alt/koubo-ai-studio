@@ -30,8 +30,24 @@ test('真实compiler到prepare、baker及P01/P02 ready CLI完整离线回归', (
     assert.equal(created.status, 0, created.stderr);
     const raw = {path: scene.outputPath, sha256: sha256File(scene.outputPath)};
     const review = path.join(job.output.qaRoot, `${scene.sceneId}.visual-review.v1.json`);
+    const physical = scene.physicalContract;
+    // Synthetic observations exercise schema transport only. They are never
+    // persisted as a real episode's image or user acceptance evidence.
+    const physicalObservations = physical ? {imageSha256: raw.sha256, physicalContractSha256: scene.physicalContractSha256,
+      inventory: physical.inventory.map((item) => ({partId: item.partId, observedQuantity: item.quantity,
+        observedGroupIds: physical.stations.filter((station) => station.initialPartIds.includes(item.partId)).map((station) => station.groupId),
+        imageBoxes: Array.from({length: item.quantity}, () => [0.1, 0.4, 0.1, 0.1]), notes: '纯结构输送夹具，非真实视觉观察'})),
+      stations: physical.stations.map((station) => ({groupId: station.groupId, observedPartIds: station.initialPartIds,
+        imageBox: [0.1, 0.4, 0.1, 0.1], notes: '纯结构工位夹具'})),
+      transfers: physical.transfers.map((transfer) => ({actionId: transfer.actionId, imageBox: [0.1, 0.4, 0.6, 0.1],
+        checks: {continuousSupport: 'passed', compatibleHeight: 'passed', noBlockingEdges: 'passed', openingFitsPart: 'passed'}, notes: '纯结构路径夹具'})),
+      fixedLabels: scene.deterministicTextBake.labels.map((label) => ({nodeId: label.nodeId,
+        imageBox: [0.1, 0.2, 0.1, 0.1], independentStandObserved: true, notes: '纯结构固定牌夹具'}))} : undefined;
     writeFileSync(review, JSON.stringify({schemaVersion: 'koubo-paper-firstframe-visual-review/v1',
-      sceneId: scene.sceneId, imageSha256: raw.sha256, status: 'passed', fixtureOnly: true}));
+      sceneId: scene.sceneId, imageSha256: raw.sha256, status: 'passed', fixtureOnly: true,
+      criteria: Object.fromEntries(['semanticMatch', 'paperMaterial', 'depthAndContact', 'cleanTextAndBrand',
+        'compositionAndReadability', 'videoReadiness'].map((key) => [key, 'passed'])),
+      notes: '离线合成输入夹具，只验证原生编译及OCR链路，不构成真实首帧视觉通过。', physicalObservations}));
     writeFileSync(scene.deterministicTextBake.calibrationPath, JSON.stringify({
       schemaVersion: 'koubo-paper-firstframe-anchor-calibration/v1', sceneId: scene.sceneId, status: 'passed', sourceImage: raw,
       labels: scene.deterministicTextBake.labels.map((label) => ({nodeId: label.nodeId, anchorQuad: label.anchorQuad, placementChecked: true})),

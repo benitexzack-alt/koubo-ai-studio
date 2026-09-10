@@ -106,6 +106,9 @@ try {
     sceneId: 'P01',
     imageSha256: sha256File(rawImagePath),
     status: 'passed',
+    criteria: Object.fromEntries(['semanticMatch', 'paperMaterial', 'depthAndContact', 'cleanTextAndBrand',
+      'compositionAndReadability', 'videoReadiness'].map((key) => [key, 'passed'])),
+    notes: '离线合成图片夹具，用于验证文字烘焙与OCR，不作真实画面验收。',
   }, null, 2)}\n`);
   const calibrationPath = path.join(calibrationRoot, 'P01.v1.json');
   writeFileSync(calibrationPath, `${JSON.stringify({
@@ -591,3 +594,71 @@ test('独立trial验收索引可闭合不同动作合同，整批不再生成已
   assert.equal(pack.alreadyAcceptedScenes.length, 2);
   assert.equal(pack.paidGenerationAllowed, false);
 });
+
+function canvasFixture(t) {
+  const f = incidentFixture(t);
+  f.job.output.qaRoot = path.dirname(f.file('job.json'));
+  f.job.scenes.forEach((scene) => {
+    scene.result = {imagePath: scene.deterministicTextBake.outputPath,
+      imageSha256: sha256File(scene.deterministicTextBake.outputPath)};
+    f.save(`${scene.sceneId}.visual-review.v1.json`, {schemaVersion: REVIEW_SCHEMA,
+      sceneId: scene.sceneId, imageSha256: scene.result.imageSha256, status: 'passed',
+      criteria: Object.fromEntries(['semanticMatch', 'paperMaterial', 'depthAndContact', 'cleanTextAndBrand',
+        'compositionAndReadability', 'videoReadiness'].map((key) => [key, 'passed'])),
+      notes: '离线哈希夹具，不是实际用户或视觉验收。'});
+    f.save(`${scene.sceneId}.text-baked-visual-review.v1.json`, {
+      schemaVersion: 'koubo-paper-text-baked-visual-review/v1', sceneId: scene.sceneId,
+      imageSha256: scene.result.imageSha256, status: 'passed',
+      criteria: Object.fromEntries(['actualSurfaceCalibration', 'exactChineseText', 'paperSurfacePlacement',
+        'noExtraText', 'rigidMotionReady'].map((key) => [key, 'passed'])), notes: '离线成品观察夹具'});
+  });
+  const authorization = {schemaVersion: 'koubo-canvas-preparation-authorization/v1',
+    status: 'authorized-for-canvas-preparation', taskId: f.job.taskId, requestId: f.job.requestId,
+    revisionId: f.job.revisionId, sourceManifest: f.job.sourceManifest,
+    sceneIds: f.job.scenes.map((scene) => scene.sceneId), userAcceptance: 'pending',
+    uploadAllowed: true, canvasConfigurationAllowed: true, submissionAllowed: false, paidGenerationAllowed: false,
+    userQuote: '测试夹具：准备画布，生成前等我，不构成真实授权', recordedAt: '2026-09-10T12:00:00+08:00'};
+  const runCanvas = () => {
+    const motion = f.save('motion.json', f.manifest);
+    f.job.directorValidationReceipt = f.save('director-validation.json', {
+      skillExecuted: true, validatorExecuted: true, status: 'validated-provisional-previsualization', revisionId: f.job.revisionId,
+      artifacts: {firstFramePromptManifest: f.job.sourceManifest, runningHubPromptManifest: motion}});
+    f.job.textBakeReceipts = [{phase: 'full', receipt: f.save('bake-receipt.json', f.receipt)}];
+    f.save('job.json', f.job); f.save('authorization.json', authorization);
+    const script = path.resolve(path.dirname(readyPackScript), 'build-runninghub-canvas-preparation-pack.mjs');
+    const result = run(script, ['--project-root', path.dirname(f.file('job.json')), '--job', f.file('job.json'),
+      '--runninghub-manifest', f.file('motion.json'), '--authorization', f.file('authorization.json')]);
+    return {result, pack: result.status === 0 ? JSON.parse(readFileSync(JSON.parse(result.stdout).outputPath)) : null};
+  };
+  return {...f, authorization, runCanvas};
+}
+
+test('仅准备画布包不要求提前伪造用户看图或动态验收，且不具备生成权限', (t) => {
+  const f = canvasFixture(t), {result, pack} = f.runCanvas();
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(pack.schemaVersion, 'koubo-runninghub-canvas-preparation-pack/v1');
+  assert.equal(pack.sceneCount, 2);
+  assert.equal(pack.scenes.every((scene) => scene.aspectRatio === '16:9'), true);
+  assert.equal(pack.userAcceptance, 'pending');
+  assert.equal(pack.scenes.every((scene) => scene.dynamicValidation === 'pending' && scene.submissionAllowed === false), true);
+  for (const key of ['taskSubmitted', 'videoGenerated', 'codexSubmissionAllowed', 'paidGenerationAllowed', 'formalEnabled', 'publicationEnabled']) {
+    assert.equal(pack[key], false);
+  }
+});
+for (const [name, mutate, expected] of [
+  ['没有上传授权', (f) => {f.authorization.uploadAllowed = false;}, 'AUTHORIZATION_INVALID'],
+  ['扩大成付费授权', (f) => {f.authorization.paidGenerationAllowed = true;}, 'AUTHORIZATION_INVALID'],
+  ['伪造用户已验收', (f) => {f.authorization.userAcceptance = 'approved';}, 'AUTHORIZATION_INVALID'],
+  ['授权旧修订', (f) => {f.authorization.revisionId = 'old';}, 'AUTHORIZATION_INVALID'],
+  ['缺少原图逐项QA', (f) => {f.save('P01.visual-review.v1.json', {status: 'passed'});}, 'RAW_REVIEW_INVALID'],
+  ['最终文字不在纸面', (f) => {
+    const p = f.file('P01.text-baked-visual-review.v1.json'); const r = JSON.parse(readFileSync(p));
+    r.criteria.paperSurfacePlacement = 'failed'; f.save('P01.text-baked-visual-review.v1.json', r);
+  }, 'FINAL_REVIEW_INVALID'],
+  ['OCR空识别', (f) => {f.receipt.scenes[0].ocr[0].recognized = '';}, 'OCR_EVIDENCE_INVALID'],
+]) {
+  test(`画布准备拒绝${name}`, (t) => {
+    const f = canvasFixture(t); mutate(f); const {result, pack} = f.runCanvas();
+    assert.notEqual(result.status, 0); assert.ok(result.stderr.includes(expected), result.stderr); assert.equal(pack, null);
+  });
+}

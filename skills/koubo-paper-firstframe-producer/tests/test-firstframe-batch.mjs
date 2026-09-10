@@ -111,6 +111,20 @@ const v9LayoutDrift = structuredClone(v9Manifest);
 v9LayoutDrift.scenes[0].layoutContract.objectGroupBoxes[0].box.x = 0.2;
 assert.ok(validateManifest(v9LayoutDrift).includes('V9_LAYOUT_CONTRACT_SHA_MISMATCH:P01'));
 
+// This is a transport/binding fixture, not proof of physical geometry or actual media.
+v9Manifest.policy = {physicalContinuityVersion: '1'};
+v9Manifest.scenes[0].physicalContract = {schemaVersion: 'koubo-paper-physical-contract/v1', inventory: [], stations: [], transfers: []};
+v9Manifest.scenes[0].physicalContractSha256 = sha256Json(v9Manifest.scenes[0].physicalContract);
+v9Manifest.scenes[0].motionContract = {physicalContract: structuredClone(v9Manifest.scenes[0].physicalContract)};
+v9Manifest.scenes[0].motionContractSha256 = sha256Json(v9Manifest.scenes[0].motionContract);
+assert.deepEqual(validateManifest(v9Manifest), []);
+const removedPhysical = structuredClone(v9Manifest);
+delete removedPhysical.scenes[0].physicalContract;
+assert.ok(validateManifest(removedPhysical).includes('PHYSICAL_CONTRACT_BINDING_INVALID:P01'));
+const changedPhysical = structuredClone(v9Manifest);
+changedPhysical.scenes[0].physicalContract.inventory.push({partId: 'extra'});
+assert.ok(validateManifest(changedPhysical).includes('PHYSICAL_CONTRACT_BINDING_INVALID:P01'));
+
 const temporaryRoot = mkdtempSync(path.join(os.tmpdir(), 'firstframe-test-'));
 try {
   const filePath = path.join(temporaryRoot, 'manifest.json');
@@ -121,6 +135,7 @@ try {
     status: 'validated-provisional-previsualization',
     skillExecuted: true,
     validatorExecuted: true,
+    policy: {physicalContinuityVersion: '1'},
     artifacts: {firstFramePromptManifest: {sha256: sha256File(filePath)}},
   }, null, 2)}\n`);
   const prepareScriptPath = path.resolve(
@@ -145,6 +160,10 @@ try {
   assert.equal(job.samplePolicy, 'one-representative-scene');
   assert.deepEqual(job.sampleSceneIds, ['P01']);
   assert.deepEqual(job.scenes[0].layoutContract, v9Manifest.scenes[0].layoutContract);
+  assert.deepEqual(job.scenes[0].physicalContract, v9Manifest.scenes[0].physicalContract);
+  assert.equal(job.scenes[0].physicalContractSha256, v9Manifest.scenes[0].physicalContractSha256);
+  assert.deepEqual(job.scenes[0].motionContract, v9Manifest.scenes[0].motionContract);
+  assert.equal(job.scenes[0].motionContractSha256, v9Manifest.scenes[0].motionContractSha256);
   assert.equal(
     job.scenes[0].layoutContractSha256,
     v9Manifest.scenes[0].layoutContractSha256,

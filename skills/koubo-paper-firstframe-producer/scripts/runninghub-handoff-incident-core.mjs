@@ -71,7 +71,24 @@ function checkApprovalAssets({acceptance, assets, projectRoot}) {
   return expected;
 }
 
-export function validateIncidentHandoff({projectRoot, job, manifest, receipt, acceptance, scope, dynamicAcceptancePath, sceneId: requestedSceneId}) {
+export function validateIncidentHandoff({projectRoot, job, manifest, receipt, acceptance, scope, dynamicAcceptancePath, sceneId: requestedSceneId, preparationAuthorization}) {
+  const preparationOnly = scope === 'canvas-preparation';
+  if (preparationOnly) {
+    requireThat(!acceptance && !dynamicAcceptancePath && !requestedSceneId,
+      'CANVAS_PREPARATION_MUST_NOT_CLAIM_ACCEPTANCE');
+    requireThat(preparationAuthorization?.schemaVersion === 'koubo-canvas-preparation-authorization/v1' &&
+      preparationAuthorization.status === 'authorized-for-canvas-preparation' &&
+      preparationAuthorization.taskId === job.taskId && preparationAuthorization.requestId === job.requestId &&
+      preparationAuthorization.revisionId === job.revisionId &&
+      preparationAuthorization.sourceManifest?.path === job.sourceManifest?.path &&
+      preparationAuthorization.sourceManifest?.sha256 === job.sourceManifest?.sha256 &&
+      sha256Json(preparationAuthorization.sceneIds) === sha256Json(job.scenes.map((scene) => scene.sceneId)) &&
+      preparationAuthorization.uploadAllowed === true && preparationAuthorization.canvasConfigurationAllowed === true &&
+      preparationAuthorization.submissionAllowed === false && preparationAuthorization.paidGenerationAllowed === false &&
+      preparationAuthorization.userAcceptance === 'pending' && isText(preparationAuthorization.userQuote) &&
+      isText(preparationAuthorization.recordedAt) && Number.isFinite(Date.parse(preparationAuthorization.recordedAt)),
+    'CANVAS_PREPARATION_AUTHORIZATION_INVALID');
+  }
   // Read the upstream policy before choosing compatibility mode. Removing the job flag cannot downgrade it.
   const sourcePlan = receipt.sourcePlan ? readBound(projectRoot, receipt.sourcePlan, 'SOURCE_PLAN') : null;
   const firstFrames = job.sourceManifest ? readBound(projectRoot, job.sourceManifest, 'SOURCE_MANIFEST') : null;
@@ -90,15 +107,15 @@ export function validateIncidentHandoff({projectRoot, job, manifest, receipt, ac
     firstFrames.schemaVersion === 'koubo-paper-first-frame-prompt-manifest/v1' &&
     manifest.schemaVersion === 'koubo-runninghub-image-to-video-prompt-manifest/v1', 'RUNNINGHUB_SOURCE_SCHEMA_INVALID');
   requireThat(/^[a-f0-9]{64}$/.test(sourcePlan.provenance?.scriptSha256 ?? ''), 'RUNNINGHUB_SOURCE_SCRIPT_SHA_REQUIRED');
-  requireThat(['batch', 'first-trial'].includes(scope), 'RUNNINGHUB_HANDOFF_SCOPE_INVALID');
+  requireThat(['batch', 'first-trial', 'canvas-preparation'].includes(scope), 'RUNNINGHUB_HANDOFF_SCOPE_INVALID');
   requireThat(isText(job.taskId) && isText(job.requestId) && isText(job.revisionId) &&
     sourcePlan.taskId === job.taskId && sourcePlan.requestId === job.requestId &&
     sourcePlan.revisionId === job.revisionId && receipt.taskId === job.taskId &&
-    acceptance.revisionId === job.revisionId &&
+    (preparationOnly ? preparationAuthorization : acceptance)?.revisionId === job.revisionId &&
     [firstFrames, manifest].every((item) => item.taskId === job.taskId && item.requestId === job.requestId && item.revisionId === job.revisionId),
   'RUNNINGHUB_SOURCE_IDENTITY_INVALID');
   requireThat(firstFrames.status === 'automation-input-ready', 'RUNNINGHUB_FIRSTFRAME_MANIFEST_INVALID');
-  for (const value of [job, sourcePlan, firstFrames, manifest, receipt, acceptance]) rejectFailure(value);
+  for (const value of [job, sourcePlan, firstFrames, manifest, receipt, acceptance, preparationAuthorization]) rejectFailure(value);
   const planSha = sha256Json(sourcePlan);
   requireThat(firstFrames.sourcePlanCanonicalSha256 === planSha && manifest.sourcePlanCanonicalSha256 === planSha,
     'RUNNINGHUB_SOURCE_PLAN_CANONICAL_SHA_MISMATCH');
@@ -246,7 +263,8 @@ export function validateIncidentHandoff({projectRoot, job, manifest, receipt, ac
   }
   if (scope === 'batch') selectedIds = selectedIds.filter((sceneId) => !alreadyAccepted.has(sceneId));
   const selectedAssets = assets.filter((asset) => selectedIds.includes(asset.sceneId));
-  const assetSetSha256 = selectedAssets.length ? checkApprovalAssets({acceptance, assets: selectedAssets, projectRoot}) : sha256Json([]);
+  const assetSetSha256 = preparationOnly ? sha256Json(selectedAssets)
+    : selectedAssets.length ? checkApprovalAssets({acceptance, assets: selectedAssets, projectRoot}) : sha256Json([]);
   return {selectedIds, assets: selectedAssets, metadata: {
     policy: {incidentPreventionVersion: '1'}, revisionId: job.revisionId, handoffScope: scope,
     sourcePlan: receipt.sourcePlan, sourcePlanCanonicalSha256: planSha, assetSetSha256,

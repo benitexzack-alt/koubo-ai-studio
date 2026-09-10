@@ -26,6 +26,8 @@ description: 把口播项目的多张首帧与对应图生视频提示词批量�
 
 每镜必须包含唯一 `sceneId`、`pairId`、图片文件名、提示词、提示词 SHA-256、时长和画幅。图片必须存在、哈希一致并已通过逐图质量检查。
 
+当用户要求“全部放好，最后再确认”，可接收首帧生产Skill签发的 `runninghub-canvas-preparation-pack.v1.json`（schema=`koubo-runninghub-canvas-preparation-pack/v1`）。它必须绑定本轮明确的上传/配置授权、真实原图与带字QA及完整OCR；用户看图和动态验收均保留pending。只能上传和配置，不能提交、付款、升级V9生产状态或冒充ready pack。任何失败图片不得以准备模式绕过质量门。
+
 ## 执行模式
 
 ### 仅准备

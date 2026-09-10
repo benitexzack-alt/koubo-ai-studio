@@ -12,6 +12,89 @@ export const TEXT_BAKE_RECEIPT_SCHEMA =
 export const RUNNINGHUB_READY_PACK_SCHEMA =
   'koubo-paper-runninghub-ready-pack/v1';
 
+export const RAW_VISUAL_CRITERIA = [
+  'semanticMatch', 'paperMaterial', 'depthAndContact', 'cleanTextAndBrand',
+  'compositionAndReadability', 'videoReadiness',
+];
+
+// A status flag must not hide failed or missing individual checks. Both the
+// batch validator and the writer call this same gate before using an image.
+export function validateRawVisualReview(scene, review, {sourceScene, policy} = {}) {
+  const errors = [];
+  const id = scene.sceneId;
+  if (review?.schemaVersion !== REVIEW_SCHEMA || review.sceneId !== id) {
+    errors.push(`VISUAL_REVIEW_SCHEMA_INVALID:${id}`);
+  }
+  if (review?.imageSha256 !== scene.result?.imageSha256) {
+    errors.push(`VISUAL_REVIEW_IMAGE_SHA_MISMATCH:${id}`);
+  }
+  if (review?.status !== 'passed') errors.push(`VISUAL_REVIEW_NOT_PASSED:${id}`);
+  for (const name of RAW_VISUAL_CRITERIA) {
+    if (review?.criteria?.[name] !== 'passed') {
+      errors.push(`VISUAL_CRITERION_FAILED:${id}:${name}`);
+    }
+  }
+  if (typeof review?.notes !== 'string' || !review.notes.trim()) {
+    errors.push(`VISUAL_OBSERVATIONS_MISSING:${id}`);
+  }
+  if (scene.physicalContract || scene.physicalContractSha256) {
+    errors.push(...validatePhysicalObservations(scene, review));
+  }
+  if (sourceScene?.physicalContract || policy?.physicalContinuityVersion === '1') {
+    if (!sourceScene?.physicalContract || !scene.physicalContract ||
+      sha256Json(sourceScene.physicalContract) !== scene.physicalContractSha256 ||
+      sourceScene.physicalContractSha256 !== scene.physicalContractSha256) {
+      errors.push(`PHYSICAL_SOURCE_BINDING_INVALID:${id}`);
+    }
+  }
+  return errors;
+}
+
+export function validatePhysicalObservations(scene, review) {
+  const errors = [], id = scene.sceneId, contract = scene.physicalContract;
+  const observation = review?.physicalObservations;
+  const check = (value, code) => { if (!value) errors.push(`${code}:${id}`); };
+  const text = (value) => typeof value === 'string' && value.trim().length > 0;
+  const box = (value) => Array.isArray(value) && value.length === 4 && value.every(Number.isFinite) &&
+    value[0] >= 0 && value[1] >= 0 && value[2] > 0 && value[3] > 0 &&
+    value[0] + value[2] <= 1.000001 && value[1] + value[3] <= 1.000001;
+  const sameSet = (a, b) => Array.isArray(a) && Array.isArray(b) &&
+    new Set(a).size === a.length && a.length === b.length && a.every((key) => b.includes(key));
+  check(contract?.schemaVersion === 'koubo-paper-physical-contract/v1' &&
+    sha256Json(contract) === scene.physicalContractSha256, 'PHYSICAL_CONTRACT_BINDING_INVALID');
+  check(observation?.imageSha256 === scene.result?.imageSha256 &&
+    observation?.physicalContractSha256 === scene.physicalContractSha256, 'PHYSICAL_OBSERVATION_BINDING_INVALID');
+  if (!contract || !observation) return errors;
+  const expectedInventory = contract.inventory ?? [], actualInventory = observation.inventory ?? [];
+  check(sameSet(actualInventory.map((row) => row.partId), expectedInventory.map((row) => row.partId)), 'PHYSICAL_INVENTORY_COVERAGE_INVALID');
+  for (const expected of expectedInventory) {
+    const actual = actualInventory.find((row) => row.partId === expected.partId);
+    const initialGroups = (contract.stations ?? []).filter((station) => station.initialPartIds.includes(expected.partId)).map((station) => station.groupId);
+    check(actual?.observedQuantity === expected.quantity &&
+      sameSet(actual?.observedGroupIds, initialGroups) && actual?.imageBoxes?.length === expected.quantity &&
+      actual.imageBoxes.every(box) && text(actual?.notes), `PHYSICAL_INVENTORY_MISMATCH:${expected.partId}`);
+  }
+  const stations = observation.stations ?? [];
+  check(sameSet(stations.map((row) => row.groupId), (contract.stations ?? []).map((row) => row.groupId)), 'PHYSICAL_STATION_COVERAGE_INVALID');
+  for (const expected of contract.stations ?? []) {
+    const actual = stations.find((row) => row.groupId === expected.groupId);
+    check(sameSet(actual?.observedPartIds, expected.initialPartIds) && box(actual?.imageBox) && text(actual?.notes),
+      `PHYSICAL_STATION_OCCUPANCY_MISMATCH:${expected.groupId}`);
+  }
+  const transfers = observation.transfers ?? [];
+  check(sameSet(transfers.map((row) => row.actionId), (contract.transfers ?? []).map((row) => row.actionId)), 'PHYSICAL_ROUTE_COVERAGE_INVALID');
+  for (const expected of contract.transfers ?? []) {
+    const actual = transfers.find((row) => row.actionId === expected.actionId);
+    check(box(actual?.imageBox) && text(actual?.notes) &&
+      ['continuousSupport', 'compatibleHeight', 'noBlockingEdges', 'openingFitsPart'].every((key) => actual?.checks?.[key] === 'passed'),
+    `PHYSICAL_ROUTE_NOT_PASSED:${expected.actionId}`);
+  }
+  const labels = observation.fixedLabels ?? [];
+  check(sameSet(labels.map((row) => row.nodeId), (scene.deterministicTextBake?.labels ?? []).map((row) => row.nodeId)) &&
+    labels.every((row) => box(row.imageBox) && row.independentStandObserved === true && text(row.notes)), 'PHYSICAL_FIXED_LABELS_INVALID');
+  return errors;
+}
+
 export const sha256Buffer = (buffer) =>
   createHash('sha256').update(buffer).digest('hex');
 export const sha256File = (filePath) => sha256Buffer(readFileSync(filePath));
@@ -85,6 +168,9 @@ export function validateManifest(manifest) {
     if (manifest.policy.incidentPreventionVersion !== '1') errors.push('INCIDENT_POLICY_VERSION_INVALID');
     if (typeof manifest.revisionId !== 'string' || !manifest.revisionId.trim()) errors.push('INCIDENT_REVISION_ID_REQUIRED');
   }
+  if (manifest.policy?.physicalContinuityVersion !== undefined && manifest.policy.physicalContinuityVersion !== '1') {
+    errors.push('PHYSICAL_POLICY_VERSION_INVALID');
+  }
   if (manifest.schemaVersion !== MANIFEST_SCHEMA) errors.push('MANIFEST_SCHEMA_INVALID');
   if (manifest.status !== 'automation-input-ready') errors.push('MANIFEST_STATUS_INVALID');
   if (manifest.consumer !== 'first-frame-image-automation') errors.push('MANIFEST_CONSUMER_INVALID');
@@ -102,6 +188,14 @@ export function validateManifest(manifest) {
   const v9ContractEnabled = manifest.v9ContractEnabled === true;
   manifest.scenes.forEach((scene, index) => {
     const suffix = scene.sceneId || String(index);
+    if (manifest.policy?.physicalContinuityVersion === '1' || scene.physicalContract) {
+      if (scene.physicalContract?.schemaVersion !== 'koubo-paper-physical-contract/v1' ||
+        sha256Json(scene.physicalContract) !== scene.physicalContractSha256 ||
+        !scene.motionContract?.physicalContract || sha256Json(scene.motionContract) !== scene.motionContractSha256 ||
+        sha256Json(scene.motionContract.physicalContract) !== scene.physicalContractSha256) {
+        errors.push(`PHYSICAL_CONTRACT_BINDING_INVALID:${suffix}`);
+      }
+    }
     if (!/^P\d{2,}$/.test(scene.sceneId ?? '')) errors.push(`SCENE_ID_INVALID:${suffix}`);
     if (sceneIds.has(scene.sceneId)) errors.push(`SCENE_ID_DUPLICATE:${suffix}`);
     sceneIds.add(scene.sceneId);

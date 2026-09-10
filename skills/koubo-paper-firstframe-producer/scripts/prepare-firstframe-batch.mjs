@@ -25,6 +25,9 @@ try {
   const manifest = readJson(manifestPath);
   const directorReceipt = readJson(directorReceiptPath);
   const errors = validateManifest(manifest);
+  if (manifest.policy?.physicalContinuityVersion === '1' && directorReceipt.policy?.physicalContinuityVersion !== '1') {
+    errors.push('DIRECTOR_PHYSICAL_POLICY_MISMATCH');
+  }
   if (manifest.policy?.incidentPreventionVersion === '1' &&
     (directorReceipt.policy?.incidentPreventionVersion !== '1' || directorReceipt.revisionId !== manifest.revisionId)) {
     errors.push('DIRECTOR_INCIDENT_IDENTITY_MISMATCH');
@@ -112,6 +115,12 @@ try {
         : {}),
       selectedForSample: sampleSceneIds.includes(scene.sceneId),
       result: null,
+      ...(scene.physicalContract ? {
+        physicalContract: scene.physicalContract,
+        physicalContractSha256: scene.physicalContractSha256,
+        motionContract: scene.motionContract,
+        motionContractSha256: scene.motionContractSha256,
+      } : {}),
     })),
     events: [{type: 'batch-prepared', at: new Date().toISOString()}],
   };
