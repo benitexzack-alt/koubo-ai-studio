@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "koubo-firstframe-production-stop/v1",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "requestId": "20260910-lanzhou-industry-ai-paper-v9.1-r2-pre-shoot",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r2",
+  "status": "blocked-awaiting-repair-method-choice",
+  "recordedAt": "2026-09-10T13:07:07.396Z",
+  "reason": "P02横向输送物理连续性在r1与修订r2两次真实生成后均未通过；停止第三次同类全文提示词重试。",
+  "sourceManifest": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-prompts.v1.json",
+    "sha256": "50e1a63b6dd48c56f48e80c7c9a4f145bb6c7ce3855afe1914a2f9d26b5e2e66"
+  },
+  "planValidation": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/validation-receipt.v1.json",
+    "sha256": "a2b5cef09f5183950acab27891bdd9762f6695f09f0b56f04f80be4c67619ef1",
+    "scope": "计划合同校验通过，不等于真实图片或视频通过"
+  },
+  "regression": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/regression-receipt.v2.json",
+    "sha256": "9bafb4aede325cc5a157fce46cee740eb8c4c967e123555781cddf2d66edb969",
+    "tests": 143,
+    "passed": 143,
+    "scope": "本地代码及合成夹具，不是本条实际图片验收"
+  },
+  "attempts": [
+    {
+      "revision": "r1",
+      "sceneId": "P02",
+      "imagePath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/first-frames/P02_B07_first-frame.png",
+      "imageSha256": "e65a37f9b05ad74e6ca6739f3e2cececd66fd6b8afe0d4b71692750b90b8850f",
+      "actualGenerationCalls": 1,
+      "status": "failed",
+      "findings": [
+        "重复纸叠",
+        "初态展示不为空",
+        "横向净空与槽壁冲突"
+      ]
+    },
+    {
+      "revision": "r2",
+      "sceneId": "P02",
+      "imagePath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames/P02_B07_first-frame.png",
+      "imageSha256": "11409539b2898e34feaa61c2e15c645a35d495a77925eb1d7138533454cc58bd",
+      "actualGenerationCalls": 1,
+      "status": "failed",
+      "findings": [
+        "P1-P02-BLOCKED-HORIZONTAL-ROUTE",
+        "P1-P02-N3-OCCLUDED",
+        "P1-P02-CONTENT-SAFE-RECT"
+      ],
+      "executionPrompt": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/P02.execution-prompt.txt",
+        "sha256": "27cda2ce052fe4919416f8e1992896967ceb40602d8604306487e01b8e40837b"
+      }
+    }
+  ],
+  "qa": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/P02.visual-review.v1.json",
+    "sha256": "2d6b201695dbad1cd247ba4bcf28f60f9f9b1be4a304ef852babf85910f9d80d"
+  },
+  "sampleValidation": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/sample-validation-receipt.v2.json",
+    "sha256": "1ab867059029926bff53b1f7511361bc462ddb3dcf8234ac0da3ca93227750b6",
+    "note": "v2仅重绑已改为revision-required的批次状态，不是再次生图或修图；v1原件保留。",
+    "exitCode": 2,
+    "status": "revision-required"
+  },
+  "contactSheet": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/sample-contact-sheet.jpg",
+    "sha256": "a4adca8fe94276be31def00ff51256ed914d3b374681a033351ea6b1d9d14a4a",
+    "sceneIds": [
+      "P02"
+    ],
+    "scope": "仅r2一张失败样图，不是全批联系表"
+  },
+  "sceneStatuses": [
+    {
+      "sceneId": "P01",
+      "status": "not-generated"
+    },
+    {
+      "sceneId": "P02",
+      "status": "failed-raw-visual-qa"
+    },
+    {
+      "sceneId": "P03",
+      "status": "not-generated"
+    },
+    {
+      "sceneId": "P04",
+      "status": "not-generated"
+    },
+    {
+      "sceneId": "P05",
+      "status": "not-generated"
+    },
+    {
+      "sceneId": "P06",
+      "status": "not-generated"
+    }
+  ],
+  "counts": {
+    "planned": 6,
+    "rawGeneratedInR2": 1,
+    "passedRawInR2": 0,
+    "textBaked": 0,
+    "ocrPerformed": 0,
+    "uploaded": 0,
+    "newCanvasNodes": 0,
+    "videoSubmissions": 0,
+    "videoOutputs": 0,
+    "paymentActions": 0
+  },
+  "scope": {
+    "sourceImageAndSignedPlanPreserved": true,
+    "userImageAcceptance": "pending",
+    "dynamicAcceptance": "not-started",
+    "runninghubCanvasPreparation": "blocked",
+    "automaticRetryAllowed": false,
+    "automaticSubmissionAllowed": false
+  },
+  "issues": [
+    {
+      "id": "P1-P02-BLOCKED-HORIZONTAL-ROUTE",
+      "severity": "P1",
+      "status": "confirmed",
+      "observation": "四个有侧壁托盘和站间低处间隔阻断A1/A2/A4直线同高输送。",
+      "expected": "平齐、连续、有真实承托且无挡边的开放通道。"
+    },
+    {
+      "id": "P1-P02-N3-OCCLUDED",
+      "severity": "P1",
+      "status": "confirmed",
+      "observation": "老板头部遮住第三张固定标签牌的下方中央。",
+      "expected": "老板核对四字的纸面完整可见，不能靠遮字或浮层补偿。"
+    },
+    {
+      "id": "P1-P02-CONTENT-SAFE-RECT",
+      "severity": "P1",
+      "status": "confirmed",
+      "observation": "G1托盘左缘约x=20，G4托盘右缘约x=1647；合同横向安全区约x=67至1605。",
+      "expected": "完整语义物件落入横向内容安全区。"
+    }
+  ],
+  "repairOptionsPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/两次实测失败与修复选项.v1.md"
+}

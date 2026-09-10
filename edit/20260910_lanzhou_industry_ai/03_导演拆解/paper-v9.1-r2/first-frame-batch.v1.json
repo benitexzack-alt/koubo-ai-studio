@@ -1,0 +1,3643 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-batch/v1",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "requestId": "20260910-lanzhou-industry-ai-paper-v9.1-r2-pre-shoot",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r2",
+  "policy": {
+    "incidentPreventionVersion": "1",
+    "physicalContinuityVersion": "1"
+  },
+  "status": "revision-required",
+  "generationMode": "image_gen-one-call-per-scene",
+  "maximumConcurrency": 2,
+  "automaticRetryAllowed": false,
+  "samplePolicy": "one-representative-scene",
+  "generatedReadableTextAllowed": false,
+  "sourceManifest": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-prompts.v1.json",
+    "sha256": "50e1a63b6dd48c56f48e80c7c9a4f145bb6c7ce3855afe1914a2f9d26b5e2e66"
+  },
+  "directorValidationReceipt": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/validation-receipt.v1.json",
+    "sha256": "a2b5cef09f5183950acab27891bdd9762f6695f09f0b56f04f80be4c67619ef1"
+  },
+  "output": {
+    "handoffRoot": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2",
+    "imageRoot": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames",
+    "bakedImageRoot": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/text-baked-first-frames",
+    "qaRoot": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa",
+    "calibrationRoot": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/anchor-calibrations"
+  },
+  "sampleSceneIds": [
+    "P02"
+  ],
+  "fullBatchAuthorized": false,
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "pairId": "P01-B04",
+      "pairSha256": "9c6e21440fbc722cb219eceb38551afd92e2f9e522154ee3e0df8f5ce9b5a664",
+      "beatId": "B04",
+      "title": "经验留下来，客户了解用起来",
+      "aspectRatio": "16:9",
+      "outputFileName": "P01_B04_first-frame.png",
+      "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames/P01_B04_first-frame.png",
+      "firstFramePrompt": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为销售经历档案架，材料为暖白厚纸页立架，前景纸页边缘遮住后方棉线；所有立架退到上半部，前方两条滑道横贯三组，不穿过纸盒；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为门店经验纸盒，材料为浅灰纤维纸盒，盒内少量无字经验纸页；纸盒位于滑道后方，连续通道内没有挡板；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为客户了解汇集台，材料为深蓝低台和暖黄承接凹槽，背后是高低错落的实心纸层；凹槽入口与前方两条滑道同高；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n来自销售经历的无字经验纸片（sales）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n来自开店经历的无字经验纸片（store）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n销售经历档案架（G1）初态活动件仅有：来自销售经历的无字经验纸片（sales）；保留固定字牌与布景。\n门店经验纸盒（G2）初态活动件仅有：来自开店经历的无字经验纸片（store）；保留固定字牌与布景。\n客户了解汇集台（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A1：来自销售经历的无字经验纸片（sales）从销售经历档案架（G1）对接点A1-from（100,100）至客户了解汇集台（G3）对接点A1-to（400,100），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[78,422]、纵向[88,112]、高度[20,25]毫米；支承面A1-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：来自开店经历的无字经验纸片（store）从门店经验纸盒（G2）对接点A2-from（250,150）至客户了解汇集台（G3）对接点A2-to（400,150），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[228,422]、纵向[138,162]、高度[20,25]毫米；支承面A2-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n来自销售经历的无字经验纸片初始位于销售经历档案架。\n来自开店经历的无字经验纸片初始位于门店经验纸盒。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。\n\nV9布局合同：以下坐标均为0到1归一化坐标，原点在画面左上角。\n内容安全区：x=0.0400, y=0.1200, width=0.9200, height=0.6400。所有物件组和纸面标签必须完整位于该区域内。\n字幕保留区：x=0.0400, y=0.8100, width=0.9200, height=0.1700。任何物件、标签、影子或装饰不得进入该区域。\n物件组构图宽区：G1[x=0.0550, y=0.1700, width=0.2800, height=0.5400]；G2[x=0.3600, y=0.1700, width=0.2800, height=0.5400]；G3[x=0.6650, y=0.1700, width=0.2800, height=0.5400]。这些是宽区指导，物件在各自区域内自然排布，不要求逐像素贴合矩形边缘。\n纸面标签预留区：N1/G1/G1-rigid-label-card[x=0.0600, y=0.2000, width=0.2700, height=0.1050]；N2/G2/G2-rigid-label-card[x=0.3650, y=0.2000, width=0.2700, height=0.1050]；N3/G3/G3-rigid-label-card[x=0.6700, y=0.2000, width=0.2700, height=0.1050]。标签纸完整落在对应预留区内，不要求逐像素贴合矩形边缘。\n构图安全约束与机构物理约束同时生效：主体完整入画、标签不串组、不侵入字幕区；不得为迁就构图省略物件数量、初态空位、承托同高和通道净空。存在冲突应停止生成并修订，不得挤压、裁切或凭空改变机构。\ngeneratedDecorationPolicy=forbidden：禁止生成任何未在物件组中声明的植物、云朵、圆点、摆件或背景装饰。\n\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n来自销售经历的无字经验纸片（sales）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n来自开店经历的无字经验纸片（store）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n销售经历档案架（G1）初态活动件仅有：来自销售经历的无字经验纸片（sales）；保留固定字牌与布景。\n门店经验纸盒（G2）初态活动件仅有：来自开店经历的无字经验纸片（store）；保留固定字牌与布景。\n客户了解汇集台（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A1：来自销售经历的无字经验纸片（sales）从销售经历档案架（G1）对接点A1-from（100,100）至客户了解汇集台（G3）对接点A1-to（400,100），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[78,422]、纵向[88,112]、高度[20,25]毫米；支承面A1-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：来自开店经历的无字经验纸片（store）从门店经验纸盒（G2）对接点A2-from（250,150）至客户了解汇集台（G3）对接点A2-to（400,150），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[228,422]、纵向[138,162]、高度[20,25]毫米；支承面A2-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n来自销售经历的无字经验纸片初始位于销售经历档案架。\n来自开店经历的无字经验纸片初始位于门店经验纸盒。",
+      "firstFramePromptSha256": "aef8f644e88eb45486badb5f94b680568129ffb8483a5d48898270635c972be7",
+      "textPlanSha256": "b54ef349295790240e81cc4b5222b6498248457d00a1cbebbbaccb357df1d209",
+      "deterministicTextBake": {
+        "enabled": true,
+        "sourceImageFileName": "P01_B04_first-frame.png",
+        "outputImageFileName": "P01_B04_first-frame-text-baked.png",
+        "textPlanSha256": "b54ef349295790240e81cc4b5222b6498248457d00a1cbebbbaccb357df1d209",
+        "labelsSha256": "9dac95aae4526b305c5802bddb223a1a26aeb4536e4246f3aba0319e1892683b",
+        "labels": [
+          {
+            "nodeId": "N1",
+            "text": "销售",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.33,
+                0.2
+              ],
+              [
+                0.33,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "开过店",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.365,
+                0.2
+              ],
+              [
+                0.635,
+                0.2
+              ],
+              [
+                0.635,
+                0.305
+              ],
+              [
+                0.365,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "客户的了解",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.67,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.305
+              ],
+              [
+                0.67,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "ocrRequired": true,
+        "anchorCalibrationRequired": true,
+        "plannedAnchorQuadsAreProvisional": true,
+        "calibratedAnchorField": "calibratedAnchorQuad",
+        "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/text-baked-first-frames/P01_B04_first-frame-text-baked.png",
+        "calibrationPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/anchor-calibrations/P01.v1.json"
+      },
+      "v9ContractEnabled": true,
+      "layoutContract": {
+        "coordinateSpace": "normalized-0-to-1",
+        "contentSafeRect": {
+          "x": 0.04,
+          "y": 0.12,
+          "width": 0.92,
+          "height": 0.64
+        },
+        "subtitleReservedRect": {
+          "x": 0.04,
+          "y": 0.81,
+          "width": 0.92,
+          "height": 0.17
+        },
+        "generatedDecorationPolicy": "forbidden",
+        "layoutInterpretation": {
+          "objectGroupBoxes": "broad-composition-zones",
+          "paperLabelSurfaceBoxes": "reserved-placement-zones",
+          "exactPixelMatchRequired": false,
+          "contentAndSubtitleContainmentIsHard": true
+        },
+        "objectGroupBoxes": [
+          {
+            "groupId": "G1",
+            "box": {
+              "x": 0.055,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G2",
+            "box": {
+              "x": 0.36,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G3",
+            "box": {
+              "x": 0.665,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          }
+        ],
+        "paperLabelSurfaceBoxes": [
+          {
+            "nodeId": "N1",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "box": {
+              "x": 0.06,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N2",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "box": {
+              "x": 0.365,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N3",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "box": {
+              "x": 0.67,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          }
+        ]
+      },
+      "layoutContractSha256": "74bbfe0c7857922d0e852209cbd4c10a3dc3e7e289ad6496836d68e31e85ebe0",
+      "selectedForSample": false,
+      "result": null,
+      "physicalContract": {
+        "schemaVersion": "koubo-paper-physical-contract/v1",
+        "coordinateSystem": "tabletop-mm",
+        "minimumClearanceMm": 2,
+        "inventory": [
+          {
+            "partId": "sales",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 40,
+              "depth": 20,
+              "height": 3
+            }
+          },
+          {
+            "partId": "store",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 40,
+              "depth": 20,
+              "height": 3
+            }
+          }
+        ],
+        "stations": [
+          {
+            "groupId": "G1",
+            "initialPartIds": [
+              "sales"
+            ]
+          },
+          {
+            "groupId": "G2",
+            "initialPartIds": [
+              "store"
+            ]
+          },
+          {
+            "groupId": "G3",
+            "initialPartIds": []
+          }
+        ],
+        "docks": [
+          {
+            "id": "A1-from",
+            "groupId": "G1",
+            "xMm": 100,
+            "yMm": 100,
+            "supportHeightMm": 20,
+            "openingWidthMm": 28,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "A1-to",
+            "groupId": "G3",
+            "xMm": 400,
+            "yMm": 100,
+            "supportHeightMm": 20,
+            "openingWidthMm": 28,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "A2-from",
+            "groupId": "G2",
+            "xMm": 250,
+            "yMm": 150,
+            "supportHeightMm": 20,
+            "openingWidthMm": 28,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "A2-to",
+            "groupId": "G3",
+            "xMm": 400,
+            "yMm": 150,
+            "supportHeightMm": 20,
+            "openingWidthMm": 28,
+            "openingHeightMm": 12
+          }
+        ],
+        "supports": [
+          {
+            "id": "A1-lane",
+            "xMm": 76,
+            "yMm": 86,
+            "widthMm": 348,
+            "depthMm": 28,
+            "topHeightMm": 20
+          },
+          {
+            "id": "A2-lane",
+            "xMm": 226,
+            "yMm": 136,
+            "widthMm": 198,
+            "depthMm": 28,
+            "topHeightMm": 20
+          }
+        ],
+        "obstacles": [],
+        "transfers": [
+          {
+            "actionId": "A1",
+            "fromDockId": "A1-from",
+            "toDockId": "A1-to",
+            "supportIds": [
+              "A1-lane"
+            ]
+          },
+          {
+            "actionId": "A2",
+            "fromDockId": "A2-from",
+            "toDockId": "A2-to",
+            "supportIds": [
+              "A2-lane"
+            ]
+          }
+        ]
+      },
+      "physicalContractSha256": "d48754e950fbe1997e146333630b09c7ae7778060679abf7078c65e3fb4d5f6c",
+      "motionContract": {
+        "schemaVersion": "koubo-paper-motion-contract/v1",
+        "meaning": {
+          "sourceQuote": "所以，你以前做过销售、开过店，或者在一个行业干了很多年，别觉得学AI就得把这些全扔了，从头转行。你对客户的了解，恰恰可能派上用场。",
+          "viewerTakeaway": "从既有销售、开店经历中取用客户了解，原经验纸架仍保留，不将经验扔掉重来。",
+          "excludedOutcomes": [
+            "AI凭空生成经历",
+            "把经验丢弃",
+            "客户了解保证收入"
+          ]
+        },
+        "parts": [
+          {
+            "id": "L1",
+            "name": "销售固定纸牌",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L2",
+            "name": "开过店固定纸牌",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L3",
+            "name": "客户的了解固定纸牌",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "sales",
+            "name": "来自销售经历的无字经验纸片",
+            "groupId": "G1",
+            "kind": "blank-part"
+          },
+          {
+            "id": "store",
+            "name": "来自开店经历的无字经验纸片",
+            "groupId": "G2",
+            "kind": "blank-part"
+          }
+        ],
+        "initialLocations": [
+          {
+            "partId": "sales",
+            "groupId": "G1"
+          },
+          {
+            "partId": "store",
+            "groupId": "G2"
+          }
+        ],
+        "actions": [
+          {
+            "id": "A1",
+            "stageId": "S1",
+            "partId": "sales",
+            "fromGroupId": "G1",
+            "toGroupId": "G3",
+            "startSeconds": 1,
+            "endSeconds": 3,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.1,
+              "y": 0.42,
+              "width": 0.74,
+              "height": 0.1
+            }
+          },
+          {
+            "id": "A2",
+            "stageId": "S2",
+            "partId": "store",
+            "fromGroupId": "G2",
+            "toGroupId": "G3",
+            "startSeconds": 3.5,
+            "endSeconds": 5.5,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.4,
+              "y": 0.57,
+              "width": 0.46,
+              "height": 0.1
+            }
+          }
+        ],
+        "allowedTransfers": [
+          {
+            "partId": "sales",
+            "fromGroupId": "G1",
+            "toGroupId": "G3"
+          },
+          {
+            "partId": "store",
+            "fromGroupId": "G2",
+            "toGroupId": "G3"
+          }
+        ],
+        "forbiddenTransfers": [],
+        "requiredPredecessors": [],
+        "finalLocations": [
+          {
+            "partId": "sales",
+            "groupId": "G3"
+          },
+          {
+            "partId": "store",
+            "groupId": "G3"
+          }
+        ],
+        "dynamicValidation": {
+          "requiredBeforeBatch": true,
+          "staticApprovalIsNotDynamicApproval": true,
+          "automaticRetryAllowed": false
+        },
+        "physicalContract": {
+          "schemaVersion": "koubo-paper-physical-contract/v1",
+          "coordinateSystem": "tabletop-mm",
+          "minimumClearanceMm": 2,
+          "inventory": [
+            {
+              "partId": "sales",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 20,
+                "height": 3
+              }
+            },
+            {
+              "partId": "store",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 20,
+                "height": 3
+              }
+            }
+          ],
+          "stations": [
+            {
+              "groupId": "G1",
+              "initialPartIds": [
+                "sales"
+              ]
+            },
+            {
+              "groupId": "G2",
+              "initialPartIds": [
+                "store"
+              ]
+            },
+            {
+              "groupId": "G3",
+              "initialPartIds": []
+            }
+          ],
+          "docks": [
+            {
+              "id": "A1-from",
+              "groupId": "G1",
+              "xMm": 100,
+              "yMm": 100,
+              "supportHeightMm": 20,
+              "openingWidthMm": 28,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "A1-to",
+              "groupId": "G3",
+              "xMm": 400,
+              "yMm": 100,
+              "supportHeightMm": 20,
+              "openingWidthMm": 28,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "A2-from",
+              "groupId": "G2",
+              "xMm": 250,
+              "yMm": 150,
+              "supportHeightMm": 20,
+              "openingWidthMm": 28,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "A2-to",
+              "groupId": "G3",
+              "xMm": 400,
+              "yMm": 150,
+              "supportHeightMm": 20,
+              "openingWidthMm": 28,
+              "openingHeightMm": 12
+            }
+          ],
+          "supports": [
+            {
+              "id": "A1-lane",
+              "xMm": 76,
+              "yMm": 86,
+              "widthMm": 348,
+              "depthMm": 28,
+              "topHeightMm": 20
+            },
+            {
+              "id": "A2-lane",
+              "xMm": 226,
+              "yMm": 136,
+              "widthMm": 198,
+              "depthMm": 28,
+              "topHeightMm": 20
+            }
+          ],
+          "obstacles": [],
+          "transfers": [
+            {
+              "actionId": "A1",
+              "fromDockId": "A1-from",
+              "toDockId": "A1-to",
+              "supportIds": [
+                "A1-lane"
+              ]
+            },
+            {
+              "actionId": "A2",
+              "fromDockId": "A2-from",
+              "toDockId": "A2-to",
+              "supportIds": [
+                "A2-lane"
+              ]
+            }
+          ]
+        },
+        "semanticReview": {
+          "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B04-mechanism-review.v2.json",
+          "sha256": "a0267b2b0591b9c88f4b0cd47723311cfed1532b3b481f7bb22245eb5e1cf6e9"
+        }
+      },
+      "motionContractSha256": "21a125db1303978628bd610f9466071310f70c6d0676b7e2f69b143efcb3bbb8"
+    },
+    {
+      "sceneId": "P02",
+      "pairId": "P02-B07",
+      "pairSha256": "f268f310f9b9af6d67c96a740bc212871310d5a99e8724ef41687dc5f94a643d",
+      "beatId": "B07",
+      "title": "回答整理成内容，必须经过老板核对",
+      "aspectRatio": "16:9",
+      "outputFileName": "P02_B07_first-frame.png",
+      "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames/P02_B07_first-frame.png",
+      "firstFramePrompt": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为老板回答收集垫，材料为暖白无字回答纸页组成唯一一叠刚性组合，只放在最左平放收集垫；垫边与连续输送面齐平，没有前唇和侧挡板；本组上沿正面有且仅有一张暖白空白牌，采用独立不活动支架，位于滑道后上方。四站承托面同高，三层空间由后景纸层、老板和独立标签形成，不设置输送台阶。，位于第1层。\nG2为AI平放整理垫，材料为深蓝平放整理垫，初始没有纸页；它不是竖立文件架，没有竖直隔板，左右开放，与两侧收集垫及核对垫共用同高连续承托面；本组上沿正面有且仅有一张暖白空白牌，采用独立不活动支架，位于滑道后上方。四站承托面同高，三层空间由后景纸层、老板和独立标签形成，不设置输送台阶。，位于第2层。\nG3为老板人工核对垫，材料为暖白平放核对垫，接纸位置初始空着；无脸纸质老板站在后方，双手空着；唯一无字控制杆与独立转轴在后侧，其完整旋转包络不触及出纸通道，不压纸、不留印记；本组上沿正面有且仅有一张暖白空白牌，采用独立不活动支架，位于滑道后上方。四站承托面同高，三层空间由后景纸层、老板和独立标签形成，不设置输送台阶。，位于第3层。\nG4为对外内容平放展示垫，材料为暖黄色平放接收展示垫，初始完全空着，没有预置白纸、背板或成品；没有竖立取景框和垂直插槽，左端开放，供同一叠纸水平滑入后平放展示；本组上沿正面有且仅有一张暖白空白牌，采用独立不活动支架，位于滑道后上方。四站承托面同高，三层空间由后景纸层、老板和独立标签形成，不设置输送台阶。，位于第1层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n同一叠无字回答纸页（draft）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽50、深24、高4毫米，输送途中不得缩小或变形。\n老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）（lever）全景总量固定为1个刚性组合；本镜不作跨组输送，局部动作范围按动作区及真实动态另行检查。\n老板回答收集垫（G1）初态活动件仅有：同一叠无字回答纸页（draft）；保留固定字牌与布景。\nAI平放整理垫（G2）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n老板人工核对垫（G3）初态活动件仅有：老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）（lever）；保留固定字牌与布景。\n对外内容平放展示垫（G4）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A1：同一叠无字回答纸页（draft）从老板回答收集垫（G1）对接点draft-G1（80,130）至AI平放整理垫（G2）对接点draft-G2（200,130），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽32、高12毫米，进入开口宽32、高12毫米；两端开口至少宽28、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[53,227]、纵向[116,144]、高度[20,26]毫米；支承面deck-G1、deck-G2、deck-G3、deck-G4的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：同一叠无字回答纸页（draft）从AI平放整理垫（G2）对接点draft-G2（200,130）至老板人工核对垫（G3）对接点draft-G3（320,130），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽32、高12毫米，进入开口宽32、高12毫米；两端开口至少宽28、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[173,347]、纵向[116,144]、高度[20,26]毫米；支承面deck-G1、deck-G2、deck-G3、deck-G4的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A4：同一叠无字回答纸页（draft）从老板人工核对垫（G3）对接点draft-G3（320,130）至对外内容平放展示垫（G4）对接点draft-G4（440,130），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽32、高12毫米，进入开口宽32、高12毫米；两端开口至少宽28、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[293,467]、纵向[116,144]、高度[20,26]毫米；支承面deck-G1、deck-G2、deck-G3、deck-G4的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n同一叠无字回答纸页初始位于老板回答收集垫。\n老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）初始位于老板人工核对垫。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。\n\nV9布局合同：以下坐标均为0到1归一化坐标，原点在画面左上角。\n内容安全区：x=0.0400, y=0.1200, width=0.9200, height=0.6400。所有物件组和纸面标签必须完整位于该区域内。\n字幕保留区：x=0.0400, y=0.8100, width=0.9200, height=0.1700。任何物件、标签、影子或装饰不得进入该区域。\n物件组构图宽区：G1[x=0.0550, y=0.1700, width=0.2050, height=0.5400]；G2[x=0.2850, y=0.1700, width=0.2050, height=0.5400]；G3[x=0.5150, y=0.1700, width=0.2050, height=0.5400]；G4[x=0.7450, y=0.1700, width=0.2050, height=0.5400]。这些是宽区指导，物件在各自区域内自然排布，不要求逐像素贴合矩形边缘。\n纸面标签预留区：N1/G1/G1-rigid-label-card[x=0.0600, y=0.2000, width=0.1950, height=0.1050]；N2/G2/G2-rigid-label-card[x=0.2900, y=0.2000, width=0.1950, height=0.1050]；N3/G3/G3-rigid-label-card[x=0.5200, y=0.2000, width=0.1950, height=0.1050]；N4/G4/G4-rigid-label-card[x=0.7500, y=0.2000, width=0.1950, height=0.1050]。标签纸完整落在对应预留区内，不要求逐像素贴合矩形边缘。\n构图安全约束与机构物理约束同时生效：主体完整入画、标签不串组、不侵入字幕区；不得为迁就构图省略物件数量、初态空位、承托同高和通道净空。存在冲突应停止生成并修订，不得挤压、裁切或凭空改变机构。\ngeneratedDecorationPolicy=forbidden：禁止生成任何未在物件组中声明的植物、云朵、圆点、摆件或背景装饰。\n\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n同一叠无字回答纸页（draft）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽50、深24、高4毫米，输送途中不得缩小或变形。\n老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）（lever）全景总量固定为1个刚性组合；本镜不作跨组输送，局部动作范围按动作区及真实动态另行检查。\n老板回答收集垫（G1）初态活动件仅有：同一叠无字回答纸页（draft）；保留固定字牌与布景。\nAI平放整理垫（G2）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n老板人工核对垫（G3）初态活动件仅有：老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）（lever）；保留固定字牌与布景。\n对外内容平放展示垫（G4）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A1：同一叠无字回答纸页（draft）从老板回答收集垫（G1）对接点draft-G1（80,130）至AI平放整理垫（G2）对接点draft-G2（200,130），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽32、高12毫米，进入开口宽32、高12毫米；两端开口至少宽28、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[53,227]、纵向[116,144]、高度[20,26]毫米；支承面deck-G1、deck-G2、deck-G3、deck-G4的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：同一叠无字回答纸页（draft）从AI平放整理垫（G2）对接点draft-G2（200,130）至老板人工核对垫（G3）对接点draft-G3（320,130），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽32、高12毫米，进入开口宽32、高12毫米；两端开口至少宽28、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[173,347]、纵向[116,144]、高度[20,26]毫米；支承面deck-G1、deck-G2、deck-G3、deck-G4的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A4：同一叠无字回答纸页（draft）从老板人工核对垫（G3）对接点draft-G3（320,130）至对外内容平放展示垫（G4）对接点draft-G4（440,130），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽32、高12毫米，进入开口宽32、高12毫米；两端开口至少宽28、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[293,467]、纵向[116,144]、高度[20,26]毫米；支承面deck-G1、deck-G2、deck-G3、deck-G4的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n同一叠无字回答纸页初始位于老板回答收集垫。\n老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）初始位于老板人工核对垫。",
+      "firstFramePromptSha256": "5833a71cda4d035ac53c6535f635271bf3ab73a32f3a15c8e6b27e95d27d6131",
+      "textPlanSha256": "6cabf8112f55f793d051cb297773bbff430592960db5997c8247183a9ba4375a",
+      "deterministicTextBake": {
+        "enabled": true,
+        "sourceImageFileName": "P02_B07_first-frame.png",
+        "outputImageFileName": "P02_B07_first-frame-text-baked.png",
+        "textPlanSha256": "6cabf8112f55f793d051cb297773bbff430592960db5997c8247183a9ba4375a",
+        "labelsSha256": "5f82587588353d12238d37311d11c975f73c432dad90db1d88f08571e5115745",
+        "labels": [
+          {
+            "nodeId": "N1",
+            "text": "回答",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.255,
+                0.2
+              ],
+              [
+                0.255,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "归类",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.29,
+                0.2
+              ],
+              [
+                0.485,
+                0.2
+              ],
+              [
+                0.485,
+                0.305
+              ],
+              [
+                0.29,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "老板核对",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.52,
+                0.2
+              ],
+              [
+                0.715,
+                0.2
+              ],
+              [
+                0.715,
+                0.305
+              ],
+              [
+                0.52,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N4",
+            "text": "讲出去",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.75,
+                0.2
+              ],
+              [
+                0.945,
+                0.2
+              ],
+              [
+                0.945,
+                0.305
+              ],
+              [
+                0.75,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "ocrRequired": true,
+        "anchorCalibrationRequired": true,
+        "plannedAnchorQuadsAreProvisional": true,
+        "calibratedAnchorField": "calibratedAnchorQuad",
+        "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/text-baked-first-frames/P02_B07_first-frame-text-baked.png",
+        "calibrationPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/anchor-calibrations/P02.v1.json"
+      },
+      "v9ContractEnabled": true,
+      "layoutContract": {
+        "coordinateSpace": "normalized-0-to-1",
+        "contentSafeRect": {
+          "x": 0.04,
+          "y": 0.12,
+          "width": 0.92,
+          "height": 0.64
+        },
+        "subtitleReservedRect": {
+          "x": 0.04,
+          "y": 0.81,
+          "width": 0.92,
+          "height": 0.17
+        },
+        "generatedDecorationPolicy": "forbidden",
+        "layoutInterpretation": {
+          "objectGroupBoxes": "broad-composition-zones",
+          "paperLabelSurfaceBoxes": "reserved-placement-zones",
+          "exactPixelMatchRequired": false,
+          "contentAndSubtitleContainmentIsHard": true
+        },
+        "objectGroupBoxes": [
+          {
+            "groupId": "G1",
+            "box": {
+              "x": 0.055,
+              "y": 0.17,
+              "width": 0.205,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G2",
+            "box": {
+              "x": 0.285,
+              "y": 0.17,
+              "width": 0.205,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G3",
+            "box": {
+              "x": 0.515,
+              "y": 0.17,
+              "width": 0.205,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G4",
+            "box": {
+              "x": 0.745,
+              "y": 0.17,
+              "width": 0.205,
+              "height": 0.54
+            }
+          }
+        ],
+        "paperLabelSurfaceBoxes": [
+          {
+            "nodeId": "N1",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "box": {
+              "x": 0.06,
+              "y": 0.2,
+              "width": 0.19499999999999998,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N2",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "box": {
+              "x": 0.29,
+              "y": 0.2,
+              "width": 0.19499999999999998,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N3",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "box": {
+              "x": 0.52,
+              "y": 0.2,
+              "width": 0.19499999999999998,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N4",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "box": {
+              "x": 0.75,
+              "y": 0.2,
+              "width": 0.19499999999999998,
+              "height": 0.105
+            }
+          }
+        ]
+      },
+      "layoutContractSha256": "cf639d371f42b1730f10d41d3dcf346f396624ea3aceadd0c5b330f9a84a2033",
+      "selectedForSample": true,
+      "result": {
+        "imagePath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames/P02_B07_first-frame.png",
+        "imageSha256": "11409539b2898e34feaa61c2e15c645a35d495a77925eb1d7138533454cc58bd",
+        "bytes": 1831264,
+        "width": 1672,
+        "height": 941,
+        "format": "png",
+        "tool": "image_gen",
+        "executionPrompt": {
+          "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/P02.execution-prompt.txt",
+          "sha256": "27cda2ce052fe4919416f8e1992896967ceb40602d8604306487e01b8e40837b"
+        },
+        "recordedAt": "2026-09-10T12:58:36.310Z"
+      },
+      "physicalContract": {
+        "schemaVersion": "koubo-paper-physical-contract/v1",
+        "coordinateSystem": "tabletop-mm",
+        "minimumClearanceMm": 2,
+        "inventory": [
+          {
+            "partId": "draft",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 50,
+              "depth": 24,
+              "height": 4
+            }
+          },
+          {
+            "partId": "lever",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 40,
+              "depth": 20,
+              "height": 20
+            }
+          }
+        ],
+        "stations": [
+          {
+            "groupId": "G1",
+            "initialPartIds": [
+              "draft"
+            ]
+          },
+          {
+            "groupId": "G2",
+            "initialPartIds": []
+          },
+          {
+            "groupId": "G3",
+            "initialPartIds": [
+              "lever"
+            ]
+          },
+          {
+            "groupId": "G4",
+            "initialPartIds": []
+          }
+        ],
+        "docks": [
+          {
+            "id": "draft-G1",
+            "groupId": "G1",
+            "xMm": 80,
+            "yMm": 130,
+            "supportHeightMm": 20,
+            "openingWidthMm": 32,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "draft-G2",
+            "groupId": "G2",
+            "xMm": 200,
+            "yMm": 130,
+            "supportHeightMm": 20,
+            "openingWidthMm": 32,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "draft-G3",
+            "groupId": "G3",
+            "xMm": 320,
+            "yMm": 130,
+            "supportHeightMm": 20,
+            "openingWidthMm": 32,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "draft-G4",
+            "groupId": "G4",
+            "xMm": 440,
+            "yMm": 130,
+            "supportHeightMm": 20,
+            "openingWidthMm": 32,
+            "openingHeightMm": 12
+          }
+        ],
+        "supports": [
+          {
+            "id": "deck-G1",
+            "xMm": 50,
+            "yMm": 112,
+            "widthMm": 90,
+            "depthMm": 36,
+            "topHeightMm": 20
+          },
+          {
+            "id": "deck-G2",
+            "xMm": 140,
+            "yMm": 112,
+            "widthMm": 120,
+            "depthMm": 36,
+            "topHeightMm": 20
+          },
+          {
+            "id": "deck-G3",
+            "xMm": 260,
+            "yMm": 112,
+            "widthMm": 120,
+            "depthMm": 36,
+            "topHeightMm": 20
+          },
+          {
+            "id": "deck-G4",
+            "xMm": 380,
+            "yMm": 112,
+            "widthMm": 90,
+            "depthMm": 36,
+            "topHeightMm": 20
+          }
+        ],
+        "obstacles": [
+          {
+            "id": "owner-behind-lane",
+            "xMm": 290,
+            "yMm": 20,
+            "zMm": 20,
+            "widthMm": 55,
+            "depthMm": 35,
+            "heightMm": 80
+          },
+          {
+            "id": "lever-full-rotation-envelope",
+            "xMm": 305,
+            "yMm": 65,
+            "zMm": 20,
+            "widthMm": 40,
+            "depthMm": 20,
+            "heightMm": 20
+          }
+        ],
+        "transfers": [
+          {
+            "actionId": "A1",
+            "fromDockId": "draft-G1",
+            "toDockId": "draft-G2",
+            "supportIds": [
+              "deck-G1",
+              "deck-G2",
+              "deck-G3",
+              "deck-G4"
+            ]
+          },
+          {
+            "actionId": "A2",
+            "fromDockId": "draft-G2",
+            "toDockId": "draft-G3",
+            "supportIds": [
+              "deck-G1",
+              "deck-G2",
+              "deck-G3",
+              "deck-G4"
+            ]
+          },
+          {
+            "actionId": "A4",
+            "fromDockId": "draft-G3",
+            "toDockId": "draft-G4",
+            "supportIds": [
+              "deck-G1",
+              "deck-G2",
+              "deck-G3",
+              "deck-G4"
+            ]
+          }
+        ]
+      },
+      "physicalContractSha256": "58c0457099b22c07b3da4750b02f86e5da932c2fab3d54f709b802b8802b60c0",
+      "motionContract": {
+        "schemaVersion": "koubo-paper-motion-contract/v1",
+        "meaning": {
+          "sourceQuote": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。",
+          "viewerTakeaway": "同一材料先收集和归类，再让老板核对，完成核对动作后才移往讲解展示架；不表示所有文稿天然正确。",
+          "excludedOutcomes": [
+            "跳过老板核对",
+            "AI自行盖章当成人工确认",
+            "讲出去等于成交"
+          ]
+        },
+        "parts": [
+          {
+            "id": "L1",
+            "name": "回答固定纸牌",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L2",
+            "name": "归类固定纸牌",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L3",
+            "name": "老板核对固定纸牌",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L4",
+            "name": "讲出去固定纸牌",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "draft",
+            "name": "同一叠无字回答纸页",
+            "groupId": "G1",
+            "kind": "blank-part"
+          },
+          {
+            "id": "lever",
+            "name": "老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）",
+            "groupId": "G3",
+            "kind": "blank-part"
+          }
+        ],
+        "initialLocations": [
+          {
+            "partId": "draft",
+            "groupId": "G1"
+          },
+          {
+            "partId": "lever",
+            "groupId": "G3"
+          }
+        ],
+        "actions": [
+          {
+            "id": "A1",
+            "stageId": "S1",
+            "partId": "draft",
+            "fromGroupId": "G1",
+            "toGroupId": "G2",
+            "startSeconds": 0.6,
+            "endSeconds": 1.7,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.1,
+              "y": 0.46,
+              "width": 0.32,
+              "height": 0.12
+            }
+          },
+          {
+            "id": "A2",
+            "stageId": "S2",
+            "partId": "draft",
+            "fromGroupId": "G2",
+            "toGroupId": "G3",
+            "startSeconds": 2,
+            "endSeconds": 3.1,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.33,
+              "y": 0.46,
+              "width": 0.31,
+              "height": 0.12
+            }
+          },
+          {
+            "id": "A3",
+            "stageId": "S3",
+            "partId": "lever",
+            "fromGroupId": "G3",
+            "toGroupId": "G3",
+            "startSeconds": 3.4,
+            "endSeconds": 4.7,
+            "operation": "rotate-rigid",
+            "sweptRect": {
+              "x": 0.55,
+              "y": 0.34,
+              "width": 0.14,
+              "height": 0.08
+            }
+          },
+          {
+            "id": "A4",
+            "stageId": "S4",
+            "partId": "draft",
+            "fromGroupId": "G3",
+            "toGroupId": "G4",
+            "startSeconds": 5.1,
+            "endSeconds": 6.5,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.56,
+              "y": 0.46,
+              "width": 0.33,
+              "height": 0.12
+            }
+          }
+        ],
+        "allowedTransfers": [
+          {
+            "partId": "draft",
+            "fromGroupId": "G1",
+            "toGroupId": "G2"
+          },
+          {
+            "partId": "draft",
+            "fromGroupId": "G2",
+            "toGroupId": "G3"
+          },
+          {
+            "partId": "draft",
+            "fromGroupId": "G3",
+            "toGroupId": "G4"
+          }
+        ],
+        "forbiddenTransfers": [],
+        "requiredPredecessors": [
+          {
+            "beforeActionId": "A2",
+            "actionId": "A3",
+            "sourceQuote": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。"
+          },
+          {
+            "beforeActionId": "A3",
+            "actionId": "A4",
+            "sourceQuote": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。"
+          }
+        ],
+        "finalLocations": [
+          {
+            "partId": "draft",
+            "groupId": "G4"
+          },
+          {
+            "partId": "lever",
+            "groupId": "G3"
+          }
+        ],
+        "dynamicValidation": {
+          "requiredBeforeBatch": true,
+          "staticApprovalIsNotDynamicApproval": true,
+          "automaticRetryAllowed": false
+        },
+        "physicalContract": {
+          "schemaVersion": "koubo-paper-physical-contract/v1",
+          "coordinateSystem": "tabletop-mm",
+          "minimumClearanceMm": 2,
+          "inventory": [
+            {
+              "partId": "draft",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 50,
+                "depth": 24,
+                "height": 4
+              }
+            },
+            {
+              "partId": "lever",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 20,
+                "height": 20
+              }
+            }
+          ],
+          "stations": [
+            {
+              "groupId": "G1",
+              "initialPartIds": [
+                "draft"
+              ]
+            },
+            {
+              "groupId": "G2",
+              "initialPartIds": []
+            },
+            {
+              "groupId": "G3",
+              "initialPartIds": [
+                "lever"
+              ]
+            },
+            {
+              "groupId": "G4",
+              "initialPartIds": []
+            }
+          ],
+          "docks": [
+            {
+              "id": "draft-G1",
+              "groupId": "G1",
+              "xMm": 80,
+              "yMm": 130,
+              "supportHeightMm": 20,
+              "openingWidthMm": 32,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "draft-G2",
+              "groupId": "G2",
+              "xMm": 200,
+              "yMm": 130,
+              "supportHeightMm": 20,
+              "openingWidthMm": 32,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "draft-G3",
+              "groupId": "G3",
+              "xMm": 320,
+              "yMm": 130,
+              "supportHeightMm": 20,
+              "openingWidthMm": 32,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "draft-G4",
+              "groupId": "G4",
+              "xMm": 440,
+              "yMm": 130,
+              "supportHeightMm": 20,
+              "openingWidthMm": 32,
+              "openingHeightMm": 12
+            }
+          ],
+          "supports": [
+            {
+              "id": "deck-G1",
+              "xMm": 50,
+              "yMm": 112,
+              "widthMm": 90,
+              "depthMm": 36,
+              "topHeightMm": 20
+            },
+            {
+              "id": "deck-G2",
+              "xMm": 140,
+              "yMm": 112,
+              "widthMm": 120,
+              "depthMm": 36,
+              "topHeightMm": 20
+            },
+            {
+              "id": "deck-G3",
+              "xMm": 260,
+              "yMm": 112,
+              "widthMm": 120,
+              "depthMm": 36,
+              "topHeightMm": 20
+            },
+            {
+              "id": "deck-G4",
+              "xMm": 380,
+              "yMm": 112,
+              "widthMm": 90,
+              "depthMm": 36,
+              "topHeightMm": 20
+            }
+          ],
+          "obstacles": [
+            {
+              "id": "owner-behind-lane",
+              "xMm": 290,
+              "yMm": 20,
+              "zMm": 20,
+              "widthMm": 55,
+              "depthMm": 35,
+              "heightMm": 80
+            },
+            {
+              "id": "lever-full-rotation-envelope",
+              "xMm": 305,
+              "yMm": 65,
+              "zMm": 20,
+              "widthMm": 40,
+              "depthMm": 20,
+              "heightMm": 20
+            }
+          ],
+          "transfers": [
+            {
+              "actionId": "A1",
+              "fromDockId": "draft-G1",
+              "toDockId": "draft-G2",
+              "supportIds": [
+                "deck-G1",
+                "deck-G2",
+                "deck-G3",
+                "deck-G4"
+              ]
+            },
+            {
+              "actionId": "A2",
+              "fromDockId": "draft-G2",
+              "toDockId": "draft-G3",
+              "supportIds": [
+                "deck-G1",
+                "deck-G2",
+                "deck-G3",
+                "deck-G4"
+              ]
+            },
+            {
+              "actionId": "A4",
+              "fromDockId": "draft-G3",
+              "toDockId": "draft-G4",
+              "supportIds": [
+                "deck-G1",
+                "deck-G2",
+                "deck-G3",
+                "deck-G4"
+              ]
+            }
+          ]
+        },
+        "semanticReview": {
+          "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B07-mechanism-review.v2.json",
+          "sha256": "f5e88d60fd20e4c1e022b6a606f525818b2a4530b685604adae4eca2b4eb315c"
+        }
+      },
+      "motionContractSha256": "b327cf7309fe94df06445bd128fc8331fe5317e1a8b9b0cf0b6366aabaf0d400"
+    },
+    {
+      "sceneId": "P03",
+      "pairId": "P03-B10",
+      "pairSha256": "0ae807c0bb967892472ac47a322fa8bbcf078ea10778bbaf241fa91c3d487bb4",
+      "beatId": "B10",
+      "title": "只有内容，缺产品服务就接不住",
+      "aspectRatio": "16:9",
+      "outputFileName": "P03_B10_first-frame.png",
+      "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames/P03_B10_first-frame.png",
+      "firstFramePrompt": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为内容介绍起点，材料为暖白折页在前景连续空滑道上，滑道从左方通到客户桌前，经过中间空架的前方而不穿过架子；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为缺少产品服务的空承台，材料为中景是始终空着的产品架和低位接询盘，没有产品、服务成品或回寄件；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为客户侧等待区，材料为远景暖白无脸纸人留在桌旁；桌前能接到内容折页，另一条回询通道通向中间空接询盘，没有订单或钱币；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n无字内容折页（leaflet）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深18、高3毫米，输送途中不得缩小或变形。\n无字客户咨询纸片（不是交付成品）（inquiry）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深18、高3毫米，输送途中不得缩小或变形。\n内容介绍起点（G1）初态活动件仅有：无字内容折页（leaflet）；保留固定字牌与布景。\n缺少产品服务的空承台（G2）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n客户侧等待区（G3）初态活动件仅有：无字客户咨询纸片（不是交付成品）（inquiry）；保留固定字牌与布景。\n动作A1：无字内容折页（leaflet）从内容介绍起点（G1）对接点A1-from（100,100）至客户侧等待区（G3）对接点A1-to（400,100），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽26、高12毫米，进入开口宽26、高12毫米；两端开口至少宽22、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[78,422]、纵向[89,111]、高度[20,25]毫米；支承面A1-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：无字客户咨询纸片（不是交付成品）（inquiry）从客户侧等待区（G3）对接点A2-from（400,150）至缺少产品服务的空承台（G2）对接点A2-to（250,150），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽26、高12毫米，进入开口宽26、高12毫米；两端开口至少宽22、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[228,422]、纵向[139,161]、高度[20,25]毫米；支承面A2-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n无字内容折页初始位于内容介绍起点。\n无字客户咨询纸片（不是交付成品）初始位于客户侧等待区。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。\n\nV9布局合同：以下坐标均为0到1归一化坐标，原点在画面左上角。\n内容安全区：x=0.0400, y=0.1200, width=0.9200, height=0.6400。所有物件组和纸面标签必须完整位于该区域内。\n字幕保留区：x=0.0400, y=0.8100, width=0.9200, height=0.1700。任何物件、标签、影子或装饰不得进入该区域。\n物件组构图宽区：G1[x=0.0550, y=0.1700, width=0.2800, height=0.5400]；G2[x=0.3600, y=0.1700, width=0.2800, height=0.5400]；G3[x=0.6650, y=0.1700, width=0.2800, height=0.5400]。这些是宽区指导，物件在各自区域内自然排布，不要求逐像素贴合矩形边缘。\n纸面标签预留区：N1/G1/G1-rigid-label-card[x=0.0600, y=0.2000, width=0.2700, height=0.1050]；N2/G2/G2-rigid-label-card[x=0.3650, y=0.2000, width=0.2700, height=0.1050]；N3/G3/G3-rigid-label-card[x=0.6700, y=0.2000, width=0.2700, height=0.1050]。标签纸完整落在对应预留区内，不要求逐像素贴合矩形边缘。\n构图安全约束与机构物理约束同时生效：主体完整入画、标签不串组、不侵入字幕区；不得为迁就构图省略物件数量、初态空位、承托同高和通道净空。存在冲突应停止生成并修订，不得挤压、裁切或凭空改变机构。\ngeneratedDecorationPolicy=forbidden：禁止生成任何未在物件组中声明的植物、云朵、圆点、摆件或背景装饰。\n\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n无字内容折页（leaflet）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深18、高3毫米，输送途中不得缩小或变形。\n无字客户咨询纸片（不是交付成品）（inquiry）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深18、高3毫米，输送途中不得缩小或变形。\n内容介绍起点（G1）初态活动件仅有：无字内容折页（leaflet）；保留固定字牌与布景。\n缺少产品服务的空承台（G2）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n客户侧等待区（G3）初态活动件仅有：无字客户咨询纸片（不是交付成品）（inquiry）；保留固定字牌与布景。\n动作A1：无字内容折页（leaflet）从内容介绍起点（G1）对接点A1-from（100,100）至客户侧等待区（G3）对接点A1-to（400,100），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽26、高12毫米，进入开口宽26、高12毫米；两端开口至少宽22、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[78,422]、纵向[89,111]、高度[20,25]毫米；支承面A1-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：无字客户咨询纸片（不是交付成品）（inquiry）从客户侧等待区（G3）对接点A2-from（400,150）至缺少产品服务的空承台（G2）对接点A2-to（250,150），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽26、高12毫米，进入开口宽26、高12毫米；两端开口至少宽22、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[228,422]、纵向[139,161]、高度[20,25]毫米；支承面A2-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n无字内容折页初始位于内容介绍起点。\n无字客户咨询纸片（不是交付成品）初始位于客户侧等待区。",
+      "firstFramePromptSha256": "faedf5555f50b686ebfb0ad57849c41a3a7cb4554c3efb04f80780f45bc59511",
+      "textPlanSha256": "8785eec932836cc7ea3ed0d46330264e92d2c96bb704539fc16a253081ac53e8",
+      "deterministicTextBake": {
+        "enabled": true,
+        "sourceImageFileName": "P03_B10_first-frame.png",
+        "outputImageFileName": "P03_B10_first-frame-text-baked.png",
+        "textPlanSha256": "8785eec932836cc7ea3ed0d46330264e92d2c96bb704539fc16a253081ac53e8",
+        "labelsSha256": "afaf0696ff7bb2a3d37edc670962a2fc1e012a6d94af808df4b9db0f79f4954b",
+        "labels": [
+          {
+            "nodeId": "N1",
+            "text": "内容",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.33,
+                0.2
+              ],
+              [
+                0.33,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "产品或服务",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.365,
+                0.2
+              ],
+              [
+                0.635,
+                0.2
+              ],
+              [
+                0.635,
+                0.305
+              ],
+              [
+                0.365,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "客户",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.67,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.305
+              ],
+              [
+                0.67,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "ocrRequired": true,
+        "anchorCalibrationRequired": true,
+        "plannedAnchorQuadsAreProvisional": true,
+        "calibratedAnchorField": "calibratedAnchorQuad",
+        "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/text-baked-first-frames/P03_B10_first-frame-text-baked.png",
+        "calibrationPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/anchor-calibrations/P03.v1.json"
+      },
+      "v9ContractEnabled": true,
+      "layoutContract": {
+        "coordinateSpace": "normalized-0-to-1",
+        "contentSafeRect": {
+          "x": 0.04,
+          "y": 0.12,
+          "width": 0.92,
+          "height": 0.64
+        },
+        "subtitleReservedRect": {
+          "x": 0.04,
+          "y": 0.81,
+          "width": 0.92,
+          "height": 0.17
+        },
+        "generatedDecorationPolicy": "forbidden",
+        "layoutInterpretation": {
+          "objectGroupBoxes": "broad-composition-zones",
+          "paperLabelSurfaceBoxes": "reserved-placement-zones",
+          "exactPixelMatchRequired": false,
+          "contentAndSubtitleContainmentIsHard": true
+        },
+        "objectGroupBoxes": [
+          {
+            "groupId": "G1",
+            "box": {
+              "x": 0.055,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G2",
+            "box": {
+              "x": 0.36,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G3",
+            "box": {
+              "x": 0.665,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          }
+        ],
+        "paperLabelSurfaceBoxes": [
+          {
+            "nodeId": "N1",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "box": {
+              "x": 0.06,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N2",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "box": {
+              "x": 0.365,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N3",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "box": {
+              "x": 0.67,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          }
+        ]
+      },
+      "layoutContractSha256": "74bbfe0c7857922d0e852209cbd4c10a3dc3e7e289ad6496836d68e31e85ebe0",
+      "selectedForSample": false,
+      "result": null,
+      "physicalContract": {
+        "schemaVersion": "koubo-paper-physical-contract/v1",
+        "coordinateSystem": "tabletop-mm",
+        "minimumClearanceMm": 2,
+        "inventory": [
+          {
+            "partId": "leaflet",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 40,
+              "depth": 18,
+              "height": 3
+            }
+          },
+          {
+            "partId": "inquiry",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 40,
+              "depth": 18,
+              "height": 3
+            }
+          }
+        ],
+        "stations": [
+          {
+            "groupId": "G1",
+            "initialPartIds": [
+              "leaflet"
+            ]
+          },
+          {
+            "groupId": "G2",
+            "initialPartIds": []
+          },
+          {
+            "groupId": "G3",
+            "initialPartIds": [
+              "inquiry"
+            ]
+          }
+        ],
+        "docks": [
+          {
+            "id": "A1-from",
+            "groupId": "G1",
+            "xMm": 100,
+            "yMm": 100,
+            "supportHeightMm": 20,
+            "openingWidthMm": 26,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "A1-to",
+            "groupId": "G3",
+            "xMm": 400,
+            "yMm": 100,
+            "supportHeightMm": 20,
+            "openingWidthMm": 26,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "A2-from",
+            "groupId": "G3",
+            "xMm": 400,
+            "yMm": 150,
+            "supportHeightMm": 20,
+            "openingWidthMm": 26,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "A2-to",
+            "groupId": "G2",
+            "xMm": 250,
+            "yMm": 150,
+            "supportHeightMm": 20,
+            "openingWidthMm": 26,
+            "openingHeightMm": 12
+          }
+        ],
+        "supports": [
+          {
+            "id": "A1-lane",
+            "xMm": 76,
+            "yMm": 87,
+            "widthMm": 348,
+            "depthMm": 26,
+            "topHeightMm": 20
+          },
+          {
+            "id": "A2-lane",
+            "xMm": 226,
+            "yMm": 137,
+            "widthMm": 198,
+            "depthMm": 26,
+            "topHeightMm": 20
+          }
+        ],
+        "obstacles": [],
+        "transfers": [
+          {
+            "actionId": "A1",
+            "fromDockId": "A1-from",
+            "toDockId": "A1-to",
+            "supportIds": [
+              "A1-lane"
+            ]
+          },
+          {
+            "actionId": "A2",
+            "fromDockId": "A2-from",
+            "toDockId": "A2-to",
+            "supportIds": [
+              "A2-lane"
+            ]
+          }
+        ]
+      },
+      "physicalContractSha256": "b7c9e10256c98a115e2e32f4e36d5aee8e9831ee599f05f0aa9451cbe39e5bf9",
+      "motionContract": {
+        "schemaVersion": "koubo-paper-motion-contract/v1",
+        "meaning": {
+          "sourceQuote": "这既是老板可以尝试的内容做法，也给懂这个行业的人留出了一种服务机会。你帮他把经验讲清楚、持续做成内容，省下他自己摸索和制作的工夫。但他本身没有能交给客户的产品或服务，光发内容也接不住生意。",
+          "viewerTakeaway": "反例里内容可以传到客户，咨询也可以回来；但中间产品服务架始终空着，没有东西可交回客户，不能把曝光当成交。",
+          "excludedOutcomes": [
+            "内容无法传播",
+            "用内容补造不存在的产品",
+            "收到咨询直接等于成交",
+            "所有商家都缺产品"
+          ]
+        },
+        "parts": [
+          {
+            "id": "L1",
+            "name": "内容固定纸牌",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L2",
+            "name": "产品或服务固定纸牌",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L3",
+            "name": "客户固定纸牌",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "leaflet",
+            "name": "无字内容折页",
+            "groupId": "G1",
+            "kind": "blank-part"
+          },
+          {
+            "id": "inquiry",
+            "name": "无字客户咨询纸片（不是交付成品）",
+            "groupId": "G3",
+            "kind": "blank-part"
+          }
+        ],
+        "initialLocations": [
+          {
+            "partId": "leaflet",
+            "groupId": "G1"
+          },
+          {
+            "partId": "inquiry",
+            "groupId": "G3"
+          }
+        ],
+        "actions": [
+          {
+            "id": "A1",
+            "stageId": "S1",
+            "partId": "leaflet",
+            "fromGroupId": "G1",
+            "toGroupId": "G3",
+            "startSeconds": 0.6,
+            "endSeconds": 2.4,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.1,
+              "y": 0.41,
+              "width": 0.77,
+              "height": 0.09
+            }
+          },
+          {
+            "id": "A2",
+            "stageId": "S2",
+            "partId": "inquiry",
+            "fromGroupId": "G3",
+            "toGroupId": "G2",
+            "startSeconds": 2.8,
+            "endSeconds": 4.5,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.43,
+              "y": 0.56,
+              "width": 0.42,
+              "height": 0.09
+            }
+          }
+        ],
+        "allowedTransfers": [
+          {
+            "partId": "leaflet",
+            "fromGroupId": "G1",
+            "toGroupId": "G3"
+          },
+          {
+            "partId": "inquiry",
+            "fromGroupId": "G3",
+            "toGroupId": "G2"
+          }
+        ],
+        "forbiddenTransfers": [],
+        "requiredPredecessors": [],
+        "finalLocations": [
+          {
+            "partId": "leaflet",
+            "groupId": "G3"
+          },
+          {
+            "partId": "inquiry",
+            "groupId": "G2"
+          }
+        ],
+        "dynamicValidation": {
+          "requiredBeforeBatch": true,
+          "staticApprovalIsNotDynamicApproval": true,
+          "automaticRetryAllowed": false
+        },
+        "physicalContract": {
+          "schemaVersion": "koubo-paper-physical-contract/v1",
+          "coordinateSystem": "tabletop-mm",
+          "minimumClearanceMm": 2,
+          "inventory": [
+            {
+              "partId": "leaflet",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 18,
+                "height": 3
+              }
+            },
+            {
+              "partId": "inquiry",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 18,
+                "height": 3
+              }
+            }
+          ],
+          "stations": [
+            {
+              "groupId": "G1",
+              "initialPartIds": [
+                "leaflet"
+              ]
+            },
+            {
+              "groupId": "G2",
+              "initialPartIds": []
+            },
+            {
+              "groupId": "G3",
+              "initialPartIds": [
+                "inquiry"
+              ]
+            }
+          ],
+          "docks": [
+            {
+              "id": "A1-from",
+              "groupId": "G1",
+              "xMm": 100,
+              "yMm": 100,
+              "supportHeightMm": 20,
+              "openingWidthMm": 26,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "A1-to",
+              "groupId": "G3",
+              "xMm": 400,
+              "yMm": 100,
+              "supportHeightMm": 20,
+              "openingWidthMm": 26,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "A2-from",
+              "groupId": "G3",
+              "xMm": 400,
+              "yMm": 150,
+              "supportHeightMm": 20,
+              "openingWidthMm": 26,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "A2-to",
+              "groupId": "G2",
+              "xMm": 250,
+              "yMm": 150,
+              "supportHeightMm": 20,
+              "openingWidthMm": 26,
+              "openingHeightMm": 12
+            }
+          ],
+          "supports": [
+            {
+              "id": "A1-lane",
+              "xMm": 76,
+              "yMm": 87,
+              "widthMm": 348,
+              "depthMm": 26,
+              "topHeightMm": 20
+            },
+            {
+              "id": "A2-lane",
+              "xMm": 226,
+              "yMm": 137,
+              "widthMm": 198,
+              "depthMm": 26,
+              "topHeightMm": 20
+            }
+          ],
+          "obstacles": [],
+          "transfers": [
+            {
+              "actionId": "A1",
+              "fromDockId": "A1-from",
+              "toDockId": "A1-to",
+              "supportIds": [
+                "A1-lane"
+              ]
+            },
+            {
+              "actionId": "A2",
+              "fromDockId": "A2-from",
+              "toDockId": "A2-to",
+              "supportIds": [
+                "A2-lane"
+              ]
+            }
+          ]
+        },
+        "semanticReview": {
+          "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B10-mechanism-review.v2.json",
+          "sha256": "e51f63bf03d221149545c658025eb90ac5b67a2870603fdb305d1e4bc50b7eb5"
+        }
+      },
+      "motionContractSha256": "7f0030edd50b6f8f9923f9834f929386a5038bb566b3528b7664ae8cb19a2c5a"
+    },
+    {
+      "sceneId": "P04",
+      "pairId": "P04-B11",
+      "pairSha256": "53ae93cd0c0f5be7e0838150f6908f0f5651f7840b2c264c8c35c85b03755003",
+      "beatId": "B11",
+      "title": "向外地介绍服务，不是订单自动到来",
+      "aspectRatio": "16:9",
+      "outputFileName": "P04_B11_first-frame.png",
+      "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames/P04_B11_first-frame.png",
+      "firstFramePrompt": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为已有工作展示台，材料为前景厚纸作品册，册页完全无字，没有证书与印记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为服务介绍展开区，材料为中景浅灰纸质展台，面对右侧的独立空白服务折页；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为外地同行待沟通桌，材料为后景另一张纸质小桌与无脸人物，和左方保持距离，没有握手、订单和付款物件；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）（portfolio）全景总量固定为1个刚性组合；本镜不作跨组输送，局部动作范围按动作区及真实动态另行检查。\n已有工作展示台（G1）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n服务介绍展开区（G2）初态活动件仅有：无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）（portfolio）；保留固定字牌与布景。\n外地同行待沟通桌（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）初始位于服务介绍展开区。\n无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）所在路线与外地同行待沟通桌物理隔离，中间保留可见间隙，不设置相连纸路。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。\n\nV9布局合同：以下坐标均为0到1归一化坐标，原点在画面左上角。\n内容安全区：x=0.0400, y=0.1200, width=0.9200, height=0.6400。所有物件组和纸面标签必须完整位于该区域内。\n字幕保留区：x=0.0400, y=0.8100, width=0.9200, height=0.1700。任何物件、标签、影子或装饰不得进入该区域。\n物件组构图宽区：G1[x=0.0550, y=0.1700, width=0.2800, height=0.5400]；G2[x=0.3600, y=0.1700, width=0.2800, height=0.5400]；G3[x=0.6650, y=0.1700, width=0.2800, height=0.5400]。这些是宽区指导，物件在各自区域内自然排布，不要求逐像素贴合矩形边缘。\n纸面标签预留区：N1/G1/G1-rigid-label-card[x=0.0600, y=0.2000, width=0.2700, height=0.1050]；N2/G2/G2-rigid-label-card[x=0.3650, y=0.2000, width=0.2700, height=0.1050]；N3/G3/G3-rigid-label-card[x=0.6700, y=0.2000, width=0.2700, height=0.1050]。标签纸完整落在对应预留区内，不要求逐像素贴合矩形边缘。\n构图安全约束与机构物理约束同时生效：主体完整入画、标签不串组、不侵入字幕区；不得为迁就构图省略物件数量、初态空位、承托同高和通道净空。存在冲突应停止生成并修订，不得挤压、裁切或凭空改变机构。\ngeneratedDecorationPolicy=forbidden：禁止生成任何未在物件组中声明的植物、云朵、圆点、摆件或背景装饰。\n\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）（portfolio）全景总量固定为1个刚性组合；本镜不作跨组输送，局部动作范围按动作区及真实动态另行检查。\n已有工作展示台（G1）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n服务介绍展开区（G2）初态活动件仅有：无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）（portfolio）；保留固定字牌与布景。\n外地同行待沟通桌（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）初始位于服务介绍展开区。\n无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）所在路线与外地同行待沟通桌物理隔离，中间保留可见间隙，不设置相连纸路。",
+      "firstFramePromptSha256": "ffba41649fd4486a003cf8047dd6f9b832709e06bfe934a2653df43f1826e589",
+      "textPlanSha256": "aef245637a021293fb69a714f2def7ce23ea871675a9e789583588b57beec697",
+      "deterministicTextBake": {
+        "enabled": true,
+        "sourceImageFileName": "P04_B11_first-frame.png",
+        "outputImageFileName": "P04_B11_first-frame-text-baked.png",
+        "textPlanSha256": "aef245637a021293fb69a714f2def7ce23ea871675a9e789583588b57beec697",
+        "labelsSha256": "05dc54dfa528cd21116b4507797cc650492d130e81a7ad7a0f25d01f5f14dacb",
+        "labels": [
+          {
+            "nodeId": "N1",
+            "text": "工作做好",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.33,
+                0.2
+              ],
+              [
+                0.33,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "介绍",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.365,
+                0.2
+              ],
+              [
+                0.635,
+                0.2
+              ],
+              [
+                0.635,
+                0.305
+              ],
+              [
+                0.365,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "外地同行",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.67,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.305
+              ],
+              [
+                0.67,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "ocrRequired": true,
+        "anchorCalibrationRequired": true,
+        "plannedAnchorQuadsAreProvisional": true,
+        "calibratedAnchorField": "calibratedAnchorQuad",
+        "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/text-baked-first-frames/P04_B11_first-frame-text-baked.png",
+        "calibrationPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/anchor-calibrations/P04.v1.json"
+      },
+      "v9ContractEnabled": true,
+      "layoutContract": {
+        "coordinateSpace": "normalized-0-to-1",
+        "contentSafeRect": {
+          "x": 0.04,
+          "y": 0.12,
+          "width": 0.92,
+          "height": 0.64
+        },
+        "subtitleReservedRect": {
+          "x": 0.04,
+          "y": 0.81,
+          "width": 0.92,
+          "height": 0.17
+        },
+        "generatedDecorationPolicy": "forbidden",
+        "layoutInterpretation": {
+          "objectGroupBoxes": "broad-composition-zones",
+          "paperLabelSurfaceBoxes": "reserved-placement-zones",
+          "exactPixelMatchRequired": false,
+          "contentAndSubtitleContainmentIsHard": true
+        },
+        "objectGroupBoxes": [
+          {
+            "groupId": "G1",
+            "box": {
+              "x": 0.055,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G2",
+            "box": {
+              "x": 0.36,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G3",
+            "box": {
+              "x": 0.665,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          }
+        ],
+        "paperLabelSurfaceBoxes": [
+          {
+            "nodeId": "N1",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "box": {
+              "x": 0.06,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N2",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "box": {
+              "x": 0.365,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N3",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "box": {
+              "x": 0.67,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          }
+        ]
+      },
+      "layoutContractSha256": "74bbfe0c7857922d0e852209cbd4c10a3dc3e7e289ad6496836d68e31e85ebe0",
+      "selectedForSample": false,
+      "result": null,
+      "physicalContract": {
+        "schemaVersion": "koubo-paper-physical-contract/v1",
+        "coordinateSystem": "tabletop-mm",
+        "minimumClearanceMm": 2,
+        "inventory": [
+          {
+            "partId": "portfolio",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 80,
+              "depth": 80,
+              "height": 4
+            }
+          }
+        ],
+        "stations": [
+          {
+            "groupId": "G1",
+            "initialPartIds": []
+          },
+          {
+            "groupId": "G2",
+            "initialPartIds": [
+              "portfolio"
+            ]
+          },
+          {
+            "groupId": "G3",
+            "initialPartIds": []
+          }
+        ],
+        "docks": [],
+        "supports": [],
+        "obstacles": [],
+        "transfers": []
+      },
+      "physicalContractSha256": "810468c21bf8ed8d92a3d5783a20861aead32a89f74f01b9e17aaa5acdadb23e",
+      "motionContract": {
+        "schemaVersion": "koubo-paper-motion-contract/v1",
+        "meaning": {
+          "sourceQuote": "如果你能听懂一个行业的问题，也能把约定的工作做好，就可以试着把这项服务介绍给外地同行。同样需要整理客户问题、制作产品内容的人。",
+          "viewerTakeaway": "在具备行业理解和工作能力的前提下，把服务展开介绍给远方的潜在同行；对方仍在待沟通位置，没有成交动作。",
+          "excludedOutcomes": [
+            "全国订单自动到来",
+            "介绍就等于被接受",
+            "AI发明远程接单"
+          ]
+        },
+        "parts": [
+          {
+            "id": "L1",
+            "name": "工作做好固定纸牌",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L2",
+            "name": "介绍固定纸牌",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L3",
+            "name": "外地同行固定纸牌",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "portfolio",
+            "name": "无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）",
+            "groupId": "G2",
+            "kind": "blank-part"
+          }
+        ],
+        "initialLocations": [
+          {
+            "partId": "portfolio",
+            "groupId": "G2"
+          }
+        ],
+        "actions": [
+          {
+            "id": "A1",
+            "stageId": "S1",
+            "partId": "portfolio",
+            "fromGroupId": "G2",
+            "toGroupId": "G2",
+            "startSeconds": 1,
+            "endSeconds": 4.8,
+            "operation": "unfold",
+            "sweptRect": {
+              "x": 0.39,
+              "y": 0.43,
+              "width": 0.22,
+              "height": 0.24
+            }
+          }
+        ],
+        "allowedTransfers": [],
+        "forbiddenTransfers": [
+          {
+            "partId": "portfolio",
+            "fromGroupId": "G2",
+            "toGroupId": "G3",
+            "sourceQuote": "如果你能听懂一个行业的问题，也能把约定的工作做好，就可以试着把这项服务介绍给外地同行。同样需要整理客户问题、制作产品内容的人。"
+          }
+        ],
+        "requiredPredecessors": [],
+        "finalLocations": [
+          {
+            "partId": "portfolio",
+            "groupId": "G2"
+          }
+        ],
+        "dynamicValidation": {
+          "requiredBeforeBatch": true,
+          "staticApprovalIsNotDynamicApproval": true,
+          "automaticRetryAllowed": false
+        },
+        "physicalContract": {
+          "schemaVersion": "koubo-paper-physical-contract/v1",
+          "coordinateSystem": "tabletop-mm",
+          "minimumClearanceMm": 2,
+          "inventory": [
+            {
+              "partId": "portfolio",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 80,
+                "depth": 80,
+                "height": 4
+              }
+            }
+          ],
+          "stations": [
+            {
+              "groupId": "G1",
+              "initialPartIds": []
+            },
+            {
+              "groupId": "G2",
+              "initialPartIds": [
+                "portfolio"
+              ]
+            },
+            {
+              "groupId": "G3",
+              "initialPartIds": []
+            }
+          ],
+          "docks": [],
+          "supports": [],
+          "obstacles": [],
+          "transfers": []
+        },
+        "semanticReview": {
+          "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B11-mechanism-review.v2.json",
+          "sha256": "80d410b8e23cf9b802c713685899a12b198225e2030183a432322db6963c4727"
+        }
+      },
+      "motionContractSha256": "7703508b4ee990f918b8331e43ed48a21ffd26aa725b32fd03d7b1408c10c68f"
+    },
+    {
+      "sceneId": "P05",
+      "pairId": "P05-B15",
+      "pairSha256": "f84f21f4ca99dce2c239f36c2c0fd9cec6de2a1922f7c99a6e40012abee3dd47",
+      "beatId": "B15",
+      "title": "不是零成本，留出继续尝试的余地",
+      "aspectRatio": "16:9",
+      "outputFileName": "P05_B15_first-frame.png",
+      "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames/P05_B15_first-frame.png",
+      "firstFramePrompt": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为制作成本纸槽，材料为前景少量无字矩形纸垫表示有限可用投入；左槽前部有不透明收纳口，投入纸垫滑入后不可再取回；不用钱币、金额或计数标记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为继续修改工作台，材料为中景纤维纸工作台，带一份需调整的完全无字折页；通向下一承台的滑道净空，作品无需变小即可通过；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为下一次尝试承台，材料为后景深蓝空承台，有一个空白作品容纳槽，未摆出成功结果；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）（reserve）全景总量固定为1个刚性组合；本镜不作跨组输送，局部动作范围按动作区及真实动态另行检查。\n无字作品折页（中央折轴，展开终态宽0.14高0.14）（work）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽50、深50、高4毫米，输送途中不得缩小或变形。\n制作成本纸槽（G1）初态活动件仅有：朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）（reserve）；保留固定字牌与布景。\n继续修改工作台（G2）初态活动件仅有：无字作品折页（中央折轴，展开终态宽0.14高0.14）（work）；保留固定字牌与布景。\n下一次尝试承台（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A3：无字作品折页（中央折轴，展开终态宽0.14高0.14）（work）从继续修改工作台（G2）对接点A3-from（250,150）至下一次尝试承台（G3）对接点A3-to（400,150），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽58、高12毫米，进入开口宽58、高12毫米；两端开口至少宽54、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[223,427]、纵向[123,177]、高度[20,26]毫米；支承面A3-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）初始位于制作成本纸槽。\n无字作品折页（中央折轴，展开终态宽0.14高0.14）初始位于继续修改工作台。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。\n\nV9布局合同：以下坐标均为0到1归一化坐标，原点在画面左上角。\n内容安全区：x=0.0400, y=0.1200, width=0.9200, height=0.6400。所有物件组和纸面标签必须完整位于该区域内。\n字幕保留区：x=0.0400, y=0.8100, width=0.9200, height=0.1700。任何物件、标签、影子或装饰不得进入该区域。\n物件组构图宽区：G1[x=0.0550, y=0.1700, width=0.2800, height=0.5400]；G2[x=0.3600, y=0.1700, width=0.2800, height=0.5400]；G3[x=0.6650, y=0.1700, width=0.2800, height=0.5400]。这些是宽区指导，物件在各自区域内自然排布，不要求逐像素贴合矩形边缘。\n纸面标签预留区：N1/G1/G1-rigid-label-card[x=0.0600, y=0.2000, width=0.2700, height=0.1050]；N2/G2/G2-rigid-label-card[x=0.3650, y=0.2000, width=0.2700, height=0.1050]；N3/G3/G3-rigid-label-card[x=0.6700, y=0.2000, width=0.2700, height=0.1050]。标签纸完整落在对应预留区内，不要求逐像素贴合矩形边缘。\n构图安全约束与机构物理约束同时生效：主体完整入画、标签不串组、不侵入字幕区；不得为迁就构图省略物件数量、初态空位、承托同高和通道净空。存在冲突应停止生成并修订，不得挤压、裁切或凭空改变机构。\ngeneratedDecorationPolicy=forbidden：禁止生成任何未在物件组中声明的植物、云朵、圆点、摆件或背景装饰。\n\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）（reserve）全景总量固定为1个刚性组合；本镜不作跨组输送，局部动作范围按动作区及真实动态另行检查。\n无字作品折页（中央折轴，展开终态宽0.14高0.14）（work）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽50、深50、高4毫米，输送途中不得缩小或变形。\n制作成本纸槽（G1）初态活动件仅有：朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）（reserve）；保留固定字牌与布景。\n继续修改工作台（G2）初态活动件仅有：无字作品折页（中央折轴，展开终态宽0.14高0.14）（work）；保留固定字牌与布景。\n下一次尝试承台（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A3：无字作品折页（中央折轴，展开终态宽0.14高0.14）（work）从继续修改工作台（G2）对接点A3-from（250,150）至下一次尝试承台（G3）对接点A3-to（400,150），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽58、高12毫米，进入开口宽58、高12毫米；两端开口至少宽54、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[223,427]、纵向[123,177]、高度[20,26]毫米；支承面A3-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）初始位于制作成本纸槽。\n无字作品折页（中央折轴，展开终态宽0.14高0.14）初始位于继续修改工作台。",
+      "firstFramePromptSha256": "0901cf38eb62df32a935018f075da4e9e06f2f93772a7602ce2a7bdba5786001",
+      "textPlanSha256": "1f87c5e40d7c5e9bfd1bc28fc78b045dc8ad410090418581056ce1975bae89bb",
+      "deterministicTextBake": {
+        "enabled": true,
+        "sourceImageFileName": "P05_B15_first-frame.png",
+        "outputImageFileName": "P05_B15_first-frame-text-baked.png",
+        "textPlanSha256": "1f87c5e40d7c5e9bfd1bc28fc78b045dc8ad410090418581056ce1975bae89bb",
+        "labelsSha256": "fe9180123e229a425e664e77194b8e157a5bc7fd52ead14348779940e1c2fbdd",
+        "labels": [
+          {
+            "nodeId": "N1",
+            "text": "成本",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.33,
+                0.2
+              ],
+              [
+                0.33,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "继续改",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.365,
+                0.2
+              ],
+              [
+                0.635,
+                0.2
+              ],
+              [
+                0.635,
+                0.305
+              ],
+              [
+                0.365,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "多试几次",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.67,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.2
+              ],
+              [
+                0.9400000000000001,
+                0.305
+              ],
+              [
+                0.67,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "ocrRequired": true,
+        "anchorCalibrationRequired": true,
+        "plannedAnchorQuadsAreProvisional": true,
+        "calibratedAnchorField": "calibratedAnchorQuad",
+        "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/text-baked-first-frames/P05_B15_first-frame-text-baked.png",
+        "calibrationPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/anchor-calibrations/P05.v1.json"
+      },
+      "v9ContractEnabled": true,
+      "layoutContract": {
+        "coordinateSpace": "normalized-0-to-1",
+        "contentSafeRect": {
+          "x": 0.04,
+          "y": 0.12,
+          "width": 0.92,
+          "height": 0.64
+        },
+        "subtitleReservedRect": {
+          "x": 0.04,
+          "y": 0.81,
+          "width": 0.92,
+          "height": 0.17
+        },
+        "generatedDecorationPolicy": "forbidden",
+        "layoutInterpretation": {
+          "objectGroupBoxes": "broad-composition-zones",
+          "paperLabelSurfaceBoxes": "reserved-placement-zones",
+          "exactPixelMatchRequired": false,
+          "contentAndSubtitleContainmentIsHard": true
+        },
+        "objectGroupBoxes": [
+          {
+            "groupId": "G1",
+            "box": {
+              "x": 0.055,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G2",
+            "box": {
+              "x": 0.36,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G3",
+            "box": {
+              "x": 0.665,
+              "y": 0.17,
+              "width": 0.28,
+              "height": 0.54
+            }
+          }
+        ],
+        "paperLabelSurfaceBoxes": [
+          {
+            "nodeId": "N1",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "box": {
+              "x": 0.06,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N2",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "box": {
+              "x": 0.365,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N3",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "box": {
+              "x": 0.67,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          }
+        ]
+      },
+      "layoutContractSha256": "74bbfe0c7857922d0e852209cbd4c10a3dc3e7e289ad6496836d68e31e85ebe0",
+      "selectedForSample": false,
+      "result": null,
+      "physicalContract": {
+        "schemaVersion": "koubo-paper-physical-contract/v1",
+        "coordinateSystem": "tabletop-mm",
+        "minimumClearanceMm": 2,
+        "inventory": [
+          {
+            "partId": "reserve",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 40,
+              "depth": 30,
+              "height": 3
+            }
+          },
+          {
+            "partId": "work",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 50,
+              "depth": 50,
+              "height": 4
+            }
+          }
+        ],
+        "stations": [
+          {
+            "groupId": "G1",
+            "initialPartIds": [
+              "reserve"
+            ]
+          },
+          {
+            "groupId": "G2",
+            "initialPartIds": [
+              "work"
+            ]
+          },
+          {
+            "groupId": "G3",
+            "initialPartIds": []
+          }
+        ],
+        "docks": [
+          {
+            "id": "A3-from",
+            "groupId": "G2",
+            "xMm": 250,
+            "yMm": 150,
+            "supportHeightMm": 20,
+            "openingWidthMm": 58,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "A3-to",
+            "groupId": "G3",
+            "xMm": 400,
+            "yMm": 150,
+            "supportHeightMm": 20,
+            "openingWidthMm": 58,
+            "openingHeightMm": 12
+          }
+        ],
+        "supports": [
+          {
+            "id": "A3-lane",
+            "xMm": 221,
+            "yMm": 121,
+            "widthMm": 208,
+            "depthMm": 58,
+            "topHeightMm": 20
+          }
+        ],
+        "obstacles": [],
+        "transfers": [
+          {
+            "actionId": "A3",
+            "fromDockId": "A3-from",
+            "toDockId": "A3-to",
+            "supportIds": [
+              "A3-lane"
+            ]
+          }
+        ]
+      },
+      "physicalContractSha256": "3303817deeef3ae1a0c1f78eab6ce3c7c3444588c7a83dd233c12afbf5369305",
+      "motionContract": {
+        "schemaVersion": "koubo-paper-motion-contract/v1",
+        "meaning": {
+          "sourceQuote": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。",
+          "viewerTakeaway": "修改需要消耗投入，有限余地允许把作品带入下一次尝试，末端只是继续试，不是成功或盈利。",
+          "excludedOutcomes": [
+            "零成本",
+            "投入会自动回本",
+            "试几次必成",
+            "成本数量等于具体金额"
+          ]
+        },
+        "parts": [
+          {
+            "id": "L1",
+            "name": "成本固定纸牌",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L2",
+            "name": "继续改固定纸牌",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L3",
+            "name": "多试几次固定纸牌",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "reserve",
+            "name": "朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）",
+            "groupId": "G1",
+            "kind": "blank-part"
+          },
+          {
+            "id": "work",
+            "name": "无字作品折页（中央折轴，展开终态宽0.14高0.14）",
+            "groupId": "G2",
+            "kind": "blank-part"
+          }
+        ],
+        "initialLocations": [
+          {
+            "partId": "reserve",
+            "groupId": "G1"
+          },
+          {
+            "partId": "work",
+            "groupId": "G2"
+          }
+        ],
+        "actions": [
+          {
+            "id": "A1",
+            "stageId": "S1",
+            "partId": "reserve",
+            "fromGroupId": "G1",
+            "toGroupId": "G1",
+            "startSeconds": 0.8,
+            "endSeconds": 2.2,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.09,
+              "y": 0.41,
+              "width": 0.2,
+              "height": 0.13
+            }
+          },
+          {
+            "id": "A2",
+            "stageId": "S2",
+            "partId": "work",
+            "fromGroupId": "G2",
+            "toGroupId": "G2",
+            "startSeconds": 2.7,
+            "endSeconds": 4,
+            "operation": "unfold",
+            "sweptRect": {
+              "x": 0.41,
+              "y": 0.52,
+              "width": 0.17,
+              "height": 0.18
+            }
+          },
+          {
+            "id": "A3",
+            "stageId": "S3",
+            "partId": "work",
+            "fromGroupId": "G2",
+            "toGroupId": "G3",
+            "startSeconds": 4.4,
+            "endSeconds": 5.6,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.41,
+              "y": 0.52,
+              "width": 0.46,
+              "height": 0.18
+            }
+          }
+        ],
+        "allowedTransfers": [
+          {
+            "partId": "work",
+            "fromGroupId": "G2",
+            "toGroupId": "G3"
+          }
+        ],
+        "forbiddenTransfers": [],
+        "requiredPredecessors": [
+          {
+            "beforeActionId": "A1",
+            "actionId": "A2",
+            "sourceQuote": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。"
+          },
+          {
+            "beforeActionId": "A2",
+            "actionId": "A3",
+            "sourceQuote": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。"
+          }
+        ],
+        "finalLocations": [
+          {
+            "partId": "reserve",
+            "groupId": "G1"
+          },
+          {
+            "partId": "work",
+            "groupId": "G3"
+          }
+        ],
+        "dynamicValidation": {
+          "requiredBeforeBatch": true,
+          "staticApprovalIsNotDynamicApproval": true,
+          "automaticRetryAllowed": false
+        },
+        "physicalContract": {
+          "schemaVersion": "koubo-paper-physical-contract/v1",
+          "coordinateSystem": "tabletop-mm",
+          "minimumClearanceMm": 2,
+          "inventory": [
+            {
+              "partId": "reserve",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 30,
+                "height": 3
+              }
+            },
+            {
+              "partId": "work",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 50,
+                "depth": 50,
+                "height": 4
+              }
+            }
+          ],
+          "stations": [
+            {
+              "groupId": "G1",
+              "initialPartIds": [
+                "reserve"
+              ]
+            },
+            {
+              "groupId": "G2",
+              "initialPartIds": [
+                "work"
+              ]
+            },
+            {
+              "groupId": "G3",
+              "initialPartIds": []
+            }
+          ],
+          "docks": [
+            {
+              "id": "A3-from",
+              "groupId": "G2",
+              "xMm": 250,
+              "yMm": 150,
+              "supportHeightMm": 20,
+              "openingWidthMm": 58,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "A3-to",
+              "groupId": "G3",
+              "xMm": 400,
+              "yMm": 150,
+              "supportHeightMm": 20,
+              "openingWidthMm": 58,
+              "openingHeightMm": 12
+            }
+          ],
+          "supports": [
+            {
+              "id": "A3-lane",
+              "xMm": 221,
+              "yMm": 121,
+              "widthMm": 208,
+              "depthMm": 58,
+              "topHeightMm": 20
+            }
+          ],
+          "obstacles": [],
+          "transfers": [
+            {
+              "actionId": "A3",
+              "fromDockId": "A3-from",
+              "toDockId": "A3-to",
+              "supportIds": [
+                "A3-lane"
+              ]
+            }
+          ]
+        },
+        "semanticReview": {
+          "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B15-mechanism-review.v2.json",
+          "sha256": "09e888c3c8b038d24d0ebaed068e4428f255465909ac756b474cb73b26591f5a"
+        }
+      },
+      "motionContractSha256": "618f33eb818d166bf5d949341dc07f9d7ab4c2039f04205762423dccd7fe9c53"
+    },
+    {
+      "sceneId": "P06",
+      "pairId": "P06-B17",
+      "pairSha256": "2658573e4e2b8ad5032be0e1a06824e608987af3bb79bcd5f22bc2a4a725f6e4",
+      "beatId": "B17",
+      "title": "服务先说清楚范围、协作和交付",
+      "aspectRatio": "16:9",
+      "outputFileName": "P06_B17_first-frame.png",
+      "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames/P06_B17_first-frame.png",
+      "firstFramePrompt": "摄影级微缩手作纸艺初态，16:9横屏，深蓝纸台、暖白纸牌、少量暖黄色强调，三层真实纸质空间、柔和侧光。固定机位，所有标签正面朝向观众。\nG1为工作范围纸盘，材料为前景暖白盘与一张完全无字的范围卡，正前方通向交付夹的滑道净空；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第一组，位于第1层。\nG2为双方协作纸盘，材料为中景浅灰盘与一张完全无字的协作卡；托盘后退，不侵入范围卡滑道，两条轨道高度分离；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第二组，位于第2层。\nG3为交付约定文件夹，材料为后景纸质文件夹，开始为空，夹子保持打开，两条卡片入口与对应滑道齐平；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第三组，位于第3层。\nG4为问题复查工作台，材料为暖黄独立台面和无字放大镜形纸框，不出现通过印记；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，支架不与活动部件相连；画面横向第四组，位于第1层。\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n无字工作范围卡（scope）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n无字配合约定卡（cooperation）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n工作范围纸盘（G1）初态活动件仅有：无字工作范围卡（scope）；保留固定字牌与布景。\n双方协作纸盘（G2）初态活动件仅有：无字配合约定卡（cooperation）；保留固定字牌与布景。\n交付约定文件夹（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n问题复查工作台（G4）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A1：无字工作范围卡（scope）从工作范围纸盘（G1）对接点A1-from（80,100）至交付约定文件夹（G3）对接点A1-to（320,100），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[58,342]、纵向[88,112]、高度[20,25]毫米；支承面A1-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：无字配合约定卡（cooperation）从双方协作纸盘（G2）对接点A2-from（200,150）至交付约定文件夹（G3）对接点A2-to（320,150），沿横向同高连续开放通道滑动，支承高度均为35毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[178,342]、纵向[138,162]、高度[35,40]毫米；支承面A2-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n无字工作范围卡初始位于工作范围纸盘。\n无字配合约定卡初始位于双方协作纸盘。\n严格保留标签牌数量与各自预留位置，牌面完全空白，后续由本地工具写字。只呈现动作开始前的状态，不提前摆出尚未发生的结果。\n不生成文字、字母、数字、图标或水印，不增加装饰物。\n\nV9布局合同：以下坐标均为0到1归一化坐标，原点在画面左上角。\n内容安全区：x=0.0400, y=0.1200, width=0.9200, height=0.6400。所有物件组和纸面标签必须完整位于该区域内。\n字幕保留区：x=0.0400, y=0.8100, width=0.9200, height=0.1700。任何物件、标签、影子或装饰不得进入该区域。\n物件组构图宽区：G1[x=0.0550, y=0.1700, width=0.2050, height=0.5400]；G2[x=0.2850, y=0.1700, width=0.2050, height=0.5400]；G3[x=0.5150, y=0.1700, width=0.2050, height=0.5400]；G4[x=0.7450, y=0.1700, width=0.2050, height=0.5400]。这些是宽区指导，物件在各自区域内自然排布，不要求逐像素贴合矩形边缘。\n纸面标签预留区：N1/G1/G1-rigid-label-card[x=0.0600, y=0.2000, width=0.1950, height=0.1050]；N2/G2/G2-rigid-label-card[x=0.2900, y=0.2000, width=0.1950, height=0.1050]；N3/G3/G3-rigid-label-card[x=0.5200, y=0.2000, width=0.1950, height=0.1050]；N4/G4/G4-rigid-label-card[x=0.7500, y=0.2000, width=0.1950, height=0.1050]。标签纸完整落在对应预留区内，不要求逐像素贴合矩形边缘。\n构图安全约束与机构物理约束同时生效：主体完整入画、标签不串组、不侵入字幕区；不得为迁就构图省略物件数量、初态空位、承托同高和通道净空。存在冲突应停止生成并修订，不得挤压、裁切或凭空改变机构。\ngeneratedDecorationPolicy=forbidden：禁止生成任何未在物件组中声明的植物、云朵、圆点、摆件或背景装饰。\n\n机构初态约束：标签均为空白刚性牌，每张牌有独立不活动支架，与铰接、翻折和输送零件保持间隔。活动零件均无字。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n无字工作范围卡（scope）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n无字配合约定卡（cooperation）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n工作范围纸盘（G1）初态活动件仅有：无字工作范围卡（scope）；保留固定字牌与布景。\n双方协作纸盘（G2）初态活动件仅有：无字配合约定卡（cooperation）；保留固定字牌与布景。\n交付约定文件夹（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n问题复查工作台（G4）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A1：无字工作范围卡（scope）从工作范围纸盘（G1）对接点A1-from（80,100）至交付约定文件夹（G3）对接点A1-to（320,100），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[58,342]、纵向[88,112]、高度[20,25]毫米；支承面A1-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：无字配合约定卡（cooperation）从双方协作纸盘（G2）对接点A2-from（200,150）至交付约定文件夹（G3）对接点A2-to（320,150），沿横向同高连续开放通道滑动，支承高度均为35毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[178,342]、纵向[138,162]、高度[35,40]毫米；支承面A2-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n无字工作范围卡初始位于工作范围纸盘。\n无字配合约定卡初始位于双方协作纸盘。",
+      "firstFramePromptSha256": "579fed56474dc589b6f7114c70c0d46ff635c5f949cb45167d6484ea02ddee45",
+      "textPlanSha256": "2976ce4366c9fb6cb86fce0f5b16266a018cd8e556e53e6edb4f32de4814ef3d",
+      "deterministicTextBake": {
+        "enabled": true,
+        "sourceImageFileName": "P06_B17_first-frame.png",
+        "outputImageFileName": "P06_B17_first-frame-text-baked.png",
+        "textPlanSha256": "2976ce4366c9fb6cb86fce0f5b16266a018cd8e556e53e6edb4f32de4814ef3d",
+        "labelsSha256": "02f6f21423191cf21f0262b51551bdfa5d5e041f628d6ce905361185d2bcd5b7",
+        "labels": [
+          {
+            "nodeId": "N1",
+            "text": "做哪些工作",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.06,
+                0.2
+              ],
+              [
+                0.255,
+                0.2
+              ],
+              [
+                0.255,
+                0.305
+              ],
+              [
+                0.06,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N2",
+            "text": "谁配合",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.29,
+                0.2
+              ],
+              [
+                0.485,
+                0.2
+              ],
+              [
+                0.485,
+                0.305
+              ],
+              [
+                0.29,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N3",
+            "text": "交什么东西",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.52,
+                0.2
+              ],
+              [
+                0.715,
+                0.2
+              ],
+              [
+                0.715,
+                0.305
+              ],
+              [
+                0.52,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          },
+          {
+            "nodeId": "N4",
+            "text": "查问题",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "anchorQuad": [
+              [
+                0.75,
+                0.2
+              ],
+              [
+                0.945,
+                0.2
+              ],
+              [
+                0.945,
+                0.305
+              ],
+              [
+                0.75,
+                0.305
+              ]
+            ],
+            "maxChars": 8,
+            "role": "diegetic-node-label",
+            "embeddingMode": "first-frame-baked",
+            "motionConstraint": "rigid-surface",
+            "enterStageId": "initial",
+            "persistence": "initial-to-end",
+            "firstReadableFrame": 0,
+            "stageOffsetFrames": 0,
+            "occlusionOwner": "none",
+            "ocrRequired": true
+          }
+        ],
+        "ocrRequired": true,
+        "anchorCalibrationRequired": true,
+        "plannedAnchorQuadsAreProvisional": true,
+        "calibratedAnchorField": "calibratedAnchorQuad",
+        "outputPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/text-baked-first-frames/P06_B17_first-frame-text-baked.png",
+        "calibrationPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-qa/anchor-calibrations/P06.v1.json"
+      },
+      "v9ContractEnabled": true,
+      "layoutContract": {
+        "coordinateSpace": "normalized-0-to-1",
+        "contentSafeRect": {
+          "x": 0.04,
+          "y": 0.12,
+          "width": 0.92,
+          "height": 0.64
+        },
+        "subtitleReservedRect": {
+          "x": 0.04,
+          "y": 0.81,
+          "width": 0.92,
+          "height": 0.17
+        },
+        "generatedDecorationPolicy": "forbidden",
+        "layoutInterpretation": {
+          "objectGroupBoxes": "broad-composition-zones",
+          "paperLabelSurfaceBoxes": "reserved-placement-zones",
+          "exactPixelMatchRequired": false,
+          "contentAndSubtitleContainmentIsHard": true
+        },
+        "objectGroupBoxes": [
+          {
+            "groupId": "G1",
+            "box": {
+              "x": 0.055,
+              "y": 0.17,
+              "width": 0.205,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G2",
+            "box": {
+              "x": 0.285,
+              "y": 0.17,
+              "width": 0.205,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G3",
+            "box": {
+              "x": 0.515,
+              "y": 0.17,
+              "width": 0.205,
+              "height": 0.54
+            }
+          },
+          {
+            "groupId": "G4",
+            "box": {
+              "x": 0.745,
+              "y": 0.17,
+              "width": 0.205,
+              "height": 0.54
+            }
+          }
+        ],
+        "paperLabelSurfaceBoxes": [
+          {
+            "nodeId": "N1",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "box": {
+              "x": 0.06,
+              "y": 0.2,
+              "width": 0.19499999999999998,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N2",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "box": {
+              "x": 0.29,
+              "y": 0.2,
+              "width": 0.19499999999999998,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N3",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "box": {
+              "x": 0.52,
+              "y": 0.2,
+              "width": 0.19499999999999998,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N4",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "box": {
+              "x": 0.75,
+              "y": 0.2,
+              "width": 0.19499999999999998,
+              "height": 0.105
+            }
+          }
+        ]
+      },
+      "layoutContractSha256": "cf639d371f42b1730f10d41d3dcf346f396624ea3aceadd0c5b330f9a84a2033",
+      "selectedForSample": false,
+      "result": null,
+      "physicalContract": {
+        "schemaVersion": "koubo-paper-physical-contract/v1",
+        "coordinateSystem": "tabletop-mm",
+        "minimumClearanceMm": 2,
+        "inventory": [
+          {
+            "partId": "scope",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 40,
+              "depth": 20,
+              "height": 3
+            }
+          },
+          {
+            "partId": "cooperation",
+            "quantity": 1,
+            "unit": "rigid-assembly",
+            "envelopeMm": {
+              "width": 40,
+              "depth": 20,
+              "height": 3
+            }
+          }
+        ],
+        "stations": [
+          {
+            "groupId": "G1",
+            "initialPartIds": [
+              "scope"
+            ]
+          },
+          {
+            "groupId": "G2",
+            "initialPartIds": [
+              "cooperation"
+            ]
+          },
+          {
+            "groupId": "G3",
+            "initialPartIds": []
+          },
+          {
+            "groupId": "G4",
+            "initialPartIds": []
+          }
+        ],
+        "docks": [
+          {
+            "id": "A1-from",
+            "groupId": "G1",
+            "xMm": 80,
+            "yMm": 100,
+            "supportHeightMm": 20,
+            "openingWidthMm": 28,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "A1-to",
+            "groupId": "G3",
+            "xMm": 320,
+            "yMm": 100,
+            "supportHeightMm": 20,
+            "openingWidthMm": 28,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "A2-from",
+            "groupId": "G2",
+            "xMm": 200,
+            "yMm": 150,
+            "supportHeightMm": 35,
+            "openingWidthMm": 28,
+            "openingHeightMm": 12
+          },
+          {
+            "id": "A2-to",
+            "groupId": "G3",
+            "xMm": 320,
+            "yMm": 150,
+            "supportHeightMm": 35,
+            "openingWidthMm": 28,
+            "openingHeightMm": 12
+          }
+        ],
+        "supports": [
+          {
+            "id": "A1-lane",
+            "xMm": 56,
+            "yMm": 86,
+            "widthMm": 288,
+            "depthMm": 28,
+            "topHeightMm": 20
+          },
+          {
+            "id": "A2-lane",
+            "xMm": 176,
+            "yMm": 136,
+            "widthMm": 168,
+            "depthMm": 28,
+            "topHeightMm": 35
+          }
+        ],
+        "obstacles": [],
+        "transfers": [
+          {
+            "actionId": "A1",
+            "fromDockId": "A1-from",
+            "toDockId": "A1-to",
+            "supportIds": [
+              "A1-lane"
+            ]
+          },
+          {
+            "actionId": "A2",
+            "fromDockId": "A2-from",
+            "toDockId": "A2-to",
+            "supportIds": [
+              "A2-lane"
+            ]
+          }
+        ]
+      },
+      "physicalContractSha256": "3710b585522d2af8a9a4b01cce91beb258e342be9a1524b6aa4e6a72bbef4fd1",
+      "motionContract": {
+        "schemaVersion": "koubo-paper-motion-contract/v1",
+        "meaning": {
+          "sourceQuote": "你得听得懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案。AI给出的内容，也得看得出哪里不符合实际。到了收服务费的时候，还要把做哪些工作、谁配合、交什么东西讲清楚。客户拿到以后用不上，你得能继续查问题。",
+          "viewerTakeaway": "把工作范围与谁来配合放到交付约定里；复查工作台保持开放作为后续责任，不演成验收已经通过，也不演成所有交付都失败。",
+          "excludedOutcomes": [
+            "只有工具生成就收费",
+            "自动通过验收",
+            "无人承担后续问题"
+          ]
+        },
+        "parts": [
+          {
+            "id": "L1",
+            "name": "做哪些工作固定纸牌",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L2",
+            "name": "谁配合固定纸牌",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L3",
+            "name": "交什么东西固定纸牌",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "L4",
+            "name": "查问题固定纸牌",
+            "groupId": "G4",
+            "surfaceId": "G4-rigid-label-card",
+            "kind": "label",
+            "mount": "independent-fixed-stand"
+          },
+          {
+            "id": "scope",
+            "name": "无字工作范围卡",
+            "groupId": "G1",
+            "kind": "blank-part"
+          },
+          {
+            "id": "cooperation",
+            "name": "无字配合约定卡",
+            "groupId": "G2",
+            "kind": "blank-part"
+          }
+        ],
+        "initialLocations": [
+          {
+            "partId": "scope",
+            "groupId": "G1"
+          },
+          {
+            "partId": "cooperation",
+            "groupId": "G2"
+          }
+        ],
+        "actions": [
+          {
+            "id": "A1",
+            "stageId": "S1",
+            "partId": "scope",
+            "fromGroupId": "G1",
+            "toGroupId": "G3",
+            "startSeconds": 0.8,
+            "endSeconds": 2.4,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.1,
+              "y": 0.4,
+              "width": 0.55,
+              "height": 0.1
+            }
+          },
+          {
+            "id": "A2",
+            "stageId": "S2",
+            "partId": "cooperation",
+            "fromGroupId": "G2",
+            "toGroupId": "G3",
+            "startSeconds": 2.8,
+            "endSeconds": 4.2,
+            "operation": "slide",
+            "sweptRect": {
+              "x": 0.34,
+              "y": 0.54,
+              "width": 0.31,
+              "height": 0.1
+            }
+          }
+        ],
+        "allowedTransfers": [
+          {
+            "partId": "scope",
+            "fromGroupId": "G1",
+            "toGroupId": "G3"
+          },
+          {
+            "partId": "cooperation",
+            "fromGroupId": "G2",
+            "toGroupId": "G3"
+          }
+        ],
+        "forbiddenTransfers": [],
+        "requiredPredecessors": [],
+        "finalLocations": [
+          {
+            "partId": "scope",
+            "groupId": "G3"
+          },
+          {
+            "partId": "cooperation",
+            "groupId": "G3"
+          }
+        ],
+        "dynamicValidation": {
+          "requiredBeforeBatch": true,
+          "staticApprovalIsNotDynamicApproval": true,
+          "automaticRetryAllowed": false
+        },
+        "physicalContract": {
+          "schemaVersion": "koubo-paper-physical-contract/v1",
+          "coordinateSystem": "tabletop-mm",
+          "minimumClearanceMm": 2,
+          "inventory": [
+            {
+              "partId": "scope",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 20,
+                "height": 3
+              }
+            },
+            {
+              "partId": "cooperation",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 20,
+                "height": 3
+              }
+            }
+          ],
+          "stations": [
+            {
+              "groupId": "G1",
+              "initialPartIds": [
+                "scope"
+              ]
+            },
+            {
+              "groupId": "G2",
+              "initialPartIds": [
+                "cooperation"
+              ]
+            },
+            {
+              "groupId": "G3",
+              "initialPartIds": []
+            },
+            {
+              "groupId": "G4",
+              "initialPartIds": []
+            }
+          ],
+          "docks": [
+            {
+              "id": "A1-from",
+              "groupId": "G1",
+              "xMm": 80,
+              "yMm": 100,
+              "supportHeightMm": 20,
+              "openingWidthMm": 28,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "A1-to",
+              "groupId": "G3",
+              "xMm": 320,
+              "yMm": 100,
+              "supportHeightMm": 20,
+              "openingWidthMm": 28,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "A2-from",
+              "groupId": "G2",
+              "xMm": 200,
+              "yMm": 150,
+              "supportHeightMm": 35,
+              "openingWidthMm": 28,
+              "openingHeightMm": 12
+            },
+            {
+              "id": "A2-to",
+              "groupId": "G3",
+              "xMm": 320,
+              "yMm": 150,
+              "supportHeightMm": 35,
+              "openingWidthMm": 28,
+              "openingHeightMm": 12
+            }
+          ],
+          "supports": [
+            {
+              "id": "A1-lane",
+              "xMm": 56,
+              "yMm": 86,
+              "widthMm": 288,
+              "depthMm": 28,
+              "topHeightMm": 20
+            },
+            {
+              "id": "A2-lane",
+              "xMm": 176,
+              "yMm": 136,
+              "widthMm": 168,
+              "depthMm": 28,
+              "topHeightMm": 35
+            }
+          ],
+          "obstacles": [],
+          "transfers": [
+            {
+              "actionId": "A1",
+              "fromDockId": "A1-from",
+              "toDockId": "A1-to",
+              "supportIds": [
+                "A1-lane"
+              ]
+            },
+            {
+              "actionId": "A2",
+              "fromDockId": "A2-from",
+              "toDockId": "A2-to",
+              "supportIds": [
+                "A2-lane"
+              ]
+            }
+          ]
+        },
+        "semanticReview": {
+          "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B17-mechanism-review.v2.json",
+          "sha256": "f54daa63ce7676e142bcd2df8731652d73994fca001471b9e274ec33302ffa90"
+        }
+      },
+      "motionContractSha256": "e11387677f9e26afe3c30adab6495d51fcc6d9a69d96e4ac4c44d9c086a54199"
+    }
+  ],
+  "events": [
+    {
+      "type": "batch-prepared",
+      "at": "2026-09-10T12:51:47.529Z"
+    },
+    {
+      "type": "image-result-recorded",
+      "sceneId": "P02",
+      "at": "2026-09-10T12:58:36.310Z"
+    }
+  ]
+}

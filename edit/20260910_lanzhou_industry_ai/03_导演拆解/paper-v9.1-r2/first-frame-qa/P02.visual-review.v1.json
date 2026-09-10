@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-visual-review/v1",
+  "sceneId": "P02",
+  "imagePath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frames/P02_B07_first-frame.png",
+  "imageSha256": "11409539b2898e34feaa61c2e15c645a35d495a77925eb1d7138533454cc58bd",
+  "reviewer": "codex-visual-inspection",
+  "status": "revision-required",
+  "reviewedAt": "2026-09-10T13:05:33.766Z",
+  "criteria": {
+    "semanticMatch": "failed",
+    "paperMaterial": "passed",
+    "depthAndContact": "passed",
+    "cleanTextAndBrand": "passed",
+    "compositionAndReadability": "failed",
+    "videoReadiness": "failed"
+  },
+  "notes": "实际打开1672x941原图核对B07。唯一回答纸叠仅在G1，G2/G4为空，G3只有指定控制杆及老板布景，上一版重复纸叠问题未再出现。纸艺材质、接触和层次成立，没有可见文字或标志。但四个平放垫生成了四个有抬高侧壁的独立托盘，站间存在低处间隔，不能支持合同要求的横向同高连续无挡边输送。老板头部遮住N3牌面下方中央；不能通过把字缩小或移到浮层规避。两端托盘超出合同横向内容安全区。故不得写字、扩展后续五张或上传。",
+  "physicalObservations": {
+    "imageSha256": "11409539b2898e34feaa61c2e15c645a35d495a77925eb1d7138533454cc58bd",
+    "physicalContractSha256": "58c0457099b22c07b3da4750b02f86e5da932c2fab3d54f709b802b8802b60c0",
+    "coordinateSystem": "normalized-image-xywh",
+    "measurementScope": "以下为人工视觉近似图像包围框，不是毫米尺寸测量或动态验证。",
+    "inventory": [
+      {
+        "partId": "draft",
+        "observedQuantity": 1,
+        "observedGroupIds": [
+          "G1"
+        ],
+        "imageBoxes": [
+          [
+            0.05323,
+            0.544102,
+            0.163278,
+            0.110521
+          ]
+        ],
+        "notes": "唯一多页纸叠在G1托盘；未见G2/G3/G4重复纸叠。"
+      },
+      {
+        "partId": "lever",
+        "observedQuantity": 1,
+        "observedGroupIds": [
+          "G3"
+        ],
+        "imageBoxes": [
+          [
+            0.681818,
+            0.387885,
+            0.073565,
+            0.157279
+          ]
+        ],
+        "notes": "G3后侧一根控制杆；静态可见，旋转净空未动态验证。"
+      }
+    ],
+    "stations": [
+      {
+        "groupId": "G1",
+        "observedPartIds": [
+          "draft"
+        ],
+        "imageBox": [
+          0.011962,
+          0.219979,
+          0.242823,
+          0.46865
+        ],
+        "notes": "只有一叠回答纸；垫被生成抬高侧壁托盘。"
+      },
+      {
+        "groupId": "G2",
+        "observedPartIds": [],
+        "imageBox": [
+          0.269737,
+          0.219979,
+          0.220694,
+          0.46865
+        ],
+        "notes": "深蓝托盘为空，但左右侧壁与横向运动冲突。"
+      },
+      {
+        "groupId": "G3",
+        "observedPartIds": [
+          "lever"
+        ],
+        "imageBox": [
+          0.517344,
+          0.219979,
+          0.238038,
+          0.46865
+        ],
+        "notes": "无重复纸叠；老板空手，后侧控制杆；托盘侧壁阻断横向滑出。"
+      },
+      {
+        "groupId": "G4",
+        "observedPartIds": [],
+        "imageBox": [
+          0.749402,
+          0.218916,
+          0.235646,
+          0.469713
+        ],
+        "notes": "黄色托盘为空，无预置成品；左侧壁阻挡滑入。"
+      }
+    ],
+    "transfers": [
+      {
+        "actionId": "A1",
+        "imageBox": [
+          0.05323,
+          0.518597,
+          0.437799,
+          0.170032
+        ],
+        "notes": "左右相邻托盘有高于内部承托面的侧壁，站间可见低处间隔。未呈现连续齐平的直线开放通道；具体毫米高度无法由单张图核实。",
+        "checks": {
+          "continuousSupport": "failed",
+          "compatibleHeight": "unknown",
+          "noBlockingEdges": "failed",
+          "openingFitsPart": "failed"
+        }
+      },
+      {
+        "actionId": "A2",
+        "imageBox": [
+          0.270335,
+          0.518597,
+          0.463517,
+          0.170032
+        ],
+        "notes": "左右相邻托盘有高于内部承托面的侧壁，站间可见低处间隔。未呈现连续齐平的直线开放通道；具体毫米高度无法由单张图核实。",
+        "checks": {
+          "continuousSupport": "failed",
+          "compatibleHeight": "unknown",
+          "noBlockingEdges": "failed",
+          "openingFitsPart": "failed"
+        }
+      },
+      {
+        "actionId": "A4",
+        "imageBox": [
+          0.517943,
+          0.518597,
+          0.467105,
+          0.170032
+        ],
+        "notes": "左右相邻托盘有高于内部承托面的侧壁，站间可见低处间隔。未呈现连续齐平的直线开放通道；具体毫米高度无法由单张图核实。",
+        "checks": {
+          "continuousSupport": "failed",
+          "compatibleHeight": "unknown",
+          "noBlockingEdges": "failed",
+          "openingFitsPart": "failed"
+        }
+      }
+    ],
+    "fixedLabels": [
+      {
+        "nodeId": "N1",
+        "imageBox": [
+          0.062201,
+          0.219979,
+          0.161483,
+          0.10627
+        ],
+        "independentStandObserved": true,
+        "notes": "第一张独立支架空白牌，无遮挡。"
+      },
+      {
+        "nodeId": "N2",
+        "imageBox": [
+          0.309809,
+          0.219979,
+          0.157895,
+          0.105207
+        ],
+        "independentStandObserved": true,
+        "notes": "第二张独立支架空白牌，无遮挡。"
+      },
+      {
+        "nodeId": "N3",
+        "imageBox": [
+          0.535885,
+          0.218916,
+          0.154306,
+          0.10627
+        ],
+        "independentStandObserved": true,
+        "notes": "第三张牌有独立固定支架，但老板头部遮住下部中央，完整可写纸面不成立。"
+      },
+      {
+        "nodeId": "N4",
+        "imageBox": [
+          0.77811,
+          0.217853,
+          0.159091,
+          0.105207
+        ],
+        "independentStandObserved": true,
+        "notes": "第四张独立支架空白牌，无遮挡。"
+      }
+    ]
+  },
+  "issues": [
+    {
+      "id": "P1-P02-BLOCKED-HORIZONTAL-ROUTE",
+      "severity": "P1",
+      "status": "confirmed",
+      "observation": "四个有侧壁托盘和站间低处间隔阻断A1/A2/A4直线同高输送。",
+      "expected": "平齐、连续、有真实承托且无挡边的开放通道。"
+    },
+    {
+      "id": "P1-P02-N3-OCCLUDED",
+      "severity": "P1",
+      "status": "confirmed",
+      "observation": "老板头部遮住第三张固定标签牌的下方中央。",
+      "expected": "老板核对四字的纸面完整可见，不能靠遮字或浮层补偿。"
+    },
+    {
+      "id": "P1-P02-CONTENT-SAFE-RECT",
+      "severity": "P1",
+      "status": "confirmed",
+      "observation": "G1托盘左缘约x=20，G4托盘右缘约x=1647；合同横向安全区约x=67至1605。",
+      "expected": "完整语义物件落入横向内容安全区。"
+    }
+  ],
+  "scope": {
+    "rawImageInspected": true,
+    "textBaked": false,
+    "ocrPerformed": false,
+    "videoGenerated": false,
+    "dynamicQualityClaimed": false
+  },
+  "nextAction": "第二次同类实际样图失败，停止后续生图、文字烘焙和上传，保留r1/r2证据，等待用户选择参考布局或定点编辑等不同修复方法。不得第三次全文提示词盲重试。"
+}
