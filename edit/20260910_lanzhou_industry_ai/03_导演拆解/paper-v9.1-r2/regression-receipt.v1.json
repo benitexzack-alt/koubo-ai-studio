@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "koubo-local-contract-regression/v1",
+  "startedAt": "2026-09-10T12:15:42.672Z",
+  "completedAt": "2026-09-10T12:16:20.661Z",
+  "command": [
+    "/Users/pc/.local/node-v22.22.3-darwin-arm64/bin/node",
+    "--test",
+    "--test-reporter=spec",
+    "--test-concurrency=2",
+    "skills/koubo-remotion-director/tests/test-paper-physical-contract.mjs",
+    "skills/koubo-remotion-director/tests/test-paper-motion-contract.mjs",
+    "skills/koubo-remotion-director/tests/test-preproduction-director-contract.mjs",
+    "skills/koubo-remotion-director/tests/test-postshoot-incident-prevention.mjs",
+    "skills/koubo-remotion-director/tests/test-postshoot-rebind-contract.mjs",
+    "skills/koubo-remotion-director/tests/test-paper-asset-intake-incident.mjs",
+    "skills/koubo-remotion-director/tests/test-v9-workflow-state.mjs",
+    "skills/koubo-remotion-director/tests/test-firstframe-text-bake.mjs",
+    "skills/koubo-paper-firstframe-producer/tests/test-raw-visual-review.mjs",
+    "skills/koubo-paper-firstframe-producer/tests/test-firstframe-batch.mjs",
+    "skills/koubo-paper-firstframe-producer/tests/test-native-compiler-handoff.mjs",
+    "skills/koubo-paper-firstframe-producer/tests/test-text-bake-runninghub-handoff.mjs"
+  ],
+  "exitCode": 0,
+  "processExitCode": 0,
+  "stdout": "{\"ok\":true,\"manifestValidation\":true,\"videoPromptLeakRejected\":true,\"promptDriftRejected\":true,\"duplicateSceneRejected\":true,\"missingAnchorCalibrationGateRejected\":true,\"v9LayoutContractValidated\":true,\"v9OneSceneSampleValidated\":true,\"v9PrepareCliValidated\":true}\n✔ skills/koubo-paper-firstframe-producer/tests/test-firstframe-batch.mjs (85.167125ms)\n{\"nativeCompiler\":true,\"nativePrepare\":true,\"nativeBakeOcrNodes\":8,\"nativeReadyScenes\":[\"P01\",\"P02\"],\"nativeV9Stage\":\"generation-handoff-ready\",\"signedOriginalsUnchanged\":true,\"semanticReviewDriftRejected\":true,\"externalGeneration\":false}\n✔ 真实compiler到prepare、baker及P01/P02 ready CLI完整离线回归 (37880.697625ms)\n✔ 完整逐项观察结构可以通过；不宣称自动视觉识别 (1.119833ms)\n✔ 顶层passed不能掩盖semanticMatch失败或缺失 (0.18875ms)\n✔ 顶层passed不能掩盖paperMaterial失败或缺失 (0.112166ms)\n✔ 顶层passed不能掩盖depthAndContact失败或缺失 (0.050958ms)\n✔ 顶层passed不能掩盖cleanTextAndBrand失败或缺失 (0.757292ms)\n✔ 顶层passed不能掩盖compositionAndReadability失败或缺失 (0.0825ms)\n✔ 顶层passed不能掩盖videoReadiness失败或缺失 (0.13475ms)\n✔ 整图失败、空观察、旧图SHA和串镜均阻断 (0.122208ms)\n✔ 真实烘焙CLI在创建请求或调用写字器前拒绝顶层passed下的单项失败 (40.866667ms)\n✔ 实体观察记录逐项对应合同，不把结构自检当作实际动态验收 (1.350959ms)\n✔ 删除批次实体字段不能降级绕过源清单 (0.180417ms)\n✔ 实际图像观察拒绝两叠纸，即使顶层仍passed (0.179167ms)\n✔ 实际图像观察拒绝多处起点，即使顶层仍passed (0.16025ms)\n✔ 实际图像观察拒绝接收处已有纸，即使顶层仍passed (0.076042ms)\n✔ 实际图像观察拒绝存在挡边，即使顶层仍passed (0.130833ms)\n✔ 实际图像观察拒绝无法确定高差，即使顶层仍passed (0.183458ms)\n✔ 实际图像观察拒绝未记录通道图像位置，即使顶层仍passed (0.072834ms)\n✔ 实际图像观察拒绝照抄通过无具体观察，即使顶层仍passed (0.122209ms)\n✔ 实际图像观察拒绝缺少固定牌，即使顶层仍passed (0.068083ms)\n✔ 实际图像观察拒绝绑定旧图，即使顶层仍passed (0.066708ms)\n{\"ok\":true,\"rawImageReviewed\":true,\"actualImageAnchorCalibrationBound\":true,\"deterministicChineseTextBaked\":true,\"chineseOcrMatched\":true,\"runningHubReadyPackIssued\":true}\n✔ 旧本地中文烘焙与真实OCR集成夹具 (1488.049833ms)\n✔ 强化交接拒绝改提示词不改摘要 (50.51125ms)\n✔ 强化交接拒绝改提示词并重算自身摘要 (54.675208ms)\n✔ 强化交接拒绝源计划漂移 (49.839958ms)\n✔ 强化交接拒绝伪造配对摘要 (49.348708ms)\n✔ 强化交接拒绝文字计划摘要漂移 (50.043416ms)\n✔ 强化交接拒绝空识别数组 (51.139666ms)\n✔ 强化交接拒绝识别漏节点 (49.509292ms)\n✔ 强化交接拒绝同节点重复冒充覆盖 (51.608541ms)\n✔ 强化交接拒绝空识别文本但声称匹配 (55.275167ms)\n✔ 强化交接拒绝识别来自旧图 (50.160708ms)\n✔ 强化交接拒绝仅镜头编号批准 (49.307292ms)\n✔ 强化交接拒绝批准后换图并更新机器回执 (52.8365ms)\n✔ 强化交接拒绝识别镜头重复 (46.047084ms)\n✔ 强化交接拒绝动态视频漂移 (47.591833ms)\n✔ 强化交接拒绝动态回执错版本 (48.351708ms)\n✔ 强化交接拒绝动态回执保留例外 (51.029667ms)\n✔ 强化交接拒绝未知强化策略 (46.150584ms)\n✔ 强化交接拒绝移除上游清单策略 (44.464833ms)\n✔ 强化交接拒绝动作合同摘要漂移 (48.42225ms)\n✔ 强化交接拒绝静态批准冒充动态通过 (47.231292ms)\n✔ 强化交接拒绝首帧提示词改动未重算摘要 (46.082417ms)\n✔ 强化交接拒绝清单规范化计划摘要漂移 (47.436584ms)\n✔ 强化交接拒绝烘焙节点与计划不一致 (47.5095ms)\n✔ 强化交接拒绝外部机构审查文件漂移 (47.121167ms)\n✔ 强化交接拒绝首帧清单跨版本 (47.319083ms)\n✔ 强化交接拒绝动作清单跨版本 (45.597291ms)\n✔ 未验收代表性新机构时禁止全批交接 (47.767542ms)\n✔ 移除job自身策略不能绕过上游动态门 (47.01175ms)\n✔ 实际项目档案强制策略时移除所有输入flag仍不能降级签发 (49.339792ms)\n✔ 允许仅交接首条试片，不声称动态通过且不能付费生成 (52.069667ms)\n✔ 当前图片集合与代表性动态验收齐备才可全批交接，但仍非全批动态成功 (52.427167ms)\n✔ 本期固定负例视频SHA不得成为动态验收成功证据 (241.450917ms)\n✔ 不同动作合同不能借用首条机构的动态验收 (50.141166ms)\n✔ 首条试片只需要本条sample烘焙回执，不要求剩余图片已生成 (47.405083ms)\n✔ 旧纯哈希夹具仍可读取交接，不伪称动态已验收 (44.034625ms)\n✔ 可显式交接P02单镜试验，首镜不是唯一允许入口 (50.2575ms)\n✔ 已有P01验收时仍可试P02，但不得再次交接已通过的P01 (101.527625ms)\n✔ 动态索引自身的已接纳例外不能被子验收掩盖 (51.200084ms)\n✔ 源计划反写首帧且重算全链摘要仍不能绕过canonical prompt (47.837167ms)\n✔ 独立trial验收索引可闭合不同动作合同，整批不再生成已通过代表片 (53.551875ms)\n✔ 仅准备画布包不要求提前伪造用户看图或动态验收，且不具备生成权限 (51.841083ms)\n✔ 画布准备拒绝没有上传授权 (46.749416ms)\n✔ 画布准备拒绝扩大成付费授权 (45.070291ms)\n✔ 画布准备拒绝伪造用户已验收 (47.295584ms)\n✔ 画布准备拒绝授权旧修订 (45.391833ms)\n✔ 画布准备拒绝缺少原图逐项QA (72.618917ms)\n✔ 画布准备拒绝最终文字不在纸面 (66.398459ms)\n✔ 画布准备拒绝OCR空识别 (53.014458ms)\n{\"ok\":true,\"deterministicTextBaked\":true,\"chineseOcrMatched\":true,\"appleVisionFallbackMatched\":true,\"sourceTextPlanBound\":true,\"sourceShaMismatchRejected\":true,\"calibrationMismatchRejected\":true,\"finalCompositeOcrBound\":true,\"separateLabelsPassed\":true,\"laterLabelContaminationRejected\":true}\n✔ skills/koubo-remotion-director/tests/test-firstframe-text-bake.mjs (22728.325041ms)\nPASS valid bound dynamic engineering fixture\nPASS equal pixel byte counts cannot hide wrong PNG dimensions\nPASS request version cannot be stripped\nPASS unknown version rejected\nPASS request revision cannot be stripped\nPASS request cannot switch revision\nPASS extraction cannot come from another revision\nPASS OCR cannot come from another revision\nPASS review cannot come from another revision\nPASS three samples cannot replace action evidence\nPASS missing boundary plus one frame rejected\nPASS missing high-risk frame rejected\nPASS wrong frame number rejected\nPASS changed image bytes rejected\nPASS another video extraction rejected\nPASS probe contradicts receipt rejected\nPASS OCR bool cannot hide disappearance\nPASS OCR text cannot contradict raw output\nPASS OCR needs every node every active sample\nPASS stale OCR video receipt rejected\nPASS explicit failed OCR cannot hide behind matching text\nPASS inline semantic bool is insufficient\nPASS inline silent bool is insufficient\nPASS semantic and silent reviewers must differ\nPASS wrong review plan rejected\nPASS review must cover all actions\nPASS review cannot hide occlusion behind passed\nPASS explicit P1 cannot hide behind empty findings\nPASS review text visibility must be checked\nPASS OCR readable but folded label still rejected\nPASS planned sweep is not observed motion evidence\nPASS output before prerequisite completion rejected\nPASS wrong actual transfer destination rejected\nPASS unviewed interval cannot pass\nPASS initial-to-end cannot be narrowed by request\nPASS fixed registry cannot be overridden by request path\nPASS isolated engineering contact and receipt CLI include every frame\nPASS profile forces version even when plan and request stripped\nPASS asset hash includes frame coordinate and OCR/review evidence\n{\"ok\":true,\"tests\":39,\"evidenceClass\":\"synthetic-engineering-only\",\"actualMediaAccepted\":false}\n✔ skills/koubo-remotion-director/tests/test-paper-asset-intake-incident.mjs (2467.511292ms)\n{\"ok\":true,\"tests\":33,\"scope\":\"local-contract-only\",\"generatedMedia\":false}\n✔ skills/koubo-remotion-director/tests/test-paper-motion-contract.mjs (234.302375ms)\n{\"ok\":true,\"tests\":247,\"scope\":\"physical-contract-only\",\"generatedMedia\":false,\"dynamicAcceptance\":false}\n✔ skills/koubo-remotion-director/tests/test-paper-physical-contract.mjs (44.879958ms)\n✔ safe initial labels and evidence-backed omission compile without invented motion or speech (8.606084ms)\n✔ new requests cannot silently use legacy mode (2.18225ms)\n✔ top-level safety version is accepted when policy is absent (2.782792ms)\n✔ omission cannot contain output timing or borrowed actual speech (1.955042ms)\n✔ omission rejects missing evidence (2.157708ms)\n✔ omission rejects wrong-source evidence (2.229458ms)\n✔ omission rejects incomplete-transcript evidence (2.271292ms)\n✔ omission rejects spoken-match evidence (1.990083ms)\n✔ a partial approval cannot be inherited from another revision (4.144ms)\n✔ legacy generic partial exception cannot authorize the safety contract (2.622ms)\n✔ first-frame-baked labels cannot be falsely declared as appearing later (2.137041ms)\n✔ rigid label action and emphasis may occur after genuine frame-zero readability (2.487584ms)\n✔ frame-zero visibility still enforces the 300ms semantic limit (1.917792ms)\n✔ compiler rejects mutated request after validation (2.077375ms)\n✔ whole-transcript exact spoken match defeats a false not-spoken review (1.827792ms)\n✔ partial approval rejects replay with changed taskId (2.239292ms)\n✔ partial approval rejects replay with changed requestId (2.273666ms)\n✔ partial approval rejects replay with changed revisionId (2.056209ms)\n✔ partial approval rejects replay with changed recordedMediaSha256 (1.960042ms)\n✔ partial approval rejects replay with changed spokenTimelineSha256 (2.566208ms)\n✔ partial approval rejects replay with changed preproductionPlanSha256 (1.947875ms)\n✔ partial approval rejects replay with changed beatId (2.080167ms)\n✔ partial approval rejects replay with changed target (2.418041ms)\n✔ partial approval quote must exist in its bound source message (2.904583ms)\n✔ partial acceptance never waives first readability or the 300ms limit (13.1145ms)\n✔ declaring an earlier semantic anchor cannot invent word timestamps (2.360167ms)\n✔ initial is not a real action or emphasis stage (2.122958ms)\n✔ legacy labelEnterFrame cannot contradict firstReadableFrame (1.73ms)\n✔ output validator rejects altered speech, timing, omitted-beat ledger and policy (7.417542ms)\n✔ compiler rejects source or omission evidence drift after validation (3.266291ms)\n✔ CLI only writes a safe receipt for the exact derived output, without overwriting (91.141625ms)\n✔ CLI rejects a tampered plan before creating any receipt (46.457458ms)\n✔ compiler rereads source data instead of trusting mutated validation objects (2.681583ms)\n✔ duplicated caption ids cannot fabricate repeated recorded speech (2.354292ms)\n✔ 300ms boundary uses real first-readable frame, not a later claimed timestamp (2.892417ms)\n✔ new safety mode cannot accept an old preproduction plan by stripping its policy (2.351042ms)\n✔ neutral-background self-report does not waive a future visible claim (1.741875ms)\n✔ existing rebind CLI and validator round-trip the new contract in an isolated fixture (89.136167ms)\n{\"ok\":true,\"recordedSpeechAuthoritative\":true,\"legacyReadOnlyCompatibility\":true,\"legacyCompilationRejected\":true,\"unconfirmedNodeTextRejected\":true,\"incompleteBeatMappingRejected\":true,\"wholeTimelineFalsePositiveRejected\":true,\"earlyVisualClaimRejected\":true,\"nodeCaptionOutsideDeclaredAnchorRejected\":true,\"spokenTermSubstitutionRejected\":true,\"nodeStageOffsetOverThreeFramesRejected\":true,\"mismatchAlignmentRejected\":true,\"formalRemainsLocked\":true}\n✔ skills/koubo-remotion-director/tests/test-postshoot-rebind-contract.mjs (47.910583ms)\n{\"ok\":true,\"positivePaperPlanCompiled\":true,\"unlabeledObjectGroupsMustBeDeclared\":true,\"crossBoundLabelRejected\":true,\"symbolCueConflictRejected\":true,\"correctedNoTextFixtureValidated\":true,\"genericInformationFallbackRejected\":true,\"missingNodeTextRejected\":true,\"scriptDriftRejected\":true,\"firstFrameAndImageToVideoPromptsSeparated\":true,\"promptPairMismatchRejected\":true,\"paperSurfaceBindingsRequired\":true,\"silentTextTruncationRejected\":true,\"movingFirstFrameBakeRejected\":true,\"paperNodeScreenOverlayRejected\":true,\"nodeStageOffsetOverThreeFramesRejected\":true,\"modelGeneratedChineseRemainsBlocked\":true,\"realMaterialPresenterInsetValidated\":true,\"generatedVideoIllustrationBoundaryValidated\":true,\"runningHubPrematureReadinessBlocked\":true,\"legacyFixtureCompatibleWithoutV9\":true,\"normalizedV9LayoutContractValidated\":true,\"v9LayoutFailuresRejected\":true,\"firstFrameNumericSafetyTermsAppended\":true,\"aiGeneratedVideoPromptPackageSeparated\":true,\"zeroAiVideoPackageMarkedNotRequired\":true,\"historicalFixtureExportAndReceiptBlocked\":true}\n✔ skills/koubo-remotion-director/tests/test-preproduction-director-contract.mjs (143.57325ms)\n✔ V9 accepts the script-confirmed start state (1.033ms)\n✔ V9.1 requires automatic matching and experience lookup at postshoot rebound (0.362ms)\n✔ V9.1 requires the accepted preview to be written into the experience ledger (0.332708ms)\n✔ V9 rejects skipped or reordered stages (0.140208ms)\n✔ V9 rejects formal enablement before the user accepts the candidate preview (0.086083ms)\n✔ V9 rejects a missing director prompt pack (0.063458ms)\n✔ V9 accepts the complete release-package state while publication stays disabled (0.59125ms)\n✔ 强化模板必须硬开启事故预防策略 (0.509459ms)\n✔ 原生AI清单不能删除已传播的强化策略再重算外层哈希 (118.75475ms)\n✔ 强化状态支持完整的当前版本证据链，发布仍关闭 (135.365833ms)\n✔ 强化状态拒绝失败回执，即使文件哈希重新算对 (1.464666ms)\n✔ 强化状态拒绝错类型，即使文件哈希重新算对 (1.051875ms)\n✔ 强化状态拒绝跨任务，即使文件哈希重新算对 (0.9255ms)\n✔ 强化状态拒绝旧版本，即使文件哈希重新算对 (1.089833ms)\n✔ 强化状态拒绝空绑定，即使文件哈希重新算对 (1.406792ms)\n✔ 强化状态拒绝错脚本哈希，即使文件哈希重新算对 (1.48725ms)\n✔ 强化状态拒绝错脚本路径，即使文件哈希重新算对 (1.007625ms)\n✔ 强化状态拒绝批准布尔值缺失，即使文件哈希重新算对 (1.318ms)\n✔ 强化状态拒绝例外伪装成功，即使文件哈希重新算对 (1.155917ms)\n✔ 强化状态拒绝失败结果伪装成功，即使文件哈希重新算对 (0.880416ms)\n✔ 强化状态不能跳过内部文件检查或省略项目根目录 (0.278ms)\n✔ 未知策略版本不能静默降级旧夹具模式 (0.064875ms)\n✔ 每一种结构化产物均拒绝错类型或失败状态 (576.8935ms)\n✔ 用户保留例外不能写为可复用成功经验 (124.820667ms)\n✔ 候选批准不自动等于正式授权 (133.671833ms)\n✔ 状态本身去掉策略不能把带强化策略的上游回执降级为旧读 (1.462541ms)\n✔ 旧纯夹具只读兼容不等于内容校验或推进权限 (0.091917ms)\n✔ 当前真实编译器及独立校验器原件可进入V9状态，不补写通用envelope (275.993292ms)\nℹ tests 143\nℹ suites 0\nℹ pass 143\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 37941.738709\n",
+  "stderr": "",
+  "error": null,
+  "tests": [
+    {
+      "path": "skills/koubo-remotion-director/tests/test-paper-physical-contract.mjs",
+      "sha256": "63561fad851e65b11aebd15bb7bde04b43889852161a3dfae871742a33b48f53"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-paper-motion-contract.mjs",
+      "sha256": "3998bad23a4fd25dc7e640f80e1e89ffa2159dda758ecf3e2584e8c9b1c84f56"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-preproduction-director-contract.mjs",
+      "sha256": "31f7fd2541cd3bc53fdec1d106987c97d3f7d63679eb85cc87dd6fce177689fb"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-postshoot-incident-prevention.mjs",
+      "sha256": "cb977aeb9bc1ac10fa1818ece09fe11447f7f73e60b055c4c4ef7e747357522c"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-postshoot-rebind-contract.mjs",
+      "sha256": "9344163136e8d15051701c6e5d60fb8e6c68e533daf1346fceae01749c0dec9f"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-paper-asset-intake-incident.mjs",
+      "sha256": "ecddec7e4cbcef26c1862ff863c351835967968b7dc443c75b74e2f479ac8ebb"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-v9-workflow-state.mjs",
+      "sha256": "49ca28ee1e57f20983cde1e41ba7bfac1fefc5b38bcbe1d6ed6363953bd17162"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-firstframe-text-bake.mjs",
+      "sha256": "55d80a8a8d505e06b2198686cb1cdbf7c23c02680ba752df45ca4a4b57ad46fc"
+    },
+    {
+      "path": "skills/koubo-paper-firstframe-producer/tests/test-raw-visual-review.mjs",
+      "sha256": "53406204ee6c8b9cf627d5504137f327b6e7303eedad4440ff93d0be65adaee6"
+    },
+    {
+      "path": "skills/koubo-paper-firstframe-producer/tests/test-firstframe-batch.mjs",
+      "sha256": "4696b719c3f6cb3cda0e70e06d644a1c94bd2d9de6b49c13799be9a0d06a3346"
+    },
+    {
+      "path": "skills/koubo-paper-firstframe-producer/tests/test-native-compiler-handoff.mjs",
+      "sha256": "2d078c1bfa2ee14a9e3dbe07a27982c14ba0497e037db89f3ed55d45c5de5f2a"
+    },
+    {
+      "path": "skills/koubo-paper-firstframe-producer/tests/test-text-bake-runninghub-handoff.mjs",
+      "sha256": "1d3419999deb5c7d62d02ec1f509e6bcf19bcb5d702fbb2f884fcd87de43cc57"
+    }
+  ],
+  "actualR1MissingContractRejected": {
+    "source": {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r1/director-request.v2.json",
+      "sha256": "0bd427fe1643ebbe89fcb33b1c27f92efd60826c409a5fc9d248350df20f40ab"
+    },
+    "observedErrors": [
+      "PAPER_PHYSICAL_POLICY_REQUIRED",
+      "PAPER_PHYSICAL_CONTRACT_REQUIRED:B04",
+      "PAPER_FIRSTFRAME_PROMPT_NOT_COMPILED:B04",
+      "PAPER_MOTION_PROMPT_NOT_COMPILED:B04",
+      "PAPER_PHYSICAL_CONTRACT_REQUIRED:B07",
+      "PAPER_FIRSTFRAME_PROMPT_NOT_COMPILED:B07",
+      "PAPER_MOTION_PROMPT_NOT_COMPILED:B07",
+      "PAPER_PHYSICAL_CONTRACT_REQUIRED:B10",
+      "PAPER_FIRSTFRAME_PROMPT_NOT_COMPILED:B10",
+      "PAPER_MOTION_PROMPT_NOT_COMPILED:B10",
+      "PAPER_PHYSICAL_CONTRACT_REQUIRED:B11",
+      "PAPER_FIRSTFRAME_PROMPT_NOT_COMPILED:B11",
+      "PAPER_MOTION_PROMPT_NOT_COMPILED:B11",
+      "PAPER_PHYSICAL_CONTRACT_REQUIRED:B15",
+      "PAPER_FIRSTFRAME_PROMPT_NOT_COMPILED:B15",
+      "PAPER_MOTION_PROMPT_NOT_COMPILED:B15",
+      "PAPER_PHYSICAL_CONTRACT_REQUIRED:B17",
+      "PAPER_FIRSTFRAME_PROMPT_NOT_COMPILED:B17",
+      "PAPER_MOTION_PROMPT_NOT_COMPILED:B17"
+    ],
+    "expectedBlockObserved": true
+  },
+  "scope": "当前本地导演合同及下游合成夹具联测；技术夹具图片与OCR不等于本期真实首帧生成或用户验收",
+  "episodeImagesGenerated": 0,
+  "episodeVideosGenerated": 0,
+  "externalCalls": false,
+  "formalAuthorized": false
+}

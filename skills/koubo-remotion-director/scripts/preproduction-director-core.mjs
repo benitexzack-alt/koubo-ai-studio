@@ -18,6 +18,11 @@ export const sha256Buffer = (buffer) =>
   createHash('sha256').update(buffer).digest('hex');
 export const sha256File = (filePath) => sha256Buffer(readFileSync(filePath));
 
+export const incidentPolicy = (document) => ({
+  incidentPreventionVersion: '1',
+  ...(document.policy?.physicalContinuityVersion === '1' ? {physicalContinuityVersion: '1'} : {}),
+});
+
 export function stableStringify(value) {
   if (Array.isArray(value)) return `[${value.map(stableStringify).join(',')}]`;
   if (value && typeof value === 'object') {
@@ -895,14 +900,19 @@ export function validatePaperMeaningReview({request, beat, projectRoot}) {
   return {ok: errors.length === 0, errors};
 }
 
-export function validatePreproductionRequest({request, projectRoot, profile}) {
+export function validatePreproductionRequest({request, projectRoot, profile, historicalReadOnly = false}) {
   const errors = [];
-  const incidentPrevention = request.policy?.incidentPreventionVersion === '1' ||
+  // Only in-memory historical regression may opt out. No CLI passes this option.
+  const newPaperRequest = !historicalReadOnly && (request.beats ?? []).some((beat) => beat.paperScene);
+  const incidentPrevention = newPaperRequest || request.policy?.incidentPreventionVersion === '1' ||
     profile?.incidentPreventionPolicy?.requiredForNewPreproduction === true;
   if (incidentPrevention && request.policy?.incidentPreventionVersion !== '1') {
     errors.push('PAPER_INCIDENT_PREVENTION_POLICY_REQUIRED');
   }
   if (incidentPrevention && !isText(request.revisionId)) errors.push('PAPER_INCIDENT_REVISION_REQUIRED');
+  if (newPaperRequest && request.policy?.physicalContinuityVersion !== '1') {
+    errors.push('PAPER_PHYSICAL_POLICY_REQUIRED');
+  }
   const v9ContractEnabled = v9RequestEnabled(request);
   if (incidentPrevention) {
     for (const beat of Array.isArray(request.beats) ? request.beats : []) {
@@ -1147,7 +1157,7 @@ export function compilePreproductionPlan({request, requestPath, profile, style})
     status: 'provisional-previsualization',
     formalEligible: false,
     postShootRebindRequired: true,
-    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
+    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: incidentPolicy(request)} : {}),
     ...(v9ContractEnabled
       ? {
           v9Contract: {
@@ -1212,7 +1222,7 @@ export function buildRouteLock({request, requestPath, profile, style, plan}) {
     taskId: request.taskId,
     ...(request.policy?.incidentPreventionVersion === '1' ? {revisionId: request.revisionId} : {}),
     phase: 'pre-shoot',
-    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
+    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: incidentPolicy(request)} : {}),
     branch: 'paper-editorial',
     fallback: 'blocked',
     genericInformationCardCanSatisfyPaperBeat: false,
@@ -1303,7 +1313,7 @@ function renderV9LayoutSafetyClause(scene) {
     `字幕保留区：${formatNormalizedRect(layout.subtitleReservedRect)}。任何物件、标签、影子或装饰不得进入该区域。`,
     `物件组构图宽区：${groupClauses.join('；')}。这些是宽区指导，物件在各自区域内自然排布，不要求逐像素贴合矩形边缘。`,
     `纸面标签预留区：${labelClauses.join('；')}。标签纸完整落在对应预留区内，不要求逐像素贴合矩形边缘。`,
-    '硬条件只有：所有主体完整入画、标签不串组、不得侵入字幕保留区；不要为了追求坐标精度挤压或裁切物件。',
+    '构图安全约束与机构物理约束同时生效：主体完整入画、标签不串组、不侵入字幕区；不得为迁就构图省略物件数量、初态空位、承托同高和通道净空。存在冲突应停止生成并修订，不得挤压、裁切或凭空改变机构。',
     'generatedDecorationPolicy=forbidden：禁止生成任何未在物件组中声明的植物、云朵、圆点、摆件或背景装饰。',
   ].join('\n');
 }
@@ -1398,7 +1408,7 @@ export function buildFirstFramePromptManifest(plan) {
     generatedReadableTextAllowed: false,
     modelGeneratedReadableTextAllowed: false,
     deterministicTextMayBeBakedIntoFirstFrame: true,
-    ...(plan.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
+    ...(plan.policy?.incidentPreventionVersion === '1' ? {policy: incidentPolicy(plan)} : {}),
     ...(v9ContractEnabled ? {v9ContractEnabled: true} : {}),
     sourcePlanCanonicalSha256: sha256Json(plan),
     sceneCount: plan.paperScenes.length,
@@ -1420,6 +1430,14 @@ export function buildFirstFramePromptManifest(plan) {
         modelGeneratedReadableTextAllowed: false,
         deterministicTextBake: buildFirstFrameBakePlan(scene, identity),
         postProductionTextOverlay: buildTextOverlayPlan(scene),
+        ...(scene.motionContract ? {
+          motionContract: scene.motionContract,
+          motionContractSha256: sha256Json(scene.motionContract),
+          ...(scene.motionContract.physicalContract ? {
+            physicalContract: scene.motionContract.physicalContract,
+            physicalContractSha256: sha256Json(scene.motionContract.physicalContract),
+          } : {}),
+        } : {}),
         ...(v9ContractEnabled
           ? {
               layoutContract: scene.layoutContract,
@@ -1444,7 +1462,7 @@ export function buildRunningHubPromptManifest(plan) {
     generationMode: 'image-to-video',
     executionOwner: 'user-manual',
     codexExternalSubmissionAllowed: false,
-    ...(plan.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
+    ...(plan.policy?.incidentPreventionVersion === '1' ? {policy: incidentPolicy(plan)} : {}),
     submissionBlockedUntil: [
       'raw-first-frame-visual-review-passed',
       'actual-paper-surface-anchor-calibration-passed',
@@ -1553,7 +1571,7 @@ export function buildAiGeneratedVideoPromptManifest(plan) {
     schemaVersion: AI_GENERATED_VIDEO_PROMPT_MANIFEST_SCHEMA,
     requestId: plan.requestId,
     taskId: plan.taskId,
-    ...(plan.policy?.incidentPreventionVersion === '1' ? {revisionId: plan.revisionId, policy: {incidentPreventionVersion: '1'}} : {}),
+    ...(plan.policy?.incidentPreventionVersion === '1' ? {revisionId: plan.revisionId, policy: incidentPolicy(plan)} : {}),
     phase: 'pre-shoot',
     status: items.length === 0 ? 'not-required' : 'manual-execution-required',
     consumer: 'manual-ai-generated-video',
@@ -1612,11 +1630,21 @@ export function validatePromptHandoffManifests({
   if (plan.policy?.incidentPreventionVersion === '1') {
     for (const manifest of [firstFrameManifest, runningHubManifest, ...(v9ContractEnabled ? [aiGeneratedVideoManifest] : [])]) {
       push(errors, manifest?.policy?.incidentPreventionVersion === '1', 'PROMPT_INCIDENT_POLICY_MISSING');
+      push(errors, stableStringify(manifest?.policy) === stableStringify(incidentPolicy(plan)), 'PROMPT_PHYSICAL_POLICY_MISMATCH');
       push(errors, isText(plan.revisionId) && manifest?.revisionId === plan.revisionId, 'PROMPT_INCIDENT_REVISION_MISMATCH');
     }
     for (const [index, scene] of plan.paperScenes.entries()) {
       errors.push(...validatePaperMotionContract({scene, beat: {id: scene.beatId, spokenLine: scene.spokenLine}, required: true}));
       const handed = runningHubManifest?.scenes?.[index];
+      const first = firstFrameManifest?.scenes?.[index];
+      push(errors, stableStringify(first?.motionContract) === stableStringify(scene.motionContract) &&
+        first?.motionContractSha256 === sha256Json(scene.motionContract),
+      `FIRSTFRAME_MOTION_CONTRACT_BINDING_MISMATCH:${scene.beatId}`);
+      if (scene.motionContract?.physicalContract) {
+        push(errors, stableStringify(first?.physicalContract) === stableStringify(scene.motionContract.physicalContract) &&
+          first?.physicalContractSha256 === sha256Json(scene.motionContract.physicalContract),
+        `FIRSTFRAME_PHYSICAL_CONTRACT_BINDING_MISMATCH:${scene.beatId}`);
+      }
       push(errors, handed?.motionContractSha256 === sha256Json(scene.motionContract) &&
         stableStringify(handed?.dynamicValidation) === stableStringify(scene.motionContract?.dynamicValidation),
       `RUNNINGHUB_MOTION_CONTRACT_BINDING_MISMATCH:${scene.beatId}`);
@@ -1875,7 +1903,7 @@ export function renderRunningHubPromptSheet(plan, runningHubManifest) {
     '',
     '> 本文件只包含图生视频动作提示词，不包含首帧生图提示词。请按同一 P 编号选择对应首帧图片。',
     '> 当前状态不是可提交状态。只有 runninghub-ready-pack.v1.json 生成后，才可把其中已通过OCR的带字首帧交给 RunningHub。',
-    '> 生成模型不得自由改写中文；带字纸片只允许刚性滑入、平移、小角度旋转、抽屉推出与拼图扣合。',
+    '> 当前机构模式中，带字牌全程固定在独立支架上，不得滑动、旋转或翻折；只有动作合同指定的无字部件可以运动。历史运动文字模式不适用于新请求。',
     '',
   ];
   runningHubManifest.scenes.forEach((scene) => {
@@ -1886,7 +1914,7 @@ export function renderRunningHubPromptSheet(plan, runningHubManifest) {
     lines.push(`- 建议时长：${scene.durationSeconds}秒`);
     lines.push(`- 当前门禁：${scene.handoffState}`);
     lines.push(
-      `- 文字模式：${scene.inputContainsDeterministicBakedText ? '输入首帧已确定性带字；RunningHub只做刚性纸片动作' : 'Remotion 纸面跟踪'}`,
+      `- 文字模式：${scene.inputContainsDeterministicBakedText ? '首帧中文已确定性写入；带字牌固定，仅指定无字部件运动' : '历史纸面跟踪记录，不得用于新生产'}`,
     );
     lines.push(
       `- 精确节点：${scene.postProductionTextOverlay.map((item) => `${item.text}（${item.embeddingMode}）`).join(' / ')}`,

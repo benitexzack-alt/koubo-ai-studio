@@ -23,6 +23,8 @@ Remotion 是精确包装工具，不替代粗剪软件。正式片必须先有�
 
 ### 当前事故修订
 
+2026-09-10 新请求另须 `policy.physicalContinuityVersion="1"`。先定义活动件唯一数量、全部工位初态（空位也要写）、最大包络、入口净空、同高支承与障碍，再写构图。跨组水平滑动必须通过实体通道数值校验；不得拿“静帧好看”或屏幕运动区不遮字代替可动性。结构与提示词、首帧清单共用同一合同，下游还需真实图片观察及动态样片验证。详见下列事故规范的数量与通道章节。
+
 2026-09-08 起新预拍请求启用 `policy.incidentPreventionVersion="1"`。进入纸艺分支前读取 [references/paper-motion-incident-prevention.md](references/paper-motion-incident-prevention.md)：动作由结构合同编译，中文牌采用独立固定支架，动态先试代表镜再批量，验收绑定实际视频与动作边界。交接与原生V9状态接口另见 [references/incident-handoff-state-integration.v1.md](references/incident-handoff-state-integration.v1.md)。当前只复用完整动作合同一致的已验收样片，不自动泛化不同机构；已通过样片不重复生成。以下历史运动文字和多级装配说明不能绕过此修订；历史产物只读保留，不补造新验收。代码测试通过不代表生成模型已遵守动作，也不授权付费或正式渲染。
 
 ## 必读顺序

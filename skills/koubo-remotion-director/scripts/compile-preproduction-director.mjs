@@ -4,6 +4,7 @@ import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {
+  incidentPolicy,
   buildAiGeneratedVideoPromptManifest,
   buildFirstFramePromptManifest,
   buildRouteLock,
@@ -125,7 +126,7 @@ try {
     taskId: request.taskId,
     ...(request.policy?.incidentPreventionVersion === '1' ? {revisionId: request.revisionId} : {}),
     phase: 'pre-shoot',
-    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
+    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: incidentPolicy(request)} : {}),
     compilerExecuted: true,
     skillExecuted: false,
     skillExecutionBoundary: '需等独立验证器通过后才能记录 skillExecuted=true',

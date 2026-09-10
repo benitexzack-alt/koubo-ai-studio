@@ -26,6 +26,7 @@ export function makeIncidentMotionRequest(source) {
   request.requestId = 'incident-motion-local-contract-test';
   request.revisionId = 'incident-motion-local-contract-r1';
   request.policy.incidentPreventionVersion = '1';
+  request.policy.physicalContinuityVersion = '1';
   request.beats = [request.beats.find((beat) => beat.id === 'B11')];
   const beat = request.beats[0];
   beat.order = 1;
@@ -60,7 +61,20 @@ export function makeIncidentMotionRequest(source) {
   };
   scene.stages = [{id: 'S1', order: 1, subject: 'G2', landingNodeIds: [], sfxRole: 'paper-slide',
     action: renderMotionAction(scene, scene.motionContract.actions[0])}];
-  scene.prompt.motion = renderMotionPrompt(scene);
+  // Synthetic tabletop dimensions for offline regression, never image measurements.
+  scene.motionContract.physicalContract = {
+    schemaVersion: 'koubo-paper-physical-contract/v1', coordinateSystem: 'tabletop-mm', minimumClearanceMm: 2,
+    inventory: ['valid-pages', 'obsolete-pages'].map((partId) => ({partId, quantity: 1,
+      unit: 'rigid-assembly', envelopeMm: {width: 40, depth: 20, height: 4}})),
+    stations: scene.objectGroups.map((group) => ({groupId: group.id,
+      initialPartIds: scene.motionContract.initialLocations.filter((item) => item.groupId === group.id).map((item) => item.partId)})),
+    docks: [{id: 'valid-from', groupId: 'G2', xMm: 100, yMm: 100, supportHeightMm: 20, openingWidthMm: 30, openingHeightMm: 10},
+      {id: 'valid-to', groupId: 'G4', xMm: 300, yMm: 100, supportHeightMm: 20, openingWidthMm: 30, openingHeightMm: 10}],
+    supports: [{id: 'valid-lane', xMm: 75, yMm: 85, widthMm: 250, depthMm: 30, topHeightMm: 20}],
+    obstacles: [{id: 'obsolete-isolated-box', xMm: 190, yMm: 170, zMm: 20, widthMm: 40, depthMm: 30, heightMm: 25}],
+    transfers: [{actionId: 'A1', fromDockId: 'valid-from', toDockId: 'valid-to', supportIds: ['valid-lane']}],
+  };
   scene.prompt.firstFrame = renderMotionFirstFrame(scene);
+  scene.prompt.motion = renderMotionPrompt(scene);
   return request;
 }

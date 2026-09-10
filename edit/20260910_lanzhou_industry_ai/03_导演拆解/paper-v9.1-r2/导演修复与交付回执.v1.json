@@ -1,0 +1,270 @@
+{
+  "schemaVersion": "koubo-director-physical-repair-delivery/v1",
+  "createdAt": "2026-09-10T13:00:39.239Z",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r2",
+  "status": "director-prompt-packs-ready",
+  "firstFrameStatus": "awaiting-actual-image-review",
+  "runningHubStatus": "awaiting-text-baked-firstframes",
+  "source": {
+    "path": "edit/20260910_lanzhou_industry_ai/00_文稿与控制/用户确认原稿.txt",
+    "sha256": "c1ebc6f3f9f82a405a1c7c7564097a62585601c31b3ee17edd07334695dcb3b9"
+  },
+  "request": {
+    "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/director-request.v1.json",
+    "sha256": "30d859af206a074b0c395eef471c5fbe4622c3682c02f8fb7bb37c47fc5c2fc9"
+  },
+  "profile": {
+    "path": "workflow/active-director-profile.v1.json",
+    "sha256": "b5be2e56a560a6cb8cfe3e9953066b8091d955790fdf5f70298b560222539d5f"
+  },
+  "skillLock": {
+    "path": "workflow/director-skill-lock.v1.json",
+    "sha256": "5e6255f1412d3df8e651b305288ab877d1d6d02db9a5a0b3dbf5d3370e7239d6"
+  },
+  "installedSkill": {
+    "path": "/Users/pc/.codex/skills/koubo-remotion-director",
+    "realpath": "/Users/pc/Documents/口播/skills/koubo-remotion-director"
+  },
+  "downstreamIntegration": {
+    "commit": "feadc58",
+    "files": [
+      {
+        "path": "skills/koubo-paper-firstframe-producer/SKILL.md",
+        "sha256": "0377c796d27d925592aec1fa9a7df2263fa1e33cea0bc8bfee4121abafeb6870"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/references/quality-contract.md",
+        "sha256": "43360d6a8cdf5ed5883a13601648f79788374aae55419ffd17e3b8be1bb071ee"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/scripts/bake-firstframe-batch.mjs",
+        "sha256": "b7ef5b49ab9140c3f02d64e176a9fd23c56259b22255ccf4d9a13c17c8f9c06d"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/scripts/build-runninghub-canvas-preparation-pack.mjs",
+        "sha256": "14e36ceea762c739d72bae49d09cea2e5e8835a4c117a4a364c1f5c6e4ad5fd8"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/scripts/build-runninghub-ready-pack.mjs",
+        "sha256": "2767905432f0ef1369892e1554da722078e26745788fff51a2695fab0417a28d"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/scripts/firstframe-batch-core.mjs",
+        "sha256": "5859e92905ed50f184cd0b485efa1e542a19dd8463ab32136ffa31c8a8173df3"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/scripts/prepare-firstframe-batch.mjs",
+        "sha256": "a4d7b63294d918b3bf99267b43f0aed9b27b47a0b86bd66b0e806600acb5f2aa"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/scripts/runninghub-handoff-incident-core.mjs",
+        "sha256": "a1d98f670f5912fbdfd305cb917ac4a382f294cc9d6f4cbac487686065e92456"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/scripts/validate-firstframe-batch.mjs",
+        "sha256": "da81cb83d17451e814229c48f571f28bfd4a36b3b663bb5ced4b22881a544ccd"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/tests/test-firstframe-batch.mjs",
+        "sha256": "4696b719c3f6cb3cda0e70e06d644a1c94bd2d9de6b49c13799be9a0d06a3346"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/tests/test-native-compiler-handoff.mjs",
+        "sha256": "2d078c1bfa2ee14a9e3dbe07a27982c14ba0497e037db89f3ed55d45c5de5f2a"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/tests/test-raw-visual-review.mjs",
+        "sha256": "53406204ee6c8b9cf627d5504137f327b6e7303eedad4440ff93d0be65adaee6"
+      },
+      {
+        "path": "skills/koubo-paper-firstframe-producer/tests/test-text-bake-runninghub-handoff.mjs",
+        "sha256": "1d3419999deb5c7d62d02ec1f509e6bcf19bcb5d702fbb2f884fcd87de43cc57"
+      },
+      {
+        "path": "skills/koubo-runninghub-video-batch/SKILL.md",
+        "sha256": "528e9b19bf81ab9b00b680ae152cb91b60f5a4f7acaaa225627129322304bae5"
+      }
+    ],
+    "firstframeSkillRealpath": "/Users/pc/Documents/口播/skills/koubo-paper-firstframe-producer",
+    "runninghubInstalledRuntimeFiles": [
+      {
+        "path": "/Users/pc/.codex/skills/koubo-runninghub-video-batch/SKILL.md",
+        "sha256": "528e9b19bf81ab9b00b680ae152cb91b60f5a4f7acaaa225627129322304bae5"
+      },
+      {
+        "path": "/Users/pc/.codex/skills/koubo-runninghub-video-batch/agents/openai.yaml",
+        "sha256": "e1864c26699896bd0497edb2f9a59ea60030524a0bc476c4b3560fb2b6aac97a"
+      },
+      {
+        "path": "/Users/pc/.codex/skills/koubo-runninghub-video-batch/references/rhtv-browser-procedure.md",
+        "sha256": "daec507a5aca1784dadb64a0e6c64112f9154a4434613489736b8834d87a0788"
+      }
+    ],
+    "runninghubInstalledChangedFile": "/Users/pc/.codex/skills/koubo-runninghub-video-batch/SKILL.md",
+    "runninghubInstalledPreviousSha256": "ab3b9544078843d56f7e202b22ffd1bdfe5783460fae7c9bde3f79c39af4d47d",
+    "excludedRepositoryOnlyFile": "skills/koubo-runninghub-video-batch/SNAPSHOT.md",
+    "boundary": "导演包锁只覆盖导演目录；下游14文件由本回执与Git提交另行绑定，不冒称在旧锁范围内"
+  },
+  "desktopEntry": {
+    "path": "/Users/pc/Desktop/口播素材/2026-09-10_兰州行业经验加AI",
+    "target": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai",
+    "realpath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai"
+  },
+  "paperScenes": [
+    {
+      "sceneId": "P01",
+      "beatId": "B04",
+      "physicalContractSha256": "d48754e950fbe1997e146333630b09c7ae7778060679abf7078c65e3fb4d5f6c",
+      "firstFramePromptSha256": "aef8f644e88eb45486badb5f94b680568129ffb8483a5d48898270635c972be7",
+      "pairSha256": "9c6e21440fbc722cb219eceb38551afd92e2f9e522154ee3e0df8f5ce9b5a664"
+    },
+    {
+      "sceneId": "P02",
+      "beatId": "B07",
+      "physicalContractSha256": "58c0457099b22c07b3da4750b02f86e5da932c2fab3d54f709b802b8802b60c0",
+      "firstFramePromptSha256": "5833a71cda4d035ac53c6535f635271bf3ab73a32f3a15c8e6b27e95d27d6131",
+      "pairSha256": "f268f310f9b9af6d67c96a740bc212871310d5a99e8724ef41687dc5f94a643d"
+    },
+    {
+      "sceneId": "P03",
+      "beatId": "B10",
+      "physicalContractSha256": "b7c9e10256c98a115e2e32f4e36d5aee8e9831ee599f05f0aa9451cbe39e5bf9",
+      "firstFramePromptSha256": "faedf5555f50b686ebfb0ad57849c41a3a7cb4554c3efb04f80780f45bc59511",
+      "pairSha256": "0ae807c0bb967892472ac47a322fa8bbcf078ea10778bbaf241fa91c3d487bb4"
+    },
+    {
+      "sceneId": "P04",
+      "beatId": "B11",
+      "physicalContractSha256": "810468c21bf8ed8d92a3d5783a20861aead32a89f74f01b9e17aaa5acdadb23e",
+      "firstFramePromptSha256": "ffba41649fd4486a003cf8047dd6f9b832709e06bfe934a2653df43f1826e589",
+      "pairSha256": "53ae93cd0c0f5be7e0838150f6908f0f5651f7840b2c264c8c35c85b03755003"
+    },
+    {
+      "sceneId": "P05",
+      "beatId": "B15",
+      "physicalContractSha256": "3303817deeef3ae1a0c1f78eab6ce3c7c3444588c7a83dd233c12afbf5369305",
+      "firstFramePromptSha256": "0901cf38eb62df32a935018f075da4e9e06f2f93772a7602ce2a7bdba5786001",
+      "pairSha256": "f84f21f4ca99dce2c239f36c2c0fd9cec6de2a1922f7c99a6e40012abee3dd47"
+    },
+    {
+      "sceneId": "P06",
+      "beatId": "B17",
+      "physicalContractSha256": "3710b585522d2af8a9a4b01cce91beb258e342be9a1524b6aa4e6a72bbef4fd1",
+      "firstFramePromptSha256": "579fed56474dc589b6f7114c70c0d46ff635c5f949cb45167d6484ea02ddee45",
+      "pairSha256": "2658573e4e2b8ad5032be0e1a06824e608987af3bb79bcd5f22bc2a4a725f6e4"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/director-route-lock.v1.json",
+      "sha256": "4afc62028bd4d5c634a255b54a940fa5d4b38aff6858e89e296e8eacb67e93fa"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/director-plan.v1.json",
+      "sha256": "37ab7a15e504c04c7fb171794e49ec36b120efb94d50a2dff5e260109ffd5a9f"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/导演素材执行单.md",
+      "sha256": "70e90f12526dabdc4863b727c57e39da762c5493d2b52f758382146f80f708c1"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-prompts.v1.json",
+      "sha256": "50e1a63b6dd48c56f48e80c7c9a4f145bb6c7ce3855afe1914a2f9d26b5e2e66"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/runninghub-image-to-video-prompts.v1.json",
+      "sha256": "bbcee458709d39c3afcc59b231fcef9db5d41ca1b11a52c00d8698fbdd333b72"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/图生视频提示词.md",
+      "sha256": "9d062c66598f824a0729fb6b68b9f54c0901efa954a5810d8813bc04b2f16a5f"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/ai-generated-video-prompts.v1.json",
+      "sha256": "7861f016fc7779b0665697ecbc2402a4fef4c22f6f0232935ba5a61dc66ddef4"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/AI情景视频清单.md",
+      "sha256": "22edec272d2bcdfa1d8766a9ea0cecc0b05462c66928f7e54420a85c4ab12f01"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/compile-receipt.v1.json",
+      "sha256": "8da2f767fba874944de7f3ca69cfae5b16b0889f031339397fb14fe267c427db"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/validation-receipt.v1.json",
+      "sha256": "a2b5cef09f5183950acab27891bdd9762f6695f09f0b56f04f80be4c67619ef1"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/首帧提示词.md",
+      "sha256": "5e778155f9b393a195df933f0403b10a0a14a37f42e15b407f76f187d7cebfe3"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/revision-scope.v1.json",
+      "sha256": "865910dfa8ab317d5910e57a49a339614a551ec33146a6a7616201cd41ac9476"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/r1-immutable-inputs.v1.json",
+      "sha256": "64ccefebcc0e921aeb729aebb9632439a7dd294e19612de7d9ad16d3cf573d3b"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/regression-receipt.v2.json",
+      "sha256": "9bafb4aede325cc5a157fce46cee740eb8c4c967e123555781cddf2d66edb969"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/v9-production-state.v1.json",
+      "sha256": "254e659c450a37cd91bda101ae5b19777c5d1ee6f426f97894db7ceb369a963a"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/user-preproduction-authorization.v1.json",
+      "sha256": "d2e6a2b2a08a920d8e10f36e52b70dad733e407324c715bddab9bf68c5efc4c6"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B04-mechanism-review.v2.json",
+      "sha256": "a0267b2b0591b9c88f4b0cd47723311cfed1532b3b481f7bb22245eb5e1cf6e9"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B07-mechanism-review.v2.json",
+      "sha256": "f5e88d60fd20e4c1e022b6a606f525818b2a4530b685604adae4eca2b4eb315c"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B10-mechanism-review.v2.json",
+      "sha256": "e51f63bf03d221149545c658025eb90ac5b67a2870603fdb305d1e4bc50b7eb5"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B11-mechanism-review.v2.json",
+      "sha256": "80d410b8e23cf9b802c713685899a12b198225e2030183a432322db6963c4727"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B15-mechanism-review.v2.json",
+      "sha256": "09e888c3c8b038d24d0ebaed068e4428f255465909ac756b474cb73b26591f5a"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/reviews/B17-mechanism-review.v2.json",
+      "sha256": "f54daa63ce7676e142bcd2df8731652d73994fca001471b9e274ec33302ffa90"
+    }
+  ],
+  "historicalR1UnchangedFiles": 41,
+  "imagesGenerated": 0,
+  "videosGenerated": 0,
+  "generationAuthorized": false,
+  "uploaded": false,
+  "paid": false,
+  "formalAuthorized": false,
+  "published": false,
+  "remainingGates": [
+    "当前图片实际数量/空位/通道观察",
+    "确定性中文烘焙与最终图OCR",
+    "用户看图确认",
+    "逐机构动态试验、正常速度检查与用户确认",
+    "原片实录重绑",
+    "低清样片及正式渲染独立授权"
+  ],
+  "limitations": [
+    "毫米坐标是制作规划，不是生成图的测量值",
+    "当前物理核验只覆盖同高水平直线跨组滑动，局部折叠与旋转仍须实际动态验收",
+    "未证明生成模型稳定服从；未声明图片或动画修好",
+    "纸艺语义和实际录音对位仍需拍摄后执行"
+  ]
+}

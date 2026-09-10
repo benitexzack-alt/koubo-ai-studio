@@ -27,6 +27,23 @@
 
 ## 交接和动态验收
 
+### 2026-09-10：数量、空位与实体通道
+
+新请求同时必须声明 `policy.physicalContinuityVersion="1"`，每镜增加 `motionContract.physicalContract`。它是导演规划的桌面毫米坐标，不是实拍测量，更不是生成模型已经遵守的证明。规范为 `koubo-paper-physical-contract/v1`，字段如下：
+
+- `coordinateSystem=tabletop-mm`，`minimumClearanceMm>=1`。
+- `inventory`：每个无字活动件唯一列出 `partId`、`quantity=1`、`unit=rigid-assembly`、运输姿态最大 `envelopeMm={width,depth,height}`。一叠纸作为一个固定组合，不按每页重复计数；固定标签不计入活动件。包络数值只用于跨组滑动，不声称已验算本组折叠、旋转的全部临时姿态；局部动作仍需投影动作区与真实动态检查。
+- `stations`：每个物件组恰好一项 `groupId/initialPartIds`。无活动件的组必须明确空数组；逐项与 `initialLocations` 对照。不能只写“同一叠纸在起点”，却允许其他站再摆一叠。
+- `docks`：入口/出口的 `id/groupId/xMm/yMm/supportHeightMm/openingWidthMm/openingHeightMm`。正面字牌另在后侧独立支撑，不兼作通道挡板。
+- `supports`：`id/xMm/yMm/widthMm/depthMm/topHeightMm`；`obstacles`：`id/xMm/yMm/zMm/widthMm/depthMm/heightMm`。如无障碍明确空数组，实际图像仍须检查有无生成未声明挡板。
+- `transfers`：每次跨组滑动恰好绑定 `actionId/fromDockId/toDockId/supportIds`。当前最小实现只支持同高、同纵深的水平直线滑动；其他跨组机构必须先研究，不允许冒充水平通道。
+
+验证器实际计算最大物件包络加净空、开口余量、两端同高、连续交接位置、承托面的并集覆盖和三维障碍相交。不能用一个包围大框代替中间有缝的支承面，也不能用 `passed=true` 代替上述数据。初态、四张固定牌、空工位和通道说明由同一合同编译到首帧及动作提示词；两份提示词不得另写矛盾机构。三层空间优先来自背景、人物和独立字牌，不靠输送台阶制造。
+
+首帧清单保留完整 `motionContract`、`physicalContract` 及各自规范化 SHA-256，下游必须绑定当前实际图像记录：活动件数量与位置、各站空位、实际通道、支承高差和障碍。计划合格与图片观察合格是两道独立检查。图片通过后仍需正常速度动态验证。
+
+历史兼容只限纯内存 `validatePreproductionRequest(..., historicalReadOnly:true)` 的旧字段回归；两个导出/签发 CLI 均不传此参数。删除策略、换旧 profile 或在 JSON 中自填同名字段，不能解除新请求必填要求。历史产物不重新编译、不补新回执；其旧动态批准不继承到新r2。
+
 首帧提示词、带字图、文字表、OCR和图生视频提示词逐项绑定当前SHA。中文OCR必须覆盖全部标签并有非空结果；批准必须绑定实际图像集合。原图合格而写字失败时复用原图，不重新生成。
 
 先完成最容易失败的代表镜动态试验，再放行本批剩余镜头。当前复用依据是完整动作合同SHA完全相同，不是“看起来像同一机构”；不同原句或审查绑定通常意味着逐镜独立试验，不能宣称已有跨镜自动泛化。每条通过的试验视频直接复用，不再为成批而重复生成；不同合同的下一镜用指定sceneId继续试验。静图批准不等于动态批准，上一节目通过不等于本批通过。外部提交、付费和重试仍需单独授权，不自动重试。具体CLI和验收索引见 `incident-handoff-state-integration.v1.md`。

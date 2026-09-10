@@ -4,6 +4,7 @@ import {existsSync, mkdirSync, readFileSync, writeFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {
+  incidentPolicy,
   DIRECTOR_ROUTE_LOCK_SCHEMA,
   PREPRODUCTION_PLAN_SCHEMA,
   compilePreproductionPlan,
@@ -122,6 +123,7 @@ try {
     if (sha256Json(plan) !== sha256Json(expectedPlan)) errors.push('INCIDENT_PLAN_REQUEST_RECOMPILE_MISMATCH');
     if (sha256Json(routeLock) !== sha256Json(expectedRoute)) errors.push('INCIDENT_ROUTE_REQUEST_RECOMPILE_MISMATCH');
     if (compileReceipt.policy?.incidentPreventionVersion !== '1') errors.push('INCIDENT_COMPILE_POLICY_MISSING');
+    if (sha256Json(compileReceipt.policy) !== sha256Json(incidentPolicy(request))) errors.push('PHYSICAL_COMPILE_POLICY_MISMATCH');
     if (compileReceipt.revisionId !== request.revisionId) errors.push('INCIDENT_COMPILE_REVISION_MISMATCH');
   }
   if (v9ContractEnabled && plan.v9Contract?.enabled !== true) {
@@ -207,7 +209,7 @@ try {
     taskId: request.taskId,
     ...(request.policy?.incidentPreventionVersion === '1' ? {revisionId: request.revisionId} : {}),
     phase: 'pre-shoot',
-    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: {incidentPreventionVersion: '1'}} : {}),
+    ...(request.policy?.incidentPreventionVersion === '1' ? {policy: incidentPolicy(request)} : {}),
     status: 'validated-provisional-previsualization',
     skillRead: true,
     skillExecuted: true,

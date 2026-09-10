@@ -1,0 +1,863 @@
+{
+  "schemaVersion": "koubo-runninghub-image-to-video-prompt-manifest/v1",
+  "requestId": "20260910-lanzhou-industry-ai-paper-v9.1-r2-pre-shoot",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r2",
+  "phase": "pre-shoot",
+  "status": "awaiting-text-baked-firstframes",
+  "consumer": "runninghub-manual-image-to-video",
+  "generationMode": "image-to-video",
+  "executionOwner": "user-manual",
+  "codexExternalSubmissionAllowed": false,
+  "policy": {
+    "incidentPreventionVersion": "1",
+    "physicalContinuityVersion": "1"
+  },
+  "submissionBlockedUntil": [
+    "raw-first-frame-visual-review-passed",
+    "actual-paper-surface-anchor-calibration-passed",
+    "deterministic-text-bake-receipt-passed",
+    "text-baked-first-frame-ocr-passed",
+    "runninghub-ready-pack-issued"
+  ],
+  "sourcePlanCanonicalSha256": "035808e9f1c7043713afd22c78c6050cc355cc7e89c60c8f016df133ee0ece18",
+  "sceneCount": 6,
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "pairId": "P01-B04",
+      "beatId": "B04",
+      "title": "经验留下来，客户了解用起来",
+      "spokenLine": "所以，你以前做过销售、开过店，或者在一个行业干了很多年，别觉得学AI就得把这些全扔了，从头转行。你对客户的了解，恰恰可能派上用场。",
+      "inputFirstFrameFileName": "P01_B04_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "aef8f644e88eb45486badb5f94b680568129ffb8483a5d48898270635c972be7",
+      "inputFirstFrameTextPlanSha256": "b54ef349295790240e81cc4b5222b6498248457d00a1cbebbbaccb357df1d209",
+      "durationSeconds": 7,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n来自销售经历的无字经验纸片（sales）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n来自开店经历的无字经验纸片（store）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n销售经历档案架（G1）初态活动件仅有：来自销售经历的无字经验纸片（sales）；保留固定字牌与布景。\n门店经验纸盒（G2）初态活动件仅有：来自开店经历的无字经验纸片（store）；保留固定字牌与布景。\n客户了解汇集台（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A1：来自销售经历的无字经验纸片（sales）从销售经历档案架（G1）对接点A1-from（100,100）至客户了解汇集台（G3）对接点A1-to（400,100），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[78,422]、纵向[88,112]、高度[20,25]毫米；支承面A1-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：来自开店经历的无字经验纸片（store）从门店经验纸盒（G2）对接点A2-from（250,150）至客户了解汇集台（G3）对接点A2-to（400,150），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[228,422]、纵向[138,162]、高度[20,25]毫米；支承面A2-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n1至3秒：来自销售经历的无字经验纸片从销售经历档案架移至客户了解汇集台，整体滑动。\n3.5至5.5秒：来自开店经历的无字经验纸片从门店经验纸盒移至客户了解汇集台，整体滑动。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "b6e4c06e66b0e3346b4a6d0e2ba5b79cbc83dba707f1df63b93bf309461cdbe4",
+      "pairSha256": "9c6e21440fbc722cb219eceb38551afd92e2f9e522154ee3e0df8f5ce9b5a664",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "销售",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.33,
+              0.2
+            ],
+            [
+              0.33,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "开过店",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.365,
+              0.2
+            ],
+            [
+              0.635,
+              0.2
+            ],
+            [
+              0.635,
+              0.305
+            ],
+            [
+              0.365,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "客户的了解",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.67,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.305
+            ],
+            [
+              0.67,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "21a125db1303978628bd610f9466071310f70c6d0676b7e2f69b143efcb3bbb8",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    },
+    {
+      "sceneId": "P02",
+      "pairId": "P02-B07",
+      "beatId": "B07",
+      "title": "回答整理成内容，必须经过老板核对",
+      "spokenLine": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。",
+      "inputFirstFrameFileName": "P02_B07_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "5833a71cda4d035ac53c6535f635271bf3ab73a32f3a15c8e6b27e95d27d6131",
+      "inputFirstFrameTextPlanSha256": "6cabf8112f55f793d051cb297773bbff430592960db5997c8247183a9ba4375a",
+      "durationSeconds": 8,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n同一叠无字回答纸页（draft）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽50、深24、高4毫米，输送途中不得缩小或变形。\n老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）（lever）全景总量固定为1个刚性组合；本镜不作跨组输送，局部动作范围按动作区及真实动态另行检查。\n老板回答收集垫（G1）初态活动件仅有：同一叠无字回答纸页（draft）；保留固定字牌与布景。\nAI平放整理垫（G2）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n老板人工核对垫（G3）初态活动件仅有：老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）（lever）；保留固定字牌与布景。\n对外内容平放展示垫（G4）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A1：同一叠无字回答纸页（draft）从老板回答收集垫（G1）对接点draft-G1（80,130）至AI平放整理垫（G2）对接点draft-G2（200,130），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽32、高12毫米，进入开口宽32、高12毫米；两端开口至少宽28、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[53,227]、纵向[116,144]、高度[20,26]毫米；支承面deck-G1、deck-G2、deck-G3、deck-G4的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：同一叠无字回答纸页（draft）从AI平放整理垫（G2）对接点draft-G2（200,130）至老板人工核对垫（G3）对接点draft-G3（320,130），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽32、高12毫米，进入开口宽32、高12毫米；两端开口至少宽28、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[173,347]、纵向[116,144]、高度[20,26]毫米；支承面deck-G1、deck-G2、deck-G3、deck-G4的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A4：同一叠无字回答纸页（draft）从老板人工核对垫（G3）对接点draft-G3（320,130）至对外内容平放展示垫（G4）对接点draft-G4（440,130），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽32、高12毫米，进入开口宽32、高12毫米；两端开口至少宽28、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[293,467]、纵向[116,144]、高度[20,26]毫米；支承面deck-G1、deck-G2、deck-G3、deck-G4的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n0.6至1.7秒：同一叠无字回答纸页从老板回答收集垫移至AI平放整理垫，整体滑动。\n2至3.1秒：同一叠无字回答纸页从AI平放整理垫移至老板人工核对垫，整体滑动。\n3.4至4.7秒：老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）在老板人工核对垫，小角度刚性转动。\n5.1至6.5秒：同一叠无字回答纸页从老板人工核对垫移至对外内容平放展示垫，整体滑动。\n先完成“同一叠无字回答纸页从AI平放整理垫移至老板人工核对垫，整体滑动。”，才可开始“老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）在老板人工核对垫，小角度刚性转动。”。\n先完成“老板位置的无字右向控制杆（独立后侧转轴，运动全程在出纸通道外）在老板人工核对垫，小角度刚性转动。”，才可开始“同一叠无字回答纸页从老板人工核对垫移至对外内容平放展示垫，整体滑动。”。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "f0480d9c8da08c8813ae0a5bb80b16558bbb7d2bdde1afaac8172240f817bbdb",
+      "pairSha256": "f268f310f9b9af6d67c96a740bc212871310d5a99e8724ef41687dc5f94a643d",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "回答",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.255,
+              0.2
+            ],
+            [
+              0.255,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "归类",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.29,
+              0.2
+            ],
+            [
+              0.485,
+              0.2
+            ],
+            [
+              0.485,
+              0.305
+            ],
+            [
+              0.29,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "老板核对",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.52,
+              0.2
+            ],
+            [
+              0.715,
+              0.2
+            ],
+            [
+              0.715,
+              0.305
+            ],
+            [
+              0.52,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N4",
+          "text": "讲出去",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.75,
+              0.2
+            ],
+            [
+              0.945,
+              0.2
+            ],
+            [
+              0.945,
+              0.305
+            ],
+            [
+              0.75,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "b327cf7309fe94df06445bd128fc8331fe5317e1a8b9b0cf0b6366aabaf0d400",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    },
+    {
+      "sceneId": "P03",
+      "pairId": "P03-B10",
+      "beatId": "B10",
+      "title": "只有内容，缺产品服务就接不住",
+      "spokenLine": "这既是老板可以尝试的内容做法，也给懂这个行业的人留出了一种服务机会。你帮他把经验讲清楚、持续做成内容，省下他自己摸索和制作的工夫。但他本身没有能交给客户的产品或服务，光发内容也接不住生意。",
+      "inputFirstFrameFileName": "P03_B10_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "faedf5555f50b686ebfb0ad57849c41a3a7cb4554c3efb04f80780f45bc59511",
+      "inputFirstFrameTextPlanSha256": "8785eec932836cc7ea3ed0d46330264e92d2c96bb704539fc16a253081ac53e8",
+      "durationSeconds": 6,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n无字内容折页（leaflet）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深18、高3毫米，输送途中不得缩小或变形。\n无字客户咨询纸片（不是交付成品）（inquiry）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深18、高3毫米，输送途中不得缩小或变形。\n内容介绍起点（G1）初态活动件仅有：无字内容折页（leaflet）；保留固定字牌与布景。\n缺少产品服务的空承台（G2）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n客户侧等待区（G3）初态活动件仅有：无字客户咨询纸片（不是交付成品）（inquiry）；保留固定字牌与布景。\n动作A1：无字内容折页（leaflet）从内容介绍起点（G1）对接点A1-from（100,100）至客户侧等待区（G3）对接点A1-to（400,100），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽26、高12毫米，进入开口宽26、高12毫米；两端开口至少宽22、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[78,422]、纵向[89,111]、高度[20,25]毫米；支承面A1-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：无字客户咨询纸片（不是交付成品）（inquiry）从客户侧等待区（G3）对接点A2-from（400,150）至缺少产品服务的空承台（G2）对接点A2-to（250,150），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽26、高12毫米，进入开口宽26、高12毫米；两端开口至少宽22、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[228,422]、纵向[139,161]、高度[20,25]毫米；支承面A2-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n0.6至2.4秒：无字内容折页从内容介绍起点移至客户侧等待区，整体滑动。\n2.8至4.5秒：无字客户咨询纸片（不是交付成品）从客户侧等待区移至缺少产品服务的空承台，整体滑动。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "2f49ff91098d6f22e749f9ef218f0561c6794fbcc993114ed2719ce4a5684f68",
+      "pairSha256": "0ae807c0bb967892472ac47a322fa8bbcf078ea10778bbaf241fa91c3d487bb4",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "内容",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.33,
+              0.2
+            ],
+            [
+              0.33,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "产品或服务",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.365,
+              0.2
+            ],
+            [
+              0.635,
+              0.2
+            ],
+            [
+              0.635,
+              0.305
+            ],
+            [
+              0.365,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "客户",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.67,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.305
+            ],
+            [
+              0.67,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "7f0030edd50b6f8f9923f9834f929386a5038bb566b3528b7664ae8cb19a2c5a",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    },
+    {
+      "sceneId": "P04",
+      "pairId": "P04-B11",
+      "beatId": "B11",
+      "title": "向外地介绍服务，不是订单自动到来",
+      "spokenLine": "如果你能听懂一个行业的问题，也能把约定的工作做好，就可以试着把这项服务介绍给外地同行。同样需要整理客户问题、制作产品内容的人。",
+      "inputFirstFrameFileName": "P04_B11_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "ffba41649fd4486a003cf8047dd6f9b832709e06bfe934a2653df43f1826e589",
+      "inputFirstFrameTextPlanSha256": "aef245637a021293fb69a714f2def7ce23ea871675a9e789583588b57beec697",
+      "durationSeconds": 7,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）（portfolio）全景总量固定为1个刚性组合；本镜不作跨组输送，局部动作范围按动作区及真实动态另行检查。\n已有工作展示台（G1）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n服务介绍展开区（G2）初态活动件仅有：无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）（portfolio）；保留固定字牌与布景。\n外地同行待沟通桌（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n1至4.8秒：无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）在服务介绍展开区，展开。\n无字服务折页（中央竖直折轴，展开终态宽0.20高0.20，不超出中间展台）始终留在被允许的位置，与外地同行待沟通桌隔离。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "ef9a40f30eb66945b16a07180e922d6749452c53a318724279180edbe170b7b1",
+      "pairSha256": "53ae93cd0c0f5be7e0838150f6908f0f5651f7840b2c264c8c35c85b03755003",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "工作做好",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.33,
+              0.2
+            ],
+            [
+              0.33,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "介绍",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.365,
+              0.2
+            ],
+            [
+              0.635,
+              0.2
+            ],
+            [
+              0.635,
+              0.305
+            ],
+            [
+              0.365,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "外地同行",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.67,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.305
+            ],
+            [
+              0.67,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "7703508b4ee990f918b8331e43ed48a21ffd26aa725b32fd03d7b1408c10c68f",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    },
+    {
+      "sceneId": "P05",
+      "pairId": "P05-B15",
+      "beatId": "B15",
+      "title": "不是零成本，留出继续尝试的余地",
+      "spokenLine": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。",
+      "inputFirstFrameFileName": "P05_B15_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "0901cf38eb62df32a935018f075da4e9e06f2f93772a7602ce2a7bdba5786001",
+      "inputFirstFrameTextPlanSha256": "1f87c5e40d7c5e9bfd1bc28fc78b045dc8ad410090418581056ce1975bae89bb",
+      "durationSeconds": 7,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）（reserve）全景总量固定为1个刚性组合；本镜不作跨组输送，局部动作范围按动作区及真实动态另行检查。\n无字作品折页（中央折轴，展开终态宽0.14高0.14）（work）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽50、深50、高4毫米，输送途中不得缩小或变形。\n制作成本纸槽（G1）初态活动件仅有：朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）（reserve）；保留固定字牌与布景。\n继续修改工作台（G2）初态活动件仅有：无字作品折页（中央折轴，展开终态宽0.14高0.14）（work）；保留固定字牌与布景。\n下一次尝试承台（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A3：无字作品折页（中央折轴，展开终态宽0.14高0.14）（work）从继续修改工作台（G2）对接点A3-from（250,150）至下一次尝试承台（G3）对接点A3-to（400,150），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽58、高12毫米，进入开口宽58、高12毫米；两端开口至少宽54、高6毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[223,427]、纵向[123,177]、高度[20,26]毫米；支承面A3-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n0.8至2.2秒：朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）在制作成本纸槽，整体滑动。\n2.7至4秒：无字作品折页（中央折轴，展开终态宽0.14高0.14）在继续修改工作台，展开。\n4.4至5.6秒：无字作品折页（中央折轴，展开终态宽0.14高0.14）从继续修改工作台移至下一次尝试承台，整体滑动。\n先完成“朝向本组遮蔽收纳口的无字投入纸垫（代表一次制作投入，不是作品材料）在制作成本纸槽，整体滑动。”，才可开始“无字作品折页（中央折轴，展开终态宽0.14高0.14）在继续修改工作台，展开。”。\n先完成“无字作品折页（中央折轴，展开终态宽0.14高0.14）在继续修改工作台，展开。”，才可开始“无字作品折页（中央折轴，展开终态宽0.14高0.14）从继续修改工作台移至下一次尝试承台，整体滑动。”。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "747fc4ab8ccef9982b88969894c90d002a4a60a5c51d7f1fc552d866146d9abf",
+      "pairSha256": "f84f21f4ca99dce2c239f36c2c0fd9cec6de2a1922f7c99a6e40012abee3dd47",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "成本",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.33,
+              0.2
+            ],
+            [
+              0.33,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "继续改",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.365,
+              0.2
+            ],
+            [
+              0.635,
+              0.2
+            ],
+            [
+              0.635,
+              0.305
+            ],
+            [
+              0.365,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "多试几次",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.67,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.2
+            ],
+            [
+              0.9400000000000001,
+              0.305
+            ],
+            [
+              0.67,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "618f33eb818d166bf5d949341dc07f9d7ab4c2039f04205762423dccd7fe9c53",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    },
+    {
+      "sceneId": "P06",
+      "pairId": "P06-B17",
+      "beatId": "B17",
+      "title": "服务先说清楚范围、协作和交付",
+      "spokenLine": "你得听得懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案。AI给出的内容，也得看得出哪里不符合实际。到了收服务费的时候，还要把做哪些工作、谁配合、交什么东西讲清楚。客户拿到以后用不上，你得能继续查问题。",
+      "inputFirstFrameFileName": "P06_B17_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "579fed56474dc589b6f7114c70c0d46ff635c5f949cb45167d6484ea02ddee45",
+      "inputFirstFrameTextPlanSha256": "2976ce4366c9fb6cb86fce0f5b16266a018cd8e556e53e6edb4f32de4814ef3d",
+      "durationSeconds": 6,
+      "imageToVideoPrompt": "以输入带字首帧为唯一基准，固定机位，保持真实微缩纸艺材质、构图、光照和物件身份。\n所有中文牌独立固定在非活动支架上，全程正面可读；只有下列指定的无字部件运动，其余物件保持静止。\n以下仅是毫米制计划数值约束，不是图像验证或动态验收。对接点坐标是中心，支承面与障碍的坐标是其矩形最小角起点。\n全镜最小净空为2毫米。计数仅含无字活动件，不含固定字牌与静态布景；一叠纸页按一个刚性组合处理。固定字牌与静态布景保持原样。\n无字工作范围卡（scope）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n无字配合约定卡（cooperation）全景总量固定为1个刚性组合；跨组滑动的运输姿态最大包络宽40、深20、高3毫米，输送途中不得缩小或变形。\n工作范围纸盘（G1）初态活动件仅有：无字工作范围卡（scope）；保留固定字牌与布景。\n双方协作纸盘（G2）初态活动件仅有：无字配合约定卡（cooperation）；保留固定字牌与布景。\n交付约定文件夹（G3）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n问题复查工作台（G4）初态活动件为空（保留固定字牌与布景），不预摆后续活动件结果。\n动作A1：无字工作范围卡（scope）从工作范围纸盘（G1）对接点A1-from（80,100）至交付约定文件夹（G3）对接点A1-to（320,100），沿横向同高连续开放通道滑动，支承高度均为20毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[58,342]、纵向[88,112]、高度[20,25]毫米；支承面A1-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n动作A2：无字配合约定卡（cooperation）从双方协作纸盘（G2）对接点A2-from（200,150）至交付约定文件夹（G3）对接点A2-to（320,150），沿横向同高连续开放通道滑动，支承高度均为35毫米。离开开口宽28、高12毫米，进入开口宽28、高12毫米；两端开口至少宽24、高5毫米，侧面各留2毫米、顶部留2毫米净空。含净空的扫掠范围为横向[178,342]、纵向[138,162]、高度[35,40]毫米；支承面A2-lane的并集必须完整覆盖，不能有缝隙，任何障碍不得侵入该净空体积。\n同一部件的前段终点与后段起点必须保持同一位置和高度；中间同组转动或展开不能自动改变对接点。局部折叠与旋转的临时姿态不属于水平运输包络验算，须按动作区检查；再次跨组滑动时必须恢复约定运输姿态，不能临时缩小物件穿过窄口。\n全程不复制无字活动件，不预摆后续活动件结果，不把一叠纸页拆成多套；只有指定的无字部件按合同动作，固定字牌与静态布景保持原样。\n三层纸质空间来自后景、固定标签与非输送布景，不得把输送台做成台阶。上述数值必须在后续真实图像和动态候选中另行验证。\n0.8至2.4秒：无字工作范围卡从工作范围纸盘移至交付约定文件夹，整体滑动。\n2.8至4.2秒：无字配合约定卡从双方协作纸盘移至交付约定文件夹，整体滑动。\n所有运动走无字通道，避开中文牌和底部字幕预留区；不增加物件、不改字、不遮字、不翻动带字表面。\n动作间保持上一状态，动作结束后保持结果。只保留轻而清楚的原生纸张与卡合音效，无对白、口播或背景音乐。",
+      "imageToVideoPromptSha256": "6e13b300f41f554d8a1c3aa75185a5791cca39d162b43f63c0388f9c42a102b7",
+      "pairSha256": "2658573e4e2b8ad5032be0e1a06824e608987af3bb79bcd5f22bc2a4a725f6e4",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "N1",
+          "text": "做哪些工作",
+          "groupId": "G1",
+          "surfaceId": "G1-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.06,
+              0.2
+            ],
+            [
+              0.255,
+              0.2
+            ],
+            [
+              0.255,
+              0.305
+            ],
+            [
+              0.06,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N2",
+          "text": "谁配合",
+          "groupId": "G2",
+          "surfaceId": "G2-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.29,
+              0.2
+            ],
+            [
+              0.485,
+              0.2
+            ],
+            [
+              0.485,
+              0.305
+            ],
+            [
+              0.29,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N3",
+          "text": "交什么东西",
+          "groupId": "G3",
+          "surfaceId": "G3-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.52,
+              0.2
+            ],
+            [
+              0.715,
+              0.2
+            ],
+            [
+              0.715,
+              0.305
+            ],
+            [
+              0.52,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        },
+        {
+          "nodeId": "N4",
+          "text": "查问题",
+          "groupId": "G4",
+          "surfaceId": "G4-rigid-label-card",
+          "anchorQuad": [
+            [
+              0.75,
+              0.2
+            ],
+            [
+              0.945,
+              0.2
+            ],
+            [
+              0.945,
+              0.305
+            ],
+            [
+              0.75,
+              0.305
+            ]
+          ],
+          "maxChars": 8,
+          "role": "diegetic-node-label",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "enterStageId": "initial",
+          "persistence": "initial-to-end",
+          "firstReadableFrame": 0,
+          "stageOffsetFrames": 0,
+          "occlusionOwner": "none",
+          "ocrRequired": true
+        }
+      ],
+      "motionContractSha256": "e11387677f9e26afe3c30adab6495d51fcc6d9a69d96e4ac4c44d9c086a54199",
+      "dynamicValidation": {
+        "requiredBeforeBatch": true,
+        "staticApprovalIsNotDynamicApproval": true,
+        "automaticRetryAllowed": false
+      }
+    }
+  ]
+}

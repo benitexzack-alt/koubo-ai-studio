@@ -14,8 +14,11 @@ import {
   renderAiGeneratedVideoPromptSheet,
   sha256File,
   validatePromptHandoffManifests,
-  validatePreproductionRequest,
+  validatePreproductionRequest as validateCurrentPreproductionRequest,
 } from '../scripts/preproduction-director-core.mjs';
+
+// Historical schema regression stays in memory; CLI export below must reject it.
+const validatePreproductionRequest = (args) => validateCurrentPreproductionRequest({...args, historicalReadOnly: true});
 
 const profile = {
   profileId: 'paper-editorial-director-v3',
@@ -823,15 +826,12 @@ try {
     ],
     {encoding: 'utf8'},
   );
-  assert.equal(compileResult.status, 0, compileResult.stderr || compileResult.stdout);
+  assert.equal(compileResult.status, 1, '旧夹具不得通过当前生产导出入口');
+  assert(compileResult.stderr.includes('PAPER_PHYSICAL_POLICY_REQUIRED'), compileResult.stderr);
   const cliAiManifestPath = path.join(root, cliRequest.outputs.aiGeneratedVideoPromptManifestPath);
   const cliAiSheetPath = path.join(root, cliRequest.outputs.aiGeneratedVideoPromptSheetPath);
-  assert.equal(existsSync(cliAiManifestPath), true);
-  assert.equal(existsSync(cliAiSheetPath), true);
-  const cliAiManifest = JSON.parse(readFileSync(cliAiManifestPath, 'utf8'));
-  assert.equal(cliAiManifest.status, 'manual-execution-required');
-  assert.equal(cliAiManifest.itemCount, 1);
-  assert.equal(cliAiManifest.items[0].beatId, 'B02');
+  assert.equal(existsSync(cliAiManifestPath), false);
+  assert.equal(existsSync(cliAiSheetPath), false);
   const validateResult = spawnSync(
     process.execPath,
     [
@@ -843,16 +843,8 @@ try {
     ],
     {encoding: 'utf8'},
   );
-  assert.equal(validateResult.status, 0, validateResult.stderr || validateResult.stdout);
-  const cliValidationReceipt = JSON.parse(
-    readFileSync(path.join(root, cliRequest.outputs.validationReceiptPath), 'utf8'),
-  );
-  assert.equal(cliValidationReceipt.gates.normalizedPaperLayoutContractsRequired, true);
-  assert.equal(cliValidationReceipt.gates.aiGeneratedVideoPromptPackageSeparated, true);
-  assert.equal(
-    cliValidationReceipt.artifacts.aiGeneratedVideoPromptManifest.sha256,
-    sha256File(cliAiManifestPath),
-  );
+  assert.equal(validateResult.status, 1, '只读历史兼容不签发新生产验证回执');
+  assert.equal(existsSync(path.join(root, cliRequest.outputs.validationReceiptPath)), false);
 
   const scriptDrift = structuredClone(request);
   writeFileSync(scriptPath, '文稿已经变更。\n');
@@ -892,7 +884,7 @@ try {
       firstFrameNumericSafetyTermsAppended: true,
       aiGeneratedVideoPromptPackageSeparated: true,
       zeroAiVideoPackageMarkedNotRequired: true,
-      v9CompilerAndValidatorExecuted: true,
+      historicalFixtureExportAndReceiptBlocked: true,
     }),
   );
 } finally {

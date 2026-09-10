@@ -73,6 +73,9 @@ reject((s) => {s.motionContract.dynamicValidation.requiredBeforeBatch = false;},
 reject((s) => {s.prompt.firstFrame += '禁止字幕，问题票滑入。';}, 'SYMBOL_CUE_CONFLICT');
 reject((s) => {s.textPlan[0].firstReadableFrame = 60;}, 'PAPER_FIXED_LABEL_VISIBILITY_REQUIRED');
 reject((s) => {s.motionContract.parts.pop();}, 'PAPER_INITIAL_STATE_INVALID');
+reject((s) => {delete s.motionContract.physicalContract;}, 'PAPER_PHYSICAL_CONTRACT_REQUIRED');
+reject((_s, _b, r) => {delete r.policy.physicalContinuityVersion;}, 'PAPER_PHYSICAL_POLICY_REQUIRED');
+reject((_s, _b, r) => {r.historicalReadOnly = true; delete r.policy.physicalContinuityVersion;}, 'PAPER_PHYSICAL_POLICY_REQUIRED');
 const prohibitionList = structuredClone(valid);
 prohibitionList.beats[0].paperScene.prompt.firstFrame += '禁止文字，问号，编号卡。';
 assert(!check(prohibitionList).errors.some((error) => error.includes('SYMBOL_CUE_CONFLICT')), '纯禁止列表不应被当作正向符号诱导');
@@ -119,6 +122,14 @@ try {
   assert.equal(validated.status, 0, validated.stderr);
   const receipt = JSON.parse(readFileSync(path.join(temporary, request.outputs.validationReceiptPath)));
   assert.equal(receipt.policy.incidentPreventionVersion, '1');
+  assert.equal(receipt.policy.physicalContinuityVersion, '1');
+  const firstFrames = JSON.parse(readFileSync(path.join(temporary, request.outputs.firstFramePromptManifestPath)));
+  assert.deepEqual(firstFrames.scenes[0].physicalContract, request.beats[0].paperScene.motionContract.physicalContract);
+  assert.equal(firstFrames.scenes[0].motionContractSha256.length, 64);
+  assert(!firstFrames.scenes[0].firstFramePrompt.includes('硬条件只有'));
+  const motionSheet = readFileSync(path.join(temporary, request.outputs.runningHubPromptSheetPath), 'utf8');
+  assert(motionSheet.includes('带字牌全程固定'));
+  assert(!motionSheet.includes('带字纸片只允许刚性滑入'));
   assert.equal(receipt.gates.formalEligible, false);
   assert.equal(receipt.status, 'validated-provisional-previsualization');
   tests++;
