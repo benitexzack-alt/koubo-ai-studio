@@ -1,0 +1,457 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-text-bake-receipt/v1",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "request": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-local-reframe-P01-r1/first-frame-qa/sample-text-bake-request.v1.json",
+    "sha256": "928067ddff1cda77be6ee0b76d50d8bc6ccda9cfb3b3cb2907b50a55356cc89a"
+  },
+  "status": "deterministic-first-frame-text-baked-and-ocr-passed",
+  "modelGeneratedReadableTextAllowed": false,
+  "sourcePlan": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-plan.v1.json",
+    "sha256": "46efff271cccf4cb145bf8d50f0aaab65d8365bb90d757abe66260757bf7058a"
+  },
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "pairId": "P01-B04",
+      "pairSha256": "635b5e9a71b0fc120f5bb246708f85ad7f01da56ac3e941d26dd8ad95b75c493",
+      "textPlanSha256": "b54ef349295790240e81cc4b5222b6498248457d00a1cbebbbaccb357df1d209",
+      "labelsSha256": "9dac95aae4526b305c5802bddb223a1a26aeb4536e4246f3aba0319e1892683b",
+      "anchorCalibration": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-local-reframe-P01-r1/first-frame-qa/anchor-calibrations/P01.v1.json",
+        "sha256": "d83fc2619da7ad285ff0531c13dd6019dd5d4c2a01c97083d508b729706256f2"
+      },
+      "calibratedAnchors": [
+        {
+          "nodeId": "N1",
+          "anchorQuad": [
+            [
+              0.09270334928229665,
+              0.17003188097768332
+            ],
+            [
+              0.32954545454545453,
+              0.1689691817215728
+            ],
+            [
+              0.32954545454545453,
+              0.2678002125398512
+            ],
+            [
+              0.09270334928229665,
+              0.2678002125398512
+            ]
+          ]
+        },
+        {
+          "nodeId": "N2",
+          "anchorQuad": [
+            [
+              0.37978468899521534,
+              0.17003188097768332
+            ],
+            [
+              0.617822966507177,
+              0.17003188097768332
+            ],
+            [
+              0.617822966507177,
+              0.2678002125398512
+            ],
+            [
+              0.37978468899521534,
+              0.2678002125398512
+            ]
+          ]
+        },
+        {
+          "nodeId": "N3",
+          "anchorQuad": [
+            [
+              0.6668660287081339,
+              0.17109458023379384
+            ],
+            [
+              0.9066985645933014,
+              0.17109458023379384
+            ],
+            [
+              0.9066985645933014,
+              0.2688629117959617
+            ],
+            [
+              0.6668660287081339,
+              0.2688629117959617
+            ]
+          ]
+        }
+      ],
+      "sourceImage": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-local-reframe-P01-r1/first-frames/P01_B04_first-frame.png",
+        "sha256": "50bf14f5c1e67777bc4bc9ea248aaee5871724b01f3071a52d1a175df6e276ad",
+        "width": 1672,
+        "height": 941
+      },
+      "outputImage": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-local-reframe-P01-r1/text-baked-first-frames/P01_B04_first-frame-text-baked.png",
+        "sha256": "af96747aed643c5b7effd6401793669643b3a1a50c8feca30d296368a6cf5527",
+        "width": 1672,
+        "height": 941
+      },
+      "ocr": [
+        {
+          "nodeId": "N1",
+          "expected": "销售",
+          "recognized": "销售",
+          "matched": true,
+          "rendering": {
+            "fontPath": "/Users/pc/Library/Fonts/NotoSansCJKsc-Regular.otf",
+            "pointSize": 108,
+            "pointSizeCandidates": [
+              108,
+              120,
+              96,
+              132
+            ]
+          },
+          "preprocessing": {
+            "mode": "inverse-perspective-dual-ocr-v1",
+            "rectifiedSize": {
+              "width": 1000,
+              "height": 240
+            },
+            "scalePercent": 400,
+            "borderPixels": 160,
+            "pageSegmentationMode": 7,
+            "language": "chi_sim",
+            "selectedEngine": "apple-vision",
+            "recognitionPolicy": "tesseract-then-apple-vision-exact-match-v1",
+            "selectedVariantId": "vision-lanczos-t50",
+            "typographyAttempts": [
+              {
+                "pointSize": 108,
+                "ocrAttempts": [
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "",
+                    "normalized": ""
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t50",
+                    "filter": "Box",
+                    "thresholdPercent": 50,
+                    "recognized": "",
+                    "normalized": ""
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t60",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 60,
+                    "recognized": "",
+                    "normalized": ""
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t35",
+                    "filter": "Box",
+                    "thresholdPercent": 35,
+                    "recognized": "",
+                    "normalized": ""
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "point-t55",
+                    "filter": "Point",
+                    "thresholdPercent": 55,
+                    "recognized": "",
+                    "normalized": ""
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-lanczos-t50",
+                    "sourceVariantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "销售",
+                    "normalized": "销售"
+                  }
+                ]
+              }
+            ],
+            "finalImageAttempts": [
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "",
+                "normalized": ""
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "box-t50",
+                "filter": "Box",
+                "thresholdPercent": 50,
+                "recognized": "",
+                "normalized": ""
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t60",
+                "filter": "Lanczos",
+                "thresholdPercent": 60,
+                "recognized": "",
+                "normalized": ""
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "box-t35",
+                "filter": "Box",
+                "thresholdPercent": 35,
+                "recognized": "",
+                "normalized": ""
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "point-t55",
+                "filter": "Point",
+                "thresholdPercent": 55,
+                "recognized": "",
+                "normalized": ""
+              },
+              {
+                "engine": "apple-vision",
+                "variantId": "vision-lanczos-t50",
+                "sourceVariantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "销售",
+                "normalized": "销售"
+              }
+            ]
+          },
+          "evaluationStage": "final-composite",
+          "inputImageSha256": "af96747aed643c5b7effd6401793669643b3a1a50c8feca30d296368a6cf5527"
+        },
+        {
+          "nodeId": "N2",
+          "expected": "开过店",
+          "recognized": "开过店",
+          "matched": true,
+          "rendering": {
+            "fontPath": "/Users/pc/Library/Fonts/NotoSansCJKsc-Regular.otf",
+            "pointSize": 108,
+            "pointSizeCandidates": [
+              108,
+              120,
+              96,
+              132
+            ]
+          },
+          "preprocessing": {
+            "mode": "inverse-perspective-dual-ocr-v1",
+            "rectifiedSize": {
+              "width": 1000,
+              "height": 240
+            },
+            "scalePercent": 400,
+            "borderPixels": 160,
+            "pageSegmentationMode": 7,
+            "language": "chi_sim",
+            "selectedEngine": "apple-vision",
+            "recognitionPolicy": "tesseract-then-apple-vision-exact-match-v1",
+            "selectedVariantId": "vision-lanczos-t50",
+            "typographyAttempts": [
+              {
+                "pointSize": 108,
+                "ocrAttempts": [
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "启",
+                    "normalized": "启"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t50",
+                    "filter": "Box",
+                    "thresholdPercent": 50,
+                    "recognized": "人",
+                    "normalized": "人"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t60",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 60,
+                    "recognized": "站启",
+                    "normalized": "站启"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t35",
+                    "filter": "Box",
+                    "thresholdPercent": 35,
+                    "recognized": "启",
+                    "normalized": "启"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "point-t55",
+                    "filter": "Point",
+                    "thresholdPercent": 55,
+                    "recognized": "于写启",
+                    "normalized": "于写启"
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-lanczos-t50",
+                    "sourceVariantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "开过店",
+                    "normalized": "开过店"
+                  }
+                ]
+              }
+            ],
+            "finalImageAttempts": [
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "启",
+                "normalized": "启"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "box-t50",
+                "filter": "Box",
+                "thresholdPercent": 50,
+                "recognized": "人",
+                "normalized": "人"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t60",
+                "filter": "Lanczos",
+                "thresholdPercent": 60,
+                "recognized": "站启",
+                "normalized": "站启"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "box-t35",
+                "filter": "Box",
+                "thresholdPercent": 35,
+                "recognized": "启",
+                "normalized": "启"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "point-t55",
+                "filter": "Point",
+                "thresholdPercent": 55,
+                "recognized": "于写启",
+                "normalized": "于写启"
+              },
+              {
+                "engine": "apple-vision",
+                "variantId": "vision-lanczos-t50",
+                "sourceVariantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "开过店",
+                "normalized": "开过店"
+              }
+            ]
+          },
+          "evaluationStage": "final-composite",
+          "inputImageSha256": "af96747aed643c5b7effd6401793669643b3a1a50c8feca30d296368a6cf5527"
+        },
+        {
+          "nodeId": "N3",
+          "expected": "客户的了解",
+          "recognized": "客户的了解",
+          "matched": true,
+          "rendering": {
+            "fontPath": "/Users/pc/Library/Fonts/NotoSansCJKsc-Regular.otf",
+            "pointSize": 108,
+            "pointSizeCandidates": [
+              108,
+              120,
+              96,
+              132
+            ]
+          },
+          "preprocessing": {
+            "mode": "inverse-perspective-dual-ocr-v1",
+            "rectifiedSize": {
+              "width": 1000,
+              "height": 240
+            },
+            "scalePercent": 400,
+            "borderPixels": 160,
+            "pageSegmentationMode": 7,
+            "language": "chi_sim",
+            "selectedEngine": "tesseract",
+            "recognitionPolicy": "tesseract-then-apple-vision-exact-match-v1",
+            "selectedVariantId": "box-t50",
+            "typographyAttempts": [
+              {
+                "pointSize": 108,
+                "ocrAttempts": [
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "各户的了解",
+                    "normalized": "各户的了解"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t50",
+                    "filter": "Box",
+                    "thresholdPercent": 50,
+                    "recognized": "客户的了解",
+                    "normalized": "客户的了解"
+                  }
+                ]
+              }
+            ],
+            "finalImageAttempts": [
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "各户的了解",
+                "normalized": "各户的了解"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "box-t50",
+                "filter": "Box",
+                "thresholdPercent": 50,
+                "recognized": "客户的了解",
+                "normalized": "客户的了解"
+              }
+            ]
+          },
+          "evaluationStage": "final-composite",
+          "inputImageSha256": "af96747aed643c5b7effd6401793669643b3a1a50c8feca30d296368a6cf5527"
+        }
+      ]
+    }
+  ]
+}
