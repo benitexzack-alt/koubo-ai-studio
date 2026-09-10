@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "koubo-independent-firstframe-review/v1",
+  "sourceThreadId": "019f3383-706c-78f3-9dbe-6c6b20affb59",
+  "receivedAt": "2026-09-10T17:16:17.436Z",
+  "reviewType": "只读实际开图及SHA复核",
+  "status": "revision-required",
+  "sceneReviews": [
+    {
+      "sceneId": "P01",
+      "sha256": "db8bfd45cf1393ccfab570cd7268e375c6143acd4a4a222696aefdd5ee338f50",
+      "functionalBottomRange": [
+        737,
+        739
+      ],
+      "overflowRangePx": [
+        21.84,
+        23.84
+      ]
+    },
+    {
+      "sceneId": "P03",
+      "sha256": "0d5461b0a0304c2631c213d32260154c0c07e57c69f65229c91efd7d4394071c",
+      "functionalBottomRange": [
+        740,
+        741
+      ],
+      "overflowRangePx": [
+        24.84,
+        25.84
+      ]
+    }
+  ],
+  "findings": [
+    "全功能底台/支脚属于既有内容安全区硬约束；免精确复制参考不豁免全局安全区。",
+    "当前实体未到字幕预留起点762.21，不能写已遮字幕；准确为侵占安全区下方缓冲。",
+    "活动件数量、初态、两路分离、空接收位、独立空白牌均改善，未见另一个可确证的语义或拓扑硬失败。",
+    "通道大体齐平连续、无明显横挡；细接缝和实际毫米高差/净空保留unknown，后续动态另验。",
+    "不得裁掉功能前沿/支脚掩盖失败，不放宽safe，不自动重试。"
+  ],
+  "upstreamSignedInputsChanged": false
+}

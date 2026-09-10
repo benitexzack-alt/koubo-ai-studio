@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "koubo-raw-image-ocr-screening/v1",
+  "checkedAt": "2026-09-10T17:16:17.436Z",
+  "tool": "tesseract",
+  "args": [
+    "-l",
+    "chi_sim+eng",
+    "--psm",
+    "11"
+  ],
+  "scope": "无字原图纹理筛查，不是准确中文目标验收",
+  "results": [
+    {
+      "sceneId": "P01",
+      "sha256": "db8bfd45cf1393ccfab570cd7268e375c6143acd4a4a222696aefdd5ee338f50",
+      "rawOutput": "ee\nToes\na\na\nsi\n|\n—\n=\n—_\nSe\n办\nel\n:o\n“\nFo\nnf\npa\nSacks\nos\neo\nSepa\n—\ncae\nSaag\n2\n2\nae\ney\neran\nae\npane\nae",
+      "visualFinding": "实际看图未发现这些可读字符；稀疏模式将纸纹/边缘识别成碎字。",
+      "exactChineseTargetTestExecuted": false
+    },
+    {
+      "sceneId": "P03",
+      "sha256": "0d5461b0a0304c2631c213d32260154c0c07e57c69f65229c91efd7d4394071c",
+      "rawOutput": "2\n多\nOT Nant Crs\n和\nEe\nis\nae\nPe\niy\nLy\nfe:\noe\nas\n‘a\nle:\nas",
+      "visualFinding": "实际看图三牌为空白；未见这些可读字符，保留OCR噪声证据，不称OCR零检出。",
+      "exactChineseTargetTestExecuted": false
+    }
+  ]
+}

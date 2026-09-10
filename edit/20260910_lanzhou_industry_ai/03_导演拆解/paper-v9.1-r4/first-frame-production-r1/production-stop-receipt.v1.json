@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "koubo-firstframe-production-stop/v1",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "requestId": "20260910-lanzhou-industry-ai-paper-v9.1-r4-pre-shoot",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r4",
+  "status": "revision-required",
+  "stoppedAt": "2026-09-10T17:16:17.436Z",
+  "reason": "P01/P03实体底台越过全局内容安全区；本轮各一次授权已用完，停止盲调。",
+  "authorityPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-production-r1/targeted-repair-authorization.v1.json",
+  "generatedSceneIds": [
+    "P01",
+    "P03"
+  ],
+  "nativeGenerationCalls": 2,
+  "automaticRetries": 0,
+  "newTextBakedImages": 0,
+  "newTargetChineseOcrChecks": 0,
+  "rawOcrScreeningExecuted": true,
+  "preservedP02": {
+    "rawSha256": "d4cec7422cb41a49b50a00f3dd1a8a9b4023664e74f13c90d0220aec56410a44",
+    "bakedSha256": "35f7a03b0d5b1867efc9770c84ae2ac16df6021e30405aa5218169258fdafb25",
+    "sourceRevision": "paper-v9.1-r3",
+    "userAcceptance": "pending"
+  },
+  "notGeneratedSceneIds": [
+    "P04",
+    "P05",
+    "P06"
+  ],
+  "boundaries": {
+    "runninghubUploads": 0,
+    "canvasNodesConfigured": 0,
+    "videoSubmissions": 0,
+    "payments": 0,
+    "publications": 0,
+    "oldAssetsOverwritten": false
+  },
+  "findings": [
+    {
+      "priority": "P0",
+      "sceneIds": [
+        "P01",
+        "P03"
+      ],
+      "code": "FUNCTIONAL_BASE_OUTSIDE_SAFE_AREA"
+    },
+    {
+      "priority": "P1",
+      "sceneIds": [
+        "P01",
+        "P03"
+      ],
+      "code": "ACTUAL_SEAM_HEIGHT_CLEARANCE_UNVERIFIED",
+      "status": "unknown，不冒充已证实碰撞"
+    }
+  ],
+  "independentReviewPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-production-r1/first-frame-qa/director-independent-raw-review.v1.json",
+  "nextAction": "等待用户选择新修复方式；建议先对现有图做非生成式整组等比收边验证，不重绘物件、不裁掉功能实体、不改安全合同；需新授权和图像/净空复核，不能保证一次通过。",
+  "readyForUserReview": false,
+  "dynamicAccepted": false
+}
