@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "koubo-cross-coordinate-conflict-audit/v1",
+  "status": "blocked-contract-projection-reconciliation-required",
+  "sceneId": "P02",
+  "reviewedAt": "2026-09-10T14:24:43.118Z",
+  "sourceManifest": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-prompts.v1.json",
+    "sha256": "50e1a63b6dd48c56f48e80c7c9a4f145bb6c7ce3855afe1914a2f9d26b5e2e66"
+  },
+  "physicalContractSha256": "58c0457099b22c07b3da4750b02f86e5da932c2fab3d54f709b802b8802b60c0",
+  "hypothesis": "存在同一正向水平仿射映射 X=offset+scale*x_mm，可将同一物件含净空完整包络放入原A1/A2/A4 sweptRect。",
+  "width": 1920,
+  "worldSweepsMm": {
+    "A1": [
+      53,
+      227
+    ],
+    "A2": [
+      173,
+      347
+    ],
+    "A4": [
+      293,
+      467
+    ]
+  },
+  "signedPixelSweeps": {
+    "A1": [
+      192,
+      806.4
+    ],
+    "A2": [
+      633.6,
+      1228.8
+    ],
+    "A4": [
+      1075.2,
+      1708.8
+    ]
+  },
+  "necessaryConditions": [
+    {
+      "reason": "A1总宽174毫米必须容纳于614.4像素",
+      "formula": "scale <= (806.4 - 192) / (227 - 53)",
+      "upperBound": 3.5310344827586206
+    },
+    {
+      "reason": "A4左端293毫米与A1右端227毫米之间须跨过268.8像素",
+      "formula": "scale >= (1075.2 - 806.4) / (293 - 227)",
+      "lowerBound": 4.072727272727273
+    }
+  ],
+  "compatibleAffineProjection": false,
+  "conclusion": "scale必须同时不大于3.5311且不小于4.0727，无解。",
+  "limitations": "仅证明本轮统一正交/线性水平布局方案与已签原动作区不相容，不声称所有透视映射或所有可能构图均不可能。",
+  "independentReview": {
+    "sourceThreadId": "019f3383-706c-78f3-9dbe-6c6b20affb59",
+    "method": "口播自动化任务实际开图、读取脚本和原合同后回传只读结论",
+    "confirmed": true,
+    "statement": "上游毫米合同与二维sweptRect分别校验，未建立一致映射再联验；143项回归没有覆盖该跨坐标问题，不应继续归因于执行端或模型不服从。"
+  },
+  "referenceVerdicts": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-production-r4/P02.layout-reference.v1.png",
+      "sha256": "e031da3f1e965f009cb9977e6fdb2016676f7b2fdbdd65a0432bcca61755000d",
+      "usableForGeneration": false
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r2/first-frame-production-r4/P02.layout-reference.v2.png",
+      "sha256": "f8335dbc6f5ae3061ea9237ee72c4b9c6856383c05c6142c591761b7e3576e27",
+      "usableForGeneration": false
+    }
+  ],
+  "referenceCheckScope": "v1/v2的reference-geometry-checked仅指文件内列出的内容安全区/局部几何检查，不含原动作区联验；本审计优先，两图均不可投递模型。",
+  "recommendedRepair": "在新的导演revision统一毫米→图像投影，从物件含净空完整包络推导sweptRect，再联验固定牌、人物、内容与字幕区域；重新独立复核和编译。保留原句、四节点、物件数量、动作顺序、时长与中文。旧r2只读，不在执行attempt中修改。",
+  "existingRepairAuthorizationApplied": true,
+  "newSeparateApprovalRequested": false,
+  "coordination": "导演确认属于用户既有修复与本轮B方案授权内的必要内部坐标修正；由导演在新revision实施，执行端不暗改旧签发。",
+  "imageGenerationCalls": 0,
+  "videoSubmissions": 0
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "koubo-firstframe-stage-evidence-verification/v1",
+  "status": "evidence-consistent-batch-still-revision-required",
+  "verifiedAt": "2026-09-10T15:32:38.885Z",
+  "checks": [
+    {
+      "sceneId": "P01",
+      "imageSha256": "61155230ba84ce9b61532bc243d4ed1da7a88391704eef292e0c59af8eedff1a",
+      "review": "revision-required",
+      "gateErrors": [
+        "VISUAL_REVIEW_NOT_PASSED:P01",
+        "VISUAL_CRITERION_FAILED:P01:compositionAndReadability",
+        "VISUAL_CRITERION_FAILED:P01:videoReadiness",
+        "PHYSICAL_ROUTE_NOT_PASSED:A1:P01",
+        "PHYSICAL_ROUTE_NOT_PASSED:A2:P01"
+      ]
+    },
+    {
+      "sceneId": "P02",
+      "imageSha256": "d4cec7422cb41a49b50a00f3dd1a8a9b4023664e74f13c90d0220aec56410a44",
+      "review": "passed",
+      "gateErrors": []
+    },
+    {
+      "sceneId": "P03",
+      "imageSha256": "da5e3c7a0ce6dbd04d80822022c20c8e909cbccfc9e8a5ff016f7e3ae909b14a",
+      "review": "revision-required",
+      "gateErrors": [
+        "VISUAL_REVIEW_NOT_PASSED:P03",
+        "VISUAL_CRITERION_FAILED:P03:semanticMatch",
+        "VISUAL_CRITERION_FAILED:P03:compositionAndReadability",
+        "VISUAL_CRITERION_FAILED:P03:videoReadiness",
+        "PHYSICAL_ROUTE_NOT_PASSED:A1:P03",
+        "PHYSICAL_ROUTE_NOT_PASSED:A2:P03"
+      ]
+    },
+    {
+      "sceneId": "P04",
+      "status": "not-generated"
+    },
+    {
+      "sceneId": "P05",
+      "status": "not-generated"
+    },
+    {
+      "sceneId": "P06",
+      "status": "not-generated"
+    }
+  ],
+  "errors": [],
+  "unitTests": {
+    "programs": 2,
+    "tests": 21,
+    "passed": 21,
+    "failed": 0
+  },
+  "rendererSyntaxCheck": "passed",
+  "rawActualViewed": [
+    "P01",
+    "P02",
+    "P03"
+  ],
+  "contactSheetsActualViewed": true,
+  "batchComplete": false,
+  "userAccepted": false
+}

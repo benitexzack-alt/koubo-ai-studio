@@ -1,0 +1,133 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {pathToFileURL} from 'node:url';
+
+// 本条 P02 的确定性布局参考，不是最终纸艺图或动态验收。
+const [manifestArg, receiptArg, outputArg] = process.argv.slice(2);
+assert.ok(manifestArg && receiptArg && outputArg, '须指定新签清单、导演回执和全新输出目录');
+const projectRoot = '/Users/pc/Documents/口播';
+const manifestPath = path.resolve(manifestArg);
+const receiptPath = path.resolve(receiptArg);
+const outputRoot = path.resolve(outputArg);
+for (const p of [manifestPath, receiptPath, outputRoot]) assert.ok(p.startsWith(projectRoot + '/'));
+const read = p => JSON.parse(fs.readFileSync(p));
+const sha = p => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const manifest = read(manifestPath);
+const directorReceipt = read(receiptPath);
+assert.equal(directorReceipt.status, 'validated-provisional-previsualization');
+assert.equal(directorReceipt.skillExecuted, true);
+assert.equal(directorReceipt.artifacts.firstFramePromptManifest.sha256, sha(manifestPath));
+assert.equal(directorReceipt.revisionId, manifest.revisionId);
+const manifestScene = manifest.scenes.find(s => s.sceneId === 'P02');
+const planBinding=directorReceipt.artifacts.plan;
+assert.ok(planBinding.path.startsWith(projectRoot+'/'));
+assert.equal(sha(planBinding.path),planBinding.sha256);
+const planScene=read(planBinding.path).paperScenes.find(s=>s.beatId===manifestScene.beatId);
+assert.ok(planScene);
+assert.deepEqual(planScene.motionContract,manifestScene.motionContract);
+assert.deepEqual(planScene.layoutContract,manifestScene.layoutContract);
+// 派生器需要完整计划中的物件组；清单只保留给执行端的合同，不能伪造缺失组。
+const scene = {...planScene,...manifestScene};
+const pr = scene.motionContract.projectionContract;
+assert.equal(pr?.schemaVersion, 'koubo-paper-projection/v1');
+const {derivePaperProjection,validatePaperProjectionContract} = await import(pathToFileURL(path.join(projectRoot, 'skills/koubo-remotion-director/scripts/paper-projection-contract.mjs')));
+const derived = derivePaperProjection(scene);
+assert.equal(derived.ok, true, JSON.stringify(derived.errors));
+assert.deepEqual(validatePaperProjectionContract({scene}), []);
+const W = pr.frame.width, H = pr.frame.height;
+assert.equal(W, 1920); assert.equal(H, 1080);
+const project = (x,y,z) => [pr.originX + pr.xScale*x, pr.originY + pr.yScale*y - pr.zScale*z];
+const pxRect = r => ({x:r.x*W,y:r.y*H,width:r.width*W,height:r.height*H});
+const intersects = (a,b) => a.x < b.x+b.width && a.x+a.width > b.x && a.y < b.y+b.height && a.y+a.height > b.y;
+const inside = (a,b) => a.x >= b.x && a.y >= b.y && a.x+a.width <= b.x+b.width && a.y+a.height <= b.y+b.height;
+const safe = pxRect(scene.layoutContract.contentSafeRect);
+const actionRects = derived.actionRects.map(a => {
+  const original = scene.motionContract.actions.find(x => x.id === a.actionId).sweptRect;
+  for (const k of ['x','y','width','height']) assert.ok(Math.abs(original[k]-a.rect[k])<1e-8, '签发动作区不等于同源推导:'+a.actionId+':'+k);
+  const box = pxRect(a.rect); assert.ok(inside(box,safe));
+  return {actionId:a.actionId,...box};
+});
+const labelBoxes = [[154,228,325,96],[579,228,325,96],[1006,228,325,96],[1446,228,325,96]];
+const ownerBox = {x:1080,y:350,width:140,height:108};
+assert.ok(inside(ownerBox,safe));
+const ownerEnvelope=derived.obstacleRects.find(o=>o.obstacleId==='owner-behind-lane');
+assert.ok(ownerEnvelope, '缺少老板静态包络');
+assert.ok(inside(ownerBox,pxRect(ownerEnvelope.rect)), '人物轮廓超出已签静态包络');
+labelBoxes.forEach(([x,y,width,height],i)=>{
+  assert.ok(inside({x,y,width,height},pxRect(scene.layoutContract.paperLabelSurfaceBoxes[i].box)), '标签超出已签预留区');
+});
+const standBoxes=labelBoxes.map(([x,y,,h])=>({x:x+2,y:y+h,width:44,height:247}));
+for (const box of actionRects) {
+  assert.ok(!intersects(ownerBox,box), '人物实际轮廓侵入完整动作区');
+  for (const [x,y,width,height] of labelBoxes) assert.ok(!intersects({x,y,width,height},box));
+  for (const stand of standBoxes) assert.ok(!intersects(stand,box), '固定支架侵入完整动作区');
+}
+const body=[];
+const rect=(x,y,w,h,fill,more='')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" ${more}/>`;
+const poly=(points,fill,more='')=>`<polygon points="${points.map(p=>p.join(',')).join(' ')}" fill="${fill}" ${more}/>`;
+const plane=(x,y,w,d,z,fill)=>poly([[x,y,z],[x+w,y,z],[x+w,y+d,z],[x,y+d,z]].map(p=>project(...p)),fill);
+body.push(rect(0,0,W,H,'#193553'));
+body.push(rect(125,167,1670,450,'#213e60'));
+body.push(rect(158,393,1604,198,'#2a496c'));
+body.push(rect(177,590,1568,53,'#203b5c'));
+labelBoxes.forEach(([x,y,w,h])=>{
+  const center=x+24;
+  body.push(rect(center-10,y+h,20,244,'#caba9e'));
+  body.push(rect(center-22,y+h+239,44,8,'#cfbea3'));
+  body.push(rect(x+5,y+5,w,h,'#10253c','opacity=".35"'));
+  body.push(rect(x,y,w,h,'#f2e9d8'));
+});
+// 纸质人物缩在既有静态障碍包络内，双手留在身体两侧。
+body.push('<g transform="translate(1080,350)">');
+body.push(poly([[45,50],[23,56],[6,87],[19,93],[44,69],[98,69],[121,93],[134,87],[117,56],[95,50]],'#e8dec8'));
+body.push(poly([[45,49],[95,49],[102,103],[38,103]],'#e9dfcb'));
+body.push(poly([[56,58],[85,58],[95,103],[46,103]],'#274461'));
+body.push('<ellipse cx="70" cy="26" rx="26" ry="26" fill="#e7d2b2"/>');
+body.push('<path d="M44 24 Q43 0 72 0 Q99 2 96 25 L82 12 Q66 25 44 24" fill="#514840"/>');
+body.push('<ellipse cx="9" cy="91" rx="9" ry="7" fill="#e7d2b2"/><ellipse cx="131" cy="91" rx="9" ry="7" fill="#e7d2b2"/>');
+body.push(rect(37,102,24,6,'#213b56'),rect(79,102,24,6,'#213b56'));
+body.push('</g>');
+const leverBack=project(314,74,20),pivot=project(314,74,36),tip=project(342,74,39);
+body.push(rect(leverBack[0]-13,pivot[1],26,leverBack[1]-pivot[1]+5,'#d0bd98'));
+body.push(`<line x1="${pivot[0]}" y1="${pivot[1]}" x2="${tip[0]}" y2="${tip[1]}" stroke="#e0cda7" stroke-width="13" stroke-linecap="round"/>`);
+body.push(`<circle cx="${pivot[0]}" cy="${pivot[1]}" r="13" fill="#a9987a"/><circle cx="${tip[0]}" cy="${tip[1]}" r="11" fill="#ecdcbd"/>`);
+const colors=['#ede1cb','#29456a','#eee2cc','#d8ae49'];
+const supports=scene.physicalContract.supports;
+const minX=Math.min(...supports.map(s=>s.xMm));
+const maxX=Math.max(...supports.map(s=>s.xMm+s.widthMm));
+const front=project(minX,148,20),right=project(maxX,148,20);
+body.push(rect(front[0],front[1]+5,right[0]-front[0],9,'#0e243d','opacity=".35"'));
+const deckBoxes=[];
+supports.forEach((d,i)=>{
+  const z=d.topHeightMm;
+  assert.ok(Number.isFinite(z));
+  body.push(plane(d.xMm,d.yMm,d.widthMm,d.depthMm,z,colors[i]));
+  const back=project(d.xMm,d.yMm,z),a=project(d.xMm,d.yMm+d.depthMm,z),b=project(d.xMm+d.widthMm,d.yMm+d.depthMm,z);
+  const box={x:back[0],y:back[1],width:b[0]-back[0],height:a[1]-back[1]+7};
+  assert.ok(inside(box,safe)); deckBoxes.push(box);
+  body.push(rect(a[0],a[1],b[0]-a[0],7,i===1?'#1c3552':i===3?'#aa8331':'#bcb098'));
+});
+const draft=scene.physicalContract.inventory.find(p=>p.partId==='draft');
+const dock=scene.physicalContract.docks.find(d=>d.id==='draft-G1');
+assert.equal(draft.envelopeMm.width,50); assert.equal(draft.envelopeMm.depth,24); assert.equal(draft.envelopeMm.height,4);
+for(let i=0;i<5;i++){
+  const z=dock.supportHeightMm+(i+1)*0.8;
+  body.push(plane(dock.xMm-25,dock.yMm-12,50,24,z,i===4?'#faf6ec':'#ddd3bd'));
+  const a=project(dock.xMm-25,dock.yMm+12,z),b=project(dock.xMm+25,dock.yMm+12,z);
+  body.push(rect(a[0],a[1],b[0]-a[0],1.2,'#ad9f87'));
+}
+const names=['P02.layout-reference.v1.svg','P02.layout-reference.v1.png','P02.layout-reference-check.v1.json'];
+for (const name of names) assert.ok(!fs.existsSync(path.join(outputRoot,name)), '禁止覆盖:'+name);
+fs.mkdirSync(outputRoot,{recursive:true});
+const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${body.join('\n')}</svg>`;
+const require=createRequire(import.meta.url);
+const sharp=require(path.join(projectRoot,'remotion/node_modules/sharp'));
+const png=await sharp(Buffer.from(svg)).png().toBuffer();
+fs.writeFileSync(path.join(outputRoot,names[0]),svg,{flag:'wx'});
+fs.writeFileSync(path.join(outputRoot,names[1]),png,{flag:'wx'});
+const receipt={schemaVersion:'koubo-deterministic-layout-reference/v1',status:'reference-geometry-checked-not-final-image',sceneId:'P02',sourceManifest:{path:manifestPath,sha256:sha(manifestPath)},directorValidationReceipt:{path:receiptPath,sha256:sha(receiptPath)},sourceRevisionId:manifest.revisionId,physicalContractSha256:scene.physicalContractSha256,motionContractSha256:scene.motionContractSha256,projection:pr,derivedActionRectsPx:actionRects,layout:{labelBoxesPx:labelBoxes,standBoxesPx:standBoxes,ownerPx:ownerBox,supportsPx:deckBoxes},checks:{derivedRectsEqualSignedMotionRects:true,referenceOwnerClearOfCompleteActionEnvelopes:true,referenceLabelsAndStandsClearOfCompleteActionEnvelopes:true,labelsInsideSignedPlacementZones:true,supportsWithinSafeRect:true},limitations:'仅确定性布局参考；不证明模型最终生成服从布局、不证明纸艺材质质量、不证明真实动态或毫米实测。实际人物和字牌仍须最终图片视觉验收。',artifacts:names.slice(0,2).map(n=>({path:path.join(outputRoot,n),sha256:sha(path.join(outputRoot,n))})),createdAt:new Date().toISOString()};
+fs.writeFileSync(path.join(outputRoot,names[2]),JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({ok:true,reference:receipt.artifacts[1],receipt:path.join(outputRoot,names[2]),actionRects}));
