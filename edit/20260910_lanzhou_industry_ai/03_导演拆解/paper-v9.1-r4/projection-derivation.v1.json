@@ -1,0 +1,569 @@
+{
+  "schemaVersion": "koubo-paper-projection-derivation/v1",
+  "revisionId": "20260910-lanzhou-industry-ai-paper-v9.1-r4",
+  "sourceRequest": {
+    "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r3/director-request.v1.json",
+    "sha256": "ea6f52ae8938101a0948e99f25eb30f573bda38a4deac825f0cdd862dab7cbd8"
+  },
+  "changedProjectedBeatIds": [
+    "B04",
+    "B10"
+  ],
+  "inheritedProjectedBeatIds": [
+    "B07"
+  ],
+  "unprojectedBeatIds": [
+    "B11",
+    "B15",
+    "B17"
+  ],
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "beatId": "B04",
+      "physicalContractSha256": "d48754e950fbe1997e146333630b09c7ae7778060679abf7078c65e3fb4d5f6c",
+      "mechanismSha256": "9d3770a57ee012da70df445835428b8f3b670d69f733ca88db7a23911a399585",
+      "projectionContract": {
+        "schemaVersion": "koubo-paper-projection/v1",
+        "type": "axis-aligned-affine-reference",
+        "frame": {
+          "width": 1920,
+          "height": 1080
+        },
+        "xScale": 4,
+        "yScale": 3,
+        "zScale": 2.5,
+        "originX": 0,
+        "originY": 270,
+        "paddingPx": 4,
+        "localActionEnvelopes": []
+      },
+      "projection": {
+        "ok": true,
+        "errors": [],
+        "actionRects": [
+          {
+            "actionId": "A1",
+            "rect": {
+              "x": 0.16041666666666668,
+              "y": 0.43287037037037035,
+              "width": 0.7208333333333333,
+              "height": 0.08564814814814815
+            }
+          },
+          {
+            "actionId": "A2",
+            "rect": {
+              "x": 0.47291666666666665,
+              "y": 0.5717592592592593,
+              "width": 0.4083333333333333,
+              "height": 0.08564814814814815
+            }
+          }
+        ],
+        "supportRects": [
+          {
+            "supportId": "A1-lane",
+            "rect": {
+              "x": 0.15625,
+              "y": 0.4388888888888889,
+              "width": 0.7291666666666666,
+              "height": 0.08518518518518518
+            }
+          },
+          {
+            "supportId": "A2-lane",
+            "rect": {
+              "x": 0.46875,
+              "y": 0.5777777777777777,
+              "width": 0.4166666666666667,
+              "height": 0.08518518518518518
+            }
+          }
+        ],
+        "obstacleRects": []
+      },
+      "oldRectsRejected": [
+        "PAPER_PROJECTION_ACTION_RECT_MISMATCH:A1:B04",
+        "PAPER_PROJECTION_ACTION_RECT_MISMATCH:A2:B04"
+      ],
+      "referenceGuide": {
+        "coordinateSpace": "planned-frame-pixels",
+        "frame": {
+          "width": 1920,
+          "height": 1080
+        },
+        "functionalBaseFullOutline": {
+          "x": 210,
+          "y": 440,
+          "width": 1560,
+          "height": 330
+        },
+        "baseOutlineIncludes": [
+          "台面",
+          "前沿",
+          "侧沿",
+          "支脚"
+        ],
+        "rearStaticMaximumY": 443.5,
+        "rearStaticTypicalHeightPx": 90,
+        "rearStaticIncludes": [
+          "立架或空产品架",
+          "独立牌支架",
+          "人物与桌（本镜如有）"
+        ],
+        "contentSafeRect": {
+          "x": 76.8,
+          "y": 129.6,
+          "width": 1766.4,
+          "height": 691.2
+        },
+        "subtitleReservedRect": {
+          "x": 76.8,
+          "y": 874.8000000000001,
+          "width": 1766.4,
+          "height": 183.60000000000002
+        },
+        "labelZones": [
+          {
+            "nodeId": "N1",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "box": {
+              "x": 0.06,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N2",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "box": {
+              "x": 0.365,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N3",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "box": {
+              "x": 0.67,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          }
+        ],
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "销售经历档案架",
+            "material": "暖白厚纸页立架，架内少量无字经验纸页只作静态布景；立架与牌支架退到上半部，最低轮廓不超过参考纵坐标443.5，离第一条动作区至少24像素；两条前景直滑道平行分离，不穿过立架或纸盒；两件活动纸片从首帧起分别平放在各自起点，不另摆活动纸叠；同一功能底台包含台面、前沿、侧沿和支脚的完整外轮廓，按1920乘1080参考画面内缩在横向210至1770、纵向440至770像素框内；底台前沿及支脚只在通道下方，不能横挡纸片进出口；这些坐标只作构图参考，实际图另验安全区，不要求逐像素复制；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，牌面落在原定预留区，支架不与活动部件相连；画面横向第一组",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "门店经验纸盒",
+            "material": "浅灰纤维纸盒，盒内少量无字经验纸页只作静态布景；纸盒与支架最低轮廓不超过参考纵坐标443.5，后景静态架高度约90像素，三层空间来自纸材和前后布景；开店活动纸片平放在第二条通道起点，不从盒内穿出；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，牌面落在原定预留区，支架不与活动部件相连；画面横向第二组",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "客户了解汇集台",
+            "material": "深蓝纸台上的两个独立暖黄色平面接收垫，分别是两条直滑道向右的齐平延续，纸片接近时看得到连续不间断的承托面；两路支承面均为20毫米高度，绝不做凹槽、漏斗、凸沿托盘、端门槛、横挡或台阶，两个入口不合并；首帧两处接收垫均为空；实心纸层与牌支架留在后方，最低轮廓不超过参考纵坐标443.5，不进入两条动作区；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，牌面落在原定预留区，支架不与活动部件相连；画面横向第三组",
+            "depth": 3
+          }
+        ],
+        "actionRects": [
+          {
+            "actionId": "A1",
+            "rect": {
+              "x": 308,
+              "y": 467.5,
+              "width": 1384,
+              "height": 92.5
+            }
+          },
+          {
+            "actionId": "A2",
+            "rect": {
+              "x": 908,
+              "y": 617.5,
+              "width": 784,
+              "height": 92.5
+            }
+          }
+        ],
+        "supportRects": [
+          {
+            "supportId": "A1-lane",
+            "rect": {
+              "x": 300,
+              "y": 474,
+              "width": 1400,
+              "height": 92
+            }
+          },
+          {
+            "supportId": "A2-lane",
+            "rect": {
+              "x": 900,
+              "y": 623.9999999999999,
+              "width": 800,
+              "height": 92
+            }
+          }
+        ],
+        "dockCenters": [
+          {
+            "dockId": "A1-from",
+            "groupId": "G1",
+            "x": 400,
+            "y": 520
+          },
+          {
+            "dockId": "A1-to",
+            "groupId": "G3",
+            "x": 1600,
+            "y": 520
+          },
+          {
+            "dockId": "A2-from",
+            "groupId": "G2",
+            "x": 1000,
+            "y": 670
+          },
+          {
+            "dockId": "A2-to",
+            "groupId": "G3",
+            "x": 1600,
+            "y": 670
+          }
+        ],
+        "initialParts": [
+          {
+            "partId": "sales",
+            "groupId": "G1",
+            "dockId": "A1-from",
+            "pose": "already-flat-at-first-frame",
+            "inventory": {
+              "partId": "sales",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 20,
+                "height": 3
+              }
+            }
+          },
+          {
+            "partId": "store",
+            "groupId": "G2",
+            "dockId": "A2-from",
+            "pose": "already-flat-at-first-frame",
+            "inventory": {
+              "partId": "store",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 20,
+                "height": 3
+              }
+            }
+          }
+        ],
+        "receivingAppearance": "各接收垫仅为对应连续支承面的平面色块，与轨道视觉齐平；无凹陷、凸沿、横向端门槛或新托盘墙，不改变支承合同",
+        "exactPixelMatchRequired": false,
+        "actualGeometryCalibrated": false,
+        "referenceOnly": true,
+        "printedGuideTextAllowed": false,
+        "addedArrowsAllowed": false
+      }
+    },
+    {
+      "sceneId": "P03",
+      "beatId": "B10",
+      "physicalContractSha256": "b7c9e10256c98a115e2e32f4e36d5aee8e9831ee599f05f0aa9451cbe39e5bf9",
+      "mechanismSha256": "e211b7ca242db1cab73514b52629d1eb0beeacef14dbb06344c489fd243d8ea9",
+      "projectionContract": {
+        "schemaVersion": "koubo-paper-projection/v1",
+        "type": "axis-aligned-affine-reference",
+        "frame": {
+          "width": 1920,
+          "height": 1080
+        },
+        "xScale": 4,
+        "yScale": 3,
+        "zScale": 2.5,
+        "originX": 0,
+        "originY": 270,
+        "paddingPx": 4,
+        "localActionEnvelopes": []
+      },
+      "projection": {
+        "ok": true,
+        "errors": [],
+        "actionRects": [
+          {
+            "actionId": "A1",
+            "rect": {
+              "x": 0.16041666666666668,
+              "y": 0.4356481481481482,
+              "width": 0.7208333333333333,
+              "height": 0.08009259259259259
+            }
+          },
+          {
+            "actionId": "A2",
+            "rect": {
+              "x": 0.47291666666666665,
+              "y": 0.5745370370370371,
+              "width": 0.4083333333333333,
+              "height": 0.08009259259259259
+            }
+          }
+        ],
+        "supportRects": [
+          {
+            "supportId": "A1-lane",
+            "rect": {
+              "x": 0.15625,
+              "y": 0.44166666666666665,
+              "width": 0.7291666666666666,
+              "height": 0.07962962962962963
+            }
+          },
+          {
+            "supportId": "A2-lane",
+            "rect": {
+              "x": 0.46875,
+              "y": 0.5805555555555556,
+              "width": 0.4166666666666667,
+              "height": 0.07962962962962963
+            }
+          }
+        ],
+        "obstacleRects": []
+      },
+      "oldRectsRejected": [
+        "PAPER_PROJECTION_ACTION_RECT_MISMATCH:A1:B10",
+        "PAPER_PROJECTION_ACTION_RECT_MISMATCH:A2:B10"
+      ],
+      "referenceGuide": {
+        "coordinateSpace": "planned-frame-pixels",
+        "frame": {
+          "width": 1920,
+          "height": 1080
+        },
+        "functionalBaseFullOutline": {
+          "x": 210,
+          "y": 440,
+          "width": 1560,
+          "height": 330
+        },
+        "baseOutlineIncludes": [
+          "台面",
+          "前沿",
+          "侧沿",
+          "支脚"
+        ],
+        "rearStaticMaximumY": 446.5,
+        "rearStaticTypicalHeightPx": 90,
+        "rearStaticIncludes": [
+          "立架或空产品架",
+          "独立牌支架",
+          "人物与桌（本镜如有）"
+        ],
+        "contentSafeRect": {
+          "x": 76.8,
+          "y": 129.6,
+          "width": 1766.4,
+          "height": 691.2
+        },
+        "subtitleReservedRect": {
+          "x": 76.8,
+          "y": 874.8000000000001,
+          "width": 1766.4,
+          "height": 183.60000000000002
+        },
+        "labelZones": [
+          {
+            "nodeId": "N1",
+            "groupId": "G1",
+            "surfaceId": "G1-rigid-label-card",
+            "box": {
+              "x": 0.06,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N2",
+            "groupId": "G2",
+            "surfaceId": "G2-rigid-label-card",
+            "box": {
+              "x": 0.365,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          },
+          {
+            "nodeId": "N3",
+            "groupId": "G3",
+            "surfaceId": "G3-rigid-label-card",
+            "box": {
+              "x": 0.67,
+              "y": 0.2,
+              "width": 0.27,
+              "height": 0.105
+            }
+          }
+        ],
+        "objectGroups": [
+          {
+            "id": "G1",
+            "name": "内容介绍起点",
+            "material": "唯一暖白内容折页从首帧起已经平放在第一条直滑道起点，折痕贴平，厚度不超过3毫米，运输包络40乘18乘3毫米；不是竖立册页，不新增倒伏、展开或缩小动作；第一条路线由左方内容起点直达右方客户接收面，经过中间空产品架的前方，绝不汇入产品架或第二条路线；同一功能底台包含台面、前沿、侧沿和支脚的完整外轮廓，按1920乘1080参考画面内缩在横向210至1770、纵向440至770像素框内；底台前沿及支脚只在通道下方，不能横挡纸片进出口；这些坐标只作构图参考，实际图另验安全区，不要求逐像素复制；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，牌面落在原定预留区，支架不与活动部件相连；画面横向第一组",
+            "depth": 1
+          },
+          {
+            "id": "G2",
+            "name": "缺少产品服务的空承台",
+            "material": "中景产品架始终空着，没有产品、服务成品或回寄件；静态空架与牌支架最低轮廓不超过参考纵坐标446.5，离第一条动作区至少24像素，静态架高度约90像素；其前方第二条独立直路从右方客户返回本组，一张完全平面的开放接询垫与这条路线齐平，支承高度20毫米，没有下沉低盘、坡道、凸沿或横向端门槛；首帧接询垫为空，咨询到来后也不填充后方产品架；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，牌面落在原定预留区，支架不与活动部件相连；画面横向第二组",
+            "depth": 2
+          },
+          {
+            "id": "G3",
+            "name": "客户侧等待区",
+            "material": "远景暖白无脸纸人静止留在桌旁，人物、桌和牌支架最低轮廓不超过参考纵坐标446.5，不进入动作区；第一条路线的右端为齐平开放接收垫，初态为空；唯一无字客户咨询纸片从首帧起已经平放在第二条路线的右方起点，随后只沿第二条直路向左移动；两条路线平行分离，全程支承高度20毫米，不合为蛇形通道，不造高低站台或额外拱门建筑，不放订单或钱币；本组上沿正面有且仅有一张暖白空白牌，独立刚性支架，牌面落在原定预留区，支架不与活动部件相连；画面横向第三组",
+            "depth": 3
+          }
+        ],
+        "actionRects": [
+          {
+            "actionId": "A1",
+            "rect": {
+              "x": 308,
+              "y": 470.5,
+              "width": 1384,
+              "height": 86.5
+            }
+          },
+          {
+            "actionId": "A2",
+            "rect": {
+              "x": 908,
+              "y": 620.5,
+              "width": 784,
+              "height": 86.5
+            }
+          }
+        ],
+        "supportRects": [
+          {
+            "supportId": "A1-lane",
+            "rect": {
+              "x": 300,
+              "y": 477,
+              "width": 1400,
+              "height": 86
+            }
+          },
+          {
+            "supportId": "A2-lane",
+            "rect": {
+              "x": 900,
+              "y": 627,
+              "width": 800,
+              "height": 86
+            }
+          }
+        ],
+        "dockCenters": [
+          {
+            "dockId": "A1-from",
+            "groupId": "G1",
+            "x": 400,
+            "y": 520
+          },
+          {
+            "dockId": "A1-to",
+            "groupId": "G3",
+            "x": 1600,
+            "y": 520
+          },
+          {
+            "dockId": "A2-from",
+            "groupId": "G3",
+            "x": 1600,
+            "y": 670
+          },
+          {
+            "dockId": "A2-to",
+            "groupId": "G2",
+            "x": 1000,
+            "y": 670
+          }
+        ],
+        "initialParts": [
+          {
+            "partId": "leaflet",
+            "groupId": "G1",
+            "dockId": "A1-from",
+            "pose": "already-flat-at-first-frame",
+            "inventory": {
+              "partId": "leaflet",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 18,
+                "height": 3
+              }
+            }
+          },
+          {
+            "partId": "inquiry",
+            "groupId": "G3",
+            "dockId": "A2-from",
+            "pose": "already-flat-at-first-frame",
+            "inventory": {
+              "partId": "inquiry",
+              "quantity": 1,
+              "unit": "rigid-assembly",
+              "envelopeMm": {
+                "width": 40,
+                "depth": 18,
+                "height": 3
+              }
+            }
+          }
+        ],
+        "receivingAppearance": "各接收垫仅为对应连续支承面的平面色块，与轨道视觉齐平；无凹陷、凸沿、横向端门槛或新托盘墙，不改变支承合同",
+        "exactPixelMatchRequired": false,
+        "actualGeometryCalibrated": false,
+        "referenceOnly": true,
+        "printedGuideTextAllowed": false,
+        "addedArrowsAllowed": false
+      }
+    }
+  ],
+  "limitations": [
+    "规划投影和参考不等于实际生成图测量",
+    "真实安全区、通道与支架遮挡须由下游看图核验",
+    "P02保持原图、烘焙图及原始来源，不伪造r4重新生成或验收记录",
+    "P04-P06本轮只读，不因未改而视为已生成或动态通过",
+    "图片合格不代替动态试验及用户正常速度验收"
+  ],
+  "generatedMedia": false,
+  "formalAuthorized": false
+}
