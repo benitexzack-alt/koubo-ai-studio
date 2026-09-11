@@ -1,0 +1,740 @@
+{
+  "schemaVersion": "lanzhou-industry-ai-v91-candidate/v1",
+  "revisionId": "20260911-lanzhou-industry-ai-v91-v8-candidate-r1",
+  "status": "candidate-preview-required",
+  "formalAllowed": false,
+  "controlSources": {
+    "visualPlan": {
+      "path": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/visual-plan.v1.json",
+      "sha256": "9b4aef9235ff997955a6197e18e5f669b35da439ada26f062f20e4a9e1e9cb52"
+    },
+    "sfxCues": {
+      "path": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/sfx-cues.v1.json",
+      "sha256": "9c970216595d427ba30df7f6e5ea8d0e3feb0e96e5f796a1d919658111641a33"
+    },
+    "shotcraftCandidate": {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/shotcraft/candidate-plan.v1.json",
+      "sha256": "97b7f054c719e93f8266fc3fe816692512812ac261cea5be79e99c123703b8ff"
+    }
+  },
+  "controlCounts": {
+    "mainVisuals": 27,
+    "semanticLayers": 21,
+    "paperClips": 6,
+    "sfxCues": 27,
+    "captionPages": 96
+  },
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 336.366667,
+    "durationInFrames": 10091
+  },
+  "sourceVideo": "R01.mp4",
+  "captionsSrc": "captions.json",
+  "captionsContract": {
+    "runtimeShape": "plain-array",
+    "requiredFields": [
+      "zh",
+      "en",
+      "startMs",
+      "endMs"
+    ],
+    "status": "bilingual-captions-pending-human-audio-review"
+  },
+  "brandLabel": "超哥AI创业记",
+  "candidateLabel": "V9.1导演 / V8制作 · 双语字幕待听校",
+  "paperDisclosure": {
+    "primary": "AI生成·概念演绎",
+    "secondary": "非真实业务证据"
+  },
+  "paperClips": [
+    {
+      "id": "v91-005-p01-b04",
+      "beatId": "B04",
+      "asset": "P01.mp4",
+      "startSeconds": 40,
+      "durationSeconds": 7.292,
+      "controlEndSeconds": 47.292,
+      "muteAssetAudio": true,
+      "keepCanonicalVoice": true
+    },
+    {
+      "id": "v91-009-p02-b07",
+      "beatId": "B07",
+      "asset": "P02.mp4",
+      "startSeconds": 85.6,
+      "durationSeconds": 8,
+      "controlEndSeconds": 93.6,
+      "muteAssetAudio": true,
+      "keepCanonicalVoice": true
+    },
+    {
+      "id": "v91-013-p03-b10",
+      "beatId": "B10",
+      "asset": "P03.mp4",
+      "startSeconds": 136.7,
+      "durationSeconds": 6.584,
+      "controlEndSeconds": 143.284,
+      "muteAssetAudio": true,
+      "keepCanonicalVoice": true
+    },
+    {
+      "id": "v91-015-p04-b11",
+      "beatId": "B11",
+      "asset": "P04.mp4",
+      "startSeconds": 147.7,
+      "durationSeconds": 6.584,
+      "controlEndSeconds": 154.284,
+      "muteAssetAudio": true,
+      "keepCanonicalVoice": true
+    },
+    {
+      "id": "v91-020-p05-b15",
+      "beatId": "B15",
+      "asset": "P05.mp4",
+      "startSeconds": 217.7,
+      "durationSeconds": 6.584,
+      "controlEndSeconds": 224.284,
+      "muteAssetAudio": true,
+      "keepCanonicalVoice": true
+    },
+    {
+      "id": "v91-022-p06-b17",
+      "beatId": "B17",
+      "asset": "P06.mp4",
+      "startSeconds": 244.7,
+      "durationSeconds": 6.584,
+      "controlEndSeconds": 251.284,
+      "muteAssetAudio": true,
+      "keepCanonicalVoice": true
+    }
+  ],
+  "semanticLayers": [
+    {
+      "id": "v91-001-b01-hook",
+      "beatId": "B01",
+      "startSeconds": 0,
+      "endSeconds": 3.2,
+      "component": "hero-definition",
+      "controlComponent": "definition",
+      "semanticFamily": "hero-definition",
+      "coverageRatio": 0.34,
+      "title": "普通人的创业风口？",
+      "detail": "这是我的判断，不是结果承诺",
+      "items": []
+    },
+    {
+      "id": "v91-002-b02-local-path",
+      "beatId": "B02",
+      "startSeconds": 3.2,
+      "endSeconds": 14.3,
+      "component": "comparison",
+      "controlComponent": "comparison",
+      "semanticFamily": "two-path-comparison",
+      "coverageRatio": 0.34,
+      "title": "熟悉行业 + AI",
+      "detail": "先服务本地，再尝试外地业务",
+      "items": [
+        "本地服务",
+        "外地尝试"
+      ]
+    },
+    {
+      "id": "v91-003-b03-difference",
+      "beatId": "B03",
+      "startSeconds": 14.3,
+      "endSeconds": 24.5,
+      "component": "hero-definition",
+      "controlComponent": "definition",
+      "semanticFamily": "capability-anchor",
+      "coverageRatio": 0.34,
+      "title": "差别不会自动消失",
+      "detail": "经历和交付能力，仍决定你能做到哪一步",
+      "items": []
+    },
+    {
+      "id": "v91-004-b04-experience",
+      "beatId": "B04",
+      "startSeconds": 24.5,
+      "endSeconds": 40,
+      "component": "process",
+      "controlComponent": "process",
+      "semanticFamily": "experience-process",
+      "coverageRatio": 0.34,
+      "title": "别把原来的经验扔掉",
+      "detail": "销售、开店、行业经验，都可以变成对客户的了解",
+      "items": [
+        "销售",
+        "开过店",
+        "客户的了解"
+      ]
+    },
+    {
+      "id": "v91-006-b05-generic-copy",
+      "beatId": "B05",
+      "startSeconds": 47.292,
+      "endSeconds": 52.1,
+      "component": "hero-definition",
+      "controlComponent": "definition",
+      "semanticFamily": "generic-vs-specific",
+      "coverageRatio": 0.34,
+      "title": "“品质好、服务好”还不够",
+      "detail": "客户看完，仍然不知道为什么选你",
+      "items": []
+    },
+    {
+      "id": "v91-007-b06-owner-answers",
+      "beatId": "B06",
+      "startSeconds": 52.1,
+      "endSeconds": 66,
+      "component": "question-list",
+      "controlComponent": "question-grid",
+      "semanticFamily": "question-grid",
+      "coverageRatio": 0.34,
+      "title": "先收集老板真实的回答",
+      "detail": "价格为什么不一样，谁适合，哪些确实做不到",
+      "items": [
+        "价格差异",
+        "适合人群",
+        "做不到的要求"
+      ]
+    },
+    {
+      "id": "v91-008-b07-organize",
+      "beatId": "B07",
+      "startSeconds": 66,
+      "endSeconds": 85.6,
+      "component": "process",
+      "controlComponent": "process",
+      "semanticFamily": "four-step-process",
+      "coverageRatio": 0.34,
+      "title": "把回答整理成能拍的内容",
+      "detail": "收集 → AI归类理顺 → 改成文稿 → 老板核对",
+      "items": [
+        "收集",
+        "归类",
+        "改稿",
+        "核对"
+      ]
+    },
+    {
+      "id": "v91-010-b08-findable",
+      "beatId": "B08",
+      "startSeconds": 93.6,
+      "endSeconds": 97.9,
+      "component": "hero-definition",
+      "controlComponent": "definition",
+      "semanticFamily": "visibility-bridge",
+      "coverageRatio": 0.34,
+      "title": "让没进过店的人也能看到",
+      "detail": "把原来只在店里讲的经验，变成可见的介绍",
+      "items": []
+    },
+    {
+      "id": "v91-011-b09-trust",
+      "beatId": "B09",
+      "startSeconds": 97.9,
+      "endSeconds": 114,
+      "component": "process",
+      "controlComponent": "process",
+      "semanticFamily": "trust-ladder",
+      "coverageRatio": 0.34,
+      "title": "不是每条都要追着爆",
+      "detail": "先看懂产品，再看见你怎么处理问题，最后才有机会进入选择",
+      "items": [
+        "看懂产品",
+        "看见做法",
+        "进入选择"
+      ]
+    },
+    {
+      "id": "v91-012-b10-service-chance",
+      "beatId": "B10",
+      "startSeconds": 114,
+      "endSeconds": 136.7,
+      "component": "comparison",
+      "controlComponent": "comparison",
+      "semanticFamily": "service-boundary",
+      "coverageRatio": 0.34,
+      "title": "把经验讲清楚，是一种服务机会",
+      "detail": "帮老板持续做成内容，但内容不能代替真实产品和服务",
+      "items": []
+    },
+    {
+      "id": "v91-014-b11-remote-gap",
+      "beatId": "B11",
+      "startSeconds": 143.284,
+      "endSeconds": 147.7,
+      "component": "hero-definition",
+      "controlComponent": "definition",
+      "semanticFamily": "capability-gate",
+      "coverageRatio": 0.34,
+      "title": "先能听懂行业问题",
+      "detail": "再把约定的工作做好，才有资格介绍服务",
+      "items": []
+    },
+    {
+      "id": "v91-016-b12-remote-real",
+      "beatId": "B12",
+      "startSeconds": 154.284,
+      "endSeconds": 165,
+      "component": "comparison",
+      "controlComponent": "comparison",
+      "semanticFamily": "old-new-boundary",
+      "coverageRatio": 0.34,
+      "title": "远程业务早就有了",
+      "detail": "AI增加的是整理和制作能力；信任还得靠作品和服务",
+      "items": []
+    },
+    {
+      "id": "v91-017-b13-location",
+      "beatId": "B13",
+      "startSeconds": 165,
+      "endSeconds": 177,
+      "component": "question-list",
+      "controlComponent": "question-grid",
+      "semanticFamily": "question-pivot",
+      "coverageRatio": 0.34,
+      "title": "别只问本地有多少岗位",
+      "detail": "还可以问：我会做的事，外地有没有人需要？",
+      "items": []
+    },
+    {
+      "id": "v91-018-b14-runway",
+      "beatId": "B14",
+      "startSeconds": 177,
+      "endSeconds": 199,
+      "component": "process",
+      "controlComponent": "process",
+      "semanticFamily": "runway-process",
+      "coverageRatio": 0.34,
+      "title": "把低成本变成试错时间",
+      "detail": "少一些搬迁和生活开支，就能多留一点时间找客户、改作品、磨合服务",
+      "items": [
+        "找客户",
+        "改作品",
+        "磨合服务"
+      ]
+    },
+    {
+      "id": "v91-019-b15-cost",
+      "beatId": "B15",
+      "startSeconds": 199,
+      "endSeconds": 217.7,
+      "component": "status-stack",
+      "controlComponent": "evidence",
+      "semanticFamily": "cost-ledger",
+      "coverageRatio": 0.34,
+      "title": "这不是零成本创业",
+      "detail": "课程、会员、调用、做图、做视频都要花钱，不适合还得继续改",
+      "items": [
+        "学习费用",
+        "工具调用",
+        "制作与返工"
+      ]
+    },
+    {
+      "id": "v91-021-b17-scope",
+      "beatId": "B17",
+      "startSeconds": 224.284,
+      "endSeconds": 244.7,
+      "component": "rights-rail",
+      "controlComponent": "checklist",
+      "semanticFamily": "scope-checklist",
+      "coverageRatio": 0.34,
+      "title": "收服务费之前，先把边界讲清楚",
+      "detail": "做哪些工作、谁配合、交什么东西，客户用不上还要继续查问题",
+      "items": [
+        "工作范围",
+        "双方配合",
+        "交付物"
+      ]
+    },
+    {
+      "id": "v91-023-b18-more-work",
+      "beatId": "B18",
+      "startSeconds": 251.284,
+      "endSeconds": 262,
+      "component": "comparison",
+      "controlComponent": "comparison",
+      "semanticFamily": "value-gap",
+      "coverageRatio": 0.34,
+      "title": "只靠生成几段文字、几张图片，会越来越难",
+      "detail": "你得比老板自己试，多承担他没时间做、不会检查、无法持续的工作",
+      "items": []
+    },
+    {
+      "id": "v91-024-b19-onsite",
+      "beatId": "B19",
+      "startSeconds": 262,
+      "endSeconds": 278,
+      "component": "direct-statement",
+      "controlComponent": "evidence",
+      "semanticFamily": "onsite-evidence",
+      "coverageRatio": 0.34,
+      "title": "本地的优势，是能到店里看",
+      "detail": "问清真实工作，才知道通用方案哪里用不了",
+      "items": []
+    },
+    {
+      "id": "v91-025-b20-paid-project",
+      "beatId": "B20",
+      "startSeconds": 278,
+      "endSeconds": 295,
+      "component": "process",
+      "controlComponent": "process",
+      "semanticFamily": "delivery-loop",
+      "coverageRatio": 0.34,
+      "title": "有过交付，不等于生意已经做完",
+      "detail": "企业AI应用和GEO有过付费交付，后面还要看服务能不能做好、客户能不能继续用",
+      "items": []
+    },
+    {
+      "id": "v91-026-b21-start-known",
+      "beatId": "B21",
+      "startSeconds": 295,
+      "endSeconds": 311,
+      "component": "hero-definition",
+      "controlComponent": "definition",
+      "semanticFamily": "start-gate",
+      "coverageRatio": 0.34,
+      "title": "先从熟悉的业务开始",
+      "detail": "完全没接触过一个行业，就先去了解实际工作",
+      "items": []
+    },
+    {
+      "id": "v91-027-b22-closing",
+      "beatId": "B22",
+      "startSeconds": 311,
+      "endSeconds": 336.28,
+      "component": "closing",
+      "controlComponent": "closing",
+      "semanticFamily": "local-cta",
+      "coverageRatio": 0.34,
+      "title": "我选择留在兰州做这件事",
+      "detail": "把本地企业的问题弄明白，把自己能承担的工作做好",
+      "items": [
+        "带着实际问题来聊",
+        "能做哪一段当面说清"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "beatId": "B21",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 9090,
+        "endFrameExclusive": 9330
+      },
+      "decision": "apply",
+      "decisionOrigin": "human-director-candidate-override",
+      "candidateOnly": true,
+      "effectId": "line-carry",
+      "purpose": "把“先了解实际工作”与“AI能给方案”的先后关系做成单线接力，不表达AI方案已经适用",
+      "quote": "完全没接触过一个行业的人先去了解实际工作别因为AI能给方案就着急给老板当顾问",
+      "texts": [
+        "了解实际工作",
+        "AI能给方案"
+      ],
+      "region": {
+        "x": 72,
+        "y": 120,
+        "width": 680,
+        "height": 640
+      },
+      "protectedRegions": [
+        {
+          "x": 820,
+          "y": 40,
+          "width": 820,
+          "height": 800
+        },
+        {
+          "x": 0,
+          "y": 820,
+          "width": 1920,
+          "height": 260
+        },
+        {
+          "x": 1640,
+          "y": 0,
+          "width": 280,
+          "height": 820
+        }
+      ],
+      "fallback": "blocked",
+      "sourceCard": {
+        "cardId": "line-carry-transition",
+        "cardName": "line-carry-transition",
+        "component": "LineCarry",
+        "status": "candidate-only"
+      },
+      "matchContext": {
+        "origin": "human-director-candidate-override",
+        "automaticApplyCount": 0,
+        "automaticNotNeededCount": 22,
+        "analyzedCardCount": 157,
+        "originalDecision": "not-needed",
+        "catalogScore": 0.617778,
+        "automaticThreshold": 0.58,
+        "semanticGap": 0.125163,
+        "maximumAutomaticSemanticGap": 0.06,
+        "overrideDoesNotAlterAutoMatchReceipt": true,
+        "requiresUserPreviewAcceptance": true
+      },
+      "componentProps": {
+        "fromLabel": "了解实际工作",
+        "toLabel": "AI能给方案",
+        "width": 680
+      }
+    }
+  ],
+  "sfxCues": [
+    {
+      "id": "v91-001-b01-hook-sfx",
+      "controlLayerId": "v91-001-b01-hook",
+      "visualEventId": "v91-001-b01-hook-event",
+      "role": "chapter",
+      "time": 0,
+      "src": "sfx/v3-chapter-sweep-a.wav",
+      "volume": 0.3
+    },
+    {
+      "id": "v91-002-b02-local-path-sfx",
+      "controlLayerId": "v91-002-b02-local-path",
+      "visualEventId": "v91-002-b02-local-path-event",
+      "role": "keyword",
+      "time": 3.2,
+      "src": "sfx/v1-keyword-tick.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-003-b03-difference-sfx",
+      "controlLayerId": "v91-003-b03-difference",
+      "visualEventId": "v91-003-b03-difference-event",
+      "role": "number",
+      "time": 14.3,
+      "src": "sfx/v3-number-settle-a.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-004-b04-experience-sfx",
+      "controlLayerId": "v91-004-b04-experience",
+      "visualEventId": "v91-004-b04-experience-event",
+      "role": "list",
+      "time": 24.5,
+      "src": "sfx/v3-list-tick-a.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-005-p01-b04-sfx",
+      "controlLayerId": "v91-005-p01-b04",
+      "visualEventId": "v91-005-p01-b04-event",
+      "role": "media",
+      "time": 40,
+      "src": "sfx/v3-media-whoosh-a.wav",
+      "volume": 0.3
+    },
+    {
+      "id": "v91-006-b05-generic-copy-sfx",
+      "controlLayerId": "v91-006-b05-generic-copy",
+      "visualEventId": "v91-006-b05-generic-copy-event",
+      "role": "comparison",
+      "time": 47.292,
+      "src": "sfx/v2-section-sweep.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-007-b06-owner-answers-sfx",
+      "controlLayerId": "v91-007-b06-owner-answers",
+      "visualEventId": "v91-007-b06-owner-answers-event",
+      "role": "node",
+      "time": 52.1,
+      "src": "sfx/v1-node-connect.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-008-b07-organize-sfx",
+      "controlLayerId": "v91-008-b07-organize",
+      "visualEventId": "v91-008-b07-organize-event",
+      "role": "keyword",
+      "time": 66,
+      "src": "sfx/v3-soft-card-pop-a.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-009-p02-b07-sfx",
+      "controlLayerId": "v91-009-p02-b07",
+      "visualEventId": "v91-009-p02-b07-event",
+      "role": "media",
+      "time": 85.6,
+      "src": "sfx/v2-keyword-select.wav",
+      "volume": 0.3
+    },
+    {
+      "id": "v91-010-b08-findable-sfx",
+      "controlLayerId": "v91-010-b08-findable",
+      "visualEventId": "v91-010-b08-findable-event",
+      "role": "line",
+      "time": 93.6,
+      "src": "sfx/v3-line-connect-a.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-011-b09-trust-sfx",
+      "controlLayerId": "v91-011-b09-trust",
+      "visualEventId": "v91-011-b09-trust-event",
+      "role": "chapter",
+      "time": 97.9,
+      "src": "sfx/v1-card-reveal.wav",
+      "volume": 0.3
+    },
+    {
+      "id": "v91-012-b10-service-chance-sfx",
+      "controlLayerId": "v91-012-b10-service-chance",
+      "visualEventId": "v91-012-b10-service-chance-event",
+      "role": "evidence",
+      "time": 114,
+      "src": "sfx/v2-evidence-shutter.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-013-p03-b10-sfx",
+      "controlLayerId": "v91-013-p03-b10",
+      "visualEventId": "v91-013-p03-b10-event",
+      "role": "media",
+      "time": 136.7,
+      "src": "sfx/v3-media-whoosh-b.wav",
+      "volume": 0.3
+    },
+    {
+      "id": "v91-014-b11-remote-gap-sfx",
+      "controlLayerId": "v91-014-b11-remote-gap",
+      "visualEventId": "v91-014-b11-remote-gap-event",
+      "role": "number",
+      "time": 143.284,
+      "src": "sfx/v2-number-affirmation.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-015-p04-b11-sfx",
+      "controlLayerId": "v91-015-p04-b11",
+      "visualEventId": "v91-015-p04-b11-event",
+      "role": "media",
+      "time": 147.7,
+      "src": "sfx/v1-section-air.wav",
+      "volume": 0.3
+    },
+    {
+      "id": "v91-016-b12-remote-real-sfx",
+      "controlLayerId": "v91-016-b12-remote-real",
+      "visualEventId": "v91-016-b12-remote-real-event",
+      "role": "list",
+      "time": 154.284,
+      "src": "sfx/v3-list-tick-b.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-017-b13-location-sfx",
+      "controlLayerId": "v91-017-b13-location",
+      "visualEventId": "v91-017-b13-location-event",
+      "role": "keyword",
+      "time": 165,
+      "src": "sfx/v2-node-select.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-018-b14-runway-sfx",
+      "controlLayerId": "v91-018-b14-runway",
+      "visualEventId": "v91-018-b14-runway-event",
+      "role": "comparison",
+      "time": 177,
+      "src": "sfx/v2-card-slide.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-019-b15-cost-sfx",
+      "controlLayerId": "v91-019-b15-cost",
+      "visualEventId": "v91-019-b15-cost-event",
+      "role": "evidence",
+      "time": 199,
+      "src": "sfx/v1-camera-shutter.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-020-p05-b15-sfx",
+      "controlLayerId": "v91-020-p05-b15",
+      "visualEventId": "v91-020-p05-b15-event",
+      "role": "media",
+      "time": 217.7,
+      "src": "sfx/v2-ui-click.wav",
+      "volume": 0.3
+    },
+    {
+      "id": "v91-021-b17-scope-sfx",
+      "controlLayerId": "v91-021-b17-scope",
+      "visualEventId": "v91-021-b17-scope-event",
+      "role": "chapter",
+      "time": 224.284,
+      "src": "sfx/remotion-page-turn.wav",
+      "volume": 0.3
+    },
+    {
+      "id": "v91-022-p06-b17-sfx",
+      "controlLayerId": "v91-022-p06-b17",
+      "visualEventId": "v91-022-p06-b17-event",
+      "role": "media",
+      "time": 244.7,
+      "src": "sfx/remotion-ui-switch.wav",
+      "volume": 0.3
+    },
+    {
+      "id": "v91-023-b18-more-work-sfx",
+      "controlLayerId": "v91-023-b18-more-work",
+      "visualEventId": "v91-023-b18-more-work-event",
+      "role": "line",
+      "time": 251.284,
+      "src": "sfx/v3-evidence-paper-a.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-024-b19-onsite-sfx",
+      "controlLayerId": "v91-024-b19-onsite",
+      "visualEventId": "v91-024-b19-onsite-event",
+      "role": "number",
+      "time": 262,
+      "src": "sfx/v3-soft-card-pop-b.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-025-b20-paid-project-sfx",
+      "controlLayerId": "v91-025-b20-paid-project",
+      "visualEventId": "v91-025-b20-paid-project-event",
+      "role": "keyword",
+      "time": 278,
+      "src": "sfx/waic-node-connect.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-026-b21-start-known-sfx",
+      "controlLayerId": "v91-026-b21-start-known",
+      "visualEventId": "v91-026-b21-start-known-event",
+      "role": "list",
+      "time": 295,
+      "src": "sfx/v1-confirm-soft.wav",
+      "volume": 0.26
+    },
+    {
+      "id": "v91-027-b22-closing-sfx",
+      "controlLayerId": "v91-027-b22-closing",
+      "visualEventId": "v91-027-b22-closing-event",
+      "role": "cta",
+      "time": 311,
+      "src": "sfx/v3-cta-confirm-a.wav",
+      "volume": 0.3
+    }
+  ]
+}

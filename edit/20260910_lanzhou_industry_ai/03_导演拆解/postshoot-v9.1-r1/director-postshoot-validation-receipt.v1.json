@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "koubo-director-postshoot-validation-receipt/v1",
+  "requestId": "20260911-lanzhou-industry-ai-postshoot-v9.1-r1",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "revisionId": "20260911-lanzhou-industry-ai-postshoot-v9.1-r1",
+  "policy": {
+    "incidentPreventionVersion": "1"
+  },
+  "phase": "post-shoot",
+  "status": "validated-candidate-preview-required",
+  "skillExecuted": true,
+  "spokenAuthority": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "artifacts": {
+    "request": {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-request.v1.json",
+      "sha256": "df2fd86057f6345c754a9f7923ebcfd40bfd85927e0be0d9463a9b42aa0bdb53"
+    },
+    "rebindPlan": {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-plan.v1.json",
+      "sha256": "055bd70d502107c6d22538238f71c843a6012bcb10cc2c20b901c1ca482c7390"
+    },
+    "recordedMedia": {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/01_原始口播/copy_B71E2E7B-29AC-4653-AC9C-9D4A3C3D3AB6.MOV",
+      "sha256": "f5469a24278c333c00b4517c853958954a09cce8772a86231197e1966647d98f"
+    },
+    "spokenTimeline": {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/spoken-timeline.candidate.v1.json",
+      "sha256": "be4a59f697cabd520c0219cef782cc7d779fdd129ab2c8633aad9e202ebeefa2"
+    },
+    "scopedEvidence": []
+  },
+  "gates": {
+    "allPreproductionBeatsMapped": true,
+    "allKeptBeatsMatchDerivedPlan": true,
+    "omittedBeatsRemainInDispositionLedgerOnly": true,
+    "omissionRequiresFullRecordingReviewEvidence": true,
+    "recordedSpeechBound": true,
+    "deterministicNodeTextReconfirmed": true,
+    "declaredCaptionWindowsBound": true,
+    "exactSpokenTermsBoundPerNode": true,
+    "visualClaimLeadAtMost300Ms": true,
+    "firstReadableFrameIsIndependentOfAction": true,
+    "movingLabelAndEmphasisOffsetAtMost3Frames": true,
+    "initialStaticLabelsDoNotRequireFakeActions": true,
+    "mismatchRejectedAndPartialRequiresUserException": true,
+    "partialExceptionBoundToCurrentRevisionAndSource": true,
+    "renderedAssetTimingVerified": false,
+    "postshootPaperScenesReadyForAssetBinding": true,
+    "formalAssetIntakeRequired": true,
+    "formalEligible": false,
+    "nextGate": "current-task-withsfx-nosfx-preview-and-user-acceptance"
+  }
+}

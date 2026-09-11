@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20260910-lanzhou-industry-ai-v91-v8-r1",
+  "videoId": "LANZHOU_INDUSTRY_AI_20260910_V91_R1",
+  "title": "留在兰州做企业AI：把熟悉行业做成真实服务",
+  "purpose": "完整保留本人口播，按V9.1导演的实录重绑时点使用六条纸艺成品，再用V8人物主画面、同窗中英文字幕和可感知音效生成候选对照预览。",
+  "productionState": "ready-for-production",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "contentApproval": {
+    "userScriptApproved": true,
+    "evidence": "用户已提供原片和六条成品视频，本轮明确要求按V9.1、V8和双语字幕重新剪辑；仅授权本地候选预览，不是正式成片验收。"
+  },
+  "finalReview": {
+    "fullWatchConfirmed": false,
+    "reviewOutcome": "pending"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required",
+    "userPreviewApproved": false,
+    "userPreviewApprovedAt": null,
+    "userPreviewApprovalEvidence": null,
+    "revisionReason": "上一版FFmpeg直接叠片绕开了正式链路；本修订恢复V9.1导演、V8生产、同窗双语字幕和全量Shotcraft匹配后的Remotion候选对照预览。",
+    "primaryVisualEventCount": 27,
+    "sfxCoveragePercent": 100,
+    "previewAuditionRoles": [
+      "chapter",
+      "keyword",
+      "number",
+      "list",
+      "media"
+    ]
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "edit/20260910_lanzhou_industry_ai/01_原始口播/copy_B71E2E7B-29AC-4653-AC9C-9D4A3C3D3AB6.MOV",
+    "renderProxy": "remotion/public-lanzhou-industry-ai-v91-r1/R01.mp4",
+    "visualPlan": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/visual-plan.v1.json",
+    "transcript": "edit/20260910_lanzhou_industry_ai/05_实录与字幕/spoken-timeline.candidate.v1.json",
+    "captions": "remotion/public-lanzhou-industry-ai-v91-r1/captions.json",
+    "bilingualCaptions": "remotion/public-lanzhou-industry-ai-v91-r1/captions.json",
+    "sfxCueSheet": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/sfx-cues.v1.json",
+    "sfxManifest": "assets/sfx/koubo-sfx-v8/manifest.json",
+    "fingerprintPaths": [
+      "edit/20260910_lanzhou_industry_ai/01_原始口播/copy_B71E2E7B-29AC-4653-AC9C-9D4A3C3D3AB6.MOV",
+      "remotion/public-lanzhou-industry-ai-v91-r1/R01.mp4",
+      "remotion/public-lanzhou-industry-ai-v91-r1/P01.mp4",
+      "remotion/public-lanzhou-industry-ai-v91-r1/P02.mp4",
+      "remotion/public-lanzhou-industry-ai-v91-r1/P03.mp4",
+      "remotion/public-lanzhou-industry-ai-v91-r1/P04.mp4",
+      "remotion/public-lanzhou-industry-ai-v91-r1/P05.mp4",
+      "remotion/public-lanzhou-industry-ai-v91-r1/P06.mp4",
+      "remotion/public-lanzhou-industry-ai-v91-r1/captions.json",
+      "remotion/public-lanzhou-industry-ai-v91-r1/sfx",
+      "edit/20260910_lanzhou_industry_ai/05_实录与字幕/spoken-timeline.candidate.v1.json",
+      "edit/20260910_lanzhou_industry_ai/05_实录与字幕/actual-spoken.bilingual.candidate.v1.json",
+      "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/visual-plan.v1.json",
+      "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/sfx-cues.v1.json",
+      "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-request.v1.json",
+      "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-route-lock.v1.json",
+      "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-plan.v1.json",
+      "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/validation-receipt.v1.json",
+      "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-request.v1.json",
+      "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-plan.v1.json",
+      "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-validation-receipt.v1.json",
+      "remotion/src/lanzhou-industry-ai-v91-candidate-r1",
+      "workflow/active-director-profile.v1.json",
+      "workflow/active-production-profile.v1.json",
+      "assets/sfx/koubo-sfx-v8/manifest.json"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/lanzhou-industry-ai-v91-candidate-r1/index.tsx",
+    "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+    "compositionWithSfx": "LanzhouIndustryAIV91CandidateR1WithSfx",
+    "compositionWithoutSfx": "LanzhouIndustryAIV91CandidateR1NoSfx",
+    "durationSeconds": 336.366667,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 4
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": false,
+    "scale": 0.5,
+    "crf": 22,
+    "ranges": [
+      {
+        "id": "v91-v8-hook-paper-bilingual-sfx-45s",
+        "startSeconds": 0,
+        "endSeconds": 45
+      }
+    ],
+    "output": "edit/20260910_lanzhou_industry_ai/06_预览与质检/V9.1_V8候选_r1/preview/with-sfx.mp4",
+    "renderWithoutSfxComparison": true
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt",
+    "fullResolution": true,
+    "outputDirectory": "edit/20260910_lanzhou_industry_ai/06_预览与质检/V9.1_V8候选_r1/risk-frames"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": false,
+    "composition": "with-sfx",
+    "blockedReason": "等待当前任务同画面有音效/无音效候选预览的用户验收，且实录字幕仍需人工听校。",
+    "crf": 17,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "rawOutput": "edit/20260910_lanzhou_industry_ai/06_预览与质检/V9.1_V8候选_r1/formal/formal-raw.mp4",
+    "finalOutput": "outputs/留在兰州做企业AI_V9.1_V8_有音效_正式候选_r1.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -2.2
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "directory": "work/production-cache/lanzhou-industry-ai-v91-v8-r1",
+    "reuseOnlyOnExactFingerprint": true
+  },
+  "reports": {
+    "runManifest": "edit/20260910_lanzhou_industry_ai/06_预览与质检/V9.1_V8候选_r1/run-manifest.json",
+    "timingReport": "edit/20260910_lanzhou_industry_ai/06_预览与质检/V9.1_V8候选_r1/timings.json",
+    "regressionReport": "edit/20260910_lanzhou_industry_ai/06_预览与质检/V9.1_V8候选_r1/regression.json"
+  },
+  "knowledgeContext": {
+    "taskId": "task-20260910T105427Z-a149c6de",
+    "contextPath": "task-20260910T105427Z-a149c6de/context.json",
+    "status": "missing-current-production-context"
+  },
+  "director": {
+    "required": true,
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0",
+    "paperRequired": true,
+    "fallback": "blocked",
+    "taskId": "task-20260910T105427Z-a149c6de",
+    "phase": "post-shoot",
+    "artifacts": {
+      "preproductionRequest": {
+        "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-request.v1.json",
+        "sha256": "5b6054ab7192f330af70e60b6c9996ab06d9ab53a31deab4da8333296f630dcc"
+      },
+      "routeLock": {
+        "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-route-lock.v1.json",
+        "sha256": "65d53a54f62a330090bdf70851d41b43840297d80788dd482f113adce19467b2"
+      },
+      "preproductionPlan": {
+        "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-plan.v1.json",
+        "sha256": "46efff271cccf4cb145bf8d50f0aaab65d8365bb90d757abe66260757bf7058a"
+      },
+      "preproductionValidation": {
+        "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/validation-receipt.v1.json",
+        "sha256": "3d72adddb8809d895b6c4a93e0888d3d846ffd395c07d0f1eb9993fa1ceea335"
+      },
+      "postshootRequest": {
+        "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-request.v1.json",
+        "sha256": "df2fd86057f6345c754a9f7923ebcfd40bfd85927e0be0d9463a9b42aa0bdb53"
+      },
+      "postshootPlan": {
+        "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-plan.v1.json",
+        "sha256": "055bd70d502107c6d22538238f71c843a6012bcb10cc2c20b901c1ca482c7390"
+      },
+      "postshootValidation": {
+        "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-validation-receipt.v1.json",
+        "sha256": "04544e9d36e5a87fdaa9fae96fe38e72f74efc5eca3b9d54c498c74e03347c5f"
+      }
+    },
+    "currentTaskUserAcceptance": null
+  },
+  "productionGate": {
+    "schema": "director-production-entry-binding/v2",
+    "state": "candidate-preview-required",
+    "revisionId": "20260911-lanzhou-industry-ai-v91-v8-candidate-r1",
+    "formalEnabled": false,
+    "userPreviewApproved": false,
+    "directorContract": null,
+    "handoffReceipt": null,
+    "handoffBindingSha256": null,
+    "freezeReceipt": null,
+    "status": "blocked-missing-independent-v2-signatures-and-current-knowledge-context"
+  }
+}

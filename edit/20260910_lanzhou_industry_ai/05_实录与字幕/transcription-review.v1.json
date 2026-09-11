@@ -1,0 +1,308 @@
+{
+  "schemaVersion": "koubo-transcription-review/v1",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "createdAt": "2026-09-11T12:04:36.594Z",
+  "status": "needs-user-audio-review",
+  "formalAllowed": false,
+  "permittedUse": "local-low-resolution-candidate-preparation-only",
+  "authority": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "humanListeningPerformed": false,
+  "userAudioReviewConfirmed": false,
+  "source": {
+    "recordedMedia": {
+      "path": "口播/edit/20260910_lanzhou_industry_ai/01_原始口播/copy_B71E2E7B-29AC-4653-AC9C-9D4A3C3D3AB6.MOV",
+      "sha256": "f5469a24278c333c00b4517c853958954a09cce8772a86231197e1966647d98f",
+      "durationMs": 336366.667
+    },
+    "audio": {
+      "path": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/host_16k.v1.wav",
+      "sha256": "ed43138c0994bc5ddae1c6772f67041a204361da5f9607a3301a81b43cd24f7f",
+      "durationMs": 336362.813
+    },
+    "baselineSmall": {
+      "path": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/host_whisper_small_raw_v1.json",
+      "sha256": "27a28f5c5b735f4e9b8fde74ac4fa877e771435579a83b0ac6593b064b6c909b"
+    },
+    "comparisonBase": {
+      "path": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/host_whisper_base_raw_v1.json",
+      "sha256": "4e20f8df8cb62b1eecf494f79d8be17299ef599f1a6a2d7f1da9664ed6dbc184"
+    }
+  },
+  "corrections": [
+    {
+      "id": "C01",
+      "beatId": "B01",
+      "from": "创业封口",
+      "to": "创业风口",
+      "reason": "同音正字；base 全量识别为“创业风口”。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C02",
+      "beatId": "B02",
+      "from": "将为打击",
+      "to": "降维打击",
+      "reason": "领域词正字；small/base 原始结果均为近音误识别。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C03",
+      "beatId": "B02",
+      "from": "技能服务",
+      "to": "既能服务",
+      "reason": "同音正字；与本句并列结构一致。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C04",
+      "beatId": "B04",
+      "from": "权扔掉",
+      "to": "全扔掉",
+      "reason": "同音正字；base 识别为“全生掉”，两者均指向“全扔掉”。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C05",
+      "beatId": "B04",
+      "from": "用程",
+      "to": "用场",
+      "reason": "近音正字；三轮识别均落在同一固定搭配。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C06",
+      "beatId": "B07",
+      "from": "AI规律理顺",
+      "to": "AI归类理顺",
+      "reason": "base 与局部上下文支持“归类、理顺”。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C07",
+      "beatId": "B07",
+      "from": "合对",
+      "to": "核对",
+      "reason": "同音正字；所指为老板复核文稿。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C08",
+      "beatId": "B08",
+      "from": "静国店",
+      "to": "进过店",
+      "reason": "近音正字候选；base 为“静过电”，语境支持“进过店”，仍待原声确认。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C09",
+      "beatId": "B09",
+      "from": "追着报",
+      "to": "追着爆",
+      "reason": "同音正字候选；指视频播放表现，仍待原声确认。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C10",
+      "beatId": "B10",
+      "from": "这即使",
+      "to": "这既是",
+      "reason": "同音正字；句法和完整语义一致。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C11",
+      "beatId": "B11",
+      "from": "外地同好",
+      "to": "外地同行",
+      "reason": "近音正字；局部复核仍为同行语境。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C12",
+      "beatId": "B12",
+      "from": "远程街要不",
+      "to": "远程接业务",
+      "reason": "连续近音误识别；base 亦为“皆要不”，上下文明确为远程业务。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C13",
+      "beatId": "B17",
+      "from": "教什么东西",
+      "to": "交什么东西",
+      "reason": "base 全量识别为“交什么东西”；指交付物。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C14",
+      "beatId": "B18",
+      "from": "老板自己也能是",
+      "to": "老板自己也能试",
+      "reason": "“是/试”同音正字候选；需用户听校。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C15",
+      "beatId": "B18",
+      "from": "比他自己是",
+      "to": "比他自己试",
+      "reason": "“是/试”同音正字候选；需用户听校。",
+      "status": "candidate-not-human-verified"
+    },
+    {
+      "id": "C16",
+      "beatId": "B21",
+      "from": "交集给老板",
+      "to": "着急给老板",
+      "reason": "局部复核识别为“着急给老板”。",
+      "status": "candidate-not-human-verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "U01",
+      "beatId": "B04",
+      "retained": "学AI了就要",
+      "alternatives": [
+        "学AI就要",
+        "学AI就得"
+      ],
+      "reason": "small 保留“了”，base 未识别“了”，预拍稿为“就得”；不擅自顺句。",
+      "status": "needs-user-audio-review"
+    },
+    {
+      "id": "U02",
+      "beatId": "B05",
+      "retained": "咱们就帮本地的老板做内容来说",
+      "alternatives": [
+        "咱们就拿帮本地的老板做内容来说"
+      ],
+      "reason": "small 全量与局部缺“拿”，base 有“拿”；保留 small 基线。",
+      "status": "needs-user-audio-review"
+    },
+    {
+      "id": "U03",
+      "beatId": "B10",
+      "retained": "也是懂这个行业的人留出了一种服务机会",
+      "alternatives": [
+        "也给懂这个行业的人留出了一种服务机会"
+      ],
+      "reason": "small、base 与局部复核一致缺“给”；保留实际识别的非标准说法。",
+      "status": "needs-user-audio-review"
+    },
+    {
+      "id": "U04",
+      "beatId": "B20",
+      "retained": "有个交付",
+      "alternatives": [
+        "有过交付"
+      ],
+      "reason": "small、base 与局部复核均偏向“有个”，但“个/过”近音，待听原声。",
+      "status": "needs-user-audio-review"
+    },
+    {
+      "id": "U05",
+      "beatId": "B20",
+      "retained": "生意已经做完了",
+      "alternatives": [
+        "生意已经做稳了",
+        "生意已经做到了"
+      ],
+      "reason": "small 对“完了”置信度低，base 为“做到了”，预拍稿为“做稳了”；不以文稿恢复。",
+      "status": "needs-user-audio-review"
+    },
+    {
+      "id": "U06",
+      "beatId": "B21",
+      "retained": "你有工作就先在熟悉的业务里面",
+      "alternatives": [
+        "你有工作就像在熟悉的业务里面",
+        "你有工作就先在熟悉的业务里练"
+      ],
+      "reason": "small 与局部复核为“就先在”，base 为“就像在”，预拍稿多“练”；保留 small 基线。",
+      "status": "needs-user-audio-review"
+    },
+    {
+      "id": "U07",
+      "beatId": "B08",
+      "retained": "进过店",
+      "alternatives": [
+        "静国店",
+        "静过电"
+      ],
+      "reason": "按语境做同音正字，尚未真人听校。",
+      "status": "needs-user-audio-review"
+    },
+    {
+      "id": "U08",
+      "beatId": "B18",
+      "retained": "老板自己也能试；你得比他自己试",
+      "alternatives": [
+        "老板自己也能是；你得比他自己是"
+      ],
+      "reason": "按上下文修正同音字，尚未真人听校。",
+      "status": "needs-user-audio-review"
+    }
+  ],
+  "preservedRecordedDifferences": [
+    {
+      "beatId": "B03",
+      "text": "帮别人做到了哪一步"
+    },
+    {
+      "beatId": "B04",
+      "text": "我以前做过销售、开过店；我对客户的了解"
+    },
+    {
+      "beatId": "B06",
+      "text": "他手里有哪些东西"
+    },
+    {
+      "beatId": "B09",
+      "text": "先看懂的是你的产品"
+    },
+    {
+      "beatId": "B10",
+      "text": "产品和服务"
+    },
+    {
+      "beatId": "B14",
+      "text": "适合不适合继续"
+    },
+    {
+      "beatId": "B15",
+      "text": "成本都要花；做出来不适合"
+    },
+    {
+      "beatId": "B16",
+      "text": "客户如果自己也会用AI了"
+    },
+    {
+      "beatId": "B17",
+      "text": "你得继续查问题"
+    },
+    {
+      "beatId": "B18",
+      "text": "工具越来越容易用；几张图片"
+    },
+    {
+      "beatId": "B19",
+      "text": "得按照实际情况改"
+    },
+    {
+      "beatId": "B20",
+      "text": "这是我愿意继续做下去的一个原因"
+    },
+    {
+      "beatId": "B22",
+      "text": "我选择留在兰州；咱们聊一聊"
+    }
+  ],
+  "limitations": [
+    "本轮只有本地 ASR 交叉识别和文本证据复核，没有冒充真人听校。",
+    "small 与 base 属于同一家族模型，一致也不等于用户已确认实际说法。",
+    "不确定正文必须在正式字幕和正式渲染前由用户听原声确认。"
+  ],
+  "nextGate": "user-audio-review-before-formal-subtitles"
+}

@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../..",
+    "ignoreDeprecations": "6.0",
+    "paths": {
+      "react": [
+        "node_modules/@types/react/index.d.ts"
+      ],
+      "react/jsx-runtime": [
+        "node_modules/@types/react/jsx-runtime.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "./*.tsx",
+    "./*.json",
+    "../../../skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx"
+  ],
+  "exclude": []
+}

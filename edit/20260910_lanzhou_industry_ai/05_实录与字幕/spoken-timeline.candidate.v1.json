@@ -1,0 +1,2770 @@
+{
+  "schemaVersion": "koubo-authoritative-spoken-timeline-candidate/v1",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "createdAt": "2026-09-11T12:04:36.594Z",
+  "status": "needs-user-audio-review",
+  "formalAllowed": false,
+  "permittedUse": "local-low-resolution-candidate-preparation-only",
+  "authority": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "humanListeningPerformed": false,
+  "userAudioReviewConfirmed": false,
+  "source": {
+    "recordedMedia": {
+      "path": "口播/edit/20260910_lanzhou_industry_ai/01_原始口播/copy_B71E2E7B-29AC-4653-AC9C-9D4A3C3D3AB6.MOV",
+      "sha256": "f5469a24278c333c00b4517c853958954a09cce8772a86231197e1966647d98f",
+      "durationMs": 336366.667
+    },
+    "audio": {
+      "path": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/host_16k.v1.wav",
+      "sha256": "ed43138c0994bc5ddae1c6772f67041a204361da5f9607a3301a81b43cd24f7f",
+      "durationMs": 336362.813
+    },
+    "baselineSmall": {
+      "path": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/host_whisper_small_raw_v1.json",
+      "sha256": "27a28f5c5b735f4e9b8fde74ac4fa877e771435579a83b0ac6593b064b6c909b"
+    },
+    "comparisonBase": {
+      "path": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/host_whisper_base_raw_v1.json",
+      "sha256": "4e20f8df8cb62b1eecf494f79d8be17299ef599f1a6a2d7f1da9664ed6dbc184"
+    }
+  },
+  "captionTextPolicy": "spoken-verbatim-candidate-with-explicit-asr-corrections-and-uncertainties",
+  "timelineFps": 30,
+  "captions": [
+    {
+      "id": "cap-b01",
+      "beatId": "B01",
+      "order": 1,
+      "startMs": 0,
+      "endMs": 3200,
+      "text": "AI将成为普通人的最后一次创业风口。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        0
+      ],
+      "rawSmallText": "AI将成为普通人的最后一次创业封口",
+      "correctionIds": [
+        "C01"
+      ],
+      "uncertaintyIds": [],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "AI将成为普通人的最后一次创业风口。",
+        "preproductionSpokenLine": "AI将成为普通人的最后一次创业风口。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 0,
+            "startMs": 0,
+            "endMs": 3200,
+            "text": "AI将成为普通人的最后一次创业封口"
+          }
+        ],
+        "base": [
+          {
+            "index": 0,
+            "startMs": 0,
+            "endMs": 3680,
+            "text": "AI將成為普通人的最後一次創業風口"
+          }
+        ],
+        "focused": []
+      }
+    },
+    {
+      "id": "cap-b02",
+      "beatId": "B02",
+      "order": 2,
+      "startMs": 3200,
+      "endMs": 14300,
+      "text": "我看好的是，在兰州这个三线城市，用自己熟悉的行业加上AI，就是降维打击，既能服务本地，也能尝试接外地的业务。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        1,
+        2,
+        3
+      ],
+      "rawSmallText": "我看好的是在兰州这个三线城市用自己熟悉的行业加上AI就是将为打击技能服务本地也能尝试接外地的业务",
+      "correctionIds": [
+        "C02",
+        "C03"
+      ],
+      "uncertaintyIds": [],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "我看好的是，在兰州这个三线城市，用自己熟悉的行业加上AI，就是降维打击，既能服务本地，也能尝试接外地的业务。",
+        "preproductionSpokenLine": "我看好的是，在兰州这个三线城市，用自己熟悉的行业加上AI，就是降维打击，既能服务本地，也能尝试接外地的业务。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 1,
+            "startMs": 3200,
+            "endMs": 7700,
+            "text": "我看好的是在兰州这个三线城市用自己熟悉的行业"
+          },
+          {
+            "index": 2,
+            "startMs": 7700,
+            "endMs": 10200,
+            "text": "加上AI就是将为打击"
+          },
+          {
+            "index": 3,
+            "startMs": 10200,
+            "endMs": 14300,
+            "text": "技能服务本地也能尝试接外地的业务"
+          }
+        ],
+        "base": [
+          {
+            "index": 0,
+            "startMs": 0,
+            "endMs": 3680,
+            "text": "AI將成為普通人的最後一次創業風口"
+          },
+          {
+            "index": 1,
+            "startMs": 3680,
+            "endMs": 5920,
+            "text": "我看好的是在藍州這個三線城市"
+          },
+          {
+            "index": 2,
+            "startMs": 5920,
+            "endMs": 7680,
+            "text": "用自己熟悉的行業"
+          },
+          {
+            "index": 3,
+            "startMs": 7680,
+            "endMs": 10160,
+            "text": "加上AI就是教育大紀"
+          },
+          {
+            "index": 4,
+            "startMs": 10160,
+            "endMs": 14240,
+            "text": "技能服務本地也能嘗試接外地的業務"
+          },
+          {
+            "index": 5,
+            "startMs": 14240,
+            "endMs": 15640,
+            "text": "你以前幹過什麼"
+          }
+        ],
+        "focused": []
+      }
+    },
+    {
+      "id": "cap-b03",
+      "beatId": "B03",
+      "order": 3,
+      "startMs": 14300,
+      "endMs": 24500,
+      "text": "你以前干过什么，帮别人做到了哪一步，这些差别到AI这里不会自动消失，收入上的差距反而可能因此拉开。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "rawSmallText": "你以前干过什么帮别人做到了哪一步这些差别到AI这里不会自动消失收入上的差距反而可能因此拉开",
+      "correctionIds": [],
+      "uncertaintyIds": [],
+      "reviewRequired": false,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "你以前干过什么，能帮别人做到哪一步，这些差别，到了AI这里不会自动消失，收入上的差距反而可能拉开。",
+        "preproductionSpokenLine": "你以前干过什么，能帮别人做到哪一步，这些差别，到了AI这里不会自动消失，收入上的差距反而可能拉开。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 4,
+            "startMs": 14300,
+            "endMs": 15600,
+            "text": "你以前干过什么"
+          },
+          {
+            "index": 5,
+            "startMs": 15600,
+            "endMs": 17300,
+            "text": "帮别人做到了哪一步"
+          },
+          {
+            "index": 6,
+            "startMs": 17300,
+            "endMs": 20500,
+            "text": "这些差别到AI这里不会自动消失"
+          },
+          {
+            "index": 7,
+            "startMs": 20500,
+            "endMs": 24500,
+            "text": "收入上的差距反而可能因此拉开"
+          }
+        ],
+        "base": [
+          {
+            "index": 5,
+            "startMs": 14240,
+            "endMs": 15640,
+            "text": "你以前幹過什麼"
+          },
+          {
+            "index": 6,
+            "startMs": 15640,
+            "endMs": 17280,
+            "text": "幫別人做到了哪一步"
+          },
+          {
+            "index": 7,
+            "startMs": 17280,
+            "endMs": 20480,
+            "text": "這些差別到AI這裡不會自動消失"
+          },
+          {
+            "index": 8,
+            "startMs": 20480,
+            "endMs": 24640,
+            "text": "收入上的差距反而可能因此拉開"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b04_v1.json",
+            "sha256": "b4b8622f1560a9e7456ea245e45ece2d184d075f7f3da48cfc9c7018dfa451e6",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 22000,
+                "endMs": 25000,
+                "text": "反而可能因此拉开。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b04",
+      "beatId": "B04",
+      "order": 4,
+      "startMs": 24500,
+      "endMs": 40300,
+      "text": "所以，我以前做过销售、开过店，或者是在一个行业里面干了很多年，别觉得学AI了就要把这些全扔掉，从头转行。我对客户的了解，恰恰可能派上用场。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "rawSmallText": "所以我以前做过销售开过店或者是在一个行业里面干了很多年别觉得学AI了就要把这些权扔掉从头转行我对客户的了解恰恰可能派上用程",
+      "correctionIds": [
+        "C04",
+        "C05"
+      ],
+      "uncertaintyIds": [
+        "U01"
+      ],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "所以，你以前做过销售、开过店，或者在一个行业干了很多年，别觉得学AI就得把这些全扔了，从头转行。你对客户的了解，恰恰可能派上用场。",
+        "preproductionSpokenLine": "所以，你以前做过销售、开过店，或者在一个行业干了很多年，别觉得学AI就得把这些全扔了，从头转行。你对客户的了解，恰恰可能派上用场。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 8,
+            "startMs": 24500,
+            "endMs": 28000,
+            "text": "所以我以前做过销售开过店"
+          },
+          {
+            "index": 9,
+            "startMs": 28000,
+            "endMs": 30800,
+            "text": "或者是在一个行业里面干了很多年"
+          },
+          {
+            "index": 10,
+            "startMs": 30800,
+            "endMs": 33800,
+            "text": "别觉得学AI了就要把这些权扔掉"
+          },
+          {
+            "index": 11,
+            "startMs": 33800,
+            "endMs": 35500,
+            "text": "从头转行"
+          },
+          {
+            "index": 12,
+            "startMs": 35500,
+            "endMs": 40300,
+            "text": "我对客户的了解恰恰可能派上用程"
+          }
+        ],
+        "base": [
+          {
+            "index": 8,
+            "startMs": 20480,
+            "endMs": 24640,
+            "text": "收入上的差距反而可能因此拉開"
+          },
+          {
+            "index": 9,
+            "startMs": 24640,
+            "endMs": 28040,
+            "text": "所以我以前做過銷售開過電"
+          },
+          {
+            "index": 10,
+            "startMs": 28040,
+            "endMs": 30760,
+            "text": "或者是在一個行業裡面幹了很多年"
+          },
+          {
+            "index": 11,
+            "startMs": 30760,
+            "endMs": 33800,
+            "text": "別覺得學AI就要把這些全生掉"
+          },
+          {
+            "index": 12,
+            "startMs": 33800,
+            "endMs": 35480,
+            "text": "從頭轉好"
+          },
+          {
+            "index": 13,
+            "startMs": 35480,
+            "endMs": 40280,
+            "text": "我對客戶的瞭解恰恰可能派上用程"
+          },
+          {
+            "index": 14,
+            "startMs": 40280,
+            "endMs": 43400,
+            "text": "咱們就拿幫本地的老闆做內容來說"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b04_v1.json",
+            "sha256": "b4b8622f1560a9e7456ea245e45ece2d184d075f7f3da48cfc9c7018dfa451e6",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 22000,
+                "endMs": 25000,
+                "text": "反而可能因此拉开。"
+              },
+              {
+                "index": 1,
+                "startMs": 25000,
+                "endMs": 29680,
+                "text": "所以,我以前做过销售，开过店，或者是在一个行业里面"
+              },
+              {
+                "index": 2,
+                "startMs": 29680,
+                "endMs": 35640,
+                "text": "干了很多年,别觉得学AA就要把这些权扔掉,从头转行。"
+              },
+              {
+                "index": 3,
+                "startMs": 35640,
+                "endMs": 40440,
+                "text": "我对客户的了解恰恰可能派上用场。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b05",
+      "beatId": "B05",
+      "order": 5,
+      "startMs": 40300,
+      "endMs": 52100,
+      "text": "咱们就帮本地的老板做内容来说。你让AI写一句“品质好、服务好”，谁都能写。客户看完，还是不知道为什么选这家。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        13,
+        14,
+        15
+      ],
+      "rawSmallText": "咱们就帮本地的老板做内容来说你让AI写一句品质好服务好谁都能写客户看完还是不知道为什么选这家",
+      "correctionIds": [],
+      "uncertaintyIds": [
+        "U02"
+      ],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "就拿帮本地老板做内容来说。你让AI写一句“品质好、服务好”，谁都能写。客户看完，还是不知道为什么要选这家。",
+        "preproductionSpokenLine": "就拿帮本地老板做内容来说。你让AI写一句“品质好、服务好”，谁都能写。客户看完，还是不知道为什么要选这家。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 13,
+            "startMs": 40300,
+            "endMs": 43400,
+            "text": "咱们就帮本地的老板做内容来说"
+          },
+          {
+            "index": 14,
+            "startMs": 43400,
+            "endMs": 47400,
+            "text": "你让AI写一句品质好服务好谁都能写"
+          },
+          {
+            "index": 15,
+            "startMs": 47400,
+            "endMs": 52100,
+            "text": "客户看完还是不知道为什么选这家"
+          }
+        ],
+        "base": [
+          {
+            "index": 14,
+            "startMs": 40280,
+            "endMs": 43400,
+            "text": "咱們就拿幫本地的老闆做內容來說"
+          },
+          {
+            "index": 15,
+            "startMs": 43400,
+            "endMs": 46240,
+            "text": "你要AI寫一句品質好、符好"
+          },
+          {
+            "index": 16,
+            "startMs": 46240,
+            "endMs": 47480,
+            "text": "誰都能寫"
+          },
+          {
+            "index": 17,
+            "startMs": 47480,
+            "endMs": 49520,
+            "text": "客戶看完還是不知道"
+          },
+          {
+            "index": 18,
+            "startMs": 49520,
+            "endMs": 52120,
+            "text": "為什麼選這家"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b04_v1.json",
+            "sha256": "b4b8622f1560a9e7456ea245e45ece2d184d075f7f3da48cfc9c7018dfa451e6",
+            "segments": [
+              {
+                "index": 3,
+                "startMs": 35640,
+                "endMs": 40440,
+                "text": "我对客户的了解恰恰可能派上用场。"
+              },
+              {
+                "index": 4,
+                "startMs": 40440,
+                "endMs": 43520,
+                "text": "咱们就帮本地的老板做内容来说。"
+              },
+              {
+                "index": 5,
+                "startMs": 43520,
+                "endMs": 47600,
+                "text": "你让AA写一句品质好服务好,谁都能写。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b06",
+      "beatId": "B06",
+      "order": 6,
+      "startMs": 52100,
+      "endMs": 66000,
+      "text": "但老板平时怎么回答客户，他手里有哪些东西。为什么价格不一样，什么人适合这个产品，哪些要求确实做不到。这些问题，他可能已经解释过了很多遍。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "rawSmallText": "但老板平时怎么回答客户他手里有哪些东西为什么价格不一样什么人适合这个产品哪些要求确实做不到这些问题他可能已经解释过了很多遍",
+      "correctionIds": [],
+      "uncertaintyIds": [],
+      "reviewRequired": false,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "但老板平时怎么回答客户，他手里是有东西的。为什么价格不一样，什么人适合这个产品，哪些要求确实做不到。这些问题，他可能已经解释过很多遍。",
+        "preproductionSpokenLine": "但老板平时怎么回答客户，他手里是有东西的。为什么价格不一样，什么人适合这个产品，哪些要求确实做不到。这些问题，他可能已经解释过很多遍。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 16,
+            "startMs": 52100,
+            "endMs": 55700,
+            "text": "但老板平时怎么回答客户他手里有哪些东西"
+          },
+          {
+            "index": 17,
+            "startMs": 55700,
+            "endMs": 59600,
+            "text": "为什么价格不一样什么人适合这个产品"
+          },
+          {
+            "index": 18,
+            "startMs": 59600,
+            "endMs": 62000,
+            "text": "哪些要求确实做不到"
+          },
+          {
+            "index": 19,
+            "startMs": 62000,
+            "endMs": 66000,
+            "text": "这些问题他可能已经解释过了很多遍"
+          }
+        ],
+        "base": [
+          {
+            "index": 18,
+            "startMs": 49520,
+            "endMs": 52120,
+            "text": "為什麼選這家"
+          },
+          {
+            "index": 19,
+            "startMs": 52120,
+            "endMs": 54000,
+            "text": "但老闆平時怎麼回答客戶"
+          },
+          {
+            "index": 20,
+            "startMs": 54000,
+            "endMs": 55720,
+            "text": "他手裡有哪些東西"
+          },
+          {
+            "index": 21,
+            "startMs": 55720,
+            "endMs": 57360,
+            "text": "為什麼價格不一樣"
+          },
+          {
+            "index": 22,
+            "startMs": 57360,
+            "endMs": 59680,
+            "text": "什麼人適合這個產品"
+          },
+          {
+            "index": 23,
+            "startMs": 59680,
+            "endMs": 62080,
+            "text": "哪些要求確實做不到"
+          },
+          {
+            "index": 24,
+            "startMs": 62080,
+            "endMs": 66080,
+            "text": "這些問題他可能已經解釋過了很多遍"
+          }
+        ],
+        "focused": []
+      }
+    },
+    {
+      "id": "cap-b07",
+      "beatId": "B07",
+      "order": 7,
+      "startMs": 66000,
+      "endMs": 85900,
+      "text": "你可以帮他把这些回答收集起来，用AI归类、理顺，然后改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条的讲出去。AI承担整理和制作的部分工作，内容的底子还是老板自己做过的生意。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "rawSmallText": "你可以帮他把这些回答收集起来用AI规律理顺然后改成适合拍视频的文稿再由老板合对配上能公开的产品和服务资料一条条的讲出去AI承担整理和制作的部分工作内容的底子还是老板自己做过的生意",
+      "correctionIds": [
+        "C06",
+        "C07"
+      ],
+      "uncertaintyIds": [],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。",
+        "preproductionSpokenLine": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。配上能公开的产品和服务资料，一条条讲出去。AI承担整理和制作里的部分工作，内容的底子，还是老板自己做过的生意。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 20,
+            "startMs": 66000,
+            "endMs": 69000,
+            "text": "你可以帮他把这些回答收集起来"
+          },
+          {
+            "index": 21,
+            "startMs": 69000,
+            "endMs": 71000,
+            "text": "用AI规律理顺"
+          },
+          {
+            "index": 22,
+            "startMs": 71000,
+            "endMs": 74800,
+            "text": "然后改成适合拍视频的文稿再由老板合对"
+          },
+          {
+            "index": 23,
+            "startMs": 74800,
+            "endMs": 79500,
+            "text": "配上能公开的产品和服务资料一条条的讲出去"
+          },
+          {
+            "index": 24,
+            "startMs": 79500,
+            "endMs": 82700,
+            "text": "AI承担整理和制作的部分工作"
+          },
+          {
+            "index": 25,
+            "startMs": 82700,
+            "endMs": 85900,
+            "text": "内容的底子还是老板自己做过的生意"
+          }
+        ],
+        "base": [
+          {
+            "index": 24,
+            "startMs": 62080,
+            "endMs": 66080,
+            "text": "這些問題他可能已經解釋過了很多遍"
+          },
+          {
+            "index": 25,
+            "startMs": 66080,
+            "endMs": 68240,
+            "text": "你可以幫他把這些回答"
+          },
+          {
+            "index": 26,
+            "startMs": 68240,
+            "endMs": 71000,
+            "text": "收集起來用AI歸類理順"
+          },
+          {
+            "index": 27,
+            "startMs": 71000,
+            "endMs": 73360,
+            "text": "然後改成適合拍視頻的文稿"
+          },
+          {
+            "index": 28,
+            "startMs": 73360,
+            "endMs": 74920,
+            "text": "再由老闆合對"
+          },
+          {
+            "index": 29,
+            "startMs": 74920,
+            "endMs": 78000,
+            "text": "配上能公開的產品和服務資料"
+          },
+          {
+            "index": 30,
+            "startMs": 78000,
+            "endMs": 79600,
+            "text": "一條條的講出去"
+          },
+          {
+            "index": 31,
+            "startMs": 79600,
+            "endMs": 82760,
+            "text": "AI承擔整理和製作的部分工作"
+          },
+          {
+            "index": 32,
+            "startMs": 82760,
+            "endMs": 86040,
+            "text": "內容的底子還是老闆自己做過的生意"
+          }
+        ],
+        "focused": []
+      }
+    },
+    {
+      "id": "cap-b08",
+      "beatId": "B08",
+      "order": 8,
+      "startMs": 85900,
+      "endMs": 97900,
+      "text": "以前这些经验，可能只有进过店、跟他聊过的客户才知道。现在有机会让没有来过的人也看到，搜相关问题的时候，也能找到他的介绍。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        26,
+        27,
+        28
+      ],
+      "rawSmallText": "以前这些经验可能只有静国店跟他聊过的客户才知道现在有机会让没有来过的人也看到搜相关问题的时候也能找到他的介绍",
+      "correctionIds": [
+        "C08"
+      ],
+      "uncertaintyIds": [
+        "U07"
+      ],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "以前这些经验，可能只有进过店、跟他聊过的客户才知道。现在有机会让没来过的人也看到，搜相关问题的时候，也能找到他的介绍。",
+        "preproductionSpokenLine": "以前这些经验，可能只有进过店、跟他聊过的客户才知道。现在有机会让没来过的人也看到，搜相关问题的时候，也能找到他的介绍。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 26,
+            "startMs": 85900,
+            "endMs": 90400,
+            "text": "以前这些经验可能只有静国店跟他聊过的客户才知道"
+          },
+          {
+            "index": 27,
+            "startMs": 90400,
+            "endMs": 94000,
+            "text": "现在有机会让没有来过的人也看到"
+          },
+          {
+            "index": 28,
+            "startMs": 94000,
+            "endMs": 97900,
+            "text": "搜相关问题的时候也能找到他的介绍"
+          }
+        ],
+        "base": [
+          {
+            "index": 32,
+            "startMs": 82760,
+            "endMs": 86040,
+            "text": "內容的底子還是老闆自己做過的生意"
+          },
+          {
+            "index": 33,
+            "startMs": 86040,
+            "endMs": 88440,
+            "text": "以前這些經驗可能只有靜過電"
+          },
+          {
+            "index": 34,
+            "startMs": 88440,
+            "endMs": 90560,
+            "text": "跟他聊過的客戶才知道"
+          },
+          {
+            "index": 35,
+            "startMs": 90560,
+            "endMs": 93240,
+            "text": "現在有機會讓沒有來過的人"
+          },
+          {
+            "index": 36,
+            "startMs": 93240,
+            "endMs": 95880,
+            "text": "也看到搜相關問題的時候"
+          },
+          {
+            "index": 37,
+            "startMs": 95880,
+            "endMs": 98080,
+            "text": "也能找到他的介紹"
+          }
+        ],
+        "focused": []
+      }
+    },
+    {
+      "id": "cap-b09",
+      "beatId": "B09",
+      "order": 9,
+      "startMs": 97900,
+      "endMs": 114000,
+      "text": "这种内容不一定每条都要追着爆。一个本地客户，先看懂的是你的产品，再看见你怎么处理问题，慢慢的对你有了印象。等他真有需要的时候，你才有机会进去他的选择。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ],
+      "rawSmallText": "这种内容不一定每条都要追着报一个本地客户先看懂的是你的产品再看见你怎么处理问题慢慢的对你有了印象等他真有需要的时候你才有机会进去他的选择",
+      "correctionIds": [
+        "C09"
+      ],
+      "uncertaintyIds": [],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "这种内容不一定每条都要追着爆。一个本地客户，先看懂你的产品，再看见你怎么处理问题，慢慢对你有了印象。等他真有需要的时，你才有机会进去他的选择。",
+        "preproductionSpokenLine": "这种内容不一定每条都要追着爆。一个本地客户，先看懂你的产品，再看见你怎么处理问题，慢慢对你有了印象。等他真有需要的时，你才有机会进去他的选择。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 29,
+            "startMs": 97900,
+            "endMs": 101200,
+            "text": "这种内容不一定每条都要追着报"
+          },
+          {
+            "index": 30,
+            "startMs": 101200,
+            "endMs": 105000,
+            "text": "一个本地客户先看懂的是你的产品"
+          },
+          {
+            "index": 31,
+            "startMs": 105000,
+            "endMs": 107000,
+            "text": "再看见你怎么处理问题"
+          },
+          {
+            "index": 32,
+            "startMs": 107000,
+            "endMs": 108700,
+            "text": "慢慢的对你有了印象"
+          },
+          {
+            "index": 33,
+            "startMs": 108700,
+            "endMs": 111000,
+            "text": "等他真有需要的时候"
+          },
+          {
+            "index": 34,
+            "startMs": 111000,
+            "endMs": 114000,
+            "text": "你才有机会进去他的选择"
+          }
+        ],
+        "base": [
+          {
+            "index": 37,
+            "startMs": 95880,
+            "endMs": 98080,
+            "text": "也能找到他的介紹"
+          },
+          {
+            "index": 38,
+            "startMs": 98080,
+            "endMs": 101360,
+            "text": "這種內容不一定每條都要追著報"
+          },
+          {
+            "index": 39,
+            "startMs": 101360,
+            "endMs": 102920,
+            "text": "一個本地客戶"
+          },
+          {
+            "index": 40,
+            "startMs": 102920,
+            "endMs": 105120,
+            "text": "先看懂的是你的產品"
+          },
+          {
+            "index": 41,
+            "startMs": 105120,
+            "endMs": 107160,
+            "text": "再看見你怎麼處理問題"
+          },
+          {
+            "index": 42,
+            "startMs": 107160,
+            "endMs": 108880,
+            "text": "慢慢地對你有了印象"
+          },
+          {
+            "index": 43,
+            "startMs": 108880,
+            "endMs": 111240,
+            "text": "等他真有需要的時候"
+          },
+          {
+            "index": 44,
+            "startMs": 111240,
+            "endMs": 114400,
+            "text": "你才有機會進去他的選擇"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b10_v1.json",
+            "sha256": "26ba3496a6a4d9648c2159882adb11b486f094f0964b0426845a5efdc02b2370",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 111000,
+                "endMs": 141000,
+                "text": "你才有机会进去他的选择,这即使老板可以尝试的内容做法也是懂这个行业的人留出了一种服务机会,你帮他把经验讲清楚,持续做成内容,省下他自己摸索和制作的功夫,但他本身没有能交给客户的产品和服务,光发内容呢也接不住生意,如果你能听懂一个行业的问题,也能把约定的工作做出来,"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b10",
+      "beatId": "B10",
+      "order": 10,
+      "startMs": 114000,
+      "endMs": 137000,
+      "text": "这既是老板可以尝试的内容做法，也是懂这个行业的人留出了一种服务机会。你帮他把经验讲清楚，持续做成内容，省下他自己摸索和制作的功夫。但他本身没有能交给客户的产品和服务，光发内容也接不住生意。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "rawSmallText": "这即使老板可以尝试的内容做法也是懂这个行业的人留出了一种服务机会你帮他把经验讲清楚持续做成内容省下他自己摸索和制作的功夫但他本身没有能交给客户的产品和服务光发内容也接不住生意",
+      "correctionIds": [
+        "C10"
+      ],
+      "uncertaintyIds": [
+        "U03"
+      ],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "这既是老板可以尝试的内容做法，也给懂这个行业的人留出了一种服务机会。你帮他把经验讲清楚、持续做成内容，省下他自己摸索和制作的工夫。但他本身没有能交给客户的产品或服务，光发内容也接不住生意。",
+        "preproductionSpokenLine": "这既是老板可以尝试的内容做法，也给懂这个行业的人留出了一种服务机会。你帮他把经验讲清楚、持续做成内容，省下他自己摸索和制作的工夫。但他本身没有能交给客户的产品或服务，光发内容也接不住生意。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 35,
+            "startMs": 114000,
+            "endMs": 117000,
+            "text": "这即使老板可以尝试的内容做法"
+          },
+          {
+            "index": 36,
+            "startMs": 117000,
+            "endMs": 121000,
+            "text": "也是懂这个行业的人留出了一种服务机会"
+          },
+          {
+            "index": 37,
+            "startMs": 121000,
+            "endMs": 125000,
+            "text": "你帮他把经验讲清楚持续做成内容"
+          },
+          {
+            "index": 38,
+            "startMs": 125000,
+            "endMs": 129000,
+            "text": "省下他自己摸索和制作的功夫"
+          },
+          {
+            "index": 39,
+            "startMs": 129000,
+            "endMs": 134000,
+            "text": "但他本身没有能交给客户的产品和服务"
+          },
+          {
+            "index": 40,
+            "startMs": 134000,
+            "endMs": 137000,
+            "text": "光发内容也接不住生意"
+          }
+        ],
+        "base": [
+          {
+            "index": 44,
+            "startMs": 111240,
+            "endMs": 114400,
+            "text": "你才有機會進去他的選擇"
+          },
+          {
+            "index": 45,
+            "startMs": 114400,
+            "endMs": 117120,
+            "text": "這即使老闆可以嘗試的內容做法"
+          },
+          {
+            "index": 46,
+            "startMs": 117120,
+            "endMs": 119200,
+            "text": "也是懂這個行業的人"
+          },
+          {
+            "index": 47,
+            "startMs": 119200,
+            "endMs": 121400,
+            "text": "留出了一種服務機會"
+          },
+          {
+            "index": 48,
+            "startMs": 121400,
+            "endMs": 123400,
+            "text": "你幫他把經驗講清楚"
+          },
+          {
+            "index": 49,
+            "startMs": 123400,
+            "endMs": 125080,
+            "text": "持續做成內容"
+          },
+          {
+            "index": 50,
+            "startMs": 125080,
+            "endMs": 128920,
+            "text": "省下他自己摸索和製作的功夫"
+          },
+          {
+            "index": 51,
+            "startMs": 128920,
+            "endMs": 134080,
+            "text": "但他本身沒有能交給客戶的產品和服務"
+          },
+          {
+            "index": 52,
+            "startMs": 134080,
+            "endMs": 136840,
+            "text": "光發內容也接不住生意"
+          },
+          {
+            "index": 53,
+            "startMs": 136840,
+            "endMs": 138880,
+            "text": "如果你能聽懂一個行業的問題"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b10_v1.json",
+            "sha256": "26ba3496a6a4d9648c2159882adb11b486f094f0964b0426845a5efdc02b2370",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 111000,
+                "endMs": 141000,
+                "text": "你才有机会进去他的选择,这即使老板可以尝试的内容做法也是懂这个行业的人留出了一种服务机会,你帮他把经验讲清楚,持续做成内容,省下他自己摸索和制作的功夫,但他本身没有能交给客户的产品和服务,光发内容呢也接不住生意,如果你能听懂一个行业的问题,也能把约定的工作做出来,"
+              }
+            ]
+          },
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b11_b12_v1.json",
+            "sha256": "94c573c1bcdc644b2a9f5179d9cfe8f003a5077dc2455b15363c102e8248eadb",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 132000,
+                "endMs": 136400,
+                "text": "客户的产品和服务光发内容也接不住声音。"
+              },
+              {
+                "index": 1,
+                "startMs": 136400,
+                "endMs": 141400,
+                "text": "如果你能听懂一个行业的问题,也能把约定的工作做好,"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b11",
+      "beatId": "B11",
+      "order": 11,
+      "startMs": 137000,
+      "endMs": 148000,
+      "text": "如果你能听懂一个行业的问题，也能把约定的工作做好，就可以试着把这项服务介绍给外地同行。同样需要整理客户问题、制作产品内容的人。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        41,
+        42,
+        43,
+        44
+      ],
+      "rawSmallText": "如果你能听懂一个行业的问题也能把约定的工作做好就可以试着把这项服务介绍给外地同好同样需要整理客户问题制作产品内容的人",
+      "correctionIds": [
+        "C11"
+      ],
+      "uncertaintyIds": [],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "如果你能听懂一个行业的问题，也能把约定的工作做好，就可以试着把这项服务介绍给外地同行。同样需要整理客户问题、制作产品内容的人。",
+        "preproductionSpokenLine": "如果你能听懂一个行业的问题，也能把约定的工作做好，就可以试着把这项服务介绍给外地同行。同样需要整理客户问题、制作产品内容的人。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 41,
+            "startMs": 137000,
+            "endMs": 139000,
+            "text": "如果你能听懂一个行业的问题"
+          },
+          {
+            "index": 42,
+            "startMs": 139000,
+            "endMs": 141000,
+            "text": "也能把约定的工作做好"
+          },
+          {
+            "index": 43,
+            "startMs": 141000,
+            "endMs": 144000,
+            "text": "就可以试着把这项服务介绍给外地同好"
+          },
+          {
+            "index": 44,
+            "startMs": 144000,
+            "endMs": 148000,
+            "text": "同样需要整理客户问题制作产品内容的人"
+          }
+        ],
+        "base": [
+          {
+            "index": 53,
+            "startMs": 136840,
+            "endMs": 138880,
+            "text": "如果你能聽懂一個行業的問題"
+          },
+          {
+            "index": 54,
+            "startMs": 138880,
+            "endMs": 141360,
+            "text": "也能把約定的工作做好"
+          },
+          {
+            "index": 55,
+            "startMs": 141360,
+            "endMs": 144360,
+            "text": "就可以試著把這項服務介紹給外地同好"
+          },
+          {
+            "index": 56,
+            "startMs": 144360,
+            "endMs": 148600,
+            "text": "同樣需要整理客戶問題製作產品內容"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b10_v1.json",
+            "sha256": "26ba3496a6a4d9648c2159882adb11b486f094f0964b0426845a5efdc02b2370",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 111000,
+                "endMs": 141000,
+                "text": "你才有机会进去他的选择,这即使老板可以尝试的内容做法也是懂这个行业的人留出了一种服务机会,你帮他把经验讲清楚,持续做成内容,省下他自己摸索和制作的功夫,但他本身没有能交给客户的产品和服务,光发内容呢也接不住生意,如果你能听懂一个行业的问题,也能把约定的工作做出来,"
+              }
+            ]
+          },
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b11_b12_v1.json",
+            "sha256": "94c573c1bcdc644b2a9f5179d9cfe8f003a5077dc2455b15363c102e8248eadb",
+            "segments": [
+              {
+                "index": 1,
+                "startMs": 136400,
+                "endMs": 141400,
+                "text": "如果你能听懂一个行业的问题,也能把约定的工作做好,"
+              },
+              {
+                "index": 2,
+                "startMs": 141400,
+                "endMs": 144500,
+                "text": "就可以试着把这项服务介绍给外地同行。"
+              },
+              {
+                "index": 3,
+                "startMs": 144500,
+                "endMs": 148500,
+                "text": "同样需要整理客户问题,制作产品内容。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b12",
+      "beatId": "B12",
+      "order": 12,
+      "startMs": 148000,
+      "endMs": 165000,
+      "text": "远程接业务早就有了，不是AI才发明的。AI增加的可能性是帮一个人、一个小团队，多承担一些过去做不过来的整理和制作工作。至于客户怎么找到你，为什么信你，还得靠你自己的作品和服务。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "rawSmallText": "远程街要不早就有了不是AI才发明的AI增加的可能性是帮一个人一个小团队多承担一些过去做不过来的整理和制作工作至于客户怎么找到你为什么信你还得靠你自己的作品和服务",
+      "correctionIds": [
+        "C12"
+      ],
+      "uncertaintyIds": [],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "远程接业务早就有了，不是AI才发明的。AI增加的可能性，是帮一个人、一个小团队，多承担一些过去做不过来的整理和制作工作。至于客户怎么找到你、为什么信你，还得靠你自己的作品和服务。",
+        "preproductionSpokenLine": "远程接业务早就有了，不是AI才发明的。AI增加的可能性，是帮一个人、一个小团队，多承担一些过去做不过来的整理和制作工作。至于客户怎么找到你、为什么信你，还得靠你自己的作品和服务。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 45,
+            "startMs": 148000,
+            "endMs": 150000,
+            "text": "远程街要不早就有了"
+          },
+          {
+            "index": 46,
+            "startMs": 150000,
+            "endMs": 151000,
+            "text": "不是AI才发明的"
+          },
+          {
+            "index": 47,
+            "startMs": 151000,
+            "endMs": 155000,
+            "text": "AI增加的可能性是帮一个人一个小团队"
+          },
+          {
+            "index": 48,
+            "startMs": 155000,
+            "endMs": 160000,
+            "text": "多承担一些过去做不过来的整理和制作工作"
+          },
+          {
+            "index": 49,
+            "startMs": 160000,
+            "endMs": 161000,
+            "text": "至于客户怎么找到你"
+          },
+          {
+            "index": 50,
+            "startMs": 161000,
+            "endMs": 165000,
+            "text": "为什么信你还得靠你自己的作品和服务"
+          }
+        ],
+        "base": [
+          {
+            "index": 56,
+            "startMs": 144360,
+            "endMs": 148600,
+            "text": "同樣需要整理客戶問題製作產品內容"
+          },
+          {
+            "index": 57,
+            "startMs": 148600,
+            "endMs": 150080,
+            "text": "遠程皆要不早就有了"
+          },
+          {
+            "index": 58,
+            "startMs": 150080,
+            "endMs": 151520,
+            "text": "不是AI才發明的"
+          },
+          {
+            "index": 59,
+            "startMs": 151520,
+            "endMs": 155040,
+            "text": "AI增加的可能性是幫一個人一個小團隊"
+          },
+          {
+            "index": 60,
+            "startMs": 155040,
+            "endMs": 160120,
+            "text": "多承擔一些過去做不過來的整理和製作工作"
+          },
+          {
+            "index": 61,
+            "startMs": 160120,
+            "endMs": 161400,
+            "text": "至於客戶怎麼找到你"
+          },
+          {
+            "index": 62,
+            "startMs": 161400,
+            "endMs": 165120,
+            "text": "為什麼信你還得靠你自己的作品和服務"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b11_b12_v1.json",
+            "sha256": "94c573c1bcdc644b2a9f5179d9cfe8f003a5077dc2455b15363c102e8248eadb",
+            "segments": [
+              {
+                "index": 3,
+                "startMs": 144500,
+                "endMs": 148500,
+                "text": "同样需要整理客户问题,制作产品内容。"
+              },
+              {
+                "index": 4,
+                "startMs": 148500,
+                "endMs": 151500,
+                "text": "远程接业务早就有了,不是AI才发明的。"
+              },
+              {
+                "index": 5,
+                "startMs": 151500,
+                "endMs": 159800,
+                "text": "AI增加的可能性是帮一个人一个小团队多承担一些过去做不过来的整理和制作工作。"
+              },
+              {
+                "index": 6,
+                "startMs": 159800,
+                "endMs": 165000,
+                "text": "至于客户怎么找到你,为什么信你,还得靠你自己的作品和服务。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b13",
+      "beatId": "B13",
+      "order": 13,
+      "startMs": 165000,
+      "endMs": 177000,
+      "text": "这么一想，留在兰州就不止有“本地能给我多少岗位”这一个问题了。还可以想，我会做的这些事，外地有没有人需要？",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        51,
+        52,
+        53
+      ],
+      "rawSmallText": "这么一想留在兰州就不止有本地能给我多少岗位这一个问题了还可以想我会做的这些事外地有没有人需要",
+      "correctionIds": [],
+      "uncertaintyIds": [],
+      "reviewRequired": false,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "这么一想，留在兰州就不只有“本地能给我多少岗位”这一个问题了。还可以想：我会做的这些事，外地有没有人需要？",
+        "preproductionSpokenLine": "这么一想，留在兰州就不只有“本地能给我多少岗位”这一个问题了。还可以想：我会做的这些事，外地有没有人需要？",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 51,
+            "startMs": 165000,
+            "endMs": 171000,
+            "text": "这么一想留在兰州就不止有本地能给我多少岗位"
+          },
+          {
+            "index": 52,
+            "startMs": 171000,
+            "endMs": 172000,
+            "text": "这一个问题了"
+          },
+          {
+            "index": 53,
+            "startMs": 172000,
+            "endMs": 177000,
+            "text": "还可以想我会做的这些事外地有没有人需要"
+          }
+        ],
+        "base": [
+          {
+            "index": 62,
+            "startMs": 161400,
+            "endMs": 165120,
+            "text": "為什麼信你還得靠你自己的作品和服務"
+          },
+          {
+            "index": 63,
+            "startMs": 165120,
+            "endMs": 165800,
+            "text": "這麼一想"
+          },
+          {
+            "index": 64,
+            "startMs": 165800,
+            "endMs": 170720,
+            "text": "留在藍州就不止有本地能給我多少稿位"
+          },
+          {
+            "index": 65,
+            "startMs": 170720,
+            "endMs": 171600,
+            "text": "這一個問題"
+          },
+          {
+            "index": 66,
+            "startMs": 171600,
+            "endMs": 174640,
+            "text": "還可以想我會做的這些事"
+          },
+          {
+            "index": 67,
+            "startMs": 174640,
+            "endMs": 176560,
+            "text": "外地有沒有人需要"
+          },
+          {
+            "index": 68,
+            "startMs": 176560,
+            "endMs": 179960,
+            "text": "如果你的住處生活已經在這裡"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b11_b12_v1.json",
+            "sha256": "94c573c1bcdc644b2a9f5179d9cfe8f003a5077dc2455b15363c102e8248eadb",
+            "segments": [
+              {
+                "index": 7,
+                "startMs": 165000,
+                "endMs": 171600,
+                "text": "这么一想,留在兰州就不止有本地能给我多少岗位这一个问题了。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b14",
+      "beatId": "B14",
+      "order": 14,
+      "startMs": 177000,
+      "endMs": 199000,
+      "text": "如果你的住处、生活已经在这里了，留在本地能少一些搬迁和生活开支，那省下来的钱，就能给找客户、改作品、磨合服务多留一点时间。很多事情要做了、改了，才知道适合不适合继续。刚开始没有结果的时候，手里还有没有余地，很重要。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        54,
+        55,
+        56,
+        57,
+        58,
+        59
+      ],
+      "rawSmallText": "如果你的住处生活已经在这里了留在本地能少一些搬迁和生活开支那省下来的钱就能给找客户改作品磨合服务多留一点时间很多事情要做了改了才知道适合不适合继续刚开始没有结果的时候手里还有没有余地很重要",
+      "correctionIds": [],
+      "uncertaintyIds": [],
+      "reviewRequired": false,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "如果你的住处、生活已经在这里，留在本地能少一些搬迁和生活开支，那省下来的钱，就能给找客户、改作品、磨合服务多留一点时间。很多事情要做了、改了，才知道适不适合继续。刚开始没有结果的时候，手里还有没有余地，很重要。",
+        "preproductionSpokenLine": "如果你的住处、生活已经在这里，留在本地能少一些搬迁和生活开支，那省下来的钱，就能给找客户、改作品、磨合服务多留一点时间。很多事情要做了、改了，才知道适不适合继续。刚开始没有结果的时候，手里还有没有余地，很重要。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 54,
+            "startMs": 177000,
+            "endMs": 180000,
+            "text": "如果你的住处生活已经在这里了"
+          },
+          {
+            "index": 55,
+            "startMs": 180000,
+            "endMs": 183000,
+            "text": "留在本地能少一些搬迁和生活开支"
+          },
+          {
+            "index": 56,
+            "startMs": 183000,
+            "endMs": 188000,
+            "text": "那省下来的钱就能给找客户改作品磨合服务"
+          },
+          {
+            "index": 57,
+            "startMs": 188000,
+            "endMs": 190000,
+            "text": "多留一点时间"
+          },
+          {
+            "index": 58,
+            "startMs": 190000,
+            "endMs": 194000,
+            "text": "很多事情要做了改了才知道适合不适合继续"
+          },
+          {
+            "index": 59,
+            "startMs": 194000,
+            "endMs": 199000,
+            "text": "刚开始没有结果的时候手里还有没有余地很重要"
+          }
+        ],
+        "base": [
+          {
+            "index": 68,
+            "startMs": 176560,
+            "endMs": 179960,
+            "text": "如果你的住處生活已經在這裡"
+          },
+          {
+            "index": 69,
+            "startMs": 179960,
+            "endMs": 182920,
+            "text": "留在本地能少一些搬遷和生活開支"
+          },
+          {
+            "index": 70,
+            "startMs": 182920,
+            "endMs": 186720,
+            "text": "省下來的錢就能給找客戶改作品"
+          },
+          {
+            "index": 71,
+            "startMs": 186720,
+            "endMs": 189560,
+            "text": "磨合服務多留一點時間"
+          },
+          {
+            "index": 72,
+            "startMs": 189560,
+            "endMs": 193120,
+            "text": "很多事情要做了改了才知道"
+          },
+          {
+            "index": 73,
+            "startMs": 193120,
+            "endMs": 194480,
+            "text": "適合不適合繼續"
+          },
+          {
+            "index": 74,
+            "startMs": 194480,
+            "endMs": 196400,
+            "text": "剛開始沒有結果的時候"
+          },
+          {
+            "index": 75,
+            "startMs": 196400,
+            "endMs": 199720,
+            "text": "手裡還有沒有餘地很重要"
+          }
+        ],
+        "focused": []
+      }
+    },
+    {
+      "id": "cap-b15",
+      "beatId": "B15",
+      "order": 15,
+      "startMs": 199000,
+      "endMs": 218000,
+      "text": "我自己学AI，课程、会员、调用费用，做图、做视频的成本都要花。做出来不适合，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花的少一些，只是让你有机会多试几次。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        60,
+        61,
+        62,
+        63,
+        64
+      ],
+      "rawSmallText": "我自己学AI课程 会员 调用费用做图做视频的成本都要花做出来不适合还得继续改所以我不会把这条路讲成一台电脑零成本创业钱花的少一些只是让你有机会多试几次",
+      "correctionIds": [],
+      "uncertaintyIds": [],
+      "reviewRequired": false,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。",
+        "preproductionSpokenLine": "我自己学AI，课程、会员、调用费用、做图做视频的成本都花过。做出来不合适，还得继续改。所以我不会把这条路讲成一台电脑、零成本创业。钱花得少一些，只是让你有机会多试几次。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 60,
+            "startMs": 199000,
+            "endMs": 203000,
+            "text": "我自己学AI课程 会员 调用费用"
+          },
+          {
+            "index": 61,
+            "startMs": 203000,
+            "endMs": 205000,
+            "text": "做图做视频的成本都要花"
+          },
+          {
+            "index": 62,
+            "startMs": 205000,
+            "endMs": 208000,
+            "text": "做出来不适合还得继续改"
+          },
+          {
+            "index": 63,
+            "startMs": 208000,
+            "endMs": 213000,
+            "text": "所以我不会把这条路讲成一台电脑零成本创业"
+          },
+          {
+            "index": 64,
+            "startMs": 213000,
+            "endMs": 218000,
+            "text": "钱花的少一些只是让你有机会多试几次"
+          }
+        ],
+        "base": [
+          {
+            "index": 75,
+            "startMs": 196400,
+            "endMs": 199720,
+            "text": "手裡還有沒有餘地很重要"
+          },
+          {
+            "index": 76,
+            "startMs": 199720,
+            "endMs": 203440,
+            "text": "我自己學業、課程、會員、調用費用"
+          },
+          {
+            "index": 77,
+            "startMs": 203440,
+            "endMs": 205920,
+            "text": "做圖、做視頻的成本都要化"
+          },
+          {
+            "index": 78,
+            "startMs": 205920,
+            "endMs": 208400,
+            "text": "做出來不適合還得繼續改"
+          },
+          {
+            "index": 79,
+            "startMs": 208400,
+            "endMs": 211920,
+            "text": "所以我不會把這條路講成一臺電腦"
+          },
+          {
+            "index": 80,
+            "startMs": 211920,
+            "endMs": 213240,
+            "text": "凌晨本創業"
+          },
+          {
+            "index": 81,
+            "startMs": 213240,
+            "endMs": 217120,
+            "text": "錢花的少一些只是讓你有機會"
+          },
+          {
+            "index": 82,
+            "startMs": 217120,
+            "endMs": 218160,
+            "text": "多試幾次"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b16_b17_v1.json",
+            "sha256": "9c27bee87b30bfbdb1ca60de1aa5e06f7e83d97824dbf4c0e8c9f8e80f6eca7a",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 213000,
+                "endMs": 241000,
+                "text": "钱花的少一些，只是让你有机会多试几次，客户如果自己也会用AI了，他还需要你做什么，你得听懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案，AI给出的内容也得看得出哪里不符合实际，到了收服务费的时候还要把做哪些工作，谁配合，交什么东西讲清楚。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b16",
+      "beatId": "B16",
+      "order": 16,
+      "startMs": 218000,
+      "endMs": 222000,
+      "text": "客户如果自己也会用AI了，他还需要你做什么？",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        65
+      ],
+      "rawSmallText": "客户如果自己也会用AI了他还需要你做什么",
+      "correctionIds": [],
+      "uncertaintyIds": [],
+      "reviewRequired": false,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "客户自己也会用AI了，他还需要你做什么？",
+        "preproductionSpokenLine": "客户自己也会用AI了，他还需要你做什么？",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 65,
+            "startMs": 218000,
+            "endMs": 222000,
+            "text": "客户如果自己也会用AI了他还需要你做什么"
+          }
+        ],
+        "base": [
+          {
+            "index": 82,
+            "startMs": 217120,
+            "endMs": 218160,
+            "text": "多試幾次"
+          },
+          {
+            "index": 83,
+            "startMs": 218160,
+            "endMs": 221000,
+            "text": "客戶如果自己也會用AI了"
+          },
+          {
+            "index": 84,
+            "startMs": 221000,
+            "endMs": 223000,
+            "text": "他還需要你做什麼"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b16_b17_v1.json",
+            "sha256": "9c27bee87b30bfbdb1ca60de1aa5e06f7e83d97824dbf4c0e8c9f8e80f6eca7a",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 213000,
+                "endMs": 241000,
+                "text": "钱花的少一些，只是让你有机会多试几次，客户如果自己也会用AI了，他还需要你做什么，你得听懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案，AI给出的内容也得看得出哪里不符合实际，到了收服务费的时候还要把做哪些工作，谁配合，交什么东西讲清楚。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b17",
+      "beatId": "B17",
+      "order": 17,
+      "startMs": 222000,
+      "endMs": 245000,
+      "text": "你得听懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案。AI给出的内容，也得看得出哪里不符合实际。到了收服务费的时候，还要把做哪些工作、谁配合、交什么东西讲清楚。客户拿到以后用不上，你得继续查问题。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ],
+      "rawSmallText": "你得听懂老板说的麻烦不能他一说生意不好你就给他生成一份通用方案AI给出的内容也得看得出哪里不符合实际到了收服务费的时候还要把做哪些工作谁配合教什么东西讲清楚客户拿到以后用不上你得继续查问题",
+      "correctionIds": [
+        "C13"
+      ],
+      "uncertaintyIds": [],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "你得听得懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案。AI给出的内容，也得看得出哪里不符合实际。到了收服务费的时候，还要把做哪些工作、谁配合、交什么东西讲清楚。客户拿到以后用不上，你得能继续查问题。",
+        "preproductionSpokenLine": "你得听得懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案。AI给出的内容，也得看得出哪里不符合实际。到了收服务费的时候，还要把做哪些工作、谁配合、交什么东西讲清楚。客户拿到以后用不上，你得能继续查问题。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 66,
+            "startMs": 222000,
+            "endMs": 225000,
+            "text": "你得听懂老板说的麻烦"
+          },
+          {
+            "index": 67,
+            "startMs": 225000,
+            "endMs": 230000,
+            "text": "不能他一说生意不好你就给他生成一份通用方案"
+          },
+          {
+            "index": 68,
+            "startMs": 230000,
+            "endMs": 234000,
+            "text": "AI给出的内容也得看得出哪里不符合实际"
+          },
+          {
+            "index": 69,
+            "startMs": 234000,
+            "endMs": 238000,
+            "text": "到了收服务费的时候还要把做哪些工作"
+          },
+          {
+            "index": 70,
+            "startMs": 238000,
+            "endMs": 240000,
+            "text": "谁配合教什么东西讲清楚"
+          },
+          {
+            "index": 71,
+            "startMs": 240000,
+            "endMs": 245000,
+            "text": "客户拿到以后用不上你得继续查问题"
+          }
+        ],
+        "base": [
+          {
+            "index": 84,
+            "startMs": 221000,
+            "endMs": 223000,
+            "text": "他還需要你做什麼"
+          },
+          {
+            "index": 85,
+            "startMs": 223000,
+            "endMs": 225760,
+            "text": "你得聽懂老闆說的麻煩"
+          },
+          {
+            "index": 86,
+            "startMs": 225760,
+            "endMs": 227840,
+            "text": "不能他一說生意不好"
+          },
+          {
+            "index": 87,
+            "startMs": 227840,
+            "endMs": 230320,
+            "text": "你就給他生成一份通用方案"
+          },
+          {
+            "index": 88,
+            "startMs": 230320,
+            "endMs": 231920,
+            "text": "AI給出的內容"
+          },
+          {
+            "index": 89,
+            "startMs": 231920,
+            "endMs": 234840,
+            "text": "也得看得出哪裡不符合實際"
+          },
+          {
+            "index": 90,
+            "startMs": 234840,
+            "endMs": 236320,
+            "text": "到了收服費的時候"
+          },
+          {
+            "index": 91,
+            "startMs": 236320,
+            "endMs": 238320,
+            "text": "還要把做哪些工作"
+          },
+          {
+            "index": 92,
+            "startMs": 238320,
+            "endMs": 240120,
+            "text": "誰配合交什麼東西"
+          },
+          {
+            "index": 93,
+            "startMs": 240120,
+            "endMs": 240960,
+            "text": "講清楚"
+          },
+          {
+            "index": 94,
+            "startMs": 240960,
+            "endMs": 242960,
+            "text": "客戶拿到以後用不上"
+          },
+          {
+            "index": 95,
+            "startMs": 242960,
+            "endMs": 245400,
+            "text": "你得繼續查問題"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b16_b17_v1.json",
+            "sha256": "9c27bee87b30bfbdb1ca60de1aa5e06f7e83d97824dbf4c0e8c9f8e80f6eca7a",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 213000,
+                "endMs": 241000,
+                "text": "钱花的少一些，只是让你有机会多试几次，客户如果自己也会用AI了，他还需要你做什么，你得听懂老板说的麻烦，不能他一说生意不好，你就给他生成一份通用方案，AI给出的内容也得看得出哪里不符合实际，到了收服务费的时候还要把做哪些工作，谁配合，交什么东西讲清楚。"
+              },
+              {
+                "index": 1,
+                "startMs": 241000,
+                "endMs": 263000,
+                "text": "客户拿到以后用不上，你得继续查问题，而且工具越来越容易用，只靠生成几段文字、几张图片收费以后可能更难，老板自己也能试，你得比他自己是多承担一些他没时间做，不会检查，没有办法持续做下去的工作。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b18",
+      "beatId": "B18",
+      "order": 18,
+      "startMs": 245000,
+      "endMs": 262000,
+      "text": "而且，工具越来越容易用，只靠生成几段文字、几张图片收费，以后可能更难。老板自己也能试。你得比他自己试，多承担一些他没时间做、不会检查、没有办法持续做下去的工作。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        72,
+        73,
+        74,
+        75
+      ],
+      "rawSmallText": "而且工具越来越容易用只靠生成几段文字几张图片收费以后可能更难老板自己也能是你得比他自己是多承担一些他没时间做不会检查没有办法持续做下去的工作",
+      "correctionIds": [
+        "C14",
+        "C15"
+      ],
+      "uncertaintyIds": [
+        "U08"
+      ],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "而且，工具越容易用，只靠生成几段文字、几张图收费，以后可能更难。老板自己也能试。你得比他自己试，多承担一些他没时间做、不会检查、没办法持续做下去的工作。",
+        "preproductionSpokenLine": "而且，工具越容易用，只靠生成几段文字、几张图收费，以后可能更难。老板自己也能试。你得比他自己试，多承担一些他没时间做、不会检查、没办法持续做下去的工作。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 72,
+            "startMs": 245000,
+            "endMs": 248000,
+            "text": "而且工具越来越容易用"
+          },
+          {
+            "index": 73,
+            "startMs": 248000,
+            "endMs": 252000,
+            "text": "只靠生成几段文字几张图片收费以后可能更难"
+          },
+          {
+            "index": 74,
+            "startMs": 252000,
+            "endMs": 258000,
+            "text": "老板自己也能是你得比他自己是多承担一些他没时间做"
+          },
+          {
+            "index": 75,
+            "startMs": 258000,
+            "endMs": 262000,
+            "text": "不会检查没有办法持续做下去的工作"
+          }
+        ],
+        "base": [
+          {
+            "index": 95,
+            "startMs": 242960,
+            "endMs": 245400,
+            "text": "你得繼續查問題"
+          },
+          {
+            "index": 96,
+            "startMs": 245400,
+            "endMs": 248400,
+            "text": "而且工具越來越容易用"
+          },
+          {
+            "index": 97,
+            "startMs": 248400,
+            "endMs": 251160,
+            "text": "只靠生成幾段文字幾張圖片收費"
+          },
+          {
+            "index": 98,
+            "startMs": 251160,
+            "endMs": 252680,
+            "text": "以後可能更哪"
+          },
+          {
+            "index": 99,
+            "startMs": 252680,
+            "endMs": 254280,
+            "text": "老闆自己也能是"
+          },
+          {
+            "index": 100,
+            "startMs": 254280,
+            "endMs": 257600,
+            "text": "你得比他自己是多承擔一些"
+          },
+          {
+            "index": 101,
+            "startMs": 257600,
+            "endMs": 259040,
+            "text": "他沒時間做"
+          },
+          {
+            "index": 102,
+            "startMs": 259040,
+            "endMs": 260160,
+            "text": "不會檢查"
+          },
+          {
+            "index": 103,
+            "startMs": 260160,
+            "endMs": 263200,
+            "text": "沒有辦法持續做下去的工作"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b16_b17_v1.json",
+            "sha256": "9c27bee87b30bfbdb1ca60de1aa5e06f7e83d97824dbf4c0e8c9f8e80f6eca7a",
+            "segments": [
+              {
+                "index": 1,
+                "startMs": 241000,
+                "endMs": 263000,
+                "text": "客户拿到以后用不上，你得继续查问题，而且工具越来越容易用，只靠生成几段文字、几张图片收费以后可能更难，老板自己也能试，你得比他自己是多承担一些他没时间做，不会检查，没有办法持续做下去的工作。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b19",
+      "beatId": "B19",
+      "order": 19,
+      "startMs": 262000,
+      "endMs": 278000,
+      "text": "咱们在本地可以去店里聊，看看他们平时到底怎么干。把这些情况问明白，才知道网上那些通用方案，哪些地方在这家店根本用不了。能不能帮上忙，得按照实际情况改。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        76,
+        77,
+        78,
+        79
+      ],
+      "rawSmallText": "咱们在本地可以去店里聊看看他们平时到底怎么干把这些情况问明白才知道网上那些通用方案哪些地方在这家店根本用不了能不能帮上忙得按照实际情况改",
+      "correctionIds": [],
+      "uncertaintyIds": [],
+      "reviewRequired": false,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "咱们在本地，可以去店里聊，看看他们平时到底怎么干。把这些情况问明白，才知道网上那些通用方案，哪些地方在这家店根本用不了。能不能帮上忙，得照着实际情况改。",
+        "preproductionSpokenLine": "咱们在本地，可以去店里聊，看看他们平时到底怎么干。把这些情况问明白，才知道网上那些通用方案，哪些地方在这家店根本用不了。能不能帮上忙，得照着实际情况改。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 76,
+            "startMs": 262000,
+            "endMs": 265000,
+            "text": "咱们在本地可以去店里聊"
+          },
+          {
+            "index": 77,
+            "startMs": 265000,
+            "endMs": 267000,
+            "text": "看看他们平时到底怎么干"
+          },
+          {
+            "index": 78,
+            "startMs": 267000,
+            "endMs": 274000,
+            "text": "把这些情况问明白才知道网上那些通用方案哪些地方在这家店根本用不了"
+          },
+          {
+            "index": 79,
+            "startMs": 274000,
+            "endMs": 278000,
+            "text": "能不能帮上忙得按照实际情况改"
+          }
+        ],
+        "base": [
+          {
+            "index": 103,
+            "startMs": 260160,
+            "endMs": 263200,
+            "text": "沒有辦法持續做下去的工作"
+          },
+          {
+            "index": 104,
+            "startMs": 263200,
+            "endMs": 265360,
+            "text": "咱們在本地可以去電力聊"
+          },
+          {
+            "index": 105,
+            "startMs": 265360,
+            "endMs": 267400,
+            "text": "看看他們平時到底怎麼幹"
+          },
+          {
+            "index": 106,
+            "startMs": 267400,
+            "endMs": 269680,
+            "text": "把這些情況問明白"
+          },
+          {
+            "index": 107,
+            "startMs": 269680,
+            "endMs": 271760,
+            "text": "才知道往上那些通用方案"
+          },
+          {
+            "index": 108,
+            "startMs": 271760,
+            "endMs": 274920,
+            "text": "哪些地方在這家店根本用不了"
+          },
+          {
+            "index": 109,
+            "startMs": 274920,
+            "endMs": 276120,
+            "text": "能不能幫上忙"
+          },
+          {
+            "index": 110,
+            "startMs": 276120,
+            "endMs": 278400,
+            "text": "得按照實際情況改"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b16_b17_v1.json",
+            "sha256": "9c27bee87b30bfbdb1ca60de1aa5e06f7e83d97824dbf4c0e8c9f8e80f6eca7a",
+            "segments": [
+              {
+                "index": 1,
+                "startMs": 241000,
+                "endMs": 263000,
+                "text": "客户拿到以后用不上，你得继续查问题，而且工具越来越容易用，只靠生成几段文字、几张图片收费以后可能更难，老板自己也能试，你得比他自己是多承担一些他没时间做，不会检查，没有办法持续做下去的工作。"
+              },
+              {
+                "index": 2,
+                "startMs": 263000,
+                "endMs": 265300,
+                "text": "咱们在本地可以去店里聊"
+              },
+              {
+                "index": 3,
+                "startMs": 265300,
+                "endMs": 267300,
+                "text": "看看他们平时到底怎么干"
+              },
+              {
+                "index": 4,
+                "startMs": 267300,
+                "endMs": 270300,
+                "text": "把这些情况问明白才知道"
+              }
+            ]
+          },
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b19_b20_v1.json",
+            "sha256": "a88a06c73aa14db04eb535dfc52244394da0404aa6c2b7f5cc3cb186da99facd",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 273000,
+                "endMs": 275000,
+                "text": "在这家店根本用不了。"
+              },
+              {
+                "index": 1,
+                "startMs": 275000,
+                "endMs": 278440,
+                "text": "能不能帮上忙,得按照实际情况改。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b20",
+      "beatId": "B20",
+      "order": 20,
+      "startMs": 278000,
+      "endMs": 295000,
+      "text": "我已经做过企业AI应用和GEO的付费项目，也做过交付。这是我愿意继续做下去的一个原因。但有个交付，不等于生意已经做完了。接下来就是服务怎么做好，客户能不能持续用，还得下工夫。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        80,
+        81,
+        82,
+        83
+      ],
+      "rawSmallText": "我已经做过企业AI应用和GEO的付费项目也做过交付这是我愿意继续做下去的一个原因但有个交付不等于生意已经做完了接下来就是服务怎么做好客户能不能持续用还得下工夫",
+      "correctionIds": [],
+      "uncertaintyIds": [
+        "U04",
+        "U05"
+      ],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "我已经做过企业AI应用和GEO的付费项目，也做过交付。这是我愿意继续做下去的原因。但有过交付，不等于生意已经做稳了。接下来，服务怎么做好，客户能不能持续用，还得继续下工夫。",
+        "preproductionSpokenLine": "我已经做过企业AI应用和GEO的付费项目，也做过交付。这是我愿意继续做下去的原因。但有过交付，不等于生意已经做稳了。接下来，服务怎么做好，客户能不能持续用，还得继续下工夫。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 80,
+            "startMs": 278000,
+            "endMs": 283000,
+            "text": "我已经做过企业AI应用和GEO的付费项目也做过交付"
+          },
+          {
+            "index": 81,
+            "startMs": 283000,
+            "endMs": 286000,
+            "text": "这是我愿意继续做下去的一个原因"
+          },
+          {
+            "index": 82,
+            "startMs": 286000,
+            "endMs": 290000,
+            "text": "但有个交付不等于生意已经做完了"
+          },
+          {
+            "index": 83,
+            "startMs": 290000,
+            "endMs": 295000,
+            "text": "接下来就是服务怎么做好客户能不能持续用还得下工夫"
+          }
+        ],
+        "base": [
+          {
+            "index": 110,
+            "startMs": 276120,
+            "endMs": 278400,
+            "text": "得按照實際情況改"
+          },
+          {
+            "index": 111,
+            "startMs": 278400,
+            "endMs": 279880,
+            "text": "我已經做過企業"
+          },
+          {
+            "index": 112,
+            "startMs": 279880,
+            "endMs": 282160,
+            "text": "AI應用和企業的付費項目"
+          },
+          {
+            "index": 113,
+            "startMs": 282160,
+            "endMs": 283560,
+            "text": "也做過交付"
+          },
+          {
+            "index": 114,
+            "startMs": 283560,
+            "endMs": 286680,
+            "text": "這是我願意繼續做下去的一個原因"
+          },
+          {
+            "index": 115,
+            "startMs": 286680,
+            "endMs": 290320,
+            "text": "但有個交付不等於生意已經做到了"
+          },
+          {
+            "index": 116,
+            "startMs": 290320,
+            "endMs": 292440,
+            "text": "接下來就是服務怎麼做好"
+          },
+          {
+            "index": 117,
+            "startMs": 292440,
+            "endMs": 294240,
+            "text": "客戶能不能持續用"
+          },
+          {
+            "index": 118,
+            "startMs": 294240,
+            "endMs": 296200,
+            "text": "還得下功夫"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b19_b20_v1.json",
+            "sha256": "a88a06c73aa14db04eb535dfc52244394da0404aa6c2b7f5cc3cb186da99facd",
+            "segments": [
+              {
+                "index": 1,
+                "startMs": 275000,
+                "endMs": 278440,
+                "text": "能不能帮上忙,得按照实际情况改。"
+              },
+              {
+                "index": 2,
+                "startMs": 278440,
+                "endMs": 283640,
+                "text": "我已经做过企业AI应用和GEO的付费项目,也做过交付。"
+              },
+              {
+                "index": 3,
+                "startMs": 283640,
+                "endMs": 286760,
+                "text": "这是我愿意继续做下去的一个原因。"
+              },
+              {
+                "index": 4,
+                "startMs": 286760,
+                "endMs": 290400,
+                "text": "但有个交付不等于生意已经做完了。"
+              },
+              {
+                "index": 5,
+                "startMs": 290400,
+                "endMs": 296240,
+                "text": "接下来就是服务怎么做好,客户能不能持续用,还得下功夫。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b21",
+      "beatId": "B21",
+      "order": 21,
+      "startMs": 295000,
+      "endMs": 311000,
+      "text": "你有工作，就先在熟悉的业务里面。你已经做着生意，可以看看哪些经验还没让客户知道。完全没接触过一个行业的人，先去了解实际工作，别因为AI能给方案，就着急给老板当顾问。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "rawSmallText": "你有工作就先在熟悉的业务里面你已经做着生意可以看看哪些经验还没让客户知道完全没接触过一个行业的人先去了解实际工作别因为AI能给方案就交集给老板当顾问",
+      "correctionIds": [
+        "C16"
+      ],
+      "uncertaintyIds": [
+        "U06"
+      ],
+      "reviewRequired": true,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "你有工作，就先在熟悉的业务里练；你已经做着生意，可以看看哪些经验还没让客户知道。完全没接触过一个行业的人，先去了解实际工作，别因为AI能给方案，就急着给老板当顾问。",
+        "preproductionSpokenLine": "你有工作，就先在熟悉的业务里练；你已经做着生意，可以看看哪些经验还没让客户知道。完全没接触过一个行业的人，先去了解实际工作，别因为AI能给方案，就急着给老板当顾问。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 84,
+            "startMs": 295000,
+            "endMs": 298000,
+            "text": "你有工作就先在熟悉的业务里面"
+          },
+          {
+            "index": 85,
+            "startMs": 298000,
+            "endMs": 303000,
+            "text": "你已经做着生意可以看看哪些经验还没让客户知道"
+          },
+          {
+            "index": 86,
+            "startMs": 303000,
+            "endMs": 307000,
+            "text": "完全没接触过一个行业的人先去了解实际工作"
+          },
+          {
+            "index": 87,
+            "startMs": 307000,
+            "endMs": 311000,
+            "text": "别因为AI能给方案就交集给老板当顾问"
+          }
+        ],
+        "base": [
+          {
+            "index": 118,
+            "startMs": 294240,
+            "endMs": 296200,
+            "text": "還得下功夫"
+          },
+          {
+            "index": 119,
+            "startMs": 296200,
+            "endMs": 299120,
+            "text": "你有工作就像在熟悉的業務裡面"
+          },
+          {
+            "index": 120,
+            "startMs": 299120,
+            "endMs": 300680,
+            "text": "你已經做的生意"
+          },
+          {
+            "index": 121,
+            "startMs": 300680,
+            "endMs": 303840,
+            "text": "可以看看哪些經驗還沒讓客戶知道"
+          },
+          {
+            "index": 122,
+            "startMs": 303840,
+            "endMs": 306240,
+            "text": "完全沒接觸過一個行業的人"
+          },
+          {
+            "index": 123,
+            "startMs": 306240,
+            "endMs": 308200,
+            "text": "先去瞭解實際工作"
+          },
+          {
+            "index": 124,
+            "startMs": 308200,
+            "endMs": 309840,
+            "text": "別因為AI能給方案"
+          },
+          {
+            "index": 125,
+            "startMs": 309840,
+            "endMs": 312400,
+            "text": "就交集給老闆當顧問"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b19_b20_v1.json",
+            "sha256": "a88a06c73aa14db04eb535dfc52244394da0404aa6c2b7f5cc3cb186da99facd",
+            "segments": [
+              {
+                "index": 5,
+                "startMs": 290400,
+                "endMs": 296240,
+                "text": "接下来就是服务怎么做好,客户能不能持续用,还得下功夫。"
+              },
+              {
+                "index": 6,
+                "startMs": 296240,
+                "endMs": 299160,
+                "text": "你有工作,就先在熟悉的业务里面。"
+              },
+              {
+                "index": 7,
+                "startMs": 299160,
+                "endMs": 303920,
+                "text": "你已经做着生意,可以看看哪些经验还没让客户知道。"
+              },
+              {
+                "index": 8,
+                "startMs": 303920,
+                "endMs": 308240,
+                "text": "完全没接触过一个行业的人,先去了解实际工作。"
+              },
+              {
+                "index": 9,
+                "startMs": 308240,
+                "endMs": 312440,
+                "text": "别因为AI能给方案,就着急给老板当顾问。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cap-b22",
+      "beatId": "B22",
+      "order": 22,
+      "startMs": 311000,
+      "endMs": 336280,
+      "text": "我选择留在兰州做这件事。把本地企业的问题弄明白，把自己能承担的工作做好，再去争取更多的客户。咱们兰州的老板，需要做企业AI应用，可以来找我，带着实际碰到的问题，咱们聊一聊。我能参与哪一段，哪些还做不了，咱们当面说清楚。我是超哥，在兰州AI创业。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "timingPrecision": "asr-segment-boundary-estimate",
+      "sourceSmallSegmentIndices": [
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95
+      ],
+      "rawSmallText": "我选择留在兰州做这件事把本地企业的问题弄明白把自己能承担的工作做好再去争取更多的客户咱们兰州的老板需要做企业AI应用可以来找我带着实际碰到的问题咱们聊一聊我能参与哪一段哪些还做不了咱们当面说清楚我是超哥在兰州AI创业",
+      "correctionIds": [],
+      "uncertaintyIds": [],
+      "reviewRequired": false,
+      "comparisonOnly": {
+        "userConfirmedScriptLine": "我选择继续留在兰州做这件事。把本地企业的问题弄明白，把自己能承担的工作做好，再去争取更多客户。咱们兰州的老板，需要做企业AI应用，可以来找我，带着实际碰到的问题聊。我能参与哪一段、哪些还做不了，咱们当面说清楚。我是超哥在兰州AI创业",
+        "preproductionSpokenLine": "我选择继续留在兰州做这件事。把本地企业的问题弄明白，把自己能承担的工作做好，再去争取更多客户。咱们兰州的老板，需要做企业AI应用，可以来找我，带着实际碰到的问题聊。我能参与哪一段、哪些还做不了，咱们当面说清楚。我是超哥在兰州AI创业",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "small": [
+          {
+            "index": 88,
+            "startMs": 311000,
+            "endMs": 314000,
+            "text": "我选择留在兰州做这件事"
+          },
+          {
+            "index": 89,
+            "startMs": 314000,
+            "endMs": 316000,
+            "text": "把本地企业的问题弄明白"
+          },
+          {
+            "index": 90,
+            "startMs": 316000,
+            "endMs": 321000,
+            "text": "把自己能承担的工作做好再去争取更多的客户"
+          },
+          {
+            "index": 91,
+            "startMs": 321000,
+            "endMs": 324000,
+            "text": "咱们兰州的老板需要做企业AI应用"
+          },
+          {
+            "index": 92,
+            "startMs": 324000,
+            "endMs": 327000,
+            "text": "可以来找我带着实际碰到的问题"
+          },
+          {
+            "index": 93,
+            "startMs": 327000,
+            "endMs": 331000,
+            "text": "咱们聊一聊我能参与哪一段哪些还做不了"
+          },
+          {
+            "index": 94,
+            "startMs": 331000,
+            "endMs": 333000,
+            "text": "咱们当面说清楚"
+          },
+          {
+            "index": 95,
+            "startMs": 333000,
+            "endMs": 336000,
+            "text": "我是超哥在兰州AI创业"
+          }
+        ],
+        "base": [
+          {
+            "index": 125,
+            "startMs": 309840,
+            "endMs": 312400,
+            "text": "就交集給老闆當顧問"
+          },
+          {
+            "index": 126,
+            "startMs": 312400,
+            "endMs": 314920,
+            "text": "我選擇留在蘭州做這件事"
+          },
+          {
+            "index": 127,
+            "startMs": 314920,
+            "endMs": 317160,
+            "text": "把本地企業的問題弄明白"
+          },
+          {
+            "index": 128,
+            "startMs": 317160,
+            "endMs": 319880,
+            "text": "把自己能承擔的工作做好"
+          },
+          {
+            "index": 129,
+            "startMs": 319880,
+            "endMs": 321720,
+            "text": "再去爭取更多的客戶"
+          },
+          {
+            "index": 130,
+            "startMs": 321720,
+            "endMs": 324640,
+            "text": "咱們蘭州的老闆需要做企業AI應用"
+          },
+          {
+            "index": 131,
+            "startMs": 324640,
+            "endMs": 325720,
+            "text": "可以來找我"
+          },
+          {
+            "index": 132,
+            "startMs": 325720,
+            "endMs": 327880,
+            "text": "帶著實際碰到的問題"
+          },
+          {
+            "index": 133,
+            "startMs": 327880,
+            "endMs": 328840,
+            "text": "咱們聊一聊"
+          },
+          {
+            "index": 134,
+            "startMs": 328840,
+            "endMs": 330520,
+            "text": "我能參與哪一段"
+          },
+          {
+            "index": 135,
+            "startMs": 330520,
+            "endMs": 332040,
+            "text": "哪些還做不了"
+          },
+          {
+            "index": 136,
+            "startMs": 332040,
+            "endMs": 333680,
+            "text": "咱們當面說清楚"
+          },
+          {
+            "index": 137,
+            "startMs": 333680,
+            "endMs": 336280,
+            "text": "我是超哥在蘭州AI創業"
+          }
+        ],
+        "focused": [
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b19_b20_v1.json",
+            "sha256": "a88a06c73aa14db04eb535dfc52244394da0404aa6c2b7f5cc3cb186da99facd",
+            "segments": [
+              {
+                "index": 9,
+                "startMs": 308240,
+                "endMs": 312440,
+                "text": "别因为AI能给方案,就着急给老板当顾问。"
+              },
+              {
+                "index": 10,
+                "startMs": 312440,
+                "endMs": 317240,
+                "text": "我选择留在兰州做这件事,把本地企业的问题弄明白。"
+              }
+            ]
+          },
+          {
+            "file": "口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/focus_b22_v1.json",
+            "sha256": "c925299a5a4d08dc178faa887e53fdb6a7fb1f0f9b2aa968ab5a84bc121c9083",
+            "segments": [
+              {
+                "index": 0,
+                "startMs": 326000,
+                "endMs": 329000,
+                "text": "会设计碰到的问题 咱们聊一聊"
+              },
+              {
+                "index": 1,
+                "startMs": 329000,
+                "endMs": 332000,
+                "text": "我能参与哪一段 哪些 还做不了"
+              },
+              {
+                "index": 2,
+                "startMs": 332000,
+                "endMs": 334000,
+                "text": "咱们当面说清楚"
+              },
+              {
+                "index": 3,
+                "startMs": 334000,
+                "endMs": 336000,
+                "text": "我是超哥 在兰州AI创业"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "uncertainCaptionIds": [
+    "cap-b04",
+    "cap-b05",
+    "cap-b08",
+    "cap-b10",
+    "cap-b18",
+    "cap-b20",
+    "cap-b21"
+  ],
+  "reviewRequiredCaptionIds": [
+    "cap-b01",
+    "cap-b02",
+    "cap-b04",
+    "cap-b05",
+    "cap-b07",
+    "cap-b08",
+    "cap-b09",
+    "cap-b10",
+    "cap-b11",
+    "cap-b12",
+    "cap-b17",
+    "cap-b18",
+    "cap-b20",
+    "cap-b21"
+  ]
+}

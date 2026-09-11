@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "lanzhou-industry-ai-v91-v8-control-validation/v1",
+  "createdAt": "2026-09-11T21:41:14+08:00",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "revisionId": "20260911-lanzhou-industry-ai-v91-v8-candidate-r1",
+  "artifacts": {
+    "visualPlan": {
+      "path": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/visual-plan.v1.json",
+      "sha256": "9b4aef9235ff997955a6197e18e5f669b35da439ada26f062f20e4a9e1e9cb52"
+    },
+    "sfxCueSheet": {
+      "path": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/sfx-cues.v1.json",
+      "sha256": "9c970216595d427ba30df7f6e5ea8d0e3feb0e96e5f796a1d919658111641a33"
+    },
+    "productionJob": {
+      "path": "workflow/jobs/20260910_lanzhou_industry_ai_v91_v8_r1.production.json",
+      "sha256": "0e9ab15fdd2cdfd07ab027faa55eb4b74185ba5f0ae985e422adefd565234ee6"
+    },
+    "assetManifest": {
+      "path": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/asset-manifest.v1.json",
+      "sha256": "8463fb2f5f6ff230934d4a66370bc2c981ac3d42680216687f676c30127ea606"
+    }
+  },
+  "checks": [
+    {
+      "id": "json-syntax",
+      "status": "passed",
+      "evidence": "本任务控制目录、质检目录、独立publicDir和production job中的JSON均通过jq empty。"
+    },
+    {
+      "id": "visual-plan-validator",
+      "status": "passed",
+      "evidence": "27个图层，27个风险抽帧。"
+    },
+    {
+      "id": "v8-production-contract-validator",
+      "status": "passed",
+      "evidence": "27个视觉事件，10类音效，正式渲染仍被预览门禁锁定。"
+    },
+    {
+      "id": "director-candidate-binding",
+      "status": "passed",
+      "evidence": "candidate-entry-director-bound，6个纸艺镜头，spokenAuthority=recorded-audio。"
+    },
+    {
+      "id": "media-probe-and-full-decode",
+      "status": "passed",
+      "evidence": "R01与P01至P06全部ffprobe成功并完整解码为零错误。"
+    },
+    {
+      "id": "public-sfx-copy",
+      "status": "passed",
+      "evidence": "V8源目录34个WAV全部复制，数量与SHA-256逐项一致。"
+    },
+    {
+      "id": "official-v2-preview-entry",
+      "status": "blocked",
+      "code": "DPG2_BOUND_JSON_REFERENCE_INVALID",
+      "evidence": "当前修订缺少不可由执行组伪造的directorContract/handoff/freeze签名链。"
+    },
+    {
+      "id": "knowledge-context",
+      "status": "blocked",
+      "code": "KCPG2_CONTEXT_MISSING",
+      "evidence": "task-20260910T105427Z-a149c6de/context.json不存在。"
+    },
+    {
+      "id": "formal-render",
+      "status": "locked",
+      "evidence": "formal.enabled=false，实录双语字幕尚待人工听校，当前候选预览尚未验收。"
+    }
+  ],
+  "renderWasRun": false,
+  "status": "assets-and-v8-control-ready-official-preflight-blocked"
+}
