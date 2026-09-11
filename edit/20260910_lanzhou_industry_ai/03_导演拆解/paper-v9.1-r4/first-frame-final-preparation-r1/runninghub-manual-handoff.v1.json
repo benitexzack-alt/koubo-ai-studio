@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "koubo-runninghub-manual-handoff/v1",
+  "date": "2026-09-11",
+  "status": "manual-handoff-not-all-nodes-ready",
+  "authorization": "再试一下，如果不行的话，你把提示词给我，我自己手动来。",
+  "canvasUrl": "https://rhtv.runninghub.cn/project/canvas/2087479798165565442",
+  "sourcePackSha256": "39de728e6157489b553b2e5cafb6f80325fc1d677076cb574916f3de20b29306",
+  "priorReceipt": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/runninghub-canvas-preparation-receipt.v2.json",
+  "manualGuide": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/手工提示词包-r1/六镜提示词与设置.md",
+  "actions": {
+    "uploadedImagesThisTurn": 0,
+    "newVideoNodesThisTurn": 0,
+    "promptP03KeyboardPasteSucceeded": true,
+    "promptP03ReadbackSha256": "8ea150d746f124062d9128bcfd9ae6916b6c2289b407595fac1e63db7eece639",
+    "p03Parameters": "MiniMax H3 / 2k / 6秒 / 16:9",
+    "p03ActiveMode": "全能参考",
+    "p03RequiredMode": "首帧",
+    "p03VideoNodeId": "node_1789093996403_zwu7yx1",
+    "p03EdgeId": "e-node_1789093503269_gvz89bb-node_1789093996403_zwu7yx1",
+    "p03Label": "视频",
+    "p03OptimizationClass": "ant-dropdown-trigger rh-prompt-enhance-btn rh-prompt-enhance-btn--idle",
+    "generationClicked": false,
+    "taskSubmitted": false,
+    "videoGenerated": false,
+    "chargeObserved": false,
+    "balanceBefore": 207.218,
+    "balanceAfter": 207.218
+  },
+  "diagnosis": {
+    "verified": [
+      "P02编辑面板覆盖P03的画布位置。目标节点点击后仍激活P02输入框，不能只相信点击调用已返回。",
+      "点击空白画布关闭面板后，P03节点身份与空白输入框得到确认。通过受控剪贴板和Meta+V粘贴，P03提示词SHA与原清单完全一致。",
+      "P03参数调整到6秒，但标签双击/命名依然超时。未进行第三次同类尝试。",
+      "P03当前全能参考按钮class为active，首帧按钮未激活。"
+    ],
+    "unknown": [
+      "此前全部CDP超时是否均由浮层遮挡引起，尚未证明。",
+      "P01/P02最终模式未在本轮重新核验；之前仅提示词、模型、参数和连线回读通过，不能据此推出完整首帧模式配置通过。"
+    ]
+  },
+  "remaining": [
+    "P01/P02生成前复核最终模式为首帧",
+    "P03切换首帧模式并重新核对图片、提示词、模型、时长",
+    "P04—P06创建视频节点并填入手工包"
+  ],
+  "manualFiles": [
+    {
+      "sceneId": "P01",
+      "durationSeconds": 7,
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/手工提示词包-r1/P01_B04_图生视频提示词.txt",
+      "originalPromptSha256": "3ee9919f6118674259eebc6f72ca252ba244d03c43322a0b7d38884e38a07d4e",
+      "textComparison": "文件末尾换行以外，逐字与原始提示词一致"
+    },
+    {
+      "sceneId": "P02",
+      "durationSeconds": 8,
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/手工提示词包-r1/P02_B07_图生视频提示词.txt",
+      "originalPromptSha256": "0757d9a094696279a2d1472283eec135e99f44a4239701d1129f0b6208ca8a5f",
+      "textComparison": "文件末尾换行以外，逐字与原始提示词一致"
+    },
+    {
+      "sceneId": "P03",
+      "durationSeconds": 6,
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/手工提示词包-r1/P03_B10_图生视频提示词.txt",
+      "originalPromptSha256": "8ea150d746f124062d9128bcfd9ae6916b6c2289b407595fac1e63db7eece639",
+      "textComparison": "文件末尾换行以外，逐字与原始提示词一致"
+    },
+    {
+      "sceneId": "P04",
+      "durationSeconds": 7,
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/手工提示词包-r1/P04_B11_图生视频提示词.txt",
+      "originalPromptSha256": "ef9a40f30eb66945b16a07180e922d6749452c53a318724279180edbe170b7b1",
+      "textComparison": "文件末尾换行以外，逐字与原始提示词一致"
+    },
+    {
+      "sceneId": "P05",
+      "durationSeconds": 7,
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/手工提示词包-r1/P05_B15_图生视频提示词.txt",
+      "originalPromptSha256": "747fc4ab8ccef9982b88969894c90d002a4a60a5c51d7f1fc552d866146d9abf",
+      "textComparison": "文件末尾换行以外，逐字与原始提示词一致"
+    },
+    {
+      "sceneId": "P06",
+      "durationSeconds": 6,
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/手工提示词包-r1/P06_B17_图生视频提示词.txt",
+      "originalPromptSha256": "6e13b300f41f554d8a1c3aa75185a5791cca39d162b43f63c0388f9c42a102b7",
+      "textComparison": "文件末尾换行以外，逐字与原始提示词一致"
+    }
+  ],
+  "userAcceptance": "pending",
+  "dynamicValidation": "pending"
+}
