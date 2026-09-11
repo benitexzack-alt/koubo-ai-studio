@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-local-reframe/v1",
+  "createdAt": "2026-09-10T23:54:10.692Z",
+  "sceneId": "P03",
+  "status": "geometry-transform-checked-awaiting-actual-visual-review",
+  "authority": {
+    "userQuote": "好的，那就抓紧落实。",
+    "acceptedProposal": "先用本地工具将P03整组等比缩小并补背景，不重绘、不裁掉底台和支脚，再检查质量。"
+  },
+  "source": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-production-r1/first-frames/P03_B10_first-frame.png",
+    "sha256": "0d5461b0a0304c2631c213d32260154c0c07e57c69f65229c91efd7d4394071c",
+    "width": 1672,
+    "height": 941
+  },
+  "output": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-local-reframe-P03-r1/first-frames/P03_B10_first-frame-reframed.png",
+    "sha256": "2e715f686ea650168ed7438dae7bb39e32580a00cc0a355ee54de01ee8a1d95b",
+    "width": 1672,
+    "height": 941
+  },
+  "transform": {
+    "scaleX": 0.94,
+    "scaleY": 0.94,
+    "translateX": 50.16,
+    "translateY": 8.23,
+    "rotationDegrees": 0,
+    "method": "全画面同一仿射，不单独改变任何物件比例",
+    "filter": "Lanczos"
+  },
+  "edgeFill": {
+    "method": "Mirror",
+    "description": "仅将源图无物件的外边缘背景镜像延伸至输出画布；不得反射复制功能物件",
+    "reflectedSourceEdgeWidths": [
+      53.361702127659576,
+      8.755319148936172,
+      53.36170212765966,
+      51.308510638297896
+    ],
+    "sourceClearEdges": [
+      82,
+      129,
+      71,
+      197
+    ]
+  },
+  "geometryCheck": {
+    "sourceObservedBoundsWith3PxTolerance": [
+      82,
+      129,
+      1601,
+      744
+    ],
+    "transformedBounds": [
+      127.24,
+      129.48999999999998,
+      1555.1,
+      707.59
+    ],
+    "contentSafeBounds": [
+      66.88,
+      112.92,
+      1605.12,
+      715.16
+    ],
+    "passed": true,
+    "actualVisualReviewRequired": true
+  },
+  "tool": {
+    "path": "/opt/homebrew/bin/magick",
+    "version": "Version: ImageMagick 7.1.2-27 Q16-HDRI aarch64 e4c2b403b:20260705 https://imagemagick.org",
+    "commandArgs": [
+      "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-production-r1/first-frames/P03_B10_first-frame.png",
+      "-filter",
+      "Lanczos",
+      "-virtual-pixel",
+      "Mirror",
+      "-define",
+      "distort:viewport=1672x941+0+0",
+      "-distort",
+      "AffineProjection",
+      "0.94,0,0,0.94,50.16,8.23",
+      "+repage",
+      "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-local-reframe-P03-r1/first-frames/P03_B10_first-frame-reframed.png"
+    ]
+  },
+  "originalUnchanged": true,
+  "sourceDirectorPlanChanged": false,
+  "generatedImageCalls": 0,
+  "textBaked": false,
+  "actualMillimetreClearanceVerified": false,
+  "dynamicAccepted": false,
+  "runninghubActions": 0
+}

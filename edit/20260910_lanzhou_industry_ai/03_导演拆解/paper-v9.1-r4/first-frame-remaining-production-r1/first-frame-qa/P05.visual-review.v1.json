@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-visual-review/v1",
+  "sceneId": "P05",
+  "imagePath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-remaining-production-r1/first-frames/P05_B15_first-frame.png",
+  "imageSha256": "2cf0d42c0f6f522dfbf8e692066d6fdde92947779742c073a10f2af07ff426f1",
+  "reviewer": "codex-actual-image-and-blockage-crops",
+  "status": "revision-required",
+  "reviewedAt": "2026-09-11T00:12:07.357Z",
+  "actualMillimetreClearanceVerified": false,
+  "dynamicAccepted": false,
+  "userAcceptance": "pending",
+  "criteria": {
+    "semanticMatch": "passed",
+    "paperMaterial": "passed",
+    "depthAndContact": "passed",
+    "cleanTextAndBrand": "passed",
+    "compositionAndReadability": "passed",
+    "videoReadiness": "failed"
+  },
+  "notes": "三牌、纸质、活动数量、空接收位均可辨，但右接收槽的左侧高边墙挡住A3；G1投入纸垫在顶层，袋口却在前下方，没有可见平齐滑入通道，A1仅slide不成立。不是中文字问题，也不是毫米不可测的形式门槛。",
+  "physicalObservations": {
+    "imageSha256": "2cf0d42c0f6f522dfbf8e692066d6fdde92947779742c073a10f2af07ff426f1",
+    "physicalContractSha256": "3303817deeef3ae1a0c1f78eab6ce3c7c3444588c7a83dd233c12afbf5369305",
+    "inventory": [
+      {
+        "partId": "reserve",
+        "observedQuantity": 1,
+        "observedGroupIds": [
+          "G1"
+        ],
+        "imageBoxes": [
+          [
+            0.12081339712918661,
+            0.4399574920297556,
+            0.09090909090909091,
+            0.052072263549415514
+          ]
+        ],
+        "notes": "左台上只有一叠纸垫；前置口低于起点。"
+      },
+      {
+        "partId": "work",
+        "observedQuantity": 1,
+        "observedGroupIds": [
+          "G2"
+        ],
+        "imageBoxes": [
+          [
+            0.416866028708134,
+            0.5026567481402763,
+            0.07476076555023924,
+            0.11583421891604676
+          ]
+        ],
+        "notes": "中间只有一份平放合拢折页。"
+      }
+    ],
+    "stations": [
+      {
+        "groupId": "G1",
+        "observedPartIds": [
+          "reserve"
+        ],
+        "imageBox": [
+          0.04366028708133971,
+          0.19766206163655686,
+          0.2625598086124402,
+          0.48884165781083955
+        ],
+        "notes": "对应起点活动件可见。"
+      },
+      {
+        "groupId": "G2",
+        "observedPartIds": [
+          "work"
+        ],
+        "imageBox": [
+          0.3714114832535885,
+          0.19766206163655686,
+          0.37021531100478466,
+          0.48034006376195537
+        ],
+        "notes": "对应起点活动件可见。"
+      },
+      {
+        "groupId": "G3",
+        "observedPartIds": [],
+        "imageBox": [
+          0.6925837320574163,
+          0.19766206163655686,
+          0.26555023923444976,
+          0.48034006376195537
+        ],
+        "notes": "接收位初态空；固定布景不计活动件。"
+      }
+    ],
+    "transfers": [
+      {
+        "actionId": "A3",
+        "imageBox": [
+          0.41746411483253587,
+          0.47396386822529224,
+          0.5394736842105263,
+          0.20403825717321997
+        ],
+        "notes": "连续底板可见，但中右接缝一道深蓝高墙完整横断向右通路。",
+        "checks": {
+          "continuousSupport": "passed",
+          "compatibleHeight": "unknown",
+          "noBlockingEdges": "failed",
+          "openingFitsPart": "failed"
+        }
+      }
+    ],
+    "fixedLabels": [
+      {
+        "nodeId": "N1",
+        "imageBox": [
+          0.04665071770334928,
+          0.19872476089266738,
+          0.2589712918660287,
+          0.10839532412327312
+        ],
+        "independentStandObserved": true,
+        "notes": "独立后退空白牌，未连接活动件。"
+      },
+      {
+        "nodeId": "N2",
+        "imageBox": [
+          0.37260765550239233,
+          0.19766206163655686,
+          0.2583732057416268,
+          0.1073326248671626
+        ],
+        "independentStandObserved": true,
+        "notes": "独立后退空白牌，未连接活动件。"
+      },
+      {
+        "nodeId": "N3",
+        "imageBox": [
+          0.6931818181818182,
+          0.19766206163655686,
+          0.26016746411483255,
+          0.1073326248671626
+        ],
+        "independentStandObserved": true,
+        "notes": "独立后退空白牌，未连接活动件。"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "priority": "P0",
+      "code": "A3_RECEIVER_LEFT_WALL",
+      "detail": "中右横向通道被接收槽左墙挡住，不能直滑。"
+    },
+    {
+      "priority": "P0",
+      "code": "A1_RESERVE_POCKET_VERTICAL_MISMATCH",
+      "detail": "投入纸垫在台上，收纳口在台前下方；需要掉落/折弯或新增动作，均超原合同。"
+    }
+  ],
+  "textBakeAllowed": false,
+  "retryAllowed": false
+}

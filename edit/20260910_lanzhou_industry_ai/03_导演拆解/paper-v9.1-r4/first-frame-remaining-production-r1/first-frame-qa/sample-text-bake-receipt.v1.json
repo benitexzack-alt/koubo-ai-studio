@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-text-bake-receipt/v1",
+  "taskId": "task-20260910T105427Z-a149c6de",
+  "request": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-remaining-production-r1/first-frame-qa/sample-text-bake-request.v1.json",
+    "sha256": "5ecc1a57c3a292dea7f15b1c933d5d7a7f403b24e68def7ff7219ed423e8d754"
+  },
+  "status": "deterministic-first-frame-text-baked-and-ocr-passed",
+  "modelGeneratedReadableTextAllowed": false,
+  "sourcePlan": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-plan.v1.json",
+    "sha256": "46efff271cccf4cb145bf8d50f0aaab65d8365bb90d757abe66260757bf7058a"
+  },
+  "scenes": [
+    {
+      "sceneId": "P04",
+      "pairId": "P04-B11",
+      "pairSha256": "53ae93cd0c0f5be7e0838150f6908f0f5651f7840b2c264c8c35c85b03755003",
+      "textPlanSha256": "aef245637a021293fb69a714f2def7ce23ea871675a9e789583588b57beec697",
+      "labelsSha256": "05dc54dfa528cd21116b4507797cc650492d130e81a7ad7a0f25d01f5f14dacb",
+      "anchorCalibration": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-remaining-production-r1/first-frame-qa/anchor-calibrations/P04.v1.json",
+        "sha256": "57d4da40c5a75fb6faa7e1a563c72a36cab95556cc0b7dcfc6d1669596e3f8f8"
+      },
+      "calibratedAnchors": [
+        {
+          "nodeId": "N1",
+          "anchorQuad": [
+            [
+              0.06997607655502393,
+              0.18809776833156217
+            ],
+            [
+              0.3092105263157895,
+              0.18809776833156217
+            ],
+            [
+              0.3092105263157895,
+              0.281615302869288
+            ],
+            [
+              0.06997607655502393,
+              0.281615302869288
+            ]
+          ]
+        },
+        {
+          "nodeId": "N2",
+          "anchorQuad": [
+            [
+              0.3785885167464115,
+              0.18703506907545164
+            ],
+            [
+              0.6208133971291866,
+              0.18703506907545164
+            ],
+            [
+              0.6208133971291866,
+              0.281615302869288
+            ],
+            [
+              0.3785885167464115,
+              0.281615302869288
+            ]
+          ]
+        },
+        {
+          "nodeId": "N3",
+          "anchorQuad": [
+            [
+              0.6866028708133971,
+              0.18809776833156217
+            ],
+            [
+              0.9294258373205742,
+              0.18809776833156217
+            ],
+            [
+              0.9294258373205742,
+              0.281615302869288
+            ],
+            [
+              0.6866028708133971,
+              0.281615302869288
+            ]
+          ]
+        }
+      ],
+      "sourceImage": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-remaining-production-r1/first-frames/P04_B11_first-frame.png",
+        "sha256": "2b56d244c532a5c61bd1b0ea286855125ecf762ff2916721ffbca5803c07010f",
+        "width": 1672,
+        "height": 941
+      },
+      "outputImage": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-remaining-production-r1/text-baked-first-frames/P04_B11_first-frame-text-baked.png",
+        "sha256": "cf828eeaa6a03b6b9a07cdede223a44bf7a1b70f147fa273c0568d8a2bdaf468",
+        "width": 1672,
+        "height": 941
+      },
+      "ocr": [
+        {
+          "nodeId": "N1",
+          "expected": "工作做好",
+          "recognized": "工作做好",
+          "matched": true,
+          "rendering": {
+            "fontPath": "/Users/pc/Library/Fonts/NotoSansCJKsc-Regular.otf",
+            "pointSize": 108,
+            "pointSizeCandidates": [
+              108,
+              120,
+              96,
+              132
+            ]
+          },
+          "preprocessing": {
+            "mode": "inverse-perspective-dual-ocr-v1",
+            "rectifiedSize": {
+              "width": 1000,
+              "height": 240
+            },
+            "scalePercent": 400,
+            "borderPixels": 160,
+            "pageSegmentationMode": 7,
+            "language": "chi_sim",
+            "selectedEngine": "tesseract",
+            "recognitionPolicy": "tesseract-then-apple-vision-exact-match-v1",
+            "selectedVariantId": "lanczos-t50",
+            "typographyAttempts": [
+              {
+                "pointSize": 108,
+                "ocrAttempts": [
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "工作做好",
+                    "normalized": "工作做好"
+                  }
+                ]
+              }
+            ],
+            "finalImageAttempts": [
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "工作做好",
+                "normalized": "工作做好"
+              }
+            ]
+          },
+          "evaluationStage": "final-composite",
+          "inputImageSha256": "cf828eeaa6a03b6b9a07cdede223a44bf7a1b70f147fa273c0568d8a2bdaf468"
+        },
+        {
+          "nodeId": "N2",
+          "expected": "介绍",
+          "recognized": "介绍",
+          "matched": true,
+          "rendering": {
+            "fontPath": "/Users/pc/Library/Fonts/NotoSansCJKsc-Regular.otf",
+            "pointSize": 108,
+            "pointSizeCandidates": [
+              108,
+              120,
+              96,
+              132
+            ]
+          },
+          "preprocessing": {
+            "mode": "inverse-perspective-dual-ocr-v1",
+            "rectifiedSize": {
+              "width": 1000,
+              "height": 240
+            },
+            "scalePercent": 400,
+            "borderPixels": 160,
+            "pageSegmentationMode": 7,
+            "language": "chi_sim",
+            "selectedEngine": "tesseract",
+            "recognitionPolicy": "tesseract-then-apple-vision-exact-match-v1",
+            "selectedVariantId": "box-t50",
+            "typographyAttempts": [
+              {
+                "pointSize": 108,
+                "ocrAttempts": [
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "但组",
+                    "normalized": "但组"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t50",
+                    "filter": "Box",
+                    "thresholdPercent": 50,
+                    "recognized": "介绍",
+                    "normalized": "介绍"
+                  }
+                ]
+              }
+            ],
+            "finalImageAttempts": [
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "但组",
+                "normalized": "但组"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "box-t50",
+                "filter": "Box",
+                "thresholdPercent": 50,
+                "recognized": "介绍",
+                "normalized": "介绍"
+              }
+            ]
+          },
+          "evaluationStage": "final-composite",
+          "inputImageSha256": "cf828eeaa6a03b6b9a07cdede223a44bf7a1b70f147fa273c0568d8a2bdaf468"
+        },
+        {
+          "nodeId": "N3",
+          "expected": "外地同行",
+          "recognized": "外地同行",
+          "matched": true,
+          "rendering": {
+            "fontPath": "/Users/pc/Library/Fonts/NotoSansCJKsc-Regular.otf",
+            "pointSize": 108,
+            "pointSizeCandidates": [
+              108,
+              120,
+              96,
+              132
+            ]
+          },
+          "preprocessing": {
+            "mode": "inverse-perspective-dual-ocr-v1",
+            "rectifiedSize": {
+              "width": 1000,
+              "height": 240
+            },
+            "scalePercent": 400,
+            "borderPixels": 160,
+            "pageSegmentationMode": 7,
+            "language": "chi_sim",
+            "selectedEngine": "tesseract",
+            "recognitionPolicy": "tesseract-then-apple-vision-exact-match-v1",
+            "selectedVariantId": "lanczos-t50",
+            "typographyAttempts": [
+              {
+                "pointSize": 108,
+                "ocrAttempts": [
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "外地同行",
+                    "normalized": "外地同行"
+                  }
+                ]
+              }
+            ],
+            "finalImageAttempts": [
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "外地同行",
+                "normalized": "外地同行"
+              }
+            ]
+          },
+          "evaluationStage": "final-composite",
+          "inputImageSha256": "cf828eeaa6a03b6b9a07cdede223a44bf7a1b70f147fa273c0568d8a2bdaf468"
+        }
+      ]
+    }
+  ]
+}
