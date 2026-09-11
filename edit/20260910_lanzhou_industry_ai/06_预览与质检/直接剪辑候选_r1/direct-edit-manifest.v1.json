@@ -1,0 +1,107 @@
+{
+  "schema": "koubo-direct-edit-preview/v1",
+  "createdAt": "2026-09-11T21:05:50+08:00",
+  "status": "ready-for-user-review",
+  "userDirection": "保留原口播，直接使用用户提供的六条成品视频进行剪辑，不再返修生成素材。",
+  "sourcePolicy": {
+    "spokenAuthority": "actual-recording-audio",
+    "originalVideoPreserved": true,
+    "originalAudioContinuous": true,
+    "generatedClipAudioMuted": true,
+    "contentCuts": false
+  },
+  "inputs": {
+    "original": {
+      "path": "../../01_原始口播/copy_B71E2E7B-29AC-4653-AC9C-9D4A3C3D3AB6.MOV",
+      "sha256": "f5469a24278c333c00b4517c853958954a09cce8772a86231197e1966647d98f",
+      "durationSeconds": 336.366667
+    },
+    "generatedClips": [
+      {
+        "id": "P01_B04",
+        "path": "../../04_纸艺视频待验收/20260910_r4_P01_B04_待确认生成.mp4",
+        "sha256": "9d58ce0965c77d119598229cbcb99a5129c76a9732c8324c59cf6f8fd1cac281",
+        "sourceDurationSeconds": 7.292,
+        "timelineStartSeconds": 24.5,
+        "timelineEndSeconds": 31.792
+      },
+      {
+        "id": "P02_B07",
+        "path": "../../04_纸艺视频待验收/20260910_r4_P02_B07_待确认生成.mp4",
+        "sha256": "d3f805e5fc6566d5fb98aec5858616937e5f2d6fc4574b301d5ab60d02b2fe0a",
+        "sourceDurationSeconds": 8,
+        "timelineStartSeconds": 67,
+        "timelineEndSeconds": 75
+      },
+      {
+        "id": "P03_B10",
+        "path": "../../04_纸艺视频待验收/视频_4.mp4",
+        "sha256": "4daed9b32527ab222391a61032402b6b5e0e3f36b73fdb8dc5a2da87aa0f0dcb",
+        "sourceDurationSeconds": 6.584,
+        "timelineStartSeconds": 127,
+        "timelineEndSeconds": 133.584
+      },
+      {
+        "id": "P04_B11",
+        "path": "../../04_纸艺视频待验收/视频_2.mp4",
+        "sha256": "40950736c1bf03630ec54709ae18a67dc126f2c033895e443782ed6af2a42c67",
+        "sourceDurationSeconds": 6.584,
+        "timelineStartSeconds": 137,
+        "timelineEndSeconds": 143.584
+      },
+      {
+        "id": "P05_B15",
+        "path": "../../04_纸艺视频待验收/视频_3.mp4",
+        "sha256": "d28458884dbcefc89f100a5f9d696f3293da1193d9d89f876a777d6d2d2fa6e6",
+        "sourceDurationSeconds": 6.584,
+        "timelineStartSeconds": 199,
+        "timelineEndSeconds": 205.584
+      },
+      {
+        "id": "P06_B17",
+        "path": "../../04_纸艺视频待验收/视频.mp4",
+        "sha256": "c26604d06cccd7298055adce69e2f1e68a4b8280e3c3260cc91c960ff4fe8428",
+        "sourceDurationSeconds": 6.584,
+        "timelineStartSeconds": 233.5,
+        "timelineEndSeconds": 240.084
+      }
+    ]
+  },
+  "edit": {
+    "transition": "每条插片首尾0.25秒透明淡入淡出",
+    "subtitleSource": "host_whisper_small_raw_v1.json，经transcription-review.v1.json中的16项候选修正",
+    "subtitleStatus": "candidate-pending-human-audio-review",
+    "watermark": "候选剪辑｜字幕待听校"
+  },
+  "output": {
+    "path": "兰州产业AI_直接剪辑候选_r1_720p_48k.mp4",
+    "sha256": "7486adfb3e0e593055656380883aef635e30dfac14f8a4e4425ee20dcaa2c329",
+    "durationSeconds": 336.373,
+    "sizeBytes": 237555605,
+    "video": {
+      "codec": "h264",
+      "width": 1280,
+      "height": 720,
+      "fps": 30
+    },
+    "audio": {
+      "codec": "aac",
+      "sampleRate": 48000,
+      "channels": 2,
+      "integratedLoudnessLufs": -16.24,
+      "truePeakDbtp": -1.24,
+      "loudnessRangeLu": 4.5
+    }
+  },
+  "qa": {
+    "fullDecode": "passed",
+    "blackFramesOver200ms": 0,
+    "sixInsertMidpointFrames": "passed",
+    "contactSheet": "全片插片检查帧/contact-sheet.jpg",
+    "videoStreamPreservedAfter48kAudioFix": true,
+    "videoStreamSha256": "688fa6376b418b1439f8cbfd3e4529f23e7491f676a2ec7a78d880f3d0d9508e"
+  },
+  "humanAudioReviewRequired": true,
+  "userFullWatchRequired": true,
+  "formalAllowed": false
+}
