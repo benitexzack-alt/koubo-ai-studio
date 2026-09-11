@@ -42,7 +42,22 @@
     "hero-emphasis",
     "sfx-ab"
   ],
-  "editPolicy": "完整保留真人口播；六条纸艺成品仅在V9.1实录术语绑定时点全屏切入，全部静音，始终使用R01录音为唯一口播音轨。",
+  "editPolicy": "完整保留真人口播；六条纸艺成品按对应实录整句的动作落点前置，全程1倍速、从素材第0帧播放、全部静音，始终使用R01录音为唯一口播音轨。",
+  "timingRevision": {
+    "id": "20260911-animation-rebind-r2",
+    "reason": "用户反馈所有动画入点偏迟，要求只修动画衔接后导出完整成片。",
+    "evidence": "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/timing-rebind-user-direction.v1.json",
+    "semanticPrerollFrames": 6,
+    "paperFadeFrames": 3
+  },
+  "speakerOnlyWindows": [
+    {
+      "id": "speaker-only-b16-question",
+      "startSeconds": 217.7,
+      "endSeconds": 222,
+      "reason": "保留“客户自己会用AI后还需要你做什么”的真人提问，不提前叠加下一段收费边界卡。"
+    }
+  ],
   "safeAreas": {
     "face": {
       "x": 0.36,
@@ -78,15 +93,16 @@
       "beatId": "B04",
       "source": "remotion/public-lanzhou-industry-ai-v91-r1/P01.mp4",
       "renderSource": "P01.mp4",
-      "startSeconds": 40,
-      "endSeconds": 47.292,
+      "startSeconds": 32.708,
+      "endSeconds": 40,
       "muteAssetAudio": true,
       "canonicalAudio": "remotion/public-lanzhou-industry-ai-v91-r1/R01.mp4",
       "binding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 40000,
+        "enterAtMs": 32708,
         "clipDurationSeconds": 7.292,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
@@ -94,15 +110,16 @@
       "beatId": "B07",
       "source": "remotion/public-lanzhou-industry-ai-v91-r1/P02.mp4",
       "renderSource": "P02.mp4",
-      "startSeconds": 85.6,
-      "endSeconds": 93.6,
+      "startSeconds": 77.6,
+      "endSeconds": 85.6,
       "muteAssetAudio": true,
       "canonicalAudio": "remotion/public-lanzhou-industry-ai-v91-r1/R01.mp4",
       "binding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 85600,
+        "enterAtMs": 77600,
         "clipDurationSeconds": 8,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
@@ -110,15 +127,16 @@
       "beatId": "B10",
       "source": "remotion/public-lanzhou-industry-ai-v91-r1/P03.mp4",
       "renderSource": "P03.mp4",
-      "startSeconds": 136.7,
-      "endSeconds": 143.284,
+      "startSeconds": 130.116,
+      "endSeconds": 136.7,
       "muteAssetAudio": true,
       "canonicalAudio": "remotion/public-lanzhou-industry-ai-v91-r1/R01.mp4",
       "binding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 136700,
+        "enterAtMs": 130116,
         "clipDurationSeconds": 6.584,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
@@ -126,15 +144,16 @@
       "beatId": "B11",
       "source": "remotion/public-lanzhou-industry-ai-v91-r1/P04.mp4",
       "renderSource": "P04.mp4",
-      "startSeconds": 147.7,
-      "endSeconds": 154.284,
+      "startSeconds": 141.116,
+      "endSeconds": 147.7,
       "muteAssetAudio": true,
       "canonicalAudio": "remotion/public-lanzhou-industry-ai-v91-r1/R01.mp4",
       "binding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 147700,
+        "enterAtMs": 141116,
         "clipDurationSeconds": 6.584,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
@@ -142,15 +161,16 @@
       "beatId": "B15",
       "source": "remotion/public-lanzhou-industry-ai-v91-r1/P05.mp4",
       "renderSource": "P05.mp4",
-      "startSeconds": 217.7,
-      "endSeconds": 224.284,
+      "startSeconds": 211.116,
+      "endSeconds": 217.7,
       "muteAssetAudio": true,
       "canonicalAudio": "remotion/public-lanzhou-industry-ai-v91-r1/R01.mp4",
       "binding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 217700,
+        "enterAtMs": 211116,
         "clipDurationSeconds": 6.584,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
@@ -158,15 +178,16 @@
       "beatId": "B17",
       "source": "remotion/public-lanzhou-industry-ai-v91-r1/P06.mp4",
       "renderSource": "P06.mp4",
-      "startSeconds": 244.7,
-      "endSeconds": 251.284,
+      "startSeconds": 238.116,
+      "endSeconds": 244.7,
       "muteAssetAudio": true,
       "canonicalAudio": "remotion/public-lanzhou-industry-ai-v91-r1/R01.mp4",
       "binding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 244700,
+        "enterAtMs": 238116,
         "clipDurationSeconds": 6.584,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     }
   ],
@@ -391,7 +412,7 @@
       "id": "v91-004-b04-experience",
       "beatId": "B04",
       "start": 24.5,
-      "end": 40,
+      "end": 32.708,
       "spokenLine": "销售、开店、行业经验，都可以变成对客户的了解",
       "purpose": "semantic-emphasis",
       "kind": "transparent-semantic-information",
@@ -455,7 +476,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 32.25
+        "reviewAt": 28.604
       },
       "background": "talk",
       "presentation": {
@@ -468,8 +489,8 @@
     {
       "id": "v91-005-p01-b04",
       "beatId": "B04",
-      "start": 40,
-      "end": 47.292,
+      "start": 32.708,
+      "end": 40,
       "spokenLine": "销售和开店经验，汇到对客户的了解",
       "purpose": "concept-illustration",
       "kind": "full-screen-asset",
@@ -493,7 +514,7 @@
       },
       "visualEvent": {
         "id": "v91-005-p01-b04-event",
-        "enterAt": 40,
+        "enterAt": 32.708,
         "primary": true
       },
       "sound": {
@@ -523,7 +544,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 42.5
+        "reviewAt": 35.208
       },
       "background": "opaque",
       "presentation": {
@@ -537,15 +558,16 @@
       },
       "postshootBinding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 40000,
+        "enterAtMs": 32708,
         "clipDurationSeconds": 7.292,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
       "id": "v91-006-b05-generic-copy",
       "beatId": "B05",
-      "start": 47.292,
+      "start": 40,
       "end": 52.1,
       "spokenLine": "客户看完，仍然不知道为什么选你",
       "purpose": "semantic-emphasis",
@@ -567,7 +589,7 @@
       },
       "visualEvent": {
         "id": "v91-006-b05-generic-copy-event",
-        "enterAt": 47.292,
+        "enterAt": 40,
         "primary": true
       },
       "sound": {
@@ -602,7 +624,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 49.696
+        "reviewAt": 46.05
       },
       "background": "talk",
       "presentation": {
@@ -694,7 +716,7 @@
       "id": "v91-008-b07-organize",
       "beatId": "B07",
       "start": 66,
-      "end": 85.6,
+      "end": 77.6,
       "spokenLine": "收集 → AI归类理顺 → 改成文稿 → 老板核对",
       "purpose": "semantic-emphasis",
       "kind": "transparent-semantic-information",
@@ -760,7 +782,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 75.8
+        "reviewAt": 71.8
       },
       "background": "talk",
       "presentation": {
@@ -773,8 +795,8 @@
     {
       "id": "v91-009-p02-b07",
       "beatId": "B07",
-      "start": 85.6,
-      "end": 93.6,
+      "start": 77.6,
+      "end": 85.6,
       "spokenLine": "AI承担整理和制作，生意的底子还是老板做过的事",
       "purpose": "concept-illustration",
       "kind": "full-screen-asset",
@@ -798,7 +820,7 @@
       },
       "visualEvent": {
         "id": "v91-009-p02-b07-event",
-        "enterAt": 85.6,
+        "enterAt": 77.6,
         "primary": true
       },
       "sound": {
@@ -828,7 +850,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 88.1
+        "reviewAt": 80.1
       },
       "background": "opaque",
       "presentation": {
@@ -842,15 +864,16 @@
       },
       "postshootBinding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 85600,
+        "enterAtMs": 77600,
         "clipDurationSeconds": 8,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
       "id": "v91-010-b08-findable",
       "beatId": "B08",
-      "start": 93.6,
+      "start": 85.6,
       "end": 97.9,
       "spokenLine": "把原来只在店里讲的经验，变成可见的介绍",
       "purpose": "semantic-emphasis",
@@ -872,7 +895,7 @@
       },
       "visualEvent": {
         "id": "v91-010-b08-findable-event",
-        "enterAt": 93.6,
+        "enterAt": 85.6,
         "primary": true
       },
       "sound": {
@@ -907,7 +930,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 95.75
+        "reviewAt": 91.75
       },
       "background": "talk",
       "presentation": {
@@ -999,7 +1022,7 @@
       "id": "v91-012-b10-service-chance",
       "beatId": "B10",
       "start": 114,
-      "end": 136.7,
+      "end": 130.116,
       "spokenLine": "帮老板持续做成内容，但内容不能代替真实产品和服务",
       "purpose": "semantic-emphasis",
       "kind": "transparent-semantic-information",
@@ -1055,7 +1078,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 125.35
+        "reviewAt": 122.058
       },
       "background": "talk",
       "presentation": {
@@ -1068,8 +1091,8 @@
     {
       "id": "v91-013-p03-b10",
       "beatId": "B10",
-      "start": 136.7,
-      "end": 143.284,
+      "start": 130.116,
+      "end": 136.7,
       "spokenLine": "没有能交给客户的产品和服务，只发内容也接不住",
       "purpose": "concept-illustration",
       "kind": "full-screen-asset",
@@ -1093,7 +1116,7 @@
       },
       "visualEvent": {
         "id": "v91-013-p03-b10-event",
-        "enterAt": 136.7,
+        "enterAt": 130.116,
         "primary": true
       },
       "sound": {
@@ -1123,7 +1146,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 139.2
+        "reviewAt": 132.616
       },
       "background": "opaque",
       "presentation": {
@@ -1137,16 +1160,17 @@
       },
       "postshootBinding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 136700,
+        "enterAtMs": 130116,
         "clipDurationSeconds": 6.584,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
       "id": "v91-014-b11-remote-gap",
       "beatId": "B11",
-      "start": 143.284,
-      "end": 147.7,
+      "start": 136.7,
+      "end": 141.116,
       "spokenLine": "再把约定的工作做好，才有资格介绍服务",
       "purpose": "semantic-emphasis",
       "kind": "transparent-semantic-information",
@@ -1167,7 +1191,7 @@
       },
       "visualEvent": {
         "id": "v91-014-b11-remote-gap-event",
-        "enterAt": 143.284,
+        "enterAt": 136.7,
         "primary": true
       },
       "sound": {
@@ -1202,7 +1226,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 145.492
+        "reviewAt": 138.908
       },
       "background": "talk",
       "presentation": {
@@ -1215,8 +1239,8 @@
     {
       "id": "v91-015-p04-b11",
       "beatId": "B11",
-      "start": 147.7,
-      "end": 154.284,
+      "start": 141.116,
+      "end": 147.7,
       "spokenLine": "介绍给同样需要整理客户问题、制作产品内容的同行",
       "purpose": "concept-illustration",
       "kind": "full-screen-asset",
@@ -1240,7 +1264,7 @@
       },
       "visualEvent": {
         "id": "v91-015-p04-b11-event",
-        "enterAt": 147.7,
+        "enterAt": 141.116,
         "primary": true
       },
       "sound": {
@@ -1270,7 +1294,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 150.2
+        "reviewAt": 143.616
       },
       "background": "opaque",
       "presentation": {
@@ -1284,15 +1308,16 @@
       },
       "postshootBinding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 147700,
+        "enterAtMs": 141116,
         "clipDurationSeconds": 6.584,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
       "id": "v91-016-b12-remote-real",
       "beatId": "B12",
-      "start": 154.284,
+      "start": 147.7,
       "end": 165,
       "spokenLine": "AI增加的是整理和制作能力；信任还得靠作品和服务",
       "purpose": "semantic-emphasis",
@@ -1314,7 +1339,7 @@
       },
       "visualEvent": {
         "id": "v91-016-b12-remote-real-event",
-        "enterAt": 154.284,
+        "enterAt": 147.7,
         "primary": true
       },
       "sound": {
@@ -1349,7 +1374,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 159.642
+        "reviewAt": 156.35
       },
       "background": "talk",
       "presentation": {
@@ -1511,7 +1536,7 @@
       "id": "v91-019-b15-cost",
       "beatId": "B15",
       "start": 199,
-      "end": 217.7,
+      "end": 211.116,
       "spokenLine": "课程、会员、调用、做图、做视频都要花钱，不适合还得继续改",
       "purpose": "semantic-emphasis",
       "kind": "transparent-semantic-information",
@@ -1575,7 +1600,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 208.35
+        "reviewAt": 205.058
       },
       "background": "talk",
       "presentation": {
@@ -1588,8 +1613,8 @@
     {
       "id": "v91-020-p05-b15",
       "beatId": "B15",
-      "start": 217.7,
-      "end": 224.284,
+      "start": 211.116,
+      "end": 217.7,
       "spokenLine": "少花钱不等于零成本，只是多一点试错空间",
       "purpose": "concept-illustration",
       "kind": "full-screen-asset",
@@ -1613,7 +1638,7 @@
       },
       "visualEvent": {
         "id": "v91-020-p05-b15-event",
-        "enterAt": 217.7,
+        "enterAt": 211.116,
         "primary": true
       },
       "sound": {
@@ -1643,7 +1668,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 220.2
+        "reviewAt": 213.616
       },
       "background": "opaque",
       "presentation": {
@@ -1657,16 +1682,17 @@
       },
       "postshootBinding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 217700,
+        "enterAtMs": 211116,
         "clipDurationSeconds": 6.584,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
       "id": "v91-021-b17-scope",
       "beatId": "B17",
-      "start": 224.284,
-      "end": 244.7,
+      "start": 222,
+      "end": 238.116,
       "spokenLine": "做哪些工作、谁配合、交什么东西，客户用不上还要继续查问题",
       "purpose": "semantic-emphasis",
       "kind": "transparent-semantic-information",
@@ -1691,7 +1717,7 @@
       },
       "visualEvent": {
         "id": "v91-021-b17-scope-event",
-        "enterAt": 224.284,
+        "enterAt": 222,
         "primary": true
       },
       "sound": {
@@ -1730,7 +1756,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 234.492
+        "reviewAt": 230.058
       },
       "background": "talk",
       "presentation": {
@@ -1743,8 +1769,8 @@
     {
       "id": "v91-022-p06-b17",
       "beatId": "B17",
-      "start": 244.7,
-      "end": 251.284,
+      "start": 238.116,
+      "end": 244.7,
       "spokenLine": "不用通用方案敷衍真实问题",
       "purpose": "concept-illustration",
       "kind": "full-screen-asset",
@@ -1768,7 +1794,7 @@
       },
       "visualEvent": {
         "id": "v91-022-p06-b17-event",
-        "enterAt": 244.7,
+        "enterAt": 238.116,
         "primary": true
       },
       "sound": {
@@ -1798,7 +1824,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 247.2
+        "reviewAt": 240.616
       },
       "background": "opaque",
       "presentation": {
@@ -1812,15 +1838,16 @@
       },
       "postshootBinding": {
         "source": "director-postshoot-rebind-plan.v1.json",
-        "enterAtMs": 244700,
+        "enterAtMs": 238116,
         "clipDurationSeconds": 6.584,
-        "timingPolicy": "actual-spoken-term-bound-conservative"
+        "timingPolicy": "actual-spoken-sentence-action-leading-user-directed",
+        "timingRevision": "20260911-animation-rebind-r2"
       }
     },
     {
       "id": "v91-023-b18-more-work",
       "beatId": "B18",
-      "start": 251.284,
+      "start": 244.7,
       "end": 262,
       "spokenLine": "你得比老板自己试，多承担他没时间做、不会检查、无法持续的工作",
       "purpose": "semantic-emphasis",
@@ -1842,7 +1869,7 @@
       },
       "visualEvent": {
         "id": "v91-023-b18-more-work-event",
-        "enterAt": 251.284,
+        "enterAt": 244.7,
         "primary": true
       },
       "sound": {
@@ -1877,7 +1904,7 @@
         },
         "needsFrameReview": true,
         "continuousReviewIntervalSeconds": 0.5,
-        "reviewAt": 256.642
+        "reviewAt": 253.35
       },
       "background": "talk",
       "presentation": {

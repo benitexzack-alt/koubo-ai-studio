@@ -4,9 +4,9 @@ import {
   AbsoluteFill,
   Easing,
   interpolate,
+  Sequence,
   staticFile,
   useCurrentFrame,
-  useVideoConfig,
 } from 'remotion';
 import {
   V72ProductionShell,
@@ -25,7 +25,7 @@ import {
   V8RightsRail,
   V8StatusStack,
   type V8SemanticLayer,
-} from '../components/V8SemanticStage';
+} from './V8SemanticStageSnapshot.r2';
 import {
   EvidenceScan,
   KeywordReveal,
@@ -45,6 +45,13 @@ type Rect = {
 type FrameRange = {
   startFrame: number;
   endFrameExclusive: number;
+};
+
+type SpeakerOnlyWindow = {
+  id: string;
+  startSeconds: number;
+  endSeconds: number;
+  reason: string;
 };
 
 type PaperClipPlan = {
@@ -133,6 +140,12 @@ type CandidatePlan = {
   brandLabel: string;
   candidateLabel: string;
   paperDisclosure: {primary: string; secondary: string};
+  timingRuntime: {
+    revisionId: string;
+    semanticPrerollFrames: number;
+    paperFadeFrames: number;
+  };
+  speakerOnlyWindows: SpeakerOnlyWindow[];
   paperClips: PaperClipPlan[];
   semanticLayers: SemanticLayerPlan[];
   effects: ShotcraftEffectPlan[];
@@ -207,7 +220,25 @@ const validateCandidatePlan = () => {
     throw new Error('V9.1 / V8 控制面必须完整同步 27 个主视觉、27 条音效和 96 页字幕。');
   }
 
-  const expectedPaperStarts = [40, 85.6, 136.7, 147.7, 217.7, 244.7];
+  const expectedPaperStarts = [
+    32.708,
+    77.6,
+    130.116,
+    141.116,
+    211.116,
+    238.116,
+  ];
+  if (
+    plan.timingRuntime.revisionId !== '20260911-animation-rebind-r2' ||
+    plan.timingRuntime.semanticPrerollFrames !== 6 ||
+    plan.timingRuntime.paperFadeFrames !== 3 ||
+    plan.speakerOnlyWindows.length !== 1 ||
+    plan.speakerOnlyWindows[0]?.id !== 'speaker-only-b16-question' ||
+    toFrame(plan.speakerOnlyWindows[0]?.startSeconds ?? -1) !== 6531 ||
+    toFrame(plan.speakerOnlyWindows[0]?.endSeconds ?? -1) !== 6660
+  ) {
+    throw new Error('动画重定时修订、预卷或真人留白窗口合同不匹配。');
+  }
   if (
     plan.paperClips.length !== expectedPaperStarts.length ||
     plan.paperClips.some(
@@ -304,14 +335,31 @@ const validateCandidatePlan = () => {
     primaryVisuals[0]?.startFrame !== 0 ||
     primaryVisuals.at(-1)?.endFrameExclusive !== toFrame(336.28)
   ) {
-    throw new Error('V9.1 主视觉控制区间必须从 0 秒连续覆盖到 336.28 秒。');
+    throw new Error('V9.1 主视觉控制区间必须从 0 秒覆盖到 336.28 秒。');
   }
+  const detectedSpeakerOnlyWindows: FrameRange[] = [];
   for (let index = 1; index < primaryVisuals.length; index++) {
     const previous = primaryVisuals[index - 1];
     const current = primaryVisuals[index];
-    if (previous.endFrameExclusive !== current.startFrame) {
-      throw new Error(`V9.1 主视觉 ${previous.id} → ${current.id} 未连续衔接。`);
+    if (previous.endFrameExclusive > current.startFrame) {
+      throw new Error(`V9.1 主视觉 ${previous.id} → ${current.id} 发生重叠。`);
     }
+    if (previous.endFrameExclusive < current.startFrame) {
+      detectedSpeakerOnlyWindows.push({
+        startFrame: previous.endFrameExclusive,
+        endFrameExclusive: current.startFrame,
+      });
+    }
+  }
+  const declaredSpeakerOnlyWindows = plan.speakerOnlyWindows.map((window) => ({
+    startFrame: toFrame(window.startSeconds),
+    endFrameExclusive: toFrame(window.endSeconds),
+  }));
+  if (
+    JSON.stringify(detectedSpeakerOnlyWindows) !==
+    JSON.stringify(declaredSpeakerOnlyWindows)
+  ) {
+    throw new Error('V9.1 主视觉空窗必须精确绑定到已声明的真人留白窗口。');
   }
 
   const cueLayerIds = new Set<string>();
@@ -479,9 +527,9 @@ const config: V72ProductionConfig = {
 
 const PaperEditorialScene: React.FC<{clip: PaperClipPlan}> = ({clip}) => {
   const frame = useCurrentFrame();
-  const {fps: compositionFps, durationInFrames: sceneFrames} = useVideoConfig();
+  const sceneFrames = toFrame(clip.durationSeconds);
   const fadeFrames = Math.min(
-    Math.round(0.25 * compositionFps),
+    plan.timingRuntime.paperFadeFrames,
     Math.max(2, Math.floor(sceneFrames / 5)),
   );
   const opacity = Math.min(
@@ -712,7 +760,11 @@ const renderCustomScene = (scene: V72CustomScene) => {
     return <PaperEditorialScene clip={scene.data as unknown as PaperClipPlan} />;
   }
   if (scene.customKey === 'v8-semantic') {
-    return <SemanticScene scene={scene.data as unknown as SemanticLayerPlan} />;
+    return (
+      <Sequence from={-plan.timingRuntime.semanticPrerollFrames}>
+        <SemanticScene scene={scene.data as unknown as SemanticLayerPlan} />
+      </Sequence>
+    );
   }
   if (scene.customKey === 'shotcraft') {
     return <ShotcraftScene effect={scene.data as unknown as ShotcraftEffectPlan} />;

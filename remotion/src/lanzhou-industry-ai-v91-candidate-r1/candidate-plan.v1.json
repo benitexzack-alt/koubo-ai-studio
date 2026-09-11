@@ -1,20 +1,36 @@
 {
   "schemaVersion": "lanzhou-industry-ai-v91-candidate/v1",
-  "revisionId": "20260911-lanzhou-industry-ai-v91-v8-candidate-r1",
+  "revisionId": "20260911-lanzhou-industry-ai-v91-v8-candidate-animation-r2",
   "status": "candidate-preview-required",
   "formalAllowed": false,
   "controlSources": {
     "visualPlan": {
       "path": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/visual-plan.v1.json",
-      "sha256": "9b4aef9235ff997955a6197e18e5f669b35da439ada26f062f20e4a9e1e9cb52"
+      "sha256": "56840edbbd4fff3f45093d1cec93dec3d29c882330e5251e9ceedecb1e4938df"
     },
     "sfxCues": {
       "path": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/sfx-cues.v1.json",
-      "sha256": "9c970216595d427ba30df7f6e5ea8d0e3feb0e96e5f796a1d919658111641a33"
+      "sha256": "4c769a930278b7411bfb1faab64ea12c2c3a03d564b6c550b41b071be94e3ce6"
     },
     "shotcraftCandidate": {
       "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/shotcraft/candidate-plan.v1.json",
       "sha256": "97b7f054c719e93f8266fc3fe816692512812ac261cea5be79e99c123703b8ff"
+    },
+    "timingRebind": {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/timing-rebind-user-direction.v1.json",
+      "sha256": "7cf334481f7a12e9d4bb71d8ab1682c9e187ab0923ee96f948f0acb58d0fe59a"
+    },
+    "controlBuilder": {
+      "path": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/build-v8-control-assets.v1.mjs",
+      "sha256": "3c182dae868e2c08032f1cfb8852e074fda8efdb68635a6d842bce0fda18bb26"
+    },
+    "runtimeBuilder": {
+      "path": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/build-remotion-candidate-plan.v1.mjs",
+      "sha256": "cb41c128a5426fbc3c4f0ffbe436a4df2fb33a89d7a9d42a82b1bffa81dd95c2"
+    },
+    "semanticStageSnapshot": {
+      "path": "remotion/src/lanzhou-industry-ai-v91-candidate-r1/V8SemanticStageSnapshot.r2.tsx",
+      "sha256": "9687886275befd7649afd3a06b10bcf409aaeb4ea5217c3fa396a72c2c660be4"
     }
   },
   "controlCounts": {
@@ -54,9 +70,9 @@
       "id": "v91-005-p01-b04",
       "beatId": "B04",
       "asset": "P01.mp4",
-      "startSeconds": 40,
+      "startSeconds": 32.708,
       "durationSeconds": 7.292,
-      "controlEndSeconds": 47.292,
+      "controlEndSeconds": 40,
       "muteAssetAudio": true,
       "keepCanonicalVoice": true
     },
@@ -64,9 +80,9 @@
       "id": "v91-009-p02-b07",
       "beatId": "B07",
       "asset": "P02.mp4",
-      "startSeconds": 85.6,
+      "startSeconds": 77.6,
       "durationSeconds": 8,
-      "controlEndSeconds": 93.6,
+      "controlEndSeconds": 85.6,
       "muteAssetAudio": true,
       "keepCanonicalVoice": true
     },
@@ -74,9 +90,9 @@
       "id": "v91-013-p03-b10",
       "beatId": "B10",
       "asset": "P03.mp4",
-      "startSeconds": 136.7,
+      "startSeconds": 130.116,
       "durationSeconds": 6.584,
-      "controlEndSeconds": 143.284,
+      "controlEndSeconds": 136.7,
       "muteAssetAudio": true,
       "keepCanonicalVoice": true
     },
@@ -84,9 +100,9 @@
       "id": "v91-015-p04-b11",
       "beatId": "B11",
       "asset": "P04.mp4",
-      "startSeconds": 147.7,
+      "startSeconds": 141.116,
       "durationSeconds": 6.584,
-      "controlEndSeconds": 154.284,
+      "controlEndSeconds": 147.7,
       "muteAssetAudio": true,
       "keepCanonicalVoice": true
     },
@@ -94,9 +110,9 @@
       "id": "v91-020-p05-b15",
       "beatId": "B15",
       "asset": "P05.mp4",
-      "startSeconds": 217.7,
+      "startSeconds": 211.116,
       "durationSeconds": 6.584,
-      "controlEndSeconds": 224.284,
+      "controlEndSeconds": 217.7,
       "muteAssetAudio": true,
       "keepCanonicalVoice": true
     },
@@ -104,9 +120,9 @@
       "id": "v91-022-p06-b17",
       "beatId": "B17",
       "asset": "P06.mp4",
-      "startSeconds": 244.7,
+      "startSeconds": 238.116,
       "durationSeconds": 6.584,
-      "controlEndSeconds": 251.284,
+      "controlEndSeconds": 244.7,
       "muteAssetAudio": true,
       "keepCanonicalVoice": true
     }
@@ -158,7 +174,7 @@
       "id": "v91-004-b04-experience",
       "beatId": "B04",
       "startSeconds": 24.5,
-      "endSeconds": 40,
+      "endSeconds": 32.708,
       "component": "process",
       "controlComponent": "process",
       "semanticFamily": "experience-process",
@@ -174,7 +190,7 @@
     {
       "id": "v91-006-b05-generic-copy",
       "beatId": "B05",
-      "startSeconds": 47.292,
+      "startSeconds": 40,
       "endSeconds": 52.1,
       "component": "hero-definition",
       "controlComponent": "definition",
@@ -205,7 +221,7 @@
       "id": "v91-008-b07-organize",
       "beatId": "B07",
       "startSeconds": 66,
-      "endSeconds": 85.6,
+      "endSeconds": 77.6,
       "component": "process",
       "controlComponent": "process",
       "semanticFamily": "four-step-process",
@@ -222,7 +238,7 @@
     {
       "id": "v91-010-b08-findable",
       "beatId": "B08",
-      "startSeconds": 93.6,
+      "startSeconds": 85.6,
       "endSeconds": 97.9,
       "component": "hero-definition",
       "controlComponent": "definition",
@@ -253,7 +269,7 @@
       "id": "v91-012-b10-service-chance",
       "beatId": "B10",
       "startSeconds": 114,
-      "endSeconds": 136.7,
+      "endSeconds": 130.116,
       "component": "comparison",
       "controlComponent": "comparison",
       "semanticFamily": "service-boundary",
@@ -265,8 +281,8 @@
     {
       "id": "v91-014-b11-remote-gap",
       "beatId": "B11",
-      "startSeconds": 143.284,
-      "endSeconds": 147.7,
+      "startSeconds": 136.7,
+      "endSeconds": 141.116,
       "component": "hero-definition",
       "controlComponent": "definition",
       "semanticFamily": "capability-gate",
@@ -278,7 +294,7 @@
     {
       "id": "v91-016-b12-remote-real",
       "beatId": "B12",
-      "startSeconds": 154.284,
+      "startSeconds": 147.7,
       "endSeconds": 165,
       "component": "comparison",
       "controlComponent": "comparison",
@@ -322,7 +338,7 @@
       "id": "v91-019-b15-cost",
       "beatId": "B15",
       "startSeconds": 199,
-      "endSeconds": 217.7,
+      "endSeconds": 211.116,
       "component": "status-stack",
       "controlComponent": "evidence",
       "semanticFamily": "cost-ledger",
@@ -338,8 +354,8 @@
     {
       "id": "v91-021-b17-scope",
       "beatId": "B17",
-      "startSeconds": 224.284,
-      "endSeconds": 244.7,
+      "startSeconds": 222,
+      "endSeconds": 238.116,
       "component": "rights-rail",
       "controlComponent": "checklist",
       "semanticFamily": "scope-checklist",
@@ -355,7 +371,7 @@
     {
       "id": "v91-023-b18-more-work",
       "beatId": "B18",
-      "startSeconds": 251.284,
+      "startSeconds": 244.7,
       "endSeconds": 262,
       "component": "comparison",
       "controlComponent": "comparison",
@@ -534,7 +550,7 @@
       "controlLayerId": "v91-005-p01-b04",
       "visualEventId": "v91-005-p01-b04-event",
       "role": "media",
-      "time": 40,
+      "time": 32.708,
       "src": "sfx/v3-media-whoosh-a.wav",
       "volume": 0.3
     },
@@ -543,7 +559,7 @@
       "controlLayerId": "v91-006-b05-generic-copy",
       "visualEventId": "v91-006-b05-generic-copy-event",
       "role": "comparison",
-      "time": 47.292,
+      "time": 40,
       "src": "sfx/v2-section-sweep.wav",
       "volume": 0.26
     },
@@ -570,7 +586,7 @@
       "controlLayerId": "v91-009-p02-b07",
       "visualEventId": "v91-009-p02-b07-event",
       "role": "media",
-      "time": 85.6,
+      "time": 77.6,
       "src": "sfx/v2-keyword-select.wav",
       "volume": 0.3
     },
@@ -579,7 +595,7 @@
       "controlLayerId": "v91-010-b08-findable",
       "visualEventId": "v91-010-b08-findable-event",
       "role": "line",
-      "time": 93.6,
+      "time": 85.6,
       "src": "sfx/v3-line-connect-a.wav",
       "volume": 0.26
     },
@@ -606,7 +622,7 @@
       "controlLayerId": "v91-013-p03-b10",
       "visualEventId": "v91-013-p03-b10-event",
       "role": "media",
-      "time": 136.7,
+      "time": 130.116,
       "src": "sfx/v3-media-whoosh-b.wav",
       "volume": 0.3
     },
@@ -615,7 +631,7 @@
       "controlLayerId": "v91-014-b11-remote-gap",
       "visualEventId": "v91-014-b11-remote-gap-event",
       "role": "number",
-      "time": 143.284,
+      "time": 136.7,
       "src": "sfx/v2-number-affirmation.wav",
       "volume": 0.26
     },
@@ -624,7 +640,7 @@
       "controlLayerId": "v91-015-p04-b11",
       "visualEventId": "v91-015-p04-b11-event",
       "role": "media",
-      "time": 147.7,
+      "time": 141.116,
       "src": "sfx/v1-section-air.wav",
       "volume": 0.3
     },
@@ -633,7 +649,7 @@
       "controlLayerId": "v91-016-b12-remote-real",
       "visualEventId": "v91-016-b12-remote-real-event",
       "role": "list",
-      "time": 154.284,
+      "time": 147.7,
       "src": "sfx/v3-list-tick-b.wav",
       "volume": 0.26
     },
@@ -669,7 +685,7 @@
       "controlLayerId": "v91-020-p05-b15",
       "visualEventId": "v91-020-p05-b15-event",
       "role": "media",
-      "time": 217.7,
+      "time": 211.116,
       "src": "sfx/v2-ui-click.wav",
       "volume": 0.3
     },
@@ -678,7 +694,7 @@
       "controlLayerId": "v91-021-b17-scope",
       "visualEventId": "v91-021-b17-scope-event",
       "role": "chapter",
-      "time": 224.284,
+      "time": 222,
       "src": "sfx/remotion-page-turn.wav",
       "volume": 0.3
     },
@@ -687,7 +703,7 @@
       "controlLayerId": "v91-022-p06-b17",
       "visualEventId": "v91-022-p06-b17-event",
       "role": "media",
-      "time": 244.7,
+      "time": 238.116,
       "src": "sfx/remotion-ui-switch.wav",
       "volume": 0.3
     },
@@ -696,7 +712,7 @@
       "controlLayerId": "v91-023-b18-more-work",
       "visualEventId": "v91-023-b18-more-work-event",
       "role": "line",
-      "time": 251.284,
+      "time": 244.7,
       "src": "sfx/v3-evidence-paper-a.wav",
       "volume": 0.26
     },
@@ -735,6 +751,19 @@
       "time": 311,
       "src": "sfx/v3-cta-confirm-a.wav",
       "volume": 0.3
+    }
+  ],
+  "timingRuntime": {
+    "revisionId": "20260911-animation-rebind-r2",
+    "semanticPrerollFrames": 6,
+    "paperFadeFrames": 3
+  },
+  "speakerOnlyWindows": [
+    {
+      "id": "speaker-only-b16-question",
+      "startSeconds": 217.7,
+      "endSeconds": 222,
+      "reason": "保留“客户自己会用AI后还需要你做什么”的真人提问，不提前叠加下一段收费边界卡。"
     }
   ]
 }

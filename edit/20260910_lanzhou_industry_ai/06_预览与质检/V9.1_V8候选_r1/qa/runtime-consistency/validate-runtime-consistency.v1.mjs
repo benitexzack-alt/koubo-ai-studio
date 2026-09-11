@@ -44,10 +44,18 @@ const files = Object.freeze({
     'edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/visual-plan.v1.json',
   sfxCueSheet:
     'edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/sfx-cues.v1.json',
+  controlBuilder:
+    'edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/build-v8-control-assets.v1.mjs',
+  runtimeBuilder:
+    'edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/build-remotion-candidate-plan.v1.mjs',
+  semanticStageSnapshot:
+    'remotion/src/lanzhou-industry-ai-v91-candidate-r1/V8SemanticStageSnapshot.r2.tsx',
   postshootPlan:
     'edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-plan.v1.json',
   shotcraftCandidate:
     'edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/shotcraft/candidate-plan.v1.json',
+  timingRebind:
+    'edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/timing-rebind-user-direction.v1.json',
   bilingualCandidate:
     'edit/20260910_lanzhou_industry_ai/05_实录与字幕/actual-spoken.bilingual.candidate.v1.json',
   publicCaptions:
@@ -98,8 +106,12 @@ const documents = {
   activeProductionProfile: readBoundJson(files.activeProductionProfile),
   visualPlan: readBoundJson(files.visualPlan),
   sfxCueSheet: readBoundJson(files.sfxCueSheet),
+  controlBuilder: readBoundText(files.controlBuilder),
+  runtimeBuilder: readBoundText(files.runtimeBuilder),
+  semanticStageSnapshot: readBoundText(files.semanticStageSnapshot),
   postshootPlan: readBoundJson(files.postshootPlan),
   shotcraftCandidate: readBoundJson(files.shotcraftCandidate),
+  timingRebind: readBoundJson(files.timingRebind),
   bilingualCandidate: readBoundJson(files.bilingualCandidate),
   publicCaptions: readBoundJson(files.publicCaptions),
   runtimeCandidatePlan: readBoundJson(files.runtimeCandidatePlan),
@@ -121,6 +133,7 @@ const visualPlan = documents.visualPlan.body;
 const sfxCueSheet = documents.sfxCueSheet.body;
 const postshootPlan = documents.postshootPlan.body;
 const shotcraftCandidate = documents.shotcraftCandidate.body;
+const timingRebind = documents.timingRebind.body;
 const bilingualCandidate = documents.bilingualCandidate.body;
 const publicCaptions = documents.publicCaptions.body;
 const runtimePlan = documents.runtimeCandidatePlan.body;
@@ -284,12 +297,12 @@ addCheck(
 );
 
 const expectedPaper = [
-  {id: 'v91-005-p01-b04', beatId: 'B04', asset: 'P01.mp4', start: 40},
-  {id: 'v91-009-p02-b07', beatId: 'B07', asset: 'P02.mp4', start: 85.6},
-  {id: 'v91-013-p03-b10', beatId: 'B10', asset: 'P03.mp4', start: 136.7},
-  {id: 'v91-015-p04-b11', beatId: 'B11', asset: 'P04.mp4', start: 147.7},
-  {id: 'v91-020-p05-b15', beatId: 'B15', asset: 'P05.mp4', start: 217.7},
-  {id: 'v91-022-p06-b17', beatId: 'B17', asset: 'P06.mp4', start: 244.7},
+  {id: 'v91-005-p01-b04', beatId: 'B04', asset: 'P01.mp4', start: 32.708},
+  {id: 'v91-009-p02-b07', beatId: 'B07', asset: 'P02.mp4', start: 77.6},
+  {id: 'v91-013-p03-b10', beatId: 'B10', asset: 'P03.mp4', start: 130.116},
+  {id: 'v91-015-p04-b11', beatId: 'B11', asset: 'P04.mp4', start: 141.116},
+  {id: 'v91-020-p05-b15', beatId: 'B15', asset: 'P05.mp4', start: 211.116},
+  {id: 'v91-022-p06-b17', beatId: 'B17', asset: 'P06.mp4', start: 238.116},
 ];
 const paperEntryActual = runtimePaperClips.map((clip) => ({
   id: clip.id,
@@ -316,6 +329,112 @@ addCheck(
     scriptRole: postshootPlan.scriptRole,
   },
   [files.postshootPlan, files.visualPlan, files.runtimeCandidatePlan],
+);
+
+const runtimePrimaryWindows = [
+  ...runtimeSemanticLayers.map((layer) => ({
+    id: layer.id,
+    startFrame: Math.round(layer.startSeconds * 30),
+    endFrameExclusive: Math.round(layer.endSeconds * 30),
+  })),
+  ...runtimePaperClips.map((clip) => ({
+    id: clip.id,
+    startFrame: Math.round(clip.startSeconds * 30),
+    endFrameExclusive:
+      Math.round(clip.startSeconds * 30) +
+      Math.round(clip.durationSeconds * 30),
+  })),
+].sort((left, right) => left.startFrame - right.startFrame);
+const runtimeOverlaps = [];
+const detectedSpeakerOnlyWindows = [];
+for (let index = 1; index < runtimePrimaryWindows.length; index += 1) {
+  const previous = runtimePrimaryWindows[index - 1];
+  const current = runtimePrimaryWindows[index];
+  if (previous.endFrameExclusive > current.startFrame) {
+    runtimeOverlaps.push({previous: previous.id, current: current.id});
+  }
+  if (previous.endFrameExclusive < current.startFrame) {
+    detectedSpeakerOnlyWindows.push({
+      startFrame: previous.endFrameExclusive,
+      endFrameExclusive: current.startFrame,
+    });
+  }
+}
+const declaredSpeakerOnlyWindows = (runtimePlan.speakerOnlyWindows ?? []).map(
+  (window) => ({
+    startFrame: Math.round(window.startSeconds * 30),
+    endFrameExclusive: Math.round(window.endSeconds * 30),
+  }),
+);
+const expectedTimingRebind = [
+  ['v91-005-p01-b04', 'P01.mp4', '9d58ce0965c77d119598229cbcb99a5129c76a9732c8324c59cf6f8fd1cac281', 40, 32.708, 7.292, 40],
+  ['v91-009-p02-b07', 'P02.mp4', 'd3f805e5fc6566d5fb98aec5858616937e5f2d6fc4574b301d5ab60d02b2fe0a', 85.6, 77.6, 8, 85.6],
+  ['v91-013-p03-b10', 'P03.mp4', '4daed9b32527ab222391a61032402b6b5e0e3f36b73fdb8dc5a2da87aa0f0dcb', 136.7, 130.116, 6.584, 136.7],
+  ['v91-015-p04-b11', 'P04.mp4', '40950736c1bf03630ec54709ae18a67dc126f2c033895e443782ed6af2a42c67', 147.7, 141.116, 6.584, 147.7],
+  ['v91-020-p05-b15', 'P05.mp4', 'd28458884dbcefc89f100a5f9d696f3293da1193d9d89f876a777d6d2d2fa6e6', 217.7, 211.116, 6.584, 217.7],
+  ['v91-022-p06-b17', 'P06.mp4', 'c26604d06cccd7298055adce69e2f1e68a4b8280e3c3260cc91c960ff4fe8428', 244.7, 238.116, 6.584, 244.7],
+].map(([id, asset, assetSha256, oldStartSeconds, newStartSeconds, durationSeconds, targetEndSeconds]) => ({
+  id,
+  asset,
+  assetSha256,
+  oldStartSeconds,
+  newStartSeconds,
+  durationSeconds,
+  targetEndSeconds,
+}));
+const timingRebindActual = (timingRebind.paperTiming ?? []).map((item) => {
+  const assetName = path.basename(item.asset ?? '');
+  const resolvedAsset = absolute(item.asset ?? '');
+  return {
+    id: item.id,
+    asset: assetName,
+    assetSha256: item.assetSha256,
+    oldStartSeconds: item.oldStartSeconds,
+    newStartSeconds: item.newStartSeconds,
+    durationSeconds: item.durationSeconds,
+    targetEndSeconds: item.targetEndSeconds,
+    actualAssetSha256: existsSync(resolvedAsset)
+      ? sha256(readFileSync(resolvedAsset))
+      : null,
+  };
+});
+const timingRebindComparable = timingRebindActual.map(
+  ({actualAssetSha256, ...item}) => item,
+);
+addCheck(
+  'animation-r2-windows-and-candidate-local-preroll',
+  runtimeOverlaps.length === 0 &&
+    sameJson(detectedSpeakerOnlyWindows, declaredSpeakerOnlyWindows) &&
+    sameJson(declaredSpeakerOnlyWindows, [
+      {startFrame: 6531, endFrameExclusive: 6660},
+    ]) &&
+    runtimePlan.timingRuntime?.revisionId ===
+      '20260911-animation-rebind-r2' &&
+    runtimePlan.timingRuntime?.semanticPrerollFrames === 6 &&
+    runtimePlan.timingRuntime?.paperFadeFrames === 3 &&
+    timingRebind.revisionId === '20260911-animation-rebind-r2' &&
+    sameJson(timingRebindComparable, expectedTimingRebind) &&
+    timingRebindActual.every(
+      (item) => item.actualAssetSha256 === item.assetSha256,
+    ) &&
+    timingRebind.changeScope?.unchanged?.includes(
+      '中英文同窗字幕正文与时间轴',
+    ),
+  {
+    overlaps: 0,
+    speakerOnlyWindows: [{startFrame: 6531, endFrameExclusive: 6660}],
+    semanticPrerollFrames: 6,
+    paperFadeFrames: 3,
+  },
+  {
+    overlaps: runtimeOverlaps,
+    detectedSpeakerOnlyWindows,
+    declaredSpeakerOnlyWindows,
+    timingRuntime: runtimePlan.timingRuntime ?? null,
+    timingRevision: timingRebind.revisionId ?? null,
+    timingRebind: timingRebindActual,
+  },
+  [files.timingRebind, files.visualPlan, files.runtimeCandidatePlan],
 );
 
 const controlCueById = new Map(
@@ -562,12 +681,22 @@ const runtimeStaticRequirements = [
     ),
   },
   {
+    id: 'imports-candidate-local-v8-semantic-snapshot',
+    passed: compositionSource.includes(
+      "from './V8SemanticStageSnapshot.r2'",
+    ),
+  },
+  {
     id: 'builds-paper-scenes-from-plan',
     passed: compositionSource.includes('...plan.paperClips.map<V72CustomScene>'),
   },
   {
     id: 'builds-semantic-scenes-from-plan',
-    passed: compositionSource.includes('...semanticScenes.map<V72CustomScene>'),
+    passed:
+      compositionSource.includes('...semanticScenes.map<V72CustomScene>') &&
+      compositionSource.includes(
+        '<Sequence from={-plan.timingRuntime.semanticPrerollFrames}>',
+      ),
   },
   {
     id: 'builds-shotcraft-scenes-from-plan',
@@ -588,7 +717,8 @@ const runtimeStaticRequirements = [
     id: 'paper-clips-muted',
     passed:
       compositionSource.includes('src={staticFile(clip.asset)}') &&
-      compositionSource.includes('muted'),
+      compositionSource.includes('muted') &&
+      compositionSource.includes('plan.timingRuntime.paperFadeFrames'),
   },
   {
     id: 'linecarry-render-branch-present',
@@ -640,6 +770,7 @@ addCheck(
   },
   [
     files.runtimeComposition,
+    files.semanticStageSnapshot,
     files.runtimeEntry,
     files.productionShell,
     files.bilingualOverlay,
@@ -665,6 +796,30 @@ const lockedSourceChecks = [
     expectedPath: files.shotcraftCandidate,
     actual: lockedSourceBindings.shotcraftCandidate,
     sha256: documents.shotcraftCandidate.binding.sha256,
+  },
+  {
+    id: 'timingRebind',
+    expectedPath: files.timingRebind,
+    actual: lockedSourceBindings.timingRebind,
+    sha256: documents.timingRebind.binding.sha256,
+  },
+  {
+    id: 'controlBuilder',
+    expectedPath: files.controlBuilder,
+    actual: lockedSourceBindings.controlBuilder,
+    sha256: documents.controlBuilder.binding.sha256,
+  },
+  {
+    id: 'runtimeBuilder',
+    expectedPath: files.runtimeBuilder,
+    actual: lockedSourceBindings.runtimeBuilder,
+    sha256: documents.runtimeBuilder.binding.sha256,
+  },
+  {
+    id: 'semanticStageSnapshot',
+    expectedPath: files.semanticStageSnapshot,
+    actual: lockedSourceBindings.semanticStageSnapshot,
+    sha256: documents.semanticStageSnapshot.binding.sha256,
   },
 ].map((item) => ({
   id: item.id,

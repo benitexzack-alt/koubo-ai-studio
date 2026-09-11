@@ -3,7 +3,7 @@
   "jobId": "20260910-lanzhou-industry-ai-v91-v8-r1",
   "videoId": "LANZHOU_INDUSTRY_AI_20260910_V91_R1",
   "title": "留在兰州做企业AI：把熟悉行业做成真实服务",
-  "purpose": "完整保留本人口播，按V9.1导演的实录重绑时点使用六条纸艺成品，再用V8人物主画面、同窗中英文字幕和可感知音效生成候选对照预览。",
+  "purpose": "完整保留本人口播，按2026-09-11用户反馈把六条V9.1纸艺动画前置到对应实录整句内，并用V8人物主画面、同窗中英文字幕和可感知音效生成完整候选。",
   "productionState": "ready-for-production",
   "productionProfile": {
     "id": "v8-semantic-continuity-sfx",
@@ -11,7 +11,7 @@
   },
   "contentApproval": {
     "userScriptApproved": true,
-    "evidence": "用户已提供原片和六条成品视频，本轮明确要求按V9.1、V8和双语字幕重新剪辑；仅授权本地候选预览，不是正式成片验收。"
+    "evidence": "用户已提供原片和六条成品视频，并在观看V9.1/V8候选后明确反馈其余部分没有问题，只要求修正所有动画偏迟和衔接问题后导出完整成片；新时序仍需按正式链路留痕。"
   },
   "finalReview": {
     "fullWatchConfirmed": false,
@@ -23,7 +23,7 @@
     "userPreviewApproved": false,
     "userPreviewApprovedAt": null,
     "userPreviewApprovalEvidence": null,
-    "revisionReason": "上一版FFmpeg直接叠片绕开了正式链路；本修订恢复V9.1导演、V8生产、同窗双语字幕和全量Shotcraft匹配后的Remotion候选对照预览。",
+    "revisionReason": "用户正常观看候选后确认其余部分无问题，但指出动画整体偏迟；本修订把六条纸艺完整动作收束到对应实录句尾，并在本候选内把V8语义动画预卷6帧。",
     "primaryVisualEventCount": 27,
     "sfxCoveragePercent": 100,
     "previewAuditionRoles": [
@@ -47,6 +47,7 @@
     "captions": "remotion/public-lanzhou-industry-ai-v91-r1/captions.json",
     "bilingualCaptions": "remotion/public-lanzhou-industry-ai-v91-r1/captions.json",
     "sfxCueSheet": "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/sfx-cues.v1.json",
+    "timingRebind": "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/timing-rebind-user-direction.v1.json",
     "sfxManifest": "assets/sfx/koubo-sfx-v8/manifest.json",
     "fingerprintPaths": [
       "edit/20260910_lanzhou_industry_ai/01_原始口播/copy_B71E2E7B-29AC-4653-AC9C-9D4A3C3D3AB6.MOV",
@@ -63,6 +64,8 @@
       "edit/20260910_lanzhou_industry_ai/05_实录与字幕/actual-spoken.bilingual.candidate.v1.json",
       "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/visual-plan.v1.json",
       "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/sfx-cues.v1.json",
+      "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/build-v8-control-assets.v1.mjs",
+      "edit/20260910_lanzhou_industry_ai/00_工程控制/v91-v8-candidate-r1/build-remotion-candidate-plan.v1.mjs",
       "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-request.v1.json",
       "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-route-lock.v1.json",
       "edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/director-plan.v1.json",
@@ -70,6 +73,7 @@
       "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-request.v1.json",
       "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-plan.v1.json",
       "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-validation-receipt.v1.json",
+      "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/timing-rebind-user-direction.v1.json",
       "remotion/src/lanzhou-industry-ai-v91-candidate-r1",
       "workflow/active-director-profile.v1.json",
       "workflow/active-production-profile.v1.json",
@@ -191,7 +195,7 @@
   "productionGate": {
     "schema": "director-production-entry-binding/v2",
     "state": "candidate-preview-required",
-    "revisionId": "20260911-lanzhou-industry-ai-v91-v8-candidate-r1",
+    "revisionId": "20260911-lanzhou-industry-ai-v91-v8-candidate-animation-r2",
     "formalEnabled": false,
     "userPreviewApproved": false,
     "directorContract": null,

@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "koubo-director-timing-rebind/v1",
+  "revisionId": "20260911-animation-rebind-r2",
+  "createdAt": "2026-09-11T22:49:23+08:00",
+  "phase": "post-shoot",
+  "spokenAuthority": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "userDirection": "所有的动画都有点迟，没有衔接上。再检查一下，其他都没有问题。然后把动画放到适当的位置，导出完整的成片就行了。",
+  "changeScope": {
+    "allowed": [
+      "六条纸艺动画按对应实录整句重新定位",
+      "本候选片V8语义组件预卷6帧",
+      "纸艺镜头外层淡入缩短到3帧",
+      "所有绑定音效跟随新视觉入点"
+    ],
+    "unchanged": [
+      "R01完整真人口播和原声音轨",
+      "中英文同窗字幕正文与时间轴",
+      "六条纸艺视频内容、速度和素材第0帧",
+      "V9.1纸艺视觉风格",
+      "B21 LineCarry 303至311秒窗口"
+    ]
+  },
+  "paperTiming": [
+    {
+      "id": "v91-005-p01-b04",
+      "asset": "remotion/public-lanzhou-industry-ai-v91-r1/P01.mp4",
+      "assetSha256": "9d58ce0965c77d119598229cbcb99a5129c76a9732c8324c59cf6f8fd1cac281",
+      "oldStartSeconds": 40,
+      "newStartSeconds": 32.708,
+      "durationSeconds": 7.292,
+      "targetEndSeconds": 40
+    },
+    {
+      "id": "v91-009-p02-b07",
+      "asset": "remotion/public-lanzhou-industry-ai-v91-r1/P02.mp4",
+      "assetSha256": "d3f805e5fc6566d5fb98aec5858616937e5f2d6fc4574b301d5ab60d02b2fe0a",
+      "oldStartSeconds": 85.6,
+      "newStartSeconds": 77.6,
+      "durationSeconds": 8,
+      "targetEndSeconds": 85.6
+    },
+    {
+      "id": "v91-013-p03-b10",
+      "asset": "remotion/public-lanzhou-industry-ai-v91-r1/P03.mp4",
+      "assetSha256": "4daed9b32527ab222391a61032402b6b5e0e3f36b73fdb8dc5a2da87aa0f0dcb",
+      "oldStartSeconds": 136.7,
+      "newStartSeconds": 130.116,
+      "durationSeconds": 6.584,
+      "targetEndSeconds": 136.7
+    },
+    {
+      "id": "v91-015-p04-b11",
+      "asset": "remotion/public-lanzhou-industry-ai-v91-r1/P04.mp4",
+      "assetSha256": "40950736c1bf03630ec54709ae18a67dc126f2c033895e443782ed6af2a42c67",
+      "oldStartSeconds": 147.7,
+      "newStartSeconds": 141.116,
+      "durationSeconds": 6.584,
+      "targetEndSeconds": 147.7
+    },
+    {
+      "id": "v91-020-p05-b15",
+      "asset": "remotion/public-lanzhou-industry-ai-v91-r1/P05.mp4",
+      "assetSha256": "d28458884dbcefc89f100a5f9d696f3293da1193d9d89f876a777d6d2d2fa6e6",
+      "oldStartSeconds": 217.7,
+      "newStartSeconds": 211.116,
+      "durationSeconds": 6.584,
+      "targetEndSeconds": 217.7
+    },
+    {
+      "id": "v91-022-p06-b17",
+      "asset": "remotion/public-lanzhou-industry-ai-v91-r1/P06.mp4",
+      "assetSha256": "c26604d06cccd7298055adce69e2f1e68a4b8280e3c3260cc91c960ff4fe8428",
+      "oldStartSeconds": 244.7,
+      "newStartSeconds": 238.116,
+      "durationSeconds": 6.584,
+      "targetEndSeconds": 244.7
+    }
+  ],
+  "timingRationale": "原候选把六条纸艺片接在对应语义段结束之后，完整动作因此落入下一段口播。新时间让每条完整动作在对应整句结论处收束，并恢复后续V8信息层到原实录段落边界。",
+  "semanticBoundary": {
+    "policy": "sentence-level-navigation",
+    "strictPerNodeLeadLimitMs": 300,
+    "strictPerNodeStatus": "scoped-exception-pending-updated-preview-acceptance",
+    "reason": "六条现成素材的中文固定字牌从第0帧烘焙可读；整段前置可修复动作迟到，但部分固定字牌会早于逐词锚点超过300毫秒。未重绘、加速或伪造逐词显隐。",
+    "requiresUpdatedFullViewing": true
+  },
+  "exportAuthority": {
+    "userRequestedFullExport": true,
+    "doesNotFabricateIndependentSignature": true,
+    "doesNotOverrideProductionTrustGate": true
+  }
+}
