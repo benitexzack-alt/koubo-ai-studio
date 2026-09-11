@@ -1,0 +1,90 @@
+{
+  "createdAt": "2026-09-11T01:56:28.691Z",
+  "nativeCalls": [
+    {
+      "sceneId": "P05",
+      "startedAt": "2026-09-11T00:36:21.361Z",
+      "finishedAt": "2026-09-11T00:36:52.084Z",
+      "returnedImagePath": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-95253aee-8c6f-473c-912d-d44e752df961.png",
+      "storedImagePath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/native-edits/P05.native-edit.png",
+      "executionPromptPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/first-frame-qa/P05.execution-prompt.txt",
+      "outcome": "partial-structure-improvement-not-final-qa",
+      "model": "image_gen",
+      "calls": 1,
+      "storedImage": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/native-edits/P05.native-edit.png",
+        "sha256": "17c798d2d7664645a136b7f0a1356b5271f2f3a5969362282f872aca0950450f"
+      },
+      "executionPrompt": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/first-frame-qa/P05.execution-prompt.txt",
+        "sha256": "f611bef83a372f61fb160754558c1cf32c9eaeacf1b667ef85991669f1727c55"
+      }
+    },
+    {
+      "sceneId": "P06",
+      "startedAt": "2026-09-11T00:36:21.372Z",
+      "finishedAt": "2026-09-11T00:37:24.175Z",
+      "returnedImagePath": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-6710ff0e-585e-4f97-a525-ffe780a2158e.png",
+      "storedImagePath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/native-edits/P06.native-edit.png",
+      "executionPromptPath": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/first-frame-qa/P06.execution-prompt.txt",
+      "outcome": "partial-structure-improvement-not-final-qa",
+      "model": "image_gen",
+      "calls": 1,
+      "storedImage": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/native-edits/P06.native-edit.png",
+        "sha256": "9b46996b46123bfb3a86e2d86dd934d585a1a36fbe06b02e6deee9cffdfefc7e"
+      },
+      "executionPrompt": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/first-frame-qa/P06.execution-prompt.txt",
+        "sha256": "182cf47461f8b86c226d131019472d480cee013c612cde100301824be20fd5da"
+      }
+    }
+  ],
+  "maximumConcurrency": 2,
+  "localExecutables": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/execution-tools/repair-structures-local.v1.mjs",
+      "sha256": "2c3b0c754390a4115d7caaa80f47483ea9253e806ae0d17c84b6b2f4e622f640"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/execution-tools/polish-P06-local.v1.mjs",
+      "sha256": "a39e1f2d754395bc74b670abe197b8aa688e62be7073b094b8b996c3452a2975"
+    }
+  ],
+  "failedIntermediateEvidencePreserved": true,
+  "localFailures": [
+    {
+      "artifact": "local-structure-r1",
+      "cause": "透视四边形外的虚拟像素未裁切，P06出现大灰区；用目标四边形alpha裁剪修正"
+    },
+    {
+      "artifact": "local-structure-polish-P06-r1",
+      "cause": "透明掩码关闭alpha后CopyOpacity语义错误，扩大背景覆盖；改用灰度黑白掩码"
+    },
+    {
+      "artifact": "local-structure-polish-P06-r2",
+      "cause": "全局图层编号硬编码发生偏移，误混P05图层与旧P06硬边背景；改为读取P06结构回执的真实layerPaths"
+    },
+    {
+      "artifact": "local-structure-polish-P06-r3",
+      "cause": "羽化边缘落在旧机构轮廓内产生重影；扩大覆盖框到旧轮廓外并恢复原固定牌"
+    }
+  ],
+  "finalImages": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/local-structure-revision-r2/first-frames/P05_B15_first-frame.png",
+      "sha256": "3ed67f8def05e36517765c88787318d685ce01f088de74b60313326d8f0b8f1f"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/local-structure-polish-P06-r4/P06_B17_first-frame.png",
+      "sha256": "37c98abe71b70e5223cee8684ab7b5ed23e2cca8f61e10a56f35667a5a59ab6e"
+    }
+  ],
+  "policy": {
+    "generatedChinese": false,
+    "userAcceptance": "pending",
+    "dynamicAccepted": false,
+    "upstreamContractChanged": false,
+    "automaticPaidRetry": false
+  }
+}
