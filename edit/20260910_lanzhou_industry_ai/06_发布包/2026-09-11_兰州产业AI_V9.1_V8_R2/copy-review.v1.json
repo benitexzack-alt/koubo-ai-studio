@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "task_id": "20260910_lanzhou_industry_ai_v91_v8_r2",
+  "status": "passed",
+  "reviewed_at": "2026-09-11T15:55:30Z",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/06_发布包/2026-09-11_兰州产业AI_V9.1_V8_R2/发布包装.v1.md",
+    "sha256": "ac0be0a9412831020a575b2cb821c084e4c2aedbf55773ab0128de46a20fb814"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "发布文案直接从兰州企业AI的取舍进入，用老板问题、归类、核对、作品和交付等动作承接判断；没有保留写作意图、审稿口径、模糊来源或机械总结。"
+  },
+  "retention_review": {
+    "risk_node_count": 1,
+    "nodes": [
+      {
+        "original": "备选二：人在兰州，AI 服务能不能接外地的单？",
+        "risk_level": "medium",
+        "reason": "问题有冲突感，但若单看标题，可能被误读为视频会给出已验证的外地接单方法；实录只说可以尝试介绍服务，订单仍依赖作品和服务。",
+        "candidates": {
+          "conservative": "人在兰州，AI 服务怎么尝试走向外地？",
+          "direct": "人在兰州，AI 服务能不能接外地的单？",
+          "vivid": "留在兰州，你的服务能做到外地吗？"
+        },
+        "fact_difference": "三个候选都保留条件性和探索性，没有声称已有外地订单或稳定方法。",
+        "recommendation": "发布时优先使用主标题；如选该方向，优先用保守版，能更准确对应实录中的‘试着介绍’。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "发布包装未复述实录中无可验证依据的‘最后一次创业风口’强判断；视频实录本身没有被改动。"
+    ],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": [
+      "主标题、两个备选标题、发布文案、话题和封面主文案仍需用户最终确认。",
+      "备选二的外地接单问句存在误读风险，如选用建议改用保守版。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 9,
+    "personal_voice": 9,
+    "fact_fidelity": 10
+  }
+}

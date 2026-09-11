@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "canonicalSource": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "captionTextPolicy": "spoken-verbatim",
+  "englishTranslationSource": "canonical-spoken-chinese",
+  "source": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/01_原始口播/copy_B71E2E7B-29AC-4653-AC9C-9D4A3C3D3AB6.MOV",
+    "sha256": "f5469a24278c333c00b4517c853958954a09cce8772a86231197e1966647d98f",
+    "bytes": 533767223,
+    "durationSeconds": 336.366667
+  },
+  "canonical": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/spoken-timeline.candidate.v1.json",
+    "sha256": "be4a59f697cabd520c0219cef782cc7d779fdd129ab2c8633aad9e202ebeefa2",
+    "bytes": 97591
+  },
+  "bilingual": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/actual-spoken.bilingual.candidate.v1.json",
+    "sha256": "1e0401c5edd119581d38f8ee83f3bcba3aafcaa31fddd370ed51477a5e9a8914",
+    "bytes": 53970
+  },
+  "renderedCaptions": {
+    "path": "/Users/pc/Documents/口播/remotion/public-lanzhou-industry-ai-v91-r1/captions.json",
+    "sha256": "077418573896e651188dc53a692534e5572b918b74c05a5aec27299d11b0ad9e",
+    "bytes": 49243
+  },
+  "captionPages": 96,
+  "verification": {
+    "minimumGlobalPrecision": 0.97,
+    "minimumGlobalCoverage": 0.95,
+    "candidateCorrectionCount": 16,
+    "candidateCorrectionsHumanVerified": false,
+    "uncertaintyCount": 8,
+    "reviewRequiredPageCount": 61,
+    "review": {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/transcription-review.v1.json",
+      "sha256": "204753ed7298ffc39363500601505ae755aee23a32c4f6956e0f34ed40afe498",
+      "bytes": 9503
+    },
+    "candidateValidation": {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/05_实录与字幕/actual-spoken.bilingual.candidate.validation.v1.json",
+      "status": "bilingual-candidate-valid-needs-user-audio-review"
+    }
+  },
+  "compliance": {
+    "status": "needs-user-audio-review",
+    "candidateStructureValidated": true,
+    "strictGlobalSpokenValidatorPassed": false,
+    "formalAllowed": false,
+    "reason": "96页中有61页包含待听校段落；16项ASR修正与8项不确定项均尚未由用户逐项听辨。当前可作用户全片观看候选，不得写成实录人工听校已通过。",
+    "humanFullAudioReviewPerformedByAssistant": false,
+    "userAudioReviewConfirmed": false,
+    "humanFullWatchRequired": true
+  }
+}

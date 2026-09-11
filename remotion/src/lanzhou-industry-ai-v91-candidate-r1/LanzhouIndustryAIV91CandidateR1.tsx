@@ -798,12 +798,13 @@ const CandidateStatus: React.FC = () => (
 
 export const LanzhouIndustryAIV91CandidateR1: React.FC<{
   soundEnabled?: boolean;
-}> = ({soundEnabled = true}) => (
+  showCandidateStatus?: boolean;
+}> = ({soundEnabled = true, showCandidateStatus = true}) => (
   <V72ProductionShell
     config={config}
     soundEnabled={soundEnabled}
     renderCustomScene={renderCustomScene}
-    persistentOverlay={<CandidateStatus />}
+    persistentOverlay={showCandidateStatus ? <CandidateStatus /> : null}
   />
 );
 
@@ -813,4 +814,8 @@ export const LanzhouIndustryAIV91CandidateR1WithSfx: React.FC = () => (
 
 export const LanzhouIndustryAIV91CandidateR1NoSfx: React.FC = () => (
   <LanzhouIndustryAIV91CandidateR1 soundEnabled={false} />
+);
+
+export const LanzhouIndustryAIV91PublishR2WithSfx: React.FC = () => (
+  <LanzhouIndustryAIV91CandidateR1 soundEnabled showCandidateStatus={false} />
 );

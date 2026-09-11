@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "taskId": "20260910_lanzhou_industry_ai_v91_v8_r2",
+  "generatedAt": "2026-09-12T00:22:51+08:00",
+  "status": "passed-machine-qa-ready-for-user-review",
+  "authority": {
+    "exportAuthorizedByUser": true,
+    "authorizationMessage": "导出正片，整理完整发布包",
+    "exportRoute": "one-time-bare-remotion-nonrelease-candidate",
+    "formalReleaseRegistered": false,
+    "publicReleaseAuthorized": false,
+    "externalUploadPerformed": false,
+    "fullWatchConfirmed": false,
+    "captionAudioReviewConfirmed": false
+  },
+  "production": {
+    "compositionId": "LanzhouIndustryAIV91PublishR2WithSfx",
+    "directorProfile": "paper-editorial-director-v9@9.1.0",
+    "productionProfile": "v8-semantic-continuity-sfx@V8",
+    "captionMode": "bilingual",
+    "paperClipCount": 6,
+    "semanticLayerCount": 21,
+    "primaryVisualCount": 27,
+    "sfxCueCount": 27,
+    "captionPageCount": 96,
+    "shotcraftCandidate": {
+      "count": 1,
+      "beatId": "B21",
+      "effectId": "line-carry",
+      "component": "LineCarry"
+    }
+  },
+  "outputs": {
+    "rawRender": {
+      "path": "edit/20260910_lanzhou_industry_ai/06_预览与质检/V9.1_V8候选_r1/formal-authorized-candidate-r2/raw-with-sfx.mp4",
+      "sha256": "a6c527ff9b98a339baea567c6c09341245e17f2311293038b299bce5252209e9",
+      "sizeBytes": 936185717
+    },
+    "candidateFinal": {
+      "path": "outputs/留在兰州做企业AI_V9.1_V8_有音效_完整候选_r2.mp4",
+      "sha256": "f889440e0fb0cbb10a9595df9be0fc8fb626911cd185a99389bc3d5950d59a1e",
+      "sizeBytes": 936306690
+    },
+    "technicalSpec": {
+      "containerDurationSeconds": 336.5,
+      "videoFrames": 10091,
+      "width": 1920,
+      "height": 1080,
+      "frameRate": 30,
+      "videoCodec": "h264",
+      "videoProfile": "High",
+      "pixelFormat": "yuv420p",
+      "colorSpace": "bt709",
+      "videoBitRate": 22067570,
+      "audioCodec": "aac",
+      "audioProfile": "LC",
+      "audioSampleRate": 48000,
+      "audioChannels": 2,
+      "audioChannelLayout": "stereo",
+      "audioBitRate": 192196
+    }
+  },
+  "audioNormalization": {
+    "method": "ffmpeg-loudnorm-two-pass-video-stream-copy",
+    "target": {
+      "integratedLufs": -16,
+      "loudnessRangeLu": 11,
+      "truePeakDbtp": -2.2
+    },
+    "firstPassInput": {
+      "integratedLufs": -22.76,
+      "truePeakDbtp": -3.84,
+      "loudnessRangeLu": 5.7,
+      "thresholdLufs": -33.37,
+      "targetOffsetLu": 0.94
+    },
+    "finalRemeasure": {
+      "integratedLufs": -16.3,
+      "truePeakDbtp": -1.95,
+      "loudnessRangeLu": 4.2,
+      "thresholdLufs": -26.76,
+      "assessment": "passed"
+    }
+  },
+  "qualityChecks": {
+    "targetedTypeScript": {
+      "status": "passed",
+      "command": "npx tsc --noEmit --project src/lanzhou-industry-ai-v91-candidate-r1/tsconfig.json"
+    },
+    "runtimeConsistency": {
+      "status": "passed-candidate-runtime-consistent-formal-still-locked",
+      "receipt": "运行时一致性回执.v1.json",
+      "receiptSha256": "239f04cca45c8668ad328e055b717f24dc06bda158b771744bd79b5920911cbe"
+    },
+    "fullDecode": {
+      "status": "passed",
+      "decodedVideoFrames": 10091,
+      "ffmpegErrorOutput": "empty"
+    },
+    "videoBitstreamIdentity": {
+      "status": "passed",
+      "rawEncodedVideoSha256": "c55ab47b1282676141f5f24613d1c7ee4d229e742d8cfe84f51b29d4b513bb36",
+      "finalEncodedVideoSha256": "c55ab47b1282676141f5f24613d1c7ee4d229e742d8cfe84f51b29d4b513bb36",
+      "meaning": "音频标准化未二次编码画面"
+    },
+    "blackFrames": {
+      "status": "passed",
+      "threshold": "d>=0.08s,pic_th=0.999,pix_th=0.10",
+      "events": 0
+    },
+    "longSilence": {
+      "status": "passed",
+      "threshold": "d>=2.5s,n=-50dB",
+      "events": 0
+    },
+    "freezeReview": {
+      "status": "passed-reviewed-intentional-paper-holds",
+      "threshold": "d>=1.5s,n=-50dB",
+      "detectedEvents": [
+        {"start": 145.5, "end": 147.633333, "duration": 2.133333, "classification": "P04分步纸艺最终保持"},
+        {"start": 238.2, "end": 239.933333, "duration": 1.733333, "classification": "P06分步纸艺第一状态保持"},
+        {"start": 240.333333, "end": 242.333333, "duration": 2.0, "classification": "P06分步纸艺第二状态保持"},
+        {"start": 242.333333, "end": 244.633333, "duration": 2.3, "classification": "P06分步纸艺第三状态保持"}
+      ],
+      "evidence": "纸艺停顿复核联系表.png",
+      "evidenceSha256": "f759734a7cd1f13ededa488d2ac578ebccafc34c6c57efd4e63d59f89f4f6710"
+    },
+    "animationEntryReview": {
+      "status": "passed-six-paper-entries-visually-reviewed",
+      "entrySeconds": [32.708, 77.6, 130.116, 141.116, 211.116, 238.116],
+      "reviewSeconds": [33.208, 78.1, 130.616, 141.616, 211.616, 238.616],
+      "evidence": "动画入点质检联系表.png",
+      "evidenceSha256": "3fb295e5da6599076c1208dd3778ede7c7237267743254c30f440db82c7ac0c3",
+      "conclusion": "六段纸艺在新入点后0.5秒均已出现对应语义画面，未见旧真人画面拖尾或黑转场"
+    },
+    "riskFrameReview": {
+      "status": "passed-selected-frame-visual-review",
+      "timesSeconds": [1, 12, 25, 33.2, 50, 78.1, 100, 120, 130.6, 141.6, 170, 190, 211.6, 220.9, 238.6, 270, 305, 335],
+      "evidence": "全片风险帧联系表.png",
+      "evidenceSha256": "cfec26bd9bbe8139e76079eb252baececc5822e38d2bd46d197a32945250e012",
+      "conclusion": "抽检覆盖片头、六段纸艺、代表性V8语义层、Shotcraft区段和片尾；未见黑屏、裁字、字幕越界或内部候选状态条"
+    },
+    "captionRuntime": {
+      "status": "passed-binding-needs-user-audio-review",
+      "mode": "bilingual",
+      "pageCount": 96,
+      "reviewRequiredPageCount": 61,
+      "candidateAsrCorrectionCount": 16,
+      "uncertaintyCount": 8,
+      "spokenSourceStatus": "needs-user-audio-review",
+      "formalCaptionComplianceClaimed": false
+    },
+    "soundEffectRuntime": {
+      "status": "passed-binding-only-user-audibility-not-reconfirmed",
+      "plannedCueCount": 27,
+      "resolvedFileCount": 27,
+      "individualAudibilityClaimed": false
+    }
+  },
+  "knownItems": [
+    {
+      "severity": "P1",
+      "id": "SPOKEN_SOURCE_USER_AUDIO_REVIEW_PENDING",
+      "detail": "中文字幕和英文辅助字幕均已进入成片，但61页仍带听校要求，16项ASR修正和8项不确定项尚未由用户逐项听校；不得登记为spoken-source正式通过。"
+    },
+    {
+      "severity": "P2",
+      "id": "FORMAL_RELEASE_GATE_NOT_CLAIMED",
+      "detail": "本次依据用户继续指令执行一次性裸Remotion候选导出；没有伪造V2独立签名、正式授权链、用户完整观看或正式release登记。"
+    },
+    {
+      "severity": "P2",
+      "id": "WORKTREE_HASH_BOUND_CANDIDATE",
+      "detail": "本候选绑定当前工作树源码和运行资源哈希；干净Git检出尚不能独立复现，具体边界见渲染依赖清单。"
+    }
+  ],
+  "severitySummary": {"P0": 0, "P1": 1, "P2": 2},
+  "releaseBoundary": {
+    "packageMayBePrepared": true,
+    "candidateStatus": "ready-for-user-review",
+    "machineQaPassed": true,
+    "spokenSourceVerified": false,
+    "formalReleaseRegistered": false,
+    "verified": false,
+    "published": false,
+    "externalUploadPerformed": false,
+    "nextGate": "用户正常速度完整观看本条有音效候选片，并完成字幕听校后明确确认；此后才能处理正式release登记，公开发布仍需单独决定。"
+  }
+}
