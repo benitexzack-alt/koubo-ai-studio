@@ -40,6 +40,29 @@ if (profile.profileId !== 'paper-editorial-director-v9') {
   errors.push('DIRECTOR_PROFILE_ID_NOT_V9');
 }
 if (profile.profileVersion !== '9.1.0') errors.push('DIRECTOR_PROFILE_VERSION_NOT_V91');
+const scopeBoundary = profile.scopeBoundary;
+const forbiddenBeforeApproval = [
+  'firstframe-generation',
+  'ocr',
+  'runninghub',
+  'remotion',
+  'subtitle',
+  'sfx',
+  'render',
+  'release',
+];
+if (
+  scopeBoundary?.directorPlanningAuthority !== 'skills/koubo-remotion-director/SKILL.md' ||
+  scopeBoundary?.directorPlanningOutput !== 'koubo-director-cues/v1' ||
+  scopeBoundary?.appliesToDirectorPlanning !== false ||
+  scopeBoundary?.appliesAfter !== 'user-approved-director-cues' ||
+  scopeBoundary?.userApprovalRequiredBeforeDownstream !== true ||
+  !Array.isArray(scopeBoundary?.forbiddenBeforeApproval) ||
+  scopeBoundary.forbiddenBeforeApproval.length !== forbiddenBeforeApproval.length ||
+  forbiddenBeforeApproval.some((stage) => !scopeBoundary.forbiddenBeforeApproval.includes(stage))
+) {
+  errors.push('DIRECTOR_PROFILE_SCOPE_BOUNDARY_INVALID');
+}
 const incidentPolicy = profile.incidentPreventionPolicy;
 if (incidentPolicy?.version !== '1' || incidentPolicy.requiredForNewPreproduction !== true ||
   incidentPolicy.typedMotionContractRequired !== true || incidentPolicy.fixedIndependentTextStandsRequired !== true ||

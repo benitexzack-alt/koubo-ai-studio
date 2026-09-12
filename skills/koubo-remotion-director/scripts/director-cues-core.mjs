@@ -14,6 +14,13 @@ const normalized = (value) => String(value ?? '').replace(/[\s\p{P}\p{S}]+/gu, '
 const visualRoles = new Set(['mechanism', 'process', 'relationship', 'comparison', 'metaphor']);
 const routes = new Set(['paper-editorial']);
 const scriptAuthorities = new Set(['user-confirmed-script', 'actual-spoken-transcript']);
+const realEvidenceTypes = new Set([
+  'official-evidence',
+  'real-interface',
+  'real-person-action',
+  'real-location',
+  'source-data',
+]);
 const technicalPromptTerms = [
   '毫米', '归一化坐标', '布局合同', '碰撞', 'OCR', 'sha256',
   'generatedDecorationPolicy', 'sweptRect', 'projectionContract',
@@ -74,6 +81,12 @@ export function validateDirectorCues({cues, projectRoot, scriptText}) {
   fail(cues?.schemaVersion === DIRECTOR_CUES_SCHEMA, 'DIRECTOR_CUES_SCHEMA_INVALID');
   fail(text(cues?.taskId), 'DIRECTOR_CUES_TASK_ID_REQUIRED');
   fail(cues?.status === 'ready-for-user-review', 'DIRECTOR_CUES_STATUS_INVALID');
+  fail(cues?.executionScope === 'director-only', 'DIRECTOR_CUES_EXECUTION_SCOPE_INVALID');
+  fail(
+    cues?.handoffGate?.status === 'blocked-awaiting-user-approval' &&
+      cues?.handoffGate?.downstreamAllowed === false,
+    'DIRECTOR_CUES_HANDOFF_GATE_INVALID',
+  );
   fail(scriptAuthorities.has(cues?.inputScript?.authority), 'DIRECTOR_CUES_SCRIPT_AUTHORITY_INVALID');
 
   const source = String(scriptText ?? '');
@@ -99,6 +112,19 @@ export function validateDirectorCues({cues, projectRoot, scriptText}) {
   const inserts = list(cues?.inserts);
   fail(cues?.selectionSummary?.insertCount === inserts.length, 'DIRECTOR_CUES_INSERT_COUNT_MISMATCH');
   fail(text(cues?.selectionSummary?.mainPoint), 'DIRECTOR_CUES_MAIN_POINT_REQUIRED');
+  fail(
+    list(cues?.selectionSummary?.argumentFlow).length >= 1 &&
+      list(cues.selectionSummary.argumentFlow).every(text),
+    'DIRECTOR_CUES_ARGUMENT_FLOW_INVALID',
+  );
+  const realEvidenceSuggestions = cues?.selectionSummary?.realEvidenceSuggestions;
+  fail(Array.isArray(realEvidenceSuggestions), 'DIRECTOR_CUES_REAL_EVIDENCE_LIST_INVALID');
+  for (const suggestion of list(realEvidenceSuggestions)) {
+    const quote = String(suggestion?.scriptQuote ?? '');
+    fail(text(quote) && source.includes(quote), 'DIRECTOR_CUES_REAL_EVIDENCE_QUOTE_MISMATCH');
+    fail(realEvidenceTypes.has(suggestion?.assetType), 'DIRECTOR_CUES_REAL_EVIDENCE_TYPE_INVALID');
+    fail(text(suggestion?.reason), 'DIRECTOR_CUES_REAL_EVIDENCE_REASON_REQUIRED');
+  }
   fail(text(cues?.selectionSummary?.densityReason), 'DIRECTOR_CUES_DENSITY_REASON_REQUIRED');
   const protectedSections = list(cues?.selectionSummary?.protectedSpeakerSections);
   fail(validTextList(protectedSections, 1, 8), 'DIRECTOR_CUES_PROTECTED_SPEAKER_SECTIONS_INVALID');

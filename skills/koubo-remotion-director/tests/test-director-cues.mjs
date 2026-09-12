@@ -7,6 +7,10 @@ import {validateDirectorCues} from '../scripts/director-cues-core.mjs';
 
 const template = JSON.parse(readFileSync(new URL('../templates/director-cues.v1.json', import.meta.url), 'utf8'));
 assert.equal(template.selectionSummary.insertCount, template.inserts.length);
+assert.equal(template.executionScope, 'director-only');
+assert.equal(template.handoffGate.downstreamAllowed, false);
+assert(template.selectionSummary.argumentFlow.length >= 1);
+assert(Array.isArray(template.selectionSummary.realEvidenceSuggestions));
 assert(template.styleLock.mustKeep.length >= 4);
 assert(template.styleLock.mustAvoid.length >= 3);
 assert(template.inserts.every((insert) => insert.textPlan.length >= 1));
@@ -20,12 +24,17 @@ const referenceBytes = Buffer.from(
 const referencePath = path.join(root, 'reference.png');
 writeFileSync(referencePath, referenceBytes);
 
-const scriptText = '开场判断留给真人。这里解释一个流程。最后由真人说明边界。';
+const scriptText = '开场判断留给真人。官方材料展示事实。这里解释一个流程。最后由真人说明边界。';
 const prefix = '摄影级微缩纸艺定格，暖米色实体桌面，真实纸纤维、卡纸厚度、三层空间与柔和侧光，16:9。';
 const good = {
   schemaVersion: 'koubo-director-cues/v1',
   taskId: 'director-cues-test',
   status: 'ready-for-user-review',
+  executionScope: 'director-only',
+  handoffGate: {
+    status: 'blocked-awaiting-user-approval',
+    downstreamAllowed: false,
+  },
   inputScript: {authority: 'user-confirmed-script'},
   styleLock: {
     referenceImages: [{
@@ -41,6 +50,12 @@ const good = {
   },
   selectionSummary: {
     mainPoint: '说明一条流程，并保留开场和边界给真人。',
+    argumentFlow: ['真人提出判断', '纸艺解释流程', '真人说明边界'],
+    realEvidenceSuggestions: [{
+      scriptQuote: '官方材料展示事实。',
+      assetType: 'official-evidence',
+      reason: '事实主张优先使用可核验的官方材料。',
+    }],
     insertCount: 1,
     densityReason: '只有流程段能增加视觉理解。',
     protectedSpeakerSections: ['开场判断留给真人', '最后由真人说明边界'],
@@ -73,6 +88,22 @@ const good = {
 
 const validate = (value) => validateDirectorCues({cues: value, projectRoot: root, scriptText});
 assert.equal(validate(good).ok, true);
+
+const missingArgumentFlow = structuredClone(good);
+missingArgumentFlow.selectionSummary.argumentFlow = [];
+assert(validate(missingArgumentFlow).errors.includes('DIRECTOR_CUES_ARGUMENT_FLOW_INVALID'));
+
+const downstreamUnlocked = structuredClone(good);
+downstreamUnlocked.handoffGate.downstreamAllowed = true;
+assert(validate(downstreamUnlocked).errors.includes('DIRECTOR_CUES_HANDOFF_GATE_INVALID'));
+
+const wrongExecutionScope = structuredClone(good);
+wrongExecutionScope.executionScope = 'firstframe';
+assert(validate(wrongExecutionScope).errors.includes('DIRECTOR_CUES_EXECUTION_SCOPE_INVALID'));
+
+const generatedAsEvidence = structuredClone(good);
+generatedAsEvidence.selectionSummary.realEvidenceSuggestions[0].assetType = 'paper-editorial';
+assert(validate(generatedAsEvidence).errors.includes('DIRECTOR_CUES_REAL_EVIDENCE_TYPE_INVALID'));
 
 const polluted = structuredClone(good);
 polluted.inserts[0].firstFramePrompt += ' 物件宽20毫米，x=0.2。';

@@ -25,7 +25,7 @@
 3. 需要解释机制、流程、关系、层级或对比吗？才使用纸艺 AI 插片。
 4. 只是气氛、装饰或重复口播吗？不插，保留真人。
 
-`director-cues.v1.json` 只收录需要生成的 `paper-editorial` 插片。真实证据建议写入后续素材盘点，不得伪装成生成镜头塞进本表。
+`director-cues.v1.json` 的 `inserts` 只收录需要生成的 `paper-editorial` 插片。真实证据位置写入 `selectionSummary.realEvidenceSuggestions`，只记录原文短句、素材类型和使用理由；不得伪装成生成镜头，也不得在导演阶段提前搜索或制作素材。
 
 钩子、本人经历、情绪转折、风险边界和结尾行动号召，默认由真人承接。
 
@@ -83,6 +83,7 @@
 输出使用 `templates/director-cues.v1.json`。提交用户前检查：
 
 - `scriptQuote` 是文稿逐字原句；
+- 真实证据建议引用原文短句、类型正确，且没有被伪装成纸艺生成镜头；
 - 插片顺序与全文一致；
 - `startAnchorText`、`endAnchorText` 能定位原文；
 - 原文短句与时长相容，首尾锚点顺序正确；

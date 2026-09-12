@@ -2,6 +2,11 @@
   "schemaVersion": "koubo-director-cues/v1",
   "taskId": "<TASK_ID>",
   "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
   "inputScript": {
     "path": "<USER_CONFIRMED_SCRIPT_PATH>",
     "sha256": "<SCRIPT_SHA256>",
@@ -32,6 +37,11 @@
   },
   "selectionSummary": {
     "mainPoint": "<ONE_SENTENCE_MAIN_POINT>",
+    "argumentFlow": [
+      "<ARGUMENT_STEP_1>",
+      "<ARGUMENT_STEP_2>"
+    ],
+    "realEvidenceSuggestions": [],
     "insertCount": 1,
     "densityReason": "<WHY_THIS_MANY_INSERTS>",
     "protectedSpeakerSections": [

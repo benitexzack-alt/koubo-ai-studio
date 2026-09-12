@@ -3,6 +3,23 @@
   "profileId": "paper-editorial-director-v9",
   "profileVersion": "9.1.0",
   "status": "active-default",
+  "scopeBoundary": {
+    "directorPlanningAuthority": "skills/koubo-remotion-director/SKILL.md",
+    "directorPlanningOutput": "koubo-director-cues/v1",
+    "appliesToDirectorPlanning": false,
+    "appliesAfter": "user-approved-director-cues",
+    "userApprovalRequiredBeforeDownstream": true,
+    "forbiddenBeforeApproval": [
+      "firstframe-generation",
+      "ocr",
+      "runninghub",
+      "remotion",
+      "subtitle",
+      "sfx",
+      "render",
+      "release"
+    ]
+  },
   "incidentPreventionPolicy": {
     "physicalContinuityVersion": "1",
     "version": "1",

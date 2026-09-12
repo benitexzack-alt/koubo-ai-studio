@@ -4,30 +4,35 @@
 > 项目根目录：以本 `AGENTS.md` 所在的 Git 仓库根目录为准，不依赖固定用户名或克隆位置。
 > 建立日期：2026-07-04
 
-## 一、强制读取顺序
+## 一、任务阶段路由与按需读取
 
-任何 AI 处理本项目任务前，必须先读取：
+任何 AI 在读取整条生产链或开始执行前，必须先把当前任务归入一个阶段，并固定本阶段的唯一交付。除非用户明确要求端到端连续执行，否则一次只处理一个阶段：
 
-1. `project.md`
-2. `knowledge/00-项目知识索引.md`
-3. `knowledge/01-账号战略与事业主线.md`
-4. `knowledge/02-个人事实与公开边界.md`
-5. `knowledge/03-口播执行守则.md`
-6. `knowledge/04-内容生产SOP.md`
-7. `knowledge/05-合规隐私与证据规则.md`
-8. `knowledge/06-选题脚本与风格规范.md`
-9. `knowledge/14-超哥口播声音档案.md`
-10. `knowledge/15-抖音精选内容质量验收.md`
-11. `knowledge/20-V8连续语义动效与可感知音效基线.md`、`knowledge/22-实录优先字幕与系列发布包硬门禁.md`、`workflow/active-production-profile.v1.json`、`templates/10-超哥AI创业记_3比4系列封面提示词母版.md` 与 `knowledge/21-超哥口播语言与重复硬门禁.json`。V8是新视频默认制作基准；V7.2只用于锁定母版回归和故障回滚，任何降级必须有用户明确批准记录。公开正文还必须通过项目语言失败样本和 `workflow/recent-content-history.v1.json` 历史锚点扫描，不得用 `copy_review` 自报布尔值替代。
-12. `skills/douyin-koubo-source-to-original/SKILL.md`；先生成并校验任务级研究上下文、机制卡、跨源功能矩阵和候选包。没有 Obsidian 检索的 `retrieved/read/applied` 记录、没有抖音知识中台或用户完整来源、没有用户选择的候选题/钩子/提纲，禁止进入源头精髓、内容门禁和完整公开稿。
-13. `skills/source-essence-synthesis/SKILL.md`。完整参考需要保留主要观点、知识点或叙事精髓时，必须生成并校验源头精髓卡；纯本人已核实的一手经验须明确记录其不适用理由，不能假装做过源头拆解。
-14. `skills/content-brain-gate/SKILL.md` 及 `skills/content-brain-gate/references/public-content-gate.md`。
-15. 如果 `KOUBO_PERSONAL_KB` 或项目同级的 `../个人知识库` 存在，必须额外读取该知识库 `AGENTS.md` 和现行《公开内容生产大脑硬门禁》；当其与项目便携快照冲突时，以个人知识库现行版为准。
-16. 当前账号实测学习卡：真实账号任务读取 `<personal-kb>/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json`，记录当前 SHA-256；不能用聊天记忆、复盘摘要或 Skill fixture 替代。
-17. 最近六条已发布、已拍摄或已确认内容的真实转写或确认稿。
-18. 与当前任务直接相关的原始资料，并核对每条来源的完整度和允许用途。
+1. `topic-script`：选题、研究、事实核验、文稿和封面文字方案。
+2. `director-only`：完整文稿或实录到插片判断、画面意图、首帧提示词和图生视频提示词。
+3. `firstframe`：把已确认导演表交给首帧自动化，生成、写入中文并验收首帧。
+4. `video-generation`：把已确认首帧和视频词交给图生视频平台并验收视频素材。
+5. `edit-release`：真实口播、已确认素材、字幕、Remotion、音效、渲染、质检和发布包。
+6. `governance-maintenance`：规则、Skill、校验器和项目维护。
 
-任何公开口播先用项目内 `douyin-koubo-source-to-original` 生成并校验研究上下文和候选包；用户未选择候选题、三个钩子中的一个和提纲骨架时，只能输出讨论候选，不能写完整公开稿。完整访谈、长视频、文章或参考口播的深度改编，再用 `source-essence-synthesis` 生成并校验源头精髓卡；达到 `ready-for-outline` 后，使用 `content-brain-gate` 生成并校验内容门禁卡。五项文案能力的固定顺序是：源头拆解与原创合成 → 源头精髓（适用时）→ 内容大脑门禁 → humanizer-zh → 本人口播精修。`tools/setup-koubo.mjs` 必须注册项目内前三项；`humanizer-zh` 是 Codex 全局 Skill，`humanize-koubo-script` 是项目 Skill。没有实际读取证据、校验结果和用户选择回执时，不得只说“已经查过知识库”。
+用户说“继续”“验证”或“再检查”时，默认只延续当前阶段，不自动获得进入下一阶段、调用新 Skill、生成素材、渲染或发布的授权。跨阶段前必须满足当前阶段的人审门禁；跨阶段工作如果未包含在用户本轮明确要求中，先停止并说明。
+
+### 共同最小上下文
+
+- 读取 `knowledge/00-项目知识索引.md`、当前任务直接输入，以及 `project.md` 中的当前状态和与本任务直接相关的小节。
+- `project.md` 的历史事故、旧版本合同和长日志只在当前问题确实需要溯源时检索，不得整份转化为当前待办。
+- Obsidian、聊天记忆和跨项目经验只作候选证据；必须核对项目、阶段和时间，留下 `retrieved/read/applied` 用途后才能应用。
+
+### 分阶段必读
+
+- `topic-script`：读取 `knowledge/01` 至 `06`、`knowledge/14`、`knowledge/15`、`knowledge/21`，以及 `douyin-koubo-source-to-original`、适用时的 `source-essence-synthesis`、`content-brain-gate`、个人知识库现行公开内容门禁、当前账号实测学习卡、最近六条和本条完整来源。脚本完整交付还读取 `templates/10-超哥AI创业记_3比4系列封面提示词母版.md`。
+- `director-only`：只读取用户确认文稿或真实口播转写、用户确认的往期风格参考、`skills/koubo-remotion-director/SKILL.md`、其 `references/shortform-insert-director.v1.md` 和 `templates/director-cues.v1.json`。不得读取旧 V9.1 工程合同、首帧生产合同或发布合同来扩写导演提示词。
+- `firstframe`：读取用户确认的 `director-cues.v1.json`、`skills/koubo-paper-firstframe-producer/SKILL.md` 及其明确指向的当前阶段资料；此时才进入确定性中文、OCR、首帧验收和平台交接。
+- `video-generation`：读取用户确认的首帧、当前视频提示词和 `skills/koubo-runninghub-video-batch/SKILL.md`；不得反向重写已经确认的导演表或首帧。
+- `edit-release`：读取 `knowledge/20-V8连续语义动效与可感知音效基线.md`、`knowledge/22-实录优先字幕与系列发布包硬门禁.md`、`workflow/active-production-profile.v1.json` 和本阶段对应 Skill。V8 是新视频默认制作基准；V7.2 只用于锁定母版回归和故障回滚，任何降级必须有用户明确批准记录。
+- `governance-maintenance`：只读取目标规则、直接调用者和最小相关测试；发现生产链旁支问题只登记，不顺手修复。
+
+`topic-script` 阶段生成、改写或重组公开口播时，先用项目内 `douyin-koubo-source-to-original` 生成并校验研究上下文和候选包；用户未选择候选题、三个钩子中的一个和提纲骨架时，只能输出讨论候选，不能写完整公开稿。完整访谈、长视频、文章或参考口播的深度改编，再用 `source-essence-synthesis` 生成并校验源头精髓卡；达到 `ready-for-outline` 后，使用 `content-brain-gate` 生成并校验内容门禁卡。五项文案能力的固定顺序是：源头拆解与原创合成 → 源头精髓（适用时）→ 内容大脑门禁 → humanizer-zh → 本人口播精修。`tools/setup-koubo.mjs` 必须注册项目内前三项；`humanizer-zh` 是 Codex 全局 Skill，`humanize-koubo-script` 是项目 Skill。没有实际读取证据、校验结果和用户选择回执时，不得只说“已经查过知识库”。已经由用户确认且本轮不修改正文的文稿进入 `director-only` 时，不重复启动本段文案流程。
 
 ## 二、项目真实目标
 
@@ -54,9 +59,9 @@
 - 重大选题、行业结论、政策和数据必须查真实信源，优先中国信源。
 - 密钥、证件、合同、财务、客户隐私不得进入公开素材。
 
-## 四、固定工作流
+## 四、端到端生产顺序
 
-每条视频必须按顺序执行：
+下列步骤描述一条视频从选题到复盘的完整生命周期，不是每个局部任务都要从第 1 步重新执行。单阶段任务只执行“一、任务阶段路由”指定的当前阶段；只有用户明确要求端到端连续生产时，才按门禁依次跨阶段：
 
 1. 明确选题目标、服务对象、看完要改变的真实状态和当前证据边界。
 2. 查 Obsidian 个人知识库、当前账号实测学习卡、最近六条、本人声音档案和必要外部信源；每项只读不等于已应用，必须留下本条 `retrieved/read/applied` 用途。
@@ -82,7 +87,7 @@
 22. 用户人工观看确认。
 23. 发布后按早期、24 小时、72 小时和 7 天窗口归档数据；更新复盘报告与当前学习卡，达到学习卡规定的最小受控样本前，不把单条表现升级为稳定规律。
 
-未经 `ready-for-production`，不得开始分镜、V4/V5/V6、动效、音效、封面和正式成片。后期能力不能替代内容门禁。
+用户明确确认完整文稿且本轮不改正文时，可以进入 `director-only` 生成文字版导演规划和提示词候选，但这不等于 `ready-for-production`，也不授权生成素材。未经 `ready-for-production`，不得开始首帧生成、图生视频、V4/V5/V6、动效、音效、封面和正式成片。后期能力不能替代内容门禁。
 
 ### 任务级知识上下文硬门
 
@@ -92,15 +97,24 @@
 - 受控 `run-v72`、受控 Remotion 直出和 release 校验统一经过 V2 生产前置门；知识上下文校验器本身进入门禁哈希闭包。绕开包装脚本直接执行命令所得文件不得通过正式 release 校验，也不得登记为正式生产结果。
 - 不得给已经完成的历史视频补写并不存在的“已读取/已应用”证据；旧 release 只能保留为历史事实，新的闭环从下一条真实口播开始验证。
 
-### 纸艺导演双阶段硬门
+### 导演规划与下游生产分阶段硬门
 
-- `workflow/active-director-profile.v1.json` 是新口播的唯一导演路由档案。需要解释机制、因果、关系、层级、对照或流程时，默认使用 `paper-editorial`；真实界面、官方材料、地点、数据和人物行为仍使用真实证据。
-- 用户确认文稿后可以进入 `pre-shoot`，提前产出纸艺分镜、中文节点、静帧和素材提示词；该阶段一律为 `provisional-previsualization`，不得声称时间轴或正式片已锁定。
-- 拍摄后必须执行 `post-shoot` 重绑：原片声音是唯一正文，拍摄前文稿降为 `comparison-only`；所有纸艺镜头时点、节点文字和保留决策必须重新确认。
-- 普通 `remotion-information`、扁平卡片、PPT式关系图或通用信息动画不得满足纸艺节拍。纸艺分支失败时必须 `blocked`；任何降级都需用户针对本条的明确批准。
-- 纸艺镜头必须包含物件组、至少三层空间、节点中文、`textPlan` 和逐动作音效。2026-09-08事故修订后的新预拍请求必须启用 `policy.incidentPreventionVersion="1"`，按 `skills/koubo-remotion-director/references/paper-motion-incident-prevention.md` 执行：每个短镜最多4个活动动作、1至7个阶段，不强凑4步；带字牌采用独立固定支架，空白活动件沿不遮字的通道运动。生成模型不得生成可读中文；中文确定性写入首帧并通过OCR，首次可读如实从第0帧记录。旧运动文字追踪仅保留历史回归，不得绕过新策略；屏幕浮层不得冒充纸面节点文字。静态合格不等于动态合格，新机构试验、动作边界抽帧、实际视频证据与独立人工验收均不可省略。
-- `skillRead=true` 不等于已调用。没有本条新建的 request、route lock、plan、compile receipt 和 `skillExecuted=true` validation receipt，任务必须停留在 `blocked`。
-- 2026-09-01 及以后的新 V8 job 必须通过 `tools/validate-director-production-binding.mjs`；预览前要求预拍与实录重绑证据，正式渲染前再要求本条动态候选的用户明确验收。历史 job 只作日期限定的回归豁免，不得用于新片。
+#### A. `director-only` 导演规划
+
+- 本阶段唯一权威是 `skills/koubo-remotion-director/SKILL.md`。目录名为兼容历史保留 `remotion`，不代表本阶段执行 Remotion。
+- 唯一交付是：`完整文稿或实录 → 全文主观点与论证顺序 → 插入点及理由 → 画面意图 → 首帧提示词 → 图生视频提示词`，状态最高只能是 `ready-for-user-review`。
+- 需要解释机制、因果、关系、层级、对照或流程时，可以选择 `paper-editorial`；真实界面、官方材料、地点、数据和人物行为仍使用真实证据，不得生成冒充。
+- 用户确认导演表以前，禁止调用 `koubo-paper-firstframe-producer`，禁止生图、确定性写字、OCR、RunningHub、Remotion、字幕、音效、渲染和发布；旧 V9.1 的 route lock、布局合同、生产状态机和动态验收不得进入导演提示词。
+- 机器校验只证明结构与边界符合要求，不能证明插片选择和视觉风格合格。必须由用户对照往期优质片确认插入位置、构图、中文节点、首帧词和视频词。
+- 拍摄前只保留文字锚点；拍摄后如重新执行本阶段，以原片声音为唯一正文重新绑定锚点。不得借重绑提前进入剪辑或正式渲染。
+
+#### B. 用户确认导演表后的下游生产
+
+- `workflow/active-director-profile.v1.json` 的旧 V9.1 生产字段仅在用户确认导演表后生效，用于首帧、视频生成和剪辑发布兼容，不得反向改写导演表。
+- 进入 `firstframe` 后，纸艺镜头才执行物件组、至少三层空间、节点中文、固定空白纸牌、确定性写字和 OCR。2026-09-08 事故修订后的新请求按 `skills/koubo-remotion-director/references/paper-motion-incident-prevention.md` 执行；每个短镜最多 4 个活动动作、1 至 7 个阶段，不强凑 4 步，先完成一个代表镜并由用户验收。
+- 进入 `video-generation` 后，才执行新机构动态试验、动作边界抽帧、实际视频证据和独立人工验收；首帧或视频失败只返工失败镜头，不连锁重写已确认镜头。
+- 进入 `edit-release` 后，才要求本条 request、route lock、plan、compile receipt、`skillExecuted=true` validation receipt、`tools/validate-director-production-binding.mjs`、实录重绑、动态候选验收和 V8 正式生产门禁。
+- 任一下游阶段失败时保持 `blocked`；任何降级都需用户针对本条明确批准。历史 job 只作日期限定回归，不得用于新片。
 
 脚本固定交付包中的“文字版封面提示词”不等于已经启动封面制作，但只能在事实锁、双 Skill 和 `ready-for-draft` 均通过后生成。缺少抖音标题或封面提示词的文稿只能标记为 `incomplete-delivery`，不得称为完整口播稿。
 
