@@ -47,14 +47,14 @@ semantic-runtime-timeline.r10.json
 
 ```text
 firstVisible <= firstReadable <= semanticSettle <= actionEnd < endExclusive
-firstReadable >= spokenStart - 300ms
+firstReadable >= claimFrame - 300ms
 ```
 
-装饰可以先出现，但可读语义不得提前超过 300ms。任何全局预卷不得替代逐事件锚点。
+装饰可以先出现，但可读语义相对本事件的核心表达锚点不得提前超过 300ms。`300ms` 与音效偏移上限是硬上限，不得由单条任务放宽。任何全局预卷不得替代逐事件锚点。
 
 ## 3. 预览必须实算
 
-预览覆盖只能由真实事件区间求交集产生，不能由作者填写标签。候选预览必须实际包含：
+预览覆盖只能由真实事件区间求产生，不能由作者填写标签，也不允许单条事件自行退出预览。候选预览必须实际包含：
 
 - 开头钩子与 CTA；
 - 每一种本条实际使用的 V8 组件；
