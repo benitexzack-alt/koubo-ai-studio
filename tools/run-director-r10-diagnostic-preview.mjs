@@ -432,7 +432,12 @@ const hashDecodedAudio = (outputPath) => {
 const hashFile = (filePath) =>
   createHash('sha256').update(readFileSync(filePath)).digest('hex');
 
-const decodeMonoFloatAudio = ({inputPath, startSeconds, durationSeconds}) => {
+const decodeMonoFloatAudio = ({
+  inputPath,
+  startSeconds,
+  durationSeconds,
+  sampleRate = DIRECTOR_R10_DIAGNOSTIC_CONTRACT.speechAuditSampleRate,
+}) => {
   const args = ['-v', 'error', '-i', inputPath];
   if (startSeconds > 0) args.push('-ss', startSeconds.toFixed(6));
   args.push(
@@ -444,7 +449,7 @@ const decodeMonoFloatAudio = ({inputPath, startSeconds, durationSeconds}) => {
     '-ac',
     '1',
     '-ar',
-    String(DIRECTOR_R10_DIAGNOSTIC_CONTRACT.speechAuditSampleRate),
+    String(sampleRate),
     '-c:a',
     'pcm_f32le',
     '-f',
@@ -627,13 +632,15 @@ const auditRuntimeCueAudibility = ({manifest, target}) => {
     inputPath: withSfxOutput.absolutePath,
     startSeconds: 0,
     durationSeconds,
+    sampleRate: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.cueAuditSampleRate,
   });
   const noSfx = decodeMonoFloatAudio({
     inputPath: noSfxOutput.absolutePath,
     startSeconds: 0,
     durationSeconds,
+    sampleRate: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.cueAuditSampleRate,
   });
-  const sampleRate = DIRECTOR_R10_DIAGNOSTIC_CONTRACT.speechAuditSampleRate;
+  const sampleRate = DIRECTOR_R10_DIAGNOSTIC_CONTRACT.cueAuditSampleRate;
   const sampleCount = Math.min(withSfx.length, noSfx.length);
   const audits = cues.map((cue) => {
     const cueOnsetSeconds = cue.frame / DIRECTOR_R10_DIAGNOSTIC_CONTRACT.fps;
@@ -664,6 +671,7 @@ const auditRuntimeCueAudibility = ({manifest, target}) => {
       cueOnsetSeconds,
       windowStartSeconds: startSeconds,
       windowEndSeconds: endSeconds,
+      sampleRate,
       comparedSamples,
       differenceRmsDbfs: 20 * Math.log10(Math.max(rms, 1e-12)),
       differencePeakDbfs: 20 * Math.log10(Math.max(peak, 1e-12)),

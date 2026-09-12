@@ -521,13 +521,15 @@ try {
       cueId: 'cue-a',
       differenceRmsDbfs: -32,
       differencePeakDbfs: -18,
-      comparedSamples: 1800,
+      sampleRate: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.cueAuditSampleRate,
+      comparedSamples: 26400,
     },
     {
       cueId: 'cue-b',
       differenceRmsDbfs: -40,
       differencePeakDbfs: -24,
-      comparedSamples: 1800,
+      sampleRate: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.cueAuditSampleRate,
+      comparedSamples: 26400,
     },
   ];
   assert.equal(
@@ -537,6 +539,12 @@ try {
   expectCode('R10_DIAGNOSTIC_CUE_NOT_AUDIBLE', () =>
     assertR10CueAudibilityAudit(
       [cueAudits[0], {...cueAudits[1], differenceRmsDbfs: -80}],
+      ['cue-a', 'cue-b'],
+    ),
+  );
+  expectCode('R10_DIAGNOSTIC_CUE_AUDIT_INVALID', () =>
+    assertR10CueAudibilityAudit(
+      [{...cueAudits[0], sampleRate: 3000}, cueAudits[1]],
       ['cue-a', 'cue-b'],
     ),
   );

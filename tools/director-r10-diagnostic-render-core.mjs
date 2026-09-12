@@ -48,6 +48,7 @@ export const DIRECTOR_R10_DIAGNOSTIC_CONTRACT = Object.freeze({
   speechAuditSearchWindowMs: 50,
   minimumSpeechCorrelation: 0.95,
   maximumSpeechRmsDeltaDb: 1,
+  cueAuditSampleRate: 48000,
   cueAuditLeadSeconds: 0.05,
   cueAuditWindowSeconds: 0.55,
   minimumCueDifferenceRmsDbfs: -55,
@@ -1345,6 +1346,7 @@ export const assertR10CueAudibilityAudit = (audits, expectedCueIds) => {
     if (
       !Number.isFinite(audit.differenceRmsDbfs) ||
       !Number.isFinite(audit.differencePeakDbfs) ||
+      audit.sampleRate !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.cueAuditSampleRate ||
       !Number.isInteger(audit.comparedSamples) ||
       audit.comparedSamples <= 0
     ) {
