@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "koubo-director-cues/v1",
+  "taskId": "<TASK_ID>",
+  "status": "ready-for-user-review",
+  "inputScript": {
+    "path": "<USER_CONFIRMED_SCRIPT_PATH>",
+    "sha256": "<SCRIPT_SHA256>",
+    "authority": "user-confirmed-script"
+  },
+  "styleLock": {
+    "referenceImages": [
+      {
+        "id": "REF01",
+        "path": "<REFERENCE_IMAGE_PATH>",
+        "sha256": "<REFERENCE_IMAGE_SHA256>",
+        "usage": "style-mechanism-only"
+      }
+    ],
+    "promptPrefix": "<ONE_CONCISE_SHARED_STYLE_PREFIX>",
+    "textPolicy": "generated-base-image-then-deterministic-chinese",
+    "mustKeep": [
+      "<PHOTOGRAPHY_RULE>",
+      "<MATERIAL_RULE>",
+      "<DEPTH_AND_SHADOW_RULE>",
+      "<SERIES_COLOR_RULE>"
+    ],
+    "mustAvoid": [
+      "<FLAT_CARD_FAILURE>",
+      "<PLASTIC_OR_NEON_FAILURE>",
+      "<MODEL_GENERATED_TEXT_FAILURE>"
+    ]
+  },
+  "selectionSummary": {
+    "mainPoint": "<ONE_SENTENCE_MAIN_POINT>",
+    "insertCount": 1,
+    "densityReason": "<WHY_THIS_MANY_INSERTS>",
+    "protectedSpeakerSections": [
+      "<HOOK_OR_CTA_QUOTE>"
+    ]
+  },
+  "inserts": [
+    {
+      "id": "P01",
+      "order": 1,
+      "scriptQuote": "<EXACT_SCRIPT_QUOTE>",
+      "startAnchorText": "<EXACT_START_ANCHOR>",
+      "endAnchorText": "<EXACT_END_ANCHOR>",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 4,
+      "reason": "<WHAT_THE_VIEWER_UNDERSTANDS>",
+      "visualRole": "mechanism",
+      "route": "paper-editorial",
+      "visualMetaphor": "<ONE_UNIQUE_PHYSICAL_METAPHOR>",
+      "composition": "<ONE_UNIQUE_COMPOSITION>",
+      "primaryAction": "<ONE_VISIBLE_ACTION>",
+      "textPlan": [
+        {
+          "text": "<SHORT_CHINESE_LABEL>",
+          "surface": "<FIXED_BLANK_PAPER_SURFACE_NAMED_IN_FIRST_FRAME_PROMPT>"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ],
+      "firstFramePrompt": "<COPY_STYLE_PREFIX_THEN_WRITE_STATIC_FIRST_FRAME_ONLY>",
+      "videoPrompt": "<ONE_PRIMARY_ACTION_FROM_APPROVED_FIRST_FRAME>",
+      "negativePrompt": [
+        "不生成可读文字",
+        "不重做场景",
+        "不使用PPT卡片"
+      ]
+    }
+  ]
+}
