@@ -1,0 +1,576 @@
+{
+  "schemaVersion": "koubo-director-cues-source-plan/v1",
+  "sourceDirectorSchema": "koubo-director-cues/v1",
+  "taskId": "20260910-lanzhou-industry-ai-director-core-regression-r1",
+  "requestId": "20260910-lanzhou-industry-ai-director-core-regression-r1-firstframe-sample",
+  "revisionId": "director-core-regression-r1-firstframe-validation-r1",
+  "phase": "pre-shoot",
+  "status": "validated-provisional-previsualization",
+  "formalEligible": false,
+  "samplePolicy": "one-representative-scene",
+  "selectedSceneId": "P02",
+  "policy": {
+    "incidentPreventionVersion": "1"
+  },
+  "sourceDirectorCues": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/director-core-regression-r1/director-cues.v1.json",
+    "sha256": "ee90a33fd59c885ab3194fad80a7223174a2f30cd65e1397593d5ed53e07a295"
+  },
+  "userAcceptance": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/director-core-regression-r1/firstframe-validation-r1/user-confirmation.v1.json",
+    "sha256": "fa69ea5f722d9bff77cf2bafa70f1a56c400f951b6a80c4bdd51cf7710ec0dac"
+  },
+  "calibrationPolicy": {
+    "plannedAnchorQuadsAreProvisional": true,
+    "actualGeneratedPaperSurfaceCalibrationRequired": true,
+    "provisionalAnchorsExcludedFromGenerationPrompts": true
+  },
+  "paperScenes": [
+    {
+      "beatId": "P01",
+      "title": "让观众看见旧经验没有被丢弃，而是重新用于理解客户。",
+      "spokenLine": "你对客户的了解，恰恰可能派上用场。",
+      "durationSeconds": 4,
+      "visualRole": "relationship",
+      "visualMetaphor": "旧经验档案沿环形观察台对准客户问题",
+      "composition": "环形中心观察台",
+      "primaryAction": "两枚磨损档案纸片沿同一弧形轨道进入观察镜下方",
+      "prompt": {
+        "firstFrame": "摄影级手作纸艺定格，暖米色实体桌面，纤维卡纸、瓦楞纸、撕边纸与真实接触阴影，深蓝、珊瑚红、暖白和少量绿色，16:9。斜俯拍的环形观察台占据画面中心，外圈嵌着磨损的票据纸片、门店布样和工具剪影，内圈是一枚珊瑚红纸质观察镜，镜下留空；远处竖立由人物轮廓、大小不同纸块和断线组成的需求轮廓板，两枚磨损档案纸片停在同一条弧形轨道起点。台边左侧固定空白纸牌A，需求板旁固定空白纸牌B，全部承载面无字。",
+        "motion": "基于已确认首帧，两枚磨损档案纸片沿同一弧形轨道进入观察镜下方，固定机位，结束时纸片与远处需求轮廓板形成清楚对应；两张固定字牌保持不动，不新增物件、不改材质、不生成文字。"
+      },
+      "textPlan": [
+        {
+          "nodeId": "P01-N1",
+          "text": "旧经验",
+          "surfaceDescription": "台边左侧固定空白纸牌A",
+          "groupId": "P01-G1",
+          "surfaceId": "P01-S1",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.14,
+              0.12
+            ],
+            [
+              0.34,
+              0.12
+            ],
+            [
+              0.34,
+              0.2
+            ],
+            [
+              0.14,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P01-N2",
+          "text": "客户问题",
+          "surfaceDescription": "需求板旁固定空白纸牌B",
+          "groupId": "P01-G2",
+          "surfaceId": "P01-S2",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.66,
+              0.12
+            ],
+            [
+              0.8600000000000001,
+              0.12
+            ],
+            [
+              0.8600000000000001,
+              0.2
+            ],
+            [
+              0.66,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        }
+      ],
+      "screenTextPlan": [],
+      "negativePrompt": [
+        "不生成可读文字",
+        "不复制参考图具体版式",
+        "不使用PPT卡片",
+        "不做流水线",
+        "不新增人物"
+      ],
+      "referenceImageIds": [
+        "REF01",
+        "REF02"
+      ]
+    },
+    {
+      "beatId": "P02",
+      "title": "让观众看懂AI负责整理，真实回答仍由老板复核。",
+      "spokenLine": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。",
+      "durationSeconds": 6,
+      "visualRole": "process",
+      "visualMetaphor": "回答纸片被一根编辑线收成可拍纸带",
+      "composition": "俯拍放射编辑桌",
+      "primaryAction": "珊瑚红编辑线把回答纸片收成一条有序纸带",
+      "prompt": {
+        "firstFrame": "摄影级手作纸艺定格，暖米色实体桌面，纤维卡纸、瓦楞纸、撕边纸与真实接触阴影，深蓝、珊瑚红、暖白和少量绿色，16:9。正上方俯拍，形状各异的回答纸片与产品布样围绕中央编辑线呈放射状分布，三枚纸夹组成简洁的整理节点，画面下方是一条空白胶片纸带，侧边设有独立的人工检查台。桌边左侧固定空白纸牌A、桌边中部固定空白纸牌B、桌边右侧固定空白纸牌C；可见剪刀、棉线和纸边细节，不出现电子界面，全部承载面无字。",
+        "motion": "基于已确认首帧，珊瑚红编辑线把回答纸片收成一条有序纸带，俯拍机位保持稳定，纸带停在人工检查台之前；三张固定字牌保持不动，不替人作判断，不新增内容、不生成文字。"
+      },
+      "textPlan": [
+        {
+          "nodeId": "P02-N1",
+          "text": "客户回答",
+          "surfaceDescription": "桌边左侧固定空白纸牌A",
+          "groupId": "P02-G1",
+          "surfaceId": "P02-S1",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.14,
+              0.12
+            ],
+            [
+              0.34,
+              0.12
+            ],
+            [
+              0.34,
+              0.2
+            ],
+            [
+              0.14,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P02-N2",
+          "text": "AI整理",
+          "surfaceDescription": "桌边中部固定空白纸牌B",
+          "groupId": "P02-G2",
+          "surfaceId": "P02-S2",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.39999999999999997,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.2
+            ],
+            [
+              0.39999999999999997,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P02-N3",
+          "text": "老板复核",
+          "surfaceDescription": "桌边右侧固定空白纸牌C",
+          "groupId": "P02-G3",
+          "surfaceId": "P02-S3",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.6599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.2
+            ],
+            [
+              0.6599999999999999,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        }
+      ],
+      "screenTextPlan": [],
+      "negativePrompt": [
+        "不生成可读文字",
+        "不复制参考图具体版式",
+        "不做电子界面",
+        "不做多条流水线",
+        "不让复核自动通过"
+      ],
+      "referenceImageIds": [
+        "REF01",
+        "REF02"
+      ]
+    },
+    {
+      "beatId": "P03",
+      "title": "让观众看见内容只能把机会送到岸边，没有产品或服务承托就无法完成交付。",
+      "spokenLine": "但他本身没有能交给客户的产品或服务，光发内容也接不住生意。",
+      "durationSeconds": 5,
+      "visualRole": "mechanism",
+      "visualMetaphor": "内容纸桥在产品服务底座缺席处留下断口",
+      "composition": "侧视断桥构图",
+      "primaryAction": "一张无字信息页沿纸桥前进并停在断口前",
+      "prompt": {
+        "firstFrame": "摄影级手作纸艺定格，暖米色实体桌面，纤维卡纸、瓦楞纸、撕边纸与真实接触阴影，深蓝、珊瑚红、暖白和少量绿色，16:9。低机位侧视，左侧手摇纸媒机出口前放着一张无字信息页，中景是由多层蓝色纸页搭成的桥面，桥面在右端留有清楚断口，断口下方有两个空的承重卡槽，右侧接收柜台与纸桥隔开。左侧固定空白纸牌A、中部固定空白纸牌B、右侧固定空白纸牌C；前景可见纸边厚度，后景仅有克制的纸山剪影，全部承载面无字。",
+        "motion": "基于已确认首帧，一张无字信息页沿纸桥前进并停在断口前，固定机位保持低角度，结束时纸页没有抵达接收柜台；三张固定字牌保持不动，不补齐缺失底座，不表现成交、不新增物件、不生成文字。"
+      },
+      "textPlan": [
+        {
+          "nodeId": "P03-N1",
+          "text": "内容",
+          "surfaceDescription": "左侧固定空白纸牌A",
+          "groupId": "P03-G1",
+          "surfaceId": "P03-S1",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.14,
+              0.12
+            ],
+            [
+              0.34,
+              0.12
+            ],
+            [
+              0.34,
+              0.2
+            ],
+            [
+              0.14,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P03-N2",
+          "text": "产品或服务",
+          "surfaceDescription": "中部固定空白纸牌B",
+          "groupId": "P03-G2",
+          "surfaceId": "P03-S2",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.39999999999999997,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.2
+            ],
+            [
+              0.39999999999999997,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P03-N3",
+          "text": "客户",
+          "surfaceDescription": "右侧固定空白纸牌C",
+          "groupId": "P03-G3",
+          "surfaceId": "P03-S3",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.6599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.2
+            ],
+            [
+              0.6599999999999999,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        }
+      ],
+      "screenTextPlan": [],
+      "negativePrompt": [
+        "不生成可读文字",
+        "不让纸页越过断口",
+        "不自动补上产品或服务",
+        "不使用PPT卡片",
+        "不表现成交结果"
+      ],
+      "referenceImageIds": [
+        "REF01",
+        "REF02"
+      ]
+    },
+    {
+      "beatId": "P04",
+      "title": "让观众理解本地积累的行业服务可以连接到有同类需求的外地同行。",
+      "spokenLine": "就可以试着把这项服务介绍给外地同行。",
+      "durationSeconds": 4,
+      "visualRole": "relationship",
+      "visualMetaphor": "兰州纸地图上的服务线连接远方同行工作台",
+      "composition": "对角地图长线",
+      "primaryAction": "一根珊瑚红棉线从城市定位钉连接到右上工作台",
+      "prompt": {
+        "firstFrame": "摄影级手作纸艺定格，暖米色实体桌面，纤维卡纸、瓦楞纸、撕边纸与真实接触阴影，深蓝、珊瑚红、暖白和少量绿色，16:9。斜俯拍全景，黄河曲线和层叠山形组成的城市纸地图从左下延伸到画面中央，地图旁是一只装有耳廓纸形、扳手和胶片纸的小型工作工具箱，右上远处只有一座形态不同的同行工作台；一卷珊瑚红棉线停在城市定位钉旁，沿对角线保留清楚路径。左下固定空白纸牌A、中央固定空白纸牌B、右上固定空白纸牌C，全部承载面无字。",
+        "motion": "基于已确认首帧，一根珊瑚红棉线从城市定位钉连接到右上工作台；镜头只做一次轻微横向跟随，三张固定字牌保持不动，结束时工作工具箱仍留在原位；连接只表示可以触达，不表现自动成交、不新增城市、不生成文字。"
+      },
+      "textPlan": [
+        {
+          "nodeId": "P04-N1",
+          "text": "兰州",
+          "surfaceDescription": "左下固定空白纸牌A",
+          "groupId": "P04-G1",
+          "surfaceId": "P04-S1",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.14,
+              0.12
+            ],
+            [
+              0.34,
+              0.12
+            ],
+            [
+              0.34,
+              0.2
+            ],
+            [
+              0.14,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P04-N2",
+          "text": "行业服务",
+          "surfaceDescription": "中央固定空白纸牌B",
+          "groupId": "P04-G2",
+          "surfaceId": "P04-S2",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.39999999999999997,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.2
+            ],
+            [
+              0.39999999999999997,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P04-N3",
+          "text": "外地同行",
+          "surfaceDescription": "右上固定空白纸牌C",
+          "groupId": "P04-G3",
+          "surfaceId": "P04-S3",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.6599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.2
+            ],
+            [
+              0.6599999999999999,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        }
+      ],
+      "screenTextPlan": [],
+      "negativePrompt": [
+        "不生成可读文字",
+        "不做发光网络特效",
+        "不表现全国覆盖",
+        "不表现自动成交",
+        "不复制参考图具体构图"
+      ],
+      "referenceImageIds": [
+        "REF01",
+        "REF02"
+      ]
+    },
+    {
+      "beatId": "P05",
+      "title": "让观众看懂真实问题有独特形状，通用方案未经诊断往往对不上。",
+      "spokenLine": "不能他一说生意不好，你就给他生成一份通用方案。",
+      "durationSeconds": 4,
+      "visualRole": "comparison",
+      "visualMetaphor": "不规则问题槽拒绝方形通用纸块",
+      "composition": "微距非对称错位",
+      "primaryAction": "方形纸块向不规则问题槽移动并停在槽外",
+      "prompt": {
+        "firstFrame": "摄影级手作纸艺定格，暖米色实体桌面，纤维卡纸、瓦楞纸、撕边纸与真实接触阴影，深蓝、珊瑚红、暖白和少量绿色，16:9。微距非对称构图，左侧立着由大小不同纸块、断线和空位组成的不规则问题槽，槽边有清晰手工切痕；右前景是一块过于规整的方形纸块，两者尺寸和轮廓明显错位；后景静放一枚纸质诊断镜。左后固定空白纸牌A、右前固定空白纸牌B、后景固定空白纸牌C，全部承载面无字。",
+        "motion": "基于已确认首帧，方形纸块向不规则问题槽移动并停在槽外；固定微距机位，三张固定字牌保持不动，错位关系始终清楚，结束时不强行塞入、不自动给出方案、不新增结果、不生成文字。"
+      },
+      "textPlan": [
+        {
+          "nodeId": "P05-N1",
+          "text": "实际问题",
+          "surfaceDescription": "左后固定空白纸牌A",
+          "groupId": "P05-G1",
+          "surfaceId": "P05-S1",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.14,
+              0.12
+            ],
+            [
+              0.34,
+              0.12
+            ],
+            [
+              0.34,
+              0.2
+            ],
+            [
+              0.14,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P05-N2",
+          "text": "通用方案",
+          "surfaceDescription": "右前固定空白纸牌B",
+          "groupId": "P05-G2",
+          "surfaceId": "P05-S2",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.39999999999999997,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.2
+            ],
+            [
+              0.39999999999999997,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P05-N3",
+          "text": "先诊断",
+          "surfaceDescription": "后景固定空白纸牌C",
+          "groupId": "P05-G3",
+          "surfaceId": "P05-S3",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.6599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.2
+            ],
+            [
+              0.6599999999999999,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        }
+      ],
+      "screenTextPlan": [],
+      "negativePrompt": [
+        "不生成可读文字",
+        "不让通用纸块进入问题槽",
+        "不表现自动诊断完成",
+        "不增加万能方案",
+        "不使用科技光效"
+      ],
+      "referenceImageIds": [
+        "REF01",
+        "REF02"
+      ]
+    }
+  ]
+}

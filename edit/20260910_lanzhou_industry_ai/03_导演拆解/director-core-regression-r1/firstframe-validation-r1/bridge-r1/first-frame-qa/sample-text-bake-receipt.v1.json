@@ -1,0 +1,567 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-text-bake-receipt/v1",
+  "taskId": "20260910-lanzhou-industry-ai-director-core-regression-r1",
+  "request": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/director-core-regression-r1/firstframe-validation-r1/bridge-r1/first-frame-qa/sample-text-bake-request.v1.json",
+    "sha256": "ccb5487fafefe7015e0f899ae6a6c7415f1c9c3fadbd7b7a23637864a83a9499"
+  },
+  "status": "deterministic-first-frame-text-baked-and-ocr-passed",
+  "modelGeneratedReadableTextAllowed": false,
+  "sourcePlan": {
+    "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/director-core-regression-r1/firstframe-validation-r1/bridge-r1/director-cue-native-source-plan.v1.json",
+    "sha256": "c0d90dd21009d150376793782f5505ad5304bed05cd2dd2993b86a881b79f7a2"
+  },
+  "scenes": [
+    {
+      "sceneId": "P02",
+      "pairId": "P02-P02",
+      "pairSha256": "a4d5f64d696a834cae2e27b1775ef99e2955a37cb5ed602d7cf032a274538576",
+      "textPlanSha256": "84f78d0cffe0701e581522e0c93c552730cda6b6756a2865d727dc0029884107",
+      "labelsSha256": "f47983a5d19ab6708cb9a5ea117acf7368e9fd8bf62d560f7adeeb210c9399c8",
+      "anchorCalibration": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/director-core-regression-r1/firstframe-validation-r1/bridge-r1/first-frame-qa/anchor-calibrations/P02.v1.json",
+        "sha256": "282355e32ca84961f603847ba129585b74d7b319db299a219e911f52d18c7225"
+      },
+      "calibratedAnchors": [
+        {
+          "nodeId": "P02-N1",
+          "anchorQuad": [
+            [
+              0.17165071770334928,
+              0.40488841657810837
+            ],
+            [
+              0.2972488038277512,
+              0.40063761955366634
+            ],
+            [
+              0.29904306220095694,
+              0.4729011689691817
+            ],
+            [
+              0.173444976076555,
+              0.4771519659936238
+            ]
+          ]
+        },
+        {
+          "nodeId": "P02-N2",
+          "anchorQuad": [
+            [
+              0.43301435406698563,
+              0.4962805526036132
+            ],
+            [
+              0.5711722488038278,
+              0.4962805526036132
+            ],
+            [
+              0.5711722488038278,
+              0.5696068012752391
+            ],
+            [
+              0.43301435406698563,
+              0.5696068012752391
+            ]
+          ]
+        },
+        {
+          "nodeId": "P02-N3",
+          "anchorQuad": [
+            [
+              0.6973684210526315,
+              0.4038257173219979
+            ],
+            [
+              0.8361244019138756,
+              0.41764080765143463
+            ],
+            [
+              0.8325358851674641,
+              0.48884165781083955
+            ],
+            [
+              0.69377990430622,
+              0.47502656748140276
+            ]
+          ]
+        }
+      ],
+      "sourceImage": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/director-core-regression-r1/firstframe-validation-r1/bridge-r1/first-frames/P02_P02_first-frame.png",
+        "sha256": "5f87a01472f0f1e820e09c0aaa6835514a076578432b64735d94a584958a5921",
+        "width": 1672,
+        "height": 941
+      },
+      "outputImage": {
+        "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/03_导演拆解/director-core-regression-r1/firstframe-validation-r1/bridge-r1/text-baked-first-frames/P02_P02_first-frame-text-baked.png",
+        "sha256": "0a013a86a800d865693ce479b4d9baa488bc27ef52bba049b70456648c76e9f1",
+        "width": 1672,
+        "height": 941
+      },
+      "ocr": [
+        {
+          "nodeId": "P02-N1",
+          "expected": "客户回答",
+          "recognized": "客户回答",
+          "matched": true,
+          "rendering": {
+            "fontPath": "/Users/pc/Library/Fonts/NotoSansCJKsc-Regular.otf",
+            "pointSize": 108,
+            "pointSizeCandidates": [
+              108,
+              120,
+              96,
+              132
+            ]
+          },
+          "preprocessing": {
+            "mode": "inverse-perspective-dual-ocr-v1",
+            "rectifiedSize": {
+              "width": 1000,
+              "height": 240
+            },
+            "scalePercent": 400,
+            "borderPixels": 160,
+            "pageSegmentationMode": 7,
+            "language": "chi_sim",
+            "selectedEngine": "apple-vision",
+            "recognitionPolicy": "tesseract-then-apple-vision-exact-match-v1",
+            "selectedVariantId": "vision-box-t50",
+            "typographyAttempts": [
+              {
+                "pointSize": 108,
+                "ocrAttempts": [
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "各户口]合",
+                    "normalized": "各户口合"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t50",
+                    "filter": "Box",
+                    "thresholdPercent": 50,
+                    "recognized": "各忆回舍",
+                    "normalized": "各忆回舍"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t60",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 60,
+                    "recognized": "各忆回|代",
+                    "normalized": "各忆回代"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t35",
+                    "filter": "Box",
+                    "thresholdPercent": 35,
+                    "recognized": "各忆回从",
+                    "normalized": "各忆回从"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "point-t55",
+                    "filter": "Point",
+                    "thresholdPercent": 55,
+                    "recognized": "各户回合",
+                    "normalized": "各户回合"
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-lanczos-t50",
+                    "sourceVariantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "客 回答",
+                    "normalized": "客回答"
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-box-t50",
+                    "sourceVariantId": "box-t50",
+                    "filter": "Box",
+                    "thresholdPercent": 50,
+                    "recognized": "客户回答",
+                    "normalized": "客户回答"
+                  }
+                ]
+              }
+            ],
+            "finalImageAttempts": [
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "各户口]合",
+                "normalized": "各户口合"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "box-t50",
+                "filter": "Box",
+                "thresholdPercent": 50,
+                "recognized": "各忆回舍",
+                "normalized": "各忆回舍"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t60",
+                "filter": "Lanczos",
+                "thresholdPercent": 60,
+                "recognized": "各忆回|代",
+                "normalized": "各忆回代"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "box-t35",
+                "filter": "Box",
+                "thresholdPercent": 35,
+                "recognized": "各忆回从",
+                "normalized": "各忆回从"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "point-t55",
+                "filter": "Point",
+                "thresholdPercent": 55,
+                "recognized": "各户回合",
+                "normalized": "各户回合"
+              },
+              {
+                "engine": "apple-vision",
+                "variantId": "vision-lanczos-t50",
+                "sourceVariantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "客 回答",
+                "normalized": "客回答"
+              },
+              {
+                "engine": "apple-vision",
+                "variantId": "vision-box-t50",
+                "sourceVariantId": "box-t50",
+                "filter": "Box",
+                "thresholdPercent": 50,
+                "recognized": "客户回答",
+                "normalized": "客户回答"
+              }
+            ]
+          },
+          "evaluationStage": "final-composite",
+          "inputImageSha256": "0a013a86a800d865693ce479b4d9baa488bc27ef52bba049b70456648c76e9f1"
+        },
+        {
+          "nodeId": "P02-N2",
+          "expected": "AI整理",
+          "recognized": "AI整理",
+          "matched": true,
+          "rendering": {
+            "fontPath": "/Users/pc/Library/Fonts/NotoSansCJKsc-Regular.otf",
+            "pointSize": 120,
+            "pointSizeCandidates": [
+              108,
+              120,
+              96,
+              132
+            ]
+          },
+          "preprocessing": {
+            "mode": "inverse-perspective-dual-ocr-v1",
+            "rectifiedSize": {
+              "width": 1000,
+              "height": 240
+            },
+            "scalePercent": 400,
+            "borderPixels": 160,
+            "pageSegmentationMode": 7,
+            "language": "chi_sim",
+            "selectedEngine": "apple-vision",
+            "recognitionPolicy": "tesseract-then-apple-vision-exact-match-v1",
+            "selectedVariantId": "vision-box-t50",
+            "typographyAttempts": [
+              {
+                "pointSize": 108,
+                "ocrAttempts": [
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "Al垄理",
+                    "normalized": "Al垄理"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t50",
+                    "filter": "Box",
+                    "thresholdPercent": 50,
+                    "recognized": "Al整球",
+                    "normalized": "Al整球"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t60",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 60,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t35",
+                    "filter": "Box",
+                    "thresholdPercent": 35,
+                    "recognized": "Al区于",
+                    "normalized": "Al区于"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "point-t55",
+                    "filter": "Point",
+                    "thresholdPercent": 55,
+                    "recognized": "Al整于",
+                    "normalized": "Al整于"
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-lanczos-t50",
+                    "sourceVariantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-box-t50",
+                    "sourceVariantId": "box-t50",
+                    "filter": "Box",
+                    "thresholdPercent": 50,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-lanczos-t60",
+                    "sourceVariantId": "lanczos-t60",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 60,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-box-t35",
+                    "sourceVariantId": "box-t35",
+                    "filter": "Box",
+                    "thresholdPercent": 35,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-point-t55",
+                    "sourceVariantId": "point-t55",
+                    "filter": "Point",
+                    "thresholdPercent": 55,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  }
+                ]
+              },
+              {
+                "pointSize": 120,
+                "ocrAttempts": [
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t50",
+                    "filter": "Box",
+                    "thresholdPercent": 50,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t60",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 60,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "box-t35",
+                    "filter": "Box",
+                    "thresholdPercent": 35,
+                    "recognized": "Al鳌理",
+                    "normalized": "Al鳌理"
+                  },
+                  {
+                    "engine": "tesseract",
+                    "variantId": "point-t55",
+                    "filter": "Point",
+                    "thresholdPercent": 55,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-lanczos-t50",
+                    "sourceVariantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "Al整理",
+                    "normalized": "Al整理"
+                  },
+                  {
+                    "engine": "apple-vision",
+                    "variantId": "vision-box-t50",
+                    "sourceVariantId": "box-t50",
+                    "filter": "Box",
+                    "thresholdPercent": 50,
+                    "recognized": "AI整理",
+                    "normalized": "AI整理"
+                  }
+                ]
+              }
+            ],
+            "finalImageAttempts": [
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "Al整理",
+                "normalized": "Al整理"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "box-t50",
+                "filter": "Box",
+                "thresholdPercent": 50,
+                "recognized": "Al整理",
+                "normalized": "Al整理"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t60",
+                "filter": "Lanczos",
+                "thresholdPercent": 60,
+                "recognized": "Al整理",
+                "normalized": "Al整理"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "box-t35",
+                "filter": "Box",
+                "thresholdPercent": 35,
+                "recognized": "Al鳌理",
+                "normalized": "Al鳌理"
+              },
+              {
+                "engine": "tesseract",
+                "variantId": "point-t55",
+                "filter": "Point",
+                "thresholdPercent": 55,
+                "recognized": "Al整理",
+                "normalized": "Al整理"
+              },
+              {
+                "engine": "apple-vision",
+                "variantId": "vision-lanczos-t50",
+                "sourceVariantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "Al整理",
+                "normalized": "Al整理"
+              },
+              {
+                "engine": "apple-vision",
+                "variantId": "vision-box-t50",
+                "sourceVariantId": "box-t50",
+                "filter": "Box",
+                "thresholdPercent": 50,
+                "recognized": "AI整理",
+                "normalized": "AI整理"
+              }
+            ]
+          },
+          "evaluationStage": "final-composite",
+          "inputImageSha256": "0a013a86a800d865693ce479b4d9baa488bc27ef52bba049b70456648c76e9f1"
+        },
+        {
+          "nodeId": "P02-N3",
+          "expected": "老板复核",
+          "recognized": "老板复核",
+          "matched": true,
+          "rendering": {
+            "fontPath": "/Users/pc/Library/Fonts/NotoSansCJKsc-Regular.otf",
+            "pointSize": 108,
+            "pointSizeCandidates": [
+              108,
+              120,
+              96,
+              132
+            ]
+          },
+          "preprocessing": {
+            "mode": "inverse-perspective-dual-ocr-v1",
+            "rectifiedSize": {
+              "width": 1000,
+              "height": 240
+            },
+            "scalePercent": 400,
+            "borderPixels": 160,
+            "pageSegmentationMode": 7,
+            "language": "chi_sim",
+            "selectedEngine": "tesseract",
+            "recognitionPolicy": "tesseract-then-apple-vision-exact-match-v1",
+            "selectedVariantId": "lanczos-t50",
+            "typographyAttempts": [
+              {
+                "pointSize": 108,
+                "ocrAttempts": [
+                  {
+                    "engine": "tesseract",
+                    "variantId": "lanczos-t50",
+                    "filter": "Lanczos",
+                    "thresholdPercent": 50,
+                    "recognized": "老板复核",
+                    "normalized": "老板复核"
+                  }
+                ]
+              }
+            ],
+            "finalImageAttempts": [
+              {
+                "engine": "tesseract",
+                "variantId": "lanczos-t50",
+                "filter": "Lanczos",
+                "thresholdPercent": 50,
+                "recognized": "老板复核",
+                "normalized": "老板复核"
+              }
+            ]
+          },
+          "evaluationStage": "final-composite",
+          "inputImageSha256": "0a013a86a800d865693ce479b4d9baa488bc27ef52bba049b70456648c76e9f1"
+        }
+      ]
+    }
+  ]
+}

@@ -99,7 +99,26 @@ try {
   const identity = buildSceneIdentity(sourceScene, 0);
 
   const sourceManifestPath = path.join(testRoot, 'first-frame-prompts.v1.json');
-  writeFileSync(sourceManifestPath, `${JSON.stringify({test: true}, null, 2)}\n`);
+  writeFileSync(sourceManifestPath, `${JSON.stringify({
+    test: true,
+    taskId: 'handoff-test',
+    requestId: 'handoff-test-request',
+  }, null, 2)}\n`);
+  const directorReceiptPath = path.join(testRoot, 'director-validation-receipt.v1.json');
+  writeFileSync(directorReceiptPath, `${JSON.stringify({
+    schemaVersion: 'koubo-director-validation-receipt/v1',
+    status: 'validated-provisional-previsualization',
+    skillExecuted: true,
+    validatorExecuted: true,
+    taskId: 'handoff-test',
+    requestId: 'handoff-test-request',
+    artifacts: {
+      firstFramePromptManifest: {
+        path: sourceManifestPath,
+        sha256: sha256File(sourceManifestPath),
+      },
+    },
+  }, null, 2)}\n`);
   const reviewPath = path.join(qaRoot, 'P01.visual-review.v1.json');
   writeFileSync(reviewPath, `${JSON.stringify({
     schemaVersion: REVIEW_SCHEMA,
@@ -127,6 +146,10 @@ try {
     requestId: 'handoff-test-request',
     status: 'full-generation-authorized',
     sourceManifest: {path: sourceManifestPath, sha256: sha256File(sourceManifestPath)},
+    directorValidationReceipt: {
+      path: directorReceiptPath,
+      sha256: sha256File(directorReceiptPath),
+    },
     output: {handoffRoot: testRoot, imageRoot, bakedImageRoot, qaRoot, calibrationRoot},
     sampleSceneIds: ['P01'],
     scenes: [{
@@ -302,6 +325,20 @@ function incidentFixture(t) {
       };
     }),
   };
+  const directorReceipt = {
+    schemaVersion: 'koubo-director-validation-receipt/v1',
+    status: 'validated-provisional-previsualization',
+    skillExecuted: true,
+    validatorExecuted: true,
+    taskId: plan.taskId,
+    requestId: plan.requestId,
+    revisionId: plan.revisionId,
+    artifacts: {
+      sourcePlan,
+      firstFramePromptManifest: structuredClone(job.sourceManifest),
+    },
+  };
+  job.directorValidationReceipt = save('director-validation.json', directorReceipt);
   const receipt = {
     schemaVersion: TEXT_BAKE_RECEIPT_SCHEMA, taskId: plan.taskId,
     status: 'deterministic-first-frame-text-baked-and-ocr-passed', sourcePlan,
@@ -342,6 +379,8 @@ function incidentFixture(t) {
   };
   const runPack = ({scope = 'batch', withDynamic = true, phase = 'full', sceneId} = {}) => {
     job.textBakeReceipts = [{phase, receipt: save('bake-receipt.json', receipt)}];
+    directorReceipt.artifacts.firstFramePromptManifest = structuredClone(job.sourceManifest);
+    job.directorValidationReceipt = save('director-validation.json', directorReceipt);
     save('job.json', job);
     save('motion.json', manifest);
     save('acceptance.json', acceptance);
@@ -371,7 +410,8 @@ function incidentFixture(t) {
     dynamic.sourcePlan = receipt.sourcePlan;
     dynamic.representatives[0].motionContractSha256 = manifest.scenes[0].motionContractSha256;
   };
-  return {job, plan, manifest, firstFrames, receipt, acceptance, dynamic, file, save, runPack, approveSceneIds, refreshPlanReviews};
+  return {job, plan, manifest, firstFrames, receipt, acceptance, dynamic,
+    directorReceipt, file, save, runPack, approveSceneIds, refreshPlanReviews};
 }
 
 for (const [name, mutate, expected] of [
@@ -410,7 +450,7 @@ for (const [name, mutate, expected] of [
   }, 'PAPER_SEMANTIC_REVIEW_FILE_OR_SHA_INVALID'],
   ['首帧清单跨版本', (f) => {
     f.firstFrames.revisionId = 'old'; f.job.sourceManifest = f.save('firstframes.json', f.firstFrames);
-  }, 'SOURCE_IDENTITY_INVALID'],
+  }, 'SOURCE_MANIFEST_REVISION_MISMATCH'],
   ['动作清单跨版本', (f) => { f.manifest.revisionId = 'old'; }, 'SOURCE_IDENTITY_INVALID'],
 ]) {
   test(`强化交接拒绝${name}`, (t) => {
@@ -620,9 +660,9 @@ function canvasFixture(t) {
     userQuote: '测试夹具：准备画布，生成前等我，不构成真实授权', recordedAt: '2026-09-10T12:00:00+08:00'};
   const runCanvas = () => {
     const motion = f.save('motion.json', f.manifest);
-    f.job.directorValidationReceipt = f.save('director-validation.json', {
-      skillExecuted: true, validatorExecuted: true, status: 'validated-provisional-previsualization', revisionId: f.job.revisionId,
-      artifacts: {firstFramePromptManifest: f.job.sourceManifest, runningHubPromptManifest: motion}});
+    f.directorReceipt.artifacts.firstFramePromptManifest = structuredClone(f.job.sourceManifest);
+    f.directorReceipt.artifacts.runningHubPromptManifest = motion;
+    f.job.directorValidationReceipt = f.save('director-validation.json', f.directorReceipt);
     f.job.textBakeReceipts = [{phase: 'full', receipt: f.save('bake-receipt.json', f.receipt)}];
     f.save('job.json', f.job); f.save('authorization.json', authorization);
     const script = path.resolve(path.dirname(readyPackScript), 'build-runninghub-canvas-preparation-pack.mjs');

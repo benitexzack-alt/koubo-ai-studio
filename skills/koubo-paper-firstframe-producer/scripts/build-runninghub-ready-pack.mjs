@@ -7,6 +7,7 @@ import {
   RUNNINGHUB_READY_PACK_SCHEMA,
   TEXT_BAKE_RECEIPT_SCHEMA,
   parseArgs,
+  readAuthoritativeSourceManifest,
   readJson,
   resolveInside,
   sha256File,
@@ -32,6 +33,10 @@ try {
   const manifest = readJson(runningHubManifestPath);
   const acceptance = readJson(acceptancePath);
   if (job.schemaVersion !== JOB_SCHEMA) throw new Error('FIRSTFRAME_JOB_SCHEMA_INVALID');
+  const {
+    manifest: authoritativeSourceManifest,
+    directorReceipt: authoritativeDirectorReceipt,
+  } = readAuthoritativeSourceManifest(job, jobPath);
   if (manifest.status !== 'awaiting-text-baked-firstframes') {
     throw new Error('RUNNINGHUB_MANIFEST_STATE_INVALID');
   }
@@ -45,8 +50,12 @@ try {
     throw new Error('TEXT_BAKED_USER_ACCEPTANCE_INVALID');
   }
   const scope = args['handoff-scope'] ?? 'batch';
-  const fullReceiptRecord = job.textBakeReceipts?.findLast((item) =>
-    item.phase === 'full' || (scope === 'first-trial' && item.phase === 'sample'));
+  const cueNativeJob =
+    authoritativeSourceManifest.sourceDirectorSchema === 'koubo-director-cues/v1';
+  const fullReceiptRecord = cueNativeJob && scope === 'first-trial'
+    ? job.textBakeReceipts?.findLast((item) => item.phase === 'sample')
+    : job.textBakeReceipts?.findLast((item) => item.phase === 'full' ||
+      (scope === 'first-trial' && item.phase === 'sample'));
   if (!fullReceiptRecord?.receipt?.path) {
     throw new Error('FULL_TEXT_BAKE_RECEIPT_MISSING');
   }
@@ -67,6 +76,8 @@ try {
     projectRoot, job, manifest, receipt, acceptance, scope,
     dynamicAcceptancePath: args['dynamic-acceptance'],
     sceneId: args['scene-id'],
+    authoritativeSourceManifest,
+    authoritativeDirectorReceipt,
   });
   const selectedScenes = incident
     ? incident.selectedIds.map((sceneId) => job.scenes.find((scene) => scene.sceneId === sceneId))
@@ -74,6 +85,7 @@ try {
   const approvedSceneIds = acceptance.sceneIds ?? [];
   const receiptByScene = new Map(receipt.scenes.map((scene) => [scene.sceneId, scene]));
   const manifestByScene = new Map(manifest.scenes.map((scene) => [scene.sceneId, scene]));
+  const cueNative = incident?.metadata?.compatibilityMode === 'cue-native-no-legacy-motion-contract';
   if (
     selectedScenes.length > 0 && (approvedSceneIds.length !== selectedScenes.length ||
     approvedSceneIds.some((sceneId, index) => sceneId !== selectedScenes[index].sceneId))
@@ -113,9 +125,11 @@ try {
       durationSeconds: motion.durationSeconds,
       textPlanSha256: motion.inputFirstFrameTextPlanSha256,
       textOcrPassed: true,
-      ...(incident ? {motionContractSha256: motion.motionContractSha256, dynamicValidation: motion.dynamicValidation} : {}),
+      ...(incident && !cueNative
+        ? {motionContractSha256: motion.motionContractSha256, dynamicValidation: motion.dynamicValidation}
+        : {}),
       textLabelMotion: incident ? 'fixed-independent-stands' : 'rigid-surface',
-      allowedMotion: incident ? ['blank-part-contract-actions-only'] : [
+      allowedMotion: cueNative ? ['exact-cue-prompt-actions-only'] : incident ? ['blank-part-contract-actions-only'] : [
         'rigid-slide',
         'rigid-translate',
         'small-angle-rotate',
@@ -142,13 +156,14 @@ try {
     requestId: job.requestId,
     status: incident && scenes.length === 0 ? 'no-generation-required'
       : incident && scope === 'first-trial' ? 'ready-for-runninghub-first-trial-manual' : 'ready-for-runninghub-manual',
+    ...incident?.metadata,
     externalSubmissionOwner: 'user',
     codexSubmissionAllowed: false,
+    externalSubmissionAuthorized: false,
     paidGenerationAllowed: false,
     batchDynamicallyAccepted: false,
     formalEnabled: false,
     publicationEnabled: false,
-    ...incident?.metadata,
     sourceJob: {path: jobPath, sha256: sha256File(jobPath)},
     sourceRunningHubManifest: {
       path: runningHubManifestPath,

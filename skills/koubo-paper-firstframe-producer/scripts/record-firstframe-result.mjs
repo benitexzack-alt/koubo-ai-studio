@@ -3,13 +3,17 @@
 import {existsSync, readFileSync, statSync} from 'node:fs';
 import path from 'node:path';
 import {
+  CUE_NATIVE_DIRECTOR_SCHEMA,
   JOB_SCHEMA,
   imageDimensions,
+  isFullBatchAuthorized,
   isInside,
   parseArgs,
+  readAuthoritativeSourceManifest,
   readJson,
   replaceJson,
   sha256File,
+  validateCueNativeJobSampleBinding,
 } from './firstframe-batch-core.mjs';
 
 try {
@@ -17,8 +21,21 @@ try {
   const jobPath = path.resolve(args.job);
   const job = readJson(jobPath);
   if (job.schemaVersion !== JOB_SCHEMA) throw new Error('FIRSTFRAME_JOB_SCHEMA_INVALID');
+  const {manifest: sourceManifest} = readAuthoritativeSourceManifest(job, jobPath);
+  if (sourceManifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA) {
+    const bindingErrors = validateCueNativeJobSampleBinding(job, sourceManifest);
+    if (bindingErrors.length) {
+      throw new Error(`CUE_NATIVE_SAMPLE_BINDING_INVALID:${bindingErrors.join('|')}`);
+    }
+  }
   const scene = job.scenes.find((item) => item.sceneId === args.scene);
   if (!scene) throw new Error(`FIRSTFRAME_SCENE_UNKNOWN:${args.scene}`);
+  if (
+    !job.sampleSceneIds?.includes(scene.sceneId) &&
+    !isFullBatchAuthorized(job, sourceManifest)
+  ) {
+    throw new Error(`FIRSTFRAME_SCENE_NOT_AUTHORIZED:${args.scene}`);
+  }
   const executionPromptPath = path.resolve(args['execution-prompt-file']);
   if (!isInside(job.output.qaRoot, executionPromptPath)) {
     throw new Error(`EXECUTION_PROMPT_OUTSIDE_QA_ROOT:${executionPromptPath}`);

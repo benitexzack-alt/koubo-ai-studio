@@ -7,6 +7,7 @@ import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {
+  readAuthoritativeSourceManifest,
   sha256File,
   sha256Json,
   sha256Text,
@@ -135,8 +136,10 @@ try {
     status: 'validated-provisional-previsualization',
     skillExecuted: true,
     validatorExecuted: true,
+    taskId: v9Manifest.taskId,
+    requestId: v9Manifest.requestId,
     policy: {physicalContinuityVersion: '1'},
-    artifacts: {firstFramePromptManifest: {sha256: sha256File(filePath)}},
+    artifacts: {firstFramePromptManifest: {path: filePath, sha256: sha256File(filePath)}},
   }, null, 2)}\n`);
   const prepareScriptPath = path.resolve(
     path.dirname(fileURLToPath(import.meta.url)),
@@ -172,4 +175,21 @@ try {
   rmSync(temporaryRoot, {recursive: true, force: true});
 }
 
-console.log(JSON.stringify({ok: true, manifestValidation: true, videoPromptLeakRejected: true, promptDriftRejected: true, duplicateSceneRejected: true, missingAnchorCalibrationGateRejected: true, v9LayoutContractValidated: true, v9OneSceneSampleValidated: true, v9PrepareCliValidated: true}));
+const projectRoot = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '../../..',
+);
+const historicalV9JobPath = path.join(
+  projectRoot,
+  'edit/20260910_lanzhou_industry_ai/03_导演拆解/paper-v9.1-r4/first-frame-final-preparation-r1/first-frame-batch.v1.json',
+);
+const historicalV9Job = JSON.parse(readFileSync(historicalV9JobPath, 'utf8'));
+const historicalV9Authority = readAuthoritativeSourceManifest(
+  historicalV9Job,
+  historicalV9JobPath,
+);
+assert.equal(historicalV9Authority.routeLock, null);
+assert.equal(historicalV9Authority.manifest.v9ContractEnabled, true);
+assert.equal(historicalV9Authority.manifestPathAliasUsed, true);
+
+console.log(JSON.stringify({ok: true, manifestValidation: true, videoPromptLeakRejected: true, promptDriftRejected: true, duplicateSceneRejected: true, missingAnchorCalibrationGateRejected: true, v9LayoutContractValidated: true, v9OneSceneSampleValidated: true, v9PrepareCliValidated: true, historicalV9ManifestPathAliasValidated: true}));

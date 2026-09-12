@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 
-import {mkdirSync} from 'node:fs';
+import {existsSync, mkdirSync} from 'node:fs';
 import path from 'node:path';
 import {
+  FIRSTFRAME_ROUTE_LOCK_FILE_NAME,
   JOB_SCHEMA,
+  createFirstFrameRouteLock,
+  firstFrameOutputRoots,
   parseArgs,
+  preparedFirstFrameScenes,
   readJson,
   resolveInside,
   sha256File,
@@ -42,10 +46,29 @@ try {
     errors.push('DIRECTOR_RECEIPT_STATUS_INVALID');
   }
   if (
-    directorReceipt.artifacts?.firstFramePromptManifest?.sha256 !==
-    sha256File(manifestPath)
+    directorReceipt.taskId !== manifest.taskId ||
+    directorReceipt.requestId !== manifest.requestId
   ) {
-    errors.push('DIRECTOR_MANIFEST_SHA_MISMATCH');
+    errors.push('DIRECTOR_RECEIPT_IDENTITY_MISMATCH');
+  }
+  if (
+    Object.hasOwn(manifest, 'revisionId') ||
+    Object.hasOwn(directorReceipt, 'revisionId')
+  ) {
+    if (
+      typeof manifest.revisionId !== 'string' ||
+      !manifest.revisionId.trim() ||
+      directorReceipt.revisionId !== manifest.revisionId
+    ) {
+      errors.push('DIRECTOR_RECEIPT_REVISION_MISMATCH');
+    }
+  }
+  if (
+    path.resolve(directorReceipt.artifacts?.firstFramePromptManifest?.path ?? '') !==
+      manifestPath ||
+    directorReceipt.artifacts?.firstFramePromptManifest?.sha256 !== sha256File(manifestPath)
+  ) {
+    errors.push('DIRECTOR_MANIFEST_BINDING_MISMATCH');
   }
   if (errors.length) throw new Error(`FIRSTFRAME_MANIFEST_INVALID:${errors.join('|')}`);
 
@@ -54,16 +77,23 @@ try {
   if (sampleErrors.length) throw new Error(`FIRSTFRAME_SAMPLE_INVALID:${sampleErrors.join('|')}`);
 
   const handoffRoot = path.dirname(manifestPath);
-  const imageRoot = path.join(handoffRoot, 'first-frames');
-  const bakedImageRoot = path.join(handoffRoot, 'text-baked-first-frames');
-  const qaRoot = path.join(handoffRoot, 'first-frame-qa');
-  const calibrationRoot = path.join(qaRoot, 'anchor-calibrations');
   const jobPath = path.join(handoffRoot, 'first-frame-batch.v1.json');
+  const routeLockPath = path.join(handoffRoot, FIRSTFRAME_ROUTE_LOCK_FILE_NAME);
+  if (existsSync(jobPath)) throw new Error(`OUTPUT_ALREADY_EXISTS:${jobPath}`);
+  if (existsSync(routeLockPath)) throw new Error(`OUTPUT_ALREADY_EXISTS:${routeLockPath}`);
+  const {imageRoot, bakedImageRoot, qaRoot, calibrationRoot} =
+    firstFrameOutputRoots(jobPath);
   mkdirSync(imageRoot, {recursive: true});
   mkdirSync(bakedImageRoot, {recursive: true});
   mkdirSync(qaRoot, {recursive: true});
   mkdirSync(calibrationRoot, {recursive: true});
 
+  const sourceManifest = {path: manifestPath, sha256: sha256File(manifestPath)};
+  const directorValidationReceipt = {
+    path: directorReceiptPath,
+    sha256: sha256File(directorReceiptPath),
+  };
+  const preparedAt = new Date().toISOString();
   const job = {
     schemaVersion: JOB_SCHEMA,
     taskId: manifest.taskId,
@@ -74,58 +104,39 @@ try {
     generationMode: 'image_gen-one-call-per-scene',
     maximumConcurrency: 2,
     automaticRetryAllowed: false,
-    samplePolicy: manifest.v9ContractEnabled === true
+    samplePolicy: manifest.samplePolicy ?? (manifest.v9ContractEnabled === true
       ? 'one-representative-scene'
-      : 'legacy-three-representative-scenes',
+      : 'legacy-three-representative-scenes'),
+    ...(manifest.sourceDirectorSchema !== undefined
+      ? {sourceDirectorSchema: manifest.sourceDirectorSchema}
+      : {}),
     generatedReadableTextAllowed: false,
-    sourceManifest: {path: manifestPath, sha256: sha256File(manifestPath)},
-    directorValidationReceipt: {
-      path: directorReceiptPath,
-      sha256: sha256File(directorReceiptPath),
-    },
+    sourceManifest,
+    directorValidationReceipt,
     output: {handoffRoot, imageRoot, bakedImageRoot, qaRoot, calibrationRoot},
     sampleSceneIds,
     fullBatchAuthorized: false,
-    scenes: manifest.scenes.map((scene) => ({
-      sceneId: scene.sceneId,
-      pairId: scene.pairId,
-      pairSha256: scene.pairSha256,
-      beatId: scene.beatId,
-      title: scene.title,
-      aspectRatio: scene.aspectRatio,
-      outputFileName: scene.outputFileName,
-      outputPath: path.join(imageRoot, scene.outputFileName),
-      firstFramePrompt: scene.firstFramePrompt,
-      firstFramePromptSha256: scene.firstFramePromptSha256,
-      textPlanSha256: scene.textPlanSha256,
-      deterministicTextBake: {
-        ...scene.deterministicTextBake,
-        outputPath: path.join(
-          bakedImageRoot,
-          scene.deterministicTextBake.outputImageFileName,
-        ),
-        calibrationPath: path.join(calibrationRoot, `${scene.sceneId}.v1.json`),
-      },
-      ...(manifest.v9ContractEnabled === true
-        ? {
-            v9ContractEnabled: true,
-            layoutContract: scene.layoutContract,
-            layoutContractSha256: scene.layoutContractSha256,
-          }
-        : {}),
-      selectedForSample: sampleSceneIds.includes(scene.sceneId),
-      result: null,
-      ...(scene.physicalContract ? {
-        physicalContract: scene.physicalContract,
-        physicalContractSha256: scene.physicalContractSha256,
-        motionContract: scene.motionContract,
-        motionContractSha256: scene.motionContractSha256,
-      } : {}),
-    })),
-    events: [{type: 'batch-prepared', at: new Date().toISOString()}],
+    scenes: preparedFirstFrameScenes(manifest, sampleSceneIds, jobPath),
+    events: [{type: 'batch-prepared', at: preparedAt}],
   };
+  const routeLock = createFirstFrameRouteLock({
+    manifest,
+    sampleSceneIds,
+    jobPath,
+    sourceManifest,
+    directorValidationReceipt,
+    createdAt: preparedAt,
+  });
+  writeNewJson(routeLockPath, routeLock);
   writeNewJson(jobPath, job);
-  console.log(JSON.stringify({ok: true, jobPath, imageRoot, qaRoot, sampleSceneIds}));
+  console.log(JSON.stringify({
+    ok: true,
+    jobPath,
+    routeLockPath,
+    imageRoot,
+    qaRoot,
+    sampleSceneIds,
+  }));
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
   process.exit(1);

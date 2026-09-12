@@ -45,13 +45,24 @@ test('真实烘焙CLI在创建请求或调用写字器前拒绝顶层passed下�
     return file;
   };
   const raw = save('synthetic-image.bin', 'hash-only fixture; no image is rendered in this gate test');
-  const source = save('source.json', {});
+  const source = save('source.json', {taskId: 'raw-review-gate', requestId: 'raw-review-gate-request'});
+  const directorReceipt = save('director-receipt.json', {
+    schemaVersion: 'koubo-director-validation-receipt/v1',
+    status: 'validated-provisional-previsualization',
+    skillExecuted: true,
+    validatorExecuted: true,
+    taskId: 'raw-review-gate',
+    requestId: 'raw-review-gate-request',
+    artifacts: {firstFramePromptManifest: {path: source, sha256: sha256File(source)}},
+  });
   const plan = save('plan.json', {});
   const font = save('unused-font.bin', 'must not be used');
   const review = {...baseline(), imageSha256: sha256File(raw)};
   review.criteria.videoReadiness = 'failed';
   const reviewPath = save('P02.visual-review.v1.json', review);
-  const job = save('job.json', {schemaVersion: JOB_SCHEMA, sourceManifest: {path: source, sha256: sha256File(source)},
+  const job = save('job.json', {schemaVersion: JOB_SCHEMA, taskId: 'raw-review-gate', requestId: 'raw-review-gate-request',
+    sourceManifest: {path: source, sha256: sha256File(source)},
+    directorValidationReceipt: {path: directorReceipt, sha256: sha256File(directorReceipt)},
     sampleSceneIds: ['P02'], output: {qaRoot: root}, scenes: [{sceneId: 'P02',
       result: {imagePath: raw, imageSha256: sha256File(raw), visualReview: {path: reviewPath}}}]});
   const script = fileURLToPath(new URL('../scripts/bake-firstframe-batch.mjs', import.meta.url));

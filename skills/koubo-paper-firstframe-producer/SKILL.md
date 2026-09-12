@@ -11,7 +11,7 @@ description: 执行口播纸艺导演输出的首帧生图清单：先生成无�
 
 ## 职责边界
 
-- 上游唯一权威是 `koubo-remotion-director` 生成并验证的 `first-frame-prompts.v1.json`。
+- 上游权威是 `koubo-remotion-director` 生成并验证的 `first-frame-prompts.v1.json`；若新导演直接交付 `koubo-director-cues/v1`，必须先走下述 cue-native 桥接，不能退回旧 V9 工程合同重新写提示词。
 - 本 Skill 不重写口播、不重新导演；生成模型不得写中文，但本地确定性文字烘焙属于本 Skill 的必经步骤。
 - 本 Skill 不提交 RunningHub、不生成视频、不发布。
 - `runninghub-image-to-video-prompts.v1.json` 只供后续人工操作；不得把其中动作提示词混入首帧生图。
@@ -24,6 +24,18 @@ description: 执行口播纸艺导演输出的首帧生图清单：先生成无�
 
 优先接收首帧 JSON 清单的绝对路径。若用户只粘贴提示词，先按同样 schema 建立新的项目内清单，并明确它是 `manual-import`，不能伪造导演验证回执。
 
+若输入是简化导演 `director-cues.v1.json`，先取得绑定当前 cues SHA-256 的单样本用户确认回执，再运行：
+
+```bash
+node skills/koubo-paper-firstframe-producer/scripts/bridge-director-cues.mjs \
+  --project-root <口播项目根目录> \
+  --cues <director-cues.v1.json> \
+  --acceptance <user-confirmation.v1.json> \
+  --output-dir <新的cue-native修订目录>
+```
+
+该桥接必须原样保留每镜 `firstFramePrompt` 和 `videoPrompt`：前者只进入首帧清单，后者只进入独立 RunningHub 清单。内部临时纸牌坐标仅供旧写字器建立身份，必须标记为 provisional，不能进入生图提示词；写字前仍以实际生成图片的四角标定为准。cue-native 清单固定 `samplePolicy=one-representative-scene`，只授权用户确认的一个代表镜头。
+
 正式导演清单必须同时满足：
 
 - schema 为 `koubo-paper-first-frame-prompt-manifest/v1`；
@@ -34,7 +46,8 @@ description: 执行口播纸艺导演输出的首帧生图清单：先生成无�
 - `generatedReadableTextAllowed=false`，且每镜有 `deterministicTextBake.enabled=true`；
 - `deterministicTextBake.anchorCalibrationRequired=true`，RunningHub 清单状态为 `awaiting-text-baked-firstframes`；
 - 同 revision 的导演验证回执存在且 `skillExecuted=true`。
-- V9 清单必须有 `v9ContractEnabled=true`；每镜的 `layoutContract`、哈希、构图宽区、标签预留区和禁装饰策略必须完整一致。执行端不得忽略或自行改写该合同。
+- 批次建立后的登记、联系表、写字、验证与整批授权入口，必须每次重新校验 `job.sourceManifest → directorValidationReceipt → receipt.artifacts.firstFramePromptManifest → 当前清单文件` 的路径、SHA-256 和 `taskId/requestId/revisionId`。不得相信 job 自报的 `sourceDirectorSchema`，也不得把另一份旧 V9 清单改指为当前来源。
+- 旧 V9 完整导演清单必须有 `v9ContractEnabled=true`；每镜的 `layoutContract`、哈希、构图宽区、标签预留区和禁装饰策略必须完整一致。该条不适用于明确标记 `sourceDirectorSchema=koubo-director-cues/v1` 的 cue-native 清单；后者不得为了过门禁重新拼入坐标、碰撞或物理条款。
 - `policy.physicalContinuityVersion="1"` 的新清单还必须保留每镜 `physicalContract`、`motionContract` 及各自哈希，实际图像复核不得删除或忽略这些字段。
 
 运行：
@@ -47,11 +60,25 @@ node skills/koubo-paper-firstframe-producer/scripts/prepare-firstframe-batch.mjs
   --sample P03
 ```
 
-脚本只在清单同级创建 `first-frames/`、`first-frame-qa/` 和新的 `first-frame-batch.v1.json`，不调用生图工具。
+脚本只在清单同级创建首帧/带字首帧/质检目录、新的 `first-frame-batch.v1.json`，以及独立固定名的 `first-frame-route-lock.v1.json`，不调用生图工具。五个关键入口必须从实际 job 路径定位该锁，不得相信 job 自报路由。锁会绑定导演清单、导演回执、任务身份、唯一样镜和逐镜静态快照；除 `scene.result` 及顶层状态、事件、写字回执、验收/授权字段外，提示词、配对、文字计划、输出路径、镜头顺序等变化都必须阻断。
+
+只有在该硬门上线前已经由本脚本建立、仍处于未授权状态的 cue-native 批次，才允许一次性补锁。迁移命令必须显式提供已经人工核对的任务身份、P02 等代表镜编号和两份当前 SHA-256；它只补不存在的锁，不改写或覆盖 job、清单、回执，也不生成用户验收：
+
+```bash
+node skills/koubo-paper-firstframe-producer/scripts/migrate-cue-native-firstframe-route-lock.mjs \
+  --project-root <口播项目根目录> \
+  --job <first-frame-batch.v1.json> \
+  --expected-task-id <taskId> \
+  --expected-request-id <requestId> \
+  --expected-revision-id <revisionId> \
+  --expected-selected-scene <sceneId> \
+  --expected-manifest-sha256 <当前首帧清单SHA256> \
+  --expected-director-receipt-sha256 <当前导演验证回执SHA256>
+```
 
 ### 2. 一张代表性样图门
 
-每个 V9 新任务只先选一张结构最复杂、标签最多或遮挡关系最强的代表镜头。优先级依次为 `complex-explanation`、`mechanical-causality`、`occluded-state-reveal`；如果清单不携带 archetype，从同 revision 的导演 plan 读取，仍无法判断时选择中段复杂镜并在批次记录中声明限制。旧版非 V9 清单仍保持三张样图门，不得借此改写历史批次。
+每个 V9 或 cue-native 新任务只先选一张结构最复杂、标签最多或遮挡关系最强的代表镜头。优先级依次为 `complex-explanation`、`mechanical-causality`、`occluded-state-reveal`；如果清单不携带 archetype，从同 revision 的导演 plan 或 cues 读取，仍无法判断时选择中段复杂镜并在批次记录中声明限制。旧版非 V9、非 cue-native 清单仍保持三张样图门，不得借此改写历史批次。
 
 使用内置 `image_gen`，每张图片必须是独立调用。默认最多同时执行两张，禁止把多条提示词拼进同一调用。提示词可追加统一质量锁和禁止项，但不得改变核心物件、数量、颜色、关系或事实边界；原始提示词与实际执行提示词都要留存并计算哈希。
 
@@ -93,7 +120,18 @@ node skills/koubo-paper-firstframe-producer/scripts/validate-firstframe-batch.mj
 
 代表样图通过也只能写 `candidate-stills-awaiting-user-review`。用户看过样图和原图并明确确认后，才能生成剩余图片。失败即停，禁止自动重试；先回到导演布局或提示词修订。
 
-若用户明确要求“整批首帧和画布准备好，最后再确认”，可在代表图实际QA通过后按该授权继续剩余首帧与本地烘焙，不再重复申请中途审美确认。必须记录原话、当前任务和修订范围，用户视觉验收始终为 `pending`，不得伪造“用户看过/已批准图片”。本例外不豁免任何硬失败、写字/OCR检查，也不授权视频提交、付款或自动重试。
+cue-native 任务还必须等带字样图、原图质检和 OCR 通过后，由主任务根据用户实际看图原话建立独立 `koubo-paper-firstframe-sample-user-acceptance/v1` 回执。回执必须绑定当前 `taskId/requestId/revisionId`、`selectedSceneId`、`sourceManifest {path,sha256}`、`textBakedSample {sceneId,path,sha256}`、`userQuote` 和 `approvedAt`，然后只能用安全登记命令开启整批：
+
+```bash
+node skills/koubo-paper-firstframe-producer/scripts/authorize-firstframe-full-batch.mjs \
+  --project-root <口播项目根目录> \
+  --job <first-frame-batch.v1.json> \
+  --acceptance <已存在的样图用户验收回执>
+```
+
+该命令不生成、补写或推断用户验收，只验证当前带字样图、原图逐项质检、最新 sample 写字/OCR 回执和所有哈希后登记。手改 `fullBatchAuthorized=true` 不构成授权；未通过时，未选镜头登记、`phase=full` 写字、验证与联系表均必须阻断。
+
+若用户明确要求“整批首帧和画布准备好，最后再确认”，可在代表图实际QA通过后按该授权继续剩余首帧与本地烘焙，不再重复申请中途审美确认。必须记录原话、当前任务和修订范围，用户视觉验收始终为 `pending`，不得伪造“用户看过/已批准图片”。本例外不适用于 cue-native 单样本路线；cue-native 仍必须完成上述独立样图验收登记。本例外不豁免任何硬失败、写字/OCR检查，也不授权视频提交、付款或自动重试。
 
 ### 4. 剩余图片批量执行
 
@@ -166,6 +204,8 @@ node skills/koubo-paper-firstframe-producer/scripts/build-runninghub-ready-pack.
 - 原始首帧提示词 SHA-256；
 - 对应 RunningHub 动态提示词 SHA-256；
 - 用户验收状态。
+
+cue-native 交接不得伪造旧 V9 `motionContract` / `physicalContract`。它必须复验 cues→source plan→首帧清单→动作清单的顺序、原文和哈希；`first-trial` 只允许已锁定的代表镜。批次交接还必须绑定同一份 `sampleUserAcceptanceReceipt` 和当前 cue 集的 `koubo-cue-native-representative-dynamic-acceptance/v1`。两类交接包均必须保持 `codexSubmissionAllowed=false`、`externalSubmissionAuthorized=false` 和 `paidGenerationAllowed=false`；实际提交仍需用户另行授权。
 
 事故预防版的带字标签全程固定，仅无字件按动作合同运动。历史非事故预防版才允许带字标签刚性滑入、平移、小角度旋转、抽屉推出和刚性拼图扣合；始终禁止折叠、弯曲、卷曲、揉皱、拉伸、翻面、强运动模糊和重新生成文字。
 

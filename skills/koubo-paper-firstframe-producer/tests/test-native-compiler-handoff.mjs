@@ -6,6 +6,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {createNativePreproductionFixture, repositoryRoot, runDirectorCli} from '../../koubo-remotion-director/tests/fixtures/v9-native-preproduction.mjs';
 import {sha256File, sha256Json} from '../../koubo-remotion-director/scripts/preproduction-director-core.mjs';
+import {readAuthoritativeSourceManifest} from '../scripts/firstframe-batch-core.mjs';
 
 test('真实compiler到prepare、baker及P01/P02 ready CLI完整离线回归', (t) => {
   const root = mkdtempSync(path.join(os.tmpdir(), 'koubo-native-handoff-'));
@@ -54,11 +55,18 @@ test('真实compiler到prepare、baker及P01/P02 ready CLI完整离线回归', (
     }));
     scene.result = {imagePath: raw.path, imageSha256: raw.sha256, visualReview: {path: review}};
   }
+  // This fixture exercises the full-batch path, so model that authorization
+  // explicitly instead of relying on the freshly prepared sample-only state.
+  job.fullBatchAuthorized = true;
+  job.status = 'full-generation-authorized';
   writeFileSync(prepared.jobPath, JSON.stringify(job));
   symlinkSync(path.join(repositoryRoot, 'skills'), path.join(root, 'skills'), 'dir');
   run('bake-firstframe-batch.mjs', ['--job', prepared.jobPath, '--source-plan', fixture.request.outputs.planPath,
     '--font', path.join(os.homedir(), 'Library/Fonts/NotoSansCJKsc-Bold.otf'), '--phase', 'full']);
   const updated = JSON.parse(readFileSync(prepared.jobPath));
+  const postBakeAuthority = readAuthoritativeSourceManifest(updated, prepared.jobPath);
+  assert.equal(postBakeAuthority.manifest.taskId, updated.taskId);
+  assert.equal(postBakeAuthority.routeLock.route, 'v9');
   const receiptBinding = updated.textBakeReceipts.at(-1).receipt;
   const receipt = JSON.parse(readFileSync(receiptBinding.path));
   const receiptSha = sha256File(receiptBinding.path);

@@ -7,12 +7,15 @@ import {fileURLToPath} from 'node:url';
 import {
   JOB_SCHEMA,
   TEXT_BAKE_CALIBRATION_SCHEMA,
+  assertFullBatchAuthorized,
   parseArgs,
+  readAuthoritativeSourceManifest,
   readJson,
   replaceJson,
   requiredSceneIds,
   resolveInside,
   sha256File,
+  validateCueNativeJobSampleBinding,
   validateRawVisualReview,
   writeNewJson,
 } from './firstframe-batch-core.mjs';
@@ -53,12 +56,14 @@ try {
   const job = readJson(jobPath);
   if (job.schemaVersion !== JOB_SCHEMA) throw new Error('FIRSTFRAME_JOB_SCHEMA_INVALID');
   if (!existsSync(sourcePlanPath)) throw new Error('SOURCE_PLAN_MISSING');
-  if (sha256File(job.sourceManifest.path) !== job.sourceManifest.sha256) {
-    throw new Error('SOURCE_MANIFEST_SHA_MISMATCH');
-  }
-  const sourceManifest = readJson(job.sourceManifest.path);
+  const {manifest: sourceManifest} = readAuthoritativeSourceManifest(job, jobPath);
 
   const phase = args.phase;
+  const sampleBindingErrors = validateCueNativeJobSampleBinding(job, sourceManifest);
+  if (sampleBindingErrors.length) {
+    throw new Error(`CUE_NATIVE_SAMPLE_BINDING_INVALID:${sampleBindingErrors.join('|')}`);
+  }
+  if (phase === 'full') assertFullBatchAuthorized(job, 'TEXT_BAKE_FULL', sourceManifest);
   const sceneIds = requiredSceneIds(job, phase);
   const fontPath = path.resolve(args.font);
   if (!existsSync(fontPath) || !statSync(fontPath).isFile()) {

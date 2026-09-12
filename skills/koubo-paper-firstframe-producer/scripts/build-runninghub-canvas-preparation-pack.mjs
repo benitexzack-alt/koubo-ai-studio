@@ -4,8 +4,9 @@
 // cannot satisfy the V9 generation handoff or claim visual/dynamic acceptance.
 import {realpathSync, statSync} from 'node:fs';
 import path from 'node:path';
-import {JOB_SCHEMA, TEXT_BAKE_RECEIPT_SCHEMA, parseArgs, readJson, resolveInside,
-  sha256File, validateRawVisualReview, writeNewJson} from './firstframe-batch-core.mjs';
+import {JOB_SCHEMA, TEXT_BAKE_RECEIPT_SCHEMA, parseArgs, readAuthoritativeSourceManifest,
+  readJson, resolveInside, sha256File, validateRawVisualReview,
+  writeNewJson} from './firstframe-batch-core.mjs';
 import {validateIncidentHandoff} from './runninghub-handoff-incident-core.mjs';
 
 const requireThat = (value, message) => { if (!value) throw new Error(message); };
@@ -27,9 +28,11 @@ try {
   const motionPath = checked(args['runninghub-manifest'], 'MOTION_MANIFEST');
   const authorizationPath = checked(args.authorization, 'AUTHORIZATION');
   const job = readJson(jobPath), manifest = readJson(motionPath), authorization = readJson(authorizationPath);
-  const sourceManifest = bound(job.sourceManifest, 'SOURCE_MANIFEST');
   requireThat(job.schemaVersion === JOB_SCHEMA && manifest.status === 'awaiting-text-baked-firstframes', 'CANVAS_INPUT_INVALID');
-  const director = bound(job.directorValidationReceipt, 'DIRECTOR_RECEIPT');
+  const {
+    manifest: sourceManifest,
+    directorReceipt: director,
+  } = readAuthoritativeSourceManifest(job, jobPath);
   requireThat(director.skillExecuted === true && director.validatorExecuted === true &&
     director.status === 'validated-provisional-previsualization' && director.revisionId === job.revisionId &&
     director.artifacts?.firstFramePromptManifest?.sha256 === job.sourceManifest?.sha256 &&
@@ -40,7 +43,9 @@ try {
   requireThat(receipt.schemaVersion === TEXT_BAKE_RECEIPT_SCHEMA &&
     receipt.status === 'deterministic-first-frame-text-baked-and-ocr-passed', 'CANVAS_BAKE_INVALID');
   const incident = validateIncidentHandoff({projectRoot: root, job, manifest, receipt,
-    scope: 'canvas-preparation', preparationAuthorization: authorization});
+    scope: 'canvas-preparation', preparationAuthorization: authorization,
+    authoritativeSourceManifest: sourceManifest,
+    authoritativeDirectorReceipt: director});
   requireThat(incident, 'CANVAS_INCIDENT_POLICY_REQUIRED');
   const scenes = job.scenes.map((scene) => {
     const sourceScene = sourceManifest.scenes?.find((item) => item.sceneId === scene.sceneId);

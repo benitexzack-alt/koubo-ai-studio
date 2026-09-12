@@ -3,12 +3,32 @@
 import {existsSync} from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
-import {JOB_SCHEMA, parseArgs, readJson, requiredSceneIds} from './firstframe-batch-core.mjs';
+import {
+  CUE_NATIVE_DIRECTOR_SCHEMA,
+  JOB_SCHEMA,
+  assertFullBatchAuthorized,
+  parseArgs,
+  readAuthoritativeSourceManifest,
+  readJson,
+  requiredSceneIds,
+  validateCueNativeJobSampleBinding,
+} from './firstframe-batch-core.mjs';
 
 try {
   const args = parseArgs(process.argv.slice(2));
-  const job = readJson(path.resolve(args.job));
+  const jobPath = path.resolve(args.job);
+  const job = readJson(jobPath);
   if (job.schemaVersion !== JOB_SCHEMA) throw new Error('FIRSTFRAME_JOB_SCHEMA_INVALID');
+  const {manifest: sourceManifest} = readAuthoritativeSourceManifest(job, jobPath);
+  if (sourceManifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA) {
+    const bindingErrors = validateCueNativeJobSampleBinding(job, sourceManifest);
+    if (bindingErrors.length) {
+      throw new Error(`CUE_NATIVE_SAMPLE_BINDING_INVALID:${bindingErrors.join('|')}`);
+    }
+  }
+  if (args.phase === 'full') {
+    assertFullBatchAuthorized(job, 'CONTACT_SHEET_FULL', sourceManifest);
+  }
   const sceneIds = requiredSceneIds(job, args.phase);
   const scenes = sceneIds.map((sceneId) => job.scenes.find((scene) => scene.sceneId === sceneId));
   const imageKind = args['image-kind'] ?? 'raw';

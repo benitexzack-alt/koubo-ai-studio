@@ -1,0 +1,536 @@
+{
+  "schemaVersion": "koubo-runninghub-image-to-video-prompt-manifest/v1",
+  "requestId": "20260910-lanzhou-industry-ai-director-core-regression-r1-firstframe-sample",
+  "taskId": "20260910-lanzhou-industry-ai-director-core-regression-r1",
+  "revisionId": "director-core-regression-r1-firstframe-validation-r1",
+  "phase": "pre-shoot",
+  "status": "awaiting-text-baked-firstframes",
+  "consumer": "runninghub-manual-image-to-video",
+  "generationMode": "image-to-video",
+  "executionOwner": "user-manual",
+  "codexExternalSubmissionAllowed": false,
+  "policy": {
+    "incidentPreventionVersion": "1"
+  },
+  "submissionBlockedUntil": [
+    "raw-first-frame-visual-review-passed",
+    "actual-paper-surface-anchor-calibration-passed",
+    "deterministic-text-bake-receipt-passed",
+    "text-baked-first-frame-ocr-passed",
+    "runninghub-ready-pack-issued"
+  ],
+  "sourcePlanCanonicalSha256": "6cdd030e84e19109d1978e737ab61b22d93e6eb943b32834952be3256f96fa24",
+  "sceneCount": 5,
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "pairId": "P01-P01",
+      "beatId": "P01",
+      "title": "让观众看见旧经验没有被丢弃，而是重新用于理解客户。",
+      "spokenLine": "你对客户的了解，恰恰可能派上用场。",
+      "inputFirstFrameFileName": "P01_P01_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "fb68c4e0860d68a1655fcc9e597905463d119e04f66574290bf20131256dbbda",
+      "inputFirstFrameTextPlanSha256": "68ab00064eea12605a7882e0e474d3c24516dded18b4d116e13ae2ecbd80ab1e",
+      "durationSeconds": 4,
+      "imageToVideoPrompt": "基于已确认首帧，两枚磨损档案纸片沿同一弧形轨道进入观察镜下方，固定机位，结束时纸片与远处需求轮廓板形成清楚对应；两张固定字牌保持不动，不新增物件、不改材质、不生成文字。",
+      "imageToVideoPromptSha256": "50a423cd7238744a4a5b5c88aebc80e4df1456ec00e639b6d624cfa490bd13ff",
+      "pairSha256": "7075cf1b6ac46222df0734270ce2f5bc218b43cde68212941e3d2b220023a9bd",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "P01-N1",
+          "text": "旧经验",
+          "surfaceDescription": "台边左侧固定空白纸牌A",
+          "groupId": "P01-G1",
+          "surfaceId": "P01-S1",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.14,
+              0.12
+            ],
+            [
+              0.34,
+              0.12
+            ],
+            [
+              0.34,
+              0.2
+            ],
+            [
+              0.14,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P01-N2",
+          "text": "客户问题",
+          "surfaceDescription": "需求板旁固定空白纸牌B",
+          "groupId": "P01-G2",
+          "surfaceId": "P01-S2",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.66,
+              0.12
+            ],
+            [
+              0.8600000000000001,
+              0.12
+            ],
+            [
+              0.8600000000000001,
+              0.2
+            ],
+            [
+              0.66,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        }
+      ]
+    },
+    {
+      "sceneId": "P02",
+      "pairId": "P02-P02",
+      "beatId": "P02",
+      "title": "让观众看懂AI负责整理，真实回答仍由老板复核。",
+      "spokenLine": "你可以帮他把这些回答收集起来，用AI归类、理顺，改成适合拍视频的文稿，再由老板核对。",
+      "inputFirstFrameFileName": "P02_P02_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "51d6e1c8a577cd13cba7e78ea061f114b93bdb5854c2922acc5fa97820650920",
+      "inputFirstFrameTextPlanSha256": "84f78d0cffe0701e581522e0c93c552730cda6b6756a2865d727dc0029884107",
+      "durationSeconds": 6,
+      "imageToVideoPrompt": "基于已确认首帧，珊瑚红编辑线把回答纸片收成一条有序纸带，俯拍机位保持稳定，纸带停在人工检查台之前；三张固定字牌保持不动，不替人作判断，不新增内容、不生成文字。",
+      "imageToVideoPromptSha256": "840d755043309d634ca11b553046527b2dbc64da3e6172796eb4c03dc79e2e4f",
+      "pairSha256": "a4d5f64d696a834cae2e27b1775ef99e2955a37cb5ed602d7cf032a274538576",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "P02-N1",
+          "text": "客户回答",
+          "surfaceDescription": "桌边左侧固定空白纸牌A",
+          "groupId": "P02-G1",
+          "surfaceId": "P02-S1",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.14,
+              0.12
+            ],
+            [
+              0.34,
+              0.12
+            ],
+            [
+              0.34,
+              0.2
+            ],
+            [
+              0.14,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P02-N2",
+          "text": "AI整理",
+          "surfaceDescription": "桌边中部固定空白纸牌B",
+          "groupId": "P02-G2",
+          "surfaceId": "P02-S2",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.39999999999999997,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.2
+            ],
+            [
+              0.39999999999999997,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P02-N3",
+          "text": "老板复核",
+          "surfaceDescription": "桌边右侧固定空白纸牌C",
+          "groupId": "P02-G3",
+          "surfaceId": "P02-S3",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.6599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.2
+            ],
+            [
+              0.6599999999999999,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        }
+      ]
+    },
+    {
+      "sceneId": "P03",
+      "pairId": "P03-P03",
+      "beatId": "P03",
+      "title": "让观众看见内容只能把机会送到岸边，没有产品或服务承托就无法完成交付。",
+      "spokenLine": "但他本身没有能交给客户的产品或服务，光发内容也接不住生意。",
+      "inputFirstFrameFileName": "P03_P03_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "f798be79bcc0d6e692fc03991b1766e4cd883abc9e7b6bacbe4e0d9441ee62ff",
+      "inputFirstFrameTextPlanSha256": "fb4388c9c114e321984d379db3653a095e957c9be2b96070d8f82ed810957980",
+      "durationSeconds": 5,
+      "imageToVideoPrompt": "基于已确认首帧，一张无字信息页沿纸桥前进并停在断口前，固定机位保持低角度，结束时纸页没有抵达接收柜台；三张固定字牌保持不动，不补齐缺失底座，不表现成交、不新增物件、不生成文字。",
+      "imageToVideoPromptSha256": "776eae3b6ff8fc384b5fab984ad281131945460f3cf282b6e1ff6eb6d4461216",
+      "pairSha256": "efbefb68fe52379ee0cbc51b7a160bdcf761230153404cc4f44b8d6ed9bda2c0",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "P03-N1",
+          "text": "内容",
+          "surfaceDescription": "左侧固定空白纸牌A",
+          "groupId": "P03-G1",
+          "surfaceId": "P03-S1",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.14,
+              0.12
+            ],
+            [
+              0.34,
+              0.12
+            ],
+            [
+              0.34,
+              0.2
+            ],
+            [
+              0.14,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P03-N2",
+          "text": "产品或服务",
+          "surfaceDescription": "中部固定空白纸牌B",
+          "groupId": "P03-G2",
+          "surfaceId": "P03-S2",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.39999999999999997,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.2
+            ],
+            [
+              0.39999999999999997,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P03-N3",
+          "text": "客户",
+          "surfaceDescription": "右侧固定空白纸牌C",
+          "groupId": "P03-G3",
+          "surfaceId": "P03-S3",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.6599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.2
+            ],
+            [
+              0.6599999999999999,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        }
+      ]
+    },
+    {
+      "sceneId": "P04",
+      "pairId": "P04-P04",
+      "beatId": "P04",
+      "title": "让观众理解本地积累的行业服务可以连接到有同类需求的外地同行。",
+      "spokenLine": "就可以试着把这项服务介绍给外地同行。",
+      "inputFirstFrameFileName": "P04_P04_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "3391907e04f8bace1801a326c8c9f653248777820177ffe1ce65f7bd1ace66b9",
+      "inputFirstFrameTextPlanSha256": "2a5b36683170f923669cdf86a126a459de7baccc440b7590f08bcd9f3cd42e7c",
+      "durationSeconds": 4,
+      "imageToVideoPrompt": "基于已确认首帧，一根珊瑚红棉线从城市定位钉连接到右上工作台；镜头只做一次轻微横向跟随，三张固定字牌保持不动，结束时工作工具箱仍留在原位；连接只表示可以触达，不表现自动成交、不新增城市、不生成文字。",
+      "imageToVideoPromptSha256": "34f41d07b1424e26b6ec89286da5c0bbd55d90745bd5b14bcff6d73e0f0d6cea",
+      "pairSha256": "14d75d7bc40d0b5dd8d1ea6ff935a9a3b02c390fe4310ba88de809190a86dee7",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "P04-N1",
+          "text": "兰州",
+          "surfaceDescription": "左下固定空白纸牌A",
+          "groupId": "P04-G1",
+          "surfaceId": "P04-S1",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.14,
+              0.12
+            ],
+            [
+              0.34,
+              0.12
+            ],
+            [
+              0.34,
+              0.2
+            ],
+            [
+              0.14,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P04-N2",
+          "text": "行业服务",
+          "surfaceDescription": "中央固定空白纸牌B",
+          "groupId": "P04-G2",
+          "surfaceId": "P04-S2",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.39999999999999997,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.2
+            ],
+            [
+              0.39999999999999997,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P04-N3",
+          "text": "外地同行",
+          "surfaceDescription": "右上固定空白纸牌C",
+          "groupId": "P04-G3",
+          "surfaceId": "P04-S3",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.6599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.2
+            ],
+            [
+              0.6599999999999999,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        }
+      ]
+    },
+    {
+      "sceneId": "P05",
+      "pairId": "P05-P05",
+      "beatId": "P05",
+      "title": "让观众看懂真实问题有独特形状，通用方案未经诊断往往对不上。",
+      "spokenLine": "不能他一说生意不好，你就给他生成一份通用方案。",
+      "inputFirstFrameFileName": "P05_P05_first-frame-text-baked.png",
+      "inputFirstFramePromptSha256": "752317e9746dac01d01f8fb89e16ee692ff3c648d4f775d1a5eb32cf99447be6",
+      "inputFirstFrameTextPlanSha256": "41545511d28097b1079cbd9beda309a5cfa0eee8761eb8887b31bb127f770e89",
+      "durationSeconds": 4,
+      "imageToVideoPrompt": "基于已确认首帧，方形纸块向不规则问题槽移动并停在槽外；固定微距机位，三张固定字牌保持不动，错位关系始终清楚，结束时不强行塞入、不自动给出方案、不新增结果、不生成文字。",
+      "imageToVideoPromptSha256": "f19efea3486b292550b2eb847300a5988b11ea1cc2a8e9cc455f011784c9ee4c",
+      "pairSha256": "33cd3f4755d8d80a3e302800f2f3bdd7df90b2f8433439c23ff9b2670f225120",
+      "generatedReadableTextAllowed": false,
+      "modelGeneratedReadableTextAllowed": false,
+      "inputContainsDeterministicBakedText": true,
+      "handoffState": "awaiting-text-baked-firstframe-and-ocr",
+      "postProductionTextOverlay": [
+        {
+          "nodeId": "P05-N1",
+          "text": "实际问题",
+          "surfaceDescription": "左后固定空白纸牌A",
+          "groupId": "P05-G1",
+          "surfaceId": "P05-S1",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.14,
+              0.12
+            ],
+            [
+              0.34,
+              0.12
+            ],
+            [
+              0.34,
+              0.2
+            ],
+            [
+              0.14,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P05-N2",
+          "text": "通用方案",
+          "surfaceDescription": "右前固定空白纸牌B",
+          "groupId": "P05-G2",
+          "surfaceId": "P05-S2",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.39999999999999997,
+              0.12
+            ],
+            [
+              0.6,
+              0.12
+            ],
+            [
+              0.6,
+              0.2
+            ],
+            [
+              0.39999999999999997,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        },
+        {
+          "nodeId": "P05-N3",
+          "text": "先诊断",
+          "surfaceDescription": "后景固定空白纸牌C",
+          "groupId": "P05-G3",
+          "surfaceId": "P05-S3",
+          "embeddingMode": "first-frame-baked",
+          "motionConstraint": "rigid-surface",
+          "ocrRequired": true,
+          "anchorQuad": [
+            [
+              0.6599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.12
+            ],
+            [
+              0.8599999999999999,
+              0.2
+            ],
+            [
+              0.6599999999999999,
+              0.2
+            ]
+          ],
+          "anchorQuadStatus": "provisional-placeholder-actual-calibration-required"
+        }
+      ]
+    }
+  ],
+  "sourceDirectorSchema": "koubo-director-cues/v1",
+  "samplePolicy": "one-representative-scene",
+  "selectedSceneId": "P02",
+  "submissionAllowed": false
+}

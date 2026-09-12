@@ -4,10 +4,13 @@ import {existsSync, readFileSync, statSync} from 'node:fs';
 import path from 'node:path';
 import {
   JOB_SCHEMA,
+  assertFullBatchAuthorized,
   parseArgs,
+  readAuthoritativeSourceManifest,
   readJson,
   requiredSceneIds,
   sha256File,
+  validateCueNativeJobSampleBinding,
   validateRawVisualReview,
   writeNewJson,
 } from './firstframe-batch-core.mjs';
@@ -17,15 +20,13 @@ try {
   const jobPath = path.resolve(args.job);
   const job = readJson(jobPath);
   if (job.schemaVersion !== JOB_SCHEMA) throw new Error('FIRSTFRAME_JOB_SCHEMA_INVALID');
-  if (sha256File(job.sourceManifest.path) !== job.sourceManifest.sha256) {
-    throw new Error('SOURCE_MANIFEST_SHA_MISMATCH');
+  const {manifest: sourceManifest} = readAuthoritativeSourceManifest(job, jobPath);
+  const sampleBindingErrors = validateCueNativeJobSampleBinding(job, sourceManifest);
+  if (sampleBindingErrors.length) {
+    throw new Error(`CUE_NATIVE_SAMPLE_BINDING_INVALID:${sampleBindingErrors.join('|')}`);
   }
-  const sourceManifest = readJson(job.sourceManifest.path);
-  if (
-    !job.directorValidationReceipt?.path ||
-    sha256File(job.directorValidationReceipt.path) !== job.directorValidationReceipt.sha256
-  ) {
-    throw new Error('DIRECTOR_RECEIPT_SHA_MISMATCH');
+  if (args.phase === 'full') {
+    assertFullBatchAuthorized(job, 'BATCH_VALIDATION_FULL', sourceManifest);
   }
   const sceneIds = requiredSceneIds(job, args.phase);
   const checks = [];
