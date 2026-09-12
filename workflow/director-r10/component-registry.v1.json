@@ -6,12 +6,6 @@
   "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
   "soundSourceContract": {
     "runtimePrefix": "sfx/",
-    "canonicalTrackedPrefix": "remotion/public/audio/koubo-sfx-v8/",
-    "requireByteIdenticalCopy": true
-  },
-  "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
-  "soundSourceContract": {
-    "runtimePrefix": "sfx/",
     "canonicalTrackedAssetRoot": "remotion/public/audio/koubo-sfx-v8/",
     "publicCopyMustMatchCanonicalSha256": true
   },
@@ -22,6 +16,42 @@
     "semanticSettle",
     "actionEnd",
     "finalHold"
+  ],
+  "motionProfiles": [
+    {
+      "id": "paper-stop-motion-v1",
+      "version": "1",
+      "category": "paper-editorial",
+      "requiredActionFields": [
+        "targetGroupIds",
+        "operation",
+        "motionWindowFrames",
+        "landedOffsetFrames",
+        "relationStartOffsetFrames",
+        "relationEndOffsetFrames"
+      ],
+      "motionWindowFrames": {
+        "min": 16,
+        "max": 24
+      },
+      "landedOffsetFrames": {
+        "min": 1,
+        "max": 9
+      },
+      "relationOffsets": {
+        "requireStartAtOrAfterLanding": true,
+        "requireEndAfterStart": true,
+        "requireEndAtOrBeforeMotionEnd": true
+      },
+      "allowedOperations": [
+        "collect-stack",
+        "sort-slots",
+        "draft-review",
+        "publish-board",
+        "align-production",
+        "reveal-foundation"
+      ]
+    }
   ],
   "components": [
     {
@@ -59,6 +89,9 @@
       "version": "0.1.0-pilot",
       "rendererId": "PaperBusinessPipelineR10",
       "category": "paper-editorial",
+      "motionProfileIds": [
+        "paper-stop-motion-v1"
+      ],
       "lifecycle": {
         "firstVisible": "required",
         "firstReadable": "required",

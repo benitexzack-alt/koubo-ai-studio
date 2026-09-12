@@ -26,6 +26,14 @@ const EXPECTED_FPS = 30;
 const EXPECTED_LOCAL_SOURCE_OFFSET_FRAME = 1200;
 const EXPECTED_DURATION_FRAMES = 1737;
 const REQUIRED_BEAT_IDS = Object.freeze(['B05', 'B06', 'B07', 'B08']);
+const REQUIRED_PAPER_MOTION_ACTION_FIELDS = Object.freeze([
+  'targetGroupIds',
+  'operation',
+  'motionWindowFrames',
+  'landedOffsetFrames',
+  'relationStartOffsetFrames',
+  'relationEndOffsetFrames',
+]);
 const GOVERNANCE_ROLES = new Set([
   'governance-account-strategy',
   'governance-public-fact-boundary',
@@ -316,7 +324,8 @@ const validateComponentRegistry = (registry) => {
     registry.soundSourceContract?.canonicalTrackedAssetRoot !==
       'remotion/public/audio/koubo-sfx-v8/' ||
     registry.soundSourceContract?.publicCopyMustMatchCanonicalSha256 !== true ||
-    !Array.isArray(registry.components)
+    !Array.isArray(registry.components) ||
+    !Array.isArray(registry.motionProfiles)
   ) {
     fail('R10_LANZHOU_COMPONENT_REGISTRY_INVALID', 'R10组件注册表边界不合法。');
   }
@@ -340,6 +349,44 @@ const validateComponentRegistry = (registry) => {
     }
     componentMap.set(component.id, component);
   }
+  const motionProfileMap = new Map();
+  for (const profile of registry.motionProfiles) {
+    const id = String(profile?.id ?? '').trim();
+    const requiredActionFields = profile?.requiredActionFields;
+    if (
+      !/^[a-z][a-z0-9-]*$/u.test(id) ||
+      motionProfileMap.has(id) ||
+      typeof profile.version !== 'string' ||
+      profile.category !== 'paper-editorial' ||
+      !Array.isArray(requiredActionFields) ||
+      !REQUIRED_PAPER_MOTION_ACTION_FIELDS.every((field) =>
+        requiredActionFields.includes(field),
+      ) ||
+      !Number.isInteger(profile.motionWindowFrames?.min) ||
+      !Number.isInteger(profile.motionWindowFrames?.max) ||
+      profile.motionWindowFrames.min <= 0 ||
+      profile.motionWindowFrames.max < profile.motionWindowFrames.min ||
+      !Number.isInteger(profile.landedOffsetFrames?.min) ||
+      !Number.isInteger(profile.landedOffsetFrames?.max) ||
+      profile.landedOffsetFrames.min < 0 ||
+      profile.landedOffsetFrames.max < profile.landedOffsetFrames.min ||
+      profile.relationOffsets?.requireStartAtOrAfterLanding !== true ||
+      profile.relationOffsets?.requireEndAfterStart !== true ||
+      profile.relationOffsets?.requireEndAtOrBeforeMotionEnd !== true ||
+      !Array.isArray(profile.allowedOperations) ||
+      profile.allowedOperations.length === 0 ||
+      profile.allowedOperations.some((operation) =>
+        typeof operation !== 'string' || !/^[a-z][a-z0-9-]*$/u.test(operation),
+      ) ||
+      new Set(profile.allowedOperations).size !== profile.allowedOperations.length
+    ) {
+      fail(
+        'R10_LANZHOU_MOTION_PROFILE_INVALID',
+        `动作档案${id || '<unknown>'}缺少可机器校验的独立动作窗口合同。`,
+      );
+    }
+    motionProfileMap.set(id, stableValue(profile));
+  }
   const paper = componentMap.get('paper-content-pipeline-r10');
   const target = paper?.structureTarget;
   const paperStructureTargetValid = Boolean(
@@ -354,12 +401,115 @@ const validateComponentRegistry = (registry) => {
   if (!paperStructureTargetValid) {
     fail('R10_LANZHOU_COMPONENT_REGISTRY_INVALID', 'B07纸艺组件结构目标不符合R10试点合同。');
   }
+  const paperMotionProfile = motionProfileMap.get('paper-stop-motion-v1');
+  const paperMotionProfileValid = Boolean(
+    paperMotionProfile &&
+      paperMotionProfile.motionWindowFrames.min === 16 &&
+      paperMotionProfile.motionWindowFrames.max === 24 &&
+      paperMotionProfile.landedOffsetFrames.max === 9 &&
+      Array.isArray(paper.motionProfileIds) &&
+      paper.motionProfileIds.includes(paperMotionProfile.id),
+  );
+  if (!paperMotionProfileValid) {
+    fail(
+      'R10_LANZHOU_MOTION_PROFILE_INVALID',
+      'B07纸艺组件必须显式绑定paper-stop-motion-v1的16至24帧独立动作窗口。',
+    );
+  }
   return {
     componentMap,
+    motionProfileMap,
     paperStructureTargetValid,
+    paperMotionProfileValid,
     publicDir: registry.publicDir,
     soundSourceContract: registry.soundSourceContract,
   };
+};
+
+const compilePaperMotionAuthoring = ({intentEvent, component, motionProfile, paperStructure}) => {
+  const actions = intentEvent.actions ?? [];
+  if (intentEvent.category !== 'paper-editorial') {
+    if (intentEvent.motionProfileId != null) {
+      fail(
+        'R10_LANZHOU_MOTION_PROFILE_INVALID',
+        `${intentEvent.id}非纸艺事件不得绑定纸艺动作档案。`,
+      );
+    }
+    return {motionProfile: null, actions};
+  }
+  const profileId = String(intentEvent.motionProfileId ?? '').trim();
+  if (
+    !motionProfile ||
+    motionProfile.id !== profileId ||
+    !Array.isArray(component.motionProfileIds) ||
+    !component.motionProfileIds.includes(profileId)
+  ) {
+    fail(
+      'R10_LANZHOU_MOTION_PROFILE_INVALID',
+      `${intentEvent.id}必须显式绑定当前组件注册的motionProfileId。`,
+    );
+  }
+  if (!Array.isArray(actions) || actions.length !== paperStructure.assemblyBeatIds.length) {
+    fail(
+      'R10_LANZHOU_PAPER_MOTION_ACTION_INVALID',
+      `${intentEvent.id}动作数必须与assemblyBeatIds一一对应。`,
+    );
+  }
+  const groupIds = new Set(paperStructure.objectGroups.map((group) => group.id));
+  const operations = new Set();
+  const compiledActions = actions.map((action, index) => {
+    const actionId = String(action?.id ?? '').trim();
+    if (
+      actionId !== paperStructure.assemblyBeatIds[index] ||
+      REQUIRED_PAPER_MOTION_ACTION_FIELDS.some((field) => !Object.hasOwn(action ?? {}, field))
+    ) {
+      fail(
+        'R10_LANZHOU_PAPER_MOTION_ACTION_INVALID',
+        `${intentEvent.id}动作${actionId || index}缺少${profileId}合同字段或与assemblyBeat错位。`,
+      );
+    }
+    if (
+      !Array.isArray(action.targetGroupIds) ||
+      action.targetGroupIds.length === 0 ||
+      new Set(action.targetGroupIds).size !== action.targetGroupIds.length ||
+      action.targetGroupIds.some((groupId) => !groupIds.has(groupId))
+    ) {
+      fail(
+        'R10_LANZHOU_PAPER_MOTION_TARGET_INVALID',
+        `${intentEvent.id}动作${actionId}引用了未注册或重复的纸艺物件组。`,
+      );
+    }
+    if (
+      !motionProfile.allowedOperations.includes(action.operation) ||
+      operations.has(action.operation)
+    ) {
+      fail(
+        'R10_LANZHOU_PAPER_MOTION_OPERATION_INVALID',
+        `${intentEvent.id}动作${actionId}必须使用${profileId}中唯一注册的operation。`,
+      );
+    }
+    operations.add(action.operation);
+    if (
+      !Number.isInteger(action.motionWindowFrames) ||
+      action.motionWindowFrames < motionProfile.motionWindowFrames.min ||
+      action.motionWindowFrames > motionProfile.motionWindowFrames.max ||
+      !Number.isInteger(action.landedOffsetFrames) ||
+      action.landedOffsetFrames < motionProfile.landedOffsetFrames.min ||
+      action.landedOffsetFrames > motionProfile.landedOffsetFrames.max ||
+      !Number.isInteger(action.relationStartOffsetFrames) ||
+      !Number.isInteger(action.relationEndOffsetFrames) ||
+      action.relationStartOffsetFrames < action.landedOffsetFrames ||
+      action.relationEndOffsetFrames <= action.relationStartOffsetFrames ||
+      action.relationEndOffsetFrames > action.motionWindowFrames
+    ) {
+      fail(
+        'R10_LANZHOU_PAPER_MOTION_WINDOW_INVALID',
+        `${intentEvent.id}动作${actionId}的独立动作、落定或关系线窗口不符合${profileId}。`,
+      );
+    }
+    return action;
+  });
+  return {motionProfile, actions: compiledActions};
 };
 
 const auditLegacyPostshoot = ({postshoot, actualB07, r10ActionCount}) => {
@@ -488,6 +638,7 @@ const buildCoreEvent = ({
   resolveBoundary,
   localOffset,
   component,
+  motionProfile,
 }) => {
   if (!isRecord(intentEvent) || !/^B(?:05|06|07|08)$/u.test(intentEvent.sourceBeatId)) {
     fail('R10_LANZHOU_EVENT_INVALID', '意图事件必须绑定B05至B08实录节拍。');
@@ -535,10 +686,17 @@ const buildCoreEvent = ({
     selectedCaptions: selected,
     component,
   });
+  const paperMotion = compilePaperMotionAuthoring({
+    intentEvent,
+    component,
+    motionProfile,
+    paperStructure,
+  });
   return {
     id: intentEvent.id,
     beatId: intentEvent.beatId,
     category: intentEvent.category,
+    motionProfile: paperMotion.motionProfile,
     semanticBinding: {
       spokenStartFrame: semantic.spokenStart,
       claimFrame: semantic.claim,
@@ -557,6 +715,7 @@ const buildCoreEvent = ({
         lifecycleContractVersion: '1',
         lifecycle: component.lifecycle,
         structureTarget: component.structureTarget ?? null,
+        motionProfileId: paperMotion.motionProfile?.id ?? null,
         paperStructure,
         objectGroups: paperStructure?.objectGroups ?? [],
         semanticNodes: paperStructure?.semanticNodes ?? [],
@@ -572,9 +731,15 @@ const buildCoreEvent = ({
       timing: intentEvent.visualTiming,
     },
     sound: intentEvent.sound ?? null,
-    actions: (intentEvent.actions ?? []).map((action) => ({
+    actions: paperMotion.actions.map((action) => ({
       id: action.id,
       soundRequired: intentEvent.category === 'paper-editorial' ? true : undefined,
+      targetGroupIds: action.targetGroupIds,
+      operation: action.operation,
+      motionWindowFrames: action.motionWindowFrames,
+      landedOffsetFrames: action.landedOffsetFrames,
+      relationStartOffsetFrames: action.relationStartOffsetFrames,
+      relationEndOffsetFrames: action.relationEndOffsetFrames,
       timing: {
         start: action.start,
         endExclusive: action.endExclusive,
@@ -648,7 +813,9 @@ export const buildLanzhouR10Pilot = ({
   }
   const {
     componentMap,
+    motionProfileMap,
     paperStructureTargetValid,
+    paperMotionProfileValid,
     publicDir,
     soundSourceContract,
   } = validateComponentRegistry(registry);
@@ -694,12 +861,16 @@ export const buildLanzhouR10Pilot = ({
     if (!component || component.category !== intentEvent.category) {
       fail('R10_LANZHOU_COMPONENT_NOT_REGISTERED', `${intentEvent.id}没有绑定同类型注册组件。`);
     }
+    const motionProfile = intentEvent.motionProfileId == null
+      ? null
+      : motionProfileMap.get(String(intentEvent.motionProfileId).trim());
     return buildCoreEvent({
       intentEvent,
       captions,
       resolveBoundary,
       localOffset: localSourceOffsetFrame,
       component,
+      motionProfile,
     });
   });
 
@@ -908,6 +1079,7 @@ export const buildLanzhouR10Pilot = ({
       sha256: bindingByRole(sourceBindings, 'r10-component-registry').sha256,
       lifecycleAnchorsPresent: true,
       paperStructureTargetValid,
+      paperMotionProfileValid,
       publicDir,
       soundSourceContract,
     },

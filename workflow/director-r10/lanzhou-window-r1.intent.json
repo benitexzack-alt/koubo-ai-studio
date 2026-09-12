@@ -29,12 +29,12 @@
     {
       "role": "r10-component-registry",
       "path": "workflow/director-r10/component-registry.v1.json",
-      "sha256": "c2963df300a90acf2e1789234b71f6d0ecc34029f217d16c9b40dd2ea1d5ecc3"
+      "sha256": "45753c88807f7430d6899259d1be149de8b374117e5a89395cecdb2bfe934b01"
     },
     {
       "role": "r10-timeline-compiler",
       "path": "tools/director-r10-timeline-core.mjs",
-      "sha256": "360d0de199c5cbbbd0b42d7d282be8cdfddb81a8599cb13e05f2ad93e81e1576"
+      "sha256": "859603db6a968d794bc83f97e9091700dd42c77f8f1ea5e7cf209f98734e63e0"
     },
     {
       "role": "governance-account-strategy",
@@ -240,6 +240,7 @@
       "sourceBeatId": "B07",
       "category": "paper-editorial",
       "componentId": "paper-content-pipeline-r10",
+      "motionProfileId": "paper-stop-motion-v1",
       "captionSpan": {
         "start": {
           "captionId": "cap-b07-p01",
@@ -437,6 +438,14 @@
         {
           "id": "collect",
           "labelZh": "收集",
+          "targetGroupIds": [
+            "g-input"
+          ],
+          "operation": "collect-stack",
+          "motionWindowFrames": 18,
+          "landedOffsetFrames": 9,
+          "relationStartOffsetFrames": 9,
+          "relationEndOffsetFrames": 16,
           "start": {
             "ref": "collect",
             "offsetFrames": 0
@@ -460,6 +469,14 @@
         {
           "id": "ai-classify",
           "labelZh": "AI归类",
+          "targetGroupIds": [
+            "g-ai-organize"
+          ],
+          "operation": "sort-slots",
+          "motionWindowFrames": 18,
+          "landedOffsetFrames": 9,
+          "relationStartOffsetFrames": 9,
+          "relationEndOffsetFrames": 16,
           "start": {
             "ref": "ai-classify",
             "offsetFrames": 0
@@ -483,6 +500,15 @@
         {
           "id": "script-draft",
           "labelZh": "改成文稿",
+          "targetGroupIds": [
+            "g-script",
+            "g-owner-review"
+          ],
+          "operation": "draft-review",
+          "motionWindowFrames": 24,
+          "landedOffsetFrames": 9,
+          "relationStartOffsetFrames": 9,
+          "relationEndOffsetFrames": 22,
           "start": {
             "ref": "script-draft",
             "offsetFrames": 0
@@ -506,6 +532,14 @@
         {
           "id": "public-materials",
           "labelZh": "配公开资料并讲出",
+          "targetGroupIds": [
+            "g-publication"
+          ],
+          "operation": "publish-board",
+          "motionWindowFrames": 22,
+          "landedOffsetFrames": 9,
+          "relationStartOffsetFrames": 9,
+          "relationEndOffsetFrames": 20,
           "start": {
             "ref": "public-materials",
             "offsetFrames": 0
@@ -529,6 +563,14 @@
         {
           "id": "ai-production",
           "labelZh": "AI整理制作",
+          "targetGroupIds": [
+            "g-foundation"
+          ],
+          "operation": "align-production",
+          "motionWindowFrames": 20,
+          "landedOffsetFrames": 9,
+          "relationStartOffsetFrames": 9,
+          "relationEndOffsetFrames": 18,
           "start": {
             "ref": "ai-production",
             "offsetFrames": 0
@@ -552,6 +594,14 @@
         {
           "id": "business-foundation",
           "labelZh": "老板生意底子",
+          "targetGroupIds": [
+            "g-foundation"
+          ],
+          "operation": "reveal-foundation",
+          "motionWindowFrames": 18,
+          "landedOffsetFrames": 9,
+          "relationStartOffsetFrames": 9,
+          "relationEndOffsetFrames": 16,
           "start": {
             "ref": "business-foundation",
             "offsetFrames": 0

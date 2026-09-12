@@ -12,6 +12,7 @@
       "firstReadableFrame": 96,
       "firstVisibleFrame": 3,
       "id": "b05-generic-vs-specific",
+      "motionProfile": null,
       "previewRequired": true,
       "props": {
         "actionLabelsZh": {},
@@ -30,6 +31,7 @@
           "semanticSettle": "required"
         },
         "lifecycleContractVersion": "1",
+        "motionProfileId": null,
         "objectGroups": [],
         "paperStructure": null,
         "productionEligible": false,
@@ -167,6 +169,7 @@
       "firstReadableFrame": 357,
       "firstVisibleFrame": 357,
       "id": "b06-owner-question-grid",
+      "motionProfile": null,
       "previewRequired": true,
       "props": {
         "actionLabelsZh": {},
@@ -185,6 +188,7 @@
           "semanticSettle": "required"
         },
         "lifecycleContractVersion": "1",
+        "motionProfileId": null,
         "objectGroups": [],
         "paperStructure": null,
         "productionEligible": false,
@@ -329,7 +333,16 @@
         {
           "endFrameExclusive": 870,
           "id": "collect",
+          "landedFrame": 789,
+          "landedOffsetFrames": 9,
+          "motionEndFrameExclusive": 798,
+          "motionWindowFrames": 18,
+          "operation": "collect-stack",
           "previewRequired": true,
+          "relationEndFrameExclusive": 796,
+          "relationEndOffsetFrames": 16,
+          "relationStartFrame": 789,
+          "relationStartOffsetFrames": 9,
           "sound": {
             "bindTo": "start",
             "frame": 780,
@@ -340,6 +353,9 @@
           },
           "soundRequired": true,
           "startFrame": 780,
+          "targetGroupIds": [
+            "g-input"
+          ],
           "timingBindings": {
             "endExclusive": {
               "offsetFrames": 0,
@@ -372,7 +388,16 @@
         {
           "endFrameExclusive": 930,
           "id": "ai-classify",
+          "landedFrame": 879,
+          "landedOffsetFrames": 9,
+          "motionEndFrameExclusive": 888,
+          "motionWindowFrames": 18,
+          "operation": "sort-slots",
           "previewRequired": true,
+          "relationEndFrameExclusive": 886,
+          "relationEndOffsetFrames": 16,
+          "relationStartFrame": 879,
+          "relationStartOffsetFrames": 9,
           "sound": {
             "bindTo": "start",
             "frame": 870,
@@ -383,6 +408,9 @@
           },
           "soundRequired": true,
           "startFrame": 870,
+          "targetGroupIds": [
+            "g-ai-organize"
+          ],
           "timingBindings": {
             "endExclusive": {
               "offsetFrames": 0,
@@ -415,7 +443,16 @@
         {
           "endFrameExclusive": 1044,
           "id": "script-draft",
+          "landedFrame": 939,
+          "landedOffsetFrames": 9,
+          "motionEndFrameExclusive": 954,
+          "motionWindowFrames": 24,
+          "operation": "draft-review",
           "previewRequired": true,
+          "relationEndFrameExclusive": 952,
+          "relationEndOffsetFrames": 22,
+          "relationStartFrame": 939,
+          "relationStartOffsetFrames": 9,
           "sound": {
             "bindTo": "start",
             "frame": 930,
@@ -426,6 +463,10 @@
           },
           "soundRequired": true,
           "startFrame": 930,
+          "targetGroupIds": [
+            "g-script",
+            "g-owner-review"
+          ],
           "timingBindings": {
             "endExclusive": {
               "offsetFrames": 0,
@@ -458,7 +499,16 @@
         {
           "endFrameExclusive": 1185,
           "id": "public-materials",
+          "landedFrame": 1053,
+          "landedOffsetFrames": 9,
+          "motionEndFrameExclusive": 1066,
+          "motionWindowFrames": 22,
+          "operation": "publish-board",
           "previewRequired": true,
+          "relationEndFrameExclusive": 1064,
+          "relationEndOffsetFrames": 20,
+          "relationStartFrame": 1053,
+          "relationStartOffsetFrames": 9,
           "sound": {
             "bindTo": "start",
             "frame": 1044,
@@ -469,6 +519,9 @@
           },
           "soundRequired": true,
           "startFrame": 1044,
+          "targetGroupIds": [
+            "g-publication"
+          ],
           "timingBindings": {
             "endExclusive": {
               "offsetFrames": 0,
@@ -501,7 +554,16 @@
         {
           "endFrameExclusive": 1281,
           "id": "ai-production",
+          "landedFrame": 1194,
+          "landedOffsetFrames": 9,
+          "motionEndFrameExclusive": 1205,
+          "motionWindowFrames": 20,
+          "operation": "align-production",
           "previewRequired": true,
+          "relationEndFrameExclusive": 1203,
+          "relationEndOffsetFrames": 18,
+          "relationStartFrame": 1194,
+          "relationStartOffsetFrames": 9,
           "sound": {
             "bindTo": "start",
             "frame": 1185,
@@ -512,6 +574,9 @@
           },
           "soundRequired": true,
           "startFrame": 1185,
+          "targetGroupIds": [
+            "g-foundation"
+          ],
           "timingBindings": {
             "endExclusive": {
               "offsetFrames": 0,
@@ -544,7 +609,16 @@
         {
           "endFrameExclusive": 1377,
           "id": "business-foundation",
+          "landedFrame": 1290,
+          "landedOffsetFrames": 9,
+          "motionEndFrameExclusive": 1299,
+          "motionWindowFrames": 18,
+          "operation": "reveal-foundation",
           "previewRequired": true,
+          "relationEndFrameExclusive": 1297,
+          "relationEndOffsetFrames": 16,
+          "relationStartFrame": 1290,
+          "relationStartOffsetFrames": 9,
           "sound": {
             "bindTo": "start",
             "frame": 1281,
@@ -555,6 +629,9 @@
           },
           "soundRequired": true,
           "startFrame": 1281,
+          "targetGroupIds": [
+            "g-foundation"
+          ],
           "timingBindings": {
             "endExclusive": {
               "offsetFrames": 0,
@@ -597,6 +674,40 @@
       "firstReadableFrame": 774,
       "firstVisibleFrame": 774,
       "id": "b07-paper-content-pipeline",
+      "motionProfile": {
+        "allowedOperations": [
+          "align-production",
+          "collect-stack",
+          "draft-review",
+          "publish-board",
+          "reveal-foundation",
+          "sort-slots"
+        ],
+        "category": "paper-editorial",
+        "id": "paper-stop-motion-v1",
+        "landedOffsetFrames": {
+          "max": 9,
+          "min": 1
+        },
+        "motionWindowFrames": {
+          "max": 24,
+          "min": 16
+        },
+        "relationOffsets": {
+          "requireEndAfterStart": true,
+          "requireEndAtOrBeforeMotionEnd": true,
+          "requireStartAtOrAfterLanding": true
+        },
+        "requiredActionFields": [
+          "targetGroupIds",
+          "operation",
+          "motionWindowFrames",
+          "landedOffsetFrames",
+          "relationStartOffsetFrames",
+          "relationEndOffsetFrames"
+        ],
+        "version": "1"
+      },
       "previewRequired": true,
       "props": {
         "actionLabelsZh": {
@@ -629,6 +740,7 @@
           "semanticSettle": "required"
         },
         "lifecycleContractVersion": "1",
+        "motionProfileId": "paper-stop-motion-v1",
         "objectGroups": [
           {
             "id": "g-input",
@@ -1034,6 +1146,7 @@
       "firstReadableFrame": 1506,
       "firstVisibleFrame": 1371,
       "id": "b08-visibility-bridge",
+      "motionProfile": null,
       "previewRequired": true,
       "props": {
         "actionLabelsZh": {},
@@ -1052,6 +1165,7 @@
           "semanticSettle": "required"
         },
         "lifecycleContractVersion": "1",
+        "motionProfileId": null,
         "objectGroups": [],
         "paperStructure": null,
         "productionEligible": false,
@@ -1364,22 +1478,22 @@
     {
       "path": "workflow/director-r10/component-registry.v1.json",
       "role": "r10-component-registry",
-      "sha256": "c2963df300a90acf2e1789234b71f6d0ecc34029f217d16c9b40dd2ea1d5ecc3"
+      "sha256": "45753c88807f7430d6899259d1be149de8b374117e5a89395cecdb2bfe934b01"
     },
     {
       "path": "tools/build-director-r10-lanzhou-pilot.mjs",
       "role": "r10-lanzhou-adapter",
-      "sha256": "c7b403999b2b8f39b0dde6d63ac5981c1ac77d35c6bfb15fd15adfa1a1d479f2"
+      "sha256": "15b9ea576987f13208724cff9b690ce7031b8ea079eef41d75b04c4441515947"
     },
     {
       "path": "workflow/director-r10/lanzhou-window-r1.intent.json",
       "role": "r10-lanzhou-intent",
-      "sha256": "ee2dcc1e30be670c701f8a8e7ec39810d2d52efc7c6555cad9784edb72b95ee9"
+      "sha256": "9c9e043025340976da59bb1f043613554fdfbd7aeaa9fc78c0ef1bf1407a9079"
     },
     {
       "path": "tools/director-r10-timeline-core.mjs",
       "role": "r10-timeline-compiler",
-      "sha256": "360d0de199c5cbbbd0b42d7d282be8cdfddb81a8599cb13e05f2ad93e81e1576"
+      "sha256": "859603db6a968d794bc83f97e9091700dd42c77f8f1ea5e7cf209f98734e63e0"
     },
     {
       "path": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/remotion-page-turn.wav",
@@ -1467,9 +1581,9 @@
       "sha256": "be4a59f697cabd520c0219cef782cc7d779fdd129ab2c8633aad9e202ebeefa2"
     }
   ],
-  "sourceGraphSha": "2d8edd9680096003e930e550bd192d78925c99e4188e5977b3797ed28ef6629a",
-  "sourceGraphSha256": "2d8edd9680096003e930e550bd192d78925c99e4188e5977b3797ed28ef6629a",
+  "sourceGraphSha": "21dfad321d31c520fa76de5cb423faabaaa765203813abbfa94d4ec6f72b3cba",
+  "sourceGraphSha256": "21dfad321d31c520fa76de5cb423faabaaa765203813abbfa94d4ec6f72b3cba",
   "timelineId": "lanzhou-window-r1-runtime",
-  "timelineSha256": "2663c8780e35f359e6e28b6fad57a6b8cb6379ca48ee2cf8d2ac9fe953c1403f",
+  "timelineSha256": "b8293fb0aae4f6bbef6d449e73ec9b3864531ed9a3f0a699069b49ed40a959e7",
   "videoId": "lanzhou-industry-ai-r10-pilot-r1"
 }

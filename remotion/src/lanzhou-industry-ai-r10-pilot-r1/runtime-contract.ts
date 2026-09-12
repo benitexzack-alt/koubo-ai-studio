@@ -4,6 +4,7 @@ export const R10_SOURCE_TRIM_BEFORE = 1200;
 export const R10_MIN_COMPLEX_ASSEMBLY_BEATS = 5;
 export const R10_SFX_VOLUME_MIN = 0.2;
 export const R10_SFX_VOLUME_MAX = 0.55;
+export const R10_PAPER_MOTION_PROFILE_ID = 'paper-stop-motion-v1';
 
 export type R10RendererId =
   | 'ContrastLedgerR10'
@@ -15,6 +16,16 @@ export type R10Action = {
   id: string;
   startFrame: number;
   endFrameExclusive: number;
+  targetGroupIds: string[];
+  operation: string;
+  motionWindowFrames: number;
+  landedOffsetFrames: number;
+  relationStartOffsetFrames: number;
+  relationEndOffsetFrames: number;
+  landedFrame: number;
+  motionEndFrameExclusive: number;
+  relationStartFrame: number;
+  relationEndFrameExclusive: number;
   sound: null | {
     role: string;
     source: string;
@@ -23,6 +34,21 @@ export type R10Action = {
     offsetFrames: number;
     frame: number;
   };
+};
+
+export type R10MotionProfile = {
+  id: string;
+  version: string;
+  category: string;
+  requiredActionFields: string[];
+  motionWindowFrames: {min: number; max: number};
+  landedOffsetFrames: {min: number; max: number};
+  relationOffsets: {
+    requireStartAtOrAfterLanding: true;
+    requireEndAfterStart: true;
+    requireEndAtOrBeforeMotionEnd: true;
+  };
+  allowedOperations: string[];
 };
 
 export type R10PaperObjectGroup = {
@@ -43,12 +69,14 @@ export type R10PaperRuntimeProps = {
   depthLayers: number;
   objectGroups: R10PaperObjectGroup[];
   semanticNodes: R10PaperSemanticNode[];
+  motionProfileId: string;
 };
 
 export type R10Event = {
   id: string;
   beatId: string;
   category: string;
+  motionProfile: R10MotionProfile | null;
   component: R10RendererId;
   props: Record<string, unknown>;
   firstVisibleFrame: number;
@@ -218,6 +246,7 @@ export const getR10PaperRuntimeProps = (event: R10Event): R10PaperRuntimeProps =
   const assemblyBeatIds = props?.assemblyBeatIds;
   const actionLabelsZh = asRecord(props?.actionLabelsZh);
   const depthLayers = props?.depthLayers;
+  const motionProfileId = props?.motionProfileId;
   if (
     !Array.isArray(objectGroups)
     || objectGroups.length < 5
@@ -229,6 +258,7 @@ export const getR10PaperRuntimeProps = (event: R10Event): R10PaperRuntimeProps =
     || assemblyBeatIds.length < R10_MIN_COMPLEX_ASSEMBLY_BEATS
     || assemblyBeatIds.length > 7
     || !actionLabelsZh
+    || motionProfileId !== R10_PAPER_MOTION_PROFILE_ID
     || !Number.isInteger(depthLayers)
     || (depthLayers as number) < 3
   ) {
@@ -311,6 +341,7 @@ export const getR10PaperRuntimeProps = (event: R10Event): R10PaperRuntimeProps =
     depthLayers: depthLayers as number,
     objectGroups: groups,
     semanticNodes: nodes,
+    motionProfileId,
   };
 };
 
@@ -324,6 +355,65 @@ const assertAction = (event: R10Event, action: R10Action) => {
     || action.endFrameExclusive > event.actionEndFrame + 1
   ) {
     throw new Error(`R10_RUNTIME_ACTION_RANGE_INVALID:${event.id}:${action.id}`);
+  }
+};
+
+const assertPaperMotionProfile = (event: R10Event) => {
+  const profile = event.motionProfile;
+  if (
+    !profile
+    || profile.id !== R10_PAPER_MOTION_PROFILE_ID
+    || profile.version !== '1'
+    || profile.category !== 'paper-editorial'
+    || profile.motionWindowFrames?.min !== 16
+    || profile.motionWindowFrames?.max !== 24
+    || profile.landedOffsetFrames?.min !== 1
+    || profile.landedOffsetFrames?.max !== 9
+    || profile.relationOffsets?.requireStartAtOrAfterLanding !== true
+    || profile.relationOffsets?.requireEndAfterStart !== true
+    || profile.relationOffsets?.requireEndAtOrBeforeMotionEnd !== true
+    || !Array.isArray(profile.allowedOperations)
+    || profile.allowedOperations.length === 0
+  ) {
+    throw new Error('R10_RUNTIME_B07_MOTION_PROFILE_INVALID');
+  }
+  return profile;
+};
+
+const assertPaperActionMotion = (
+  event: R10Event,
+  action: R10Action,
+  profile: R10MotionProfile,
+  groupIds: Set<string>,
+) => {
+  if (
+    !Array.isArray(action.targetGroupIds)
+    || action.targetGroupIds.length === 0
+    || new Set(action.targetGroupIds).size !== action.targetGroupIds.length
+    || action.targetGroupIds.some((groupId) => !groupIds.has(groupId))
+    || !profile.allowedOperations.includes(action.operation)
+    || !isFrame(action.motionWindowFrames)
+    || action.motionWindowFrames < profile.motionWindowFrames.min
+    || action.motionWindowFrames > profile.motionWindowFrames.max
+    || !isFrame(action.landedOffsetFrames)
+    || action.landedOffsetFrames < profile.landedOffsetFrames.min
+    || action.landedOffsetFrames > profile.landedOffsetFrames.max
+    || !isFrame(action.relationStartOffsetFrames)
+    || !isFrame(action.relationEndOffsetFrames)
+    || action.relationStartOffsetFrames < action.landedOffsetFrames
+    || action.relationEndOffsetFrames <= action.relationStartOffsetFrames
+    || action.relationEndOffsetFrames > action.motionWindowFrames
+    || action.landedFrame !== action.startFrame + action.landedOffsetFrames
+    || action.motionEndFrameExclusive !== action.startFrame + action.motionWindowFrames
+    || action.relationStartFrame !== action.startFrame + action.relationStartOffsetFrames
+    || action.relationEndFrameExclusive
+      !== action.startFrame + action.relationEndOffsetFrames
+    || action.landedFrame >= action.endFrameExclusive
+    || action.motionEndFrameExclusive > action.endFrameExclusive
+    || action.relationStartFrame >= action.endFrameExclusive
+    || action.relationEndFrameExclusive > action.endFrameExclusive
+  ) {
+    throw new Error(`R10_RUNTIME_B07_ACTION_MOTION_INVALID:${action.id}`);
   }
 };
 
@@ -396,7 +486,15 @@ export const assertR10RuntimeTimeline = (input: unknown): R10RuntimeTimeline => 
       if (event.actions.slice(0, 6).some((action) => action.sound === null)) {
         throw new Error('R10_RUNTIME_B07_ACTION_SOUND_MISSING');
       }
-      getR10PaperRuntimeProps(event);
+      const paperProps = getR10PaperRuntimeProps(event);
+      const motionProfile = assertPaperMotionProfile(event);
+      const groupIds = new Set(paperProps.objectGroups.map((group) => group.id));
+      for (const action of event.actions) {
+        assertPaperActionMotion(event, action, motionProfile, groupIds);
+      }
+      if (paperProps.motionProfileId !== motionProfile.id) {
+        throw new Error('R10_RUNTIME_B07_MOTION_PROFILE_DRIFT');
+      }
     }
   }
 

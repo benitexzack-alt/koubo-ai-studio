@@ -62,6 +62,14 @@ const ACTION_SOUND_ANCHORS = Object.freeze([
   'end',
   ...VISUAL_ANCHORS,
 ]);
+const PAPER_STOP_MOTION_REQUIRED_ACTION_FIELDS = Object.freeze([
+  'targetGroupIds',
+  'operation',
+  'motionWindowFrames',
+  'landedOffsetFrames',
+  'relationStartOffsetFrames',
+  'relationEndOffsetFrames',
+]);
 
 const isRecord = (value) =>
   value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -507,6 +515,202 @@ const normalizeActionSound = ({
   };
 };
 
+const normalizeMotionProfile = ({motionProfile, category, actions, eventId}) => {
+  const motionRequired = category === 'paper-editorial' && actions.length > 0;
+  if (motionProfile == null) {
+    if (motionRequired) {
+      throwR10(
+        'R10_MOTION_PROFILE_REQUIRED',
+        `事件${eventId}的纸艺动作必须绑定注册的动作档案。`,
+      );
+    }
+    return null;
+  }
+  if (!isRecord(motionProfile)) {
+    throwR10('R10_MOTION_PROFILE_INVALID', `事件${eventId}的motionProfile必须是对象。`);
+  }
+  const id = String(motionProfile.id ?? '').trim();
+  const version = String(motionProfile.version ?? '').trim();
+  const profileCategory = String(motionProfile.category ?? '').trim();
+  const requiredActionFields = motionProfile.requiredActionFields;
+  const motionWindowFrames = motionProfile.motionWindowFrames;
+  const landedOffsetFrames = motionProfile.landedOffsetFrames;
+  const relationOffsets = motionProfile.relationOffsets;
+  const allowedOperations = motionProfile.allowedOperations;
+  if (
+    !/^[a-z][a-z0-9-]*$/u.test(id) ||
+    !version ||
+    profileCategory !== category ||
+    !Array.isArray(requiredActionFields) ||
+    !PAPER_STOP_MOTION_REQUIRED_ACTION_FIELDS.every((field) =>
+      requiredActionFields.includes(field),
+    ) ||
+    !isRecord(motionWindowFrames) ||
+    !isInteger(motionWindowFrames.min) ||
+    !isInteger(motionWindowFrames.max) ||
+    motionWindowFrames.min <= 0 ||
+    motionWindowFrames.max < motionWindowFrames.min ||
+    !isRecord(landedOffsetFrames) ||
+    !isInteger(landedOffsetFrames.min) ||
+    !isInteger(landedOffsetFrames.max) ||
+    landedOffsetFrames.min < 0 ||
+    landedOffsetFrames.max < landedOffsetFrames.min ||
+    !isRecord(relationOffsets) ||
+    relationOffsets.requireStartAtOrAfterLanding !== true ||
+    relationOffsets.requireEndAfterStart !== true ||
+    relationOffsets.requireEndAtOrBeforeMotionEnd !== true ||
+    !Array.isArray(allowedOperations) ||
+    allowedOperations.length === 0
+  ) {
+    throwR10(
+      'R10_MOTION_PROFILE_INVALID',
+      `事件${eventId}的动作档案缺少可机器校验的窗口、落定和关系线合同。`,
+    );
+  }
+  const normalizedOperations = sortedUniqueText(
+    allowedOperations,
+    `事件${eventId}.motionProfile.allowedOperations`,
+  );
+  if (normalizedOperations.some((operation) => !/^[a-z][a-z0-9-]*$/u.test(operation))) {
+    throwR10(
+      'R10_MOTION_PROFILE_INVALID',
+      `事件${eventId}的允许操作必须使用稳定小写英文ID。`,
+    );
+  }
+  return {
+    id,
+    version,
+    category: profileCategory,
+    requiredActionFields: [...PAPER_STOP_MOTION_REQUIRED_ACTION_FIELDS],
+    motionWindowFrames: {
+      min: motionWindowFrames.min,
+      max: motionWindowFrames.max,
+    },
+    landedOffsetFrames: {
+      min: landedOffsetFrames.min,
+      max: landedOffsetFrames.max,
+    },
+    relationOffsets: {
+      requireStartAtOrAfterLanding: true,
+      requireEndAfterStart: true,
+      requireEndAtOrBeforeMotionEnd: true,
+    },
+    allowedOperations: normalizedOperations,
+  };
+};
+
+const compileActionMotion = ({action, actionId, actionAnchors, motionProfile, eventId}) => {
+  if (motionProfile == null) {
+    const hasMotionField = PAPER_STOP_MOTION_REQUIRED_ACTION_FIELDS.some((field) =>
+      Object.hasOwn(action, field),
+    );
+    if (hasMotionField) {
+      throwR10(
+        'R10_MOTION_PROFILE_REQUIRED',
+        `事件${eventId}动作${actionId}声明了动作字段但未绑定motionProfile。`,
+      );
+    }
+    return null;
+  }
+  if (
+    motionProfile.requiredActionFields.some((field) => !Object.hasOwn(action, field))
+  ) {
+    throwR10(
+      'R10_ACTION_MOTION_CONTRACT_INVALID',
+      `事件${eventId}动作${actionId}缺少${motionProfile.id}必需字段。`,
+    );
+  }
+  if (!Array.isArray(action.targetGroupIds)) {
+    throwR10(
+      'R10_ACTION_TARGET_GROUP_INVALID',
+      `事件${eventId}动作${actionId}的targetGroupIds必须是数组。`,
+    );
+  }
+  const targetGroupIds = action.targetGroupIds.map((value) => String(value ?? '').trim());
+  const operation = String(action.operation ?? '').trim();
+  const motionWindowFrames = action.motionWindowFrames;
+  const landedOffsetFrames = action.landedOffsetFrames;
+  const relationStartOffsetFrames = action.relationStartOffsetFrames;
+  const relationEndOffsetFrames = action.relationEndOffsetFrames;
+  if (
+    targetGroupIds.length === 0 ||
+    new Set(targetGroupIds).size !== targetGroupIds.length ||
+    targetGroupIds.some((id) => !/^[a-z][a-z0-9-]*$/u.test(id))
+  ) {
+    throwR10(
+      'R10_ACTION_TARGET_GROUP_INVALID',
+      `事件${eventId}动作${actionId}必须显式绑定稳定的目标物件组。`,
+    );
+  }
+  if (!motionProfile.allowedOperations.includes(operation)) {
+    throwR10(
+      'R10_ACTION_OPERATION_INVALID',
+      `事件${eventId}动作${actionId}的操作${operation || '<empty>'}未在${motionProfile.id}注册。`,
+    );
+  }
+  if (
+    !isInteger(motionWindowFrames) ||
+    motionWindowFrames < motionProfile.motionWindowFrames.min ||
+    motionWindowFrames > motionProfile.motionWindowFrames.max
+  ) {
+    throwR10(
+      'R10_ACTION_MOTION_WINDOW_INVALID',
+      `事件${eventId}动作${actionId}的motionWindowFrames必须在${motionProfile.motionWindowFrames.min}至${motionProfile.motionWindowFrames.max}帧之间。`,
+    );
+  }
+  if (
+    !isInteger(landedOffsetFrames) ||
+    landedOffsetFrames < motionProfile.landedOffsetFrames.min ||
+    landedOffsetFrames > motionProfile.landedOffsetFrames.max
+  ) {
+    throwR10(
+      'R10_ACTION_LANDED_OFFSET_INVALID',
+      `事件${eventId}动作${actionId}的落定偏移必须在${motionProfile.landedOffsetFrames.min}至${motionProfile.landedOffsetFrames.max}帧之间。`,
+    );
+  }
+  if (
+    !isInteger(relationStartOffsetFrames) ||
+    !isInteger(relationEndOffsetFrames) ||
+    relationStartOffsetFrames < landedOffsetFrames ||
+    relationEndOffsetFrames <= relationStartOffsetFrames ||
+    relationEndOffsetFrames > motionWindowFrames
+  ) {
+    throwR10(
+      'R10_ACTION_RELATION_WINDOW_INVALID',
+      `事件${eventId}动作${actionId}的关系线必须在物件落定后开始，并在独立动作窗口内结束。`,
+    );
+  }
+  const landedFrame = actionAnchors.start + landedOffsetFrames;
+  const motionEndFrameExclusive = actionAnchors.start + motionWindowFrames;
+  const relationStartFrame = actionAnchors.start + relationStartOffsetFrames;
+  const relationEndFrameExclusive = actionAnchors.start + relationEndOffsetFrames;
+  if (
+    landedFrame < actionAnchors.start ||
+    landedFrame >= actionAnchors.endExclusive ||
+    motionEndFrameExclusive > actionAnchors.endExclusive ||
+    relationStartFrame < actionAnchors.start ||
+    relationStartFrame >= actionAnchors.endExclusive ||
+    relationEndFrameExclusive > actionAnchors.endExclusive
+  ) {
+    throwR10(
+      'R10_ACTION_MOTION_RANGE_INVALID',
+      `事件${eventId}动作${actionId}的落定、运动或关系线窗口超出本动作区间。`,
+    );
+  }
+  return {
+    targetGroupIds,
+    operation,
+    motionWindowFrames,
+    landedOffsetFrames,
+    relationStartOffsetFrames,
+    relationEndOffsetFrames,
+    landedFrame,
+    motionEndFrameExclusive,
+    relationStartFrame,
+    relationEndFrameExclusive,
+  };
+};
+
 const compileActions = ({
   actions,
   semanticAnchors,
@@ -515,6 +719,7 @@ const compileActions = ({
   eventId,
   eventPreviewRequired,
   category,
+  motionProfile,
 }) => {
   if (actions == null) return [];
   if (!Array.isArray(actions)) {
@@ -595,6 +800,13 @@ const compileActions = ({
       start: start.frame,
       endExclusive: endExclusive.frame,
     };
+    const actionMotion = compileActionMotion({
+      action,
+      actionId,
+      actionAnchors,
+      motionProfile,
+      eventId,
+    });
     return {
       id: actionId,
       previewRequired: eventPreviewRequired,
@@ -605,6 +817,7 @@ const compileActions = ({
       },
       startFrame: start.frame,
       endFrameExclusive: endExclusive.frame,
+      ...(actionMotion ?? {}),
       sound: normalizeActionSound({
         sound: action.sound,
         actionAnchors,
@@ -754,20 +967,32 @@ const compileEvent = ({event, fps, durationFrames, policy}) => {
     endExclusive: resolved.endExclusive,
   };
   const eventPreviewRequired = true;
+  const authoredActions = event.actions ?? [];
+  if (!Array.isArray(authoredActions)) {
+    throwR10('R10_ACTION_INVALID', `事件${eventId}的actions必须是数组。`);
+  }
+  const motionProfile = normalizeMotionProfile({
+    motionProfile: event.motionProfile,
+    category,
+    actions: authoredActions,
+    eventId,
+  });
   const actions = compileActions({
-    actions: event.actions,
+    actions: authoredActions,
     semanticAnchors,
     visualAnchors: anchors,
     policy,
     eventId,
     eventPreviewRequired,
     category,
+    motionProfile,
   });
   const sound = normalizeSound({sound: event.sound, anchors, policy, eventId});
   return {
     id: eventId,
     beatId,
     category,
+    motionProfile,
     previewRequired: eventPreviewRequired,
     semanticBinding,
     component: event.visual.component.trim(),

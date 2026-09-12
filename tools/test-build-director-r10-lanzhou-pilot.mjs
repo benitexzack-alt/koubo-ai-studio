@@ -79,6 +79,76 @@ assert.deepEqual(b07.actions.map((action) => action.id), [
   'ai-production',
   'business-foundation',
 ]);
+assert.equal(b07.motionProfile.id, 'paper-stop-motion-v1');
+assert.equal(b07.props.motionProfileId, 'paper-stop-motion-v1');
+assert.deepEqual(
+  b07.actions.map((action) => ({
+    id: action.id,
+    targetGroupIds: action.targetGroupIds,
+    operation: action.operation,
+    landedFrame: action.landedFrame,
+    motionEndFrameExclusive: action.motionEndFrameExclusive,
+    relationStartFrame: action.relationStartFrame,
+    relationEndFrameExclusive: action.relationEndFrameExclusive,
+  })),
+  [
+    {
+      id: 'collect',
+      targetGroupIds: ['g-input'],
+      operation: 'collect-stack',
+      landedFrame: 789,
+      motionEndFrameExclusive: 798,
+      relationStartFrame: 789,
+      relationEndFrameExclusive: 796,
+    },
+    {
+      id: 'ai-classify',
+      targetGroupIds: ['g-ai-organize'],
+      operation: 'sort-slots',
+      landedFrame: 879,
+      motionEndFrameExclusive: 888,
+      relationStartFrame: 879,
+      relationEndFrameExclusive: 886,
+    },
+    {
+      id: 'script-draft',
+      targetGroupIds: ['g-script', 'g-owner-review'],
+      operation: 'draft-review',
+      landedFrame: 939,
+      motionEndFrameExclusive: 954,
+      relationStartFrame: 939,
+      relationEndFrameExclusive: 952,
+    },
+    {
+      id: 'public-materials',
+      targetGroupIds: ['g-publication'],
+      operation: 'publish-board',
+      landedFrame: 1053,
+      motionEndFrameExclusive: 1066,
+      relationStartFrame: 1053,
+      relationEndFrameExclusive: 1064,
+    },
+    {
+      id: 'ai-production',
+      targetGroupIds: ['g-foundation'],
+      operation: 'align-production',
+      landedFrame: 1194,
+      motionEndFrameExclusive: 1205,
+      relationStartFrame: 1194,
+      relationEndFrameExclusive: 1203,
+    },
+    {
+      id: 'business-foundation',
+      targetGroupIds: ['g-foundation'],
+      operation: 'reveal-foundation',
+      landedFrame: 1290,
+      motionEndFrameExclusive: 1299,
+      relationStartFrame: 1290,
+      relationEndFrameExclusive: 1297,
+    },
+  ],
+  '六步纸艺动作必须从实录语义起点编译出独立的落定、运动结束和关系线帧',
+);
 assert.deepEqual(
   b07.actions.map((action) => action.sound.role),
   [
@@ -121,6 +191,7 @@ assert.equal(first.receipt.legacyPostshootAudit.tailFlattenDetected, true);
 assert.equal(first.receipt.legacyPostshootAudit.legacyB07GranularActionCount, 4);
 assert.equal(first.receipt.legacyPostshootAudit.r10B07ActionCount, 6);
 assert.equal(first.receipt.componentRegistryAudit.paperStructureTargetValid, true);
+assert.equal(first.receipt.componentRegistryAudit.paperMotionProfileValid, true);
 assert.ok(first.receipt.sourceFiles.every((source) => /^[a-f0-9]{64}$/u.test(source.sha256)));
 assert.equal(first.receipt.governanceFiles.length, 6);
 assert.ok(first.receipt.governanceFiles.every((source) => source.application.length > 0));
@@ -225,6 +296,50 @@ assert.throws(
     assert.equal(error.code, 'R10_ACTION_SOUND_REQUIRED');
     return true;
   },
+);
+
+const missingPaperMotionFieldReader = virtualRead((relativePath, original) => {
+  if (relativePath !== LANZHOU_R10_INTENT_PATH) return original;
+  const intent = JSON.parse(original);
+  delete intent.events.find((event) => event.sourceBeatId === 'B07').actions[0]
+    .motionWindowFrames;
+  return `${JSON.stringify(intent, null, 2)}\n`;
+});
+expectCode('R10_LANZHOU_PAPER_MOTION_ACTION_INVALID', () =>
+  buildLanzhouR10Pilot({projectRoot, readFile: missingPaperMotionFieldReader}),
+);
+
+const excessivePaperMotionWindowReader = virtualRead((relativePath, original) => {
+  if (relativePath !== LANZHOU_R10_INTENT_PATH) return original;
+  const intent = JSON.parse(original);
+  intent.events.find((event) => event.sourceBeatId === 'B07').actions[0]
+    .motionWindowFrames = 25;
+  return `${JSON.stringify(intent, null, 2)}\n`;
+});
+expectCode('R10_LANZHOU_PAPER_MOTION_WINDOW_INVALID', () =>
+  buildLanzhouR10Pilot({projectRoot, readFile: excessivePaperMotionWindowReader}),
+);
+
+const excessivePaperLandedOffsetReader = virtualRead((relativePath, original) => {
+  if (relativePath !== LANZHOU_R10_INTENT_PATH) return original;
+  const intent = JSON.parse(original);
+  intent.events.find((event) => event.sourceBeatId === 'B07').actions[0]
+    .landedOffsetFrames = 10;
+  return `${JSON.stringify(intent, null, 2)}\n`;
+});
+expectCode('R10_LANZHOU_PAPER_MOTION_WINDOW_INVALID', () =>
+  buildLanzhouR10Pilot({projectRoot, readFile: excessivePaperLandedOffsetReader}),
+);
+
+const unknownPaperTargetGroupReader = virtualRead((relativePath, original) => {
+  if (relativePath !== LANZHOU_R10_INTENT_PATH) return original;
+  const intent = JSON.parse(original);
+  intent.events.find((event) => event.sourceBeatId === 'B07').actions[0]
+    .targetGroupIds = ['g-renderer-hardcode'];
+  return `${JSON.stringify(intent, null, 2)}\n`;
+});
+expectCode('R10_LANZHOU_PAPER_MOTION_TARGET_INVALID', () =>
+  buildLanzhouR10Pilot({projectRoot, readFile: unknownPaperTargetGroupReader}),
 );
 
 const tooFewPaperNodesReader = virtualRead((relativePath, original) => {

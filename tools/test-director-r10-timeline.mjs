@@ -9,6 +9,28 @@ import {
 const clone = (value) => structuredClone(value);
 const sha = (character) => character.repeat(64);
 
+const paperStopMotionProfile = {
+  id: 'paper-stop-motion-v1',
+  version: '1',
+  category: 'paper-editorial',
+  requiredActionFields: [
+    'targetGroupIds',
+    'operation',
+    'motionWindowFrames',
+    'landedOffsetFrames',
+    'relationStartOffsetFrames',
+    'relationEndOffsetFrames',
+  ],
+  motionWindowFrames: {min: 16, max: 24},
+  landedOffsetFrames: {min: 1, max: 9},
+  relationOffsets: {
+    requireStartAtOrAfterLanding: true,
+    requireEndAfterStart: true,
+    requireEndAtOrBeforeMotionEnd: true,
+  },
+  allowedOperations: ['fold-stack', 'sort-slots', 'draft-review', 'lock-board'],
+};
+
 const paperEvent = {
   id: 'paper-definition',
   beatId: 'beat-definition',
@@ -257,6 +279,8 @@ assert.equal(visualsWithoutSound.complete, false);
 const fourActionPaperEvent = clone(paperEvent);
 fourActionPaperEvent.id = 'paper-four-action';
 fourActionPaperEvent.beatId = 'beat-paper-four-action';
+fourActionPaperEvent.motionProfile = clone(paperStopMotionProfile);
+fourActionPaperEvent.semanticBinding.spokenEndFrame = 400;
 fourActionPaperEvent.semanticBinding.namedAnchors = {
   'fold-1-start': {
     frame: 300,
@@ -265,25 +289,25 @@ fourActionPaperEvent.semanticBinding.namedAnchors = {
     timingPrecision: 'word-aligned',
   },
   'fold-2-start': {
-    frame: 310,
+    frame: 324,
     wordIds: ['word-fold-2'],
     captionIds: ['caption-fold-2'],
     timingPrecision: 'word-aligned',
   },
   'fold-3-start': {
-    frame: 318,
+    frame: 348,
     wordIds: ['word-fold-3'],
     captionIds: [],
     timingPrecision: 'word-aligned',
   },
   'fold-4-start': {
-    frame: 345,
+    frame: 372,
     wordIds: ['word-fold-4'],
     captionIds: [],
     timingPrecision: 'word-aligned',
   },
   'fold-4-end': {
-    frame: 358,
+    frame: 396,
     wordIds: [],
     captionIds: ['caption-fold-4-end'],
     timingPrecision: 'caption-aligned',
@@ -298,6 +322,12 @@ fourActionPaperEvent.sound = {
 fourActionPaperEvent.actions = [
   {
     id: 'fold-1',
+    targetGroupIds: ['g-input'],
+    operation: 'fold-stack',
+    motionWindowFrames: 18,
+    landedOffsetFrames: 9,
+    relationStartOffsetFrames: 9,
+    relationEndOffsetFrames: 16,
     timing: {
       start: {ref: 'fold-1-start', offsetFrames: 0},
       endExclusive: {ref: 'fold-2-start', offsetFrames: 0},
@@ -311,6 +341,12 @@ fourActionPaperEvent.actions = [
   },
   {
     id: 'fold-2',
+    targetGroupIds: ['g-sort'],
+    operation: 'sort-slots',
+    motionWindowFrames: 18,
+    landedOffsetFrames: 9,
+    relationStartOffsetFrames: 9,
+    relationEndOffsetFrames: 16,
     timing: {
       start: {ref: 'fold-2-start', offsetFrames: 0},
       endExclusive: {ref: 'fold-3-start', offsetFrames: 0},
@@ -324,6 +360,12 @@ fourActionPaperEvent.actions = [
   },
   {
     id: 'fold-3',
+    targetGroupIds: ['g-draft', 'g-review'],
+    operation: 'draft-review',
+    motionWindowFrames: 24,
+    landedOffsetFrames: 9,
+    relationStartOffsetFrames: 9,
+    relationEndOffsetFrames: 22,
     timing: {
       start: {ref: 'fold-3-start', offsetFrames: 0},
       endExclusive: {ref: 'fold-4-start', offsetFrames: 0},
@@ -337,6 +379,12 @@ fourActionPaperEvent.actions = [
   },
   {
     id: 'fold-4',
+    targetGroupIds: ['g-lock'],
+    operation: 'lock-board',
+    motionWindowFrames: 18,
+    landedOffsetFrames: 9,
+    relationStartOffsetFrames: 9,
+    relationEndOffsetFrames: 16,
     timing: {
       start: {ref: 'fold-4-start', offsetFrames: 0},
       endExclusive: {ref: 'fold-4-end', offsetFrames: 0},
@@ -379,6 +427,57 @@ assert.deepEqual(
   fourActionCompiled.events[0].actions.map((action) => action.id),
   ['fold-1', 'fold-2', 'fold-3', 'fold-4'],
 );
+assert.equal(fourActionCompiled.events[0].motionProfile.id, 'paper-stop-motion-v1');
+assert.deepEqual(
+  fourActionCompiled.events[0].actions.map((action) => ({
+    id: action.id,
+    targetGroupIds: action.targetGroupIds,
+    operation: action.operation,
+    landedFrame: action.landedFrame,
+    motionEndFrameExclusive: action.motionEndFrameExclusive,
+    relationStartFrame: action.relationStartFrame,
+    relationEndFrameExclusive: action.relationEndFrameExclusive,
+  })),
+  [
+    {
+      id: 'fold-1',
+      targetGroupIds: ['g-input'],
+      operation: 'fold-stack',
+      landedFrame: 309,
+      motionEndFrameExclusive: 318,
+      relationStartFrame: 309,
+      relationEndFrameExclusive: 316,
+    },
+    {
+      id: 'fold-2',
+      targetGroupIds: ['g-sort'],
+      operation: 'sort-slots',
+      landedFrame: 333,
+      motionEndFrameExclusive: 342,
+      relationStartFrame: 333,
+      relationEndFrameExclusive: 340,
+    },
+    {
+      id: 'fold-3',
+      targetGroupIds: ['g-draft', 'g-review'],
+      operation: 'draft-review',
+      landedFrame: 357,
+      motionEndFrameExclusive: 372,
+      relationStartFrame: 357,
+      relationEndFrameExclusive: 370,
+    },
+    {
+      id: 'fold-4',
+      targetGroupIds: ['g-lock'],
+      operation: 'lock-board',
+      landedFrame: 381,
+      motionEndFrameExclusive: 390,
+      relationStartFrame: 381,
+      relationEndFrameExclusive: 388,
+    },
+  ],
+  '动作窗口必须从语义起点编译为独立绝对帧，不得沿用整段语义区间作为动画时长',
+);
 assert.equal(fourActionCompiled.soundCues.length, 5);
 assert.deepEqual(
   fourActionCompiled.soundCues
@@ -386,9 +485,9 @@ assert.deepEqual(
     .map((cue) => [cue.actionId, cue.frame, cue.role]),
   [
     ['fold-1', 308, 'paper-fold'],
-    ['fold-2', 317, 'paper-fold'],
-    ['fold-3', 319, 'paper-slide'],
-    ['fold-4', 346, 'paper-lock'],
+    ['fold-2', 347, 'paper-fold'],
+    ['fold-3', 349, 'paper-slide'],
+    ['fold-4', 373, 'paper-lock'],
   ],
   '四段动作必须分别保留可审计音效点，不能折叠为一个入口声',
 );
@@ -408,6 +507,24 @@ const missingActionSound = clone(fourActionDefinition);
 delete missingActionSound.events[0].actions[3].sound;
 expectCode('R10_ACTION_SOUND_REQUIRED', () =>
   compileDirectorR10Timeline(missingActionSound),
+);
+
+const missingMotionField = clone(fourActionDefinition);
+delete missingMotionField.events[0].actions[0].motionWindowFrames;
+expectCode('R10_ACTION_MOTION_CONTRACT_INVALID', () =>
+  compileDirectorR10Timeline(missingMotionField),
+);
+
+const excessiveMotionWindow = clone(fourActionDefinition);
+excessiveMotionWindow.events[0].actions[0].motionWindowFrames = 25;
+expectCode('R10_ACTION_MOTION_WINDOW_INVALID', () =>
+  compileDirectorR10Timeline(excessiveMotionWindow),
+);
+
+const excessiveLandedOffset = clone(fourActionDefinition);
+excessiveLandedOffset.events[0].actions[0].landedOffsetFrames = 10;
+expectCode('R10_ACTION_LANDED_OFFSET_INVALID', () =>
+  compileDirectorR10Timeline(excessiveLandedOffset),
 );
 
 const attemptedPaperSoundBypass = clone(fourActionDefinition);
@@ -503,7 +620,7 @@ expectCode('R10_NAMED_ANCHOR_NAME_INVALID', () =>
 const fourActionMutedCoverage = evaluateDirectorR10PreviewCoverage({
   timeline: fourActionCompiled,
   previewRanges: [
-    {id: 'four-action-muted', startFrame: 290, endFrameExclusive: 370, withSfx: false},
+    {id: 'four-action-muted', startFrame: 290, endFrameExclusive: 410, withSfx: false},
   ],
   requiredCategories: ['paper-editorial'],
 });
@@ -523,7 +640,7 @@ assert.deepEqual(fourActionMutedCoverage.missingComparisonEventIds, [
 const fourActionAudibleOnlyCoverage = evaluateDirectorR10PreviewCoverage({
   timeline: fourActionCompiled,
   previewRanges: [
-    {id: 'four-action-audible', startFrame: 290, endFrameExclusive: 370, withSfx: true},
+    {id: 'four-action-audible', startFrame: 290, endFrameExclusive: 410, withSfx: true},
   ],
   requiredCategories: ['paper-editorial'],
 });
@@ -536,8 +653,8 @@ assert.deepEqual(fourActionAudibleOnlyCoverage.missingComparisonEventIds, [
 const fourActionMismatchedPair = evaluateDirectorR10PreviewCoverage({
   timeline: fourActionCompiled,
   previewRanges: [
-    {id: 'four-action-audible', startFrame: 290, endFrameExclusive: 370, withSfx: true},
-    {id: 'four-action-muted-shifted', startFrame: 291, endFrameExclusive: 370, withSfx: false},
+    {id: 'four-action-audible', startFrame: 290, endFrameExclusive: 410, withSfx: true},
+    {id: 'four-action-muted-shifted', startFrame: 291, endFrameExclusive: 410, withSfx: false},
   ],
   requiredCategories: ['paper-editorial'],
 });
@@ -549,8 +666,8 @@ assert.equal(fourActionMismatchedPair.complete, false);
 const fourActionCoverage = evaluateDirectorR10PreviewCoverage({
   timeline: fourActionCompiled,
   previewRanges: [
-    {id: 'four-action-audible', startFrame: 290, endFrameExclusive: 370, withSfx: true},
-    {id: 'four-action-muted', startFrame: 290, endFrameExclusive: 370, withSfx: false},
+    {id: 'four-action-audible', startFrame: 290, endFrameExclusive: 410, withSfx: true},
+    {id: 'four-action-muted', startFrame: 290, endFrameExclusive: 410, withSfx: false},
   ],
   requiredCategories: ['paper-editorial'],
 });
