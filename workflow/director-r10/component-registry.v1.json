@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "director-r10-component-registry/v1",
+  "registryId": "director-r10-lanzhou-pilot-components",
+  "status": "sidecar-pilot",
+  "productionEligible": false,
+  "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+  "soundSourceContract": {
+    "runtimePrefix": "sfx/",
+    "canonicalTrackedPrefix": "remotion/public/audio/koubo-sfx-v8/",
+    "requireByteIdenticalCopy": true
+  },
+  "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+  "soundSourceContract": {
+    "runtimePrefix": "sfx/",
+    "canonicalTrackedAssetRoot": "remotion/public/audio/koubo-sfx-v8/",
+    "publicCopyMustMatchCanonicalSha256": true
+  },
+  "lifecycleContractVersion": "1",
+  "requiredLifecycleAnchors": [
+    "firstVisible",
+    "firstReadable",
+    "semanticSettle",
+    "actionEnd",
+    "finalHold"
+  ],
+  "components": [
+    {
+      "id": "generic-specific-contrast-r10",
+      "version": "0.1.0-pilot",
+      "rendererId": "ContrastLedgerR10",
+      "category": "semantic-comparison",
+      "lifecycle": {
+        "firstVisible": "required",
+        "firstReadable": "required",
+        "semanticSettle": "required",
+        "actionEnd": "required",
+        "finalHold": {
+          "minimumFrames": 15
+        }
+      }
+    },
+    {
+      "id": "owner-question-grid-r10",
+      "version": "0.1.0-pilot",
+      "rendererId": "OwnerQuestionArchiveR10",
+      "category": "question-grid",
+      "lifecycle": {
+        "firstVisible": "required",
+        "firstReadable": "required",
+        "semanticSettle": "required",
+        "actionEnd": "required",
+        "finalHold": {
+          "minimumFrames": 15
+        }
+      }
+    },
+    {
+      "id": "paper-content-pipeline-r10",
+      "version": "0.1.0-pilot",
+      "rendererId": "PaperBusinessPipelineR10",
+      "category": "paper-editorial",
+      "lifecycle": {
+        "firstVisible": "required",
+        "firstReadable": "required",
+        "semanticSettle": "required",
+        "actionEnd": "required",
+        "finalHold": {
+          "minimumFrames": 30
+        }
+      },
+      "structureTarget": {
+        "objectGroups": {
+          "min": 5,
+          "max": 6
+        },
+        "semanticNodes": {
+          "min": 9,
+          "max": 13
+        },
+        "minimumDepthLayers": 3,
+        "assemblyBeats": {
+          "min": 5,
+          "max": 7
+        }
+      }
+    },
+    {
+      "id": "visibility-bridge-r10",
+      "version": "0.1.0-pilot",
+      "rendererId": "VisibilityBridgeR10",
+      "category": "visibility-bridge",
+      "lifecycle": {
+        "firstVisible": "required",
+        "firstReadable": "required",
+        "semanticSettle": "required",
+        "actionEnd": "required",
+        "finalHold": {
+          "minimumFrames": 30
+        }
+      }
+    }
+  ]
+}

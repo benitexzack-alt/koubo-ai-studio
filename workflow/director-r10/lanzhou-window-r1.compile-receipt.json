@@ -1,0 +1,278 @@
+{
+  "adapter": {
+    "path": "tools/build-director-r10-lanzhou-pilot.mjs",
+    "sha256": "c7b403999b2b8f39b0dde6d63ac5981c1ac77d35c6bfb15fd15adfa1a1d479f2"
+  },
+  "compiler": {
+    "path": "tools/director-r10-timeline-core.mjs",
+    "sha256": "3cc0387e24c32cd06dc8b95caea2778d2084583e0a3b74af90c8b6e947822dd0"
+  },
+  "componentRegistryAudit": {
+    "lifecycleAnchorsPresent": true,
+    "paperStructureTargetValid": true,
+    "path": "workflow/director-r10/component-registry.v1.json",
+    "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+    "sha256": "c2963df300a90acf2e1789234b71f6d0ecc34029f217d16c9b40dd2ea1d5ecc3",
+    "soundSourceContract": {
+      "canonicalTrackedAssetRoot": "remotion/public/audio/koubo-sfx-v8/",
+      "publicCopyMustMatchCanonicalSha256": true,
+      "runtimePrefix": "sfx/"
+    }
+  },
+  "durationFrames": 1737,
+  "fps": 30,
+  "governanceFiles": [
+    {
+      "application": "用兰州本地老板能否看懂一个真实内容生产机制约束四个事件，旁路仅为候选验证，不把技术展示当成成果。",
+      "path": "knowledge/01-账号战略与事业主线.md",
+      "role": "governance-account-strategy",
+      "sha256": "902ba0947bf02aa6602ca0fef2d955f607cc771dcbae6f90a5b4e3653d872797"
+    },
+    {
+      "application": "组件文案只能源自实录字幕证据，不新增客户、效果、资历或身份断言。",
+      "path": "knowledge/02-个人事实与公开边界.md",
+      "role": "governance-public-fact-boundary",
+      "sha256": "653ccb1d2af772b526e025e5132ef61d0f8d17d658ea39f176157d5e156886ed"
+    },
+    {
+      "application": "原片实录是时间轴和字幕的唯一正文，旁路预览后仍需正常速度完整人工观看。",
+      "path": "knowledge/03-口播执行守则.md",
+      "role": "governance-production-discipline",
+      "sha256": "d9352467e4601caded87bc9255c657916c53ef2462f01d8a621b3cca68b49bcb"
+    },
+    {
+      "application": "用逐句实录而非拍摄前文稿重绑动效，编译结果只标记为未渲染旁路，不降级或替代V8基线。",
+      "path": "knowledge/04-内容生产SOP.md",
+      "role": "governance-production-sop",
+      "sha256": "9d8ca482c6233d6bb8264cb850f81624a01dbfd29ee2423142aed1fff495e950"
+    },
+    {
+      "application": "纸艺机制图固定标记为说明性视觉，不冒充客户证据或保证效果，不引入私密业务数据。",
+      "path": "knowledge/05-合规隐私与证据规则.md",
+      "role": "governance-compliance-evidence",
+      "sha256": "819ae7363f2c916dc46c79d1537f775c5a9e4b8134b7474c338d2173495a6ffd"
+    },
+    {
+      "application": "动效只服务理解：B07用六个实录分段呈现一个可观察机制，不堆叠无关特效，候选风格不冒充生产标准。",
+      "path": "knowledge/06-选题脚本与风格规范.md",
+      "role": "governance-script-style",
+      "sha256": "d93942b74d6097310c2409d157d4b49d14b7a4c6305ad478e38b06d7b5d56eca"
+    }
+  ],
+  "intent": {
+    "path": "workflow/director-r10/lanzhou-window-r1.intent.json",
+    "sha256": "370027c685b8fcd106c6ca6191bcc536b4c53704d1e24569b35fa30cf550a521",
+    "timingAuthority": "caption-boundaries-plus-relative-frames-only"
+  },
+  "intentId": "lanzhou-window-r1",
+  "legacyPostshootAudit": {
+    "actualB07EndMs": 85900,
+    "actualB07StartMs": 66000,
+    "detectedTailEndMs": 85900,
+    "detectedTailStartMs": 85600,
+    "legacyAggregateCaptionIds": [
+      "cap-b07"
+    ],
+    "legacyB07GranularActionCount": 4,
+    "r10B07ActionCount": 6,
+    "rule": "legacy-postshoot-read-for-tail-flatten-detection-only-never-timing-authority",
+    "tailFlattenDetected": true,
+    "timingAuthorityUsed": false
+  },
+  "limitations": [
+    "当前仅完成旁路运行时时间轴编译，未渲染、未动态验收。",
+    "实录双语字幕仍需用户听审，不得作为正式发布依据。",
+    "旧P02和V9.1后拍计划只用于检出尾部压扁，其秒数不参与R10编译。"
+  ],
+  "localSourceOffsetFrame": 1200,
+  "productionEligible": false,
+  "recordedAuthorityAudit": {
+    "actualFormalAllowed": false,
+    "actualStatus": "needs-user-audio-review",
+    "canonicalSource": "recorded-audio",
+    "humanListeningPerformed": false,
+    "scriptRole": "comparison-only",
+    "spokenFormalAllowed": false,
+    "spokenStatus": "needs-user-audio-review",
+    "userAudioReviewConfirmed": false
+  },
+  "rendered": false,
+  "runtime": {
+    "path": "remotion/src/lanzhou-industry-ai-r10-pilot-r1/runtime-timeline.r10.json",
+    "sha256": "1ac3ca603d071b9a0579dbfae3c381e4ea401ae25c772ee2eb75c201f6ee5c60",
+    "sourceGraphSha": "7a29b3bdb469d6b3a623fc82d8b7a31b5a796c0e68559bea534742865ad25a47",
+    "timelineSha256": "76674c64a7a0954a991bbe3bac68eefbfb23179aa5a390ebde9d671de577ecee"
+  },
+  "schemaVersion": "director-r10-lanzhou-compile-receipt/v1",
+  "sfxFiles": [
+    {
+      "byteIdentical": true,
+      "canonicalGitTracked": true,
+      "canonicalPath": "remotion/public/audio/koubo-sfx-v8/remotion-page-turn.wav",
+      "canonicalSha256": "712036deb5343f319090be4e4b28362b6d4ff028fb0ff2758fd1a4384c31ec20",
+      "gitTracked": true,
+      "path": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/remotion-page-turn.wav",
+      "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+      "publicPath": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/remotion-page-turn.wav",
+      "runtimeSource": "sfx/remotion-page-turn.wav",
+      "sha256": "712036deb5343f319090be4e4b28362b6d4ff028fb0ff2758fd1a4384c31ec20"
+    },
+    {
+      "byteIdentical": true,
+      "canonicalGitTracked": true,
+      "canonicalPath": "remotion/public/audio/koubo-sfx-v8/v1-confirm-soft.wav",
+      "canonicalSha256": "d24d1aaa18c22874986f97d87c2ff92aebbbe03fa87e931047b29042f46c186d",
+      "gitTracked": true,
+      "path": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v1-confirm-soft.wav",
+      "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+      "publicPath": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v1-confirm-soft.wav",
+      "runtimeSource": "sfx/v1-confirm-soft.wav",
+      "sha256": "d24d1aaa18c22874986f97d87c2ff92aebbbe03fa87e931047b29042f46c186d"
+    },
+    {
+      "byteIdentical": true,
+      "canonicalGitTracked": true,
+      "canonicalPath": "remotion/public/audio/koubo-sfx-v8/v1-node-connect.wav",
+      "canonicalSha256": "9432d37654181c4e4627c3c466271895d28f7dde650c3c9cd307eb77fb283fdc",
+      "gitTracked": true,
+      "path": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v1-node-connect.wav",
+      "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+      "publicPath": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v1-node-connect.wav",
+      "runtimeSource": "sfx/v1-node-connect.wav",
+      "sha256": "9432d37654181c4e4627c3c466271895d28f7dde650c3c9cd307eb77fb283fdc"
+    },
+    {
+      "byteIdentical": true,
+      "canonicalGitTracked": true,
+      "canonicalPath": "remotion/public/audio/koubo-sfx-v8/v2-card-slide.wav",
+      "canonicalSha256": "cd0b7dbca5017a63777a10feb320d2df63b44d47a931522a799b855b0e26affd",
+      "gitTracked": true,
+      "path": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v2-card-slide.wav",
+      "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+      "publicPath": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v2-card-slide.wav",
+      "runtimeSource": "sfx/v2-card-slide.wav",
+      "sha256": "cd0b7dbca5017a63777a10feb320d2df63b44d47a931522a799b855b0e26affd"
+    },
+    {
+      "byteIdentical": true,
+      "canonicalGitTracked": true,
+      "canonicalPath": "remotion/public/audio/koubo-sfx-v8/v2-keyword-select.wav",
+      "canonicalSha256": "08677d4e8a81366169cb1500b2bc1786da00660b7d2402e540dab9edaa01c2ed",
+      "gitTracked": true,
+      "path": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v2-keyword-select.wav",
+      "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+      "publicPath": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v2-keyword-select.wav",
+      "runtimeSource": "sfx/v2-keyword-select.wav",
+      "sha256": "08677d4e8a81366169cb1500b2bc1786da00660b7d2402e540dab9edaa01c2ed"
+    },
+    {
+      "byteIdentical": true,
+      "canonicalGitTracked": true,
+      "canonicalPath": "remotion/public/audio/koubo-sfx-v8/v2-zoom-out.wav",
+      "canonicalSha256": "e8ad4a3f59ae91d50c9b3319c48553b29cb78f389402f550fed4eb6644bbe375",
+      "gitTracked": true,
+      "path": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v2-zoom-out.wav",
+      "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+      "publicPath": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v2-zoom-out.wav",
+      "runtimeSource": "sfx/v2-zoom-out.wav",
+      "sha256": "e8ad4a3f59ae91d50c9b3319c48553b29cb78f389402f550fed4eb6644bbe375"
+    },
+    {
+      "byteIdentical": true,
+      "canonicalGitTracked": true,
+      "canonicalPath": "remotion/public/audio/koubo-sfx-v8/v3-evidence-paper-a.wav",
+      "canonicalSha256": "50040fef7fab234f0fc7ef6e9f57c2e2c204b44ac90cfcdc4a681dec9dd5f57b",
+      "gitTracked": true,
+      "path": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v3-evidence-paper-a.wav",
+      "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+      "publicPath": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v3-evidence-paper-a.wav",
+      "runtimeSource": "sfx/v3-evidence-paper-a.wav",
+      "sha256": "50040fef7fab234f0fc7ef6e9f57c2e2c204b44ac90cfcdc4a681dec9dd5f57b"
+    },
+    {
+      "byteIdentical": true,
+      "canonicalGitTracked": true,
+      "canonicalPath": "remotion/public/audio/koubo-sfx-v8/v3-soft-card-pop-a.wav",
+      "canonicalSha256": "b60c4a4bbd4ba307a2fc584878fb5dfbde6bc8f77c372bb82957e2bc83edfed3",
+      "gitTracked": true,
+      "path": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v3-soft-card-pop-a.wav",
+      "publicDir": "remotion/public-lanzhou-industry-ai-v91-r1",
+      "publicPath": "remotion/public-lanzhou-industry-ai-v91-r1/sfx/v3-soft-card-pop-a.wav",
+      "runtimeSource": "sfx/v3-soft-card-pop-a.wav",
+      "sha256": "b60c4a4bbd4ba307a2fc584878fb5dfbde6bc8f77c372bb82957e2bc83edfed3"
+    }
+  ],
+  "sourceEndFrameExclusive": 2937,
+  "sourceFiles": [
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/05_实录与字幕/actual-spoken.bilingual.candidate.v1.json",
+      "role": "actual-spoken-bilingual",
+      "sha256": "1e0401c5edd119581d38f8ee83f3bcba3aafcaa31fddd370ed51477a5e9a8914"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/05_实录与字幕/spoken-timeline.candidate.v1.json",
+      "role": "spoken-timeline",
+      "sha256": "be4a59f697cabd520c0219cef782cc7d779fdd129ab2c8633aad9e202ebeefa2"
+    },
+    {
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-plan.v1.json",
+      "role": "legacy-postshoot-detection-only",
+      "sha256": "055bd70d502107c6d22538238f71c843a6012bcb10cc2c20b901c1ca482c7390"
+    },
+    {
+      "path": "workflow/style-library/koubo-paper-editorial-assembly-v2.candidate.json",
+      "role": "paper-style-candidate",
+      "sha256": "ead08bca4dc73a68e95be4d6d410bbe3b4631c14b92c09d906fbc0d5a7d67fa0"
+    },
+    {
+      "path": "workflow/director-r10/component-registry.v1.json",
+      "role": "r10-component-registry",
+      "sha256": "c2963df300a90acf2e1789234b71f6d0ecc34029f217d16c9b40dd2ea1d5ecc3"
+    },
+    {
+      "path": "tools/director-r10-timeline-core.mjs",
+      "role": "r10-timeline-compiler",
+      "sha256": "3cc0387e24c32cd06dc8b95caea2778d2084583e0a3b74af90c8b6e947822dd0"
+    },
+    {
+      "path": "knowledge/01-账号战略与事业主线.md",
+      "role": "governance-account-strategy",
+      "sha256": "902ba0947bf02aa6602ca0fef2d955f607cc771dcbae6f90a5b4e3653d872797"
+    },
+    {
+      "path": "knowledge/02-个人事实与公开边界.md",
+      "role": "governance-public-fact-boundary",
+      "sha256": "653ccb1d2af772b526e025e5132ef61d0f8d17d658ea39f176157d5e156886ed"
+    },
+    {
+      "path": "knowledge/03-口播执行守则.md",
+      "role": "governance-production-discipline",
+      "sha256": "d9352467e4601caded87bc9255c657916c53ef2462f01d8a621b3cca68b49bcb"
+    },
+    {
+      "path": "knowledge/04-内容生产SOP.md",
+      "role": "governance-production-sop",
+      "sha256": "9d8ca482c6233d6bb8264cb850f81624a01dbfd29ee2423142aed1fff495e950"
+    },
+    {
+      "path": "knowledge/05-合规隐私与证据规则.md",
+      "role": "governance-compliance-evidence",
+      "sha256": "819ae7363f2c916dc46c79d1537f775c5a9e4b8134b7474c338d2173495a6ffd"
+    },
+    {
+      "path": "knowledge/06-选题脚本与风格规范.md",
+      "role": "governance-script-style",
+      "sha256": "d93942b74d6097310c2409d157d4b49d14b7a4c6305ad478e38b06d7b5d56eca"
+    }
+  ],
+  "status": "compiled-sidecar-not-rendered",
+  "styleAudit": {
+    "allowedEvidenceUse": "illustration-only",
+    "path": "workflow/style-library/koubo-paper-editorial-assembly-v2.candidate.json",
+    "productionEligible": false,
+    "sha256": "ead08bca4dc73a68e95be4d6d410bbe3b4631c14b92c09d906fbc0d5a7d67fa0",
+    "status": "blocked-candidate"
+  },
+  "userDynamicAcceptanceRequired": true,
+  "videoId": "lanzhou-industry-ai-r10-pilot-r1"
+}

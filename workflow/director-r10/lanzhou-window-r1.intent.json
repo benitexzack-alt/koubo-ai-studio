@@ -1,0 +1,643 @@
+{
+  "schemaVersion": "director-r10-lanzhou-window-intent/v1",
+  "intentId": "lanzhou-window-r1",
+  "videoId": "lanzhou-industry-ai-r10-pilot-r1",
+  "status": "sidecar-pilot-intent",
+  "productionEligible": false,
+  "fps": 30,
+  "sourceBindings": [
+    {
+      "role": "actual-spoken-bilingual",
+      "path": "edit/20260910_lanzhou_industry_ai/05_实录与字幕/actual-spoken.bilingual.candidate.v1.json",
+      "sha256": "1e0401c5edd119581d38f8ee83f3bcba3aafcaa31fddd370ed51477a5e9a8914"
+    },
+    {
+      "role": "spoken-timeline",
+      "path": "edit/20260910_lanzhou_industry_ai/05_实录与字幕/spoken-timeline.candidate.v1.json",
+      "sha256": "be4a59f697cabd520c0219cef782cc7d779fdd129ab2c8633aad9e202ebeefa2"
+    },
+    {
+      "role": "legacy-postshoot-detection-only",
+      "path": "edit/20260910_lanzhou_industry_ai/03_导演拆解/postshoot-v9.1-r1/director-postshoot-rebind-plan.v1.json",
+      "sha256": "055bd70d502107c6d22538238f71c843a6012bcb10cc2c20b901c1ca482c7390"
+    },
+    {
+      "role": "paper-style-candidate",
+      "path": "workflow/style-library/koubo-paper-editorial-assembly-v2.candidate.json",
+      "sha256": "ead08bca4dc73a68e95be4d6d410bbe3b4631c14b92c09d906fbc0d5a7d67fa0"
+    },
+    {
+      "role": "r10-component-registry",
+      "path": "workflow/director-r10/component-registry.v1.json",
+      "sha256": "c2963df300a90acf2e1789234b71f6d0ecc34029f217d16c9b40dd2ea1d5ecc3"
+    },
+    {
+      "role": "r10-timeline-compiler",
+      "path": "tools/director-r10-timeline-core.mjs",
+      "sha256": "3cc0387e24c32cd06dc8b95caea2778d2084583e0a3b74af90c8b6e947822dd0"
+    },
+    {
+      "role": "governance-account-strategy",
+      "path": "knowledge/01-账号战略与事业主线.md",
+      "sha256": "902ba0947bf02aa6602ca0fef2d955f607cc771dcbae6f90a5b4e3653d872797",
+      "application": "用兰州本地老板能否看懂一个真实内容生产机制约束四个事件，旁路仅为候选验证，不把技术展示当成成果。"
+    },
+    {
+      "role": "governance-public-fact-boundary",
+      "path": "knowledge/02-个人事实与公开边界.md",
+      "sha256": "653ccb1d2af772b526e025e5132ef61d0f8d17d658ea39f176157d5e156886ed",
+      "application": "组件文案只能源自实录字幕证据，不新增客户、效果、资历或身份断言。"
+    },
+    {
+      "role": "governance-production-discipline",
+      "path": "knowledge/03-口播执行守则.md",
+      "sha256": "d9352467e4601caded87bc9255c657916c53ef2462f01d8a621b3cca68b49bcb",
+      "application": "原片实录是时间轴和字幕的唯一正文，旁路预览后仍需正常速度完整人工观看。"
+    },
+    {
+      "role": "governance-production-sop",
+      "path": "knowledge/04-内容生产SOP.md",
+      "sha256": "9d8ca482c6233d6bb8264cb850f81624a01dbfd29ee2423142aed1fff495e950",
+      "application": "用逐句实录而非拍摄前文稿重绑动效，编译结果只标记为未渲染旁路，不降级或替代V8基线。"
+    },
+    {
+      "role": "governance-compliance-evidence",
+      "path": "knowledge/05-合规隐私与证据规则.md",
+      "sha256": "819ae7363f2c916dc46c79d1537f775c5a9e4b8134b7474c338d2173495a6ffd",
+      "application": "纸艺机制图固定标记为说明性视觉，不冒充客户证据或保证效果，不引入私密业务数据。"
+    },
+    {
+      "role": "governance-script-style",
+      "path": "knowledge/06-选题脚本与风格规范.md",
+      "sha256": "d93942b74d6097310c2409d157d4b49d14b7a4c6305ad478e38b06d7b5d56eca",
+      "application": "动效只服务理解：B07用六个实录分段呈现一个可观察机制，不堆叠无关特效，候选风格不冒充生产标准。"
+    }
+  ],
+  "sourceWindow": {
+    "start": {
+      "captionId": "cap-b04-p05",
+      "boundary": "end",
+      "offsetFrames": -9
+    },
+    "end": {
+      "captionId": "cap-b08-p03",
+      "boundary": "end",
+      "offsetFrames": 0
+    }
+  },
+  "events": [
+    {
+      "id": "b05-generic-vs-specific",
+      "beatId": "b05",
+      "sourceBeatId": "B05",
+      "category": "semantic-comparison",
+      "componentId": "generic-specific-contrast-r10",
+      "captionSpan": {
+        "start": {
+          "captionId": "cap-b05-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "end": {
+          "captionId": "cap-b05-p03",
+          "boundary": "end",
+          "offsetFrames": 0
+        }
+      },
+      "semanticAnchors": {
+        "spokenStart": {
+          "captionId": "cap-b05-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "claim": {
+          "captionId": "cap-b05-p02",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "emphasis": {
+          "captionId": "cap-b05-p03",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "spokenEnd": {
+          "captionId": "cap-b05-p03",
+          "boundary": "end",
+          "offsetFrames": 0
+        }
+      },
+      "visualTiming": {
+        "firstVisible": {
+          "ref": "spokenStart",
+          "offsetFrames": -6
+        },
+        "firstReadable": {
+          "ref": "claim",
+          "offsetFrames": -6
+        },
+        "semanticSettle": {
+          "ref": "claim",
+          "offsetFrames": 3
+        },
+        "actionEnd": {
+          "ref": "spokenEnd",
+          "offsetFrames": -15
+        },
+        "endExclusive": {
+          "ref": "spokenEnd",
+          "offsetFrames": 0
+        }
+      },
+      "sound": {
+        "role": "contrast-settle",
+        "source": "sfx/v2-keyword-select.wav",
+        "sourceAsset": {
+          "path": "remotion/public/audio/koubo-sfx-v8/v2-keyword-select.wav",
+          "sha256": "08677d4e8a81366169cb1500b2bc1786da00660b7d2402e540dab9edaa01c2ed"
+        },
+        "bindTo": "semanticSettle",
+        "offsetFrames": 0
+      }
+    },
+    {
+      "id": "b06-owner-question-grid",
+      "beatId": "b06",
+      "sourceBeatId": "B06",
+      "category": "question-grid",
+      "componentId": "owner-question-grid-r10",
+      "captionSpan": {
+        "start": {
+          "captionId": "cap-b06-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "end": {
+          "captionId": "cap-b06-p04",
+          "boundary": "end",
+          "offsetFrames": 0
+        }
+      },
+      "semanticAnchors": {
+        "spokenStart": {
+          "captionId": "cap-b06-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "claim": {
+          "captionId": "cap-b06-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "emphasis": {
+          "captionId": "cap-b06-p02",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "spokenEnd": {
+          "captionId": "cap-b06-p04",
+          "boundary": "end",
+          "offsetFrames": 0
+        }
+      },
+      "visualTiming": {
+        "firstVisible": {
+          "ref": "spokenStart",
+          "offsetFrames": -6
+        },
+        "firstReadable": {
+          "ref": "claim",
+          "offsetFrames": -6
+        },
+        "semanticSettle": {
+          "ref": "claim",
+          "offsetFrames": 3
+        },
+        "actionEnd": {
+          "ref": "spokenEnd",
+          "offsetFrames": -15
+        },
+        "endExclusive": {
+          "ref": "spokenEnd",
+          "offsetFrames": 0
+        }
+      },
+      "sound": {
+        "role": "question-grid-settle",
+        "source": "sfx/v1-node-connect.wav",
+        "sourceAsset": {
+          "path": "remotion/public/audio/koubo-sfx-v8/v1-node-connect.wav",
+          "sha256": "9432d37654181c4e4627c3c466271895d28f7dde650c3c9cd307eb77fb283fdc"
+        },
+        "bindTo": "semanticSettle",
+        "offsetFrames": 0
+      }
+    },
+    {
+      "id": "b07-paper-content-pipeline",
+      "beatId": "b07",
+      "sourceBeatId": "B07",
+      "category": "paper-editorial",
+      "componentId": "paper-content-pipeline-r10",
+      "captionSpan": {
+        "start": {
+          "captionId": "cap-b07-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "end": {
+          "captionId": "cap-b07-p06",
+          "boundary": "end",
+          "offsetFrames": 0
+        }
+      },
+      "semanticAnchors": {
+        "spokenStart": {
+          "captionId": "cap-b07-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "claim": {
+          "captionId": "cap-b07-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "emphasis": {
+          "captionId": "cap-b07-p04",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "spokenEnd": {
+          "captionId": "cap-b07-p06",
+          "boundary": "end",
+          "offsetFrames": 0
+        }
+      },
+      "namedAnchors": {
+        "collect": {
+          "captionId": "cap-b07-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "ai-classify": {
+          "captionId": "cap-b07-p02",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "script-draft": {
+          "captionId": "cap-b07-p03",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "public-materials": {
+          "captionId": "cap-b07-p04",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "ai-production": {
+          "captionId": "cap-b07-p05",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "business-foundation": {
+          "captionId": "cap-b07-p06",
+          "boundary": "start",
+          "offsetFrames": 0
+        }
+      },
+      "visualTiming": {
+        "firstVisible": {
+          "ref": "spokenStart",
+          "offsetFrames": -6
+        },
+        "firstReadable": {
+          "ref": "claim",
+          "offsetFrames": -6
+        },
+        "semanticSettle": {
+          "ref": "ai-classify",
+          "offsetFrames": 0
+        },
+        "actionEnd": {
+          "ref": "spokenEnd",
+          "offsetFrames": 0
+        },
+        "endExclusive": {
+          "ref": "spokenEnd",
+          "offsetFrames": 30
+        }
+      },
+      "paperStructure": {
+        "objectGroups": [
+          {
+            "id": "g-input",
+            "labelZh": "老板回答",
+            "depth": 1
+          },
+          {
+            "id": "g-ai-organize",
+            "labelZh": "AI整理",
+            "depth": 2
+          },
+          {
+            "id": "g-script",
+            "labelZh": "视频文稿",
+            "depth": 2
+          },
+          {
+            "id": "g-owner-review",
+            "labelZh": "老板核对",
+            "depth": 3
+          },
+          {
+            "id": "g-publication",
+            "labelZh": "对外讲解",
+            "depth": 2
+          },
+          {
+            "id": "g-foundation",
+            "labelZh": "生意底子",
+            "depth": 3
+          }
+        ],
+        "semanticNodes": [
+          {
+            "nodeId": "n1-answers",
+            "objectGroupId": "g-input",
+            "labelZh": "回答",
+            "captionId": "cap-b07-p01"
+          },
+          {
+            "nodeId": "n2-collect",
+            "objectGroupId": "g-input",
+            "labelZh": "收集",
+            "captionId": "cap-b07-p01"
+          },
+          {
+            "nodeId": "n3-ai-classify",
+            "objectGroupId": "g-ai-organize",
+            "labelZh": "AI归类",
+            "captionId": "cap-b07-p02"
+          },
+          {
+            "nodeId": "n4-organize",
+            "objectGroupId": "g-ai-organize",
+            "labelZh": "理顺",
+            "captionId": "cap-b07-p02"
+          },
+          {
+            "nodeId": "n5-video-script",
+            "objectGroupId": "g-script",
+            "labelZh": "拍视频的文稿",
+            "captionId": "cap-b07-p03"
+          },
+          {
+            "nodeId": "n6-owner-review",
+            "objectGroupId": "g-owner-review",
+            "labelZh": "老板核对",
+            "captionId": "cap-b07-p03"
+          },
+          {
+            "nodeId": "n7-public-materials",
+            "objectGroupId": "g-publication",
+            "labelZh": "能公开的产品和服务资料",
+            "captionId": "cap-b07-p04"
+          },
+          {
+            "nodeId": "n8-explain-outward",
+            "objectGroupId": "g-publication",
+            "labelZh": "一条条的讲出去",
+            "captionId": "cap-b07-p04"
+          },
+          {
+            "nodeId": "n9-ai-production",
+            "objectGroupId": "g-foundation",
+            "labelZh": "AI承担整理和制作",
+            "captionId": "cap-b07-p05"
+          },
+          {
+            "nodeId": "n10-business-foundation",
+            "objectGroupId": "g-foundation",
+            "labelZh": "老板自己做过的生意",
+            "captionId": "cap-b07-p06"
+          }
+        ],
+        "depthLayers": 3,
+        "assemblyBeatIds": [
+          "collect",
+          "ai-classify",
+          "script-draft",
+          "public-materials",
+          "ai-production",
+          "business-foundation"
+        ]
+      },
+      "actions": [
+        {
+          "id": "collect",
+          "labelZh": "收集",
+          "start": {
+            "ref": "collect",
+            "offsetFrames": 0
+          },
+          "endExclusive": {
+            "ref": "ai-classify",
+            "offsetFrames": 0
+          },
+          "sound": {
+            "role": "paper-collect",
+            "source": "sfx/v3-soft-card-pop-a.wav",
+            "sourceAsset": {
+              "path": "remotion/public/audio/koubo-sfx-v8/v3-soft-card-pop-a.wav",
+              "sha256": "b60c4a4bbd4ba307a2fc584878fb5dfbde6bc8f77c372bb82957e2bc83edfed3"
+            },
+            "bindTo": "start",
+            "offsetFrames": 0
+          }
+        },
+        {
+          "id": "ai-classify",
+          "labelZh": "AI归类",
+          "start": {
+            "ref": "ai-classify",
+            "offsetFrames": 0
+          },
+          "endExclusive": {
+            "ref": "script-draft",
+            "offsetFrames": 0
+          },
+          "sound": {
+            "role": "paper-ai-classify",
+            "source": "sfx/v2-keyword-select.wav",
+            "sourceAsset": {
+              "path": "remotion/public/audio/koubo-sfx-v8/v2-keyword-select.wav",
+              "sha256": "08677d4e8a81366169cb1500b2bc1786da00660b7d2402e540dab9edaa01c2ed"
+            },
+            "bindTo": "start",
+            "offsetFrames": 0
+          }
+        },
+        {
+          "id": "script-draft",
+          "labelZh": "改成文稿",
+          "start": {
+            "ref": "script-draft",
+            "offsetFrames": 0
+          },
+          "endExclusive": {
+            "ref": "public-materials",
+            "offsetFrames": 0
+          },
+          "sound": {
+            "role": "paper-script-draft",
+            "source": "sfx/v2-card-slide.wav",
+            "sourceAsset": {
+              "path": "remotion/public/audio/koubo-sfx-v8/v2-card-slide.wav",
+              "sha256": "cd0b7dbca5017a63777a10feb320d2df63b44d47a931522a799b855b0e26affd"
+            },
+            "bindTo": "start",
+            "offsetFrames": 0
+          }
+        },
+        {
+          "id": "public-materials",
+          "labelZh": "配公开资料并讲出",
+          "start": {
+            "ref": "public-materials",
+            "offsetFrames": 0
+          },
+          "endExclusive": {
+            "ref": "ai-production",
+            "offsetFrames": 0
+          },
+          "sound": {
+            "role": "paper-public-materials",
+            "source": "sfx/v3-evidence-paper-a.wav",
+            "sourceAsset": {
+              "path": "remotion/public/audio/koubo-sfx-v8/v3-evidence-paper-a.wav",
+              "sha256": "50040fef7fab234f0fc7ef6e9f57c2e2c204b44ac90cfcdc4a681dec9dd5f57b"
+            },
+            "bindTo": "start",
+            "offsetFrames": 0
+          }
+        },
+        {
+          "id": "ai-production",
+          "labelZh": "AI整理制作",
+          "start": {
+            "ref": "ai-production",
+            "offsetFrames": 0
+          },
+          "endExclusive": {
+            "ref": "business-foundation",
+            "offsetFrames": 0
+          },
+          "sound": {
+            "role": "paper-ai-production",
+            "source": "sfx/remotion-page-turn.wav",
+            "sourceAsset": {
+              "path": "remotion/public/audio/koubo-sfx-v8/remotion-page-turn.wav",
+              "sha256": "712036deb5343f319090be4e4b28362b6d4ff028fb0ff2758fd1a4384c31ec20"
+            },
+            "bindTo": "start",
+            "offsetFrames": 0
+          }
+        },
+        {
+          "id": "business-foundation",
+          "labelZh": "老板生意底子",
+          "start": {
+            "ref": "business-foundation",
+            "offsetFrames": 0
+          },
+          "endExclusive": {
+            "ref": "spokenEnd",
+            "offsetFrames": 0
+          },
+          "sound": {
+            "role": "paper-business-foundation",
+            "source": "sfx/v1-confirm-soft.wav",
+            "sourceAsset": {
+              "path": "remotion/public/audio/koubo-sfx-v8/v1-confirm-soft.wav",
+              "sha256": "d24d1aaa18c22874986f97d87c2ff92aebbbe03fa87e931047b29042f46c186d"
+            },
+            "bindTo": "start",
+            "offsetFrames": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "b08-visibility-bridge",
+      "beatId": "b08",
+      "sourceBeatId": "B08",
+      "category": "visibility-bridge",
+      "componentId": "visibility-bridge-r10",
+      "captionSpan": {
+        "start": {
+          "captionId": "cap-b08-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "end": {
+          "captionId": "cap-b08-p03",
+          "boundary": "end",
+          "offsetFrames": 0
+        }
+      },
+      "semanticAnchors": {
+        "spokenStart": {
+          "captionId": "cap-b08-p01",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "claim": {
+          "captionId": "cap-b08-p02",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "emphasis": {
+          "captionId": "cap-b08-p03",
+          "boundary": "start",
+          "offsetFrames": 0
+        },
+        "spokenEnd": {
+          "captionId": "cap-b08-p03",
+          "boundary": "end",
+          "offsetFrames": 0
+        }
+      },
+      "visualTiming": {
+        "firstVisible": {
+          "ref": "spokenStart",
+          "offsetFrames": -6
+        },
+        "firstReadable": {
+          "ref": "claim",
+          "offsetFrames": -6
+        },
+        "semanticSettle": {
+          "ref": "claim",
+          "offsetFrames": 3
+        },
+        "actionEnd": {
+          "ref": "spokenEnd",
+          "offsetFrames": -30
+        },
+        "endExclusive": {
+          "ref": "spokenEnd",
+          "offsetFrames": 0
+        }
+      },
+      "sound": {
+        "role": "visibility-expand",
+        "source": "sfx/v2-zoom-out.wav",
+        "sourceAsset": {
+          "path": "remotion/public/audio/koubo-sfx-v8/v2-zoom-out.wav",
+          "sha256": "e8ad4a3f59ae91d50c9b3319c48553b29cb78f389402f550fed4eb6644bbe375"
+        },
+        "bindTo": "semanticSettle",
+        "offsetFrames": 0
+      }
+    }
+  ]
+}
