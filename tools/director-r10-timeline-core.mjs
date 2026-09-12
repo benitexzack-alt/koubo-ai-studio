@@ -7,6 +7,12 @@ export const DIRECTOR_R10_DEFAULT_POLICY = Object.freeze({
   maxSfxOffsetFrames: 2,
 });
 
+export const DIRECTOR_R10_SFX_VOLUME_RANGE = Object.freeze({
+  default: 0.3,
+  min: 0.2,
+  max: 0.55,
+});
+
 const SEMANTIC_REFS = Object.freeze([
   'spokenStart',
   'claim',
@@ -354,6 +360,22 @@ const resolveRelativeAnchor = (descriptor, semanticAnchors, label) => {
   };
 };
 
+const normalizeSfxVolume = (volume, label) => {
+  const normalized = volume ?? DIRECTOR_R10_SFX_VOLUME_RANGE.default;
+  if (
+    typeof normalized !== 'number' ||
+    !Number.isFinite(normalized) ||
+    normalized < DIRECTOR_R10_SFX_VOLUME_RANGE.min ||
+    normalized > DIRECTOR_R10_SFX_VOLUME_RANGE.max
+  ) {
+    throwR10(
+      'R10_SFX_VOLUME_INVALID',
+      `${label}.volume必须是${DIRECTOR_R10_SFX_VOLUME_RANGE.min}至${DIRECTOR_R10_SFX_VOLUME_RANGE.max}之间的有限数字。`,
+    );
+  }
+  return normalized;
+};
+
 const normalizeSound = ({sound, anchors, policy, eventId}) => {
   if (sound == null) return null;
   if (!isRecord(sound)) {
@@ -398,6 +420,7 @@ const normalizeSound = ({sound, anchors, policy, eventId}) => {
   return {
     role,
     source,
+    volume: normalizeSfxVolume(sound.volume, `事件${eventId}.sound`),
     bindTo,
     offsetFrames,
     frame,
@@ -474,6 +497,10 @@ const normalizeActionSound = ({
   return {
     role,
     source,
+    volume: normalizeSfxVolume(
+      sound.volume,
+      `事件${eventId}.动作${actionId}.sound`,
+    ),
     bindTo,
     offsetFrames,
     frame,
@@ -768,6 +795,7 @@ const flattenSoundCues = (events) => {
         frame: event.sound.frame,
         role: event.sound.role,
         source: event.sound.source,
+        volume: event.sound.volume,
         bindTo: event.sound.bindTo,
         offsetFrames: event.sound.offsetFrames,
         previewRequired:
@@ -785,6 +813,7 @@ const flattenSoundCues = (events) => {
         frame: action.sound.frame,
         role: action.sound.role,
         source: action.sound.source,
+        volume: action.sound.volume,
         bindTo: action.sound.bindTo,
         offsetFrames: action.sound.offsetFrames,
         previewRequired:

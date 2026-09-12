@@ -2,6 +2,8 @@ export const R10_FPS = 30;
 export const R10_DURATION_IN_FRAMES = 1737;
 export const R10_SOURCE_TRIM_BEFORE = 1200;
 export const R10_MIN_COMPLEX_ASSEMBLY_BEATS = 5;
+export const R10_SFX_VOLUME_MIN = 0.2;
+export const R10_SFX_VOLUME_MAX = 0.55;
 
 export type R10RendererId =
   | 'ContrastLedgerR10'
@@ -16,6 +18,7 @@ export type R10Action = {
   sound: null | {
     role: string;
     source: string;
+    volume: number;
     bindTo: string;
     offsetFrames: number;
     frame: number;
@@ -63,6 +66,7 @@ export type R10SoundCue = {
   frame: number;
   role: string;
   source: string;
+  volume: number;
   bindTo: string;
   offsetFrames: number;
   previewStartFrame: number;
@@ -190,6 +194,12 @@ const isSha = (value: unknown): value is string => (
 );
 const isNonEmptyString = (value: unknown): value is string => (
   typeof value === 'string' && value.trim().length > 0
+);
+const isValidSfxVolume = (value: unknown): value is number => (
+  typeof value === 'number'
+  && Number.isFinite(value)
+  && value >= R10_SFX_VOLUME_MIN
+  && value <= R10_SFX_VOLUME_MAX
 );
 
 const asRecord = (value: unknown): Record<string, unknown> | null => (
@@ -399,6 +409,7 @@ export const assertR10RuntimeTimeline = (input: unknown): R10RuntimeTimeline => 
       || !isFrame(cue.frame)
       || cue.frame < 0
       || cue.frame >= R10_DURATION_IN_FRAMES
+      || !isValidSfxVolume(cue.volume)
       || !/^sfx\/[a-z0-9][a-z0-9._-]*\.wav$/i.test(cue.source)
     ) {
       throw new Error(`R10_RUNTIME_SOUND_CUE_INVALID:${cue.id}`);

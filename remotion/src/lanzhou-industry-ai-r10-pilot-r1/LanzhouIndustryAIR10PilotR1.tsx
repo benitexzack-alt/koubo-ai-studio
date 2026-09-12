@@ -33,13 +33,6 @@ const renderers: Record<R10RendererId, React.FC<{event: R10Event}>> = {
   VisibilityBridgeR10,
 };
 
-const soundVolume = (role: string) => {
-  if (/confirm|impact|stamp/i.test(role)) return 0.34;
-  if (/paper|slide|rustle/i.test(role)) return 0.3;
-  if (/node|tick|click/i.test(role)) return 0.28;
-  return 0.26;
-};
-
 const RuntimeEvent: React.FC<{event: R10Event}> = ({event}) => {
   const Renderer = renderers[event.component];
   if (!Renderer) throw new Error(`R10_RUNTIME_RENDERER_NOT_FOUND:${event.component}`);
@@ -129,7 +122,7 @@ export const LanzhouIndustryAIR10PilotR1: React.FC<{soundEnabled: boolean}> = ({
         durationInFrames={R10_DURATION_IN_FRAMES - cue.frame}
         name={`SFX:${cue.id}`}
       >
-        <Audio src={staticFile(cue.source)} volume={soundVolume(cue.role)} />
+        <Audio src={staticFile(cue.source)} volume={cue.volume} />
       </Sequence>
     ))}
 

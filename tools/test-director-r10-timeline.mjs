@@ -107,8 +107,13 @@ assert.equal(compiled.events[0].semanticSettleFrame, 308);
 assert.equal(compiled.events[0].actionEndFrame, 357);
 assert.equal(compiled.events[0].endFrameExclusive, 366);
 assert.equal(compiled.events[0].sound.frame, 309);
+assert.equal(compiled.events[0].sound.volume, 0.3);
 assert.deepEqual(compiled.events[0].actions, []);
 assert.equal(compiled.soundCues.length, 2);
+assert.ok(
+  compiled.soundCues.every((cue) => cue.volume === 0.3),
+  '缺省音效增益必须在编译阶段固化为0.3',
+);
 assert.deepEqual(compiled.events[0].semanticBinding.wordIds, ['word-1', 'word-2']);
 assert.match(compiled.sourceGraphSha256, /^[a-f0-9]{64}$/u);
 assert.equal(compiled.sourceGraphSha, compiled.sourceGraphSha256);
@@ -197,6 +202,24 @@ expectCode('R10_SFX_BINDING_INVALID', () => compileDirectorR10Timeline(detachedS
 const excessiveSfxOffset = clone(baseDefinition);
 excessiveSfxOffset.events[1].sound.offsetFrames = 3;
 expectCode('R10_SFX_OFFSET_EXCEEDED', () => compileDirectorR10Timeline(excessiveSfxOffset));
+
+const belowMinimumSfxVolume = clone(baseDefinition);
+belowMinimumSfxVolume.events[1].sound.volume = 0.19;
+expectCode('R10_SFX_VOLUME_INVALID', () =>
+  compileDirectorR10Timeline(belowMinimumSfxVolume),
+);
+
+const acceptedSfxVolumeBoundaries = clone(baseDefinition);
+acceptedSfxVolumeBoundaries.events[0].sound.volume = 0.2;
+acceptedSfxVolumeBoundaries.events[1].sound.volume = 0.55;
+const acceptedSfxVolumeTimeline = compileDirectorR10Timeline(
+  acceptedSfxVolumeBoundaries,
+);
+assert.deepEqual(
+  acceptedSfxVolumeTimeline.soundCues.map((cue) => cue.volume),
+  [0.55, 0.2],
+  '音效增益边界值应被编译进运行时线索',
+);
 
 const firstWindowOnly = evaluateDirectorR10PreviewCoverage({
   timeline: compiled,
@@ -399,6 +422,12 @@ attemptedPreviewOptOut.events[0].actions[3].sound.previewRequired = false;
 expectCode(
   'R10_SFX_PREVIEW_OPTOUT_FORBIDDEN',
   () => compileDirectorR10Timeline(attemptedPreviewOptOut),
+);
+
+const aboveMaximumActionSfxVolume = clone(fourActionDefinition);
+aboveMaximumActionSfxVolume.events[0].actions[3].sound.volume = 0.56;
+expectCode('R10_SFX_VOLUME_INVALID', () =>
+  compileDirectorR10Timeline(aboveMaximumActionSfxVolume),
 );
 
 const overlappingActions = clone(fourActionDefinition);
