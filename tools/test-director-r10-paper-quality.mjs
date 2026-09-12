@@ -77,7 +77,7 @@ assert.deepEqual(b07.metrics, {
 assert.equal(b07.complexExplainer, true);
 assert.ok(b07.findings.some((finding) => finding.code === 'COMPLEX_OBJECT_GROUP_COUNT_OUT_OF_RANGE'));
 assert.ok(b07.findings.some((finding) => finding.code === 'COMPLEX_SEMANTIC_NODE_COUNT_OUT_OF_RANGE'));
-assert.equal(b07.findings.some((finding) => finding.code === 'COMPLEX_ASSEMBLY_BEAT_COUNT_OUT_OF_RANGE'), false);
+assert.equal(b07.findings.some((finding) => finding.code === 'COMPLEX_ASSEMBLY_BEAT_COUNT_OUT_OF_RANGE'), true);
 
 for (const beatId of ['B04', 'B10', 'B11', 'B15', 'B17']) {
   const shot = report.shots.find((item) => item.beatId === beatId);
@@ -112,7 +112,7 @@ for (const [shotIndex, beat] of declaredPlan.beats.filter((item) => item.paperSc
     label: `测试节点${index + 1}`,
     groupId: `G${(index % 5) + 1}`,
   }));
-  scene.stages = Array.from({length: 4}, (_, index) => ({
+  scene.stages = Array.from({length: 5}, (_, index) => ({
     id: `S${index + 1}`,
     order: index + 1,
     subject: `G${(index % 5) + 1}`,

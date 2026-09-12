@@ -90,6 +90,10 @@ export const auditPaperPlan = ({style, plan}) => {
       ?? 3,
   );
   const complexAssemblyTarget = style.motionGrammar?.complexShotAssemblyBeats ?? {};
+  const complexAssemblyMinimum = Math.max(
+    Number(complexAssemblyTarget.min ?? 4),
+    Number(style.semanticContract?.complexExplainerTarget?.minimumAssemblyBeats ?? 0),
+  );
   const ordinaryObjectMinimum = Number(style.visualGrammar?.composition?.objectGroupCount?.min ?? 3);
   const ordinaryDepthMinimum = Number(style.visualGrammar?.composition?.minimumDepthPlanes ?? 3);
   const finalHoldMinimumSeconds = Number(style.motionGrammar?.finalHoldMinimumSeconds ?? 1);
@@ -407,14 +411,14 @@ export const auditPaperPlan = ({style, plan}) => {
         }));
       }
       if (
-        assemblyBeatCount < Number(complexAssemblyTarget.min ?? 4)
+        assemblyBeatCount < complexAssemblyMinimum
         || assemblyBeatCount > Number(complexAssemblyTarget.max ?? 7)
       ) {
         shotFindings.push(finding({
           code: 'COMPLEX_ASSEMBLY_BEAT_COUNT_OUT_OF_RANGE',
           scope: 'shot',
           beatId: beat.id,
-          message: `复杂解释镜装配节拍为 ${assemblyBeatCount}，要求 ${complexAssemblyTarget.min ?? 4}—${complexAssemblyTarget.max ?? 7} 拍。`,
+          message: `复杂解释镜装配节拍为 ${assemblyBeatCount}，要求 ${complexAssemblyMinimum}—${complexAssemblyTarget.max ?? 7} 拍。`,
         }));
       }
     } else {
@@ -688,7 +692,7 @@ export const auditPaperPlan = ({style, plan}) => {
         },
         minimumDepthPlanes: complexDepthMinimum,
         assemblyBeatCount: {
-          min: Number(complexAssemblyTarget.min ?? 4),
+          min: complexAssemblyMinimum,
           max: Number(complexAssemblyTarget.max ?? 7),
         },
       },
