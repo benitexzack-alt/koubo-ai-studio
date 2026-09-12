@@ -546,6 +546,7 @@ const auditRecordedSpeechPreservation = ({manifest, target}) => {
       '未能计算实录原声相关性。',
     );
   }
+  best.candidateDelayMs = -best.offsetMs;
   return assertR10SpeechPreservationMetrics(best);
 };
 
@@ -591,11 +592,15 @@ const auditRuntimeCueAudibility = ({manifest, target}) => {
   const sampleRate = DIRECTOR_R10_DIAGNOSTIC_CONTRACT.speechAuditSampleRate;
   const sampleCount = Math.min(withSfx.length, noSfx.length);
   const audits = cues.map((cue) => {
+    const cueOnsetSeconds = cue.frame / DIRECTOR_R10_DIAGNOSTIC_CONTRACT.fps;
     const startSeconds = Math.max(
       0,
-      cue.frame / DIRECTOR_R10_DIAGNOSTIC_CONTRACT.fps - 0.1,
+      cueOnsetSeconds - DIRECTOR_R10_DIAGNOSTIC_CONTRACT.cueAuditLeadSeconds,
     );
-    const endSeconds = Math.min(durationSeconds, startSeconds + 0.9);
+    const endSeconds = Math.min(
+      durationSeconds,
+      startSeconds + DIRECTOR_R10_DIAGNOSTIC_CONTRACT.cueAuditWindowSeconds,
+    );
     const startSample = Math.max(0, Math.floor(startSeconds * sampleRate));
     const endSample = Math.min(sampleCount, Math.ceil(endSeconds * sampleRate));
     let squareSum = 0;
@@ -612,6 +617,7 @@ const auditRuntimeCueAudibility = ({manifest, target}) => {
       frame: cue.frame,
       role: cue.role,
       source: cue.source,
+      cueOnsetSeconds,
       windowStartSeconds: startSeconds,
       windowEndSeconds: endSeconds,
       comparedSamples,

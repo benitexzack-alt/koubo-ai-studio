@@ -48,6 +48,8 @@ export const DIRECTOR_R10_DIAGNOSTIC_CONTRACT = Object.freeze({
   speechAuditSearchWindowMs: 50,
   minimumSpeechCorrelation: 0.95,
   maximumSpeechRmsDeltaDb: 1,
+  cueAuditLeadSeconds: 0.05,
+  cueAuditWindowSeconds: 0.55,
   minimumCueDifferenceRmsDbfs: -55,
   minimumCueDifferencePeakDbfs: -45,
   renderStrategy: 'single-visual-master-audio-mux-v1',
@@ -1258,13 +1260,20 @@ export const assertR10SingleVisualMasterDerivation = (derivation, outputs) => {
 };
 
 export const assertR10SpeechPreservationMetrics = (metrics) => {
+  const expectedComparedSamples = Math.round(
+    (DIRECTOR_R10_DIAGNOSTIC_CONTRACT.durationInFrames /
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.fps) *
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.speechAuditSampleRate,
+  );
   if (
     !isRecord(metrics) ||
     !Number.isFinite(metrics.correlation) ||
     !Number.isFinite(metrics.offsetMs) ||
+    !Number.isFinite(metrics.candidateDelayMs) ||
+    Math.abs(metrics.candidateDelayMs + metrics.offsetMs) > 1e-9 ||
     !Number.isFinite(metrics.rmsDeltaDb) ||
     !Number.isInteger(metrics.comparedSamples) ||
-    metrics.comparedSamples <= 0 ||
+    metrics.comparedSamples !== expectedComparedSamples ||
     metrics.sampleRate !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.speechAuditSampleRate
   ) {
     fail(

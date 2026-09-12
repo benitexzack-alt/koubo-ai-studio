@@ -469,9 +469,10 @@ try {
   );
   const validSpeechMetrics = {
     correlation: 0.997,
-    offsetMs: -42.5,
+    offsetMs: -42.666666666666664,
+    candidateDelayMs: 42.666666666666664,
     rmsDeltaDb: -0.04,
-    comparedSamples: 115800,
+    comparedSamples: 173700,
     sampleRate: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.speechAuditSampleRate,
   };
   assert.equal(
@@ -494,6 +495,18 @@ try {
     assertR10SpeechPreservationMetrics({
       ...validSpeechMetrics,
       sampleRate: 2000,
+    }),
+  );
+  expectCode('R10_DIAGNOSTIC_SPEECH_AUDIT_INVALID', () =>
+    assertR10SpeechPreservationMetrics({
+      ...validSpeechMetrics,
+      candidateDelayMs: 0,
+    }),
+  );
+  expectCode('R10_DIAGNOSTIC_SPEECH_AUDIT_INVALID', () =>
+    assertR10SpeechPreservationMetrics({
+      ...validSpeechMetrics,
+      comparedSamples: 173699,
     }),
   );
   const cueAudits = [
