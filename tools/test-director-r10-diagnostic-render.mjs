@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -16,6 +17,8 @@ import path from 'node:path';
 
 import {
   DIRECTOR_R10_DIAGNOSTIC_CONTRACT,
+  assertR10B07SceneOnlyCompositionMetadata,
+  assertR10B07SceneOnlyOutputProbe,
   assertR10CueAudibilityAudit,
   assertDirectorR10DiagnosticManifest,
   assertDirectorR10SnapshotStable,
@@ -28,6 +31,7 @@ import {
   assertR10SingleVisualMasterDerivation,
   assertR10SpeechPreservationMetrics,
   captureDirectorR10InputSnapshot,
+  createDirectorR10OutputDirectory,
   resolveDirectorR10OutputTarget,
   stableJsonSha256,
 } from './director-r10-diagnostic-render-core.mjs';
@@ -59,6 +63,15 @@ const composition = (id) => ({
   fps: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.fps,
   durationInFrames: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.durationInFrames,
   outputFile: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.outputFiles[id],
+});
+
+const b07SceneOnlyComposition = () => ({
+  id: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyCompositionId,
+  width: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.width,
+  height: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.height,
+  fps: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.fps,
+  durationInFrames:
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyDurationInFrames,
 });
 
 const inputKind = (relativePath) => {
@@ -218,6 +231,26 @@ try {
   });
 
   const manifest = buildManifest();
+  assert.equal(DIRECTOR_R10_DIAGNOSTIC_CONTRACT.compositionIds.length, 2);
+  assert.equal(manifest.remotion.compositions.length, 2);
+  assert.equal(
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.compositionIds.includes(
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyCompositionId,
+    ),
+    false,
+  );
+  assert.equal(
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyCompositionId,
+    'LanzhouIndustryAIR10B07PaperSceneOnlyR1',
+  );
+  assert.equal(
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyDurationInFrames,
+    633,
+  );
+  assert.equal(
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyOutputPath,
+    'qa/r10-b07-paper-scene-only.mp4',
+  );
   assert.equal(
     assertDirectorR10DiagnosticManifest(manifest, {projectRoot, knowledgeContextPath: contextPath}),
     manifest,
@@ -336,6 +369,21 @@ try {
   expectCode('R10_DIAGNOSTIC_SELECTED_COMPOSITION_SPEC_DRIFT', () =>
     assertR10CompositionMetadata(selectedSpecDrift),
   );
+  assert.equal(
+    assertR10B07SceneOnlyCompositionMetadata(b07SceneOnlyComposition())
+      .durationInFrames,
+    633,
+  );
+  const b07SceneSpecDrift = b07SceneOnlyComposition();
+  b07SceneSpecDrift.durationInFrames = 632;
+  expectCode('R10_DIAGNOSTIC_B07_SCENE_COMPOSITION_SPEC_DRIFT', () =>
+    assertR10B07SceneOnlyCompositionMetadata(b07SceneSpecDrift),
+  );
+  const wrongB07SceneId = b07SceneOnlyComposition();
+  wrongB07SceneId.id = 'LanzhouIndustryAIR10B07PaperSceneOnlyR2';
+  expectCode('R10_DIAGNOSTIC_B07_SCENE_COMPOSITION_INVALID', () =>
+    assertR10B07SceneOnlyCompositionMetadata(wrongB07SceneId),
+  );
 
   const validProbe = {
     streams: [
@@ -373,6 +421,35 @@ try {
       probeDrift,
       DIRECTOR_R10_DIAGNOSTIC_CONTRACT.compositionIds[0],
     ),
+  );
+  const validB07SceneProbe = {
+    streams: [
+      {
+        codec_type: 'video',
+        codec_name: 'h264',
+        width: 1920,
+        height: 1080,
+        pix_fmt: 'yuv420p',
+        avg_frame_rate: '30/1',
+        nb_read_frames: '633',
+        duration: '21.100000',
+      },
+    ],
+    format: {duration: '21.100000', size: '1000'},
+  };
+  assert.equal(assertR10B07SceneOnlyOutputProbe(validB07SceneProbe).frames, 633);
+  const b07SceneProbeWithAudio = structuredClone(validB07SceneProbe);
+  b07SceneProbeWithAudio.streams.push({
+    codec_type: 'audio',
+    codec_name: 'aac',
+  });
+  expectCode('R10_DIAGNOSTIC_B07_SCENE_OUTPUT_STREAMS_INVALID', () =>
+    assertR10B07SceneOnlyOutputProbe(b07SceneProbeWithAudio),
+  );
+  const b07SceneProbeFrameDrift = structuredClone(validB07SceneProbe);
+  b07SceneProbeFrameDrift.streams[0].nb_read_frames = '632';
+  expectCode('R10_DIAGNOSTIC_B07_SCENE_OUTPUT_SPEC_DRIFT', () =>
+    assertR10B07SceneOnlyOutputProbe(b07SceneProbeFrameDrift),
   );
   const invalidFrameRateProbe = structuredClone(validProbe);
   invalidFrameRateProbe.streams[0].avg_frame_rate = '0/0';
@@ -550,10 +627,28 @@ try {
   );
 
   const target = resolveDirectorR10OutputTarget(manifest, {projectRoot});
+  assert.equal(target.outputs.length, 2);
+  assert.equal(
+    target.b07SceneOnlyOutput.compositionId,
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyCompositionId,
+  );
+  assert.equal(
+    target.b07SceneOnlyOutput.relativePath,
+    'qa/r10-b07-paper-scene-only.mp4',
+  );
+  assert.equal(
+    target.b07SceneOnlyOutput.absolutePath,
+    path.join(target.runPath, 'qa', 'r10-b07-paper-scene-only.mp4'),
+  );
   mkdirSync(target.runPath, {recursive: true});
   expectCode('R10_DIAGNOSTIC_OUTPUT_ALREADY_EXISTS', () =>
     resolveDirectorR10OutputTarget(manifest, {projectRoot}),
   );
+  rmSync(target.runPath, {recursive: true, force: true});
+  createDirectorR10OutputDirectory(target, {projectRoot});
+  assert.equal(existsSync(target.runPath), true);
+  assert.equal(existsSync(target.qaPath), true);
+  assert.equal(existsSync(target.b07SceneOnlyOutput.absolutePath), false);
   rmSync(target.runPath, {recursive: true, force: true});
 
   const mutatedSnapshot = structuredClone(firstSnapshot);
@@ -714,6 +809,10 @@ try {
   assert.match(runnerSource, /codec:\s*'aac'/u);
   assert.match(runnerSource, /'-c:v',\s*'copy'/u);
   assert.match(runnerSource, /single-render-stream-copy/u);
+  assert.match(runnerSource, /renderB07SceneOnly/u);
+  assert.match(runnerSource, /composition\.durationInFrames\s*-\s*1/u);
+  assert.match(runnerSource, /includeAudio:\s*false/u);
+  assert.match(runnerSource, /muted:\s*!includeAudio/u);
   assert.match(runnerSource, /overwrite:\s*false/u);
   assert.doesNotMatch(runnerSource, /remotion\s+render/u);
   assert.doesNotMatch(runnerSource, /release-validation|run-v72-production/u);

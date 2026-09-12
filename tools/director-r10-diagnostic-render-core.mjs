@@ -60,6 +60,9 @@ export const DIRECTOR_R10_DIAGNOSTIC_CONTRACT = Object.freeze({
     'LanzhouIndustryAIR10PilotR1WithSfx',
     'LanzhouIndustryAIR10PilotR1NoSfx',
   ]),
+  b07SceneOnlyCompositionId: 'LanzhouIndustryAIR10B07PaperSceneOnlyR1',
+  b07SceneOnlyDurationInFrames: 633,
+  b07SceneOnlyOutputPath: 'qa/r10-b07-paper-scene-only.mp4',
   outputFiles: Object.freeze({
     LanzhouIndustryAIR10PilotR1WithSfx:
       'lanzhou-industry-ai-r10-pilot-r1-with-sfx.mp4',
@@ -1049,6 +1052,31 @@ export const assertR10CompositionMetadata = (composition) => {
   return composition;
 };
 
+export const assertR10B07SceneOnlyCompositionMetadata = (composition) => {
+  if (
+    !isRecord(composition) ||
+    composition.id !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyCompositionId
+  ) {
+    fail(
+      'R10_DIAGNOSTIC_B07_SCENE_COMPOSITION_INVALID',
+      '选中的 B07 纯纸艺诊断 composition 无效。',
+    );
+  }
+  if (
+    composition.width !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.width ||
+    composition.height !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.height ||
+    composition.fps !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.fps ||
+    composition.durationInFrames !==
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyDurationInFrames
+  ) {
+    fail(
+      'R10_DIAGNOSTIC_B07_SCENE_COMPOSITION_SPEC_DRIFT',
+      `${composition.id} 实际规格与 1920x1080 / 30fps / 633帧诊断合同不符。`,
+    );
+  }
+  return composition;
+};
+
 const rationalToNumber = (value) => {
   if (typeof value !== 'string') return Number.NaN;
   const [numeratorText, denominatorText = '1'] = value.split('/');
@@ -1127,6 +1155,64 @@ export const assertR10OutputProbe = (probe, compositionId) => {
     audioSampleRate,
     audioChannels: audio.channels,
     audioDurationSeconds: audioDuration,
+  };
+};
+
+export const assertR10B07SceneOnlyOutputProbe = (probe) => {
+  const compositionId =
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyCompositionId;
+  if (!isRecord(probe) || !Array.isArray(probe.streams)) {
+    fail(
+      'R10_DIAGNOSTIC_B07_SCENE_OUTPUT_PROBE_INVALID',
+      `${compositionId} ffprobe 结果无效。`,
+    );
+  }
+  const videoStreams = probe.streams.filter((stream) => stream?.codec_type === 'video');
+  const audioStreams = probe.streams.filter((stream) => stream?.codec_type === 'audio');
+  if (videoStreams.length !== 1 || audioStreams.length !== 0) {
+    fail(
+      'R10_DIAGNOSTIC_B07_SCENE_OUTPUT_STREAMS_INVALID',
+      `${compositionId} 必须有且只有一路视频且不得含音频。`,
+    );
+  }
+  const video = videoStreams[0];
+  const frameRate = rationalToNumber(video.avg_frame_rate || video.r_frame_rate);
+  const frameCount = Number(video.nb_read_frames ?? video.nb_frames);
+  const duration = Number(video.duration ?? probe.format?.duration);
+  const containerDuration = Number(probe.format?.duration ?? video.duration);
+  const expectedDuration =
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyDurationInFrames /
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.fps;
+  if (
+    video.codec_name !== 'h264' ||
+    video.width !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.width ||
+    video.height !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.height ||
+    !['yuv420p', 'yuvj420p'].includes(video.pix_fmt) ||
+    !Number.isFinite(frameRate) ||
+    Math.abs(frameRate - DIRECTOR_R10_DIAGNOSTIC_CONTRACT.fps) > 0.001 ||
+    !Number.isFinite(frameCount) ||
+    frameCount !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyDurationInFrames ||
+    !Number.isFinite(duration) ||
+    Math.abs(duration - expectedDuration) > 0.002 ||
+    !Number.isFinite(containerDuration) ||
+    Math.abs(containerDuration - expectedDuration) > 0.08
+  ) {
+    fail(
+      'R10_DIAGNOSTIC_B07_SCENE_OUTPUT_SPEC_DRIFT',
+      `${compositionId} 输出不是无音频 1920x1080 / 30fps / 633帧 / H.264 4:2:0 纯纸艺诊断层。`,
+      {video, duration, containerDuration},
+    );
+  }
+  return {
+    width: video.width,
+    height: video.height,
+    fps: frameRate,
+    frames: frameCount,
+    durationSeconds: duration,
+    containerDurationSeconds: containerDuration,
+    videoCodec: video.codec_name,
+    pixelFormat: video.pix_fmt,
+    audioStreams: 0,
   };
 };
 
@@ -1418,6 +1504,19 @@ export const resolveDirectorR10OutputTarget = (manifest, {projectRoot}) => {
       fileName: composition.outputFile,
       absolutePath: path.join(runPath, composition.outputFile),
     })),
+    qaPath: path.join(runPath, 'qa'),
+    b07SceneOnlyOutput: {
+      compositionId:
+        DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyCompositionId,
+      relativePath: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyOutputPath,
+      fileName: path.posix.basename(
+        DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyOutputPath,
+      ),
+      absolutePath: path.join(
+        runPath,
+        ...DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyOutputPath.split('/'),
+      ),
+    },
     preflightReceiptPath: path.join(runPath, 'diagnostic-preflight.receipt.json'),
     resultReceiptPath: path.join(runPath, 'diagnostic-result.receipt.json'),
   };
@@ -1440,6 +1539,17 @@ export const createDirectorR10OutputDirectory = (target, {projectRoot}) => {
     );
   }
   assertNoSymlinkPath(target.runPath, {projectRoot, label: 'R10 输出运行目录'});
+  try {
+    mkdirSync(target.qaPath, {recursive: false, mode: 0o750});
+  } catch (error) {
+    fail(
+      'R10_DIAGNOSTIC_QA_OUTPUT_CREATE_FAILED',
+      `R10 QA 诊断目录创建失败：${
+        error instanceof Error ? error.message : String(error)
+      }`,
+    );
+  }
+  assertNoSymlinkPath(target.qaPath, {projectRoot, label: 'R10 QA 诊断目录'});
 };
 
 export const writeJsonAtomic = (absolutePath, value, {projectRoot} = {}) => {

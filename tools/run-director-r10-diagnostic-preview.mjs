@@ -16,6 +16,8 @@ import {
   assertDirectorR10SnapshotStable,
   assertKnowledgeContextDocument,
   assertKnowledgeContextValidation,
+  assertR10B07SceneOnlyCompositionMetadata,
+  assertR10B07SceneOnlyOutputProbe,
   assertR10CueAudibilityAudit,
   assertR10CompositionMetadata,
   assertR10OutputProbe,
@@ -734,6 +736,15 @@ const openRenderContext = async (manifest) => {
       assertR10CompositionMetadata(composition);
       compositions.push(composition);
     }
+    const b07SceneOnlyComposition = await selectComposition({
+      serveUrl,
+      id: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyCompositionId,
+      inputProps: {},
+      puppeteerInstance: browser,
+      logLevel: 'error',
+    });
+    assertR10B07SceneOnlyCompositionMetadata(b07SceneOnlyComposition);
+    compositions.push(b07SceneOnlyComposition);
     return {
       serveUrl,
       browser,
@@ -757,6 +768,7 @@ const renderComposition = async ({
   outputLocation,
   codec,
   progressLabel,
+  includeAudio = true,
 }) => {
   let lastReportedPercent = -1;
   const options = {
@@ -764,11 +776,11 @@ const renderComposition = async ({
     composition,
     codec,
     outputLocation,
-    frameRange: [0, DIRECTOR_R10_DIAGNOSTIC_CONTRACT.durationInFrames - 1],
-    audioBitrate: '192k',
+    frameRange: [0, composition.durationInFrames - 1],
     concurrency: 2,
     puppeteerInstance: context.browser,
     overwrite: false,
+    muted: !includeAudio,
     logLevel: 'error',
     onProgress: ({progress}) => {
       const percent = Math.floor(progress * 100);
@@ -784,12 +796,36 @@ const renderComposition = async ({
     Object.assign(options, {
       crf: 17,
       pixelFormat: 'yuv420p',
-      audioCodec: 'aac',
+      audioCodec: includeAudio ? 'aac' : null,
       x264Preset: 'slow',
     });
   }
+  if (includeAudio) options.audioBitrate = '192k';
   await context.renderMedia(options);
   process.stdout.write(`\r${progressLabel} 100%\n`);
+};
+
+const renderB07SceneOnly = async ({context, target}) => {
+  const composition = context.compositions.find(
+    (candidate) =>
+      candidate.id ===
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyCompositionId,
+  );
+  if (!composition) {
+    throw new DirectorR10DiagnosticRenderError(
+      'R10_DIAGNOSTIC_B07_SCENE_COMPOSITION_MISSING',
+      '同一 Remotion bundle/browser 中缺少 B07 纯纸艺诊断 composition。',
+    );
+  }
+  assertR10B07SceneOnlyCompositionMetadata(composition);
+  await renderComposition({
+    context,
+    composition,
+    outputLocation: target.b07SceneOnlyOutput.absolutePath,
+    codec: 'h264',
+    progressLabel: `${composition.id} QA 纯纸艺层`,
+    includeAudio: false,
+  });
 };
 
 const muxVisualMasterWithSfxAudio = ({
@@ -1048,6 +1084,86 @@ const inspectOutputs = async (target, {strict}) => {
   return outputs;
 };
 
+const inspectB07SceneOnlyOutput = async (target, {strict}) => {
+  const output = target.b07SceneOnlyOutput;
+  try {
+    const file = await captureExistingOutput(output.absolutePath, {
+      projectRoot,
+      label: 'B07 纯纸艺 QA 诊断输出',
+    });
+    if (!file.exists) {
+      if (strict) {
+        throw new DirectorR10DiagnosticRenderError(
+          'R10_DIAGNOSTIC_B07_SCENE_OUTPUT_MISSING',
+          'B07 纯纸艺 QA 诊断输出缺失。',
+        );
+      }
+      return {
+        status: 'diagnostic-output-missing-not-release',
+        compositionId: output.compositionId,
+        path: output.relativePath,
+        fileName: output.fileName,
+        exists: false,
+        diagnosticOnly: true,
+        releaseEligible: false,
+      };
+    }
+    const probe = probeOutput(output.absolutePath);
+    const verifiedSpec = assertR10B07SceneOnlyOutputProbe(probe);
+    const decodedVideoSha256 = hashDecodedVideo(output.absolutePath);
+    const fileAfterInspection = await captureExistingOutput(output.absolutePath, {
+      projectRoot,
+      label: 'B07 纯纸艺 QA 诊断输出（检查后）',
+    });
+    if (
+      !fileAfterInspection.exists ||
+      stableJson({
+        sha256: file.sha256,
+        bytes: file.bytes,
+        identity: file.identity,
+      }) !==
+        stableJson({
+          sha256: fileAfterInspection.sha256,
+          bytes: fileAfterInspection.bytes,
+          identity: fileAfterInspection.identity,
+        })
+    ) {
+      throw new DirectorR10DiagnosticRenderError(
+        'R10_DIAGNOSTIC_B07_SCENE_OUTPUT_DRIFT_DURING_INSPECTION',
+        'B07 纯纸艺 QA 诊断输出在规格与解码检查期间发生漂移。',
+      );
+    }
+    return {
+      status: 'diagnostic-output-generated-not-release',
+      compositionId: output.compositionId,
+      path: output.relativePath,
+      fileName: output.fileName,
+      ...file,
+      probe,
+      verifiedSpec,
+      decodedVideoSha256,
+      diagnosticOnly: true,
+      productionEligible: false,
+      releaseEligible: false,
+      pairComparisonMember: false,
+    };
+  } catch (error) {
+    if (strict) throw error;
+    return {
+      status: 'diagnostic-output-failed-not-release',
+      compositionId: output.compositionId,
+      path: output.relativePath,
+      fileName: output.fileName,
+      exists: existsSync(output.absolutePath),
+      diagnosticOnly: true,
+      productionEligible: false,
+      releaseEligible: false,
+      pairComparisonMember: false,
+      inspectionError: errorRecord(error),
+    };
+  }
+};
+
 const assertOutputsStillStable = async (target, outputs, label) => {
   for (const targetOutput of target.outputs) {
     const recorded = outputs.find(
@@ -1076,6 +1192,35 @@ const assertOutputsStillStable = async (target, outputs, label) => {
         `${label}期间诊断输出发生漂移：${targetOutput.compositionId}`,
       );
     }
+  }
+};
+
+const assertB07SceneOnlyOutputStillStable = async (target, recorded, label) => {
+  const current = await captureExistingOutput(
+    target.b07SceneOnlyOutput.absolutePath,
+    {
+      projectRoot,
+      label: `${label} B07 纯纸艺 QA 诊断输出`,
+    },
+  );
+  if (
+    !recorded?.exists ||
+    !current.exists ||
+    stableJson({
+      sha256: recorded.sha256,
+      bytes: recorded.bytes,
+      identity: recorded.identity,
+    }) !==
+      stableJson({
+        sha256: current.sha256,
+        bytes: current.bytes,
+        identity: current.identity,
+      })
+  ) {
+    throw new DirectorR10DiagnosticRenderError(
+      'R10_DIAGNOSTIC_B07_SCENE_OUTPUT_DRIFT_AFTER_INSPECTION',
+      `${label}期间 B07 纯纸艺 QA 诊断输出发生漂移。`,
+    );
   }
 };
 
@@ -1133,6 +1278,21 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
         DIRECTOR_R10_DIAGNOSTIC_CONTRACT.sfxAudioCompositionId,
       videoDerivation: 'single-render-stream-copy',
     },
+    b07PaperSceneOnlyQa: {
+      compositionId:
+        DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyCompositionId,
+      width: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.width,
+      height: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.height,
+      fps: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.fps,
+      durationInFrames:
+        DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyDurationInFrames,
+      path: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.b07SceneOnlyOutputPath,
+      audioExpected: false,
+      diagnosticOnly: true,
+      pairComparisonMember: false,
+      productionEligible: false,
+      releaseEligible: false,
+    },
     output: {
       root: manifest.output.root,
       runDirectory: manifest.output.runDirectory,
@@ -1158,6 +1318,10 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
         renderContext = context;
       },
     });
+    await renderB07SceneOnly({
+      context: renderContext,
+      target,
+    });
     const inputsAfterRender = await captureDirectorR10InputSnapshot(manifest, {
       projectRoot,
     });
@@ -1173,6 +1337,9 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
     const validatorAfterRender = await captureValidator();
     assertValidatorStable(validatorPreRender, validatorAfterRender);
     const outputs = await inspectOutputs(target, {strict: true});
+    const b07PaperSceneOnlyQa = await inspectB07SceneOnlyOutput(target, {
+      strict: true,
+    });
     const visualPairAudit = assertR10PairedVisualHashes(outputs);
     const audioPairAudit = assertR10PairedAudioHashes(outputs);
     const renderDerivationAudit = assertR10SingleVisualMasterDerivation(
@@ -1185,6 +1352,11 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
     });
     const cueAudibilityAudit = auditRuntimeCueAudibility({manifest, target});
     await assertOutputsStillStable(target, outputs, '音频质量审计');
+    await assertB07SceneOnlyOutputStillStable(
+      target,
+      b07PaperSceneOnlyQa,
+      '音频质量审计',
+    );
     const inputsAfterInspection = await captureDirectorR10InputSnapshot(manifest, {
       projectRoot,
     });
@@ -1231,6 +1403,7 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
       inputsAfterRender: snapshotForReceipt(inputsAfterRender),
       inputsAfterInspection: snapshotForReceipt(inputsAfterInspection),
       outputs,
+      b07PaperSceneOnlyQa,
       renderDerivationAudit,
       visualPairAudit,
       audioPairAudit,
@@ -1268,6 +1441,9 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
       };
     }
     const outputs = await inspectOutputs(target, {strict: false});
+    const b07PaperSceneOnlyQa = await inspectB07SceneOnlyOutput(target, {
+      strict: false,
+    });
     const failure = {
       schemaVersion: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.resultReceiptSchema,
       status: 'diagnostic-render-failed-not-release',
@@ -1293,6 +1469,7 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
       inputsBeforeRender: snapshotForReceipt(inputsPreRender),
       postFailureIntegrity,
       outputs,
+      b07PaperSceneOnlyQa,
     };
     failure.integritySealSha256 = stableJsonSha256(failure);
     writeJsonAtomic(target.resultReceiptPath, failure, {projectRoot});
