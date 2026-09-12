@@ -339,6 +339,50 @@ const hashDecodedVideo = (outputPath) => {
   return match[1];
 };
 
+const hashEncodedVideoPackets = (outputPath) => {
+  const result = spawnSync(
+    'ffmpeg',
+    [
+      '-v',
+      'error',
+      '-i',
+      outputPath,
+      '-map',
+      '0:v:0',
+      '-an',
+      '-c:v',
+      'copy',
+      '-f',
+      'hash',
+      '-hash',
+      'sha256',
+      '-',
+    ],
+    {
+      cwd: projectRoot,
+      encoding: 'utf8',
+      maxBuffer: 4 * 1024 * 1024,
+    },
+  );
+  if (result.error || result.status !== 0) {
+    const details = [result.error?.message, result.stdout?.trim(), result.stderr?.trim()]
+      .filter(Boolean)
+      .join('\n');
+    throw new DirectorR10DiagnosticRenderError(
+      'R10_DIAGNOSTIC_ENCODED_VIDEO_HASH_FAILED',
+      `编码画面包 SHA-256 计算失败：${details || `退出码 ${result.status}`}`,
+    );
+  }
+  const match = /^SHA256=([a-f0-9]{64})\s*$/u.exec(result.stdout);
+  if (!match) {
+    throw new DirectorR10DiagnosticRenderError(
+      'R10_DIAGNOSTIC_ENCODED_VIDEO_HASH_INVALID',
+      'ffmpeg 未返回规范编码画面包 SHA-256。',
+    );
+  }
+  return match[1];
+};
+
 const hashDecodedAudio = (outputPath) => {
   const result = spawnSync(
     'ffmpeg',
@@ -947,6 +991,7 @@ const inspectOutputs = async (target, {strict}) => {
       }
       const probe = probeOutput(output.absolutePath);
       const verifiedSpec = assertR10OutputProbe(probe, output.compositionId);
+      const encodedVideoPacketSha256 = hashEncodedVideoPackets(output.absolutePath);
       const decodedVideoSha256 = hashDecodedVideo(output.absolutePath);
       const decodedAudioSha256 = hashDecodedAudio(output.absolutePath);
       const fileAfterInspection = await captureExistingOutput(output.absolutePath, {
@@ -978,6 +1023,7 @@ const inspectOutputs = async (target, {strict}) => {
         ...file,
         probe,
         verifiedSpec,
+        encodedVideoPacketSha256,
         decodedVideoSha256,
         decodedAudioSha256,
       });

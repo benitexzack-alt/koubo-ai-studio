@@ -1140,14 +1140,26 @@ export const assertR10PairedVisualHashes = (outputs) => {
   for (const [index, output] of outputs.entries()) {
     if (
       output?.compositionId !== expectedIds[index] ||
+      typeof output.encodedVideoPacketSha256 !== 'string' ||
+      !SHA256_PATTERN.test(output.encodedVideoPacketSha256) ||
       typeof output.decodedVideoSha256 !== 'string' ||
       !SHA256_PATTERN.test(output.decodedVideoSha256)
     ) {
       fail(
         'R10_DIAGNOSTIC_VISUAL_PAIR_INVALID',
-        '诊断视频对缺少固定 composition 或解码画面哈希。',
+        '诊断视频对缺少固定 composition、编码画面包哈希或解码画面哈希。',
       );
     }
+  }
+  if (outputs[0].encodedVideoPacketSha256 !== outputs[1].encodedVideoPacketSha256) {
+    fail(
+      'R10_DIAGNOSTIC_ENCODED_VISUAL_PAIR_MISMATCH',
+      '有音效与无附加音效诊断片的编码画面包不一致，不得作为无重编码对照。',
+      {
+        withSfx: outputs[0].encodedVideoPacketSha256,
+        noSfx: outputs[1].encodedVideoPacketSha256,
+      },
+    );
   }
   if (outputs[0].decodedVideoSha256 !== outputs[1].decodedVideoSha256) {
     fail(
@@ -1160,7 +1172,8 @@ export const assertR10PairedVisualHashes = (outputs) => {
     );
   }
   return {
-    status: 'decoded-visual-streams-identical',
+    status: 'encoded-and-decoded-visual-streams-identical',
+    encodedVideoPacketSha256: outputs[0].encodedVideoPacketSha256,
     decodedVideoSha256: outputs[0].decodedVideoSha256,
   };
 };

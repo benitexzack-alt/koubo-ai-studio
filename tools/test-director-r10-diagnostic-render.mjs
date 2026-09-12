@@ -409,13 +409,20 @@ try {
   const pairedVisualOutputs = DIRECTOR_R10_DIAGNOSTIC_CONTRACT.compositionIds.map(
     (compositionId) => ({
       compositionId,
+      encodedVideoPacketSha256: 'e'.repeat(64),
       decodedVideoSha256: 'a'.repeat(64),
     }),
   );
   assert.equal(
     assertR10PairedVisualHashes(pairedVisualOutputs).status,
-    'decoded-visual-streams-identical',
+    'encoded-and-decoded-visual-streams-identical',
   );
+  pairedVisualOutputs[1].encodedVideoPacketSha256 = 'f'.repeat(64);
+  expectCode('R10_DIAGNOSTIC_ENCODED_VISUAL_PAIR_MISMATCH', () =>
+    assertR10PairedVisualHashes(pairedVisualOutputs),
+  );
+  pairedVisualOutputs[1].encodedVideoPacketSha256 =
+    pairedVisualOutputs[0].encodedVideoPacketSha256;
   pairedVisualOutputs[1].decodedVideoSha256 = 'b'.repeat(64);
   expectCode('R10_DIAGNOSTIC_VISUAL_PAIR_MISMATCH', () =>
     assertR10PairedVisualHashes(pairedVisualOutputs),
