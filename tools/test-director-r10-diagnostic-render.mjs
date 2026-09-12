@@ -472,7 +472,7 @@ try {
     offsetMs: -42.5,
     rmsDeltaDb: -0.04,
     comparedSamples: 115800,
-    sampleRate: 2000,
+    sampleRate: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.speechAuditSampleRate,
   };
   assert.equal(
     assertR10SpeechPreservationMetrics(validSpeechMetrics).status,
@@ -488,6 +488,12 @@ try {
     assertR10SpeechPreservationMetrics({
       ...validSpeechMetrics,
       rmsDeltaDb: 2,
+    }),
+  );
+  expectCode('R10_DIAGNOSTIC_SPEECH_AUDIT_INVALID', () =>
+    assertR10SpeechPreservationMetrics({
+      ...validSpeechMetrics,
+      sampleRate: 2000,
     }),
   );
   const cueAudits = [

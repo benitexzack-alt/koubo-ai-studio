@@ -44,7 +44,7 @@ export const DIRECTOR_R10_DIAGNOSTIC_CONTRACT = Object.freeze({
   fps: 30,
   durationInFrames: 1737,
   sourceTrimBeforeFrames: 1200,
-  speechAuditSampleRate: 2000,
+  speechAuditSampleRate: 3000,
   speechAuditSearchWindowMs: 50,
   minimumSpeechCorrelation: 0.95,
   maximumSpeechRmsDeltaDb: 1,
@@ -1264,7 +1264,8 @@ export const assertR10SpeechPreservationMetrics = (metrics) => {
     !Number.isFinite(metrics.offsetMs) ||
     !Number.isFinite(metrics.rmsDeltaDb) ||
     !Number.isInteger(metrics.comparedSamples) ||
-    metrics.comparedSamples <= 0
+    metrics.comparedSamples <= 0 ||
+    metrics.sampleRate !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.speechAuditSampleRate
   ) {
     fail(
       'R10_DIAGNOSTIC_SPEECH_AUDIT_INVALID',
