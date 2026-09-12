@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "koubo-director-cues/v2",
+  "taskId": "<TASK_ID>",
+  "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
+  "inputScript": {
+    "path": "<USER_CONFIRMED_SCRIPT_PATH>",
+    "sha256": "<SCRIPT_SHA256>",
+    "authority": "user-confirmed-script"
+  },
+  "routingPolicy": {
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "generatedVisualCannotServeAsEvidence": true,
+    "shotcraftSelectionStage": "post-shoot-edit-release",
+    "shotcraftEligibleRoutes": [
+      "speaker",
+      "real-evidence"
+    ],
+    "shotcraftForbiddenInsideRoutes": [
+      "paper-editorial",
+      "ai-generated-video"
+    ]
+  },
+  "styleLocks": {
+    "aiGeneratedVideo": null,
+    "paperEditorial": null
+  },
+  "selectionSummary": {
+    "mainPoint": "<ONE_SENTENCE_MAIN_POINT>",
+    "argumentFlow": [
+      "<ARGUMENT_STEP_1>"
+    ],
+    "routeCounts": {
+      "speaker": 1,
+      "real-evidence": 0,
+      "ai-generated-video": 0,
+      "paper-editorial": 0,
+      "shotcraftOpportunity": 0
+    },
+    "routeRationales": {
+      "speaker": "默认保留真人；只有其他画面带来明确新增理解时才改路由。",
+      "real-evidence": "当前模板不预设真实素材；全文分析后按事实与演示需要添加。",
+      "ai-generated-video": "当前模板不预设AI情景视频；全文分析后仅在通用场景确有收益时添加。",
+      "paper-editorial": "当前模板不预设纸艺；全文分析后仅在抽象机制确有解释收益时添加。"
+    },
+    "visualRhythmReason": "按完整文稿的语义、证据和节奏判断，不按固定秒数或数量插片。",
+    "protectedSpeakerBeatIds": [
+      "B01"
+    ]
+  },
+  "semanticBeats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "scriptQuote": "<EXACT_COMPLETE_OR_FIRST_SPEAKER_BEAT>",
+      "rhetoricalRole": "hook-or-judgment",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "<WHY_THE_FACE_AND_VOICE_MATTER_OR_WHY_NO_INSERT_ADDS_VALUE>",
+      "viewerGain": "presenter-trust"
+    }
+  ],
+  "routePlans": {
+    "realMaterials": {
+      "status": "not-required",
+      "notRequiredReason": "全文分析后没有需要展示或证明的真实对象。",
+      "items": []
+    },
+    "aiGeneratedVideos": {
+      "status": "not-required",
+      "notRequiredReason": "全文分析后没有能由通用AI情景明显提升理解或节奏的段落。",
+      "items": []
+    },
+    "paperEditorials": {
+      "status": "not-required",
+      "notRequiredReason": "全文分析后没有需要用纸艺物理隐喻解释的抽象机制。",
+      "items": []
+    }
+  },
+  "shotcraftOpportunities": [],
+  "rhythmAudit": {
+    "basis": "semantic-runs-not-seconds",
+    "fixedCadenceForbidden": true,
+    "longSpeakerRunsReviewed": true,
+    "runs": [
+      {
+        "fromBeatId": "B01",
+        "toBeatId": "B01",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "当前示例保留真人；实例化时必须重新复核每一组连续真人节拍。",
+        "mitigationRefs": []
+      }
+    ]
+  }
+}

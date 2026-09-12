@@ -1,11 +1,17 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {createHash} from 'node:crypto';
-import {mkdtempSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
+import {mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSync} from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {createNativePreproductionFixture, runDirectorCli} from './fixtures/v9-native-preproduction.mjs';
+import {buildDirectorCuesV2Handoff} from '../scripts/director-cues-v2-handoff-core.mjs';
 import {
+  buildV2LegacyGenerationBridgeReceipt,
+  validateV2LegacyGenerationBridgeReceipt,
+} from '../scripts/v2-legacy-generation-bridge-core.mjs';
+import {
+  V2_DIRECT_HANDOFF_FORMAT,
   V9_STAGES,
   validateV9ProductionState,
 } from '../scripts/v9-workflow-state-core.mjs';
@@ -23,7 +29,14 @@ const requiredArtifacts = {
     'imageToVideoPromptManifest',
     'aiVideoPromptManifest',
   ],
-  'generation-handoff-ready': ['generationInventory', 'generationOwnershipReceipt'],
+  'generation-handoff-ready': [
+    'generationInventory',
+    'generationOwnershipReceipt',
+    'directorCues',
+    'directorCuesUserApproval',
+    'directorCuesHandoff',
+    'directorCuesHandoffValidationReceipt',
+  ],
   'asset-intake-passed': ['talkingHeadSource', 'requiredAssetsManifest', 'assetIntakeReceipt'],
   'postshoot-rebound': [
     'spokenSourceBinding',
@@ -69,7 +82,10 @@ function buildState(stageCount, gateOverrides = {}) {
         : previewApproved
           ? 'formal-authorized'
           : 'candidate-preview-required',
-    directorProfile: {profileId: 'paper-editorial-director-v9', profileVersion: '9.1.0'},
+    directorProfile: {
+      profileId: 'paper-editorial-director-v9',
+      profileVersion: '9.0.0',
+    },
     currentStage: stageHistory.at(-1).stage,
     stageHistory,
     gates: {
@@ -99,20 +115,50 @@ test('V9 accepts the script-confirmed start state', () => {
   assert.equal(result.formalEnabled, false);
 });
 
-test('V9.1 requires automatic matching and experience lookup at postshoot rebound', () => {
-  const state = buildState(5);
-  delete state.stageHistory[4].artifacts.shotcraftAutoMatchReceipt;
-  const result = validateV9ProductionState({state});
+test('V9.1 requires automatic matching and experience lookup at postshoot rebound', (t) => {
+  const fixture = strictFixture(t, 5);
+  delete fixture.state.stageHistory[4].artifacts.shotcraftAutoMatchReceipt;
+  const result = fixture.validate();
   assert.equal(result.ok, false);
   assert.ok(result.errors.includes('V9_ARTIFACT_BINDING_INVALID:postshoot-rebound:shotcraftAutoMatchReceipt'));
 });
 
-test('V9.1 requires the accepted preview to be written into the experience ledger', () => {
-  const state = buildState(7);
-  delete state.stageHistory[6].artifacts.shotcraftExperienceWriteReceipt;
-  const result = validateV9ProductionState({state});
+test('V9.1 requires the accepted preview to be written into the experience ledger', (t) => {
+  const fixture = strictFixture(t, 7);
+  delete fixture.state.stageHistory[6].artifacts.shotcraftExperienceWriteReceipt;
+  const result = fixture.validate();
   assert.equal(result.ok, false);
   assert.ok(result.errors.includes('V9_ARTIFACT_BINDING_INVALID:candidate-preview-user-approved:shotcraftExperienceWriteReceipt'));
+});
+
+test('V9.1 semantic v2 blocks generation handoff until the complete director plan is user-approved', (t) => {
+  const fixture = strictFixture(t, 3);
+  const state = fixture.state;
+  const saved = structuredClone(state.stageHistory[2].artifacts);
+  for (const key of [
+    'directorCues',
+    'directorCuesUserApproval',
+    'directorCuesHandoff',
+    'directorCuesHandoffValidationReceipt',
+  ]) delete state.stageHistory[2].artifacts[key];
+  const blocked = fixture.validate();
+  assert.equal(blocked.ok, false);
+  assert.ok(blocked.errors.includes(
+    'V9_ARTIFACT_BINDING_INVALID:generation-handoff-ready:directorCues',
+  ));
+  assert.ok(blocked.errors.includes(
+    'V9_ARTIFACT_BINDING_INVALID:generation-handoff-ready:directorCuesUserApproval',
+  ));
+  assert.ok(blocked.errors.includes(
+    'V9_ARTIFACT_BINDING_INVALID:generation-handoff-ready:directorCuesHandoff',
+  ));
+  assert.ok(blocked.errors.includes(
+    'V9_ARTIFACT_BINDING_INVALID:generation-handoff-ready:directorCuesHandoffValidationReceipt',
+  ));
+
+  Object.assign(state.stageHistory[2].artifacts, saved);
+  const ready = fixture.validate();
+  assert.equal(ready.ok, true, ready.errors.join('\n'));
 });
 
 test('V9 rejects skipped or reordered stages', () => {
@@ -178,12 +224,173 @@ const receiptTypes = {
   releasePackageReceipt: ['koubo-release-package-receipt/v1', 'passed'],
 };
 const hashFile = (file) => createHash('sha256').update(readFileSync(file)).digest('hex');
+const hashText = (value) => createHash('sha256').update(String(value), 'utf8').digest('hex');
+
+function attachSemanticDirectorV2Fixture(fixture) {
+  const {state, projectRoot, documents, bindings, persist} = fixture;
+  const generationRecord = state.stageHistory.find((item) => item.stage === 'generation-handoff-ready');
+  if (!generationRecord) return;
+  const writeJson = (relative, value) => {
+    const file = path.join(projectRoot, relative);
+    mkdirSync(path.dirname(file), {recursive: true});
+    writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`);
+    return file;
+  };
+  const bindFile = (relative) => ({path: relative, sha256: hashFile(path.join(projectRoot, relative))});
+  const scriptText = readFileSync(path.join(projectRoot, bindings.script.path), 'utf8');
+  const aiPrefix = '写实编辑部纪实风格，暖中性自然光，真实工作空间，深蓝与暖白色调，16:9。';
+  const cues = {
+    schemaVersion: 'koubo-director-cues/v2',
+    taskId: state.taskId,
+    status: 'ready-for-user-review',
+    executionScope: 'director-only',
+    handoffGate: {status: 'blocked-awaiting-user-approval', downstreamAllowed: false},
+    inputScript: {...bindings.script, authority: 'user-confirmed-script'},
+    routingPolicy: {
+      selectionBasis: 'semantic-need-not-fixed-cadence', speakerIsFallback: true,
+      generatedInsertMinimum: 0, paperInsertMinimum: 0, fixedCadenceForbidden: true,
+      generatedVisualCannotServeAsEvidence: true, shotcraftSelectionStage: 'post-shoot-edit-release',
+      shotcraftEligibleRoutes: ['speaker', 'real-evidence'],
+      shotcraftForbiddenInsideRoutes: ['paper-editorial', 'ai-generated-video'],
+    },
+    styleLocks: {
+      aiGeneratedVideo: {
+        referenceImages: [],
+        promptPrefix: aiPrefix,
+        mustKeep: ['纪实摄影', '真实空间', '暖中性光'],
+        mustAvoid: ['伪造证据', '真实品牌复刻', '模型可读文字'],
+      },
+      paperEditorial: null,
+    },
+    selectionSummary: {
+      mainPoint: '状态机测试只验证当前 v2 AI 导演表与下游交接是否同源。',
+      argumentFlow: ['完整脚本由同一个离线 AI 情景测试 beat 承接'],
+      routeCounts: {speaker: 0, 'real-evidence': 0, 'ai-generated-video': 1, 'paper-editorial': 0, shotcraftOpportunity: 0},
+      routeRationales: {
+        speaker: '测试夹具不执行真人分路。',
+        'real-evidence': '测试夹具没有执行真实素材分路。',
+        'ai-generated-video': '离线通用场景用于验证 v2 到旧 AI 清单的确定性转换。',
+        'paper-editorial': '测试夹具没有执行纸艺分路。',
+      },
+      visualRhythmReason: '单一离线测试 beat 只用于验证状态绑定，不作为真实导演方案。',
+      protectedSpeakerBeatIds: [],
+    },
+    semanticBeats: [{
+      id: 'B01', order: 1, scriptQuote: scriptText, rhetoricalRole: 'state-contract-fixture',
+      claimClass: 'generic-illustration', requiresRealEvidence: false, primaryRoute: 'ai-generated-video',
+      routeCueId: 'G01', decisionReason: '离线通用场景只验证状态合同。', viewerGain: 'make-scene-concrete',
+    }],
+    routePlans: {
+      realMaterials: {status: 'not-required', notRequiredReason: '状态合同测试不执行真实素材分路。', items: []},
+      aiGeneratedVideos: {
+        status: 'planned',
+        notRequiredReason: null,
+        items: [{
+          id: 'G01',
+          beatId: 'B01',
+          startAnchorText: scriptText.trim().slice(0, 10),
+          endAnchorText: scriptText.trim().slice(-10),
+          timingStatus: 'pre-shoot-text-anchor-only',
+          purpose: 'illustration-only',
+          representationPolicy: 'synthetic-not-evidence',
+          evidenceEligible: false,
+          disclosureRequired: true,
+          realEntityReenactmentForbidden: true,
+          mode: 'image-to-video',
+          durationSeconds: 5,
+          visualIntent: '用无特定主体的工作场景验证 AI 提示词转换。',
+          primaryAction: '店主低头查看桌上结果页',
+          firstFramePrompt: `${aiPrefix}中景固定机位，一位无品牌特征的成年店主坐在真实工作桌前，桌上放着无可读文字的结果页和普通文具，双手停在纸页两侧，背景为模糊货架，不出现真实公司、标志或官方界面。`,
+          videoPrompt: '基于已确认首帧，店主低头查看桌上结果页，视线从页面左侧移到右侧，机位保持稳定，结尾停在专注阅读状态，不新增人物、标志或文字。',
+          negativePrompt: ['不生成可读文字', '不复刻真实公司或真实人物', '不把演绎画面伪装成证据'],
+        }],
+      },
+      paperEditorials: {status: 'not-required', notRequiredReason: '状态合同测试不执行纸艺分路。', items: []},
+    },
+    shotcraftOpportunities: [],
+    rhythmAudit: {
+      basis: 'semantic-runs-not-seconds', fixedCadenceForbidden: true, longSpeakerRunsReviewed: true,
+      runs: [],
+    },
+  };
+  writeJson('director-v2/cues.json', cues);
+  bindings.directorCues = generationRecord.artifacts.directorCues = bindFile('director-v2/cues.json');
+  documents.directorCues = cues;
+  const approval = {
+    schemaVersion: 'koubo-director-cues-user-approval/v2',
+    status: 'approved',
+    taskId: state.taskId,
+    revisionId: state.revisionId,
+    bindings: {directorCues: bindings.directorCues},
+    approved: true,
+    userQuote: '离线状态合同测试批准，不构成现实用户授权。',
+    approvedAt: '2026-09-08T10:02:00+08:00',
+    exceptions: [],
+  };
+  writeJson('director-v2/approval.json', approval);
+  bindings.directorCuesUserApproval = generationRecord.artifacts.directorCuesUserApproval =
+    bindFile('director-v2/approval.json');
+  documents.directorCuesUserApproval = approval;
+  const activeProfileSource = new URL('../../../workflow/active-director-profile.v1.json', import.meta.url);
+  writeJson('workflow/active-director-profile.v1.json', JSON.parse(readFileSync(activeProfileSource, 'utf8')));
+  const handoff = buildDirectorCuesV2Handoff({
+    projectRoot,
+    cues: bindings.directorCues.path,
+    approval: bindings.directorCuesUserApproval.path,
+    profile: 'workflow/active-director-profile.v1.json',
+    outputDir: 'director-v2/handoff',
+  });
+  bindings.directorCuesHandoff = generationRecord.artifacts.directorCuesHandoff = {
+    path: path.relative(realpathSync(projectRoot), handoff.masterPath), sha256: handoff.masterSha256,
+  };
+  bindings.directorCuesHandoffValidationReceipt =
+    generationRecord.artifacts.directorCuesHandoffValidationReceipt = {
+      path: path.relative(realpathSync(projectRoot), handoff.receiptPath), sha256: handoff.receiptSha256,
+    };
+  state.generationHandoffFormat = V2_DIRECT_HANDOFF_FORMAT;
+  bindings.generationInventory = generationRecord.artifacts.generationInventory =
+    structuredClone(bindings.directorCuesHandoff);
+  bindings.generationOwnershipReceipt = generationRecord.artifacts.generationOwnershipReceipt =
+    structuredClone(bindings.directorCuesUserApproval);
+  const generationIndex = state.stageHistory.findIndex((item) => item.stage === 'generation-handoff-ready');
+  const immutableV2Sources = new Set([
+    'generationInventory',
+    'generationOwnershipReceipt',
+    'directorCues',
+    'directorCuesUserApproval',
+    'directorCuesHandoff',
+    'directorCuesHandoffValidationReceipt',
+  ]);
+  const downstreamDirectorAuthority = new Set([
+    'assetIntakeReceipt',
+    'postshootRebindReceipt',
+    'shotcraftSelectionPlan',
+  ]);
+  for (const record of state.stageHistory.slice(generationIndex)) {
+    for (const key of Object.keys(record.artifacts ?? {})) {
+      if (immutableV2Sources.has(key)) continue;
+      const doc = documents[key];
+      if (!doc || typeof doc !== 'object' || Array.isArray(doc) || !doc.bindings) continue;
+      if (downstreamDirectorAuthority.has(key)) {
+        doc.bindings.directorCuesHandoff = structuredClone(bindings.directorCuesHandoff);
+        doc.directorAuthority = 'directorCuesHandoff';
+        doc.legacyDirectorPlanRole = 'compatibility-only';
+      }
+      for (const dependency of Object.keys(doc.bindings)) {
+        if (bindings[dependency]) doc.bindings[dependency] = structuredClone(bindings[dependency]);
+      }
+      persist(key);
+    }
+  }
+}
 
 function strictFixture(t, stageCount = 9) {
   const projectRoot = mkdtempSync(path.join(os.tmpdir(), 'v9-state-incident-'));
   t.after(() => rmSync(projectRoot, {recursive: true, force: true}));
   const state = buildState(stageCount);
   state.policy = {incidentPreventionVersion: '1'};
+  state.directorProfile.profileVersion = '9.1.0';
+  state.directorProfile.directorPlanningOutput = 'koubo-director-cues/v2';
   const documents = {};
   const bindings = {};
   const persist = (key) => {
@@ -219,13 +426,21 @@ function strictFixture(t, stageCount = 9) {
       persist(key);
     }
   }
-  return {state, projectRoot, documents, bindings, persist,
+  const fixture = {state, projectRoot, documents, bindings, persist,
     validate: () => validateV9ProductionState({state, projectRoot, verifyFiles: true})};
+  attachSemanticDirectorV2Fixture(fixture);
+  return fixture;
 }
 
 test('强化模板必须硬开启事故预防策略', () => {
   const template = JSON.parse(readFileSync(new URL('../templates/v9-production-state.v1.json', import.meta.url)));
   assert.equal(template.policy?.incidentPreventionVersion, '1');
+  assert.equal(template.directorProfile?.profileVersion, '9.1.0');
+  assert.equal(template.directorProfile?.directorPlanningOutput, 'koubo-director-cues/v2');
+  const approvalTemplate = JSON.parse(readFileSync(new URL('../templates/director-cues-user-approval.v2.json', import.meta.url)));
+  assert.equal(approvalTemplate.schemaVersion, 'koubo-director-cues-user-approval/v2');
+  assert.equal(approvalTemplate.status, 'pending-user-approval');
+  assert.equal(approvalTemplate.approved, false);
 });
 
 test('原生AI清单不能删除已传播的强化策略再重算外层哈希', (t) => {
@@ -240,6 +455,252 @@ test('原生AI清单不能删除已传播的强化策略再重算外层哈希', 
 test('强化状态支持完整的当前版本证据链，发布仍关闭', (t) => {
   const fixture = strictFixture(t);
   assert.deepEqual(fixture.validate().errors, []);
+});
+
+test('强化 V9.1 删除 v2 导演标识也不能绕过导演表交接门', (t) => {
+  const fixture = strictFixture(t, 3);
+  delete fixture.state.directorProfile.directorPlanningOutput;
+  delete fixture.state.stageHistory[2].artifacts.directorCuesHandoffValidationReceipt;
+  const result = fixture.validate();
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.includes('V9_DIRECTOR_PLANNING_OUTPUT_REQUIRED'));
+  assert.ok(result.errors.includes(
+    'V9_ARTIFACT_BINDING_INVALID:generation-handoff-ready:directorCuesHandoffValidationReceipt',
+  ));
+});
+
+test('强化 V9.1 的直连模式要求生成所有权键直接绑定当前 v2 用户批准', (t) => {
+  const fixture = strictFixture(t, 3);
+  fixture.state.stageHistory[2].artifacts.generationOwnershipReceipt =
+    structuredClone(fixture.bindings.directorCuesHandoff);
+  const result = fixture.validate();
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.includes('V9_DIRECT_V2_GENERATION_OWNERSHIP_MISMATCH'));
+});
+
+test('强化 V9.1 进入生成交接后不允许删掉交接格式退回通用旧清单', (t) => {
+  const fixture = strictFixture(t, 3);
+  delete fixture.state.generationHandoffFormat;
+  const result = fixture.validate();
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.includes('V9_STRICT_GENERATION_HANDOFF_FORMAT_REQUIRED'));
+});
+
+test('强化 V9.1 会从落盘目录重验 v2 handoff，而不是只相信状态外层哈希', (t) => {
+  const fixture = strictFixture(t, 3);
+  const masterBinding = fixture.bindings.directorCuesHandoff;
+  const masterPath = path.join(fixture.projectRoot, masterBinding.path);
+  const master = JSON.parse(readFileSync(masterPath, 'utf8'));
+  master.routeMappings[0].beatCount += 1;
+  writeFileSync(masterPath, `${JSON.stringify(master, null, 2)}\n`);
+  masterBinding.sha256 = hashFile(masterPath);
+  fixture.state.stageHistory[2].artifacts.generationInventory = structuredClone(masterBinding);
+  const result = fixture.validate();
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((error) => error.startsWith('V9_DIRECTOR_V2_HANDOFF_INVALID:')));
+});
+
+test('强化 V9.1 拒绝绑定其他 profileVersion 的有效 v2 handoff', (t) => {
+  const fixture = strictFixture(t, 3);
+  const profilePath = path.join(fixture.projectRoot, 'workflow/active-director-profile.v1.json');
+  const profile = JSON.parse(readFileSync(profilePath, 'utf8'));
+  profile.profileVersion = '9.1.1';
+  writeFileSync(profilePath, `${JSON.stringify(profile, null, 2)}\n`);
+  const handoff = buildDirectorCuesV2Handoff({
+    projectRoot: fixture.projectRoot,
+    cues: fixture.bindings.directorCues.path,
+    approval: fixture.bindings.directorCuesUserApproval.path,
+    profile: 'workflow/active-director-profile.v1.json',
+    outputDir: 'director-v2/handoff-911',
+  });
+  const generation = fixture.state.stageHistory[2].artifacts;
+  generation.directorCuesHandoff = {
+    path: path.relative(realpathSync(fixture.projectRoot), handoff.masterPath),
+    sha256: handoff.masterSha256,
+  };
+  generation.directorCuesHandoffValidationReceipt = {
+    path: path.relative(realpathSync(fixture.projectRoot), handoff.receiptPath),
+    sha256: handoff.receiptSha256,
+  };
+  generation.generationInventory = structuredClone(generation.directorCuesHandoff);
+  const result = fixture.validate();
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.some((error) =>
+    error.includes('V9_DIRECTOR_V2_HANDOFF_INVALID:HANDOFF_STATE_PROFILE_VERSION_MISMATCH')));
+});
+
+test('无强化策略的 V9.0 历史状态不被强制升级为 v2，但仍只读不可推进', () => {
+  const state = buildState(3);
+  state.directorProfile.profileVersion = '9.0.0';
+  delete state.directorProfile.directorPlanningOutput;
+  for (const key of [
+    'directorCues',
+    'directorCuesUserApproval',
+    'directorCuesHandoff',
+    'directorCuesHandoffValidationReceipt',
+  ]) delete state.stageHistory[2].artifacts[key];
+  const result = validateV9ProductionState({state});
+  assert.equal(result.ok, true, result.errors.join('\n'));
+  assert.equal(result.validationMode, 'legacy-read-only');
+  assert.equal(result.stageAdvanceAllowed, false);
+});
+
+test('无强化策略的 V9.1 不能伪装成历史只读状态', () => {
+  const state = buildState(1);
+  state.directorProfile.profileVersion = '9.1.0';
+  state.directorProfile.directorPlanningOutput = 'koubo-director-cues/v2';
+  const result = validateV9ProductionState({state});
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.includes('V9_LEGACY_READ_ONLY_PROFILE_REQUIRED'));
+  assert.ok(result.errors.includes('V9_LEGACY_READ_ONLY_DIRECTOR_OUTPUT_FORBIDDEN'));
+  assert.equal(result.stageAdvanceAllowed, false);
+});
+
+test('强化策略禁止把 V9.1 降级成 V9.0', (t) => {
+  const fixture = strictFixture(t, 1);
+  fixture.state.directorProfile.profileVersion = '9.0.0';
+  const result = fixture.validate();
+  assert.equal(result.ok, false);
+  assert.ok(result.errors.includes('V9_STRICT_PROFILE_VERSION_REQUIRED'));
+  assert.equal(result.stageAdvanceAllowed, false);
+});
+
+test('V9 生成器可直接绑定 v2 master，无需手工改所有权回执', (t) => {
+  const fixture = strictFixture(t, 3);
+  const result = runDirectorCli('build-v9-preproduction-state.mjs', fixture.projectRoot, [
+    '--request', 'request.json',
+    '--script-confirmation', 'confirmation.json',
+    '--director-v2-handoff', fixture.bindings.directorCuesHandoff.path,
+    '--output', 'direct-v2-state.json',
+  ]);
+  assert.equal(result.status, 0, result.stderr);
+  const state = JSON.parse(readFileSync(path.join(fixture.projectRoot, 'direct-v2-state.json')));
+  const artifacts = state.stageHistory[2].artifacts;
+  assert.equal(state.generationHandoffFormat, V2_DIRECT_HANDOFF_FORMAT);
+  assert.deepEqual(artifacts.generationInventory, artifacts.directorCuesHandoff);
+  assert.deepEqual(artifacts.generationOwnershipReceipt, artifacts.directorCuesUserApproval);
+  const checked = validateV9ProductionState({
+    state,
+    projectRoot: fixture.projectRoot,
+    verifyFiles: true,
+  });
+  assert.deepEqual(checked.errors, []);
+});
+
+for (const [key, field, expected] of [
+  ['assetIntakeReceipt', 'binding', 'CONTENT_BINDING_MISMATCH:directorCuesHandoff'],
+  ['postshootRebindReceipt', 'authority', 'DIRECTOR_V2_DOWNSTREAM_AUTHORITY_INVALID'],
+  ['shotcraftSelectionPlan', 'legacy-role', 'DIRECTOR_V2_LEGACY_PLAN_ROLE_INVALID'],
+]) {
+  test(`v2 导演权威不能在下游 ${key} 被旧 directorPlan 反向覆盖`, (t) => {
+    const fixture = strictFixture(t);
+    if (field === 'binding') delete fixture.documents[key].bindings.directorCuesHandoff;
+    if (field === 'authority') fixture.documents[key].directorAuthority = 'directorPlan';
+    if (field === 'legacy-role') fixture.documents[key].legacyDirectorPlanRole = 'authoritative';
+    fixture.persist(key);
+    const result = fixture.validate();
+    assert.equal(result.ok, false);
+    assert.ok(result.errors.some((error) => error.includes(expected)), result.errors.join('\n'));
+  });
+}
+
+test('旧 ready-pack 入口必须显式提供 v2 master，不再从旧验收回执猜测绑定', (t) => {
+  const root = mkdtempSync(path.join(os.tmpdir(), 'v9-builder-requires-v2-'));
+  t.after(() => rmSync(root, {recursive: true, force: true}));
+  createNativePreproductionFixture(root);
+  const result = runDirectorCli('build-v9-preproduction-state.mjs', root, [
+    '--request', 'request.json',
+    '--script-confirmation', 'confirmation.json',
+    '--handoff-pack', 'not-read-before-v2-gate.json',
+    '--output', 'state.json',
+  ]);
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /V9_DIRECTOR_V2_HANDOFF_REQUIRED/);
+});
+
+test('v2 到旧生成链的转换回执绑定 master、六子件、旧提示词和 inventory', (t) => {
+  const fixture = strictFixture(t, 3);
+  const root = fixture.projectRoot;
+  const writeJson = (relative, value) => {
+    const file = path.join(root, relative);
+    mkdirSync(path.dirname(file), {recursive: true});
+    writeFileSync(file, `${JSON.stringify(value, null, 2)}\n`);
+    return {path: relative, sha256: hashFile(file)};
+  };
+  const identity = {taskId: fixture.state.taskId, revisionId: fixture.state.revisionId};
+  const firstFramePromptManifest = writeJson('legacy/firstframe.json', {
+    ...identity, sceneCount: 0, scenes: [],
+  });
+  const imageToVideoPromptManifest = writeJson('legacy/video.json', {
+    ...identity, sceneCount: 0, scenes: [],
+  });
+  const master = JSON.parse(readFileSync(path.join(root, fixture.bindings.directorCuesHandoff.path), 'utf8'));
+  const aiSource = JSON.parse(readFileSync(path.join(root, master.artifacts.aiVideo.path), 'utf8'));
+  const aiSourceItem = aiSource.items[0];
+  const legacyNegativePrompt = aiSourceItem.negativePrompt.join('；');
+  const aiVideoPromptManifest = writeJson('legacy/ai.json', {
+    ...identity,
+    itemCount: 1,
+    items: [{
+      sceneId: 'A01',
+      beatId: aiSourceItem.beatId,
+      mode: 'image-to-video',
+      prompt: aiSourceItem.prompt,
+      promptSha256: hashText(aiSourceItem.prompt),
+      negativePrompt: legacyNegativePrompt,
+      negativePromptSha256: hashText(legacyNegativePrompt),
+      durationSeconds: aiSourceItem.durationSeconds,
+      purpose: aiSourceItem.purpose,
+      evidenceEligible: false,
+      disclosureRequired: true,
+      manualExecutionRequired: true,
+    }],
+  });
+  const generationOwnershipReceipt = writeJson('legacy/acceptance.json', {
+    ...identity, approved: true,
+  });
+  const job = writeJson('legacy/job.json', {sourceManifest: firstFramePromptManifest});
+  const generationInventory = writeJson('legacy/pack.json', {
+    ...identity,
+    sourceJob: job,
+    sourceRunningHubManifest: imageToVideoPromptManifest,
+    userAcceptance: generationOwnershipReceipt,
+    sceneCount: 0,
+    scenes: [],
+  });
+  const args = {
+    projectRoot: root,
+    directorCuesHandoff: fixture.bindings.directorCuesHandoff,
+    directorCuesHandoffValidationReceipt: fixture.bindings.directorCuesHandoffValidationReceipt,
+    generationInventory,
+    generationOwnershipReceipt,
+    firstFramePromptManifest,
+    imageToVideoPromptManifest,
+    aiVideoPromptManifest,
+  };
+  const document = buildV2LegacyGenerationBridgeReceipt(args);
+  const bridgeReceipt = writeJson('legacy/bridge.json', document);
+  assert.deepEqual(validateV2LegacyGenerationBridgeReceipt({...args, bridgeReceipt}).errors, []);
+  assert.equal(
+    document.conversions.aiGeneratedVideo.items[0].negativePromptTransform,
+    'join-fullwidth-semicolon-v1',
+  );
+  const driftedAi = writeJson('legacy/ai-drifted.json', {
+    ...identity,
+    itemCount: 1,
+    items: [{
+      ...JSON.parse(readFileSync(path.join(root, aiVideoPromptManifest.path), 'utf8')).items[0],
+      negativePrompt: `${legacyNegativePrompt}；脱钩限制`,
+      negativePromptSha256: hashText(`${legacyNegativePrompt}；脱钩限制`),
+    }],
+  });
+  const drifted = validateV2LegacyGenerationBridgeReceipt({
+    ...args,
+    aiVideoPromptManifest: driftedAi,
+    bridgeReceipt,
+  });
+  assert.equal(drifted.ok, false);
+  assert.ok(drifted.errors.some((error) => error.includes('AI_CONTENT_MISMATCH')));
 });
 
 for (const [name, change, expected] of [
@@ -285,7 +746,8 @@ test('未知策略版本不能静默降级旧夹具模式', () => {
 
 test('每一种结构化产物均拒绝错类型或失败状态', (t) => {
   const fixture = strictFixture(t);
-  for (const key of Object.keys(receiptTypes)) {
+  for (const key of Object.keys(receiptTypes).filter((item) =>
+    !['generationInventory', 'generationOwnershipReceipt'].includes(item))) {
     for (const field of ['schemaVersion', 'status']) {
       if (key === 'scriptUserConfirmation' && field === 'status') continue;
       const original = fixture.documents[key][field];
@@ -358,6 +820,8 @@ test('当前真实编译器及独立校验器原件可进入V9状态，不补写
   const generated = runDirectorCli('build-v9-preproduction-state.mjs', root,
     ['--request', 'request.json', '--script-confirmation', 'confirmation.json', '--output', 'state.json']);
   assert.equal(generated.status, 0, generated.stderr);
+  const builtState = JSON.parse(readFileSync(path.join(root, 'state.json'), 'utf8'));
+  assert.equal(builtState.directorProfile.directorPlanningOutput, 'koubo-director-cues/v2');
   const checked = runDirectorCli('validate-v9-production-state.mjs', root, ['--state', 'state.json']);
   assert.equal(checked.status, 0, checked.stderr || checked.stdout);
   for (const [key, binding] of Object.entries(fixture.artifacts)) {

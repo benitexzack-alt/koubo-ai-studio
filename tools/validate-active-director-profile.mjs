@@ -53,7 +53,7 @@ const forbiddenBeforeApproval = [
 ];
 if (
   scopeBoundary?.directorPlanningAuthority !== 'skills/koubo-remotion-director/SKILL.md' ||
-  scopeBoundary?.directorPlanningOutput !== 'koubo-director-cues/v1' ||
+  scopeBoundary?.directorPlanningOutput !== 'koubo-director-cues/v2' ||
   scopeBoundary?.appliesToDirectorPlanning !== false ||
   scopeBoundary?.appliesAfter !== 'user-approved-director-cues' ||
   scopeBoundary?.userApprovalRequiredBeforeDownstream !== true ||
@@ -75,11 +75,57 @@ if (incidentPolicy?.version !== '1' || incidentPolicy.requiredForNewPreproductio
 if (profile.routingPolicy?.fallback !== 'blocked') {
   errors.push('DIRECTOR_PROFILE_FALLBACK_NOT_BLOCKED');
 }
+if (
+  profile.routingPolicy?.selectionBasis !== 'semantic-need-not-fixed-cadence' ||
+  profile.routingPolicy?.speakerIsFallback !== true ||
+  profile.routingPolicy?.generatedInsertMinimum !== 0 ||
+  profile.routingPolicy?.paperInsertMinimum !== 0 ||
+  profile.routingPolicy?.fixedCadenceForbidden !== true ||
+  profile.routingPolicy?.paperBranchDefault !== false ||
+  !Array.isArray(profile.routingPolicy?.paperApplicableKinds) ||
+  Object.hasOwn(profile.routingPolicy ?? {}, 'paperRequiredKinds') ||
+  JSON.stringify(profile.routingPolicy?.mainVisualClasses) !== JSON.stringify([
+    'speaker', 'real-evidence', 'generated-video', 'paper-editorial',
+  ]) ||
+  JSON.stringify(profile.routingPolicy?.directorCueRouteMap) !== JSON.stringify({
+    speaker: 'speaker',
+    'real-evidence': 'real-evidence',
+    'ai-generated-video': 'generated-video',
+    'paper-editorial': 'paper-editorial',
+  })
+) {
+  errors.push('DIRECTOR_PROFILE_SEMANTIC_ROUTING_POLICY_INVALID');
+}
 if (profile.routingPolicy?.genericInformationCardCanSatisfyPaperBeat !== false) {
   errors.push('DIRECTOR_PROFILE_GENERIC_CARD_CAN_SATISFY_PAPER_BEAT');
 }
 if (profile.evidencePolicy?.skillReadDoesNotEqualExecuted !== true) {
   errors.push('DIRECTOR_PROFILE_EXECUTION_EVIDENCE_WEAK');
+}
+const requiredDirectorCuesV2Artifacts = [
+  'director-cues-v2',
+  'director-cues-user-approval-v2',
+  'director-cues-v2-handoff',
+  'director-cues-v2-handoff-validation-receipt',
+];
+if (
+  !Array.isArray(profile.evidencePolicy?.requiredExecutionArtifacts) ||
+  requiredDirectorCuesV2Artifacts.some(
+    (artifact) => !profile.evidencePolicy.requiredExecutionArtifacts.includes(artifact),
+  )
+) {
+  errors.push('DIRECTOR_PROFILE_V2_EXECUTION_ARTIFACTS_MISSING');
+}
+if (
+  !Array.isArray(profile.phasePolicy?.preShoot?.allowedOutputs) ||
+  requiredDirectorCuesV2Artifacts.some(
+    (artifact) => !profile.phasePolicy.preShoot.allowedOutputs.includes(artifact),
+  )
+) {
+  errors.push('DIRECTOR_PROFILE_V2_PRESHOOT_OUTPUTS_MISSING');
+}
+if (Object.hasOwn(profile.skill ?? {}, 'acceptedPackage')) {
+  errors.push('DIRECTOR_PROFILE_STALE_ACCEPTED_PACKAGE_FORBIDDEN');
 }
 if (profile.promptHandoffPolicy?.modelGeneratedReadableTextAllowed !== false) {
   errors.push('DIRECTOR_PROFILE_MODEL_TEXT_NOT_BLOCKED');
@@ -103,12 +149,18 @@ if (profile.promptHandoffPolicy?.paperNodeScreenOverlayAllowed !== false) {
   errors.push('DIRECTOR_PROFILE_PAPER_NODE_SCREEN_OVERLAY_ALLOWED');
 }
 if (
-  profile.promptHandoffPolicy?.independentPromptArtifactCount !== 3 ||
+  profile.promptHandoffPolicy?.independentPromptArtifactCount !== 4 ||
+  JSON.stringify(profile.promptHandoffPolicy?.promptArtifactKinds) !== JSON.stringify([
+    'ai-generated-video-first-frame',
+    'ai-generated-video-image-to-video',
+    'paper-editorial-first-frame',
+    'paper-editorial-image-to-video',
+  ]) ||
   profile.promptHandoffPolicy?.zeroSceneManifestRequired !== true ||
   profile.promptHandoffPolicy?.aiGeneratedVideoConsumer !==
     'user-authorized-manual-generation'
 ) {
-  errors.push('DIRECTOR_PROFILE_THREE_PROMPT_PACK_CONTRACT_INVALID');
+  errors.push('DIRECTOR_PROFILE_FOUR_PROMPT_PACK_CONTRACT_INVALID');
 }
 if (
   profile.paperLayoutPolicy?.coordinateSpace !== 'normalized-0-to-1' ||

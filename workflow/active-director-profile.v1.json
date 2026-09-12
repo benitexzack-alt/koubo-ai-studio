@@ -5,7 +5,7 @@
   "status": "active-default",
   "scopeBoundary": {
     "directorPlanningAuthority": "skills/koubo-remotion-director/SKILL.md",
-    "directorPlanningOutput": "koubo-director-cues/v1",
+    "directorPlanningOutput": "koubo-director-cues/v2",
     "appliesToDirectorPlanning": false,
     "appliesAfter": "user-approved-director-cues",
     "userApprovalRequiredBeforeDownstream": true,
@@ -35,24 +35,18 @@
     "automaticRetryAllowed": false,
     "formalAuthorizationUnchanged": true
   },
-  "effectiveFrom": "2026-09-05",
+  "effectiveFrom": "2026-09-12",
   "decision": {
     "authority": "user-explicit",
-    "summary": "下一条新口播按V9.1试点：三套提示词独立交接，纸艺先校验安全布局，真实素材讲解小窗避开抖音平台覆盖层，Shotcraft根据实录和素材自动检索157张卡，选中后必须有实际应用证据，用户通过或否决写入经验账本，并严格按小样确认后再正式渲染。",
-    "confirmedAt": "2026-09-05"
+    "summary": "每条已确认口播先做全文语义导演：真人、真实素材、普通AI情景视频和纸艺解释片按需四选一，不设任何配额；三条素材分路即使为空也必须显式记录原因。真实证据不得用AI冒充，Shotcraft只在拍后对真人和真实素材扫描当前全库。整份导演表须用户确认，再进入素材生产、实录重绑、小样和V8正式片。",
+    "confirmedAt": "2026-09-12"
   },
   "skill": {
     "path": "skills/koubo-remotion-director",
     "lockPath": "workflow/director-skill-lock.v1.json",
-    "acceptedPackage": {
-      "commit": "5ca98ef98e420b2c15e6ff3d99d217a45c5a0387",
-      "gitTree": "efcd35f1169c86258bb792ff3fd87f30019992e7",
-      "treeSha256": "3411a9f3a9e667b3899a6a8d4e9e825f1dfc167ef902c0e57857e4d7adc3d8f0",
-      "handoffReceiptSha256": "a8370f79022369f4a4e8002601ef1dc257788946461edf12dd275227fb60d8ef"
-    },
     "contractUpgrade": {
-      "version": "9.1.0",
-      "scope": "抖音平台安全区、纸艺首帧布局合同、三套提示词交接、Shotcraft 157卡自动匹配、落片回执、用户验收经验复用与九阶段生产状态机",
+      "version": "9.1.0-semantic-v2",
+      "scope": "全文语义四路导演、三条可为空的素材交接、连续真人节奏审计、Shotcraft拍后全库机会标记与V8正式生产门禁",
       "auditReport": {
         "path": "workflow/audits/director-v9.1-shotcraft-learning-20260905.v1.md",
         "sha256": "92d5b826409c0953036b4fbceff5a9035c81d83f4048bb8cf327a076ed46a0bc"
@@ -70,6 +64,10 @@
       "allowedAuthority": "user-confirmed-script",
       "outputState": "provisional-previsualization",
       "allowedOutputs": [
+        "director-cues-v2",
+        "director-cues-user-approval-v2",
+        "director-cues-v2-handoff",
+        "director-cues-v2-handoff-validation-receipt",
         "director-route-lock",
         "paper-scene-plan",
         "paper-asset-sheet",
@@ -118,15 +116,26 @@
     }
   },
   "routingPolicy": {
-    "paperBranchDefault": true,
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "paperBranchDefault": false,
     "mainVisualClasses": [
       "speaker",
       "real-evidence",
       "generated-video",
       "paper-editorial"
     ],
+    "directorCueRouteMap": {
+      "speaker": "speaker",
+      "real-evidence": "real-evidence",
+      "ai-generated-video": "generated-video",
+      "paper-editorial": "paper-editorial"
+    },
     "remotionInformationIsOverlayOnly": true,
-    "paperRequiredKinds": [
+    "paperApplicableKinds": [
       "abstract-mechanism",
       "causal-chain",
       "comparison",
@@ -229,6 +238,10 @@
     "skillReadDoesNotEqualExecuted": true,
     "executionReceiptRequired": true,
     "requiredExecutionArtifacts": [
+      "director-cues-v2",
+      "director-cues-user-approval-v2",
+      "director-cues-v2-handoff",
+      "director-cues-v2-handoff-validation-receipt",
       "director-request",
       "director-route-lock",
       "director-output",
@@ -243,7 +256,13 @@
     "imageToVideoConsumer": "runninghub-manual-image-to-video",
     "aiGeneratedVideoConsumer": "user-authorized-manual-generation",
     "separateArtifactsRequired": true,
-    "independentPromptArtifactCount": 3,
+    "independentPromptArtifactCount": 4,
+    "promptArtifactKinds": [
+      "ai-generated-video-first-frame",
+      "ai-generated-video-image-to-video",
+      "paper-editorial-first-frame",
+      "paper-editorial-image-to-video"
+    ],
     "zeroSceneManifestRequired": true,
     "pairingFields": [
       "sceneId",

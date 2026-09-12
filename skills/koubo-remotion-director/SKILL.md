@@ -1,76 +1,81 @@
 ---
 name: koubo-remotion-director
-description: 仅用于口播的导演规划阶段。完整阅读已确认文稿或实录，判断哪些位置保留真人、哪些位置使用真实证据或纸艺 AI 插片，并为纸艺插片分别输出简洁的首帧提示词和图生视频提示词。首帧生产、剪辑、字幕、音效、Remotion、生成平台和发布不属于本 Skill。
+description: 用于口播的全片导演规划。完整读取用户确认文稿或实录，按语义判断何处保留真人、使用真实素材、普通 AI 情景视频或纸艺解释片，输出真实素材执行单、两类首帧/视频提示词和拍后 Shotcraft 机会。本 Skill 只到导演表人工确认，不执行生成、剪辑或发布。
 ---
 
-# 口播插片导演
+# 口播全片语义导演
 
-> 目录名中的 `remotion` 只为兼容历史调用保留，不代表本 Skill 执行 Remotion。
+> 目录名中的 `remotion` 仅为历史兼容，不代表本阶段执行 Remotion。
 
-## 本阶段范围锁
+## 阶段边界
 
-- 阶段固定为 `director-only`。只读取当前完整文稿或实录、用户确认的风格参考、本文件、`references/shortform-insert-director.v1.md` 和 `templates/director-cues.v1.json`。
-- 本目录其他旧 V9.1 合同、首帧生产、OCR、RunningHub、Remotion 和发布资料均不读、不跑，也不得用来扩写提示词。
-- 本阶段唯一可执行脚本是 `scripts/validate-director-cues.mjs`。它只校验导演表结构和范围，不启动任何下游动作。
-- 一旦需要调用第二个 Skill、生成首帧或进入后期，立即停在 `ready-for-user-review`。只有用户明确确认本次导演表并要求进入下一阶段，才能交接。
-- 用户说“继续验证”时，只验证当前导演表；不得解释为自动进入首帧、视频生成、剪辑或发布。
+- 阶段固定为 `director-only`。输入必须是完整的用户确认文稿，或拍摄后的真实口播转写。
+- 本阶段只读取当前文稿、用户确认的风格参考、本文件、[v2 导演核心](references/semantic-visual-director.v2.md) 和 [v2 导演表模板](templates/director-cues.v2.json)。
+- 不启动生图、OCR、RunningHub、Shotcraft 选卡、Remotion、字幕、音效、渲染或发布。不回读旧 V9.1 布局、物理、投影和状态机合同来扩写提示词。
+- 唯一校验命令是 `scripts/validate-director-cues-v2.mjs`。校验通过后状态仍只能是 `ready-for-user-review`。
+- 用户确认整份导演表前，`handoffGate.downstreamAllowed` 必须是 `false`。“继续”或“验证”只延续当前阶段，不自动获得下游权限。
 
-## 唯一结果
+## 导演判断
 
-```text
-完整口播 → 主观点与论证顺序 → 插入判断 → 画面意图 → 首帧提示词 → 图生视频提示词
-```
+必须先读完全文，写出一句主观点和论证顺序，再把全文拆成自然 `semanticBeats`。每个 beat 有且只有一个主画面：
 
-不要生成图片或视频，不要调用生成平台，不要写 Remotion 代码。坐标、尺寸、碰撞、字幕、音效、哈希、OCR、渲染和发布规则都不得进入导演提示词。
+1. `real-evidence`：需要证明数据、官方原文、真实界面、录屏、演示、产品、地点或人物行为。
+2. `ai-generated-video`：通用情境或人物行为无可用实拍，而情景演绎能明显增加具体性、情绪或节奏。它只能作说明，不能作证据。
+3. `paper-editorial`：机制、流程、因果、关系、层级、对比或决策路径需要物理隐喻。
+4. `speaker`：钩子、本人判断、情绪、边界、金句、行动号召，或换画面不会增加理解时保留真人。
 
-## 输入
+事实性画面先判断真实素材，不得生成冒充。其余三路没有优先级和配额；普通 AI 视频、纸艺视频、真实素材和 Shotcraft 都可以为 0。禁止每隔固定秒数换镜、为试功能强插素材，或用不相关的现成效果凑数。
 
-必须有完整口播和用户确认的风格参考。拍摄前使用用户确认文稿；拍摄后以真实口播转写为唯一正文。多镜联系表只能用于风格分析，实际投喂自动化时必须使用干净单帧。
+每个 beat 还必须声明 `claimClass` 与 `requiresRealEvidence`。`factual-claim` 和 `real-operation` 必须标记需要真实证据并进入 `real-evidence`；如果导演判断它其实只是本人观点或抽象解释，就应如实改分类，不能用 `requiresRealEvidence=false` 绕过。官方原文、数据和真实操作不得伪装成 `generic-illustration` 送入 AI；普通 AI 只接受不指向真实主体的通用情景，纸艺只接受抽象逻辑解释。
 
-完整读取全文后，再读取 [口播插片导演核心](references/shortform-insert-director.v1.md)。输出从 [导演表模板](templates/director-cues.v1.json) 实例化。
+## 四类输出
 
-## 插入判断
+`routePlans` 中三条素材分路必须始终存在：
 
-先写一句全片主观点，再按原文顺序写出 `argumentFlow`，然后从全文选择插片。不得逐句孤立处理，不得按固定秒数、固定字数或固定数量机械插片。
+- `realMaterials`：用户素材执行单。未绑定来源时必须是 `candidate-unbound` 且 `usableInProduction=false`；写明需要什么、用来证明或演示什么、缺失时怎么处理。禁止写生成提示词。
+- `aiGeneratedVideos`：普通 AI 情景视频。必须是 `illustration-only`、`evidenceEligible=false`，并分开写静态首帧词和单主动作视频词。
+- `paperEditorials`：纸艺解释片。每镜需要独立构图、物理隐喻、`textPlan`、静态首帧词和单主动作视频词。
 
-- 钩子、本人判断、个人经历、情绪、风险边界、承诺和行动号召：默认保留真人。
-- 数字、官方材料、真实界面、真实人物、地点、产品和操作：使用真实证据，不生成冒充。
-- 机制、流程、关系、层级和对比：可以使用纸艺 AI 插片。
-- 只是装饰、重复口播或不能增加理解：不插。
+一条分路有内容时使用 `status=planned`；没有内容时使用 `status=not-required`、`items=[]` 并写具体理由。这用于区分“确认不需要”和“遗忘了判断”。
 
-需要真实证据的位置写入 `selectionSummary.realEvidenceSuggestions`，只记录原文短句、建议素材类型和理由；本阶段不搜索、不下载、不制作素材，也不为真实素材编写 AI 生成提示词。
+`speaker` 在 `semanticBeats` 和 `protectedSpeakerBeatIds` 中记录，不生成素材包。
 
-每个插片只回答一个问题：观众看完这一镜，比上一秒多明白了什么？答不出来就删除。
+## 节奏和 Shotcraft
 
-## 时间与动作
+- 编制 `rhythmAudit`，复核每组连续真人 beat；即使整段只被拆成一个真人 beat 也不能跳过。最终处置可以保留表演、缩短文稿或绑定本组内的 Shotcraft 机会，但不强制插片。
+- `shotcraftOpportunities` 只能标记功能意图，不能写具体 `cardId/effectId/presetId/componentId`。
+- Shotcraft 只能对 `speaker` 和 `real-evidence` 标机会；禁止进入 `paper-editorial` 和 `ai-generated-video` 内部。
+- 原片和素材到齐后，才根据实录原句、帧窗、字幕与人物保护区扫描当前全库，并对每个适用 beat 输出 `apply` 或 `not-needed`。
 
-- `scriptQuote` 只截取插片真正覆盖的逐字短句，不能拿整段长文配四秒画面。
-- `startAnchorText` 是画面入点词，`endAnchorText` 是回到真人的结束词；两者必须按原文顺序出现。
-- 预拍只写文字锚点；拍摄后按真实声音重新绑定时间。画面落在入点词上或稍后，不能抢在词前。
-- 单镜通常二至六秒。相邻插片之间不足一秒真人画面时，合并、缩短或删除其中一镜。
-- 一镜只有一个 `primaryAction`。视频词不得用“随后、然后、接着、继而、再把、再将”串联第二个动作；需要第二个动作就拆镜。
+## 提示词边界
 
-## 风格与提示词
+- 每种生成视觉单独建立 `styleLock`；该分路为 0 时风格锁必须是 `null`。
+- 首帧词只写动作前的静态构图、主体、材料、光线、机位和初始状态。
+- 视频词以“基于已确认首帧”开头，只写一个主动作、必要运镜和结束状态。
+- 纸艺中文只写在 `textPlan`，每镜一至四个、每个不超过八个字，并绑定首帧中独立固定的空白纸牌。
+- 失败时只修改失败镜头；不连锁重写已经通过的其他镜头。
 
-全片只建立一次 `styleLock`：绑定干净参考单帧，提取共同的材料、摄影、空间、光线、色彩和纸面排版。参考只约束风格机制，不复制具体人物、照片、版式和镜头顺序。
-
-每镜必须使用不同的 `composition` 和 `visualMetaphor`。连续两镜不能只是给同一套左中右桌面机构换名称。
-
-- 首帧词只写动作前的静态构图、主体、材料、光线、机位和初始状态。建议一百二十至三百六十个中文字符，硬上限六百。
-- 视频词以“基于已确认首帧”开头，只写一个主动作、必要的轻微运镜和结束状态。建议六十至一百八十个中文字符，硬上限三百五十。
-- 中文标题和节点写进独立 `textPlan`，每镜一至四个，每个不超过八个字，并为每个词指定一张固定空白纸牌。生成模型只出无字基础图，首帧自动化再确定性写入中文。
-- 问号、货币、印章、清单和图表等容易诱发乱码的元素，只能做成无字纸形，或由后期确定性绘制。
-
-失败时只修改失败镜头。首帧风格或构图不对就重做首帧，不能靠加长视频提示词补救，也不能连锁重写已经通过的镜头。
-
-## 输出门禁
+## 校验与交接
 
 ```bash
-node skills/koubo-remotion-director/scripts/validate-director-cues.mjs \
-  --input <director-cues.v1.json> \
+node skills/koubo-remotion-director/scripts/validate-director-cues-v2.mjs \
+  --input <director-cues.v2.json> \
   --repo-root <project-root>
 ```
 
-校验通过后状态只能是 `ready-for-user-review`。机器校验不代表导演质量或风格已经通过；必须由用户对照往期优质片确认插入位置、构图、中文节点、首帧词和视频词。确认前 `handoffGate.downstreamAllowed` 必须保持 `false`。用户确认后才能把首帧包交给素材自动化；首帧图片还需再次由用户确认，之后才能进入图生视频。
+校验器必须检查全文覆盖、四路一对一映射、任一路可为 0、空分路理由、真实证据边界、AI 演绎边界、纸艺文字与动作边界、所有真人段节奏复核和 Shotcraft 严格字段白名单。
 
-如果用户另行要求剪辑、字幕、Remotion、音效、渲染或发布，结束本 Skill，重新按项目 `AGENTS.md` 和对应生产 Skill 执行。不得回读本目录的旧 V9.1 工程合同来改写本导演表。
+机器通过不代表导演质量通过。必须由用户审阅四路取舍、真实素材需求、AI 演绎必要性、纸艺构图与两类提示词。确认后才按项目 `AGENTS.md` 分路交给首帧、视频生成、真实素材入库和剪辑阶段。
+
+用户明确确认整份导演表后，才可用独立批准回执建立本地交接包：
+
+```bash
+node skills/koubo-remotion-director/scripts/build-director-cues-v2-handoff.mjs \
+  --repo-root <project-root> \
+  --cues <director-cues.v2.json> \
+  --approval <director-cues-user-approval.v2.json> \
+  --profile workflow/active-director-profile.v1.json \
+  --output-dir <new-handoff-directory>
+```
+
+该交接只生成本地、不可覆盖的分路清单和校验回执，不授权外部提交、付费生成、Remotion 或发布。V9.1 强化状态必须同时绑定当前导演表、批准回执、handoff master 和 handoff validation receipt；删除 `directorPlanningOutput`、沿用旧提示词包或只重算状态外层哈希都不能绕过。

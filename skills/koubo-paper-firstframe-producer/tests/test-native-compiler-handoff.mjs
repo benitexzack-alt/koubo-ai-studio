@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {spawnSync} from 'node:child_process';
-import {mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync} from 'node:fs';
+import {mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync} from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {createNativePreproductionFixture, repositoryRoot, runDirectorCli} from '../../koubo-remotion-director/tests/fixtures/v9-native-preproduction.mjs';
 import {sha256File, sha256Json} from '../../koubo-remotion-director/scripts/preproduction-director-core.mjs';
+import {buildDirectorCuesV2Handoff} from '../../koubo-remotion-director/scripts/director-cues-v2-handoff-core.mjs';
 import {readAuthoritativeSourceManifest} from '../scripts/firstframe-batch-core.mjs';
 
 test('真实compiler到prepare、baker及P01/P02 ready CLI完整离线回归', (t) => {
@@ -99,8 +100,78 @@ test('真实compiler到prepare、baker及P01/P02 ready CLI完整离线回归', (
   assert.ok(nodes > 0);
   assert.equal(sha256File(receiptBinding.path), receiptSha);
   for (const [key, binding] of Object.entries(fixture.artifacts)) assert.equal(sha256File(path.join(root, binding.path)), originals[key]);
+  const oldOnly = runDirectorCli('build-v9-preproduction-state.mjs', root, ['--request', 'request.json',
+    '--script-confirmation', 'confirmation.json', '--handoff-pack', handoffPath, '--output', 'legacy-only-state.json']);
+  assert.notEqual(oldOnly.status, 0);
+  assert.match(oldOnly.stderr, /V9_DIRECTOR_V2_HANDOFF_REQUIRED/);
+
+  const scriptText = readFileSync(path.join(root, fixture.artifacts.script.path), 'utf8');
+  const cuesPath = path.join(root, 'offline-director-cues-v2.json');
+  const cues = {
+    schemaVersion: 'koubo-director-cues/v2',
+    taskId: fixture.request.taskId,
+    status: 'ready-for-user-review',
+    executionScope: 'director-only',
+    handoffGate: {status: 'blocked-awaiting-user-approval', downstreamAllowed: false},
+    inputScript: {...fixture.artifacts.script, authority: 'user-confirmed-script'},
+    routingPolicy: {
+      selectionBasis: 'semantic-need-not-fixed-cadence', speakerIsFallback: true,
+      generatedInsertMinimum: 0, paperInsertMinimum: 0, fixedCadenceForbidden: true,
+      generatedVisualCannotServeAsEvidence: true, shotcraftSelectionStage: 'post-shoot-edit-release',
+      shotcraftEligibleRoutes: ['speaker', 'real-evidence'],
+      shotcraftForbiddenInsideRoutes: ['paper-editorial', 'ai-generated-video'],
+    },
+    styleLocks: {aiGeneratedVideo: null, paperEditorial: null},
+    selectionSummary: {
+      mainPoint: '离线夹具只验证 v2 handoff 是当前生成入口。',
+      argumentFlow: ['完整脚本保留真人，不制造测试素材'],
+      routeCounts: {speaker: 1, 'real-evidence': 0, 'ai-generated-video': 0, 'paper-editorial': 0, shotcraftOpportunity: 0},
+      routeRationales: {
+        speaker: '离线夹具保留真人承接全文。',
+        'real-evidence': '本测试不执行真实素材分路。',
+        'ai-generated-video': '本测试不执行 AI 视频分路。',
+        'paper-editorial': '本测试不执行纸艺分路。',
+      },
+      visualRhythmReason: '该夹具只验证交接门，不作真实导演判断。',
+      protectedSpeakerBeatIds: ['B01'],
+    },
+    semanticBeats: [{
+      id: 'B01', order: 1, scriptQuote: scriptText, rhetoricalRole: 'offline-handoff-fixture',
+      claimClass: 'presenter-expression', requiresRealEvidence: false, primaryRoute: 'speaker',
+      routeCueId: null, decisionReason: '测试只验证 v2 权威入口。', viewerGain: 'presenter-trust',
+    }],
+    routePlans: {
+      realMaterials: {status: 'not-required', notRequiredReason: '离线测试不执行真实素材分路。', items: []},
+      aiGeneratedVideos: {status: 'not-required', notRequiredReason: '离线测试不执行 AI 视频分路。', items: []},
+      paperEditorials: {status: 'not-required', notRequiredReason: '离线测试不执行纸艺分路。', items: []},
+    },
+    shotcraftOpportunities: [],
+    rhythmAudit: {basis: 'semantic-runs-not-seconds', fixedCadenceForbidden: true,
+      longSpeakerRunsReviewed: true, runs: [{fromBeatId: 'B01', toBeatId: 'B01', risk: 'low',
+        decision: 'keep-presenter', reason: '离线夹具不作真实节奏判断。', mitigationRefs: []}]},
+  };
+  writeFileSync(cuesPath, `${JSON.stringify(cues, null, 2)}\n`);
+  const approvalPath = path.join(root, 'offline-director-cues-approval-v2.json');
+  writeFileSync(approvalPath, `${JSON.stringify({
+    schemaVersion: 'koubo-director-cues-user-approval/v2', status: 'approved',
+    taskId: fixture.request.taskId, revisionId: fixture.request.revisionId,
+    bindings: {directorCues: {path: path.relative(root, cuesPath), sha256: sha256File(cuesPath)}},
+    approved: true, userQuote: '离线结构测试批准，不构成现实用户授权。',
+    approvedAt: '2026-09-08T10:02:00+08:00', exceptions: [],
+  }, null, 2)}\n`);
+  const profilePath = path.join(root, 'workflow/active-director-profile.v1.json');
+  mkdirSync(path.dirname(profilePath), {recursive: true});
+  writeFileSync(profilePath, readFileSync(path.join(repositoryRoot, 'workflow/active-director-profile.v1.json')));
+  const v2Handoff = buildDirectorCuesV2Handoff({
+    projectRoot: root,
+    cues: path.relative(root, cuesPath),
+    approval: path.relative(root, approvalPath),
+    profile: path.relative(root, profilePath),
+    outputDir: 'offline-director-v2-handoff',
+  });
   const builtState = runDirectorCli('build-v9-preproduction-state.mjs', root, ['--request', 'request.json',
-    '--script-confirmation', 'confirmation.json', '--handoff-pack', handoffPath, '--output', 'handoff-state.json']);
+    '--script-confirmation', 'confirmation.json', '--director-v2-handoff', path.relative(root, v2Handoff.masterPath),
+    '--output', 'handoff-state.json']);
   assert.equal(builtState.status, 0, builtState.stderr);
   const state = JSON.parse(readFileSync(path.join(root, 'handoff-state.json')));
   assert.equal(state.currentStage, 'generation-handoff-ready');
@@ -116,14 +187,14 @@ test('真实compiler到prepare、baker及P01/P02 ready CLI完整离线回归', (
   writeFileSync(path.join(root, 'tampered-state.json'), JSON.stringify(tamperedState));
   const rejectedState = runDirectorCli('validate-v9-production-state.mjs', root, ['--state', 'tampered-state.json']);
   assert.notEqual(rejectedState.status, 0);
-  assert.match(rejectedState.stdout, /PACK_SCENE_CONTENT_MISMATCH/);
+  assert.match(rejectedState.stdout, /DIRECT_V2_GENERATION_INVENTORY_MISMATCH/);
   assert.equal(JSON.parse(rejectedState.stdout).nextStage, null);
   const wrongReceiptState = structuredClone(state);
   wrongReceiptState.stageHistory[2].artifacts.generationOwnershipReceipt = fixture.artifacts.directorValidation;
   writeFileSync(path.join(root, 'wrong-receipt-state.json'), JSON.stringify(wrongReceiptState));
   const wrongReceipt = runDirectorCli('validate-v9-production-state.mjs', root, ['--state', 'wrong-receipt-state.json']);
   assert.notEqual(wrongReceipt.status, 0);
-  assert.match(wrongReceipt.stdout, /PACK_STATE_BINDING_MISMATCH/);
+  assert.match(wrongReceipt.stdout, /DIRECT_V2_GENERATION_OWNERSHIP_MISMATCH/);
   for (const [key, binding] of Object.entries(fixture.artifacts)) assert.equal(sha256File(path.join(root, binding.path)), originals[key]);
   assert.equal(sha256File(receiptBinding.path), receiptSha);
   const reviewPath = fixture.request.beats[0].paperScene.motionContract.semanticReview.path;

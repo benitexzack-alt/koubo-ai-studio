@@ -9,7 +9,7 @@
 任何 AI 在读取整条生产链或开始执行前，必须先把当前任务归入一个阶段，并固定本阶段的唯一交付。除非用户明确要求端到端连续执行，否则一次只处理一个阶段：
 
 1. `topic-script`：选题、研究、事实核验、文稿和封面文字方案。
-2. `director-only`：完整文稿或实录到插片判断、画面意图、首帧提示词和图生视频提示词。
+2. `director-only`：完整文稿或实录到全文语义四路导演、真实素材执行单、AI/纸艺首帧与视频提示词、拍后 Shotcraft 机会。
 3. `firstframe`：把已确认导演表交给首帧自动化，生成、写入中文并验收首帧。
 4. `video-generation`：把已确认首帧和视频词交给图生视频平台并验收视频素材。
 5. `edit-release`：真实口播、已确认素材、字幕、Remotion、音效、渲染、质检和发布包。
@@ -26,8 +26,8 @@
 ### 分阶段必读
 
 - `topic-script`：读取 `knowledge/01` 至 `06`、`knowledge/14`、`knowledge/15`、`knowledge/21`，以及 `douyin-koubo-source-to-original`、适用时的 `source-essence-synthesis`、`content-brain-gate`、个人知识库现行公开内容门禁、当前账号实测学习卡、最近六条和本条完整来源。脚本完整交付还读取 `templates/10-超哥AI创业记_3比4系列封面提示词母版.md`。
-- `director-only`：只读取用户确认文稿或真实口播转写、用户确认的往期风格参考、`skills/koubo-remotion-director/SKILL.md`、其 `references/shortform-insert-director.v1.md` 和 `templates/director-cues.v1.json`。不得读取旧 V9.1 工程合同、首帧生产合同或发布合同来扩写导演提示词。
-- `firstframe`：读取用户确认的 `director-cues.v1.json`、`skills/koubo-paper-firstframe-producer/SKILL.md` 及其明确指向的当前阶段资料；此时才进入确定性中文、OCR、首帧验收和平台交接。
+- `director-only`：只读取用户确认文稿或真实口播转写、用户确认的往期风格参考、`skills/koubo-remotion-director/SKILL.md`、其 `references/semantic-visual-director.v2.md` 和 `templates/director-cues.v2.json`。不得读取旧 V9.1 工程合同、首帧生产合同或发布合同来扩写导演提示词。
+- `firstframe`：读取用户确认的 `director-cues.v2.json` 和当前分路对应的生产 Skill；纸艺分路读取 `skills/koubo-paper-firstframe-producer/SKILL.md`。此时才进入首帧生成、确定性中文、OCR、首帧验收和平台交接；空分路不启动。
 - `video-generation`：读取用户确认的首帧、当前视频提示词和 `skills/koubo-runninghub-video-batch/SKILL.md`；不得反向重写已经确认的导演表或首帧。
 - `edit-release`：读取 `knowledge/20-V8连续语义动效与可感知音效基线.md`、`knowledge/22-实录优先字幕与系列发布包硬门禁.md`、`workflow/active-production-profile.v1.json` 和本阶段对应 Skill。V8 是新视频默认制作基准；V7.2 只用于锁定母版回归和故障回滚，任何降级必须有用户明确批准记录。
 - `governance-maintenance`：只读取目标规则、直接调用者和最小相关测试；发现生产链旁支问题只登记，不顺手修复。
@@ -74,18 +74,23 @@
 9. 运行 `content-brain-gate`；未达到 `ready-for-draft` 时停止写稿并补资料或换选题。
 10. 写脚本，建立事实锁，标出四项质量特征在正文中的证据，自动调阅 `humanizer-zh` 与 `humanize-koubo-script`，执行模式扫描、事实安全精修、留存风险审稿、大声朗读、本人声音、账号实测反馈和重复检查。
 11. 每份提交用户确认的完整口播稿，末尾必须同时附带抖音主标题、两个备选标题和一份全中文 `3:4` 封面提示词；标题与提示词必须沿用当前事实锁和双 Skill 审稿结果。用户确认脚本、质量目标和策略，并留下当前稿件的用户语言确认与真人朗读证据后，状态才可升级为 `ready-for-production`。电脑 TTS 只能用于时长检查，不得冒充真人朗读证据。
-12. 素材盘点和技术检查。
-13. 转写，缓存逐字稿。拍摄完成后，原片中实际说出口的声音是字幕和英文翻译的唯一正文；拍摄前文稿只作术语与遗漏核对，禁止用原稿替换、压缩、顺句或补回实录。只允许修正标点、专有名词拼写和可由音频确认的明确识别错误，且必须保留修正记录。
-14. 内容诊断：口误、重复、停顿、关键信息、可删项。
-15. 判断是否需要内容剪辑：只有用户明确要求删除、压缩、重排、处理重录或口误时，才进入剪辑策略、粗剪和粗剪确认。
-16. 完整单条口播默认全量保留，直接进入视觉包装方案；词级转写只用于字幕、语义卡和运镜定位。
-17. 字幕和信息卡制作；脚本阶段已经交付标题与封面提示词，成片后只按最终画面补充必要修订。封面不再由项目自动生成，用户在外部工具中自行生成和选择。
-18. V4/V5/V6 包装、数字运镜、音效和低清预览。
-19. 自动质量检查。
-20. 正式成片。
-21. 有音效正式候选片一生成，就从本条候选片的本人真实口播画面中截取一张推荐封面人物图，并一次性整理 `3:4` 真人截图合成封面提示词、一个主标题、两个备选标题、抖音发布文案和话题；封面必须使用 `templates/10-超哥AI创业记_3比4系列封面提示词母版.md`，全部内容写入发布记录并通过 V8 完整交付包校验。此时可标记 `ready-for-user-review`，用户完整观看确认后才可标记 `verified`。
-22. 用户人工观看确认。
-23. 发布后按早期、24 小时、72 小时和 7 天窗口归档数据；更新复盘报告与当前学习卡，达到学习卡规定的最小受控样本前，不把单条表现升级为稳定规律。
+12. 用 `koubo-director-cues/v2` 完整覆盖全文，每个语义段只能选 `speaker` / `real-evidence` / `ai-generated-video` / `paper-editorial` 之一；同时生成真实素材执行单、AI 与纸艺提示词包、连续真人节奏审计和拍后 Shotcraft 机会。不设最低数量或固定换镜频率。
+13. 用户审阅并确认整份导演表。未确认前，不启动搜索/下载、首帧、视频生成、Shotcraft 选卡或剪辑。
+14. 确认后分路并行：收集与核验真实素材；AI 情景和纸艺分别先生首帧并由用户确认，再做图生视频；用户可同期拍摄口播原片。某分路为 `not-required` 时不启动对应生产。
+15. 把口播原片、已验收的生成视频和已绑定来源的真实素材汇总到本条任务目录，做来源、权限、尺寸、帧率、时长与可解码检查。
+16. 转写并缓存逐字稿。拍摄完成后，原片中实际说出口的声音是字幕和英文翻译的唯一正文；拍摄前文稿只作术语与遗漏核对，只允许修正可由音频确认的明确识别错误，并保留修正记录。
+17. 内容诊断：口误、重复、停顿、关键信息和可删项。
+18. 只有用户明确要求删除、压缩、重排、处理重录或口误时，才进入剪辑策略、粗剪和粗剪确认；完整单条默认全量保留。
+19. 用实际口播重绑导演表的入出点和所有已验收素材；任一句实录变化都不得继续套用拍摄前时点。
+20. 按实际口播制作同窗中英文字幕和必要信息卡；英文只从已确认实录中文翻译。
+21. 在 `edit-release` 阶段对所有 `speaker` 和 `real-evidence` beat 扫描当前 Shotcraft 全库，逐项记录 `apply` 或 `not-needed`；只有真正改善理解、聚焦或衔接的效果才能进入 V8 视觉计划，不在 AI/纸艺视频内叠加 Shotcraft，不用低相关卡凑数。
+22. 按 `workflow/active-production-profile.v1.json` 的 V8 基线完成 Remotion 包装、数字运镜、已选 Shotcraft、音效和低清小样。
+23. 对小样执行自动质量检查，包括解码、黑帧/静音、字幕、安全区、语义入点和声画衔接。
+24. 用户完整观看本条小样并确认。不通过时只返工实际失败的 beat，不连锁重做已验收部分。
+25. 小样验收后才正式渲染有音效候选成片。
+26. 从本条候选片的本人真实口播画面中截取推荐封面人物图，并一次性整理 `3:4` 真人截图合成封面提示词、一个主标题、两个备选标题、抖音发布文案和话题；全部写入发布记录并通过 V8 完整交付包校验。
+27. 用户对正式候选完整观看确认后，状态才可升级为 `verified`。
+28. 发布后按早期、24 小时、72 小时和 7 天窗口归档数据；更新复盘报告与当前学习卡，达到最小受控样本前，不把单条表现升级为稳定规律。
 
 用户明确确认完整文稿且本轮不改正文时，可以进入 `director-only` 生成文字版导演规划和提示词候选，但这不等于 `ready-for-production`，也不授权生成素材。未经 `ready-for-production`，不得开始首帧生成、图生视频、V4/V5/V6、动效、音效、封面和正式成片。后期能力不能替代内容门禁。
 
@@ -101,19 +106,24 @@
 
 #### A. `director-only` 导演规划
 
-- 本阶段唯一权威是 `skills/koubo-remotion-director/SKILL.md`。目录名为兼容历史保留 `remotion`，不代表本阶段执行 Remotion。
-- 唯一交付是：`完整文稿或实录 → 全文主观点与论证顺序 → 插入点及理由 → 画面意图 → 首帧提示词 → 图生视频提示词`，状态最高只能是 `ready-for-user-review`。
-- 需要解释机制、因果、关系、层级、对照或流程时，可以选择 `paper-editorial`；真实界面、官方材料、地点、数据和人物行为仍使用真实证据，不得生成冒充。
+- 本阶段唯一权威是 `skills/koubo-remotion-director/SKILL.md` 和 `koubo-director-cues/v2`。目录名为兼容历史保留 `remotion`，不代表本阶段执行 Remotion。
+- 唯一交付是：`完整文稿或实录 → 全文语义 beat → 真人/真实素材/AI情景/纸艺四路择一 → 三条素材执行包 → 连续真人节奏复核 → 拍后 Shotcraft 机会`，状态最高只能是 `ready-for-user-review`。
+- 数据、官方原文、真实界面、录屏、演示、产品、地点和真实人物行为选 `real-evidence`；无特定真实主体、情景演绎能明显增加具体性或节奏时才选 `ai-generated-video`；机制、因果、关系、层级、对照或流程需要物理隐喻时才选 `paper-editorial`；其余保留 `speaker`。
+- `factual-claim` 与 `real-operation` 必须进入真实证据分路；数字、倍数、价格、平台能力、因果和绝对化判断要逐项核验，不能用纸艺、AI 情景、主播口述或前一条材料顺带代替证据。证据拿不到就删改主张或阻断对应段落。
+- 四路都没有最低数量，不得按固定秒数、固定字数或“每条必须有 AI/纸艺”机械插片。真实素材、AI 视频和纸艺三个包必须都存在；不需要的包写 `not-required` 和具体理由，以区分“不需要”与“忘了判断”。
+- AI 情景和纸艺只是说明画面，不具备证据资格。真实素材未绑定来源时只能是待准备候选，不得进正式片，也不得写 AI 生成替代词。
+- 拍前只记录 Shotcraft 的功能意图，不得预选卡号、组件或特效；且只能标在 `speaker` 与 `real-evidence` 上。拍后再按实录、真实帧窗、字幕和人物保护区扫描当前全库，允许全部 `not-needed`。
 - 用户确认导演表以前，禁止调用 `koubo-paper-firstframe-producer`，禁止生图、确定性写字、OCR、RunningHub、Remotion、字幕、音效、渲染和发布；旧 V9.1 的 route lock、布局合同、生产状态机和动态验收不得进入导演提示词。
 - 机器校验只证明结构与边界符合要求，不能证明插片选择和视觉风格合格。必须由用户对照往期优质片确认插入位置、构图、中文节点、首帧词和视频词。
 - 拍摄前只保留文字锚点；拍摄后如重新执行本阶段，以原片声音为唯一正文重新绑定锚点。不得借重绑提前进入剪辑或正式渲染。
 
 #### B. 用户确认导演表后的下游生产
 
-- `workflow/active-director-profile.v1.json` 的旧 V9.1 生产字段仅在用户确认导演表后生效，用于首帧、视频生成和剪辑发布兼容，不得反向改写导演表。
-- 进入 `firstframe` 后，纸艺镜头才执行物件组、至少三层空间、节点中文、固定空白纸牌、确定性写字和 OCR。2026-09-08 事故修订后的新请求按 `skills/koubo-remotion-director/references/paper-motion-incident-prevention.md` 执行；每个短镜最多 4 个活动动作、1 至 7 个阶段，不强凑 4 步，先完成一个代表镜并由用户验收。
+- `workflow/active-director-profile.v1.json` 的 V9.1 下游生产字段仅在用户确认 v2 导演表后生效，用于首帧、视频生成和剪辑发布兼容，不得反向改写导演表。`ai-generated-video` 在下游映射为历史类名 `generated-video`，其他三路同名映射。
+- 进入 `firstframe` 后，AI 情景和纸艺分路才各自生成首帧；用户分镜验收首帧后才允许交给图生视频。纸艺镜头另外执行物件组、至少三层空间、节点中文、固定空白纸牌、确定性写字和 OCR。2026-09-08 事故修订后的新请求按 `skills/koubo-remotion-director/references/paper-motion-incident-prevention.md` 执行；一镜一个主动作，先完成一个代表镜并由用户验收。
 - 进入 `video-generation` 后，才执行新机构动态试验、动作边界抽帧、实际视频证据和独立人工验收；首帧或视频失败只返工失败镜头，不连锁重写已确认镜头。
-- 进入 `edit-release` 后，才要求本条 request、route lock、plan、compile receipt、`skillExecuted=true` validation receipt、`tools/validate-director-production-binding.mjs`、实录重绑、动态候选验收和 V8 正式生产门禁。
+- 真实素材分路必须绑定本条来源和权限。缺失时按导演表删改未证实主张或阻断生产，不能退回真人照说，也不能默认改成 AI 画面。
+- 进入 `edit-release` 后，先实录重绑，再对 `speaker` 和 `real-evidence` 扫描 Shotcraft 当前全库并留下应用或不需要回执；此时才要求本条 request、route lock、plan、compile receipt、`skillExecuted=true` validation receipt、`tools/validate-director-production-binding.mjs`、动态候选验收和 V8 正式生产门禁。
 - 任一下游阶段失败时保持 `blocked`；任何降级都需用户针对本条明确批准。历史 job 只作日期限定回归，不得用于新片。
 
 脚本固定交付包中的“文字版封面提示词”不等于已经启动封面制作，但只能在事实锁、双 Skill 和 `ready-for-draft` 均通过后生成。缺少抖音标题或封面提示词的文稿只能标记为 `incomplete-delivery`，不得称为完整口播稿。

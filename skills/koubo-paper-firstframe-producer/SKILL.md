@@ -11,7 +11,9 @@ description: 执行口播纸艺导演输出的首帧生图清单：先生成无�
 
 ## 职责边界
 
-- 上游权威是 `koubo-remotion-director` 生成并验证的 `first-frame-prompts.v1.json`；若新导演直接交付 `koubo-director-cues/v1`，必须先走下述 cue-native 桥接，不能退回旧 V9 工程合同重新写提示词。
+- 当前 v2 上游权威是经用户批准后生成的 `director-cues-v2-handoff.v1.json` 及其绑定的 `paper-editorial.first-frame-handoff.v1.json`。只有纸艺分路为 `planned` 才启动本 Skill；`not-required` 必须原样停止，不能为了运行首帧自动化补造纸艺镜头。
+- v2 交接中的 `paper-editorial.image-to-video-handoff.v1.json` 只供后续视频生成阶段，首帧阶段不得读取其中的动作词；AI 分路的两个清单也不得送入纸艺首帧流程。
+- 历史上游权威仍可能是 `koubo-remotion-director` 生成并验证的 `first-frame-prompts.v1.json`；若旧简化导演直接交付 `koubo-director-cues/v1`，必须先走下述 cue-native 桥接，不能退回旧 V9 工程合同重新写提示词。
 - 本 Skill 不重写口播、不重新导演；生成模型不得写中文，但本地确定性文字烘焙属于本 Skill 的必经步骤。
 - 本 Skill 不提交 RunningHub、不生成视频、不发布。
 - `runninghub-image-to-video-prompts.v1.json` 只供后续人工操作；不得把其中动作提示词混入首帧生图。
@@ -23,6 +25,19 @@ description: 执行口播纸艺导演输出的首帧生图清单：先生成无�
 ### 1. 预检导演交付
 
 优先接收首帧 JSON 清单的绝对路径。若用户只粘贴提示词，先按同样 schema 建立新的项目内清单，并明确它是 `manual-import`，不能伪造导演验证回执。
+
+若输入是 `koubo-director-cues/v2`，不得直接相信手工复制的提示词，也不得调用旧 v1 桥接。先取得绑定当前 cues SHA-256 的 `koubo-director-cues-user-approval/v2`，再建立新的、不可覆盖的本地交接目录：
+
+```bash
+node skills/koubo-remotion-director/scripts/build-director-cues-v2-handoff.mjs \
+  --project-root <口播项目根目录> \
+  --cues <director-cues.v2.json> \
+  --approval <director-cues-user-approval.v2.json> \
+  --profile workflow/active-director-profile.v1.json \
+  --output-dir <新的v2交接目录>
+```
+
+该命令只构造本地交接，不生图、不提交平台。总清单必须实际记录 active profile 的四路映射；真实素材、AI 情景和纸艺三条分路都必须存在，空分路保持 `not-required`。进入本 Skill 时只取总清单绑定的纸艺首帧文件，并逐项复验 task、revision、路径和 SHA-256；提示词正文必须与 v2 cues 完全一致。现有批次入口若尚未声明接受该 v2 交接 schema，应保持 `blocked`，不得把它伪装成旧 `koubo-director-cues/v1` 或 V9 清单绕过验证。
 
 若输入是简化导演 `director-cues.v1.json`，先取得绑定当前 cues SHA-256 的单样本用户确认回执，再运行：
 

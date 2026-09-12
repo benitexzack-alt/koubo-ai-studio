@@ -1,0 +1,1032 @@
+{
+  "schemaVersion": "koubo-director-cues/v2",
+  "taskId": "20260912_ai_no_new_business_model_director_v2_r2",
+  "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
+  "inputScript": {
+    "path": "edit/20260912_ai_no_new_business_model/00_文稿与控制/用户确认原稿.txt",
+    "sha256": "57804abe915007fbc32a9c7d4e629e26c4f2817e58b8719dd90c8c30bc85af4c",
+    "authority": "user-confirmed-script"
+  },
+  "routingPolicy": {
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "generatedVisualCannotServeAsEvidence": true,
+    "shotcraftSelectionStage": "post-shoot-edit-release",
+    "shotcraftEligibleRoutes": [
+      "speaker",
+      "real-evidence"
+    ],
+    "shotcraftForbiddenInsideRoutes": [
+      "paper-editorial",
+      "ai-generated-video"
+    ]
+  },
+  "styleLocks": {
+    "aiGeneratedVideo": null,
+    "paperEditorial": {
+      "referenceImages": [
+        {
+          "id": "REF01",
+          "path": "refs/director-style/往期优质纸艺参考_地图连接.png",
+          "sha256": "7f2452c63dc72f7b7e6acbc3d1e3aa7da4da3a6e3e03e08b1f305e1c96c6e79a",
+          "usage": "style-mechanism-only"
+        },
+        {
+          "id": "REF02",
+          "path": "refs/director-style/往期优质纸艺参考_工厂工具.png",
+          "sha256": "d7c28e56542ad8a681115dc753e5aed93cf9079580f6df9b2c214abaa2403650",
+          "usage": "style-mechanism-only"
+        }
+      ],
+      "promptPrefix": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。",
+      "textPolicy": "generated-base-image-then-deterministic-chinese",
+      "mustKeep": [
+        "真实纸张纤维",
+        "至少三层空间",
+        "物件接触阴影",
+        "微缩实体摄影",
+        "克制红蓝强调"
+      ],
+      "mustAvoid": [
+        "扁平PPT卡片",
+        "塑料3D质感",
+        "模型生成中文",
+        "悬浮屏幕贴片",
+        "重复同一构图"
+      ]
+    }
+  },
+  "selectionSummary": {
+    "mainPoint": "AI没有发明新的供给或付费方式，它通过重做既有行业的成本和效率结构，像集装箱一样可能重写竞争秩序。",
+    "argumentFlow": [
+      "先拆掉AI颠覆叙事，提出AI主要改变成本与效率",
+      "用移动互联网、SaaS和社交电商界定什么才算商业模式创新",
+      "用集装箱说明单纯效率革命也足以重塑经济秩序",
+      "用广告投放与咨询交付说明AI如何压缩浪费和信息搬运",
+      "回应价格红海担忧，把竞争焦点落到理解客户",
+      "用水流隐喻收束旧秩序被加速的判断"
+    ],
+    "routeCounts": {
+      "speaker": 15,
+      "real-evidence": 18,
+      "ai-generated-video": 0,
+      "paper-editorial": 1,
+      "shotcraftOpportunity": 12
+    },
+    "routeRationales": {
+      "speaker": "核心判断、反问、类比收束和结尾金句依赖本人表情与语气；已经有明确证据责任的句子不再留给主播单独口述。",
+      "real-evidence": "具体效率幅度、平台机制、行业角色变化、集装箱和港口数据、咨询过程与价格、绝对化或因果判断都必须由真实来源、授权录屏或受控演示承接。",
+      "ai-generated-video": "本稿没有纯粹只需情景演绎、又不包含事实责任的独立语义段；为了不让AI画面冒充行业证据，本轮不生成普通AI视频。",
+      "paper-editorial": "只有商业模式的两个判据属于纯抽象关系，适合用纸艺联动机构解释；平台机制、行业变化和因果结论不交给纸艺证明。"
+    },
+    "visualRhythmReason": "视觉变化跟随论证责任：真人负责观点与语气，真实材料负责可核验陈述，纸艺只解释一个抽象判据；本稿普通AI分路为零，不按秒数或数量凑镜头。",
+    "protectedSpeakerBeatIds": [
+      "B01",
+      "B03",
+      "B04",
+      "B08",
+      "B28",
+      "B32",
+      "B33",
+      "B34"
+    ]
+  },
+  "semanticBeats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "scriptQuote": "AI并没有发明新的商业模式",
+      "rhetoricalRole": "title-hook",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "标题就是全片反常识判断，第一眼必须由本人直视观众说出。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "scriptQuote": "我们正处在一个被宏大叙事包围的时代，打开任何一篇AI相关的文章，几乎都在谈论“颠覆范式”、“重构产业”、“开启新时代”……",
+      "rhetoricalRole": "problem-context",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R01",
+      "decisionReason": "这一段说的是现实传播环境，真实文章标题与页面比生成画面更直接。",
+      "viewerGain": "context"
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "scriptQuote": "这些词听起来很令人兴奋，但它们掩盖了一个极其朴素的真相。",
+      "rhetoricalRole": "turn-to-thesis",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "从热闹叙事转入朴素判断，停回真人能建立语气落差。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "scriptQuote": "因为AI并没有发明任何新的商业模式，它只是在做一件极其古老的事情：把成本和效率推到极致。",
+      "rhetoricalRole": "core-thesis",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "核心主张需要保留本人的判断主体，不能一上来就让插片替代论点。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "scriptQuote": "先看看过去二十年真正称得上“新商业模式”的东西是什么。",
+      "rhetoricalRole": "definition-transition",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "这是带观众进入案例的口头导航，真人承接后再切真实案例更顺。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "scriptQuote": "移动互联网带来了按需经济，Uber和滴滴让闲置车辆变成了可交易的运力，Airbnb让空置房间变成了酒店，它们创造了一种全新的供给方式。SaaS让软件从买断变成了订阅，企业不用再一次性投入巨额资金部署系统，它们改变了软件的交付和付费方式。社交电商则让每个人都能成为分销节点，信任关系变成了交易渠道。",
+      "rhetoricalRole": "historical-examples",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R02",
+      "decisionReason": "这些都指向真实公司和真实模式，使用官方或已授权页面组成三段式案例蒙太奇。",
+      "viewerGain": "context"
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "scriptQuote": "这些创新有一个共同特征，它们改变了“谁在提供”和“怎么付费”这两个关键问题。",
+      "rhetoricalRole": "business-model-criterion",
+      "claimClass": "abstract-explanation",
+      "requiresRealEvidence": false,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P01",
+      "decisionReason": "两个商业模式判据是抽象关系，用一套联动纸机构比继续列例子更清楚。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "scriptQuote": "那当下的AI又做了什么？",
+      "rhetoricalRole": "rhetorical-question",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "反问需要眼神和停顿，把观众从历史案例拉回当下。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "scriptQuote": "它没有创造新的供给形态，没有发明新的交易方式，也没有重构价值链上参与者的角色分工。",
+      "rhetoricalRole": "boundary-claim",
+      "claimClass": "abstract-explanation",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "这是否定性边界判断，真人连续三拍说完比再做一张信息图更有力量。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "scriptQuote": "它只是在既有的框架里，把原来需要一个人干两小时的事情变成机器干两分钟，把原来需要反复试错才能找到的客户变成精准到个位数的定向投放。",
+      "rhetoricalRole": "efficiency-compression",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R12",
+      "decisionReason": "“两小时变两分钟”和“精准到个位数”都是具体效果主张，纸艺只能解释压缩概念，不能证明幅度或投放精度，必须用真实测试或改稿。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "scriptQuote": "这并非是贬低AI的价值，恰恰相反，这种“只改变效率”的变革，历史上每一次都塑造了新的秩序。",
+      "rhetoricalRole": "value-reversal",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R13",
+      "decisionReason": "前半句是立场转折，但“历史上每一次”属于绝对化历史概括；整段用真实效率革命案例承接，证据不足就收窄措辞。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "scriptQuote": "集装箱没有发明航运，没有发明港口，也没有改变船的动力系统。它只是把散装货物装进了一个标准化的铁盒子里，",
+      "rhetoricalRole": "container-context",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R03",
+      "decisionReason": "集装箱、港口和装卸是可见的真实对象，使用已授权档案画面比生成纸船更有说服力。",
+      "viewerGain": "context"
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "scriptQuote": "让装卸效率提升了数十倍，让运输成本降低了90%以上。",
+      "rhetoricalRole": "quantitative-evidence",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R04",
+      "decisionReason": "这是全稿最明确的量化主张，必须让观众看到可核验出处，不能用动画替代。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "scriptQuote": "但就是这个“只改变效率和成本”的发明，彻底重塑了全球贸易的版图。它让制造业从发达国家转移到发展中国家，让深圳从小渔村变成世界工厂，让全球供应链成为可能。",
+      "rhetoricalRole": "historical-impact",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R05",
+      "decisionReason": "这里包含全球贸易与深圳工业化的历史因果，需要官方史料或可靠档案画面承接。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "scriptQuote": "航运还是那个航运，港口还是那个港口，但成本结构的变化带来了整个经济地理的重写。AI此刻正在做的事情，和当年的集装箱如出一辙。",
+      "rhetoricalRole": "analogy-conclusion",
+      "claimClass": "abstract-explanation",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "前面已经有三段真实材料，这里的类比结论回到本人，避免档案画面连续覆盖主播。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B16",
+      "order": 16,
+      "scriptQuote": "以电商广告投放为例。传统模式下，一个商家想找到潜在客户，需要先设想一个目标人群画像，然后向平台购买对应的流量包，再根据转化数据反复调整。这个过程充满了浪费，行业里有一句老话叫“我知道我的广告费有一半浪费了，但我不知道浪费的是哪一半。”",
+      "rhetoricalRole": "traditional-ad-setup",
+      "claimClass": "abstract-explanation",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "这是完整的口头问题铺垫，保留真人叙述能让后面的机制切换更容易听懂。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B17",
+      "order": 17,
+      "scriptQuote": "AI介入后，投放逻辑从“人工假设”变成了“机器推理”。",
+      "rhetoricalRole": "ad-mechanism-switch",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R14",
+      "decisionReason": "这是对广告平台投放机制发生变化的判断，必须让官方说明或授权后台承担证据，不能让纸艺机构替平台能力背书。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B18",
+      "order": 18,
+      "scriptQuote": "系统直接理解商品的使用场景，反向寻找意图匹配的用户，不再完全依赖商家输入的关键词和人群标签。比如一个卖助眠枕头的商家，不需要告诉系统“我的客户是失眠人群”，系统自己就能通过搜索“半夜总醒”、“睡醒脖子疼”等行为信号找到这些人。",
+      "rhetoricalRole": "ad-platform-mechanism-evidence",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R06",
+      "decisionReason": "这段涉及平台实际能力和行为信号，必须使用官方说明或可授权演示，不能用AI界面冒充。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B19",
+      "order": 19,
+      "scriptQuote": "这个变化带来的效率提升是惊人的。一个商家可以覆盖的人群边界被大幅拓宽，过去因为“搜不到”而被浪费的流量被重新激活。广告还是那个广告，投放还是那个投放，但每一次曝光和点击背后水分的含量被大幅挤压。",
+      "rhetoricalRole": "ad-case-conclusion",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R09",
+      "decisionReason": "这段把平台机制进一步概括为覆盖扩大和浪费降低，已超出上一段产品说明本身，必须补充真实案例数据或收窄表述。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B20",
+      "order": 20,
+      "scriptQuote": "再把视角拉远一点，看一下知识工作领域。",
+      "rhetoricalRole": "domain-transition",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "这是从广告转向咨询的口头导航，先让真人完成转场。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B21",
+      "order": 21,
+      "scriptQuote": "一家咨询公司为一个客户做市场进入策略，传统做法是派一个团队飞过去，花几周时间访谈、调研、分析，产出一份几百页的报告，",
+      "rhetoricalRole": "traditional-consulting-process",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R15",
+      "decisionReason": "“团队飞过去、花几周、几百页报告”是可核验的行业过程陈述，必须使用真实方法说明、案例或授权资料，不能用AI办公室演绎替代。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B22",
+      "order": 22,
+      "scriptQuote": "收费从几十万到上百万美元不等。",
+      "rhetoricalRole": "consulting-price-claim",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R07",
+      "decisionReason": "价格区间是可核验事实主张，需要可靠行业来源；不能让情景演员或字幕假装证明。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B23",
+      "order": 23,
+      "scriptQuote": "AI介入后，一个经过专业调校的模型可以在几小时内完成行业扫描、竞品分析、消费者洞察，生成一份结构完整、逻辑自洽的报告初稿。",
+      "rhetoricalRole": "controlled-ai-demo",
+      "claimClass": "real-operation",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R08",
+      "decisionReason": "这是可以用本机受控任务演示的具体操作，真实录屏比生成的电脑界面可信。",
+      "viewerGain": "show-operation"
+    },
+    {
+      "id": "B24",
+      "order": 24,
+      "scriptQuote": "咨询顾问的角色从“信息采集和分析者”变成了“策略判断和交付把控者”。",
+      "rhetoricalRole": "role-transition",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R16",
+      "decisionReason": "这是对咨询行业角色变化的判断，必须用真实岗位、流程对照或可靠研究承接；纸艺棋子不能证明行业已经发生这种变化。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B25",
+      "order": 25,
+      "scriptQuote": "咨询还是那个咨询，但交付效率提升了一个数量级，人力成本大幅下降。",
+      "rhetoricalRole": "consulting-efficiency-conclusion",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R10",
+      "decisionReason": "“一个数量级”和“人力成本大幅下降”是量化结论，本机一次演示不能外推为行业事实，必须有可比案例或改写。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B26",
+      "order": 26,
+      "scriptQuote": "以前从“客户有需求”到“顾问交付成果”之间，有一长串信息搬运和模式化分析的工作。这部分不产生策略价值，但必须有人做。",
+      "rhetoricalRole": "non-value-work-explanation",
+      "claimClass": "abstract-explanation",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "与上一镜角色迁移同属一个论证，继续真人解释可避免连续两套相似纸艺机构。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B27",
+      "order": 27,
+      "scriptQuote": "AI接手了这一段，把顾问的精力释放到了真正需要人类判断的那部分。",
+      "rhetoricalRole": "human-value-conclusion",
+      "claimClass": "abstract-explanation",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "这是人与AI分工的结论，保留本人并预留关键词层即可，不再强加一镜纸艺。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B28",
+      "order": 28,
+      "scriptQuote": "这里可能有人会问，如果AI只是改变了效率和成本，那它最终会让所有行业变成卷价格的“红海”吗？",
+      "rhetoricalRole": "objection-question",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "模拟观众质疑时，真人语气和停顿是主要信息。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B29",
+      "order": 29,
+      "scriptQuote": "这个担忧来自一个常见的误解。集装箱并没有让所有港口的收费趋同，但让那些能处理更大吞吐量的港口获得了绝对优势。",
+      "rhetoricalRole": "objection-response",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R11",
+      "decisionReason": "港口收费和吞吐量优势是新的事实判断，前文的一般集装箱史料不能自动支撑，需要港口数据或收窄措辞。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B30",
+      "order": 30,
+      "scriptQuote": "AI也一样，当连接成本趋近于零，企业之间的竞争就会从“谁更擅长找到客户”变成“谁更擅长理解客户”。",
+      "rhetoricalRole": "competition-shift",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R17",
+      "decisionReason": "“连接成本趋近于零”到竞争焦点改变是一条因果和趋势判断，需要真实研究或案例；证据不足就改成明确的个人判断，不能由纸艺隐喻代证。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B31",
+      "order": 31,
+      "scriptQuote": "这就是效率革命的特征：它让所有人都能低价获得同一种能力，于是把“做得更好”的要求推到了一个新的维度。",
+      "rhetoricalRole": "principle-conclusion",
+      "claimClass": "factual-claim",
+      "requiresRealEvidence": true,
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R18",
+      "decisionReason": "“所有人都能低价获得”是绝对化普及与成本判断，必须展示可核验的价格、可及性或采用证据；否则要收窄为趋势表达。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B32",
+      "order": 32,
+      "scriptQuote": "那些担心被AI取代的人和指望靠AI一夜暴富的人，其实犯了同一个错误：他们都在期待一个全新的秩序从天而降。然而事实上，旧的秩序只是在被重新打磨，水还是水，不过是流得更快了。",
+      "rhetoricalRole": "final-reframe",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "这是最重要的价值判断和水流金句，应完整保留真人，只用克制的关键词动效辅助。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B33",
+      "order": 33,
+      "scriptQuote": "至于水流本身，它从来不会在意谁在游泳。",
+      "rhetoricalRole": "closing-line",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "最后一句要留白和停顿，不插素材，不让视觉抢掉余味。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B34",
+      "order": 34,
+      "scriptQuote": "我是超哥，在兰州AI创业",
+      "rhetoricalRole": "identity-signoff",
+      "claimClass": "presenter-expression",
+      "requiresRealEvidence": false,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "账号身份必须由本人收口，保持稳定的系列记忆。",
+      "viewerGain": "presenter-trust"
+    }
+  ],
+  "routePlans": {
+    "realMaterials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "R01",
+          "beatId": "B02",
+          "startAnchorText": "我们正处在",
+          "endAnchorText": "开启新时代",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "screen-recording",
+          "usageRole": "evidence",
+          "materialRequest": "按明确时间窗和检索词录制真实浏览器检索或信息流滚动，保留样本总数、页面来源及出现颠覆、重构、新时代等措辞的条目；遮挡私人账号信息。",
+          "reason": "原句含“任何一篇、几乎都”的广泛概括，零散标题不能直接证明，必须保留抽样口径或收窄原句。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R02",
+          "beatId": "B06",
+          "startAnchorText": "移动互联网",
+          "endAnchorText": "交易渠道",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "准备Uber或滴滴、Airbnb、SaaS订阅和社交电商的官方页面或可合法使用的产品界面截图，按供给方式、付费方式、分销节点分成三组；避免只放Logo。",
+          "reason": "让三类商业模式变化落到真实产品与交付方式，而不是抽象图标。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R03",
+          "beatId": "B12",
+          "startAnchorText": "集装箱没有发明航运",
+          "endAnchorText": "标准化的铁盒子里",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "licensed-archive",
+          "usageRole": "evidence",
+          "materialRequest": "准备可靠历史说明或官方资料，核对集装箱没有发明、港口没有新生及船舶动力系统未改变等表述；再配可授权的散装装卸、标准箱和港口吊机档案镜头。",
+          "reason": "档案画面只能展示装卸对象，不能单独证明航运、港口和动力系统均未改变，必须同时绑定文字来源。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R04",
+          "beatId": "B13",
+          "startAnchorText": "让装卸效率",
+          "endAnchorText": "90%以上",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "source-data",
+          "usageRole": "evidence",
+          "materialRequest": "找到能直接支撑“装卸效率提升数十倍”和“运输成本降低90%以上”的可靠原始研究、官方报告或权威统计页面，保存原文与上下文；两个数字若不能同时核实必须分别处理。",
+          "reason": "这是量化主张，正式片必须显示真实出处或调整口播，不能只打一个醒目的90%。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R05",
+          "beatId": "B14",
+          "startAnchorText": "但就是这个",
+          "endAnchorText": "全球供应链成为可能",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "准备可靠历史资料或官方纪录页面，分别支撑集装箱化与全球贸易、制造业转移、深圳工业化及全球供应链之间的关系；画面可配已授权港口和深圳工业档案。",
+          "reason": "这一段包含多重历史因果，必须拆清来源边界，不能用怀旧画面替代证据。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R06",
+          "beatId": "B18",
+          "startAnchorText": "系统直接理解",
+          "endAnchorText": "找到这些人",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "准备国内主流电商广告平台的现行官方产品说明、帮助文档或可授权后台演示，核对系统是否会基于场景与行为信号扩展人群，以及助眠枕头例子是否只能作为假设示例。",
+          "reason": "这段描述平台实际机制，只有官方文稿或真实授权演示能支撑。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R07",
+          "beatId": "B22",
+          "startAnchorText": "收费从几十万",
+          "endAnchorText": "上百万美元不等",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "source-data",
+          "usageRole": "evidence",
+          "materialRequest": "准备能说明大型咨询公司市场进入策略项目价格区间的可靠公开来源；若只能找到不同项目类型或不同币种的数据，不能拼成当前区间。",
+          "reason": "金额容易被观众质疑，必须显示适用范围与原始来源。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R08",
+          "beatId": "B23",
+          "startAnchorText": "AI介入后",
+          "endAnchorText": "报告初稿",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "user-demo",
+          "usageRole": "demonstration",
+          "materialRequest": "录制一次可复现的本机受控演示：同一任务中展示行业扫描、竞品分析、消费者洞察和报告初稿的产出过程；遮挡客户、账号、密钥和私密数据，并记录实际耗时。",
+          "reason": "用本人真实操作说明AI接手信息工作，但只证明这次演示，不冒充所有咨询项目的普遍结果。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R09",
+          "beatId": "B19",
+          "startAnchorText": "这个变化",
+          "endAnchorText": "大幅挤压",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "source-data",
+          "usageRole": "evidence",
+          "materialRequest": "准备国内主流电商广告平台公开的真实案例或可授权后台对照数据，能够分别说明覆盖人群扩大、无效流量降低或投放效率改善；必须保留指标口径、观察窗口和适用业务，不能把单一案例外推为普遍规律。",
+          "reason": "上一段官方功能说明只能证明能力存在，不能直接证明覆盖和浪费改善的实际幅度。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R10",
+          "beatId": "B25",
+          "startAnchorText": "咨询还是",
+          "endAnchorText": "大幅下降",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "source-data",
+          "usageRole": "evidence",
+          "materialRequest": "准备同一咨询交付任务在人工作业与AI辅助两种条件下的可比记录，或可靠公开研究，核对交付耗时和人力成本是否真达到“一个数量级”和“大幅下降”；必须说明任务范围、质量标准和计算口径。",
+          "reason": "本机演示只能证明一次流程，不能独立支撑行业级量化结论。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R11",
+          "beatId": "B29",
+          "startAnchorText": "这个担忧",
+          "endAnchorText": "绝对优势",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "source-data",
+          "usageRole": "evidence",
+          "materialRequest": "准备港口吞吐量、集装箱处理能力、收费或竞争格局的可靠历史数据，核对“收费未趋同”和“更大吞吐量港口获得绝对优势”两个判断；若只能支持规模优势，必须删除“绝对”或收窄结论。",
+          "reason": "这是前文未被直接证明的新事实主张，不能让一般港口档案画面替代数据证据。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R12",
+          "beatId": "B10",
+          "startAnchorText": "它只是在既有的框架里",
+          "endAnchorText": "定向投放",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "source-data",
+          "usageRole": "evidence",
+          "materialRequest": "分别准备可复现的同任务耗时对照和广告投放精度证据，核对“一个人两小时变成机器两分钟”与“精准到个位数的定向投放”是否成立；两项不能互相替代，必须写明任务、平台、指标口径和观察窗口。",
+          "reason": "纸艺压缩机构只能说明概念，不能证明具体时间倍数和投放精度。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R13",
+          "beatId": "B11",
+          "startAnchorText": "这并非是贬低AI的价值",
+          "endAnchorText": "新的秩序",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "准备若干有明确来源的历史效率革命案例，核对其是否确实改变产业或竞争秩序；“历史上每一次”无法被有限案例证明时，必须收窄为“很多次”或其他有边界的说法。",
+          "reason": "价值转折可以由主播说，但绝对化历史概括不能只靠语气成立。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R14",
+          "beatId": "B17",
+          "startAnchorText": "AI介入后",
+          "endAnchorText": "机器推理",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "准备国内主流电商广告平台的现行官方产品说明或授权后台，明确哪些环节由系统建模、推断或自动扩展，哪些仍需商家设置；不得用纸艺轨道替代平台机制证明。",
+          "reason": "“人工假设变成机器推理”是对平台机制的概括，必须先验证其适用范围。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R15",
+          "beatId": "B21",
+          "startAnchorText": "一家咨询公司",
+          "endAnchorText": "几百页的报告",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "准备咨询公司公开的方法说明、真实项目案例或可靠研究，分别核对跨地出访、数周访谈调研和数百页报告是否适用于同一类市场进入项目；不能把不同项目拼成一个典型流程。",
+          "reason": "这是具体行业流程陈述，不是可以自由演绎的通用办公室情景。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R16",
+          "beatId": "B24",
+          "startAnchorText": "咨询顾问的角色",
+          "endAnchorText": "交付把控者",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "准备可靠的咨询行业研究、岗位说明或可核验流程对照，确认AI介入后顾问职责是否从信息采集分析转向策略判断与交付把控，并保留适用组织和时间范围。",
+          "reason": "角色迁移是行业变化判断，纸艺人物移动只能解释概念，不能证明变化已经发生。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R17",
+          "beatId": "B30",
+          "startAnchorText": "AI也一样",
+          "endAnchorText": "理解客户",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "source-data",
+          "usageRole": "evidence",
+          "materialRequest": "准备能够说明连接成本变化与企业竞争重点变化的可靠研究或真实案例，分别核对“趋近于零”和“从找到客户变成理解客户”两层判断；若只能表达作者推论，须把原句改成明确的个人判断。",
+          "reason": "这里既有成本程度判断，也有竞争转移因果，不能用纸艺路径把推论视觉化后当成事实。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R18",
+          "beatId": "B31",
+          "startAnchorText": "这就是效率革命的特征",
+          "endAnchorText": "新的维度",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "source-data",
+          "usageRole": "evidence",
+          "materialRequest": "准备AI能力价格、可及性或企业采用门槛变化的可靠数据，核对是否能支持“所有人”“低价”“同一种能力”；任一范围不成立时，把原句收窄为可验证的趋势。",
+          "reason": "这是绝对化普及与成本概括，必须给出边界，不能留在主播总结里直接越过证据门。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        }
+      ]
+    },
+    "aiGeneratedVideos": {
+      "status": "not-required",
+      "notRequiredReason": "全文没有可与事实责任独立分开的纯情景段；唯一候选咨询场景包含可核验行业流程，改走真实证据，避免为了有AI视频而强行生成。",
+      "items": []
+    },
+    "paperEditorials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "P01",
+          "beatId": "B07",
+          "startAnchorText": "这些创新",
+          "endAnchorText": "两个关键问题",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "durationSeconds": 4,
+          "reason": "把商业模式创新压缩成供给主体与付费方式两个同时变化的判据。",
+          "visualRole": "relationship",
+          "visualMetaphor": "双轨判据由中央连杆联动对齐",
+          "composition": "俯视偏侧双轨判据台",
+          "primaryAction": "中央纸质连杆推动两枚滑块对齐",
+          "textPlan": [
+            {
+              "text": "谁在提供",
+              "surface": "左侧固定空白纸牌"
+            },
+            {
+              "text": "怎么付费",
+              "surface": "右侧固定空白纸牌"
+            }
+          ],
+          "referenceImageIds": [
+            "REF02"
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。俯视偏侧中景，前景是一根红色纸质连杆，中景左右各有一条短纸轨和一枚未对齐的蓝灰滑块，后景是两个空框位；左侧固定空白纸牌与右侧固定空白纸牌由独立支架固定在轨道上方，不遮挡连杆与滑块，所有物件保持静止，画面不含可读文字。",
+          "videoPrompt": "基于已确认首帧，中央纸质连杆推动两枚滑块对齐，两枚滑块在各自短轨内同步到达空框位，固定机位，两块空白纸牌和其他物件保持不动，不生成文字。",
+          "negativePrompt": [
+            "不生成可读文字",
+            "不移动固定纸牌",
+            "不使用PPT卡片",
+            "不改变物件数量"
+          ]
+        }
+      ]
+    }
+  },
+  "shotcraftOpportunities": [
+    {
+      "id": "SO01",
+      "beatId": "B01",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "后期可克制强调“没有发明”和“商业模式”两个语义重音，卡片拍后再选。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO02",
+      "beatId": "B02",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "在真实文章页面中引导视线依次看到颠覆、重构和新时代措辞，不预设具体框选组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO03",
+      "beatId": "B06",
+      "baseVisualRoute": "real-evidence",
+      "intent": "list-reveal",
+      "reason": "三类商业模式案例可按口播顺序逐组出现，避免一次塞满屏幕。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO04",
+      "beatId": "B13",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "量化原文入镜时只突出对应数字与出处，不让醒目数字脱离来源。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO05",
+      "beatId": "B18",
+      "baseVisualRoute": "real-evidence",
+      "intent": "screen-callout",
+      "reason": "官方说明或后台演示中可指向场景理解与行为信号相关区域，具体组件拍后匹配。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO06",
+      "beatId": "B23",
+      "baseVisualRoute": "real-evidence",
+      "intent": "screen-callout",
+      "reason": "本机演示中可跟随行业扫描、竞品分析、消费者洞察和初稿四个真实结果区域。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO07",
+      "beatId": "B27",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "长真人段中只强调“信息搬运”和“人类判断”的分工落点，避免再加一套相似纸艺。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO08",
+      "beatId": "B32",
+      "baseVisualRoute": "speaker",
+      "intent": "transition-carry",
+      "reason": "结尾水流隐喻可用低强度语义承接帮助“旧秩序”和“流得更快”落地，不覆盖表情。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO09",
+      "beatId": "B19",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "真实广告案例入镜时按口播只聚焦覆盖、无效流量或效率中的当前指标，并同时保留口径与观察窗口。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO10",
+      "beatId": "B25",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "咨询效率对照材料入镜时并列显示同任务、同质量标准下的耗时与人力口径，不只放醒目倍数。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO11",
+      "beatId": "B29",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "港口数据入镜时分别指向吞吐能力与竞争结果，避免用港口大景替代事实支撑。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO12",
+      "beatId": "B10",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "两组真实对照入镜时分别聚焦耗时和投放精度，并保留任务、平台和指标口径，不能用纸艺机构替代证据。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    }
+  ],
+  "rhythmAudit": {
+    "basis": "semantic-runs-not-seconds",
+    "fixedCadenceForbidden": true,
+    "longSpeakerRunsReviewed": true,
+    "runs": [
+      {
+        "fromBeatId": "B01",
+        "toBeatId": "B01",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "单句钩子必须留真人，后期只保留一次克制重音机会。",
+        "mitigationRefs": [
+          "SO01"
+        ]
+      },
+      {
+        "fromBeatId": "B03",
+        "toBeatId": "B05",
+        "risk": "medium",
+        "decision": "keep-presenter",
+        "reason": "这组三拍完成反转、核心主张和案例导语，前后分别由真实传播页面与案例蒙太奇切开，不再强插。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B08",
+        "toBeatId": "B09",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "反问与否定边界需要连续语气，下一拍立即进入真实效率证据。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B15",
+        "toBeatId": "B16",
+        "risk": "medium",
+        "decision": "keep-presenter",
+        "reason": "连续真实档案后需要让主播重新掌控类比，并完整铺好广告旧流程，下一拍进入平台机制证据。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B20",
+        "toBeatId": "B20",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "单句负责从广告转向知识工作，前后均由真实证据切开，不需要再加动效。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B26",
+        "toBeatId": "B28",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "三拍连续完成非价值工作、人机分工和观众反问；前后由咨询效率证据与港口证据切开，中间只设置一次关键词节奏支点。",
+        "mitigationRefs": [
+          "SO07"
+        ]
+      },
+      {
+        "fromBeatId": "B32",
+        "toBeatId": "B34",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "结尾三拍需要真人完整收束，只在水流金句上设置低强度承接，最后一句与身份签名保持干净。",
+        "mitigationRefs": [
+          "SO08"
+        ]
+      }
+    ]
+  }
+}
