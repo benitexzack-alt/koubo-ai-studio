@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 
 import {
   DIRECTOR_R10_PAPER_MEDIA_AUDIT_SCHEMA,
+  buildDirectorR10PlannedActionAudit,
   classifyDirectorR10SourceDiagnosticErrors,
   summarizeDirectorR10PaperMediaAudit,
 } from './director-r10-paper-media-audit.mjs';
@@ -99,6 +100,88 @@ const diagnostic = ({
 }
 
 {
+  const plannedActionAudit = buildDirectorR10PlannedActionAudit({
+    runtime: {
+      fps: 30,
+      events: [{
+        id: 'b07-paper-content-pipeline',
+        beatId: 'b07',
+        firstVisibleFrame: 774,
+        endFrameExclusive: 1407,
+        actions: [
+          {id: 'collect', startFrame: 780},
+          {id: 'ai-classify', startFrame: 870},
+          {id: 'script-draft', startFrame: 930},
+          {id: 'public-materials', startFrame: 1044},
+          {id: 'ai-production', startFrame: 1185},
+          {id: 'business-foundation', startFrame: 1281},
+        ],
+      }],
+    },
+    eventId: 'b07-paper-content-pipeline',
+  });
+  assert.equal(plannedActionAudit.expectedDurationSeconds, 21.1);
+  assert.deepEqual(
+    plannedActionAudit.actions.map(({id, timeSeconds}) => [id, timeSeconds]),
+    [
+      ['collect', 0.2],
+      ['ai-classify', 3.2],
+      ['script-draft', 5.2],
+      ['public-materials', 9],
+      ['ai-production', 13.7],
+      ['business-foundation', 16.9],
+    ],
+  );
+
+  const result = summarizeDirectorR10PaperMediaAudit({
+    plannedActionAudit,
+    currentDiagnostic: diagnostic({
+      durationSeconds: 21.1,
+      fps: 30,
+      meanMad: 2,
+      p90Mad: 5,
+      boundaries: [0.27, 3.3, 5.36, 9.12, 13.82, 17.08],
+    }),
+    referenceDiagnostic: diagnostic({meanMad: 3, p90Mad: 8, boundaries: [1, 2, 3]}),
+  });
+  assert.equal(result.plannedActionGate.passed, true);
+  assert.equal(result.plannedActionGate.matchedCount, 6);
+  assert.deepEqual(result.plannedActionGate.missingActionIds, []);
+  assert.equal(result.decision.status, 'diagnostic-only-awaiting-human-review');
+}
+
+{
+  const plannedActionAudit = {
+    eventId: 'b07-paper-content-pipeline',
+    expectedDurationSeconds: 21.1,
+    toleranceSeconds: 0.35,
+    actions: [
+      {id: 'collect', frame: 6, timeSeconds: 0.2},
+      {id: 'ai-classify', frame: 96, timeSeconds: 3.2},
+      {id: 'script-draft', frame: 156, timeSeconds: 5.2},
+      {id: 'public-materials', frame: 270, timeSeconds: 9},
+      {id: 'ai-production', frame: 411, timeSeconds: 13.7},
+      {id: 'business-foundation', frame: 507, timeSeconds: 16.9},
+    ],
+  };
+  const result = summarizeDirectorR10PaperMediaAudit({
+    plannedActionAudit,
+    currentDiagnostic: diagnostic({
+      durationSeconds: 21.1,
+      fps: 30,
+      meanMad: 2,
+      p90Mad: 5,
+      boundaries: [0.27, 3.3, 5.36, 9.12, 13.82],
+    }),
+    referenceDiagnostic: diagnostic({meanMad: 3, p90Mad: 8, boundaries: [1, 2, 3]}),
+  });
+  assert.equal(result.plannedActionGate.passed, false);
+  assert.equal(result.plannedActionGate.matchedCount, 5);
+  assert.deepEqual(result.plannedActionGate.missingActionIds, ['business-foundation']);
+  assert.equal(result.decision.status, 'blocked-machine-motion-evidence');
+}
+
+{
   const result = summarizeDirectorR10PaperMediaAudit({
     currentDiagnostic: diagnostic({
       meanMad: 2,
@@ -152,6 +235,14 @@ assert.throws(
     referenceDiagnostic: diagnostic({meanMad: 0, p90Mad: 0}),
   }),
   (error) => error?.code === 'R10_REFERENCE_MOTION_INVALID',
+);
+
+assert.throws(
+  () => buildDirectorR10PlannedActionAudit({
+    runtime: {fps: 30, events: []},
+    eventId: 'b07-paper-content-pipeline',
+  }),
+  (error) => error?.code === 'R10_PLANNED_EVENT_NOT_FOUND',
 );
 
 console.log('导演 R10 纸艺动态媒体诊断：通过');

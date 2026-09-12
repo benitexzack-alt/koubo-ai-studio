@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import {readFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -10,8 +11,9 @@ import {
 } from './qa-generated-video-v2.mjs';
 import {probeVideoV2} from './video-quality-metrics-v2.mjs';
 
-export const DIRECTOR_R10_PAPER_MEDIA_AUDIT_SCHEMA = 'director-r10-paper-media-audit/v1';
+export const DIRECTOR_R10_PAPER_MEDIA_AUDIT_SCHEMA = 'director-r10-paper-media-audit/v2';
 export const DIRECTOR_R10_PAIR_MOTION_GAP_RATIO = 0.5;
+export const DIRECTOR_R10_ACTION_BOUNDARY_TOLERANCE_SECONDS = 0.35;
 
 const MOTION_ERROR_CODES = new Set([
   'REFERENCE_MOTION_MATERIAL_GAP',
@@ -54,6 +56,130 @@ const normalizeError = (error) => ({
   message: String(error?.message ?? ''),
   details: error?.details ?? null,
 });
+
+export const buildDirectorR10PlannedActionAudit = ({
+  runtime,
+  eventId,
+  toleranceSeconds = DIRECTOR_R10_ACTION_BOUNDARY_TOLERANCE_SECONDS,
+} = {}) => {
+  if (!runtime || typeof runtime !== 'object' || Array.isArray(runtime)) {
+    fail('R10_PLANNED_RUNTIME_INVALID', '动作审计必须提供 R10 运行时时间轴对象。');
+  }
+  const fps = finiteNumber(runtime.fps, 'runtime.fps');
+  if (fps <= 0 || !Array.isArray(runtime.events)) {
+    fail('R10_PLANNED_RUNTIME_INVALID', 'R10 运行时时间轴缺少有效 fps 或 events。');
+  }
+  if (!isText(eventId)) fail('R10_PLANNED_EVENT_ID_REQUIRED', '动作审计必须提供 eventId。');
+  const event = runtime.events.find((candidate) => candidate?.id === eventId);
+  if (!event) fail('R10_PLANNED_EVENT_NOT_FOUND', `运行时时间轴中没有事件：${eventId}。`);
+  if (
+    !Number.isInteger(event.firstVisibleFrame)
+    || !Number.isInteger(event.endFrameExclusive)
+    || event.endFrameExclusive <= event.firstVisibleFrame
+    || !Array.isArray(event.actions)
+    || event.actions.length === 0
+  ) {
+    fail('R10_PLANNED_EVENT_INVALID', `事件${eventId}缺少有效可见范围或动作。`);
+  }
+  const tolerance = finiteNumber(toleranceSeconds, 'toleranceSeconds');
+  if (tolerance <= 0 || tolerance > 1) {
+    fail('R10_PLANNED_TOLERANCE_INVALID', '动作边界容差必须大于 0 且不超过 1 秒。');
+  }
+  const actions = event.actions.map((action, index) => {
+    const id = String(action?.id ?? '').trim();
+    if (!id || !Number.isInteger(action?.startFrame)) {
+      fail('R10_PLANNED_ACTION_INVALID', `事件${eventId}的动作${index + 1}缺少 id 或 startFrame。`);
+    }
+    const frame = action.startFrame - event.firstVisibleFrame;
+    if (frame < 0 || action.startFrame >= event.endFrameExclusive) {
+      fail('R10_PLANNED_ACTION_INVALID', `事件${eventId}的动作${id}不在场景范围内。`);
+    }
+    return {id, frame, timeSeconds: frame / fps};
+  });
+  if (new Set(actions.map(({id}) => id)).size !== actions.length) {
+    fail('R10_PLANNED_ACTION_INVALID', `事件${eventId}的动作 id 不得重复。`);
+  }
+  return {
+    eventId,
+    beatId: String(event.beatId ?? ''),
+    fps,
+    sceneStartFrame: event.firstVisibleFrame,
+    sceneEndFrameExclusive: event.endFrameExclusive,
+    expectedDurationSeconds: (event.endFrameExclusive - event.firstVisibleFrame) / fps,
+    toleranceSeconds: tolerance,
+    actions,
+  };
+};
+
+const evaluatePlannedActionGate = ({plannedActionAudit, current}) => {
+  if (plannedActionAudit == null) {
+    return {
+      required: false,
+      passed: null,
+      matchedCount: 0,
+      requiredCount: 0,
+      missingActionIds: [],
+      matches: [],
+      boundary: '未绑定运行时时间轴时只执行成对动态诊断；R10纸艺正式回归必须绑定六个动作锚点。',
+    };
+  }
+  if (
+    !Array.isArray(plannedActionAudit.actions)
+    || plannedActionAudit.actions.length === 0
+    || !Number.isFinite(plannedActionAudit.expectedDurationSeconds)
+  ) {
+    fail('R10_PLANNED_ACTION_AUDIT_INVALID', 'plannedActionAudit 缺少动作或场景时长。');
+  }
+  const toleranceSeconds = finiteNumber(
+    plannedActionAudit.toleranceSeconds,
+    'plannedActionAudit.toleranceSeconds',
+  );
+  const unused = new Set(current.assemblyBoundaries.map((_, index) => index));
+  const matches = plannedActionAudit.actions.map((action) => {
+    let bestIndex = null;
+    let bestDelta = Number.POSITIVE_INFINITY;
+    for (const index of unused) {
+      const deltaSeconds = Math.abs(
+        current.assemblyBoundaries[index].timeSeconds - action.timeSeconds,
+      );
+      if (deltaSeconds <= toleranceSeconds && deltaSeconds < bestDelta) {
+        bestIndex = index;
+        bestDelta = deltaSeconds;
+      }
+    }
+    if (bestIndex === null) {
+      return {id: action.id, expectedTimeSeconds: action.timeSeconds, matched: false};
+    }
+    unused.delete(bestIndex);
+    const boundary = current.assemblyBoundaries[bestIndex];
+    return {
+      id: action.id,
+      expectedTimeSeconds: action.timeSeconds,
+      matched: true,
+      detectedTimeSeconds: boundary.timeSeconds,
+      deltaSeconds: boundary.timeSeconds - action.timeSeconds,
+      scoreMadRgb: boundary.scoreMadRgb,
+    };
+  });
+  const missingActionIds = matches.filter(({matched}) => !matched).map(({id}) => id);
+  const durationToleranceSeconds = 1 / finiteNumber(plannedActionAudit.fps ?? current.fps, 'plannedActionAudit.fps');
+  const durationDeltaSeconds = current.durationSeconds - plannedActionAudit.expectedDurationSeconds;
+  const durationPassed = Math.abs(durationDeltaSeconds) <= durationToleranceSeconds + 1e-9;
+  return {
+    required: true,
+    passed: missingActionIds.length === 0 && durationPassed,
+    matchedCount: matches.length - missingActionIds.length,
+    requiredCount: matches.length,
+    missingActionIds,
+    matches,
+    durationPassed,
+    expectedDurationSeconds: plannedActionAudit.expectedDurationSeconds,
+    actualDurationSeconds: current.durationSeconds,
+    durationDeltaSeconds,
+    toleranceSeconds,
+    boundary: '六个实录动作必须各自在锚点前后350毫秒内形成独立可检测边界；同一机器边界不得重复认领。',
+  };
+};
 
 export const classifyDirectorR10SourceDiagnosticErrors = (errors = []) => {
   if (!Array.isArray(errors)) fail('R10_SOURCE_ERRORS_INVALID', '源诊断 errors 必须是数组。');
@@ -121,6 +247,7 @@ export const summarizeDirectorR10PaperMediaAudit = ({
   referenceDiagnostic,
   currentFile = null,
   referenceFile = null,
+  plannedActionAudit = null,
   motionGapRatio = DIRECTOR_R10_PAIR_MOTION_GAP_RATIO,
 } = {}) => {
   const threshold = finiteNumber(motionGapRatio, 'motionGapRatio');
@@ -134,7 +261,8 @@ export const summarizeDirectorR10PaperMediaAudit = ({
   const staticTextureThresholdPassed =
     current.entropy.median >= LOCKED_DIAGNOSTIC_THRESHOLDS_V2.minimumMedianEntropy &&
     current.edgeStrength.median >= LOCKED_DIAGNOSTIC_THRESHOLDS_V2.minimumMedianEdgeStrength;
-  const motionFails = motionMaterialGap || noAssemblyBoundary;
+  const plannedActionGate = evaluatePlannedActionGate({plannedActionAudit, current});
+  const motionFails = motionMaterialGap || noAssemblyBoundary || plannedActionGate.passed === false;
   const staticLooksAcceptableButMotionFails = staticTextureThresholdPassed && motionFails;
 
   return {
@@ -162,6 +290,7 @@ export const summarizeDirectorR10PaperMediaAudit = ({
       minimumEdgeStrengthMedian: LOCKED_DIAGNOSTIC_THRESHOLDS_V2.minimumMedianEdgeStrength,
       boundary: '这只表示静帧纹理超过锁定机器下限，不表示画面、纸材或审美合格。',
     },
+    plannedActionGate,
     findings: {
       motionMaterialGap,
       noAssemblyBoundary,
@@ -212,6 +341,8 @@ const runOne = async ({videoPath, ffmpegBin, ffprobeBin, tesseractBin}) => {
 export const runDirectorR10PaperMediaAudit = async ({
   currentPath,
   referencePath,
+  runtimePath = null,
+  eventId = null,
   ffmpegBin = process.env.FFMPEG_BIN || 'ffmpeg',
   ffprobeBin = process.env.FFPROBE_BIN || 'ffprobe',
   tesseractBin = process.env.TESSERACT_BIN || 'tesseract',
@@ -223,20 +354,46 @@ export const runDirectorR10PaperMediaAudit = async ({
     runOne({videoPath: currentPath, ffmpegBin, ffprobeBin, tesseractBin}),
     runOne({videoPath: referencePath, ffmpegBin, ffprobeBin, tesseractBin}),
   ]);
+  let plannedActionAudit = null;
+  let runtimeFile = null;
+  if (runtimePath !== null || eventId !== null) {
+    if (!isText(runtimePath) || !isText(eventId)) {
+      fail('R10_RUNTIME_BINDING_INCOMPLETE', '--runtime 与 --event-id 必须同时提供。');
+    }
+    const absoluteRuntimePath = path.resolve(runtimePath);
+    let runtime;
+    try {
+      runtime = JSON.parse(readFileSync(absoluteRuntimePath, 'utf8'));
+    } catch (error) {
+      fail('R10_RUNTIME_READ_FAILED', `无法读取动作审计时间轴：${absoluteRuntimePath}`, {
+        reason: error instanceof Error ? error.message : String(error),
+      });
+    }
+    plannedActionAudit = buildDirectorR10PlannedActionAudit({runtime, eventId});
+    runtimeFile = {
+      path: absoluteRuntimePath,
+      sha256: sha256FileForQaV2(absoluteRuntimePath),
+    };
+  }
   return summarizeDirectorR10PaperMediaAudit({
     currentDiagnostic: current.diagnostic,
     referenceDiagnostic: reference.diagnostic,
     currentFile: current.file,
     referenceFile: reference.file,
+    plannedActionAudit: plannedActionAudit === null
+      ? null
+      : {...plannedActionAudit, runtimeFile},
   });
 };
 
 const parseArguments = (argv) => {
-  const result = {currentPath: null, referencePath: null};
+  const result = {currentPath: null, referencePath: null, runtimePath: null, eventId: null};
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
     if (argument === '--current') result.currentPath = argv[++index];
     else if (argument === '--reference') result.referencePath = argv[++index];
+    else if (argument === '--runtime') result.runtimePath = argv[++index];
+    else if (argument === '--event-id') result.eventId = argv[++index];
     else if (argument === '--ffmpeg') result.ffmpegBin = argv[++index];
     else if (argument === '--ffprobe') result.ffprobeBin = argv[++index];
     else if (argument === '--tesseract') result.tesseractBin = argv[++index];
@@ -248,9 +405,9 @@ const parseArguments = (argv) => {
 
 const usage = () => [
   '用法：',
-  '  node tools/director-r10-paper-media-audit.mjs --current <当前片.mp4> --reference <参考片.mp4>',
+  '  node tools/director-r10-paper-media-audit.mjs --current <当前片.mp4> --reference <参考片.mp4> [--runtime <时间轴.json> --event-id <事件ID>]',
   '',
-  '可选：--ffmpeg <路径> --ffprobe <路径> --tesseract <路径>',
+  '可选：--runtime 与 --event-id 绑定六个实录动作锚点；--ffmpeg、--ffprobe、--tesseract 指定工具路径。',
   '该命令只读、不写回执；诊断成功时退出码为 0，“动态不足”是诊断结果而非命令失败。',
 ].join('\n');
 
