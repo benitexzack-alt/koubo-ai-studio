@@ -25,6 +25,7 @@ import {
   assertR10OutputProbe,
   assertR10PairedAudioHashes,
   assertR10PairedVisualHashes,
+  assertR10SingleVisualMasterDerivation,
   assertR10SpeechPreservationMetrics,
   captureDirectorR10InputSnapshot,
   resolveDirectorR10OutputTarget,
@@ -433,6 +434,39 @@ try {
   expectCode('R10_DIAGNOSTIC_AUDIO_PAIR_IDENTICAL', () =>
     assertR10PairedAudioHashes(pairedAudioOutputs),
   );
+  const derivationOutputs = DIRECTOR_R10_DIAGNOSTIC_CONTRACT.compositionIds.map(
+    (compositionId, index) => ({
+      compositionId,
+      decodedAudioSha256: (index === 0 ? 'e' : 'f').repeat(64),
+    }),
+  );
+  const validDerivation = {
+    strategy: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.renderStrategy,
+    visualMasterCompositionId:
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.visualMasterCompositionId,
+    sfxAudioCompositionId:
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.sfxAudioCompositionId,
+    sourceAudioSha256: '9'.repeat(64),
+    sourceAudioDecodedSha256: derivationOutputs[0].decodedAudioSha256,
+    videoCodec: 'copy',
+    audioCodec: 'copy',
+  };
+  assert.equal(
+    assertR10SingleVisualMasterDerivation(validDerivation, derivationOutputs).status,
+    'single-visual-master-audio-mux-provenance-passed',
+  );
+  expectCode('R10_DIAGNOSTIC_AUDIO_MUX_PROVENANCE_MISMATCH', () =>
+    assertR10SingleVisualMasterDerivation(
+      {...validDerivation, sourceAudioDecodedSha256: '1'.repeat(64)},
+      derivationOutputs,
+    ),
+  );
+  expectCode('R10_DIAGNOSTIC_RENDER_DERIVATION_INVALID', () =>
+    assertR10SingleVisualMasterDerivation(
+      {...validDerivation, strategy: 'two-independent-video-renders'},
+      derivationOutputs,
+    ),
+  );
   const validSpeechMetrics = {
     correlation: 0.997,
     offsetMs: -42.5,
@@ -643,6 +677,9 @@ try {
   assert.match(runnerSource, /@remotion\/bundler/u);
   assert.match(runnerSource, /@remotion\/renderer/u);
   assert.match(runnerSource, /renderPair/u);
+  assert.match(runnerSource, /codec:\s*'aac'/u);
+  assert.match(runnerSource, /'-c:v',\s*'copy'/u);
+  assert.match(runnerSource, /single-render-stream-copy/u);
   assert.match(runnerSource, /overwrite:\s*false/u);
   assert.doesNotMatch(runnerSource, /remotion\s+render/u);
   assert.doesNotMatch(runnerSource, /release-validation|run-v72-production/u);

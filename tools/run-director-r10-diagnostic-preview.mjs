@@ -2,7 +2,7 @@
 
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {existsSync, readFileSync, rmSync} from 'node:fs';
+import {existsSync, mkdtempSync, readFileSync, rmSync, statSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import os from 'node:os';
 import path from 'node:path';
@@ -21,6 +21,7 @@ import {
   assertR10OutputProbe,
   assertR10PairedAudioHashes,
   assertR10PairedVisualHashes,
+  assertR10SingleVisualMasterDerivation,
   assertR10SpeechPreservationMetrics,
   captureDirectorR10InputSnapshot,
   captureExistingOutput,
@@ -384,6 +385,9 @@ const hashDecodedAudio = (outputPath) => {
   return match[1];
 };
 
+const hashFile = (filePath) =>
+  createHash('sha256').update(readFileSync(filePath)).digest('hex');
+
 const decodeMonoFloatAudio = ({inputPath, startSeconds, durationSeconds}) => {
   const args = ['-v', 'error', '-i', inputPath];
   if (startSeconds > 0) args.push('-ss', startSeconds.toFixed(6));
@@ -689,47 +693,227 @@ const openRenderContext = async (manifest) => {
   }
 };
 
+const renderComposition = async ({
+  context,
+  composition,
+  outputLocation,
+  codec,
+  progressLabel,
+}) => {
+  let lastReportedPercent = -1;
+  const options = {
+    serveUrl: context.serveUrl,
+    composition,
+    codec,
+    outputLocation,
+    frameRange: [0, DIRECTOR_R10_DIAGNOSTIC_CONTRACT.durationInFrames - 1],
+    audioBitrate: '192k',
+    concurrency: 2,
+    puppeteerInstance: context.browser,
+    overwrite: false,
+    logLevel: 'error',
+    onProgress: ({progress}) => {
+      const percent = Math.floor(progress * 100);
+      if (percent !== lastReportedPercent && percent % 20 === 0) {
+        process.stdout.write(
+          `\r${progressLabel} ${String(percent).padStart(3, ' ')}%`,
+        );
+        lastReportedPercent = percent;
+      }
+    },
+  };
+  if (codec === 'h264') {
+    Object.assign(options, {
+      crf: 17,
+      pixelFormat: 'yuv420p',
+      audioCodec: 'aac',
+      x264Preset: 'slow',
+    });
+  }
+  await context.renderMedia(options);
+  process.stdout.write(`\r${progressLabel} 100%\n`);
+};
+
+const muxVisualMasterWithSfxAudio = ({
+  visualMasterPath,
+  sfxAudioPath,
+  outputPath,
+}) => {
+  const result = spawnSync(
+    'ffmpeg',
+    [
+      '-v',
+      'error',
+      '-nostdin',
+      '-n',
+      '-i',
+      visualMasterPath,
+      '-i',
+      sfxAudioPath,
+      '-map',
+      '0:v:0',
+      '-map',
+      '1:a:0',
+      '-c:v',
+      'copy',
+      '-c:a',
+      'copy',
+      '-map_metadata',
+      '0',
+      '-movflags',
+      '+faststart',
+      outputPath,
+    ],
+    {
+      cwd: projectRoot,
+      encoding: 'utf8',
+      maxBuffer: 4 * 1024 * 1024,
+    },
+  );
+  if (result.error || result.status !== 0) {
+    const details = [result.error?.message, result.stdout?.trim(), result.stderr?.trim()]
+      .filter(Boolean)
+      .join('\n');
+    throw new DirectorR10DiagnosticRenderError(
+      'R10_DIAGNOSTIC_AUDIO_MUX_FAILED',
+      `单画面母版音轨封装失败：${details || `退出码 ${result.status}`}`,
+    );
+  }
+};
+
+const removeTemporaryAudioSource = (directory) => {
+  const temporaryRoot = `${path.resolve(os.tmpdir())}${path.sep}`;
+  const resolved = path.resolve(directory);
+  if (
+    !resolved.startsWith(temporaryRoot) ||
+    !path.basename(resolved).startsWith('director-r10-audio-source-')
+  ) {
+    throw new DirectorR10DiagnosticRenderError(
+      'R10_DIAGNOSTIC_TEMP_AUDIO_PATH_INVALID',
+      '拒绝清理不受控的临时音频目录。',
+    );
+  }
+  rmSync(resolved, {recursive: true, force: true});
+};
+
 const renderPair = async ({manifest, target, onContext}) => {
   const context = await openRenderContext(manifest);
   onContext(context);
   const compositionById = new Map(
     context.compositions.map((composition) => [composition.id, composition]),
   );
-  for (const output of target.outputs) {
-    const composition = compositionById.get(output.compositionId);
-    if (!composition) {
+  const visualMasterOutput = target.outputs.find(
+    (output) =>
+      output.compositionId ===
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.visualMasterCompositionId,
+  );
+  const withSfxOutput = target.outputs.find(
+    (output) =>
+      output.compositionId ===
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.sfxAudioCompositionId,
+  );
+  const visualMasterComposition = compositionById.get(
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.visualMasterCompositionId,
+  );
+  const sfxAudioComposition = compositionById.get(
+    DIRECTOR_R10_DIAGNOSTIC_CONTRACT.sfxAudioCompositionId,
+  );
+  if (
+    !visualMasterOutput ||
+    !withSfxOutput ||
+    !visualMasterComposition ||
+    !sfxAudioComposition
+  ) {
+    throw new DirectorR10DiagnosticRenderError(
+      'R10_DIAGNOSTIC_COMPOSITION_PAIR_INCOMPLETE',
+      '渲染上下文缺少固定画面母版或有音效音频 composition。',
+    );
+  }
+  const temporaryDirectory = mkdtempSync(
+    path.join(os.tmpdir(), 'director-r10-audio-source-'),
+  );
+  const sfxAudioPath = path.join(temporaryDirectory, 'with-sfx-audio.m4a');
+  try {
+    await renderComposition({
+      context,
+      composition: sfxAudioComposition,
+      outputLocation: sfxAudioPath,
+      codec: 'aac',
+      progressLabel: `${sfxAudioComposition.id} 音频母带`,
+    });
+    const sfxAudioStat = statSync(sfxAudioPath);
+    if (!sfxAudioStat.isFile() || sfxAudioStat.size <= 0) {
       throw new DirectorR10DiagnosticRenderError(
-        'R10_DIAGNOSTIC_COMPOSITION_PAIR_INCOMPLETE',
-        `渲染上下文缺少 ${output.compositionId}。`,
+        'R10_DIAGNOSTIC_SFX_AUDIO_SOURCE_INVALID',
+        'Remotion 有音效音频母带缺失或为空。',
       );
     }
-    let lastReportedPercent = -1;
-    await context.renderMedia({
-      serveUrl: context.serveUrl,
-      composition,
+    const sourceAudioSha256 = hashFile(sfxAudioPath);
+    const sourceAudioDecodedSha256 = hashDecodedAudio(sfxAudioPath);
+    await renderComposition({
+      context,
+      composition: visualMasterComposition,
+      outputLocation: visualMasterOutput.absolutePath,
       codec: 'h264',
-      outputLocation: output.absolutePath,
-      frameRange: [0, DIRECTOR_R10_DIAGNOSTIC_CONTRACT.durationInFrames - 1],
-      crf: 17,
-      pixelFormat: 'yuv420p',
-      audioCodec: 'aac',
-      audioBitrate: '192k',
-      x264Preset: 'slow',
-      concurrency: 2,
-      puppeteerInstance: context.browser,
-      overwrite: false,
-      logLevel: 'error',
-      onProgress: ({progress}) => {
-        const percent = Math.floor(progress * 100);
-        if (percent !== lastReportedPercent && percent % 20 === 0) {
-          process.stdout.write(
-            `\r${output.compositionId} ${String(percent).padStart(3, ' ')}%`,
-          );
-          lastReportedPercent = percent;
-        }
-      },
+      progressLabel: `${visualMasterComposition.id} 画面母版`,
     });
-    process.stdout.write(`\r${output.compositionId} 100%\n`);
+    const visualMasterBeforeMux = await captureExistingOutput(
+      visualMasterOutput.absolutePath,
+      {
+        projectRoot,
+        label: 'R10 无音效画面母版（封装前）',
+      },
+    );
+    if (!visualMasterBeforeMux.exists || existsSync(withSfxOutput.absolutePath)) {
+      throw new DirectorR10DiagnosticRenderError(
+        'R10_DIAGNOSTIC_MUX_TARGET_STATE_INVALID',
+        '画面母版缺失或有音效输出已存在，拒绝封装。',
+      );
+    }
+    muxVisualMasterWithSfxAudio({
+      visualMasterPath: visualMasterOutput.absolutePath,
+      sfxAudioPath,
+      outputPath: withSfxOutput.absolutePath,
+    });
+    const visualMasterAfterMux = await captureExistingOutput(
+      visualMasterOutput.absolutePath,
+      {
+        projectRoot,
+        label: 'R10 无音效画面母版（封装后）',
+      },
+    );
+    if (
+      !visualMasterAfterMux.exists ||
+      stableJson({
+        sha256: visualMasterBeforeMux.sha256,
+        bytes: visualMasterBeforeMux.bytes,
+        identity: visualMasterBeforeMux.identity,
+      }) !==
+        stableJson({
+          sha256: visualMasterAfterMux.sha256,
+          bytes: visualMasterAfterMux.bytes,
+          identity: visualMasterAfterMux.identity,
+        })
+    ) {
+      throw new DirectorR10DiagnosticRenderError(
+        'R10_DIAGNOSTIC_VISUAL_MASTER_DRIFT_DURING_MUX',
+        '音轨封装期间无音效画面母版发生漂移。',
+      );
+    }
+    return {
+      strategy: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.renderStrategy,
+      visualMasterCompositionId:
+        DIRECTOR_R10_DIAGNOSTIC_CONTRACT.visualMasterCompositionId,
+      sfxAudioCompositionId:
+        DIRECTOR_R10_DIAGNOSTIC_CONTRACT.sfxAudioCompositionId,
+      sourceAudioSha256,
+      sourceAudioDecodedSha256,
+      sourceAudioBytes: sfxAudioStat.size,
+      videoCodec: 'copy',
+      audioCodec: 'copy',
+    };
+  } finally {
+    removeTemporaryAudioSource(temporaryDirectory);
   }
 };
 
@@ -881,6 +1065,14 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
     },
     validator: validatorPreRender,
     remotion: manifest.remotion,
+    renderStrategy: {
+      id: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.renderStrategy,
+      visualMasterCompositionId:
+        DIRECTOR_R10_DIAGNOSTIC_CONTRACT.visualMasterCompositionId,
+      sfxAudioCompositionId:
+        DIRECTOR_R10_DIAGNOSTIC_CONTRACT.sfxAudioCompositionId,
+      videoDerivation: 'single-render-stream-copy',
+    },
     output: {
       root: manifest.output.root,
       runDirectory: manifest.output.runDirectory,
@@ -897,8 +1089,9 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
   });
 
   let renderContext = null;
+  let renderDerivation = null;
   try {
-    await renderPair({
+    renderDerivation = await renderPair({
       manifest,
       target,
       onContext: (context) => {
@@ -922,6 +1115,10 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
     const outputs = await inspectOutputs(target, {strict: true});
     const visualPairAudit = assertR10PairedVisualHashes(outputs);
     const audioPairAudit = assertR10PairedAudioHashes(outputs);
+    const renderDerivationAudit = assertR10SingleVisualMasterDerivation(
+      renderDerivation,
+      outputs,
+    );
     const speechPreservationAudit = auditRecordedSpeechPreservation({
       manifest,
       target,
@@ -974,6 +1171,7 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
       inputsAfterRender: snapshotForReceipt(inputsAfterRender),
       inputsAfterInspection: snapshotForReceipt(inputsAfterInspection),
       outputs,
+      renderDerivationAudit,
       visualPairAudit,
       audioPairAudit,
       speechPreservationAudit,
@@ -1024,6 +1222,8 @@ export const runDirectorR10DiagnosticPreview = async (manifestArgument) => {
       userNormalSpeedReviewCompleted: false,
       releaseIntegration: 'forbidden',
       error: errorRecord(error),
+      renderStrategy: DIRECTOR_R10_DIAGNOSTIC_CONTRACT.renderStrategy,
+      renderDerivation,
       preflightReceipt: {
         fileName: path.basename(target.preflightReceiptPath),
         sha256: preflightFile.sha256,

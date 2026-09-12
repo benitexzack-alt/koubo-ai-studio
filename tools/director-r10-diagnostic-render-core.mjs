@@ -50,6 +50,9 @@ export const DIRECTOR_R10_DIAGNOSTIC_CONTRACT = Object.freeze({
   maximumSpeechRmsDeltaDb: 1,
   minimumCueDifferenceRmsDbfs: -55,
   minimumCueDifferencePeakDbfs: -45,
+  renderStrategy: 'single-visual-master-audio-mux-v1',
+  visualMasterCompositionId: 'LanzhouIndustryAIR10PilotR1NoSfx',
+  sfxAudioCompositionId: 'LanzhouIndustryAIR10PilotR1WithSfx',
   compositionIds: Object.freeze([
     'LanzhouIndustryAIR10PilotR1WithSfx',
     'LanzhouIndustryAIR10PilotR1NoSfx',
@@ -1190,6 +1193,67 @@ export const assertR10PairedAudioHashes = (outputs) => {
     status: 'decoded-audio-streams-distinct',
     withSfxDecodedAudioSha256: outputs[0].decodedAudioSha256,
     noSfxDecodedAudioSha256: outputs[1].decodedAudioSha256,
+  };
+};
+
+export const assertR10SingleVisualMasterDerivation = (derivation, outputs) => {
+  if (!isRecord(derivation)) {
+    fail(
+      'R10_DIAGNOSTIC_RENDER_DERIVATION_INVALID',
+      '单画面母版派生记录无效。',
+    );
+  }
+  if (
+    derivation.strategy !== DIRECTOR_R10_DIAGNOSTIC_CONTRACT.renderStrategy ||
+    derivation.visualMasterCompositionId !==
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.visualMasterCompositionId ||
+    derivation.sfxAudioCompositionId !==
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.sfxAudioCompositionId ||
+    derivation.videoCodec !== 'copy' ||
+    derivation.audioCodec !== 'copy' ||
+    typeof derivation.sourceAudioSha256 !== 'string' ||
+    !SHA256_PATTERN.test(derivation.sourceAudioSha256) ||
+    typeof derivation.sourceAudioDecodedSha256 !== 'string' ||
+    !SHA256_PATTERN.test(derivation.sourceAudioDecodedSha256)
+  ) {
+    fail(
+      'R10_DIAGNOSTIC_RENDER_DERIVATION_INVALID',
+      '诊断片必须由固定无音效画面母版与固定有音效音轨无损封装派生。',
+    );
+  }
+  if (!Array.isArray(outputs) || outputs.length !== 2) {
+    fail(
+      'R10_DIAGNOSTIC_RENDER_DERIVATION_OUTPUTS_INVALID',
+      '单画面母版派生审计缺少成对输出。',
+    );
+  }
+  const withSfxOutput = outputs.find(
+    (output) =>
+      output?.compositionId ===
+      DIRECTOR_R10_DIAGNOSTIC_CONTRACT.sfxAudioCompositionId,
+  );
+  if (
+    typeof withSfxOutput?.decodedAudioSha256 !== 'string' ||
+    withSfxOutput.decodedAudioSha256 !== derivation.sourceAudioDecodedSha256
+  ) {
+    fail(
+      'R10_DIAGNOSTIC_AUDIO_MUX_PROVENANCE_MISMATCH',
+      '有音效成片音轨与 Remotion 有音效音频母带不一致。',
+      {
+        expected: derivation.sourceAudioDecodedSha256,
+        actual: withSfxOutput?.decodedAudioSha256 ?? null,
+      },
+    );
+  }
+  return {
+    status: 'single-visual-master-audio-mux-provenance-passed',
+    strategy: derivation.strategy,
+    visualMasterCompositionId: derivation.visualMasterCompositionId,
+    sfxAudioCompositionId: derivation.sfxAudioCompositionId,
+    sourceAudioSha256: derivation.sourceAudioSha256,
+    sourceAudioDecodedSha256: derivation.sourceAudioDecodedSha256,
+    videoCodec: derivation.videoCodec,
+    audioCodec: derivation.audioCodec,
   };
 };
 
