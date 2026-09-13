@@ -1,0 +1,275 @@
+{
+  "schemaVersion": "koubo-runninghub-video-qa/v1",
+  "status": "ready-for-user-review-partial-pass",
+  "generatedAt": "2026-09-13T13:03:33Z",
+  "taskId": "20260912_ai_no_new_business_model_director_v2_r3",
+  "sourceVideoDirectory": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/01_素材投放区/04_纸艺视频",
+  "sourcePromptManifest": {
+    "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/runninghub-image-to-video-prompts.v1.json",
+    "sha256": "9100896a55ce57945fd5bed7a47d3bcec954cf9e824ca8af525a8a8cbad65e03"
+  },
+  "sourceIncidentReceipt": {
+    "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/runninghub-unauthorized-generation-incident.v1.json",
+    "sha256": "bda7d895cbd1860f00cb68077349d6c96563bfaa26ecc305302d20518409b5f9"
+  },
+  "scope": {
+    "inspectionOnly": true,
+    "sourceVideosModified": false,
+    "renamedOrMoved": false,
+    "editPerformed": false,
+    "publicationPerformed": false
+  },
+  "mappingMethod": {
+    "method": "first-frame-normalized-rmse-against-seven-accepted-text-baked-firstframes",
+    "sequenceNameAssumptionUsed": false,
+    "result": "unique-high-confidence-7-of-7",
+    "note": "通用文件名的自然编号顺序与真实 P01-P07 顺序不一致，因此不得按 Finder 文件名猜映射。每个最佳匹配的归一化 RMSE 均为 0.0163 至 0.0219，下一候选均高于 0.2225。"
+  },
+  "technicalQa": {
+    "sceneCount": 7,
+    "ffprobePassed": 7,
+    "fullDecodePassed": 7,
+    "commonVideoSpec": {
+      "codec": "H.264 High",
+      "width": 2560,
+      "height": 1440,
+      "aspectRatio": "16:9",
+      "pixelFormat": "yuv420p",
+      "frameRate": 24,
+      "frameCount": 124,
+      "durationSeconds": 5.167
+    },
+    "blackFrameEvents": 0,
+    "hardSceneCutEventsAtThreshold025": 0,
+    "audioTrack": {
+      "presentOnAllScenes": true,
+      "codec": "AAC",
+      "sampleRateHz": 32000,
+      "channels": 2,
+      "policy": "do-not-use-in-final-edit",
+      "reason": "各段均带模型生成音轨，响度差异明显；正式剪辑应静音或丢弃，只保留真实口播与独立音效轨。"
+    }
+  },
+  "visualQa": {
+    "methods": [
+      "full-frame-six-point-contact-sheet",
+      "four-frames-per-second-contact-sheet",
+      "half-second-high-resolution-crops-for-all-18-chinese-labels",
+      "half-second-high-resolution-crops-for-P07-three-blank-cards",
+      "blackdetect",
+      "freezedetect",
+      "scene-cut-detection"
+    ],
+    "cameraStability": "pass-7-of-7",
+    "visibleLogoOrWatermark": "none-observed",
+    "chineseLabelStability": {
+      "status": "pass-18-of-18",
+      "result": "所有既有中文逐字保持，未见闪烁、改写、乱码、增删或脱离纸牌。",
+      "ocrBoundary": "整帧 Tesseract 对小字和斜牌并不稳定，因此最终结论来自原分辨率定点裁切的人工逐时点复核，不以整帧 OCR 漏识别冒充文字失败。"
+    },
+    "P07BlankCards": {
+      "status": "pass",
+      "result": "三张需求卡在全部半秒抽帧中保持纯空白，未出现问号、编号、勾叉、印章、图标、文字或其他记号。"
+    }
+  },
+  "summary": {
+    "fullLengthPassSceneIds": [
+      "P01",
+      "P02",
+      "P05",
+      "P06",
+      "P07"
+    ],
+    "fullLengthFailSceneIds": [
+      "P03",
+      "P04"
+    ],
+    "fullLengthCandidateCount": 5,
+    "conditionalOrRegenerateCount": 2,
+    "overallConclusion": "文件、映射、解码、机位和中文稳定性总体可靠；P03 与 P04 的动态对象一致性没有达到全长使用门槛。"
+  },
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "beatId": "B04",
+      "sourceFile": {
+        "fileName": "视频_4.mp4",
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/01_素材投放区/04_纸艺视频/视频_4.mp4",
+        "sha256": "0e2761f6ee00ba91fab833f0a07a64e2419033885345ca7a52e85211cdf34bcf"
+      },
+      "inputFirstFrameSha256": "04d022bd3058f8986c7f6ca2db39b400c34842dfa8bf20aa913b8f23d190e3d2",
+      "normalizedFirstFrameRmse": 0.0213237,
+      "nextBestRmse": 0.277102,
+      "technicalStatus": "PASS",
+      "textStatus": "PASS-成本-效率",
+      "motionStatus": "PASS",
+      "result": "红色手柄带动两枚滑块反向运动，左侧下降、右侧上升；机构、纸牌与机位稳定。",
+      "timingNote": "约 4.50 秒后进入结尾保持。",
+      "finalVerdict": "PASS"
+    },
+    {
+      "sceneId": "P02",
+      "beatId": "B07",
+      "sourceFile": {
+        "fileName": "视频_5.mp4",
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/01_素材投放区/04_纸艺视频/视频_5.mp4",
+        "sha256": "cb8d67ddc6643f54b5e464014f366c5b18ffc91a3bca97792718552f72d3b3f6"
+      },
+      "inputFirstFrameSha256": "68f5a099b1437db9941bee59756acc50207e2e31f0f21c4ced95ff0771b44263",
+      "normalizedFirstFrameRmse": 0.0191556,
+      "nextBestRmse": 0.238599,
+      "technicalStatus": "PASS",
+      "textStatus": "PASS-谁在提供-怎么付费",
+      "motionStatus": "PASS",
+      "result": "中央连杆抬升并连接两枚滑块，两枚滑块同步向对应对齐位移动；空框、轨道和纸牌保持稳定。",
+      "timingNote": "开头约 0.71 秒、结尾约 0.71 秒为稳定保持。",
+      "finalVerdict": "PASS"
+    },
+    {
+      "sceneId": "P03",
+      "beatId": "B12",
+      "sourceFile": {
+        "fileName": "视频_2.mp4",
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/01_素材投放区/04_纸艺视频/视频_2.mp4",
+        "sha256": "dc526010c602419288884a447f4397cc4b31bbb953f814e1d06b4f4234a49629"
+      },
+      "inputFirstFrameSha256": "0eb1b8b31e9aa84c5d5a831d27bcac45ee2fa032747379deafd3e91e05ddedfa",
+      "normalizedFirstFrameRmse": 0.0218916,
+      "nextBestRmse": 0.271371,
+      "technicalStatus": "PASS",
+      "textStatus": "PASS-散装货-标准箱",
+      "motionStatus": "FAIL-FULL-LENGTH",
+      "result": "纸箱、机位与文字稳定，但多种散装物件不是全部沿轨道连续进入；圆柱、棱锥等外围物件在过程中出现形态切换或消失感，且全段未检测到至少 0.5 秒的结尾保持，动作延续到最后。",
+      "salvageBoundary": "不得整段直接判定通过；如不重生，只能由剪辑阶段从中后段另选短窗并重新预览，当前未签发安全时窗。",
+      "finalVerdict": "FAIL"
+    },
+    {
+      "sceneId": "P04",
+      "beatId": "B18",
+      "sourceFile": {
+        "fileName": "视频.mp4",
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/01_素材投放区/04_纸艺视频/视频.mp4",
+        "sha256": "17ae6acf4be126b97224dd247a9d450ca88e4d21417b6ad6c1187a41629bf063"
+      },
+      "inputFirstFrameSha256": "1a10ab602aa3e827dc36c67a8bbf58b3595952d07c9e8681482e6d91f1364747",
+      "normalizedFirstFrameRmse": 0.0170719,
+      "nextBestRmse": 0.222577,
+      "technicalStatus": "PASS",
+      "textStatus": "PASS-行为信号-意图匹配-助眠枕头",
+      "motionStatus": "FAIL-FULL-LENGTH",
+      "result": "三枚红色圆片开始时数量正确并沿三路汇聚，但在交汇后只能持续辨认两枚，第三枚发生遮并或消失感；结尾两枚停在目标框前，未形成三枚均明确到达目标框的结果。枕头、纸牌和机位稳定。",
+      "salvageBoundary": "完整五秒不通过；若只取前三路汇聚到交叉点的前半段，仍须在剪辑小样中由用户确认其语义是否足够，不能冒充已完成目标到达。",
+      "finalVerdict": "FAIL"
+    },
+    {
+      "sceneId": "P05",
+      "beatId": "B24",
+      "sourceFile": {
+        "fileName": "视频_6.mp4",
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/01_素材投放区/04_纸艺视频/视频_6.mp4",
+        "sha256": "607d2fe169d7ee9991de0a4bbbeeb2ecddc1ef0837af5c81621c8996444335d4"
+      },
+      "inputFirstFrameSha256": "316409723f7361f412112b423170d740e9dde321f92c0d9565dd1d55adb19554",
+      "normalizedFirstFrameRmse": 0.0209648,
+      "nextBestRmse": 0.268359,
+      "technicalStatus": "PASS",
+      "textStatus": "PASS-信息采集-策略判断-交付把控",
+      "motionStatus": "PASS",
+      "result": "单一无五官人物沿弧形轨道从信息区移动到右侧策略区，没有复制、离轨或长出五官；其余结构稳定。",
+      "timingNote": "约 4.29 秒后进入结尾保持。",
+      "finalVerdict": "PASS"
+    },
+    {
+      "sceneId": "P06",
+      "beatId": "B26",
+      "sourceFile": {
+        "fileName": "视频_3.mp4",
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/01_素材投放区/04_纸艺视频/视频_3.mp4",
+        "sha256": "467a60d9a363a970033c7da279ae8b0426364981004d6d85c8f7fed2c77fa9af"
+      },
+      "inputFirstFrameSha256": "952e83855df1fa6dbb567a347f0c208073fbdcbe81fa9f5957627d68de307fe8",
+      "normalizedFirstFrameRmse": 0.0162564,
+      "nextBestRmse": 0.225568,
+      "technicalStatus": "PASS",
+      "textStatus": "PASS-客户需求-信息搬运-顾问交付-人类判断",
+      "motionStatus": "PASS",
+      "result": "中段无字手风琴纸链保持连续纸艺形态并向内收拢，托盘、判断台、人物与四张纸牌稳定。",
+      "timingNote": "开头约 0.88 秒保持；结尾保持约 0.58 秒，略短于下一批建议的一秒。",
+      "finalVerdict": "PASS"
+    },
+    {
+      "sceneId": "P07",
+      "beatId": "B30",
+      "sourceFile": {
+        "fileName": "视频_7.mp4",
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/01_素材投放区/04_纸艺视频/视频_7.mp4",
+        "sha256": "63eeb956325be6f8c3cdd314f0aa9d4eeba2dede710cfbc10e1481bb701684f6"
+      },
+      "inputFirstFrameSha256": "df7363508e151bb1555071854bca31eafc51b21f060a4f4e3053b4a5be12a30b",
+      "normalizedFirstFrameRmse": 0.0182225,
+      "nextBestRmse": 0.263852,
+      "technicalStatus": "PASS",
+      "textStatus": "PASS-找到客户-理解客户",
+      "motionStatus": "PASS",
+      "result": "红色拨杆完成从左轨到右轨的清晰切换；五枚目标、人物、两张文字牌及三张纯空白需求卡均保持稳定。",
+      "timingNote": "动作主要集中在约 1.83 至 3.79 秒，前后保持充足；剪辑时可按实际口播节奏选择入点。",
+      "finalVerdict": "PASS"
+    }
+  ],
+  "p0": [],
+  "p1": [
+    {
+      "sceneId": "P03",
+      "issue": "外围散装物件存在形态切换或消失感，且没有清晰结尾保持，完整五秒不宜直接入正式片。"
+    },
+    {
+      "sceneId": "P04",
+      "issue": "三枚圆片汇聚后只剩两枚可持续辨认，且没有三枚均进入目标框的明确结果。"
+    }
+  ],
+  "p2": [
+    {
+      "scope": "all-scenes",
+      "issue": "七个源文件均带 AAC 模型音轨，正式剪辑必须静音或丢弃。"
+    },
+    {
+      "scope": "download-mapping",
+      "issue": "通用文件名顺序与 P01-P07 实际顺序不一致；今后下载后必须先做首帧指纹映射，不能按“视频_2”等编号推断。"
+    }
+  ],
+  "qaArtifacts": {
+    "overallContactSheet": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/runninghub-video-qa-contact-sheet.v1.jpg",
+      "sha256": "82574ee8acf06d28afe5c4aab1ad20986c705ac32d1160c680e7e179683a1fcf"
+    },
+    "detailedEvidenceDirectory": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/01_素材投放区/04_纸艺视频/edit/verify",
+    "detailedArtifactsTrackedByGit": false
+  },
+  "lessonsForNextBatch": [
+    {
+      "id": "NEXT-01",
+      "rule": "RunningHub 下载文件必须在落盘时使用 P01-P07 唯一名称；若平台仍给通用名，先做首帧指纹匹配并签映射回执，再开始质检或剪辑。"
+    },
+    {
+      "id": "NEXT-02",
+      "rule": "五秒动作统一按约 0.0-0.6 秒首帧保持、0.6-3.8 秒单一主动作、3.8-5.0 秒最终保持设计，避免动作延续到最后一帧。"
+    },
+    {
+      "id": "NEXT-03",
+      "rule": "P03 类运输镜只保留少量、同形、固定数量的矩形纸箱，并让它们一开始就在唯一轨道上；禁止圆柱、棱锥和轨外散件，提示词明确不得瞬移、变形、消失或改数量。"
+    },
+    {
+      "id": "NEXT-04",
+      "rule": "P04 类汇聚镜为每枚圆片保留独立可见通道和终点槽，明确三枚全程分离可见、不得重叠、合并、消失，且必须在 3.8 秒前分别进入目标位。"
+    },
+    {
+      "id": "NEXT-05",
+      "rule": "画布准备仍由自动化完成，但配置完成后禁止用整节点容器点击切换；未获生成授权时增加请求级硬阻断，用户继续手动点击生成。"
+    },
+    {
+      "id": "NEXT-06",
+      "rule": "每批固定执行：首帧指纹映射、ffprobe、完整解码、4fps 全画面联系表、半秒文字定点裁切、空白卡复核、黑帧与突切检查；静态首帧 PASS 不得继承为动态 PASS。"
+    }
+  ],
+  "userAcceptance": "pending"
+}
