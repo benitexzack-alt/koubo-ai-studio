@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "koubo-continuous-playback-qa/v1",
+  "episodeId": "20260912_ai_no_new_business_model",
+  "jobId": "20260912-ai-no-new-business-model-v8-r1",
+  "performedAt": "2026-09-13T18:05:06Z",
+  "status": "passed-no-abnormal-freeze-or-long-silence",
+  "sourceVideo": {
+    "path": "edit/20260912_ai_no_new_business_model/08_正式成片/AI并没有发明新的商业模式_16x9_V8_R1_有音效_正式候选_v1.mp4",
+    "sha256": "00a144989f2675f610afa3a7a7f1782f8b46032cf762558fae5cbce0837bf08f",
+    "bytes": 712435645,
+    "frames": 11603,
+    "fps": 30
+  },
+  "silenceScan": {
+    "filter": "silencedetect=noise=-55dB:d=1.5",
+    "eventCount": 0,
+    "result": "未检出持续至少1.5秒且低于-55dB的全局静音事件"
+  },
+  "lowMotionScan": {
+    "filter": "freezedetect=n=-50dB:d=2.0",
+    "eventCount": 15,
+    "events": [
+      {"start": 10.4, "end": 12.433333, "route": "R01/B02"},
+      {"start": 38.333333, "end": 42.033333, "route": "R02/B06"},
+      {"start": 42.166667, "end": 44.366667, "route": "R02/B06"},
+      {"start": 46.0, "end": 49.233333, "route": "R02/B06"},
+      {"start": 52.866667, "end": 57.033333, "route": "R02/B06"},
+      {"start": 57.666667, "end": 59.733333, "route": "R02/B06"},
+      {"start": 61.7, "end": 64.9, "route": "R02/B06"},
+      {"start": 125.5, "end": 127.966667, "route": "R03/B13"},
+      {"start": 134.6, "end": 138.366667, "route": "R04B/B14"},
+      {"start": 139.933333, "end": 141.933333, "route": "R04C/B14"},
+      {"start": 142.066667, "end": 144.766667, "route": "R04C/B14"},
+      {"start": 220.4, "end": 222.533333, "route": "R05/B19"},
+      {"start": 222.666667, "end": 226.833333, "route": "R05/B19"},
+      {"start": 227.7, "end": 231.533333, "route": "R05/B19"},
+      {"start": 235.966667, "end": 238.633333, "route": "R05/B19"}
+    ],
+    "routeFinding": "15段全部落在静态公开资料主画面；未落入真人全屏、AI情景或纸艺视频路由",
+    "presenterInsetCheck": {
+      "region": {"x": 58, "y": 816, "width": 302, "height": 206},
+      "method": "逐段对左下真人小窗区域执行逐帧framemd5，并查看正式片首中尾帧",
+      "allFramesUniqueWithinEachInterval": true,
+      "maximumConsecutiveIdenticalFrames": 1
+    },
+    "result": "大面积静态资料使全帧运动量低，但左下真人小窗持续播放；判定为预期低运动停留，不是编码卡死"
+  },
+  "limits": {
+    "openingSfxSubjectiveAudibilityConfirmedByUser": false,
+    "userFullWatchConfirmed": false,
+    "note": "本回执只记录机器扫描和逐帧像素核查，不替代用户正常音量、正常速度完整观看。"
+  }
+}

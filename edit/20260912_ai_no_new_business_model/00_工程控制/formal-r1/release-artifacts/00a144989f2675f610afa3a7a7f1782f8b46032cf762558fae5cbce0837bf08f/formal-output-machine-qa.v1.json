@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "schema": "koubo-formal-output-machine-qa/v1",
+  "episodeId": "20260912_ai_no_new_business_model",
+  "jobId": "20260912-ai-no-new-business-model-v8-r1",
+  "createdAt": "2026-09-13T17:29:42.802Z",
+  "status": "passed-machine-technical-qa",
+  "scope": "正式 MP4 的受控运行、ffprobe、完整音视频解码、黑帧、响度和真峰值；不冒充人工视觉复核、完整观看或发布授权",
+  "output": {
+    "path": "edit/20260912_ai_no_new_business_model/08_正式成片/AI并没有发明新的商业模式_16x9_V8_R1_有音效_正式候选_v1.mp4",
+    "sha256": "00a144989f2675f610afa3a7a7f1782f8b46032cf762558fae5cbce0837bf08f",
+    "bytes": 712435645
+  },
+  "controlledRun": {
+    "path": "edit/20260912_ai_no_new_business_model/07_预览与质检/formal-r1/run-manifest.json",
+    "sha256": "c9294a82636f1dab9afc08bda327d5a79347a0f82dcd3eefb8bcee81e0e6944d",
+    "bytes": 32265
+  },
+  "stageReceipts": {
+    "formal-render": {
+      "path": "edit/20260912_ai_no_new_business_model/07_预览与质检/formal-r1/stage-success/20260912-ai-no-new-business-model-v8-r1.formal-render.json",
+      "sha256": "64450a32d0215092423cb44609c9a76e672aceadbf74bf71863f9f7857aa2a11",
+      "bytes": 565
+    },
+    "formal-audio": {
+      "path": "edit/20260912_ai_no_new_business_model/07_预览与质检/formal-r1/stage-success/20260912-ai-no-new-business-model-v8-r1.formal-audio.json",
+      "sha256": "e4ff7ffb6dfaff72bd63ea0e59c3807c2978f33b8de49eeef8348199cbabc53a",
+      "bytes": 552
+    },
+    "formal-qa": {
+      "path": "edit/20260912_ai_no_new_business_model/07_预览与质检/formal-r1/stage-success/20260912-ai-no-new-business-model-v8-r1.formal-qa.json",
+      "sha256": "aaea3c5f19dbd3859536493697907a6a95b0f5520d09cb895359c626e6119cac",
+      "bytes": 549
+    }
+  },
+  "productionPreflight": {
+    "route": "scoped-direct-export",
+    "jobSnapshotSha256": "16b91aeee06f0734d98cfbc747b64d1f2f1f355d9ee27a6885e0b0f49520b840",
+    "directorContractSha256": null,
+    "handoffBindingSha256": null,
+    "freezeReceiptSha256": null,
+    "scopedDirectExportSha256": "ae6f7c5e2064a61035cd30df8269c1ff65b2fc81d8208c8bd5104b9e149df3fc"
+  },
+  "checks": {
+    "ffprobe": "passed",
+    "fullVideoAndAudioDecode": "passed",
+    "streamCount": "passed-one-video-one-audio",
+    "h264Aac1920x1080At30Fps": "passed",
+    "frameCount": 11603,
+    "blackFrameIntervals": 0,
+    "integratedLoudnessLufs": -16.08,
+    "loudnessRangeLu": 5,
+    "truePeakDbtp": -2.12
+  },
+  "actualProbe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "mime_codec_string": "avc1.640028",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1088,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuvj420p",
+        "level": 40,
+        "color_range": "pc",
+        "color_space": "bt470bg",
+        "chroma_location": "center",
+        "field_order": "progressive",
+        "refs": 4,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/90000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 34809000,
+        "duration": "386.766667",
+        "bit_rate": "14499572",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "11603",
+        "nb_read_frames": "11603",
+        "extradata_size": 51,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "encoder": "Lavc61.19.100 libx264"
+        },
+        "side_data_list": [
+          {
+            "side_data_type": "ICC Profile"
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "mime_codec_string": "mp4a.40.2",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 18566400,
+        "duration": "386.800000",
+        "bit_rate": "227790",
+        "nb_frames": "18132",
+        "nb_read_frames": "18131",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/08_正式成片/AI并没有发明新的商业模式_16x9_V8_R1_有音效_正式候选_v1.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "386.800000",
+      "size": "712435645",
+      "bit_rate": "14734966",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf62.12.102",
+        "comment": "Made with Remotion 4.0.484"
+      }
+    }
+  },
+  "humanFullWatchConfirmed": false,
+  "published": false
+}

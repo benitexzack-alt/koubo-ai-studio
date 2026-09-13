@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "packageId": "20260913_ai_no_new_business_model_v8_r1_v1-package",
+  "validatedAt": "2026-09-13T17:55:38Z",
+  "status": "passed-ready-for-user-review",
+  "packageRoot": "edit/20260912_ai_no_new_business_model/09_发布包/2026-09-13_AI并没有发明新的商业模式_V8_R1",
+  "manifest": {
+    "path": "edit/20260912_ai_no_new_business_model/09_发布包/2026-09-13_AI并没有发明新的商业模式_V8_R1/发布包清单.v1.json",
+    "sha256": "8e2390573f597ae72859c25dded8165a294cae806898ce7aa41b7b2397b29dca",
+    "bytes": 3370
+  },
+  "checks": {
+    "allManifestFilesExist": true,
+    "allManifestHashesAndBytesMatch": true,
+    "packagedFormalIsHardlinkOfControlledFormal": true,
+    "packagedCoverIsHardlinkOfReviewedCurrentVideoFrame": true,
+    "packagedReleaseIsHardlinkOfCanonicalRelease": true,
+    "productionGate": "RPG2_OK",
+    "officialReleaseValidation": "passed"
+  },
+  "boundEvidence": {
+    "releaseRecord": {
+      "path": "workflow/releases/20260913_ai_no_new_business_model_v8_r1_v1.json",
+      "sha256": "33e7b94a30034cf0cadea8dbbc61f4c2eaab2706e3cd30aa6974ad26a5819814",
+      "bytes": 21864
+    },
+    "formalOutput": {
+      "path": "edit/20260912_ai_no_new_business_model/08_正式成片/AI并没有发明新的商业模式_16x9_V8_R1_有音效_正式候选_v1.mp4",
+      "sha256": "00a144989f2675f610afa3a7a7f1782f8b46032cf762558fae5cbce0837bf08f",
+      "bytes": 712435645
+    },
+    "runManifest": {
+      "path": "edit/20260912_ai_no_new_business_model/07_预览与质检/formal-r1/run-manifest.json",
+      "sha256": "c9294a82636f1dab9afc08bda327d5a79347a0f82dcd3eefb8bcee81e0e6944d",
+      "bytes": 32265
+    },
+    "machineQa": {
+      "path": "edit/20260912_ai_no_new_business_model/00_工程控制/formal-r1/release-artifacts/00a144989f2675f610afa3a7a7f1782f8b46032cf762558fae5cbce0837bf08f/formal-output-machine-qa.v1.json",
+      "sha256": "a2c344564190873814fdfa9e826780ff2aa6e1540206430f08af2685132fba01",
+      "bytes": 6819
+    },
+    "riskFrameReceipt": {
+      "path": "edit/20260912_ai_no_new_business_model/00_工程控制/formal-r1/release-artifacts/00a144989f2675f610afa3a7a7f1782f8b46032cf762558fae5cbce0837bf08f/release-risk-frame-receipt.v2.json",
+      "sha256": "e0e42f30ca8377a11316e63f61436f8a7d9b5264a3eb1664add837d23029a039",
+      "bytes": 18601
+    },
+    "visualReview": {
+      "path": "edit/20260912_ai_no_new_business_model/00_工程控制/formal-r1/release-artifacts/00a144989f2675f610afa3a7a7f1782f8b46032cf762558fae5cbce0837bf08f/final-output-visual-review.v1.json",
+      "sha256": "d3d08b14e35adb22c90b6193014e76d03c579cf2008af55d69b5631877d1367a",
+      "bytes": 3074
+    },
+    "copyReview": {
+      "path": "edit/20260912_ai_no_new_business_model/09_发布包/2026-09-13_AI并没有发明新的商业模式_V8_R1/发布包装.copy-review.json",
+      "sha256": "d26e9ed4fd4c598bd316b6488fd16b92dad30b9c68a8808b0fe45ef0c0e88b13",
+      "bytes": 16343
+    }
+  },
+  "remainingHumanGates": [
+    "用户以正常速度完整观看正式有声候选片后，release才可升级为verified。",
+    "公开发布前按当日客户端选项完成AI内容声明和素材权利复核。"
+  ],
+  "officialReleaseValidation": {
+    "command": "node tools/validate-release.mjs workflow/releases/20260913_ai_no_new_business_model_v8_r1_v1.json",
+    "stdout": "发布记录校验通过：20260913_ai_no_new_business_model_v8_r1_v1，状态=ready-for-user-review，正式输出SHA=00a144989f2675f610afa3a7a7f1782f8b46032cf762558fae5cbce0837bf08f",
+    "exitCode": 0
+  }
+}
