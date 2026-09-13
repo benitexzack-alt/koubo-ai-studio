@@ -292,7 +292,7 @@ const scenes = [
 const plan = {
   durationSeconds: visualPlan.canvas.durationSeconds,
   sourceVideo: visualPlan.audioPolicy.hostSource,
-  captionsSrc: 'data/actual-spoken.bilingual.candidate.v1.json',
+  captionsSrc: 'data/actual-spoken.bilingual.formal.v1.json',
   brandLabel: '超哥AI创业记',
   chapters,
   scenes,

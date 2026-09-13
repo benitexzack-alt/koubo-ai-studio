@@ -799,8 +799,8 @@ function parseSpokenMetrics(output) {
 }
 
 function parseCaptionMinimum(output) {
-  const match = String(output).match(/minScore=([0-9.]+)/u);
-  assert(match, 'RELEASE_CAPTION_METRICS', '无法从字幕同步校验读取最低分。');
+  const match = String(output).match(/minPrecision=([0-9.]+)/u);
+  assert(match, 'RELEASE_CAPTION_METRICS', '无法从逐字字幕同步校验读取最低贴合度。');
   return Number(match[1]);
 }
 
@@ -815,11 +815,10 @@ async function loadSpokenEvidence(job, baseline) {
     job.inputs.spokenSourcePolicy,
   ], {label: '实录来源严格校验'});
   const caption = run(process.execPath, [
-    'tools/check-bilingual-caption-sync.mjs',
+    'tools/check-verbatim-caption-sync.mjs',
     job.inputs.transcript,
     job.inputs.bilingualCaptions,
-    String(baseline.captionPolicy?.minimumSyncScore ?? 0.74),
-  ], {label: '字幕窗口同步校验'});
+  ], {label: '实录逐页逐字字幕同步校验'});
   const spokenMetrics = parseSpokenMetrics(spoken.stdout);
   const minimumScore = parseCaptionMinimum(caption.stdout);
   assert(minimumScore >= Number(baseline.captionPolicy?.minimumSyncScore ?? 0.74),
@@ -1056,7 +1055,7 @@ async function finalizeRelease() {
       },
       captionSync: {
         status: 'passed',
-        verifier: 'lcs-window-v1',
+        verifier: 'verbatim-v1',
         minimumScore: spoken.minimumScore,
         evidence: spoken.policyReference,
       },

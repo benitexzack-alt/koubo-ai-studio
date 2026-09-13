@@ -140,6 +140,8 @@ captions.forEach((caption, index) => {
 
 const average = (key) =>
   metrics.reduce((sum, item) => sum + item[key], 0) / Math.max(metrics.length, 1);
+const minimum = (key) =>
+  metrics.reduce((value, item) => Math.min(value, item[key]), Number.POSITIVE_INFINITY);
 
 for (const item of failures) {
   console.error(
@@ -162,7 +164,9 @@ for (const item of warnings) {
 console.log(
   `字幕页=${metrics.length} 平均贴合度=${average('precision').toFixed(3)} 平均覆盖度=${average(
     'coverage',
-  ).toFixed(3)} 失败=${failures.length} 警告=${warnings.length}`,
+  ).toFixed(3)} 最低贴合度=${minimum('precision').toFixed(3)} 最低覆盖度=${minimum(
+    'coverage',
+  ).toFixed(3)} minPrecision=${minimum('precision').toFixed(3)} 失败=${failures.length} 警告=${warnings.length}`,
 );
 
 if (failures.length > 0) {

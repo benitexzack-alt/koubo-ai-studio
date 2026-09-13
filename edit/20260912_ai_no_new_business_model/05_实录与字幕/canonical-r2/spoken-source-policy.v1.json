@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "canonicalSource": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "captionTextPolicy": "spoken-verbatim",
+  "englishTranslationSource": "canonical-spoken-chinese",
+  "compliance": {
+    "status": "passed",
+    "scope": "严格实录来源、四处低置信原声听辨与中英字幕绑定；只解锁本地正式候选，不表示全片已人工听校、完整观看或获准发布。"
+  },
+  "verification": {
+    "minimumGlobalPrecision": 0.97,
+    "minimumGlobalCoverage": 0.95,
+    "corrections": [],
+    "focusedAudioReviewResolution": "edit/20260912_ai_no_new_business_model/05_实录与字幕/canonical-r2/focused-audio-review-resolution.v1.json",
+    "reviewPackManifest": "edit/20260912_ai_no_new_business_model/05_实录与字幕/review-pack-r1/manifest.v1.json",
+    "userDecisionEvidence": "edit/20260912_ai_no_new_business_model/00_工程控制/formal-r1/audio-review-user-decision.v1.json",
+    "humanListeningCompleted": false,
+    "focusedHumanListeningCompleted": true,
+    "focusedUserDecisionIds": [
+      "U04",
+      "U05",
+      "U08",
+      "U09"
+    ],
+    "userFullWatchConfirmed": false
+  },
+  "knownLimitations": [
+    {
+      "id": "residual-medium-confidence-asr-spans",
+      "status": "retained-for-formal-candidate-full-watch",
+      "uncertaintyIds": [
+        "U01",
+        "U02",
+        "U03",
+        "U06",
+        "U07"
+      ],
+      "treatment": "保留当前实录 ASR 候选，不以拍摄前文稿覆盖；正式候选仍须用户完整观看。"
+    },
+    {
+      "id": "b23-few-hours-claim",
+      "status": "not-established-by-this-episode",
+      "treatment": "本条未做同任务受控计时，“几小时”不作为事实结论",
+      "approval": "edit/20260912_ai_no_new_business_model/00_工程控制/formal-r1/b23-correction-card-user-approval.v1.json"
+    }
+  ],
+  "authorizedEdit": "完整单条原声保留；沿用已留原始词与依据的机器候选正字，四处低置信说法按用户原声听辨选择确定；不删改、压缩或恢复拍摄前文稿。",
+  "publishAuthorized": false
+}

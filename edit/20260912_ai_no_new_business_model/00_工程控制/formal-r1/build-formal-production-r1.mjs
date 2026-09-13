@@ -465,7 +465,7 @@ const MACHINE_TRANSCRIPT_NORMALIZATIONS = Object.freeze([
   {id: 'C09', pageId: 'cap-b23-p02', from: '专业调效', to: '专业调校'},
   {id: 'C10', pageId: 'cap-b23-p06', from: '报告出稿', to: '报告初稿'},
   {id: 'C11', pageId: 'cap-b24-p03', from: '交付把控上', to: '交付把控者'},
-  {id: 'C12', pageId: 'cap-b29-p02', from: '一个物件', to: '一个误解'},
+  {id: 'C12', pageId: 'cap-b29-p02', from: '常见的一个物件', to: '常见的一个误解'},
   {id: 'C13', pageId: 'cap-b29-p03', from: '港口收费驱通', to: '港口收费趋同'},
   {id: 'C14', pageId: 'cap-b30-p02', from: '链接成本趋劲于零', to: '连接成本趋近于零'},
   {id: 'C15', pageId: 'cap-b32-p02', from: '一页报复', to: '一夜暴富'},
@@ -1174,7 +1174,7 @@ const main = async () => {
     humanListeningScope: 'review-pack-four-low-confidence-spans-only',
     humanListeningCompletedForEntireVideo: false,
     fullWatchConfirmed: false,
-    residualMediumConfidenceUncertaintyIds,
+    residualMediumConfidenceUncertaintyIds: residualUncertaintyIds,
     limitation:
       '本回执不把四处局部听辨冒充全片人工听校，也不表示用户已完整观看正式候选。',
   };
@@ -1282,7 +1282,7 @@ const main = async () => {
     schemaVersion: 'koubo-sanitized-user-event-provenance/v1',
     episodeId: EPISODE_ID,
     sourceRollout: CURRENT_ROLLOUT,
-    sourceRolloutBytes: statSync(CURRENT_ROLLOUT).size,
+    sourceEvidenceLastOrdinal: Math.max(...directEvents.map((event) => event.ordinal)),
     extraction: 'exact-role-user-text-with-input-images-omitted',
     ordinals: [26132, 27560],
     messages: directEvents.map((event, index) => ({
@@ -1415,6 +1415,7 @@ const main = async () => {
   const fingerprintPaths = [
     profile.manifestPath,
     ...SCOPED_DIRECT_EXPORT_GATE_FILES,
+    'tools/check-verbatim-caption-sync.mjs',
     DIRECT_EXPORT_EVIDENCE_PATH,
     DIRECT_EXPORT_PROVENANCE_PATH,
     AUDIO_DECISION_PATH,
