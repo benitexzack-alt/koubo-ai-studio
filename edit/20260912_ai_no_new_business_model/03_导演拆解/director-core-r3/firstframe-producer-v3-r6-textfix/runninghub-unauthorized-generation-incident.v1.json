@@ -1,0 +1,360 @@
+{
+  "schemaVersion": "koubo-runninghub-unauthorized-generation-incident/v1",
+  "status": "incident-recorded-platform-generation-completed-unreviewed",
+  "severity": "P0-unauthorized-paid-generation",
+  "completionScope": "runninghub-ui-only",
+  "authorizationViolation": true,
+  "taskSubmitted": true,
+  "platformGenerationCompleted": true,
+  "videoGeneratedLocally": false,
+  "chargeObserved": true,
+  "recordedAt": "2026-09-13T12:31:33.196Z",
+  "taskId": "20260912_ai_no_new_business_model_director_v2_r3",
+  "requestId": "v2-paper-firstframe:20260912_ai_no_new_business_model_director_v2_r3:director-core-r3-paper-firstframe-r4-p06",
+  "targetCanvas": {
+    "provider": "RunningHub RHTV",
+    "canvasId": "2087479798165565442",
+    "url": "https://rhtv.runninghub.cn/project/canvas/2087479798165565442"
+  },
+  "authorizationBoundary": {
+    "userQuote": "好的，同意同意，我们改成5秒，现在继续把剩下的几个抓紧做好。",
+    "interpretedAndRecordedScope": {
+      "uploadAllowed": true,
+      "canvasConfigurationAllowed": true,
+      "durationSecondsAuthorized": 5,
+      "generationSubmissionAllowed": false,
+      "paidGenerationAllowed": false,
+      "downloadAllowed": false,
+      "publicReleaseAllowed": false,
+      "requiredStopPoint": "all-scenes-configured-and-read-back-before-start-generation"
+    },
+    "canvasPreparationAuthorization": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/canvas-preparation-authorization.v1.json",
+      "sha256": "1007e0cfdb8cde0811c56ccc41f1111158484bd014a0a03e9265533eb1b2949b"
+    },
+    "durationOverrideAuthorization": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/runninghub-duration-override-authorization.v1.json",
+      "sha256": "2671bcc6754a745010882dcd7f5924b19c291a83ad321946d1bb0b0b95f7733b"
+    },
+    "sourcePromptManifest": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/runninghub-image-to-video-prompts.v1.json",
+      "sha256": "9100896a55ce57945fd5bed7a47d3bcec954cf9e824ca8af525a8a8cbad65e03"
+    },
+    "sourceStaticUserAcceptance": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/first-frame-qa/text-baked-firstframes-user-acceptance.v1.json",
+      "sha256": "de803afea256958ee5cb029cdf6910fe69f9bacb745b634d936fd30de17c8431"
+    },
+    "historicalPreSubmissionCanvasReceipt": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/runninghub-canvas-fill-receipt.v1.json",
+      "sha256": "413e16130e085724a21f247e90dc71402d7c584db68f183b2f1fbe2cd5c525b0",
+      "preservedWithoutOverwrite": true
+    }
+  },
+  "intendedAction": "Upload and configure seven exact image-to-video pairs, read back all parameters, then stop before generation for user confirmation.",
+  "actualIncident": {
+    "summary": "During the final canvas audit, automation used generic clicks on dynamic React Flow video-node containers to change the selected node. Those interactions unintentionally reached generation controls in the expanded selected-node UI, and all seven configured nodes were submitted without user authorization.",
+    "generationButtonClickedByAutomation": true,
+    "submissionAuthorized": false,
+    "paidGenerationAuthorized": false,
+    "submittedSceneIds": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07"
+    ],
+    "completedSceneIdsAtFinalObservation": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07"
+    ],
+    "finalObservationAt": "2026-09-13T12:31:33.196Z",
+    "finalPageGeneratingText": [],
+    "finalPageQueuedOrSubmittedText": [],
+    "videosDownloaded": false,
+    "videoQaPerformed": false,
+    "userAcceptanceObtained": false
+  },
+  "configuration": {
+    "inputMode": "首帧",
+    "model": "MiniMax H3",
+    "resolution": "2K",
+    "durationSeconds": 5,
+    "aspectRatioPolicy": "inherit-first-frame-16:9",
+    "aspectRatioControlReadback": "not-exposed-by-current-minimax-h3-parameter-panel",
+    "aspectRatioExplicitlyVerified": false,
+    "promptOptimizationState": "idle"
+  },
+  "configurationReadbackBeforeIncident": {
+    "sceneIds": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07"
+    ],
+    "inputImageEdgeReadbackCountPerScene": 1,
+    "inputModeReadback": "首帧",
+    "inputModeActiveAll": true,
+    "promptReadbackExactAll": true,
+    "modelReadback": "MiniMax H3",
+    "modelReadbackExactAll": true,
+    "resolutionReadback": "2k",
+    "resolutionReadbackExactIgnoringCaseAll": true,
+    "parameterSummaryReadbackAll": "2k / 5秒",
+    "promptOptimizationReadbackAll": "idle",
+    "aspectRatioReadbackBoundary": "The current MiniMax H3 panel did not expose a separate aspect-ratio control, so 16:9 was inherited from the accepted first-frame files and was not independently verified in the UI."
+  },
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "beatId": "B04",
+      "pairId": "P01-prompt-pair-v1",
+      "pairSha256": "c7627e2d3477d65e5973f1d38ab609f9b986978de2189b2621042e20d9c0ea34",
+      "inputFirstFrame": {
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/text-baked-first-frames/P01_B04_first-frame-text-baked.png",
+        "sha256": "04d022bd3058f8986c7f6ca2db39b400c34842dfa8bf20aa913b8f23d190e3d2",
+        "imageNodeId": "node_1789297555057_095wc08"
+      },
+      "videoNodeId": "node_1789297989519_m93hxj4",
+      "edgeId": "e-node_1789297555057_095wc08-node_1789297989519_m93hxj4",
+      "imageToVideoPrompt": "基于已确认首帧，红色纸质手柄推动两枚滑块反向到位，左轨滑块下降、右轨滑块上升，固定机位，两块固定纸牌与其他物件保持不动，不生成文字。",
+      "imageToVideoPromptSha256": "7df9fb313185c121858b78bc5b45fba5a9fb73f4b23199da245a9f2c6be93c1c",
+      "finalUiState": "completed-play-icon",
+      "durationReadback": "00:00 / 00:05",
+      "submittedByAutomation": true,
+      "submissionAuthorized": false,
+      "qaStatus": "not-performed"
+    },
+    {
+      "sceneId": "P02",
+      "beatId": "B07",
+      "pairId": "P02-prompt-pair-v1",
+      "pairSha256": "08ba4a19042947e4d8e0274e0315758b8eb33a51cb78d502f324f2f8c2860e22",
+      "inputFirstFrame": {
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/text-baked-first-frames/P02_B07_first-frame-text-baked.png",
+        "sha256": "68f5a099b1437db9941bee59756acc50207e2e31f0f21c4ced95ff0771b44263",
+        "imageNodeId": "node_1789301835105_qhor4y9"
+      },
+      "videoNodeId": "node_1789301936983_ikcmwlr",
+      "edgeId": "e-node_1789301835105_qhor4y9-node_1789301936983_ikcmwlr",
+      "imageToVideoPrompt": "基于已确认首帧，中央纸质连杆推动两枚滑块同步对齐，两枚滑块在各自短轨内到达空框位，固定机位，两块固定纸牌与其他物件保持不动，不生成文字。",
+      "imageToVideoPromptSha256": "32071d61725a5eabb07341368c32136a1520420d0a83fcf4d3474bd1129807cd",
+      "finalUiState": "completed-play-icon",
+      "submittedByAutomation": true,
+      "submissionAuthorized": false,
+      "qaStatus": "not-performed"
+    },
+    {
+      "sceneId": "P03",
+      "beatId": "B12",
+      "pairId": "P03-prompt-pair-v1",
+      "pairSha256": "8f0cdf4eb68d7d64b0bbf34116ab2da00928664948628f26f130c7f52c9d8c3d",
+      "inputFirstFrame": {
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/text-baked-first-frames/P03_B12_first-frame-text-baked.png",
+        "sha256": "0eb1b8b31e9aa84c5d5a831d27bcac45ee2fa032747379deafd3e91e05ddedfa",
+        "imageNodeId": "node_1789301892525_3qdhifp"
+      },
+      "videoNodeId": "node_1789302034758_7vwcda8",
+      "edgeId": "e-node_1789301892525_3qdhifp-node_1789302034758_7vwcda8",
+      "imageToVideoPrompt": "基于已确认首帧，散装纸块沿短轨整齐进入标准纸箱，纸箱位置和港口剪影保持不动，固定机位，两块固定纸牌不移动，不生成文字。",
+      "imageToVideoPromptSha256": "311d248a2af94627e239be1fc9099dc818d7f26873a2e0069f3354e1f676d52b",
+      "finalUiState": "completed-play-icon",
+      "submittedByAutomation": true,
+      "submissionAuthorized": false,
+      "qaStatus": "not-performed"
+    },
+    {
+      "sceneId": "P04",
+      "beatId": "B18",
+      "pairId": "P04-prompt-pair-v1",
+      "pairSha256": "ed5515f4eed956ef5e95ee104638215741495e3369b6e63e782d6ab34d8ce504",
+      "inputFirstFrame": {
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/text-baked-first-frames/P04_B18_first-frame-text-baked.png",
+        "sha256": "1a10ab602aa3e827dc36c67a8bbf58b3595952d07c9e8681482e6d91f1364747",
+        "imageNodeId": "node_1789301894707_dcjtokh"
+      },
+      "videoNodeId": "node_1789302038778_gewg3gz",
+      "edgeId": "e-node_1789301894707_dcjtokh-node_1789302038778_gewg3gz",
+      "imageToVideoPrompt": "基于已确认首帧，三枚红色信号点沿纸轨汇聚到目标框，枕头模型、三块固定纸牌和其他结构保持不动，固定机位，不生成文字。",
+      "imageToVideoPromptSha256": "4e685e6e87864dfb2fce45e10c4b4d2af900dc96d4c704ffac8c2dc0e0454439",
+      "finalUiState": "completed-play-icon",
+      "submittedByAutomation": true,
+      "submissionAuthorized": false,
+      "qaStatus": "not-performed"
+    },
+    {
+      "sceneId": "P05",
+      "beatId": "B24",
+      "pairId": "P05-prompt-pair-v1",
+      "pairSha256": "cdf41920625d169ebf5c758023ceee342cb78f1c94333fea0199e634aa1bf7b9",
+      "inputFirstFrame": {
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/text-baked-first-frames/P05_B24_first-frame-text-baked.png",
+        "sha256": "316409723f7361f412112b423170d740e9dde321f92c0d9565dd1d55adb19554",
+        "imageNodeId": "node_1789301896808_umy7hez"
+      },
+      "videoNodeId": "node_1789302042889_ehcelni",
+      "edgeId": "e-node_1789301896808_umy7hez-node_1789302042889_ehcelni",
+      "imageToVideoPrompt": "基于已确认首帧，顾问人物标记沿纸轨移到右侧策略区，左右工作区、三块固定纸牌和其他物件保持不动，固定机位，不生成文字。",
+      "imageToVideoPromptSha256": "08989028774e4c535375fbd5f80a69f1b1e847831d6855abd37dec721c6b6ea7",
+      "finalUiState": "completed-play-icon",
+      "submittedByAutomation": true,
+      "submissionAuthorized": false,
+      "qaStatus": "not-performed"
+    },
+    {
+      "sceneId": "P06",
+      "beatId": "B26",
+      "pairId": "P06-prompt-pair-v1",
+      "pairSha256": "d9894afe780f0307508584a5c25461a80e22a436a5061f3fdd40155fb2355d10",
+      "inputFirstFrame": {
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/text-baked-first-frames/P06_B26_first-frame-text-baked.png",
+        "sha256": "952e83855df1fa6dbb567a347f0c208073fbdcbe81fa9f5957627d68de307fe8",
+        "imageNodeId": "node_1789301898909_sseixij"
+      },
+      "videoNodeId": "node_1789302113751_iw5mv23",
+      "edgeId": "e-node_1789301898909_sseixij-node_1789302113751_iw5mv23",
+      "imageToVideoPrompt": "基于已确认首帧，中段纸链向内收拢成短链，左右托盘、人物判断台、四块固定纸牌与其他物件保持不动，固定机位，不生成文字。",
+      "imageToVideoPromptSha256": "37d2d45181c9742918098280b53a76605b8073eb305a11d71f1df137f780d21b",
+      "finalUiState": "completed-play-icon",
+      "submittedByAutomation": true,
+      "submissionAuthorized": false,
+      "qaStatus": "not-performed"
+    },
+    {
+      "sceneId": "P07",
+      "beatId": "B30",
+      "pairId": "P07-prompt-pair-v1",
+      "pairSha256": "63c948255dd3db0ade9fb3367c22662d09667b16655c36e844ebda9e17d7f22b",
+      "inputFirstFrame": {
+        "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/text-baked-first-frames/P07_B30_first-frame-text-baked.png",
+        "sha256": "df7363508e151bb1555071854bca31eafc51b21f060a4f4e3053b4a5be12a30b",
+        "imageNodeId": "node_1789301900966_1opi71e"
+      },
+      "videoNodeId": "node_1789302117879_ltewags",
+      "edgeId": "e-node_1789301900966_1opi71e-node_1789302117879_ltewags",
+      "imageToVideoPrompt": "基于已确认首帧，红色纸质拨杆从左轨切换到右轨，两组目标、人物纸偶、需求卡和两块固定纸牌保持不动，固定机位，不生成文字。",
+      "imageToVideoPromptSha256": "f9a69efde4805ccba7063e12ddeb530d2bbe530d89398962c593da7fa797a1ae",
+      "finalUiState": "completed-play-icon",
+      "submittedByAutomation": true,
+      "submissionAuthorized": false,
+      "qaStatus": "not-performed"
+    }
+  ],
+  "financialObservation": {
+    "currencyOrCreditUnit": "RunningHub page balance unit not independently identified",
+    "preIncidentStableBalance": 168.718,
+    "milestones": [
+      {
+        "balance": 153.318,
+        "completedSceneIdsObserved": [
+          "P01",
+          "P02",
+          "P06",
+          "P07"
+        ]
+      },
+      {
+        "balance": 149.468,
+        "completedSceneIdsObserved": [
+          "P01",
+          "P02",
+          "P05",
+          "P06",
+          "P07"
+        ],
+        "generatingSceneIdsObserved": [
+          "P03",
+          "P04"
+        ]
+      },
+      {
+        "observedAt": "2026-09-13T12:30:10.358Z",
+        "balance": 145.618,
+        "completedSceneIdsObserved": [
+          "P01",
+          "P02",
+          "P04",
+          "P05",
+          "P06",
+          "P07"
+        ],
+        "generatingSceneIdsObserved": [
+          "P03"
+        ]
+      },
+      {
+        "observedAt": "2026-09-13T12:31:33.196Z",
+        "balance": 141.768,
+        "completedSceneIdsObserved": [
+          "P01",
+          "P02",
+          "P03",
+          "P04",
+          "P05",
+          "P06",
+          "P07"
+        ]
+      }
+    ],
+    "finalObservedBalance": 141.768,
+    "observedDelta": -26.95,
+    "visiblePerGenerationCharge": 3.85,
+    "sevenTimesVisiblePerGenerationCharge": 26.95,
+    "observedDeltaMatchesSevenCharges": true,
+    "billingReceiptRetrieved": false,
+    "attribution": "The stable pre-incident balance decreased in exact 3.85 increments as the seven newly submitted nodes completed. This strongly matches the seven visible per-generation charges, but no independent billing ledger was retrieved."
+  },
+  "cancellationObservation": {
+    "cancelAttemptStarted": true,
+    "modalMeaning": "RunningHub stated that cancelling would not stop the generation request from continuing in the background and that consumed fees would not be refunded.",
+    "cancelConfirmed": false,
+    "reason": "Confirming cancellation would not have stopped backend execution or recovered the charge and would have removed useful on-canvas evidence. The dialog was dismissed without confirming cancellation."
+  },
+  "rootCause": {
+    "status": "provisional",
+    "mostLikelyCause": "Unsafe generic clicks on whole dynamic React Flow node containers were used during the final selection audit. A selected video node expands and contains generation controls, so the interaction target changed with UI reflow and generation controls were reached unintentionally.",
+    "exactPerClickMechanismProven": false,
+    "initialOverlapHypothesis": "All seven video nodes overlapped.",
+    "initialOverlapHypothesisStatus": "disproved-by-final-dom-position-readback",
+    "finalDomPositionEvidence": {
+      "P01": "translate(6908.51px, 6271.77px)",
+      "P02": "translate(6958.51px, 6704.99px)",
+      "P03": "translate(6908.51px, 7075.49px)",
+      "P04": "translate(6998.51px, 7480.71px)",
+      "P05": "translate(7378.51px, 8940.93px)",
+      "P06": "translate(7368.51px, 7071.36px)",
+      "P07": "translate(0px, 0px)"
+    },
+    "preventiveRule": "Never select or audit a RunningHub video node by clicking the generic whole-node container after configuration. Use non-clicking DOM readback, stable node-id queries, and a hard browser-level interception guard that blocks generation network requests until explicit user authorization."
+  },
+  "containment": {
+    "mutatingUiActionsStoppedAfterDetection": true,
+    "furtherGenerationClicks": false,
+    "cancelConfirmed": false,
+    "nodesDeleted": false,
+    "nodesRetried": false,
+    "videosDownloaded": false,
+    "videosPublished": false,
+    "browserStatePreservedForUserInspection": true
+  },
+  "remainingGates": {
+    "generatedFilesLocallyAvailable": false,
+    "mappingQa": "not-performed-on-downloaded-files",
+    "ffprobe": "not-performed",
+    "fullDecode": "not-performed",
+    "visualMotionQa": "not-performed",
+    "chineseTextStabilityQa": "not-performed",
+    "userReview": "pending",
+    "nextActionRequiresNewUserAuthorization": true
+  },
+  "nextAllowedAction": "Do not download, quality-check, retry, delete, cancel, or publish. Wait for the user to give new explicit authorization for any next action concerning the unintentionally generated platform results."
+}
