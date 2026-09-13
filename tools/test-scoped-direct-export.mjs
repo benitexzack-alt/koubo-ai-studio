@@ -87,6 +87,9 @@ try {
     postshootValidation: artifact('post-validation', {skillExecuted: false}),
   };
   const profile = JSON.parse(readFileSync(resolve(root, 'workflow/active-director-profile.v1.json'), 'utf8'));
+  // 隔离固件要稳定验证旧 20260904 单片路由，不受真实活跃配置日后调整影响。
+  profile.effectiveFrom = '2026-09-04';
+  put('workflow/active-director-profile.v1.json', profile);
   const baseline = JSON.parse(readFileSync(resolve(root, 'workflow/production-baseline.v1.json'), 'utf8'));
   const visualPlan = {schemaVersion: 4, videoId: S.episodeId, videoTitle: '隔离合同测试', sourceVideo: media.source.path,
     baselineId: baseline.baselineId, styleReferenceIds: [], experiment: {id: 'v8-semantic-continuity-sfx', status: S.state},
@@ -261,6 +264,159 @@ try {
     assert.throws(() => api.assertScopedDirectExportRelease({release: changed, preflight}), {code: 'SDE_RELEASE_STATE'}); cases++;
   }
   assert.equal(api.assertScopedDirectExportRelease({release, preflight: {route: 'director-automation-v2'}}), false); cases++;
+
+  const N = api.SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL;
+  assert.equal(api.resolveScopedDirectExportProfile({videoId: N.episodeId}), N); cases++;
+  assert.equal(api.resolveScopedDirectExportProfile({job: {jobId: N.jobId, videoId: N.episodeId,
+    productionGate: {revisionId: N.revisionId, scopedDirectExport: {path: N.manifestPath}}}}), N); cases++;
+  assert.throws(() => api.resolveScopedDirectExportProfile({
+    videoId: N.episodeId,
+    job: {jobId: S.jobId, videoId: S.episodeId, productionGate: {revisionId: S.revisionId}},
+  }), {code: 'SDE_SCOPE'}); cases++;
+  assert.throws(() => api.resolveScopedDirectExportProfile({videoId: 'unregistered-episode'}), {code: 'SDE_SCOPE'}); cases++;
+  assert.equal(api.SCOPED_DIRECT_EXPORT_SCHEMA_AI_NO_NEW_BUSINESS_MODEL.properties.generatedVideos.minItems, 9); cases++;
+  assert.equal(api.SCOPED_MANUAL_POSTSHOOT_SCHEMA_AI_NO_NEW_BUSINESS_MODEL.properties.generatedVideos.maxItems, 9); cases++;
+
+  const currentEpisode = `edit/${N.episodeId}`;
+  const currentPublicDir = `remotion/public/${N.episodeId}`;
+  const currentEvidence = put(`${currentEpisode}/authorization.jsonl`, [
+    JSON.stringify({type: 'response_item', payload: {type: 'message', role: 'user', content: [{type: 'input_text', text: '以上问题修改完直出成片'}]}}),
+    JSON.stringify({type: 'event_msg', payload: {type: 'user_message', message: '正式MP4导出，然后发布包，完整的发布包也做出来。'}}),
+  ].join('\n'));
+  const currentMedia = {
+    source: put(`${currentEpisode}/source.mp4`, 'current-isolated-source-fixture'),
+    renderProxy: put(`${currentPublicDir}/proxy.mp4`, 'current-isolated-proxy-fixture'),
+    transcript: put(`${currentEpisode}/transcript.json`, {words: [{text: '实录测试'}]}),
+    bilingualCaptions: put(`${currentEpisode}/captions.json`, [{zh: '实录测试', en: 'Recorded test'}]),
+    spokenSourcePolicy: put(`${currentEpisode}/spoken.json`, {schemaVersion: 1, canonicalSource: 'recorded-audio',
+      scriptRole: 'comparison-only', captionTextPolicy: 'spoken-verbatim', englishTranslationSource: 'canonical-spoken-chinese',
+      compliance: {status: 'passed'}}),
+  };
+  const currentVideos = Array.from({length: N.generatedVideoCount}, (_, index) => ({
+    ...put(`${currentPublicDir}/manual-${index}.mp4`, `current-isolated-manual-video-${index}`),
+    provenance: 'user-generated-manual-import',
+  }));
+  put(N.entry, 'export const currentFixture = "no renderer is invoked";\n');
+  const currentTaskId = N.directorTaskId;
+  const currentArtifacts = {
+    preproductionRequest: put(N.preshootArtifacts.preproductionRequest, {taskId: currentTaskId, schemaVersion: 3}),
+    preproductionPlan: put(N.preshootArtifacts.preproductionPlan, {taskId: currentTaskId, approved: true}),
+    routeLock: put(N.preshootArtifacts.routeLock, {taskId: currentTaskId, status: 'local-handoff-ready'}),
+    preproductionValidation: put(N.preshootArtifacts.preproductionValidation, {taskId: currentTaskId, skillExecuted: true}),
+    postshootRequest: put(`${currentEpisode}/post-request.json`, {taskId: currentTaskId}),
+    postshootPlan: put(`${currentEpisode}/post-plan.json`, {taskId: currentTaskId, spokenAuthority: 'recorded-audio', scriptRole: 'comparison-only'}),
+    postshootValidation: put(`${currentEpisode}/post-validation.json`, {taskId: currentTaskId, skillExecuted: false}),
+  };
+  const currentVisualPlan = {schemaVersion: 4, videoId: N.episodeId, videoTitle: '本期九段素材隔离合同测试',
+    sourceVideo: currentMedia.source.path, baselineId: baseline.baselineId, styleReferenceIds: [],
+    experiment: {id: 'v8-semantic-continuity-sfx', status: N.state}, previewCoverage: [], layers: []};
+  const currentJob = {
+    schemaVersion: 1, jobId: N.jobId, videoId: N.episodeId, productionState: 'ready-for-production',
+    experiment: {id: 'v8-semantic-continuity-sfx', status: N.state, userPreviewApproved: false},
+    inputs: {...Object.fromEntries(Object.entries(currentMedia).map(([key, value]) => [key, value.path])),
+      visualPlan: put(`${currentEpisode}/visual.json`, currentVisualPlan).path,
+      sfxCueSheet: put(`${currentEpisode}/sfx.json`, {cues: []}).path,
+      fingerprintPaths: [N.manifestPath, ...SCOPED_DIRECT_EXPORT_GATE_FILES, currentEvidence.path,
+        ...Object.values(currentMedia).map((ref) => ref.path), ...Object.values(currentArtifacts).map((ref) => ref.path)]},
+    director: {required: true, profileId: profile.profileId, profileVersion: profile.profileVersion,
+      taskId: currentTaskId, phase: 'post-shoot', paperRequired: true, fallback: 'blocked', artifacts: currentArtifacts},
+    remotion: {root: 'remotion', entry: N.remotionEntry, publicDir: currentPublicDir,
+      compositionWithSfx: N.composition, compositionWithoutSfx: N.compositionWithoutSfx,
+      durationSeconds: 1, fps: 30, width: 1920, height: 1080},
+    preview: {output: null, ranges: [], renderWithoutSfxComparison: false},
+    riskFrames: {enabled: true, fullResolution: true, outputDirectory: N.riskFrameDirectory},
+    formal: {enabled: true, rawOutput: `${currentEpisode}/raw.mp4`, finalOutput: `${currentEpisode}/final.mp4`},
+    productionGate: {schema: 'director-production-entry-binding/v2', route: N.route, state: N.state,
+      revisionId: N.revisionId, userPreviewApproved: false, formalEnabled: true,
+      scopedDirectExport: {path: N.manifestPath, sha256: '0'.repeat(64)}},
+  };
+  const currentManualReceipt = {
+    schema: 'koubo-scoped-manual-postshoot/v1', taskId: currentTaskId, episodeId: N.episodeId,
+    jobId: N.jobId, revisionId: N.revisionId, phase: 'post-shoot', status: 'manual-import-bound',
+    provenance: 'user-generated-manual-import', skillExecuted: false, skillPackageAccepted: false,
+    userPreviewApproved: false, spokenAuthority: 'recorded-audio', scriptRole: 'comparison-only',
+    bindings: {...Object.fromEntries(Object.entries(currentArtifacts).filter(([key]) => key !== 'postshootValidation')),
+      ...Object.fromEntries(['source', 'transcript', 'bilingualCaptions', 'spokenSourcePolicy'].map((key) => [key, currentMedia[key]])),
+      visualPlan: {path: currentJob.inputs.visualPlan, sha256: sha(readFileSync(resolve(root, currentJob.inputs.visualPlan)))},
+      compositionEntry: {path: N.entry, sha256: sha(readFileSync(resolve(root, N.entry))) }},
+    generatedVideos: currentVideos,
+  };
+  currentArtifacts.postshootValidation = put(currentArtifacts.postshootValidation.path, currentManualReceipt);
+  put(N.jobPath, currentJob);
+  const currentManifest = {
+    schema: N.schema, route: N.route, episodeId: N.episodeId, jobId: N.jobId, revisionId: N.revisionId,
+    jobPath: N.jobPath,
+    authorization: {kind: 'verified-user-direct-export', evidence: currentEvidence, format: 'codex-rollout-jsonl',
+      directExportMessage: {line: 2, quote: '正式MP4导出，然后发布包，完整的发布包也做出来。'},
+      skipPreviewMessage: {line: 1, quote: '以上问题修改完直出成片'}, independentSignature: false},
+    media: currentMedia, generatedVideos: currentVideos,
+    ...api.collectScopedDirectExportBindings({projectRoot: root, job: currentJob}),
+    outputs: {rawOutput: currentJob.formal.rawOutput, finalOutput: currentJob.formal.finalOutput},
+    allowedCommands: ['doctor', 'fingerprint', 'risk-frames', 'formal', 'formal-audio', 'qa', 'release-validation'],
+    constraints: {previewApproved: false, fullWatchConfirmed: false, publishAuthorized: false, providerCallsAllowed: false},
+  };
+  const sealCurrent = (manifestValue = currentManifest, jobValue = currentJob, pin = true) => {
+    const reference = put(N.manifestPath, manifestValue);
+    jobValue.productionGate.scopedDirectExport.sha256 = reference.sha256;
+    put(N.jobPath, jobValue);
+    const oldFixturePin = sha(readFileSync(resolve(root, S.manifestPath)));
+    const source = originalModule
+      .replace(/export const SCOPED_DIRECT_EXPORT_MANIFEST_SHA256 = (?:null|'[a-f0-9]{64}');/u,
+        `export const SCOPED_DIRECT_EXPORT_MANIFEST_SHA256 = '${oldFixturePin}';`)
+      .replace(/export const SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL_MANIFEST_SHA256 = (?:null|'[a-f0-9]{64}');/u,
+        `export const SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL_MANIFEST_SHA256 = ${pin ? `'${reference.sha256}'` : 'null'};`);
+    writeFileSync(modulePath, source);
+  };
+  const runCurrent = (command = 'formal', expression = null) => {
+    const result = spawnSync(process.execPath, ['--input-type=module', '-e', expression ?? `
+      import {readFileSync} from 'node:fs';
+      import {assertScopedDirectExport} from './tools/scoped-direct-export-core.mjs';
+      const job = JSON.parse(readFileSync(${JSON.stringify(N.jobPath)}, 'utf8'));
+      try { const result = assertScopedDirectExport({projectRoot: process.cwd(), job, command: ${JSON.stringify(command)}}); console.log(JSON.stringify({ok: result.ok, episodeId: result.episodeId})); }
+      catch (error) { console.log(JSON.stringify({ok: false, code: error.code, message: error.message})); }
+    `], {cwd: root, encoding: 'utf8'});
+    assert.equal(result.status, 0, result.stderr);
+    return JSON.parse(result.stdout.trim());
+  };
+  sealCurrent();
+  assert.deepEqual(runCurrent(), {ok: true, episodeId: N.episodeId}); cases++;
+  const currentVisualResult = spawnSync(process.execPath,
+    ['tools/validate-visual-plan.mjs', currentJob.inputs.visualPlan], {cwd: root, encoding: 'utf8'});
+  assert.equal(currentVisualResult.status, 0, `${currentVisualResult.stdout}\n${currentVisualResult.stderr}`); cases++;
+  const wrongCurrentCount = structuredClone(currentManifest);
+  wrongCurrentCount.generatedVideos.pop();
+  sealCurrent(wrongCurrentCount);
+  assert.equal(runCurrent().code, 'SDE_SCHEMA'); cases++;
+  sealCurrent(currentManifest, currentJob, false);
+  assert.equal(runCurrent().code, 'SDE_PIN_NOT_SET'); cases++;
+  sealCurrent();
+  const crossPeriod = runCurrent('formal', `
+    import {readFileSync} from 'node:fs';
+    import {assertScopedDirectExport} from './tools/scoped-direct-export-core.mjs';
+    const job = JSON.parse(readFileSync(${JSON.stringify(N.jobPath)}, 'utf8'));
+    try { assertScopedDirectExport({projectRoot: process.cwd(), job, jobPath: ${JSON.stringify(S.jobPath)}}); console.log('{}'); }
+    catch (error) { console.log(JSON.stringify({code: error.code})); }
+  `);
+  assert.equal(crossPeriod.code, 'SDE_SCOPE'); cases++;
+  const badCurrentComposition = structuredClone(currentJob);
+  badCurrentComposition.remotion.compositionWithSfx = S.composition;
+  sealCurrent(currentManifest, badCurrentComposition);
+  assert.equal(runCurrent().code, 'SDE_COMPOSITION_SCOPE'); cases++;
+  const badCurrentPreshoot = structuredClone(currentJob);
+  badCurrentPreshoot.director.artifacts.preproductionRequest.path = api.SCOPED_PRESHOOT_ARTIFACTS.preproductionRequest;
+  sealCurrent(currentManifest, badCurrentPreshoot);
+  assert.equal(runCurrent().code, 'SDE_PRESHOOT_BINDING'); cases++;
+  sealCurrent();
+  const currentRelease = {videoId: N.episodeId, status: 'ready-for-user-review',
+    productionGate: {scopedDirectExportSha256: 'c'.repeat(64)}, production: {previewOutput: null},
+    userReview: {directFinalAuthorized: true, previewApproved: false, fullWatchConfirmed: false},
+    publish: {status: 'not-published'}};
+  const currentPreflight = {route: N.route, jobId: N.jobId, revisionId: N.revisionId,
+    scopedDirectExportSha256: 'c'.repeat(64)};
+  assert.equal(api.assertScopedDirectExportRelease({release: currentRelease, preflight: currentPreflight}), true); cases++;
+  assert.throws(() => api.assertScopedDirectExportRelease({release: currentRelease,
+    preflight: {...currentPreflight, jobId: S.jobId, revisionId: S.revisionId}}), {code: 'SDE_SCOPE'}); cases++;
+
   console.log(JSON.stringify({ok: true, cases, scope: 'isolated-contract-and-rejection-tests', rendered: false, productionPinChanged: false}));
 } finally {
   assert.deepEqual(protectedPaths.map((path) => sha(readFileSync(resolve(projectRoot, path)))), before, '真实冻结表与签名核心必须不变');

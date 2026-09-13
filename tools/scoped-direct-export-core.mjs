@@ -14,6 +14,19 @@ import {
 } from '../skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs';
 
 export const SCOPED_DIRECT_EXPORT_MANIFEST_SHA256 = 'ba74d65e7bd59446718171aa38de6b0799092dbedb2180abd6c385587f28653e';
+export const SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL_MANIFEST_SHA256 = null;
+export const SCOPED_PRESHOOT_ARTIFACTS = Object.freeze(Object.fromEntries(Object.entries({
+  preproductionRequest: 'director-preproduction-request.v1.json',
+  preproductionPlan: 'director-preproduction-plan.v1.json',
+  routeLock: 'director-route-lock.v1.json',
+  preproductionValidation: 'director-validation-receipt.v1.json',
+}).map(([key, name]) => [key, `edit/20260904_gpt6_cybercab/04_导演拆解/paper-v3-r2/${name}`])));
+export const SCOPED_PRESHOOT_ARTIFACTS_AI_NO_NEW_BUSINESS_MODEL = Object.freeze({
+  preproductionRequest: 'edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues.v3.json',
+  preproductionPlan: 'edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues-user-approval.edit-release.v3.json',
+  routeLock: 'edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/director-cues-v2-handoff.v1.json',
+  preproductionValidation: 'edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/director-cues-v2-handoff-validation-receipt.v1.json',
+});
 export const SCOPED_DIRECT_EXPORT = Object.freeze({
   schema: 'koubo-scoped-direct-export/v1',
   route: 'scoped-direct-export',
@@ -27,6 +40,47 @@ export const SCOPED_DIRECT_EXPORT = Object.freeze({
   entry: 'remotion/src/gpt6-cybercab-v8-r1/index.tsx',
   composition: 'GPT6CybercabV8R1WithSfx',
   riskFrameDirectory: 'edit/20260904_gpt6_cybercab/08_预览与质检/formal-r1/frames',
+});
+export const SCOPED_DIRECT_EXPORT_GPT6_CYBERCAB_PROFILE = Object.freeze({
+  ...SCOPED_DIRECT_EXPORT,
+  remotionEntry: 'src/gpt6-cybercab-v8-r1/index.tsx',
+  compositionWithoutSfx: 'GPT6CybercabV8R1NoSfx',
+  compositionWithoutSfxRequired: false,
+  generatedVideoCount: 6,
+  manifestSha256: SCOPED_DIRECT_EXPORT_MANIFEST_SHA256,
+  preshootArtifacts: SCOPED_PRESHOOT_ARTIFACTS,
+  outputPrefixes: Object.freeze([
+    'edit/20260904_gpt6_cybercab/',
+    'outputs/20260904_gpt6_cybercab/',
+  ]),
+});
+export const SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL = Object.freeze({
+  schema: 'koubo-scoped-direct-export/v1',
+  route: 'scoped-direct-export',
+  state: 'scoped-direct-export-authorized',
+  episodeId: '20260912_ai_no_new_business_model',
+  jobId: '20260912-ai-no-new-business-model-v8-r1',
+  revisionId: 'ai-no-new-business-model-v8-r1',
+  directorTaskId: '20260912_ai_no_new_business_model_director_v2_r3',
+  jobPath: 'workflow/jobs/20260912_ai_no_new_business_model_v8_r1.production.json',
+  manifestPath: 'edit/20260912_ai_no_new_business_model/00_工程控制/formal-r1/scoped-direct-export.v1.json',
+  entry: 'remotion/src/ai-no-new-business-model-v8-candidate-r1/index.tsx',
+  remotionEntry: 'src/ai-no-new-business-model-v8-candidate-r1/index.tsx',
+  composition: 'AINoNewBusinessModel16x9-V8-R1-WithSfx',
+  compositionWithoutSfx: 'AINoNewBusinessModel16x9-V8-R1-NoSfx',
+  compositionWithoutSfxRequired: true,
+  riskFrameDirectory: 'edit/20260912_ai_no_new_business_model/07_预览与质检/formal-r1/frames',
+  generatedVideoCount: 9,
+  manifestSha256: SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL_MANIFEST_SHA256,
+  preshootArtifacts: SCOPED_PRESHOOT_ARTIFACTS_AI_NO_NEW_BUSINESS_MODEL,
+  outputPrefixes: Object.freeze([
+    'edit/20260912_ai_no_new_business_model/',
+    'outputs/20260912_ai_no_new_business_model/',
+  ]),
+});
+export const SCOPED_DIRECT_EXPORT_PROFILES = Object.freeze({
+  [SCOPED_DIRECT_EXPORT.episodeId]: SCOPED_DIRECT_EXPORT_GPT6_CYBERCAB_PROFILE,
+  [SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL.episodeId]: SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL,
 });
 export const SCOPED_DIRECT_EXPORT_GATE_FILES = Object.freeze([
   'tools/scoped-direct-export-core.mjs',
@@ -51,43 +105,37 @@ const digest = {type: 'string', pattern: SHA.source};
 const file = object({path: text, sha256: digest});
 const boundFile = object({path: text, sha256: digest, bytes: {type: 'integer', minimum: 1}});
 const message = object({line: {type: 'integer', minimum: 1}, quote: text});
-export const SCOPED_PRESHOOT_ARTIFACTS = Object.freeze(Object.fromEntries(Object.entries({
-  preproductionRequest: 'director-preproduction-request.v1.json',
-  preproductionPlan: 'director-preproduction-plan.v1.json',
-  routeLock: 'director-route-lock.v1.json',
-  preproductionValidation: 'director-validation-receipt.v1.json',
-}).map(([key, name]) => [key, `edit/20260904_gpt6_cybercab/04_导演拆解/paper-v3-r2/${name}`])));
-export const SCOPED_MANUAL_POSTSHOOT_SCHEMA = {
+const scopedManualPostshootSchemaFor = (profile) => ({
   $schema: 'https://json-schema.org/draft/2020-12/schema',
   ...object({
     schema: {const: 'koubo-scoped-manual-postshoot/v1'},
-    taskId: {const: SCOPED_DIRECT_EXPORT.directorTaskId},
-    episodeId: {const: SCOPED_DIRECT_EXPORT.episodeId},
-    jobId: {const: SCOPED_DIRECT_EXPORT.jobId},
-    revisionId: {const: SCOPED_DIRECT_EXPORT.revisionId},
+    taskId: {const: profile.directorTaskId},
+    episodeId: {const: profile.episodeId},
+    jobId: {const: profile.jobId},
+    revisionId: {const: profile.revisionId},
     phase: {const: 'post-shoot'}, status: {const: 'manual-import-bound'},
     provenance: {const: 'user-generated-manual-import'},
     skillExecuted: {const: false}, skillPackageAccepted: {const: false}, userPreviewApproved: {const: false},
     spokenAuthority: {const: 'recorded-audio'}, scriptRole: {const: 'comparison-only'},
     bindings: object(Object.fromEntries([
-      ...Object.keys(SCOPED_PRESHOOT_ARTIFACTS), 'postshootRequest', 'postshootPlan',
+      ...Object.keys(profile.preshootArtifacts), 'postshootRequest', 'postshootPlan',
       'source', 'transcript', 'bilingualCaptions', 'spokenSourcePolicy', 'visualPlan', 'compositionEntry',
     ].map((key) => [key, file]))),
-    generatedVideos: {type: 'array', minItems: 6, maxItems: 6, items: object({
+    generatedVideos: {type: 'array', minItems: profile.generatedVideoCount, maxItems: profile.generatedVideoCount, items: object({
       path: text, sha256: digest, provenance: {const: 'user-generated-manual-import'},
     })},
   }),
-};
-export const SCOPED_DIRECT_EXPORT_SCHEMA = {
+});
+const scopedDirectExportSchemaFor = (profile) => ({
   $schema: 'https://json-schema.org/draft/2020-12/schema',
   description: '父任务核对真实用户原文后固定清单摘要；仅作本条授权与完整性绑定，不提供独立签名或身份认证。',
   ...object({
-    schema: {const: SCOPED_DIRECT_EXPORT.schema},
-    route: {const: SCOPED_DIRECT_EXPORT.route},
-    episodeId: {const: SCOPED_DIRECT_EXPORT.episodeId},
-    jobId: {const: SCOPED_DIRECT_EXPORT.jobId},
-    revisionId: {const: SCOPED_DIRECT_EXPORT.revisionId},
-    jobPath: {const: SCOPED_DIRECT_EXPORT.jobPath},
+    schema: {const: profile.schema},
+    route: {const: profile.route},
+    episodeId: {const: profile.episodeId},
+    jobId: {const: profile.jobId},
+    revisionId: {const: profile.revisionId},
+    jobPath: {const: profile.jobPath},
     jobSnapshotSha256: digest,
     authorization: object({
       kind: {const: 'verified-user-direct-export'},
@@ -98,14 +146,16 @@ export const SCOPED_DIRECT_EXPORT_SCHEMA = {
       independentSignature: {const: false},
     }),
     media: object({source: file, renderProxy: file, transcript: file, bilingualCaptions: file, spokenSourcePolicy: file}),
-    generatedVideos: {type: 'array', minItems: 6, maxItems: 6, items: object({
+    generatedVideos: {type: 'array', minItems: profile.generatedVideoCount, maxItems: profile.generatedVideoCount, items: object({
       path: text, sha256: digest, provenance: {const: 'user-generated-manual-import'},
     })},
     boundFiles: {type: 'array', minItems: 1, items: boundFile},
     compositionBinding: object({
-      root: {const: 'remotion'}, entry: {const: 'src/gpt6-cybercab-v8-r1/index.tsx'},
-      publicDir: text, compositionWithSfx: {const: SCOPED_DIRECT_EXPORT.composition},
-      compositionWithoutSfx: {enum: [null, 'GPT6CybercabV8R1NoSfx']},
+      root: {const: 'remotion'}, entry: {const: profile.remotionEntry},
+      publicDir: text, compositionWithSfx: {const: profile.composition},
+      compositionWithoutSfx: profile.compositionWithoutSfxRequired
+        ? {const: profile.compositionWithoutSfx}
+        : {enum: [null, profile.compositionWithoutSfx]},
       durationSeconds: {type: 'number', exclusiveMinimum: 0}, fps: {type: 'number', exclusiveMinimum: 0},
       width: {type: 'integer', minimum: 1}, height: {type: 'integer', minimum: 1},
       controlledRemotionCli: object({linkPath: text, realTarget: text, targetSha256: digest, bytes: {type: 'integer', minimum: 1}}),
@@ -115,11 +165,49 @@ export const SCOPED_DIRECT_EXPORT_SCHEMA = {
     constraints: object({previewApproved: {const: false}, fullWatchConfirmed: {const: false},
       publishAuthorized: {const: false}, providerCallsAllowed: {const: false}}),
   }),
-};
+});
+export const SCOPED_MANUAL_POSTSHOOT_SCHEMA = scopedManualPostshootSchemaFor(SCOPED_DIRECT_EXPORT_GPT6_CYBERCAB_PROFILE);
+export const SCOPED_DIRECT_EXPORT_SCHEMA = scopedDirectExportSchemaFor(SCOPED_DIRECT_EXPORT_GPT6_CYBERCAB_PROFILE);
+export const SCOPED_MANUAL_POSTSHOOT_SCHEMA_AI_NO_NEW_BUSINESS_MODEL =
+  scopedManualPostshootSchemaFor(SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL);
+export const SCOPED_DIRECT_EXPORT_SCHEMA_AI_NO_NEW_BUSINESS_MODEL =
+  scopedDirectExportSchemaFor(SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL);
 
 const fail = (code, message) => { const error = new Error(message); error.code = code; throw error; };
 const same = (a, b) => stableJsonSha256ForProductionGateV2(a) === stableJsonSha256ForProductionGateV2(b);
 const hash = (value) => createHash('sha256').update(value).digest('hex');
+
+export function resolveScopedDirectExportProfile({
+  job = null,
+  jobPath = null,
+  videoId = null,
+  manifest = null,
+  manifestPath = null,
+  release = null,
+  preflight = null,
+} = {}) {
+  const selectors = [
+    ['episodeId', job?.videoId],
+    ['jobId', job?.jobId],
+    ['revisionId', job?.productionGate?.revisionId],
+    ['jobPath', jobPath],
+    ['manifestPath', job?.productionGate?.scopedDirectExport?.path],
+    ['episodeId', videoId],
+    ['episodeId', manifest?.episodeId],
+    ['jobId', manifest?.jobId],
+    ['revisionId', manifest?.revisionId],
+    ['jobPath', manifest?.jobPath],
+    ['manifestPath', manifestPath],
+    ['episodeId', release?.videoId],
+    ['jobId', preflight?.jobId],
+    ['revisionId', preflight?.revisionId],
+  ].filter(([, value]) => value != null);
+  if (selectors.length === 0) fail('SDE_SCOPE', '必须用已登记的 job、jobPath 或 videoId 精确选择单片直出配置');
+  const candidates = Object.values(SCOPED_DIRECT_EXPORT_PROFILES).filter((profile) =>
+    selectors.every(([key, value]) => profile[key] === value));
+  if (candidates.length !== 1) fail('SDE_SCOPE', '单片直出参数未精确命中唯一已登记配置，或存在跨期混用');
+  return candidates[0];
+}
 
 function validateSchema(value, schema, at = '$') {
   if ('const' in schema && value !== schema.const) fail('SDE_SCHEMA', `${at} 必须为 ${JSON.stringify(schema.const)}`);
@@ -167,31 +255,33 @@ function readFile(root, reference) {
 }
 
 export function assertScopedManualPostshoot({projectRoot, job, manifest, receipt}) {
-  validateSchema(receipt, SCOPED_MANUAL_POSTSHOOT_SCHEMA);
-  if (job.director?.taskId !== SCOPED_DIRECT_EXPORT.directorTaskId) fail('SDE_DIRECTOR_TASK', '必须沿用本条真实预拍 taskId');
+  const profile = resolveScopedDirectExportProfile({job, manifest});
+  validateSchema(receipt, scopedManualPostshootSchemaFor(profile));
+  if (job.director?.taskId !== profile.directorTaskId) fail('SDE_DIRECTOR_TASK', '必须沿用本条真实预拍 taskId');
   const expected = {...Object.fromEntries(Object.entries(job.director.artifacts)
     .filter(([key]) => key !== 'postshootValidation').map(([key, ref]) => [key, ref.path])),
     ...Object.fromEntries(['source', 'transcript', 'bilingualCaptions', 'spokenSourcePolicy', 'visualPlan'].map((key) => [key, job.inputs[key]])),
-    compositionEntry: SCOPED_DIRECT_EXPORT.entry};
+    compositionEntry: profile.entry};
   for (const [key, reference] of Object.entries(receipt.bindings)) {
-    if (reference.path !== expected[key] || (key in SCOPED_PRESHOOT_ARTIFACTS && reference.path !== SCOPED_PRESHOOT_ARTIFACTS[key])) fail('SDE_MANUAL_BINDING', `人工导入回执绑定不匹配：${key}`);
+    if (reference.path !== expected[key] || (key in profile.preshootArtifacts && reference.path !== profile.preshootArtifacts[key])) fail('SDE_MANUAL_BINDING', `人工导入回执绑定不匹配：${key}`);
     readFile(projectRoot, reference);
     if (!manifest.boundFiles.some((entry) => entry.path === reference.path && entry.sha256 === reference.sha256)) fail('SDE_MANUAL_BINDING', `人工导入凭证未进入本条完整绑定：${key}`);
   }
-  if (!same(receipt.generatedVideos, manifest.generatedVideos)) fail('SDE_MANUAL_MEDIA', '拍后回执必须逐项绑定清单中的六段人工素材');
+  if (!same(receipt.generatedVideos, manifest.generatedVideos)) fail('SDE_MANUAL_MEDIA', `拍后回执必须逐项绑定清单中的 ${profile.generatedVideoCount} 段人工素材`);
   return {status: 'manual-import-bound', skillExecuted: false, skillPackageAccepted: false, userPreviewApproved: false};
 }
 
 export function collectScopedDirectExportBindings({projectRoot = ROOT, job}) {
+  const profile = resolveScopedDirectExportProfile({job});
   const bindingJob = structuredClone(job);
   bindingJob.inputs = {...bindingJob.inputs, fingerprintPaths: (job.inputs?.fingerprintPaths ?? [])
-    .filter((entry) => ![SCOPED_DIRECT_EXPORT.manifestPath, SELF].includes(entry))};
+    .filter((entry) => ![profile.manifestPath, SELF].includes(entry))};
   return {
     jobSnapshotSha256: computeProductionJobSnapshotSha256V2(job),
     // The pinned manifest and this pin-bearing module cannot hash themselves.
     // Both remain in the live preflight closure and runner fingerprint.
     boundFiles: collectProductionBoundFilesV2({projectRoot, job: bindingJob})
-      .filter((entry) => ![SCOPED_DIRECT_EXPORT.manifestPath, SELF].includes(entry.path)),
+      .filter((entry) => ![profile.manifestPath, SELF].includes(entry.path)),
     compositionBinding: computeProductionCompositionBindingV2(job, {projectRoot}),
   };
 }
@@ -205,34 +295,47 @@ function userText(line) {
   fail('SDE_USER_MESSAGE', '授权证据必须定位到真实 user 消息，不接受助手总结或工具输出');
 }
 
-export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = SCOPED_DIRECT_EXPORT.jobPath, command = 'formal'}) {
+export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = null, command = 'formal'}) {
   const root = resolve(projectRoot);
-  const relativeJob = isAbsolute(jobPath) ? relative(root, jobPath).split(sep).join('/') : jobPath;
-  if (relativeJob !== SCOPED_DIRECT_EXPORT.jobPath || job?.jobId !== SCOPED_DIRECT_EXPORT.jobId || job?.videoId !== SCOPED_DIRECT_EXPORT.episodeId) fail('SDE_SCOPE', '直出路径只适用于本条固定 job 与 episode');
+  const suppliedRelativeJob = jobPath == null ? null : (isAbsolute(jobPath) ? relative(root, jobPath).split(sep).join('/') : jobPath);
+  const profile = resolveScopedDirectExportProfile({job, jobPath: suppliedRelativeJob});
+  const relativeJob = suppliedRelativeJob ?? profile.jobPath;
+  if (relativeJob !== profile.jobPath || job?.jobId !== profile.jobId || job?.videoId !== profile.episodeId) fail('SDE_SCOPE', '直出路径只适用于本条固定 job 与 episode');
   if (!same(JSON.parse(readFileSync(inside(root, relativeJob), 'utf8')), job)) fail('SDE_JOB_DISK', '调用 job 与磁盘不一致');
   const gate = job.productionGate;
-  if (gate?.schema !== 'director-production-entry-binding/v2' || gate.route !== SCOPED_DIRECT_EXPORT.route || gate.state !== SCOPED_DIRECT_EXPORT.state || gate.revisionId !== SCOPED_DIRECT_EXPORT.revisionId) fail('SDE_GATE', '本条直出合同路由或修订不匹配');
-  if (!SHA.test(String(SCOPED_DIRECT_EXPORT_MANIFEST_SHA256 ?? ''))) fail('SDE_PIN_NOT_SET', '本条真实清单尚未审计固定摘要，禁止执行');
-  if (gate.scopedDirectExport?.path !== SCOPED_DIRECT_EXPORT.manifestPath || gate.scopedDirectExport?.sha256 !== SCOPED_DIRECT_EXPORT_MANIFEST_SHA256) fail('SDE_PIN_MISMATCH', 'job 必须绑定本条唯一清单与代码固定摘要');
+  if (gate?.schema !== 'director-production-entry-binding/v2' || gate.route !== profile.route || gate.state !== profile.state || gate.revisionId !== profile.revisionId) fail('SDE_GATE', '本条直出合同路由或修订不匹配');
+  if (!SHA.test(String(profile.manifestSha256 ?? ''))) fail('SDE_PIN_NOT_SET', '本条真实清单尚未审计固定摘要，禁止执行');
+  if (gate.scopedDirectExport?.path !== profile.manifestPath || gate.scopedDirectExport?.sha256 !== profile.manifestSha256) fail('SDE_PIN_MISMATCH', 'job 必须绑定本条唯一清单与代码固定摘要');
   const manifestBytes = readFile(root, gate.scopedDirectExport);
   const manifest = JSON.parse(manifestBytes);
-  validateSchema(manifest, SCOPED_DIRECT_EXPORT_SCHEMA);
+  validateSchema(manifest, scopedDirectExportSchemaFor(profile));
+  if (job.director?.taskId !== profile.directorTaskId) fail('SDE_DIRECTOR_TASK', '必须沿用本条真实预拍 taskId');
+  for (const [key, expectedPath] of Object.entries(profile.preshootArtifacts)) {
+    if (job.director?.artifacts?.[key]?.path !== expectedPath) fail('SDE_PRESHOOT_BINDING', `本期预拍绑定不匹配：${key}`);
+  }
+  if (job.remotion?.root !== 'remotion' || job.remotion?.entry !== profile.remotionEntry ||
+    job.remotion?.compositionWithSfx !== profile.composition ||
+    (profile.compositionWithoutSfxRequired
+      ? job.remotion?.compositionWithoutSfx !== profile.compositionWithoutSfx
+      : ![null, undefined, profile.compositionWithoutSfx].includes(job.remotion?.compositionWithoutSfx))) {
+    fail('SDE_COMPOSITION_SCOPE', '本期 Remotion entry 或 composition 与固定配置不匹配');
+  }
   if (job.productionState !== 'ready-for-production' || job.experiment?.id !== 'v8-semantic-continuity-sfx') fail('SDE_PRODUCTION_STATE', '本条必须保持已授权制作状态与 V8 生产合同');
   if (!manifest.allowedCommands.includes(command) || !commands.includes(command)) fail('SDE_COMMAND', `本条未授权命令：${command}`);
   if (command === 'risk-frames') {
-    if (job.riskFrames?.outputDirectory !== SCOPED_DIRECT_EXPORT.riskFrameDirectory ||
+    if (job.riskFrames?.outputDirectory !== profile.riskFrameDirectory ||
       job.riskFrames?.enabled !== true || job.riskFrames?.fullResolution !== true) {
       fail('SDE_RISK_FRAME_SCOPE', '本条内部风险静帧必须全分辨率输出至固定 formal-r1/frames 目录');
     }
     const directory = inside(root, job.riskFrames.outputDirectory, false);
     if (existsSync(directory) && !lstatSync(directory).isDirectory()) fail('SDE_RISK_FRAME_SCOPE', '风险帧输出位置必须为目录');
   }
-  if (job.formal?.enabled !== true || gate.formalEnabled !== true || gate.userPreviewApproved !== false || job.experiment?.status !== SCOPED_DIRECT_EXPORT.state || job.experiment?.userPreviewApproved !== false || job.experiment?.userPreviewApprovedAt != null || job.preview?.output != null || (job.preview?.ranges?.length ?? 0) !== 0 || job.preview?.renderWithoutSfxComparison === true) fail('SDE_PREVIEW_STATE', '直出必须真实保持无预览、无预览通过记录');
+  if (job.formal?.enabled !== true || gate.formalEnabled !== true || gate.userPreviewApproved !== false || job.experiment?.status !== profile.state || job.experiment?.userPreviewApproved !== false || job.experiment?.userPreviewApprovedAt != null || job.preview?.output != null || (job.preview?.ranges?.length ?? 0) !== 0 || job.preview?.renderWithoutSfxComparison === true) fail('SDE_PREVIEW_STATE', '直出必须真实保持无预览、无预览通过记录');
   if (['directorContract', 'handoffReceipt', 'freezeReceipt', 'formalAuthorization'].some((key) => gate[key] != null) || job.director?.currentTaskUserAcceptance != null) fail('SDE_FALSE_ATTESTATION', '直出授权不能伪装独立签名合同或本条预览验收');
   if (job.inputs?.generatedVideoPlan != null) fail('SDE_PROVIDER', '本条人工素材直出不得接入自动生成计划');
   if (job.director?.phase !== 'post-shoot') fail('SDE_POSTSHOOT', '本条仍须真实拍后重绑');
   const fingerprints = new Set(job.inputs?.fingerprintPaths ?? []);
-  for (const required of [SCOPED_DIRECT_EXPORT.manifestPath, ...SCOPED_DIRECT_EXPORT_GATE_FILES, manifest.authorization.evidence.path, ...Object.values(job.director?.artifacts ?? {}).map((ref) => ref.path)]) {
+  for (const required of [profile.manifestPath, ...SCOPED_DIRECT_EXPORT_GATE_FILES, manifest.authorization.evidence.path, ...Object.values(job.director?.artifacts ?? {}).map((ref) => ref.path)]) {
     if (!fingerprints.has(required)) fail('SDE_FINGERPRINT', `必须纳入执行前后指纹：${required}`);
   }
   const registry = JSON.parse(readFileSync(inside(root, 'workflow/director-production-freeze-registry.v2.json'), 'utf8'));
@@ -249,7 +352,7 @@ export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = SCO
     readFile(root, reference);
     if (!fingerprints.has(reference.path)) fail('SDE_FINGERPRINT', `实录输入未纳入指纹：${reference.path}`);
   }
-  if (new Set(manifest.generatedVideos.map((entry) => entry.path)).size !== 6 || new Set(manifest.generatedVideos.map((entry) => entry.sha256)).size !== 6) fail('SDE_MEDIA_COUNT', '必须是六个不同人工导入视频');
+  if (new Set(manifest.generatedVideos.map((entry) => entry.path)).size !== profile.generatedVideoCount || new Set(manifest.generatedVideos.map((entry) => entry.sha256)).size !== profile.generatedVideoCount) fail('SDE_MEDIA_COUNT', `必须是 ${profile.generatedVideoCount} 个不同人工导入视频`);
   for (const reference of manifest.generatedVideos) readFile(root, reference);
   const current = collectScopedDirectExportBindings({projectRoot: root, job});
   if (!same(manifest.boundFiles, current.boundFiles) || manifest.jobSnapshotSha256 !== current.jobSnapshotSha256 || !same(manifest.compositionBinding, current.compositionBinding)) fail('SDE_BINDING_DRIFT', 'job、媒体全集或 composition 依赖与固定清单不一致');
@@ -263,11 +366,11 @@ export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = SCO
   for (const key of ['rawOutput', 'finalOutput']) {
     const output = manifest.outputs[key];
     inside(root, output, false);
-    if (job.formal?.[key] !== output || ![ `edit/${SCOPED_DIRECT_EXPORT.episodeId}/`, `outputs/${SCOPED_DIRECT_EXPORT.episodeId}/` ].some((prefix) => output.startsWith(prefix)) || manifest.boundFiles.some((entry) => entry.path === output)) fail('SDE_OUTPUT', '输出必须固定在本条目录且不得覆盖输入');
+    if (job.formal?.[key] !== output || !profile.outputPrefixes.some((prefix) => output.startsWith(prefix)) || manifest.boundFiles.some((entry) => entry.path === output)) fail('SDE_OUTPUT', '输出必须固定在本条目录且不得覆盖输入');
   }
   if (manifest.outputs.rawOutput === manifest.outputs.finalOutput) fail('SDE_OUTPUT', '原始输出与响度处理输出必须分开');
   assertNoRetiredGeneratedStyle({value: {job, manifest}, operation: 'scoped-direct-export', projectRoot: root,
-    documentPaths: [relativeJob, SCOPED_DIRECT_EXPORT.manifestPath], additionalStrings: manifest.boundFiles.map((entry) => entry.path)});
+    documentPaths: [relativeJob, profile.manifestPath], additionalStrings: manifest.boundFiles.map((entry) => entry.path)});
   const policy = JSON.parse(readFile(root, manifest.media.spokenSourcePolicy));
   for (const [key, minimum] of [['minimumGlobalPrecision', 0.97], ['minimumGlobalCoverage', 0.95]]) {
     const value = policy.verification?.[key] ?? minimum;
@@ -276,14 +379,16 @@ export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = SCO
   const spoken = spawnSync(process.execPath, [resolve(root, 'tools/check-spoken-source-policy.mjs'),
     ...['transcript', 'bilingualCaptions', 'spokenSourcePolicy'].map((key) => resolve(root, manifest.media[key].path))], {cwd: root, encoding: 'utf8'});
   if (spoken.status !== 0) fail('SDE_SPOKEN_SOURCE', `实录字幕校验未通过：${spoken.stderr || spoken.stdout}`);
-  return {ok: true, route: SCOPED_DIRECT_EXPORT.route, manifestPath: SCOPED_DIRECT_EXPORT.manifestPath,
+  return {ok: true, route: profile.route, manifestPath: profile.manifestPath,
     manifestSha256: hash(manifestBytes), authorizationKind: manifest.authorization.kind, manifest,
+    episodeId: profile.episodeId, jobId: profile.jobId, revisionId: profile.revisionId,
     userPreviewApproved: false, fullWatchConfirmed: false, publishAuthorized: false, ...current};
 }
 
-export function assertScopedDirectExportRelease({release, preflight}) {
+export function assertScopedDirectExportRelease({release, preflight, manifest = null}) {
   if (preflight.route !== SCOPED_DIRECT_EXPORT.route) return false;
-  if (release.videoId !== SCOPED_DIRECT_EXPORT.episodeId || release.productionGate?.scopedDirectExportSha256 !== preflight.scopedDirectExportSha256 ||
+  const profile = resolveScopedDirectExportProfile({release, preflight, manifest});
+  if (release.videoId !== profile.episodeId || release.productionGate?.scopedDirectExportSha256 !== preflight.scopedDirectExportSha256 ||
     release.userReview?.directFinalAuthorized !== true || release.userReview?.previewApproved !== false || release.userReview?.fullWatchConfirmed !== false ||
     release.production?.previewOutput != null || release.productionGate?.previewOutput != null ||
     release.publish?.status !== 'not-published' || !['incomplete-delivery', 'ready-for-user-review'].includes(release.status)) {

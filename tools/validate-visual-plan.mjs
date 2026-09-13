@@ -1,7 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {assertScopedDirectExport, SCOPED_DIRECT_EXPORT} from './scoped-direct-export-core.mjs';
+import {
+  assertScopedDirectExport,
+  resolveScopedDirectExportProfile,
+  SCOPED_DIRECT_EXPORT,
+} from './scoped-direct-export-core.mjs';
 
 import {
   findRetiredGeneratedStyleFingerprints,
@@ -24,10 +28,11 @@ const warnings = [];
 let scopedDirectExport = false;
 if (plan.experiment?.status === SCOPED_DIRECT_EXPORT.state) {
   try {
-    const job = readJson(path.resolve(projectRoot, SCOPED_DIRECT_EXPORT.jobPath));
-    assertScopedDirectExport({projectRoot, job, command: 'formal'});
+    const profile = resolveScopedDirectExportProfile({videoId: plan.videoId});
+    const job = readJson(path.resolve(projectRoot, profile.jobPath));
+    assertScopedDirectExport({projectRoot, job, jobPath: profile.jobPath, command: 'formal'});
     if (path.resolve(projectRoot, job.inputs?.visualPlan ?? '') !== path.resolve(planPath) ||
-      plan.videoId !== SCOPED_DIRECT_EXPORT.episodeId ||
+      plan.videoId !== profile.episodeId ||
       (plan.previewCoverage != null && (!Array.isArray(plan.previewCoverage) || plan.previewCoverage.length !== 0))) {
       throw new Error('本条直出视觉方案必须绑定当前 job，且不能填写未执行的预览覆盖');
     }
