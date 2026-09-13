@@ -1,0 +1,328 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "20260912_ai_no_new_business_model_director_v2_r3",
+  "revisionId": "director-core-r3-edit-release-r1",
+  "status": "planned",
+  "sourceRoute": "paper-editorial",
+  "downstreamRoute": "paper-editorial",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues.v3.json",
+      "sha256": "cfe7ee61c788134c828e220a8ae655d251a7987a60aeee58db2a78d769f4996c"
+    },
+    "userApproval": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues-user-approval.edit-release.v3.json",
+      "sha256": "18b9b096ddf35ff1caceadca2f474cd6aaa14748e98d277836e4c89e9cba4100"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "5472eb8f5bf11298fe9bcbcfefa39dec89ca7ad1a3f8cd6450c6707c604f151e"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "first-frame",
+  "promptIsolation": {
+    "containsVideoPromptBodies": false,
+    "consumer": "first-frame-stage"
+  },
+  "styleLock": {
+    "referenceImages": [
+      {
+        "id": "REF01",
+        "path": "refs/director-style/往期优质纸艺参考_地图连接.png",
+        "sha256": "7f2452c63dc72f7b7e6acbc3d1e3aa7da4da3a6e3e03e08b1f305e1c96c6e79a",
+        "usage": "style-mechanism-only"
+      },
+      {
+        "id": "REF02",
+        "path": "refs/director-style/往期优质纸艺参考_工厂工具.png",
+        "sha256": "d7c28e56542ad8a681115dc753e5aed93cf9079580f6df9b2c214abaa2403650",
+        "usage": "style-mechanism-only"
+      }
+    ],
+    "promptPrefix": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。",
+    "textPolicy": "generated-base-image-then-deterministic-chinese",
+    "mustKeep": [
+      "真实纸张纤维",
+      "至少三层空间",
+      "物件接触阴影",
+      "微缩实体摄影",
+      "克制红蓝强调"
+    ],
+    "mustAvoid": [
+      "扁平PPT卡片",
+      "塑料3D质感",
+      "模型生成中文",
+      "悬浮屏幕贴片",
+      "重复同一构图"
+    ]
+  },
+  "itemCount": 7,
+  "items": [
+    {
+      "id": "P01",
+      "beatId": "B04",
+      "startAnchorText": "因为AI",
+      "endAnchorText": "推到极致",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 4,
+      "pairId": "P01-prompt-pair-v1",
+      "pairSha256": "c7627e2d3477d65e5973f1d38ab609f9b986978de2189b2621042e20d9c0ea34",
+      "prompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。正面偏侧中景，一台旧式纸艺工作机放在桌面中央，左轨蓝灰滑块停在高位，右轨蓝灰滑块停在低位，两轨由中央红色手柄连接；左前固定空白纸牌与右后固定空白纸牌各有独立纸支架，不遮挡机构，所有物件静止，画面没有可读文字。",
+      "promptSha256": "8232b2b635dd6b5ec58042360edf26d7306a1032429a0be577c45aeec479bb0b",
+      "negativePrompt": [
+        "不生成可读文字",
+        "不移动固定纸牌",
+        "不使用PPT卡片",
+        "不改变物件数量"
+      ],
+      "reason": "用一套联动机构建立全片成本下降与效率上升的视觉母题。",
+      "visualRole": "relationship",
+      "visualMetaphor": "双滑轨由同一手柄反向联动",
+      "composition": "正面偏侧双轨工作机",
+      "textPlan": [
+        {
+          "text": "成本",
+          "surface": "左前固定空白纸牌"
+        },
+        {
+          "text": "效率",
+          "surface": "右后固定空白纸牌"
+        }
+      ],
+      "referenceImageIds": [
+        "REF02"
+      ]
+    },
+    {
+      "id": "P02",
+      "beatId": "B07",
+      "startAnchorText": "这些创新",
+      "endAnchorText": "两个关键问题",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 4,
+      "pairId": "P02-prompt-pair-v1",
+      "pairSha256": "08ba4a19042947e4d8e0274e0315758b8eb33a51cb78d502f324f2f8c2860e22",
+      "prompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。俯视偏侧中景，前景是一根红色纸质连杆，中景左右各有一条短纸轨和一枚未对齐的蓝灰滑块，后景是两个空框位；左侧固定空白纸牌与右侧固定空白纸牌由独立支架固定在轨道上方，不遮挡连杆与滑块，所有物件静止，画面没有可读文字。",
+      "promptSha256": "9b08f38a7c0b49066ecf5ac61c6860115c72696948270c2b1cca5f8aa5bc61ec",
+      "negativePrompt": [
+        "不生成可读文字",
+        "不移动固定纸牌",
+        "不使用PPT卡片",
+        "不改变物件数量"
+      ],
+      "reason": "把商业模式创新压缩成两个可以同时观察的判断维度。",
+      "visualRole": "relationship",
+      "visualMetaphor": "双轨判据由中央连杆联动对齐",
+      "composition": "俯视偏侧双轨判据台",
+      "textPlan": [
+        {
+          "text": "谁在提供",
+          "surface": "左侧固定空白纸牌"
+        },
+        {
+          "text": "怎么付费",
+          "surface": "右侧固定空白纸牌"
+        }
+      ],
+      "referenceImageIds": [
+        "REF02"
+      ]
+    },
+    {
+      "id": "P03",
+      "beatId": "B12",
+      "startAnchorText": "集装箱没有发明航运",
+      "endAnchorText": "标准化的铁盒子里",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 5,
+      "pairId": "P03-prompt-pair-v1",
+      "pairSha256": "8f0cdf4eb68d7d64b0bbf34116ab2da00928664948628f26f130c7f52c9d8c3d",
+      "prompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。低机位侧视中景，前景散落大小不一的纸质货块，中景是一只打开的标准瓦楞纸箱和一条短纸轨，后景是层叠港口吊机剪影；前景竖立空白纸牌与箱侧固定空白纸牌分别由独立支架承托，不遮挡货块和箱口，所有物件静止，画面没有可读文字。",
+      "promptSha256": "04ac8c0461696894de98ddd4c74f0f051fa12d17c87c527f0cc08d944d563ca4",
+      "negativePrompt": [
+        "不生成可读文字",
+        "不增加集装箱数量",
+        "不移动固定纸牌",
+        "不改成写实港口视频"
+      ],
+      "reason": "把散落货物进入统一容器的标准化关系直接变成可见物理动作。",
+      "visualRole": "process",
+      "visualMetaphor": "不规则货块沿统一轨道进入同规格纸箱",
+      "composition": "低机位港口纸箱装载台",
+      "textPlan": [
+        {
+          "text": "散装货",
+          "surface": "前景竖立空白纸牌"
+        },
+        {
+          "text": "标准箱",
+          "surface": "箱侧固定空白纸牌"
+        }
+      ],
+      "referenceImageIds": [
+        "REF02"
+      ]
+    },
+    {
+      "id": "P04",
+      "beatId": "B18",
+      "startAnchorText": "系统直接理解",
+      "endAnchorText": "找到这些人",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 5,
+      "pairId": "P04-prompt-pair-v1",
+      "pairSha256": "ed5515f4eed956ef5e95ee104638215741495e3369b6e63e782d6ab34d8ce504",
+      "prompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。俯视偏侧构图，左侧三枚红色信号圆片分别停在三条细纸轨起点，中间纸轨形成分叉汇合结构，右侧放置一个小型纸艺枕头和空目标框；左上固定空白纸牌、中上固定空白纸牌与右下固定空白纸牌各有独立支架，画面没有可读文字。",
+      "promptSha256": "ad7dd58d0a7c3ac90561b31a2a3407cfd117a9fe9b44f6dd2c7e7008e2eaabfa",
+      "negativePrompt": [
+        "不生成可读文字",
+        "不出现真实平台界面",
+        "不移动固定纸牌",
+        "不增加人物"
+      ],
+      "reason": "让分散行为信号到意图匹配的看不见过程可见。",
+      "visualRole": "mechanism",
+      "visualMetaphor": "多路信号圆片沿分叉纸轨汇入同一目标",
+      "composition": "俯视三路信号汇流台",
+      "textPlan": [
+        {
+          "text": "行为信号",
+          "surface": "左上固定空白纸牌"
+        },
+        {
+          "text": "意图匹配",
+          "surface": "中上固定空白纸牌"
+        },
+        {
+          "text": "助眠枕头",
+          "surface": "右下固定空白纸牌"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P05",
+      "beatId": "B24",
+      "startAnchorText": "咨询顾问的角色",
+      "endAnchorText": "交付把控者",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 4,
+      "pairId": "P05-prompt-pair-v1",
+      "pairSha256": "cdf41920625d169ebf5c758023ceee342cb78f1c94333fea0199e634aa1bf7b9",
+      "prompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。横向中景，左侧是由文件纸束组成的信息工作区，右侧是带罗盘形纸盘的策略区，中间一条弧形纸轨连接两端，一枚无五官的顾问人物标记停在左端；左后固定空白纸牌、右前固定空白纸牌与右后固定空白纸牌分层竖立，不遮挡纸轨，画面没有可读文字。",
+      "promptSha256": "3ed16aa3f0909f03ed37ec718f4b039da2aba69ef456eb0cdbb566a7d7c89a9e",
+      "negativePrompt": [
+        "不生成可读文字",
+        "不增加人物",
+        "不移动固定纸牌",
+        "不改变左右工作区"
+      ],
+      "reason": "用顾问人物标记的位置变化解释工作重心迁移。",
+      "visualRole": "relationship",
+      "visualMetaphor": "顾问标记沿弧形轨道从资料区移向策略区",
+      "composition": "横向双工作区角色迁移台",
+      "textPlan": [
+        {
+          "text": "信息采集",
+          "surface": "左后固定空白纸牌"
+        },
+        {
+          "text": "策略判断",
+          "surface": "右前固定空白纸牌"
+        },
+        {
+          "text": "交付把控",
+          "surface": "右后固定空白纸牌"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01",
+        "REF02"
+      ]
+    },
+    {
+      "id": "P06",
+      "beatId": "B26",
+      "startAnchorText": "以前从",
+      "endAnchorText": "必须有人做",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 5,
+      "pairId": "P06-prompt-pair-v1",
+      "pairSha256": "f07fcd700cfb7fc944432f20da3f366a7e2255969693756a074344fac1ffa438",
+      "prompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。斜俯视宽景，一条带手风琴褶皱的长纸链横跨桌面，左端接入托盘，右端连接交付托盘，后景另有一座抬高的人物判断台；左前固定空白纸牌、中前固定空白纸牌、右前固定空白纸牌与后景固定空白纸牌各自独立竖立，画面没有可读文字。",
+      "promptSha256": "ceeec943b1676f73fc1717d4a2824dbaefde40f1703641a15e2315cdac3831b2",
+      "negativePrompt": [
+        "不生成可读文字",
+        "不移动首尾托盘",
+        "不移动固定纸牌",
+        "不增加流程节点"
+      ],
+      "reason": "把长串信息搬运和模式化分析表现为可压缩的中间纸链。",
+      "visualRole": "process",
+      "visualMetaphor": "长纸链的中段向内收拢而首尾节点保持",
+      "composition": "斜俯视长链交付工作台",
+      "textPlan": [
+        {
+          "text": "客户需求",
+          "surface": "左前固定空白纸牌"
+        },
+        {
+          "text": "信息搬运",
+          "surface": "中前固定空白纸牌"
+        },
+        {
+          "text": "顾问交付",
+          "surface": "右前固定空白纸牌"
+        },
+        {
+          "text": "人类判断",
+          "surface": "后景固定空白纸牌"
+        }
+      ],
+      "referenceImageIds": [
+        "REF02"
+      ]
+    },
+    {
+      "id": "P07",
+      "beatId": "B30",
+      "startAnchorText": "AI也一样",
+      "endAnchorText": "理解客户",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 4,
+      "pairId": "P07-prompt-pair-v1",
+      "pairSha256": "63c948255dd3db0ade9fb3367c22662d09667b16655c36e844ebda9e17d7f22b",
+      "prompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。俯视偏侧中景，左轨通向一组分散的蓝灰目标圆片，右轨通向一个人物纸偶与三张无文字需求卡，中央是停在左轨方向的红色纸质拨杆；左前固定空白纸牌与右后固定空白纸牌分别立在两条轨道外侧，所有物件静止，画面没有可读文字。",
+      "promptSha256": "8fc4c304458322789a408c243d00b4154f565f3e4a823fb73f51b8e22ab7549c",
+      "negativePrompt": [
+        "不生成可读文字",
+        "不移动固定纸牌",
+        "不增加轨道",
+        "不改成人物写实场景"
+      ],
+      "reason": "把竞争重点从搜索目标切换到理解需求表现为明确轨道转换。",
+      "visualRole": "comparison",
+      "visualMetaphor": "中央拨杆把路径从分散目标轨切到需求理解轨",
+      "composition": "俯视双路径竞争切换台",
+      "textPlan": [
+        {
+          "text": "找到客户",
+          "surface": "左前固定空白纸牌"
+        },
+        {
+          "text": "理解客户",
+          "surface": "右后固定空白纸牌"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    }
+  ]
+}

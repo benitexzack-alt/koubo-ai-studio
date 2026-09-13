@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "koubo-director-cues-v2-handoff/v1",
+  "taskId": "20260912_ai_no_new_business_model_director_v2_r3",
+  "revisionId": "director-core-r3-edit-release-r1",
+  "status": "local-handoff-ready",
+  "executionScope": "local-handoff-only",
+  "source": {
+    "directorCues": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues.v3.json",
+      "sha256": "cfe7ee61c788134c828e220a8ae655d251a7987a60aeee58db2a78d769f4996c"
+    },
+    "userApproval": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues-user-approval.edit-release.v3.json",
+      "sha256": "18b9b096ddf35ff1caceadca2f474cd6aaa14748e98d277836e4c89e9cba4100"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "5472eb8f5bf11298fe9bcbcfefa39dec89ca7ad1a3f8cd6450c6707c604f151e"
+    }
+  },
+  "profileVersion": "9.1.0",
+  "routeMappings": [
+    {
+      "sourceRoute": "speaker",
+      "downstreamRoute": "speaker",
+      "beatCount": 19
+    },
+    {
+      "sourceRoute": "real-evidence",
+      "downstreamRoute": "real-evidence",
+      "beatCount": 6
+    },
+    {
+      "sourceRoute": "ai-generated-video",
+      "downstreamRoute": "generated-video",
+      "beatCount": 2
+    },
+    {
+      "sourceRoute": "paper-editorial",
+      "downstreamRoute": "paper-editorial",
+      "beatCount": 7
+    }
+  ],
+  "speakerBeatIds": [
+    "B01",
+    "B03",
+    "B05",
+    "B08",
+    "B09",
+    "B10",
+    "B11",
+    "B15",
+    "B17",
+    "B20",
+    "B22",
+    "B25",
+    "B27",
+    "B28",
+    "B29",
+    "B31",
+    "B32",
+    "B33",
+    "B34"
+  ],
+  "branches": {
+    "realEvidence": {
+      "sourceRoute": "real-evidence",
+      "downstreamRoute": "real-evidence",
+      "status": "planned",
+      "manifest": {
+        "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/real-evidence-handoff.v1.json",
+        "sha256": "08d368f2e4e04694af9731efde80fbe7d1efb5288eae01e8378d9712fd7df4ff"
+      }
+    },
+    "aiGeneratedVideo": {
+      "sourceRoute": "ai-generated-video",
+      "downstreamRoute": "generated-video",
+      "status": "planned",
+      "firstFrameManifest": {
+        "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/ai-generated-video.first-frame-handoff.v1.json",
+        "sha256": "eb3ea1d3521ff515dca930537469f5a9e4cb8ff6aedf20b15465833b0a3dd492"
+      },
+      "imageToVideoManifest": {
+        "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/ai-generated-video.image-to-video-handoff.v1.json",
+        "sha256": "246bf7cadbd1499faa43e5bee5933724757595428354114949913e5a4f6ecbdb"
+      }
+    },
+    "paperEditorial": {
+      "sourceRoute": "paper-editorial",
+      "downstreamRoute": "paper-editorial",
+      "status": "planned",
+      "firstFrameManifest": {
+        "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/paper-editorial.first-frame-handoff.v1.json",
+        "sha256": "1cccb5c5470ef3ecc23ed829f77ce153d9ca340711fa6e15d0015a86acafbca4"
+      },
+      "imageToVideoManifest": {
+        "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/paper-editorial.image-to-video-handoff.v1.json",
+        "sha256": "98550b1353ece77118c90c8d94c8d4a08e41b1a2c0e809b3a8980d3f52af8524"
+      }
+    }
+  },
+  "shotcraft": {
+    "status": "opportunity-only",
+    "opportunityCount": 11,
+    "selectionStage": "post-shoot-edit-release",
+    "selectionAuthorized": false,
+    "manifest": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/shotcraft-opportunities.handoff.v1.json",
+      "sha256": "4a3c4aa9953c0e0b12d9168998042447db8e5afa25be95513e654fd3f4ab9abb"
+    }
+  },
+  "externalActionsAuthorized": false,
+  "generationAuthorized": false,
+  "remotionAuthorized": false,
+  "publicationAuthorized": false,
+  "artifacts": {
+    "realEvidence": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/real-evidence-handoff.v1.json",
+      "sha256": "08d368f2e4e04694af9731efde80fbe7d1efb5288eae01e8378d9712fd7df4ff"
+    },
+    "aiFirstFrame": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/ai-generated-video.first-frame-handoff.v1.json",
+      "sha256": "eb3ea1d3521ff515dca930537469f5a9e4cb8ff6aedf20b15465833b0a3dd492"
+    },
+    "aiVideo": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/ai-generated-video.image-to-video-handoff.v1.json",
+      "sha256": "246bf7cadbd1499faa43e5bee5933724757595428354114949913e5a4f6ecbdb"
+    },
+    "paperFirstFrame": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/paper-editorial.first-frame-handoff.v1.json",
+      "sha256": "1cccb5c5470ef3ecc23ed829f77ce153d9ca340711fa6e15d0015a86acafbca4"
+    },
+    "paperVideo": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/paper-editorial.image-to-video-handoff.v1.json",
+      "sha256": "98550b1353ece77118c90c8d94c8d4a08e41b1a2c0e809b3a8980d3f52af8524"
+    },
+    "shotcraft": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/edit-release-handoff-v3-r1/shotcraft-opportunities.handoff.v1.json",
+      "sha256": "4a3c4aa9953c0e0b12d9168998042447db8e5afa25be95513e654fd3f4ab9abb"
+    }
+  }
+}

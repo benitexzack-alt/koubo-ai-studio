@@ -1,0 +1,2779 @@
+{
+  "schemaVersion": "koubo-authoritative-spoken-timeline-candidate/v1",
+  "taskId": "task-20260913T123722Z-11da90de",
+  "episodeId": "20260912_ai_no_new_business_model",
+  "createdAt": "2026-09-13T13:09:18.501Z",
+  "status": "needs-human-audio-review",
+  "formalAllowed": false,
+  "permittedUse": "local-full-film-review-candidate-preparation-only",
+  "authority": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "humanListeningPerformed": false,
+  "userAudioReviewConfirmed": false,
+  "source": {
+    "recordedMedia": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/01_素材投放区/01_口播原片/copy_00131113-A43E-48CD-B158-AB0CDE2EF8DC 2.MOV",
+      "projectRelativePath": "edit/20260912_ai_no_new_business_model/01_素材投放区/01_口播原片/copy_00131113-A43E-48CD-B158-AB0CDE2EF8DC 2.MOV",
+      "sha256": "33d211f6f4559c0a4358c2f2f931572d2807ea5f8bb2f5c6b73d14755a866567",
+      "bytes": 613571057,
+      "durationMs": 386750.998
+    },
+    "audio": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/05_实录与字幕/host_16k_mono.wav",
+      "projectRelativePath": "edit/20260912_ai_no_new_business_model/05_实录与字幕/host_16k_mono.wav",
+      "sha256": "7ab5c1a8609762e32837595eec66461178778be27d2af591e2478f0db118f4c1",
+      "bytes": 12376082,
+      "durationMs": 386750.125
+    },
+    "largeV3Turbo": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/05_实录与字幕/asr-large-v3-turbo-r1/host.mlx-whisper-large-v3-turbo.full.raw.json",
+      "projectRelativePath": "edit/20260912_ai_no_new_business_model/05_实录与字幕/asr-large-v3-turbo-r1/host.mlx-whisper-large-v3-turbo.full.raw.json",
+      "sha256": "c15aa3c150634f2da08564e0db145c111ed324283d5757db402e07ea6dd00949",
+      "bytes": 266604
+    },
+    "whisperCppSmall": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/05_实录与字幕/asr-whispercpp-small-r1/host.whisper-small.full.raw.json",
+      "projectRelativePath": "edit/20260912_ai_no_new_business_model/05_实录与字幕/asr-whispercpp-small-r1/host.whisper-small.full.raw.json",
+      "sha256": "25ba8a413fff5b5404159e5e1fa634f5229cbf03b6ac9df48904a658fdd20064",
+      "bytes": 397945
+    },
+    "userConfirmedScript": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/00_文稿与控制/用户确认原稿.txt",
+      "projectRelativePath": "edit/20260912_ai_no_new_business_model/00_文稿与控制/用户确认原稿.txt",
+      "sha256": "57804abe915007fbc32a9c7d4e629e26c4f2817e58b8719dd90c8c30bc85af4c",
+      "bytes": 5074
+    },
+    "directorCues": {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues.v3.json",
+      "projectRelativePath": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues.v3.json",
+      "sha256": "cfe7ee61c788134c828e220a8ae655d251a7987a60aeee58db2a78d769f4996c",
+      "bytes": 61336
+    }
+  },
+  "captionTextPolicy": "spoken-verbatim-candidate-with-explicit-asr-corrections-and-uncertainties",
+  "timelineFps": 30,
+  "beats": [
+    {
+      "id": "spoken-b01",
+      "beatId": "B01",
+      "originalDirectorBeatId": "B01",
+      "order": 1,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 600,
+      "endMs": 3740,
+      "actualChinese": "AI并没有发明新的商业模式。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        0
+      ],
+      "sourceSmallSegmentIndices": [
+        0
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "AI并没有发明新的商业模式",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 0,
+            "startMs": 600,
+            "endMs": 3740,
+            "text": "AI并没有发明新的商业模式",
+            "averageLogProbability": -0.07718173713441108
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 0,
+            "startMs": 0,
+            "endMs": 15000,
+            "text": "AI并没有发明新的商业模式,我们正处在一个被红大叙事包围的时代,打开任何一篇AI相关的文章,几乎都在谈论颠覆饭式重头产业,开启新时代。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b02",
+      "beatId": "B02",
+      "originalDirectorBeatId": "B02",
+      "order": 2,
+      "route": "real-evidence",
+      "routeCueId": "R01",
+      "startMs": 4180,
+      "endMs": 15140,
+      "actualChinese": "我们正处在一个被宏大叙事包围的时代，打开任何一篇AI相关的文章，几乎都在谈论“颠覆范式”“重构产业”“开启新时代”。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "sourceSmallSegmentIndices": [
+        0,
+        1
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "我们正处在一个被宏大叙事包围的时代，打开任何一篇AI相关的文章，几乎都在谈论“颠覆范式”、“重构产业”、“开启新时代”……",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 1,
+            "startMs": 4180,
+            "endMs": 7380,
+            "text": "我们正处在一个被宏大叙事包围的时代",
+            "averageLogProbability": -0.07718173713441108
+          },
+          {
+            "index": 2,
+            "startMs": 7880,
+            "endMs": 10280,
+            "text": "打开任何一篇AI相关的文章",
+            "averageLogProbability": -0.07718173713441108
+          },
+          {
+            "index": 3,
+            "startMs": 10280,
+            "endMs": 12480,
+            "text": "几乎都在谈论颠覆范式",
+            "averageLogProbability": -0.07718173713441108
+          },
+          {
+            "index": 4,
+            "startMs": 12480,
+            "endMs": 13380,
+            "text": "重构产业",
+            "averageLogProbability": -0.07718173713441108
+          },
+          {
+            "index": 5,
+            "startMs": 13380,
+            "endMs": 15140,
+            "text": "开启新时代",
+            "averageLogProbability": -0.07718173713441108
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 0,
+            "startMs": 0,
+            "endMs": 15000,
+            "text": "AI并没有发明新的商业模式,我们正处在一个被红大叙事包围的时代,打开任何一篇AI相关的文章,几乎都在谈论颠覆饭式重头产业,开启新时代。"
+          },
+          {
+            "index": 1,
+            "startMs": 15000,
+            "endMs": 24000,
+            "text": "这些层呢,听起来令人兴奋,但他们掩盖了一个极其朴素的真相,因为AI并没有发明任何新的商业模式。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b03",
+      "beatId": "B03",
+      "originalDirectorBeatId": "B03",
+      "order": 3,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 15560,
+      "endMs": 20280,
+      "actualChinese": "这些词听起来令人兴奋，但它们掩盖了一个极其朴素的真相。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [
+        "U01"
+      ],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        6,
+        7
+      ],
+      "sourceSmallSegmentIndices": [
+        1
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "这些词听起来很令人兴奋，但它们掩盖了一个极其朴素的真相。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 6,
+            "startMs": 15560,
+            "endMs": 17680,
+            "text": "这些词听起来令人兴奋",
+            "averageLogProbability": -0.07718173713441108
+          },
+          {
+            "index": 7,
+            "startMs": 17680,
+            "endMs": 20280,
+            "text": "但他们掩盖了一个极其朴素的真相",
+            "averageLogProbability": -0.07718173713441108
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 1,
+            "startMs": 15000,
+            "endMs": 24000,
+            "text": "这些层呢,听起来令人兴奋,但他们掩盖了一个极其朴素的真相,因为AI并没有发明任何新的商业模式。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b04",
+      "beatId": "B04",
+      "originalDirectorBeatId": "B04",
+      "order": 4,
+      "route": "paper-editorial",
+      "routeCueId": "P01",
+      "startMs": 20280,
+      "endMs": 30420,
+      "actualChinese": "因为AI并没有发明任何新的商业模式，它只是在做一件极其古老的事情，把成本和效率推到极致。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        8,
+        9,
+        10
+      ],
+      "sourceSmallSegmentIndices": [
+        1,
+        2
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "因为AI并没有发明任何新的商业模式，它只是在做一件极其古老的事情：把成本和效率推到极致。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 8,
+            "startMs": 20280,
+            "endMs": 24000,
+            "text": "因为AI并没有发明任何新的商业模式",
+            "averageLogProbability": -0.07718173713441108
+          },
+          {
+            "index": 9,
+            "startMs": 24000,
+            "endMs": 27600,
+            "text": "它只是在做一件极其古老的事情",
+            "averageLogProbability": -0.07718173713441108
+          },
+          {
+            "index": 10,
+            "startMs": 27600,
+            "endMs": 30420,
+            "text": "把成本和效率推到极致",
+            "averageLogProbability": -0.0895014032285813
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 1,
+            "startMs": 15000,
+            "endMs": 24000,
+            "text": "这些层呢,听起来令人兴奋,但他们掩盖了一个极其朴素的真相,因为AI并没有发明任何新的商业模式。"
+          },
+          {
+            "index": 2,
+            "startMs": 24000,
+            "endMs": 31000,
+            "text": "它只是在做一件极其古老的事情,把成本和效率推到极致。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b05",
+      "beatId": "B05",
+      "originalDirectorBeatId": "B05",
+      "order": 5,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 30980,
+      "endMs": 35940,
+      "actualChinese": "先看看过去二十年，真正称得上新商业模式的东西是什么。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        11,
+        12
+      ],
+      "sourceSmallSegmentIndices": [
+        2,
+        3
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "先看看过去二十年真正称得上“新商业模式”的东西是什么。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 11,
+            "startMs": 30980,
+            "endMs": 33040,
+            "text": "先看看过去20年",
+            "averageLogProbability": -0.0895014032285813
+          },
+          {
+            "index": 12,
+            "startMs": 33040,
+            "endMs": 35940,
+            "text": "真正称得上新商业模式的东西是什么",
+            "averageLogProbability": -0.0895014032285813
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 2,
+            "startMs": 24000,
+            "endMs": 31000,
+            "text": "它只是在做一件极其古老的事情,把成本和效率推到极致。"
+          },
+          {
+            "index": 3,
+            "startMs": 31000,
+            "endMs": 36000,
+            "text": "先看看过去20年真正撑得上新商业模式的东西是什么。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b06",
+      "beatId": "B06",
+      "originalDirectorBeatId": "B06",
+      "order": 6,
+      "route": "real-evidence",
+      "routeCueId": "R02",
+      "startMs": 36340,
+      "endMs": 67780,
+      "actualChinese": "移动互联网带来了按需经济，Uber和滴滴让闲置的车辆变成了可交易的运力，Airbnb让空置的房间变成了酒店，它们创造了一种新的供给方式。SaaS让软件从买断变成了订阅，企业不再一次性投入巨额的资金部署系统，它们改变了软件的交付和付费方式。社交电商则让每个人都能成为分销节点，信任关系变成了交易渠道。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [
+        "U02"
+      ],
+      "correctionIds": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "sourceLargeSegmentIndices": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "sourceSmallSegmentIndices": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "移动互联网带来了按需经济，Uber和滴滴让闲置车辆变成了可交易的运力，Airbnb让空置房间变成了酒店，它们创造了一种全新的供给方式。SaaS让软件从买断变成了订阅，企业不用再一次性投入巨额资金部署系统，它们改变了软件的交付和付费方式。社交电商则让每个人都能成为分销节点，信任关系变成了交易渠道。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 13,
+            "startMs": 36340,
+            "endMs": 38240,
+            "text": "移动互联网带来了暗需经济",
+            "averageLogProbability": -0.0895014032285813
+          },
+          {
+            "index": 14,
+            "startMs": 38240,
+            "endMs": 42080,
+            "text": "Uber和滴滴让闲置的车辆变成了可交易的运营",
+            "averageLogProbability": -0.0895014032285813
+          },
+          {
+            "index": 15,
+            "startMs": 42080,
+            "endMs": 45920,
+            "text": "Airbnb让空置的房间变成了酒店",
+            "averageLogProbability": -0.0895014032285813
+          },
+          {
+            "index": 16,
+            "startMs": 45920,
+            "endMs": 49240,
+            "text": "他们创造了一种新的供给方式",
+            "averageLogProbability": -0.0895014032285813
+          },
+          {
+            "index": 17,
+            "startMs": 49660,
+            "endMs": 52640,
+            "text": "SaaS让软件从买段变成了订阅",
+            "averageLogProbability": -0.0895014032285813
+          },
+          {
+            "index": 18,
+            "startMs": 52640,
+            "endMs": 57100,
+            "text": "企业不再一次性投入巨额的资金部署系统",
+            "averageLogProbability": -0.0895014032285813
+          },
+          {
+            "index": 19,
+            "startMs": 57100,
+            "endMs": 60780,
+            "text": "他们改变了软件的交付和付费方式",
+            "averageLogProbability": -0.0885274303493215
+          },
+          {
+            "index": 20,
+            "startMs": 61440,
+            "endMs": 64960,
+            "text": "社交电商则让每个人都能成为分销节点",
+            "averageLogProbability": -0.0885274303493215
+          },
+          {
+            "index": 21,
+            "startMs": 65380,
+            "endMs": 67780,
+            "text": "信任关系变成了交易渠道",
+            "averageLogProbability": -0.0885274303493215
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 4,
+            "startMs": 36000,
+            "endMs": 42000,
+            "text": "一栋互联网带来了按需经济,Uber和滴滴让闲置的车辆变成了可交易的运营。"
+          },
+          {
+            "index": 5,
+            "startMs": 42000,
+            "endMs": 53000,
+            "text": "Airbnb让空置的房间变成了酒店,他们创造了一种新的供给方式,SaaS让软件从买断变成了订阅,"
+          },
+          {
+            "index": 6,
+            "startMs": 53000,
+            "endMs": 61000,
+            "text": "也不再一次性投入巨额的资金部署系统,他们改变了软件的交付和付费方式。"
+          },
+          {
+            "index": 7,
+            "startMs": 61000,
+            "endMs": 68000,
+            "text": "社交电商则让每个人都能成为分销节点,信任关系变成了交易渠道。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b07",
+      "beatId": "B07",
+      "originalDirectorBeatId": "B07",
+      "order": 7,
+      "route": "paper-editorial",
+      "routeCueId": "P02",
+      "startMs": 68280,
+      "endMs": 74720,
+      "actualChinese": "这些创新有一个共同特征，它们改变了“谁在提供”和“怎么付费”这两个关键问题。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        22,
+        23,
+        24
+      ],
+      "sourceSmallSegmentIndices": [
+        8
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "这些创新有一个共同特征，它们改变了“谁在提供”和“怎么付费”这两个关键问题。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 22,
+            "startMs": 68280,
+            "endMs": 70040,
+            "text": "这些创新有一个共同特征",
+            "averageLogProbability": -0.0885274303493215
+          },
+          {
+            "index": 23,
+            "startMs": 70040,
+            "endMs": 73240,
+            "text": "他们改变了谁在提供和怎么付费",
+            "averageLogProbability": -0.0885274303493215
+          },
+          {
+            "index": 24,
+            "startMs": 73240,
+            "endMs": 74720,
+            "text": "这两个关键问题",
+            "averageLogProbability": -0.0885274303493215
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 8,
+            "startMs": 68000,
+            "endMs": 75000,
+            "text": "这些创新有一个共同特征,他们改变了谁在提供和怎么付费这两个关键问题。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b08",
+      "beatId": "B08",
+      "originalDirectorBeatId": "B08",
+      "order": 8,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 75320,
+      "endMs": 77820,
+      "actualChinese": "那当下的AI又做了什么？",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        25
+      ],
+      "sourceSmallSegmentIndices": [
+        9
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "那当下的AI又做了什么？",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 25,
+            "startMs": 75320,
+            "endMs": 77820,
+            "text": "那当下的AI又做了什么",
+            "averageLogProbability": -0.0885274303493215
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 9,
+            "startMs": 75000,
+            "endMs": 86000,
+            "text": "当下的AI又做了什么?它没有创造新的供给形态,没有发明新的交易方式,也没有重构价值链上参与者的角色分工。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b09",
+      "beatId": "B09",
+      "originalDirectorBeatId": "B09",
+      "order": 9,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 77820,
+      "endMs": 85980,
+      "actualChinese": "它没有创造新的供给形态，没有发明新的交易方式，也没有重构价值链上参与者的角色分工。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        26,
+        27,
+        28
+      ],
+      "sourceSmallSegmentIndices": [
+        9
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "它没有创造新的供给形态，没有发明新的交易方式，也没有重构价值链上参与者的角色分工。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 26,
+            "startMs": 77820,
+            "endMs": 80060,
+            "text": "他没有创造新的供给形态",
+            "averageLogProbability": -0.0885274303493215
+          },
+          {
+            "index": 27,
+            "startMs": 80060,
+            "endMs": 81900,
+            "text": "没有发明新的交易方式",
+            "averageLogProbability": -0.0885274303493215
+          },
+          {
+            "index": 28,
+            "startMs": 81900,
+            "endMs": 85980,
+            "text": "也没有重构价值链上参与者的角色分工",
+            "averageLogProbability": -0.16954968276533108
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 9,
+            "startMs": 75000,
+            "endMs": 86000,
+            "text": "当下的AI又做了什么?它没有创造新的供给形态,没有发明新的交易方式,也没有重构价值链上参与者的角色分工。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b10",
+      "beatId": "B10",
+      "originalDirectorBeatId": "B10",
+      "order": 10,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 85980,
+      "endMs": 102760,
+      "actualChinese": "那么它只是在既有的框架里，把原来需要一个人干两个小时的事情，变成机器干两分钟，把原来需要反复试错才能找到的客户变成了精准到个位数的定向投放。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        29,
+        30,
+        31,
+        32
+      ],
+      "sourceSmallSegmentIndices": [
+        9,
+        10,
+        11
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "它只是在既有的框架里，把原来需要一个人干两小时的事情变成机器干两分钟，把原来需要反复试错才能找到的客户变成精准到个位数的定向投放。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 29,
+            "startMs": 85980,
+            "endMs": 91820,
+            "text": "那么他只是在既有的框架里把原来需要一个人干两个小时的事情",
+            "averageLogProbability": -0.16954968276533108
+          },
+          {
+            "index": 30,
+            "startMs": 92260,
+            "endMs": 93360,
+            "text": "变成机器",
+            "averageLogProbability": -0.16954968276533108
+          },
+          {
+            "index": 31,
+            "startMs": 93360,
+            "endMs": 94120,
+            "text": "干两分钟",
+            "averageLogProbability": -0.16954968276533108
+          },
+          {
+            "index": 32,
+            "startMs": 94120,
+            "endMs": 102760,
+            "text": "把原来需要反复试错才能找到的客户变成了精准到个位数的定向投放",
+            "averageLogProbability": -0.16954968276533108
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 9,
+            "startMs": 75000,
+            "endMs": 86000,
+            "text": "当下的AI又做了什么?它没有创造新的供给形态,没有发明新的交易方式,也没有重构价值链上参与者的角色分工。"
+          },
+          {
+            "index": 10,
+            "startMs": 86000,
+            "endMs": 94000,
+            "text": "那么它只是在既有的框架里把原来需要一个人干两个小时的事情变成机器干两分钟,"
+          },
+          {
+            "index": 11,
+            "startMs": 94000,
+            "endMs": 103000,
+            "text": "把原来需要反复失措才能找到的客户变成了精准到个位数的定向投放。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b11",
+      "beatId": "B11",
+      "originalDirectorBeatId": "B11",
+      "order": 11,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 102760,
+      "endMs": 112080,
+      "actualChinese": "这并非是贬低AI的价值，恰恰相反，这种“只改变效率”的变革，历史上每一次都塑造了新的秩序。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [
+        "U03"
+      ],
+      "correctionIds": [
+        "C04"
+      ],
+      "sourceLargeSegmentIndices": [
+        33,
+        34,
+        35,
+        36
+      ],
+      "sourceSmallSegmentIndices": [
+        11,
+        12,
+        13
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "这并非是贬低AI的价值，恰恰相反，这种“只改变效率”的变革，历史上每一次都塑造了新的秩序。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 33,
+            "startMs": 102760,
+            "endMs": 105340,
+            "text": "这并非是贬值AI的价值",
+            "averageLogProbability": -0.08335551237448668
+          },
+          {
+            "index": 34,
+            "startMs": 105340,
+            "endMs": 106060,
+            "text": "恰恰相反",
+            "averageLogProbability": -0.08335551237448668
+          },
+          {
+            "index": 35,
+            "startMs": 106060,
+            "endMs": 108420,
+            "text": "这种只改变效率的变革",
+            "averageLogProbability": -0.08335551237448668
+          },
+          {
+            "index": 36,
+            "startMs": 108420,
+            "endMs": 112080,
+            "text": "历史上每一次都塑造了新的秩序",
+            "averageLogProbability": -0.08335551237448668
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 11,
+            "startMs": 94000,
+            "endMs": 103000,
+            "text": "把原来需要反复失措才能找到的客户变成了精准到个位数的定向投放。"
+          },
+          {
+            "index": 12,
+            "startMs": 103000,
+            "endMs": 112000,
+            "text": "这并非是贬值AI的价值,恰恰相反,这种只改变效率的变革历史上每一次都塑造了新的秩序。"
+          },
+          {
+            "index": 13,
+            "startMs": 112000,
+            "endMs": 118000,
+            "text": "集装箱没有发明航运,没有发明港口,也没有改变船的动力系统。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b12",
+      "beatId": "B12",
+      "originalDirectorBeatId": "B12",
+      "order": 12,
+      "route": "paper-editorial",
+      "routeCueId": "P03",
+      "startMs": 112080,
+      "endMs": 122620,
+      "actualChinese": "集装箱没有发明航运，没有发明港口，也没有改变船的动力系统。它只是把散装货物装进了一个标准化的铁盒子里。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        37,
+        38,
+        39,
+        40
+      ],
+      "sourceSmallSegmentIndices": [
+        13,
+        14
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "集装箱没有发明航运，没有发明港口，也没有改变船的动力系统。它只是把散装货物装进了一个标准化的铁盒子里，",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 37,
+            "startMs": 112080,
+            "endMs": 114540,
+            "text": "集装箱没有发明航运",
+            "averageLogProbability": -0.08335551237448668
+          },
+          {
+            "index": 38,
+            "startMs": 114540,
+            "endMs": 115940,
+            "text": "没有发明港口",
+            "averageLogProbability": -0.08335551237448668
+          },
+          {
+            "index": 39,
+            "startMs": 115940,
+            "endMs": 118220,
+            "text": "也没有改变船的动力系统",
+            "averageLogProbability": -0.08335551237448668
+          },
+          {
+            "index": 40,
+            "startMs": 118220,
+            "endMs": 122620,
+            "text": "它只是把散装货物装进了一个标准化的铁盒子里",
+            "averageLogProbability": -0.08335551237448668
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 13,
+            "startMs": 112000,
+            "endMs": 118000,
+            "text": "集装箱没有发明航运,没有发明港口,也没有改变船的动力系统。"
+          },
+          {
+            "index": 14,
+            "startMs": 118000,
+            "endMs": 128000,
+            "text": "它只是把散装货物装进了一个标准化的铁盒子里,让装卸的效率提升了数十倍,让运输成本降低了90%以上。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b13",
+      "beatId": "B13",
+      "originalDirectorBeatId": "B13",
+      "order": 13,
+      "route": "real-evidence",
+      "routeCueId": "R03",
+      "startMs": 122620,
+      "endMs": 128260,
+      "actualChinese": "让装卸的效率提升了数十倍，让运输成本降低了90%以上。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        41,
+        42
+      ],
+      "sourceSmallSegmentIndices": [
+        14,
+        15
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "让装卸效率提升了数十倍，让运输成本降低了90%以上。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 41,
+            "startMs": 122620,
+            "endMs": 125420,
+            "text": "让装卸的效率提升了数十倍",
+            "averageLogProbability": -0.08335551237448668
+          },
+          {
+            "index": 42,
+            "startMs": 125420,
+            "endMs": 128260,
+            "text": "让运输成本降低了90%以上",
+            "averageLogProbability": -0.08335551237448668
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 14,
+            "startMs": 118000,
+            "endMs": 128000,
+            "text": "它只是把散装货物装进了一个标准化的铁盒子里,让装卸的效率提升了数十倍,让运输成本降低了90%以上。"
+          },
+          {
+            "index": 15,
+            "startMs": 128000,
+            "endMs": 134000,
+            "text": "但是这个只改变效率和成本的发明彻底重塑了全球贸易的版图。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b14",
+      "beatId": "B14",
+      "originalDirectorBeatId": "B14",
+      "order": 14,
+      "route": "real-evidence",
+      "routeCueId": "R04",
+      "startMs": 128260,
+      "endMs": 145040,
+      "actualChinese": "但是这个只改变效率和成本的发明，彻底重塑了全球贸易的版图。它让制造业从发达国家转移到发展中国家，让深圳的小渔村变成了世界工厂，让全球供应链成为可能。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        43,
+        44,
+        45,
+        46
+      ],
+      "sourceSmallSegmentIndices": [
+        15,
+        16,
+        17
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "但就是这个“只改变效率和成本”的发明，彻底重塑了全球贸易的版图。它让制造业从发达国家转移到发展中国家，让深圳从小渔村变成世界工厂，让全球供应链成为可能。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 43,
+            "startMs": 128260,
+            "endMs": 133680,
+            "text": "但是这个只改变效率和成本的发明彻底重塑了全球贸易的版图",
+            "averageLogProbability": -0.08790198432074653
+          },
+          {
+            "index": 44,
+            "startMs": 133680,
+            "endMs": 138980,
+            "text": "它让制造业从发达国家转移到发展中国家",
+            "averageLogProbability": -0.08790198432074653
+          },
+          {
+            "index": 45,
+            "startMs": 138980,
+            "endMs": 141980,
+            "text": "让深圳的小渔村变成了世界工厂",
+            "averageLogProbability": -0.08790198432074653
+          },
+          {
+            "index": 46,
+            "startMs": 141980,
+            "endMs": 145040,
+            "text": "让全球供应链成为可能",
+            "averageLogProbability": -0.08790198432074653
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 15,
+            "startMs": 128000,
+            "endMs": 134000,
+            "text": "但是这个只改变效率和成本的发明彻底重塑了全球贸易的版图。"
+          },
+          {
+            "index": 16,
+            "startMs": 134000,
+            "endMs": 145000,
+            "text": "它让制造业从发达国家转移到发展中国家,让深圳的小渔村变成了世界工厂,让全球供应链成为可能。"
+          },
+          {
+            "index": 17,
+            "startMs": 145000,
+            "endMs": 155000,
+            "text": "航运还是那个航运,港口还是那个港口,但成本结构的变化带来了整个经济地理的重现。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b15",
+      "beatId": "B15",
+      "originalDirectorBeatId": "B15",
+      "order": 15,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 145040,
+      "endMs": 160660,
+      "actualChinese": "航运还是那个航运，港口还是那个港口，但成本结构的变化带来了整个经济地理的重现。AI此刻正在做的事情，和当年的集装箱如出一辙。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "low",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [
+        "U04"
+      ],
+      "correctionIds": [
+        "C05",
+        "C06"
+      ],
+      "sourceLargeSegmentIndices": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "sourceSmallSegmentIndices": [
+        17,
+        18
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "航运还是那个航运，港口还是那个港口，但成本结构的变化带来了整个经济地理的重写。AI此刻正在做的事情，和当年的集装箱如出一辙。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 47,
+            "startMs": 145040,
+            "endMs": 147620,
+            "text": "航运还是那个航运",
+            "averageLogProbability": -0.08790198432074653
+          },
+          {
+            "index": 48,
+            "startMs": 147620,
+            "endMs": 149520,
+            "text": "港口还是那个港口",
+            "averageLogProbability": -0.08790198432074653
+          },
+          {
+            "index": 49,
+            "startMs": 149520,
+            "endMs": 154920,
+            "text": "但成本结构的变化带来了整个经济地理的重现",
+            "averageLogProbability": -0.08790198432074653
+          },
+          {
+            "index": 50,
+            "startMs": 154920,
+            "endMs": 160660,
+            "text": "AA此刻正在做的事情和当年的集装箱如出一转",
+            "averageLogProbability": -0.09811135746488635
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 17,
+            "startMs": 145000,
+            "endMs": 155000,
+            "text": "航运还是那个航运,港口还是那个港口,但成本结构的变化带来了整个经济地理的重现。"
+          },
+          {
+            "index": 18,
+            "startMs": 155000,
+            "endMs": 161000,
+            "text": "AI此刻正在做的事情和当年的集装箱如出一者。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b16",
+      "beatId": "B16",
+      "originalDirectorBeatId": "B16",
+      "order": 16,
+      "route": "ai-generated-video",
+      "routeCueId": "G01",
+      "startMs": 160660,
+      "endMs": 187220,
+      "actualChinese": "以电商广告投放为例。传统模式下，一个商家想找潜在客户，需要先设想一个目标人群的画像，然后向平台购买对应的流量包，再根据转化的数据反复调整。这个流程充满了浪费，行业里有一句话，叫“我知道我的广告有一半浪费了，但我不知道浪费在哪一半。”",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ],
+      "sourceSmallSegmentIndices": [
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "以电商广告投放为例。传统模式下，一个商家想找到潜在客户，需要先设想一个目标人群画像，然后向平台购买对应的流量包，再根据转化数据反复调整。这个过程充满了浪费，行业里有一句老话叫“我知道我的广告费有一半浪费了，但我不知道浪费的是哪一半。”",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 51,
+            "startMs": 160660,
+            "endMs": 162960,
+            "text": "以电商广告投放为例",
+            "averageLogProbability": -0.09811135746488635
+          },
+          {
+            "index": 52,
+            "startMs": 162960,
+            "endMs": 165020,
+            "text": "传统模式下",
+            "averageLogProbability": -0.09811135746488635
+          },
+          {
+            "index": 53,
+            "startMs": 165020,
+            "endMs": 167640,
+            "text": "一个商家想找潜在客户",
+            "averageLogProbability": -0.09811135746488635
+          },
+          {
+            "index": 54,
+            "startMs": 167640,
+            "endMs": 171040,
+            "text": "需要先设想一个目标人群的画像",
+            "averageLogProbability": -0.09811135746488635
+          },
+          {
+            "index": 55,
+            "startMs": 171040,
+            "endMs": 173700,
+            "text": "然后向平台购买对应的流量包",
+            "averageLogProbability": -0.09811135746488635
+          },
+          {
+            "index": 56,
+            "startMs": 173700,
+            "endMs": 176800,
+            "text": "再根据转化的数据反复调整",
+            "averageLogProbability": -0.09811135746488635
+          },
+          {
+            "index": 57,
+            "startMs": 176800,
+            "endMs": 179000,
+            "text": "这个流程充满了浪费",
+            "averageLogProbability": -0.09811135746488635
+          },
+          {
+            "index": 58,
+            "startMs": 179000,
+            "endMs": 180600,
+            "text": "行业里有一句话",
+            "averageLogProbability": -0.09811135746488635
+          },
+          {
+            "index": 59,
+            "startMs": 180600,
+            "endMs": 184400,
+            "text": "叫我知道我的广告有一半浪费了",
+            "averageLogProbability": -0.09811135746488635
+          },
+          {
+            "index": 60,
+            "startMs": 184400,
+            "endMs": 187220,
+            "text": "但我不知道浪费在哪一半",
+            "averageLogProbability": -0.09202055718488754
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 18,
+            "startMs": 155000,
+            "endMs": 161000,
+            "text": "AI此刻正在做的事情和当年的集装箱如出一者。"
+          },
+          {
+            "index": 19,
+            "startMs": 161000,
+            "endMs": 174000,
+            "text": "以电商广告投放为例,传统模式下,一个商家想找潜在客户,需要先设想一个目标人群的画像,然后向平台购买对应的流量包。"
+          },
+          {
+            "index": 20,
+            "startMs": 174000,
+            "endMs": 179000,
+            "text": "再根据转化的数据反复调整,这个流程充满了浪费。"
+          },
+          {
+            "index": 21,
+            "startMs": 179000,
+            "endMs": 187000,
+            "text": "行业里有一句话,叫我知道我的广告有一半浪费了,但我不知道浪费在哪一半。"
+          },
+          {
+            "index": 22,
+            "startMs": 187000,
+            "endMs": 193000,
+            "text": "AI介入后,投放逻辑从人工假设变成了机器推理。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b17",
+      "beatId": "B17",
+      "originalDirectorBeatId": "B17",
+      "order": 17,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 187860,
+      "endMs": 193060,
+      "actualChinese": "AI介入后，投放逻辑从“人工假设”变成了“机器推理”。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        61,
+        62
+      ],
+      "sourceSmallSegmentIndices": [
+        22,
+        23
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "AI介入后，投放逻辑从“人工假设”变成了“机器推理”。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 61,
+            "startMs": 187860,
+            "endMs": 188780,
+            "text": "AI介入后",
+            "averageLogProbability": -0.09202055718488754
+          },
+          {
+            "index": 62,
+            "startMs": 188780,
+            "endMs": 193060,
+            "text": "投放逻辑从人工假设变成了机器推理",
+            "averageLogProbability": -0.09202055718488754
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 22,
+            "startMs": 187000,
+            "endMs": 193000,
+            "text": "AI介入后,投放逻辑从人工假设变成了机器推理。"
+          },
+          {
+            "index": 23,
+            "startMs": 193000,
+            "endMs": 204000,
+            "text": "系统直接理解商品的使用场景,反向寻找意向匹配的用户,不再完全依赖商家输入的关键词和人群标签。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b18",
+      "beatId": "B18",
+      "originalDirectorBeatId": "B18",
+      "order": 18,
+      "route": "paper-editorial",
+      "routeCueId": "P04",
+      "startMs": 193060,
+      "endMs": 219060,
+      "actualChinese": "系统直接理解商品的使用场景，反向寻找意图匹配的用户，不再完全依赖商家输入的关键词和人群标签。比如一个卖助眠枕头的商家，不需要告诉系统“我的客户是失眠人群”，系统自己就能通过搜索“半夜总醒”“睡醒脖子疼”等行为信号找到这些人。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [],
+      "correctionIds": [
+        "C07",
+        "C08"
+      ],
+      "sourceLargeSegmentIndices": [
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ],
+      "sourceSmallSegmentIndices": [
+        23,
+        24,
+        25,
+        26
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "系统直接理解商品的使用场景，反向寻找意图匹配的用户，不再完全依赖商家输入的关键词和人群标签。比如一个卖助眠枕头的商家，不需要告诉系统“我的客户是失眠人群”，系统自己就能通过搜索“半夜总醒”、“睡醒脖子疼”等行为信号找到这些人。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 63,
+            "startMs": 193060,
+            "endMs": 197200,
+            "text": "系统直接理解商品的使用场景",
+            "averageLogProbability": -0.09202055718488754
+          },
+          {
+            "index": 64,
+            "startMs": 197200,
+            "endMs": 200080,
+            "text": "反向寻找异象匹配的用户",
+            "averageLogProbability": -0.09202055718488754
+          },
+          {
+            "index": 65,
+            "startMs": 200080,
+            "endMs": 203780,
+            "text": "不再完全依赖商家输入的关键词和人群标签",
+            "averageLogProbability": -0.09202055718488754
+          },
+          {
+            "index": 66,
+            "startMs": 204300,
+            "endMs": 206880,
+            "text": "比如一个卖助眠枕头的商家",
+            "averageLogProbability": -0.09202055718488754
+          },
+          {
+            "index": 67,
+            "startMs": 206880,
+            "endMs": 208340,
+            "text": "不需要告诉系统",
+            "averageLogProbability": -0.09202055718488754
+          },
+          {
+            "index": 68,
+            "startMs": 208340,
+            "endMs": 210120,
+            "text": "我的客户是失眠人群",
+            "averageLogProbability": -0.09202055718488754
+          },
+          {
+            "index": 69,
+            "startMs": 210120,
+            "endMs": 213920,
+            "text": "系统自己就能通过搜索半页总形",
+            "averageLogProbability": -0.09202055718488754
+          },
+          {
+            "index": 70,
+            "startMs": 214480,
+            "endMs": 217740,
+            "text": "睡醒脖子疼等行为信号",
+            "averageLogProbability": -0.13835741678873698
+          },
+          {
+            "index": 71,
+            "startMs": 217740,
+            "endMs": 219060,
+            "text": "找到这些人",
+            "averageLogProbability": -0.13835741678873698
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 23,
+            "startMs": 193000,
+            "endMs": 204000,
+            "text": "系统直接理解商品的使用场景,反向寻找意向匹配的用户,不再完全依赖商家输入的关键词和人群标签。"
+          },
+          {
+            "index": 24,
+            "startMs": 204000,
+            "endMs": 210000,
+            "text": "比如一个卖助眠枕头的商家,不需要告诉系统,我的客户是失眠人群。"
+          },
+          {
+            "index": 25,
+            "startMs": 210000,
+            "endMs": 219000,
+            "text": "系统自己就能通过搜索半夜总行,睡醒脖子疼等行为信号,找到这些人。"
+          },
+          {
+            "index": 26,
+            "startMs": 219000,
+            "endMs": 228000,
+            "text": "这个变化带来的效率提升是惊人的,一个商家可以覆盖的人群边界,被大幅扩宽。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b19",
+      "beatId": "B19",
+      "originalDirectorBeatId": "B19",
+      "order": 19,
+      "route": "real-evidence",
+      "routeCueId": "R05",
+      "startMs": 219060,
+      "endMs": 242080,
+      "actualChinese": "这个变化带来的效率提升是惊人的。一个商家可以覆盖的人群边界被大幅扩宽，过去因为“搜不到”而被浪费的流量被重新计划。广告还是那个广告，投放还是那个投放，但每一次的曝光和点击背后，水分的含量被大幅地挤压。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [
+        "U05"
+      ],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        72,
+        73,
+        74,
+        75,
+        76,
+        77
+      ],
+      "sourceSmallSegmentIndices": [
+        26,
+        27,
+        28,
+        29
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "这个变化带来的效率提升是惊人的。一个商家可以覆盖的人群边界被大幅拓宽，过去因为“搜不到”而被浪费的流量被重新激活。广告还是那个广告，投放还是那个投放，但每一次曝光和点击背后水分的含量被大幅挤压。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 72,
+            "startMs": 219060,
+            "endMs": 222580,
+            "text": "这个变化带来的效率提升是惊人的",
+            "averageLogProbability": -0.13835741678873698
+          },
+          {
+            "index": 73,
+            "startMs": 222580,
+            "endMs": 227620,
+            "text": "一个商家可以覆盖的人群边界被大幅扩宽",
+            "averageLogProbability": -0.13835741678873698
+          },
+          {
+            "index": 74,
+            "startMs": 227620,
+            "endMs": 232520,
+            "text": "过去因为搜不到而被浪费的流量被重新计划",
+            "averageLogProbability": -0.13835741678873698
+          },
+          {
+            "index": 75,
+            "startMs": 232520,
+            "endMs": 235880,
+            "text": "广告还是那个广告投放还是那个投放",
+            "averageLogProbability": -0.13835741678873698
+          },
+          {
+            "index": 76,
+            "startMs": 235880,
+            "endMs": 238660,
+            "text": "但每一次的曝光和点击背后",
+            "averageLogProbability": -0.1040507816133045
+          },
+          {
+            "index": 77,
+            "startMs": 239440,
+            "endMs": 242080,
+            "text": "水分的含量被大幅的挤压",
+            "averageLogProbability": -0.1040507816133045
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 26,
+            "startMs": 219000,
+            "endMs": 228000,
+            "text": "这个变化带来的效率提升是惊人的,一个商家可以覆盖的人群边界,被大幅扩宽。"
+          },
+          {
+            "index": 27,
+            "startMs": 228000,
+            "endMs": 233000,
+            "text": "过去因为搜不到,而被浪费的流量被重新计划。"
+          },
+          {
+            "index": 28,
+            "startMs": 233000,
+            "endMs": 242000,
+            "text": "广告还是那个广告,投放还是那个投放,但每一次的曝光和点击背后水分的含量被大幅的挤压。"
+          },
+          {
+            "index": 29,
+            "startMs": 242000,
+            "endMs": 249000,
+            "text": "再把视角拉远一点,看一下知识工作领域,一家咨询公司为一个客户做市场进入策略。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b20",
+      "beatId": "B20",
+      "originalDirectorBeatId": "B20",
+      "order": 20,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 242080,
+      "endMs": 245860,
+      "actualChinese": "再把视角拉远一点，看一下知识工作领域。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        78,
+        79
+      ],
+      "sourceSmallSegmentIndices": [
+        29
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "再把视角拉远一点，看一下知识工作领域。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 78,
+            "startMs": 242080,
+            "endMs": 244080,
+            "text": "再把视角拉远一点",
+            "averageLogProbability": -0.1040507816133045
+          },
+          {
+            "index": 79,
+            "startMs": 244080,
+            "endMs": 245860,
+            "text": "看一下知识工作领域",
+            "averageLogProbability": -0.1040507816133045
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 29,
+            "startMs": 242000,
+            "endMs": 249000,
+            "text": "再把视角拉远一点,看一下知识工作领域,一家咨询公司为一个客户做市场进入策略。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b21",
+      "beatId": "B21",
+      "originalDirectorBeatId": "B21",
+      "order": 21,
+      "route": "ai-generated-video",
+      "routeCueId": "G02",
+      "startMs": 245860,
+      "endMs": 257840,
+      "actualChinese": "一家咨询公司为一个客户做市场进入策略，传统做法是派一个团队飞过去，花几周的时间访谈、调研、分析，产出一份几百页的报告。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        80,
+        81,
+        82
+      ],
+      "sourceSmallSegmentIndices": [
+        29,
+        30
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "一家咨询公司为一个客户做市场进入策略，传统做法是派一个团队飞过去，花几周时间访谈、调研、分析，产出一份几百页的报告，",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 80,
+            "startMs": 245860,
+            "endMs": 249420,
+            "text": "一家咨询公司为一个客户做市场进入策略",
+            "averageLogProbability": -0.1040507816133045
+          },
+          {
+            "index": 81,
+            "startMs": 249420,
+            "endMs": 253020,
+            "text": "传统做法是派一个团队飞过去花几周的时间",
+            "averageLogProbability": -0.1040507816133045
+          },
+          {
+            "index": 82,
+            "startMs": 253020,
+            "endMs": 257840,
+            "text": "访谈调研分析产出一份几百页的报告",
+            "averageLogProbability": -0.0961101037992848
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 29,
+            "startMs": 242000,
+            "endMs": 249000,
+            "text": "再把视角拉远一点,看一下知识工作领域,一家咨询公司为一个客户做市场进入策略。"
+          },
+          {
+            "index": 30,
+            "startMs": 249000,
+            "endMs": 261000,
+            "text": "传统做法是派一个团队飞过去花几周的时间访谈、调研、分析,产出一份几百页的报告,收费从几十万到上百万美元不等。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b22",
+      "beatId": "B22",
+      "originalDirectorBeatId": "B22",
+      "order": 22,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 257840,
+      "endMs": 261280,
+      "actualChinese": "收费从几十万到上百万美元不等。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        83
+      ],
+      "sourceSmallSegmentIndices": [
+        30,
+        31
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "收费从几十万到上百万美元不等。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 83,
+            "startMs": 257840,
+            "endMs": 261280,
+            "text": "收费从几十万到上百万美元不等",
+            "averageLogProbability": -0.0961101037992848
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 30,
+            "startMs": 249000,
+            "endMs": 261000,
+            "text": "传统做法是派一个团队飞过去花几周的时间访谈、调研、分析,产出一份几百页的报告,收费从几十万到上百万美元不等。"
+          },
+          {
+            "index": 31,
+            "startMs": 261000,
+            "endMs": 268000,
+            "text": "AI介入之后,一个经过专业调校的模型可以在几个小时内完成行业扫描。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b23",
+      "beatId": "B23",
+      "originalDirectorBeatId": "B23",
+      "order": 23,
+      "route": "real-evidence",
+      "routeCueId": "R06",
+      "startMs": 261280,
+      "endMs": 275980,
+      "actualChinese": "AI介入之后，一个经过专业调校的模型可以在几个小时内完成行业扫描、竞品分析、消费者的洞察，生成一份结构完整、逻辑自洽的报告初稿。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [
+        "U06"
+      ],
+      "correctionIds": [
+        "C09",
+        "C10"
+      ],
+      "sourceLargeSegmentIndices": [
+        84,
+        85,
+        86,
+        87,
+        88,
+        89
+      ],
+      "sourceSmallSegmentIndices": [
+        31,
+        32
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "AI介入后，一个经过专业调校的模型可以在几小时内完成行业扫描、竞品分析、消费者洞察，生成一份结构完整、逻辑自洽的报告初稿。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 84,
+            "startMs": 261280,
+            "endMs": 262640,
+            "text": "AI介入之后",
+            "averageLogProbability": -0.0961101037992848
+          },
+          {
+            "index": 85,
+            "startMs": 262640,
+            "endMs": 264960,
+            "text": "一个经过专业调效的模型",
+            "averageLogProbability": -0.0961101037992848
+          },
+          {
+            "index": 86,
+            "startMs": 264960,
+            "endMs": 268700,
+            "text": "可以在几个小时内完成行业扫描",
+            "averageLogProbability": -0.0961101037992848
+          },
+          {
+            "index": 87,
+            "startMs": 268700,
+            "endMs": 269760,
+            "text": "竞品分析",
+            "averageLogProbability": -0.0961101037992848
+          },
+          {
+            "index": 88,
+            "startMs": 269760,
+            "endMs": 271140,
+            "text": "消费者的洞察",
+            "averageLogProbability": -0.0961101037992848
+          },
+          {
+            "index": 89,
+            "startMs": 271140,
+            "endMs": 275980,
+            "text": "生成一份结构完整逻辑自洽的报告出稿",
+            "averageLogProbability": -0.0961101037992848
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 31,
+            "startMs": 261000,
+            "endMs": 268000,
+            "text": "AI介入之后,一个经过专业调校的模型可以在几个小时内完成行业扫描。"
+          },
+          {
+            "index": 32,
+            "startMs": 268000,
+            "endMs": 276000,
+            "text": "进行分析,消费者的动茶,生成一份结构完整逻辑自洽的报告出稿。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b24",
+      "beatId": "B24",
+      "originalDirectorBeatId": "B24",
+      "order": 24,
+      "route": "paper-editorial",
+      "routeCueId": "P05",
+      "startMs": 276420,
+      "endMs": 283480,
+      "actualChinese": "咨询顾问的角色从“信息采集和分析者”变成了“策略判断和交付把控者”。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [
+        "U07"
+      ],
+      "correctionIds": [
+        "C11"
+      ],
+      "sourceLargeSegmentIndices": [
+        90,
+        91
+      ],
+      "sourceSmallSegmentIndices": [
+        33,
+        34
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "咨询顾问的角色从“信息采集和分析者”变成了“策略判断和交付把控者”。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 90,
+            "startMs": 276420,
+            "endMs": 277800,
+            "text": "咨询顾问的角色",
+            "averageLogProbability": -0.0961101037992848
+          },
+          {
+            "index": 91,
+            "startMs": 277800,
+            "endMs": 283480,
+            "text": "从信息采集和分析者变成了策略判断和交付把控上",
+            "averageLogProbability": -0.07281309325119545
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 33,
+            "startMs": 276000,
+            "endMs": 283000,
+            "text": "咨询顾问的角色从信息采集和分析者变成了策略判断和交付把控制。"
+          },
+          {
+            "index": 34,
+            "startMs": 283000,
+            "endMs": 289000,
+            "text": "咨询还是那个咨询,但交付的效率提升了一个量级。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b25",
+      "beatId": "B25",
+      "originalDirectorBeatId": "B25",
+      "order": 25,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 283480,
+      "endMs": 292040,
+      "actualChinese": "咨询还是那个咨询，但交付的效率提升了一个量级，人力成本大幅下降。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        92,
+        93,
+        94
+      ],
+      "sourceSmallSegmentIndices": [
+        34,
+        35
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "咨询还是那个咨询，但交付效率提升了一个数量级，人力成本大幅下降。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 92,
+            "startMs": 283480,
+            "endMs": 285320,
+            "text": "咨询还是那个咨询",
+            "averageLogProbability": -0.07281309325119545
+          },
+          {
+            "index": 93,
+            "startMs": 285320,
+            "endMs": 289260,
+            "text": "但交付的效率提升了一个量级",
+            "averageLogProbability": -0.07281309325119545
+          },
+          {
+            "index": 94,
+            "startMs": 289880,
+            "endMs": 292040,
+            "text": "人力成本大幅下降",
+            "averageLogProbability": -0.07281309325119545
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 34,
+            "startMs": 283000,
+            "endMs": 289000,
+            "text": "咨询还是那个咨询,但交付的效率提升了一个量级。"
+          },
+          {
+            "index": 35,
+            "startMs": 289000,
+            "endMs": 296000,
+            "text": "人力成本大幅下降,以前从客户有需求到客户交付成果之间,"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b26",
+      "beatId": "B26",
+      "originalDirectorBeatId": "B26",
+      "order": 26,
+      "route": "paper-editorial",
+      "routeCueId": "P06",
+      "startMs": 292040,
+      "endMs": 303920,
+      "actualChinese": "以前从“客户有需求”到“客户交付成果”之间，有一长串的信息搬运和模式化的分析工作。这部分不产生策略价值，但必须有人做。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        95,
+        96,
+        97,
+        98
+      ],
+      "sourceSmallSegmentIndices": [
+        35,
+        36,
+        37
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "以前从“客户有需求”到“顾问交付成果”之间，有一长串信息搬运和模式化分析的工作。这部分不产生策略价值，但必须有人做。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 95,
+            "startMs": 292040,
+            "endMs": 296420,
+            "text": "以前从客户有需求到客户交付成果之间",
+            "averageLogProbability": -0.07281309325119545
+          },
+          {
+            "index": 96,
+            "startMs": 296420,
+            "endMs": 300780,
+            "text": "有一长串的信息搬运和模式化的分析工作",
+            "averageLogProbability": -0.07281309325119545
+          },
+          {
+            "index": 97,
+            "startMs": 300780,
+            "endMs": 302900,
+            "text": "这部分不产生策略价值",
+            "averageLogProbability": -0.07281309325119545
+          },
+          {
+            "index": 98,
+            "startMs": 302900,
+            "endMs": 303920,
+            "text": "但必须有人做",
+            "averageLogProbability": -0.07281309325119545
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 35,
+            "startMs": 289000,
+            "endMs": 296000,
+            "text": "人力成本大幅下降,以前从客户有需求到客户交付成果之间,"
+          },
+          {
+            "index": 36,
+            "startMs": 296000,
+            "endMs": 301000,
+            "text": "有一长串的信息搬运和模式化的分析工作。"
+          },
+          {
+            "index": 37,
+            "startMs": 301000,
+            "endMs": 304000,
+            "text": "这部分不产生策略价值,但必须有人做。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b27",
+      "beatId": "B27",
+      "originalDirectorBeatId": "B27",
+      "order": 27,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 303920,
+      "endMs": 310480,
+      "actualChinese": "AI接手了这一段，把顾问的精力释放到真正需要人类判断的内部。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "low",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [
+        "U08"
+      ],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        99,
+        100
+      ],
+      "sourceSmallSegmentIndices": [
+        37,
+        38,
+        39
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "AI接手了这一段，把顾问的精力释放到了真正需要人类判断的那部分。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 99,
+            "startMs": 303920,
+            "endMs": 305700,
+            "text": "AI接手了这一段",
+            "averageLogProbability": -0.07281309325119545
+          },
+          {
+            "index": 100,
+            "startMs": 305700,
+            "endMs": 310480,
+            "text": "把顾问的精力释放到真正需要人类判断的内部",
+            "averageLogProbability": -0.08777263246733567
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 37,
+            "startMs": 301000,
+            "endMs": 304000,
+            "text": "这部分不产生策略价值,但必须有人做。"
+          },
+          {
+            "index": 38,
+            "startMs": 304000,
+            "endMs": 310000,
+            "text": "AI接手了这一段把顾问的经历,释放到真正需要人类判断的内部分。"
+          },
+          {
+            "index": 39,
+            "startMs": 310000,
+            "endMs": 316000,
+            "text": "这里可能有人会问,如果AI只是改变了效率和成本,"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b28",
+      "beatId": "B28",
+      "originalDirectorBeatId": "B28",
+      "order": 28,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 310480,
+      "endMs": 322120,
+      "actualChinese": "这里可能有人会问，如果AI只是改变了效率和成本，那它最终会让所有行业变成卷价格的“红海”吗？",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        101,
+        102,
+        103
+      ],
+      "sourceSmallSegmentIndices": [
+        39,
+        40,
+        41
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "这里可能有人会问，如果AI只是改变了效率和成本，那它最终会让所有行业变成卷价格的“红海”吗？",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 101,
+            "startMs": 310480,
+            "endMs": 313120,
+            "text": "这里可能有人会问",
+            "averageLogProbability": -0.08777263246733567
+          },
+          {
+            "index": 102,
+            "startMs": 313120,
+            "endMs": 315980,
+            "text": "如果AI只是改变了效率和成本",
+            "averageLogProbability": -0.08777263246733567
+          },
+          {
+            "index": 103,
+            "startMs": 315980,
+            "endMs": 322120,
+            "text": "那它最终会让所有行业变成卷价格的红海吗",
+            "averageLogProbability": -0.08777263246733567
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 39,
+            "startMs": 310000,
+            "endMs": 316000,
+            "text": "这里可能有人会问,如果AI只是改变了效率和成本,"
+          },
+          {
+            "index": 40,
+            "startMs": 316000,
+            "endMs": 322000,
+            "text": "那它最终会让所有行业变成卷价格的红海吗?"
+          },
+          {
+            "index": 41,
+            "startMs": 322000,
+            "endMs": 326000,
+            "text": "这个担忧是来自一个常见的物件。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b29",
+      "beatId": "B29",
+      "originalDirectorBeatId": "B29",
+      "order": 29,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 322780,
+      "endMs": 337240,
+      "actualChinese": "这个担忧呢，是来自一个常见的一个误解。集装箱并没有让所有的港口收费趋同，但让那些能处理更大吞吐量的港口获得了绝对优势。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [],
+      "correctionIds": [
+        "C12",
+        "C13"
+      ],
+      "sourceLargeSegmentIndices": [
+        104,
+        105,
+        106,
+        107,
+        108
+      ],
+      "sourceSmallSegmentIndices": [
+        41,
+        42,
+        43,
+        44
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "这个担忧来自一个常见的误解。集装箱并没有让所有港口的收费趋同，但让那些能处理更大吞吐量的港口获得了绝对优势。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 104,
+            "startMs": 322780,
+            "endMs": 323700,
+            "text": "这个担忧呢",
+            "averageLogProbability": -0.08777263246733567
+          },
+          {
+            "index": 105,
+            "startMs": 323700,
+            "endMs": 326400,
+            "text": "是来自一个常见的一个物件",
+            "averageLogProbability": -0.08777263246733567
+          },
+          {
+            "index": 106,
+            "startMs": 326400,
+            "endMs": 330180,
+            "text": "集装箱并没有让所有的港口收费驱通",
+            "averageLogProbability": -0.08777263246733567
+          },
+          {
+            "index": 107,
+            "startMs": 330180,
+            "endMs": 335700,
+            "text": "但让那些能处理更大吞吐量的港口",
+            "averageLogProbability": -0.0886759978074294
+          },
+          {
+            "index": 108,
+            "startMs": 335700,
+            "endMs": 337240,
+            "text": "获得了绝对优势",
+            "averageLogProbability": -0.0886759978074294
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 41,
+            "startMs": 322000,
+            "endMs": 326000,
+            "text": "这个担忧是来自一个常见的物件。"
+          },
+          {
+            "index": 42,
+            "startMs": 326000,
+            "endMs": 330000,
+            "text": "集装箱并没有让所有的港口收费去通,"
+          },
+          {
+            "index": 43,
+            "startMs": 330000,
+            "endMs": 337000,
+            "text": "但让那些能处理更大吞吐量的港口获得了绝对优势。"
+          },
+          {
+            "index": 44,
+            "startMs": 337000,
+            "endMs": 348000,
+            "text": "AI也一样,当链接成本虚尽于零,企业之间的竞争就会从谁更擅长找到客户变成谁更擅长理解客户。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b30",
+      "beatId": "B30",
+      "originalDirectorBeatId": "B30",
+      "order": 30,
+      "route": "paper-editorial",
+      "routeCueId": "P07",
+      "startMs": 337240,
+      "endMs": 347560,
+      "actualChinese": "AI也一样，当连接成本趋近于零，企业之间的竞争就会从“谁更擅长找到客户”变成“谁更擅长理解客户”。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [],
+      "correctionIds": [
+        "C14"
+      ],
+      "sourceLargeSegmentIndices": [
+        109,
+        110,
+        111,
+        112
+      ],
+      "sourceSmallSegmentIndices": [
+        44
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "AI也一样，当连接成本趋近于零，企业之间的竞争就会从“谁更擅长找到客户”变成“谁更擅长理解客户”。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 109,
+            "startMs": 337240,
+            "endMs": 338240,
+            "text": "AI也一样",
+            "averageLogProbability": -0.0886759978074294
+          },
+          {
+            "index": 110,
+            "startMs": 338240,
+            "endMs": 340300,
+            "text": "当链接成本趋劲于零",
+            "averageLogProbability": -0.0886759978074294
+          },
+          {
+            "index": 111,
+            "startMs": 340300,
+            "endMs": 344880,
+            "text": "企业之间的竞争就会从谁更擅长找到客户",
+            "averageLogProbability": -0.0886759978074294
+          },
+          {
+            "index": 112,
+            "startMs": 344880,
+            "endMs": 347560,
+            "text": "变成谁更擅长理解客户",
+            "averageLogProbability": -0.0886759978074294
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 44,
+            "startMs": 337000,
+            "endMs": 348000,
+            "text": "AI也一样,当链接成本虚尽于零,企业之间的竞争就会从谁更擅长找到客户变成谁更擅长理解客户。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b31",
+      "beatId": "B31",
+      "originalDirectorBeatId": "B31",
+      "order": 31,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 347560,
+      "endMs": 358580,
+      "actualChinese": "这就是效率革命的特征，它让所有人都能低价获得同一种能力，于是把“做得更好”的要求推到了一个新的维度。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        113,
+        114,
+        115
+      ],
+      "sourceSmallSegmentIndices": [
+        44,
+        45,
+        46
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "这就是效率革命的特征：它让所有人都能低价获得同一种能力，于是把“做得更好”的要求推到了一个新的维度。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 113,
+            "startMs": 347560,
+            "endMs": 349840,
+            "text": "这就是效率革命的特征",
+            "averageLogProbability": -0.0886759978074294
+          },
+          {
+            "index": 114,
+            "startMs": 349840,
+            "endMs": 354060,
+            "text": "它让所有人都能低价获得同一种能力",
+            "averageLogProbability": -0.0886759978074294
+          },
+          {
+            "index": 115,
+            "startMs": 354060,
+            "endMs": 358580,
+            "text": "于是把做得更好的要求推到了一个新的维度",
+            "averageLogProbability": -0.1016039318508572
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 44,
+            "startMs": 337000,
+            "endMs": 348000,
+            "text": "AI也一样,当链接成本虚尽于零,企业之间的竞争就会从谁更擅长找到客户变成谁更擅长理解客户。"
+          },
+          {
+            "index": 45,
+            "startMs": 348000,
+            "endMs": 354000,
+            "text": "这就是效率革命的特征,它让所有人都能低价获得同一种能力,"
+          },
+          {
+            "index": 46,
+            "startMs": 354000,
+            "endMs": 359000,
+            "text": "于是把做的更好的要求推到了一个新的维度。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b32",
+      "beatId": "B32",
+      "originalDirectorBeatId": "B32",
+      "order": 32,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 359080,
+      "endMs": 378180,
+      "actualChinese": "那些担心被AI取代的人，和指望靠AI一夜暴富的人，其实犯了同一个错误。他们都在期待一个全新的秩序从天而降，而事实上，旧的秩序只是在被重新打磨。水还是水，不过是流得更快。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "medium",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [],
+      "correctionIds": [
+        "C15"
+      ],
+      "sourceLargeSegmentIndices": [
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122
+      ],
+      "sourceSmallSegmentIndices": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "那些担心被AI取代的人和指望靠AI一夜暴富的人，其实犯了同一个错误：他们都在期待一个全新的秩序从天而降。然而事实上，旧的秩序只是在被重新打磨，水还是水，不过是流得更快了。",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 116,
+            "startMs": 359080,
+            "endMs": 361020,
+            "text": "那些担心被AI取代的人",
+            "averageLogProbability": -0.1016039318508572
+          },
+          {
+            "index": 117,
+            "startMs": 361020,
+            "endMs": 363520,
+            "text": "和指望靠AI一页报复的人",
+            "averageLogProbability": -0.1016039318508572
+          },
+          {
+            "index": 118,
+            "startMs": 363520,
+            "endMs": 365300,
+            "text": "其实犯了同一个错误",
+            "averageLogProbability": -0.1016039318508572
+          },
+          {
+            "index": 119,
+            "startMs": 365300,
+            "endMs": 369100,
+            "text": "他们都在期待一个全新的秩序从天而降",
+            "averageLogProbability": -0.1016039318508572
+          },
+          {
+            "index": 120,
+            "startMs": 369100,
+            "endMs": 373900,
+            "text": "而事实上旧的秩序只是在被重新打磨",
+            "averageLogProbability": -0.1016039318508572
+          },
+          {
+            "index": 121,
+            "startMs": 373900,
+            "endMs": 375700,
+            "text": "水还是水",
+            "averageLogProbability": -0.1016039318508572
+          },
+          {
+            "index": 122,
+            "startMs": 375700,
+            "endMs": 378180,
+            "text": "不过是流的更快",
+            "averageLogProbability": -0.1016039318508572
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 47,
+            "startMs": 359000,
+            "endMs": 364000,
+            "text": "那些担心被AI取代的人和指望靠AI一样报复的人,"
+          },
+          {
+            "index": 48,
+            "startMs": 364000,
+            "endMs": 369000,
+            "text": "其实犯了同一个错误,他们都在期待一个全新的秩序从天而降。"
+          },
+          {
+            "index": 49,
+            "startMs": 369000,
+            "endMs": 378000,
+            "text": "而事实上,旧的秩序只是在被重新打磨,水还是水,不过是流得更快。"
+          },
+          {
+            "index": 50,
+            "startMs": 378000,
+            "endMs": 383000,
+            "text": "至于水流本身,它从来不会在意谁在游泳。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b33",
+      "beatId": "B33",
+      "originalDirectorBeatId": "B33",
+      "order": 33,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 378180,
+      "endMs": 383120,
+      "actualChinese": "至于水流本身，它从来不会在意谁在游泳。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "high",
+      "humanListeningPerformed": false,
+      "reviewRequired": false,
+      "uncertaintyIds": [],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        123,
+        124
+      ],
+      "sourceSmallSegmentIndices": [
+        50,
+        51
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "至于水流本身，它从来不会在意谁在游泳。",
+        "normalizedEqual": true
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 123,
+            "startMs": 378180,
+            "endMs": 380100,
+            "text": "至于水流本身",
+            "averageLogProbability": -0.1016039318508572
+          },
+          {
+            "index": 124,
+            "startMs": 380100,
+            "endMs": 383120,
+            "text": "他从来不会在意谁在游泳",
+            "averageLogProbability": -0.1016039318508572
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 50,
+            "startMs": 378000,
+            "endMs": 383000,
+            "text": "至于水流本身,它从来不会在意谁在游泳。"
+          },
+          {
+            "index": 51,
+            "startMs": 383000,
+            "endMs": 386000,
+            "text": "我是赵哥,在兰州,越南创业。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "spoken-b34",
+      "beatId": "B34",
+      "originalDirectorBeatId": "B34",
+      "order": 34,
+      "route": "speaker",
+      "routeCueId": null,
+      "startMs": 383940,
+      "endMs": 386460,
+      "actualChinese": "我是超哥，在兰州，也在创业。",
+      "authority": "recorded-audio-candidate-from-local-asr",
+      "confidence": "low",
+      "humanListeningPerformed": false,
+      "reviewRequired": true,
+      "uncertaintyIds": [
+        "U09"
+      ],
+      "correctionIds": [],
+      "sourceLargeSegmentIndices": [
+        125,
+        126,
+        127
+      ],
+      "sourceSmallSegmentIndices": [
+        51
+      ],
+      "comparisonOnly": {
+        "directorScriptQuote": "我是超哥，在兰州AI创业",
+        "normalizedEqual": false
+      },
+      "evidence": {
+        "largeV3Turbo": [
+          {
+            "index": 125,
+            "startMs": 383940,
+            "endMs": 384540,
+            "text": "我是超哥",
+            "averageLogProbability": -0.24789876937866212
+          },
+          {
+            "index": 126,
+            "startMs": 384540,
+            "endMs": 385440,
+            "text": "在兰州",
+            "averageLogProbability": -0.24789876937866212
+          },
+          {
+            "index": 127,
+            "startMs": 385440,
+            "endMs": 386460,
+            "text": "也在创业",
+            "averageLogProbability": -0.24789876937866212
+          }
+        ],
+        "whisperCppSmall": [
+          {
+            "index": 51,
+            "startMs": 383000,
+            "endMs": 386000,
+            "text": "我是赵哥,在兰州,越南创业。"
+          }
+        ]
+      }
+    }
+  ],
+  "preservedRecordedDifferences": [
+    {
+      "beatId": "B10",
+      "text": "那么",
+      "note": "原稿无此连接词，两模型都识别到。"
+    },
+    {
+      "beatId": "B10",
+      "text": "两个小时",
+      "note": "原稿为“两小时”，实录明确多“个”。"
+    },
+    {
+      "beatId": "B16",
+      "text": "这个流程",
+      "note": "原稿为“这个过程”，两模型都识别为“流程”。"
+    },
+    {
+      "beatId": "B19",
+      "text": "每一次的曝光和点击背后",
+      "note": "原稿无“的”，实录候选保留。"
+    },
+    {
+      "beatId": "B14",
+      "text": "让深圳的小渔村变成了世界工厂",
+      "note": "原稿为“让深圳从小渔村”，两模型一致支持实录差异。"
+    },
+    {
+      "beatId": "B16",
+      "text": "行业里有一句话",
+      "note": "原稿为“一句老话”，实录未识别“老”。"
+    },
+    {
+      "beatId": "B25",
+      "text": "提升了一个量级",
+      "note": "原稿为“一个数量级”，两模型均支持实录说法。"
+    },
+    {
+      "beatId": "B26",
+      "text": "从客户有需求到客户交付成果之间",
+      "note": "原稿为“顾问交付成果”，两模型均识别为“客户交付成果”。"
+    }
+  ]
+}

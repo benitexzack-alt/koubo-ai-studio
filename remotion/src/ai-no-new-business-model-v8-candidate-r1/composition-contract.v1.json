@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "koubo-v8-candidate-composition-contract/v1",
+  "episodeId": "20260912_ai_no_new_business_model",
+  "taskId": "task-20260913T123722Z-11da90de",
+  "status": "candidate-preview-only",
+  "formalAllowed": false,
+  "formalBlockReason": [
+    "实录字幕是本地ASR候选，尚未完成人工听审。",
+    "B23本期没有R06受控演示，当前仅为流程示意，不能证明“几小时”。",
+    "尚未完成正常速度全片视觉复核、音效听审与用户确认。"
+  ],
+  "releaseBlockReason": [
+    "未获得发布授权。"
+  ],
+  "compositions": {
+    "withSfx": "AINoNewBusinessModel16x9-V8-R1-WithSfx",
+    "noSfx": "AINoNewBusinessModel16x9-V8-R1-NoSfx",
+    "visualParity": "两个composition共用同一Candidate视觉组件，仅soundEnabled布尔值不同。"
+  },
+  "bindings": {
+    "visualPlan": {
+      "path": "remotion/public-ai-no-new-business-model-v8-r1/data/candidate-plan.v1.json",
+      "sha256": "924715ce33cfc389bfc37a10d360ae1306b1ddb7abb3eff76b0b91e38be0b8e5"
+    },
+    "actualSpokenCaptions": {
+      "path": "remotion/public-ai-no-new-business-model-v8-r1/data/actual-spoken.bilingual.candidate.v1.json",
+      "sha256": "0747b3705eab53de3a406b7ccd966ad9c911f057a014c4837ec03e8f623b770b"
+    },
+    "shotcraftSelection": {
+      "path": "edit/20260912_ai_no_new_business_model/06_Remotion与动效/shotcraft-r1/director-selection.v1.json",
+      "sha256": "29ff34d8106dae93f2fcae4813da02313dcf5a24b7061e5a3b566002402128f2",
+      "appliedBeatIds": ["B03"]
+    },
+    "shotcraftLocalRuntime": {
+      "path": "remotion/src/ai-no-new-business-model-v8-candidate-r1/ShotcraftEffects.generated.tsx",
+      "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+    }
+  }
+}

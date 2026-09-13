@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "20260912_ai_no_new_business_model_director_v2_r3",
+  "revisionId": "director-core-r3-edit-release-r1",
+  "status": "planned",
+  "sourceRoute": "ai-generated-video",
+  "downstreamRoute": "generated-video",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues.v3.json",
+      "sha256": "cfe7ee61c788134c828e220a8ae655d251a7987a60aeee58db2a78d769f4996c"
+    },
+    "userApproval": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues-user-approval.edit-release.v3.json",
+      "sha256": "18b9b096ddf35ff1caceadca2f474cd6aaa14748e98d277836e4c89e9cba4100"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "5472eb8f5bf11298fe9bcbcfefa39dec89ca7ad1a3f8cd6450c6707c604f151e"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "first-frame",
+  "promptIsolation": {
+    "containsVideoPromptBodies": false,
+    "consumer": "first-frame-stage"
+  },
+  "styleLock": {
+    "referenceImages": [],
+    "promptPrefix": "写实纪实摄影，暖中性自然光，真实工作空间，深蓝与暖白色调，克制电影感，16:9横幅。",
+    "mustKeep": [
+      "真实人物比例",
+      "自然工作空间",
+      "暖中性光线",
+      "克制镜头语言"
+    ],
+    "mustAvoid": [
+      "伪造真实平台界面",
+      "复刻真实公司或人物",
+      "模型生成可读文字",
+      "夸张商业广告质感"
+    ]
+  },
+  "itemCount": 2,
+  "items": [
+    {
+      "id": "G01",
+      "beatId": "B16",
+      "startAnchorText": "以电商广告投放为例",
+      "endAnchorText": "哪一半",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 5,
+      "pairId": "G01-prompt-pair-v1",
+      "pairSha256": "d7ffccb4e9e17ee7e60c3d7071d008a106373fe815ac2315c1e77a065cb20056",
+      "prompt": "写实纪实摄影，暖中性自然光，真实工作空间，深蓝与暖白色调，克制电影感，16:9横幅。中景固定机位，一位无品牌特征的成年小商家坐在普通工作桌前，桌面摆着产品样品、多张无可读文字的受众卡和一个废弃纸盒，电脑屏幕只有模糊色块与不可辨识布局，人物右手停在其中一张卡片上，不出现真实平台、公司标志、客户数据或可读数字。",
+      "promptSha256": "5729f06850d4ec61dd74fbeedff25edf0584b3c52d81b1327b286a702709b610",
+      "negativePrompt": [
+        "不生成可读文字或数字",
+        "不复刻真实平台界面",
+        "不出现真实品牌或人物",
+        "不把演绎画面伪装成证据"
+      ],
+      "purpose": "illustration-only",
+      "representationPolicy": "synthetic-not-evidence",
+      "evidenceEligible": false,
+      "disclosureRequired": true,
+      "realEntityReenactmentForbidden": true,
+      "visualIntent": "把传统广告反复试错的工作负担变成具体人物情景。"
+    },
+    {
+      "id": "G02",
+      "beatId": "B21",
+      "startAnchorText": "一家咨询公司",
+      "endAnchorText": "几百页的报告",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 5,
+      "pairId": "G02-prompt-pair-v1",
+      "pairSha256": "eaa3c46a72e06e9bda3246b8d55aac61aed5e799fa97b4f7f091f5af3c6b3038",
+      "prompt": "写实纪实摄影，暖中性自然光，真实工作空间，深蓝与暖白色调，克制电影感，16:9横幅。斜侧中景，三位无特定身份的成年咨询人员围坐在普通会议桌旁，桌面分层堆放访谈记录、市场地图和厚报告纸束，远处有一只合上的旅行箱，所有纸张没有可读文字，不出现真实咨询公司、客户、地点、标志或机密信息。",
+      "promptSha256": "8cb44a8ae75d05d4db1c9019a6b5f62caea4de436ad01af7f2e5d8b416a52dec",
+      "negativePrompt": [
+        "不生成可读文字或数字",
+        "不复刻真实咨询公司",
+        "不出现真实客户或地点",
+        "不把演绎画面伪装成证据"
+      ],
+      "purpose": "illustration-only",
+      "representationPolicy": "synthetic-not-evidence",
+      "evidenceEligible": false,
+      "disclosureRequired": true,
+      "realEntityReenactmentForbidden": true,
+      "visualIntent": "把传统咨询中大量访谈与材料工作的负荷具体化。"
+    }
+  ]
+}

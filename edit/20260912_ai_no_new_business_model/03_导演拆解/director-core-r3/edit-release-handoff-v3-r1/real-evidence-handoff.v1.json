@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "koubo-director-real-evidence-handoff/v1",
+  "taskId": "20260912_ai_no_new_business_model_director_v2_r3",
+  "revisionId": "director-core-r3-edit-release-r1",
+  "status": "planned",
+  "sourceRoute": "real-evidence",
+  "downstreamRoute": "real-evidence",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues.v3.json",
+      "sha256": "cfe7ee61c788134c828e220a8ae655d251a7987a60aeee58db2a78d769f4996c"
+    },
+    "userApproval": {
+      "path": "edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/director-cues-user-approval.edit-release.v3.json",
+      "sha256": "18b9b096ddf35ff1caceadca2f474cd6aaa14748e98d277836e4c89e9cba4100"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "5472eb8f5bf11298fe9bcbcfefa39dec89ca7ad1a3f8cd6450c6707c604f151e"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptGenerationAllowed": false,
+  "itemCount": 6,
+  "items": [
+    {
+      "id": "R01",
+      "beatId": "B02",
+      "startAnchorText": "我们正处在",
+      "endAnchorText": "开启新时代",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "screen-recording",
+      "usageRole": "context",
+      "materialRequest": "由Codex后续收集并录制有明确来源的AI文章公开页面，按口播顺序展示颠覆、重构与新时代等措辞，记录样本边界并避开私人账号信息。",
+      "reason": "让观众看到宏大叙事的现实语境，而不是用生成画面想象。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "keep-speaker",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R02",
+      "beatId": "B06",
+      "startAnchorText": "移动互联网带来了",
+      "endAnchorText": "交易渠道",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "official-interface",
+      "usageRole": "context",
+      "materialRequest": "由Codex后续准备Uber或滴滴、Airbnb、SaaS订阅和社交电商的官方页面或合法公开产品画面，按供给、付费、分销三组呈现，避免只放Logo。",
+      "reason": "真实产品语境比通用图标更能让案例落地。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "keep-speaker",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R03",
+      "beatId": "B13",
+      "startAnchorText": "让装卸效率",
+      "endAnchorText": "90%以上",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "source-data",
+      "usageRole": "evidence",
+      "materialRequest": "由Codex后续找到能分别直接支撑装卸效率数十倍与运输成本降低90%以上的原始研究、官方报告或权威数据页面，保留完整上下文和口径。",
+      "reason": "两个量化主张必须由观众可见的直接出处承接。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "remove-or-rewrite-claim",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R04",
+      "beatId": "B14",
+      "startAnchorText": "但就是这个",
+      "endAnchorText": "成为可能",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "licensed-archive",
+      "usageRole": "context",
+      "materialRequest": "由Codex后续准备有来源和使用权的集装箱、港口、制造业与深圳公开档案镜头；每段只承担历史语境，不把大景当成因果证据。",
+      "reason": "真实档案提供时间感和现实质地。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "keep-speaker",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R05",
+      "beatId": "B19",
+      "startAnchorText": "这个变化带来",
+      "endAnchorText": "大幅挤压",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "source-data",
+      "usageRole": "evidence",
+      "materialRequest": "由Codex后续准备国内主流广告平台的官方案例或可合法使用的指标材料，分别说明覆盖扩大、无效流量降低或效率改善，并保留指标口径、观察窗口和适用业务。",
+      "reason": "效果结论需要真实指标，不能由AI演绎或纸艺替代。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "remove-or-rewrite-claim",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R06",
+      "beatId": "B23",
+      "startAnchorText": "AI介入后",
+      "endAnchorText": "报告初稿",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "user-demo",
+      "usageRole": "demonstration",
+      "materialRequest": "用户如保留‘几小时完成’等确定表述，录制一次脱敏且可复现的AI报告流程，真实展示行业扫描、竞品分析、消费者洞察和报告初稿，并记录实际耗时。",
+      "reason": "真实受控演示比抽象能力描述更有说服力。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "remove-or-rewrite-claim",
+      "generatedSubstituteAllowed": false
+    }
+  ]
+}
