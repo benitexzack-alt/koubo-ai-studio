@@ -37,7 +37,11 @@ const mixedCues = {
   routingPolicy: {
     selectionBasis: 'semantic-need-not-fixed-cadence', speakerIsFallback: true,
     generatedInsertMinimum: 0, paperInsertMinimum: 0, fixedCadenceForbidden: true,
-    generatedVisualCannotServeAsEvidence: true, shotcraftSelectionStage: 'post-shoot-edit-release',
+    generatedVisualCannotServeAsEvidence: true,
+    factVerificationSeparatedFromPrimaryVisual: true,
+    constructedVisualPriority: ['paper-editorial', 'ai-generated-video'],
+    aiGeneratedVideoUseCondition: 'concrete-human-or-environment-scene-paper-unnatural',
+    shotcraftSelectionStage: 'post-shoot-edit-release',
     shotcraftEligibleRoutes: ['speaker', 'real-evidence'],
     shotcraftForbiddenInsideRoutes: ['paper-editorial', 'ai-generated-video'],
   },
@@ -69,10 +73,15 @@ const mixedCues = {
     protectedSpeakerBeatIds: [],
   },
   semanticBeats: [
-    {id: 'B01', order: 1, scriptQuote: '官方文件显示真实数据。', rhetoricalRole: 'evidence', claimClass: 'factual-claim', requiresRealEvidence: true, primaryRoute: 'real-evidence', routeCueId: 'R01', decisionReason: '必须展示可核验来源。', viewerGain: 'proof'},
-    {id: 'B02', order: 2, scriptQuote: '普通店主在桌前查看结果。', rhetoricalRole: 'generic-scene', claimClass: 'generic-illustration', requiresRealEvidence: false, primaryRoute: 'ai-generated-video', routeCueId: 'G01', decisionReason: '没有特定真实主体，情景演绎可增加具体性。', viewerGain: 'make-scene-concrete'},
-    {id: 'B03', order: 3, scriptQuote: '这个机制把输入压成结果。', rhetoricalRole: 'mechanism', claimClass: 'abstract-explanation', requiresRealEvidence: false, primaryRoute: 'paper-editorial', routeCueId: 'P01', decisionReason: '抽象机制需要可见隐喻。', viewerGain: 'explain-mechanism'},
+    {id: 'B01', order: 1, scriptQuote: '官方文件显示真实数据。', rhetoricalRole: 'evidence', claimClass: 'factual-claim', requiresFactCheck: true, factCheckId: 'F01', primaryRoute: 'real-evidence', routeCueId: 'R01', decisionReason: '必须展示可核验来源。', viewerGain: 'proof'},
+    {id: 'B02', order: 2, scriptQuote: '普通店主在桌前查看结果。', rhetoricalRole: 'generic-scene', claimClass: 'generic-illustration', requiresFactCheck: false, factCheckId: null, primaryRoute: 'ai-generated-video', routeCueId: 'G01', decisionReason: '没有特定真实主体，情景演绎可增加具体性。', viewerGain: 'make-scene-concrete'},
+    {id: 'B03', order: 3, scriptQuote: '这个机制把输入压成结果。', rhetoricalRole: 'mechanism', claimClass: 'abstract-explanation', requiresFactCheck: false, factCheckId: null, primaryRoute: 'paper-editorial', routeCueId: 'P01', decisionReason: '抽象机制需要可见隐喻。', viewerGain: 'explain-mechanism'},
   ],
+  factChecks: [{
+    id: 'F01', beatId: 'B01', sourceRequirement: '核对官方文件原文与数据。',
+    owner: 'codex-public-source', onScreenTreatment: 'primary-real-evidence',
+    fallbackIfUnverified: 'remove-or-rewrite-claim',
+  }],
   routePlans: {
     realMaterials: {status: 'planned', notRequiredReason: null, items: [{
       id: 'R01', beatId: 'B01', startAnchorText: '官方文件', endAnchorText: '真实数据', timingStatus: 'pre-shoot-text-anchor-only',
@@ -91,6 +100,7 @@ const mixedCues = {
     }]},
     paperEditorials: {status: 'planned', notRequiredReason: null, items: [{
       id: 'P01', beatId: 'B03', startAnchorText: '这个机制', endAnchorText: '压成结果', timingStatus: 'pre-shoot-text-anchor-only',
+      purpose: 'illustration-only', evidenceEligible: false,
       durationSeconds: 4, reason: '让输入到结果的压缩关系可见。', visualRole: 'mechanism',
       visualMetaphor: '长纸带经过窄门成为短纸束', composition: '侧视单向压缩工作台',
       primaryAction: '长纸带穿过窄门停在托盘',
@@ -241,9 +251,10 @@ speakerCues.selectionSummary.routeRationales = {
 };
 speakerCues.selectionSummary.protectedSpeakerBeatIds = ['B01', 'B02'];
 speakerCues.semanticBeats = [
-  {id: 'B01', order: 1, scriptQuote: '这两句由我面对观众说。', rhetoricalRole: 'judgment', claimClass: 'presenter-expression', requiresRealEvidence: false, primaryRoute: 'speaker', routeCueId: null, decisionReason: '本人表情和语气有信息。', viewerGain: 'presenter-trust'},
-  {id: 'B02', order: 2, scriptQuote: '这里保留我的判断。', rhetoricalRole: 'boundary', claimClass: 'presenter-expression', requiresRealEvidence: false, primaryRoute: 'speaker', routeCueId: null, decisionReason: '判断应由本人承接。', viewerGain: 'presenter-trust'},
+  {id: 'B01', order: 1, scriptQuote: '这两句由我面对观众说。', rhetoricalRole: 'judgment', claimClass: 'presenter-expression', requiresFactCheck: false, factCheckId: null, primaryRoute: 'speaker', routeCueId: null, decisionReason: '本人表情和语气有信息。', viewerGain: 'presenter-trust'},
+  {id: 'B02', order: 2, scriptQuote: '这里保留我的判断。', rhetoricalRole: 'boundary', claimClass: 'presenter-expression', requiresFactCheck: false, factCheckId: null, primaryRoute: 'speaker', routeCueId: null, decisionReason: '判断应由本人承接。', viewerGain: 'presenter-trust'},
 ];
+speakerCues.factChecks = [];
 speakerCues.routePlans = {
   realMaterials: {status: 'not-required', notRequiredReason: '全文没有需要证明或演示的真实对象。', items: []},
   aiGeneratedVideos: {status: 'not-required', notRequiredReason: 'AI 情景不会增加具体性。', items: []},
@@ -286,7 +297,7 @@ outsideCues.selectionSummary.routeCounts.speaker = 1;
 outsideCues.selectionSummary.protectedSpeakerBeatIds = ['B01'];
 outsideCues.semanticBeats = [{
   id: 'B01', order: 1, scriptQuote: outsideText, rhetoricalRole: 'judgment', claimClass: 'presenter-expression',
-  requiresRealEvidence: false, primaryRoute: 'speaker', routeCueId: null,
+  requiresFactCheck: false, factCheckId: null, primaryRoute: 'speaker', routeCueId: null,
   decisionReason: '仅用于验证项目外路径会被交接门拒绝。', viewerGain: 'presenter-trust',
 }];
 outsideCues.rhythmAudit.runs = [{

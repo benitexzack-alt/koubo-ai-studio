@@ -11,12 +11,18 @@ assert.equal(template.schemaVersion, 'koubo-director-cues/v2');
 assert.equal(template.routingPolicy.generatedInsertMinimum, 0);
 assert.equal(template.routingPolicy.paperInsertMinimum, 0);
 assert.equal(template.routingPolicy.fixedCadenceForbidden, true);
+assert.equal(template.routingPolicy.factVerificationSeparatedFromPrimaryVisual, true);
+assert.deepEqual(template.routingPolicy.constructedVisualPriority, ['paper-editorial', 'ai-generated-video']);
+assert.equal(template.routingPolicy.aiGeneratedVideoUseCondition, 'concrete-human-or-environment-scene-paper-unnatural');
 assert.deepEqual(template.routingPolicy.shotcraftEligibleRoutes, ['speaker', 'real-evidence']);
 assert.equal(template.styleLocks.aiGeneratedVideo, null);
 assert.equal(template.styleLocks.paperEditorial, null);
 assert.equal(template.routePlans.realMaterials.status, 'not-required');
 assert.equal(template.routePlans.aiGeneratedVideos.status, 'not-required');
 assert.equal(template.routePlans.paperEditorials.status, 'not-required');
+assert.deepEqual(template.factChecks, []);
+assert.equal(template.semanticBeats[0].requiresFactCheck, false);
+assert.equal(template.semanticBeats[0].factCheckId, null);
 assert.equal(template.shotcraftOpportunities.length, 0);
 
 const root = mkdtempSync(path.join(os.tmpdir(), 'director-cues-v2-test-'));
@@ -44,6 +50,9 @@ const mixed = {
     paperInsertMinimum: 0,
     fixedCadenceForbidden: true,
     generatedVisualCannotServeAsEvidence: true,
+    factVerificationSeparatedFromPrimaryVisual: true,
+    constructedVisualPriority: ['paper-editorial', 'ai-generated-video'],
+    aiGeneratedVideoUseCondition: 'concrete-human-or-environment-scene-paper-unnatural',
     shotcraftSelectionStage: 'post-shoot-edit-release',
     shotcraftEligibleRoutes: ['speaker', 'real-evidence'],
     shotcraftForbiddenInsideRoutes: ['paper-editorial', 'ai-generated-video'],
@@ -81,11 +90,16 @@ const mixed = {
     protectedSpeakerBeatIds: ['B01'],
   },
   semanticBeats: [
-    {id: 'B01', order: 1, scriptQuote: '开场判断由我面对观众说。', rhetoricalRole: 'hook', claimClass: 'presenter-expression', requiresRealEvidence: false, primaryRoute: 'speaker', routeCueId: null, decisionReason: '面部和语气是这句的主要信息。', viewerGain: 'presenter-trust'},
-    {id: 'B02', order: 2, scriptQuote: '官方文件展示真实数据。', rhetoricalRole: 'evidence', claimClass: 'factual-claim', requiresRealEvidence: true, primaryRoute: 'real-evidence', routeCueId: 'R01', decisionReason: '该句要求可核验材料。', viewerGain: 'proof'},
-    {id: 'B03', order: 3, scriptQuote: '一位普通店主在桌前查看结果。', rhetoricalRole: 'generic-scene', claimClass: 'generic-illustration', requiresRealEvidence: false, primaryRoute: 'ai-generated-video', routeCueId: 'G01', decisionReason: '这是无特定主体的通用情景。', viewerGain: 'make-scene-concrete'},
-    {id: 'B04', order: 4, scriptQuote: '这个机制把输入压缩成结果。', rhetoricalRole: 'mechanism', claimClass: 'abstract-explanation', requiresRealEvidence: false, primaryRoute: 'paper-editorial', routeCueId: 'P01', decisionReason: '抽象变化需要可见物理隐喻。', viewerGain: 'explain-mechanism'},
+    {id: 'B01', order: 1, scriptQuote: '开场判断由我面对观众说。', rhetoricalRole: 'hook', claimClass: 'presenter-expression', requiresFactCheck: false, factCheckId: null, primaryRoute: 'speaker', routeCueId: null, decisionReason: '面部和语气是这句的主要信息。', viewerGain: 'presenter-trust'},
+    {id: 'B02', order: 2, scriptQuote: '官方文件展示真实数据。', rhetoricalRole: 'evidence', claimClass: 'factual-claim', requiresFactCheck: true, factCheckId: 'F01', primaryRoute: 'real-evidence', routeCueId: 'R01', decisionReason: '该句要求可核验材料，且官方文件本身值得上屏。', viewerGain: 'proof'},
+    {id: 'B03', order: 3, scriptQuote: '一位普通店主在桌前查看结果。', rhetoricalRole: 'generic-scene', claimClass: 'generic-illustration', requiresFactCheck: false, factCheckId: null, primaryRoute: 'ai-generated-video', routeCueId: 'G01', decisionReason: '这是无特定主体的通用情景。', viewerGain: 'make-scene-concrete'},
+    {id: 'B04', order: 4, scriptQuote: '这个机制把输入压缩成结果。', rhetoricalRole: 'mechanism', claimClass: 'abstract-explanation', requiresFactCheck: false, factCheckId: null, primaryRoute: 'paper-editorial', routeCueId: 'P01', decisionReason: '抽象变化需要可见物理隐喻。', viewerGain: 'explain-mechanism'},
   ],
+  factChecks: [{
+    id: 'F01', beatId: 'B02', sourceRequirement: '核对官方文件原文与对应数据。',
+    owner: 'codex-public-source', onScreenTreatment: 'primary-real-evidence',
+    fallbackIfUnverified: 'remove-or-rewrite-claim',
+  }],
   routePlans: {
     realMaterials: {
       status: 'planned', notRequiredReason: null, items: [{
@@ -109,6 +123,7 @@ const mixed = {
     paperEditorials: {
       status: 'planned', notRequiredReason: null, items: [{
         id: 'P01', beatId: 'B04', startAnchorText: '这个机制', endAnchorText: '压缩成结果', timingStatus: 'pre-shoot-text-anchor-only', durationSeconds: 4,
+        purpose: 'illustration-only', evidenceEligible: false,
         reason: '让输入到结果的压缩过程可见。', visualRole: 'mechanism',
         visualMetaphor: '长纸带经过压缩门成为短纸束', composition: '侧视单向压缩台', primaryAction: '长纸带穿过压缩门停在托盘',
         textPlan: [{text: '输入', surface: '前景固定空白纸牌'}, {text: '结果', surface: '后景固定空白纸牌'}],
@@ -143,9 +158,10 @@ allSpeaker.selectionSummary.routeRationales['ai-generated-video'] = '情景演�
 allSpeaker.selectionSummary.routeRationales['paper-editorial'] = '全文没有需要可视化的机制。';
 allSpeaker.selectionSummary.protectedSpeakerBeatIds = ['B01', 'B02'];
 allSpeaker.semanticBeats = [
-  {id: 'B01', order: 1, scriptQuote: '这是我的判断。', rhetoricalRole: 'judgment', claimClass: 'presenter-expression', requiresRealEvidence: false, primaryRoute: 'speaker', routeCueId: null, decisionReason: '本人判断由真人承接。', viewerGain: 'presenter-trust'},
-  {id: 'B02', order: 2, scriptQuote: '这是我的边界。', rhetoricalRole: 'boundary', claimClass: 'presenter-expression', requiresRealEvidence: false, primaryRoute: 'speaker', routeCueId: null, decisionReason: '风险边界需要真人语气。', viewerGain: 'presenter-trust'},
+  {id: 'B01', order: 1, scriptQuote: '这是我的判断。', rhetoricalRole: 'judgment', claimClass: 'presenter-expression', requiresFactCheck: false, factCheckId: null, primaryRoute: 'speaker', routeCueId: null, decisionReason: '本人判断由真人承接。', viewerGain: 'presenter-trust'},
+  {id: 'B02', order: 2, scriptQuote: '这是我的边界。', rhetoricalRole: 'boundary', claimClass: 'presenter-expression', requiresFactCheck: false, factCheckId: null, primaryRoute: 'speaker', routeCueId: null, decisionReason: '风险边界需要真人语气。', viewerGain: 'presenter-trust'},
 ];
+allSpeaker.factChecks = [];
 allSpeaker.routePlans = {
   realMaterials: {status: 'not-required', notRequiredReason: '没有需要外部证据或演示的句子。', items: []},
   aiGeneratedVideos: {status: 'not-required', notRequiredReason: '生成情景不会增加理解。', items: []},
@@ -183,18 +199,54 @@ const aiAsEvidence = structuredClone(mixed);
 aiAsEvidence.routePlans.aiGeneratedVideos.items[0].evidenceEligible = true;
 assert(validate(aiAsEvidence).errors.some((error) => error.includes('AI_EVIDENCE_ROLE_INVALID')));
 
+const paperAsEvidence = structuredClone(mixed);
+paperAsEvidence.routePlans.paperEditorials.items[0].evidenceEligible = true;
+assert(validate(paperAsEvidence).errors.some((error) => error.includes('PAPER_EVIDENCE_ROLE_INVALID')));
+
 const factualClaimRoutedToAi = structuredClone(mixed);
 factualClaimRoutedToAi.semanticBeats[2].claimClass = 'factual-claim';
-factualClaimRoutedToAi.semanticBeats[2].requiresRealEvidence = true;
-assert(validate(factualClaimRoutedToAi).errors.some((error) => error.includes('AI_BEAT_CLASS_INVALID')));
+factualClaimRoutedToAi.semanticBeats[2].requiresFactCheck = true;
+factualClaimRoutedToAi.semanticBeats[2].factCheckId = 'F02';
+factualClaimRoutedToAi.factChecks.push({
+  id: 'F02', beatId: 'B03', sourceRequirement: '核对场景中陈述的事实边界。',
+  owner: 'codex-public-source', onScreenTreatment: 'optional-source-card',
+  fallbackIfUnverified: 'remove-or-rewrite-claim',
+});
+assert.equal(validate(factualClaimRoutedToAi).ok, true, validate(factualClaimRoutedToAi).errors.join('\n'));
 
 const factualClaimDisguisedAsSpeaker = structuredClone(mixed);
 factualClaimDisguisedAsSpeaker.semanticBeats[0].claimClass = 'factual-claim';
-assert(validate(factualClaimDisguisedAsSpeaker).errors.some((error) => error.includes('FACTUAL_EVIDENCE_REQUIRED')));
+assert(validate(factualClaimDisguisedAsSpeaker).errors.some((error) => error.includes('FACT_CHECK_REQUIRED')));
 
-const evidenceFlaggedButKeptAsSpeaker = structuredClone(mixed);
-evidenceFlaggedButKeptAsSpeaker.semanticBeats[0].requiresRealEvidence = true;
-assert(validate(evidenceFlaggedButKeptAsSpeaker).errors.some((error) => error.includes('EVIDENCE_ROUTE_REQUIRED')));
+const factualClaimKeptAsSpeaker = structuredClone(mixed);
+factualClaimKeptAsSpeaker.semanticBeats[0].claimClass = 'factual-claim';
+factualClaimKeptAsSpeaker.semanticBeats[0].requiresFactCheck = true;
+factualClaimKeptAsSpeaker.semanticBeats[0].factCheckId = 'F02';
+factualClaimKeptAsSpeaker.factChecks.push({
+  id: 'F02', beatId: 'B01', sourceRequirement: '核对开场陈述的事实依据。',
+  owner: 'codex-public-source', onScreenTreatment: 'not-required',
+  fallbackIfUnverified: 'remove-or-rewrite-claim',
+});
+assert.equal(validate(factualClaimKeptAsSpeaker).ok, true, validate(factualClaimKeptAsSpeaker).errors.join('\n'));
+
+const factualClaimExplainedWithPaper = structuredClone(mixed);
+factualClaimExplainedWithPaper.semanticBeats[3].claimClass = 'factual-claim';
+factualClaimExplainedWithPaper.semanticBeats[3].requiresFactCheck = true;
+factualClaimExplainedWithPaper.semanticBeats[3].factCheckId = 'F02';
+factualClaimExplainedWithPaper.factChecks.push({
+  id: 'F02', beatId: 'B04', sourceRequirement: '核对输入压缩为结果这一事实表述。',
+  owner: 'codex-public-source', onScreenTreatment: 'not-required',
+  fallbackIfUnverified: 'remove-or-rewrite-claim',
+});
+assert.equal(
+  validate(factualClaimExplainedWithPaper).ok,
+  true,
+  validate(factualClaimExplainedWithPaper).errors.join('\n'),
+);
+
+const primaryEvidenceWithoutRealRoute = structuredClone(factualClaimKeptAsSpeaker);
+primaryEvidenceWithoutRealRoute.factChecks.find((item) => item.id === 'F02').onScreenTreatment = 'primary-real-evidence';
+assert(validate(primaryEvidenceWithoutRealRoute).errors.some((error) => error.includes('FACT_CHECK_PRIMARY_VISUAL_MISMATCH')));
 
 const fakeBoundReal = structuredClone(mixed);
 fakeBoundReal.routePlans.realMaterials.items[0].usableInProduction = true;
@@ -211,6 +263,13 @@ assert(validate(realWithAliasPrompt).errors.some((error) => error.includes('REAL
 const weakEvidenceFallback = structuredClone(mixed);
 weakEvidenceFallback.routePlans.realMaterials.items[0].fallbackIfUnavailable = 'keep-speaker';
 assert(validate(weakEvidenceFallback).errors.some((error) => error.includes('REAL_EVIDENCE_FALLBACK_TOO_WEAK')));
+
+const optionalContextFallback = structuredClone(mixed);
+optionalContextFallback.routePlans.realMaterials.items[0].usageRole = 'context';
+optionalContextFallback.routePlans.realMaterials.items[0].fallbackIfUnavailable = 'keep-speaker';
+optionalContextFallback.semanticBeats[1].viewerGain = 'context';
+optionalContextFallback.factChecks[0].onScreenTreatment = 'optional-source-card';
+assert.equal(validate(optionalContextFallback).ok, true, validate(optionalContextFallback).errors.join('\n'));
 
 const disguisedContextFallback = structuredClone(mixed);
 disguisedContextFallback.routePlans.realMaterials.items[0].usageRole = 'context';

@@ -19,6 +19,12 @@
     "paperInsertMinimum": 0,
     "fixedCadenceForbidden": true,
     "generatedVisualCannotServeAsEvidence": true,
+    "factVerificationSeparatedFromPrimaryVisual": true,
+    "constructedVisualPriority": [
+      "paper-editorial",
+      "ai-generated-video"
+    ],
+    "aiGeneratedVideoUseCondition": "concrete-human-or-environment-scene-paper-unnatural",
     "shotcraftSelectionStage": "post-shoot-edit-release",
     "shotcraftEligibleRoutes": [
       "speaker",
@@ -63,13 +69,15 @@
       "scriptQuote": "<EXACT_COMPLETE_OR_FIRST_SPEAKER_BEAT>",
       "rhetoricalRole": "hook-or-judgment",
       "claimClass": "presenter-expression",
-      "requiresRealEvidence": false,
+      "requiresFactCheck": false,
+      "factCheckId": null,
       "primaryRoute": "speaker",
       "routeCueId": null,
       "decisionReason": "<WHY_THE_FACE_AND_VOICE_MATTER_OR_WHY_NO_INSERT_ADDS_VALUE>",
       "viewerGain": "presenter-trust"
     }
   ],
+  "factChecks": [],
   "routePlans": {
     "realMaterials": {
       "status": "not-required",

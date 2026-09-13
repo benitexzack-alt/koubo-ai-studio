@@ -82,6 +82,14 @@ if (
   profile.routingPolicy?.paperInsertMinimum !== 0 ||
   profile.routingPolicy?.fixedCadenceForbidden !== true ||
   profile.routingPolicy?.paperBranchDefault !== false ||
+  profile.routingPolicy?.factVerificationSeparatedFromPrimaryVisual !== true ||
+  JSON.stringify(profile.routingPolicy?.constructedVisualPriority) !== JSON.stringify([
+    'paper-editorial', 'generated-video',
+  ]) ||
+  profile.routingPolicy?.publicSourcePreparationOwner !== 'codex' ||
+  profile.routingPolicy?.privateAuthenticatedRecordingOwner !== 'user' ||
+  profile.routingPolicy?.aiGeneratedVideoUseCondition !==
+    'concrete-human-or-environment-scene-paper-unnatural' ||
   !Array.isArray(profile.routingPolicy?.paperApplicableKinds) ||
   Object.hasOwn(profile.routingPolicy ?? {}, 'paperRequiredKinds') ||
   JSON.stringify(profile.routingPolicy?.mainVisualClasses) !== JSON.stringify([
@@ -217,7 +225,8 @@ if (
 if (
   profile.routingPolicy?.generatedVideo?.role !== 'illustration-only' ||
   profile.routingPolicy?.generatedVideo?.evidenceEligible !== false ||
-  profile.routingPolicy?.generatedVideo?.presentationMode !== 'full-screen'
+  profile.routingPolicy?.generatedVideo?.presentationMode !== 'full-screen' ||
+  profile.routingPolicy?.generatedVideo?.useOnlyWhenPaperWouldBeUnnatural !== true
 ) {
   errors.push('DIRECTOR_PROFILE_GENERATED_VIDEO_CONTRACT_INVALID');
 }

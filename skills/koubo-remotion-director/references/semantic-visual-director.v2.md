@@ -14,32 +14,34 @@ speaker | real-evidence | ai-generated-video | paper-editorial
 
 对每个语义段依次问：
 
-1. **需要证明或展示真实对象吗？**
-   - 数据、官方原文、真实界面、用户录屏、产品、地点、真实人物、真实操作，走 `real-evidence`。
+1. **真实对象本身必须上屏吗？**
+   - 官方原文、真实界面、用户录屏、产品、地点、真实人物或真实操作本身值得展示时，走 `real-evidence`。
    - 真实素材没有绑定时，只能列入用户素材执行单，不得记为可进成片。
    - 不得用 AI 生成画面冒充官方文件、后台、历史事件或数据证据。
 
-2. **需要把一个通用场景或人物行为具体化吗？**
+2. **需要解释看不见的逻辑吗？**
+   - 机制、流程、因果、关系、层级、对比、决策路径，优先走 `paper-editorial`。
+   - 纸艺是构造性说明画面的默认首选，只承担解释，不承担事实证明。
+   - 首帧词只写静态初态；视频词只写一个主动作；中文节点交给确定性写字，不让生成模型直接写。
+
+3. **需要把具体人物或环境情景呈现出来吗？**
    - 没有指向特定真实主体，用情景演绎能明显增加理解、情绪或节奏时，走 `ai-generated-video`。
+   - 只有纸艺表达该情景明显不自然时才使用普通 AI；不能因为 AI 生成方便就跳过纸艺判断。
    - 只能是 `illustration-only`，必须标记为 AI 情景演绎，不具备证据资格。
    - 为了风格稳定，每镜分开交付首帧提示词和图生视频提示词；一镜只有一个主动作。
-
-3. **需要解释看不见的逻辑吗？**
-   - 机制、流程、因果、关系、层级、对比、决策路径，走 `paper-editorial`。
-   - 纸艺是解释层，不承担事实证明。
-   - 首帧词只写静态初态；视频词只写一个主动作；中文节点交给确定性写字，不让生成模型直接写。
 
 4. **换画面会比真人更好吗？**
    - 钩子、本人判断、情绪转折、风险边界、金句、行动号召，默认走 `speaker`。
    - 其他句子若换画面不会增加理解、证据、具体性或节奏，也走 `speaker`。
 
-`real-evidence` 对事实性画面有优先权。其余三路不设默认份额，不允许用“每 N 秒一镜”或“至少 N 个 AI 镜头”代替判断。
+事实核验在上述画面判断之前独立完成。`factual-claim` 和 `real-operation` 各自绑定一条 `factChecks`，但不因此自动改成 `real-evidence`。来源可以不上屏、以可选来源卡出现，或在真实对象本身值得展示时成为主画面。四路不设默认份额，不允许用“每 N 秒一镜”或“至少 N 个 AI 镜头”代替判断。
 
 ## 全文覆盖与节奏
 
 - `semanticBeats` 必须按原文顺序完整覆盖全文，不得只拆想做镜头的句子。
-- 每个 beat 必须写明 `claimClass`、`requiresRealEvidence`、路由与 `viewerGain`：观众多看懂了什么，或为什么应该留真人。AI 路由只接受 `generic-illustration`，纸艺只接受 `abstract-explanation`，需要真实证明或真实操作的段落不得进入生成分路。
-- `factual-claim` 与 `real-operation` 必须进入 `real-evidence`。如果某句是本人判断、修辞或抽象解释，就应改成对应类型，不能把事实类保留为 `requiresRealEvidence=false`。数字、倍数、价格、平台能力、因果和绝对化判断尤其要拆开核验；一项真实材料不能顺带证明另一项主张。
+- 每个 beat 必须写明 `claimClass`、`requiresFactCheck`、`factCheckId`、主画面路由与 `viewerGain`：观众多看懂了什么，或为什么应该留真人。
+- `factual-claim` 与 `real-operation` 必须各自拥有一条独立 `factChecks` 记录；一条记录不得顺带覆盖另一项主张。数字、倍数、价格、平台能力、因果和绝对化判断尤其要拆开核验。事实段可走真人、纸艺或普通 AI 主画面，但纸艺和普通 AI 都必须明确为 `illustration-only`、`evidenceEligible=false`。
+- `factChecks.owner` 只允许 `codex-public-source`、`user-private-source` 或 `shared`；`onScreenTreatment` 只允许 `not-required`、`optional-source-card` 或 `primary-real-evidence`。只有最后一种要求对应 beat 走 `real-evidence`；核验失败必须删改主张或阻断生产。
 - 对每一组真人语义段执行 `rhythmAudit`，包括仅含一个 beat 的组，避免用一个超长 beat 绕过复核。它只强制导演写明判断，不强制插片；Shotcraft 处置必须绑定本组内的机会记录。
 - 相邻非真人镜头仍需留出口播呼吸；不为视觉密度连续覆盖主播。
 
@@ -53,7 +55,7 @@ speaker | real-evidence | ai-generated-video | paper-editorial
 - 当前是否绑定真实来源；
 - 未取得时删改未证实主张或停止生产的回退办法。
 
-任何进入 `real-evidence` 的段落都已经承担事实或真实操作责任。素材未取得时，只能删改未证实主张或阻断生产，不能改回 `keep-speaker` 继续口述。`bound-verified` 还必须绑定合规媒介、来源说明、使用权状态和真实人工复核时间，不能只凭任意本地文件与哈希冒充已验证。
+`real-evidence` 沿用历史路由名，也允许 `usageRole=context` 的真实公开画面作为叙事补充。若该画面不承担证据或演示责任、主张已由独立事实核验处理，且 `onScreenTreatment` 不是 `primary-real-evidence`，素材未取得时可以 `keep-speaker`，不硬编硬塞。承担证据、演示或明确要求上屏的材料未取得时，只能删改主张或阻断生产，不能用生成画面替代。`bound-verified` 还必须绑定合规媒介、来源说明、使用权状态和真实人工复核时间，不能只凭任意本地文件与哈希冒充已验证。
 
 导演阶段不搜索、不下载、不写 AI 替代提示词。
 
@@ -85,7 +87,9 @@ speaker | real-evidence | ai-generated-video | paper-editorial
 - 全文是否每个字都在 `semanticBeats` 中且顺序一致；
 - 每个非真人 beat 是否有且只有一个对应素材项；
 - 三条素材分路是否都显式存在，空分路是否有不需要理由；
-- 是否把真实证据错发给 AI 生成；
+- 每个事实或真实操作是否都独立绑定 `factChecks`，且没有因核验需要强迫主画面走真实素材；
+- 是否把真实证据错发给 AI/纸艺生成，或把 AI/纸艺错当证据；
+- 构造性说明画面是否先判断纸艺，普通 AI 是否只用于纸艺不自然的具体人物或环境情景；
 - 是否为满足数量或固定秒数强行插片；
 - 连续真人段是否已做节奏风险复核；
 - Shotcraft 是否仅标意图，没有拍前选卡；

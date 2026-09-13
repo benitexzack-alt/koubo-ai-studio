@@ -19,22 +19,24 @@ description: 用于口播的全片导演规划。完整读取用户确认文稿�
 
 必须先读完全文，写出一句主观点和论证顺序，再把全文拆成自然 `semanticBeats`。每个 beat 有且只有一个主画面：
 
-1. `real-evidence`：需要证明数据、官方原文、真实界面、录屏、演示、产品、地点或人物行为。
-2. `ai-generated-video`：通用情境或人物行为无可用实拍，而情景演绎能明显增加具体性、情绪或节奏。它只能作说明，不能作证据。
-3. `paper-editorial`：机制、流程、因果、关系、层级、对比或决策路径需要物理隐喻。
+1. `real-evidence`：真实对象本身必须上屏时使用，例如官方原文、真实界面、录屏、演示、产品、地点或人物行为。某句话需要核验，并不自动等于主画面必须走本路。
+2. `paper-editorial`：构造性说明画面的首选。机制、流程、因果、关系、层级、对比或决策路径需要物理隐喻时优先使用纸艺。
+3. `ai-generated-video`：仅当需要具体人物或环境情景、且纸艺表达明显不自然时使用。它只能作说明，不能作证据。
 4. `speaker`：钩子、本人判断、情绪、边界、金句、行动号召，或换画面不会增加理解时保留真人。
 
-事实性画面先判断真实素材，不得生成冒充。其余三路没有优先级和配额；普通 AI 视频、纸艺视频、真实素材和 Shotcraft 都可以为 0。禁止每隔固定秒数换镜、为试功能强插素材，或用不相关的现成效果凑数。
+先独立判断事实是否需要核验，再判断观众此刻最该看什么。事实来源可以只在后台锁定、以可选来源卡呈现，或在真实对象本身值得上屏时成为 `real-evidence` 主画面。生成画面不得冒充证据。四路都没有配额；普通 AI 视频、纸艺视频、真实素材和 Shotcraft 都可以为 0。禁止每隔固定秒数换镜、为试功能强插素材，或用不相关的现成效果凑数。
 
-每个 beat 还必须声明 `claimClass` 与 `requiresRealEvidence`。`factual-claim` 和 `real-operation` 必须标记需要真实证据并进入 `real-evidence`；如果导演判断它其实只是本人观点或抽象解释，就应如实改分类，不能用 `requiresRealEvidence=false` 绕过。官方原文、数据和真实操作不得伪装成 `generic-illustration` 送入 AI；普通 AI 只接受不指向真实主体的通用情景，纸艺只接受抽象逻辑解释。
+每个 beat 还必须声明 `claimClass`、`requiresFactCheck` 与 `factCheckId`。`factual-claim` 和 `real-operation` 必须各自严格绑定一条顶层 `factChecks` 记录；其他类型不得伪造核验记录。事实核验与主画面路由互不替代：事实段可以保留真人，也可以用纸艺或普通 AI 作 `illustration-only` 主画面；只有真实对象本身需要上屏时才选 `real-evidence`。如果导演判断一句话只是本人观点或抽象解释，应如实分类，不能靠关闭核验标记绕过事实责任。
 
 ## 四类输出
 
+顶层 `factChecks` 必须始终存在。每条事实核验记录写明来源要求、准备责任、是否需要上屏，以及核验失败时删改主张还是阻断生产。`onScreenTreatment=primary-real-evidence` 必须与 `real-evidence` 主画面一一对应；`not-required` 和 `optional-source-card` 不会强迫主画面改路由。
+
 `routePlans` 中三条素材分路必须始终存在：
 
-- `realMaterials`：用户素材执行单。未绑定来源时必须是 `candidate-unbound` 且 `usableInProduction=false`；写明需要什么、用来证明或演示什么、缺失时怎么处理。禁止写生成提示词。
-- `aiGeneratedVideos`：普通 AI 情景视频。必须是 `illustration-only`、`evidenceEligible=false`，并分开写静态首帧词和单主动作视频词。
-- `paperEditorials`：纸艺解释片。每镜需要独立构图、物理隐喻、`textPlan`、静态首帧词和单主动作视频词。
+- `realMaterials`：真实素材执行单。未绑定来源时必须是 `candidate-unbound` 且 `usableInProduction=false`；写明需要什么、用来证明、演示或补充什么上下文、缺失时怎么处理。公开画面仅作叙事上下文且主张已另行核验时，允许缺失后保留真人；承担证据、演示或明确要求上屏的材料缺失时，必须改稿或阻断。禁止写生成提示词。
+- `aiGeneratedVideos`：普通 AI 情景视频。必须是 `illustration-only`、`evidenceEligible=false`，仅用于纸艺不自然的具体人物或环境情景，并分开写静态首帧词和单主动作视频词。
+- `paperEditorials`：纸艺解释片，也是构造性说明画面的默认首选。必须是 `illustration-only`、`evidenceEligible=false`；每镜需要独立构图、物理隐喻、`textPlan`、静态首帧词和单主动作视频词。
 
 一条分路有内容时使用 `status=planned`；没有内容时使用 `status=not-required`、`items=[]` 并写具体理由。这用于区分“确认不需要”和“遗忘了判断”。
 
@@ -63,7 +65,7 @@ node skills/koubo-remotion-director/scripts/validate-director-cues-v2.mjs \
   --repo-root <project-root>
 ```
 
-校验器必须检查全文覆盖、四路一对一映射、任一路可为 0、空分路理由、真实证据边界、AI 演绎边界、纸艺文字与动作边界、所有真人段节奏复核和 Shotcraft 严格字段白名单。
+校验器必须检查全文覆盖、事实段与 `factChecks` 严格一对一、事实核验与主画面分离、四路一对一映射、任一路可为 0、空分路理由、真实证据边界、AI/纸艺仅作说明、纸艺文字与动作边界、所有真人段节奏复核和 Shotcraft 严格字段白名单。
 
 机器通过不代表导演质量通过。必须由用户审阅四路取舍、真实素材需求、AI 演绎必要性、纸艺构图与两类提示词。确认后才按项目 `AGENTS.md` 分路交给首帧、视频生成、真实素材入库和剪辑阶段。
 

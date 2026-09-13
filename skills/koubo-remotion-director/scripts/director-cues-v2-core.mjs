@@ -49,6 +49,20 @@ const CLAIM_CLASSES = new Set([
   'generic-illustration',
   'abstract-explanation',
 ]);
+const FACT_CHECK_OWNERS = new Set([
+  'codex-public-source',
+  'user-private-source',
+  'shared',
+]);
+const FACT_CHECK_ON_SCREEN_TREATMENTS = new Set([
+  'not-required',
+  'optional-source-card',
+  'primary-real-evidence',
+]);
+const FACT_CHECK_FALLBACKS = new Set([
+  'remove-or-rewrite-claim',
+  'block-production',
+]);
 const SCRIPT_AUTHORITIES = new Set(['user-confirmed-script', 'actual-spoken-transcript']);
 const TECHNICAL_PROMPT_TERMS = [
   '毫米', '归一化坐标', '布局合同', '碰撞', 'OCR', 'sha256',
@@ -68,8 +82,11 @@ const GENERATED_SYMBOL_TERMS = [
 ];
 const FORBIDDEN_SHOTCRAFT_FIELDS = ['cardId', 'effectId', 'presetId', 'componentId'];
 const BEAT_FIELDS = new Set([
-  'id', 'order', 'scriptQuote', 'rhetoricalRole', 'claimClass', 'requiresRealEvidence',
-  'primaryRoute', 'routeCueId', 'decisionReason', 'viewerGain',
+  'id', 'order', 'scriptQuote', 'rhetoricalRole', 'claimClass', 'requiresFactCheck',
+  'factCheckId', 'primaryRoute', 'routeCueId', 'decisionReason', 'viewerGain',
+]);
+const FACT_CHECK_FIELDS = new Set([
+  'id', 'beatId', 'sourceRequirement', 'owner', 'onScreenTreatment', 'fallbackIfUnverified',
 ]);
 const REAL_ITEM_FIELDS = new Set([
   'id', 'beatId', 'startAnchorText', 'endAnchorText', 'timingStatus', 'assetType',
@@ -295,6 +312,17 @@ export function validateDirectorCuesV2({cues, projectRoot, scriptText}) {
   push(errors, policy.generatedInsertMinimum === 0 && policy.paperInsertMinimum === 0, 'DIRECTOR_V2_GENERATED_QUOTA_FORBIDDEN');
   push(errors, policy.fixedCadenceForbidden === true, 'DIRECTOR_V2_FIXED_CADENCE_FORBIDDEN');
   push(errors, policy.generatedVisualCannotServeAsEvidence === true, 'DIRECTOR_V2_GENERATED_EVIDENCE_FORBIDDEN');
+  push(errors, policy.factVerificationSeparatedFromPrimaryVisual === true, 'DIRECTOR_V2_FACT_VISUAL_SEPARATION_REQUIRED');
+  push(
+    errors,
+    JSON.stringify(policy.constructedVisualPriority) === JSON.stringify(['paper-editorial', 'ai-generated-video']),
+    'DIRECTOR_V2_CONSTRUCTED_VISUAL_PRIORITY_INVALID',
+  );
+  push(
+    errors,
+    policy.aiGeneratedVideoUseCondition === 'concrete-human-or-environment-scene-paper-unnatural',
+    'DIRECTOR_V2_AI_USE_CONDITION_INVALID',
+  );
   push(errors, policy.shotcraftSelectionStage === 'post-shoot-edit-release', 'DIRECTOR_V2_SHOTCRAFT_STAGE_INVALID');
   push(
     errors,
@@ -336,12 +364,20 @@ export function validateDirectorCuesV2({cues, projectRoot, scriptText}) {
     if (ROUTES.has(beat?.primaryRoute)) routeCounts[beat.primaryRoute] += 1;
     push(errors, text(beat?.rhetoricalRole), `DIRECTOR_V2_RHETORICAL_ROLE_REQUIRED:${id}`);
     push(errors, CLAIM_CLASSES.has(beat?.claimClass), `DIRECTOR_V2_CLAIM_CLASS_INVALID:${id}`);
-    push(errors, typeof beat?.requiresRealEvidence === 'boolean', `DIRECTOR_V2_REAL_EVIDENCE_FLAG_REQUIRED:${id}`);
-    if (['factual-claim', 'real-operation'].includes(beat?.claimClass)) {
-      push(errors, beat?.requiresRealEvidence === true, `DIRECTOR_V2_FACTUAL_EVIDENCE_REQUIRED:${id}`);
-    }
-    if (beat?.requiresRealEvidence === true) {
-      push(errors, beat?.primaryRoute === 'real-evidence', `DIRECTOR_V2_EVIDENCE_ROUTE_REQUIRED:${id}`);
+    const isFactual = ['factual-claim', 'real-operation'].includes(beat?.claimClass);
+    push(errors, typeof beat?.requiresFactCheck === 'boolean', `DIRECTOR_V2_FACT_CHECK_FLAG_REQUIRED:${id}`);
+    if (isFactual) {
+      push(
+        errors,
+        beat?.requiresFactCheck === true && text(beat?.factCheckId),
+        `DIRECTOR_V2_FACT_CHECK_REQUIRED:${id}`,
+      );
+    } else {
+      push(
+        errors,
+        beat?.requiresFactCheck === false && beat?.factCheckId === null,
+        `DIRECTOR_V2_FACT_CHECK_FORBIDDEN:${id}`,
+      );
     }
     push(errors, text(beat?.decisionReason), `DIRECTOR_V2_DECISION_REASON_REQUIRED:${id}`);
     push(errors, text(beat?.viewerGain), `DIRECTOR_V2_VIEWER_GAIN_REQUIRED:${id}`);
@@ -351,16 +387,73 @@ export function validateDirectorCuesV2({cues, projectRoot, scriptText}) {
       push(errors, text(beat?.routeCueId), `DIRECTOR_V2_ROUTE_CUE_REQUIRED:${id}`);
     }
     if (beat?.primaryRoute === 'real-evidence') {
-      push(errors, ['factual-claim', 'real-operation'].includes(beat?.claimClass) && beat?.requiresRealEvidence === true, `DIRECTOR_V2_REAL_BEAT_CLASS_INVALID:${id}`);
+      push(errors, isFactual && beat?.requiresFactCheck === true, `DIRECTOR_V2_REAL_BEAT_CLASS_INVALID:${id}`);
     }
     if (beat?.primaryRoute === 'ai-generated-video') {
-      push(errors, beat?.claimClass === 'generic-illustration' && beat?.requiresRealEvidence === false, `DIRECTOR_V2_AI_BEAT_CLASS_INVALID:${id}`);
+      push(
+        errors,
+        ['generic-illustration', 'factual-claim', 'real-operation'].includes(beat?.claimClass),
+        `DIRECTOR_V2_AI_BEAT_CLASS_INVALID:${id}`,
+      );
     }
     if (beat?.primaryRoute === 'paper-editorial') {
-      push(errors, beat?.claimClass === 'abstract-explanation' && beat?.requiresRealEvidence === false, `DIRECTOR_V2_PAPER_BEAT_CLASS_INVALID:${id}`);
+      push(
+        errors,
+        ['abstract-explanation', 'factual-claim', 'real-operation'].includes(beat?.claimClass),
+        `DIRECTOR_V2_PAPER_BEAT_CLASS_INVALID:${id}`,
+      );
     }
   }
   push(errors, normalized(beats.map((beat) => beat?.scriptQuote ?? '').join('')) === normalized(source), 'DIRECTOR_V2_SEMANTIC_COVERAGE_INCOMPLETE');
+
+  const factChecks = list(cues?.factChecks);
+  push(errors, Array.isArray(cues?.factChecks), 'DIRECTOR_V2_FACT_CHECKS_INVALID');
+  const factCheckIds = new Set();
+  const factCheckBeatIds = new Set();
+  const factCheckByBeatId = new Map();
+  for (const factCheck of factChecks) {
+    const id = factCheck?.id ?? 'unknown';
+    validateAllowedKeys(factCheck, FACT_CHECK_FIELDS, errors, `DIRECTOR_V2_FACT_CHECK:${id}`);
+    push(errors, /^F\d{2,3}$/.test(id) && !factCheckIds.has(id), `DIRECTOR_V2_FACT_CHECK_ID_INVALID:${id}`);
+    if (text(id)) factCheckIds.add(id);
+    const beat = beatById.get(factCheck?.beatId);
+    push(errors, Boolean(beat), `DIRECTOR_V2_FACT_CHECK_BEAT_UNKNOWN:${id}`);
+    push(
+      errors,
+      beat && ['factual-claim', 'real-operation'].includes(beat.claimClass) &&
+        beat.requiresFactCheck === true && beat.factCheckId === id && !factCheckBeatIds.has(beat.id),
+      `DIRECTOR_V2_FACT_CHECK_BEAT_MISMATCH:${id}`,
+    );
+    if (beat) {
+      factCheckBeatIds.add(beat.id);
+      if (!factCheckByBeatId.has(beat.id)) factCheckByBeatId.set(beat.id, factCheck);
+    }
+    push(errors, text(factCheck?.sourceRequirement), `DIRECTOR_V2_FACT_CHECK_SOURCE_REQUIRED:${id}`);
+    push(errors, FACT_CHECK_OWNERS.has(factCheck?.owner), `DIRECTOR_V2_FACT_CHECK_OWNER_INVALID:${id}`);
+    push(
+      errors,
+      FACT_CHECK_ON_SCREEN_TREATMENTS.has(factCheck?.onScreenTreatment),
+      `DIRECTOR_V2_FACT_CHECK_ON_SCREEN_TREATMENT_INVALID:${id}`,
+    );
+    push(
+      errors,
+      FACT_CHECK_FALLBACKS.has(factCheck?.fallbackIfUnverified),
+      `DIRECTOR_V2_FACT_CHECK_FALLBACK_INVALID:${id}`,
+    );
+    push(
+      errors,
+      factCheck?.onScreenTreatment !== 'primary-real-evidence' || beat?.primaryRoute === 'real-evidence',
+      `DIRECTOR_V2_FACT_CHECK_PRIMARY_VISUAL_MISMATCH:${id}`,
+    );
+  }
+  for (const beat of beats) {
+    if (!['factual-claim', 'real-operation'].includes(beat?.claimClass)) continue;
+    push(
+      errors,
+      factCheckIds.has(beat?.factCheckId) && factCheckBeatIds.has(beat.id),
+      `DIRECTOR_V2_FACT_CHECK_MISSING:${beat?.id ?? 'unknown'}`,
+    );
+  }
 
   const declaredCounts = summary.routeCounts ?? {};
   for (const route of ROUTES) {
@@ -399,9 +492,12 @@ export function validateDirectorCuesV2({cues, projectRoot, scriptText}) {
     push(errors, !Object.hasOwn(item ?? {}, 'firstFramePrompt') && !Object.hasOwn(item ?? {}, 'videoPrompt'), `DIRECTOR_V2_REAL_GENERATION_FIELD_FORBIDDEN:${item?.id ?? 'unknown'}`);
     if (item?.evidenceStatus === 'candidate-unbound') {
       push(errors, item?.usableInProduction === false && item?.sourceBinding === null, `DIRECTOR_V2_REAL_UNBOUND_STATE_INVALID:${item?.id ?? 'unknown'}`);
+      const factCheck = factCheckByBeatId.get(item?.beatId);
+      const missingMaterialMustBlock = item?.usageRole !== 'context' ||
+        factCheck?.onScreenTreatment === 'primary-real-evidence';
       push(
         errors,
-        item?.fallbackIfUnavailable !== 'keep-speaker',
+        !missingMaterialMustBlock || item?.fallbackIfUnavailable !== 'keep-speaker',
         `DIRECTOR_V2_REAL_EVIDENCE_FALLBACK_TOO_WEAK:${item?.id ?? 'unknown'}`,
       );
     } else if (item?.evidenceStatus === 'bound-verified') {
@@ -455,6 +551,8 @@ export function validateDirectorCuesV2({cues, projectRoot, scriptText}) {
   const compositions = new Set();
   for (const item of paperItems) {
     const beat = registerCue(item, /^P\d{2,3}$/, 'paper-editorial', 'DIRECTOR_V2_PAPER');
+    push(errors, item?.purpose === 'illustration-only', `DIRECTOR_V2_PAPER_PURPOSE_INVALID:${item?.id ?? 'unknown'}`);
+    push(errors, item?.evidenceEligible === false, `DIRECTOR_V2_PAPER_EVIDENCE_ROLE_INVALID:${item?.id ?? 'unknown'}`);
     push(errors, Number.isFinite(item?.durationSeconds) && item.durationSeconds >= 2 && item.durationSeconds <= 8, `DIRECTOR_V2_PAPER_DURATION_INVALID:${item?.id ?? 'unknown'}`);
     push(errors, text(item?.reason), `DIRECTOR_V2_PAPER_REASON_REQUIRED:${item?.id ?? 'unknown'}`);
     push(errors, VISUAL_ROLES.has(item?.visualRole), `DIRECTOR_V2_PAPER_VISUAL_ROLE_INVALID:${item?.id ?? 'unknown'}`);

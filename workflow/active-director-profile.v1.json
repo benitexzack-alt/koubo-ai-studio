@@ -122,6 +122,14 @@
     "paperInsertMinimum": 0,
     "fixedCadenceForbidden": true,
     "paperBranchDefault": false,
+    "factVerificationSeparatedFromPrimaryVisual": true,
+    "constructedVisualPriority": [
+      "paper-editorial",
+      "generated-video"
+    ],
+    "publicSourcePreparationOwner": "codex",
+    "privateAuthenticatedRecordingOwner": "user",
+    "aiGeneratedVideoUseCondition": "concrete-human-or-environment-scene-paper-unnatural",
     "mainVisualClasses": [
       "speaker",
       "real-evidence",
@@ -182,7 +190,8 @@
       "role": "illustration-only",
       "evidenceEligible": false,
       "disclosureRequired": true,
-      "preferVerifiedRealMaterialWhenAvailable": true
+      "preferVerifiedRealMaterialWhenAvailable": true,
+      "useOnlyWhenPaperWouldBeUnnatural": true
     },
     "shotcraft": {
       "registryPath": "skills/koubo-shotcraft-library/registry.v1.json",

@@ -249,7 +249,11 @@ function attachSemanticDirectorV2Fixture(fixture) {
     routingPolicy: {
       selectionBasis: 'semantic-need-not-fixed-cadence', speakerIsFallback: true,
       generatedInsertMinimum: 0, paperInsertMinimum: 0, fixedCadenceForbidden: true,
-      generatedVisualCannotServeAsEvidence: true, shotcraftSelectionStage: 'post-shoot-edit-release',
+      generatedVisualCannotServeAsEvidence: true,
+      factVerificationSeparatedFromPrimaryVisual: true,
+      constructedVisualPriority: ['paper-editorial', 'ai-generated-video'],
+      aiGeneratedVideoUseCondition: 'concrete-human-or-environment-scene-paper-unnatural',
+      shotcraftSelectionStage: 'post-shoot-edit-release',
       shotcraftEligibleRoutes: ['speaker', 'real-evidence'],
       shotcraftForbiddenInsideRoutes: ['paper-editorial', 'ai-generated-video'],
     },
@@ -277,9 +281,10 @@ function attachSemanticDirectorV2Fixture(fixture) {
     },
     semanticBeats: [{
       id: 'B01', order: 1, scriptQuote: scriptText, rhetoricalRole: 'state-contract-fixture',
-      claimClass: 'generic-illustration', requiresRealEvidence: false, primaryRoute: 'ai-generated-video',
+      claimClass: 'generic-illustration', requiresFactCheck: false, factCheckId: null, primaryRoute: 'ai-generated-video',
       routeCueId: 'G01', decisionReason: '离线通用场景只验证状态合同。', viewerGain: 'make-scene-concrete',
     }],
+    factChecks: [],
     routePlans: {
       realMaterials: {status: 'not-required', notRequiredReason: '状态合同测试不执行真实素材分路。', items: []},
       aiGeneratedVideos: {

@@ -108,8 +108,8 @@
 
 - 本阶段唯一权威是 `skills/koubo-remotion-director/SKILL.md` 和 `koubo-director-cues/v2`。目录名为兼容历史保留 `remotion`，不代表本阶段执行 Remotion。
 - 唯一交付是：`完整文稿或实录 → 全文语义 beat → 真人/真实素材/AI情景/纸艺四路择一 → 三条素材执行包 → 连续真人节奏复核 → 拍后 Shotcraft 机会`，状态最高只能是 `ready-for-user-review`。
-- 数据、官方原文、真实界面、录屏、演示、产品、地点和真实人物行为选 `real-evidence`；无特定真实主体、情景演绎能明显增加具体性或节奏时才选 `ai-generated-video`；机制、因果、关系、层级、对照或流程需要物理隐喻时才选 `paper-editorial`；其余保留 `speaker`。
-- `factual-claim` 与 `real-operation` 必须进入真实证据分路；数字、倍数、价格、平台能力、因果和绝对化判断要逐项核验，不能用纸艺、AI 情景、主播口述或前一条材料顺带代替证据。证据拿不到就删改主张或阻断对应段落。
+- 事实核验与主画面选择是两层独立判断。数字、倍数、价格、平台能力、因果和绝对化判断必须逐项进入 `factChecks`，但不因此自动切成 `real-evidence`；来源可以只在后台锁定，或按需要作为小型来源卡出现。纸艺、AI 情景和主播画面都不能代替事实来源，核验失败时仍须删改主张或阻断对应段落。
+- 只有官方原文、真实界面、录屏、演示、产品、地点或人物行为本身必须被观众看见时，才选 `real-evidence`。在构造性说明画面中，机制、因果、关系、层级、对照或流程优先选 `paper-editorial`；纸艺无法自然表达、而具体人物或环境情景确实增加理解时，才选 `ai-generated-video`；其余保留 `speaker`。
 - 四路都没有最低数量，不得按固定秒数、固定字数或“每条必须有 AI/纸艺”机械插片。真实素材、AI 视频和纸艺三个包必须都存在；不需要的包写 `not-required` 和具体理由，以区分“不需要”与“忘了判断”。
 - AI 情景和纸艺只是说明画面，不具备证据资格。真实素材未绑定来源时只能是待准备候选，不得进正式片，也不得写 AI 生成替代词。
 - 拍前只记录 Shotcraft 的功能意图，不得预选卡号、组件或特效；且只能标在 `speaker` 与 `real-evidence` 上。拍后再按实录、真实帧窗、字幕和人物保护区扫描当前全库，允许全部 `not-needed`。
@@ -122,7 +122,7 @@
 - `workflow/active-director-profile.v1.json` 的 V9.1 下游生产字段仅在用户确认 v2 导演表后生效，用于首帧、视频生成和剪辑发布兼容，不得反向改写导演表。`ai-generated-video` 在下游映射为历史类名 `generated-video`，其他三路同名映射。
 - 进入 `firstframe` 后，AI 情景和纸艺分路才各自生成首帧；用户分镜验收首帧后才允许交给图生视频。纸艺镜头另外执行物件组、至少三层空间、节点中文、固定空白纸牌、确定性写字和 OCR。2026-09-08 事故修订后的新请求按 `skills/koubo-remotion-director/references/paper-motion-incident-prevention.md` 执行；一镜一个主动作，先完成一个代表镜并由用户验收。
 - 进入 `video-generation` 后，才执行新机构动态试验、动作边界抽帧、实际视频证据和独立人工验收；首帧或视频失败只返工失败镜头，不连锁重写已确认镜头。
-- 真实素材分路必须绑定本条来源和权限。缺失时按导演表删改未证实主张或阻断生产，不能退回真人照说，也不能默认改成 AI 画面。
+- 真实素材分路必须绑定本条来源和权限。承担 `evidence` 或 `demonstration` 的材料缺失时，按导演表删改未证实主张或阻断生产，不能默认改成 AI 画面；只承担 `context` 的公开画面缺失时，在事实已由独立来源核验的前提下可按导演表留真人，不得硬编硬塞。
 - 进入 `edit-release` 后，先实录重绑，再对 `speaker` 和 `real-evidence` 扫描 Shotcraft 当前全库并留下应用或不需要回执；此时才要求本条 request、route lock、plan、compile receipt、`skillExecuted=true` validation receipt、`tools/validate-director-production-binding.mjs`、动态候选验收和 V8 正式生产门禁。
 - 任一下游阶段失败时保持 `blocked`；任何降级都需用户针对本条明确批准。历史 job 只作日期限定回归，不得用于新片。
 
