@@ -38,6 +38,8 @@ const REVIEW_MANIFEST_PATH = `${EPISODE}/05_实录与字幕/review-pack-r1/manif
 const CANDIDATE_CAPTIONS_PATH = `${EPISODE}/05_实录与字幕/canonical-r1/actual-spoken.bilingual.candidate.v1.json`;
 const CANDIDATE_TIMELINE_PATH = `${EPISODE}/05_实录与字幕/canonical-r1/spoken-timeline.candidate.v1.json`;
 const TRANSCRIPTION_REVIEW_PATH = `${EPISODE}/05_实录与字幕/canonical-r1/transcription-review.v1.json`;
+const RAW_ASR_PATH =
+  `${EPISODE}/05_实录与字幕/asr-large-v3-turbo-r1/host.mlx-whisper-large-v3-turbo.full.raw.json`;
 const CANDIDATE_PLAN_PATH = `${PUBLIC_DIR}/data/candidate-plan.v1.json`;
 const RUNTIME_PATH =
   'remotion/src/ai-no-new-business-model-v8-candidate-r1/AINoNewBusinessModelV8CandidateR1.tsx';
@@ -66,6 +68,24 @@ const FINAL_OUTPUT =
 const QA_DIR = `${EPISODE}/07_预览与质检/formal-r1`;
 
 const REQUIRED_REVIEW_IDS = Object.freeze(['U04', 'U05', 'U08', 'U09']);
+const DECISION_TOKEN_BY_ID = Object.freeze({
+  U04: Object.freeze({
+    '经济地理的重现': '重现',
+    '经济地理的重写': '重写',
+  }),
+  U05: Object.freeze({
+    '被浪费的流量被重新计划': '重新计划',
+    '被浪费的流量被重新激活': '重新激活',
+  }),
+  U08: Object.freeze({
+    '真正需要人类判断的内部': '内部',
+    '真正需要人类判断的那部分': '那部分',
+  }),
+  U09: Object.freeze({
+    '我是超哥，在兰州，也在创业': '也在创业',
+    '我是超哥，在兰州AI创业': 'AI创业',
+  }),
+});
 const B23_CORRECTION = Object.freeze({
   title: '扫描 → 分析 → 洞察 → 初稿',
   subtitle: '本条未做同任务受控计时，“几小时”不作为事实结论',
@@ -154,7 +174,7 @@ const requireDecisionFilesBeforeAnyOutput = () => {
           schemaVersion: 'koubo-audio-review-user-decision/v1',
           requiredIds: REQUIRED_REVIEW_IDS,
           mustBind: REVIEW_MANIFEST_PATH,
-          evidence: '真实 Codex rollout 中 role=user 的完整原话，且原话须逐项包含所选实际说法',
+          evidence: '真实 Codex rollout 中 role=user 的完整原话，且原话须逐项包含与完整候选唯一对应的选择词',
         },
         b23ReceiptContract: {
           schemaVersion: 'koubo-b23-correction-card-user-approval/v1',
@@ -280,8 +300,15 @@ const assertAudioDecision = (receipt, reviewManifest) => {
         `${decision.id} 所选说法不在实际 review-pack 候选中：${String(decision.selectedText)}`,
       );
     }
-    if (!receipt.userQuote.includes(decision.selectedText)) {
-      fail('FORMAL_AUDIO_QUOTE', `${decision.id} 所选说法没有逐字出现在用户原话中。`);
+    const expectedToken = DECISION_TOKEN_BY_ID[decision.id]?.[decision.selectedText];
+    if (!expectedToken || decision.userToken !== expectedToken) {
+      fail(
+        'FORMAL_AUDIO_DECISION_TOKEN',
+        `${decision.id} 的 userToken 未与所选完整说法建立唯一对应。`,
+      );
+    }
+    if (!receipt.userQuote.includes(expectedToken)) {
+      fail('FORMAL_AUDIO_QUOTE', `${decision.id} 的用户选择词没有逐字出现在用户原话中。`);
     }
     decisionById.set(decision.id, decision);
   }
@@ -370,10 +397,224 @@ const pageReplacementFor = (id, selectedText) => {
   return selectedText === '我是超哥，在兰州AI创业' ? 'AI创业' : '也在创业';
 };
 
-const resolveCanonical = ({candidateCaptions, candidateTimeline, reviewManifest, decisions, generatedAt}) => {
+const MACHINE_TRANSCRIPT_NORMALIZATIONS = Object.freeze([
+  {id: 'N01', pageId: 'cap-b03-p02', from: '他们', to: '它们', evidence: '本句指代前文宏大叙事词语。'},
+  {id: 'N02', pageId: 'cap-b05-p01', from: '20', to: '二十', evidence: '同一中文读音的显示正字统一，不改变实际口播信息。'},
+  {id: 'C01', pageId: 'cap-b06-p01', from: '暗需经济', to: '按需经济'},
+  {id: 'C02', pageId: 'cap-b06-p02', from: '可交易的运营', to: '可交易的运力'},
+  {id: 'N03', pageId: 'cap-b06-p04', from: '他们', to: '它们', evidence: '本句指代供给方式。'},
+  {id: 'C03', pageId: 'cap-b06-p05', from: '买段', to: '买断'},
+  {id: 'N04', pageId: 'cap-b06-p07', from: '他们', to: '它们', evidence: '本句指代 SaaS 交付方式。'},
+  {id: 'N05', pageId: 'cap-b07-p02', from: '他们', to: '它们', evidence: '本句指代前述创新。'},
+  {id: 'N06', pageId: 'cap-b09-p01', from: '他', to: '它', evidence: '本句主语为 AI。'},
+  {id: 'N07', pageId: 'cap-b10-p01', from: '他', to: '它', evidence: '本句主语为 AI。'},
+  {id: 'C04', pageId: 'cap-b11-p01', from: '贬值AI的价值', to: '贬低AI的价值'},
+  {id: 'C05', pageId: 'cap-b15-p04', from: 'AA', to: 'AI'},
+  {id: 'C06', pageId: 'cap-b15-p04', from: '如出一转', to: '如出一辙'},
+  {id: 'C07', pageId: 'cap-b18-p02', from: '异象匹配', to: '意图匹配'},
+  {id: 'C08', pageId: 'cap-b18-p07', from: '半页总形', to: '半夜总醒'},
+  {id: 'N08', pageId: 'cap-b19-p06', from: '大幅的挤压', to: '大幅地挤压', evidence: '按句法作同音正字，不改变实际口播信息。'},
+  {id: 'C09', pageId: 'cap-b23-p02', from: '专业调效', to: '专业调校'},
+  {id: 'C10', pageId: 'cap-b23-p06', from: '报告出稿', to: '报告初稿'},
+  {id: 'C11', pageId: 'cap-b24-p03', from: '交付把控上', to: '交付把控者'},
+  {id: 'C12', pageId: 'cap-b29-p02', from: '一个物件', to: '一个误解'},
+  {id: 'C13', pageId: 'cap-b29-p03', from: '港口收费驱通', to: '港口收费趋同'},
+  {id: 'C14', pageId: 'cap-b30-p02', from: '链接成本趋劲于零', to: '连接成本趋近于零'},
+  {id: 'C15', pageId: 'cap-b32-p02', from: '一页报复', to: '一夜暴富'},
+  {id: 'N09', pageId: 'cap-b32-p07', from: '流的更快', to: '流得更快', evidence: '按句法作同音正字，不改变实际口播信息。'},
+  {id: 'N10', pageId: 'cap-b33-p02', from: '他', to: '它', evidence: '本句主语为水流。'},
+]);
+
+const REVIEW_PAGE_BY_ID = Object.freeze({
+  U04: 'cap-b15-p03',
+  U05: 'cap-b19-p03',
+  U08: 'cap-b27-p02',
+  U09: 'cap-b34-p03',
+});
+
+const tokenText = (word) => String(word?.text ?? '').replaceAll(/\s/gu, '');
+
+const replaceTimedPhrase = ({words, page, replacement}) => {
+  const candidates = [];
+  for (let startIndex = 0; startIndex < words.length; startIndex += 1) {
+    const startWord = words[startIndex];
+    const midpoint = ((startWord.start + startWord.end) / 2) * 1000;
+    if (midpoint < page.startMs || midpoint >= page.endMs) continue;
+    let joined = '';
+    for (let endIndex = startIndex; endIndex < words.length; endIndex += 1) {
+      const word = words[endIndex];
+      const wordMidpoint = ((word.start + word.end) / 2) * 1000;
+      if (wordMidpoint >= page.endMs) break;
+      joined += tokenText(word);
+      if (joined === replacement.from) {
+        candidates.push({startIndex, endIndex});
+        break;
+      }
+      if (!replacement.from.startsWith(joined)) break;
+    }
+  }
+  if (candidates.length !== 1) {
+    fail(
+      'FORMAL_TRANSCRIPT_NORMALIZATION_BINDING',
+      `${replacement.id} 在 ${replacement.pageId} 的原始逐词时窗中必须且只能命中一次。`,
+      {from: replacement.from, matches: candidates.length},
+    );
+  }
+  const {startIndex, endIndex} = candidates[0];
+  const sourceWords = words.slice(startIndex, endIndex + 1);
+  const rawText = sourceWords.map((word) => word.raw_text ?? word.text).join('');
+  words.splice(startIndex, sourceWords.length, {
+    id: `W-N-${replacement.id}`,
+    type: 'word',
+    text: replacement.to,
+    raw_text: rawText,
+    verbatim_text: replacement.to,
+    start: sourceWords[0].start,
+    end: sourceWords.at(-1).end,
+    source_start: sourceWords[0].source_start,
+    source_end: sourceWords.at(-1).source_end,
+    confidence: Math.min(...sourceWords.map((word) => word.confidence ?? 0)),
+    correctionIds: [replacement.id],
+    normalizationAuthority: replacement.authority,
+    normalizationEvidence: replacement.evidence,
+    sourceReferences: sourceWords.flatMap((word) => word.sourceReferences ?? []),
+    status:
+      replacement.authority === 'user-confirmed-focused-audio-review'
+        ? 'user-confirmed-focused-audio-review'
+        : 'machine-normalized-candidate',
+    displayAllowed: true,
+  });
+};
+
+const buildCanonicalWords = ({
+  rawAsr,
+  candidateCaptions,
+  transcriptionReview,
+  reviewManifest,
+  decisions,
+}) => {
+  if (!Array.isArray(rawAsr.segments) || rawAsr.segments.length === 0) {
+    fail('FORMAL_RAW_ASR', 'large-v3-turbo 原始转写缺少 segments。');
+  }
+  const words = rawAsr.segments.flatMap((segment, segmentIndex) =>
+    (segment.words ?? []).map((word, wordIndex) => ({
+      id: `W-${String(segmentIndex + 1).padStart(4, '0')}-${String(wordIndex + 1).padStart(3, '0')}`,
+      type: 'word',
+      text: String(word.word ?? '').trim(),
+      raw_text: String(word.word ?? '').trim(),
+      verbatim_text: String(word.word ?? '').trim(),
+      start: Number(word.start),
+      end: Number(word.end),
+      source_start: Number(word.start),
+      source_end: Number(word.end),
+      confidence: Number(word.probability ?? 0),
+      correctionIds: [],
+      sourceReferences: [
+        {
+          path: RAW_ASR_PATH,
+          jsonPointer: `/segments/${segmentIndex}/words/${wordIndex}`,
+        },
+      ],
+      status: 'machine-transcribed',
+      displayAllowed: true,
+    })),
+  ).filter(
+    (word) =>
+      isText(word.text) &&
+      Number.isFinite(word.start) &&
+      Number.isFinite(word.end) &&
+      word.end > word.start,
+  );
+  const pageById = new Map(candidateCaptions.pages.map((page) => [page.id, page]));
+  const correctionById = new Map(
+    (transcriptionReview.corrections ?? []).map((correction) => [correction.id, correction]),
+  );
+  for (const normalization of MACHINE_TRANSCRIPT_NORMALIZATIONS) {
+    const page = pageById.get(normalization.pageId);
+    if (!page) fail('FORMAL_TRANSCRIPT_PAGE', `缺少正字绑定页：${normalization.pageId}`);
+    const reviewed = correctionById.get(normalization.id);
+    if (
+      normalization.id.startsWith('C') &&
+      (
+        reviewed?.from !== normalization.from ||
+        reviewed?.to !== normalization.to ||
+        !isText(reviewed?.reason)
+      )
+    ) {
+      fail('FORMAL_TRANSCRIPT_REVIEW_BINDING', `${normalization.id} 未绑定既有转写审计。`);
+    }
+    replaceTimedPhrase({
+      words,
+      page,
+      replacement: {
+        ...normalization,
+        authority: 'machine-reviewed-orthographic-candidate',
+        evidence: normalization.evidence ?? reviewed.reason,
+      },
+    });
+  }
+  const reviewById = new Map(reviewManifest.items.map((item) => [item.id, item]));
+  for (const id of REQUIRED_REVIEW_IDS) {
+    const review = reviewById.get(id);
+    const selectedText = decisions.get(id).selectedText;
+    replaceTimedPhrase({
+      words,
+      page: pageById.get(REVIEW_PAGE_BY_ID[id]),
+      replacement: {
+        id,
+        pageId: REVIEW_PAGE_BY_ID[id],
+        from: pageReplacementFor(id, review.candidates[0]),
+        to: pageReplacementFor(id, selectedText),
+        authority: 'user-confirmed-focused-audio-review',
+        evidence: `用户通过本期四处原声听辨包选择“${decisions.get(id).userToken}”。`,
+      },
+    });
+  }
+  return words;
+};
+
+const splitOverlongCaptionPage = (pages) =>
+  pages.flatMap((page) => {
+    if (page.id !== 'cap-b28-p03') return [page];
+    if (
+      page.startMs !== 315980 ||
+      page.endMs !== 322120 ||
+      page.zh !== '那它最终会让所有行业变成卷价格的“红海”吗'
+    ) {
+      fail('FORMAL_CAPTION_SPLIT_BINDING', '超长字幕页内容或时点已变化，禁止静默套用旧拆分。');
+    }
+    return [
+      {
+        ...page,
+        id: 'cap-b28-p03a',
+        endMs: 319380,
+        zh: '那它最终会让所有行业',
+        en: 'will it eventually make every industry',
+        splitFrom: 'cap-b28-p03',
+      },
+      {
+        ...page,
+        id: 'cap-b28-p03b',
+        startMs: 319380,
+        zh: '变成卷价格的“红海”吗',
+        en: 'become a price-war “red ocean”?',
+        splitFrom: 'cap-b28-p03',
+      },
+    ];
+  });
+
+const resolveCanonical = ({
+  candidateCaptions,
+  candidateTimeline,
+  rawAsr,
+  transcriptionReview,
+  reviewManifest,
+  decisions,
+  generatedAt,
+}) => {
   const selected = new Map([...decisions].map(([id, value]) => [id, value.selectedText]));
   const reviewById = new Map(reviewManifest.items.map((item) => [item.id, item]));
-  const resolvedPages = candidateCaptions.pages.map((page) => {
+  const resolvedPagesUnsplit = candidateCaptions.pages.map((page) => {
     let zh = page.zh;
     let en = page.en;
     let focusedHumanListening = false;
@@ -404,6 +645,7 @@ const resolveCanonical = ({candidateCaptions, candidateTimeline, reviewManifest,
       uncertaintyIds,
     };
   });
+  const resolvedPages = splitOverlongCaptionPage(resolvedPagesUnsplit);
   const resolvedBeats = candidateTimeline.beats.map((beat) => {
     let actualChinese = beat.actualChinese;
     let focusedHumanListening = false;
@@ -433,6 +675,13 @@ const resolveCanonical = ({candidateCaptions, candidateTimeline, reviewManifest,
   const residualUncertaintyIds = [
     ...new Set(resolvedPages.flatMap((page) => page.uncertaintyIds ?? [])),
   ].sort();
+  const canonicalWords = buildCanonicalWords({
+    rawAsr,
+    candidateCaptions,
+    transcriptionReview,
+    reviewManifest,
+    decisions,
+  });
   const transcript = {
     schemaVersion: 1,
     taskId: 'task-20260913T155154Z-a375cbd9',
@@ -442,42 +691,18 @@ const resolveCanonical = ({candidateCaptions, candidateTimeline, reviewManifest,
     scriptRole: 'comparison-only',
     captionTextPolicy: 'spoken-verbatim',
     generatedAt,
-    sourceRawPath:
-      `${EPISODE}/05_实录与字幕/asr-large-v3-turbo-r1/host.mlx-whisper-large-v3-turbo.full.raw.json`,
+    sourceRawPath: RAW_ASR_PATH,
     sourceCandidateCaptions: ref(CANDIDATE_CAPTIONS_PATH),
     sourceReviewManifest: ref(REVIEW_MANIFEST_PATH),
-    wordGranularity: 'caption-page-segment',
+    wordGranularity: 'asr-word-timestamp-with-bounded-phrase-normalization',
     wordGranularityNotice:
-      'words 按实录字幕页保存，保留逐页音频时点与来源指针；不冒充逐字人工听校。',
+      'words 保留 large-v3-turbo 原始逐词时点；正字与四处用户选择仅在精确页时窗内合并替换，并保留 raw_text、来源指针和依据。不冒充全片人工听校。',
     humanListeningCompleted: false,
     focusedHumanListeningCompleted: true,
     focusedUserDecisionIds: REQUIRED_REVIEW_IDS,
     unresolvedMediumConfidenceIds: residualUncertaintyIds,
     fullWatchConfirmed: false,
-    words: resolvedPages.map((page, index) => ({
-      id: `W${String(index + 1).padStart(4, '0')}`,
-      text: page.zh,
-      raw_text: candidateCaptions.pages[index].zh,
-      verbatim_text: page.zh,
-      start: page.startMs / 1000,
-      end: page.endMs / 1000,
-      source_start: page.startMs / 1000,
-      source_end: page.endMs / 1000,
-      sourceReferences: [
-        {
-          path: CANDIDATE_CAPTIONS_PATH,
-          jsonPointer: `/pages/${index}`,
-        },
-      ],
-      correctionIds: page.correctionIds ?? [],
-      uncertaintyIds: page.uncertaintyIds ?? [],
-      status: page.humanListeningPerformed
-        ? 'user-confirmed-focused-audio-review'
-        : page.reviewRequired
-          ? 'machine-transcribed-awaiting-full-watch'
-          : 'machine-transcribed',
-      displayAllowed: true,
-    })),
+    words: canonicalWords,
     beats: resolvedBeats,
   };
   const captions = {
@@ -501,7 +726,13 @@ const resolveCanonical = ({candidateCaptions, candidateTimeline, reviewManifest,
     pages: resolvedPages,
     captions: resolvedPages,
   };
-  return {transcript, captions, resolvedBeats, residualUncertaintyIds};
+  return {
+    transcript,
+    captions,
+    canonicalCaptions: resolvedPages,
+    resolvedBeats,
+    residualUncertaintyIds,
+  };
 };
 
 const layerSource = (item) => {
@@ -810,6 +1041,7 @@ const main = async () => {
   const candidateCaptions = readJson(CANDIDATE_CAPTIONS_PATH);
   const candidateTimeline = readJson(CANDIDATE_TIMELINE_PATH);
   const transcriptionReview = readJson(TRANSCRIPTION_REVIEW_PATH);
+  const rawAsr = readJson(RAW_ASR_PATH);
   const mediaManifest = readJson(`${EPISODE}/04_素材清单/用户提供媒体清单.v1.json`);
 
   const decisions = assertAudioDecision(audioDecision, reviewManifest);
@@ -842,9 +1074,11 @@ const main = async () => {
     .at(-1);
   if (!isText(generatedAt)) fail('FORMAL_TIMESTAMP', '无法从真实用户事件确定构建时间锚点。');
 
-  const {transcript, captions, residualUncertaintyIds} = resolveCanonical({
+  const {transcript, captions, canonicalCaptions, residualUncertaintyIds} = resolveCanonical({
     candidateCaptions,
     candidateTimeline,
+    rawAsr,
+    transcriptionReview,
     reviewManifest,
     decisions,
     generatedAt,
@@ -927,7 +1161,8 @@ const main = async () => {
         approval: B23_DECISION_PATH,
       },
     ],
-    authorizedEdit: '完整单条原声保留；只按用户四处听辨决定确定字幕正字，不改写口播内容。',
+    authorizedEdit:
+      '完整单条原声保留；沿用已留原始词与依据的机器候选正字，四处低置信说法按用户原声听辨选择确定；不删改、压缩或恢复拍摄前文稿。',
     publishAuthorized: false,
   };
 
@@ -939,7 +1174,7 @@ const main = async () => {
   };
   try {
     writeJson(spokenCheckPaths.transcript, transcript);
-    writeJson(spokenCheckPaths.captions, captions);
+    writeJson(spokenCheckPaths.captions, canonicalCaptions);
     writeJson(spokenCheckPaths.policy, policy);
     const spokenCheck = spawnSync(
       process.execPath,
@@ -957,6 +1192,21 @@ const main = async () => {
         `正式 transcript/captions 未通过严格实录来源 LCS 校验：${spokenCheck.stderr || spokenCheck.stdout}`,
       );
     }
+    const verbatimCheck = spawnSync(
+      process.execPath,
+      [
+        resolve(ROOT, 'tools/check-verbatim-caption-sync.mjs'),
+        resolve(ROOT, spokenCheckPaths.transcript),
+        resolve(ROOT, spokenCheckPaths.captions),
+      ],
+      {cwd: ROOT, encoding: 'utf8'},
+    );
+    if (verbatimCheck.status !== 0) {
+      fail(
+        'FORMAL_VERBATIM_CAPTION_CHECK_FAILED',
+        `正式字幕未通过逐页逐词同步校验：${verbatimCheck.stderr || verbatimCheck.stdout}`,
+      );
+    }
   } finally {
     for (const pathValue of Object.values(spokenCheckPaths)) {
       const absolute = projectPath(pathValue, {mustExist: false});
@@ -967,7 +1217,7 @@ const main = async () => {
   // 所有用户决定、运行时同步和严格实录 LCS 已通过，正式产物才从这里开始写入。
   writeJson(RESOLUTION_PATH, resolution);
   writeJson(TRANSCRIPT_PATH, transcript);
-  writeJson(CAPTIONS_PATH, captions);
+  writeJson(CAPTIONS_PATH, canonicalCaptions);
   writeJson(POLICY_PATH, policy);
   writeJson(PUBLIC_FORMAL_CAPTIONS_PATH, captions);
   writeJson(VISUAL_PLAN_PATH, visualPlan);
