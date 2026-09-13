@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "koubo-runninghub-canvas-fill-audit/v1",
+  "status": "blocked-platform-duration-minimum-awaiting-user-decision",
+  "generatedAt": "2026-09-13T11:20:22Z",
+  "taskId": "20260912_ai_no_new_business_model_director_v2_r3",
+  "requestId": "v2-paper-firstframe:20260912_ai_no_new_business_model_director_v2_r3:director-core-r3-paper-firstframe-r4-p06",
+  "standardCanvasPackClaimed": false,
+  "sourcePromptManifest": {
+    "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/runninghub-image-to-video-prompts.v1.json",
+    "sha256": "9100896a55ce57945fd5bed7a47d3bcec954cf9e824ca8af525a8a8cbad65e03"
+  },
+  "canvasPreparationAuthorization": {
+    "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/canvas-preparation-authorization.v1.json",
+    "sha256": "1007e0cfdb8cde0811c56ccc41f1111158484bd014a0a03e9265533eb1b2949b"
+  },
+  "targetCanvas": {
+    "provider": "RunningHub RHTV",
+    "canvasId": "2087479798165565442",
+    "url": "https://rhtv.runninghub.cn/project/canvas/2087479798165565442"
+  },
+  "scope": {
+    "uploadAllowed": true,
+    "canvasConfigurationAllowed": true,
+    "generationSubmissionAllowed": false,
+    "paidGenerationAllowed": false,
+    "publicReleaseAllowed": false,
+    "requiredStopPoint": "before-start-generation"
+  },
+  "calibration": {
+    "sceneId": "P01",
+    "beatId": "B04",
+    "pairId": "P01-prompt-pair-v1",
+    "pairSha256": "c7627e2d3477d65e5973f1d38ab609f9b986978de2189b2621042e20d9c0ea34",
+    "inputFirstFrame": {
+      "fileName": "P01_B04_first-frame-text-baked.png",
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/03_导演拆解/director-core-r3/firstframe-producer-v3-r6-textfix/text-baked-first-frames/P01_B04_first-frame-text-baked.png",
+      "sha256": "04d022bd3058f8986c7f6ca2db39b400c34842dfa8bf20aa913b8f23d190e3d2",
+      "uploadedToCanvas": true,
+      "imageNodeId": "node_1789297555057_095wc08"
+    },
+    "videoNodeId": "node_1789297989519_m93hxj4",
+    "edgeId": "e-node_1789297555057_095wc08-node_1789297989519_m93hxj4",
+    "edgeReadbackCount": 1,
+    "inputModeRequested": "首帧",
+    "inputModeReadback": "首帧",
+    "inputModeActive": true,
+    "prompt": "基于已确认首帧，红色纸质手柄推动两枚滑块反向到位，左轨滑块下降、右轨滑块上升，固定机位，两块固定纸牌与其他物件保持不动，不生成文字。",
+    "promptSha256": "7df9fb313185c121858b78bc5b45fba5a9fb73f4b23199da245a9f2c6be93c1c",
+    "promptReadbackExact": true,
+    "modelRequested": "MiniMax H3",
+    "modelReadback": "MiniMax H3",
+    "modelReadbackExact": true,
+    "resolutionRequested": "2K",
+    "resolutionReadback": "2k",
+    "resolutionReadbackExactIgnoringCase": true,
+    "durationSecondsRequested": 4,
+    "durationControlReadback": {
+      "type": "range",
+      "minimum": 5,
+      "maximum": 15,
+      "step": 1,
+      "current": 5
+    },
+    "durationReadbackExact": false,
+    "aspectRatioRequested": "16:9",
+    "aspectRatioControlReadback": "not-exposed-by-current-minimax-h3-parameter-panel",
+    "aspectRatioReadbackExact": false,
+    "parameterSummaryReadback": "2k / 5秒",
+    "promptOptimizationState": "idle",
+    "generationButtonPresent": true,
+    "generationButtonClicked": false,
+    "taskSubmitted": false,
+    "videoGenerated": false
+  },
+  "stopCondition": {
+    "code": "RHTV_H3_DURATION_UNSUPPORTED",
+    "message": "导演要求 P01 为 4 秒，但当前 RunningHub MiniMax H3 的生成时长控件最小值为 5 秒，无法按原清单精确配置。当前 H3 参数面板同时未暴露独立画幅控件，无法显式回读 16:9。",
+    "affectedSceneIds": [
+      "P01",
+      "P02",
+      "P05",
+      "P07"
+    ],
+    "remainingSceneIdsNotConfigured": [
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07"
+    ],
+    "sameMethodRetried": false,
+    "requiresUserDecision": true
+  },
+  "pageStateAtStop": {
+    "generatingTextCount": 0,
+    "queuedTextCount": 0,
+    "taskSubmittedTextCount": 0,
+    "generationSubmissionByThisRun": false,
+    "generationButtonClickedByThisRun": false
+  },
+  "balanceObservations": {
+    "firstObserved": 177.188,
+    "afterP01UploadObserved": 173.338,
+    "atStopObserved": 168.718,
+    "deltaObserved": -8.47,
+    "attribution": "unresolved-concurrent-preexisting-canvas-tasks",
+    "note": "重新挂接用户原标签时，画布内可见先前已在运行的其他节点；本轮没有点击任何开始生成按钮，因此不得把余额变化归因于本轮 P01 上传或配置，也不得声称未发生外部余额变化。"
+  },
+  "nextAllowedAction": "等待用户明确选择：允许 4 秒镜头按 H3 的 5 秒生成后在剪辑中裁至 4 秒，或改用经重新校准且支持 4 秒的模型。未获选择前不得继续铺节点。"
+}
