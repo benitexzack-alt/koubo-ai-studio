@@ -380,6 +380,92 @@ const fadeForScene = (frame: number, durationInFrames: number) => {
   );
 };
 
+const publicMaterialKinds = new Set<SceneKind>([
+  'evidence-card',
+  'archive-montage',
+  'public-video',
+]);
+
+const publicMaterialViewport = {
+  left: 394,
+  top: 36,
+  width: 1472,
+  height: 828,
+};
+
+const PublicMaterialViewport: React.FC<{children: React.ReactNode}> = ({
+  children,
+}) => (
+  <div
+    style={{
+      position: 'absolute',
+      ...publicMaterialViewport,
+      overflow: 'hidden',
+      borderRadius: 16,
+      background: '#071018',
+      boxShadow: '0 18px 54px rgba(0,0,0,0.34)',
+    }}
+  >
+    {children}
+  </div>
+);
+
+const PublicMaterialPresenterInset: React.FC<{scene: CandidateScene}> = ({
+  scene,
+}) => {
+  const frame = useCurrentFrame();
+  const durationInFrames = Math.max(1, f(scene.end - scene.start));
+  const enter = spring({
+    frame,
+    fps,
+    durationInFrames: 14,
+    config: {damping: 200},
+  });
+  const exit = interpolate(
+    frame,
+    [Math.max(0, durationInFrames - 10), durationInFrames],
+    [1, 0],
+    clamp,
+  );
+  const visible = Math.min(enter, exit);
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        left: 54,
+        bottom: 54,
+        zIndex: 42,
+        width: 310,
+        height: 214,
+        overflow: 'hidden',
+        border: '4px solid rgba(248,250,253,0.96)',
+        borderRadius: 18,
+        boxSizing: 'border-box',
+        background: '#071018',
+        boxShadow: '0 16px 44px rgba(0,0,0,0.48)',
+        opacity: visible,
+        transform: `translateY(${interpolate(visible, [0, 1], [12, 0], clamp)}px) scale(${interpolate(visible, [0, 1], [0.96, 1], clamp)})`,
+        transformOrigin: '0 100%',
+      }}
+    >
+      <Video
+        src={staticFile(plan.sourceVideo)}
+        trimBefore={f(scene.start)}
+        muted
+        volume={0}
+        objectFit="cover"
+        style={{
+          width: '100%',
+          height: '100%',
+          objectPosition: '59% 42%',
+          filter: config.sourceFilter,
+        }}
+      />
+    </div>
+  );
+};
+
 const SourceTag: React.FC<{
   label?: string;
   tone?: 'cyan' | 'amber' | 'coral';
@@ -819,7 +905,7 @@ const EvidenceCardScene: React.FC<{scene: CandidateScene}> = ({scene}) => {
   const durationInFrames = f(scene.end - scene.start);
   if (!scene.asset) return null;
   const opacity = fadeForScene(frame, durationInFrames);
-  const scale = interpolate(frame, [0, durationInFrames], [1.004, 1.018], clamp);
+  const cardScale = publicMaterialViewport.width / 1920;
   return (
     <AbsoluteFill
       style={{
@@ -828,25 +914,33 @@ const EvidenceCardScene: React.FC<{scene: CandidateScene}> = ({scene}) => {
         opacity,
       }}
     >
-      <Img
-        src={staticFile(scene.asset)}
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          transform: `scale(${scale})`,
-          transformOrigin: '50% 48%',
-        }}
-      />
-      {(scene.focusCount ?? 0) > 0 ? (
-        <FocusSweep
-          sceneId={scene.id}
-          count={scene.focusCount ?? 1}
-          frame={frame}
-          durationInFrames={durationInFrames}
-        />
-      ) : null}
-      <SourceTag label={scene.sourceLabel} tone="coral" />
+      <PublicMaterialViewport>
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            width: 1920,
+            height: 1080,
+            transform: `scale(${cardScale})`,
+            transformOrigin: '0 0',
+          }}
+        >
+          <Img
+            src={staticFile(scene.asset)}
+            style={{width: 1920, height: 1080, objectFit: 'contain'}}
+          />
+          {(scene.focusCount ?? 0) > 0 ? (
+            <FocusSweep
+              sceneId={scene.id}
+              count={scene.focusCount ?? 1}
+              frame={frame}
+              durationInFrames={durationInFrames}
+            />
+          ) : null}
+        </div>
+      </PublicMaterialViewport>
+      <PublicMaterialPresenterInset scene={scene} />
     </AbsoluteFill>
   );
 };
@@ -897,56 +991,51 @@ const ArchiveMontageScene: React.FC<{scene: CandidateScene}> = ({scene}) => {
         opacity: fadeForScene(frame, durationInFrames),
       }}
     >
-      {segments.map((segment, index) => {
-        const opacity = montageOpacity(
-          frame,
-          segment.startFrame,
-          segment.endFrameExclusive,
-          index === 0,
-          index === segments.length - 1,
-        );
-        const pan = interpolate(
-          frame,
-          [segment.startFrame, segment.endFrameExclusive],
-          [1.015, 1.045],
-          clamp,
-        );
-        const commonStyle: React.CSSProperties = {
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          opacity,
-          transform: `scale(${pan})`,
-        };
-        return segment.asset.endsWith('.mp4') ? (
-          <Video
-            key={segment.asset}
-            src={staticFile(segment.asset)}
-            muted
-            volume={0}
-            style={commonStyle}
-          />
-        ) : (
-          <Img
-            key={segment.asset}
-            src={staticFile(segment.asset)}
-            style={commonStyle}
-          />
-        );
-      })}
-      <AbsoluteFill
-        style={{
-          background:
-            'linear-gradient(180deg, rgba(3,9,14,0.32) 0%, rgba(3,9,14,0) 40%, rgba(3,9,14,0.38) 100%)',
-        }}
-      />
+      <PublicMaterialViewport>
+        {segments.map((segment, index) => {
+          const opacity = montageOpacity(
+            frame,
+            segment.startFrame,
+            segment.endFrameExclusive,
+            index === 0,
+            index === segments.length - 1,
+          );
+          const commonStyle: React.CSSProperties = {
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+            opacity,
+          };
+          return segment.asset.endsWith('.mp4') ? (
+            <Video
+              key={segment.asset}
+              src={staticFile(segment.asset)}
+              muted
+              volume={0}
+              style={commonStyle}
+            />
+          ) : (
+            <Img
+              key={segment.asset}
+              src={staticFile(segment.asset)}
+              style={commonStyle}
+            />
+          );
+        })}
+        <AbsoluteFill
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(3,9,14,0.22) 0%, rgba(3,9,14,0) 36%, rgba(3,9,14,0.08) 100%)',
+          }}
+        />
+      </PublicMaterialViewport>
       {scene.detail ? (
         <div
           style={{
             position: 'absolute',
-            left: 44,
+            left: publicMaterialViewport.left + 24,
             top: 76,
             width: 890,
             padding: '13px 17px 14px',
@@ -963,7 +1052,7 @@ const ArchiveMontageScene: React.FC<{scene: CandidateScene}> = ({scene}) => {
           {scene.detail}
         </div>
       ) : null}
-      <SourceTag label={scene.sourceLabel} tone="coral" />
+      <PublicMaterialPresenterInset scene={scene} />
     </AbsoluteFill>
   );
 };
@@ -980,14 +1069,16 @@ const PublicVideoScene: React.FC<{scene: CandidateScene}> = ({scene}) => {
         opacity: fadeForScene(frame, durationInFrames),
       }}
     >
-      <Video
-        src={staticFile(scene.asset)}
-        muted
-        volume={0}
-        objectFit="cover"
-        style={{width: '100%', height: '100%'}}
-      />
-      <SourceTag label={scene.sourceLabel} tone="coral" />
+      <PublicMaterialViewport>
+        <Video
+          src={staticFile(scene.asset)}
+          muted
+          volume={0}
+          objectFit="contain"
+          style={{width: '100%', height: '100%'}}
+        />
+      </PublicMaterialViewport>
+      <PublicMaterialPresenterInset scene={scene} />
     </AbsoluteFill>
   );
 };
@@ -1124,6 +1215,14 @@ const ActualSpokenCaptionPages: React.FC<{captions: CaptionPage[]}> = ({
   );
   if (!current) return null;
 
+  const currentSeconds = frame / compositionFps;
+  const publicMaterialActive = plan.scenes.some(
+    (scene) =>
+      publicMaterialKinds.has(scene.kind) &&
+      currentSeconds >= scene.start &&
+      currentSeconds < scene.end,
+  );
+
   const fadeMs = Math.min(
     90,
     Math.max(45, (current.endMs - current.startMs) * 0.06),
@@ -1147,17 +1246,19 @@ const ActualSpokenCaptionPages: React.FC<{captions: CaptionPage[]}> = ({
     <div
       style={{
         position: 'absolute',
-        left: '50%',
+        left: publicMaterialActive ? publicMaterialViewport.left : '50%',
         bottom: 38,
         zIndex: 320,
-        width: 1540,
+        width: publicMaterialActive ? publicMaterialViewport.width : 1540,
         minHeight: 108,
-        transform: 'translateX(-50%)',
+        transform: publicMaterialActive ? 'none' : 'translateX(-50%)',
         boxSizing: 'border-box',
-        padding: '7px 28px 9px',
+        padding: publicMaterialActive ? '7px 22px 9px' : '7px 28px 9px',
         color: colors.white,
         background:
-          'linear-gradient(90deg, rgba(2,7,12,0) 0%, rgba(2,7,12,0.47) 13%, rgba(2,7,12,0.47) 87%, rgba(2,7,12,0) 100%)',
+          publicMaterialActive
+            ? 'linear-gradient(90deg, rgba(2,7,12,0.82) 0%, rgba(2,7,12,0.62) 50%, rgba(2,7,12,0.2) 100%)'
+            : 'linear-gradient(90deg, rgba(2,7,12,0) 0%, rgba(2,7,12,0.47) 13%, rgba(2,7,12,0.47) 87%, rgba(2,7,12,0) 100%)',
         fontFamily,
         textAlign: 'center',
         pointerEvents: 'none',

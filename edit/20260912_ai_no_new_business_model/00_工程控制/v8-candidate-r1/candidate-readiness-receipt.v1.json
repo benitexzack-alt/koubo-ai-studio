@@ -2,7 +2,7 @@
   "schemaVersion": "koubo-v8-candidate-readiness-receipt/v1",
   "episodeId": "20260912_ai_no_new_business_model",
   "taskId": "task-20260913T123722Z-11da90de",
-  "generatedAt": "2026-09-13T07:33:39-06:00",
+  "generatedAt": "2026-09-13T09:38:15-06:00",
   "status": "candidate-studio-ready-formal-render-blocked",
   "formalAllowed": false,
   "publicationAllowed": false,
@@ -55,7 +55,7 @@
     },
     {
       "path": "edit/20260912_ai_no_new_business_model/04_素材清单/公开素材来源登记.v1.json",
-      "sha256": "e3471959c11ad7709187341457d126e771d3288d5b9fc445fa9c72c7023a1399"
+      "sha256": "9a673122ec99ed482f36ed6b18b64fb8856bfbd5e0ef6b9ec91fdbbfba722a38"
     },
     {
       "path": "edit/20260912_ai_no_new_business_model/05_实录与字幕/canonical-r1/spoken-timeline.candidate.v1.json",
@@ -79,11 +79,11 @@
     },
     {
       "path": "remotion/public-ai-no-new-business-model-v8-r1/data/candidate-plan.v1.json",
-      "sha256": "924715ce33cfc389bfc37a10d360ae1306b1ddb7abb3eff76b0b91e38be0b8e5"
+      "sha256": "ffe7d872f7512a28723735db8af48dca03dc8311a5805afefbdfd83e0395bb80"
     },
     {
       "path": "remotion/src/ai-no-new-business-model-v8-candidate-r1/AINoNewBusinessModelV8CandidateR1.tsx",
-      "sha256": "9df817c2717a5936c19260badebcbf18ace2580fa8ba4477a9561f2404cf883f"
+      "sha256": "ef3c29e3348edd2fb6b47d09f77cb53b50a70638d8d104dc51dfdac3831e3040"
     },
     {
       "path": "remotion/src/ai-no-new-business-model-v8-candidate-r1/CandidateRoot.tsx",
@@ -95,7 +95,7 @@
     },
     {
       "path": "remotion/src/ai-no-new-business-model-v8-candidate-r1/composition-contract.v1.json",
-      "sha256": "4028d004dfe0336e56fdcd61dc71112f1fe78c3fb6669b32679286c0a6b66da3"
+      "sha256": "021e96ccf0dceb77a261eba5657c29499e4eb58894e82aed8e9407865b6a24df"
     },
     {
       "path": "remotion/ai-no-new-business-model-v8-candidate-r1.index.tsx",
@@ -117,20 +117,20 @@
       "evidence": "proxy-build-receipt.v1.json"
     },
     "visualSpotCheck": {
-      "status": "pass-for-static-spot-check-only",
-      "frames": [0, 300, 500, 760, 780, 820, 850, 900, 1250, 2140, 3600, 3740, 3920, 4070, 4240, 5260, 6460, 6750, 7620, 7920, 8400, 9010, 10320, 10470, 11380, 11550],
+      "status": "pass-for-requested-static-spot-check-only",
+      "frames": [0, 357, 1250, 3740, 3920, 4070, 4240, 6750, 8000],
       "covered": [
-        "开头真人与Shotcraft标记强调",
-        "R01至R05公开素材与事实边界卡",
-        "P01至P07纸艺视频",
-        "G01至G02 AI情景视频",
-        "R04集装箱船、新泽西档案和深圳画面",
-        "B23缺少R06时的边界提示",
-        "结论卡和片尾"
+        "R01、R02、R03、R05清洁版公开资料卡",
+        "R04集装箱船、新泽西档案和深圳授权画面",
+        "全部公开资料场景左下角同步真人小窗",
+        "公开资料视窗外的同屏中英字幕安全区",
+        "R03事实限定与R04授权署名保留",
+        "B23客户画面仅保留初稿边界，不显示内部缺失状态"
       ],
       "observations": [
-        "未发现素材错配、台标错写、主体遮挡或越界。",
-        "工具首次跳到P01中间帧时缓存未就绪，后续对760、780、820、850和900帧延时复核均正常，不判定为源素材黑帧。"
+        "客户可见画面不再显示R01至R05编号、JSON文件名、登记表名或内部审核标签。",
+        "真人小窗固定左下角，公开资料位于右侧独立视窗，字幕位于资料视窗下方且不遮挡正文、数字、来源或署名。",
+        "本轮没有修改纸艺、AI生成视频、字幕文字或素材入出点。"
       ],
       "limitation": "未替代正常速度全片人工观看。"
     },
@@ -152,14 +152,29 @@
       "hostIntegratedLufs": -23.3,
       "hostTruePeakDbtp": -3.9,
       "sfxCueCount": 27,
-      "postCueVolumePeakRangeDbfs": [-22.4, -15.9],
+      "postCueVolumePeakRangeDbfs": [-22.4, -9.6],
+      "openingHookSfx": {
+        "cueId": "S01",
+        "atFrame": 18,
+        "volume": 0.66,
+        "purpose": "开场反常识命题钩子重击",
+        "sourcePeakDbfs": -6.0,
+        "postCuePeakDbfs": -9.6,
+        "firstFourSecondsComparison": {
+          "previousVolume": 0.32,
+          "previousMixMeanDbfs": -26.2,
+          "previousMixPeakDbfs": -8.0,
+          "currentMixMeanDbfs": -25.5,
+          "currentMixPeakDbfs": -7.7
+        }
+      },
       "predictedRawMix": {
-        "integratedLufs": -23.3,
-        "truePeakDbtp": -3.2,
-        "loudnessRangeLu": 6.6
+        "integratedLufs": -23.36,
+        "truePeakDbtp": -3.25,
+        "loudnessRangeLu": 6.7
       },
       "targetNormalizationSimulation": {
-        "integratedLufs": -16.2,
+        "integratedLufs": -16.21,
         "truePeakDbtp": -2.2,
         "loudnessRangeLu": 4.7,
         "normalizationType": "dynamic"
@@ -170,6 +185,11 @@
     }
   },
   "formalBlockers": [
+    {
+      "code": "FORMAL_PRODUCTION_JOB_MISSING",
+      "evidence": "本期尚未建立受控 production job 与 V8 正式合同；当前 composition contract 明确为 candidate-preview-only 且 formalAllowed=false。",
+      "requiredEntry": "node tools/run-v72-production.mjs workflow/jobs/<本期当前修订>.production.json formal"
+    },
     {
       "code": "INDEPENDENT_ED25519_TRUST_ROOT_MISSING",
       "evidence": {
@@ -189,7 +209,7 @@
     },
     {
       "code": "B23_R06_CONTROLLED_DEMO_MISSING",
-      "treatmentInCandidate": "保留真人画面并明示无本期受控演示；初稿不等于正式咨询交付。",
+      "treatmentInCandidate": "保留真人画面；客户可见画面只保留事实限定“初稿不等于正式咨询交付”，缺失状态仅留在内部回执。",
       "prohibition": "不得将纸艺或AI情景当作几小时完成的真实证据。"
     },
     {

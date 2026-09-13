@@ -5,6 +5,8 @@
   "status": "candidate-preview-only",
   "formalAllowed": false,
   "formalBlockReason": [
+    "本期正式 production job 与 V8 正式合同尚未建立。",
+    "独立 Ed25519 验收信任根未安装，当前状态为 blocked-no-independent-ed25519-key。",
     "实录字幕是本地ASR候选，尚未完成人工听审。",
     "B23本期没有R06受控演示，当前仅为流程示意，不能证明“几小时”。",
     "尚未完成正常速度全片视觉复核、音效听审与用户确认。"
@@ -20,7 +22,28 @@
   "bindings": {
     "visualPlan": {
       "path": "remotion/public-ai-no-new-business-model-v8-r1/data/candidate-plan.v1.json",
-      "sha256": "924715ce33cfc389bfc37a10d360ae1306b1ddb7abb3eff76b0b91e38be0b8e5"
+      "sha256": "ffe7d872f7512a28723735db8af48dca03dc8311a5805afefbdfd83e0395bb80"
+    },
+    "customerVisiblePublicAssets": {
+      "policy": "公开资料完整进入右侧资料视窗；同步真人小窗固定左下；中英字幕位于资料视窗外；不显示内部路由编号、文件名或审核状态。",
+      "assets": [
+        {
+          "path": "remotion/public-ai-no-new-business-model-v8-r1/media/R01.png",
+          "sha256": "b6645e65833c833b4f67c3bc4e0aa851b51bcbd35b9262357f0ff8315bd18236"
+        },
+        {
+          "path": "remotion/public-ai-no-new-business-model-v8-r1/media/R02.png",
+          "sha256": "0fe6605758abac0e40b60244c30dde4f41162f800365e07574af291135ca1861"
+        },
+        {
+          "path": "remotion/public-ai-no-new-business-model-v8-r1/media/R03.png",
+          "sha256": "83e538c86c59e9817e5a2e1c60f5056bcc1b027cf1dbb3a3cdf5dd14b1c01b15"
+        },
+        {
+          "path": "remotion/public-ai-no-new-business-model-v8-r1/media/R05.png",
+          "sha256": "6c0ce929590b278c6f1984b860721b04e19eb1064dd0e9b8b69e3295ccec89b9"
+        }
+      ]
     },
     "actualSpokenCaptions": {
       "path": "remotion/public-ai-no-new-business-model-v8-r1/data/actual-spoken.bilingual.candidate.v1.json",
