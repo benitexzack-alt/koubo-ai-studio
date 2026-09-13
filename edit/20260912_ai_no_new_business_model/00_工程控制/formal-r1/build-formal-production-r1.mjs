@@ -179,7 +179,8 @@ const requireDecisionFilesBeforeAnyOutput = () => {
         b23ReceiptContract: {
           schemaVersion: 'koubo-b23-correction-card-user-approval/v1',
           exactCorrectionCard: B23_CORRECTION,
-          evidence: '真实 Codex rollout 中 role=user 的完整原话，且原话须包含更正卡完整字幕',
+          evidence:
+            '当前真实 Codex rollout 中含完整更正卡的 role=assistant 提问，以及紧随其后的 role=user 明确同意',
         },
       },
     );
@@ -247,6 +248,44 @@ const extractUserEvents = async (sourceRollout, wantedOrdinals) => {
     fail('FORMAL_USER_EVENT_MISSING', `rollout 中未找到真实 user 消息：${missing.join(', ')}`);
   }
   return found;
+};
+
+const extractAssistantEvent = async (sourceRollout, wantedOrdinal) => {
+  if (sourceRollout !== CURRENT_ROLLOUT || !isAbsolute(sourceRollout)) {
+    fail('FORMAL_ROLLOUT_SCOPE', `本期只接受当前真实 rollout：${CURRENT_ROLLOUT}`);
+  }
+  if (!Number.isInteger(wantedOrdinal) || wantedOrdinal < 1) {
+    fail('FORMAL_ASSISTANT_EVENT', 'B23 提问缺少有效 assistant ordinal。');
+  }
+  const input = createInterface({
+    input: createReadStream(sourceRollout),
+    crlfDelay: Infinity,
+  });
+  for await (const raw of input) {
+    if (!raw.includes(`"ordinal":${wantedOrdinal}`)) continue;
+    let event;
+    try {
+      event = JSON.parse(raw);
+    } catch {
+      continue;
+    }
+    if (
+      event.ordinal !== wantedOrdinal ||
+      event.type !== 'response_item' ||
+      event.payload?.type !== 'message' ||
+      event.payload?.role !== 'assistant' ||
+      !Array.isArray(event.payload.content)
+    ) {
+      continue;
+    }
+    const text = event.payload.content
+      .filter((item) => item?.type === 'output_text')
+      .map((item) => String(item.text ?? ''))
+      .join('\n');
+    if (!isText(text)) fail('FORMAL_ASSISTANT_EVENT', 'B23 提问没有可用正文。');
+    return {ordinal: event.ordinal, timestamp: event.timestamp, text};
+  }
+  fail('FORMAL_ASSISTANT_EVENT_MISSING', `rollout 中未找到 assistant 消息：${wantedOrdinal}`);
 };
 
 const assertReceiptBase = (receipt, expectedSchema, label) => {
@@ -333,8 +372,17 @@ const assertB23Decision = (receipt, candidatePlan) => {
   ) {
     fail('FORMAL_B23_DECISION', 'B23 回执中的更正卡文案不是本期固定更正。');
   }
-  if (!receipt.userQuote.includes(B23_CORRECTION.subtitle)) {
-    fail('FORMAL_B23_QUOTE', '用户原话必须逐字包含 B23 更正卡完整字幕。');
+  if (receipt.approvalToken !== '同意' || !receipt.userQuote.includes(receipt.approvalToken)) {
+    fail('FORMAL_B23_QUOTE', '用户原话必须包含本次唯一批准词“同意”。');
+  }
+  if (
+    receipt.promptSourceRollout !== CURRENT_ROLLOUT ||
+    !Number.isInteger(receipt.promptAssistantOrdinal) ||
+    !isText(receipt.promptQuote) ||
+    !receipt.promptQuote.includes(B23_CORRECTION.subtitle) ||
+    !receipt.promptQuote.includes('是否同意')
+  ) {
+    fail('FORMAL_B23_PROMPT_BINDING', 'B23 同意必须绑定含完整更正卡的当前 assistant 提问。');
   }
   const runtimeCard = candidatePlan.speakerOverlays?.find((item) => item.id === 'O11');
   if (
@@ -1055,6 +1103,10 @@ const main = async () => {
     b23Decision.userMessageOrdinal,
   ];
   const userEvents = await extractUserEvents(CURRENT_ROLLOUT, evidenceOrdinals);
+  const b23PromptEvent = await extractAssistantEvent(
+    b23Decision.promptSourceRollout,
+    b23Decision.promptAssistantOrdinal,
+  );
   for (const [receipt, label] of [
     [audioDecision, '四处原声听辨回执'],
     [b23Decision, 'B23 更正卡回执'],
@@ -1063,6 +1115,9 @@ const main = async () => {
     if (event.text !== receipt.userQuote) {
       fail('FORMAL_USER_QUOTE_MISMATCH', `${label} 的 userQuote 与真实 user 消息不一致。`);
     }
+  }
+  if (b23PromptEvent.text !== b23Decision.promptQuote) {
+    fail('FORMAL_B23_PROMPT_QUOTE_MISMATCH', 'B23 promptQuote 与真实 assistant 提问不一致。');
   }
   const directEvents = [userEvents.get(26132), userEvents.get(27560)];
   const generatedAt = [
