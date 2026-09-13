@@ -22,6 +22,7 @@ import {
 
 const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultProjectRoot = path.resolve(skillRoot, '../..');
+const DIRECTOR_CUES_V2_SCHEMA = 'koubo-director-cues/v2';
 
 const isQuad = (quad) =>
   Array.isArray(quad) &&
@@ -52,11 +53,18 @@ try {
   const args = parseArgs(process.argv.slice(2));
   const projectRoot = path.resolve(args['project-root'] ?? defaultProjectRoot);
   const jobPath = resolveInside(projectRoot, args.job, 'JOB');
-  const sourcePlanPath = resolveInside(projectRoot, args['source-plan'], 'SOURCE_PLAN');
   const job = readJson(jobPath);
   if (job.schemaVersion !== JOB_SCHEMA) throw new Error('FIRSTFRAME_JOB_SCHEMA_INVALID');
-  if (!existsSync(sourcePlanPath)) throw new Error('SOURCE_PLAN_MISSING');
   const {manifest: sourceManifest} = readAuthoritativeSourceManifest(job, jobPath);
+  const manifestNativeV2 = sourceManifest.sourceDirectorSchema === DIRECTOR_CUES_V2_SCHEMA;
+  let sourcePlanPath = null;
+  if (!manifestNativeV2) {
+    sourcePlanPath = resolveInside(projectRoot, args['source-plan'], 'SOURCE_PLAN');
+    if (!existsSync(sourcePlanPath)) throw new Error('SOURCE_PLAN_MISSING');
+  }
+  const sourceSceneById = manifestNativeV2
+    ? new Map((sourceManifest.scenes ?? []).map((scene) => [scene.sceneId, scene]))
+    : null;
 
   const phase = args.phase;
   const sampleBindingErrors = validateCueNativeJobSampleBinding(job, sourceManifest);
@@ -86,6 +94,12 @@ try {
       if (!existsSync(record.receipt?.path)) continue;
       if (sha256File(record.receipt.path) !== record.receipt.sha256) continue;
       const priorReceipt = readJson(record.receipt.path);
+      if (manifestNativeV2 && (
+        priorReceipt.sourceDirectorSchema !== DIRECTOR_CUES_V2_SCHEMA ||
+        path.resolve(priorReceipt.sourceFirstFrameManifest?.path ?? '') !==
+          path.resolve(job.sourceManifest.path) ||
+        priorReceipt.sourceFirstFrameManifest?.sha256 !== job.sourceManifest.sha256
+      )) continue;
       const priorScene = priorReceipt.scenes?.find((item) => item.sceneId === scene.sceneId);
       if (!priorScene) continue;
       if (
@@ -135,6 +149,18 @@ try {
     const bake = scene.deterministicTextBake;
     if (!bake?.enabled || bake.anchorCalibrationRequired !== true) {
       throw new Error(`TEXT_BAKE_PLAN_INVALID:${sceneId}`);
+    }
+    if (manifestNativeV2) {
+      const sourceScene = sourceSceneById.get(sceneId);
+      if (
+        !sourceScene ||
+        scene.pairId !== sourceScene.pairId ||
+        scene.pairSha256 !== sourceScene.pairSha256 ||
+        scene.textPlanSha256 !== sourceScene.textPlanSha256 ||
+        bake.labelsSha256 !== sourceScene.deterministicTextBake?.labelsSha256
+      ) {
+        throw new Error(`TEXT_BAKE_V2_MANIFEST_SCENE_IDENTITY_MISMATCH:${sceneId}`);
+      }
     }
     if (!existsSync(bake.calibrationPath)) {
       throw new Error(`ANCHOR_CALIBRATION_MISSING:${sceneId}`);
@@ -194,7 +220,15 @@ try {
     schemaVersion: 'koubo-paper-firstframe-text-bake-request/v1',
     artifactVersion,
     taskId: job.taskId,
-    sourcePlan: {path: sourcePlanPath, sha256: sha256File(sourcePlanPath)},
+    ...(manifestNativeV2
+      ? {
+          sourceDirectorSchema: DIRECTOR_CUES_V2_SCHEMA,
+          sourceFirstFrameManifest: {
+            path: path.resolve(job.sourceManifest.path),
+            sha256: job.sourceManifest.sha256,
+          },
+        }
+      : {sourcePlan: {path: sourcePlanPath, sha256: sha256File(sourcePlanPath)}}),
     fontPath,
     receiptPath,
     scenes,
@@ -229,7 +263,13 @@ try {
   if (
     receipt.status !== 'deterministic-first-frame-text-baked-and-ocr-passed' ||
     receipt.scenes?.length !== sceneIds.length ||
-    receipt.scenes.some((sceneReceipt) => !sceneReceipt)
+    receipt.scenes.some((sceneReceipt) => !sceneReceipt) ||
+    (manifestNativeV2 && (
+      receipt.sourceDirectorSchema !== DIRECTOR_CUES_V2_SCHEMA ||
+      path.resolve(receipt.sourceFirstFrameManifest?.path ?? '') !==
+        path.resolve(job.sourceManifest.path) ||
+      receipt.sourceFirstFrameManifest?.sha256 !== job.sourceManifest.sha256
+    ))
   ) {
     throw new Error('TEXT_BAKE_RECEIPT_INVALID');
   }

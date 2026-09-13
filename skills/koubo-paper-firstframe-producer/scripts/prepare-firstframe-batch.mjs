@@ -3,6 +3,7 @@
 import {existsSync, mkdirSync} from 'node:fs';
 import path from 'node:path';
 import {
+  DIRECTOR_V2_SCHEMA,
   FIRSTFRAME_ROUTE_LOCK_FILE_NAME,
   JOB_SCHEMA,
   createFirstFrameRouteLock,
@@ -13,6 +14,7 @@ import {
   resolveInside,
   sha256File,
   validateManifest,
+  validateDirectorV2BridgeReceiptBinding,
   validateSampleSceneIds,
   writeNewJson,
 } from './firstframe-batch-core.mjs';
@@ -29,46 +31,55 @@ try {
   const manifest = readJson(manifestPath);
   const directorReceipt = readJson(directorReceiptPath);
   const errors = validateManifest(manifest);
-  if (manifest.policy?.physicalContinuityVersion === '1' && directorReceipt.policy?.physicalContinuityVersion !== '1') {
-    errors.push('DIRECTOR_PHYSICAL_POLICY_MISMATCH');
-  }
-  if (manifest.policy?.incidentPreventionVersion === '1' &&
-    (directorReceipt.policy?.incidentPreventionVersion !== '1' || directorReceipt.revisionId !== manifest.revisionId)) {
-    errors.push('DIRECTOR_INCIDENT_IDENTITY_MISMATCH');
-  }
-  if (directorReceipt.schemaVersion !== 'koubo-director-validation-receipt/v1') {
-    errors.push('DIRECTOR_RECEIPT_SCHEMA_INVALID');
-  }
-  if (directorReceipt.skillExecuted !== true || directorReceipt.validatorExecuted !== true) {
-    errors.push('DIRECTOR_SKILL_NOT_EXECUTED');
-  }
-  if (directorReceipt.status !== 'validated-provisional-previsualization') {
-    errors.push('DIRECTOR_RECEIPT_STATUS_INVALID');
-  }
-  if (
-    directorReceipt.taskId !== manifest.taskId ||
-    directorReceipt.requestId !== manifest.requestId
-  ) {
-    errors.push('DIRECTOR_RECEIPT_IDENTITY_MISMATCH');
-  }
-  if (
-    Object.hasOwn(manifest, 'revisionId') ||
-    Object.hasOwn(directorReceipt, 'revisionId')
-  ) {
-    if (
-      typeof manifest.revisionId !== 'string' ||
-      !manifest.revisionId.trim() ||
-      directorReceipt.revisionId !== manifest.revisionId
-    ) {
-      errors.push('DIRECTOR_RECEIPT_REVISION_MISMATCH');
+  if (manifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA) {
+    errors.push(...validateDirectorV2BridgeReceiptBinding({
+      manifest,
+      manifestPath,
+      receipt: directorReceipt,
+      receiptPath: directorReceiptPath,
+    }));
+  } else {
+    if (manifest.policy?.physicalContinuityVersion === '1' && directorReceipt.policy?.physicalContinuityVersion !== '1') {
+      errors.push('DIRECTOR_PHYSICAL_POLICY_MISMATCH');
     }
-  }
-  if (
-    path.resolve(directorReceipt.artifacts?.firstFramePromptManifest?.path ?? '') !==
-      manifestPath ||
-    directorReceipt.artifacts?.firstFramePromptManifest?.sha256 !== sha256File(manifestPath)
-  ) {
-    errors.push('DIRECTOR_MANIFEST_BINDING_MISMATCH');
+    if (manifest.policy?.incidentPreventionVersion === '1' &&
+      (directorReceipt.policy?.incidentPreventionVersion !== '1' || directorReceipt.revisionId !== manifest.revisionId)) {
+      errors.push('DIRECTOR_INCIDENT_IDENTITY_MISMATCH');
+    }
+    if (directorReceipt.schemaVersion !== 'koubo-director-validation-receipt/v1') {
+      errors.push('DIRECTOR_RECEIPT_SCHEMA_INVALID');
+    }
+    if (directorReceipt.skillExecuted !== true || directorReceipt.validatorExecuted !== true) {
+      errors.push('DIRECTOR_SKILL_NOT_EXECUTED');
+    }
+    if (directorReceipt.status !== 'validated-provisional-previsualization') {
+      errors.push('DIRECTOR_RECEIPT_STATUS_INVALID');
+    }
+    if (
+      directorReceipt.taskId !== manifest.taskId ||
+      directorReceipt.requestId !== manifest.requestId
+    ) {
+      errors.push('DIRECTOR_RECEIPT_IDENTITY_MISMATCH');
+    }
+    if (
+      Object.hasOwn(manifest, 'revisionId') ||
+      Object.hasOwn(directorReceipt, 'revisionId')
+    ) {
+      if (
+        typeof manifest.revisionId !== 'string' ||
+        !manifest.revisionId.trim() ||
+        directorReceipt.revisionId !== manifest.revisionId
+      ) {
+        errors.push('DIRECTOR_RECEIPT_REVISION_MISMATCH');
+      }
+    }
+    if (
+      path.resolve(directorReceipt.artifacts?.firstFramePromptManifest?.path ?? '') !==
+        manifestPath ||
+      directorReceipt.artifacts?.firstFramePromptManifest?.sha256 !== sha256File(manifestPath)
+    ) {
+      errors.push('DIRECTOR_MANIFEST_BINDING_MISMATCH');
+    }
   }
   if (errors.length) throw new Error(`FIRSTFRAME_MANIFEST_INVALID:${errors.join('|')}`);
 
@@ -109,6 +120,9 @@ try {
       : 'legacy-three-representative-scenes'),
     ...(manifest.sourceDirectorSchema !== undefined
       ? {sourceDirectorSchema: manifest.sourceDirectorSchema}
+      : {}),
+    ...(manifest.sourceBridgeSchema !== undefined
+      ? {sourceBridgeSchema: manifest.sourceBridgeSchema}
       : {}),
     generatedReadableTextAllowed: false,
     sourceManifest,

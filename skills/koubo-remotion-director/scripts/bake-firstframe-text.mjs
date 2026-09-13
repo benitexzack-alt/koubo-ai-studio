@@ -24,6 +24,8 @@ import {
 
 const SCHEMA = 'koubo-paper-firstframe-text-bake-request/v1';
 const CALIBRATION_SCHEMA = 'koubo-paper-firstframe-anchor-calibration/v1';
+const DIRECTOR_CUES_V2_SCHEMA = 'koubo-director-cues/v2';
+const FIRST_FRAME_MANIFEST_SCHEMA = 'koubo-paper-first-frame-prompt-manifest/v1';
 const LABEL_WIDTH = 1000;
 const LABEL_HEIGHT = 240;
 const OCR_SCALE_PERCENT = 400;
@@ -287,21 +289,62 @@ try {
   const request = JSON.parse(readFileSync(requestPath, 'utf8'));
   if (request.schemaVersion !== SCHEMA) throw new Error('TEXT_BAKE_SCHEMA_INVALID');
   if (!isText(request.taskId)) throw new Error('TEXT_BAKE_TASK_ID_MISSING');
-  const sourcePlanPath = resolveDeclared(projectRoot, request.sourcePlan?.path);
-  if (!sourcePlanPath || !existsSync(sourcePlanPath)) throw new Error('TEXT_BAKE_SOURCE_PLAN_MISSING');
-  if (sha256File(sourcePlanPath) !== request.sourcePlan?.sha256) {
-    throw new Error('TEXT_BAKE_SOURCE_PLAN_SHA_MISMATCH');
+  const manifestNativeV2 = request.sourceDirectorSchema === DIRECTOR_CUES_V2_SCHEMA;
+  let sourcePlanPath = null;
+  let sourcePlan = null;
+  let sourceFirstFrameManifestPath = null;
+  let sourceFirstFrameManifest = null;
+  let v9ContractEnabled = false;
+  let sourceSceneById;
+  if (manifestNativeV2) {
+    sourceFirstFrameManifestPath = resolveDeclared(
+      projectRoot,
+      request.sourceFirstFrameManifest?.path,
+    );
+    if (!sourceFirstFrameManifestPath || !existsSync(sourceFirstFrameManifestPath)) {
+      throw new Error('TEXT_BAKE_SOURCE_FIRSTFRAME_MANIFEST_MISSING');
+    }
+    if (sha256File(sourceFirstFrameManifestPath) !== request.sourceFirstFrameManifest?.sha256) {
+      throw new Error('TEXT_BAKE_SOURCE_FIRSTFRAME_MANIFEST_SHA_MISMATCH');
+    }
+    sourceFirstFrameManifest = JSON.parse(
+      readFileSync(sourceFirstFrameManifestPath, 'utf8'),
+    );
+    if (
+      sourceFirstFrameManifest.schemaVersion !== FIRST_FRAME_MANIFEST_SCHEMA ||
+      sourceFirstFrameManifest.sourceDirectorSchema !== DIRECTOR_CUES_V2_SCHEMA ||
+      sourceFirstFrameManifest.taskId !== request.taskId ||
+      !Array.isArray(sourceFirstFrameManifest.scenes)
+    ) {
+      throw new Error('TEXT_BAKE_SOURCE_FIRSTFRAME_MANIFEST_INVALID');
+    }
+    sourceSceneById = new Map();
+    for (const sourceScene of sourceFirstFrameManifest.scenes) {
+      if (!isText(sourceScene?.sceneId) || sourceSceneById.has(sourceScene.sceneId)) {
+        throw new Error('TEXT_BAKE_SOURCE_FIRSTFRAME_SCENE_ID_INVALID');
+      }
+      if (Object.hasOwn(sourceScene, 'imageToVideoPrompt')) {
+        throw new Error(`TEXT_BAKE_SOURCE_FIRSTFRAME_VIDEO_PROMPT_LEAK:${sourceScene.sceneId}`);
+      }
+      sourceSceneById.set(sourceScene.sceneId, {scene: sourceScene, index: null});
+    }
+  } else {
+    sourcePlanPath = resolveDeclared(projectRoot, request.sourcePlan?.path);
+    if (!sourcePlanPath || !existsSync(sourcePlanPath)) throw new Error('TEXT_BAKE_SOURCE_PLAN_MISSING');
+    if (sha256File(sourcePlanPath) !== request.sourcePlan?.sha256) {
+      throw new Error('TEXT_BAKE_SOURCE_PLAN_SHA_MISMATCH');
+    }
+    sourcePlan = JSON.parse(readFileSync(sourcePlanPath, 'utf8'));
+    if (sourcePlan.taskId !== request.taskId) throw new Error('TEXT_BAKE_SOURCE_PLAN_TASK_MISMATCH');
+    v9ContractEnabled = sourcePlan.v9Contract?.enabled === true;
+    const sourceScenes = Array.isArray(sourcePlan.paperScenes) ? sourcePlan.paperScenes : [];
+    sourceSceneById = new Map(
+      sourceScenes.map((scene, index) => [
+        buildSceneIdentity(scene, index, {v9ContractEnabled}).sceneId,
+        {scene, index},
+      ]),
+    );
   }
-  const sourcePlan = JSON.parse(readFileSync(sourcePlanPath, 'utf8'));
-  if (sourcePlan.taskId !== request.taskId) throw new Error('TEXT_BAKE_SOURCE_PLAN_TASK_MISMATCH');
-  const v9ContractEnabled = sourcePlan.v9Contract?.enabled === true;
-  const sourceScenes = Array.isArray(sourcePlan.paperScenes) ? sourcePlan.paperScenes : [];
-  const sourceSceneById = new Map(
-    sourceScenes.map((scene, index) => [
-      buildSceneIdentity(scene, index, {v9ContractEnabled}).sceneId,
-      {scene, index},
-    ]),
-  );
   const fontPath = resolveDeclared(projectRoot, request.fontPath);
   if (!fontPath || !existsSync(fontPath)) throw new Error('TEXT_BAKE_FONT_MISSING');
   const receiptPath = resolveDeclared(projectRoot, request.receiptPath);
@@ -318,15 +361,27 @@ try {
     }
     const sourceEntry = sourceSceneById.get(scene.sceneId);
     if (!sourceEntry) throw new Error(`TEXT_BAKE_SOURCE_SCENE_MISSING:${scene.sceneId}`);
-    const identity = buildSceneIdentity(sourceEntry.scene, sourceEntry.index, {
-      v9ContractEnabled,
-    });
-    if (
-      scene.pairId !== identity.pairId ||
-      scene.pairSha256 !== identity.pairSha256 ||
-      scene.textPlanSha256 !== identity.textPlanSha256
-    ) {
-      throw new Error(`TEXT_BAKE_SCENE_IDENTITY_MISMATCH:${scene.sceneId}`);
+    if (manifestNativeV2) {
+      const sourceScene = sourceEntry.scene;
+      if (
+        scene.pairId !== sourceScene.pairId ||
+        scene.pairSha256 !== sourceScene.pairSha256 ||
+        scene.textPlanSha256 !== sourceScene.textPlanSha256 ||
+        scene.labelsSha256 !== sourceScene.deterministicTextBake?.labelsSha256
+      ) {
+        throw new Error(`TEXT_BAKE_V2_MANIFEST_SCENE_IDENTITY_MISMATCH:${scene.sceneId}`);
+      }
+    } else {
+      const identity = buildSceneIdentity(sourceEntry.scene, sourceEntry.index, {
+        v9ContractEnabled,
+      });
+      if (
+        scene.pairId !== identity.pairId ||
+        scene.pairSha256 !== identity.pairSha256 ||
+        scene.textPlanSha256 !== identity.textPlanSha256
+      ) {
+        throw new Error(`TEXT_BAKE_SCENE_IDENTITY_MISMATCH:${scene.sceneId}`);
+      }
     }
     const sourcePath = resolveDeclared(projectRoot, scene.sourceImage?.path);
     const outputPath = resolveDeclared(projectRoot, scene.outputImage?.path);
@@ -350,13 +405,18 @@ try {
         throw new Error(`TEXT_BAKE_LABEL_INVALID:${scene.sceneId}:${label?.nodeId ?? 'unknown'}`);
       }
     }
-    const expectedLabels = sourceEntry.scene.textPlan.filter(
-      (item) => item.embeddingMode === 'first-frame-baked',
-    );
+    const expectedLabels = manifestNativeV2
+      ? sourceEntry.scene.deterministicTextBake?.labels ?? []
+      : sourceEntry.scene.textPlan.filter(
+          (item) => item.embeddingMode === 'first-frame-baked',
+        );
     if (
       !isText(scene.textPlanSha256) ||
       sha256Json(labels) !== scene.labelsSha256 ||
-      sha256Json(labels) !== sha256Json(expectedLabels)
+      sha256Json(labels) !== sha256Json(expectedLabels) ||
+      (manifestNativeV2 &&
+        sha256Json(expectedLabels) !==
+          sourceEntry.scene.deterministicTextBake?.labelsSha256)
     ) {
       throw new Error(`TEXT_BAKE_LABELS_SHA_MISMATCH:${scene.sceneId}`);
     }
@@ -542,7 +602,15 @@ try {
     request: {path: requestPath, sha256: sha256File(requestPath)},
     status: 'deterministic-first-frame-text-baked-and-ocr-passed',
     modelGeneratedReadableTextAllowed: false,
-    sourcePlan: {path: sourcePlanPath, sha256: request.sourcePlan.sha256},
+    ...(manifestNativeV2
+      ? {
+          sourceDirectorSchema: DIRECTOR_CUES_V2_SCHEMA,
+          sourceFirstFrameManifest: {
+            path: sourceFirstFrameManifestPath,
+            sha256: request.sourceFirstFrameManifest.sha256,
+          },
+        }
+      : {sourcePlan: {path: sourcePlanPath, sha256: request.sourcePlan.sha256}}),
     scenes: sceneReceipts,
   };
   mkdirSync(path.dirname(receiptPath), {recursive: true});

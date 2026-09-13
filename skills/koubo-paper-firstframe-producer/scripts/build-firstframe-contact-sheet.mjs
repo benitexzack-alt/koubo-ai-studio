@@ -5,6 +5,7 @@ import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {
   CUE_NATIVE_DIRECTOR_SCHEMA,
+  DIRECTOR_V2_SCHEMA,
   JOB_SCHEMA,
   assertFullBatchAuthorized,
   parseArgs,
@@ -20,11 +21,14 @@ try {
   const job = readJson(jobPath);
   if (job.schemaVersion !== JOB_SCHEMA) throw new Error('FIRSTFRAME_JOB_SCHEMA_INVALID');
   const {manifest: sourceManifest} = readAuthoritativeSourceManifest(job, jobPath);
-  if (sourceManifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA) {
-    const bindingErrors = validateCueNativeJobSampleBinding(job, sourceManifest);
-    if (bindingErrors.length) {
-      throw new Error(`CUE_NATIVE_SAMPLE_BINDING_INVALID:${bindingErrors.join('|')}`);
-    }
+  const bindingErrors = validateCueNativeJobSampleBinding(job, sourceManifest);
+  if (bindingErrors.length) {
+    const prefix = sourceManifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA
+      ? 'DIRECTOR_V2'
+      : sourceManifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA
+        ? 'CUE_NATIVE'
+        : 'FIRSTFRAME';
+    throw new Error(`${prefix}_SAMPLE_BINDING_INVALID:${bindingErrors.join('|')}`);
   }
   if (args.phase === 'full') {
     assertFullBatchAuthorized(job, 'CONTACT_SHEET_FULL', sourceManifest);

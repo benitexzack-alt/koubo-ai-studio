@@ -12,6 +12,13 @@ export const TEXT_BAKE_RECEIPT_SCHEMA =
 export const RUNNINGHUB_READY_PACK_SCHEMA =
   'koubo-paper-runninghub-ready-pack/v1';
 export const CUE_NATIVE_DIRECTOR_SCHEMA = 'koubo-director-cues/v1';
+export const DIRECTOR_V2_SCHEMA = 'koubo-director-cues/v2';
+export const DIRECTOR_V2_FIRSTFRAME_BRIDGE_SCHEMA =
+  'koubo-director-cues-v2-firstframe-bridge/v1';
+export const DIRECTOR_V2_FIRSTFRAME_BRIDGE_RECEIPT_SCHEMA =
+  'koubo-director-cues-v2-firstframe-bridge-receipt/v1';
+export const DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_SCHEMA =
+  'koubo-paper-firstframe-director-v2-full-preview-authorization/v1';
 export const CUE_NATIVE_SAMPLE_ACCEPTANCE_SCHEMA =
   'koubo-paper-firstframe-sample-user-acceptance/v1';
 export const FIRSTFRAME_ROUTE_LOCK_SCHEMA =
@@ -182,7 +189,7 @@ export function replaceJson(filePath, value) {
 export function validateManifest(manifest) {
   const errors = [];
   if (manifest.sourceDirectorSchema !== undefined &&
-    manifest.sourceDirectorSchema !== CUE_NATIVE_DIRECTOR_SCHEMA) {
+    ![CUE_NATIVE_DIRECTOR_SCHEMA, DIRECTOR_V2_SCHEMA].includes(manifest.sourceDirectorSchema)) {
     errors.push('SOURCE_DIRECTOR_SCHEMA_INVALID');
   }
   if (manifest.samplePolicy !== undefined &&
@@ -190,13 +197,24 @@ export function validateManifest(manifest) {
     errors.push('SAMPLE_POLICY_INVALID');
   }
   if (manifest.samplePolicy === 'one-representative-scene' &&
-    manifest.sourceDirectorSchema !== CUE_NATIVE_DIRECTOR_SCHEMA &&
+    ![CUE_NATIVE_DIRECTOR_SCHEMA, DIRECTOR_V2_SCHEMA].includes(manifest.sourceDirectorSchema) &&
     manifest.v9ContractEnabled !== true) {
     errors.push('ONE_REPRESENTATIVE_SAMPLE_SOURCE_INVALID');
   }
   if (manifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA &&
     manifest.samplePolicy !== 'one-representative-scene') {
     errors.push('CUE_NATIVE_SAMPLE_POLICY_INVALID');
+  }
+  if (manifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA) {
+    if (manifest.sourceBridgeSchema !== DIRECTOR_V2_FIRSTFRAME_BRIDGE_SCHEMA) {
+      errors.push('DIRECTOR_V2_SOURCE_BRIDGE_SCHEMA_INVALID');
+    }
+    if (manifest.samplePolicy !== 'one-representative-scene') {
+      errors.push('DIRECTOR_V2_SAMPLE_POLICY_INVALID');
+    }
+    if (manifest.policy?.incidentPreventionVersion !== '1') {
+      errors.push('DIRECTOR_V2_INCIDENT_POLICY_REQUIRED');
+    }
   }
   if (manifest.policy?.incidentPreventionVersion !== undefined) {
     if (manifest.policy.incidentPreventionVersion !== '1') errors.push('INCIDENT_POLICY_VERSION_INVALID');
@@ -215,11 +233,14 @@ export function validateManifest(manifest) {
   }
   if (manifest.sceneCount !== manifest.scenes.length) errors.push('SCENE_COUNT_MISMATCH');
 
-  if (manifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA) {
+  if ([CUE_NATIVE_DIRECTOR_SCHEMA, DIRECTOR_V2_SCHEMA].includes(manifest.sourceDirectorSchema)) {
+    const prefix = manifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA
+      ? 'DIRECTOR_V2'
+      : 'CUE_NATIVE';
     if (typeof manifest.selectedSceneId !== 'string' || !manifest.selectedSceneId.trim()) {
-      errors.push('CUE_NATIVE_SELECTED_SCENE_REQUIRED');
+      errors.push(`${prefix}_SELECTED_SCENE_REQUIRED`);
     } else if (!manifest.scenes.some((scene) => scene.sceneId === manifest.selectedSceneId)) {
-      errors.push(`CUE_NATIVE_SELECTED_SCENE_UNKNOWN:${manifest.selectedSceneId}`);
+      errors.push(`${prefix}_SELECTED_SCENE_UNKNOWN:${manifest.selectedSceneId}`);
     }
   }
 
@@ -341,6 +362,8 @@ export function validateSampleSceneIds(manifest, sampleSceneIds) {
       oneRepresentative
         ? (manifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA
             ? 'CUE_NATIVE_SAMPLE_MUST_CONTAIN_ONE_UNIQUE_SCENE_ID'
+            : manifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA
+              ? 'DIRECTOR_V2_SAMPLE_MUST_CONTAIN_ONE_UNIQUE_SCENE_ID'
             : 'V9_SAMPLE_MUST_CONTAIN_ONE_UNIQUE_SCENE_ID')
         : 'LEGACY_SAMPLE_MUST_CONTAIN_THREE_UNIQUE_SCENE_IDS',
     );
@@ -351,22 +374,35 @@ export function validateSampleSceneIds(manifest, sampleSceneIds) {
     if (!knownSceneIds.has(sceneId)) errors.push(`SAMPLE_SCENE_UNKNOWN:${sceneId}`);
   });
   if (
-    manifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA &&
+    [CUE_NATIVE_DIRECTOR_SCHEMA, DIRECTOR_V2_SCHEMA].includes(manifest.sourceDirectorSchema) &&
     sampleSceneIds.length === 1 &&
     sampleSceneIds[0] !== manifest.selectedSceneId
   ) {
+    const prefix = manifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA
+      ? 'DIRECTOR_V2'
+      : 'CUE_NATIVE';
     errors.push(
-      `CUE_NATIVE_SAMPLE_SCENE_MISMATCH:expected=${manifest.selectedSceneId}:actual=${sampleSceneIds[0]}`,
+      `${prefix}_SAMPLE_SCENE_MISMATCH:expected=${manifest.selectedSceneId}:actual=${sampleSceneIds[0]}`,
     );
   }
   return errors;
 }
 
+// The historical export name is kept because older entrypoints import it.
+// It now protects every cue-derived route that carries a signed selected scene.
 export function validateCueNativeJobSampleBinding(job, manifest) {
-  if (manifest?.sourceDirectorSchema !== CUE_NATIVE_DIRECTOR_SCHEMA) return [];
+  const sourceSchema = manifest?.sourceDirectorSchema;
+  if (![CUE_NATIVE_DIRECTOR_SCHEMA, DIRECTOR_V2_SCHEMA].includes(sourceSchema)) return [];
   const errors = [];
-  if (job.sourceDirectorSchema !== CUE_NATIVE_DIRECTOR_SCHEMA) {
-    errors.push('CUE_NATIVE_JOB_SOURCE_SCHEMA_MISMATCH');
+  const prefix = sourceSchema === DIRECTOR_V2_SCHEMA ? 'DIRECTOR_V2' : 'CUE_NATIVE';
+  if (job.sourceDirectorSchema !== sourceSchema) {
+    errors.push(`${prefix}_JOB_SOURCE_SCHEMA_MISMATCH`);
+  }
+  if (
+    sourceSchema === DIRECTOR_V2_SCHEMA &&
+    job.sourceBridgeSchema !== DIRECTOR_V2_FIRSTFRAME_BRIDGE_SCHEMA
+  ) {
+    errors.push('DIRECTOR_V2_JOB_SOURCE_BRIDGE_SCHEMA_MISMATCH');
   }
   errors.push(...validateSampleSceneIds(manifest, job.sampleSceneIds ?? []));
   return errors;
@@ -461,6 +497,9 @@ export function preparedFirstFrameJobStaticContract({
     ...(manifest.sourceDirectorSchema !== undefined
       ? {sourceDirectorSchema: manifest.sourceDirectorSchema}
       : {}),
+    ...(manifest.sourceBridgeSchema !== undefined
+      ? {sourceBridgeSchema: manifest.sourceBridgeSchema}
+      : {}),
     generatedReadableTextAllowed: false,
     sourceManifest: normalizedBinding(sourceManifest),
     directorValidationReceipt: normalizedBinding(directorValidationReceipt),
@@ -484,6 +523,7 @@ const currentJobStaticContract = (job) => {
     'automaticRetryAllowed',
     'samplePolicy',
     'sourceDirectorSchema',
+    'sourceBridgeSchema',
     'generatedReadableTextAllowed',
     'sourceManifest',
     'directorValidationReceipt',
@@ -496,6 +536,12 @@ const currentJobStaticContract = (job) => {
     ? job.scenes.map(withoutSceneResult)
     : job.scenes;
   return snapshot;
+};
+
+const firstFrameRouteForManifest = (manifest) => {
+  if (manifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA) return 'cue-native';
+  if (manifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA) return 'director-v2-paper';
+  return manifest.v9ContractEnabled === true ? 'v9' : 'legacy';
 };
 
 export function createFirstFrameRouteLock({
@@ -519,12 +565,13 @@ export function createFirstFrameRouteLock({
   return {
     schemaVersion: FIRSTFRAME_ROUTE_LOCK_SCHEMA,
     status: FIRSTFRAME_ROUTE_LOCK_STATUS,
-    route: cueNative ? 'cue-native' : manifest.v9ContractEnabled === true ? 'v9' : 'legacy',
+    route: firstFrameRouteForManifest(manifest),
     cueNative,
     taskId: manifest.taskId,
     requestId: manifest.requestId,
     ...(manifest.revisionId !== undefined ? {revisionId: manifest.revisionId} : {}),
     sourceDirectorSchema: manifest.sourceDirectorSchema ?? null,
+    sourceBridgeSchema: manifest.sourceBridgeSchema ?? null,
     selectedSceneId: manifest.selectedSceneId ?? null,
     samplePolicy: staticContract.samplePolicy,
     sampleSceneIds: structuredClone(sampleSceneIds),
@@ -555,7 +602,7 @@ function readFixedFirstFrameRouteLock(job, jobPath) {
   if (
     routeLock.schemaVersion !== FIRSTFRAME_ROUTE_LOCK_SCHEMA ||
     routeLock.status !== FIRSTFRAME_ROUTE_LOCK_STATUS ||
-    !['cue-native', 'v9', 'legacy'].includes(routeLock.route) ||
+    !['cue-native', 'director-v2-paper', 'v9', 'legacy'].includes(routeLock.route) ||
     typeof routeLock.cueNative !== 'boolean' ||
     routeLock.jobPath !== path.resolve(jobPath) ||
     routeLock.handoffRoot !== path.dirname(path.resolve(jobPath)) ||
@@ -615,6 +662,204 @@ export function assertPreparedFirstFrameJobStaticContract({
   }
 }
 
+const isSha256 = (value) => /^[a-f0-9]{64}$/u.test(String(value ?? ''));
+const nonEmptyText = (value) => typeof value === 'string' && value.trim().length > 0;
+
+const validateAbsoluteFileBinding = (binding, code, errors) => {
+  if (
+    !binding ||
+    typeof binding.path !== 'string' ||
+    !path.isAbsolute(binding.path) ||
+    !isSha256(binding.sha256)
+  ) {
+    errors.push(`${code}_BINDING_INVALID`);
+    return false;
+  }
+  if (!existsSync(binding.path)) {
+    errors.push(`${code}_FILE_MISSING`);
+    return false;
+  }
+  if (sha256File(binding.path) !== binding.sha256) {
+    errors.push(`${code}_SHA_MISMATCH`);
+    return false;
+  }
+  return true;
+};
+
+const safelyReadBoundJson = (binding, code, errors) => {
+  if (!validateAbsoluteFileBinding(binding, code, errors)) return null;
+  try {
+    return readJson(binding.path);
+  } catch {
+    errors.push(`${code}_JSON_INVALID`);
+    return null;
+  }
+};
+
+export function validateDirectorV2BridgeReceiptBinding({
+  manifest,
+  manifestPath,
+  receipt,
+  receiptPath,
+}) {
+  const errors = [];
+  const add = (condition, code) => { if (!condition) errors.push(code); };
+  add(manifest?.sourceDirectorSchema === DIRECTOR_V2_SCHEMA, 'DIRECTOR_V2_SOURCE_SCHEMA_INVALID');
+  add(
+    manifest?.sourceBridgeSchema === DIRECTOR_V2_FIRSTFRAME_BRIDGE_SCHEMA,
+    'DIRECTOR_V2_SOURCE_BRIDGE_SCHEMA_INVALID',
+  );
+  add(manifest?.samplePolicy === 'one-representative-scene', 'DIRECTOR_V2_SAMPLE_POLICY_INVALID');
+  add(nonEmptyText(manifest?.selectedSceneId), 'DIRECTOR_V2_SELECTED_SCENE_REQUIRED');
+  add(manifest?.policy?.incidentPreventionVersion === '1', 'DIRECTOR_V2_INCIDENT_POLICY_REQUIRED');
+  add(
+    receipt?.schemaVersion === DIRECTOR_V2_FIRSTFRAME_BRIDGE_RECEIPT_SCHEMA,
+    'DIRECTOR_V2_BRIDGE_RECEIPT_SCHEMA_INVALID',
+  );
+  add(
+    receipt?.status === 'validated-v2-native-firstframe-input' &&
+      receipt?.skillExecuted === true &&
+      receipt?.validatorExecuted === true,
+    'DIRECTOR_V2_BRIDGE_RECEIPT_STATUS_INVALID',
+  );
+  add(
+    receipt?.sourceDirectorSchema === DIRECTOR_V2_SCHEMA &&
+      receipt?.sourceBridgeSchema === DIRECTOR_V2_FIRSTFRAME_BRIDGE_SCHEMA,
+    'DIRECTOR_V2_BRIDGE_RECEIPT_ROUTE_INVALID',
+  );
+  add(
+    receipt?.taskId === manifest?.taskId &&
+      receipt?.requestId === manifest?.requestId &&
+      receipt?.revisionId === manifest?.revisionId,
+    'DIRECTOR_V2_BRIDGE_RECEIPT_IDENTITY_MISMATCH',
+  );
+  add(
+    receipt?.samplePolicy === manifest?.samplePolicy &&
+      receipt?.selectedSceneId === manifest?.selectedSceneId &&
+      receipt?.policy?.incidentPreventionVersion === '1',
+    'DIRECTOR_V2_BRIDGE_RECEIPT_SAMPLE_CONTRACT_MISMATCH',
+  );
+  add(path.resolve(receiptPath) !== path.resolve(manifestPath), 'DIRECTOR_V2_BRIDGE_RECEIPT_MUST_BE_SEPARATE');
+
+  const artifactNames = [
+    'directorCues',
+    'userApproval',
+    'directorV2HandoffMaster',
+    'directorV2HandoffValidationReceipt',
+    'paperFirstFrameHandoff',
+    'firstFramePromptManifest',
+  ];
+  const artifacts = receipt?.artifacts ?? {};
+  for (const name of artifactNames) {
+    validateAbsoluteFileBinding(
+      artifacts[name],
+      `DIRECTOR_V2_BRIDGE_ARTIFACT:${name}`,
+      errors,
+    );
+  }
+  add(
+    sameBinding(artifacts.firstFramePromptManifest, {
+      path: manifestPath,
+      sha256: existsSync(manifestPath) ? sha256File(manifestPath) : '',
+    }),
+    'DIRECTOR_V2_BRIDGE_MANIFEST_BINDING_MISMATCH',
+  );
+  for (const [manifestKey, artifactKey] of [
+    ['sourceDirectorCues', 'directorCues'],
+    ['sourceUserApproval', 'userApproval'],
+    ['sourceDirectorV2HandoffMaster', 'directorV2HandoffMaster'],
+    ['sourceDirectorV2HandoffValidationReceipt', 'directorV2HandoffValidationReceipt'],
+    ['sourcePaperFirstFrameHandoff', 'paperFirstFrameHandoff'],
+  ]) {
+    add(
+      sameBinding(manifest?.[manifestKey], artifacts[artifactKey]),
+      `DIRECTOR_V2_BRIDGE_SOURCE_BINDING_MISMATCH:${manifestKey}`,
+    );
+  }
+
+  const cues = safelyReadBoundJson(
+    artifacts.directorCues,
+    'DIRECTOR_V2_BRIDGE_SOURCE_CUES',
+    errors,
+  );
+  const approval = safelyReadBoundJson(
+    artifacts.userApproval,
+    'DIRECTOR_V2_BRIDGE_SOURCE_APPROVAL',
+    errors,
+  );
+  const master = safelyReadBoundJson(
+    artifacts.directorV2HandoffMaster,
+    'DIRECTOR_V2_BRIDGE_SOURCE_MASTER',
+    errors,
+  );
+  const handoffReceipt = safelyReadBoundJson(
+    artifacts.directorV2HandoffValidationReceipt,
+    'DIRECTOR_V2_BRIDGE_SOURCE_HANDOFF_RECEIPT',
+    errors,
+  );
+  const paperHandoff = safelyReadBoundJson(
+    artifacts.paperFirstFrameHandoff,
+    'DIRECTOR_V2_BRIDGE_SOURCE_PAPER_HANDOFF',
+    errors,
+  );
+  add(
+    cues?.schemaVersion === DIRECTOR_V2_SCHEMA && cues?.taskId === manifest?.taskId,
+    'DIRECTOR_V2_BRIDGE_SOURCE_CUES_IDENTITY_INVALID',
+  );
+  add(
+    approval?.schemaVersion === 'koubo-director-cues-user-approval/v2' &&
+      approval?.status === 'approved' &&
+      approval?.approved === true &&
+      approval?.taskId === manifest?.taskId &&
+      approval?.revisionId === manifest?.revisionId,
+    'DIRECTOR_V2_BRIDGE_SOURCE_APPROVAL_INVALID',
+  );
+  add(
+    master?.schemaVersion === 'koubo-director-cues-v2-handoff/v1' &&
+      master?.status === 'local-handoff-ready' &&
+      master?.taskId === manifest?.taskId &&
+      master?.revisionId === manifest?.revisionId &&
+      master?.artifacts?.paperFirstFrame?.sha256 === artifacts.paperFirstFrameHandoff?.sha256,
+    'DIRECTOR_V2_BRIDGE_SOURCE_MASTER_INVALID',
+  );
+  add(
+    handoffReceipt?.schemaVersion === 'koubo-director-cues-v2-handoff-validation-receipt/v1' &&
+      handoffReceipt?.status === 'validated-local-handoff' &&
+      handoffReceipt?.skillExecuted === true &&
+      handoffReceipt?.validatorExecuted === true &&
+      handoffReceipt?.taskId === manifest?.taskId &&
+      handoffReceipt?.revisionId === manifest?.revisionId &&
+      handoffReceipt?.handoffMaster?.sha256 === artifacts.directorV2HandoffMaster?.sha256 &&
+      handoffReceipt?.artifacts?.paperFirstFrame?.sha256 === artifacts.paperFirstFrameHandoff?.sha256,
+    'DIRECTOR_V2_BRIDGE_SOURCE_HANDOFF_RECEIPT_INVALID',
+  );
+  add(
+    paperHandoff?.schemaVersion === 'koubo-director-route-prompt-handoff/v1' &&
+      paperHandoff?.status === 'planned' &&
+      paperHandoff?.sourceRoute === 'paper-editorial' &&
+      paperHandoff?.promptKind === 'first-frame' &&
+      paperHandoff?.taskId === manifest?.taskId &&
+      paperHandoff?.revisionId === manifest?.revisionId,
+    'DIRECTOR_V2_BRIDGE_SOURCE_PAPER_HANDOFF_INVALID',
+  );
+  if (Array.isArray(manifest?.scenes) && Array.isArray(paperHandoff?.items)) {
+    add(
+      manifest.scenes.length === paperHandoff.items.length &&
+        manifest.scenes.every((scene, index) => {
+          const source = paperHandoff.items[index];
+          return scene.sceneId === source?.id &&
+            scene.beatId === source?.beatId &&
+            scene.pairId === source?.pairId &&
+            scene.pairSha256 === source?.pairSha256 &&
+            scene.firstFramePrompt === source?.prompt &&
+            scene.firstFramePromptSha256 === source?.promptSha256;
+        }),
+      'DIRECTOR_V2_BRIDGE_PROMPT_MAPPING_INVALID',
+    );
+  }
+  return errors;
+}
+
 export function readSignedSourceManifestChain(
   job,
   {allowGrandfatheredManifestPathAlias = false} = {},
@@ -646,6 +891,33 @@ export function readSignedSourceManifestChain(
   }
 
   const directorReceipt = readJson(receiptBinding.path);
+  const manifest = readJson(sourceBinding.path);
+  const directorV2Route =
+    manifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA ||
+    directorReceipt.schemaVersion === DIRECTOR_V2_FIRSTFRAME_BRIDGE_RECEIPT_SCHEMA;
+  if (directorV2Route) {
+    const errors = validateDirectorV2BridgeReceiptBinding({
+      manifest,
+      manifestPath: sourceBinding.path,
+      receipt: directorReceipt,
+      receiptPath: receiptBinding.path,
+    });
+    if (errors.length) {
+      throw new Error(`DIRECTOR_V2_BRIDGE_RECEIPT_INVALID:${errors.join('|')}`);
+    }
+    if (
+      manifest.taskId !== job.taskId ||
+      manifest.requestId !== job.requestId ||
+      manifest.revisionId !== job.revisionId
+    ) {
+      throw new Error('SOURCE_MANIFEST_IDENTITY_MISMATCH');
+    }
+    return {
+      manifest,
+      directorReceipt,
+      manifestPathAliasUsed: false,
+    };
+  }
   if (
     directorReceipt.schemaVersion !== 'koubo-director-validation-receipt/v1' ||
     directorReceipt.status !== 'validated-provisional-previsualization' ||
@@ -677,7 +949,6 @@ export function readSignedSourceManifestChain(
     throw new Error('DIRECTOR_RECEIPT_REVISION_MISMATCH');
   }
 
-  const manifest = readJson(sourceBinding.path);
   const signedManifest = directorReceipt.artifacts?.firstFramePromptManifest;
   if (
     !signedManifest ||
@@ -734,6 +1005,9 @@ export function readAuthoritativeSourceManifest(job, jobPath) {
     if (manifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA) {
       throw new Error('CUE_NATIVE_FIRSTFRAME_ROUTE_LOCK_REQUIRED');
     }
+    if (manifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA) {
+      throw new Error('DIRECTOR_V2_FIRSTFRAME_ROUTE_LOCK_REQUIRED');
+    }
     return {
       manifest,
       directorReceipt,
@@ -745,10 +1019,9 @@ export function readAuthoritativeSourceManifest(job, jobPath) {
   if (
     routeLock.cueNative !==
       (manifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA) ||
-    routeLock.route !== (manifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA
-      ? 'cue-native'
-      : manifest.v9ContractEnabled === true ? 'v9' : 'legacy') ||
+    routeLock.route !== firstFrameRouteForManifest(manifest) ||
     routeLock.sourceDirectorSchema !== (manifest.sourceDirectorSchema ?? null) ||
+    (routeLock.sourceBridgeSchema ?? null) !== (manifest.sourceBridgeSchema ?? null) ||
     routeLock.selectedSceneId !== (manifest.selectedSceneId ?? null) ||
     routeLock.samplePolicy !== (manifest.samplePolicy ?? (manifest.v9ContractEnabled === true
       ? 'one-representative-scene'
@@ -945,7 +1218,240 @@ export function validateCueNativeSampleAcceptanceBinding(job, manifest) {
   return errors;
 }
 
+export function validateDirectorV2FullPreviewAuthorizationBinding(job, manifest) {
+  const directorV2 =
+    job?.sourceDirectorSchema === DIRECTOR_V2_SCHEMA ||
+    manifest?.sourceDirectorSchema === DIRECTOR_V2_SCHEMA;
+  if (!directorV2) return [];
+
+  const errors = [];
+  if (
+    manifest?.sourceDirectorSchema !== DIRECTOR_V2_SCHEMA ||
+    manifest?.sourceBridgeSchema !== DIRECTOR_V2_FIRSTFRAME_BRIDGE_SCHEMA
+  ) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_SOURCE_MANIFEST_REQUIRED');
+    return errors;
+  }
+  errors.push(...validateCueNativeJobSampleBinding(job, manifest));
+
+  const binding = job.directorV2FullPreviewAuthorizationReceipt;
+  if (
+    !binding ||
+    typeof binding.path !== 'string' ||
+    !binding.path.trim() ||
+    typeof binding.sha256 !== 'string' ||
+    !binding.sha256.trim()
+  ) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_BINDING_REQUIRED');
+    return errors;
+  }
+  const authorizationPath = path.resolve(binding.path);
+  if (!job.output?.handoffRoot || !isInside(job.output.handoffRoot, authorizationPath)) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_OUTSIDE_HANDOFF');
+    return errors;
+  }
+  if (!existsSync(authorizationPath)) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_FILE_MISSING');
+    return errors;
+  }
+  if (sha256File(authorizationPath) !== binding.sha256) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_SHA_MISMATCH');
+    return errors;
+  }
+
+  let authorization;
+  try {
+    authorization = readJson(authorizationPath);
+  } catch {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_JSON_INVALID');
+    return errors;
+  }
+  const selectedSceneId = manifest.selectedSceneId;
+  const selectedScene = job.scenes?.find((scene) => scene.sceneId === selectedSceneId);
+  const compatibleStatuses = new Set([
+    'candidate-text-baked-firstframes-awaiting-user-review',
+    'full-preview-generation-authorized',
+    'batch-awaiting-user-review',
+    'text-baked-firstframes-awaiting-user-review',
+  ]);
+  if (!compatibleStatuses.has(job.status)) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_JOB_STATUS_INVALID');
+  }
+  if (authorization.schemaVersion !== DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_SCHEMA) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_SCHEMA_INVALID');
+  }
+  if (
+    authorization.status !== 'authorized-for-director-v2-local-full-preview' ||
+    authorization.authorized !== true ||
+    authorization.scope !== 'director-v2-paper-firstframes-local-preview-only' ||
+    authorization.authorizationMode !== 'after-representative-machine-pass'
+  ) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_STATUS_INVALID');
+  }
+  if (
+    authorization.taskId !== job.taskId ||
+    authorization.requestId !== job.requestId ||
+    authorization.revisionId !== job.revisionId ||
+    authorization.selectedSceneId !== selectedSceneId
+  ) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_IDENTITY_MISMATCH');
+  }
+  if (
+    !nonEmptyText(authorization.userQuote) ||
+    !nonEmptyText(authorization.authorizedAt) ||
+    !Number.isFinite(Date.parse(authorization.authorizedAt))
+  ) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_USER_EVIDENCE_INVALID');
+  }
+  if (
+    authorization.userVisualAcceptance !== 'pending' ||
+    authorization.externalSubmissionAuthorized !== false ||
+    authorization.runningHubSubmissionAuthorized !== false ||
+    authorization.videoGenerationAuthorized !== false ||
+    authorization.paidGenerationAuthorized !== false
+  ) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_EXTERNAL_BOUNDARY_INVALID');
+  }
+  if (!sameBinding(authorization.sourceManifest, job.sourceManifest)) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_SOURCE_MANIFEST_MISMATCH');
+  }
+
+  const rawResult = selectedScene?.result;
+  const rawReviewPath = rawResult?.visualReview?.path ??
+    (job.output?.qaRoot ? path.join(job.output.qaRoot, `${selectedSceneId}.visual-review.v1.json`) : '');
+  if (
+    !selectedScene ||
+    !rawResult?.imagePath ||
+    !rawResult?.imageSha256 ||
+    !existsSync(rawResult.imagePath) ||
+    sha256File(rawResult.imagePath) !== rawResult.imageSha256 ||
+    !sameBinding(authorization.representativeRawImage, {
+      path: rawResult.imagePath,
+      sha256: rawResult.imageSha256,
+    })
+  ) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_RAW_RESULT_INVALID');
+  }
+  if (
+    !rawReviewPath ||
+    !existsSync(rawReviewPath) ||
+    !sameBinding(authorization.representativeRawVisualReview, {
+      path: rawReviewPath,
+      sha256: sha256File(rawReviewPath),
+    })
+  ) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_RAW_REVIEW_BINDING_INVALID');
+  } else {
+    const rawReview = readJson(rawReviewPath);
+    const rawReviewErrors = validateRawVisualReview(selectedScene, rawReview, {
+      sourceScene: manifest.scenes?.find((scene) => scene.sceneId === selectedSceneId),
+      policy: manifest.policy,
+    });
+    if (rawReviewErrors.length) {
+      errors.push(`DIRECTOR_V2_FULL_PREVIEW_RAW_REVIEW_INVALID:${rawReviewErrors.join(',')}`);
+    }
+  }
+
+  const sampleValidation = authorization.sampleValidationReceipt;
+  if (
+    !sampleValidation?.path ||
+    !isInside(job.output?.qaRoot ?? '', sampleValidation.path) ||
+    !existsSync(sampleValidation.path) ||
+    sha256File(sampleValidation.path) !== sampleValidation.sha256
+  ) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_SAMPLE_VALIDATION_BINDING_INVALID');
+  } else {
+    const receipt = readJson(sampleValidation.path);
+    const check = receipt.checks?.find((entry) => entry.sceneId === selectedSceneId);
+    const acceptedStatuses = new Set([
+      'candidate-stills-awaiting-user-review',
+      'representative-still-machine-review-passed-awaiting-full-preview-authorization',
+    ]);
+    if (
+      receipt.schemaVersion !== 'koubo-paper-firstframe-batch-validation/v1' ||
+      receipt.taskId !== job.taskId ||
+      receipt.requestId !== job.requestId ||
+      receipt.phase !== 'sample' ||
+      !acceptedStatuses.has(receipt.status) ||
+      receipt.machineAndAgentReviewPassed !== true ||
+      receipt.userAccepted !== false ||
+      !Array.isArray(receipt.errors) ||
+      receipt.errors.length !== 0 ||
+      receipt.checks?.length !== 1 ||
+      !check ||
+      check.imagePath !== rawResult?.imagePath ||
+      check.imageSha256 !== rawResult?.imageSha256 ||
+      path.resolve(check.reviewPath ?? '') !== path.resolve(rawReviewPath ?? '')
+    ) {
+      errors.push('DIRECTOR_V2_FULL_PREVIEW_SAMPLE_VALIDATION_INVALID');
+    }
+  }
+
+  const sampleBakeRecords = (job.textBakeReceipts ?? []).filter(
+    (record) => record.phase === 'sample' &&
+      Array.isArray(record.sceneIds) &&
+      record.sceneIds.length === 1 &&
+      record.sceneIds[0] === selectedSceneId,
+  );
+  const latestSampleBake = sampleBakeRecords.at(-1);
+  if (
+    !latestSampleBake?.receipt?.path ||
+    !latestSampleBake.receipt.sha256 ||
+    !sameBinding(authorization.sampleTextBakeReceipt, latestSampleBake.receipt) ||
+    !isInside(job.output?.handoffRoot ?? '', latestSampleBake.receipt.path) ||
+    !existsSync(latestSampleBake.receipt.path) ||
+    sha256File(latestSampleBake.receipt.path) !== latestSampleBake.receipt.sha256
+  ) {
+    errors.push('DIRECTOR_V2_FULL_PREVIEW_TEXT_BAKE_RECEIPT_BINDING_INVALID');
+  } else {
+    const bakeReceipt = readJson(latestSampleBake.receipt.path);
+    const bakedScene = bakeReceipt.scenes?.find((scene) => scene.sceneId === selectedSceneId);
+    const bakedOutput = selectedScene?.deterministicTextBake?.outputPath;
+    const bakedSha = bakedOutput && existsSync(bakedOutput) ? sha256File(bakedOutput) : '';
+    const expectedNodeIds = selectedScene?.deterministicTextBake?.labels?.map((label) => label.nodeId) ?? [];
+    const ocrNodeIds = bakedScene?.ocr?.map((entry) => entry.nodeId) ?? [];
+    if (
+      bakeReceipt.schemaVersion !== TEXT_BAKE_RECEIPT_SCHEMA ||
+      bakeReceipt.status !== 'deterministic-first-frame-text-baked-and-ocr-passed' ||
+      bakeReceipt.taskId !== job.taskId ||
+      bakeReceipt.sourceDirectorSchema !== DIRECTOR_V2_SCHEMA ||
+      !sameBinding(bakeReceipt.sourceFirstFrameManifest, job.sourceManifest) ||
+      bakeReceipt.scenes?.length !== 1 ||
+      !bakedScene ||
+      bakedScene.pairId !== selectedScene?.pairId ||
+      bakedScene.pairSha256 !== selectedScene?.pairSha256 ||
+      bakedScene.textPlanSha256 !== selectedScene?.textPlanSha256 ||
+      bakedScene.labelsSha256 !== selectedScene?.deterministicTextBake?.labelsSha256 ||
+      bakedScene.outputImage?.path !== bakedOutput ||
+      bakedScene.outputImage?.sha256 !== bakedSha ||
+      !sameBinding(authorization.representativeTextBakedImage, {
+        path: bakedOutput,
+        sha256: bakedSha,
+      }) ||
+      ocrNodeIds.length !== expectedNodeIds.length ||
+      new Set(ocrNodeIds).size !== expectedNodeIds.length ||
+      !expectedNodeIds.every((nodeId) => ocrNodeIds.includes(nodeId)) ||
+      (bakedScene.ocr ?? []).some((entry) =>
+        entry.matched !== true ||
+        entry.expected !== entry.recognized ||
+        entry.evaluationStage !== 'final-composite' ||
+        entry.inputImageSha256 !== bakedSha
+      )
+    ) {
+      errors.push('DIRECTOR_V2_FULL_PREVIEW_TEXT_BAKE_RECEIPT_INVALID');
+    }
+  }
+  return errors;
+}
+
 export function isFullBatchAuthorized(job, manifest) {
+  const directorV2 =
+    job.sourceDirectorSchema === DIRECTOR_V2_SCHEMA ||
+    manifest?.sourceDirectorSchema === DIRECTOR_V2_SCHEMA;
+  if (directorV2) {
+    return job.fullBatchAuthorized === true &&
+      validateDirectorV2FullPreviewAuthorizationBinding(job, manifest).length === 0;
+  }
   const cueNative =
     job.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA ||
     manifest?.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA;
@@ -959,6 +1465,15 @@ export function isFullBatchAuthorized(job, manifest) {
 }
 
 export function assertFullBatchAuthorized(job, operation, manifest) {
+  const directorV2 =
+    job.sourceDirectorSchema === DIRECTOR_V2_SCHEMA ||
+    manifest?.sourceDirectorSchema === DIRECTOR_V2_SCHEMA;
+  if (directorV2 && job.fullBatchAuthorized === true) {
+    const errors = validateDirectorV2FullPreviewAuthorizationBinding(job, manifest);
+    if (errors.length) {
+      throw new Error(`DIRECTOR_V2_FULL_PREVIEW_AUTHORIZATION_INVALID:${operation}:${errors.join('|')}`);
+    }
+  }
   const cueNative =
     job.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA ||
     manifest?.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA;

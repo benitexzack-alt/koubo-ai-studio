@@ -3,6 +3,8 @@
 import {existsSync, readFileSync, statSync} from 'node:fs';
 import path from 'node:path';
 import {
+  CUE_NATIVE_DIRECTOR_SCHEMA,
+  DIRECTOR_V2_SCHEMA,
   JOB_SCHEMA,
   assertFullBatchAuthorized,
   parseArgs,
@@ -23,7 +25,12 @@ try {
   const {manifest: sourceManifest} = readAuthoritativeSourceManifest(job, jobPath);
   const sampleBindingErrors = validateCueNativeJobSampleBinding(job, sourceManifest);
   if (sampleBindingErrors.length) {
-    throw new Error(`CUE_NATIVE_SAMPLE_BINDING_INVALID:${sampleBindingErrors.join('|')}`);
+    const prefix = sourceManifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA
+      ? 'DIRECTOR_V2'
+      : sourceManifest.sourceDirectorSchema === CUE_NATIVE_DIRECTOR_SCHEMA
+        ? 'CUE_NATIVE'
+        : 'FIRSTFRAME';
+    throw new Error(`${prefix}_SAMPLE_BINDING_INVALID:${sampleBindingErrors.join('|')}`);
   }
   if (args.phase === 'full') {
     assertFullBatchAuthorized(job, 'BATCH_VALIDATION_FULL', sourceManifest);
@@ -66,7 +73,11 @@ try {
     requestId: job.requestId,
     phase: args.phase,
     status: errors.length === 0
-      ? args.phase === 'sample' ? 'candidate-stills-awaiting-user-review' : 'batch-awaiting-user-review'
+      ? args.phase === 'sample'
+        ? sourceManifest.sourceDirectorSchema === DIRECTOR_V2_SCHEMA
+          ? 'representative-still-machine-review-passed-awaiting-full-preview-authorization'
+          : 'candidate-stills-awaiting-user-review'
+        : 'batch-awaiting-user-review'
       : 'revision-required',
     machineAndAgentReviewPassed: errors.length === 0,
     userAccepted: false,

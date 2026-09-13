@@ -37,7 +37,21 @@ node skills/koubo-remotion-director/scripts/build-director-cues-v2-handoff.mjs \
   --output-dir <新的v2交接目录>
 ```
 
-该命令只构造本地交接，不生图、不提交平台。总清单必须实际记录 active profile 的四路映射；真实素材、AI 情景和纸艺三条分路都必须存在，空分路保持 `not-required`。进入本 Skill 时只取总清单绑定的纸艺首帧文件，并逐项复验 task、revision、路径和 SHA-256；提示词正文必须与 v2 cues 完全一致。现有批次入口若尚未声明接受该 v2 交接 schema，应保持 `blocked`，不得把它伪装成旧 `koubo-director-cues/v1` 或 V9 清单绕过验证。
+该命令只构造本地交接，不生图、不提交平台。总清单必须实际记录 active profile 的四路映射；真实素材、AI 情景和纸艺三条分路都必须存在，空分路保持 `not-required`。进入本 Skill 时只取总清单绑定的纸艺首帧文件，并逐项复验 task、revision、路径和 SHA-256；提示词正文必须与 v2 cues 完全一致。
+
+v2 纸艺首帧必须再走原生桥接，不能伪装成旧 `koubo-director-cues/v1` 或 V9 清单。桥接只读取总清单、官方验证回执和纸艺首帧 child，不读取纸艺视频 child：
+
+```bash
+node skills/koubo-paper-firstframe-producer/scripts/bridge-director-cues-v2-firstframe.mjs \
+  --project-root <口播项目根目录> \
+  --master <director-cues-v2-handoff.v1.json> \
+  --handoff-receipt <director-cues-v2-handoff-validation-receipt.v1.json> \
+  --paper-firstframe <paper-editorial.first-frame-handoff.v1.json> \
+  --selected-scene <代表镜编号> \
+  --output-dir <新的v2首帧生产目录>
+```
+
+输出仍为生产器通用 `first-frame-prompts.v1.json`，但必须显式记录 `sourceDirectorSchema=koubo-director-cues/v2`、v2 bridge schema、全部上游绑定和独立 bridge receipt；首帧正文、顺序、pair 与 textPlan 任一漂移都要阻断。
 
 若输入是简化导演 `director-cues.v1.json`，先取得绑定当前 cues SHA-256 的单样本用户确认回执，再运行：
 
@@ -146,7 +160,18 @@ node skills/koubo-paper-firstframe-producer/scripts/authorize-firstframe-full-ba
 
 该命令不生成、补写或推断用户验收，只验证当前带字样图、原图逐项质检、最新 sample 写字/OCR 回执和所有哈希后登记。手改 `fullBatchAuthorized=true` 不构成授权；未通过时，未选镜头登记、`phase=full` 写字、验证与联系表均必须阻断。
 
-若用户明确要求“整批首帧和画布准备好，最后再确认”，可在代表图实际QA通过后按该授权继续剩余首帧与本地烘焙，不再重复申请中途审美确认。必须记录原话、当前任务和修订范围，用户视觉验收始终为 `pending`，不得伪造“用户看过/已批准图片”。本例外不适用于 cue-native 单样本路线；cue-native 仍必须完成上述独立样图验收登记。本例外不豁免任何硬失败、写字/OCR检查，也不授权视频提交、付款或自动重试。
+若用户明确要求“整批首帧和画布准备好，最后再确认”，可在代表图实际QA通过后按该授权继续剩余首帧与本地烘焙，不再重复申请中途审美确认。必须记录原话、当前任务和修订范围，用户视觉验收始终为 `pending`，不得伪造“用户看过/已批准图片”。
+
+对原生 v2 纸艺路线，代表图的无字逐项质检、sample validation、确定性写字和最终合成图 OCR 全部通过后，建立独立 `koubo-paper-firstframe-director-v2-full-preview-authorization/v1`，再用安全登记命令开启剩余本地预览：
+
+```bash
+node skills/koubo-paper-firstframe-producer/scripts/authorize-director-v2-full-preview-batch.mjs \
+  --project-root <口播项目根目录> \
+  --job <first-frame-batch.v1.json> \
+  --authorization <director-v2-full-preview-authorization.v1.json>
+```
+
+该 v2 授权回执必须继续写明 `userVisualAcceptance=pending`，并把 RunningHub 提交、视频生成和付费权限全部设为 false。旧 `koubo-director-cues/v1` cue-native 单样本路线不适用此例外，仍必须完成独立样图用户验收登记。本例外不豁免任何硬失败、写字/OCR检查，也不授权视频提交、付款或自动重试。
 
 ### 4. 剩余图片批量执行
 
@@ -192,6 +217,8 @@ node skills/koubo-paper-firstframe-producer/scripts/bake-firstframe-batch.mjs \
   --font <可嵌入中文字体绝对路径> \
   --phase sample
 ```
+
+上例 `--source-plan` 只用于历史 V9/v1 路线。原生 `koubo-director-cues/v2` 必须省略该参数，写字器直接从 job 已签名绑定的 `first-frame-prompts.v1.json` 读取 pair 与 textPlan，并在请求和回执中记录 `sourceFirstFrameManifest`；不得为了兼容旧参数重新读取导演视频动作词。
 
 脚本会组装并调用导演 Skill 的确定性写字器，输出 `text-baked-first-frames/`、写字请求和 OCR 回执。目标中文必须逐字相等；位置偏离纸面、溢字、缺字、多字或 OCR 不通过都必须阻断。
 最终图 OCR 必须先按实际 `anchorQuad` 反透视成正视纸牌，再放大、二值化、加白边并使用单行模式精确识别。可按固定、可审计的字号与预处理档位识别，但任一档都必须与目标中文逐字相等，并在回执中保留全部尝试。macOS 上只有当 Tesseract 全部固定档位均失败时，才可使用本机 Apple Vision 做第二 OCR 引擎复核；仍必须对同一张最终合成图逐字完全匹配，且回执必须记录最终识别引擎。中文纸牌优先使用已验证的 `NotoSansCJKsc-Regular.otf`；不要为了让 OCR 放行而更改目标文字。每次执行会自动选择下一个未使用的请求/回执版本号，失败记录和旧产物保持不变。
