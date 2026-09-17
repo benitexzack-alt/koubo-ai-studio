@@ -1,0 +1,995 @@
+{
+  "schemaVersion": "koubo-director-cues/v2",
+  "taskId": "task-20260917T164028Z-f297dcc8",
+  "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
+  "inputScript": {
+    "path": "edit/20260917_ai_efficiency_sharing/00_工程控制/用户原稿.v1.txt",
+    "sha256": "1455708a940fd866e2fe31af435117a19d402c27586bd1967e595e51a655ff27",
+    "authority": "user-confirmed-script"
+  },
+  "routingPolicy": {
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "generatedVisualCannotServeAsEvidence": true,
+    "factVerificationSeparatedFromPrimaryVisual": true,
+    "constructedVisualPriority": [
+      "paper-editorial",
+      "ai-generated-video"
+    ],
+    "aiGeneratedVideoUseCondition": "concrete-human-or-environment-scene-paper-unnatural",
+    "shotcraftSelectionStage": "post-shoot-edit-release",
+    "shotcraftEligibleRoutes": [
+      "speaker",
+      "real-evidence"
+    ],
+    "shotcraftForbiddenInsideRoutes": [
+      "paper-editorial",
+      "ai-generated-video"
+    ]
+  },
+  "styleLocks": {
+    "aiGeneratedVideo": {
+      "promptPrefix": "写实纪实摄影，暖中性自然光，真实工作空间，深蓝与暖白色调，克制电影感，16:9横幅。",
+      "mustKeep": [
+        "自然人物比例与克制表情",
+        "普通办公空间和柔和光线",
+        "深蓝衣着与暖白环境",
+        "单主动作、固定观察机位"
+      ],
+      "mustAvoid": [
+        "复刻真实公司、客户或人物",
+        "伪造真实平台界面和可读文字",
+        "夸张反派表演或群体羞辱",
+        "与口播相争的对白和字幕"
+      ],
+      "referenceImages": []
+    },
+    "paperEditorial": {
+      "promptPrefix": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。",
+      "textPolicy": "generated-base-image-then-deterministic-chinese",
+      "mustKeep": [
+        "真实纸纤维与切边",
+        "前景纸牌、中景机构、后景空间",
+        "真实物件接触阴影",
+        "蓝色主体与少量红色或绿色强调",
+        "独立固定空白纸牌"
+      ],
+      "mustAvoid": [
+        "扁平演示文稿画面",
+        "塑料模型质感",
+        "生成模型直接书写中文",
+        "物体凭空出现或数量突变",
+        "重复同一镜头构图"
+      ],
+      "referenceImages": [
+        {
+          "id": "REF01",
+          "path": "refs/director-style/往期优质纸艺参考_地图连接.png",
+          "sha256": "7f2452c63dc72f7b7e6acbc3d1e3aa7da4da3a6e3e03e08b1f305e1c96c6e79a",
+          "usage": "style-mechanism-only"
+        },
+        {
+          "id": "REF02",
+          "path": "refs/director-style/往期优质纸艺参考_工厂工具.png",
+          "sha256": "d7c28e56542ad8a681115dc753e5aed93cf9079580f6df9b2c214abaa2403650",
+          "usage": "style-mechanism-only"
+        }
+      ]
+    }
+  },
+  "selectionSummary": {
+    "mainPoint": "企业推动AI采用，需要先明确增效所得如何分配，让个人提速有动力进入组织的共同工作流程。",
+    "argumentFlow": [
+      "装不会与私下用的职场反差",
+      "公开增效却继续加量的激励矛盾",
+      "省下的时间和产能如何分配",
+      "留工时余量、分享增效所得、统一工作流",
+      "回到企业与员工共同受益的主张"
+    ],
+    "routeCounts": {
+      "speaker": 24,
+      "real-evidence": 0,
+      "ai-generated-video": 2,
+      "paper-editorial": 4,
+      "shotcraftOpportunity": 6
+    },
+    "routeRationales": {
+      "speaker": "开头、核心分配问题、反问、态度和结尾依赖本人表达；未经核验的数字不制作成果动画。",
+      "real-evidence": "本条不是工具演示或具体企业报道，当前没有必须让观众看到的真实对象；事实核验另列16项，不以素材数量替代事实责任。",
+      "ai-generated-video": "仅会议摇头与隐蔽转电脑两个需要人物关系的情景使用AI；都明确为演绎，不能证明员工普遍行为。",
+      "paper-editorial": "四镜分别解释加量、余量、分享和流程，各有不同构图与单一动作，沿用用户确认的实体纸艺。"
+    },
+    "visualRhythmReason": "按现象、反转、主问题、三条建议、收束组织节奏。两条相邻纸艺之间保留原片过渡，插片只覆盖已列文字锚点，不覆盖整段长口播。时长为素材建议，正式入出点等待实录。",
+    "protectedSpeakerBeatIds": [
+      "B01",
+      "B02",
+      "B05",
+      "B11",
+      "B12",
+      "B13",
+      "B16",
+      "B18",
+      "B19",
+      "B20",
+      "B21",
+      "B22",
+      "B27",
+      "B28",
+      "B29",
+      "B30"
+    ]
+  },
+  "semanticBeats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "scriptQuote": "做企业AI落地这么久，我发现一个特别有意思的职场默契：",
+      "rhetoricalRole": "经验开场",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F01",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人正面建立讲述身份；经历只视作用户自述，未添加客户或年限。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "scriptQuote": "一家公司里，真正会用AI的人，全在集体装不会。",
+      "rhetoricalRole": "反常识钩子",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F02",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "钩子需要眼神和停顿；全称判断缺证据，不能用群像画面制造调查成立的错觉。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "scriptQuote": "表面上大家得过且过，敲代码改方案全靠手动；",
+      "rhetoricalRole": "铺陈表象",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F03",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用表情讲反差，避免把无证据的员工态度拍成真实公司记录。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "scriptQuote": "老板开AI研讨会，所有人齐刷刷摇头，说这东西不靠谱、误差大、没法落地。",
+      "rhetoricalRole": "会议情景",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F04",
+      "primaryRoute": "ai-generated-video",
+      "routeCueId": "G01",
+      "decisionReason": "一个员工的克制摇头让会议气氛具体可见；脸部社交反应适合人物情景，纸艺会削弱含义。情景不证明所有员工如此。",
+      "viewerGain": "make-scene-concrete"
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "scriptQuote": "可背地里呢？",
+      "rhetoricalRole": "反问转折",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "回到本人，用短停顿把观众从会议带到私下使用。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "scriptQuote": "下班回家练Z6、练Cursor、练Codex，",
+      "rhetoricalRole": "列举工具",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F05",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "工具名只是原稿列举，并非本条工具教学；Z6待明确，不伪造界面或标志。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "scriptQuote": "上班老板一转身，工具一开，",
+      "rhetoricalRole": "隐蔽使用情景",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F06",
+      "primaryRoute": "ai-generated-video",
+      "routeCueId": "G02",
+      "decisionReason": "把电脑轻轻转向自己可表达隐蔽动作；具体视线关系不适合抽象纸艺。屏幕没有可读界面，不证明真实使用行为。",
+      "viewerGain": "make-scene-concrete"
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "scriptQuote": "十分钟干完一天的活，然后继续潜水，深藏功与名。",
+      "rhetoricalRole": "效率夸张",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F07",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "回真人承接原句；没有耗时试验，不做计时器、进度突变或前后成绩动画。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "scriptQuote": "全公司心照不宣：嘴上都说AI不行，私下个个都在偷偷提速。",
+      "rhetoricalRole": "现象归纳",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F08",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "保留本人总结；重复全称不能靠更多情景镜头加强事实感。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "scriptQuote": "很多老板觉得这是员工懒、不配合，",
+      "rhetoricalRole": "引出归因",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F09",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "由本人说出被质疑的归因，不刻画具体老板，不把管理者表演成反派。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "scriptQuote": "我实话告诉你——这根本不是人的问题，这是机制的问题。",
+      "rhetoricalRole": "核心判断",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F10",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "正面强调机制；排除其他原因的绝对因果另行核验，视觉只聚焦已有原话。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "scriptQuote": "你换个角度想：员工公开用AI，效率翻三倍，结果是什么？",
+      "rhetoricalRole": "条件推演",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F11",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "这是以你换个角度想引出的假设场景；三倍仍单列核验，不包装成实测增幅。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "scriptQuote": "是加薪吗？是减负吗？\n都不是。",
+      "rhetoricalRole": "连续反问",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F12",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "两个问题和否定回答由表演承担；承接假设情景，不展示假工资单或薪酬数据。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "scriptQuote": "大概率是老板一句“效率这么高，那再多加两个项目”，",
+      "rhetoricalRole": "错误激励示意",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F13",
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P01",
+      "decisionReason": "新增文件占据工位余量，直观说明增效被继续加量的机制；概率和两个项目仍是原文假设，不是统计。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "scriptQuote": "最后活越干越多，工资一分没涨。",
+      "rhetoricalRole": "不对等后果",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F14",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "切回本人收束后果；不重复纸艺动作，不用虚构工资单证明薪酬不变。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B16",
+      "order": 16,
+      "scriptQuote": "换你你也藏着用。",
+      "rhetoricalRole": "共情",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "直视镜头，把反问交还观众，避免插片切走情绪。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B17",
+      "order": 17,
+      "scriptQuote": "所以我们做企业AI落地，从来不是把工具买回来、发个通知就完事了。",
+      "rhetoricalRole": "方法立场",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "以用户表达的工作理念处理，不额外添加已实施客户案例或成果。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B18",
+      "order": 18,
+      "scriptQuote": "你真正要解决的核心问题只有一个：效率提升之后，省出来的时间和产能，到底怎么分配？",
+      "rhetoricalRole": "全片主问题",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "这是全片最重要的判断，需要观众看着本人听清分配问题，保留完整问句。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B19",
+      "order": 19,
+      "scriptQuote": "是全部摊成新的工作量，还是让员工分享增效的红利？",
+      "rhetoricalRole": "分配选项",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "两种分配方式是价值选择，真人提问已能表达，后续建议再用具体纸艺展开。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B20",
+      "order": 20,
+      "scriptQuote": "是把AI变成压榨员工的新工具，还是变成整个组织降本增收的武器？",
+      "rhetoricalRole": "价值取向",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "比喻由本人声音承担，不画武器、冲突或具体企业侵害行为。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B21",
+      "order": 21,
+      "scriptQuote": "给所有想推AI的老板三个建议：",
+      "rhetoricalRole": "建议入口",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人转入建议段，让观众清楚接下来是三项行动。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B22",
+      "order": 22,
+      "scriptQuote": "第一，别搞“AI提速=加量不加价”，",
+      "rhetoricalRole": "建议一立场",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "先在真人上讲清第一条，纸艺只解释随后工时余量。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B23",
+      "order": 23,
+      "scriptQuote": "省下来的工时，要给员工留冗余，而不是无限堆活；",
+      "rhetoricalRole": "建议一机制",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P02",
+      "decisionReason": "边界挡板把工作块和空余段隔开，说明需要有明确受保护的工时余量。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B24",
+      "order": 24,
+      "scriptQuote": "第二，建立增效分成机制，用AI省下的成本，拿出一部分反哺团队，",
+      "rhetoricalRole": "建议二机制",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P03",
+      "decisionReason": "一块已有纸块从组织端移向团队端，说明分享部分收益；不暗示固定分成比例或保证有现金节省。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B25",
+      "order": 25,
+      "scriptQuote": "大家才有动力公开用、全力推；",
+      "rhetoricalRole": "激励推断",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F15",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "回真人解释希望得到的行为变化，动力与分成之间的因果不可视为必然效果。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B26",
+      "order": 26,
+      "scriptQuote": "第三，把个人偷偷用的AI能力，变成标准化的组织工作流，统一培训、统一工具、统一交付，而不是靠员工私下内卷。",
+      "rhetoricalRole": "建议三机制",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P04",
+      "decisionReason": "三个站点由一块连接板接通，说明能力需要接入同一个流程；培训、工具、交付均用原稿节点。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B27",
+      "order": 27,
+      "scriptQuote": "AI落地，拼的从来不是谁的工具更先进。",
+      "rhetoricalRole": "结尾判断",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "回到本人，不用产品排行榜或性能比较图强化修辞。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B28",
+      "order": 28,
+      "scriptQuote": "拼的是你能不能把“员工偷偷摸鱼的工具”，变成“企业和员工共赢的生产力”。",
+      "rhetoricalRole": "主张收束",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "完整保留本人总结与视线交流，前面已解释机制，此处无需再重复一镜。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B29",
+      "order": 29,
+      "scriptQuote": "机制顺了，不用你催，所有人都会主动把AI用起来。",
+      "rhetoricalRole": "效果承诺风险",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F16",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "所有人都会属于全称效果预测，单列未核验项；不能靠集体鼓掌或成功群像背书。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B30",
+      "order": 30,
+      "scriptQuote": "关注超哥，只讲AI落地的底层逻辑。",
+      "rhetoricalRole": "结尾行动号召",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人直接收尾，保留人设识别，不叠加新承诺。",
+      "viewerGain": "presenter-trust"
+    }
+  ],
+  "factChecks": [
+    {
+      "id": "F01",
+      "beatId": "B01",
+      "sourceRequirement": "用户自述做企业AI落地的经历；若作为服务资历背书，需可脱敏核对的真实工作记录。本轮只有原稿，没有客户、年限或效果证据。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F02",
+      "beatId": "B02",
+      "sourceRequirement": "需与明确公司、人员范围和时间对应的可靠观察或调查；现有材料不能支持全在集体装不会。个案或外部调查均不能外推全称，无法证明时收窄表述。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F03",
+      "beatId": "B03",
+      "sourceRequirement": "原稿关于表面全靠手动的概括未附证据；需真实工作方式记录或由用户明确改为虚构情景，不能从不公开AI使用推导全靠手动。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F04",
+      "beatId": "B04",
+      "sourceRequirement": "会议与所有人摇头的叙述需用户确认其为真实观察还是虚构演绎；若为真实事件需匿名化原始记录。G01只是说明，不能作为核验材料。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F05",
+      "beatId": "B06",
+      "sourceRequirement": "需用户确认Z6具体指什么，并说明下班练工具是观察还是设想；官方产品页只能证明工具身份，不能证明员工私下使用。本轮Z6仍按原字保留。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F06",
+      "beatId": "B07",
+      "sourceRequirement": "老板转身即开工具的叙述需真实来源或用户确认改为假设；G02为虚构人物，不证明特定企业行为。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F07",
+      "beatId": "B08",
+      "sourceRequirement": "十分钟相对一天需同任务、同质量标准、含核验返工和工具使用的可复核耗时记录；当前无记录。若仅为修辞须用户收窄或明确改为假设，禁止制作实测数字动画。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F08",
+      "beatId": "B09",
+      "sourceRequirement": "全公司、个个的普遍性需明确样本覆盖；不得用单例、生成画面或匿名二手说法支撑。未核验则收窄或删改全称。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F09",
+      "beatId": "B10",
+      "sourceRequirement": "很多老板的态度需有说明地区、时间、样本和问题口径的中国本土调查或可核访谈；仅有零散案例不足以量化很多，本轮尚未调查。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F10",
+      "beatId": "B11",
+      "sourceRequirement": "机制可能影响采用，但这根本不是人的问题排除了技能、数据、工具适配等因素；需研究或受控案例支持因果范围，无法排他证明时由用户收窄。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F11",
+      "beatId": "B12",
+      "sourceRequirement": "三倍目前位于假设推演，没有实测证据。须用户明确选择假设表达或提供同任务同质量比较；不得将假设视作已验证工具能力。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F12",
+      "beatId": "B13",
+      "sourceRequirement": "都不是承接加薪或减负的假设；如果作为现实企业普遍结论需薪酬及工时证据。本轮尚未明确情景性质，保持待核验。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F13",
+      "beatId": "B14",
+      "sourceRequirement": "大概率需有组织行为与任务分配数据支撑；两个项目是原稿引语里的情景数量，不是普遍结果。无法证明概率时须由用户明确情景或收窄表述。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F14",
+      "beatId": "B15",
+      "sourceRequirement": "工作增加而工资未涨需同一案例同期工作量与薪酬证据；涉及隐私仅接收脱敏材料。无证据不得把假设后果标成真实案例。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F15",
+      "beatId": "B25",
+      "sourceRequirement": "分成与公开采用之间的激励关系需研究或可比企业案例；不把一种机制写成充分或必要条件，不承诺团队一定全力推。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F16",
+      "beatId": "B29",
+      "sourceRequirement": "机制顺了就所有人主动使用属于全称因果和保证效果，现有输入没有证明。不能由少数成功案例外推；缺证据须收窄或删除保证性表述。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    }
+  ],
+  "routePlans": {
+    "realMaterials": {
+      "status": "not-required",
+      "notRequiredReason": "原稿没有真实产品操作、具体企业事件、官方文件或必须展示的现场。无需额外公开图片或用户录屏；16项事实要求保存在factChecks，尚无验证结论。若后续改成实证案例，需另行确认导演表。",
+      "items": []
+    },
+    "aiGeneratedVideos": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "G01",
+          "beatId": "B04",
+          "startAnchorText": "所有人齐刷刷摇头",
+          "endAnchorText": "没法落地",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "representationPolicy": "synthetic-not-evidence",
+          "evidenceEligible": false,
+          "disclosureRequired": true,
+          "realEntityReenactmentForbidden": true,
+          "mode": "image-to-video",
+          "durationSeconds": 5,
+          "visualIntent": "从一个员工的克制摇头看见会议中的回避气氛；镜头不证明全员如此，拍后显著标注AI情景演绎。",
+          "firstFramePrompt": "写实纪实摄影，暖中性自然光，真实工作空间，深蓝与暖白色调，克制电影感，16:9横幅。虚构的中国普通小企业会议室，三名成年参会者围坐短桌，前景一名穿蓝灰衬衫的员工占主要画面，头部正对桌对面的提问者，双手静放桌面，神情克制。后方两人安静就座，笔记本外壳没有品牌。平视中近景，前景人物清晰，背景会议环境可辨，无夸张奢华装饰。所有屏幕只有无意义的浅色块，墙面无企业名称，无可读文字。画面下沿留出干净空间。",
+          "primaryAction": "前景员工轻轻摇头一次",
+          "videoPrompt": "基于已确认首帧，前景员工轻轻摇头一次，幅度克制，目光仍朝向提问者，结束时回到中性姿态并短暂保持。固定机位，后方人物与桌面物件稳定，不增加手势，不张嘴说话，不改变屏幕内容，不增加人物或文字。",
+          "negativePrompt": [
+            "真实公司名称、真人复刻或品牌标志",
+            "所有人机械同步大幅摇头",
+            "夸张坏笑、羞辱或反派表演",
+            "口型对白、字幕或可读屏幕",
+            "人物增减、面部变形或镜头切换"
+          ]
+        },
+        {
+          "id": "G02",
+          "beatId": "B07",
+          "startAnchorText": "上班老板一转身",
+          "endAnchorText": "工具一开",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "representationPolicy": "synthetic-not-evidence",
+          "evidenceEligible": false,
+          "disclosureRequired": true,
+          "realEntityReenactmentForbidden": true,
+          "mode": "image-to-video",
+          "durationSeconds": 4,
+          "visualIntent": "以电脑朝向的细小变化说明隐藏使用行为；不生成工具真实界面，不证明十分钟的工作效果。",
+          "firstFramePrompt": "写实纪实摄影，暖中性自然光，真实工作空间，深蓝与暖白色调，克制电影感，16:9横幅。虚构的普通开放办公区，一名成年员工坐在靠窗工位前，双手放在打开的无品牌笔记本电脑两侧，电脑屏幕略朝过道，人物视线停在电脑上。远处一位同事背对工位，面孔不可见，彼此没有肢体接触。机位在员工左前侧，能看见电脑外形和身体朝向，桌面整洁，有一只素色杯子。屏幕只有不可辨识的浅色矩形，所有纸面没有文字，画面底部保持干净。",
+          "primaryAction": "把笔记本电脑轻轻转向自己",
+          "videoPrompt": "基于已确认首帧，员工把笔记本电脑轻轻转向自己，电脑全程贴着桌面，停在适合自己阅读的角度并保持。固定机位，远处人物保持背身，屏幕内容不切换，手指不敲键盘，不加入目光转移、起身或其他动作。无对白和新文字。",
+          "negativePrompt": [
+            "具体AI平台界面、代码或品牌标志",
+            "倒计时或效率数字",
+            "窥视、偷窃或窃取客户资料情节",
+            "多余手指、电脑形变或穿过桌面",
+            "额外对白、镜头切换或屏幕闪烁"
+          ]
+        }
+      ]
+    },
+    "paperEditorials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "P01",
+          "beatId": "B14",
+          "startAnchorText": "效率这么高",
+          "endAnchorText": "再多加两个项目",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 5,
+          "reason": "先让观众看见新增任务占用工位余量，再切真人说工资后果；两份文件只对应原稿假设引语，不构成统计。",
+          "visualRole": "mechanism",
+          "visualMetaphor": "同一张工位桌面被新增文件进一步占满，前方报酬信封保持原样。",
+          "composition": "偏左近景工位与右侧等高文件起点形成横向占位关系；两张纸牌在前，纸质隔屏在后。",
+          "referenceImageIds": [
+            "REF02"
+          ],
+          "textPlan": [
+            {
+              "text": "两个项目",
+              "surface": "前景右侧固定空白纸牌"
+            },
+            {
+              "text": "工资",
+              "surface": "前景左侧固定空白纸牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。一张连续平整的浅灰纸质桌面贯穿中景，左半部是蓝色微缩工位和三片素白任务薄片，右半部有一组彼此并排连接的两只红色薄文件夹，红色组与蓝色工位之间是一段空桌面。前景有一个完整的素白小信封，前景左侧固定空白纸牌立在信封旁，前景右侧固定空白纸牌立在文件夹起点前方，两牌均与桌上道具分离。后景仅有低矮纸隔屏，桌面、物件与支脚全部完整可见，画面底部留白，所有纸面无文字。",
+          "primaryAction": "红色双文件夹组沿桌面平移到蓝色工位旁",
+          "videoPrompt": "基于已确认首帧，红色双文件夹组沿桌面平移到蓝色工位旁，占据原有空桌面，停在三片白色薄片右侧并保持。固定机位，文件夹始终为两只，其他物件、信封及中文字牌固定，蓝色工位不变形，不生成额外任务。",
+          "negativePrompt": [
+            "文件从空中落下或凭空增殖",
+            "信封变化、现金符号或收益数字",
+            "纸牌移动、文字变化或遮挡",
+            "任务物件穿透彼此",
+            "多段连续动作或镜头切换"
+          ]
+        },
+        {
+          "id": "P02",
+          "beatId": "B23",
+          "startAnchorText": "省下来的工时",
+          "endAnchorText": "要给员工留冗余",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 5,
+          "reason": "用可见分隔边界保护空段，让留冗余成为具体管理安排；不画任何假工时比例。",
+          "visualRole": "comparison",
+          "visualMetaphor": "一条工作台上的蓝色任务与空余纸面被挡板明确分隔，空余不再自动被填满。",
+          "composition": "横向长条低台居中，蓝色小块只在左侧，淡黄色空段在右，红色小挡板初始在最右端；前景双牌，后景低矮纸墙。",
+          "referenceImageIds": [
+            "REF02"
+          ],
+          "textPlan": [
+            {
+              "text": "工时",
+              "surface": "左前方固定空白纸牌"
+            },
+            {
+              "text": "冗余",
+              "surface": "右前方固定空白纸牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。中景是一条横向浅灰卡纸低台，左侧三块蓝色方块紧凑并排，右侧是一整段空白淡黄色纸面。低台最右端有一片带平底座的红色竖直小挡板，空白段连续平整，挡板与蓝色方块之间没有其他物件。左前方固定空白纸牌与右前方固定空白纸牌分别位于低台外侧，不占用台面。后方低矮纸墙建立空间纵深，全部底座完整，底部有干净留白，所有纸面无文字。",
+          "primaryAction": "红色挡板沿空白台面平移到蓝色方块右侧",
+          "videoPrompt": "基于已确认首帧，红色挡板沿空白台面平移到蓝色方块右侧，在蓝块和淡黄色空段之间停住并保持，右侧空段完整可见。固定机位，三块蓝块不动，纸牌及文字不动，没有新任务进入空段，所有物件保持纸质形态。",
+          "negativePrompt": [
+            "空段被新物件填满",
+            "蓝色方块移动、增殖或融化",
+            "挡板穿过方块",
+            "中文字牌随挡板移动",
+            "钟表数字、比例刻度或额外动作"
+          ]
+        },
+        {
+          "id": "P03",
+          "beatId": "B24",
+          "startAnchorText": "用AI省下的成本",
+          "endAnchorText": "拿出一部分反哺团队",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 6,
+          "reason": "共享一块已有资源，表达部分增效所得回到团队；仅为分配关系说明，不设分成比例，不暗示实际收益。",
+          "visualRole": "relationship",
+          "visualMetaphor": "组织侧资源中的一个绿色纸块被移到团队共享台，其他资源留在原处。",
+          "composition": "斜侧视角，左后方组织资源区与右前方共享台位于同一连续桌面，左侧两块白纸块和一块绿色纸块分离可辨，两张固定纸牌分居外缘。",
+          "referenceImageIds": [
+            "REF01",
+            "REF02"
+          ],
+          "textPlan": [
+            {
+              "text": "省下的成本",
+              "surface": "左外缘固定空白纸牌"
+            },
+            {
+              "text": "反哺团队",
+              "surface": "右外缘固定空白纸牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。一张连续平整的实体纸桌面，左后侧用蓝色浅底垫标出一区，内有两块素白方块和一块略长的绿色纸块，各自完整可辨，绿色纸块位于区域右缘。右前侧是一片空的浅绿色共享台面，与桌面齐平，连接区域无遮挡。左外缘固定空白纸牌立在蓝色底垫外，右外缘固定空白纸牌立在浅绿色台面外，均不占通道。后景是两片低矮纸隔屏，前景、道具、后景层次分明，底部留白，所有纸面无文字。",
+          "primaryAction": "绿色纸块沿桌面平移到右侧共享台面",
+          "videoPrompt": "基于已确认首帧，绿色纸块沿桌面平移到右侧共享台面，在空区中央停稳并保持。固定机位，两块白色纸块留在左侧，绿色纸块的大小和数量不变，桌面、两张中文字牌与后方隔屏保持静止。没有分裂、复制或其他资源移动。",
+          "negativePrompt": [
+            "生成金额、比例、货币图案",
+            "绿色纸块分裂或数量变化",
+            "桌面高低突变或通道被挡住",
+            "中文字牌跟随物件移动",
+            "左右两组额外同步运动"
+          ]
+        },
+        {
+          "id": "P04",
+          "beatId": "B26",
+          "startAnchorText": "变成标准化的组织工作流",
+          "endAnchorText": "统一交付",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 7,
+          "reason": "用一个连接动作把培训、工具、交付接成共同流程，避免把建议演成不经训练自动成功。",
+          "visualRole": "process",
+          "visualMetaphor": "三个纸质工作站原本只有一处断口，一块已有连接板补齐共同路径。",
+          "composition": "左后、中部、右前三级斜线布局；三站与连接纸条全部贴在同一底面，断口位于中站至右站，连接板在断口侧方；各站外侧各一张固定纸牌。",
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "textPlan": [
+            {
+              "text": "统一培训",
+              "surface": "左后站外侧固定空白纸牌"
+            },
+            {
+              "text": "统一工具",
+              "surface": "中站外侧固定空白纸牌"
+            },
+            {
+              "text": "统一交付",
+              "surface": "右前站外侧固定空白纸牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，至少三层景深，真实接触阴影，柔和侧光，16:9横幅。连续平整桌面上有三个微缩纸质工作站，沿左后、中部、右前方向排列。左站有一本无字小册子，中站有一个蓝色无字工具盒，右站有一个空的素白交接托盘。站点间蓝色扁平纸条贴着桌面，只有中站到右站之间留有一个矩形缺口，与缺口匹配的一块蓝色连接板静置在缺口侧边。左后站外侧固定空白纸牌、中站外侧固定空白纸牌、右前站外侧固定空白纸牌均独立直立，不在纸条上。后方是浅色低墙，整体完整入画，下沿留白，所有纸面无文字。",
+          "primaryAction": "蓝色连接板沿桌面平移到路径缺口内",
+          "videoPrompt": "基于已确认首帧，蓝色连接板沿桌面平移到路径缺口内，填补唯一断口，使三个站点之间的蓝色路径连续，停稳并保持。固定机位，小册子、工具盒、托盘和全部中文字牌不动，不运输文件，不增加人物，不改变站点数量。",
+          "negativePrompt": [
+            "连接板从空中出现或变长",
+            "三个站点重排或自动复制文件",
+            "接通后继续运输、发光或人物动作",
+            "纸牌移动和中文字形变化",
+            "扁平流程截图或塑料质感"
+          ]
+        }
+      ]
+    }
+  },
+  "shotcraftOpportunities": [
+    {
+      "id": "SO01",
+      "beatId": "B02",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "只聚焦原话装不会，先看实录表情，不能加强全称为调查结论。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO02",
+      "beatId": "B11",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "让机制一词落在本人判断上；避开面部与字幕，先处理因果边界。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO03",
+      "beatId": "B13",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "两个反问按实际说话顺序出现，保留问句停顿，不编工资数据。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO04",
+      "beatId": "B18",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "只突出怎么分配，帮助观众抓住主问题。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO05",
+      "beatId": "B21",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "建议段入口提供三项导航，仅取原话，实际形式拍后扫描全库。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO06",
+      "beatId": "B28",
+      "baseVisualRoute": "speaker",
+      "intent": "transition-carry",
+      "reason": "把前面的分配关系轻量承接到本人收束，不复演纸艺或加入新承诺。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    }
+  ],
+  "rhythmAudit": {
+    "basis": "semantic-runs-not-seconds",
+    "fixedCadenceForbidden": true,
+    "longSpeakerRunsReviewed": true,
+    "runs": [
+      {
+        "fromBeatId": "B01",
+        "toBeatId": "B03",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "开场需尽快到装不会的核心反差；不先铺长场景，拍后根据本人表演决定是否强化关键词。",
+        "mitigationRefs": [
+          "SO01"
+        ]
+      },
+      {
+        "fromBeatId": "B05",
+        "toBeatId": "B06",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "短反问与工具列举构成一次自然呼吸，不给三个工具各插一个画面。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B08",
+        "toBeatId": "B13",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "这组先重复现象再转向因果，存在语义重复；保留当前原稿，以机制转折和双反问作节奏支点，不加证明效率数字的画面。",
+        "mitigationRefs": [
+          "SO02",
+          "SO03"
+        ]
+      },
+      {
+        "fromBeatId": "B15",
+        "toBeatId": "B22",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "后果、共情、方法、核心问句和价值选择连续出现；核心问句留真人，建议入口作导航。若实录过长先报告节奏问题，不擅自删稿。",
+        "mitigationRefs": [
+          "SO04",
+          "SO05"
+        ]
+      },
+      {
+        "fromBeatId": "B25",
+        "toBeatId": "B25",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "收益分享插片后回到本人解释动机，并给第三条建议留转场呼吸。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B27",
+        "toBeatId": "B30",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "结尾两层总结后收行动号召，避免再次插入成功群像。因果保证句另行处理，结尾信息重点仍由本人承担。",
+        "mitigationRefs": [
+          "SO06"
+        ]
+      }
+    ]
+  }
+}
