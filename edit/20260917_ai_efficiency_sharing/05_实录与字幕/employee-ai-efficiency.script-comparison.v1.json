@@ -1,0 +1,98 @@
+{
+  "scriptRole": "comparison-only",
+  "changesRetained": [
+    {
+      "script": "员工公开用AI",
+      "actual": "员工会用AI",
+      "evidence": "两套无提示本机识别一致"
+    },
+    {
+      "script": "想推AI",
+      "actual": "想做AI",
+      "evidence": "两套无提示本机识别一致"
+    },
+    {
+      "script": "AI提速",
+      "actual": "AI提效",
+      "evidence": "两套无提示本机识别一致"
+    },
+    {
+      "script": "第一/第二/第三",
+      "actual": "第一呢/第二呢/第三呢",
+      "evidence": "大模型检出，保留连接词"
+    },
+    {
+      "script": "拿出一部分反哺团队",
+      "actual": "拿出一部分来反哺团队",
+      "evidence": "两模型检出来"
+    },
+    {
+      "script": "机制顺了",
+      "actual": "那么机制顺了",
+      "evidence": "两模型检出那么"
+    }
+  ],
+  "unresolved": [],
+  "corrections": [
+    [
+      "COSA",
+      "Cursor",
+      "proper-noun-spelling",
+      "两套 ASR 分别为 COSA/Closer；用户原稿提供同音产品名 Cursor，仅校正专名拼写。"
+    ],
+    [
+      "深藏工具名",
+      "深藏功与名",
+      "unmistakable-asr-error",
+      "小模型为深藏公寓名；依据两套识别的音节与固定成语进行机械校正。"
+    ],
+    [
+      "偷偷提诉",
+      "偷偷提速",
+      "unmistakable-asr-error",
+      "小模型独立识别为偷偷提速。"
+    ],
+    [
+      "给所以",
+      "给所有",
+      "unmistakable-asr-error",
+      "小模型独立识别为给所有；保留两模型共同识别的想做AI。"
+    ],
+    [
+      "反补团队",
+      "反哺团队",
+      "unmistakable-asr-error",
+      "反哺为同音词的规范用字；保留拿出一部分来中的来。"
+    ],
+    [
+      "工具跟先进",
+      "工具更先进",
+      "unmistakable-asr-error",
+      "小模型独立识别为工具更先进。"
+    ],
+    [
+      "观众超哥",
+      "关注超哥",
+      "proper-noun-spelling",
+      "用户本人已提供账号称呼超哥，行动引导同音识别规范化；不是音频内容改写。"
+    ],
+    [
+      "最后活越干越多",
+      "最后呢活越干越多",
+      "unmistakable-asr-error",
+      "小模型在66.02–66.74秒独立检出最后呢，保留实际口头连接词。"
+    ],
+    [
+      "荣誉",
+      "冗余",
+      "unmistakable-asr-error",
+      "用户听辨确认：是，按“冗余、堆活”"
+    ],
+    [
+      "无限对话",
+      "无限堆活",
+      "unmistakable-asr-error",
+      "用户听辨确认：是，按“冗余、堆活”"
+    ]
+  ]
+}

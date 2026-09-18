@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "task-20260917T164028Z-f297dcc8",
+  "revisionId": "ai-efficiency-sharing-edit-release-r1",
+  "status": "planned",
+  "sourceRoute": "ai-generated-video",
+  "downstreamRoute": "generated-video",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20260917_ai_efficiency_sharing/03_导演拆解/director-cues.v2.json",
+      "sha256": "4e629275521936c518824bfab2e80e667607e495149f1961aad49ae8124d3705"
+    },
+    "userApproval": {
+      "path": "edit/20260917_ai_efficiency_sharing/00_工程控制/用户剪辑授权.v1.json",
+      "sha256": "e76079fdfbbb9d73f6228cd1f1394538376db2f0904c23519fe706b5a2147599"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "5472eb8f5bf11298fe9bcbcfefa39dec89ca7ad1a3f8cd6450c6707c604f151e"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "image-to-video",
+  "promptIsolation": {
+    "containsFirstFramePromptBodies": false,
+    "consumer": "video-generation-stage"
+  },
+  "styleLock": {
+    "promptPrefix": "写实纪实摄影，暖中性自然光，真实工作空间，深蓝与暖白色调，克制电影感，16:9横幅。",
+    "mustKeep": [
+      "自然人物比例与克制表情",
+      "普通办公空间和柔和光线",
+      "深蓝衣着与暖白环境",
+      "单主动作、固定观察机位"
+    ],
+    "mustAvoid": [
+      "复刻真实公司、客户或人物",
+      "伪造真实平台界面和可读文字",
+      "夸张反派表演或群体羞辱",
+      "与口播相争的对白和字幕"
+    ],
+    "referenceImages": []
+  },
+  "itemCount": 2,
+  "items": [
+    {
+      "id": "G01",
+      "beatId": "B04",
+      "startAnchorText": "所有人齐刷刷摇头",
+      "endAnchorText": "没法落地",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 5,
+      "pairId": "G01-prompt-pair-v1",
+      "pairSha256": "1c8d3c38f6650a027cb2da874c08678cb4c9315b83610049a10e1369e344ae15",
+      "prompt": "基于已确认首帧，前景员工轻轻摇头一次，幅度克制，目光仍朝向提问者，结束时回到中性姿态并短暂保持。固定机位，后方人物与桌面物件稳定，不增加手势，不张嘴说话，不改变屏幕内容，不增加人物或文字。",
+      "promptSha256": "00ebf7af9d5314febe27cd5a834a08919343e832c8474f50ad940ce583491d72",
+      "negativePrompt": [
+        "真实公司名称、真人复刻或品牌标志",
+        "所有人机械同步大幅摇头",
+        "夸张坏笑、羞辱或反派表演",
+        "口型对白、字幕或可读屏幕",
+        "人物增减、面部变形或镜头切换"
+      ],
+      "primaryAction": "前景员工轻轻摇头一次",
+      "purpose": "illustration-only",
+      "representationPolicy": "synthetic-not-evidence",
+      "evidenceEligible": false,
+      "disclosureRequired": true,
+      "realEntityReenactmentForbidden": true,
+      "visualIntent": "从一个员工的克制摇头看见会议中的回避气氛；镜头不证明全员如此，拍后显著标注AI情景演绎。"
+    },
+    {
+      "id": "G02",
+      "beatId": "B07",
+      "startAnchorText": "上班老板一转身",
+      "endAnchorText": "工具一开",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 4,
+      "pairId": "G02-prompt-pair-v1",
+      "pairSha256": "c35e746cf89066ba29789df6deef82f09726f6e0c987dcc0244f8ab2a32e6f41",
+      "prompt": "基于已确认首帧，员工把笔记本电脑轻轻转向自己，电脑全程贴着桌面，停在适合自己阅读的角度并保持。固定机位，远处人物保持背身，屏幕内容不切换，手指不敲键盘，不加入目光转移、起身或其他动作。无对白和新文字。",
+      "promptSha256": "3b3a09016938ce2bcc3306790ec70b0304ad27695fe8b4098edfc410346d0cd0",
+      "negativePrompt": [
+        "具体AI平台界面、代码或品牌标志",
+        "倒计时或效率数字",
+        "窥视、偷窃或窃取客户资料情节",
+        "多余手指、电脑形变或穿过桌面",
+        "额外对白、镜头切换或屏幕闪烁"
+      ],
+      "primaryAction": "把笔记本电脑轻轻转向自己",
+      "purpose": "illustration-only",
+      "representationPolicy": "synthetic-not-evidence",
+      "evidenceEligible": false,
+      "disclosureRequired": true,
+      "realEntityReenactmentForbidden": true,
+      "visualIntent": "以电脑朝向的细小变化说明隐藏使用行为；不生成工具真实界面，不证明十分钟的工作效果。"
+    }
+  ]
+}

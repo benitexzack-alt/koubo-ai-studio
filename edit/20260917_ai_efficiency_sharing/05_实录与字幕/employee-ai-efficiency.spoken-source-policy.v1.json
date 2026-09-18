@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "canonicalSource": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "captionTextPolicy": "spoken-verbatim",
+  "englishTranslationSource": "canonical-spoken-chinese",
+  "originalVideo": "edit/20260917_ai_efficiency_sharing/01_素材投放区/01_口播原片/copy_A5DE456A-4712-4A6D-8425-FFB1EE24D2C9.MOV",
+  "transcript": {
+    "path": "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.actual.cleaned.v1.json",
+    "sha256": "c46df3be5a9216a219526f76289d304cc00f80dc3fc2b088ac1120d6e924a954"
+  },
+  "captions": {
+    "path": "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.actual.bilingual.v1.json",
+    "sha256": "b434906f38130f47a9b1fe264197be88d588b76fbadc029f3538f8680ae12aad"
+  },
+  "verification": {
+    "corrections": [
+      {
+        "from": "COSA",
+        "to": "Cursor",
+        "type": "proper-noun-spelling",
+        "evidence": "两套 ASR 分别为 COSA/Closer；用户原稿提供同音产品名 Cursor，仅校正专名拼写。"
+      },
+      {
+        "from": "深藏工具名",
+        "to": "深藏功与名",
+        "type": "unmistakable-asr-error",
+        "evidence": "小模型为深藏公寓名；依据两套识别的音节与固定成语进行机械校正。"
+      },
+      {
+        "from": "偷偷提诉",
+        "to": "偷偷提速",
+        "type": "unmistakable-asr-error",
+        "evidence": "小模型独立识别为偷偷提速。"
+      },
+      {
+        "from": "给所以",
+        "to": "给所有",
+        "type": "unmistakable-asr-error",
+        "evidence": "小模型独立识别为给所有；保留两模型共同识别的想做AI。"
+      },
+      {
+        "from": "反补团队",
+        "to": "反哺团队",
+        "type": "unmistakable-asr-error",
+        "evidence": "反哺为同音词的规范用字；保留拿出一部分来中的来。"
+      },
+      {
+        "from": "工具跟先进",
+        "to": "工具更先进",
+        "type": "unmistakable-asr-error",
+        "evidence": "小模型独立识别为工具更先进。"
+      },
+      {
+        "from": "观众超哥",
+        "to": "关注超哥",
+        "type": "proper-noun-spelling",
+        "evidence": "用户本人已提供账号称呼超哥，行动引导同音识别规范化；不是音频内容改写。"
+      },
+      {
+        "from": "最后活越干越多",
+        "to": "最后呢活越干越多",
+        "type": "unmistakable-asr-error",
+        "evidence": "小模型在66.02–66.74秒独立检出最后呢，保留实际口头连接词。"
+      },
+      {
+        "from": "荣誉",
+        "to": "冗余",
+        "type": "unmistakable-asr-error",
+        "evidence": "用户听辨确认：是，按“冗余、堆活”"
+      },
+      {
+        "from": "无限对话",
+        "to": "无限堆活",
+        "type": "unmistakable-asr-error",
+        "evidence": "用户听辨确认：是，按“冗余、堆活”"
+      }
+    ],
+    "humanListeningPerformed": false,
+    "minimumGlobalPrecision": 0.99,
+    "minimumGlobalCoverage": 0.99
+  },
+  "compliance": {
+    "status": "passed",
+    "meaning": "passed 只表明字幕遵从所绑定识别及已记录校正，机器文本对照不等于人耳确认。"
+  },
+  "unresolved": []
+}

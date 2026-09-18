@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20260917-ai-efficiency-sharing-v8-r1-with-sfx",
+  "videoId": "AI_EFFICIENCY_SHARING_20260917",
+  "title": "员工使用AI与增效分配",
+  "productionState": "blocked",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "userPreviewApproved": false
+  },
+  "inputs": {
+    "source": "edit/20260917_ai_efficiency_sharing/01_素材投放区/01_口播原片/copy_A5DE456A-4712-4A6D-8425-FFB1EE24D2C9.MOV",
+    "transcript": "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.actual.cleaned.v1.json",
+    "bilingualCaptions": "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.actual.bilingual.v1.json",
+    "captions": "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.actual.bilingual.v1.json",
+    "spokenSourcePolicy": "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.spoken-source-policy.v1.json",
+    "visualPlan": "edit/20260917_ai_efficiency_sharing/06_剪辑工程/本期视听安排.v1.json",
+    "sfxCueSheet": "edit/20260917_ai_efficiency_sharing/06_剪辑工程/音效安排.v1.json",
+    "sfxManifest": "assets/sfx/koubo-sfx-v8/manifest.json",
+    "timingRebind": "edit/20260917_ai_efficiency_sharing/06_剪辑工程/postshoot-edit-plan.v1.json"
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/employee-ai-efficiency-v8-r1/index.tsx",
+    "publicDir": "remotion/public-employee-ai-efficiency-v8-r1",
+    "compositionWithSfx": "EmployeeAIEfficiencyV8-Preview-WithSfx",
+    "compositionWithoutSfx": "EmployeeAIEfficiencyV8-Preview-NoSfx",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "durationSeconds": 41.06666666666667
+  },
+  "preview": {
+    "enabled": true,
+    "output": "edit/20260917_ai_efficiency_sharing/07_预览与质检/员工AI增效分配_代表预览_有附加音效_v1.mp4",
+    "ranges": [
+      {
+        "start": 4.2,
+        "end": 20.2,
+        "purpose": "钩子、真人、AI情景",
+        "startFrame": 126,
+        "endFrame": 606,
+        "outputStartFrame": 0,
+        "durationInFrames": 480
+      },
+      {
+        "start": 46,
+        "end": 49.4,
+        "purpose": "机制判断",
+        "startFrame": 1380,
+        "endFrame": 1482,
+        "outputStartFrame": 480,
+        "durationInFrames": 102
+      },
+      {
+        "start": 81.2,
+        "end": 85.5,
+        "purpose": "分配主问题",
+        "startFrame": 2436,
+        "endFrame": 2565,
+        "outputStartFrame": 582,
+        "durationInFrames": 129
+      },
+      {
+        "start": 107.2,
+        "end": 119.4,
+        "purpose": "工时余量、反哺团队纸艺",
+        "startFrame": 3216,
+        "endFrame": 3582,
+        "outputStartFrame": 711,
+        "durationInFrames": 366
+      },
+      {
+        "start": 126.467,
+        "end": 131.634,
+        "purpose": "共同流程纸艺终态",
+        "startFrame": 3794,
+        "endFrame": 3949,
+        "outputStartFrame": 1077,
+        "durationInFrames": 155
+      }
+    ],
+    "renderWithoutSfxComparison": true
+  },
+  "formal": {
+    "enabled": false,
+    "rawOutput": null,
+    "blockedReason": "先确认代表预览，并满足当前生产入口；未授权跳过。"
+  },
+  "finalReview": {
+    "fullWatchConfirmed": false,
+    "reviewOutcome": "pending"
+  },
+  "knowledgeContext": {
+    "taskId": "task-20260918T020544Z-31f85b17",
+    "contextPath": "task-20260918T020544Z-31f85b17/context.json"
+  },
+  "productionGate": {
+    "schema": "director-production-entry-binding/v2",
+    "revisionId": "ai-efficiency-sharing-v8-r1",
+    "state": "blocked-awaiting-native-v2-entry",
+    "directorContract": null,
+    "formalEnabled": false,
+    "userPreviewApproved": false
+  },
+  "blockers": [
+    "本期已完成v2导演交接；当前预览入口仍要求旧生产合同与独立签名，尚无本期可用授权适配",
+    "预览未生成，用户尚未观看；正式渲染保持关闭"
+  ],
+  "publishAuthorized": false
+}
