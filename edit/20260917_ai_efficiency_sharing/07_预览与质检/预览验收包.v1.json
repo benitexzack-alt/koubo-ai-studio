@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "employee-ai-efficiency-preview-review/v1",
+  "status": "ready-for-user-review",
+  "createdAt": "2026-09-18T03:20:26.029392+00:00",
+  "videoVersions": {
+    "director": "9.1.0",
+    "production": "V8"
+  },
+  "files": [
+    {
+      "label": "有附加音效",
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/员工AI增效分配_代表预览_有附加音效_响度统一_v2.mp4",
+      "sha256": "710c22554c9e8e82412f8733b29b10c32136a106ef094f4a860a8cdaaed1ed4f",
+      "width": 1920,
+      "height": 1080,
+      "frames": "1232",
+      "fps": "30/1",
+      "videoDuration": "41.066667",
+      "audioDuration": "41.066000",
+      "bytes": 58808780
+    },
+    {
+      "label": "仅原声",
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/员工AI增效分配_代表预览_仅原声_响度统一_v2.mp4",
+      "sha256": "4df64b497ed523e10a800eb4e65f204476012b206488d4faae278ea04adfd4f7",
+      "width": 1920,
+      "height": 1080,
+      "frames": "1232",
+      "fps": "30/1",
+      "videoDuration": "41.066667",
+      "audioDuration": "41.066000",
+      "bytes": 58795668
+    }
+  ],
+  "renderReceipts": [
+    "edit/20260917_ai_efficiency_sharing/07_预览与质检/.员工AI增效分配_代表预览_仅原声_v1.mp4.production-receipt.dc3145e9-309a-458f-ab0f-851e69133229.json",
+    "edit/20260917_ai_efficiency_sharing/07_预览与质检/.员工AI增效分配_代表预览_有附加音效_v1.mp4.production-receipt.01ba1956-e90a-43c9-b048-c9c95074a22d.json"
+  ],
+  "checked": {
+    "fullDecodePassed": true,
+    "noBlackIntervalsOver150ms": true,
+    "videoBitstreamIdenticalBetweenAB": true,
+    "videoUnchangedByMastering": true,
+    "sampledVoiceTimingOffsetsMs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "voiceTimingAligned": true,
+    "sourceVoiceIdentityBeforeMastering": [
+      0.997234186618394,
+      0.9984643775753103,
+      0.9978906331337495,
+      0.9974525269936412,
+      0.9999793113489599
+    ],
+    "loudnessLufs": [
+      "-16.04",
+      "-16.03"
+    ],
+    "truePeaksDbtp": [
+      "-2.20",
+      "-2.20"
+    ]
+  },
+  "visualReview": {
+    "reviewMethod": "实际预览24张抽帧联系表及纸艺最后一帧",
+    "faceNotCoveredAtReviewedFrames": true,
+    "paperTextNotCoveredAtReviewedFrames": true,
+    "P04FinalConnectionVisible": true,
+    "allFramesManuallyWatched": false
+  },
+  "audioMetricLimits": {
+    "finalWaveformCosineHeuristicMinimum": 0.9693148082806824,
+    "heuristicThreshold": 0.97,
+    "heuristicPassed": false,
+    "explanation": "响度处理后最后一窗相关值0.9693略低于试设0.97，不能将其记为通过。五窗时间偏移均为0采样；响度处理前各窗与原声相关均高于0.997。动态响度会改变振幅包络，该相关度不足以单独判断内容改动或听感；不再凭此重修素材，保留用户试听验收。"
+  },
+  "userPreviewApproved": false,
+  "userAudibilityConfirmed": false,
+  "fullWatchConfirmed": false,
+  "formalRendered": false,
+  "publishAuthorized": false
+}
