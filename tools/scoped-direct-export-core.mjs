@@ -7,6 +7,10 @@ import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {assertNoRetiredGeneratedStyle, RETIRED_GENERATED_STYLE_POLICY} from './generated-style-policy.mjs';
 import {
+  assertEmployeeAIEfficiencyPreview,
+  isEmployeeAIEfficiencyPreview,
+} from '../edit/20260917_ai_efficiency_sharing/00_工程控制/preview-adapter.v1.mjs';
+import {
   collectProductionBoundFilesV2,
   computeProductionCompositionBindingV2,
   computeProductionJobSnapshotSha256V2,
@@ -14,6 +18,10 @@ import {
 } from '../skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs';
 
 export const SCOPED_DIRECT_EXPORT_MANIFEST_SHA256 = 'ba74d65e7bd59446718171aa38de6b0799092dbedb2180abd6c385587f28653e';
+export const EMPLOYEE_AI_PREVIEW_PINS = Object.freeze({
+  'with-sfx': '201c0a97c196a3d11580387d880e58e4d08f936c5d8305ca9229ba25c31a4fd5',
+  'no-sfx': '354cdaa1fd1e485edefbfaa4b455214ae463288502eadb8ae80038bd6884837e',
+});
 export const SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL_MANIFEST_SHA256 = 'ae6f7c5e2064a61035cd30df8269c1ff65b2fc81d8208c8bd5104b9e149df3fc';
 export const SCOPED_PRESHOOT_ARTIFACTS = Object.freeze(Object.fromEntries(Object.entries({
   preproductionRequest: 'director-preproduction-request.v1.json',
@@ -230,7 +238,7 @@ function validateSchema(value, schema, at = '$') {
   }
 }
 
-export const isScopedDirectExportJob = (job) => job?.productionGate?.route === SCOPED_DIRECT_EXPORT.route ||
+export const isScopedDirectExportJob = (job) => isEmployeeAIEfficiencyPreview(job) || job?.productionGate?.route === SCOPED_DIRECT_EXPORT.route ||
   job?.productionGate?.state === SCOPED_DIRECT_EXPORT.state || job?.productionGate?.scopedDirectExport != null;
 
 function inside(root, value, mustExist = true) {
@@ -296,6 +304,9 @@ function userText(line) {
 }
 
 export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = null, command = 'formal'}) {
+  if (isEmployeeAIEfficiencyPreview(job)) {
+    return assertEmployeeAIEfficiencyPreview({projectRoot, job, jobPath, command, pins: EMPLOYEE_AI_PREVIEW_PINS});
+  }
   const root = resolve(projectRoot);
   const suppliedRelativeJob = jobPath == null ? null : (isAbsolute(jobPath) ? relative(root, jobPath).split(sep).join('/') : jobPath);
   const profile = resolveScopedDirectExportProfile({job, jobPath: suppliedRelativeJob});

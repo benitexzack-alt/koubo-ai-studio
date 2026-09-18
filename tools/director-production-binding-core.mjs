@@ -273,6 +273,10 @@ export function assertDirectorProductionBinding({
   const scoped = isScopedDirectExportJob(job)
     ? assertScopedDirectExport({projectRoot, job, command})
     : null;
+  // 本期经用户确认的原生 v2 预览适配；正式命令由适配器继续阻断。
+  if (scoped?.route === 'employee-ai-efficiency-scoped-preview') {
+    return scoped.directorBinding;
+  }
   const effectiveDate = normalizeDate(profile.effectiveFrom);
   const jobDate = parseJobDate(job.jobId);
   if (jobDate && jobDate < effectiveDate) {

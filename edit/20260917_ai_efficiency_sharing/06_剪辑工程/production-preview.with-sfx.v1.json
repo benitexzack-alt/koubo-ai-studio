@@ -3,14 +3,15 @@
   "jobId": "20260917-ai-efficiency-sharing-v8-r1-with-sfx",
   "videoId": "AI_EFFICIENCY_SHARING_20260917",
   "title": "员工使用AI与增效分配",
-  "productionState": "blocked",
+  "productionState": "ready-for-candidate-preview",
   "productionProfile": {
     "id": "v8-semantic-continuity-sfx",
     "version": "V8"
   },
   "experiment": {
     "id": "v8-semantic-continuity-sfx",
-    "userPreviewApproved": false
+    "userPreviewApproved": false,
+    "status": "candidate-preview-required"
   },
   "inputs": {
     "source": "edit/20260917_ai_efficiency_sharing/01_素材投放区/01_口播原片/copy_A5DE456A-4712-4A6D-8425-FFB1EE24D2C9.MOV",
@@ -21,7 +22,49 @@
     "visualPlan": "edit/20260917_ai_efficiency_sharing/06_剪辑工程/本期视听安排.v1.json",
     "sfxCueSheet": "edit/20260917_ai_efficiency_sharing/06_剪辑工程/音效安排.v1.json",
     "sfxManifest": "assets/sfx/koubo-sfx-v8/manifest.json",
-    "timingRebind": "edit/20260917_ai_efficiency_sharing/06_剪辑工程/postshoot-edit-plan.v1.json"
+    "timingRebind": "edit/20260917_ai_efficiency_sharing/06_剪辑工程/postshoot-edit-plan.v1.json",
+    "fingerprintPaths": [
+      "edit/20260917_ai_efficiency_sharing/01_素材投放区/01_口播原片/copy_A5DE456A-4712-4A6D-8425-FFB1EE24D2C9.MOV",
+      "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.actual.cleaned.v1.json",
+      "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.actual.bilingual.v1.json",
+      "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.spoken-source-policy.v1.json",
+      "edit/20260917_ai_efficiency_sharing/06_剪辑工程/本期视听安排.v1.json",
+      "edit/20260917_ai_efficiency_sharing/06_剪辑工程/音效安排.v1.json",
+      "assets/sfx/koubo-sfx-v8/manifest.json",
+      "edit/20260917_ai_efficiency_sharing/06_剪辑工程/postshoot-edit-plan.v1.json",
+      "edit/20260917_ai_efficiency_sharing/03_导演拆解/director-cues.v2.json",
+      "edit/20260917_ai_efficiency_sharing/00_工程控制/用户剪辑授权.v1.json",
+      "edit/20260917_ai_efficiency_sharing/03_导演拆解/edit-release-handoff-r1/director-cues-v2-handoff.v1.json",
+      "edit/20260917_ai_efficiency_sharing/03_导演拆解/edit-release-handoff-r1/director-cues-v2-handoff-validation-receipt.v1.json",
+      "edit/20260917_ai_efficiency_sharing/01_素材投放区/03_AI情景视频/视频.mp4",
+      "edit/20260917_ai_efficiency_sharing/01_素材投放区/03_AI情景视频/视频_2.mp4",
+      "edit/20260917_ai_efficiency_sharing/01_素材投放区/04_纸艺视频/视频_4.mp4",
+      "edit/20260917_ai_efficiency_sharing/01_素材投放区/04_纸艺视频/视频_2.mp4",
+      "edit/20260917_ai_efficiency_sharing/01_素材投放区/04_纸艺视频/视频.mp4",
+      "edit/20260917_ai_efficiency_sharing/01_素材投放区/04_纸艺视频/视频_3.mp4",
+      "tools/scoped-direct-export-core.mjs",
+      "tools/director-production-binding-core.mjs",
+      "tools/director-skill-lock-core.mjs",
+      "tools/check-spoken-source-policy.mjs",
+      "tools/run-v72-production.mjs",
+      "tools/validate-production-command-gate.mjs",
+      "tools/validate-active-production-profile.mjs",
+      "tools/validate-visual-plan.mjs",
+      "skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs",
+      "workflow/active-director-profile.v1.json",
+      "workflow/active-production-profile.v1.json",
+      "edit/20260917_ai_efficiency_sharing/00_工程控制/preview-adapter.v1.mjs",
+      "edit/20260917_ai_efficiency_sharing/00_工程控制/build-preview-binding.v1.mjs",
+      "edit/20260917_ai_efficiency_sharing/00_工程控制/本期渲染批准.v1.json",
+      "edit/20260917_ai_efficiency_sharing/00_工程控制/本期渲染批准.user.jsonl",
+      "edit/20260917_ai_efficiency_sharing/05_实录与字幕/听辨确认.v1.json",
+      "edit/20260917_ai_efficiency_sharing/06_剪辑工程/shotcraft-selection.v2.json",
+      "edit/20260917_ai_efficiency_sharing/06_剪辑工程/shotcraft-auto-match-request.v1.json",
+      "edit/20260917_ai_efficiency_sharing/06_剪辑工程/shotcraft-auto-match-receipt.v2.json",
+      "edit/20260917_ai_efficiency_sharing/07_预览与质检/素材核验/media-probes.v1.json",
+      "edit/20260917_ai_efficiency_sharing/07_预览与质检/字幕结构检查.v1.json",
+      "edit/20260917_ai_efficiency_sharing/00_工程控制/preview-manifest.with-sfx.v1.json"
+    ]
   },
   "remotion": {
     "root": "remotion",
@@ -101,15 +144,49 @@
   },
   "productionGate": {
     "schema": "director-production-entry-binding/v2",
+    "route": "employee-ai-efficiency-scoped-preview",
+    "state": "scoped-preview-authorized",
     "revisionId": "ai-efficiency-sharing-v8-r1",
-    "state": "blocked-awaiting-native-v2-entry",
-    "directorContract": null,
     "formalEnabled": false,
-    "userPreviewApproved": false
+    "userPreviewApproved": false,
+    "scopedDirectExport": {
+      "path": "edit/20260917_ai_efficiency_sharing/00_工程控制/preview-manifest.with-sfx.v1.json",
+      "sha256": "201c0a97c196a3d11580387d880e58e4d08f936c5d8305ca9229ba25c31a4fd5"
+    }
   },
   "blockers": [
-    "本期已完成v2导演交接；当前预览入口仍要求旧生产合同与独立签名，尚无本期可用授权适配",
-    "预览未生成，用户尚未观看；正式渲染保持关闭"
+    "本期预览待用户观看，正式渲染保持关闭"
   ],
-  "publishAuthorized": false
+  "publishAuthorized": false,
+  "director": {
+    "required": true,
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0",
+    "taskId": "task-20260917T164028Z-f297dcc8",
+    "phase": "post-shoot",
+    "paperRequired": true,
+    "fallback": "blocked",
+    "artifacts": {
+      "cues": {
+        "path": "edit/20260917_ai_efficiency_sharing/03_导演拆解/director-cues.v2.json",
+        "sha256": "4e629275521936c518824bfab2e80e667607e495149f1961aad49ae8124d3705"
+      },
+      "approval": {
+        "path": "edit/20260917_ai_efficiency_sharing/00_工程控制/用户剪辑授权.v1.json",
+        "sha256": "e76079fdfbbb9d73f6228cd1f1394538376db2f0904c23519fe706b5a2147599"
+      },
+      "handoff": {
+        "path": "edit/20260917_ai_efficiency_sharing/03_导演拆解/edit-release-handoff-r1/director-cues-v2-handoff.v1.json",
+        "sha256": "bc4e88d5f4338385df8b13f2c4405f3f6c20ac44e2fe8167ab3005adacb421fd"
+      },
+      "validation": {
+        "path": "edit/20260917_ai_efficiency_sharing/03_导演拆解/edit-release-handoff-r1/director-cues-v2-handoff-validation-receipt.v1.json",
+        "sha256": "2c8166100ad9b3ca0f9ae7dbf0dd6e5031bb3de4349b743697d0f4ce7483c6b1"
+      },
+      "postshoot": {
+        "path": "edit/20260917_ai_efficiency_sharing/06_剪辑工程/postshoot-edit-plan.v1.json",
+        "sha256": "ea4a48074011ee35749554e1a927339afec4a59e486d2eb067db92627d760c8f"
+      }
+    }
+  }
 }
