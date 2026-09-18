@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "20260918-ai-efficiency-sharing-v8-r1",
+  "videoId": "AI_EFFICIENCY_SHARING_20260917",
+  "status": "ready-for-user-review",
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "inputs": {
+    "transcript": "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.actual.cleaned.v1.json",
+    "bilingualCaptions": "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.actual.bilingual.v1.json",
+    "spokenSourcePolicy": "edit/20260917_ai_efficiency_sharing/05_实录与字幕/employee-ai-efficiency.spoken-source-policy.v1.json"
+  },
+  "production": {
+    "formalOutput": "edit/20260917_ai_efficiency_sharing/08_正式成片/员工AI增效分配_V8_1080P_正式候选_v1.mp4",
+    "previewOutput": "edit/20260917_ai_efficiency_sharing/07_预览与质检/员工AI增效分配_代表预览_有附加音效_响度统一_v2.mp4",
+    "directorVersion": "9.1.0",
+    "productionVersion": "V8",
+    "durationInFrames": 4669,
+    "fps": 30,
+    "visualDesignChanged": false
+  },
+  "productionGate": {
+    "schema": "release-production-gate/v2",
+    "job": {
+      "path": "edit/20260917_ai_efficiency_sharing/06_剪辑工程/production-formal.with-sfx.v1.json",
+      "sha256": "b948bad5de9d97feeab189b55605367cb3212792abbd901fca27d88433bb7204",
+      "bytes": 10193
+    },
+    "formalOutput": {
+      "path": "edit/20260917_ai_efficiency_sharing/08_正式成片/员工AI增效分配_V8_1080P_正式候选_v1.mp4",
+      "sha256": "3873655499132c44569d0eeb08a3ec80999c3aeb4d3bc501664d60133c1743c8",
+      "bytes": 306161625
+    },
+    "controlledRenderReceipt": {
+      "path": "edit/20260917_ai_efficiency_sharing/08_正式成片/.员工AI增效分配_正式渲染原始_v1.mp4.production-receipt.0d9c7a02-6fa3-43d7-99f9-378df8b15dff.json",
+      "sha256": "69fc9689745f4617023db00e3715c4cd0e765a975daa2ac2363f299697bc03c9",
+      "bytes": 1672
+    },
+    "renderPreflight": {
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/正式渲染前置回执.v1.json",
+      "sha256": "f718bd18f81e2dfff7e315553756902879e0620b84842b86eb29af672d664959",
+      "bytes": 9213
+    },
+    "audioMaster": {
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/formal-v1/音频母版回执.v1.json",
+      "sha256": "b5a5bf4a4900abf5f19bb82c9213ebcef2edc09ff36e5366db514d110b7b3b87",
+      "bytes": 2116
+    },
+    "technicalQa": {
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/formal-v1/技术质检.v1.json",
+      "sha256": "11a6d580e855898d1931ede2abb27f50b5e4364aa3694aa423fdb08d13d1cabb",
+      "bytes": 440
+    },
+    "riskFrames": {
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/formal-v1/风险帧回执.v1.json",
+      "sha256": "c3d0050e1a779cc296a2d0c7d32f4f0da0ee0ffa304c1f980521a805241aab06",
+      "bytes": 12794
+    },
+    "visualReview": {
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/formal-v1/视觉抽查.v1.json",
+      "sha256": "07b66f7c5e79026d9255121fd4db93f20b8d74967e1a09ff3c3deab9c89b512c",
+      "bytes": 797
+    },
+    "screenshotReceipt": {
+      "path": "edit/20260917_ai_efficiency_sharing/09_发布包/真人截图来源.v1.json",
+      "sha256": "aa2492e8d3ed913f16c30f9a8cce47cf770c99874f4a32d1b8a7423626039da5",
+      "bytes": 726
+    },
+    "copyReview": {
+      "path": "edit/20260917_ai_efficiency_sharing/09_发布包/发布文字双Skill审稿.v1.json",
+      "sha256": "de55dc4b1d37d4894ef36d116b8768fe944056596374a4ee7a8b94f4e420d3c5",
+      "bytes": 3070
+    },
+    "userApproval": {
+      "path": "edit/20260917_ai_efficiency_sharing/00_工程控制/正式成片批准.v1.json",
+      "sha256": "1b25eabebf9755d66ea17d10ed468775584fb837b58b50c009b40f5cc365f4b8",
+      "bytes": 2084
+    }
+  },
+  "deliveryPackage": {
+    "status": "ready-for-delivery",
+    "cover": {
+      "aspectRatio": "4:3",
+      "dimensions": "1440×1080",
+      "recommendedFrame": "edit/20260917_ai_efficiency_sharing/09_发布包/本期成片真人截图.png",
+      "sourceTimeSeconds": 70,
+      "prompt": "edit/20260917_ai_efficiency_sharing/09_发布包/4比3封面提示词.md",
+      "template": "templates/10-超哥AI创业记_3比4系列封面提示词母版.md",
+      "aspectRatioAuthority": {
+        "path": "edit/20260917_ai_efficiency_sharing/00_工程控制/正式成片批准.v1.json",
+        "sha256": "1b25eabebf9755d66ea17d10ed468775584fb837b58b50c009b40f5cc365f4b8",
+        "bytes": 2084
+      }
+    },
+    "titles": {
+      "primary": "AI省下的时间，该怎么分？",
+      "alternatives": [
+        "用AI干得更快，为什么还要藏着？",
+        "企业推AI，先把增效分配说清楚"
+      ]
+    },
+    "douyin": {
+      "publishCopy": "用AI把活干快了，接下来是继续加项目，还是让团队也得到回报？\n\n我建议企业把省下的工时怎么用、增效收益怎么分先说清楚，再把个人的用法沉淀成团队流程。",
+      "topics": [
+        "企业AI落地",
+        "AI办公",
+        "团队管理",
+        "工作效率",
+        "超哥AI创业记"
+      ],
+      "disclosure": "片中部分情景与纸艺画面由AI生成，用于辅助说明。"
+    },
+    "copyReview": "edit/20260917_ai_efficiency_sharing/09_发布包/发布文字双Skill审稿.v1.json"
+  },
+  "userReview": {
+    "previewApproved": true,
+    "fullWatchConfirmed": false,
+    "formalVersionApproved": false
+  },
+  "publish": {
+    "status": "not-published",
+    "authorized": false,
+    "externalUploadPerformed": false,
+    "advertisingPerformed": false
+  },
+  "contentReview": {
+    "status": "pending-fact-review",
+    "unresolvedDirectorFactChecks": 16,
+    "unresolvedTerm": "Z6",
+    "note": "用户授权按确认版本输出；技术和包装校验不等于事实要求已通过，也不授权发布。"
+  },
+  "assetManifest": [
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/08_正式成片/员工AI增效分配_V8_1080P_正式候选_v1.mp4",
+      "sha256": "3873655499132c44569d0eeb08a3ec80999c3aeb4d3bc501664d60133c1743c8",
+      "bytes": 306161625
+    },
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/09_发布包/本期成片真人截图.png",
+      "sha256": "f3eb4a024c24276d9dd502cba0db288325ecfa73b53b5e4ec22f2005f3d10f70",
+      "bytes": 1922894
+    },
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/09_发布包/4比3封面提示词.md",
+      "sha256": "aa15c486e64d7ee5e04f20dc0e90fe99c713ec35beb9caa6eccc16f319b5a65b",
+      "bytes": 3130
+    },
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/09_发布包/标题与发布文案.md",
+      "sha256": "419e4470efda562a1747f394b0ebfc3720a5477d5520cf9c2630789ee61dd992",
+      "bytes": 605
+    },
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/09_发布包/发布文字事实锁.md",
+      "sha256": "369551a991a8d730c11ee34f8addc6e338a74d1ce80590fdf0910b18ca20cc39",
+      "bytes": 2095
+    },
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/09_发布包/发布文字双Skill审稿.v1.json",
+      "sha256": "de55dc4b1d37d4894ef36d116b8768fe944056596374a4ee7a8b94f4e420d3c5",
+      "bytes": 3070
+    },
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/09_发布包/发布文字机器校验.v1.json",
+      "sha256": "cc4e9dbe0137c8de299899cc1e054958aede86db40a498357973216408af991b",
+      "bytes": 414
+    },
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/09_发布包/真人截图来源.v1.json",
+      "sha256": "aa2492e8d3ed913f16c30f9a8cce47cf770c99874f4a32d1b8a7423626039da5",
+      "bytes": 726
+    },
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/formal-v1/技术质检.v1.json",
+      "sha256": "11a6d580e855898d1931ede2abb27f50b5e4364aa3694aa423fdb08d13d1cabb",
+      "bytes": 440
+    },
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/formal-v1/音频母版回执.v1.json",
+      "sha256": "b5a5bf4a4900abf5f19bb82c9213ebcef2edc09ff36e5366db514d110b7b3b87",
+      "bytes": 2116
+    },
+    {
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/formal-v1/视觉抽查.v1.json",
+      "sha256": "07b66f7c5e79026d9255121fd4db93f20b8d74967e1a09ff3c3deab9c89b512c",
+      "bytes": 797
+    }
+  ]
+}

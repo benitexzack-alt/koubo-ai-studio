@@ -12,6 +12,7 @@ import {fileURLToPath} from 'node:url';
 import {assertNoRetiredGeneratedStyle} from './generated-style-policy.mjs';
 import {assertProductionEntryPreflightV2} from '../skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs';
 import {assertScopedDirectExportRelease} from './scoped-direct-export-core.mjs';
+import {validateEmployeeFormalRelease} from '../edit/20260917_ai_efficiency_sharing/00_工程控制/release-adapter.v1.mjs';
 
 export const RELEASE_PRODUCTION_GATE_SCHEMA = 'release-production-gate/v2';
 export const RELEASE_RISK_FRAME_RECEIPT_SCHEMA = 'release-risk-frame-receipt/v2';
@@ -269,6 +270,9 @@ export const validateReleaseProductionGateV2 = ({
       command: 'release-validation',
       entrypoint: 'tools/validate-release.mjs',
     });
+    if (preflight.route === 'employee-ai-efficiency-scoped-formal') {
+      return validateEmployeeFormalRelease({projectRoot: canonicalRoot, release: parsedRelease, preflight});
+    }
     const scopedDirectExport = assertScopedDirectExportRelease({release: parsedRelease, preflight});
     if (
       gate.jobSnapshotSha256 !== preflight.jobSnapshotSha256 ||

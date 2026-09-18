@@ -41,6 +41,11 @@ try {
   process.exit(1);
 }
 
+if (releaseProductionGate.route === 'employee-ai-efficiency-scoped-formal') {
+  console.log(JSON.stringify(releaseProductionGate, null, 2));
+  process.exit(0);
+}
+
 const baseline = readJson(baselinePath);
 const activeProfile = readJson(path.resolve(projectRoot, 'workflow/active-production-profile.v1.json'));
 const errors = [];

@@ -1,0 +1,41 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+import {JOB,MANIFEST,CONTROL} from './formal-adapter.v1.mjs';
+const source=path.resolve(import.meta.dirname,'../../..');
+const root=fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(),'koubo-formal-check-')));
+const read=p=>JSON.parse(fs.readFileSync(path.join(root,p)));
+const write=(p,j)=>fs.writeFileSync(path.join(root,p),JSON.stringify(j,null,2)+'\n');
+const hash=p=>crypto.createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex');
+const copied=new Set();
+const copy=p=>{if(copied.has(p))return;copied.add(p);fs.mkdirSync(path.dirname(path.join(root,p)),{recursive:true});
+  fs.copyFileSync(path.join(source,p),path.join(root,p),fs.constants.COPYFILE_FICLONE);
+  if(p.endsWith('.mjs'))for(const m of fs.readFileSync(path.join(source,p),'utf8').matchAll(/\bfrom\s+['"]([^'"]+)['"]/gu))
+    if(m[1].startsWith('.'))copy(path.relative(source,path.resolve(source,path.dirname(p),m[1])));};
+try{
+  const original=JSON.parse(fs.readFileSync(path.join(source,MANIFEST)));
+  for(const p of [...original.binding.boundFiles.map(x=>x.path),JOB,MANIFEST,'workflow/director-production-freeze-registry.v2.json'])copy(p);
+  const registry=read('workflow/director-production-freeze-registry.v2.json');copy(registry.controlledRemotionCli.allowedRealpath);
+  const link=path.join(root,registry.controlledRemotionCli.linkPath);fs.mkdirSync(path.dirname(link),{recursive:true});
+  fs.symlinkSync(path.relative(path.dirname(link),path.join(root,registry.controlledRemotionCli.allowedRealpath)),link);
+  const {assertEmployeeAIEfficiencyFormal,collectEmployeeFormalBindings}=await import(pathToFileURL(path.join(root,CONTROL,'formal-adapter.v1.mjs')));
+  let job=read(JOB),manifest=read(MANIFEST),pin=hash(MANIFEST),cases=0;
+  const refresh=()=>{write(JOB,job);manifest.binding=collectEmployeeFormalBindings({projectRoot:root,job});write(MANIFEST,manifest);
+    pin=hash(MANIFEST);job.productionGate.scopedDirectExport.sha256=pin;write(JOB,job);};
+  const check=(command='direct-remotion-render')=>assertEmployeeAIEfficiencyFormal({projectRoot:root,job,jobPath:JOB,command,pin});
+  refresh();assert.equal(check().userPreviewApproved,true);cases++;
+  assert.throws(()=>check('direct-remotion-preview'),{code:'EAF_COMMAND'});cases++;
+  const base=structuredClone(job);
+  job.videoId='其他期';assert.throws(()=>check(),{code:'EAF_SCOPE'});cases++;job=structuredClone(base);
+  job.finalReview.fullWatchConfirmed=true;write(JOB,job);assert.throws(()=>check(),{code:'EAF_STATE'});cases++;job=structuredClone(base);write(JOB,job);
+  const captions=job.inputs.bilingualCaptions,bytes=fs.readFileSync(path.join(root,captions));
+  fs.appendFileSync(path.join(root,captions),' ');assert.throws(()=>check(),{code:'EAF_BINDING_DRIFT'});cases++;fs.writeFileSync(path.join(root,captions),bytes);
+  job.formal.rawOutput='outputs/其他期.mp4';refresh();assert.throws(()=>check(),{code:'EAF_COMPOSITION'});cases++;job=structuredClone(base);refresh();
+  const a=manifest.authorization.path,approval=read(a),ep=approval.evidence.path,event=read(ep);event.payload.role='assistant';write(ep,event);
+  approval.evidence.sha256=hash(ep);write(a,approval);manifest.authorization.sha256=hash(a);refresh();
+  assert.throws(()=>check(),{code:'EAF_AUTHORITY'});cases++;
+  console.log(JSON.stringify({ok:true,cases,rendererInvoked:false}));
+}finally{fs.rmSync(root,{recursive:true,force:true});}

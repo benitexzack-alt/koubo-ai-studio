@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {assertProductionEntryPreflightV2} from '../../../skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs';
+import {validateEmployeeFormalRelease} from './release-adapter.v1.mjs';
+import {JOB,BASE} from './formal-adapter.v1.mjs';
+const root=process.cwd();
+const job=JSON.parse(fs.readFileSync(JOB));
+const preflight=assertProductionEntryPreflightV2({projectRoot:root,jobPath:JOB,job,command:'release-validation',entrypoint:'tools/validate-release.mjs'});
+const release=JSON.parse(fs.readFileSync(`${BASE}/09_发布包/发布记录.v1.json`));
+const check=r=>validateEmployeeFormalRelease({projectRoot:root,release:r,preflight});
+assert.equal(check(release).ok,true);
+let r=structuredClone(release);r.status='verified';assert.throws(()=>check(r),{code:'EAF_RELEASE'});
+r=structuredClone(release);r.publish.authorized=true;assert.throws(()=>check(r),{code:'EAF_RELEASE'});
+r=structuredClone(release);r.deliveryPackage.cover.aspectRatio='3:4';assert.throws(()=>check(r),{code:'EAF_RELEASE'});
+r=structuredClone(release);r.productionGate.formalOutput.sha256='0'.repeat(64);assert.throws(()=>check(r),{code:'EAF_RELEASE'});
+r=structuredClone(release);r.deliveryPackage.cover.sourceTimeSeconds=69;assert.throws(()=>check(r),{code:'EAF_RELEASE'});
+console.log(JSON.stringify({ok:true,cases:6,scope:'本期真实成片及终验、发布、画幅、哈希、截图来源拒绝检查'}));

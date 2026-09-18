@@ -605,7 +605,7 @@ export const validateProductionEntryPreflightV2 = ({
         boundFilesSha256: stableJsonSha256ForProductionGateV2(scoped.boundFiles),
         gateClosureSha256: stableJsonSha256ForProductionGateV2(gateClosureFiles), gateClosureFiles,
         compositionBindingSha256: stableJsonSha256ForProductionGateV2(scoped.compositionBinding),
-        userPreviewApproved: false, fullWatchConfirmed: false, publishAuthorized: false,
+        userPreviewApproved: scoped.userPreviewApproved === true, fullWatchConfirmed: false, publishAuthorized: false,
         directorBinding, knowledgeContext,
       };
       return {...evidence, integritySealSha256: stableJsonSha256ForProductionGateV2(evidence)};
