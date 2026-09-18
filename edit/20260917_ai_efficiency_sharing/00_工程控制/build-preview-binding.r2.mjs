@@ -27,6 +27,16 @@ write(ap,{userQuote:'确认返修',evidence:ref(ep),source:{path:rollout,line:ev
   scope:'用户批准已落盘的返修范围，恢复既有语义动效和电子运镜，先出代表预览；保留旧正式候选和原输入。',
   diagnosis:ref(`${BASE}/07_预览与质检/动效与运镜缺失诊断_20260918.md`)});
 const postshoot=read(`${EDIT}/postshoot-edit-plan.v1.json`);
+const fontEvent=fs.readFileSync(rollout,'utf8').split('\n').map((line,index)=>({line,index:index+1})).filter(x=>x.line).find(x=>{
+  const e=JSON.parse(x.line);return e.type==='response_item'&&e.payload?.role==='user'&&e.payload.content?.some(t=>t.text?.startsWith('渲染效果没有问题，现在最主要的就是这个字稍微有点小'));
+});
+if(!fontEvent)throw new Error('未找到字号调整的用户原始反馈');
+const fontEvidence=`${CONTROL}/字号调整反馈.user.r2.jsonl`,fontFeedback=`${CONTROL}/字号调整反馈.r2.json`;
+fs.writeFileSync(path.join(root,fontEvidence),fontEvent.line+'\n');
+write(fontFeedback,{evidence:ref(fontEvidence),source:{path:rollout,line:fontEvent.index},
+  acceptedPreview:{path:`${BASE}/07_预览与质检/员工AI增效分配_返修R2_观看版_有附加音效_v2.mp4`,sha256:'a618c4a4853c51c5666e5150848581300e3002e37c498221a5f60fbee39b482a'},
+  effectsAccepted:true,requestedChange:'放大大标题下的说明、对照和节点文字，按人物与字幕保护区调整尺寸和间距。',
+  fontRevisionAccepted:false,formalEnabled:false,publishAuthorized:false});
 const pins={};
 for(const variant of ['with-sfx','no-sfx']){
   const job=read(`${EDIT}/production-preview.${variant}.v1.json`);
@@ -39,7 +49,7 @@ for(const variant of ['with-sfx','no-sfx']){
   job.remotion.compositionWithSfx='EmployeeAIEfficiencyV8-R2-Preview-WithSfx';
   job.remotion.compositionWithoutSfx='EmployeeAIEfficiencyV8-R2-Preview-NoSfx';
   job.remotion.durationSeconds=runtime.previewDurationInFrames/30;
-  job.preview={enabled:true,output:`${BASE}/07_预览与质检/员工AI增效分配_返修R2_代表预览_${variant==='with-sfx'?'有附加音效':'仅原声'}_v2.mp4`,ranges:runtime.previewRanges,renderWithoutSfxComparison:true};
+  job.preview={enabled:true,output:`${BASE}/07_预览与质检/员工AI增效分配_返修R2_代表预览_${variant==='with-sfx'?'有附加音效':'仅原声'}_v3.mp4`,ranges:runtime.previewRanges,renderWithoutSfxComparison:true};
   job.formal={enabled:false,rawOutput:null,blockedReason:'返修动态预览待用户验收'};
   job.finalReview={fullWatchConfirmed:false,reviewOutcome:'pending'};
   job.knowledgeContext={taskId:'task-20260918T094342Z-3af59d43',contextPath:'task-20260918T094342Z-3af59d43/context.json'};
@@ -50,7 +60,7 @@ for(const variant of ['with-sfx','no-sfx']){
     ...Object.values(job.inputs).filter(x=>typeof x==='string'),...Object.values(job.director.artifacts).map(x=>x.path),
     ...postshoot.insertions.map(x=>x.original.path),...SCOPED_DIRECT_EXPORT_GATE_FILES,
     `${CONTROL}/preview-adapter.r2.mjs`,`${CONTROL}/validate-repair-visual.r2.mjs`,`${CONTROL}/build-preview-binding.r2.mjs`,
-    ap,ep,`${BASE}/05_实录与字幕/听辨确认.v1.json`,`${EDIT}/shotcraft-selection.r2-refined.json`,
+    ap,ep,fontFeedback,fontEvidence,`${BASE}/05_实录与字幕/听辨确认.v1.json`,`${EDIT}/shotcraft-selection.r2-refined.json`,
     `${EDIT}/shotcraft-auto-match-request.r2.json`,`${EDIT}/shotcraft-auto-match-receipt.r2-refined.json`,
     `${EDIT}/组件来源.r2.json`,'remotion/src/employee-ai-efficiency-v8-r1/runtime-plan.v1.json',
     `${BASE}/07_预览与质检/素材核验/media-probes.v1.json`,mp,

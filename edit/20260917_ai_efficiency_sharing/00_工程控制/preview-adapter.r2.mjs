@@ -136,7 +136,7 @@ export function assertEmployeeAIEfficiencyPreview({projectRoot,job,jobPath=null,
     job.remotion.width===1920 && job.remotion.height===1080 && job.remotion.durationSeconds===1314/30 &&
     job.remotion.compositionWithSfx==='EmployeeAIEfficiencyV8-R2-Preview-WithSfx' &&
     job.remotion.compositionWithoutSfx==='EmployeeAIEfficiencyV8-R2-Preview-NoSfx', 'EAP_COMPOSITION','预览构图与入口必须固定为本期工程');
-  const output=`${BASE}/07_预览与质检/员工AI增效分配_返修R2_代表预览_${variant==='with-sfx'?'有附加音效':'仅原声'}_v2.mp4`;
+  const output=`${BASE}/07_预览与质检/员工AI增效分配_返修R2_代表预览_${variant==='with-sfx'?'有附加音效':'仅原声'}_v3.mp4`;
   requireThat(job.preview.output===output && manifest.output===output && job.preview.renderWithoutSfxComparison===true &&
     same(job.preview.ranges,runtime.previewRanges),'EAP_OUTPUT','仅能输出本期同画面双版本预览');
   requireThat(!files.has(output),'EAP_OUTPUT','不得覆盖输入');

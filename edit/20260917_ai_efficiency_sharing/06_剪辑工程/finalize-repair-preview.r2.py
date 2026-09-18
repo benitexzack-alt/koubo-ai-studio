@@ -5,18 +5,18 @@ import subprocess
 import sys
 
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[3]
 BASE = ROOT / 'edit/20260917_ai_efficiency_sharing'
 OUT = BASE / '07_预览与质检'
-QA = OUT / 'repair-r2-v2'
+QA = OUT / 'repair-r2-v3'
 PLAN = json.loads((ROOT / 'remotion/src/employee-ai-efficiency-v8-r2/runtime-plan.v2.json').read_text())
 RATE = 48000
 FRAMES = PLAN['previewDurationInFrames']
 DURATION = FRAMES / 30
 HOST = BASE / '01_素材投放区/01_口播原片/copy_A5DE456A-4712-4A6D-8425-FFB1EE24D2C9.MOV'
-PAIRED = OUT / '员工AI增效分配_返修R2_同画面对照_仅原声_v2.mp4'
+PAIRED = OUT / '员工AI增效分配_返修R2_同画面对照_仅原声_v3.mp4'
 TIMES = [1., 6., 9.5, 13., 17.5, 20., 24., 27., 30., 34.5, 38., 42.]
 
 
@@ -65,7 +65,7 @@ def video_hash(path):
 
 def paths(mode):
     label = '有附加音效' if mode == 'with-sfx' else '仅原声'
-    return OUT / f'员工AI增效分配_返修R2_代表预览_{label}_v2.mp4', OUT / f'员工AI增效分配_返修R2_观看版_{label}_v2.mp4'
+    return OUT / f'员工AI增效分配_返修R2_代表预览_{label}_v3.mp4', OUT / f'员工AI增效分配_返修R2_观看版_{label}_v3.mp4'
 
 
 def pair():
@@ -189,5 +189,35 @@ elif sys.argv[1] == 'frames':
             draw.text((x+12, y+8), f"Preview {row['atSeconds']:.3f}s / source frame {row['sourceFrame']}", fill='white')
         sheet.save(QA / f'contact-{page+1}.jpg', quality=94)
     print(json.dumps({'status': 'frames-extracted', 'count': len(rows)}), flush=True)
+elif sys.argv[1] == 'typography':
+    font_path = ROOT / 'remotion/public-employee-ai-efficiency-v8-r1/fonts/STHeiti-Medium.ttc'
+    rows = []
+    for layer in PLAN['layers']:
+        texts = [('title', layer['title'], 60, 650), ('detail', layer['detail'], 44, 650)]
+        kind = layer['params']['component']
+        width = {'statement': 636, 'comparison': 600, 'process': 616, 'node-map': 302}[kind]
+        size = 42 if kind == 'node-map' else 44
+        texts.extend(('item', text, size, width) for text in layer['items'])
+        if kind == 'node-map':
+            texts.append(('hub', layer['params']['hubLabel'], 40, 210))
+        for role, text, size, width in texts:
+            if not text:
+                continue
+            measured = ImageFont.truetype(str(font_path), size).getlength(text)
+            rows.append({'layer': layer['id'], 'role': role, 'text': text, 'fontSizeBeforeScale': size,
+                'outputFontPixels': size*.8, 'measuredTextWidth': measured, 'availableWidth': width})
+    assert all(row['measuredTextWidth'] <= row['availableWidth'] for row in rows), rows
+    for index in [123, 220, 402, 695, 1240]:
+        before = Image.open(OUT / 'repair-r2-v2/frames' / f'{index:04d}.png')
+        after = Image.open(QA / 'frames' / f'{index:04d}.png')
+        sheet = Image.new('RGB', (768, 2*460), (25,25,25))
+        draw = ImageDraw.Draw(sheet)
+        for i, (label, source) in enumerate([('Before', before), ('After', after)]):
+            draw.text((12, i*460+8), label, fill='white')
+            sheet.paste(source.resize((768,432), Image.Resampling.LANCZOS), (0,i*460+28))
+        sheet.save(QA / f'font-comparison-{index:04d}.jpg', quality=96)
+    write('typography-check.json', {'status': 'font-width-check-passed', 'font': ref(font_path), 'rows': rows,
+        'limitation': '字宽测量与缩小画面对照；主观可读性仍待用户确认。', 'userAccepted': False})
+    print(json.dumps({'status': 'font-width-check-passed', 'textCount': len(rows)}), flush=True)
 else:
-    raise ValueError('audio / pair / qa / frames')
+    raise ValueError('audio / pair / qa / frames / typography')

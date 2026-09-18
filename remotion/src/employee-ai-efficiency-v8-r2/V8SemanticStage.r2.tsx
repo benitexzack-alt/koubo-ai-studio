@@ -85,7 +85,7 @@ const safeStage: React.CSSProperties = {
   position: 'absolute',
   left: 80,
   top: 142,
-  width: 620,
+  width: 660,
   maxHeight: 620,
   color: tones.white,
   fontFamily,
@@ -104,7 +104,7 @@ const StageLabel: React.FC<{children: React.ReactNode; tone?: Tone}> = ({
       alignItems: 'center',
       gap: 9,
       color: tones[tone],
-      fontSize: 20,
+      fontSize: 32,
       lineHeight: 1,
       fontWeight: 950,
       letterSpacing: 0,
@@ -153,9 +153,9 @@ const StageTitle: React.FC<{children: string; tone?: Tone}> = ({
     <div
       style={{
         marginTop: 14,
-        maxWidth: 610,
+        maxWidth: 650,
         color: tones[tone],
-        fontSize: [...children].length > 18 ? 45 : 54,
+        fontSize: [...children].length > 18 ? 52 : 60,
         lineHeight: 1.08,
         fontWeight: 950,
         letterSpacing: 0,
@@ -171,10 +171,10 @@ const StageDetail: React.FC<{children?: string}> = ({children}) =>
     <div
       style={{
         marginTop: 14,
-        maxWidth: 590,
-        color: 'rgba(248,250,253,0.88)',
-        fontSize: 25,
-        lineHeight: 1.28,
+        maxWidth: 650,
+        color: 'rgba(248,250,253,0.98)',
+        fontSize: 44,
+        lineHeight: 1.24,
         fontWeight: 800,
       }}
     >
@@ -195,7 +195,7 @@ const TimedDetail: React.FC<{layer: V8SemanticLayer; frame: number}> = ({layer, 
 const ItemText: React.FC<{layer: V8SemanticLayer; frame: number; index: number; text: string}> = ({layer, frame, index, text}) => {
   const marker=layer.params.marker;
   return marker?.itemIndex===index
-    ? <MarkerUnderline frame={frame-marker.startFrame} fps={30} durationInFrames={marker.durationInFrames} keyword={marker.keyword} after={marker.after} fontSize={36}/>
+    ? <MarkerUnderline frame={frame-marker.startFrame} fps={30} durationInFrames={marker.durationInFrames} keyword={marker.keyword} after={marker.after} fontSize={44}/>
     : <>{text}</>;
 };
 
@@ -287,7 +287,7 @@ export const V8DirectStatement: React.FC<{layer: V8SemanticLayer}> = ({
                   color: index === layer.items.length - 1 ? tones.amber : tones.white,
                   background: 'rgba(4,12,18,0.32)',
                   borderBottom: `2px solid ${index === layer.items.length - 1 ? tones.amber : tones.cyan}`,
-                  fontSize: 34,
+                  fontSize: 44,
                   fontWeight: 900,
                   opacity: itemReveal,
                 }}
@@ -320,13 +320,13 @@ export const V8ComparisonBars: React.FC<{layer: V8SemanticLayer}> = ({
           return (
             <div key={item} style={{opacity: reveal}}>
               <div style={{display: 'flex', alignItems: 'baseline', gap: 10}}>
-                <span style={{color, fontSize: 16, fontWeight: 950}}>0{index + 1}</span>
-                <span style={{fontSize: 32, lineHeight: 1.16, fontWeight: 920}}><ItemText layer={layer} frame={frame} index={index} text={item}/></span>
+                <span style={{color, fontSize: 28, fontWeight: 950}}>0{index + 1}</span>
+                <span style={{fontSize: 44, lineHeight: 1.2, fontWeight: 920}}><ItemText layer={layer} frame={frame} index={index} text={item}/></span>
               </div>
               <div
                 style={{
                   marginTop: 8,
-                  width: 545,
+                  width: 620,
                   height: 6,
                   background: 'rgba(255,255,255,0.12)',
                 }}
@@ -397,20 +397,20 @@ export const V8ProcessRail: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
                   position: 'absolute',
                   left: -42,
                   top: 5,
-                  width: 22,
-                  height: 22,
+                  width: 28,
+                  height: 28,
                   display: 'grid',
                   placeItems: 'center',
                   color: active > 0.7 ? '#061018' : tones.cyan,
                   background: active > 0.7 ? tones.cyan : '#07121A',
                   border: `2px solid ${tones.cyan}`,
-                  fontSize: 10,
+                  fontSize: 20,
                   fontWeight: 950,
                 }}
               >
                 {index + 1}
               </div>
-              <div style={{fontSize: 34, lineHeight: 1.18, fontWeight: 920}}>{item}</div>
+              <div style={{fontSize: 44, lineHeight: 1.2, fontWeight: 920}}>{item}</div>
             </div>
           );
         })}
@@ -432,20 +432,20 @@ export const V8NodeMap: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
       <StageLabel tone="green">{layer.params.label ?? '关系地图'}</StageLabel>
       <StageTitle>{layer.title}</StageTitle>
       <TimedDetail layer={layer} frame={frame} />
-      <div style={{position: 'relative', marginTop: 20, width: 605, height: 330}}>
+      <div style={{position: 'relative', marginTop: 20, width: 650, height: 380}}>
         <svg
-          width="605"
-          height="330"
-          viewBox="0 0 605 330"
+          width="650"
+          height="380"
+          viewBox="0 0 650 380"
           style={{position: 'absolute', inset: 0, overflow: 'visible'}}
         >
           {items.map((_, index) => {
-            const y = 34 + index * 76;
+            const y = 38 + index * 92;
             const branchProgress = itemRevealAt(frame, layer, index);
             return (
               <g key={index}>
                 <path
-                  d={`M 166 164 C 235 164, 225 ${y}, 292 ${y}`}
+                  d={`M 260 164 C 284 164, 284 ${y}, 308 ${y}`}
                   fill="none"
                   stroke={index === items.length - 1 ? tones.green : tones.cyan}
                   strokeWidth="3"
@@ -454,7 +454,7 @@ export const V8NodeMap: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
                   opacity={branchProgress}
                 />
                 <circle
-                  cx="292"
+                  cx="308"
                   cy={y}
                   r={4 + branchProgress * 3}
                   fill={index === items.length - 1 ? tones.green : tones.cyan}
@@ -469,7 +469,7 @@ export const V8NodeMap: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
             position: 'absolute',
             left: 36,
             top: 112,
-            width: 132,
+            width: 224,
             minHeight: 102,
             display: 'grid',
             placeItems: 'center',
@@ -478,7 +478,7 @@ export const V8NodeMap: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
             color: tones.cyan,
             background: 'rgba(4,13,20,0.42)',
             border: `2px solid ${tones.cyan}`,
-            fontSize: 23,
+            fontSize: 40,
             lineHeight: 1.12,
             textAlign: 'center',
             fontWeight: 950,
@@ -495,18 +495,18 @@ export const V8NodeMap: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
               key={item}
               style={{
                 position: 'absolute',
-                left: 304,
-                top: index * 76,
-                width: 286,
-                minHeight: 62,
+                left: 320,
+                top: index * 92,
+                width: 330,
+                minHeight: 76,
                 display: 'flex',
                 alignItems: 'center',
-                padding: '10px 15px',
+                padding: '10px 12px',
                 boxSizing: 'border-box',
                 color: tones.white,
                 background: 'rgba(4,13,20,0.31)',
                 borderLeft: `4px solid ${color}`,
-                fontSize: 28,
+                fontSize: 42,
                 lineHeight: 1.14,
                 fontWeight: 900,
                 opacity: itemProgress,

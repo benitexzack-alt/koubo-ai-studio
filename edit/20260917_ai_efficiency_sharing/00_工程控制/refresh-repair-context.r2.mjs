@@ -13,6 +13,7 @@ const groups={
     `${edit}/shotcraft-selection.r2-refined.json`,`${edit}/shotcraft-auto-match-request.r2.json`,`${edit}/shotcraft-auto-match-receipt.r2-refined.json`,
     'remotion/src/employee-ai-efficiency-v8-r2/index.tsx','remotion/src/employee-ai-efficiency-v8-r2/runtime-plan.v2.json','remotion/src/employee-ai-efficiency-v8-r2/V8SemanticStage.r2.tsx',
     `${control}/preview-adapter.r2.mjs`,`${control}/validate-repair-visual.r2.mjs`,`${control}/返修预览批准.r2.json`,`${control}/返修预览批准.user.r2.jsonl`,
+    `${control}/字号调整反馈.r2.json`,`${control}/字号调整反馈.user.r2.jsonl`,
     `${base}/05_实录与字幕/employee-ai-efficiency.actual.bilingual.v1.json`,`${base}/03_导演拆解/director-cues.v2.json`,
     'tools/scoped-direct-export-core.mjs','tools/director-production-binding-core.mjs'],
 };
