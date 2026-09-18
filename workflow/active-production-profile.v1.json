@@ -7,8 +7,33 @@
   "decision": {
     "authority": "user-explicit",
     "summary": "V8作为本次及以后所有口播视频的制作基准。",
-    "reconfirmedAt": "2026-08-11",
+    "reconfirmedAt": "2026-09-18",
     "supersedesDefaultProfile": "v72"
+  },
+  "minimumReference": {
+    "id": "v8-r2-readable-semantic-motion-baseline",
+    "lockedAt": "2026-09-18",
+    "authority": "user-explicit",
+    "sourcePreview": {
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/员工AI增效分配_返修R2_观看版_有附加音效_v3.mp4",
+      "sha256": "919914918e1633f3083c49f887bc1fc524f8e2b760cda374f50b33920a0c52c7"
+    },
+    "minimums": {
+      "semanticMotion": "连续语义层演化，保留可感知推进、保持与回落",
+      "electronicCamera": "必须有可感知电子运镜，不能以1.0静止或无位移代替",
+      "informationLayer": "标题下说明、流程、对照和关系图节点在成片实际缩放后仍可读",
+      "typography": {
+        "mainTitleOutputPixels": 48,
+        "supportingTextOutputPixels": 35.2,
+        "relationHubOutputPixels": 32,
+        "relationBranchOutputPixels": 33.6,
+        "textMustFitMeasuredContainers": true
+      },
+      "safeAreas": ["face", "hands", "subtitle"],
+      "sameFrameSfxComparisonRequired": true,
+      "spokenTranscriptPolicy": "recorded-audio-verbatim"
+    },
+    "downgrade": "blocked-unless-user-explicitly-approves-this-single-job"
   },
   "specification": "knowledge/20-V8连续语义动效与可感知音效基线.md",
   "validator": "tools/validate-v8-production-contract.mjs",
