@@ -12,6 +12,8 @@ import {
 } from '../edit/20260917_ai_efficiency_sharing/00_工程控制/preview-adapter.v1.mjs';
 import {assertEmployeeAIEfficiencyFormal, isEmployeeAIEfficiencyFormal}
   from '../edit/20260917_ai_efficiency_sharing/00_工程控制/formal-adapter.v1.mjs';
+import {assertEmployeeAIEfficiencyPreview as assertEmployeeRepairPreview, isEmployeeAIEfficiencyPreview as isEmployeeRepairPreview}
+  from '../edit/20260917_ai_efficiency_sharing/00_工程控制/preview-adapter.r2.mjs';
 import {
   collectProductionBoundFilesV2,
   computeProductionCompositionBindingV2,
@@ -21,6 +23,10 @@ import {
 
 export const SCOPED_DIRECT_EXPORT_MANIFEST_SHA256 = 'ba74d65e7bd59446718171aa38de6b0799092dbedb2180abd6c385587f28653e';
 export const EMPLOYEE_AI_FORMAL_PIN = '2e15109ab9c0757b7f09c0044933c360cf8d7086bf52890cb491cf8d360df6f3';
+export const EMPLOYEE_AI_REPAIR_PINS = Object.freeze({
+  "with-sfx": "1952238b69679e0bf15f3b9985946c9d6e808daab37e26c81d9c321ca401e5c0",
+  "no-sfx": "979ee56b1acf60c1f3c994431b91e52d7e1c9e4cb80a8c8f6ee9870223ba2955"
+});
 export const EMPLOYEE_AI_PREVIEW_PINS = Object.freeze({
   'with-sfx': '201c0a97c196a3d11580387d880e58e4d08f936c5d8305ca9229ba25c31a4fd5',
   'no-sfx': '354cdaa1fd1e485edefbfaa4b455214ae463288502eadb8ae80038bd6884837e',
@@ -307,6 +313,9 @@ function userText(line) {
 }
 
 export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = null, command = 'formal'}) {
+  if (isEmployeeRepairPreview(job)) {
+    return assertEmployeeRepairPreview({projectRoot, job, jobPath, command, pins: EMPLOYEE_AI_REPAIR_PINS});
+  }
   if (isEmployeeAIEfficiencyFormal(job)) {
     return assertEmployeeAIEfficiencyFormal({projectRoot, job, jobPath, command, pin: EMPLOYEE_AI_FORMAL_PIN});
   }
