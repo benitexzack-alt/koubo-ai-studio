@@ -75,6 +75,18 @@
   "productionGate": {
     "schema": "release-production-gate/v2",
     "route": "scoped-direct-export",
+    "historicalBinding": {
+      "schema": "release-historical-git-binding/v1",
+      "commit": "85cbcb4e0e7df25f1c34002d6e843bacaad05ea6",
+      "mode": "immutable-git-snapshot",
+      "releasePath": "workflow/releases/20260913_ai_no_new_business_model_v8_r1_v1.json",
+      "releaseSha256": "33e7b94a30034cf0cadea8dbbc61f4c2eaab2706e3cd30aa6974ad26a5819814",
+      "allowedFrameworkDrift": [
+        "skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs",
+        "tools/director-production-binding-core.mjs",
+        "workflow/active-production-profile.v1.json"
+      ]
+    },
     "job": {
       "path": "workflow/jobs/20260912_ai_no_new_business_model_v8_r1.production.json",
       "sha256": "9ca79320486ed2da783d935a93dfcbafc91b0013b9480f840df9800290cf96fd",
