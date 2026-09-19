@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "koubo-local-paper-geometry-composite/v1",
+  "sceneId": "P05",
+  "beatId": "B25",
+  "createdAt": "2026-09-19T12:32:39.446Z",
+  "method": "同一归一化方孔模板的确定性纸面透视局部合成",
+  "authorization": {
+    "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/P05-local-composite-authorization.v1.json",
+    "userQuote": "·批准",
+    "allowedAction": "P05-local-deterministic-geometry-compositing-only"
+  },
+  "source": {
+    "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/rejected-attempts/P05_B25_attempt3-targeted-failed.png",
+    "sha256": "3cfe491cacd15f8fee21e236defc4643f6c34f57c5e77e05561328d3c0e1059a",
+    "identify": "1672x941|srgb  3.0"
+  },
+  "directorPackage": {
+    "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/director-cues.v2.json",
+    "sha256": "73828ffe3dffdc0807b5a0b05247658bf6393be7e4d31206a5ac78aca9b55bf5"
+  },
+  "measuredGeometry": {
+    "uncertaintyPixels": 2,
+    "canonicalLeftHole": {
+      "u": 0.49812,
+      "v": 0.46102,
+      "width": 0.22812,
+      "height": 0.23051
+    },
+    "observedRightHole": {
+      "u": 0.51156,
+      "v": 0.46441,
+      "width": 0.23529,
+      "height": 0.23051
+    },
+    "beforeDelta": {
+      "u": 0.01344,
+      "v": 0.00339,
+      "width": 0.00717,
+      "height": 0
+    },
+    "rightPaperQuad": [
+      [
+        901.8,
+        274
+      ],
+      [
+        1362.7,
+        274
+      ],
+      [
+        1423.2,
+        569
+      ],
+      [
+        902.8,
+        569
+      ]
+    ],
+    "sourcePatchUv": [
+      [
+        0.34,
+        0.3
+      ],
+      [
+        0.68,
+        0.3
+      ],
+      [
+        0.68,
+        0.7
+      ],
+      [
+        0.34,
+        0.7
+      ]
+    ],
+    "targetPatchUv": [
+      [
+        0.3318,
+        0.2966
+      ],
+      [
+        0.6614,
+        0.2966
+      ],
+      [
+        0.6614,
+        0.6966
+      ],
+      [
+        0.3318,
+        0.6966
+      ]
+    ],
+    "sourcePatchQuad": [
+      [
+        1064.3472,
+        355.1654
+      ],
+      [
+        1226.6192,
+        355.1654
+      ],
+      [
+        1243.1519,
+        472.8007
+      ],
+      [
+        1072.8129,
+        472.8007
+      ]
+    ],
+    "targetPatchQuad": [
+      [
+        1060.361,
+        354.216
+      ],
+      [
+        1217.625,
+        354.216
+      ],
+      [
+        1233.7039,
+        471.7547
+      ],
+      [
+        1068.6252,
+        471.7547
+      ]
+    ]
+  },
+  "operations": [
+    "校验源图、导演包 SHA-256 和 1672x941 RGB 画布",
+    "以左孔实测归一化中心与宽高作为唯一共享模板",
+    "仅将右侧纸片孔周围的原生摄影纹理透视校正到模板位置",
+    "5 像素羽化边界融合，然后以 PNG24 合成回原图"
+  ],
+  "protectedContent": [
+    "上次作业",
+    "这次作业",
+    "同一问题",
+    "素色练习册",
+    "底部字幕净区",
+    "P01/P02/P03/P04/P06/P07 已通过首帧"
+  ],
+  "output": {
+    "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frames/P05_B25_first-frame-direct-text-r3.png",
+    "sha256": "3a88942f8a6f558dd001c49117083002686e9060161163e6ec44ff0f677fd1f2"
+  },
+  "intermediateLayers": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frame-qa/local-composite-layers/P05/P05-right-paper-warped.png",
+      "sha256": "11a64000d2defa547331cacfc5c9233fdf07ba9b2cb29b5cccd9b2017513206c"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frame-qa/local-composite-layers/P05/P05-right-paper-feather-mask.png",
+      "sha256": "d3d6191546c0caeb76e9cbd25f054ff487de38cc18cb5ec8b621d6d2b61a6d8b"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frame-qa/local-composite-layers/P05/P05-right-paper-correction-layer.png",
+      "sha256": "5115448e863bd7b9ac67f97ff6dde8d52efc690e8a5e59e02209d25d74fa9e53"
+    }
+  ],
+  "modelCalls": 0,
+  "runningHubConfigured": false,
+  "videoGenerated": false,
+  "paidAction": false,
+  "userAcceptance": "pending",
+  "visualQa": "pending"
+}

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "koubo-paper-direct-text-ocr-qa/v1",
+  "sceneId": "P05",
+  "beatId": "B25",
+  "image": {
+    "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frames/P05_B25_first-frame-direct-text-r3.png",
+    "sha256": "3a88942f8a6f558dd001c49117083002686e9060161163e6ec44ff0f677fd1f2"
+  },
+  "expected": [
+    "上次作业",
+    "这次作业",
+    "同一问题"
+  ],
+  "surfaceCalibration": [
+    {
+      "nodeId": "N1",
+      "expected": "上次作业",
+      "anchorQuad": [[262, 109], [572, 109], [576, 233], [261, 233]],
+      "rectifiedPath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frame-qa/ocr/P05/N1-上次作业.rectified.png",
+      "rectifiedSha256": "41d81db8ae918fb278b22877ad396b1a88a2b8dd396b67a4025df841a57b61d9"
+    },
+    {
+      "nodeId": "N2",
+      "expected": "这次作业",
+      "anchorQuad": [[1102, 107], [1417, 108], [1420, 235], [1100, 234]],
+      "rectifiedPath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frame-qa/ocr/P05/N2-这次作业.rectified.png",
+      "rectifiedSha256": "448f781248c95c82fd8830a27206923e988ff29b4e076bb7e497909ca646ebf6"
+    },
+    {
+      "nodeId": "N3",
+      "expected": "同一问题",
+      "anchorQuad": [[629, 615], [1051, 615], [1053, 764], [627, 764]],
+      "rectifiedPath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frame-qa/ocr/P05/N3-同一问题.rectified.png",
+      "rectifiedSha256": "4c39974bfca341ac7c698493c896077af9885c47b2b85484c2edf12f7105f6c1"
+    }
+  ],
+  "tesseract": {
+    "binary": "/opt/homebrew/bin/tesseract",
+    "binarySha256": "beb291643298f6f824e38531182802b17588c6ac240c168146885a82afa90785",
+    "language": "chi_sim",
+    "preprocessing": [
+      "纸牌四角反透视到900x320",
+      "内框裁切820x240+40+35",
+      "放大2倍",
+      "80像素白边",
+      "62%与68%两个固定二值化档位"
+    ],
+    "pageSegmentationModes": [7, 6, 13],
+    "attempts": [
+      {"nodeId": "N1", "threshold": "62%", "psm7": "站", "psm6": "", "psm13": "站", "exactMatch": false},
+      {"nodeId": "N1", "threshold": "68%", "psm7": "站", "psm6": "", "psm13": "站", "exactMatch": false},
+      {"nodeId": "N2", "threshold": "62%", "psm7": "站", "psm6": "", "psm13": "站", "exactMatch": false},
+      {"nodeId": "N2", "threshold": "68%", "psm7": "站", "psm6": "", "psm13": "站", "exactMatch": false},
+      {"nodeId": "N3", "threshold": "62%", "psm7": "站", "psm6": "", "psm13": "站", "exactMatch": false},
+      {"nodeId": "N3", "threshold": "68%", "psm7": "站", "psm6": "", "psm13": "站", "exactMatch": false}
+    ],
+    "result": "all-fixed-profiles-failed"
+  },
+  "appleVisionFallback": {
+    "script": "/Users/pc/Documents/口播/skills/koubo-remotion-director/scripts/recognize-text-vision.swift",
+    "scriptSha256": "b045c56e50a4e784f65c7aa98dd09dbbab3c76b9a56f2d10ba2d9119e60faa14",
+    "recognitionLevel": "accurate",
+    "language": "zh-Hans",
+    "usesLanguageCorrection": false,
+    "rectifiedResults": [
+      {"nodeId": "N1", "recognized": "上次作业", "exactMatch": true},
+      {"nodeId": "N2", "recognized": "这次作业", "exactMatch": true},
+      {"nodeId": "N3", "recognized": "同一问题", "exactMatch": true}
+    ],
+    "fullFrameRecognized": "上次作业这次作业同一问题",
+    "fullFrameExactAllowedConcatenation": true
+  },
+  "protectedPixelEvidence": {
+    "changedBoundingBoxAtDeltaGreaterThan1": [1055, 348, 1238, 480],
+    "labelsOutsideChangedBoundingBox": true,
+    "note": "局部合成未触及三块字牌；OCR仍针对最终合成图重跑。"
+  },
+  "exactChineseText": "passed",
+  "noExtraText": "passed",
+  "status": "passed"
+}

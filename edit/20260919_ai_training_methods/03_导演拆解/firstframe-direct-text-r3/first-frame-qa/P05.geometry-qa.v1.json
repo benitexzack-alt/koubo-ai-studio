@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "koubo-paper-square-cutout-geometry-qa/v1",
+  "sceneId": "P05",
+  "beatId": "B25",
+  "createdAt": "2026-09-19T12:40:36.243393Z",
+  "method": "左右纸片颜色分割，y=380..440 稳定扫描线逐行提取纸片外边与方孔边界，线性拟合后比较归一化中心与宽度",
+  "measurementUncertaintyPixels": 2,
+  "inputs": {
+    "before": {
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/rejected-attempts/P05_B25_attempt3-targeted-failed.png",
+      "sha256": "3cfe491cacd15f8fee21e236defc4643f6c34f57c5e77e05561328d3c0e1059a"
+    },
+    "after": {
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frames/P05_B25_first-frame-direct-text-r3.png",
+      "sha256": "3a88942f8a6f558dd001c49117083002686e9060161163e6ec44ff0f677fd1f2"
+    }
+  },
+  "before": {
+    "left": {
+      "stableRows": 61,
+      "centerScanlineY": 410.0,
+      "outerX": [
+        286.6721311475409,
+        780.0163934426225
+      ],
+      "holeX": [
+        475.3934426229507,
+        588.540983606557
+      ],
+      "u": 0.4972087459294211,
+      "width": 0.22934804279922869
+    },
+    "right": {
+      "stableRows": 61,
+      "centerScanlineY": 410.0,
+      "outerX": [
+        902.0819672131144,
+        1390.8032786885242
+      ],
+      "holeX": [
+        1094.409836065574,
+        1209.885245901639
+      ],
+      "u": 0.5116731517509737,
+      "width": 0.23628069233865479
+    }
+  },
+  "after": {
+    "left": {
+      "stableRows": 61,
+      "centerScanlineY": 410.0,
+      "outerX": [
+        286.6721311475409,
+        780.0163934426225
+      ],
+      "holeX": [
+        475.3934426229507,
+        588.540983606557
+      ],
+      "u": 0.4972087459294211,
+      "width": 0.22934804279922869
+    },
+    "right": {
+      "stableRows": 61,
+      "centerScanlineY": 410.0,
+      "outerX": [
+        902.0819672131144,
+        1390.8032786885242
+      ],
+      "holeX": [
+        1089.5573770491799,
+        1201.3442622950813
+      ],
+      "u": 0.4979706158593852,
+      "width": 0.22873339594794
+    }
+  },
+  "afterVerticalRasterEvidence": {
+    "left": {
+      "topY": 375,
+      "bottomY": 444,
+      "centerY": 409.5,
+      "rasterHeightPixels": 70
+    },
+    "right": {
+      "topY": 376,
+      "bottomY": 444,
+      "centerY": 410.0,
+      "rasterHeightPixels": 69
+    }
+  },
+  "afterDeltas": {
+    "normalizedCenterU": 0.0007618699299640763,
+    "normalizedWidth": 0.0006146468512886749,
+    "centerPixelsApprox": 0.3741031149543274,
+    "widthPixelsApprox": 0.30181175633851925,
+    "centerYPixels": 0.5,
+    "heightPixels": 1
+  },
+  "templateProjection": {
+    "canonicalLeftHole": {
+      "u": 0.49812,
+      "v": 0.46102,
+      "width": 0.22812,
+      "height": 0.23051
+    },
+    "correctedRightHole": {
+      "u": 0.49812,
+      "v": 0.46102,
+      "width": 0.22812,
+      "height": 0.23051
+    },
+    "note": "透视合成使用同一归一化模板；独立像素分割偏差低于 2 px 测量不确定度。"
+  },
+  "localityCheck": {
+    "changedPixelThreshold": 1,
+    "changedPixelCount": 19732,
+    "changedBoundingBox": [
+      1055,
+      348,
+      1238,
+      480
+    ],
+    "localizedToRightPaperPatch": true
+  },
+  "imageChecks": {
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "opaque": true
+  },
+  "status": "passed"
+}
