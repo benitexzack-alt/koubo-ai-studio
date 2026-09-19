@@ -1,0 +1,316 @@
+{
+  "schemaVersion": "koubo-runninghub-canvas-fill-receipt/v1",
+  "taskId": "20260919_ai_training_methods",
+  "requestId": "20260919_ai_training_methods:firstframe-direct-text-r3:runninghub-canvas-preparation",
+  "revisionId": "ai-training-methods-direct-text-firstframe-r3-local-p05",
+  "createdAt": "2026-09-19T13:23:53Z",
+  "status": "configured-awaiting-user-click",
+  "scope": "canvas-fill-only-no-generation",
+  "canvas": {
+    "platform": "RunningHub RHTV",
+    "url": "https://www.runninghub.cn/project/canvas/2087479798165565442",
+    "title": "Untitled",
+    "balanceBefore": "118.668",
+    "balanceAfter": "118.668",
+    "balanceChanged": false
+  },
+  "inputs": {
+    "preparationPack": {
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/runninghub-canvas-preparation-pack.v1.json",
+      "sha256": "26ad59ac3ca4efb5bea9feaa6571c371ca1c07af417a859c3a06074ecb4a7fa0",
+      "schemaVersion": "koubo-runninghub-direct-text-canvas-preparation-pack/v1"
+    },
+    "promptManifest": {
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/runninghub-image-to-video-prompts.v1.json",
+      "sha256": "5a2142b94abc01e40fe5d1a1d0011aac18e258724c8f4e20f486426229993da0"
+    },
+    "userAcceptance": {
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frame-user-acceptance.v1.json",
+      "sha256": "fed70f029214405640ab2ef11ae0d0c8688d9e748ec5e70381e63ce04a958dbb"
+    },
+    "canvasPreparationAuthorization": {
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/runninghub-canvas-preparation-authorization.v1.json",
+      "sha256": "ebdd31858d4929dc20708caa21af877efdc18db73273ee03987693d196a05f8e"
+    }
+  },
+  "configuration": {
+    "generationMode": "image-to-video",
+    "model": "MiniMax H3",
+    "resolution": "2k",
+    "durationMode": "per-scene-director-duration",
+    "durationCapabilitySeconds": {
+      "minimum": 5,
+      "maximum": 15,
+      "step": 1
+    },
+    "aspectRatio": "16:9",
+    "aspectRatioControlExposedInH3Panel": false,
+    "aspectRatioPolicy": "inherited-from-accepted-16:9-first-frame",
+    "promptOptimization": "idle",
+    "activeMode": "start-video"
+  },
+  "calibration": {
+    "sceneId": "P01",
+    "status": "calibration-passed",
+    "imageBindingModelResetObserved": true,
+    "modelBeforeCorrection": "Seedance 2.5",
+    "modelAfterCorrection": "MiniMax H3",
+    "note": "P01 绑定首帧后模型从 H3 重置为 Seedance 2.5，已按 Skill 固定顺序在绑定后重新锁定 MiniMax H3 并完成最终回读。其余节点均先绑定图片，再锁模型与参数。"
+  },
+  "sceneCount": 7,
+  "scenes": [
+    {
+      "sceneId": "P01",
+      "beatId": "B12",
+      "pairId": "P01-prompt-pair-v1",
+      "imageNodeId": "node_1789823455738_hk37s5o",
+      "videoNodeId": "node_1789823475809_yqbdc22",
+      "edgeId": "e-node_1789823455738_hk37s5o-node_1789823475809_yqbdc22",
+      "imageFileName": "P01_B12_first-frame-direct-text-r2.png",
+      "imagePath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/P01_B12_first-frame-direct-text-r2.png",
+      "imageSha256": "b8e1a079a61bde6f76371d5fcda3968a8d20514313016ffaa825f873dafe7c2a",
+      "promptSha256": "2a2f0b85ec8e1721fde64e094c04c1086272ee184b02d4d70969b511c77e7e31",
+      "durationSeconds": 7,
+      "readback": {
+        "imageExact": true,
+        "edgeCount": 1,
+        "edgeUnique": true,
+        "promptExact": true,
+        "model": "MiniMax H3",
+        "resolution": "2k",
+        "durationSeconds": 7,
+        "aspectRatio": "inherited-16:9",
+        "activeMode": "start-video",
+        "optimizationPhase": "idle",
+        "emptyMedia": true,
+        "videoTagCount": 0,
+        "progressCount": 0
+      },
+      "bindingModelReset": {
+        "observed": true,
+        "resetTo": "Seedance 2.5",
+        "relockedTo": "MiniMax H3",
+        "finalReadbackPassed": true
+      }
+    },
+    {
+      "sceneId": "P02",
+      "beatId": "B15",
+      "pairId": "P02-prompt-pair-v1",
+      "imageNodeId": "node_1789823739058_ys2obmy",
+      "videoNodeId": "node_1789823815537_i2ef8ml",
+      "edgeId": "e-node_1789823739058_ys2obmy-node_1789823815537_i2ef8ml",
+      "imageFileName": "P02_B15_first-frame-direct-text-r2.png",
+      "imagePath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/P02_B15_first-frame-direct-text-r2.png",
+      "imageSha256": "8398c684419cd7b9ab595ec1503a9851f61785c7530da7d5ab595b012bffaeac",
+      "promptSha256": "a74790f8f012b296fad2c0f12e4f9b1fd491274ffc0f599f232f9cbf2380e7bf",
+      "durationSeconds": 6,
+      "readback": {
+        "imageExact": true,
+        "edgeCount": 1,
+        "edgeUnique": true,
+        "promptExact": true,
+        "model": "MiniMax H3",
+        "resolution": "2k",
+        "durationSeconds": 6,
+        "aspectRatio": "inherited-16:9",
+        "activeMode": "start-video",
+        "optimizationPhase": "idle",
+        "emptyMedia": true,
+        "videoTagCount": 0,
+        "progressCount": 0
+      },
+      "bindingModelReset": {
+        "observed": false,
+        "sequence": "bind-image-before-final-model-lock"
+      }
+    },
+    {
+      "sceneId": "P03",
+      "beatId": "B18",
+      "pairId": "P03-prompt-pair-v1",
+      "imageNodeId": "node_1789823739063_5xfdf82",
+      "videoNodeId": "node_1789823836200_yw9jzb3",
+      "edgeId": "e-node_1789823739063_5xfdf82-node_1789823836200_yw9jzb3",
+      "imageFileName": "P03_B18_first-frame-direct-text-r2.png",
+      "imagePath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/P03_B18_first-frame-direct-text-r2.png",
+      "imageSha256": "a05d985021a47aa9ea04df0b80cb59fed41f4e17482d87584afafb508c314ae7",
+      "promptSha256": "4126e1eaa115d8c5e0903af46b55f83b956d4cdbd4b663618a6032b770fe6994",
+      "durationSeconds": 7,
+      "readback": {
+        "imageExact": true,
+        "edgeCount": 1,
+        "edgeUnique": true,
+        "promptExact": true,
+        "model": "MiniMax H3",
+        "resolution": "2k",
+        "durationSeconds": 7,
+        "aspectRatio": "inherited-16:9",
+        "activeMode": "start-video",
+        "optimizationPhase": "idle",
+        "emptyMedia": true,
+        "videoTagCount": 0,
+        "progressCount": 0
+      },
+      "bindingModelReset": {
+        "observed": false,
+        "sequence": "bind-image-before-final-model-lock"
+      }
+    },
+    {
+      "sceneId": "P04",
+      "beatId": "B21",
+      "pairId": "P04-prompt-pair-v1",
+      "imageNodeId": "node_1789823739071_ublwvjk",
+      "videoNodeId": "node_1789823842206_7vfomeh",
+      "edgeId": "e-node_1789823739071_ublwvjk-node_1789823842206_7vfomeh",
+      "imageFileName": "P04_B21_first-frame-direct-text-r2.png",
+      "imagePath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/P04_B21_first-frame-direct-text-r2.png",
+      "imageSha256": "0a8020123d75a52bc2de5a0d649ed977e967ad35537a13afca93a344df2c3c78",
+      "promptSha256": "a0e7bc70ae723bff470fc44f3911f06646640e4f6a2b8288459f07b68cc74cdb",
+      "durationSeconds": 7,
+      "readback": {
+        "imageExact": true,
+        "edgeCount": 1,
+        "edgeUnique": true,
+        "promptExact": true,
+        "model": "MiniMax H3",
+        "resolution": "2k",
+        "durationSeconds": 7,
+        "aspectRatio": "inherited-16:9",
+        "activeMode": "start-video",
+        "optimizationPhase": "idle",
+        "emptyMedia": true,
+        "videoTagCount": 0,
+        "progressCount": 0
+      },
+      "bindingModelReset": {
+        "observed": false,
+        "sequence": "bind-image-before-final-model-lock"
+      }
+    },
+    {
+      "sceneId": "P05",
+      "beatId": "B25",
+      "pairId": "P05-prompt-pair-v1",
+      "imageNodeId": "node_1789823739075_ffodi6t",
+      "videoNodeId": "node_1789823848258_ay22wla",
+      "edgeId": "e-node_1789823739075_ffodi6t-node_1789823848258_ay22wla",
+      "imageFileName": "P05_B25_first-frame-direct-text-r3.png",
+      "imagePath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r3/first-frames/P05_B25_first-frame-direct-text-r3.png",
+      "imageSha256": "3a88942f8a6f558dd001c49117083002686e9060161163e6ec44ff0f677fd1f2",
+      "promptSha256": "51bc7c30901a966d79a0b4ddf5d9684d1cad45da43dea547fee9d18511a9895f",
+      "durationSeconds": 6,
+      "readback": {
+        "imageExact": true,
+        "edgeCount": 1,
+        "edgeUnique": true,
+        "promptExact": true,
+        "model": "MiniMax H3",
+        "resolution": "2k",
+        "durationSeconds": 6,
+        "aspectRatio": "inherited-16:9",
+        "activeMode": "start-video",
+        "optimizationPhase": "idle",
+        "emptyMedia": true,
+        "videoTagCount": 0,
+        "progressCount": 0
+      },
+      "bindingModelReset": {
+        "observed": false,
+        "sequence": "bind-image-before-final-model-lock"
+      }
+    },
+    {
+      "sceneId": "P06",
+      "beatId": "B31",
+      "pairId": "P06-prompt-pair-v1",
+      "imageNodeId": "node_1789823739078_agwwhrp",
+      "videoNodeId": "node_1789823868125_md2jpqm",
+      "edgeId": "e-node_1789823739078_agwwhrp-node_1789823868125_md2jpqm",
+      "imageFileName": "P06_B31_first-frame-direct-text-r2.png",
+      "imagePath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/P06_B31_first-frame-direct-text-r2.png",
+      "imageSha256": "a2f3c556d96bf3862179083624dadd33d62a8910c03a60044067ee2d6659e2a3",
+      "promptSha256": "29863bce35c0c22eba1d8cd31b40df8d629e089f1c21e8c67ec9beee39fb7191",
+      "durationSeconds": 6,
+      "readback": {
+        "imageExact": true,
+        "edgeCount": 1,
+        "edgeUnique": true,
+        "promptExact": true,
+        "model": "MiniMax H3",
+        "resolution": "2k",
+        "durationSeconds": 6,
+        "aspectRatio": "inherited-16:9",
+        "activeMode": "start-video",
+        "optimizationPhase": "idle",
+        "emptyMedia": true,
+        "videoTagCount": 0,
+        "progressCount": 0
+      },
+      "bindingModelReset": {
+        "observed": false,
+        "sequence": "bind-image-before-final-model-lock"
+      }
+    },
+    {
+      "sceneId": "P07",
+      "beatId": "B40",
+      "pairId": "P07-prompt-pair-v1",
+      "imageNodeId": "node_1789823739081_5666kri",
+      "videoNodeId": "node_1789823874073_h342fo2",
+      "edgeId": "e-node_1789823739081_5666kri-node_1789823874073_h342fo2",
+      "imageFileName": "P07_B40_first-frame-direct-text-r2.png",
+      "imagePath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/P07_B40_first-frame-direct-text-r2.png",
+      "imageSha256": "6f34893198af393b1adf272ccd6dd05f9bb1be164e85df8d14300743559e8e62",
+      "promptSha256": "ab138b0a66628581d248cb65309ce99a659ae83d951ef561b969bd7208d690ea",
+      "durationSeconds": 8,
+      "readback": {
+        "imageExact": true,
+        "edgeCount": 1,
+        "edgeUnique": true,
+        "promptExact": true,
+        "model": "MiniMax H3",
+        "resolution": "2k",
+        "durationSeconds": 8,
+        "aspectRatio": "inherited-16:9",
+        "activeMode": "start-video",
+        "optimizationPhase": "idle",
+        "emptyMedia": true,
+        "videoTagCount": 0,
+        "progressCount": 0
+      },
+      "bindingModelReset": {
+        "observed": false,
+        "sequence": "bind-image-before-final-model-lock"
+      }
+    }
+  ],
+  "batchReadback": {
+    "sceneIdsUnique": true,
+    "imageNodeIdsUnique": true,
+    "videoNodeIdsUnique": true,
+    "edgeIdsUnique": true,
+    "oneImageToOneVideoEdgePerScene": true,
+    "allImagesExact": true,
+    "allPromptsExact": true,
+    "allModelsMiniMaxH3": true,
+    "allResolution2k": true,
+    "allDirectorDurationsApplied": true,
+    "allPromptOptimizationIdle": true,
+    "allNodesEmptyMedia": true,
+    "allNodesNotRunning": true
+  },
+  "nextGate": {
+    "owner": "user",
+    "action": "review-canvas-and-manually-click-generate-for-P01-through-P07",
+    "dynamicQa": "not-started-until-real-generated-files-exist"
+  },
+  "generationButtonClicked": false,
+  "taskSubmitted": false,
+  "videoGenerated": false,
+  "chargeObserved": false,
+  "paidOperationPerformed": false,
+  "outputDownloaded": false,
+  "publicationPerformed": false
+}
