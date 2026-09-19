@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "koubo-director-cues-user-approval/v2",
+  "status": "approved",
+  "taskId": "20260919_ai_training_methods",
+  "revisionId": "ai-training-methods-direct-text-firstframe-r1",
+  "bindings": {
+    "directorCues": {
+      "path": "edit/20260919_ai_training_methods/03_导演拆解/director-cues.v2.json",
+      "sha256": "73828ffe3dffdc0807b5a0b05247658bf6393be7e4d31206a5ac78aca9b55bf5"
+    }
+  },
+  "approved": true,
+  "userQuote": "口播自动化已经生产出了最新版的纸质动画手帧，需要你去生成。按照最新版的导演包。",
+  "approvedAt": "2026-09-19T09:13:58Z",
+  "exceptions": [],
+  "authorizationScope": {
+    "allowed": [
+      "generate-paper-firstframes-from-latest-director-package",
+      "direct-chinese-in-first-frame",
+      "local-visual-and-exact-text-qa"
+    ],
+    "forbidden": [
+      "runninghub-upload",
+      "runninghub-canvas-configuration",
+      "video-generation",
+      "paid-generation",
+      "remotion",
+      "publication"
+    ],
+    "userVisualAcceptance": "pending"
+  },
+  "textPolicyOverride": {
+    "source": "current-user-explicit-confirmation",
+    "paperTextPolicy": "chinese-generated-in-first-frame",
+    "localTextRendering": false,
+    "wrongTextRecovery": "mark-scene-revision-required-and-stop; do not silently replace with local text bake"
+  }
+}

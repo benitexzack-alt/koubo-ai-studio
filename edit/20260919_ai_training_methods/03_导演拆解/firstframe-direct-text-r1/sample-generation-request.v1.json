@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "koubo-paper-direct-text-firstframe-request/v1",
+  "status": "sample-revision-required",
+  "taskId": "20260919_ai_training_methods",
+  "revisionId": "ai-training-methods-direct-text-firstframe-r1",
+  "sourceDirectorCues": {
+    "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/director-cues.v2.json",
+    "sha256": "73828ffe3dffdc0807b5a0b05247658bf6393be7e4d31206a5ac78aca9b55bf5"
+  },
+  "userApproval": {
+    "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/00_控制/用户首帧生成授权.v1.json",
+    "sha256": "2fc70801be2dca0376483cab42c2b5a808e41a5628da5aae92e5940c7e9dc117",
+    "recordedAt": "2026-09-19T09:13:58Z"
+  },
+  "policyException": {
+    "kind": "explicit-user-direct-text-generation",
+    "generatedReadableTextAllowed": true,
+    "deterministicTextBakeEnabled": false,
+    "standardV2HandoffClaimed": false,
+    "note": "This batch follows the latest director package's explicit text policy and must not be represented as a standard deterministic-text-bake handoff."
+  },
+  "samplePolicy": "one-representative-scene",
+  "selectedSceneId": "P03",
+  "selectedBeatId": "B18",
+  "allSceneIds": ["P01", "P02", "P03", "P04", "P05", "P06", "P07"],
+  "sampleOutput": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r1/first-frames/P03_B18_first-frame-direct-text-r1.png",
+  "sampleExecutionPrompt": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r1/first-frame-qa/P03.execution-prompt.txt",
+  "sampleExecutionPromptSha256": "fc4ab6f92f349c7d871c14e809dc6bc8eea314de00b28ac001f3dc7a26eb4349",
+  "requiredExactText": ["七天计划", "每天四十五分", "任务与验收"],
+  "sampleResult": {
+    "imageSha256": "6b73683e3c536b0a4c6ef2b7a1e843c6f20af82a41cbdb0317c6982c3af92eff",
+    "visualQa": "failed-nine-panels-and-blocked-expansion-path",
+    "exactTextQa": "passed-3-of-3",
+    "userVisualAcceptance": "not-requested-because-hard-failure"
+  },
+  "sampleContactSheet": {
+    "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r1/sample-contact-sheet.v1.jpg",
+    "sha256": "e9740d7dfc68ae136b36c34f78f3027ddc062ea546c74dccfd3620f87f5546d2"
+  },
+  "downstream": {
+    "runningHubUploadAllowed": false,
+    "videoGenerationAllowed": false,
+    "paidGenerationAllowed": false
+  }
+}

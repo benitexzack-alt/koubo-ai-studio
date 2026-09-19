@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "koubo-paper-direct-text-qa/v1",
+  "sceneId": "P03",
+  "imagePath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r1/first-frames/P03_B18_first-frame-direct-text-r1.png",
+  "imageSha256": "6b73683e3c536b0a4c6ef2b7a1e843c6f20af82a41cbdb0317c6982c3af92eff",
+  "status": "passed",
+  "enginePolicy": "tesseract-first-then-apple-vision-fallback",
+  "labels": [
+    {
+      "nodeId": "N1",
+      "expected": "七天计划",
+      "cropPath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r1/first-frame-qa/P03-N1-ocr-crop.png",
+      "tesseract": {"recognized": "天", "matched": false},
+      "appleVision": {"recognized": "七天计划", "matched": true},
+      "humanVisualMatch": true
+    },
+    {
+      "nodeId": "N2",
+      "expected": "每天四十五分",
+      "cropPath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r1/first-frame-qa/P03-N2-ocr-crop.png",
+      "tesseract": {"recognized": "", "matched": false},
+      "appleVision": {"recognized": "每天四十五分", "matched": true},
+      "humanVisualMatch": true
+    },
+    {
+      "nodeId": "N3",
+      "expected": "任务与验收",
+      "cropPath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r1/first-frame-qa/P03-N3-ocr-crop.png",
+      "tesseract": {"recognized": "", "matched": false},
+      "appleVision": {"recognized": "任务与验收", "matched": true},
+      "humanVisualMatch": true
+    }
+  ],
+  "exactMatchCount": 3,
+  "requiredCount": 3,
+  "result": "三处中文经原图人工复核与Apple Vision逐字匹配；Tesseract对本图纸艺字形识别不足，未被用于伪造失败或通过。"
+}
