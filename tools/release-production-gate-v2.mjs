@@ -11,15 +11,21 @@ import {fileURLToPath} from 'node:url';
 
 import {assertNoRetiredGeneratedStyle} from './generated-style-policy.mjs';
 import {assertProductionEntryPreflightV2} from '../skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs';
-import {assertScopedDirectExportRelease} from './scoped-direct-export-core.mjs';
+import {
+  assertScopedDirectExportRelease,
+  collectScopedDirectExportBindings,
+} from './scoped-direct-export-core.mjs';
 import {validateEmployeeFormalRelease} from '../edit/20260917_ai_efficiency_sharing/00_工程控制/release-adapter.v1.mjs';
 
 export const RELEASE_PRODUCTION_GATE_SCHEMA = 'release-production-gate/v2';
 export const RELEASE_RISK_FRAME_RECEIPT_SCHEMA = 'release-risk-frame-receipt/v2';
+export const HISTORICAL_RELEASE_EVIDENCE_ROUTE = 'historical-release-evidence';
+export const HISTORICAL_GIT_BINDING_SCHEMA = 'release-historical-git-binding/v1';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 export const DEFAULT_RELEASE_PROJECT_ROOT = resolve(HERE, '..');
 const SHA256_RE = /^[a-f0-9]{64}$/u;
+const GIT_COMMIT_RE = /^[a-f0-9]{40}$/u;
 const ALLOWED_RUN_COMMANDS = new Set(['formal', 'formal-audio', 'qa', 'regression', 'all']);
 const REQUIRED_STAGE_IDS = Object.freeze(['formal-render', 'formal-audio', 'formal-qa']);
 
@@ -40,6 +46,13 @@ const isText = (value) => typeof value === 'string' && value.trim().length > 0;
 const sha256Bytes = (value) => createHash('sha256').update(value).digest('hex');
 const normalizeRelative = (projectRoot, absolutePath) =>
   relative(projectRoot, absolutePath).split(sep).join('/');
+const stableValue = (value) => {
+  if (Array.isArray(value)) return value.map(stableValue);
+  if (!isRecord(value)) return value;
+  return Object.fromEntries(Object.keys(value).sort().map((key) => [key, stableValue(value[key])]));
+};
+const sameValue = (left, right) =>
+  sha256Bytes(JSON.stringify(stableValue(left))) === sha256Bytes(JSON.stringify(stableValue(right)));
 
 const assertInsideProject = (projectRoot, pathValue, label) => {
   if (!isText(pathValue)) fail('RPG2_PROJECT_PATH_REQUIRED', `${label}必须是项目内非空路径。`);
@@ -88,6 +101,200 @@ const readBoundJson = ({projectRoot, reference, label, hashFile}) => {
     fail('RPG2_BOUND_JSON_INVALID', `${label}不是有效 JSON。`);
   }
   return {...file, body};
+};
+
+const gitBytesAt = ({projectRoot, commit, pathValue, label}) => {
+  if (!isText(pathValue) || isAbsolute(pathValue) || pathValue.split('/').includes('..')) {
+    fail('RPG2_HISTORICAL_GIT_PATH_INVALID', `${label}必须是仓库内相对路径。`);
+  }
+  const result = spawnSync('git', ['show', `${commit}:${pathValue}`], {
+    cwd: projectRoot,
+    encoding: null,
+    maxBuffer: 128 * 1024 * 1024,
+  });
+  if (result.status !== 0 || !Buffer.isBuffer(result.stdout)) {
+    fail('RPG2_HISTORICAL_GIT_FILE_MISSING', `${label}在历史提交中不存在。`);
+  }
+  return result.stdout;
+};
+
+export const validateHistoricalScopedDirectExportBindingV1 = ({
+  projectRoot = DEFAULT_RELEASE_PROJECT_ROOT,
+  gate,
+  release,
+  job,
+  jobPath,
+}) => {
+  const canonicalRoot = resolve(projectRoot);
+  const binding = gate?.historicalBinding;
+  if (
+    gate?.route !== 'scoped-direct-export' ||
+    !isRecord(binding) ||
+    binding.schema !== HISTORICAL_GIT_BINDING_SCHEMA ||
+    binding.mode !== 'immutable-git-snapshot' ||
+    !GIT_COMMIT_RE.test(String(binding.commit ?? '')) ||
+    !isText(binding.releasePath) ||
+    !SHA256_RE.test(String(binding.releaseSha256 ?? ''))
+  ) {
+    fail('RPG2_HISTORICAL_GIT_BINDING_INVALID', '历史 scoped-direct-export 必须绑定完整 Git 提交和当时的发布记录摘要。');
+  }
+  const commitCheck = spawnSync('git', ['cat-file', '-e', `${binding.commit}^{commit}`], {
+    cwd: canonicalRoot,
+    encoding: 'utf8',
+  });
+  const ancestorCheck = spawnSync('git', ['merge-base', '--is-ancestor', binding.commit, 'HEAD'], {
+    cwd: canonicalRoot,
+    encoding: 'utf8',
+  });
+  if (commitCheck.status !== 0 || ancestorCheck.status !== 0) {
+    fail('RPG2_HISTORICAL_GIT_COMMIT_INVALID', '历史绑定提交不存在，或不是当前分支 HEAD 的祖先。');
+  }
+
+  const historicalReleaseBytes = gitBytesAt({
+    projectRoot: canonicalRoot,
+    commit: binding.commit,
+    pathValue: binding.releasePath,
+    label: '历史发布记录',
+  });
+  if (sha256Bytes(historicalReleaseBytes) !== binding.releaseSha256) {
+    fail('RPG2_HISTORICAL_GIT_RELEASE_SHA_MISMATCH', '历史提交中的发布记录摘要不匹配。');
+  }
+  let historicalRelease;
+  try {
+    historicalRelease = JSON.parse(historicalReleaseBytes.toString('utf8'));
+  } catch {
+    fail('RPG2_HISTORICAL_GIT_RELEASE_INVALID', '历史提交中的发布记录不是有效 JSON。');
+  }
+  const {historicalBinding: _ignoredCurrentBinding, ...currentGateAtProduction} = gate;
+  if (
+    binding.releasePath !== normalizeRelative(canonicalRoot, resolve(canonicalRoot, binding.releasePath)) ||
+    !sameValue(historicalRelease.productionGate, currentGateAtProduction) ||
+    historicalRelease.releaseId !== release?.releaseId ||
+    historicalRelease.videoId !== release?.videoId
+  ) {
+    fail('RPG2_HISTORICAL_GIT_RELEASE_MISMATCH', '历史发布记录与当前记录的生产事实不一致。');
+  }
+
+  const manifestReference = gate.scopedDirectExport;
+  const manifestFile = assertInsideProject(canonicalRoot, manifestReference?.path, '历史 scoped-direct-export 清单');
+  const manifestBytes = readFileSync(manifestFile.absolutePath);
+  if (
+    !SHA256_RE.test(String(manifestReference?.sha256 ?? '')) ||
+    sha256Bytes(manifestBytes) !== manifestReference.sha256 ||
+    Number(manifestReference.bytes) !== manifestFile.stat.size
+  ) {
+    fail('RPG2_HISTORICAL_MANIFEST_MISMATCH', '当前清单字节与发布记录绑定不一致。');
+  }
+  const historicalManifestBytes = gitBytesAt({
+    projectRoot: canonicalRoot,
+    commit: binding.commit,
+    pathValue: manifestFile.relativePath,
+    label: '历史 scoped-direct-export 清单',
+  });
+  if (sha256Bytes(historicalManifestBytes) !== manifestReference.sha256) {
+    fail('RPG2_HISTORICAL_MANIFEST_MISMATCH', '历史提交中的 scoped-direct-export 清单摘要不匹配。');
+  }
+  const historicalJobBytes = gitBytesAt({
+    projectRoot: canonicalRoot,
+    commit: binding.commit,
+    pathValue: normalizeRelative(canonicalRoot, resolve(jobPath)),
+    label: '历史生产 job',
+  });
+  if (sha256Bytes(historicalJobBytes) !== gate.job?.sha256) {
+    fail('RPG2_HISTORICAL_JOB_MISMATCH', '历史提交中的生产 job 摘要不匹配。');
+  }
+
+  let manifest;
+  try {
+    manifest = JSON.parse(manifestBytes.toString('utf8'));
+  } catch {
+    fail('RPG2_HISTORICAL_MANIFEST_INVALID', '历史 scoped-direct-export 清单不是有效 JSON。');
+  }
+  const current = collectScopedDirectExportBindings({projectRoot: canonicalRoot, job});
+  if (
+    manifest.jobSnapshotSha256 !== current.jobSnapshotSha256 ||
+    manifest.jobSnapshotSha256 !== gate.jobSnapshotSha256 ||
+    !sameValue(manifest.compositionBinding, current.compositionBinding)
+  ) {
+    fail('RPG2_HISTORICAL_RUNTIME_SCOPE_DRIFT', 'job 快照或 composition 已变化，不能按历史框架补证。');
+  }
+  const currentByPath = new Map(current.boundFiles.map((entry) => [entry.path, entry]));
+  if (
+    currentByPath.size !== manifest.boundFiles?.length ||
+    manifest.boundFiles.some((entry) => !currentByPath.has(entry.path))
+  ) {
+    fail('RPG2_HISTORICAL_BOUND_FILE_SET_DRIFT', '当前运行文件集合与历史清单不一致。');
+  }
+  const historicalFallbacks = [];
+  for (const entry of manifest.boundFiles) {
+    const currentEntry = currentByPath.get(entry.path);
+    if (currentEntry.sha256 === entry.sha256 && Number(currentEntry.bytes) === Number(entry.bytes)) continue;
+    const historicalBytes = gitBytesAt({
+      projectRoot: canonicalRoot,
+      commit: binding.commit,
+      pathValue: entry.path,
+      label: `历史绑定文件 ${entry.path}`,
+    });
+    if (sha256Bytes(historicalBytes) !== entry.sha256 || historicalBytes.length !== Number(entry.bytes)) {
+      fail('RPG2_HISTORICAL_BOUND_FILE_MISMATCH', `历史提交无法复现绑定文件：${entry.path}`);
+    }
+    historicalFallbacks.push(entry.path);
+  }
+  if (historicalFallbacks.length === 0) {
+    fail('RPG2_HISTORICAL_BINDING_NOT_NEEDED', '当前绑定未漂移，不应启用历史 Git 补证路径。');
+  }
+  return {
+    ok: true,
+    route: 'scoped-direct-export',
+    scopedDirectExportSha256: manifestReference.sha256,
+    jobSnapshotSha256: current.jobSnapshotSha256,
+    directorContractSha256: null,
+    handoffBindingSha256: null,
+    freezeReceiptSha256: null,
+    historicalBindingCommit: binding.commit,
+    historicalFallbacks,
+  };
+};
+
+const validateHistoricalReleaseEvidence = ({projectRoot, releaseFile, release, gate, hashFile}) => {
+  if (
+    gate.evidenceScope !== 'historical-release-record-only' ||
+    gate.currentProductionGateSatisfied !== false ||
+    gate.fullWatchConfirmed !== false ||
+    gate.publishAuthorized !== false ||
+    release.status !== 'ready-for-user-review' ||
+    release.publiclyPublished !== false
+  ) {
+    fail('RPG2_HISTORICAL_RELEASE_STATE_INVALID', '历史证据不得冒充当前生产门、完整观看、发布授权或已发布状态。');
+  }
+  const manifest = readBoundJson({projectRoot, reference: release.manifest, label: '历史发布清单', hashFile});
+  const video = assertBoundMedia({
+    projectRoot,
+    reference: release.video,
+    expectedPath: release.video?.path,
+    label: '历史候选成片',
+    hashFile,
+  });
+  if (
+    manifest.body.status !== 'ready-for-user-review' ||
+    manifest.body.publiclyPublished !== false ||
+    manifest.body.productionGates?.fullFinalUserReviewConfirmed !== false
+  ) {
+    fail('RPG2_HISTORICAL_MANIFEST_STATE_INVALID', '历史清单没有保持待用户复核、未完整观看和未发布状态。');
+  }
+  return {
+    ok: true,
+    code: 'RPG2_HISTORICAL_EVIDENCE_OK',
+    route: HISTORICAL_RELEASE_EVIDENCE_ROUTE,
+    releasePath: releaseFile.relativePath,
+    releaseSha256: releaseFile.sha256,
+    manifestSha256: manifest.sha256,
+    formalOutputSha256: video.sha256,
+    currentReleaseReady: false,
+    fullWatchConfirmed: false,
+    publishAuthorized: false,
+    publiclyPublished: false,
+  };
 };
 
 const assertBoundMedia = ({projectRoot, reference, expectedPath, label, hashFile}) => {
@@ -255,6 +462,15 @@ export const validateReleaseProductionGateV2 = ({
     if (!isRecord(gate) || gate.schema !== RELEASE_PRODUCTION_GATE_SCHEMA) {
       fail('RPG2_GATE_REQUIRED', '发布校验必须绑定 release-production-gate/v2；旧记录只能作历史证据。');
     }
+    if (gate.route === HISTORICAL_RELEASE_EVIDENCE_ROUTE) {
+      return validateHistoricalReleaseEvidence({
+        projectRoot: canonicalRoot,
+        releaseFile,
+        release: parsedRelease,
+        gate,
+        hashFile,
+      });
+    }
     const jobFile = readBoundJson({projectRoot: canonicalRoot, reference: gate.job, label: '发布绑定 job', hashFile});
     if (isText(jobFile.body.inputs?.generatedVideoPlan)) {
       fail(
@@ -263,13 +479,21 @@ export const validateReleaseProductionGateV2 = ({
         '任何包含 generatedVideoPlan 的发布修订均在媒体解码和报告写入前冻结。',
       );
     }
-    const preflight = assertProductionEntryPreflightV2({
-      projectRoot: canonicalRoot,
-      jobPath: jobFile.absolutePath,
-      job: jobFile.body,
-      command: 'release-validation',
-      entrypoint: 'tools/validate-release.mjs',
-    });
+    const preflight = gate.historicalBinding
+      ? validateHistoricalScopedDirectExportBindingV1({
+        projectRoot: canonicalRoot,
+        gate,
+        release: parsedRelease,
+        job: jobFile.body,
+        jobPath: jobFile.absolutePath,
+      })
+      : assertProductionEntryPreflightV2({
+        projectRoot: canonicalRoot,
+        jobPath: jobFile.absolutePath,
+        job: jobFile.body,
+        command: 'release-validation',
+        entrypoint: 'tools/validate-release.mjs',
+      });
     if (preflight.route === 'employee-ai-efficiency-scoped-formal') {
       return validateEmployeeFormalRelease({projectRoot: canonicalRoot, release: parsedRelease, preflight});
     }

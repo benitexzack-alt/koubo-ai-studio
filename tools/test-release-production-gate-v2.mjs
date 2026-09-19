@@ -18,8 +18,10 @@ import {fileURLToPath} from 'node:url';
 
 import {findRetiredGeneratedStyleContentHashes} from './generated-style-policy.mjs';
 import {
+  HISTORICAL_RELEASE_EVIDENCE_ROUTE,
   RELEASE_PRODUCTION_GATE_SCHEMA,
   RELEASE_RISK_FRAME_RECEIPT_SCHEMA,
+  validateHistoricalScopedDirectExportBindingV1,
   validateReleaseRiskFrameReceiptV2,
   validateReleaseProductionGateV2,
 } from './release-production-gate-v2.mjs';
@@ -80,6 +82,90 @@ test('旧 release 缺 v2 生产门，在任何媒体命令前拒绝', () => {
   assert.equal(result.status, 1, `${result.stdout}\n${result.stderr}`);
   assert.match(`${result.stdout}\n${result.stderr}`, /RPG2_GATE_REQUIRED/u);
   assert.equal(existsSync(mediaMarker), false, '冻结门失败前不得调用 ffmpeg/ffprobe');
+});
+
+test('显式历史证据只校验原始清单与成片字节，不冒充当前发布就绪', () => {
+  const manifestPath = writeJson('historical-manifest', {
+    status: 'ready-for-user-review',
+    publiclyPublished: false,
+    productionGates: {
+      fullFinalUserReviewConfirmed: false,
+    },
+  });
+  const videoPath = join(testRoot, 'historical-candidate.mp4');
+  writeFileSync(videoPath, 'historical-video-bytes');
+  const releasePath = writeJson('historical-release-evidence', {
+    schemaVersion: 1,
+    releaseId: 'historical-evidence-only',
+    status: 'ready-for-user-review',
+    productionGate: {
+      schema: RELEASE_PRODUCTION_GATE_SCHEMA,
+      route: HISTORICAL_RELEASE_EVIDENCE_ROUTE,
+      evidenceScope: 'historical-release-record-only',
+      currentProductionGateSatisfied: false,
+      fullWatchConfirmed: false,
+      publishAuthorized: false,
+    },
+    manifest: {
+      path: relativeProject(manifestPath),
+      sha256: sha256File(manifestPath),
+      bytes: statSync(manifestPath).size,
+    },
+    video: {
+      path: relativeProject(videoPath),
+      sha256: sha256File(videoPath),
+      bytes: statSync(videoPath).size,
+    },
+    publiclyPublished: false,
+  });
+
+  const result = validateReleaseProductionGateV2({projectRoot, releasePath});
+
+  assert.equal(result.ok, true);
+  assert.equal(result.route, HISTORICAL_RELEASE_EVIDENCE_ROUTE);
+  assert.equal(result.currentReleaseReady, false);
+  assert.equal(result.fullWatchConfirmed, false);
+  assert.equal(result.publishAuthorized, false);
+  assert.equal(result.publiclyPublished, false);
+  assert.equal(existsSync(mediaMarker), false, '历史证据校验不得调用 ffmpeg/ffprobe');
+});
+
+test('历史 scoped-direct-export 只能由不可变 Git 提交补证漂移框架文件', () => {
+  const releasePath = resolve(projectRoot, 'workflow/releases/20260913_ai_no_new_business_model_v8_r1_v1.json');
+  const release = JSON.parse(readFileSync(releasePath, 'utf8'));
+  const jobPath = resolve(projectRoot, release.productionGate.job.path);
+  const job = JSON.parse(readFileSync(jobPath, 'utf8'));
+  const historicalBinding = {
+    schema: 'release-historical-git-binding/v1',
+    commit: '85cbcb4e0e7df25f1c34002d6e843bacaad05ea6',
+    mode: 'immutable-git-snapshot',
+    releasePath: 'workflow/releases/20260913_ai_no_new_business_model_v8_r1_v1.json',
+    releaseSha256: '33e7b94a30034cf0cadea8dbbc61f4c2eaab2706e3cd30aa6974ad26a5819814',
+  };
+
+  const result = validateHistoricalScopedDirectExportBindingV1({
+    projectRoot,
+    gate: {...release.productionGate, historicalBinding},
+    release,
+    job,
+    jobPath,
+  });
+
+  assert.equal(result.route, 'scoped-direct-export');
+  assert.equal(result.jobSnapshotSha256, release.productionGate.jobSnapshotSha256);
+  assert.equal(result.scopedDirectExportSha256, release.productionGate.scopedDirectExportSha256);
+  assert.equal(result.historicalBindingCommit, historicalBinding.commit);
+
+  assert.throws(
+    () => validateHistoricalScopedDirectExportBindingV1({
+      projectRoot,
+      gate: {...release.productionGate, historicalBinding: {...historicalBinding, commit: '0'.repeat(40)}},
+      release,
+      job,
+      jobPath,
+    }),
+    (error) => error?.code === 'RPG2_HISTORICAL_GIT_COMMIT_INVALID',
+  );
 });
 
 test('事故 job 在解码、报告或输出写入前冻结', () => {
