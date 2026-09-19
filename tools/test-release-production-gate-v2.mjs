@@ -18,6 +18,7 @@ import {fileURLToPath} from 'node:url';
 
 import {findRetiredGeneratedStyleContentHashes} from './generated-style-policy.mjs';
 import {
+  CANDIDATE_RELEASE_EVIDENCE_ROUTE,
   HISTORICAL_RELEASE_EVIDENCE_ROUTE,
   RELEASE_PRODUCTION_GATE_SCHEMA,
   RELEASE_RISK_FRAME_RECEIPT_SCHEMA,
@@ -137,6 +138,67 @@ test('显式历史证据只校验原始清单与成片字节，不冒充当前�
   assert.equal(cliResult.status, 0, `${cliResult.stdout}\n${cliResult.stderr}`);
   assert.match(cliResult.stdout, /RPG2_HISTORICAL_EVIDENCE_OK/u);
   assert.equal(existsSync(mediaMarker), false, '历史证据命令行校验不得调用 ffmpeg/ffprobe');
+});
+
+test('候选证据可统一入账，但未完整观看、未事实核验时不能升级为可发布', () => {
+  const videoPath = join(testRoot, 'candidate-evidence.mp4');
+  writeFileSync(videoPath, 'candidate-video-bytes');
+  const sourceRecordPath = writeJson('non-formal-candidate-source', {
+    status: 'ready-for-user-review',
+    registeredAsFormalRelease: false,
+    production: {
+      candidateFinal: relativeProject(videoPath),
+      candidateSha256: sha256File(videoPath),
+    },
+    userReview: {candidateFullWatchConfirmed: false},
+    publish: {
+      status: 'not-published',
+      publicReleaseAuthorized: false,
+      publicReleasePerformed: false,
+      formalReleaseRegistered: false,
+    },
+  });
+  const releasePath = writeJson('candidate-release-evidence', {
+    schemaVersion: 1,
+    releaseId: 'candidate-evidence-only',
+    videoId: 'candidate-evidence-only',
+    status: 'ready-for-user-review',
+    productionGate: {
+      schema: RELEASE_PRODUCTION_GATE_SCHEMA,
+      route: CANDIDATE_RELEASE_EVIDENCE_ROUTE,
+      evidenceScope: 'candidate-release-record-only',
+      sourceKind: 'non-formal-candidate',
+      currentProductionGateSatisfied: false,
+    },
+    sourceRecord: {
+      path: relativeProject(sourceRecordPath),
+      sha256: sha256File(sourceRecordPath),
+      bytes: statSync(sourceRecordPath).size,
+    },
+    video: {
+      path: relativeProject(videoPath),
+      sha256: sha256File(videoPath),
+      bytes: statSync(videoPath).size,
+    },
+    userReview: {fullWatchConfirmed: false},
+    publish: {status: 'not-published', authorized: false},
+    publiclyPublished: false,
+  });
+
+  const result = validateReleaseProductionGateV2({projectRoot, releasePath});
+
+  assert.equal(result.ok, true);
+  assert.equal(result.route, CANDIDATE_RELEASE_EVIDENCE_ROUTE);
+  assert.equal(result.currentReleaseReady, false);
+  assert.equal(result.fullWatchConfirmed, false);
+  assert.equal(result.publishAuthorized, false);
+
+  const unsafe = JSON.parse(readFileSync(releasePath, 'utf8'));
+  unsafe.userReview.fullWatchConfirmed = true;
+  const unsafePath = writeJson('candidate-release-evidence-unsafe', unsafe);
+  const unsafeResult = validateReleaseProductionGateV2({projectRoot, releasePath: unsafePath});
+  assert.equal(unsafeResult.ok, false);
+  assert.equal(unsafeResult.code, 'RPG2_CANDIDATE_RELEASE_STATE_INVALID');
 });
 
 test('历史 scoped-direct-export 只能由不可变 Git 提交补证漂移框架文件', () => {

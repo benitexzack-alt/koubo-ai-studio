@@ -20,6 +20,7 @@ import {validateEmployeeFormalRelease} from '../edit/20260917_ai_efficiency_shar
 export const RELEASE_PRODUCTION_GATE_SCHEMA = 'release-production-gate/v2';
 export const RELEASE_RISK_FRAME_RECEIPT_SCHEMA = 'release-risk-frame-receipt/v2';
 export const HISTORICAL_RELEASE_EVIDENCE_ROUTE = 'historical-release-evidence';
+export const CANDIDATE_RELEASE_EVIDENCE_ROUTE = 'candidate-release-evidence';
 export const HISTORICAL_GIT_BINDING_SCHEMA = 'release-historical-git-binding/v1';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -304,6 +305,81 @@ const validateHistoricalReleaseEvidence = ({projectRoot, releaseFile, release, g
   };
 };
 
+const validateCandidateReleaseEvidence = ({projectRoot, releaseFile, release, gate, hashFile}) => {
+  if (
+    gate.evidenceScope !== 'candidate-release-record-only' ||
+    !['non-formal-candidate', 'formal-candidate-pending-fact-review'].includes(gate.sourceKind) ||
+    gate.currentProductionGateSatisfied !== false ||
+    release.status !== 'ready-for-user-review' ||
+    release.userReview?.fullWatchConfirmed !== false ||
+    release.publish?.status !== 'not-published' ||
+    release.publish?.authorized !== false ||
+    release.publiclyPublished !== false
+  ) {
+    fail('RPG2_CANDIDATE_RELEASE_STATE_INVALID', '候选证据必须保持未完成当前生产门、未完整观看、未授权且未发布。');
+  }
+  const sourceRecord = readBoundJson({projectRoot, reference: release.sourceRecord, label: '候选来源记录', hashFile});
+  const video = assertBoundMedia({
+    projectRoot,
+    reference: release.video,
+    expectedPath: null,
+    label: '候选成片',
+    hashFile,
+  });
+  if (sourceRecord.body.status !== 'ready-for-user-review') {
+    fail('RPG2_CANDIDATE_SOURCE_STATE_INVALID', '候选来源记录必须保持待用户复核状态。');
+  }
+
+  let sourceVideoPath;
+  if (gate.sourceKind === 'non-formal-candidate') {
+    sourceVideoPath = sourceRecord.body.production?.candidateFinal;
+    if (
+      sourceRecord.body.registeredAsFormalRelease !== false ||
+      sourceRecord.body.production?.candidateSha256 !== video.sha256 ||
+      sourceRecord.body.userReview?.candidateFullWatchConfirmed !== false ||
+      sourceRecord.body.publish?.status !== 'not-published' ||
+      sourceRecord.body.publish?.publicReleaseAuthorized !== false ||
+      sourceRecord.body.publish?.publicReleasePerformed !== false ||
+      sourceRecord.body.publish?.formalReleaseRegistered !== false
+    ) {
+      fail('RPG2_NON_FORMAL_CANDIDATE_STATE_INVALID', '非正式候选来源记录不得冒充正式登记、完整观看、发布授权或已发布。');
+    }
+  } else {
+    sourceVideoPath = sourceRecord.body.production?.formalOutput;
+    if (
+      sourceRecord.body.schema !== 'koubo-r2-release/v1' ||
+      sourceRecord.body.userReview?.fullWatchConfirmed !== false ||
+      sourceRecord.body.userReview?.formalVersionApproved !== false ||
+      sourceRecord.body.publish?.status !== 'not-published' ||
+      sourceRecord.body.publish?.authorized !== false ||
+      sourceRecord.body.publish?.externalUploadPerformed !== false ||
+      sourceRecord.body.contentReview?.status !== 'pending-fact-review' ||
+      Number(sourceRecord.body.contentReview?.unresolvedDirectorFactChecks) <= 0
+    ) {
+      fail('RPG2_FACT_REVIEW_CANDIDATE_STATE_INVALID', '正式候选仍有事实核验或人审未闭合，必须保持不可发布。');
+    }
+  }
+  const sourceVideoAbsolute = resolve(projectRoot, sourceVideoPath ?? '');
+  const sourceVideoRelative = normalizeRelative(projectRoot, sourceVideoAbsolute);
+  if (!isText(sourceVideoPath) || sourceVideoRelative !== video.relativePath) {
+    fail('RPG2_CANDIDATE_VIDEO_ROUTE_MISMATCH', '候选来源记录与统一账本没有绑定同一成片。');
+  }
+  return {
+    ok: true,
+    code: 'RPG2_CANDIDATE_EVIDENCE_OK',
+    route: CANDIDATE_RELEASE_EVIDENCE_ROUTE,
+    sourceKind: gate.sourceKind,
+    releasePath: releaseFile.relativePath,
+    releaseSha256: releaseFile.sha256,
+    sourceRecordSha256: sourceRecord.sha256,
+    formalOutputSha256: video.sha256,
+    currentReleaseReady: false,
+    fullWatchConfirmed: false,
+    publishAuthorized: false,
+    publiclyPublished: false,
+  };
+};
+
 const assertBoundMedia = ({projectRoot, reference, expectedPath, label, hashFile}) => {
   if (!isRecord(reference) || !isText(reference.path) || !SHA256_RE.test(String(reference.sha256 ?? ''))) {
     fail('RPG2_BOUND_MEDIA_REFERENCE_INVALID', `${label}必须绑定项目内路径和小写 SHA-256。`);
@@ -471,6 +547,15 @@ export const validateReleaseProductionGateV2 = ({
     }
     if (gate.route === HISTORICAL_RELEASE_EVIDENCE_ROUTE) {
       return validateHistoricalReleaseEvidence({
+        projectRoot: canonicalRoot,
+        releaseFile,
+        release: parsedRelease,
+        gate,
+        hashFile,
+      });
+    }
+    if (gate.route === CANDIDATE_RELEASE_EVIDENCE_ROUTE) {
+      return validateCandidateReleaseEvidence({
         projectRoot: canonicalRoot,
         releaseFile,
         release: parsedRelease,

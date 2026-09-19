@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 
 import {
   assertReleaseProductionGateV2,
+  CANDIDATE_RELEASE_EVIDENCE_ROUTE,
   HISTORICAL_RELEASE_EVIDENCE_ROUTE,
 } from './release-production-gate-v2.mjs';
 import {SCOPED_DIRECT_EXPORT} from './scoped-direct-export-core.mjs';
@@ -46,6 +47,7 @@ try {
 
 if (
   releaseProductionGate.route === 'employee-ai-efficiency-scoped-formal' ||
+  releaseProductionGate.route === CANDIDATE_RELEASE_EVIDENCE_ROUTE ||
   releaseProductionGate.route === HISTORICAL_RELEASE_EVIDENCE_ROUTE
 ) {
   console.log(JSON.stringify(releaseProductionGate, null, 2));
