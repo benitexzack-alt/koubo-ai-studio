@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-batch-qa/v2",
+  "status": "blocked-one-scene",
+  "visualQa": {
+    "P01": {"status": "pass", "p0": [], "p1": []},
+    "P02": {"status": "pass", "p0": [], "p1": []},
+    "P03": {"status": "pass", "p0": [], "p1": []},
+    "P04": {"status": "pass", "p0": [], "p1": []},
+    "P05": {
+      "status": "fail",
+      "p0": [],
+      "p1": [
+        "Attempt 3 cutout centers still differ by normalized horizontal delta 0.01335, approximately 6.5 pixels after full overlap."
+      ]
+    },
+    "P06": {"status": "pass", "p0": [], "p1": []},
+    "P07": {"status": "pass", "p0": [], "p1": []}
+  },
+  "technicalQa": {
+    "allFinalPassFiles": {
+      "pixelDimensions": "1672x941",
+      "alphaChannel": "none",
+      "decodable": true
+    },
+    "exactTextPassedScenes": ["P01", "P02", "P03", "P04", "P06", "P07"],
+    "extraVisibleTextFound": false,
+    "logoOrWatermarkFound": false
+  },
+  "p05FailureHistory": [
+    {
+      "attempt": 1,
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/rejected-attempts/P05_B25_attempt1-failed.png",
+      "sha256": "f61314491c91e3f78ed9b7c59da5bfadb7699686e8af0e44064a4bf75400c848",
+      "issues": ["cutouts-not-at-identical-relative-position", "top-and-bottom-alpha-noise"]
+    },
+    {
+      "attempt": 2,
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/rejected-attempts/P05_B25_attempt2-failed.png",
+      "sha256": "f8a0e9ed52862c6bcffc34a1fed4acc1db4d704421d84e9c841f75eb2dc7ab24",
+      "issues": ["cutout-offset-about-9-to-11-pixels", "required-background-practice-book-stack-missing"]
+    },
+    {
+      "attempt": 3,
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/rejected-attempts/P05_B25_attempt3-targeted-failed.png",
+      "sha256": "3cfe491cacd15f8fee21e236defc4643f6c34f57c5e77e05561328d3c0e1059a",
+      "issues": ["cutout-center-delta-0.01335-about-6.5-pixels", "cutout-size-ratio-delta-about-0.0076"],
+      "passed": ["three-blank-practice-books", "three-exact-labels", "opaque-image", "clear-subtitle-zone"]
+    }
+  ],
+  "rootCause": {
+    "directorPromptDefect": false,
+    "executionPromptDefect": true,
+    "imageModelPrecisionLimitObserved": true,
+    "details": "Attempt 2 execution strengthening omitted the director-required practice-book stack, and generative edits did not achieve pixel-identical hole geometry."
+  },
+  "stopDecision": {
+    "rule": "consecutive-failure-stop",
+    "moreImageModelAttemptsAllowed": false,
+    "recommendedNextMethod": "local-deterministic-geometry-compositing-with-one-shared-cutout-template",
+    "requiresNewUserDirection": true
+  },
+  "userVisualAcceptance": "pending"
+}

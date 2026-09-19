@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "koubo-paper-direct-text-firstframe-request/v2",
+  "status": "blocked-one-scene",
+  "taskId": "20260919_ai_training_methods",
+  "revisionId": "ai-training-methods-direct-text-firstframe-r2",
+  "sourceDirectorCues": {
+    "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/director-cues.v2.json",
+    "sha256": "73828ffe3dffdc0807b5a0b05247658bf6393be7e4d31206a5ac78aca9b55bf5"
+  },
+  "userApproval": {
+    "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/00_控制/用户首帧返工与整批继续授权.v2.json",
+    "sha256": "374ad5d0832dbbd68c4826673ceb23b60788c46bb84d28f3178ababffbe4a7eb",
+    "recordedAt": "2026-09-19T09:29:19Z"
+  },
+  "policyException": {
+    "kind": "explicit-user-direct-text-generation",
+    "generatedReadableTextAllowed": true,
+    "deterministicTextBakeEnabled": false,
+    "standardV2HandoffClaimed": false
+  },
+  "retryGate": {
+    "sceneId": "P03",
+    "hardRequirements": [
+      "exactly-seven-connected-panels",
+      "blue-white-blue-white-blue-white-blue-order",
+      "rightmost-35-to-40-percent-flat-and-empty",
+      "three-exact-independent-chinese-labels",
+      "no-extra-text-or-blocking-props"
+    ],
+    "remainingScenesAllowedOnlyAfterPass": ["P01", "P02", "P04", "P05", "P06", "P07"],
+    "result": {
+      "status": "passed",
+      "imagePath": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r2/first-frames/P03_B18_first-frame-direct-text-r2.png",
+      "sha256": "a05d985021a47aa9ea04df0b80cb59fed41f4e17482d87584afafb508c314ae7",
+      "exactTextOcr": "七天计划任务与验收每天四十五分",
+      "independentQa": "passed"
+    }
+  },
+  "concurrencyLimit": 2,
+  "batchResult": {
+    "passedScenes": ["P01", "P02", "P03", "P04", "P06", "P07"],
+    "failedScenes": ["P05"],
+    "reason": "P05 square-hole geometry remained non-identical after three model attempts; generation stopped under the consecutive-failure rule.",
+    "userVisualAcceptance": "pending"
+  },
+  "downstream": {
+    "runningHubUploadAllowed": false,
+    "videoGenerationAllowed": false,
+    "paidGenerationAllowed": false
+  }
+}

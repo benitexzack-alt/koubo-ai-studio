@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "koubo-director-cues-user-approval/v2",
+  "status": "approved",
+  "taskId": "20260919_ai_training_methods",
+  "revisionId": "ai-training-methods-direct-text-firstframe-r2",
+  "bindings": {
+    "directorCues": {
+      "path": "edit/20260919_ai_training_methods/03_导演拆解/director-cues.v2.json",
+      "sha256": "73828ffe3dffdc0807b5a0b05247658bf6393be7e4d31206a5ac78aca9b55bf5"
+    },
+    "failedSample": {
+      "path": "edit/20260919_ai_training_methods/03_导演拆解/firstframe-direct-text-r1/first-frames/P03_B18_first-frame-direct-text-r1.png",
+      "sha256": "6b73683e3c536b0a4c6ef2b7a1e843c6f20af82a41cbdb0317c6982c3af92eff"
+    }
+  },
+  "approved": true,
+  "userQuote": "那这个是导演提示词的问题，还是你生成的问题？如果是提示词的问题，要求他重新修改提示词。如果是你这边的问题，你这边抓紧修改，然后继续生成其他的图片。",
+  "approvedAt": "2026-09-19T09:29:19Z",
+  "diagnosis": {
+    "primaryCause": "generation-and-review-deviation",
+    "directorPromptDefectConfirmed": false,
+    "evidence": "P03 director prompt explicitly requires seven connected panels and a wide flat right-side desktop; r1 generated nine panels plus blocking props, and the initial review miscounted them."
+  },
+  "authorizationScope": {
+    "allowed": [
+      "regenerate-p03-with-stronger-execution-constraints",
+      "generate-p01-p02-p04-p05-p06-p07-after-p03-hard-pass",
+      "direct-chinese-in-first-frame",
+      "local-visual-and-exact-text-qa",
+      "independent-read-only-qa"
+    ],
+    "forbidden": [
+      "runninghub-upload",
+      "runninghub-canvas-configuration",
+      "video-generation",
+      "paid-generation",
+      "remotion",
+      "publication"
+    ],
+    "userVisualAcceptance": "pending"
+  },
+  "textPolicyOverride": {
+    "source": "current-user-explicit-confirmation-and-latest-director-package",
+    "paperTextPolicy": "chinese-generated-in-first-frame",
+    "localTextRendering": false,
+    "wrongTextRecovery": "mark-scene-revision-required; do not silently replace with local text bake"
+  }
+}
