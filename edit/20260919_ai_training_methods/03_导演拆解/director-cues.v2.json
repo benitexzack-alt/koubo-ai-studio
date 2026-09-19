@@ -1,0 +1,1450 @@
+{
+  "schemaVersion": "koubo-director-cues/v2",
+  "taskId": "20260919_ai_training_methods",
+  "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
+  "inputScript": {
+    "path": "edit/20260919_ai_training_methods/02_文稿/用户原稿.txt",
+    "sha256": "ebe6210f42cc315f842a23ee69d8c5ad64bbf454570ed918998bd69f0fb20a86",
+    "authority": "user-confirmed-script"
+  },
+  "routingPolicy": {
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "generatedVisualCannotServeAsEvidence": true,
+    "factVerificationSeparatedFromPrimaryVisual": true,
+    "constructedVisualPriority": [
+      "paper-editorial",
+      "ai-generated-video"
+    ],
+    "aiGeneratedVideoUseCondition": "concrete-human-or-environment-scene-paper-unnatural",
+    "shotcraftSelectionStage": "post-shoot-edit-release",
+    "shotcraftEligibleRoutes": [
+      "speaker",
+      "real-evidence"
+    ],
+    "shotcraftForbiddenInsideRoutes": [
+      "paper-editorial",
+      "ai-generated-video"
+    ]
+  },
+  "userOverrides": {
+    "source": "本轮用户明确要求：文字直接一次性加在首帧图；用图生视频提示词生成动画；不需要本地渲染。",
+    "scope": "本期纸艺与AI素材生成方式",
+    "paperTextPolicy": "chinese-generated-in-first-frame",
+    "localTextRendering": false,
+    "localMaterialAnimationRendering": false,
+    "sharedSkillModified": false,
+    "firstFrameReviewRequired": true,
+    "animationReviewRequired": true,
+    "wrongTextRecovery": "仅重新生成失败首帧，文字正确后再做视频；不自动回退本地写字。",
+    "legacyValidationCompatibility": "旧校验器强制空白纸牌。本期保留真实带字提示词，不伪造旧规则通过。"
+  },
+  "styleLocks": {
+    "paperEditorial": {
+      "promptPrefix": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，前中后三层空间，真实接触阴影，柔和侧光，深蓝主体配少量朱红，16:9横幅。",
+      "textPolicy": "chinese-generated-in-first-frame",
+      "mustKeep": [
+        "摄影级纸纤维、切边和接触阴影",
+        "前景字牌、中景活动物件、后景实体空间",
+        "本期中文一次生成在首帧固定字牌上",
+        "主动作有明确位移或形态变化",
+        "深蓝与朱红点缀暖米色",
+        "每镜独立构图"
+      ],
+      "mustAvoid": [
+        "扁平演示文稿和塑料质感",
+        "纯推镜冒充动画",
+        "物件增殖、消失或穿透",
+        "中文改变、乱码或漏字",
+        "静止画面长时间等待",
+        "全文大段口播塞进图中"
+      ],
+      "referenceImages": [
+        {
+          "id": "REF01",
+          "path": "refs/director-style/往期优质纸艺参考_地图连接.png",
+          "sha256": "7f2452c63dc72f7b7e6acbc3d1e3aa7da4da3a6e3e03e08b1f305e1c96c6e79a",
+          "usage": "style-mechanism-only"
+        },
+        {
+          "id": "REF02",
+          "path": "refs/director-style/往期优质纸艺参考_工厂工具.png",
+          "sha256": "d7c28e56542ad8a681115dc753e5aed93cf9079580f6df9b2c214abaa2403650",
+          "usage": "style-mechanism-only"
+        }
+      ]
+    },
+    "aiGeneratedVideo": {
+      "promptPrefix": "写实情景摄影，暖中性会议室，克制自然表演，深蓝与米白色调，16:9横幅。",
+      "mustKeep": [
+        "普通无品牌办公场景",
+        "自然人物比例",
+        "单一可辨动作",
+        "浅景深但资料夹清楚"
+      ],
+      "mustAvoid": [
+        "影射真实客户",
+        "夸张反派表演",
+        "生成虚假可读平台界面",
+        "人物口型争抢口播"
+      ],
+      "referenceImages": []
+    }
+  },
+  "selectionSummary": {
+    "mainPoint": "把AI用于有任务、有反馈、有检验的主动练习，而不是只索取答案。",
+    "argumentFlow": [
+      "学习痛点与个人引入",
+      "八种训练方法逐项解释",
+      "多AI分工复核",
+      "真人收束与提示词领取"
+    ],
+    "routeCounts": {
+      "speaker": 35,
+      "real-evidence": 2,
+      "ai-generated-video": 1,
+      "paper-editorial": 7,
+      "shotcraftOpportunity": 6
+    },
+    "routeRationales": {
+      "speaker": "方法名称、价值判断和结尾由真人承担，方法段中仅在机制处切走，保留讲述节奏。",
+      "real-evidence": "前后作业比较和反向教学追问需要真正界面验证；用户提供两段真实录屏。",
+      "ai-generated-video": "客户临时改需求需要看见人的反应与具体会议场景，纸模型不能自然表现压力。",
+      "paper-editorial": "试错、检验、路径、盲区、对照、推理和分工属于可视化机制，优先用纸艺。"
+    },
+    "visualRhythmReason": "在每种方法的关键动作或关系处插入短镜，方法标题与总结返回真人；素材长度只是生成建议，拍后按实际口播重绑。",
+    "protectedSpeakerBeatIds": [
+      "B01",
+      "B08",
+      "B09",
+      "B14",
+      "B17",
+      "B20",
+      "B23",
+      "B26",
+      "B29",
+      "B33",
+      "B42",
+      "B44",
+      "B45"
+    ]
+  },
+  "semanticBeats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "scriptQuote": "成年人最扎心的真相是什么？",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "scriptQuote": "没人会毫无保留地教你。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F01",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "scriptQuote": "职场里，前辈教你三分、留你七分，怕你超越、怕你顶替；",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F02",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "scriptQuote": "行业里，老手藏着核心干货，套路永远比真话多；",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F03",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "scriptQuote": "你花钱报课、拜师学艺，大部分人也是选择性教学，只会教你皮毛，不会教你底层。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F04",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "scriptQuote": "所有人都怕你变强，唯独AI例外。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F05",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "scriptQuote": "只有AI，是这个世界上唯一毫无保留、不限次数、不带私心、不收情绪的老师。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F06",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "scriptQuote": "今天直接把我经常用的8大AI训练方法，全部拆给你，最后我会把全套提示词分享给大家。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F07",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "scriptQuote": "第一，真实错误模拟器\n不是直接给正确答案。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "scriptQuote": "你把你的业务问题丢进去，让AI搭建实战场景，故意设置陷阱。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "scriptQuote": "你做方案、写SOP、做营销策划，做错了，AI不直接纠正，只不断提问引导你自己找到漏洞。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F08",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "scriptQuote": "最少让你踩2次坑，再揭晓问题在哪，反复练习，直到你独立答对。",
+      "rhetoricalRole": "机制或操作说明",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P01",
+      "decisionReason": "把本句中的训练步骤或关系变成可见的实体动作。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "scriptQuote": "不是背答案，是练判断力。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "scriptQuote": "第二，困惑破解者\n遇到难懂的专业知识点，不让AI甩专业术语。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "scriptQuote": "要求AI先用生活类比给一句核心钥匙句，然后抛出3道检验题，必须三道全部答对，才能往下学。",
+      "rhetoricalRole": "机制或操作说明",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P02",
+      "decisionReason": "把本句中的训练步骤或关系变成可见的实体动作。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B16",
+      "order": 16,
+      "scriptQuote": "避免似懂非懂，看懂了，但不会落地。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B17",
+      "order": 17,
+      "scriptQuote": "第三，定制学习路径\n给AI输入：你的目标、现有基础、每周可投入时间，",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B18",
+      "order": 18,
+      "scriptQuote": "AI输出7天学习计划。\n每天固定45分钟，明确今天要做什么、做到什么样才算完成、哪里容易踩坑。",
+      "rhetoricalRole": "机制或操作说明",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F09",
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P03",
+      "decisionReason": "把本句中的训练步骤或关系变成可见的实体动作。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B19",
+      "order": 19,
+      "scriptQuote": "一旦跟不上，立刻动态调整计划，不是一套方案硬套所有人。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F10",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B20",
+      "order": 20,
+      "scriptQuote": "第四，隐藏漏洞检测器\n当你觉得自己已经学会这项技能，交给AI。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B21",
+      "order": 21,
+      "scriptQuote": "AI抛出5个深挖底层的问题，专门挑那种“看着会，一上手就废”的盲区。",
+      "rhetoricalRole": "机制或操作说明",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F11",
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P04",
+      "decisionReason": "把本句中的训练步骤或关系变成可见的实体动作。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B22",
+      "order": 22,
+      "scriptQuote": "只要回答浮于表面，直接点破你的知识短板，告诉你哪里只是浅尝辄止。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F12",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B23",
+      "order": 23,
+      "scriptQuote": "第五，严苛进度镜像\n把你每一次作业、方案全部存档。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B24",
+      "order": 24,
+      "scriptQuote": "AI对比你前后产出，区分：是真的能力提升，还是反复犯同一个老错误。",
+      "rhetoricalRole": "机制或操作说明",
+      "claimClass": "real-operation",
+      "requiresFactCheck": true,
+      "factCheckId": "F13",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R01",
+      "decisionReason": "让观众看到真实输入与反馈，不能用纸艺或AI伪造工具响应。",
+      "viewerGain": "show-operation"
+    },
+    {
+      "id": "B25",
+      "order": 25,
+      "scriptQuote": "如果停滞不前，直接点明，只夸奖可以量化的进步，不做虚假鼓励。",
+      "rhetoricalRole": "机制或操作说明",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P05",
+      "decisionReason": "把本句中的训练步骤或关系变成可见的实体动作。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B26",
+      "order": 26,
+      "scriptQuote": "第六，最坏情景教练\n模拟高压突发场景，不给任何参考资料。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B27",
+      "order": 27,
+      "scriptQuote": "比如客户临时改需求、方案现场被质疑，让你现场输出。",
+      "rhetoricalRole": "机制或操作说明",
+      "claimClass": "generic-illustration",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "ai-generated-video",
+      "routeCueId": "G01",
+      "decisionReason": "用虚构会议中的具体人物动作呈现临场压力。",
+      "viewerGain": "make-scene-concrete"
+    },
+    {
+      "id": "B28",
+      "order": 28,
+      "scriptQuote": "结束之后，AI复盘你的薄弱环节，告诉你要针对性训练哪些地方，提前演练风险。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F14",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B29",
+      "order": 29,
+      "scriptQuote": "第七，思维捷径检查员\n你解决完一个业务问题，让AI回溯你的思考全过程。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F15",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B30",
+      "order": 30,
+      "scriptQuote": "如果你是靠猜、套模板、死记硬背拿到结果，直接打回重写。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B31",
+      "order": 31,
+      "scriptQuote": "你必须讲清楚每一步为什么这么判断，",
+      "rhetoricalRole": "机制或操作说明",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P06",
+      "decisionReason": "把本句中的训练步骤或关系变成可见的实体动作。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B32",
+      "order": 32,
+      "scriptQuote": "逻辑通顺才算真正掌握，杜绝碰运气。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F16",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B33",
+      "order": 33,
+      "scriptQuote": "第八，反向教学模拟器\n反过来，让AI当小白学生，你来当老师讲解知识。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B34",
+      "order": 34,
+      "scriptQuote": "你只要一说专业术语，AI立刻追问，要案例、要通俗解释。",
+      "rhetoricalRole": "机制或操作说明",
+      "claimClass": "real-operation",
+      "requiresFactCheck": true,
+      "factCheckId": "F17",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R02",
+      "decisionReason": "让观众看到真实输入与反馈，不能用纸艺或AI伪造工具响应。",
+      "viewerGain": "show-operation"
+    },
+    {
+      "id": "B35",
+      "order": 35,
+      "scriptQuote": "如果你逻辑有错误，AI顺着你的错误推导，直到得出荒谬结果，帮你发现自己理解的误区，直到你能把事情讲明白。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F18",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B36",
+      "order": 36,
+      "scriptQuote": "最后也是适用所有学习方法的终极大招:",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F19",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B37",
+      "order": 37,
+      "scriptQuote": "高手不会只用单一一个AI工具。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F20",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B38",
+      "order": 38,
+      "scriptQuote": "同一个业务难题，你可以多AI分工协作：",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B39",
+      "order": 39,
+      "scriptQuote": "1号AI：错误模拟器，制造场景，让你试错踩坑；\n2号AI：漏洞检测器，挑方案里面的问题；",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B40",
+      "order": 40,
+      "scriptQuote": "3号AI：交叉校验所有结论，对比不同思路。",
+      "rhetoricalRole": "机制或操作说明",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P07",
+      "decisionReason": "把本句中的训练步骤或关系变成可见的实体动作。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B41",
+      "order": 41,
+      "scriptQuote": "多个AI互相校验、互相博弈，层层打磨，最后筛选出来最优答案。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F21",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B42",
+      "order": 42,
+      "scriptQuote": "成年人最高级的自律，\n就是借助毫无保留的AI，\n把别人学不会、学不透、学不全的本事，\n练成自己安身立命的硬实力。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F22",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B43",
+      "order": 43,
+      "scriptQuote": "你拿到的，永远是当下最适合你的最优答案。",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F23",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B44",
+      "order": 44,
+      "scriptQuote": "完整提示词我会放在评论区置顶",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F24",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B45",
+      "order": 45,
+      "scriptQuote": "我是超哥在兰州AI创业",
+      "rhetoricalRole": "真人引入、说明或收束",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "此处需要真人语气、方法说明或边界判断，插片没有额外理解收益。",
+      "viewerGain": "presenter-trust"
+    }
+  ],
+  "factChecks": [
+    {
+      "id": "F01",
+      "beatId": "B02",
+      "sourceRequirement": "普遍性断言，个别经历不能证明所有人。需限定适用范围或修改原句。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F02",
+      "beatId": "B03",
+      "sourceRequirement": "三分七分是修辞比例而非统计；不能将前辈动机推广至全体。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F03",
+      "beatId": "B04",
+      "sourceRequirement": "永远比真话多属于不可由个案支持的概括。需具体来源与范围或删改。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F04",
+      "beatId": "B05",
+      "sourceRequirement": "大部分人是比例判断；本轮没有调查样本，不能用虚构培训情景充当证据。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F05",
+      "beatId": "B06",
+      "sourceRequirement": "所有人及唯独均是绝对判断；不能以情绪修辞免除核验。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F06",
+      "beatId": "B07",
+      "sourceRequirement": "唯一、毫无保留与不限次数不应作为可核验产品承诺；需对实际工具的使用限制与回答可靠性核验并调整表达。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F07",
+      "beatId": "B08",
+      "sourceRequirement": "经常使用属于本人经验；用户需确认。全套提示词尚未提供，正式发布前须有可领取的完整文件。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F08",
+      "beatId": "B11",
+      "sourceRequirement": "具体模型能否遵守不直接揭晓、持续追问的行为需用本期提示词实测；指令是目标而非能力保证。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F09",
+      "beatId": "B18",
+      "sourceRequirement": "本期实际工具与提示词需要生成可执行计划；七天是安排周期，不是七天学会的承诺。每天45分钟是稿件选择的示例，与每周时间预算应保持一致。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F10",
+      "beatId": "B19",
+      "sourceRequirement": "动态调整需要用户反馈进度并重新提供上下文，不能演绎为模型无输入自动掌握进度。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F11",
+      "beatId": "B21",
+      "sourceRequirement": "五道题是提示词设定；题目质量与识别盲区能力需用本期任务和人工答案实测。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F12",
+      "beatId": "B22",
+      "sourceRequirement": "模型能否可靠判定浅层回答必须经人工核对，不能承诺一定识别所有短板。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F13",
+      "beatId": "B24",
+      "sourceRequirement": "必须提供同一道练习的前后两版原始作业、统一标准和真实AI比较输出；只展示可从作业直接核对的差异，不将它等同于总体能力进步。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F14",
+      "beatId": "B28",
+      "sourceRequirement": "可要求模型按评分标准复盘；复盘的正确性及迁移到真实场景的效果尚未验证。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F15",
+      "beatId": "B29",
+      "sourceRequirement": "模型只能评阅用户主动写出的步骤与依据，不能读取未提供的思考或隐藏的完整思维过程。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F16",
+      "beatId": "B32",
+      "sourceRequirement": "逻辑表述通顺不能单独证明掌握；应配合新任务表现与事实依据判断，纸艺只说明检查推理连接。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F17",
+      "beatId": "B34",
+      "sourceRequirement": "必须保留真实AI角色指令、用户解释与AI追问；一次成功只证明该次会话，不证明遇到术语必然追问。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F18",
+      "beatId": "B35",
+      "sourceRequirement": "是否能稳定追踪错误推理需有真实测试；刻意错误须在练习结束纠正，不能把错误答案当知识发放。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F19",
+      "beatId": "B36",
+      "sourceRequirement": "适用所有学习方法是绝对化范围，本期示例不足以支持，需缩小到适合交叉检查的业务练习。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F20",
+      "beatId": "B37",
+      "sourceRequirement": "高手的工具选择不能一概而论；多工具是否增加价值取决于任务和独立证据。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F21",
+      "beatId": "B41",
+      "sourceRequirement": "多模型一致不等于正确或全局最优；需保留分歧、外部来源及人工判断，不展示自动全绿认证。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F22",
+      "beatId": "B42",
+      "sourceRequirement": "价值表达可由真人承担，但毫无保留以及暗示别人无法学会的比较没有依据；正式录制前须确认边界。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F23",
+      "beatId": "B43",
+      "sourceRequirement": "永远、最适合、最优均无实测证据；多AI并不保证正确，建议录制前删改保证式结论。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F24",
+      "beatId": "B44",
+      "sourceRequirement": "需实际准备完整提示词并在发布时确认可领取；本轮导演的图像提示词不能替代八种学习方法提示词。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    }
+  ],
+  "routePlans": {
+    "realMaterials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "R01",
+          "beatId": "B24",
+          "startAnchorText": "AI对比你前后产出",
+          "endAnchorText": "还是反复犯同一个老错误。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "screen-recording",
+          "usageRole": "demonstration",
+          "materialRequest": "用户录制同一道练习的前后两版作业及真实AI比较结果。屏幕先看两版关键句，再看同一评分标准下仍重复的错误或已修正点；保留输入与输出关系。可用本期新做的练习两版，必须如实标为练习，不伪称长期历史。脱敏账号、客户、个人信息；录10—15秒供后期选用。",
+          "reason": "本句承诺判断进步，真实差异比通用进度条更可信。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R02",
+          "beatId": "B34",
+          "startAnchorText": "你只要一说专业术语",
+          "endAnchorText": "要案例、要通俗解释。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "screen-recording",
+          "usageRole": "demonstration",
+          "materialRequest": "用户真实打开一段AI当学生的会话，展示角色指令、自己用一个术语（例如SOP）的解释，以及AI要求案例或大白话解释的真实反馈；录10—15秒，关键三处停留可读。不得事先拼造聊天截图或截去改变含义的上下文。",
+          "reason": "看到真实追问才能理解反向教学怎样操作。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "remove-or-rewrite-claim",
+          "generatedSubstituteAllowed": false
+        }
+      ]
+    },
+    "aiGeneratedVideos": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "G01",
+          "beatId": "B27",
+          "startAnchorText": "比如客户临时改需求",
+          "endAnchorText": "让你现场输出。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "representationPolicy": "synthetic-not-evidence",
+          "evidenceEligible": false,
+          "disclosureRequired": true,
+          "realEntityReenactmentForbidden": true,
+          "mode": "image-to-video",
+          "durationSeconds": 6,
+          "visualIntent": "具体呈现临场接到需求变更的压力，仅作情景演绎。",
+          "firstFramePrompt": "写实情景摄影，暖中性会议室，克制自然表演，深蓝与米白色调，16:9横幅。一位普通成年方案负责人坐在桌子左侧，身体微微前倾，视线落在桌面对面的米白资料夹上；画面右缘只露出另一位成年人的手，手掌停在资料夹边缘。资料夹合上、封面无文字，桌上有一台未亮屏的笔记本电脑和一支笔。中景侧视构图，背景是柔和虚化的百叶窗，主体手部完整，神情克制，底部留出字幕空间，没有公司标识、字幕或可读文件。",
+          "primaryAction": "右侧的手将米白资料夹沿桌面推至方案负责人面前",
+          "videoPrompt": "基于已确认首帧，右侧的手将米白资料夹沿桌面推至方案负责人面前，滑过明确距离，停在其双手前方并保持约一秒。动作在首秒开始，负责人保持注视资料夹，只有自然呼吸，固定侧视机位。资料夹全程闭合，不生成文件文字，不出现说话口型，手指数量与人物身份稳定。",
+          "negativePrompt": [
+            "真实客户或品牌标识",
+            "夸张争吵和羞辱",
+            "资料夹变形或凭空增殖",
+            "人物换脸和手指畸形",
+            "伪造平台界面与对白"
+          ]
+        }
+      ]
+    },
+    "paperEditorials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "P01",
+          "beatId": "B12",
+          "startAnchorText": "最少让你踩2次坑",
+          "endAnchorText": "直到你独立答对。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 7,
+          "reason": "让观众理解反复试错是训练过程；两个节点只是本稿练习设定，不是已验证的教学次数。",
+          "visualRole": "process",
+          "visualMetaphor": "有两处红色试错节点的纸槽路径，让练习过程而非标准答案成为视觉中心",
+          "composition": "斜俯视S形纸槽在中景贯穿，前景三块小字牌，后景低矮立体练习工位",
+          "referenceImageIds": [
+            "REF01",
+            "REF02"
+          ],
+          "textPlan": [
+            {
+              "text": "试错",
+              "surface": "前景左侧米白字牌"
+            },
+            {
+              "text": "追问",
+              "surface": "前景中央米白字牌"
+            },
+            {
+              "text": "重练",
+              "surface": "前景右侧米白字牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，前中后三层空间，真实接触阴影，柔和侧光，深蓝主体配少量朱红，16:9横幅。中景是一座厚卡纸切出的浅槽练习盘，盘中一条完整的S形槽道连接左下起点与右上出口，槽道两处弯角各有一枚固定的朱红纸钉，蓝色圆片停在左下起点，圆片与槽宽匹配。后景有微缩桌椅和未装饰的档案架，盘边可见层叠切口。前景左侧米白字牌清晰印着中文“试错”。前景中央米白字牌清晰印着中文“追问”。前景右侧米白字牌清晰印着中文“重练”。所有指定中文在这张首帧中一次生成，字形端正清楚、完整可读，每块字牌只写指定文字，无占位空牌，无其他文字；字牌正对观众且与活动道具分离，画面底部留出干净字幕区。",
+          "primaryAction": "蓝色圆片沿S形槽道向出口行进",
+          "videoPrompt": "基于已确认首帧，蓝色圆片沿S形槽道向出口行进，以清楚可辨的定格步进越过两处固定红节点，在第二个弯角有一次短暂停顿，抵达右上出口后保持约一秒。动作在开头半秒内开始，位移贯穿画面中部。机位固定，纸钉和字牌全程固定，中文字形、物件数量不变，无新物体。",
+          "negativePrompt": [
+            "中文缺字、错字、重绘或移动",
+            "只有镜头缩放而道具静止",
+            "物体消失、数量变化或穿透",
+            "平面卡片幻灯片质感",
+            "镜头切换或多件无关动作"
+          ]
+        },
+        {
+          "id": "P02",
+          "beatId": "B15",
+          "startAnchorText": "然后抛出3道检验题",
+          "endAnchorText": "才能往下学。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 6,
+          "reason": "三道检验通过才继续，演示规则而不是AI能准确判卷的保证。",
+          "visualRole": "mechanism",
+          "visualMetaphor": "三枚检验钥匙共同控制一根学习闸杆",
+          "composition": "正面略俯拍，中央纸闸与三枚短钥匙形成横向关系，通道延伸至后景",
+          "referenceImageIds": [
+            "REF01",
+            "REF02"
+          ],
+          "textPlan": [
+            {
+              "text": "检验一",
+              "surface": "前景左侧字牌"
+            },
+            {
+              "text": "检验二",
+              "surface": "前景中央字牌"
+            },
+            {
+              "text": "检验三",
+              "surface": "前景右侧字牌"
+            },
+            {
+              "text": "继续学习",
+              "surface": "后景高位字牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，前中后三层空间，真实接触阴影，柔和侧光，深蓝主体配少量朱红，16:9横幅。中央是一座蓝色纸质小闸门，一根朱红横杆水平封住中央通道，横杆右端有完整纸铰链，三枚米白短纸钥匙已各自稳稳插在闸台前的三个槽位内，钥匙不带字。通道后方是一座两级浅纸台阶。闸台、支座和横杆是独立实体，后景空间通透。前景左侧字牌清晰印着中文“检验一”。前景中央字牌清晰印着中文“检验二”。前景右侧字牌清晰印着中文“检验三”。后景高位字牌清晰印着中文“继续学习”。所有指定中文在这张首帧中一次生成，字形端正清楚、完整可读，每块字牌只写指定文字，无占位空牌，无其他文字；字牌正对观众且与活动道具分离，画面底部留出干净字幕区。",
+          "primaryAction": "朱红闸杆绕右端纸铰链抬起",
+          "videoPrompt": "基于已确认首帧，朱红闸杆绕右端纸铰链抬起，由水平闭合位置转至斜上方，中央通道被完整露出，终点保持约一秒。开头半秒内启动，抬升幅度明显，纸铰链与横杆保持实体连接。三枚钥匙和全部字牌固定，机位固定，中文字形保持不变，无闪烁。",
+          "negativePrompt": [
+            "中文缺字、错字、重绘或移动",
+            "只有镜头缩放而道具静止",
+            "物体消失、数量变化或穿透",
+            "平面卡片幻灯片质感",
+            "镜头切换或多件无关动作"
+          ]
+        },
+        {
+          "id": "P03",
+          "beatId": "B18",
+          "startAnchorText": "AI输出7天学习计划。",
+          "endAnchorText": "哪里容易踩坑。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 7,
+          "reason": "把目标落到可检查的七天安排；45分钟是原稿示例，不暗示人人都适合。",
+          "visualRole": "process",
+          "visualMetaphor": "七格连体纸日历展开为可执行路径",
+          "composition": "低角度三分之二侧视，左侧七格连体日历与右侧开放桌面形成展开空间",
+          "referenceImageIds": [
+            "REF01",
+            "REF02"
+          ],
+          "textPlan": [
+            {
+              "text": "七天计划",
+              "surface": "后景左上字牌"
+            },
+            {
+              "text": "每天四十五分",
+              "surface": "前景左下字牌"
+            },
+            {
+              "text": "任务与验收",
+              "surface": "后景右上字牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，前中后三层空间，真实接触阴影，柔和侧光，深蓝主体配少量朱红，16:9横幅。桌面左侧是一组七片相连的手风琴式卡纸日历，半开静置，每片的边缘均可辨认；七片均为素净的蓝白交替色，无数字和文字，连续纸接缝清楚。右侧桌面宽阔平整，后景小纸钟没有刻度，三块固定字牌分布在日历前后且不挡住日历。后景左上字牌清晰印着中文“七天计划”。前景左下字牌清晰印着中文“每天四十五分”。后景右上字牌清晰印着中文“任务与验收”。所有指定中文在这张首帧中一次生成，字形端正清楚、完整可读，每块字牌只写指定文字，无占位空牌，无其他文字；字牌正对观众且与活动道具分离，画面底部留出干净字幕区。",
+          "primaryAction": "七格连体纸日历沿桌面向右舒展",
+          "videoPrompt": "基于已确认首帧，七格连体纸日历沿桌面向右舒展，左端固定，右端平稳牵开，七个相连格面由紧密状态成为一条清楚的日程长带，保留纸接缝，结束保持约一秒。首秒有明显位移，单一侧向动作，机位固定。始终七格，字牌与中文字形不动，日历上不新增文字。",
+          "negativePrompt": [
+            "中文缺字、错字、重绘或移动",
+            "只有镜头缩放而道具静止",
+            "物体消失、数量变化或穿透",
+            "平面卡片幻灯片质感",
+            "镜头切换或多件无关动作"
+          ]
+        },
+        {
+          "id": "P04",
+          "beatId": "B21",
+          "startAnchorText": "AI抛出5个深挖底层的问题",
+          "endAnchorText": "盲区。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 7,
+          "reason": "追问揭示已存在的盲区；缺梁数量仅为视觉例子，不表示测量结果。",
+          "visualRole": "metaphor",
+          "visualMetaphor": "表面完整的纸屋通过侧向检查视窗暴露缺失的内部支撑",
+          "composition": "正面微缩纸屋剖视盒，侧边罩板与内部未完成支架形成前后遮挡",
+          "referenceImageIds": [
+            "REF01",
+            "REF02"
+          ],
+          "textPlan": [
+            {
+              "text": "表面会了",
+              "surface": "屋顶上方固定字牌"
+            },
+            {
+              "text": "实际盲区",
+              "surface": "前景右侧固定字牌"
+            },
+            {
+              "text": "五个追问",
+              "surface": "前景左侧固定字牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，前中后三层空间，真实接触阴影，柔和侧光，深蓝主体配少量朱红，16:9横幅。中景是一座纸质小屋的正面剖视模型，屋顶由两侧完整框架支撑，内部有一排五个可辨认的梁位，其中两个梁位没有横梁。屋体前方一块蓝色遮板遮住大部分内部，遮板横向轨道完整，右侧有容纳整块遮板的空槽。遮板初态偏左，边缘留有窄缝可见内部。屋顶上方固定字牌清晰印着中文“表面会了”。前景右侧固定字牌清晰印着中文“实际盲区”。前景左侧固定字牌清晰印着中文“五个追问”。所有指定中文在这张首帧中一次生成，字形端正清楚、完整可读，每块字牌只写指定文字，无占位空牌，无其他文字；字牌正对观众且与活动道具分离，画面底部留出干净字幕区。",
+          "primaryAction": "蓝色遮板沿横向轨道向右移开",
+          "videoPrompt": "基于已确认首帧，蓝色遮板沿横向轨道向右移开，完整露出小屋内部预先存在的五个梁位及其中两处缺口，遮板停在右侧空槽，剖面保持约一秒。遮板在首秒明显移动；屋体、屋顶与内部支架不动，缺口不凭空产生。固定机位，全部中文字牌稳定，不改变字形。",
+          "negativePrompt": [
+            "中文缺字、错字、重绘或移动",
+            "只有镜头缩放而道具静止",
+            "物体消失、数量变化或穿透",
+            "平面卡片幻灯片质感",
+            "镜头切换或多件无关动作"
+          ]
+        },
+        {
+          "id": "P05",
+          "beatId": "B25",
+          "startAnchorText": "如果停滞不前",
+          "endAnchorText": "不做虚假鼓励。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 6,
+          "reason": "对比同一错误是否仍然存在；不能把示意图当成用户已量化提升的记录。",
+          "visualRole": "comparison",
+          "visualMetaphor": "前后两张带相同缺口的作业纸重合，显露没有修复的老问题",
+          "composition": "俯视灯台，左后米白旧作业与右前半透明蓝色新作业错开，底部是红色底板",
+          "referenceImageIds": [
+            "REF01",
+            "REF02"
+          ],
+          "textPlan": [
+            {
+              "text": "上次作业",
+              "surface": "左上固定字牌"
+            },
+            {
+              "text": "这次作业",
+              "surface": "右上固定字牌"
+            },
+            {
+              "text": "同一问题",
+              "surface": "前景中央固定字牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，前中后三层空间，真实接触阴影，柔和侧光，深蓝主体配少量朱红，16:9横幅。桌面中央是一块浅红底板，米白纸片固定在底板左侧，半透明浅蓝纸片在右侧同一平面，两张纸片大小相同且各有一个相同位置的方形切口，彼此尚未对齐。纸片只有纤维纹理和切口，无印刷内容。后景有一叠素色练习册，灯光能显出重合时的层次。左上固定字牌清晰印着中文“上次作业”。右上固定字牌清晰印着中文“这次作业”。前景中央固定字牌清晰印着中文“同一问题”。所有指定中文在这张首帧中一次生成，字形端正清楚、完整可读，每块字牌只写指定文字，无占位空牌，无其他文字；字牌正对观众且与活动道具分离，画面底部留出干净字幕区。",
+          "primaryAction": "浅蓝纸片平移到米白纸片正上方对齐",
+          "videoPrompt": "基于已确认首帧，浅蓝纸片平移到米白纸片正上方对齐，两张纸片的方形缺口完全重合，红色底板从同一缺口清楚可见，终点保持约一秒。动作在开头半秒开始，纸片缓入缓停，机位固定；两张纸片不合并、不变形，字牌和文字固定。",
+          "negativePrompt": [
+            "中文缺字、错字、重绘或移动",
+            "只有镜头缩放而道具静止",
+            "物体消失、数量变化或穿透",
+            "平面卡片幻灯片质感",
+            "镜头切换或多件无关动作"
+          ]
+        },
+        {
+          "id": "P06",
+          "beatId": "B31",
+          "startAnchorText": "你必须讲清楚",
+          "endAnchorText": "每一步为什么这么判断，",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 6,
+          "reason": "把写出来的推理步骤是否有依据可视化，不宣称读取内心。",
+          "visualRole": "relationship",
+          "visualMetaphor": "推理像相接的纸牌链条，缺少连接便无法把依据传到结论",
+          "composition": "低侧角沿纸牌链看向右后方，断点在视觉中心，终端结论台在远端",
+          "referenceImageIds": [
+            "REF01",
+            "REF02"
+          ],
+          "textPlan": [
+            {
+              "text": "依据",
+              "surface": "前景左侧固定字牌"
+            },
+            {
+              "text": "推理",
+              "surface": "后景中部固定字牌"
+            },
+            {
+              "text": "结论",
+              "surface": "后景右侧固定字牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，前中后三层空间，真实接触阴影，柔和侧光，深蓝主体配少量朱红，16:9横幅。桌面上有两组直立蓝色厚纸片，每组三片，左组三片间隔紧密，右组三片间隔紧密，两组之间留有明显空段。第一片略微倾斜但尚未接触第二片，其余五片直立。左端是素白资料托盘，右端是矮纸台；所有物件已有固定位置，无箭头和额外符号。前景左侧固定字牌清晰印着中文“依据”。后景中部固定字牌清晰印着中文“推理”。后景右侧固定字牌清晰印着中文“结论”。所有指定中文在这张首帧中一次生成，字形端正清楚、完整可读，每块字牌只写指定文字，无占位空牌，无其他文字；字牌正对观众且与活动道具分离，画面底部留出干净字幕区。",
+          "primaryAction": "左侧三片纸牌依次倾倒至中央断点",
+          "videoPrompt": "基于已确认首帧，左侧三片纸牌依次倾倒至中央断点，传递在空段处停住，右侧三片保持直立，保留约一秒让观众看清断开的连接。首秒第一片即倾倒，只有这一段连锁运动，纸牌沿各自底边转动，不飞散，不跨越空段。固定机位，字牌中文字全程稳定。",
+          "negativePrompt": [
+            "中文缺字、错字、重绘或移动",
+            "只有镜头缩放而道具静止",
+            "物体消失、数量变化或穿透",
+            "平面卡片幻灯片质感",
+            "镜头切换或多件无关动作"
+          ]
+        },
+        {
+          "id": "P07",
+          "beatId": "B40",
+          "startAnchorText": "3号AI",
+          "endAnchorText": "对比不同思路。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "体现多角色接力复核，终点保留人工判断，不暗示多AI能保证最优。",
+          "visualRole": "process",
+          "visualMetaphor": "同一份任务经过试错、挑错与核验三个不同工位",
+          "composition": "三座微缩纸工位沿弧形单轨从左前至右后排布，前景有一份橙色任务卡",
+          "referenceImageIds": [
+            "REF01",
+            "REF02"
+          ],
+          "textPlan": [
+            {
+              "text": "试错",
+              "surface": "左侧工位上方字牌"
+            },
+            {
+              "text": "挑错",
+              "surface": "中部工位上方字牌"
+            },
+            {
+              "text": "核验",
+              "surface": "右侧工位上方字牌"
+            },
+            {
+              "text": "人工判断",
+              "surface": "终点旁固定字牌"
+            }
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，暖米色实体桌面，纤维卡纸与瓦楞纸，前中后三层空间，真实接触阴影，柔和侧光，深蓝主体配少量朱红，16:9横幅。一条连续浅色弧形纸槽贯穿三座蓝色微缩工作台，工作台依次放置纸迷宫模型、缺口纸板和素白资料夹，均是现成静物。橙色任务卡托架位于左前起点，托架与纸槽吻合。右后终点有一个空纸托盘及小型人形剪影，纸槽沿途无门挡。左侧工位上方字牌清晰印着中文“试错”。中部工位上方字牌清晰印着中文“挑错”。右侧工位上方字牌清晰印着中文“核验”。终点旁固定字牌清晰印着中文“人工判断”。所有指定中文在这张首帧中一次生成，字形端正清楚、完整可读，每块字牌只写指定文字，无占位空牌，无其他文字；字牌正对观众且与活动道具分离，画面底部留出干净字幕区。",
+          "primaryAction": "橙色任务卡托架沿弧形纸槽经过三个工位",
+          "videoPrompt": "基于已确认首帧，橙色任务卡托架沿弧形纸槽经过三个工位，保持同一实体形态行进，在各工位前短暂停顿，到达终点纸托盘前停止并保持约一秒。首秒已有可辨位移，只有托架连续移动，固定机位。三个工位、纸道具和字牌保持不动，中文字不变，不添加通过认证符号。",
+          "negativePrompt": [
+            "中文缺字、错字、重绘或移动",
+            "只有镜头缩放而道具静止",
+            "物体消失、数量变化或穿透",
+            "平面卡片幻灯片质感",
+            "镜头切换或多件无关动作"
+          ]
+        }
+      ]
+    }
+  },
+  "shotcraftOpportunities": [
+    {
+      "id": "SO01",
+      "beatId": "B01",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "钩子只突出问题本身，不把所有人或唯一做成认证口号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO02",
+      "beatId": "B08",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "预告八种方法，只有标题层次，不铺八张密集大卡。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO03",
+      "beatId": "B24",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "框出前后作业同一位置和真实反馈，重点随实录到达。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO04",
+      "beatId": "B34",
+      "baseVisualRoute": "real-evidence",
+      "intent": "screen-callout",
+      "reason": "依次聚焦用户术语、模型追问和具体例子，不遮挡原文。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO05",
+      "beatId": "B29",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "在真人段强调写出步骤，避免暗示读取内心。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO06",
+      "beatId": "B38",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "先在真人旁标分工角色，再进入纸艺接力关系。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    }
+  ],
+  "rhythmAudit": {
+    "basis": "semantic-runs-not-seconds",
+    "fixedCadenceForbidden": true,
+    "longSpeakerRunsReviewed": true,
+    "runs": [
+      {
+        "fromBeatId": "B01",
+        "toBeatId": "B11",
+        "risk": "high",
+        "decision": "shotcraft-opportunity",
+        "reason": "本组引入较长，拍摄用段落停顿与眼神变化承接；先处理绝对化说法，再决定最终开头长度，不用伪证据填充。",
+        "mitigationRefs": [
+          "SO01",
+          "SO02"
+        ]
+      },
+      {
+        "fromBeatId": "B13",
+        "toBeatId": "B14",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "本组承担方法名称、说明或结论；在实录句末留呼吸，插片从下一组机制锚点切入，避免抢跑。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B16",
+        "toBeatId": "B17",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "本组承担方法名称、说明或结论；在实录句末留呼吸，插片从下一组机制锚点切入，避免抢跑。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B19",
+        "toBeatId": "B20",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "本组承担方法名称、说明或结论；在实录句末留呼吸，插片从下一组机制锚点切入，避免抢跑。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B22",
+        "toBeatId": "B23",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "本组承担方法名称、说明或结论；在实录句末留呼吸，插片从下一组机制锚点切入，避免抢跑。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B26",
+        "toBeatId": "B26",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "本组承担方法名称、说明或结论；在实录句末留呼吸，插片从下一组机制锚点切入，避免抢跑。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B28",
+        "toBeatId": "B30",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "本组承担方法名称、说明或结论；在实录句末留呼吸，插片从下一组机制锚点切入，避免抢跑。",
+        "mitigationRefs": [
+          "SO05"
+        ]
+      },
+      {
+        "fromBeatId": "B32",
+        "toBeatId": "B33",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "本组承担方法名称、说明或结论；在实录句末留呼吸，插片从下一组机制锚点切入，避免抢跑。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B35",
+        "toBeatId": "B39",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "本组承担方法名称、说明或结论；在实录句末留呼吸，插片从下一组机制锚点切入，避免抢跑。",
+        "mitigationRefs": [
+          "SO06"
+        ]
+      },
+      {
+        "fromBeatId": "B41",
+        "toBeatId": "B45",
+        "risk": "medium",
+        "decision": "keep-presenter",
+        "reason": "本组承担方法名称、说明或结论；在实录句末留呼吸，插片从下一组机制锚点切入，避免抢跑。",
+        "mitigationRefs": []
+      }
+    ]
+  }
+}
