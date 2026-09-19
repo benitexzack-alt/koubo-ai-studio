@@ -1,0 +1,390 @@
+{
+  "schemaVersion": "koubo-shotcraft-auto-match-receipt/v1",
+  "status": "candidate-match-ready",
+  "taskId": "task-20260919T154314Z-cfc689b4",
+  "revisionId": "ai-training-screen-effects-r2",
+  "generatedAt": "2026-09-19T16:14:57.253Z",
+  "request": {
+    "path": "edit/20260919_ai_training_methods/07_预览与质检/录屏动效验证/r2/自动匹配请求.v1.json",
+    "sha256": "0cfb512622a5442d96f7ae0955e492262543c69db6b52c72d368492cf7bf6aff"
+  },
+  "inputs": {
+    "registry": {
+      "path": "skills/koubo-shotcraft-library/registry.v1.json",
+      "sha256": "27ccd156ace2a95533e9e255b27592cadf838658010fcb03c04f7e61317efd61"
+    },
+    "library": {
+      "path": "skills/koubo-shotcraft-library/upstream/gallery/api/library.json",
+      "sha256": "ee26285c40774272d7782f6d8ff28a8f7b559f13cdf6f5641eac1463417190e4"
+    },
+    "capabilityIndex": {
+      "path": "skills/koubo-shotcraft-library/card-capability-index.v2.json",
+      "sha256": "5a0cb31e1c7f2e8f5c51b2d5f98a36c29e2b07ecad0c7f179529254cdce78441"
+    },
+    "experienceLedger": {
+      "path": "skills/koubo-shotcraft-library/experience/shotcraft-acceptance-ledger.v1.json",
+      "sha256": "6b1750e42b5e9eb78a68a0ff52649d5295643108df781d1c16795feae879e19a"
+    },
+    "componentModule": {
+      "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+      "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+    }
+  },
+  "captions": {
+    "path": "edit/20260919_ai_training_methods/07_预览与质检/录屏动效验证/r2/实录字幕_机器候选.v1.json",
+    "sha256": "c6b4ffee4469b395393d003591874a5d2b7402c7b55e3785920481ab93f403d2"
+  },
+  "selection": {
+    "path": "edit/20260919_ai_training_methods/07_预览与质检/录屏动效验证/r2/动效选择.v1.json",
+    "sha256": "06dbc0a900d8424c6af4fc689eb00229b9825ac1a002aab58c93a8ddd4cdd1a1"
+  },
+  "experienceLookup": {
+    "path": "edit/20260919_ai_training_methods/07_预览与质检/录屏动效验证/r2/经验查询.v1.json",
+    "sha256": "828140124ea8743640fc6c96ca0c9b90e2d8f7bdc01801e1b75d1bf6ae70fb16"
+  },
+  "summary": {
+    "analyzedCardCount": 157,
+    "candidateRenderableCardCount": 5,
+    "adaptationRequiredCardCount": 152,
+    "applyCount": 1,
+    "notNeededCount": 1,
+    "adaptationQueue": [
+      "autolayout-gap-dial",
+      "avatar-grid-radial-build-colorize",
+      "before-after-slider-scrub",
+      "pill-slot-cycle",
+      "skeleton-reveal"
+    ]
+  },
+  "matches": [
+    {
+      "beatId": "screen-question",
+      "decision": "apply",
+      "effectId": "evidence-scan",
+      "cardName": "scanline-annotate-focus",
+      "component": "EvidenceScan",
+      "origin": "catalog-match",
+      "confidence": 0.68,
+      "threshold": 0.58,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "scanline-annotate-focus",
+          "category": "effects",
+          "renderability": "candidate-renderable",
+          "adapterId": "evidence-scan",
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "pill-slot-cycle",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.666825,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0392,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7471,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.658012,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7251,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.65619,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7024,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "paper-craft-moves",
+          "category": "ui-entrance",
+          "renderability": "candidate-renderable",
+          "adapterId": "paper-tape-pin",
+          "score": 0.652,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "pill-slot-cycle",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.666825,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0392,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7471,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.658012,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7251,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.65619,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7024,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "staleExperienceCaseIds": []
+    },
+    {
+      "beatId": "screen-archive",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 autolayout-gap-dial 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.58,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0.09061,
+      "rankedCandidates": [
+        {
+          "cardName": "autolayout-gap-dial",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.716321,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0222,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9667,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "before-after-slider-scrub",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.628121,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0222,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8267,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "scanline-annotate-focus",
+          "category": "effects",
+          "renderability": "candidate-renderable",
+          "adapterId": "evidence-scan",
+          "score": 0.625711,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0873,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.61453,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0252,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.603826,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0461,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.819,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "autolayout-gap-dial",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.716321,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0222,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9667,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "before-after-slider-scrub",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.628121,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0222,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8267,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.61453,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0252,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    }
+  ],
+  "gates": {
+    "onlyRegisteredAdaptersMayApply": true,
+    "adaptationCandidatesAreNotRenderable": true,
+    "candidatePreviewStillRequired": true,
+    "formalApprovalGranted": false,
+    "publicationApproved": false
+  }
+}

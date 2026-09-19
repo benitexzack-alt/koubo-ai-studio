@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "koubo-shotcraft-director-selection/v1",
+  "taskId": "task-20260919T154314Z-cfc689b4",
+  "revisionId": "ai-training-screen-effects-r2",
+  "directorProfile": {
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0"
+  },
+  "subtitleAuthority": "actual-recording",
+  "registry": {
+    "path": "skills/koubo-shotcraft-library/registry.v1.json",
+    "sha256": "27ccd156ace2a95533e9e255b27592cadf838658010fcb03c04f7e61317efd61"
+  },
+  "captions": {
+    "path": "edit/20260919_ai_training_methods/07_预览与质检/录屏动效验证/r2/实录字幕_机器候选.v1.json",
+    "sha256": "c6b4ffee4469b395393d003591874a5d2b7402c7b55e3785920481ab93f403d2"
+  },
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInFrames": 9155
+  },
+  "beats": [
+    {
+      "beatId": "screen-question",
+      "mainVisual": "real-evidence",
+      "frames": {
+        "startFrame": 3960,
+        "endFrameExclusive": 4178
+      },
+      "decision": "apply",
+      "effectId": "evidence-scan",
+      "purpose": "将实际反问对话中的一个问题聚焦展示；只说明AI追问，不证明学会技能，不冒充反向教学。",
+      "quote": "AI抛出五个深挖底层的问题专门挑那种看着会一上手就废的盲区",
+      "texts": [
+        "深挖底层的问题"
+      ],
+      "region": {
+        "x": 560,
+        "y": 180,
+        "width": 1080,
+        "height": 400
+      },
+      "protectedRegions": [
+        {
+          "x": 60,
+          "y": 624,
+          "width": 384,
+          "height": 216
+        },
+        {
+          "x": 0,
+          "y": 900,
+          "width": 1920,
+          "height": 180
+        }
+      ],
+      "fallback": "blocked",
+      "sourceCard": {
+        "cardName": "scanline-annotate-focus",
+        "category": "effects"
+      },
+      "matchContext": {
+        "mainVisual": "real-evidence",
+        "materialClass": "screen-recording",
+        "semanticIntents": [
+          "evidence",
+          "hierarchy",
+          "selection"
+        ],
+        "keyTerms": [
+          "深挖底层的问题"
+        ],
+        "fingerprint": "7d86dc9f5d309021c93ecfbfadc8f4019c5a6563cd19466da38dcb0f6e1b5cf3",
+        "origin": "catalog-match"
+      },
+      "componentProps": {
+        "width": 1080,
+        "height": 400,
+        "rect": {
+          "x": 20,
+          "y": 100,
+          "width": 1040,
+          "height": 150
+        },
+        "label": "深挖底层的问题"
+      },
+      "evidence": {
+        "asset": {
+          "path": "edit/20260919_ai_training_methods/01_素材投放区/02_用户录屏与演示/录屏2026-09-19 22.41.37.mov",
+          "sha256": "584920c7302b22985b3800bd340cafd16721434c1876428b53521dde221e3ca4"
+        },
+        "rect": {
+          "x": 20,
+          "y": 100,
+          "width": 1040,
+          "height": 150
+        },
+        "claimBoundary": "将实际反问对话中的一个问题聚焦展示；只说明AI追问，不证明学会技能，不冒充反向教学。"
+      }
+    },
+    {
+      "beatId": "screen-archive",
+      "mainVisual": "real-evidence",
+      "frames": {
+        "startFrame": 4526,
+        "endFrameExclusive": 4650
+      },
+      "decision": "not-needed",
+      "reason": "最匹配卡片 autolayout-gap-dial 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代"
+    }
+  ]
+}
