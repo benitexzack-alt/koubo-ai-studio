@@ -112,7 +112,7 @@ test('显式历史证据只校验原始清单与成片字节，不冒充当前�
       bytes: statSync(manifestPath).size,
     },
     video: {
-      path: relativeProject(videoPath),
+      path: videoPath,
       sha256: sha256File(videoPath),
       bytes: statSync(videoPath).size,
     },
@@ -128,6 +128,15 @@ test('显式历史证据只校验原始清单与成片字节，不冒充当前�
   assert.equal(result.publishAuthorized, false);
   assert.equal(result.publiclyPublished, false);
   assert.equal(existsSync(mediaMarker), false, '历史证据校验不得调用 ffmpeg/ffprobe');
+
+  const cliResult = spawnSync(process.execPath, [validator, releasePath], {
+    cwd: projectRoot,
+    encoding: 'utf8',
+    env: {...process.env, PATH: binRoot},
+  });
+  assert.equal(cliResult.status, 0, `${cliResult.stdout}\n${cliResult.stderr}`);
+  assert.match(cliResult.stdout, /RPG2_HISTORICAL_EVIDENCE_OK/u);
+  assert.equal(existsSync(mediaMarker), false, '历史证据命令行校验不得调用 ffmpeg/ffprobe');
 });
 
 test('历史 scoped-direct-export 只能由不可变 Git 提交补证漂移框架文件', () => {
@@ -141,6 +150,11 @@ test('历史 scoped-direct-export 只能由不可变 Git 提交补证漂移框�
     mode: 'immutable-git-snapshot',
     releasePath: 'workflow/releases/20260913_ai_no_new_business_model_v8_r1_v1.json',
     releaseSha256: '33e7b94a30034cf0cadea8dbbc61f4c2eaab2706e3cd30aa6974ad26a5819814',
+    allowedFrameworkDrift: [
+      'skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs',
+      'tools/director-production-binding-core.mjs',
+      'workflow/active-production-profile.v1.json',
+    ],
   };
 
   const result = validateHistoricalScopedDirectExportBindingV1({
@@ -155,6 +169,7 @@ test('历史 scoped-direct-export 只能由不可变 Git 提交补证漂移框�
   assert.equal(result.jobSnapshotSha256, release.productionGate.jobSnapshotSha256);
   assert.equal(result.scopedDirectExportSha256, release.productionGate.scopedDirectExportSha256);
   assert.equal(result.historicalBindingCommit, historicalBinding.commit);
+  assert.deepEqual(result.historicalFallbacks, historicalBinding.allowedFrameworkDrift);
 
   assert.throws(
     () => validateHistoricalScopedDirectExportBindingV1({
@@ -165,6 +180,19 @@ test('历史 scoped-direct-export 只能由不可变 Git 提交补证漂移框�
       jobPath,
     }),
     (error) => error?.code === 'RPG2_HISTORICAL_GIT_COMMIT_INVALID',
+  );
+  assert.throws(
+    () => validateHistoricalScopedDirectExportBindingV1({
+      projectRoot,
+      gate: {
+        ...release.productionGate,
+        historicalBinding: {...historicalBinding, allowedFrameworkDrift: historicalBinding.allowedFrameworkDrift.slice(1)},
+      },
+      release,
+      job,
+      jobPath,
+    }),
+    (error) => error?.code === 'RPG2_HISTORICAL_DRIFT_SCOPE_MISMATCH',
   );
 });
 

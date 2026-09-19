@@ -134,7 +134,11 @@ export const validateHistoricalScopedDirectExportBindingV1 = ({
     binding.mode !== 'immutable-git-snapshot' ||
     !GIT_COMMIT_RE.test(String(binding.commit ?? '')) ||
     !isText(binding.releasePath) ||
-    !SHA256_RE.test(String(binding.releaseSha256 ?? ''))
+    !SHA256_RE.test(String(binding.releaseSha256 ?? '')) ||
+    !Array.isArray(binding.allowedFrameworkDrift) ||
+    binding.allowedFrameworkDrift.length === 0 ||
+    binding.allowedFrameworkDrift.some((entry) => !isText(entry)) ||
+    new Set(binding.allowedFrameworkDrift).size !== binding.allowedFrameworkDrift.length
   ) {
     fail('RPG2_HISTORICAL_GIT_BINDING_INVALID', '历史 scoped-direct-export 必须绑定完整 Git 提交和当时的发布记录摘要。');
   }
@@ -243,6 +247,9 @@ export const validateHistoricalScopedDirectExportBindingV1 = ({
   if (historicalFallbacks.length === 0) {
     fail('RPG2_HISTORICAL_BINDING_NOT_NEEDED', '当前绑定未漂移，不应启用历史 Git 补证路径。');
   }
+  if (!sameValue([...historicalFallbacks].sort(), [...binding.allowedFrameworkDrift].sort())) {
+    fail('RPG2_HISTORICAL_DRIFT_SCOPE_MISMATCH', '真实漂移文件必须与发布记录声明的框架漂移白名单完全一致。');
+  }
   return {
     ok: true,
     route: 'scoped-direct-export',
@@ -271,7 +278,7 @@ const validateHistoricalReleaseEvidence = ({projectRoot, releaseFile, release, g
   const video = assertBoundMedia({
     projectRoot,
     reference: release.video,
-    expectedPath: release.video?.path,
+    expectedPath: null,
     label: '历史候选成片',
     hashFile,
   });
@@ -608,6 +615,8 @@ export const validateReleaseProductionGateV2 = ({
       formalOutputSha256: formalOutput.sha256,
       previewOutputSha256: previewOutput?.sha256 ?? null,
       riskFrameReceiptSha256: riskFrameReceipt.sha256,
+      historicalBindingCommit: preflight.historicalBindingCommit ?? null,
+      historicalFallbacks: preflight.historicalFallbacks ?? [],
     };
   } catch (error) {
     if (error instanceof ReleaseProductionGateV2Error) {

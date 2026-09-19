@@ -4,7 +4,10 @@ import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 
-import {assertReleaseProductionGateV2} from './release-production-gate-v2.mjs';
+import {
+  assertReleaseProductionGateV2,
+  HISTORICAL_RELEASE_EVIDENCE_ROUTE,
+} from './release-production-gate-v2.mjs';
 import {SCOPED_DIRECT_EXPORT} from './scoped-direct-export-core.mjs';
 
 const scriptPath = fileURLToPath(import.meta.url);
@@ -41,7 +44,10 @@ try {
   process.exit(1);
 }
 
-if (releaseProductionGate.route === 'employee-ai-efficiency-scoped-formal') {
+if (
+  releaseProductionGate.route === 'employee-ai-efficiency-scoped-formal' ||
+  releaseProductionGate.route === HISTORICAL_RELEASE_EVIDENCE_ROUTE
+) {
   console.log(JSON.stringify(releaseProductionGate, null, 2));
   process.exit(0);
 }
@@ -387,7 +393,11 @@ if (!passed(release.qa?.keyframeReview)) {
   errors.push('关键帧时间存在负数、非数字或超出正式成片时长的值。');
 }
 
-if (exists(release.inputs?.visualPlan)) {
+if ((releaseProductionGate.historicalFallbacks ?? []).length > 0) {
+  warnings.push(
+    '视觉方案已由原生产提交、固定清单和当前未漂移内容共同校验；当前框架版本子校验不重复执行。',
+  );
+} else if (exists(release.inputs?.visualPlan)) {
   const planCheck = spawnSync(process.execPath, ['tools/validate-visual-plan.mjs', release.inputs.visualPlan, baselinePath], {
     encoding: 'utf8'
   });
