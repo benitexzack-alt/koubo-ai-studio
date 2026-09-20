@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "ai-training-independent-code-review/v1",
+  "reviewedAt": "2026-09-20T12:29:36.190Z",
+  "reviewer": "/root/final_assets",
+  "scope": "仅新正式片代码、时间窗、音效计划、静态布局、当前一条正式入口的独立只读审查；未改生产文件",
+  "status": "code-review-passed-with-render-audio-qa-pending",
+  "visualRenderWatched": false,
+  "audioListened": false,
+  "fullWatchConfirmed": false,
+  "publishAuthorized": false,
+  "inspectedFiles": [
+    {
+      "path": "remotion/src/ai-training-final-r1/index.tsx",
+      "sha256": "4da4e9208b684592fd65c0c65b9fc5846869ce2d807c214ae1083181fc6e9429"
+    },
+    {
+      "path": "remotion/src/ai-training-final-r1/runtime-plan.r1.json",
+      "sha256": "4cb28efa71cb17d74b374444c3d3f3bf7cfd00ac79919be847e7d4bae4dff137"
+    },
+    {
+      "path": "edit/20260919_ai_training_methods/00_控制/prepare-final.r1.mjs",
+      "sha256": "761d5c49697d7d2595500b10031b11c26cc3078ecfcb499fbea5aa196c89cc99"
+    },
+    {
+      "path": "edit/20260919_ai_training_methods/00_控制/formal-adapter.r1.mjs",
+      "sha256": "d73fa95845b81414c4c6d08bf2481c3cb1e62842c71a3fb76086ec07b0c83ae4"
+    },
+    {
+      "path": "edit/20260919_ai_training_methods/00_控制/build-formal-binding.r1.mjs",
+      "sha256": "91024b945835320815b068e3f27524ce325e6e55796c50c7faa465646be6c60b"
+    },
+    {
+      "path": "tools/scoped-direct-export-core.mjs",
+      "sha256": "d36d7d7b828ff53fefc10291267db341e9cc1d5dcf86220c07900e2e07f3dd69"
+    },
+    {
+      "path": "remotion/src/ai-training-final-r1/vendor/PresenterMediaStage.tsx",
+      "sha256": "2101b1fb0a4ddef9de604c731c10a16d306d5af5306e61b42068d0416f738bb9"
+    },
+    {
+      "path": "remotion/src/ai-training-final-r1/vendor/platform-safe-areas.v1.json",
+      "sha256": "276d4bf151798bd4971c13560a8f3411589df0c839cdf19fc8b5665a0b8ea49c"
+    },
+    {
+      "path": "remotion/src/components/AdaptiveBilingualCaptionOverlay.tsx",
+      "sha256": "e9fd51cd5d36cd1b98a6d08a3f5eced851992e26f65739e6c3bbdbb766d0570f"
+    },
+    {
+      "path": "remotion/src/employee-ai-efficiency-v8-r2/V8SemanticStage.r2.tsx",
+      "sha256": "13c912321e7bd566c93e2e60086790d636135fe05d026fd101b1fa0743fceb2a"
+    },
+    {
+      "path": "skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs",
+      "sha256": "30bbb0fe489af3b2ab78300d70ffbd0671f78cf8dc045d103d9817028d7a7acb"
+    },
+    {
+      "path": "remotion/src/ai-training-screen-r2/index.tsx",
+      "sha256": "9a6ad9dbbe4da27999976f4d57c6963ff898afcc15a3426189d12da0c9891750"
+    }
+  ],
+  "confirmed": [
+    "8段生成素材均匹配已核验P01-P07/G01原文件；代码未使用Loop、Freeze或超过素材时长的入点。",
+    "10段插片末帧请求时间均在源视频内；屏幕问题75帧/2.5秒、存档124帧/4.133333秒精确覆盖原派生素材。",
+    "原片代理9155帧/305.166667秒，完整主视频始终保持全片背景；无删减、重排或加速。",
+    "原声original.wav与final-mix.wav时长均305.155208秒，生成素材及画面载体静音，叠加原声混音而非AI配音。相对画面少11.5毫秒继承源音频时长。",
+    "92个动效事件与92个SFX一一匹配、同帧对齐，没有漏配和片尾越界；字幕与持续电子运镜未配逐帧杂声。",
+    "语义层放大参数1.15，只缩放语义层，不缩放字幕/录屏小窗；生成画面与语义层的时间窗无重叠。",
+    "生成画面视窗x184/y6/1552x873，底边879；字幕区域y930-1038，51像素间隙。真人小窗x64/y600/278x278，底边878，与字幕52像素间隙。",
+    "录屏绝对入点3990/30=133.0秒及4526/30=150.866667秒，PresenterMediaStage使用同绝对帧trimBefore确保本期嘴型同步。",
+    "本期adapter锁定唯一job/video/route/manifest、固定原片SHA、R2认可片SHA、真实用户消息、9155帧、V8、最终路径；不授权旧片泛化。",
+    "正式构建采集所有投放源文件、原声/混音/音效/public目录、运行图依赖、字幕/实录策略及授权证据，主媒体来源未见遗漏。",
+    "明确42秒代表段已确认并跳过附加小样；fullWatchConfirmed与publishAuthorized始终false，skillPackageAccepted:false，不冒充全片人审或旧导演机器验收。",
+    "现有历史路由分支未因新增本期dispatch而放松：仅本期route命中本期adapter。"
+  ],
+  "pending": [
+    {
+      "severity": "非代码阻断项",
+      "item": "必须做正式渲染抽帧与正常音量试听",
+      "reason": "静态代码无法证明面部/手势实际遮挡、中文字宽适配和听感；92个音效中最短相隔8帧，混音限幅不能代替是否抢人声的听审。"
+    },
+    {
+      "severity": "源素材已知限制",
+      "item": "P02底部字牌在源片后半段已出画",
+      "reason": "独立字幕区可避免新增遮挡，但不能恢复原片不存在的文字。"
+    },
+    {
+      "severity": "执行缓存注意",
+      "item": "prepare-final.r1.mjs对已存在final-mix.wav和host.mp4采用跳过策略",
+      "reason": "本轮计划与文件已生成；若后续修改任何SFX帧/音量/文件或原声，必须明确重建对应派生文件，重新绑定，不能仅更新runtime计划便复用旧混音。"
+    },
+    {
+      "severity": "绑定待执行",
+      "item": "审查时AI_TRAINING_FORMAL_R1_PIN为空",
+      "reason": "这是构建前状态；构建和pin更新后必须运行原生预检。此审查不声称预检已通过。"
+    }
+  ],
+  "noProductionFilesModified": true
+}

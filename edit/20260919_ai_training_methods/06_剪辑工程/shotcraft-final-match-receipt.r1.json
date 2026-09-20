@@ -1,0 +1,1925 @@
+{
+  "schemaVersion": "koubo-shotcraft-auto-match-receipt/v1",
+  "status": "candidate-match-ready",
+  "taskId": "task-20260919T154314Z-cfc689b4",
+  "revisionId": "ai-training-final-r1",
+  "generatedAt": "2026-09-20T12:30:30.569Z",
+  "request": {
+    "path": "edit/20260919_ai_training_methods/06_剪辑工程/shotcraft-final-request.r1.json",
+    "sha256": "963a0f436a19928530800b11276f852fa4ad0719569b7b88166bd4c552461fcc"
+  },
+  "inputs": {
+    "registry": {
+      "path": "skills/koubo-shotcraft-library/registry.v1.json",
+      "sha256": "27ccd156ace2a95533e9e255b27592cadf838658010fcb03c04f7e61317efd61"
+    },
+    "library": {
+      "path": "skills/koubo-shotcraft-library/upstream/gallery/api/library.json",
+      "sha256": "ee26285c40774272d7782f6d8ff28a8f7b559f13cdf6f5641eac1463417190e4"
+    },
+    "capabilityIndex": {
+      "path": "skills/koubo-shotcraft-library/card-capability-index.v2.json",
+      "sha256": "5a0cb31e1c7f2e8f5c51b2d5f98a36c29e2b07ecad0c7f179529254cdce78441"
+    },
+    "experienceLedger": {
+      "path": "skills/koubo-shotcraft-library/experience/shotcraft-acceptance-ledger.v1.json",
+      "sha256": "6b1750e42b5e9eb78a68a0ff52649d5295643108df781d1c16795feae879e19a"
+    },
+    "componentModule": {
+      "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+      "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+    }
+  },
+  "captions": {
+    "path": "edit/20260919_ai_training_methods/05_实录与字幕/final-r1-bilingual-captions.json",
+    "sha256": "feedfbf1bcb6081263e064161a4c15f8f91167a2be19facf2c066b67361174b8"
+  },
+  "selection": {
+    "path": "edit/20260919_ai_training_methods/06_剪辑工程/shotcraft-final-selection.r1.json",
+    "sha256": "7f343670ee90a1d3ec4254ef4941b695e63c48492906b9f8269750c7275e738f"
+  },
+  "experienceLookup": {
+    "path": "edit/20260919_ai_training_methods/06_剪辑工程/shotcraft-final-experience-lookup.r1.json",
+    "sha256": "946ca292e7cb88430fae24d2992d206c7b05aab88e74a3e132b2a846be10961c"
+  },
+  "summary": {
+    "analyzedCardCount": 157,
+    "candidateRenderableCardCount": 5,
+    "adaptationRequiredCardCount": 152,
+    "applyCount": 1,
+    "notNeededCount": 19,
+    "adaptationQueue": [
+      "autolayout-gap-dial",
+      "avatar-grid-radial-build-colorize",
+      "before-after-slider-scrub",
+      "canvas-materialize-moves",
+      "card-stack",
+      "draw-svg-trace",
+      "pill-slot-cycle",
+      "platform-hinge-rise",
+      "skeleton-reveal",
+      "text-column-converge",
+      "type-entrance-moves"
+    ]
+  },
+  "matches": [
+    {
+      "beatId": "speaker-01",
+      "decision": "not-needed",
+      "reason": "本段没有达到可执行组件的语义匹配阈值，保留真人或真实素材以避免错配",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.603998,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0222,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.576551,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0253,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.55671,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5556,
+            "lexical": 0.0188,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "orbit-ring-title-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.55671,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5556,
+            "lexical": 0.0188,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.5554,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5556,
+            "lexical": 0.0115,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.603998,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0222,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.576551,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0253,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.55671,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5556,
+            "lexical": 0.0188,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "P01",
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层",
+      "rankedCandidates": [],
+      "adaptationCandidates": []
+    },
+    {
+      "beatId": "speaker-02",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.746229,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0346,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.673315,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0184,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.645104,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0172,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "hashtag-to-pill-materialize",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.619239,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0513,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "orbit-ring-title-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.605937,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.033,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.746229,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0346,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.673315,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0184,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.645104,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0172,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "P02",
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层",
+      "rankedCandidates": [],
+      "adaptationCandidates": []
+    },
+    {
+      "beatId": "speaker-03",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.744615,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0256,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "card-stack",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.638874,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0215,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.637339,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.0292,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.636894,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0105,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.620493,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0182,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.1278,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.744615,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0256,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "card-stack",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.638874,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0215,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.637339,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.0292,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "P03",
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层",
+      "rankedCandidates": [],
+      "adaptationCandidates": []
+    },
+    {
+      "beatId": "speaker-04",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.746363,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0354,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.674949,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0.0164,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.55,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.65915,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0.0175,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "cycle-glass-node-morph",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.624292,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0.0068,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.9884,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.609895,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.4737,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.746363,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0354,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.674949,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0.0164,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.55,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.65915,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0.0175,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "P04",
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层",
+      "rankedCandidates": [],
+      "adaptationCandidates": []
+    },
+    {
+      "beatId": "speaker-05",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 skeleton-reveal 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.734596,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9825,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.664162,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0.0199,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.0571,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.6332,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0.0146,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7321,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "neon-frame-forerun",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.616889,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.9111,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "light-play-moves",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.584075,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.1509,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.734596,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9825,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.664162,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0.0199,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.0571,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.6332,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0.0146,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7321,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "screen-question",
+      "decision": "apply",
+      "effectId": "evidence-scan",
+      "cardName": "scanline-annotate-focus",
+      "component": "EvidenceScan",
+      "origin": "catalog-match",
+      "confidence": 0.68,
+      "threshold": 0.58,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "scanline-annotate-focus",
+          "category": "effects",
+          "renderability": "candidate-renderable",
+          "adapterId": "evidence-scan",
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "canvas-materialize-moves",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.65283,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.6604,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "paper-craft-moves",
+          "category": "ui-entrance",
+          "renderability": "candidate-renderable",
+          "adapterId": "paper-tape-pin",
+          "score": 0.652,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "canvas-materialize-moves",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.65283,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.6604,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "staleExperienceCaseIds": []
+    },
+    {
+      "beatId": "speaker-06",
+      "decision": "not-needed",
+      "reason": "本段没有达到可执行组件的语义匹配阈值，保留真人或真实素材以避免错配",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.66103,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0.0279,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.656,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "pill-slot-cycle",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.579,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "hashtag-to-pill-materialize",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.576591,
+          "scoreBreakdown": {
+            "semanticIntent": 0.4,
+            "lexical": 0.0477,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "light-play-moves",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.574019,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0.0112,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.66103,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0.0279,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.656,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "pill-slot-cycle",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.579,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "screen-archive",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 autolayout-gap-dial 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "autolayout-gap-dial",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.822729,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.03,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9667,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.811656,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0341,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.819,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "before-after-slider-scrub",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.735921,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0377,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8267,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "bubble-swarm-takeover",
+          "category": "transition",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.714845,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0164,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.9612,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "particle-sand-fill",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.704079,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0164,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.8267,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "autolayout-gap-dial",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.822729,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.03,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9667,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.811656,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0341,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.819,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "before-after-slider-scrub",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.735921,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0377,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8267,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "P05",
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层",
+      "rankedCandidates": [],
+      "adaptationCandidates": []
+    },
+    {
+      "beatId": "speaker-07",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.742585,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0144,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.639253,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0236,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "card-stack",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.63887,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0215,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.635,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "hashtag-to-pill-materialize",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.620894,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0605,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.742585,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0144,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.639253,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0236,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "card-stack",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.63887,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0215,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "G01",
+      "decision": "not-needed",
+      "reason": "本段由生成视频承担完整情景演绎，禁止再叠加 Shotcraft 信息层",
+      "rankedCandidates": [],
+      "adaptationCandidates": []
+    },
+    {
+      "beatId": "speaker-08",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.745305,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0295,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "card-stack",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.641393,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0355,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.636942,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0108,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.635,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "hashtag-to-pill-materialize",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.616059,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.066,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9271,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.745305,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0295,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "card-stack",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.641393,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0355,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.636942,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0108,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "P06",
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层",
+      "rankedCandidates": [],
+      "adaptationCandidates": []
+    },
+    {
+      "beatId": "speaker-09",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.744786,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0266,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.671942,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0108,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.645046,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0169,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "orbit-ring-title-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.607268,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0404,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.601903,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0106,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.744786,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0266,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.671942,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0108,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.645046,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0169,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "P07",
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层",
+      "rankedCandidates": [],
+      "adaptationCandidates": []
+    },
+    {
+      "beatId": "speaker-10",
+      "decision": "not-needed",
+      "reason": "本段没有达到可执行组件的语义匹配阈值，保留真人或真实素材以避免错配",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.672633,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0146,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "type-entrance-moves",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.648576,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0365,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.603465,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0193,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.601538,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0085,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "hashtag-to-pill-materialize",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.596455,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0488,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7209,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.672633,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0146,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "type-entrance-moves",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.648576,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8333,
+            "lexical": 0.0365,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.603465,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0193,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    }
+  ],
+  "gates": {
+    "onlyRegisteredAdaptersMayApply": true,
+    "adaptationCandidatesAreNotRenderable": true,
+    "candidatePreviewStillRequired": true,
+    "formalApprovalGranted": false,
+    "publicationApproved": false
+  }
+}

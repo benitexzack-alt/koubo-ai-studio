@@ -12,6 +12,8 @@ import {
 } from '../edit/20260917_ai_efficiency_sharing/00_工程控制/preview-adapter.v1.mjs';
 import {assertEmployeeAIEfficiencyFormal, isEmployeeAIEfficiencyFormal}
   from '../edit/20260917_ai_efficiency_sharing/00_工程控制/formal-adapter.v1.mjs';
+import {assertAITrainingFormalR1, isAITrainingFormalR1}
+  from '../edit/20260919_ai_training_methods/00_控制/formal-adapter.r1.mjs';
 import {assertEmployeeAIEfficiencyPreview as assertEmployeeRepairPreview, isEmployeeAIEfficiencyPreview as isEmployeeRepairPreview}
   from '../edit/20260917_ai_efficiency_sharing/00_工程控制/preview-adapter.r2.mjs';
 import {
@@ -23,6 +25,7 @@ import {
 
 export const SCOPED_DIRECT_EXPORT_MANIFEST_SHA256 = 'ba74d65e7bd59446718171aa38de6b0799092dbedb2180abd6c385587f28653e';
 export const EMPLOYEE_AI_FORMAL_PIN = '2e15109ab9c0757b7f09c0044933c360cf8d7086bf52890cb491cf8d360df6f3';
+export const AI_TRAINING_FORMAL_R1_PIN = 'a02ea83b97c4fc1f2a2897015314ae46fac08bca2d213b76e60679f2d0079260';
 export const EMPLOYEE_AI_REPAIR_PINS = Object.freeze({
   "with-sfx": "dd701e412388e4f18ae790d4a2298304077ca780419b4a82b83f00b802ec5e61",
   "no-sfx": "8fdcefffc03836c47f1d189348920a6fe1743111951b88eb5399a4d916dcd5a7"
@@ -313,6 +316,9 @@ function userText(line) {
 }
 
 export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = null, command = 'formal'}) {
+  if (isAITrainingFormalR1(job)) {
+    return assertAITrainingFormalR1({projectRoot, job, jobPath, command, pin: AI_TRAINING_FORMAL_R1_PIN});
+  }
   if (isEmployeeRepairPreview(job)) {
     return assertEmployeeRepairPreview({projectRoot, job, jobPath, command, pins: EMPLOYEE_AI_REPAIR_PINS});
   }

@@ -1,0 +1,36 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const base='edit/20260919_ai_training_methods',pkg=`${base}/09_发布包/AI八种训练方法_V8_R1`,qa=`${base}/07_预览与质检/正式R1`;
+const read=p=>JSON.parse(fs.readFileSync(p));
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const write=(p,v)=>fs.writeFileSync(p,JSON.stringify(v,null,2)+'\n');
+const media=read(`${qa}/media-qa.r1.json`),visual=read(`${qa}/visual-review.r1.json`),audio=read(`${qa}/final-aac-audio-qa.json`);
+if(!media.fullDecodePassed||media.blackFramesDetected||visual.status!=='sampled-risk-frames-passed'||audio.status!=='machine-audio-passed')throw Error('正式片质检尚未齐备');
+const screenshotTime=Number(process.argv[2]);
+if(!Number.isFinite(screenshotTime)||screenshotTime<0||screenshotTime>=media.durationSeconds)throw Error('需要本片内有效截图秒数');
+const record=read(fs.existsSync(`${pkg}/发布记录.v1.json`)?`${pkg}/发布记录.v1.json`:`${pkg}/release.pending.json`),video=media.output.path,screenshot=record.recommendedScreenshot.path;
+if(sha(video)!==media.output.sha256)throw Error('正式片质检后发生变化');
+if(!fs.existsSync(screenshot)){
+ const result=spawnSync('ffmpeg',['-v','error','-n','-ss',String(screenshotTime),'-i',video,'-frames:v','1',screenshot],{encoding:'utf8'});
+ if(result.status!==0)throw Error(result.stderr);
+}
+const deliveryVideo=`${pkg}/${path.basename(video)}`;
+if(!fs.existsSync(deliveryVideo))fs.copyFileSync(video,deliveryVideo,fs.constants.COPYFILE_EXCL);
+if(sha(deliveryVideo)!==media.output.sha256)throw Error('发布包中的MP4与正式片不一致');
+const srt=`${pkg}/实录中英字幕.srt`;
+if(!fs.existsSync(srt))fs.copyFileSync(`${base}/05_实录与字幕/final-r1-bilingual-captions.srt`,srt,fs.constants.COPYFILE_EXCL);
+record.status='ready-for-user-review';
+record.finalVideo={path:video,sha256:media.output.sha256,status:'rendered-and-technically-checked',seconds:media.durationSeconds,packageCopy:deliveryVideo};
+record.recommendedScreenshot={...record.recommendedScreenshot,sha256:sha(screenshot),sourceVideo:video,sourceVideoSha256:media.output.sha256,sourceTimeSeconds:screenshotTime,status:'extracted-from-this-final-video'};
+record.qa={media:`${qa}/media-qa.r1.json`,visual:`${qa}/visual-review.r1.json`,audio:`${qa}/final-aac-audio-qa.json`,shotcraft:`${qa}/shotcraft-application.r1.json`};
+record.missingBeforeCompleteDelivery=[];
+record.note='本地交付文件已齐备；实录原声完整保留，字幕按实际口播。完成技术检查与抽帧复核，不等于用户全片验收或平台发布。封面交付为本片真人截图及3:4合成提示词，未生成封面图片。';
+record.checks={originalVoiceRetained:true,scriptSubstitution:false,sfxEvents:92,semanticScale:1.15,screenPresenterPlacement:'bottom-left',newPreviewRendered:false,userFullWatchConfirmed:false,publishAuthorized:false};
+record.audioEvidence=audio.schemaVersion??audio.status??'见音频报告';
+const inventory=[video,deliveryVideo,screenshot,`${pkg}/${record.coverPrompt}`,`${pkg}/${record.copy}`,`${pkg}/${record.copyReview}`,srt,record.spokenSourcePolicy,record.captions.path,...Object.values(record.qa)];
+record.files=inventory.map(p=>{if(!fs.statSync(p).size)throw Error(`文件为空：${p}`);return {path:p,sha256:sha(p),bytes:fs.statSync(p).size};});
+write(`${pkg}/发布记录.v1.json`,record);
+write(`${pkg}/release.pending.json`,{schemaVersion:1,status:'superseded-by-complete-local-package',currentRecord:'发布记录.v1.json',fullWatchConfirmed:false,publishAuthorized:false});
+console.log(JSON.stringify({status:record.status,package:pkg,video:deliveryVideo,screenshot,time:screenshotTime,files:record.files.length}));

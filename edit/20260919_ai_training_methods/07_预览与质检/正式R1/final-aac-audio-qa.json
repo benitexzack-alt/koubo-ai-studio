@@ -1,0 +1,1755 @@
+{
+  "schemaVersion": "ai-training-final-aac-audio-qa/v1",
+  "scope": "实际正式MP4解码AAC与已核验PCM混音交叉比对；不修改媒体；不声称人工试听",
+  "status": "machine-audio-passed",
+  "audioListened": false,
+  "fullWatchConfirmed": false,
+  "publishAuthorized": false,
+  "bindings": [
+    {
+      "path": "edit/20260919_ai_training_methods/08_正式成片/AI八种训练方法_V8_R1_1080P_正式候选.mp4",
+      "sha256": "07436c43eceb0af3827d184da362aea912275149bb5da605868f8403bf84119a"
+    },
+    {
+      "path": "remotion/src/ai-training-final-r1/runtime-plan.r1.json",
+      "sha256": "4cb28efa71cb17d74b374444c3d3f3bf7cfd00ac79919be847e7d4bae4dff137"
+    },
+    {
+      "path": "remotion/public-ai-training-final-r1/audio/final-mix.wav",
+      "sha256": "3633119bf55bd905dfb898b189b1c950d38d812c006f7f1608248f9d1070c519"
+    },
+    {
+      "path": "remotion/public-ai-training-final-r1/audio/voice-normalized.wav",
+      "sha256": "89c24dd32014c9143ba6cb6f8f9e367a4118ba130abdf2838c64554562bc4b01"
+    },
+    {
+      "path": "edit/20260919_ai_training_methods/07_预览与质检/全片声音R1/audio-event-qa.json",
+      "sha256": "60782bc1f6b9f9fd5c019ccf48347c318667d0e7c64145a9ebfc0bdf7ad5f8a4"
+    }
+  ],
+  "audioStreams": [
+    {
+      "codec": "aac",
+      "sampleRate": "48000",
+      "channels": 2,
+      "duration": "305.155000",
+      "startTime": "0.000000",
+      "bitRate": "233899"
+    }
+  ],
+  "decodedSampleRate": 48000,
+  "decodedSamplesPerChannel": 14648320,
+  "referencePcmSamplesPerChannel": 14647450,
+  "aacPaddingSamples": 870,
+  "alignment": {
+    "bestDelaySamples": 0,
+    "bestDelayMs": 0.0,
+    "first15SecondsCorrelation": 0.9999887011427162,
+    "allAudioSampledCorrelation": 0.9999913651186796,
+    "searchRangeMs": 50,
+    "fineResolutionSamples": 1
+  },
+  "aacEncodingDifference": {
+    "peakDbfs": -28.92541,
+    "rmsDbfs": -67.52104
+  },
+  "loudness": {
+    "input_i": "-17.03",
+    "input_tp": "-1.49",
+    "input_lra": "4.20",
+    "input_thresh": "-27.71",
+    "output_i": "-16.77",
+    "output_tp": "-2.00",
+    "output_lra": "4.10",
+    "output_thresh": "-27.44",
+    "normalization_type": "dynamic",
+    "target_offset": "-0.23"
+  },
+  "sampleClippingDetected": false,
+  "truePeakWithinMinus1Dbtp": true,
+  "eventCount": 92,
+  "retainedEventCount": 92,
+  "suspectEvents": [],
+  "hookEvent": {
+    "eventId": "hook:enter",
+    "frame": 4,
+    "startSample": 6400,
+    "evaluatedSamples": 48000,
+    "decodedAacVsPcmMixCorrelation": 0.99999796,
+    "sfxResidualCorrelation": 0.99997168,
+    "sfxResidualGainRatio": 0.999737,
+    "expectedResidual": {
+      "peakDbfs": -11.97624,
+      "rmsDbfs": -29.0106
+    },
+    "actualResidual": {
+      "peakDbfs": -11.97104,
+      "rmsDbfs": -29.01264
+    },
+    "retained": true
+  },
+  "events": [
+    {
+      "eventId": "hook:enter",
+      "frame": 4,
+      "startSample": 6400,
+      "evaluatedSamples": 48000,
+      "decodedAacVsPcmMixCorrelation": 0.99999796,
+      "sfxResidualCorrelation": 0.99997168,
+      "sfxResidualGainRatio": 0.999737,
+      "expectedResidual": {
+        "peakDbfs": -11.97624,
+        "rmsDbfs": -29.0106
+      },
+      "actualResidual": {
+        "peakDbfs": -11.97104,
+        "rmsDbfs": -29.01264
+      },
+      "retained": true
+    },
+    {
+      "eventId": "hook:detail",
+      "frame": 73,
+      "startSample": 116800,
+      "evaluatedSamples": 61766,
+      "decodedAacVsPcmMixCorrelation": 0.9999973,
+      "sfxResidualCorrelation": 0.99993259,
+      "sfxResidualGainRatio": 0.998957,
+      "expectedResidual": {
+        "peakDbfs": -13.55614,
+        "rmsDbfs": -32.98983
+      },
+      "actualResidual": {
+        "peakDbfs": -13.57258,
+        "rmsDbfs": -32.9983
+      },
+      "retained": true
+    },
+    {
+      "eventId": "workplace:enter",
+      "frame": 152,
+      "startSample": 243200,
+      "evaluatedSamples": 18271,
+      "decodedAacVsPcmMixCorrelation": 0.99971673,
+      "sfxResidualCorrelation": 0.99970651,
+      "sfxResidualGainRatio": 0.996766,
+      "expectedResidual": {
+        "peakDbfs": -13.55032,
+        "rmsDbfs": -28.09533
+      },
+      "actualResidual": {
+        "peakDbfs": -13.62891,
+        "rmsDbfs": -28.12091
+      },
+      "retained": true
+    },
+    {
+      "eventId": "workplace:detail",
+      "frame": 218,
+      "startSample": 348800,
+      "evaluatedSamples": 10800,
+      "decodedAacVsPcmMixCorrelation": 0.99999343,
+      "sfxResidualCorrelation": 0.99996952,
+      "sfxResidualGainRatio": 0.99982,
+      "expectedResidual": {
+        "peakDbfs": -13.56994,
+        "rmsDbfs": -23.30554
+      },
+      "actualResidual": {
+        "peakDbfs": -13.57337,
+        "rmsDbfs": -23.30684
+      },
+      "retained": true
+    },
+    {
+      "eventId": "industry:enter",
+      "frame": 332,
+      "startSample": 531200,
+      "evaluatedSamples": 19187,
+      "decodedAacVsPcmMixCorrelation": 0.99991074,
+      "sfxResidualCorrelation": 0.9999058,
+      "sfxResidualGainRatio": 0.996652,
+      "expectedResidual": {
+        "peakDbfs": -13.56941,
+        "rmsDbfs": -31.62586
+      },
+      "actualResidual": {
+        "peakDbfs": -13.57046,
+        "rmsDbfs": -31.65417
+      },
+      "retained": true
+    },
+    {
+      "eventId": "industry:detail",
+      "frame": 413,
+      "startSample": 660800,
+      "evaluatedSamples": 101647,
+      "decodedAacVsPcmMixCorrelation": 0.9999139,
+      "sfxResidualCorrelation": 0.99515441,
+      "sfxResidualGainRatio": 0.986357,
+      "expectedResidual": {
+        "peakDbfs": -13.55297,
+        "rmsDbfs": -38.74353
+      },
+      "actualResidual": {
+        "peakDbfs": -13.86784,
+        "rmsDbfs": -38.82066
+      },
+      "retained": true
+    },
+    {
+      "eventId": "selective:enter",
+      "frame": 532,
+      "startSample": 851200,
+      "evaluatedSamples": 32652,
+      "decodedAacVsPcmMixCorrelation": 0.99998711,
+      "sfxResidualCorrelation": 0.99981239,
+      "sfxResidualGainRatio": 0.997103,
+      "expectedResidual": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -33.25744
+      },
+      "actualResidual": {
+        "peakDbfs": -13.5965,
+        "rmsDbfs": -33.28101
+      },
+      "retained": true
+    },
+    {
+      "eventId": "selective:item:0",
+      "frame": 641,
+      "startSample": 1025600,
+      "evaluatedSamples": 11376,
+      "decodedAacVsPcmMixCorrelation": 0.9999712,
+      "sfxResidualCorrelation": 0.99996689,
+      "sfxResidualGainRatio": 1.000771,
+      "expectedResidual": {
+        "peakDbfs": -15.37038,
+        "rmsDbfs": -34.40929
+      },
+      "actualResidual": {
+        "peakDbfs": -15.3272,
+        "rmsDbfs": -34.4023
+      },
+      "retained": true
+    },
+    {
+      "eventId": "selective:item:1",
+      "frame": 688,
+      "startSample": 1100800,
+      "evaluatedSamples": 21600,
+      "decodedAacVsPcmMixCorrelation": 0.99999623,
+      "sfxResidualCorrelation": 0.99944395,
+      "sfxResidualGainRatio": 0.995103,
+      "expectedResidual": {
+        "peakDbfs": -15.38307,
+        "rmsDbfs": -40.6195
+      },
+      "actualResidual": {
+        "peakDbfs": -15.40946,
+        "rmsDbfs": -40.65731
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ai-exception:enter",
+      "frame": 803,
+      "startSample": 1284800,
+      "evaluatedSamples": 51409,
+      "decodedAacVsPcmMixCorrelation": 0.99999832,
+      "sfxResidualCorrelation": 0.99973405,
+      "sfxResidualGainRatio": 0.997984,
+      "expectedResidual": {
+        "peakDbfs": -13.50909,
+        "rmsDbfs": -42.08905
+      },
+      "actualResidual": {
+        "peakDbfs": -13.51111,
+        "rmsDbfs": -42.10427
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ai-exception:item:0",
+      "frame": 950,
+      "startSample": 1520000,
+      "evaluatedSamples": 9575,
+      "decodedAacVsPcmMixCorrelation": 0.99991564,
+      "sfxResidualCorrelation": 0.9996541,
+      "sfxResidualGainRatio": 0.999406,
+      "expectedResidual": {
+        "peakDbfs": -15.34818,
+        "rmsDbfs": -36.51912
+      },
+      "actualResidual": {
+        "peakDbfs": -15.20582,
+        "rmsDbfs": -36.52128
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ai-exception:item:1",
+      "frame": 975,
+      "startSample": 1560000,
+      "evaluatedSamples": 24000,
+      "decodedAacVsPcmMixCorrelation": 0.99999693,
+      "sfxResidualCorrelation": 0.99966425,
+      "sfxResidualGainRatio": 0.998227,
+      "expectedResidual": {
+        "peakDbfs": -15.33659,
+        "rmsDbfs": -39.58839
+      },
+      "actualResidual": {
+        "peakDbfs": -15.28995,
+        "rmsDbfs": -39.60089
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ai-exception:item:2",
+      "frame": 1011,
+      "startSample": 1617600,
+      "evaluatedSamples": 9935,
+      "decodedAacVsPcmMixCorrelation": 0.99999449,
+      "sfxResidualCorrelation": 0.99990164,
+      "sfxResidualGainRatio": 0.999358,
+      "expectedResidual": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.60156
+      },
+      "actualResidual": {
+        "peakDbfs": -15.36723,
+        "rmsDbfs": -31.60629
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ai-exception:detail",
+      "frame": 1042,
+      "startSample": 1667200,
+      "evaluatedSamples": 61766,
+      "decodedAacVsPcmMixCorrelation": 0.9999938,
+      "sfxResidualCorrelation": 0.99989431,
+      "sfxResidualGainRatio": 0.999534,
+      "expectedResidual": {
+        "peakDbfs": -13.55614,
+        "rmsDbfs": -32.98983
+      },
+      "actualResidual": {
+        "peakDbfs": -13.53528,
+        "rmsDbfs": -32.99296
+      },
+      "retained": true
+    },
+    {
+      "eventId": "eight-methods:enter",
+      "frame": 1137,
+      "startSample": 1819200,
+      "evaluatedSamples": 18271,
+      "decodedAacVsPcmMixCorrelation": 0.99995766,
+      "sfxResidualCorrelation": 0.99968552,
+      "sfxResidualGainRatio": 0.995183,
+      "expectedResidual": {
+        "peakDbfs": -13.55032,
+        "rmsDbfs": -28.09533
+      },
+      "actualResidual": {
+        "peakDbfs": -13.69981,
+        "rmsDbfs": -28.13454
+      },
+      "retained": true
+    },
+    {
+      "eventId": "chapter-one:enter",
+      "frame": 1429,
+      "startSample": 2286400,
+      "evaluatedSamples": 37507,
+      "decodedAacVsPcmMixCorrelation": 0.99999264,
+      "sfxResidualCorrelation": 0.99992432,
+      "sfxResidualGainRatio": 0.999006,
+      "expectedResidual": {
+        "peakDbfs": -12.73739,
+        "rmsDbfs": -30.83868
+      },
+      "actualResidual": {
+        "peakDbfs": -12.75257,
+        "rmsDbfs": -30.84666
+      },
+      "retained": true
+    },
+    {
+      "eventId": "scenario:enter",
+      "frame": 1593,
+      "startSample": 2548800,
+      "evaluatedSamples": 19187,
+      "decodedAacVsPcmMixCorrelation": 0.99994327,
+      "sfxResidualCorrelation": 0.99988836,
+      "sfxResidualGainRatio": 0.99682,
+      "expectedResidual": {
+        "peakDbfs": -13.56941,
+        "rmsDbfs": -31.62586
+      },
+      "actualResidual": {
+        "peakDbfs": -13.57766,
+        "rmsDbfs": -31.65256
+      },
+      "retained": true
+    },
+    {
+      "eventId": "scenario:item:0",
+      "frame": 1676,
+      "startSample": 2681600,
+      "evaluatedSamples": 11376,
+      "decodedAacVsPcmMixCorrelation": 0.99996614,
+      "sfxResidualCorrelation": 0.99996011,
+      "sfxResidualGainRatio": 0.997296,
+      "expectedResidual": {
+        "peakDbfs": -15.37038,
+        "rmsDbfs": -34.40929
+      },
+      "actualResidual": {
+        "peakDbfs": -15.41326,
+        "rmsDbfs": -34.43246
+      },
+      "retained": true
+    },
+    {
+      "eventId": "scenario:item:1",
+      "frame": 1747,
+      "startSample": 2795200,
+      "evaluatedSamples": 21600,
+      "decodedAacVsPcmMixCorrelation": 0.99983661,
+      "sfxResidualCorrelation": 0.99978637,
+      "sfxResidualGainRatio": 0.99701,
+      "expectedResidual": {
+        "peakDbfs": -15.38307,
+        "rmsDbfs": -40.6195
+      },
+      "actualResidual": {
+        "peakDbfs": -15.37153,
+        "rmsDbfs": -40.64366
+      },
+      "retained": true
+    },
+    {
+      "eventId": "guided:enter",
+      "frame": 1920,
+      "startSample": 3072000,
+      "evaluatedSamples": 18271,
+      "decodedAacVsPcmMixCorrelation": 0.99975416,
+      "sfxResidualCorrelation": 0.99975133,
+      "sfxResidualGainRatio": 0.996883,
+      "expectedResidual": {
+        "peakDbfs": -13.55032,
+        "rmsDbfs": -28.09533
+      },
+      "actualResidual": {
+        "peakDbfs": -13.63138,
+        "rmsDbfs": -28.12028
+      },
+      "retained": true
+    },
+    {
+      "eventId": "guided:detail",
+      "frame": 1979,
+      "startSample": 3166400,
+      "evaluatedSamples": 61766,
+      "decodedAacVsPcmMixCorrelation": 0.99999456,
+      "sfxResidualCorrelation": 0.9999117,
+      "sfxResidualGainRatio": 0.999046,
+      "expectedResidual": {
+        "peakDbfs": -13.55614,
+        "rmsDbfs": -32.98983
+      },
+      "actualResidual": {
+        "peakDbfs": -13.57876,
+        "rmsDbfs": -32.99735
+      },
+      "retained": true
+    },
+    {
+      "eventId": "P01:enter",
+      "frame": 2080,
+      "startSample": 3328000,
+      "evaluatedSamples": 84323,
+      "decodedAacVsPcmMixCorrelation": 0.99996735,
+      "sfxResidualCorrelation": 0.99812503,
+      "sfxResidualGainRatio": 0.993949,
+      "expectedResidual": {
+        "peakDbfs": -13.57472,
+        "rmsDbfs": -38.59366
+      },
+      "actualResidual": {
+        "peakDbfs": -13.83482,
+        "rmsDbfs": -38.63007
+      },
+      "retained": true
+    },
+    {
+      "eventId": "judgement:enter",
+      "frame": 2309,
+      "startSample": 3694400,
+      "evaluatedSamples": 32652,
+      "decodedAacVsPcmMixCorrelation": 0.99997981,
+      "sfxResidualCorrelation": 0.99983614,
+      "sfxResidualGainRatio": 0.997152,
+      "expectedResidual": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -33.25744
+      },
+      "actualResidual": {
+        "peakDbfs": -13.58575,
+        "rmsDbfs": -33.28079
+      },
+      "retained": true
+    },
+    {
+      "eventId": "judgement:detail",
+      "frame": 2349,
+      "startSample": 3758400,
+      "evaluatedSamples": 10800,
+      "decodedAacVsPcmMixCorrelation": 0.99995453,
+      "sfxResidualCorrelation": 0.99992301,
+      "sfxResidualGainRatio": 1.00036,
+      "expectedResidual": {
+        "peakDbfs": -13.56994,
+        "rmsDbfs": -23.30554
+      },
+      "actualResidual": {
+        "peakDbfs": -13.58219,
+        "rmsDbfs": -23.30174
+      },
+      "retained": true
+    },
+    {
+      "eventId": "chapter-two:enter",
+      "frame": 2429,
+      "startSample": 3886400,
+      "evaluatedSamples": 37507,
+      "decodedAacVsPcmMixCorrelation": 0.99997752,
+      "sfxResidualCorrelation": 0.99964704,
+      "sfxResidualGainRatio": 0.999109,
+      "expectedResidual": {
+        "peakDbfs": -12.73739,
+        "rmsDbfs": -30.83868
+      },
+      "actualResidual": {
+        "peakDbfs": -12.74594,
+        "rmsDbfs": -30.84336
+      },
+      "retained": true
+    },
+    {
+      "eventId": "analogy:enter",
+      "frame": 2599,
+      "startSample": 4158400,
+      "evaluatedSamples": 19187,
+      "decodedAacVsPcmMixCorrelation": 0.99998901,
+      "sfxResidualCorrelation": 0.99988953,
+      "sfxResidualGainRatio": 0.996862,
+      "expectedResidual": {
+        "peakDbfs": -13.56941,
+        "rmsDbfs": -31.62586
+      },
+      "actualResidual": {
+        "peakDbfs": -13.59384,
+        "rmsDbfs": -31.6522
+      },
+      "retained": true
+    },
+    {
+      "eventId": "analogy:detail",
+      "frame": 2678,
+      "startSample": 4284800,
+      "evaluatedSamples": 101647,
+      "decodedAacVsPcmMixCorrelation": 0.99992529,
+      "sfxResidualCorrelation": 0.99473939,
+      "sfxResidualGainRatio": 0.987469,
+      "expectedResidual": {
+        "peakDbfs": -13.55297,
+        "rmsDbfs": -38.74353
+      },
+      "actualResidual": {
+        "peakDbfs": -13.88189,
+        "rmsDbfs": -38.80725
+      },
+      "retained": true
+    },
+    {
+      "eventId": "P02:enter",
+      "frame": 2768,
+      "startSample": 4428800,
+      "evaluatedSamples": 52525,
+      "decodedAacVsPcmMixCorrelation": 0.99999673,
+      "sfxResidualCorrelation": 0.99772822,
+      "sfxResidualGainRatio": 0.994846,
+      "expectedResidual": {
+        "peakDbfs": -13.54555,
+        "rmsDbfs": -45.39271
+      },
+      "actualResidual": {
+        "peakDbfs": -13.59066,
+        "rmsDbfs": -45.41783
+      },
+      "retained": true
+    },
+    {
+      "eventId": "understanding:enter",
+      "frame": 2968,
+      "startSample": 4748800,
+      "evaluatedSamples": 51409,
+      "decodedAacVsPcmMixCorrelation": 0.99999809,
+      "sfxResidualCorrelation": 0.99970084,
+      "sfxResidualGainRatio": 0.998795,
+      "expectedResidual": {
+        "peakDbfs": -13.50909,
+        "rmsDbfs": -42.08905
+      },
+      "actualResidual": {
+        "peakDbfs": -13.57123,
+        "rmsDbfs": -42.09693
+      },
+      "retained": true
+    },
+    {
+      "eventId": "understanding:detail",
+      "frame": 3018,
+      "startSample": 4828800,
+      "evaluatedSamples": 77719,
+      "decodedAacVsPcmMixCorrelation": 0.99999323,
+      "sfxResidualCorrelation": 0.99994779,
+      "sfxResidualGainRatio": 0.999243,
+      "expectedResidual": {
+        "peakDbfs": -13.55508,
+        "rmsDbfs": -30.9736
+      },
+      "actualResidual": {
+        "peakDbfs": -13.57328,
+        "rmsDbfs": -30.97972
+      },
+      "retained": true
+    },
+    {
+      "eventId": "chapter-three:enter",
+      "frame": 3098,
+      "startSample": 4956800,
+      "evaluatedSamples": 29088,
+      "decodedAacVsPcmMixCorrelation": 0.99960066,
+      "sfxResidualCorrelation": 0.9895492,
+      "sfxResidualGainRatio": 0.967256,
+      "expectedResidual": {
+        "peakDbfs": -12.78925,
+        "rmsDbfs": -33.61632
+      },
+      "actualResidual": {
+        "peakDbfs": -13.07431,
+        "rmsDbfs": -33.81424
+      },
+      "retained": true
+    },
+    {
+      "eventId": "inputs:enter",
+      "frame": 3163,
+      "startSample": 5060800,
+      "evaluatedSamples": 32652,
+      "decodedAacVsPcmMixCorrelation": 0.99999079,
+      "sfxResidualCorrelation": 0.9998747,
+      "sfxResidualGainRatio": 0.997599,
+      "expectedResidual": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -32.22698
+      },
+      "actualResidual": {
+        "peakDbfs": -13.60052,
+        "rmsDbfs": -32.24677
+      },
+      "retained": true
+    },
+    {
+      "eventId": "inputs:item:0",
+      "frame": 3171,
+      "startSample": 5073600,
+      "evaluatedSamples": 11376,
+      "decodedAacVsPcmMixCorrelation": 0.99997438,
+      "sfxResidualCorrelation": 0.99985725,
+      "sfxResidualGainRatio": 0.998222,
+      "expectedResidual": {
+        "peakDbfs": -14.60842,
+        "rmsDbfs": -33.70911
+      },
+      "actualResidual": {
+        "peakDbfs": -14.65262,
+        "rmsDbfs": -33.72333
+      },
+      "retained": true
+    },
+    {
+      "eventId": "inputs:item:1",
+      "frame": 3221,
+      "startSample": 5153600,
+      "evaluatedSamples": 21600,
+      "decodedAacVsPcmMixCorrelation": 0.99999012,
+      "sfxResidualCorrelation": 0.99921412,
+      "sfxResidualGainRatio": 0.995417,
+      "expectedResidual": {
+        "peakDbfs": -15.38307,
+        "rmsDbfs": -40.6195
+      },
+      "actualResidual": {
+        "peakDbfs": -15.51459,
+        "rmsDbfs": -40.65257
+      },
+      "retained": true
+    },
+    {
+      "eventId": "inputs:item:2",
+      "frame": 3249,
+      "startSample": 5198400,
+      "evaluatedSamples": 9575,
+      "decodedAacVsPcmMixCorrelation": 0.99979634,
+      "sfxResidualCorrelation": 0.99977619,
+      "sfxResidualGainRatio": 0.987292,
+      "expectedResidual": {
+        "peakDbfs": -15.34818,
+        "rmsDbfs": -36.51912
+      },
+      "actualResidual": {
+        "peakDbfs": -15.43018,
+        "rmsDbfs": -36.62827
+      },
+      "retained": true
+    },
+    {
+      "eventId": "P03:enter",
+      "frame": 3302,
+      "startSample": 5283200,
+      "evaluatedSamples": 84323,
+      "decodedAacVsPcmMixCorrelation": 0.99998894,
+      "sfxResidualCorrelation": 0.99898301,
+      "sfxResidualGainRatio": 0.994225,
+      "expectedResidual": {
+        "peakDbfs": -13.57472,
+        "rmsDbfs": -38.59366
+      },
+      "actualResidual": {
+        "peakDbfs": -13.75109,
+        "rmsDbfs": -38.63513
+      },
+      "retained": true
+    },
+    {
+      "eventId": "adjust:enter",
+      "frame": 3562,
+      "startSample": 5699200,
+      "evaluatedSamples": 79200,
+      "decodedAacVsPcmMixCorrelation": 0.99997592,
+      "sfxResidualCorrelation": 0.99963083,
+      "sfxResidualGainRatio": 0.99751,
+      "expectedResidual": {
+        "peakDbfs": -13.50276,
+        "rmsDbfs": -31.0079
+      },
+      "actualResidual": {
+        "peakDbfs": -13.52848,
+        "rmsDbfs": -31.02634
+      },
+      "retained": true
+    },
+    {
+      "eventId": "adjust:detail",
+      "frame": 3590,
+      "startSample": 5744000,
+      "evaluatedSamples": 10800,
+      "decodedAacVsPcmMixCorrelation": 0.99999602,
+      "sfxResidualCorrelation": 0.99999595,
+      "sfxResidualGainRatio": 0.99943,
+      "expectedResidual": {
+        "peakDbfs": -13.56994,
+        "rmsDbfs": -23.30554
+      },
+      "actualResidual": {
+        "peakDbfs": -13.58809,
+        "rmsDbfs": -23.31045
+      },
+      "retained": true
+    },
+    {
+      "eventId": "chapter-four:enter",
+      "frame": 3737,
+      "startSample": 5979200,
+      "evaluatedSamples": 37507,
+      "decodedAacVsPcmMixCorrelation": 0.99998603,
+      "sfxResidualCorrelation": 0.99992948,
+      "sfxResidualGainRatio": 0.999303,
+      "expectedResidual": {
+        "peakDbfs": -12.73739,
+        "rmsDbfs": -30.83868
+      },
+      "actualResidual": {
+        "peakDbfs": -12.74977,
+        "rmsDbfs": -30.84412
+      },
+      "retained": true
+    },
+    {
+      "eventId": "P04:enter",
+      "frame": 3781,
+      "startSample": 6049600,
+      "evaluatedSamples": 52525,
+      "decodedAacVsPcmMixCorrelation": 0.9999965,
+      "sfxResidualCorrelation": 0.99828093,
+      "sfxResidualGainRatio": 0.994766,
+      "expectedResidual": {
+        "peakDbfs": -13.54555,
+        "rmsDbfs": -45.39271
+      },
+      "actualResidual": {
+        "peakDbfs": -13.62597,
+        "rmsDbfs": -45.42335
+      },
+      "retained": true
+    },
+    {
+      "eventId": "screen-question:enter",
+      "frame": 3990,
+      "startSample": 6384000,
+      "evaluatedSamples": 55152,
+      "decodedAacVsPcmMixCorrelation": 0.99997681,
+      "sfxResidualCorrelation": 0.99992462,
+      "sfxResidualGainRatio": 0.998162,
+      "expectedResidual": {
+        "peakDbfs": -13.57047,
+        "rmsDbfs": -29.27188
+      },
+      "actualResidual": {
+        "peakDbfs": -13.59908,
+        "rmsDbfs": -29.2872
+      },
+      "retained": true
+    },
+    {
+      "eventId": "screen-question:scan-lock",
+      "frame": 4038,
+      "startSample": 6460800,
+      "evaluatedSamples": 9575,
+      "decodedAacVsPcmMixCorrelation": 0.99991019,
+      "sfxResidualCorrelation": 0.99990217,
+      "sfxResidualGainRatio": 1.000204,
+      "expectedResidual": {
+        "peakDbfs": -13.51278,
+        "rmsDbfs": -34.68371
+      },
+      "actualResidual": {
+        "peakDbfs": -13.5001,
+        "rmsDbfs": -34.68109
+      },
+      "retained": true
+    },
+    {
+      "eventId": "blind-spots:enter",
+      "frame": 4108,
+      "startSample": 6572800,
+      "evaluatedSamples": 51409,
+      "decodedAacVsPcmMixCorrelation": 0.99998205,
+      "sfxResidualCorrelation": 0.9985869,
+      "sfxResidualGainRatio": 0.996898,
+      "expectedResidual": {
+        "peakDbfs": -13.50909,
+        "rmsDbfs": -39.46382
+      },
+      "actualResidual": {
+        "peakDbfs": -13.53066,
+        "rmsDbfs": -39.47851
+      },
+      "retained": true
+    },
+    {
+      "eventId": "blind-spots:item:0",
+      "frame": 4132,
+      "startSample": 6611200,
+      "evaluatedSamples": 24000,
+      "decodedAacVsPcmMixCorrelation": 0.9999937,
+      "sfxResidualCorrelation": 0.99943407,
+      "sfxResidualGainRatio": 0.996236,
+      "expectedResidual": {
+        "peakDbfs": -15.33659,
+        "rmsDbfs": -39.58839
+      },
+      "actualResidual": {
+        "peakDbfs": -15.34392,
+        "rmsDbfs": -39.61624
+      },
+      "retained": true
+    },
+    {
+      "eventId": "blind-spots:item:1",
+      "frame": 4298,
+      "startSample": 6876800,
+      "evaluatedSamples": 9935,
+      "decodedAacVsPcmMixCorrelation": 0.99998661,
+      "sfxResidualCorrelation": 0.99998011,
+      "sfxResidualGainRatio": 0.99982,
+      "expectedResidual": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.60156
+      },
+      "actualResidual": {
+        "peakDbfs": -15.39563,
+        "rmsDbfs": -31.60295
+      },
+      "retained": true
+    },
+    {
+      "eventId": "blind-spots:detail",
+      "frame": 4381,
+      "startSample": 7009600,
+      "evaluatedSamples": 101647,
+      "decodedAacVsPcmMixCorrelation": 0.99991968,
+      "sfxResidualCorrelation": 0.99620681,
+      "sfxResidualGainRatio": 0.987387,
+      "expectedResidual": {
+        "peakDbfs": -13.55297,
+        "rmsDbfs": -38.74353
+      },
+      "actualResidual": {
+        "peakDbfs": -13.67255,
+        "rmsDbfs": -38.82078
+      },
+      "retained": true
+    },
+    {
+      "eventId": "chapter-five:enter",
+      "frame": 4449,
+      "startSample": 7118400,
+      "evaluatedSamples": 29088,
+      "decodedAacVsPcmMixCorrelation": 0.99356519,
+      "sfxResidualCorrelation": 0.99185763,
+      "sfxResidualGainRatio": 0.969968,
+      "expectedResidual": {
+        "peakDbfs": -12.77552,
+        "rmsDbfs": -33.56699
+      },
+      "actualResidual": {
+        "peakDbfs": -13.23469,
+        "rmsDbfs": -33.76083
+      },
+      "retained": true
+    },
+    {
+      "eventId": "screen-archive:enter",
+      "frame": 4526,
+      "startSample": 7241600,
+      "evaluatedSamples": 84323,
+      "decodedAacVsPcmMixCorrelation": 0.99999372,
+      "sfxResidualCorrelation": 0.99943152,
+      "sfxResidualGainRatio": 0.994153,
+      "expectedResidual": {
+        "peakDbfs": -13.57472,
+        "rmsDbfs": -38.59366
+      },
+      "actualResidual": {
+        "peakDbfs": -13.64863,
+        "rmsDbfs": -38.63965
+      },
+      "retained": true
+    },
+    {
+      "eventId": "P05:enter",
+      "frame": 4650,
+      "startSample": 7440000,
+      "evaluatedSamples": 52525,
+      "decodedAacVsPcmMixCorrelation": 0.99999676,
+      "sfxResidualCorrelation": 0.99883546,
+      "sfxResidualGainRatio": 0.995507,
+      "expectedResidual": {
+        "peakDbfs": -13.54555,
+        "rmsDbfs": -45.39271
+      },
+      "actualResidual": {
+        "peakDbfs": -13.5721,
+        "rmsDbfs": -45.42171
+      },
+      "retained": true
+    },
+    {
+      "eventId": "compare-work:enter",
+      "frame": 4847,
+      "startSample": 7755200,
+      "evaluatedSamples": 79200,
+      "decodedAacVsPcmMixCorrelation": 0.99993211,
+      "sfxResidualCorrelation": 0.99767587,
+      "sfxResidualGainRatio": 0.989072,
+      "expectedResidual": {
+        "peakDbfs": -13.50276,
+        "rmsDbfs": -38.07217
+      },
+      "actualResidual": {
+        "peakDbfs": -13.78686,
+        "rmsDbfs": -38.1474
+      },
+      "retained": true
+    },
+    {
+      "eventId": "measurable-progress:enter",
+      "frame": 4979,
+      "startSample": 7966400,
+      "evaluatedSamples": 48000,
+      "decodedAacVsPcmMixCorrelation": 0.99999088,
+      "sfxResidualCorrelation": 0.99989365,
+      "sfxResidualGainRatio": 0.999234,
+      "expectedResidual": {
+        "peakDbfs": -13.49065,
+        "rmsDbfs": -30.52502
+      },
+      "actualResidual": {
+        "peakDbfs": -13.49305,
+        "rmsDbfs": -30.53075
+      },
+      "retained": true
+    },
+    {
+      "eventId": "measurable-progress:detail",
+      "frame": 5062,
+      "startSample": 8099200,
+      "evaluatedSamples": 77719,
+      "decodedAacVsPcmMixCorrelation": 0.99998993,
+      "sfxResidualCorrelation": 0.99993123,
+      "sfxResidualGainRatio": 0.999488,
+      "expectedResidual": {
+        "peakDbfs": -13.55508,
+        "rmsDbfs": -30.91424
+      },
+      "actualResidual": {
+        "peakDbfs": -13.5852,
+        "rmsDbfs": -30.91809
+      },
+      "retained": true
+    },
+    {
+      "eventId": "chapter-six:enter",
+      "frame": 5107,
+      "startSample": 8171200,
+      "evaluatedSamples": 51840,
+      "decodedAacVsPcmMixCorrelation": 0.99999745,
+      "sfxResidualCorrelation": 0.9999858,
+      "sfxResidualGainRatio": 0.999618,
+      "expectedResidual": {
+        "peakDbfs": -12.74744,
+        "rmsDbfs": -26.13545
+      },
+      "actualResidual": {
+        "peakDbfs": -12.76981,
+        "rmsDbfs": -26.13865
+      },
+      "retained": true
+    },
+    {
+      "eventId": "pressure:enter",
+      "frame": 5198,
+      "startSample": 8316800,
+      "evaluatedSamples": 12692,
+      "decodedAacVsPcmMixCorrelation": 0.99998576,
+      "sfxResidualCorrelation": 0.99998534,
+      "sfxResidualGainRatio": 0.998958,
+      "expectedResidual": {
+        "peakDbfs": -13.50487,
+        "rmsDbfs": -29.2582
+      },
+      "actualResidual": {
+        "peakDbfs": -13.50193,
+        "rmsDbfs": -29.26713
+      },
+      "retained": true
+    },
+    {
+      "eventId": "pressure:detail",
+      "frame": 5262,
+      "startSample": 8419200,
+      "evaluatedSamples": 16826,
+      "decodedAacVsPcmMixCorrelation": 0.99938506,
+      "sfxResidualCorrelation": 0.9992965,
+      "sfxResidualGainRatio": 0.993737,
+      "expectedResidual": {
+        "peakDbfs": -13.49223,
+        "rmsDbfs": -37.94298
+      },
+      "actualResidual": {
+        "peakDbfs": -13.56101,
+        "rmsDbfs": -37.99145
+      },
+      "retained": true
+    },
+    {
+      "eventId": "G01:enter",
+      "frame": 5342,
+      "startSample": 8547200,
+      "evaluatedSamples": 55152,
+      "decodedAacVsPcmMixCorrelation": 0.9999943,
+      "sfxResidualCorrelation": 0.99991698,
+      "sfxResidualGainRatio": 0.998078,
+      "expectedResidual": {
+        "peakDbfs": -13.57047,
+        "rmsDbfs": -29.27188
+      },
+      "actualResidual": {
+        "peakDbfs": -13.5779,
+        "rmsDbfs": -29.28787
+      },
+      "retained": true
+    },
+    {
+      "eventId": "review-risk:enter",
+      "frame": 5539,
+      "startSample": 8862400,
+      "evaluatedSamples": 29088,
+      "decodedAacVsPcmMixCorrelation": 0.99974676,
+      "sfxResidualCorrelation": 0.99083927,
+      "sfxResidualGainRatio": 0.971099,
+      "expectedResidual": {
+        "peakDbfs": -13.56569,
+        "rmsDbfs": -34.35716
+      },
+      "actualResidual": {
+        "peakDbfs": -14.04987,
+        "rmsDbfs": -34.53195
+      },
+      "retained": true
+    },
+    {
+      "eventId": "review-risk:detail",
+      "frame": 5705,
+      "startSample": 9128000,
+      "evaluatedSamples": 23470,
+      "decodedAacVsPcmMixCorrelation": 0.99986685,
+      "sfxResidualCorrelation": 0.99968533,
+      "sfxResidualGainRatio": 0.996339,
+      "expectedResidual": {
+        "peakDbfs": -13.53179,
+        "rmsDbfs": -42.68172
+      },
+      "actualResidual": {
+        "peakDbfs": -13.53545,
+        "rmsDbfs": -42.71085
+      },
+      "retained": true
+    },
+    {
+      "eventId": "chapter-seven:enter",
+      "frame": 5761,
+      "startSample": 9217600,
+      "evaluatedSamples": 48000,
+      "decodedAacVsPcmMixCorrelation": 0.99999029,
+      "sfxResidualCorrelation": 0.9999532,
+      "sfxResidualGainRatio": 0.998548,
+      "expectedResidual": {
+        "peakDbfs": -12.70048,
+        "rmsDbfs": -29.73485
+      },
+      "actualResidual": {
+        "peakDbfs": -12.70897,
+        "rmsDbfs": -29.74706
+      },
+      "retained": true
+    },
+    {
+      "eventId": "thinking:enter",
+      "frame": 5981,
+      "startSample": 9569600,
+      "evaluatedSamples": 79200,
+      "decodedAacVsPcmMixCorrelation": 0.99997708,
+      "sfxResidualCorrelation": 0.99776952,
+      "sfxResidualGainRatio": 0.991364,
+      "expectedResidual": {
+        "peakDbfs": -13.50276,
+        "rmsDbfs": -38.07217
+      },
+      "actualResidual": {
+        "peakDbfs": -13.51249,
+        "rmsDbfs": -38.12811
+      },
+      "retained": true
+    },
+    {
+      "eventId": "shortcuts:enter",
+      "frame": 6076,
+      "startSample": 9721600,
+      "evaluatedSamples": 51840,
+      "decodedAacVsPcmMixCorrelation": 0.99999524,
+      "sfxResidualCorrelation": 0.99994928,
+      "sfxResidualGainRatio": 0.999596,
+      "expectedResidual": {
+        "peakDbfs": -13.5376,
+        "rmsDbfs": -26.9214
+      },
+      "actualResidual": {
+        "peakDbfs": -13.5375,
+        "rmsDbfs": -26.92447
+      },
+      "retained": true
+    },
+    {
+      "eventId": "shortcuts:item:0",
+      "frame": 6145,
+      "startSample": 9832000,
+      "evaluatedSamples": 24000,
+      "decodedAacVsPcmMixCorrelation": 0.99997322,
+      "sfxResidualCorrelation": 0.99307842,
+      "sfxResidualGainRatio": 0.999308,
+      "expectedResidual": {
+        "peakDbfs": -15.33659,
+        "rmsDbfs": -39.58839
+      },
+      "actualResidual": {
+        "peakDbfs": -15.47664,
+        "rmsDbfs": -39.53408
+      },
+      "retained": true
+    },
+    {
+      "eventId": "shortcuts:item:1",
+      "frame": 6172,
+      "startSample": 9875200,
+      "evaluatedSamples": 9935,
+      "decodedAacVsPcmMixCorrelation": 0.99998924,
+      "sfxResidualCorrelation": 0.99998873,
+      "sfxResidualGainRatio": 0.9993,
+      "expectedResidual": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.60156
+      },
+      "actualResidual": {
+        "peakDbfs": -15.3878,
+        "rmsDbfs": -31.60755
+      },
+      "retained": true
+    },
+    {
+      "eventId": "P06:enter",
+      "frame": 6231,
+      "startSample": 9969600,
+      "evaluatedSamples": 55152,
+      "decodedAacVsPcmMixCorrelation": 0.99999158,
+      "sfxResidualCorrelation": 0.99990182,
+      "sfxResidualGainRatio": 0.998119,
+      "expectedResidual": {
+        "peakDbfs": -13.57047,
+        "rmsDbfs": -29.27416
+      },
+      "actualResidual": {
+        "peakDbfs": -13.55005,
+        "rmsDbfs": -29.28966
+      },
+      "retained": true
+    },
+    {
+      "eventId": "mastery:enter",
+      "frame": 6428,
+      "startSample": 10284800,
+      "evaluatedSamples": 12692,
+      "decodedAacVsPcmMixCorrelation": 0.99999441,
+      "sfxResidualCorrelation": 0.99996599,
+      "sfxResidualGainRatio": 0.999231,
+      "expectedResidual": {
+        "peakDbfs": -13.50487,
+        "rmsDbfs": -29.2582
+      },
+      "actualResidual": {
+        "peakDbfs": -13.53177,
+        "rmsDbfs": -29.26459
+      },
+      "retained": true
+    },
+    {
+      "eventId": "mastery:detail",
+      "frame": 6464,
+      "startSample": 10342400,
+      "evaluatedSamples": 77719,
+      "decodedAacVsPcmMixCorrelation": 0.99999406,
+      "sfxResidualCorrelation": 0.99995954,
+      "sfxResidualGainRatio": 0.999301,
+      "expectedResidual": {
+        "peakDbfs": -13.55508,
+        "rmsDbfs": -30.9736
+      },
+      "actualResidual": {
+        "peakDbfs": -13.54646,
+        "rmsDbfs": -30.97932
+      },
+      "retained": true
+    },
+    {
+      "eventId": "chapter-eight:enter",
+      "frame": 6513,
+      "startSample": 10420800,
+      "evaluatedSamples": 42240,
+      "decodedAacVsPcmMixCorrelation": 0.99989583,
+      "sfxResidualCorrelation": 0.99954756,
+      "sfxResidualGainRatio": 0.995145,
+      "expectedResidual": {
+        "peakDbfs": -12.75537,
+        "rmsDbfs": -35.01224
+      },
+      "actualResidual": {
+        "peakDbfs": -12.81338,
+        "rmsDbfs": -35.05058
+      },
+      "retained": true
+    },
+    {
+      "eventId": "reverse-teaching:enter",
+      "frame": 6639,
+      "startSample": 10622400,
+      "evaluatedSamples": 74565,
+      "decodedAacVsPcmMixCorrelation": 0.99999733,
+      "sfxResidualCorrelation": 0.99992566,
+      "sfxResidualGainRatio": 0.999575,
+      "expectedResidual": {
+        "peakDbfs": -13.57738,
+        "rmsDbfs": -32.51546
+      },
+      "actualResidual": {
+        "peakDbfs": -13.57077,
+        "rmsDbfs": -32.51851
+      },
+      "retained": true
+    },
+    {
+      "eventId": "reverse-teaching:detail",
+      "frame": 6694,
+      "startSample": 10710400,
+      "evaluatedSamples": 16826,
+      "decodedAacVsPcmMixCorrelation": 0.99993677,
+      "sfxResidualCorrelation": 0.99803541,
+      "sfxResidualGainRatio": 0.991387,
+      "expectedResidual": {
+        "peakDbfs": -13.49223,
+        "rmsDbfs": -37.94298
+      },
+      "actualResidual": {
+        "peakDbfs": -13.53292,
+        "rmsDbfs": -38.00104
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ask-explain:enter",
+      "frame": 6767,
+      "startSample": 10827200,
+      "evaluatedSamples": 52770,
+      "decodedAacVsPcmMixCorrelation": 0.99999706,
+      "sfxResidualCorrelation": 0.99992306,
+      "sfxResidualGainRatio": 0.999752,
+      "expectedResidual": {
+        "peakDbfs": -13.52809,
+        "rmsDbfs": -34.80282
+      },
+      "actualResidual": {
+        "peakDbfs": -13.53333,
+        "rmsDbfs": -34.8043
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ask-explain:item:0",
+      "frame": 6846,
+      "startSample": 10953600,
+      "evaluatedSamples": 19057,
+      "decodedAacVsPcmMixCorrelation": 0.99993932,
+      "sfxResidualCorrelation": 0.99987326,
+      "sfxResidualGainRatio": 0.999493,
+      "expectedResidual": {
+        "peakDbfs": -15.33659,
+        "rmsDbfs": -45.85932
+      },
+      "actualResidual": {
+        "peakDbfs": -15.33784,
+        "rmsDbfs": -45.86262
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ask-explain:item:1",
+      "frame": 6890,
+      "startSample": 11024000,
+      "evaluatedSamples": 53016,
+      "decodedAacVsPcmMixCorrelation": 0.99999568,
+      "sfxResidualCorrelation": 0.99977377,
+      "sfxResidualGainRatio": 0.99833,
+      "expectedResidual": {
+        "peakDbfs": -15.35135,
+        "rmsDbfs": -34.37679
+      },
+      "actualResidual": {
+        "peakDbfs": -15.46227,
+        "rmsDbfs": -34.38934
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ask-explain:item:2",
+      "frame": 6915,
+      "startSample": 11064000,
+      "evaluatedSamples": 15840,
+      "decodedAacVsPcmMixCorrelation": 0.99985402,
+      "sfxResidualCorrelation": 0.99971463,
+      "sfxResidualGainRatio": 0.99565,
+      "expectedResidual": {
+        "peakDbfs": -17.66374,
+        "rmsDbfs": -43.74823
+      },
+      "actualResidual": {
+        "peakDbfs": -17.6944,
+        "rmsDbfs": -43.78362
+      },
+      "retained": true
+    },
+    {
+      "eventId": "deduction:enter",
+      "frame": 7016,
+      "startSample": 11225600,
+      "evaluatedSamples": 51840,
+      "decodedAacVsPcmMixCorrelation": 0.99999668,
+      "sfxResidualCorrelation": 0.99996961,
+      "sfxResidualGainRatio": 0.999442,
+      "expectedResidual": {
+        "peakDbfs": -13.5376,
+        "rmsDbfs": -26.9214
+      },
+      "actualResidual": {
+        "peakDbfs": -13.55883,
+        "rmsDbfs": -26.92599
+      },
+      "retained": true
+    },
+    {
+      "eventId": "deduction:item:0",
+      "frame": 7111,
+      "startSample": 11377600,
+      "evaluatedSamples": 23470,
+      "decodedAacVsPcmMixCorrelation": 0.99983341,
+      "sfxResidualCorrelation": 0.99935048,
+      "sfxResidualGainRatio": 0.996537,
+      "expectedResidual": {
+        "peakDbfs": -15.3672,
+        "rmsDbfs": -44.51713
+      },
+      "actualResidual": {
+        "peakDbfs": -15.36928,
+        "rmsDbfs": -44.54161
+      },
+      "retained": true
+    },
+    {
+      "eventId": "deduction:item:1",
+      "frame": 7181,
+      "startSample": 11489600,
+      "evaluatedSamples": 12692,
+      "decodedAacVsPcmMixCorrelation": 0.99998076,
+      "sfxResidualCorrelation": 0.99998042,
+      "sfxResidualGainRatio": 0.999314,
+      "expectedResidual": {
+        "peakDbfs": -15.34027,
+        "rmsDbfs": -31.09361
+      },
+      "actualResidual": {
+        "peakDbfs": -15.35596,
+        "rmsDbfs": -31.0994
+      },
+      "retained": true
+    },
+    {
+      "eventId": "deduction:item:2",
+      "frame": 7265,
+      "startSample": 11624000,
+      "evaluatedSamples": 42240,
+      "decodedAacVsPcmMixCorrelation": 0.99997671,
+      "sfxResidualCorrelation": 0.99843658,
+      "sfxResidualGainRatio": 0.993537,
+      "expectedResidual": {
+        "peakDbfs": -15.38095,
+        "rmsDbfs": -37.63782
+      },
+      "actualResidual": {
+        "peakDbfs": -15.37552,
+        "rmsDbfs": -37.68055
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ultimate:enter",
+      "frame": 7373,
+      "startSample": 11796800,
+      "evaluatedSamples": 8645,
+      "decodedAacVsPcmMixCorrelation": 0.99998031,
+      "sfxResidualCorrelation": 0.99991361,
+      "sfxResidualGainRatio": 0.999098,
+      "expectedResidual": {
+        "peakDbfs": -13.5482,
+        "rmsDbfs": -27.39395
+      },
+      "actualResidual": {
+        "peakDbfs": -13.56956,
+        "rmsDbfs": -27.40103
+      },
+      "retained": true
+    },
+    {
+      "eventId": "ultimate:detail",
+      "frame": 7505,
+      "startSample": 12008000,
+      "evaluatedSamples": 16826,
+      "decodedAacVsPcmMixCorrelation": 0.9995196,
+      "sfxResidualCorrelation": 0.99892769,
+      "sfxResidualGainRatio": 0.994102,
+      "expectedResidual": {
+        "peakDbfs": -13.49223,
+        "rmsDbfs": -37.94298
+      },
+      "actualResidual": {
+        "peakDbfs": -13.47362,
+        "rmsDbfs": -37.98504
+      },
+      "retained": true
+    },
+    {
+      "eventId": "collaboration:enter",
+      "frame": 7666,
+      "startSample": 12265600,
+      "evaluatedSamples": 74565,
+      "decodedAacVsPcmMixCorrelation": 0.99999688,
+      "sfxResidualCorrelation": 0.99995758,
+      "sfxResidualGainRatio": 0.999475,
+      "expectedResidual": {
+        "peakDbfs": -13.57738,
+        "rmsDbfs": -32.51546
+      },
+      "actualResidual": {
+        "peakDbfs": -13.56177,
+        "rmsDbfs": -32.51965
+      },
+      "retained": true
+    },
+    {
+      "eventId": "roles:enter",
+      "frame": 7774,
+      "startSample": 12438400,
+      "evaluatedSamples": 52770,
+      "decodedAacVsPcmMixCorrelation": 0.99999866,
+      "sfxResidualCorrelation": 0.9999033,
+      "sfxResidualGainRatio": 0.999822,
+      "expectedResidual": {
+        "peakDbfs": -13.52809,
+        "rmsDbfs": -34.80282
+      },
+      "actualResidual": {
+        "peakDbfs": -13.5366,
+        "rmsDbfs": -34.80352
+      },
+      "retained": true
+    },
+    {
+      "eventId": "roles:item:1",
+      "frame": 7948,
+      "startSample": 12716800,
+      "evaluatedSamples": 19057,
+      "decodedAacVsPcmMixCorrelation": 0.99999392,
+      "sfxResidualCorrelation": 0.99578121,
+      "sfxResidualGainRatio": 0.998906,
+      "expectedResidual": {
+        "peakDbfs": -15.33659,
+        "rmsDbfs": -45.85932
+      },
+      "actualResidual": {
+        "peakDbfs": -15.33982,
+        "rmsDbfs": -45.83211
+      },
+      "retained": true
+    },
+    {
+      "eventId": "P07:enter",
+      "frame": 8090,
+      "startSample": 12944000,
+      "evaluatedSamples": 7370,
+      "decodedAacVsPcmMixCorrelation": 0.99997133,
+      "sfxResidualCorrelation": 0.99997126,
+      "sfxResidualGainRatio": 0.999071,
+      "expectedResidual": {
+        "peakDbfs": -16.59614,
+        "rmsDbfs": -32.10966
+      },
+      "actualResidual": {
+        "peakDbfs": -16.61375,
+        "rmsDbfs": -32.11748
+      },
+      "retained": true
+    },
+    {
+      "eventId": "refine:enter",
+      "frame": 8356,
+      "startSample": 13369600,
+      "evaluatedSamples": 42240,
+      "decodedAacVsPcmMixCorrelation": 0.99992469,
+      "sfxResidualCorrelation": 0.99871949,
+      "sfxResidualGainRatio": 0.996438,
+      "expectedResidual": {
+        "peakDbfs": -13.54555,
+        "rmsDbfs": -35.80241
+      },
+      "actualResidual": {
+        "peakDbfs": -13.631,
+        "rmsDbfs": -35.82228
+      },
+      "retained": true
+    },
+    {
+      "eventId": "refine:detail",
+      "frame": 8396,
+      "startSample": 13433600,
+      "evaluatedSamples": 23470,
+      "decodedAacVsPcmMixCorrelation": 0.99997775,
+      "sfxResidualCorrelation": 0.99925867,
+      "sfxResidualGainRatio": 0.996518,
+      "expectedResidual": {
+        "peakDbfs": -13.53179,
+        "rmsDbfs": -42.68172
+      },
+      "actualResidual": {
+        "peakDbfs": -13.55048,
+        "rmsDbfs": -42.70558
+      },
+      "retained": true
+    },
+    {
+      "eventId": "discipline:enter",
+      "frame": 8515,
+      "startSample": 13624000,
+      "evaluatedSamples": 74565,
+      "decodedAacVsPcmMixCorrelation": 0.99999228,
+      "sfxResidualCorrelation": 0.99981402,
+      "sfxResidualGainRatio": 0.99937,
+      "expectedResidual": {
+        "peakDbfs": -13.57738,
+        "rmsDbfs": -32.51546
+      },
+      "actualResidual": {
+        "peakDbfs": -13.43694,
+        "rmsDbfs": -32.51931
+      },
+      "retained": true
+    },
+    {
+      "eventId": "discipline:item:0",
+      "frame": 8637,
+      "startSample": 13819200,
+      "evaluatedSamples": 52770,
+      "decodedAacVsPcmMixCorrelation": 0.99999827,
+      "sfxResidualCorrelation": 0.99985776,
+      "sfxResidualGainRatio": 0.998869,
+      "expectedResidual": {
+        "peakDbfs": -15.3635,
+        "rmsDbfs": -36.63823
+      },
+      "actualResidual": {
+        "peakDbfs": -15.3797,
+        "rmsDbfs": -36.64682
+      },
+      "retained": true
+    },
+    {
+      "eventId": "discipline:item:1",
+      "frame": 8676,
+      "startSample": 13881600,
+      "evaluatedSamples": 53016,
+      "decodedAacVsPcmMixCorrelation": 0.99999678,
+      "sfxResidualCorrelation": 0.999833,
+      "sfxResidualGainRatio": 0.997508,
+      "expectedResidual": {
+        "peakDbfs": -15.35135,
+        "rmsDbfs": -34.52924
+      },
+      "actualResidual": {
+        "peakDbfs": -15.40217,
+        "rmsDbfs": -34.54946
+      },
+      "retained": true
+    },
+    {
+      "eventId": "discipline:item:2",
+      "frame": 8708,
+      "startSample": 13932800,
+      "evaluatedSamples": 19057,
+      "decodedAacVsPcmMixCorrelation": 0.99999714,
+      "sfxResidualCorrelation": 0.99970324,
+      "sfxResidualGainRatio": 0.998453,
+      "expectedResidual": {
+        "peakDbfs": -15.33659,
+        "rmsDbfs": -45.8593
+      },
+      "actualResidual": {
+        "peakDbfs": -15.35503,
+        "rmsDbfs": -45.87017
+      },
+      "retained": true
+    },
+    {
+      "eventId": "strength:enter",
+      "frame": 8771,
+      "startSample": 14033600,
+      "evaluatedSamples": 15840,
+      "decodedAacVsPcmMixCorrelation": 0.99993579,
+      "sfxResidualCorrelation": 0.99972698,
+      "sfxResidualGainRatio": 0.997215,
+      "expectedResidual": {
+        "peakDbfs": -15.82696,
+        "rmsDbfs": -41.91306
+      },
+      "actualResidual": {
+        "peakDbfs": -15.81738,
+        "rmsDbfs": -41.93491
+      },
+      "retained": true
+    },
+    {
+      "eventId": "prompts:enter",
+      "frame": 9001,
+      "startSample": 14401600,
+      "evaluatedSamples": 8645,
+      "decodedAacVsPcmMixCorrelation": 0.99996818,
+      "sfxResidualCorrelation": 0.99996746,
+      "sfxResidualGainRatio": 0.998741,
+      "expectedResidual": {
+        "peakDbfs": -13.5482,
+        "rmsDbfs": -27.39395
+      },
+      "actualResidual": {
+        "peakDbfs": -13.54235,
+        "rmsDbfs": -27.40462
+      },
+      "retained": true
+    },
+    {
+      "eventId": "prompts:detail",
+      "frame": 9029,
+      "startSample": 14446400,
+      "evaluatedSamples": 7370,
+      "decodedAacVsPcmMixCorrelation": 0.99994855,
+      "sfxResidualCorrelation": 0.99905369,
+      "sfxResidualGainRatio": 0.999648,
+      "expectedResidual": {
+        "peakDbfs": -16.59614,
+        "rmsDbfs": -32.10966
+      },
+      "actualResidual": {
+        "peakDbfs": -16.62163,
+        "rmsDbfs": -32.1045
+      },
+      "retained": true
+    }
+  ],
+  "inputsUnchangedDuringAnalysis": true,
+  "limitations": [
+    "AAC有损压缩使逐样本值不可能与PCM完全相同，因此使用相关性、残差和增益区间核验，不以字节一致作为标准。",
+    "逐cue残差来自实际AAC减标准化人声，可受同窗其他音效、压缩噪声与限幅影响；同时对照已验收PCM同窗残差。",
+    "通过只证明导出保留已核验混音及92个事件，不证明审美听感或用户完整观看通过。"
+  ]
+}

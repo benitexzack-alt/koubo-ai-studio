@@ -1,0 +1,294 @@
+{
+  "schemaVersion": "koubo-shotcraft-director-selection/v1",
+  "taskId": "task-20260919T154314Z-cfc689b4",
+  "revisionId": "ai-training-final-r1",
+  "directorProfile": {
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0"
+  },
+  "subtitleAuthority": "actual-recording",
+  "registry": {
+    "path": "skills/koubo-shotcraft-library/registry.v1.json",
+    "sha256": "27ccd156ace2a95533e9e255b27592cadf838658010fcb03c04f7e61317efd61"
+  },
+  "captions": {
+    "path": "edit/20260919_ai_training_methods/05_实录与字幕/final-r1-bilingual-captions.json",
+    "sha256": "feedfbf1bcb6081263e064161a4c15f8f91167a2be19facf2c066b67361174b8"
+  },
+  "canvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInFrames": 9155
+  },
+  "beats": [
+    {
+      "beatId": "speaker-01",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 0,
+        "endFrameExclusive": 2080
+      },
+      "decision": "not-needed",
+      "reason": "本段没有达到可执行组件的语义匹配阈值，保留真人或真实素材以避免错配"
+    },
+    {
+      "beatId": "P01",
+      "mainVisual": "paper-editorial",
+      "frames": {
+        "startFrame": 2080,
+        "endFrameExclusive": 2298
+      },
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层"
+    },
+    {
+      "beatId": "speaker-02",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 2298,
+        "endFrameExclusive": 2768
+      },
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代"
+    },
+    {
+      "beatId": "P02",
+      "mainVisual": "paper-editorial",
+      "frames": {
+        "startFrame": 2768,
+        "endFrameExclusive": 2965
+      },
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层"
+    },
+    {
+      "beatId": "speaker-03",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 2965,
+        "endFrameExclusive": 3302
+      },
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代"
+    },
+    {
+      "beatId": "P03",
+      "mainVisual": "paper-editorial",
+      "frames": {
+        "startFrame": 3302,
+        "endFrameExclusive": 3520
+      },
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层"
+    },
+    {
+      "beatId": "speaker-04",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 3520,
+        "endFrameExclusive": 3781
+      },
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代"
+    },
+    {
+      "beatId": "P04",
+      "mainVisual": "paper-editorial",
+      "frames": {
+        "startFrame": 3781,
+        "endFrameExclusive": 3984
+      },
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层"
+    },
+    {
+      "beatId": "speaker-05",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 3984,
+        "endFrameExclusive": 3990
+      },
+      "decision": "not-needed",
+      "reason": "最匹配卡片 skeleton-reveal 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代"
+    },
+    {
+      "beatId": "screen-question",
+      "mainVisual": "real-evidence",
+      "frames": {
+        "startFrame": 3990,
+        "endFrameExclusive": 4065
+      },
+      "decision": "apply",
+      "effectId": "evidence-scan",
+      "purpose": "将实际反问对话中的一个问题聚焦展示；只说明AI追问，不证明学会技能，不冒充反向教学。",
+      "quote": "AI抛出五个深挖底层的问题",
+      "texts": [
+        "深挖底层的问题"
+      ],
+      "region": {
+        "x": 350,
+        "y": 230,
+        "width": 1540,
+        "height": 360
+      },
+      "protectedRegions": [
+        {
+          "x": 64,
+          "y": 600,
+          "width": 278,
+          "height": 278
+        },
+        {
+          "x": 0,
+          "y": 900,
+          "width": 1920,
+          "height": 180
+        }
+      ],
+      "fallback": "blocked",
+      "sourceCard": {
+        "cardName": "scanline-annotate-focus",
+        "category": "effects"
+      },
+      "matchContext": {
+        "mainVisual": "real-evidence",
+        "materialClass": "screen-recording",
+        "semanticIntents": [
+          "evidence",
+          "hierarchy",
+          "selection"
+        ],
+        "keyTerms": [
+          "深挖底层的问题"
+        ],
+        "fingerprint": "7d86dc9f5d309021c93ecfbfadc8f4019c5a6563cd19466da38dcb0f6e1b5cf3",
+        "origin": "catalog-match"
+      },
+      "componentProps": {
+        "width": 1540,
+        "height": 360,
+        "rect": {
+          "x": 10,
+          "y": 110,
+          "width": 1510,
+          "height": 92
+        },
+        "label": "深挖底层的问题"
+      },
+      "evidence": {
+        "asset": {
+          "path": "edit/20260919_ai_training_methods/01_素材投放区/02_用户录屏与演示/录屏2026-09-19 22.41.37.mov",
+          "sha256": "584920c7302b22985b3800bd340cafd16721434c1876428b53521dde221e3ca4"
+        },
+        "rect": {
+          "x": 10,
+          "y": 110,
+          "width": 1510,
+          "height": 92
+        },
+        "claimBoundary": "只显示实际反问中的核验问题，不证明技能提升；不冒充反向教学"
+      }
+    },
+    {
+      "beatId": "speaker-06",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 4065,
+        "endFrameExclusive": 4526
+      },
+      "decision": "not-needed",
+      "reason": "本段没有达到可执行组件的语义匹配阈值，保留真人或真实素材以避免错配"
+    },
+    {
+      "beatId": "screen-archive",
+      "mainVisual": "real-evidence",
+      "frames": {
+        "startFrame": 4526,
+        "endFrameExclusive": 4650
+      },
+      "decision": "not-needed",
+      "reason": "最匹配卡片 autolayout-gap-dial 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代"
+    },
+    {
+      "beatId": "P05",
+      "mainVisual": "paper-editorial",
+      "frames": {
+        "startFrame": 4650,
+        "endFrameExclusive": 4847
+      },
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层"
+    },
+    {
+      "beatId": "speaker-07",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 4847,
+        "endFrameExclusive": 5342
+      },
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代"
+    },
+    {
+      "beatId": "G01",
+      "mainVisual": "generated-video",
+      "frames": {
+        "startFrame": 5342,
+        "endFrameExclusive": 5539
+      },
+      "decision": "not-needed",
+      "reason": "本段由生成视频承担完整情景演绎，禁止再叠加 Shotcraft 信息层"
+    },
+    {
+      "beatId": "speaker-08",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 5539,
+        "endFrameExclusive": 6231
+      },
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代"
+    },
+    {
+      "beatId": "P06",
+      "mainVisual": "paper-editorial",
+      "frames": {
+        "startFrame": 6231,
+        "endFrameExclusive": 6428
+      },
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层"
+    },
+    {
+      "beatId": "speaker-09",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 6428,
+        "endFrameExclusive": 8090
+      },
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代"
+    },
+    {
+      "beatId": "P07",
+      "mainVisual": "paper-editorial",
+      "frames": {
+        "startFrame": 8090,
+        "endFrameExclusive": 8330
+      },
+      "decision": "not-needed",
+      "reason": "本段由纸艺主画面完整承担机制解释，禁止再叠加 Shotcraft 信息层"
+    },
+    {
+      "beatId": "speaker-10",
+      "mainVisual": "speaker",
+      "frames": {
+        "startFrame": 8330,
+        "endFrameExclusive": 9155
+      },
+      "decision": "not-needed",
+      "reason": "本段没有达到可执行组件的语义匹配阈值，保留真人或真实素材以避免错配"
+    }
+  ]
+}

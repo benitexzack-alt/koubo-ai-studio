@@ -1,0 +1,2716 @@
+{
+  "schemaVersion": "ai-training-audio-events-machine-qa/v1",
+  "scope": "只读实际PCM采样与逐cue残差重建，未人工试听，未修改混音",
+  "audioListened": false,
+  "fullWatchConfirmed": false,
+  "bindings": [
+    {
+      "path": "remotion/src/ai-training-final-r1/runtime-plan.r1.json",
+      "sha256": "4cb28efa71cb17d74b374444c3d3f3bf7cfd00ac79919be847e7d4bae4dff137"
+    },
+    {
+      "path": "remotion/public-ai-training-final-r1/audio/final-mix.wav",
+      "sha256": "3633119bf55bd905dfb898b189b1c950d38d812c006f7f1608248f9d1070c519"
+    },
+    {
+      "path": "remotion/public-ai-training-final-r1/audio/voice-normalized.wav",
+      "sha256": "89c24dd32014c9143ba6cb6f8f9e367a4118ba130abdf2838c64554562bc4b01"
+    },
+    {
+      "path": "remotion/public-ai-training-final-r1/audio/original.wav",
+      "sha256": "3e122d1e36bf936c4134ff779213430c18833a19387233647c5aa375ebaf2a9b"
+    }
+  ],
+  "sampleRate": 48000,
+  "channels": 2,
+  "samplesPerChannel": 14647450,
+  "durationSeconds": 305.15520833333335,
+  "voiceOriginalLengthMatchesMix": true,
+  "originalVsNormalizedVoice": {
+    "samePositionCorrelation": 0.99732598,
+    "bestLagSamplesAt16SampleResolution": 0,
+    "bestLagCorrelation": 0.9973259786820793
+  },
+  "voiceOutsideScheduledSound": {
+    "sampledFrames": 334263,
+    "correlation": 1.0,
+    "difference": {
+      "peakDbfs": -240.0,
+      "rmsDbfs": -240.0,
+      "nonzeroSamples": 0
+    }
+  },
+  "wholeMix": {
+    "peakDbfs": -1.4999,
+    "rmsDbfs": -19.9005,
+    "nonzeroSamples": 29294219
+  },
+  "wholeSfxResidual": {
+    "peakDbfs": -11.9762,
+    "rmsDbfs": -38.7939,
+    "nonzeroSamples": 5656442
+  },
+  "scheduledSfxReconstructionError": {
+    "peakDbfs": -31.0344,
+    "rmsDbfs": -82.5056,
+    "nonzeroSamples": 15825
+  },
+  "loudnormReadOnlyMeasurement": {
+    "input_i": "-17.03",
+    "input_tp": "-1.49",
+    "input_lra": "4.20",
+    "input_thresh": "-27.71",
+    "output_i": "-16.77",
+    "output_tp": "-2.00",
+    "output_lra": "4.20",
+    "output_thresh": "-27.44",
+    "normalization_type": "dynamic",
+    "target_offset": "-0.23"
+  },
+  "peakSafety": {
+    "measuredTruePeakDbtp": -1.49,
+    "noSampleClipping": true,
+    "belowMinus1Dbtp": true,
+    "maximumSimultaneousScheduledSfx": 2,
+    "overlapFramesCount": 55736
+  },
+  "eventCount": 92,
+  "eventsWithActualNonzeroSfx": 92,
+  "suspectEvents": [],
+  "hookEvent": {
+    "eventId": "hook:enter",
+    "frame": 4,
+    "startSample": 6400,
+    "sampleCount": 48000,
+    "file": "audio/sfx/waic-thesis-impact.wav",
+    "gain": 0.5,
+    "residual": {
+      "peakDbfs": -11.9762,
+      "rmsDbfs": -29.0106,
+      "nonzeroSamples": 93989
+    },
+    "isolatedAfterSubtractingOtherScheduledCues": {
+      "peakDbfs": -11.9762,
+      "rmsDbfs": -29.0106,
+      "nonzeroSamples": 93989
+    },
+    "expectedSfx": {
+      "peakDbfs": -11.9762,
+      "rmsDbfs": -29.0106,
+      "nonzeroSamples": 93989
+    },
+    "isolatedCorrelation": 1.0,
+    "estimatedActualToScheduledGain": 1.0,
+    "overlappingCueIds": [],
+    "actualNonzeroSoundPresent": true,
+    "sourceHashMatchesRuntime": true
+  },
+  "events": [
+    {
+      "eventId": "hook:enter",
+      "frame": 4,
+      "startSample": 6400,
+      "sampleCount": 48000,
+      "file": "audio/sfx/waic-thesis-impact.wav",
+      "gain": 0.5,
+      "residual": {
+        "peakDbfs": -11.9762,
+        "rmsDbfs": -29.0106,
+        "nonzeroSamples": 93989
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -11.9762,
+        "rmsDbfs": -29.0106,
+        "nonzeroSamples": 93989
+      },
+      "expectedSfx": {
+        "peakDbfs": -11.9762,
+        "rmsDbfs": -29.0106,
+        "nonzeroSamples": 93989
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "hook:detail",
+      "frame": 73,
+      "startSample": 116800,
+      "sampleCount": 61766,
+      "file": "audio/sfx/v3-number-settle-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5561,
+        "rmsDbfs": -32.9898,
+        "nonzeroSamples": 122221
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5561,
+        "rmsDbfs": -32.9898,
+        "nonzeroSamples": 122221
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5561,
+        "rmsDbfs": -32.9898,
+        "nonzeroSamples": 122221
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "workplace:enter",
+      "frame": 152,
+      "startSample": 243200,
+      "sampleCount": 18271,
+      "file": "audio/sfx/v3-soft-card-pop-b.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5503,
+        "rmsDbfs": -28.0953,
+        "nonzeroSamples": 36160
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5503,
+        "rmsDbfs": -28.0953,
+        "nonzeroSamples": 36160
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5503,
+        "rmsDbfs": -28.0953,
+        "nonzeroSamples": 36160
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "workplace:detail",
+      "frame": 218,
+      "startSample": 348800,
+      "sampleCount": 10800,
+      "file": "audio/sfx/v1-confirm-soft.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5699,
+        "rmsDbfs": -23.3055,
+        "nonzeroSamples": 20222
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5699,
+        "rmsDbfs": -23.3055,
+        "nonzeroSamples": 20222
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5699,
+        "rmsDbfs": -23.3055,
+        "nonzeroSamples": 20222
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "industry:enter",
+      "frame": 332,
+      "startSample": 531200,
+      "sampleCount": 19187,
+      "file": "audio/sfx/v1-card-reveal.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5694,
+        "rmsDbfs": -31.6259,
+        "nonzeroSamples": 36104
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5694,
+        "rmsDbfs": -31.6259,
+        "nonzeroSamples": 36104
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5694,
+        "rmsDbfs": -31.6259,
+        "nonzeroSamples": 36104
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "industry:detail",
+      "frame": 413,
+      "startSample": 660800,
+      "sampleCount": 101647,
+      "file": "audio/sfx/v2-number-affirmation.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.553,
+        "rmsDbfs": -38.7435,
+        "nonzeroSamples": 119115
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.553,
+        "rmsDbfs": -38.7435,
+        "nonzeroSamples": 119115
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.553,
+        "rmsDbfs": -38.7435,
+        "nonzeroSamples": 119115
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "selective:enter",
+      "frame": 532,
+      "startSample": 851200,
+      "sampleCount": 32652,
+      "file": "audio/sfx/waic-card-pop.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -33.2574,
+        "nonzeroSamples": 63174
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -33.2574,
+        "nonzeroSamples": 63174
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -33.2574,
+        "nonzeroSamples": 63174
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "selective:item:0",
+      "frame": 641,
+      "startSample": 1025600,
+      "sampleCount": 11376,
+      "file": "audio/sfx/v3-list-tick-a.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3704,
+        "rmsDbfs": -34.4093,
+        "nonzeroSamples": 7041
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3704,
+        "rmsDbfs": -34.4093,
+        "nonzeroSamples": 7041
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3704,
+        "rmsDbfs": -34.4093,
+        "nonzeroSamples": 7041
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "selective:item:1",
+      "frame": 688,
+      "startSample": 1100800,
+      "sampleCount": 21600,
+      "file": "audio/sfx/v1-node-connect.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3831,
+        "rmsDbfs": -40.6195,
+        "nonzeroSamples": 41409
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3831,
+        "rmsDbfs": -40.6195,
+        "nonzeroSamples": 41409
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3831,
+        "rmsDbfs": -40.6195,
+        "nonzeroSamples": 41409
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ai-exception:enter",
+      "frame": 803,
+      "startSample": 1284800,
+      "sampleCount": 51409,
+      "file": "audio/sfx/v3-soft-card-pop-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5091,
+        "rmsDbfs": -42.0891,
+        "nonzeroSamples": 20078
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5091,
+        "rmsDbfs": -42.0891,
+        "nonzeroSamples": 20078
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5091,
+        "rmsDbfs": -42.0891,
+        "nonzeroSamples": 20078
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ai-exception:item:0",
+      "frame": 950,
+      "startSample": 1520000,
+      "sampleCount": 9575,
+      "file": "audio/sfx/v3-list-tick-b.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3482,
+        "rmsDbfs": -36.5191,
+        "nonzeroSamples": 14214
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3482,
+        "rmsDbfs": -36.5191,
+        "nonzeroSamples": 14214
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3482,
+        "rmsDbfs": -36.5191,
+        "nonzeroSamples": 14214
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ai-exception:item:1",
+      "frame": 975,
+      "startSample": 1560000,
+      "sampleCount": 24000,
+      "file": "audio/sfx/v2-keyword-select.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -39.5884,
+        "nonzeroSamples": 3582
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -39.5884,
+        "nonzeroSamples": 3582
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -39.5884,
+        "nonzeroSamples": 3582
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ai-exception:item:2",
+      "frame": 1011,
+      "startSample": 1617600,
+      "sampleCount": 9935,
+      "file": "audio/sfx/v1-keyword-tick.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.6016,
+        "nonzeroSamples": 19502
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.6016,
+        "nonzeroSamples": 19502
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.6016,
+        "nonzeroSamples": 19502
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ai-exception:detail",
+      "frame": 1042,
+      "startSample": 1667200,
+      "sampleCount": 61766,
+      "file": "audio/sfx/v3-number-settle-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5561,
+        "rmsDbfs": -32.9898,
+        "nonzeroSamples": 122221
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5561,
+        "rmsDbfs": -32.9898,
+        "nonzeroSamples": 122221
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5561,
+        "rmsDbfs": -32.9898,
+        "nonzeroSamples": 122221
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "eight-methods:enter",
+      "frame": 1137,
+      "startSample": 1819200,
+      "sampleCount": 18271,
+      "file": "audio/sfx/v3-soft-card-pop-b.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5503,
+        "rmsDbfs": -28.0953,
+        "nonzeroSamples": 36160
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5503,
+        "rmsDbfs": -28.0953,
+        "nonzeroSamples": 36160
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5503,
+        "rmsDbfs": -28.0953,
+        "nonzeroSamples": 36160
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "chapter-one:enter",
+      "frame": 1429,
+      "startSample": 2286400,
+      "sampleCount": 37507,
+      "file": "audio/sfx/v3-chapter-sweep-a.wav",
+      "gain": 0.46,
+      "residual": {
+        "peakDbfs": -12.7374,
+        "rmsDbfs": -30.8387,
+        "nonzeroSamples": 73518
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -12.7374,
+        "rmsDbfs": -30.8387,
+        "nonzeroSamples": 73518
+      },
+      "expectedSfx": {
+        "peakDbfs": -12.7374,
+        "rmsDbfs": -30.8387,
+        "nonzeroSamples": 73518
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "scenario:enter",
+      "frame": 1593,
+      "startSample": 2548800,
+      "sampleCount": 19187,
+      "file": "audio/sfx/v1-card-reveal.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5694,
+        "rmsDbfs": -31.6259,
+        "nonzeroSamples": 36104
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5694,
+        "rmsDbfs": -31.6259,
+        "nonzeroSamples": 36104
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5694,
+        "rmsDbfs": -31.6259,
+        "nonzeroSamples": 36104
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "scenario:item:0",
+      "frame": 1676,
+      "startSample": 2681600,
+      "sampleCount": 11376,
+      "file": "audio/sfx/v3-list-tick-a.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3704,
+        "rmsDbfs": -34.4093,
+        "nonzeroSamples": 7041
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3704,
+        "rmsDbfs": -34.4093,
+        "nonzeroSamples": 7041
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3704,
+        "rmsDbfs": -34.4093,
+        "nonzeroSamples": 7041
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "scenario:item:1",
+      "frame": 1747,
+      "startSample": 2795200,
+      "sampleCount": 21600,
+      "file": "audio/sfx/v1-node-connect.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3831,
+        "rmsDbfs": -40.6195,
+        "nonzeroSamples": 41409
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3831,
+        "rmsDbfs": -40.6195,
+        "nonzeroSamples": 41409
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3831,
+        "rmsDbfs": -40.6195,
+        "nonzeroSamples": 41409
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "guided:enter",
+      "frame": 1920,
+      "startSample": 3072000,
+      "sampleCount": 18271,
+      "file": "audio/sfx/v3-soft-card-pop-b.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5503,
+        "rmsDbfs": -28.0953,
+        "nonzeroSamples": 36160
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5503,
+        "rmsDbfs": -28.0953,
+        "nonzeroSamples": 36160
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5503,
+        "rmsDbfs": -28.0953,
+        "nonzeroSamples": 36160
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "guided:detail",
+      "frame": 1979,
+      "startSample": 3166400,
+      "sampleCount": 61766,
+      "file": "audio/sfx/v3-number-settle-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5561,
+        "rmsDbfs": -32.9898,
+        "nonzeroSamples": 122221
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5561,
+        "rmsDbfs": -32.9898,
+        "nonzeroSamples": 122221
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5561,
+        "rmsDbfs": -32.9898,
+        "nonzeroSamples": 122221
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "P01:enter",
+      "frame": 2080,
+      "startSample": 3328000,
+      "sampleCount": 84323,
+      "file": "audio/sfx/v3-media-whoosh-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5747,
+        "rmsDbfs": -38.5937,
+        "nonzeroSamples": 151004
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5747,
+        "rmsDbfs": -38.5937,
+        "nonzeroSamples": 151004
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5747,
+        "rmsDbfs": -38.5937,
+        "nonzeroSamples": 151004
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "judgement:enter",
+      "frame": 2309,
+      "startSample": 3694400,
+      "sampleCount": 32652,
+      "file": "audio/sfx/waic-card-pop.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -33.2574,
+        "nonzeroSamples": 63174
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -33.2574,
+        "nonzeroSamples": 63174
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -33.2574,
+        "nonzeroSamples": 63174
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "judgement:detail",
+      "frame": 2349,
+      "startSample": 3758400,
+      "sampleCount": 10800,
+      "file": "audio/sfx/v1-confirm-soft.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5699,
+        "rmsDbfs": -23.3055,
+        "nonzeroSamples": 20222
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5699,
+        "rmsDbfs": -23.3055,
+        "nonzeroSamples": 20222
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5699,
+        "rmsDbfs": -23.3055,
+        "nonzeroSamples": 20222
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "chapter-two:enter",
+      "frame": 2429,
+      "startSample": 3886400,
+      "sampleCount": 37507,
+      "file": "audio/sfx/v3-chapter-sweep-a.wav",
+      "gain": 0.46,
+      "residual": {
+        "peakDbfs": -12.7374,
+        "rmsDbfs": -30.8387,
+        "nonzeroSamples": 73518
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -12.7374,
+        "rmsDbfs": -30.8387,
+        "nonzeroSamples": 73518
+      },
+      "expectedSfx": {
+        "peakDbfs": -12.7374,
+        "rmsDbfs": -30.8387,
+        "nonzeroSamples": 73518
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "analogy:enter",
+      "frame": 2599,
+      "startSample": 4158400,
+      "sampleCount": 19187,
+      "file": "audio/sfx/v1-card-reveal.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5694,
+        "rmsDbfs": -31.6259,
+        "nonzeroSamples": 36104
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5694,
+        "rmsDbfs": -31.6259,
+        "nonzeroSamples": 36104
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5694,
+        "rmsDbfs": -31.6259,
+        "nonzeroSamples": 36104
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "analogy:detail",
+      "frame": 2678,
+      "startSample": 4284800,
+      "sampleCount": 101647,
+      "file": "audio/sfx/v2-number-affirmation.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.553,
+        "rmsDbfs": -38.7435,
+        "nonzeroSamples": 119115
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.553,
+        "rmsDbfs": -38.7435,
+        "nonzeroSamples": 119115
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.553,
+        "rmsDbfs": -38.7435,
+        "nonzeroSamples": 119115
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "P02:enter",
+      "frame": 2768,
+      "startSample": 4428800,
+      "sampleCount": 52525,
+      "file": "audio/sfx/v3-evidence-paper-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -45.3927,
+        "nonzeroSamples": 94022
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -45.3927,
+        "nonzeroSamples": 94022
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -45.3927,
+        "nonzeroSamples": 94022
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "understanding:enter",
+      "frame": 2968,
+      "startSample": 4748800,
+      "sampleCount": 51409,
+      "file": "audio/sfx/v3-soft-card-pop-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5091,
+        "rmsDbfs": -42.0891,
+        "nonzeroSamples": 20078
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5091,
+        "rmsDbfs": -42.0891,
+        "nonzeroSamples": 20078
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5091,
+        "rmsDbfs": -42.0891,
+        "nonzeroSamples": 20078
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "understanding:detail",
+      "frame": 3018,
+      "startSample": 4828800,
+      "sampleCount": 77719,
+      "file": "audio/sfx/v3-cta-confirm-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5551,
+        "rmsDbfs": -30.9736,
+        "nonzeroSamples": 155112
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5551,
+        "rmsDbfs": -30.9736,
+        "nonzeroSamples": 155112
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5551,
+        "rmsDbfs": -30.9736,
+        "nonzeroSamples": 155112
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "chapter-three:enter",
+      "frame": 3098,
+      "startSample": 4956800,
+      "sampleCount": 29088,
+      "file": "audio/sfx/v2-section-sweep.wav",
+      "gain": 0.46,
+      "residual": {
+        "peakDbfs": -12.7892,
+        "rmsDbfs": -33.6163,
+        "nonzeroSamples": 43376
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -12.7892,
+        "rmsDbfs": -33.6163,
+        "nonzeroSamples": 43376
+      },
+      "expectedSfx": {
+        "peakDbfs": -12.7755,
+        "rmsDbfs": -33.567,
+        "nonzeroSamples": 43376
+      },
+      "isolatedCorrelation": 0.9973531,
+      "estimatedActualToScheduledGain": 0.991704,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "inputs:enter",
+      "frame": 3163,
+      "startSample": 5060800,
+      "sampleCount": 32652,
+      "file": "audio/sfx/waic-card-pop.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -32.227,
+        "nonzeroSamples": 63239
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -33.2574,
+        "nonzeroSamples": 63174
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5519,
+        "rmsDbfs": -33.2574,
+        "nonzeroSamples": 63174
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "inputs:item:0"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "inputs:item:0",
+      "frame": 3171,
+      "startSample": 5073600,
+      "sampleCount": 11376,
+      "file": "audio/sfx/v3-list-tick-a.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -14.6084,
+        "rmsDbfs": -33.7091,
+        "nonzeroSamples": 22528
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3704,
+        "rmsDbfs": -34.4093,
+        "nonzeroSamples": 7041
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3704,
+        "rmsDbfs": -34.4093,
+        "nonzeroSamples": 7041
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "inputs:enter"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "inputs:item:1",
+      "frame": 3221,
+      "startSample": 5153600,
+      "sampleCount": 21600,
+      "file": "audio/sfx/v1-node-connect.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3831,
+        "rmsDbfs": -40.6195,
+        "nonzeroSamples": 41409
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3831,
+        "rmsDbfs": -40.6195,
+        "nonzeroSamples": 41409
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3831,
+        "rmsDbfs": -40.6195,
+        "nonzeroSamples": 41409
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "inputs:item:2",
+      "frame": 3249,
+      "startSample": 5198400,
+      "sampleCount": 9575,
+      "file": "audio/sfx/v3-list-tick-b.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3482,
+        "rmsDbfs": -36.5191,
+        "nonzeroSamples": 14214
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3482,
+        "rmsDbfs": -36.5191,
+        "nonzeroSamples": 14214
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3482,
+        "rmsDbfs": -36.5191,
+        "nonzeroSamples": 14214
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "P03:enter",
+      "frame": 3302,
+      "startSample": 5283200,
+      "sampleCount": 84323,
+      "file": "audio/sfx/v3-media-whoosh-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5747,
+        "rmsDbfs": -38.5937,
+        "nonzeroSamples": 151004
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5747,
+        "rmsDbfs": -38.5937,
+        "nonzeroSamples": 151004
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5747,
+        "rmsDbfs": -38.5937,
+        "nonzeroSamples": 151004
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "adjust:enter",
+      "frame": 3562,
+      "startSample": 5699200,
+      "sampleCount": 79200,
+      "file": "audio/sfx/v2-card-slide.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5028,
+        "rmsDbfs": -31.0079,
+        "nonzeroSamples": 76964
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5028,
+        "rmsDbfs": -38.0722,
+        "nonzeroSamples": 56742
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5028,
+        "rmsDbfs": -38.0722,
+        "nonzeroSamples": 56742
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "adjust:detail"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "adjust:detail",
+      "frame": 3590,
+      "startSample": 5744000,
+      "sampleCount": 10800,
+      "file": "audio/sfx/v1-confirm-soft.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5699,
+        "rmsDbfs": -23.3055,
+        "nonzeroSamples": 20222
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5699,
+        "rmsDbfs": -23.3055,
+        "nonzeroSamples": 20222
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5699,
+        "rmsDbfs": -23.3055,
+        "nonzeroSamples": 20222
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "adjust:enter"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "chapter-four:enter",
+      "frame": 3737,
+      "startSample": 5979200,
+      "sampleCount": 37507,
+      "file": "audio/sfx/v3-chapter-sweep-a.wav",
+      "gain": 0.46,
+      "residual": {
+        "peakDbfs": -12.7374,
+        "rmsDbfs": -30.8387,
+        "nonzeroSamples": 73518
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -12.7374,
+        "rmsDbfs": -30.8387,
+        "nonzeroSamples": 73518
+      },
+      "expectedSfx": {
+        "peakDbfs": -12.7374,
+        "rmsDbfs": -30.8387,
+        "nonzeroSamples": 73518
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "P04:enter",
+      "frame": 3781,
+      "startSample": 6049600,
+      "sampleCount": 52525,
+      "file": "audio/sfx/v3-evidence-paper-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -45.3927,
+        "nonzeroSamples": 94022
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -45.3927,
+        "nonzeroSamples": 94022
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -45.3927,
+        "nonzeroSamples": 94022
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "screen-question:enter",
+      "frame": 3990,
+      "startSample": 6384000,
+      "sampleCount": 55152,
+      "file": "audio/sfx/v2-zoom-out.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5705,
+        "rmsDbfs": -29.2719,
+        "nonzeroSamples": 95654
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5705,
+        "rmsDbfs": -29.2719,
+        "nonzeroSamples": 95654
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5705,
+        "rmsDbfs": -29.2719,
+        "nonzeroSamples": 95654
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "screen-question:scan-lock",
+      "frame": 4038,
+      "startSample": 6460800,
+      "sampleCount": 9575,
+      "file": "audio/sfx/v3-list-tick-b.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5128,
+        "rmsDbfs": -34.6837,
+        "nonzeroSamples": 14214
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5128,
+        "rmsDbfs": -34.6837,
+        "nonzeroSamples": 14214
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5128,
+        "rmsDbfs": -34.6837,
+        "nonzeroSamples": 14214
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "blind-spots:enter",
+      "frame": 4108,
+      "startSample": 6572800,
+      "sampleCount": 51409,
+      "file": "audio/sfx/v3-soft-card-pop-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5091,
+        "rmsDbfs": -39.4638,
+        "nonzeroSamples": 23660
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5091,
+        "rmsDbfs": -42.0891,
+        "nonzeroSamples": 20078
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5091,
+        "rmsDbfs": -42.0891,
+        "nonzeroSamples": 20078
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "blind-spots:item:0"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "blind-spots:item:0",
+      "frame": 4132,
+      "startSample": 6611200,
+      "sampleCount": 24000,
+      "file": "audio/sfx/v2-keyword-select.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -39.5884,
+        "nonzeroSamples": 3582
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -39.5884,
+        "nonzeroSamples": 3582
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -39.5884,
+        "nonzeroSamples": 3582
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "blind-spots:enter"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "blind-spots:item:1",
+      "frame": 4298,
+      "startSample": 6876800,
+      "sampleCount": 9935,
+      "file": "audio/sfx/v1-keyword-tick.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.6016,
+        "nonzeroSamples": 19502
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.6016,
+        "nonzeroSamples": 19502
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.6016,
+        "nonzeroSamples": 19502
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "blind-spots:detail",
+      "frame": 4381,
+      "startSample": 7009600,
+      "sampleCount": 101647,
+      "file": "audio/sfx/v2-number-affirmation.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.553,
+        "rmsDbfs": -38.7435,
+        "nonzeroSamples": 119115
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.553,
+        "rmsDbfs": -38.7435,
+        "nonzeroSamples": 119115
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.553,
+        "rmsDbfs": -38.7435,
+        "nonzeroSamples": 119115
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "chapter-five:enter",
+      "frame": 4449,
+      "startSample": 7118400,
+      "sampleCount": 29088,
+      "file": "audio/sfx/v2-section-sweep.wav",
+      "gain": 0.46,
+      "residual": {
+        "peakDbfs": -12.7755,
+        "rmsDbfs": -33.567,
+        "nonzeroSamples": 43376
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -12.7755,
+        "rmsDbfs": -33.567,
+        "nonzeroSamples": 43376
+      },
+      "expectedSfx": {
+        "peakDbfs": -12.7755,
+        "rmsDbfs": -33.567,
+        "nonzeroSamples": 43376
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "screen-archive:enter",
+      "frame": 4526,
+      "startSample": 7241600,
+      "sampleCount": 84323,
+      "file": "audio/sfx/v3-media-whoosh-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5747,
+        "rmsDbfs": -38.5937,
+        "nonzeroSamples": 151004
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5747,
+        "rmsDbfs": -38.5937,
+        "nonzeroSamples": 151004
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5747,
+        "rmsDbfs": -38.5937,
+        "nonzeroSamples": 151004
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "P05:enter",
+      "frame": 4650,
+      "startSample": 7440000,
+      "sampleCount": 52525,
+      "file": "audio/sfx/v3-evidence-paper-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -45.3927,
+        "nonzeroSamples": 94022
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -45.3927,
+        "nonzeroSamples": 94022
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -45.3927,
+        "nonzeroSamples": 94022
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "compare-work:enter",
+      "frame": 4847,
+      "startSample": 7755200,
+      "sampleCount": 79200,
+      "file": "audio/sfx/v2-card-slide.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5028,
+        "rmsDbfs": -38.0722,
+        "nonzeroSamples": 56742
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5028,
+        "rmsDbfs": -38.0722,
+        "nonzeroSamples": 56742
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5028,
+        "rmsDbfs": -38.0722,
+        "nonzeroSamples": 56742
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "measurable-progress:enter",
+      "frame": 4979,
+      "startSample": 7966400,
+      "sampleCount": 48000,
+      "file": "audio/sfx/waic-thesis-impact.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.4907,
+        "rmsDbfs": -30.525,
+        "nonzeroSamples": 93989
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.4907,
+        "rmsDbfs": -30.525,
+        "nonzeroSamples": 93989
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.4906,
+        "rmsDbfs": -30.525,
+        "nonzeroSamples": 93989
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "measurable-progress:detail",
+      "frame": 5062,
+      "startSample": 8099200,
+      "sampleCount": 77719,
+      "file": "audio/sfx/v3-cta-confirm-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5551,
+        "rmsDbfs": -30.9142,
+        "nonzeroSamples": 155189
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5551,
+        "rmsDbfs": -30.9736,
+        "nonzeroSamples": 155112
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5551,
+        "rmsDbfs": -30.9736,
+        "nonzeroSamples": 155112
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "chapter-six:enter"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "chapter-six:enter",
+      "frame": 5107,
+      "startSample": 8171200,
+      "sampleCount": 51840,
+      "file": "audio/sfx/waic-section-whoosh.wav",
+      "gain": 0.46,
+      "residual": {
+        "peakDbfs": -12.7474,
+        "rmsDbfs": -26.1355,
+        "nonzeroSamples": 102971
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -12.7474,
+        "rmsDbfs": -26.1355,
+        "nonzeroSamples": 102969
+      },
+      "expectedSfx": {
+        "peakDbfs": -12.7474,
+        "rmsDbfs": -26.1312,
+        "nonzeroSamples": 102969
+      },
+      "isolatedCorrelation": 0.9999766,
+      "estimatedActualToScheduledGain": 0.999485,
+      "overlappingCueIds": [
+        "measurable-progress:detail"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "pressure:enter",
+      "frame": 5198,
+      "startSample": 8316800,
+      "sampleCount": 12692,
+      "file": "audio/sfx/v1-section-air.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5049,
+        "rmsDbfs": -29.2582,
+        "nonzeroSamples": 25242
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5049,
+        "rmsDbfs": -29.2582,
+        "nonzeroSamples": 25242
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5049,
+        "rmsDbfs": -29.2582,
+        "nonzeroSamples": 25242
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "pressure:detail",
+      "frame": 5262,
+      "startSample": 8419200,
+      "sampleCount": 16826,
+      "file": "audio/sfx/v2-evidence-shutter.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.4922,
+        "rmsDbfs": -37.943,
+        "nonzeroSamples": 32315
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.4922,
+        "rmsDbfs": -37.943,
+        "nonzeroSamples": 32315
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.4922,
+        "rmsDbfs": -37.943,
+        "nonzeroSamples": 32315
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "G01:enter",
+      "frame": 5342,
+      "startSample": 8547200,
+      "sampleCount": 55152,
+      "file": "audio/sfx/v2-zoom-out.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5705,
+        "rmsDbfs": -29.2719,
+        "nonzeroSamples": 95654
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5705,
+        "rmsDbfs": -29.2719,
+        "nonzeroSamples": 95654
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5705,
+        "rmsDbfs": -29.2719,
+        "nonzeroSamples": 95654
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "review-risk:enter",
+      "frame": 5539,
+      "startSample": 8862400,
+      "sampleCount": 29088,
+      "file": "audio/sfx/v2-section-sweep.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5657,
+        "rmsDbfs": -34.3572,
+        "nonzeroSamples": 43376
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5657,
+        "rmsDbfs": -34.3572,
+        "nonzeroSamples": 43376
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5657,
+        "rmsDbfs": -34.3572,
+        "nonzeroSamples": 43376
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "review-risk:detail",
+      "frame": 5705,
+      "startSample": 9128000,
+      "sampleCount": 23470,
+      "file": "audio/sfx/v1-camera-shutter.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5318,
+        "rmsDbfs": -42.6817,
+        "nonzeroSamples": 26958
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5318,
+        "rmsDbfs": -42.6817,
+        "nonzeroSamples": 26958
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5318,
+        "rmsDbfs": -42.6817,
+        "nonzeroSamples": 26958
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "chapter-seven:enter",
+      "frame": 5761,
+      "startSample": 9217600,
+      "sampleCount": 48000,
+      "file": "audio/sfx/waic-thesis-impact.wav",
+      "gain": 0.46,
+      "residual": {
+        "peakDbfs": -12.7005,
+        "rmsDbfs": -29.7348,
+        "nonzeroSamples": 93989
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -12.7005,
+        "rmsDbfs": -29.7348,
+        "nonzeroSamples": 93989
+      },
+      "expectedSfx": {
+        "peakDbfs": -12.7005,
+        "rmsDbfs": -29.7348,
+        "nonzeroSamples": 93989
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "thinking:enter",
+      "frame": 5981,
+      "startSample": 9569600,
+      "sampleCount": 79200,
+      "file": "audio/sfx/v2-card-slide.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5028,
+        "rmsDbfs": -38.0722,
+        "nonzeroSamples": 56742
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5028,
+        "rmsDbfs": -38.0722,
+        "nonzeroSamples": 56742
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5028,
+        "rmsDbfs": -38.0722,
+        "nonzeroSamples": 56742
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "shortcuts:enter",
+      "frame": 6076,
+      "startSample": 9721600,
+      "sampleCount": 51840,
+      "file": "audio/sfx/waic-section-whoosh.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5376,
+        "rmsDbfs": -26.9214,
+        "nonzeroSamples": 102969
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5376,
+        "rmsDbfs": -26.9214,
+        "nonzeroSamples": 102969
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5376,
+        "rmsDbfs": -26.9214,
+        "nonzeroSamples": 102969
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "shortcuts:item:0",
+      "frame": 6145,
+      "startSample": 9832000,
+      "sampleCount": 24000,
+      "file": "audio/sfx/v2-keyword-select.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -39.5884,
+        "nonzeroSamples": 3582
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -39.5884,
+        "nonzeroSamples": 3582
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -39.5884,
+        "nonzeroSamples": 3582
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "shortcuts:item:1",
+      "frame": 6172,
+      "startSample": 9875200,
+      "sampleCount": 9935,
+      "file": "audio/sfx/v1-keyword-tick.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.6016,
+        "nonzeroSamples": 19502
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.6016,
+        "nonzeroSamples": 19502
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3799,
+        "rmsDbfs": -31.6016,
+        "nonzeroSamples": 19502
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "P06:enter",
+      "frame": 6231,
+      "startSample": 9969600,
+      "sampleCount": 55152,
+      "file": "audio/sfx/v2-zoom-out.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5705,
+        "rmsDbfs": -29.2742,
+        "nonzeroSamples": 95656
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5705,
+        "rmsDbfs": -29.2742,
+        "nonzeroSamples": 95656
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5705,
+        "rmsDbfs": -29.2719,
+        "nonzeroSamples": 95654
+      },
+      "isolatedCorrelation": 0.99993436,
+      "estimatedActualToScheduledGain": 0.999671,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "mastery:enter",
+      "frame": 6428,
+      "startSample": 10284800,
+      "sampleCount": 12692,
+      "file": "audio/sfx/v1-section-air.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5049,
+        "rmsDbfs": -29.2582,
+        "nonzeroSamples": 25242
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5049,
+        "rmsDbfs": -29.2582,
+        "nonzeroSamples": 25242
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5049,
+        "rmsDbfs": -29.2582,
+        "nonzeroSamples": 25242
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "mastery:detail",
+      "frame": 6464,
+      "startSample": 10342400,
+      "sampleCount": 77719,
+      "file": "audio/sfx/v3-cta-confirm-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5551,
+        "rmsDbfs": -30.9736,
+        "nonzeroSamples": 155112
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5551,
+        "rmsDbfs": -30.9736,
+        "nonzeroSamples": 155112
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5551,
+        "rmsDbfs": -30.9736,
+        "nonzeroSamples": 155112
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "chapter-eight:enter",
+      "frame": 6513,
+      "startSample": 10420800,
+      "sampleCount": 42240,
+      "file": "audio/sfx/waic-node-connect.wav",
+      "gain": 0.46,
+      "residual": {
+        "peakDbfs": -12.7554,
+        "rmsDbfs": -35.0122,
+        "nonzeroSamples": 83464
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -12.7554,
+        "rmsDbfs": -35.0122,
+        "nonzeroSamples": 83464
+      },
+      "expectedSfx": {
+        "peakDbfs": -12.7554,
+        "rmsDbfs": -35.0122,
+        "nonzeroSamples": 83464
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "reverse-teaching:enter",
+      "frame": 6639,
+      "startSample": 10622400,
+      "sampleCount": 74565,
+      "file": "audio/sfx/v2-node-select.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5774,
+        "rmsDbfs": -32.5155,
+        "nonzeroSamples": 142720
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5774,
+        "rmsDbfs": -32.5155,
+        "nonzeroSamples": 142720
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5774,
+        "rmsDbfs": -32.5155,
+        "nonzeroSamples": 142720
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "reverse-teaching:detail",
+      "frame": 6694,
+      "startSample": 10710400,
+      "sampleCount": 16826,
+      "file": "audio/sfx/v2-evidence-shutter.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.4922,
+        "rmsDbfs": -37.943,
+        "nonzeroSamples": 32315
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.4922,
+        "rmsDbfs": -37.943,
+        "nonzeroSamples": 32315
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.4922,
+        "rmsDbfs": -37.943,
+        "nonzeroSamples": 32315
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ask-explain:enter",
+      "frame": 6767,
+      "startSample": 10827200,
+      "sampleCount": 52770,
+      "file": "audio/sfx/v3-line-connect-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5281,
+        "rmsDbfs": -34.8028,
+        "nonzeroSamples": 93739
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5281,
+        "rmsDbfs": -34.8028,
+        "nonzeroSamples": 93739
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5281,
+        "rmsDbfs": -34.8028,
+        "nonzeroSamples": 93739
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ask-explain:item:0",
+      "frame": 6846,
+      "startSample": 10953600,
+      "sampleCount": 19057,
+      "file": "audio/sfx/v1-ui-click.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -45.8593,
+        "nonzeroSamples": 15972
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -45.8593,
+        "nonzeroSamples": 15972
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -45.8593,
+        "nonzeroSamples": 15972
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ask-explain:item:1",
+      "frame": 6890,
+      "startSample": 11024000,
+      "sampleCount": 53016,
+      "file": "audio/sfx/v2-ui-click.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3514,
+        "rmsDbfs": -34.3768,
+        "nonzeroSamples": 103631
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3514,
+        "rmsDbfs": -34.5292,
+        "nonzeroSamples": 102391
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3514,
+        "rmsDbfs": -34.5292,
+        "nonzeroSamples": 102391
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "ask-explain:item:2"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ask-explain:item:2",
+      "frame": 6915,
+      "startSample": 11064000,
+      "sampleCount": 15840,
+      "file": "audio/sfx/remotion-ui-switch.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -17.6637,
+        "rmsDbfs": -43.7482,
+        "nonzeroSamples": 31537
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -17.6624,
+        "rmsDbfs": -43.7485,
+        "nonzeroSamples": 31540
+      },
+      "expectedSfx": {
+        "peakDbfs": -17.6624,
+        "rmsDbfs": -43.7485,
+        "nonzeroSamples": 31540
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "ask-explain:item:1"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "deduction:enter",
+      "frame": 7016,
+      "startSample": 11225600,
+      "sampleCount": 51840,
+      "file": "audio/sfx/waic-section-whoosh.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5376,
+        "rmsDbfs": -26.9214,
+        "nonzeroSamples": 102969
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5376,
+        "rmsDbfs": -26.9214,
+        "nonzeroSamples": 102969
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5376,
+        "rmsDbfs": -26.9214,
+        "nonzeroSamples": 102969
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "deduction:item:0",
+      "frame": 7111,
+      "startSample": 11377600,
+      "sampleCount": 23470,
+      "file": "audio/sfx/v1-camera-shutter.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3672,
+        "rmsDbfs": -44.5171,
+        "nonzeroSamples": 26958
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3672,
+        "rmsDbfs": -44.5171,
+        "nonzeroSamples": 26958
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3672,
+        "rmsDbfs": -44.5171,
+        "nonzeroSamples": 26958
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "deduction:item:1",
+      "frame": 7181,
+      "startSample": 11489600,
+      "sampleCount": 12692,
+      "file": "audio/sfx/v1-section-air.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3403,
+        "rmsDbfs": -31.0936,
+        "nonzeroSamples": 25242
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3403,
+        "rmsDbfs": -31.0936,
+        "nonzeroSamples": 25242
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3403,
+        "rmsDbfs": -31.0936,
+        "nonzeroSamples": 25242
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "deduction:item:2",
+      "frame": 7265,
+      "startSample": 11624000,
+      "sampleCount": 42240,
+      "file": "audio/sfx/waic-node-connect.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3809,
+        "rmsDbfs": -37.6378,
+        "nonzeroSamples": 83464
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3809,
+        "rmsDbfs": -37.6378,
+        "nonzeroSamples": 83464
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.381,
+        "rmsDbfs": -37.6378,
+        "nonzeroSamples": 83464
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ultimate:enter",
+      "frame": 7373,
+      "startSample": 11796800,
+      "sampleCount": 8645,
+      "file": "audio/sfx/v3-media-whoosh-b.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5482,
+        "rmsDbfs": -27.394,
+        "nonzeroSamples": 16682
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5482,
+        "rmsDbfs": -27.394,
+        "nonzeroSamples": 16682
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5482,
+        "rmsDbfs": -27.394,
+        "nonzeroSamples": 16682
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "ultimate:detail",
+      "frame": 7505,
+      "startSample": 12008000,
+      "sampleCount": 16826,
+      "file": "audio/sfx/v2-evidence-shutter.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.4922,
+        "rmsDbfs": -37.943,
+        "nonzeroSamples": 32315
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.4922,
+        "rmsDbfs": -37.943,
+        "nonzeroSamples": 32315
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.4922,
+        "rmsDbfs": -37.943,
+        "nonzeroSamples": 32315
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "collaboration:enter",
+      "frame": 7666,
+      "startSample": 12265600,
+      "sampleCount": 74565,
+      "file": "audio/sfx/v2-node-select.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5774,
+        "rmsDbfs": -32.5155,
+        "nonzeroSamples": 142720
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5774,
+        "rmsDbfs": -32.5155,
+        "nonzeroSamples": 142720
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5774,
+        "rmsDbfs": -32.5155,
+        "nonzeroSamples": 142720
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "roles:enter",
+      "frame": 7774,
+      "startSample": 12438400,
+      "sampleCount": 52770,
+      "file": "audio/sfx/v3-line-connect-a.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5281,
+        "rmsDbfs": -34.8028,
+        "nonzeroSamples": 93739
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5281,
+        "rmsDbfs": -34.8028,
+        "nonzeroSamples": 93739
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5281,
+        "rmsDbfs": -34.8028,
+        "nonzeroSamples": 93739
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "roles:item:1",
+      "frame": 7948,
+      "startSample": 12716800,
+      "sampleCount": 19057,
+      "file": "audio/sfx/v1-ui-click.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -45.8593,
+        "nonzeroSamples": 15972
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -45.8593,
+        "nonzeroSamples": 15972
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -45.8593,
+        "nonzeroSamples": 15972
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "P07:enter",
+      "frame": 8090,
+      "startSample": 12944000,
+      "sampleCount": 7370,
+      "file": "audio/sfx/remotion-whoosh.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -16.5961,
+        "rmsDbfs": -32.1097,
+        "nonzeroSamples": 14692
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -16.5961,
+        "rmsDbfs": -32.1097,
+        "nonzeroSamples": 14692
+      },
+      "expectedSfx": {
+        "peakDbfs": -16.5961,
+        "rmsDbfs": -32.1097,
+        "nonzeroSamples": 14692
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "refine:enter",
+      "frame": 8356,
+      "startSample": 13369600,
+      "sampleCount": 42240,
+      "file": "audio/sfx/waic-node-connect.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -35.8024,
+        "nonzeroSamples": 83464
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -35.8024,
+        "nonzeroSamples": 83464
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5455,
+        "rmsDbfs": -35.8024,
+        "nonzeroSamples": 83464
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "refine:detail",
+      "frame": 8396,
+      "startSample": 13433600,
+      "sampleCount": 23470,
+      "file": "audio/sfx/v1-camera-shutter.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5318,
+        "rmsDbfs": -42.6817,
+        "nonzeroSamples": 26958
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5318,
+        "rmsDbfs": -42.6817,
+        "nonzeroSamples": 26958
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5318,
+        "rmsDbfs": -42.6817,
+        "nonzeroSamples": 26958
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "discipline:enter",
+      "frame": 8515,
+      "startSample": 13624000,
+      "sampleCount": 74565,
+      "file": "audio/sfx/v2-node-select.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5774,
+        "rmsDbfs": -32.5155,
+        "nonzeroSamples": 142720
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5774,
+        "rmsDbfs": -32.5155,
+        "nonzeroSamples": 142720
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5774,
+        "rmsDbfs": -32.5155,
+        "nonzeroSamples": 142720
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "discipline:item:0",
+      "frame": 8637,
+      "startSample": 13819200,
+      "sampleCount": 52770,
+      "file": "audio/sfx/v3-line-connect-a.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3635,
+        "rmsDbfs": -36.6382,
+        "nonzeroSamples": 93739
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3635,
+        "rmsDbfs": -36.6382,
+        "nonzeroSamples": 93739
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3635,
+        "rmsDbfs": -36.6382,
+        "nonzeroSamples": 93739
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "discipline:item:1",
+      "frame": 8676,
+      "startSample": 13881600,
+      "sampleCount": 53016,
+      "file": "audio/sfx/v2-ui-click.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3514,
+        "rmsDbfs": -34.5292,
+        "nonzeroSamples": 102391
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3514,
+        "rmsDbfs": -34.5292,
+        "nonzeroSamples": 102391
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3514,
+        "rmsDbfs": -34.5292,
+        "nonzeroSamples": 102391
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "discipline:item:2"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "discipline:item:2",
+      "frame": 8708,
+      "startSample": 13932800,
+      "sampleCount": 19057,
+      "file": "audio/sfx/v1-ui-click.wav",
+      "gain": 0.34,
+      "residual": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -45.8593,
+        "nonzeroSamples": 19399
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -45.8593,
+        "nonzeroSamples": 15972
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.3366,
+        "rmsDbfs": -45.8593,
+        "nonzeroSamples": 15972
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [
+        "discipline:item:1"
+      ],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "strength:enter",
+      "frame": 8771,
+      "startSample": 14033600,
+      "sampleCount": 15840,
+      "file": "audio/sfx/remotion-ui-switch.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -15.827,
+        "rmsDbfs": -41.9131,
+        "nonzeroSamples": 31540
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -15.827,
+        "rmsDbfs": -41.9131,
+        "nonzeroSamples": 31540
+      },
+      "expectedSfx": {
+        "peakDbfs": -15.827,
+        "rmsDbfs": -41.9131,
+        "nonzeroSamples": 31540
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "prompts:enter",
+      "frame": 9001,
+      "startSample": 14401600,
+      "sampleCount": 8645,
+      "file": "audio/sfx/v3-media-whoosh-b.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -13.5482,
+        "rmsDbfs": -27.394,
+        "nonzeroSamples": 16682
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -13.5482,
+        "rmsDbfs": -27.394,
+        "nonzeroSamples": 16682
+      },
+      "expectedSfx": {
+        "peakDbfs": -13.5482,
+        "rmsDbfs": -27.394,
+        "nonzeroSamples": 16682
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    },
+    {
+      "eventId": "prompts:detail",
+      "frame": 9029,
+      "startSample": 14446400,
+      "sampleCount": 7370,
+      "file": "audio/sfx/remotion-whoosh.wav",
+      "gain": 0.42,
+      "residual": {
+        "peakDbfs": -16.5961,
+        "rmsDbfs": -32.1097,
+        "nonzeroSamples": 14692
+      },
+      "isolatedAfterSubtractingOtherScheduledCues": {
+        "peakDbfs": -16.5961,
+        "rmsDbfs": -32.1097,
+        "nonzeroSamples": 14692
+      },
+      "expectedSfx": {
+        "peakDbfs": -16.5961,
+        "rmsDbfs": -32.1097,
+        "nonzeroSamples": 14692
+      },
+      "isolatedCorrelation": 1.0,
+      "estimatedActualToScheduledGain": 1.0,
+      "overlappingCueIds": [],
+      "actualNonzeroSoundPresent": true,
+      "sourceHashMatchesRuntime": true
+    }
+  ],
+  "inputFilesUnchangedDuringAnalysis": true,
+  "limitations": [
+    "声学相关与样本对齐不等于逐字听审。",
+    "若限幅器压低峰值，重建残差会含少量非线性误差。",
+    "机器响度与每段残差存在不能替代正常音量的人声清晰度和音效审美试听。"
+  ]
+}
