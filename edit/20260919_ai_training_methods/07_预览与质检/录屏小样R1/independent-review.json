@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "episode-isolated-preview-independent-review/v1",
+  "status": "approved-for-local-preview",
+  "jobSha256": "2347253e5a9128d4c9bc595bf15cbfd30d94d1f8907141c5156e50767c46a77d",
+  "reviewer": "/root/screen_preview_review",
+  "reviewedAt": "2026-09-20T02:07:27Z",
+  "scope": "仅本期42.3秒两段真实录屏独立验证小样的代码与素材审查，不批准正式生产、全片接入或公开发布。",
+  "userPreviewApproved": false,
+  "formalEnabled": false,
+  "publishAuthorized": false,
+  "checks": {
+    "inputBindings": "当前job的26项绑定已逐项重算SHA-256，全部一致；包含实际消费的素材、字幕、选择合同、只读组件与平台安全区。",
+    "recordingContinuity": "原片128.2至170.5秒连续42.3秒；真人衍生片与声轨不重排、不变速；录屏原有音频不进入混音。",
+    "questionCrop": "question-v4.mp4为源13.5至16秒的75帧真实录屏；已查看衍生片0、1.5、2.45秒，均完整呈现问题3标题，没有半行、内部状态、侧栏或客户姓名。未使用冻结或循环补时。",
+    "archiveCrop": "驾驶舱使用真实内容库视窗，作为存档场景，不作为作业前后比较或能力提升的证明。",
+    "selection": "selection-r3.json通过validate-director-selection，1项apply、4项not-needed；evidence-scan应用144至219半开帧区间，与代码和plan一致。",
+    "safeAreas": "真人使用只读PresenterMediaStage左下角fallback，区域x64,y600,278×278；字幕从y906开始；框选叠层x350,y230,1540×360，不与真人和字幕重叠。最终可读性仍须检查合成风险帧。",
+    "renderDependency": "已实测绝对路径加载renderer同目录port-config.js可用，替代原先报ERR_PACKAGE_PATH_NOT_EXPORTED的包子路径；仅修改进程内绑定为127.0.0.1，不修改依赖文件。",
+    "permissions": "入口只允许preflight、stills、render；未修改共享V8、既有组件、注册表、旧期授权、正式或发布开关；输出存在即拒绝覆盖。",
+    "gates": "入口在渲染前检查输入哈希、当前知识上下文、选择合同及本独立回执；视频渲染前另须同job哈希的风险帧审查。此代码批准不替代运行时上下文复检。"
+  },
+  "resolvedFindings": [
+    "不合适的内部讨论裁切及固定裁切遇滚动出现残行：改用已抽查稳定的问题3标题。",
+    "renderer包导出限制导致依赖加载失败：改为主入口同目录的绝对路径。"
+  ],
+  "remainingChecks": [
+    "入口运行时知识上下文复检必须通过。",
+    "合成风险帧、正常速度完整动态观看和手机小尺寸检查尚未由本审查完成。",
+    "字幕来自离线ASR，humanListeningPerformed仍为false；不得声称已经人工听审。",
+    "有无附加音效版本仍须检查响度、峰值、落点和原声连续性。",
+    "样片只能交付待用户审阅；用户尚未确认任何效果的正式使用。"
+  ]
+}
