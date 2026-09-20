@@ -1,0 +1,839 @@
+{
+  "schemaVersion": "koubo-shotcraft-auto-match-receipt/v1",
+  "status": "candidate-match-ready",
+  "taskId": "task-20260919T154314Z-cfc689b4",
+  "revisionId": "screen-local-preview-r3",
+  "generatedAt": "2026-09-20T02:00:10.125Z",
+  "request": {
+    "path": "edit/20260919_ai_training_methods/07_预览与质检/录屏小样R1/request-r3.json",
+    "sha256": "1c68822822da46a28119e684d6d1ff6da2afd686dfd674299cb3ba30a82d4c21"
+  },
+  "inputs": {
+    "registry": {
+      "path": "skills/koubo-shotcraft-library/registry.v1.json",
+      "sha256": "27ccd156ace2a95533e9e255b27592cadf838658010fcb03c04f7e61317efd61"
+    },
+    "library": {
+      "path": "skills/koubo-shotcraft-library/upstream/gallery/api/library.json",
+      "sha256": "ee26285c40774272d7782f6d8ff28a8f7b559f13cdf6f5641eac1463417190e4"
+    },
+    "capabilityIndex": {
+      "path": "skills/koubo-shotcraft-library/card-capability-index.v2.json",
+      "sha256": "5a0cb31e1c7f2e8f5c51b2d5f98a36c29e2b07ecad0c7f179529254cdce78441"
+    },
+    "experienceLedger": {
+      "path": "skills/koubo-shotcraft-library/experience/shotcraft-acceptance-ledger.v1.json",
+      "sha256": "6b1750e42b5e9eb78a68a0ff52649d5295643108df781d1c16795feae879e19a"
+    },
+    "componentModule": {
+      "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+      "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+    }
+  },
+  "captions": {
+    "path": "edit/20260919_ai_training_methods/07_预览与质检/录屏小样R1/captions.json",
+    "sha256": "b652bce563719a582a5949001066159234c4a29ebb363d8e541470092cb78ea1"
+  },
+  "selection": {
+    "path": "edit/20260919_ai_training_methods/07_预览与质检/录屏小样R1/selection-r3.json",
+    "sha256": "deb08b7e068552b65e155f9ae90a67bce92e3c5159a053317137b04b0a7ff9d7"
+  },
+  "experienceLookup": {
+    "path": "edit/20260919_ai_training_methods/07_预览与质检/录屏小样R1/experience-lookup-r3.json",
+    "sha256": "db506594c8e4c85d4a7668f66626f0a37bfd68ff518d583da8a48ebb9a7d66d6"
+  },
+  "summary": {
+    "analyzedCardCount": 157,
+    "candidateRenderableCardCount": 5,
+    "adaptationRequiredCardCount": 152,
+    "applyCount": 1,
+    "notNeededCount": 4,
+    "adaptationQueue": [
+      "autolayout-gap-dial",
+      "avatar-grid-radial-build-colorize",
+      "before-after-slider-scrub",
+      "brace-expand",
+      "bubble-swarm-takeover",
+      "canvas-materialize-moves",
+      "light-play-moves",
+      "platform-hinge-rise",
+      "skeleton-reveal",
+      "spectrum-morph-ui"
+    ]
+  },
+  "matches": [
+    {
+      "beatId": "speaker-opening",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 avatar-grid-radial-build-colorize 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "light-play-moves",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "spectrum-morph-ui",
+          "category": "rhythm",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.818298,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9787,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "product-card-progressive-assemble",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.8168,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.96,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "light-play-moves",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "screen-question",
+      "decision": "apply",
+      "effectId": "evidence-scan",
+      "cardName": "scanline-annotate-focus",
+      "component": "EvidenceScan",
+      "origin": "catalog-match",
+      "confidence": 0.68,
+      "threshold": 0.58,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "scanline-annotate-focus",
+          "category": "effects",
+          "renderability": "candidate-renderable",
+          "adapterId": "evidence-scan",
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "canvas-materialize-moves",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.65283,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.6604,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "paper-craft-moves",
+          "category": "ui-entrance",
+          "renderability": "candidate-renderable",
+          "adapterId": "paper-tape-pin",
+          "score": 0.652,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "canvas-materialize-moves",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.65283,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.6604,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "staleExperienceCaseIds": []
+    },
+    {
+      "beatId": "speaker-gap",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 light-play-moves 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "light-play-moves",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.742177,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0121,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "spectrum-morph-ui",
+          "category": "rhythm",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.742177,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0121,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.74,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "product-card-progressive-assemble",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.74,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.74,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "light-play-moves",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.742177,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0121,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "spectrum-morph-ui",
+          "category": "rhythm",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.742177,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0121,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.74,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "screen-archive",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 autolayout-gap-dial 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.58,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0.09061,
+      "rankedCandidates": [
+        {
+          "cardName": "autolayout-gap-dial",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.716321,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0222,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9667,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "before-after-slider-scrub",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.628121,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0222,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8267,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "scanline-annotate-focus",
+          "category": "effects",
+          "renderability": "candidate-renderable",
+          "adapterId": "evidence-scan",
+          "score": 0.625711,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0873,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.61453,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0252,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.603826,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0461,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.819,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "autolayout-gap-dial",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.716321,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0222,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9667,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "before-after-slider-scrub",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.628121,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0222,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8267,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "avatar-grid-radial-build-colorize",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.61453,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0252,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    },
+    {
+      "beatId": "speaker-ending",
+      "decision": "not-needed",
+      "reason": "最匹配卡片 platform-hinge-rise 尚未完成本地适配，保留当前主画面并进入适配候选，避免用低相关效果替代",
+      "threshold": 0.7,
+      "maximumSemanticGap": 0.06,
+      "semanticGap": 0,
+      "rankedCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.745528,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0307,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "brace-expand",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.74294,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0163,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "bubble-swarm-takeover",
+          "category": "transition",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.714588,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0144,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "flying-words",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.714504,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0139,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "title-demote-to-label",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.712,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "adaptationCandidates": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.745528,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0307,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "brace-expand",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.74294,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0163,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "bubble-swarm-takeover",
+          "category": "transition",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.714588,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0144,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ]
+    }
+  ],
+  "gates": {
+    "onlyRegisteredAdaptersMayApply": true,
+    "adaptationCandidatesAreNotRenderable": true,
+    "candidatePreviewStillRequired": true,
+    "formalApprovalGranted": false,
+    "publicationApproved": false
+  }
+}

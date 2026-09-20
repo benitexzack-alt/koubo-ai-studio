@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "episode-isolated-preview-independent-review/v1",
+  "status": "approved-for-local-preview",
+  "jobSha256": "83c6ac78c234345afe6f3ef5ef8acf574931dd4b5e44feecdb94803022b43d56",
+  "reviewer": "/root/screen_preview_review",
+  "reviewedAt": "2026-09-20T05:32:47Z",
+  "scope": "仅批准本期R2局部小样的风险帧和后续受控样片验证；改变主讲语义动效、字幕分页样式和电子运镜，冻结已认可录屏与左下角真人小窗。不批准全片、正式生产或发布。",
+  "userPreviewApproved": false,
+  "formalEnabled": false,
+  "publishAuthorized": false,
+  "checks": {
+    "jobBindings": "当前40项绑定逐项重算SHA-256全部一致。实际入口已改为导入R2选择合同，运行时校验及应用回执也引用R2同SHA副本，输入路径闭合。",
+    "screenFreeze": "以字符串提取R1和R2完整Screen函数逐字比较相同；原录屏素材内容与144至219、680至804半开帧窗未变，真人仍用PresenterMediaStage的fallback左下角。主讲运镜仅施加在底层真人画面，不施加于Screen。",
+    "subtitleWords": "R1与R2全部中文字幕拼接严格相同；仅合并第五、严苛、进度镜像，以及AI与后续对比句；无删字、调序或拍前文稿恢复。字幕首尾仍20至42020毫秒，全部页起点小于终点且页间无重叠。",
+    "subtitlePlacement": "只读复用AdaptiveBilingualCaptionOverlay transparent-v8，区域x205至1715、y930至1038；与真人小窗y600至878分离。最终实际字体和小尺寸可读性仍须风险帧验证。",
+    "baselineReuse": "新增主讲层只读调用现有V8DirectStatement与V8ProcessRail；已检查其导入链及坐标、延迟参数，没有修改共享组件或注册表，没有新增Shotcraft注册效果。",
+    "camera": "电子运镜按语义切点分段、帧驱动，基础1.012与峰值1.065至1.08，位移最高16像素横向、3像素纵向；切点强度回到0，无随机或实时时钟。变换中心53%/38%，缩放边距覆盖已设位移。人脸、手势实际避让仍须合成风险帧确认。",
+    "semanticPlacement": "语义层固定左侧safeStage并分帧揭示，与两段录屏帧窗不重叠；最大布局宽660后缩放0.8，字幕层独立。外层补充最后8帧淡出，未改既有V8组件。",
+    "selection": "validate-director-selection通过，1项apply与4项not-needed；已认可EvidenceScan的组件、帧窗、文字和矩形保持原值。",
+    "audio": "finish脚本从R1有无音效版本分别复制音频码流，不重新混音；导出后强制比对新旧音频流SHA-256。该检查尚须实际运行通过，未在此处宣称试听通过。",
+    "renderGates": "入口保留当前job哈希、上下文复检、独立审查和同job风险帧门禁，固定回环地址及本地浏览器，不覆盖已有样片；正式和发布开关均false。控制脚本语法检查通过。"
+  },
+  "resolvedFindings": [
+    "原先实际导入R1选择合同而job仅绑定R2副本：现统一实际导入、校验与应用回执至R2同SHA选择合同。"
+  ],
+  "remainingChecks": [
+    "本回执为独立代码审查，不是用户正常速度完整观看或内容验收。",
+    "先渲染并检查风险帧中的人脸、手势、字号、文字溢出及旧录屏效果，再生成动态小样。",
+    "动态小样检查主讲电子运镜衔接、语义动效入点和字幕实际口型同步。",
+    "字幕ASR候选中的停止不前、直接点名继续保留待听辨状态，未静默改成拍前文稿。",
+    "实际导出后必须验证全量解码、黑帧、双版本相同画面及R1音频码流不变。"
+  ]
+}
