@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20260920-lanzhou-ai-salon-v8-r1",
+  "videoId": "LANZHOU_AI_SALON_20260920_HIGHLIGHT",
+  "title": "兰州AI实践者共创沙龙第一期精华",
+  "purpose": "按现场实录与用户指定保留范围，将56分钟粗剪压缩为约8分28秒完整精华片；保留主持人关键开场与结尾、老徐账号数据核心段，加入嘉宾介绍卡、实录字幕、用户提供图片和V8语义动效，并先生成78至123秒同画面有无音效候选预览。",
+  "productionState": "ready-for-production",
+  "productionEligible": false,
+  "productionProfile": {
+    "id": "v8-semantic-continuity-sfx",
+    "version": "V8"
+  },
+  "contentApproval": {
+    "userScriptApproved": true,
+    "evidence": "用户提供现场粗剪、会议记录、思维导图和插图，并明确授权本轮完成8至9分钟剪辑、字幕、嘉宾介绍卡、主题动效与图片插入；实际录音仍是字幕唯一正文。"
+  },
+  "finalReview": {
+    "fullWatchConfirmed": false,
+    "reviewOutcome": "pending"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required",
+    "userPreviewApproved": false,
+    "userPreviewApprovedAt": null,
+    "userPreviewApprovalEvidence": null,
+    "revisionReason": "首次候选先检查主持人主题图片、月度沙龙承诺、老徐出场卡、实录字幕、人物安全区和音效可感知性。",
+    "primaryVisualEventCount": 24,
+    "sfxCoveragePercent": 77,
+    "previewAuditionRoles": [
+      "media",
+      "keyword",
+      "evidence"
+    ]
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730"
+  },
+  "inputs": {
+    "source": "edit/20260920_lanzhou_ai_salon/01_原始素材/copy_7819D34A-CDF7-4608-890B-C4C73B77821E.MOV",
+    "renderProxy": "remotion/public-salon-20260920/media/salon-edit-proxy-v1.mp4",
+    "visualPlan": "edit/20260920_lanzhou_ai_salon/06_剪辑工程/visual-plan.v1.json",
+    "transcript": "edit/20260920_lanzhou_ai_salon/05_实录与字幕/caption-review.machine-candidate.v1.json",
+    "captions": "remotion/public-salon-20260920/data/captions.machine-candidate.v1.json",
+    "bilingualCaptions": "remotion/public-salon-20260920/data/captions.machine-candidate.v1.json",
+    "sfxCueSheet": "edit/20260920_lanzhou_ai_salon/06_剪辑工程/sfx-cues.v1.json",
+    "sfxManifest": "assets/sfx/koubo-sfx-v8/manifest.json",
+    "fingerprintPaths": [
+      "edit/20260920_lanzhou_ai_salon/01_原始素材/copy_7819D34A-CDF7-4608-890B-C4C73B77821E.MOV",
+      "edit/20260920_lanzhou_ai_salon/06_剪辑工程/edl.salon-highlight.v1.json",
+      "edit/20260920_lanzhou_ai_salon/06_剪辑工程/edit-proxy.receipt.v1.json",
+      "remotion/public-salon-20260920/media/salon-edit-proxy-v1.mp4",
+      "edit/20260920_lanzhou_ai_salon/05_实录与字幕/caption-review.machine-candidate.v1.json",
+      "remotion/public-salon-20260920/data/captions.machine-candidate.v1.json",
+      "edit/20260920_lanzhou_ai_salon/06_剪辑工程/visual-plan.v1.json",
+      "edit/20260920_lanzhou_ai_salon/06_剪辑工程/sfx-cues.v1.json",
+      "remotion/src/salon-20260920",
+      "remotion/public-salon-20260920",
+      "workflow/active-production-profile.v1.json",
+      "assets/sfx/koubo-sfx-v8/manifest.json"
+    ]
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/salon-20260920/index.tsx",
+    "publicDir": "remotion/public-salon-20260920",
+    "compositionWithSfx": "LanzhouAISalon20260920-WithSfx",
+    "compositionWithoutSfx": "LanzhouAISalon20260920-NoSfx",
+    "durationSeconds": 508.22,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "concurrency": 3
+  },
+  "preview": {
+    "enabled": true,
+    "withSfxOnly": false,
+    "scale": 0.5,
+    "crf": 22,
+    "ranges": [
+      {
+        "id": "monthly-salon-laoxu-intro-45s",
+        "startSeconds": 78,
+        "endSeconds": 123
+      }
+    ],
+    "output": "edit/20260920_lanzhou_ai_salon/07_预览与质检/V8候选_r1/preview/with-sfx.mp4",
+    "renderWithoutSfxComparison": true
+  },
+  "riskFrames": {
+    "enabled": true,
+    "source": "visual-plan-reviewAt",
+    "fullResolution": true,
+    "outputDirectory": "edit/20260920_lanzhou_ai_salon/07_预览与质检/V8候选_r1/risk-frames"
+  },
+  "audioPreflight": {
+    "enabled": true,
+    "source": "preview",
+    "integratedLoudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "preferredTruePeakDbtp": -1.8
+  },
+  "formal": {
+    "enabled": false,
+    "composition": "with-sfx",
+    "blockedReason": "等待78至123秒同画面有音效与无音效候选的用户验收；实录字幕仍为机器候选，需人工听校；当前导演生产绑定和任务级知识上下文尚未补齐。",
+    "crf": 17,
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioBitrate": "192k",
+    "rawOutput": "edit/20260920_lanzhou_ai_salon/08_正式成片/兰州AI实践者共创沙龙第一期精华_V8_R1_正式渲染原始音轨.mp4",
+    "finalOutput": "edit/20260920_lanzhou_ai_salon/08_正式成片/兰州AI实践者共创沙龙第一期精华_V8_R1_有音效_正式候选.mp4",
+    "loudness": {
+      "enabled": true,
+      "integratedLoudnessTargetLufs": -16,
+      "loudnessRangeTargetLu": 11,
+      "truePeakTargetDbtp": -2.2
+    }
+  },
+  "cache": {
+    "enabled": true,
+    "directory": "work/production-cache/lanzhou-ai-salon-v8-r1",
+    "reuseOnlyOnExactFingerprint": true
+  },
+  "reports": {
+    "runManifest": "edit/20260920_lanzhou_ai_salon/07_预览与质检/V8候选_r1/run-manifest.json",
+    "timingReport": "edit/20260920_lanzhou_ai_salon/07_预览与质检/V8候选_r1/timings.json",
+    "regressionReport": "edit/20260920_lanzhou_ai_salon/07_预览与质检/V8候选_r1/regression.json"
+  },
+  "knowledgeContext": {
+    "taskId": "task-20260921T151516Z-3596a9d6",
+    "contextPath": "task-20260921T151516Z-3596a9d6/context.json",
+    "status": "missing-current-production-context"
+  },
+  "director": {
+    "required": true,
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0",
+    "paperRequired": true,
+    "fallback": "blocked",
+    "taskId": "task-20260921T151516Z-3596a9d6",
+    "phase": "post-shoot",
+    "artifacts": {
+      "preproductionRequest": null,
+      "routeLock": null,
+      "preproductionPlan": null,
+      "preproductionValidation": null,
+      "postshootRequest": null,
+      "postshootPlan": null,
+      "postshootValidation": null
+    },
+    "currentTaskUserAcceptance": null
+  },
+  "productionGate": {
+    "schema": "director-production-entry-binding/v2",
+    "state": "candidate-preview-required",
+    "revisionId": "20260922-lanzhou-ai-salon-v8-candidate-r1",
+    "formalEnabled": false,
+    "userPreviewApproved": false,
+    "directorContract": null,
+    "handoffReceipt": null,
+    "handoffBindingSha256": null,
+    "freezeReceipt": null,
+    "status": "blocked-missing-director-v2-bindings-current-knowledge-context-and-human-caption-review"
+  }
+}

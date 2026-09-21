@@ -1,0 +1,678 @@
+{
+  "schemaVersion": "koubo-director-cues/v2",
+  "taskId": "task-20260921T151516Z-3596a9d6",
+  "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
+  "inputScript": {
+    "path": "edit/20260920_lanzhou_ai_salon/03_导演拆解/director-v2-r1/actual-spoken-edit.v1.txt",
+    "sha256": "ba8f16e00222de6b96f904fffb20fd2898089b8c56e68b791940adc87f5b334c",
+    "authority": "actual-spoken-transcript"
+  },
+  "routingPolicy": {
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "generatedVisualCannotServeAsEvidence": true,
+    "factVerificationSeparatedFromPrimaryVisual": true,
+    "constructedVisualPriority": [
+      "paper-editorial",
+      "ai-generated-video"
+    ],
+    "aiGeneratedVideoUseCondition": "concrete-human-or-environment-scene-paper-unnatural",
+    "shotcraftSelectionStage": "post-shoot-edit-release",
+    "shotcraftEligibleRoutes": [
+      "speaker",
+      "real-evidence"
+    ],
+    "shotcraftForbiddenInsideRoutes": [
+      "paper-editorial",
+      "ai-generated-video"
+    ]
+  },
+  "styleLocks": {
+    "aiGeneratedVideo": null,
+    "paperEditorial": null
+  },
+  "selectionSummary": {
+    "mainPoint": "用一场兰州本地线下沙龙，把办沙龙的原因、老徐的账号实践和五位参与者的真实经验，收束成一条可理解、可继续行动的现场精华片。",
+    "argumentFlow": [
+      "主持人说明为什么要把真实问题带到线下，并承诺每月持续举办",
+      "老徐用账号数据说明内容效率、流量和成交之间的真实卡点",
+      "四位参与者分别给出学生创新、企业服务、超级个体和企业数据实践",
+      "主持人回到资源连接、共同交付和每月继续见"
+    ],
+    "routeCounts": {
+      "speaker": 21,
+      "real-evidence": 0,
+      "ai-generated-video": 0,
+      "paper-editorial": 0,
+      "shotcraftOpportunity": 12
+    },
+    "routeRationales": {
+      "speaker": "全部主要观点来自现场发言，人物、语气和停顿构成可信度；介绍卡、用户图片和Remotion语义层只作二级说明，不替代现场真人与实录。",
+      "real-evidence": "会议记录和思维导图仅作流程导航，用户提供的说明图不承担事实证明；本片没有必须切走真人才能成立的外部证据画面。",
+      "ai-generated-video": "用户已经提供足够的主题说明图，本期不新增AI情景视频，避免扩大制作范围和稀释现场感。",
+      "paper-editorial": "本期以现场纪实和Remotion信息层为主，不新增纸艺视频；抽象关系用克制的二维语义动效解释。"
+    },
+    "visualRhythmReason": "按主持人开场、老徐核心案例、四位嘉宾重点与主持人收束组织节奏。六张用户图片只在原话直接对应时短暂进入；人物卡只在首次出场出现；数字和流程动效不覆盖人脸与字幕。",
+    "protectedSpeakerBeatIds": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B19",
+      "B20",
+      "B21"
+    ]
+  },
+  "semanticBeats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "scriptQuote": "首先呢就感谢大家今天的一个到来啊这个呢就是作为我们为什么要做这个沙龙呢首先最简单的就是在AI这个时代下我们所有的生活工作已经被AI已经有所影响而且不断的在被改变在这个过程当中呢我们不管是现在所谓的这些OPC创业也好还是咱们现在的企业主或者是自身做的一些相关业务它都在被AI不断的去改变但是在这个过程当中呢我们大家都遇到了很多的问题这些问题我们在没有和大多数人进行交流的时候刚开始呢大家都是在通过AI的不断的自我的这种训练和交流去找和破解这些问题但是回归到我们现实当中发现很多现实世界遇到的这些经验和这些问题跟AI最终给出的答案都不一致",
+      "rhetoricalRole": "为什么办沙龙：AI正在改变工作与生活，真实问题和AI答案并不总一致",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F01",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "scriptQuote": "所以这也是我们办这个沙龙的初衷就是作为在甘肃兰州本地来说我们会用AI的和现在想用AI的这些人遇到的这些问题我们如何能够通过大家线下的这种碰面每个月组织一次来把这些问题挖出来然后大家去解决再一个就是说把我们的这些身边的一些现实世界的一些资源就是因为它毕竟是一个工具我们要利用这个工具去解决我们现实世界的问题",
+      "rhetoricalRole": "兰州本地线下碰面、每月一次、用AI解决现实问题",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F02",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "scriptQuote": "我们比喻现在的一个AI时代它就像春天一朵那么一朵花可以种植在花园里但它一定开放在春天里",
+      "rhetoricalRole": "春天与花的比喻",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F03",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "scriptQuote": "我有一个自媒体账号老徐聊医保这个账号我已经做了两年多在这个医保飞检基金监管和合规的这个账号在全国也算是头部也给保险公司讲课一节课是一万五这个工作我医保做了二十年",
+      "rhetoricalRole": "老徐聊医保、账号与二十年行业背景",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F04",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "scriptQuote": "所以我从我自己做自媒体开始我是2023年10月，也就差不多10天了，我去新疆出差的时候，刚好在宾馆里面没有事，老有人周围的朋友老是问我一些医保的问题，政策。我说给一个人说还不如用自媒体给大家都说，结果就开始做自媒体。很简单，就是口播视频。刚开始做的时候也非常痛苦，就是那个面子，做一条视频可能要一天甚至两天。但是后面慢慢越来越熟悉之后现在可能我从写文案到发布到剪辑到发布可能就是四十分钟之内就搞定了",
+      "rhetoricalRole": "账号起点与口播生产从一两天缩短到约四十分钟",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F05",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "scriptQuote": "你说让我现在做这个我的视频做流量我现在非常游刃有余我知道哪一个流量能播放量会有多少，说什么样的话题播放量会有多少。我在抖音最高的一个播放量有一千多万，然后视频号有一百多万，八十多万。然后我基本上发一个现在的视频，就是一半的播放量，就是基本上我都能掌握的。但是最后就卡到公域的流量转化到私域里面，怎么成交，卡到这上面。",
+      "rhetoricalRole": "账号流量判断、抖音和视频号播放数据、公域转私域成交卡点",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F06",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "scriptQuote": "但是最终呢，它这个东西，最后我们所说的要变现这个东西。就是走到，我可能已经走了80%了，在最后的20%就卡到这个问题上面。在网上你去问所有的一些，他说你要挂课，引流，这都会有很多的答案，但是实际走的过程中是走不通的，这也是我最近比较困惑的",
+      "rhetoricalRole": "走到八成，最后两成变现仍走不通",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F07",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "scriptQuote": "所以我希望在下次直播前我能在沙龙里面看能不能解决我就这个问题好",
+      "rhetoricalRole": "希望在下一次直播前从沙龙找到解法",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F08",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "scriptQuote": "我报名参加了我做了一个什么东西呢因为我的父母都是老师这个肯定有人做过，但是我那会儿也没有参考别人，自己的情形平时上学，去聊那些事情我做了一个类似于AI整个教学系统的一个平台这个平台大概是怎么样的呢？我简单说一下",
+      "rhetoricalRole": "AI教学系统平台Demo",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F09",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段只保留一个能够独立理解的实践重点；以本人现场表达为主体，避免用说明画面制造额外事实。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "scriptQuote": "这个比赛呢，报名人数是三万七千多人",
+      "rhetoricalRole": "比赛报名三万七千多人",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F10",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段只保留一个能够独立理解的实践重点；以本人现场表达为主体，避免用说明画面制造额外事实。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "scriptQuote": "我今年拿AI没做别的事，只是在这个比赛上拿了一个全国前两千的名次，它只是止步于初赛，",
+      "rhetoricalRole": "全国前两千、止步初赛；在复赛名次表述前结束",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F11",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段只保留一个能够独立理解的实践重点；以本人现场表达为主体，避免用说明画面制造额外事实。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "scriptQuote": "在观望，我是在看，但是我是就像那个超哥讲的，这个落地怎么落地，我手里有大量的中小微企业，对不对，而且我手里有大量的业务员，我可以就是说你们这一块，就像超哥那一块小程序啊，网站啊啥的，这一块你们弄得好，我就是中间的桥梁，你们跟客户之间的那种沟通也好，然后都去交付也好，这一块是我们来干的。",
+      "rhetoricalRole": "连接中小微企业、业务员与技术交付",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F12",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段只保留一个能够独立理解的实践重点；以本人现场表达为主体，避免用说明画面制造额外事实。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "scriptQuote": "有一点，我觉得大家有点误区，不是说，AI能做什么，而是，作为中小企业，我自己本身最需要什么，这个东西能解决我什么样的问题。",
+      "rhetoricalRole": "从企业真实需要出发，而不是从AI能力清单出发",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F13",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段只保留一个能够独立理解的实践重点；以本人现场表达为主体，避免用说明画面制造额外事实。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "scriptQuote": "比如说做这种做这种就是知识付费因为这个知识付费这一块也是我们公司的未来的主要的一个方向就是说做知识付费的这一块它是有明确的严格的法律界限的规定的那么我们如果说没有踩好规避好在这个红线以内比如说我们去做这个知识付费我们就很容易踩雷",
+      "rhetoricalRole": "知识付费须守法律边界，现场观点不升级为法律结论",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F14",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段只保留一个能够独立理解的实践重点；以本人现场表达为主体，避免用说明画面制造额外事实。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "scriptQuote": "前提是什么是不是我自己得会做我自己得会做而且我自己会做了以后就我自己实际的我赚到钱了以后我变现了以后我才能够带着别人去做那如果我自己都不会做的话我觉得我很就很不负责任啊",
+      "rhetoricalRole": "先自己做成并变现，再带别人做",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F15",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段只保留一个能够独立理解的实践重点；以本人现场表达为主体，避免用说明画面制造额外事实。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B16",
+      "order": 16,
+      "scriptQuote": "各位朋友各位伙伴大家下午好",
+      "rhetoricalRole": "洪岩问候；组织全称听辨不稳，不把其纳入字幕",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F16",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段只保留一个能够独立理解的实践重点；以本人现场表达为主体，避免用说明画面制造额外事实。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B17",
+      "order": 17,
+      "scriptQuote": "因为我们企业的知识就是这段话我们提到的，你要想让你的Agent，想让你的AI工具给你能回答提供出非常非常精准的，或者是你需要的一些结果，那你就得用企业的数据，得去用企业高价值的一些信息都可以沉淀在飞书上。就是说现在好多之前飞书的一些用户，他马上一下就会跨到这个AI办公的因为他们之前不管是聊天记录，不管是每个文档，不管是群里的消息不管是他开的会、他建的日程等等这一系列的，或者他跑在多维表格里的数据、他的业务流程，这些都是沉淀在飞书",
+      "rhetoricalRole": "企业数据和协同信息成为AI回答的上下文",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F17",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段只保留一个能够独立理解的实践重点；以本人现场表达为主体，避免用说明画面制造额外事实。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B18",
+      "order": 18,
+      "scriptQuote": "因为我们工程师会写代码，但是他不懂业务所以说像徐总这样的超级个体会越来越值钱，因为你懂业务，你有高价值的知识库、高价值的数据，我觉得这才是最重要的，接下来我们的OPC就一定要在自己熟悉的行业，或者是专家对你做支持的行业，他有他的运营经验，有好的数据，好的支持，然后在这个垂直领域里做深耕。",
+      "rhetoricalRole": "行业经验、知识库和数据让超级个体更有价值",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F18",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段只保留一个能够独立理解的实践重点；以本人现场表达为主体，避免用说明画面制造额外事实。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B19",
+      "order": 19,
+      "scriptQuote": "我觉得最大的竞争核心竞争力就是你能组织到别人组织不到的资源快速的变现我觉得这就是超级个体所以这也是我不断去组织这个会议的一个初衷我会不断的每个月去组织不同的人不同的资源进来这样的话我们团队会越来越大团体会越强大因为我自身认为一件事情就是当你跟就在同一个行业里面然后一块去做的时候大家都好的时候你自然不会差自然不会长你自己一个超级个体要做得多强多牛逼我觉得超级个体一定是要做到资源共享资源整合有一个项目大家有能力一块扑上去干然后做完之后大家散对吧我觉得这是最牛逼的超级个体这也就是希望我们未来能够持续走下去持续组织的这样的一个动力",
+      "rhetoricalRole": "组织资源、每月举办、资源共享与整合",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F19",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B20",
+      "order": 20,
+      "scriptQuote": "这个也是我们的第一次也是我的第一次所以说我觉得这个起点非常好",
+      "rhetoricalRole": "第一次活动是一个好的起点",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F20",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B21",
+      "order": 21,
+      "scriptQuote": "我会坚持继续做下去感谢大家的到来，谢谢谢谢大家",
+      "rhetoricalRole": "坚持继续办下去并感谢到场",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F21",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "用户明确要求保留该段关键内容；以现场人物和原声为主体，信息层只辅助理解。",
+      "viewerGain": "presenter-trust"
+    }
+  ],
+  "factChecks": [
+    {
+      "id": "F01",
+      "beatId": "B01",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F02",
+      "beatId": "B02",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F03",
+      "beatId": "B03",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F04",
+      "beatId": "B04",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F05",
+      "beatId": "B05",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F06",
+      "beatId": "B06",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F07",
+      "beatId": "B07",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F08",
+      "beatId": "B08",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F09",
+      "beatId": "B09",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F10",
+      "beatId": "B10",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F11",
+      "beatId": "B11",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F12",
+      "beatId": "B12",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F13",
+      "beatId": "B13",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F14",
+      "beatId": "B14",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F15",
+      "beatId": "B15",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F16",
+      "beatId": "B16",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F17",
+      "beatId": "B17",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F18",
+      "beatId": "B18",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F19",
+      "beatId": "B19",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F20",
+      "beatId": "B20",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F21",
+      "beatId": "B21",
+      "sourceRequirement": "以当前现场录音核对实际说法；涉及账号数据、比赛名次、法律边界、客户或企业结果时不得由会议记录补写，无法从实录确认则删改或保留为发言者现场自述。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    }
+  ],
+  "routePlans": {
+    "realMaterials": {
+      "status": "not-required",
+      "notRequiredReason": "用户提供的会议摘要、思维导图和主题插图只作二级说明或导航，不承担事实证明；当前主要观点保留现场真人。",
+      "items": []
+    },
+    "aiGeneratedVideos": {
+      "status": "not-required",
+      "notRequiredReason": "现有现场画面和用户提供图片已经覆盖主题，不新增AI情景视频。",
+      "items": []
+    },
+    "paperEditorials": {
+      "status": "not-required",
+      "notRequiredReason": "本期使用Remotion语义信息层解释关系和数据，不新增纸艺视频。",
+      "items": []
+    }
+  },
+  "shotcraftOpportunities": [
+    {
+      "id": "SO01",
+      "beatId": "B01",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO02",
+      "beatId": "B02",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO03",
+      "beatId": "B03",
+      "baseVisualRoute": "speaker",
+      "intent": "transition-carry",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO04",
+      "beatId": "B04",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO05",
+      "beatId": "B06",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO06",
+      "beatId": "B08",
+      "baseVisualRoute": "speaker",
+      "intent": "transition-carry",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO07",
+      "beatId": "B09",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO08",
+      "beatId": "B12",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO09",
+      "beatId": "B14",
+      "baseVisualRoute": "speaker",
+      "intent": "transition-carry",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO10",
+      "beatId": "B16",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO11",
+      "beatId": "B19",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO12",
+      "beatId": "B21",
+      "baseVisualRoute": "speaker",
+      "intent": "transition-carry",
+      "reason": "结合实际人物位置、字幕安全区和本段主题，在剪辑阶段选择克制的语义信息层或转场承接；不预选特效卡号。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    }
+  ],
+  "rhythmAudit": {
+    "basis": "semantic-runs-not-seconds",
+    "fixedCadenceForbidden": true,
+    "longSpeakerRunsReviewed": true,
+    "runs": [
+      {
+        "fromBeatId": "B01",
+        "toBeatId": "B21",
+        "risk": "high",
+        "decision": "shotcraft-opportunity",
+        "reason": "全片以现场真人为主，若连续保持同一机位会形成明显疲劳；使用已提供图片、首次出场介绍卡、数字关系图和轻量数字运镜分段，但不按固定秒数机械切换。",
+        "mitigationRefs": [
+          "SO01",
+          "SO02",
+          "SO03",
+          "SO04",
+          "SO05",
+          "SO06",
+          "SO07",
+          "SO08",
+          "SO09",
+          "SO10",
+          "SO11",
+          "SO12"
+        ]
+      }
+    ]
+  }
+}
