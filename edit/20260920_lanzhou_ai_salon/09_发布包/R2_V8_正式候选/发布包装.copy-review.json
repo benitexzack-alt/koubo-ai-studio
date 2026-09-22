@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "task_id": "20260920-lanzhou-ai-salon-v8-r2-release-copy",
+  "status": "passed",
+  "reviewed_at": "2026-09-22T20:06:34+08:00",
+  "scope": "仅审查本期新增主标题、两个备选标题、抖音发布文案、话题、封面可见文字和三比四真人截图合成提示词；不改口播原声、字幕、画面、音效或剪辑，不代表用户完成全片验收或授权发布。",
+  "text_review_verdict": "新增发布文字已完成两项Skill模式扫描、事实差异核对、本人声音复核、留存风险审稿、机器朗读通顺度检查，以及项目语言失败样本和历史锚点扫描。事实保真为10/10。",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/edit/20260920_lanzhou_ai_salon/09_发布包/R2_V8_正式候选/发布包装.md",
+    "sha256": "7f05a6d6d81d4e78ddd06b6d167819a620cf64486de8d634d17d3703eb6bafb6",
+    "content_start_marker": "<!-- PUBLIC_COPY_START -->",
+    "content_end_marker": "<!-- PUBLIC_COPY_END -->",
+    "hash_scope": "完整UTF-8文件字节，包含公开文字、封面提示词和事实边界"
+  },
+  "cover_prompt": {
+    "path": "/Users/pc/Documents/口播/edit/20260920_lanzhou_ai_salon/09_发布包/R2_V8_正式候选/3比4真人截图合成封面提示词.md",
+    "sha256": "34d26cc0270a43b019240e4334c78e8bd17f9d15cd3fc0000f1244a5a02ae7a8",
+    "template_path": "/Users/pc/Documents/口播/templates/10-超哥AI创业记_3比4系列封面提示词母版.md",
+    "template_sha256": "a2677e98ac83b4670450505befc644d747135726465e91a039b3d02a7ca5dbbc"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "reading_limits": {
+    "text_readthrough_completed": true,
+    "tts_generated": true,
+    "tts_voice": "Tingting",
+    "tts_rate_words_per_minute": 185,
+    "tts_duration_seconds": 59.664399,
+    "tts_scope": "PUBLIC_COPY标记内的主标题、备选标题、发布文案、话题和封面精确文字",
+    "tts_artifact_retained": false,
+    "human_read_aloud_completed": false,
+    "user_language_approval_for_new_copy": false,
+    "boundary": "read_aloud_completed只表示机器朗读与文字节奏检查已经执行，不冒充真人朗读或用户确认。"
+  },
+  "input_bindings": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260920_lanzhou_ai_salon/05_实录与字幕/canonical-transcript.final-source.v2.json",
+      "sha256": "feb508def1e1c3edf098b02511f1e1b7dc553825e333d143f5316523de8be93c",
+      "read": true,
+      "applied": "只从实际录音转写中提取第一期、线下交流、真实问题、本地资源与每月继续组织等发布摘要。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260920_lanzhou_ai_salon/05_实录与字幕/spoken-source-policy.v2.json",
+      "sha256": "93cbee2672da6166daa18a5a20eb5ee7476493b8d43f4873880ad7de0664670f",
+      "read": true,
+      "applied": "保持录音为中文字幕唯一正文；发布包装不反向修改字幕。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260920_lanzhou_ai_salon/05_实录与字幕/caption-review.final-source.v2.json",
+      "sha256": "a220d50612d02a65d89971f1212cad8bbdf2559f7d528320191c14867952b57d",
+      "read": true,
+      "applied": "发布文字避开低置信听辨项和嘉宾自述中的具体账号、课程、比赛与业务数值。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+      "sha256": "c90d07dfb414707035ddd59b6bea6faf88a35f9551649199b9a92d433785bb0d",
+      "read": true,
+      "applied": "使用直接、具体、实践者位置的表达，不新增导师身份、成果承诺或固定评论引导。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/21-超哥口播语言与重复硬门禁.json",
+      "sha256": "fe5031697546ff9cd8f5154200d3588540e34877ab3ac2a28c119e6a74efe4e7",
+      "read": true,
+      "applied": "对公开文字执行项目AI腔失败样本与历史锚点扫描。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/workflow/recent-content-history.v1.json",
+      "sha256": "5ab8b58fa26f2b1a9627c453cd4af1b103927528ac1c26b8d31ec617e73166a5",
+      "read": true,
+      "applied": "检查本条未复用当前记录中的固定身份结尾、七天试跑和标准化复制等冻结母题。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/templates/10-超哥AI创业记_3比4系列封面提示词母版.md",
+      "sha256": "a2677e98ac83b4670450505befc644d747135726465e91a039b3d02a7ca5dbbc",
+      "read": true,
+      "applied": "锁定三比四、一千零八十乘一千四百四十、当期真人截图唯一人物、禁止重绘人脸、知识结构、路径和真实场景。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/references/ai-writing-boundary.md",
+      "sha256": "5b3adb26c5d688f3a7a30be912893fa808440a1306627c3c265e6e016abea64e",
+      "read": true,
+      "applied": "逐项检查自我说明、防御性边界、万能转场、抽象评价、资料插入和机械完整。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/references/copy-review-report-schema.md",
+      "sha256": "e3d03fa833ee62383b02b35f9fcd3c63b0b16a8cce6a394dd47b71416b2ff19b",
+      "read": true,
+      "applied": "绑定当前发布包装、两项Skill哈希、六项检查、事实差异和五项评分。"
+    }
+  ],
+  "fact_lock": {
+    "allowed": [
+      "兰州AI实践者共创沙龙第一期",
+      "会用AI和想用AI的人参加线下交流",
+      "现场内容包括账号实践、学生项目、企业服务和传统行业学习AI",
+      "主办方在原视频中表达后续计划每个月继续组织",
+      "活动强调把真实问题与身边资源带到现场"
+    ],
+    "excluded": [
+      "成功变现、完成资源对接、形成项目或帮助企业取得结果",
+      "嘉宾自述的账号数据、课程价格、比赛名次、资源规模和业务效果",
+      "平台推荐、流量、成交或收益保证"
+    ],
+    "original_recording_unchanged": true,
+    "caption_text_unchanged": true
+  },
+  "humanizer_pattern_review": {
+    "removed_or_not_used": [
+      "宏大时代宣告和抽象意义拔高",
+      "模糊专家归因与机构背书",
+      "成功案例、收益承诺和焦虑营销",
+      "机械的第一第二第三和否定式排比",
+      "万能积极结尾"
+    ],
+    "finding": "标题与文案直接说参与者、现场内容和后续计划，没有为了吸引力新增事实。"
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "发布文案直接说谁来到线下、聊了什么和下一步计划；边界放在“计划”一词及不公开的事实锁中，没有堆免责声明、行业大词或资料综述。"
+  },
+  "retention_review": {
+    "risk_node_count": 0,
+    "nodes": [],
+    "no_high_risk_reason": "标题直接交代兰州、AI参与者和第一次线下见面，文案只说明现场主题和后续计划，没有抽象口号、虚构冲突、收益承诺或无证据结果。此判断是发布前文字预测，不是平台留存数据。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "把原视频中的未来安排写为“计划每个月继续组织”，避免把计划写成已经持续发生的事实。"
+    ],
+    "pending_user_confirmations": [
+      "用户正常速度完整观看正式候选片并确认最终发布文件。",
+      "公开发布前复核现场参与者肖像、声音和活动传播授权范围。",
+      "按发布当日平台选项如实完成AI内容声明。"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 9,
+    "rhythm": 9,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "machine_language_scan": {
+    "path": "/Users/pc/Documents/口播/edit/20260920_lanzhou_ai_salon/09_发布包/R2_V8_正式候选/发布文字机器扫描回执.v1.json",
+    "status": "passed"
+  },
+  "full_content_gate_run": false,
+  "full_content_gate_passed": false,
+  "ready_for_production_granted": false,
+  "production_or_publication_approval_granted": false,
+  "package_status": "ready-for-user-review",
+  "userFullWatchConfirmed": false,
+  "publishAuthorized": false,
+  "local_pass_boundary": "passed只表示本报告要求的双Skill局部事实与语言审查、机器朗读和项目语言扫描完成；不代表完整内容门禁、用户全片验收、参与者传播授权或公开发布。"
+}

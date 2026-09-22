@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "koubo-director-real-evidence-handoff/v1",
+  "taskId": "20260920_lanzhou_ai_salon_final_source_director_v2_r2",
+  "revisionId": "lanzhou-ai-salon-final-source-r2",
+  "status": "planned",
+  "sourceRoute": "real-evidence",
+  "downstreamRoute": "real-evidence",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20260920_lanzhou_ai_salon/03_导演拆解/director-v2-r2/director-cues.v2.json",
+      "sha256": "855bb07f2494c5f03f75921f877dd4748b455bdeab65ef622aac449529bbbd07"
+    },
+    "userApproval": {
+      "path": "edit/20260920_lanzhou_ai_salon/03_导演拆解/director-v2-r2/director-cues-user-approval.v2.json",
+      "sha256": "3dda3a776f991be37735acfcc65e8cc417c1a3fd0e699320f648e05e37faa0a4"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "5472eb8f5bf11298fe9bcbcfefa39dec89ca7ad1a3f8cd6450c6707c604f151e"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptGenerationAllowed": false,
+  "itemCount": 6,
+  "items": [
+    {
+      "id": "R01",
+      "beatId": "B001",
+      "startAnchorText": "首先就感",
+      "endAnchorText": "一个到来",
+      "timingStatus": "post-shoot-audio-bound",
+      "assetType": "source-data",
+      "usageRole": "context",
+      "materialRequest": "使用用户已提供的《活动开场视觉与现场主题导航》，按视觉计划在对应语义点短时上屏；保留‘辅助说明’属性。",
+      "reason": "真实的用户提供图片可承接本期主题与流程，不需要用生成画面重构；其内容仅作上下文，不能替代事实核验。",
+      "evidenceStatus": "bound-verified",
+      "usableInProduction": true,
+      "sourceBinding": {
+        "path": "remotion/public-salon-20260920/images/1.png",
+        "sha256": "ca9e71795e6c8dbbc4e9ee7f46f1289f7cc027dcd1ca66df3d809ed931336b08",
+        "provenance": "用户在本任务中直接提供并用于本期剪辑的图片；导演表只将其作为编辑导航或上下文说明。",
+        "rightsStatus": "user-owned",
+        "reviewedBy": "human",
+        "reviewedAt": "2026-09-22T07:07:41.320Z"
+      },
+      "fallbackIfUnavailable": "keep-speaker",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R02",
+      "beatId": "B003",
+      "startAnchorText": "首先最简",
+      "endAnchorText": "个时代下",
+      "timingStatus": "post-shoot-audio-bound",
+      "assetType": "source-data",
+      "usageRole": "context",
+      "materialRequest": "使用用户已提供的《为什么办沙龙的编辑说明图》，按视觉计划在对应语义点短时上屏；保留‘辅助说明’属性。",
+      "reason": "真实的用户提供图片可承接本期主题与流程，不需要用生成画面重构；其内容仅作上下文，不能替代事实核验。",
+      "evidenceStatus": "bound-verified",
+      "usableInProduction": true,
+      "sourceBinding": {
+        "path": "remotion/public-salon-20260920/images/why-salon.png",
+        "sha256": "4e668530043f07d304672ac7543a6344af7ffdb0f7287c9edd79cfee132e6735",
+        "provenance": "用户在本任务中直接提供并用于本期剪辑的图片；导演表只将其作为编辑导航或上下文说明。",
+        "rightsStatus": "user-owned",
+        "reviewedBy": "human",
+        "reviewedAt": "2026-09-22T07:07:41.320Z"
+      },
+      "fallbackIfUnavailable": "keep-speaker",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R03",
+      "beatId": "B018",
+      "startAnchorText": "发现很多",
+      "endAnchorText": "些问题呢",
+      "timingStatus": "post-shoot-audio-bound",
+      "assetType": "source-data",
+      "usageRole": "context",
+      "materialRequest": "使用用户已提供的《本次讨论主线的会议摘要图》，按视觉计划在对应语义点短时上屏；保留‘辅助说明’属性。",
+      "reason": "真实的用户提供图片可承接本期主题与流程，不需要用生成画面重构；其内容仅作上下文，不能替代事实核验。",
+      "evidenceStatus": "bound-verified",
+      "usableInProduction": true,
+      "sourceBinding": {
+        "path": "remotion/public-salon-20260920/images/meeting-summary.jpg",
+        "sha256": "101deac9ac111df679daf186b91ab9d8cf1ea34cff7cd815b1466969a1abec9b",
+        "provenance": "用户在本任务中直接提供并用于本期剪辑的图片；导演表只将其作为编辑导航或上下文说明。",
+        "rightsStatus": "user-owned",
+        "reviewedBy": "human",
+        "reviewedAt": "2026-09-22T07:07:41.320Z"
+      },
+      "fallbackIfUnavailable": "keep-speaker",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R04",
+      "beatId": "B025",
+      "startAnchorText": "每个月组",
+      "endAnchorText": "题挖出来",
+      "timingStatus": "post-shoot-audio-bound",
+      "assetType": "source-data",
+      "usageRole": "context",
+      "materialRequest": "使用用户已提供的《每月持续举办沙龙的编辑说明图》，按视觉计划在对应语义点短时上屏；保留‘辅助说明’属性。",
+      "reason": "真实的用户提供图片可承接本期主题与流程，不需要用生成画面重构；其内容仅作上下文，不能替代事实核验。",
+      "evidenceStatus": "bound-verified",
+      "usableInProduction": true,
+      "sourceBinding": {
+        "path": "remotion/public-salon-20260920/images/monthly-meet.png",
+        "sha256": "ff757209521c6ffb0bb077b5fbeaea9692af871cb27ccb137e49f63148354a5a",
+        "provenance": "用户在本任务中直接提供并用于本期剪辑的图片；导演表只将其作为编辑导航或上下文说明。",
+        "rightsStatus": "user-owned",
+        "reviewedBy": "human",
+        "reviewedAt": "2026-09-22T07:07:41.320Z"
+      },
+      "fallbackIfUnavailable": "keep-speaker",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R05",
+      "beatId": "B031",
+      "startAnchorText": "我们比喻",
+      "endAnchorText": "春天一朵",
+      "timingStatus": "post-shoot-audio-bound",
+      "assetType": "source-data",
+      "usageRole": "context",
+      "materialRequest": "使用用户已提供的《春天与开花比喻的编辑说明图》，按视觉计划在对应语义点短时上屏；保留‘辅助说明’属性。",
+      "reason": "真实的用户提供图片可承接本期主题与流程，不需要用生成画面重构；其内容仅作上下文，不能替代事实核验。",
+      "evidenceStatus": "bound-verified",
+      "usableInProduction": true,
+      "sourceBinding": {
+        "path": "remotion/public-salon-20260920/images/spring-flower.png",
+        "sha256": "11d5d4673948701e103b22cb88d26d874ada173d0ac828a428370a9cb7d7ade5",
+        "provenance": "用户在本任务中直接提供并用于本期剪辑的图片；导演表只将其作为编辑导航或上下文说明。",
+        "rightsStatus": "user-owned",
+        "reviewedBy": "human",
+        "reviewedAt": "2026-09-22T07:07:41.320Z"
+      },
+      "fallbackIfUnavailable": "keep-speaker",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R06",
+      "beatId": "B074",
+      "startAnchorText": "我能在这",
+      "endAnchorText": "这个问题",
+      "timingStatus": "post-shoot-audio-bound",
+      "assetType": "source-data",
+      "usageRole": "context",
+      "materialRequest": "使用用户已提供的《全场议题流程与嘉宾案例导航图》，按视觉计划在对应语义点短时上屏；保留‘辅助说明’属性。",
+      "reason": "真实的用户提供图片可承接本期主题与流程，不需要用生成画面重构；其内容仅作上下文，不能替代事实核验。",
+      "evidenceStatus": "bound-verified",
+      "usableInProduction": true,
+      "sourceBinding": {
+        "path": "remotion/public-salon-20260920/images/mindmap.png",
+        "sha256": "10a64ee07d06ffda5aa0f50e4db4b335ac10364e2d2437f4ded92c22a7535d6c",
+        "provenance": "用户在本任务中直接提供并用于本期剪辑的图片；导演表只将其作为编辑导航或上下文说明。",
+        "rightsStatus": "user-owned",
+        "reviewedBy": "human",
+        "reviewedAt": "2026-09-22T07:07:41.320Z"
+      },
+      "fallbackIfUnavailable": "keep-speaker",
+      "generatedSubstituteAllowed": false
+    }
+  ]
+}
