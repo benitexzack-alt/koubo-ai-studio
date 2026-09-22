@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "scope": "formal-candidate-machine-qa",
+  "sourceRunManifest": "edit/20260920_lanzhou_ai_salon/07_预览与质检/正式R3/run-manifest.json",
+  "sourceRunManifestSha256": "e27da1d4bcfb2aa3d58fe999d6110ad076301c601ebfaf8fadd6ed6ecda680df",
+  "stageSuccessReceipts": [
+    {
+      "path": "edit/20260920_lanzhou_ai_salon/07_预览与质检/正式R3/stage-success/20260920-lanzhou-ai-salon-v8-r3-formal.formal-render.json",
+      "sha256": "f52fba3a9fc8edb6acda95d3a4dd5f0e5993763c7bb4b106af7d071fe9cd4091"
+    },
+    {
+      "path": "edit/20260920_lanzhou_ai_salon/07_预览与质检/正式R3/stage-success/20260920-lanzhou-ai-salon-v8-r3-formal.formal-audio.json",
+      "sha256": "314eac66c410beb32c452b4eecbe5ea97d9acd65f9ff0a62933cc47de64cd66b"
+    },
+    {
+      "path": "edit/20260920_lanzhou_ai_salon/07_预览与质检/正式R3/stage-success/20260920-lanzhou-ai-salon-v8-r3-formal.formal-qa.json",
+      "sha256": "d45edeb2cc3400be0b44f88312fb0a2e393513c082ec105b47bb29f683f48945"
+    }
+  ],
+  "audioPcmSha256": "cb9843f1495bf6a84222763adde2d7fad70677b789cc1c83d228eaec2f946fa5",
+  "audioUnchangedFromR2": true,
+  "formalQa": {
+    "schemaVersion": 1,
+    "jobId": "20260920-lanzhou-ai-salon-v8-r3-formal",
+    "output": "edit/20260920_lanzhou_ai_salon/08_正式成片/兰州AI实践者共创沙龙第一期_V8_R3_1080P_正式候选.mp4",
+    "sha256": "0bb9e5003364ac5282605909d42fbc35f93dce820d7452ca13c7060ec8ecafc2",
+    "durationSeconds": 613.9,
+    "sizeBytes": 638266723,
+    "video": {
+      "index": 0,
+      "codec_name": "h264",
+      "codec_type": "video",
+      "width": 1920,
+      "height": 1080,
+      "pix_fmt": "yuvj420p",
+      "r_frame_rate": "30/1",
+      "avg_frame_rate": "30/1",
+      "bit_rate": "8054386",
+      "side_data_list": [
+        {}
+      ]
+    },
+    "audio": {
+      "index": 1,
+      "codec_name": "aac",
+      "codec_type": "audio",
+      "sample_rate": "48000",
+      "channels": 2,
+      "r_frame_rate": "0/0",
+      "avg_frame_rate": "0/0",
+      "bit_rate": "256176"
+    },
+    "blackFrameCount": 0,
+    "integratedLoudnessLufs": -16.01,
+    "loudnessRangeLu": 4,
+    "truePeakDbtp": -1.79,
+    "errors": [],
+    "status": "passed"
+  },
+  "humanReviewBoundary": {
+    "riskFramesReviewed": true,
+    "riskFrameCount": 41,
+    "fullSpeedFullWatchConfirmedByUser": false,
+    "verifiedReleaseAllowed": false,
+    "note": "机器质检和风险帧复核不能替代用户正常速度完整观看。"
+  }
+}
