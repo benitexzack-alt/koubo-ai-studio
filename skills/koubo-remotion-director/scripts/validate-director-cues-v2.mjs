@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
-import {existsSync} from 'node:fs';
+import {existsSync, readFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {validateDirectorCuesV2File} from './director-cues-v2-core.mjs';
+import {assertCurrentPaperBaseline} from './paper-quality-baseline.mjs';
 
 const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultProjectRoot = path.resolve(skillRoot, '../..');
@@ -31,6 +32,12 @@ if (!args.input || !existsSync(inputPath)) {
 }
 
 try {
+  // Explicit historical audit only; this switch never grants a downstream handoff.
+  if (args['historical-audit'] !== 'true') {
+    const profilePath = path.join(projectRoot, 'workflow/active-director-profile.v1.json');
+    if (existsSync(profilePath)) assertCurrentPaperBaseline(
+      JSON.parse(readFileSync(inputPath, 'utf8')), JSON.parse(readFileSync(profilePath, 'utf8')));
+  }
   const result = validateDirectorCuesV2File({inputPath, projectRoot});
   if (!result.ok) {
     console.error(JSON.stringify(result));

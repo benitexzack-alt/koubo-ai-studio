@@ -5,6 +5,8 @@ import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {validateDirectorCuesV2} from '../scripts/director-cues-v2-core.mjs';
+import {PAPER_BASELINE_ID, PAPER_TEXT_POLICY, assertCurrentPaperBaseline} from '../scripts/paper-quality-baseline.mjs';
+import {buildDirectorCuesV2HandoffDocuments} from '../scripts/director-cues-v2-handoff-core.mjs';
 
 const template = JSON.parse(readFileSync(new URL('../templates/director-cues.v2.json', import.meta.url), 'utf8'));
 assert.equal(template.schemaVersion, 'koubo-director-cues/v2');
@@ -147,6 +149,57 @@ const mixed = {
 
 const validate = (value, source = scriptText) => validateDirectorCuesV2({cues: value, projectRoot: root, scriptText: source});
 assert.equal(validate(mixed).ok, true, validate(mixed).errors.join('\n'));
+
+// New paper baseline: first-frame Chinese, attached moving labels and causal sequence.
+// Old fixtures below remain historical compatibility checks, not new-production defaults.
+const restoredPaper = structuredClone(mixed);
+Object.assign(restoredPaper.styleLocks.paperEditorial, {
+  qualityBaselineId: PAPER_BASELINE_ID, textPolicy: PAPER_TEXT_POLICY,
+  mustAvoid: ['悬浮贴字', '塑料质感', '无关装饰'],
+});
+const restoredShot = restoredPaper.routePlans.paperEditorials.items[0];
+restoredShot.textPlan = [
+  {text: '工具', surface: '蓝色工具卡正面', motion: 'with-object'},
+  {text: '结果', surface: '白色结果抽屉正面', motion: 'with-object'},
+  {text: '组织能力', surface: '背景标题纸面', motion: 'fixed-context', reason: '标记整个机构的主题'},
+];
+restoredShot.firstFramePrompt = `${paperPrefix}前景蓝色工具卡正面印有准确中文“工具”，中景灰色纸齿轮与棉线连接，白色结果抽屉正面印有“结果”，后景深蓝结构墙上的背景标题纸面印有“组织能力”。卡片位于轨道入口，抽屉处于关闭状态，纸厚、纤维、切边与接触阴影清晰，所有中文属于对应纸面。`;
+restoredShot.primaryAction = '联动装配';
+restoredShot.videoPrompt = '基于已确认首帧完成联动装配：带字工具卡先沿轨道滑入，接着触发齿轮转动，同时棉线牵引结果抽屉推出。工具和结果文字随各自纸面同步运动，背景标题保持固定，字形不漂变、不重绘。末尾停稳让观众看清工具与结果的连接。只保留纸片滑动和扣合动作音，不要旁白或配乐。';
+restoredShot.motionPlan = {
+  goal: '工具通过组织形成结果', actions: ['工具卡滑入', '齿轮与棉线联动', '结果抽屉推出'],
+  result: '工具连接到结果', textBinding: 'surface-bound', audioPolicy: 'preserve-usable-native-action-sound',
+};
+assert.equal(validate(restoredPaper).ok, true, validate(restoredPaper).errors.join('\n'));
+const staticFold = structuredClone(restoredPaper);
+staticFold.routePlans.paperEditorials.items[0].firstFramePrompt += '后方是尚未展开的折页。';
+assert.equal(validate(staticFold).ok, true, validate(staticFold).errors.join('\n'));
+const currentProfile = {
+  profileVersion: '9.1.0', paperQualityBaseline: {id: PAPER_BASELINE_ID},
+  routingPolicy: {directorCueRouteMap: {speaker: 'speaker', 'real-evidence': 'real-evidence', 'ai-generated-video': 'generated-video', 'paper-editorial': 'paper-editorial'}},
+};
+assert.throws(() => assertCurrentPaperBaseline(mixed, currentProfile), /PAPER_CURRENT_BASELINE_REQUIRED/);
+const currentHandoff = buildDirectorCuesV2HandoffDocuments({
+  cues: restoredPaper, approval: {revisionId: 'test-only'}, profile: currentProfile, source: {},
+});
+assert.deepEqual(currentHandoff.paperVideo.items[0].motionPlan, restoredShot.motionPlan);
+assert.equal(currentHandoff.paperFirstFrame.items[0].prompt, restoredShot.firstFramePrompt);
+assert.equal(currentHandoff.paperFirstFrame.items[0].motionPlan, undefined);
+assert.equal(currentHandoff.master.generationAuthorized, false);
+assert.deepEqual(currentHandoff.paperFirstFrame.items[0].textPlan, restoredShot.textPlan);
+for (const [mutate, expected] of [
+  [value => { value.styleLocks.paperEditorial.qualityBaselineId = 'unreviewed'; }, 'QUALITY_BASELINE_REQUIRED'],
+  [value => { value.routePlans.paperEditorials.items[0].firstFramePrompt = restoredShot.firstFramePrompt.replaceAll('工具', '物件'); }, 'FIRST_FRAME_TEXT_MISSING'],
+  [value => { value.routePlans.paperEditorials.items[0].motionPlan.textBinding = 'screen-fixed'; }, 'TEXT_OBJECT_BINDING_REQUIRED'],
+  [value => { value.routePlans.paperEditorials.items[0].motionPlan.audioPolicy = 'mute-all'; }, 'NATIVE_AUDIO_REVIEW_REQUIRED'],
+  [value => { delete value.routePlans.paperEditorials.items[0].textPlan[2].reason; }, 'FIXED_LABEL_REASON_REQUIRED'],
+  [value => { value.routePlans.paperEditorials.items[0].motionPlan.actions = []; }, 'CAUSAL_ACTIONS_REQUIRED'],
+  [value => { value.routePlans.paperEditorials.items[0].evidenceEligible = true; }, 'EVIDENCE_ROLE_INVALID'],
+]) {
+  const bad = structuredClone(restoredPaper);
+  mutate(bad);
+  assert(validate(bad).errors.some(error => error.includes(expected)), expected);
+}
 
 const allSpeakerScript = '这是我的判断。这是我的边界。';
 const allSpeaker = structuredClone(mixed);

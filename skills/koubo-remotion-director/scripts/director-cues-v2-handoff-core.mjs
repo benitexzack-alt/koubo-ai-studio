@@ -12,6 +12,7 @@ import {
 } from 'node:fs';
 import path from 'node:path';
 import {validateDirectorCuesV2File} from './director-cues-v2-core.mjs';
+import {assertCurrentPaperBaseline, isSurfaceBoundPaper} from './paper-quality-baseline.mjs';
 
 export const DIRECTOR_CUES_V2_APPROVAL_SCHEMA = 'koubo-director-cues-user-approval/v2';
 export const DIRECTOR_CUES_V2_HANDOFF_SCHEMA = 'koubo-director-cues-v2-handoff/v1';
@@ -209,6 +210,9 @@ function buildPromptManifest({cues, approval, source, route, downstreamRoute, ro
       negativePrompt: clone(item.negativePrompt),
     };
     if (promptKind === 'image-to-video') base.primaryAction = item.primaryAction;
+    if (route === 'paper-editorial' && promptKind === 'image-to-video' && isSurfaceBoundPaper(styleLock)) {
+      base.motionPlan = clone(item.motionPlan);
+    }
     if (route === 'ai-generated-video') {
       return {
         ...base,
@@ -473,6 +477,7 @@ export function validateDirectorCuesV2HandoffDocuments(documents, {requireArtifa
 }
 
 export function buildDirectorCuesV2HandoffDocuments({cues, approval, profile, source}) {
+  assertCurrentPaperBaseline(cues, profile);
   const routeMap = profile.routingPolicy.directorCueRouteMap;
   const realPackage = cues.routePlans.realMaterials;
   const aiPackage = cues.routePlans.aiGeneratedVideos;

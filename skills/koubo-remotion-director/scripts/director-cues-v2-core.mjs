@@ -1,6 +1,7 @@
 import {createHash} from 'node:crypto';
 import {existsSync, readFileSync, realpathSync} from 'node:fs';
 import path from 'node:path';
+import {PAPER_BASELINE_ID, isSurfaceBoundPaper, validatePaperMotionIntent} from './paper-quality-baseline.mjs';
 
 export const DIRECTOR_CUES_V2_SCHEMA = 'koubo-director-cues/v2';
 
@@ -228,11 +229,12 @@ function validateAnchors(item, beat, errors, codePrefix) {
 }
 
 function validatePromptPair(item, style, errors, codePrefix, {paper = false, referenceIds = new Set()}) {
+  const surfaceBound = paper && isSurfaceBoundPaper(style);
   const id = item?.id ?? 'unknown';
   const firstFrame = String(item?.firstFramePrompt ?? '').trim();
   const video = String(item?.videoPrompt ?? '').trim();
   push(errors, characters(firstFrame) >= 80 && characters(firstFrame) <= 700, `${codePrefix}_FIRST_FRAME_LENGTH_INVALID:${id}`);
-  push(errors, characters(video) >= 40 && characters(video) <= 400, `${codePrefix}_VIDEO_LENGTH_INVALID:${id}`);
+  push(errors, characters(video) >= 40 && characters(video) <= (surfaceBound ? 700 : 400), `${codePrefix}_VIDEO_LENGTH_INVALID:${id}`);
   push(errors, firstFrame.startsWith(style?.promptPrefix ?? '__missing__'), `${codePrefix}_STYLE_PREFIX_MISSING:${id}`);
   push(errors, video.startsWith('基于已确认首帧'), `${codePrefix}_VIDEO_NOT_BOUND_TO_FIRST_FRAME:${id}`);
   push(errors, text(item?.primaryAction) && video.includes(item.primaryAction), `${codePrefix}_PRIMARY_ACTION_INVALID:${id}`);
@@ -240,17 +242,19 @@ function validatePromptPair(item, style, errors, codePrefix, {paper = false, ref
   for (const word of TECHNICAL_PROMPT_TERMS) {
     push(errors, !firstFrame.includes(word) && !video.includes(word), `${codePrefix}_TECHNICAL_PROMPT_POLLUTION:${id}:${word}`);
   }
-  for (const word of FIRST_FRAME_MOTION_WORDS) {
+  // For direct-text paper, "展开" may be a printed label or "尚未展开" static state.
+  // Human review checks initial-state semantics; bare substring bans cannot do that.
+  for (const word of surfaceBound ? [] : FIRST_FRAME_MOTION_WORDS) {
     push(errors, !firstFrame.includes(word), `${codePrefix}_FIRST_FRAME_CONTAINS_MOTION:${id}:${word}`);
   }
-  for (const word of VIDEO_SEQUENCE_WORDS) {
+  for (const word of surfaceBound ? [] : VIDEO_SEQUENCE_WORDS) {
     push(errors, !video.includes(word), `${codePrefix}_VIDEO_CONTAINS_SEQUENCE:${id}:${word}`);
   }
   if (!paper) return;
   const textPlan = list(item?.textPlan);
   push(
     errors,
-    textPlan.length >= 1 && textPlan.length <= 4 && textPlan.every((entry) => (
+    textPlan.length >= 1 && textPlan.length <= (surfaceBound ? 9 : 4) && textPlan.every((entry) => (
       entry && typeof entry === 'object' && text(entry.text) && characters(entry.text) <= 8 &&
       text(entry.surface) && characters(entry.surface) <= 24
     )),
@@ -260,14 +264,16 @@ function validatePromptPair(item, style, errors, codePrefix, {paper = false, ref
   push(errors, new Set(textPlan.map((entry) => semanticKey(entry?.surface))).size === textPlan.length, `${codePrefix}_TEXT_PLAN_SURFACE_DUPLICATED:${id}`);
   for (const entry of textPlan) {
     push(errors, firstFrame.includes(entry.surface), `${codePrefix}_TEXT_PLAN_SURFACE_INVALID:${id}`);
-    push(errors, !firstFrame.includes(entry.text), `${codePrefix}_TEXT_LEAKED_TO_FIRST_FRAME:${id}:${entry.text}`);
+    push(errors, surfaceBound ? firstFrame.includes(entry.text) : !firstFrame.includes(entry.text),
+      `${codePrefix}_${surfaceBound ? 'FIRST_FRAME_TEXT_MISSING' : 'TEXT_LEAKED_TO_FIRST_FRAME'}:${id}:${entry.text}`);
   }
   push(
     errors,
     list(item?.referenceImageIds).length > 0 && item.referenceImageIds.every((refId) => referenceIds.has(refId)),
     `${codePrefix}_REFERENCE_ID_UNKNOWN:${id}`,
   );
-  for (const word of GENERATED_SYMBOL_TERMS) {
+  if (surfaceBound) errors.push(...validatePaperMotionIntent(item));
+  for (const word of surfaceBound ? [] : GENERATED_SYMBOL_TERMS) {
     push(errors, !firstFrame.includes(word), `${codePrefix}_FIRST_FRAME_SYMBOL_RISK:${id}:${word}`);
   }
 }
@@ -543,7 +549,8 @@ export function validateDirectorCuesV2({cues, projectRoot, scriptText}) {
   let paperReferenceIds = new Set();
   if (paperItems.length > 0) {
     paperReferenceIds = validateStyleLock(paperStyle, projectRoot, errors, 'DIRECTOR_V2_PAPER', {referencesRequired: true});
-    push(errors, paperStyle?.textPolicy === 'generated-base-image-then-deterministic-chinese', 'DIRECTOR_V2_PAPER_TEXT_POLICY_INVALID');
+    push(errors, isSurfaceBoundPaper(paperStyle) || paperStyle?.textPolicy === 'generated-base-image-then-deterministic-chinese', 'DIRECTOR_V2_PAPER_TEXT_POLICY_INVALID');
+    if (isSurfaceBoundPaper(paperStyle)) push(errors, paperStyle.qualityBaselineId === PAPER_BASELINE_ID, 'DIRECTOR_V2_PAPER_QUALITY_BASELINE_REQUIRED');
   } else {
     push(errors, paperStyle === null, 'DIRECTOR_V2_PAPER_UNUSED_STYLE_MUST_BE_NULL');
   }

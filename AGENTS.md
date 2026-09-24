@@ -122,7 +122,7 @@
 #### B. 用户确认导演表后的下游生产
 
 - `workflow/active-director-profile.v1.json` 的 V9.1 下游生产字段仅在用户确认 v2 导演表后生效，用于首帧、视频生成和剪辑发布兼容，不得反向改写导演表。`ai-generated-video` 在下游映射为历史类名 `generated-video`，其他三路同名映射。
-- 进入 `firstframe` 后，AI 情景和纸艺分路才各自生成首帧；用户分镜验收首帧后才允许交给图生视频。纸艺镜头另外执行物件组、至少三层空间、节点中文、固定空白纸牌、确定性写字和 OCR。2026-09-08 事故修订后的新请求按 `skills/koubo-remotion-director/references/paper-motion-incident-prevention.md` 执行；一镜一个主动作，先完成一个代表镜并由用户验收。
+- 新纸艺统一以 `skills/koubo-remotion-director/references/paper-quality-baseline-20260829.md` 及其绑定的《超级个体》实际作品为最低基准。首帧直接生成准确中文，字与承载纸面一起运动；一镜一个认知目标，允许有因果关系的连续动作，不再强制独立固定字牌。至少三层空间、材质与逐字核对/OCR仍需验收；旧无字底图、本地烘焙和固定牌合同仅供历史回归，不得向新路线倒灌。用户确认首帧后才允许图生视频，代表镜需正常速度检查字物同动、动作结果和原生音效；可用的原生动作音不得统一静音。任何新升级均不得未经用户确认降低此基准。
 - 进入 `video-generation` 后，才执行新机构动态试验、动作边界抽帧、实际视频证据和独立人工验收；首帧或视频失败只返工失败镜头，不连锁重写已确认镜头。
 - 真实素材分路必须绑定本条来源和权限。承担 `evidence` 或 `demonstration` 的材料缺失时，按导演表删改未证实主张或阻断生产，不能默认改成 AI 画面；只承担 `context` 的公开画面缺失时，在事实已由独立来源核验的前提下可按导演表留真人，不得硬编硬塞。
 - 进入 `edit-release` 后，先实录重绑，再对 `speaker` 和 `real-evidence` 扫描 Shotcraft 当前全库并留下应用或不需要回执；此时才要求本条 request、route lock、plan、compile receipt、`skillExecuted=true` validation receipt、`tools/validate-director-production-binding.mjs`、动态候选验收和 V8 正式生产门禁。

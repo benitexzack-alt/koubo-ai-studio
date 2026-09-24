@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFileSync} from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import {buildDirectorCuesV2FirstFrameBridge} from '../../koubo-paper-firstframe-producer/scripts/bridge-director-cues-v2-firstframe.mjs';
 import {
   buildDirectorCuesV2Handoff,
   finalizeDirectorCuesV2HandoffDirectory,
@@ -345,5 +346,27 @@ assert.equal(
   readFileSync(path.join(root, quarantineNames[0], 'complete-package-marker.txt'), 'utf8'),
   '完整但强制复验失败',
 );
+
+// A complete new-policy disk handoff must preserve moving text and never enter the old baker.
+const restored = structuredClone(mixedCues);
+const baselineId = 'paper-super-individual-20260829-v1';
+Object.assign(restored.styleLocks.paperEditorial, {
+  qualityBaselineId: baselineId, textPolicy: 'first-frame-generated-chinese-surface-bound',
+});
+const shot = restored.routePlans.paperEditorials.items[0];
+shot.textPlan = [{text: '输入', surface: '蓝色纸卡正面', motion: 'with-object'}, {text: '结果', surface: '白色抽屉正面', motion: 'with-object'}];
+shot.firstFramePrompt = `${paperPrefix}蓝色纸卡正面印有准确中文“输入”，位于前景轨道入口，中景灰色纸齿轮与棉线连接，后景结构墙有纸纤维与切边。白色抽屉正面印有“结果”，抽屉处于关闭状态。纸卡、轨道、齿轮和抽屉彼此独立，中文属于对应纸面，物件有真实接触阴影与纸厚。`;
+shot.primaryAction = '联动装配';
+shot.videoPrompt = '基于已确认首帧完成联动装配：带字输入卡滑入轨道，然后推动齿轮，接着牵引结果抽屉推出。文字随各自纸面同步运动，不漂移不重绘；末尾停稳供阅读。只保留纸片滑动和扣合声，不要旁白或配乐。';
+shot.motionPlan = {goal: '输入产生结果', actions: ['卡片进入', '齿轮联动', '抽屉推出'], result: '输入连接到结果', textBinding: 'surface-bound', audioPolicy: 'preserve-usable-native-action-sound'};
+writeJson(path.join(root, 'new-cues.json'), restored);
+writeJson(path.join(root, 'new-approval.json'), {...approval, revisionId: 'new-policy-test', bindings: {directorCues: {path: 'new-cues.json', sha256: digest(readFileSync(path.join(root, 'new-cues.json')))}}});
+writeJson(path.join(root, 'workflow/active-director-profile.v1.json'), {...profile, paperQualityBaseline: {id: baselineId}});
+const newHandoff = buildDirectorCuesV2Handoff({projectRoot: root, cues: 'new-cues.json', approval: 'new-approval.json', profile: 'workflow/active-director-profile.v1.json', outputDir: 'new-handoff'});
+assert.equal(validateDirectorCuesV2HandoffDirectory({projectRoot: root, outputDir: 'new-handoff'}).ok, true);
+assert.deepEqual(readJson(path.join(root, 'new-handoff/paper-editorial.image-to-video-handoff.v1.json')).items[0].motionPlan, shot.motionPlan);
+assert.throws(() => buildDirectorCuesV2FirstFrameBridge({projectRoot: root, master: newHandoff.masterPath, handoffReceipt: newHandoff.receiptPath, paperFirstFrame: 'new-handoff/paper-editorial.first-frame-handoff.v1.json', selectedScene: shot.id, outputDir: 'forbidden-old-baker'}), /DIRECT_TEXT_FIRSTFRAME_MUST_USE_V2_CHILD_NOT_LEGACY_BAKER/);
+assert.throws(() => buildDirectorCuesV2Handoff({projectRoot: root, cues: 'cues.json', approval: 'approval.json', profile: 'workflow/active-director-profile.v1.json', outputDir: 'forbidden-downgrade'}), /PAPER_CURRENT_BASELINE_REQUIRED/);
+assert.equal(existsSync(path.join(root, 'forbidden-downgrade')), false);
 
 console.log('test-director-cues-v2-handoff: ok');

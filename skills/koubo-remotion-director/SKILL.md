@@ -10,7 +10,7 @@ description: 用于口播的全片导演规划。完整读取用户确认文稿�
 ## 阶段边界
 
 - 阶段固定为 `director-only`。输入必须是完整的用户确认文稿，或拍摄后的真实口播转写。
-- 本阶段只读取当前文稿、用户确认的风格参考、本文件、[v2 导演核心](references/semantic-visual-director.v2.md) 和 [v2 导演表模板](templates/director-cues.v2.json)。
+- 本阶段只读取当前文稿、用户确认的风格参考、本文件、[v2 导演核心](references/semantic-visual-director.v2.md)、[纸艺最低质量基线](references/paper-quality-baseline-20260829.md) 和 [v2 导演表模板](templates/director-cues.v2.json)。
 - 不启动生图、OCR、RunningHub、Shotcraft 选卡、Remotion、字幕、音效、渲染或发布。不回读旧 V9.1 布局、物理、投影和状态机合同来扩写提示词。
 - 唯一校验命令是 `scripts/validate-director-cues-v2.mjs`。校验通过后状态仍只能是 `ready-for-user-review`。
 - 用户确认整份导演表前，`handoffGate.downstreamAllowed` 必须是 `false`。“继续”或“验证”只延续当前阶段，不自动获得下游权限。
@@ -36,7 +36,7 @@ description: 用于口播的全片导演规划。完整读取用户确认文稿�
 
 - `realMaterials`：真实素材执行单。未绑定来源时必须是 `candidate-unbound` 且 `usableInProduction=false`；写明需要什么、用来证明、演示或补充什么上下文、缺失时怎么处理。公开画面仅作叙事上下文且主张已另行核验时，允许缺失后保留真人；承担证据、演示或明确要求上屏的材料缺失时，必须改稿或阻断。禁止写生成提示词。
 - `aiGeneratedVideos`：普通 AI 情景视频。必须是 `illustration-only`、`evidenceEligible=false`，仅用于纸艺不自然的具体人物或环境情景，并分开写静态首帧词和单主动作视频词。
-- `paperEditorials`：纸艺解释片，也是构造性说明画面的默认首选。必须是 `illustration-only`、`evidenceEligible=false`；每镜需要独立构图、物理隐喻、`textPlan`、静态首帧词和单主动作视频词。
+- `paperEditorials`：纸艺解释片，也是构造性说明画面的默认首选。必须是 `illustration-only`、`evidenceEligible=false`；每镜需要独立构图、物理隐喻、`textPlan`、带准确中文的静态首帧词和服务一个认知目标的连续动作视频词。一个认知目标不等于只准一个原子动作。
 
 一条分路有内容时使用 `status=planned`；没有内容时使用 `status=not-required`、`items=[]` 并写具体理由。这用于区分“确认不需要”和“遗忘了判断”。
 
@@ -53,8 +53,13 @@ description: 用于口播的全片导演规划。完整读取用户确认文稿�
 
 - 每种生成视觉单独建立 `styleLock`；该分路为 0 时风格锁必须是 `null`。
 - 首帧词只写动作前的静态构图、主体、材料、光线、机位和初始状态。
-- 视频词以“基于已确认首帧”开头，只写一个主动作、必要运镜和结束状态。
-- 纸艺中文只写在 `textPlan`，每镜一至四个、每个不超过八个字，并绑定首帧中独立固定的空白纸牌。
+- 视频词以“基于已确认首帧”开头。普通 AI 情景保持一个主动作；纸艺围绕一个认知目标编排有因果关系的连续动作、必要运镜和可读的结果停留，不因出现“然后”“同时”就判定多主题。
+- 新纸艺统一声明 `styleLocks.paperEditorial.qualityBaselineId=paper-super-individual-20260829-v1`、`textPolicy=first-frame-generated-chinese-surface-bound`。基线是用户确认的 2026-08-29《超级个体》实际作品，不是只沿用一个风格名字。
+- 纸艺目标中文同时写入 `textPlan` 和首帧词，说明分别印在哪个实际纸质物件上；生成首帧时一次性带字，不默认无字底图、本地烘焙或视频后的浮层补字。
+- 新路线 `textPlan` 允许一至九条短标签，每条不超过八字；这不是数量目标，同屏能否读清仍须实际验收。逐项声明 `motion=with-object` 或 `fixed-context`，固定项写明 `reason`；`motionPlan` 记录认知目标、相关动作、结果、纸面文字绑定和原生动作声策略，字段以公共基线说明为准。
+- 视频词明确文字与承载物件一起平移、旋转、展开或折页；字形身份保持稳定，不漂浮、不重绘。必要固定标题可以保留，但不得强制所有文字都固定、只让无字件运动。折页可改变纸面姿态，不能把字撕裂或变成乱码；阅读阶段必须能看清。
+- 按原句设计丰富但有主次的物件组、至少三层空间、纸厚、接触阴影和因果动作，禁止所有镜头套同一桌面三字牌。纸片滑动、翻折、扣合等原生动作音应随动作生成并保留候选源；不添加解说或背景音乐，后期按原声口播试听决定混音，不一律静音。
+- 旧 `first-frame-baked` 固定牌、无字底图与本地烘焙、毫米/投影合同只用于历史路线回归，不得倒灌到上述新基线。首帧确认与真实动态验收仍逐阶段执行，机器结构校验不能替代看图、看片和试听。
 - 失败时只修改失败镜头；不连锁重写已经通过的其他镜头。
 
 ## 本期素材投放入口

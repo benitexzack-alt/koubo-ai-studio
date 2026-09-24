@@ -24,10 +24,11 @@
     "physicalContinuityVersion": "1",
     "version": "1",
     "effectiveFrom": "2026-09-08",
-    "requiredForNewPreproduction": true,
-    "scope": "本地合同加固，真实动态复验仍待完成，不改历史节目验收",
-    "typedMotionContractRequired": true,
-    "fixedIndependentTextStandsRequired": true,
+    "requiredForNewPreproduction": false,
+    "scope": "旧工程合同仅用于历史回归；新纸艺执行 paperQualityBaseline、paperMotionPolicy 和首帧直接带字策略，不改历史节目验收",
+    "contractApplicability": "legacy-only",
+    "typedMotionContractRequired": false,
+    "fixedIndependentTextStandsRequired": false,
     "dynamicPilotBeforeBatchRequired": true,
     "actionBoundaryEvidenceRequired": true,
     "negativeRegistryPath": "skills/koubo-remotion-director/references/paper-motion-incident-registry.v1.json",
@@ -35,11 +36,13 @@
     "automaticRetryAllowed": false,
     "formalAuthorizationUnchanged": true
   },
-  "effectiveFrom": "2026-09-12",
+  "effectiveFrom": "2026-09-24",
   "decision": {
     "authority": "user-explicit",
     "summary": "每条已确认口播先做全文语义导演：真人、真实素材、普通AI情景视频和纸艺解释片按需四选一，不设任何配额；三条素材分路即使为空也必须显式记录原因。真实证据不得用AI冒充，Shotcraft只在拍后对真人和真实素材扫描当前全库。整份导演表须用户确认，再进入素材生产、实录重绑、小样和V8正式片。",
-    "confirmedAt": "2026-09-12"
+    "confirmedAt": "2026-09-12",
+    "paperBaselineConfirmedAt": "2026-09-24",
+    "paperBaselineSummary": "以8月29日《超级个体》的实际作品为未来纸艺最低质量参考：首帧直接带中文，字随所属物件运动；一镜一个认知目标可有连续相关动作，保留合格原生动作音。新镜头仍须真实动态验收。"
   },
   "skill": {
     "path": "skills/koubo-remotion-director",
@@ -56,8 +59,36 @@
     }
   },
   "style": {
-    "id": "koubo-paper-editorial-assembly-v3",
-    "path": "workflow/style-library/koubo-paper-editorial-assembly-v3.json"
+    "id": "paper-super-individual-20260829-v1",
+    "path": "workflow/style-library/paper-super-individual-20260829-v1.json"
+  },
+  "paperQualityBaseline": {
+    "id": "paper-super-individual-20260829-v1",
+    "path": "workflow/style-library/paper-super-individual-20260829-v1.json",
+    "requiredForNewPaper": true
+  },
+  "paperMotionPolicy": {
+    "oneCognitiveGoalPerShot": true,
+    "relatedActionChainAllowed": true,
+    "textBoundToOwningSurfaceRequired": true,
+    "textFollowsOwnerMotionRequired": true,
+    "allLabelsStaticDefaultForbidden": true,
+    "fixedLabelRequiresSemanticReason": true,
+    "cameraMotionAloneIsNotObjectAction": true,
+    "readableResultHoldRequired": true,
+    "dynamicPilotBeforeBatchRequired": true,
+    "actionBoundaryEvidenceRequired": true,
+    "userDynamicAcceptanceRequired": true
+  },
+  "paperNativeAudioPolicy": {
+    "dispositionRequiredPerAsset": true,
+    "blanketMuteForbidden": true,
+    "eligiblePhysicalActionAudioPreserved": true,
+    "unwantedSpeechMusicNoiseMustBeRemovedOrReplaced": true,
+    "sourceVoiceRemainsPrimary": true,
+    "fixedHistoricalGainIsUniversal": false,
+    "normalSpeedListeningRequired": true,
+    "peakAndLoudnessCheckRequired": true
   },
   "phasePolicy": {
     "preShoot": {
@@ -280,17 +311,22 @@
       "firstFramePromptSha256",
       "textPlanSha256"
     ],
-    "generatedReadableTextAllowed": false,
-    "modelGeneratedReadableTextAllowed": false,
-    "deterministicTextOwner": "remotion-or-local-first-frame-baker",
-    "defaultPaperTextMode": "first-frame-baked",
+    "paperRoute": "paper-director-v2-surface-bound",
+    "paperRouteLegacyBridgeAllowed": false,
+    "legacyTextContractApplicability": "legacy-only",
+    "generatedReadableTextAllowed": true,
+    "modelGeneratedReadableTextAllowed": true,
+    "deterministicTextOwner": null,
+    "defaultPaperTextMode": "first-frame-generated-chinese-surface-bound",
     "allowedPaperTextModes": [
-      "tracked-paper-surface",
-      "first-frame-baked"
+      "first-frame-generated-chinese-surface-bound"
     ],
-    "firstFrameBakeOnlyForRigidSurface": true,
-    "actualImageAnchorCalibrationRequired": true,
-    "ocrRequiredForFirstFrameBake": true,
+    "firstFrameBakeOnlyForRigidSurface": false,
+    "actualImageAnchorCalibrationRequired": false,
+    "ocrRequiredForFirstFrameBake": false,
+    "firstFrameChineseReadabilityCheckRequired": true,
+    "firstFrameUserAcceptanceRequired": true,
+    "localTextOverlayOrAnimationRequired": false,
     "runningHubPromptManifestReadyByItself": false,
     "runningHubReadyPackRequired": true,
     "paperNodeScreenOverlayAllowed": false,
@@ -301,6 +337,7 @@
     "silentTruncationAllowed": false
   },
   "paperLayoutPolicy": {
+    "contractApplicability": "legacy-only",
     "coordinateSpace": "normalized-0-to-1",
     "contentSafeRectRequired": true,
     "subtitleReservedRectRequired": true,

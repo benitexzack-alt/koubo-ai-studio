@@ -161,6 +161,8 @@ function buildLabels(item) {
 }
 
 function buildProductionScene(item, cueItem, semanticBeat) {
+  requireThat(!item.textPlan?.some(label => label.motion),
+    'DIRECT_TEXT_FIRSTFRAME_MUST_USE_V2_CHILD_NOT_LEGACY_BAKER');
   const labels = buildLabels(item);
   const textPlanSha256 = sha256Json({textPlan: labels, screenTextPlan: []});
   const outputFileName = `${item.id}_${item.beatId}_first-frame.png`;
@@ -207,6 +209,8 @@ function validateOfficialFirstFrameBranch({root, masterFile, handoffReceiptFile,
   const master = masterFile.document;
   const receipt = handoffReceiptFile.document;
   const paper = paperFile.document;
+  requireThat(paper?.styleLock?.textPolicy !== 'first-frame-generated-chinese-surface-bound',
+    'DIRECT_TEXT_FIRSTFRAME_MUST_USE_V2_CHILD_NOT_LEGACY_BAKER');
 
   requireThat(master?.schemaVersion === DIRECTOR_CUES_V2_HANDOFF_SCHEMA,
     'DIRECTOR_V2_FIRSTFRAME_BRIDGE_MASTER_SCHEMA_INVALID');
