@@ -1,0 +1,129 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | DOTPROD = 1 | ACCELERATE = 1 | OPENMP = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "small",
+		"multilingual": true,
+		"vocab": 51865,
+		"audio": {
+			"ctx": 1500,
+			"state": 768,
+			"head": 12,
+			"layer": 12
+		},
+		"text": {
+			"ctx": 448,
+			"state": 768,
+			"head": 12,
+			"layer": 12
+		},
+		"mels": 80,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/pc/.cache/whisper-cpp/ggml-small.bin",
+		"language": "zh",
+		"translate": false
+	},
+	"result": {
+		"language": "zh"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:17,160"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 17160
+			},
+			"text": "Zither Harp",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50364,
+					"p": 0.906624,
+					"t_dtw": -1
+				},
+				{
+					"text": "Z",
+					"timestamps": {
+						"from": "00:00:00,070",
+						"to": "00:00:01,710"
+					},
+					"offsets": {
+						"from": 70,
+						"to": 1710
+					},
+					"id": 57,
+					"p": 0.0201314,
+					"t_dtw": -1
+				},
+				{
+					"text": "ither",
+					"timestamps": {
+						"from": "00:00:01,710",
+						"to": "00:00:10,280"
+					},
+					"offsets": {
+						"from": 1710,
+						"to": 10280
+					},
+					"id": 1839,
+					"p": 0.953019,
+					"t_dtw": -1
+				},
+				{
+					"text": " Har",
+					"timestamps": {
+						"from": "00:00:10,280",
+						"to": "00:00:15,430"
+					},
+					"offsets": {
+						"from": 10280,
+						"to": 15430
+					},
+					"id": 3653,
+					"p": 0.984967,
+					"t_dtw": -1
+				},
+				{
+					"text": "p",
+					"timestamps": {
+						"from": "00:00:15,430",
+						"to": "00:00:17,160"
+					},
+					"offsets": {
+						"from": 15430,
+						"to": 17160
+					},
+					"id": 79,
+					"p": 0.985942,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_858]",
+					"timestamps": {
+						"from": "00:00:17,160",
+						"to": "00:00:17,160"
+					},
+					"offsets": {
+						"from": 17160,
+						"to": 17160
+					},
+					"id": 51222,
+					"p": 0.000962291,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}
