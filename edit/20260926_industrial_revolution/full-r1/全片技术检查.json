@@ -1,0 +1,681 @@
+{
+  "schema": "industrial-history-full-technical-qa/v1",
+  "measured_at": "2026-09-27T02:28:10.179141+08:00",
+  "status": "机器技术检查通过，待人工试听与完整观看",
+  "human_listening_performed": false,
+  "human_full_playback_performed": false,
+  "user_acceptance_recorded": false,
+  "expected": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "frame_count": 5412,
+    "duration_s": 180.4,
+    "original_music_start_s": 0,
+    "speed": 1,
+    "music_gain_db": -3.0,
+    "fade_in_s": 0,
+    "fade_out_s": 0.12,
+    "fixed_alignment_tolerance_s": 0.005,
+    "window_drift_tolerance_s": 0.005,
+    "cue_tolerance_frames": 1,
+    "true_peak_ceiling_dbtp": -1.0
+  },
+  "limitations": [
+    "技术通过不等于内容、视觉审美、人耳听感、音乐权利或用户验收通过。",
+    "波形相关使用单声道下混，不单独证明立体声声像与相位正确。",
+    "卡点表来自主代理输入，没有自动从像素中识别镜头真正切换的帧。",
+    "六个窗口只能对无明显变速提供抽样证据，不能代替全程播放。",
+    "淡出使用计划参数构造期望波形并记录尾部能量；未独立反演任意混音包络。",
+    "开头1秒、结尾1.2秒允许近黑；仅93.40–93.65秒完整事件可在两张证据图哈希一致时标记已回看设计暗转场；其他片中近黑仍待回看，所有原始事件保留。"
+  ],
+  "files": [
+    {
+      "role": "原始音乐",
+      "path": "/Users/pc/Downloads/9月26日.mp3",
+      "sha256": "ed555b8127ecdd13166829d976f40658c3a20b9c429ed6ba9d68603fd7423d1c",
+      "probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "mp3",
+            "codec_long_name": "MP3 (MPEG audio layer 3)",
+            "codec_type": "audio",
+            "codec_tag_string": "[0][0][0][0]",
+            "codec_tag": "0x0000",
+            "mime_codec_string": "mp4a.40.34",
+            "sample_fmt": "fltp",
+            "sample_rate": "44100",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/14112000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 2546196408,
+            "duration": "180.427750",
+            "bit_rate": "192000",
+            "disposition": {
+              "default": 0,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/pc/Downloads/9月26日.mp3",
+          "nb_streams": 1,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mp3",
+          "format_long_name": "MP2/3 (MPEG audio layer 2/3)",
+          "start_time": "0.000000",
+          "duration": "180.427750",
+          "size": "4330316",
+          "bit_rate": "192002",
+          "probe_score": 51,
+          "tags": {
+            "encoder": "LAME3.101 (beta 2)"
+          }
+        }
+      }
+    },
+    {
+      "role": "最终候选",
+      "path": "/Users/pc/Documents/口播/edit/20260926_industrial_revolution/full-r1/exports/工业革命_从蒸汽到智能_三分钟_R2.mp4",
+      "sha256": "e62cc53ecc00afbedb63e7db3dfc98e8d9c6193ec3e9c842d9cc6ee7395d6433",
+      "probe": {
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+            "profile": "High",
+            "codec_type": "video",
+            "codec_tag_string": "avc1",
+            "codec_tag": "0x31637661",
+            "mime_codec_string": "avc1.640028",
+            "width": 1920,
+            "height": 1080,
+            "coded_width": 1920,
+            "coded_height": 1080,
+            "has_b_frames": 2,
+            "pix_fmt": "yuv420p",
+            "level": 40,
+            "color_range": "tv",
+            "color_space": "bt709",
+            "chroma_location": "left",
+            "field_order": "progressive",
+            "is_avc": "true",
+            "nal_length_size": "4",
+            "id": "0x1",
+            "r_frame_rate": "30/1",
+            "avg_frame_rate": "30/1",
+            "time_base": "1/90000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 16236000,
+            "duration": "180.400000",
+            "bit_rate": "2496020",
+            "bits_per_raw_sample": "8",
+            "nb_frames": "5412",
+            "extradata_size": 50,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "VideoHandler",
+              "encoder": "Lavc61.19.100 libx264"
+            }
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_long_name": "AAC (Advanced Audio Coding)",
+            "profile": "LC",
+            "codec_type": "audio",
+            "codec_tag_string": "mp4a",
+            "codec_tag": "0x6134706d",
+            "mime_codec_string": "mp4a.40.2",
+            "sample_fmt": "fltp",
+            "sample_rate": "48000",
+            "channels": 2,
+            "channel_layout": "stereo",
+            "bits_per_sample": 0,
+            "initial_padding": 0,
+            "id": "0x2",
+            "r_frame_rate": "0/0",
+            "avg_frame_rate": "0/0",
+            "time_base": "1/48000",
+            "start_pts": 0,
+            "start_time": "0.000000",
+            "duration_ts": 8659968,
+            "duration": "180.416000",
+            "bit_rate": "320032",
+            "nb_frames": "8460",
+            "extradata_size": 2,
+            "disposition": {
+              "default": 1,
+              "dub": 0,
+              "original": 0,
+              "comment": 0,
+              "lyrics": 0,
+              "karaoke": 0,
+              "forced": 0,
+              "hearing_impaired": 0,
+              "visual_impaired": 0,
+              "clean_effects": 0,
+              "attached_pic": 0,
+              "timed_thumbnails": 0,
+              "non_diegetic": 0,
+              "captions": 0,
+              "descriptions": 0,
+              "metadata": 0,
+              "dependent": 0,
+              "still_image": 0,
+              "multilayer": 0
+            },
+            "tags": {
+              "language": "und",
+              "handler_name": "SoundHandler"
+            }
+          }
+        ],
+        "format": {
+          "filename": "/Users/pc/Documents/口播/edit/20260926_industrial_revolution/full-r1/exports/工业革命_从蒸汽到智能_三分钟_R2.mp4",
+          "nb_streams": 2,
+          "nb_programs": 0,
+          "nb_stream_groups": 0,
+          "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+          "format_long_name": "QuickTime / MOV",
+          "start_time": "0.000000",
+          "duration": "180.416000",
+          "size": "63699507",
+          "bit_rate": "2824561",
+          "probe_score": 100,
+          "tags": {
+            "major_brand": "isom",
+            "minor_version": "512",
+            "compatible_brands": "isomiso2avc1mp41",
+            "encoder": "Lavf62.12.102",
+            "comment": "Made with Remotion 4.0.484"
+          }
+        }
+      }
+    }
+  ],
+  "observed": {
+    "container_duration_s": 180.416,
+    "video_duration_s": 180.4,
+    "audio_duration_s": 180.416,
+    "frame_rate": 30.0,
+    "frame_count": 5412,
+    "frame_count_method": "ffprobe nb_frames",
+    "video_codec": "h264",
+    "pixel_format": "yuv420p",
+    "audio_codec": "aac",
+    "audio_sample_rate_hz": "48000",
+    "audio_channels": 2,
+    "original_decoded_duration_s": 180.4277551,
+    "final_decoded_duration_s": 180.43600907,
+    "audio_stream_start_time_s": 0.0,
+    "video_stream_start_time_s": 0.0,
+    "audio_minus_video_stream_start_s": 0.0,
+    "effective_timeline_delay_s": 0.0
+  },
+  "final_vs_original_0_180_4s": {
+    "method": "单声道 22050Hz；固定零延迟比较及±0.75秒 FFT 搜索，原采样率细化；头0.25秒尾0.35秒不参与主相关",
+    "sample_rate_hz": 22050,
+    "fixed_zero_lag_correlation": 0.99997985,
+    "best_lag_samples": 0,
+    "best_lag_seconds": 0.0,
+    "best_aligned_correlation": 0.99997985,
+    "gain_ratio_after_alignment": 0.70686474,
+    "gain_db_after_alignment": -3.01327363,
+    "gain_compensated_residual_rms_ratio": 0.00634852,
+    "compared_duration_s": 179.80004535,
+    "lag_sign": "正值表示实际解码声音较期望波形延后；另须加上音视频流 start_time 差才得到文件时间轴上的有效延迟"
+  },
+  "final_vs_expected_minus3db_faded_master": {
+    "method": "单声道 22050Hz；固定零延迟比较及±0.75秒 FFT 搜索，原采样率细化；头0.25秒尾0.35秒不参与主相关",
+    "sample_rate_hz": 22050,
+    "fixed_zero_lag_correlation": 0.99997985,
+    "best_lag_samples": 0,
+    "best_lag_seconds": 0.0,
+    "best_aligned_correlation": 0.99997985,
+    "gain_ratio_after_alignment": 0.99847301,
+    "gain_db_after_alignment": -0.01327338,
+    "gain_compensated_residual_rms_ratio": 0.00634852,
+    "compared_duration_s": 179.80004535,
+    "lag_sign": "正值表示实际解码声音较期望波形延后；另须加上音视频流 start_time 差才得到文件时间轴上的有效延迟"
+  },
+  "production_wav": {
+    "status": "已测量",
+    "path": "/Users/pc/Documents/口播/edit/20260926_industrial_revolution/full-r1/public/music-full.wav",
+    "sha256": "d25fa21736101ab5f0983b293c3a703891da81d2fc7ef1710646cce31b15a69f",
+    "probe": {
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "pcm_s24le",
+          "codec_long_name": "PCM signed 24-bit little-endian",
+          "codec_type": "audio",
+          "codec_tag_string": "[1][0][0][0]",
+          "codec_tag": "0x0001",
+          "sample_fmt": "s32",
+          "sample_rate": "48000",
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 24,
+          "initial_padding": 0,
+          "r_frame_rate": "0/0",
+          "avg_frame_rate": "0/0",
+          "time_base": "1/48000",
+          "duration_ts": 8659200,
+          "duration": "180.400000",
+          "bit_rate": "2304000",
+          "bits_per_raw_sample": "24",
+          "disposition": {
+            "default": 0,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          }
+        }
+      ],
+      "format": {
+        "filename": "/Users/pc/Documents/口播/edit/20260926_industrial_revolution/full-r1/public/music-full.wav",
+        "nb_streams": 1,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "wav",
+        "format_long_name": "WAV / WAVE (Waveform Audio)",
+        "duration": "180.400000",
+        "size": "51955302",
+        "bit_rate": "2304004",
+        "probe_score": 99,
+        "tags": {
+          "encoder": "Lavf62.12.102"
+        }
+      }
+    },
+    "final_vs_wav": {
+      "method": "单声道 22050Hz；固定零延迟比较及±0.75秒 FFT 搜索，原采样率细化；头0.25秒尾0.35秒不参与主相关",
+      "sample_rate_hz": 22050,
+      "fixed_zero_lag_correlation": 0.99997985,
+      "best_lag_samples": 0,
+      "best_lag_seconds": 0.0,
+      "best_aligned_correlation": 0.99997985,
+      "gain_ratio_after_alignment": 0.99848057,
+      "gain_db_after_alignment": -0.01320766,
+      "gain_compensated_residual_rms_ratio": 0.00634897,
+      "compared_duration_s": 179.80004535,
+      "lag_sign": "正值表示实际解码声音较期望波形延后；另须加上音视频流 start_time 差才得到文件时间轴上的有效延迟"
+    },
+    "wav_vs_original": {
+      "method": "单声道 22050Hz；固定零延迟比较及±0.75秒 FFT 搜索，原采样率细化；头0.25秒尾0.35秒不参与主相关",
+      "sample_rate_hz": 22050,
+      "fixed_zero_lag_correlation": 1.0,
+      "best_lag_samples": 0,
+      "best_lag_seconds": 0.0,
+      "best_aligned_correlation": 1.0,
+      "gain_ratio_after_alignment": 0.70794041,
+      "gain_db_after_alignment": -3.000066,
+      "gain_compensated_residual_rms_ratio": 2.277e-05,
+      "compared_duration_s": 179.80004535,
+      "lag_sign": "正值表示实际解码声音较期望波形延后；另须加上音视频流 start_time 差才得到文件时间轴上的有效延迟"
+    },
+    "wav_vs_expected_master": {
+      "method": "单声道 22050Hz；固定零延迟比较及±0.75秒 FFT 搜索，原采样率细化；头0.25秒尾0.35秒不参与主相关",
+      "sample_rate_hz": 22050,
+      "fixed_zero_lag_correlation": 1.0,
+      "best_lag_samples": 0,
+      "best_lag_seconds": 0.0,
+      "best_aligned_correlation": 1.0,
+      "gain_ratio_after_alignment": 0.99999243,
+      "gain_db_after_alignment": -6.574e-05,
+      "gain_compensated_residual_rms_ratio": 2.277e-05,
+      "compared_duration_s": 179.80004535,
+      "lag_sign": "正值表示实际解码声音较期望波形延后；另须加上音视频流 start_time 差才得到文件时间轴上的有效延迟"
+    }
+  },
+  "sampled_drift": {
+    "method": "六个分散12秒窗口，在全局延迟基础上各搜索±0.10秒；用于发现漂移，不等于全时段逐样本无变速证明",
+    "windows": [
+      {
+        "start_s": 5,
+        "end_s": 17,
+        "status": "已测量",
+        "residual_lag_samples": 0,
+        "absolute_decoded_lag_s": 0.0,
+        "aligned_correlation": 0.99995462
+      },
+      {
+        "start_s": 35,
+        "end_s": 47,
+        "status": "已测量",
+        "residual_lag_samples": 0,
+        "absolute_decoded_lag_s": 0.0,
+        "aligned_correlation": 0.99998891
+      },
+      {
+        "start_s": 65,
+        "end_s": 77,
+        "status": "已测量",
+        "residual_lag_samples": 0,
+        "absolute_decoded_lag_s": 0.0,
+        "aligned_correlation": 0.99998406
+      },
+      {
+        "start_s": 95,
+        "end_s": 107,
+        "status": "已测量",
+        "residual_lag_samples": 0,
+        "absolute_decoded_lag_s": 0.0,
+        "aligned_correlation": 0.99998471
+      },
+      {
+        "start_s": 125,
+        "end_s": 137,
+        "status": "已测量",
+        "residual_lag_samples": 0,
+        "absolute_decoded_lag_s": 0.0,
+        "aligned_correlation": 0.99998298
+      },
+      {
+        "start_s": 155,
+        "end_s": 167,
+        "status": "已测量",
+        "residual_lag_samples": 0,
+        "absolute_decoded_lag_s": 0.0,
+        "aligned_correlation": 0.99996925
+      }
+    ],
+    "all_six_windows_measured": true,
+    "lag_range_s": 0.0,
+    "linear_lag_slope_seconds_per_second": 0.0
+  },
+  "loudness": {
+    "method": "读取 loudnorm 的 input 测量；处理结果输出到 null，不保存归一化媒体",
+    "integrated_lufs": -13.35,
+    "true_peak_dbtp": -2.85,
+    "loudness_range_lu": 3.3,
+    "gated_threshold_lufs": -23.42,
+    "integrated_loudness_target_enforced": false,
+    "note": "本片保留音乐的计划-3dB增益，不把-16LUFS当作额外成片归一化要求。"
+  },
+  "black_frame_check": {
+    "method": "FFmpeg blackdetect，最短0.032秒、黑像素阈值0.08、黑像素比例0.985",
+    "opening_allowance_s": 1.0,
+    "ending_allowance_s": 1.2,
+    "raw_events": [
+      {
+        "black_start": "0",
+        "black_end": "0.133333",
+        "black_duration": "0.133333"
+      },
+      {
+        "black_start": "93.433333",
+        "black_end": "93.633333",
+        "black_duration": "0.2"
+      },
+      {
+        "black_start": "179.833333",
+        "black_end": "180.366667",
+        "black_duration": "0.533333"
+      }
+    ],
+    "events": [
+      {
+        "start_s": 0.0,
+        "end_s": 0.133333,
+        "duration_s": 0.133333,
+        "inside_allowed_opening_or_ending": true,
+        "reviewed_design_transition": false,
+        "requires_review": false,
+        "interpretation": "允许的开头/结尾黑场区域",
+        "ffmpeg_reported_duration_s": 0.133333
+      },
+      {
+        "start_s": 93.433333,
+        "end_s": 93.633333,
+        "duration_s": 0.2,
+        "inside_allowed_opening_or_ending": false,
+        "reviewed_design_transition": true,
+        "requires_review": false,
+        "interpretation": "已回看设计暗转场",
+        "ffmpeg_reported_duration_s": 0.2
+      },
+      {
+        "start_s": 179.833333,
+        "end_s": 180.366667,
+        "duration_s": 0.533334,
+        "inside_allowed_opening_or_ending": true,
+        "reviewed_design_transition": false,
+        "requires_review": false,
+        "interpretation": "允许的开头/结尾黑场区域",
+        "ffmpeg_reported_duration_s": 0.533333
+      }
+    ],
+    "raw_event_count": 3,
+    "reviewed_design_transition": {
+      "review_id": "microelectronics-designed-dark-transition-93_40-93_65",
+      "window_start_s": 93.4,
+      "window_end_s": 93.65,
+      "classification": "已回看设计暗转场",
+      "reviewer": "主代理局部回看记录；不是用户全片验收",
+      "reason": "主代理实际回看R1第2803/2804帧，画面含“此后”年份及芯片收束为金色点，非空帧；该设计复用了用户认可试片的同一转场，R2延用该设计。",
+      "scope": "只分类完整落在93.40–93.65秒内的近黑事件；不改变检测阈值，不删除原始事件，不豁免其他片中候选。",
+      "evidence": [
+        {
+          "path": "/Users/pc/Documents/口播/edit/20260926_industrial_revolution/full-r1/verify/异常回看-01.png",
+          "source_frame": 2803,
+          "source_time_s": 93.43333333,
+          "expected_sha256": "76b8d041ad95f93e8de57c15e541f57e6bc009435291af7fd49d1a03bf888332",
+          "observed_sha256": "76b8d041ad95f93e8de57c15e541f57e6bc009435291af7fd49d1a03bf888332",
+          "matches_reviewed_evidence": true
+        },
+        {
+          "path": "/Users/pc/Documents/口播/edit/20260926_industrial_revolution/full-r1/verify/异常回看-02.png",
+          "source_frame": 2804,
+          "source_time_s": 93.46666667,
+          "expected_sha256": "ab959e25b5d6dea193249e4b93a842a9436d88be337493290977c53adf18d9c5",
+          "observed_sha256": "ab959e25b5d6dea193249e4b93a842a9436d88be337493290977c53adf18d9c5",
+          "matches_reviewed_evidence": true
+        }
+      ],
+      "evidence_files_verified": true,
+      "current_candidate_pixels_independently_compared": false,
+      "limitation": "这是已记录的局部画面回看及其复用设计分类，不是对当前候选全帧内容一致性的机器证明；R2仍待完整观看。"
+    },
+    "reviewed_design_events": [
+      {
+        "start_s": 93.433333,
+        "end_s": 93.633333,
+        "duration_s": 0.2,
+        "inside_allowed_opening_or_ending": false,
+        "reviewed_design_transition": true,
+        "requires_review": false,
+        "interpretation": "已回看设计暗转场",
+        "ffmpeg_reported_duration_s": 0.2
+      }
+    ],
+    "unexpected_candidates": [],
+    "unexpected_candidates_definition": "原始事件中，不属于原允许开尾区域且未命中证据完整的窄范围设计回看记录的待复核候选；不是检测不到。",
+    "limitation": "深色美术画面可能触发近黑候选；无候选不等于所有帧均视觉合格，也不检测停帧。"
+  },
+  "tail_envelope_evidence": [
+    {
+      "start_s": 180.22,
+      "end_s": 180.28,
+      "actual_rms": 0.0,
+      "expected_rms": 0.0,
+      "actual_vs_expected_db": null
+    },
+    {
+      "start_s": 180.28,
+      "end_s": 180.32,
+      "actual_rms": 0.0,
+      "expected_rms": 0.0,
+      "actual_vs_expected_db": null
+    },
+    {
+      "start_s": 180.32,
+      "end_s": 180.36,
+      "actual_rms": 0.0,
+      "expected_rms": 0.0,
+      "actual_vs_expected_db": null
+    },
+    {
+      "start_s": 180.36,
+      "end_s": 180.4,
+      "actual_rms": 0.0,
+      "expected_rms": 0.0,
+      "actual_vs_expected_db": null
+    }
+  ],
+  "declared_cue_alignment": [
+    {
+      "declared_visual_frame": 2330,
+      "visual_time_s": 77.66666667,
+      "declared_original_music_time_s": 77.682358,
+      "nominal_rounding_error_s": -0.01569133,
+      "music_time_after_measured_effective_delay_s": 77.682358,
+      "visual_minus_audio_s": -0.01569133,
+      "visual_minus_audio_frames": -0.47074,
+      "within_one_frame": true,
+      "scope": "只比较主代理声明的镜头帧与音乐事件时间；未识别实际画面切换或判断听感"
+    },
+    {
+      "declared_visual_frame": 2809,
+      "visual_time_s": 93.63333333,
+      "declared_original_music_time_s": 93.622857,
+      "nominal_rounding_error_s": 0.01047633,
+      "music_time_after_measured_effective_delay_s": 93.622857,
+      "visual_minus_audio_s": 0.01047633,
+      "visual_minus_audio_frames": 0.31429,
+      "within_one_frame": true,
+      "scope": "只比较主代理声明的镜头帧与音乐事件时间；未识别实际画面切换或判断听感"
+    },
+    {
+      "declared_visual_frame": 3383,
+      "visual_time_s": 112.76666667,
+      "declared_original_music_time_s": 112.7561,
+      "nominal_rounding_error_s": 0.01056667,
+      "music_time_after_measured_effective_delay_s": 112.7561,
+      "visual_minus_audio_s": 0.01056667,
+      "visual_minus_audio_frames": 0.317,
+      "within_one_frame": true,
+      "scope": "只比较主代理声明的镜头帧与音乐事件时间；未识别实际画面切换或判断听感"
+    },
+    {
+      "declared_visual_frame": 4403,
+      "visual_time_s": 146.76666667,
+      "declared_original_music_time_s": 146.773333,
+      "nominal_rounding_error_s": -0.00666633,
+      "music_time_after_measured_effective_delay_s": 146.773333,
+      "visual_minus_audio_s": -0.00666633,
+      "visual_minus_audio_frames": -0.19999,
+      "within_one_frame": true,
+      "scope": "只比较主代理声明的镜头帧与音乐事件时间；未识别实际画面切换或判断听感"
+    },
+    {
+      "declared_visual_frame": 4803,
+      "visual_time_s": 160.1,
+      "declared_original_music_time_s": 160.089977,
+      "nominal_rounding_error_s": 0.010023,
+      "music_time_after_measured_effective_delay_s": 160.089977,
+      "visual_minus_audio_s": 0.010023,
+      "visual_minus_audio_frames": 0.30069,
+      "within_one_frame": true,
+      "scope": "只比较主代理声明的镜头帧与音乐事件时间；未识别实际画面切换或判断听感"
+    }
+  ],
+  "fade_verification": {
+    "independent_fade_curve_verified": false,
+    "reference_last_0_12s_rms": 0.0,
+    "note": "参考尾段近似静音，无法从零能量独立反演0.12秒淡出形状"
+  },
+  "technical_checks": {
+    "exactly_one_video_and_one_audio_stream": true,
+    "resolution_1920x1080": true,
+    "frame_rate_30": true,
+    "frame_count_5412": true,
+    "video_duration_within_one_frame": true,
+    "audio_duration_within_one_frame": true,
+    "container_duration_within_one_frame": true,
+    "source_decoded_audio_covers_180_4s": true,
+    "audio_and_video_stream_starts_known": true,
+    "stream_start_offset_within_5ms": true,
+    "decoded_best_lag_within_5ms": true,
+    "effective_timeline_delay_within_5ms": true,
+    "zero_lag_correlation_at_least_0_98": true,
+    "best_lag_correlation_at_least_0_98": true,
+    "source_gain_within_0_25db_of_minus3": true,
+    "all_six_drift_windows_measured": true,
+    "window_lag_range_within_5ms": true,
+    "each_drift_window_correlation_at_least_0_97": true,
+    "true_peak_at_most_minus1_dbtp": true,
+    "all_declared_cues_within_one_frame": true,
+    "no_unexpected_black_candidates": true,
+    "input_files_unchanged_during_check": true,
+    "production_wav_matches_planned_master": true,
+    "final_vs_wav_delay_within_5ms": true
+  },
+  "failed_checks": [],
+  "unchecked_optional_items": [],
+  "criteria_scope": "阈值是本片诊断标准；最佳lag高相关不能替代固定对齐通过。近黑原始事件全部保留，no_unexpected_black_candidates只检查未复核候选，不表示没有检测到近黑；设计暗转场分类不等于用户完整观看验收。"
+}
