@@ -174,7 +174,7 @@ def main():
         }
     (ROOT / "music-analysis.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     with (ROOT / "beat-candidates.csv").open("w", newline="") as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, lineterminator="\n")
         writer.writerow(["candidate_index", "time_seconds", "nearest_frame_30fps", "review_status"])
         writer.writerows((i + 1, rounded(t), round(t * 30), "algorithmic_candidate") for i, t in enumerate(beats))
     fig, axes = plt.subplots(3, 1, figsize=(16, 8), sharex=True, constrained_layout=True)
