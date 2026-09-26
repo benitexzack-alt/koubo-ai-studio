@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "koubo-director-real-evidence-handoff/v1",
+  "taskId": "20260926_industry_ai_no_anxiety_director_v1",
+  "revisionId": "firstframe-r1",
+  "status": "planned",
+  "sourceRoute": "real-evidence",
+  "downstreamRoute": "real-evidence",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20260926_industry_ai_no_anxiety/02_导演方案/director-cues.v2.json",
+      "sha256": "1b989aa7714ea43f5aadf636157f343aad108f6a33a63e2f1dafdfe79ca9c557"
+    },
+    "userApproval": {
+      "path": "edit/20260926_industry_ai_no_anxiety/00_控制/首帧生成授权.v1.json",
+      "sha256": "20b902aea65569e44df0f8cb7c6fb84efe00c3c767ce93f5993d60635b0b6063"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "739b69acb3a3b78a26e0fb31a7ee449628b98670c7504027f7d93d8eb432a655"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptGenerationAllowed": false,
+  "itemCount": 2,
+  "items": [
+    {
+      "id": "R01",
+      "beatId": "B18",
+      "startAnchorText": "AOL死了，不等",
+      "endAnchorText": "黄页的人没赚钱；",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "official-document",
+      "usageRole": "evidence",
+      "materialRequest": "Codex在导演确认后收集AOL官方服务/公司记录，并独立查证1995年及经营获利案例；仅保留支持对应断言的原页与必要截图。",
+      "reason": "AOL具体所指必须对应真实资料，不能用通用网吧画面充当证据。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "block-production",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R02",
+      "beatId": "B19",
+      "startAnchorText": "黑莓输了，也不等",
+      "endAnchorText": "的团队没吃到肉。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "official-document",
+      "usageRole": "evidence",
+      "materialRequest": "Codex在导演确认后收集BlackBerry官方业务记录及可溯源的早期应用团队经营案例；两者分栏，不把股价或手机图片当盈利证据。",
+      "reason": "黑莓与应用团队不是同一事实，展示资料时明确区分。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "block-production",
+      "generatedSubstituteAllowed": false
+    }
+  ]
+}

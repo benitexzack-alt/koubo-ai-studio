@@ -1,0 +1,325 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "20260926_industry_ai_no_anxiety_director_v1",
+  "revisionId": "firstframe-r1",
+  "status": "planned",
+  "sourceRoute": "paper-editorial",
+  "downstreamRoute": "paper-editorial",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20260926_industry_ai_no_anxiety/02_导演方案/director-cues.v2.json",
+      "sha256": "1b989aa7714ea43f5aadf636157f343aad108f6a33a63e2f1dafdfe79ca9c557"
+    },
+    "userApproval": {
+      "path": "edit/20260926_industry_ai_no_anxiety/00_控制/首帧生成授权.v1.json",
+      "sha256": "20b902aea65569e44df0f8cb7c6fb84efe00c3c767ce93f5993d60635b0b6063"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "739b69acb3a3b78a26e0fb31a7ee449628b98670c7504027f7d93d8eb432a655"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "image-to-video",
+  "promptIsolation": {
+    "containsFirstFramePromptBodies": false,
+    "consumer": "video-generation-stage"
+  },
+  "styleLock": {
+    "qualityBaselineId": "paper-super-individual-20260829-v1",
+    "textPolicy": "first-frame-generated-chinese-surface-bound",
+    "promptPrefix": "横向16:9手工纸艺微缩场景，深靛蓝、暖白与少量朱红，真实纸纤维、折痕、切边和接触阴影，前景纸件、中景机构、后景布景至少三层，中文直接印在承载纸面上。",
+    "mustKeep": [
+      "沿用《超级个体》的纸张厚度、空间层次和可见物件动作",
+      "准确中文在首帧一次生成，字物同动",
+      "每镜一个认知目标，有动作起因和可见结果",
+      "保留可用原生纸张及机构动作音"
+    ],
+    "mustAvoid": [
+      "悬浮字幕替代纸面文字",
+      "只有镜头推拉、物件静止",
+      "统一三个固定字牌模板",
+      "虚构交易金额或历史现场",
+      "塑料质感与廉价扁平卡片"
+    ],
+    "referenceImages": [
+      {
+        "id": "REF_SUPER_07",
+        "path": "edit/20260828_super_individual/05_素材验收/frames/paper_07-mid-original.png",
+        "sha256": "5d04fa4d180847d6e142e7dd352caf98396718a18ec676d16006f9756068f6b2",
+        "usage": "style-mechanism-only"
+      }
+    ]
+  },
+  "itemCount": 5,
+  "items": [
+    {
+      "id": "P01",
+      "beatId": "B07",
+      "startAnchorText": "报价里的",
+      "endAnchorText": "分藏在什么地方？",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P01-prompt-pair-v1",
+      "pairSha256": "f330140a60086263165e21213d4999cd5f4e0f8bd88ffa713ba949e1143948ac",
+      "prompt": "基于已确认首帧，封面沿纸铰链掀起并带动两层折页逐层张开。封面掀起，成本折页先抬升，风险折页被联动撑开；各层保持连接，不凭空变出新页面。所有中文与各自承载纸面一起位移、倾斜、透视变化，字形不变，不独立悬浮，不留固定屏幕字。镜头仅作轻微跟随，物件动作清楚且有接触关系。形成可以看见内层的立体剖面，三个词均可读。结尾短暂停稳供阅读；保留纸张摩擦、折页和轻碰的原生动作音，不生成旁白或背景音乐。",
+      "promptSha256": "fc1296184443c6b1c18d5bb3c26e4990eaf45030cfc87a7911548d2eadfa68ac",
+      "negativePrompt": [
+        "中文字形漂移或新增文字",
+        "字停在屏幕上而物件移动",
+        "仅镜头缩放代替物件动作",
+        "物件穿透或无因果乱飞",
+        "塑料光泽和扁平模板",
+        "虚构金额与收益保证"
+      ],
+      "primaryAction": "封面沿纸铰链掀起并带动两层折页逐层张开",
+      "motionPlan": {
+        "goal": "报价不只是表面一张数字，经验看的是里面的构成。",
+        "actions": [
+          "封面沿纸铰链掀起并带动两层折页逐层张开",
+          "封面掀起，成本折页先抬升，风险折页被联动撑开；各层保持连接，不凭空变出新页面。"
+        ],
+        "result": "形成可以看见内层的立体剖面，三个词均可读。",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "报价不只是表面一张数字，经验看的是里面的构成。",
+      "visualRole": "relationship",
+      "visualMetaphor": "一张有厚度的报价纸册，封面和内层折页之间形成剖面。",
+      "composition": "俯斜视角；前景封面，中景两层错位折页，后景深蓝工作台。",
+      "textPlan": [
+        {
+          "text": "报价",
+          "surface": "朱红封面",
+          "motion": "with-object"
+        },
+        {
+          "text": "成本",
+          "surface": "暖白内层折页",
+          "motion": "with-object"
+        },
+        {
+          "text": "风险",
+          "surface": "蓝灰夹层折页",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF_SUPER_07"
+      ]
+    },
+    {
+      "id": "P02",
+      "beatId": "B09",
+      "startAnchorText": "未来的王者，是应",
+      "endAnchorText": "技术能力的结合。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P02-prompt-pair-v1",
+      "pairSha256": "fd5316b8e7e050ed05945ea7d73d6f1a114da8ad2303875a68805052fda0b3f2",
+      "prompt": "基于已确认首帧，两半纸桥沿轨道靠拢并咬合。两半纸桥合拢后，纸车才沿接通的轨道走过缺口。所有中文与各自承载纸面一起位移、倾斜、透视变化，字形不变，不独立悬浮，不留固定屏幕字。镜头仅作轻微跟随，物件动作清楚且有接触关系。两模块连接、纸车通过，表现相互配合而非取代。结尾短暂停稳供阅读；保留纸张摩擦、折页和轻碰的原生动作音，不生成旁白或背景音乐。",
+      "promptSha256": "1fb8fe63dd7e9ee5b762413f04fc3849a45df32070034271f54ba692325cf453",
+      "negativePrompt": [
+        "中文字形漂移或新增文字",
+        "字停在屏幕上而物件移动",
+        "仅镜头缩放代替物件动作",
+        "物件穿透或无因果乱飞",
+        "塑料光泽和扁平模板",
+        "虚构金额与收益保证"
+      ],
+      "primaryAction": "两半纸桥沿轨道靠拢并咬合",
+      "motionPlan": {
+        "goal": "行业判断和技术是互补关系，不是二选一。",
+        "actions": [
+          "两半纸桥沿轨道靠拢并咬合",
+          "两半纸桥合拢后，纸车才沿接通的轨道走过缺口。"
+        ],
+        "result": "两模块连接、纸车通过，表现相互配合而非取代。",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "行业判断和技术是互补关系，不是二选一。",
+      "visualRole": "relationship",
+      "visualMetaphor": "两块互补齿口的厚纸模块沿轨道合成一座可通行纸桥。",
+      "composition": "低机位斜侧视；前景双轨，中景两半桥台，后景纸山轮廓。",
+      "textPlan": [
+        {
+          "text": "应用洞察",
+          "surface": "左侧桥台正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "技术能力",
+          "surface": "右侧桥台正面",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF_SUPER_07"
+      ]
+    },
+    {
+      "id": "P03",
+      "beatId": "B12",
+      "startAnchorText": "拿这身行业底子去",
+      "endAnchorText": "先领到铲子的人。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P03-prompt-pair-v1",
+      "pairSha256": "0b2383cad26972034c9323988fb4c028cd9a93a44b616db48a595de1d995b43a",
+      "prompt": "基于已确认首帧，纸铲从工具槽抽出并沿地形既有折痕推进。纸铲先抽出，沿既有折痕抵达纸土层并掀开一道窄口；只展示路径被打开。所有中文与各自承载纸面一起位移、倾斜、透视变化，字形不变，不独立悬浮，不留固定屏幕字。镜头仅作轻微跟随，物件动作清楚且有接触关系。留下一段清楚可走的路径，不出现挖到财富的结果。结尾短暂停稳供阅读；保留纸张摩擦、折页和轻碰的原生动作音，不生成旁白或背景音乐。",
+      "promptSha256": "af88744caecaffd550d70e1f4c90d29c755fcec520ef2b14a64d3ba57c93435e",
+      "negativePrompt": [
+        "中文字形漂移或新增文字",
+        "字停在屏幕上而物件移动",
+        "仅镜头缩放代替物件动作",
+        "物件穿透或无因果乱飞",
+        "塑料光泽和扁平模板",
+        "虚构金额与收益保证"
+      ],
+      "primaryAction": "纸铲从工具槽抽出并沿地形既有折痕推进",
+      "motionPlan": {
+        "goal": "行业经验帮助判断方向，AI工具帮助执行。",
+        "actions": [
+          "纸铲从工具槽抽出并沿地形既有折痕推进",
+          "纸铲先抽出，沿既有折痕抵达纸土层并掀开一道窄口；只展示路径被打开。"
+        ],
+        "result": "留下一段清楚可走的路径，不出现挖到财富的结果。",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "行业经验帮助判断方向，AI工具帮助执行。",
+      "visualRole": "metaphor",
+      "visualMetaphor": "有方向折痕的纸地形与可抽出的纸铲组合。",
+      "composition": "前景纸铲工具槽，中景分层地形，后景折纸山；三分之二俯视而非固定正面字牌。",
+      "textPlan": [
+        {
+          "text": "行业底子",
+          "surface": "地形前缘厚纸边",
+          "motion": "with-object"
+        },
+        {
+          "text": "AI",
+          "surface": "纸铲柄面",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF_SUPER_07"
+      ]
+    },
+    {
+      "id": "P04",
+      "beatId": "B13",
+      "startAnchorText": "别搞什么宏大叙事",
+      "endAnchorText": "，比什么都管用。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P04-prompt-pair-v1",
+      "pairSha256": "935db9763c86e2f2d5ce21d3c1d9b9d541130cb8e1ea9068eb76bf9a60c27603",
+      "prompt": "基于已确认首帧，单张服务卡推动两个纸拱门依次立起。服务卡推到第一拱门使其立稳，通过后再推起第二拱门；两道门的字随横梁立起。所有中文与各自承载纸面一起位移、倾斜、透视变化，字形不变，不独立悬浮，不留固定屏幕字。镜头仅作轻微跟随，物件动作清楚且有接触关系。卡片越过两道门并停在短轨道终点，表示经营目标而非已发生付款。结尾短暂停稳供阅读；保留纸张摩擦、折页和轻碰的原生动作音，不生成旁白或背景音乐。",
+      "promptSha256": "05a08694ee829932b4493b94647bfb7d8a197eb97becaed3ba905673f540ac3c",
+      "negativePrompt": [
+        "中文字形漂移或新增文字",
+        "字停在屏幕上而物件移动",
+        "仅镜头缩放代替物件动作",
+        "物件穿透或无因果乱飞",
+        "塑料光泽和扁平模板",
+        "虚构金额与收益保证"
+      ],
+      "primaryAction": "单张服务卡推动两个纸拱门依次立起",
+      "motionPlan": {
+        "goal": "先完成一项小服务的闭环，不铺满宏大计划。",
+        "actions": [
+          "单张服务卡推动两个纸拱门依次立起",
+          "服务卡推到第一拱门使其立稳，通过后再推起第二拱门；两道门的字随横梁立起。"
+        ],
+        "result": "卡片越过两道门并停在短轨道终点，表示经营目标而非已发生付款。",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "先完成一项小服务的闭环，不铺满宏大计划。",
+      "visualRole": "process",
+      "visualMetaphor": "桌面一条短纸轨道，单张服务卡通过两个小机构形成闭环。",
+      "composition": "横向中近景；前景轨道有厚度，中景两个纸拱门，后景未启用的空白大纸板。",
+      "textPlan": [
+        {
+          "text": "最小场景",
+          "surface": "移动服务卡正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "交付",
+          "surface": "第一纸拱门横梁",
+          "motion": "with-object"
+        },
+        {
+          "text": "回款",
+          "surface": "第二纸拱门横梁",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF_SUPER_07"
+      ]
+    },
+    {
+      "id": "P05",
+      "beatId": "B24",
+      "startAnchorText": "轻装上阵，保持现",
+      "endAnchorText": "知去抓下一个浪。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P05-prompt-pair-v1",
+      "pairSha256": "f10f4d0276848b5d3f041e11aca380ee4c552214eef4ed80ad78cc92433afcfc",
+      "prompt": "基于已确认首帧，三个相连纸页沿折臂依次翻起并铺出下一段纸路。第一折页被踏板抬起并牵动第二页，第二页带动第三页，最后一页把一小段纸路铺平。所有中文与各自承载纸面一起位移、倾斜、透视变化，字形不变，不独立悬浮，不留固定屏幕字。镜头仅作轻微跟随，物件动作清楚且有接触关系。留下可迈出下一步的短纸路，循环不无休止转动。结尾短暂停稳供阅读；保留纸张摩擦、折页和轻碰的原生动作音，不生成旁白或背景音乐。",
+      "promptSha256": "f1f45220839a54a3b6cfc8b39a59021ad28d229dd2071c7f59083870f22b7cf1",
+      "negativePrompt": [
+        "中文字形漂移或新增文字",
+        "字停在屏幕上而物件移动",
+        "仅镜头缩放代替物件动作",
+        "物件穿透或无因果乱飞",
+        "塑料光泽和扁平模板",
+        "虚构金额与收益保证"
+      ],
+      "primaryAction": "三个相连纸页沿折臂依次翻起并铺出下一段纸路",
+      "motionPlan": {
+        "goal": "有余力才投入学习，再带着认知寻找机会。",
+        "actions": [
+          "三个相连纸页沿折臂依次翻起并铺出下一段纸路",
+          "第一折页被踏板抬起并牵动第二页，第二页带动第三页，最后一页把一小段纸路铺平。"
+        ],
+        "result": "留下可迈出下一步的短纸路，循环不无休止转动。",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "有余力才投入学习，再带着认知寻找机会。",
+      "visualRole": "process",
+      "visualMetaphor": "三个有字纸页由机械折臂连接成一个前后递进的循环。",
+      "composition": "斜侧视小型纸页翻转机构；前景踏板、中景三折页、后景未打开的空白纸路。",
+      "textPlan": [
+        {
+          "text": "现金流",
+          "surface": "第一折页正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "认知",
+          "surface": "第二折页正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "下一个浪",
+          "surface": "第三折页正面",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF_SUPER_07"
+      ]
+    }
+  ]
+}

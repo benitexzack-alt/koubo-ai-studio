@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "20260926_industry_ai_no_anxiety_director_v1",
+  "revisionId": "firstframe-r1",
+  "status": "not-required",
+  "sourceRoute": "ai-generated-video",
+  "downstreamRoute": "generated-video",
+  "notRequiredReason": "本条没有必须用具体人物或环境重演才能理解的场景；机制优先纸艺，历史主张需真实来源，观点交给真人。AI情景不补数量，也不替代历史证据。",
+  "source": {
+    "directorCues": {
+      "path": "edit/20260926_industry_ai_no_anxiety/02_导演方案/director-cues.v2.json",
+      "sha256": "1b989aa7714ea43f5aadf636157f343aad108f6a33a63e2f1dafdfe79ca9c557"
+    },
+    "userApproval": {
+      "path": "edit/20260926_industry_ai_no_anxiety/00_控制/首帧生成授权.v1.json",
+      "sha256": "20b902aea65569e44df0f8cb7c6fb84efe00c3c767ce93f5993d60635b0b6063"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "739b69acb3a3b78a26e0fb31a7ee449628b98670c7504027f7d93d8eb432a655"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "image-to-video",
+  "promptIsolation": {
+    "containsFirstFramePromptBodies": false,
+    "consumer": "video-generation-stage"
+  },
+  "styleLock": null,
+  "itemCount": 0,
+  "items": []
+}
