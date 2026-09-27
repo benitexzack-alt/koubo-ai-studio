@@ -138,9 +138,23 @@ function validateContext(context, requiresCurrent) {
     || typeof context.acceptedHistory.boundary !== 'string') {
     throw new Error('账号表现执行上下文缺少完整的历史变化信号');
   }
+  // 新版覆盖信息区分导出总行数与公开作品数，来源回执保留旧字段名。
+  const hasExportCounts = Object.hasOwn(coverage, 'exportedWorkCount')
+    || Object.hasOwn(coverage, 'excludedWorkCount');
+  if (hasExportCounts && (
+    !Number.isInteger(coverage.exportedWorkCount)
+    || !Number.isInteger(coverage.excludedWorkCount)
+    || coverage.excludedWorkCount < 0
+    || coverage.exportedWorkCount !== coverage.publishedWorkCount + coverage.excludedWorkCount
+  )) {
+    throw new Error('账号表现执行上下文的导出、公开与排除数量不一致');
+  }
+  const expectedSourceCount = hasExportCounts
+    ? coverage.exportedWorkCount
+    : coverage.publishedWorkCount;
   if (!String(receipt.acceptedRunId || '').trim()
     || !SHA256_PATTERN.test(String(receipt.sourceSha256 || ''))
-    || receipt.publishedWorkCount !== coverage.publishedWorkCount) {
+    || receipt.publishedWorkCount !== expectedSourceCount) {
     throw new Error('账号表现执行上下文来源回执不完整');
   }
   if (context.interpretationBoundary?.descriptiveFactsOnly !== true

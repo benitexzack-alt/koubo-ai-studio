@@ -143,3 +143,51 @@ test('缺少全量历史覆盖时不得生成回执', async (t) => {
     /没有覆盖全部已接纳历史/
   );
 });
+
+test('官方导出含非公开作品时，来源总数与公开作品数分开校验', async (t) => {
+  const value = context();
+  value.coverage.exportedWorkCount = 8;
+  value.coverage.excludedWorkCount = 1;
+  value.sourceReceipt.publishedWorkCount = 8;
+  delete value.sourceReceipt.receiptSha256;
+  value.sourceReceipt.receiptSha256 = sha256Json(value.sourceReceipt);
+  const files = await fixture(t, value);
+  const { receipt } = await prepareAccountPerformancePreflight({
+    ...files,
+    taskId: 'task-export-with-private-work'
+  });
+  assert.equal(receipt.accountContext.publishedWorkCount, 7);
+  const snapshot = JSON.parse(await readFile(receipt.accountContext.snapshotPath, 'utf8'));
+  assert.equal(snapshot.sourceReceipt.publishedWorkCount, 8);
+  assert.equal(snapshot.coverage.excludedWorkCount, 1);
+  assert.equal(snapshot.allPublishedWorks.length, 7);
+});
+
+for (const [name, counts] of [
+  ['总数不相等', { exportedWorkCount: 9, excludedWorkCount: 1 }],
+  ['负排除数', { exportedWorkCount: 6, excludedWorkCount: -1 }],
+  ['非整数', { exportedWorkCount: 8.5, excludedWorkCount: 1.5 }],
+  ['缺少排除数', { exportedWorkCount: 8 }],
+  ['缺少导出数', { excludedWorkCount: 1 }]
+]) {
+  test(`导出覆盖数量异常必须阻断：${name}`, async (t) => {
+    const value = context();
+    Object.assign(value.coverage, counts);
+    const files = await fixture(t, value);
+    await assert.rejects(
+      prepareAccountPerformancePreflight({ ...files, taskId: 'task-invalid-export-count' }),
+      /导出、公开与排除数量不一致/
+    );
+  });
+}
+
+test('来源回执必须对应导出总数，不能用公开数冒充', async (t) => {
+  const value = context();
+  value.coverage.exportedWorkCount = 8;
+  value.coverage.excludedWorkCount = 1;
+  const files = await fixture(t, value);
+  await assert.rejects(
+    prepareAccountPerformancePreflight({ ...files, taskId: 'task-source-count-mismatch' }),
+    /来源回执不完整/
+  );
+});
