@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "task_id": "meta-muse-pa-draft-20260927",
+  "status": "passed",
+  "reviewed_at": "2026-09-27T14:08:05.181Z",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-09-27-PA口播/正式口播稿.v1.md",
+    "sha256": "9956d0f3ccddb9af88a0857b9000351145874b074f938f3761d6da948e7f274a"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "read_aloud_method": {
+    "mode": "tts-timing-and-text-prosody-review",
+    "voice": "Tingting",
+    "command": "say -v Tingting -r 245 -f 口播正文.v1.txt -o /tmp/meta-pa-draft-20260927-timing.aiff",
+    "body_sha256": "a84a9b2b83dccd55182c22335923ce98e11647e0333e455ae55fbf5f01cbd99d",
+    "tts_seconds": 278.734558,
+    "audio_path": "/tmp/meta-pa-draft-20260927-timing.aiff",
+    "human_listen_completed": false,
+    "user_read_completed": false,
+    "boundary": "只做机器计时和文本断句复核，未真人听审；该速度不代表超哥口播速度，不用于制作批准。"
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "开头不说今天讲透，而是直接提出AI选店后能否找到商家；第二段给服务信息和预约判断，删掉原来重复追问。公司数据只解释布局动机；授权确认放在订房动作内，平台权限放在相应国内路线中。用同一订房例子回到商家信息，不另列通用三大建议，不复制四问题总结。保留必要的否定句用于事实纠偏，没有机械连续不是而是。自然度及本人感仍须用户朗读验收。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "Meta，就是脸书、Instagram、WhatsApp背后的公司。",
+        "risk_level": "medium",
+        "reason": "连续三个外文品牌可能让普通商家暂时分神；下句的广告比例与用户数还会增加信息负担。",
+        "candidates": {
+          "conservative": "Meta，就是脸书、Instagram、WhatsApp背后的公司。",
+          "direct": "Meta，就是脸书背后的公司，也有Instagram和WhatsApp。",
+          "vivid": "脸书、Instagram、WhatsApp，这几个产品都在Meta旗下。"
+        },
+        "fact_difference": "均为同一公司产品归属，不改变日活统计口径；只重排句子。",
+        "recommendation": "当前保留保守版，后接两句独立数字；不把名称和所有数字挤成一个长句。先听用户是否读得顺，不擅自换钩子。"
+      },
+      {
+        "original": "这件事也引起了市场关注。雅虎财经报道，九月二十一日，Meta股价涨了约百分之十一。不过，股价涨了，不能直接推出老平台就要不行了。",
+        "risk_level": "medium",
+        "reason": "股票与消费者主线距离较远，可能在中段引起注意力转移；用户明确要求市场反应，因此只保留一个数字。",
+        "candidates": {
+          "conservative": "雅虎财经报道，九月二十一日Meta股价涨了约百分之十一。这个市场反应，不等于老平台已经失去生意。",
+          "direct": "九月二十一日Meta股价约涨了百分之十一，这是雅虎财经的报道。但平台的生意有没有受影响，还得另看数据。",
+          "vivid": "股价先有了反应：雅虎财经报道，九月二十一日Meta约涨百分之十一。可股价上涨，和老板已经换了获客渠道，是两件事。"
+        },
+        "fact_difference": "同一日期与近似涨幅，均不新增单因素因果或平台跌幅。",
+        "recommendation": "当前正文保持有出处且带边界的版本，立即转到交易收费，不展开投资或公司估值话题。若真人朗读明显拖慢，提交用户裁决删短，不能据模型预测假称留存会提升。"
+      }
+    ],
+    "no_high_risk_reason": "未发现需立即改变主线的高风险句；记录两处中风险供真人朗读关注，不能当成实际观众留存结论。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "相对参考原转写：平台优势可能承压，不写已被打破；全能长期个人助理降为经授权记录部分偏好。",
+      "相对本轮初稿：将旗下这些产品改为整个产品家族，避免36亿误指口述的三个产品或Muse。",
+      "开头重复问题改成服务信息与预约的具体判断，没有新增研究结论。"
+    ],
+    "pending_user_confirmations": [
+      "当前文字与外文读法是否自然",
+      "本人朗读与实际时长",
+      "新稿未获最终语言批准；不能进入制作"
+    ]
+  },
+  "scores": {
+    "directness": 8,
+    "spoken_naturalness": 8,
+    "rhythm": 7,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "score_boundary": "以上仅模型编辑自评，不是人类评分或平台表现预测。事实保真指相对本条事实锁的保留，不代表官方产品已亲测。",
+  "voice_evidence": {
+    "profile": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+    "recent_confirmed_script_paths": [
+      "/Users/pc/Documents/口播/edit/20260926_industry_ai_no_anxiety/00_控制/用户确认原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/02_文稿/用户原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260917_ai_efficiency_sharing/00_工程控制/用户原稿.v1.txt",
+      "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/00_文稿与控制/用户确认原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/00_文稿与控制/用户确认原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/01_文稿/用户确认稿_仅预拍权威.txt"
+    ],
+    "application": "从动作拆链、面对本地老板解释，个人观点用我的理解；不用虚构我客户/上周案例，无意义口头填充也不添加。"
+  },
+  "scan_evidence": {
+    "patterns_checked": [
+      "自我说明",
+      "万能转场",
+      "浮夸时代词",
+      "不是而是排比",
+      "无来源归因",
+      "冒充亲测",
+      "旧结尾与CTA"
+    ],
+    "actual_findings": "正文无今天讲透、真正核心、时代浪潮、不是而是连排、我客户等；四处不是承载权限、项目时序、GEO承诺及是否重建系统的具体边界。",
+    "remaining_risk": "全文依然较长，不能靠自评证明用户接受；保留完整因果以供本次审阅。"
+  }
+}
