@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "task_id": "meta-muse-pa-v2-20260928",
+  "status": "passed",
+  "reviewed_at": "2026-09-28T17:41:51.628Z",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-09-28-PA口播优化/正式口播稿.v2.md",
+    "sha256": "fc560b81d032e12468ace51d2bdeddd8ed18db943d1987247924dfcee0418353"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "read_aloud_method": {
+    "mode": "tts-timing-and-text-prosody-review",
+    "voice": "Tingting",
+    "rate": 200,
+    "tts_seconds": 382.360816,
+    "body_sha256": "6e3f49aa72d69ff3a2b3a7af85540a1437bfec37d5c9018f1235e6e51a52d1d3",
+    "audio_path": "/tmp/meta-pa-v2-20260928-timing.aiff",
+    "human_listen_completed": false,
+    "user_read_completed": false,
+    "boundary": "只做机器计时及文本句式断句复核。未真人听审，不把机器6分22秒冒充超哥实际时长；没有制作批准。"
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "删除V1中‘所以我觉得，值得我们关注的是’；最后审读把‘这才是我想在兰州持续做的企业AI服务’改为老板知业务条件、本人整理工具资料、共同检查结果的分工。保留我觉得仅用于Meta商业动机推断，未用其充当本人经历。减少品牌连报与日活数字；授权付款、接口权限、收费边界放在各自动作中。全过程未编造亲测案例。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "市场也在关注这件事。雅虎财经报道，九月二十一日Meta股价涨了约百分之十一",
+        "risk_level": "medium",
+        "reason": "股票仍可能让观众误以为转入财经主题；用户要求保留市场反应，本版缩为一段并连到渠道费用。",
+        "candidates": {
+          "conservative": "市场也在关注这件事。雅虎财经报道，九月二十一日Meta股价涨了约百分之十一。",
+          "direct": "雅虎财经报道，九月二十一日Meta股价约涨百分之十一，同篇报道还提到未来交易收费。",
+          "vivid": "看好它的不只用户。雅虎财经报道了九月二十一日约百分之十一的股价涨幅，也提到了它未来的收费想法。"
+        },
+        "fact_difference": "前两案保持报道口径；生动版‘看好它的不只用户’会新增无依据用户态度，因此明确拒用，不能并入正文。",
+        "recommendation": "保留正文具名报道和一段解释；不采用增加用户态度的生动候选，不据股票推断平台输赢。"
+      },
+      {
+        "original": "国内也在往这个方向做，只是走法不一样。",
+        "risk_level": "medium",
+        "reason": "产品路线对照仍要集中理解两个对象，可能中断本地场景；需用同一办事问题约束，不扩展功能清单。",
+        "candidates": {
+          "conservative": "国内也在往这个方向做，只是走法不一样。",
+          "direct": "国内看豆包手机和千问，可以看到两种办事的路。",
+          "vivid": "你是在手机里让助理替你操作，还是在对话里用上平台现成的服务？豆包手机和千问，可以帮助理解这个区别。"
+        },
+        "fact_difference": "均为相同两条路线的机制概括，不是互斥技术分类或性能排名。",
+        "recommendation": "当前保留最短转场，后接系统权限与现成生态，各自一个作用；不再连报多种型号和参数。"
+      }
+    ],
+    "no_high_risk_reason": "两处中风险保留供真人朗读；未发现需改变授权主线的高风险段，但不能据此证明实际留存。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [
+      "36亿日活从口述移入事实附录，不从事实锁删除。",
+      "Instagram与WhatsApp品牌连报从正文删除，仍不否认产品归属。"
+    ],
+    "wording_strength_changes": [
+      "保留Meta动机为个人理解，平台影响为可能。",
+      "将服务宣传改为本人可讨论的工作步骤，不说已经为酒店执行完成。",
+      "GEO不保证推荐，预约入口仍需人工与权限核验。"
+    ],
+    "pending_user_confirmations": [
+      "V2具体语言与本人感",
+      "本人朗读和时长",
+      "拟议服务方式是否符合超哥此次对外表达意愿",
+      "实际发布前的声明及相关规则复核"
+    ]
+  },
+  "scores": {
+    "directness": 8,
+    "spoken_naturalness": 8,
+    "rhythm": 7,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "score_boundary": "保持保守模型自评分，不用提高分数宣称改稿有效。事实保真仅对照已有事实锁与删除记录；不是独立事实认证。",
+  "application_report": "/Users/pc/Documents/口播/notes/2026-09-28-PA口播优化/优化过程与最低标准执行记录.md",
+  "minimum_standard": {
+    "path": "/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md",
+    "section": "5.2",
+    "sha256": "15a4041be3d544e28dc01a4d29db70ffe82eb8cac1e0dcb3f6d244c90f7c98cb",
+    "read": true
+  },
+  "voice_evidence": {
+    "paths": [
+      "/Users/pc/Documents/口播/edit/20260926_industry_ai_no_anxiety/00_控制/用户确认原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/02_文稿/用户原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260917_ai_efficiency_sharing/00_工程控制/用户原稿.v1.txt",
+      "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/00_文稿与控制/用户确认原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/00_文稿与控制/用户确认原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/01_文稿/用户确认稿_仅预拍权威.txt"
+    ],
+    "application": "六稿重读，两份本地服务稿重点迁移问具体业务、核对资料、员工检查、维护责任；不引用旧稿绝对化宣传作事实。"
+  },
+  "remaining_limit": "本人视频未重新完整观看，主要依据确认稿与声音档案；还缺真实消费者或商家复述测试，不宣称视听节奏已通过。"
+}
