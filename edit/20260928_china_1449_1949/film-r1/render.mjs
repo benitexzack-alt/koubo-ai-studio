@@ -118,7 +118,7 @@ try {
       colorSpace: 'bt709',
       concurrency: 3,
       overwrite: false,
-      frameRange: mode === 'preview' ? [799, 1674] : mode === 'r5-segment' ? [3603, 4213] : undefined,
+      frameRange: mode === 'preview' ? [799, 1674] : mode === 'r5-segment' ? [3602, 4230] : undefined,
       outputLocation,
       onProgress: ({progress}) => {
         const percent = Math.floor(progress * 20) * 5;
