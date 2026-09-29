@@ -52,7 +52,7 @@ try {
 } catch {
   console.warn('音乐资产未就绪：public/audio/music.mp3。');
 }
-if (mode === 'video' || mode === 'preview') {
+if (mode === 'video' || mode === 'preview' || mode === 'r5-segment') {
   assert(audioReady, '有声预览和全片渲染必须先准备 public/audio/music.mp3。');
   assert(availableArtKeys.length === new Set(timeline.scenes.map((scene) => scene.artKey)).size, '有声预览和全片渲染要求所有正式美术资产就绪，禁止无意中交付占位画面。');
 }
@@ -98,11 +98,13 @@ try {
       await renderStill({...shared, composition, frame, output: path.join(verifyDir, `frame-${String(frame).padStart(4, '0')}.png`), scale: .67});
       console.log(`抽帧 ${frame} / 6496`);
     }
-  } else if (mode === 'preview' || mode === 'video') {
+  } else if (mode === 'preview' || mode === 'video' || mode === 'r5-segment') {
     await fs.mkdir(mode === 'video' ? outputDir : verifyDir, {recursive: true});
     const outputLocation = mode === 'video'
       ? path.join(outputDir, '山河五百年_1449-1949_完整候选_R4.mp4')
-      : path.join(verifyDir, '海贸工艺至1644_有声代表段_R2.mp4');
+      : mode === 'r5-segment'
+        ? path.join(verifyDir, '山河五百年_1898至1912_R5_监制样段.mp4')
+        : path.join(verifyDir, '海贸工艺至1644_有声代表段_R2.mp4');
     let lastPercent = -1;
     await renderMedia({
       ...shared,
@@ -116,7 +118,7 @@ try {
       colorSpace: 'bt709',
       concurrency: 3,
       overwrite: false,
-      frameRange: mode === 'preview' ? [799, 1674] : undefined,
+      frameRange: mode === 'preview' ? [799, 1674] : mode === 'r5-segment' ? [3603, 4213] : undefined,
       outputLocation,
       onProgress: ({progress}) => {
         const percent = Math.floor(progress * 20) * 5;
