@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate-not-human-verified",
+  "input": {
+    "path": "edit/20260926_industry_ai_no_anxiety/06_实录与字幕/原片_FunASR独立交叉识别.json",
+    "sha256": "37eaa845abf1c4de194983fa48efac1afcea18bcef8d4a03493a12c6e5dd0fc9"
+  },
+  "transcript": {
+    "path": "edit/20260926_industry_ai_no_anxiety/06_实录与字幕/实录逐词_候选.r1.json",
+    "sha256": "0f8d7a9ba9db9af722af0ff9b4d02d7872b0baec716db24f6e4a06e305bf453a"
+  },
+  "captions": {
+    "path": "edit/20260926_industry_ai_no_anxiety/06_实录与字幕/实录双语字幕_候选.r1.json",
+    "sha256": "53379f22deed1611b068f974ca770708d1d504aad46a219ec56e6afe7e8b70fc"
+  },
+  "userConfirmation": {
+    "quote": "这两个你按照转写出来的结果走吧，就按我原篇转写出来是什么就是什么。",
+    "retained": [
+      "技能能力",
+      "下一步"
+    ],
+    "scope": "仅两处歧义按转写结果保留；不冒充全片听审"
+  },
+  "corrections": [
+    {
+      "index": 130,
+      "from": "片",
+      "to": "篇",
+      "type": "unmistakable-asr-error",
+      "evidence": "教程的篇章量词，同音字修正，不添加原稿未说内容",
+      "startMs": 26460,
+      "endMs": 26700
+    },
+    {
+      "index": 302,
+      "from": "战",
+      "to": "赚",
+      "type": "unmistakable-asr-error",
+      "evidence": "两版Whisper均为“钱赚到手”，中文模型误识为“钱战斗士”；保留“手”",
+      "startMs": 68710,
+      "endMs": 68850
+    },
+    {
+      "index": 303,
+      "from": "斗",
+      "to": "到",
+      "type": "unmistakable-asr-error",
+      "evidence": "同上，“赚到手”实录跨模型核对",
+      "startMs": 68850,
+      "endMs": 69010
+    },
+    {
+      "index": 304,
+      "from": "士",
+      "to": "手",
+      "type": "unmistakable-asr-error",
+      "evidence": "同上，“赚到手”实录跨模型核对",
+      "startMs": 69010,
+      "endMs": 69165
+    },
+    {
+      "index": 339,
+      "from": "四",
+      "to": "死",
+      "type": "unmistakable-asr-error",
+      "evidence": "两版Whisper均识别AOL死；用户已批准保留原声并另加更正",
+      "startMs": 77180,
+      "endMs": 77400
+    },
+    {
+      "index": 358,
+      "from": "叶",
+      "to": "页",
+      "type": "proper-noun-spelling",
+      "evidence": "黄页是本句所指目录名称，黄叶为同音误识",
+      "startMs": 81930,
+      "endMs": 82110
+    },
+    {
+      "index": 407,
+      "from": "中",
+      "to": "终",
+      "type": "unmistakable-asr-error",
+      "evidence": "原始Whisper为“自己没走到终局”，中文模型为“中去”；只修同音词",
+      "startMs": 92170,
+      "endMs": 92350
+    },
+    {
+      "index": 408,
+      "from": "去",
+      "to": "局",
+      "type": "unmistakable-asr-error",
+      "evidence": "同上；不改其余口语",
+      "startMs": 92350,
+      "endMs": 92490
+    },
+    {
+      "index": 465,
+      "from": "open",
+      "to": "Open",
+      "type": "proper-noun-spelling",
+      "evidence": "统一公司名称OpenAI的拼写",
+      "startMs": 105130,
+      "endMs": 105410
+    },
+    {
+      "index": 466,
+      "from": "a",
+      "to": "AI",
+      "type": "proper-noun-spelling",
+      "evidence": "术语增强Whisper识别open AI；中文模型英语拼写修正",
+      "startMs": 105410,
+      "endMs": 105650
+    },
+    {
+      "index": 479,
+      "from": "拖",
+      "to": "托",
+      "type": "unmistakable-asr-error",
+      "evidence": "“托你一把”同音字修正；不改原口语结构",
+      "startMs": 109340,
+      "endMs": 109500
+    },
+    {
+      "index": 497,
+      "from": "证",
+      "to": "正",
+      "type": "unmistakable-asr-error",
+      "evidence": "“现金流为正”同音字修正，仍保留实际“保证、嗯”",
+      "startMs": 113410,
+      "endMs": 113705
+    },
+    {
+      "index": 527,
+      "from": "烧",
+      "to": "超",
+      "type": "proper-noun-spelling",
+      "evidence": "本人署名超哥，术语增强Whisper亦为超哥",
+      "startMs": 120990,
+      "endMs": 121130
+    }
+  ],
+  "checks": {
+    "all535TokensCovered": true,
+    "noTimeOverlap": true,
+    "captionPageCount": 59,
+    "scriptUsedAsSubtitleInput": false
+  },
+  "remainingListeningNotes": [
+    {
+      "seconds": [
+        55.66,
+        58.24
+      ],
+      "text": "就是现在一件最小的一个场景里面",
+      "treatment": "保留识别结果，未替换成拍前“先在”"
+    },
+    {
+      "seconds": [
+        70.73,
+        72.97
+      ],
+      "text": "其实说现在我做AI的公司",
+      "treatment": "保留中文模型实录候选，不静默顺句"
+    }
+  ],
+  "humanListeningPerformed": false,
+  "formalRenderAllowed": false
+}
