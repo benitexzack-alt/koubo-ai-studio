@@ -1,0 +1,28 @@
+{
+  "name": "china-history-1449-1949-film-r1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc -p src/tsconfig.json",
+    "bundle": "node render.mjs bundle",
+    "inspect": "node render.mjs inspect",
+    "stills": "node render.mjs stills",
+    "preview": "node render.mjs preview",
+    "render": "node render.mjs video"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.484",
+    "@remotion/media": "4.0.484",
+    "@remotion/renderer": "4.0.484",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "remotion": "4.0.484"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "typescript": "6.0.3"
+  },
+  "description": "1449 至 1949 年音乐历史片的独立本地候选工程；不代表公开发布许可。"
+}
