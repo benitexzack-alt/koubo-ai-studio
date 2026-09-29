@@ -6,6 +6,7 @@ import {openBrowser, renderMedia, renderStill, selectComposition} from '@remotio
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const mode = process.argv[2] ?? 'stills';
+const segmentRevision = process.argv[3] ?? '';
 const timelinePath = path.join(root, 'data', 'timeline.json');
 const publicDir = path.join(root, 'public');
 const outputDir = path.join(root, 'exports');
@@ -16,6 +17,7 @@ const timeline = JSON.parse(await fs.readFile(timelinePath, 'utf8'));
 const assert = (value, message) => {
   if (!value) throw new Error(message);
 };
+assert(!segmentRevision || (mode === 'r5-segment' && /^[a-z0-9-]+$/.test(segmentRevision)), '样段版本号只能用于 r5-segment，且只允许小写字母、数字和连字符。');
 
 assert(timeline?.meta?.fps === 30, '时间轴帧率必须为 30fps。');
 assert(timeline?.meta?.width === 1920 && timeline?.meta?.height === 1080, '画面尺寸必须为 1920×1080。');
@@ -103,7 +105,7 @@ try {
     const outputLocation = mode === 'video'
       ? path.join(outputDir, '山河五百年_1449-1949_完整候选_R4.mp4')
       : mode === 'r5-segment'
-        ? path.join(verifyDir, '山河五百年_1898至1912_R5_监制样段.mp4')
+        ? path.join(verifyDir, `山河五百年_1898至1912_R5${segmentRevision ? `_${segmentRevision}` : ''}_监制样段.mp4`)
         : path.join(verifyDir, '海贸工艺至1644_有声代表段_R2.mp4');
     let lastPercent = -1;
     await renderMedia({

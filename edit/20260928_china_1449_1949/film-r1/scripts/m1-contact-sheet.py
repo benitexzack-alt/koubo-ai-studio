@@ -3,6 +3,7 @@
 
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -13,9 +14,9 @@ DATA = json.loads((ROOT / "data" / "m1.json").read_text())
 START = DATA["range"]["qaStart"]
 FRAMES = [3603, 3644, 3699, 3740, 3754, 3781, 3809, 3863, 3891,
           3917, 3973, 4075, 4082, 4137, 4192, 4214, 4230]
-VIDEO = ROOT / "verify" / "山河五百年_1898至1912_R5_监制样段.mp4"
-DEST = ROOT / "verify" / "M1_R5_关键帧拼图.jpg"
-TEMP = ROOT / "verify" / "m1-contact-frames"
+VIDEO = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ROOT / "verify" / "山河五百年_1898至1912_R5_监制样段.mp4"
+DEST = VIDEO.with_name(f"{VIDEO.stem}_关键帧拼图.jpg")
+TEMP = VIDEO.with_name(f"{VIDEO.stem}_关键帧")
 
 
 def main():
