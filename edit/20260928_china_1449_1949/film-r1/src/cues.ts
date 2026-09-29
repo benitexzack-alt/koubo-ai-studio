@@ -1,4 +1,4 @@
-import measured from '../../director/beats_R4.json';
+import measured from '../data/beats_R4.json';
 
 // These are absolute frames on the R4 music timebase, not a BPM-derived grid.
 export const beatFrames = measured.beats.map((beat) => beat.frame);
