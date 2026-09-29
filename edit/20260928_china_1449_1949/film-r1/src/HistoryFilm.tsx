@@ -10,6 +10,7 @@ import {
 } from 'remotion';
 import {chapterPalette, chapterTitles, HistoryScene, timeline} from './timeline';
 import {HistoricalMotifs} from './HistoricalMotifs';
+import {M1Paper} from './segments/M1Paper';
 
 export type HistoryFilmProps = {
   availableArtKeys: string[];
@@ -186,15 +187,26 @@ export const HistoryFilm: React.FC<HistoryFilmProps> = ({availableArtKeys, audio
   const transitionP = sceneIndex === 0 ? 1 : enter(local + (hardTear ? 4 : 0), 0, duration);
   const available = new Set(availableArtKeys);
   const finalScene = sceneIndex === scenes.length - 1;
+  const inM1 = frame >= 3604 && frame <= 4229;
+  const inM1Handoff = frame >= 4214 && frame <= 4229;
 
   return (
     <AbsoluteFill style={{background: '#101715', overflow: 'hidden', fontFamily: FONT_SANS}}>
       {audioReady && <Audio src={staticFile('audio/music.mp3')} trimBefore={1}/>}
-      {previous && transitionP < 1 && <StoryScene scene={previous} frame={previous.startFrame + previous.durationFrames - 1} index={sceneIndex - 1} hasArt={available.has(previous.artKey)} previousChapter={sceneIndex > 1 ? scenes[sceneIndex - 2].chapter : undefined}/>}
-      <AbsoluteFill style={{opacity: hardTear ? 1 : transitionP, clipPath: hardTear && transitionP < 1 ? `polygon(0 0, ${Math.max(.1, transitionP * 100)}% 0, ${Math.max(.1, transitionP * 100)}% 100%, 0 100%)` : undefined}}>
-        <StoryScene scene={current} frame={frame} index={sceneIndex} hasArt={available.has(current.artKey)} previousChapter={previous?.chapter}/>
-      </AbsoluteFill>
-      {hardTear && transitionP < 1 && <div style={{position: 'absolute', top: 0, bottom: 0, left: `${transitionP * 100}%`, width: 5, transform: 'translateX(-3px)', background: '#e8c99e', opacity: .72, boxShadow: '0 0 20px #f7d6a6'}}/>}
+      {inM1 ? (
+        <>
+          {inM1Handoff && <StoryScene scene={scenes[15]} frame={frame} index={15} hasArt={available.has(scenes[15].artKey)} previousChapter={scenes[14].chapter}/>}
+          <M1Paper frame={frame}/>
+        </>
+      ) : (
+        <>
+          {previous && transitionP < 1 && <StoryScene scene={previous} frame={previous.startFrame + previous.durationFrames - 1} index={sceneIndex - 1} hasArt={available.has(previous.artKey)} previousChapter={sceneIndex > 1 ? scenes[sceneIndex - 2].chapter : undefined}/>}
+          <AbsoluteFill style={{opacity: hardTear ? 1 : transitionP, clipPath: hardTear && transitionP < 1 ? `polygon(0 0, ${Math.max(.1, transitionP * 100)}% 0, ${Math.max(.1, transitionP * 100)}% 100%, 0 100%)` : undefined}}>
+            <StoryScene scene={current} frame={frame} index={sceneIndex} hasArt={available.has(current.artKey)} previousChapter={previous?.chapter}/>
+          </AbsoluteFill>
+          {hardTear && transitionP < 1 && <div style={{position: 'absolute', top: 0, bottom: 0, left: `${transitionP * 100}%`, width: 5, transform: 'translateX(-3px)', background: '#e8c99e', opacity: .72, boxShadow: '0 0 20px #f7d6a6'}}/>}
+        </>
+      )}
       <FrameLine frame={frame} activeScene={sceneIndex}/>
       {finalScene && <AbsoluteFill style={{background: 'linear-gradient(90deg, rgba(85,11,18,.18), transparent 62%)', pointerEvents: 'none'}}/>}
       <AbsoluteFill style={{background: '#111610', opacity: 1 - enter(frame, 0, 12), pointerEvents: 'none'}}/>
