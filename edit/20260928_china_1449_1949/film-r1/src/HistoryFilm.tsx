@@ -188,6 +188,7 @@ export const HistoryFilm: React.FC<HistoryFilmProps> = ({availableArtKeys, audio
   const available = new Set(availableArtKeys);
   const finalScene = sceneIndex === scenes.length - 1;
   const inM1 = frame >= 3604 && frame <= 4229;
+  const inM1Carry = frame >= 3604 && frame <= 3615;
   const inM1Handoff = frame >= 4214 && frame <= 4229;
 
   return (
@@ -195,6 +196,7 @@ export const HistoryFilm: React.FC<HistoryFilmProps> = ({availableArtKeys, audio
       {audioReady && <Audio src={staticFile('audio/music.mp3')} trimBefore={1}/>}
       {inM1 ? (
         <>
+          {inM1Carry && <StoryScene scene={scenes[11]} frame={3602} index={11} hasArt={available.has(scenes[11].artKey)} previousChapter={scenes[10].chapter}/>}
           {inM1Handoff && <StoryScene scene={scenes[15]} frame={frame} index={15} hasArt={available.has(scenes[15].artKey)} previousChapter={scenes[14].chapter}/>}
           <M1Paper frame={frame}/>
         </>
