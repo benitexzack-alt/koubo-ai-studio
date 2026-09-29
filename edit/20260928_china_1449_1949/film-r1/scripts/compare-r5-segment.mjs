@@ -95,7 +95,9 @@ async function decodeFrames(file, isR4Window) {
 }
 
 async function decodeSeamFrame(file, globalFrame, isR4Window) {
-  const seconds = isR4Window ? globalFrame / FPS : (globalFrame - START) / FPS;
+  // Four decimal places put a 30fps boundary just after the target PTS;
+  // raw repeating decimals can make ffmpeg seek to the preceding frame.
+  const seconds = (isR4Window ? globalFrame / FPS : (globalFrame - START) / FPS).toFixed(4);
   const raw = await command('ffmpeg', [
     '-hide_banner', '-loglevel', 'error', '-ss', String(seconds), '-i', file, '-an',
     '-vf', 'scale=480:270:flags=area,format=gray', '-frames:v', '1',
@@ -376,9 +378,10 @@ async function main() {
       || r5Analysis.nearWhiteRuns.length > r4Analysis.nearWhiteRuns.length) {
     structuralFlags.push('R5 新增连续近黑／近白帧，需检查是否是设计意图');
   }
-  const [r4SeamStart, r4SeamEnd, r5SeamStart, r5SeamEnd] = await Promise.all([
-    decodeSeamFrame(opts.r4, START, true), decodeSeamFrame(opts.r4, END, true),
-    decodeSeamFrame(opts.r5, START, opts.self), decodeSeamFrame(opts.r5, END, opts.self),
+  const [r4SeamStart, r4Frame3603, r4SeamEnd, r5SeamStart, r5Frame3603, r5Frame3604, r5SeamEnd] = await Promise.all([
+    decodeSeamFrame(opts.r4, START, true), decodeSeamFrame(opts.r4, 3603, true), decodeSeamFrame(opts.r4, END, true),
+    decodeSeamFrame(opts.r5, START, opts.self), decodeSeamFrame(opts.r5, 3603, opts.self),
+    decodeSeamFrame(opts.r5, 3604, opts.self), decodeSeamFrame(opts.r5, END, opts.self),
   ]);
   const meanFrameError = (a, b) => {
     let sum = 0;
@@ -387,6 +390,8 @@ async function main() {
   };
   const seam = {
     startMeanGrayError: meanFrameError(r4SeamStart, r5SeamStart),
+    r4CarryFrame3603MeanGrayError: meanFrameError(r4Frame3603, r5Frame3603),
+    firstM1Frame3604VsR4Frame3603MeanGrayError: meanFrameError(r4Frame3603, r5Frame3604),
     endMeanGrayError: meanFrameError(r4SeamEnd, r5SeamEnd),
     trailingFrameDelta: r5Analysis.motion[FRAMES - 1],
     precedingTenMedianDelta: median(r5Analysis.motion.slice(FRAMES - 11, FRAMES - 1)),
@@ -395,6 +400,10 @@ async function main() {
   const r5Hits = qaBeatHits(r5Analysis, beatData.strongAccents);
   const machineGates = {
     startSeam: {passed: seam.startMeanGrayError <= 1.5, measured: seam.startMeanGrayError, limit: 1.5},
+    r4CarryAt3603: {passed: seam.r4CarryFrame3603MeanGrayError <= 1.5,
+      measured: seam.r4CarryFrame3603MeanGrayError, limit: 1.5},
+    firstM1FrameAt3604: {passed: seam.firstM1Frame3604VsR4Frame3603MeanGrayError <= 1.5,
+      measured: seam.firstM1Frame3604VsR4Frame3603MeanGrayError, limit: 1.5},
     endSeam: {passed: seam.endMeanGrayError <= 1.5, measured: seam.endMeanGrayError, limit: 1.5},
     trailingContinuity: {passed: seam.trailingFrameDelta <= 3 * Math.max(seam.precedingTenMedianDelta, 0.3),
       measured: seam.trailingFrameDelta, limit: 3 * Math.max(seam.precedingTenMedianDelta, 0.3)},
@@ -419,6 +428,7 @@ async function main() {
       cueHit: '全局 cue 减 3602；在 ±1 帧内 sdiff 峰 ≥max(1,2×前 8～2 帧中位数)，或局部块峰 ≥max(4,2×同基线)',
       onBeatAccentHit: '只统计改画主体内的在拍强重音，同一判据放宽到 ±2 帧；4214 起交接段不计',
       nearStatic: '改画主体 f3604—4229 内，平均灰度帧差 <0.6 的最长连续帧数；不能判断有意留白',
+      firstM1Frame: 'R5 全局 f3604 与 R4 全局 f3603 在 480×270 灰度下平均绝对差 ≤1.5/255',
       nearBlackOrWhite: '连续至少 3 帧，95% 像素分别 <16 或 >239，且全帧均值分别 <8 或 >247',
     },
     visualMachineProxy: {r4: compactVisual(r4Analysis, r4Hits), r5: compactVisual(r5Analysis, r5Hits),
