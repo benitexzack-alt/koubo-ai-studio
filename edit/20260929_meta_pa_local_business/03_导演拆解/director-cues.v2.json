@@ -1,0 +1,1770 @@
+{
+  "schemaVersion": "koubo-director-cues/v2",
+  "taskId": "meta-pa-local-business-20260929-director-r1",
+  "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
+  "inputScript": {
+    "path": "edit/20260929_meta_pa_local_business/06_实录核对/实录候选_导演覆盖输入.txt",
+    "sha256": "9ee0b1d74b0dc888323c9c9f3fb8ad73edb7f0835929333281b69392d98a66e6",
+    "authority": "actual-spoken-transcript"
+  },
+  "routingPolicy": {
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "generatedVisualCannotServeAsEvidence": true,
+    "factVerificationSeparatedFromPrimaryVisual": true,
+    "constructedVisualPriority": [
+      "paper-editorial",
+      "ai-generated-video"
+    ],
+    "aiGeneratedVideoUseCondition": "concrete-human-or-environment-scene-paper-unnatural",
+    "shotcraftSelectionStage": "post-shoot-edit-release",
+    "shotcraftEligibleRoutes": [
+      "speaker",
+      "real-evidence"
+    ],
+    "shotcraftForbiddenInsideRoutes": [
+      "paper-editorial",
+      "ai-generated-video"
+    ]
+  },
+  "styleLocks": {
+    "aiGeneratedVideo": {
+      "referenceImages": [],
+      "promptPrefix": "写实生活电影镜头，克制的暖冷对比与自然光，真实中国城市普通旅馆环境，16:9横屏。",
+      "mustKeep": [
+        "生活细节",
+        "无品牌通用环境",
+        "单一人物动作"
+      ],
+      "mustAvoid": [
+        "真实酒店冒充",
+        "伪造平台界面",
+        "文字水印"
+      ]
+    },
+    "paperEditorial": {
+      "referenceImages": [
+        {
+          "id": "REF01",
+          "path": "edit/20260929_meta_pa_local_business/07_核对图/超级个体_字物同动参考_原尺寸.png",
+          "sha256": "2e070b084c721fee3596161eacc7b28e52a3db7f12e97bda82b5985f3cbefeb6",
+          "usage": "style-mechanism-only"
+        }
+      ],
+      "promptPrefix": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。",
+      "qualityBaselineId": "paper-super-individual-20260829-v1",
+      "textPolicy": "first-frame-generated-chinese-surface-bound",
+      "mustKeep": [
+        "首帧直接带准确中文",
+        "文字和载体一起运动",
+        "三层空间与真实纸纤维",
+        "一镜一个认知目标和因果动作",
+        "可用原生动作声"
+      ],
+      "mustAvoid": [
+        "镜头推拉冒充机构动作",
+        "所有字牌固定",
+        "屏幕悬浮字",
+        "塑料三维",
+        "整页幻灯片",
+        "替本地酒店伪造实测证据"
+      ]
+    }
+  },
+  "selectionSummary": {
+    "mainPoint": "顾客入口可能变为助理，但业务资料、可用入口和真人接手仍决定事情能否继续办。",
+    "argumentFlow": [
+      "先让老板理解查得到",
+      "核对Meta产品事实",
+      "订房条件解释筛选和授权",
+      "区分入口竞争与交易底座",
+      "国内两种路线",
+      "回到资料入口人工三件具体事"
+    ],
+    "routeCounts": {
+      "speaker": 26,
+      "real-evidence": 8,
+      "ai-generated-video": 1,
+      "paper-editorial": 7,
+      "shotcraftOpportunity": 28
+    },
+    "routeRationales": {
+      "speaker": "真实判断、本人业务范围及行动步骤以真人为主，用有信息收益的语义动效辅助。",
+      "real-evidence": "仅产品、数字和有出处的新闻需要官方或真实原文上屏。",
+      "ai-generated-video": "仅夜间抵达这一生活场景受益于真实空间和人物动作，不拿生成画面证明功能。",
+      "paper-editorial": "七个不同物理机构解释筛选、授权、确认、底座、资料缺失、口头知识和预约断点。"
+    },
+    "visualRhythmReason": "按论证段落切换，资料在事实处，纸艺在机制处，业务邀请与判断保留真人。生成片段短于语义段时返回真人，不循环慢放补长。",
+    "protectedSpeakerBeatIds": [
+      "B01",
+      "B02",
+      "B03",
+      "B06",
+      "B07",
+      "B09",
+      "B11",
+      "B14",
+      "B16",
+      "B17",
+      "B18",
+      "B19",
+      "B20",
+      "B22",
+      "B25",
+      "B29",
+      "B30",
+      "B32",
+      "B34",
+      "B35",
+      "B37",
+      "B38",
+      "B39",
+      "B40",
+      "B41",
+      "B42"
+    ]
+  },
+  "semanticBeats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "scriptQuote": "靠广告赚钱的Meta开始让AI替人挑选商家了\n那么以后顾客都是先问AI\n那么你的生意还能不能被找得到",
+      "rhetoricalRole": "开场：顾客先问AI",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F01",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；“挑商家→找得到？”随核心词强调，不给长前奏。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "scriptQuote": "咱们本地老板除了把店拍得好看以外\n也得让人得查得到\n你能提供什么服务什么条件能接\n预约从哪里进\nAI帮顾客挑选的时候都需要这些条件",
+      "rhetoricalRole": "本地老板先补三类信息",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；服务、条件、预约入口逐项出现，停留到观众读完。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "scriptQuote": "Meta就是Facebook背后的这个公司\n它有社交平台\n他有庞大的这个广告生意",
+      "rhetoricalRole": "Meta是谁",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F02",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；不增加没有信息收益的装饰。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "scriptQuote": "今年二季度呢\n收入差不多98%呢\n是来自于这个广告\n他的平均这个上线人数\n大概在30多亿人",
+      "rhetoricalRole": "广告占比与日活口径",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F03",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R01",
+      "decisionReason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "scriptQuote": "那么他现在推出这个个人\nAI助理Muse\n这一步就是想把顾客\n有需求以后的事接进来",
+      "rhetoricalRole": "Muse产品亮相",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F04",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R02",
+      "decisionReason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "scriptQuote": "以前呢\n就是你刷到广告啊\n就是自己去挑\n以后呢\n你可以直接交代\n你需要什么\n你帮我去找",
+      "rhetoricalRole": "刷广告自己挑→交代需求",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；两条短路径逐段接通，保留真人脸和手势。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "scriptQuote": "最近大家都说这个PA啊\n其实就是个人的AI助理",
+      "rhetoricalRole": "个人AI助理",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；PA只解释一次，不用持续大标题遮人。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "scriptQuote": "Muse有自己的云端浏览器\n能查资料操作网站填表\n买东西之前让客户去确认",
+      "rhetoricalRole": "云浏览器与用户确认",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F05",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R03",
+      "decisionReason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "scriptQuote": "那这会怎样影响到咱们的生意\n拿这个兰州订房取个例子",
+      "rhetoricalRole": "引出兰州订房情景",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；不增加没有信息收益的装饰。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "scriptQuote": "假如说你周末带着家人过来开两间房\n开着车晚上十点才能到\n那么你把这些要求告诉了AI助理\n然后再加一句话",
+      "rhetoricalRole": "夜晚带家人抵达",
+      "claimClass": "generic-illustration",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "ai-generated-video",
+      "routeCueId": "G01",
+      "decisionReason": "夜间抵达的生活情景用于代入条件，不承担平台功能证明。",
+      "viewerGain": "make-scene-concrete"
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "scriptQuote": "行程还不确定\n取消怎么收费\n也帮我看清楚",
+      "rhetoricalRole": "取消费用是关键条件",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；取消怎么收费只圈核心词，轻敲声对应重点。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "scriptQuote": "以前只搜兰州酒店会出来很多的这些选择\n可现在呢\n你把这些条件放进去之后\n有些就不适合\n那么助理要做的就是\n帮你把这些差别找出来之后\n让你不会一家一家的去问一遍",
+      "rhetoricalRole": "条件把候选筛小",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P01",
+      "decisionReason": "条件不合的被分开，留下候选但没有订单",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "scriptQuote": "如果你允许啊\n他记住你上次交代过的这些偏好\n比如说带老人出门\n希望有电梯少走路\n下次呢\n还可以把这些条件\n一起进行考虑",
+      "rhetoricalRole": "授权偏好进入本次筛选",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F06",
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P02",
+      "decisionReason": "只有经过允许的偏好进入本次考虑",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "scriptQuote": "日期人数预算变了\n这些他都会跟你再去确认\n同样是定房\n他了解的情况越具体\n才越有可能帮你挑到你合适的房子",
+      "rhetoricalRole": "变化条件重新确认",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；日期、人数、预算可替换标签；保留“越有可能”，不用成功保证。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "scriptQuote": "挑好了呢\n还得查当天有没有房\n确定价格和推定规则\n你只要一点头\n他就会继续帮你",
+      "rhetoricalRole": "推荐到预订之间的关卡",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P03",
+      "decisionReason": "查房态、价格与退订之后仍等待用户确认",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B16",
+      "order": 16,
+      "scriptQuote": "推荐一家店\n跟定成这一单中间的事情\n他一键都不会拉下",
+      "rhetoricalRole": "推荐与订成不可等同",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F07",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；不增加没有信息收益的装饰。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B17",
+      "order": 17,
+      "scriptQuote": "对于开店的老板来说\n就是这些变化就已经很直接了",
+      "rhetoricalRole": "回到老板视角",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；不增加没有信息收益的装饰。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B18",
+      "order": 18,
+      "scriptQuote": "以前你想让顾客多看你一眼\n你要研究各个这个平台上的位置\n视频和推荐",
+      "rhetoricalRole": "原来的流量入口",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；位置、视频、推荐作为旧路径三个节点，给下一段对照。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B19",
+      "order": 19,
+      "scriptQuote": "以后有些顾客可能\n只看到AI\n筛选出来的几家\n如果根本没进这个名单\n就是你那个视频拍的再好\n这个顾客也未必看得到",
+      "rhetoricalRole": "未进入候选名单",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；三张抽象候选条保留在侧栏，未入名单的空槽与真人判断形成对比，不造真实排名。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B20",
+      "order": 20,
+      "scriptQuote": "所以平台现在最先\n受到挑战的可能就是这一步\n顾客还会不会打开\n慢慢的去挑了",
+      "rhetoricalRole": "平台入口受挑战",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；延续上段候选条，把注意力从平台入口移到助理入口。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B21",
+      "order": 21,
+      "scriptQuote": "但酒店的房贷\n商家的商品订单和退款\n还得有人管\n顾客不打开平台\n交易呢\n可能仍然会经过它\n平台呢\n不会轻易的把这些积累的东西\n让出去",
+      "rhetoricalRole": "入口改变不等于底座消失",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P04",
+      "decisionReason": "变化发生在入口，商品订单售后能力仍然参与",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B22",
+      "order": 22,
+      "scriptQuote": "所以呢\n就是说\n平台原来的入口优势\n可能会松动啊\n但是商家的商品售后\n这些能力\n仍然会参与到竞争",
+      "rhetoricalRole": "能力仍参与竞争",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；入口与商品售后分上下两层；不画平台消失或被取代结论。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B23",
+      "order": 23,
+      "scriptQuote": "9月21日\nMeta的股价涨了约11%",
+      "rhetoricalRole": "九月二十一日涨幅",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F08",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R04",
+      "decisionReason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B24",
+      "order": 24,
+      "scriptQuote": "扎克伯格呢\n也希望\n未来会从这个AI助理里面\n促成交易之后\n收取它的费用",
+      "rhetoricalRole": "交易收费属于计划",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F09",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R05",
+      "decisionReason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B25",
+      "order": 25,
+      "scriptQuote": "目前呢\n国内啊\n也在往这个方向去做\n但是只是走法可能有点不一样",
+      "rhetoricalRole": "国内两种走法",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；不增加没有信息收益的装饰。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B26",
+      "order": 26,
+      "scriptQuote": "最近呢\n咱们这个豆包的二代手机\n就是把AI助理放进了手机系统\n让AI尝试跨应用办事",
+      "rhetoricalRole": "豆包二代手机",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F10",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R06",
+      "decisionReason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B27",
+      "order": 27,
+      "scriptQuote": "千万呢\n则是把已经接上的这个阿里的服务\n你比如说像淘宝\n闪购\n非洲\n高德\n这些全部接进来",
+      "rhetoricalRole": "千问接入阿里服务",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F11",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R07",
+      "decisionReason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B28",
+      "order": 28,
+      "scriptQuote": "后来呢\n他又把这个淘宝互通了\n连着商品订单物流和售后",
+      "rhetoricalRole": "千问淘宝互通",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F12",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R08",
+      "decisionReason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B29",
+      "order": 29,
+      "scriptQuote": "豆包就是从手机里替你操作\n另一家呢\n就是把自己已有的这个生意呢\n接近对话\n签问背后的这些商家商品交易服务\n还有平台原有所有的东西拿出来",
+      "rhetoricalRole": "操作手机与接入生意的区别",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；双路径并排：手机→应用；对话→已有服务。两条线落点不同，不能只有卡片进出。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B30",
+      "order": 30,
+      "scriptQuote": "这个呢就是提醒我们\n本地企业做AA应用\n不能光盯着模型会说什么\n他能够查到哪些业务信息\n能连接到哪项服务\n遇到办不了的事\n由谁来接口\n这些都要看",
+      "rhetoricalRole": "企业应用三问",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；信息能查到、服务能接上、失败有人接手，沿用同一组三节点。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B31",
+      "order": 31,
+      "scriptQuote": "回到刚才兰州定房的这个客户\n假如你家的这个酒店\n有停车有电梯\n也能宛入住啊\n本来就是很适合的\n可是网上你只写了\n环境好服务周到\n那么这些条件没有写\nAI助理就可能把你录取",
+      "rhetoricalRole": "实际合适却没有写出来",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P05",
+      "decisionReason": "服务存在不代表资料中能查到条件",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B32",
+      "order": 32,
+      "scriptQuote": "你开了这么多年店\n顾客常问什么\n你其实最清楚\n就是免费停车还是收费\n晚上几点以后需要提前联系",
+      "rhetoricalRole": "老板知道高频问题",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；免费/收费、晚到联系逐项展示；它们是问题，不是给某家酒店填写的答案。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B33",
+      "order": 33,
+      "scriptQuote": "什么情况下不能退\n这些答案就是\n可能一直有你的前台\n一遍一遍的解释\n却没有整理到现在能够被查到的地方",
+      "rhetoricalRole": "口头答案未进入公开资料",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P06",
+      "decisionReason": "口头反复回答与对外资料沉淀是两件事",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B34",
+      "order": 34,
+      "scriptQuote": "遇到这种情况呢\n我会先和老板们一起把现有的介绍\n和这些常见的问题先过一遍\n哪些没有写\n哪些已经过时了\n几个地方写的不一样的\n以实际的能够提供的服务为准\n我们把它改清楚",
+      "rhetoricalRole": "逐项对照真实业务",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；缺失、过时、不一致逐项定位；末端以“实际服务”为核准点，不虚构客户案例。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B35",
+      "order": 35,
+      "scriptQuote": "我做的项目呢\n就是会从这些真实的信息入手\n让AEA能够查得到\n也尽量的理解准确\n至于他最后会不会推荐\n不能光靠我们自己说了算\n要实际的查到他怎么回答的\n依据是从哪里来的",
+      "rhetoricalRole": "能查到不等于一定推荐",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；查到→理解→核对回答及出处；不把推荐画成必然的绿色终点。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B36",
+      "order": 36,
+      "scriptQuote": "假设AI已经推荐了你\n那顾客点进来却找不到\n这个预约的入口或者是电话打不通\n这个时候呢\n你就是再多发一篇介绍\n也补不上这一步",
+      "rhetoricalRole": "推荐后仍可能断在预约",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P07",
+      "decisionReason": "增加介绍不等于修通预约入口",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B37",
+      "order": 37,
+      "scriptQuote": "所以我要和老板看的就是\n在这条路上到底断在了哪里\n哪些资料缺了\n我们能不能把这些预约的页面打开\n就是当天还有没有房\n需要前台确认\n有人把这些接线",
+      "rhetoricalRole": "哪一环断了修哪一环",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；延续信息、入口、人工三节点，口播讲到哪一项就聚焦哪一项。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B38",
+      "order": 38,
+      "scriptQuote": "已有的平台\n我们就是能用的功能先用\n不必说把这些所有的再另建一套",
+      "rhetoricalRole": "已有功能先用",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；“先用已有功能”一处强调，不堆工具标志。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B39",
+      "order": 39,
+      "scriptQuote": "老板知道哪些条件能答应客户\n我先把这些资料和工具\n整理到员工能用的程度\n在一起我们检查结果\n咱们本地能够面对面的看这些业务\n就把这些便利的条件咱们利用好",
+      "rhetoricalRole": "老板与超哥的分工",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；老板确认条件→整理给员工→共同核对，保留面对面讲话。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B40",
+      "order": 40,
+      "scriptQuote": "你可以先拿店里的一项服务\n问AA,看他把地址服务条件说对了没有\n给的联系方式和预约的方式能不能用\n回答里面有出处的也点进去核对一下\n这样至少能看见就是顾客能够查到\n你跟店里的实际情况到底差在哪里",
+      "rhetoricalRole": "观众可以立刻做的检查",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；地址、服务条件、预约联系方式、出处四步逐个点亮，不生成假AI答复。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B41",
+      "order": 41,
+      "scriptQuote": "甘肃本地的老板想要做这个企业AA应用的\n既优的,可以带着你自己的这项服务\n我们一起来聊一聊\n就咱们从顾客会问什么\n现在查到了什么,一起往下去看",
+      "rhetoricalRole": "本地业务行动邀请",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；仅保留服务范围关键词，不造获客承诺，不加未经提供的联系方式。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B42",
+      "order": 42,
+      "scriptQuote": "我是超哥\n在兰州做企业\n也应落地",
+      "rhetoricalRole": "本人收尾",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "该段主要是本人判断或业务行动说明，保留真人；不增加没有信息收益的装饰。",
+      "viewerGain": "presenter-trust"
+    }
+  ],
+  "factChecks": [
+    {
+      "id": "F01",
+      "beatId": "B01",
+      "sourceRequirement": "Meta发布源支持产品事实；未来顾客行为是推演，不是所有人已改变。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "optional-source-card",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F02",
+      "beatId": "B03",
+      "sourceRequirement": "Meta财报与公司介绍，只支持社交及广告业务。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "optional-source-card",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F03",
+      "beatId": "B04",
+      "sourceRequirement": "财报广告收入59363/总收入60801百万美元，约97.63%；日活36亿是产品家族2026年6月平均DAP。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F04",
+      "beatId": "B05",
+      "sourceRequirement": "Muse于2026年9月8日发布；用户需求后的业务接入是作者解释。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F05",
+      "beatId": "B08",
+      "sourceRequirement": "核对云端浏览器、操作、确认边界；不外推任意网站或国内已开放。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F06",
+      "beatId": "B13",
+      "sourceRequirement": "记忆是授权条件下的能力；老人、电梯为假设场景，不证明Muse实测通过。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "optional-source-card",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F07",
+      "beatId": "B16",
+      "sourceRequirement": "实录候选“一键都不会拉下”需听审；即使为“一件都不会落下”，也不能据此承诺助手不遗漏。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "optional-source-card",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F08",
+      "beatId": "B23",
+      "sourceRequirement": "Yahoo当日原报道写涨超11%；文稿约11%为四舍五入。未独立核算收盘价，不增加“收盘”字样。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F09",
+      "beatId": "B24",
+      "sourceRequirement": "Yahoo记者对Connect讲话的归属报道；不是已执行收费规则。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F10",
+      "beatId": "B26",
+      "sourceRequirement": "中兴2026年9月16日NaviX Ultra公告；能力依赖授权、机型与支持范围。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F11",
+      "beatId": "B27",
+      "sourceRequirement": "阿里2026年1月15日公告；仅陈述服务接入，不担保所有任务完成。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F12",
+      "beatId": "B28",
+      "sourceRequirement": "阿里2026年5月11日公告；商品、订单、物流、售后为官方范围描述。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    }
+  ],
+  "routePlans": {
+    "realMaterials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "R01",
+          "beatId": "B04",
+          "startAnchorText": "今年二季度呢\n收入差",
+          "endAnchorText": "数\n大概在30多亿人",
+          "timingStatus": "post-shoot-audio-bound",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "广告占比与日活口径；来源候选文件见公开素材映射，不是用户已批准素材。",
+          "reason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R02",
+          "beatId": "B05",
+          "startAnchorText": "那么他现在推出这个个",
+          "endAnchorText": "有需求以后的事接进来",
+          "timingStatus": "post-shoot-audio-bound",
+          "assetType": "official-interface",
+          "usageRole": "evidence",
+          "materialRequest": "Muse产品亮相；来源候选文件见公开素材映射，不是用户已批准素材。",
+          "reason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R03",
+          "beatId": "B08",
+          "startAnchorText": "Muse有自己的云端",
+          "endAnchorText": "东西之前让客户去确认",
+          "timingStatus": "post-shoot-audio-bound",
+          "assetType": "official-interface",
+          "usageRole": "evidence",
+          "materialRequest": "云浏览器与用户确认；来源候选文件见公开素材映射，不是用户已批准素材。",
+          "reason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R04",
+          "beatId": "B23",
+          "startAnchorText": "9月21日\n",
+          "endAnchorText": "涨了约11%",
+          "timingStatus": "post-shoot-audio-bound",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "九月二十一日涨幅；来源候选文件见公开素材映射，不是用户已批准素材。",
+          "reason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R05",
+          "beatId": "B24",
+          "startAnchorText": "扎克伯格呢\n也希望\n",
+          "endAnchorText": "易之后\n收取它的费用",
+          "timingStatus": "post-shoot-audio-bound",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "交易收费属于计划；来源候选文件见公开素材映射，不是用户已批准素材。",
+          "reason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R06",
+          "beatId": "B26",
+          "startAnchorText": "最近呢\n咱们这个豆包",
+          "endAnchorText": "让AI尝试跨应用办事",
+          "timingStatus": "post-shoot-audio-bound",
+          "assetType": "official-interface",
+          "usageRole": "evidence",
+          "materialRequest": "豆包二代手机；来源候选文件见公开素材映射，不是用户已批准素材。",
+          "reason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R07",
+          "beatId": "B27",
+          "startAnchorText": "千万呢\n则是把已经接",
+          "endAnchorText": "高德\n这些全部接进来",
+          "timingStatus": "post-shoot-audio-bound",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "千问接入阿里服务；来源候选文件见公开素材映射，不是用户已批准素材。",
+          "reason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R08",
+          "beatId": "B28",
+          "startAnchorText": "后来呢\n他又把这",
+          "endAnchorText": "品订单物流和售后",
+          "timingStatus": "post-shoot-audio-bound",
+          "assetType": "official-interface",
+          "usageRole": "evidence",
+          "materialRequest": "千问淘宝互通；来源候选文件见公开素材映射，不是用户已批准素材。",
+          "reason": "观众需要看到可追溯的真实产品或原文，而不是纸艺冒充证据。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        }
+      ]
+    },
+    "aiGeneratedVideos": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "G01",
+          "beatId": "B10",
+          "startAnchorText": "假如说你周末带着家人",
+          "endAnchorText": "助理\n然后再加一句话",
+          "timingStatus": "post-shoot-audio-bound",
+          "durationSeconds": 6,
+          "purpose": "illustration-only",
+          "representationPolicy": "synthetic-not-evidence",
+          "evidenceEligible": false,
+          "disclosureRequired": true,
+          "realEntityReenactmentForbidden": true,
+          "mode": "image-to-video",
+          "visualIntent": "让夜晚带家人抵达的假设条件具体化，人物与酒店均非真实案例。",
+          "primaryAction": "成年旅客把行李箱拉向旅馆门口",
+          "firstFramePrompt": "写实生活电影镜头，克制的暖冷对比与自然光，真实中国城市普通旅馆环境，16:9横屏。夜间普通无品牌旅馆门前中景，一位成年旅客手扶行李箱，另一位成年家人在旁，普通私家车停在后景，街面微湿，暖色门灯照到人物和行李轮；两人正对旅馆入口，距离门口尚有几步。真实布料和灯光，不出现可读店名、车牌、手机界面或地标，不扮演任何真实客户，画面下方干净。",
+          "videoPrompt": "基于已确认首帧，成年旅客把行李箱拉向旅馆门口，箱轮沿地面滚动，家人自然跟随，镜头在侧后方缓慢跟进，结尾停在门前而不是入住成功。保留轻微轮声与夜间环境声，不添加对白、配乐、新人物或文字。",
+          "negativePrompt": [
+            "不复刻真实酒店品牌或地标",
+            "不出现可读车牌和手机界面",
+            "不生成未成年人特写",
+            "不伪装本人亲测或客户证据"
+          ]
+        }
+      ]
+    },
+    "paperEditorials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "P01",
+          "beatId": "B12",
+          "startAnchorText": "以前只搜兰州酒店会出",
+          "endAnchorText": "会一家一家的去问一遍",
+          "timingStatus": "post-shoot-audio-bound",
+          "durationSeconds": 8,
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "reason": "条件不合的被分开，留下候选但没有订单",
+          "visualRole": "mechanism",
+          "visualMetaphor": "三道有条件的纸质筛门分流候选旅馆",
+          "composition": "斜俯视纵深轨道，三栋旅馆在前景，筛门居中，结果泊位在右后方",
+          "primaryAction": "三栋旅馆沿轨道经过纸质筛门并分流",
+          "textPlan": [
+            {
+              "text": "停车",
+              "surface": "橙色第一筛门横梁",
+              "motion": "with-object"
+            },
+            {
+              "text": "晚到",
+              "surface": "白色第二筛门横梁",
+              "motion": "with-object"
+            },
+            {
+              "text": "退订",
+              "surface": "蓝色第三筛门横梁",
+              "motion": "with-object"
+            },
+            {
+              "text": "候选",
+              "surface": "右后纸托盘前沿",
+              "motion": "with-object"
+            }
+          ],
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。斜俯视一座精密但可读的微缩纸板筛选装置，前景三栋外观各异的无品牌旅馆纸模型，模型底部有大小不同的实体榫口；中景三道筛门错层排列，门轴、滑轨和侧面分流槽清楚可见；右后纸托盘为空，尚无成功结果。模型和纸门不是平面图标。首帧准确写中文：橙色第一筛门横梁印“停车”；白色第二筛门横梁印“晚到”；蓝色第三筛门横梁印“退订”；右后纸托盘前沿印“候选”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+          "videoPrompt": "基于已确认首帧，0—2秒三道带字筛门依次压到检验位置；2—6秒三栋旅馆沿轨道经过纸质筛门并分流，两栋被导轨拨到侧槽，一栋抵达后方托盘；6—8秒托盘带着“候选”向前推出一点后停稳。侧向轻跟拍只辅助实体动作，不能用镜头推近替代筛选。保留三次轻纸板扣合与滑轨摩擦声。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+          "negativePrompt": [
+            "文字不脱离纸面或变形",
+            "不把所有文字固定在画面上",
+            "不以推镜代替物件动作",
+            "不做塑料三维或幻灯片",
+            "不添加人声与背景音乐"
+          ],
+          "motionPlan": {
+            "goal": "条件筛选，不是搜索列表",
+            "actions": [
+              "筛门压下核对榫口",
+              "两栋不匹配旅馆被导入侧槽",
+              "匹配旅馆抵达候选托盘"
+            ],
+            "result": "条件不合的被分开，留下候选但没有订单",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P02",
+          "beatId": "B13",
+          "startAnchorText": "如果你允许啊\n他记住",
+          "endAnchorText": "些条件\n一起进行考虑",
+          "timingStatus": "post-shoot-audio-bound",
+          "durationSeconds": 8,
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "reason": "只有经过允许的偏好进入本次考虑",
+          "visualRole": "relationship",
+          "visualMetaphor": "授权插销控制偏好抽屉与本次行程连接",
+          "composition": "正侧三分之二角度，左边偏好抽屉，中间授权插销，右边本次行程凹槽",
+          "primaryAction": "授权插销解除挡板后两张偏好片接入行程托盘",
+          "textPlan": [
+            {
+              "text": "电梯",
+              "surface": "米白偏好纸片正面",
+              "motion": "with-object"
+            },
+            {
+              "text": "少走路",
+              "surface": "蓝边偏好纸片正面",
+              "motion": "with-object"
+            },
+            {
+              "text": "已允许",
+              "surface": "橙色授权插销上表面",
+              "motion": "with-object"
+            },
+            {
+              "text": "本次行程",
+              "surface": "右侧可移动托盘前沿",
+              "motion": "with-object"
+            }
+          ],
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。三分之二侧视一台木盒尺度的纸板记忆装置，左侧浅抽屉内两张厚纸偏好片清晰可读，中间橙色插销处在封闭轨道的起始位置，右侧行程托盘留有两个对应凹槽，前景纸板台阶、中景装置、后景折纸室内墙构成空间。所有偏好只属于抽象示意，不出现真实人脸资料或账号。首帧准确写中文：米白偏好纸片正面印“电梯”；蓝边偏好纸片正面印“少走路”；橙色授权插销上表面印“已允许”；右侧可移动托盘前沿印“本次行程”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+          "videoPrompt": "基于已确认首帧，0—2秒写有“已允许”的插销滑到解锁位，挡板抬起；2—6秒授权插销解除挡板后两张偏好片接入行程托盘，两张纸片保持彼此可辨；6—8秒托盘向镜头方向移动并停稳。四处文字全部贴在各自纸面上随运动改变透视。纸抽屉滑动、插销轻响与纸片落槽声清楚可闻。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+          "negativePrompt": [
+            "文字不脱离纸面或变形",
+            "不把所有文字固定在画面上",
+            "不以推镜代替物件动作",
+            "不做塑料三维或幻灯片",
+            "不添加人声与背景音乐"
+          ],
+          "motionPlan": {
+            "goal": "记忆有授权，不是偷偷画像",
+            "actions": [
+              "插销解锁挡板",
+              "抽屉送出偏好片",
+              "行程托盘接合"
+            ],
+            "result": "只有经过允许的偏好进入本次考虑",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P03",
+          "beatId": "B15",
+          "startAnchorText": "挑好了呢\n还得查当天",
+          "endAnchorText": "点头\n他就会继续帮你",
+          "timingStatus": "post-shoot-audio-bound",
+          "durationSeconds": 7.3,
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "reason": "查房态、价格与退订之后仍等待用户确认",
+          "visualRole": "process",
+          "visualMetaphor": "四节检验桥与末端确认闸门",
+          "composition": "低角度侧视，前景候选房间模型，中景四段桥，后景尚未开启的出口",
+          "primaryAction": "候选模型经过三段检验桥停在确认闸门之前",
+          "textPlan": [
+            {
+              "text": "房态",
+              "surface": "第一块纸桥桥面",
+              "motion": "with-object"
+            },
+            {
+              "text": "价格",
+              "surface": "第二块纸桥桥面",
+              "motion": "with-object"
+            },
+            {
+              "text": "退订",
+              "surface": "第三块纸桥桥面",
+              "motion": "with-object"
+            },
+            {
+              "text": "确认",
+              "surface": "末端橙色闸门正面",
+              "motion": "with-object"
+            }
+          ],
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。低角度侧视微缩纸桥机构，前景单栋无品牌旅馆候选模型停在起点，中景三块厚纸桥板平放但接缝清晰，末端橙色闸门处于关闭状态，远处没有订单、付款成功或绿色成功标志。底层裸露纸梁，中层桥面，后层竖直闸门层次鲜明。首帧准确写中文：第一块纸桥桥面印“房态”；第二块纸桥桥面印“价格”；第三块纸桥桥面印“退订”；末端橙色闸门正面印“确认”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+          "videoPrompt": "基于已确认首帧，基于候选停在起点的状态，0—2秒三段带字桥面逐节扣合；2—5.5秒候选模型经过三段检验桥停在确认闸门之前；余下时间闸门轻轻回弹一次保持关闭，模型没有穿越。桥面文字随桥板扣合，确认文字随闸门回弹；不得出现自动支付或预订成功。保留桥板卡扣、模型滚动和闸门轻响。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+          "negativePrompt": [
+            "文字不脱离纸面或变形",
+            "不把所有文字固定在画面上",
+            "不以推镜代替物件动作",
+            "不做塑料三维或幻灯片",
+            "不添加人声与背景音乐"
+          ],
+          "motionPlan": {
+            "goal": "订成之前仍需过关",
+            "actions": [
+              "桥段逐节扣合",
+              "候选模型经过检查区",
+              "确认闸门保持关闭等待人决定"
+            ],
+            "result": "查房态、价格与退订之后仍等待用户确认",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P04",
+          "beatId": "B21",
+          "startAnchorText": "但酒店的房贷\n商家的",
+          "endAnchorText": "些积累的东西\n让出去",
+          "timingStatus": "post-shoot-audio-bound",
+          "durationSeconds": 8,
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "reason": "变化发生在入口，商品订单售后能力仍然参与",
+          "visualRole": "mechanism",
+          "visualMetaphor": "上层入口换轨，下层服务承重梁继续运作",
+          "composition": "正面剖开的两层纸楼，上层两个入口，下层三根实体服务梁",
+          "primaryAction": "上层导轨切到助理入口而下层服务抽屉继续承接",
+          "textPlan": [
+            {
+              "text": "平台",
+              "surface": "上层左侧活动入口门",
+              "motion": "with-object"
+            },
+            {
+              "text": "助理",
+              "surface": "上层右侧活动入口门",
+              "motion": "with-object"
+            },
+            {
+              "text": "商品",
+              "surface": "下层左侧服务抽屉",
+              "motion": "with-object"
+            },
+            {
+              "text": "订单",
+              "surface": "下层中间服务抽屉",
+              "motion": "with-object"
+            },
+            {
+              "text": "售后",
+              "surface": "下层右侧服务抽屉",
+              "motion": "with-object"
+            }
+          ],
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。正面略俯视一栋剖开的纸质交易楼，前景阶梯、中景双层楼体、后景海军蓝城市纸剪影。上层左右两扇厚纸门及一段可换向轨道，下层三只服务抽屉由可见纸梁承托；上下层连接是实体纸轨道，不是电子屏幕上的流程图。入口门未切换，下层结构完整。首帧准确写中文：上层左侧活动入口门印“平台”；上层右侧活动入口门印“助理”；下层左侧服务抽屉印“商品”；下层中间服务抽屉印“订单”；下层右侧服务抽屉印“售后”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+          "videoPrompt": "基于已确认首帧，0—3秒上层导轨切到助理入口而下层服务抽屉继续承接，左门收合、右门开启，轨道不是凭空生成；3—6秒下层三只带字服务抽屉按顺序短距推出，展示承重结构仍完整；6—8秒镜头轻降到上下层连接处停留。字随门转、随抽屉移动，纸梁不坍塌。保留纸铰链与抽屉的节奏动作声，不加灾难音。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+          "negativePrompt": [
+            "文字不脱离纸面或变形",
+            "不把所有文字固定在画面上",
+            "不以推镜代替物件动作",
+            "不做塑料三维或幻灯片",
+            "不添加人声与背景音乐"
+          ],
+          "motionPlan": {
+            "goal": "入口换了，交易底座还在",
+            "actions": [
+              "两扇入口门交换开合状态",
+              "上层导轨换向",
+              "下层三只服务抽屉依次短距推出"
+            ],
+            "result": "变化发生在入口，商品订单售后能力仍然参与",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P05",
+          "beatId": "B31",
+          "startAnchorText": "回到刚才兰州定房的这",
+          "endAnchorText": "I助理就可能把你录取",
+          "timingStatus": "post-shoot-audio-bound",
+          "durationSeconds": 8,
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "reason": "服务存在不代表资料中能查到条件",
+          "visualRole": "comparison",
+          "visualMetaphor": "酒店真实条件剖面与只写空泛词的资料页形成错位",
+          "composition": "左边立体旅馆剖面，右边薄资料册，中间尚未接通的三条纸桥",
+          "primaryAction": "旅馆展示三种真实条件而资料册翻开仍是空白缺口",
+          "textPlan": [
+            {
+              "text": "停车",
+              "surface": "可推出车库门正面",
+              "motion": "with-object"
+            },
+            {
+              "text": "电梯",
+              "surface": "可升降电梯厢正面",
+              "motion": "with-object"
+            },
+            {
+              "text": "晚入住",
+              "surface": "可开启夜间门牌",
+              "motion": "with-object"
+            },
+            {
+              "text": "环境好",
+              "surface": "右侧资料册封面上半部",
+              "motion": "with-object"
+            },
+            {
+              "text": "服务周到",
+              "surface": "右侧资料册封面下半部",
+              "motion": "with-object"
+            }
+          ],
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。左边是一座无品牌旅馆纸模型的立体剖面，地下小车库、竖直电梯井和夜间接待门可区分，右边薄资料册封面只有两句空泛介绍，册页侧边有空白缺口。两边通过三条尚未搭接的厚纸窄桥相对，背景为层叠深蓝街景。灯光清楚照亮纸纤维、门轴及电梯纸绳。首帧准确写中文：可推出车库门正面印“停车”；可升降电梯厢正面印“电梯”；可开启夜间门牌印“晚入住”；右侧资料册封面上半部印“环境好”；右侧资料册封面下半部印“服务周到”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+          "videoPrompt": "基于已确认首帧，0—4秒旅馆展示三种真实条件而资料册翻开仍是空白缺口：车库门推出，电梯厢升一层，夜间门牌开启；4—6秒右侧资料册翻开，封面两句文字随封面转动，内页对应条件处依旧空白；6—8秒三条纸桥停在缺口边缘，没有连接完成。文字始终跟所属物件，不漂在屏幕上；保留车库、电梯纸绳与翻页的轻声。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+          "negativePrompt": [
+            "文字不脱离纸面或变形",
+            "不把所有文字固定在画面上",
+            "不以推镜代替物件动作",
+            "不做塑料三维或幻灯片",
+            "不添加人声与背景音乐"
+          ],
+          "motionPlan": {
+            "goal": "店里有，资料里没写",
+            "actions": [
+              "车库门推出",
+              "电梯厢短距上行和夜间门牌开启",
+              "资料册翻开暴露对应空白"
+            ],
+            "result": "服务存在不代表资料中能查到条件",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P06",
+          "beatId": "B33",
+          "startAnchorText": "什么情况下不能退\n这",
+          "endAnchorText": "现在能够被查到的地方",
+          "timingStatus": "post-shoot-audio-bound",
+          "durationSeconds": 8,
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "reason": "口头反复回答与对外资料沉淀是两件事",
+          "visualRole": "metaphor",
+          "visualMetaphor": "前台答案纸带在柜台内反复回转，未进入外侧公开册",
+          "composition": "近景柜台与回环纸带，后景未打开的对外资料盒",
+          "primaryAction": "答案纸带在前台回环两次却未进入外侧资料盒",
+          "textPlan": [
+            {
+              "text": "停车收费",
+              "surface": "第一段答案纸带表面",
+              "motion": "with-object"
+            },
+            {
+              "text": "晚到联系",
+              "surface": "第二段答案纸带表面",
+              "motion": "with-object"
+            },
+            {
+              "text": "退订条件",
+              "surface": "第三段答案纸带表面",
+              "motion": "with-object"
+            },
+            {
+              "text": "可查资料",
+              "surface": "外侧资料盒活动盖",
+              "motion": "with-object"
+            }
+          ],
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。一个立体微缩旅馆前台，柜台内有由纸轮支撑的宽纸带，三段常见问题标题沿带面分区清楚排布，柜台外侧有合盖的资料盒，盒口与纸带之间存在一小段明显断开。前景柜台边缘、中景纸轮纸带、后景房间钥匙纸挂板有真实深度。没有真人手、手机截图或伪造评价。首帧准确写中文：第一段答案纸带表面印“停车收费”；第二段答案纸带表面印“晚到联系”；第三段答案纸带表面印“退订条件”；外侧资料盒活动盖印“可查资料”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+          "videoPrompt": "基于已确认首帧，0—5秒答案纸带在前台回环两次却未进入外侧资料盒，三段中文字随带面的弯曲和位置变化，字形不变；5—6.5秒资料盒盖短暂打开露出空槽，写有“可查资料”的盖随轴运动；6.5—8秒纸带停在断口内侧。重点是资料没有出去，不自动补全缺口。保留纸轮细碎转动和纸带摩擦声，不生成说话声。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+          "negativePrompt": [
+            "文字不脱离纸面或变形",
+            "不把所有文字固定在画面上",
+            "不以推镜代替物件动作",
+            "不做塑料三维或幻灯片",
+            "不添加人声与背景音乐"
+          ],
+          "motionPlan": {
+            "goal": "前台知道，不等于网上可查",
+            "actions": [
+              "三段带字纸带连续回转",
+              "资料盒盖短暂打开",
+              "纸带停在断口内侧"
+            ],
+            "result": "口头反复回答与对外资料沉淀是两件事",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P07",
+          "beatId": "B36",
+          "startAnchorText": "假设AI已经推荐了你",
+          "endAnchorText": "介绍\n也补不上这一步",
+          "timingStatus": "post-shoot-audio-bound",
+          "durationSeconds": 8,
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "reason": "增加介绍不等于修通预约入口",
+          "visualRole": "process",
+          "visualMetaphor": "顾客纸球到达推荐节点后被预约断桥挡住，新增介绍不能填桥",
+          "composition": "对角纵深旅程轨道，前景资料叠层，中景预约断桥，远景人工服务台",
+          "primaryAction": "顾客纸球在预约断桥前停下而新增介绍册落在一旁",
+          "textPlan": [
+            {
+              "text": "推荐",
+              "surface": "起点可转动路标牌",
+              "motion": "with-object"
+            },
+            {
+              "text": "预约",
+              "surface": "中景断桥活动桥板",
+              "motion": "with-object"
+            },
+            {
+              "text": "介绍",
+              "surface": "前景可滑动资料册封面",
+              "motion": "with-object"
+            },
+            {
+              "text": "人工",
+              "surface": "远景小服务台前挡板",
+              "motion": "with-object"
+            }
+          ],
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。一条从左前通向右后的微缩纸轨道，起点是一枚可辨的小顾客纸球与路标，中间预约桥板缺了一段，远处人工服务台与轨道尚未连接。前景有一本薄资料册，底部纸架、中部轨道与后景服务台三层分明，没有订单成功、支付动画或真实网页。所有中文简短清晰地印在指定实体表面。首帧准确写中文：起点可转动路标牌印“推荐”；中景断桥活动桥板印“预约”；前景可滑动资料册封面印“介绍”；远景小服务台前挡板印“人工”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+          "videoPrompt": "基于已确认首帧，0—2秒推荐路标转向轨道，顾客纸球沿实体槽滚动；2—5秒顾客纸球在预约断桥前停下而新增介绍册落在一旁，预约桥板轻晃，不能让纸球跳过断口；5—8秒远景人工服务台向前移少许仍未连接，以清晰断点结束。四处字随所属物件动作，结束保持可读。保留滚动、纸板轻碰和翻册声，不加预订成功提示音。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+          "negativePrompt": [
+            "文字不脱离纸面或变形",
+            "不把所有文字固定在画面上",
+            "不以推镜代替物件动作",
+            "不做塑料三维或幻灯片",
+            "不添加人声与背景音乐"
+          ],
+          "motionPlan": {
+            "goal": "被推荐之后，仍会断在入口",
+            "actions": [
+              "路标转向推荐路线",
+              "纸球到达断桥并停止",
+              "介绍册移到桥旁但无法搭桥"
+            ],
+            "result": "增加介绍不等于修通预约入口",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        }
+      ]
+    }
+  },
+  "shotcraftOpportunities": [
+    {
+      "id": "SO01",
+      "beatId": "B01",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "“挑商家→找得到？”随核心词强调，不给长前奏。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO02",
+      "beatId": "B02",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "服务、条件、预约入口逐项出现，停留到观众读完。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO03",
+      "beatId": "B04",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "分两次聚焦财报对应行，不把日活误写成Muse用户。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO04",
+      "beatId": "B05",
+      "baseVisualRoute": "real-evidence",
+      "intent": "screen-callout",
+      "reason": "官方片中产品名与真实界面短展示，不假造本人实测。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO05",
+      "beatId": "B06",
+      "baseVisualRoute": "speaker",
+      "intent": "relationship-line",
+      "reason": "两条短路径逐段接通，保留真人脸和手势。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO06",
+      "beatId": "B07",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "PA只解释一次，不用持续大标题遮人。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO07",
+      "beatId": "B08",
+      "baseVisualRoute": "real-evidence",
+      "intent": "screen-callout",
+      "reason": "只框实际存在的步骤；官方购物片没有展示的云浏览器能力用官方发布原页短摘录。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO08",
+      "beatId": "B11",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "取消怎么收费只圈核心词，轻敲声对应重点。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO09",
+      "beatId": "B14",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "日期、人数、预算可替换标签；保留“越有可能”，不用成功保证。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO10",
+      "beatId": "B18",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "位置、视频、推荐作为旧路径三个节点，给下一段对照。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO11",
+      "beatId": "B19",
+      "baseVisualRoute": "speaker",
+      "intent": "pinning",
+      "reason": "三张抽象候选条保留在侧栏，未入名单的空槽与真人判断形成对比，不造真实排名。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO12",
+      "beatId": "B20",
+      "baseVisualRoute": "speaker",
+      "intent": "transition-carry",
+      "reason": "延续上段候选条，把注意力从平台入口移到助理入口。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO13",
+      "beatId": "B22",
+      "baseVisualRoute": "speaker",
+      "intent": "relationship-line",
+      "reason": "入口与商品售后分上下两层；不画平台消失或被取代结论。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO14",
+      "beatId": "B23",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "聚焦报道标题和发布日期，不使用网页今天的行情栏，不画虚构K线。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO15",
+      "beatId": "B24",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "仅显示含收费计划的短句和报道归属，“未来”保留。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO16",
+      "beatId": "B26",
+      "baseVisualRoute": "real-evidence",
+      "intent": "screen-callout",
+      "reason": "展示当期官方发布与产品能力图，聚焦系统入口，不拿一代M153冒充二代。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO17",
+      "beatId": "B27",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "官方段落中淘宝闪购、飞猪、高德依次框选，一声轻点对应一组。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO18",
+      "beatId": "B28",
+      "baseVisualRoute": "real-evidence",
+      "intent": "screen-callout",
+      "reason": "官方四屏图横向引导到商品和订单，不把图上的历史价格当今天报价。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO19",
+      "beatId": "B29",
+      "baseVisualRoute": "speaker",
+      "intent": "relationship-line",
+      "reason": "双路径并排：手机→应用；对话→已有服务。两条线落点不同，不能只有卡片进出。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO20",
+      "beatId": "B30",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "信息能查到、服务能接上、失败有人接手，沿用同一组三节点。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO21",
+      "beatId": "B32",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "免费/收费、晚到联系逐项展示；它们是问题，不是给某家酒店填写的答案。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO22",
+      "beatId": "B34",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "缺失、过时、不一致逐项定位；末端以“实际服务”为核准点，不虚构客户案例。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO23",
+      "beatId": "B35",
+      "baseVisualRoute": "speaker",
+      "intent": "relationship-line",
+      "reason": "查到→理解→核对回答及出处；不把推荐画成必然的绿色终点。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO24",
+      "beatId": "B37",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "延续信息、入口、人工三节点，口播讲到哪一项就聚焦哪一项。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO25",
+      "beatId": "B38",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "“先用已有功能”一处强调，不堆工具标志。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO26",
+      "beatId": "B39",
+      "baseVisualRoute": "speaker",
+      "intent": "relationship-line",
+      "reason": "老板确认条件→整理给员工→共同核对，保留面对面讲话。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO27",
+      "beatId": "B40",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "地址、服务条件、预约联系方式、出处四步逐个点亮，不生成假AI答复。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO28",
+      "beatId": "B41",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "仅保留服务范围关键词，不造获客承诺，不加未经提供的联系方式。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    }
+  ],
+  "rhythmAudit": {
+    "basis": "semantic-runs-not-seconds",
+    "fixedCadenceForbidden": true,
+    "longSpeakerRunsReviewed": true,
+    "runs": [
+      {
+        "fromBeatId": "B01",
+        "toBeatId": "B03",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人连续段以信息节点推进、关系对照与停留交替，不靠无意义运镜撑时长。",
+        "mitigationRefs": [
+          "SO01",
+          "SO02"
+        ]
+      },
+      {
+        "fromBeatId": "B06",
+        "toBeatId": "B07",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人连续段以信息节点推进、关系对照与停留交替，不靠无意义运镜撑时长。",
+        "mitigationRefs": [
+          "SO05",
+          "SO06"
+        ]
+      },
+      {
+        "fromBeatId": "B09",
+        "toBeatId": "B09",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "本段靠语气和停顿建立判断，短暂安静的真人画面是节奏的一部分。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B11",
+        "toBeatId": "B11",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人连续段以信息节点推进、关系对照与停留交替，不靠无意义运镜撑时长。",
+        "mitigationRefs": [
+          "SO08"
+        ]
+      },
+      {
+        "fromBeatId": "B14",
+        "toBeatId": "B14",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人连续段以信息节点推进、关系对照与停留交替，不靠无意义运镜撑时长。",
+        "mitigationRefs": [
+          "SO09"
+        ]
+      },
+      {
+        "fromBeatId": "B16",
+        "toBeatId": "B20",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人连续段以信息节点推进、关系对照与停留交替，不靠无意义运镜撑时长。",
+        "mitigationRefs": [
+          "SO10",
+          "SO11",
+          "SO12"
+        ]
+      },
+      {
+        "fromBeatId": "B22",
+        "toBeatId": "B22",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人连续段以信息节点推进、关系对照与停留交替，不靠无意义运镜撑时长。",
+        "mitigationRefs": [
+          "SO13"
+        ]
+      },
+      {
+        "fromBeatId": "B25",
+        "toBeatId": "B25",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "本段靠语气和停顿建立判断，短暂安静的真人画面是节奏的一部分。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B29",
+        "toBeatId": "B30",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人连续段以信息节点推进、关系对照与停留交替，不靠无意义运镜撑时长。",
+        "mitigationRefs": [
+          "SO19",
+          "SO20"
+        ]
+      },
+      {
+        "fromBeatId": "B32",
+        "toBeatId": "B32",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人连续段以信息节点推进、关系对照与停留交替，不靠无意义运镜撑时长。",
+        "mitigationRefs": [
+          "SO21"
+        ]
+      },
+      {
+        "fromBeatId": "B34",
+        "toBeatId": "B35",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人连续段以信息节点推进、关系对照与停留交替，不靠无意义运镜撑时长。",
+        "mitigationRefs": [
+          "SO22",
+          "SO23"
+        ]
+      },
+      {
+        "fromBeatId": "B37",
+        "toBeatId": "B42",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人连续段以信息节点推进、关系对照与停留交替，不靠无意义运镜撑时长。",
+        "mitigationRefs": [
+          "SO24",
+          "SO25",
+          "SO26",
+          "SO27",
+          "SO28"
+        ]
+      }
+    ]
+  }
+}
