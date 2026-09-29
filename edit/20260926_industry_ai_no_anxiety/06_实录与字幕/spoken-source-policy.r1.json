@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "canonicalSource": "recorded-audio",
+  "scriptRole": "comparison-only",
+  "captionTextPolicy": "spoken-verbatim",
+  "englishTranslationSource": "canonical-spoken-chinese",
+  "source": {
+    "path": "edit/20260926_industry_ai_no_anxiety/01_素材投放区/01_口播原片/copy_3241166C-5FB2-403F-A2D9-53A2B1C9393A.MOV",
+    "sha256": "931caa08b7d0d7e4157501aaafa4f5bac29bef7de7539635070a19ce18a9d1ac"
+  },
+  "transcript": {
+    "path": "edit/20260926_industry_ai_no_anxiety/06_实录与字幕/正式实录.r1.json",
+    "sha256": "00dd88e74ee3e400348ade70551761204992e07dd24790165d91531170bb70fb"
+  },
+  "captions": {
+    "path": "edit/20260926_industry_ai_no_anxiety/06_实录与字幕/实录双语字幕_候选.r1.json",
+    "sha256": "53379f22deed1611b068f974ca770708d1d504aad46a219ec56e6afe7e8b70fc"
+  },
+  "verification": {
+    "minimumGlobalPrecision": 1,
+    "minimumGlobalCoverage": 1,
+    "corrections": [],
+    "correctionMode": "already-applied-by-token-index",
+    "correctionLog": "edit/20260926_industry_ai_no_anxiety/06_实录与字幕/字幕核对记录.r1.json",
+    "indexedCorrections": [
+      {
+        "index": 130,
+        "from": "片",
+        "to": "篇",
+        "type": "unmistakable-asr-error",
+        "evidence": "教程的篇章量词，同音字修正，不添加原稿未说内容",
+        "startMs": 26460,
+        "endMs": 26700
+      },
+      {
+        "index": 302,
+        "from": "战",
+        "to": "赚",
+        "type": "unmistakable-asr-error",
+        "evidence": "两版Whisper均为“钱赚到手”，中文模型误识为“钱战斗士”；保留“手”",
+        "startMs": 68710,
+        "endMs": 68850
+      },
+      {
+        "index": 303,
+        "from": "斗",
+        "to": "到",
+        "type": "unmistakable-asr-error",
+        "evidence": "同上，“赚到手”实录跨模型核对",
+        "startMs": 68850,
+        "endMs": 69010
+      },
+      {
+        "index": 304,
+        "from": "士",
+        "to": "手",
+        "type": "unmistakable-asr-error",
+        "evidence": "同上，“赚到手”实录跨模型核对",
+        "startMs": 69010,
+        "endMs": 69165
+      },
+      {
+        "index": 339,
+        "from": "四",
+        "to": "死",
+        "type": "unmistakable-asr-error",
+        "evidence": "两版Whisper均识别AOL死；用户已批准保留原声并另加更正",
+        "startMs": 77180,
+        "endMs": 77400
+      },
+      {
+        "index": 358,
+        "from": "叶",
+        "to": "页",
+        "type": "proper-noun-spelling",
+        "evidence": "黄页是本句所指目录名称，黄叶为同音误识",
+        "startMs": 81930,
+        "endMs": 82110
+      },
+      {
+        "index": 407,
+        "from": "中",
+        "to": "终",
+        "type": "unmistakable-asr-error",
+        "evidence": "原始Whisper为“自己没走到终局”，中文模型为“中去”；只修同音词",
+        "startMs": 92170,
+        "endMs": 92350
+      },
+      {
+        "index": 408,
+        "from": "去",
+        "to": "局",
+        "type": "unmistakable-asr-error",
+        "evidence": "同上；不改其余口语",
+        "startMs": 92350,
+        "endMs": 92490
+      },
+      {
+        "index": 465,
+        "from": "open",
+        "to": "Open",
+        "type": "proper-noun-spelling",
+        "evidence": "统一公司名称OpenAI的拼写",
+        "startMs": 105130,
+        "endMs": 105410
+      },
+      {
+        "index": 466,
+        "from": "a",
+        "to": "AI",
+        "type": "proper-noun-spelling",
+        "evidence": "术语增强Whisper识别open AI；中文模型英语拼写修正",
+        "startMs": 105410,
+        "endMs": 105650
+      },
+      {
+        "index": 479,
+        "from": "拖",
+        "to": "托",
+        "type": "unmistakable-asr-error",
+        "evidence": "“托你一把”同音字修正；不改原口语结构",
+        "startMs": 109340,
+        "endMs": 109500
+      },
+      {
+        "index": 497,
+        "from": "证",
+        "to": "正",
+        "type": "unmistakable-asr-error",
+        "evidence": "“现金流为正”同音字修正，仍保留实际“保证、嗯”",
+        "startMs": 113410,
+        "endMs": 113705
+      },
+      {
+        "index": 527,
+        "from": "烧",
+        "to": "超",
+        "type": "proper-noun-spelling",
+        "evidence": "本人署名超哥，术语增强Whisper亦为超哥",
+        "startMs": 120990,
+        "endMs": 121130
+      }
+    ],
+    "humanListeningPerformed": false
+  },
+  "compliance": {
+    "status": "passed",
+    "scope": "535词与59页字幕规范化字符完全相同，不代替全片听审",
+    "finalHumanAcceptance": false
+  }
+}

@@ -1,0 +1,36 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const base='edit/20260926_industry_ai_no_anxiety',pub='remotion/public-industry-ai-no-anxiety-final-r1',out=`${base}/07_预览与质检/正式R1`;
+const read=p=>JSON.parse(fs.readFileSync(p)),sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const write=(p,x)=>fs.writeFileSync(p,JSON.stringify(x,null,2)+'\n',{flag:'wx'});
+const run=(args)=>{const r=spawnSync('ffmpeg',['-hide_banner','-loglevel','error','-n',...args],{encoding:'utf8',maxBuffer:10e6});assert.equal(r.status,0,r.stderr);};
+const d=read(`${base}/04_Remotion准备/剪辑与声音落点.r1.json`);
+for(const b of [d.source,d.timeline,d.captions,d.shotcraft,d.publicEvidence.source,...d.paper.map(p=>p.source),...d.sfx.map(s=>s.source)])assert.equal(sha(b.path),b.sha256,b.path);
+for(const p of [pub,`${pub}/fonts`,`${pub}/audio/sfx`,out,`${base}/08_正式成片`])fs.mkdirSync(p,{recursive:true});
+run(['-i',d.source.path,'-map','0:v:0','-an','-c:v','h264_videotoolbox','-b:v','12M','-pix_fmt','yuv420p','-r','30',`${pub}/host.mp4`,'-map','0:a:0','-vn','-ar','48000','-c:a','pcm_s24le',`${pub}/audio/original.wav`]);
+console.log('完整真人与原声已准备');
+run(['-i',`${pub}/host.mp4`,'-vf','crop=1080:1080:450:0,scale=720:720','-an','-c:v','h264_videotoolbox','-b:v','6M','-pix_fmt','yuv420p',`${pub}/presenter-square.mp4`]);
+for(const p of d.paper){run(['-i',p.source.path,'-vf','scale=1920:1080,fps=30','-an','-c:v','h264_videotoolbox','-b:v','12M','-pix_fmt','yuv420p',`${pub}/${p.id}.mp4`]);console.log(`纸艺代理 ${p.id}`);}
+for(const n of ['evidence-background.mp4','fonts/STHeiti-Medium.ttc'])fs.copyFileSync(`remotion/public/media/industry-ai-no-anxiety-preview-r1/${n}`,`${pub}/${n}`,fs.constants.COPYFILE_EXCL);
+fs.copyFileSync(d.captions.path,`${pub}/captions.json`,fs.constants.COPYFILE_EXCL);
+const gains={P01:2,P02:.5,P03:.25,P04:.3,P05:.25};
+const args=['-i',`${pub}/audio/original.wav`],filters=['[0:a]volume=3.16227766[voice]'],labels=['[voice]'];
+d.paper.forEach((p,i)=>{args.push('-i',p.source.path);filters.push(`[${i+1}:a]atrim=start=${p.sourceInSeconds}:duration=${p.durationSeconds},asetpts=PTS-STARTPTS,aresample=48000,volume=${gains[p.id]},afade=t=in:d=0.035,afade=t=out:st=${p.durationSeconds-.07}:d=0.07,adelay=${Math.round(p.startFrame/30*48000)}S:all=1[n${i}]`);labels.push(`[n${i}]`);});
+filters.push(`${labels.join('')}amix=inputs=${labels.length}:normalize=0:duration=longest,atrim=duration=122.9,alimiter=limit=0.84:level=false:latency=true[base]`);
+run([...args,'-filter_complex',filters.join(';'),'-map','[base]','-c:a','pcm_s24le',`${pub}/audio/native-mix.wav`]);
+const sa=['-i',`${pub}/audio/native-mix.wav`],sf=[],sl=['[0:a]'];
+d.sfx.forEach((s,i)=>{sa.push('-i',s.source.path);fs.copyFileSync(s.source.path,`${pub}/audio/sfx/${path.basename(s.source.path)}`,fs.constants.COPYFILE_EXCL);sf.push(`[${i+1}:a]aresample=48000,volume=${s.volume},adelay=${Math.round(s.frame/30*48000)}S:all=1[s${i}]`);sl.push(`[s${i}]`);});
+sf.push(`${sl.join('')}amix=inputs=${sl.length}:normalize=0:duration=first,alimiter=limit=0.84:level=false:latency=true[mix]`);
+run([...sa,'-filter_complex',sf.join(';'),'-map','[mix]','-c:a','pcm_s24le',`${pub}/audio/final-mix.wav`]);
+const cap=`${base}/06_实录与字幕`,transcript=read(`${cap}/实录逐词_候选.r1.json`),corrections=read(`${cap}/字幕核对记录.r1.json`);
+// 按词索引落实已记录修正，不能对全稿执行单字全局替换。
+transcript.words=transcript.words.map(w=>({...w,verbatim_text:w.text}));
+write(`${cap}/正式实录.r1.json`,{...transcript,status:'actual-recording-bound-formal-candidate',correctionLog:`${cap}/字幕核对记录.r1.json`});
+const normalize=x=>x.replace(/[\s，。？！、：；,.?!:;"“”'‘’（）()《》【】\[\]·—–-]/g,'').toLowerCase();
+assert.equal(normalize(transcript.words.map(w=>w.text).join('')),normalize(read(d.captions.path).map(c=>c.zh).join('')));
+write(`${cap}/spoken-source-policy.r1.json`,{schemaVersion:1,canonicalSource:'recorded-audio',scriptRole:'comparison-only',captionTextPolicy:'spoken-verbatim',englishTranslationSource:'canonical-spoken-chinese',source:d.source,transcript:{path:`${cap}/正式实录.r1.json`,sha256:sha(`${cap}/正式实录.r1.json`)},captions:d.captions,verification:{minimumGlobalPrecision:1,minimumGlobalCoverage:1,corrections:[],correctionMode:'already-applied-by-token-index',correctionLog:`${cap}/字幕核对记录.r1.json`,indexedCorrections:corrections.corrections,humanListeningPerformed:false},compliance:{status:'passed',scope:'535词与59页字幕规范化字符完全相同，不代替全片听审',finalHumanAcceptance:false}});
+write('remotion/src/industry-ai-no-anxiety-final-r1/runtime-plan.r1.json',{durationInFrames:3687,originalVoice:{continuous:true,startFrame:0,endFrameExclusive:3687,speed:1,deletedRanges:[]},mix:'audio/final-mix.wav',paperGains:gains,sourceVoiceGainDb:10,motionEvents:d.sfx.map(s=>({id:s.id,frame:s.frame,beatId:s.beatId,purpose:s.purpose})),sfxCues:d.sfx.map(s=>({eventId:s.id,frame:s.frame,volume:s.volume,file:`audio/sfx/${path.basename(s.source.path)}`,source:s.source.path,sha256:s.source.sha256})),paper:d.paper.map(p=>({id:p.id,startFrame:p.startFrame,endFrameExclusive:p.endFrameExclusive,sourceInSeconds:p.sourceInSeconds,playbackRate:1,loop:false,freezeLastFrame:false})),previewStyleUnchanged:true,fullWatchConfirmed:false,publishAuthorized:false});
+console.log('完整3687帧、5纸艺、59字幕、7音效与原生动作声准备完成；尚未渲染');

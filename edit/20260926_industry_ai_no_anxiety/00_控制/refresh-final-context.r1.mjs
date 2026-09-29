@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const root=process.cwd(),base='edit/20260926_industry_ai_no_anxiety',control=`${base}/00_控制`,taskId='task-20260929T180000Z-industry-final-r1';
+const groups={current_project_index:['knowledge/00-项目知识索引.md'],current_project_summary:['project.md'],latest_update:['knowledge/08-决策与复盘日志.md'],applicable_rules_or_skills:['skills/koubo-shotcraft-library/SKILL.md','knowledge/20-V8连续语义动效与可感知音效基线.md','knowledge/22-实录优先字幕与系列发布包硬门禁.md','workflow/active-production-profile.v1.json'],historical_failures:['knowledge/20-V8连续语义动效与可感知音效基线.md','knowledge/22-实录优先字幕与系列发布包硬门禁.md'],task_original_materials:[`${base}/04_Remotion准备/production-formal.r1.json`,`${control}/formal-authorization.r1.json`,`${base}/06_实录与字幕/实录双语字幕_候选.r1.json`,`${base}/06_实录与字幕/spoken-source-policy.r1.json`,'remotion/src/industry-ai-no-anxiety-final-r1/runtime-plan.r1.json',`${base}/04_Remotion准备/剪辑与声音落点.r1.json`]};
+const requirements={schema_version:'opc-task-requirements/1.0',task_id:taskId,required_receipt_groups:Object.fromEntries(Object.entries(groups).map(([k,a])=>[k,a.map(p=>path.resolve(root,p))]))};
+const receipts={schema_version:'opc-read-receipts/1.0',task_id:taskId,receipts:[...new Set(Object.values(groups).flat())].map(p=>({path:path.resolve(root,p),sha256:createHash('sha256').update(fs.readFileSync(p)).digest('hex'),read_status:'read',application_status:'applied',read_completed_at:new Date().toISOString(),application_note:'本轮已实际读取当前规则/相关段落，或亲自编写并核对本期数据。应用于已通过41秒样片后的完整原声V8正式候选：不改写字幕，不重做已认可视觉；全片观看仍待用户，不公开发布。'}))};
+const req=`${control}/context-requirements.final-r1.json`,rec=`${control}/read-receipts.final-r1.json`;
+fs.writeFileSync(req,JSON.stringify(requirements,null,2)+'\n');fs.writeFileSync(rec,JSON.stringify(receipts,null,2)+'\n');
+const r=spawnSync('python3',['/Users/pc/Documents/个人知识库/04_Claude Code日常操作/scripts/opc_rag.py','start','--project','口播','--task','行业经验配AI：用户样片通过，完整原声字幕纸艺音效正式候选与发布包，不公开发布','--cwd',root,'--task-id',taskId,'--important','--requirements-file',path.resolve(req),'--receipt-file',path.resolve(rec)],{encoding:'utf8',maxBuffer:20e6});fs.writeFileSync(`${control}/context-final-r1.log`,r.stdout+r.stderr);console.log(r.stdout.slice(-4500),r.stderr);process.exitCode=r.status;

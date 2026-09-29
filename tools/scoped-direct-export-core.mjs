@@ -12,6 +12,8 @@ import {
 } from '../edit/20260917_ai_efficiency_sharing/00_工程控制/preview-adapter.v1.mjs';
 import {assertEmployeeAIEfficiencyFormal, isEmployeeAIEfficiencyFormal}
   from '../edit/20260917_ai_efficiency_sharing/00_工程控制/formal-adapter.v1.mjs';
+import {assertIndustryAiNoAnxietyFormalR1, isIndustryAiNoAnxietyFormalR1}
+  from '../edit/20260926_industry_ai_no_anxiety/00_控制/formal-adapter.r1.mjs';
 import {assertAITrainingFormalR1, isAITrainingFormalR1}
   from '../edit/20260919_ai_training_methods/00_控制/formal-adapter.r1.mjs';
 import {assertLanzhouAISalonFormalR2, isLanzhouAISalonFormalR2}
@@ -29,6 +31,7 @@ import {
 
 export const SCOPED_DIRECT_EXPORT_MANIFEST_SHA256 = 'ba74d65e7bd59446718171aa38de6b0799092dbedb2180abd6c385587f28653e';
 export const EMPLOYEE_AI_FORMAL_PIN = '2e15109ab9c0757b7f09c0044933c360cf8d7086bf52890cb491cf8d360df6f3';
+export const INDUSTRY_AI_NO_ANXIETY_FORMAL_R1_PIN = '2e7deb85a1d258249c26379caf92a4aeb5373fdcab20d38f8053698ffc1210e9';
 export const AI_TRAINING_FORMAL_R1_PIN = 'a02ea83b97c4fc1f2a2897015314ae46fac08bca2d213b76e60679f2d0079260';
 export const LANZHOU_AI_SALON_FORMAL_R2_PIN = '401419bce646d2d4c34457348881ef023b319bfea599487d27290577aa42f99c';
 export const LANZHOU_AI_SALON_FORMAL_R3_PIN = 'f704d131264d132cb8abf6f9fab8624981cc0fc3f8d80a71750d0575b01eafac';
@@ -322,6 +325,9 @@ function userText(line) {
 }
 
 export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = null, command = 'formal'}) {
+  if (isIndustryAiNoAnxietyFormalR1(job)) {
+    return assertIndustryAiNoAnxietyFormalR1({projectRoot, job, jobPath, command, pin: INDUSTRY_AI_NO_ANXIETY_FORMAL_R1_PIN});
+  }
   if (isLanzhouAISalonFormalR3(job)) {
     return assertLanzhouAISalonFormalR3({projectRoot, job, jobPath, command, pin: LANZHOU_AI_SALON_FORMAL_R3_PIN});
   }
