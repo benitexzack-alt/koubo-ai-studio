@@ -1,0 +1,32 @@
+import fs from 'node:fs';
+import {spawnSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const base='edit/20260926_industry_ai_no_anxiety',dir=`${base}/07_预览与质检/视听小样R1`;
+const read=p=>JSON.parse(fs.readFileSync(p)),d=read(`${base}/04_Remotion准备/剪辑与声音落点.r1.json`),intake=read(`${dir}/intake.json`);
+const run=(args,log)=>{const r=spawnSync('ffmpeg',['-hide_banner','-n',...args],{encoding:'utf8',maxBuffer:10e6});if(log)fs.writeFileSync(`${dir}/${log}`,r.stderr);if(r.status!==0)throw Error(r.stderr.slice(-3000));return r.stderr;};
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const preflight=spawnSync('node',[`${base}/00_控制/run-preview.r1.mjs`,'preflight'],{encoding:'utf8'});assert.equal(preflight.status,0,preflight.stdout+preflight.stderr);
+const native=d.paper.flatMap(p=>intake.ranges.filter(r=>p.startFrame>=r.startFrame&&p.endFrameExclusive<=r.endFrameExclusive).map(r=>({...p,delay:p.startFrame-r.startFrame+r.previewStart})));
+const sfx=d.sfx.flatMap(s=>intake.ranges.filter(r=>s.frame>=r.startFrame&&s.frame<r.endFrameExclusive).map(r=>({...s,delay:s.frame-r.startFrame+r.previewStart})));
+const args=['-i',`${dir}/原声摘段.wav`],filters=['[0:a]volume=3.16227766[voice]'],labels=['[voice]'];
+native.forEach((p,i)=>{args.push('-i',p.source.path);filters.push(`[${i+1}:a]atrim=start=${p.sourceInSeconds}:duration=${p.durationSeconds},asetpts=PTS-STARTPTS,aresample=48000,volume=${intake.mixPolicy.paperNativeGains[p.id]},afade=t=in:d=0.035,afade=t=out:st=${p.durationSeconds-.07}:d=0.07,adelay=${Math.round(p.delay/30*48000)}S:all=1[n${i}]`);labels.push(`[n${i}]`);});
+filters.push(`${labels.join('')}amix=inputs=${labels.length}:normalize=0:duration=longest,atrim=duration=41,alimiter=limit=0.84:level=false:latency=true[base]`);
+run([...args,'-filter_complex',filters.join(';'),'-map','[base]','-c:a','pcm_s24le',`${dir}/原声与纸艺动作声.wav`],'native-mix.log');
+const sa=['-i',`${dir}/原声与纸艺动作声.wav`],sf=[],sl=['[0:a]'];
+sfx.forEach((s,i)=>{sa.push('-i',s.source.path);sf.push(`[${i+1}:a]aresample=48000,volume=${s.volume},adelay=${Math.round(s.delay/30*48000)}S:all=1[s${i}]`);sl.push(`[s${i}]`);});
+sf.push(`${sl.join('')}amix=inputs=${sl.length}:normalize=0:duration=first,alimiter=limit=0.84:level=false:latency=true[mix]`);
+run([...sa,'-filter_complex',sf.join(';'),'-map','[mix]','-c:a','pcm_s24le',`${dir}/有附加音效混音.wav`],'sfx-mix.log');
+const outputs=[];
+for(const [name,audio] of [['有附加音效','有附加音效混音.wav'],['无附加音效','原声与纸艺动作声.wav']]){
+ const output=`${dir}/行业经验配AI_41秒样片_${name}.mp4`;
+ run(['-i',`${dir}/picture-only.mp4`,'-i',`${dir}/${audio}`,'-map','0:v:0','-map','1:a:0','-c:v','copy','-c:a','aac','-b:a','256k','-ar','48000','-t','41','-movflags','+faststart',output],`${name}-mux.log`);
+ run(['-i',output,'-f','null','-'],`${name}-decode.log`);
+ run(['-i',output,'-af','ebur128=peak=true','-f','null','-'],`${name}-loudness.log`);
+ run(['-i',output,'-vf','blackdetect=d=0.3:pix_th=0.10:pic_th=0.98','-af','silencedetect=n=-45dB:d=0.5','-f','null','-'],`${name}-black-silence.log`);
+ const stream=spawnSync('ffmpeg',['-v','error','-i',output,'-map','0:v:0','-c','copy','-f','hash','-hash','sha256','-'],{encoding:'utf8'});assert.equal(stream.status,0);
+ outputs.push({path:output,sha256:sha(output),videoStreamSha256:stream.stdout.trim(),fullDecodePassed:true});
+}
+assert.equal(outputs[0].videoStreamSha256,outputs[1].videoStreamSha256);
+fs.writeFileSync(`${dir}/mix-and-media-check.json`,JSON.stringify({status:'technical-checks-only-awaiting-user-review',outputs,sfx:sfx.map(s=>({id:s.id,sourceFrame:s.frame,previewFrame:s.delay,gain:s.volume})),native:native.map(p=>({id:p.id,previewFrame:p.delay,gain:intake.mixPolicy.paperNativeGains[p.id]})),sourceVoiceGainDb:10,voiceWordsChanged:false,pictureStreamsIdentical:true,userAudibilityConfirmed:false,formalEnabled:false,publishAuthorized:false},null,2)+'\n',{flag:'wx'});
+console.log('两版样片已封装，全解码通过，画面码流一致；响度日志已保存，待复核。');
