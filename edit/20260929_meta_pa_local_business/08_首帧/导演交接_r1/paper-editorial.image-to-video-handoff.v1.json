@@ -1,0 +1,492 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "meta-pa-local-business-20260929-director-r1",
+  "revisionId": "firstframe-r1",
+  "status": "planned",
+  "sourceRoute": "paper-editorial",
+  "downstreamRoute": "paper-editorial",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20260929_meta_pa_local_business/03_导演拆解/director-cues.v2.json",
+      "sha256": "22891e22c5cb838c2aa7b223048d35c5af12ddae651ca2b70c74c232c093ec32"
+    },
+    "userApproval": {
+      "path": "edit/20260929_meta_pa_local_business/08_首帧/首帧制作授权.r1.json",
+      "sha256": "c88287cb5867969b9e480f5dff2765d2f9bf6ac20c9f3fa211437d642b1a5a63"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "739b69acb3a3b78a26e0fb31a7ee449628b98670c7504027f7d93d8eb432a655"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "image-to-video",
+  "promptIsolation": {
+    "containsFirstFramePromptBodies": false,
+    "consumer": "video-generation-stage"
+  },
+  "styleLock": {
+    "referenceImages": [
+      {
+        "id": "REF01",
+        "path": "edit/20260929_meta_pa_local_business/07_核对图/超级个体_字物同动参考_原尺寸.png",
+        "sha256": "2e070b084c721fee3596161eacc7b28e52a3db7f12e97bda82b5985f3cbefeb6",
+        "usage": "style-mechanism-only"
+      }
+    ],
+    "promptPrefix": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。",
+    "qualityBaselineId": "paper-super-individual-20260829-v1",
+    "textPolicy": "first-frame-generated-chinese-surface-bound",
+    "mustKeep": [
+      "首帧直接带准确中文",
+      "文字和载体一起运动",
+      "三层空间与真实纸纤维",
+      "一镜一个认知目标和因果动作",
+      "可用原生动作声"
+    ],
+    "mustAvoid": [
+      "镜头推拉冒充机构动作",
+      "所有字牌固定",
+      "屏幕悬浮字",
+      "塑料三维",
+      "整页幻灯片",
+      "替本地酒店伪造实测证据"
+    ]
+  },
+  "itemCount": 7,
+  "items": [
+    {
+      "id": "P01",
+      "beatId": "B12",
+      "startAnchorText": "以前只搜兰州酒店会出",
+      "endAnchorText": "会一家一家的去问一遍",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P01-prompt-pair-v1",
+      "pairSha256": "4a6684816a11a5cf122d561659b28917942188d1675dd80b62c74869bd6a8ce0",
+      "prompt": "基于已确认首帧，0—2秒三道带字筛门依次压到检验位置；2—6秒三栋旅馆沿轨道经过纸质筛门并分流，两栋被导轨拨到侧槽，一栋抵达后方托盘；6—8秒托盘带着“候选”向前推出一点后停稳。侧向轻跟拍只辅助实体动作，不能用镜头推近替代筛选。保留三次轻纸板扣合与滑轨摩擦声。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+      "promptSha256": "bb68b31bd5ee4b95446ae8361725ed08b379aeff33a6f8de159e50b34bea511e",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "primaryAction": "三栋旅馆沿轨道经过纸质筛门并分流",
+      "motionPlan": {
+        "goal": "条件筛选，不是搜索列表",
+        "actions": [
+          "筛门压下核对榫口",
+          "两栋不匹配旅馆被导入侧槽",
+          "匹配旅馆抵达候选托盘"
+        ],
+        "result": "条件不合的被分开，留下候选但没有订单",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "条件不合的被分开，留下候选但没有订单",
+      "visualRole": "mechanism",
+      "visualMetaphor": "三道有条件的纸质筛门分流候选旅馆",
+      "composition": "斜俯视纵深轨道，三栋旅馆在前景，筛门居中，结果泊位在右后方",
+      "textPlan": [
+        {
+          "text": "停车",
+          "surface": "橙色第一筛门横梁",
+          "motion": "with-object"
+        },
+        {
+          "text": "晚到",
+          "surface": "白色第二筛门横梁",
+          "motion": "with-object"
+        },
+        {
+          "text": "退订",
+          "surface": "蓝色第三筛门横梁",
+          "motion": "with-object"
+        },
+        {
+          "text": "候选",
+          "surface": "右后纸托盘前沿",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P02",
+      "beatId": "B13",
+      "startAnchorText": "如果你允许啊\n他记住",
+      "endAnchorText": "些条件\n一起进行考虑",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P02-prompt-pair-v1",
+      "pairSha256": "9074b66c0eb2348687c41984d96bf58afb46a80204fee2e1c2fd2669b487ba0c",
+      "prompt": "基于已确认首帧，0—2秒写有“已允许”的插销滑到解锁位，挡板抬起；2—6秒授权插销解除挡板后两张偏好片接入行程托盘，两张纸片保持彼此可辨；6—8秒托盘向镜头方向移动并停稳。四处文字全部贴在各自纸面上随运动改变透视。纸抽屉滑动、插销轻响与纸片落槽声清楚可闻。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+      "promptSha256": "19335d2791ac751eb8c266ab9247851cf536a4c68b6976518b4ec1e4699393b3",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "primaryAction": "授权插销解除挡板后两张偏好片接入行程托盘",
+      "motionPlan": {
+        "goal": "记忆有授权，不是偷偷画像",
+        "actions": [
+          "插销解锁挡板",
+          "抽屉送出偏好片",
+          "行程托盘接合"
+        ],
+        "result": "只有经过允许的偏好进入本次考虑",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "只有经过允许的偏好进入本次考虑",
+      "visualRole": "relationship",
+      "visualMetaphor": "授权插销控制偏好抽屉与本次行程连接",
+      "composition": "正侧三分之二角度，左边偏好抽屉，中间授权插销，右边本次行程凹槽",
+      "textPlan": [
+        {
+          "text": "电梯",
+          "surface": "米白偏好纸片正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "少走路",
+          "surface": "蓝边偏好纸片正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "已允许",
+          "surface": "橙色授权插销上表面",
+          "motion": "with-object"
+        },
+        {
+          "text": "本次行程",
+          "surface": "右侧可移动托盘前沿",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P03",
+      "beatId": "B15",
+      "startAnchorText": "挑好了呢\n还得查当天",
+      "endAnchorText": "点头\n他就会继续帮你",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 7.3,
+      "pairId": "P03-prompt-pair-v1",
+      "pairSha256": "f03d04e44b0e517d826cfe8794af20267a17bff821406ef6354668e824184d46",
+      "prompt": "基于已确认首帧，基于候选停在起点的状态，0—2秒三段带字桥面逐节扣合；2—5.5秒候选模型经过三段检验桥停在确认闸门之前；余下时间闸门轻轻回弹一次保持关闭，模型没有穿越。桥面文字随桥板扣合，确认文字随闸门回弹；不得出现自动支付或预订成功。保留桥板卡扣、模型滚动和闸门轻响。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+      "promptSha256": "7147860817429bfbd30cb7c4de9e44bc72b895671a25b846702c4e66e8baec37",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "primaryAction": "候选模型经过三段检验桥停在确认闸门之前",
+      "motionPlan": {
+        "goal": "订成之前仍需过关",
+        "actions": [
+          "桥段逐节扣合",
+          "候选模型经过检查区",
+          "确认闸门保持关闭等待人决定"
+        ],
+        "result": "查房态、价格与退订之后仍等待用户确认",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "查房态、价格与退订之后仍等待用户确认",
+      "visualRole": "process",
+      "visualMetaphor": "四节检验桥与末端确认闸门",
+      "composition": "低角度侧视，前景候选房间模型，中景四段桥，后景尚未开启的出口",
+      "textPlan": [
+        {
+          "text": "房态",
+          "surface": "第一块纸桥桥面",
+          "motion": "with-object"
+        },
+        {
+          "text": "价格",
+          "surface": "第二块纸桥桥面",
+          "motion": "with-object"
+        },
+        {
+          "text": "退订",
+          "surface": "第三块纸桥桥面",
+          "motion": "with-object"
+        },
+        {
+          "text": "确认",
+          "surface": "末端橙色闸门正面",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P04",
+      "beatId": "B21",
+      "startAnchorText": "但酒店的房贷\n商家的",
+      "endAnchorText": "些积累的东西\n让出去",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P04-prompt-pair-v1",
+      "pairSha256": "1cfdfd5c831ff20da0458b71ac0fb5150eb03e1ddc3cd2a395759db64563289f",
+      "prompt": "基于已确认首帧，0—3秒上层导轨切到助理入口而下层服务抽屉继续承接，左门收合、右门开启，轨道不是凭空生成；3—6秒下层三只带字服务抽屉按顺序短距推出，展示承重结构仍完整；6—8秒镜头轻降到上下层连接处停留。字随门转、随抽屉移动，纸梁不坍塌。保留纸铰链与抽屉的节奏动作声，不加灾难音。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+      "promptSha256": "21e91e1cb559923fc0ba4f533587ac906d725898046dc8d041354433b2821e7b",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "primaryAction": "上层导轨切到助理入口而下层服务抽屉继续承接",
+      "motionPlan": {
+        "goal": "入口换了，交易底座还在",
+        "actions": [
+          "两扇入口门交换开合状态",
+          "上层导轨换向",
+          "下层三只服务抽屉依次短距推出"
+        ],
+        "result": "变化发生在入口，商品订单售后能力仍然参与",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "变化发生在入口，商品订单售后能力仍然参与",
+      "visualRole": "mechanism",
+      "visualMetaphor": "上层入口换轨，下层服务承重梁继续运作",
+      "composition": "正面剖开的两层纸楼，上层两个入口，下层三根实体服务梁",
+      "textPlan": [
+        {
+          "text": "平台",
+          "surface": "上层左侧活动入口门",
+          "motion": "with-object"
+        },
+        {
+          "text": "助理",
+          "surface": "上层右侧活动入口门",
+          "motion": "with-object"
+        },
+        {
+          "text": "商品",
+          "surface": "下层左侧服务抽屉",
+          "motion": "with-object"
+        },
+        {
+          "text": "订单",
+          "surface": "下层中间服务抽屉",
+          "motion": "with-object"
+        },
+        {
+          "text": "售后",
+          "surface": "下层右侧服务抽屉",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P05",
+      "beatId": "B31",
+      "startAnchorText": "回到刚才兰州定房的这",
+      "endAnchorText": "I助理就可能把你录取",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P05-prompt-pair-v1",
+      "pairSha256": "295c5b9f5fdb9d3de2e1b107eec6ddf9c5f3741f23d0f999c0fc18b07ab394b0",
+      "prompt": "基于已确认首帧，0—4秒旅馆展示三种真实条件而资料册翻开仍是空白缺口：车库门推出，电梯厢升一层，夜间门牌开启；4—6秒右侧资料册翻开，封面两句文字随封面转动，内页对应条件处依旧空白；6—8秒三条纸桥停在缺口边缘，没有连接完成。文字始终跟所属物件，不漂在屏幕上；保留车库、电梯纸绳与翻页的轻声。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+      "promptSha256": "4c253cb09a56cd8680c10cccc3cf1edea0cbd35c7d8eb3e55002e24308d6327b",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "primaryAction": "旅馆展示三种真实条件而资料册翻开仍是空白缺口",
+      "motionPlan": {
+        "goal": "店里有，资料里没写",
+        "actions": [
+          "车库门推出",
+          "电梯厢短距上行和夜间门牌开启",
+          "资料册翻开暴露对应空白"
+        ],
+        "result": "服务存在不代表资料中能查到条件",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "服务存在不代表资料中能查到条件",
+      "visualRole": "comparison",
+      "visualMetaphor": "酒店真实条件剖面与只写空泛词的资料页形成错位",
+      "composition": "左边立体旅馆剖面，右边薄资料册，中间尚未接通的三条纸桥",
+      "textPlan": [
+        {
+          "text": "停车",
+          "surface": "可推出车库门正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "电梯",
+          "surface": "可升降电梯厢正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "晚入住",
+          "surface": "可开启夜间门牌",
+          "motion": "with-object"
+        },
+        {
+          "text": "环境好",
+          "surface": "右侧资料册封面上半部",
+          "motion": "with-object"
+        },
+        {
+          "text": "服务周到",
+          "surface": "右侧资料册封面下半部",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P06",
+      "beatId": "B33",
+      "startAnchorText": "什么情况下不能退\n这",
+      "endAnchorText": "现在能够被查到的地方",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P06-prompt-pair-v1",
+      "pairSha256": "e143d0be4d78fe1564f2f98716c991ec4ae454da57d74d2ce002ec5a8d4b454b",
+      "prompt": "基于已确认首帧，0—5秒答案纸带在前台回环两次却未进入外侧资料盒，三段中文字随带面的弯曲和位置变化，字形不变；5—6.5秒资料盒盖短暂打开露出空槽，写有“可查资料”的盖随轴运动；6.5—8秒纸带停在断口内侧。重点是资料没有出去，不自动补全缺口。保留纸轮细碎转动和纸带摩擦声，不生成说话声。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+      "promptSha256": "61f15f2c5940eb8135683c9dc0a5b092f3d012ceb597eba1b7b111fa64630866",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "primaryAction": "答案纸带在前台回环两次却未进入外侧资料盒",
+      "motionPlan": {
+        "goal": "前台知道，不等于网上可查",
+        "actions": [
+          "三段带字纸带连续回转",
+          "资料盒盖短暂打开",
+          "纸带停在断口内侧"
+        ],
+        "result": "口头反复回答与对外资料沉淀是两件事",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "口头反复回答与对外资料沉淀是两件事",
+      "visualRole": "metaphor",
+      "visualMetaphor": "前台答案纸带在柜台内反复回转，未进入外侧公开册",
+      "composition": "近景柜台与回环纸带，后景未打开的对外资料盒",
+      "textPlan": [
+        {
+          "text": "停车收费",
+          "surface": "第一段答案纸带表面",
+          "motion": "with-object"
+        },
+        {
+          "text": "晚到联系",
+          "surface": "第二段答案纸带表面",
+          "motion": "with-object"
+        },
+        {
+          "text": "退订条件",
+          "surface": "第三段答案纸带表面",
+          "motion": "with-object"
+        },
+        {
+          "text": "可查资料",
+          "surface": "外侧资料盒活动盖",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P07",
+      "beatId": "B36",
+      "startAnchorText": "假设AI已经推荐了你",
+      "endAnchorText": "介绍\n也补不上这一步",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P07-prompt-pair-v1",
+      "pairSha256": "63091dc582b3720bba3461baa7539304cd303fbf4529560fb32c7ffdc559d94a",
+      "prompt": "基于已确认首帧，0—2秒推荐路标转向轨道，顾客纸球沿实体槽滚动；2—5秒顾客纸球在预约断桥前停下而新增介绍册落在一旁，预约桥板轻晃，不能让纸球跳过断口；5—8秒远景人工服务台向前移少许仍未连接，以清晰断点结束。四处字随所属物件动作，结束保持可读。保留滚动、纸板轻碰和翻册声，不加预订成功提示音。不重造场景、不新增物件和文字，不要背景音乐和人声，保留可用原生动作音。",
+      "promptSha256": "e6c5bcedb735fd6b7bb61d20c27836c9f03c0aeb5d9440e0492467cd044b0a95",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "primaryAction": "顾客纸球在预约断桥前停下而新增介绍册落在一旁",
+      "motionPlan": {
+        "goal": "被推荐之后，仍会断在入口",
+        "actions": [
+          "路标转向推荐路线",
+          "纸球到达断桥并停止",
+          "介绍册移到桥旁但无法搭桥"
+        ],
+        "result": "增加介绍不等于修通预约入口",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "增加介绍不等于修通预约入口",
+      "visualRole": "process",
+      "visualMetaphor": "顾客纸球到达推荐节点后被预约断桥挡住，新增介绍不能填桥",
+      "composition": "对角纵深旅程轨道，前景资料叠层，中景预约断桥，远景人工服务台",
+      "textPlan": [
+        {
+          "text": "推荐",
+          "surface": "起点可转动路标牌",
+          "motion": "with-object"
+        },
+        {
+          "text": "预约",
+          "surface": "中景断桥活动桥板",
+          "motion": "with-object"
+        },
+        {
+          "text": "介绍",
+          "surface": "前景可滑动资料册封面",
+          "motion": "with-object"
+        },
+        {
+          "text": "人工",
+          "surface": "远景小服务台前挡板",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    }
+  ]
+}

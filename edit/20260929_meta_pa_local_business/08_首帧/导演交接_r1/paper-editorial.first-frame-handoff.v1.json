@@ -1,0 +1,408 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "meta-pa-local-business-20260929-director-r1",
+  "revisionId": "firstframe-r1",
+  "status": "planned",
+  "sourceRoute": "paper-editorial",
+  "downstreamRoute": "paper-editorial",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20260929_meta_pa_local_business/03_导演拆解/director-cues.v2.json",
+      "sha256": "22891e22c5cb838c2aa7b223048d35c5af12ddae651ca2b70c74c232c093ec32"
+    },
+    "userApproval": {
+      "path": "edit/20260929_meta_pa_local_business/08_首帧/首帧制作授权.r1.json",
+      "sha256": "c88287cb5867969b9e480f5dff2765d2f9bf6ac20c9f3fa211437d642b1a5a63"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "739b69acb3a3b78a26e0fb31a7ee449628b98670c7504027f7d93d8eb432a655"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "first-frame",
+  "promptIsolation": {
+    "containsVideoPromptBodies": false,
+    "consumer": "first-frame-stage"
+  },
+  "styleLock": {
+    "referenceImages": [
+      {
+        "id": "REF01",
+        "path": "edit/20260929_meta_pa_local_business/07_核对图/超级个体_字物同动参考_原尺寸.png",
+        "sha256": "2e070b084c721fee3596161eacc7b28e52a3db7f12e97bda82b5985f3cbefeb6",
+        "usage": "style-mechanism-only"
+      }
+    ],
+    "promptPrefix": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。",
+    "qualityBaselineId": "paper-super-individual-20260829-v1",
+    "textPolicy": "first-frame-generated-chinese-surface-bound",
+    "mustKeep": [
+      "首帧直接带准确中文",
+      "文字和载体一起运动",
+      "三层空间与真实纸纤维",
+      "一镜一个认知目标和因果动作",
+      "可用原生动作声"
+    ],
+    "mustAvoid": [
+      "镜头推拉冒充机构动作",
+      "所有字牌固定",
+      "屏幕悬浮字",
+      "塑料三维",
+      "整页幻灯片",
+      "替本地酒店伪造实测证据"
+    ]
+  },
+  "itemCount": 7,
+  "items": [
+    {
+      "id": "P01",
+      "beatId": "B12",
+      "startAnchorText": "以前只搜兰州酒店会出",
+      "endAnchorText": "会一家一家的去问一遍",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P01-prompt-pair-v1",
+      "pairSha256": "4a6684816a11a5cf122d561659b28917942188d1675dd80b62c74869bd6a8ce0",
+      "prompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。斜俯视一座精密但可读的微缩纸板筛选装置，前景三栋外观各异的无品牌旅馆纸模型，模型底部有大小不同的实体榫口；中景三道筛门错层排列，门轴、滑轨和侧面分流槽清楚可见；右后纸托盘为空，尚无成功结果。模型和纸门不是平面图标。首帧准确写中文：橙色第一筛门横梁印“停车”；白色第二筛门横梁印“晚到”；蓝色第三筛门横梁印“退订”；右后纸托盘前沿印“候选”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+      "promptSha256": "2e66a11643ee76e4511c92288217043f9352eba831324553ae47842c72d99814",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "reason": "条件不合的被分开，留下候选但没有订单",
+      "visualRole": "mechanism",
+      "visualMetaphor": "三道有条件的纸质筛门分流候选旅馆",
+      "composition": "斜俯视纵深轨道，三栋旅馆在前景，筛门居中，结果泊位在右后方",
+      "textPlan": [
+        {
+          "text": "停车",
+          "surface": "橙色第一筛门横梁",
+          "motion": "with-object"
+        },
+        {
+          "text": "晚到",
+          "surface": "白色第二筛门横梁",
+          "motion": "with-object"
+        },
+        {
+          "text": "退订",
+          "surface": "蓝色第三筛门横梁",
+          "motion": "with-object"
+        },
+        {
+          "text": "候选",
+          "surface": "右后纸托盘前沿",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P02",
+      "beatId": "B13",
+      "startAnchorText": "如果你允许啊\n他记住",
+      "endAnchorText": "些条件\n一起进行考虑",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P02-prompt-pair-v1",
+      "pairSha256": "9074b66c0eb2348687c41984d96bf58afb46a80204fee2e1c2fd2669b487ba0c",
+      "prompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。三分之二侧视一台木盒尺度的纸板记忆装置，左侧浅抽屉内两张厚纸偏好片清晰可读，中间橙色插销处在封闭轨道的起始位置，右侧行程托盘留有两个对应凹槽，前景纸板台阶、中景装置、后景折纸室内墙构成空间。所有偏好只属于抽象示意，不出现真实人脸资料或账号。首帧准确写中文：米白偏好纸片正面印“电梯”；蓝边偏好纸片正面印“少走路”；橙色授权插销上表面印“已允许”；右侧可移动托盘前沿印“本次行程”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+      "promptSha256": "b64c5a5018926125ef5d98b314893f9cfa66b37b1943b57cb4f949956ebaab0b",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "reason": "只有经过允许的偏好进入本次考虑",
+      "visualRole": "relationship",
+      "visualMetaphor": "授权插销控制偏好抽屉与本次行程连接",
+      "composition": "正侧三分之二角度，左边偏好抽屉，中间授权插销，右边本次行程凹槽",
+      "textPlan": [
+        {
+          "text": "电梯",
+          "surface": "米白偏好纸片正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "少走路",
+          "surface": "蓝边偏好纸片正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "已允许",
+          "surface": "橙色授权插销上表面",
+          "motion": "with-object"
+        },
+        {
+          "text": "本次行程",
+          "surface": "右侧可移动托盘前沿",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P03",
+      "beatId": "B15",
+      "startAnchorText": "挑好了呢\n还得查当天",
+      "endAnchorText": "点头\n他就会继续帮你",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 7.3,
+      "pairId": "P03-prompt-pair-v1",
+      "pairSha256": "f03d04e44b0e517d826cfe8794af20267a17bff821406ef6354668e824184d46",
+      "prompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。低角度侧视微缩纸桥机构，前景单栋无品牌旅馆候选模型停在起点，中景三块厚纸桥板平放但接缝清晰，末端橙色闸门处于关闭状态，远处没有订单、付款成功或绿色成功标志。底层裸露纸梁，中层桥面，后层竖直闸门层次鲜明。首帧准确写中文：第一块纸桥桥面印“房态”；第二块纸桥桥面印“价格”；第三块纸桥桥面印“退订”；末端橙色闸门正面印“确认”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+      "promptSha256": "a4f22abd5e96cd64d1961432833c2bc4180f11c00198754d682a5275a578249b",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "reason": "查房态、价格与退订之后仍等待用户确认",
+      "visualRole": "process",
+      "visualMetaphor": "四节检验桥与末端确认闸门",
+      "composition": "低角度侧视，前景候选房间模型，中景四段桥，后景尚未开启的出口",
+      "textPlan": [
+        {
+          "text": "房态",
+          "surface": "第一块纸桥桥面",
+          "motion": "with-object"
+        },
+        {
+          "text": "价格",
+          "surface": "第二块纸桥桥面",
+          "motion": "with-object"
+        },
+        {
+          "text": "退订",
+          "surface": "第三块纸桥桥面",
+          "motion": "with-object"
+        },
+        {
+          "text": "确认",
+          "surface": "末端橙色闸门正面",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P04",
+      "beatId": "B21",
+      "startAnchorText": "但酒店的房贷\n商家的",
+      "endAnchorText": "些积累的东西\n让出去",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P04-prompt-pair-v1",
+      "pairSha256": "1cfdfd5c831ff20da0458b71ac0fb5150eb03e1ddc3cd2a395759db64563289f",
+      "prompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。正面略俯视一栋剖开的纸质交易楼，前景阶梯、中景双层楼体、后景海军蓝城市纸剪影。上层左右两扇厚纸门及一段可换向轨道，下层三只服务抽屉由可见纸梁承托；上下层连接是实体纸轨道，不是电子屏幕上的流程图。入口门未切换，下层结构完整。首帧准确写中文：上层左侧活动入口门印“平台”；上层右侧活动入口门印“助理”；下层左侧服务抽屉印“商品”；下层中间服务抽屉印“订单”；下层右侧服务抽屉印“售后”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+      "promptSha256": "9ca4481808640700e35599c4a0060f8302a0c5b4bf9f3b766a923d6eed0e4f1f",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "reason": "变化发生在入口，商品订单售后能力仍然参与",
+      "visualRole": "mechanism",
+      "visualMetaphor": "上层入口换轨，下层服务承重梁继续运作",
+      "composition": "正面剖开的两层纸楼，上层两个入口，下层三根实体服务梁",
+      "textPlan": [
+        {
+          "text": "平台",
+          "surface": "上层左侧活动入口门",
+          "motion": "with-object"
+        },
+        {
+          "text": "助理",
+          "surface": "上层右侧活动入口门",
+          "motion": "with-object"
+        },
+        {
+          "text": "商品",
+          "surface": "下层左侧服务抽屉",
+          "motion": "with-object"
+        },
+        {
+          "text": "订单",
+          "surface": "下层中间服务抽屉",
+          "motion": "with-object"
+        },
+        {
+          "text": "售后",
+          "surface": "下层右侧服务抽屉",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P05",
+      "beatId": "B31",
+      "startAnchorText": "回到刚才兰州定房的这",
+      "endAnchorText": "I助理就可能把你录取",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P05-prompt-pair-v1",
+      "pairSha256": "295c5b9f5fdb9d3de2e1b107eec6ddf9c5f3741f23d0f999c0fc18b07ab394b0",
+      "prompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。左边是一座无品牌旅馆纸模型的立体剖面，地下小车库、竖直电梯井和夜间接待门可区分，右边薄资料册封面只有两句空泛介绍，册页侧边有空白缺口。两边通过三条尚未搭接的厚纸窄桥相对，背景为层叠深蓝街景。灯光清楚照亮纸纤维、门轴及电梯纸绳。首帧准确写中文：可推出车库门正面印“停车”；可升降电梯厢正面印“电梯”；可开启夜间门牌印“晚入住”；右侧资料册封面上半部印“环境好”；右侧资料册封面下半部印“服务周到”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+      "promptSha256": "11de0a200c0d6ea33b24e801d888f60f818d315e90b787f7c9c1d41b5fdbaa6a",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "reason": "服务存在不代表资料中能查到条件",
+      "visualRole": "comparison",
+      "visualMetaphor": "酒店真实条件剖面与只写空泛词的资料页形成错位",
+      "composition": "左边立体旅馆剖面，右边薄资料册，中间尚未接通的三条纸桥",
+      "textPlan": [
+        {
+          "text": "停车",
+          "surface": "可推出车库门正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "电梯",
+          "surface": "可升降电梯厢正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "晚入住",
+          "surface": "可开启夜间门牌",
+          "motion": "with-object"
+        },
+        {
+          "text": "环境好",
+          "surface": "右侧资料册封面上半部",
+          "motion": "with-object"
+        },
+        {
+          "text": "服务周到",
+          "surface": "右侧资料册封面下半部",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P06",
+      "beatId": "B33",
+      "startAnchorText": "什么情况下不能退\n这",
+      "endAnchorText": "现在能够被查到的地方",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P06-prompt-pair-v1",
+      "pairSha256": "e143d0be4d78fe1564f2f98716c991ec4ae454da57d74d2ce002ec5a8d4b454b",
+      "prompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。一个立体微缩旅馆前台，柜台内有由纸轮支撑的宽纸带，三段常见问题标题沿带面分区清楚排布，柜台外侧有合盖的资料盒，盒口与纸带之间存在一小段明显断开。前景柜台边缘、中景纸轮纸带、后景房间钥匙纸挂板有真实深度。没有真人手、手机截图或伪造评价。首帧准确写中文：第一段答案纸带表面印“停车收费”；第二段答案纸带表面印“晚到联系”；第三段答案纸带表面印“退订条件”；外侧资料盒活动盖印“可查资料”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+      "promptSha256": "d0f84d103499c84636ef16529ce5831dbc41fd978286b674798a945b10ea34c4",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "reason": "口头反复回答与对外资料沉淀是两件事",
+      "visualRole": "metaphor",
+      "visualMetaphor": "前台答案纸带在柜台内反复回转，未进入外侧公开册",
+      "composition": "近景柜台与回环纸带，后景未打开的对外资料盒",
+      "textPlan": [
+        {
+          "text": "停车收费",
+          "surface": "第一段答案纸带表面",
+          "motion": "with-object"
+        },
+        {
+          "text": "晚到联系",
+          "surface": "第二段答案纸带表面",
+          "motion": "with-object"
+        },
+        {
+          "text": "退订条件",
+          "surface": "第三段答案纸带表面",
+          "motion": "with-object"
+        },
+        {
+          "text": "可查资料",
+          "surface": "外侧资料盒活动盖",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P07",
+      "beatId": "B36",
+      "startAnchorText": "假设AI已经推荐了你",
+      "endAnchorText": "介绍\n也补不上这一步",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 8,
+      "pairId": "P07-prompt-pair-v1",
+      "pairSha256": "63091dc582b3720bba3461baa7539304cd303fbf4529560fb32c7ffdc559d94a",
+      "prompt": "摄影级微缩纸艺定格，深海军蓝背景、米白纤维卡纸与少量珊瑚橙点色，至少三层实体空间，瓦楞断面、折痕、柔和侧光与真实接触阴影，16:9横屏。一条从左前通向右后的微缩纸轨道，起点是一枚可辨的小顾客纸球与路标，中间预约桥板缺了一段，远处人工服务台与轨道尚未连接。前景有一本薄资料册，底部纸架、中部轨道与后景服务台三层分明，没有订单成功、支付动画或真实网页。所有中文简短清晰地印在指定实体表面。首帧准确写中文：起点可转动路标牌印“推荐”；中景断桥活动桥板印“预约”；前景可滑动资料册封面印“介绍”；远景小服务台前挡板印“人工”。除这些文字外不新增字，字属于纸面而非后贴字幕。底部留出干净字幕空间。",
+      "promptSha256": "7559d63b2d384be8beb9ef0117d13b15ecce7a410286b4d445bb0a8c5339ead3",
+      "negativePrompt": [
+        "文字不脱离纸面或变形",
+        "不把所有文字固定在画面上",
+        "不以推镜代替物件动作",
+        "不做塑料三维或幻灯片",
+        "不添加人声与背景音乐"
+      ],
+      "reason": "增加介绍不等于修通预约入口",
+      "visualRole": "process",
+      "visualMetaphor": "顾客纸球到达推荐节点后被预约断桥挡住，新增介绍不能填桥",
+      "composition": "对角纵深旅程轨道，前景资料叠层，中景预约断桥，远景人工服务台",
+      "textPlan": [
+        {
+          "text": "推荐",
+          "surface": "起点可转动路标牌",
+          "motion": "with-object"
+        },
+        {
+          "text": "预约",
+          "surface": "中景断桥活动桥板",
+          "motion": "with-object"
+        },
+        {
+          "text": "介绍",
+          "surface": "前景可滑动资料册封面",
+          "motion": "with-object"
+        },
+        {
+          "text": "人工",
+          "surface": "远景小服务台前挡板",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    }
+  ]
+}

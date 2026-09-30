@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "meta-pa-local-business-20260929-director-r1",
+  "revisionId": "firstframe-r1",
+  "status": "planned",
+  "sourceRoute": "ai-generated-video",
+  "downstreamRoute": "generated-video",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20260929_meta_pa_local_business/03_导演拆解/director-cues.v2.json",
+      "sha256": "22891e22c5cb838c2aa7b223048d35c5af12ddae651ca2b70c74c232c093ec32"
+    },
+    "userApproval": {
+      "path": "edit/20260929_meta_pa_local_business/08_首帧/首帧制作授权.r1.json",
+      "sha256": "c88287cb5867969b9e480f5dff2765d2f9bf6ac20c9f3fa211437d642b1a5a63"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "739b69acb3a3b78a26e0fb31a7ee449628b98670c7504027f7d93d8eb432a655"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "image-to-video",
+  "promptIsolation": {
+    "containsFirstFramePromptBodies": false,
+    "consumer": "video-generation-stage"
+  },
+  "styleLock": {
+    "referenceImages": [],
+    "promptPrefix": "写实生活电影镜头，克制的暖冷对比与自然光，真实中国城市普通旅馆环境，16:9横屏。",
+    "mustKeep": [
+      "生活细节",
+      "无品牌通用环境",
+      "单一人物动作"
+    ],
+    "mustAvoid": [
+      "真实酒店冒充",
+      "伪造平台界面",
+      "文字水印"
+    ]
+  },
+  "itemCount": 1,
+  "items": [
+    {
+      "id": "G01",
+      "beatId": "B10",
+      "startAnchorText": "假如说你周末带着家人",
+      "endAnchorText": "助理\n然后再加一句话",
+      "timingStatus": "post-shoot-audio-bound",
+      "durationSeconds": 6,
+      "pairId": "G01-prompt-pair-v1",
+      "pairSha256": "3815c3efabbd7005d92e66990bea1014162f8e9dd8e5a921bb0547138272c52f",
+      "prompt": "基于已确认首帧，成年旅客把行李箱拉向旅馆门口，箱轮沿地面滚动，家人自然跟随，镜头在侧后方缓慢跟进，结尾停在门前而不是入住成功。保留轻微轮声与夜间环境声，不添加对白、配乐、新人物或文字。",
+      "promptSha256": "41988e1d999d4818817b49937f07ea8043d068ba374112919d344cc4a7cae626",
+      "negativePrompt": [
+        "不复刻真实酒店品牌或地标",
+        "不出现可读车牌和手机界面",
+        "不生成未成年人特写",
+        "不伪装本人亲测或客户证据"
+      ],
+      "primaryAction": "成年旅客把行李箱拉向旅馆门口",
+      "purpose": "illustration-only",
+      "representationPolicy": "synthetic-not-evidence",
+      "evidenceEligible": false,
+      "disclosureRequired": true,
+      "realEntityReenactmentForbidden": true,
+      "visualIntent": "让夜晚带家人抵达的假设条件具体化，人物与酒店均非真实案例。"
+    }
+  ]
+}
