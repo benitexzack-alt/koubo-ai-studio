@@ -4,7 +4,7 @@ import {AdaptiveBilingualCaptionOverlay} from '../components/AdaptiveBilingualCa
 import {LocalFont} from '../components/LocalFont';
 import {EpisodeSemanticOverlay} from './semantic/EpisodeSemanticOverlay';
 import anchors from './runtime/anchors.r1.json';
-import selection from './runtime/shotcraft-selection.r2.json';
+import selection from './runtime/shotcraft-selection.r3.json';
 
 const FPS=30,DURATION=12286;
 const clamp={extrapolateLeft:'clamp',extrapolateRight:'clamp'} as const;
@@ -50,7 +50,7 @@ const Preview=()=>{
   {anchors.beats.filter(b=>b.primaryRoute==='real-evidence').map(b=>{const start=F(b.startSeconds),dur=F(b.endSeconds)-start;return <Sequence key={b.beatId} from={start} durationInFrames={dur} premountFor={15}><Evidence id={b.routeCueId!} sourceStart={start} duration={dur}/></Sequence>;})}
   <EpisodeSemanticOverlay selection={selection}/>
   <div style={{position:'absolute',left:60,top:40,fontSize:30,fontWeight:600,textShadow:'0 2px 9px #000'}}>超哥AI创业记</div>
-  <AdaptiveBilingualCaptionOverlay captionsSrc="captions.json" variant="transparent-v8"/>
+  <AdaptiveBilingualCaptionOverlay captionsSrc="captions.r2.json" variant="transparent-v8"/>
  </AbsoluteFill>;
 };
 registerRoot(()=> <Composition id="MetaPALocalBusinessPreviewR1" component={Preview} width={1920} height={1080} fps={FPS} durationInFrames={DURATION}/>);

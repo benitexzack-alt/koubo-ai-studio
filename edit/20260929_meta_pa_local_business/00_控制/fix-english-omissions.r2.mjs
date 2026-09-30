@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const base='edit/20260929_meta_pa_local_business',dir=`${base}/10_剪辑准备/字幕`,effects=`${base}/10_剪辑准备/动效`;
+const read=p=>JSON.parse(fs.readFileSync(p)),sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const write=(p,o)=>{assert(!fs.existsSync(p),`不覆盖旧版本:${p}`);fs.writeFileSync(p,JSON.stringify(o,null,2)+'\n');};
+const previous=`${dir}/meta-pa.actual.bilingual.r1.json`,target=`${dir}/meta-pa.actual.bilingual.r2.json`,original=read(previous),captions=structuredClone(original);
+const replacements={C073:'For example, Taobao Instant Commerce, Fliggy, and Amap are all connected into it.',C085:'When it cannot finish a task, who provides the interface? All of these need to be checked.'};
+const changes=[];
+for(const c of captions)if(replacements[c.id]){changes.push({captionId:c.id,zh:c.zh,before:c.en,after:replacements[c.id],reason:'英文漏译补齐；不改中文、时点或原声'});c.en=replacements[c.id];}
+assert.equal(changes.length,2);
+assert.deepEqual(captions.map(({en,...rest})=>rest),original.map(({en,...rest})=>rest));
+write(target,captions);
+const policy=read(`${dir}/meta-pa.spoken-source-policy.r1.json`);policy.captions={path:target,sha256:sha(target)};policy.translationRevision={from:previous,sha256:sha(previous),changes};write(`${dir}/meta-pa.spoken-source-policy.r2.json`,policy);
+const checked=spawnSync('node',['tools/check-spoken-source-policy.mjs',policy.transcript.path,target,`${dir}/meta-pa.spoken-source-policy.r2.json`],{encoding:'utf8'});assert.equal(checked.status,0,checked.stderr+checked.stdout);
+write(`${dir}/实录逐字校验回执.r2.json`,{status:'text-preservation-check-passed',captionPath:target,captionSha256:sha(target),canonicalSha256:sha(policy.transcript.path),policySha256:sha(`${dir}/meta-pa.spoken-source-policy.r2.json`),actualValidatorOutput:checked.stdout,changes,chineseTimingAndTextUnchanged:true,humanListeningPerformed:false,unresolved:policy.unresolved});
+const selection=read(`${effects}/shotcraft-selection.r2.json`);selection.captions={path:target,sha256:sha(target)};write(`${effects}/shotcraft-selection.r3.json`,selection);
+const wordbinding=read(`${effects}/shotcraft-word-timing-binding.r2.json`);wordbinding.finalSelection={path:`${effects}/shotcraft-selection.r3.json`,sha256:sha(`${effects}/shotcraft-selection.r3.json`)};wordbinding.revisionNote='只重绑两处英译补齐后的字幕哈希，中文、逐项入点与卡片选择不变';write(`${effects}/shotcraft-word-timing-binding.r3.json`,wordbinding);
+const match=read(`${effects}/shotcraft-auto-match-receipt.r2.json`);match.captions=selection.captions;match.selection=wordbinding.finalSelection;match.revisionNote=wordbinding.revisionNote;write(`${effects}/shotcraft-auto-match-receipt.r3.json`,match);
+fs.copyFileSync(target,'remotion/public/media/meta-pa-local-business-r1/captions.r2.json',fs.constants.COPYFILE_EXCL);
+console.log(checked.stdout);console.log(JSON.stringify({captionSha256:sha(target),changes:changes.length,chineseUnchanged:true}));

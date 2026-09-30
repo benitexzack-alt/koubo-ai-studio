@@ -1,0 +1,53 @@
+{
+  "status": "text-preservation-check-passed",
+  "captionPath": "edit/20260929_meta_pa_local_business/10_剪辑准备/字幕/meta-pa.actual.bilingual.r2.json",
+  "captionSha256": "e50402ed9c1cb535efe6831a4d67c39089f552c9a27aebb818f84e6d65bf8fa1",
+  "canonicalSha256": "7eeed24840ed2c2ca91aeb6e0031ff7457aee3df54b9b935d1751f0446a53113",
+  "policySha256": "cf346497378ffb043ba18a4465077b9f98cde9f24beb7fd40bcaaf703e38e3c6",
+  "actualValidatorOutput": "实录字符=1899 字幕字符=1899 匹配=1899 精确度=1.000 覆盖度=1.000 ASR修正=14\n实录逐字保真校验通过：录音为正文，文稿仅作核对。\n",
+  "changes": [
+    {
+      "captionId": "C073",
+      "zh": "你比如说像淘宝闪购飞猪高德这些全部接进来",
+      "before": "For example, Taobao Instant Commerce, Fliggy, and Amap.",
+      "after": "For example, Taobao Instant Commerce, Fliggy, and Amap are all connected into it.",
+      "reason": "英文漏译补齐；不改中文、时点或原声"
+    },
+    {
+      "captionId": "C085",
+      "zh": "遇到办不了的事由谁来接口这些都要看",
+      "before": "When it cannot finish a task, who provides the interface?",
+      "after": "When it cannot finish a task, who provides the interface? All of these need to be checked.",
+      "reason": "英文漏译补齐；不改中文、时点或原声"
+    }
+  ],
+  "chineseTimingAndTextUnchanged": true,
+  "humanListeningPerformed": false,
+  "unresolved": [
+    {
+      "startMs": 275960,
+      "endMs": 278300,
+      "text": "AI助理就可能把你录取",
+      "reason": "全文turbo及无提示关键窗均识别录取，small为录定；不可仅依据拍前稿改为漏掉。保留原始识别，等待原音听辨/用户决定。",
+      "captionIds": [
+        "C091"
+      ]
+    },
+    {
+      "startMs": 350380,
+      "endMs": 351680,
+      "text": "有人把这些接线",
+      "reason": "全文turbo接线、small接下来、关键窗turbo接下，存在分歧；保留全文ASR接线，等待原音听辨。",
+      "captionIds": [
+        "C120"
+      ]
+    },
+    {
+      "startMs": 259620,
+      "endMs": 260640,
+      "text": "由谁来接口",
+      "reason": "三套/窗无提示识别均为接口；保留实录接口，不恢复拍前稿接手。",
+      "status": "retained-actual-word"
+    }
+  ]
+}

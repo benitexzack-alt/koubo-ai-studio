@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+const dir='edit/20260929_meta_pa_local_business/10_剪辑准备/完整视听小样R1';
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const previousFrames=[5,11,16,19,33,36,41,56.6,60,63,73,95,108,116,127,154,175,198,202,217,225,234,263,272,280,294,312,330,353,376,385,407].map(t=>Math.round(t*30));
+const frames=previousFrames.map(frame=>{const file=`${dir}/risk-r2-${frame}.png`,previous=`${dir}/risk-${frame}.png`;assert.equal(sha(file),sha(previous));return {frame,seconds:frame/30,path:file,sha256:sha(file),reviewEvidence:'主执行已逐张查看同轮R1画面；当前R2新渲染PNG哈希完全相同，内容一致；另复查代表帧'};});
+for(const frame of [6810,7800])frames.push({frame,seconds:frame/30,path:`${dir}/risk-r2-${frame}.png`,sha256:sha(`${dir}/risk-r2-${frame}.png`),reviewEvidence:'主执行实际查看R2新增英译窗口，英文已补齐且没有越出字幕区'});
+const result={status:'risk-frames-reviewed',jobSha256:sha(`${dir}/preview-job.json`),reviewer:'Codex主执行视觉检查',checks:['34张当前输入渲染帧，32张与已逐张查看的R1画面完全一致','左下真人、资料正文与来源、中英字幕分区无重叠','16处V8连续对象及4处列表字号、脸部避让和层级复查','7纸艺与1情景为自然速实片，不添加静止字牌或覆盖原纸艺中文','没有客户可见R01路由编号、JSON名或工程标签'],frames,passedForCompleteCandidateRender:true,humanListeningPerformed:false,fullHumanViewingPerformed:false,userPreviewApproved:false,publishAuthorized:false,remaining:['275.96秒录取/录定、350.38秒接线/接下仍须原声听辨，不依据拍前稿替换','P01筛选动作完成度与全片正常速度、手机音量听感待用户终验']};
+fs.writeFileSync(`${dir}/risk-frame-review.json`,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({status:result.status,frameCount:frames.length,jobSha256:result.jobSha256}));
