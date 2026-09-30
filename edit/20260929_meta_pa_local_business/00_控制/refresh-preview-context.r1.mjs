@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const root=process.cwd(),base='edit/20260929_meta_pa_local_business',control=`${base}/00_控制`,taskId='task-20260930T112613Z-56827b79';
+const groups={current_project_index:['knowledge/00-项目知识索引.md'],current_project_summary:['project.md'],latest_update:['knowledge/08-决策与复盘日志.md'],applicable_rules_or_skills:['knowledge/20-V8连续语义动效与可感知音效基线.md','knowledge/22-实录优先字幕与系列发布包硬门禁.md','workflow/active-production-profile.v1.json','skills/koubo-shotcraft-library/SKILL.md'],historical_failures:['knowledge/20-V8连续语义动效与可感知音效基线.md'],task_original_materials:[`${base}/10_剪辑准备/完整视听小样R1/preview-job.json`,`${base}/10_剪辑准备/字幕/meta-pa.actual.bilingual.r1.json`,`${base}/10_剪辑准备/字幕/meta-pa.spoken-source-policy.r1.json`,`${base}/10_剪辑准备/动效/shotcraft-selection.r2.json`,`${base}/10_剪辑准备/声音/逐动作音效与原生声音.r3.json`]};
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex'),req=`${control}/context-requirements.preview-r1.json`,rec=`${control}/read-receipts.preview-r1.json`;
+fs.writeFileSync(req,JSON.stringify({schema_version:'opc-task-requirements/1.0',task_id:taskId,required_receipt_groups:Object.fromEntries(Object.entries(groups).map(([k,a])=>[k,a.map(p=>path.resolve(root,p))]))},null,2)+'\n');
+fs.writeFileSync(rec,JSON.stringify({schema_version:'opc-read-receipts/1.0',task_id:taskId,receipts:[...new Set(Object.values(groups).flat())].map(p=>({path:path.resolve(root,p),sha256:sha(p),read_status:'read',application_status:'applied',read_completed_at:new Date().toISOString(),application_note:'本轮已实际读取规则相关段落或亲自编写/核对本期数据。用于完整原声字幕、独立本期动效和逐动作混音输入封装。仅准备待用户明确同意的隔离小样，不冒充现行V2正式生产或人工听审。'}))},null,2)+'\n');
+const r=spawnSync('python3',['/Users/pc/Documents/个人知识库/04_Claude Code日常操作/scripts/opc_rag.py','start','--project','口播','--task','Meta本期素材齐备，准备完整原声字幕动效音效独立视听小样输入；隔离导出等待明确用户同意，不正式发布','--cwd',root,'--task-id',taskId,'--important','--requirements-file',path.resolve(req),'--receipt-file',path.resolve(rec)],{encoding:'utf8',maxBuffer:20e6});
+fs.writeFileSync(`${control}/context-preview-r1.log`,r.stdout+r.stderr);console.log(r.stdout.slice(-2500),r.stderr);process.exitCode=r.status;

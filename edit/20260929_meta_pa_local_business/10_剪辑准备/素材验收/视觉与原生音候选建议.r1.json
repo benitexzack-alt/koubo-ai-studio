@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "meta-local-asset-review/v1",
+  "status": "preview-intake-complete-human-audio-and-dynamic-acceptance-pending",
+  "evidenceScope": "逐镜动作边界抽帧已查看；完整解码与响度已测；尚未声称正常速度完整视听人审通过",
+  "originalPreserved": true,
+  "regenerationPerformed": false,
+  "upscalePerformed": false,
+  "globalTechnicalFindings": {
+    "originalDurationSeconds": 409.506009,
+    "generatedVideoCount": 8,
+    "publicAssetCount": 14,
+    "paperResolution": "1344x768",
+    "paperFrameRate": "24/1",
+    "aiSceneResolution": "2560x1440",
+    "aiSceneFrameRate": "24/1",
+    "fullDecodeFailures": [],
+    "missingGeneratedIds": [],
+    "publicHashMismatches": [],
+    "paperAllHaveNativeAudio": true,
+    "pixelDimensionsNotice": "实际纸艺1344x768，不能因准备页写2K而登记为2K；本期预览可按实际分辨率缩放入1080P，未启动AI升清。"
+  },
+  "mixAssumption": "以下增益是本条小样的起始建议，不是已通过听审的最终值；以原片人声清楚、动作音可感知为目标，混音后再量测与正常音量试听。",
+  "clips": [
+    {
+      "id": "P01", "startSeconds": 89.72, "durationSeconds": 8, "sourceOffsetSeconds": 0,
+      "visualObservation": "停车、晚到、退订随门板下降，旅馆沿轨移动；文字无清晰乱码，没有屏幕固定字覆盖。末尾三栋旅馆仍在主轨，候选托盘为空。",
+      "semanticIssue": "未清楚实现两栋分流、一栋进入候选托盘；只证明有机构动作，不证明筛选结果成立。",
+      "previewTreatment": "保留用户交付原素材供小样确认，单独记录该镜意义闭环不足；不连锁重做、不宣称导演动作全部通过。",
+      "nativeAudio": {"integratedLufs": -23.3, "truePeakDbfs": 0, "gainDbStart": -10, "gainLinearStart": 0.31623, "policy": "保留候选，先降低瞬态；是否有无关语音/配乐仍待逐条试听", "avoidDuplicateSfx": true}
+    },
+    {
+      "id": "P02", "startSeconds": 103.82, "durationSeconds": 8, "sourceOffsetSeconds": 0,
+      "visualObservation": "偏好纸片翻转/落入本次行程托盘，托盘随后移出；电梯、少走路、本次行程随实体纸面运动，插销仍有已允许字。没有把字留在屏幕原位。",
+      "semanticIssue": "没有观察到严重矛盾；授权插销动作比提示词预期弱，属于小样观察点，不是通过完整动态人审。",
+      "nativeAudio": {"integratedLufs": -23.6, "truePeakDbfs": 0, "gainDbStart": -10, "gainLinearStart": 0.31623, "policy": "保留候选，降低瞬态；不用同动作叠两次", "avoidDuplicateSfx": true}
+    },
+    {
+      "id": "P03", "startSeconds": 122.14, "durationSeconds": 7.3, "sourceOffsetSeconds": 0,
+      "visualObservation": "纸球经过房态、价格、退订桥，最后停在确认门前；闸门小幅开裂/回弹，没有穿门、付款或订成画面。文字依附桥面和门板。",
+      "semanticIssue": "候选旅馆模型实际变成纸球，但所表达的等待确认没有变成自动订成。桥面主要静置，不能说所有字都发生独立运动；基线允许固定物件上的字保持静止。",
+      "trimNote": "只取前7.3秒；球到门前和确认字已可见，不延长、不补帧、不循环。",
+      "nativeAudio": {"integratedLufs": -27.8, "truePeakDbfs": 0.5, "gainDbStart": -7, "gainLinearStart": 0.44668, "policy": "原素材真峰值超过0，必须降低增益，最后混音再检查峰值", "avoidDuplicateSfx": true}
+    },
+    {
+      "id": "P04", "startSeconds": 170.34, "durationSeconds": 8, "sourceOffsetSeconds": 0,
+      "visualObservation": "助理门打开、平台门仍在；下层商品、订单、售后抽屉向前移动，字随抽屉保持透视与位置。可见上下层空间结构，非只有电子运镜。",
+      "semanticIssue": "下层抽屉更接近同步推出，不是明显逐只顺序，但入口与交易底座仍分开，没有坍塌或平台消失画面。",
+      "nativeAudio": {"integratedLufs": -24.3, "truePeakDbfs": -0.3, "gainDbStart": -10, "gainLinearStart": 0.31623, "policy": "保留门轴/抽屉候选声；避免叠成功音", "avoidDuplicateSfx": true}
+    },
+    {
+      "id": "P05", "startSeconds": 267.76, "durationSeconds": 8, "sourceOffsetSeconds": 0,
+      "visualObservation": "停车门、电梯、晚入住门牌发生动作，资料册从环境好/服务周到封面翻开为无条件文字的空白页，字随封面转动隐藏。三条桥保持不连接。",
+      "semanticIssue": "抽帧未见严重矛盾；关键词背面不可见是合理翻页，不是丢字。",
+      "nativeAudio": {"integratedLufs": -32.2, "truePeakDbfs": -5.9, "gainDbStart": -1, "gainLinearStart": 0.89125, "policy": "此镜原生声比P01-P04弱，不照搬统一低增益；保留候选后混音检查是否可感知", "avoidDuplicateSfx": true}
+    },
+    {
+      "id": "P06", "startSeconds": 287.88, "durationSeconds": 8, "sourceOffsetSeconds": 0,
+      "visualObservation": "停车收费、晚到联系、退订条件随曲面纸带转动，可查资料随盒盖翻起；资料盒为空，纸带没有进入外侧资料盒。转动时有透视/弯曲，归于纸面，不是悬浮字。",
+      "semanticIssue": "抽帧未见清晰乱码；弯曲边界有短时阅读变形，需要正常速度小样复核而非强行冻结字。",
+      "nativeAudio": {"integratedLufs": -28.7, "truePeakDbfs": 0.7, "gainDbStart": -7, "gainLinearStart": 0.44668, "policy": "原素材真峰值超过0，降低瞬态；保留纸带/盒盖候选声", "avoidDuplicateSfx": true}
+    },
+    {
+      "id": "P07", "startSeconds": 325.92, "durationSeconds": 8, "sourceOffsetSeconds": 0,
+      "visualObservation": "推荐路标转动，球滚向预约桥并停在缺口内侧；带预约字桥板轻晃，人工服务台抬升/移位。断口一直存在，没有成功越桥。",
+      "semanticIssue": "介绍册主要保持原位，未明显执行新增册落下动作；断点仍可理解，作为小样观察点。",
+      "nativeAudio": {"integratedLufs": -33.5, "truePeakDbfs": -3.1, "gainDbStart": 0, "gainLinearStart": 1, "policy": "弱平均响度但存在瞬态，先原增益保留候选，再按对白遮挡微调", "avoidDuplicateSfx": true}
+    },
+    {
+      "id": "G01", "startSeconds": 70.46, "durationSeconds": 6, "sourceOffsetSeconds": 0,
+      "visualObservation": "成年旅客与同行者带行李缓慢走向酒店入口，没有展示入住已成功；不是本人真实客户证据。画面有类似可辨车牌的小区域，不能当真实地点资料或突出该区域。",
+      "semanticIssue": "实录提到带家人/开车/晚到，画面只作假设情景说明，不补造孩子、电梯/房型证据。",
+      "nativeAudio": {"integratedLufs": -42.4, "truePeakDbfs": -17.3, "gainDbStart": 0, "gainLinearStart": 1, "policy": "本身很轻，夜间环境/滚轮候选声先保留；是否无关配乐/人声待试听，不随意提到和对白竞争", "avoidDuplicateSfx": true}
+    }
+  ],
+  "publicAudio": {
+    "V01": {"integratedLufs": -16, "truePeakDbfs": -2.9, "policy": "官方宣传片非本期纸艺原生动作声；用作署名必要画面引用，原音候选不直接混进真人口播，避免英文旁白/配乐争抢与音乐权限问题", "candidateGain": 0},
+    "V02": {"hasAudio": false, "policy": "文件本身无音轨，不是漏下载；界面局部聚焦动作由本期Remotion/SFX方案处理"}
+  },
+  "speakerAudio": {"integratedLufs": -26.5, "truePeakDbfs": -4.5, "policy": "保留真实原声与全部实际话语；整体若抬高响度不能直接加8dB而不检查峰值，需最终混音限峰并记录。此报告不授权重写说法或替换声音。"},
+  "humanAcceptance": {"normalSpeedFullVisualAndAudio": false, "userFullPreviewAccepted": false, "minimumBaselineProven": false}
+}
