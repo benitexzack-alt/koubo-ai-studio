@@ -86,3 +86,9 @@ const route = matchesActive
     ? 'V7.2 锁定母版回归豁免'
     : `用户明确批准的 ${declaredProfile.version} 降级`;
 console.log(`当前生产档案校验通过：${route}。`);
+if (matchesActive && profile.nextEpisodeDefaults) {
+  const defaults = profile.nextEpisodeDefaults;
+  console.log(
+    `新建任务起测基准 ${defaults.id}：词条成片主字${defaults.wordCards.mainTitleOutputPixels}px、说明${defaults.wordCards.supportingTextOutputPixels}px；关键音效按有效瞬态同步、正常音量试听。不回改历史片；档案校验不代表参数已落片或听感通过。`,
+  );
+}

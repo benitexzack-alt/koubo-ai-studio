@@ -44,7 +44,13 @@ const v8Job = {
 
 mkdirSync(testRoot, {recursive: true});
 try {
-  assertPasses('V8默认任务', run(writeJob('v8', v8Job)));
+  const v8Result = run(writeJob('v8', v8Job));
+  assertPasses('V8默认任务', v8Result);
+  for (const required of ['词条成片主字60px、说明44px', '档案校验不代表参数已落片或听感通过']) {
+    if (!output(v8Result).includes(required)) {
+      throw new Error(`V8新任务预检缺少下一条基准提示：${required}`);
+    }
+  }
 
   const silentV72 = {
     ...v8Job,
