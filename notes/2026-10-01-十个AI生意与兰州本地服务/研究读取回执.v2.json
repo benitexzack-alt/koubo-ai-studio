@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20261001T075423Z-f931e940",
+  "status": "ready-for-candidate-review",
+  "generated_at": "2026-10-01",
+  "public_copy_generation": false,
+  "compilation_method": "继承本期v1实际检索与完整读取；本轮新增人生回忆录RAG与原项目实读，并补原页案例。保留过期账号比较状态，不修改自动采集结果。",
+  "opcd": {
+    "meaning": "Obsidian个人知识库；opcd仅为兼容字段",
+    "root": "/Users/pc/Documents/个人知识库",
+    "learning_card": {
+      "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+      "sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+      "read": true
+    },
+    "retrieval": {
+      "query": "继承抖音知识中台检索；新增：人生回忆录 老人 口述史 电子书 纸质书 数字纪念",
+      "status": "sufficient",
+      "command": "python3 /Users/pc/Documents/个人知识库/04_Claude Code日常操作/scripts/opc_rag.py search --query <本query> --limit 5",
+      "index_generation": "7609e7465f34bf9fc03af25e9b5631b624a06c50346864149deb6fc513fbaf9d",
+      "results": [
+        {
+          "path": "01_项目实战/GEO/GEO项目说明与当前进度.md",
+          "document_sha256": "6287c4af2320d2c40c62013dd83a12812c5001cc6a74ac15bb735bc768ce3396",
+          "line_start": 297,
+          "line_end": 306,
+          "retrieved": true,
+          "read": true,
+          "applied": false,
+          "boundary": "仅阅读召回段，未重读全篇；不作为本期客户效果事实。",
+          "retrieval_phase": "本期前轮v1检索与读取，非本次人生回忆录query召回"
+        },
+        {
+          "path": "01_项目实战/抖音知识中台/来源库/2026/07/抖音-7663532713110719909.md",
+          "document_sha256": "535e517d6523d9e27fb9fb7f2a4754dfc9f322b92c6fd830d4d2316e5e24f58e",
+          "line_start": 1,
+          "line_end": 38,
+          "retrieved": true,
+          "read": true,
+          "applied": true,
+          "application": "召回后另读完整原始转写。采用人与AI的协作、责任与组织条件，不搬人数、现场经历和所有人同一起跑线。",
+          "retrieval_phase": "本期前轮v1检索与读取，非本次人生回忆录query召回"
+        },
+        {
+          "path": "01_项目实战/抖音知识中台/来源库/2026/09/抖音-7661598683578147264.md",
+          "document_sha256": "7d24c3eea56a8d824c203cbb664249acaace00b8b8aa0b42e2bace4af6a178a1",
+          "line_start": 116,
+          "line_end": 136,
+          "retrieved": true,
+          "read": true,
+          "applied": true,
+          "application": "召回后另读完整转写和拆解。迁移真实业务经验进入内容、曝光咨询成交分开验收的功能，不搬原句和案例数字。",
+          "retrieval_phase": "本期前轮v1检索与读取，非本次人生回忆录query召回"
+        },
+        {
+          "path": "01_项目实战/抖音知识中台/临时输入/2026-09-01-有鱼聊AI三段视频-待匹配本地视频.md",
+          "document_sha256": "e264b118a9237ce01986412ceb00815efb9d7eabd5e1f63d5f4042ca3d7b7107",
+          "line_start": 33,
+          "line_end": 62,
+          "retrieved": true,
+          "read": true,
+          "applied": false,
+          "boundary": "仅阅读召回段，改用已正式入库的完整来源，不重复采纳临时文档。",
+          "retrieval_phase": "本期前轮v1检索与读取，非本次人生回忆录query召回"
+        },
+        {
+          "path": "01_项目实战/抖音知识中台/知识点库/知识-7663532713110719909-ai-era-requires-org-production-redesign.md",
+          "document_sha256": "62ba7235cebb3aeac5dcf74bde87f691cd4f0d51995f6968b36460cbec7fefb8",
+          "line_start": 1,
+          "line_end": 28,
+          "retrieved": true,
+          "read": true,
+          "applied": true,
+          "application": "完整读取知识点；将组织咨询和工具配置区分，采用谁判断、谁验收、出错怎样回退的分析问题。",
+          "retrieval_phase": "本期前轮v1检索与读取，非本次人生回忆录query召回"
+        },
+        {
+          "path": "06_每日复盘/2026-09-28.md",
+          "document_sha256": "a50e6ac1f41cbe40a9ff4a582b903ead067d926289b409fe0e1b7bc50b978c4c",
+          "line_start": 407,
+          "line_end": 431,
+          "retrieved": true,
+          "read": true,
+          "applied": true,
+          "retrieval_phase": "本轮新增RAG",
+          "application": "确认人生回忆录仍在试点准备，随后读取当前原项目，不把规划说成已交付。"
+        }
+      ],
+      "use_boundary": "召回只是候选；作者观点和后台缺口不得变成本方已验证事实。",
+      "inherited_query": "抖音知识中台 AI生意 本地企业 行业经验 数据 交付 培训 GEO 人机协作",
+      "inherited_index_generation": "dc62ac95e3635eb3755c1bd6ebd90bdc35ebf13db85f58bca65bdb11bdeca6f2"
+    }
+  },
+  "account_performance_preflight": {
+    "path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/task-20261001T075423Z-f931e940.json",
+    "sha256": "f64b9e1b8fb3d6515d25698b1a7ed664b754ade52be1dcd9f5f3f1638ac58218",
+    "snapshot_path": "/Users/pc/Documents/口播/workflow/account-performance-snapshots/88700df36d92ee4af465d021a4f984536309097f98b0a22caf8068e89f3c916f.json",
+    "snapshot_sha256": "88700df36d92ee4af465d021a4f984536309097f98b0a22caf8068e89f3c916f",
+    "status": "ready-historical-stale",
+    "collected_at": "2026-09-28T14:00:23.734Z",
+    "published_work_count": 44,
+    "accepted_run_count": 104,
+    "read": true,
+    "application": "历史留存和知识型作品比较只推动具体开场与提前兑现价值，不推断平台因果，不称10月1日实时数据。"
+  },
+  "project_inputs": {
+    "strategy": {
+      "path": "/Users/pc/Documents/口播/knowledge/01-账号战略与事业主线.md",
+      "sha256": "902ba0947bf02aa6602ca0fef2d955f607cc771dcbae6f90a5b4e3653d872797",
+      "read": true,
+      "applied": true
+    },
+    "voice": {
+      "path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+      "sha256": "c90d07dfb414707035ddd59b6bea6faf88a35f9551649199b9a92d433785bb0d",
+      "read": true,
+      "applied": true
+    },
+    "recent_history": {
+      "path": "/Users/pc/Documents/口播/workflow/recent-content-history.v1.json",
+      "sha256": "5ab8b58fa26f2b1a9627c453cd4af1b103927528ac1c26b8d31ec617e73166a5",
+      "read": true,
+      "applied": false,
+      "boundary": "旧历史索引不能替代本轮六份实际原稿及官方近期六条。"
+    }
+  },
+  "sources": [
+    {
+      "id": "source:six-images-1c12aed07cc37aee",
+      "path": "/Users/pc/Documents/口播/notes/2026-10-01-十个AI生意与兰州本地服务/六图内容提取.v1.md",
+      "sha256": "1c12aed07cc37aee3b917e9b8b661086c09b8f1b3f5b29548b2d46be48725bdf",
+      "source_completeness": "complete",
+      "rights_status": "internal-research",
+      "allowed_use": "完整六图的主标题、十项理由和可辨认界面文字；不声称取得展开全文或视频转写。参考方向/结构，独立核验事实，不搬原图作成片素材。"
+    },
+    {
+      "id": "source:7d24c3eea56a8d82",
+      "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/09/抖音-7661598683578147264.md",
+      "sha256": "7d24c3eea56a8d824c203cbb664249acaace00b8b8aa0b42e2bace4af6a178a1",
+      "source_completeness": "complete",
+      "rights_status": "internal-research",
+      "allowed_use": "完整转写的叙事功能与判断研究，案例效果不作已核实事实。"
+    },
+    {
+      "id": "source:535e517d6523d9e2",
+      "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/07/抖音-7663532713110719909.md",
+      "sha256": "535e517d6523d9e27fb9fb7f2a4754dfc9f322b92c6fd830d4d2316e5e24f58e",
+      "source_completeness": "complete",
+      "rights_status": "internal-research",
+      "allowed_use": "完整转写的观点功能研究，不把作者参会/访谈变成本人经历，不搬数字。"
+    }
+  ],
+  "recent_six_texts": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260926_industry_ai_no_anxiety/00_控制/用户确认原稿.txt",
+      "sha256": "a298a92b03894027559e3b60d02a517df523c9693267a5efe8643e5bebd4e7f6",
+      "read": true,
+      "application": "保留对行业经验的尊重，但本期必须给出具体服务差异，不能重复泛结论。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/02_文稿/用户原稿.txt",
+      "sha256": "ebe6210f42cc315f842a23ee69d8c5ad64bbf454570ed918998bd69f0fb20a86",
+      "read": true,
+      "application": "借用讲方法后能自己检验的功能，不复用AI唯一老师等绝对化主张。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260917_ai_efficiency_sharing/00_工程控制/用户原稿.v1.txt",
+      "sha256": "1455708a940fd866e2fe31af435117a19d402c27586bd1967e595e51a655ff27",
+      "read": true,
+      "application": "组织咨询需考虑员工配合和时间收益分配，不把旧稿群体心理描写当普遍事实。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/00_文稿与控制/用户确认原稿.txt",
+      "sha256": "57804abe915007fbc32a9c7d4e629e26c4f2817e58b8719dd90c8c30bc85af4c",
+      "read": true,
+      "application": "借谁提供/怎么付费的问题，不复用未核验产业数字和一概否认新商业模式。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260910_lanzhou_industry_ai/00_文稿与控制/用户确认原稿.txt",
+      "sha256": "c1ebc6f3f9f82a405a1c7c7564097a62585601c31b3ee17edd07334695dcb3b9",
+      "read": true,
+      "application": "上门了解业务、原有经验进入真实内容、客户收到后是否能用，是本期口语功能和服务判断依据。"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20260906_lanzhou_ai_services/01_文稿/用户确认稿_仅预拍权威.txt",
+      "sha256": "55bad7768c22dcbc634fb8c275b8dfe3ddaabbbf6b8144d049960d34f65cedab",
+      "read": true,
+      "application": "问具体麻烦、核对资料、人工确认、持续维护；只能概括已确认付费交付，不补客户数量和成果。"
+    }
+  ],
+  "skills_read": [
+    "skills/douyin-koubo-source-to-original/SKILL.md",
+    "skills/source-essence-synthesis/SKILL.md",
+    "skills/content-brain-gate/SKILL.md",
+    "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+    "skills/humanize-koubo-script/SKILL.md"
+  ],
+  "execution_boundary": "用户已给本人开场和回忆录增补并明确要求完整审阅稿；当前继续源头精髓、内容门禁、双Skill。用户语言和真人朗读未确认，不进入生产。",
+  "next_gate": "源头精髓提纲校验、内容门禁；完整稿及双Skill审阅，最终等待本人确认和朗读。",
+  "task_original_materials": [
+    {
+      "path": "/Users/pc/Documents/人生回忆录/README.md",
+      "sha256": "9fe257ced63af3d3fe59322911c384f24c68bb2bae88f74a1d7692ff67a9a40c",
+      "retrieved": true,
+      "read": true,
+      "applied": true,
+      "application": "锁定试点准备而非产品已验证"
+    },
+    {
+      "path": "/Users/pc/Documents/人生回忆录/workflow/两例验证完整方案_v1.md",
+      "sha256": "941c1bedc13c79c6a497ba20472fde5eed57aec20412d8a4f5d3640a1a161249",
+      "retrieved": true,
+      "read": true,
+      "applied": true,
+      "application": "采访、原音核对、家庭交付及授权分别决定"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20261001T075423Z-f931e940",
+  "status": "passed",
+  "reviewed_at": "2026-10-01T08:34:29Z",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-10-01-十个AI生意与兰州本地服务/口播审阅稿.v2.md",
+    "sha256": "bf36298cf4753b6ab37ce10feeb1675da4915bbdf12ef12f2dec0a7d6199550e"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "删去回忆录段‘已经有人认真做’的重复说明及培训段的重复收口；十项为用户明确保留的分类，保留编号但不统一套三点模板。原图数字在研究阶段剔除；早学优势落实到查资料和真实取材。扫码授权和备份放在具体交付里，只出现一处。真实案例仅在解释相关工作时出现，未插入政策与规模综述。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "有些单位需要某类数据，有些单位有权提供，中间需要人核对用途、授权条件和交付要求，再帮双方对接。",
+        "risk_level": "medium",
+        "reason": "第八项距离普通人的经验较远，尚无足够适合本地小白复制的商业案例；可能让观众停留在抽象概念。",
+        "candidates": {
+          "conservative": "这个方向要先核对用途、授权和交付，适合有数据或法务经验的人研究。",
+          "direct": "能不能提供、允许怎么用、交什么，要先说清，再帮双方对接。",
+          "vivid": "有人要用，有人有权提供，中间这份工作，是把用途、授权和交付逐项对上。"
+        },
+        "fact_difference": "均沿同一合法授权与撮合底座，不新增客户、数据种类、收益或已成交案例。",
+        "recommendation": "先保留当前解释数据加工与撮合区别的版本；若本人朗读觉得抽象，再从候选压缩，不擅自删第八节点。"
+      },
+      {
+        "original": "将来老人离开了，如果本人和家属愿意，墓园也允许，能不能把这个入口放到墓碑上？",
+        "risk_level": "medium",
+        "reason": "墓碑话题可能使本来关注生意选择的观众突然进入情绪或服务误解，且尚未核验墓园落地条件。",
+        "candidates": {
+          "conservative": "以后，经本人和家属同意，墓园也允许时，可以再研究纪念场所的扫码入口。",
+          "direct": "将来本人、家属愿意，墓园也允许，扫码入口也可以放到墓碑上，让后人看他留下的资料。",
+          "vivid": "以后后人来纪念，如果本人、家属同意，墓园允许，扫这个入口，就能打开老人留下的照片和原声。"
+        },
+        "fact_difference": "都是有条件的未来设想，未新增声音克隆、永久保存、已有服务或墓园普遍许可。",
+        "recommendation": "用户明确要大胆设想，保留当前问句及紧接的保管说明；等待本人确认自然度，不用强情绪候选自动替换。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": [
+      "学习年份与‘接触/系统学习/学完’的区别",
+      "当前语言、时长与本人朗读",
+      "可公开哪些本人项目细节",
+      "回忆录首访与样章尚未验证，扫码条件后续另核"
+    ]
+  },
+  "scores": {
+    "directness": 8,
+    "spoken_naturalness": 8,
+    "rhythm": 7,
+    "personal_voice": 7,
+    "fact_fidelity": 10
+  },
+  "scores_boundary": "编辑自评，事实保真只指对已锁输入与来源的忠实，不证明供方案例独立审计，不是用户认可、真实留存或市场结果。",
+  "read_aloud_review": {
+    "method": "逐句断句、长句与术语检查；本地Tingting合成读稿辅助计时",
+    "tts_duration_seconds": 715.309615,
+    "tts_audio_path": "/tmp/ai-ten-local-20261001-v2-final.aiff",
+    "body_path": "/Users/pc/Documents/口播/notes/2026-10-01-十个AI生意与兰州本地服务/纯正文朗读版.v2.txt",
+    "body_sha256": "873cb48e4be49d6e7377b1a741da621ca9053b509aa55853940b0cb476f753a6",
+    "human_listened": false,
+    "user_read": false,
+    "production_evidence": false,
+    "notes": "合成读稿并未由真人听审。read_aloud_completed只表示审稿中断句与合成读稿步骤执行，不表示本人已大声朗读或认可声音。"
+  },
+  "actual_edits": [
+    {
+      "before": "这些方向，都可以拿真实工作来试。",
+      "after": "先做出一份工作，看看客户能不能用。",
+      "reason": "泛方向落到交出工作和客户使用，不新增真实结果"
+    },
+    {
+      "before": "所以这件事，已经有人在认真做。",
+      "after": "删除",
+      "reason": "上句已交代真实作品与付费，删重复"
+    },
+    {
+      "before": "你教会的，是他岗位上的一件事。",
+      "after": "删除，直接接工具变化后的资料与检查",
+      "reason": "避免同一培训判断再总结一遍"
+    }
+  ],
+  "upstream_corrections": [
+    "瞬间碾压在写稿前纠偏为有机会积累优势，未冒充用户已批准强度",
+    "永久存储改为备份和维护约定；与法律和真实技术条件一致",
+    "原图95%、89%和看板数字未进入事实锁，故不是本次精修删除的新事实"
+  ]
+}
