@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>从想法，到能用</title>
+  <style>
+    @font-face {font-family:PaperChinese;src:url('fonts/Chinese.woff2') format('woff2');font-weight:400 900;font-display:block;}
+    * {box-sizing:border-box}
+    html,body {margin:0;width:100%;height:100%;overflow:hidden;background:#f5f0e4}
+    #root {position:relative;width:100%;height:100%;overflow:hidden}
+    canvas {display:block;width:100%;height:100%;object-fit:contain}
+    audio {display:none}
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-width="1920" data-height="1080" data-duration="26">
+    <canvas id="scene" width="1920" height="1080"></canvas>
+    <audio id="soundtrack" data-start="0" data-duration="26" data-track-index="1" src="audio/soundtrack.wav"></audio>
+  </div>
+  <script src="vendor/gsap.min.js"></script>
+  <script src="scene.js"></script>
+  <script>
+    const playhead = {time: 0};
+    window.__timelines = window.__timelines || {};
+    window.__timelines.main = gsap.timeline({paused: true, onUpdate: () => window.drawAt(playhead.time)})
+      .to(playhead, {time: 26, duration: 26, ease: 'none'});
+  </script>
+</body>
+</html>
