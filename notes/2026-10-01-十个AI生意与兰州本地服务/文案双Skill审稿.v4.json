@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20261005T051020Z-51808729",
+  "status": "passed",
+  "reviewed_at": "2026-10-05T05:28:00Z",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-10-01-十个AI生意与兰州本地服务/口播审阅稿.v4.md",
+    "sha256": "0c2d7ddfd8ae9fe6022b9e5c66c7cc8be48e388d1832222f7124feb939adce00"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "原十项编号是本轮锁定结构，不机械删除。开头不讲写作意图与学习履历；第1咨询任务、第2故障记录、第3家具内容、第4设备闲置分别作实际工作入口。第2专家案例支持数据质量的判断，第5复旦只支持回忆录作品存在，第8政策只说明流通职能；不让报告数字抢主线。医疗、数据授权、GEO不保证推荐和档案保管边界均贴着相关业务说，不集中念免责声明。末尾仅一次邀请交流。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "第五项：原银发服务之后追加回忆录、数字档案、纸书和墓碑扫码设想",
+        "risk_level": "medium",
+        "reason": "该项篇幅高于其他项，可能让观众误以为整条转成回忆录；是预测，不是留存数据。",
+        "candidates": {
+          "conservative": "这一项里面，我还想做人生回忆录。",
+          "direct": "银发服务里，还可以做人生回忆录。",
+          "vivid": "老人讲过的故事，可以留下原声，也能整理成一本书。"
+        },
+        "fact_difference": "保守版保持本人想法身份；直接版只谈服务方向；生动版只改进入同一组数字纸书事实的顺序。均无新增经历。",
+        "recommendation": "保留当前保守版，先交代完整银发生活服务，再明确‘这一项里面’；本人准备状态和有条件扫码不删。不能为了缩时又用回忆录替代原题。"
+      },
+      {
+        "original": "第八项：AI时代的数据资产中介",
+        "risk_level": "medium",
+        "reason": "与第2数据集名称接近，普通观众可能只记住都在卖数据；完整十项连续观看有认知负担。",
+        "candidates": {
+          "conservative": "这一项跟前面的数据集生产不一样。前面是把数据加工好，这里是帮有合法数据资源的人，找到合适的使用方，把授权和交易办明白。",
+          "direct": "第二项负责把数据做出来，第八项负责供需、授权和交易。",
+          "vivid": "资料整理好了，要交给谁用，能让他用到哪一步，还需要另外一套服务。"
+        },
+        "fact_difference": "三种只重述同一个生产与流通差别，无新增交易、价格或收益。",
+        "recommendation": "保留当前完整对比句。略长但把两门生意分开，随后用明确的假设机构资料场景解释用途定价与结算，不堆法律术语。"
+      }
+    ],
+    "no_high_risk_reason": "当前未发现必须再强改的高风险句；十项信息密度和第五项长度仍待真人朗读判断，不预测完播提升。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "相对原图：去除95%、89%及界面未证实业绩，不把值得做升级最赚钱",
+      "‘SEO变弱’不作为事实保留；GEO工作机制保留",
+      "一般银发诊疗口号限定为预约与流程协助",
+      "本人碾压同行和十项均有经验降为本人确有部分AI应用与GEO交付",
+      "回忆录是本人准备和未来扫码设想，不是完成案例"
+    ],
+    "pending_user_confirmations": [
+      "本次全文的本人语言认可与正常速度朗读",
+      "人生回忆录是否有README之外的新进展",
+      "正式发布前涉及养老、培训、数据流通的现行规则与主体资格人工复核"
+    ]
+  },
+  "scores": {
+    "directness": 8,
+    "spoken_naturalness": 8,
+    "rhythm": 7,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "scores_boundary": "模型对当前事实锁和文本的内部审阅，不是用户验收，不是平台精选或传播效果保证。事实10分只表示相对明确事实锁未增造、未强化；未核验数据不被当成事实。",
+  "read_aloud_review": {
+    "method": "本机Tingting合成用于机械时长测量；文字逐句检查断句，未真人听审",
+    "tts_rate": 220,
+    "tts_duration_seconds": 333.695011,
+    "audio_path": "/tmp/ten-ai-businesses-v4-timing.aiff",
+    "body_sha256": "b42856e79f02291c99c7ad7047248e01d0aa7b7f7976458ea8a777afccefae6c",
+    "human_listened": false,
+    "user_read": false,
+    "production_evidence": false,
+    "han_count": 1998,
+    "reference_path": "/Users/pc/Documents/口播/edit/20260929_meta_pa_local_business/10_剪辑准备/字幕/meta-pa.actual.canonical.r1.txt",
+    "reference_han_count": 1821,
+    "reference_elapsed_seconds": 409.3,
+    "estimated_seconds_from_user_reference": 449.08369,
+    "notes": "机器固定语速5分34秒不冒充本人口播时长；按近期实录约267汉字/分钟粗估7分半，英文术语、停顿和现场发挥会改变时长。"
+  },
+  "actual_edits": [
+    "未基于V3局部换词，按原六图重新起稿",
+    "十原标题原顺序保留，商业范围与收费机制补回",
+    "第5先陪伴生活服务后加回忆录，第6岗位流程绩效，第8完整流通，第9多企业产业集成",
+    "正文删除长篇学习背景；结尾只用已确认付费交付和本地到场条件",
+    "没有‘我今天不讲’‘关键在于’‘这不是吓人的标题’等写作支架"
+  ],
+  "source_semantic_coverage": [
+    {
+      "id": "I01",
+      "title": "AI Agent落地服务商",
+      "original_mechanism": "安装、调试、行业定制，连接知识库和业务工具，监控与维护；一次实施费和持续月服务费。",
+      "body_title_present": true,
+      "body_evidence": [
+        {
+          "text": "安装、调试到行业定制",
+          "found": true
+        },
+        {
+          "text": "按月收服务费",
+          "found": true
+        },
+        {
+          "text": "工具接好",
+          "found": true
+        }
+      ],
+      "semantic_review": "原主线恢复；不引用95%或截图提效",
+      "review_type": "逐项模型人工式对照，文本检查辅助，不冒充观众验收"
+    },
+    {
+      "id": "I02",
+      "title": "垂类行业数据集生产",
+      "original_mechanism": "面向具体行业和用途，采集、清洗、标注、质检、结构化输出；向需要训练、评测或应用数据的团队交付。",
+      "body_title_present": true,
+      "body_evidence": [
+        {
+          "text": "采集起来，去重、纠错、标注",
+          "found": true
+        },
+        {
+          "text": "质量检查",
+          "found": true
+        },
+        {
+          "text": "模型训练、测试或者知识检索",
+          "found": true
+        }
+      ],
+      "semantic_review": "不再命名为普通资料整理；设备案例只证明生产机制",
+      "review_type": "逐项模型人工式对照，文本检查辅助，不冒充观众验收"
+    },
+    {
+      "id": "I03",
+      "title": "AI内容反同质化服务",
+      "original_mechanism": "真实信息差、个人观点、原始数据；AI初稿后人工核事实、补观点、重组结构和本人表达，再适配平台并追踪。",
+      "body_title_present": true,
+      "body_evidence": [
+        {
+          "text": "采访、取材",
+          "found": true
+        },
+        {
+          "text": "核事实、补观点",
+          "found": true
+        },
+        {
+          "text": "视频、图文分别怎么发",
+          "found": true
+        }
+      ],
+      "semantic_review": "恢复深度二创，不是替写或换词",
+      "review_type": "逐项模型人工式对照，文本检查辅助，不冒充观众验收"
+    },
+    {
+      "id": "I04",
+      "title": "AI设备的“最后一公里”渠道",
+      "original_mechanism": "AI电脑、显卡、工作站、服务器等按任务选型；硬件、软件、驱动环境配置、培训与售后打包，渠道及实施服务收入。",
+      "body_title_present": true,
+      "body_evidence": [
+        {
+          "text": "电脑、工作站或者服务器",
+          "found": true
+        },
+        {
+          "text": "硬件、软件、安装、培训和售后",
+          "found": true
+        },
+        {
+          "text": "设备销售和实施维护",
+          "found": true
+        }
+      ],
+      "semantic_review": "不再只有少花钱建议，保留整套渠道交付",
+      "review_type": "逐项模型人工式对照，文本检查辅助，不冒充观众验收"
+    },
+    {
+      "id": "I05",
+      "title": "银发族AI陪伴与生活服务",
+      "original_mechanism": "语音陪伴、预约导诊协助、代办跑腿、防诈骗提醒与生活缴费；连接家庭、机构和真人服务。",
+      "body_title_present": true,
+      "body_evidence": [
+        {
+          "text": "语音交互、整理需求、提醒可疑信息",
+          "found": true
+        },
+        {
+          "text": "家属、社区或者真人服务人员",
+          "found": true
+        },
+        {
+          "text": "数字档案，也印成一本书",
+          "found": true
+        },
+        {
+          "text": "墓园也允许",
+          "found": true
+        }
+      ],
+      "semantic_review": "银发原主线在前，数字档案、纸书、原声扫码与有条件墓碑设想在后",
+      "review_type": "逐项模型人工式对照，文本检查辅助，不冒充观众验收"
+    },
+    {
+      "id": "I06",
+      "title": "AI原生的组织咨询服务",
+      "original_mechanism": "诊断现状，重做人与AI的岗位体系、决策流程和绩效考核；试点验证再推广，组织咨询及实施辅导服务。",
+      "body_title_present": true,
+      "body_evidence": [
+        {
+          "text": "岗位职责要不要改",
+          "found": true
+        },
+        {
+          "text": "方案谁能拍板",
+          "found": true
+        },
+        {
+          "text": "绩效方式",
+          "found": true
+        },
+        {
+          "text": "先在一个部门试",
+          "found": true
+        }
+      ],
+      "semantic_review": "不再缩成谁复核，解释咨询与装软件的不同",
+      "review_type": "逐项模型人工式对照，文本检查辅助，不冒充观众验收"
+    },
+    {
+      "id": "I07",
+      "title": "GEO代运营",
+      "original_mechanism": "结构化内容、真实可信来源、平台可读取性、问题覆盖、引用与准确性监测、持续优化；持续运营服务。",
+      "body_title_present": true,
+      "body_evidence": [
+        {
+          "text": "适用条件和真实案例",
+          "found": true
+        },
+        {
+          "text": "真实出处",
+          "found": true
+        },
+        {
+          "text": "有没有提到你，引用哪里",
+          "found": true
+        }
+      ],
+      "semantic_review": "保留持续运营，不缩成门店地址检查；不许诺推荐",
+      "review_type": "逐项模型人工式对照，文本检查辅助，不冒充观众验收"
+    },
+    {
+      "id": "I08",
+      "title": "AI时代的数据资产中介",
+      "original_mechanism": "整理可用数据资源、合规与权利评估、用途定价、供需匹配、授权交易、交付使用及收益管理；服务费或佣金。",
+      "body_title_present": true,
+      "body_evidence": [
+        {
+          "text": "训练数据、合法的经营行为数据、原创内容",
+          "found": true
+        },
+        {
+          "text": "用途和价值",
+          "found": true
+        },
+        {
+          "text": "商量价格",
+          "found": true
+        },
+        {
+          "text": "授权和交易",
+          "found": true
+        },
+        {
+          "text": "收益结算",
+          "found": true
+        }
+      ],
+      "semantic_review": "恢复完整授权流通职能，区分第二项生产数据",
+      "review_type": "逐项模型人工式对照，文本检查辅助，不冒充观众验收"
+    },
+    {
+      "id": "I09",
+      "title": "产业带AI改造“包工头”",
+      "original_mechanism": "吃透一个产业带，统筹行业、AI技术与原系统，进入选品、库存、客服、跟单和生产协同；改造费与可核算的约定分成。",
+      "body_title_present": true,
+      "body_evidence": [
+        {
+          "text": "选品、库存、客服、跟单",
+          "found": true
+        },
+        {
+          "text": "原来的系统服务商",
+          "found": true
+        },
+        {
+          "text": "同产业企业的共性",
+          "found": true
+        },
+        {
+          "text": "改造费",
+          "found": true
+        },
+        {
+          "text": "效果分成",
+          "found": true
+        }
+      ],
+      "semantic_review": "不再用一家店的订货功能代替产业带",
+      "review_type": "逐项模型人工式对照，文本检查辅助，不冒充观众验收"
+    },
+    {
+      "id": "I10",
+      "title": "“人机协作”技能培训",
+      "original_mechanism": "围绕选品、内容、客服、交付等完整业务流程，能力评估、操作实训、任务演练和成果检验；培训、陪练和复训。",
+      "body_title_present": true,
+      "body_evidence": [
+        {
+          "text": "选品分析、准备内容、处理咨询",
+          "found": true
+        },
+        {
+          "text": "交付和数据复盘",
+          "found": true
+        },
+        {
+          "text": "换一批产品",
+          "found": true
+        },
+        {
+          "text": "培训、岗位陪练和后续复训",
+          "found": true
+        }
+      ],
+      "semantic_review": "不降成单一软件入门或讲提示词",
+      "review_type": "逐项模型人工式对照，文本检查辅助，不冒充观众验收"
+    }
+  ],
+  "coverage_boundary": "不只检查标题；逐项审阅本条连续语句是否表达机制。自动检索只能证明短语存在，最终语义和可播性仍等用户审阅。",
+  "upstream_corrections": [
+    "旧记录十份小交付框架已被2026-10-05用户否决，不得作为本题主线",
+    "官方最近六含未取得全文的非口播作品，声明仅六篇可用口播正文对读，不伪造完整最近六查重"
+  ]
+}
