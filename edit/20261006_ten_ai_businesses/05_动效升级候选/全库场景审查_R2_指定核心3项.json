@@ -1,0 +1,45 @@
+{
+  "taskId": "task-20261006T173005Z-972d900a",
+  "reviewCount": 3,
+  "status": "用户指定效果的独立实现候选，非正式选卡回执",
+  "sourceCatalogPath": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/references/catalog.json",
+  "records": [
+    {
+      "effectId": "bs-creatormotion-type-behind-subject",
+      "signature": "连续真实口播底片→标题短促放大并回弹读稳→同帧人物透明层遮挡标题→撤字留真人",
+      "scriptAnchor": "B01：我有10个看好的AI生意",
+      "displayText": "10个AI赚钱生意",
+      "fit": "用户明确指定",
+      "priority": 1,
+      "dependencies": ["连续真人take", "同帧同尺寸同时间的人物alpha", "本地得意黑字体"],
+      "reason": "开场是主题钩子，不是说明列表。应让巨大文字成为人物身后的空间，不放白色大底板；原片与人物层必须一起变换，不能用任意静帧或圆角真人窗代替。",
+      "sourceEvidence": ["references/motion/bs-creatormotion-type-behind-subject.md", "scripts/effects/bs-creatormotion-type-behind-subject.mjs"],
+      "adaptationDifference": "用户指定保持Remotion，故原生帧驱动适配而非执行HyperFrames；根据本期5.4秒配对take调整镜长，不照抄1.4倍裁切使脸出框，不声称官方完整复现。",
+      "acceptance": ["真实前景遮挡成立", "标题不能全部被头部遮住", "脸与手没有双影", "边缘与快速手势正常速度复核", "真人持续不切白屏"]
+    },
+    {
+      "effectId": "bs-creatormotion-transition-tile-dissolve",
+      "signature": "8×5独立格中心向外错时铺开→简短章间落点→格子从边缘反向撤开回真人",
+      "scriptAnchor": "B07：第二，垂类行业数据集生产；正式使用只在确有章节变化的帧窗",
+      "fit": "用户明确指定",
+      "priority": 1,
+      "dependencies": ["连续真人原片", "确切的章间词窗", "下一场景或短章名"],
+      "reason": "用户第二张示例实际是平铺方格转场，不是电子横移。主要作用是承接章节，而非整段用纯色盖住主播；不能把普通淡入淡出或镜头横移冒称本效果。",
+      "sourceEvidence": ["references/motion/bs-creatormotion-transition-tile-dissolve.md", "scripts/effects/bs-creatormotion-transition-tile-dissolve.mjs"],
+      "adaptationDifference": "本期改为短暗蓝章间闪场，保留格子铺开/反向撤回，不照抄默认白底，不每一项都跑完整长转场；这不是纸艺内叠特效。",
+      "acceptance": ["40格不是一个整体fade", "铺开与撤回顺序不同且确定", "转场不压住长句或关键信息", "撤回后原声与真人连续"]
+    },
+    {
+      "effectId": "bs-creatormotion-cards-foreground-row",
+      "signature": "连续真人底片→真实图卡按说词逐个侧入轻倾落位→逐卡点声→同一前景排布读稳",
+      "scriptAnchor": "B08：豆包工作,workbuudy还有codex",
+      "fit": "用户明确指定",
+      "priority": 1,
+      "dependencies": ["真人原片", "三款真实产品图标或授权图", "豆包/WorkBuddy/Codex实际词窗"],
+      "reason": "这是三个被点名的产品，观众应看见产品身份，不是几行抽象黑字。用已安装官方应用资源图标，不伪造界面、功能评分或背书；产品标签不替代实录字幕。",
+      "sourceEvidence": ["references/motion/bs-creatormotion-cards-foreground-row.md", "scripts/effects/bs-creatormotion-cards-foreground-row.mjs"],
+      "adaptationDifference": "原版最多四卡、固定间隔；本稿三卡，按本期机器候选词窗38.060/38.860/39.650秒触发，落位在下巴以下，字幕预留y>=956；词窗仍待正常速度听审。",
+      "acceptance": ["三张完整真图卡，而非占位符", "全卡随图/字一起运动", "图卡不遮嘴和脸", "均匀停稳且大字可读", "原声不改速不压低，点声不盖字音"]
+    }
+  ]
+}

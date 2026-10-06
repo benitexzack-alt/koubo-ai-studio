@@ -1,0 +1,590 @@
+{
+  "taskId": "task-20261006T173005Z-972d900a",
+  "sourceCatalogPath": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/references/catalog.json",
+  "reviewCount": 53,
+  "records": [
+    {
+      "effectId": "bs-creatormotion-comparison-accumulation-blocks",
+      "signature": "同尺度周格积累；延迟组补入；圈出缺失区间",
+      "scriptAnchor": "以后解释早开始和晚开始的真实积累",
+      "fit": "以后适用",
+      "dependencies": [
+        "两组逐周记录与相同统计口径"
+      ],
+      "reason": "本期没有按周积累事实；开场时间不等于积累数据",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-calculation-roi",
+      "signature": "乘法先解出金额；算式横移；再与投入比较",
+      "scriptAnchor": "以后展示真实服务成本与回款",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "单价、数量、投入、币种及来源"
+      ],
+      "reason": "B06/B39只有收费模式，没有金额、投入或回报倍数",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-capacity-reset",
+      "signature": "容量填满后压缩；拉远露出另一轨剩余空间",
+      "scriptAnchor": "以后解释上下文容量或工作负荷",
+      "fit": "以后适用",
+      "dependencies": [
+        "实测占用与容量；同尺度定义"
+      ],
+      "reason": "本期未讲容量、压缩、剩余量",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-column-annotations",
+      "signature": "三个实物文档并列；批注横向展开；焦点逐列接力",
+      "scriptAnchor": "以后比较三份真实方案或文稿",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "三份本期文档图与有依据的批注"
+      ],
+      "reason": "B08只列三工具名称，没有三份输出可比较",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-composition-strip",
+      "signature": "分段拼成100%长条；图例随对应分段出现",
+      "scriptAnchor": "以后展示真实组成比例",
+      "fit": "以后适用",
+      "dependencies": [
+        "可加总为100%的真实份额"
+      ],
+      "reason": "四项交付内容不是四项比例；不能默认等分",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-cost-total",
+      "signature": "费用账本逐行揭示；分隔线后算出总额",
+      "scriptAnchor": "以后说明项目真实成本",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "明细金额、周期、币种与真实凭据"
+      ],
+      "reason": "本期没有成本明细",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-device-allocation",
+      "signature": "两个设备实图定角色；桥接；聚焦实际贡献者",
+      "scriptAnchor": "B17附近展示AI PC与显卡实物",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "真实设备图、明确型号与真实分工"
+      ],
+      "reason": "显卡和PC不天然是两台协作设备；不能套默认角色",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-document-collapse",
+      "signature": "杂乱大文档整体收缩；紧凑可用结果进入对侧",
+      "scriptAnchor": "B10数据整理或B22回忆录整理",
+      "fit": "以后适用",
+      "dependencies": [
+        "真实前后材料或明确的示意材料"
+      ],
+      "reason": "两段分别属于P02/P04既定纸艺；不再覆盖",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-dual-sliders",
+      "signature": "两个滑块与填充端点同步移动；停稳后连接备选项",
+      "scriptAnchor": "以后解释实测精度和探索倾向",
+      "fit": "以后适用",
+      "dependencies": [
+        "量表、测量依据与数值"
+      ],
+      "reason": "本期没有评分；给工具随意定位会造评价",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-feature-matrix",
+      "signature": "两列共同维度固定；逐行先出维度再出两值",
+      "scriptAnchor": "B35/B37：数据集生产与数据资产中介区别",
+      "fit": "本期候选",
+      "dependencies": [
+        "原句支持的两列差异；不需外部图片"
+      ],
+      "reason": "不能用于B08三工具名单；不可增加未经正文或来源支持的优劣",
+      "priority": 1
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-focus-bars",
+      "signature": "焦点带选中一柱；柱与端点数同步长高；最后复原全图",
+      "scriptAnchor": "以后逐项讲实测指标",
+      "fit": "以后适用",
+      "dependencies": [
+        "同口径多类别测量数据"
+      ],
+      "reason": "95%和89%属于不同群体，不能排成可比柱",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-grouped-bars",
+      "signature": "每个指标内两系列成对填充；再转下一指标",
+      "scriptAnchor": "以后比较实施前后效果",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "两系列、两指标及各自单位和尺度"
+      ],
+      "reason": "没有前后测量；不得画出提效结果",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-icon-distribution",
+      "signature": "重复符号按行铺开；镜头向下巡读；最后拉远",
+      "scriptAnchor": "以后展示真实分布",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "各行真实数量、总样本与统计口径"
+      ],
+      "reason": "本期95%/89%来源尚需核验；不能捏造多行分类分布",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-latest-history",
+      "signature": "最新百分比先读；历史各期随后在相同尺度补入",
+      "scriptAnchor": "以后复盘连续时期数据",
+      "fit": "以后适用",
+      "dependencies": [
+        "各期同口径真实比例"
+      ],
+      "reason": "本期没有历史份额序列",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-line-trend",
+      "signature": "观测折线按横轴绘出；虚线趋势随后出现",
+      "scriptAnchor": "以后用真实时间序列解释增长",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "观测点、时间尺度；趋势方法另标明"
+      ],
+      "reason": "B17爆发式增长没有可画的实测点；不能凭形容词造趋势",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-one-many",
+      "signature": "一个完整物件缩为锚点；比较符号出现；多个小物件形成可数网格",
+      "scriptAnchor": "以后比较一个完整流程与零散动作",
+      "fit": "以后适用",
+      "dependencies": [
+        "真实对应材料、准确数量与合理比较符号"
+      ],
+      "reason": "本期没有一对多优劣命题；开场10生意并不逊于一个生意",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-paired-swap",
+      "signature": "前后两个检查窗同步切换；每对留出阅读时间",
+      "scriptAnchor": "B15人工二创前后对照",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "同一内容的真实初稿与二创稿"
+      ],
+      "reason": "B15已有P03；缺真实同源前后文稿，不能用样例充成果",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-prompt-results",
+      "signature": "共同提示对应两图；选择框判定；整组一起换题",
+      "scriptAnchor": "以后讲同任务两种方法输出",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "共同任务、两组真实输出、判断依据"
+      ],
+      "reason": "本期只列工具，不评选结果；没有真实成对测试",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-quadrant-focus",
+      "signature": "坐标轴构建；对象按坐标落点；区域边界后画",
+      "scriptAnchor": "以后讨论经过定义的创业条件",
+      "fit": "以后适用",
+      "dependencies": [
+        "轴定义、位置依据、明确判断性质"
+      ],
+      "reason": "10生意没有可信的难度/收益坐标；不能随意分高低",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-query-screens",
+      "signature": "同一查询先打出；多个渠道真实竖屏结果展开",
+      "scriptAnchor": "B32：顾客问AI哪家的产品适合我",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "同一问题在各AI平台的真实本期截图；来源与时间"
+      ],
+      "reason": "默认生成搜索屏不能证明企业被查到或被引用",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-quote-sliders",
+      "signature": "报价滑杆和金额同步；第一方案可读后第二方案侧入",
+      "scriptAnchor": "以后解释两种真实交付套餐",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "真实报价、币种、包含项与适用条件"
+      ],
+      "reason": "本期没有定价；不能编月费或服务报价",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-radar-reveal",
+      "signature": "雷达从中心扩张；真实顶点值先出；解释环后出",
+      "scriptAnchor": "以后展示有方法的多维测评",
+      "fit": "以后适用",
+      "dependencies": [
+        "维度定义、真实量表与测量值"
+      ],
+      "reason": "本期没有工具能力评分；不做虚构雷达",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-ratio-bars",
+      "signature": "两条同尺度横条生长；端点数跟随；括号后解倍数",
+      "scriptAnchor": "以后展示真实数量倍数",
+      "fit": "以后适用",
+      "dependencies": [
+        "同口径两值、单位与比值依据"
+      ],
+      "reason": "95%和89%不能互相比；本期没有有效倍数命题",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-records-donut",
+      "signature": "记录逐行扫描；圆环与百分数同构建；结论随后出现",
+      "scriptAnchor": "以后以工单/记录支撑统计",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "真实记录、样本分母、比例与结论证据"
+      ],
+      "reason": "只有95%/89%口述，没有支撑这些比例的记录",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-row-focus-cards",
+      "signature": "首板扫描各行；次板从侧面进入；焦点移交",
+      "scriptAnchor": "B28/B29：原岗位流程考核与人+AI组织设计",
+      "fit": "本期候选",
+      "dependencies": [
+        "两板三行对应资料与六个相关缩略图"
+      ],
+      "reason": "比nested-workspace重；须有具体对应内容，不能编前后改善",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-sequential-bars",
+      "signature": "同一基线逐柱生长；计数随端点；完整图停留",
+      "scriptAnchor": "以后按期展示交付数量",
+      "fit": "以后适用",
+      "dependencies": [
+        "同口径真实数量序列"
+      ],
+      "reason": "10项是名单，不是10个数值；不能用等高柱装名单",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-stage-loss",
+      "signature": "两路径逐阶段填充；完成后侧箭头指出损失",
+      "scriptAnchor": "以后复盘真实业务流失",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "各阶段分母、比例与同口径路径"
+      ],
+      "reason": "本期没有转化漏斗和阶段损失数据",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-target-overrun",
+      "signature": "达到目标线后进入超额段；数字分两阶段同步",
+      "scriptAnchor": "以后展示实际完成量超过目标",
+      "fit": "以后适用",
+      "dependencies": [
+        "真实目标、完成值、周期和单位"
+      ],
+      "reason": "本期是看好的方向，没有已完成目标",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-trend-card-tour",
+      "signature": "镜头先近读第一图；横移读第二图；最后拉远并列",
+      "scriptAnchor": "以后巡读两个真实前后趋势",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "两张同口径趋势图及其真实数值"
+      ],
+      "reason": "平移很适合讲解，但本期没有两个测量趋势",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-comparison-wording-choice",
+      "signature": "两句分段打出；对比符号单独落拍；被选句保留强调",
+      "scriptAnchor": "以后训练泛泛描述与具体表达区别",
+      "fit": "以后适用",
+      "dependencies": [
+        "真实可比的两句话及明确选择理由"
+      ],
+      "reason": "本期没有表达选择题；B15二创已有纸艺，不重演",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-additive-equation",
+      "signature": "组成物逐项进入；加号与等号串联；结果最后形成",
+      "scriptAnchor": "B15：AI初稿加人工深度二创",
+      "fit": "以后适用",
+      "dependencies": [
+        "相关组成物图；结果示意；禁止捏造数值"
+      ],
+      "reason": "B15为P03；B19四要素超出默认最多3项限制",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-anchored-callouts",
+      "signature": "中央三步骤保持固定；曲线引线依次附着说明",
+      "scriptAnchor": "B04：安装、调试、行业定制",
+      "fit": "本期候选",
+      "dependencies": [
+        "三步骤及短解释；不需外部图片"
+      ],
+      "reason": "紧邻P01，若两段动作重复则删去；不延伸能力承诺",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-branch-reveal",
+      "signature": "根节点先稳；路线逐枝绘出；编号叶节点逐个落位",
+      "scriptAnchor": "B46：培训分到选品、内容、客服、交付四场景",
+      "fit": "本期候选",
+      "dependencies": [
+        "本期原句四场景；不需外部图片"
+      ],
+      "reason": "不能直接承载开场10项；源码最多6叶节点",
+      "priority": 1
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-capacity-callouts",
+      "signature": "两容器不等量累积；相关位置随后接注释",
+      "scriptAnchor": "以后解释短记忆与知识库容量",
+      "fit": "以后适用",
+      "dependencies": [
+        "真实内容容量关系或清楚定义的示意"
+      ],
+      "reason": "本期没讲容量；数据质量不能冒充容器大小差",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-convergence-evidence",
+      "signature": "来源先汇聚发现；整网缩移；真实观察纸进入主位",
+      "scriptAnchor": "以后用访谈记录证明共同问题",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "真实来源记录和观察页；替换硬编码英文页头"
+      ],
+      "reason": "本期没有现场调查材料；生成观察纸不具证据资格",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-cycle-build",
+      "signature": "节点沿环逐个建立；最后闭合返回边",
+      "scriptAnchor": "以后解释试做、反馈、调整闭环",
+      "fit": "以后适用",
+      "dependencies": [
+        "正文明确支持的循环节点"
+      ],
+      "reason": "本期没有完整循环叙述；不能把B46四项业务强行闭环",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-cycle-traversal",
+      "signature": "现有环上逐段推进；轮次和侧边状态同步改变",
+      "scriptAnchor": "以后演示两轮人机协作实战",
+      "fit": "以后适用",
+      "dependencies": [
+        "真实轮次、状态及对应操作"
+      ],
+      "reason": "本期没有两轮操作；自动循环会伪造完成记录",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-decompose-scan",
+      "signature": "问题拆成组件；移动框逐项扫读；最后形成问题气泡",
+      "scriptAnchor": "B48：经验能用在哪一步、缺的能力怎么补",
+      "fit": "本期候选",
+      "dependencies": [
+        "本期具体问题与最多6项短组件；相关人物示意"
+      ],
+      "reason": "结尾信任交流应保持真人；只在较长解释窗中择需",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-funnel-absorption",
+      "signature": "散落输入加速吸入处理器；消失后结果和接收者出现",
+      "scriptAnchor": "B10数据清洗或B15内容筛选",
+      "fit": "以后适用",
+      "dependencies": [
+        "输入/输出相关图像；处理逻辑来自正文"
+      ],
+      "reason": "对应P02/P03；全新漏斗会重复既定机制镜",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-handoff-explain",
+      "signature": "旧物与新物先建立；镜头横移；新物成为主位并释放解释区",
+      "scriptAnchor": "B28/B29：原组织方式交接到人+AI组织设计",
+      "fit": "本期候选",
+      "dependencies": [
+        "相关前后组织图；最多4条支持点"
+      ],
+      "reason": "须有真实或明确示意的两种组织对象；不能暗示已升级客户",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-hub-routing",
+      "signature": "输入经过中央枢纽；路线按方向推进；输出端强调",
+      "scriptAnchor": "B38数据经纪或B22回忆录整理",
+      "fit": "以后适用",
+      "dependencies": [
+        "相关枢纽与输出图；来源/授权不得省略"
+      ],
+      "reason": "对应P05/P04；不覆盖这两镜",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-input-convergence",
+      "signature": "独立输入与连线分拍汇聚；结果落位；可整体收紧",
+      "scriptAnchor": "B19：硬件、软件、配置、培训→交付包",
+      "fit": "本期候选",
+      "dependencies": [
+        "四项原句；相关交付包结果图；最多5输入"
+      ],
+      "reason": "与list-bridge二择一；不把汇聚示意当成已交付案例",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-list-bridge",
+      "signature": "共同清单先落实；单一桥接绘出；目的地最后落位",
+      "scriptAnchor": "B19：硬件、软件、配置、培训打包交付",
+      "fit": "本期候选",
+      "dependencies": [
+        "四项原句与交付目的地；不需外部图片"
+      ],
+      "reason": "不能把10生意压成默认最多6项清单；不显示虚构价格",
+      "priority": 1
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-milestone-detail",
+      "signature": "水平阶段先稳；当前阶段向下生出细节枝",
+      "scriptAnchor": "B46：选一个业务环节解释工具嵌入",
+      "fit": "本期候选",
+      "dependencies": [
+        "明确业务阶段、当前选择与对应细节；最多5阶段"
+      ],
+      "reason": "需要明确当前环节；不能把并列例子画成已完成项目进度",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-nested-workspace",
+      "signature": "外层工作范围建立；内层孩子逐个进入；边界强调",
+      "scriptAnchor": "B29：人+AI组织内的岗位体系、决策流程、考核方式",
+      "fit": "本期候选",
+      "dependencies": [
+        "原句支持的父范围和三子区域；最多4子项"
+      ],
+      "reason": "不扩写成已有组织实施结果；三内容清楚即可",
+      "priority": 1
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-pipeline-fanout",
+      "signature": "相连输入链先建立；整体缩成头部；再分发多个输出",
+      "scriptAnchor": "B22原声/照片整理到数字档案和书",
+      "fit": "以后适用",
+      "dependencies": [
+        "真实或明确示意的来源图；最多3输入、5输出"
+      ],
+      "reason": "B22为P04；不在原纸艺内再叠完整流程",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-pipeline-package",
+      "signature": "三阶段链与输出建立；整体缩入系统边界；再接结果",
+      "scriptAnchor": "B46：具体方法整理成可复用课件",
+      "fit": "本期候选",
+      "dependencies": [
+        "三阶段确有依据时可用；相关原料图与真实结果定义"
+      ],
+      "reason": "流程例子有四项而源码阶段最多3项；需避免截掉交付或伪造因果",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-quadrant-positioning",
+      "signature": "两轴先构建；物件按坐标逐个出现",
+      "scriptAnchor": "以后定位可讨论的行动条件",
+      "fit": "以后适用",
+      "dependencies": [
+        "坐标依据、轴定义与判断性质"
+      ],
+      "reason": "本期10生意没有可靠坐标；默认最多6物件也会漏项",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-radial-branches",
+      "signature": "中心固定；弧线与三个终点分拍展开",
+      "scriptAnchor": "B29：人+AI→岗位体系、决策流程、考核方式",
+      "fit": "本期候选",
+      "dependencies": [
+        "三个原句节点；不需外部图片"
+      ],
+      "reason": "与nested-workspace二择一；源码最多3终点，不能列10生意",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-scope-emphasis",
+      "signature": "层级先出现；连续边界圈出范围；收益与注意项接入",
+      "scriptAnchor": "以后讲企业/项目/岗位的数据使用范围",
+      "fit": "以后适用",
+      "dependencies": [
+        "正文支持的层级、收益与注意项"
+      ],
+      "reason": "本期没有三层治理范围和对应警示；不得为用特效新编",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-sequence-lanes",
+      "signature": "角色列固定；请求、等待、返回按箭头分拍进行",
+      "scriptAnchor": "B32：顾客提问、AI检索、信源返回",
+      "fit": "依赖缺失",
+      "dependencies": [
+        "真实检索行为验证；最多3参与者、4消息"
+      ],
+      "reason": "公开稿未详讲交互次序；不能假装所有AI必按同流程",
+      "priority": 2
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-tier-pyramid",
+      "signature": "阶梯梯形先成形；每层标签后接说明和分隔线",
+      "scriptAnchor": "以后解释有依据的组织层级",
+      "fit": "以后适用",
+      "dependencies": [
+        "明确的上下层级关系；最多4层"
+      ],
+      "reason": "B29三项是并列设计维度，没有高低层级",
+      "priority": 3
+    },
+    {
+      "effectId": "bs-creatormotion-diagram-timeline-nodes",
+      "signature": "共享时间轨逐点出现；每点稳住后再出下点",
+      "scriptAnchor": "B01从今天到过年的时间承诺",
+      "fit": "以后适用",
+      "dependencies": [
+        "确认的日期与可兑现节点；最多5节点"
+      ],
+      "reason": "只给了起止意图，没有中间真实里程碑；不能编每周回报结果",
+      "priority": 3
+    }
+  ]
+}

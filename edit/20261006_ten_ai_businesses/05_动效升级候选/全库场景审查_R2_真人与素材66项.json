@@ -1,0 +1,866 @@
+{
+  "schemaVersion": "全库场景审查-R2/1",
+  "taskId": "task-20261006T173005Z-972d900a",
+  "status": "已完成代码与场景候选审查，未渲染视觉验收",
+  "sourceCoverage": {
+    "catalogPath": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/references/catalog.json",
+    "catalogMarkdownPath": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/references/catalog.md",
+    "moduleRoot": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/scripts/effects",
+    "scriptPath": "/Users/pc/Documents/口播/edit/20261006_ten_ai_businesses/02_文稿/用户确认原文.txt",
+    "evidenceType": "已读取各项实际模块的生效动画时间轴与必要几何代码，签名依据实际运动，目录与源码有差异时保留差异",
+    "catalogEffectCount": 122,
+    "assignedEffectCount": 69,
+    "reviewedEffectCount": 66,
+    "reviewedCategoryCounts": {
+      "split": 8,
+      "pip": 4,
+      "type": 12,
+      "chapter": 7,
+      "transition": 1,
+      "spotlight": 9,
+      "cards": 18,
+      "collage": 7
+    },
+    "excludedEffectIds": [
+      "bs-creatormotion-type-behind-subject",
+      "bs-creatormotion-transition-tile-dissolve",
+      "bs-creatormotion-cards-foreground-row"
+    ],
+    "exclusionReason": "以上三项用户指定核心动效由主代理单独详读；本文件不重复审核，不将三项计入66项",
+    "modulePathRule": "moduleRoot + '/' + effectId + '.mjs'",
+    "scopeBoundary": "本文件是当前稿场景候选，不覆盖已验收纸艺，不改已确认文稿，不等于素材齐备、事实核验通过或视觉验收通过",
+    "actualCodeCaveats": [
+      "split-chart-pan第14行在1.27秒淡出首组标题与行标签，与目录保留标签的描述不一致。",
+      "spotlight-mobile-step第11至19行仍生成左右交替侧边标签与多段肘形连线，目录手机横条与竖线的重构描述不能当已实现。",
+      "spotlight-voice-transcript第8行按空格分词，中文无空格时成为单节点，逐词呈现需中文分段与真实时点适配。",
+      "chapter-grid-pan和chapter-grid-flip最多六项，split-progressive-list最多七项，cards-sequential-list最多四项，cards-card-counter最多八项，不能直接宣称十项完整展示。"
+    ]
+  },
+  "priorityDefinition": {
+    "1": "本稿强匹配，实际应用仍需当前段落路线与素材检查",
+    "2": "素材齐备或作为替代方案时条件适用",
+    "3": "当前稿缺少相应语义或真实数据，不建议为凑效果加入"
+  },
+  "records": [
+    {
+      "effectId": "bs-creatormotion-split-chart-pan",
+      "signature": "超宽图表先横移查看端点，再纵移到第二组；实际修订代码在1.27秒淡出首组标题与标签",
+      "scriptAnchor": "目前95%的中小企业，就算装上Agent，也根本不会用。／现在89%的创作者都在用AI，内容同质化会越来越严重。",
+      "dependencies": [
+        "真人原片",
+        "核实后的两组完整可比数据"
+      ],
+      "reason": "两项百分比的对象不同，不能混成比较图；本稿没有完整图表。目录称扫描时保留标签，但现行源码第14行会淡出首组标题与行标签，应以实际代码和渲染为准。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    },
+    {
+      "effectId": "bs-creatormotion-split-chart-swap",
+      "signature": "真人和图表协调交换左右位置，画线后再交换回来",
+      "scriptAnchor": "很多企业知道AI可以提效",
+      "dependencies": [
+        "真人原片",
+        "两条真实时间序列",
+        "坐标与单位"
+      ],
+      "reason": "本稿没有时间序列或前后效果数据，不能编造提效曲线；只有后续真实测量足够时才有场景。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    },
+    {
+      "effectId": "bs-creatormotion-split-phone-callouts",
+      "signature": "巨型手机从下方进入，消息横向揭示，两个标签以短旋转与缩放盖入",
+      "scriptAnchor": "老人想预约办事、找人跑腿、交个费用",
+      "dependencies": [
+        "真人原片",
+        "真实手机截图或录屏",
+        "授权头像"
+      ],
+      "reason": "最多两个功能标签；当前仅是需求列举，有实际演示时才值得用，虚构界面不能冒充已实现功能。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-split-phone-scale",
+      "signature": "大手机逐项揭示与勾选，完成状态出现后围绕底部锚点缩小",
+      "scriptAnchor": "教人如何和AI跑通完整业务流程。",
+      "dependencies": [
+        "真人原片",
+        "真实手机操作素材",
+        "步骤完成时点"
+      ],
+      "reason": "最多四个步骤；必须同步真实完成时点，无操作演示时会成为装饰。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-split-progressive-list",
+      "signature": "真人近景保持，条目文字短促横向揭示，序号独立出现；先前条目保留到结束",
+      "scriptAnchor": "咋们把硬件、软件、配置、培训打包交付，赚信息差和服务费。／做数据清洗、标注、结构化",
+      "dependencies": [
+        "真人原片",
+        "原句局部清单"
+      ],
+      "reason": "强匹配三到四项并列口播；源码slice(0,7)，不能直接承担十项完整总览。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-split-quote-underline",
+      "signature": "大幅去色肖像固定，重点短语单次划线，最终阅读状态静止",
+      "scriptAnchor": "机会不是简单的AI代写，而是AI初稿，加上人工深度二创的内容服务。",
+      "dependencies": [
+        "本人肖像或对齐抠像",
+        "原句与重点短语",
+        "准确归属"
+      ],
+      "reason": "适合一句主张，不能当作连续全文字幕；引用不得伪造归属。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-split-response-spotlight",
+      "signature": "真人近景旁回答正文保持，短阅读带依次移向已存在的段落",
+      "scriptAnchor": "企业有没有可靠资料能被查到、被引用？",
+      "dependencies": [
+        "真人原片",
+        "真实AI回答截图",
+        "实际焦点坐标"
+      ],
+      "reason": "必须有真实回答与引用位置；不能伪造品牌被AI推荐或引用。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-split-status-focus",
+      "signature": "三项文字固定，低位背景板逐项移动，状态符号在对应阅读位快速落定",
+      "scriptAnchor": "很多传统行业客户不会选、不会配，买回去也不会用。",
+      "dependencies": [
+        "真人原片",
+        "三项原话",
+        "三项问题状态"
+      ],
+      "reason": "三条问题与三次焦点天然对应；应呈现原句困难，不得额外添加未经核实的工具评级。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-pip-calendar-reschedule",
+      "signature": "日历事件轻微抬起并沿直线路径改到目标时段，手机确认随后出现",
+      "scriptAnchor": "老人想预约办事",
+      "dependencies": [
+        "真人原片",
+        "真实日历与手机素材",
+        "真实起终时段"
+      ],
+      "reason": "本稿只讲预约需求，没有改期剧情；不必为展示模板强加故事。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    },
+    {
+      "effectId": "bs-creatormotion-pip-chat-response",
+      "signature": "问题自上而下揭示，等待点跳动停止后回答展开，页面作缓慢推进",
+      "scriptAnchor": "顾客问AI“哪家的产品适合我”",
+      "dependencies": [
+        "真人原片",
+        "真实页面与回答",
+        "授权头像"
+      ],
+      "reason": "适合保留真实提问与上下文；回答须真实，示意界面只能明确作为说明。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-pip-notification-log",
+      "signature": "手机显示通知后明确平移到左侧，日志区域展开，各日志行横向揭示并保持",
+      "scriptAnchor": "帮企业把通用Agent改成可以直接干活的业务助手",
+      "dependencies": [
+        "真人原片",
+        "真实通知与执行日志录屏"
+      ],
+      "reason": "需实际业务执行链；没有真实日志不能用动画宣称Agent已经完成业务。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-pip-slides-focus",
+      "signature": "课件主视窗以短而连续的页交接推进，最后拉远露出课件工作区，真人保持辅助",
+      "scriptAnchor": "把这些具体的方法做成可复用的课件。",
+      "dependencies": [
+        "真人原片",
+        "三页真实课件截图或录屏"
+      ],
+      "reason": "强匹配课件交付；最多三页，必须可读，不以生成示例冒充已完成课程。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-burst-statement",
+      "signature": "真人画面切到短促竖向文字回声，再切回真人，最后稳定结论逐词落定",
+      "scriptAnchor": "内容同质化会越来越严重。真正稀缺的，是真实信息差、个人观点和原始数据。",
+      "dependencies": [
+        "真人原片",
+        "原句短语"
+      ],
+      "reason": "适合一次情绪转折；反复使用会打断连续讲述。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-copy-correction",
+      "signature": "旧纸条划线打叉后倾斜坠落，新纸条落在同一阅读位并出现勾选",
+      "scriptAnchor": "机会不是简单的AI代写，而是AI初稿，加上人工深度二创的内容服务。",
+      "dependencies": [
+        "两段原话"
+      ],
+      "reason": "适合方法纠偏，运动必须保留旧条撤离和新条占位，不应只是两个普通白底标题；不承担事实证明。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-definition-reframe",
+      "signature": "旧定义划线后完全清除，大背景图从下方升起，新定义与周边词在新阅读层建立",
+      "scriptAnchor": "这一项跟前面的数据集生产不一样。前面是把数据加工好",
+      "dependencies": [
+        "合法示意或真实数据材料图",
+        "两项准确的短定义"
+      ],
+      "reason": "可区分加工与经纪；不能暗示全部数据天然可交易，需要保留授权边界。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-keyword-caption",
+      "signature": "文字在同一阅读行原位依次出现，关键词加重并加细下划线，不使用词块跳动",
+      "scriptAnchor": "机会就在安装、调试、行业定制／真正稀缺的，是真实信息差、个人观点和原始数据。",
+      "dependencies": [
+        "真人原片",
+        "实录词时点",
+        "关键词清单"
+      ],
+      "reason": "强匹配短句重点；不能替代实录字幕或破坏同窗规则，中文分词与时间点需实际核对。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-opposing-labels",
+      "signature": "中央真人保持，两侧标签错时进入；一侧黑色印条，另一侧白色斜体",
+      "scriptAnchor": "纯AI公司不懂实体产业，产业老板又不懂AI。",
+      "dependencies": [
+        "真人原片",
+        "两段短标签",
+        "实际人物与字幕保护区"
+      ],
+      "reason": "双向认知缺口与不对称对置运动一致，构图必须以真人当前帧确定，不能遮脸。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-question-bubble",
+      "signature": "实心问句气泡快速落定，思考图像随之出现，短轻转后保持",
+      "scriptAnchor": "顾客问AI“哪家的产品适合我”／哪些AI工具擅长什么？",
+      "dependencies": [
+        "授权思考图像或插图",
+        "原稿问句"
+      ],
+      "reason": "适合一问一画面；不得增写正文没有的新问题或以示意头像冒充真实顾客。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-spec-reveal",
+      "signature": "真人大部分保留，功能标签先出，大数字测量块落定，再揭示两条横向状态",
+      "scriptAnchor": "我有10个看好的AI生意。",
+      "dependencies": [
+        "真人原片",
+        "准确的数量与单位"
+      ],
+      "reason": "可作数量强调，但同一开场优先让位给用户指定身后大标题；95%与89%须独立来源核验。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-tag-stack",
+      "signature": "连续真人画面重构图靠左，右侧印刷标签以两项一组短促累积",
+      "scriptAnchor": "做数据清洗、标注、结构化／咋们把硬件、软件、配置、培训打包交付",
+      "dependencies": [
+        "真人原片",
+        "原句短词",
+        "真人与字幕安全区"
+      ],
+      "reason": "强匹配并列短词；标签不能遮脸或挤进字幕区，不能直接当十项总览模板。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-term-pressure",
+      "signature": "词条依次围住中央真人，3.3秒切到灰度素材图，既有词位置保持以形成语义交接",
+      "scriptAnchor": "岗位设计、流程、绩效体系，还停留在工业时代。",
+      "dependencies": [
+        "真人原片",
+        "合法组织或工作场景图",
+        "原句短词"
+      ],
+      "reason": "适合组织困境的压力表达；不适合舒缓的老人回忆故事。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-title-takeover",
+      "signature": "标题在对齐真人背后冲入并小幅落定，随后真人整层切除，标题以同位置与尺度接管画面",
+      "scriptAnchor": "我有10个看好的AI生意。",
+      "dependencies": [
+        "真人原片",
+        "同源同时间抠像",
+        "大标题与支撑短句"
+      ],
+      "reason": "这是人物消失后标题接管，不等同于人物持续存在的身后标题；同一钩子无需叠用两种。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-topic-cloud",
+      "signature": "白色大主词融入真人层次，周边词以不均匀大小与分布错时累积，进入后保持固定",
+      "scriptAnchor": "第一，AI Agent落地服务商。／机会就在安装、调试、行业定制",
+      "dependencies": [
+        "真人原片",
+        "对齐抠像",
+        "主词与短词"
+      ],
+      "reason": "强匹配主业务与周边服务项；不必十项都用同一词云，抠像须同源对齐。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-type-wall-checklist",
+      "signature": "镜头快速重构图，人物虚化，完整条目逐行直接写到墙面底板",
+      "scriptAnchor": "硬件、软件、配置、培训／我们看看你的经验能用在哪一步，缺的能力怎么补",
+      "dependencies": [
+        "真人原片或抠像",
+        "真实可用墙面底板",
+        "人物与墙面区域"
+      ],
+      "reason": "需真实墙面承载和足够阅读空间；人物虚化是有意焦点转换，不能当普通旁侧列表直接套用。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-chapter-border-orbit",
+      "signature": "真人背景强虚化，章节标题保持不动，短亮线沿完整边界移动",
+      "scriptAnchor": "第五，银发族AI陪伴与生活服务。",
+      "dependencies": [
+        "真人原片",
+        "章标题与必要副句"
+      ],
+      "reason": "适合大分组边界，十项逐条用会重复并拉长时长；边界绕行不是平移。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-chapter-browser-reveal",
+      "signature": "浏览器壳先建立，最多四行标题从虚到清，最后以马赛克遮罩返回连续真人",
+      "scriptAnchor": "第七，GEO代运营。",
+      "dependencies": [
+        "真人原片",
+        "最多四行简短标题"
+      ],
+      "reason": "可作为进入真实查询的章界；模板浏览器壳不具证据资格，不应伪装成真实平台页面。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-chapter-character-reveal",
+      "signature": "固定位置字形从浅到实依次显现，斜向背景巨字保持，完成后静止",
+      "scriptAnchor": "第一，AI Agent落地服务商。至第十项的短章名",
+      "dependencies": [
+        "原稿短章名"
+      ],
+      "reason": "适合局部章节，不能以字形显色替代物体运动；连续十次全屏会单调。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-chapter-grid-flip",
+      "signature": "整体镜头双轴移位，各卡独立绕纵轴翻转，选中卡正面落定，最后马赛克返回真人",
+      "scriptAnchor": "我有10个看好的AI生意。中的三到六项局部分组导航",
+      "dependencies": [
+        "真人原片",
+        "最多六项局部标签"
+      ],
+      "reason": "源码slice(0,6)，不能直接承载十项总图；独立翻转与平移是不同运动。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-chapter-grid-pan",
+      "signature": "整个连续平面明确作斜向平移，邻格持续保留，落点标题从虚到清",
+      "scriptAnchor": "第一至第十项之间的相邻生意组定位",
+      "dependencies": [
+        "最多六项分组标签或符号",
+        "明确目标项"
+      ],
+      "reason": "强匹配空间导航；源码slice(0,6)，十项总图需数量适配后验证，不能直接声称已全覆盖。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-chapter-label-stack",
+      "signature": "章节号先出，主标题整体向上显现，再揭示支撑短句；巨号作低透明背景",
+      "scriptAnchor": "第一，AI Agent落地服务商。至第十项的短章名",
+      "dependencies": [
+        "原章标题",
+        "必要支撑短句"
+      ],
+      "reason": "适合个别简洁章节，较纯文字，不宜十次连续独占全屏。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-chapter-title-stamp",
+      "signature": "标题以缩放和7度旋转快速落定，互补角遮罩闭合后打开下一张资料场景",
+      "scriptAnchor": "还有人生回忆录。／把这些具体的方法做成可复用的课件。",
+      "dependencies": [
+        "下一场景的真实或授权照片文档",
+        "短标题"
+      ],
+      "reason": "需要清楚的第二场景；不能盖章以后留空或只换另一段纯标题。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-transition-polygon-wipe",
+      "signature": "两个互补三角遮罩合拢覆盖前景，中间短标题斜向盖入，再合拢并开启后景",
+      "scriptAnchor": "前面是把数据加工好，这里是训练数据、行为数据、创作数据",
+      "dependencies": [
+        "前后实际画面",
+        "短中间句"
+      ],
+      "reason": "适合明确段落交接；中间文字默认有较长读时，不能每一项都完整跑6.8秒。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-spotlight-comment-emphasis",
+      "signature": "文档保持，评论层短促进入，重点色带分两次扫过词语",
+      "scriptAnchor": "AI初稿，加上人工深度二创的内容服务。",
+      "dependencies": [
+        "真实稿件",
+        "真实审稿评论",
+        "授权头像或署名"
+      ],
+      "reason": "需真实人工评论；不能编造客户反馈或作者身份来展示二创价值。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-spotlight-issue-resolution",
+      "signature": "文档问题定位，答复横向展开，阶段依次着色，最后完成章短落定",
+      "scriptAnchor": "机会就在安装、调试、行业定制",
+      "dependencies": [
+        "真实工作流页",
+        "问题区域",
+        "真实解决过程与结果"
+      ],
+      "reason": "只有真实故障到解决的演示才有必要；没有真实记录不得包装成功案例。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-spotlight-metric-audit",
+      "signature": "同一指标页上依次描出不规则圈，最后用描边方式绘制勾与状态",
+      "scriptAnchor": "很多企业知道AI可以提效／赚取改造费加上业务分成",
+      "dependencies": [
+        "真实指标页",
+        "真实指标值",
+        "真实审核结果"
+      ],
+      "reason": "当前稿没有验收指标，动画勾章不能证明效果。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    },
+    {
+      "effectId": "bs-creatormotion-spotlight-metric-to-detail",
+      "signature": "页面镜头向目标区域推进，指标先完成增长，覆盖层撤走后依次出现局部细节框",
+      "scriptAnchor": "企业有没有可靠资料能被查到、被引用？",
+      "dependencies": [
+        "真实页面",
+        "已核实指标数值",
+        "真实区域坐标"
+      ],
+      "reason": "无指标依据不得沿用默认100%；生成界面图不是被引用证据。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-spotlight-mobile-step",
+      "signature": "圆指示器先移动到点击位置，现行代码以左右交替标签和肘形连线随后解释",
+      "scriptAnchor": "老人想预约办事、找人跑腿、交个费用",
+      "dependencies": [
+        "真实手机录屏",
+        "实际点击时点",
+        "目标坐标"
+      ],
+      "reason": "目录描述手机横条与竖线，但源码第11至19行仍生成交替侧边标签和多段肘线，只改CSS与时长；必须以实际代码和渲染判断，不能宣称该重构已实现。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-spotlight-quote-evidence",
+      "signature": "来源标题固定在上方，摘录下方放大落定，三次重点标记扫过",
+      "scriptAnchor": "目前95%的中小企业／现在89%的创作者／核心就是结构化内容建设、权威信源布局",
+      "dependencies": [
+        "官方或合法来源原页",
+        "准确摘录",
+        "正式出处"
+      ],
+      "reason": "只在确有可读原文时承担核验；默认生成材料不能冒充研究或平台事实。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-spotlight-region-callout",
+      "signature": "文档与焦点注释一起作短推进，连接线保持注册，阅读后恢复全局",
+      "scriptAnchor": "不知道怎么整理、授权、变现。",
+      "dependencies": [
+        "真实授权文档或页面",
+        "实际区域坐标",
+        "合法摘录"
+      ],
+      "reason": "可框出授权范围，不能由单一框线直接得出数据可以交易的结论。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-spotlight-shortcut-target",
+      "signature": "快捷键键帽短促压下，目标区域出现，原页在无空档交接中替换为结果",
+      "scriptAnchor": "做数据清洗、标注、结构化／人工深度二创",
+      "dependencies": [
+        "操作前截图",
+        "实际快捷键",
+        "真实结果截图"
+      ],
+      "reason": "本稿没有具体快捷键，无关操作不能为凑动效而加入。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    },
+    {
+      "effectId": "bs-creatormotion-spotlight-voice-transcript",
+      "signature": "录音控件与波形进入，转写累积并确认，随后文本进入档案字段，工作区恢复焦点",
+      "scriptAnchor": "坐下来听老人讲，把原声、老照片留下来，AI辅助整理",
+      "dependencies": [
+        "经同意的老人原声",
+        "实录字词时点",
+        "实际档案页面"
+      ],
+      "reason": "强匹配原声到档案的交接；源码第8行用transcript.split(' ')，无空格中文会成单节点，必须适配中文分段与真实时点；默认波形不能冒充老人真实声音。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-action-checklist",
+      "signature": "清单纸保持，在真实完成时点绘制勾并改变方框状态，与手机演示同步",
+      "scriptAnchor": "教人如何和AI跑通完整业务流程。／硬件、软件、配置、培训打包交付",
+      "dependencies": [
+        "真实录屏",
+        "实际完成时点",
+        "最多四项清单",
+        "需要时加入真人"
+      ],
+      "reason": "强匹配流程教学；最多四项，任务出现不等于任务完成，不能预先打勾。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-card-counter",
+      "signature": "收据状卡每到达一张同步更新数量和合计，最后结论出现",
+      "scriptAnchor": "按月收取服务费／收的是组织诊断和实施辅导的钱",
+      "dependencies": [
+        "每项实际图像",
+        "真实单位值与数量"
+      ],
+      "reason": "本稿没有实际累计量或金额，不得使用默认数值补造收益；源码最多八项，不能直接展示十项生意。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-chapter-stack",
+      "signature": "大章节号先进入，1.92秒切换为三层细节板，再向上推进放大重点",
+      "scriptAnchor": "第二，垂类行业数据集生产。／做数据清洗、标注、结构化",
+      "dependencies": [
+        "三张实际或合法说明图",
+        "原章标题",
+        "明确重点项"
+      ],
+      "reason": "最多三项，适合层级解释；已验收纸艺所在句不得被该候选覆盖。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-chat-stack",
+      "signature": "气泡按内容尺寸逐条短促进入，先前消息与输入区持续保留",
+      "scriptAnchor": "顾客问AI“哪家的产品适合我”／或者就想有人聊聊天",
+      "dependencies": [
+        "授权头像",
+        "真实对话或明确说明的文本"
+      ],
+      "reason": "最多四条；当前只有顾客问句没有回答，不能续编能力承诺。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-context-conflict",
+      "signature": "三份角色资料经连接线进入共享页，文字逐行揭示，冲突位置出现警告",
+      "scriptAnchor": "很多企业知道AI可以提效，但岗位设计、流程、绩效体系，还停留在工业时代。",
+      "dependencies": [
+        "三份真实来源材料",
+        "共享页",
+        "真实冲突内容"
+      ],
+      "reason": "本稿没有共享上下文冲突，并列岗位或数据不等于资料冲突，当前不采用。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-corner-tags",
+      "signature": "中央命题持续，四角标签分别从所属边缘短促进入",
+      "scriptAnchor": "咋们把硬件、软件、配置、培训打包交付",
+      "dependencies": [
+        "中央原句命题",
+        "四条原句短词"
+      ],
+      "reason": "四项与四角关系对应；保留各自边缘运动，不可缩成十项小白卡阵。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-cost-range",
+      "signature": "两张来源金额收据先到位，随后范围两端数字同步变化并落定",
+      "scriptAnchor": "赚信息差和服务费／收的是组织诊断和实施辅导的钱",
+      "dependencies": [
+        "真实金额",
+        "真实计算范围",
+        "单位与依据"
+      ],
+      "reason": "本稿没有价格或成本数据，不得用默认范围补造收入预期。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-folder-grid",
+      "signature": "文档缩小并移动到确切文件夹，接收文件夹短暂填色后回到原状",
+      "scriptAnchor": "不知道怎么整理、授权、变现。／做成数字档案",
+      "dependencies": [
+        "实际分类与文档短名",
+        "演示对应的真实归档关系"
+      ],
+      "reason": "强匹配整理与归档；最多五文件，现行目标按i*2 % 文件夹数分配，实际示范需适配真实类别，不能假装自动正确分类。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-grid-priority",
+      "signature": "已有三个象限保留，指定优先象限晚到并通过缩放占据焦点",
+      "scriptAnchor": "我有10个看好的AI生意。",
+      "dependencies": [
+        "四张主题图",
+        "用户确实确定的优先项"
+      ],
+      "reason": "当前稿没有四项中的最优选择，不能擅自赋予生意排名。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-inspect-split",
+      "signature": "放大镜先在两位置检查，两侧板带透视旋开，中央结果向镜头推进",
+      "scriptAnchor": "这一项跟前面的数据集生产不一样。前面是把数据加工好",
+      "dependencies": [
+        "加工与授权两侧真实或合法说明图",
+        "准确结果图"
+      ],
+      "reason": "可解释加工与经纪差异，但不能通过视觉结果证明全部数据能变现。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-keyword-resolve",
+      "signature": "主词上移为锚，关键词云聚拢后撤走，结论印条先出，资料页随后升起",
+      "scriptAnchor": "真正稀缺的，是真实信息差、个人观点和原始数据。／人工深度二创的内容服务",
+      "dependencies": [
+        "实际或授权内容材料图",
+        "原句短词",
+        "准确结论"
+      ],
+      "reason": "需要与材料页相称的真实内容，不能让示例页冒充支持结论的证据。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-list-audience",
+      "signature": "问句条目依次揭示，单一焦点人先出现，再扩成24人图形场",
+      "scriptAnchor": "想创业，或者想做点副业的，还有你以前做过的工作，可能都用得上。",
+      "dependencies": [
+        "原句需求或问题短词"
+      ],
+      "reason": "可以提示服务对象，但24只是图形密度，不能当统计人数；本稿并非五道调查问卷。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-matrix-fill",
+      "signature": "两行标签和对应证据配对揭示，整个矩阵短横移进入阅读位",
+      "scriptAnchor": "这一项跟前面的数据集生产不一样。",
+      "dependencies": [
+        "两项准确交付说明",
+        "需要时的真实依据"
+      ],
+      "reason": "盾牌与勾容易传达已认证感，未核验授权不能被包装成已通过。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-ratio-bridge",
+      "signature": "人物与对象两端保持，中间百分比增长，跨越阈值后改变状态",
+      "scriptAnchor": "目前95%的中小企业／现在89%的创作者",
+      "dependencies": [
+        "真实比率与阈值",
+        "授权人物与对象图像"
+      ],
+      "reason": "两个现有百分比不是同一端到端关系，更没有从20到80的成长数据，当前不建议。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-roadmap-focus",
+      "signature": "三列连通步骤先铺开，再推进第一列，换标题并强调第一行动",
+      "scriptAnchor": "我们看看你的经验能用在哪一步，缺的能力怎么补，再决定要不要做。",
+      "dependencies": [
+        "经用户确认的真实步骤文本"
+      ],
+      "reason": "原稿没有三层九步详细路线；仅在确认具体步骤后作为替代，不得扩写课程。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-sequential-list",
+      "signature": "固定细长外框保留，文字逐行揭示，可选整行或模糊入口",
+      "scriptAnchor": "把AI装进选品、库存、客服、跟单这些业务环节／比如选品、内容、客服、交付",
+      "dependencies": [
+        "四条原话"
+      ],
+      "reason": "两处四项列举强匹配；现行源码硬限四项，不能直接展示十项生意。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-status-row",
+      "signature": "三个工具图标保持，角标依次到位，状态在共享基线出现，结论独立落定",
+      "scriptAnchor": "目前市面上豆包工作,workbuudy还有codex这些通用模型已经非常多了。",
+      "dependencies": [
+        "三项已核实工具定位与状态",
+        "需要品牌时的真实标识素材"
+      ],
+      "reason": "当前仅列工具名，没有能力或状态评级；内建图标不是官方品牌标志，不可凭空写工具优劣。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-cards-steps-title",
+      "signature": "三步骤活动边依次切换，先前步骤变淡，整体推开后章节大字接管",
+      "scriptAnchor": "很多传统行业客户不会选、不会配，买回去也不会用。",
+      "dependencies": [
+        "三项确认步骤",
+        "原章标题"
+      ],
+      "reason": "最多三步，可局部衔接；不适合四步业务流程，也不应先完整走模板后才讲内容。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-collage-document-stack",
+      "signature": "四份尖边文档依次斜落叠压，前页替换后留纸边，末页较长保持",
+      "scriptAnchor": "靠的就是高质量的行业数据。／把这些具体的方法做成可复用的课件。",
+      "dependencies": [
+        "实际行业数据样本或真实课件",
+        "最多四份授权文档图"
+      ],
+      "reason": "材料种类展示与叠压替换相符；来源不明的默认文档不能作为证据。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-collage-dossier-role",
+      "signature": "角色肖像旁四份材料陆续揭示，最后手机从下方接管资料区",
+      "scriptAnchor": "把原声、老照片留下来，AI辅助整理，家人一起核对，做成数字档案",
+      "dependencies": [
+        "经同意的肖像",
+        "四份授权材料",
+        "实际数字档案手机页"
+      ],
+      "reason": "老人身份、照片、声音和墓碑入口都需真实同意；示意不能暗示已交付，当前只作为材料齐备后的候选。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-collage-evidence-summary",
+      "signature": "四张大小不同的资料面保持，总结横向揭示，稍后真人进入",
+      "scriptAnchor": "数据清洗、标注、结构化／把这些具体的方法做成可复用的课件",
+      "dependencies": [
+        "四份真实授权资料",
+        "真人原片",
+        "准确总结"
+      ],
+      "reason": "无真实交付不能包装案例结果；真人小窗需按本项目左下规则适配。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-collage-parallax-proof",
+      "signature": "远中近三层资料按不同速度和尺度持续行进，中央结论分段从虚到清",
+      "scriptAnchor": "真正稀缺的，是真实信息差、个人观点和原始数据。",
+      "dependencies": [
+        "六张实际或授权内容页",
+        "原句短结论"
+      ],
+      "reason": "背景允许裁切，目标是材料丰富与深度关系，不是逐份精确阅读，不能承担来源核验。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-collage-portrait-notes",
+      "signature": "大肖像保持，三条注释在原位揭示，最后引言与松弛下划线出现",
+      "scriptAnchor": "坐下来听老人讲，把原声、老照片留下来",
+      "dependencies": [
+        "经同意的本人或老人肖像",
+        "真实注释",
+        "真实原话"
+      ],
+      "reason": "不能生成老人身份与引言，未获同意的真实人物不能当公开素材。",
+      "priority": 2,
+      "fit": "条件适用"
+    },
+    {
+      "effectId": "bs-creatormotion-collage-scatter-presenter",
+      "signature": "第一图从满屏缩成拼贴，其余独立落位，再向两侧重排让真人抠像入场",
+      "scriptAnchor": "吃透一整个产业带，把AI装进选品、库存、客服、跟单这些业务环节",
+      "dependencies": [
+        "四张真实授权产业或工作场景图",
+        "真人原片与对齐抠像"
+      ],
+      "reason": "强匹配场景到本人讲述的交接；生成图片不得假装实拍，人物抠像必须同源时间对齐。",
+      "priority": 1,
+      "fit": "适用"
+    },
+    {
+      "effectId": "bs-creatormotion-collage-testimonial-wall",
+      "signature": "四条不等大的引言纸片稍重叠，整墙仅作1.5%的缓慢推进",
+      "scriptAnchor": "人机协作技能培训或企业服务有真实反馈时",
+      "dependencies": [
+        "真实反馈",
+        "授权署名与图像"
+      ],
+      "reason": "当前稿没有客户或学员反馈，不能使用默认虚构人名与好评。",
+      "priority": 3,
+      "fit": "本稿不建议"
+    }
+  ]
+}
