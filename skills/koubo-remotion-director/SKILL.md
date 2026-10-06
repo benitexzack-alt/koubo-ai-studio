@@ -48,6 +48,7 @@ description: 用于口播的全片导演规划。完整读取用户确认文稿�
 - `shotcraftOpportunities` 只能标记功能意图，不能写具体 `cardId/effectId/presetId/componentId`。
 - Shotcraft 只能对 `speaker` 和 `real-evidence` 标机会；禁止进入 `paper-editorial` 和 `ai-generated-video` 内部。
 - 原片和素材到齐后，才根据实录原句、帧窗、字幕与人物保护区扫描当前全库，并对每个适用 beat 输出 `apply` 或 `not-needed`。
+- 用户明确要求动效升级或拍后匹配升级候选时，按需读[升级库发现与分层](references/motion-upgrade-discovery.v1.md)。这不改变四路判断、七字段白名单或纸艺基准；独立升级试验与正式选卡、剪辑授权分开，下载库不等于全库已适配。
 
 ## 提示词边界
 

@@ -1,0 +1,1581 @@
+{
+  "schemaVersion": "koubo-director-cues/v2",
+  "taskId": "task-20261006T164713Z-04447bed",
+  "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
+  "inputScript": {
+    "path": "edit/20261006_ten_ai_businesses/02_文稿/用户确认原文.txt",
+    "sha256": "492d9c3540ee1144b907587d25646b194af4be58b959c28f2f6505ff9448d348",
+    "authority": "user-confirmed-script"
+  },
+  "routingPolicy": {
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "generatedVisualCannotServeAsEvidence": true,
+    "factVerificationSeparatedFromPrimaryVisual": true,
+    "constructedVisualPriority": [
+      "paper-editorial",
+      "ai-generated-video"
+    ],
+    "aiGeneratedVideoUseCondition": "concrete-human-or-environment-scene-paper-unnatural",
+    "shotcraftSelectionStage": "post-shoot-edit-release",
+    "shotcraftEligibleRoutes": [
+      "speaker",
+      "real-evidence"
+    ],
+    "shotcraftForbiddenInsideRoutes": [
+      "paper-editorial",
+      "ai-generated-video"
+    ]
+  },
+  "styleLocks": {
+    "aiGeneratedVideo": null,
+    "paperEditorial": {
+      "qualityBaselineId": "paper-super-individual-20260829-v1",
+      "textPolicy": "first-frame-generated-chinese-surface-bound",
+      "promptPrefix": "立体手工纸艺微缩舞台，深蓝与暖米色纸板配少量橘红强调，至少前中后三层空间；可见纸纤维、纸板厚度和切边，接触阴影明确，真实手作质感。",
+      "mustKeep": [
+        "8/29《超级个体》实际作品最低基线",
+        "至少三层空间、纸纤维厚度切边与接触阴影",
+        "六镜独立构图、多物件主次与单认知目标",
+        "准确中文直接生成在首帧纸面，与物件同动",
+        "因果动作及可读结果停留，保留可用原生纸声"
+      ],
+      "mustAvoid": [
+        "统一三字牌模板和只有背景运动",
+        "无字底图后补字、固定悬浮文字或重绘乱码",
+        "平面塑料质感和无结果摆动",
+        "用生成画面证明能力、市场或收益",
+        "老人身份、声克隆、可用二维码或墓碑"
+      ],
+      "referenceImages": [
+        {
+          "id": "REF-SUPER-07",
+          "path": "edit/20260828_super_individual/05_素材验收/frames/paper_07-mid-original.png",
+          "sha256": "5d04fa4d180847d6e142e7dd352caf98396718a18ec676d16006f9756068f6b2",
+          "usage": "style-mechanism-only"
+        }
+      ]
+    }
+  },
+  "selectionSummary": {
+    "mainPoint": "用已有行业经验与真实交付能力逐项判断十类AI服务机会；机会不是收益保证，机制说明与事实核验分开。",
+    "argumentFlow": [
+      "本人提出十项候选机会",
+      "逐项保留章名、适用边界、判断和收费模式",
+      "六个机制用纸艺解释，其余真人承担",
+      "独立核验数字、市场、能力、合法资产与收入",
+      "回到经验和能力缺口，先看适不适合再决定"
+    ],
+    "routeCounts": {
+      "speaker": 43,
+      "real-evidence": 0,
+      "ai-generated-video": 0,
+      "paper-editorial": 6,
+      "shotcraftOpportunity": 15
+    },
+    "routeRationales": {
+      "speaker": "开头、每项标题、本人判断、风险、候选收入模式和结尾保留真人，不把未经证实主张可视化为事实。",
+      "real-evidence": "文稿讲机会与机制，不是具体真实产品演示或事件；没有必须看见的真实对象。后台事实核验独立存在，不因需要核验而硬塞公开视频。",
+      "ai-generated-video": "六个机制自然适合纸艺，其余真人能完成；不虚构老人、客户、交易或产业现场。",
+      "paper-editorial": "只在通用到定制、数据加工、内容投入、回忆整理、授权匹配、产业业务路径六处有解释收益时使用，不按数量配额。"
+    },
+    "visualRhythmReason": "按原文自然语义拆分，事实主张独立核验。已录制但尚未取得并绑定原片音频，6–8秒仅候选素材镜长，沿用pre-shoot-text-anchor-only，不伪造拍后实录入点。各连续真人组均复核，Shotcraft只留功能意图；独立动效升级实验不进入本导演表。",
+    "protectedSpeakerBeatIds": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B06",
+      "B07",
+      "B08",
+      "B09",
+      "B11",
+      "B12",
+      "B13",
+      "B14",
+      "B16",
+      "B17",
+      "B18",
+      "B19",
+      "B20",
+      "B21",
+      "B23",
+      "B24",
+      "B25",
+      "B26",
+      "B27",
+      "B28",
+      "B29",
+      "B30",
+      "B31",
+      "B32",
+      "B33",
+      "B34",
+      "B35",
+      "B36",
+      "B37",
+      "B39",
+      "B40",
+      "B41",
+      "B42",
+      "B44",
+      "B45",
+      "B46",
+      "B47",
+      "B48",
+      "B49"
+    ]
+  },
+  "semanticBeats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "scriptQuote": "假期结束了，明天就开工了。接下来到过年，我有10个看好的AI生意。从今天起我们一起见证，看谁先拿到结果！\n想创业，或者想做点副业的，还有你以前做过的工作，可能都用得上。",
+      "rhetoricalRole": "开场钩子与受众",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "scriptQuote": "第一，AI Agent落地服务商。",
+      "rhetoricalRole": "第一项章名",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "scriptQuote": "目前95%的中小企业，就算装上Agent，也根本不会用。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F01",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "scriptQuote": "尤其是咋们这个三线城市，机会就在安装、调试、行业定制，",
+      "rhetoricalRole": "本地机会判断",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "scriptQuote": "帮企业把通用Agent改成可以直接干活的业务助手，",
+      "rhetoricalRole": "机制解释",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P01",
+      "decisionReason": "只解释本句机制，不证明统计、真实能力、合法资产或收入结果。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "scriptQuote": "按月收取服务费。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F02",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "scriptQuote": "第二，垂类行业数据集生产。",
+      "rhetoricalRole": "第二项章名",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "scriptQuote": "目前市面上豆包工作,workbuudy还有codex这些通用模型已经非常多了。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F03",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "scriptQuote": "但是想要模型真正在家装、宠物医疗、设备维修这些细分场景用得好，靠的就是高质量的行业数据。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F04",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "scriptQuote": "做数据清洗、标注、结构化，这就是AI时代的卖水人生意。",
+      "rhetoricalRole": "机制解释",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P02",
+      "decisionReason": "只解释本句机制，不证明统计、真实能力、合法资产或收入结果。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "scriptQuote": "第三，AI内容反同质化服务。",
+      "rhetoricalRole": "第三项章名",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "scriptQuote": "现在89%的创作者都在用AI，",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F05",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "scriptQuote": "内容同质化会越来越严重。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F06",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "scriptQuote": "真正稀缺的，是真实信息差、个人观点和原始数据。",
+      "rhetoricalRole": "本人价值判断",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "scriptQuote": "机会不是简单的AI代写，而是AI初稿，加上人工深度二创的内容服务。",
+      "rhetoricalRole": "机制解释",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P03",
+      "decisionReason": "只解释本句机制，不证明统计、真实能力、合法资产或收入结果。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B16",
+      "order": 16,
+      "scriptQuote": "第四，AI设备的“最后一公里”渠道。",
+      "rhetoricalRole": "第四项章名",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B17",
+      "order": 17,
+      "scriptQuote": "AI PC、AI显卡这些硬件现在爆发式增长，",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F07",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B18",
+      "order": 18,
+      "scriptQuote": "但是很多传统行业客户不会选、不会配，买回去也不会用。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F08",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B19",
+      "order": 19,
+      "scriptQuote": "咋们把硬件、软件、配置、培训打包交付，赚信息差和服务费。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F09",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B20",
+      "order": 20,
+      "scriptQuote": "第五，银发族AI陪伴与生活服务。\n老人想预约办事、找人跑腿、交个费用，或者就想有人聊聊天。",
+      "rhetoricalRole": "第五项章名与生活举例",
+      "claimClass": "generic-illustration",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B21",
+      "order": 21,
+      "scriptQuote": "可以做AI问诊导诊、代办跑腿、防诈骗提醒、语音陪伴。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F10",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B22",
+      "order": 22,
+      "scriptQuote": "还有人生回忆录。坐下来听老人讲，把原声、老照片留下来，AI辅助整理，家人一起核对，做成数字档案，也印成一本书。",
+      "rhetoricalRole": "机制解释",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P04",
+      "decisionReason": "只解释本句机制，不证明统计、真实能力、合法资产或收入结果。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B23",
+      "order": 23,
+      "scriptQuote": "以后翻到某一页，扫码就能听到老人当时的声音。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F11",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B24",
+      "order": 24,
+      "scriptQuote": "甚至经老人和家人同意把这个入口留在墓碑上。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F12",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B25",
+      "order": 25,
+      "scriptQuote": "这个市场需求长期存在，",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F13",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B26",
+      "order": 26,
+      "scriptQuote": "竞争比年轻人赛道小很多。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F14",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B27",
+      "order": 27,
+      "scriptQuote": "第六，AI原生的组织咨询服务。\n这一项，适合本来就懂企业管理的人。",
+      "rhetoricalRole": "第六项章名与适用边界",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B28",
+      "order": 28,
+      "scriptQuote": "很多企业知道AI可以提效，但岗位设计、流程、绩效体系，还停留在工业时代。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F15",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B29",
+      "order": 29,
+      "scriptQuote": "机会就是重新设计人加AI的岗位体系、决策流程和考核方式，帮企业完成组织升级。",
+      "rhetoricalRole": "人加AI的组织设计机制",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B30",
+      "order": 30,
+      "scriptQuote": "收的是组织诊断和实施辅导的钱，",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F16",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B31",
+      "order": 31,
+      "scriptQuote": "比装一套软件要深入得多。",
+      "rhetoricalRole": "本人服务深度判断",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B32",
+      "order": 32,
+      "scriptQuote": "第七，GEO代运营。\n顾客问AI“哪家的产品适合我”，企业有没有可靠资料能被查到、被引用？",
+      "rhetoricalRole": "第七项章名与顾客问题",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B33",
+      "order": 33,
+      "scriptQuote": "核心就是结构化内容建设、权威信源布局，做好AI搜索的优化。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F17",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B34",
+      "order": 34,
+      "scriptQuote": "这才是代运营要长期干的活。",
+      "rhetoricalRole": "本人交付重心判断",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B35",
+      "order": 35,
+      "scriptQuote": "第八，AI时代的数据资产中介。\n这一项跟前面的数据集生产不一样。前面是把数据加工好，",
+      "rhetoricalRole": "第八项章名与前项区别",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B36",
+      "order": 36,
+      "scriptQuote": "这里是训练数据、行为数据、创作数据，现在都可以变成资产。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F18",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B37",
+      "order": 37,
+      "scriptQuote": "但是绝大多数企业，不知道怎么整理、授权、变现。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F19",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B38",
+      "order": 38,
+      "scriptQuote": "机会就是做数据资产经纪人，",
+      "rhetoricalRole": "机制解释",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P05",
+      "decisionReason": "只解释本句机制，不证明统计、真实能力、合法资产或收入结果。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B39",
+      "order": 39,
+      "scriptQuote": "靠服务费、佣金来赚钱。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F20",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B40",
+      "order": 40,
+      "scriptQuote": "第九，产业带AI改造“包工头”。",
+      "rhetoricalRole": "第九项章名",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B41",
+      "order": 41,
+      "scriptQuote": "国内有大量实体产业带，",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F21",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B42",
+      "order": 42,
+      "scriptQuote": "纯AI公司不懂实体产业，产业老板又不懂AI。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F22",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B43",
+      "order": 43,
+      "scriptQuote": "吃透一整个产业带，把AI装进选品、库存、客服、跟单这些业务环节，",
+      "rhetoricalRole": "机制解释",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P06",
+      "decisionReason": "只解释本句机制，不证明统计、真实能力、合法资产或收入结果。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B44",
+      "order": 44,
+      "scriptQuote": "赚取改造费加上业务分成。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F23",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B45",
+      "order": 45,
+      "scriptQuote": "第十，“人机协作”技能培训。",
+      "rhetoricalRole": "第十项章名",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B46",
+      "order": 46,
+      "scriptQuote": "教人如何和AI跑通完整业务流程。比如选品、内容、客服、交付这种结果导向的工作流培训，哪些AI工具擅长什么？如何嵌入到他们自己的工作流程当中，把这些具体的方法做成可复用的课件。",
+      "rhetoricalRole": "结果导向的培训机制",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B47",
+      "order": 47,
+      "scriptQuote": "这才是企业真正有需求的培训。",
+      "rhetoricalRole": "事实",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F24",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人保留原话，事实独立待核验，不用生成画面制造已证实印象。",
+      "viewerGain": "claim-boundary"
+    },
+    {
+      "id": "B48",
+      "order": 48,
+      "scriptQuote": "你对哪一项有兴趣，可以带着你原来做的行业来聊。我们看看你的经验能用在哪一步，缺的能力怎么补，再决定要不要做。还有想了解这10个生意具体怎么起步，可以在评论区留个“AI生意”，我把整理的入门资料免费分享给大家。",
+      "rhetoricalRole": "经验适配与行动邀请",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B49",
+      "order": 49,
+      "scriptQuote": "我是超哥，在兰州AI创业。",
+      "rhetoricalRole": "本人身份结尾",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "报题、本人判断、适用边界和结尾保留真人；功能词条待实录复核，不为换镜硬塞素材。",
+      "viewerGain": "presenter-trust"
+    }
+  ],
+  "factChecks": [
+    {
+      "id": "F01",
+      "beatId": "B03",
+      "sourceRequirement": "核对95%的原始调查、地域、时间、样本和不会用的定义；未核验，不写进纸艺。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F02",
+      "beatId": "B06",
+      "sourceRequirement": "核对真实服务范围、持续维护责任与按月计费合同；仅候选模式，不是已有收入。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F03",
+      "beatId": "B08",
+      "sourceRequirement": "核对豆包工作、workbuudy、codex所指产品与官方能力分类；原文保留，不以字幕改写纠正产品或模型分类。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F04",
+      "beatId": "B09",
+      "sourceRequirement": "核对家装、宠物医疗、设备维修的同任务数据需求与官方技术依据；不把数据质量画成模型效果保证，医疗用途另审。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F05",
+      "beatId": "B12",
+      "sourceRequirement": "核对89%的原始报告、创作者范围、地域、样本和时间；未核验，不画该比例。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F06",
+      "beatId": "B13",
+      "sourceRequirement": "需要可比较的研究或实测支持趋势；使用率不能推出同质化因果或未来结论。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F07",
+      "beatId": "B17",
+      "sourceRequirement": "分别核对AI PC与AI显卡市场范围、时间和增长原始数据；不以产品发布或推广词证明爆发增长。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F08",
+      "beatId": "B18",
+      "sourceRequirement": "需要目标传统行业客户的真实调查支持不会选、不会配、不会用的范围；不能泛化全部客户。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F09",
+      "beatId": "B19",
+      "sourceRequirement": "核对硬件、软件、配置、培训打包交付的收费合同、许可和售后责任；仅候选模式，不作赚钱保证。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F10",
+      "beatId": "B21",
+      "sourceRequirement": "核对AI问诊导诊、代办、反诈提醒、语音陪伴的实际能力、医疗和隐私边界、人工接手及责任；不能宣称替代医生或保证反诈。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F11",
+      "beatId": "B23",
+      "sourceRequirement": "独立核验书页声音入口的真实实现：录音本人授权、页码绑定、实际播放链路、长期保存及访问权限；纸艺页签不是扫码或播放证据。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F12",
+      "beatId": "B24",
+      "sourceRequirement": "核对老人本人及家人授权、墓园管理和殡葬规定、音频隐私、维护与退出；家人同意不等于可实施，本镜不画墓碑。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F13",
+      "beatId": "B25",
+      "sourceRequirement": "需要具体银发生活服务与回忆录需求的时间序列及付费需求证据；人口趋势不能直接证明该市场。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F14",
+      "beatId": "B26",
+      "sourceRequirement": "需明确比较对象、地域、时间、供给与竞争指标的同口径证据；当前未核验，不画更低竞争或更高收益。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F15",
+      "beatId": "B28",
+      "sourceRequirement": "需岗位、流程、绩效的实际企业调研；时代比喻不是企业普遍现状证据。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F16",
+      "beatId": "B30",
+      "sourceRequirement": "核对真实诊断、实施辅导范围、专业责任与收费合同；不画确定收入。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F17",
+      "beatId": "B33",
+      "sourceRequirement": "核对相关AI搜索官方收录、引用说明及实际测试；内容建设不保证引用、排名、推荐或成交。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F18",
+      "beatId": "B36",
+      "sourceRequirement": "逐类核对训练、行为、创作数据的合法来源、权利基础、隐私与商业秘密、许可、质量及资产条件；都可以是未证实普遍化，不默认人人可卖。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F19",
+      "beatId": "B37",
+      "sourceRequirement": "需要企业调查支持绝大多数的范围、样本、时间与指标；服务机会不能反推企业普遍缺能力。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F20",
+      "beatId": "B39",
+      "sourceRequirement": "核对合法授权的数据服务交易、经纪边界、实际合同与佣金安排；无交易权不形成可销售资产，不画收益。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F21",
+      "beatId": "B41",
+      "sourceRequirement": "以官方产业集群或产业带资料核对范围，不衍生未经证实的具体数量。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F22",
+      "beatId": "B42",
+      "sourceRequirement": "需要目标产业带真实访谈；跨域沟通难题不能推出所有AI公司或产业老板都不懂另一端。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F23",
+      "beatId": "B44",
+      "sourceRequirement": "核对真实交付和业务分成合同、结果归因、售后与责任；不虚构案例、订单或收入。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F24",
+      "beatId": "B47",
+      "sourceRequirement": "需目标企业访谈、实际培训需求与任务评价证据；本人偏好不是企业需求事实，不承诺效果或收入。 本轮仅列后续证据需求，未搜索、未核验；核验失败须由用户决定删改原话或阻断，不能只改字幕。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    }
+  ],
+  "routePlans": {
+    "realMaterials": {
+      "status": "not-required",
+      "notRequiredReason": "没有须上屏的真实产品、演示或事件；后台事实锁仍需核验。若后续要演示实际能力须重新确认，不用AI替代证据。",
+      "items": []
+    },
+    "aiGeneratedVideos": {
+      "status": "not-required",
+      "notRequiredReason": "六个机制用纸艺更自然，其余真人承担，没有必须增加具体人物或环境的情景；不虚构老人、客户或赚钱案例。",
+      "items": []
+    },
+    "paperEditorials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "P01",
+          "beatId": "B05",
+          "startAnchorText": "帮企业把通用Agent",
+          "endAnchorText": "可以直接干活的业务助手，",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 7,
+          "reason": "仅解释一个认知目标：行业定制把通用模块接入具体业务。6–8秒是候选素材镜长，虽已录制但未绑定原片音频，不是实录时点。",
+          "visualRole": "mechanism",
+          "visualMetaphor": "行业接口装配台把通用纸模块接入业务工位",
+          "composition": "斜侧俯看阶梯装配台，通用模块、待接合行业接口与业务工位有纵深差，背部工具架和前景零件盒构成层次。",
+          "referenceImageIds": [
+            "REF-SUPER-07"
+          ],
+          "textPlan": [
+            {
+              "text": "通用模块",
+              "surface": "左侧模块盒正面",
+              "motion": "with-object"
+            },
+            {
+              "text": "行业定制",
+              "surface": "中部接口外壳",
+              "motion": "with-object"
+            },
+            {
+              "text": "业务助手",
+              "surface": "右侧工位背板",
+              "motion": "with-object"
+            }
+          ],
+          "firstFramePrompt": "立体手工纸艺微缩舞台，深蓝与暖米色纸板配少量橘红强调，至少前中后三层空间；可见纸纤维、纸板厚度和切边，接触阴影明确，真实手作质感。左侧蓝色纸立方盒的左侧模块盒正面印“通用模块”；中部橘红套接件的中部接口外壳印“行业定制”；右侧留有凹槽的右侧工位背板印“业务助手”。模块与接口尚未接合，弧形工具架、插槽、纸螺帽和零件盒围绕主体，前景零件、中层台面、后方架子形成三层。字面完整可读，纸件底部有接触阴影，不出现比例、收入或真实界面。",
+          "primaryAction": "模块扣合到行业工位",
+          "videoPrompt": "基于已确认首帧，模块扣合到行业工位：行业接口沿纸轨靠近通用模块，两件扣合后整体接入右侧业务工位，工位整体轻倾，小盖翻开露出纸工具，停留读清连接结果。镜头轻微贴近扣合处但保留路径。三处文字随各自盒面、接口和工位平移或姿态变化，字形身份不变，不漂浮、不补写、不重绘，阅读阶段正向露出。保留纸滑动、扣合、翻盖可用原生动作声，无旁白音乐。",
+          "negativePrompt": [
+            "文字错漏、乱码或脱离纸面",
+            "平面三卡重复布局、塑料材质和无接触阴影",
+            "乱飞乱转、无因果或仅背景运动",
+            "真实身份、平台界面、统计与收益充当证据",
+            "旁白、音乐或冒称原生的合成声"
+          ],
+          "motionPlan": {
+            "goal": "行业定制把通用模块接入具体业务",
+            "actions": [
+              "行业接口沿纸轨靠近通用模块",
+              "通用模块与接口扣合",
+              "组合件接入业务工位",
+              "工位轻倾并翻出纸工具，保持结果"
+            ],
+            "result": "通用模块和行业接口连接在业务工位上",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P02",
+          "beatId": "B10",
+          "startAnchorText": "做数据清洗、标注、结构化，",
+          "endAnchorText": "这就是AI时代的卖水人生意。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "仅解释一个认知目标：数据生产要经过清洗、标注和结构化。6–8秒是候选素材镜长，虽已录制但未绑定原片音频，不是实录时点。",
+          "visualRole": "process",
+          "visualMetaphor": "资料工坊逐站改变同一组纸片状态",
+          "composition": "前景原料料斗、中景三个加工槽、后景档案抽屉；弯折纸轨贯通纵深错位工位，不用并排三卡。",
+          "referenceImageIds": [
+            "REF-SUPER-07"
+          ],
+          "textPlan": [
+            {
+              "text": "行业资料",
+              "surface": "前景料斗侧面",
+              "motion": "with-object"
+            },
+            {
+              "text": "清洗",
+              "surface": "第一加工槽挡板",
+              "motion": "with-object"
+            },
+            {
+              "text": "标注",
+              "surface": "第二加工槽滑盖",
+              "motion": "with-object"
+            },
+            {
+              "text": "结构化",
+              "surface": "第三加工槽托盘",
+              "motion": "with-object"
+            },
+            {
+              "text": "行业数据集",
+              "surface": "后景档案抽屉前板",
+              "motion": "with-object"
+            }
+          ],
+          "firstFramePrompt": "立体手工纸艺微缩舞台，深蓝与暖米色纸板配少量橘红强调，至少前中后三层空间；可见纸纤维、纸板厚度和切边，接触阴影明确，真实手作质感。前景料斗装无真实内容的杂乱纸片，前景料斗侧面印“行业资料”；中景三个加工槽沿弯折纸轨布置，第一加工槽挡板印“清洗”，第二加工槽滑盖印“标注”，第三加工槽托盘印“结构化”；后景半开放档案柜的后景档案抽屉前板印“行业数据集”。纸片仅在初始料斗，加工槽为空，纸签、纸夹、隔片和档案袋组成丰富物件组。文字清晰，前中后有明显纸厚与接触阴影。",
+          "primaryAction": "纸资料沿加工路径成为有序档案",
+          "videoPrompt": "基于已确认首帧，纸资料沿加工路径成为有序档案：纸片进入第一槽，杂乱边片分到旁盒；保留纸片进入第二槽，纸签扣到边缘；第三槽托盘把它们按隔槽排齐，送进后景抽屉，抽屉半合并停留。料斗随出料轻倾，挡板、滑盖、托盘适度开合，所印文字随对应纸面移动，抽屉文字随抽屉移动，字形稳定，不悬浮补字。保留纸分离、滑动、抽屉扣合可用原生动作声，不加旁白音乐。",
+          "negativePrompt": [
+            "文字错漏、乱码或脱离纸面",
+            "平面三卡重复布局、塑料材质和无接触阴影",
+            "乱飞乱转、无因果或仅背景运动",
+            "真实身份、平台界面、统计与收益充当证据",
+            "旁白、音乐或冒称原生的合成声"
+          ],
+          "motionPlan": {
+            "goal": "数据生产要经过清洗、标注和结构化",
+            "actions": [
+              "纸片进入清洗槽，边片被分离到旁盒",
+              "同一组纸片经过标注槽，纸签扣上边缘",
+              "纸片在结构化托盘按隔槽归位",
+              "有序纸片装入行业档案抽屉并停留"
+            ],
+            "result": "同一组示意纸片分类标注并有序进入行业档案抽屉",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P03",
+          "beatId": "B15",
+          "startAnchorText": "机会不是简单的AI代写，",
+          "endAnchorText": "加上人工深度二创的内容服务。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 7,
+          "reason": "仅解释一个认知目标：人工原始信息与观点投入才能改变AI初稿。6–8秒是候选素材镜长，虽已录制但未绑定原片音频，不是实录时点。",
+          "visualRole": "mechanism",
+          "visualMetaphor": "编辑折册接收两类输入后形成差异化内容",
+          "composition": "斜俯看编辑台，初稿在左下，两只不同形状输入纸袋在上方两侧，右侧成册托架；后方资料夹和前景裁纸垫增加层次。",
+          "referenceImageIds": [
+            "REF-SUPER-07"
+          ],
+          "textPlan": [
+            {
+              "text": "AI初稿",
+              "surface": "左侧初稿封面",
+              "motion": "with-object"
+            },
+            {
+              "text": "原始信息",
+              "surface": "左上资料袋正面",
+              "motion": "with-object"
+            },
+            {
+              "text": "个人观点",
+              "surface": "右上手记册封面",
+              "motion": "with-object"
+            },
+            {
+              "text": "差异化内容",
+              "surface": "右侧成册封套",
+              "motion": "with-object"
+            }
+          ],
+          "firstFramePrompt": "立体手工纸艺微缩舞台，深蓝与暖米色纸板配少量橘红强调，至少前中后三层空间；可见纸纤维、纸板厚度和切边，接触阴影明确，真实手作质感。编辑台上摊着未装订蓝色折册，左侧初稿封面印“AI初稿”；左上资料袋正面印“原始信息”，袋中留有抽象照片纸和记录纸；右上手记册封面印“个人观点”，纸铅笔靠在册旁；右侧空的右侧成册封套印“差异化内容”。前景裁纸垫、中层折册、后方资料夹形成三层，纸边厚度、折痕与接触阴影可见。四处文字完整，不含真人身份、新闻或客户信息。",
+          "primaryAction": "两类输入进入初稿并形成新折册",
+          "videoPrompt": "基于已确认首帧，两类输入进入初稿并形成新折册：资料袋轻倾送出记录纸，手记册翻出观点页，二者接入同一初稿；初稿连同输入折页成册，滑进右侧封套，停留读清结果。镜头轻靠近完成的折册。四处文字随袋面倾斜、手记翻页、初稿折页和封套轻移，字形保持稳定；阅读阶段露出正面，不把字撕裂、不漂浮重绘。保留纸页摩擦、折页和入套可用原生动作声，无旁白音乐。",
+          "negativePrompt": [
+            "文字错漏、乱码或脱离纸面",
+            "平面三卡重复布局、塑料材质和无接触阴影",
+            "乱飞乱转、无因果或仅背景运动",
+            "真实身份、平台界面、统计与收益充当证据",
+            "旁白、音乐或冒称原生的合成声"
+          ],
+          "motionPlan": {
+            "goal": "人工原始信息与观点投入才能改变AI初稿",
+            "actions": [
+              "资料袋轻倾把记录纸送入初稿",
+              "手记册翻页把观点页接入同一初稿",
+              "初稿连同新输入折页成册",
+              "成册滑入差异化内容封套并停留"
+            ],
+            "result": "初稿含两类输入并进入差异化内容封套",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P04",
+          "beatId": "B22",
+          "startAnchorText": "坐下来听老人讲，",
+          "endAnchorText": "也印成一本书。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "仅解释一个认知目标：回忆档案从授权材料出发，AI整理后还需家人核对。6–8秒是候选素材镜长，虽已录制但未绑定原片音频，不是实录时点。",
+          "visualRole": "process",
+          "visualMetaphor": "回忆收纳匣把材料整理成经核对的书页",
+          "composition": "暖色收纳匣侧视，前左原声纸卷与空白相片袋，中层整理折页台，后右核对夹与书脊；声音入口为无编码耳朵形页签。",
+          "referenceImageIds": [
+            "REF-SUPER-07"
+          ],
+          "textPlan": [
+            {
+              "text": "原声",
+              "surface": "前左录音纸卷外壳",
+              "motion": "with-object"
+            },
+            {
+              "text": "老照片",
+              "surface": "相片纸袋封面",
+              "motion": "with-object"
+            },
+            {
+              "text": "AI整理",
+              "surface": "中层折页台侧板",
+              "motion": "with-object"
+            },
+            {
+              "text": "家人核对",
+              "surface": "后右核对夹外壳",
+              "motion": "with-object"
+            },
+            {
+              "text": "回忆录",
+              "surface": "成书封面",
+              "motion": "with-object"
+            },
+            {
+              "text": "声音入口",
+              "surface": "耳朵形页签正面",
+              "motion": "with-object"
+            }
+          ],
+          "firstFramePrompt": "立体手工纸艺微缩舞台，深蓝与暖米色纸板配少量橘红强调，至少前中后三层空间；可见纸纤维、纸板厚度和切边，接触阴影明确，真实手作质感。暖色记忆收纳匣，前左录音纸卷外壳印“原声”，相片纸袋封面印“老照片”，袋中仅空白相片纸，不含老人肖像；中层折页台侧板印“AI整理”，后右核对夹外壳印“家人核对”。右侧待装订的成书封面印“回忆录”，书页边缘耳朵形页签正面印“声音入口”，页签无编码图案。纸卷、袋、折页台、核对夹和书脊组成三层高度，暖光照出纤维、厚度和接触阴影。初始材料分开，书页无真实内容。",
+          "primaryAction": "回忆材料经过核对进入书页",
+          "videoPrompt": "基于已确认首帧，回忆材料经过核对进入书页：纸卷与相片袋各送出抽象材料到整理折页，整理台轻移将折页送入核对夹，核对夹整体轻倾且夹口开合表示人工核对；核对后纸页合入书脊，回忆录翻开带耳朵形页签的一页，保持书页和入口可读。中文随纸卷、袋面、整理台、核对夹、封面及页签移动或翻转，字形稳定不漂浮重绘，不以悬浮音波替代动作。保留纸滑动、夹口扣合、翻书可用原生声，不添加旁白、老人声音或音乐。",
+          "negativePrompt": [
+            "文字错漏、乱码或脱离纸面",
+            "平面三卡重复布局、塑料材质和无接触阴影",
+            "乱飞乱转、无因果或仅背景运动",
+            "真实身份、平台界面、统计与收益充当证据",
+            "旁白、音乐或冒称原生的合成声"
+          ],
+          "motionPlan": {
+            "goal": "回忆档案从授权材料出发，AI整理后还需家人核对",
+            "actions": [
+              "纸卷与相片袋材料进入整理折页",
+              "整理台轻移送出折页，核对夹轻倾开合表示核对",
+              "核对后纸页合入回忆录书脊",
+              "回忆录翻开带声音入口页签的书页并停留"
+            ],
+            "result": "核对后书页进入回忆录，页签示意与原声的关联",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P05",
+          "beatId": "B38",
+          "startAnchorText": "机会就是做",
+          "endAnchorText": "数据资产经纪人，",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 7,
+          "reason": "仅解释一个认知目标：数据服务匹配以合法授权为前提。6–8秒是候选素材镜长，虽已录制但未绑定原片音频，不是实录时点。",
+          "visualRole": "relationship",
+          "visualMetaphor": "带授权闸的匹配台连接合规资料与服务需求",
+          "composition": "环形匹配台，前左整理纸匣、中部关闭授权纸闸、后右服务抽槽沿同一条路径；纸文件袋、分隔脊和空需求套构成层次。",
+          "referenceImageIds": [
+            "REF-SUPER-07"
+          ],
+          "textPlan": [
+            {
+              "text": "整理",
+              "surface": "前左纸匣盖面",
+              "motion": "with-object"
+            },
+            {
+              "text": "授权",
+              "surface": "中央纸闸门面",
+              "motion": "with-object"
+            },
+            {
+              "text": "服务匹配",
+              "surface": "后右抽槽侧板",
+              "motion": "with-object"
+            }
+          ],
+          "firstFramePrompt": "立体手工纸艺微缩舞台，深蓝与暖米色纸板配少量橘红强调，至少前中后三层空间；可见纸纤维、纸板厚度和切边，接触阴影明确，真实手作质感。环形纸资料匹配台，前左纸匣盖面印“整理”，其中放无真实内容的文件袋；中央纸闸门面印“授权”，纸闸关闭；后右抽槽侧板印“服务匹配”，旁边留有空需求套。文件袋、闸门、抽槽、分隔脊与背景档案架形成三层，纸厚、纤维、接触阴影清楚。文字面完整，文件袋不含个人信息、价格、认证标记或收益；唯一纸路径通往同一匹配出口。",
+          "primaryAction": "纸档案通过授权闸再进入匹配槽",
+          "videoPrompt": "基于已确认首帧，纸档案通过授权闸再进入匹配槽：文件袋按隔槽归位，授权纸闸开合表示已确认许可前提，档案沿唯一纸轨穿过闸门进入对应需求套，需求套落入后右抽槽，停留读清关系。镜头轻移但闸门与出口同时可见。整理文字随匣盖开合，授权文字随闸门移动，服务匹配文字随抽槽轻滑，字形稳定不重绘，不加悬浮认证或钱币。保留纸整理、闸门摩擦、落槽可用原生声，无旁白音乐。",
+          "negativePrompt": [
+            "文字错漏、乱码或脱离纸面",
+            "平面三卡重复布局、塑料材质和无接触阴影",
+            "乱飞乱转、无因果或仅背景运动",
+            "真实身份、平台界面、统计与收益充当证据",
+            "旁白、音乐或冒称原生的合成声"
+          ],
+          "motionPlan": {
+            "goal": "数据服务匹配以合法授权为前提",
+            "actions": [
+              "文件袋按隔槽整理为一组档案",
+              "授权纸闸开合表示许可前提确认",
+              "这组档案穿过闸门进入对应需求套",
+              "需求套落入服务匹配槽并停留"
+            ],
+            "result": "示意档案经整理和授权后进入服务匹配出口",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P06",
+          "beatId": "B43",
+          "startAnchorText": "吃透一整个产业带，",
+          "endAnchorText": "把AI装进选品、库存、客服、跟单这些业务环节，",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "仅解释一个认知目标：改造围绕同一业务结果连接环节而非安装孤立工具。6–8秒是候选素材镜长，虽已录制但未绑定原片音频，不是实录时点。",
+          "visualRole": "process",
+          "visualMetaphor": "同一纸任务依次穿过四个产业工位",
+          "composition": "横向纵深交错的产业工作台，样盒、库存架、客服纸话筒与跟单纸册错落连接；前景任务纸托和后景无身份厂房轮廓。",
+          "referenceImageIds": [
+            "REF-SUPER-07"
+          ],
+          "textPlan": [
+            {
+              "text": "选品",
+              "surface": "左侧样品盒正面",
+              "motion": "with-object"
+            },
+            {
+              "text": "库存",
+              "surface": "中左货架梁面",
+              "motion": "with-object"
+            },
+            {
+              "text": "客服",
+              "surface": "中右话筒底座",
+              "motion": "with-object"
+            },
+            {
+              "text": "跟单",
+              "surface": "右侧纸册封面",
+              "motion": "with-object"
+            }
+          ],
+          "firstFramePrompt": "立体手工纸艺微缩舞台，深蓝与暖米色纸板配少量橘红强调，至少前中后三层空间；可见纸纤维、纸板厚度和切边，接触阴影明确，真实手作质感。微缩产业工作台沿同一条纸任务轨道连四工位：左侧样品盒正面印“选品”，中左货架梁面印“库存”，中右话筒底座印“客服”，右侧纸册封面印“跟单”。前景任务托中放一张无真实订单的任务纸，工位尚未接收它。样盒、货架纸箱、纸话筒、纸册、连接轨与无身份厂房轮廓组成三层丰富物件，纸厚和接触阴影清楚，四处字面可读。不含企业标识、真实商品、销量或收益。",
+          "primaryAction": "同一纸任务穿过四个业务工位",
+          "videoPrompt": "基于已确认首帧，同一纸任务穿过四个业务工位：任务进入选品盒，样品盒轻倾、盒盖开合带出纸样片；同一任务携样片到轻侧移的库存架获得纸箱形状态件；客服底座与话筒整体轻摆把状态件传向跟单册，册面合页收纳任务，停留展示贯通路径。选品文字随样品盒整体轻倾，库存文字随货架侧移，客服文字随底座轻摆，跟单文字随册面合页，同一字形跟随纸面，不悬浮重绘。镜头轻跟任务，不跨场景。保留纸滑轨、盒盖、合页可用原生声，无旁白音乐。",
+          "negativePrompt": [
+            "文字错漏、乱码或脱离纸面",
+            "平面三卡重复布局、塑料材质和无接触阴影",
+            "乱飞乱转、无因果或仅背景运动",
+            "真实身份、平台界面、统计与收益充当证据",
+            "旁白、音乐或冒称原生的合成声"
+          ],
+          "motionPlan": {
+            "goal": "改造围绕同一业务结果连接环节而非安装孤立工具",
+            "actions": [
+              "样品盒轻倾，任务进入选品盒带出纸样片",
+              "同一任务经库存架获得纸箱形状态件",
+              "客服话筒轻摆把状态件传向跟单册",
+              "跟单册合页收纳任务并保持整条路径可见"
+            ],
+            "result": "同一任务经过选品、库存、客服、跟单后被纸册收纳",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        }
+      ]
+    }
+  },
+  "shotcraftOpportunities": [
+    {
+      "id": "SO01",
+      "beatId": "B01",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "开头大词条“10个AI赚钱生意”，只提示主题，绑定实际原话，不画未来结果承诺。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO02",
+      "beatId": "B02",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "真人章名“Agent落地”。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO03",
+      "beatId": "B04",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "安装、调试、行业定制逐项提示，不宣称本地需求已验证。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO04",
+      "beatId": "B07",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "真人章名“行业数据集”。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO05",
+      "beatId": "B11",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "真人章名“反同质化”。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO06",
+      "beatId": "B14",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "三类人工投入逐项提示，稀缺程度不另画统计。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO07",
+      "beatId": "B16",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "真人章名“最后一公里”。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO08",
+      "beatId": "B20",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "真人章名“银发生活服务”，不虚构老人身份。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO09",
+      "beatId": "B27",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "真人章名“组织咨询”，保留已有管理经验边界。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO10",
+      "beatId": "B29",
+      "baseVisualRoute": "speaker",
+      "intent": "relationship-line",
+      "reason": "提示岗位、决策流程、考核的联系，不画虚构组织图或已实现升级。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO11",
+      "beatId": "B32",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "真人章名“GEO代运营”，不模拟AI已推荐某企业。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO12",
+      "beatId": "B35",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "真人章名“数据资产中介”，不混同数据集生产。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO13",
+      "beatId": "B40",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "真人章名“产业带改造”，不伪造施工或产业案例。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO14",
+      "beatId": "B45",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "真人章名“人机协作培训”。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO15",
+      "beatId": "B46",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "按实录提示选品、内容、客服、交付；工具选择服从业务任务，不承诺学员结果。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    }
+  ],
+  "rhythmAudit": {
+    "basis": "semantic-runs-not-seconds",
+    "fixedCadenceForbidden": true,
+    "longSpeakerRunsReviewed": true,
+    "runs": [
+      {
+        "fromBeatId": "B01",
+        "toBeatId": "B04",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "本组保留报题、判断、风险与原话，不为换镜强塞素材；章名、关系或清单机会仅帮助理解。实录到齐后复核自然停顿、面手保护与字幕，可全部不应用，不设固定换镜频率。",
+        "mitigationRefs": [
+          "SO01",
+          "SO02",
+          "SO03"
+        ]
+      },
+      {
+        "fromBeatId": "B06",
+        "toBeatId": "B09",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "本组保留报题、判断、风险与原话，不为换镜强塞素材；章名、关系或清单机会仅帮助理解。实录到齐后复核自然停顿、面手保护与字幕，可全部不应用，不设固定换镜频率。",
+        "mitigationRefs": [
+          "SO04"
+        ]
+      },
+      {
+        "fromBeatId": "B11",
+        "toBeatId": "B14",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "本组保留报题、判断、风险与原话，不为换镜强塞素材；章名、关系或清单机会仅帮助理解。实录到齐后复核自然停顿、面手保护与字幕，可全部不应用，不设固定换镜频率。",
+        "mitigationRefs": [
+          "SO05",
+          "SO06"
+        ]
+      },
+      {
+        "fromBeatId": "B16",
+        "toBeatId": "B21",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "本组保留报题、判断、风险与原话，不为换镜强塞素材；章名、关系或清单机会仅帮助理解。实录到齐后复核自然停顿、面手保护与字幕，可全部不应用，不设固定换镜频率。",
+        "mitigationRefs": [
+          "SO07",
+          "SO08"
+        ]
+      },
+      {
+        "fromBeatId": "B23",
+        "toBeatId": "B37",
+        "risk": "high",
+        "decision": "shotcraft-opportunity",
+        "reason": "本组保留报题、判断、风险与原话，不为换镜强塞素材；章名、关系或清单机会仅帮助理解。实录到齐后复核自然停顿、面手保护与字幕，可全部不应用，不设固定换镜频率。",
+        "mitigationRefs": [
+          "SO09",
+          "SO10",
+          "SO11",
+          "SO12"
+        ]
+      },
+      {
+        "fromBeatId": "B39",
+        "toBeatId": "B42",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "本组保留报题、判断、风险与原话，不为换镜强塞素材；章名、关系或清单机会仅帮助理解。实录到齐后复核自然停顿、面手保护与字幕，可全部不应用，不设固定换镜频率。",
+        "mitigationRefs": [
+          "SO13"
+        ]
+      },
+      {
+        "fromBeatId": "B44",
+        "toBeatId": "B49",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "本组保留报题、判断、风险与原话，不为换镜强塞素材；章名、关系或清单机会仅帮助理解。实录到齐后复核自然停顿、面手保护与字幕，可全部不应用，不设固定换镜频率。",
+        "mitigationRefs": [
+          "SO14",
+          "SO15"
+        ]
+      }
+    ]
+  }
+}
