@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+const root=process.cwd(),base='edit/20261006_ten_ai_businesses',control=`${base}/00_成片控制`;
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const write=(p,x)=>fs.writeFileSync(p,JSON.stringify(x,null,2)+'\n');
+const source=`${base}/01_素材投放区/01_口播原片/copy_49E4F13A-70AB-4E11-92B2-545146690784.MOV`;
+const paper=Array.from({length:6},(_,i)=>({id:`P0${i+1}`,path:`${base}/01_素材投放区/04_纸艺视频/20261006_P0${i+1}_待确认生成.mp4`}));
+const jobPath=`${control}/production-intake.r1.json`;
+write(jobPath,{schema:'ten-ai-businesses-production-intake/v1',episodeId:'20261006_ten_ai_businesses',stage:'edit-release',status:'preparation-candidate',scope:{goal:'以完整实录和六镜原声纸艺制作本期优质成片候选，仅在本期验证动效',preserveOriginalVoice:true,preservePaperNativeAudio:true,sourceReadOnly:true,noGlobalSkillRewrite:true,noRemoteGeneration:true,noPublish:true},source:{path:source,sha256:sha(source),durationSeconds:284.467007},paper:paper.map(p=>({...p,sha256:sha(p.path),nativeAudioPreservedRequired:true})),output:{width:1920,height:1080,fps:30,durationInFrames:8534},humanAcceptance:{previewApproved:false,fullWatchConfirmed:false,publishAuthorized:false}});
+const groups={current_project_index:['knowledge/00-项目知识索引.md'],current_project_summary:['project.md'],latest_update:[`${base}/09_入库质检/纸艺/六镜纸艺入库复核.md`],applicable_rules_or_skills:['knowledge/20-V8连续语义动效与可感知音效基线.md','knowledge/22-实录优先字幕与系列发布包硬门禁.md','workflow/active-production-profile.v1.json'],historical_failures:[`${base}/05_动效升级候选/R2开场逐帧核对_20261006/开场逐帧核对结论.md`],task_original_materials:[jobPath]};
+write(`${control}/context-requirements.intake.r1.json`,{required_receipt_groups:groups});
+const notes={current_project_index:'按本期edit-release路由，仅使用当前制作基线和素材入口，不重启选题或图生视频。',current_project_summary:'已读取本期当前状态段；与实际完整原片和六视频比对后识别旧尚未生成记录滞后，不修改历史事实。',latest_update:'已读取全部六镜复核报告，采用24fps等比适配、P05动作窗口及逐镜原生音保留，不将抽帧代替动态听审。',applicable_rules_or_skills:'已完整读取当前V8、实录字幕与发布包规范，应用透明连续信息层、64/44/32本期起测、原声和A/B试听人工门。',historical_failures:'已读取开场162帧缺陷报告，只修当前5.4秒遮罩，同源同帧复核，不能重用缺陷遮罩或挪帧掩盖。',task_original_materials:'本轮实际读取本期完整MOV和六MP4探测及哈希并生成入库job，明确保留所有原声，不把旧截取片作为完整原片。'};
+write(`${control}/read-receipts.intake.r1.json`,{receipts:Object.entries(groups).flatMap(([g,paths])=>paths.map(p=>({path:path.resolve(root,p),sha256:sha(p),read_status:'read',read_completed_at:new Date().toISOString(),application_status:'applied',application_note:notes[g]})))});
+console.log(JSON.stringify({status:'intake-context-inputs-prepared',jobPath,sourceSha256:sha(source),papers:paper.length,requirements:`${control}/context-requirements.intake.r1.json`,receipts:`${control}/read-receipts.intake.r1.json`}));

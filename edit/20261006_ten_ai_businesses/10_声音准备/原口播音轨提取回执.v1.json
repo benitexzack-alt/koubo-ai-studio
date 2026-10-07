@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "ten-ai-businesses-original-audio-extraction/v1",
+  "createdAt": "2026-10-07T06:19:21.664373+00:00",
+  "context": {
+    "path": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/ten-ai-businesses-intake-20261007/context.json",
+    "sha256": "308dff2b5139f8e0fbe8b861bfc1ae0f160d4934a8a287b606944e9e05013b40",
+    "taskId": "ten-ai-businesses-intake-20261007",
+    "validation": {
+      "schema_version": "opc-task-context-validation/1.0",
+      "status": "context-valid",
+      "summary": "任务上下文、索引代际和必读文件哈希仍然有效",
+      "context_path": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/ten-ai-businesses-intake-20261007/context.json",
+      "task": {
+        "id": "ten-ai-businesses-intake-20261007",
+        "project": "口播",
+        "objective": "本期10个AI生意成片准备：完整284.467秒实录与六纸艺，保留所有原生声，修开场遮罩并准备V8连续动效候选；不改全局规则，不发布",
+        "cwd": "/Users/pc/Documents/口播",
+        "important": true,
+        "external_action": false
+      },
+      "project_route": {
+        "project_id": "koubo",
+        "project_root": "/Users/pc/Documents/口播",
+        "match_status": "matched",
+        "execution_scope": {
+          "primary_project_id": "koubo",
+          "primary_project_root": "/Users/pc/Documents/口播",
+          "primary_access_mode": "task-scoped-read-write",
+          "write_allowed_roots": [
+            "/Users/pc/Documents/口播"
+          ],
+          "read_only_roots": [],
+          "related_project_rule": "关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。",
+          "write_escalation_rule": "确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。"
+        }
+      },
+      "index_generation": {
+        "manifest_sha256": "577c6caf3a9dc7ac29cbb704f7a0eb44bbd428761c2845d56d4d20b068f6b6bb",
+        "config_sha256": "7d80e391da915c1f4363776317039cad5b742609403f0a671c1ffb0fbc4e500d",
+        "embedding_model": "nomic-embed-text:latest",
+        "indexed_at": "2026-10-07T06:14:37.354285+00:00",
+        "database_sha256": "b722260a76ac7143a5798fde3706366b5ef236b14ac53ae74553f5bf8f8f0902",
+        "id": "9e17d0728d7fdfa77142177bc3b49eb177c74dd1d299a22966070e71840287c7"
+      },
+      "problems": [],
+      "gate": {
+        "formal_execution_allowed": true
+      },
+      "next_actions": [
+        "继续执行项目自身的质量、安全和人工验收门禁"
+      ],
+      "artifacts": [
+        "/Users/pc/Documents/个人知识库/.opc-rag/tasks/ten-ai-businesses-intake-20261007/context.json"
+      ]
+    },
+    "validationCommand": [
+      "/opt/homebrew/bin/python3",
+      "/Users/pc/Documents/个人知识库/04_Claude Code日常操作/scripts/opc_rag.py",
+      "validate-context",
+      "--context",
+      "/Users/pc/Documents/个人知识库/.opc-rag/tasks/ten-ai-businesses-intake-20261007/context.json"
+    ]
+  },
+  "sourcePath": "/Users/pc/Documents/口播/edit/20261006_ten_ai_businesses/01_素材投放区/01_口播原片/copy_49E4F13A-70AB-4E11-92B2-545146690784.MOV",
+  "sourceSha256": "8ae23618f2860d1a0fcf034055c8eec9232cd6a7d5abda4207af287cf6157ad0",
+  "outputPath": "/Users/pc/Documents/口播/remotion/public-ten-ai-businesses-final-r1/ten-ai-businesses-final-r1/audio/original.wav",
+  "outputSha256": "ef228aba8dc4de388186eea806d9f0416291618c827e12c2400eb3b46b5a6bc5",
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "pcm_s16le",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "duration": "284.466229"
+      }
+    ],
+    "format": {
+      "duration": "284.466229"
+    }
+  },
+  "command": [
+    "/opt/homebrew/bin/ffmpeg",
+    "-nostdin",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261006_ten_ai_businesses/01_素材投放区/01_口播原片/copy_49E4F13A-70AB-4E11-92B2-545146690784.MOV",
+    "-map",
+    "0:a:0",
+    "-vn",
+    "-ac",
+    "2",
+    "-ar",
+    "48000",
+    "-c:a",
+    "pcm_s16le",
+    "/Users/pc/Documents/口播/remotion/public-ten-ai-businesses-final-r1/ten-ai-businesses-final-r1/audio/original.wav"
+  ],
+  "cut": false,
+  "speedChanged": false,
+  "voiceGainDb": 0,
+  "humanListeningPerformed": false,
+  "userAudibilityConfirmed": false,
+  "sourceSha256After": "8ae23618f2860d1a0fcf034055c8eec9232cd6a7d5abda4207af287cf6157ad0"
+}

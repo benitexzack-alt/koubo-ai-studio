@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "ten-ai-businesses-shotcraft-scan-verification/v1",
+  "status": "scan-structure-valid",
+  "automaticSelectionValidation": {
+    "status": "director-selection-valid",
+    "selectionSha256": "92a8b17403d8552c84cd2eb41f1bbedf73caddf46cbb96b4937c02844b81aca9",
+    "applyCount": 2,
+    "notNeededCount": 52,
+    "errors": []
+  },
+  "executionSelectionValidation": {
+    "status": "director-selection-valid",
+    "selectionSha256": "39b5604553155e8c725584797e7e3c8e7feac71132b8e299bef5ca8edde5ff72",
+    "applyCount": 0,
+    "notNeededCount": 54,
+    "errors": []
+  },
+  "timelineAndInputs": {
+    "status": "scan-structure-valid",
+    "checks": {
+      "complete8534Frames": true,
+      "gapOrOverlapCount": 0,
+      "candidateCaptionCoverage": true,
+      "rawAsrCoverage": true,
+      "rawSegmentCount": 136,
+      "captionCount": 87,
+      "captionTextUnchanged": true,
+      "currentAll157Cards": true,
+      "eligibleScanCount": 48,
+      "paperExcludedCount": 6,
+      "automaticApplyCount": 2,
+      "automaticNotNeededCount": 52,
+      "recordedAdaptationCandidateNameCount": 36,
+      "bindingHashesCurrent": true,
+      "normalSpeedVisualReview": false,
+      "normalSpeedListeningReview": false,
+      "formalApprovalGranted": false
+    }
+  },
+  "checksScope": "结构、哈希、完整时间覆盖、全库规模与格式转换；没有执行看片、听审或渲染",
+  "prohibitedClaims": [
+    "成片已通过",
+    "纸艺或开场遮罩已通过视觉验收",
+    "字幕已逐字人工听审",
+    "音效已由正常音量试听确认"
+  ],
+  "commands": [
+    "node skills/koubo-shotcraft-library/scripts/match-director-effects.mjs --request edit/20261006_ten_ai_businesses/12_Shotcraft实录扫描/auto-match-request.r1.json --selection edit/20261006_ten_ai_businesses/12_Shotcraft实录扫描/director-selection.r1.json --receipt edit/20261006_ten_ai_businesses/12_Shotcraft实录扫描/auto-match-receipt.r1.json --lookup edit/20261006_ten_ai_businesses/12_Shotcraft实录扫描/experience-lookup-receipt.r1.json --repo-root /Users/pc/Documents/口播",
+    "node skills/koubo-shotcraft-library/scripts/validate-director-selection.mjs edit/20261006_ten_ai_businesses/12_Shotcraft实录扫描/director-selection.r1.json /Users/pc/Documents/口播",
+    "node skills/koubo-shotcraft-library/scripts/validate-director-selection.mjs edit/20261006_ten_ai_businesses/12_Shotcraft实录扫描/director-execution-selection.r1.json /Users/pc/Documents/口播"
+  ]
+}

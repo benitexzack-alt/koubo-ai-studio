@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const base='edit/20261006_ten_ai_businesses',pub='remotion/public-ten-ai-businesses-final-r1';
+const nested=`${pub}/ten-ai-businesses-final-r1`;
+const source=`${base}/01_素材投放区/01_口播原片/copy_49E4F13A-70AB-4E11-92B2-545146690784.MOV`;
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const copy=(a,b)=>fs.copyFileSync(a,b,fs.constants.COPYFILE_EXCL);
+for (const d of [nested,`${nested}/paper`,`${nested}/opening`,`${nested}/fonts`,`${pub}/motion-upgrade-r2/fonts`,`${pub}/motion-upgrade-r2/tools`,`${base}/07_预览与质检`,`${base}/08_正式成片`]) fs.mkdirSync(d,{recursive:true});
+if(fs.existsSync(`${nested}/host.mp4`)) throw new Error('原声代理已存在，禁止覆盖');
+const result=spawnSync('ffmpeg',['-nostdin','-hide_banner','-loglevel','error','-n','-i',source,'-map','0:v:0','-an','-c:v','h264_videotoolbox','-b:v','16M','-pix_fmt','yuv420p','-r','30','-frames:v','8534',`${nested}/host.mp4`],{encoding:'utf8'});
+if(result.status!==0) throw new Error(result.stderr);
+for(let i=1;i<=6;i++) copy(`${base}/01_素材投放区/04_纸艺视频/20261006_P0${i}_待确认生成.mp4`,`${nested}/paper/P0${i}.mp4`);
+copy(`${base}/04_Claude小样/takes/take_title.mp4`,`${nested}/opening/title-take.mp4`);
+copy('remotion/public/motion-upgrade-r2/fonts/smiley-sans.woff2',`${pub}/motion-upgrade-r2/fonts/smiley-sans.woff2`);
+for(const n of ['doubao','workbuddy','codex']) copy(`remotion/public/motion-upgrade-r2/tools/${n}.png`,`${pub}/motion-upgrade-r2/tools/${n}.png`);
+copy('remotion/public/lanzhou-services-candidate-r2/fonts/STHeiti-Medium.ttc',`${nested}/fonts/STHeiti-Medium.ttc`);
+console.log(JSON.stringify({status:'full-source-and-native-paper-prepared',sourceSha256:sha(source),renderProxy:`${nested}/host.mp4`,renderProxySha256:sha(`${nested}/host.mp4`),sourceUnchanged:true,paperAudio:'original-untouched',nativeResolution:[1344,768],paperPlaybackRate:1}));
