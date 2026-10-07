@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "task_id": "koubo-20261007-restaurant-ai",
+  "status": "passed",
+  "reviewed_at": "2026-10-07T05:21:33Z",
+  "time_scope": "本轮实际核验时间；用户语言确认及真人朗读仍待完成。",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/口播审阅稿.v2.md",
+    "sha256": "ca737bf9c15ef115136d2a9b3cd8484f863bd400e0097a0e8ac8eb9d7ec44164"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "本轮只恢复新闻开头及接正文的过渡：先说美国起诉事件，紧接麦当劳否认及建议工具的人工决策边界，再问本地餐馆除了宣传还能怎样用AI，以出餐检查接回原文。没有插入今天讲透、真正核心等自我说明，没有用一串法律术语替代自然转场。后文与V1逐字一致；标题与封面文字不变。"
+  },
+  "retention_review": {
+    "risk_node_count": 1,
+    "nodes": [
+      {
+        "original": "经过允许，把相关数据整理出来，做一份能回头查到原始记录的说明，让负责人看看：有没有帮他少翻几页表，有没有把该查的问题提出来。",
+        "risk_level": "medium",
+        "reason": "服务段这句负载较高，若不停顿容易回到汇报语气；属于文本预测，尚无真实观众留存证据。",
+        "candidates": {
+          "conservative": "经过允许，把相关数据整理出来，做一份能回头查到原始记录的说明。负责人拿到以后，看看有没有少翻几页表，该查的问题有没有提出来。",
+          "direct": "相关数据经过允许再整理。交出来的说明，要能查回原始记录；负责人用过，再看是不是少翻了表、找到了该查的地方。",
+          "vivid": "这份说明交到店里，负责人得能查回原始记录。少翻了哪几页表，哪件事需要去查，让他用过再说。资料当然得先经过允许。"
+        },
+        "fact_difference": "三种表达均保留授权、可回溯和实际使用判断，没有新增时间/客户效果；原稿按冒号自然停顿也成立。",
+        "recommendation": "本轮保留原句的冒号停顿，先让本人试读；如果一口气说不完采用保守版断句，不擅自改变服务承诺。"
+      }
+    ],
+    "no_high_risk_reason": "本轮没有新增高风险空话或术语串。新闻前两段必须同时保留指控与公司否认，但控制为短段，不展开案情；原服务长句仍列为中风险。节奏判断为文本预测，未验证真实观众留存。"
+  },
+  "fact_changes": {
+    "new_facts": [
+      "相对V1恢复2026-10-05路透所报麦当劳在美国遭起诉事件，以及原告有关AI协调菜单价格的指控；明确归属于指控，未写成事实认定。",
+      "恢复路透所载麦当劳否认，以及工具给建议、加盟商自主定价的公司立场；同时核对2026-10-01企业原文的机制说明。"
+    ],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "将开头从泛化的麦当劳价格建议改为具体新闻。被起诉不等于指控成立，不声称有最终裁判。",
+      "美国范围、指控归因、公司否认均保留；下游经营价值不从诉讼推导，仍由称重与补货的各自来源支持。"
+    ],
+    "pending_user_confirmations": [
+      "本人试读新开头的语气、顺畅度与停顿。",
+      "新稿、标题及封面文字未获最终确认；涉及企业争议的发布人工复核仍未完成。"
+    ]
+  },
+  "scores": {
+    "directness": 8,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "score_boundary": "编辑自评用于定位问题，不是AI检测、真实观众评分或传播效果。事实保真10指逐项未发现越过当前事实锁，不代替外部第三方审计。",
+  "read_aloud_check": {
+    "mode": "text-cadence-review-and-tts-timing-only",
+    "text_review": "逐句文本断句检查与TTS机械计时；未试听机器音频，没有本人真实朗读或听读验收。",
+    "tts_voice": "Tingting",
+    "tts_rate": 220,
+    "tts_seconds": 145.62449,
+    "tts_path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/机械计时检查.v2.aiff",
+    "tts_input_sha256": "41f68daee64a9fac197ba7db857441a6aecfc664c1cda1056498a6833419d467",
+    "personal_read_confirmed": false,
+    "production_authorized": false
+  },
+  "voice_match_evidence": {
+    "profile": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+    "read": true,
+    "used_examples": [
+      "/Users/pc/Documents/口播/edit/20260929_meta_pa_local_business/10_剪辑准备/字幕/meta-pa.actual.canonical.r1.txt",
+      "/Users/pc/Documents/口播/edit/20260926_industry_ai_no_anxiety/00_控制/用户确认原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/02_文稿/用户原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260917_ai_efficiency_sharing/00_工程控制/用户原稿.v1.txt",
+      "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/00_文稿与控制/用户确认原稿.txt"
+    ],
+    "applied": "本轮复核声音档案直接相关段落；六篇正文与近作口吻沿用同一任务V1已读证据，没有声称本轮重读六篇。修改范围只在新闻由头与过渡，具体对象入场、咱们提问后接具体动作，不改中后段。"
+  },
+  "reviewed_scope": [
+    "标题",
+    "钩子",
+    "全文",
+    "转场",
+    "结尾邀请",
+    "封面文字"
+  ],
+  "actual_language_changes": [
+    {
+      "before": "美国的麦当劳，连汉堡卖多少钱，都在让AI帮着出主意。",
+      "after": "麦当劳最近在美国被告了，有人指控它用AI系统操纵菜单价格。",
+      "reason": "补回用户指定新闻事件，避免无由头直接讲公司；后面立即接公司否认。"
+    },
+    {
+      "before": "直接由品牌AI应用进入案例",
+      "after": "起诉新闻与双方表态→本地餐馆问题→麦当劳出餐检查",
+      "reason": "恢复新闻引入功能，不将诉讼改为整篇主题。"
+    }
+  ],
+  "regression_trace": [
+    {
+      "stage": "成稿首轮",
+      "status": "blocked",
+      "reason": "lanzhou-ai-identity：固定身份收尾",
+      "resolution": "删除结尾身份句，不改validator，不填人工豁免；保留本地服务段与品牌标题。"
+    },
+    {
+      "stage": "删除固定尾声后的精确复核",
+      "status": "bounded-exemption",
+      "reason": "正则实际命中中段“在兰州做餐饮AI服务，我更愿意到”，位置653；并非尾声或把身份当主张。",
+      "resolution": "停止盲改正文，读规则并输出实际匹配。按现行规则记录具体新证据和用途豁免，保留用户本地服务主线；未修改规则、未隐瞒告警。"
+    },
+    {
+      "stage": "用户指出V1缺新闻事件",
+      "status": "revised-pending-user-review",
+      "reason": "前轮保留公司名字与工具，却删掉源新闻由头；机器结构检查通过不能证明叙事符合用户要求。",
+      "resolution": "V2第一句必须含具体起诉事件，第二段保留否认；从称重案例起逐字不变。待本人审稿，不声称已验收。"
+    }
+  ]
+}

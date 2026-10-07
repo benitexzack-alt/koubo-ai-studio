@@ -1,0 +1,538 @@
+{
+  "schema_version": 6,
+  "task_id": "koubo-20261007-restaurant-ai",
+  "target_stage": "draft",
+  "required_rules": [
+    {
+      "path": "/Users/pc/Documents/个人知识库/00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "read": true
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/06-选题脚本与风格规范.md",
+      "read": true
+    }
+  ],
+  "research_intake": {
+    "source_to_original_skill": {
+      "path": "/Users/pc/Documents/口播/skills/douyin-koubo-source-to-original/SKILL.md",
+      "sha256": "9c09295322dca84ecd29c55d1803003fef9cdbbf7e53fa493e615ec076409bde",
+      "read": true
+    },
+    "context": {
+      "path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/研究读取回执.v1.json",
+      "sha256": "092411748248d709b97cc9a84b42a3d8d861f4150d03a671a84020f85c7cc20e"
+    },
+    "candidate_pack": {
+      "path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/候选与方向继承回执.v1.json",
+      "sha256": "4dac37af33e84981495a4833d2e261b3c44ef6bb7449b06a15f68669be5b2232"
+    },
+    "selected_candidate_id": "restaurant-operations",
+    "selected_hook_id": "H1"
+  },
+  "sources": [
+    {
+      "id": "mcd-price",
+      "title": "mcd-price",
+      "completeness": "primary-source",
+      "acquisition": "original-page-or-local-record",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/来源/三份官方原页检索快照.txt",
+      "verification_status": "企业官方披露，不是本人实测",
+      "canonical_ref": "https://corporate.mcdonalds.com/corpmcd/our-stories/article/how-mcdonalds-sets-prices.html",
+      "evidence_ids": [
+        "evidence:restaurant:mcd-price"
+      ],
+      "acquisition_note": "支持门店级建议与人工定价；10月1日企业说明早于起诉，不能称它是对起诉的回应。诉讼回应另据10月5日路透报道。"
+    },
+    {
+      "id": "mcd-scale",
+      "title": "mcd-scale",
+      "completeness": "primary-source",
+      "acquisition": "original-page-or-local-record",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/来源/三份官方原页检索快照.txt",
+      "verification_status": "企业官方披露，不是本人实测",
+      "canonical_ref": "https://corporate.mcdonalds.com/corpmcd/our-stories/article/digitizing-the-arches.html",
+      "evidence_ids": [
+        "evidence:restaurant:mcd-scale"
+      ],
+      "acquisition_note": "解释预期与实际餐品重量差异提醒员工核查"
+    },
+    {
+      "id": "yum-order",
+      "title": "yum-order",
+      "completeness": "primary-source",
+      "acquisition": "original-page-or-local-record",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/来源/三份官方原页检索快照.txt",
+      "verification_status": "企业官方披露，不是本人实测",
+      "canonical_ref": "https://ir.yumchina.com/zh-hans/news-releases/news-release-details-52/",
+      "evidence_ids": [
+        "evidence:restaurant:yum-order"
+      ],
+      "acquisition_note": "仅以2025年部分门店试点说明库存和销售预测辅助补货"
+    },
+    {
+      "id": "local-conversation",
+      "title": "local-conversation",
+      "completeness": "primary-source",
+      "acquisition": "original-page-or-local-record",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/个人AI事业/2026-08-17_兰州餐饮AI落地讨论纪要.md",
+      "verification_status": "会谈纪要，不是市场统计或交付证明",
+      "canonical_ref": "/Users/pc/Documents/个人知识库/01_项目实战/个人AI事业/2026-08-17_兰州餐饮AI落地讨论纪要.md",
+      "evidence_ids": [
+        "evidence:restaurant:local-conversation"
+      ],
+      "acquisition_note": "匿名转述多店拉数、销售库存消耗断点；不使用数字、不说项目交付"
+    },
+    {
+      "id": "jiang-structure",
+      "title": "jiang-structure",
+      "completeness": "complete",
+      "acquisition": "local-transcript",
+      "intended_uses": [
+        "talking-structure"
+      ],
+      "content_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/09/抖音-7686151849837071654.md",
+      "verification_status": "已入库自动转写；不精确引用其原句",
+      "canonical_ref": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/09/抖音-7686151849837071654.md",
+      "evidence_ids": [
+        "evidence:restaurant:jiang-structure"
+      ],
+      "acquisition_note": "采用具体问题→工作原理→可讨论方案→行动功能，不复制案例、收入或把内部流程做正文"
+    },
+    {
+      "id": "reuters-price",
+      "title": "路透调查美国麦当劳AI价格建议",
+      "completeness": "complete",
+      "acquisition": "reuters-republication-original-page",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/来源/路透价格建议调查原页正文.txt",
+      "verification_status": "路透独立调查的原文转载，不是法院或本人结论",
+      "canonical_ref": "https://economictimes.indiatimes.com/news/international/business/inside-mcdonalds-push-to-have-ai-price-your-big-mac/articleshow/134563165.cms",
+      "evidence_ids": [
+        "evidence:restaurant:reuters-price"
+      ],
+      "acquisition_note": "补强钩子的美国机器学习价格建议来源；同时保留麦当劳关于人工决策的立场，删除不相关争议论证"
+    },
+    {
+      "id": "reuters-lawsuit-20261005",
+      "title": "路透2026-10-05麦当劳遭起诉报道及公司回应",
+      "completeness": "primary-source",
+      "acquisition": "reuters-republication-original-page",
+      "intended_uses": [
+        "draft-evidence"
+      ],
+      "content_path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/来源/诉讼新闻与双方表态核验.v2.md",
+      "verification_status": "已读路透报道原文转载及企业说明，仅支持事件、指控归因和公司立场，不是司法认定。",
+      "canonical_ref": "https://www.investing.com/news/stock-market-news/mcdonalds-hit-with-class-action-alleging-aipowered-menu-pricefixing-4932870",
+      "evidence_ids": [
+        "evidence:restaurant:reuters-lawsuit-20261005"
+      ],
+      "acquisition_note": "完整原页正文已读取，本地为事实核验笔记而非逐字全文；用户IT之家入口本轮打开超时，不伪称重新取得其全文。"
+    }
+  ],
+  "topic_authorization": {
+    "status": "user-selected",
+    "selected_by": "user",
+    "selection_mode": "explicit-topic-request",
+    "selected_topic": "餐饮AI的具体作用可落到餐品检查、补货提醒和经营变化提示；本地服务必须将提示接到人核查与处理的日常工作中。",
+    "user_instruction": "全球性的大型连锁餐饮已经开始利用AI做增收或者实质性服务，引发本地餐饮和连锁的认知，规划口播；整篇口语化，去AI的Skill好好过一下。",
+    "source_ref": "conversation:019fe7ac-7b72-7e12-b4d5-db429948c85d:用户餐饮主线要求及最新整篇口语化要求",
+    "confirmed_at": "2026-10-07T12:00:00+08:00",
+    "candidate_only": false,
+    "time_scope_note": "日期为本轮整理标记，不声称用户原消息的精确时间。",
+    "verbatim_scope_note": "这是两条任务要求的语义摘录；原话在当前对话。主线延续已批准，当前文稿未批准。"
+  },
+  "recent_six": [
+    {
+      "title": "十个AI生意",
+      "date": "2026-10-05",
+      "audience_problem": "十项各自做什么",
+      "main_claim": "按行业基础分清服务范围",
+      "claim_id": "claim:ten-local-services:deliverables-memoir-20261001",
+      "evidence": "近期确认方向稿，非本次新闻证据",
+      "evidence_ids": [
+        "evidence:own-script:b72a72504353b6332bd4f12538c9744fff9bb8cde73a5dabdabdc4a576860ed9"
+      ],
+      "deliverable": "理解十项工作范围",
+      "cta": "按相关项交流",
+      "content_path": "/Users/pc/Documents/口播/notes/2026-10-01-十个AI生意与兰州本地服务/纯正文朗读版.v4.txt",
+      "sha256": "b72a72504353b6332bd4f12538c9744fff9bb8cde73a5dabdabdc4a576860ed9",
+      "content_start_marker": "2026年，我看好的10个AI生意。",
+      "content_end_marker": "我是超哥，在兰州AI创业。"
+    },
+    {
+      "title": "Meta与本地商家",
+      "date": "2026-09-29",
+      "audience_problem": "个人AI助理怎样连接商家",
+      "main_claim": "商家要准备可核对信息与可用服务入口",
+      "claim_id": "claim:meta-pa-local-20260929",
+      "evidence": "本条本人实录转写文本，用于口吻和重复研究，不重用其中新闻断言",
+      "evidence_ids": [
+        "evidence:own-script:56be7eb3266df646d42be4790da1cfa17ce03968c34335f30758d3ba55ad2a14"
+      ],
+      "deliverable": "核对商家信息与入口",
+      "cta": "带实际服务来讨论",
+      "content_path": "/Users/pc/Documents/口播/edit/20260929_meta_pa_local_business/10_剪辑准备/字幕/meta-pa.actual.canonical.r1.txt",
+      "sha256": "56be7eb3266df646d42be4790da1cfa17ce03968c34335f30758d3ba55ad2a14",
+      "content_start_marker": "[0.00–5.08]",
+      "content_end_marker": "[408.54–409.30] AI应用落地"
+    },
+    {
+      "title": "行业AI不焦虑",
+      "date": "2026-09-26",
+      "audience_problem": "行业经验与现金流先于追逐工具",
+      "main_claim": "行业经验与现金流先于追逐工具",
+      "claim_id": "claim:recent-confirmed:0",
+      "evidence": "本人确认稿；仅提取表达与主张用于查重，不把旧稿外部断言当作本条事实",
+      "evidence_ids": [
+        "evidence:own-script:a298a92b03894027559e3b60d02a517df523c9693267a5efe8643e5bebd4e7f6"
+      ],
+      "deliverable": "行业经验与现金流先于追逐工具",
+      "cta": "原稿结尾以本人真实文档为准",
+      "content_path": "/Users/pc/Documents/口播/edit/20260926_industry_ai_no_anxiety/00_控制/用户确认原稿.txt",
+      "sha256": "a298a92b03894027559e3b60d02a517df523c9693267a5efe8643e5bebd4e7f6",
+      "content_start_marker": "老板们别再因为其他企业用上了AI而焦虑",
+      "content_end_marker": "就这么简单。我是超哥，在兰州AI创业"
+    },
+    {
+      "title": "八大AI训练方法",
+      "date": "2026-09-19",
+      "audience_problem": "使用多种练习方法提升判断",
+      "main_claim": "使用多种练习方法提升判断",
+      "claim_id": "claim:recent-confirmed:1",
+      "evidence": "本人确认稿；仅提取表达与主张用于查重，不把旧稿外部断言当作本条事实",
+      "evidence_ids": [
+        "evidence:own-script:ebe6210f42cc315f842a23ee69d8c5ad64bbf454570ed918998bd69f0fb20a86"
+      ],
+      "deliverable": "使用多种练习方法提升判断",
+      "cta": "原稿结尾以本人真实文档为准",
+      "content_path": "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/02_文稿/用户原稿.txt",
+      "sha256": "ebe6210f42cc315f842a23ee69d8c5ad64bbf454570ed918998bd69f0fb20a86",
+      "content_start_marker": "成年人最扎心的真相是什么？",
+      "content_end_marker": "我是超哥在兰州AI创业"
+    },
+    {
+      "title": "AI效率与利益分配",
+      "date": "2026-09-17",
+      "audience_problem": "效率提升需要讨论利益分配",
+      "main_claim": "效率提升需要讨论利益分配",
+      "claim_id": "claim:recent-confirmed:2",
+      "evidence": "本人确认稿；仅提取表达与主张用于查重，不把旧稿外部断言当作本条事实",
+      "evidence_ids": [
+        "evidence:own-script:1455708a940fd866e2fe31af435117a19d402c27586bd1967e595e51a655ff27"
+      ],
+      "deliverable": "效率提升需要讨论利益分配",
+      "cta": "原稿结尾以本人真实文档为准",
+      "content_path": "/Users/pc/Documents/口播/edit/20260917_ai_efficiency_sharing/00_工程控制/用户原稿.v1.txt",
+      "sha256": "1455708a940fd866e2fe31af435117a19d402c27586bd1967e595e51a655ff27",
+      "content_start_marker": "做企业AI落地这么久，我发现一个特别有意思的职场默契：",
+      "content_end_marker": "关注超哥，只讲AI落地的底层逻辑。"
+    },
+    {
+      "title": "AI没有发明新商业模式",
+      "date": "2026-09-12",
+      "audience_problem": "AI改变效率不替代交易责任",
+      "main_claim": "AI改变效率不替代交易责任",
+      "claim_id": "claim:recent-confirmed:3",
+      "evidence": "本人确认稿；仅提取表达与主张用于查重，不把旧稿外部断言当作本条事实",
+      "evidence_ids": [
+        "evidence:own-script:57804abe915007fbc32a9c7d4e629e26c4f2817e58b8719dd90c8c30bc85af4c"
+      ],
+      "deliverable": "AI改变效率不替代交易责任",
+      "cta": "原稿结尾以本人真实文档为准",
+      "content_path": "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/00_文稿与控制/用户确认原稿.txt",
+      "sha256": "57804abe915007fbc32a9c7d4e629e26c4f2817e58b8719dd90c8c30bc85af4c",
+      "content_start_marker": "AI并没有发明新的商业模式",
+      "content_end_marker": "我是超哥，在兰州AI创业"
+    }
+  ],
+  "recent_six_scope_note": "实读最新可用六篇口播正文；创作者中心最近六作品含国庆/沙龙等非同一组完整口播，未声称全部官方最近六全文齐备。数据另由本轮47作品109快照预检覆盖。",
+  "topic": {
+    "audience": "甘肃餐饮门店及连锁经营者",
+    "problem": "把AI主要理解成宣传工具，不清楚出餐、补货和多店数据中有什么实际工作可以借鉴",
+    "desired_change": "能复述称重检查与补货应用，并带自家一项工作判断所需记录和责任人",
+    "novel_claim": "餐饮AI的具体作用可落到餐品检查、补货提醒和经营变化提示；本地服务必须将提示接到人核查与处理的日常工作中。",
+    "claim_id": "claim:restaurant:operations-alerts-20261007",
+    "primary_evidence_ids": [
+      "evidence:restaurant:mcd-scale",
+      "evidence:restaurant:yum-order",
+      "evidence:restaurant:local-conversation"
+    ],
+    "difference_from_recent": "不再讲GEO让AI选店、十项生意清单或行业经验宏论；新增官方出餐检查、补货试点和一次本地运营交流，以提示后怎样核查为新具体内容。",
+    "evidence_proves": "企业披露这些应用/试点，一次本地交流提出相似需求",
+    "evidence_does_not_prove": "本地已有可复制方案、收益比例、大连锁AI完全接管或双方条件相同",
+    "audience_takeaway": "先能指出店里具体费事处，理解可用记录和人工核查，不必背产品名",
+    "boundary": "业务资料须授权、算式可核、原因须现场核对；记录不足不凭空分析",
+    "delete_candidates": [
+      "诉讼争议扩展",
+      "自动定价/保证增收",
+      "投资规模/行业空话",
+      "本人未验证交付效果"
+    ]
+  },
+  "brief_contract": {
+    "user_goal": "将用户所给新闻中的具体起诉事件作为由头，再讲大连锁AI经营应用与兰州本地服务；只修改开头和过渡。",
+    "reference_role": "新闻提供具体对象，官方材料解释工作，中台原理与本人作品只提供叙事功能和口吻",
+    "reference_forbidden_role": "不把源新闻诉讼改成主题，不复制知识中台创作者表达或假借他们经历",
+    "required_arc": [
+      "先说美国起诉事件、原告指控与麦当劳否认，再接本地餐馆问题和出餐检查。",
+      "称重检查与百胜补货试点，日期范围明确",
+      "数据与任务相连，给出提示，人处理；传统核算不等于大模型",
+      "本人真实交流接可讨论服务，不讲无证据业绩",
+      "回到店里最费劲的一项，邀请当地经营者带问题交流"
+    ],
+    "forbidden_reframes": [
+      "改回反垄断法律评论",
+      "改回GEO/十种生意列表",
+      "变成泛AI焦虑或本人服务业绩广告"
+    ],
+    "semantic_contract": {
+      "audience_conflict": "本地老板知道AI做宣传但不知道它如何用于日常经营",
+      "core_judgment": "具体任务需要记录、辅助提示与经营者核查衔接",
+      "training_interpretation": "本条不是培训活动报道；大连锁案例用来解释工作，不证明复制收益",
+      "ordinary_person_value": "认出自身经营问题并判断资料与人员条件，能与本地服务方提出具体需求",
+      "chronology_is_not_main_arc": true,
+      "material_role_map": [
+        {
+          "material": "路透2026-10-05起诉报道与麦当劳回应",
+          "role": "hook-evidence",
+          "supports": "新闻发生了什么和双方各说什么，仅作入口，不以指控证明违法或经营增收。"
+        },
+        {
+          "material": "麦当劳价格说明",
+          "role": "hook-evidence",
+          "supports": "麦当劳表示工具只是提供门店级建议，价格是否修改由经营者判断，不是机器自动定价。"
+        },
+        {
+          "material": "麦当劳称重检查和百胜补货试点",
+          "role": "mechanism-evidence",
+          "supports": "官方材料具体说明了出餐称重提示复核和库存结合销售预测提醒补货的工作，不是概念宣传。"
+        },
+        {
+          "material": "本人餐饮交流",
+          "role": "local-proof",
+          "supports": "一次真实需求陈述，非交付效果"
+        },
+        {
+          "material": "拟议本地经营例子",
+          "role": "action-support",
+          "supports": "经营者能对照自己，例子非本人实绩"
+        }
+      ],
+      "alignment_refs": {
+        "audience_conflict": "那咱们在兰州开餐馆，除了拿AI做宣传，还能用它干点什么？",
+        "core_judgment": "这些要让管店的人回头查。",
+        "training_interpretation": "大连锁的整套系统，咱们未必用得起，也未必需要照搬。",
+        "ordinary_person_value": "带着你店里的具体情况，咱们可以聊聊，看看哪一步值得试。"
+      }
+    },
+    "alignment_evidence": "V2首句补回美国起诉事件、第二段保留公司否认，再问兰州餐馆用途，以出餐检查接回V1。称重案例起后文逐字相同，服务主线未改；当前句子仍待用户确认。",
+    "status": "locked"
+  },
+  "frozen_topic_hits": [],
+  "audience_fit": {
+    "account_stage": "调查",
+    "speaker_position": "兰州本地企业AI应用实践者，曾有餐饮需求交流，无本条真实收益验证",
+    "first_20s_connection": "第一句是餐饮菜单价格的具体争议，紧接加盟商仍自主定价，使经营者识别与门店有关；随后约20至30秒内明确问兰州餐馆除了宣传还能怎么用AI，不从企业背景铺陈。秒数为计划非实录。",
+    "high_level_material_role": "evidence",
+    "ordinary_scenes": [
+      "一单餐称重发现可能漏装",
+      "库存不足补货",
+      "多店后台逐项对比"
+    ],
+    "audience_gain": "理解具体工作与可用条件，敢带实际问题交流",
+    "authority_boundary": "不替餐饮老板经营拍板，不假装原型成熟，也不代替食品安全责任",
+    "requires_expert_authority": false
+  },
+  "performance_feedback": {
+    "account_data_preflight": {
+      "receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/koubo-20261007-restaurant-ai.json",
+      "receipt_sha256": "dd5b4b47583c012c39d7366b867f9419b7b623a390ff44074424ee212e097ccf",
+      "read": true
+    },
+    "account_data_application": {
+      "account_baseline_evidence": {
+        "metric": "weightedMetrics.fiveSecondCompletionRate",
+        "value": 32.1567,
+        "use": "历史加权基线提示开头兑现需要观察，不能证明原因"
+      },
+      "recent_work_evidence": {
+        "video_key": "4d58975be945d5cac5c07949",
+        "metric": "metrics.fiveSecondCompletionRate",
+        "value": 23.46,
+        "use": "近期顾客AI选店历史快照作本地经营内容比较，不由单篇推断时长因果"
+      },
+      "planned_change": "按用户纠错恢复具体新闻事件，并保留双方表态；价格与经营者决策首先出现，再接本地餐馆用途。后文原有两项机制与本地交流不动。",
+      "causal_claim": "none"
+    },
+    "learning_card_path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+    "learning_card_sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+    "snapshot_at": "2026-08-10T22:52:59+08:00",
+    "read": true,
+    "newer_content_acknowledged": true,
+    "newer_content_ids": [
+      "2026-08-14-training-camp-episode-2",
+      "2026-08-12-ai-best-worst",
+      "2026-08-11-training-camp-episode-1",
+      "行业AI不焦虑",
+      "八大AI训练方法",
+      "AI效率与利益分配",
+      "AI没有发明新商业模式",
+      "兰州行业AI",
+      "本地AI服务",
+      "20260929-Meta实录"
+    ],
+    "newer_content_metric_status": "ready-historical-stale，47作品109已接纳快照；只用历史，非实时后台",
+    "applied_lesson_ids": [
+      "lesson:opening:title-answer-before-background",
+      "lesson:hook:concrete-conflict-scene-object",
+      "lesson:duration:value-order-before-shortening"
+    ],
+    "opening_plan": {
+      "answer_or_conflict_by_second": 5,
+      "title_answer_by_second": 15,
+      "proof_or_real_scene_by_second": 5,
+      "audience_relevance_by_second": 15,
+      "first_viewer_value_by_second": 30,
+      "delayed_payoff_risk_checked": true,
+      "timing_note": "15秒内通过菜单价格和加盟商决策呈现餐饮经营相关性；明确兰州问题预计稍后出现。为文本计划，不冒充实录时点。"
+    },
+    "duration_plan": {
+      "planned_seconds": 200,
+      "single_core_problem": "本地餐饮能从大连锁具体AI应用中借鉴哪些经营工作",
+      "justification": "V2正文877汉字；参照本人Meta实录1821汉字409.3秒，约197秒，仅等比例粗估。本机Tingting220速145.62449秒，仅机械计时；实际停顿待本人试读。本轮多出的篇幅只用于恢复新闻与必要事实限定。",
+      "evidence_based_justification": true
+    },
+    "metric_plan": {
+      "primary_metric": "five_second_completion_rate",
+      "secondary_metrics": [
+        "average_watch_seconds",
+        "profile_visits"
+      ],
+      "observation_windows": [
+        "early-within-3h",
+        "24h",
+        "72h",
+        "7d"
+      ],
+      "hypothesis": "同类成熟窗口中，具体应用早出现可能比长背景更便于识别价值；若五秒与平均观看无改善或观众说不出具体用途，不认定结构有效。另记录具体餐饮咨询而非仅播放。",
+      "early_vs_mature_windows_acknowledged": true
+    }
+  },
+  "douyin_quality": {
+    "source_scope": "quality-guidance-not-selection-guarantee",
+    "gain": {
+      "target": "primary",
+      "script_evidence": "正文解释订单预期与实际重量比较，库存与需求预测比较，再到本地营业额下降区分订单数和每单金额；说明提示之后人要核对什么。",
+      "viewer_test": "让一位餐饮经营者复述称重或补货应用的输入和人工动作，并指出自家哪份记录可用；说不清就重写而不是称获得感通过。"
+    },
+    "expression": {
+      "target": "primary",
+      "script_evidence": "先以美国麦当劳起诉新闻与双方表态说明由头，再接菜单价格建议以外的出餐检查；中后段用对后台、看订货、核原单的动作讲解，避免赋能等抽象词。",
+      "viewer_test": "请本人试读检查是否需要回头解释陌生词，目标观众能用自己的话说明AI提示与店长判断各做什么。"
+    },
+    "surprise": {
+      "target": "supporting",
+      "script_evidence": "新信息是麦当劳公开的AI辅助称重检查与百胜2025年部分门店补货试点，惊喜不依赖夸张的收益数字。",
+      "viewer_test": "去掉大品牌规模和夸张形容词后，观众仍能说出一种此前不了解的经营应用；不能用表示惊讶代替理解。"
+    },
+    "resonance": {
+      "target": "supporting",
+      "script_evidence": "用本人一次兰州餐饮交流中逐店查后台、对照昨天与上周的工作，连接经营者实际的重复劳动；不扩为本地普遍统计。",
+      "viewer_test": "请有管店经历的人判断这一工作是否熟悉，允许不同门店没有该需求，不借虚构损失迫使观众认同。"
+    },
+    "integrity_boundary": "不用自动定价、必然增收和同行即将淘汰制造惊喜，不把2025年试点写成2026年全面落地，不虚构本人客户损耗下降或员工遭遇制造情绪。",
+    "review_status": "self-reviewed",
+    "selection_not_guaranteed": true
+  },
+  "mechanism_cards": [
+    {
+      "name": "称重检查",
+      "problem": "出餐可能漏装",
+      "bottleneck": "逐单人工核对",
+      "mechanism": "订单预期重量与实际称重对比，提示员工再查",
+      "observable_change": "提示出餐人员核查异常订单",
+      "evidence": "https://corporate.mcdonalds.com/corpmcd/our-stories/article/digitizing-the-arches.html",
+      "evidence_proves": "公司披露了部署与机制",
+      "evidence_does_not_prove": "零错漏或收益比例",
+      "audience_relevance": "老板可理解检查发生在交付前",
+      "boundary": "异常不等于已确定具体漏哪份，人复核"
+    },
+    {
+      "name": "补货与经营提示",
+      "problem": "库存变化与预计用量需要核对",
+      "bottleneck": "多源记录分散、依靠人逐项看",
+      "mechanism": "库存与预测需求比较，辅助整理待查变化，负责人决定",
+      "observable_change": "相关人员收到可核对提示，后续使用效果待测试",
+      "evidence": "百胜2025-06-20公告与2026-08-17本地交流",
+      "evidence_proves": "部分试点与真实需求表达",
+      "evidence_does_not_prove": "兰州可直接复制、人人适用或已增收",
+      "audience_relevance": "多店查账、备货和消耗对照",
+      "boundary": "取数需授权、核算可追溯、原因不乱推、供应商仍可能缺货"
+    }
+  ],
+  "voice": {
+    "profile_path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+    "read": true
+  },
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/口播审阅稿.v2.md",
+    "content_start_marker": "## 口播正文开始",
+    "content_end_marker": "## 口播正文结束",
+    "copy_review": {
+      "required": true,
+      "report_path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/文案双Skill审稿.v2.json"
+    },
+    "fact_lock_passed": true,
+    "humanize_passed": true,
+    "read_aloud_passed": false,
+    "read_aloud_evidence": {
+      "mode": "pending-user-read",
+      "status": "pending",
+      "evidence_ref": "只有机器语音计时与文本断句检查，未获得本人朗读或真人听读。"
+    },
+    "voice_match_passed": true,
+    "recent_six_recheck_passed": true,
+    "performance_feedback_recheck_passed": true,
+    "compliance_passed": false,
+    "user_script_approved": false,
+    "user_language_approval": {
+      "status": "pending",
+      "approved_by": null,
+      "approval_ref": null
+    },
+    "production_allowed": false,
+    "recent_six_scope_note": "实读最新可用六篇口播正文；创作者中心最近六作品含国庆/沙龙等非同一组完整口播，未声称全部官方最近六全文齐备。数据另由本轮47作品109快照预检覆盖。",
+    "phrase_exemptions": [
+      {
+        "pattern_id": "lanzhou-ai-identity",
+        "reason": "本轮新增麦当劳称重、百胜补货和本人餐饮交流证据；用户明确要求从这些应用引到本地餐饮服务。正则实际命中正文中段“在兰州做餐饮AI服务，我更愿意到”，后文是拟议到店核查的具体工作，不是固定收尾身份宣言。真正结尾身份句已删除；保留此处用户主线，不修改校验器或伪造批准。"
+      }
+    ]
+  },
+  "source_essence_receipt": {
+    "applicable": false,
+    "reason": "用户已选定的单问题餐饮应用讲解，不要求对原诉讼文章保留全部认知节点；已读源头精髓Skill，应用精髓见事实锁，不虚构ready-for-outline或校验通过。",
+    "path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/事实锁与提纲.v1.md"
+  },
+  "compliance_boundary": "已读内部2026年7月抖音规则快照及索引；本轮为文稿审阅，未核实时后台，不保证发布/推荐/投放。无客户私密数据、无收益许诺或免费资料CTA。 V2新增企业争议新闻，只作有归因的原告指控和公司否认；不作裁判，发布前人工二审仍未完成。",
+  "revision_authorization": {
+    "user_instruction": "问题是你没有引入这个新闻呀，你没有通过这个新闻去引入这个正文，那为什么就直接开始讲麦当劳呢？",
+    "scope": "只恢复新闻事件、必要双方表态与接入出餐案例的过渡；后文、标题和封面文字不变。",
+    "current_wording_approved": false,
+    "reused_context": "同一任务V1研究、账号历史预检、六篇正文与已选主线继续适用；未重新采集或冒称实时后台。"
+  }
+}
