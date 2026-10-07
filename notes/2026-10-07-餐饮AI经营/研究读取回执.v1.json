@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "task_id": "koubo-20261007-restaurant-ai",
+  "status": "ready-for-candidate-review",
+  "public_copy_generation": false,
+  "generated_at": "2026-10-07",
+  "build_mode": "manual-evidence-assembly",
+  "build_boundary": "本轮已实际执行Obsidian检索、文件读取及账号预检。自动prepare_research_context脚本仅接收ready-current，与现行规则允许历史比较不同；本轮未运行该构建器，也未修改它。人工整理实际读取证据并接受独立候选和内容门禁校验，不声称自动构建器通过。",
+  "opcd": {
+    "meaning": "Obsidian个人知识库；字段名兼容旧版，不是另一套知识库",
+    "root": "/Users/pc/Documents/个人知识库",
+    "learning_card": {
+      "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/工作区/2026-08-09-超哥AI创业记账号数据复盘/当前账号实测学习卡.json",
+      "sha256": "cc5579e4e0ec65e9c2b738a57933e97a67bfe57506f63e8c8a6a21703bb14724",
+      "read": true
+    },
+    "retrieval": {
+      "query": "抖音知识中台 姜胡说 反馈 目标 变量 餐饮 经营",
+      "status": "sufficient",
+      "results": [
+        {
+          "path": "01_项目实战/抖音知识中台/exports/项目/个人AI事业.md",
+          "document_sha256": "538c0c1ab97841b3faf7b3d871a5e0cef5afa5660f3f43fc9bcda59238841029",
+          "read_lines": "1313-1338",
+          "retrieved": true,
+          "read": true,
+          "applied": true,
+          "application": "框架为解释一个现实问题服务，避免复述流程；据此延续餐饮主线并从外部应用转向本地交流"
+        }
+      ],
+      "other_results": "其余四个搜索命中未作为本稿事实或方法使用，不冒充全库已读"
+    }
+  },
+  "account_performance_preflight": {
+    "path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/koubo-20261007-restaurant-ai.json",
+    "sha256": "dd5b4b47583c012c39d7366b867f9419b7b623a390ff44074424ee212e097ccf",
+    "status": "ready-historical-stale",
+    "scope": "47作品、109已接纳快照，只作历史比较；非实时后台"
+  },
+  "project_inputs": [
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/01-账号战略与事业主线.md",
+      "sha256": "902ba0947bf02aa6602ca0fef2d955f607cc771dcbae6f90a5b4e3653d872797",
+      "read": true,
+      "applied": true,
+      "application": "保持甘肃本地企业服务主线，不当海外新闻搬运"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+      "sha256": "c90d07dfb414707035ddd59b6bea6faf88a35f9551649199b9a92d433785bb0d",
+      "read": true,
+      "applied": true,
+      "application": "按具体的人、动作和判断讲，去除汇报腔与导师腔"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/workflow/recent-content-history.v1.json",
+      "sha256": "5ab8b58fa26f2b1a9627c453cd4af1b103927528ac1c26b8d31ec617e73166a5",
+      "read": true,
+      "applied": true,
+      "application": "索引停留8月，另实读六篇近期可用口播正文，不冒充官方最近六全文齐备"
+    }
+  ],
+  "sources": [
+    {
+      "id": "mcd-price",
+      "path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/来源/三份官方原页检索快照.txt",
+      "sha256": "776385cb33cbe0031d3c9053a32d018207cfd3ed46209319781731dd071c6c9b",
+      "source_completeness": "complete",
+      "canonical_ref": "https://corporate.mcdonalds.com/corpmcd/our-stories/article/how-mcdonalds-sets-prices.html",
+      "allowed_use": [
+        "draft-evidence"
+      ],
+      "evidence_type": "企业官方披露，不是本人实测",
+      "retrieved": true,
+      "read": true,
+      "applied": true,
+      "application": "仅支持门店级建议与人工定价，不讨论诉讼结论"
+    },
+    {
+      "id": "mcd-scale",
+      "path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/来源/三份官方原页检索快照.txt",
+      "sha256": "776385cb33cbe0031d3c9053a32d018207cfd3ed46209319781731dd071c6c9b",
+      "source_completeness": "complete",
+      "canonical_ref": "https://corporate.mcdonalds.com/corpmcd/our-stories/article/digitizing-the-arches.html",
+      "allowed_use": [
+        "draft-evidence"
+      ],
+      "evidence_type": "企业官方披露，不是本人实测",
+      "retrieved": true,
+      "read": true,
+      "applied": true,
+      "application": "解释预期与实际餐品重量差异提醒员工核查"
+    },
+    {
+      "id": "yum-order",
+      "path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/来源/三份官方原页检索快照.txt",
+      "sha256": "776385cb33cbe0031d3c9053a32d018207cfd3ed46209319781731dd071c6c9b",
+      "source_completeness": "complete",
+      "canonical_ref": "https://ir.yumchina.com/zh-hans/news-releases/news-release-details-52/",
+      "allowed_use": [
+        "draft-evidence"
+      ],
+      "evidence_type": "企业官方披露，不是本人实测",
+      "retrieved": true,
+      "read": true,
+      "applied": true,
+      "application": "仅以2025年部分门店试点说明库存和销售预测辅助补货"
+    },
+    {
+      "id": "local-conversation",
+      "path": "/Users/pc/Documents/个人知识库/01_项目实战/个人AI事业/2026-08-17_兰州餐饮AI落地讨论纪要.md",
+      "sha256": "7b2dc1448140fd46d0e31e307dfc86f9e14a1d29e7d899f2d9fde8205ad9687c",
+      "source_completeness": "complete",
+      "allowed_use": [
+        "draft-evidence"
+      ],
+      "evidence_type": "会谈纪要，不是市场统计或交付证明",
+      "retrieved": true,
+      "read": true,
+      "applied": true,
+      "application": "匿名转述多店拉数、销售库存消耗断点；不使用数字、不说项目交付"
+    },
+    {
+      "id": "jiang-structure",
+      "path": "/Users/pc/Documents/个人知识库/01_项目实战/抖音知识中台/来源库/2026/09/抖音-7686151849837071654.md",
+      "sha256": "8ae8e870ccbf618515210b6b7a092fe50ff3e1bdace0f2e1d4ab52919416ce22",
+      "source_completeness": "complete",
+      "allowed_use": [
+        "talking-structure"
+      ],
+      "evidence_type": "已入库自动转写；不精确引用其原句",
+      "retrieved": true,
+      "read": true,
+      "applied": true,
+      "application": "采用具体问题→工作原理→可讨论方案→行动功能，不复制案例、收入或把内部流程做正文"
+    },
+    {
+      "id": "reuters-price",
+      "path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/来源/路透价格建议调查原页正文.txt",
+      "sha256": "f3eeebc349f35d58e87909ea5265992e73b385d99a3fa57a95864ae28bcbc2b7",
+      "source_completeness": "complete",
+      "canonical_ref": "https://economictimes.indiatimes.com/news/international/business/inside-mcdonalds-push-to-have-ai-price-your-big-mac/articleshow/134563165.cms",
+      "allowed_use": [
+        "draft-evidence"
+      ],
+      "evidence_type": "路透独立调查的原文转载，不是法院或本人结论",
+      "retrieved": true,
+      "read": true,
+      "applied": true,
+      "application": "补强钩子的美国机器学习价格建议来源；同时保留麦当劳关于人工决策的立场，删除不相关争议论证"
+    }
+  ],
+  "stage": "topic-script",
+  "downstream_production_allowed": false
+}

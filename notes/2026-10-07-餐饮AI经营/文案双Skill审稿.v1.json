@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "task_id": "koubo-20261007-restaurant-ai",
+  "status": "passed",
+  "reviewed_at": "2026-10-07T12:00:00+08:00",
+  "time_scope": "本轮审稿日期标记，不冒充用户确认时间",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/口播审阅稿.v1.md",
+    "sha256": "1fa85622bd186498f1dc506b815a6a51682fb3ad78f7a0d1d2cee4d84d4a201e"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "正文不解释我要讲什么，也不用关键在于、真正问题等转场。以美国麦当劳汉堡价格、称重检查、补货试点顺到本人兰州交流，再进入待验证服务。将经营异常摘要改写为哪家店哪个时段需要去看看，将确定性核算写成表格/业务系统算准。保留去年/部分/工具只给建议等必要限定，嵌在案例中而不串念免责声明。没有附加嗯啊或虚构口头禅。没有把六项门禁写入口播。"
+  },
+  "retention_review": {
+    "risk_node_count": 1,
+    "nodes": [
+      {
+        "original": "经过允许，把相关数据整理出来，做一份能回头查到原始记录的说明，让负责人看看：有没有帮他少翻几页表，有没有把该查的问题提出来。",
+        "risk_level": "medium",
+        "reason": "服务段这句负载较高，若不停顿容易回到汇报语气；属于文本预测，尚无真实观众留存证据。",
+        "candidates": {
+          "conservative": "经过允许，把相关数据整理出来，做一份能回头查到原始记录的说明。负责人拿到以后，看看有没有少翻几页表，该查的问题有没有提出来。",
+          "direct": "相关数据经过允许再整理。交出来的说明，要能查回原始记录；负责人用过，再看是不是少翻了表、找到了该查的地方。",
+          "vivid": "这份说明交到店里，负责人得能查回原始记录。少翻了哪几页表，哪件事需要去查，让他用过再说。资料当然得先经过允许。"
+        },
+        "fact_difference": "三种表达均保留授权、可回溯和实际使用判断，没有新增时间/客户效果；原稿按冒号自然停顿也成立。",
+        "recommendation": "本轮保留原句的冒号停顿，先让本人试读；如果一口气说不完采用保守版断句，不擅自改变服务承诺。"
+      }
+    ],
+    "no_high_risk_reason": "未发现需要再推倒重写的高风险节点。没有长背景、术语串或空结尾；当前仍需本人试读判断服务段是否拖慢。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "初拟钩子的麦当劳补美国限定；都开始改为都在，避免暗示2026年刚上线。",
+      "价格只给建议并注明公司立场；称重只提示复查，不确定漏装；百胜保留去年/部分/试用。",
+      "本地案例只用已有会谈纪要；对账与服务以比如/如果/试说明，不从需求升级为已交付效果。",
+      "机器正文扫描发现结尾再次套用兰州身份句；删除这句固定尾声，未删除任何应用、边界或唯一邀请。"
+    ],
+    "pending_user_confirmations": [
+      "本人试读能否自然说出全文，尤其服务段长句。",
+      "当前稿、标题与封面文字尚未获得本人最终确认。"
+    ]
+  },
+  "scores": {
+    "directness": 8,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "score_boundary": "编辑自评用于定位问题，不是AI检测、真实观众评分或传播效果。事实保真10指逐项未发现越过当前事实锁，不代替外部第三方审计。",
+  "read_aloud_check": {
+    "mode": "text-cadence-review-and-tts-timing-only",
+    "text_review": "逐句检查停顿、句长与指代；保留冒号给服务段换气。无实际人声听读，没有伪称已听过机器声音。",
+    "tts_voice": "Tingting",
+    "tts_rate": 220,
+    "tts_seconds": 141.003175,
+    "tts_path": "/Users/pc/Documents/口播/notes/2026-10-07-餐饮AI经营/机械计时检查.aiff",
+    "tts_input_sha256": "d398105a2168100059acaec36809f60bd049d9fc856d323045f2dda68b030395",
+    "personal_read_confirmed": false,
+    "production_authorized": false
+  },
+  "voice_match_evidence": {
+    "profile": "/Users/pc/Documents/口播/knowledge/14-超哥口播声音档案.md",
+    "read": true,
+    "used_examples": [
+      "/Users/pc/Documents/口播/edit/20260929_meta_pa_local_business/10_剪辑准备/字幕/meta-pa.actual.canonical.r1.txt",
+      "/Users/pc/Documents/口播/edit/20260926_industry_ai_no_anxiety/00_控制/用户确认原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260919_ai_training_methods/02_文稿/用户原稿.txt",
+      "/Users/pc/Documents/口播/edit/20260917_ai_efficiency_sharing/00_工程控制/用户原稿.v1.txt",
+      "/Users/pc/Documents/口播/edit/20260912_ai_no_new_business_model/00_文稿与控制/用户确认原稿.txt"
+    ],
+    "applied": "按用户近作中的具体对象入场、举一项工作解释、用你想/咱们连接，不仿造全部口头赘词，不沿用旧作未核事实。"
+  },
+  "reviewed_scope": [
+    "标题",
+    "钩子",
+    "全文",
+    "转场",
+    "结尾邀请",
+    "封面文字"
+  ],
+  "actual_language_changes": [
+    {
+      "planning_term": "经营异常摘要",
+      "spoken": "哪家店、哪个时段，需要去看看。",
+      "reason": "换成负责人能理解的具体待查事项"
+    },
+    {
+      "planning_term": "确定性核算与AI辅助解释",
+      "spoken": "算数、对账，本来就应该由表格或者业务系统算准。",
+      "reason": "说清传统软件与AI分工，不堆术语"
+    },
+    {
+      "planning_term": "把服务能力嵌入本地企业生产链路",
+      "spoken": "出了问题，能到店里看；员工用着别扭，能坐下来一起改。",
+      "reason": "表达拟议服务方式，不冒充已交付成果"
+    }
+  ],
+  "regression_trace": [
+    {
+      "stage": "成稿首轮",
+      "status": "blocked",
+      "reason": "lanzhou-ai-identity：固定身份收尾",
+      "resolution": "删除结尾身份句，不改validator，不填人工豁免；保留本地服务段与品牌标题。"
+    },
+    {
+      "stage": "删除固定尾声后的精确复核",
+      "status": "bounded-exemption",
+      "reason": "正则实际命中中段“在兰州做餐饮AI服务，我更愿意到”，位置653；并非尾声或把身份当主张。",
+      "resolution": "停止盲改正文，读规则并输出实际匹配。按现行规则记录具体新证据和用途豁免，保留用户本地服务主线；未修改规则、未隐瞒告警。"
+    }
+  ]
+}
