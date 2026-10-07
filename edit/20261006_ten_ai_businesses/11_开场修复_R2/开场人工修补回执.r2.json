@@ -1,0 +1,54 @@
+{
+  "status": "待主代理裁决，不能作为已验收最终资产",
+  "scope": "仅开场162帧原RGB对应alpha局部人工排除，不改RGB、原片、旧R1、运行时和共享组件",
+  "source": {
+    "path": "edit/20261006_ten_ai_businesses/04_Claude小样/takes/take_title.mp4",
+    "sha256": "202dbbe910a0e2e294bac75bf47d34b2de78ba71106368da8340f684308df4eb",
+    "frames": 162,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "candidate": {
+    "alphaPath": "edit/20261006_ten_ai_businesses/11_开场修复_R2/vision-alpha.manual.r2e.gray",
+    "alphaSha256": "852c57a2a96f39512d0b2a1345fe7894d08b1f1178f09eccf293da32eae37d37",
+    "method": "源图并排检查后恢复F100–106与F122–136原有正确轮廓，排除区缩窄至木框接触侧x958–1039、y140–339",
+    "changedFrames": 40,
+    "modifiedWindowsExclusive": [[107, 122], [137, 162]],
+    "rgbModified": false,
+    "featherMaxPixels": 2,
+    "leftOfX958Unchanged": true,
+    "belowY340Unchanged": true,
+    "rightOfX1040Unchanged": true
+  },
+  "rejectedEncodedCandidate": {
+    "path": "edit/20261006_ten_ai_businesses/11_开场修复_R2/presenter-matte.rejected.r2d.webm",
+    "sha256": "8dc53e5760a44fb5ca800468180ef22c7dae9ae2d4b99a9756517eb81bd3cb21",
+    "revision": "r2d",
+    "mustNotBindAsFinal": true,
+    "quarantinedFromPublic": true,
+    "technicalProbe": {
+      "codec": "vp9",
+      "alphaMode": 1,
+      "width": 1920,
+      "height": 1080,
+      "frames": 162,
+      "fps": 30,
+      "durationSeconds": 5.4,
+      "hasAudio": false
+    },
+    "rejectionReason": "完整联系表检查发现宽区插值削掉F100–106、F122–136额头/发际边缘；已在r2e恢复，但尚未编码替换"
+  },
+  "visualInspection": {
+    "grayAndTitleCoverage": "F000–161连续每帧，共18张灰底及18张题字联系表；r2e未改前99帧，末63帧已重新实际看图",
+    "sourceAlphaSideBySide": "F099–138逐帧放大原RGB/未清理系统alpha/候选d并排，额头失败区域已识别",
+    "previousForeheadNotchesRestored": true,
+    "remainingIssue": "F137–158头顶左侧仍有数像素与头部分离的木框尖点；保留真实边缘后不再扩大尝试",
+    "actualRemotionCompositeChecked": false,
+    "diagnosticFont": "本地STHeiti代理字体，仅透明边缘同帧诊断，不是实际Remotion字体与尺度动画验收",
+    "chairBack": "真实前景保留，系统alpha椅背透明度有波动，实际题字合成需主代理复核",
+    "userAcceptance": false
+  },
+  "stoppingBoundary": "不再继续第三轮自动插值或全头重抠。主代理决定如何处理具体残留点后，才可生成唯一最终资产并核验解码alpha/SHA。",
+  "gitModifiedByThisAgent": false
+}

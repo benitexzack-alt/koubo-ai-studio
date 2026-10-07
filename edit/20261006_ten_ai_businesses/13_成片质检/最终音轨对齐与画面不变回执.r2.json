@@ -1,0 +1,48 @@
+{
+  "schema": "ten-ai-businesses-final-audio-alignment/v1",
+  "status": "本期机器音轨对齐与视频不变检查通过，待用户终验",
+  "parentControlledRender": {
+    "path": "edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R1_1080P_完整候选.mp4",
+    "sha256": "49abf07d72715d107aab6e29247152cb2a7ceeb336c31cf8815abb36cd4de8a3",
+    "productionReceipt": "edit/20261006_ten_ai_businesses/08_正式成片/.10个AI生意_V8_R1_1080P_完整候选.mp4.production-receipt.73a1c1d8-d80d-4942-b71b-63474cb7c1b4.json"
+  },
+  "final": {
+    "path": "edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R1_1080P_成片.mp4",
+    "sha256": "1b42b91c4299f0fb8b8f1d7c98dc4492915d7f24553222c3437e7d59bd5f5352",
+    "bytes": 472597563,
+    "frames": 8534,
+    "fps": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  "audio": {
+    "source": "remotion/public-ten-ai-businesses-final-r1/ten-ai-businesses-final-r1/audio/final-mix.r2.wav",
+    "sourceSha256": "7228b239a103df50f4644687cf0290a41ba663131caed213501db32bc3ead0ed",
+    "operation": "从原R2混音直接AAC编码，未混音、未改声音速度或字词；按8534帧时间窗结束",
+    "trimEndSampleAt48k": 13654400,
+    "aacBitrate": 320000,
+    "parentDelayMilliseconds": 42.6875,
+    "finalFiveWindowDelayMilliseconds": [0, 0, 0, 0, 0],
+    "minimumCorrelation": 0.999966,
+    "integratedLufs": -16.59,
+    "truePeakDbtp": -1.78,
+    "qa": "edit/20261006_ten_ai_businesses/13_成片质检/媒体检查.r2.json"
+  },
+  "video": {
+    "operation": "直接复制原受控渲染的视频码流，不再次渲染、编码或改变帧时点",
+    "parentEncodedStreamSha256": "2610db296b59b02ed45caccb90d0e12e3cd75fa8b4a1988e8e53fd067c80ff26",
+    "finalEncodedStreamSha256": "2610db296b59b02ed45caccb90d0e12e3cd75fa8b4a1988e8e53fd067c80ff26",
+    "parentPacketTimelineSha256": "21ba9ffaf13c8ebadb492189ed7b8b747d34c652b84ad6a1c2db10ebe87f205f",
+    "finalPacketTimelineSha256": "21ba9ffaf13c8ebadb492189ed7b8b747d34c652b84ad6a1c2db10ebe87f205f",
+    "packets": 8534,
+    "actualFrame444PngByteIdenticalToParent": true,
+    "actualFrame444PngSha256": "6f6af7ef2d6625e5a801d0e9de18a5fdc3f9ad727a745c81f65f5d03c0952b14",
+    "riskFramesApplicability": "194张实际风险图及全162帧开场来自父受控候选；父片与最终片的视频码流、时点完全相同，可用于本次最终视频画面检查。"
+  },
+  "command": ["ffmpeg", "-nostdin", "-hide_banner", "-i", "edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R1_1080P_完整候选.mp4", "-i", "remotion/public-ten-ai-businesses-final-r1/ten-ai-businesses-final-r1/audio/final-mix.r2.wav", "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-c:a", "aac", "-b:a", "320k", "-af", "atrim=end_sample=13654400,asetpts=PTS-STARTPTS", "-t", "284.466666666667", "-movflags", "+faststart", "edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R1_1080P_成片.mp4"],
+  "normalSpeedFullWatchConfirmed": false,
+  "humanListeningConfirmed": false,
+  "userAccepted": false,
+  "publishAuthorized": false,
+  "note": "保留R1音频失败及旧片，未伪造受控入口对新文件的渲染回执；新文件是已追溯父片的音轨对齐后处理，不代表正式人审或发布放行。"
+}

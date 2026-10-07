@@ -22,6 +22,8 @@ import {assertLanzhouAISalonFormalR3, isLanzhouAISalonFormalR3}
   from '../edit/20260920_lanzhou_ai_salon/00_工程控制/formal-r3/formal-adapter.r3.mjs';
 import {assertEmployeeAIEfficiencyPreview as assertEmployeeRepairPreview, isEmployeeAIEfficiencyPreview as isEmployeeRepairPreview}
   from '../edit/20260917_ai_efficiency_sharing/00_工程控制/preview-adapter.r2.mjs';
+import {assertTenAIBusinessesRenderR1, isTenAIBusinessesRenderR1}
+  from '../edit/20261006_ten_ai_businesses/00_成片控制/export-adapter.r1.mjs';
 import {
   collectProductionBoundFilesV2,
   computeProductionCompositionBindingV2,
@@ -42,6 +44,12 @@ export const EMPLOYEE_AI_REPAIR_PINS = Object.freeze({
 export const EMPLOYEE_AI_PREVIEW_PINS = Object.freeze({
   'with-sfx': '201c0a97c196a3d11580387d880e58e4d08f936c5d8305ca9229ba25c31a4fd5',
   'no-sfx': '354cdaa1fd1e485edefbfaa4b455214ae463288502eadb8ae80038bd6884837e',
+});
+export const TEN_AI_BUSINESSES_R1_PINS = Object.freeze({
+  'full-candidate': 'c63aae0e428d88097d3cb35e9f4ccfdc0af06c7be50af604caf9edfb48426156',
+  'with-sfx': null,
+  'no-sfx': null,
+  formal: null,
 });
 export const SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL_MANIFEST_SHA256 = 'ae6f7c5e2064a61035cd30df8269c1ff65b2fc81d8208c8bd5104b9e149df3fc';
 export const SCOPED_PRESHOOT_ARTIFACTS = Object.freeze(Object.fromEntries(Object.entries({
@@ -325,6 +333,9 @@ function userText(line) {
 }
 
 export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = null, command = 'formal'}) {
+  if (isTenAIBusinessesRenderR1(job)) {
+    return assertTenAIBusinessesRenderR1({projectRoot, job, jobPath, command, pins: TEN_AI_BUSINESSES_R1_PINS});
+  }
   if (isIndustryAiNoAnxietyFormalR1(job)) {
     return assertIndustryAiNoAnxietyFormalR1({projectRoot, job, jobPath, command, pin: INDUSTRY_AI_NO_ANXIETY_FORMAL_R1_PIN});
   }

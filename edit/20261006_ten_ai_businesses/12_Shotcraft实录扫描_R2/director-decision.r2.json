@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "ten-ai-businesses-shotcraft-director-decision/v1",
+  "taskId": "20261006-ten-ai-businesses-final-r1",
+  "sourceRequest": {
+    "path": "edit/20261006_ten_ai_businesses/12_Shotcraft实录扫描_R2/auto-match-request.r2.json",
+    "sha256": "a946515ce33c7014c44d54308ef7a7ed64d1d188360599bd2ea1f99191e04f63"
+  },
+  "automaticSelection": {
+    "path": "edit/20261006_ten_ai_businesses/12_Shotcraft实录扫描_R2/director-selection.r2.json",
+    "sha256": "ab359cdb5bb1350f4b06b49a406c4236557e3376bfb47a84fd7c9e1ec4be6d99"
+  },
+  "automaticReceipt": {
+    "path": "edit/20261006_ten_ai_businesses/12_Shotcraft实录扫描_R2/auto-match-receipt.r2.json",
+    "sha256": "29285cab662ad938089ad529af802caa0e5a27eca1f477d6058cba15a2442149"
+  },
+  "automaticSummary": {
+    "analyzedCardCount": 157,
+    "candidateRenderableCardCount": 5,
+    "adaptationRequiredCardCount": 152,
+    "applyCount": 2,
+    "notNeededCount": 52,
+    "adaptationQueue": [
+      "autolayout-gap-dial",
+      "avatar-grid-radial-build-colorize",
+      "basic-3d-scene",
+      "before-after-slider-scrub",
+      "bezier-source-converge-merge",
+      "bottom-push-stack-wipe",
+      "brace-expand",
+      "card-flip-reveal",
+      "cel-flash-stomp",
+      "chart-live-moves",
+      "command-palette-summon",
+      "cycle-glass-node-morph",
+      "dashboard-glow-highlight-pill",
+      "draw-svg-trace",
+      "flying-words",
+      "glass-pill-dictation-typing",
+      "glow-flyline-moves",
+      "graze-face-tour",
+      "line-boil",
+      "neon-frame-forerun",
+      "orbit-ring-title-open",
+      "overhead-camera-moves",
+      "pill-chip-slot-cycle-handled",
+      "pill-slot-cycle",
+      "platform-hinge-rise",
+      "product-card-progressive-assemble",
+      "radial-wave",
+      "scramble",
+      "skeleton-reveal",
+      "spectrum-morph-ui",
+      "split-flap-title",
+      "stroke-segment-build",
+      "text-column-converge",
+      "trailer-grammar-moves",
+      "type-and-filter",
+      "value-stagger-gradient"
+    ]
+  },
+  "executionSummary": {
+    "newApplyCount": 0,
+    "notNeededCount": 54,
+    "existingRuntimeMotionCount": 32,
+    "adapterChanged": false,
+    "catalogChanged": false,
+    "globalDefaultChanged": false,
+    "rendered": false
+  },
+  "overrides": [
+    {
+      "beatId": "T019",
+      "automaticDecision": "apply",
+      "automaticEffect": "line-carry",
+      "executionDecision": "not-needed",
+      "reason": "当前four-input-delivery-package已把硬件、软件、配置、培训四项汇入打包交付；自动候选LineCarry只取硬件和软件两端，不能表达四项汇聚，且重复同区域信息，保留当前汇聚图。",
+      "existingMotionIds": [
+        "chapter-04",
+        "four-input-delivery-package"
+      ]
+    },
+    {
+      "beatId": "T050",
+      "automaticDecision": "apply",
+      "automaticEffect": "keyword-reveal",
+      "executionDecision": "not-needed",
+      "reason": "当前four-parallel-businesses按实录词窗把选品、内容、客服、交付四类业务并列；自动KeywordReveal按6、60、114、168相对帧等距入场，晚于已有节点19、34、51、66相对帧，且重复当前分支图，保留实录同步运动。",
+      "existingMotionIds": [
+        "chapter-10",
+        "four-parallel-businesses"
+      ]
+    }
+  ],
+  "adaptationQueuePolicy": "自动输出的36种候选名称仅保留为检索结果；不是本轮工作队列，不新增适配，不更新经验账本。",
+  "scopeNotes": [
+    "三种用户指定Skillry动效与V8基础层保留，未被低相关Shotcraft候选替换。",
+    "已有左上信息层、字体、音效、运镜和纸艺原声仍由主代理做完整视听验证；本扫描未听审、未看片。",
+    "扫描引用与帧窗重叠的实录字幕候选原文，未按单字裁去边界邻句；不作为逐字字幕已确认的证明。",
+    "最后C087仅按用户本轮明确核对修正AI创业；并非按拍前文稿恢复，其余识别候选保持原样。"
+  ],
+  "currentUserConfirmation": {
+    "source": "本轮用户直接回复",
+    "quote": "第一步按照你的建议来修补。第二步是AI创业。第三个所有的数据写上，不管，继续。",
+    "scope": "仅尾句AI创业由用户明确核对；95%与89%及其他数字按实际口播保留；不代表整体字幕听审或事实核验完成。",
+    "tailText": "AI创业",
+    "humanListeningPerformed": false,
+    "finalHumanAcceptance": false
+  }
+}

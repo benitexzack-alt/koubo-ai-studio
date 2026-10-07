@@ -380,7 +380,7 @@ export const TenAIBusinessesFinal: React.FC<EpisodeProps> = ({plan, withSfx}) =>
     const fonts = [loadFont({family: EFFECT_FONT, url: sourceUrl(plan.fontSource ?? DEFAULT_FONT, plan),
       format: 'woff2', weight: '400', display: 'block'})];
     if (plan.captionFontSource) fonts.push(loadFont({family: CAPTION_FONT,
-      url: sourceUrl(plan.captionFontSource, plan), weight: '400', display: 'block'}));
+      url: sourceUrl(plan.captionFontSource, plan), format: 'truetype', weight: '400', display: 'block'}));
     Promise.all(fonts).then(() => continueRender(handle))
       .catch((error: unknown) => cancelRender(new Error(`本期本地字体加载失败：${String(error)}`)));
   }, [plan.fontSource, plan.captionFontSource, plan.assetPrefix]);
