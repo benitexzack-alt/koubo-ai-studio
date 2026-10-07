@@ -24,6 +24,8 @@ import {assertEmployeeAIEfficiencyPreview as assertEmployeeRepairPreview, isEmpl
   from '../edit/20260917_ai_efficiency_sharing/00_工程控制/preview-adapter.r2.mjs';
 import {assertTenAIBusinessesRenderR1, isTenAIBusinessesRenderR1}
   from '../edit/20261006_ten_ai_businesses/00_成片控制/export-adapter.r1.mjs';
+import {assertTenAIBusinessesRenderR2, isTenAIBusinessesRenderR2}
+  from '../edit/20261006_ten_ai_businesses/00_成片控制/subtitle-r2/export-adapter.r2.mjs';
 import {
   collectProductionBoundFilesV2,
   computeProductionCompositionBindingV2,
@@ -51,6 +53,7 @@ export const TEN_AI_BUSINESSES_R1_PINS = Object.freeze({
   'no-sfx': null,
   formal: null,
 });
+export const TEN_AI_BUSINESSES_R2_PINS = Object.freeze({'full-candidate': '63e2f3ba691d8b298261f3bfa426be08976c1a0ebf33eb4fa899faf0070d7c41'});
 export const SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL_MANIFEST_SHA256 = 'ae6f7c5e2064a61035cd30df8269c1ff65b2fc81d8208c8bd5104b9e149df3fc';
 export const SCOPED_PRESHOOT_ARTIFACTS = Object.freeze(Object.fromEntries(Object.entries({
   preproductionRequest: 'director-preproduction-request.v1.json',
@@ -333,6 +336,9 @@ function userText(line) {
 }
 
 export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = null, command = 'formal'}) {
+  if (isTenAIBusinessesRenderR2(job)) {
+    return assertTenAIBusinessesRenderR2({projectRoot, job, jobPath, command, pins: TEN_AI_BUSINESSES_R2_PINS});
+  }
   if (isTenAIBusinessesRenderR1(job)) {
     return assertTenAIBusinessesRenderR1({projectRoot, job, jobPath, command, pins: TEN_AI_BUSINESSES_R1_PINS});
   }

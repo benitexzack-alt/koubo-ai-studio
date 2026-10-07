@@ -1,0 +1,71 @@
+{
+  "schema": "ten-ai-businesses-review-candidate/r2",
+  "generatedAt": "2026-10-07T10:58:51.333Z",
+  "status": "blocked-production-registration",
+  "purpose": "供用户观看的完整字幕修正版；不是正式生产通过回执",
+  "parentRender": {
+    "path": "edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R2_字幕修正版_渲染原始.mp4",
+    "sha256": "e6b515637abaf26d2b68cc79c97217530df282715c7359acb5f31e6fc93b9ceb",
+    "frameCountReportedByRenderer": 8534,
+    "wrapperExitCode": 1,
+    "renderCompleted": true,
+    "postRenderGatePassed": false,
+    "failureCode": "KCPG2_CONTEXT_VALIDATION_FAILED",
+    "failureDetail": "blocked-context-stale / index-not-current",
+    "failureEvidence": "本轮受控进程8850：Encoded 8534/8534后，知识上下文复检失败；不存在成功production-receipt。",
+    "originalClaim": {
+      "path": "edit/20261006_ten_ai_businesses/08_正式成片/.10个AI生意_V8_R2_字幕修正版_渲染原始.mp4.render-claim.96740394-7c90-46f4-8143-0206800920ad.json",
+      "sha256": "00e7fe2d2f28af355bd7016b477edd6109b4d6f57127247fd50b09cf864bbabc"
+    }
+  },
+  "diagnosis": "全知识库候选文件哈希变化触发索引失效；只读定位到其他项目文档与每日复盘更新。本轮不修改全局门禁。",
+  "currentFrozenProductionBindingRechecked": true,
+  "currentContextForReadOnlyQa": {
+    "required": true,
+    "command": "qa",
+    "taskId": "ten-ai-businesses-subtitle-r2-20261007",
+    "contextPath": "ten-ai-businesses-subtitle-r2-20261007/context.json",
+    "contextSha256": "fd1bd31f68d14813c7456668a61f20efa3c8038cbf045a87787c49d90f27d8ef",
+    "jobReceiptSha256": "23973d1d3af32c4c3735262190642d8c10237d4e954f9c72b55a6aea5be5cad9",
+    "validationStatus": "context-valid",
+    "formalExecutionAllowed": true
+  },
+  "contextRefreshDoesNotRetroactivelyValidateParentRender": true,
+  "videoSource": {
+    "path": "edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R2_字幕修正版_渲染原始.mp4",
+    "sha256": "e6b515637abaf26d2b68cc79c97217530df282715c7359acb5f31e6fc93b9ceb"
+  },
+  "audioSource": {
+    "path": "edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R1_1080P_成片.mp4",
+    "sha256": "1b42b91c4299f0fb8b8f1d7c98dc4492915d7f24553222c3437e7d59bd5f5352"
+  },
+  "command": [
+    "ffmpeg",
+    "-nostdin",
+    "-hide_banner",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R2_字幕修正版_渲染原始.mp4",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R1_1080P_成片.mp4",
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-c",
+    "copy",
+    "-movflags",
+    "+faststart",
+    "/Users/pc/Documents/口播/edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R2_1080P_字幕修正版.mp4"
+  ],
+  "output": {
+    "path": "edit/20261006_ten_ai_businesses/08_正式成片/10个AI生意_V8_R2_1080P_字幕修正版.mp4",
+    "sha256": "09f9508fe2f9d9f90f9bd4461efc69ac4091196a343d0063e359e2c4782c6eec",
+    "bytes": 473631468
+  },
+  "mediaQaPending": true,
+  "formalProductionPassed": false,
+  "releaseVerified": false,
+  "userFullWatchConfirmed": false,
+  "publishAuthorized": false,
+  "published": false
+}
