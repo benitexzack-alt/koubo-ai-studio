@@ -79,7 +79,7 @@
       "real-evidence": 0,
       "ai-generated-video": 0,
       "paper-editorial": 6,
-      "shotcraftOpportunity": 15
+      "shotcraftOpportunity": 20
     },
     "routeRationales": {
       "speaker": "开头、每项标题、本人判断、风险、候选收入模式和结尾保留真人，不把未经证实主张可视化为事实。",
@@ -1461,7 +1461,7 @@
       "beatId": "B35",
       "baseVisualRoute": "speaker",
       "intent": "keyword-emphasis",
-      "reason": "真人章名“数据资产中介”，不混同数据集生产。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
+      "reason": "真人章名“数据资产中介”，用两侧对照解释前面的数据加工与这里的授权、服务匹配，不混同数据集生产，不画收益。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
       "status": "opportunity-only-post-shoot-selection-pending",
       "catalogScope": "full-current-catalog"
     },
@@ -1491,6 +1491,51 @@
       "reason": "按实录提示选品、内容、客服、交付；工具选择服从业务任务，不承诺学员结果。 拍后按实录、人物手势和字幕保护区扫描全库，不预选卡或组件。",
       "status": "opportunity-only-post-shoot-selection-pending",
       "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO16",
+      "beatId": "B08",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "真人前景按实际点名逐项呈现豆包工作、WorkBuddy、Codex的真实产品图，整卡图字同动，避开脸、手势和字幕；只解释列举，不把工具画成同一种模型。拍后按实际词窗匹配当前全库，不新增预选卡号或组件。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO17",
+      "beatId": "B09",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "家装、宠物医疗、设备维修逐项提示后聚焦行业数据需求，不展示模型效果或医疗成功结果；功能层承接原有左上词条，拍后核对实际说词与安全区。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO18",
+      "beatId": "B19",
+      "baseVisualRoute": "speaker",
+      "intent": "relationship-line",
+      "reason": "承接前句不会选、配、用的问题状态，让硬件、软件、配置、培训逐项汇成同一交付包；多输入合包而非四次白板换页，不画实测设备或收入。拍后扫描全库并核对手势与字幕。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO19",
+      "beatId": "B33",
+      "baseVisualRoute": "speaker",
+      "intent": "relationship-line",
+      "reason": "承接顾客问句展开资料与出处的关系，在同一左上父对象内推进；不模拟真实AI回答界面或已推荐、已获客结果。拍后按实录匹配当前全库。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO20",
+      "beatId": "B42",
+      "baseVisualRoute": "speaker",
+      "intent": "relationship-line",
+      "reason": "错时呈现AI公司与产业老板的能力缺口，解释互补关系，空间不足在左上分步呈现而非遮挡人物；不泛化为全部公司的实测结果。拍后按实录和人物保护区扫描全库。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
     }
   ],
   "rhythmAudit": {
@@ -1517,7 +1562,9 @@
         "decision": "shotcraft-opportunity",
         "reason": "本组保留报题、判断、风险与原话，不为换镜强塞素材；章名、关系或清单机会仅帮助理解。实录到齐后复核自然停顿、面手保护与字幕，可全部不应用，不设固定换镜频率。",
         "mitigationRefs": [
-          "SO04"
+          "SO04",
+          "SO16",
+          "SO17"
         ]
       },
       {
@@ -1539,7 +1586,8 @@
         "reason": "本组保留报题、判断、风险与原话，不为换镜强塞素材；章名、关系或清单机会仅帮助理解。实录到齐后复核自然停顿、面手保护与字幕，可全部不应用，不设固定换镜频率。",
         "mitigationRefs": [
           "SO07",
-          "SO08"
+          "SO08",
+          "SO18"
         ]
       },
       {
@@ -1552,7 +1600,8 @@
           "SO09",
           "SO10",
           "SO11",
-          "SO12"
+          "SO12",
+          "SO19"
         ]
       },
       {
@@ -1562,7 +1611,8 @@
         "decision": "shotcraft-opportunity",
         "reason": "本组保留报题、判断、风险与原话，不为换镜强塞素材；章名、关系或清单机会仅帮助理解。实录到齐后复核自然停顿、面手保护与字幕，可全部不应用，不设固定换镜频率。",
         "mitigationRefs": [
-          "SO13"
+          "SO13",
+          "SO20"
         ]
       },
       {
