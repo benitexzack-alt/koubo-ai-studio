@@ -1,0 +1,975 @@
+{
+  "schemaVersion": "koubo-director-cues/v2",
+  "taskId": "20261011_enterprise_ai_organization",
+  "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
+  "inputScript": {
+    "path": "edit/20261011_enterprise_ai_organization/00_导演方案/用户原文.txt",
+    "sha256": "382324a7bf2f888944cd284bcbe69729ca8ca61c51949a4acbb5672e7faed18c",
+    "authority": "user-confirmed-script"
+  },
+  "routingPolicy": {
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "generatedVisualCannotServeAsEvidence": true,
+    "factVerificationSeparatedFromPrimaryVisual": true,
+    "constructedVisualPriority": [
+      "paper-editorial",
+      "ai-generated-video"
+    ],
+    "aiGeneratedVideoUseCondition": "concrete-human-or-environment-scene-paper-unnatural",
+    "shotcraftSelectionStage": "post-shoot-edit-release",
+    "shotcraftEligibleRoutes": [
+      "speaker",
+      "real-evidence"
+    ],
+    "shotcraftForbiddenInsideRoutes": [
+      "paper-editorial",
+      "ai-generated-video"
+    ]
+  },
+  "styleLocks": {
+    "aiGeneratedVideo": null,
+    "paperEditorial": {
+      "promptPrefix": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。",
+      "mustKeep": [
+        "参考超级个体的纸厚、层次和实际机械运动",
+        "至少前中后三层，主体充分占幅",
+        "中文首帧直接生成并与承载面同动",
+        "每镜一个认知目标及相关因果动作链",
+        "动作结果有可读停顿",
+        "可用原生动作音保留"
+      ],
+      "mustAvoid": [
+        "米色桌面加三张固定字牌反复套版",
+        "静态海报只靠镜头推拉",
+        "中文悬浮不随物体运动",
+        "伪造业绩、数据、客户或真实产品界面",
+        "纸艺内部再叠特效卡或字幕遮主体"
+      ],
+      "referenceImages": [
+        {
+          "id": "REF01",
+          "path": "edit/20260828_super_individual/05_素材验收/frames/paper_07-mid-original.png",
+          "sha256": "5d04fa4d180847d6e142e7dd352caf98396718a18ec676d16006f9756068f6b2",
+          "usage": "style-mechanism-only"
+        }
+      ],
+      "qualityBaselineId": "paper-super-individual-20260829-v1",
+      "textPolicy": "first-frame-generated-chinese-surface-bound"
+    }
+  },
+  "selectionSummary": {
+    "mainPoint": "严格呈现用户原稿：企业AI改造从老板个人用工具，走向岗位、流程与整个组织协作。",
+    "argumentFlow": [
+      "老板忙业务与获客，提出组织改造的问题",
+      "区分个人工具使用与部门岗位工作流",
+      "说明改造初期与底层操作系统的比喻",
+      "对照临时追赶和组织提前准备",
+      "个体协作形成组织合力，回到竞争尺度与本地服务邀请"
+    ],
+    "routeCounts": {
+      "speaker": 16,
+      "real-evidence": 0,
+      "ai-generated-video": 0,
+      "paper-editorial": 5,
+      "shotcraftOpportunity": 11
+    },
+    "routeRationales": {
+      "speaker": "问题、判断、限定、转折及服务邀请靠本人眼神和声音建立信任；不因连续真人就机械加素材。",
+      "real-evidence": "全文没有必须由观众看到的特定官方文件、产品操作或真实事件。事实核查独立保留，不硬塞公开资料主画面。",
+      "ai-generated-video": "具体办公室压力场景不比真人与纸艺增加理解，且容易被误认客户记录；普通写实AI情景本期不需要。",
+      "paper-editorial": "仅在工具孤岛、部门连接、底层系统、个体合力和整体竞争尺度五处使用可操作的物理隐喻。"
+    },
+    "visualRhythmReason": "按论证转折和解释难点切换真人与纸艺；删去与连接机制重复的流程脱节插片。没有固定换镜频率或素材配额。",
+    "protectedSpeakerBeatIds": [
+      "B01",
+      "B02",
+      "B05",
+      "B08",
+      "B19",
+      "B20",
+      "B21"
+    ]
+  },
+  "semanticBeats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "scriptQuote": "咋们做企业的老板忙着做新媒体、跑渠道、搞产品升级，拼命到处找客户。",
+      "rhetoricalRole": "hook",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "从老板熟悉的忙碌状态建立同感，先让观众认出说话的人。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "scriptQuote": "但有没有想过一个残酷现实：下一个行业十字路口，你的企业能不能活下来，拼的可能不是现在的业绩，而是你整个组织，有没有完成AI底层改造。",
+      "rhetoricalRole": "central-question",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F01",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "核心问题由真人直接提出，避免用倒闭画面额外加重原话。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "scriptQuote": "获客没问题，做产品没问题，拓业务也没问题。",
+      "rhetoricalRole": "acknowledgement",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "承接上一句，澄清不是否定获客和业务。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "scriptQuote": "但绝大多数企业，AI还停留在老板自己玩，或者只是剪视频、写文案当个工具用。",
+      "rhetoricalRole": "problem",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F02",
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P01",
+      "decisionReason": "工具孤岛需要物体关系解释，选择P01。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "scriptQuote": "这根本不叫AI转型，那什么叫真正沉下心的深度AI改造？",
+      "rhetoricalRole": "question",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "设问用表情与停顿带出，不让插片代替提问。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "scriptQuote": "不是买系统，不是上软件。是打通每一个部门，落地到每一个人，让公司里的每一个岗位，都成长为独立的超级个体。",
+      "rhetoricalRole": "definition",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "这是你对深度改造的定义与主张，真人说清人和岗位，比堆机器素材更准确。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "scriptQuote": "销售、运营、行政、生产、业务，每一个环节，全部嵌入AI工作流。",
+      "rhetoricalRole": "mechanism",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P02",
+      "decisionReason": "部门接入共享工作流是本片最需要画面的结构解释。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "scriptQuote": "不是可选，是全员必用。",
+      "rhetoricalRole": "position",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "全员必用是你的明确主张，保留真人语气，不包装成官方规定。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "scriptQuote": "改造的初期，看不出爆发式的业绩，看不到立刻变现的结果。",
+      "rhetoricalRole": "time-expectation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F03",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "关于初期收益的判断留真人，不能用伪造曲线当证据。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "scriptQuote": "很多老板做两个月看不到收益，就直接放弃，觉得AI是噱头。",
+      "rhetoricalRole": "obstacle",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F04",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "两个月是原文数字，保留原说法，不擅自补客户个案或统计。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "scriptQuote": "但这恰恰是最关键的沉淀期。",
+      "rhetoricalRole": "reframing",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F05",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "沉淀期是转折重音，面对镜头表达更有效。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "scriptQuote": "我现在做的，就是给整个公司换一套底层操作系统。",
+      "rhetoricalRole": "metaphor",
+      "claimClass": "real-operation",
+      "requiresFactCheck": true,
+      "factCheckId": "F06",
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P03",
+      "decisionReason": "你的服务描述以公司剖面作比喻；画面不证明你已经替某家公司完成改造。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "scriptQuote": "等到市场AI大爆发的那天，行业规则被彻底倒逼重构的时候。",
+      "rhetoricalRole": "future-condition",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F07",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "将未来条件留在口播中，不造新闻现场或预言日期。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "scriptQuote": "别人的团队手忙脚乱临时补课，内部流程全部脱节，人才跟不上时代，被市场卷得进退两难。",
+      "rhetoricalRole": "negative-scenario",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F08",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "再做不连通纸轨会重复前面机制，真人情绪和关键词更有力量。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "scriptQuote": "而你的公司，全员已经熟练用AI思考、协作、干活。",
+      "rhetoricalRole": "positive-scenario",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F09",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "与前句形成你口中的对照，保留同一个真人构图以便观众比较。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B16",
+      "order": 16,
+      "scriptQuote": "每一个人都是高效的超级个体，个体能力叠加，合力推着整个公司往前冲。",
+      "rhetoricalRole": "mechanism",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F10",
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P04",
+      "decisionReason": "个体叠加到公司合力需要展示由分散到联动的动作。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B17",
+      "order": 17,
+      "scriptQuote": "别人是被迫追赶，你就是那个提前布局，第一个吃螃蟹的人。",
+      "rhetoricalRole": "contrast",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F11",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "追赶与提前布局是观点重音，让真人接住纸艺动作结果。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B18",
+      "order": 18,
+      "scriptQuote": "未来企业的竞争，早已不是产品和渠道的单点比拼。\n是整个组织，AI化程度的较量。",
+      "rhetoricalRole": "synthesis",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F12",
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P05",
+      "decisionReason": "把竞争视角从单点扩大到组织整体，用不同于部门流程的承力结构归纳。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B19",
+      "order": 19,
+      "scriptQuote": "早改造不一定马上赢，但不改造，很可能在下一个路口出局。",
+      "rhetoricalRole": "boundary-and-warning",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F13",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "早改不一定马上赢是原话的重要限定，必须完整保留，不能只突出出局。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B20",
+      "order": 20,
+      "scriptQuote": "你的公司，真的做好迎接AI时代的准备了吗？",
+      "rhetoricalRole": "audience-question",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "最后问题需要眼神和留白，不用动画抢走注意力。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B21",
+      "order": 21,
+      "scriptQuote": "如果你的公司想做全员AI深度改造？又不知道从哪里开始的，评论区留下你的行业，给你详细拆解，我是超哥，在兰州深耕企业AI落地服务。",
+      "rhetoricalRole": "call-to-action-and-identity",
+      "claimClass": "real-operation",
+      "requiresFactCheck": true,
+      "factCheckId": "F14",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本地服务邀请与身份介绍必须是本人真实画面，不能用生成客户证明。",
+      "viewerGain": "presenter-trust"
+    }
+  ],
+  "factChecks": [
+    {
+      "id": "F01",
+      "beatId": "B02",
+      "sourceRequirement": "核对AI组织改造与企业生存的因果和适用边界；原句有可能限定，不把未来推断核验成已经发生的必然结果。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F02",
+      "beatId": "B04",
+      "sourceRequirement": "核对绝大多数企业仅老板玩AI或仅用于剪视频写文案的总体判断，需统计范围、时间及样本，不能用个别案例证明绝大多数。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F03",
+      "beatId": "B09",
+      "sourceRequirement": "核对改造初期看不到爆发业绩或立即变现的普遍判断；要有适用条件与观察期，不用动画曲线证明。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F04",
+      "beatId": "B10",
+      "sourceRequirement": "核对很多老板两个月无收益即放弃的数量与两个月时长依据；公开调查或经授权可核实经历，不能编客户。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F05",
+      "beatId": "B11",
+      "sourceRequirement": "核对无收益阶段被判断为最关键沉淀期的理由与反例；无收益本身不能独立证明转型正在成功。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F06",
+      "beatId": "B12",
+      "sourceRequirement": "由本人核对目前实际服务是否覆盖组织工作方式的改造，保留脱敏范围和工作记录；纸艺操作系统仅为比喻，不是已完工证明。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F07",
+      "beatId": "B13",
+      "sourceRequirement": "未来AI爆发与行业规则彻底重构属于预测，记录依据、条件及不确定性；现有政策不能当作未来已发生的证明。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F08",
+      "beatId": "B14",
+      "sourceRequirement": "核对原句是否仅为设想情景及其推断依据，不擅自指向真实客户或企业；流程全部脱节等绝对程度不可由模拟画面证明。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F09",
+      "beatId": "B15",
+      "sourceRequirement": "核对全员熟练思考协作干活的条件及可观察训练结果，不能承诺任何公司接入AI后全员自然熟练。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F10",
+      "beatId": "B16",
+      "sourceRequirement": "核对每个人高效与协作叠加形成公司推进力的条件，区分机制示意与已量化业绩，不制作虚假提升数据。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F11",
+      "beatId": "B17",
+      "sourceRequirement": "提前布局必然先获优势的判断需条件与证据；保留原句不代表此推断已经核验。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F12",
+      "beatId": "B18",
+      "sourceRequirement": "核对企业竞争已从单点转为整个组织AI化程度较量的范围和依据，不能用本片纸艺替代行业证据。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F13",
+      "beatId": "B19",
+      "sourceRequirement": "核对不改造与未来出局风险之间的因果边界，保留很可能和不一定限定，不能把风险演成必然倒闭。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F14",
+      "beatId": "B21",
+      "sourceRequirement": "本人核对兰州企业AI落地服务身份与可实际提供的拆解范围；不虚构客户数、资质、交付效果或联系方式。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    }
+  ],
+  "routePlans": {
+    "realMaterials": {
+      "status": "not-required",
+      "notRequiredReason": "本期无必须展示的真实对象。后台主张核查由Codex整理与本人确认分工，不等同需要下载公开视频；不编造公开资料，不要求用户补录无关演示。",
+      "items": []
+    },
+    "aiGeneratedVideos": {
+      "status": "not-required",
+      "notRequiredReason": "本期是组织结构与协作机制论述，五组纸艺已承担构造解释，其余用真人表达；普通写实AI情景没有独立必要性。",
+      "items": []
+    },
+    "paperEditorials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "P01",
+          "beatId": "B04",
+          "startAnchorText": "AI还停留在老板自己玩",
+          "endAnchorText": "当个工具用。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "让观众看见个人工具产生局部输出，却没有接入组织交接；不是随便找办公室空镜。",
+          "visualRole": "comparison",
+          "visualMetaphor": "繁忙的桌面小工坊与安静的部门孤岛",
+          "composition": "侧俯视三层办公室纸雕，前景桌边纸卷、中景老板工具台、后景隔着留白的无字部门工作站。",
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：侧俯视一间微缩纸雕办公室。中层办公桌正面的纸面印“老板”，左侧纸卷机的前挡板印“剪视频”，右侧纸卷机的前挡板印“写文案”；两台机器的卷轴还未送纸，出口各露出一小段空白纸带。前景是清晰纸卷和桌边，后景有几张无字部门工作桌，与老板桌之间存在明显空隙，没有连接。纸卷机不是平面图标，机器和字面有真实体积。只出现指定三处文字，不出现数据、品牌或客户标识。",
+          "videoPrompt": "基于已确认首帧，镜长约8秒。两个桌面纸卷机完成局部送纸，但纸件始终停留在老板的工具台内：纸卷转动，纸带从出口送出并堆到桌内的小托盘，带字挡板随机构轻轻抬起归位，后方部门桌没有接到纸件。小幅侧移露出桌间空隙，不能只移动镜头。三处文字与承载纸面同步，保持原字形，不漂浮或变字。结尾保留约1秒读清局部忙碌与组织未连接的关系。保留纸卷、送纸的轻响，无旁白、无配乐。",
+          "primaryAction": "两个桌面纸卷机完成局部送纸，但纸件始终停留在老板的工具台内",
+          "negativePrompt": [
+            "不要静态海报加推拉镜头",
+            "不要屏幕浮层文字、错字、乱码或字形游动",
+            "不要米色桌面三张静止卡牌",
+            "不要新增标签、数据、品牌或客户案例",
+            "不要霓虹科技界面或塑料质感",
+            "不要让主体和文字侵入底部字幕空间"
+          ],
+          "textPlan": [
+            {
+              "text": "老板",
+              "surface": "中层办公桌正面的纸面",
+              "motion": "with-object"
+            },
+            {
+              "text": "剪视频",
+              "surface": "左侧纸卷机的前挡板",
+              "motion": "with-object"
+            },
+            {
+              "text": "写文案",
+              "surface": "右侧纸卷机的前挡板",
+              "motion": "with-object"
+            }
+          ],
+          "motionPlan": {
+            "goal": "个人使用AI工具不等于组织已经连通",
+            "actions": [
+              "桌面纸卷机送出纸件，带字挡板随机构活动",
+              "输出收在老板桌的托盘内",
+              "保留与后方部门之间的断开空间"
+            ],
+            "result": "工具台产生局部输出，组织交接仍未建立",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P02",
+          "beatId": "B07",
+          "startAnchorText": "销售、运营、行政、生产、业务",
+          "endAnchorText": "全部嵌入AI工作流。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "把全员改造的范围和交接关系说清，避免只有部门名轮流亮起。",
+          "visualRole": "process",
+          "visualMetaphor": "折页工作站接入共享纸带",
+          "composition": "斜俯视扇形折页工作站，五个有纵深的部门分布在共享纸带周围，前景是待接通纸带，中景为各站，背景是整体办公室。",
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：五个半合拢的立体折页工作站围成扇形，左前方工作站的立面印“销售”，左后方工作站的立面印“运营”，后方中央工作站的立面印“行政”，右后方工作站的立面印“生产”，右前方工作站的立面印“业务”。中央青色纸带的宽端印“AI工作流”，纸带与五站的短桥均尚未扣合。每站有一个无字纸任务夹，不做软件界面、不堆数字；五个字面朝向镜头可读，折页前后层次清楚。初帧保留待连接状态，不预先画好闭合通路。",
+          "videoPrompt": "基于已确认首帧，镜长约8秒。五个折页工作站打开并把各自短桥扣入同一条共享纸带：部门字面跟随折页立起，短桥向中心伸出并落座，无字任务夹沿各自短桥进入共享交接区，形成可互通的整体。五站是并列关系，不演成销售必须依次经过行政等固定业务顺序。镜头小幅后撤让全貌进入视野，动作由物体完成。六处文字跟随各自纸面，字形不变；结尾留约1秒看清连接结果。保留折页、滑纸和扣合原声，无旁白、无配乐。",
+          "primaryAction": "五个折页工作站打开并把各自短桥扣入同一条共享纸带",
+          "negativePrompt": [
+            "不要静态海报加推拉镜头",
+            "不要屏幕浮层文字、错字、乱码或字形游动",
+            "不要米色桌面三张静止卡牌",
+            "不要新增标签、数据、品牌或客户案例",
+            "不要霓虹科技界面或塑料质感",
+            "不要让主体和文字侵入底部字幕空间"
+          ],
+          "textPlan": [
+            {
+              "text": "销售",
+              "surface": "左前方工作站的立面",
+              "motion": "with-object"
+            },
+            {
+              "text": "运营",
+              "surface": "左后方工作站的立面",
+              "motion": "with-object"
+            },
+            {
+              "text": "行政",
+              "surface": "后方中央工作站的立面",
+              "motion": "with-object"
+            },
+            {
+              "text": "生产",
+              "surface": "右后方工作站的立面",
+              "motion": "with-object"
+            },
+            {
+              "text": "业务",
+              "surface": "右前方工作站的立面",
+              "motion": "with-object"
+            },
+            {
+              "text": "AI工作流",
+              "surface": "中央青色纸带的宽端",
+              "motion": "with-object"
+            }
+          ],
+          "motionPlan": {
+            "goal": "全员AI工作流需要部门之间真实可交接的连接",
+            "actions": [
+              "五个折页工作站打开并露出各部门",
+              "各自短桥扣入共享纸带",
+              "无字任务夹进入共享交接区，呈现并列互通关系"
+            ],
+            "result": "五个部门不再各自孤立，建立共享工作流的示意",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P03",
+          "beatId": "B12",
+          "startAnchorText": "给整个公司",
+          "endAnchorText": "换一套底层操作系统。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 7,
+          "reason": "用剖面说明底层改造，不把抽象操作系统误画成购买软件或一键业绩增长。",
+          "visualRole": "metaphor",
+          "visualMetaphor": "公司剖面中的贯穿式基础插板",
+          "composition": "低机位公司剖面，上层纸楼和岗位、中层接口、前景底座插板形成三层；旧插板在槽内，新插板在侧前方等待。",
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：一座暖白纸楼的剖面占据画面中上部，上层楼体的正面印“公司”，楼内无字纸人和岗位可见。底座插槽的活动盖板印“底层操作系统”；槽内仍是一块连接分散的灰色旧插板。青色插板外露端帽印“AI工作流”，它独立放在前景侧边，尚未插入；端帽宽于插槽，装到底后仍外露在盖板下方。侧面能看清导槽和贯穿楼层的纸接口，三层立体构造严谨。不是电脑系统截图，不出现进度百分比或增长曲线，所有标签均直接印在实体纸面。",
+          "videoPrompt": "基于已确认首帧，镜长约7秒。旧基础插板抽离，带字新插板沿导槽进入并与上层接口扣合：活动盖板抬起，灰板退出，青板推进到位，楼层接口依次落座，盖板回落但不遮端帽，“AI工作流”字样始终在槽外可见。楼体保持原样，不扩张、不冒金币、不生成业绩结果。中文随盖板和插板同步位移及转动，不是贴在屏幕上的字。镜头仅轻微侧移展示深度，关键操作看得清；结尾留约1秒读清底层已连接。保留纸板滑动、扣合声，无旁白、无配乐。",
+          "primaryAction": "旧基础插板抽离，带字新插板沿导槽进入并与上层接口扣合",
+          "negativePrompt": [
+            "不要静态海报加推拉镜头",
+            "不要屏幕浮层文字、错字、乱码或字形游动",
+            "不要米色桌面三张静止卡牌",
+            "不要新增标签、数据、品牌或客户案例",
+            "不要霓虹科技界面或塑料质感",
+            "不要让主体和文字侵入底部字幕空间"
+          ],
+          "textPlan": [
+            {
+              "text": "公司",
+              "surface": "上层楼体的正面",
+              "motion": "with-object"
+            },
+            {
+              "text": "底层操作系统",
+              "surface": "底座插槽的活动盖板",
+              "motion": "with-object"
+            },
+            {
+              "text": "AI工作流",
+              "surface": "青色插板外露端帽",
+              "motion": "with-object"
+            }
+          ],
+          "motionPlan": {
+            "goal": "改的是组织底层工作方式，不是公司外观或新增一个软件图标",
+            "actions": [
+              "抬起带字盖板并抽离旧插板",
+              "新插板沿导槽推进",
+              "上层接口落座，盖板回落且端帽文字仍外露"
+            ],
+            "result": "公司外形未变，底层连接方式改变；不宣称真实公司已完成改造",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P04",
+          "beatId": "B16",
+          "startAnchorText": "个体能力叠加",
+          "endAnchorText": "合力推着整个公司往前冲。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "区分每个人各忙各的与能力同向协同；由联动的动作结果解释合力。",
+          "visualRole": "mechanism",
+          "visualMetaphor": "独立曲柄接入共同传动轴推动公司滑台",
+          "composition": "前景独立曲柄与纸人、中景可接合的共同传动轴、后景公司滑台，沿对角线形成纵深，避开P02的部门折页。",
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：前景四组无字纸人各守一个独立曲柄，前景主曲柄的纸质底座印“超级个体”；各小轴之间留有清楚的连接间隙，各曲柄底座都有一条通向中央轴的短导槽。中景轴套的平整纸面印“合力”，轴套还停在未扣合的位置。后景滑台的楼体侧面印“公司”，纸楼停在短导轨起点。构图沿左前到右后展开纵深，传动关系少而清楚。纸人是简洁折纸轮廓，非写实人脸；首帧没有运动模糊，没有终点成功符号。",
+          "videoPrompt": "基于已确认首帧，镜长约8秒。分散曲柄接入共同传动轴，把个人转动汇成推动公司滑台的同向力量：开头各曲柄轻转但滑台未动；曲柄连同带字底座沿短导槽向中央靠拢并锁定，带“合力”的轴套沿轴向推进并扣合，各曲柄同向带动共同轴，纸楼滑台平稳前进一小段。不是速度竞赛，不显示增长倍数。三处字面随底座、轴套和楼体一起运动，保持字形和可读朝向。结尾约1秒看清连接与共同输出。保留曲柄、纸轴和滑台原生动作声，无旁白、无配乐。",
+          "primaryAction": "分散曲柄接入共同传动轴，把个人转动汇成推动公司滑台的同向力量",
+          "negativePrompt": [
+            "不要静态海报加推拉镜头",
+            "不要屏幕浮层文字、错字、乱码或字形游动",
+            "不要米色桌面三张静止卡牌",
+            "不要新增标签、数据、品牌或客户案例",
+            "不要霓虹科技界面或塑料质感",
+            "不要让主体和文字侵入底部字幕空间"
+          ],
+          "textPlan": [
+            {
+              "text": "超级个体",
+              "surface": "前景主曲柄的纸质底座",
+              "motion": "with-object"
+            },
+            {
+              "text": "合力",
+              "surface": "中景轴套的平整纸面",
+              "motion": "with-object"
+            },
+            {
+              "text": "公司",
+              "surface": "后景滑台的楼体侧面",
+              "motion": "with-object"
+            }
+          ],
+          "motionPlan": {
+            "goal": "个体能力要通过协作机制成为组织的共同输出",
+            "actions": [
+              "独立曲柄轻转，滑台暂不动；曲柄与带字底座沿短导槽靠拢锁定",
+              "带字轴套向共同轴扣合",
+              "曲柄同向转动推动公司滑台"
+            ],
+            "result": "分散动作转化为整体前进，呈现合力而非夸张效率提升",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        },
+        {
+          "id": "P05",
+          "beatId": "B18",
+          "startAnchorText": "产品和渠道的单点比拼",
+          "endAnchorText": "AI化程度的较量。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "将竞争的观察尺度从产品渠道转向组织整体，作为全文视觉归纳而非再列一次部门。",
+          "visualRole": "relationship",
+          "visualMetaphor": "两座纸塔成为立体承力框架的一部分",
+          "composition": "斜俯视两座高低错落纸塔，周围平伏的折梁和后方低层组织底盘；最终由局部到整体，不复制P02的扇形通路。",
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：斜俯视两座独立纸塔，左前纸塔的正面印“产品”，右后纸塔的正面印“渠道”。外围折梁的宽正面印“整个组织”，该折梁平伏于两塔之间的底盘上，尚未立起。前景保留纸塔切边，中景为待立起的关节梁，后景有低矮无字节点；两塔没有高低排名，不出现奖杯、输赢标识或公司品牌。带字折梁的正面在初帧已经可读，其他构件只用少量青色连接带。",
+          "videoPrompt": "基于已确认首帧，镜长约8秒。平伏折梁依次立起并扣住两座纸塔，使局部节点成为同一个立体承力整体：连接带拉紧，带“整个组织”的宽梁立起到可读角度，两座带字纸塔被共同框架连接。产品和渠道不消失，仍是整体的一部分。镜头缓慢抬高一点显出整体关系，不做网状光效爆炸。三处中文随塔面和折梁运动，保留字形；结尾约1秒停在完整结构。保留折梁、纸带与扣合声，无旁白、无配乐。",
+          "primaryAction": "平伏折梁依次立起并扣住两座纸塔，使局部节点成为同一个立体承力整体",
+          "negativePrompt": [
+            "不要静态海报加推拉镜头",
+            "不要屏幕浮层文字、错字、乱码或字形游动",
+            "不要米色桌面三张静止卡牌",
+            "不要新增标签、数据、品牌或客户案例",
+            "不要霓虹科技界面或塑料质感",
+            "不要让主体和文字侵入底部字幕空间"
+          ],
+          "textPlan": [
+            {
+              "text": "产品",
+              "surface": "左前纸塔的正面",
+              "motion": "with-object"
+            },
+            {
+              "text": "渠道",
+              "surface": "右后纸塔的正面",
+              "motion": "with-object"
+            },
+            {
+              "text": "整个组织",
+              "surface": "外围折梁的宽正面",
+              "motion": "with-object"
+            }
+          ],
+          "motionPlan": {
+            "goal": "把观察尺度从单点能力扩大到组织整体，而不是否定产品和渠道",
+            "actions": [
+              "平伏折梁立起",
+              "连接带拉紧并与两塔扣合",
+              "完整承力框架形成，两座纸塔保持存在"
+            ],
+            "result": "局部能力被纳入同一个组织整体；不把示意画面当作市场结论证据",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        }
+      ]
+    }
+  },
+  "shotcraftOpportunities": [
+    {
+      "id": "SO01",
+      "beatId": "B01",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "新媒体、跑渠道、产品升级三项按原声顺序出现；动作服务忙碌对象识别。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO02",
+      "beatId": "B02",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "强调AI底层改造，留左上足够大且可读的字面；拍后按真人、字幕保护区选型。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO03",
+      "beatId": "B05",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "用AI转型这个原词承接提问，避免问题被插片淹没。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO04",
+      "beatId": "B06",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "按每一个部门、每一个人、每一个岗位递进，拍后决定能否与手势协同。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO05",
+      "beatId": "B08",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "聚焦全员必用这个原文立场，不能添加官方背书或强制政策标志。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO06",
+      "beatId": "B10",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "两个月只作为原话关键词，不扩成假统计、倒计时或收益图。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO07",
+      "beatId": "B11",
+      "baseVisualRoute": "speaker",
+      "intent": "transition-carry",
+      "reason": "以沉淀期的语义停顿承接底层改造纸艺；转场不遮盖人声或改写判断。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO08",
+      "beatId": "B14",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "临时补课、流程脱节、人才跟不上三项随原声聚焦，避免再用不连通纸轨重复解释。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO09",
+      "beatId": "B15",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "思考、协作、干活随原声出现，形成与前句的对应关系。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO10",
+      "beatId": "B17",
+      "baseVisualRoute": "speaker",
+      "intent": "relationship-line",
+      "reason": "连接被迫追赶与提前布局两项原词，只表达原话对照，不制造效率数据。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO11",
+      "beatId": "B19",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "优先突出不一定马上赢这一原文限定，不能仅突出出局造成更强的效果承诺。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    }
+  ],
+  "rhythmAudit": {
+    "basis": "semantic-runs-not-seconds",
+    "fixedCadenceForbidden": true,
+    "longSpeakerRunsReviewed": true,
+    "runs": [
+      {
+        "fromBeatId": "B01",
+        "toBeatId": "B03",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "开场建立本人信任并提出核心问题，以原词逐项出现缓解连续信息密度。",
+        "mitigationRefs": [
+          "SO01",
+          "SO02"
+        ]
+      },
+      {
+        "fromBeatId": "B05",
+        "toBeatId": "B06",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "设问到定义保留真人，部门到个人到岗位的递进可帮助理解。",
+        "mitigationRefs": [
+          "SO03",
+          "SO04"
+        ]
+      },
+      {
+        "fromBeatId": "B08",
+        "toBeatId": "B11",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "这是态度、收益期待与沉淀的连续判断；不能用伪造业绩素材填充，以少量原词和转折停顿调节。",
+        "mitigationRefs": [
+          "SO05",
+          "SO06",
+          "SO07"
+        ]
+      },
+      {
+        "fromBeatId": "B13",
+        "toBeatId": "B15",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "假设未来与正反团队对照连续留真人，避免重复纸艺和假现场，原词聚焦保持可跟随。",
+        "mitigationRefs": [
+          "SO08",
+          "SO09"
+        ]
+      },
+      {
+        "fromBeatId": "B17",
+        "toBeatId": "B17",
+        "risk": "low",
+        "decision": "shotcraft-opportunity",
+        "reason": "真人接住合力镜头，把追赶和布局的对照说清。",
+        "mitigationRefs": [
+          "SO10"
+        ]
+      },
+      {
+        "fromBeatId": "B19",
+        "toBeatId": "B21",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "限定、提问和身份收尾连续保留本人，信任与信息完整优先；有关键词机会，但不强制实现。",
+        "mitigationRefs": []
+      }
+    ]
+  }
+}

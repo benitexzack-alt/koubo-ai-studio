@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "director-delivery-check/v1",
+  "date": "2026-10-11",
+  "stage": "director-only",
+  "status": "ready-for-user-review",
+  "scriptSha256": "382324a7bf2f888944cd284bcbe69729ca8ca61c51949a4acbb5672e7faed18c",
+  "directorSha256": "726494c31f3d20f2c72a235cdc1925354b7dd2d750aa4a855addb50e60aac035",
+  "promptPackSha256": "e83205ad6605da875dc05c8ca0fe1d077bbc97eec2e163dcf2396e0633fc4cb3",
+  "checks": {
+    "scriptHashMatches": true,
+    "fullTextExactIgnoringWhitespace": true,
+    "humanPlanContainsEveryQuote": true,
+    "promptPackMatchesJSON": true,
+    "labelsAllExtractedFromUserScript": true,
+    "referenceHashValid": true,
+    "entryIsSymlink": true,
+    "entryResolvesToOnlyEpisode": true,
+    "sixIntakeFoldersExist": true,
+    "intakeInstructionsExist": true,
+    "downstreamBlocked": true
+  },
+  "counts": {
+    "speaker": 16,
+    "real-evidence": 0,
+    "ai-generated-video": 0,
+    "paper-editorial": 5,
+    "shotcraftOpportunity": 11
+  },
+  "semanticBeats": 21,
+  "factChecksPending": 14,
+  "referenceReview": "本轮实际查看两张历史序列图及原尺寸纸艺参考帧；未重新观看整部历史视频。",
+  "unverified": [
+    "用户尚未确认本导演方案",
+    "未生成首帧或视频，无法确认文字稳定、动作结果和实际原生声",
+    "原片未拍摄，秒级入出点、字号与保护区未实测",
+    "事实核查清单未完成，不代表发布通过"
+  ]
+}
