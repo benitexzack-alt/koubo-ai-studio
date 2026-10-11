@@ -26,6 +26,8 @@ import {assertTenAIBusinessesRenderR1, isTenAIBusinessesRenderR1}
   from '../edit/20261006_ten_ai_businesses/00_成片控制/export-adapter.r1.mjs';
 import {assertTenAIBusinessesRenderR2, isTenAIBusinessesRenderR2}
   from '../edit/20261006_ten_ai_businesses/00_成片控制/subtitle-r2/export-adapter.r2.mjs';
+import {assertEnterpriseAIOrganizationRenderV1, isEnterpriseAIOrganizationRenderV1}
+  from '../edit/20261011_enterprise_ai_organization/06_成片控制/export-adapter.v1.mjs';
 import {
   collectProductionBoundFilesV2,
   computeProductionCompositionBindingV2,
@@ -52,6 +54,7 @@ export const TEN_AI_BUSINESSES_R1_PINS = Object.freeze({
   'with-sfx': null,
   'no-sfx': null,
   formal: null,
+export const ENTERPRISE_AI_ORGANIZATION_V1_PIN = '84a8e0c4125672afd3d21d71703dacb00d30ffffd62024f4223883481ce1372f';
 });
 export const TEN_AI_BUSINESSES_R2_PINS = Object.freeze({'full-candidate': '63e2f3ba691d8b298261f3bfa426be08976c1a0ebf33eb4fa899faf0070d7c41'});
 export const SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL_MANIFEST_SHA256 = 'ae6f7c5e2064a61035cd30df8269c1ff65b2fc81d8208c8bd5104b9e149df3fc';
@@ -333,6 +336,9 @@ function userText(line) {
     return event.payload.content.filter((item) => ['input_text', 'text'].includes(item.type)).map((item) => item.text).join('\n');
   }
   fail('SDE_USER_MESSAGE', '授权证据必须定位到真实 user 消息，不接受助手总结或工具输出');
+  if (isEnterpriseAIOrganizationRenderV1(job)) {
+    return assertEnterpriseAIOrganizationRenderV1({projectRoot, job, jobPath, command, pin: ENTERPRISE_AI_ORGANIZATION_V1_PIN});
+  }
 }
 
 export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = null, command = 'formal'}) {

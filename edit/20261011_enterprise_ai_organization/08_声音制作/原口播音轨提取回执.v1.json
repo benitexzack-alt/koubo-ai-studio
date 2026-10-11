@@ -1,0 +1,28 @@
+{
+  "sourcePath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/01_口播原片/copy_6040572B-1985-4C66-842D-0F3B63C6E29C.MOV",
+  "sourceSha256": "6547a15055ec44a5765f054816e2f9555ce1524b4f8664dbbeb6bce1fa8712bb",
+  "outputPath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/08_声音制作/audio/original.v1.wav",
+  "outputSha256": "0e4f5468e69fbb255061c0c13135063b5fd6eeaf5f9bbb1289a50fa97f82ccd8",
+  "command": [
+    "/opt/homebrew/bin/ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/01_口播原片/copy_6040572B-1985-4C66-842D-0F3B63C6E29C.MOV",
+    "-map",
+    "0:a:0",
+    "-vn",
+    "-ar",
+    "48000",
+    "-ac",
+    "2",
+    "-c:a",
+    "pcm_f32le",
+    "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/08_声音制作/audio/original.v1.wav"
+  ],
+  "cut": false,
+  "speedChanged": false,
+  "voiceGainDb": 0
+}

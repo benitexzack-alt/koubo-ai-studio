@@ -1,0 +1,97 @@
+{
+  "schema": "enterprise-ai-organization-post-render-observation/v1",
+  "recordedAt": "2026-10-11T17:24:52Z",
+  "status": "complete-mp4-present-original-wrapper-postflight-blocked",
+  "purpose": "独立事后核对记录，不是原受控 wrapper 成功收据，也不追认正式生产登记。",
+  "episodeId": "20261011_enterprise_ai_organization",
+  "output": {
+    "path": "edit/20261011_enterprise_ai_organization/11_成片与发布包/企业全员AI改造_V8_R1_1080P_完整候选.mp4",
+    "sha256": "573c626853ef179f32e75614e9d07363715f1eed968cde274e63ef7391aafaa3",
+    "bytes": 198265437,
+    "video": {
+      "codec": "h264",
+      "width": 1920,
+      "height": 1080,
+      "fps": "30/1",
+      "frames": 4385,
+      "durationSeconds": 146.166667
+    },
+    "audio": {
+      "codec": "aac",
+      "durationSeconds": 146.218667
+    },
+    "formatDurationSeconds": 146.218667,
+    "verification": "本次只读 shasum 与 ffprobe 实测；编码完成日志核对。全解码、视觉听感由本期独立 QA 记录，不由此记录代替。"
+  },
+  "originalClaim": {
+    "path": "edit/20261011_enterprise_ai_organization/11_成片与发布包/.企业全员AI改造_V8_R1_1080P_完整候选.mp4.render-claim.8fa651dc-306a-4d6a-b12e-3543c5189f63.json",
+    "sha256": "1fd9b4fa070e48682219688e0a256f1e13e3433b6bac0eb50b8fe0e59795ec38",
+    "claimId": "8fa651dc-306a-4d6a-b12e-3543c5189f63",
+    "claimedAt": "2026-10-11T16:45:37.211Z",
+    "preflightIntegritySealSha256": "2134f237b6a98e1e160749d5a1208f5a0990a128c931b6b1cc536909cb908452",
+    "preservedUnmodified": true
+  },
+  "originalExecution": {
+    "wrapper": "skills/koubo-remotion-director/scripts/run-remotion-production-v2.mjs",
+    "exitCode": 1,
+    "encodedFrames": 4385,
+    "expectedFrames": 4385,
+    "sourceEvidence": {
+      "sessionPath": "/Users/pc/.codex/sessions/2026/09/11/rollout-2026-09-11T19-21-27-01a09033-794b-7dc2-a53d-19afbccec54e.jsonl",
+      "responseItemId": "ctco_01a12be8-a4f2-70b2-88d4-128b14ceaa31",
+      "toolChunkId": "2bffa0",
+      "timestamp": "2026-10-11T17:00:29.298Z",
+      "extraction": "jq 按 response_item 与精确 payload.id 提取 payload.output[1].text，解析原始工具 JSON",
+      "excerpt": "Encoded 4385/4385；完整候选.mp4 198.3 MB；受控 Remotion 入口失败：[KCPG2_CONTEXT_VALIDATION_FAILED]"
+    },
+    "failurePhase": "Remotion 子进程返回成功且普通输出文件形成后，wrapper 的 after-render preflight 复检",
+    "failureCode": "KCPG2_CONTEXT_VALIDATION_FAILED",
+    "contextStatus": "blocked-context-stale",
+    "contextProblems": [
+      {
+        "code": "index-not-current",
+        "status": "stale"
+      }
+    ],
+    "originalSuccessReceiptProduced": false,
+    "originalSuccessReceiptReissued": false,
+    "afterRenderIntegritySealSha256": null
+  },
+  "independentPostRenderInputCheck": {
+    "performed": true,
+    "checker": "assertEnterpriseAIOrganizationRenderV1",
+    "command": "direct-remotion-preview",
+    "ok": true,
+    "manifestPath": "edit/20261011_enterprise_ai_organization/06_成片控制/export-manifest.full-candidate.v1.json",
+    "manifestSha256": "84a8e0c4125672afd3d21d71703dacb00d30ffffd62024f4223883481ce1372f",
+    "jobSha256": "4cd093b768673146f26c62d8bcd217cdfed814c930fb36ccde82651a19890c2b",
+    "jobSnapshotSha256": "5d93b5f83d407d79831b76bbb25bdffd645e9b722b0d82e01233cc8d8104b806",
+    "boundFilesCount": 90,
+    "inputBindingUnchanged": true,
+    "scope": "原片、五纸艺、字幕、音轨、公开素材副本、组件和本期适配器均仍匹配原 manifest；此检查不包含知识上下文通过，也不冒充原 wrapper 全闭包事后成功。"
+  },
+  "knowledgeIndexObservation": {
+    "command": "opc_rag.py status",
+    "status": "stale",
+    "indexedDocuments": 818,
+    "currentCandidates": 818,
+    "changedOrNew": 1,
+    "removed": 0,
+    "changedExamples": [
+      "06_每日复盘/2026-10-12.md"
+    ],
+    "databaseSha256": "9fd7fb6ae31b2e5443627838363aa7c6bb181caf1d80c030911629ea3c35a7ca",
+    "refreshed": false,
+    "note": "实际只读定位为全局知识库每日复盘变化；本次不改知识索引、不伪造新的 context 或旧 seal。"
+  },
+  "boundaries": {
+    "rerendered": false,
+    "originalMp4Modified": false,
+    "sharedGateModified": false,
+    "formalRegistration": "blocked",
+    "candidateFileAvailable": true,
+    "normalSpeedHumanListeningConfirmed": false,
+    "userFullWatchConfirmed": false,
+    "published": false
+  }
+}

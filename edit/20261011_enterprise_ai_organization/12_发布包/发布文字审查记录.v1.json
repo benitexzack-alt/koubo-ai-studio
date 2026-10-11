@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "task_id": "20261011_enterprise_ai_organization",
+  "status": "ready-for-user-review",
+  "scope": "实录摘录式发布包装，不重写正文，不重新启动上游选题或文稿流程，不等于内容门禁或发布通过",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/12_发布包/发布文字_实录摘录.md",
+    "sha256": "7e245b1fa0fcd533814e5bac6529e14da6cf3d765e8d66362788668c014b1f58"
+  },
+  "cover_prompt": {
+    "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/12_发布包/3比4真人截图合成封面提示词.md",
+    "sha256": "627dbeae6e7b395e1f0a97fa4f570f9ee036adfaf563a7a9ecbfd34af2465f4a"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "source": {
+    "canonicalSource": "recorded-audio",
+    "transcriptPath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/07_字幕制作/transcript.canonical-candidate.v1.json",
+    "transcriptSha256AtReview": "54a0c499cac15215e33a882c08a4511c9f04ada62e9b3a3bc80a6bc7e2d87994",
+    "transcriptStatus": "machine-candidate-unreviewed",
+    "scriptUsedToRestoreWords": false,
+    "humanListeningPerformed": false,
+    "titleAndDescriptionMechanicalExactExcerptCheck": true
+  },
+  "fact_lock": {
+    "lockedTheme": "全员AI深度改造与组织连接",
+    "lockedIdentity": "我是超哥，在兰州深耕企业AI落地服务",
+    "lockedAction": "评论区留下你的行业，给你详细拆解",
+    "personalServiceStatementIsNotResultsEvidence": true,
+    "metaphorIsNotSoftwareProduct": "底层的操作系统是原声比喻，不据此包装为已经交付的软件产品",
+    "prohibitedAdditions": [
+      "客户案例",
+      "收益与提效数字",
+      "保证获客",
+      "保证成功",
+      "未改造必倒闭",
+      "官方认证或合作背书"
+    ]
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "fact_safe_rewrite_scope": "无需重写；仅提取现成原话，标点整理不改变用词和主张",
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": false,
+    "read_aloud_note": "本轮没有真人朗读或音频听审；未伪装完整文稿制作门禁通过",
+    "voice_match_completed": true,
+    "voice_match_scope": "直接摘录本期原话并对照声音档案，不虚构本人口头禅"
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "发布可复制区域仅保留现成标题、原声行动引导和主题话题；内部状态及边界集中放在不复制区。没有新增作者思考过程、专家来源、虚构场景或结果。封面以五个已口述部门显示主题，不伪造企业成果。布尔值只指包装审查，不代表实际传播效果。"
+  },
+  "retention_review": {
+    "risk_node_count": 0,
+    "nodes": [],
+    "no_high_risk_reason": "本次只检查短标题和发布说明，不重审或改写原片。主标题直指原片主题，发布文案保留单一评论动作，没有新增需要强改的高风险句；封面不采用原片的生存预测作强承诺。吸引力和真实传播结果仍未验证。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [],
+    "pending_user_confirmations": [
+      "正式成片完整观看",
+      "本期标题及封面包装选择",
+      "实际发布入口及声明"
+    ]
+  },
+  "scores": {
+    "directness": 9,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 9,
+    "fact_fidelity": 10,
+    "meaning": "模型编辑自评，仅针对摘录忠实度与包装；不代表人审或传播实测"
+  },
+  "fullContentGateReexecuted": false,
+  "fullContentGateReason": "已批准后期的发布包摘录，不新增公开正文；禁止借本次包装重启上游生产流程。",
+  "published": false,
+  "finalHumanAcceptance": false,
+  "mediaBindingNote": "仅将封面人物图的预留说明更新为实际143.1秒截图；可复制提示词和发布文字未改。"
+}

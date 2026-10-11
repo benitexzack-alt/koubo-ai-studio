@@ -1,0 +1,31 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+const root=process.cwd();
+const base='edit/20261011_enterprise_ai_organization';
+const pack=`${base}/12_发布包`;
+const source=`${base}/11_成片与发布包/企业全员AI改造_V8_R1_1080P_完整候选.mp4`;
+const video=`${pack}/企业全员AI改造_1080P_完整候选.mp4`;
+const frame=`${pack}/本条成片真人截图_推荐.png`;
+const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+if(!fs.existsSync(video)) fs.linkSync(source,video);
+if(sha(source)!==sha(video)) throw Error('交付副本与实际导出不一致');
+const captions=JSON.parse(fs.readFileSync(`${base}/07_字幕制作/captions.runtime.v1.json`));
+const stamp=f=>{let m=Math.round(f/30*1000);const ms=m%1000;m=Math.floor(m/1000);const s=m%60;m=Math.floor(m/60);const min=m%60;return `${String(Math.floor(m/60)).padStart(2,'0')}:${String(min).padStart(2,'0')}:${String(s).padStart(2,'0')},${String(ms).padStart(3,'0')}`;};
+fs.writeFileSync(`${pack}/本期中英字幕.srt`,captions.map((c,i)=>`${i+1}\n${stamp(c.from)} --> ${stamp(c.to)}\n${c.chinese}\n${c.english}\n`).join('\n'));
+const p=`${pack}/文字交付清单.v1.json`;
+const ledger=JSON.parse(fs.readFileSync(p));
+ledger.status='complete-local-candidate-package-awaiting-review';
+ledger.mediaBinding={status:'actual-export-and-frame-bound',videoPath:path.resolve(video),originalExportPath:path.resolve(source),
+  videoSha256:sha(video),framePath:path.resolve(frame),frameTimeSeconds:143.1,frameIndex:4293,frameSha256:sha(frame),frameGenerated:true,
+  note:'截图实际从本条4385帧完整MP4提取；完整候选，不冒称已人审或正式release。'};
+ledger.renderRegistration={wrapperExitSuccess:false,reason:'全片渲染成功，渲染后知识索引变旧导致收尾登记阻断；保留实际文件和claim，未伪造受控成功回执。'};
+fs.writeFileSync(p,JSON.stringify(ledger,null,2)+'\n');
+const reviewPath=`${pack}/发布文字审查记录.v1.json`;
+const review=JSON.parse(fs.readFileSync(reviewPath));
+review.cover_prompt.sha256=sha(`${pack}/3比4真人截图合成封面提示词.md`);
+review.mediaBindingNote='仅将封面人物图的预留说明更新为实际143.1秒截图；可复制提示词和发布文字未改。';
+fs.writeFileSync(reviewPath,JSON.stringify(review,null,2)+'\n');
+const desktop='/Users/pc/Desktop/口播素材/2026-10-11_企业全员AI改造';
+if(fs.realpathSync(desktop)!==path.resolve(root,base)) throw Error('桌面入口不匹配');
+console.log(JSON.stringify({video:path.resolve(video),sha256:sha(video),frame:path.resolve(frame),desktop,pack:path.resolve(pack)}));
