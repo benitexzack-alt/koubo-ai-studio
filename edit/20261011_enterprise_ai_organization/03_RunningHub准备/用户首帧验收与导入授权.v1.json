@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "koubo-firstframe-user-acceptance-and-import-authorization/v1",
+  "taskId": "20261011_enterprise_ai_organization",
+  "revisionId": "r1-firstframe-20261011",
+  "createdAt": "2026-10-11T11:56:17.943Z",
+  "status": "accepted-for-canvas-preparation",
+  "userQuote": "好的，导入到RuninHub。开始生片",
+  "context": "用户在五张首帧已展示并说明P04局部遮挡后回复，同意将当前五张首帧导入RunningHub。",
+  "acceptedSceneIds": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05"
+  ],
+  "acceptedImages": [
+    {
+      "sceneId": "P01",
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P01_首帧_r1.png",
+      "sha256": "b35d5d99b56b3c5fb4c87b04ec3f5335318a6a5c890f0332a1e22c0bc28fa4e0"
+    },
+    {
+      "sceneId": "P02",
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P02_首帧_r2.png",
+      "sha256": "967ba9f735bebf6912158188b7fee256c1f3762abf5a1ecfd7672565bb1ee3c1"
+    },
+    {
+      "sceneId": "P03",
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P03_首帧_r1.png",
+      "sha256": "6fab4ab6e7e98a09ecd8da988f737ff44c40ca7d2f5fa4490e6b2a5466df3711"
+    },
+    {
+      "sceneId": "P04",
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P04_首帧_r2.png",
+      "sha256": "d8e221d8ebac64db06accf0b4f2d90daf6bbed228b9d1034b576d5be006ce517"
+    },
+    {
+      "sceneId": "P05",
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P05_首帧_r1.png",
+      "sha256": "dcdcff41fb8aaefb3f25318a42bac5ea61c56979a49ccc369d0a7a780b6b714d"
+    }
+  ],
+  "bindings": {
+    "firstframeBatch": {
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/02_首帧质检/五镜首帧批次清单.v1.json",
+      "sha256": "9f166d385275da126b382ebc9ffd1b43bb775c7824aeead04247ee7bda7a692e"
+    },
+    "masterHandoff": {
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/director-cues-v2-handoff.v1.json",
+      "sha256": "7ea1b8f31cbda0216a3fb85c8b254f1fa6134ddf5f185601745b0bf5e16f11ad"
+    },
+    "videoHandoff": {
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/paper-editorial.image-to-video-handoff.v1.json",
+      "sha256": "eecf93e3f24e3a13ed6af0cc75c80cf601d6634d8ca5b74aa990c4e01117c0bb"
+    }
+  },
+  "permissions": {
+    "uploadImages": true,
+    "createAndConfigureCanvasNodes": true,
+    "userRequestedVideoGeneration": true,
+    "taskSubmissionAuthorizedAtCurrentGate": false,
+    "automaticPaidRetries": false,
+    "paymentOrPurchase": false,
+    "publication": false
+  },
+  "submissionGate": {
+    "status": "awaiting-canvas-readback-and-user-confirmation",
+    "reason": "按本任务既定手动生成边界及当前Skill，先完成画布填充与回读；提交前再次取得用户明确确认。"
+  },
+  "preservedQualityNotes": [
+    {
+      "severity": "P1",
+      "blocking": false,
+      "sceneId": "P04",
+      "note": "左前主工位后方接口局部遮挡，核心套筒断开清楚；用户重点看图。"
+    },
+    {
+      "sceneId": "P03",
+      "severity": "INFO",
+      "note": "OCR多识别的黎已用坐标定位到纸盆栽，实际裁图复核为植物轮廓，不是文字。"
+    },
+    {
+      "sceneId": "P05",
+      "severity": "INFO",
+      "note": "竖排标签全图OCR漏检；ROI读出品渠道，产漏检。两名代理逐字视觉复核准确，未宣称OCR全通过。"
+    },
+    {
+      "severity": "INFO",
+      "note": "全部原生1672×941，约16:9，不是1920×1080；未插值放大。"
+    }
+  ],
+  "visualAcceptance": "accepted-by-user-message",
+  "dynamicAcceptance": "pending",
+  "note": "不改写原首帧质检记录中的历史pending；本回执仅记录本次用户接受和导入授权。P04遮挡保留为非阻断观察项，OCR例外不伪装为全量OCR成功。"
+}

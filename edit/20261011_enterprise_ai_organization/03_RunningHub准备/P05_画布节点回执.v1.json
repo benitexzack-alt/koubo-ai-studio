@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "koubo-runninghub-canvas-node-receipt/v1",
+  "taskId": "20261011_enterprise_ai_organization",
+  "revisionId": "r1-firstframe-20261011",
+  "sceneId": "P05",
+  "beatId": "B18",
+  "pairId": "P05-prompt-pair-v1",
+  "pairSha256": "5aa03333f11fb67acb35658705cd721077c6675960bcfdb282689cb631b2bb41",
+  "status": "configured-readback-passed",
+  "recordedAt": "2026-10-11 12:48:15 UTC",
+  "evidenceProvenance": {
+    "source": "主代理在受控浏览器现场DOM回读后提供",
+    "reporter": "/root",
+    "recorder": "/root/verify_org_video_pack",
+    "recorderBrowsedCanvas": false,
+    "note": "本回执记录主代理提供的现场事实；本地写入代理只核对绑定与哈希，不冒称自行操作浏览器。"
+  },
+  "preparationPack": {
+    "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/03_RunningHub准备/runninghub-canvas-preparation-pack.v1.json",
+    "sha256": "5245a76f11df91f9e7f66dc0ee92a7cd910273f1865c9265a4c3ba39d5828b57"
+  },
+  "image": {
+    "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P05_首帧_r1.png",
+    "sha256": "dcdcff41fb8aaefb3f25318a42bac5ea61c56979a49ccc369d0a7a780b6b714d",
+    "fileName": "P05_首帧_r1.png",
+    "width": 1672,
+    "height": 941
+  },
+  "canvasUrl": "https://rhtv.runninghub.cn/project/canvas/2087479798165565442",
+  "imageNodeId": "node_1791721052240_kzveyol",
+  "videoNodeId": "node_1791722803359_ovtduby",
+  "edgeId": "e-node_1791721052240_kzveyol-node_1791722803359_ovtduby",
+  "videoNodeLabel": "20261011_P05_待确认生成",
+  "promptReadback": {
+    "text": "基于已确认首帧，镜长约8秒。平伏折梁依次立起并扣住两座纸塔，使局部节点成为同一个立体承力整体：连接带拉紧，带“整个组织”的宽梁立起到可读角度，两座带字纸塔被共同框架连接。产品和渠道不消失，仍是整体的一部分。镜头缓慢抬高一点显出整体关系，不做网状光效爆炸。三处中文随塔面和折梁运动，保留字形；结尾约1秒停在完整结构。保留折梁、纸带与扣合声，无旁白、无配乐。",
+    "sha256": "43a517c1c184039ea718fd4a9cf9c27e873b7a586e3a6cc93fffee3d5e09958c",
+    "exactMatchToPreparationPack": true,
+    "source": "现场DOM完整回读，经主代理逐字与包核对"
+  },
+  "parametersReadback": {
+    "model": "MiniMax H3",
+    "inputMode": "首帧",
+    "firstFrameTabActive": true,
+    "resolutionUi": "2k",
+    "durationSeconds": 8,
+    "quantityUi": "1x",
+    "promptOptimization": "idle",
+    "aspectRatio": {
+      "source": "inherits-first-frame",
+      "independentControlObserved": false,
+      "width": 1672,
+      "height": 941,
+      "approximateRatio": "16:9"
+    }
+  },
+  "priceAndBalanceObserved": {
+    "estimatedPriceDisplayed": 6.16,
+    "balanceDisplayed": 75.399,
+    "balanceObservation": "五镜配置结束后的DOM回读，与上传前一致",
+    "currencyOrCreditUnit": "按页面显示单位，未额外推定"
+  },
+  "checks": {
+    "correctImage": true,
+    "uniqueImageToVideoEdgeVerified": true,
+    "promptExact": true,
+    "modelCheckedAfterImageBinding": true,
+    "parametersReadBack": true
+  },
+  "preservedQaException": "原图竖排产品、渠道存在OCR漏检，原静态QA已两人逐字视觉核对，不冒称全量OCR成功。",
+  "externalState": {
+    "imagesUploaded": true,
+    "nodeConfigured": true,
+    "taskSubmitted": false,
+    "videoGenerated": false,
+    "chargeObserved": false,
+    "chargeObservationBasis": "主代理报告五镜配置后余额75.399与上传前一致，未提交未生成。"
+  },
+  "dynamicQa": "pending",
+  "nextGate": "五节点全部配置并回读后，提交前等用户最终确认。"
+}
