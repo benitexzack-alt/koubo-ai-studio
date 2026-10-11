@@ -1,0 +1,357 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "20261011_enterprise_ai_organization",
+  "revisionId": "r1-firstframe-20261011",
+  "status": "planned",
+  "sourceRoute": "paper-editorial",
+  "downstreamRoute": "paper-editorial",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20261011_enterprise_ai_organization/00_导演方案/director-cues.v2.json",
+      "sha256": "726494c31f3d20f2c72a235cdc1925354b7dd2d750aa4a855addb50e60aac035"
+    },
+    "userApproval": {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/用户首帧执行确认.v1.json",
+      "sha256": "4ebca7adbcf2e9390e0e27d1b82119b9d7f7e7f8f4eb83befd2a5601b515d00d"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "739b69acb3a3b78a26e0fb31a7ee449628b98670c7504027f7d93d8eb432a655"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "image-to-video",
+  "promptIsolation": {
+    "containsFirstFramePromptBodies": false,
+    "consumer": "video-generation-stage"
+  },
+  "styleLock": {
+    "promptPrefix": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。",
+    "mustKeep": [
+      "参考超级个体的纸厚、层次和实际机械运动",
+      "至少前中后三层，主体充分占幅",
+      "中文首帧直接生成并与承载面同动",
+      "每镜一个认知目标及相关因果动作链",
+      "动作结果有可读停顿",
+      "可用原生动作音保留"
+    ],
+    "mustAvoid": [
+      "米色桌面加三张固定字牌反复套版",
+      "静态海报只靠镜头推拉",
+      "中文悬浮不随物体运动",
+      "伪造业绩、数据、客户或真实产品界面",
+      "纸艺内部再叠特效卡或字幕遮主体"
+    ],
+    "referenceImages": [
+      {
+        "id": "REF01",
+        "path": "edit/20260828_super_individual/05_素材验收/frames/paper_07-mid-original.png",
+        "sha256": "5d04fa4d180847d6e142e7dd352caf98396718a18ec676d16006f9756068f6b2",
+        "usage": "style-mechanism-only"
+      }
+    ],
+    "qualityBaselineId": "paper-super-individual-20260829-v1",
+    "textPolicy": "first-frame-generated-chinese-surface-bound"
+  },
+  "itemCount": 5,
+  "items": [
+    {
+      "id": "P01",
+      "beatId": "B04",
+      "startAnchorText": "AI还停留在老板自己玩",
+      "endAnchorText": "当个工具用。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P01-prompt-pair-v1",
+      "pairSha256": "0b5d3e4e4cf50285904b1cd7eccb2d851a40248617e5b6552db006d06bc5c7d3",
+      "prompt": "基于已确认首帧，镜长约8秒。两个桌面纸卷机完成局部送纸，但纸件始终停留在老板的工具台内：纸卷转动，纸带从出口送出并堆到桌内的小托盘，带字挡板随机构轻轻抬起归位，后方部门桌没有接到纸件。小幅侧移露出桌间空隙，不能只移动镜头。三处文字与承载纸面同步，保持原字形，不漂浮或变字。结尾保留约1秒读清局部忙碌与组织未连接的关系。保留纸卷、送纸的轻响，无旁白、无配乐。",
+      "promptSha256": "95ab9f101cff94bddfa1f0cf2d81b2f060f4678c23a6e0b215b2f50dba7b527d",
+      "negativePrompt": [
+        "不要静态海报加推拉镜头",
+        "不要屏幕浮层文字、错字、乱码或字形游动",
+        "不要米色桌面三张静止卡牌",
+        "不要新增标签、数据、品牌或客户案例",
+        "不要霓虹科技界面或塑料质感",
+        "不要让主体和文字侵入底部字幕空间"
+      ],
+      "primaryAction": "两个桌面纸卷机完成局部送纸，但纸件始终停留在老板的工具台内",
+      "motionPlan": {
+        "goal": "个人使用AI工具不等于组织已经连通",
+        "actions": [
+          "桌面纸卷机送出纸件，带字挡板随机构活动",
+          "输出收在老板桌的托盘内",
+          "保留与后方部门之间的断开空间"
+        ],
+        "result": "工具台产生局部输出，组织交接仍未建立",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "让观众看见个人工具产生局部输出，却没有接入组织交接；不是随便找办公室空镜。",
+      "visualRole": "comparison",
+      "visualMetaphor": "繁忙的桌面小工坊与安静的部门孤岛",
+      "composition": "侧俯视三层办公室纸雕，前景桌边纸卷、中景老板工具台、后景隔着留白的无字部门工作站。",
+      "textPlan": [
+        {
+          "text": "老板",
+          "surface": "中层办公桌正面的纸面",
+          "motion": "with-object"
+        },
+        {
+          "text": "剪视频",
+          "surface": "左侧纸卷机的前挡板",
+          "motion": "with-object"
+        },
+        {
+          "text": "写文案",
+          "surface": "右侧纸卷机的前挡板",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P02",
+      "beatId": "B07",
+      "startAnchorText": "销售、运营、行政、生产、业务",
+      "endAnchorText": "全部嵌入AI工作流。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P02-prompt-pair-v1",
+      "pairSha256": "c44489ffe29679c4cb5135e7de339be0676074e6d21f12190a0018a06ba0f19b",
+      "prompt": "基于已确认首帧，镜长约8秒。五个折页工作站打开并把各自短桥扣入同一条共享纸带：部门字面跟随折页立起，短桥向中心伸出并落座，无字任务夹沿各自短桥进入共享交接区，形成可互通的整体。五站是并列关系，不演成销售必须依次经过行政等固定业务顺序。镜头小幅后撤让全貌进入视野，动作由物体完成。六处文字跟随各自纸面，字形不变；结尾留约1秒看清连接结果。保留折页、滑纸和扣合原声，无旁白、无配乐。",
+      "promptSha256": "babc64964d7e186550d9c4f0b6c44834dd485f71d18021d96485887cb9d8bcb4",
+      "negativePrompt": [
+        "不要静态海报加推拉镜头",
+        "不要屏幕浮层文字、错字、乱码或字形游动",
+        "不要米色桌面三张静止卡牌",
+        "不要新增标签、数据、品牌或客户案例",
+        "不要霓虹科技界面或塑料质感",
+        "不要让主体和文字侵入底部字幕空间"
+      ],
+      "primaryAction": "五个折页工作站打开并把各自短桥扣入同一条共享纸带",
+      "motionPlan": {
+        "goal": "全员AI工作流需要部门之间真实可交接的连接",
+        "actions": [
+          "五个折页工作站打开并露出各部门",
+          "各自短桥扣入共享纸带",
+          "无字任务夹进入共享交接区，呈现并列互通关系"
+        ],
+        "result": "五个部门不再各自孤立，建立共享工作流的示意",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "把全员改造的范围和交接关系说清，避免只有部门名轮流亮起。",
+      "visualRole": "process",
+      "visualMetaphor": "折页工作站接入共享纸带",
+      "composition": "斜俯视扇形折页工作站，五个有纵深的部门分布在共享纸带周围，前景是待接通纸带，中景为各站，背景是整体办公室。",
+      "textPlan": [
+        {
+          "text": "销售",
+          "surface": "左前方工作站的立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "运营",
+          "surface": "左后方工作站的立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "行政",
+          "surface": "后方中央工作站的立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "生产",
+          "surface": "右后方工作站的立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "业务",
+          "surface": "右前方工作站的立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "AI工作流",
+          "surface": "中央青色纸带的宽端",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P03",
+      "beatId": "B12",
+      "startAnchorText": "给整个公司",
+      "endAnchorText": "换一套底层操作系统。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 7,
+      "pairId": "P03-prompt-pair-v1",
+      "pairSha256": "017d5a6465053bff30662a802a21ad7a90f9ce35c551776488abf38414bd6b24",
+      "prompt": "基于已确认首帧，镜长约7秒。旧基础插板抽离，带字新插板沿导槽进入并与上层接口扣合：活动盖板抬起，灰板退出，青板推进到位，楼层接口依次落座，盖板回落但不遮端帽，“AI工作流”字样始终在槽外可见。楼体保持原样，不扩张、不冒金币、不生成业绩结果。中文随盖板和插板同步位移及转动，不是贴在屏幕上的字。镜头仅轻微侧移展示深度，关键操作看得清；结尾留约1秒读清底层已连接。保留纸板滑动、扣合声，无旁白、无配乐。",
+      "promptSha256": "2ed229c57ca6e829d50082b09d23d269aaa86edf76ae4e498da6f05bf61b18b9",
+      "negativePrompt": [
+        "不要静态海报加推拉镜头",
+        "不要屏幕浮层文字、错字、乱码或字形游动",
+        "不要米色桌面三张静止卡牌",
+        "不要新增标签、数据、品牌或客户案例",
+        "不要霓虹科技界面或塑料质感",
+        "不要让主体和文字侵入底部字幕空间"
+      ],
+      "primaryAction": "旧基础插板抽离，带字新插板沿导槽进入并与上层接口扣合",
+      "motionPlan": {
+        "goal": "改的是组织底层工作方式，不是公司外观或新增一个软件图标",
+        "actions": [
+          "抬起带字盖板并抽离旧插板",
+          "新插板沿导槽推进",
+          "上层接口落座，盖板回落且端帽文字仍外露"
+        ],
+        "result": "公司外形未变，底层连接方式改变；不宣称真实公司已完成改造",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "用剖面说明底层改造，不把抽象操作系统误画成购买软件或一键业绩增长。",
+      "visualRole": "metaphor",
+      "visualMetaphor": "公司剖面中的贯穿式基础插板",
+      "composition": "低机位公司剖面，上层纸楼和岗位、中层接口、前景底座插板形成三层；旧插板在槽内，新插板在侧前方等待。",
+      "textPlan": [
+        {
+          "text": "公司",
+          "surface": "上层楼体的正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "底层操作系统",
+          "surface": "底座插槽的活动盖板",
+          "motion": "with-object"
+        },
+        {
+          "text": "AI工作流",
+          "surface": "青色插板外露端帽",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P04",
+      "beatId": "B16",
+      "startAnchorText": "个体能力叠加",
+      "endAnchorText": "合力推着整个公司往前冲。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P04-prompt-pair-v1",
+      "pairSha256": "7e260518c0f1e77b00ffe804b1807c789cda8675eb7f344fd806a20fdb135aee",
+      "prompt": "基于已确认首帧，镜长约8秒。分散曲柄接入共同传动轴，把个人转动汇成推动公司滑台的同向力量：开头各曲柄轻转但滑台未动；曲柄连同带字底座沿短导槽向中央靠拢并锁定，带“合力”的轴套沿轴向推进并扣合，各曲柄同向带动共同轴，纸楼滑台平稳前进一小段。不是速度竞赛，不显示增长倍数。三处字面随底座、轴套和楼体一起运动，保持字形和可读朝向。结尾约1秒看清连接与共同输出。保留曲柄、纸轴和滑台原生动作声，无旁白、无配乐。",
+      "promptSha256": "bb9cbff305c7e1d1817a681815e9fb2c869dc38ce31565af649f713c23b47626",
+      "negativePrompt": [
+        "不要静态海报加推拉镜头",
+        "不要屏幕浮层文字、错字、乱码或字形游动",
+        "不要米色桌面三张静止卡牌",
+        "不要新增标签、数据、品牌或客户案例",
+        "不要霓虹科技界面或塑料质感",
+        "不要让主体和文字侵入底部字幕空间"
+      ],
+      "primaryAction": "分散曲柄接入共同传动轴，把个人转动汇成推动公司滑台的同向力量",
+      "motionPlan": {
+        "goal": "个体能力要通过协作机制成为组织的共同输出",
+        "actions": [
+          "独立曲柄轻转，滑台暂不动；曲柄与带字底座沿短导槽靠拢锁定",
+          "带字轴套向共同轴扣合",
+          "曲柄同向转动推动公司滑台"
+        ],
+        "result": "分散动作转化为整体前进，呈现合力而非夸张效率提升",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "区分每个人各忙各的与能力同向协同；由联动的动作结果解释合力。",
+      "visualRole": "mechanism",
+      "visualMetaphor": "独立曲柄接入共同传动轴推动公司滑台",
+      "composition": "前景独立曲柄与纸人、中景可接合的共同传动轴、后景公司滑台，沿对角线形成纵深，避开P02的部门折页。",
+      "textPlan": [
+        {
+          "text": "超级个体",
+          "surface": "前景主曲柄的纸质底座",
+          "motion": "with-object"
+        },
+        {
+          "text": "合力",
+          "surface": "中景轴套的平整纸面",
+          "motion": "with-object"
+        },
+        {
+          "text": "公司",
+          "surface": "后景滑台的楼体侧面",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    },
+    {
+      "id": "P05",
+      "beatId": "B18",
+      "startAnchorText": "产品和渠道的单点比拼",
+      "endAnchorText": "AI化程度的较量。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P05-prompt-pair-v1",
+      "pairSha256": "5aa03333f11fb67acb35658705cd721077c6675960bcfdb282689cb631b2bb41",
+      "prompt": "基于已确认首帧，镜长约8秒。平伏折梁依次立起并扣住两座纸塔，使局部节点成为同一个立体承力整体：连接带拉紧，带“整个组织”的宽梁立起到可读角度，两座带字纸塔被共同框架连接。产品和渠道不消失，仍是整体的一部分。镜头缓慢抬高一点显出整体关系，不做网状光效爆炸。三处中文随塔面和折梁运动，保留字形；结尾约1秒停在完整结构。保留折梁、纸带与扣合声，无旁白、无配乐。",
+      "promptSha256": "43a517c1c184039ea718fd4a9cf9c27e873b7a586e3a6cc93fffee3d5e09958c",
+      "negativePrompt": [
+        "不要静态海报加推拉镜头",
+        "不要屏幕浮层文字、错字、乱码或字形游动",
+        "不要米色桌面三张静止卡牌",
+        "不要新增标签、数据、品牌或客户案例",
+        "不要霓虹科技界面或塑料质感",
+        "不要让主体和文字侵入底部字幕空间"
+      ],
+      "primaryAction": "平伏折梁依次立起并扣住两座纸塔，使局部节点成为同一个立体承力整体",
+      "motionPlan": {
+        "goal": "把观察尺度从单点能力扩大到组织整体，而不是否定产品和渠道",
+        "actions": [
+          "平伏折梁立起",
+          "连接带拉紧并与两塔扣合",
+          "完整承力框架形成，两座纸塔保持存在"
+        ],
+        "result": "局部能力被纳入同一个组织整体；不把示意画面当作市场结论证据",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "将竞争的观察尺度从产品渠道转向组织整体，作为全文视觉归纳而非再列一次部门。",
+      "visualRole": "relationship",
+      "visualMetaphor": "两座纸塔成为立体承力框架的一部分",
+      "composition": "斜俯视两座高低错落纸塔，周围平伏的折梁和后方低层组织底盘；最终由局部到整体，不复制P02的扇形通路。",
+      "textPlan": [
+        {
+          "text": "产品",
+          "surface": "左前纸塔的正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "渠道",
+          "surface": "右后纸塔的正面",
+          "motion": "with-object"
+        },
+        {
+          "text": "整个组织",
+          "surface": "外围折梁的宽正面",
+          "motion": "with-object"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    }
+  ]
+}

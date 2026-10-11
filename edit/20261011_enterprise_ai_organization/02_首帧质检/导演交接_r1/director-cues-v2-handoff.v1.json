@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "koubo-director-cues-v2-handoff/v1",
+  "taskId": "20261011_enterprise_ai_organization",
+  "revisionId": "r1-firstframe-20261011",
+  "status": "local-handoff-ready",
+  "executionScope": "local-handoff-only",
+  "source": {
+    "directorCues": {
+      "path": "edit/20261011_enterprise_ai_organization/00_导演方案/director-cues.v2.json",
+      "sha256": "726494c31f3d20f2c72a235cdc1925354b7dd2d750aa4a855addb50e60aac035"
+    },
+    "userApproval": {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/用户首帧执行确认.v1.json",
+      "sha256": "4ebca7adbcf2e9390e0e27d1b82119b9d7f7e7f8f4eb83befd2a5601b515d00d"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "739b69acb3a3b78a26e0fb31a7ee449628b98670c7504027f7d93d8eb432a655"
+    }
+  },
+  "profileVersion": "9.1.0",
+  "routeMappings": [
+    {
+      "sourceRoute": "speaker",
+      "downstreamRoute": "speaker",
+      "beatCount": 16
+    },
+    {
+      "sourceRoute": "real-evidence",
+      "downstreamRoute": "real-evidence",
+      "beatCount": 0
+    },
+    {
+      "sourceRoute": "ai-generated-video",
+      "downstreamRoute": "generated-video",
+      "beatCount": 0
+    },
+    {
+      "sourceRoute": "paper-editorial",
+      "downstreamRoute": "paper-editorial",
+      "beatCount": 5
+    }
+  ],
+  "speakerBeatIds": [
+    "B01",
+    "B02",
+    "B03",
+    "B05",
+    "B06",
+    "B08",
+    "B09",
+    "B10",
+    "B11",
+    "B13",
+    "B14",
+    "B15",
+    "B17",
+    "B19",
+    "B20",
+    "B21"
+  ],
+  "branches": {
+    "realEvidence": {
+      "sourceRoute": "real-evidence",
+      "downstreamRoute": "real-evidence",
+      "status": "not-required",
+      "manifest": {
+        "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/real-evidence-handoff.v1.json",
+        "sha256": "f45c8872d15a34622c47af26e119e662246c1b3d67e2f8f312a11835b988455b"
+      }
+    },
+    "aiGeneratedVideo": {
+      "sourceRoute": "ai-generated-video",
+      "downstreamRoute": "generated-video",
+      "status": "not-required",
+      "firstFrameManifest": {
+        "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/ai-generated-video.first-frame-handoff.v1.json",
+        "sha256": "1f1e45f98fa9a05d8f22d5ea8b15d08b69de44610d1956ad8b439fff07def1e9"
+      },
+      "imageToVideoManifest": {
+        "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/ai-generated-video.image-to-video-handoff.v1.json",
+        "sha256": "81d379a67a46397c623826b5b73b6b5ceb869f06b059e093680ae52443b0e410"
+      }
+    },
+    "paperEditorial": {
+      "sourceRoute": "paper-editorial",
+      "downstreamRoute": "paper-editorial",
+      "status": "planned",
+      "firstFrameManifest": {
+        "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/paper-editorial.first-frame-handoff.v1.json",
+        "sha256": "f9eb6a779afbdb11ff0f8cef46e6cb05319fcba4c68413dc9ea01d20534de961"
+      },
+      "imageToVideoManifest": {
+        "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/paper-editorial.image-to-video-handoff.v1.json",
+        "sha256": "eecf93e3f24e3a13ed6af0cc75c80cf601d6634d8ca5b74aa990c4e01117c0bb"
+      }
+    }
+  },
+  "shotcraft": {
+    "status": "opportunity-only",
+    "opportunityCount": 11,
+    "selectionStage": "post-shoot-edit-release",
+    "selectionAuthorized": false,
+    "manifest": {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/shotcraft-opportunities.handoff.v1.json",
+      "sha256": "c9120341402440118ac88d7d427df1592ae846c6a99c36a5e2a395a23813c85f"
+    }
+  },
+  "externalActionsAuthorized": false,
+  "generationAuthorized": false,
+  "remotionAuthorized": false,
+  "publicationAuthorized": false,
+  "artifacts": {
+    "realEvidence": {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/real-evidence-handoff.v1.json",
+      "sha256": "f45c8872d15a34622c47af26e119e662246c1b3d67e2f8f312a11835b988455b"
+    },
+    "aiFirstFrame": {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/ai-generated-video.first-frame-handoff.v1.json",
+      "sha256": "1f1e45f98fa9a05d8f22d5ea8b15d08b69de44610d1956ad8b439fff07def1e9"
+    },
+    "aiVideo": {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/ai-generated-video.image-to-video-handoff.v1.json",
+      "sha256": "81d379a67a46397c623826b5b73b6b5ceb869f06b059e093680ae52443b0e410"
+    },
+    "paperFirstFrame": {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/paper-editorial.first-frame-handoff.v1.json",
+      "sha256": "f9eb6a779afbdb11ff0f8cef46e6cb05319fcba4c68413dc9ea01d20534de961"
+    },
+    "paperVideo": {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/paper-editorial.image-to-video-handoff.v1.json",
+      "sha256": "eecf93e3f24e3a13ed6af0cc75c80cf601d6634d8ca5b74aa990c4e01117c0bb"
+    },
+    "shotcraft": {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/导演交接_r1/shotcraft-opportunities.handoff.v1.json",
+      "sha256": "c9120341402440118ac88d7d427df1592ae846c6a99c36a5e2a395a23813c85f"
+    }
+  }
+}

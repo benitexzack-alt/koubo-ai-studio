@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-visual-qa/v1",
+  "taskId": "20261011_enterprise_ai_organization",
+  "revisionId": "r1-firstframe-20261011",
+  "sceneId": "P01",
+  "beatId": "B04",
+  "pairId": "P01-prompt-pair-v1",
+  "pairSha256": "0b5d3e4e4cf50285904b1cd7eccb2d851a40248617e5b6552db006d06bc5c7d3",
+  "status": "ready-for-user-review",
+  "staticQa": "PASS",
+  "userVisualAcceptance": "pending",
+  "generationTool": "image_gen",
+  "textPolicy": "first-frame-generated-chinese-surface-bound",
+  "sourceToolPath": "/Users/pc/.codex/generated_images/01a12a95-e834-7961-8070-4d446552fd45/exec-4d102d38-1f3c-414e-96ba-37505a9c244c.png",
+  "rawImagePath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/02_首帧质检/原始生成图/P01_r1.png",
+  "selectedImagePath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P01_首帧_r1.png",
+  "sha256": "b35d5d99b56b3c5fb4c87b04ec3f5335318a6a5c890f0332a1e22c0bc28fa4e0",
+  "bytes": 2233786,
+  "width": 1672,
+  "height": 941,
+  "sourceFirstframePrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：侧俯视一间微缩纸雕办公室。中层办公桌正面的纸面印“老板”，左侧纸卷机的前挡板印“剪视频”，右侧纸卷机的前挡板印“写文案”；两台机器的卷轴还未送纸，出口各露出一小段空白纸带。前景是清晰纸卷和桌边，后景有几张无字部门工作桌，与老板桌之间存在明显空隙，没有连接。纸卷机不是平面图标，机器和字面有真实体积。只出现指定三处文字，不出现数据、品牌或客户标识。",
+  "sourceFirstframePromptSha256": "bb68e656f8a81df10038b7d00b15983693d491c0c96c529fde47043700161f38",
+  "executionPrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：侧俯视一间微缩纸雕办公室。中层办公桌正面的纸面印“老板”，左侧纸卷机的前挡板印“剪视频”，右侧纸卷机的前挡板印“写文案”；两台机器的卷轴还未送纸，出口各露出一小段空白纸带。前景是清晰纸卷和桌边，后景有几张无字部门工作桌，与老板桌之间存在明显空隙，没有连接。纸卷机不是平面图标，机器和字面有真实体积。只出现指定三处文字，不出现数据、品牌或客户标识。\n\n执行质量要求：仅输出一张完整的横屏首帧，不输出拼图或文字说明。优先1920×1080或更高原生分辨率。严守上述物件数量、方位和动作前初态；指定中文逐字准确、每处一次，不新增文字、数字、Logo或水印。纸面上的文字不可跨接缝；物件彼此可分离。底部18%为同一场景的低细节连续背景，不放主体、关键机构或文字。",
+  "executionPromptSha256": "f08381229a5dfa04a267f0a41e8393efdeb90b2904a33d63a42ea0915ce4cc54",
+  "ocr": {
+    "engine": "Apple Vision",
+    "script": "skills/koubo-remotion-director/scripts/recognize-text-vision.swift",
+    "actualOutput": "剪视频老板写文案",
+    "expectedLabels": [
+      "老板",
+      "剪视频",
+      "写文案"
+    ],
+    "allLabelsExact": true,
+    "extraReadableTextFound": false
+  },
+  "visualObservations": [
+    "实际图已打开查看。左前挡板印“剪视频”、右前挡板印“写文案”，中间老板桌前挡板印“老板”；中文清晰准确，均与承载纸面绑定。",
+    "恰好两台立体纸卷机，卷轴与两侧支撑、出口的短空白纸带清楚；没有已完成的长纸带输出。",
+    "老板桌位于中层，后方可见数张无字工作桌，两者之间存在空隙，未被纸带连接。",
+    "前景纸卷机、中层老板桌、后景工作桌形成明显纵深；纸纤维、折边、厚度和接触阴影可见。",
+    "底部约四分之一为低细节深蓝地面，不含关键机构或文字。",
+    "无可辨额外文字、品牌或水印。背景便笺有模糊线条，不识别为清晰文字。"
+  ],
+  "nonBlockingNotes": [
+    "机位偏高平视，侧俯视程度弱于提示词；主代理复核为不影响机制理解的审美备注，待用户最终确认。",
+    "模型补充桌后纸人和背景办公陈设，主代理认为属于合理办公室情景，未改变核心机构。",
+    "工具原生输出1672×941，约16:9；提示词1920×1080为优先项，当前未进行插值放大。"
+  ],
+  "blockingIssues": [],
+  "revisions": [],
+  "dynamicValidation": "not-started",
+  "runninghubUploadAuthorized": false,
+  "videoGenerationAuthorized": false,
+  "localTextBakeUsed": false
+}

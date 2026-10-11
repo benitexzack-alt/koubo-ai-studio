@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "koubo-firstframe-static-qa/v1",
+  "taskId": "20261011_enterprise_ai_organization",
+  "sceneId": "P03",
+  "beatId": "B12",
+  "pairId": "P03-prompt-pair-v1",
+  "status": "ready-for-user-review",
+  "staticResult": "PASS",
+  "generator": "builtin-imagegen",
+  "directChinese": true,
+  "textBaking": false,
+  "originalPrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：一座暖白纸楼的剖面占据画面中上部，上层楼体的正面印“公司”，楼内无字纸人和岗位可见。底座插槽的活动盖板印“底层操作系统”；槽内仍是一块连接分散的灰色旧插板。青色插板外露端帽印“AI工作流”，它独立放在前景侧边，尚未插入；端帽宽于插槽，装到底后仍外露在盖板下方。侧面能看清导槽和贯穿楼层的纸接口，三层立体构造严谨。不是电脑系统截图，不出现进度百分比或增长曲线，所有标签均直接印在实体纸面。",
+  "executionPrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：一座暖白纸楼的剖面占据画面中上部，上层楼体的正面印“公司”，楼内无字纸人和岗位可见。底座插槽的活动盖板印“底层操作系统”；槽内仍是一块连接分散的灰色旧插板。青色插板外露端帽印“AI工作流”，它独立放在前景侧边，尚未插入；端帽宽于插槽，装到底后仍外露在盖板下方。侧面能看清导槽和贯穿楼层的纸接口，三层立体构造严谨。不是电脑系统截图，不出现进度百分比或增长曲线，所有标签均直接印在实体纸面。\n\n执行质量要求：仅输出一张完整的横屏首帧，不输出拼图或文字说明。优先1920×1080或更高原生分辨率。严守上述物件数量、方位和动作前初态；指定中文逐字准确、每处一次，不新增文字、数字、Logo或水印。纸面上的文字不可跨接缝；物件彼此可分离。底部18%为同一场景的低细节连续背景，不放主体、关键机构或文字。",
+  "expectedText": [
+    "公司",
+    "底层操作系统",
+    "AI工作流"
+  ],
+  "selected": {
+    "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P03_首帧_r1.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "6fab4ab6e7e98a09ecd8da988f737ff44c40ca7d2f5fa4490e6b2a5466df3711",
+    "rawPath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/02_首帧质检/原始生成图/P03_r1.png",
+    "toolSource": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-f0235092-29f5-4f61-97a1-f349f9c625d9.png"
+  },
+  "ocr": {
+    "engine": "macOS Vision accurate zh-Hans usesLanguageCorrection=false",
+    "actualOutput": "公司黎底层操作系统AI工作流",
+    "expectedLabelsAllRecognized": true,
+    "status": "false-positive-localized-and-visually-verified",
+    "falsePositive": {
+      "text": "黎",
+      "boundingBoxNormalizedBottomLeft": [
+        0.3008720925872465,
+        0.49742268076256946,
+        0.029069768184680156,
+        0.05927835047371577
+      ],
+      "visualEvidence": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/02_首帧质检/P03_OCR误识区域.png",
+      "region": "图中底层左侧桌旁深色纸盆栽",
+      "finding": "实际打开原图和定位裁图，识别框内是植物叶片和花盆，不是汉字。保留原始OCR输出，不把误检当成清晰额外文字。",
+      "sourceImageModified": false
+    }
+  },
+  "visualObservations": [
+    "实际打开完整原图和OCR异常定位区域。三处指定中文逐字正确，均印在实体纸面，未见可读额外文字、Logo或水印。",
+    "公司为上层剖面楼体标识，底层操作系统位于底座活动盖板，AI工作流位于右前独立青色模块宽面。",
+    "槽内仍有灰色旧插板/机构，新青色件位于槽外侧边尚未插入，插槽、导槽与端部厚边可辨。",
+    "楼体剖面、底座机构和前景插板三层空间、纸厚、纤维及接触阴影成立，底部保留低细节无字区。"
+  ],
+  "independentVisualReview": {
+    "reviewer": "/root/verify_five_shot_input",
+    "actualImageOpened": true,
+    "result": "PASS",
+    "observations": "旧灰机构仍在槽内，新青色件独立未插入，3标签正确，无阻断P0/P1。"
+  },
+  "nonBlockingNotes": [
+    "青色件偏厚纸模块，端帽与板身分界不突出；静态初态成立，不据此确认插入后必然外露。",
+    "原生1672×941，约16:9；未放大或裁切交付图。"
+  ],
+  "currentP0": [],
+  "currentP1": [],
+  "notVerified": [
+    "用户视觉验收",
+    "盖板动作、换板效果与中文动态稳定性",
+    "原生音效"
+  ],
+  "runninghub": {
+    "uploaded": false,
+    "configured": false,
+    "submitted": false
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "koubo-firstframe-static-qa/v1",
+  "taskId": "20261011_enterprise_ai_organization",
+  "sceneId": "P02",
+  "beatId": "B07",
+  "pairId": "P02-prompt-pair-v1",
+  "status": "ready-for-user-review",
+  "staticResult": "PASS",
+  "generator": "builtin-imagegen",
+  "directChinese": true,
+  "textBaking": false,
+  "originalPrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：五个半合拢的立体折页工作站围成扇形，左前方工作站的立面印“销售”，左后方工作站的立面印“运营”，后方中央工作站的立面印“行政”，右后方工作站的立面印“生产”，右前方工作站的立面印“业务”。中央青色纸带的宽端印“AI工作流”，纸带与五站的短桥均尚未扣合。每站有一个无字纸任务夹，不做软件界面、不堆数字；五个字面朝向镜头可读，折页前后层次清楚。初帧保留待连接状态，不预先画好闭合通路。",
+  "expectedText": [
+    "销售",
+    "运营",
+    "行政",
+    "生产",
+    "业务",
+    "AI工作流"
+  ],
+  "ocrEngine": "macOS Vision accurate zh-Hans usesLanguageCorrection=false",
+  "selected": {
+    "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P02_首帧_r2.png",
+    "width": 1672,
+    "height": 941,
+    "sha256": "967ba9f735bebf6912158188b7fee256c1f3762abf5a1ecfd7672565bb1ee3c1",
+    "rawPath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/02_首帧质检/原始生成图/P02_r2.png",
+    "outputPath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P02_首帧_r2.png",
+    "ocrRaw": "行政运营生产销售AI工作流业务",
+    "ocrResult": "PASS"
+  },
+  "revisions": [
+    {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/原始生成图/P02_r1.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "a7ed0e6350da798d98da6aa52c2d8a79f0ffb63b33874dcf16bbf1ea415b9b86",
+      "toolSource": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-05788680-b328-4e5e-86f8-1ecbd0010a74.png",
+      "status": "FAIL",
+      "ocrResult": "PASS",
+      "issues": [
+        {
+          "severity": "P0",
+          "description": "中央带字纸带被替换为圆筒顶盖，文字载体和机构错误。"
+        },
+        {
+          "severity": "P0",
+          "description": "行政站桥连续接入中央，五处尚未扣合的间隙不清楚。"
+        },
+        {
+          "severity": "P1",
+          "description": "工作站充分展开，半合拢初态不足。"
+        }
+      ]
+    },
+    {
+      "path": "edit/20261011_enterprise_ai_organization/02_首帧质检/原始生成图/P02_r2.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "967ba9f735bebf6912158188b7fee256c1f3762abf5a1ecfd7672565bb1ee3c1",
+      "toolSource": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-bd6a7f71-641f-4b15-85a6-0d076756dfe4.png",
+      "status": "PASS",
+      "ocrResult": "PASS",
+      "revisionPrompt": "修正这张纸艺首帧，保留五个部门的数量、方位、文字、纸质材质、配色、照明和底部留白。只纠正待接入机构和折页初态。\n16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：五个半合拢的立体折页工作站围成扇形，左前方工作站的立面印“销售”，左后方工作站的立面印“运营”，后方中央工作站的立面印“行政”，右后方工作站的立面印“生产”，右前方工作站的立面印“业务”。中央青色纸带的宽端印“AI工作流”，纸带与五站的短桥均尚未扣合。每站有一个无字纸任务夹，不做软件界面、不堆数字；五个字面朝向镜头可读，折页前后层次清楚。初帧保留待连接状态，不预先画好闭合通路。\n\n本次局部修正硬要求：\n1. 删除中央圆形筒体、圆盘顶盖和圆底座，改为真正平伏、薄而有厚度的青色宽纸带。纸带的宽端是平整的长方形纸面，上面只印一次“AI工作流”，不要圆形物件，不要集线器造型。\n2. 五个工作站的短桥各自仍属于各自工作站，桥朝中央伸出，但五个桥头与中央青色纸带之间都必须留下明显可见的深蓝空气缝，足够一眼看清从未扣合。尤其正后方“行政”下面那条桥必须截断，不能一路连到中央纸带。孔洞不等于断开缝。不得出现任何已经连通的路径。\n3. 五座工作站的左右折页适度向内半合拢，但不要遮住销售、运营、行政、生产、业务这五个标签；每站一个无字任务夹保持。\n4. 不改任何中文，不增加标签，不改变左右前后布局，不增加物件。不新增装饰。完整单张16:9横屏，尽量1920×1080以上，底部18%保持深蓝低细节空场。"
+    }
+  ],
+  "visualObservations": [
+    "实际打开两版完整图片。修订图恰好五站，分别为左前销售、左后运营、后中行政、右后生产、右前业务。",
+    "每站有一个无字任务夹；六处指定文字逐字正确，未见多字、乱码、Logo或水印。",
+    "中央为薄青色宽纸面，已无圆筒；五条短桥与中央纸面之间有五处可辨的深蓝空气缝，尚未接通。",
+    "前中后三层、纸纤维、纸厚、切边与接触阴影可见。底部约18%为低细节空场，无关键机构或字。"
+  ],
+  "independentVisualReview": {
+    "reviewer": "/root/verify_five_shot_input",
+    "result": "PASS",
+    "notes": "实际打开r2，当前无阻断P0/P1。"
+  },
+  "nonBlockingNotes": [
+    "工作站折页较展开，半合拢不突出；仍为核心连接发生前，不再次重做。",
+    "原生1672×941，约16:9，非1920×1080；未放大或裁切。"
+  ],
+  "currentP0": [],
+  "currentP1": [],
+  "notVerified": [
+    "用户审美验收",
+    "视频动作与中文动态稳定性",
+    "原生音效"
+  ],
+  "runninghub": {
+    "uploaded": false,
+    "configured": false,
+    "submitted": false
+  }
+}

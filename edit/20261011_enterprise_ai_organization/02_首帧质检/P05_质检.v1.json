@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-visual-qa/v1",
+  "taskId": "20261011_enterprise_ai_organization",
+  "revisionId": "r1-firstframe-20261011",
+  "sceneId": "P05",
+  "beatId": "B18",
+  "pairId": "P05-prompt-pair-v1",
+  "pairSha256": "5aa03333f11fb67acb35658705cd721077c6675960bcfdb282689cb631b2bb41",
+  "status": "ready-for-user-review",
+  "staticQa": "PASS",
+  "ocrStatus": "partial-recognition-manually-verified",
+  "userVisualAcceptance": "pending",
+  "generationTool": "image_gen",
+  "textPolicy": "first-frame-generated-chinese-surface-bound",
+  "sourceToolPath": "/Users/pc/.codex/generated_images/01a12a95-e834-7961-8070-4d446552fd45/exec-35adcf38-c9e1-48a9-ba49-55da0b13f91c.png",
+  "rawImagePath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/02_首帧质检/原始生成图/P05_r1.png",
+  "selectedImagePath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/04_纸艺视频/P05_首帧_r1.png",
+  "sha256": "dcdcff41fb8aaefb3f25318a42bac5ea61c56979a49ccc369d0a7a780b6b714d",
+  "bytes": 2210560,
+  "width": 1672,
+  "height": 941,
+  "sourceFirstframePrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：斜俯视两座独立纸塔，左前纸塔的正面印“产品”，右后纸塔的正面印“渠道”。外围折梁的宽正面印“整个组织”，该折梁平伏于两塔之间的底盘上，尚未立起。前景保留纸塔切边，中景为待立起的关节梁，后景有低矮无字节点；两塔没有高低排名，不出现奖杯、输赢标识或公司品牌。带字折梁的正面在初帧已经可读，其他构件只用少量青色连接带。",
+  "sourceFirstframePromptSha256": "e4a4453a6841f6adde3253a7bc4d2846f84be4b9ce3fcfe761c3c87c65cf1ec0",
+  "executionPrompt": "16:9横屏，参考《超级个体》的立体编辑纸艺：深蓝卡纸、暖白纸面、灰色结构、少量珊瑚红与青色。真实纸纤维、纸厚、切边、折痕和接触阴影，前中后三层清楚；中文直接印在对应纸面，画面主体充分占幅，底部约18%留干净字幕空间。动作前状态：斜俯视两座独立纸塔，左前纸塔的正面印“产品”，右后纸塔的正面印“渠道”。外围折梁的宽正面印“整个组织”，该折梁平伏于两塔之间的底盘上，尚未立起。前景保留纸塔切边，中景为待立起的关节梁，后景有低矮无字节点；两塔没有高低排名，不出现奖杯、输赢标识或公司品牌。带字折梁的正面在初帧已经可读，其他构件只用少量青色连接带。\n\n执行质量要求：仅输出一张完整的横屏首帧，不输出拼图或文字说明。优先1920×1080或更高原生分辨率。严守上述物件数量、方位和动作前初态；指定中文逐字准确、每处一次，不新增文字、数字、Logo或水印。纸面上的文字不可跨接缝；物件彼此可分离。底部18%为同一场景的低细节连续背景，不放主体、关键机构或文字。",
+  "executionPromptSha256": "c3d70dc4223c693fcc7e9c55e5ce2393e4fd80346e6e739bb6e7c8c5b0cd18ec",
+  "ocr": {
+    "engine": "Apple Vision",
+    "script": "skills/koubo-remotion-director/scripts/recognize-text-vision.swift",
+    "actualOutput": "整个组织",
+    "expectedLabels": [
+      "产品",
+      "渠道",
+      "整个组织"
+    ],
+    "allLabelsExact": false,
+    "extraReadableTextFound": false,
+    "diagnosticRegionCoordinateSystem": "归一化坐标，原点左下",
+    "diagnosticRegionResults": [
+      {
+        "region": [
+          0.2,
+          0.6,
+          0.09,
+          0.11
+        ],
+        "actualOutput": "",
+        "visualCharacter": "产"
+      },
+      {
+        "region": [
+          0.2,
+          0.5,
+          0.09,
+          0.11
+        ],
+        "actualOutput": "品",
+        "visualCharacter": "品"
+      },
+      {
+        "region": [
+          0.79,
+          0.735,
+          0.08,
+          0.1
+        ],
+        "actualOutput": "渠",
+        "visualCharacter": "渠"
+      },
+      {
+        "region": [
+          0.79,
+          0.645,
+          0.08,
+          0.1
+        ],
+        "actualOutput": "道",
+        "visualCharacter": "道"
+      }
+    ],
+    "diagnosticConfiguration": {
+      "recognitionLevel": "accurate",
+      "recognitionLanguages": [
+        "zh-Hans"
+      ],
+      "usesLanguageCorrection": false,
+      "customWordsUsed": false,
+      "sourceImageModified": false
+    },
+    "limitation": "全图识别漏检两处竖排标签；一次固定ROI诊断识别到品、渠、道，产返回空；不宣称OCR全部通过，未继续盲调。"
+  },
+  "visualObservations": [
+    "已实际打开图像。恰好两座主纸塔，产品塔位于左前、渠道塔位于右后；三处中文肉眼逐字正确。",
+    "中央带“整个组织”的关节折梁在底盘低位平伏，未构成直立框架；两端折痕及与塔的少量青色连接带可辨。",
+    "两座塔因透视大小不同，但没有排名数字、奖杯、输赢标识或品牌，后景为低矮无字节点。",
+    "前中后三层明确；纸纤维、切边、叠层厚度、折梁关节和接触阴影可见。",
+    "底部18%以上为连续低细节深蓝背景，无关键机构、文字、Logo或水印。"
+  ],
+  "nonBlockingNotes": [
+    "产品、渠道采用竖排，视觉可读，但全图Apple Vision未识别。",
+    "原生输出1672×941约16:9，未插值放大。"
+  ],
+  "blockingIssues": [],
+  "independentVisualReview": {
+    "reviewer": "主代理",
+    "actualImageOpened": true,
+    "result": "PASS",
+    "observation": "主代理独立逐字看清产品、渠道、整个组织均正确；梁低伏在两塔之间，三层空间与底部18%留白成立。与执行代理的视觉核对一致，静态文字验收闭合。",
+    "ocrLimitationRetained": true,
+    "notClaimingFullOcrRecognition": true
+  },
+  "revisions": [],
+  "dynamicValidation": "not-started",
+  "runninghubUploadAuthorized": false,
+  "videoGenerationAuthorized": false,
+  "localTextBakeUsed": false
+}
