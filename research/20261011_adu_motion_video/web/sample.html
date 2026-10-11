@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>独立动效研究</title>
+<style>
+@font-face {font-family:Motion;src:url('./fonts/motion.woff2') format('woff2');font-display:block}
+*{box-sizing:border-box}html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#111}
+#base,#subtitle,#motion{position:absolute;left:0;top:0;width:1920px;height:1080px}
+#base{object-fit:cover;transform-origin:60% 40%}#subtitle{top:900px;height:180px;z-index:20}
+#motion{z-index:10;font-family:Motion,'PingFang SC',sans-serif}
+.e{position:absolute;left:0;top:0;white-space:nowrap}
+#brand{position:absolute;left:64px;top:38px;font:600 24px 'PingFang SC',sans-serif;letter-spacing:2px;color:#f5f8fc;text-shadow:0 2px 5px #000;z-index:30}
+</style></head><body>
+<img id="base" alt="本人的真实口播原片"><div id="motion"></div><img id="subtitle" alt="本期成片原像素字幕"><div id="brand">超哥AI创业记</div>
+<script src="data.js"></script><script src="upstream-helpers.js"></script><script src="upstream-motion.js"></script><script src="scenes.js"></script>
+<script>
+// 真人视频和字幕严格采用本窗输出时钟，不使用模板原始编舞时钟。
+const styleId=new URLSearchParams(location.search).get('style')||'continuous';
+const scene=window.buildMotion(styleId,document.getElementById('motion'));
+window.END=SAMPLE_DATA.durationFrames/SAMPLE_DATA.fps;
+const easeQuad=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+const load=async(el,src)=>{el.src=src;await el.decode();};
+window.renderAt=async(t)=>{
+ const f=Math.min(SAMPLE_DATA.durationFrames-1,Math.max(0,Math.round(t*SAMPLE_DATA.fps))),absolute=SAMPLE_DATA.startFrame+f;
+ const c=SAMPLE_DATA.cameras.find(c=>absolute>=c.from&&absolute<c.to);
+ let scale=1.012;
+ if(c){const enter=clamp((absolute-c.from)/c.inFrames),leave=1-clamp((absolute-(c.to-c.outFrames))/c.outFrames);scale+=(c.maxScale-1.012)*easeQuad(Math.min(enter,leave));}
+ const base=document.getElementById('base');base.style.transform=`scale(${scale})`;
+ scene.update(f/SAMPLE_DATA.fps);
+ const name=String(f+1).padStart(5,'0')+'.jpg';
+ await Promise.all([load(base,'../media/raw-srgb/'+name),load(document.getElementById('subtitle'),'../media/subtitles-srgb/'+name)]);
+};
+window.sampleAudit=()=>({styleId,frameWindow:[SAMPLE_DATA.startFrame,SAMPLE_DATA.endFrameExclusive],motion:scene.audit()});
+window.READY=(async()=>{await document.fonts.ready;await document.fonts.load('60px Motion');await window.renderAt(0);})();
+</script></body></html>

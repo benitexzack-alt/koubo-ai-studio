@@ -1,0 +1,49 @@
+--- 上游原渲染器
++++ 本地SDR研究适配器
+@@ -1,4 +1,5 @@
+ #!/usr/bin/env node
++// 从 adunext/adu-motion-video 改编；MIT许可见本目录。仅本轮已核实SDR样片，未通过上游原视频入口。
+ // Local deterministic renderAt(t) export. No package installation or remote assets.
+ import fs from 'node:fs';
+ import path from 'node:path';
+@@ -6,7 +7,7 @@
+ import { pathToFileURL, fileURLToPath } from 'node:url';
+ import { createRequire } from 'node:module';
+ import { spawn, spawnSync } from 'node:child_process';
+-import { chrome } from './chrome.mjs';
++import { chrome } from './upstream/scripts/chrome.mjs';
+ const help = `Usage: node render_project.mjs ENTRY.html [options]
+   --output FILE.mp4                 Export a new MP4 (never overwrite)
+   --probe                          Read runtime END without exporting
+@@ -69,7 +70,7 @@
+   return opt;
+ }
+ function probe(file, count = false) {
+-  const result = spawnSync('ffprobe', ['-v', 'error', ...(count ? ['-count_frames'] : []), '-show_streams', '-show_format', '-of', 'json', file], { encoding: 'utf8' });
++  const result = spawnSync('/opt/homebrew/opt/ffmpeg-full/bin/ffprobe', ['-v', 'error', ...(count ? ['-count_frames'] : []), '-show_streams', '-show_format', '-of', 'json', file], { encoding: 'utf8' });
+   if (result.error || result.status !== 0) throw Error(`ffprobe failed: ${result.error?.message || result.stderr}`);
+   return JSON.parse(result.stdout);
+ }
+@@ -108,11 +109,9 @@
+   const errors = new Set();
+   const check = () => { if (errors.size) throw Error([...errors].join('\n')); };
+   try {
+-    if (opt.output && spawnSync('ffmpeg', ['-version'], { stdio: 'ignore' }).status !== 0) throw Error('ffmpeg executable not found');
++    if (opt.output && spawnSync('/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg', ['-version'], { stdio: 'ignore' }).status !== 0) throw Error('ffmpeg executable not found');
+     if (opt.output) {
+-      const plan = spawnSync(process.env.ADU_PYTHON || (process.platform === 'win32' ? 'python' : 'python3'), [path.join(path.dirname(fileURLToPath(import.meta.url)), 'color_management.py'), '--export-plan'], { encoding: 'utf8' });
+-      if (plan.status !== 0) throw Error(`Color preflight failed: ${plan.stderr || plan.error?.message}`);
+-      color = JSON.parse(plan.stdout);
++      color = {"policy": "本地隔离研究-SDR-zscale-v1", "engine": "已存在FFmpeg8.1.2-full的zscale", "input": "Chrome forced sRGB, lossless RGB PNG", "sourceEvidence": {"proxy": {"color_range": "tv", "color_space": "bt709", "color_transfer": "bt709", "color_primaries": "bt709"}, "baseline": {"color_range": "pc", "color_space": "bt470bg", "color_transfer": null, "color_primaries": null, "interpretation": "历史MP4缺少传递函数和原色标签。仅裁取字幕条，以既有全范围JPEG显示解释为sRGB；这是明确假设，不是历史色彩核验通过。"}}, "upstreamVideoEntrypointPassed": false, "reason": "上游导出强制FFmpeg9；原入口失败已记录，采用独立SDR适配器，未改上游。", "output": {"pix_fmt": "yuv420p", "color_range": "tv", "color_space": "bt709", "color_transfer": "bt709", "color_primaries": "bt709"}, "conversion": "zscale实际像素转换，非仅替换色彩标签", "filter": "format=gbrpf32le,zscale=pin=bt709:tin=iec61966-2-1:min=gbr:rin=full:p=bt709:t=bt709:m=bt709:r=limited,format=yuv420p,sidedata=mode=delete"};
+     }
+     temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'adu-video-render-'));
+     browser = await chromium.launch({ executablePath: browserPath, headless: true, args: ['--allow-file-access-from-files', '--force-color-profile=srgb', '--disable-gpu','--disable-accelerated-2d-canvas'] });
+@@ -213,7 +212,7 @@
+     if (opt.audio) args.push('-map', '1:a:0', '-c:a', 'aac', '-ar', '48000', '-b:a', '192k', '-af', 'apad');
+     else args.push('-an');
+     args.push('-t', String(duration), '-movflags', '+faststart', output);
+-    ff = spawn('ffmpeg', args, { stdio: ['pipe', 'ignore', 'pipe'] });
++    ff = spawn('/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg', args, { stdio: ['pipe', 'ignore', 'pipe'] });
+     let diagnostic = '', pipeError;
+     ff.stderr.on('data', chunk => { diagnostic = (diagnostic + chunk).slice(-8000); });
+     ff.stdin.on('error', e => { pipeError = e; });

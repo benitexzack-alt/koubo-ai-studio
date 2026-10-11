@@ -1,0 +1,26 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>口播动效同窗对照</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f2ed;color:#17201d;font-family:-apple-system,'PingFang SC',sans-serif}main{max-width:1200px;margin:auto;padding:32px 24px 64px}header{display:flex;justify-content:space-between;align-items:end;gap:24px}h1{font-size:30px;letter-spacing:-1px;margin:0 0 12px}p{color:#5c665f;line-height:1.7;margin:0 0 20px}.pill{font-size:13px;padding:8px 14px;border-radius:99px;background:#e5eae1;white-space:nowrap}nav{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}button{font:inherit;border:0;background:#e4e5df;color:#26352d;padding:12px 20px;min-height:46px;border-radius:10px;cursor:pointer}button[aria-pressed=true]{color:white;background:#234c3b}button:hover{filter:brightness(.94)}button:active{transform:scale(.98)}button:focus-visible,a:focus-visible{outline:3px solid #c38d28;outline-offset:3px}video{display:block;width:100%;aspect-ratio:16/9;background:#101412;border-radius:14px}aside{padding:20px 0}aside strong{display:block;margin-bottom:8px}a{color:#245a40}details{border-top:1px solid #cfd4c9;padding-top:18px;margin-top:10px}summary{cursor:pointer;min-height:36px}li{margin:10px 0;color:#536157}footer{margin-top:24px;color:#697269;font-size:14px;line-height:1.7}#error{color:#9d302c}#hint{margin-top:10px;font-size:14px}@media(max-width:600px){main{padding:24px 12px}header{display:block}h1{font-size:25px}.pill{display:inline-block;margin-bottom:14px}nav button{flex:1 1 40%;padding:10px}video{border-radius:8px}}
+</style></head><body><main>
+<header><div><h1>同一段口播，四种动效处理</h1><p>《10个AI生意》中的“人加AI”段落 · 每版约14秒 · 相同原声和字幕</p></div><span class="pill">独立小样 · 待观看判断</span></header>
+<nav aria-label="选择对照版本"><button aria-pressed="true" data-index="0">现有处理</button><button aria-pressed="false" data-index="1">连续形变</button><button aria-pressed="false" data-index="2">纵深聚焦</button><button aria-pressed="false" data-index="3">杂志式展开</button></nav>
+<video id="player" controls playsinline preload="metadata" src="outputs/00_现有动效_同原声对照.mp4"></video>
+<p id="hint">切换版本保留播放位置；使用全屏更容易看清字号和动作。</p><p id="error" role="alert"></p>
+<aside><strong id="name">现有处理</strong><p id="description">当前成片中的父节点与三分支。保留原画面，换用同一条原声，作为视觉比较基准。</p><a id="download" href="outputs/00_现有动效_同原声对照.mp4" download>保存当前小样</a></aside>
+<details><summary>这次主要看什么</summary><ul><li>三个关键词出现时，视线是否能跟上口播。</li><li>从“人加AI”到“组织升级”，关系是否比现有处理更容易理解。</li><li>信息是否抢走真人注意力，或因动画而来不及读。</li></ul><p>三种新版本借用了阿杜仓库的具体动作源码，再按现有口播安全区适配。没有套用完整镜头组，也没有更换现有生产基线。此轮专看视觉，没有增加音效或配乐；听感升级不在本次结论内。</p></details>
+<footer>原片范围：2分36.2秒—2分49.93秒。原片、历史成片和默认制作规则保持原样。<br><a href="仓库拆解与升级建议.md">查看拆解报告</a> · <a href="https://github.com/adunext/adu-motion-video/tree/6ea0c875363739a30a4c1bcdfe798b43b15fb03c" target="_blank" rel="noopener">查看固定版本仓库</a></footer>
+</main><script>
+const items=[
+ ['现有处理','00_现有动效_同原声对照.mp4','当前成片中的父节点与三分支。保留原画面，换用同一条原声，作为视觉比较基准。'],
+ ['连续形变','01_连续形变_本地适配小样.mp4','同一容器展开三项内容，再收拢为“组织升级”。重点看对象连续性是否比一张张换卡更清楚。'],
+ ['纵深聚焦','02_纵深聚焦_本地适配小样.mp4','三个面板按说词出现，通过轻微透视与位置变化交接重点，再汇合为结果。重点看层次是否有用，还是增加了干扰。'],
+ ['杂志式展开','03_杂志展开_本地适配小样.mp4','三项内容按语音从遮罩后展开，线条收拢到结论。重点看阅读节奏是否自然，以及是否仍有翻页感。']];
+const player=document.getElementById('player');let revision=0;
+for(const button of document.querySelectorAll('nav button'))button.addEventListener('click',()=>{
+ const id=+button.dataset.index,item=items[id],time=player.currentTime||0,playing=!player.paused,token=++revision;
+ player.pause();for(const b of document.querySelectorAll('nav button'))b.setAttribute('aria-pressed',String(b===button));
+ document.getElementById('name').textContent=item[0];document.getElementById('description').textContent=item[2];document.getElementById('download').href='outputs/'+item[1];document.getElementById('error').textContent='';
+ player.src='outputs/'+item[1];player.addEventListener('loadedmetadata',()=>{if(token!==revision)return;player.currentTime=Math.min(time,Math.max(0,player.duration-.05));if(playing)player.play().catch(()=>{});},{once:true});player.load();
+});
+player.addEventListener('error',()=>{document.getElementById('error').textContent='当前小样暂时无法读取，请从交付目录打开对应视频。';});
+</script></body></html>
