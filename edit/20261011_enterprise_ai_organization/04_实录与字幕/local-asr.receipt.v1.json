@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "local-whisper-asr-candidate/v1",
+  "status": "completed-candidate-unreviewed",
+  "startedAt": "2026-10-11T13:13:23.277589+00:00",
+  "command": [
+    "/Users/pc/Documents/口播/.cache/whisper-runtime/venv/bin/python",
+    "edit/20261011_enterprise_ai_organization/04_实录与字幕/run-local-asr.v1.py"
+  ],
+  "sourceVideoPath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/01_口播原片/copy_6040572B-1985-4C66-842D-0F3B63C6E29C.MOV",
+  "sourceDurationSeconds": 146.145011,
+  "audioPath": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/04_实录与字幕/enterprise-ai-organization.original.16k-mono.wav",
+  "audioScope": "entire-original-no-cuts-no-normalization-no-speed-change",
+  "modelPath": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+  "initialPrompt": null,
+  "prefix": null,
+  "hotwords": null,
+  "scriptProvidedToAsr": false,
+  "existingClaudeAsrProvidedToAsr": false,
+  "networkDisabled": true,
+  "modelDownloaded": false,
+  "dependenciesInstalled": false,
+  "humanListeningPerformed": false,
+  "reviewStatus": "candidate-unreviewed",
+  "finalSubtitleApproved": false,
+  "events": [
+    {
+      "at": "2026-10-11T13:13:24.322799+00:00",
+      "elapsedSeconds": 1.045,
+      "phase": "extracting-original-audio"
+    },
+    {
+      "at": "2026-10-11T13:13:27.162599+00:00",
+      "elapsedSeconds": 3.885,
+      "phase": "transcribing-offline"
+    },
+    {
+      "at": "2026-10-11T13:13:38.923584+00:00",
+      "elapsedSeconds": 15.646,
+      "phase": "completed-candidate-unreviewed"
+    }
+  ],
+  "sourceSha256Before": "6547a15055ec44a5765f054816e2f9555ce1524b4f8664dbbeb6bce1fa8712bb",
+  "localModelFiles": [
+    {
+      "path": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb/config.json",
+      "resolvedPath": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/blobs/6ac9a52a28f70a2e5681c250a470eca6e9c8cc3e",
+      "bytes": 268,
+      "sha256": "b34fc29e4e11e0a25e812775dd67f4dd16fc2c8eb43d28ae25ff7d660ecb6379"
+    },
+    {
+      "path": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb/weights.safetensors",
+      "resolvedPath": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/blobs/951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6",
+      "bytes": 1613977612,
+      "sha256": "951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6"
+    }
+  ],
+  "audioExtractionCommand": [
+    "/opt/homebrew/bin/ffmpeg",
+    "-nostdin",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/01_素材投放区/01_口播原片/copy_6040572B-1985-4C66-842D-0F3B63C6E29C.MOV",
+    "-map",
+    "0:a:0",
+    "-vn",
+    "-ac",
+    "1",
+    "-ar",
+    "16000",
+    "-c:a",
+    "pcm_s16le",
+    "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/04_实录与字幕/enterprise-ai-organization.original.16k-mono.wav"
+  ],
+  "audioSha256Before": "f3e51e4555813289914c2b8b68ee66ac22c29b517bdc54f12527e7988d2e8ef8",
+  "pythonVersion": "3.12.11 (main, Aug 18 2025, 19:02:39) [Clang 20.1.4 ]",
+  "packages": {
+    "mlx-whisper": "0.4.3",
+    "mlx": "0.32.2",
+    "numpy": "2.5.2",
+    "torch": "2.14.0",
+    "numba": "0.67.0",
+    "tiktoken": "0.14.0",
+    "huggingface-hub": "1.30.0"
+  },
+  "metalAvailable": true,
+  "audioFrames": 2338319,
+  "audioDurationSeconds": 146.1449375,
+  "options": {
+    "path_or_hf_repo": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+    "language": "zh",
+    "task": "transcribe",
+    "word_timestamps": true,
+    "initial_prompt": null,
+    "condition_on_previous_text": false,
+    "temperature": 0.0,
+    "verbose": true
+  },
+  "outputs": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/04_实录与字幕/enterprise-ai-organization.mlx-whisper-large-v3-turbo.raw.v1.json",
+      "sha256": "329c42559b7b0cea7119adbba8f0a04b5af088b15451277cc65bc62c2759a591",
+      "bytes": 112866
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/04_实录与字幕/enterprise-ai-organization.mlx-whisper-large-v3-turbo.raw.v1.txt",
+      "sha256": "fad1487ff01d2a68489e30862e8a4281de75b4cc751daf1b3c036b361aebf842",
+      "bytes": 1816
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/04_实录与字幕/enterprise-ai-organization.mlx-whisper-large-v3-turbo.raw.v1.srt",
+      "sha256": "2c7dd264318a73dcc3c4c790bd442abb8f52c59d9294d8f43beb12e2afc10f5a",
+      "bytes": 4466
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/04_实录与字幕/enterprise-ai-organization.mlx-whisper-large-v3-turbo.raw.v1.words.json",
+      "sha256": "0acef578ec13e4a84db786d04be6b78b573979d5899e5d92c3c363bb0e017881",
+      "bytes": 72507
+    }
+  ],
+  "segmentCount": 76,
+  "wordCount": 548,
+  "firstSegmentStart": 0.0,
+  "lastSegmentEnd": 145.68,
+  "sourceSha256After": "6547a15055ec44a5765f054816e2f9555ce1524b4f8664dbbeb6bce1fa8712bb",
+  "audioSha256After": "f3e51e4555813289914c2b8b68ee66ac22c29b517bdc54f12527e7988d2e8ef8",
+  "endedAt": "2026-10-11T13:13:38.923449+00:00",
+  "runDurationSeconds": 15.646,
+  "zeroDurationWordCount": 0,
+  "wordTimestampsAreAsrEstimates": true
+}
