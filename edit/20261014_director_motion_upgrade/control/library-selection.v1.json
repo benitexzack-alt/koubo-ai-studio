@@ -1,0 +1,549 @@
+{
+  "schema": "koubo-motion-library-selection/v1",
+  "taskId": "20261014_director_motion_upgrade",
+  "date": "2026-10-14",
+  "status": "code-reviewed-implementation-bound",
+  "scope": "企业全员AI改造约一分钟本地升级候选的少量动效选型及源码溯源",
+  "sample": {
+    "sourceFrames": [
+      1604,
+      3402
+    ],
+    "frameInterval": "half-open",
+    "fps": 30,
+    "durationInFrames": 1798,
+    "sourceSeconds": [
+      53.46666666666667,
+      113.4
+    ],
+    "captionSource": {
+      "path": "/Users/pc/Documents/口播/remotion/src/enterprise-ai-organization/runtime-plan.v1.json",
+      "sha256": "47cd8a3c363976505be2f8cad79607b608ce01b57426b54f2ad3acd26d836a04"
+    },
+    "anchorPrecision": "当前为实录句窗，不冒称精确词时点"
+  },
+  "reviewEvidence": {
+    "sourceCodeRead": true,
+    "motionSpecsRead": true,
+    "sourcePreviewWatched": false,
+    "newCandidateWatched": false,
+    "renderVerified": false,
+    "humanVisualAccepted": false,
+    "humanAudioAccepted": false,
+    "note": "原库源码、独立实现与事件时钟已只读核对并绑定摘要；尚未观看或验收输出视频。后续修改组件或事件表须重新绑定摘要。",
+    "implementationSourceRead": true
+  },
+  "license": {
+    "creatorMotion": {
+      "source": "https://skillry.dev/skills/bs-creatormotion",
+      "version": "1.0.0",
+      "terms": "https://skillry.dev/terms",
+      "thirdPartyNotices": "https://skillry.dev/third-party-notices",
+      "termsCheckedDate": "2026-10-14",
+      "allowedScope": "现行条款允许本人或内部业务使用已取得Skill，并允许创作商业作品；第三方素材另受许可约束。",
+      "privatePackageBoundary": "原ZIP、原始Skill、付费安装链接、凭证、完整通用场景代码及可还原原包的摘取副本不公开、不转售、不外发；本机私用，不提交公开Git。",
+      "remotionAdaptation": "本条使用独立的帧驱动适配，不声称运行了原HyperFrames管线；适配不自动取得付费原包再分发权。"
+    },
+    "adu": {
+      "license": "MIT",
+      "noticeRequired": true,
+      "mediaBoundary": "原作者人物、声音、私人录屏和第三方展示媒体不因MIT代码许可取得复用权。"
+    }
+  },
+  "selected": [
+    {
+      "id": "creator-tag-stack",
+      "library": "CreatorMotion",
+      "effectId": "bs-creatormotion-type-tag-stack",
+      "status": "code-reviewed",
+      "sources": [
+        {
+          "path": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/scripts/effects/bs-creatormotion-type-tag-stack.mjs",
+          "sha256": "c99bcfc5ee265686e5a4910364fc0420daf13a4da8be82c7c41e584824e98756",
+          "lines": [
+            1,
+            6
+          ]
+        },
+        {
+          "path": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/references/motion/bs-creatormotion-type-tag-stack.md",
+          "sha256": "c75b8dbb86afc8a26b54035edf9726e7935a935619843a094d4c5bce13d91e9a",
+          "lines": [
+            77,
+            99
+          ]
+        }
+      ],
+      "sourceFrames": [
+        2506,
+        2793
+      ],
+      "sampleFrames": [
+        902,
+        1189
+      ],
+      "captionBindings": [
+        {
+          "id": "C028",
+          "sourceFrames": [
+            2506,
+            2602
+          ],
+          "text": "别人的团队手忙脚乱，临时补课。",
+          "displayText": "临时补课"
+        },
+        {
+          "id": "C029",
+          "sourceFrames": [
+            2602,
+            2655
+          ],
+          "text": "内部流程全部脱节。",
+          "displayText": "流程脱节"
+        },
+        {
+          "id": "C030",
+          "sourceFrames": [
+            2655,
+            2703
+          ],
+          "text": "人才跟不上的时代。",
+          "displayText": "人才跟不上"
+        },
+        {
+          "id": "C031",
+          "sourceFrames": [
+            2703,
+            2793
+          ],
+          "text": "被市场卷的进退两难的时候。",
+          "displayText": null
+        }
+      ],
+      "preservedSignature": [
+        "连续真人留场，短标签在空白侧按文字宽度换行累积",
+        "标签进入由0.88缩放至1，约0.17秒，power4.out；已落位标签保持位置",
+        "末态停留供阅读，不用任意背景运动填满"
+      ],
+      "sourceTiming": {
+        "durationSeconds": 6.8,
+        "entranceSeconds": 0.17,
+        "sourceGroupStarts": [
+          0.65,
+          0.73,
+          1.5,
+          1.58,
+          2.35
+        ]
+      },
+      "adaptationDifferences": [
+        "部门五词方案已取消；改为本窗真实说出的三项风险",
+        "组落点按本条实录重新绑定，长出的时窗只用于阅读；不得把尚未说出的风险提前显示",
+        "源145%裁切及左移340像素不直接继承，按本条真实人物和字幕保护区重排",
+        "以Remotion帧计算代替GSAP运行，不引入HyperFrames",
+        "实际实现改为左侧固定两列后换行，不用源右侧自动flex-wrap；主字56px",
+        "源GSAP power4.out改为本条q(v)=1-(1-v)^4的四次ease-out，保留短促收势但不宣称曲线逐点相同",
+        "标签实际落点原帧2574/2630/2665来自本条视觉时钟，未声明逐词精准对齐"
+      ],
+      "mediaDependencies": [
+        "当前实录连续真人视频；不需要抠像、图片或新下载模型"
+      ],
+      "implementation": {
+        "path": "/Users/pc/Documents/口播/remotion/src/enterprise-ai-motion-upgrade-20261014/Composition.tsx",
+        "sha256": "abdfdd2877417c7743aaae5831177d136208494a670e4a16f92e0a19f0f41f89",
+        "reviewStatus": "code-reviewed",
+        "visualEvents": {
+          "path": "/Users/pc/Documents/口播/remotion/src/enterprise-ai-motion-upgrade-20261014/visual-events.v1.json",
+          "sha256": "8d39e4a5f7c396dbea836e42069cfc34cb2a5eafcd08e3297fb76a99c6fc5f98"
+        },
+        "timingEvidence": "新动作是按已确认语义窗设计的视觉时钟，不宣称逐词对齐；字幕使用原始句窗。",
+        "sourcePackageCodeCopied": false,
+        "runtime": "Remotion independent frame-driven adaptation",
+        "renderVerified": false,
+        "function": "RulesAndTags",
+        "componentSourceFrames": [
+          2381,
+          2793
+        ],
+        "componentSampleFrames": [
+          777,
+          1189
+        ],
+        "effectSourceFrames": [
+          2574,
+          2793
+        ],
+        "effectSampleFrames": [
+          970,
+          1189
+        ],
+        "events": [
+          {
+            "id": "tag-cram",
+            "localFrame": 970,
+            "sourceFrame": 2574,
+            "phase": "reveal",
+            "description": "临时补课短促缩放入场落位",
+            "sfxRole": "soft-arrival",
+            "silenceReason": ""
+          },
+          {
+            "id": "tag-process",
+            "localFrame": 1026,
+            "sourceFrame": 2630,
+            "phase": "reveal",
+            "description": "流程脱节换行累积旧标签不动",
+            "sfxRole": null,
+            "silenceReason": "避免机械逐卡声"
+          },
+          {
+            "id": "tag-talent",
+            "localFrame": 1061,
+            "sourceFrame": 2665,
+            "phase": "reveal",
+            "description": "人才跟不上补齐并列组",
+            "sfxRole": null,
+            "silenceReason": "同组听清实录"
+          },
+          {
+            "id": "team-end",
+            "localFrame": 1189,
+            "sourceFrame": 2793,
+            "phase": "end",
+            "description": "困境组退出让正面主体接管",
+            "sfxRole": null,
+            "silenceReason": "转折靠原声"
+          }
+        ],
+        "preservedVerifiedInCode": [
+          "短标签两列后换行累积，三个标签固定位置，旧标签不随新标签移动",
+          "0.88到1缩放，5帧入场，3帧透明度变化，倾斜-3度及左侧强调边",
+          "连续真人保持同一时钟；不调用原包强裁切或抠像"
+        ],
+        "line": 110
+      },
+      "outputBinding": null
+    },
+    {
+      "id": "creator-wording-choice",
+      "library": "CreatorMotion",
+      "effectId": "bs-creatormotion-comparison-wording-choice",
+      "status": "code-reviewed",
+      "sources": [
+        {
+          "path": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/scripts/effects/bs-creatormotion-comparison-wording-choice.mjs",
+          "sha256": "383935ec9783dcd5da69897d5c7097e6441e5200b41db1b9b5e27c20db56cc84",
+          "lines": [
+            1,
+            12
+          ]
+        },
+        {
+          "path": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/references/motion/bs-creatormotion-comparison-wording-choice.md",
+          "sha256": "43a0b3aaaa18c30f8ffc9d1873035897585a905ea22567642f9aeb484b79d495",
+          "lines": [
+            23,
+            55
+          ]
+        }
+      ],
+      "sourceFrames": [
+        3218,
+        3402
+      ],
+      "sampleFrames": [
+        1614,
+        1798
+      ],
+      "captionBindings": [
+        {
+          "id": "C035",
+          "sourceFrames": [
+            3218,
+            3273
+          ],
+          "text": "别人呢是被迫追赶。",
+          "displayText": "被迫追赶"
+        },
+        {
+          "id": "C036",
+          "sourceFrames": [
+            3273,
+            3379
+          ],
+          "text": "你就是那个提前布局，第一个吃螃蟹的人。",
+          "displayText": "提前布局"
+        }
+      ],
+      "preservedSignature": [
+        "第一句条先进入且保持，比较关系标记随后出现，第二句条再进入",
+        "两句完整显示后，未选条退为中性色；选条保留强调色并获得明确边框",
+        "保持短入场、约0.35秒色彩交接，以及至少1.2秒最终阅读"
+      ],
+      "sourceTiming": {
+        "durationSeconds": 11,
+        "firstEntrance": 0.16,
+        "firstWordsStart": 0.6,
+        "comparisonMark": 2.8,
+        "secondEntrance": 3.5,
+        "secondWordsStart": 3.9,
+        "selection": 7.7,
+        "selectionDuration": 0.35
+      },
+      "adaptationDifferences": [
+        "本条是两组四字，按约6.13秒实录窗重编长句逐词等待与段间空等；不把11秒整段线性加速",
+        "保留上述四阶段动作关系，移除默认SELECTED WORDING及英文示例",
+        "比较的是实录陈述的两种处境，不补营收、效率比例或真实企业效果",
+        "以Remotion帧计算代替GSAP运行",
+        "实际组件原帧3218至3382结束，余下20帧恢复真人；原计划语义窗仍保留至3402",
+        "两条改为左侧600px、76px中文，保留真人；比较标改中文“对照”",
+        "每字3帧揭示，色彩交接11帧；3315至3375完全稳定2秒，另7帧淡出"
+      ],
+      "mediaDependencies": [],
+      "implementation": {
+        "path": "/Users/pc/Documents/口播/remotion/src/enterprise-ai-motion-upgrade-20261014/Composition.tsx",
+        "sha256": "abdfdd2877417c7743aaae5831177d136208494a670e4a16f92e0a19f0f41f89",
+        "reviewStatus": "code-reviewed",
+        "visualEvents": {
+          "path": "/Users/pc/Documents/口播/remotion/src/enterprise-ai-motion-upgrade-20261014/visual-events.v1.json",
+          "sha256": "8d39e4a5f7c396dbea836e42069cfc34cb2a5eafcd08e3297fb76a99c6fc5f98"
+        },
+        "timingEvidence": "新动作是按已确认语义窗设计的视觉时钟，不宣称逐词对齐；字幕使用原始句窗。",
+        "sourcePackageCodeCopied": false,
+        "runtime": "Remotion independent frame-driven adaptation",
+        "renderVerified": false,
+        "function": "WordingChoice",
+        "componentSourceFrames": [
+          3218,
+          3382
+        ],
+        "componentSampleFrames": [
+          1614,
+          1778
+        ],
+        "effectSourceFrames": [
+          3218,
+          3382
+        ],
+        "effectSampleFrames": [
+          1614,
+          1778
+        ],
+        "events": [
+          {
+            "id": "choice-start",
+            "localFrame": 1614,
+            "sourceFrame": 3218,
+            "phase": "start",
+            "description": "第一条比较句扩展入场",
+            "sfxRole": null,
+            "silenceReason": "动作准备不单独响"
+          },
+          {
+            "id": "choice-first",
+            "localFrame": 1616,
+            "sourceFrame": 3220,
+            "phase": "reveal",
+            "description": "被迫追赶逐字揭示",
+            "sfxRole": "soft-arrival",
+            "silenceReason": ""
+          },
+          {
+            "id": "choice-mark",
+            "localFrame": 1656,
+            "sourceFrame": 3260,
+            "phase": "reveal",
+            "description": "比较符在两条之间出现",
+            "sfxRole": null,
+            "silenceReason": "比较符留白"
+          },
+          {
+            "id": "choice-second",
+            "localFrame": 1683,
+            "sourceFrame": 3287,
+            "phase": "reveal",
+            "description": "提前布局逐字揭示",
+            "sfxRole": "comparison",
+            "silenceReason": ""
+          },
+          {
+            "id": "choice-select",
+            "localFrame": 1700,
+            "sourceFrame": 3304,
+            "phase": "start",
+            "description": "第一条退为中性第二条获得强调边框",
+            "sfxRole": null,
+            "silenceReason": "与第二句揭示声作为一个事件"
+          },
+          {
+            "id": "choice-settle",
+            "localFrame": 1711,
+            "sourceFrame": 3315,
+            "phase": "settle",
+            "description": "对照决定落定稳定读到结尾",
+            "sfxRole": null,
+            "silenceReason": "保留超过1.2秒末态"
+          },
+          {
+            "id": "choice-end",
+            "localFrame": 1778,
+            "sourceFrame": 3382,
+            "phase": "end",
+            "description": "比较条退场回到真人",
+            "sfxRole": null,
+            "silenceReason": "以原声自然结束"
+          }
+        ],
+        "preservedVerifiedInCode": [
+          "第一句3220开始逐字，比较标3260，第二句3287，色彩交接3304至3315",
+          "未选条退至中性色；选条保留强调色并增加边框",
+          "3315至3375为60帧完全稳定阅读，3375至3382为7帧淡出"
+        ],
+        "fullySettledSourceFrames": [
+          3315,
+          3375
+        ],
+        "fullySettledDurationFrames": 60,
+        "exitFadeSourceFrames": [
+          3375,
+          3382
+        ],
+        "line": 163
+      },
+      "outputBinding": null
+    }
+  ],
+  "aduReference": {
+    "status": "code-reviewed-reference-only",
+    "sources": [
+      {
+        "path": "/Users/pc/Documents/口播/research/20261011_adu_motion_video/upstream/packs/continuous-performance/1.0.0/units/decompose-and-consolidate.js",
+        "sha256": "3949f08a380e4c647dfb7b57afe32983c742b76fc61b65174435968ac1520f2e",
+        "lines": [
+          59,
+          72
+        ]
+      },
+      {
+        "path": "/Users/pc/Documents/口播/research/20261011_adu_motion_video/upstream/references/motion-quality.md",
+        "sha256": "b63db33ef045aed50cffe0a5fc21059c7911a4aab5b1ff1f5855259ad617a5dd",
+        "lines": [
+          5,
+          38
+        ]
+      },
+      {
+        "path": "/Users/pc/Documents/口播/research/20261011_adu_motion_video/upstream/references/full-project-templating.md",
+        "sha256": "63e1c31091956037661bcc1ed46e35410f05e0c67189f81ff062d5c0afa085f9",
+        "lines": [
+          99,
+          115
+        ]
+      }
+    ],
+    "methodReference": [
+      "动作具备开始、变化与结果，同一对象在变形中保留身份",
+      "短动作与阅读停留分开；真人与字幕沿实录输出时钟播放",
+      "检查动作前中后与声音落点，不能只验收末帧"
+    ],
+    "fullGroupSelected": false,
+    "reason": "完整三层组需约16.9秒且包含原真实预览和真人绑定；本一分钟窗相应个体合力段已有纸艺，不另塞完整组。Groundwork只采用同对象连续变化的设计方法，不能宣称阿杜完整组或其源代码已应用。",
+    "sourceFrames": null,
+    "implementation": {
+      "path": "/Users/pc/Documents/口播/remotion/src/enterprise-ai-motion-upgrade-20261014/Composition.tsx",
+      "sha256": "abdfdd2877417c7743aaae5831177d136208494a670e4a16f92e0a19f0f41f89",
+      "function": "Groundwork",
+      "line": 75,
+      "reviewStatus": "code-reviewed-method-application",
+      "sourceFrames": [
+        1685,
+        2102
+      ],
+      "sampleFrames": [
+        81,
+        498
+      ],
+      "captionIds": [
+        "C019",
+        "C020",
+        "C021",
+        "C022",
+        "C023"
+      ],
+      "actualMethodObservedInCode": "同一初期容器内保留未见业绩、变现与放弃的起态，再将同一容器展开为沉淀期；未复制阿杜三层完整组。",
+      "fullGroupCodeLoaded": false,
+      "newVideoWatched": false
+    }
+  },
+  "rejected": [
+    {
+      "id": "scope-emphasis",
+      "effectId": "bs-creatormotion-diagram-scope-emphasis",
+      "status": "not-selected",
+      "source": {
+        "path": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/scripts/effects/_film-diagram-scenes-a.mjs",
+        "sha256": "6384494aa458b8699c5154a8bc43f7ca67a0507866c439df695dad5a03762e31",
+        "lines": [
+          29,
+          34
+        ]
+      },
+      "reason": "部门/岗位嵌套对应的原句在本窗1604帧以前；用户已经固定一分钟范围，不为效果把窗外内容搬入。",
+      "sourceFrames": null
+    },
+    {
+      "id": "sequence-lanes",
+      "effectId": "bs-creatormotion-diagram-sequence-lanes",
+      "status": "not-selected",
+      "source": {
+        "path": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/scripts/effects/_film-diagram-scenes-b.mjs",
+        "sha256": "34846ec6b3c63c3a1a09276625f8cef5c4d5f8ea5687c03d57153226d3a5ca23",
+        "lines": [
+          34,
+          37
+        ]
+      },
+      "reason": "本窗未提供三部门请求、等待、返回的具体真实流程；填写业务消息会新增事实。",
+      "sourceFrames": null
+    },
+    {
+      "id": "hub-routing",
+      "effectId": "bs-creatormotion-diagram-hub-routing",
+      "status": "not-selected",
+      "source": {
+        "path": "/Users/pc/Desktop/口播Remotion动效包/02_原始Skill/bs-creatormotion/scripts/effects/_film-diagram-scenes-a.mjs",
+        "sha256": "6384494aa458b8699c5154a8bc43f7ca67a0507866c439df695dad5a03762e31",
+        "lines": [
+          17,
+          21
+        ]
+      },
+      "reason": "共同底层原句已有纸艺P03覆盖；本窗未给出输入输出事实，原效果另需hub-image和output栅格槽。不得替换已验收纸艺或造输入输出关系。",
+      "sourceFrames": [
+        2118,
+        2275
+      ]
+    }
+  ],
+  "verificationNeeded": [
+    "渲染前复核实现和事件表SHA未变化；若有修改则刷新绑定，不能沿用旧源码回执",
+    "输出后绑定视频SHA、实际使用时间段和正常速度声画观察范围",
+    "检查未在纸艺内部叠加、无字挡脸/字幕、无英文生产字样、原声不变速",
+    "实际口播词时点与动作落点核对；句级窗不能冒称词级精确对齐"
+  ],
+  "scopeOwnership": [
+    "library-selection.v1.json",
+    "采用说明.md"
+  ],
+  "externalHandoffRevision": {
+    "reviewStatus": "code-reviewed",
+    "implementationSha256": "abdfdd2877417c7743aaae5831177d136208494a670e4a16f92e0a19f0f41f89",
+    "eventTableUnchanged": true,
+    "description": "纸艺进入前16帧使用原纸艺首帧、退出后16帧使用原活动窗末帧，承接真人连续移动；原Sequence视频活动窗、播放率、字幕和音频不变，真人不冻结。纸艺外标题与强调横线仅从原clip.from起显示，避免与SharedWork交叠。",
+    "functions": [
+      "PaperMat",
+      "纸艺外层Freeze"
+    ],
+    "renderedObservation": "主任务另写QA，本回执不登记观看或人工通过。"
+  }
+}

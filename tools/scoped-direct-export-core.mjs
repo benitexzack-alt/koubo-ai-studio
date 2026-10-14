@@ -28,6 +28,8 @@ import {assertTenAIBusinessesRenderR2, isTenAIBusinessesRenderR2}
   from '../edit/20261006_ten_ai_businesses/00_成片控制/subtitle-r2/export-adapter.r2.mjs';
 import {assertEnterpriseAIOrganizationRenderV1, isEnterpriseAIOrganizationRenderV1}
   from '../edit/20261011_enterprise_ai_organization/06_成片控制/export-adapter.v1.mjs';
+import {assertDirectorMotionMinutePreview, isDirectorMotionMinutePreview}
+  from '../edit/20261014_director_motion_upgrade/control/export-adapter.v1.mjs';
 import {
   collectProductionBoundFilesV2,
   computeProductionCompositionBindingV2,
@@ -54,9 +56,11 @@ export const TEN_AI_BUSINESSES_R1_PINS = Object.freeze({
   'with-sfx': null,
   'no-sfx': null,
   formal: null,
-export const ENTERPRISE_AI_ORGANIZATION_V1_PIN = '84a8e0c4125672afd3d21d71703dacb00d30ffffd62024f4223883481ce1372f';
 });
 export const TEN_AI_BUSINESSES_R2_PINS = Object.freeze({'full-candidate': '63e2f3ba691d8b298261f3bfa426be08976c1a0ebf33eb4fa899faf0070d7c41'});
+export const ENTERPRISE_AI_ORGANIZATION_V1_PIN = '84a8e0c4125672afd3d21d71703dacb00d30ffffd62024f4223883481ce1372f';
+// 必须由本次清单精确字节计算并登记；空值明确阻断，不能复用历史 PIN。
+export const DIRECTOR_MOTION_MINUTE_PREVIEW_PIN = '3809e690fc26fc276268f4ed376224ca538cbf142ae45ad7fe16e2fb876c5a2f';
 export const SCOPED_DIRECT_EXPORT_AI_NO_NEW_BUSINESS_MODEL_MANIFEST_SHA256 = 'ae6f7c5e2064a61035cd30df8269c1ff65b2fc81d8208c8bd5104b9e149df3fc';
 export const SCOPED_PRESHOOT_ARTIFACTS = Object.freeze(Object.fromEntries(Object.entries({
   preproductionRequest: 'director-preproduction-request.v1.json',
@@ -342,6 +346,9 @@ function userText(line) {
 }
 
 export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = null, command = 'formal'}) {
+  if (isDirectorMotionMinutePreview(job)) {
+    return assertDirectorMotionMinutePreview({projectRoot, job, jobPath, command, pin: DIRECTOR_MOTION_MINUTE_PREVIEW_PIN});
+  }
   if (isTenAIBusinessesRenderR2(job)) {
     return assertTenAIBusinessesRenderR2({projectRoot, job, jobPath, command, pins: TEN_AI_BUSINESSES_R2_PINS});
   }

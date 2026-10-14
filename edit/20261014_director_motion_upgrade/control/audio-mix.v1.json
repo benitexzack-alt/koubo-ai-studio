@@ -1,0 +1,162 @@
+{
+  "schema": "director-motion-minute-audio/v1",
+  "sourceSha256": "6547a15055ec44a5765f054816e2f9555ce1524b4f8664dbbeb6bce1fa8712bb",
+  "sourceStartFrame": 1604,
+  "sourceEndFrame": 3402,
+  "fps": 30,
+  "durationInFrames": 1798,
+  "sampleRate": 48000,
+  "channels": 2,
+  "startSample": 2566400,
+  "sampleCount": 2876800,
+  "historicalBase": {
+    "path": "edit/20261011_enterprise_ai_organization/08_声音制作/audio/native-mix.v1.wav",
+    "sha256": "4aa67da79291defc4b640d9c6ad4870df1480254887afb8fa49fdaced21a1a54"
+  },
+  "historicalMixReceipt": {
+    "path": "edit/20261011_enterprise_ai_organization/08_声音制作/mixreceipt.v1.json",
+    "sha256": "b996bfa6c50454079c925bdb2aca22e1c08d81bc1f1d20471d88df716a4f2eb8"
+  },
+  "visualEvents": {
+    "path": "remotion/src/enterprise-ai-motion-upgrade-20261014/visual-events.v1.json",
+    "sha256": "8d39e4a5f7c396dbea836e42069cfc34cb2a5eafcd08e3297fb76a99c6fc5f98"
+  },
+  "script": {
+    "path": "edit/20261014_director_motion_upgrade/control/prepare-audio.v1.py",
+    "sha256": "761c07c1bc8555b6137a0609f390d0bdceb8176d17015813982cf271742f0b6b"
+  },
+  "knowledgeContextGate": {
+    "required": true,
+    "command": "audio-preflight",
+    "taskId": "director-motion-minute-20261014",
+    "contextPath": "director-motion-minute-20261014/context.json",
+    "contextSha256": "558636300cd7bd80d07795588b9ddae91b9313c4db2c02e0204c9d038999f04d",
+    "jobReceiptSha256": "3c65466fa1fe234815263fbd057f16ac1db017ea58680592bb0a0d1696acf2e4",
+    "validationStatus": "context-valid",
+    "formalExecutionAllowed": true
+  },
+  "knowledgeContextAfter": {
+    "required": true,
+    "command": "audio-preflight",
+    "taskId": "director-motion-minute-20261014",
+    "contextPath": "director-motion-minute-20261014/context.json",
+    "contextSha256": "558636300cd7bd80d07795588b9ddae91b9313c4db2c02e0204c9d038999f04d",
+    "jobReceiptSha256": "3c65466fa1fe234815263fbd057f16ac1db017ea58680592bb0a0d1696acf2e4",
+    "validationStatus": "context-valid",
+    "formalExecutionAllowed": true
+  },
+  "spokenContentChanged": false,
+  "originalVoiceSpeedChanged": false,
+  "voiceSidechainDucked": false,
+  "baseAudioSampleSliceVerified": true,
+  "withSfxVoiceUnchanged": true,
+  "sampleSliceByteExact": true,
+  "withSfxEncoding": "IEEE_FLOAT_32",
+  "floatReconstructionMaxAbsoluteError": 2.9802322387695312e-08,
+  "floatTolerance": 1e-07,
+  "unmodifiedWindowsMaxAbsoluteError": 0.0,
+  "unmodifiedSampleFrames": 2724181,
+  "baseCoefficient": 1,
+  "newSfxSafetyGain": 1.0,
+  "normalizationApplied": false,
+  "limiterApplied": false,
+  "resamplingApplied": false,
+  "allAddedSfxNonSilent": true,
+  "actualPremixAllPeaksWithinTwoFrames": true,
+  "actualPremixAllPeaksSampleExact": true,
+  "paperChecks": [
+    {
+      "id": "P03",
+      "startFrame": 514,
+      "endFrameExclusive": 730,
+      "addedMaxAmplitude": 0.0,
+      "baseUnchanged": true
+    },
+    {
+      "id": "P04",
+      "startFrame": 1371,
+      "endFrameExclusive": 1596,
+      "addedMaxAmplitude": 0.0,
+      "baseUnchanged": true
+    }
+  ],
+  "sfxSources": [
+    {
+      "path": "remotion/public/audio/koubo-sfx-v8/v2-keyword-select.wav",
+      "sha256": "08677d4e8a81366169cb1500b2bc1786da00660b7d2402e540dab9edaa01c2ed",
+      "license": "Mixkit Free License",
+      "licenseReference": "assets/sfx/koubo-sfx-v2/manifest.json"
+    },
+    {
+      "path": "remotion/public/audio/koubo-sfx-v8/v3-soft-card-pop-b.wav",
+      "sha256": "f0ba360c47c9247e264935981a1c3d9ceaa8a7265faeb2d7377e7a854122524a",
+      "license": "Mixkit Free License",
+      "licenseReference": "assets/sfx/koubo-sfx-v3-candidates/manifest.json"
+    },
+    {
+      "path": "remotion/public/audio/koubo-sfx-v8/v1-confirm-soft.wav",
+      "sha256": "d24d1aaa18c22874986f97d87c2ff92aebbbe03fa87e931047b29042f46c186d",
+      "license": "CC0",
+      "licenseReference": "assets/sfx/koubo-sfx-v1/manifest.json"
+    },
+    {
+      "path": "remotion/public/audio/koubo-sfx-v8/v1-keyword-tick.wav",
+      "sha256": "1ed414d9a26793d3bab087f6226f83a4e0566fac05a14552aebc43d0ac7cdff5",
+      "license": "CC0",
+      "licenseReference": "assets/sfx/koubo-sfx-v1/manifest.json"
+    }
+  ],
+  "samplePeaksDbfs": {
+    "base": -1.7983142892290893,
+    "withSfx": -1.2858358960498397,
+    "added": -16.99999999789091
+  },
+  "outputs": [
+    {
+      "path": "edit/20261014_director_motion_upgrade/public/motion-upgrade/audio/native.wav",
+      "sha256": "fce38521c5a9301eea912165d50809d8c81918a09230c678ea0dd336d8527733",
+      "samples": 2876800,
+      "loudness": {
+        "integratedLufs": -15.87,
+        "truePeakDbtp": -1.79,
+        "loudnessRangeLu": 4.0,
+        "measurementOnly": true,
+        "method": "ffmpeg loudnorm input measurements; output discarded"
+      }
+    },
+    {
+      "path": "edit/20261014_director_motion_upgrade/public/motion-upgrade/audio/with-sfx.wav",
+      "sha256": "9625fa7d279c2d9f557784f6cf5b19b400f8a872a7e8169ce2f35b622c134e3a",
+      "samples": 2876800,
+      "loudness": {
+        "integratedLufs": -15.88,
+        "truePeakDbtp": -1.27,
+        "loudnessRangeLu": 4.0,
+        "measurementOnly": true,
+        "method": "ffmpeg loudnorm input measurements; output discarded"
+      }
+    },
+    {
+      "path": "edit/20261014_director_motion_upgrade/public/motion-upgrade/audio/added-sfx.wav",
+      "sha256": "4af31d5b02aeffa8f9bc057b54ed4c7f15e7e5a7bf3c7bc8c0f615de3fc7a4ff",
+      "samples": 2876800
+    }
+  ],
+  "fingerprintPaths": [
+    "assets/sfx/koubo-sfx-v1/manifest.json",
+    "assets/sfx/koubo-sfx-v2/manifest.json",
+    "assets/sfx/koubo-sfx-v3-candidates/manifest.json",
+    "assets/sfx/koubo-sfx-v8/manifest.json",
+    "edit/20261011_enterprise_ai_organization/08_声音制作/audio/native-mix.v1.wav",
+    "edit/20261011_enterprise_ai_organization/08_声音制作/mixreceipt.v1.json",
+    "edit/20261014_director_motion_upgrade/control/prepare-audio.v1.py",
+    "remotion/public/audio/koubo-sfx-v8/v1-confirm-soft.wav",
+    "remotion/public/audio/koubo-sfx-v8/v1-keyword-tick.wav",
+    "remotion/public/audio/koubo-sfx-v8/v2-keyword-select.wav",
+    "remotion/public/audio/koubo-sfx-v8/v3-soft-card-pop-b.wav",
+    "remotion/src/enterprise-ai-motion-upgrade-20261014/visual-events.v1.json"
+  ],
+  "userAudibilityConfirmed": false,
+  "status": "technical-checks-passed-human-listening-pending",
+  "validationMeaning": "证明原底声样本与附加声数学路径，不证明正常音量试听效果或用户终验"
+}
