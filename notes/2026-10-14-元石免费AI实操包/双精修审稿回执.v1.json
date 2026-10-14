@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "task_id": "yuanshi-free-ai-20261014",
+  "status": "pending-human-review-and-delivery-verification",
+  "reviewed_at": "2026-10-14T23:48:00.105049+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-10-14-元石免费AI实操包/口播审阅候选.v1.md",
+    "sha256": "e238b0c2a98f9037f8286a941c19fcef303ad390763b43343fe390296e7f1bd9"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": false,
+    "voice_match_completed": true
+  },
+  "automated_scan": {
+    "rules_path": "/Users/pc/Documents/口播/knowledge/21-超哥口播语言与重复硬门禁.json",
+    "rules_sha256": "fe5031697546ff9cd8f5154200d3588540e34877ab3ac2a28c119e6a74efe4e7",
+    "scan_scope": [
+      "main",
+      "short"
+    ],
+    "hit_count": 0,
+    "hits": [],
+    "boundary": "零命中仅代表未命中这一组已登记模式，不证明文案自然、用户认可或传播有效。"
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "将零成本、放大器和红利宣言改成产品说明到答复草稿、人工核对与返工这一条动作链。边界嵌入做事方式，没有在正文加入审稿、门禁、哈希等内部说明。免费交付仍用未来/准备措辞，等实测与入口确定后收敛。"
+  },
+  "retention_review": {
+    "risk_node_count": 2,
+    "nodes": [
+      {
+        "original": "我不会只按企业赚不赚钱来分。先看你要解决的事够不够具体，谁来用，谁来核对，投入会不会给经营添负担。",
+        "risk_level": "medium",
+        "reason": "判断项连续出现，可能听成清单；待本人朗读检验呼吸与重音。",
+        "candidates": {
+          "conservative": "先把一件事说清楚：谁来做，做完谁核对，这笔投入你承不承受得起。",
+          "direct": "别先问公司赚不赚钱，先问这件事值不值得做。谁来用、谁负责，也要说清楚。",
+          "vivid": "光说“公司要上AI”不够。把你每天最费事的那一项拿出来，再说谁来用、谁来检查。"
+        },
+        "fact_difference": "保守版保留投入承受力；直接版“别先问”容易过度排除经营状态；生动版偏向频率，不能单独替代完整适配判断。",
+        "recommendation": "当前保留原句；本人读不顺时采用保守版，不为口语顺滑删除投入承受力。"
+      },
+      {
+        "original": "如果一项工作确实反复发生，试下来也有用，但要让几个岗位接得上、资料及时更新、出错有人处理，那才需要进一步讨论怎么落地。",
+        "risk_level": "medium",
+        "reason": "句子较长，抽象条件连续叠加；实测出来后应优先用一个具体交接卡点替换部分概述。",
+        "candidates": {
+          "conservative": "试下来有用，下一步再看：几个岗位怎么接，资料谁更新，出了错谁处理。",
+          "direct": "自己用得上，不代表全公司马上能用。跨岗位怎么交接，才是接下来要解决的事。",
+          "vivid": "销售用完交给谁，资料改了谁同步，答案出了错找谁，这些问题要一起解决。"
+        },
+        "fact_difference": "直接版容易把“跨岗位”误作付费的唯一条件；生动版引入销售场景但不是客户案例。",
+        "recommendation": "暂保留原句；待真实三任务样例的交接边界明确后，优先用保守版短句拆分。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [
+      "三项拟交付任务按主任务当前指令锁定为客户答复、工作周报、会议待办；成品和样品状态待主任务验证。"
+    ],
+    "removed_facts": [
+      "删除零成本、改公司名即可直接用、当天能直接产出可用成果的确定承诺。",
+      "删除获客、产能、复购增长承诺。",
+      "删除按企业利润简单二分与全员必须改造的普遍主张。"
+    ],
+    "wording_strength_changes": [
+      "已完成免费包的说法暂改为“准备免费给大家”“免费包会”。",
+      "“点生成直接用”改为草稿、人工核对、包含修改时间。"
+    ],
+    "pending_user_confirmations": [
+      "当前稿件语言、本人声音与读出口是否自然。",
+      "主任务包、样品、入口的真实验证结果。",
+      "若保留咨询CTA，需对齐实际咨询范围与预约安排。"
+    ]
+  },
+  "scores": null,
+  "score_boundary": "本报告不以模型评分冒充质量验收；未朗读、未获得用户语言确认，不输出 passed。",
+  "stage_interpretation": {
+    "scope": "对用户给定完整原稿作优化审阅，不是新增选题或制作",
+    "decision_ref": "父任务2026-10-14适用裁定：按用户当前直接授权完成完整审阅候选，保留最近6条缺2条、未达ready-for-draft或生产状态",
+    "formal_content_gate_passed": false,
+    "missing_recent_bodies": [
+      "54995b33b2afd70ab3c014ce",
+      "c9497273b0ceecaa02ba092a"
+    ],
+    "production_authorized": false
+  },
+  "read_aloud_evidence": {
+    "status": "not-performed",
+    "tts_performed": false,
+    "human_read_performed": false,
+    "user_language_approved": false
+  },
+  "counts": {
+    "main": 551,
+    "short": 146
+  }
+}

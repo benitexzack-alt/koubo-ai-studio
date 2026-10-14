@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "task_id": "yuanshi-free-ai-20261014",
+  "status": "pending-human-review-and-final-distribution-verification",
+  "reviewed_at": "2026-10-15T00:20:28.061810+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-10-14-元石免费AI实操包/口播审阅候选.v2.md",
+    "sha256": "c20b79851e294215d97711c3a7b71e9c6c3f9f93b97b39a2f2a26f907b0095b8"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": false,
+    "voice_match_completed": true
+  },
+  "automated_scan": {
+    "rules_path": "/Users/pc/Documents/口播/knowledge/21-超哥口播语言与重复硬门禁.json",
+    "rules_sha256": "fe5031697546ff9cd8f5154200d3588540e34877ab3ac2a28c119e6a74efe4e7",
+    "scan_scope": [
+      "main",
+      "short"
+    ],
+    "hit_count": 0,
+    "hits": [],
+    "boundary": "零命中仅代表未命中这一组已登记模式，不证明文案自然、用户认可或传播有效。"
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "资料已在本地形成，改为已整理的事实；只说三种练习与材料、步骤、检查表，不声称客户已独立用成功。先虚构样例后企业允许的脱敏材料。用一次未定建议进入行动表的实测错误说明检查责任，未把内部门禁和测试编号放入口播。付费判断长句拆短。"
+  },
+  "retention_review": {
+    "risk_node_count": 1,
+    "nodes": [
+      {
+        "original": "如果一项工作反复发生，试下来也有用，再看下一步：几个岗位怎么接，资料谁更新，出了错谁处理。确实需要帮助，我们再讨论怎么做，也先从一个小范围验证。",
+        "risk_level": "medium",
+        "reason": "后半段有连续判断项，实际节奏和本人感尚待朗读；已由v1长句拆成两个短句。",
+        "candidates": {
+          "conservative": "试下来有用，再看几个岗位怎么接、资料谁更新。确实需要帮助，我们再从一个小范围做起。",
+          "direct": "先证明这一项有用，再谈怎么让几个人配合起来。",
+          "vivid": "销售做完交给谁，资料改了谁更新，出了错找谁，这些才需要一起说明白。"
+        },
+        "fact_difference": "保守版少了错误处理责任；直接版少了资料更新与错误责任；生动版加销售场景但不代表客户案例。",
+        "recommendation": "保留现版，先让用户读一遍；不为缩短删除关键责任边界。"
+      }
+    ],
+    "no_high_risk_reason": ""
+  },
+  "fact_changes": {
+    "new_facts": [
+      "主任务确认完整免费实操手册已在本地形成，三个基础场景均有实际检查后的样品。",
+      "主任务回传会议任务把未定建议排进行动表的实测发现；正文限于这一次发现。",
+      "首次练习先使用虚构样例，再换企业允许且脱敏的材料。"
+    ],
+    "removed_facts": [
+      "删除v1仍处于准备免费资料的时态。",
+      "未将临时测试进度、工具额度或入口状态编成稳定对外能力。"
+    ],
+    "wording_strength_changes": [
+      "“准备免费给大家/免费包会”改为“我把三件小事整理成了一份免费实操资料”。",
+      "保留“试下来有用再继续”，没有改为已经省时、提高获客或实现增长。"
+    ],
+    "pending_user_confirmations": [
+      "当前稿件语言、本人感和读出口是否自然。",
+      "主任务最终飞书正文上传、可访问性与实际分发入口；正文暂不声称已经可领。",
+      "非技术客户独立试用和实际省时数据尚未发生，不作为文稿已有效的证据。"
+    ]
+  },
+  "scores": null,
+  "score_boundary": "本报告不以模型评分冒充质量验收；未朗读、未获得用户语言确认，不输出 passed。",
+  "stage_interpretation": {
+    "scope": "对用户给定完整原稿作优化审阅，不是新增选题或制作",
+    "decision_ref": "父任务2026-10-14适用裁定：按用户当前直接授权完成完整审阅候选，保留最近6条缺2条、未达ready-for-draft或生产状态",
+    "formal_content_gate_passed": false,
+    "missing_recent_bodies": [
+      "54995b33b2afd70ab3c014ce",
+      "c9497273b0ceecaa02ba092a"
+    ],
+    "production_authorized": false
+  },
+  "read_aloud_evidence": {
+    "status": "not-performed",
+    "tts_performed": false,
+    "human_read_performed": false,
+    "user_language_approved": false
+  },
+  "counts": {
+    "main": 554,
+    "short": 140
+  },
+  "source_handoff": {
+    "from": "父任务 /root",
+    "received_date": "2026-10-15",
+    "evidence_type": "本轮实测和交付状态回传",
+    "local_manual_formed": true,
+    "three_basic_samples_checked": true,
+    "independent_nontechnical_user_trial": false,
+    "measured_time_saving": false,
+    "feishu_item_16_entry_added": true,
+    "handoff_snapshot": "主任务确认九组DeepSeek样例均已实际跑完；会议增加准入规则后，M1/M2/M3在独立新对话复测，M2仍需人工补回已知交付物。三个基础任务均有核对后结果，无客户独立试用或经营提效证据。普通豆包C1首轮失败，工作体验额度用尽。跑完与核对后结果不等于全部自动通过。",
+    "feishu_final_body_and_access_verification": "pending-main-task-verification",
+    "latest_handoff_date": "2026-10-15"
+  },
+  "closure_update": {
+    "scope": "只更新v2内部临时事实表和本审稿回执，主稿与短版正文不变",
+    "main_body_unchanged": true,
+    "short_body_unchanged": true,
+    "body_sha256": {
+      "main": "4c682aedfc5ae00b7add19195b6664b139376f3dca5c9e6406218520fdcae538",
+      "short": "d3297859b7f165f729e8f5841a40fefab03a1edca217e2901751ba86d1ac6eb4"
+    },
+    "test_completion_boundary": "九组已跑完；会议独立新对话复测后M2仍需人工补回已知交付物；不推导为自动全通过。"
+  }
+}
