@@ -4,18 +4,18 @@
 
 项目来自「超哥AI创业记」的真实制作实践，主要服务甘肃本地小微企业、创业者和希望看懂 AI 应用的普通人。仓库提供工作流、Skill、代码、模板和校验器；新账号需要替换个人事实与账号资料。
 
-## 当前版本：V8 生产基线 + V9 导演试点
+## 当前版本：V9 成片制作基准 + V9.1 导演流程
 
-更新日期：2026-09-05。生产版本和导演版本分别管理。
+更新日期：2026-10-14。用户已认可一分钟升级效果，采用V9；下一条真实视频继续验证。生产版本与导演版本分别管理。
 
 | 层级 | 当前状态 | 解决的问题 |
 | --- | --- | --- |
 | 内容流程 | 来源研究、候选选择、源头精髓、内容门禁、双 Skill 审稿 | 写稿前确认来源、内容增量、事实和本人表达 |
-| 正式生产 | V8 活动基线 | 真人主画面、连续语义动效、实录中英字幕、数字运镜、逐视觉音效与发布包 |
-| 导演流程 | V9 / 9.0.0，下一条新视频试点 | 三套提示词、安全区、纸艺布局、Shotcraft 应用证据、九阶段状态机 |
+| 成片制作 | V9 活动基线，下一条继续验证 | 真人主画面、连续语义动效、实录中英字幕、数字运镜、逐视觉音效与发布包 |
+| 导演流程 | V9.1 / 9.1.0，导演表v2 | 三套提示词、安全区、纸艺布局、Shotcraft 应用证据、九阶段状态机 |
 | 历史基线 | V7.2 锁定母版 | 历史回归与故障回滚 |
 
-V9 已有代码、模板和校验器，仍须下一条真实素材完成端到端制作、小样观看和用户终验。现阶段不能称为「V9 正式生产已全面验收」。版本依据见 [生产档案](workflow/active-production-profile.v1.json)、[导演档案](workflow/active-director-profile.v1.json) 和 [V9 升级审计](workflow/audits/director-v9-upgrade-20260905.v1.md)。
+成片V9采用连续动作编排、按语义比较并实际使用动效库、真人交接和逐动作配声；继承V8实录与交付技术合同。版本已获用户确认，下一条整片视听仍须验证，V10暂不启动。依据见 [V9基线](knowledge/23-V9导演编排与动效采用基线.md)、[采用记录](workflow/audits/production-v9-adoption-20261014.v1.json)、[生产档案](workflow/active-production-profile.v1.json) 和 [导演档案](workflow/active-director-profile.v1.json)。
 
 ## 能完成什么
 
@@ -27,7 +27,7 @@ V9 已有代码、模板和校验器，仍须下一条真实素材完成端到�
 - 视频包装：人物讲解小窗、局部连续语义动效、声画绑定、响度处理、风险帧与媒体质检；Shotcraft 作为按需启用的辅助信息层。
 - 交付复盘：候选成片、当期真人截图、3:4 封面提示词、主标题与两个备选标题、发布文案、话题和发布记录一次整理。
 
-## V9 的制作顺序
+## 制作顺序（沿用既有阶段确认）
 
 ```text
 文稿确认 → 三套提示词 → 生成交接 → 素材验收 → 实录重绑
@@ -46,7 +46,7 @@ V9 已有代码、模板和校验器，仍须下一条真实素材完成端到�
 | [source-essence-synthesis](skills/source-essence-synthesis/SKILL.md) | 完整来源的母命题、认知节点与论证链保真 |
 | [content-brain-gate](skills/content-brain-gate/SKILL.md) | 事实、账号数据、内容增量、声音与生产准入 |
 | [humanize-koubo-script](skills/humanize-koubo-script/SKILL.md) | 事实安全精修、本人表达与留存风险审稿 |
-| [koubo-remotion-director](skills/koubo-remotion-director/SKILL.md) | V9 导演、实录重绑与 V8 生产衔接 |
+| [koubo-remotion-director](skills/koubo-remotion-director/SKILL.md) | 语义四路导演、V9编排意图与实录重绑衔接 |
 | [koubo-paper-firstframe-producer](skills/koubo-paper-firstframe-producer/SKILL.md) | 首帧批次、纸面中文、OCR 与交接包 |
 | [koubo-asset-prep](skills/koubo-asset-prep/SKILL.md) | 授权素材的抠图、图片或生成视频升清 |
 | [koubo-shotcraft-library](skills/koubo-shotcraft-library/SKILL.md) | 动效检索、逐节拍选择与实际应用回执 |
@@ -101,7 +101,7 @@ node tools/run-v72-production.mjs <production-job.json> formal
 node tools/validate-release.mjs <release.json>
 ```
 
-`run-v72-production.mjs` 保留历史文件名，实际执行受活动 V8 档案和当前门禁控制。正式渲染要求本条预览与用户确认。不要用 `remotion/package.json` 里的历史样片快捷命令替代新任务生产流程。
+`run-v72-production.mjs` 保留历史文件名，实际执行受当前活动生产档案（V9）和门禁控制。正式渲染要求本条预览与用户确认。不要用 `remotion/package.json` 里的历史样片快捷命令替代新任务生产流程。
 
 ## 数据与素材边界
 

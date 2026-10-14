@@ -1,5 +1,7 @@
 # 口播 Remotion 导演合同
 
+> 2026-10-14版本说明：新视频默认成片V9，入口为 `workflow/active-production-profile.v1.json` 和 `knowledge/23-V9导演编排与动效采用基线.md`。本文V8技术合同及旧纸艺路线只按其适用对象读取，不能覆盖当前四路导演与《超级个体》纸艺基准；`director-only` 不读取本工程合同来扩写提示词。
+
 ## 目标
 
 让每条口播从素材到正式片形成可复查链路：
@@ -32,7 +34,7 @@
 - B-roll、截图、参考图和生成素材的授权；
 - 是否需要双语字幕；
 - 当前唯一生产档案：`workflow/active-production-profile.v1.json`；
-- V8默认规范：`knowledge/20-V8连续语义动效与可感知音效基线.md`；
+- V9默认规范：`knowledge/23-V9导演编排与动效采用基线.md`；V8继承技术基础：`knowledge/20-V8连续语义动效与可感知音效基线.md`；
 - 历史回滚母版：`workflow/production-baseline.v1.json`；
 - 升级待办：`workflow/upgrade-backlog.json`。
 
@@ -62,7 +64,7 @@
 - 是否和另一层重叠；
 - 是否挡脸、挡手、挡字幕；
 - 哪一帧需要抽查；
-- 是否符合当前V8生产档案；如不符合，是否存在完整的用户明确降级批准。
+- 是否符合当前活动生产档案（V9，继承V8技术合同）；如不符合，是否存在完整的用户明确降级批准。
 
 同一个 `overlapGroup` 最多一个 `titleOwner=true`。
 

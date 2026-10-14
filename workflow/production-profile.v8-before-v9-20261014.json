@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "profileId": "v8-semantic-continuity-sfx",
+  "profileVersion": "V8",
+  "status": "active-default",
+  "effectiveFrom": "2026-08-10",
+  "decision": {
+    "authority": "user-explicit",
+    "summary": "V8作为本次及以后所有口播视频的制作基准。",
+    "reconfirmedAt": "2026-09-18",
+    "supersedesDefaultProfile": "v72"
+  },
+  "minimumReference": {
+    "id": "v8-r2-readable-semantic-motion-baseline",
+    "lockedAt": "2026-09-18",
+    "authority": "user-explicit",
+    "sourcePreview": {
+      "path": "edit/20260917_ai_efficiency_sharing/07_预览与质检/员工AI增效分配_返修R2_观看版_有附加音效_v3.mp4",
+      "sha256": "919914918e1633f3083c49f887bc1fc524f8e2b760cda374f50b33920a0c52c7"
+    },
+    "minimums": {
+      "semanticMotion": "连续语义层演化，保留可感知推进、保持与回落",
+      "electronicCamera": "必须有可感知电子运镜，不能以1.0静止或无位移代替",
+      "informationLayer": "标题下说明、流程、对照和关系图节点在成片实际缩放后仍可读",
+      "typography": {
+        "mainTitleOutputPixels": 48,
+        "supportingTextOutputPixels": 35.2,
+        "relationHubOutputPixels": 32,
+        "relationBranchOutputPixels": 33.6,
+        "textMustFitMeasuredContainers": true
+      },
+      "safeAreas": ["face", "hands", "subtitle"],
+      "sameFrameSfxComparisonRequired": true,
+      "spokenTranscriptPolicy": "recorded-audio-verbatim"
+    },
+    "downgrade": "blocked-unless-user-explicitly-approves-this-single-job"
+  },
+  "nextEpisodeDefaults": {
+    "id": "v8-word-card-and-sfx-refinement-20261001",
+    "effectiveFrom": "2026-10-01",
+    "authority": "user-explicit",
+    "scope": "下一条及以后新建edit-release任务；不回改已导出影片或历史锁定组件",
+    "status": "default-starting-values-human-preview-pending",
+    "sourceFeedback": "用户认可本期内容；要求左上词条卡与字号适度放大、改善音效听感，作为下一条基准。",
+    "referenceCanvas": {"width": 1920, "height": 1080},
+    "wordCards": {
+      "sizeMultiplierFromMetaR1": 1.25,
+      "mainTitleOutputPixels": 60,
+      "supportingTextOutputPixels": 44,
+      "categoryLabelOutputPixels": 32,
+      "suggestedRegion": {"x": 64, "y": 96, "width": 660, "height": 414},
+      "maximumVisibleFlowNodes": 4,
+      "suggestedFlowRowPitchPixels": 68,
+      "align": "top-left",
+      "measureAfterAllTransforms": true,
+      "recheckActualSpeakerProtectedRegions": true,
+      "overflowPolicy": "优先在安全区扩宽、换行或分步呈现；不以偷偷缩回小字号解决；节点和连线同步调整",
+      "consumerPolicy": "新任务级组件显式读取本字段并传入实际字号/视窗，留下最终缩放后字号记录；仅修改计划声明不算应用。其他画幅按实拍保护区重排，不全局缩放字幕、品牌或整幅画面。"
+    },
+    "soundDesign": {
+      "openingHookAuditionRequired": true,
+      "roles": ["钩子重点", "卡片入场", "词条点亮", "关系连接或动作完成"],
+      "actionSfxAuditRequired": true,
+      "syncAnchor": "声音有效瞬态对准画面关键落点，而不是仅对齐音频文件起点",
+      "impactSyncToleranceFrames": 2,
+      "consumerPolicy": "下一条声音计划逐动作记录视觉落点、源裁切范围、有效瞬态相对裁切点的偏移和实际增益/包络；混音或Remotion消费者实际应用，不只改声明或继续完整播放全部音效文件。",
+      "selectionPolicy": "先按动作功能选音色，再在同功能候选内轮换；不足时补候选或调整该动作声音方案，不跨类别随机回退。",
+      "gainPolicy": "逐源测量、逐动作配平；必要时裁去音效前导空白、收短尾音或仅避让附加音效，不统一抬总音量、不压低原口播掩盖问题",
+      "maximumForegroundAddedSfxLayers": 1,
+      "preserveUsableNativeActionAudio": true,
+      "nativeProcessingPolicy": "逐源判断瞬态、动态与人声关系，不把所有原生动作声统一静音或统一套极短攻击压缩。",
+      "avoidDuplicateAddedAndNativeActionSound": true,
+      "ordinarySubtitleSfx": false,
+      "continuousCameraSfx": false,
+      "sameFrameSfxComparisonRequired": true,
+      "audition": "下一条30—45秒同画面有/无附加音效对照，覆盖钩子、词条入场与点亮、动作结果；正常速度、正常手机外放音量检查清楚、贴合、不抢人声",
+      "userAudibilityConfirmed": false
+    },
+    "unchanged": ["正文与完整原声", "实录双语字幕", "左下真人小窗", "电子运镜原基准", "纸艺最低质量基准", "V8档案及历史最低参考"],
+    "acceptance": "默认起测参数已确定，不等于新片观感和听感已通过；须用下一条真实小样验收"
+  },
+  "specification": "knowledge/20-V8连续语义动效与可感知音效基线.md",
+  "validator": "tools/validate-v8-production-contract.mjs",
+  "requirements": {
+    "experimentId": "v8-semantic-continuity-sfx",
+    "visualPlanSchemaVersion": 4,
+    "sfxCueSheetSchemaVersion": 3,
+    "speakerIsDefaultPrimaryPicture": true,
+    "remotionInformationMaximumCoverageRatio": 0.42,
+    "sameFrameSfxComparisonRequired": true,
+    "spokenTranscriptPolicy": {
+      "required": true,
+      "canonicalSource": "recorded-audio",
+      "scriptRole": "comparison-only",
+      "captionTextPolicy": "spoken-verbatim",
+      "englishTranslationSource": "canonical-spoken-chinese",
+      "verifier": "spoken-source-v1",
+      "minimumGlobalPrecision": 0.97,
+      "minimumGlobalCoverage": 0.95,
+      "minimumPagePrecision": 0.82,
+      "minimumPageCoverage": 0.72,
+      "allowScopedHistoricalException": true,
+      "exceptionStatus": "known-exception-user-accepted"
+    },
+    "finalDeliveryPackage": {
+      "required": true,
+      "trigger": "sound-enabled-formal-candidate-ready",
+      "missingStatus": "incomplete-delivery",
+      "cover": {
+        "aspectRatio": "3:4",
+        "promptRequired": true,
+        "recommendedFrameRequired": true,
+        "recommendedFrameSource": "current-final-video-real-frame",
+        "preserveRealPersonIdentity": true,
+        "seriesTemplate": "templates/10-超哥AI创业记_3比4系列封面提示词母版.md",
+        "seriesIdentity": "超哥AI创业记",
+        "knowledgeStructureRequired": true,
+        "requiredPromptMarkers": [
+          "超哥AI创业记",
+          "3:4",
+          "1080×1440",
+          "唯一人物素材",
+          "禁止重新生成人脸",
+          "知识结构",
+          "路径",
+          "真实场景"
+        ]
+      },
+      "douyin": {
+        "primaryTitleRequired": true,
+        "minimumAlternativeTitles": 2,
+        "publishCopyRequired": true,
+        "minimumTopics": 1
+      }
+    }
+  },
+  "downgradePolicy": {
+    "default": "blocked",
+    "requiresExplicitUserApproval": true,
+    "requiredFields": [
+      "approved",
+      "approvedBy",
+      "approvedAt",
+      "reason",
+      "scope"
+    ]
+  },
+  "historicalRollbackBaseline": {
+    "path": "workflow/production-baseline.v1.json",
+    "id": "koubo-formal-16x9-v1",
+    "revision": "V7.2-20260730",
+    "lockedReferenceVideoId": "CYCLE_ASSETS_20260730_talk01",
+    "purpose": "仅用于锁定母版回归和故障回滚，不是新视频默认视觉档案。"
+  }
+}

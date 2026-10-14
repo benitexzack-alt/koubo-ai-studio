@@ -29,7 +29,7 @@
 - `director-only`：只读取用户确认文稿或真实口播转写、用户确认的往期风格参考、`skills/koubo-remotion-director/SKILL.md`、其 `references/semantic-visual-director.v2.md` 和 `templates/director-cues.v2.json`。不得读取旧 V9.1 工程合同、首帧生产合同或发布合同来扩写导演提示词。
 - `firstframe`：读取用户确认的 `director-cues.v2.json` 和当前分路对应的生产 Skill；纸艺分路读取 `skills/koubo-paper-firstframe-producer/SKILL.md`。此时才进入首帧生成、确定性中文、OCR、首帧验收和平台交接；空分路不启动。
 - `video-generation`：读取用户确认的首帧、当前视频提示词和 `skills/koubo-runninghub-video-batch/SKILL.md`；不得反向重写已经确认的导演表或首帧。
-- `edit-release`：读取 `knowledge/20-V8连续语义动效与可感知音效基线.md`、`knowledge/22-实录优先字幕与系列发布包硬门禁.md`、`workflow/active-production-profile.v1.json` 和本阶段对应 Skill。V8 是新视频默认制作基准；V7.2 只用于锁定母版回归和故障回滚，任何降级必须有用户明确批准记录。
+- `edit-release`：读取 `knowledge/23-V9导演编排与动效采用基线.md`、其继承的 `knowledge/20-V8连续语义动效与可感知音效基线.md`、`knowledge/22-实录优先字幕与系列发布包硬门禁.md`、`workflow/active-production-profile.v1.json` 和本阶段对应 Skill。成片 V9 是新视频默认制作基准，下一条真实视频继续验证；导演 V9.1 与导演表 v2 保持原名。V8保留为继承基础和历史档案，V7.2只用于锁定母版回归和故障回滚；任何降级必须有用户明确批准记录，V10须待下条反馈后再决定。
 - `governance-maintenance`：只读取目标规则、直接调用者和最小相关测试；发现生产链旁支问题只登记，不顺手修复。
 
 `topic-script` 阶段生成、改写或重组公开口播时，先用项目内 `douyin-koubo-source-to-original` 生成并校验研究上下文和候选包；用户未选择候选题、三个钩子中的一个和提纲骨架时，只能输出讨论候选，不能写完整公开稿。完整访谈、长视频、文章或参考口播的深度改编，再用 `source-essence-synthesis` 生成并校验源头精髓卡；达到 `ready-for-outline` 后，使用 `content-brain-gate` 生成并校验内容门禁卡。五项文案能力的固定顺序是：源头拆解与原创合成 → 源头精髓（适用时）→ 内容大脑门禁 → humanizer-zh → 本人口播精修。`tools/setup-koubo.mjs` 必须注册项目内前三项；`humanizer-zh` 是 Codex 全局 Skill，`humanize-koubo-script` 是项目 Skill。没有实际读取证据、校验结果和用户选择回执时，不得只说“已经查过知识库”。已经由用户确认且本轮不修改正文的文稿进入 `director-only` 时，不重复启动本段文案流程。
@@ -83,12 +83,12 @@
 18. 只有用户明确要求删除、压缩、重排、处理重录或口误时，才进入剪辑策略、粗剪和粗剪确认；完整单条默认全量保留。
 19. 用实际口播重绑导演表的入出点和所有已验收素材；任一句实录变化都不得继续套用拍摄前时点。
 20. 按实际口播制作同窗中英文字幕和必要信息卡；英文只从已确认实录中文翻译。
-21. 在 `edit-release` 阶段对所有 `speaker` 和 `real-evidence` beat 扫描当前 Shotcraft 全库，逐项记录 `apply` 或 `not-needed`；只有真正改善理解、聚焦或衔接的效果才能进入 V8 视觉计划，不在 AI/纸艺视频内叠加 Shotcraft，不用低相关卡凑数。
-22. 按 `workflow/active-production-profile.v1.json` 的 V8 基线完成 Remotion 包装、数字运镜、已选 Shotcraft、音效和低清小样。
+21. 在 `edit-release` 阶段对所有 `speaker` 和 `real-evidence` beat 扫描当前 Shotcraft 全库，逐项记录 `apply` 或 `not-needed`；只有真正改善理解、聚焦或衔接的效果才能进入当前 V9 视觉计划，不在 AI/纸艺视频内叠加 Shotcraft，不用低相关卡凑数。
+22. 按 `workflow/active-production-profile.v1.json` 的 V9 基线完成 Remotion 包装、数字运镜、已选 Shotcraft、音效和低清小样。
 23. 对小样执行自动质量检查，包括解码、黑帧/静音、字幕、安全区、语义入点和声画衔接。
 24. 用户完整观看本条小样并确认。不通过时只返工实际失败的 beat，不连锁重做已验收部分。
 25. 小样验收后才正式渲染有音效候选成片。
-26. 从本条候选片的本人真实口播画面中截取推荐封面人物图，并一次性整理 `3:4` 真人截图合成封面提示词、一个主标题、两个备选标题、抖音发布文案和话题；全部写入发布记录并通过 V8 完整交付包校验。
+26. 从本条候选片的本人真实口播画面中截取推荐封面人物图，并一次性整理 `3:4` 真人截图合成封面提示词、一个主标题、两个备选标题、抖音发布文案和话题；全部写入发布记录并通过当前生产档案的完整交付包校验。
 27. 用户对正式候选完整观看确认后，状态才可升级为 `verified`。
 28. 发布后按早期、24 小时、72 小时和 7 天窗口归档数据；更新复盘报告与当前学习卡，达到最小受控样本前，不把单条表现升级为稳定规律。
 
@@ -125,7 +125,7 @@
 - 新纸艺统一以 `skills/koubo-remotion-director/references/paper-quality-baseline-20260829.md` 及其绑定的《超级个体》实际作品为最低基准。首帧直接生成准确中文，字与承载纸面一起运动；一镜一个认知目标，允许有因果关系的连续动作，不再强制独立固定字牌。至少三层空间、材质与逐字核对/OCR仍需验收；旧无字底图、本地烘焙和固定牌合同仅供历史回归，不得向新路线倒灌。用户确认首帧后才允许图生视频，代表镜需正常速度检查字物同动、动作结果和原生音效；可用的原生动作音不得统一静音。任何新升级均不得未经用户确认降低此基准。
 - 进入 `video-generation` 后，才执行新机构动态试验、动作边界抽帧、实际视频证据和独立人工验收；首帧或视频失败只返工失败镜头，不连锁重写已确认镜头。
 - 真实素材分路必须绑定本条来源和权限。承担 `evidence` 或 `demonstration` 的材料缺失时，按导演表删改未证实主张或阻断生产，不能默认改成 AI 画面；只承担 `context` 的公开画面缺失时，在事实已由独立来源核验的前提下可按导演表留真人，不得硬编硬塞。
-- 进入 `edit-release` 后，先实录重绑，再对 `speaker` 和 `real-evidence` 扫描 Shotcraft 当前全库并留下应用或不需要回执；此时才要求本条 request、route lock、plan、compile receipt、`skillExecuted=true` validation receipt、`tools/validate-director-production-binding.mjs`、动态候选验收和 V8 正式生产门禁。
+- 进入 `edit-release` 后，先实录重绑，再对 `speaker` 和 `real-evidence` 扫描 Shotcraft 当前全库并留下应用或不需要回执；此时才要求本条 request、route lock、plan、compile receipt、`skillExecuted=true` validation receipt、`tools/validate-director-production-binding.mjs`、动态候选验收和当前 V9 正式生产门禁（继承 V8 技术合同）。
 - 客户可见画面不得出现 R01–Rxx 路由编号、文件名、JSON/Schema 名、登记表名、审核状态、内部边界标签或其他生产技术字样；观众理解所必需的事实限定、正式来源名称和授权署名必须保留。
 - 除纸艺和 AI 生成视频外，Codex 搜集的公开图片、公开视频及其他 `real-evidence` 主画面，必须同步叠加本条真实口播画面的小窗；小窗固定在左下角安全区，不得放在会被抖音头像遮挡的右下角。
 - 公开资料主画面必须预留独立字幕区；中英文字幕不得覆盖资料正文、关键数字、来源、授权署名或真人小窗。若原素材底部已有来源/署名，优先缩放资料进入独立视窗，并把字幕移至资料视窗外。
@@ -134,7 +134,7 @@
 
 脚本固定交付包中的“文字版封面提示词”不等于已经启动封面制作，但只能在事实锁、双 Skill 和 `ready-for-draft` 均通过后生成。缺少抖音标题或封面提示词的文稿只能标记为 `incomplete-delivery`，不得称为完整口播稿。
 
-V8正式成片的最低完整交付固定为：`成片 + 本条成片真人截图 + 3:4封面提示词 + 一个主标题和两个备选标题 + 抖音发布文案 + 抖音话题`。截图必须记录本条正式成片路径和时间点，不得用历史照片、其他视频帧或AI重绘人物替代。缺少任一项时，成片交付同样只能标记为 `incomplete-delivery`。
+当前生产档案正式成片的最低完整交付固定为：`成片 + 本条成片真人截图 + 3:4封面提示词 + 一个主标题和两个备选标题 + 抖音发布文案 + 抖音话题`。截图必须记录本条正式成片路径和时间点，不得用历史照片、其他视频帧或AI重绘人物替代。缺少任一项时，成片交付同样只能标记为 `incomplete-delivery`。
 
 ### 实录优先字幕硬门
 
@@ -142,7 +142,7 @@ V8正式成片的最低完整交付固定为：`成片 + 本条成片真人截�
 - 中文字幕必须逐句保持实际说法、用词、语序和信息量。不能为了顺口删口头连接词、合并意思、改正表达或恢复文稿原句。
 - 即使实际口播与原稿不同，也先按实录出字幕。若实际口播存在事实或表达问题，另列“重录 / 剪除 / 更正”建议，由用户决定；禁止只改字幕制造“说过另一句话”的假象。
 - 英文辅助字幕必须从已确认的实录中文翻译，不能从拍摄前文稿翻译。
-- 每条 V8 发布记录必须绑定实录来源策略文件，并通过 `spoken-source-v1` 校验。历史成片只有在用户明确接受本条偏差、例外仅绑定该 release ID 且完整记录原因时，才允许登记 `known-exception-user-accepted`；该例外不得继承到下一条。
+- 每条 V9 及继承 V8 合同的发布记录必须绑定实录来源策略文件，并通过 `spoken-source-v1` 校验。历史成片只有在用户明确接受本条偏差、例外仅绑定该 release ID 且完整记录原因时，才允许登记 `known-exception-user-accepted`；该例外不得继承到下一条。
 
 抖音精选内容四项特征只作为质量目标，不能替代事实、来源、合规、账号阶段和用户确认，也不能被表述为入选保证或平台算法公式。
 

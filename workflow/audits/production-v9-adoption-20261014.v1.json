@@ -1,0 +1,61 @@
+{
+  "schema": "koubo-production-version-adoption/v1",
+  "version": "V9",
+  "profileId": "v9-semantic-direction-sfx",
+  "status": "adopted-next-episode-validation-pending",
+  "authority": "user-explicit",
+  "acceptedAt": "2026-10-14T15:49:29.156Z",
+  "currentMessageId": "msg_01a13b1a-b7c4-7760-a128-d59b4f83e6d6",
+  "userQuote": "可以，我觉得这个效果还是算是有一定的升级，嗯，可以作为我们新的一个版本啊。先沿用做到下一个视频里面，然后先升级吧。升级确定为V9吧。然后我们再从下一个版本里面下一个视频里面再验证，如果没问题的话，我们就确定看如何再去做V10更好的版本出来",
+  "evidence": {
+    "path": "workflow/audits/production-v9-adoption-20261014.user.jsonl",
+    "sha256": "7a5e1addd4b46c5ccec2242c2541299fb758f73ec32fe77e2a02dedbe4a7fed8"
+  },
+  "acceptedReference": {
+    "path": "edit/20261014_director_motion_upgrade/outputs/企业全员AI改造_导演升级_一分钟_R1_有音效.mp4",
+    "sha256": "8d4f2491c5d66f32b8878e1187db0647e5e88e249a40b15b89fdb8e5e44defe1",
+    "durationInFrames": 1798,
+    "fps": 30,
+    "scope": "本次一分钟候选的编排效果认可，作为新视频V9起点"
+  },
+  "approval": {
+    "visualDirectionAccepted": true,
+    "useForNextVideo": true,
+    "newDefaultVersionApproved": true,
+    "fullTechnicalQaPassed": false,
+    "fullVideoWatchConfirmed": false,
+    "separateAudioAcceptanceClaimed": false,
+    "publishAuthorized": false
+  },
+  "technicalStatus": {
+    "historicalFinalRegistration": "blocked-index-not-current",
+    "historicalFinalQa": "incomplete",
+    "restoreSuccessfulReceipt": false,
+    "note": "本次用户认可观感及采用方向；不改写此前渲染后置复检与QA失败事实。"
+  },
+  "nextValidation": {
+    "scope": "下一条真实口播按V9完成既有导演、制作、预览和整片视听验收",
+    "focus": [
+      "语义关系是否更易理解",
+      "动作后阅读时间是否足够",
+      "真人与纸艺交接是否自然",
+      "动作音是否贴合且不抢人声",
+      "已选库是否实际落片且风格一致"
+    ],
+    "independentMinutePreviewRequired": false,
+    "status": "pending"
+  },
+  "v10": {
+    "status": "deferred",
+    "condition": "根据下一条V9真实视频的验证和用户反馈，再决定V10改进"
+  },
+  "previousProfile": {
+    "path": "workflow/production-profile.v8-before-v9-20261014.json",
+    "sha256": "b9b29c955915a65b2545ce66bc55ca41dfc3408128cafc8eb2b1312df3a34440"
+  },
+  "implementationReferences": [
+    "remotion/src/enterprise-ai-motion-upgrade-20261014/Composition.tsx",
+    "edit/20261014_director_motion_upgrade/control/library-selection.v1.json"
+  ],
+  "historicalArtifactsPolicy": "已出片、历史job和回执保持原版本，不批量改成V9。"
+}

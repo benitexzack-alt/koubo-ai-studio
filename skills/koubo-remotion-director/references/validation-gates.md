@@ -1,5 +1,7 @@
 # 验证与交付门禁
 
+> 2026-10-14版本说明：新视频默认成片V9，入口为 `workflow/active-production-profile.v1.json` 和 `knowledge/23-V9导演编排与动效采用基线.md`。本文V8技术合同及旧纸艺路线只按其适用对象读取，不能覆盖当前四路导演与《超级个体》纸艺基准；`director-only` 不读取本工程合同来扩写提示词。
+
 ## 视觉方案门禁
 
 先运行当前生产档案校验：
@@ -8,7 +10,7 @@
 node tools/validate-active-production-profile.mjs <production-job.json> doctor
 ```
 
-新视频不是V8且没有完整用户降级批准时必须停止。该门禁对所有生产命令无条件执行，不能靠省略`experiment.id`绕过。
+新视频未匹配当前活动生产档案（V9）且没有完整用户降级批准时必须停止。该门禁对所有生产命令无条件执行，不能靠省略`experiment.id`绕过。
 
 运行：
 
@@ -94,13 +96,13 @@ Skill 的既有 30 秒 WithSfx 用户验收只证明风格方向可接受。它�
 
 ## 预览门禁
 
-V8 默认运行（脚本名保留V7.2只是兼容历史调用）：
+当前V9默认运行（继承V8技术合同，脚本名保留V7.2兼容历史调用）：
 
 ```bash
 node tools/run-v72-production.mjs <production-job.json> prepare
 ```
 
-该命令先校验V8默认档案，再同时生成同画面有声/无声动态预览、完整分辨率风险帧和音频预检报告。
+该命令先校验当前V9默认档案，再同时生成同画面有声/无声动态预览、完整分辨率风险帧和音频预检报告。
 
 正式片前必须完成：
 

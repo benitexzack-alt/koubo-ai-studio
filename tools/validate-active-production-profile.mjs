@@ -91,4 +91,9 @@ if (matchesActive && profile.nextEpisodeDefaults) {
   console.log(
     `新建任务起测基准 ${defaults.id}：词条成片主字${defaults.wordCards.mainTitleOutputPixels}px、说明${defaults.wordCards.supportingTextOutputPixels}px；关键音效按有效瞬态同步、正常音量试听。不回改历史片；档案校验不代表参数已落片或听感通过。`,
   );
+  if (profile.profileVersion === 'V9' && defaults.motionDirection) {
+    console.log(
+      'V9 新任务执行基准：按语义编排对象初态、变化、结果、读稳停留、相邻承接和真人交接；动效库须记录实际采用与落片位置，动作音对准有效瞬态。下一条完整实片仍待验证；本档案检查不代表成片验收通过，也不自动升级 V10。',
+    );
+  }
 }

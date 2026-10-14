@@ -411,17 +411,33 @@ try {
   const productionProfile = readJson(
     path.resolve(projectRoot, 'workflow/active-production-profile.v1.json'),
   );
+  // 成片制作版本与本文件校验的纸艺导演 9.1 是两条独立版本线。
+  const supportedProductionProfiles = {
+    V8: {
+      id: 'v8-semantic-continuity-sfx',
+      role: 'formal-production-rollback-baseline-during-v9-pilot',
+    },
+    V9: {
+      id: 'v9-semantic-direction-sfx',
+      role: 'active-production-profile-with-inherited-v8-contract',
+    },
+  };
+  const expectedProductionProfile = Object.hasOwn(supportedProductionProfiles, productionProfile.profileVersion)
+    ? supportedProductionProfiles[productionProfile.profileVersion]
+    : undefined;
   if (
-    productionProfile.profileId !== 'v8-semantic-continuity-sfx' ||
-    productionProfile.profileVersion !== 'V8' ||
-    profile.v8Integration?.role !== 'formal-production-rollback-baseline-during-v9-pilot' ||
+    !expectedProductionProfile ||
+    productionProfile.profileId !== expectedProductionProfile.id ||
+    productionProfile.requirements?.experimentId !== 'v8-semantic-continuity-sfx' ||
+    profile.v8Integration?.outerPackagingProfile !== expectedProductionProfile.id ||
+    profile.v8Integration?.role !== expectedProductionProfile.role ||
     profile.v8Integration?.v9CandidateForNextNewRevision !== true ||
     profile.v8Integration?.v9FormalEligibleBeforeRealPilotAcceptance !== false
   ) {
-    errors.push('DIRECTOR_PROFILE_V8_ROLLBACK_BASELINE_INVALID');
+    errors.push('DIRECTOR_PROFILE_PRODUCTION_INTEGRATION_INVALID');
   }
 } catch (error) {
-  errors.push(`DIRECTOR_PROFILE_V8_ROLLBACK_LOAD_FAILED:${error.message}`);
+  errors.push(`DIRECTOR_PROFILE_PRODUCTION_INTEGRATION_LOAD_FAILED:${error.message}`);
 }
 const upgradeAuditPath = resolveDeclared(profile.skill?.contractUpgrade?.auditReport?.path);
 if (

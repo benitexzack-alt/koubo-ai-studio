@@ -164,22 +164,22 @@ if (isActiveProfileRelease) {
 
   if (delivery?.status !== 'ready-for-delivery') {
     errors.push(
-      `V8完整交付包状态必须为 ready-for-delivery；缺项时应保持 ${requirements?.missingStatus ?? 'incomplete-delivery'}。`,
+      `当前版本完整交付包状态必须为 ready-for-delivery；缺项时应保持 ${requirements?.missingStatus ?? 'incomplete-delivery'}。`,
     );
   }
 
   if (cover?.aspectRatio !== expectedCover.aspectRatio) {
-    errors.push(`V8封面提示词画幅必须为 ${expectedCover.aspectRatio ?? '3:4'}。`);
+    errors.push(`当前版本封面提示词画幅必须为 ${expectedCover.aspectRatio ?? '3:4'}。`);
   }
   if (!exists(cover?.recommendedFrame)) {
-    errors.push(`V8缺少从本条正式成片截取的推荐封面人物图：${cover?.recommendedFrame ?? ''}`);
+    errors.push(`当前版本缺少从本条正式成片截取的推荐封面人物图：${cover?.recommendedFrame ?? ''}`);
   }
   if (cover?.sourceVideo !== release.production?.formalOutput) {
-    errors.push('V8推荐封面人物图的 sourceVideo 必须与本条正式成片路径一致。');
+    errors.push('当前版本推荐封面人物图的 sourceVideo 必须与本条正式成片路径一致。');
   }
   if (cover?.sourceType !== expectedCover.recommendedFrameSource) {
     errors.push(
-      `V8推荐封面人物图来源必须为 ${expectedCover.recommendedFrameSource ?? 'current-final-video-real-frame'}。`,
+      `当前版本推荐封面人物图来源必须为 ${expectedCover.recommendedFrameSource ?? 'current-final-video-real-frame'}。`,
     );
   }
   if (
@@ -187,54 +187,54 @@ if (isActiveProfileRelease) {
     cover.sourceTimeSeconds < 0 ||
     (formalDuration !== null && cover.sourceTimeSeconds > formalDuration)
   ) {
-    errors.push('V8推荐封面人物图必须记录正式成片范围内的有效截取时间点。');
+    errors.push('当前版本推荐封面人物图必须记录正式成片范围内的有效截取时间点。');
   }
   if (!exists(cover?.prompt)) {
-    errors.push(`V8缺少可直接复制的3:4真人截图合成封面提示词：${cover?.prompt ?? ''}`);
+    errors.push(`当前版本缺少可直接复制的3:4真人截图合成封面提示词：${cover?.prompt ?? ''}`);
   } else {
     const promptText = fs.readFileSync(path.resolve(cover.prompt), 'utf8');
     for (const marker of expectedCover.requiredPromptMarkers ?? []) {
       if (!promptText.includes(marker)) {
-        errors.push(`V8系列封面提示词缺少固定标记：${marker}`);
+        errors.push(`当前版本系列封面提示词缺少固定标记：${marker}`);
       }
     }
   }
   if (cover?.template !== expectedCover.seriesTemplate) {
-    errors.push(`V8封面提示词必须绑定系列母版：${expectedCover.seriesTemplate ?? ''}`);
+    errors.push(`当前版本封面提示词必须绑定系列母版：${expectedCover.seriesTemplate ?? ''}`);
   }
 
   if (expectedDouyin.primaryTitleRequired && !isNonEmpty(titles?.primary)) {
-    errors.push('V8完整交付包缺少抖音主标题。');
+    errors.push('当前版本完整交付包缺少抖音主标题。');
   }
   const alternativeTitles = (titles?.alternatives ?? []).filter(isNonEmpty);
   if (alternativeTitles.length < Number(expectedDouyin.minimumAlternativeTitles ?? 2)) {
-    errors.push(`V8完整交付包至少需要 ${expectedDouyin.minimumAlternativeTitles ?? 2} 个抖音备选标题。`);
+    errors.push(`当前版本完整交付包至少需要 ${expectedDouyin.minimumAlternativeTitles ?? 2} 个抖音备选标题。`);
   }
   if (new Set([titles?.primary, ...alternativeTitles]).size !== 1 + alternativeTitles.length) {
-    errors.push('V8主标题和备选标题不得重复。');
+    errors.push('当前版本主标题和备选标题不得重复。');
   }
   if (expectedDouyin.publishCopyRequired && !isNonEmpty(douyin?.publishCopy)) {
-    errors.push('V8完整交付包缺少抖音发布文案。');
+    errors.push('当前版本完整交付包缺少抖音发布文案。');
   }
   const topics = (douyin?.topics ?? []).filter(isNonEmpty);
   if (topics.length < Number(expectedDouyin.minimumTopics ?? 1)) {
-    errors.push(`V8完整交付包至少需要 ${expectedDouyin.minimumTopics ?? 1} 个抖音话题。`);
+    errors.push(`当前版本完整交付包至少需要 ${expectedDouyin.minimumTopics ?? 1} 个抖音话题。`);
   }
   if (new Set(topics).size !== topics.length) {
-    errors.push('V8抖音话题不得重复。');
+    errors.push('当前版本抖音话题不得重复。');
   }
   if (!exists(delivery?.copyReview)) {
-    errors.push(`V8标题、发布文案和话题缺少双Skill审稿记录：${delivery?.copyReview ?? ''}`);
+    errors.push(`当前版本标题、发布文案和话题缺少双Skill审稿记录：${delivery?.copyReview ?? ''}`);
   } else {
     try {
       const review = readJson(delivery.copyReview);
       if (review.status !== 'passed') {
-        errors.push('V8双Skill审稿记录状态必须为 passed。');
+        errors.push('当前版本双Skill审稿记录状态必须为 passed。');
       }
       if (path.resolve(review.draft?.path ?? '') !== path.resolve(cover?.prompt ?? '')) {
-        errors.push('V8双Skill审稿记录必须绑定当前封面提示词文件。');
+        errors.push('当前版本双Skill审稿记录必须绑定当前封面提示词文件。');
       } else if (review.draft?.sha256 !== sha256(path.resolve(cover.prompt))) {
-        errors.push('V8双Skill审稿记录绑定的封面提示词哈希已经过期。');
+        errors.push('当前版本双Skill审稿记录绑定的封面提示词哈希已经过期。');
       }
       for (const [key, label] of [
         ['humanizer_zh', 'humanizer-zh'],
@@ -242,22 +242,22 @@ if (isActiveProfileRelease) {
       ]) {
         const skill = review.skills?.[key];
         if (!exists(skill?.path) || skill?.read !== true) {
-          errors.push(`V8双Skill审稿缺少已读取的 ${label} 当前文件。`);
+          errors.push(`当前版本双Skill审稿缺少已读取的 ${label} 当前文件。`);
         } else if (skill.sha256 !== sha256(path.resolve(skill.path))) {
-          errors.push(`V8双Skill审稿中的 ${label} 哈希已经过期。`);
+          errors.push(`当前版本双Skill审稿中的 ${label} 哈希已经过期。`);
         }
       }
       if (Number(review.scores?.fact_fidelity) !== 10) {
-        errors.push('V8双Skill审稿的事实保真必须为 10/10。');
+        errors.push('当前版本双Skill审稿的事实保真必须为 10/10。');
       }
     } catch (error) {
-      errors.push(`V8双Skill审稿记录无法读取：${error.message}`);
+      errors.push(`当前版本双Skill审稿记录无法读取：${error.message}`);
     }
   }
 
   const spokenPolicyPath = release.inputs?.spokenSourcePolicy;
   if (!exists(spokenPolicyPath)) {
-    errors.push(`V8缺少实录来源策略文件：${spokenPolicyPath ?? ''}`);
+    errors.push(`当前版本缺少实录来源策略文件：${spokenPolicyPath ?? ''}`);
   } else {
     const spokenPolicy = readJson(spokenPolicyPath);
     for (const key of [
@@ -268,7 +268,7 @@ if (isActiveProfileRelease) {
     ]) {
       if (spokenPolicy[key] !== transcriptRequirements?.[key]) {
         errors.push(
-          `V8实录来源策略 ${key} 必须为 ${transcriptRequirements?.[key] ?? ''}。`,
+          `当前版本实录来源策略 ${key} 必须为 ${transcriptRequirements?.[key] ?? ''}。`,
         );
       }
     }
@@ -276,10 +276,10 @@ if (isActiveProfileRelease) {
     const spokenStatus = spokenPolicy.compliance?.status;
     if (spokenStatus === 'passed') {
       if (release.qa?.spokenSource?.status !== 'passed') {
-        errors.push('V8实录逐字保真质检未通过。');
+        errors.push('当前版本实录逐字保真质检未通过。');
       }
       if (release.qa?.spokenSource?.verifier !== transcriptRequirements?.verifier) {
-        errors.push(`V8实录逐字保真校验器必须为 ${transcriptRequirements?.verifier ?? ''}。`);
+        errors.push(`当前版本实录逐字保真校验器必须为 ${transcriptRequirements?.verifier ?? ''}。`);
       }
       const spokenCheck = run(process.execPath, [
         'tools/check-spoken-source-policy.mjs',
@@ -302,15 +302,15 @@ if (isActiveProfileRelease) {
         isNonEmpty(release.userReview?.transcriptMismatchEvidence) &&
         exceptionIsScoped;
       if (!userAccepted) {
-        errors.push('V8实录偏差例外必须绑定当前release，并有用户完整观看后的明确接受证据。');
+        errors.push('当前版本实录偏差例外必须绑定当前release，并有用户完整观看后的明确接受证据。');
       } else {
         warnings.push('本条使用用户明确接受的实录偏差单条例外；该例外不得继承到下一条。');
       }
       if (release.qa?.spokenSource?.status !== transcriptRequirements?.exceptionStatus) {
-        errors.push('V8发布记录必须如实标记实录偏差例外，不能写成逐字校验通过。');
+        errors.push('当前版本发布记录必须如实标记实录偏差例外，不能写成逐字校验通过。');
       }
     } else {
-      errors.push('V8实录来源策略状态必须为 passed，或使用用户明确接受的单条历史例外。');
+      errors.push('当前版本实录来源策略状态必须为 passed，或使用用户明确接受的单条历史例外。');
     }
   }
 }
