@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "task_id": "task-20261015T034622Z-9d8a1dfc",
+  "status": "passed",
+  "reviewed_at": "2026-10-15T14:58:46+08:00",
+  "draft": {
+    "path": "/Users/pc/Documents/口播/notes/2026-10-15-个人AI助理与本地商家/口播审阅稿.v1.md",
+    "sha256": "94f681be0c9f4c58580e077f39b4aa622fdfed39ee6b2f8a8158b024ed7c2d78"
+  },
+  "skills": {
+    "humanizer_zh": {
+      "path": "/Users/pc/.codex/skills/humanizer-zh/SKILL.md",
+      "sha256": "e0edbdbc9008644263d5573fb59beac95794e188fd99c35012bfd79e9ae4beeb",
+      "read": true
+    },
+    "humanize_koubo_script": {
+      "path": "/Users/pc/Documents/口播/skills/humanize-koubo-script/SKILL.md",
+      "sha256": "235424e5d7096202dbebb28427f5212c6b2a84b5b36e34335f8d55d459e7f581",
+      "read": true
+    }
+  },
+  "checks": {
+    "humanizer_pattern_scan_completed": true,
+    "ai_boundary_review_completed": true,
+    "fact_safe_rewrite_completed": true,
+    "retention_risk_review_completed": true,
+    "read_aloud_completed": true,
+    "voice_match_completed": true
+  },
+  "read_check_method": {
+    "mode": "文字逐句断句复核与本地TTS时长检查",
+    "human_listened": false,
+    "user_read": false,
+    "tts": {
+      "voice": "Tingting",
+      "rate": 250,
+      "path": "/tmp/pa-script-20261015-timing.aiff",
+      "seconds": 144.153968,
+      "usage": "只证明确实生成及机器时长，不代表已听读或本人速度"
+    },
+    "personal_duration_estimate": {
+      "han": 1156,
+      "reference_characters": 1821,
+      "reference_seconds": 409.3,
+      "estimated_seconds": 259.83,
+      "note": "单篇既有实录的粗略比例估计，停顿与插入录屏另计，须本人朗读"
+    },
+    "text_observations": [
+      "开头先出现问价，第二段进入本人尝试；不从企业背景开始。",
+      "云端电脑解释紧跟浏览器、网页、填信息，没有只留名词。",
+      "三处引号保留录屏原话，读起来较长但不冒充编辑稿原话。",
+      "预约段连续三问适合分句停顿，不并成长句。",
+      "结束只邀请商家带现有页面咨询，没有叠加索要资料、关注、点赞。"
+    ]
+  },
+  "ai_boundary_review": {
+    "self_explanation_removed": true,
+    "defensive_boundary_embedded": true,
+    "generic_transitions_replaced": true,
+    "abstract_claims_grounded": true,
+    "source_insertions_contextualized": true,
+    "mechanical_completeness_reduced": true,
+    "notes": "删去‘咱们看这次实际到了哪一步’，直接交代界面标注测试版；删去‘值得提前试一试的地方’，直接接老板搜店名的动作。将‘在兰州买’改为‘想在兰州买’，不让尝试被理解成已成交。保留一次‘不能替商家下结论’，因为这直接防止把录屏解释为商家失误；完整权限与发布审查放在附录。平台机制只保留电商接入和浏览器操作两种，不铺排名和公司史。老板行动由套餐、停车、预约和配送承载，最后落在可协助核查和测试的工作。"
+  },
+  "retention_review": {
+    "risk_node_count": 1,
+    "nodes": [
+      {
+        "original": "千问已经把淘宝的商品、订单和售后接进来了。至‘以后用得顺了……’的平台机制段。",
+        "risk_level": "medium",
+        "reason": "已预告本地尝试后，连续两款产品解释会推迟录屏故事续接。保留是因为用户明确要求先交代个人助理进展，但是否拖慢须本人试读，不能冒充留存测试。",
+        "candidates": {
+          "conservative": "保留现段，停顿区分千问的电商接入与Muse的网页操作。",
+          "direct": "千问把淘宝商品、订单和售后接进了对话；Muse则让AI操作浏览器。一个接服务，一个操作网页，都在帮用户少跑几步，购买仍要本人确认。",
+          "vivid": "原来要自己打开网页、查商品、找订单，现在千问把淘宝这些服务接进对话，Muse则尝试替你操作浏览器。买东西涉及的确认，还得你来。"
+        },
+        "fact_difference": "三个方案均只用已核验的两类机制，未加新功能、成功率或本人实测；直接版和生动版减少现稿解释，不擅自合入。",
+        "recommendation": "当前先保留完整解释，供用户听读；若这一段拖沓，优先采用直接版，不删本人录屏。"
+      }
+    ],
+    "no_high_risk_reason": "未发现需要强改的高风险句；记录一处平台解释的中等节奏风险。"
+  },
+  "fact_changes": {
+    "new_facts": [],
+    "removed_facts": [],
+    "wording_strength_changes": [
+      "‘我这两天在兰州买鲜肉肠’收窄为‘我这两天想在兰州买鲜肉肠’，防止暗示购买完成。",
+      "不把AI自述的不能操作理由当作后台诊断；保留根因未明。"
+    ],
+    "pending_user_confirmations": [
+      "用户对当前具体措辞和本人感的确认。",
+      "本人真实试读、时长与产品名称读法。",
+      "六篇可定位全文不等于官方最近六条全部全文，发布前仍须保持此覆盖边界。",
+      "本轮仅文稿待审，公开界面和商家信息使用、平台营销声明、发布及投放未完成审核。"
+    ]
+  },
+  "scores": {
+    "directness": 8,
+    "spoken_naturalness": 8,
+    "rhythm": 8,
+    "personal_voice": 8,
+    "fact_fidelity": 10
+  },
+  "score_boundary": "以上为模型自审，不是用户认可或实测质量；事实保真10分仅指相对本轮已锁来源无新增与加强。",
+  "upstream": {
+    "candidate": "ready-for-outline-gate",
+    "essence": "ready-for-draft",
+    "prewrite": "ready-for-draft",
+    "production_allowed": false
+  }
+}
