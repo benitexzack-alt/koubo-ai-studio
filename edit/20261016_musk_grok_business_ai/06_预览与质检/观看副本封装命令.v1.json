@@ -1,0 +1,33 @@
+{
+  "command": [
+    "ffmpeg",
+    "-v",
+    "error",
+    "-nostdin",
+    "-n",
+    "-i",
+    "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/内部审阅候选_有音效.mp4",
+    "-itsoffset",
+    "-0.04266666666666667",
+    "-i",
+    "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/内部审阅候选_有音效.mp4",
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-c",
+    "copy",
+    "-avoid_negative_ts",
+    "disabled",
+    "-use_editlist",
+    "1",
+    "-movflags",
+    "+faststart",
+    "edit/20261016_musk_grok_business_ai/06_预览与质检/飞车与企业AI_V9小样_有音效.mp4"
+  ],
+  "exitCode": 0,
+  "stderr": "",
+  "purpose": "仅调整内部观看副本音轨时间戳，不覆盖受控原件",
+  "controlledDirectOutput": false,
+  "formalRelease": false
+}

@@ -1,0 +1,177 @@
+{
+  "schemaVersion": "local-whisper-asr-candidate/v1",
+  "status": "completed-candidate-unreviewed",
+  "startedAt": "2026-10-16T09:35:18.104625+00:00",
+  "command": [
+    "/Users/pc/Documents/口播/.cache/whisper-runtime/venv/bin/python",
+    "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/run-local-asr.v1.py"
+  ],
+  "sourceVideoPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+  "sourceDurationSeconds": 167.833333,
+  "audioPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.original.16k-mono.wav",
+  "audioScope": "entire-original-no-cuts-no-normalization-no-speed-change",
+  "modelPath": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+  "initialPrompt": null,
+  "prefix": null,
+  "hotwords": null,
+  "scriptProvidedToAsr": false,
+  "existingClaudeAsrProvidedToAsr": false,
+  "networkDisabled": true,
+  "modelDownloaded": false,
+  "dependenciesInstalled": false,
+  "humanListeningPerformed": false,
+  "implementationReusedFrom": "/Users/pc/Documents/口播/edit/20261011_enterprise_ai_organization/04_实录与字幕/run-local-asr.v1.py",
+  "noAudioUploadPerformed": true,
+  "reviewStatus": "candidate-unreviewed",
+  "finalSubtitleApproved": false,
+  "events": [
+    {
+      "at": "2026-10-16T09:35:19.206828+00:00",
+      "elapsedSeconds": 1.102,
+      "phase": "probing-and-checking-full-decode"
+    },
+    {
+      "at": "2026-10-16T09:35:30.123692+00:00",
+      "elapsedSeconds": 12.019,
+      "phase": "extracting-original-audio"
+    },
+    {
+      "at": "2026-10-16T09:35:32.406993+00:00",
+      "elapsedSeconds": 14.302,
+      "phase": "transcribing-offline"
+    },
+    {
+      "at": "2026-10-16T09:35:47.237054+00:00",
+      "elapsedSeconds": 29.132,
+      "phase": "completed-candidate-unreviewed"
+    }
+  ],
+  "sourceSha256Before": "b1902425762e49aedfc62ff717393351e6573c5af6c0cd06a7babf571af89bf6",
+  "localModelFiles": [
+    {
+      "path": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb/config.json",
+      "resolvedPath": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/blobs/6ac9a52a28f70a2e5681c250a470eca6e9c8cc3e",
+      "bytes": 268,
+      "sha256": "b34fc29e4e11e0a25e812775dd67f4dd16fc2c8eb43d28ae25ff7d660ecb6379"
+    },
+    {
+      "path": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb/weights.safetensors",
+      "resolvedPath": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/blobs/951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6",
+      "bytes": 1613977612,
+      "sha256": "951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6"
+    }
+  ],
+  "mediaProbeCommand": [
+    "/opt/homebrew/bin/ffprobe",
+    "-v",
+    "error",
+    "-show_format",
+    "-show_streams",
+    "-of",
+    "json",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV"
+  ],
+  "fullDecodeCommand": [
+    "/opt/homebrew/bin/ffmpeg",
+    "-nostdin",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-xerror",
+    "-err_detect",
+    "explode",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+    "-map",
+    "0:v:0",
+    "-map",
+    "0:a:0",
+    "-f",
+    "null",
+    "-"
+  ],
+  "fullDecode": {
+    "exitCode": 0,
+    "passed": true,
+    "durationSeconds": 10.819,
+    "logPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/source.full-decode.log.txt",
+    "scope": "all-video-and-audio-no-cuts"
+  },
+  "ffmpegVersion": "ffmpeg version 8.1.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "audioExtractionCommand": [
+    "/opt/homebrew/bin/ffmpeg",
+    "-nostdin",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+    "-map",
+    "0:a:0",
+    "-vn",
+    "-ac",
+    "1",
+    "-ar",
+    "16000",
+    "-c:a",
+    "pcm_s16le",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.original.16k-mono.wav"
+  ],
+  "audioSha256Before": "2d1c60a8d999bc946b5815f8aec553f9ad929069df48cc2312c6df6a65521e7e",
+  "pythonVersion": "3.12.11 (main, Aug 18 2025, 19:02:39) [Clang 20.1.4 ]",
+  "packages": {
+    "mlx-whisper": "0.4.3",
+    "mlx": "0.32.2",
+    "numpy": "2.5.2",
+    "torch": "2.14.0",
+    "numba": "0.67.0",
+    "tiktoken": "0.14.0",
+    "huggingface-hub": "1.30.0"
+  },
+  "metalAvailable": true,
+  "audioFrames": 2685318,
+  "audioDurationSeconds": 167.832375,
+  "options": {
+    "path_or_hf_repo": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+    "language": "zh",
+    "task": "transcribe",
+    "word_timestamps": true,
+    "initial_prompt": null,
+    "condition_on_previous_text": false,
+    "temperature": 0.0,
+    "verbose": true
+  },
+  "outputs": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.mlx-whisper-large-v3-turbo.raw.v1.json",
+      "sha256": "f64a82357cfb81a4226c6d7a14c9c172d235fa4ec10c92cbbb99ee4ee0f7bd81",
+      "bytes": 133775
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.mlx-whisper-large-v3-turbo.raw.v1.txt",
+      "sha256": "a55f933a1ef8f1976836d305003f8e2a3747dcbd533cf2f93216e83b91983170",
+      "bytes": 2198
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.mlx-whisper-large-v3-turbo.raw.v1.srt",
+      "sha256": "d3cc61c85f947f6303fabbc42cd6749c56ce5653a249d4d3be87cacbcd9f87df",
+      "bytes": 4988
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.mlx-whisper-large-v3-turbo.raw.v1.words.json",
+      "sha256": "5eb81e95d54effb9e1cd37fbbd97542df9d8098bbb376b9f740c390b3dee49fb",
+      "bytes": 89034
+    }
+  ],
+  "segmentCount": 80,
+  "wordCount": 672,
+  "firstSegmentStart": 0.0,
+  "lastSegmentEnd": 167.58,
+  "sourceSha256After": "b1902425762e49aedfc62ff717393351e6573c5af6c0cd06a7babf571af89bf6",
+  "audioSha256After": "2d1c60a8d999bc946b5815f8aec553f9ad929069df48cc2312c6df6a65521e7e",
+  "endedAt": "2026-10-16T09:35:47.228813+00:00",
+  "runDurationSeconds": 29.132,
+  "zeroDurationWordCount": 0,
+  "wordTimestampsAreAsrEstimates": true
+}

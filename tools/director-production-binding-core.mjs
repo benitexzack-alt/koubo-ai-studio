@@ -11,6 +11,8 @@ import {
   assertSkillLock,
   sha256File,
 } from './director-skill-lock-core.mjs';
+import {readFirstCandidateInputClosure, validateFirstCandidateInputContract} from '../skills/koubo-remotion-director/scripts/first-candidate-input-contract.mjs';
+import {NATIVE_V2_INPUT_FORMAT} from '../skills/koubo-remotion-director/scripts/native-v2-first-candidate-input.mjs';
 
 const formalCommands = new Set([
   'formal-audio',
@@ -329,6 +331,19 @@ export function assertDirectorProductionBinding({
   if (director?.phase !== 'post-shoot') errors.push('DIRECTOR_PRODUCTION_PHASE_NOT_POSTSHOOT');
   if (director?.paperRequired !== true) errors.push('DIRECTOR_PRODUCTION_PAPER_NOT_REQUIRED');
   if (director?.fallback !== 'blocked') errors.push('DIRECTOR_PRODUCTION_FALLBACK_NOT_BLOCKED');
+
+  // 原生带字纸艺只扩展首次审阅输入；仍执行上方当前档案/包锁和外层签名/上下文门。
+  if (director?.inputFormat === NATIVE_V2_INPUT_FORMAT) {
+    if (errors.length) throw Object.assign(new Error(errors.join('|')), {code: errors[0], errors});
+    const reference = job.productionGate?.firstCandidateInput;
+    const closure = readFirstCandidateInputClosure({projectRoot, references: [reference]});
+    const contract = closure.document(reference).body;
+    const result = validateFirstCandidateInputContract({projectRoot, contract, job, command});
+    return {ok: true, status: 'candidate-entry-director-bound', command,
+      taskId: director.taskId, paperSceneCount: result.paperSceneCount,
+      inputFormat: NATIVE_V2_INPUT_FORMAT, spokenAuthority: 'recorded-audio', scriptRole: 'comparison-only',
+      userPreviewApproved: false, humanAcceptancePerformed: false};
+  }
 
   const artifacts = director?.artifacts ?? {};
   const bound = {

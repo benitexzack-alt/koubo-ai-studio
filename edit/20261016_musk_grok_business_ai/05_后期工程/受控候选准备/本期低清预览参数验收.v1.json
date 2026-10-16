@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "episode-preview-render-settings-validation/v1",
+  "createdAt": "2026-10-16T11:03:44.543947+00:00",
+  "episodeId": "musk-grok-business-ai-20261016",
+  "scope": "仅本期 native-v2 current-chat direct-remotion-preview；不修改媒体、组件、依赖、原声、字幕和正式默认值",
+  "renderSettings": {
+    "concurrency": 1,
+    "timeoutInMilliseconds": 120000,
+    "scale": 0.6666666666666666
+  },
+  "logicalVideo": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInFrames": 5035
+  },
+  "outputDimensions": [
+    1280,
+    720
+  ],
+  "packageSha256": "7cdf7e25a72035fc66dd364906099850aec18f01e0652e65d93202b2544909ad",
+  "fileCount": 131,
+  "files": [
+    {
+      "path": "skills/koubo-remotion-director/scripts/remotion-production-command-v2.mjs",
+      "beforeSha256": "0f6ce4606dbec1d955b17d03ef6080fe28b6c74591d36406cc2779c16e7e34a6",
+      "afterSha256": "082bfb266bb1529c54d8c240eea50108a7dbe3bf47ac005c7a39f0497fbf7a6d",
+      "created": false
+    },
+    {
+      "path": "skills/koubo-remotion-director/scripts/run-remotion-production-v2.mjs",
+      "beforeSha256": "85d7705d4c89d35e5eff8931533a999d3fc273030e42ae3abaf23266202cb12d",
+      "afterSha256": "b1b34993cb2e62fda3d29a97a68f8103ca2199cd52b5541831c785af0f54aa56",
+      "created": false
+    },
+    {
+      "path": "workflow/director-skill-lock.v1.json",
+      "beforeSha256": "edb7646793340836cf70f68bcd64ee4e1b28cffbd2bbb71cd85ef25e8e10b88b",
+      "afterSha256": "a337edd1600a2329af378d5235706dd7641c65923d4beab2c3f244424cf2ab61",
+      "created": false
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-musk-grok-preview-render-settings.mjs",
+      "beforeSha256": null,
+      "afterSha256": "4918c54af9c70adafe1996aadbb530acabde8efcd45b8cfaa62bcfa579c6e8e8",
+      "created": true
+    }
+  ],
+  "patch": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/受控候选准备/本期低清预览参数_仅本轮.patch",
+    "sha256": "6f6ca8d0f4ec850ef0cdafe50447a412a1544aea92fd4380ebc265bdbfeeca58",
+    "appliedToStartingSnapshot": true,
+    "reconstructedFilesMatch": true
+  },
+  "validation": {
+    "focusedTest": {
+      "command": "node skills/koubo-remotion-director/tests/test-musk-grok-preview-render-settings.mjs",
+      "exitCode": 0,
+      "passed": 26,
+      "result": "通过；默认参数不变；正式/跨期/额外参数拒绝；原逻辑尺寸帧数不变"
+    },
+    "wrapperSyntax": {
+      "command": "node --check skills/koubo-remotion-director/scripts/run-remotion-production-v2.mjs",
+      "exitCode": 0
+    },
+    "activeProfile": {
+      "command": "node tools/validate-active-director-profile.mjs",
+      "exitCode": 0
+    },
+    "independentStaticReview": "upstream_audit 只读复核：固定参数数组无 shell 注入；正式/跨期有设置拒绝；未设置保持旧值；无 frames/fps/duration 改写参数。"
+  },
+  "productionRenderInvokedByThisAgent": false,
+  "secondRenderResult": "尚待主线程受控执行；不以参数测试通过声称超时已修复",
+  "stopCondition": "本次重试如再次出现同类解码超时，停止盲试并报告选项，不进行第三次同法渲染。",
+  "formalEnabled": false,
+  "candidateAccepted": false,
+  "userPreviewApproved": false,
+  "publishAuthorized": false
+}

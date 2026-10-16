@@ -1,0 +1,254 @@
+{
+  "schemaVersion": "episode-native-v2-fact-review-snapshot/v1",
+  "episodeId": "musk-grok-business-ai-20261016",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "revisionId": "musk-grok-business-ai-v9-preview-r1-20261016",
+  "capturedAt": "2026-10-16T10:23:12.650858+00:00",
+  "sourceRecord": {
+    "sourceDocumentPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/真实资料对位与事实待决.json",
+    "capturedAt": "2026-10-16T10:23:12.651559+00:00",
+    "exactByteSnapshot": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/来源原件快照/事实待决原记录.json.txt",
+      "sha256": "6535542b058d177c296457173483f5379980a0ce80b8c6651638ef43b463e1c0"
+    },
+    "historicalNestedReferencesRevalidated": false,
+    "note": "精确保存来源原件。原件中的旧运行计划或历史依赖哈希不冒充当前绑定；本期当前依赖另行逐文件核验。"
+  },
+  "decisionItems": [
+    {
+      "id": "D01",
+      "kind": "待听审后必须内容裁决",
+      "asrWindow": [
+        1.46,
+        5.4
+      ],
+      "asrQuote": "马斯克今天居然爆出了一台即将量产能够飞的车",
+      "issue": "已有来源记录2028生产计划，不能用演示证明近期交付；今天还需与发布日期一致。",
+      "sourceIds": [
+        "T01"
+      ],
+      "resolution": "回听确认后，由用户选重录、允许剪除或明确可感知的音画更正；2028仍应按官方计划表达。只补后台来源不能改变现有声音。",
+      "sourceFrameWindow": {
+        "from": 44,
+        "to": 162,
+        "fps": 30,
+        "convention": "zero-based-half-open"
+      },
+      "status": "pending-listening-or-fact-resolution",
+      "contentModificationAuthorized": false
+    },
+    {
+      "id": "D02",
+      "kind": "未证操作条件，待用户裁决",
+      "asrWindow": [
+        15.92,
+        17.18
+      ],
+      "asrQuote": "不需要踩刹车",
+      "issue": "未取得官方操作规程或对应示范证明，不能从喷气画面推导。",
+      "sourceIds": [
+        "T01",
+        "T03"
+      ],
+      "resolution": "现有本地材料不能补证；若实录确认仍这样说，须用户决定删改/重录/明确更正。",
+      "sourceFrameWindow": {
+        "from": 478,
+        "to": 515,
+        "fps": 30,
+        "convention": "zero-based-half-open"
+      },
+      "status": "pending-listening-or-fact-resolution",
+      "contentModificationAuthorized": false
+    },
+    {
+      "id": "D03",
+      "kind": "未证系统命名，待用户裁决",
+      "asrWindow": [
+        18.86,
+        22.54
+      ],
+      "asrQuote": "用到的是SPEXX的A71／冷气推进系统",
+      "issue": "SpaceX相关冷气系统有支持，A71官方命名未证；SR-71在来源中是设计灵感，不能替代。",
+      "sourceIds": [
+        "T01",
+        "T03"
+      ],
+      "resolution": "先按声音确认SpaceX及A71；品牌识别误字可以据音频校字，事实命名不得按原稿默默恢复或替换。",
+      "sourceFrameWindow": {
+        "from": 566,
+        "to": 676,
+        "fps": 30,
+        "convention": "zero-based-half-open"
+      },
+      "status": "pending-listening-or-fact-resolution",
+      "contentModificationAuthorized": false
+    },
+    {
+      "id": "D04",
+      "kind": "直接口径冲突，必须内容裁决",
+      "asrWindow": [
+        30.18,
+        32.08
+      ],
+      "asrQuote": "零百约1.7秒",
+      "issue": "现有配置为不同版本0–60 mph口径，不是0–100 km/h约1.7秒。",
+      "sourceIds": [
+        "T02"
+      ],
+      "resolution": "若听审确认，不得仅把字幕改成正确数字或配正确参数图；由用户决定真实音频/内容更正。",
+      "sourceFrameWindow": {
+        "from": 905,
+        "to": 962,
+        "fps": 30,
+        "convention": "zero-based-half-open"
+      },
+      "status": "pending-listening-or-fact-resolution",
+      "contentModificationAuthorized": false
+    },
+    {
+      "id": "D05",
+      "kind": "无条件道路资格未证，必须内容裁决",
+      "asrWindow": [
+        36.66,
+        40.16
+      ],
+      "asrQuote": "可以正常上路上排在公路上行驶",
+      "issue": "官方发言仍有司法辖区合法性不确定；没有中国或全地区可上牌证明。“上排”先按声音核字。",
+      "sourceIds": [
+        "T01"
+      ],
+      "resolution": "后台注明地区限制不能自动消除原声的无条件承诺；需用户决定更正方式。",
+      "sourceFrameWindow": {
+        "from": 1100,
+        "to": 1205,
+        "fps": 30,
+        "convention": "zero-based-half-open"
+      },
+      "status": "pending-listening-or-fact-resolution",
+      "contentModificationAuthorized": false
+    },
+    {
+      "id": "D06",
+      "kind": "产品范围和实际可用性混淆，待用户裁决",
+      "asrWindow": [
+        46.3,
+        64.42
+      ],
+      "asrQuote": "这套大模型的玩法也全变了……随时用上……直接调用MG……直接可以调用Cloud Code的OPS不点5",
+      "issue": "原帖是Grok Bot今后选择后端的宣布；缺少MJ当前实际调用及Grok经由Claude Code的证据。若原声说Claude Code的Opus5.5，工具/模型关系未必混称，但仍未证该调用路径。",
+      "sourceIds": [
+        "G01",
+        "G02",
+        "G03",
+        "C01",
+        "C02"
+      ],
+      "resolution": "品牌拼写须听校；“现在随时已调用”与方向公告的差异要由用户处理，不能靠logo连线或纸艺补证。",
+      "sourceFrameWindow": {
+        "from": 1389,
+        "to": 1933,
+        "fps": 30,
+        "convention": "zero-based-half-open"
+      },
+      "status": "pending-listening-or-fact-resolution",
+      "contentModificationAuthorized": false
+    },
+    {
+      "id": "D07",
+      "kind": "绝对最优与样本排序未证，待语境裁决",
+      "asrWindow": [
+        68.16,
+        79.9
+      ],
+      "asrQuote": "全球最擅长……大多数企业……最大的一个坑",
+      "issue": "没有全球任务榜或企业失败占比/排序样本。实录ASR是“大多数”，不能恢复原稿“绝大多数”。",
+      "sourceIds": [
+        "G01"
+      ],
+      "resolution": "若作为客观最优/统计结论保留，证据不足；可由用户选择将其明确为主张/个人判断或更正原声。不能自动把所有观点段都列为素材缺失。",
+      "sourceFrameWindow": {
+        "from": 2045,
+        "to": 2397,
+        "fps": 30,
+        "convention": "zero-based-half-open"
+      },
+      "status": "pending-listening-or-fact-resolution",
+      "contentModificationAuthorized": false
+    }
+  ],
+  "sourceOrQualificationItems": [
+    {
+      "asrWindow": [
+        8.1,
+        13.82
+      ],
+      "topic": "翻滚／墙面／真正意义上的飞",
+      "handling": "完整翻滚画面已具备。“飞”可限定为演示中腾空与翻转；墙面需保留特制坡道可见语境，不泛化任意墙面。若实录语境仍让观众理解为任意墙面或持续自由飞行，则转用户内容裁决。"
+    },
+    {
+      "asrWindow": [
+        22.54,
+        29.38
+      ],
+      "topic": "底盘吸力／喷气腾空",
+      "handling": "后台绑定T01/T03即可支持已公布机制；具体画面保留起飞条件。ASR“直接去水”不可按原稿“直接起势”自行改字，需听校。"
+    },
+    {
+      "asrWindow": [
+        32.08,
+        36.1
+      ],
+      "topic": "483km／370km/h",
+      "handling": "可在同屏原文中保留>300mi、>230mph、Rocket及厂家口径，并说明近似换算；若原声被判定为固定实测/所有版本承诺则须用户更正。不能把“>”偷偷改进逐字字幕。"
+    },
+    {
+      "asrWindow": [
+        64.42,
+        68.16
+      ],
+      "topic": "调度中台",
+      "handling": "“中台”可作为解释性比喻；后台绑定G02/G03，画面明确Grok Bot即可支持架构层说明，不证明MJ当场调用。ASR“调度状态”须听校。"
+    },
+    {
+      "asrWindow": [
+        80.32,
+        89.78
+      ],
+      "topic": "很多老板寻找万能AI",
+      "handling": "按作者观察性概括审阅，不凭该句虚构客户、采访或代表性比例。无量化承诺时不是缺素材导致的自动硬阻断。"
+    },
+    {
+      "asrWindow": [
+        90.44,
+        96.24
+      ],
+      "topic": "已经实际行动／AI不万能",
+      "handling": "“不万能”为分析判断，无须穷举测试；若“实际行动”明确指已完成全部第三方联动则受D06约束。"
+    },
+    {
+      "asrWindow": [
+        96.24,
+        147.56
+      ],
+      "topic": "任务适配、岗位落地、降本增效目标",
+      "handling": "作为方法建议/应用目标，不增加最强榜单、效果数字、保证承诺或虚构成功案例；后台来源和目标边界可处理，不单独卡住。"
+    },
+    {
+      "asrWindow": [
+        147.56,
+        167.58
+      ],
+      "topic": "咨询邀请与兰州企业AI自述",
+      "handling": "用户原稿及实录自述可作为表达来源；不外推客户数量、成熟交付或保证收益，不新增资质门槛。"
+    }
+  ],
+  "userScope": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/用户小样范围.v1.json",
+    "sha256": "8da2aec62125810ee11b43ece995fff7296b7b501d1313a29c6951aa70f06f2d"
+  },
+  "factsResolved": false,
+  "factCorrectionsAppliedToSpeech": false,
+  "formalAuthorized": false,
+  "publishAuthorized": false,
+  "scopeNote": "仅进入用户内部审阅小样。来源存在、用户装配许可、事实已核实三者独立；不把演示、纸艺或官网标志当作实际能力和法律资格证明。"
+}

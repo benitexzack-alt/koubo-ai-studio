@@ -1,0 +1,48 @@
+{
+  "schema_version": "opc-task-context-validation/1.0",
+  "status": "context-valid",
+  "summary": "任务上下文、索引代际和必读文件哈希仍然有效",
+  "context_path": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/task-20261016T093224Z-db8e7249/context.json",
+  "task": {
+    "id": "task-20261016T093224Z-db8e7249",
+    "project": "口播",
+    "objective": "本期V9内部审阅小样真实原生v2输入与完整原声绑定，保持4疑词和事实待决，不做公开发布或正式验收",
+    "cwd": "/Users/pc/Documents/口播",
+    "important": true,
+    "external_action": false
+  },
+  "project_route": {
+    "project_id": "koubo",
+    "project_root": "/Users/pc/Documents/口播",
+    "match_status": "matched",
+    "execution_scope": {
+      "primary_project_id": "koubo",
+      "primary_project_root": "/Users/pc/Documents/口播",
+      "primary_access_mode": "task-scoped-read-write",
+      "write_allowed_roots": [
+        "/Users/pc/Documents/口播"
+      ],
+      "read_only_roots": [],
+      "related_project_rule": "关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。",
+      "write_escalation_rule": "确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。"
+    }
+  },
+  "index_generation": {
+    "manifest_sha256": "c85c8ddd0faa911c03e4af5a9b7552296c3472e4f023b2b488f374c47929a477",
+    "config_sha256": "7d80e391da915c1f4363776317039cad5b742609403f0a671c1ffb0fbc4e500d",
+    "embedding_model": "nomic-embed-text:latest",
+    "indexed_at": "2026-10-16T10:26:07.907044+00:00",
+    "database_sha256": "3c4b7824650179640d5ec1b6d3efd0d24618b2607174c7f70f9a39ceb68ed15d",
+    "id": "e42a509b7f51f6f0b72d5f53e2d459a55a32579cddc8800639c1f8c25ccbc55f"
+  },
+  "problems": [],
+  "gate": {
+    "formal_execution_allowed": true
+  },
+  "next_actions": [
+    "继续执行项目自身的质量、安全和人工验收门禁"
+  ],
+  "artifacts": [
+    "/Users/pc/Documents/个人知识库/.opc-rag/tasks/task-20261016T093224Z-db8e7249/context.json"
+  ]
+}

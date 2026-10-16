@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20261016_musk_grok_business_ai_v9_candidate",
+  "videoId": "musk-grok-business-ai-20261016",
+  "title": "飞车与企业AI",
+  "productionState": "input-prepared-awaiting-controlled-preflight",
+  "productionEligible": false,
+  "productionProfile": {
+    "id": "v9-semantic-direction-sfx",
+    "version": "V9"
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required",
+    "userPreviewApproved": false
+  },
+  "knowledgeContext": {
+    "taskId": "task-20261016T093224Z-db8e7249",
+    "contextPath": "task-20261016T093224Z-db8e7249/context.json"
+  },
+  "inputs": {
+    "source": "edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+    "renderProxy": "edit/20261016_musk_grok_business_ai/05_后期工程/public/media/host.mp4"
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/musk-grok-business-ai-20261016/index.tsx",
+    "publicDir": "edit/20261016_musk_grok_business_ai/05_后期工程/public",
+    "compositionWithSfx": "MuskGrokBusinessAI20261016-WithSfx",
+    "compositionWithoutSfx": "MuskGrokBusinessAI20261016-NoSfx",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 167.83333333333334
+  },
+  "director": {
+    "required": true,
+    "taskId": "20261016_musk_grok_business_ai_director_v2",
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0",
+    "phase": "post-shoot",
+    "paperRequired": true,
+    "fallback": "blocked",
+    "artifacts": {
+      "directorCues": {
+        "path": "edit/20261016_musk_grok_business_ai/03_导演规划/director-cues.v2.json",
+        "sha256": "fe779cff98affcc64379af4f42b0735bcca8ead13aebe5f1478ce544d532ac6d"
+      },
+      "runtimePlan": {
+        "path": "edit/20261016_musk_grok_business_ai/04_后期准备/runtime-plan.v1.json",
+        "sha256": "f2b340cc14b08f635e30e5b993e18fd1bcb945e68b453b162388d7b68d9d2b78"
+      },
+      "spokenTimeline": {
+        "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/实录正文候选.v1.json",
+        "sha256": "5f79a3c8947014797919b854222ccf5bace267b7c0887af736afe6b110e1673f"
+      },
+      "postshootRebind": {
+        "path": "edit/20261016_musk_grok_business_ai/04_后期准备/实录导演重绑候选.v1.json",
+        "sha256": "695050d6692e6f543bec5e6010cb7a75448f553541d7509c8290c000248ff935"
+      },
+      "mediaIntake": {
+        "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/原生素材入库候选.v1.json",
+        "sha256": "c0f82cda136877c2910a9c013e5e38a1a336ec1b8ff3fb79f33fa53e60b79137"
+      },
+      "factReview": {
+        "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/事实差异当前绑定.v1.json",
+        "sha256": "95f1a5069e2639f9f0d7048f9bef0b02d7fc258da002cd2c065dcf8a0eec82db"
+      },
+      "userScope": {
+        "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/用户小样范围.v1.json",
+        "sha256": "8da2aec62125810ee11b43ece995fff7296b7b501d1313a29c6951aa70f06f2d"
+      }
+    },
+    "inputFormat": "director-cues-v2-surface-bound"
+  },
+  "productionGate": {
+    "schema": "director-production-entry-binding/v2",
+    "revisionId": "musk-grok-business-ai-v9-preview-r1-20261016",
+    "state": "first-candidate-preview-required",
+    "productionEligible": false,
+    "userPreviewApproved": false,
+    "formalEnabled": false,
+    "firstCandidateInput": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/first-candidate-input.v1.json",
+      "sha256": "a13ad7fc6f5d2615757cd472c3452385046f381f7105565d1179fac1195b0699"
+    },
+    "firstCandidateAuthorization": null,
+    "freezeReceipt": null,
+    "previewAuthorizationMode": "musk-grok-current-chat-review/v1",
+    "localChatPreviewAuthorization": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/内部预览聊天授权.v1.json",
+      "sha256": "2d35d51678737aea705b9e96122b6620cfcf95e51498f5c9a1319c820de4c6e8"
+    }
+  },
+  "preview": {
+    "output": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/内部审阅候选_有音效.mp4",
+    "renderSettings": {
+      "concurrency": 1,
+      "timeoutInMilliseconds": 120000,
+      "scale": 0.6666666666666666
+    }
+  },
+  "formal": {
+    "enabled": false
+  },
+  "publishAuthorized": false,
+  "preparationNote": "真实原生v2首次候选输入；仅本期内部预览采用本轮真实聊天授权，独立签名未声称存在。正式验收、完整观看与发布保持false。"
+}

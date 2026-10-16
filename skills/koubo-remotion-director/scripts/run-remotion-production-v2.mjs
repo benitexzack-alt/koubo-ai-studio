@@ -147,6 +147,20 @@ try {
     composition,
     output,
     publicDir,
+    previewRenderSettings: job.preview?.renderSettings,
+    renderContext: {
+      mode,
+      command: gateCommand,
+      preflightRoute: preSpawn.route,
+      episodeId: job.videoId,
+      jobId: job.jobId,
+      revisionId: job.productionGate.revisionId,
+      inputFormat: job.director?.inputFormat,
+      width: job.remotion.width,
+      height: job.remotion.height,
+      fps: job.remotion.fps,
+      durationSeconds: job.remotion.durationSeconds,
+    },
   });
   const result = spawnSync(cli.realTarget, renderArgs, {
     cwd: remotionRoot,

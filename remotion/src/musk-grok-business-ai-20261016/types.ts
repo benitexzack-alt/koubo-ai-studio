@@ -39,6 +39,8 @@ export type MediaAsset = {
   audioReason: string;
   /** 从该素材取得的原生声；独立路径避免重复播放主口播。 */
   nativeAudio: null | {src: string; gain: number};
+  /** 只改变截图的显示视窗，原截图文件保持完整。 */
+  imageFocus?: Rect & {sourceWidth: number; sourceHeight: number};
 };
 
 export type MediaSlot = {

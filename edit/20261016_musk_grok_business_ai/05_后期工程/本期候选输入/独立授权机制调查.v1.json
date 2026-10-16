@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "episode-independent-authorization-readiness/v1",
+  "checkedAt": "2026-10-16T10:26:39.877688+00:00",
+  "episodeId": "musk-grok-business-ai-20261016",
+  "currentUserScope": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/用户小样范围.v1.json",
+    "sha256": "8da2aec62125810ee11b43ece995fff7296b7b501d1313a29c6951aa70f06f2d"
+  },
+  "scopeEstablished": true,
+  "userScopeIsSignature": false,
+  "executionGroupId": "codex-musk-grok-v9-preview-r1-20261016",
+  "authorizedUserId": "current-chat-human-user",
+  "identityMeaning": "本聊天人类用户的范围标识，并非外部账号身份核验。",
+  "independentReview": {
+    "actor": "Codex 子代理 /root/sample_feasibility",
+    "implementedRuntime": false,
+    "performedInputReadOnlyChecks": true,
+    "receipt": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/拍后绑定技术复核.v1.json",
+      "sha256": "c7b58703374db8a458aeecb4c717381bf3b9bafda892097156affc83e7010316"
+    },
+    "isHuman": false,
+    "isCryptographicSignature": false,
+    "listenedToAudio": false,
+    "watchedFinalCandidate": false
+  },
+  "signatureMechanism": {
+    "registry": {
+      "path": "skills/koubo-remotion-director/fixtures/external-acceptance-anchor-registry.v2.json",
+      "sha256": "ed6a7f6cf13133d79557f04d74ea6d05d02de8a9a3039d0ebed2f77465722137"
+    },
+    "registryEntryCount": 0,
+    "trustRootPath": "/Library/Application Support/KouboDirector/director-independent-ed25519-trust-root.v2.json",
+    "trustRootExists": false,
+    "requiredAlgorithm": "Ed25519",
+    "requiredTrustRootOwner": "root",
+    "requiredTrustRootWritableByGroupOrOther": false,
+    "foundProductionSignerCli": false,
+    "checkedCode": {
+      "core": "skills/koubo-remotion-director/scripts/director-contract-v2-core.mjs:94-209",
+      "preflight": "skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs:492-531"
+    },
+    "requiredApprovals": [
+      "user:approved-first-candidate-inputs",
+      "supervisor:approved-first-candidate-revision"
+    ],
+    "requirements": [
+      "用户与监督issuerGroupId不同且均不同于执行组；不可复用同一来源消息。",
+      "用户锚点绑定真实本轮原话及当前合同、job、文件、门禁和composition哈希。",
+      "监督回执绑定本期用户授权SHA和同一闭包。",
+      "独立系统管理员登记真实监督公钥，监督方用其实际控制的私钥签发；仓库JSON本身不是信任根。"
+    ]
+  },
+  "status": "blocked-no-independent-ed25519-key",
+  "actionsPerformed": {
+    "installedKey": false,
+    "generatedKey": false,
+    "signedUserAuthorization": false,
+    "signedSupervision": false,
+    "reusedHistoricalSignature": false,
+    "rendered": false,
+    "published": false
+  },
+  "limits": "用户已明确授权内部小样，阻断来自现有入口额外要求的独立签名机制未配置；不能把缺签名说成用户没有授权。",
+  "finalPreflight": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/冻结后只读入口复核.v1.json",
+    "sha256": "55ebfc3054d51289e175aeb41ef923f64f41a4e84875e5b025d449a830782718"
+  },
+  "actualFirstBlockingCode": "DPG2_BOUND_JSON_REFERENCE_INVALID",
+  "actualFirstBlockingMessage": "首次候选用户授权必须绑定项目内路径和小写 SHA-256。",
+  "signatureAndTrustRootGateExecuted": false
+}

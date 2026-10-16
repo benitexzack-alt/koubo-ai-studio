@@ -16,6 +16,8 @@ const copiedSourcePaths = [];
 try {
   for (const name of [
     'first-candidate-input-contract.mjs', 'preproduction-director-core.mjs', 'paper-motion-contract.mjs',
+    'paper-physical-contract.mjs', 'paper-projection-contract.mjs',
+    'native-v2-first-candidate-input.mjs', 'director-cues-v2-core.mjs', 'paper-quality-baseline.mjs',
     'compile-preproduction-director.mjs', 'validate-preproduction-director.mjs',
     'postshoot-rebind-core.mjs', 'rebind-postshoot-director.mjs', 'validate-postshoot-director.mjs',
     'paper-asset-intake-core.mjs', 'paper-asset-intake-incident.mjs',

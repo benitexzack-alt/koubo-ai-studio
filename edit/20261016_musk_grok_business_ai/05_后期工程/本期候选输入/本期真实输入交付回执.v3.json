@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "episode-native-candidate-input-delivery/v3",
+  "recordedAt": "2026-10-16T11:10:13.324364+00:00",
+  "status": "second-controlled-preview-preflight-passed-not-rendered-by-this-agent",
+  "episodeId": "musk-grok-business-ai-20261016",
+  "job": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/production-job.first-candidate.v1.json",
+    "sha256": "005327682aa1b28c9ba679d6605eb34befad8f2798d523535379f5bd2e7cf177"
+  },
+  "contract": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/first-candidate-input.v1.json",
+    "sha256": "a13ad7fc6f5d2615757cd472c3452385046f381f7105565d1179fac1195b0699"
+  },
+  "localChatPreviewAuthorization": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/内部预览聊天授权.v1.json",
+    "sha256": "2d35d51678737aea705b9e96122b6620cfcf95e51498f5c9a1319c820de4c6e8"
+  },
+  "sourceMessages": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/本轮内部预览用户原话.v1.json",
+    "sha256": "81c80095470c85f22e7ed7871882110c77826a2028ad33ee994f7c60a4c67f7f"
+  },
+  "verification": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/冻结后只读入口复核.v1.json",
+    "sha256": "9158be32cdc85fc7c055563e6935a0f128162bbdf41f6e9ccf6ef655d7b78c2c"
+  },
+  "authorizationType": "local-chat-authorization",
+  "authorizationMethod": "current-chat-verbatim",
+  "independentSignature": false,
+  "packageSha256": "749ffd7ca9283f26c38d6a36c52dbd5a7a54d509b18bbe0bd8aba797be37ae80",
+  "checks": {
+    "nativeInputPassed": true,
+    "inputFileCount": 90,
+    "boundFileCount": 101,
+    "directorBindingPassed": true,
+    "knowledgeContextPassed": true,
+    "preflightPassed": true
+  },
+  "preflightCode": "DPG2_MUSK_GROK_CHAT_PREVIEW_OK",
+  "preflightIntegritySealSha256": "65041a33e4c26a8493c79e88526d352ee74f673ebb3fe5c2358fd3e5f12b190c",
+  "contextSha256": "d2b8e15d81860a81fda94e5c79b0eca82ef6a73157a39a0e858f868961d0c58a",
+  "mediaAssetCount": 20,
+  "videoAudioFullDecodeCount": 14,
+  "sourceSpeechPreserved": true,
+  "pendingTermCount": 4,
+  "unresolvedFactIds": [
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06",
+    "D07"
+  ],
+  "wrapperInvocation": {
+    "argv": [
+      "node",
+      "/Users/pc/Documents/口播/skills/koubo-remotion-director/scripts/run-remotion-production-v2.mjs",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/production-job.first-candidate.v1.json",
+      "preview"
+    ],
+    "cwd": "/Users/pc/Documents/口播",
+    "executedByThisAgent": false,
+    "output": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/内部审阅候选_有音效.mp4",
+    "outputExistsAtHandoff": false
+  },
+  "userScopeEstablished": true,
+  "humanFullWatchConfirmed": false,
+  "audioAccepted": false,
+  "candidateAccepted": false,
+  "formalAuthorized": false,
+  "publishAuthorized": false,
+  "renderInvokedByThisAgent": false,
+  "externalAudioUpload": false,
+  "gitPerformedByThisAgent": false,
+  "knowledgeIndexRefreshThisTurn": {
+    "existingDefaultIncremental": true,
+    "changedDocuments": 1,
+    "removedDocuments": 0,
+    "fullRebuild": false
+  },
+  "limitations": "本轮通过真实输入和第二次内部预览的执行前检查，不代表渲染成功、正常速度视听通过或用户完整观看。旧独立签名字段仍null。若第二次仍同类抽帧超时，不第三次盲试。",
+  "renderSettings": {
+    "concurrency": 1,
+    "timeoutInMilliseconds": 120000,
+    "scale": 0.6666666666666666
+  },
+  "logicalSize": [
+    1920,
+    1080
+  ],
+  "expectedPreviewSize": [
+    1280,
+    720
+  ],
+  "durationInFrames": 5035,
+  "gateClosureSha256": "4c82d6ede9dece4b18f8e39bff609c8fe512b212c824ac67e91a4bd88e2a5a94",
+  "inputSourceAndUserQuoteUnchanged": true,
+  "runtimeSha256": "f2b340cc14b08f635e30e5b993e18fd1bcb945e68b453b162388d7b68d9d2b78",
+  "singleNodeProcessValidation": {
+    "script": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/二次预览单进程重绑复核.mjs",
+      "sha256": "f31d5dc019aa6bccf9923a80feae8740baaf812deed36ca65c27b2605a7636f4"
+    },
+    "actualMediaDecodedBeforeBinding": true,
+    "existingInProcessVerifiedMediaPcmCacheReused": true,
+    "hashChecksPreserved": true,
+    "contextStartCompletedBetweenBindingAndPreflight": true,
+    "noSharedCacheAdded": true
+  },
+  "priorBindingTimeout": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/重绑失败_原片全解码等待超时.v1.json",
+    "sha256": "1bc1b14e0edfd97f20e0d3153b9a4896546762202239edc2e6d17a64369ded48"
+  },
+  "priorRendererFailure": {
+    "path": "edit/20261016_musk_grok_business_ai/06_预览与质检/受控渲染_01_超时.log",
+    "reportedBy": "parent-agent",
+    "frame": 175,
+    "partialMp4ExistsAtHandoff": false
+  }
+}

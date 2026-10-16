@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "episode-chat-preview-entry-validation/v1",
+  "checkedAt": "2026-10-16T10:46:16.376080+00:00",
+  "scope": "仅本期Musk/Grok、native-v2、direct-remotion-preview；其他候选、正式和发布不扩展",
+  "files": [
+    {
+      "path": "skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs",
+      "beforeSha256": "3b64de65149e45293352e1fbe516cfdac8604165e63023837fab1bdd2c2a1084",
+      "afterSha256": "9cf1a69827a77859cabb891d650f465eeec24793b9670357c2fc3805da2242a3",
+      "newFile": false
+    },
+    {
+      "path": "workflow/director-skill-lock.v1.json",
+      "beforeSha256": "50f2c530df1e10980208e58645481e416d9156eceae9bf88d5835d28172f1290",
+      "afterSha256": "edb7646793340836cf70f68bcd64ee4e1b28cffbd2bbb71cd85ef25e8e10b88b",
+      "newFile": false
+    },
+    {
+      "path": "skills/koubo-remotion-director/scripts/musk-grok-chat-preview-authorization.mjs",
+      "beforeSha256": null,
+      "afterSha256": "93e6f623e8301fc13701b962d1617c95d99b83f54912171e65c6b4382ca93bf0",
+      "newFile": true
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-musk-grok-chat-preview-authorization.mjs",
+      "beforeSha256": null,
+      "afterSha256": "0b6801e1f0053a50253b55c29876c9b2090efa87d80381a5e233eabf1dcff4c5",
+      "newFile": true
+    }
+  ],
+  "patch": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/受控候选准备/本期聊天预览入口_仅本轮.patch",
+    "sha256": "996fb332ebc4b27c70037c76176ca891ce4ff736a909cee064525783169ed851",
+    "appliedToStartingSnapshotsInIsolatedDirectory": true,
+    "allResultHashesMatch": true
+  },
+  "tests": [
+    {
+      "command": "node skills/koubo-remotion-director/tests/test-musk-grok-chat-preview-authorization.mjs",
+      "exitCode": 0,
+      "passed": 28
+    },
+    {
+      "command": "node --experimental-vm-modules skills/koubo-remotion-director/tests/test-first-candidate-input-contract.mjs",
+      "exitCode": 0,
+      "passed": 58,
+      "scope": "旧签名分支与状态边界；测试替身不是本期真实授权"
+    },
+    {
+      "command": "node tools/validate-active-director-profile.mjs",
+      "exitCode": 0
+    }
+  ],
+  "packageLock": {
+    "fileCount": 130,
+    "packageSha256": "743963d1d19672e5706938742d2d67e9f7e034e4a4b585eb6accc67b0c0785ca"
+  },
+  "independentReadOnlyReview": {
+    "reviewer": "upstream_audit",
+    "result": "限定范围内未发现越权缺口；固定本期身份、输入格式、命令、真实原话路径SHA，binding全等，上下文/包锁/原声字幕素材检查保留；新模式错误不回退。",
+    "renderOrHumanAcceptancePerformed": false
+  },
+  "unchangedBoundaries": {
+    "legacyIndependentSignatureBranch": true,
+    "formalAndReleaseGates": true,
+    "sourceSpeechAndSubtitleChecks": true,
+    "realMediaDecodeAndCoverageChecks": true,
+    "knowledgeContextAndPackageLock": true
+  },
+  "userPreviewApproved": false,
+  "fullWatchConfirmed": false,
+  "candidateAccepted": false,
+  "formalAuthorized": false,
+  "publishAuthorized": false,
+  "independentSignatureCreated": false,
+  "productionRenderInvoked": false,
+  "gitInvoked": false,
+  "realPreflight": "等待sample完成当前授权/任务上下文绑定后的只读入口结果；不得将测试通过写成已渲染。"
+}

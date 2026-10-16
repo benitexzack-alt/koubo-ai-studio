@@ -1,5 +1,5 @@
 import {staticFile} from 'remotion';
-import productionProfile from '../../../workflow/active-production-profile.v1.json';
+import productionProfile from './production-profile.snapshot.json';
 import type {FrameWindow, Rect, RenderMode, RuntimePlan} from './types';
 
 const cards = productionProfile.nextEpisodeDefaults.wordCards;
@@ -86,6 +86,13 @@ export const validateRuntimePlan = (plan: RuntimePlan, mode: RenderMode) => {
     requireValue(slot.window && slot.asset, `素材${slot.id}待绑定实际文件和帧窗`);
     asset(slot.asset.src, plan);
     requireValue(slot.sourceLabel.trim(), `素材${slot.id}缺来源或说明性质`);
+    if (slot.asset.imageFocus) {
+      const focus = slot.asset.imageFocus;
+      requireValue(slot.kind === 'real-evidence' && slot.asset.type === 'image' &&
+        Object.values(focus).every(Number.isFinite) && focus.x >= 0 && focus.y >= 0 &&
+        focus.width > 0 && focus.height > 0 && focus.x + focus.width <= focus.sourceWidth &&
+        focus.y + focus.height <= focus.sourceHeight, `截图${slot.id}显示视窗越界`);
+    }
     if (slot.asset.type === 'video') {
       requireValue(slot.asset.sourceFps > 0 && slot.asset.sourceInFrame >= 0 && slot.asset.sourceDurationFrames !== null, `视频${slot.id}缺源帧数`);
       requireValue((slot.window.to - slot.window.from) / 30 <= (slot.asset.sourceDurationFrames! - slot.asset.sourceInFrame) / slot.asset.sourceFps + 1 / 30, `视频${slot.id}不足以原速覆盖窗口`);

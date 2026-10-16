@@ -1,6 +1,6 @@
 import React from 'react';
 import {Composition, registerRoot, type CalculateMetadataFunction} from 'remotion';
-import runtime from '../../../edit/20261016_musk_grok_business_ai/04_后期准备/runtime-plan.v1.json';
+import runtime from './runtime-plan.snapshot.json';
 import {MuskGrokBusinessAi} from './Composition';
 import {validateEpisodeAssets} from './runtime';
 import type {EpisodeProps, RuntimePlan} from './types';

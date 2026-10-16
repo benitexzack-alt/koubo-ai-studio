@@ -1,0 +1,453 @@
+{
+  "schemaVersion": "real-evidence-preview-assembly-review/v1",
+  "episodeId": "musk-grok-business-ai-20261016",
+  "recordedAt": "2026-10-16T18:20:04+08:00",
+  "status": "five-assets-technically-ready-for-preview-review-pending",
+  "scope": "只核对已有5文件并提取R01现有AAC，所有派生文件仅写本目录；不改原件/public、组件、字幕、事实待决或Git。",
+  "technicalSummary": {
+    "assetCount": 5,
+    "allRuntimeSourceAndManifestHashesMatch": true,
+    "R01VideoAndAudioDecodeExitCode": 0,
+    "fourImageFullPixelDecodes": "成功",
+    "sourceFilesUnchanged": true,
+    "runtimeFilesUnchanged": true
+  },
+  "items": [
+    {
+      "id": "R01",
+      "runtimePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R01.mp4",
+      "sourcePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/剪辑候选/Tesla_完整翻转与落地_源16分23至16分31秒.mp4",
+      "sourceUrl": "https://x.com/Tesla/status/2110788059008819215",
+      "runtimeSha256": "6577510b0eda349ee5925c8d96cbc9d5b782d79d567ed43aa0eed5c175464b1d",
+      "sourceSha256": "6577510b0eda349ee5925c8d96cbc9d5b782d79d567ed43aa0eed5c175464b1d",
+      "recordedSha256": "6577510b0eda349ee5925c8d96cbc9d5b782d79d567ed43aa0eed5c175464b1d",
+      "bytes": 2813241,
+      "runtimeSlotObserved": {
+        "id": "R01",
+        "kind": "real-evidence",
+        "window": {
+          "from": 162,
+          "to": 402
+        },
+        "state": "pending",
+        "reviewStatus": "pending",
+        "asset": {
+          "type": "video",
+          "src": "evidence/R01.mp4",
+          "sourceInFrame": 0,
+          "sourceFps": 24,
+          "sourceDurationFrames": 192,
+          "audioDisposition": "pending",
+          "audioReason": "原媒体原声保留待逐镜试听，未用于混音",
+          "nativeAudio": null
+        },
+        "sourceLabel": "Tesla 官方发布会演示",
+        "displayTitle": "官方演示现场"
+      },
+      "hashesAllMatch": true,
+      "probe": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/真实资料候选入片核对/R01_ffprobe.json",
+      "decodeExitCode": 0,
+      "extractedAudio": {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/真实资料候选入片核对/R01_现有片段原生音轨.m4a",
+        "container": "m4a",
+        "codec": "aac",
+        "streamCopy": true,
+        "sha256": "e42a845488f678a3648b8326510b364fde35bd31cd668ffc0744627d39165ff5",
+        "audioPacketHashMatches": true,
+        "packetHash": "SHA256=7b0a1f822d4a3129e0ccf40f0c0666524b5c2476fc418487d8038f12e94ebda8",
+        "decodeExitCode": 0,
+        "originNote": "从当前R01片段复制现有AAC；该8秒切片原制作回执记录AAC曾重编码，不冒称与全场原片比特完全一致。",
+        "publicFolderModified": false,
+        "audioDisposition": "pending"
+      },
+      "visibleContent": "夜间官方演示远景，车辆从地面起飞、翻转倒置、复正、落地并出现雾团；末尾原片切到正面机位。右下TESLA LIVE标识可见。",
+      "meaningLimit": "仅证明官方演示画面中的动作；不能证明量产时间、任意墙面、自由持续飞行、上牌或操作条件。",
+      "visualEvidence": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/真实资料候选入片核对/R01_动作联系表.jpg",
+      "presentation": "保留完整16:9画幅及起飞到落地；不把字幕/真人压在车辆路径或右下TESLA LIVE上，不用局部裁切丢失轨迹。",
+      "mediaTrim": {
+        "sourceStartSeconds": 0,
+        "sourceEndSecondsExclusive": 8,
+        "sourceFps": 24,
+        "sourceFrames": [
+          0,
+          192
+        ],
+        "playbackRate": 1
+      },
+      "actualPixelsViewedThisTurn": true,
+      "frameConvention": "zero-based-half-open",
+      "timelineFps": 30,
+      "sourceSpeechWindow": {
+        "from": 162,
+        "to": 402,
+        "seconds": [
+          5.4,
+          13.4
+        ],
+        "durationFrames": 240
+      },
+      "candidateStateRecommendation": "ready",
+      "candidateStateMeaning": "仅供已授权V9用户审阅小样装配，主代理执行状态变更；不代表素材或事实验收。",
+      "reviewStatusRecommendation": "pending",
+      "factStatus": "unchanged-pending",
+      "formalReady": false,
+      "pixelsOrRuntimeModifiedByThisReviewer": false,
+      "audioAssessment": {
+        "audioDispositionRecommendation": "pending",
+        "existingActualListeningEvidenceFound": false,
+        "existingEvidence": "既有切片来源回执只记录保留源音、AAC重编码及解码，不含声音类型或正常速度听审。",
+        "thisReviewerListened": false,
+        "integratedLufs": -14.6,
+        "truePeakDbtp": -2.2,
+        "samplePeakDbfs": -2.234,
+        "samplePeakTimeSeconds": 0.10983333333333334,
+        "soundCategory": "unknown",
+        "nativeSoundUsability": "未确认，不把全轨认定为动作音效",
+        "mixRecommendation": "原轨较响，不直接满音量叠入口播，不沿用纸艺增益；实际试听后按声音类型决定选择、增益和避让，当前只交付候选音轨。",
+        "analysisReceipt": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/真实资料候选入片核对/R01_音频分窗指标.json"
+      }
+    },
+    {
+      "id": "R02",
+      "runtimePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R02.jpg",
+      "sourcePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/官网截图/Tesla_01_配置参数官方帖.jpg",
+      "sourceUrl": "https://x.com/Tesla/status/2110905588402295283",
+      "runtimeSha256": "f6834ae2e776a55bb1c3b84521ebc21d227e5b3239ef0ab666a37865ccdcd703",
+      "sourceSha256": "f6834ae2e776a55bb1c3b84521ebc21d227e5b3239ef0ab666a37865ccdcd703",
+      "recordedSha256": "f6834ae2e776a55bb1c3b84521ebc21d227e5b3239ef0ab666a37865ccdcd703",
+      "bytes": 172844,
+      "runtimeSlotObserved": {
+        "id": "R02",
+        "kind": "real-evidence",
+        "window": {
+          "from": 905,
+          "to": 1083
+        },
+        "state": "pending",
+        "reviewStatus": "pending",
+        "asset": {
+          "type": "image",
+          "src": "evidence/R02.jpg",
+          "sourceInFrame": 0,
+          "sourceFps": 30,
+          "sourceDurationFrames": null,
+          "audioDisposition": "not-applicable",
+          "audioReason": "静态截图无音轨",
+          "nativeAudio": null
+        },
+        "sourceLabel": "Tesla 官方配置说明",
+        "displayTitle": "车型与参数"
+      },
+      "hashesAllMatch": true,
+      "image": {
+        "size": [
+          1280,
+          1936
+        ],
+        "mode": "RGB",
+        "format": "JPEG",
+        "fullPixelDecode": "PIL.load成功"
+      },
+      "visibleContent": "Tesla认证账号的Configurations原帖；三版本说明、Range >300 miles、>230mph的Rocket限定、0–60分版本数值；日期2026-10-16。原图还含登录框、评论、网友配图、二维码。",
+      "meaningLimit": "原文是厂家公布及0–60口径，不是独立性能实测，不能修复原声“零百1.7秒”或推出所有地区上牌。",
+      "presentation": "整张1280×1936直接缩进横屏会使正文过小。建议在小样中放大原截图参数区，同时保留可读的原Tesla作者与日期；排除登录、网友评论及二维码，不重绘原文。",
+      "suggestedReadOnlyCropRegions": {
+        "parameters": {
+          "x": 290,
+          "y": 508,
+          "width": 580,
+          "height": 148
+        },
+        "author": {
+          "x": 290,
+          "y": 60,
+          "width": 240,
+          "height": 50
+        },
+        "date": {
+          "x": 290,
+          "y": 1108,
+          "width": 310,
+          "height": 28
+        },
+        "caveat": "仅建议真实像素视窗，未生成新截图或修改装配图；日期条较小，需放大后再目视验证。参数区必须保留0–60、全部不等号和Rocket限定。"
+      },
+      "mediaTrim": {
+        "type": "still-image",
+        "temporalTrim": null
+      },
+      "actualPixelsViewedThisTurn": true,
+      "frameConvention": "zero-based-half-open",
+      "timelineFps": 30,
+      "sourceSpeechWindow": {
+        "from": 905,
+        "to": 1083,
+        "seconds": [
+          30.166666666666668,
+          36.1
+        ],
+        "durationFrames": 178
+      },
+      "candidateStateRecommendation": "ready",
+      "candidateStateMeaning": "仅供已授权V9用户审阅小样装配，主代理执行状态变更；不代表素材或事实验收。",
+      "reviewStatusRecommendation": "pending",
+      "factStatus": "unchanged-pending",
+      "formalReady": false,
+      "pixelsOrRuntimeModifiedByThisReviewer": false
+    },
+    {
+      "id": "R03",
+      "runtimePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R03.jpg",
+      "sourcePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/官网截图/Grok_03_马斯克原帖正文卡.jpg",
+      "sourceUrl": "https://x.com/elonmusk/status/2107724314451878104",
+      "runtimeSha256": "0e12a0d9a5e1389a520f93e586265c9c3f97c4122c6f118c991e60cb7b3c290b",
+      "sourceSha256": "0e12a0d9a5e1389a520f93e586265c9c3f97c4122c6f118c991e60cb7b3c290b",
+      "recordedSha256": "0e12a0d9a5e1389a520f93e586265c9c3f97c4122c6f118c991e60cb7b3c290b",
+      "bytes": 26059,
+      "runtimeSlotObserved": {
+        "id": "R03",
+        "kind": "real-evidence",
+        "window": {
+          "from": 1389,
+          "to": 1646
+        },
+        "state": "pending",
+        "reviewStatus": "pending",
+        "asset": {
+          "type": "image",
+          "src": "evidence/R03.jpg",
+          "sourceInFrame": 0,
+          "sourceFps": 30,
+          "sourceDurationFrames": null,
+          "audioDisposition": "not-applicable",
+          "audioReason": "静态截图无音轨",
+          "nativeAudio": null
+        },
+        "sourceLabel": "Elon Musk 官方原帖 · 2026-10-07",
+        "displayTitle": "多模型方向"
+      },
+      "hashesAllMatch": true,
+      "image": {
+        "size": [
+          600,
+          320
+        ],
+        "mode": "RGB",
+        "format": "JPEG",
+        "fullPixelDecode": "PIL.load成功"
+      },
+      "visibleContent": "600×320的Elon Musk原帖正文卡，作者、Grok @bot、Going forward、列举Claude Opus5.5/MidJourney/Suno及2026-10-07日期可见。",
+      "meaningLimit": "仅为产品方向公告，不证明所有Grok入口现在都可调用、特定后端可用或本期实际调用成功。",
+      "presentation": "保留整张紧凑卡；不裁作者、Grok @bot、Going forward或日期。原图600像素宽，放大会软化，需在小样尺寸检查，禁止锐化重绘字或另造调用箭头。",
+      "mediaTrim": {
+        "type": "still-image",
+        "temporalTrim": null
+      },
+      "actualPixelsViewedThisTurn": true,
+      "frameConvention": "zero-based-half-open",
+      "timelineFps": 30,
+      "sourceSpeechWindow": {
+        "from": 1389,
+        "to": 1646,
+        "seconds": [
+          46.3,
+          54.86666666666667
+        ],
+        "durationFrames": 257
+      },
+      "candidateStateRecommendation": "ready",
+      "candidateStateMeaning": "仅供已授权V9用户审阅小样装配，主代理执行状态变更；不代表素材或事实验收。",
+      "reviewStatusRecommendation": "pending",
+      "factStatus": "unchanged-pending",
+      "formalReady": false,
+      "pixelsOrRuntimeModifiedByThisReviewer": false
+    },
+    {
+      "id": "R04-MJ",
+      "runtimePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R04-MJ.jpg",
+      "sourcePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/官网截图/MJ_01_官网首页.jpg",
+      "sourceUrl": "https://www.midjourney.com/home",
+      "runtimeSha256": "b87a77906861a6ecf6ae39a07c35e6895fd1384ae446d95c30b76006267413ba",
+      "sourceSha256": "b87a77906861a6ecf6ae39a07c35e6895fd1384ae446d95c30b76006267413ba",
+      "recordedSha256": "b87a77906861a6ecf6ae39a07c35e6895fd1384ae446d95c30b76006267413ba",
+      "bytes": 184984,
+      "runtimeSlotObserved": {
+        "id": "R04-MJ",
+        "kind": "real-evidence",
+        "window": {
+          "from": 1660,
+          "to": 1736
+        },
+        "state": "pending",
+        "reviewStatus": "pending",
+        "asset": {
+          "type": "image",
+          "src": "evidence/R04-MJ.jpg",
+          "sourceInFrame": 0,
+          "sourceFps": 30,
+          "sourceDurationFrames": null,
+          "audioDisposition": "not-applicable",
+          "audioReason": "静态截图无音轨",
+          "nativeAudio": null
+        },
+        "sourceLabel": "Midjourney 官网",
+        "displayTitle": "绘图出图"
+      },
+      "hashesAllMatch": true,
+      "image": {
+        "size": [
+          1280,
+          720
+        ],
+        "mode": "RGB",
+        "format": "JPEG",
+        "fullPixelDecode": "PIL.load成功"
+      },
+      "visibleContent": "Midjourney首页ASCII式品牌图形、Sign up/Log in/Explore及About区域；没有本期生成操作或成果。",
+      "meaningLimit": "仅为品牌对象识别，不能证明Grok已调用Midjourney；不能以官网页面冒充本人演示。",
+      "presentation": "整幅保留或围绕品牌区适度聚焦；左下真人在画外，不盖官网身份；不将登录按钮包装为已执行操作。",
+      "mediaTrim": {
+        "type": "still-image",
+        "temporalTrim": null
+      },
+      "actualPixelsViewedThisTurn": true,
+      "frameConvention": "zero-based-half-open",
+      "timelineFps": 30,
+      "sourceSpeechWindow": {
+        "from": 1660,
+        "to": 1736,
+        "seconds": [
+          55.333333333333336,
+          57.86666666666667
+        ],
+        "durationFrames": 76
+      },
+      "candidateStateRecommendation": "ready",
+      "candidateStateMeaning": "仅供已授权V9用户审阅小样装配，主代理执行状态变更；不代表素材或事实验收。",
+      "reviewStatusRecommendation": "pending",
+      "factStatus": "unchanged-pending",
+      "formalReady": false,
+      "pixelsOrRuntimeModifiedByThisReviewer": false
+    },
+    {
+      "id": "R04-Claude",
+      "runtimePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R04-Claude.jpg",
+      "sourcePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/官网截图/Claude_01_Opus55官方发布.jpg",
+      "sourceUrl": "https://www.anthropic.com/claude-opus-5-5",
+      "runtimeSha256": "7089973359a87d433ea20df9ba73b3a37011f291537f29b9ea5485b945415fe9",
+      "sourceSha256": "7089973359a87d433ea20df9ba73b3a37011f291537f29b9ea5485b945415fe9",
+      "recordedSha256": "7089973359a87d433ea20df9ba73b3a37011f291537f29b9ea5485b945415fe9",
+      "bytes": 105835,
+      "runtimeSlotObserved": {
+        "id": "R04-Claude",
+        "kind": "real-evidence",
+        "window": {
+          "from": 1736,
+          "to": 1933
+        },
+        "state": "pending",
+        "reviewStatus": "pending",
+        "asset": {
+          "type": "image",
+          "src": "evidence/R04-Claude.jpg",
+          "sourceInFrame": 0,
+          "sourceFps": 30,
+          "sourceDurationFrames": null,
+          "audioDisposition": "not-applicable",
+          "audioReason": "静态截图无音轨",
+          "nativeAudio": null
+        },
+        "sourceLabel": "Anthropic 官方发布页",
+        "displayTitle": "复杂业务任务"
+      },
+      "hashesAllMatch": true,
+      "image": {
+        "size": [
+          1280,
+          720
+        ],
+        "mode": "RGB",
+        "format": "JPEG",
+        "fullPixelDecode": "PIL.load成功"
+      },
+      "visibleContent": "Anthropic官网页含正式标题Claude Opus5.5、2026-09-22日期、顶部ANTHROPIC标识与目录。",
+      "meaningLimit": "证明页面指向对应模型，不证明Grok通过Claude Code调用该模型或本期复杂业务已成功完成。",
+      "presentation": "保留品牌、模型完整名和日期；不要被标题卡、来源条或字幕叠住。真实资料显示标题宜识别对象，避免把“复杂业务任务”显示成已有结果。",
+      "mediaTrim": {
+        "type": "still-image",
+        "temporalTrim": null
+      },
+      "actualPixelsViewedThisTurn": true,
+      "frameConvention": "zero-based-half-open",
+      "timelineFps": 30,
+      "sourceSpeechWindow": {
+        "from": 1736,
+        "to": 1933,
+        "seconds": [
+          57.86666666666667,
+          64.43333333333334
+        ],
+        "durationFrames": 197
+      },
+      "candidateStateRecommendation": "ready",
+      "candidateStateMeaning": "仅供已授权V9用户审阅小样装配，主代理执行状态变更；不代表素材或事实验收。",
+      "reviewStatusRecommendation": "pending",
+      "factStatus": "unchanged-pending",
+      "formalReady": false,
+      "pixelsOrRuntimeModifiedByThisReviewer": false
+    }
+  ],
+  "layoutSuggestion": {
+    "status": "避让建议，尚未执行合成验证",
+    "canvas": [
+      1920,
+      1080
+    ],
+    "evidenceViewport": {
+      "x": 360,
+      "y": 48,
+      "width": 1480,
+      "height": 832.5,
+      "aspectFit": "contain；R02另按原文区域聚焦"
+    },
+    "speakerPip": {
+      "x": 64,
+      "y": 620,
+      "width": 256,
+      "height": 256,
+      "position": "左下，置于资料视窗外，使用本条同期真实口播"
+    },
+    "sourceStrip": {
+      "x": 360,
+      "y": 890,
+      "width": 1480,
+      "height": 36,
+      "textSizeSuggestion": 28
+    },
+    "subtitleArea": {
+      "x": 360,
+      "y": 940,
+      "width": 1480,
+      "height": 108,
+      "contentRule": "按本条实录中英文，不用字幕改写事实。"
+    },
+    "protectedContent": [
+      "R01车辆完整轨迹和右下TESLA LIVE",
+      "R02 Tesla身份、0–60、单位、不等号、Rocket限定、来源日期",
+      "R03作者、Grok @bot、Going forward与日期",
+      "R04-MJ品牌身份",
+      "R04-Claude模型完整名、Anthropic身份与日期"
+    ],
+    "gate": "在实际小样确认来源可读、字幕与真人不遮正文；本报告不宣称上述坐标已适配当前组件。"
+  },
+  "formalGate": {
+    "factDecisionChanged": false,
+    "bodyFactsRemainPending": true,
+    "reviewAccepted": false,
+    "audioAccepted": false,
+    "sourceRightsOrPublicationAcceptanceInferred": false,
+    "formalReleaseReady": false,
+    "renderPerformedByThisReviewer": false
+  },
+  "handoff": "主代理可将5窗state设ready用于本轮用户审阅小样；review保持pending。R01音轨等待主代理按需要复制入public，当前未动public。"
+}

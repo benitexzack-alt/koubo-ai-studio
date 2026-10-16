@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "episode-preview-binding-attempt/v1",
+  "recordedAt": "2026-10-16T11:05:20.005427+00:00",
+  "status": "blocked-before-authorization-write",
+  "command": [
+    "node",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/绑定本期聊天预览授权.mjs"
+  ],
+  "processExitCode": 1,
+  "failure": {
+    "message": "PAPER_MEDIA_COMMAND_FAILED:ffmpeg:spawnSync /opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg ETIMEDOUT",
+    "callStack": [
+      "runPaperMediaTool paper-asset-intake-media.mjs:32",
+      "verifyMedia native-v2-first-candidate-input.mjs:82",
+      "validateNativeV2FirstCandidate native-v2-first-candidate-input.mjs:236",
+      "validateFirstCandidateInputContract first-candidate-input-contract.mjs:159",
+      "computeFirstCandidatePreviewBindingV2 director-production-preflight-v2.mjs:487",
+      "绑定本期聊天预览授权.mjs:25"
+    ],
+    "defaultSubprocessTimeoutMilliseconds": 120000,
+    "ffmpegArgv": [
+      "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+      "-nostdin",
+      "-v",
+      "error",
+      "-xerror",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+      "-map",
+      "0:v:0",
+      "-map",
+      "0:a?",
+      "-f",
+      "null",
+      "-"
+    ],
+    "processObservation": "超时前实际ps显示同一ffmpeg原片全解码进程仍活跃，约115.9%CPU；这是校验子进程等待上限，不能据此判源文件损坏。"
+  },
+  "source": {
+    "path": "edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+    "sha256": "b1902425762e49aedfc62ff717393351e6573c5af6c0cd06a7babf571af89bf6"
+  },
+  "job": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/production-job.first-candidate.v1.json",
+    "sha256": "66ab058f3c4e6c76d5317de3bcd170b0a1d503c4213cc54b9ed46ae276f74739"
+  },
+  "sourceUserMessage": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/本轮内部预览用户原话.v1.json",
+    "sha256": "81c80095470c85f22e7ed7871882110c77826a2028ad33ee994f7c60a4c67f7f"
+  },
+  "frozenPackageSha256AtAttempt": "7cdf7e25a72035fc66dd364906099850aec18f01e0652e65d93202b2544909ad",
+  "newAuthorizationWritten": false,
+  "contextRefreshed": false,
+  "preflightInvoked": false,
+  "secondRenderInvoked": false,
+  "renderInvokedByThisAgent": false,
+  "formalAuthorized": false,
+  "publishAuthorized": false,
+  "nextAction": "已交共享校验负责人确认最小等待上限适配；不修改共享代码、不跳过解码、不重复同方法。"
+}

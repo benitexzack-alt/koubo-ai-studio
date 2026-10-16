@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "episode-native-candidate-input-delivery/v1",
+  "recordedAt": "2026-10-16T10:36:19.888514+00:00",
+  "status": "real-inputs-verified-controlled-entry-blocked",
+  "episodeId": "musk-grok-business-ai-20261016",
+  "runtimePlan": {
+    "path": "edit/20261016_musk_grok_business_ai/04_后期准备/runtime-plan.v1.json",
+    "sha256": "f2b340cc14b08f635e30e5b993e18fd1bcb945e68b453b162388d7b68d9d2b78"
+  },
+  "contract": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/first-candidate-input.v1.json",
+    "sha256": "a13ad7fc6f5d2615757cd472c3452385046f381f7105565d1179fac1195b0699"
+  },
+  "job": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/production-job.first-candidate.v1.json",
+    "sha256": "b05fb0c62f77f5dafb2a9f354d67c71a3a069c6efd61934421101cd1030d833b"
+  },
+  "verification": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/冻结后只读入口复核.v1.json",
+    "sha256": "55ebfc3054d51289e175aeb41ef923f64f41a4e84875e5b025d449a830782718"
+  },
+  "packageSha256": "52a0c2c7f62692e46da0825119478340fd12d1322e2606607d9b539dda66f4e7",
+  "checks": {
+    "nativeInputPassed": true,
+    "inputFileCount": 90,
+    "directorBindingPassed": true,
+    "knowledgeContextPassed": true,
+    "preflightPassed": false
+  },
+  "actualFirstBlock": {
+    "ok": false,
+    "code": "DPG2_BOUND_JSON_REFERENCE_INVALID",
+    "message": "首次候选用户授权必须绑定项目内路径和小写 SHA-256。",
+    "details": null
+  },
+  "laterGatesPassed": false,
+  "mediaAssetCount": 20,
+  "videoAudioFullDecodeCount": 14,
+  "sourceSpeechPreserved": true,
+  "pendingTermCount": 4,
+  "unresolvedFactIds": [
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06",
+    "D07"
+  ],
+  "userScopeEstablished": true,
+  "humanFullWatchConfirmed": false,
+  "audioAccepted": false,
+  "candidateAccepted": false,
+  "formalAuthorized": false,
+  "publishAuthorized": false,
+  "renderInvoked": false,
+  "externalAudioUpload": false,
+  "gitChangedByThisAgent": false,
+  "contextPath": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/task-20261016T093224Z-db8e7249/context.json",
+  "knowledgeIndexChanges": {
+    "existingDefaultIncremental": true,
+    "changedDocuments": 5,
+    "removedDocuments": 0,
+    "fullRebuild": false
+  },
+  "ownership": "仅本期候选输入目录、本期授权的知识context目录；索引由已授权既有默认增量工具刷新。"
+}

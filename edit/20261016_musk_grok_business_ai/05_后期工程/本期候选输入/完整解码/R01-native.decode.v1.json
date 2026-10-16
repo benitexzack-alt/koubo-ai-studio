@@ -1,0 +1,126 @@
+{
+  "source": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R01-native.m4a",
+    "sha256": "e42a845488f678a3648b8326510b364fde35bd31cd668ffc0744627d39165ff5"
+  },
+  "command": [
+    "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-xerror",
+    "-err_detect",
+    "explode",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R01-native.m4a",
+    "-map",
+    "0:v?",
+    "-map",
+    "0:a?",
+    "-f",
+    "null",
+    "-"
+  ],
+  "exitCode": 0,
+  "fullDecode": true,
+  "tool": {
+    "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "sha256": "329fa7360b28a067a0cd7281474bb18cd868932d5173646a674466bcb56d6e93"
+  },
+  "checkedAt": "2026-10-16T10:23:31.583516+00:00",
+  "elapsedSeconds": 0.034,
+  "stderr": "",
+  "probe": {
+    "command": [
+      "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+      "-v",
+      "error",
+      "-show_streams",
+      "-show_format",
+      "-of",
+      "json",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R01-native.m4a"
+    ],
+    "tool": {
+      "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+      "sha256": "841ab2259a55e5c5e44c5851890867d48750ff1e7cfa92b5fbed91445a493128"
+    },
+    "result": {
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "aac",
+          "codec_long_name": "AAC (Advanced Audio Coding)",
+          "profile": "LC",
+          "codec_type": "audio",
+          "codec_tag_string": "mp4a",
+          "codec_tag": "0x6134706d",
+          "mime_codec_string": "mp4a.40.2",
+          "sample_fmt": "fltp",
+          "sample_rate": "48000",
+          "channels": 2,
+          "channel_layout": "stereo",
+          "bits_per_sample": 0,
+          "initial_padding": 0,
+          "id": "0x1",
+          "r_frame_rate": "0/0",
+          "avg_frame_rate": "0/0",
+          "time_base": "1/48000",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 383952,
+          "duration": "7.999000",
+          "bit_rate": "199903",
+          "nb_frames": "376",
+          "extradata_size": 5,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "SoundHandler"
+          }
+        }
+      ],
+      "format": {
+        "filename": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R01-native.m4a",
+        "nb_streams": 1,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "7.999000",
+        "size": "204323",
+        "bit_rate": "204348",
+        "probe_score": 100,
+        "tags": {
+          "major_brand": "M4A ",
+          "minor_version": "512",
+          "compatible_brands": "M4A isomiso2",
+          "encoder": "Lavf62.12.102"
+        }
+      }
+    }
+  },
+  "humanListeningPerformed": false,
+  "dynamicAcceptancePerformed": false
+}

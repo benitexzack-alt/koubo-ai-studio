@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "native-v2-full-decode-timeout-validation/v1",
+  "createdAt": "2026-10-16T11:07:49.616653+00:00",
+  "scope": "仅调整新原生 v2 全解码等待上限，不改变通用媒体工具默认、解码 argv、文件哈希检查、正式验收或发布门禁",
+  "reasonReceipt": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/重绑失败_原片全解码等待超时.v1.json",
+  "reasonReceiptSha256": "1bc1b14e0edfd97f20e0d3153b9a4896546762202239edc2e6d17a64369ded48",
+  "durationSource": "实际 ffprobe stream.duration 或 format.duration；现有有限正数与候选时长一致性校验通过后才使用",
+  "timeoutFormula": "min(600000, max(120000, ceil(durationSeconds * 2000)))",
+  "episodeTimeoutMilliseconds": 335667,
+  "shortPaperTimeoutMilliseconds": 120000,
+  "maximumTimeoutMilliseconds": 600000,
+  "packageSha256": "749ffd7ca9283f26c38d6a36c52dbd5a7a54d509b18bbe0bd8aba797be37ae80",
+  "files": [
+    {
+      "path": "skills/koubo-remotion-director/scripts/native-v2-first-candidate-input.mjs",
+      "beforeSha256": "2b6495afa1181131e5a9aee7e9913317d8ba4d742127083ee39766c0ccc8f9cf",
+      "afterSha256": "796c09e3a76980ffec4ab56b4dc1f07ab06e2ce9f0d2bde8a060dd40bcaf19d6"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-native-v2-first-candidate-input.mjs",
+      "beforeSha256": "a183cea96c931c9c48279b57741c4c14953d0eca18f78f9efdca4adff55a2769",
+      "afterSha256": "9b968a71252b6ec2dff154e7292f7d6c5e715664abfbc4615a06fc9bd869c4e8"
+    },
+    {
+      "path": "workflow/director-skill-lock.v1.json",
+      "beforeSha256": "a337edd1600a2329af378d5235706dd7641c65923d4beab2c3f244424cf2ab61",
+      "afterSha256": "7da2d0dc5bcb8b1398fa524e3068cef2877bf5b87e67bfc9e782f0bd48cfd899"
+    }
+  ],
+  "patch": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/受控候选准备/原生全解码等待_仅本轮.patch",
+    "sha256": "2390ab255e2689b03ea0bc647b5b282d789fd2d8f016bbf9a00f5c637b980964",
+    "appliedToStartingSnapshot": true,
+    "reconstructedFilesMatch": true
+  },
+  "validation": [
+    {
+      "command": "node skills/koubo-remotion-director/tests/test-native-v2-first-candidate-input.mjs",
+      "exitCode": 0,
+      "passed": 25,
+      "includes": "原 19 项真实合成素材检查及拒绝边界，新增 6 项时长等待边界"
+    },
+    {
+      "command": "node tools/validate-active-director-profile.mjs",
+      "exitCode": 0
+    }
+  ],
+  "realEpisodeRebinding": "待 sample 真实重新执行；不以合成测试声称本期完整解码通过",
+  "secondRenderInvokedByThisAgent": false,
+  "formalEnabled": false,
+  "candidateAccepted": false,
+  "publishAuthorized": false
+}

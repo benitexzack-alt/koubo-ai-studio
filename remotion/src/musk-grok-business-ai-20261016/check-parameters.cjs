@@ -16,6 +16,10 @@ const raw = fs.readFileSync(runtimePath);
 const plan = JSON.parse(raw);
 
 try {
+  const snapshot = fs.readFileSync(path.join(__dirname, 'runtime-plan.snapshot.json'));
+  const profile = fs.readFileSync(path.resolve(__dirname, '../../../workflow/active-production-profile.v1.json'));
+  const profileSnapshot = fs.readFileSync(path.join(__dirname, 'production-profile.snapshot.json'));
+  if (!raw.equals(snapshot) || !profile.equals(profileSnapshot)) throw new Error('本期运行数据或活动V9档案与Remotion内快照不一致');
   loaded.exports.validateRuntimePlan(plan, 'preview');
   let formalParameters = '通过，仅代表参数，不代表生产授权';
   try { loaded.exports.validateRuntimePlan(plan, 'formal'); }

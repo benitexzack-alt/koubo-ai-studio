@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "episode-native-candidate-input-delivery/v2",
+  "recordedAt": "2026-10-16T10:49:05.194905+00:00",
+  "status": "controlled-internal-preview-preflight-passed-not-rendered",
+  "episodeId": "musk-grok-business-ai-20261016",
+  "job": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/production-job.first-candidate.v1.json",
+    "sha256": "064a876ec4ce1f1412767c296af3ca9dcd79e8f769296fdab3a160728df8f1c6"
+  },
+  "contract": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/first-candidate-input.v1.json",
+    "sha256": "a13ad7fc6f5d2615757cd472c3452385046f381f7105565d1179fac1195b0699"
+  },
+  "localChatPreviewAuthorization": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/内部预览聊天授权.v1.json",
+    "sha256": "39a5042cce5aa82e0f7ccf12e10619ffa2c2d721df289db0ae9377cddbaf63ec"
+  },
+  "sourceMessages": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/本轮内部预览用户原话.v1.json",
+    "sha256": "81c80095470c85f22e7ed7871882110c77826a2028ad33ee994f7c60a4c67f7f"
+  },
+  "verification": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/冻结后只读入口复核.v1.json",
+    "sha256": "28a792ed457281d665ed9486095d65a93744b18b5e9ad4859b1852869a899a5c"
+  },
+  "authorizationType": "local-chat-authorization",
+  "authorizationMethod": "current-chat-verbatim",
+  "independentSignature": false,
+  "packageSha256": "743963d1d19672e5706938742d2d67e9f7e034e4a4b585eb6accc67b0c0785ca",
+  "checks": {
+    "nativeInputPassed": true,
+    "inputFileCount": 90,
+    "boundFileCount": 101,
+    "directorBindingPassed": true,
+    "knowledgeContextPassed": true,
+    "preflightPassed": true
+  },
+  "preflightCode": "DPG2_MUSK_GROK_CHAT_PREVIEW_OK",
+  "preflightIntegritySealSha256": "52f4bb0d97ef6414cb59cddcd2df31a8ee6596b237f15a7cbd5042a8b05c384f",
+  "contextSha256": "d8aff1bb09cfedcd72330b97d81a3dda04c69eac9174958a40b6d4e71e2a1bd1",
+  "mediaAssetCount": 20,
+  "videoAudioFullDecodeCount": 14,
+  "sourceSpeechPreserved": true,
+  "pendingTermCount": 4,
+  "unresolvedFactIds": [
+    "D01",
+    "D02",
+    "D03",
+    "D04",
+    "D05",
+    "D06",
+    "D07"
+  ],
+  "wrapperInvocation": {
+    "argv": [
+      "node",
+      "/Users/pc/Documents/口播/skills/koubo-remotion-director/scripts/run-remotion-production-v2.mjs",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/production-job.first-candidate.v1.json",
+      "preview"
+    ],
+    "cwd": "/Users/pc/Documents/口播",
+    "executedByThisAgent": false,
+    "output": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/内部审阅候选_有音效.mp4",
+    "outputExistsAtHandoff": false
+  },
+  "userScopeEstablished": true,
+  "humanFullWatchConfirmed": false,
+  "audioAccepted": false,
+  "candidateAccepted": false,
+  "formalAuthorized": false,
+  "publishAuthorized": false,
+  "renderInvokedByThisAgent": false,
+  "externalAudioUpload": false,
+  "gitPerformedByThisAgent": false,
+  "knowledgeIndexRefreshThisTurn": {
+    "existingDefaultIncremental": true,
+    "changedDocuments": 1,
+    "removedDocuments": 0,
+    "fullRebuild": false
+  },
+  "limitations": "通过的是本期内部预览执行前检查，实际成片、正常速度视听和用户完整观看仍未产生。旧独立签名字段null且未冒称签名。"
+}

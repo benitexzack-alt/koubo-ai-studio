@@ -11,6 +11,7 @@ import {
 import {compilePostshootRebindPlan, validatePostshootRebindRequest} from './postshoot-rebind-core.mjs';
 import {validatePaperAssetIntake} from './paper-asset-intake-core.mjs';
 import {paperMediaTools} from './paper-asset-intake-media.mjs';
+import {NATIVE_V2_ARTIFACTS, NATIVE_V2_INPUT_FORMAT, validateNativeV2FirstCandidate} from './native-v2-first-candidate-input.mjs';
 
 export const FIRST_CANDIDATE_INPUT_SCHEMA = 'director-first-candidate-input/v1';
 export const FIRST_CANDIDATE_GATE_STATE = 'first-candidate-preview-required';
@@ -153,6 +154,12 @@ export function assertFirstCandidateState({contract, job, command}) {
 export function validateFirstCandidateInputContract({projectRoot, contract, job, command}) {
   projectRoot = realpathSync(projectRoot);
   assertFirstCandidateState({contract, job, command});
+  requireValue(contract.inputFormat === undefined || contract.inputFormat === NATIVE_V2_INPUT_FORMAT,
+    'FCI_INPUT_FORMAT_UNSUPPORTED');
+  if (contract.inputFormat === NATIVE_V2_INPUT_FORMAT) return validateNativeV2FirstCandidate({
+    projectRoot, contract, job, readClosure: readFirstCandidateInputClosure,
+  });
+  requireValue(job.director?.inputFormat === undefined, 'FCI_INPUT_FORMAT_BINDING_MISMATCH');
   const refs = contract.artifacts;
   requireValue(record(refs) && FIRST_CANDIDATE_ARTIFACTS.every((key) => record(refs[key])), 'FCI_ARTIFACTS_REQUIRED');
   const closure = readFirstCandidateInputClosure({
@@ -263,7 +270,7 @@ export function validateFirstCandidateInputContract({projectRoot, contract, job,
 // A read-only producer adapter. It consumes existing compiler/validator outputs;
 // it neither invents stage receipts nor creates authorization or acceptance.
 export function buildFirstCandidateInputContract({
-  projectRoot, job, assetIntake, assetIntakeValidation, executionGroupId, authorizedUserId,
+  projectRoot, job, assetIntake, assetIntakeValidation, executionGroupId, authorizedUserId, nativeArtifacts,
 }) {
   projectRoot = realpathSync(projectRoot);
   const bind = (path) => {
@@ -277,15 +284,19 @@ export function buildFirstCandidateInputContract({
   };
   const profile = bind('workflow/active-director-profile.v1.json');
   const profileBody = JSON.parse(readFileSync(profile.path, 'utf8'));
+  const native = job.director?.inputFormat === NATIVE_V2_INPUT_FORMAT;
   const contract = {
     schema: FIRST_CANDIDATE_INPUT_SCHEMA, state: 'inputs-ready-for-first-candidate',
+    ...(native ? {inputFormat: NATIVE_V2_INPUT_FORMAT} : {}),
     episodeId: job.videoId, jobId: job.jobId, taskId: job.director?.taskId,
     revisionId: job.productionGate?.revisionId, executionGroupId, authorizedUserId,
     policy: {incidentPreventionVersion: '1'}, productionEligible: false, formal: {enabled: false},
     candidateAccepted: false, userPreviewApproved: false, fullWatchConfirmed: false, publishAuthorized: false,
     candidate: null, candidateAcceptance: null, technicalQa: null, handoff: null,
     profile, style: bind(profileBody.style?.path),
-    artifacts: Object.fromEntries(FIRST_CANDIDATE_ARTIFACTS.map((key) => [key,
+    artifacts: native ? Object.fromEntries(NATIVE_V2_ARTIFACTS.map((key) => [key,
+      structuredClone(nativeArtifacts?.[key] ?? job.director?.artifacts?.[key]),
+    ])) : Object.fromEntries(FIRST_CANDIDATE_ARTIFACTS.map((key) => [key,
       key === 'assetIntake' ? bind(assetIntake) : key === 'assetIntakeValidation' ? bind(assetIntakeValidation) :
         structuredClone(job.director?.artifacts?.[key]),
     ])),

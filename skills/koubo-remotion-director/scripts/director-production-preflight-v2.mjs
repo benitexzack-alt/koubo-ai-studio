@@ -28,6 +28,7 @@ import {
   FIRST_CANDIDATE_GATE_STATE,
   validateFirstCandidateInputContract,
 } from './first-candidate-input-contract.mjs';
+import {validateMuskGrokChatPreviewAuthorization} from './musk-grok-chat-preview-authorization.mjs';
 
 export const DIRECTOR_PRODUCTION_ENTRY_BINDING_SCHEMA = 'director-production-entry-binding/v2';
 export const DIRECTOR_PRODUCTION_FREEZE_RECEIPT_SCHEMA = 'director-production-freeze-receipt/v2';
@@ -56,6 +57,10 @@ const GATE_CLOSURE_PATHS = Object.freeze([
   'skills/koubo-remotion-director/scripts/director-contract-v2-core.mjs',
   'skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs',
   'skills/koubo-remotion-director/scripts/first-candidate-input-contract.mjs',
+  'skills/koubo-remotion-director/scripts/native-v2-first-candidate-input.mjs',
+  'skills/koubo-remotion-director/scripts/musk-grok-chat-preview-authorization.mjs',
+  'skills/koubo-remotion-director/scripts/director-cues-v2-core.mjs',
+  'skills/koubo-remotion-director/scripts/paper-quality-baseline.mjs',
   'skills/koubo-remotion-director/scripts/preproduction-director-core.mjs',
   'skills/koubo-remotion-director/scripts/paper-motion-contract.mjs',
   'skills/koubo-remotion-director/scripts/postshoot-rebind-core.mjs',
@@ -455,6 +460,34 @@ const assertExactStable = (actual, expected, code, label) => {
   }
 };
 
+const firstCandidateBindingFromCheckedInput = ({projectRoot, parsedJob, input, checked}) => {
+  const profile = readBoundJson(projectRoot, input.body.profile, '当前导演档案');
+  const lockFile = hashRegularFile(projectRoot, profile.body.skill?.lockPath, '当前导演包锁');
+  const boundFiles = [...new Map([
+    ...collectProductionBoundFilesV2({projectRoot, job: parsedJob}),
+    ...checked.files,
+    ...[input, lockFile].map(({path, sha256, bytes}) => ({path, sha256, bytes})),
+  ].map((item) => [item.path, item])).values()].sort((a, b) => a.path.localeCompare(b.path, 'zh-CN'));
+  const closure = computeProductionGateClosureV2({projectRoot});
+  const composition = computeProductionCompositionBindingV2(parsedJob, {projectRoot});
+  const binding = {
+    episodeId: input.body.episodeId, taskId: input.body.taskId, jobId: parsedJob.jobId,
+    revisionId: parsedJob.productionGate.revisionId, firstCandidateInputSha256: input.sha256,
+    jobSnapshotSha256: computeProductionJobSnapshotSha256V2(parsedJob),
+    boundFiles, boundFilesSha256: stableJsonSha256ForProductionGateV2(boundFiles),
+    gateClosure: closure.files, gateClosureSha256: closure.sha256, compositionBinding: composition,
+    productionEligible: false, formalEnabled: false, candidateAccepted: false,
+  };
+  return {binding, boundFiles, closure, composition};
+};
+
+// 只计算当前真实输入闭包，既不写授权也不改变任何生产状态。
+export const computeFirstCandidatePreviewBindingV2 = ({projectRoot = DEFAULT_PRODUCTION_PROJECT_ROOT, job}) => {
+  const input = readBoundJson(projectRoot, job.productionGate?.firstCandidateInput, '首次候选输入合同');
+  const checked = validateFirstCandidateInputContract({projectRoot, contract: input.body, job, command: 'direct-remotion-preview'});
+  return firstCandidateBindingFromCheckedInput({projectRoot, parsedJob: job, input, checked}).binding;
+};
+
 const validateFirstCandidatePreflight = ({projectRoot, parsedJob, jobFile, registry, command, entrypoint}) => {
   const gate = parsedJob.productionGate;
   if (!FIRST_CANDIDATE_COMMANDS.includes(command) ||
@@ -467,13 +500,7 @@ const validateFirstCandidatePreflight = ({projectRoot, parsedJob, jobFile, regis
   if (directorBinding.status !== 'candidate-entry-director-bound') {
     fail('FCI_DIRECTOR_BINDING_REQUIRED', '首次候选不得利用历史日期或本条例外绕开当前导演绑定与包锁。');
   }
-  const profile = readBoundJson(projectRoot, input.body.profile, '当前导演档案');
-  const lockFile = hashRegularFile(projectRoot, profile.body.skill?.lockPath, '当前导演包锁');
-  const boundFiles = [...new Map([
-    ...collectProductionBoundFilesV2({projectRoot, job: parsedJob}),
-    ...checked.files,
-    ...[input, lockFile].map(({path, sha256, bytes}) => ({path, sha256, bytes})),
-  ].map((item) => [item.path, item])).values()].sort((a, b) => a.path.localeCompare(b.path, 'zh-CN'));
+  const {binding, boundFiles, closure, composition} = firstCandidateBindingFromCheckedInput({projectRoot, parsedJob, input, checked});
   if (boundFiles.some((item) => registry.body.retiredOutputSha256?.includes(item.sha256))) {
     fail('FCI_RETIRED_OUTPUT', '首次候选不得使用旧事故或已退役输出，即使文件已改名。');
   }
@@ -483,16 +510,27 @@ const validateFirstCandidatePreflight = ({projectRoot, parsedJob, jobFile, regis
     documentPaths: [jobFile.absolutePath, input.absolutePath],
     additionalStrings: boundFiles.map((item) => item.path),
   });
-  const closure = computeProductionGateClosureV2({projectRoot});
-  const composition = computeProductionCompositionBindingV2(parsedJob, {projectRoot});
-  const binding = {
-    episodeId: input.body.episodeId, taskId: input.body.taskId, jobId: parsedJob.jobId,
-    revisionId: gate.revisionId, firstCandidateInputSha256: input.sha256,
-    jobSnapshotSha256: computeProductionJobSnapshotSha256V2(parsedJob),
-    boundFiles, boundFilesSha256: stableJsonSha256ForProductionGateV2(boundFiles),
-    gateClosure: closure.files, gateClosureSha256: closure.sha256, compositionBinding: composition,
-    productionEligible: false, formalEnabled: false, candidateAccepted: false,
-  };
+  if (gate.previewAuthorizationMode !== undefined || gate.localChatPreviewAuthorization !== undefined) {
+    const authorization = validateMuskGrokChatPreviewAuthorization({projectRoot, job: parsedJob,
+      input: input.body, binding, command, readBoundJson});
+    const knowledgeContext = validateKnowledgeContextForProductionV2({projectRoot,
+      jobPath: jobFile.absolutePath, job: parsedJob, command});
+    const evidence = {
+      ok: true, code: 'DPG2_MUSK_GROK_CHAT_PREVIEW_OK', route: 'musk-grok-current-chat-review', command, entrypoint,
+      jobId: parsedJob.jobId, revisionId: gate.revisionId, jobFileSha256: jobFile.sha256,
+      jobSnapshotSha256: binding.jobSnapshotSha256, firstCandidateInputSha256: input.sha256,
+      localChatPreviewAuthorizationSha256: authorization.authorizationSha256,
+      chatSourceMessageSha256: authorization.sourceMessageSha256, authorizationMethod: authorization.authorizationMethod,
+      independentSignature: false, firstCandidateAuthorizationSha256: null, freezeReceiptSha256: null,
+      directorContractSha256: null, handoffBindingSha256: null,
+      boundFilesSha256: binding.boundFilesSha256, gateClosureSha256: closure.sha256, gateClosureFiles: closure.files,
+      compositionBindingSha256: stableJsonSha256ForProductionGateV2(composition),
+      productionEligible: false, formalEnabled: false, candidateAccepted: false,
+      userPreviewApproved: false, fullWatchConfirmed: false, publishAuthorized: false,
+      directorBinding, knowledgeContext,
+    };
+    return {...evidence, integritySealSha256: stableJsonSha256ForProductionGateV2(evidence)};
+  }
   const user = readBoundJson(projectRoot, gate.firstCandidateAuthorization, '首次候选用户授权');
   const freeze = readBoundJson(projectRoot, gate.freezeReceipt, '首次候选监督冻结回执');
   const approvals = [

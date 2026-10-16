@@ -1,0 +1,111 @@
+{
+  "source": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/public/sfx/v1-keyword-tick.wav",
+    "sha256": "1ed414d9a26793d3bab087f6226f83a4e0566fac05a14552aebc43d0ac7cdff5"
+  },
+  "command": [
+    "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-xerror",
+    "-err_detect",
+    "explode",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/sfx/v1-keyword-tick.wav",
+    "-map",
+    "0:v?",
+    "-map",
+    "0:a?",
+    "-f",
+    "null",
+    "-"
+  ],
+  "exitCode": 0,
+  "fullDecode": true,
+  "tool": {
+    "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "sha256": "329fa7360b28a067a0cd7281474bb18cd868932d5173646a674466bcb56d6e93"
+  },
+  "checkedAt": "2026-10-16T10:23:32.313018+00:00",
+  "elapsedSeconds": 0.031,
+  "stderr": "",
+  "probe": {
+    "command": [
+      "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+      "-v",
+      "error",
+      "-show_streams",
+      "-show_format",
+      "-of",
+      "json",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/sfx/v1-keyword-tick.wav"
+    ],
+    "tool": {
+      "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+      "sha256": "841ab2259a55e5c5e44c5851890867d48750ff1e7cfa92b5fbed91445a493128"
+    },
+    "result": {
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "pcm_s16le",
+          "codec_long_name": "PCM signed 16-bit little-endian",
+          "codec_type": "audio",
+          "codec_tag_string": "[1][0][0][0]",
+          "codec_tag": "0x0001",
+          "sample_fmt": "s16",
+          "sample_rate": "48000",
+          "channels": 2,
+          "bits_per_sample": 16,
+          "initial_padding": 0,
+          "r_frame_rate": "0/0",
+          "avg_frame_rate": "0/0",
+          "time_base": "1/48000",
+          "duration_ts": 9935,
+          "duration": "0.206979",
+          "bit_rate": "1536000",
+          "disposition": {
+            "default": 0,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          }
+        }
+      ],
+      "format": {
+        "filename": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/sfx/v1-keyword-tick.wav",
+        "nb_streams": 1,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "wav",
+        "format_long_name": "WAV / WAVE (Waveform Audio)",
+        "duration": "0.206979",
+        "size": "39940",
+        "bit_rate": "1543731",
+        "probe_score": 99,
+        "tags": {
+          "comment": "Swoosh, Swish, Hard,Fast, Movement, Air Zoom F3. Rode NTG 4. Dual Mono. 96Khs. Recorded in 32Bit. Rendered 24Bit.",
+          "encoder": "Lavf62.12.102"
+        }
+      }
+    }
+  },
+  "humanListeningPerformed": false,
+  "dynamicAcceptancePerformed": false
+}

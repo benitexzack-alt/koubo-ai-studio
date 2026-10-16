@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "native-v2-compatibility-validation/v1",
+  "checkedAt": "2026-10-16T10:35:41.258471+00:00",
+  "scope": "原生带字纸艺首次内部审阅输入兼容；不签署、不渲染、不发布",
+  "files": [
+    {
+      "path": "skills/koubo-remotion-director/scripts/first-candidate-input-contract.mjs",
+      "beforeSha256": "1f7e80702aa879b6187a206fcc715880875f6de3853cc6a94d01706c4b477644",
+      "afterSha256": "0d49527329b3920d9b45804bcb3b6e591bd551d32cab2213a1a29ea48e5a368f",
+      "newFile": false
+    },
+    {
+      "path": "tools/director-production-binding-core.mjs",
+      "beforeSha256": "ea6139aeef0827fcfd5fac55ac83fd7c4001daa466321d6b90fb60d576ddb5e5",
+      "afterSha256": "da50f17ac17f8c68076a481635ceace57f2edfd8ef571616a7dbb59174a68d1c",
+      "newFile": false
+    },
+    {
+      "path": "skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs",
+      "beforeSha256": "30bbb0fe489af3b2ab78300d70ffbd0671f78cf8dc045d103d9817028d7a7acb",
+      "afterSha256": "3b64de65149e45293352e1fbe516cfdac8604165e63023837fab1bdd2c2a1084",
+      "newFile": false
+    },
+    {
+      "path": "workflow/director-skill-lock.v1.json",
+      "beforeSha256": "df9a144d22b3e5aa9b9b8fdce9de04a5bff648334ce604031a179950c58494eb",
+      "afterSha256": "50f2c530df1e10980208e58645481e416d9156eceae9bf88d5835d28172f1290",
+      "newFile": false
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-first-candidate-producer-integration.mjs",
+      "beforeSha256": "0d8b25ef76b12903983b9ca0f364c4c54ca35cafe0dd2e567e1e1a96b451ea70",
+      "afterSha256": "c7b82c011b98b7cceb8a95ff6ed9776512b8525867b0f0ba179c319d08b6c470",
+      "newFile": false
+    },
+    {
+      "path": "skills/koubo-remotion-director/scripts/native-v2-first-candidate-input.mjs",
+      "beforeSha256": null,
+      "afterSha256": "2b6495afa1181131e5a9aee7e9913317d8ba4d742127083ee39766c0ccc8f9cf",
+      "newFile": true
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-native-v2-first-candidate-input.mjs",
+      "beforeSha256": null,
+      "afterSha256": "a183cea96c931c9c48279b57741c4c14953d0eca18f78f9efdca4adff55a2769",
+      "newFile": true
+    }
+  ],
+  "patch": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/受控候选准备/原生v2兼容修复_仅本轮.patch",
+    "sha256": "d1c898050052e21dd99e10bbbf09147395968d48231a2232ba0582e8f21ae9f1",
+    "appliedAgainstStartingSnapshotsInIsolatedDirectory": true,
+    "allResultHashesMatch": true
+  },
+  "checks": [
+    {
+      "command": "node skills/koubo-remotion-director/tests/test-native-v2-first-candidate-input.mjs",
+      "exitCode": 0,
+      "passed": 19,
+      "scope": "合成真实解码/PCM、校字追溯、完整时长、待审候选与拒绝边界"
+    },
+    {
+      "command": "node --experimental-vm-modules skills/koubo-remotion-director/tests/test-first-candidate-input-contract.mjs",
+      "exitCode": 0,
+      "passed": 58,
+      "scope": "既有首次候选签名/上下文/状态边界；独立测试替身不等于真实授权"
+    },
+    {
+      "command": "node tools/test-director-production-binding.mjs",
+      "exitCode": 0,
+      "scope": "旧分支、当前下游及篡改拒绝回归"
+    },
+    {
+      "command": "node skills/koubo-remotion-director/tests/test-first-candidate-producer-integration.mjs",
+      "exitCode": 0,
+      "scope": "6真实生产器CLI、36抽帧/144 OCR样本、6负例；合成测试，无生产渲染",
+      "setupOnlyChange": "临时复制名单补physical/projection及3原生模块依赖；断言未改"
+    },
+    {
+      "command": "node tools/validate-active-director-profile.mjs",
+      "exitCode": 0
+    }
+  ],
+  "packageLock": {
+    "path": "workflow/director-skill-lock.v1.json",
+    "fileCount": 128,
+    "packageSha256": "52a0c2c7f62692e46da0825119478340fd12d1322e2606607d9b539dda66f4e7"
+  },
+  "authorizationBoundary": {
+    "userRequestedReviewSample": true,
+    "independentTrustRootExists": false,
+    "independentAnchorRegistryEntries": 0,
+    "signatureVerifierChanged": false,
+    "userScopeIsNotIndependentSignature": true,
+    "candidateFullWatchPerformed": false,
+    "formalAuthorized": false,
+    "publishAuthorized": false
+  },
+  "productionEntry": {
+    "receipt": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/冻结后只读入口复核.v1.json",
+      "sha256": "55ebfc3054d51289e175aeb41ef923f64f41a4e84875e5b025d449a830782718"
+    },
+    "job": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/本期候选输入/production-job.first-candidate.v1.json",
+      "sha256": "b05fb0c62f77f5dafb2a9f354d67c71a3a069c6efd61934421101cd1030d833b"
+    },
+    "inputOk": true,
+    "boundFiles": 90,
+    "directorOk": true,
+    "knowledgeContextOk": true,
+    "preflight": {
+      "ok": false,
+      "code": "DPG2_BOUND_JSON_REFERENCE_INVALID",
+      "message": "首次候选用户授权必须绑定项目内路径和小写 SHA-256。",
+      "details": null
+    },
+    "actualFirstFailure": "firstCandidateAuthorization=null，尚无独立签署的本期首次候选授权回执。",
+    "laterDependencyKnownButNotReached": "独立系统公钥根不存在且注册表entries=0；当前运行尚未到达验签与监督冻结检查。",
+    "renderInvoked": false
+  },
+  "renderInvoked": false,
+  "gitInvoked": false,
+  "nextExternalAction": {
+    "actor": "独立系统管理员及执行组之外的签发主体；监督签发身份须与用户授权签发身份不同。",
+    "required": "将有效Ed25519公钥安装到固定系统信任根（root拥有、组和其他用户不可写），再对本期精确输入/代码/门禁/知识上下文绑定签署用户首次候选授权和监督冻结锚点，并登记到受控外部锚点注册表。",
+    "mustNotDo": "当前执行组不得自己生成密钥冒充外部主体、伪造用户消息/签名或把既有聊天授权当作已独立签署。",
+    "userContentAuthorizationAlreadyPresent": true,
+    "verifierSources": [
+      "skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs:418",
+      "skills/koubo-remotion-director/scripts/director-production-preflight-v2.mjs:499",
+      "skills/koubo-remotion-director/scripts/director-contract-v2-core.mjs:94",
+      "skills/koubo-remotion-director/scripts/director-contract-v2-core.mjs:190"
+    ]
+  },
+  "independentReadOnlyReview": {
+    "reviewer": "upstream_audit",
+    "scope": "仅复核校字任意改写和自报短时长截断两个缺口",
+    "result": "原ASR时点绑定、已哈希校字记录逐项重放、原片/host/voice完整时长双向一帧匹配均已落地；在限定范围内未发现剩余实质缺口。",
+    "productionOrHumanAcceptance": false
+  }
+}

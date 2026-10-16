@@ -10,6 +10,19 @@ const CAPTION = 'MuskGrok20261016-Caption';
 const C = {ink: '#16252d', cream: '#f2eadc', white: '#fffdf8', accent: '#e1b96d', muted: '#c8d1d4'};
 const mediaError = (src: string) => (error: Error) => cancelRender(new Error(`本期媒体不可用：${src}；${error.message}`));
 
+const EvidenceImage: React.FC<{slot: MediaSlot; plan: RuntimePlan}> = ({slot, plan}) => {
+  const media = slot.asset!;
+  const crop = media.imageFocus;
+  if (!crop) return <Img src={asset(media.src, plan)} style={{width: '100%', height: '100%', objectFit: 'contain'}} />;
+  const scale = Math.min(1344 / crop.width, 756 / crop.height);
+  return <AbsoluteFill style={{backgroundColor: '#000', alignItems: 'center', justifyContent: 'center'}}>
+    <div style={{position: 'relative', width: crop.width * scale, height: crop.height * scale, overflow: 'hidden'}}>
+      <Img src={asset(media.src, plan)} style={{position: 'absolute', width: crop.sourceWidth * scale,
+        height: crop.sourceHeight * scale, maxWidth: 'none', left: -crop.x * scale, top: -crop.y * scale}} />
+    </div>
+  </AbsoluteFill>;
+};
+
 const highlighted = (text: string, words: string[]) => {
   const sorted = [...words].filter(Boolean).sort((a, b) => b.length - a.length);
   const parts: Array<{text: string; hot: boolean}> = [];
@@ -115,7 +128,7 @@ const MediaStage: React.FC<{slot: MediaSlot; plan: RuntimePlan; frame: number}> 
     <Sequence from={slot.window.from} durationInFrames={duration} premountFor={30}>
       <div style={{position: 'absolute', left: 520, top: 90, width: 1344, height: 756, overflow: 'hidden',
         opacity: opacity(frame, slot.window, 5), borderRadius: 4, boxShadow: '0 12px 28px rgba(30,39,42,.17)', backgroundColor: '#f8f4ed'}}>
-        {media.type === 'image' ? <Img src={asset(media.src, plan)} style={{width: '100%', height: '100%', objectFit: 'contain'}} /> :
+        {media.type === 'image' ? <EvidenceImage slot={slot} plan={plan} /> :
           <OffthreadVideo src={asset(media.src, plan)} muted playbackRate={1} trimBefore={sourceIn} trimAfter={sourceIn + duration}
             style={{width: '100%', height: '100%', objectFit: 'contain'}} onError={mediaError(media.src)} />}
       </div>
