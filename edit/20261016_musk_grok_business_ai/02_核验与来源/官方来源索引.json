@@ -1,0 +1,690 @@
+{
+  "schema_version": "1.0",
+  "task_id": "musk-grok-business-ai-20261016",
+  "retrieved_on": "2026-10-16",
+  "timezone": "Asia/Shanghai",
+  "status": "fact-review-materials-prepared",
+  "scope": "只核验原稿、登记官方入口及可证明边界，不改稿、不生成媒体、不发布",
+  "original_script": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/00_控制/用户原稿_只读.txt",
+    "sha256": "1f679d91dcfd847d1b7e38d4d146ab03b823aa2e079846b7e338e3c3fcd85b49",
+    "modified_by_this_task": false
+  },
+  "evidence_semantics": {
+    "actual_page_content_read": "可以是本作者直接读取或同任务代理已直接读取并回传；必须结合read_by与verification_basis",
+    "full_source_read": "默认false；视频没有全片核验，长网页仅阅读相关段落",
+    "official_announcement": "证明官方说过或展示过，不自动证明独立实测、全量上线、生产交付或法律许可",
+    "download_status": "在线可看、链接可读、截图文件存在、视频可解码已落盘是不同证据"
+  },
+  "sources": [
+    {
+      "id": "T01",
+      "title": "Tesla Roadster Event",
+      "url": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
+      "publisher": "Tesla 官方 YouTube",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "同任务 Tesla 核验代理，经主代理转交",
+      "full_source_read": false,
+      "read_scope": "相关视频时间窗；本文件作者未复看；部分语音为自动字幕待回听",
+      "allowed_to_support": [
+        "官方活动发布日为2026-10-16，视频时长约23:20",
+        "6:03坡道画面；10:56翻滚；8:11–8:36风扇吸力与倒置",
+        "12:04–12:36 SpaceX冷气、储气罐和喷口",
+        "12:57 SR-71为设计灵感；11:45–12:00未来上路及司法辖区合法性限定；21:12约为2028生产计划，后两项需原音回听"
+      ],
+      "not_allowed_to_support": [
+        "已量产或即将立即交付",
+        "任意墙面吸附、持续自由飞行、任意起降",
+        "A71推进系统命名",
+        "中国或全球所有地区可上牌",
+        "0–100km/h约1.7秒",
+        "此YouTube全场已经成功下载落盘"
+      ],
+      "publication_date": "2026-10-16",
+      "verification_basis": "delegated-firsthand-report",
+      "audio_review_pending": true,
+      "download_status": "failed-login-verification",
+      "local_media_path": null
+    },
+    {
+      "id": "T02",
+      "title": "Tesla Roadster官方配置帖",
+      "url": "https://x.com/Tesla/status/2110905588402295283",
+      "publisher": "Tesla 官方 X",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "同任务 Tesla 核验代理，经主代理转交",
+      "full_source_read": false,
+      "read_scope": "官方配置卡相关字段；本文件作者未独立回读",
+      "allowed_to_support": [
+        "0–60mph：Performance<1.6秒、Thrust<0.9秒、Rocket<0.59秒",
+        ">300mi约等于>482.8032km",
+        "Rocket限定>230mph约等于>370.14912km/h"
+      ],
+      "not_allowed_to_support": [
+        "0–60mph等同零百",
+        "0–100km/h为1.7秒",
+        "删除不等号后作为固定实测值",
+        "把Rocket最高车速套给所有版本"
+      ],
+      "verification_basis": "delegated-firsthand-report",
+      "measurement_nature": "官方公布参数，非本任务独立性能测试"
+    },
+    {
+      "id": "T03",
+      "title": "Tesla Roadster官方推进展示帖",
+      "url": "https://x.com/Tesla/status/2110904290743402880",
+      "publisher": "Tesla 官方 X",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "同任务 Tesla 核验代理，经主代理转交",
+      "full_source_read": false,
+      "read_scope": "推进系统展示；本文件作者未独立回读",
+      "allowed_to_support": [
+        "官方展示的推进机制及对应场景"
+      ],
+      "not_allowed_to_support": [
+        "A71命名",
+        "完整操作规程",
+        "不踩刹车的操作条件",
+        "所有腾空镜头均为无外部条件的原地喷气起飞"
+      ],
+      "verification_basis": "delegated-firsthand-report"
+    },
+    {
+      "id": "T04",
+      "title": "Tesla官方X短片（45.674667秒）",
+      "url": "https://x.com/Tesla/status/2110913438293647789",
+      "publisher": "Tesla 官方 X",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": false,
+      "read_by": "主代理提供源帖、实际下载及全解码检查结果；本资料作者未回读源帖或复看",
+      "full_source_read": false,
+      "read_scope": "本地视频技术检查回执，不作未观看镜头的内容结论",
+      "verification_basis": "parent-local-media-validation",
+      "allowed_to_support": [
+        "指定Tesla官方源帖对应的短片已本地保存",
+        "45.674667秒、3840×2160、H.264＋AAC以及已通过全解码检查",
+        "可以在下一步按实际镜头选取官方展示素材"
+      ],
+      "not_allowed_to_support": [
+        "这是23:20的YouTube全场视频",
+        "技术全解码等于所有原稿主张获得证实",
+        "尚未实际观看的镜头内容已通过语义核验"
+      ],
+      "download_status": "downloaded-and-full-decode-passed",
+      "local_media": {
+        "status": "downloaded-and-full-decode-passed",
+        "source_url": "https://x.com/Tesla/status/2110913438293647789",
+        "successful_local_file_confirmed": true,
+        "local_path": "01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+        "absolute_local_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+        "duration_seconds": 45.674667,
+        "width": 3840,
+        "height": 2160,
+        "video_codec": "H.264",
+        "audio_codec": "AAC",
+        "bytes": 58415936,
+        "sha256": "1614633308a6904a17e764f35d738c92c8df486e3eefac5ced6f16407e6accd1",
+        "full_decode_check": "passed-reported-by-parent",
+        "verification_basis": "主代理实际下载与全解码检查回执；本资料作者未重复解码或复看",
+        "is_youtube_full_event": false,
+        "semantic_review_by_this_writer": false
+      },
+      "related_full_replay_source": "T05"
+    },
+    {
+      "id": "T05",
+      "title": "Tesla官方X完整广播回放（含前后场）",
+      "url": "https://x.com/Tesla/status/2110788059008819215",
+      "publisher": "Tesla 官方 X",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": false,
+      "read_by": "主代理取得广播回放并全解码及联系表视觉核验；本资料作者未另行回读源帖或全片观看",
+      "full_source_read": false,
+      "read_scope": "本地全解码检查及联系表视觉核验回执；不等同全片正常速度观看",
+      "verification_basis": "parent-local-media-and-contact-sheet-validation",
+      "allowed_to_support": [
+        "官方X完整广播回放已本地保存",
+        "31分08.274秒、1920×1080、24fps、AAC",
+        "主代理已完成全解码及联系表视觉核验，可供后续选材"
+      ],
+      "not_allowed_to_support": [
+        "直接套用23:20的YouTube版本时间点",
+        "技术检查或联系表等同全片逐句原音回听",
+        "未重新定位的画面在X回放中的准确时间点",
+        "全部原稿主张已获证"
+      ],
+      "download_status": "downloaded-full-decode-and-contact-sheet-visual-check-passed",
+      "local_media": {
+        "status": "downloaded-full-decode-and-contact-sheet-visual-check-passed",
+        "source_url": "https://x.com/Tesla/status/2110788059008819215",
+        "broadcast_id": "1yKAPwNggRaxb",
+        "successful_local_file_confirmed": true,
+        "local_path": "01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_1yKAPwNggRaxb.mp4",
+        "absolute_local_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_1yKAPwNggRaxb.mp4",
+        "duration_seconds": 1868.274,
+        "duration_display": "31分08.274秒",
+        "width": 1920,
+        "height": 1080,
+        "fps": 24,
+        "audio_codec": "AAC",
+        "bytes": 649262532,
+        "sha256": "22af0cd8899c2011479ad77311ce89d01237c12336f757e5fc6127b4a5cf19c6",
+        "full_decode_check": "passed-reported-by-parent",
+        "contact_sheet_visual_check": "passed-reported-by-parent",
+        "verification_basis": "主代理实际下载、全解码和联系表视觉核验回执；本资料作者未重复核验",
+        "is_youtube_full_event": false,
+        "timestamp_warning": "含前后场，不能直接套用23:20的YouTube版本时间点；各画面须在此版本重新定位",
+        "full_video_watched_by_this_writer": false
+      }
+    },
+    {
+      "id": "G01",
+      "title": "马斯克关于Grok Bot后端选择的原帖",
+      "url": "https://x.com/elonmusk/status/2107724314451878104",
+      "publisher": "Elon Musk 认证 X 账号",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "主代理通过CUA直接读取",
+      "full_source_read": false,
+      "read_scope": "原帖正文及作者身份，已读完整单帖",
+      "allowed_to_support": [
+        "对象为Grok Bot",
+        "公开宣布今后按任务选择后端，点名Claude Opus 5.5、Midjourney、Suno及其他API"
+      ],
+      "not_allowed_to_support": [
+        "MJ已对所有账号上线",
+        "运行的是Claude Code CLI",
+        "所有Grok聊天入口同步改为该路线",
+        "每个任务均选到全球最优模型",
+        "用户已完成实际调用测试"
+      ],
+      "publication_datetime_local": "2026-10-07T14:46:00+08:00",
+      "verification_basis": "parent-CUA-direct-read",
+      "actual_post_fulltext_read": true,
+      "screenshot_status": "主代理计划保存，路径待其回填"
+    },
+    {
+      "id": "G02",
+      "title": "Grok Bot security：Models and data",
+      "url": "https://docs.x.ai/grok-bot/security#models-and-data",
+      "publisher": "xAI / SpaceXSI 官方文档",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者Web直接读取；主代理CUA再次直接读取并截图",
+      "full_source_read": false,
+      "read_scope": "Models and data及相关上下文",
+      "allowed_to_support": [
+        "Cursor管理模型选择，没有面向用户的模型选择器",
+        "供应商组合可随时间改变且不保证固定集合",
+        "用量分析显示实际服务模型及故障切换，按实际服务模型计费"
+      ],
+      "not_allowed_to_support": [
+        "具体任务用了Opus5.5或MJ",
+        "固定供应商始终可用",
+        "订阅无限覆盖所有第三方模型",
+        "每次结果最佳"
+      ],
+      "page_updated_on": "2026-10-12",
+      "screenshot_status": "saved-reported-by-parent",
+      "screenshot_manifest": "官网截图清单.v1.json"
+    },
+    {
+      "id": "G03",
+      "title": "Grok Bot for teams and enterprises：架构",
+      "url": "https://docs.x.ai/grok-bot/teams-and-enterprises",
+      "publisher": "xAI / SpaceXSI 官方文档",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者Web直接读取；主代理CUA再次直接读取并截图",
+      "full_source_read": false,
+      "read_scope": "官方架构图、架构描述和模型/应用/云电脑分工",
+      "allowed_to_support": [
+        "Cursor Servers分别连接模型供应商、托管电脑和连接应用",
+        "Grok Bot可操作云电脑、浏览器及开发环境",
+        "Cloud Agents可承接编码任务"
+      ],
+      "not_allowed_to_support": [
+        "所有第三方应用均有连接器",
+        "Cloud Agent等于Claude Code",
+        "架构图是某次真实调用记录"
+      ],
+      "screenshot_status": "saved-reported-by-parent",
+      "screenshot_manifest": "官网截图清单.v1.json"
+    },
+    {
+      "id": "G04",
+      "title": "Grok Bot：使用电脑与应用",
+      "url": "https://docs.x.ai/grok-bot/computer-and-apps",
+      "publisher": "xAI / SpaceXSI 官方文档",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者通过Web直接读取",
+      "full_source_read": false,
+      "read_scope": "云电脑、浏览器、命令行、登录接管和插件相关段落",
+      "allowed_to_support": [
+        "持续云电脑提供浏览器、命令行、文件和工具",
+        "已连接账户或登录会话可供授权任务使用",
+        "网站可能要求登录、验证码或人工接管"
+      ],
+      "not_allowed_to_support": [
+        "MJ已原生集成或允许任意自动化",
+        "Claude Code已预装并完成登录",
+        "所有网站都能稳定自动操作"
+      ],
+      "page_updated_on": "2026-10-12"
+    },
+    {
+      "id": "G05",
+      "title": "Lauren：Opus5.5及Cloud Agents说明原帖",
+      "url": "https://x.com/poteto/status/2107735424089424174",
+      "publisher": "Lauren / @poteto；Grok Bot团队身份来自转引资料",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": false,
+      "read_by": "本资料作者定位原帖，但Web返回403",
+      "full_source_read": false,
+      "read_scope": "仅读到第三方转引和链接；原帖待直接回读",
+      "allowed_to_support": [
+        "作为进一步直接核验的原帖入口"
+      ],
+      "not_allowed_to_support": [
+        "当前已完整读取原帖",
+        "仅凭转引证明所有账户的部署完成",
+        "Cloud Agents等同Claude Code CLI"
+      ],
+      "verification_status": "awaiting-direct-read",
+      "secondary_locator": "https://tbreak.com/grok-bot-claude-opus-midjourney-suno/"
+    },
+    {
+      "id": "G06",
+      "title": "Lauren：Grok Bot升级原帖",
+      "url": "https://x.com/poteto/status/2107728968501903652",
+      "publisher": "Lauren / @poteto；Grok Bot团队身份来自转引资料",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": false,
+      "read_by": "本资料作者定位原帖，但Web返回403",
+      "full_source_read": false,
+      "read_scope": "仅读到第三方转引和链接；原帖待直接回读",
+      "allowed_to_support": [
+        "作为升级声明的待核原帖入口"
+      ],
+      "not_allowed_to_support": [
+        "原帖已直接读取",
+        "升级已对所有账户生效"
+      ],
+      "verification_status": "awaiting-direct-read"
+    },
+    {
+      "id": "G07",
+      "title": "Grok Bot官方更新日志",
+      "url": "https://x.ai/changelog/bot",
+      "publisher": "xAI / SpaceXSI",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者通过Web直接读取",
+      "full_source_read": false,
+      "read_scope": "最新条目及Claude、Midjourney文本检索",
+      "allowed_to_support": [
+        "检索时最新可见v0.70.2，2026-10-11",
+        "当前页面未检出Claude或Midjourney条目；仅是本次检索结果"
+      ],
+      "not_allowed_to_support": [
+        "没有日志条目就证明功能绝对不存在",
+        "全部用户已经上线某个未列明集成"
+      ]
+    },
+    {
+      "id": "G08",
+      "title": "Grok Bot官方产品页",
+      "url": "https://x.ai/bot",
+      "publisher": "xAI / SpaceXSI",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者通过Web直接读取",
+      "full_source_read": false,
+      "read_scope": "产品说明及Claude、Midjourney文本检索",
+      "allowed_to_support": [
+        "Grok Bot真实产品入口与官方展示"
+      ],
+      "not_allowed_to_support": [
+        "当前实际任务调用了哪家模型",
+        "MJ联动实测成功"
+      ]
+    },
+    {
+      "id": "C01",
+      "title": "Introducing Claude Opus 5.5",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "publisher": "Anthropic",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者通过Web直接读取",
+      "full_source_read": false,
+      "read_scope": "标题、发布日期、模型介绍及Claude Code可用性",
+      "allowed_to_support": [
+        "Claude Opus5.5于2026-09-22正式发布",
+        "Opus5.5在Claude Code可用，发布页明确描述Fast模式"
+      ],
+      "not_allowed_to_support": [
+        "Grok Bot启动了Claude Code",
+        "任何企业应用都保证有效",
+        "全部榜单均世界第一"
+      ],
+      "publication_date": "2026-09-22"
+    },
+    {
+      "id": "C02",
+      "title": "Claude Code模型配置",
+      "url": "https://code.claude.com/docs/en/model-config",
+      "publisher": "Anthropic / Claude Code官方文档",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者通过Web直接读取",
+      "full_source_read": false,
+      "read_scope": "可用模型、精确模型名称、版本要求及模型选择",
+      "allowed_to_support": [
+        "精确模型ID为claude-opus-5-5",
+        "Claude Code是工具，Opus5.5是它可以使用的模型",
+        "文档要求使用Opus5.5需Claude Code v2.1.280或更高"
+      ],
+      "not_allowed_to_support": [
+        "Grok官方调度一定经由Claude Code",
+        "用户本机或云电脑已完成安装与登录"
+      ]
+    },
+    {
+      "id": "M01",
+      "title": "Midjourney真实官网首页",
+      "url": "https://www.midjourney.com/",
+      "publisher": "Midjourney",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者Web读取；主代理另行CUA抓取首页",
+      "full_source_read": false,
+      "read_scope": "公开首页、登录入口、产品及文档导航",
+      "allowed_to_support": [
+        "真实品牌与产品入口",
+        "公开首页可用作品牌背景画面"
+      ],
+      "not_allowed_to_support": [
+        "Grok已调用MJ",
+        "当前账户已登录或已生成",
+        "首页他人作品可随意转载"
+      ],
+      "local_asset_reported": "../01_素材投放区/05_公开素材_Codex准备/官网截图/MJ_01_官网首页.jpg",
+      "local_asset_validation": "本资料作者仅核实路径存在，未验看像素",
+      "screenshot_inventory_reference": "官网截图清单.v1.json"
+    },
+    {
+      "id": "M02",
+      "title": "Midjourney Getting Started Guide",
+      "url": "https://docs.midjourney.com/hc/en-us/articles/33329261836941-Getting-Started-Guide",
+      "publisher": "Midjourney官方文档",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者通过Web直接读取",
+      "full_source_read": false,
+      "read_scope": "入门流程、界面图片名称与官方教学视频入口；未下载图像",
+      "allowed_to_support": [
+        "官方Imagine栏、Create流程、设置及教学入口",
+        "生成前需要相应订阅"
+      ],
+      "not_allowed_to_support": [
+        "当前用户完成生成",
+        "Grok和MJ已完成连接",
+        "所有插图自动获得任意转载许可"
+      ]
+    },
+    {
+      "id": "M03",
+      "title": "Midjourney Creating on Web",
+      "url": "https://docs.midjourney.com/hc/en-us/articles/33390732264589-Creating-on-Web",
+      "publisher": "Midjourney官方文档",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者通过Web直接读取",
+      "full_source_read": false,
+      "read_scope": "Create界面、提示词栏、参数面板与图片入口；未下载图像",
+      "allowed_to_support": [
+        "官方网页创作功能和界面说明"
+      ],
+      "not_allowed_to_support": [
+        "Grok实时操控演示",
+        "作者完成过该任务",
+        "官方教程图片就是当前账户界面"
+      ]
+    },
+    {
+      "id": "M04",
+      "title": "Midjourney Trademark Policy",
+      "url": "https://docs.midjourney.com/hc/en-us/articles/32084281102349-Midjourney-Trademark-Policy",
+      "publisher": "Midjourney官方文档",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者通过Web直接读取",
+      "full_source_read": false,
+      "read_scope": "官方商标示例、描述性引用和不得误导背书等规则",
+      "allowed_to_support": [
+        "官方标识参考及真实描述性引用规则",
+        "不得歪曲商标或暗示官方合作背书"
+      ],
+      "not_allowed_to_support": [
+        "无限制媒体素材授权",
+        "第三方用户作品可任意使用",
+        "本任务获得官方赞助"
+      ],
+      "page_updated_on": "2023-08-07",
+      "freshness_note": "2026-10-16从当前官方页面读取，页面标注最后更新2023-08-07"
+    },
+    {
+      "id": "M05",
+      "title": "Midjourney Community Guidelines",
+      "url": "https://docs.midjourney.com/hc/en-us/articles/32013696484109-Community-Guidelines",
+      "publisher": "Midjourney官方文档",
+      "retrieved_on": "2026-10-16",
+      "timezone": "Asia/Shanghai",
+      "authority": "official-primary",
+      "actual_page_content_read": true,
+      "read_by": "本资料作者通过Web直接读取",
+      "full_source_read": false,
+      "read_scope": "自动化、API例外及他人作品转载相关条款",
+      "allowed_to_support": [
+        "除少数明确授权例外外，不提供API并禁止未经授权自动化交互",
+        "未经许可不得公开转载他人作品"
+      ],
+      "not_allowed_to_support": [
+        "绝对不存在任何厂商特殊授权",
+        "仅因无公开API就能否定Grok合作",
+        "一般账号自动获得自动化许可"
+      ]
+    }
+  ],
+  "nonofficial_followup_candidates": [
+    {
+      "id": "N01",
+      "title": "Grok Bot Just Got 2 Massive Upgrades. Do These Things Now.",
+      "publisher": "Nate Herk（用户演示，非xAI官方）",
+      "url": "https://youtube.com/watch?v=MgvwZaDPCs4",
+      "locator_url": "https://openclawdatabase.com/news/videos/2026-10-09-grok-bot-opus-55-routing-free-x-search-claude-code-in-its-computer/",
+      "retrieved_on": "2026-10-16",
+      "actual_video_watched": false,
+      "actual_locator_page_read": true,
+      "status": "未完整观看，YouTube取回限流",
+      "candidate_time_ranges": [
+        "6:36 云电脑中的Claude Code",
+        "7:37 登录并使用仓库"
+      ],
+      "allowed_to_support": [
+        "仅作为后续人工观看核验的用户演示线索"
+      ],
+      "not_allowed_to_support": [
+        "官方原生集成",
+        "已实际观看并确认演示",
+        "所有用户均可用或MJ已上线"
+      ]
+    }
+  ],
+  "pending_items": [
+    "Tesla约21:12生产计划原音回听",
+    "Tesla约11:45–12:00上路及司法辖区限定原音回听",
+    "原稿A71命名、起飞不踩刹车、零百1.7秒缺少支持",
+    "MJ具体接入方式及上线范围未取得官方端到端演示",
+    "Lauren原帖待浏览器直接回读",
+    "YouTube全场yt-dlp登录验证未通过；与已落盘的45秒Tesla官方X短片及31分08.274秒X完整回放分开登记"
+  ],
+  "source_media_download": {
+    "tesla_event": {
+      "status": "failed-login-verification",
+      "tool": "yt-dlp",
+      "successful_local_file_confirmed": false,
+      "local_path": null,
+      "note": "YouTube全场仍登录验证阻断；此状态不适用于已成功落盘的Tesla官方X短片",
+      "source_url": "https://www.youtube.com/watch?v=qt5p-_tE8d0",
+      "asset_kind": "youtube-full-event"
+    },
+    "tesla_x_short": {
+      "status": "downloaded-and-full-decode-passed",
+      "source_url": "https://x.com/Tesla/status/2110913438293647789",
+      "successful_local_file_confirmed": true,
+      "local_path": "01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+      "absolute_local_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+      "duration_seconds": 45.674667,
+      "width": 3840,
+      "height": 2160,
+      "video_codec": "H.264",
+      "audio_codec": "AAC",
+      "bytes": 58415936,
+      "sha256": "1614633308a6904a17e764f35d738c92c8df486e3eefac5ced6f16407e6accd1",
+      "full_decode_check": "passed-reported-by-parent",
+      "verification_basis": "主代理实际下载与全解码检查回执；本资料作者未重复解码或复看",
+      "is_youtube_full_event": false,
+      "semantic_review_by_this_writer": false
+    },
+    "tesla_x_full_replay": {
+      "status": "downloaded-full-decode-and-contact-sheet-visual-check-passed",
+      "source_url": "https://x.com/Tesla/status/2110788059008819215",
+      "broadcast_id": "1yKAPwNggRaxb",
+      "successful_local_file_confirmed": true,
+      "local_path": "01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_1yKAPwNggRaxb.mp4",
+      "absolute_local_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_1yKAPwNggRaxb.mp4",
+      "duration_seconds": 1868.274,
+      "duration_display": "31分08.274秒",
+      "width": 1920,
+      "height": 1080,
+      "fps": 24,
+      "audio_codec": "AAC",
+      "bytes": 649262532,
+      "sha256": "22af0cd8899c2011479ad77311ce89d01237c12336f757e5fc6127b4a5cf19c6",
+      "full_decode_check": "passed-reported-by-parent",
+      "contact_sheet_visual_check": "passed-reported-by-parent",
+      "verification_basis": "主代理实际下载、全解码和联系表视觉核验回执；本资料作者未重复核验",
+      "is_youtube_full_event": false,
+      "timestamp_warning": "含前后场，不能直接套用23:20的YouTube版本时间点；各画面须在此版本重新定位",
+      "full_video_watched_by_this_writer": false
+    },
+    "tesla_x_short_slices": {
+      "status": "two-local-slices-decode-passed",
+      "source_id": "T04",
+      "source_media_path": "01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+      "clips": [
+        {
+          "source_start_seconds": 2.5,
+          "source_end_seconds": 10.5,
+          "duration_seconds": 8.0,
+          "local_file_confirmed": true,
+          "decode_check": "passed-reported-by-parent"
+        },
+        {
+          "source_start_seconds": 18.0,
+          "source_end_seconds": 26.5,
+          "duration_seconds": 8.5,
+          "local_file_confirmed": true,
+          "decode_check": "passed-reported-by-parent"
+        }
+      ],
+      "verification_basis": "主代理实际切片与解码回执",
+      "local_path_note": "具体切片文件名由主代理素材清单登记，本回传未提供，不编造路径"
+    }
+  },
+  "cross_file_reference": "事实核验与录制注意.md",
+  "official_screenshots": {
+    "status": "saved-reported-by-parent",
+    "count": 11,
+    "categories": {
+      "Midjourney": {
+        "count": 4,
+        "page_types": 3
+      },
+      "Claude_Opus": {
+        "count": 1
+      },
+      "Grok": {
+        "count": 5,
+        "added_pages": [
+          "官方架构",
+          "官方模型选择说明"
+        ]
+      },
+      "Tesla_configuration": {
+        "count": 1
+      }
+    },
+    "directory": "01_素材投放区/05_公开素材_Codex准备/官网截图",
+    "manifest_path": "02_核验与来源/官网截图清单.v1.json",
+    "verification_basis": "主代理保存回执；新增两张Grok官方文档由主代理CUA直接读取并实际截图",
+    "pixels_reviewed_by_this_writer": false,
+    "not_allowed_to_support": [
+      "截图存在不证明Grok调用MJ",
+      "不证明作者生成成功或完成实际业务测试"
+    ]
+  },
+  "final_material_summary": {
+    "officialVideoCount": 2,
+    "candidateClipCount": 3,
+    "websiteCaptureCount": 11,
+    "flipClip": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/剪辑候选/Tesla_完整翻转与落地_源16分23至16分31秒.mp4",
+    "flipReceipt": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/剪辑候选/Tesla_完整翻转与落地_来源回执.json",
+    "timebaseWarning": "X完整回放时点不能套用YouTube版或按总时长差平移",
+    "releaseStatus": "本地候选，非发布许可"
+  }
+}

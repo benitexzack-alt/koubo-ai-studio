@@ -1,0 +1,119 @@
+{
+  "status": "local-preparation-checked",
+  "sourceUnchanged": true,
+  "scriptCoverage": "23段去空白逐字完整覆盖",
+  "directorSchemaValidation": {
+    "schemaVersion": "director-review-validation/v1",
+    "checkedAt": "2026-10-16T16:32:49.180421+08:00",
+    "command": [
+      "node",
+      "skills/koubo-remotion-director/scripts/validate-director-cues-v2.mjs",
+      "--input",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/director-cues.v2.json",
+      "--repo-root",
+      "/Users/pc/Documents/口播"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"ok\":true,\"inputPath\":\"/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/director-cues.v2.json\",\"status\":\"ready-for-user-review\"}",
+    "stderr": "",
+    "checks": {
+      "directorValidatorPassed": true,
+      "originalSourceHashMatches": true,
+      "fullOriginalTextCoverage": true,
+      "allRealMaterialsUnbound": true,
+      "downstreamBlocked": true,
+      "twoPaperScenes": true,
+      "noAIGeneratedScenes": true,
+      "B10AbsoluteRankingFactCheckBound": true,
+      "paperPromptDocumentUnchanged": true
+    },
+    "counts": {
+      "semanticBeats": 23,
+      "factChecks": 15,
+      "routes": {
+        "speaker": 17,
+        "real-evidence": 4,
+        "ai-generated-video": 0,
+        "paper-editorial": 2,
+        "shotcraftOpportunity": 3
+      }
+    },
+    "result": "pass",
+    "directorStatus": "ready-for-user-review",
+    "productionStatus": "blocked",
+    "scope": "导演结构、原文覆盖、引用哈希及新增绝对排名核验绑定；不证明事实已经全部通过、视觉质量或用户验收",
+    "sourceSha256": "1f679d91dcfd847d1b7e38d4d146ab03b823aa2e079846b7e338e3c3fcd85b49",
+    "files": [
+      {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/director-cues.v2.json",
+        "sha256": "a54ec17692e47978b6732c14b08c950c289a491c8160c72f83399f8ec9af0ded"
+      },
+      {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/事实与生产阻断表.v1.json",
+        "sha256": "e98720b6ebdec0609696906a2f9345125fae6c3d2b4c9856acb3d0fc10258658"
+      },
+      {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/导演阅读版.md",
+        "sha256": "54f3246b2af9a52e25e9a1d48f5e5393e00adadfe02ebd82e94149260f6b9fe6"
+      },
+      {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/普通AI情景包.md",
+        "sha256": "9fd4d429fd5d3314a46631ccd8f42dae86bf216001dd04ed00878a7a7127480b"
+      },
+      {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/真实素材执行包.md",
+        "sha256": "eb3d20d5cd4b9f947b3646db5b32fb7af851a384f67d3a0c477c64f60cf60e90"
+      },
+      {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/纸艺首帧与视频提示词包.md",
+        "sha256": "607f0fe84bafef9d7ec6771936431e1cd6d28fa837837170ae837c3cd46afbbe"
+      }
+    ]
+  },
+  "screenshotCount": 11,
+  "screenshotHashesMatch": true,
+  "desktopEntryResolves": true,
+  "sixZonesExist": true,
+  "productionAuthorized": false,
+  "finalVideoRendered": false,
+  "humanAcceptance": false,
+  "videoFiles": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_1yKAPwNggRaxb.mp4",
+      "sha256": "22af0cd8899c2011479ad77311ce89d01237c12336f757e5fc6127b4a5cf19c6",
+      "bytes": 649262532,
+      "decodeReceipt": "已核对同目录独立采集回执，ffmpeg全音视频解码退出0",
+      "humanFinalAcceptance": false
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+      "sha256": "1614633308a6904a17e764f35d738c92c8df486e3eefac5ced6f16407e6accd1",
+      "bytes": 58415936,
+      "decodeReceipt": "已核对同目录独立采集回执，ffmpeg全音视频解码退出0",
+      "humanFinalAcceptance": false
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/剪辑候选/Tesla_坡道爬升_源02.500-10.500秒.mp4",
+      "sha256": "db85bad56d96d2dab2878f26305f8a166c852e6d8128d7aef20ece2d159f7c2f",
+      "bytes": 4134539,
+      "decodeReceipt": "已核对同目录独立采集回执，ffmpeg全音视频解码退出0",
+      "humanFinalAcceptance": false
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/剪辑候选/Tesla_腾空姿态变化与落地_源18.000-26.500秒.mp4",
+      "sha256": "55b22f2e9c1c921c36fb15f8570adc5d0d9803ae850ab1c189ceb836115cd71f",
+      "bytes": 14213854,
+      "decodeReceipt": "已核对同目录独立采集回执，ffmpeg全音视频解码退出0",
+      "humanFinalAcceptance": false
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/剪辑候选/Tesla_完整翻转与落地_源16分23至16分31秒.mp4",
+      "sha256": "6577510b0eda349ee5925c8d96cbc9d5b782d79d567ed43aa0eed5c175464b1d",
+      "bytes": 2813241,
+      "decodeReceipt": "已核对同目录独立采集回执，ffmpeg全音视频解码退出0",
+      "humanFinalAcceptance": false
+    }
+  ],
+  "officialVideos": 2,
+  "candidateClips": 3
+}

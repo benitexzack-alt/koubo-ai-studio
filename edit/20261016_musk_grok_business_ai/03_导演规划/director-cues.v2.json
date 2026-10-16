@@ -1,0 +1,831 @@
+{
+  "schemaVersion": "koubo-director-cues/v2",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
+  "inputScript": {
+    "path": "edit/20261016_musk_grok_business_ai/00_控制/用户原稿_只读.txt",
+    "sha256": "1f679d91dcfd847d1b7e38d4d146ab03b823aa2e079846b7e338e3c3fcd85b49",
+    "authority": "user-confirmed-script"
+  },
+  "routingPolicy": {
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "generatedVisualCannotServeAsEvidence": true,
+    "factVerificationSeparatedFromPrimaryVisual": true,
+    "constructedVisualPriority": [
+      "paper-editorial",
+      "ai-generated-video"
+    ],
+    "aiGeneratedVideoUseCondition": "concrete-human-or-environment-scene-paper-unnatural",
+    "shotcraftSelectionStage": "post-shoot-edit-release",
+    "shotcraftEligibleRoutes": [
+      "speaker",
+      "real-evidence"
+    ],
+    "shotcraftForbiddenInsideRoutes": [
+      "paper-editorial",
+      "ai-generated-video"
+    ]
+  },
+  "styleLocks": {
+    "aiGeneratedVideo": null,
+    "paperEditorial": {
+      "qualityBaselineId": "paper-super-individual-20260829-v1",
+      "textPolicy": "first-frame-generated-chinese-surface-bound",
+      "promptPrefix": "16:9横向实体纸艺摄影，沿用《超级个体》参考的深蓝、灰白与少量珊瑚红纸材，真实纸厚、纤维、切边和接触阴影，中文直接印在物件纸面上。",
+      "mustKeep": [
+        "至少前景、中景、背景三层实体空间",
+        "静态首帧直接生成准确中文，文字绑定承载物件",
+        "纸厚、纤维、切边、折面和可信接触阴影",
+        "动作必须形成可读结果并保留适量停留",
+        "只借参考的材质和机制表达，不复制旧镜内容"
+      ],
+      "mustAvoid": [
+        "无字底图后贴字",
+        "全镜固定字牌加抽象漂浮光效",
+        "仿软件界面与品牌调用连线",
+        "虚构企业实测效果或收益数字",
+        "任意重绘中文、乱码、漂字和穿帮"
+      ],
+      "referenceImages": [
+        {
+          "id": "REF-PAPER-SUPER-PV07",
+          "path": "edit/20260828_super_individual/05_素材验收/frames/paper_07-mid-original.png",
+          "sha256": "5d04fa4d180847d6e142e7dd352caf98396718a18ec676d16006f9756068f6b2",
+          "usage": "style-mechanism-only"
+        }
+      ]
+    }
+  },
+  "selectionSummary": {
+    "mainPoint": "企业采用AI应从真实工作任务出发匹配能力，而不是寻找包办所有问题的单一模型。",
+    "argumentFlow": [
+      "飞车热点吸引注意，演示与性能说法先逐项核验",
+      "转向Grok Bot多后端方向公告，区分产品架构、宣布方向与实际可用范围",
+      "以任务分流解释按需匹配，回到企业选择工具的误区",
+      "把合适能力落到岗位工作，再邀请老板说明自己的卡点"
+    ],
+    "routeCounts": {
+      "speaker": 17,
+      "real-evidence": 4,
+      "ai-generated-video": 0,
+      "paper-editorial": 2,
+      "shotcraftOpportunity": 3
+    },
+    "routeRationales": {
+      "speaker": "17个节拍保留本人，承担观点、转场、语气和邀约；数量是本稿语义划分结果，不是插片配额。",
+      "real-evidence": "4处需要看见官方演示、参数原页、Grok Bot文档或品牌对象；品牌页仅作语境，所有素材仍未绑定且不能进生产。",
+      "ai-generated-video": "没有需要虚构具体人物或环境才能解释的内容；AI办公室、假客户、仿飞车都不能增加真实理解或证据。",
+      "paper-editorial": "仅2处独立机制需要构造性说明：任务分流与能力进入岗位；不替企业案例或Grok产品行为作证明。"
+    },
+    "visualRhythmReason": "真人为主，前部真实资料只服务核验，中段与后段各一次机制说明；不设固定秒数、频率或特效数量，拍后依实录重绑。",
+    "protectedSpeakerBeatIds": [
+      "B01",
+      "B02",
+      "B06",
+      "B15",
+      "B17",
+      "B18",
+      "B20",
+      "B21",
+      "B22",
+      "B23"
+    ]
+  },
+  "semanticBeats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "scriptQuote": "Hi!bro",
+      "rhetoricalRole": "greeting",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "保留本人招呼和语气，开场不先盖大标题，建立真人连接。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "scriptQuote": "马斯克今天爆出一台即将量产的能飞的车！",
+      "rhetoricalRole": "hot-topic-hook",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F01",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "保留真人抛出热点；车辆和量产措辞尚待更正，不能用夸张包装掩盖事实差异。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "scriptQuote": "这不是科幻电影，不是概念PPT，车子能够在空中翻滚，能吸附在墙面上。是真正意义上的飞，重点，它起飞的时候，不需要踩刹车。核心黑科技：SpaceX A71冷气推进系统 + 底盘负压吸附风扇，起飞腾空，靠喷气推进直接起势",
+      "rhetoricalRole": "hot-topic-demonstration",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F02",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R01",
+      "decisionReason": "观众需要看到真实演示的边界，使用官方原始片段；不把倒置演示做成任意墙面行驶，也不以剪辑替原句纠错。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "scriptQuote": "零百约1.7秒，续航 483km，最高车速370km/h",
+      "rhetoricalRole": "specification",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F03",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R02",
+      "decisionReason": "参数口径必须让观众看到官方原页与版本条件；原稿有差异，本段先阻断，不能只改画面数字制造口播已更正的假象。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "scriptQuote": "可以正常上牌公路行驶",
+      "rhetoricalRole": "road-eligibility",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F04",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "上牌属于待证实的地区性条件，保留真人规划位置并阻断；没有证据时不拿道路行驶镜头暗示已获牌。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "scriptQuote": "除了这台车，马斯克最近真正更值得我们去琢磨的还有他的Grok AI。",
+      "rhetoricalRole": "pivot-to-ai",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "热点向企业AI转向的判断由本人完成，真人回场，避免车辆素材继续占据主线。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "scriptQuote": "这套大模型的玩法也全变了，它不再单打独斗只靠自家模型。而是让我们随时用上全球不同领域的顶级模型，",
+      "rhetoricalRole": "product-architecture",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F05",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R03",
+      "decisionReason": "观众需要看见Grok Bot官方文档实际谈论的范围和路由架构；仅展示原文，不搭建虚构的通用产品界面。",
+      "viewerGain": "proof"
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "scriptQuote": "做绘图出图，直接调用MJ；遇到重度复杂业务任务，直接调用Claude CodeOpus 5.5。",
+      "rhetoricalRole": "named-backend-examples",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F06",
+      "primaryRoute": "real-evidence",
+      "routeCueId": "R04",
+      "decisionReason": "MJ、Opus和Grok的官方资料只帮助识别讨论对象；以品牌语境画面呈现，不画已上线调用连线，不把Claude Code混作模型。原稿调用断言待更正。",
+      "viewerGain": "context"
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "scriptQuote": "Grok现在充当的是一个调度中台。",
+      "rhetoricalRole": "architecture-analogy",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F07",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人给出调度类比，强调解释责任；不通过屏幕演示制造产品实际已经完成调度的假象。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "scriptQuote": "不同的活，交给全球最擅长这件事的AI去干，而不是指望一个大模型包打天下。",
+      "rhetoricalRole": "task-allocation-mechanism",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F15",
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P01",
+      "decisionReason": "纸艺只解释不同任务流向不同能力这一抽象机制，不绑定Grok品牌，不证明全球最强排名或真实产品集成。“全球最擅长”另按事实核验F15处理，当前原句阻断待更正，不能由纸艺隐喻代替排名证据。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "scriptQuote": "这恰恰就是绝大多数企业做AI落地踩得最大的坑。",
+      "rhetoricalRole": "enterprise-problem",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F08",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "回到本人提出企业问题；“绝大多数/最大”尚无样本支持，保留原句并阻断。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "scriptQuote": "很多企业老板天天到处打听，到底哪个大模型最强，总想找到一个万能AI，买回来解决公司所有问题。",
+      "rhetoricalRole": "audience-observation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F09",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "由真人表达对老板需求的观察，不能用合成办公室或虚构企业录屏假装客户证据。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "scriptQuote": "马斯克已经用实际行动告诉我们现实：没有哪一个AI是万能的。",
+      "rhetoricalRole": "principle-judgment",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F10",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "保留本人判断，实际行动与公告方向须分清；不叠加未经测试的万能模型对比表。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "scriptQuote": "画图有画图擅长的模型，深度写代码、复杂推理有它合适的模型，读取业务文档又有另一套。",
+      "rhetoricalRole": "task-differences",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F11",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "三个任务类别用口播自身的并列结构即可，不再重复插片；拍后如阅读负担明显，仅做语义关键词机会。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "scriptQuote": "真正的企业AI改造，不是买一套号称最强的模型，",
+      "rhetoricalRole": "reject-universal-tool",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "价值判断直接保留表情与停顿，为下一句按需匹配留空间。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B16",
+      "order": 16,
+      "scriptQuote": "而是学Grok这个思路：按需调用，匹配业务。",
+      "rhetoricalRole": "main-thesis",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F12",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "核心观点由真人直接给出，可在拍后检查一次轻量重点强调，引用Grok仅限已核验的方向。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B17",
+      "order": 17,
+      "scriptQuote": "把不同AI能力，落实到公司各个部门、每一个人的真实工作环节。",
+      "rhetoricalRole": "workflow-focus",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "把讨论从模型名单拉回真实工作，保持真人连续，避免让模型图标成为主角。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B18",
+      "order": 18,
+      "scriptQuote": "不是拿来拍短视频炫技，不是看飞车图个热闹。",
+      "rhetoricalRole": "rhetorical-contrast",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人完成“看热闹”与“用工具”的语气转折，保留表演，不追加飞车回放。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B19",
+      "order": 19,
+      "scriptQuote": "销售、运营、行政、业务岗，每个人用上适配自己工作的AI，解决手上实实在在的问题。",
+      "rhetoricalRole": "workflow-embedding",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P02",
+      "decisionReason": "第二段纸艺显示能力进入既有岗位工作槽，表达工作环节是承载对象；属于说明性隐喻，不展示虚构企业上线与收益。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B20",
+      "order": 20,
+      "scriptQuote": "不要总觉得AI离普通老板、普通人很远。",
+      "rhetoricalRole": "audience-reassurance",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "返回本人面向普通老板的说话距离，解除工具门槛感。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B21",
+      "order": 21,
+      "scriptQuote": "飞车是面向未来的玩具，而AI，是现在就可以拿来帮我们降本增效的工具。",
+      "rhetoricalRole": "value-judgment",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F13",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "价值判断与比喻由真人承担，不加成本下降图或虚构效率数字。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B22",
+      "order": 22,
+      "scriptQuote": "如果你的企业现在，正卡在AI落地上面，试了不少工具，但是落不到真实业务里，看着别人在用AI，自己却不知道从哪下手。欢迎评论区留下你的行业和现在遇到的卡点，咱们聊一聊，我帮你来拆解问题。",
+      "rhetoricalRole": "invitation",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "邀请用户描述行业和卡点，真人完整保留，不用弹幕或多个CTA同时争夺注意。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B23",
+      "order": 23,
+      "scriptQuote": "我是超哥，在兰州专门做企业AI落地。",
+      "rhetoricalRole": "presenter-identity",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F14",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人身份收束，不增加未经证实的履历、客户和服务承诺。",
+      "viewerGain": "presenter-trust"
+    }
+  ],
+  "factChecks": [
+    {
+      "id": "F01",
+      "beatId": "B02",
+      "sourceRequirement": "核验2026-10-16发布会日期与量产时间。主代理已核验官方视频 https://www.youtube.com/watch?v=qt5p-_tE8d0 全长23:20；21:12为计划2028年生产，原稿“即将量产”与证据时间口径不一致；“今天”仅限实际发布日期当天使用。原文保留待用户更正，不能直接拍作确定事实。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F02",
+      "beatId": "B03",
+      "sourceRequirement": "核验每项演示和机构，来源 https://www.youtube.com/watch?v=qt5p-_tE8d0：06:03坡道、10:56翻滚、08:11风扇吸力与倒置、12:04冷气系统。仅支持所展示装置与条件，不支持任意墙面；SpaceX A71未获一手支持；“不需要踩刹车”具体说法待证；持续自由飞行亦不可由一次腾空演示外推。原句不改，本段在措辞确认前阻断。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F03",
+      "beatId": "B04",
+      "sourceRequirement": "官方配置 https://x.com/Tesla/status/2110905588402295283 的口径为0–60 mph：Performance<1.6秒、Thrust<0.9秒、Rocket<0.59秒，并非零百约1.7秒。续航>300mi，>230mph限定Rocket；483km及370km/h只是近似单位换算且原稿遗漏大于号与版本条件。须由用户更正原句并重新绑定导演表后才能使用。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F04",
+      "beatId": "B05",
+      "sourceRequirement": "道路资格有地区限制；https://www.youtube.com/watch?v=qt5p-_tE8d0 与官方配置不能推出中国大陆或任意地区均可上牌。须取得面向实际发布受众的车型、地区及道路批准原始依据；当前不支持“可以正常上牌公路行驶”，保留原句并阻断。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F05",
+      "beatId": "B07",
+      "sourceRequirement": "Grok Bot官方企业与安全文档 https://docs.x.ai/grok-bot/teams-and-enterprises 及 https://docs.x.ai/grok-bot/security#models-and-data 支持由Cursor管理的多模型路由架构；不等于所有Grok产品或所有用户随时可用全球顶级模型。须明确Grok Bot范围与可用权限，当前原句范围过宽，待用户更正。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "primary-real-evidence",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F06",
+      "beatId": "B08",
+      "sourceRequirement": "主代理通过CUA回读Musk原帖 https://x.com/elonmusk/status/2107724314451878104，作者及2026-10-07 14:46时间已确认；原帖为Going forward、按任务使用最佳后端，列举Claude Opus5.5、MidJourney、Suno。方向公告可核验，当前全量上线及本句两个实际调用路径未知。https://www.anthropic.com/claude-opus-5-5 支持Opus5.5于9月22日发布；Claude Code是工具，不是模型名。不能把品牌截图当实际路由演示；原句保留待用户更正。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "optional-source-card",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F07",
+      "beatId": "B09",
+      "sourceRequirement": "调度中台只能作对Grok Bot架构的解释性类比，需绑定 https://docs.x.ai/grok-bot/teams-and-enterprises 与 https://docs.x.ai/grok-bot/security#models-and-data 的产品范围。原稿“Grok现在”过宽且有上线含义；待用户确认准确范围，不制造产品界面或调用连线。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F15",
+      "beatId": "B10",
+      "sourceRequirement": "“全球最擅长”含全球范围与能力最优的绝对排名判断。马斯克原帖 https://x.com/elonmusk/status/2107724314451878104 表述未来按任务选用最佳后端的方向目标，不能证明任何已选模型在全球所有对应任务上最优；本期没有覆盖模型、任务、时间与评价方法的独立比较证据。保留原句及纸艺路由，纸艺只解释任务分流，不承担最优排名的证明。当前原句待用户更正，未更正前阻断本段生产。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F08",
+      "beatId": "B11",
+      "sourceRequirement": "“绝大多数”及“最大的坑”为比例与排序判断；当前未提供代表性样本或可核对的一手企业调查。可作待改观点，但不能由导演自行改字或用虚构案例证明；原句待用户确认更正。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F09",
+      "beatId": "B12",
+      "sourceRequirement": "“很多企业老板天天”属于对真实人群行为的概括，需用户提供可公开的亲历边界或样本说明。当前不虚构客户、不补采访；保留真人并记录待核验。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F10",
+      "beatId": "B13",
+      "sourceRequirement": "公告 https://x.com/elonmusk/status/2107724314451878104 支持选择多种后端的方向；“已经用实际行动”若暗示实际落地效果，证据不足。“没有哪一个AI是万能的”是本文判断，不得配成经过本期实验验证的模型榜单。原句待用户明确公告与实际使用边界。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F11",
+      "beatId": "B14",
+      "sourceRequirement": "各工具适用任务需要对应官方功能说明或可复现任务证据；本期未做跨模型性能测试。只表达不同任务需要不同能力，不上排行榜、胜率、最强标签或保证；具体品牌能力以后续绑定原始来源为准。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F12",
+      "beatId": "B16",
+      "sourceRequirement": "“学Grok这个思路”仅借鉴按任务选择后端的方向，来源 https://x.com/elonmusk/status/2107724314451878104 与 https://docs.x.ai/grok-bot/teams-and-enterprises；不等于推荐一键接入所有模型或证明本期企业方案已经部署。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F13",
+      "beatId": "B21",
+      "sourceRequirement": "“面向未来的玩具”是作者比喻；“降本增效”是可能用途，不是本期实测业绩。需用户确认公开表达边界；本期无企业成本、效率或收益证据，不添加数字、成功案例或保证承诺。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    },
+    {
+      "id": "F14",
+      "beatId": "B23",
+      "sourceRequirement": "本人姓名、兰州及企业AI工作方向由用户原稿自述；请用户确认可公开且符合本人实际服务范围，不扩写成熟交付案例、客户数量或效果。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "block-production"
+    }
+  ],
+  "routePlans": {
+    "realMaterials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "R01",
+          "beatId": "B03",
+          "startAnchorText": "这不是科幻电影，不是概念",
+          "endAnchorText": "腾空，靠喷气推进直接起势",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "screen-recording",
+          "usageRole": "evidence",
+          "materialRequest": "取得Tesla官方完整发布会 https://www.youtube.com/watch?v=qt5p-_tE8d0 的原始来源与所需片段。备查06:03坡道、08:11风扇/倒置、10:56翻滚、12:04冷气系统；只在对应原句经用户更正后选实际相符画面。记录原视频时间范围、来源页、下载文件与权限说明。不得用一次演示推出任意墙面或持续飞行。 已取得Tesla官方X短片候选，来源 https://x.com/Tesla/status/2110913438293647789；本地原片与两条连续切片按本期采集回执追溯，短片不能冒充完整发布会。仍须按实际画面范围及更正后的实录选择，当前不作正式素材绑定。",
+          "reason": "观众需要看到真实演示的边界，使用官方原始片段；不把倒置演示做成任意墙面行驶，也不以剪辑替原句纠错。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R02",
+          "beatId": "B04",
+          "startAnchorText": "零百约1.7秒，续",
+          "endAnchorText": "车速370km/h",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "保存官方配置原帖 https://x.com/Tesla/status/2110905588402295283 的可读全页证据及参数局部，保留版本名、0–60 mph口径、<与>符号。不可把0–60 mph改标零百，不将Rocket最高速度泛化。当前口播需更正；不要先做参数卡成片。",
+          "reason": "参数口径必须让观众看到官方原页与版本条件；原稿有差异，本段先阻断，不能只改画面数字制造口播已更正的假象。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R03",
+          "beatId": "B07",
+          "startAnchorText": "这套大模型的玩法也全变了",
+          "endAnchorText": "全球不同领域的顶级模型，",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "official-document",
+          "usageRole": "evidence",
+          "materialRequest": "保存 https://docs.x.ai/grok-bot/teams-and-enterprises 与 https://docs.x.ai/grok-bot/security#models-and-data 官方文档的标题、产品范围、模型路由相关正文与URL；另保留Musk方向公告 https://x.com/elonmusk/status/2107724314451878104 的作者、日期、Going forward限定。只显示实际原文，不模拟已发生的API请求或已全部上线。",
+          "reason": "观众需要看见Grok Bot官方文档实际谈论的范围和路由架构；仅展示原文，不搭建虚构的通用产品界面。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "block-production",
+          "generatedSubstituteAllowed": false
+        },
+        {
+          "id": "R04",
+          "beatId": "B08",
+          "startAnchorText": "做绘图出图，直接调用MJ",
+          "endAnchorText": "odeOpus 5.5。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "assetType": "official-interface",
+          "usageRole": "context",
+          "materialRequest": "准备MidJourney、Claude Opus5.5、Grok Bot三个官方对象的页面或品牌截图，明确各自来源；Opus来源 https://www.anthropic.com/claude-opus-5-5，Grok来源 https://docs.x.ai/grok-bot/teams-and-enterprises，Musk列举品牌的公告 https://x.com/elonmusk/status/2107724314451878104。MidJourney官网首页 https://www.midjourney.com/home 与公开展示页 https://www.midjourney.com/explore?tab=top 已取得本地候选截图，存于本期01_素材投放区/05_公开素材_Codex准备/官网截图；路径、哈希与来源见02_核验与来源/官网截图清单.v1.json。取得截图不等于正式绑定或公开使用资格已经通过。布局用于识别三个对象，彼此之间不画调用箭头、不播放未实测集成流程；Claude Code仅在解释工具与模型区别的后台事实记录出现。",
+          "reason": "MJ、Opus和Grok的官方资料只帮助识别讨论对象；以品牌语境画面呈现，不画已上线调用连线，不把Claude Code混作模型。原稿调用断言待更正。",
+          "evidenceStatus": "candidate-unbound",
+          "usableInProduction": false,
+          "sourceBinding": null,
+          "fallbackIfUnavailable": "keep-speaker",
+          "generatedSubstituteAllowed": false
+        }
+      ]
+    },
+    "aiGeneratedVideos": {
+      "status": "not-required",
+      "notRequiredReason": "本稿依靠真人观点、官方资料与两段机制纸艺即可理解；没有纸艺难以自然表达且必须展示的具体人物或环境。合成飞车、假企业演示和AI办公室会增加误导风险，故不生成普通AI情景。",
+      "items": []
+    },
+    "paperEditorials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "P01",
+          "beatId": "B10",
+          "startAnchorText": "不同的活",
+          "endAnchorText": "一个大模型包打天下。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "纸艺只解释不同任务流向不同能力这一抽象机制，不绑定Grok品牌，不证明全球最强排名或真实产品集成。",
+          "visualRole": "process",
+          "visualMetaphor": "不同形状的任务纸片经实体分轨分别进入适配能力槽，展示按任务分工",
+          "composition": "斜俯视的单一分流装置：前景三张不同任务折页，中景分轨，背景三个有不同入口形状的厚纸能力槽；三条路清楚但未完成对接",
+          "referenceImageIds": [
+            "REF-PAPER-SUPER-PV07"
+          ],
+          "textPlan": [
+            {
+              "text": "出图",
+              "surface": "前景左侧方形任务折页",
+              "motion": "with-object"
+            },
+            {
+              "text": "代码",
+              "surface": "前景中央窄形任务折页",
+              "motion": "with-object"
+            },
+            {
+              "text": "文档",
+              "surface": "前景右侧宽形任务折页",
+              "motion": "with-object"
+            },
+            {
+              "text": "图像能力",
+              "surface": "背景左侧能力槽正面",
+              "motion": "fixed-context",
+              "reason": "能力槽是分流的固定目的地，文字随槽体保持静止以便辨认结果。"
+            },
+            {
+              "text": "代码能力",
+              "surface": "背景中央能力槽正面",
+              "motion": "fixed-context",
+              "reason": "能力槽是固定目的地，不能为了动效任意移动。"
+            },
+            {
+              "text": "文档能力",
+              "surface": "背景右侧能力槽正面",
+              "motion": "fixed-context",
+              "reason": "能力槽是固定目的地，保留静态阅读参照。"
+            }
+          ],
+          "primaryAction": "三张任务折页沿不同纸轨分别进入对应能力槽",
+          "motionPlan": {
+            "goal": "让观众看见先区分任务，再匹配相应能力，而非所有任务交给同一入口。",
+            "actions": [
+              "三张带字任务折页按口播次序进入各自分轨，折页形状与对应入口相合。",
+              "三张折页分别停在各自能力槽内，保留分开的任务与能力对应关系。"
+            ],
+            "result": "三种任务各有一个相符入口，保持完整全景供观众读懂；不显示产品名称、最强排名或执行成功标志。",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          },
+          "negativePrompt": [
+            "无品牌标识和仿软件界面",
+            "不出现万能模型或性能排名",
+            "中文不漂浮、不重绘、不乱码",
+            "不要三路合并进一个万能入口",
+            "不加入旁白、音乐、数字收益或成功对号"
+          ],
+          "firstFramePrompt": "16:9横向实体纸艺摄影，沿用《超级个体》参考的深蓝、灰白与少量珊瑚红纸材，真实纸厚、纤维、切边和接触阴影，中文直接印在物件纸面上。斜俯视一座厚纸制成的分流装置。前景左侧方形任务折页印“出图”，前景中央窄形任务折页印“代码”，前景右侧宽形任务折页印“文档”，三张折页均在起点待分配。中景是三条各自连到不同入口的灰白实体纸轨，彼此没有交叉。背景左侧能力槽正面印“图像能力”，背景中央能力槽正面印“代码能力”，背景右侧能力槽正面印“文档能力”；三个槽内此时都是空的。三层空间清晰，能力槽与任务折页有不同形状且成对相合，纸轨方向一眼可辨，文字正对观众且不遮挡。前景、中景和背景均有纸厚与接触阴影。画面只呈现待分配的静态初态，没有任何品牌、软件窗口、箭头动画或已完成结果。",
+          "videoPrompt": "基于已确认首帧，保持原构图、纸材和全部中文。三张任务折页沿不同纸轨分别进入对应能力槽，按照口播逐一发生，形成同一认知目标下的连续分配过程；先看清任务，再看清它进入的对应能力。中文牢固跟随各自折页，槽面文字随固定槽体保持稳定，字形不重画、不变形、不漂浮。每条轨道始终可见，任务不可互换或跨槽。完成后保留约一秒半的全景阅读，让观众看见三种任务各有适配入口；不要突然增加模型、排名、得分或执行成功标志。可保留细微纸片滑动与落槽轻响，无旁白、无背景音乐；接回真人时不新增主题。"
+        },
+        {
+          "id": "P02",
+          "beatId": "B19",
+          "startAnchorText": "销售、运营、行政、业务岗",
+          "endAnchorText": "解决手上实实在在的问题。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "第二段纸艺显示能力进入既有岗位工作槽，表达工作环节是承载对象；属于说明性隐喻，不展示虚构企业上线与收益。",
+          "visualRole": "mechanism",
+          "visualMetaphor": "能力纸模块嵌入岗位既有工作槽，像给真实工作接上适配工具而不是另摆一件展品",
+          "composition": "低斜侧视的四层错位工作台：前景已有岗位任务托盘，中景是各自留有能力缺口的工作槽，后景为少量待用纸模块；构图重在嵌入工作而非模型榜单",
+          "referenceImageIds": [
+            "REF-PAPER-SUPER-PV07"
+          ],
+          "textPlan": [
+            {
+              "text": "销售",
+              "surface": "前景左侧岗位托盘立面",
+              "motion": "with-object"
+            },
+            {
+              "text": "运营",
+              "surface": "中景左后岗位托盘立面",
+              "motion": "with-object"
+            },
+            {
+              "text": "行政",
+              "surface": "中景右前岗位托盘立面",
+              "motion": "with-object"
+            },
+            {
+              "text": "业务",
+              "surface": "后景右侧岗位托盘立面",
+              "motion": "with-object"
+            },
+            {
+              "text": "AI能力",
+              "surface": "后景能力料架横梁",
+              "motion": "fixed-context",
+              "reason": "能力料架是固定供给端，文字跟随固定横梁稳定辨认。"
+            },
+            {
+              "text": "真实工作",
+              "surface": "前景工作底板正面",
+              "motion": "fixed-context",
+              "reason": "底板作为全镜不变的工作场景参照，避免观众误读为另购一个独立系统。"
+            }
+          ],
+          "primaryAction": "四枚能力模块分别嵌入四个岗位工作槽",
+          "motionPlan": {
+            "goal": "让观众看见AI能力应进入岗位的真实工作环节，而不只是展示一个模型名。",
+            "actions": [
+              "四个带字岗位托盘短距靠近各自工作槽，待用模块保持可见。",
+              "四枚不同形状的能力模块分别嵌入相合的工作槽，岗位原有文件仍留在托盘上。"
+            ],
+            "result": "各岗位与一个匹配的能力模块组成完整工作单元，留出阅读停留；不显示自动完成业务、赚钱或人被替代。",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          },
+          "negativePrompt": [
+            "不把岗位或人员移走",
+            "不生成企业客户标识与实际系统界面",
+            "中文随纸面不漂移、不重画、不乱码",
+            "不出现节省百分比、现金、成功印章",
+            "不加入旁白、音乐或统一闪烁光效"
+          ],
+          "firstFramePrompt": "16:9横向实体纸艺摄影，沿用《超级个体》参考的深蓝、灰白与少量珊瑚红纸材，真实纸厚、纤维、切边和接触阴影，中文直接印在物件纸面上。低斜侧视一座四层错位的纸制工作台，前景工作底板正面印“真实工作”。前景左侧岗位托盘立面印“销售”，中景左后岗位托盘立面印“运营”，中景右前岗位托盘立面印“行政”，后景右侧岗位托盘立面印“业务”；四个托盘各有少量无字的文件纸片，托盘尚未接上工作槽。每个工作槽留有一种独特形状的空缺，后景能力料架横梁印“AI能力”，架上四枚灰白和珊瑚红的厚纸模块与四种空缺成对适配，全部尚在料架上。岗位文字朝向观众，可在错位纵深中逐一读清，文件不遮字。画面至少有前景底板、中景托盘、后景料架三层，展示静态未接入状态。保持可见折面、纤维、切口与稳定接触阴影，没有企业标识、收益数字和已经完成的业务结果。",
+          "videoPrompt": "基于已确认首帧，保留四层错位工作台、全部岗位文字和原有文件。四个岗位托盘依口播短距靠近自己的工作槽，四枚能力模块分别嵌入四个岗位工作槽，动作由工作需要引出，模块形状与缺口逐一相合，不把所有能力塞进同一槽。销售、运营、行政、业务的文字随托盘整体移动，料架与底板文字固定在原承载纸面，全部字形稳定、不重绘、不漂浮。文件始终留在各自岗位，不突然变成收益或完成标志。形成岗位与适配能力相接的整体后，留约一秒半全景阅读，再平稳接回真人；只保留可信的纸面摩擦和模块嵌入轻响，无旁白、无音乐。"
+        }
+      ]
+    }
+  },
+  "shotcraftOpportunities": [
+    {
+      "id": "SO01",
+      "beatId": "B04",
+      "baseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "仅在原句经用户更正及资料绑定后：对象为官方配置页，初态完整保留版本与口径，变化只聚焦当前口播对应的参数行，结果同时读到版本与0–60 mph，不裁掉限定；阅读停留按实录确定。人物小窗置左下安全区，字幕在资料视窗外；无需为聚焦附加强音。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO02",
+      "beatId": "B14",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "对象为口播中出图、代码、文档三个任务词；初态保留真人和空余安全区，若实拍有阅读需要才按原声逐项出现，已出现的词保留供比较，结果不变成模型榜单。拍后看人物与字幕空间决定采用或不需要；不预选卡号，轻微动作声须能服务阅读才保留。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO03",
+      "beatId": "B16",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "对象为“按需调用，匹配业务”这一句的必要关键词，初态真人清楚，变化仅一次轻量重点提示，结果留下短阅读停留后自然退回本人；不新增模型Logo、不构造调用界面、不挤压人物或字幕。拍后按实录节奏与全库相关候选比较，允许不采用。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    }
+  ],
+  "rhythmAudit": {
+    "basis": "semantic-runs-not-seconds",
+    "fixedCadenceForbidden": true,
+    "longSpeakerRunsReviewed": true,
+    "runs": [
+      {
+        "fromBeatId": "B01",
+        "toBeatId": "B02",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "问候与热点抛出需要本人语气，后接真实演示；先处理量产措辞，不增加标题动效。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B05",
+        "toBeatId": "B06",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "上牌原句待核验；从热点转向AI应由本人完成，不靠多插素材掩盖转折。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B09",
+        "toBeatId": "B09",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "一句调度类比保留真人，后面的纸艺解释通用机制；先明确Grok Bot范围。",
+        "mitigationRefs": []
+      },
+      {
+        "fromBeatId": "B11",
+        "toBeatId": "B18",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "本段是全片观点核心，连续真人有必要。拍后检查三类任务词与核心匹配句是否需要有限提示，不把逻辑讲述改成频繁插片；SO02和SO03可全部判为不需要。事实有疑点的句子先等用户更正。",
+        "mitigationRefs": [
+          "SO02",
+          "SO03"
+        ]
+      },
+      {
+        "fromBeatId": "B20",
+        "toBeatId": "B23",
+        "risk": "low",
+        "decision": "keep-presenter",
+        "reason": "安抚距离、价值判断、邀约及身份由本人连续表达；保留自然停顿，不加利益承诺或多重CTA。",
+        "mitigationRefs": []
+      }
+    ]
+  }
+}
