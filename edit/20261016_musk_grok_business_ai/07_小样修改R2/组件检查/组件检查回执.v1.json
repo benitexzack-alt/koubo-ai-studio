@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "musk-grok-r2-component-check/v1",
+  "createdAt": "2026-10-16T11:56:50.681531+00:00",
+  "stage": "edit-release",
+  "scope": "只修改本期组件与参数检查，不渲染、不提交、不改runtime、媒体、字幕、公共组件或门禁",
+  "changedFiles": [
+    {
+      "path": "remotion/src/musk-grok-business-ai-20261016/Composition.tsx",
+      "beforeSha256": "7ac2357463e9cb62acb39ed4d26dc9824db991a4180ada4422455cfb204dab91",
+      "afterSha256": "66ff285ba66006275f8c3dbb95d38871e9096f4a31acfbf8308e17adcdaf39e8"
+    },
+    {
+      "path": "remotion/src/musk-grok-business-ai-20261016/check-parameters.cjs",
+      "beforeSha256": "692b8eabf88c339f8e7f86f379bbe202a2f075149df6e619f82c6cd830e1ebe1",
+      "afterSha256": "99e8c54f5d431dd5c42def6a8af7438d9af71fb92b2bb697a4b6446247066f7e"
+    }
+  ],
+  "unchangedTypes": true,
+  "layout": {
+    "presenter": {
+      "x": 64,
+      "y": 620,
+      "width": 400,
+      "height": 225
+    },
+    "paper": {
+      "x": 520,
+      "y": 90,
+      "width": 1344,
+      "height": 768,
+      "aspectRatio": "7:4",
+      "objectFit": "contain"
+    },
+    "caption": {
+      "x": 88,
+      "y": 886,
+      "width": 1744,
+      "height": 168
+    },
+    "horizontalGapPixels": 56,
+    "paperCaptionGapPixels": 28,
+    "presenterCaptionGapPixels": 41
+  },
+  "transitions": {
+    "presenterFrames": 8,
+    "mediaOpacityFrames": 5,
+    "scope": "相邻 ready 媒体合并组的首尾；组内素材直接切换，真人保持小窗",
+    "presenterOpacity": 1,
+    "paperLabel": "保留原右上 AI生成·纸艺示意，top36 位于纸艺top90上方"
+  },
+  "checks": [
+    {
+      "command": "node node_modules/typescript/bin/tsc --project src/musk-grok-business-ai-20261016/tsconfig.json --noEmit --incremental false",
+      "cwd": "remotion",
+      "exitCode": 0
+    },
+    {
+      "command": "node remotion/src/musk-grok-business-ai-20261016/check-parameters.cjs",
+      "cwd": ".",
+      "exitCode": 0,
+      "runtimeSha256": "f2b340cc14b08f635e30e5b993e18fd1bcb945e68b453b162388d7b68d9d2b78",
+      "boundaryCases": [
+        "未排序连续三片合并",
+        "两个纸艺窗保留",
+        "pending不入组",
+        "不修改输入对象",
+        "真实1帧空隙不合并",
+        "内部两处边界真人m=1且媒体opacity=1",
+        "8帧首尾平滑系数",
+        "无媒体时全屏",
+        "7:4纸艺及16:9真人",
+        "稳定小窗/纸艺/字幕安全区不重叠"
+      ]
+    }
+  ],
+  "testedRuntimeNote": "本次实参检查为当时仍冻结的 R1 runtime；主代理写入 R2 runtime并同步快照后须再运行同一参数检查",
+  "renderExecuted": false,
+  "visualAcceptancePerformed": false,
+  "fullWatchConfirmed": false,
+  "formalEnabled": false,
+  "patch": {
+    "path": "edit/20261016_musk_grok_business_ai/07_小样修改R2/组件检查/R2组件局部修改.patch",
+    "sha256": "edb015babe6107b641063afbfab46a0f00b5465822de4c8165b29e0ae0e7d5e8",
+    "snapshotReconstructionVerified": true
+  }
+}

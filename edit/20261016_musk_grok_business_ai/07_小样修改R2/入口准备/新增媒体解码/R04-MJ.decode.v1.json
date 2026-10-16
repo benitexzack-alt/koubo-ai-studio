@@ -1,0 +1,56 @@
+{
+  "source": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R04-MJ-user-r2.png",
+    "sha256": "27e1c5efc5068255cbbbf87d184688013fa5b27da86207aa2f3670a11d9d98a2"
+  },
+  "command": [
+    "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-xerror",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R04-MJ-user-r2.png",
+    "-map",
+    "0:v:0",
+    "-frames:v",
+    "1",
+    "-f",
+    "null",
+    "-"
+  ],
+  "exitCode": 0,
+  "fullDecode": false,
+  "decodedImageFrame": true,
+  "tool": {
+    "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "sha256": "329fa7360b28a067a0cd7281474bb18cd868932d5173646a674466bcb56d6e93"
+  },
+  "checkedAt": "2026-10-16T12:08:48.606002+00:00",
+  "probe": {
+    "command": [
+      "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+      "-v",
+      "error",
+      "-show_streams",
+      "-show_format",
+      "-of",
+      "json",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R04-MJ-user-r2.png"
+    ],
+    "exitCode": 0,
+    "tool": {
+      "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+      "sha256": "841ab2259a55e5c5e44c5851890867d48750ff1e7cfa92b5fbed91445a493128"
+    }
+  },
+  "media": {
+    "type": "image",
+    "fps": null,
+    "durationSeconds": null,
+    "width": 674,
+    "height": 378
+  },
+  "humanListeningPerformed": false,
+  "reviewAccepted": false
+}

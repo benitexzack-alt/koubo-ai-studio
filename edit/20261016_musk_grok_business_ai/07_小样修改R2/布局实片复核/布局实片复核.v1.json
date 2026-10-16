@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "musk-grok-r2-layout-visual-check/v1",
+  "recordedAt": "2026-10-16T12:33:21.472775+00:00",
+  "scope": "仅汽车三段与边界、MJ用户图、两纸艺及真人小窗/字幕布局；不复核主线动效或数字运镜",
+  "parent": {
+    "path": "edit/20261016_musk_grok_business_ai/07_小样修改R2/预览与质检/内部审阅候选_R2_有音效.mp4",
+    "sha256": "7f32906dae48a20ff0d912d80dfddb66a748ae2b1511242bff8d197047ee6c1f"
+  },
+  "videoMetadata": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "frames": 5035,
+    "videoDurationSeconds": 167.833333,
+    "containerDurationSeconds": 167.893333
+  },
+  "evidence": {
+    "mp4FramesActuallyViewed": 35,
+    "shortWindowCount": 11,
+    "paperSourceComparisonFramesActuallyViewed": 2,
+    "mjReferenceActuallyViewed": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R04-MJ-user-r2.png",
+      "sha256": "27e1c5efc5068255cbbbf87d184688013fa5b27da86207aa2f3670a11d9d98a2"
+    },
+    "index": {
+      "path": "edit/20261016_musk_grok_business_ai/07_小样修改R2/布局实片复核/抽帧索引.v1.json",
+      "sha256": "c15d128da0457b0d4ef5606d696594b7a4dbf3da6f8d47a8e53f53507c04052e"
+    },
+    "paperSourceComparisons": {
+      "path": "edit/20261016_musk_grok_business_ai/07_小样修改R2/布局实片复核/纸艺源片单帧对照.v1.json",
+      "sha256": "dac6186cae89c6bc290e4722b5dea40a119cd80bb0ff9bbf7667575b06162168"
+    }
+  },
+  "observations": [
+    {
+      "item": "汽车20–36.1秒三段",
+      "status": "sampled-boundaries-no-new-layout-blocker",
+      "frames": [
+        598,
+        600,
+        604,
+        608,
+        774,
+        775,
+        776,
+        777,
+        903,
+        904,
+        905,
+        906,
+        1075,
+        1079,
+        1082,
+        1083
+      ],
+      "seen": "25.867秒与30.167秒内部剪口仅主画面切换，左下真人位置/尺寸不重置，无透明闪；进入和退出的所看序列呈连续中间尺寸。汽车资料窗、来源、真人与字幕区分开。",
+      "notVerified": "未完整实时播放16.1秒汽车段；不由画面判断汽车参数事实，也不判音频连续性。"
+    },
+    {
+      "item": "MJ用户原图",
+      "status": "visual-reference-match",
+      "frames": [
+        1680
+      ],
+      "seen": "56秒成片显示白发人物、绿色田地、人物绘画、彩色房屋组合，与登记用户原图副本一致；完整适配资料窗，没有旧官网截图；真人与字幕未覆盖作品。",
+      "notVerified": "本次仅对照本期登记用户文件，不重新核查上传对话的来源链；不把图片当作产品集成能力证明。"
+    },
+    {
+      "item": "P01 68.167–75.633秒",
+      "status": "stable-layout-clear-with-transition-limitation",
+      "frames": [
+        2043,
+        2045,
+        2049,
+        2053,
+        2165,
+        2260,
+        2264,
+        2268,
+        2269
+      ],
+      "seen": "稳定抽帧纸艺7:4完整右侧展示；真人左下持续可见；字幕和AI说明在纸艺外。72.167秒中段原片中的代码纸牌遮住部分代码能力标签，源片4.5秒同样存在。",
+      "notVerified": "未对全段逐帧或原速音画进行验收。"
+    },
+    {
+      "item": "P02 128.567–136.567秒",
+      "status": "stable-layout-clear-with-transition-limitation",
+      "frames": [
+        3855,
+        3857,
+        3861,
+        3865,
+        3977,
+        4088,
+        4092,
+        4096,
+        4097
+      ],
+      "seen": "稳定抽帧真人左下、纸艺完整右侧、字幕独立；AI能力和真实工作主标题清楚。源视频4秒的几何块本身会遮部分销售/运营/行政/业务标签，同样出现在132.567秒成片；不是本次PIP或字幕造成。",
+      "notVerified": "未对全段逐帧或原速音画进行验收。"
+    }
+  ],
+  "limitations": [
+    {
+      "type": "transition-occlusion",
+      "severity": "nonblocking-observation-for-user-review",
+      "durationSeconds": 0.26666666666666666,
+      "frames": [
+        2049,
+        2264,
+        3861,
+        4092
+      ],
+      "description": "进出各8帧为全屏与左下小窗间的连续移动，移动中真人短暂覆盖纸艺左部；不能声称纸艺第一帧到最后一帧始终固定左下或全程零遮挡。稳定布局无这类遮挡。"
+    },
+    {
+      "type": "source-self-occlusion",
+      "severity": "retained-user-source-property",
+      "description": "两纸艺源片自身物体对局部标签的遮挡已用原始单帧确认；本轮未修改或修复用户素材。"
+    }
+  ],
+  "conclusion": "所抽样范围未发现新增布局阻断；可交用户内部观看，保留转场与源片标签遮挡说明。",
+  "fullWatchPerformed": false,
+  "audioListeningPerformed": false,
+  "lipSyncAccepted": false,
+  "humanAcceptancePerformed": false,
+  "formalReleaseApproved": false,
+  "codeOrMediaModified": false
+}

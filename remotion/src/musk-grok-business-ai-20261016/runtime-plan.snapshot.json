@@ -720,10 +720,64 @@
   ],
   "events": [
     {
+      "id": "hook-reveal",
+      "frame": 44,
+      "sound": "silent",
+      "reason": "实录句窗内短揭示能够飞的车，12帧展开，不重复配入场声；本期候选，待正常速度画面/声音复核。"
+    },
+    {
       "id": "hook-flight",
       "frame": 142,
       "sound": "added",
-      "reason": "开场能够飞的车，轻短推进，待正常速度试听；源最大瞬态按本期事件帧对齐；正常速度听感待验收。"
+      "reason": "保留原关键词声点；强调边框从134帧展开至142帧落定；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "business-pit",
+      "frame": 2269,
+      "sound": "silent",
+      "reason": "同一企业AI落地容器开始，后续不清空换整套卡片；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "pit-mark",
+      "frame": 2344,
+      "sound": "silent",
+      "reason": "实录提到最大的一个坑；标记下落12帧；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "pit-settle",
+      "frame": 2356,
+      "sound": "added",
+      "reason": "最大的一个坑标记12帧下落落定，复用既有短软确认音；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "strongest-question",
+      "frame": 2507,
+      "sound": "silent",
+      "reason": "原容器标题18帧缩到标题位，保留问句而非宣称哪个模型最强；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "universal-expect",
+      "frame": 2549,
+      "sound": "silent",
+      "reason": "万能的AI是原话中的期待；在现有问题容器内展开；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "universal-result",
+      "frame": 2617,
+      "sound": "silent",
+      "reason": "依实录补充公司的所有问题，不画未经证明的模型调用箭头；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "no-universal",
+      "frame": 2811,
+      "sound": "silent",
+      "reason": "完整否定句整体出现，8帧显现，禁止仅显示万能二字；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "no-universal-settle",
+      "frame": 2819,
+      "sound": "added",
+      "reason": "完整否定句8帧显现落定，复用既有重点选择音；本期候选，待正常速度画面/声音复核。"
     },
     {
       "id": "task-0",
@@ -735,7 +789,7 @@
       "id": "task-0-settle",
       "frame": 2894,
       "sound": "added",
-      "reason": "对应当前本期组件真实落定：TagStack 入场缩放7帧，与该动作落点同表绑定；待实际画面及试听复核。"
+      "reason": "对应本期连续容器内标签实际7帧缩放落定；旧标签位置保持，待正常速度试听。"
     },
     {
       "id": "task-1",
@@ -759,25 +813,67 @@
       "id": "task-3-settle",
       "frame": 3105,
       "sound": "added",
-      "reason": "对应当前本期组件真实落定：TagStack 入场缩放7帧，与该动作落点同表绑定；待实际画面及试听复核。 依据原始词级起点重绑，落定事件随动作同步；仍待画面试听。"
+      "reason": "对应本期连续容器内标签实际7帧缩放落定；旧标签位置保持，待正常速度试听。"
     },
     {
       "id": "strongest-model",
       "frame": 3225,
       "sound": "silent",
-      "reason": "本组已有重点声；此节点保留原声阅读，不机械每词配声。"
+      "reason": "已有四任务14帧缩为容器顶部，完整显示不是买一套号称最强的模型，不截断否定；本期候选，待正常速度画面/声音复核。"
     },
     {
       "id": "match-business",
-      "frame": 3395,
+      "frame": 3383,
       "sound": "silent",
-      "reason": "动作起步保留原声，重点声绑定本动作实际落定事件。 依据原始词级起点重绑，落定事件随动作同步；仍待画面试听。"
+      "reason": "依本条实录句窗按需调用匹配业务出现；旧说法退为中性，12帧强调接管；本期候选，待正常速度画面/声音复核。"
     },
     {
       "id": "match-business-settle",
-      "frame": 3407,
+      "frame": 3395,
       "sound": "added",
-      "reason": "对应当前本期组件真实落定：WordingComparison 强调接管12帧，与该动作落点同表绑定；待实际画面及试听复核。 依据原始词级起点重绑，落定事件随动作同步；仍待画面试听。"
+      "reason": "按需调用匹配业务12帧强调接管落定，复用已有重点声；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "capabilities",
+      "frame": 3449,
+      "sound": "silent",
+      "reason": "匹配业务缩为同容器标题，16帧转为共同工作容器；原声阅读；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "departments",
+      "frame": 3505,
+      "sound": "silent",
+      "reason": "各个部门进入共同容器，7帧落定，原声阅读；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "people",
+      "frame": 3556,
+      "sound": "silent",
+      "reason": "每一个人并列进入，7帧落定，不伪造前后步骤；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "work-step",
+      "frame": 3607,
+      "sound": "silent",
+      "reason": "真实工作环节作为同一业务容器结果落位，7帧落定，原声阅读；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "toy-first",
+      "frame": 4255,
+      "sound": "silent",
+      "reason": "原话未来的玩具逐字出现，2帧一字，保留阅读；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "tool-second",
+      "frame": 4311,
+      "sound": "silent",
+      "reason": "原话降本增效的工具逐字出现，2帧一字，接替旧词的强调色；本期候选，待正常速度画面/声音复核。"
+    },
+    {
+      "id": "tool-choice-settle",
+      "frame": 4343,
+      "sound": "added",
+      "reason": "第二项文本出现后，4331至4343帧完成12帧强调边框和色彩接力；本期候选，待正常速度画面/声音复核。"
     },
     {
       "id": "cta-industry",
@@ -800,11 +896,48 @@
   ],
   "overlays": [
     {
-      "id": "tasks-parallel",
-      "kind": "tags",
-      "from": 2887,
-      "to": 3165,
+      "id": "hook-flight-reveal",
+      "kind": "hook-reveal",
+      "from": 44,
+      "to": 162,
       "items": [
+        {
+          "text": "能够飞的车",
+          "eventId": "hook-reveal"
+        }
+      ],
+      "emphasisEventId": "hook-flight"
+    },
+    {
+      "id": "business-continuous",
+      "kind": "continuous-business",
+      "from": 2269,
+      "to": 3694,
+      "items": [
+        {
+          "text": "企业AI落地",
+          "eventId": "business-pit"
+        },
+        {
+          "text": "最大的一个坑",
+          "eventId": "pit-mark"
+        },
+        {
+          "text": "哪个大模型最强？",
+          "eventId": "strongest-question"
+        },
+        {
+          "text": "万能的AI",
+          "eventId": "universal-expect"
+        },
+        {
+          "text": "公司的所有问题",
+          "eventId": "universal-result"
+        },
+        {
+          "text": "没有哪一个AI是万能的",
+          "eventId": "no-universal"
+        },
         {
           "text": "画图",
           "eventId": "task-0"
@@ -820,15 +953,7 @@
         {
           "text": "业务文档",
           "eventId": "task-3"
-        }
-      ]
-    },
-    {
-      "id": "model-to-business",
-      "kind": "comparison",
-      "from": 3165,
-      "to": 3449,
-      "items": [
+        },
         {
           "text": "不是买一套\n号称最强的模型",
           "eventId": "strongest-model"
@@ -836,9 +961,43 @@
         {
           "text": "按需调用，匹配业务",
           "eventId": "match-business"
+        },
+        {
+          "text": "不同的AI能力",
+          "eventId": "capabilities"
+        },
+        {
+          "text": "各个部门",
+          "eventId": "departments"
+        },
+        {
+          "text": "每一个人",
+          "eventId": "people"
+        },
+        {
+          "text": "真实的工作环节",
+          "eventId": "work-step"
+        }
+      ]
+    },
+    {
+      "id": "future-to-present",
+      "kind": "wording-choice",
+      "from": 4255,
+      "to": 4427,
+      "items": [
+        {
+          "text": "未来的玩具",
+          "label": "飞车",
+          "eventId": "toy-first"
+        },
+        {
+          "text": "降本增效的工具",
+          "label": "AI",
+          "eventId": "tool-second"
         }
       ],
-      "emphasisEventId": "match-business"
+      "emphasisEventId": "tool-choice-settle"
     },
     {
       "id": "comment-invitation",
@@ -884,7 +1043,57 @@
       "displayTitle": "官方演示现场"
     },
     {
-      "id": "R02",
+      "id": "R06",
+      "kind": "real-evidence",
+      "window": {
+        "from": 600,
+        "to": 776
+      },
+      "state": "ready",
+      "reviewStatus": "pending",
+      "asset": {
+        "type": "video",
+        "src": "evidence/R06-car-r2.mp4",
+        "sourceInFrame": 0,
+        "sourceFps": 30,
+        "sourceDurationFrames": 176,
+        "audioDisposition": "preserve",
+        "audioReason": "官方宣传素材原声按原速保留，低增益0.07作口播背景；正常速度听感待小样审阅",
+        "nativeAudio": {
+          "src": "audio/R06-native-r2.m4a",
+          "gain": 0.07
+        }
+      },
+      "sourceLabel": "Tesla 官方宣传片",
+      "displayTitle": "汽车宣传画面"
+    },
+    {
+      "id": "R07",
+      "kind": "real-evidence",
+      "window": {
+        "from": 776,
+        "to": 905
+      },
+      "state": "ready",
+      "reviewStatus": "pending",
+      "asset": {
+        "type": "video",
+        "src": "evidence/R07-car-r2.mp4",
+        "sourceInFrame": 0,
+        "sourceFps": 30,
+        "sourceDurationFrames": 129,
+        "audioDisposition": "preserve",
+        "audioReason": "官方宣传素材原声按原速保留，低增益0.07作口播背景；正常速度听感待小样审阅",
+        "nativeAudio": {
+          "src": "audio/R07-native-r2.m4a",
+          "gain": 0.07
+        }
+      },
+      "sourceLabel": "Tesla 官方宣传片",
+      "displayTitle": "汽车宣传画面"
+    },
+    {
+      "id": "R08",
       "kind": "real-evidence",
       "window": {
         "from": 905,
@@ -893,25 +1102,20 @@
       "state": "ready",
       "reviewStatus": "pending",
       "asset": {
-        "type": "image",
-        "src": "evidence/R02.jpg",
+        "type": "video",
+        "src": "evidence/R08-car-r2b.mp4",
         "sourceInFrame": 0,
         "sourceFps": 30,
-        "sourceDurationFrames": null,
-        "audioDisposition": "not-applicable",
-        "audioReason": "静态截图无音轨",
-        "nativeAudio": null,
-        "imageFocus": {
-          "x": 288,
-          "y": 504,
-          "width": 580,
-          "height": 154,
-          "sourceWidth": 1280,
-          "sourceHeight": 1936
+        "sourceDurationFrames": 178,
+        "audioDisposition": "preserve",
+        "audioReason": "官方宣传素材原声按原速保留，低增益0.07作口播背景；正常速度听感待小样审阅",
+        "nativeAudio": {
+          "src": "audio/R08-native-r2b.m4a",
+          "gain": 0.07
         }
       },
-      "sourceLabel": "Tesla 官方配置说明 · 2026-10-16 · 原帖节选",
-      "displayTitle": "车型与参数"
+      "sourceLabel": "Tesla 官方宣传片",
+      "displayTitle": "汽车宣传画面"
     },
     {
       "id": "R03",
@@ -946,7 +1150,7 @@
       "reviewStatus": "pending",
       "asset": {
         "type": "image",
-        "src": "evidence/R04-MJ.jpg",
+        "src": "evidence/R04-MJ-user-r2.png",
         "sourceInFrame": 0,
         "sourceFps": 30,
         "sourceDurationFrames": null,
@@ -954,7 +1158,7 @@
         "audioReason": "静态截图无音轨",
         "nativeAudio": null
       },
-      "sourceLabel": "Midjourney 官网",
+      "sourceLabel": "Midjourney 作品展示",
       "displayTitle": "绘图出图"
     },
     {
@@ -1035,32 +1239,58 @@
     {
       "from": 0,
       "to": 162,
-      "peakScale": 1.07
+      "peakScale": 1.07,
+      "motion": "push-hold",
+      "settleFrame": 90,
+      "releaseFrames": 18
     },
     {
       "from": 1205,
       "to": 1389,
-      "peakScale": 1.08
+      "peakScale": 1.08,
+      "motion": "push-hold",
+      "settleFrame": 1300,
+      "releaseFrames": 18
     },
     {
-      "from": 2410,
+      "from": 2269,
       "to": 2693,
-      "peakScale": 1.06
+      "peakScale": 1.07,
+      "motion": "push-hold",
+      "settleFrame": 2370,
+      "releaseFrames": 18
+    },
+    {
+      "from": 2713,
+      "to": 3165,
+      "peakScale": 1.07,
+      "motion": "push-hold",
+      "settleFrame": 2811,
+      "releaseFrames": 18
     },
     {
       "from": 3165,
-      "to": 3449,
-      "peakScale": 1.07
+      "to": 3694,
+      "peakScale": 1.07,
+      "motion": "push-hold",
+      "settleFrame": 3267,
+      "releaseFrames": 18
     },
     {
       "from": 4129,
       "to": 4427,
-      "peakScale": 1.06
+      "peakScale": 1.07,
+      "motion": "push-hold",
+      "settleFrame": 4311,
+      "releaseFrames": 18
     },
     {
       "from": 4702,
       "to": 5035,
-      "peakScale": 1.08
+      "peakScale": 1.08,
+      "motion": "push-hold",
+      "settleFrame": 4810,
+      "releaseFrames": 18
     }
   ],
   "sfx": [
@@ -1120,6 +1350,42 @@
       "trimAfterFrame": 12,
       "transientOffsetFrames": 2,
       "gain": 0.14133509186283605,
+      "fadeInFrames": 1,
+      "fadeOutFrames": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "SFX-pit-settle",
+      "eventId": "pit-settle",
+      "src": "sfx/v1-confirm-soft.wav",
+      "trimBeforeFrame": 0,
+      "trimAfterFrame": 7,
+      "transientOffsetFrames": 2,
+      "gain": 0.15893929695823245,
+      "fadeInFrames": 1,
+      "fadeOutFrames": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "SFX-no-universal",
+      "eventId": "no-universal-settle",
+      "src": "sfx/v2-keyword-select.wav",
+      "trimBeforeFrame": 0,
+      "trimAfterFrame": 10,
+      "transientOffsetFrames": 0,
+      "gain": 0.20293382317727662,
+      "fadeInFrames": 0,
+      "fadeOutFrames": 2,
+      "reviewStatus": "pending"
+    },
+    {
+      "id": "SFX-tool-choice",
+      "eventId": "tool-choice-settle",
+      "src": "sfx/v1-confirm-soft.wav",
+      "trimBeforeFrame": 0,
+      "trimAfterFrame": 7,
+      "transientOffsetFrames": 2,
+      "gain": 0.15893929695823245,
       "fadeInFrames": 1,
       "fadeOutFrames": 2,
       "reviewStatus": "pending"

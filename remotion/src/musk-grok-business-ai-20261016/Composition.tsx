@@ -2,13 +2,30 @@ import React, {useEffect, useMemo} from 'react';
 import {loadFont} from '@remotion/fonts';
 import {Audio} from '@remotion/media';
 import {AbsoluteFill, Img, OffthreadVideo, Sequence, cancelRender, continueRender, delayRender, useCurrentFrame} from 'remotion';
-import type {Caption, EpisodeProps, MediaSlot, OverlayCue, RuntimePlan} from './types';
-import {asset, CAPTION_REGION, DEFAULT_REGION, easeOut, eventFrame, inside, mix, opacity, progress, smooth, TYPE, validateRuntimePlan} from './runtime';
+import type {Caption, EpisodeProps, FrameWindow, MediaSlot, OverlayCue, RuntimePlan} from './types';
+import {asset, cameraScale, CAPTION_REGION, DEFAULT_REGION, easeOut, eventFrame, inside, mix, opacity, progress, smooth, TYPE, validateRuntimePlan} from './runtime';
 
 const DISPLAY = 'MuskGrok20261016-Display';
 const CAPTION = 'MuskGrok20261016-Caption';
 const C = {ink: '#16252d', cream: '#f2eadc', white: '#fffdf8', accent: '#e1b96d', muted: '#c8d1d4'};
 const mediaError = (src: string) => (error: Error) => cancelRender(new Error(`本期媒体不可用：${src}；${error.message}`));
+export const MEDIA_LAYOUT = {presenter: {x: 64, y: 620, width: 400, height: 225},
+  paper: {x: 520, y: 90, width: 1344, height: 768}, transitionFrames: 8} as const;
+
+/** 连续资料共用一次真人缩入/回全屏；片段边界不改变真人位置。 */
+export const mergePresenterWindows = (slots: MediaSlot[]): FrameWindow[] => {
+  const windows = slots.filter((slot) => slot.state === 'ready' && slot.window && slot.asset)
+    .map((slot) => ({...slot.window!})).sort((a, b) => a.from - b.from);
+  return windows.reduce<FrameWindow[]>((runs, window) => {
+    const last = runs.at(-1);
+    if (last && window.from <= last.to) last.to = Math.max(last.to, window.to);
+    else runs.push(window);
+    return runs;
+  }, []);
+};
+export const presenterMix = (frame: number, window?: FrameWindow) => window
+  ? smooth(Math.min(progress(frame, window.from, MEDIA_LAYOUT.transitionFrames),
+    1 - progress(frame, window.to - MEDIA_LAYOUT.transitionFrames, MEDIA_LAYOUT.transitionFrames))) : 0;
 
 const EvidenceImage: React.FC<{slot: MediaSlot; plan: RuntimePlan}> = ({slot, plan}) => {
   const media = slot.asset!;
@@ -86,6 +103,109 @@ const WordingComparison: React.FC<{cue: OverlayCue; plan: RuntimePlan; frame: nu
   </div>;
 };
 
+const HookReveal: React.FC<{cue: OverlayCue; plan: RuntimePlan; frame: number}> = ({cue, plan, frame}) => {
+  const arrive = easeOut(progress(frame, eventFrame(plan, cue.items[0].eventId), 12));
+  const focus = smooth(progress(frame, eventFrame(plan, cue.emphasisEventId!) - 8, 8));
+  return <div style={{marginTop: 40, width: 600, padding: '24px 20px', boxSizing: 'border-box',
+    color: C.ink, backgroundColor: C.accent, borderRadius: 5, fontSize: TYPE.title,
+    clipPath: `inset(0 ${100 * (1 - arrive)}% 0 0)`, transform: `translateX(${16 * (1 - arrive)}px)`,
+    boxShadow: `0 0 0 ${focus * 3}px rgba(242,234,220,.85),0 10px 22px rgba(0,0,0,.18)`}}>{cue.items[0].text}</div>;
+};
+
+export const continuousBusinessPhase = (frame: number, plan: RuntimePlan) => {
+  if (frame < eventFrame(plan, 'strongest-question')) return 'pit';
+  if (frame < eventFrame(plan, 'no-universal')) return 'expectation';
+  if (frame < eventFrame(plan, 'task-0')) return 'negation';
+  if (frame < eventFrame(plan, 'strongest-model')) return 'tasks';
+  if (frame < eventFrame(plan, 'capabilities')) return 'matching';
+  return 'application';
+};
+
+/** 复用10/14同容器转义、原对象缩为标题、旧标签不动及共同工作容器；不重播旧内容。 */
+const ContinuousBusiness: React.FC<{cue: OverlayCue; plan: RuntimePlan; frame: number}> = ({cue, plan, frame}) => {
+  const at = (id: string) => eventFrame(plan, id);
+  const txt = (id: string) => cue.items.find((item) => item.eventId === id)!.text;
+  const phase = continuousBusinessPhase(frame, plan);
+  const question = smooth(progress(frame, at('strongest-question'), 18));
+  const tasks = smooth(progress(frame, at('task-0') - 18, 18));
+  const matching = smooth(progress(frame, at('strongest-model') - 14, 14));
+  const application = smooth(progress(frame, at('capabilities'), 16));
+  const selection = smooth(progress(frame, at('match-business'), 12));
+  const taskIds = ['task-0', 'task-1', 'task-2', 'task-3'];
+  return <div data-upgrade-effect="continuous-business-container" style={{position: 'relative', width: '100%', height: 360,
+    background: 'linear-gradient(135deg,rgba(16,32,42,.94),rgba(29,45,53,.88))', borderRadius: 8,
+    borderBottom: `${mix(3, 8, Math.max(tasks, selection))}px solid ${C.accent}`, boxSizing: 'border-box',
+    boxShadow: '0 14px 32px rgba(0,0,0,.16)', overflow: 'hidden'}}>
+    {['pit', 'expectation'].includes(phase) ? <>
+      <div style={{position: 'absolute', left: 22, top: mix(42, 20, question), fontSize: mix(TYPE.title, TYPE.category, question),
+        color: C.cream}}>{txt('business-pit')}</div>
+      <div style={{position: 'absolute', left: 22, top: 142, fontSize: TYPE.title, color: C.accent,
+        opacity: progress(frame, at('pit-mark'), 6) * (1 - question),
+        transform: `translateY(${-24 * (1 - easeOut(progress(frame, at('pit-mark'), 12)))}px)`}}>{txt('pit-mark')}</div>
+      <div style={{position: 'absolute', left: 22, top: 78, fontSize: TYPE.supporting, color: C.cream, opacity: question}}>{txt('strongest-question')}</div>
+      <div style={{position: 'absolute', left: 22, top: 148, width: 576, padding: '14px 18px', boxSizing: 'border-box',
+        fontSize: TYPE.title, color: C.ink, background: C.cream, borderRadius: 4,
+        opacity: progress(frame, at('universal-expect'), 4),
+        transform: `scaleX(${.9 + .1 * easeOut(progress(frame, at('universal-expect'), 12))})`, transformOrigin: '0 50%'}}>{txt('universal-expect')}</div>
+      <div style={{position: 'absolute', left: 22, top: 270, fontSize: TYPE.category, color: C.muted,
+        opacity: progress(frame, at('universal-result'), 6)}}>{txt('universal-result')}</div>
+    </> : null}
+    {['negation', 'tasks'].includes(phase) ? <div style={{position: 'absolute', left: 22, top: mix(90, 22, tasks),
+      width: 576, fontSize: mix(TYPE.title, TYPE.category, tasks), lineHeight: 1.2, color: C.accent,
+      opacity: progress(frame, at('no-universal'), 8) * (1 - matching)}}>{txt('no-universal')}</div> : null}
+    {['tasks', 'matching'].includes(phase) ? taskIds.map((id, index) => {
+      const enter = easeOut(progress(frame, at(id), 7));
+      return <div key={id} style={{position: 'absolute', left: mix(22 + (index % 2) * 292, 22 + index * 146, matching),
+        top: mix(94 + Math.floor(index / 2) * 106, 20, matching), width: mix(270, 138, matching), height: mix(82, 48, matching),
+        display: 'flex', alignItems: 'center', justifyContent: 'center', boxSizing: 'border-box',
+        backgroundColor: C.cream, color: C.ink, borderLeft: `5px solid ${C.accent}`, borderRadius: 4,
+        fontSize: mix(TYPE.supporting, TYPE.category, matching), opacity: progress(frame, at(id), 3),
+        transform: `skewX(-3deg) scale(${.88 + .12 * enter})`, transformOrigin: '0 50%'}}>{txt(id)}</div>;
+    }) : null}
+    {phase === 'matching' ? <div style={{position: 'absolute', left: 22, top: 104, width: 576, height: 112,
+      boxSizing: 'border-box', padding: '10px 18px', backgroundColor: C.cream, color: C.ink, borderRadius: 4,
+      fontSize: TYPE.supporting, whiteSpace: 'pre-line', lineHeight: 1.1,
+      opacity: progress(frame, at('strongest-model'), 14) * (1 - .26 * selection)}}>{txt('strongest-model')}</div> : null}
+    {['matching', 'application'].includes(phase) ? <div style={{position: 'absolute', left: 22, top: mix(246, 20, application),
+      width: 576, fontSize: mix(TYPE.title, TYPE.category, application), color: C.accent, lineHeight: 1.1,
+      opacity: progress(frame, at('match-business'), 4), padding: '8px 0',
+      borderBottom: `${3 * selection * (1 - application)}px solid ${C.cream}`}}>{txt('match-business')}</div> : null}
+    {phase === 'application' ? <>
+      <div style={{position: 'absolute', left: 22, top: 86, fontSize: TYPE.supporting, color: C.cream,
+        opacity: progress(frame, at('capabilities') + 16, 8)}}>{txt('capabilities')}</div>
+      {['departments', 'people', 'work-step'].map((id, index) => {
+        const enter = easeOut(progress(frame, at(id), 7));
+        return <div key={id} style={{position: 'absolute', left: index === 1 ? 314 : 22, top: index < 2 ? 158 : 250,
+          width: index < 2 ? 270 : 576, height: 72, display: 'flex', alignItems: 'center', justifyContent: 'center',
+          backgroundColor: C.cream, color: C.ink, fontSize: TYPE.supporting, borderRadius: 4,
+          opacity: progress(frame, at(id), 3), transform: `translateY(${20 * (1 - enter)}px)`}}>{txt(id)}</div>;
+      })}
+    </> : null}
+  </div>;
+};
+
+/** 10/14 WordingChoice 的逐字出现与色彩接力；这里只呈现本条说出的两种用途。 */
+const WordingChoice: React.FC<{cue: OverlayCue; plan: RuntimePlan; frame: number}> = ({cue, plan, frame}) => {
+  const selected = smooth(progress(frame, eventFrame(plan, cue.emphasisEventId!) - 12, 12));
+  return <div data-upgrade-effect="wording-choice-adaptation" style={{position: 'relative', height: 350}}>
+    {cue.items.map((item, index) => {
+      const at = eventFrame(plan, item.eventId);
+      const enter = easeOut(progress(frame, at, 8));
+      return <React.Fragment key={item.eventId}>
+        <div style={{position: 'absolute', top: index * 176, left: 0, fontSize: TYPE.category, color: C.cream,
+          opacity: progress(frame, at, 3)}}>{item.label}</div>
+        <div style={{position: 'absolute', left: 0, top: 40 + index * 176, width: 610, height: 104,
+          display: 'flex', alignItems: 'center', justifyContent: 'center', boxSizing: 'border-box', borderRadius: 5,
+          color: C.ink, fontSize: TYPE.title, backgroundColor: index ? C.accent : `rgb(${mix(225, 242, selected)},${mix(185, 234, selected)},${mix(109, 220, selected)})`,
+          opacity: progress(frame, at, 3), transform: `scale(${.97 + .03 * enter})`,
+          outline: index ? `${3 * selected}px solid ${C.cream}` : undefined, boxShadow: '0 10px 24px rgba(0,0,0,.16)'}}>
+          {[...item.text].map((letter, i) => <span key={i} style={{opacity: frame >= at + i * 2 ? 1 : 0}}>{letter}</span>)}
+        </div>
+      </React.Fragment>;
+    })}
+  </div>;
+};
+
 const InformationLayer: React.FC<{cue: OverlayCue; plan: RuntimePlan; frame: number}> = ({cue, plan, frame}) => {
   const avoidance = plan.avoidanceWindows.find((window) => inside(frame, window));
   if (avoidance?.region === null) return null;
@@ -95,19 +215,23 @@ const InformationLayer: React.FC<{cue: OverlayCue; plan: RuntimePlan; frame: num
     fontFamily: `"${DISPLAY}", "PingFang SC", sans-serif`, color: C.white,
     textShadow: '0 2px 8px rgba(0,0,0,.7)'}}>
     {cue.title ? <div style={{fontSize: TYPE.category, lineHeight: 1.2, marginBottom: 18, color: C.cream}}>{cue.title}</div> : null}
-    {cue.kind === 'comparison' ? <WordingComparison cue={cue} plan={plan} frame={frame} /> : <TagStack cue={cue} plan={plan} frame={frame} />}
+    {cue.kind === 'continuous-business' ? <ContinuousBusiness cue={cue} plan={plan} frame={frame} /> :
+      cue.kind === 'hook-reveal' ? <HookReveal cue={cue} plan={plan} frame={frame} /> :
+      cue.kind === 'wording-choice' ? <WordingChoice cue={cue} plan={plan} frame={frame} /> :
+      cue.kind === 'comparison' ? <WordingComparison cue={cue} plan={plan} frame={frame} /> : <TagStack cue={cue} plan={plan} frame={frame} />}
   </div>;
 };
 
-const MediaStage: React.FC<{slot: MediaSlot; plan: RuntimePlan; frame: number}> = ({slot, plan, frame}) => {
+const MediaStage: React.FC<{slot: MediaSlot; plan: RuntimePlan; frame: number; presentationWindow: FrameWindow}> = ({slot, plan, frame, presentationWindow}) => {
   if (slot.state !== 'ready' || !slot.window || !slot.asset) return null;
   const media = slot.asset;
   const duration = slot.window.to - slot.window.from;
   const sourceIn = Math.round(media.sourceInFrame / media.sourceFps * plan.fps);
   if (slot.kind === 'paper') return <AbsoluteFill style={{backgroundColor: '#17272f'}}>
     <Sequence from={slot.window.from} durationInFrames={duration} premountFor={30}>
-      <div style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 870,
-        opacity: opacity(frame, slot.window, 5)}}>
+      <div style={{position: 'absolute', left: MEDIA_LAYOUT.paper.x, top: MEDIA_LAYOUT.paper.y,
+        width: MEDIA_LAYOUT.paper.width, height: MEDIA_LAYOUT.paper.height,
+        opacity: opacity(frame, presentationWindow, 5)}}>
         {media.type === 'image' ? <Img src={asset(media.src, plan)} style={{width: '100%', height: '100%', objectFit: 'contain'}} /> :
           <OffthreadVideo src={asset(media.src, plan)} muted playbackRate={1} trimBefore={sourceIn} trimAfter={sourceIn + duration}
             style={{width: '100%', height: '100%', objectFit: 'contain'}} onError={mediaError(media.src)} />}
@@ -127,7 +251,7 @@ const MediaStage: React.FC<{slot: MediaSlot; plan: RuntimePlan; frame: number}> 
       fontSize: 24, lineHeight: 1.35, overflowWrap: 'break-word'}}>{slot.sourceLabel}</div>
     <Sequence from={slot.window.from} durationInFrames={duration} premountFor={30}>
       <div style={{position: 'absolute', left: 520, top: 90, width: 1344, height: 756, overflow: 'hidden',
-        opacity: opacity(frame, slot.window, 5), borderRadius: 4, boxShadow: '0 12px 28px rgba(30,39,42,.17)', backgroundColor: '#f8f4ed'}}>
+        opacity: opacity(frame, presentationWindow, 5), borderRadius: 4, boxShadow: '0 12px 28px rgba(30,39,42,.17)', backgroundColor: '#f8f4ed'}}>
         {media.type === 'image' ? <EvidenceImage slot={slot} plan={plan} /> :
           <OffthreadVideo src={asset(media.src, plan)} muted playbackRate={1} trimBefore={sourceIn} trimAfter={sourceIn + duration}
             style={{width: '100%', height: '100%', objectFit: 'contain'}} onError={mediaError(media.src)} />}
@@ -162,18 +286,18 @@ export const MuskGrokBusinessAi: React.FC<EpisodeProps> = ({plan, withSfx, mode}
   }, [plan.fonts.displaySrc, plan.fonts.captionSrc, plan.assetPrefix]);
   // pending 只留同一条真人底片；不给观众显示槽位、生产编号或“待补”标签。
   const activeMedia = plan.mediaSlots.find((slot) => slot.state === 'ready' && slot.window && inside(frame, slot.window));
-  const mediaWindow = activeMedia?.window;
-  const paperOpacity = activeMedia?.kind === 'paper' && mediaWindow ? opacity(frame, mediaWindow, 5) : 0;
-  const m = mediaWindow ? smooth(Math.min(progress(frame, mediaWindow.from, 8), 1 - progress(frame, mediaWindow.to - 8, 8))) : 0;
+  const presenterWindows = useMemo(() => mergePresenterWindows(plan.mediaSlots), [plan.mediaSlots]);
+  const mediaWindow = presenterWindows.find((window) => inside(frame, window));
+  const m = presenterMix(frame, mediaWindow);
   const camera = plan.cameraWindows.find((window) => inside(frame, window));
-  const zoom = camera ? 1 + (camera.peakScale - 1) * Math.sin(Math.PI * progress(frame, camera.from, camera.to - camera.from)) ** 2 : 1;
+  const zoom = mix(cameraScale(frame, camera), 1, m);
   const caption = plan.captions.find((item) => inside(frame, item));
   return <AbsoluteFill translate="no" className="notranslate" style={{backgroundColor: '#17272f', overflow: 'hidden'}}>
-    {activeMedia ? <MediaStage slot={activeMedia} plan={plan} frame={frame} /> : null}
-    <div data-presenter="continuous-original-source" style={{position: 'absolute', left: activeMedia?.kind === 'paper' ? 0 : mix(0, 64, m),
-      top: activeMedia?.kind === 'paper' ? 0 : mix(0, 620, m),
-      width: mix(1920, 400, activeMedia?.kind === 'paper' ? 0 : m), height: mix(1080, 225, activeMedia?.kind === 'paper' ? 0 : m),
-      opacity: 1 - paperOpacity, borderRadius: 10 * m, overflow: 'hidden',
+    {activeMedia && mediaWindow ? <MediaStage slot={activeMedia} plan={plan} frame={frame} presentationWindow={mediaWindow} /> : null}
+    <div data-presenter="continuous-original-source" style={{position: 'absolute', left: mix(0, MEDIA_LAYOUT.presenter.x, m),
+      top: mix(0, MEDIA_LAYOUT.presenter.y, m),
+      width: mix(1920, MEDIA_LAYOUT.presenter.width, m), height: mix(1080, MEDIA_LAYOUT.presenter.height, m),
+      opacity: 1, borderRadius: 10 * m, overflow: 'hidden',
       boxShadow: m ? '0 10px 28px rgba(20,28,32,.2)' : undefined}}>
       <div style={{position: 'absolute', inset: 0, transform: `scale(${zoom})`, transformOrigin: '62% 44%'}}>
         <OffthreadVideo src={asset(plan.host.src, plan)} muted playbackRate={1} trimBefore={plan.host.trimBeforeFrame}

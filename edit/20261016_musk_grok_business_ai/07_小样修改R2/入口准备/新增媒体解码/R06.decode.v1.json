@@ -1,0 +1,56 @@
+{
+  "source": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R06-car-r2.mp4",
+    "sha256": "cc13e58e04b0fe38355f7ff6d303988d5251c1e97aa1d927402b3764cd713d01"
+  },
+  "command": [
+    "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-xerror",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R06-car-r2.mp4",
+    "-map",
+    "0:v:0",
+    "-map",
+    "0:a?",
+    "-f",
+    "null",
+    "-"
+  ],
+  "exitCode": 0,
+  "fullDecode": true,
+  "decodedImageFrame": false,
+  "tool": {
+    "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "sha256": "329fa7360b28a067a0cd7281474bb18cd868932d5173646a674466bcb56d6e93"
+  },
+  "checkedAt": "2026-10-16T12:08:48.025479+00:00",
+  "probe": {
+    "command": [
+      "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+      "-v",
+      "error",
+      "-show_streams",
+      "-show_format",
+      "-of",
+      "json",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R06-car-r2.mp4"
+    ],
+    "exitCode": 0,
+    "tool": {
+      "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+      "sha256": "841ab2259a55e5c5e44c5851890867d48750ff1e7cfa92b5fbed91445a493128"
+    }
+  },
+  "media": {
+    "type": "video",
+    "fps": 30.0,
+    "durationSeconds": 5.866667,
+    "width": 1920,
+    "height": 1080
+  },
+  "humanListeningPerformed": false,
+  "reviewAccepted": false
+}

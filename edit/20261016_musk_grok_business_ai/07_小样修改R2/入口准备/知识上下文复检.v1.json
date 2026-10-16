@@ -1,0 +1,48 @@
+{
+  "schema_version": "opc-task-context-validation/1.0",
+  "status": "context-valid",
+  "summary": "任务上下文、索引代际和必读文件哈希仍然有效",
+  "context_path": "/Users/pc/Documents/个人知识库/.opc-rag/tasks/task-20261016T122000Z-musk-grok-r2/context.json",
+  "task": {
+    "id": "task-20261016T122000Z-musk-grok-r2",
+    "project": "口播",
+    "objective": "本期V9内部小样R2：汽车主画面左下真人、用户MJ附件、两纸艺平滑真人小窗及V9连续语义和可感知运镜修订；原声字幕不变，4疑词和事实待决，正式验收发布保持false",
+    "cwd": "/Users/pc/Documents/口播",
+    "important": true,
+    "external_action": false
+  },
+  "project_route": {
+    "project_id": "koubo",
+    "project_root": "/Users/pc/Documents/口播",
+    "match_status": "matched",
+    "execution_scope": {
+      "primary_project_id": "koubo",
+      "primary_project_root": "/Users/pc/Documents/口播",
+      "primary_access_mode": "task-scoped-read-write",
+      "write_allowed_roots": [
+        "/Users/pc/Documents/口播"
+      ],
+      "read_only_roots": [],
+      "related_project_rule": "关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。",
+      "write_escalation_rule": "确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。"
+    }
+  },
+  "index_generation": {
+    "manifest_sha256": "c37f9c8b14cbc632f8a3001ec6cc5695fa112a16da26f06a8c0241626ad052a2",
+    "config_sha256": "7d80e391da915c1f4363776317039cad5b742609403f0a671c1ffb0fbc4e500d",
+    "embedding_model": "nomic-embed-text:latest",
+    "indexed_at": "2026-10-16T12:17:59.104669+00:00",
+    "database_sha256": "e7f6cb584bb45492cb561263123b49dbf50507e45355db91868c80ced60a57ce",
+    "id": "aef280bfb695e0df30c2cadd1a3d550d0bba47fa3424c2916f3c7ccdbf1e157e"
+  },
+  "problems": [],
+  "gate": {
+    "formal_execution_allowed": true
+  },
+  "next_actions": [
+    "继续执行项目自身的质量、安全和人工验收门禁"
+  ],
+  "artifacts": [
+    "/Users/pc/Documents/个人知识库/.opc-rag/tasks/task-20261016T122000Z-musk-grok-r2/context.json"
+  ]
+}

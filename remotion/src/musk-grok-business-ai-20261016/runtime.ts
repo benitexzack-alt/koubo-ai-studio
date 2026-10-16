@@ -1,6 +1,6 @@
 import {staticFile} from 'remotion';
 import productionProfile from './production-profile.snapshot.json';
-import type {FrameWindow, Rect, RenderMode, RuntimePlan} from './types';
+import type {CameraWindow, FrameWindow, Rect, RenderMode, RuntimePlan} from './types';
 
 const cards = productionProfile.nextEpisodeDefaults.wordCards;
 export const TYPE = {
@@ -16,6 +16,16 @@ export const easeOut = (value: number) => 1 - (1 - value) ** 4;
 export const smooth = (value: number) => value * value * (3 - 2 * value);
 export const mix = (a: number, b: number, value: number) => a + (b - a) * value;
 export const opacity = (frame: number, window: FrameWindow, fade = 6) => Math.min(progress(frame, window.from, fade), 1 - progress(frame, window.to - fade, fade));
+export const cameraScale = (frame: number, window?: CameraWindow) => {
+  if (!window || !inside(frame, window)) return 1;
+  if (window.motion !== 'push-hold') return 1 + (window.peakScale - 1) * Math.sin(Math.PI * progress(frame, window.from, window.to - window.from)) ** 2;
+  const settle = window.settleFrame!;
+  const midpoint = window.from + (settle - window.from) / 2;
+  const middleScale = Math.min(1.04, window.peakScale);
+  const pushed = frame < midpoint ? mix(1, middleScale, smooth(progress(frame, window.from, midpoint - window.from)))
+    : mix(middleScale, window.peakScale, smooth(progress(frame, midpoint, settle - midpoint)));
+  return mix(pushed, 1, smooth(progress(frame, window.to - window.releaseFrames!, window.releaseFrames!)));
+};
 
 const requireValue: (condition: unknown, message: string) => asserts condition = (condition, message) => {
   if (!condition) throw new Error(`本期数据未就绪：${message}`);
@@ -66,9 +76,15 @@ export const validateRuntimePlan = (plan: RuntimePlan, mode: RenderMode) => {
   }
   for (const cue of plan.overlays) {
     assertWindow(cue, 5035, `信息层${cue.id}`); assertRect(cue.region ?? DEFAULT_REGION);
-    requireValue(cue.items.length > 0 && cue.items.length <= 4 && (cue.kind !== 'comparison' || cue.items.length === 2), `信息层${cue.id}对象数量不适合当前布局`);
+    requireValue(cue.items.length > 0 && cue.items.length <= (cue.kind === 'continuous-business' ? 16 : 4) &&
+      (!['comparison', 'wording-choice'].includes(cue.kind) || cue.items.length === 2), `信息层${cue.id}对象数量不适合当前布局`);
     for (const item of cue.items) requireValue(item.text.trim() && inside(eventFrame(plan, item.eventId), cue), `信息层${cue.id}事件须在本条帧窗内`);
     if (cue.emphasisEventId) requireValue(inside(eventFrame(plan, cue.emphasisEventId), cue), `信息层${cue.id}强调点越界`);
+    if (cue.kind === 'continuous-business') requireValue(['business-pit', 'pit-mark', 'strongest-question', 'universal-expect',
+      'universal-result', 'no-universal', 'task-0', 'task-1', 'task-2', 'task-3', 'strongest-model', 'match-business',
+      'capabilities', 'departments', 'people', 'work-step'].every(id => cue.items.some(item => item.eventId === id)), '本期连续业务容器缺少实录阶段');
+    if (cue.kind === 'hook-reveal' || cue.kind === 'wording-choice') requireValue(cue.emphasisEventId &&
+      (cue.kind !== 'hook-reveal' || cue.items.length === 1), '短揭示或文字对照缺少落定点');
   }
   const slots = plan.mediaSlots.filter((slot) => slot.window !== null).sort((a, b) => a.window!.from - b.window!.from);
   for (const [index, slot] of slots.entries()) {
@@ -107,6 +123,9 @@ export const validateRuntimePlan = (plan: RuntimePlan, mode: RenderMode) => {
   requireValue(plan.cameraWindows.length > 0, '待按实录填写电子运镜窗口');
   for (const window of plan.cameraWindows) {
     assertWindow(window, 5035, '电子运镜'); requireValue(window.peakScale > 1 && window.peakScale <= 1.08, '电子运镜须可感知且保持温和');
+    requireValue(window.motion === undefined || window.motion === 'push-hold', '本期运镜方式无效');
+    if (window.motion === 'push-hold') requireValue(Number.isInteger(window.settleFrame) && Number.isInteger(window.releaseFrames) &&
+      window.releaseFrames! >= 8 && window.settleFrame! > window.from && window.settleFrame! < window.to - window.releaseFrames!, '推近停稳运镜缺少有效落定/回归窗');
   }
   const sounds = plan.sfx.map((cue) => {
     asset(cue.src, plan);

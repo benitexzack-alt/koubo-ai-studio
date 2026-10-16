@@ -15,6 +15,8 @@ assert.deepEqual(buildControlledRemotionRenderArgsV2(base), plain); passed++;
 assert.deepEqual(buildControlledRemotionRenderArgsV2({...base, renderContext: {mode: 'formal'}}), plain); passed++;
 const actual = buildControlledRemotionRenderArgsV2({...base, previewRenderSettings: settings, renderContext: context});
 assert.deepEqual(actual, [...plain, '--concurrency=1', '--timeout=120000', '--scale=0.6666666666666666']); passed++;
+const r2Context = {...context, revisionId: 'musk-grok-business-ai-v9-preview-r2-20261016'};
+assert.deepEqual(buildControlledRemotionRenderArgsV2({...base, previewRenderSettings: settings, renderContext: r2Context}), actual); passed++;
 assert.equal(context.width * settings.scale, 1280); assert.equal(context.height * settings.scale, 720);
 assert.equal(Math.round(context.durationSeconds * context.fps), 5035);
 assert.equal(actual.some(arg => /^--(?:frames|fps|duration|props)(?:=|$)/u.test(arg)), false); passed++;
@@ -33,6 +35,12 @@ for (const invalid of [null, ' --concurrency=1 ', [], {}, {...settings, concurre
 }
 assert.throws(() => buildControlledRemotionRenderArgsV2({...base, previewRenderSettings: settings}),
   error => error.code === 'RRPV2_PREVIEW_SETTINGS_SCOPE_INVALID'); passed++;
+for (const [key, value] of Object.entries({mode: 'formal', command: 'direct-remotion-render',
+  revisionId: 'musk-grok-business-ai-v9-preview-r3-20261016', jobId: 'another-job', episodeId: 'another-episode'})) {
+  assert.throws(() => buildControlledRemotionRenderArgsV2({...base, previewRenderSettings: settings,
+    renderContext: {...r2Context, [key]: value}}), error => error.code === 'RRPV2_PREVIEW_SETTINGS_SCOPE_INVALID', `R2 ${key}`);
+  passed++;
+}
 console.log(JSON.stringify({ok: true, passed, defaultArgsUnchanged: true, formalSettingsRejected: true,
   previewDimensions: [1280, 720], logicalDimensions: [1920, 1080], fps: 30, durationInFrames: 5035,
   productionRenderInvoked: false}));

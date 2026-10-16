@@ -1,0 +1,171 @@
+{
+  "old": {
+    "id": "R08",
+    "kind": "real-evidence",
+    "runtimeWindow": {
+      "from": 905,
+      "to": 1083
+    },
+    "source": {
+      "path": "edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+      "sha256": "1614633308a6904a17e764f35d738c92c8df486e3eefac5ced6f16407e6accd1"
+    },
+    "sourceWindow": {
+      "fromFrame": 720,
+      "fps": "24000/1001",
+      "fromSeconds": 30.03,
+      "toSeconds": 35.96333333333334
+    },
+    "renderAsset": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R08-car-r2.mp4",
+      "sha256": "796c413880d81dd0332f74481828baaf54b9065c7296be1d15128156fc8c8a24"
+    },
+    "nativeAudio": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R08-native-r2.m4a",
+      "sha256": "61fbf2739ca30eeeba1ffffeac0c18bf46a0dfb07fa2d891c496253e26c1d808",
+      "gain": 0.07
+    },
+    "command": [
+      "ffmpeg",
+      "-v",
+      "error",
+      "-nostdin",
+      "-n",
+      "-ss",
+      "30.03",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+      "-t",
+      "5.933333333333334",
+      "-map",
+      "0:v:0",
+      "-map",
+      "0:a:0",
+      "-vf",
+      "scale=1920:1080:flags=lanczos,fps=30",
+      "-frames:v",
+      "178",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "fast",
+      "-crf",
+      "18",
+      "-pix_fmt",
+      "yuv420p",
+      "-c:a",
+      "aac",
+      "-b:a",
+      "192k",
+      "-ar",
+      "48000",
+      "-movflags",
+      "+faststart",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R08-car-r2.mp4"
+    ],
+    "exitCode": 0,
+    "audioExtractionCommand": [
+      "ffmpeg",
+      "-v",
+      "error",
+      "-nostdin",
+      "-n",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R08-car-r2.mp4",
+      "-map",
+      "0:a:0",
+      "-c:a",
+      "copy",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R08-native-r2.m4a"
+    ],
+    "purpose": "场地行驶及坡面宽景",
+    "sourceUrl": "https://x.com/Tesla/status/2110913252045545472",
+    "evidenceScope": "官方宣传画面的视觉背景；不由画面证明A71名称、底盘机构、任意墙面吸附或1.7秒/483公里/370公里参数",
+    "humanAccepted": false
+  },
+  "new": {
+    "id": "R08",
+    "kind": "real-evidence",
+    "runtimeWindow": {
+      "from": 905,
+      "to": 1083
+    },
+    "source": {
+      "path": "edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+      "sha256": "1614633308a6904a17e764f35d738c92c8df486e3eefac5ced6f16407e6accd1"
+    },
+    "sourceWindow": {
+      "fromFrame": 744,
+      "fps": "24000/1001",
+      "fromSeconds": 31.031,
+      "toSeconds": 36.96433333333333
+    },
+    "renderAsset": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R08-car-r2b.mp4",
+      "sha256": "baea9863130db63d6229e6400636174598d3e9d3cff41c49cab3a6c44d43e7c0"
+    },
+    "nativeAudio": {
+      "path": "edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R08-native-r2b.m4a",
+      "sha256": "503d757a44a92b9d528154ef98151cd0df8c26e96c7f3eb352139079080ce8d3",
+      "gain": 0.07
+    },
+    "command": [
+      "ffmpeg",
+      "-v",
+      "error",
+      "-nostdin",
+      "-n",
+      "-ss",
+      "31.031",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+      "-t",
+      "5.933333333333334",
+      "-map",
+      "0:v:0",
+      "-map",
+      "0:a:0",
+      "-vf",
+      "scale=1920:1080:flags=lanczos,fps=30",
+      "-frames:v",
+      "178",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "fast",
+      "-crf",
+      "18",
+      "-pix_fmt",
+      "yuv420p",
+      "-c:a",
+      "aac",
+      "-b:a",
+      "192k",
+      "-ar",
+      "48000",
+      "-movflags",
+      "+faststart",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R08-car-r2b.mp4"
+    ],
+    "exitCode": 0,
+    "audioExtractionCommand": [
+      "ffmpeg",
+      "-v",
+      "error",
+      "-nostdin",
+      "-n",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/evidence/R08-car-r2b.mp4",
+      "-map",
+      "0:a:0",
+      "-c:a",
+      "copy",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R08-native-r2b.m4a"
+    ],
+    "purpose": "高位全景坡面演示；前景车辆停驻，不声明巡航或测速",
+    "sourceUrl": "https://x.com/Tesla/status/2110913252045545472",
+    "evidenceScope": "官方宣传画面的视觉背景；不由画面证明A71名称、底盘机构、任意墙面吸附或1.7秒/483公里/370公里参数",
+    "humanAccepted": false
+  },
+  "sourceUnchanged": true
+}

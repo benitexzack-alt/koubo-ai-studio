@@ -1,0 +1,52 @@
+{
+  "source": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R07-native-r2.m4a",
+    "sha256": "bd18351992bce6c4ea997ac19147a3d678b1f1fb7e73783ea892f41c9892cc77"
+  },
+  "command": [
+    "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-xerror",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R07-native-r2.m4a",
+    "-map",
+    "0:a:0",
+    "-f",
+    "null",
+    "-"
+  ],
+  "exitCode": 0,
+  "fullDecode": true,
+  "decodedImageFrame": false,
+  "tool": {
+    "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "sha256": "329fa7360b28a067a0cd7281474bb18cd868932d5173646a674466bcb56d6e93"
+  },
+  "checkedAt": "2026-10-16T12:08:48.311214+00:00",
+  "probe": {
+    "command": [
+      "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+      "-v",
+      "error",
+      "-show_streams",
+      "-show_format",
+      "-of",
+      "json",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/audio/R07-native-r2.m4a"
+    ],
+    "exitCode": 0,
+    "tool": {
+      "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffprobe",
+      "sha256": "841ab2259a55e5c5e44c5851890867d48750ff1e7cfa92b5fbed91445a493128"
+    }
+  },
+  "media": {
+    "type": "audio",
+    "fps": null,
+    "durationSeconds": 4.3
+  },
+  "humanListeningPerformed": false,
+  "reviewAccepted": false
+}

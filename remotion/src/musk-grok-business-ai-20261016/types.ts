@@ -20,14 +20,15 @@ export type VisualEvent = {
 
 export type OverlayCue = FrameWindow & {
   id: string;
-  kind: 'comparison' | 'tags' | 'cta';
+  kind: 'comparison' | 'tags' | 'cta' | 'hook-reveal' | 'continuous-business' | 'wording-choice';
   /** 必须来自本期实录；组件不预写观点或模型排名。 */
   title?: string;
-  items: Array<{text: string; eventId: string}>;
+  items: Array<{text: string; eventId: string; label?: string}>;
   /** comparison 两项都出现后，才强调第二项。 */
   emphasisEventId?: string;
   region?: Rect;
 };
+export type CameraWindow = FrameWindow & {peakScale: number; motion?: 'push-hold'; settleFrame?: number; releaseFrames?: number};
 
 export type MediaAsset = {
   type: 'image' | 'video';
@@ -93,7 +94,7 @@ export type RuntimePlan = {
   /** 默认为左上候选区；手势经过时指定替代区域，null 表示暂时隐藏信息层。 */
   avoidanceWindows: Array<FrameWindow & {region: Rect | null; reason: string}>;
   /** 仅变换真人空间，不改变真人播放速度。 */
-  cameraWindows: Array<FrameWindow & {peakScale: number}>;
+  cameraWindows: CameraWindow[];
   sfx: SfxCue[];
   review: {
     captions: ReviewStatus;

@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "internal-preview-timing-derivative/v1",
+  "parent": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/预览与质检/内部审阅候选_R2_有音效.mp4",
+    "sha256": "7f32906dae48a20ff0d912d80dfddb66a748ae2b1511242bff8d197047ee6c1f",
+    "controlledReceipt": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/预览与质检/.内部审阅候选_R2_有音效.mp4.production-receipt.491f55d8-4afb-441b-bada-05e6930c3432.json",
+    "controlledReceiptSha256": "e334e5c8af13aad0fd213603edb304b774629392816a07264addc1e2933b70f3",
+    "outputClaim": {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/预览与质检/.内部审阅候选_R2_有音效.mp4.render-claim.eba3b7e6-3fb3-4377-9d76-bc15914882a0.json",
+      "sha256": "6ec55420f412f6c8900ebc673eba451b2a3d760afff667632806d41a05fe824b"
+    }
+  },
+  "output": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/预览与质检/飞车与企业AI_V9小样_R2_有音效.mp4",
+    "sha256": "4df6897ad15ae1b44e52fb06dd3ab9cfe13928fc92daa2d66f83bac863328551"
+  },
+  "audioOffsetSeconds": -0.042666666666666665,
+  "command": [
+    "ffmpeg",
+    "-v",
+    "error",
+    "-nostdin",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/预览与质检/内部审阅候选_R2_有音效.mp4",
+    "-itsoffset",
+    "-0.042666666666666665",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/预览与质检/内部审阅候选_R2_有音效.mp4",
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-c",
+    "copy",
+    "-avoid_negative_ts",
+    "disabled",
+    "-use_editlist",
+    "1",
+    "-movflags",
+    "+faststart",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/预览与质检/飞车与企业AI_V9小样_R2_有音效.mp4"
+  ],
+  "commandExitCode": 0,
+  "parentMeasuredWindows": [
+    {
+      "startSeconds": 14,
+      "endSeconds": 17,
+      "lagSamples16k": 683,
+      "lagMs": 42.6875,
+      "alignedCorrelation": 0.9908844487442412
+    },
+    {
+      "startSeconds": 36.8,
+      "endSeconds": 39.8,
+      "lagSamples16k": 683,
+      "lagMs": 42.6875,
+      "alignedCorrelation": 0.9948677399282158
+    },
+    {
+      "startSeconds": 80,
+      "endSeconds": 82,
+      "lagSamples16k": 683,
+      "lagMs": 42.6875,
+      "alignedCorrelation": 0.9951447904166054
+    },
+    {
+      "startSeconds": 137.7,
+      "endSeconds": 140,
+      "lagSamples16k": 683,
+      "lagMs": 42.6875,
+      "alignedCorrelation": 0.9981109217447871
+    },
+    {
+      "startSeconds": 165,
+      "endSeconds": 167.8,
+      "lagSamples16k": 683,
+      "lagMs": 42.6875,
+      "alignedCorrelation": 0.9928044529317869
+    }
+  ],
+  "controlledDirectOutput": false,
+  "formalRelease": false,
+  "userAccepted": false,
+  "publicationAuthorized": false,
+  "scope": "内部观看副本；受控父片保留；编码包一致性与校时结果须由check-viewing-copy.py实际验证",
+  "pass": true,
+  "tool": {
+    "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "sha256": "329fa7360b28a067a0cd7281474bb18cd868932d5173646a674466bcb56d6e93"
+  },
+  "fullDecodeVoiceWindows": [
+    {
+      "startSeconds": 14,
+      "endSeconds": 17,
+      "lagMs": 0.0,
+      "sameTimestampCorrelation": 0.9975868397640605,
+      "rmsGain": 0.9942342597601649
+    },
+    {
+      "startSeconds": 36.8,
+      "endSeconds": 39.8,
+      "lagMs": 0.0,
+      "sameTimestampCorrelation": 0.9990841162864834,
+      "rmsGain": 0.9967370610886405
+    },
+    {
+      "startSeconds": 80,
+      "endSeconds": 82,
+      "lagMs": 0.0,
+      "sameTimestampCorrelation": 0.998454226771149,
+      "rmsGain": 0.997151889278241
+    },
+    {
+      "startSeconds": 137.7,
+      "endSeconds": 140,
+      "lagMs": 0.0,
+      "sameTimestampCorrelation": 0.999713637271109,
+      "rmsGain": 0.9970980088334865
+    },
+    {
+      "startSeconds": 165,
+      "endSeconds": 167.8,
+      "lagMs": 0.0,
+      "sameTimestampCorrelation": 0.9986218162508254,
+      "rmsGain": 0.9962790860536701
+    }
+  ],
+  "packetChecks": [
+    {
+      "stream": "v:0",
+      "parentCount": 5035,
+      "viewingCount": 5035,
+      "allPacketDataIdentical": true,
+      "ptsOffsetSecondsRange": [
+        0.0,
+        0.0
+      ],
+      "dtsOffsetSecondsRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stream": "a:0",
+      "parentCount": 7870,
+      "viewingCount": 7870,
+      "allPacketDataIdentical": true,
+      "ptsOffsetSecondsRange": [
+        -0.042667,
+        -0.042666
+      ],
+      "dtsOffsetSecondsRange": [
+        -0.04266700000002288,
+        -0.042665999999996984
+      ]
+    }
+  ]
+}

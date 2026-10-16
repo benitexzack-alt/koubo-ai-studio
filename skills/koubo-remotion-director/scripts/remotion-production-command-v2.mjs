@@ -10,7 +10,7 @@ const previewSettingsArgs = (settings, context) => {
       context?.preflightRoute !== 'musk-grok-current-chat-review' ||
       context?.episodeId !== 'musk-grok-business-ai-20261016' ||
       context?.jobId !== '20261016_musk_grok_business_ai_v9_candidate' ||
-      context?.revisionId !== 'musk-grok-business-ai-v9-preview-r1-20261016' ||
+      !['musk-grok-business-ai-v9-preview-r1-20261016', 'musk-grok-business-ai-v9-preview-r2-20261016'].includes(context?.revisionId) ||
       context?.inputFormat !== 'director-cues-v2-surface-bound' ||
       context?.width !== 1920 || context?.height !== 1080 || context?.fps !== 30 ||
       context?.durationSeconds !== 5035 / 30) reject('RRPV2_PREVIEW_SETTINGS_SCOPE_INVALID');

@@ -1,0 +1,209 @@
+{
+  "status": "限定视觉复核完成，发现一处转场交叠待审；用户验收仍false",
+  "video": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/预览与质检/内部审阅候选_R2_有音效.mp4",
+  "videoSha256": "7f32906dae48a20ff0d912d80dfddb66a748ae2b1511242bff8d197047ee6c1f",
+  "scope": [
+    "开场短揭示",
+    "75.633–123.133秒同容器六阶段",
+    "141.833–147.567秒玩具工具对照",
+    "指定文字衔接",
+    "七段数字推近固定背景同源对照"
+  ],
+  "outOfScope": [
+    "汽车/MJ/纸艺布局由另一代理负责",
+    "完整正常速度观看",
+    "听审",
+    "正式发布审核"
+  ],
+  "observedFindings": [
+    "开场2.0与4.967秒可见能够飞的车揭示条。",
+    "同一左侧深色容器依次呈现企业问题、万能期待、完整否定句、任务累积、按需匹配、部门/个人/真实工作；所见稳定态内容可读。",
+    "没有哪一个AI是万能的与不是买一套号称最强的模型均保留完整否定意义；未见稳定态文字截断或压字幕。",
+    "任务标签转场有已记录卡片交叠，因此不能称全文字无遮挡。",
+    "玩具工具对照先出未来玩具，再出降本增效工具；4343/4400帧工具强调、玩具转中性色；4427帧已退出。",
+    "实际所见容器没有在这些阶段边界整块消失后另起；这仅覆盖选取的边界和状态帧。"
+  ],
+  "issues": [
+    {
+      "id": "R2-VIS-01",
+      "state": "局部观感待用户审阅，未登记通过",
+      "transitionFrameRange": [
+        3211,
+        3225
+      ],
+      "transitionSeconds": [
+        107.03333333333333,
+        107.5
+      ],
+      "transitionDurationSeconds": 0.4666666666666667,
+      "observedOcclusionFrames": [
+        3218,
+        3221
+      ],
+      "observedOcclusionSeconds": [
+        107.26666666666667,
+        107.36666666666666
+      ],
+      "description": "四个任务标签由2×2收拢为一行过程中，复杂推理卡横越写代码卡；3221帧可见写代码部分字被遮。稳定态3224/3225帧四词重新清楚。",
+      "evidence": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/动效复核/R2实片/对象重排中途_局部十帧.jpg",
+      "limit": "仅确认所见帧发生遮挡，不把整个14帧运动窗说成持续遮挡时长；未验证正常速度影响。",
+      "decisionFromParent": "主代理已实际看图：作为本轮内部小样局部观感待审记录，不追加全片重渲染；这不等于遮挡视觉通过或用户验收。"
+    }
+  ],
+  "cameraValidation": {
+    "method": "对同一帧原渲染代理与真实R2画面固定车顶ROI做0.001步长几何缩放拟合；归一化亮度相关，不使用人脸尺寸；未生成或修改视频",
+    "sampledFramesPerWindow": "起点、到位、保持末段；每段3个相同源帧",
+    "observedSourceToR2Fit": [
+      {
+        "window": 1,
+        "peakScale": 1.07,
+        "fittedScales": [
+          1.0,
+          1.07,
+          1.07
+        ],
+        "frames": [
+          0,
+          90,
+          143
+        ],
+        "correlations": [
+          0.9979454982945136,
+          0.9966037136150399,
+          0.9965800622345431
+        ]
+      },
+      {
+        "window": 2,
+        "peakScale": 1.08,
+        "fittedScales": [
+          1.0,
+          1.08,
+          1.08
+        ],
+        "frames": [
+          1205,
+          1300,
+          1370
+        ],
+        "correlations": [
+          0.9973685249449645,
+          0.9959728938040417,
+          0.9960848619482294
+        ]
+      },
+      {
+        "window": 3,
+        "peakScale": 1.07,
+        "fittedScales": [
+          1.0,
+          1.07,
+          1.07
+        ],
+        "frames": [
+          2269,
+          2370,
+          2674
+        ],
+        "correlations": [
+          0.9969495389316231,
+          0.9957885055868574,
+          0.9960291857648115
+        ]
+      },
+      {
+        "window": 4,
+        "peakScale": 1.07,
+        "fittedScales": [
+          1.0,
+          1.07,
+          1.07
+        ],
+        "frames": [
+          2713,
+          2811,
+          3146
+        ],
+        "correlations": [
+          0.997371991775408,
+          0.9960263300606055,
+          0.9955846524126158
+        ]
+      },
+      {
+        "window": 5,
+        "peakScale": 1.07,
+        "fittedScales": [
+          1.0,
+          1.07,
+          1.07
+        ],
+        "frames": [
+          3165,
+          3267,
+          3675
+        ],
+        "correlations": [
+          0.9972511940947155,
+          0.9955195588671351,
+          0.9959291041815234
+        ]
+      },
+      {
+        "window": 6,
+        "peakScale": 1.07,
+        "fittedScales": [
+          1.0,
+          1.07,
+          1.07
+        ],
+        "frames": [
+          4129,
+          4311,
+          4408
+        ],
+        "correlations": [
+          0.9967767937528941,
+          0.9955688624437553,
+          0.9956876000285101
+        ]
+      },
+      {
+        "window": 7,
+        "peakScale": 1.08,
+        "fittedScales": [
+          1.0,
+          1.08,
+          1.08
+        ],
+        "frames": [
+          4702,
+          4810,
+          5016
+        ],
+        "correlations": [
+          0.9970446928584882,
+          0.9956603520869968,
+          0.9954835333117001
+        ]
+      }
+    ],
+    "conclusion": "七段实际图像均拟合为起点1.000，到位与保持末段1.070或1.080；拟合相关最小0.9955。车顶固定边缘目视可见相应移动，来源是画面几何缩放，未用人脸前倾作为证据。",
+    "limit": "证明这些采样帧存在推近并保持；未证明每一帧平滑、正常速度感知强度或全片人审。"
+  },
+  "evidenceSheets": [
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/动效复核/R2实片/六阶段与对照_1.jpg",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/动效复核/R2实片/六阶段与对照_2.jpg",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/动效复核/R2实片/文本衔接_1.jpg",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/动效复核/R2实片/文本衔接_2.jpg",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/动效复核/R2实片/对象重排中途_局部十帧.jpg",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/动效复核/R2实片/七段运镜_同源车顶对照_1.jpg",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/07_小样修改R2/动效复核/R2实片/七段运镜_同源车顶对照_2.jpg"
+  ],
+  "actualReview": "上述七张联系表均已实际view_image；同源起点数值另由图像拟合检查。",
+  "frameExtraction": "R2共64张指定帧、同源真人21张；仅抽帧与图像拟合，无额外全解码QA，无组件/runtime/音频修改。",
+  "userVisualAccepted": false,
+  "fullWatchCompleted": false,
+  "audioAccepted": false,
+  "formalApproved": false
+}

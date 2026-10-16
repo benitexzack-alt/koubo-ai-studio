@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "episode-r2-preview-entry-preparation/v1",
+  "recordedAt": "2026-10-16T12:03:27.681306+00:00",
+  "status": "entry-code-tested-inputs-waiting-for-final-runtime",
+  "authorizationMethod": "current-chat-verbatim",
+  "r1SourceUnchangedSha256": "81c80095470c85f22e7ed7871882110c77826a2028ad33ee994f7c60a4c67f7f",
+  "r2Source": {
+    "path": "edit/20261016_musk_grok_business_ai/07_小样修改R2/本轮用户修改原话.v1.json",
+    "sha256": "aebacb06193cd1dc3c2a3e1dd8ecd72178426f37b4299a7ee678ee45044f9572"
+  },
+  "changedCodeAndLock": [
+    {
+      "path": "skills/koubo-remotion-director/scripts/musk-grok-chat-preview-authorization.mjs",
+      "sha256": "a968a93ac33e114513faa189afcef09596236cff7128fa54f82e23c35dfdf048"
+    },
+    {
+      "path": "skills/koubo-remotion-director/scripts/remotion-production-command-v2.mjs",
+      "sha256": "30a85ed222928401f5f453a51662c53be4f45b4f601f62e5c27789d8252c4b2d"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-musk-grok-chat-preview-authorization.mjs",
+      "sha256": "89e70d3644682c9eb2bf213589ee6cd3fbc29722e3fee5e219108a16818e5f05"
+    },
+    {
+      "path": "skills/koubo-remotion-director/tests/test-musk-grok-preview-render-settings.mjs",
+      "sha256": "33759544fb36706f18f4da85a5c3a2f4e8e75102c390e6df1158c46fc92a88ef"
+    },
+    {
+      "path": "workflow/director-skill-lock.v1.json",
+      "sha256": "06b41d6a01c8377b291d7f5598a80ecb1e42d443eec1d245ce9a8f25714131b7"
+    }
+  ],
+  "packageSha256": "8eb904b6bb104bd9f8e9011f44d0604372c2d4bc7df940535c520c8078abe61f",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "skills/koubo-remotion-director/tests/test-musk-grok-chat-preview-authorization.mjs"
+      ],
+      "exitCode": 0,
+      "passed": 47
+    },
+    {
+      "command": [
+        "node",
+        "skills/koubo-remotion-director/tests/test-musk-grok-preview-render-settings.mjs"
+      ],
+      "exitCode": 0,
+      "passed": 32
+    },
+    {
+      "command": [
+        "node",
+        "tools/validate-active-director-profile.mjs"
+      ],
+      "exitCode": 0,
+      "ok": true
+    }
+  ],
+  "localScriptsSyntaxChecked": [
+    "准备R2真实输入.mjs",
+    "绑定本期聊天预览授权.mjs",
+    "只读入口复核.mjs",
+    "R2单进程重绑复核.mjs"
+  ],
+  "inputPreparationExecuted": false,
+  "finalInputFrozen": false,
+  "localChatAuthorizationGenerated": false,
+  "knowledgeContextRefreshed": false,
+  "renderInvoked": false,
+  "humanFullWatchConfirmed": false,
+  "candidateAccepted": false,
+  "formalAuthorized": false,
+  "publishAuthorized": false,
+  "latestSteering": "主线程告知用户正在核对V9动效与运镜，R08源窗将另建r2b文件。等待最终runtime/素材/代码冻结，不采用上一条临时SHA生成授权。"
+}
