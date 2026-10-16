@@ -1,0 +1,78 @@
+[
+  {
+    "source": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/10_正片交付_R3/飞车与企业AI_V9正片_R3_1080p_有音效.mp4",
+    "sha256": "818e22c1a930eb1143b619eb47ed0330beada9e8f2832d554eb3a5b1485e6c75",
+    "frames": [
+      3165,
+      3285,
+      3383,
+      3470,
+      3556,
+      3680
+    ],
+    "seconds": [
+      105.5,
+      109.5,
+      112.76666666666667,
+      115.66666666666667,
+      118.53333333333333,
+      122.66666666666667
+    ],
+    "contact": "/Users/pc/Documents/口播/research/20261016_musk_grok_motion_comparison/参考复核/推荐窗_R3实片.jpg",
+    "argv": [
+      "ffmpeg",
+      "-nostdin",
+      "-v",
+      "error",
+      "-n",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/10_正片交付_R3/飞车与企业AI_V9正片_R3_1080p_有音效.mp4",
+      "-vf",
+      "select=eq(n\\,3165)+eq(n\\,3285)+eq(n\\,3383)+eq(n\\,3470)+eq(n\\,3556)+eq(n\\,3680),scale=640:360,tile=3x2",
+      "-frames:v",
+      "1",
+      "-q:v",
+      "2",
+      "/Users/pc/Documents/口播/research/20261016_musk_grok_motion_comparison/参考复核/推荐窗_R3实片.jpg"
+    ],
+    "exitCode": 0
+  },
+  {
+    "source": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/media/host.mp4",
+    "sha256": "2daafc8ecfbc2d1847a3e93bb2eaaf7a35e189fe7cac24976e4994bc35420e7c",
+    "frames": [
+      3165,
+      3285,
+      3383,
+      3470,
+      3556,
+      3680
+    ],
+    "seconds": [
+      105.5,
+      109.5,
+      112.76666666666667,
+      115.66666666666667,
+      118.53333333333333,
+      122.66666666666667
+    ],
+    "contact": "/Users/pc/Documents/口播/research/20261016_musk_grok_motion_comparison/参考复核/推荐窗_真人底片手势.jpg",
+    "argv": [
+      "ffmpeg",
+      "-nostdin",
+      "-v",
+      "error",
+      "-n",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/05_后期工程/public/media/host.mp4",
+      "-vf",
+      "select=eq(n\\,3165)+eq(n\\,3285)+eq(n\\,3383)+eq(n\\,3470)+eq(n\\,3556)+eq(n\\,3680),scale=640:360,tile=3x2",
+      "-frames:v",
+      "1",
+      "-q:v",
+      "2",
+      "/Users/pc/Documents/口播/research/20261016_musk_grok_motion_comparison/参考复核/推荐窗_真人底片手势.jpg"
+    ],
+    "exitCode": 0
+  }
+]

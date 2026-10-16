@@ -1,0 +1,172 @@
+{
+  "schema": "musk-grok-motion-source-map/v1",
+  "scope": "本期隔离研究小样；不修改已交付R3、生产档案、共享入口或版本锁。",
+  "source": {
+    "repository": "https://github.com/adunext/adu-motion-video",
+    "license": "MIT",
+    "localPriorAdapter": "research/20261011_adu_motion_video/web/scenes.js",
+    "localPriorAdapterSha256": "d9b1501c79981f0bece08dbc057125dd14791eb083a758cb61c17af22488e595",
+    "licensePath": "MIT上游许可.txt"
+  },
+  "current": {
+    "scenePath": "web/scenes.js",
+    "sceneSha256": "ad93f6820cdff69fffbbc3aef4f3ce55521fd1d3270b44d7f14134d529db480b",
+    "dataPath": "web/data.js",
+    "dataSha256": "a0c886e27938a62ec5e10ee9646036a0996d7c9997e1e058a96966cefa365b4c",
+    "startFrame": 2887,
+    "endFrameExclusive": 3694,
+    "fps": 30,
+    "durationFrames": 807,
+    "durationSeconds": 26.9
+  },
+  "variants": [
+    {
+      "id": "continuous",
+      "upstream": "packs/continuous-performance/1.0.0/units/claim-into-container.js",
+      "inheritedMechanisms": [
+        "同一个容器随语义展开",
+        "任务节点逐个出现",
+        "MOTION.bezier分支接力及原条带汇聚"
+      ],
+      "adaptation": "三条改四条；按本期词级起点重绑；四任务归入匹配工作流程，禁止变为万能模型关系。"
+    },
+    {
+      "id": "stage",
+      "upstream": "packs/stage-performance/1.0.0/units/decompose-and-consolidate.js",
+      "inheritedMechanisms": [
+        "perspective与rotateY",
+        "原卡片错峰聚焦与退后",
+        "原面板去透视归拢"
+      ],
+      "adaptation": "三列改四卡2×2，文字与承载卡同动，任务字46px不缩小。"
+    },
+    {
+      "id": "editorial",
+      "upstream": "packs/editorial-performance/1.0.0/units/decompose-and-consolidate.js",
+      "inheritedMechanisms": [
+        "cap遮罩逐行显现",
+        "rule线条生长",
+        "原规则线压合与同纸页归页"
+      ],
+      "adaptation": "三行改四行，保持阅读顺序，标题否定与双行结论依实录时点转换。"
+    }
+  ],
+  "semanticItems": [
+    "画图",
+    "写代码",
+    "复杂推理",
+    "业务文档"
+  ],
+  "wordBindings": [
+    {
+      "text": "画图",
+      "sourceWordIndex": 384,
+      "absoluteSeconds": 96.24,
+      "localSeconds": 0.0066666667
+    },
+    {
+      "text": "写代码",
+      "sourceWordIndex": 396,
+      "absoluteSeconds": 99.56,
+      "localSeconds": 3.3266666667
+    },
+    {
+      "text": "复杂推理",
+      "sourceWordIndex": 399,
+      "absoluteSeconds": 100.1,
+      "localSeconds": 3.8666666667
+    },
+    {
+      "text": "业务文档",
+      "sourceWordIndex": 411,
+      "absoluteSeconds": 103.26,
+      "localSeconds": 7.0266666667
+    },
+    {
+      "text": "不是买最强模型",
+      "sourceWordIndex": 429,
+      "absoluteSeconds": 107.5,
+      "localSeconds": 11.2666666667
+    },
+    {
+      "text": "仅容器收拢，不亮结论",
+      "sourceEvent": "match-business",
+      "absoluteFrame": 3383,
+      "absoluteSeconds": 112.76666666666667,
+      "localSeconds": 16.533333333333335
+    },
+    {
+      "text": "按需调用",
+      "sourceWordIndex": 452,
+      "absoluteSeconds": 113.16,
+      "localSeconds": 16.9266666667
+    },
+    {
+      "text": "匹配业务",
+      "sourceWordIndex": 456,
+      "absoluteSeconds": 114.28,
+      "localSeconds": 18.0466666667
+    }
+  ],
+  "geometry": {
+    "region": {
+      "x": 64,
+      "y": 96,
+      "width": 660,
+      "height": 414
+    },
+    "taskFontPx": 46,
+    "mainFontPx": 60,
+    "negativeFontPx": 46,
+    "endFade": false,
+    "finalState": {
+      "panelTop": 200,
+      "panelBottom": 428,
+      "maximumAllowedBottom": 436,
+      "taskTextFontUnchanged": true,
+      "holdFromSeconds": 114.52,
+      "holdToSeconds": 123.13333333333334,
+      "policy": "四任务入点与两个结果词首保持；末态覆盖随后能力落部门、个人与工作环节的原声，不新增卡、不提前淡出。"
+    }
+  },
+  "recommendedFrameChecks": [
+    2887,
+    2902,
+    2988,
+    3008,
+    3020,
+    3118,
+    3170,
+    3225,
+    3234,
+    3383,
+    3390,
+    3403,
+    3429,
+    3442,
+    3448,
+    3470,
+    3600,
+    3693
+  ],
+  "checkFocus": {
+    "2902": "首任务展开",
+    "2988": "第二任务入场",
+    "3008": "第三任务短间隔接力",
+    "3118": "第四任务读稳，四对象完整",
+    "3234": "否定标题完整，不把最强模型显示为正向结论",
+    "3390": "旧标签已退，原对象开始汇聚",
+    "3403": "按需调用落定",
+    "3442": "匹配业务落定",
+    "3448": "最终结论保持、不提前淡出",
+    "3470": "115.667秒双手手势，末态底板须停在y428以内，人工核对手势",
+    "3600": "结论持续读稳，未加新卡或重启",
+    "3693": "最后帧两行结论仍显示，无提前淡出"
+  },
+  "validation": {
+    "javascriptSyntax": "node --check通过",
+    "actualVideoFrames": "待主代理渲染复核",
+    "humanAcceptance": false,
+    "productionIntegrated": false
+  }
+}

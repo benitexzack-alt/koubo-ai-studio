@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>飞车与企业AI · 四版动效对照</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f2ed; color: #17201d; font-family: -apple-system, 'PingFang SC', sans-serif; }
+    main { max-width: 1248px; margin: auto; padding: 32px 24px 56px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    h1 { margin: 0 0 12px; font-size: 30px; line-height: 1.3; letter-spacing: -.6px; }
+    p { margin: 0 0 16px; color: #5c665f; line-height: 1.7; }
+    .badge { display: inline-block; border-radius: 99px; padding: 8px 14px; background: #e4e9e1; font-size: 13px; white-space: nowrap; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 16px; }
+    button { min-height: 46px; padding: 12px 20px; border: 0; border-radius: 10px; background: #e4e5df; color: #26352d; font: inherit; cursor: pointer; }
+    button[aria-pressed="true"] { background: #234c3b; color: #fff; }
+    button:hover { filter: brightness(.95); }
+    button:active { transform: scale(.98); }
+    button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #b78225; outline-offset: 4px; }
+    video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #101412; border-radius: 14px; }
+    #hint { margin-top: 12px; font-size: 14px; }
+    #error { color: #a3322b; }
+    #error:empty { display: none; }
+    aside { padding: 8px 0 16px; }
+    aside strong { display: block; margin-bottom: 8px; font-size: 18px; }
+    a { color: #245a40; text-underline-offset: 3px; }
+    .download { display: inline-flex; align-items: center; min-height: 44px; }
+    details { border-top: 1px solid #cfd4c9; padding-top: 16px; }
+    summary { min-height: 44px; cursor: pointer; font-weight: 600; }
+    ul { margin: 0 0 16px; padding-left: 22px; }
+    li { margin: 10px 0; color: #536157; line-height: 1.6; }
+    .downloads { display: flex; flex-wrap: wrap; column-gap: 24px; }
+    footer { margin-top: 20px; font-size: 14px; line-height: 1.7; color: #697269; }
+    @media (max-width: 600px) {
+      main { padding: 24px 12px 40px; }
+      header { display: block; }
+      h1 { font-size: 24px; }
+      .badge { margin-bottom: 12px; }
+      nav button { flex: 1 1 42%; padding: 10px 8px; }
+      video { border-radius: 8px; }
+      .downloads { column-gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>同一段口播，四版动效对照</h1>
+      <p>《飞车与企业AI》· 每版26.9秒 · 相同原声与字幕</p>
+    </div>
+    <span class="badge">比较小样 · 待观看判断</span>
+  </header>
+  <nav aria-label="选择动效版本">
+    <button type="button" aria-pressed="true" data-index="0">现有动效</button>
+    <button type="button" aria-pressed="false" data-index="1">连续形变</button>
+    <button type="button" aria-pressed="false" data-index="2">纵深聚焦</button>
+    <button type="button" aria-pressed="false" data-index="3">杂志展开</button>
+  </nav>
+  <video id="player" controls playsinline preload="metadata" src="outputs/00_现有动效_同原声对照.mp4" aria-label="当前动效小样"></video>
+  <p id="hint" role="status" aria-live="polite">切换版本会保留当前时间和播放状态；可以暂停在同一句话上比较。</p>
+  <p id="error" role="alert"></p>
+  <aside>
+    <strong id="name">现有动效</strong>
+    <p id="description">从本次R3视频截取同一段画面，作为比较基准。四版统一使用原声，此页专门比较视觉。</p>
+    <a id="download" class="download" href="outputs/00_现有动效_同原声对照.mp4" download>下载当前版本</a>
+  </aside>
+  <details>
+    <summary>这次重点看什么</summary>
+    <ul>
+      <li>画图、写代码、复杂推理、业务文档，四个任务能否随口播清楚出现。</li>
+      <li>否定“买最强模型”时，画面会不会造成相反理解。</li>
+      <li>从各有所长到按需调用、匹配业务，动作是否帮助理解关系。</li>
+      <li>末态是否读得稳，是否影响真人脸部、手势或底部字幕。</li>
+    </ul>
+    <p>三种新版本延续上次小样的具体动作，再绑定这次实录。四版没有新增音效或配乐。此页供比较选择，尚不代表新动作已经成为固定生产模板。</p>
+  </details>
+  <div class="downloads" aria-label="下载全部四个版本">
+    <a class="download" href="outputs/00_现有动效_同原声对照.mp4" download>下载现有动效</a>
+    <a class="download" href="outputs/01_连续形变.mp4" download>下载连续形变</a>
+    <a class="download" href="outputs/02_纵深聚焦.mp4" download>下载纵深聚焦</a>
+    <a class="download" href="outputs/03_杂志展开.mp4" download>下载杂志展开</a>
+  </div>
+  <footer>原片范围：1分36.233秒—2分03.133秒，共807帧。<br>这次保留完整口播窗口，用同一段内容比较；已交付正片保持原样。</footer>
+</main>
+<script>
+  const items = [
+    ['现有动效', '00_现有动效_同原声对照.mp4', '从本次R3视频截取同一段画面，作为比较基准。四版统一使用原声，此页专门比较视觉。'],
+    ['连续形变', '01_连续形变.mp4', '同一容器随着四个任务展开，分支沿曲线接力，再由原来的条带汇聚到“按需调用、匹配业务”。'],
+    ['纵深聚焦', '02_纵深聚焦.mp4', '四张卡片分两行出现，通过透视和位置变化逐项聚焦，再归拢为匹配业务的结果。'],
+    ['杂志展开', '03_杂志展开.mp4', '四行任务从遮罩后逐项展开，线条随口播生长，再连同原来的页面收拢到结论。'],
+  ];
+  const player = document.getElementById('player');
+  const buttons = [...document.querySelectorAll('nav button')];
+  const hint = document.getElementById('hint');
+  const error = document.getElementById('error');
+  const defaultHint = '切换版本会保留当前时间和播放状态；可以暂停在同一句话上比较。';
+  let selected = 0;
+  let revision = 0;
+  let pending = null;
+
+  for (const button of buttons) button.addEventListener('click', () => {
+    const id = Number(button.dataset.index);
+    if (id === selected) return;
+    const item = items[id];
+    const time = pending ? pending.time : player.currentTime || 0;
+    const playing = pending ? pending.playing : !player.paused && !player.ended;
+    const token = ++revision;
+    selected = id;
+    pending = { token, time, playing };
+    player.pause();
+    player.dataset.loading = 'true';
+    for (const candidate of buttons) candidate.setAttribute('aria-pressed', String(candidate === button));
+    document.getElementById('name').textContent = item[0];
+    document.getElementById('description').textContent = item[2];
+    document.getElementById('download').href = 'outputs/' + item[1];
+    hint.textContent = '正在切换到“' + item[0] + '”，保留播放位置…';
+    error.textContent = '';
+
+    player.addEventListener('loadedmetadata', () => {
+      if (token !== revision) return;
+      const target = Math.min(time, Number.isFinite(player.duration) ? player.duration : time);
+      const resume = () => {
+        if (token !== revision) return;
+        pending = null;
+        player.dataset.loading = 'false';
+        hint.textContent = defaultHint;
+        if (playing) player.play().catch(() => {
+          if (token === revision) hint.textContent = '播放位置已保留，请点击播放继续观看。';
+        });
+      };
+      if (Math.abs(player.currentTime - target) < .001) resume();
+      else {
+        player.addEventListener('seeked', resume, { once: true });
+        player.currentTime = target;
+      }
+    }, { once: true });
+    player.src = 'outputs/' + item[1];
+    player.load();
+  });
+  player.addEventListener('error', () => {
+    player.dataset.loading = 'false';
+    error.textContent = '当前版本暂时无法读取，请稍后重试，或从下方下载对应视频。';
+    hint.textContent = '当前选择：' + items[selected][0];
+  });
+</script>
+</body>
+</html>
