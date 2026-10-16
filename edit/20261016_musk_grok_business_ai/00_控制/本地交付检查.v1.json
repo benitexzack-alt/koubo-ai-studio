@@ -4,7 +4,7 @@
   "scriptCoverage": "23段去空白逐字完整覆盖",
   "directorSchemaValidation": {
     "schemaVersion": "director-review-validation/v1",
-    "checkedAt": "2026-10-16T16:32:49.180421+08:00",
+    "checkedAt": "2026-10-16T16:52:33.314432+08:00",
     "command": [
       "node",
       "skills/koubo-remotion-director/scripts/validate-director-cues-v2.mjs",
@@ -22,31 +22,36 @@
       "fullOriginalTextCoverage": true,
       "allRealMaterialsUnbound": true,
       "downstreamBlocked": true,
-      "twoPaperScenes": true,
+      "onlyP01Active": true,
+      "B19ReturnsToSpeaker": true,
+      "continuousSpeakerRunReviewed": true,
       "noAIGeneratedScenes": true,
-      "B10AbsoluteRankingFactCheckBound": true,
-      "paperPromptDocumentUnchanged": true
+      "factReviewTableUnchanged": true,
+      "P01FullPromptsInProductionSheet": true,
+      "P02MarkedAsInactiveBackup": true
     },
     "counts": {
       "semanticBeats": 23,
       "factChecks": 15,
       "routes": {
-        "speaker": 17,
+        "speaker": 18,
         "real-evidence": 4,
         "ai-generated-video": 0,
-        "paper-editorial": 2,
+        "paper-editorial": 1,
         "shotcraftOpportunity": 3
-      }
+      },
+      "inactivePaperBackup": 1
     },
     "result": "pass",
     "directorStatus": "ready-for-user-review",
     "productionStatus": "blocked",
-    "scope": "导演结构、原文覆盖、引用哈希及新增绝对排名核验绑定；不证明事实已经全部通过、视觉质量或用户验收",
+    "changeBasis": "独立导演复核认为P02现版机制与P01重复，当前只建议P01制作；用户没有取消纸艺。",
+    "scope": "导演结构、原文覆盖、引用哈希、当前分路计数与备选隔离；不证明事实已全部通过、视觉质量或用户验收。新原片尚未转写，8秒为规划估计。",
     "sourceSha256": "1f679d91dcfd847d1b7e38d4d146ab03b823aa2e079846b7e338e3c3fcd85b49",
     "files": [
       {
         "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/director-cues.v2.json",
-        "sha256": "a54ec17692e47978b6732c14b08c950c289a491c8160c72f83399f8ec9af0ded"
+        "sha256": "fe779cff98affcc64379af4f42b0735bcca8ead13aebe5f1478ce544d532ac6d"
       },
       {
         "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/事实与生产阻断表.v1.json",
@@ -54,19 +59,23 @@
       },
       {
         "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/导演阅读版.md",
-        "sha256": "54f3246b2af9a52e25e9a1d48f5e5393e00adadfe02ebd82e94149260f6b9fe6"
+        "sha256": "f3821f126f7e44c05f2f934359e3814794a647e9ce068f0409b371b044bddace"
       },
       {
         "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/普通AI情景包.md",
-        "sha256": "9fd4d429fd5d3314a46631ccd8f42dae86bf216001dd04ed00878a7a7127480b"
+        "sha256": "2db1e6436c604d2ed767cbc5fa9ec59adb62ab5f50a8b08e1ca84fe5304d02d4"
+      },
+      {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/本次只做P01_纸艺制作单.md",
+        "sha256": "b1ddd88073f5582cd5168e6a78a17e34017e3eb13ae9c35afeb302888650f3bd"
       },
       {
         "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/真实素材执行包.md",
-        "sha256": "eb3d20d5cd4b9f947b3646db5b32fb7af851a384f67d3a0c477c64f60cf60e90"
+        "sha256": "ee22224a82c5513226a22251a240c4314f41617c467d5d9805e725a95acfb83f"
       },
       {
         "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/纸艺首帧与视频提示词包.md",
-        "sha256": "607f0fe84bafef9d7ec6771936431e1cd6d28fa837837170ae837c3cd46afbbe"
+        "sha256": "3832205404285a7ff22e7e566106d8cdf4da2f3715a0fb88ef95574f4e3c8e88"
       }
     ]
   },
@@ -115,5 +124,15 @@
     }
   ],
   "officialVideos": 2,
-  "candidateClips": 3
+  "candidateClips": 3,
+  "currentPaperRecommendation": {
+    "active": [
+      "P01"
+    ],
+    "reserveNotForCurrentProduction": [
+      "P02"
+    ],
+    "reason": "P02模块入槽与P01重复，缺乏具体工作环节变化；用户未取消纸艺"
+  },
+  "speakerBeats": 18
 }
