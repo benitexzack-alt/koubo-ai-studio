@@ -10,10 +10,11 @@ const runtimeModule = path.join(__dirname, 'runtime.ts');
 const projectRoot = path.resolve(__dirname, '../../..');
 const r1Runtime = 'edit/20261016_musk_grok_business_ai/04_后期准备/runtime-plan.v1.json';
 const r2Runtime = 'edit/20261016_musk_grok_business_ai/07_小样修改R2/runtime-plan.r2.json';
+const r3Runtime = 'edit/20261016_musk_grok_business_ai/08_字幕校正R3/runtime-plan.r3.json';
 const args = process.argv.slice(2);
-if (args.length && (args.length !== 2 || args[0] !== '--runtime')) throw new Error('用法：check-parameters.cjs [--runtime 本期R1或R2权威路径]');
+if (args.length && (args.length !== 2 || args[0] !== '--runtime')) throw new Error('用法：check-parameters.cjs [--runtime 本期R1、R2或R3权威路径]');
 const runtimePath = path.resolve(projectRoot, args[1] ?? r2Runtime);
-if (![r1Runtime, r2Runtime].some(value => path.resolve(projectRoot, value) === runtimePath)) throw new Error('只能检查本期R1或R2权威运行数据，不能将工程内快照当作权威来源');
+if (![r1Runtime, r2Runtime, r3Runtime].some(value => path.resolve(projectRoot, value) === runtimePath)) throw new Error('只能检查本期R1、R2或R3权威运行数据，不能将工程内快照当作权威来源');
 const code = ts.transpileModule(fs.readFileSync(runtimeModule, 'utf8'), {
   compilerOptions: {module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true, resolveJsonModule: true},
 }).outputText;

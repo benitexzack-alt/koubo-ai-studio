@@ -121,6 +121,20 @@ export const continuousBusinessPhase = (frame: number, plan: RuntimePlan) => {
   return 'application';
 };
 
+/** 四卡先原位收小，再分行横移，最后上提；避免两行卡片斜向交叉。 */
+export const taskTagLayout = (frame: number, matchingFrame: number, index: number) => {
+  const start = matchingFrame - 14;
+  const shrink = smooth(progress(frame, start, 4));
+  const shift = smooth(progress(frame, start + 4, 4));
+  const lift = smooth(progress(frame, start + 8, 6));
+  return {
+    left: mix(22 + (index % 2) * 292, 22 + index * 146, shift),
+    top: mix(94 + Math.floor(index / 2) * 106, 20, lift),
+    width: mix(270, 138, shrink), height: mix(82, 48, shrink),
+    fontSize: mix(TYPE.supporting, TYPE.category, shrink),
+  };
+};
+
 /** 复用10/14同容器转义、原对象缩为标题、旧标签不动及共同工作容器；不重播旧内容。 */
 const ContinuousBusiness: React.FC<{cue: OverlayCue; plan: RuntimePlan; frame: number}> = ({cue, plan, frame}) => {
   const at = (id: string) => eventFrame(plan, id);
@@ -128,7 +142,7 @@ const ContinuousBusiness: React.FC<{cue: OverlayCue; plan: RuntimePlan; frame: n
   const phase = continuousBusinessPhase(frame, plan);
   const question = smooth(progress(frame, at('strongest-question'), 18));
   const tasks = smooth(progress(frame, at('task-0') - 18, 18));
-  const matching = smooth(progress(frame, at('strongest-model') - 14, 14));
+  const matching = smooth(progress(frame, at('strongest-model') - 14, 8));
   const application = smooth(progress(frame, at('capabilities'), 16));
   const selection = smooth(progress(frame, at('match-business'), 12));
   const taskIds = ['task-0', 'task-1', 'task-2', 'task-3'];
@@ -155,11 +169,10 @@ const ContinuousBusiness: React.FC<{cue: OverlayCue; plan: RuntimePlan; frame: n
       opacity: progress(frame, at('no-universal'), 8) * (1 - matching)}}>{txt('no-universal')}</div> : null}
     {['tasks', 'matching'].includes(phase) ? taskIds.map((id, index) => {
       const enter = easeOut(progress(frame, at(id), 7));
-      return <div key={id} style={{position: 'absolute', left: mix(22 + (index % 2) * 292, 22 + index * 146, matching),
-        top: mix(94 + Math.floor(index / 2) * 106, 20, matching), width: mix(270, 138, matching), height: mix(82, 48, matching),
+      return <div key={id} style={{position: 'absolute', ...taskTagLayout(frame, at('strongest-model'), index),
         display: 'flex', alignItems: 'center', justifyContent: 'center', boxSizing: 'border-box',
         backgroundColor: C.cream, color: C.ink, borderLeft: `5px solid ${C.accent}`, borderRadius: 4,
-        fontSize: mix(TYPE.supporting, TYPE.category, matching), opacity: progress(frame, at(id), 3),
+        opacity: progress(frame, at(id), 3),
         transform: `skewX(-3deg) scale(${.88 + .12 * enter})`, transformOrigin: '0 50%'}}>{txt(id)}</div>;
     }) : null}
     {phase === 'matching' ? <div style={{position: 'absolute', left: 22, top: 104, width: 576, height: 112,

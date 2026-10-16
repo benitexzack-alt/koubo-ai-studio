@@ -6,7 +6,7 @@ import {mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSyn
 import {tmpdir} from 'node:os';
 import {dirname, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {MUSK_GROK_CHAT_PREVIEW_MODE, MUSK_GROK_CHAT_SOURCE, MUSK_GROK_CHAT_R2_SOURCE,
+import {MUSK_GROK_CHAT_PREVIEW_MODE, MUSK_GROK_CHAT_SOURCE, MUSK_GROK_CHAT_R2_SOURCE, MUSK_GROK_CHAT_R3_SOURCE,
   validateMuskGrokChatPreviewAuthorization} from '../scripts/musk-grok-chat-preview-authorization.mjs';
 import {NATIVE_V2_INPUT_FORMAT} from '../scripts/native-v2-first-candidate-input.mjs';
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -26,6 +26,7 @@ const readBoundJson = (projectRoot, reference) => {
 const identity = {episodeId: 'musk-grok-business-ai-20261016', taskId: '20261016_musk_grok_business_ai_director_v2',
   jobId: '20261016_musk_grok_business_ai_v9_candidate', revisionId: 'musk-grok-business-ai-v9-preview-r1-20261016'};
 const r2Revision = 'musk-grok-business-ai-v9-preview-r2-20261016';
+const r3Revision = 'musk-grok-business-ai-v9-full-candidate-r3-20261016';
 let command, job, input, binding, authorization;
 const save = () => {job.productionGate.localChatPreviewAuthorization = put('authorization.json', authorization);};
 const check = () => validateMuskGrokChatPreviewAuthorization({projectRoot: root, job, input, binding, command, readBoundJson});
@@ -43,7 +44,8 @@ function reset(revisionId = identity.revisionId) {
     authorizationMethod: 'current-chat-verbatim', decision: 'allow-episode-internal-review-preview', role: 'user',
     authorizedUserId: input.authorizedUserId, executionGroupId: input.executionGroupId, recordedAt: new Date().toISOString(),
     allowedCommands: ['direct-remotion-preview'],
-    sourceMessages: {...(revisionId === r2Revision ? MUSK_GROK_CHAT_R2_SOURCE : MUSK_GROK_CHAT_SOURCE)}, binding: structuredClone(binding),
+    sourceMessages: {...(revisionId === r3Revision ? MUSK_GROK_CHAT_R3_SOURCE :
+      revisionId === r2Revision ? MUSK_GROK_CHAT_R2_SOURCE : MUSK_GROK_CHAT_SOURCE)}, binding: structuredClone(binding),
     independentSignature: false, humanAcceptancePerformed: false, productionEligible: false, formalEnabled: false,
     candidateAccepted: false, userPreviewApproved: false, fullWatchConfirmed: false, publishAuthorized: false};
   save();
@@ -116,5 +118,28 @@ try {
     'candidateAccepted', 'userPreviewApproved', 'fullWatchConfirmed', 'publishAuthorized']) {
     reject(`R2不能提前置真 ${flag}`, () => {authorization[flag] = true;}, 'MGCP_FUTURE_ACCEPTANCE_FORBIDDEN', r2Revision);
   }
+  const r3Source = readFileSync(resolve(repo, MUSK_GROK_CHAT_R3_SOURCE.path));
+  assert.equal(digest(r3Source), MUSK_GROK_CHAT_R3_SOURCE.sha256); put(MUSK_GROK_CHAT_R3_SOURCE.path, r3Source);
+  reset(r3Revision); assert.equal(check().sourceMessageSha256, MUSK_GROK_CHAT_R3_SOURCE.sha256); passed++;
+  reject('R3不得复用R2改片原话', () => {authorization.sourceMessages = {...MUSK_GROK_CHAT_R2_SOURCE};},
+    'MGCP_CURRENT_CHAT_REFERENCE_REQUIRED', r3Revision);
+  reject('R2不得反用R3正片原话', () => {authorization.sourceMessages = {...MUSK_GROK_CHAT_R3_SOURCE};},
+    'MGCP_CURRENT_CHAT_REFERENCE_REQUIRED', r2Revision);
+  reject('R3原话不得复制到任意位置', () => {authorization.sourceMessages = put('copied-r3.json', r3Source);},
+    'MGCP_CURRENT_CHAT_REFERENCE_REQUIRED', r3Revision);
+  reject('R3不得扩展下一修订', () => {
+    const revision = 'musk-grok-business-ai-v9-full-candidate-r4-20261016';
+    job.productionGate.revisionId = revision; input.revisionId = revision;
+    binding.revisionId = revision; authorization.revisionId = revision; authorization.binding = structuredClone(binding);
+  }, 'MGCP_EPISODE_IDENTITY_MISMATCH', r3Revision);
+  for (const forbidden of ['formal', 'direct-remotion-render', 'release-validation']) {
+    reject(`R3不得升级成正式验收命令 ${forbidden}`, () => {command = forbidden;}, 'MGCP_COMMAND_OR_FORMAT_FORBIDDEN', r3Revision);
+  }
+  for (const flag of ['independentSignature', 'humanAcceptancePerformed', 'productionEligible', 'formalEnabled',
+    'candidateAccepted', 'userPreviewApproved', 'fullWatchConfirmed', 'publishAuthorized']) {
+    reject(`R3正片分辨率不等于 ${flag}`, () => {authorization[flag] = true;}, 'MGCP_FUTURE_ACCEPTANCE_FORBIDDEN', r3Revision);
+  }
+  reject('R3正文变更必须重绑', () => {binding.firstCandidateInputSha256 = '9'.repeat(64);},
+    'MGCP_INPUT_OR_CODE_BINDING_CHANGED', r3Revision);
   console.log(JSON.stringify({ok: true, passed, productionRenderInvoked: false, independentSignatureCreated: false}));
 } finally {rmSync(root, {recursive: true, force: true});}

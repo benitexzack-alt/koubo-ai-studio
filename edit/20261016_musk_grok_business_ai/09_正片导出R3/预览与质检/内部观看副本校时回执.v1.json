@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "internal-preview-timing-derivative/v1",
+  "parent": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/预览与质检/受控正片候选_R3_1080p_有音效.mp4",
+    "sha256": "9b887bdba60d81caa857cd7ec84e0e45793bfc0aa0717793b054f65ba1b36204",
+    "controlledReceipt": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/预览与质检/.受控正片候选_R3_1080p_有音效.mp4.production-receipt.c82fbb42-2478-4845-9270-30453f46a405.json",
+    "controlledReceiptSha256": "acdf90d47cc963302ab0a58bb10876323d9f62baadba5eef70d25b97f984d5a6",
+    "outputClaim": {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/预览与质检/.受控正片候选_R3_1080p_有音效.mp4.render-claim.2b608857-f892-410c-87b6-7169df4b36ed.json",
+      "sha256": "ee2c43f58f0eb18253c5463bce47a1b5c34fbea031d473073a54a33381112c85"
+    }
+  },
+  "output": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/10_正片交付_R3/飞车与企业AI_V9正片_R3_1080p_有音效.mp4",
+    "sha256": "818e22c1a930eb1143b619eb47ed0330beada9e8f2832d554eb3a5b1485e6c75"
+  },
+  "audioOffsetSeconds": -0.042666666666666665,
+  "command": [
+    "ffmpeg",
+    "-v",
+    "error",
+    "-nostdin",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/预览与质检/受控正片候选_R3_1080p_有音效.mp4",
+    "-itsoffset",
+    "-0.042666666666666665",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/预览与质检/受控正片候选_R3_1080p_有音效.mp4",
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-c",
+    "copy",
+    "-avoid_negative_ts",
+    "disabled",
+    "-use_editlist",
+    "1",
+    "-movflags",
+    "+faststart",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/10_正片交付_R3/飞车与企业AI_V9正片_R3_1080p_有音效.mp4"
+  ],
+  "commandExitCode": 0,
+  "parentMeasuredWindows": [
+    {
+      "startSeconds": 14,
+      "endSeconds": 17,
+      "lagSamples16k": 683,
+      "lagMs": 42.6875,
+      "alignedCorrelation": 0.9908844487442412
+    },
+    {
+      "startSeconds": 36.8,
+      "endSeconds": 39.8,
+      "lagSamples16k": 683,
+      "lagMs": 42.6875,
+      "alignedCorrelation": 0.9948677399282158
+    },
+    {
+      "startSeconds": 80,
+      "endSeconds": 82,
+      "lagSamples16k": 683,
+      "lagMs": 42.6875,
+      "alignedCorrelation": 0.9951447904166054
+    },
+    {
+      "startSeconds": 137.7,
+      "endSeconds": 140,
+      "lagSamples16k": 683,
+      "lagMs": 42.6875,
+      "alignedCorrelation": 0.9981109217447871
+    },
+    {
+      "startSeconds": 165,
+      "endSeconds": 167.8,
+      "lagSamples16k": 683,
+      "lagMs": 42.6875,
+      "alignedCorrelation": 0.9928044529317869
+    }
+  ],
+  "controlledDirectOutput": false,
+  "formalRelease": false,
+  "userAccepted": false,
+  "publicationAuthorized": false,
+  "scope": "本期1080p正片观看候选；受控父片保留；编码包一致性与校时结果须由check-viewing-copy.py实际验证",
+  "pass": true,
+  "tool": {
+    "path": "/opt/homebrew/Cellar/ffmpeg/8.1.2_1/bin/ffmpeg",
+    "sha256": "329fa7360b28a067a0cd7281474bb18cd868932d5173646a674466bcb56d6e93"
+  },
+  "fullDecodeVoiceWindows": [
+    {
+      "startSeconds": 14,
+      "endSeconds": 17,
+      "lagMs": 0.0,
+      "sameTimestampCorrelation": 0.9975868397640605,
+      "rmsGain": 0.9942342597601649
+    },
+    {
+      "startSeconds": 36.8,
+      "endSeconds": 39.8,
+      "lagMs": 0.0,
+      "sameTimestampCorrelation": 0.9990841162864834,
+      "rmsGain": 0.9967370610886405
+    },
+    {
+      "startSeconds": 80,
+      "endSeconds": 82,
+      "lagMs": 0.0,
+      "sameTimestampCorrelation": 0.998454226771149,
+      "rmsGain": 0.997151889278241
+    },
+    {
+      "startSeconds": 137.7,
+      "endSeconds": 140,
+      "lagMs": 0.0,
+      "sameTimestampCorrelation": 0.999713637271109,
+      "rmsGain": 0.9970980088334865
+    },
+    {
+      "startSeconds": 165,
+      "endSeconds": 167.8,
+      "lagMs": 0.0,
+      "sameTimestampCorrelation": 0.9986218162508254,
+      "rmsGain": 0.9962790860536701
+    }
+  ],
+  "packetChecks": [
+    {
+      "stream": "v:0",
+      "parentCount": 5035,
+      "viewingCount": 5035,
+      "allPacketDataIdentical": true,
+      "ptsOffsetSecondsRange": [
+        0.0,
+        0.0
+      ],
+      "dtsOffsetSecondsRange": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "stream": "a:0",
+      "parentCount": 7870,
+      "viewingCount": 7870,
+      "allPacketDataIdentical": true,
+      "ptsOffsetSecondsRange": [
+        -0.042667,
+        -0.042666
+      ],
+      "dtsOffsetSecondsRange": [
+        -0.04266700000002288,
+        -0.042665999999996984
+      ]
+    }
+  ]
+}

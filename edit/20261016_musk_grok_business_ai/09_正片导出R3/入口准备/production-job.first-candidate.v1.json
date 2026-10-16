@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20261016_musk_grok_business_ai_v9_candidate",
+  "videoId": "musk-grok-business-ai-20261016",
+  "title": "飞车与企业AI",
+  "productionState": "input-prepared-awaiting-controlled-preflight",
+  "productionEligible": false,
+  "productionProfile": {
+    "id": "v9-semantic-direction-sfx",
+    "version": "V9"
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required",
+    "userPreviewApproved": false
+  },
+  "knowledgeContext": {
+    "taskId": "task-20261016T130214Z-musk-grok-r3",
+    "contextPath": "task-20261016T130214Z-musk-grok-r3/context.json"
+  },
+  "inputs": {
+    "source": "edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+    "renderProxy": "edit/20261016_musk_grok_business_ai/05_后期工程/public/media/host.mp4"
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/musk-grok-business-ai-20261016/index.tsx",
+    "publicDir": "edit/20261016_musk_grok_business_ai/05_后期工程/public",
+    "compositionWithSfx": "MuskGrokBusinessAI20261016-WithSfx",
+    "compositionWithoutSfx": "MuskGrokBusinessAI20261016-NoSfx",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 167.83333333333334
+  },
+  "director": {
+    "required": true,
+    "taskId": "20261016_musk_grok_business_ai_director_v2",
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0",
+    "phase": "post-shoot",
+    "paperRequired": true,
+    "fallback": "blocked",
+    "artifacts": {
+      "directorCues": {
+        "path": "edit/20261016_musk_grok_business_ai/03_导演规划/director-cues.v2.json",
+        "sha256": "fe779cff98affcc64379af4f42b0735bcca8ead13aebe5f1478ce544d532ac6d"
+      },
+      "runtimePlan": {
+        "path": "edit/20261016_musk_grok_business_ai/08_字幕校正R3/runtime-plan.r3.json",
+        "sha256": "998b5c216d7654aa635e2a9938cf3eb28a2ee85868c289ceccd600186e53fc65"
+      },
+      "spokenTimeline": {
+        "path": "edit/20261016_musk_grok_business_ai/08_字幕校正R3/实录正文校字.r3.json",
+        "sha256": "7ec2da8eda74742ef849d018a0c69eed9174b6e444ddf1dd43ed325f653a4ce3"
+      },
+      "postshootRebind": {
+        "path": "edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/实录导演重绑候选.r3.json",
+        "sha256": "e6312a5f6c3ae9c3f641f91989d272025b08a47eb87d2ff8099bd2aece14cc86"
+      },
+      "mediaIntake": {
+        "path": "edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/原生素材入库候选.v1.json",
+        "sha256": "9e15fe7e3464484b282c6ba402e9cfafcb03a73dc367105d8154232565558894"
+      },
+      "factReview": {
+        "path": "edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/事实差异当前绑定.v1.json",
+        "sha256": "a24534780383aaa9226dcf7f476d281544c5116ff43bf51dd56207fc2272ee09"
+      },
+      "userScope": {
+        "path": "edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/用户导出范围.v1.json",
+        "sha256": "95865d9cf101bd394a2474ddce28dbee187dd6c0c80a6a015a9e665c6b827c00"
+      }
+    },
+    "inputFormat": "director-cues-v2-surface-bound"
+  },
+  "productionGate": {
+    "schema": "director-production-entry-binding/v2",
+    "revisionId": "musk-grok-business-ai-v9-full-candidate-r3-20261016",
+    "state": "first-candidate-preview-required",
+    "productionEligible": false,
+    "userPreviewApproved": false,
+    "formalEnabled": false,
+    "firstCandidateInput": {
+      "path": "edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/first-candidate-input.v1.json",
+      "sha256": "acaf32632420a7a6423758e8525502e341549426faea892e41eaebe9b8be8d76"
+    },
+    "firstCandidateAuthorization": null,
+    "freezeReceipt": null,
+    "previewAuthorizationMode": "musk-grok-current-chat-review/v1",
+    "localChatPreviewAuthorization": {
+      "path": "edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/内部预览聊天授权.v1.json",
+      "sha256": "cce56cf871bc12ded70ab5219403655851737ccd9192028e4fac6493d260fa37"
+    }
+  },
+  "preview": {
+    "output": "edit/20261016_musk_grok_business_ai/09_正片导出R3/预览与质检/受控正片候选_R3_1080p_有音效.mp4",
+    "renderSettings": {
+      "concurrency": 1,
+      "timeoutInMilliseconds": 120000,
+      "scale": 1
+    }
+  },
+  "formal": {
+    "enabled": false
+  },
+  "publishAuthorized": false,
+  "preparationNote": "R3依据本轮真实正片导出指令输出完整1080p有声候选供用户终看；原声完整、字幕按用户指定8条校字，既有11条候选保留；非独立签名，整片验收/事实/发布仍未通过。"
+}

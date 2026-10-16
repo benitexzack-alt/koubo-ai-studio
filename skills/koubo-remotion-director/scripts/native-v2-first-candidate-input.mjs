@@ -21,6 +21,50 @@ const verifiedMedia = new Map();
 const verifiedPcm = new Map();
 export const nativeV2FullDecodeTimeoutMs = (durationSeconds) => Math.min(600000, Math.max(120000, Math.ceil(durationSeconds * 2000)));
 
+// 仅本期 R3 的真实校字指令；保留旧 11 条候选，新增范围严格来自已保存的 8 条实际差异。
+export function validateMuskGrokR3UserDirectedCorrections({projectRoot, contract, job, correction, segments, closure}) {
+  const revision = 'musk-grok-business-ai-v9-full-candidate-r3-20261016';
+  requireValue(contract.episodeId === 'musk-grok-business-ai-20261016' &&
+    contract.taskId === '20261016_musk_grok_business_ai_director_v2' && contract.revisionId === revision &&
+    job.videoId === contract.episodeId && job.jobId === '20261016_musk_grok_business_ai_v9_candidate' &&
+    job.productionGate?.revisionId === revision, 'NV2_R3_CORRECTION_SCOPE_INVALID');
+  requireValue(correction.schemaVersion === 'episode-user-directed-spelling-corrections/v1' &&
+    correction.userDirectedSpellingOnly === true && correction.fullNormalSpeedListeningPerformed === false &&
+    correction.factsVerified === false && correction.formalAuthorized === false && correction.publishAuthorized === false,
+    'NV2_R3_CORRECTION_ACCEPTANCE_INVALID');
+  const prefix = 'edit/20261016_musk_grok_business_ai/';
+  const expected = {
+    baseCorrectionReceipt: ['04_后期准备/字幕制作/识别修正与待听词.v1.json', '189eceb306cbbd02d6fd9c52b85b821b22fe36a752dfa4313a6373b74698b333'],
+    userInstruction: ['08_字幕校正R3/用户校字原话.v1.json', 'eb073c83e23e1ccdb403a4446be0f2d4ceaa1ea240e41be0a9bfc1c8e53d8c8a'],
+    changeReport: ['08_字幕校正R3/校字变更与检查.v1.json', '1c922a08b42b583aee5f615ca6f9d4d93ccd6e67dfe4a8476e0eb08ed86a35c9'],
+    exportInstruction: ['09_正片导出R3/本轮正片导出原话.v1.json', 'b17d7c34f28019f1685fc947075becaff945745a3db406f4c6d3b067bb549a68'],
+  };
+  const records = {};
+  for (const [key, [suffix, hash]] of Object.entries(expected)) {
+    const reference = correction[key];
+    requireValue(reference?.sha256 === hash &&
+      resolve(projectRoot, reference.path) === resolve(projectRoot, prefix + suffix) &&
+      sha256File(resolve(projectRoot, reference.path)) === hash, 'NV2_R3_CORRECTION_SOURCE_INVALID');
+    records[key] = closure.document(reference).body;
+  }
+  const base = records.baseCorrectionReceipt.corrections, changes = records.changeReport.changes;
+  requireValue(base.length === 11 && changes.length === 8 && correction.corrections.length === 19 &&
+    JSON.stringify(correction.corrections.slice(0, 11)) === JSON.stringify(base), 'NV2_R3_BASE_CORRECTIONS_CHANGED');
+  for (const [index, change] of changes.entries()) {
+    const entry = correction.corrections[11 + index];
+    const segment = segments.find(item => item.id === Number(change.captionId.slice(1)) - 1);
+    requireValue(segment && entry.captionId === change.captionId && entry.segmentId === segment.id &&
+      entry.raw_text === change.before && entry.text === change.after && entry.basis === change.basis &&
+      entry.start === segment.start && entry.end === segment.end &&
+      Math.abs(Math.round(segment.start * 30) - change.from) <= 1 &&
+      Math.abs(Math.round(segment.end * 30) - change.to) <= 1 && normal(segment.text) === normal(change.after) &&
+      entry.status === 'user-directed-spelling-correction' && entry.userDirected === true &&
+      entry.humanListeningPerformed === false && entry.userConfirmed === false,
+      'NV2_R3_CORRECTION_DIFF_MISMATCH');
+  }
+  return true;
+}
+
 function decodedPcmHash(reference, projectRoot) {
   const tool = paperMediaTools(['ffmpeg']).ffmpeg;
   const file = resolve(projectRoot, reference.path);
@@ -164,10 +208,15 @@ export function validateNativeV2FirstCandidate({projectRoot, contract, job, read
     requireValue(correction.noFactCorrectionsApplied === true && correction.noSpokenWordsTrimmed === true &&
       Array.isArray(correction.corrections) && correction.corrections.length > 0 &&
       runtime.review?.captions === 'pending', 'NV2_SPOKEN_CORRECTIONS_NOT_PENDING');
+    const hasDirected = correction.corrections.some(entry => entry.status === 'user-directed-spelling-correction');
+    if (hasDirected || contract.revisionId === 'musk-grok-business-ai-v9-full-candidate-r3-20261016') {
+      validateMuskGrokR3UserDirectedCorrections({projectRoot, contract, job, correction, segments, closure});
+    }
     for (const entry of correction.corrections) {
       const segment = segments.find(item => item.id === entry.segmentId);
       requireValue(segment && text(entry.raw_text) && text(entry.text) && text(entry.basis) &&
-        entry.status === 'asr-correction-candidate' && entry.humanListeningPerformed === false && entry.userConfirmed === false &&
+        (entry.status === 'asr-correction-candidate' || (hasDirected && entry.status === 'user-directed-spelling-correction')) &&
+        entry.humanListeningPerformed === false && entry.userConfirmed === false &&
         Number.isFinite(entry.start) && Number.isFinite(entry.end) && entry.end > entry.start &&
         entry.start >= segment.start - 0.001 && entry.end <= segment.end + 0.001,
         'NV2_SPOKEN_CORRECTION_ENTRY_INVALID');

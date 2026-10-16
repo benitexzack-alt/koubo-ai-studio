@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "musk-grok-r3-component-checks/v1",
+  "scope": "仅四卡14帧收拢路径、R3权威路径白名单与原字节快照同步",
+  "checks": [
+    {
+      "name": "TypeScript",
+      "command": "node node_modules/typescript/bin/tsc --project src/musk-grok-business-ai-20261016/tsconfig.json --noEmit --incremental false",
+      "cwd": "/Users/pc/Documents/口播/remotion",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "0893f0",
+          "wall_time_seconds": 0.692031167,
+          "exit_code": 0,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    },
+    {
+      "name": "R3参数",
+      "command": "node remotion/src/musk-grok-business-ai-20261016/check-parameters.cjs --runtime edit/20261016_musk_grok_business_ai/08_字幕校正R3/runtime-plan.r3.json",
+      "cwd": "/Users/pc/Documents/口播",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "dee0a9",
+          "wall_time_seconds": 0.242750875,
+          "exit_code": 0,
+          "original_token_count": 360,
+          "output": "{\n  \"result\": \"本期准备参数通过\",\n  \"canonicalRuntimePath\": \"/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/runtime-plan.r3.json\",\n  \"runtimeSha256\": \"998b5c216d7654aa635e2a9938cf3eb28a2ee85868c289ceccd600186e53fc65\",\n  \"frames\": 5035,\n  \"captions\": 80,\n  \"emptyEnglish\": 0,\n  \"events\": 29,\n  \"addedSfx\": 8,\n  \"continuousBusinessPhasesChecked\": true,\n  \"pushHoldWindowsChecked\": 7,\n  \"pendingMedia\": [],\n  \"typePixels\": {\n    \"title\": 60,\n    \"supporting\": 44,\n    \"category\": 32\n  },\n  \"layout\": {\n    \"presenter\": {\n      \"x\": 64,\n      \"y\": 620,\n      \"width\": 400,\n      \"height\": 225\n    },\n    \"paper\": {\n      \"x\": 520,\n      \"y\": 90,\n      \"width\": 1344,\n      \"height\": 768\n    },\n    \"caption\": {\n      \"x\": 88,\n      \"y\": 886,\n      \"width\": 1744,\n      \"height\": 168\n    },\n    \"transitionFrames\": 8,\n    \"mergedMediaWindows\": [\n      {\n        \"from\": 162,\n        \"to\": 402\n      },\n      {\n        \"from\": 600,\n        \"to\": 1083\n      },\n      {\n        \"from\": 1389,\n        \"to\": 1646\n      },\n      {\n        \"from\": 1660,\n        \"to\": 1933\n      },\n      {\n        \"from\": 2045,\n        \"to\": 2269\n      },\n      {\n        \"from\": 3857,\n        \"to\": 4097\n      }\n    ],\n    \"contiguousBoundaryChecksPassed\": true\n  },\n  \"formalParameters\": \"本期数据未就绪：正式模式拒绝待补或未验收素材\",\n  \"renderExecuted\": false,\n  \"mediaAcceptancePerformed\": false\n}\n"
+        }
+      }
+    },
+    {
+      "name": "14帧几何",
+      "command": "node edit/20261016_musk_grok_business_ai/09_正片导出R3/组件复核/核对14帧几何.cjs",
+      "cwd": "/Users/pc/Documents/口播",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "4fdc83",
+          "wall_time_seconds": 0.239642042,
+          "exit_code": 0,
+          "original_token_count": 159,
+          "output": "{\n  \"status\": \"通过\",\n  \"fromFrame\": 3211,\n  \"settledFrame\": 3225,\n  \"durationFrames\": 14,\n  \"sampleCountIncludingEndpoints\": 15,\n  \"path\": \"4帧原位收小→4帧上下两行分别横移→6帧上提到单行；旧否定标题前8帧退出\",\n  \"minPairSeparationPixels\": 5.484426594414003,\n  \"compositionSha256\": \"b9837cd493ebdc88aae25609c3ed7389a9f61386e79a11052a8b5dd4f340194a\",\n  \"limitations\": [\n    \"只验证源逻辑几何及保守倾斜包围盒，未渲染或检查成片视觉。\",\n    \"字宽按四个全角汉字和当前字号估算；未以字体栅格化冒充真实像素检查。\"\n  ],\n  \"renderExecuted\": false\n}\n"
+        }
+      }
+    }
+  ],
+  "renderExecuted": false,
+  "userAcceptanceClaimed": false,
+  "formalGateUnchanged": true
+}

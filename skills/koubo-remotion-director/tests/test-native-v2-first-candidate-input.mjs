@@ -7,7 +7,7 @@ import {tmpdir} from 'node:os';
 import {dirname, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {buildFirstCandidateInputContract, validateFirstCandidateInputContract} from '../scripts/first-candidate-input-contract.mjs';
-import {NATIVE_V2_INPUT_FORMAT, nativeV2FullDecodeTimeoutMs} from '../scripts/native-v2-first-candidate-input.mjs';
+import {NATIVE_V2_INPUT_FORMAT, nativeV2FullDecodeTimeoutMs, validateMuskGrokR3UserDirectedCorrections} from '../scripts/native-v2-first-candidate-input.mjs';
 import {PAPER_BASELINE_ID, PAPER_TEXT_POLICY} from '../scripts/paper-quality-baseline.mjs';
 import {paperMediaTools, runPaperMediaTool} from '../scripts/paper-asset-intake-media.mjs';
 import {validateDirectorExternalMessageAnchorV2} from '../scripts/director-contract-v2-core.mjs';
@@ -163,6 +163,9 @@ try {
     status: 'asr-correction-candidate', humanListeningPerformed: false, userConfirmed: false}]});
   change('mediaIntake', value => {value.spokenCorrectionReceipt = correction;});
   assert.equal(check().humanAcceptancePerformed, false); passed++;
+  const wrongScope = read('correction.json'); wrongScope.corrections[0].status = 'user-directed-spelling-correction';
+  change('mediaIntake', value => {value.spokenCorrectionReceipt = put('wrong-scope.json', wrongScope);});
+  assert.throws(() => check(), error => error.code === 'NV2_R3_CORRECTION_SCOPE_INVALID'); passed++;
   test('ASR原时间不得随工程缩改', () => {
     change('spokenTimeline', value => {value.segments[0].end = 0.9;});
     change('runtimePlan', value => {value.captions[0].to = 27;});
@@ -192,5 +195,56 @@ try {
     sourceMessageSha256: sha(root), issuerGroupId: 'unsigned-current-execution', explicitAcceptanceQuote: '只允许小样'},
     'director-first-candidate-input-authorization');
   assert.equal(unsigned.ok, false); passed++;
+  // 真实本期文本与来源只读；纯校字分支测试不再次解码本期媒体。
+  const r3Prefix = 'edit/20261016_musk_grok_business_ai/';
+  const currentRef = path => ({path: r3Prefix + path, sha256: sha(readFileSync(resolve(repo, r3Prefix + path)))});
+  const sourceBody = ref => JSON.parse(readFileSync(resolve(repo, ref.path), 'utf8'));
+  const sourceRefs = {
+    baseCorrectionReceipt: currentRef('04_后期准备/字幕制作/识别修正与待听词.v1.json'),
+    userInstruction: currentRef('08_字幕校正R3/用户校字原话.v1.json'),
+    changeReport: currentRef('08_字幕校正R3/校字变更与检查.v1.json'),
+    exportInstruction: currentRef('09_正片导出R3/本轮正片导出原话.v1.json'),
+  };
+  const segments = JSON.parse(readFileSync(resolve(repo, r3Prefix + '08_字幕校正R3/实录正文校字.r3.json'), 'utf8')).segments;
+  const r3Receipt = {schemaVersion: 'episode-user-directed-spelling-corrections/v1', ...sourceRefs,
+    userDirectedSpellingOnly: true, fullNormalSpeedListeningPerformed: false, factsVerified: false,
+    formalAuthorized: false, publishAuthorized: false, corrections: [
+      ...sourceBody(sourceRefs.baseCorrectionReceipt).corrections,
+      ...sourceBody(sourceRefs.changeReport).changes.map(change => {
+        const segment = segments.find(item => item.id === Number(change.captionId.slice(1)) - 1);
+        return {captionId: change.captionId, segmentId: segment.id, raw_text: change.before, text: change.after,
+          start: segment.start, end: segment.end, basis: change.basis, status: 'user-directed-spelling-correction',
+          userDirected: true, humanListeningPerformed: false, userConfirmed: false};
+      })]};
+  const r3Contract = {episodeId: 'musk-grok-business-ai-20261016', taskId: '20261016_musk_grok_business_ai_director_v2',
+    revisionId: 'musk-grok-business-ai-v9-full-candidate-r3-20261016'};
+  const r3Job = {videoId: r3Contract.episodeId, jobId: '20261016_musk_grok_business_ai_v9_candidate',
+    productionGate: {revisionId: r3Contract.revisionId}};
+  const r3Check = (receipt = r3Receipt, currentContract = r3Contract, currentJob = r3Job) =>
+    validateMuskGrokR3UserDirectedCorrections({projectRoot: repo, contract: currentContract, job: currentJob,
+      correction: receipt, segments, closure: {document: reference => ({body: sourceBody(reference)})}});
+  assert.equal(r3Check(), true); passed++;
+  const rejectR3 = (name, mutate, code) => {
+    const receipt = structuredClone(r3Receipt); mutate(receipt);
+    assert.throws(() => r3Check(receipt), error => error.code === code, name); passed++;
+  };
+  for (const key of ['episodeId', 'taskId', 'revisionId']) {
+    assert.throws(() => r3Check(r3Receipt, {...r3Contract, [key]: 'other'}),
+      error => error.code === 'NV2_R3_CORRECTION_SCOPE_INVALID'); passed++;
+  }
+  assert.throws(() => r3Check(r3Receipt, r3Contract, {...r3Job, jobId: 'other'}),
+    error => error.code === 'NV2_R3_CORRECTION_SCOPE_INVALID'); passed++;
+  for (const key of ['fullNormalSpeedListeningPerformed', 'factsVerified', 'formalAuthorized', 'publishAuthorized']) {
+    rejectR3(`校字不等于${key}`, value => {value[key] = true;}, 'NV2_R3_CORRECTION_ACCEPTANCE_INVALID');
+  }
+  for (const key of Object.keys(sourceRefs)) {
+    rejectR3(`来源不可换${key}`, value => {value[key].sha256 = '0'.repeat(64);}, 'NV2_R3_CORRECTION_SOURCE_INVALID');
+  }
+  rejectR3('不得改旧11条', value => {value.corrections[0].text = 'new';}, 'NV2_R3_BASE_CORRECTIONS_CHANGED');
+  rejectR3('不得增加第9条用户校字', value => {value.corrections.push({...value.corrections.at(-1)});}, 'NV2_R3_BASE_CORRECTIONS_CHANGED');
+  for (const [key, value] of Object.entries({text: '新增观点', raw_text: '另一原文', start: 0, end: 999,
+    userConfirmed: true, humanListeningPerformed: true, userDirected: false, status: 'asr-correction-candidate'})) {
+    rejectR3(`实际8条差异不可改${key}`, receipt => {receipt.corrections[11][key] = value;}, 'NV2_R3_CORRECTION_DIFF_MISMATCH');
+  }
   console.log(JSON.stringify({ok: true, passed, scope: '隔离原生输入、真实解码与拒绝边界；未签署、未生产渲染、未人工验收'}));
 } finally { rmSync(root, {recursive: true, force: true}); }

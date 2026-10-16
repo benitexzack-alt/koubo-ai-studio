@@ -41,6 +41,27 @@ for (const [key, value] of Object.entries({mode: 'formal', command: 'direct-remo
     renderContext: {...r2Context, [key]: value}}), error => error.code === 'RRPV2_PREVIEW_SETTINGS_SCOPE_INVALID', `R2 ${key}`);
   passed++;
 }
+const r3Context = {...context, revisionId: 'musk-grok-business-ai-v9-full-candidate-r3-20261016'};
+const r3Settings = {...settings, scale: 1};
+const r3Args = buildControlledRemotionRenderArgsV2({...base, previewRenderSettings: r3Settings, renderContext: r3Context});
+assert.deepEqual(r3Args, [...plain, '--concurrency=1', '--timeout=120000', '--scale=1']); passed++;
+assert.equal(r3Context.width * r3Settings.scale, 1920);
+assert.equal(r3Context.height * r3Settings.scale, 1080);
+assert.equal(r3Args.some(arg => /^--(?:frames|fps|duration|props)(?:=|$)/u.test(arg)), false); passed++;
+assert.throws(() => buildControlledRemotionRenderArgsV2({...base, previewRenderSettings: settings, renderContext: r3Context}),
+  error => error.code === 'RRPV2_PREVIEW_SETTINGS_INVALID'); passed++;
+for (const [key, value] of Object.entries({mode: 'formal', command: 'direct-remotion-render',
+  revisionId: 'musk-grok-business-ai-v9-full-candidate-r4-20261016', jobId: 'another-job', episodeId: 'another-episode',
+  width: 3840, height: 2160, fps: 60, durationSeconds: 90})) {
+  assert.throws(() => buildControlledRemotionRenderArgsV2({...base, previewRenderSettings: r3Settings,
+    renderContext: {...r3Context, [key]: value}}), error => error.code === 'RRPV2_PREVIEW_SETTINGS_SCOPE_INVALID', `R3 ${key}`);
+  passed++;
+}
+for (const invalid of [{...r3Settings, concurrency: 2}, {...r3Settings, timeoutInMilliseconds: 600000},
+  {...r3Settings, scale: '1'}, {...r3Settings, scale: 1.5}, {...r3Settings, crf: 1}]) {
+  assert.throws(() => buildControlledRemotionRenderArgsV2({...base, previewRenderSettings: invalid, renderContext: r3Context}),
+    error => error.code === 'RRPV2_PREVIEW_SETTINGS_INVALID'); passed++;
+}
 console.log(JSON.stringify({ok: true, passed, defaultArgsUnchanged: true, formalSettingsRejected: true,
   previewDimensions: [1280, 720], logicalDimensions: [1920, 1080], fps: 30, durationInFrames: 5035,
-  productionRenderInvoked: false}));
+  r3FullCandidateDimensions: [1920, 1080], productionRenderInvoked: false}));

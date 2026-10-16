@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "episode-r3-agent-execution-summary/v1",
+  "recordedAt": "2026-10-16T13:18:27.579486+00:00",
+  "scope": "本期 R3 受控完整质量候选导出；不构成人工终验或发布授权。",
+  "testEvidenceKind": "以下测试结果来自本轮真实工具执行结果；这是事后结构化汇总，不是原始测试 stdout。未在渲染期间重复运行测试。",
+  "tests": [
+    {
+      "argv": [
+        "node",
+        "skills/koubo-remotion-director/tests/test-musk-grok-chat-preview-authorization.mjs"
+      ],
+      "exitCode": 0,
+      "passed": 64
+    },
+    {
+      "argv": [
+        "node",
+        "skills/koubo-remotion-director/tests/test-musk-grok-preview-render-settings.mjs"
+      ],
+      "exitCode": 0,
+      "passed": 49
+    },
+    {
+      "argv": [
+        "node",
+        "skills/koubo-remotion-director/tests/test-native-v2-first-candidate-input.mjs"
+      ],
+      "exitCode": 0,
+      "passed": 49
+    },
+    {
+      "argv": [
+        "node",
+        "--experimental-vm-modules",
+        "skills/koubo-remotion-director/tests/test-first-candidate-input-contract.mjs"
+      ],
+      "exitCode": 0,
+      "passed": 58
+    },
+    {
+      "argv": [
+        "node",
+        "tools/build-director-skill-lock.mjs"
+      ],
+      "exitCode": 0,
+      "packageSha256": "df8989ed4f8a7d34d0b07cae15fa82c9dc8a647d4712a1da7435d7d4e32f9fc0",
+      "fileCount": 131
+    },
+    {
+      "argv": [
+        "node",
+        "tools/validate-active-director-profile.mjs"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "earlierFailedInvocations": [
+    {
+      "test": "test-native-v2-first-candidate-input.mjs",
+      "failure": "测试新增局部 const prefix 与旧声明重名，解析失败；改为 r3Prefix 后上述 49 项通过。"
+    },
+    {
+      "test": "test-first-candidate-input-contract.mjs",
+      "failure": "首次调用缺少 --experimental-vm-modules，SourceTextModule 导入失败；使用上列正确命令后 58 项通过，未为此更改生产代码。"
+    }
+  ],
+  "preparationCheck": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/R3准备只读核对.v1.json",
+    "sha256": "108f180b9286265e7d2076e39a1432c75321b8b77377b110506967d42c211e19"
+  },
+  "knowledgeStartReceipt": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/知识上下文启动命令.v1.json",
+    "sha256": "9f0f5e455b672ad6ba4cb99b2bb3de6275e4f4b0b9caa55c46a2d42f6f8ba2d7"
+  },
+  "knowledgeValidationReceipt": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/知识上下文复检命令.v1.json",
+    "sha256": "fca77d0029dd8777ad347f13a5377ecada012805ee787078e7393cb19c8de7b5"
+  },
+  "render": {
+    "sessionId": 33534,
+    "singleStartedRender": true,
+    "exitCode": 0,
+    "launchSignal": "controlled-render-start",
+    "controlledEntrypoint": "skills/koubo-remotion-director/scripts/run-remotion-production-v2.mjs",
+    "job": {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/production-job.first-candidate.v1.json",
+      "sha256": "5af6be9d36c17a3a8918d87083837c9d6c38a2a1253189644a41e10e9b844080"
+    },
+    "command": "direct-remotion-preview",
+    "mode": "preview",
+    "candidatePurpose": "本期完整质量正片供用户终看",
+    "configuredDimensions": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationInFrames": 5035
+    },
+    "actualReportedRenderedFrameCount": 5035,
+    "fullStdout": {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/受控正片导出.完整stdout.log",
+      "sha256": "5c80e82712b62804fc0f0dc072fd86d3be5c4985dc2fff73b18fee95ba826a61"
+    },
+    "productionReceipt": {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/预览与质检/.受控正片候选_R3_1080p_有音效.mp4.production-receipt.c82fbb42-2478-4845-9270-30453f46a405.json",
+      "sha256": "acdf90d47cc963302ab0a58bb10876323d9f62baadba5eef70d25b97f984d5a6"
+    },
+    "output": {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/预览与质检/受控正片候选_R3_1080p_有音效.mp4",
+      "sha256": "9b887bdba60d81caa857cd7ec84e0e45793bfc0aa0717793b054f65ba1b36204",
+      "bytes": 195936314
+    },
+    "threeIntegritySealsMatched": true,
+    "integritySealSha256": "0e33be9b26ca3f6c6faf20fc3fed842d47f50cd809b05424cd030403e309696e",
+    "independentFullPreflightBeforeWrapperPerformed": false,
+    "controlledWrapperExecutedItsPreAndPostChecks": true,
+    "nativeFullDecodeAndPcmChecksWereActuallyPerformed": true,
+    "sameProcessExistingHashVerifiedMediaCacheReused": true
+  },
+  "handoff": "主线程继续输出文件解码、声画同步、字幕/视觉及终审观看件检查。此汇总不冒充这些下游检查已经完成。",
+  "fullWatchConfirmed": false,
+  "humanListeningConfirmed": false,
+  "factsVerified": false,
+  "formalAccepted": false,
+  "publishAuthorized": false,
+  "independentSignature": false
+}

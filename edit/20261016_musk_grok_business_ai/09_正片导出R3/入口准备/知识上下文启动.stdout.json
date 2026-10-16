@@ -1,0 +1,999 @@
+{
+  "schema_version": "opc-task-context/1.0",
+  "status": "context-ready",
+  "summary": "任务级项目上下文与读取回执已就绪",
+  "task": {
+    "id": "task-20261016T130214Z-musk-grok-r3",
+    "project": "口播",
+    "objective": "本期V9 R3按真实用户指令校正8处字幕并导出完整1920x1080有声候选正片供终看；原声和时点保留，107秒卡片局部修正，未全片听审、未事实放行、未发布",
+    "cwd": "/Users/pc/Documents/口播",
+    "important": true,
+    "external_action": false
+  },
+  "project_route": {
+    "project_id": "koubo",
+    "project_root": "/Users/pc/Documents/口播",
+    "match_status": "matched",
+    "execution_scope": {
+      "primary_project_id": "koubo",
+      "primary_project_root": "/Users/pc/Documents/口播",
+      "primary_access_mode": "task-scoped-read-write",
+      "write_allowed_roots": [
+        "/Users/pc/Documents/口播"
+      ],
+      "read_only_roots": [],
+      "related_project_rule": "关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。",
+      "write_escalation_rule": "确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。"
+    }
+  },
+  "index_freshness": {
+    "schema_version": "opc-rag-freshness/1.0",
+    "status": "current",
+    "summary": "检索前索引已与当前安全候选保持一致",
+    "before_status": "stale",
+    "updated": true,
+    "update_attempts": 1,
+    "full_rebuild": false,
+    "changed_documents": 1,
+    "removed_documents": 0,
+    "generation": {
+      "manifest_sha256": "28a5af565ed4af7fdb405f7008fcbcf56e3c582d4c3f74387d55588b6d693810",
+      "config_sha256": "7d80e391da915c1f4363776317039cad5b742609403f0a671c1ffb0fbc4e500d",
+      "embedding_model": "nomic-embed-text:latest",
+      "indexed_at": "2026-10-16T13:05:33.145014+00:00",
+      "database_sha256": "864792d4edd02f0ccc37ce37ee312ca13a017b15a50ca6959f0f440f435abc58",
+      "id": "f5cba517df93d9b22e752a6870ba8366b3ecafc952042108054b0737889e6fd0"
+    },
+    "artifacts": [
+      "/Users/pc/Documents/个人知识库/.opc-rag/opc_rag.sqlite3"
+    ]
+  },
+  "rag_role": "candidate-retrieval-only",
+  "rag_candidates": [
+    {
+      "path": "07_知识库治理/第二大脑/05-可靠自生长能力审计与修复-2026-08-09.md",
+      "line_start": 91,
+      "line_end": 124,
+      "heading": "六、阶段判定",
+      "status": "current",
+      "authority": "governance-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "| 真实事故卡复核 | 阻断 | 旧 v3 卡缺少 v4 授权和证据身份，不能重新进入写稿 | 不代表未来相同主题永远不能做 |\n\n## 五、当前能力边界\n\n### 已经落成\n\n1. 项目启动可召回当前事实、失败、候选、验证和规则，并保留来源哈希；\n2. 候选与用户决定在关键入口已有机器权限区分；\n3. 口播主张与主证据可做确定性最近六条去重；\n4. 失败可以保留、写回规则、形成回归并在下一任务被召回；\n5. 通用写回支持证据文件、哈希、幂等、乐观锁和人工晋升队列。\n6. 主项目与关联项目已有机器可读执行范围，知识库任务不会再因提及口播而自动获得口播仓库写权限。\n\n### 尚未完成\n\n1. 尚未用 v4 门禁完成一条“用户明确选题 → 正向接受 → 写回 → 再召回”的真实口播；\n2. 尚未用非口播项目完成同等级跨项目闭环，不能外推整个 Vault；\n3. `source_ref` 仍依赖执行环境提供真实消息引用，本地校验器无法做密码学级聊天身份验证；\n4. 证据 ID 目前由流程登记，恶意或错误地给同一来源分配不同 ID 仍可能绕过精确去重；\n5. 待晋升经验仍需人工审阅和真实复用，不允许自动进入全局最佳实践。\n6. 2026-08-10 样本已经发生过知识库越权介入，必须把越界产物与口播自动化自身产物分开，不能混合作为正向闭环证据。\n\n## 六、阶段判定\n\n| 阶段 | 状态 |\n|---|---|\n| 文件结构、路由、项目注册 | 已落成 |\n| 可追踪召回与候选降权 | 已落成并通过机器回归 |\n| 授权、证据去重、决策写回 | 已修复并通过机器回归 |\n| 真实失败闭环 | 已完成两类事故验证：成片人工否决、未授权选题与重复证据 |\n| 真实正向口播闭环 | 已完成用户明确选题；等待口播自动化独立产出、用户验收、写回和再召回 |\n| 非口播跨项目闭环 | 待验证 |\n| 整个 Obsidian 可靠自生长 | 未完成，当前不能宣称全局落成 |",
+      "document_sha256": "7aec07a62489543ad5ecf287d7a635b86c732f58bd821c2c7bc37d6a83ec425a",
+      "score": 0.01742424,
+      "lexical_rank": null,
+      "vector_rank": 6,
+      "vector_similarity": 0.73469549,
+      "lexical_anchor": false
+    },
+    {
+      "path": "06_每日复盘/2026-10-08.md",
+      "line_start": 529,
+      "line_end": 550,
+      "heading": "四、关键决策",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- 未确认：完整V3云端转换、全部149来源逐源导出、所有文内入口与全量图表真实显示。11组14URL缺项未被宣称补齐。\n\n### 二、今天做成的事\n\n- 形成V3并保存原版、V2和V3及校验，不覆盖冻结原件。完成独立图像、编号、XLSX和图文布局候选调查。\n- 用用户直接上传片段、三行MIT代码、编者自产表、编者目录及原照片完成小样真实云转换；修复六链接与代码格式并再次正常导出核对。\n- 将小样、两次云导出、对比脚本/回执、截图和本地渲染保存在公司90目录“2026-10-07_AI资料原文合集/飞书样式净化排版/飞书小样核验”；公司08索引和接续状态已经更新。\n- 个人知识库沿用既有公司项目符号链接引用同一份公司资料，不新建第二个资料库。未更新Codex记忆。\n\n### 三、今天踩过的坑\n\n- Word书签内链不会自动变成可用的飞书文内入口，需使用实际生成的章节地址；只看到入口文字不能视为能点击。\n- Word等宽代码样式首次转换丢失。代码块恢复后云导出又会加入平台语言标签和单格框表，必须单列平台新增项，不能为了让比较通过而归一化原空白或删除源文字。\n- 云导出编号定义的start值不能替代真实显示：同一导出在bundled渲染为1、1、1，在线实际为1、2、3；已分别保留证据，未改文件掩盖限制。\n- 多行AX文本有零宽编辑字符，需按真实DOM状态选范围并核对；原生键盘选择与已显示的格式快捷键可用。浏览器操作未借助隐藏状态或后端接口。\n\n### 四、关键决策\n\n- 用户已批准第一接续路线，不再次询问排版方案。全量全文云端迁入等待真实复用范围答复；这不是重新要求飞书CLI或扩权。\n- 继续按最新要求保留原文字、价格、作者和出处，后续由用户改写。第三方能力、案例和营收仍是外部陈述，不能记成元石已验证能力。\n- 严格区分小样真实通过与完整合集交付。小样链接保留供接续，不作为最终单篇链接交付。",
+      "document_sha256": "a85467faaaf6e3ed6bfb35b90e04ecfbd7d1405d4ec80a6282e6935b8d57ceca",
+      "score": 0.01612903,
+      "lexical_rank": null,
+      "vector_rank": 2,
+      "vector_similarity": 0.76546481,
+      "lexical_anchor": false
+    },
+    {
+      "path": "06_每日复盘/2026-09-18.md",
+      "line_start": 397,
+      "line_end": 411,
+      "heading": "口播后续执行：用户批准返修R2",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- 下一步：按既有组件建立独立修订版，恢复语义动效和可感知运镜，先审动态片段再正式输出。本轮不重新渲染，不修改旧批准及绑定记录来冒充已确认版本。\n\n### 口播后续执行：用户批准返修R2\n\n- 已验证事实：用户“确认返修”后，独立工程恢复19处V8局部语义层、两处Shotcraft划线及语义运镜。原声、实录字幕、六段生成素材及入出点、11条音效保持原样。\n- 已验证事实：第二轮43.8秒有音效／仅原声预览已生成，共用同一条画面码流。初轮中心节点换行只通过内边距修正；已查看最终43张风险帧，未将文件存在冒充视觉验证。\n- 已验证事实：原片与输出三块固定背景配准，代表段缩放实测1.012→1.075→1.012，相关度0.995–0.999；证明实际输出存在推进、保持和回落。全段解码、黑帧、长静音检查通过。\n- 已验证事实：移除实测2048采样编码填充，12窗原声定位最大残差16采样（0.33毫秒）；响度−16.06／−16.07 LUFS，真峰值均−2.19 dBTP。独立渲染画面码流不完全一致，最终对照采用共用画面、替换已校正音轨，已验证码流一致。\n- 踩坑：运镜测量初次采样只覆盖到语义段中部，无法检验回落；根据真实运镜切点补至该段尾部，并用分离的三块背景消除缩放和平移混淆。未为了通过测量修改视频运镜。\n- 踩坑：日终扫描使知识索引过期；刷新本期上下文并验证有效后重新执行质检。最终质量证据来自复检，不沿用失效上下文。\n- 工程验证：本期定向类型检查、8项预览入口正负例通过，既有62项受限入口回归已通过。仅本轮文件定向Git存档，不提交无关脏文件，不推送外部。\n- 交付入口：`/Users/pc/Documents/口播/edit/20260917_ai_efficiency_sharing/07_预览与质检/返修R2观看说明.md`。有音效观看版SHA为`a618c4a4853c51c5666e5150848581300e3002e37c498221a5f60fbee39b482a`。\n- 未确认事项：用户完整观看、手机外放听感与最终风格验收。抽帧和几何测量只支持对应技术及视觉事实，不能代替用户验收。\n- 下一步：用户确认本次预览后再正式重渲染，并按此前指定4:3更新发布包。本轮保留旧正式片与原批准，尚未出新正式片、未发布或投放。",
+      "document_sha256": "b6acad38f972f03a1f591e1adc618a24a78a0a40363817aed6c3663aebc2150c",
+      "score": 0.0227673,
+      "lexical_rank": 46,
+      "vector_rank": 15,
+      "vector_similarity": 0.72114488,
+      "lexical_anchor": false
+    },
+    {
+      "path": "06_每日复盘/2026-10-07.md",
+      "line_start": 1305,
+      "line_end": 1328,
+      "heading": "五、当前项目状态",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- 本轮用户只要求先做本期成片，在制作过程中验证优化，并保留原纸艺声；不包含全局Skill改造。\n\n### 二、今天做成的事\n\n- 准备本期完整代理、隔离Remotion入口、10章与22组语义内容动效、12处数字运镜及六处纸艺原速等比窗口。87页实录中英字幕候选接入完整时间轴，原词时点保留；全库157卡扫描后拒用两条不合实际语义/词序的自动候选，未凑数量。\n- 两版R2混音实际生成并保留全量口播与六镜原生声。41条附加音效/20来源，修正两处侧链后主峰偏晚，实际预混最大偏差1.95帧；WithSfx −16.59 LUFS、−1.79 dBTP，NoSfx与R1字节相同。原声预混仅固定+4dB，附加声避让人声，不压低人声；P02/P05逐镜限峰。\n\n### 三、今天踩过的坑\n\n- 系统分割虽恢复手与袖，头顶相框仍误入；颜色差分清理误伤额头，失败版本已弃用、未接入成片。连续失败后停止自动盲修，已给出只修5.4秒人工轮廓方案供用户选择。\n- 本地两模型对尾句和少数快读词仍冲突；原声无法由当前模型直接听审，机器同源校验不能替代真实识别质量。没有恢复拍前原稿或把“和阿祝”作为合格正式字幕。\n- 知识索引代际变动曾中止混音，使用官方start刷新后实际context-valid才继续；未绕过门禁。独立TS检查初选Node16不匹配工程，按现有Bundler配置重跑通过，没有改源码扩展名。\n\n### 四、关键决策\n\n- 本次不再新增“先等45秒样片认可才做全片”的流程；下一交付仍是完整8534帧候选，最后正常速度全片观看及发布独立人审。\n- 原声中的95%/89%没有查到支持原说法的原始统计，已询问是否保留声音另加简短更正；不得偷偷改字幕或做未经核验数字大卡。\n\n### 五、当前项目状态\n\n- 已验证：媒体尺寸/时长/音轨、候选字幕机械同源1227/1227、候选组件类型检查、完整157卡扫描结构、音频预混差分/响度/峰值与原片未变。\n- 合理推断：目前的语义布局和逐源配平可进入后续合成复核；不是观感或听感结论。\n- 未确认：少数实录疑词、开场轮廓方案、95%/89%处理、正常速度纸艺与声音听审。**尚未导出MP4、正式发布包或公开发布；没有成片验收。**",
+      "document_sha256": "33596cdc8faed7cda653d44989b3a5a74ee96af7126953a6765657063248a8b4",
+      "score": 0.02548563,
+      "lexical_rank": 5,
+      "vector_rank": 39,
+      "vector_similarity": 0.70330819,
+      "lexical_anchor": false
+    },
+    {
+      "path": "06_每日复盘/2026-10-16.md",
+      "line_start": 1170,
+      "line_end": 1187,
+      "heading": "六、Git提交与验证",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "已验证事实：汽车三原帧窗84/432/744接成20—36.1秒至参数句结束；指定MJ原图、两纸艺右侧完整画面和左下真人已实际入片。开场、75.633—123.133秒六阶段同容器、141.833—147.567秒玩具工具对照、7处推近保持已实现。受控预览完整5035帧/720p/30fps/约2分48秒，前后121文件哈希一致。观看副本SHA 4df6897ad15ae1b44e52fb06dd3ab9cfe13928fc92daa2d66f83bac863328551。\n\n### 三、今天踩过的坑\n\n不能以V9档案或效果数量证明实际采用。实际中途帧发现107.27—107.37秒任务卡收拢时短暂交叠，稳定态检查没有暴露；该处约14帧重排窗未登记文字无遮挡，正常速度观感待用户判断。纸艺进出约8帧真人会经过左侧、源纸艺自身遮词均已如实记录。父片固定音轨延后约42.6875毫秒，测量后只调整封装时间戳，不覆盖受控原件。\n\n### 四、关键决策\n\n延续内部小样授权，窄扩本期R2入口，不新增通用签名绕行或正式发布权限。保持内容为主、用同一对象连续变化辅助理解；不为装饰堆满效果。不重生素材、不改正文、不升级V10。\n\n### 五、当前项目状态\n\n已验证事实：完整解码无黑帧；5035视频包、7870音频包内容不变，视频时点不变；五个原声窗新增延迟0毫秒、相关度>0.9975。抽样画面确认指定布局；七段同源固定车顶拟合确认到位/保持1.07或1.08。合理推断：可供内部整体观看。未确认：卡片收拢交叠的正常速度影响、完整视听与用户接受、4处字幕疑词、源纸艺动态与新闻事实待决。\n\n### 六、Git提交与验证\n\n本轮入口边界47项、低清参数32项和档案锁检查通过；组件类型/本期参数检查通过，实际受控渲染退出0。仅存档自有R2输入、组件、窄入口与检查报告，保留其他任务脏改动；暂存差异检查通过，提交42d3aae3，共104个本轮文件，未push。",
+      "document_sha256": "a6f6a422e5c6f2ecb758bfb70d747a74b60af8b1159f47f09fe9d8135acdea06",
+      "score": 0.02720588,
+      "lexical_rank": 20,
+      "vector_rank": 8,
+      "vector_similarity": 0.73163573,
+      "lexical_anchor": false
+    },
+    {
+      "path": "06_每日复盘/2026-09-29.md",
+      "line_start": 668,
+      "line_end": 685,
+      "heading": "本期样片批准后的完整正片与发布包",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- 下一步：范围确认后落实本期预览、风险帧与声音检查；正式成片及发布仍未完成。今日收工扫描再次运行，保留其他项目区块。\n\n### 本期41秒视听样片已导出\n\n- 已验证事实：用户明确“好的，生成样片。”后，仅新增本期隔离预览入口，输入哈希和important任务上下文复检通过后运行；未修改公共导演Skill、V8组件、正式生产授权或原片。\n- 产出：`edit/20260926_industry_ai_no_anxiety/07_预览与质检/视听小样R1/`两版41秒、1920×1080、30fps MP4；有音效版SHA为`1b62f2f0030d0090f6c0fcf707cd663d21f66365d4d8130d60a8f1b977ad46dd`。20页实录双语、3处代表纸艺、3动效和7附加音效；无附加音效版仍保留原声与纸艺动作声。\n- 已验证事实：14风险帧复核，修正小窗黑边及扫描线经过来源文字；末段提前3帧保护起音，前段尾部停顿少3帧，总长度不变。两版画面码流相同，完整解码通过，音视频0至41秒一致，未检出持续黑帧；约−16.9 LUFS和−1.5 dBFS真峰值。片尾约0.615秒低声段保留用于纸艺结果停留。\n- 未确认：用户正常速度视听、音效感知、字幕逐句听审仍待完成；没有正式成片、发布包或公开发布。预览应用回执明确B19略去末3帧，不能冒充全片应用验收。\n- 下一步：等待本条样片意见，只修实际反馈点；不自动进入正式渲染。收工扫描已运行，保留当日其他项目与他人内容。\n\n### 本期样片批准后的完整正片与发布包\n\n- 已验证事实：用户“好的，通过出正片。”后运行本期受控V2正式入口，122.9秒、3687帧、1920×1080/30fps MP4已生成，SHA-256为`0650907cbda118bb6ac6278033bd57cf78c7b70f33d71203df0de772bf04eefa`。保留完整实录、59页双语、5纸艺及原生音、3Shotcraft与7个附加音效，AOL更正和左下真人沿用已批样片。\n- 已验证事实：完整解码、黑帧/长静音检查、最终AAC与混音零采样偏移、7/7音效保留、29风险帧抽检、Shotcraft应用回执及发布包哈希检查通过。−16.9 LUFS、−1.5 dBFS。发布包含本条正片122.7秒真人原帧、3:4封面提示词、标题/文案/话题、字幕、来源与技术记录。\n- 边界：未冒称正常速度全片听审或全部事实放行；最终成片仍待用户完整确认，未生成封面成图、未上传发布或投放，未修改导演Skill/纸艺基准。没有借用旧片授权；只新增本期正式入口与必要分派，其他任务脏改动保留。\n- 下一步：用户完整观看后仅按实际问题返工；平台发布及版权/事实终审独立判断，不自动推进。本轮收工扫描已运行，当日其他项目内容保留。\n- Git存档：本轮独立提交`e7fbd90`；只暂存本期文件和共享文件的本轮小块，保留其他任务未提交改动，未push。固定哈希的适配器保留原有末尾空行，差异检查只关闭该无害空行提示，其他空白检查通过；不为格式改动破坏已渲染证据绑定。完整发布包ZIP解压校验通过。",
+      "document_sha256": "7d35ffa75bf9a7e9fd7b28ca9e4c78aa035c8c57f0c5d7cb8e62f8ed918060cd",
+      "score": 0.01639344,
+      "lexical_rank": 1,
+      "vector_rank": null,
+      "vector_similarity": null,
+      "lexical_anchor": true
+    },
+    {
+      "path": "06_每日复盘/2026-09-30.md",
+      "line_start": 448,
+      "line_end": 473,
+      "heading": "四、关键决策",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- 下一步：登录后检查官方桌面设置的电脑控制入口；获得消息授权后取回1080p并核验原文件哈希。不进行公开发布、第三方云盘上传或插件安装。\n\n## 口播剪辑：Meta个人助理与本地商家\n\n### 一、今天确认的重要事实\n\n- 已验证事实：用户已放好完整口播、7纸艺、1情景；连同14公开资料共23份输入技术检查通过，生成素材原生音均存在。纸艺实际1344×768，非平台设置的2K。\n- 已验证事实：140页字幕与本地规范实录1899字一致；两处ASR歧义有原片直出8秒试听证据。未完成全片人耳听审，不能说字幕全部正确。\n- 已验证事实：全157卡/214样式匹配后，4组逐项呈现采用实际词级时点，其余16个V8连续对象保留；公开资料安排同步左下真人和独立字幕。\n\n### 二、今天做成的事\n\n- 仅本期建立素材验收、实录字幕、语义动效、逐动作混音、独立组件和输入哈希封装，不改原片、历史成片或共享导演Skill。\n- 63音点＋8原生声进入混音；r3独立检查为−17.48LUFS/−1.70dBTP，63/63音点与8/8原生窗有差分，原生窗外基线原声差分为0。两处偏弱纸声改为r3入场声后能量约提升16dB；正常速度听感尚未确认，r2报告保留。\n\n### 三、今天踩过的坑\n\n- 原自动列表末项只留2–3帧，均分不是语义绑定；已由本期词级适配修正。缺图纸胶带/丢关系连线拒绝，不硬凑效果数量。\n- P01有筛选动作但候选结果不足明确，仅该镜待审。\n- 活动新纸艺与旧V2通用预览合同冲突，不能以缺素材解释或通过重建旧合同倒灌固定字牌。\n\n### 四、关键决策\n\n- 请求用户明确批准本期独立隔离小样：保留实际哈希、上下文、原声字幕、技术检查，formalEnabled=false、publishAuthorized=false；不冒充V2正式生产通过或人审通过。\n- 未获得该许可前，运行入口拒绝执行。无渲染MP4、无完整发布包，不登记完成，不借历史授权。",
+      "document_sha256": "e68ad2d447ddaf7a096e3b492933d481b4af2f99f63ca9050553b6e9c44044e1",
+      "score": 0.0221496,
+      "lexical_rank": 21,
+      "vector_rank": 42,
+      "vector_similarity": 0.70187041,
+      "lexical_anchor": false
+    },
+    {
+      "path": "06_每日复盘/2026-09-12.md",
+      "line_start": 511,
+      "line_end": 537,
+      "heading": "七、下一步",
+      "status": "active",
+      "authority": "timeline-evidence",
+      "lifecycle_layer": "layer-2-synthesis",
+      "text": "- 安全观察：一次只读进程列表把渲染进程所带的完整第三方鉴权令牌显示出来。令牌未复述、未写入交付物，随即停止该查看方式；仍需轮换令牌并排查环境快照为何进入进程参数。\n\n## 四、关键决策\n\n- 只移除内部候选状态条，不改变用户已确认的其他画面、字幕、纸艺、音效和 Shotcraft 结构。\n- 用两遍 loudnorm 将全片标准化到约 −16.3 LUFS、−1.95 dBTP，同时 `-c:v copy` 保留原视频码流；前后编码视频流 SHA 一致。\n- 本次状态固定为 `ready-for-user-review`；不伪造正式签名、字幕通过、完整观看、正式 release 或发布结果。\n\n## 五、当前项目状态\n\n- 候选正片与完整发布包已生成并通过机器质检。\n- 正式 V2 生产门禁仍为 false；字幕听校与用户完整观看仍是下一验收门。\n- 未执行外部上传、抖音发布、DOU+、广告或对外发送。\n\n## 六、Git 提交与验证\n\n- 口播仓库已提交 `e05329b feat: 导出兰州产业AI V9.1 V8完整候选`；只纳入本条净版 composition、运行时回执、发布包小型记录与项目复盘，没有使用 `git add -A`，没有纳入无关脏文件或 936 MB 成片。\n- 验证已完成：定向 TypeScript、运行时一致性、最终 MP4 完整解码、ffprobe 10091 帧、黑帧 0、长静音 0、清单 24/24。\n\n## 七、下一步\n\n- 用户正常速度完整观看最终有声候选，确认动画节奏、字幕阅读和音效体感。\n- 对 61 页字幕完成听校，优先核对 16 项 ASR 修正候选和 8 项不确定项。\n- 如用户确认通过，再单独处理正式 release 门禁；公开发布仍需独立决定并核对当日 AI/营销声明。\n- 轮换本轮可能暴露的第三方鉴权令牌，并排查渲染进程参数携带环境快照的原因。",
+      "document_sha256": "3e391d9ecb00c07edfd8949a8a19bbbdb394d78ddda60f4ae47f5417ac195683",
+      "score": 0.01612903,
+      "lexical_rank": 2,
+      "vector_rank": null,
+      "vector_similarity": null,
+      "lexical_anchor": false
+    }
+  ],
+  "knowledge_use_ledger": [
+    {
+      "group": "current_project_index",
+      "path": "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+      "resolved_path": "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+      "sha256": "6f4cc6620e11c5d50d2cfb4996898b1e27bb4009ba6c91704015f90018ca0e4b",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement",
+        "project-bootstrap"
+      ],
+      "application_note": "读取本期相关edit-release入口与V9基线索引；应用到本期七项输入引用，不把历史任务当本期验收。 R2复用同轮先前真实读取，当前SHA重新核对不变；应用于本次局部修改，未补造全片视听。 R3继续适用；当前SHA不变。仅本条校字及完整分辨率候选，未新增发布许可。",
+      "problems": []
+    },
+    {
+      "group": "current_project_summary",
+      "path": "/Users/pc/Documents/口播/project.md",
+      "resolved_path": "/Users/pc/Documents/口播/project.md",
+      "sha256": "3e9f7f84aaae0fa4d6864bf4d900079e962f0a37f5ecb9ff1467eab0aeb7fd00",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement",
+        "project-bootstrap"
+      ],
+      "application_note": "实际回读顶部R3校字与R2小样状态，应用用户8条校字和1080p候选导出范围；R1/R2历史保留，不把正片输出当已完成终验。",
+      "problems": []
+    },
+    {
+      "group": "latest_update",
+      "path": "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+      "resolved_path": "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+      "sha256": "7eea8aad282ee451520c0b8c68cf61acf6b38f054de604428d29437c8c0ac65b",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement",
+        "project-bootstrap"
+      ],
+      "application_note": "实际回读用户原稿校字R3、R2受控结果和107秒卡片交叠记录；本轮只修对应路径，原声/原ASR/时点保留，按用户指令校字不冒称独立听审或事实通过。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/口播/AGENTS.md",
+      "resolved_path": "/Users/pc/Documents/口播/AGENTS.md",
+      "sha256": "b32a9ba8db0b8df9055d04dca92ef35dac26d196a385ad19165a60578b67dbce",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement",
+        "project-bootstrap"
+      ],
+      "application_note": "读取用户本轮提供的项目规则及当前本地阶段路由；仅执行已授权内部候选输入，实录唯一正文，候选不等于发布与用户验收。 R2复用同轮先前真实读取，当前SHA重新核对不变；应用于本次局部修改，未补造全片视听。 R3继续适用；当前SHA不变。仅本条校字及完整分辨率候选，未新增发布许可。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/口播/knowledge/22-实录优先字幕与系列发布包硬门禁.md",
+      "resolved_path": "/Users/pc/Documents/口播/knowledge/22-实录优先字幕与系列发布包硬门禁.md",
+      "sha256": "28d9149822e2753c6aae43fa384d51a5ea2c6584dae9006d4bdca652e6d5cc3a",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "已读取实录唯一正文、英文从实录翻译及正式交付门槛；本期四疑词不按拍前稿替换，发布及完整观看保持false。 R2复用同轮先前真实读取，当前SHA重新核对不变；应用于本次局部修改，未补造全片视听。 R3继续适用；当前SHA不变。仅本条校字及完整分辨率候选，未新增发布许可。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/口播/knowledge/23-V9导演编排与动效采用基线.md",
+      "resolved_path": "/Users/pc/Documents/口播/knowledge/23-V9导演编排与动效采用基线.md",
+      "sha256": "b30a1893c44d41a3f167aa425637d005247714d428bc5f046b14a9cbd95cb0d2",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "已读取V9默认采用和下一条真实验证边界；本期引用现行档案，不把方向采用冒充本条音画验收。 R2复用同轮先前真实读取，当前SHA重新核对不变；应用于本次局部修改，未补造全片视听。 R3继续适用；当前SHA不变。仅本条校字及完整分辨率候选，未新增发布许可。",
+      "problems": []
+    },
+    {
+      "group": "applicable_rules_or_skills",
+      "path": "/Users/pc/Documents/口播/workflow/active-production-profile.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/workflow/active-production-profile.v1.json",
+      "sha256": "dac499043328b6051501ca8d7c0b4778ac2a329ce128ab2c20fb1b9211b58af5",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "已读取活动V9身份、V8技术继承和本期用得上的字号/音效条款；实际runtime以V9结构绑定，听感不写通过。 R2复用同轮先前真实读取，当前SHA重新核对不变；应用于本次局部修改，未补造全片视听。 R3继续适用；当前SHA不变。仅本条校字及完整分辨率候选，未新增发布许可。",
+      "problems": []
+    },
+    {
+      "group": "historical_failures",
+      "path": "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+      "resolved_path": "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+      "sha256": "7eea8aad282ee451520c0b8c68cf61acf6b38f054de604428d29437c8c0ac65b",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement",
+        "project-bootstrap"
+      ],
+      "application_note": "实际回读用户原稿校字R3、R2受控结果和107秒卡片交叠记录；本轮只修对应路径，原声/原ASR/时点保留，按用户指令校字不冒称独立听审或事实通过。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/production-job.first-candidate.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/production-job.first-candidate.v1.json",
+      "sha256": "5af6be9d36c17a3a8918d87083837c9d6c38a2a1253189644a41e10e9b844080",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际回读完整当前job：R3独立任务和输出、5035帧30fps、scale1/并发1/120秒；绑定真实新原话与128文件闭包，正式验收发布false。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/first-candidate-input.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/first-candidate-input.v1.json",
+      "sha256": "acaf32632420a7a6423758e8525502e341549426faea892e41eaebe9b8be8d76",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际建立回读七项真实引用及R3身份；正文改绑08实录正文校字，原ASR不变，不继承R2授权。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/用户导出范围.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/用户导出范围.v1.json",
+      "sha256": "95865d9cf101bd394a2474ddce28dbee187dd6c0c80a6a015a9e665c6b827c00",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际回读本轮“修正后导出正片”原话及08校字来源，范围为1080p有声完整候选供终看，未冒充独立签名或整片接受。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/原生素材入库候选.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/原生素材入库候选.v1.json",
+      "sha256": "9e15fe7e3464484b282c6ba402e9cfafcb03a73dc367105d8154232565558894",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "当前26真实文件逐项SHA复核，素材及原声沿用；替换当前来源与R3校字回执引用，8个声音cue保留既有来源。共享绑定已实际全解码和PCM保全检查，后续同进程缓存仍核SHA。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/事实差异当前绑定.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/事实差异当前绑定.v1.json",
+      "sha256": "a24534780383aaa9226dcf7f476d281544c5116ff43bf51dd56207fc2272ee09",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际检查D01–D07原状态保持pending；新增校字来源不证明数字、型号、上路或模型调用断言，factsResolved/formal/publish仍false。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/实录导演重绑候选.r3.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/实录导演重绑候选.r3.json",
+      "sha256": "e6312a5f6c3ae9c3f641f91989d272025b08a47eb87d2ff8099bd2aece14cc86",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际检查23原ASR语义段完整顺序与9素材窗不变，仅绑定R3字幕校字和当前runtime；原片无删剪/变速。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/本期用户校字重放回执.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/本期用户校字重放回执.v1.json",
+      "sha256": "966fe7dbb49d087fb9e9b699a4c267dbb61b08c6960f9870897374eac52753a5",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际逐条检查旧11条原样和新8条真实before/after；专用验证器按固定原话/变化报告SHA逐条重放到R3，userDirected为true但人听/逐条接受未冒称通过。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/内部预览聊天授权.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/内部预览聊天授权.v1.json",
+      "sha256": "cce56cf871bc12ded70ab5219403655851737ccd9192028e4fac6493d260fa37",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际回读128文件闭包摘要、compositionBinding、当前任务身份和两条真实来源；仅direct-remotion-preview内部终看路由，scale1不是正式验收。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/Remotion内数据快照.r3.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/Remotion内数据快照.r3.json",
+      "sha256": "af4d2ca46e8188e5edeb41baa20e6efabd3e355dde47b97e2dd88a67b953a937",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际比较权威08runtime与工程snapshot原字节相同，绑定组件冻结回执与R3最终SHA。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/本轮正片导出原话.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/本轮正片导出原话.v1.json",
+      "sha256": "b17d7c34f28019f1685fc947075becaff945745a3db406f4c6d3b067bb549a68",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际读取本聊天真实导出指令，固定SHA，不编造平台messageId，不增加发布或完整观看确认。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/用户校字原话.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/用户校字原话.v1.json",
+      "sha256": "eb073c83e23e1ccdb403a4446be0f2d4ceaa1ea240e41be0a9bfc1c8e53d8c8a",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际读取用户点名直接起势、Grok AI及依其原稿校字要求，适用本期8条差异，不据此认定音频已独立听清。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/校字变更与检查.v1.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/校字变更与检查.v1.json",
+      "sha256": "1c922a08b42b583aee5f615ca6f9d4d93ccd6e67dfe4a8476e0eb08ed86a35c9",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际读取8条中英before/after、原时点和非字幕数据保留；通过来源SHA限定本轮校字范围。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/实录正文校字.r3.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/实录正文校字.r3.json",
+      "sha256": "7ec2da8eda74742ef849d018a0c69eed9174b6e444ddf1dd43ed325f653a4ce3",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际检查80段raw_text、R3 text变化、原始ASR引用及校字来源，旧11＋新8重放通过，672原词槽与时点保留。",
+      "problems": []
+    },
+    {
+      "group": "task_original_materials",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/runtime-plan.r3.json",
+      "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/runtime-plan.r3.json",
+      "sha256": "998b5c216d7654aa635e2a9938cf3eb28a2ee85868c289ceccd600186e53fc65",
+      "states": {
+        "indexed": false,
+        "retrieved": true,
+        "read": true,
+        "applied": true
+      },
+      "retrieval_sources": [
+        "task-context-requirement"
+      ],
+      "application_note": "实际对照R2确认除80条字幕外数据完全相同，9素材/29动作/8音效/7运镜保持，5035帧，完整声轨不变。",
+      "problems": []
+    }
+  ],
+  "receipt_groups": {
+    "current_project_index": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "current_project_index",
+          "path": "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+          "resolved_path": "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+          "sha256": "6f4cc6620e11c5d50d2cfb4996898b1e27bb4009ba6c91704015f90018ca0e4b",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement",
+            "project-bootstrap"
+          ],
+          "application_note": "读取本期相关edit-release入口与V9基线索引；应用到本期七项输入引用，不把历史任务当本期验收。 R2复用同轮先前真实读取，当前SHA重新核对不变；应用于本次局部修改，未补造全片视听。 R3继续适用；当前SHA不变。仅本条校字及完整分辨率候选，未新增发布许可。",
+          "problems": []
+        }
+      ]
+    },
+    "current_project_summary": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "current_project_summary",
+          "path": "/Users/pc/Documents/口播/project.md",
+          "resolved_path": "/Users/pc/Documents/口播/project.md",
+          "sha256": "3e9f7f84aaae0fa4d6864bf4d900079e962f0a37f5ecb9ff1467eab0aeb7fd00",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement",
+            "project-bootstrap"
+          ],
+          "application_note": "实际回读顶部R3校字与R2小样状态，应用用户8条校字和1080p候选导出范围；R1/R2历史保留，不把正片输出当已完成终验。",
+          "problems": []
+        }
+      ]
+    },
+    "latest_update": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "latest_update",
+          "path": "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+          "resolved_path": "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+          "sha256": "7eea8aad282ee451520c0b8c68cf61acf6b38f054de604428d29437c8c0ac65b",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement",
+            "project-bootstrap"
+          ],
+          "application_note": "实际回读用户原稿校字R3、R2受控结果和107秒卡片交叠记录；本轮只修对应路径，原声/原ASR/时点保留，按用户指令校字不冒称独立听审或事实通过。",
+          "problems": []
+        }
+      ]
+    },
+    "applicable_rules_or_skills": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/口播/AGENTS.md",
+          "resolved_path": "/Users/pc/Documents/口播/AGENTS.md",
+          "sha256": "b32a9ba8db0b8df9055d04dca92ef35dac26d196a385ad19165a60578b67dbce",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement",
+            "project-bootstrap"
+          ],
+          "application_note": "读取用户本轮提供的项目规则及当前本地阶段路由；仅执行已授权内部候选输入，实录唯一正文，候选不等于发布与用户验收。 R2复用同轮先前真实读取，当前SHA重新核对不变；应用于本次局部修改，未补造全片视听。 R3继续适用；当前SHA不变。仅本条校字及完整分辨率候选，未新增发布许可。",
+          "problems": []
+        },
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/口播/knowledge/22-实录优先字幕与系列发布包硬门禁.md",
+          "resolved_path": "/Users/pc/Documents/口播/knowledge/22-实录优先字幕与系列发布包硬门禁.md",
+          "sha256": "28d9149822e2753c6aae43fa384d51a5ea2c6584dae9006d4bdca652e6d5cc3a",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "已读取实录唯一正文、英文从实录翻译及正式交付门槛；本期四疑词不按拍前稿替换，发布及完整观看保持false。 R2复用同轮先前真实读取，当前SHA重新核对不变；应用于本次局部修改，未补造全片视听。 R3继续适用；当前SHA不变。仅本条校字及完整分辨率候选，未新增发布许可。",
+          "problems": []
+        },
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/口播/knowledge/23-V9导演编排与动效采用基线.md",
+          "resolved_path": "/Users/pc/Documents/口播/knowledge/23-V9导演编排与动效采用基线.md",
+          "sha256": "b30a1893c44d41a3f167aa425637d005247714d428bc5f046b14a9cbd95cb0d2",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "已读取V9默认采用和下一条真实验证边界；本期引用现行档案，不把方向采用冒充本条音画验收。 R2复用同轮先前真实读取，当前SHA重新核对不变；应用于本次局部修改，未补造全片视听。 R3继续适用；当前SHA不变。仅本条校字及完整分辨率候选，未新增发布许可。",
+          "problems": []
+        },
+        {
+          "group": "applicable_rules_or_skills",
+          "path": "/Users/pc/Documents/口播/workflow/active-production-profile.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/workflow/active-production-profile.v1.json",
+          "sha256": "dac499043328b6051501ca8d7c0b4778ac2a329ce128ab2c20fb1b9211b58af5",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "已读取活动V9身份、V8技术继承和本期用得上的字号/音效条款；实际runtime以V9结构绑定，听感不写通过。 R2复用同轮先前真实读取，当前SHA重新核对不变；应用于本次局部修改，未补造全片视听。 R3继续适用；当前SHA不变。仅本条校字及完整分辨率候选，未新增发布许可。",
+          "problems": []
+        }
+      ]
+    },
+    "historical_failures": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "historical_failures",
+          "path": "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+          "resolved_path": "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+          "sha256": "7eea8aad282ee451520c0b8c68cf61acf6b38f054de604428d29437c8c0ac65b",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement",
+            "project-bootstrap"
+          ],
+          "application_note": "实际回读用户原稿校字R3、R2受控结果和107秒卡片交叠记录；本轮只修对应路径，原声/原ASR/时点保留，按用户指令校字不冒称独立听审或事实通过。",
+          "problems": []
+        }
+      ]
+    },
+    "task_original_materials": {
+      "status": "complete",
+      "entries": [
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/production-job.first-candidate.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/production-job.first-candidate.v1.json",
+          "sha256": "5af6be9d36c17a3a8918d87083837c9d6c38a2a1253189644a41e10e9b844080",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际回读完整当前job：R3独立任务和输出、5035帧30fps、scale1/并发1/120秒；绑定真实新原话与128文件闭包，正式验收发布false。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/first-candidate-input.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/first-candidate-input.v1.json",
+          "sha256": "acaf32632420a7a6423758e8525502e341549426faea892e41eaebe9b8be8d76",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际建立回读七项真实引用及R3身份；正文改绑08实录正文校字，原ASR不变，不继承R2授权。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/用户导出范围.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/用户导出范围.v1.json",
+          "sha256": "95865d9cf101bd394a2474ddce28dbee187dd6c0c80a6a015a9e665c6b827c00",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际回读本轮“修正后导出正片”原话及08校字来源，范围为1080p有声完整候选供终看，未冒充独立签名或整片接受。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/原生素材入库候选.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/原生素材入库候选.v1.json",
+          "sha256": "9e15fe7e3464484b282c6ba402e9cfafcb03a73dc367105d8154232565558894",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "当前26真实文件逐项SHA复核，素材及原声沿用；替换当前来源与R3校字回执引用，8个声音cue保留既有来源。共享绑定已实际全解码和PCM保全检查，后续同进程缓存仍核SHA。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/事实差异当前绑定.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/事实差异当前绑定.v1.json",
+          "sha256": "a24534780383aaa9226dcf7f476d281544c5116ff43bf51dd56207fc2272ee09",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际检查D01–D07原状态保持pending；新增校字来源不证明数字、型号、上路或模型调用断言，factsResolved/formal/publish仍false。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/实录导演重绑候选.r3.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/实录导演重绑候选.r3.json",
+          "sha256": "e6312a5f6c3ae9c3f641f91989d272025b08a47eb87d2ff8099bd2aece14cc86",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际检查23原ASR语义段完整顺序与9素材窗不变，仅绑定R3字幕校字和当前runtime；原片无删剪/变速。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/本期用户校字重放回执.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/本期用户校字重放回执.v1.json",
+          "sha256": "966fe7dbb49d087fb9e9b699a4c267dbb61b08c6960f9870897374eac52753a5",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际逐条检查旧11条原样和新8条真实before/after；专用验证器按固定原话/变化报告SHA逐条重放到R3，userDirected为true但人听/逐条接受未冒称通过。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/内部预览聊天授权.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/内部预览聊天授权.v1.json",
+          "sha256": "cce56cf871bc12ded70ab5219403655851737ccd9192028e4fac6493d260fa37",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际回读128文件闭包摘要、compositionBinding、当前任务身份和两条真实来源；仅direct-remotion-preview内部终看路由，scale1不是正式验收。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/Remotion内数据快照.r3.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/入口准备/Remotion内数据快照.r3.json",
+          "sha256": "af4d2ca46e8188e5edeb41baa20e6efabd3e355dde47b97e2dd88a67b953a937",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际比较权威08runtime与工程snapshot原字节相同，绑定组件冻结回执与R3最终SHA。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/本轮正片导出原话.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/09_正片导出R3/本轮正片导出原话.v1.json",
+          "sha256": "b17d7c34f28019f1685fc947075becaff945745a3db406f4c6d3b067bb549a68",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际读取本聊天真实导出指令，固定SHA，不编造平台messageId，不增加发布或完整观看确认。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/用户校字原话.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/用户校字原话.v1.json",
+          "sha256": "eb073c83e23e1ccdb403a4446be0f2d4ceaa1ea240e41be0a9bfc1c8e53d8c8a",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际读取用户点名直接起势、Grok AI及依其原稿校字要求，适用本期8条差异，不据此认定音频已独立听清。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/校字变更与检查.v1.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/校字变更与检查.v1.json",
+          "sha256": "1c922a08b42b583aee5f615ca6f9d4d93ccd6e67dfe4a8476e0eb08ed86a35c9",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际读取8条中英before/after、原时点和非字幕数据保留；通过来源SHA限定本轮校字范围。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/实录正文校字.r3.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/实录正文校字.r3.json",
+          "sha256": "7ec2da8eda74742ef849d018a0c69eed9174b6e444ddf1dd43ed325f653a4ce3",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际检查80段raw_text、R3 text变化、原始ASR引用及校字来源，旧11＋新8重放通过，672原词槽与时点保留。",
+          "problems": []
+        },
+        {
+          "group": "task_original_materials",
+          "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/runtime-plan.r3.json",
+          "resolved_path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/08_字幕校正R3/runtime-plan.r3.json",
+          "sha256": "998b5c216d7654aa635e2a9938cf3eb28a2ee85868c289ceccd600186e53fc65",
+          "states": {
+            "indexed": false,
+            "retrieved": true,
+            "read": true,
+            "applied": true
+          },
+          "retrieval_sources": [
+            "task-context-requirement"
+          ],
+          "application_note": "实际对照R2确认除80条字幕外数据完全相同，9素材/29动作/8音效/7运镜保持，5035帧，完整声轨不变。",
+          "problems": []
+        }
+      ]
+    }
+  },
+  "gate": {
+    "status": "context-ready",
+    "missing_groups": [],
+    "formal_execution_allowed": true,
+    "rule": "indexed、retrieved、read、applied 四态独立；RAG 命中或文件指纹不能替代读取与应用回执。"
+  },
+  "bootstrap": {
+    "schema_version": "2.1",
+    "status": "context-ready",
+    "task_id": "task-20261016T130525Z-a2a74fff",
+    "read_receipt": {
+      "status": "pending-executor-read",
+      "selected_document_count": 22,
+      "required_document_count": 17,
+      "verified_required_document_count": 0,
+      "project_truth_status": "not-applicable",
+      "rule": "文件被检索和计算哈希不等于执行者已读；阅读凭证必须包含当前文件哈希、status=read 和 read_completed_at，四类项目事实未齐不得进入跨项目公开内容生产。"
+    }
+  },
+  "next_actions": [
+    "继续执行其他内容、质量、安全和人工验收门禁"
+  ],
+  "artifacts": [
+    "/Users/pc/Documents/个人知识库/.opc-rag/tasks/task-20261016T130214Z-musk-grok-r3/context.json"
+  ]
+}
