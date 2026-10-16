@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "koubo-firstframe-approved-recomposition-review/v1",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "revisionId": "paper-p01-openchannels-r3",
+  "date": "2026-10-16",
+  "stage": "firstframe",
+  "authorization": {
+    "userQuote": "好的，按照你这个方向继续，然后出完图之后我看没问题，我们就进入王英翰生物视频。",
+    "interpretedPlatform": "RunningHub",
+    "interpretationBasis": "沿当前对话平台与先审首帧再图生视频的上下文，不把语音转写误差当成新平台。",
+    "selectedOption": "A：P01敞开通道重新构图生成；P02不动",
+    "userVisualAcceptance": "pending",
+    "runningHubStageCondition": "用户看图确认后才进入",
+    "videoGenerationAuthorizedNow": false,
+    "paidVideoSubmissionAuthorizedNow": false
+  },
+  "upstream": {
+    "master": {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/director-cues-v2-handoff.v1.json",
+      "sha256": "101e435b5b0e2e853fa3178463e7ec476c8d8f1a14c51fd866837c02252ee5c5"
+    },
+    "firstFrameChild": {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/paper-editorial.first-frame-handoff.v1.json",
+      "sha256": "a71b84b109b670178b2f77aa1d21cd46ae960c8ade9b29b06a6ac39bd237816c"
+    },
+    "originalDirector": {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/03_导演规划/director-cues.v2.json",
+      "sha256": "fe779cff98affcc64379af4f42b0735bcca8ead13aebe5f1478ce544d532ac6d"
+    },
+    "originalP01PairId": "P01-prompt-pair-v1",
+    "originalP01PromptSha256": "fcf6998567991ba93da27d7dc59b312c16d9ea66db643facdaf1e6a69e573253",
+    "originalsModified": false
+  },
+  "revision": {
+    "executionPrompt": {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_首帧质检/P01_敞开通道重新构图提示词_r3.txt",
+      "sha256": "d1c01822a13e11e035fc02a84c32324e8bdc370ffae6bd2cb52ed236a48f9032"
+    },
+    "authorizedChanges": [
+      "重新构图，不沿用失败箱体图",
+      "三条连续开放导槽连入空接收区",
+      "能力文字改在所属槽体朝向镜头的后挡板内侧"
+    ],
+    "preserved": [
+      "六处文字及任务-能力一一对应",
+      "三个任务全部在前景起点",
+      "待分配静态初态",
+      "深蓝灰白少量珊瑚红纸材、三层空间"
+    ],
+    "oldFailureRecordsUnchanged": true,
+    "newApproachCallCount": 1
+  },
+  "generation": {
+    "tool": "built-in-image_gen",
+    "mode": "generate-new-image",
+    "editReferencesUsed": false,
+    "sourcePath": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-24d1bda1-44c4-444a-839b-832308ecf485.png",
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/P01_首帧_r3.png",
+    "sha256": "50e9f69e6182a16b1b01b2dc731d34f27de0875523140576fb1cceedaf805726",
+    "width": 1672,
+    "height": 941,
+    "dimensionNote": "近16:9，宽高比偏差约0.053%，未裁切或缩放。",
+    "locallyBakedText": false,
+    "cliApiFallback": false
+  },
+  "ocr": {
+    "engine": "Apple Vision",
+    "script": "skills/koubo-remotion-director/scripts/recognize-text-vision.swift",
+    "rawText": "图像能力代码能力文档能力出图代码文档",
+    "expected": [
+      "出图",
+      "代码",
+      "文档",
+      "图像能力",
+      "代码能力",
+      "文档能力"
+    ],
+    "exactCoverage": true,
+    "confidenceReturned": false,
+    "coordinatesReturned": false
+  },
+  "unchangedP02": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/P02_首帧_r1.png",
+    "sha256": "caffa6e63ab881e5958dd2d19d7ad55ffbe9fad20cbff2b12784a6c80d01ae8e",
+    "hashRechecked": true,
+    "previousStaticQA": "PASS",
+    "previousReview": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_首帧质检/生成与逐图质检回执.v1.json",
+    "userVisualAcceptance": "pending"
+  },
+  "actionsNotTaken": [
+    "RunningHub访问",
+    "上传",
+    "节点配置",
+    "视频提交",
+    "付费",
+    "剪辑",
+    "发布"
+  ],
+  "status": "ready-for-user-review",
+  "visualQA": {
+    "openedActualImage": true,
+    "primaryReview": "PASS",
+    "independentReview": "PASS",
+    "independentReviewers": ["p01_p02_visual_qa", "inspect_p01_handoff"],
+    "independentReviewScope": "前者实际打开原图完成全项静态检查并复核SHA；后者独立复核三路连通单项。均未发现阻断缺陷，不代表动态通过。",
+    "textBySight": "六处目视逐字正确并位于指定纸面",
+    "counts": "三条独立纸槽、三张任务折页，后方接收区均空",
+    "continuity": "起点到后挡板前的空接收区底面连续可见，没有挡路前墙、隧洞或台阶",
+    "materials": "纸厚、折边、纤维、接触阴影和前中后三层成立",
+    "extraTextLogoWatermark": false,
+    "P0": [],
+    "P1": [],
+    "P2": [
+      "生成图增加纸山、树和灌木装饰，不挡三条通路；与P02工作台构图存在审美差异，留待用户看图确认。"
+    ],
+    "dynamicValidation": "not-performed"
+  }
+}
