@@ -1,0 +1,2944 @@
+{
+  "schemaVersion": "koubo-shotcraft-human-candidate-review/v1",
+  "taskId": "musk-grok-business-ai-20261016",
+  "status": "candidate-only-not-rendered-not-accepted",
+  "createdAt": "2026-10-16T09:55:12.448258+00:00",
+  "bindings": {
+    "request": {
+      "path": "edit/20261016_musk_grok_business_ai/04_后期准备/动效匹配/auto-match-request.v1.json",
+      "sha256": "f8235c3b62bcef715bbba9366a9bb5ba9f001909132ab1ead927cc66a9bacb6f"
+    },
+    "autoReceipt": {
+      "path": "edit/20261016_musk_grok_business_ai/04_后期准备/动效匹配/auto-match-receipt.v1.json",
+      "sha256": "4b1d4f10d2bbd2b7e1a5286c40f32320df48aea52e02ba1c799a1f87ad240c6d"
+    },
+    "director": {
+      "path": "edit/20261016_musk_grok_business_ai/04_后期准备/实录导演重绑候选.v1.json",
+      "sha256": "695050d6692e6f543bec5e6010cb7a75448f553541d7509c8290c000248ff935"
+    },
+    "sourceRecording": {
+      "path": "edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+      "sha256": "b1902425762e49aedfc62ff717393351e6573c5af6c0cd06a7babf571af89bf6"
+    },
+    "sourceAsr": {
+      "path": "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.mlx-whisper-large-v3-turbo.raw.v1.json",
+      "sha256": "f64a82357cfb81a4226c6d7a14c9c172d235fa4ec10c92cbbb99ee4ee0f7bd81"
+    },
+    "contactSheet": {
+      "path": "edit/20261016_musk_grok_business_ai/04_后期准备/原片构图核对/原片每30秒联系表.jpg",
+      "sha256": "e425482294ace0cada9924a49080668294da11b412906894b364dab44bdfba7c"
+    }
+  },
+  "summary": {
+    "scannedEligibleBeatCount": 21,
+    "catalogCardCount": 157,
+    "cardBeatComparisons": 3297,
+    "excludedPaperBeats": [
+      "B10/P01",
+      "B19/P02"
+    ],
+    "manualClassCounts": {
+      "不适合": 10,
+      "待适配": 10,
+      "适合": 1
+    },
+    "machineApplyCount": 4,
+    "machineScoreIsProbability": false,
+    "registeredAdapters": 5,
+    "unadaptedCards": 152,
+    "currentEpisodeEffectsImplemented": 0
+  },
+  "statusDefinitions": {
+    "适合": "语义收益明确，有现有候选路径；不等于本期已实现或已观看验收",
+    "待适配": "语义可能适合，但组件、实际素材、字时点或人物保护尚有具体缺口；不得并入不需要",
+    "不适合": "本段没有新增理解收益、与相邻镜头重复或会制造不实暗示，不是因为组件未实现"
+  },
+  "importantLimitations": [
+    "自动not-needed是旧机器枚举，不能作为人工“不需要”结论；以本文件逐段原因阅读。",
+    "匹配器关键词评分不是视觉质量、事实正确性或概率；B08胶带和B11下划线不采纳。",
+    "自动selection中的KeywordReveal时点按段均分，且MarkerUnderline可能带整段前后文本，禁止直接进入本期运行计划。",
+    "原始ASR80段仅供扫描，未人工听审；专名与事实问题不通过动效偷偷改写。",
+    "只看了稀疏原片联系表和指定代码/元数据，没有观看157张卡片视频，也没有生成本期效果。",
+    "初始人物矩形只是保守估计；真实资料裁切、PIP、字幕和每个手势窗必须以后续实际帧验证。"
+  ],
+  "geometryPolicy": {
+    "initialRegion": {
+      "x": 64,
+      "y": 100,
+      "width": 620,
+      "height": 360
+    },
+    "presenterObservation": "脸在中右；开头与后段至少存在手势进入左上，初始框不可全片复用",
+    "provisionalProtectedRegions": [
+      {
+        "x": 800,
+        "y": 140,
+        "width": 900,
+        "height": 730
+      },
+      {
+        "x": 0,
+        "y": 900,
+        "width": 1920,
+        "height": 180
+      },
+      {
+        "x": 0,
+        "y": 500,
+        "width": 800,
+        "height": 400
+      }
+    ],
+    "gesturePolicy": "每组入场/变化/末态抽实际帧或正常速度观看；手入区域时推迟/提前退出/换更窄局部，不能以缩小文字或截断动作解决；仍冲突则候选保持待适配",
+    "mainTextMinimumPx": 60,
+    "supportingTextMinimumPx": 44,
+    "maxVisibleMainNodes": 4,
+    "actualGeometryValidated": false,
+    "fullScreenWhiteBoardAllowed": false,
+    "realEvidencePipLocation": "左下，最终原页、来源、字幕区单独划分，不套真人初始区域作为证据页已验布局"
+  },
+  "reviews": [
+    {
+      "beatId": "B01",
+      "frames": {
+        "startFrame": 0,
+        "endFrameExclusive": 28
+      },
+      "seconds": [
+        0.0,
+        0.933
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "嗨 bro",
+      "assessment": "不适合",
+      "continuityGroup": null,
+      "reason": "不到一秒的招呼承担建立真人联系；再入场文字既无新信息也没有完整阅读窗。",
+      "comparedCard": {
+        "cardName": "skeleton-reveal",
+        "registeredRenderability": "adaptation-required",
+        "reason": "骨架显影即使分数高，也不存在需要解释的生成过程。",
+        "catalogSource": "references/shots/ui-entrance/skeleton-reveal.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "无新增动效，保留真人。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.792,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "orbit-ring-title-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.774016,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.7752,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "title-demote-to-label",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.772762,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.4095,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "typewriter-moves",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.760848,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.2606,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "neon-frame-forerun",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.76,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "high",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B02",
+      "frames": {
+        "startFrame": 44,
+        "endFrameExclusive": 162
+      },
+      "seconds": [
+        1.467,
+        5.4
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "马斯克今天居然爆出了一台即将量产能够飞的车",
+      "assessment": "不适合",
+      "continuityGroup": null,
+      "reason": "四秒钩子后马上进入真实车辆展示；需要观众看实际车而非记新标题。量产判断另有事实待决。",
+      "comparedCard": {
+        "cardName": "radial-wave",
+        "registeredRenderability": "adaptation-required",
+        "reason": "点阵波和轨道片头只有装饰性，无法证明量产或飞行。",
+        "catalogSource": "references/shots/ui-entrance/radial-wave.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "直接接R01，不用动效强化即将量产。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "radial-wave",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.740193,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9649,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "brace-expand",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.681596,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0245,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9649,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "orbit-ring-title-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "neon-frame-forerun",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.652,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "medium",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B03",
+      "frames": {
+        "startFrame": 162,
+        "endFrameExclusive": 881
+      },
+      "seconds": [
+        5.4,
+        29.367
+      ],
+      "mainVisual": "real-evidence",
+      "rawSpokenText": "这不是科幻电影也不是概念PPT啊车子能够在空中翻滚能吸附在墙面上是真正意义上的飞重点它起飞的时候不需要踩刹车核心黑科技呢用到的是SPEXX的A71冷气推进系统加它的这个底盘负压吸附风扇起飞腾空靠喷气推进直接去水",
+      "assessment": "待适配",
+      "continuityGroup": "source-focus",
+      "reason": "真实翻滚/推进细节值得聚焦，但必须绑定官方视频的实际帧，源图不能靠动画补证。",
+      "comparedCard": {
+        "cardName": "speed-ramp-freeze",
+        "registeredRenderability": "adaptation-required",
+        "reason": "停帧圈注可帮助读细节；改变官方演示速度可能误读性能，优先原速局部框选。",
+        "catalogSource": "references/shots/rhythm/speed-ramp-freeze.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "素材实际时点、声明边界、字幕及真人小窗版式未最终锁定；不改变口播音频。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "orbit-ring-title-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.747128,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0396,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.743527,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0196,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "brand-frame-snap",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.717569,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0309,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "tension-camera-moves",
+          "category": "camera",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.664917,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0107,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "graze-face-tour",
+          "category": "camera",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.64123,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0346,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "medium",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B04",
+      "frames": {
+        "startFrame": 905,
+        "endFrameExclusive": 1083
+      },
+      "seconds": [
+        30.167,
+        36.1
+      ],
+      "mainVisual": "real-evidence",
+      "rawSpokenText": "零百约1.7秒续航呢483公里最高车速370公里每小时",
+      "assessment": "待适配",
+      "continuityGroup": "source-focus",
+      "reason": "官方配置页可读性高于新造数字卡；原话零百与官方0—60mph口径不一，不能自动生成相同含义的计数。",
+      "comparedCard": {
+        "cardName": "scanline-annotate-focus",
+        "registeredRenderability": "candidate-renderable",
+        "reason": "局部框选比autolayout-gap-dial和前后拉杆更相关；原扫描卡的机器分析计数不得保留。",
+        "catalogSource": "references/shots/effects/scanline-annotate-focus.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "绑定真实配置截图和原页矩形；数值差异由主任务处理，不能在字幕或动画中暗改。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "autolayout-gap-dial",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.755212,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0104,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.5167,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "before-after-slider-scrub",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.718605,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.103,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.8133,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "bezier-source-converge-merge",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.680117,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0104,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.9405,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "particle-sand-fill",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.67242,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0242,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.8133,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "page-waterfall-wall",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.65299,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0104,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.9889,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "medium",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B05",
+      "frames": {
+        "startFrame": 1100,
+        "endFrameExclusive": 1205
+      },
+      "seconds": [
+        36.667,
+        40.167
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "可以正常上路上排在公路上行驶",
+      "assessment": "不适合",
+      "continuityGroup": null,
+      "reason": "上路及上牌范围仍待事实决策；对勾、许可证牌会把不确定表达变成已证明承诺。",
+      "comparedCard": {
+        "cardName": "marker-underline-title",
+        "registeredRenderability": "candidate-renderable",
+        "reason": "下划线不增加证据，反而放大未决结论。",
+        "catalogSource": "references/shots/typography/marker-underline-title.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "保留真人，单列事实待决，不把事实问题伪装为动画问题。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "line-boil",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "list-reveal",
+          "category": "ui-entrance",
+          "renderability": "candidate-renderable",
+          "adapterId": "keyword-reveal",
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "word-relay-filmstrip",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "type-assembly-moves",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.804775,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0488,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "typewriter-moves",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.798182,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7273,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "medium",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B06",
+      "frames": {
+        "startFrame": 1205,
+        "endFrameExclusive": 1376
+      },
+      "seconds": [
+        40.167,
+        45.867
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "除了这台车呢马斯克最近真正值得我们去琢磨的还有他的Girls AM",
+      "assessment": "不适合",
+      "continuityGroup": null,
+      "reason": "本段只是飞车到AI的口语转场；下一段已有官方原帖，第三套标题会挤占交接。",
+      "comparedCard": {
+        "cardName": "typewriter-moves",
+        "registeredRenderability": "adaptation-required",
+        "reason": "终端敲字会暗示正在调用工具，且专名原始识别未听审。",
+        "catalogSource": "references/shots/typography/typewriter-moves.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "真人自然转向下一真实资料。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "typewriter-moves",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.817091,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9636,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "title-demote-to-label",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.769714,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.3714,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "flying-words",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.756,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.95,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "aurora-bloom-bg-flip",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.735308,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9038,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "bubble-swarm-takeover",
+          "category": "transition",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.733953,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.6744,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "high",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B07",
+      "frames": {
+        "startFrame": 1389,
+        "endFrameExclusive": 1646
+      },
+      "seconds": [
+        46.3,
+        54.867
+      ],
+      "mainVisual": "real-evidence",
+      "rawSpokenText": "这套大模型的玩法也全变了他不再单打独斗只靠自家的模型而是让我们随时用上全球不同领域的顶尖模型",
+      "assessment": "待适配",
+      "continuityGroup": "source-focus",
+      "reason": "需让观众读到原帖及未来时限定，资料有解释价值；不是凭模型图标证明所有服务已上线。",
+      "comparedCard": {
+        "cardName": "doc-park-left-pill-deal",
+        "registeredRenderability": "adaptation-required",
+        "reason": "保留来源的思想适合，但原卡只露35%文档会遮掉关键限定；不能原样照搬。",
+        "catalogSource": "references/shots/ui-entrance/doc-park-left-pill-deal.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "最终截图、原文阅读窗及左下真人小窗确定后，最多一个局部框选，不做完整中枢演示。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.630636,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0.0146,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "orbit-ring-title-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.62862,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.0078,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "doc-park-left-pill-deal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.616475,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0.0146,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.523,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "brand-frame-snap",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.59662,
+          "scoreBreakdown": {
+            "semanticIntent": 0.8,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.0078,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "dataviz-landscape-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.569333,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9292,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "medium",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B08",
+      "frames": {
+        "startFrame": 1660,
+        "endFrameExclusive": 1933
+      },
+      "seconds": [
+        55.333,
+        64.433
+      ],
+      "mainVisual": "real-evidence",
+      "rawSpokenText": "做绘图出头呢直接调用MG遇到重复复杂的业务问题呢直接可以调用Cloud Code的OPS不点5",
+      "assessment": "待适配",
+      "continuityGroup": "source-focus",
+      "reason": "MJ与Opus官网可作产品身份说明，不能证明Grok已经实际调用；专名字幕与事实仍待确认。",
+      "comparedCard": {
+        "cardName": "word-relay-filmstrip",
+        "registeredRenderability": "adaptation-required",
+        "reason": "随名称切换真实页面比胶带更有解释力，但必须说明页面是产品资料，不是调用记录。",
+        "catalogSource": "references/shots/typography/word-relay-filmstrip.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "本库此卡未适配；可先按已授权真实资料切换规划，不加自动结果或伪造代码终端。",
+      "machineDecision": "apply",
+      "machineEffectId": "paper-tape-pin",
+      "machineTop5": [
+        {
+          "cardName": "paper-craft-moves",
+          "category": "ui-entrance",
+          "renderability": "candidate-renderable",
+          "adapterId": "paper-tape-pin",
+          "score": 0.749,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.8625,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.744281,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.4035,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.715165,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0176,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "integration-hub-map",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.6944,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.18,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "brand-ink-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.666165,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0176,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "medium",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B09",
+      "frames": {
+        "startFrame": 1933,
+        "endFrameExclusive": 2045
+      },
+      "seconds": [
+        64.433,
+        68.167
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "Groker呢现在充当的呢就是一个调度状态",
+      "assessment": "不适合",
+      "continuityGroup": null,
+      "reason": "紧接P01已经用纸艺解释分工调度；再搭一套中枢图会重复，也容易把计划表达成已上线功能。",
+      "comparedCard": {
+        "cardName": "integration-hub-map",
+        "registeredRenderability": "adaptation-required",
+        "reason": "原卡五图标同帧齐连意味着生态一次到位，和当前证据限定不一致。拒绝原因是语义与相邻镜头重复，不是未实现。",
+        "catalogSource": "references/shots/ui-entrance/integration-hub-map.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "真人交给P01，保留语义停顿。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.652,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "ring-diagram-annotation-reveal",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.592486,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0282,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.5926,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "flying-words",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.589778,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.6222,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "canvas-materialize-moves",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.566447,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.8931,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "typing-code-block",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.559928,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.8116,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "medium",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B11",
+      "frames": {
+        "startFrame": 2269,
+        "endFrameExclusive": 2397
+      },
+      "seconds": [
+        75.633,
+        79.9
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "那么这恰恰就是大多数企业做AI落地踩的最大的一个坑",
+      "assessment": "不适合",
+      "continuityGroup": null,
+      "reason": "本段先转入企业问题；下一段的问题标签承担具体内容，单独强调最大坑不提供机制且无统计支持。",
+      "comparedCard": {
+        "cardName": "marker-underline-title",
+        "registeredRenderability": "candidate-renderable",
+        "reason": "机器选中的下划线会输出整段长句；相比直接进入下一段问题标签，没有足够增益。",
+        "catalogSource": "references/shots/typography/marker-underline-title.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "不采机器apply，不把其高分解释成人工采用。",
+      "machineDecision": "apply",
+      "machineEffectId": "marker-underline",
+      "machineTop5": [
+        {
+          "cardName": "marker-underline-title",
+          "category": "typography",
+          "renderability": "candidate-renderable",
+          "adapterId": "marker-underline",
+          "score": 0.824288,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0238,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "blur-slide",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.810175,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8772,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "doc-park-left-pill-deal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.798851,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7356,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.796889,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7111,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "orbit-ring-title-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.792,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "medium",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B12",
+      "frames": {
+        "startFrame": 2410,
+        "endFrameExclusive": 2693
+      },
+      "seconds": [
+        80.333,
+        89.767
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "很多企业的这个老板呢天天到处打听啊到底哪个大模型最强总想买一个万能的AI然后买回来解决公司的所有的问题",
+      "assessment": "适合",
+      "continuityGroup": "expectation-tags",
+      "reason": "三个不断扩大的期待构成可读问题链，短标签累积后旧词保留，方便后文否定万能思路。",
+      "comparedCard": {
+        "cardName": "list-reveal",
+        "registeredRenderability": "candidate-renderable",
+        "reason": "逐项入场适合；与list-stack-press相比，无需压弹旧牌和计数，避免虚构业务增长。",
+        "catalogSource": "references/shots/ui-entrance/list-reveal.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "优先沿用V9固定旧标签的动作关系；现有KeywordReveal可作为对照，均需重绑真实词时点、字号与手势。",
+      "machineDecision": "apply",
+      "machineEffectId": "keyword-reveal",
+      "machineTop5": [
+        {
+          "cardName": "list-reveal",
+          "category": "ui-entrance",
+          "renderability": "candidate-renderable",
+          "adapterId": "keyword-reveal",
+          "score": 0.68,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.634222,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.4278,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.599602,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.345,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "command-palette-summon",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.584338,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0182,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.1133,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "draw-svg-trace",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.572,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "low",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B13",
+      "frames": {
+        "startFrame": 2713,
+        "endFrameExclusive": 2887
+      },
+      "seconds": [
+        90.433,
+        96.233
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "那么马斯克已经用实际的行动告诉我们现实没有哪一个AI示范能的",
+      "assessment": "不适合",
+      "continuityGroup": null,
+      "reason": "前段最后一标签需要延续约1.4秒给阅读；随后用真人说出纠偏。万能相关原始识别仍待确认。",
+      "comparedCard": {
+        "cardName": "text-column-converge",
+        "registeredRenderability": "adaptation-required",
+        "reason": "这里不是两个半词最后组成新词的揭晓场景；不新开另一张总结卡。",
+        "catalogSource": "references/shots/typography/text-column-converge.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "只允许前组末态自然延续至约91.2秒，再退出；不追加新文本。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "doc-park-left-pill-deal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82438,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0243,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "marker-underline-title",
+          "category": "typography",
+          "renderability": "candidate-renderable",
+          "adapterId": "marker-underline",
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.817333,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9667,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.743809,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0243,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.3429,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "canvas-materialize-moves",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.707453,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.9057,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "medium",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B14",
+      "frames": {
+        "startFrame": 2887,
+        "endFrameExclusive": 3165
+      },
+      "seconds": [
+        96.233,
+        105.5
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "画图有画图擅长的模型深度写代码复杂推理有它适合的模型读业务文档又有另外一套",
+      "assessment": "待适配",
+      "continuityGroup": "task-slot",
+      "reason": "四个并列用途更适合稳定槽位依说词轮换，让观众比较任务而非观看流程；与前段标签累积形成差异。",
+      "comparedCard": {
+        "cardName": "pill-slot-cycle",
+        "registeredRenderability": "adaptation-required",
+        "reason": "稳定槽位与逐词交接适合；源卡固定句干和最后万能结论不符合本稿，必须移除；不得做一个模型全能的承诺。",
+        "catalogSource": "references/shots/typography/pill-slot-cycle.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "首选单槽四词版待本期适配；已注册KeywordReveal与V9标签累积作为真实备选，不能只因它们现成就宣布更合适。",
+      "machineDecision": "apply",
+      "machineEffectId": "keyword-reveal",
+      "machineTop5": [
+        {
+          "cardName": "command-palette-summon",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.618733,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.1467,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "list-reveal",
+          "category": "ui-entrance",
+          "renderability": "candidate-renderable",
+          "adapterId": "keyword-reveal",
+          "score": 0.61,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "line-carry-transition",
+          "category": "transition",
+          "renderability": "candidate-renderable",
+          "adapterId": "line-carry",
+          "score": 0.583165,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0196,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.9704,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "type-and-filter",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.578536,
+          "scoreBreakdown": {
+            "semanticIntent": 0.75,
+            "lexical": 0.0196,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.566444,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.4556,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "low",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B15",
+      "frames": {
+        "startFrame": 3165,
+        "endFrameExclusive": 3286
+      },
+      "seconds": [
+        105.5,
+        109.533
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "那么真正的企业AI改造不是买一套号称最强的模型",
+      "assessment": "待适配",
+      "continuityGroup": "choice-to-work",
+      "reason": "保留不是这个否定框架，最强的模型在同一位置出现，下一段继续转向按需匹配。",
+      "comparedCard": {
+        "cardName": "title-demote-to-label",
+        "registeredRenderability": "adaptation-required",
+        "reason": "对象保留的原则可取；源卡缩到0.3倍不适合手机阅读，不能照搬字号缩小。",
+        "catalogSource": "references/shots/typography/title-demote-to-label.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "与B16/B17共用一个连续对象；负面条与不是同时可见，禁止独立正向宣传最强模型。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "title-demote-to-label",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.66781,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8476,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "orbit-ring-title-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.654858,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0159,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.642668,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0159,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.8476,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "graze-face-tour",
+          "category": "camera",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.607391,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0159,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.8067,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "chip-grid-single-select-blackout",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.597391,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0.0159,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8067,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "low",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B16",
+      "frames": {
+        "startFrame": 3286,
+        "endFrameExclusive": 3449
+      },
+      "seconds": [
+        109.533,
+        114.967
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "而是学Golk的这套思路那么按需调用匹配业务",
+      "assessment": "待适配",
+      "continuityGroup": "choice-to-work",
+      "reason": "同一条从最强模型退为中性，再出现按需调用和匹配业务；结果继续交给部门与个人，而非换板。",
+      "comparedCard": {
+        "cardName": "line-carry-transition",
+        "registeredRenderability": "candidate-renderable",
+        "reason": "同线连续交接可参考，但原全屏横移和进度条不适合保留真人；V9 WordingChoice/Groundwork关系更贴切。",
+        "catalogSource": "references/shots/transition/line-carry-transition.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "复用已读V9函数的运动关系，按本条中文长度与源时间重配；不是原函数直接可用。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "doc-park-left-pill-deal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.68545,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0584,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9368,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "chip-grid-single-select-blackout",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.673067,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9133,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "product-card-progressive-assemble",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.649501,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0246,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.9133,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "orbit-ring-title-open",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.630915,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.7364,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "graze-face-tour",
+          "category": "camera",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.617501,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6667,
+            "lexical": 0.0246,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.9133,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "low",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B17",
+      "frames": {
+        "startFrame": 3449,
+        "endFrameExclusive": 3694
+      },
+      "seconds": [
+        114.967,
+        123.133
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "把不同的AI能力呢落到咱们公司的各个部门每一个人呢他的真实的工作缓解当中去",
+      "assessment": "待适配",
+      "continuityGroup": "choice-to-work",
+      "reason": "把AI能力落到部门和每个人，是一到多的应用关系；可以承接上段同一对象，小节点依实录建立。",
+      "comparedCard": {
+        "cardName": "integration-hub-map",
+        "registeredRenderability": "adaptation-required",
+        "reason": "其源方向是外部图标汇入中枢，与本段能力落到部门个人相反；不能直接用。bezier-source-converge-merge同样方向相反。",
+        "catalogSource": "references/shots/ui-entrance/integration-hub-map.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "在现有连续组上加两层关系候选；工作缓解原始疑词不显示、不擅改；没有来源的效率数值禁止添加。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.75738,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.5673,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "ring-diagram-annotation-reveal",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.739569,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0182,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.7037,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "spectrum-morph-ui",
+          "category": "rhythm",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.732993,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.2624,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "pill-slot-cycle",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.682356,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.592,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "canvas-materialize-moves",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.67173,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.4591,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "low",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B18",
+      "frames": {
+        "startFrame": 3727,
+        "endFrameExclusive": 3857
+      },
+      "seconds": [
+        124.233,
+        128.567
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "不是拿来拍短视频炫技啊不是说看个飞车图个热闹",
+      "assessment": "不适合",
+      "continuityGroup": null,
+      "reason": "两句否定用于反思炫技，后接纸艺实际岗位应用；真人语气已经承担对比。",
+      "comparedCard": {
+        "cardName": "marker-underline-title",
+        "registeredRenderability": "candidate-renderable",
+        "reason": "把炫技和热闹制成夸张字卡反而强化被否定内容，且抢纸艺入点。",
+        "catalogSource": "references/shots/typography/marker-underline-title.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "退出前组，给P02清晰交接。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "marker-underline-title",
+          "category": "typography",
+          "renderability": "candidate-renderable",
+          "adapterId": "marker-underline",
+          "score": 0.822207,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0123,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "chip-grid-single-select-blackout",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.81154,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0123,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8667,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "stroke-segment-build",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.81154,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0123,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8667,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "blur-slide",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.810979,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0123,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8596,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.799985,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0.0123,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7222,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "high",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B20",
+      "frames": {
+        "startFrame": 4129,
+        "endFrameExclusive": 4255
+      },
+      "seconds": [
+        137.633,
+        141.833
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "不要总觉得AI离普通老板离咱们普通人很远",
+      "assessment": "不适合",
+      "continuityGroup": null,
+      "reason": "纸艺回到真人的安抚句，需要保持目光与语气；再来字卡会提高理解负担。",
+      "comparedCard": {
+        "cardName": "line-boil",
+        "registeredRenderability": "adaptation-required",
+        "reason": "持续抖线没有指代对象或因果变化，不增加观众所得。",
+        "catalogSource": "references/shots/effects/line-boil.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "保留真人与完整字幕。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "line-boil",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "marker-underline-title",
+          "category": "typography",
+          "renderability": "candidate-renderable",
+          "adapterId": "marker-underline",
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": {
+            "exactAccepted": false,
+            "exactRejected": false,
+            "exactCaseId": null,
+            "reusablePatternId": null,
+            "similarAcceptedCaseId": null,
+            "staleCaseIds": []
+          }
+        },
+        {
+          "cardName": "word-relay-filmstrip",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.82,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "light-play-moves",
+          "category": "effects",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.812453,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9057,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "blur-slide",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.811579,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8947,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "high",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B21",
+      "frames": {
+        "startFrame": 4255,
+        "endFrameExclusive": 4427
+      },
+      "seconds": [
+        141.833,
+        147.567
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "飞车是面向未来的玩具而AI是现在可以拿来帮我们降本增效的工具",
+      "assessment": "待适配",
+      "continuityGroup": "future-now",
+      "reason": "飞车/未来与AI/现在构成明确对照。保留原话观点，不将降本增效包装成已实现效果。",
+      "comparedCard": {
+        "cardName": "text-column-converge",
+        "registeredRenderability": "adaptation-required",
+        "reason": "源卡最终合成一个词的动作会混合两边含义；V9 WordingChoice分句进入、两条保留、后条强调更合适。",
+        "catalogSource": "references/shots/typography/text-column-converge.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "使用实录短词飞车、未来、AI、现在；工具147.20秒才开口，不能在147.56秒前硬塞入场加阅读。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "flying-words",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.756444,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.9556,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "timeline-travel",
+          "category": "data",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.671267,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.25,
+            "duration": 0.8533,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.606444,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.9556,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "chip-grid-single-select-blackout",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.598267,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.8533,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "title-demote-to-label",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.558952,
+          "scoreBreakdown": {
+            "semanticIntent": 0.5,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.3619,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "low",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B22",
+      "frames": {
+        "startFrame": 4427,
+        "endFrameExclusive": 4918
+      },
+      "seconds": [
+        147.567,
+        163.933
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "如果你的企业现在正卡在AI落地上面设了不少的工具但是落不到真实的业务里看着别人在用AI自己却不知道从哪里下手欢迎评论区留下你的行业和现在遇到的卡点咱们聊一聊我来帮你拆解问题",
+      "assessment": "待适配",
+      "continuityGroup": "industry-blocker",
+      "reason": "邀请段只需让观众记住留言的行业和卡点；前半仍保留真人，不能全段挂十六秒卡片。",
+      "comparedCard": {
+        "cardName": "list-reveal",
+        "registeredRenderability": "candidate-renderable",
+        "reason": "两个短标签可沿用V9累积；机器text-column-converge会把两个独立输入合成词，不合意。",
+        "catalogSource": "references/shots/ui-entrance/list-reveal.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "只在158.80秒行业、160.60秒卡点出现时落两词；联系表后段上举手势，建议缩为420×190小组并逐窗检验，不缩字号。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.572,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.544,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.544,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "autolayout-gap-dial",
+          "category": "interaction",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.469391,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0.0133,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "pill-slot-cycle",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.467,
+          "scoreBreakdown": {
+            "semanticIntent": 0.6,
+            "lexical": 0,
+            "material": 0.45,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "medium",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    },
+    {
+      "beatId": "B23",
+      "frames": {
+        "startFrame": 4918,
+        "endFrameExclusive": 5027
+      },
+      "seconds": [
+        163.933,
+        167.567
+      ],
+      "mainVisual": "speaker",
+      "rawSpokenText": "我是超哥在兰州专门做企业AI落地",
+      "assessment": "不适合",
+      "continuityGroup": null,
+      "reason": "真人自己说清姓名地域与服务方向，三点六秒收尾不需要另做品牌定版。",
+      "comparedCard": {
+        "cardName": "ui-to-brand-morph",
+        "registeredRenderability": "adaptation-required",
+        "reason": "没有真实界面或标志形变的前置对象；硬加会断开本人身份表达。",
+        "catalogSource": "references/shots/outro/ui-to-brand-morph.md",
+        "evidenceLevel": "catalog-full-metadata-read"
+      },
+      "requiredWorkOrLeaveOriginal": "保留真人结尾，不自动加关注按钮或商业认证章。",
+      "machineDecision": "not-needed",
+      "machineEffectId": null,
+      "machineTop5": [
+        {
+          "cardName": "stroke-segment-build",
+          "category": "opening",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.798133,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.7267,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "skeleton-reveal",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.792,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 1,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "platform-hinge-rise",
+          "category": "ui-entrance",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.788952,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.9619,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "text-column-converge",
+          "category": "typography",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.788444,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 1,
+            "duration": 0.6056,
+            "experienceBonus": 0
+          },
+          "experience": null
+        },
+        {
+          "cardName": "spectrum-morph-ui",
+          "category": "rhythm",
+          "renderability": "adaptation-required",
+          "adapterId": null,
+          "score": 0.773844,
+          "scoreBreakdown": {
+            "semanticIntent": 1,
+            "lexical": 0,
+            "material": 1,
+            "mainVisual": 1,
+            "energy": 0.65,
+            "duration": 0.773,
+            "experienceBonus": 0
+          },
+          "experience": null
+        }
+      ],
+      "existingVisualSufficiency": "high",
+      "visualAcceptance": false,
+      "implementationInThisEpisode": false
+    }
+  ],
+  "continuityCandidates": [
+    {
+      "id": "expectation-tags",
+      "beats": [
+        "B12",
+        "B13"
+      ],
+      "assessment": "适合",
+      "objectIdentity": "一个问题标签组，已出现的标签持续存在",
+      "initialState": "空透明局部区域，不提前摆出后续短语",
+      "change": "按说词依次显出三个期待；已落位项保持位置，新项只做短入场",
+      "result": "三项同屏，后续真人纠偏前完整读完",
+      "events": [
+        {
+          "text": "哪个大模型最强",
+          "candidateSourceSeconds": 83.78,
+          "candidateSourceFrame": 2513,
+          "sourceSegmentId": 42,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "万能的AI",
+          "candidateSourceSeconds": 86.22,
+          "candidateSourceFrame": 2587,
+          "sourceSegmentId": 43,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "所有的问题",
+          "candidateSourceSeconds": 89.08,
+          "candidateSourceFrame": 2672,
+          "sourceSegmentId": 44,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        }
+      ],
+      "holdUntilSeconds": 91.2,
+      "exitEndSeconds": 91.5,
+      "neighborHandoff": "末项跨B12/B13边界保留阅读，但不改原片或字幕",
+      "fontSize": 60,
+      "maxVisibleMainNodes": 3,
+      "candidateRegion": {
+        "x": 64,
+        "y": 100,
+        "width": 620,
+        "height": 360
+      },
+      "soundIntent": "首个问题出现可选轻揭示；同组后两项优先有意留白，不机械每词一声",
+      "reference": "V9 RulesAndTags；Shotcraft list-reveal作为对照"
+    },
+    {
+      "id": "task-slot",
+      "beats": [
+        "B14"
+      ],
+      "assessment": "待适配",
+      "objectIdentity": "同一个任务词槽",
+      "initialState": "首次画图出现后槽位置固定，不显示任何万能句干",
+      "change": "画图→深度写代码→复杂推理→读业务文档；逐词进入，前词退出后新词可读；不连步骤箭头",
+      "result": "最后一词落定并保持至下一语义转折",
+      "events": [
+        {
+          "text": "画图",
+          "candidateSourceSeconds": 96.24,
+          "candidateSourceFrame": 2887,
+          "sourceSegmentId": 48,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "深度写代码",
+          "candidateSourceSeconds": 98.88,
+          "candidateSourceFrame": 2966,
+          "sourceSegmentId": 49,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "复杂推理",
+          "candidateSourceSeconds": 100.1,
+          "candidateSourceFrame": 3003,
+          "sourceSegmentId": 50,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "读业务文档",
+          "candidateSourceSeconds": 102.66,
+          "candidateSourceFrame": 3080,
+          "sourceSegmentId": 51,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        }
+      ],
+      "holdUntilSeconds": 105.15,
+      "exitEndSeconds": 105.5,
+      "neighborHandoff": "退出后B15用否定框架接住，不沿用一模型全能的源示例",
+      "fontSize": 60,
+      "maxVisibleMainNodes": 2,
+      "candidateRegion": {
+        "x": 64,
+        "y": 100,
+        "width": 620,
+        "height": 220
+      },
+      "soundIntent": "最多把第一次换任务作为轻机械交接；是否有声待正常速度试听",
+      "reference": "Shotcraft pill-slot-cycle仅索引完整元数据已读，源视频与源码未验；现成KeywordReveal为对照"
+    },
+    {
+      "id": "choice-to-work",
+      "beats": [
+        "B15",
+        "B16",
+        "B17"
+      ],
+      "assessment": "待适配",
+      "objectIdentity": "一个被否定的购买选择连续改为按需匹配，再承载应用对象",
+      "initialState": "不是先出现，最强的模型不脱离否定框架",
+      "change": "旧条退中性，新条按需调用/匹配业务进入；同一组保留后展开各个部门/每一个人关系",
+      "result": "匹配业务指向实际人和部门，无效率数值或已经落地的完成勾",
+      "events": [
+        {
+          "text": "不是",
+          "candidateSourceSeconds": 107.5,
+          "candidateSourceFrame": 3225,
+          "sourceSegmentId": 53,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "最强的模型",
+          "candidateSourceSeconds": 108.58,
+          "candidateSourceFrame": 3257,
+          "sourceSegmentId": 53,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "按需调用",
+          "candidateSourceSeconds": 113.16,
+          "candidateSourceFrame": 3395,
+          "sourceSegmentId": 55,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "匹配业务",
+          "candidateSourceSeconds": 114.28,
+          "candidateSourceFrame": 3428,
+          "sourceSegmentId": 55,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "AI能力",
+          "candidateSourceSeconds": 116.12,
+          "candidateSourceFrame": 3484,
+          "sourceSegmentId": 56,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "各个部门",
+          "candidateSourceSeconds": 118.04,
+          "candidateSourceFrame": 3541,
+          "sourceSegmentId": 57,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "每一个人",
+          "candidateSourceSeconds": 118.54,
+          "candidateSourceFrame": 3556,
+          "sourceSegmentId": 58,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        }
+      ],
+      "holdUntilSeconds": 122.6,
+      "exitEndSeconds": 123.14,
+      "neighborHandoff": "旧条退出后才展开新节点，最高4个主节点；B18回真人再接P02",
+      "fontSize": 60,
+      "supportingFontSize": 44,
+      "maxVisibleMainNodes": 4,
+      "candidateRegion": {
+        "x": 64,
+        "y": 100,
+        "width": 620,
+        "height": 360
+      },
+      "soundIntent": "按需匹配接替或关系接通择一个关键动作发声，其余留出原声；无进度提示音",
+      "reference": "已读V9 Groundwork/WordingChoice/RulesAndTags，仅运动关系复用，本期未实现"
+    },
+    {
+      "id": "future-now",
+      "beats": [
+        "B21"
+      ],
+      "assessment": "待适配",
+      "objectIdentity": "两条并存的时间对照",
+      "initialState": "飞车与未来落定，保留旧条",
+      "change": "AI与现在出现，前条退中性，后条轻强调；不把两词合并成一个口号",
+      "result": "四个原话短词构成两个对应关系，避免临近结束才出现工具",
+      "events": [
+        {
+          "text": "飞车",
+          "candidateSourceSeconds": 141.84,
+          "candidateSourceFrame": 4255,
+          "sourceSegmentId": 67,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "未来",
+          "candidateSourceSeconds": 143.0,
+          "candidateSourceFrame": 4290,
+          "sourceSegmentId": 67,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "AI",
+          "candidateSourceSeconds": 143.92,
+          "candidateSourceFrame": 4318,
+          "sourceSegmentId": 68,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "现在",
+          "candidateSourceSeconds": 144.44,
+          "candidateSourceFrame": 4333,
+          "sourceSegmentId": 68,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        }
+      ],
+      "holdUntilSeconds": 147.2,
+      "exitEndSeconds": 147.56,
+      "neighborHandoff": "退出后让邀请先回到真人，禁止显示已实现降本增效",
+      "fontSize": 60,
+      "supportingFontSize": 44,
+      "maxVisibleMainNodes": 4,
+      "candidateRegion": {
+        "x": 64,
+        "y": 100,
+        "width": 540,
+        "height": 250
+      },
+      "soundIntent": "第二条落定的一次轻交接可以候选，不加庆祝或成功提示",
+      "reference": "V9 WordingChoice；排除text-column-converge末态合并"
+    },
+    {
+      "id": "industry-blocker",
+      "beats": [
+        "B22"
+      ],
+      "assessment": "待适配",
+      "objectIdentity": "两个独立留言输入词",
+      "initialState": "前段不放信息板，真人持续",
+      "change": "行业先到位，卡点后到位；行业保持不被第二项挤动",
+      "result": "两词保持至拆解问题说完，退出给本人身份",
+      "events": [
+        {
+          "text": "行业",
+          "candidateSourceSeconds": 158.8,
+          "candidateSourceFrame": 4764,
+          "sourceSegmentId": 74,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        },
+        {
+          "text": "卡点",
+          "candidateSourceSeconds": 160.6,
+          "candidateSourceFrame": 4818,
+          "sourceSegmentId": 75,
+          "phase": "reveal",
+          "timingEvidence": "local-ASR-word-start-not-human-confirmed"
+        }
+      ],
+      "holdUntilSeconds": 163.55,
+      "exitEndSeconds": 163.92,
+      "neighborHandoff": "在B23前退出，不添加关注点赞等原片未说指令",
+      "fontSize": 60,
+      "maxVisibleMainNodes": 2,
+      "candidateRegion": {
+        "x": 64,
+        "y": 100,
+        "width": 420,
+        "height": 190
+      },
+      "soundIntent": "可只给行业首次到位一声；卡点留白，待手机外放听审",
+      "reference": "V9 RulesAndTags，只选两项不机械复用整块长列表"
+    }
+  ],
+  "referencesRead": [
+    {
+      "path": "skills/koubo-shotcraft-library/SKILL.md",
+      "sha256": "7bd33e077271e5fa2caffb12814b23c77581be052487111c36728567b6e78abe"
+    },
+    {
+      "path": "skills/koubo-shotcraft-library/templates/auto-match-request.v1.template.json",
+      "sha256": "40365988a74c93fe18edcf6227e059db9f5e96ca770b216ab381431e0ce6355a"
+    },
+    {
+      "path": "skills/koubo-shotcraft-library/scripts/match-director-effects.mjs",
+      "sha256": "6487a4cf5682ef0ab7bf3824d15bfaa67e8175c51614ab5df55b4496af3474a8"
+    },
+    {
+      "path": "skills/koubo-shotcraft-library/scripts/shotcraft-matcher-core.mjs",
+      "sha256": "e21c24c408f90c8c48111822da84eec37a3022bd72d742324ac3a0f5c6b31eed"
+    },
+    {
+      "path": "skills/koubo-shotcraft-library/assets/ShotcraftEffects.tsx",
+      "sha256": "9f87cac6a7d1ac1246cce996a21735c663b898ca09f5ebbf38967b77e1588ba4"
+    },
+    {
+      "path": "skills/koubo-shotcraft-library/upstream/references/shots/ui-entrance/list-reveal.md",
+      "sha256": "de1633dc78cfdf4d16e5b538640b63e60163df82d9098c469e1794e6a4e5dc68"
+    },
+    {
+      "path": "skills/koubo-shotcraft-library/upstream/references/shots/transition/line-carry-transition.md",
+      "sha256": "fd032128329b222c8769911fe5419c9ee0aad4411055c26bd5f7a238bbf59c97"
+    },
+    {
+      "path": "remotion/src/enterprise-ai-motion-upgrade-20261014/Composition.tsx",
+      "sha256": "abdfdd2877417c7743aaae5831177d136208494a670e4a16f92e0a19f0f41f89"
+    },
+    {
+      "path": "edit/20261014_director_motion_upgrade/control/library-selection.v1.json",
+      "sha256": "a77f75b990cce6d0d93689431aa3969eba6e8f51cebd7f296aaa04200af9350d"
+    }
+  ],
+  "acceptance": {
+    "sourcePreviewWatched": false,
+    "thisEpisodeRendered": false,
+    "humanVisualAccepted": false,
+    "humanAudioAccepted": false,
+    "userSelectionReceived": false,
+    "formalReleaseReady": false
+  }
+}

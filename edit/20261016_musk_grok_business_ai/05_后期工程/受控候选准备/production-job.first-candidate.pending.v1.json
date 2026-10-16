@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20261016_musk_grok_business_ai_v9_candidate",
+  "videoId": "musk-grok-business-ai-20261016",
+  "title": "飞车与企业AI",
+  "productionState": "blocked-inputs-and-contract-compatibility",
+  "productionEligible": false,
+  "productionProfile": {
+    "id": "v9-semantic-direction-sfx",
+    "version": "V9"
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required",
+    "userPreviewApproved": false
+  },
+  "knowledgeContext": {
+    "taskId": "task-20261016T093224Z-db8e7249",
+    "contextPath": "task-20261016T093224Z-db8e7249/context.json"
+  },
+  "inputs": {
+    "source": "edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+    "renderProxy": "edit/20261016_musk_grok_business_ai/05_后期工程/public/media/host.mp4"
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/musk-grok-business-ai-20261016/index.tsx",
+    "publicDir": "edit/20261016_musk_grok_business_ai/05_后期工程/public",
+    "compositionWithSfx": "MuskGrokBusinessAI20261016-WithSfx",
+    "compositionWithoutSfx": "MuskGrokBusinessAI20261016-NoSfx",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 167.83333333333334
+  },
+  "director": {
+    "required": true,
+    "taskId": "20261016_musk_grok_business_ai_director_v2",
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0",
+    "phase": "post-shoot",
+    "paperRequired": true,
+    "fallback": "blocked",
+    "artifacts": {
+      "preproductionRequest": null,
+      "routeLock": null,
+      "preproductionPlan": null,
+      "preproductionValidation": null,
+      "postshootRequest": null,
+      "postshootPlan": null,
+      "postshootValidation": null
+    }
+  },
+  "productionGate": {
+    "schema": "director-production-entry-binding/v2",
+    "revisionId": "musk-grok-20261016-first-candidate-input-preparation-r1",
+    "state": "first-candidate-preview-required",
+    "productionEligible": false,
+    "userPreviewApproved": false,
+    "formalEnabled": false,
+    "firstCandidateInput": null,
+    "firstCandidateAuthorization": null,
+    "freezeReceipt": null
+  },
+  "preview": {
+    "output": "edit/20261016_musk_grok_business_ai/05_后期工程/受控候选准备/内部审阅候选_有音效.mp4"
+  },
+  "formal": {
+    "enabled": false
+  },
+  "publishAuthorized": false,
+  "preparationRequest": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/受控候选准备/候选输入准备请求.v1.json",
+    "sha256": "ebd05b278233a17eb5d6ae45514bf06169b333ae60c48ee51e1ff1a35e9b34d5",
+    "bytes": 9540
+  },
+  "preparationNote": "这是缺项明确为null的待绑定job；不可手填历史批准，不是ready-for-production。"
+}

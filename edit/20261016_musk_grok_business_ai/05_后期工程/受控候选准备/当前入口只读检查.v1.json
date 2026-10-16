@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "episode-first-candidate-readonly-check/v1",
+  "checkedAt": "2026-10-16T10:12:21.568Z",
+  "job": {
+    "path": "edit/20261016_musk_grok_business_ai/05_后期工程/受控候选准备/production-job.first-candidate.pending.v1.json",
+    "sha256": "cdb558c410733d720953f556c95a5584465553a8e5d98d47516d32ae5fbeda1f"
+  },
+  "invokedFunctions": [
+    "validateProductionEntryPreflightV2",
+    "assertDirectorProductionBinding"
+  ],
+  "command": "direct-remotion-preview",
+  "entry": {
+    "ok": false,
+    "code": "DPG2_BOUND_JSON_REFERENCE_INVALID",
+    "message": "首次候选输入合同必须绑定项目内路径和小写 SHA-256。",
+    "details": null
+  },
+  "director": {
+    "ok": false,
+    "code": "DIRECTOR_PRODUCTION_ARTIFACT_MISSING:preproductionRequest",
+    "message": "DIRECTOR_PRODUCTION_ARTIFACT_MISSING:preproductionRequest|DIRECTOR_PRODUCTION_ARTIFACT_MISSING:routeLock|DIRECTOR_PRODUCTION_ARTIFACT_MISSING:preproductionPlan|DIRECTOR_PRODUCTION_ARTIFACT_MISSING:preproductionValidation|DIRECTOR_PRODUCTION_ARTIFACT_MISSING:postshootRequest|DIRECTOR_PRODUCTION_ARTIFACT_MISSING:postshootPlan|DIRECTOR_PRODUCTION_ARTIFACT_MISSING:postshootValidation|DIRECTOR_PRODUCTION_ROUTE_NOT_PAPER|DIRECTOR_PRODUCTION_ROUTE_FALLBACK_NOT_BLOCKED|DIRECTOR_PRODUCTION_GENERIC_CARD_ALLOWED|DIRECTOR_PRODUCTION_PAPER_SCENES_EMPTY|DIRECTOR_PRODUCTION_PRE_SKILL_NOT_EXECUTED|DIRECTOR_PRODUCTION_POST_SKILL_NOT_EXECUTED|DIRECTOR_PRODUCTION_SPOKEN_AUTHORITY_INVALID|DIRECTOR_PRODUCTION_SCRIPT_ROLE_INVALID",
+    "errors": [
+      "DIRECTOR_PRODUCTION_ARTIFACT_MISSING:preproductionRequest",
+      "DIRECTOR_PRODUCTION_ARTIFACT_MISSING:routeLock",
+      "DIRECTOR_PRODUCTION_ARTIFACT_MISSING:preproductionPlan",
+      "DIRECTOR_PRODUCTION_ARTIFACT_MISSING:preproductionValidation",
+      "DIRECTOR_PRODUCTION_ARTIFACT_MISSING:postshootRequest",
+      "DIRECTOR_PRODUCTION_ARTIFACT_MISSING:postshootPlan",
+      "DIRECTOR_PRODUCTION_ARTIFACT_MISSING:postshootValidation",
+      "DIRECTOR_PRODUCTION_ROUTE_NOT_PAPER",
+      "DIRECTOR_PRODUCTION_ROUTE_FALLBACK_NOT_BLOCKED",
+      "DIRECTOR_PRODUCTION_GENERIC_CARD_ALLOWED",
+      "DIRECTOR_PRODUCTION_PAPER_SCENES_EMPTY",
+      "DIRECTOR_PRODUCTION_PRE_SKILL_NOT_EXECUTED",
+      "DIRECTOR_PRODUCTION_POST_SKILL_NOT_EXECUTED",
+      "DIRECTOR_PRODUCTION_SPOKEN_AUTHORITY_INVALID",
+      "DIRECTOR_PRODUCTION_SCRIPT_ROLE_INVALID"
+    ]
+  },
+  "renderEntryInvoked": false,
+  "renderExecuted": false,
+  "gateBypassed": false,
+  "acceptanceCreated": false,
+  "authorizationCreated": false
+}

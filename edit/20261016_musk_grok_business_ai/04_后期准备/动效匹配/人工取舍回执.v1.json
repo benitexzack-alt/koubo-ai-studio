@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "koubo-shotcraft-editorial-choice-receipt/v1",
+  "taskId": "musk-grok-business-ai-20261016",
+  "status": "engineering-choice-recorded-not-rendered",
+  "recordedAt": "2026-10-16T09:56:55.437081+00:00",
+  "decisionAuthority": {
+    "type": "parent-agent-current-production-selection",
+    "userExplicitVisualAcceptance": false,
+    "note": "主代理按本期已授权V9后期范围选择工程候选；不是用户逐效果验收。"
+  },
+  "bindings": {
+    "candidateReview": {
+      "path": "edit/20261016_musk_grok_business_ai/04_后期准备/动效匹配/逐段动效候选.v1.json",
+      "sha256": "6a8ae70f5e8379c15eee43607b34f3be0f6f0dc1590536ff59304dd675f29d8d"
+    },
+    "autoMatchReceipt": {
+      "path": "edit/20261016_musk_grok_business_ai/04_后期准备/动效匹配/auto-match-receipt.v1.json",
+      "sha256": "4b1d4f10d2bbd2b7e1a5286c40f32320df48aea52e02ba1c799a1f87ad240c6d"
+    },
+    "rawSelection": {
+      "path": "edit/20261016_musk_grok_business_ai/04_后期准备/动效匹配/auto-selection.raw.v1.json",
+      "sha256": "800cb6302e1dcfde0cf4ac702f64d1e928fc9d4659ddc40940cd05f8270ff2ab"
+    },
+    "runtimePlanSnapshot": {
+      "path": "edit/20261016_musk_grok_business_ai/04_后期准备/runtime-plan.v1.json",
+      "sha256": "ae326378af7623e9e7f35cbaca3a6d85ed8252f8bce4133de6d07ee60f02e1c9"
+    },
+    "implementationSnapshot": {
+      "path": "remotion/src/musk-grok-business-ai-20261016/Composition.tsx",
+      "sha256": "09d2f2f1973534c08e979cb64d516defcdbc3348aa51c77bf5a10305a80b8a20"
+    },
+    "v9Reference": {
+      "path": "remotion/src/enterprise-ai-motion-upgrade-20261014/Composition.tsx",
+      "sha256": "abdfdd2877417c7743aaae5831177d136208494a670e4a16f92e0a19f0f41f89"
+    }
+  },
+  "snapshotWarning": "主代理仍在编辑运行计划和代码；本回执为记录时快照，变化后哈希不得冒称当前绑定。",
+  "selectedEngineeringCandidates": [
+    {
+      "beatIds": [
+        "B14"
+      ],
+      "overlayId": "tasks-parallel",
+      "method": "V9标签累积",
+      "function": "TagStack",
+      "line": 46,
+      "reason": "用并列短词说明不同任务，旧项保留。与B12同标签机制重复，因此只保留B14。",
+      "shotcraftCardImplemented": false,
+      "episodeCodeExists": true,
+      "applied": false,
+      "renderVerified": false,
+      "userAccepted": false
+    },
+    {
+      "beatIds": [
+        "B15",
+        "B16"
+      ],
+      "overlayId": "model-to-business",
+      "method": "V9同对象文字对照",
+      "function": "WordingComparison",
+      "line": 60,
+      "reason": "保持同一局部画面由最强模型转向按需调用匹配业务，后条强调；不继续扩展B17。",
+      "shotcraftCardImplemented": false,
+      "episodeCodeExists": true,
+      "applied": false,
+      "renderVerified": false,
+      "userAccepted": false
+    },
+    {
+      "beatIds": [
+        "B22"
+      ],
+      "overlayId": "comment-invitation",
+      "method": "V9短标签邀请",
+      "function": "TagStack",
+      "line": 46,
+      "reason": "只收束行业与卡点；前半段保留真人，按实录说词调整入点。",
+      "shotcraftCardImplemented": false,
+      "episodeCodeExists": true,
+      "applied": false,
+      "renderVerified": false,
+      "userAccepted": false
+    }
+  ],
+  "notChosen": [
+    {
+      "beatIds": [
+        "B08"
+      ],
+      "machineEffect": "paper-tape-pin",
+      "reason": "真实资料完整性优先，胶带装饰不增加产品身份与来源理解。"
+    },
+    {
+      "beatIds": [
+        "B11"
+      ],
+      "machineEffect": "marker-underline",
+      "reason": "企业论点无需额外装饰，不以整句下划线强化未获统计支持的最大坑判断。"
+    },
+    {
+      "beatIds": [
+        "B12"
+      ],
+      "machineEffect": "keyword-reveal",
+      "reason": "与B14任务标签机制重复；本期仅保留B14，不以备选数量新增效果。"
+    },
+    {
+      "beatIds": [
+        "B21"
+      ],
+      "machineEffect": null,
+      "reason": "现有后段节奏已够，且完整工具词直到段尾才出现；不为对照增加跨段阅读负担。"
+    },
+    {
+      "beatIds": [
+        "B17"
+      ],
+      "machineEffect": null,
+      "reason": "本期主代理选择只完成B15—B16对照，不再扩张连续对象为另一套关系图。"
+    },
+    {
+      "beatIds": [
+        "B14"
+      ],
+      "machineEffect": "keyword-reveal",
+      "reason": "采用本项目V9标签累积方法，不调用Shotcraft列表组件；单槽轮换候选本期未选。"
+    }
+  ],
+  "provenance": {
+    "sourceRead": true,
+    "actualImportInspection": "Composition.tsx未导入ShotcraftEffects或KeywordReveal；TagStack/WordingComparison为本期组件。",
+    "directShotcraftRuntimeImportFound": false,
+    "v9MethodReferences": [
+      {
+        "function": "RulesAndTags",
+        "line": 110,
+        "usedPrinciple": "短入场、旧标签保持、逐项累积"
+      },
+      {
+        "function": "WordingChoice",
+        "line": 163,
+        "usedPrinciple": "两句依次出现，前条退中性、后条强调"
+      }
+    ],
+    "implementationCopyClaim": false,
+    "sourceVideoWatched": false
+  },
+  "pendingChecks": [
+    {
+      "type": "spoken-anchor",
+      "observedRuntimeFrames": {
+        "cta-industry": 4702,
+        "cta-blocker": 4787,
+        "match-business": 3383
+      },
+      "candidateAsrSeconds": {
+        "你的行业": 158.58,
+        "行业": 158.8,
+        "遇到的卡点": 160.14,
+        "卡点": 160.6,
+        "按需调用": 113.16,
+        "匹配业务": 114.28
+      },
+      "reason": "当前事件取句起点，文字可能先于短词；由主代理同步调整动作和声音，同模型ASR词点仍待真人听审。"
+    },
+    {
+      "type": "negation-preservation",
+      "reason": "B15独立大字最强的模型应保持不是的否定框架，或首次即退中性，避免被扫读成正向卖点；不能仅凭机器结构校验确认表达。"
+    },
+    {
+      "type": "gesture-and-font",
+      "reason": "runtime快照avoidanceWindows为空；左上初始框不能当成全片手势安全区。真实渲染后检查有效字号、变化时边界和口型连续。"
+    }
+  ],
+  "rawMachineFilesUnchanged": true,
+  "newRenderingPerformed": false,
+  "audioAcceptance": false,
+  "visualAcceptance": false,
+  "userAcceptance": false,
+  "formalReleaseReady": false
+}

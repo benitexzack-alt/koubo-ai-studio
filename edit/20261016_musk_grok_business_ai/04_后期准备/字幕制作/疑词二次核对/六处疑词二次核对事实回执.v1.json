@@ -1,0 +1,498 @@
+{
+  "schemaVersion": "koubo-disputed-words-second-check/v1",
+  "taskId": "musk-grok-business-ai-20261016",
+  "createdAt": "2026-10-16T10:04:33.067728+00:00",
+  "status": "offline-asr-crosscheck-only",
+  "scope": "仅六处字幕疑词；不改原声、正文、字幕、动效或事实主张",
+  "sourceRecording": {
+    "path": "edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+    "sha256": "b1902425762e49aedfc62ff717393351e6573c5af6c0cd06a7babf571af89bf6"
+  },
+  "sourceAudio": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.original.16k-mono.wav",
+    "sha256": "2d1c60a8d999bc946b5815f8aec553f9ad929069df48cc2312c6df6a65521e7e"
+  },
+  "newRunReceipt": {
+    "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/离线双模型复核.raw.receipt.v1.json",
+    "sha256": "221c5d19be5a3fa9622ed4b7ef174b35a5ef916853a8dc8702d6bda8b281b667"
+  },
+  "previousCrosscheckReceipt": {
+    "path": "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/focus-crosscheck.receipt.v1.json",
+    "sha256": "d20009732d3aee0e7ffd5e3105b6b00a2117f20ec75bf275537e47b10ee6713e"
+  },
+  "inputPendingWords": {
+    "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/识别修正与待听词.v1.json",
+    "sha256": "a47eff9ef1c76e205ef24e5e5c58bccb6307701e05a54830b52415a1b82c89ef"
+  },
+  "methods": {
+    "newModel": "本机已缓存mlx-community/whisper-small-mlx",
+    "comparisonModel": "本机已缓存mlx-community/whisper-large-v3-turbo",
+    "sameArchitectureFamily": true,
+    "newRunCount": 16,
+    "smallRuns": 10,
+    "turboRuns": 6,
+    "elapsedSeconds": 16.652,
+    "input": "从同一16k单声道原音频按已生成六短窗边界在内存截取，另加四个上下文窗；不新导出或处理声波",
+    "initialPrompt": null,
+    "previousTextConditioning": false,
+    "preShootScriptRead": false,
+    "dictionaryHintsProvided": false,
+    "networkDisabled": true,
+    "networkAttemptCount": 0,
+    "audioUploaded": false,
+    "downloadedOrInstalled": false
+  },
+  "hearingCapability": {
+    "localAudioSemanticListeningToolFound": false,
+    "humanListeningPerformed": false,
+    "assistantDirectAudioListeningPerformed": false,
+    "audioPlayerWouldNotEstablishListeningEvidence": true,
+    "basis": "已检查本轮可用工具名称与说明，未找到可验证的离线音频感知入口；本次只读取离线ASR结果，不以文件可播放或afplay成功冒充听审。"
+  },
+  "summary": {
+    "strongerEvidenceForKeepingOriginal": [
+      "MG",
+      "重复复杂"
+    ],
+    "priorityOrthographicCandidateNotConfirmed": [
+      "试了不少"
+    ],
+    "stillUnresolved": [
+      "直接起势",
+      "Grok AI",
+      "调度中台/状态",
+      "试了不少"
+    ],
+    "confirmedByHumanCount": 0,
+    "subtitleChangesPerformed": 0,
+    "originalRecordingHashUnchanged": true
+  },
+  "items": [
+    {
+      "id": "U01",
+      "sourceSeconds": [
+        28.4,
+        29.38
+      ],
+      "original": "直接去水",
+      "candidateQuestion": "直接起势",
+      "assessment": "不能确认具体文字",
+      "confidenceChange": "排除原始结果的稳定性有所增加；未达到改成起势的证据",
+      "newEvidenceSummary": "small短窗：直接计时；small带上下文：直接起始；turbo短窗：直接启示；此前turbo带上下文：直接起舍。",
+      "interpretation": "结果多次趋近qi-shi一类同音/近音写法，这是从ASR字符串作出的读音线索推断，不能冒称直接听到起势。起始、启示、起势的实际字与声调仍未由听审确定。",
+      "recommendation": "保留待听审，不以句意或拍前稿把原始识别直接替换为起势。",
+      "mayRetainOriginalWithHigherConfidence": false,
+      "applyCorrection": false,
+      "sources": [
+        {
+          "model": "small",
+          "windowId": "U01",
+          "seconds": [
+            28.05,
+            29.73
+          ],
+          "rawText": "推进直接计时",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_U01_28.05-29.73s.raw.json",
+            "sha256": "3c03442d0adc1d11d3db6e1e74fe9312831ea01dbe9cf569a2c13aa73f8f06d0"
+          }
+        },
+        {
+          "model": "small",
+          "windowId": "C01",
+          "seconds": [
+            25,
+            31
+          ],
+          "rawText": "起飞腾空靠喷气推进直接起始零百亿",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_C01_25-31s.raw.json",
+            "sha256": "c952109e30017e122dc99ee6911eb5a3878a79328a92b013c99b7e92774dd8f4"
+          }
+        },
+        {
+          "model": "turbo",
+          "windowId": "U01",
+          "seconds": [
+            28.05,
+            29.73
+          ],
+          "rawText": "推进直接启示",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/turbo_U01_28.05-29.73s.raw.json",
+            "sha256": "cb87d691cb2f37cad6851dc1f97948590ea789467b23a7dc4c2277be45a96d67"
+          }
+        },
+        {
+          "model": "turbo-prior",
+          "windowId": "F02",
+          "seconds": [
+            25,
+            31
+          ],
+          "rawText": "起飞腾空靠喷气推进直接起舍零百余",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F02_25-31s.raw.json",
+            "sha256": "deb48b3fe186918af13810759a94e4431d47af313002ca09281f7dd02d06e196"
+          }
+        }
+      ]
+    },
+    {
+      "id": "U02",
+      "sourceSeconds": [
+        44.76,
+        45.88
+      ],
+      "original": "Girls AM",
+      "candidateQuestion": "Grok AI",
+      "assessment": "不能确认专名及AI后缀",
+      "confidenceChange": "没有足够提升",
+      "newEvidenceSummary": "small短窗：还有它的隔壁；small带上下文：还有他的狗可以啊；turbo短窗：还有它的growth可爱；此前turbo：Groker AM。",
+      "interpretation": "两个模型对此中英混读不稳定。可爱/可以可能是英语尾音误写的线索，但不能凭该线索确定AI或Grok准确拼写。",
+      "recommendation": "继续保留专名待听审；官网存在该产品或拍前稿写法均不能替代实际发音证据。",
+      "mayRetainOriginalWithHigherConfidence": false,
+      "applyCorrection": false,
+      "sources": [
+        {
+          "model": "small",
+          "windowId": "U02",
+          "seconds": [
+            44.41,
+            46.23
+          ],
+          "rawText": "琢磨的还有它的隔壁",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_U02_44.41-46.23s.raw.json",
+            "sha256": "f3f436f95e98464bd5907e956e34434f2e5e3bcb3a25be6ed7072bcc0c3e1a42"
+          }
+        },
+        {
+          "model": "small",
+          "windowId": "C02",
+          "seconds": [
+            41,
+            47
+          ],
+          "rawText": "这台车呢,马斯克最近真正值得我们去琢磨的还有他的狗可以啊",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_C02_41-47s.raw.json",
+            "sha256": "ca9b570706d2e6fcb3126bd10eec4558e005a56a55d5805bfdb0d79faf6bfdd2"
+          }
+        },
+        {
+          "model": "turbo",
+          "windowId": "U02",
+          "seconds": [
+            44.41,
+            46.23
+          ],
+          "rawText": "琢磨的还有它的growth可爱",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/turbo_U02_44.41-46.23s.raw.json",
+            "sha256": "e035438a8901f5763c0c18abd1c68e268f4adf47f60a32a874407b922e086fed"
+          }
+        },
+        {
+          "model": "turbo-prior",
+          "windowId": "F03",
+          "seconds": [
+            41,
+            47
+          ],
+          "rawText": "这台车马斯克最近真正值得我们去琢磨的还有他的Groker AM",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F03_41-47s.raw.json",
+            "sha256": "73bd988dcf6d04dc262bae3dea5b8ac10ae98c44b0c9212892b034fa352064d9"
+          }
+        }
+      ]
+    },
+    {
+      "id": "U03",
+      "sourceSeconds": [
+        56.4,
+        57.32
+      ],
+      "original": "MG",
+      "candidateQuestion": "MJ还是MG",
+      "assessment": "机器证据支持保留MG",
+      "confidenceChange": "相对首轮明显提升，但不是人工听审确认",
+      "newEvidenceSummary": "small短窗、small带上下文、turbo短窗及此前turbo全文/上下文均识别MG。",
+      "interpretation": "本次没有任何新识别为MJ。这里要忠实记录实际字母发音，不能因为绘图服务名是Midjourney就倒改说出口的字母。两个模型仍属Whisper家族，并非完全独立的证据源。",
+      "recommendation": "暂按MG保留，不改为MJ；若要认定字母G/J听审已通过，仍需真实听审。",
+      "mayRetainOriginalWithHigherConfidence": true,
+      "applyCorrection": false,
+      "sources": [
+        {
+          "model": "small",
+          "windowId": "U03",
+          "seconds": [
+            56.05,
+            57.67
+          ],
+          "rawText": "直接调用MG",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_U03_56.05-57.67s.raw.json",
+            "sha256": "bb96826366f24efebd6d072e8f92dbc580b21a66f4256d7a93657bcf4e538ed4"
+          }
+        },
+        {
+          "model": "small",
+          "windowId": "C03",
+          "seconds": [
+            55,
+            68.6
+          ],
+          "rawText": "做繪圖出童的直接調用MG遇到重複複雜的業務問題直接可以調用Cloud Code的Obsertive電源Growl可能現在充當的就是一個調度狀態",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_C03_55-68.6s.raw.json",
+            "sha256": "5a0f4c1bd16c1402d19e9f3b00340971a49bc54b5c18a3b17f10e2afdb55cd67"
+          }
+        },
+        {
+          "model": "turbo",
+          "windowId": "U03",
+          "seconds": [
+            56.05,
+            57.67
+          ],
+          "rawText": "出筒的直接调用MG",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/turbo_U03_56.05-57.67s.raw.json",
+            "sha256": "8ae4873c3e261f4694ac794080347fdc9f4e904dc043904e0fc4d259d011eacd"
+          }
+        },
+        {
+          "model": "turbo-prior",
+          "windowId": "F04",
+          "seconds": [
+            55,
+            68.6
+          ],
+          "rawText": "做绘图出图的直接调用MG遇到重复复杂的业务问题直接可以调用Cloud Code的OPS 5.5Groker现在充当的就是一个调度状态",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F04_55-68.6s.raw.json",
+            "sha256": "4942aa8f9515f4385f97441ba6c73e2fa661d25a98b32b13627a8c24dd2f11cd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "U04",
+      "sourceSeconds": [
+        57.86,
+        60.76
+      ],
+      "original": "重复复杂",
+      "candidateQuestion": "重度还是重复复杂",
+      "assessment": "机器证据支持保留重复复杂",
+      "confidenceChange": "相对首轮明显提升，但不是人工听审确认",
+      "newEvidenceSummary": "small短窗为遇到重复复杂的业务问题；small带上下文为重複複雜；turbo新短窗及此前两次均为重复复杂。",
+      "interpretation": "简繁写法相同，两个模型各窗没有输出重度。不能为使句子更顺而改动实际用词。",
+      "recommendation": "暂保留重复复杂，不改重度复杂；不删重复一词。",
+      "mayRetainOriginalWithHigherConfidence": true,
+      "applyCorrection": false,
+      "sources": [
+        {
+          "model": "small",
+          "windowId": "U04",
+          "seconds": [
+            57.51,
+            61.11
+          ],
+          "rawText": "遇到重复复杂的业务问题",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_U04_57.51-61.11s.raw.json",
+            "sha256": "cb8583254d065260990e3fe772956ce123ca77304e116571665baf1511a22c86"
+          }
+        },
+        {
+          "model": "small",
+          "windowId": "C03",
+          "seconds": [
+            55,
+            68.6
+          ],
+          "rawText": "做繪圖出童的直接調用MG遇到重複複雜的業務問題直接可以調用Cloud Code的Obsertive電源Growl可能現在充當的就是一個調度狀態",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_C03_55-68.6s.raw.json",
+            "sha256": "5a0f4c1bd16c1402d19e9f3b00340971a49bc54b5c18a3b17f10e2afdb55cd67"
+          }
+        },
+        {
+          "model": "turbo",
+          "windowId": "U04",
+          "seconds": [
+            57.51,
+            61.11
+          ],
+          "rawText": "遇到重复复杂的业务问题呢",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/turbo_U04_57.51-61.11s.raw.json",
+            "sha256": "1c58629cb8aa499fda91d4011fb0647c31c1c1597bce53de2ca4a9ffce3b0596"
+          }
+        },
+        {
+          "model": "turbo-prior",
+          "windowId": "F04",
+          "seconds": [
+            55,
+            68.6
+          ],
+          "rawText": "做绘图出图的直接调用MG遇到重复复杂的业务问题直接可以调用Cloud Code的OPS 5.5Groker现在充当的就是一个调度状态",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F04_55-68.6s.raw.json",
+            "sha256": "4942aa8f9515f4385f97441ba6c73e2fa661d25a98b32b13627a8c24dd2f11cd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "U05",
+      "sourceSeconds": [
+        66.86,
+        68.16
+      ],
+      "original": "调度状态",
+      "candidateQuestion": "调度中台还是状态",
+      "assessment": "仍存在直接冲突",
+      "confidenceChange": "中台获得一次小模型短窗支持，尚不足排除状态",
+      "newEvidenceSummary": "small短窗是斗度中台，small带上下文是調度狀態；turbo新短窗是逗逗状态，此前全文及分窗均为调度状态。",
+      "interpretation": "短窗截取改变解码结果，同一small模型自己也不一致；不能只挑中台这一条符合预期的输出。",
+      "recommendation": "保持待听审；不要按产品架构合理性、行业术语或拍前稿决定中字。",
+      "mayRetainOriginalWithHigherConfidence": false,
+      "applyCorrection": false,
+      "sources": [
+        {
+          "model": "small",
+          "windowId": "U05",
+          "seconds": [
+            66.51,
+            68.51
+          ],
+          "rawText": "当的就是一个斗度中台",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_U05_66.51-68.51s.raw.json",
+            "sha256": "e1150c37d41e5c249e72d26cfa1bc95ec1d3e72560e78b3b7ad51747a9419ea0"
+          }
+        },
+        {
+          "model": "small",
+          "windowId": "C03",
+          "seconds": [
+            55,
+            68.6
+          ],
+          "rawText": "做繪圖出童的直接調用MG遇到重複複雜的業務問題直接可以調用Cloud Code的Obsertive電源Growl可能現在充當的就是一個調度狀態",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_C03_55-68.6s.raw.json",
+            "sha256": "5a0f4c1bd16c1402d19e9f3b00340971a49bc54b5c18a3b17f10e2afdb55cd67"
+          }
+        },
+        {
+          "model": "turbo",
+          "windowId": "U05",
+          "seconds": [
+            66.51,
+            68.51
+          ],
+          "rawText": "充当的就是一个逗逗状态",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/turbo_U05_66.51-68.51s.raw.json",
+            "sha256": "6eab825ed047a8c8c290e061974485ff4039b8d471c9a0817dea32cbcaef7ec8"
+          }
+        },
+        {
+          "model": "turbo-prior",
+          "windowId": "F04",
+          "seconds": [
+            55,
+            68.6
+          ],
+          "rawText": "做绘图出图的直接调用MG遇到重复复杂的业务问题直接可以调用Cloud Code的OPS 5.5Groker现在充当的就是一个调度状态",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F04_55-68.6s.raw.json",
+            "sha256": "4942aa8f9515f4385f97441ba6c73e2fa661d25a98b32b13627a8c24dd2f11cd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "U06",
+      "sourceSeconds": [
+        150.62,
+        151.78
+      ],
+      "original": "设了不少",
+      "candidateQuestion": "试了不少",
+      "assessment": "试为有支持的同音正字候选，尚非确认",
+      "confidenceChange": "支持shi类读音强于初始设she的识别；确字置信仍受同音限制",
+      "newEvidenceSummary": "small短窗和带上下文均为是了不少的工具，turbo新短窗及此前分窗同样为是了不少。",
+      "interpretation": "是与试普通话同音；可结合这段实录相邻词工具提出试的正字候选，不需要拍前稿。但同音ASR输出本身不证明书写意图，不能称听清试。",
+      "recommendation": "试了不少可列优先正字候选，仍保留待定；本代理不改原字幕或原声。",
+      "mayRetainOriginalWithHigherConfidence": false,
+      "applyCorrection": false,
+      "sources": [
+        {
+          "model": "small",
+          "windowId": "U06",
+          "seconds": [
+            150.27,
+            152.13
+          ],
+          "rawText": "是了不少的工具",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_U06_150.27-152.13s.raw.json",
+            "sha256": "674cc0d9626d902aeef00a929062fc295c5d23f842ee4581d0d70c06eb0403ee"
+          }
+        },
+        {
+          "model": "small",
+          "windowId": "C04",
+          "seconds": [
+            147,
+            154
+          ],
+          "rawText": "如果你的企业现在正卡在AI落地上面是了不少的工具但是落不到真实的业务里",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/small_C04_147-154s.raw.json",
+            "sha256": "18bc69bb7859b60da3f0c101247cea91407bc840fe2b0268e399d12393083bc3"
+          }
+        },
+        {
+          "model": "turbo",
+          "windowId": "U06",
+          "seconds": [
+            150.27,
+            152.13
+          ],
+          "rawText": "在这上面,是了不少的工具",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/字幕制作/疑词二次核对/turbo_U06_150.27-152.13s.raw.json",
+            "sha256": "10ec8e3c959e777b462f853fa7486990ba422506c6c59bc0bf0219e2e2e59ede"
+          }
+        },
+        {
+          "model": "turbo-prior",
+          "windowId": "F07",
+          "seconds": [
+            143,
+            154
+          ],
+          "rawText": "未来的玩具而AI是现在可以拿来帮我们降本增效的工具如果你的企业现在正卡在AI落地上面是了不少的工具但是落不到真实的业务里看着别人",
+          "rawFile": {
+            "path": "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F07_143-154s.raw.json",
+            "sha256": "e578888474508e7427ff5b51295666d249dee0537f681b41893b1e0131220510"
+          }
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "所有置信描述为相对证据强弱，不提供伪精确百分比。",
+    "两个Whisper模型和不同窗的输出有关联，不能把16次运行当作16个独立听众。",
+    "未提供原稿或候选词给识别器；不能据公开事实或术语习惯倒改实际口播。",
+    "本回执只说明候选和证据边界，不授权替换字幕或通过成片验收。"
+  ]
+}

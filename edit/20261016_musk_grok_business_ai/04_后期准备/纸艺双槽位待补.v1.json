@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "pending-paper-slots/v1",
+  "episodeId": "musk-grok-business-ai-20261016",
+  "basis": {
+    "userMessage": "好的，现在我们按照最新的版本，还有之前我们测试的那套动效，然后开始正式出片。这个旨意的两个视频马上就好啊，你先去做预留这两个的空档就行，等会我调给你，抓紧先去做别的。",
+    "historicCueHash": "56a2da28c39492ac8498d9ef3bd713ef5c405bf027095e615d172869e397d7fa"
+  },
+  "timingPolicy": "按实际口播逐词时间轴重绑；不静音、不黑屏、不冻结真人、不拉慢音频。",
+  "slots": [
+    {
+      "slotId": "P01",
+      "status": "received-technical-check-complete-review-pending",
+      "directorItem": {
+        "id": "P01",
+        "beatId": "B10",
+        "startAnchorText": "不同的活",
+        "endAnchorText": "一个大模型包打天下。",
+        "timingStatus": "pre-shoot-text-anchor-only",
+        "purpose": "illustration-only",
+        "evidenceEligible": false,
+        "durationSeconds": 8,
+        "reason": "纸艺只解释不同任务流向不同能力这一抽象机制，不绑定Grok品牌，不证明全球最强排名或真实产品集成。",
+        "visualRole": "process",
+        "visualMetaphor": "不同形状的任务纸片经实体分轨分别进入适配能力槽，展示按任务分工",
+        "composition": "斜俯视的单一分流装置：前景三张不同任务折页，中景分轨，背景三个有不同入口形状的厚纸能力槽；三条路清楚但未完成对接",
+        "referenceImageIds": [
+          "REF-PAPER-SUPER-PV07"
+        ],
+        "textPlan": [
+          {
+            "text": "出图",
+            "surface": "前景左侧方形任务折页",
+            "motion": "with-object"
+          },
+          {
+            "text": "代码",
+            "surface": "前景中央窄形任务折页",
+            "motion": "with-object"
+          },
+          {
+            "text": "文档",
+            "surface": "前景右侧宽形任务折页",
+            "motion": "with-object"
+          },
+          {
+            "text": "图像能力",
+            "surface": "背景左侧能力槽正面",
+            "motion": "fixed-context",
+            "reason": "能力槽是分流的固定目的地，文字随槽体保持静止以便辨认结果。"
+          },
+          {
+            "text": "代码能力",
+            "surface": "背景中央能力槽正面",
+            "motion": "fixed-context",
+            "reason": "能力槽是固定目的地，不能为了动效任意移动。"
+          },
+          {
+            "text": "文档能力",
+            "surface": "背景右侧能力槽正面",
+            "motion": "fixed-context",
+            "reason": "能力槽是固定目的地，保留静态阅读参照。"
+          }
+        ],
+        "primaryAction": "三张任务折页沿不同纸轨分别进入对应能力槽",
+        "motionPlan": {
+          "goal": "让观众看见先区分任务，再匹配相应能力，而非所有任务交给同一入口。",
+          "actions": [
+            "三张带字任务折页按口播次序进入各自分轨，折页形状与对应入口相合。",
+            "三张折页分别停在各自能力槽内，保留分开的任务与能力对应关系。"
+          ],
+          "result": "三种任务各有一个相符入口，保持完整全景供观众读懂；不显示产品名称、最强排名或执行成功标志。",
+          "textBinding": "surface-bound",
+          "audioPolicy": "preserve-usable-native-action-sound"
+        },
+        "negativePrompt": [
+          "无品牌标识和仿软件界面",
+          "不出现万能模型或性能排名",
+          "中文不漂浮、不重绘、不乱码",
+          "不要三路合并进一个万能入口",
+          "不加入旁白、音乐、数字收益或成功对号"
+        ],
+        "firstFramePrompt": "16:9横向实体纸艺摄影，沿用《超级个体》参考的深蓝、灰白与少量珊瑚红纸材，真实纸厚、纤维、切边和接触阴影，中文直接印在物件纸面上。斜俯视一座厚纸制成的分流装置。前景左侧方形任务折页印“出图”，前景中央窄形任务折页印“代码”，前景右侧宽形任务折页印“文档”，三张折页均在起点待分配。中景是三条各自连到不同入口的灰白实体纸轨，彼此没有交叉。背景左侧能力槽正面印“图像能力”，背景中央能力槽正面印“代码能力”，背景右侧能力槽正面印“文档能力”；三个槽内此时都是空的。三层空间清晰，能力槽与任务折页有不同形状且成对相合，纸轨方向一眼可辨，文字正对观众且不遮挡。前景、中景和背景均有纸厚与接触阴影。画面只呈现待分配的静态初态，没有任何品牌、软件窗口、箭头动画或已完成结果。",
+        "videoPrompt": "基于已确认首帧，保持原构图、纸材和全部中文。三张任务折页沿不同纸轨分别进入对应能力槽，按照口播逐一发生，形成同一认知目标下的连续分配过程；先看清任务，再看清它进入的对应能力。中文牢固跟随各自折页，槽面文字随固定槽体保持稳定，字形不重画、不变形、不漂浮。每条轨道始终可见，任务不可互换或跨槽。完成后保留约一秒半的全景阅读，让观众看见三种任务各有适配入口；不要突然增加模型、排名、得分或执行成功标志。可保留细微纸片滑动与落槽轻响，无旁白、无背景音乐；接回真人时不新增主题。"
+      },
+      "startFrame": 2045,
+      "endFrame": 2269,
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/视频.mp4",
+      "reviewAccepted": false,
+      "pendingVisual": "speaker-continuous",
+      "nativeSoundPolicy": "到件逐镜听审保留可用动作声，不重复叠响",
+      "sourceStartSeconds": 68.16,
+      "sourceEndSeconds": 75.64,
+      "actualSpokenText": "不同的活交给全球最擅长这件事的AI去干而不是指望一个大模型包打天下",
+      "timingStatus": "local-asr-bound-candidate",
+      "note": "原速使用来件；P01去掉开头0.5秒静置并保留结果，P02完整8秒后回真人，原声和字幕全长不变。动态/听觉验收未完成。",
+      "sha256": "33780030aa302b43ad5d32235c8d4c9cb128e5f09c09fc7e143e7b3207741c9d",
+      "sourceInFrame": 12,
+      "sourceFps": 24,
+      "sourceDurationFrames": 192
+    },
+    {
+      "slotId": "P02",
+      "status": "received-technical-check-complete-review-pending",
+      "directorItem": {
+        "id": "P02",
+        "beatId": "B19",
+        "startAnchorText": "销售、运营、行政、业务岗",
+        "endAnchorText": "解决手上实实在在的问题。",
+        "timingStatus": "pre-shoot-text-anchor-only",
+        "purpose": "illustration-only",
+        "evidenceEligible": false,
+        "durationSeconds": 8,
+        "reason": "第二段纸艺显示能力进入既有岗位工作槽，表达工作环节是承载对象；属于说明性隐喻，不展示虚构企业上线与收益。",
+        "visualRole": "mechanism",
+        "visualMetaphor": "能力纸模块嵌入岗位既有工作槽，像给真实工作接上适配工具而不是另摆一件展品",
+        "composition": "低斜侧视的四层错位工作台：前景已有岗位任务托盘，中景是各自留有能力缺口的工作槽，后景为少量待用纸模块；构图重在嵌入工作而非模型榜单",
+        "referenceImageIds": [
+          "REF-PAPER-SUPER-PV07"
+        ],
+        "textPlan": [
+          {
+            "text": "销售",
+            "surface": "前景左侧岗位托盘立面",
+            "motion": "with-object"
+          },
+          {
+            "text": "运营",
+            "surface": "中景左后岗位托盘立面",
+            "motion": "with-object"
+          },
+          {
+            "text": "行政",
+            "surface": "中景右前岗位托盘立面",
+            "motion": "with-object"
+          },
+          {
+            "text": "业务",
+            "surface": "后景右侧岗位托盘立面",
+            "motion": "with-object"
+          },
+          {
+            "text": "AI能力",
+            "surface": "后景能力料架横梁",
+            "motion": "fixed-context",
+            "reason": "能力料架是固定供给端，文字跟随固定横梁稳定辨认。"
+          },
+          {
+            "text": "真实工作",
+            "surface": "前景工作底板正面",
+            "motion": "fixed-context",
+            "reason": "底板作为全镜不变的工作场景参照，避免观众误读为另购一个独立系统。"
+          }
+        ],
+        "primaryAction": "四枚能力模块分别嵌入四个岗位工作槽",
+        "motionPlan": {
+          "goal": "让观众看见AI能力应进入岗位的真实工作环节，而不只是展示一个模型名。",
+          "actions": [
+            "四个带字岗位托盘短距靠近各自工作槽，待用模块保持可见。",
+            "四枚不同形状的能力模块分别嵌入相合的工作槽，岗位原有文件仍留在托盘上。"
+          ],
+          "result": "各岗位与一个匹配的能力模块组成完整工作单元，留出阅读停留；不显示自动完成业务、赚钱或人被替代。",
+          "textBinding": "surface-bound",
+          "audioPolicy": "preserve-usable-native-action-sound"
+        },
+        "negativePrompt": [
+          "不把岗位或人员移走",
+          "不生成企业客户标识与实际系统界面",
+          "中文随纸面不漂移、不重画、不乱码",
+          "不出现节省百分比、现金、成功印章",
+          "不加入旁白、音乐或统一闪烁光效"
+        ],
+        "firstFramePrompt": "16:9横向实体纸艺摄影，沿用《超级个体》参考的深蓝、灰白与少量珊瑚红纸材，真实纸厚、纤维、切边和接触阴影，中文直接印在物件纸面上。低斜侧视一座四层错位的纸制工作台，前景工作底板正面印“真实工作”。前景左侧岗位托盘立面印“销售”，中景左后岗位托盘立面印“运营”，中景右前岗位托盘立面印“行政”，后景右侧岗位托盘立面印“业务”；四个托盘各有少量无字的文件纸片，托盘尚未接上工作槽。每个工作槽留有一种独特形状的空缺，后景能力料架横梁印“AI能力”，架上四枚灰白和珊瑚红的厚纸模块与四种空缺成对适配，全部尚在料架上。岗位文字朝向观众，可在错位纵深中逐一读清，文件不遮字。画面至少有前景底板、中景托盘、后景料架三层，展示静态未接入状态。保持可见折面、纤维、切口与稳定接触阴影，没有企业标识、收益数字和已经完成的业务结果。",
+        "videoPrompt": "基于已确认首帧，保留四层错位工作台、全部岗位文字和原有文件。四个岗位托盘依口播短距靠近自己的工作槽，四枚能力模块分别嵌入四个岗位工作槽，动作由工作需要引出，模块形状与缺口逐一相合，不把所有能力塞进同一槽。销售、运营、行政、业务的文字随托盘整体移动，料架与底板文字固定在原承载纸面，全部字形稳定、不重绘、不漂浮。文件始终留在各自岗位，不突然变成收益或完成标志。形成岗位与适配能力相接的整体后，留约一秒半全景阅读，再平稳接回真人；只保留可信的纸面摩擦和模块嵌入轻响，无旁白、无音乐。"
+      },
+      "startFrame": 3857,
+      "endFrame": 4097,
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/视频_2.mp4",
+      "reviewAccepted": false,
+      "pendingVisual": "speaker-continuous",
+      "nativeSoundPolicy": "到件逐镜听审保留可用动作声，不重复叠响",
+      "sourceStartSeconds": 128.56,
+      "sourceEndSeconds": 136.88,
+      "actualSpokenText": "那么销售运营行政业务港每个人用上适配自己工作的AI解决手上实实在在的问题",
+      "timingStatus": "local-asr-bound-candidate",
+      "note": "原速使用来件；P01去掉开头0.5秒静置并保留结果，P02完整8秒后回真人，原声和字幕全长不变。动态/听觉验收未完成。",
+      "sha256": "a89e8901bfd93c76d79a8d0cd6264d943d26ff32634b4fec4889a59323d5d423",
+      "sourceInFrame": 0,
+      "sourceFps": 24,
+      "sourceDurationFrames": 192
+    }
+  ],
+  "renderReady": false
+}

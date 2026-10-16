@@ -1,0 +1,329 @@
+{
+  "schemaVersion": "paper-arrival-technical-visual-review/v1",
+  "episodeId": "musk-grok-business-ai-20261016",
+  "recordedAt": "2026-10-16T18:12:08+08:00",
+  "stage": "edit-release",
+  "status": "technical-checks-complete-visual-findings-recorded-human-review-pending",
+  "scope": "只读两段来件与允许参考，派生检查文件全部位于纸艺到件核对；未改原片、首帧、导演、槽位、原生AAC副本、工程或最终成片。",
+  "items": [
+    {
+      "sceneId": "P01",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/视频.mp4",
+      "sha256": "33780030aa302b43ad5d32235c8d4c9cb128e5f09c09fc7e143e7b3207741c9d",
+      "bytes": 1389830,
+      "sourceUnchangedAfterChecks": true,
+      "mappingBasis": "实际查看来件抽帧中的场景对象和文字，不按通用文件名推断",
+      "candidateState": "ready-for-candidate-review",
+      "reviewAccepted": false,
+      "audioDisposition": "pending-normal-speed-listening-and-mix-review",
+      "technical": {
+        "durationSeconds": 8,
+        "frameCount": 192,
+        "fps": "24/1",
+        "width": 1344,
+        "height": 768,
+        "aspectRatio": "7:4",
+        "videoCodec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioCodec": "aac",
+        "audioSampleRate": 32000,
+        "audioChannels": 2,
+        "requestedSettingsDifference": "实际1344×768；不是授权文档期望的2K，也不是精确16:9。保持比例，不拉伸。",
+        "fullVideoAndAudioDecodeExitCode": 0,
+        "decodeLog": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频/完整解码.log",
+        "probe": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频_ffprobe.json",
+        "aigcMetadataPresent": true,
+        "colorPrimariesTransferMatrix": "ffprobe未报告完整标签；未据此推断视觉失败或执行调色"
+      },
+      "approvedFirstFrameReference": {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/P01_首帧_r3.png",
+        "sha256": "50e9f69e6182a16b1b01b2dc731d34f27de0875523140576fb1cceedaf805726",
+        "pixelsViewed": true
+      },
+      "visualMethod": {
+        "halfSecondContactSheetViewed": true,
+        "quarterSecondBoundaryContactSheetViewed": true,
+        "nativeResolutionKeyFramesViewed": true,
+        "normalSpeedMotionReviewPerformed": false,
+        "fullFrameTextAuditPerformed": false,
+        "ocrPerformed": false,
+        "coverage": "完整首尾+每0.5秒抽帧，关键动作边界加0.25秒抽帧。只对已查看帧给出判断。"
+      },
+      "visualEvidence": {
+        "contactSheet": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频/半秒联系表.jpg",
+        "boundarySheet": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频/动作边界联系表.jpg",
+        "frameIndex": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频/技术与抽帧索引.json",
+        "boundaryIndex": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频/动作边界/索引.json"
+      },
+      "windowProposal": {
+        "sourceStartSeconds": 0.5,
+        "sourceEndSecondsExclusive": 7.966666666666667,
+        "playbackRate": 1,
+        "sourceFps": 24,
+        "outputFps": 30,
+        "sourceSpeechFromFrame": 2045,
+        "sourceSpeechToFrameExclusive": 2269,
+        "outputDurationInFrames": 224,
+        "sourceSpeechStartSeconds": 68.16666666666667,
+        "sourceSpeechEndSeconds": 75.63333333333334,
+        "noLoopNoFreezeNoSlowdown": true,
+        "appliedByThisReviewer": false
+      },
+      "audio": {
+        "present": true,
+        "measurementsScope": "整段原生8秒音轨；建议P01窗口仍包含实测峰值",
+        "integratedLufs": -31.6,
+        "truePeakDbtp": -7.5,
+        "samplePeakDbfs": -7.665,
+        "peakTimeSeconds": 3.82871875,
+        "samplesAtOrAboveFullScale": 0,
+        "volumeDetect": [
+          "mean_volume: -38.7 dB",
+          "max_volume: -7.7 dB"
+        ],
+        "quarterSecondMeasurementReceipt": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频/音频分窗指标.json",
+        "ffmpegLog": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频/音频指标.log",
+        "humanListeningPerformed": false,
+        "soundTypeConfirmed": false,
+        "musicOrSpeechAbsentConfirmed": false,
+        "actionSyncAccepted": false,
+        "mixCandidate": {
+          "linearGain": 0.6,
+          "gainDb": -4.437,
+          "estimatedIndividualTruePeakDbtp": -11.937,
+          "basis": "各片实测峰值不同，暂使单独素材峰值约在-12dB附近，给叠加口播留试混余量；不是通用验收阈值或最终响度。",
+          "applied": false,
+          "finalGainRequiresRealMixAndListening": true,
+          "uniformPointOneRejectedAsUnjustified": true
+        }
+      },
+      "visualFindings": {
+        "meaning": "出图/代码/文档分别进入图像/代码/文档能力槽，三路不合并；抽样中结果与任务分工概念一致。",
+        "text": [
+          "出图",
+          "代码",
+          "文档",
+          "图像能力",
+          "代码能力",
+          "文档能力"
+        ],
+        "sampledTextStatus": "查看帧中六处字可识别；移动任务上的字跟随纸片及转向，未见独立漂字；远景最终任务字较小。不能由抽样保证全帧无重绘。",
+        "approvedFirstFrameVisualMatch": false,
+        "deviation": "已确认r3为敞开连续纸轨、名称在后挡板，来件有接收槽前墙/前牌且场景装饰不同，任务在约3–3.5、4.5–5、5.5–6秒抬起越板入槽；不是同一首帧的单纯等比缩放或裁切。未知具体平台输入版本，不猜文件来源。",
+        "actionIntervalsApproximate": [
+          {
+            "seconds": [
+              0.5,
+              1.0
+            ],
+            "observation": "出图开始向后移动；0.5秒仍有初态可读，1秒已前移。"
+          },
+          {
+            "seconds": [
+              2.0,
+              2.5
+            ],
+            "observation": "代码开始移动，出图继续接近接收槽。"
+          },
+          {
+            "seconds": [
+              3.0,
+              4.0
+            ],
+            "observation": "文档启动；出图抬起越前牌后进入左槽。"
+          },
+          {
+            "seconds": [
+              4.5,
+              5.5
+            ],
+            "observation": "代码抬起进入中槽；文档接近右槽。"
+          },
+          {
+            "seconds": [
+              5.5,
+              6.25
+            ],
+            "observation": "文档抬起越板并落入右槽；至6.25秒已形成完整结果。"
+          },
+          {
+            "seconds": [
+              6.25,
+              7.958333333
+            ],
+            "observation": "三片分别留在三个槽内，结果停留约1.7秒。"
+          }
+        ],
+        "windowReason": "源0.500–7.966667秒保留初态、三次完整动作和结果，恰好224个30fps输出帧；与r3差异仍待审，不是验收。",
+        "reviewItems": [
+          "与已批准r3的构图/机构不同",
+          "越板动作是否接受",
+          "正常速度文字与动作连续性",
+          "原生声音类型和入槽同步"
+        ]
+      }
+    },
+    {
+      "sceneId": "P02",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/视频_2.mp4",
+      "sha256": "a89e8901bfd93c76d79a8d0cd6264d943d26ff32634b4fec4889a59323d5d423",
+      "bytes": 1341065,
+      "sourceUnchangedAfterChecks": true,
+      "mappingBasis": "实际查看来件抽帧中的场景对象和文字，不按通用文件名推断",
+      "candidateState": "ready-for-candidate-review",
+      "reviewAccepted": false,
+      "audioDisposition": "pending-normal-speed-listening-and-mix-review",
+      "technical": {
+        "durationSeconds": 8,
+        "frameCount": 192,
+        "fps": "24/1",
+        "width": 1344,
+        "height": 768,
+        "aspectRatio": "7:4",
+        "videoCodec": "h264",
+        "pixelFormat": "yuv420p",
+        "audioCodec": "aac",
+        "audioSampleRate": 32000,
+        "audioChannels": 2,
+        "requestedSettingsDifference": "实际1344×768；不是授权文档期望的2K，也不是精确16:9。保持比例，不拉伸。",
+        "fullVideoAndAudioDecodeExitCode": 0,
+        "decodeLog": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频_2/完整解码.log",
+        "probe": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频_2_ffprobe.json",
+        "aigcMetadataPresent": true,
+        "colorPrimariesTransferMatrix": "ffprobe未报告完整标签；未据此推断视觉失败或执行调色"
+      },
+      "approvedFirstFrameReference": {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/P02_首帧_r1.png",
+        "sha256": "caffa6e63ab881e5958dd2d19d7ad55ffbe9fad20cbff2b12784a6c80d01ae8e",
+        "pixelsViewed": true
+      },
+      "visualMethod": {
+        "halfSecondContactSheetViewed": true,
+        "quarterSecondBoundaryContactSheetViewed": true,
+        "nativeResolutionKeyFramesViewed": true,
+        "normalSpeedMotionReviewPerformed": false,
+        "fullFrameTextAuditPerformed": false,
+        "ocrPerformed": false,
+        "coverage": "完整首尾+每0.5秒抽帧，关键动作边界加0.25秒抽帧。只对已查看帧给出判断。"
+      },
+      "visualEvidence": {
+        "contactSheet": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频_2/半秒联系表.jpg",
+        "boundarySheet": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频_2/动作边界联系表.jpg",
+        "frameIndex": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频_2/技术与抽帧索引.json",
+        "boundaryIndex": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频_2/动作边界/索引.json"
+      },
+      "windowProposal": {
+        "sourceStartSeconds": 0,
+        "sourceEndSecondsExclusive": 8,
+        "playbackRate": 1,
+        "sourceFps": 24,
+        "outputFps": 30,
+        "sourceSpeechFromFrame": 3857,
+        "sourceSpeechToFrameExclusive": 4097,
+        "outputDurationInFrames": 240,
+        "sourceSpeechStartSeconds": 128.56666666666666,
+        "sourceSpeechEndSeconds": 136.56666666666666,
+        "noLoopNoFreezeNoSlowdown": true,
+        "appliedByThisReviewer": false
+      },
+      "audio": {
+        "present": true,
+        "measurementsScope": "整段原生8秒音轨；建议P01窗口仍包含实测峰值",
+        "integratedLufs": -26.1,
+        "truePeakDbtp": -0.1,
+        "samplePeakDbfs": -0.072,
+        "peakTimeSeconds": 5.12459375,
+        "samplesAtOrAboveFullScale": 0,
+        "volumeDetect": [
+          "mean_volume: -33.6 dB",
+          "max_volume: -0.1 dB"
+        ],
+        "quarterSecondMeasurementReceipt": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频_2/音频分窗指标.json",
+        "ffmpegLog": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/纸艺到件核对/视频_2/音频指标.log",
+        "humanListeningPerformed": false,
+        "soundTypeConfirmed": false,
+        "musicOrSpeechAbsentConfirmed": false,
+        "actionSyncAccepted": false,
+        "mixCandidate": {
+          "linearGain": 0.25,
+          "gainDb": -12.041,
+          "estimatedIndividualTruePeakDbtp": -12.141,
+          "basis": "各片实测峰值不同，暂使单独素材峰值约在-12dB附近，给叠加口播留试混余量；不是通用验收阈值或最终响度。",
+          "applied": false,
+          "finalGainRequiresRealMixAndListening": true,
+          "uniformPointOneRejectedAsUnjustified": true
+        }
+      },
+      "visualFindings": {
+        "meaning": "四岗位托盘前移；四种能力模块由后架移到各形状工作槽，原文件与岗位仍在，AI能力和真实工作标识保留；表达能力进入岗位工作。",
+        "text": [
+          "销售",
+          "运营",
+          "行政",
+          "业务",
+          "AI能力",
+          "真实工作"
+        ],
+        "sampledTextStatus": "初态六处文字可读；岗位字随托盘整体移动，料架/底板文字留在原载体，抽样未见独立漂字。约3秒后前景模块逐步遮住岗位字，最终四岗位均有部分遮挡。",
+        "approvedFirstFrameVisualMatch": "构图对象/配色/文字与r1相符；不是平台输入文件身份校验。",
+        "actionIntervalsApproximate": [
+          {
+            "seconds": [
+              0.5,
+              1.5
+            ],
+            "observation": "四托盘短距前移，岗位文字随各自托盘移动。"
+          },
+          {
+            "seconds": [
+              1.5,
+              2.5
+            ],
+            "observation": "四模块离开后架，向前下方移出。"
+          },
+          {
+            "seconds": [
+              2.5,
+              4.5
+            ],
+            "observation": "模块经过托盘前方并进入各自对应形状孔；期间开始遮挡岗位字。"
+          },
+          {
+            "seconds": [
+              4.5,
+              7.958333333
+            ],
+            "observation": "模块下部进入孔位、上部仍突出；保持结果。孔形匹配可辨，岗位字被不同程度遮挡。"
+          }
+        ],
+        "windowReason": "保留全0–8秒形成240个30fps输出帧；在[3857,4097)播放，剩余[4097,4106)9帧约0.3秒按原节奏回真人，不延长/冻结素材。",
+        "reviewItems": [
+          "结果停留阶段岗位字被模块遮挡",
+          "正常速度阅读与遮挡是否可接受",
+          "原生声约5.125秒接近满幅的短峰及其动作对应"
+        ]
+      }
+    }
+  ],
+  "layoutHandoffFromParent": {
+    "paperViewportSize": [
+      1522.5,
+      870
+    ],
+    "preserveSourceAspectRatio": "7:4",
+    "noSpeakerPipOrTitleCard": true,
+    "subtitleYStartsAt": 886,
+    "status": "主代理提供的布局，不是本代理已渲染验证。"
+  },
+  "acceptanceBoundary": {
+    "machineDecodePassed": true,
+    "candidateUsePossible": true,
+    "humanNormalSpeedVisualAccepted": false,
+    "audioListeningAccepted": false,
+    "sourceFirstFrameIdentityAccepted": false,
+    "formalRenderPerformed": false,
+    "generatedNewContent": false,
+    "sourceFilesModified": false,
+    "finalDecisionByThisReviewer": false
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+    "-map",
+    "0:v:0",
+    "-map",
+    "0:a:0",
+    "-c:v",
+    "h264_videotoolbox",
+    "-b:v",
+    "10M",
+    "-pix_fmt",
+    "yuv420p",
+    "-fps_mode",
+    "passthrough",
+    "-c:a",
+    "copy",
+    "-movflags",
+    "+faststart",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/媒体代理/真人全长_1080p30_剪辑代理.mp4"
+  ],
+  "purpose": "源素材全量转码供本期剪辑读取，非成片或动效预览",
+  "sourceSha256": "b1902425762e49aedfc62ff717393351e6573c5af6c0cd06a7babf571af89bf6",
+  "speechTrimmed": false
+}

@@ -1,0 +1,387 @@
+{
+  "schemaVersion": "local-asr-handoff/v1",
+  "status": "candidate-unreviewed",
+  "createdAt": "2026-10-16T09:40:57.529949+00:00",
+  "sourceVideo": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+    "sha256Before": "b1902425762e49aedfc62ff717393351e6573c5af6c0cd06a7babf571af89bf6",
+    "sha256After": "b1902425762e49aedfc62ff717393351e6573c5af6c0cd06a7babf571af89bf6",
+    "unchanged": true,
+    "durationSeconds": 167.833333,
+    "width": 1920,
+    "height": 1080,
+    "frames": 5035,
+    "nominalFps": 30,
+    "videoCodec": "HEVC",
+    "audioCodec": "AAC",
+    "audioSampleRate": 44100,
+    "audioChannels": 2
+  },
+  "fullDecode": {
+    "exitCode": 0,
+    "passed": true,
+    "durationSeconds": 10.819,
+    "logPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/source.full-decode.log.txt",
+    "scope": "all-video-and-audio-no-cuts"
+  },
+  "audioExtraction": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.original.16k-mono.wav",
+    "sha256": "2d1c60a8d999bc946b5815f8aec553f9ad929069df48cc2312c6df6a65521e7e",
+    "durationSeconds": 167.832375,
+    "channels": 1,
+    "sampleRate": 16000,
+    "pcmBits": 16,
+    "entireSource": true,
+    "cutsPerformed": false,
+    "normalizationPerformed": false,
+    "speedChangePerformed": false
+  },
+  "primaryASR": {
+    "modelPath": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb",
+    "modelFiles": [
+      {
+        "path": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb/config.json",
+        "resolvedPath": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/blobs/6ac9a52a28f70a2e5681c250a470eca6e9c8cc3e",
+        "bytes": 268,
+        "sha256": "b34fc29e4e11e0a25e812775dd67f4dd16fc2c8eb43d28ae25ff7d660ecb6379"
+      },
+      {
+        "path": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/snapshots/a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb/weights.safetensors",
+        "resolvedPath": "/Users/pc/.cache/huggingface/hub/models--mlx-community--whisper-large-v3-turbo/blobs/951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6",
+        "bytes": 1613977612,
+        "sha256": "951ed3fc1203e6a62467abb2144a96ce7eafca8fa77e3704fdb8635ff3e7f8a6"
+      }
+    ],
+    "packages": {
+      "mlx-whisper": "0.4.3",
+      "mlx": "0.32.2",
+      "numpy": "2.5.2",
+      "torch": "2.14.0",
+      "numba": "0.67.0",
+      "tiktoken": "0.14.0",
+      "huggingface-hub": "1.30.0"
+    },
+    "pythonVersion": "3.12.11 (main, Aug 18 2025, 19:02:39) [Clang 20.1.4 ]",
+    "metalAvailable": true,
+    "elapsedSecondsIncludingExtractionAndDecode": 29.132,
+    "segments": 80,
+    "wordEntries": 672,
+    "firstSegmentStart": 0.0,
+    "lastSegmentEnd": 167.58,
+    "wordTimestampChecks": {
+      "negativeOrReversed": 0,
+      "zeroDuration": 0,
+      "outOfMediaRange": 0
+    },
+    "rawPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.mlx-whisper-large-v3-turbo.raw.v1.json",
+    "rawSha256": "f64a82357cfb81a4226c6d7a14c9c172d235fa4ec10c92cbbb99ee4ee0f7bd81"
+  },
+  "focusCrosscheck": {
+    "sameModelAsPrimary": true,
+    "windows": [
+      {
+        "id": "F01",
+        "requested": [
+          18,
+          23
+        ],
+        "actual": [
+          18,
+          23
+        ],
+        "reason": "推进系统专名",
+        "rawPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F01_18-23s.raw.json",
+        "rawSha256": "a67b206d8aac71519f1d88b8a4be7e4f83ba53e64080d1e8f0bbae720757898e"
+      },
+      {
+        "id": "F02",
+        "requested": [
+          25,
+          31
+        ],
+        "actual": [
+          25,
+          31
+        ],
+        "reason": "直接起势识别疑点",
+        "rawPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F02_25-31s.raw.json",
+        "rawSha256": "deb48b3fe186918af13810759a94e4431d47af313002ca09281f7dd02d06e196"
+      },
+      {
+        "id": "F03",
+        "requested": [
+          41,
+          47
+        ],
+        "actual": [
+          41,
+          47
+        ],
+        "reason": "产品专名",
+        "rawPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F03_41-47s.raw.json",
+        "rawSha256": "73bd988dcf6d04dc262bae3dea5b8ac10ae98c44b0c9212892b034fa352064d9"
+      },
+      {
+        "id": "F04",
+        "requested": [
+          55,
+          68
+        ],
+        "actual": [
+          55,
+          68.6
+        ],
+        "reason": "绘图服务、编码工具、模型及调度用词；末端扩0.6秒避免原始段落到68.16秒被截断",
+        "rawPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F04_55-68.6s.raw.json",
+        "rawSha256": "4942aa8f9515f4385f97441ba6c73e2fa661d25a98b32b13627a8c24dd2f11cd"
+      },
+      {
+        "id": "F05",
+        "requested": [
+          85,
+          100
+        ],
+        "actual": [
+          85,
+          100.5
+        ],
+        "reason": "万能及画图用词；末端扩0.5秒覆盖100.1秒结束段落",
+        "rawPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F05_85-100.5s.raw.json",
+        "rawSha256": "cb29d0996faf54963c7a5770bee52871957ece3d13b60734915b23176ebf30ea"
+      },
+      {
+        "id": "F06",
+        "requested": [
+          111,
+          130
+        ],
+        "actual": [
+          111,
+          133
+        ],
+        "reason": "工作环节及岗位用词；原始业务岗段落到131.88秒，扩窗避免截断",
+        "rawPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F06_111-133s.raw.json",
+        "rawSha256": "6ba452904dd5c790981740ad2fdaa688a0ae3a0d5273272646b65228879ca816"
+      },
+      {
+        "id": "F07",
+        "requested": [
+          143,
+          150
+        ],
+        "actual": [
+          143,
+          154
+        ],
+        "reason": "试了工具用词；原始疑点在150.62–151.78秒，原请求窗未包含，扩窗覆盖完整句",
+        "rawPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/F07_143-154s.raw.json",
+        "rawSha256": "e578888474508e7427ff5b51295666d249dee0537f681b41893b1e0131220510"
+      }
+    ],
+    "elapsedSeconds": 12.722,
+    "receiptPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/focus_crosscheck_v1/focus-crosscheck.receipt.v1.json",
+    "candidates": [
+      {
+        "range": [
+          18.86,
+          22.54
+        ],
+        "primary": "SPEXX的A71／冷气推进系统",
+        "focused": "SpaceX的A71冷气推进系统",
+        "candidate": "SpaceX为专名候选；A71原样保留",
+        "status": "spelling-candidate-only",
+        "note": "分窗支持SpaceX拼写；A71两次一致但不说明系统名称事实正确，不能改成SR-71"
+      },
+      {
+        "range": [
+          28.4,
+          29.38
+        ],
+        "primary": "直接去水",
+        "focused": "直接起舍",
+        "candidate": null,
+        "status": "unresolved-listen-required",
+        "note": "两次识别不一致；起势仅为原先疑点标签，不视为已确认实录"
+      },
+      {
+        "range": [
+          44.76,
+          45.88
+        ],
+        "primary": "Girls AM",
+        "focused": "Groker AM",
+        "candidate": "Grok AI（仅专名候选）",
+        "status": "unresolved-listen-required",
+        "note": "两次仍未稳定识别完整专名，不能直接认定后缀AI"
+      },
+      {
+        "range": [
+          55.32,
+          57.32
+        ],
+        "primary": "做绘图出头呢／直接调用MG",
+        "focused": "做绘图出图的直接调用MG",
+        "candidate": "出图为识别候选；MG未改为MJ",
+        "status": "partial-spelling-candidate",
+        "note": "两次均输出MG；不要仅据事实稿或产品官网替换实际说法，语气词仍需听校"
+      },
+      {
+        "range": [
+          57.86,
+          60.76
+        ],
+        "primary": "遇到重复复杂的业务问题呢",
+        "focused": "遇到重复复杂的业务问题",
+        "candidate": null,
+        "status": "unresolved-listen-required",
+        "note": "同模型两次均输出重复，不能凭拍前稿替换为重度；语气词保持首轮候选"
+      },
+      {
+        "range": [
+          60.76,
+          64.42
+        ],
+        "primary": "Cloud Code的OPS不点5",
+        "focused": "Cloud Code的OPS 5.5",
+        "candidate": "Claude Code、Opus 5.5为专名拼写候选",
+        "status": "spelling-candidate-only",
+        "note": "分窗给出5.5；工具与模型名称只作候选，不把实录改成事实核验认为更准确的另一主张"
+      },
+      {
+        "range": [
+          64.42,
+          68.16
+        ],
+        "primary": "Groker呢／现在充当的呢／就是一个调度状态",
+        "focused": "Groker现在充当的就是一个调度状态",
+        "candidate": "Grok为专名候选；调度状态待听",
+        "status": "unresolved-listen-required",
+        "note": "两次均输出调度状态；不能凭概念合理性自动改为调度中台"
+      },
+      {
+        "range": [
+          93.7,
+          96.24
+        ],
+        "primary": "没有哪一个AI示范能的",
+        "focused": "没有哪一个AI是万能的",
+        "candidate": "没有哪一个AI是万能的",
+        "status": "recognition-candidate-only",
+        "note": "分窗提供清晰候选；仍非人工听审确认"
+      },
+      {
+        "range": [
+          120.22,
+          123.14
+        ],
+        "primary": "他的真实的工作缓解当中去",
+        "focused": "他的真实的工作缓解当中去",
+        "candidate": "工作环节（同音字候选）",
+        "status": "homophone-candidate-only",
+        "note": "两次均输出缓解，环节仅为同音字及语义候选，不改raw"
+      },
+      {
+        "range": [
+          128.56,
+          131.88
+        ],
+        "primary": "那么销售运营行政业务港",
+        "focused": "那么销售运营行政业务港",
+        "candidate": "业务岗（同音字候选）",
+        "status": "homophone-candidate-only",
+        "note": "原请求窗到130秒未覆盖全词，已扩至133秒；港/岗仅候选"
+      },
+      {
+        "range": [
+          150.62,
+          151.78
+        ],
+        "primary": "设了不少的工具",
+        "focused": "是了不少的工具",
+        "candidate": "试了不少的工具（同音字候选）",
+        "status": "unresolved-listen-required",
+        "note": "原请求窗143–150秒未包含疑点，已扩至154秒；设/是仍不一致，待原声确认"
+      }
+    ]
+  },
+  "boundaries": {
+    "audioUploadPerformed": false,
+    "dependenciesInstalled": false,
+    "modelDownloaded": false,
+    "sourceModified": false,
+    "rawASRModified": false,
+    "scriptProvidedToASR": false,
+    "initialPrompt": null,
+    "humanListeningPerformed": false,
+    "finalSubtitleApproved": false,
+    "factClaimsChanged": false
+  },
+  "limitations": [
+    "词级是模型返回的词元/词块时间，不等于人工逐字听校或音素精确对齐",
+    "同模型分窗复核不是第二个独立模型，也不是人工听审",
+    "英文专名、数字、同音字、语气词仍有识别疑点",
+    "ASR保持实际说法候选；事实有问题也不能只改字幕制造说过另一句话",
+    "全量音视频解码只证明可解码，未做全片正常速度画面/原音验收",
+    "首轮TXT/SRT及逐句文本均为候选，不能直接标为已确认字幕"
+  ],
+  "readableSegmentsPath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/实录逐句候选_80段_原始ASR.txt",
+  "commands": {
+    "primary": [
+      "/Users/pc/Documents/口播/.cache/whisper-runtime/venv/bin/python",
+      "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/run-local-asr.v1.py"
+    ],
+    "focus": [
+      "/Users/pc/Documents/口播/.cache/whisper-runtime/venv/bin/python",
+      "edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/run-focus-crosscheck.v1.py"
+    ],
+    "decode": [
+      "/opt/homebrew/bin/ffmpeg",
+      "-nostdin",
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-xerror",
+      "-err_detect",
+      "explode",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+      "-map",
+      "0:v:0",
+      "-map",
+      "0:a:0",
+      "-f",
+      "null",
+      "-"
+    ],
+    "extract": [
+      "/opt/homebrew/bin/ffmpeg",
+      "-nostdin",
+      "-hide_banner",
+      "-loglevel",
+      "error",
+      "-n",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/01_口播原片/copy_7BB13FE6-D6AA-467C-9A11-D944F0BD6F88.MOV",
+      "-map",
+      "0:a:0",
+      "-vn",
+      "-ac",
+      "1",
+      "-ar",
+      "16000",
+      "-c:a",
+      "pcm_s16le",
+      "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/musk-grok-business-ai.original.16k-mono.wav"
+    ]
+  },
+  "scripts": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/run-local-asr.v1.py",
+      "sha256": "eff7f48d48674b31a11b37bd13d1172625c12c73be1a26343e5bf6211a8bb77d"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_后期准备/实录转写/run-focus-crosscheck.v1.py",
+      "sha256": "4456d6a8c3ae289fb707a9627e3f1a6a0e4094d1b85b40db389d54e9c02dcb07"
+    }
+  ]
+}
