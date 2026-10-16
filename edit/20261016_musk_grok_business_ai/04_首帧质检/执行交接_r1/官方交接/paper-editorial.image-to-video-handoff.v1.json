@@ -1,0 +1,203 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "revisionId": "paper-p01-p02-firstframe-r1",
+  "status": "planned",
+  "sourceRoute": "paper-editorial",
+  "downstreamRoute": "paper-editorial",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/director-cues.execution-only.v2.json",
+      "sha256": "17657674c4e2b71ed8b76b753a8346fca6493fa519b7ac71ec8642ed3176129d"
+    },
+    "userApproval": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/用户首帧制作授权.v1.json",
+      "sha256": "8cfaf42a46af3740b975d5d61e6d732ea1c8054f23e53ea8a1d97a73669ef6da"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "f5767da622252b724007d31c63a79278f77008f75820f4c554bd3e5037e90fdf"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "image-to-video",
+  "promptIsolation": {
+    "containsFirstFramePromptBodies": false,
+    "consumer": "video-generation-stage"
+  },
+  "styleLock": {
+    "qualityBaselineId": "paper-super-individual-20260829-v1",
+    "textPolicy": "first-frame-generated-chinese-surface-bound",
+    "promptPrefix": "16:9横向实体纸艺摄影，沿用《超级个体》参考的深蓝、灰白与少量珊瑚红纸材，真实纸厚、纤维、切边和接触阴影，中文直接印在物件纸面上。",
+    "mustKeep": [
+      "至少前景、中景、背景三层实体空间",
+      "静态首帧直接生成准确中文，文字绑定承载物件",
+      "纸厚、纤维、切边、折面和可信接触阴影",
+      "动作必须形成可读结果并保留适量停留",
+      "只借参考的材质和机制表达，不复制旧镜内容"
+    ],
+    "mustAvoid": [
+      "无字底图后贴字",
+      "全镜固定字牌加抽象漂浮光效",
+      "仿软件界面与品牌调用连线",
+      "虚构企业实测效果或收益数字",
+      "任意重绘中文、乱码、漂字和穿帮"
+    ],
+    "referenceImages": [
+      {
+        "id": "REF-PAPER-SUPER-PV07",
+        "path": "edit/20260828_super_individual/05_素材验收/frames/paper_07-mid-original.png",
+        "sha256": "5d04fa4d180847d6e142e7dd352caf98396718a18ec676d16006f9756068f6b2",
+        "usage": "style-mechanism-only"
+      }
+    ]
+  },
+  "itemCount": 2,
+  "items": [
+    {
+      "id": "P01",
+      "beatId": "B10",
+      "startAnchorText": "不同的活",
+      "endAnchorText": "一个大模型包打天下。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P01-prompt-pair-v1",
+      "pairSha256": "bb397812b7a31a1acfc126e4ac8749bdb5883cebbd3a086a12bdcd20c4079e0c",
+      "prompt": "基于已确认首帧，保持原构图、纸材和全部中文。三张任务折页沿不同纸轨分别进入对应能力槽，按照口播逐一发生，形成同一认知目标下的连续分配过程；先看清任务，再看清它进入的对应能力。中文牢固跟随各自折页，槽面文字随固定槽体保持稳定，字形不重画、不变形、不漂浮。每条轨道始终可见，任务不可互换或跨槽。完成后保留约一秒半的全景阅读，让观众看见三种任务各有适配入口；不要突然增加模型、排名、得分或执行成功标志。可保留细微纸片滑动与落槽轻响，无旁白、无背景音乐；接回真人时不新增主题。",
+      "promptSha256": "a18e1df23e988ed2c563af3278304369f643d3e84021a96dc7c86fb3c75fc895",
+      "negativePrompt": [
+        "无品牌标识和仿软件界面",
+        "不出现万能模型或性能排名",
+        "中文不漂浮、不重绘、不乱码",
+        "不要三路合并进一个万能入口",
+        "不加入旁白、音乐、数字收益或成功对号"
+      ],
+      "primaryAction": "三张任务折页沿不同纸轨分别进入对应能力槽",
+      "motionPlan": {
+        "goal": "让观众看见先区分任务，再匹配相应能力，而非所有任务交给同一入口。",
+        "actions": [
+          "三张带字任务折页按口播次序进入各自分轨，折页形状与对应入口相合。",
+          "三张折页分别停在各自能力槽内，保留分开的任务与能力对应关系。"
+        ],
+        "result": "三种任务各有一个相符入口，保持完整全景供观众读懂；不显示产品名称、最强排名或执行成功标志。",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "纸艺只解释不同任务流向不同能力这一抽象机制，不绑定Grok品牌，不证明全球最强排名或真实产品集成。",
+      "visualRole": "process",
+      "visualMetaphor": "不同形状的任务纸片经实体分轨分别进入适配能力槽，展示按任务分工",
+      "composition": "斜俯视的单一分流装置：前景三张不同任务折页，中景分轨，背景三个有不同入口形状的厚纸能力槽；三条路清楚但未完成对接",
+      "textPlan": [
+        {
+          "text": "出图",
+          "surface": "前景左侧方形任务折页",
+          "motion": "with-object"
+        },
+        {
+          "text": "代码",
+          "surface": "前景中央窄形任务折页",
+          "motion": "with-object"
+        },
+        {
+          "text": "文档",
+          "surface": "前景右侧宽形任务折页",
+          "motion": "with-object"
+        },
+        {
+          "text": "图像能力",
+          "surface": "背景左侧能力槽正面",
+          "motion": "fixed-context",
+          "reason": "能力槽是分流的固定目的地，文字随槽体保持静止以便辨认结果。"
+        },
+        {
+          "text": "代码能力",
+          "surface": "背景中央能力槽正面",
+          "motion": "fixed-context",
+          "reason": "能力槽是固定目的地，不能为了动效任意移动。"
+        },
+        {
+          "text": "文档能力",
+          "surface": "背景右侧能力槽正面",
+          "motion": "fixed-context",
+          "reason": "能力槽是固定目的地，保留静态阅读参照。"
+        }
+      ],
+      "referenceImageIds": [
+        "REF-PAPER-SUPER-PV07"
+      ]
+    },
+    {
+      "id": "P02",
+      "beatId": "B19",
+      "startAnchorText": "销售、运营、行政、业务岗",
+      "endAnchorText": "解决手上实实在在的问题。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P02-prompt-pair-v1",
+      "pairSha256": "7a78c2e970cf2919d3587945ce7f0bbff7b7b38902ac411c32808610da2b6ac5",
+      "prompt": "基于已确认首帧，保留四层错位工作台、全部岗位文字和原有文件。四个岗位托盘依口播短距靠近自己的工作槽，四枚能力模块分别嵌入四个岗位工作槽，动作由工作需要引出，模块形状与缺口逐一相合，不把所有能力塞进同一槽。销售、运营、行政、业务的文字随托盘整体移动，料架与底板文字固定在原承载纸面，全部字形稳定、不重绘、不漂浮。文件始终留在各自岗位，不突然变成收益或完成标志。形成岗位与适配能力相接的整体后，留约一秒半全景阅读，再平稳接回真人；只保留可信的纸面摩擦和模块嵌入轻响，无旁白、无音乐。",
+      "promptSha256": "fd044015d9627df86222b6fd5ab980fcae9cededb235557c00f0e843de175143",
+      "negativePrompt": [
+        "不把岗位或人员移走",
+        "不生成企业客户标识与实际系统界面",
+        "中文随纸面不漂移、不重画、不乱码",
+        "不出现节省百分比、现金、成功印章",
+        "不加入旁白、音乐或统一闪烁光效"
+      ],
+      "primaryAction": "四个岗位托盘依口播短距靠近自己的工作槽，四枚能力模块分别嵌入四个岗位工作槽",
+      "motionPlan": {
+        "goal": "让观众看见AI能力应进入岗位的真实工作环节，而不只是展示一个模型名。",
+        "actions": [
+          "四个岗位托盘依口播短距靠近自己的工作槽，四枚能力模块分别嵌入四个岗位工作槽，动作由工作需要引出，模块形状与缺口逐一相合，不把所有能力塞进同一槽。"
+        ],
+        "result": "形成岗位与适配能力相接的整体后，留约一秒半全景阅读，再平稳接回真人",
+        "textBinding": "surface-bound",
+        "audioPolicy": "preserve-usable-native-action-sound"
+      },
+      "reason": "让观众看见AI能力应进入岗位的真实工作环节，而不只是展示一个模型名。",
+      "visualRole": "process",
+      "visualMetaphor": "低斜侧视的四层错位工作台：前景已有岗位任务托盘，中景是各自留有能力缺口的工作槽，后景为少量待用纸模块；构图重在嵌入工作而非模型榜单",
+      "composition": "低斜侧视的四层错位工作台：前景已有岗位任务托盘，中景是各自留有能力缺口的工作槽，后景为少量待用纸模块；构图重在嵌入工作而非模型榜单",
+      "textPlan": [
+        {
+          "text": "销售",
+          "surface": "前景左侧岗位托盘立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "运营",
+          "surface": "中景左后岗位托盘立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "行政",
+          "surface": "中景右前岗位托盘立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "业务",
+          "surface": "后景右侧岗位托盘立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "AI能力",
+          "surface": "后景能力料架横梁",
+          "motion": "fixed-context",
+          "reason": "能力料架是固定供给端，文字跟随固定横梁稳定辨认。"
+        },
+        {
+          "text": "真实工作",
+          "surface": "前景工作底板正面",
+          "motion": "fixed-context",
+          "reason": "底板作为全镜不变的工作场景参照，避免观众误读为另购一个独立系统。"
+        }
+      ],
+      "referenceImageIds": [
+        "REF-PAPER-SUPER-PV07"
+      ]
+    }
+  ]
+}

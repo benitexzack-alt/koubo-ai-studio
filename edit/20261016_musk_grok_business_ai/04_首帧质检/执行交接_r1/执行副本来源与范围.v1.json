@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "koubo-firstframe-execution-copy-provenance/v1",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "revisionId": "paper-p01-p02-firstframe-r1",
+  "status": "firstframe-generation-authorized-awaiting-images",
+  "scope": {
+    "firstFrameGenerationAuthorized": true,
+    "authorizedSceneIds": [
+      "P01",
+      "P02"
+    ],
+    "authorizedImageCount": 2,
+    "userVisualAcceptance": "pending",
+    "runningHubUploadAuthorized": false,
+    "videoGenerationAuthorized": false,
+    "paidVideoGenerationAuthorized": false,
+    "realMaterialProductionAuthorized": false,
+    "aiSceneGenerationAuthorized": false,
+    "editingAuthorized": false,
+    "publicationAuthorized": false
+  },
+  "sources": {
+    "kind": "firstframe-only-backup-activation",
+    "sourceDirectorCues": {
+      "path": "edit/20261016_musk_grok_business_ai/03_导演规划/director-cues.v2.json",
+      "sha256": "fe779cff98affcc64379af4f42b0735bcca8ead13aebe5f1478ce544d532ac6d"
+    },
+    "sourcePromptPack": {
+      "path": "edit/20261016_musk_grok_business_ai/03_导演规划/纸艺首帧与视频提示词包.md",
+      "sha256": "3832205404285a7ff22e7e566106d8cdf4da2f3715a0fb88ef95574f4e3c8e88"
+    },
+    "userQuote": "对，先生成，把两个图片生成之后，没问题之后我再去Running hop.",
+    "selectionQuote": "P01 和备选 P02 各一张",
+    "scope": {
+      "firstFrameGenerationAuthorized": true,
+      "authorizedSceneIds": [
+        "P01",
+        "P02"
+      ],
+      "authorizedImageCount": 2,
+      "userVisualAcceptance": "pending",
+      "runningHubUploadAuthorized": false,
+      "videoGenerationAuthorized": false,
+      "paidVideoGenerationAuthorized": false,
+      "realMaterialProductionAuthorized": false,
+      "aiSceneGenerationAuthorized": false,
+      "editingAuthorized": false,
+      "publicationAuthorized": false
+    },
+    "originalDirectorPlanUnchanged": true,
+    "sourceSelectionSummaryIsHistorical": true,
+    "noNewDirectorCreativeContent": true
+  },
+  "executionCues": {
+    "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/director-cues.execution-only.v2.json",
+    "sha256": "17657674c4e2b71ed8b76b753a8346fca6493fa519b7ac71ec8642ed3176129d"
+  },
+  "changedFields": [
+    "routePlans.paperEditorials.items:append-P02-from-existing-markdown",
+    "semanticBeats.B19:primaryRoute/routeCueId/viewerGain/decisionReason",
+    "selectionSummary.routeCounts:speaker=17,paper-editorial=2",
+    "selectionSummary.protectedSpeakerBeatIds:remove-B19",
+    "rhythmAudit.runs:mechanical-split-B11-B23",
+    "executionCopy:add-explicit-scope-and-source-bindings"
+  ],
+  "preserved": {
+    "sourceDirectorBytesUnchanged": true,
+    "P01ItemSha256": "c59ddb1dfd802764d64072e2c9534676e27e575343c2c9c3d32e69eda24a350d",
+    "P02FirstFramePromptSha256": "210815a7d54bdd3e246d178f16b916d591c5a1b42ce3998cc89f6d87b3b1154b",
+    "P02VideoPromptSha256": "fd044015d9627df86222b6fd5ab980fcae9cededb235557c00f0e843de175143",
+    "P02PromptBodiesCopiedVerbatim": true
+  },
+  "notes": [
+    "原导演摘要文字仅作为历史规划证据保留；本轮执行覆盖仅由授权范围决定。",
+    "motionPlan和主动作字段从已有P02原词逐句摘取；不新增动作。",
+    "8秒为原方案规划信息，不是本轮视频生成指令。",
+    "官方交接文件中的其他分路仅为结构兼容，不执行。"
+  ]
+}

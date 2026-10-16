@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "koubo-director-shotcraft-opportunity-handoff/v1",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "revisionId": "paper-p01-p02-firstframe-r1",
+  "status": "opportunity-only",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/director-cues.execution-only.v2.json",
+      "sha256": "17657674c4e2b71ed8b76b753a8346fca6493fa519b7ac71ec8642ed3176129d"
+    },
+    "userApproval": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/用户首帧制作授权.v1.json",
+      "sha256": "8cfaf42a46af3740b975d5d61e6d732ea1c8054f23e53ea8a1d97a73669ef6da"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "f5767da622252b724007d31c63a79278f77008f75820f4c554bd3e5037e90fdf"
+    }
+  },
+  "executionScope": "post-shoot-opportunity-only",
+  "selectionAuthorized": false,
+  "selectedCardCount": 0,
+  "itemCount": 3,
+  "items": [
+    {
+      "id": "SO01",
+      "beatId": "B04",
+      "sourceBaseVisualRoute": "real-evidence",
+      "downstreamBaseVisualRoute": "real-evidence",
+      "intent": "evidence-focus",
+      "reason": "仅在原句经用户更正及资料绑定后：对象为官方配置页，初态完整保留版本与口径，变化只聚焦当前口播对应的参数行，结果同时读到版本与0–60 mph，不裁掉限定；阅读停留按实录确定。人物小窗置左下安全区，字幕在资料视窗外；无需为聚焦附加强音。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO02",
+      "beatId": "B14",
+      "sourceBaseVisualRoute": "speaker",
+      "downstreamBaseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "对象为口播中出图、代码、文档三个任务词；初态保留真人和空余安全区，若实拍有阅读需要才按原声逐项出现，已出现的词保留供比较，结果不变成模型榜单。拍后看人物与字幕空间决定采用或不需要；不预选卡号，轻微动作声须能服务阅读才保留。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO03",
+      "beatId": "B16",
+      "sourceBaseVisualRoute": "speaker",
+      "downstreamBaseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "对象为“按需调用，匹配业务”这一句的必要关键词，初态真人清楚，变化仅一次轻量重点提示，结果留下短阅读停留后自然退回本人；不新增模型Logo、不构造调用界面、不挤压人物或字幕。拍后按实录节奏与全库相关候选比较，允许不采用。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    }
+  ]
+}

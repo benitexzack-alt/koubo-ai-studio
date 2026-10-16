@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "koubo-director-real-evidence-handoff/v1",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "revisionId": "paper-p01-p02-firstframe-r1",
+  "status": "planned",
+  "sourceRoute": "real-evidence",
+  "downstreamRoute": "real-evidence",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/director-cues.execution-only.v2.json",
+      "sha256": "17657674c4e2b71ed8b76b753a8346fca6493fa519b7ac71ec8642ed3176129d"
+    },
+    "userApproval": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/用户首帧制作授权.v1.json",
+      "sha256": "8cfaf42a46af3740b975d5d61e6d732ea1c8054f23e53ea8a1d97a73669ef6da"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "f5767da622252b724007d31c63a79278f77008f75820f4c554bd3e5037e90fdf"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptGenerationAllowed": false,
+  "itemCount": 4,
+  "items": [
+    {
+      "id": "R01",
+      "beatId": "B03",
+      "startAnchorText": "这不是科幻电影，不是概念",
+      "endAnchorText": "腾空，靠喷气推进直接起势",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "screen-recording",
+      "usageRole": "evidence",
+      "materialRequest": "取得Tesla官方完整发布会 https://www.youtube.com/watch?v=qt5p-_tE8d0 的原始来源与所需片段。备查06:03坡道、08:11风扇/倒置、10:56翻滚、12:04冷气系统；只在对应原句经用户更正后选实际相符画面。记录原视频时间范围、来源页、下载文件与权限说明。不得用一次演示推出任意墙面或持续飞行。 已取得Tesla官方X短片候选，来源 https://x.com/Tesla/status/2110913438293647789；本地原片与两条连续切片按本期采集回执追溯，短片不能冒充完整发布会。仍须按实际画面范围及更正后的实录选择，当前不作正式素材绑定。",
+      "reason": "观众需要看到真实演示的边界，使用官方原始片段；不把倒置演示做成任意墙面行驶，也不以剪辑替原句纠错。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "block-production",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R02",
+      "beatId": "B04",
+      "startAnchorText": "零百约1.7秒，续",
+      "endAnchorText": "车速370km/h",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "official-document",
+      "usageRole": "evidence",
+      "materialRequest": "保存官方配置原帖 https://x.com/Tesla/status/2110905588402295283 的可读全页证据及参数局部，保留版本名、0–60 mph口径、<与>符号。不可把0–60 mph改标零百，不将Rocket最高速度泛化。当前口播需更正；不要先做参数卡成片。",
+      "reason": "参数口径必须让观众看到官方原页与版本条件；原稿有差异，本段先阻断，不能只改画面数字制造口播已更正的假象。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "block-production",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R03",
+      "beatId": "B07",
+      "startAnchorText": "这套大模型的玩法也全变了",
+      "endAnchorText": "全球不同领域的顶级模型，",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "official-document",
+      "usageRole": "evidence",
+      "materialRequest": "保存 https://docs.x.ai/grok-bot/teams-and-enterprises 与 https://docs.x.ai/grok-bot/security#models-and-data 官方文档的标题、产品范围、模型路由相关正文与URL；另保留Musk方向公告 https://x.com/elonmusk/status/2107724314451878104 的作者、日期、Going forward限定。只显示实际原文，不模拟已发生的API请求或已全部上线。",
+      "reason": "观众需要看见Grok Bot官方文档实际谈论的范围和路由架构；仅展示原文，不搭建虚构的通用产品界面。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "block-production",
+      "generatedSubstituteAllowed": false
+    },
+    {
+      "id": "R04",
+      "beatId": "B08",
+      "startAnchorText": "做绘图出图，直接调用MJ",
+      "endAnchorText": "odeOpus 5.5。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "assetType": "official-interface",
+      "usageRole": "context",
+      "materialRequest": "准备MidJourney、Claude Opus5.5、Grok Bot三个官方对象的页面或品牌截图，明确各自来源；Opus来源 https://www.anthropic.com/claude-opus-5-5，Grok来源 https://docs.x.ai/grok-bot/teams-and-enterprises，Musk列举品牌的公告 https://x.com/elonmusk/status/2107724314451878104。MidJourney官网首页 https://www.midjourney.com/home 与公开展示页 https://www.midjourney.com/explore?tab=top 已取得本地候选截图，存于本期01_素材投放区/05_公开素材_Codex准备/官网截图；路径、哈希与来源见02_核验与来源/官网截图清单.v1.json。取得截图不等于正式绑定或公开使用资格已经通过。布局用于识别三个对象，彼此之间不画调用箭头、不播放未实测集成流程；Claude Code仅在解释工具与模型区别的后台事实记录出现。",
+      "reason": "MJ、Opus和Grok的官方资料只帮助识别讨论对象；以品牌语境画面呈现，不画已上线调用连线，不把Claude Code混作模型。原稿调用断言待更正。",
+      "evidenceStatus": "candidate-unbound",
+      "usableInProduction": false,
+      "sourceBinding": null,
+      "fallbackIfUnavailable": "keep-speaker",
+      "generatedSubstituteAllowed": false
+    }
+  ]
+}

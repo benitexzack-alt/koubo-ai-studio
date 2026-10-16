@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "koubo-firstframe-local-review/v1",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "revisionId": "paper-p01-p02-firstframe-r1",
+  "recordedDate": "2026-10-16",
+  "stage": "firstframe",
+  "status": "blocked",
+  "reason": "P01连续两版实体连通不成立，按连续失败规则停止；P02仅静态初检通过，用户验收待定。",
+  "qualityBaselineId": "paper-super-individual-20260829-v1",
+  "textPolicy": "first-frame-generated-chinese-surface-bound",
+  "purpose": "illustration-only",
+  "skill": {
+    "path": "/Users/pc/Documents/口播/skills/koubo-paper-firstframe-producer/SKILL.md",
+    "sha256": "f6e9190c14b2a6ad17153eb3dcdb9e1eb43af1d392883a545712c5a3a3a8b2ab"
+  },
+  "input": {
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/paper-editorial.first-frame-handoff.v1.json",
+    "sha256": "a71b84b109b670178b2f77aa1d21cd46ae960c8ade9b29b06a6ac39bd237816c"
+  },
+  "scope": {
+    "sceneIds": [
+      "P01",
+      "P02"
+    ],
+    "userAcceptance": "pending",
+    "runningHubOpened": false,
+    "runningHubUploaded": false,
+    "videoGenerated": false,
+    "paidVideoSubmitted": false,
+    "editingPerformed": false,
+    "publicationPerformed": false
+  },
+  "generation": {
+    "tool": "built-in-image_gen",
+    "newGenerationCalls": 2,
+    "imageEditCalls": 1,
+    "cliOrApiFallbackUsed": false,
+    "originalsOverwritten": false,
+    "textBakedLocally": false
+  },
+  "ocr": {
+    "engine": "Apple Vision via recognize-text-vision.swift",
+    "language": "zh-Hans",
+    "recognitionLevel": "accurate",
+    "coordinatesReturned": false,
+    "confidenceReturned": false
+  },
+  "items": [
+    {
+      "sceneId": "P01",
+      "revision": "r1",
+      "pairId": "P01-prompt-pair-v1",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/P01_首帧_r1.png",
+      "sha256": "4d131ba2a9ddc05a53b212bbb86488b98ba2c59a6da6b99d6f3e6ce50757a713",
+      "sourcePath": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-914ccee4-da42-4af8-907e-e7cef2c87321.png",
+      "width": 1672,
+      "height": 941,
+      "executionPrompt": {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_首帧质检/P01_实际生图提示词_r1.txt",
+        "sha256": "63cc534350c8fc2b612104f0a993341be5457f3eb381ce70990737bba813be39"
+      },
+      "originalPromptSha256": "fcf6998567991ba93da27d7dc59b312c16d9ea66db643facdaf1e6a69e573253",
+      "ocrText": "图像能力代码能力文档能力出图代码文档",
+      "ocrExactTargetCoverage": true,
+      "visualTextCorrect": true,
+      "visualOpened": true,
+      "verdict": "FAIL",
+      "P0": [],
+      "P1": [
+        "三轨进入能力槽下方小隧洞，与上方空槽没有可见连通",
+        "左右隧洞宽度不足以通过对应任务折页"
+      ],
+      "reviewers": [
+        "主执行",
+        "p01_p02_visual_qa",
+        "inspect_p01_handoff"
+      ]
+    },
+    {
+      "sceneId": "P01",
+      "revision": "r2",
+      "pairId": "P01-prompt-pair-v1",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/P01_首帧_r2.png",
+      "sha256": "6d29085086b1f2f4290d6fdbe8d6a28bb1494720953e678e8c452ffe3d6691b3",
+      "sourcePath": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-388d4e35-730e-4c48-9e1b-348c98fcbf10.png",
+      "width": 1672,
+      "height": 941,
+      "editInputSha256": "4d131ba2a9ddc05a53b212bbb86488b98ba2c59a6da6b99d6f3e6ce50757a713",
+      "executionPrompt": {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_首帧质检/P01_定点结构修订提示词_r2.txt",
+        "sha256": "8a40b6569b52f8390697d25ab690d61b5054bc09391cbc6d15b0ef881a2dfe3c"
+      },
+      "ocrText": "图像能力代码能力文档能力代码文档",
+      "ocrExactTargetCoverage": false,
+      "ocrMissing": [
+        "出图"
+      ],
+      "visualTextCorrect": true,
+      "ocrNote": "出图目视存在且字形正确，但本次全图OCR漏识别；未伪装机器全通过。",
+      "visualOpened": true,
+      "verdict": "FAIL",
+      "P0": [],
+      "P1": [
+        "隧洞虽移除，坡道末端仍被带字槽前壁挡住，未形成可见敞开入口"
+      ],
+      "reviewers": [
+        "主执行",
+        "p01_p02_visual_qa"
+      ]
+    },
+    {
+      "sceneId": "P02",
+      "revision": "r1",
+      "pairId": "P02-prompt-pair-v1",
+      "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/04_纸艺视频/P02_首帧_r1.png",
+      "sha256": "caffa6e63ab881e5958dd2d19d7ad55ffbe9fad20cbff2b12784a6c80d01ae8e",
+      "sourcePath": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-87837478-51e3-4f73-b547-0cfa05a91ce9.png",
+      "width": 1672,
+      "height": 941,
+      "executionPrompt": {
+        "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/04_首帧质检/P02_实际生图提示词_r1.txt",
+        "sha256": "45da1f0c8b4d527bf36b33b6c3881518fdff40cb7cc577aa883dae0983790797"
+      },
+      "originalPromptSha256": "210815a7d54bdd3e246d178f16b916d591c5a1b42ce3998cc89f6d87b3b1154b",
+      "ocrText": "AI能力运营销售行政业务真实工作",
+      "ocrExactTargetCoverage": true,
+      "visualTextCorrect": true,
+      "visualOpened": true,
+      "verdict": "PASS",
+      "status": "ready-for-user-review",
+      "P0": [],
+      "P1": [],
+      "observations": [
+        "四独立托盘含无字文件",
+        "圆方三角十字四空缺与后架四模块成对，空缺均空",
+        "文字在正确承载面，无额外文字Logo水印",
+        "前中后三层及纸厚纤维接触阴影成立"
+      ],
+      "reviewers": [
+        "主执行",
+        "p01_p02_visual_qa"
+      ]
+    }
+  ],
+  "dimensionNote": "三图实际1672×941，横向宽高比近16:9，约0.053%差异；未裁切、缩放或伪报1920×1080。",
+  "failureAnalysis": {
+    "verified": "原静态词要求纸轨连接不同入口；实际两版都未满足实体连通。第二版明示敞开入口仍保留阻挡前壁。",
+    "inference": "可能是参考图局部编辑过度保留了错误前壁构图；尚无内部模型证据，不能断言唯一底层原因。",
+    "notEstablished": "不能由本次失败推导整个导演Skill失效，也不能把问题归于中文内容错误。"
+  },
+  "stoppedAfterRepeatedFailure": true,
+  "thirdAttemptMade": false,
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/guides/image-generation",
+      "finding": "官方列出结构化、布局敏感构图的精确控制限制。",
+      "accessedDate": "2026-10-16"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/image-prompting",
+      "finding": "官方建议明确编辑不变量、单项变更并实际比较；草图转渲染可先锁布局，仍须验图。",
+      "accessedDate": "2026-10-16"
+    }
+  ]
+}

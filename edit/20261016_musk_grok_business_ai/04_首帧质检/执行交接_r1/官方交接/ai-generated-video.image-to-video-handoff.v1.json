@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "revisionId": "paper-p01-p02-firstframe-r1",
+  "status": "not-required",
+  "sourceRoute": "ai-generated-video",
+  "downstreamRoute": "generated-video",
+  "notRequiredReason": "本稿依靠真人观点、官方资料与一段任务分流纸艺即可理解；没有纸艺难以自然表达且必须展示的具体人物或环境。合成飞车、假企业演示和AI办公室会增加误导风险，故不生成普通AI情景。",
+  "source": {
+    "directorCues": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/director-cues.execution-only.v2.json",
+      "sha256": "17657674c4e2b71ed8b76b753a8346fca6493fa519b7ac71ec8642ed3176129d"
+    },
+    "userApproval": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/用户首帧制作授权.v1.json",
+      "sha256": "8cfaf42a46af3740b975d5d61e6d732ea1c8054f23e53ea8a1d97a73669ef6da"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "f5767da622252b724007d31c63a79278f77008f75820f4c554bd3e5037e90fdf"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "image-to-video",
+  "promptIsolation": {
+    "containsFirstFramePromptBodies": false,
+    "consumer": "video-generation-stage"
+  },
+  "styleLock": null,
+  "itemCount": 0,
+  "items": []
+}

@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "revisionId": "paper-p01-p02-firstframe-r1",
+  "status": "planned",
+  "sourceRoute": "paper-editorial",
+  "downstreamRoute": "paper-editorial",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/director-cues.execution-only.v2.json",
+      "sha256": "17657674c4e2b71ed8b76b753a8346fca6493fa519b7ac71ec8642ed3176129d"
+    },
+    "userApproval": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/用户首帧制作授权.v1.json",
+      "sha256": "8cfaf42a46af3740b975d5d61e6d732ea1c8054f23e53ea8a1d97a73669ef6da"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "f5767da622252b724007d31c63a79278f77008f75820f4c554bd3e5037e90fdf"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "first-frame",
+  "promptIsolation": {
+    "containsVideoPromptBodies": false,
+    "consumer": "first-frame-stage"
+  },
+  "styleLock": {
+    "qualityBaselineId": "paper-super-individual-20260829-v1",
+    "textPolicy": "first-frame-generated-chinese-surface-bound",
+    "promptPrefix": "16:9横向实体纸艺摄影，沿用《超级个体》参考的深蓝、灰白与少量珊瑚红纸材，真实纸厚、纤维、切边和接触阴影，中文直接印在物件纸面上。",
+    "mustKeep": [
+      "至少前景、中景、背景三层实体空间",
+      "静态首帧直接生成准确中文，文字绑定承载物件",
+      "纸厚、纤维、切边、折面和可信接触阴影",
+      "动作必须形成可读结果并保留适量停留",
+      "只借参考的材质和机制表达，不复制旧镜内容"
+    ],
+    "mustAvoid": [
+      "无字底图后贴字",
+      "全镜固定字牌加抽象漂浮光效",
+      "仿软件界面与品牌调用连线",
+      "虚构企业实测效果或收益数字",
+      "任意重绘中文、乱码、漂字和穿帮"
+    ],
+    "referenceImages": [
+      {
+        "id": "REF-PAPER-SUPER-PV07",
+        "path": "edit/20260828_super_individual/05_素材验收/frames/paper_07-mid-original.png",
+        "sha256": "5d04fa4d180847d6e142e7dd352caf98396718a18ec676d16006f9756068f6b2",
+        "usage": "style-mechanism-only"
+      }
+    ]
+  },
+  "itemCount": 2,
+  "items": [
+    {
+      "id": "P01",
+      "beatId": "B10",
+      "startAnchorText": "不同的活",
+      "endAnchorText": "一个大模型包打天下。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P01-prompt-pair-v1",
+      "pairSha256": "bb397812b7a31a1acfc126e4ac8749bdb5883cebbd3a086a12bdcd20c4079e0c",
+      "prompt": "16:9横向实体纸艺摄影，沿用《超级个体》参考的深蓝、灰白与少量珊瑚红纸材，真实纸厚、纤维、切边和接触阴影，中文直接印在物件纸面上。斜俯视一座厚纸制成的分流装置。前景左侧方形任务折页印“出图”，前景中央窄形任务折页印“代码”，前景右侧宽形任务折页印“文档”，三张折页均在起点待分配。中景是三条各自连到不同入口的灰白实体纸轨，彼此没有交叉。背景左侧能力槽正面印“图像能力”，背景中央能力槽正面印“代码能力”，背景右侧能力槽正面印“文档能力”；三个槽内此时都是空的。三层空间清晰，能力槽与任务折页有不同形状且成对相合，纸轨方向一眼可辨，文字正对观众且不遮挡。前景、中景和背景均有纸厚与接触阴影。画面只呈现待分配的静态初态，没有任何品牌、软件窗口、箭头动画或已完成结果。",
+      "promptSha256": "fcf6998567991ba93da27d7dc59b312c16d9ea66db643facdaf1e6a69e573253",
+      "negativePrompt": [
+        "无品牌标识和仿软件界面",
+        "不出现万能模型或性能排名",
+        "中文不漂浮、不重绘、不乱码",
+        "不要三路合并进一个万能入口",
+        "不加入旁白、音乐、数字收益或成功对号"
+      ],
+      "reason": "纸艺只解释不同任务流向不同能力这一抽象机制，不绑定Grok品牌，不证明全球最强排名或真实产品集成。",
+      "visualRole": "process",
+      "visualMetaphor": "不同形状的任务纸片经实体分轨分别进入适配能力槽，展示按任务分工",
+      "composition": "斜俯视的单一分流装置：前景三张不同任务折页，中景分轨，背景三个有不同入口形状的厚纸能力槽；三条路清楚但未完成对接",
+      "textPlan": [
+        {
+          "text": "出图",
+          "surface": "前景左侧方形任务折页",
+          "motion": "with-object"
+        },
+        {
+          "text": "代码",
+          "surface": "前景中央窄形任务折页",
+          "motion": "with-object"
+        },
+        {
+          "text": "文档",
+          "surface": "前景右侧宽形任务折页",
+          "motion": "with-object"
+        },
+        {
+          "text": "图像能力",
+          "surface": "背景左侧能力槽正面",
+          "motion": "fixed-context",
+          "reason": "能力槽是分流的固定目的地，文字随槽体保持静止以便辨认结果。"
+        },
+        {
+          "text": "代码能力",
+          "surface": "背景中央能力槽正面",
+          "motion": "fixed-context",
+          "reason": "能力槽是固定目的地，不能为了动效任意移动。"
+        },
+        {
+          "text": "文档能力",
+          "surface": "背景右侧能力槽正面",
+          "motion": "fixed-context",
+          "reason": "能力槽是固定目的地，保留静态阅读参照。"
+        }
+      ],
+      "referenceImageIds": [
+        "REF-PAPER-SUPER-PV07"
+      ]
+    },
+    {
+      "id": "P02",
+      "beatId": "B19",
+      "startAnchorText": "销售、运营、行政、业务岗",
+      "endAnchorText": "解决手上实实在在的问题。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P02-prompt-pair-v1",
+      "pairSha256": "7a78c2e970cf2919d3587945ce7f0bbff7b7b38902ac411c32808610da2b6ac5",
+      "prompt": "16:9横向实体纸艺摄影，沿用《超级个体》参考的深蓝、灰白与少量珊瑚红纸材，真实纸厚、纤维、切边和接触阴影，中文直接印在物件纸面上。低斜侧视一座四层错位的纸制工作台，前景工作底板正面印“真实工作”。前景左侧岗位托盘立面印“销售”，中景左后岗位托盘立面印“运营”，中景右前岗位托盘立面印“行政”，后景右侧岗位托盘立面印“业务”；四个托盘各有少量无字的文件纸片，托盘尚未接上工作槽。每个工作槽留有一种独特形状的空缺，后景能力料架横梁印“AI能力”，架上四枚灰白和珊瑚红的厚纸模块与四种空缺成对适配，全部尚在料架上。岗位文字朝向观众，可在错位纵深中逐一读清，文件不遮字。画面至少有前景底板、中景托盘、后景料架三层，展示静态未接入状态。保持可见折面、纤维、切口与稳定接触阴影，没有企业标识、收益数字和已经完成的业务结果。",
+      "promptSha256": "210815a7d54bdd3e246d178f16b916d591c5a1b42ce3998cc89f6d87b3b1154b",
+      "negativePrompt": [
+        "不把岗位或人员移走",
+        "不生成企业客户标识与实际系统界面",
+        "中文随纸面不漂移、不重画、不乱码",
+        "不出现节省百分比、现金、成功印章",
+        "不加入旁白、音乐或统一闪烁光效"
+      ],
+      "reason": "让观众看见AI能力应进入岗位的真实工作环节，而不只是展示一个模型名。",
+      "visualRole": "process",
+      "visualMetaphor": "低斜侧视的四层错位工作台：前景已有岗位任务托盘，中景是各自留有能力缺口的工作槽，后景为少量待用纸模块；构图重在嵌入工作而非模型榜单",
+      "composition": "低斜侧视的四层错位工作台：前景已有岗位任务托盘，中景是各自留有能力缺口的工作槽，后景为少量待用纸模块；构图重在嵌入工作而非模型榜单",
+      "textPlan": [
+        {
+          "text": "销售",
+          "surface": "前景左侧岗位托盘立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "运营",
+          "surface": "中景左后岗位托盘立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "行政",
+          "surface": "中景右前岗位托盘立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "业务",
+          "surface": "后景右侧岗位托盘立面",
+          "motion": "with-object"
+        },
+        {
+          "text": "AI能力",
+          "surface": "后景能力料架横梁",
+          "motion": "fixed-context",
+          "reason": "能力料架是固定供给端，文字跟随固定横梁稳定辨认。"
+        },
+        {
+          "text": "真实工作",
+          "surface": "前景工作底板正面",
+          "motion": "fixed-context",
+          "reason": "底板作为全镜不变的工作场景参照，避免观众误读为另购一个独立系统。"
+        }
+      ],
+      "referenceImageIds": [
+        "REF-PAPER-SUPER-PV07"
+      ]
+    }
+  ]
+}

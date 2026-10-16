@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "koubo-director-cues-v2-handoff/v1",
+  "taskId": "20261016_musk_grok_business_ai_director_v2",
+  "revisionId": "paper-p01-p02-firstframe-r1",
+  "status": "local-handoff-ready",
+  "executionScope": "local-handoff-only",
+  "source": {
+    "directorCues": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/director-cues.execution-only.v2.json",
+      "sha256": "17657674c4e2b71ed8b76b753a8346fca6493fa519b7ac71ec8642ed3176129d"
+    },
+    "userApproval": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/用户首帧制作授权.v1.json",
+      "sha256": "8cfaf42a46af3740b975d5d61e6d732ea1c8054f23e53ea8a1d97a73669ef6da"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "f5767da622252b724007d31c63a79278f77008f75820f4c554bd3e5037e90fdf"
+    }
+  },
+  "profileVersion": "9.1.0",
+  "routeMappings": [
+    {
+      "sourceRoute": "speaker",
+      "downstreamRoute": "speaker",
+      "beatCount": 17
+    },
+    {
+      "sourceRoute": "real-evidence",
+      "downstreamRoute": "real-evidence",
+      "beatCount": 4
+    },
+    {
+      "sourceRoute": "ai-generated-video",
+      "downstreamRoute": "generated-video",
+      "beatCount": 0
+    },
+    {
+      "sourceRoute": "paper-editorial",
+      "downstreamRoute": "paper-editorial",
+      "beatCount": 2
+    }
+  ],
+  "speakerBeatIds": [
+    "B01",
+    "B02",
+    "B05",
+    "B06",
+    "B09",
+    "B11",
+    "B12",
+    "B13",
+    "B14",
+    "B15",
+    "B16",
+    "B17",
+    "B18",
+    "B20",
+    "B21",
+    "B22",
+    "B23"
+  ],
+  "branches": {
+    "realEvidence": {
+      "sourceRoute": "real-evidence",
+      "downstreamRoute": "real-evidence",
+      "status": "planned",
+      "manifest": {
+        "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/real-evidence-handoff.v1.json",
+        "sha256": "098fe668b9d567b55a84c733920ac11330510ca1482f0a96d695b95156c48378"
+      }
+    },
+    "aiGeneratedVideo": {
+      "sourceRoute": "ai-generated-video",
+      "downstreamRoute": "generated-video",
+      "status": "not-required",
+      "firstFrameManifest": {
+        "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/ai-generated-video.first-frame-handoff.v1.json",
+        "sha256": "e77a8d3b0f0e106c499c4b29f2123df58307d010cc40451db18e0103bdfeff89"
+      },
+      "imageToVideoManifest": {
+        "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/ai-generated-video.image-to-video-handoff.v1.json",
+        "sha256": "98b3789d9afff668250660d35e6fefc61aa801f3490a4f23c717cca4f0452308"
+      }
+    },
+    "paperEditorial": {
+      "sourceRoute": "paper-editorial",
+      "downstreamRoute": "paper-editorial",
+      "status": "planned",
+      "firstFrameManifest": {
+        "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/paper-editorial.first-frame-handoff.v1.json",
+        "sha256": "a71b84b109b670178b2f77aa1d21cd46ae960c8ade9b29b06a6ac39bd237816c"
+      },
+      "imageToVideoManifest": {
+        "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/paper-editorial.image-to-video-handoff.v1.json",
+        "sha256": "784c4f63837d7d7b132d68923066aad425c194ccbeb0d3d71695845928bb8e49"
+      }
+    }
+  },
+  "shotcraft": {
+    "status": "opportunity-only",
+    "opportunityCount": 3,
+    "selectionStage": "post-shoot-edit-release",
+    "selectionAuthorized": false,
+    "manifest": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/shotcraft-opportunities.handoff.v1.json",
+      "sha256": "a5cf858a00cdb867eb0446bd04a9f9b38df84e7f3fca7d331b6e43ba3d580d02"
+    }
+  },
+  "externalActionsAuthorized": false,
+  "generationAuthorized": false,
+  "remotionAuthorized": false,
+  "publicationAuthorized": false,
+  "artifacts": {
+    "realEvidence": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/real-evidence-handoff.v1.json",
+      "sha256": "098fe668b9d567b55a84c733920ac11330510ca1482f0a96d695b95156c48378"
+    },
+    "aiFirstFrame": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/ai-generated-video.first-frame-handoff.v1.json",
+      "sha256": "e77a8d3b0f0e106c499c4b29f2123df58307d010cc40451db18e0103bdfeff89"
+    },
+    "aiVideo": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/ai-generated-video.image-to-video-handoff.v1.json",
+      "sha256": "98b3789d9afff668250660d35e6fefc61aa801f3490a4f23c717cca4f0452308"
+    },
+    "paperFirstFrame": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/paper-editorial.first-frame-handoff.v1.json",
+      "sha256": "a71b84b109b670178b2f77aa1d21cd46ae960c8ade9b29b06a6ac39bd237816c"
+    },
+    "paperVideo": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/paper-editorial.image-to-video-handoff.v1.json",
+      "sha256": "784c4f63837d7d7b132d68923066aad425c194ccbeb0d3d71695845928bb8e49"
+    },
+    "shotcraft": {
+      "path": "edit/20261016_musk_grok_business_ai/04_首帧质检/执行交接_r1/官方交接/shotcraft-opportunities.handoff.v1.json",
+      "sha256": "a5cf858a00cdb867eb0446bd04a9f9b38df84e7f3fca7d331b6e43ba3d580d02"
+    }
+  }
+}
