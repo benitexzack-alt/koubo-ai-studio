@@ -1,0 +1,70 @@
+{
+  "sourcePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+  "sourceSha256": "1614633308a6904a17e764f35d738c92c8df486e3eefac5ced6f16407e6accd1",
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 3840,
+        "height": 2160,
+        "r_frame_rate": "24000/1001",
+        "start_time": "0.000000",
+        "nb_frames": "1094"
+      }
+    ]
+  },
+  "sourceUrl": "https://x.com/Tesla/status/2110913438293647789",
+  "previewFrameOrder": [
+    {
+      "frameIndex": 456,
+      "seconds": 19.019
+    },
+    {
+      "frameIndex": 480,
+      "seconds": 20.02
+    },
+    {
+      "frameIndex": 504,
+      "seconds": 21.021
+    },
+    {
+      "frameIndex": 552,
+      "seconds": 23.023
+    },
+    {
+      "frameIndex": 576,
+      "seconds": 24.024
+    },
+    {
+      "frameIndex": 600,
+      "seconds": 25.025
+    },
+    {
+      "frameIndex": 624,
+      "seconds": 26.026
+    },
+    {
+      "frameIndex": 648,
+      "seconds": 27.027
+    }
+  ],
+  "previewOnly": "缩小联系表用于挑选，不是最终原分辨率交付",
+  "argv": [
+    "ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+    "-vf",
+    "select=eq(n\\,456)+eq(n\\,480)+eq(n\\,504)+eq(n\\,552)+eq(n\\,576)+eq(n\\,600)+eq(n\\,624)+eq(n\\,648),scale=640:360,tile=4x2",
+    "-frames:v",
+    "1",
+    "-q:v",
+    "2",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/11_汽车主视觉封面/视频抽帧备选/选帧联系表_19至27秒.jpg"
+  ],
+  "exitCode": 0
+}

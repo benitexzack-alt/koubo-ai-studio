@@ -1,0 +1,90 @@
+{
+  "sourcePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+  "sourceSha256": "1614633308a6904a17e764f35d738c92c8df486e3eefac5ced6f16407e6accd1",
+  "sourceUrl": "https://x.com/Tesla/status/2110913438293647789",
+  "mediaId": "2110913252045545472",
+  "sourceFps": "24000/1001",
+  "sourceStartTime": 0,
+  "method": "按0起始源帧号select，原3840×2160解码为PNG；未裁切、调色、锐化、重绘或合成",
+  "selected": [
+    {
+      "frameIndex": 576,
+      "fileName": "备选01_腾空正前偏侧_24.024秒_原帧4K.png",
+      "absolutePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/11_汽车主视觉封面/视频抽帧备选/备选01_腾空正前偏侧_24.024秒_原帧4K.png",
+      "secondsRational": "576576/24000",
+      "seconds": 24.024,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "8eb468c0dc9f26fe5036720b5aeaba925de66a86ed6cf48856870a65ae03fe33",
+      "verifiedPngDimensions": [
+        3840,
+        2160
+      ],
+      "visualReview": {
+        "rank": 1,
+        "visible": "白色车辆正前偏侧腾空，四轮和主要车身轮廓可见，右侧坡面保留现场语境。",
+        "limitation": "车在4K整帧中约600像素宽；单独放大到封面主体时细节有限。",
+        "suggestedUse": "本支宣传片中优先的腾空视觉参考，适合保留部分烟雾和坡面背景。"
+      }
+    },
+    {
+      "frameIndex": 654,
+      "fileName": "备选02_落地前侧车身_27.277250秒_原帧4K.png",
+      "absolutePath": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/11_汽车主视觉封面/视频抽帧备选/备选02_落地前侧车身_27.277250秒_原帧4K.png",
+      "secondsRational": "654654/24000",
+      "seconds": 27.27725,
+      "width": 3840,
+      "height": 2160,
+      "sha256": "472721ce039323f014edf996e76457ba7c04c86a72342800eb76681eee74ec07",
+      "verifiedPngDimensions": [
+        3840,
+        2160
+      ],
+      "visualReview": {
+        "rank": 2,
+        "visible": "较大的前侧三分之四视角，车顶、风挡、近侧车轮和白色侧面清楚，低机位有冲击力。",
+        "limitation": "喷流/烟雾遮挡部分车头和远侧，不能称为无遮挡车辆产品图。",
+        "suggestedUse": "作为大车身和现场氛围备选，不能补画遮挡部位冒充原帧。"
+      }
+    }
+  ],
+  "extractionArgv": [
+    "ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+    "-vf",
+    "select=eq(n\\,576)+eq(n\\,658)",
+    "-fps_mode",
+    "vfr",
+    "-frames:v",
+    "2",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/11_汽车主视觉封面/视频抽帧备选/原帧临时_%02d.png"
+  ],
+  "exitCode": 0,
+  "visualReview": "已通过view_image实际查看两张最终原帧；仅抽帧选图，不代表完整视频或事实/发布验收",
+  "additionalExtractionArgv": [
+    "ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-n",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/01_素材投放区/05_公开素材_Codex准备/原始官方视频/Tesla_X_2110913252045545472.mp4",
+    "-vf",
+    "select=eq(n\\,654)",
+    "-frames:v",
+    "1",
+    "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/11_汽车主视觉封面/视频抽帧备选/备选02_落地前侧车身_27.277250秒_原帧4K.png"
+  ],
+  "excludedFrame": {
+    "frameIndex": 658,
+    "reason": "实际已切到高位翻滚视角，未选为落地前侧封面候选",
+    "path": "/Users/pc/Documents/口播/edit/20261016_musk_grok_business_ai/11_汽车主视觉封面/视频抽帧备选/筛选过程/未选_镜头已切换_27.444083秒_原帧4K.png"
+  },
+  "sourceUnchanged": true,
+  "redrawOrRetouchPerformed": false
+}
