@@ -82,6 +82,8 @@ const safeStage: React.CSSProperties = {
   color: tones.white,
   fontFamily,
   textShadow: '0 4px 19px rgba(0,0,0,0.94)',
+  transform: 'scale(1.1)',
+  transformOrigin: 'top left',
 };
 
 const StageLabel: React.FC<{children: React.ReactNode; tone?: Tone}> = ({
@@ -94,7 +96,7 @@ const StageLabel: React.FC<{children: React.ReactNode; tone?: Tone}> = ({
       alignItems: 'center',
       gap: 9,
       color: tones[tone],
-      fontSize: 17,
+      fontSize: 20,
       lineHeight: 1,
       fontWeight: 950,
       letterSpacing: 0,
@@ -112,24 +114,49 @@ const StageLabel: React.FC<{children: React.ReactNode; tone?: Tone}> = ({
   </div>
 );
 
+const AccentText: React.FC<{children: string; baseColor: string}> = ({
+  children,
+  baseColor,
+}) => {
+  const parts = children.split(/(DeepSeek|Agent|AI|≠|→|=|\+)/g);
+  return (
+    <>
+      {parts.map((part, index) => {
+        const isOperator = ['≠', '→', '=', '+'].includes(part);
+        const isAi = ['AI', 'Agent', 'DeepSeek'].includes(part);
+        return (
+          <span
+            key={`${part}-${index}`}
+            style={{color: isOperator ? tones.amber : isAi ? tones.cyan : baseColor}}
+          >
+            {part}
+          </span>
+        );
+      })}
+    </>
+  );
+};
+
 const StageTitle: React.FC<{children: string; tone?: Tone}> = ({
   children,
   tone = 'white',
-}) => (
-  <div
-    style={{
-      marginTop: 14,
-      maxWidth: 610,
-      color: tones[tone],
-      fontSize: [...children].length > 18 ? 39 : 47,
-      lineHeight: 1.08,
-      fontWeight: 950,
-      letterSpacing: 0,
-    }}
-  >
-    {children}
-  </div>
-);
+}) => {
+  return (
+    <div
+      style={{
+        marginTop: 14,
+        maxWidth: 610,
+        color: tones[tone],
+        fontSize: [...children].length > 18 ? 45 : 54,
+        lineHeight: 1.08,
+        fontWeight: 950,
+        letterSpacing: 0,
+      }}
+    >
+      <AccentText baseColor={tones[tone]}>{children}</AccentText>
+    </div>
+  );
+};
 
 const StageDetail: React.FC<{children?: string}> = ({children}) =>
   children ? (
@@ -137,8 +164,8 @@ const StageDetail: React.FC<{children?: string}> = ({children}) =>
       style={{
         marginTop: 14,
         maxWidth: 590,
-        color: 'rgba(248,250,253,0.76)',
-        fontSize: 21,
+        color: 'rgba(248,250,253,0.88)',
+        fontSize: 25,
         lineHeight: 1.28,
         fontWeight: 800,
       }}
@@ -178,7 +205,7 @@ export const V8ChapterAnchor: React.FC<{timeSeconds: number}> = ({
         opacity: reveal,
       }}
     >
-      <span style={{color: tones.cyan, fontSize: 28, fontWeight: 950}}>
+      <span style={{color: tones.cyan, fontSize: 31, fontWeight: 950}}>
         {chapter.index}
       </span>
       <span
@@ -190,7 +217,7 @@ export const V8ChapterAnchor: React.FC<{timeSeconds: number}> = ({
           transformOrigin: 'left center',
         }}
       />
-      <span style={{fontSize: 19, fontWeight: 900}}>{chapter.title}</span>
+      <span style={{fontSize: 22, fontWeight: 900}}>{chapter.title}</span>
     </div>
   );
 };
@@ -207,7 +234,8 @@ export const V8DirectStatement: React.FC<{layer: V8SemanticLayer}> = ({
         ...safeStage,
         top: 210,
         opacity,
-        transform: `translateX(${interpolate(reveal, [0, 1], [-26, 0])}px)`,
+        transform: `translateX(${interpolate(reveal, [0, 1], [-26, 0])}px) scale(1.1)`,
+        transformOrigin: 'top left',
       }}
     >
       <StageLabel>关键判断</StageLabel>
@@ -238,7 +266,7 @@ export const V8DirectStatement: React.FC<{layer: V8SemanticLayer}> = ({
                   color: index === layer.items.length - 1 ? tones.amber : tones.white,
                   background: 'rgba(4,12,18,0.32)',
                   borderBottom: `2px solid ${index === layer.items.length - 1 ? tones.amber : tones.cyan}`,
-                  fontSize: 19,
+                  fontSize: 23,
                   fontWeight: 900,
                   opacity: itemReveal,
                 }}
@@ -276,7 +304,7 @@ export const V8ComparisonBars: React.FC<{layer: V8SemanticLayer}> = ({
             <div key={item}>
               <div style={{display: 'flex', alignItems: 'baseline', gap: 10}}>
                 <span style={{color, fontSize: 16, fontWeight: 950}}>0{index + 1}</span>
-                <span style={{fontSize: 24, lineHeight: 1.16, fontWeight: 920}}>{item}</span>
+                <span style={{fontSize: 28, lineHeight: 1.16, fontWeight: 920}}>{item}</span>
               </div>
               <div
                 style={{
@@ -365,7 +393,7 @@ export const V8ProcessRail: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
               >
                 {index + 1}
               </div>
-              <div style={{fontSize: 25, lineHeight: 1.18, fontWeight: 920}}>{item}</div>
+              <div style={{fontSize: 29, lineHeight: 1.18, fontWeight: 920}}>{item}</div>
             </div>
           );
         })}
@@ -622,7 +650,7 @@ export const V8QuestionList: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
               <span style={{color: index === 3 ? tones.green : tones.amber, fontSize: 17, fontWeight: 950}}>
                 0{index + 1}
               </span>
-              <span style={{fontSize: 23, lineHeight: 1.16, fontWeight: 900}}>{item}</span>
+              <span style={{fontSize: 27, lineHeight: 1.16, fontWeight: 900}}>{item}</span>
             </div>
           );
         })}
@@ -651,7 +679,7 @@ export const V8HeroDefinition: React.FC<{layer: V8SemanticLayer}> = ({
           transformOrigin: 'left center',
         }}
       >
-        {layer.title}
+        <AccentText baseColor={tones.white}>{layer.title}</AccentText>
       </div>
       <div
         style={{
@@ -867,6 +895,7 @@ export const V8MediaStage: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
 export const V8Closing: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
   const reveal = useReveal(0);
   const opacity = useSceneOpacity();
+  const compactTitle = [...layer.title].length > 11;
   return (
     <div
       style={{
@@ -877,7 +906,15 @@ export const V8Closing: React.FC<{layer: V8SemanticLayer}> = ({layer}) => {
       }}
     >
       <StageLabel tone="green">兰州AI创业实践</StageLabel>
-      <div style={{marginTop: 13, fontSize: 62, lineHeight: 1.04, fontWeight: 950}}>
+      <div
+        style={{
+          marginTop: 13,
+          fontSize: compactTitle ? 46 : 62,
+          lineHeight: 1.04,
+          fontWeight: 950,
+          whiteSpace: compactTitle ? 'nowrap' : 'normal',
+        }}
+      >
         {layer.title}
       </div>
       <div style={{marginTop: 15, color: tones.cyan, fontSize: 29, fontWeight: 930}}>

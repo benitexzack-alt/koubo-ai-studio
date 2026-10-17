@@ -36,6 +36,8 @@ const Preview:React.FC<{soundEnabled:boolean}>=({soundEnabled})=><AbsoluteFill>
   </Sequence>)}
 </AbsoluteFill>;
 const Root:React.FC=()=><>
+  <Composition id="EmployeeAIEfficiencyV8-R2-Full-WithSfx" component={Episode} durationInFrames={plan.durationInFrames} fps={30} width={1920} height={1080} defaultProps={{soundEnabled:true}}/>
+  <Composition id="EmployeeAIEfficiencyV8-R2-Full-NoSfx" component={Episode} durationInFrames={plan.durationInFrames} fps={30} width={1920} height={1080} defaultProps={{soundEnabled:false}}/>
   <Composition id="EmployeeAIEfficiencyV8-R2-Preview-WithSfx" component={Preview} durationInFrames={plan.previewDurationInFrames} fps={30} width={1920} height={1080} defaultProps={{soundEnabled:true}}/>
   <Composition id="EmployeeAIEfficiencyV8-R2-Preview-NoSfx" component={Preview} durationInFrames={plan.previewDurationInFrames} fps={30} width={1920} height={1080} defaultProps={{soundEnabled:false}}/>
 </>;

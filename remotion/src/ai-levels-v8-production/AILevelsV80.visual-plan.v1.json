@@ -1,0 +1,2200 @@
+{
+  "schemaVersion": 4,
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-approved"
+  },
+  "videoId": "AI_LEVELS_20260820_talk01",
+  "videoTitle": "会用AI，不等于AI替你把工作做完了",
+  "sourceVideo": "source/20260820_ai_levels/R01_六层AI能力地图_口播原片.MOV",
+  "transcript": "edit/20260820_ai_levels/transcripts/AI_LEVELS_20260820_talk01.cleaned.v1.json",
+  "bilingualCaptions": "remotion/public/data/AI_LEVELS_20260820_talk01.bilingual.v1.json",
+  "baselineId": "koubo-formal-16x9-v1",
+  "styleReferenceIds": [
+    "v8-user-confirmed-default-20260812",
+    "v8-speaker-first-continuous-semantics",
+    "ai-levels-six-card-system-user-approved"
+  ],
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "previewCoverage": [
+    "hook",
+    "complex-overlay",
+    "full-screen-asset",
+    "cta",
+    "speaker-overlay",
+    "media-fullscreen",
+    "progressive-process",
+    "source-evidence",
+    "hero-emphasis",
+    "sfx-ab"
+  ],
+  "editPolicy": "完整保留真人口播，不删减、不重排；三条用户生成AI视频按语义静音插入并标注情景示意；六张参考图仅用于理解版式，严禁进入任何成片媒体入口。",
+  "assetCoverage": {
+    "usableOriginalVideoItems": 1,
+    "assignedOriginalVideoItems": 1,
+    "generatedVideoItems": 3,
+    "assignedGeneratedVideoItems": 3,
+    "referenceImageItems": 6,
+    "referenceImageItemsAssignedToVideo": 0,
+    "allRequiredClaimsCovered": true,
+    "note": "真人原片为主画面；三条AI视频仅作情景示意；参考图完全排除。"
+  },
+  "layers": [
+    {
+      "id": "levels-001-hook",
+      "start": 0,
+      "end": 7.2,
+      "spokenLine": "客户回得着急，你让AI帮你写一段回复，它写得挺快。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-001-hook",
+      "zone": "right-safe",
+      "title": "AI写得快",
+      "detail": "不等于后面的工作已经做完。",
+      "items": [
+        "回复",
+        "方案",
+        "资料"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-001-hook-event",
+        "enterAt": 0,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "levels-001-hook-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "definition",
+        "title": "AI写得快",
+        "detail": "不等于后面的工作已经做完。",
+        "items": [
+          "回复",
+          "方案",
+          "资料"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 2.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "hero-definition",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-002-answer-media",
+      "start": 7.2,
+      "end": 14.5,
+      "spokenLine": "关掉对话框以后，资料、表格、客户回复仍要自己接。",
+      "purpose": "concept-illustration",
+      "kind": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "levels-002-answer-media",
+      "zone": "full-screen",
+      "title": "答案出来了，工作还在后面",
+      "detail": "情景示意：聊天框只完成了第一棒。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-generated-video",
+        "source": "remotion/public/media/ai-levels-20260820/S01-answer-work-remains.mp4"
+      },
+      "assetDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "requestId": "S01",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "levels-002-answer-media-event",
+        "enterAt": 7.2,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "levels-002-answer-media-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "generated-media",
+        "title": "答案出来了，工作还在后面",
+        "detail": "情景示意：聊天框只完成了第一棒。",
+        "items": [],
+        "tone": "cyan",
+        "src": "media/ai-levels-20260820/S01-answer-work-remains.mp4",
+        "disclosure": "AI生成 · 情景示意",
+        "badge": "非真实业务录屏"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 9.7
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "generated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-003-first-step",
+      "start": 14.5,
+      "end": 23,
+      "spokenLine": "AI只是把最开始那一下做掉了。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-003-first-step",
+      "zone": "right-safe",
+      "title": "AI做了第一下",
+      "detail": "查、填、发、复核与兜底仍由人完成。",
+      "items": [
+        "生成",
+        "执行",
+        "复核"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-003-first-step-event",
+        "enterAt": 14.5,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "levels-003-first-step-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "statement",
+        "title": "AI做了第一下",
+        "detail": "查、填、发、复核与兜底仍由人完成。",
+        "items": [
+          "生成",
+          "执行",
+          "复核"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 17
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "direct-statement",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-004-question",
+      "start": 23,
+      "end": 28.8,
+      "spokenLine": "豆包、DeepSeek、Kimi、千问都会用，算不算会用AI？",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-004-question",
+      "zone": "right-safe",
+      "title": "会用工具 = 会用AI？",
+      "detail": "先看AI替你干到哪一步。",
+      "items": [
+        "答案停在哪",
+        "后面谁来接",
+        "出错谁负责"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-004-question-event",
+        "enterAt": 23,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "levels-004-question-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "会用工具 = 会用AI？",
+        "detail": "先看AI替你干到哪一步。",
+        "items": [
+          "答案停在哪",
+          "后面谁来接",
+          "出错谁负责"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 25.03
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-005-overview",
+      "start": 28.8,
+      "end": 38.2,
+      "spokenLine": "今天把用AI分为六个段位。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-005-overview",
+      "zone": "right-safe",
+      "title": "AI工作接力地图",
+      "detail": "从答案到系统经营。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-005-overview-event",
+        "enterAt": 28.8,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter",
+        "cueId": "levels-005-overview-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "ai-overview",
+        "title": "AI工作接力地图",
+        "detail": "从答案到系统经营。",
+        "items": [],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 31.3
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "level-overview",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-006-overview-logic",
+      "start": 38.2,
+      "end": 51.28,
+      "spokenLine": "看每次用完AI，后面还有多少工作由你一段一段接着干。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-006-overview-logic",
+      "zone": "right-safe",
+      "title": "答案 → 任务 → 流程 → 系统",
+      "detail": "段位看的是工作推进深度，不是工具多少。",
+      "items": [
+        "答案",
+        "交付物",
+        "稳定接力",
+        "责任闭环"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-006-overview-logic-event",
+        "enterAt": 38.2,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "levels-006-overview-logic-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "答案 → 任务 → 流程 → 系统",
+        "detail": "段位看的是工作推进深度，不是工具多少。",
+        "items": [
+          "答案",
+          "交付物",
+          "稳定接力",
+          "责任闭环"
+        ],
+        "tone": "green"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 40.7
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-007-qa-card",
+      "start": 51.28,
+      "end": 60,
+      "spokenLine": "第一层：问答。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-007-qa-card",
+      "zone": "right-safe",
+      "title": "第一层：问答",
+      "detail": "人提问，AI给参考答案。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-007-qa-card-event",
+        "enterAt": 51.28,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter",
+        "cueId": "levels-007-qa-card-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "ai-qa",
+        "title": "第一层：问答",
+        "detail": "人提问，AI给参考答案。",
+        "items": [],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 53.78
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "level-qa",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-008-qa-tools",
+      "start": 60,
+      "end": 73.12,
+      "spokenLine": "豆包、DeepSeek、Kimi、千问，主要先解决问答。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-008-qa-tools",
+      "zone": "right-safe",
+      "title": "问一句，答一句",
+      "detail": "改文案、查思路、想标题，先离开空白页。",
+      "items": [
+        "豆包",
+        "DeepSeek",
+        "Kimi",
+        "千问"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-008-qa-tools-event",
+        "enterAt": 60,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "levels-008-qa-tools-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "问一句，答一句",
+        "detail": "改文案、查思路、想标题，先离开空白页。",
+        "items": [
+          "豆包",
+          "DeepSeek",
+          "Kimi",
+          "千问"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 62.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-009-qa-boundary",
+      "start": 73.12,
+      "end": 83.76,
+      "spokenLine": "边界很清楚：答案停在聊天框里。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-009-qa-boundary",
+      "zone": "right-safe",
+      "title": "边界：答案停在聊天框",
+      "detail": "修改、发送、对象和结果责任仍由你接住。",
+      "items": [
+        "修改",
+        "发送",
+        "兜底"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-009-qa-boundary-event",
+        "enterAt": 73.12,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "levels-009-qa-boundary-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "statement",
+        "title": "边界：答案停在聊天框",
+        "detail": "修改、发送、对象和结果责任仍由你接住。",
+        "items": [
+          "修改",
+          "发送",
+          "兜底"
+        ],
+        "tone": "red"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 75.62
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "direct-statement",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-010-qa-agent",
+      "start": 83.76,
+      "end": 95.12,
+      "spokenLine": "别因为会提几个问题，就觉得已经用上Agent。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-010-qa-agent",
+      "zone": "right-safe",
+      "title": "反应快的助手",
+      "detail": "还不是能独立交付和负责的Agent。",
+      "items": [
+        "能给参考",
+        "不能自行验收",
+        "责任仍在人"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-010-qa-agent-event",
+        "enterAt": 83.76,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "comparison",
+        "cueId": "levels-010-qa-agent-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "status",
+        "title": "反应快的助手",
+        "detail": "还不是能独立交付和负责的Agent。",
+        "items": [
+          "能给参考",
+          "不能自行验收",
+          "责任仍在人"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 86.26
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "status-stack",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-011-task-card",
+      "start": 95.12,
+      "end": 108,
+      "spokenLine": "第二层就是任务：有资料、有要求、有交付物。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-011-task-card",
+      "zone": "right-safe",
+      "title": "第二层：任务",
+      "detail": "从参考答案走向可验收交付物。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-011-task-card-event",
+        "enterAt": 95.12,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter",
+        "cueId": "levels-011-task-card-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "ai-task",
+        "title": "第二层：任务",
+        "detail": "从参考答案走向可验收交付物。",
+        "items": [],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 97.62
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "level-task",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-012-task-examples",
+      "start": 108,
+      "end": 125.84,
+      "spokenLine": "咨询变跟进表，会议记录变简报，资料变固定格式文档。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-012-task-examples",
+      "zone": "right-safe",
+      "title": "任务必须有交付物",
+      "detail": "先把一件具体办公任务往前推。",
+      "items": [
+        "客户跟进表",
+        "老板简报",
+        "固定格式文档"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-012-task-examples-event",
+        "enterAt": 108,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "levels-012-task-examples-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "任务必须有交付物",
+        "detail": "先把一件具体办公任务往前推。",
+        "items": [
+          "客户跟进表",
+          "老板简报",
+          "固定格式文档"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 110.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-013-task-tools",
+      "start": 125.84,
+      "end": 148.48,
+      "spokenLine": "Kimi文档、飞书表格、千问办公、WorkBuddy都能从这一层进。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-013-task-tools",
+      "zone": "right-safe",
+      "title": "资料 + 目标 + 交付",
+      "detail": "重点不是提示词多花，而是把活说清楚。",
+      "items": [
+        "给什么资料",
+        "做成什么样",
+        "哪里不能错"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-013-task-tools-event",
+        "enterAt": 125.84,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "levels-013-task-tools-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "status",
+        "title": "资料 + 目标 + 交付",
+        "detail": "重点不是提示词多花，而是把活说清楚。",
+        "items": [
+          "给什么资料",
+          "做成什么样",
+          "哪里不能错"
+        ],
+        "tone": "green"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 128.34
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "status-stack",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-014-task-acceptance",
+      "start": 148.48,
+      "end": 162.16,
+      "spokenLine": "给它什么资料、做成什么样、哪几步不能错。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-014-task-acceptance",
+      "zone": "right-safe",
+      "title": "任务交付三件事",
+      "detail": "资料、标准与不可错项。",
+      "items": [
+        "输入资料",
+        "目标格式",
+        "错误红线"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-014-task-acceptance-event",
+        "enterAt": 148.48,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "levels-014-task-acceptance-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "任务交付三件事",
+        "detail": "资料、标准与不可错项。",
+        "items": [
+          "输入资料",
+          "目标格式",
+          "错误红线"
+        ],
+        "tone": "green"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 150.98
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-015-task-responsibility",
+      "start": 162.16,
+      "end": 183.28,
+      "spokenLine": "名字、数字、结论还是得你看，最后交付责任仍在你手上。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-015-task-responsibility",
+      "zone": "right-safe",
+      "title": "能下载文件 ≠ 任务完成",
+      "detail": "AI搭毛坯，人做最终验收。",
+      "items": [
+        "名字",
+        "数字",
+        "结论"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-015-task-responsibility-event",
+        "enterAt": 162.16,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "comparison",
+        "cueId": "levels-015-task-responsibility-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "statement",
+        "title": "能下载文件 ≠ 任务完成",
+        "detail": "AI搭毛坯，人做最终验收。",
+        "items": [
+          "名字",
+          "数字",
+          "结论"
+        ],
+        "tone": "red"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 164.66
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "direct-statement",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-016-flow-card",
+      "start": 183.28,
+      "end": 196.08,
+      "spokenLine": "第三层才是流程，因为有些事情每天都在重复。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-016-flow-card",
+      "zone": "right-safe",
+      "title": "第三层：流程",
+      "detail": "把重复动作串成稳定接力。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-016-flow-card-event",
+        "enterAt": 183.28,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter",
+        "cueId": "levels-016-flow-card-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "ai-flow",
+        "title": "第三层：流程",
+        "detail": "把重复动作串成稳定接力。",
+        "items": [],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 185.78
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "level-flow",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-017-flow-media",
+      "start": 196.08,
+      "end": 203.52,
+      "spokenLine": "手动复制、粘贴、转发，人很快就烦，也容易漏。",
+      "purpose": "concept-illustration",
+      "kind": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "levels-017-flow-media",
+      "zone": "full-screen",
+      "title": "重复搬运 → 可控流程",
+      "detail": "情景示意：把高频搬运改成可暂停的接力。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-generated-video",
+        "source": "remotion/public/media/ai-levels-20260820/S02-manual-to-flow.mp4"
+      },
+      "assetDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "requestId": "S02",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "levels-017-flow-media-event",
+        "enterAt": 196.08,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "levels-017-flow-media-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "generated-media",
+        "title": "重复搬运 → 可控流程",
+        "detail": "情景示意：把高频搬运改成可暂停的接力。",
+        "items": [],
+        "tone": "cyan",
+        "src": "media/ai-levels-20260820/S02-manual-to-flow.mp4",
+        "disclosure": "AI生成 · 情景示意",
+        "badge": "非真实业务录屏"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 198.58
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "generated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-018-flow-example",
+      "start": 203.52,
+      "end": 218.16,
+      "spokenLine": "表单进来后分类、写入表格、提醒负责人，需要人看就停下。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-018-flow-example",
+      "zone": "right-safe",
+      "title": "表单进入 → 分类 → 表格 → 提醒",
+      "detail": "需要人工确认的节点必须能停。",
+      "items": [
+        "表单进入",
+        "内容分类",
+        "写入表格",
+        "人工确认"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-018-flow-example-event",
+        "enterAt": 203.52,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "levels-018-flow-example-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "表单进入 → 分类 → 表格 → 提醒",
+        "detail": "需要人工确认的节点必须能停。",
+        "items": [
+          "表单进入",
+          "内容分类",
+          "写入表格",
+          "人工确认"
+        ],
+        "tone": "green"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 206.02
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-019-flow-boundary",
+      "start": 218.16,
+      "end": 240.72,
+      "spokenLine": "客户回复、订单、钱、敏感资料自动外发前，要想好权限、确认和停机。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-019-flow-boundary",
+      "zone": "right-safe",
+      "title": "流程越往外连，越不能图省事",
+      "detail": "谁有权限、谁确认、跑错了谁来停。",
+      "items": [
+        "权限",
+        "人工确认",
+        "暂停开关",
+        "责任记录"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-019-flow-boundary-event",
+        "enterAt": 218.16,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "levels-019-flow-boundary-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "流程越往外连，越不能图省事",
+        "detail": "谁有权限、谁确认、跑错了谁来停。",
+        "items": [
+          "权限",
+          "人工确认",
+          "暂停开关",
+          "责任记录"
+        ],
+        "tone": "red"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 220.66
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-020-assemble-card",
+      "start": 240.72,
+      "end": 255.92,
+      "spokenLine": "第四层是组装：读本地文件、改网站、接接口。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-020-assemble-card",
+      "zone": "right-safe",
+      "title": "第四层：组装",
+      "detail": "把AI接进电脑和真实工作区。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-020-assemble-card-event",
+        "enterAt": 240.72,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter",
+        "cueId": "levels-020-assemble-card-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "ai-assemble",
+        "title": "第四层：组装",
+        "detail": "把AI接进电脑和真实工作区。",
+        "items": [],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 243.22
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "level-assemble",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-021-assemble-tools",
+      "start": 255.92,
+      "end": 277.12,
+      "spokenLine": "Codex、Claude Code、Cursor和Agent Harness常见在这一层。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-021-assemble-tools",
+      "zone": "right-safe",
+      "title": "工具 + 工作区 + 任务协同",
+      "detail": "已经不只是聊天框。",
+      "items": [
+        "本地文件",
+        "网站",
+        "接口",
+        "运行命令"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-021-assemble-tools-event",
+        "enterAt": 255.92,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "levels-021-assemble-tools-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "layer-map",
+        "title": "工具 + 工作区 + 任务协同",
+        "detail": "已经不只是聊天框。",
+        "items": [
+          "本地文件",
+          "网站",
+          "接口",
+          "运行命令"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 258.41999999999996
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "layer-map",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-022-assemble-threshold",
+      "start": 277.12,
+      "end": 291.52,
+      "spokenLine": "文件、环境、接口、权限和报错，都是新的门槛。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-022-assemble-threshold",
+      "zone": "right-safe",
+      "title": "新的门槛从这里出现",
+      "detail": "每一个都需要真实配置和排错。",
+      "items": [
+        "文件在哪",
+        "环境怎么配",
+        "接口怎么接",
+        "报错怎么查"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-022-assemble-threshold-event",
+        "enterAt": 277.12,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "levels-022-assemble-threshold-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "新的门槛从这里出现",
+        "detail": "每一个都需要真实配置和排错。",
+        "items": [
+          "文件在哪",
+          "环境怎么配",
+          "接口怎么接",
+          "报错怎么查"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 279.62
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-023-assemble-real",
+      "start": 291.52,
+      "end": 314.48,
+      "spokenLine": "看着像一句话做出来，真跑起来往往一个报错接一个报错。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-023-assemble-real",
+      "zone": "right-safe",
+      "title": "不是提示词比赛",
+      "detail": "看它改了什么，也看结果是否真的跑通。",
+      "items": [
+        "检查改动",
+        "运行验证",
+        "定位报错"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-023-assemble-real-event",
+        "enterAt": 291.52,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "comparison",
+        "cueId": "levels-023-assemble-real-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "statement",
+        "title": "不是提示词比赛",
+        "detail": "看它改了什么，也看结果是否真的跑通。",
+        "items": [
+          "检查改动",
+          "运行验证",
+          "定位报错"
+        ],
+        "tone": "red"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 294.02
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "direct-statement",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-024-open-card",
+      "start": 314.48,
+      "end": 328.24,
+      "spokenLine": "第五层：开源改造。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-024-open-card",
+      "zone": "right-safe",
+      "title": "第五层：开源改造",
+      "detail": "下载只是开始，维护才是后半程。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-024-open-card-event",
+        "enterAt": 314.48,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter",
+        "cueId": "levels-024-open-card-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "ai-open-source",
+        "title": "第五层：开源改造",
+        "detail": "下载只是开始，维护才是后半程。",
+        "items": [],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 316.98
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "level-open-source",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-025-open-process",
+      "start": 328.24,
+      "end": 348.4,
+      "spokenLine": "拉下代码，配合Git、Docker去安装、部署和修改。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-025-open-process",
+      "zone": "right-safe",
+      "title": "拉取 → 安装 → 部署 → 修改",
+      "detail": "项目跑起来以后，维护工作才真正开始。",
+      "items": [
+        "拉取代码",
+        "安装依赖",
+        "部署运行",
+        "修改适配"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-025-open-process-event",
+        "enterAt": 328.24,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "levels-025-open-process-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "flow",
+        "title": "拉取 → 安装 → 部署 → 修改",
+        "detail": "项目跑起来以后，维护工作才真正开始。",
+        "items": [
+          "拉取代码",
+          "安装依赖",
+          "部署运行",
+          "修改适配"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 330.74
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "process-rail",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-026-open-maintenance",
+      "start": 348.4,
+      "end": 359.28,
+      "spokenLine": "真正看的是能不能接住后续维护，而不是会不会点星。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-026-open-maintenance",
+      "zone": "right-safe",
+      "title": "下载成功 ≠ 拥有产品",
+      "detail": "更新、漏洞、数据和故障恢复不会自己消失。",
+      "items": [
+        "持续更新",
+        "漏洞修补",
+        "备份恢复"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-026-open-maintenance-event",
+        "enterAt": 348.4,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "keyword",
+        "cueId": "levels-026-open-maintenance-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "status",
+        "title": "下载成功 ≠ 拥有产品",
+        "detail": "更新、漏洞、数据和故障恢复不会自己消失。",
+        "items": [
+          "持续更新",
+          "漏洞修补",
+          "备份恢复"
+        ],
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 350.9
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "status-stack",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-027-system-card",
+      "start": 359.28,
+      "end": 375.92,
+      "spokenLine": "第六层叫系统经营，没有什么第六层神器。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-027-system-card",
+      "zone": "right-safe",
+      "title": "第六层：系统经营",
+      "detail": "一套东西一起工作，也要有人负责。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-027-system-card-event",
+        "enterAt": 359.28,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter",
+        "cueId": "levels-027-system-card-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "ai-system",
+        "title": "第六层：系统经营",
+        "detail": "一套东西一起工作，也要有人负责。",
+        "items": [],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 361.78
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "level-system",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-028-system-stack",
+      "start": 375.92,
+      "end": 391.52,
+      "spokenLine": "模型、流程、知识库、版本部署、权限、日志、备份和人工审核一起工作。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-028-system-stack",
+      "zone": "right-safe",
+      "title": "企业AI是一套责任系统",
+      "detail": "工具只是组成部分，治理决定能不能长期跑。",
+      "items": [
+        "模型 / API",
+        "流程与知识库",
+        "版本与部署",
+        "权限与审核"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-028-system-stack-event",
+        "enterAt": 375.92,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "levels-028-system-stack-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "layer-map",
+        "title": "企业AI是一套责任系统",
+        "detail": "工具只是组成部分，治理决定能不能长期跑。",
+        "items": [
+          "模型 / API",
+          "流程与知识库",
+          "版本与部署",
+          "权限与审核"
+        ],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 378.42
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "layer-map",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-029-system-questions",
+      "start": 391.52,
+      "end": 398.32,
+      "spokenLine": "资料谁维护？哪些人能看？AI说错了谁接住？",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-029-system-questions",
+      "zone": "right-safe",
+      "title": "系统经营先问责任",
+      "detail": "模型选择反而不是最难的。",
+      "items": [
+        "谁维护",
+        "谁能看",
+        "谁接错",
+        "谁恢复"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-029-system-questions-event",
+        "enterAt": 391.52,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "levels-029-system-questions-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "系统经营先问责任",
+        "detail": "模型选择反而不是最难的。",
+        "items": [
+          "谁维护",
+          "谁能看",
+          "谁接错",
+          "谁恢复"
+        ],
+        "tone": "red"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 393.9
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-030-system-media",
+      "start": 398.32,
+      "end": 405.62,
+      "spokenLine": "哪一步出了问题，能不能找到记录，把它恢复回来？",
+      "purpose": "concept-illustration",
+      "kind": "full-screen-asset",
+      "titleOwner": true,
+      "overlapGroup": "levels-030-system-media",
+      "zone": "full-screen",
+      "title": "告警出现，人工接管",
+      "detail": "情景示意：系统必须留有追踪、暂停和恢复能力。",
+      "items": [],
+      "asset": {
+        "sourceType": "user-generated-video",
+        "source": "remotion/public/media/ai-levels-20260820/S03-alert-human-takeover.mp4"
+      },
+      "assetDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "requestId": "S03",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "levels-030-system-media-event",
+        "enterAt": 398.32,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "levels-030-system-media-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "generated-media",
+        "title": "告警出现，人工接管",
+        "detail": "情景示意：系统必须留有追踪、暂停和恢复能力。",
+        "items": [],
+        "tone": "cyan",
+        "src": "media/ai-levels-20260820/S03-alert-human-takeover.mp4",
+        "disclosure": "AI生成 · 情景示意",
+        "badge": "非真实业务录屏"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 400.82
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "generated-media",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-031-system-boundary",
+      "start": 405.62,
+      "end": 421.84,
+      "spokenLine": "工具堆在一起，不等于系统能在真实业务里跑下去。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-031-system-boundary",
+      "zone": "right-safe",
+      "title": "接了知识库 ≠ 完成AI转型",
+      "detail": "有人使用、有人维护、有人复核，才叫系统。",
+      "items": [
+        "真实使用",
+        "持续维护",
+        "错误兜底"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-031-system-boundary-event",
+        "enterAt": 405.62,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "comparison",
+        "cueId": "levels-031-system-boundary-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "status",
+        "title": "接了知识库 ≠ 完成AI转型",
+        "detail": "有人使用、有人维护、有人复核，才叫系统。",
+        "items": [
+          "真实使用",
+          "持续维护",
+          "错误兜底"
+        ],
+        "tone": "red"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 408.12
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "status-stack",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-032-closing-card",
+      "start": 421.84,
+      "end": 435.6,
+      "spokenLine": "看到这，来说说你现在在哪一层。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-032-closing-card",
+      "zone": "right-safe",
+      "title": "你现在在哪一层？",
+      "detail": "从最费时、最容易错的那一步反查。",
+      "items": [],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-032-closing-card-event",
+        "enterAt": 421.84,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter",
+        "cueId": "levels-032-closing-card-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "ai-closing",
+        "title": "你现在在哪一层？",
+        "detail": "从最费时、最容易错的那一步反查。",
+        "items": [],
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 424.34
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "level-closing",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-033-next-step",
+      "start": 435.6,
+      "end": 452.72,
+      "spokenLine": "整理资料先学第二层，重复搬运看第三层，接文件接口再碰第四层以后。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-033-next-step",
+      "zone": "right-safe",
+      "title": "按卡点选择下一层",
+      "detail": "不需要一上来把六层全部学完。",
+      "items": [
+        "资料整理 → 任务",
+        "重复搬运 → 流程",
+        "文件接口 → 组装"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-033-next-step-event",
+        "enterAt": 435.6,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "list",
+        "cueId": "levels-033-next-step-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "question-grid",
+        "title": "按卡点选择下一层",
+        "detail": "不需要一上来把六层全部学完。",
+        "items": [
+          "资料整理 → 任务",
+          "重复搬运 → 流程",
+          "文件接口 → 组装"
+        ],
+        "tone": "green"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 438.1
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "question-list",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "levels-034-cta",
+      "start": 452.72,
+      "end": 468.64,
+      "spokenLine": "先看AI替你干到哪儿，再决定你准备在哪儿接住。",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "levels-034-cta",
+      "zone": "right-safe",
+      "title": "先看AI已经替你干到哪儿",
+      "detail": "我是超哥，在兰州AI创业。",
+      "items": [
+        "留下你的困惑",
+        "按真实任务往前走"
+      ],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "levels-034-cta-event",
+        "enterAt": 452.72,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "cta",
+        "cueId": "levels-034-cta-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "closing",
+        "title": "先看AI已经替你干到哪儿",
+        "detail": "我是超哥，在兰州AI创业。",
+        "items": [
+          "留下你的困惑",
+          "按真实任务往前走"
+        ],
+        "tone": "green"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 455.22
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "closing",
+        "coverageRatio": 0.396,
+        "progressiveReveal": true
+      }
+    }
+  ]
+}

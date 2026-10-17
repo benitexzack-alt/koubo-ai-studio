@@ -201,9 +201,9 @@ const ToolPill: React.FC<{item: Tool; index: number}> = ({item, index}) => {
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 10,
-        height: 48,
-        padding: '0 14px 0 8px',
+        gap: 11,
+        height: 56,
+        padding: '0 16px 0 9px',
         borderRadius: 6,
         backgroundColor: '#FFFFFF',
         border: '1px solid rgba(28,45,61,0.13)',
@@ -214,8 +214,8 @@ const ToolPill: React.FC<{item: Tool; index: number}> = ({item, index}) => {
     >
       <span
         style={{
-          width: 34,
-          height: 34,
+          width: 40,
+          height: 40,
           borderRadius: 5,
           display: 'grid',
           placeItems: 'center',
@@ -223,23 +223,23 @@ const ToolPill: React.FC<{item: Tool; index: number}> = ({item, index}) => {
           backgroundColor: item.icon ? '#F6F7F8' : colors[item.tone],
           color: '#FFFFFF',
           fontFamily,
-          fontSize: item.mark.length > 1 ? 12 : 18,
+          fontSize: item.mark.length > 1 ? 13 : 20,
           fontWeight: 850,
         }}
       >
         {item.icon ? (
-          <Img src={staticFile(item.icon)} style={{width: 27, height: 27, objectFit: 'contain'}} />
+          <Img src={staticFile(item.icon)} style={{width: 33, height: 33, objectFit: 'contain'}} />
         ) : (
           item.mark
         )}
       </span>
-      <span style={{fontFamily, fontSize: 21, fontWeight: 720, color: '#22303C'}}>{item.label}</span>
+      <span style={{fontFamily, fontSize: 23, fontWeight: 760, color: '#172633'}}>{item.label}</span>
     </div>
   );
 };
 
 const ToolRow: React.FC<{items: Tool[]}> = ({items}) => (
-  <div style={{display: 'flex', flexWrap: 'wrap', gap: 10, minHeight: 48}}>
+  <div style={{display: 'flex', flexWrap: 'wrap', gap: 10, minHeight: 56}}>
     {items.map((item, index) => <ToolPill key={`${item.label}-${index}`} item={item} index={index} />)}
   </div>
 );
@@ -277,27 +277,27 @@ const Panel: React.FC<{
       <div style={{display: 'flex', alignItems: 'center', gap: 18}}>
         <div
           style={{
-            width: 66,
-            height: 66,
+            width: 72,
+            height: 72,
             display: 'grid',
             placeItems: 'center',
             borderRadius: 7,
             backgroundColor: colors[tone],
             color: '#FFFFFF',
             fontFamily,
-            fontSize: 34,
+            fontSize: 38,
             fontWeight: 850,
           }}
         >
           {number}
         </div>
         <div>
-          <div style={{fontFamily, fontSize: 46, fontWeight: 820, color: '#192631'}}>{title}</div>
-          <div style={{fontFamily, fontSize: 22, fontWeight: 650, color: colors[tone], marginTop: 5}}>{kicker}</div>
+          <div style={{fontFamily, fontSize: 51, fontWeight: 860, color: '#15232E'}}>{title}</div>
+          <div style={{fontFamily, fontSize: 25, fontWeight: 760, color: colors[tone], marginTop: 5}}>{kicker}</div>
         </div>
       </div>
-      {sceneTools ? <div style={{marginTop: 24}}><ToolRow items={sceneTools} /></div> : null}
-      <div style={{marginTop: 28, height: sceneTools ? 620 : 700}}>{children}</div>
+      {sceneTools ? <div style={{marginTop: 22}}><ToolRow items={sceneTools} /></div> : null}
+      <div style={{marginTop: 24, height: sceneTools ? 620 : 700}}>{children}</div>
     </div>
   );
 };
@@ -329,7 +329,7 @@ const RevealBox: React.FC<{
   );
 };
 
-const OverviewScene: React.FC = () => {
+export const OverviewScene: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const entries = [
@@ -341,7 +341,7 @@ const OverviewScene: React.FC = () => {
     ['06', '系统经营', '责任闭环'],
   ];
   return (
-    <Panel number="6" title="AI 工作接力地图" kicker="不是工具排名，是工作推进到哪一棒" tone="teal">
+    <Panel number="6" title="AI 工作接力地图" kicker="不是工具排名，是工作推进到哪一棒" tone="teal" tools={[tools.doubao, tools.deepseek, tools.kimi, tools.qianwen]}>
       <div style={{position: 'relative', marginTop: 8, height: 610}}>
         <div style={{position: 'absolute', left: 46, top: 40, width: 4, height: 500, backgroundColor: '#C8D4D6'}} />
         {entries.map(([num, title, detail], index) => {
@@ -361,10 +361,10 @@ const OverviewScene: React.FC = () => {
                 transform: `translateX(${(1 - p) * 24}px)`,
               }}
             >
-              <div style={{width: 96, height: 62, borderRadius: 7, backgroundColor: index < 3 ? '#21B7A8' : '#253246', color: '#fff', display: 'grid', placeItems: 'center', fontFamily, fontSize: 28, fontWeight: 850}}>{num}</div>
+              <div style={{width: 96, height: 62, borderRadius: 7, backgroundColor: index < 3 ? '#21B7A8' : '#253246', color: '#fff', display: 'grid', placeItems: 'center', fontFamily, fontSize: 31, fontWeight: 880}}>{num}</div>
               <div style={{flex: 1, height: 62, borderRadius: 7, backgroundColor: '#FFFFFF', border: '1px solid #D9E0E2', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 22px'}}>
-                <strong style={{fontFamily, fontSize: 28, color: '#1D2934'}}>{title}</strong>
-                <span style={{fontFamily, fontSize: 20, color: '#66747F'}}>{detail}</span>
+                <strong style={{fontFamily, fontSize: 31, color: index < 3 ? '#147F76' : '#253246'}}>{title}</strong>
+                <span style={{fontFamily, fontSize: 23, fontWeight: 760, color: index < 3 ? '#B56B00' : '#D65342'}}>{detail}</span>
               </div>
             </div>
           );
@@ -374,31 +374,31 @@ const OverviewScene: React.FC = () => {
   );
 };
 
-const QaScene: React.FC = () => {
+export const QaScene: React.FC = () => {
   const frame = useCurrentFrame();
   const progress = interpolate(frame, [36, 104], [0, 1], clamp);
   return (
     <Panel number="1" title="问答" kicker="人提问，AI 给参考答案" tone="blue" tools={[tools.doubao, tools.deepseek, tools.kimi, tools.qianwen]}>
-      <RevealBox delay={32} tone="blue" style={{padding: 22, fontSize: 27, fontWeight: 720}}>
+      <RevealBox delay={32} tone="blue" style={{padding: 22, fontSize: 30, fontWeight: 760}}>
         你：帮我整理一段客户回复
       </RevealBox>
-      <RevealBox delay={52} tone="teal" style={{padding: 22, marginTop: 18, fontSize: 26, lineHeight: 1.55}}>
+      <RevealBox delay={52} tone="teal" style={{padding: 22, marginTop: 18, fontSize: 29, lineHeight: 1.5, fontWeight: 700}}>
         AI：先给你一份可修改的参考答案……
       </RevealBox>
       <div style={{marginTop: 38, height: 8, backgroundColor: '#E3E8EA', overflow: 'hidden'}}>
         <div style={{width: `${progress * 100}%`, height: '100%', backgroundColor: '#F06B55'}} />
       </div>
-      <div style={{marginTop: 14, color: '#D65342', fontFamily, fontSize: 29, fontWeight: 820}}>
+      <div style={{marginTop: 14, color: '#D65342', fontFamily, fontSize: 33, fontWeight: 860}}>
         边界：答案停在聊天框
       </div>
-      <div style={{marginTop: 18, color: '#5D6973', fontFamily, fontSize: 22, lineHeight: 1.55}}>
+      <div style={{marginTop: 18, color: '#465763', fontFamily, fontSize: 25, lineHeight: 1.5, fontWeight: 680}}>
         修改、发送、对象和结果责任，仍由你接住。
       </div>
     </Panel>
   );
 };
 
-const TaskScene: React.FC = () => {
+export const TaskScene: React.FC = () => {
   const nodes = [
     ['资料', '咨询记录、会议纪要'],
     ['要求', '格式、对象、不能错'],
@@ -409,20 +409,20 @@ const TaskScene: React.FC = () => {
       <div style={{display: 'grid', gap: 16}}>
         {nodes.map(([name, detail], index) => (
           <RevealBox key={name} delay={35 + index * 14} tone={index === 2 ? 'green' : 'ink'} style={{padding: '20px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-            <strong style={{fontFamily, fontSize: 29}}>{name}</strong>
-            <span style={{fontFamily, fontSize: 21, color: '#68757F'}}>{detail}</span>
+            <strong style={{fontFamily, fontSize: 32, color: index === 2 ? '#2B8A57' : '#24333F'}}>{name}</strong>
+            <span style={{fontFamily, fontSize: 24, fontWeight: 680, color: '#536571'}}>{detail}</span>
           </RevealBox>
         ))}
       </div>
       <RevealBox delay={90} tone="coral" style={{marginTop: 30, padding: 24, backgroundColor: '#FFF7F4', textAlign: 'center'}}>
-        <div style={{fontFamily, fontSize: 30, fontWeight: 850, color: '#D95A45'}}>人工验收</div>
-        <div style={{fontFamily, fontSize: 21, color: '#6B625E', marginTop: 9}}>名字、数字、结论，确认后才能交出去</div>
+        <div style={{fontFamily, fontSize: 34, fontWeight: 880, color: '#D95A45'}}>人工验收</div>
+        <div style={{fontFamily, fontSize: 24, fontWeight: 680, color: '#5B554F', marginTop: 9}}>名字、数字、结论，确认后才能交出去</div>
       </RevealBox>
     </Panel>
   );
 };
 
-const FlowScene: React.FC = () => {
+export const FlowScene: React.FC = () => {
   const frame = useCurrentFrame();
   const steps = ['表单进入', '内容分类', '写入表格', '提醒负责人', '人工确认'];
   return (
@@ -434,20 +434,20 @@ const FlowScene: React.FC = () => {
           return (
             <React.Fragment key={name}>
               <div style={{height: 70, display: 'flex', alignItems: 'center', gap: 15, opacity: p, transform: `translateX(${(1 - p) * 24}px)`}}>
-                <div style={{width: 42, height: 42, borderRadius: '50%', backgroundColor: human ? '#F06B55' : '#21B7A8', color: '#FFFFFF', display: 'grid', placeItems: 'center', fontFamily, fontSize: 21, fontWeight: 850}}>{index + 1}</div>
-                <div style={{flex: 1, height: 58, borderRadius: 7, backgroundColor: human ? '#FFF1ED' : '#FFFFFF', border: `1px solid ${human ? '#F6B3A6' : '#D8E2E3'}`, display: 'flex', alignItems: 'center', padding: '0 20px', fontFamily, fontSize: 26, fontWeight: 720}}>{name}</div>
+                <div style={{width: 46, height: 46, borderRadius: '50%', backgroundColor: human ? '#F06B55' : '#21B7A8', color: '#FFFFFF', display: 'grid', placeItems: 'center', fontFamily, fontSize: 23, fontWeight: 880}}>{index + 1}</div>
+                <div style={{flex: 1, height: 60, borderRadius: 7, backgroundColor: human ? '#FFF1ED' : '#FFFFFF', border: `1px solid ${human ? '#F6B3A6' : '#D8E2E3'}`, display: 'flex', alignItems: 'center', padding: '0 20px', color: human ? '#C64F3B' : '#20313D', fontFamily, fontSize: 29, fontWeight: 780}}>{name}</div>
               </div>
               {index < steps.length - 1 ? <div style={{height: 14, width: 3, marginLeft: 20, backgroundColor: '#BED0D2'}} /> : null}
             </React.Fragment>
           );
         })}
       </div>
-      <div style={{marginTop: 20, color: '#B04D3B', fontFamily, fontSize: 22, fontWeight: 760}}>对外动作必须能暂停、确认和追责</div>
+      <div style={{marginTop: 20, color: '#B04D3B', fontFamily, fontSize: 25, fontWeight: 800}}>对外动作必须能暂停、确认和追责</div>
     </Panel>
   );
 };
 
-const AssembleScene: React.FC = () => {
+export const AssembleScene: React.FC = () => {
   const frame = useCurrentFrame();
   const nodes = [
     {label: '本地文件', x: 20, y: 26},
@@ -458,11 +458,11 @@ const AssembleScene: React.FC = () => {
   return (
     <Panel number="4" title="组装" kicker="把 AI 接进电脑和小系统" tone="blue" tools={[tools.codex, tools.claude, tools.cursor, tools.harness]}>
       <div style={{position: 'relative', height: 390}}>
-        <div style={{position: 'absolute', left: 225, top: 130, width: 210, height: 100, borderRadius: 8, backgroundColor: '#253246', color: '#FFFFFF', display: 'grid', placeItems: 'center', fontFamily, fontSize: 30, fontWeight: 820}}>工作区</div>
+        <div style={{position: 'absolute', left: 225, top: 130, width: 210, height: 100, borderRadius: 8, backgroundColor: '#253246', color: '#FFFFFF', display: 'grid', placeItems: 'center', fontFamily, fontSize: 34, fontWeight: 860}}>工作区</div>
         {nodes.map((node, index) => {
           const p = enter(frame, FPS, 35 + index * 13);
           return (
-            <div key={node.label} style={{position: 'absolute', left: node.x, top: node.y, width: 190, height: 62, borderRadius: 7, border: '1px solid #BDD2DF', backgroundColor: '#FFFFFF', display: 'grid', placeItems: 'center', fontFamily, fontSize: 23, fontWeight: 720, opacity: p, transform: `scale(${0.92 + p * 0.08})`}}>{node.label}</div>
+            <div key={node.label} style={{position: 'absolute', left: node.x, top: node.y, width: 190, height: 62, borderRadius: 7, border: '1px solid #BDD2DF', backgroundColor: '#FFFFFF', color: '#20313D', display: 'grid', placeItems: 'center', fontFamily, fontSize: 26, fontWeight: 780, opacity: p, transform: `scale(${0.92 + p * 0.08})`}}>{node.label}</div>
           );
         })}
         <svg width="650" height="390" style={{position: 'absolute', left: 0, top: 0, pointerEvents: 'none'}}>
@@ -473,14 +473,14 @@ const AssembleScene: React.FC = () => {
         </svg>
       </div>
       <RevealBox delay={92} tone="coral" style={{padding: 22, backgroundColor: '#FFF6F2'}}>
-        <div style={{fontFamily, fontSize: 26, fontWeight: 820, color: '#D95A45'}}>环境 · 接口 · 权限 · 配置 · 报错</div>
-        <div style={{fontFamily, fontSize: 20, color: '#6A625E', marginTop: 8}}>看它改了什么，也要看结果是否真的跑通</div>
+        <div style={{fontFamily, fontSize: 29, fontWeight: 860, color: '#D95A45'}}>环境 · 接口 · 权限 · 配置 · 报错</div>
+        <div style={{fontFamily, fontSize: 23, fontWeight: 680, color: '#5A554F', marginTop: 8}}>看它改了什么，也要看结果是否真的跑通</div>
       </RevealBox>
     </Panel>
   );
 };
 
-const OpenSourceScene: React.FC = () => {
+export const OpenSourceScene: React.FC = () => {
   const frame = useCurrentFrame();
   const steps = ['拉取代码', '安装依赖', '部署运行', '修改适配', '更新维护', '备份恢复'];
   return (
@@ -490,44 +490,44 @@ const OpenSourceScene: React.FC = () => {
           const p = enter(frame, FPS, 34 + index * 12);
           return (
             <div key={step} style={{height: 88, borderRadius: 7, backgroundColor: index < 3 ? '#F5F7F8' : '#EAF3F0', border: '1px solid #D4DEE0', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 20px', opacity: p, transform: `translateY(${(1 - p) * 16}px)`}}>
-              <span style={{fontFamily, fontSize: 18, color: '#72808A'}}>0{index + 1}</span>
-              <strong style={{fontFamily, fontSize: 27, color: '#26333F', marginTop: 4}}>{step}</strong>
+              <span style={{fontFamily, fontSize: 21, color: '#667783', fontWeight: 720}}>0{index + 1}</span>
+              <strong style={{fontFamily, fontSize: 30, color: '#26333F', marginTop: 4}}>{step}</strong>
             </div>
           );
         })}
       </div>
       <RevealBox delay={105} tone="amber" style={{marginTop: 26, padding: 22, textAlign: 'center', backgroundColor: '#FFF9EC'}}>
-        <strong style={{fontFamily, fontSize: 29, color: '#A56D16'}}>下载成功 ≠ 已经拥有产品</strong>
+        <strong style={{fontFamily, fontSize: 33, color: '#A56D16'}}>下载成功 ≠ 已经拥有产品</strong>
       </RevealBox>
     </Panel>
   );
 };
 
-const SystemScene: React.FC = () => {
+export const SystemScene: React.FC = () => {
   const frame = useCurrentFrame();
   const nodes = ['模型 / API', '流程', '知识库', '版本部署', '权限', '日志', '备份', '人工审核'];
   return (
     <Panel number="6" title="系统经营" kicker="没有第六层神器，只有责任闭环" tone="teal" tools={[tools.dify, tools.n8n]}>
       <div style={{position: 'relative', height: 500}}>
-        <div style={{position: 'absolute', left: 220, top: 165, width: 220, height: 130, borderRadius: 8, backgroundColor: '#253246', color: '#FFFFFF', display: 'grid', placeItems: 'center', textAlign: 'center', fontFamily, fontSize: 31, fontWeight: 850, zIndex: 2}}>真实业务<br /><span style={{fontSize: 20, color: '#AFC1C9'}}>有人使用 · 有人负责</span></div>
+        <div style={{position: 'absolute', left: 220, top: 165, width: 220, height: 130, borderRadius: 8, backgroundColor: '#253246', color: '#FFFFFF', display: 'grid', placeItems: 'center', textAlign: 'center', fontFamily, fontSize: 34, fontWeight: 880, zIndex: 2}}>真实业务<br /><span style={{fontSize: 23, color: '#AFC1C9'}}>有人使用 · 有人负责</span></div>
         {nodes.map((node, index) => {
           const angle = (Math.PI * 2 * index) / nodes.length - Math.PI / 2;
           const x = 282 + Math.cos(angle) * 245;
           const y = 196 + Math.sin(angle) * 165;
           const p = enter(frame, FPS, 35 + index * 8);
           return (
-            <div key={node} style={{position: 'absolute', left: x, top: y, width: 140, height: 54, borderRadius: 7, backgroundColor: index >= 4 ? '#FFF2EE' : '#FFFFFF', border: `1px solid ${index >= 4 ? '#F1B5A9' : '#C9DADB'}`, display: 'grid', placeItems: 'center', textAlign: 'center', fontFamily, fontSize: 19, fontWeight: 720, opacity: p, transform: `translate(-50%, -50%) scale(${0.9 + p * 0.1})`, zIndex: 3}}>{node}</div>
+            <div key={node} style={{position: 'absolute', left: x, top: y, width: 148, height: 58, borderRadius: 7, backgroundColor: index >= 4 ? '#FFF2EE' : '#FFFFFF', border: `1px solid ${index >= 4 ? '#F1B5A9' : '#C9DADB'}`, color: index >= 4 ? '#C64F3B' : '#243440', display: 'grid', placeItems: 'center', textAlign: 'center', fontFamily, fontSize: 22, fontWeight: 780, opacity: p, transform: `translate(-50%, -50%) scale(${0.9 + p * 0.1})`, zIndex: 3}}>{node}</div>
           );
         })}
       </div>
-      <div style={{fontFamily, fontSize: 23, lineHeight: 1.55, color: '#52606B', marginTop: 8}}>
+      <div style={{fontFamily, fontSize: 26, lineHeight: 1.5, fontWeight: 680, color: '#465762', marginTop: 8}}>
         真正难的是：谁维护、谁能看、谁接错、谁恢复。
       </div>
     </Panel>
   );
 };
 
-const ClosingScene: React.FC = () => {
+export const ClosingScene: React.FC = () => {
   const rows = [
     ['整理资料最费时', '先练第 2 层：任务'],
     ['每天重复搬运', '去看第 3 层：流程'],
@@ -538,14 +538,14 @@ const ClosingScene: React.FC = () => {
       <div style={{display: 'grid', gap: 20, marginTop: 30}}>
         {rows.map(([problem, answer], index) => (
           <RevealBox key={problem} delay={24 + index * 20} tone={index === 2 ? 'blue' : 'teal'} style={{padding: 24}}>
-            <div style={{fontFamily, fontSize: 23, color: '#6A7781'}}>{problem}</div>
-            <div style={{fontFamily, fontSize: 31, color: '#1F2D39', fontWeight: 850, marginTop: 8}}>{answer}</div>
+            <div style={{fontFamily, fontSize: 26, color: '#596B77', fontWeight: 680}}>{problem}</div>
+            <div style={{fontFamily, fontSize: 34, color: index === 2 ? '#397CCB' : '#198A7D', fontWeight: 880, marginTop: 8}}>{answer}</div>
           </RevealBox>
         ))}
       </div>
       <RevealBox delay={94} tone="coral" style={{marginTop: 32, padding: 26, backgroundColor: '#FFF3EF'}}>
-        <div style={{fontFamily, fontSize: 31, fontWeight: 850, color: '#D65742'}}>先看 AI 已经替你干到哪儿</div>
-        <div style={{fontFamily, fontSize: 23, color: '#655E5A', marginTop: 10}}>再决定下一棒由谁接住</div>
+        <div style={{fontFamily, fontSize: 35, fontWeight: 880, color: '#D65742'}}>先看 AI 已经替你干到哪儿</div>
+        <div style={{fontFamily, fontSize: 26, fontWeight: 680, color: '#5B5551', marginTop: 10}}>再决定下一棒由谁接住</div>
       </RevealBox>
     </Panel>
   );

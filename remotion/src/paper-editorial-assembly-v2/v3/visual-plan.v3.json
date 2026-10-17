@@ -1,0 +1,139 @@
+{
+  "schemaVersion":"paper-editorial-assembly-candidate-v3",
+  "id":"paper-editorial-assembly-v3-tactile-perspective-candidate",
+  "status":"candidate-blocked-reference-minimum",
+  "productionEligible":false,
+  "supersedes":null,
+  "preservesPriorPrototype":{
+    "path":"/Users/pc/Documents/口播/remotion/src/paper-editorial-assembly-v2/artifacts/paper-editorial-assembly-v2-candidate.mp4",
+    "sha256":"d14a050363d08bee5156eeeeed8ccb42702ebcc60fe8ac84e3b2c94e5f2a7602",
+    "classification":"deterministic-low-fidelity-structure-prototype"
+  },
+  "approval":{
+    "machineQa":"passed-local-technical-only",
+    "machineQaReport":"/Users/pc/Documents/口播/remotion/src/paper-editorial-assembly-v2/v3/qa/technical-summary.v3.json",
+    "normalSpeedFullWatch":"pending",
+    "sfxAudition":"pending",
+    "referenceMinimumAccepted":false
+  },
+  "video":{
+    "width":1920,
+    "height":1080,
+    "fps":30,
+    "durationInFrames":900,
+    "durationSeconds":30,
+    "audioIntent":"five tactile semantic events from traceable local SFX"
+  },
+  "materialSystem":{
+    "name":"multi-layer tactile cardstock",
+    "mechanisms":[
+      "five to eleven stacked thickness layers",
+      "top-edge highlight and darker exposed paper edge",
+      "dynamic contact shadow tied to landing progress",
+      "foreground, midground and background occlusion",
+      "multi-scale paper fiber and halftone texture",
+      "perspective and low-angle paper-sculpture faces"
+    ]
+  },
+  "worlds":[
+    {
+      "id":"world-a-macro-overhead-assembly",
+      "startFrame":0,
+      "endFrameExclusive":305,
+      "cameraGrammar":"macro-overhead",
+      "semanticPurpose":"原始信号落在桌面后，经实体分流轮拆成镜头、证据、关系三条视觉任务，并逐路完成输出复核",
+      "composition":"俯拍工作台；左侧输入卷带、中央厚纸分流轮、右侧三枚错位任务牌，缓慢退镜展示整体因果",
+      "layers":["desk and base sheet","signal ribbon, path and splitter","task plaques, moving beads and completion ring"],
+      "objectGroups":["base sheet","signal ribbon","splitter wheel","three task plaques","routes, beads and completion ring"],
+      "assemblySteps":[
+        "thick base sheet lands on desk",
+        "signal ribbon slides from left",
+        "splitter wheel is pressed into place",
+        "three cardstock routes draw outward",
+        "task plaques land sequentially",
+        "three beads travel to their outputs",
+        "completion ring presses around the mechanism while three output checks complete before handoff"
+      ],
+      "completedStateHoldFrames":65
+    },
+    {
+      "id":"world-b-oblique-evidence-wall",
+      "startFrame":290,
+      "endFrameExclusive":610,
+      "cameraGrammar":"oblique-evidence-wall",
+      "semanticPurpose":"摄影半调剪纸、材料卡、地图与命题先落位，红线随后建立来源关系并形成闭合",
+      "composition":"斜视墙面向左后方退深；半调摄影剪纸居左、待证命题居中、材料卡居右，前景证据条遮挡下沿",
+      "layers":["dark wall and thick evidence board","photo cutout, source notes, map and claim","pins, red threads, foreground strip and verdict stamp"],
+      "objectGroups":["evidence wall","procedural halftone photo cutout","source documents","map and central claim","pins and red threads","foreground strip and verdict stamp"],
+      "assemblySteps":[
+        "evidence wall slides in at an angle",
+        "halftone photo cutout lands",
+        "two source documents are pinned",
+        "map and central proposition arrive",
+        "pins press at relationship endpoints",
+        "red threads draw in three causal passes",
+        "foreground strip and relationship stamp close the board while an audit token traverses the closed evidence chain"
+      ],
+      "completedStateHoldFrames":70
+    },
+    {
+      "id":"world-c-low-angle-miniature-system",
+      "startFrame":595,
+      "endFrameExclusive":900,
+      "cameraGrammar":"low-angle-miniature-system",
+      "semanticPurpose":"两侧输入进入透视道路和处理拱门，数据包穿过机制后使纸雕城市逐栋升起",
+      "composition":"低机位面对纸雕地台；道路从前景收束至拱门，输入盒位于两侧，城市沿地平线产生前后遮挡",
+      "layers":["sky, horizon and folding ground plane","input blocks, road and processing arch","moving parcels, multi-face buildings, foreground silhouette and completion card"],
+      "objectGroups":["folding ground plane","two input blocks","perspective road","processing arch","moving data parcels","paper-sculpture city, completion card and output receipts"],
+      "assemblySteps":[
+        "ground plane folds open",
+        "input blocks rise from the foreground",
+        "perspective road grows toward the horizon",
+        "processing arch rises",
+        "three data parcels traverse the mechanism",
+        "five multi-face buildings rise in sequence",
+        "completion card presses above the finished system and four output receipts arrive in sequence"
+      ],
+      "completedStateHoldFrames":70
+    }
+  ],
+  "transitions":[
+    {
+      "from":"world-a-macro-overhead-assembly",
+      "to":"world-b-oblique-evidence-wall",
+      "mechanism":"red and cream thick paper sheets wipe across the lens while a signal-to-evidence paper label and lower semantic edge remain visible",
+      "startFrame":283,
+      "durationFrames":20
+    },
+    {
+      "from":"world-b-oblique-evidence-wall",
+      "to":"world-c-low-angle-miniature-system",
+      "mechanism":"navy and yellow thick paper sheets wipe backward while an evidence-to-system paper label and lower semantic edge remain visible",
+      "startFrame":588,
+      "durationFrames":20
+    }
+  ],
+  "longHoldRemediation":[
+    "world A uses a large output-audit sweep plus three sequential task checks from 7.4s until the transition",
+    "world B moves a relationship-audit token along the actual red evidence chain from local 8.0s until the transition",
+    "world C delivers four semantic output receipts from local 7.35s through 10.07s instead of holding a static city"
+  ],
+  "sourcePolicy":{
+    "externalGeneration":false,
+    "paidProvider":false,
+    "referenceBrandCopy":false,
+    "referencePhotoCopy":false,
+    "referenceLayoutCopy":false,
+    "realPhotoAsset":false,
+    "localSfxOnly":true,
+    "sfxMap":"/Users/pc/Documents/口播/remotion/src/paper-editorial-assembly-v2/v3/sfx-map.v3.json"
+  },
+  "blockedAgainstReferenceMinimum":[
+    "photographic evidence is a procedural halftone illustration, not a true traceable photograph",
+    "paper fibers, thickness and light remain deterministic CSS simulation rather than captured physical paper",
+    "reference has denser editorial micro-detail and more varied object vocabulary",
+    "no narration is present, so audio-visual semantic timing is demonstrated only with SFX events",
+    "sound effects have not received subjective user audition",
+    "normal-speed full-watch acceptance and side-by-side reference judgement are pending"
+  ]
+}

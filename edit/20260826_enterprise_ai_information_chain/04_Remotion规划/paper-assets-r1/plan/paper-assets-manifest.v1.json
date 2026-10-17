@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "koubo-paper-asset-manifest/v1",
+  "revisionId": "20260826-enterprise-ai-information-chain-paper-assets-r1",
+  "status": "candidate-preview-required",
+  "productionEligible": false,
+  "formalRenderEnabled": false,
+  "purpose": "在口播原片拍摄前，按用户确认稿生成可独立复用的纸艺解释镜头候选。",
+  "authority": {
+    "kind": "user-confirmed-pre-recording-script",
+    "path": "/Users/pc/Documents/口播/notes/2026-08-26-企业AI报价与信息链路-可拍候选-v1.md",
+    "sha256": "c491964b87284c9d815bc98917d2c3e42bd995e0cd48ebc75fa340a1d1e272bb",
+    "note": "仅用于素材语义规划；拍摄后字幕仍以实际口播声音为唯一正文。"
+  },
+  "styleAnchor": {
+    "path": "/Users/pc/Documents/口播-paper-editorial-director-delivery-20260824/work/director-paper-editorial/20260824-wechat-real-input/director-skill-recovery/dynamic-gate-01/render-authored-motion-ab-freeze-scope-sfx-energy-fix/ab-delivery/director-30s-with-sfx.mp4",
+    "sha256": "764f1ad14bf35a4297ff974514666525b39a551dd5b976d4f66db42cc5c2fff6",
+    "scope": "纸张材质、节点装配、运动节奏与本地音效方向；不复用旧镜头内容。"
+  },
+  "render": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "versions": [
+      "with-sfx",
+      "no-sfx"
+    ]
+  },
+  "rules": {
+    "textOwner": "remotion-root-layer",
+    "nodeTextRequired": true,
+    "fullSentenceSubtitle": false,
+    "generatedProvider": "none",
+    "externalUpload": false,
+    "formalVideo": false,
+    "laterEditPolicy": "素材片只作为V8人物主画面的全屏解释插片；实际录音完成后再按实录时间轴选择和裁切。"
+  },
+  "shots": [
+    {
+      "id": "P01",
+      "kind": "complex",
+      "durationSeconds": 8,
+      "title": "报价高低，不等于交付深浅",
+      "sourceLine": "企业 AI 的报价让人看不明白，先要分清买的是一个界面，还是有人把一段活理顺。",
+      "groups": [
+        {"label": "老板疑问", "primitive": "request-tray", "nodes": ["便宜？", "贵？"]},
+        {"label": "只给界面", "primitive": "tool-ticket", "nodes": ["买工具", "自己接活"]},
+        {"label": "资料整理", "primitive": "timeline-strip", "nodes": ["数据来源", "字段口径"]},
+        {"label": "信息接入", "primitive": "cut-paper-track", "nodes": ["流程衔接", "提醒到人"]},
+        {"label": "结果验收", "primitive": "control-rig", "nodes": ["谁确认", "谁负责"]},
+        {"label": "价值判断", "primitive": "convergence-tray", "nodes": ["接住一段活"]}
+      ]
+    },
+    {
+      "id": "P02",
+      "kind": "complex",
+      "durationSeconds": 10,
+      "title": "信息散着，先别急着买工具",
+      "sourceLine": "多家门店、多个周期、销售、消耗、库存和同行信息散在不同地方，真正做事时不知道先看什么。",
+      "groups": [
+        {"label": "门店经营", "primitive": "request-tray", "nodes": ["今天", "上周"]},
+        {"label": "历史对比", "primitive": "timeline-strip", "nodes": ["去年同期", "变化"]},
+        {"label": "经营数据", "primitive": "film-reel", "nodes": ["销售", "消耗"]},
+        {"label": "库存状态", "primitive": "comment-magnifier", "nodes": ["余量", "异常"]},
+        {"label": "同行信号", "primitive": "friend-bubble", "nodes": ["新品", "活动"]},
+        {"label": "优先判断", "primitive": "convergence-tray", "nodes": ["先看什么", "先动什么"]}
+      ]
+    },
+    {
+      "id": "P03",
+      "kind": "mechanical",
+      "durationSeconds": 11,
+      "title": "一段活，是一条完整链",
+      "sourceLine": "看什么、从哪里拿、谁整理、谁判断、做什么动作、结果对不对，要连成一条完整工作链。",
+      "input": {"label": "经营问题", "nodes": ["看什么", "从哪拿", "谁整理"]},
+      "action": {"label": "把流程接起来", "primitive": "control-lever"},
+      "output": {"label": "业务动作", "role": "human-decision-output", "nodes": ["补货", "查损耗", "先不动"]},
+      "support": {"label": "结果回到下一次", "nodes": ["判断对不对", "下次是否沿用"]}
+    },
+    {
+      "id": "P04",
+      "kind": "mechanical",
+      "durationSeconds": 9,
+      "title": "AI整理，人来拍板",
+      "sourceLine": "AI可以收集、分类、对比和标异常，但补不补货、怎么处理、谁执行，仍由人决定和承担。",
+      "input": {"label": "分散信息", "nodes": ["门店数据", "库存", "同行信号"]},
+      "action": {"label": "AI整理提醒", "primitive": "locator-press"},
+      "output": {"label": "人工决定", "role": "human-decision-output", "nodes": ["补货", "处理", "执行"]},
+      "support": {"label": "责任不转移", "nodes": ["缺货", "压货", "活动失误"]}
+    },
+    {
+      "id": "P05",
+      "kind": "complex",
+      "durationSeconds": 10,
+      "title": "信息获取作战平台怎么工作",
+      "sourceLine": "把长期关注的来源放好，每天收回、筛选、留下可用信息，需要做选题和项目时再检索。",
+      "groups": [
+        {"label": "长期信源", "primitive": "request-tray", "nodes": ["行业账号", "真实来源"]},
+        {"label": "每日收回", "primitive": "film-reel", "nodes": ["新内容", "新变化"]},
+        {"label": "先筛一遍", "primitive": "comment-magnifier", "nodes": ["只是热闹", "当前相关"]},
+        {"label": "留下可用", "primitive": "cut-paper-track", "nodes": ["选题", "项目"]},
+        {"label": "需要时找", "primitive": "folded-map", "nodes": ["企业交流", "问题复盘"]},
+        {"label": "持续调用", "primitive": "convergence-tray", "nodes": ["不用从头翻"]}
+      ]
+    },
+    {
+      "id": "P06",
+      "kind": "complex",
+      "durationSeconds": 8,
+      "title": "只盯和自己生意有关的信号",
+      "sourceLine": "餐饮、零售和服务业要看的信号不同，先过滤无关热闹，再留下与自己业务有关的变化。",
+      "groups": [
+        {"label": "行业不同", "primitive": "request-tray", "nodes": ["餐饮", "零售"]},
+        {"label": "餐饮信号", "primitive": "film-reel", "nodes": ["菜单", "客流"]},
+        {"label": "零售信号", "primitive": "timeline-strip", "nodes": ["品类", "库存"]},
+        {"label": "服务信号", "primitive": "friend-bubble", "nodes": ["咨询", "交付"]},
+        {"label": "过滤无关", "primitive": "comment-magnifier", "nodes": ["噪音", "热闹"]},
+        {"label": "保留相关", "primitive": "convergence-tray", "nodes": ["业务信号"]}
+      ]
+    },
+    {
+      "id": "P07",
+      "kind": "mechanical",
+      "durationSeconds": 12,
+      "title": "热门菜，只是一个信号",
+      "sourceLine": "外面一个菜火了，不等于明天就照着上，要回到客群、成本、供应、稳定性和小范围验证。",
+      "input": {"label": "外部热门", "nodes": ["新品", "活动", "热度"]},
+      "action": {"label": "小范围验证", "primitive": "control-lever"},
+      "output": {"label": "验证条件", "role": "human-decision-output", "nodes": ["客人吃不吃", "成本扛不扛", "供应跟不跟"]},
+      "support": {"label": "再看数据和反馈", "nodes": ["出品稳定", "真实反馈"]}
+    },
+    {
+      "id": "P08",
+      "kind": "complex",
+      "durationSeconds": 9,
+      "title": "报价差异，在交付深度",
+      "sourceLine": "有的交付只是工具，有的还要处理资料整理、信息衔接、人工确认和结果验收。",
+      "groups": [
+        {"label": "工具交付", "primitive": "request-tray", "nodes": ["一个界面", "基础配置"]},
+        {"label": "资料整理", "primitive": "timeline-strip", "nodes": ["来源", "口径"]},
+        {"label": "信息接入", "primitive": "cut-paper-track", "nodes": ["流转", "提醒"]},
+        {"label": "人工确认", "primitive": "control-rig", "nodes": ["权限", "复核"]},
+        {"label": "结果验收", "primitive": "comment-magnifier", "nodes": ["使用", "复盘"]},
+        {"label": "报价差异", "primitive": "convergence-tray", "nodes": ["交付深度"]}
+      ]
+    },
+    {
+      "id": "P09",
+      "kind": "mechanical",
+      "durationSeconds": 8,
+      "title": "先跑通一个点",
+      "sourceLine": "先找出企业每天重复又容易乱的一处信息，把它理明白、跑一跑，再决定是否继续。",
+      "input": {"label": "重复又容易乱", "nodes": ["每天发生", "总会遗漏"]},
+      "action": {"label": "先理明白", "primitive": "locator-press"},
+      "output": {"label": "小范围跑", "role": "evidence-output", "nodes": ["试一下", "看结果"]},
+      "support": {"label": "再决定后面", "nodes": ["继续", "暂停"]}
+    },
+    {
+      "id": "P10",
+      "kind": "complex",
+      "durationSeconds": 9,
+      "title": "辅助整理，不替你决定",
+      "sourceLine": "轻量工具包先把行业信源、每日筛选、行动记录和结果复盘理出来，但不替老板做决定。",
+      "groups": [
+        {"label": "行业信源表", "primitive": "request-tray", "nodes": ["看什么", "从哪看"]},
+        {"label": "每日筛选卡", "primitive": "comment-magnifier", "nodes": ["保留", "丢弃"]},
+        {"label": "信号记录", "primitive": "timeline-strip", "nodes": ["为什么相关", "准备怎么试"]},
+        {"label": "行动验证", "primitive": "control-rig", "nodes": ["谁执行", "何时复盘"]},
+        {"label": "结果复盘", "primitive": "cut-paper-track", "nodes": ["有效", "无效"]},
+        {"label": "人工判断", "primitive": "convergence-tray", "nodes": ["AI不拍板"]}
+      ]
+    }
+  ]
+}

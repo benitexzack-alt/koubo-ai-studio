@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "director-v2-e2e-wechat-visual-semantic-contract/v1",
+  "status": "candidate-blocked",
+  "durationSeconds": 45,
+  "shots": [
+    {
+      "id": "S01-query-origin",
+      "outputRangeSeconds": [0, 2.48],
+      "spokenLine": "那么再往下，我问它：",
+      "visualEvent": "全手机完整contain，同时用一个局部放大窗标出提问起点",
+      "cognitiveIncrement": "观众知道后续画面来自真实提问而非演示伪UI",
+      "prohibitions": ["不裁掉原界面边缘", "不用旧189秒代理"]
+    },
+    {
+      "id": "S02-condition-tags",
+      "outputRangeSeconds": [2.48, 10.64],
+      "spokenLine": "我现在在兰州中心附近，四个人，不吃辣，想吃清淡一点，最好就是减肥期也能吃。",
+      "visualEvent": "按话音先后抽出兰州中心、4人、不辣清淡、减肥期四枚纸签；318→319跨镜保留同一组纸签几何、颜色、文本和纸材组件，再进入需求托盘",
+      "cognitiveIncrement": "把一句自然语言需求拆为可见条件",
+      "prohibitions": ["不提前出现四路搜索行动"]
+    },
+    {
+      "id": "S03-empty-workbench",
+      "outputRangeSeconds": [10.64, 15.99],
+      "spokenLine": "以前碰到这种问题，我们四个人可能就要开始分工了。",
+      "visualEvent": "承接上镜四枚同色同文本条件纸签，需求托盘打开并分成四个空轨位和四个人位，不写行动名",
+      "cognitiveIncrement": "先建立分工结构，不抢跑旁白",
+      "prohibitions": ["不在15.99秒前显示刷视频/评论/地图/朋友"]
+    },
+    {
+      "id": "S04-four-actions",
+      "outputRangeSeconds": [15.99, 22.23],
+      "spokenLine": "一个刷短视频，一个翻评论，一个打开地图，还有一个问朋友。",
+      "visualEvent": "15.99/17.50/19.00/21.00秒依次装入胶片、评论纸条+放大镜、折叠地图+针、朋友气泡；22.23秒前实体不汇入；666→667跨镜保留同一组几何、颜色、材质和物件组件",
+      "cognitiveIncrement": "展示旧流程的四路并行成本",
+      "prohibitions": ["不写成看饭评论", "不提前显示后续结论"]
+    },
+    {
+      "id": "S05-answer-readable",
+      "outputRangeSeconds": [22.23, 25.64],
+      "spokenLine": "这次它先给到了几个方向，",
+      "visualEvent": "22.23秒起沿用上镜胶片、评论纸+放大镜、折叠地图+针、朋友气泡的真实形状与颜色汇入，再显示104–107.4秒回答/推荐卡全手机+可读放大窗",
+      "cognitiveIncrement": "看到回答确实给出方向",
+      "prohibitions": ["不把隐私页当回答", "不压成快速扫过"]
+    },
+    {
+      "id": "S06-map-match-cut",
+      "outputRangeSeconds": [25.64, 29.36],
+      "spokenLine": "然后直接把位置落到了地图上。",
+      "visualEvent": "沿同一枚定位针match-cut到真实126–129.72秒地图门店落点",
+      "cognitiveIncrement": "回答中的位置与独立地图页建立视觉连接",
+      "prohibitions": ["避开131秒权限弹窗"]
+    },
+    {
+      "id": "S07-store-entry-jump",
+      "outputRangeSeconds": [29.36, 31.84],
+      "spokenLine": "点进一家店，后面接着",
+      "visualEvent": "真实129.8–131秒门店卡进入动作；全局919帧断带首次出现并与翻页音效同帧，然后用省略号明示跳过132–142秒；940帧只做完整画面人工检查，不作为自动OCR证明",
+      "cognitiveIncrement": "保留入口动作又不把加载/隐私/弹层伪装成连续实时流程",
+      "prohibitions": ["不显示132–142秒为回答或菜单证据"]
+    },
+    {
+      "id": "S08-menu-readable",
+      "outputRangeSeconds": [31.84, 36.64],
+      "spokenLine": "就是门店的小程序、菜单和点餐页面。",
+      "visualEvent": "真实142–146.5秒菜单全手机+选规格入口局部放大",
+      "cognitiveIncrement": "只证明当时画面的菜单/选规格入口可见",
+      "prohibitions": ["不声称下单成功", "标注录屏当时画面非现时推荐"]
+    },
+    {
+      "id": "S09-human-and-question",
+      "outputRangeSeconds": [36.64, 45],
+      "spokenLine": "老板们，到这儿看明白了没有？这里最值得我们研究的，不是它推荐了哪家店，",
+      "visualEvent": "36.64–39.71秒回本人真实口播；39.71–42.84秒仅中性显示‘这里最值得我们研究的……’与正面店名卡；全局帧1285仍禁止否定句、翻面和翻页音效，全局帧1286才首次允许‘不是它推荐了哪家店’、开始翻面为问号并触发对应音效",
+      "cognitiveIncrement": "把注意力从具体店名移开，但不提前给出下一句正向结论",
+      "prohibitions": ["不出现路径必须能验证", "不出现走通成功或自动下单", "第三方状态提示不得放在截图卡内部或落入字幕带"]
+    }
+  ]
+}

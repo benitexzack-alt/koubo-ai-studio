@@ -276,7 +276,7 @@ export function assertDirectorProductionBinding({
     ? assertScopedDirectExport({projectRoot, job, command})
     : null;
   // 本期原生 v2 交接；正式入口另行验证当前预览确认。
-  if (['employee-ai-efficiency-scoped-preview', 'employee-ai-efficiency-scoped-formal', 'employee-ai-efficiency-repair-preview-r2', 'ai-training-methods-scoped-formal-r1', 'industry-ai-no-anxiety-scoped-formal-r1', 'lanzhou-ai-salon-scoped-formal-r2', 'lanzhou-ai-salon-scoped-formal-r3', 'ten-ai-businesses-scoped-render-r1', 'ten-ai-businesses-scoped-render-r2', 'enterprise-ai-organization-scoped-render-v1', 'director-motion-minute-preview-20261014'].includes(scoped?.route)) {
+  if (['employee-ai-efficiency-scoped-preview', 'employee-ai-efficiency-scoped-formal', 'employee-ai-efficiency-repair-preview-r2', 'employee-ai-efficiency-scoped-formal-r2', 'ai-training-methods-scoped-formal-r1', 'industry-ai-no-anxiety-scoped-formal-r1', 'lanzhou-ai-salon-scoped-formal-r2', 'lanzhou-ai-salon-scoped-formal-r3', 'ten-ai-businesses-scoped-render-r1', 'ten-ai-businesses-scoped-render-r2', 'enterprise-ai-organization-scoped-render-v1', 'director-motion-minute-preview-20261014'].includes(scoped?.route)) {
     return scoped.directorBinding;
   }
   const effectiveDate = normalizeDate(profile.effectiveFrom);

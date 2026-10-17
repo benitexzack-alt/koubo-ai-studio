@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "director-v2-e2e-wechat-media-contract/v1",
+  "status": "candidate-blocked",
+  "productionEligible": false,
+  "maxScreenPlaybackRate": 1.25,
+  "candidateOnlyRender": {
+    "gate": "candidate-only-0a992254-8e8a58c4-v2",
+    "mode": "candidate-only",
+    "entry": "src/director-v2-e2e-wechat/entry.tsx",
+    "composition": "DirectorV2E2EWechat-Candidate02-WithSfx",
+    "comparisonComposition": "DirectorV2E2EWechat-Candidate02-NoSfx",
+    "stillComposition": "DirectorV2E2EWechat-Candidate02-NoSfx",
+    "outputDirectory": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/render-candidate-02",
+    "output": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/render-candidate-02/director-v2-e2e-wechat-candidate-02-with-sfx.mp4",
+    "comparisonOutput": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/render-candidate-02/director-v2-e2e-wechat-candidate-02-no-sfx.mp4",
+    "stillDirectory": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/stills-candidate-02",
+    "stillFrames": [30, 318, 319, 666, 667, 674, 690, 810, 940, 1020, 1140, 1285, 1286, 1340],
+    "stillAcceptancePolicy": {
+      "requiredBeforeVideoRender": true,
+      "receiptSchema": "director-v2-e2e-wechat-still-acceptance-receipt/v1",
+      "receiptPath": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/still-acceptance-receipt.v1.json",
+      "trustModel": "independent-system-ed25519-external-message-anchor",
+      "outputProofWindowOcr": [
+        {"frame": 30, "clipId": "query", "crop": "1000x600+100+180", "resize": "2000x1200", "mustContainAtLeast": 2, "anchors": ["四人", "不辣", "减肥"]},
+        {"frame": 690, "clipId": "answerRecommendations", "mustContainAtLeast": 1, "anchors": ["地图问答"]},
+        {"frame": 810, "clipId": "mapApp", "mustContainAtLeast": 2, "anchors": ["牧之初心", "原切牛排"]},
+        {"frame": 1020, "clipId": "storeMenu", "mustContainAtLeast": 2, "anchors": ["牧之初心", "牛排", "129"]}
+      ],
+      "manualOnlyStillChecks": [
+        {
+          "frame": 940,
+          "reason": "跳切断带覆盖默认局部放大窗，本帧只做完整画面人工检查，不作为自动OCR证明",
+          "requiredCheck": "frame-940-jump-strip-readable-and-does-not-occlude-ocr-evidence"
+        }
+      ],
+      "closingEvidenceLayout": {
+        "imageCard": {
+          "left": 115,
+          "top": 270,
+          "width": 790,
+          "height": 535,
+          "paddingX": 27,
+          "paddingY": 27,
+          "outerBorderWidth": 2,
+          "screenContentHeight": 426,
+          "screenBorderWidth": 13,
+          "overflow": "hidden"
+        },
+        "thirdPartyStatusStrip": {
+          "left": 115,
+          "top": 826,
+          "width": 1590,
+          "height": 74,
+          "paddingX": 24,
+          "paddingY": 8,
+          "outerBorderWidth": 2,
+          "fontSize": 24,
+          "lineHeight": 1.35,
+          "overflow": "visible"
+        },
+        "minimumGapFromImageCard": 16,
+        "subtitleSafeTop": 922
+      },
+      "continuityPairs": [
+        {"fromFrame": 318, "toFrame": 319, "claim": "S02四枚条件纸签与S03开始帧共用同一组几何、颜色、文本和纸材组件"},
+        {"fromFrame": 666, "toFrame": 667, "claim": "S04四件实体物件与S05开始帧共用同一组几何、颜色、材质和组件"},
+        {"fromFrame": 1285, "toFrame": 1286, "claim": "1285帧仍为正面店名卡且不出现否定句；1286帧首次允许否定句并开始翻为问号"}
+      ],
+      "manualReviewRequiredChecks": [
+        "privacy-loading-not-shown-as-answer",
+        "internal-qa-text-absent",
+        "subtitle-does-not-occlude-evidence",
+        "third-party-status-disclaimer-readable",
+        "third-party-status-strip-outside-card-and-readable",
+        "frame-940-jump-strip-readable-and-does-not-occlude-ocr-evidence",
+        "boundary-geometry-reviewed",
+        "frame-30-output-ocr-reviewed"
+      ]
+    },
+    "formal": false,
+    "productionEligible": false,
+    "externalNetworkAllowed": false,
+    "loopbackAllowed": true,
+    "paidGenerationAllowed": false
+  },
+  "publicDir": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/media",
+  "proxyReceipt": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/proxy-receipt.json",
+  "screenMedia": {
+    "staticFileName": "screen-full-0a992254-30fps.mp4",
+    "relativePath": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/media/screen-full-0a992254-30fps.mp4",
+    "sha256": "8e8a58c4e1b267350d623cf078b2ac3f6df22217d968e3080e4f08c86ec18e6b",
+    "sourceOriginalSha256": "0a992254195c91eefebec1f0a8d1f91263890ec2910169470ec377a02640937e",
+    "fit": "contain",
+    "crop": "none"
+  },
+  "spokenMedia": {
+    "staticFileName": "spoken-main-a098a9e9-30fps.mp4",
+    "relativePath": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/media/spoken-main-a098a9e9-30fps.mp4",
+    "sha256": "44ae76a81791f0fbd606e0a16d62606d101fb9e5d7be7dd8c6f24078ec687ca6",
+    "authoritativeOriginalPath": "source/20260823_wechat_geo_aao/copy_72D5690E-11F6-48D7-8B1B-67C9E1A0FD5F.MOV",
+    "authoritativeOriginalSha256": "a098a9e92bed474b56cecc2ca70cb1ba0b0d755a58d3318a2411965eff654ec4",
+    "sourceRangeSeconds": [23.32, 68.32]
+  },
+  "sfxMedia": [
+    {
+      "id": "keyword-tick",
+      "staticFileName": "sfx-keyword-tick-1ed414d9.wav",
+      "relativePath": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/media/sfx-keyword-tick-1ed414d9.wav",
+      "sha256": "1ed414d9a26793d3bab087f6226f83a4e0566fac05a14552aebc43d0ac7cdff5",
+      "license": "CC0",
+      "licenseManifest": "assets/sfx/koubo-sfx-v8/manifest.json"
+    },
+    {
+      "id": "card-reveal",
+      "staticFileName": "sfx-card-reveal-ee2cd1a4.wav",
+      "relativePath": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/media/sfx-card-reveal-ee2cd1a4.wav",
+      "sha256": "ee2cd1a4d78d60a4d81391d0ea3a1873f02fc907d61667b8897df9f56f4ff896",
+      "license": "CC0",
+      "licenseManifest": "assets/sfx/koubo-sfx-v8/manifest.json"
+    },
+    {
+      "id": "node-connect",
+      "staticFileName": "sfx-node-connect-9432d376.wav",
+      "relativePath": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/media/sfx-node-connect-9432d376.wav",
+      "sha256": "9432d37654181c4e4627c3c466271895d28f7dde650c3c9cd307eb77fb283fdc",
+      "license": "CC0",
+      "licenseManifest": "assets/sfx/koubo-sfx-v8/manifest.json"
+    },
+    {
+      "id": "page-turn",
+      "staticFileName": "sfx-page-turn-712036de.wav",
+      "relativePath": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/media/sfx-page-turn-712036de.wav",
+      "sha256": "712036deb5343f319090be4e4b28362b6d4ff028fb0ff2758fd1a4384c31ec20",
+      "license": "CC0",
+      "licenseManifest": "assets/sfx/koubo-sfx-v8/manifest.json"
+    },
+    {
+      "id": "ui-click",
+      "staticFileName": "sfx-ui-click-733c87b7.wav",
+      "relativePath": "work/director-v2-e2e/20260823-wechat-geo-aao-candidate-01/preview/media/sfx-ui-click-733c87b7.wav",
+      "sha256": "733c87b7774298859a80db60e09fd658a5feb8f170dd95656819722d13ac9d65",
+      "license": "CC0",
+      "licenseManifest": "assets/sfx/koubo-sfx-v8/manifest.json"
+    }
+  ],
+  "sfxCues": [
+    {"id": "condition-lanzhou", "atSeconds": 3.4, "staticFileName": "sfx-keyword-tick-1ed414d9.wav", "volume": 0.24},
+    {"id": "condition-people", "atSeconds": 4.93, "staticFileName": "sfx-keyword-tick-1ed414d9.wav", "volume": 0.22},
+    {"id": "condition-light", "atSeconds": 6.33, "staticFileName": "sfx-keyword-tick-1ed414d9.wav", "volume": 0.22},
+    {"id": "condition-diet", "atSeconds": 8.17, "staticFileName": "sfx-keyword-tick-1ed414d9.wav", "volume": 0.24},
+    {"id": "action-video", "atSeconds": 15.99, "staticFileName": "sfx-card-reveal-ee2cd1a4.wav", "volume": 0.2},
+    {"id": "action-comments", "atSeconds": 17.5, "staticFileName": "sfx-page-turn-712036de.wav", "volume": 0.18},
+    {"id": "action-map", "atSeconds": 19, "staticFileName": "sfx-page-turn-712036de.wav", "volume": 0.18},
+    {"id": "action-friend", "atSeconds": 21, "staticFileName": "sfx-card-reveal-ee2cd1a4.wav", "volume": 0.18},
+    {"id": "answer-converge", "atSeconds": 22.23, "staticFileName": "sfx-node-connect-9432d376.wav", "volume": 0.2},
+    {"id": "map-match", "atSeconds": 25.64, "staticFileName": "sfx-node-connect-9432d376.wav", "volume": 0.18},
+    {"id": "store-entry", "atSeconds": 29.36, "staticFileName": "sfx-ui-click-733c87b7.wav", "volume": 0.16},
+    {"id": "store-entry-jump", "atFrame": 919, "staticFileName": "sfx-page-turn-712036de.wav", "volume": 0.18},
+    {"id": "menu-enter", "atSeconds": 31.84, "staticFileName": "sfx-page-turn-712036de.wav", "volume": 0.18},
+    {"id": "question-flip", "atFrame": 1286, "staticFileName": "sfx-page-turn-712036de.wav", "volume": 0.18}
+  ],
+  "captionAuthority": {
+    "cleanedTranscriptPath": "edit/20260823_wechat_geo_aao/transcripts/WECHAT_GEO_AAO_20260823_talk01.cleaned.v1.json",
+    "cleanedTranscriptSha256": "4a53bd535fe90fd1f720e5f7533ad8fc558150bb31c92fd38f60c79c0c2ab5db",
+    "spokenSourcePolicyPath": "edit/20260823_wechat_geo_aao/transcripts/WECHAT_GEO_AAO_20260823_talk01.spoken-source-policy.v1.json",
+    "spokenSourcePolicySha256": "9fc35f96156db41008c9483efd3ad96d4486f9a410f6cf801a6403176eb2af7a",
+    "audioConfirmedCorrections": [
+      {
+        "rawAsr": "减肥切",
+        "caption": "减肥期"
+      },
+      {
+        "rawAsr": "一个饭，评论",
+        "caption": "一个翻评论"
+      }
+    ],
+    "bindingPolicy": "Each cue is relative to spokenMedia.sourceRangeSeconds[0], covers the complete 45-second candidate window without gaps or overlap, and concatenates to the same canonical-cleaned spoken substring without changing wording, order, or information.",
+    "cues": [
+      {"id": "cleaned-page-001", "start": 0, "end": 2.48, "text": "那么再往下，我问它："},
+      {"id": "cleaned-page-002", "start": 2.48, "end": 5.52, "text": "我现在在兰州中心附近，四个人，"},
+      {"id": "cleaned-page-003", "start": 5.52, "end": 8.09, "text": "不吃辣，想吃清淡一点，"},
+      {"id": "cleaned-page-004", "start": 8.09, "end": 10.64, "text": "最好就是减肥期也能吃。"},
+      {"id": "cleaned-page-005", "start": 10.64, "end": 13.31, "text": "以前碰到这种问题，我们"},
+      {"id": "cleaned-page-006", "start": 13.31, "end": 15.99, "text": "四个人可能就要开始分工了。"},
+      {"id": "cleaned-page-007", "start": 15.99, "end": 18.7, "text": "一个刷短视频，一个翻评论，"},
+      {"id": "cleaned-page-008", "start": 18.7, "end": 22.23, "text": "一个打开地图，还有一个问朋友。"},
+      {"id": "cleaned-page-009", "start": 22.23, "end": 25.64, "text": "这次它先给到了几个方向，"},
+      {"id": "cleaned-page-010", "start": 25.64, "end": 29.36, "text": "然后直接把位置落到了地图上。"},
+      {"id": "cleaned-page-011", "start": 29.36, "end": 31.84, "text": "点进一家店，后面接着"},
+      {"id": "cleaned-page-012", "start": 31.84, "end": 36.64, "text": "就是门店的小程序、菜单和点餐页面。"},
+      {"id": "cleaned-page-013", "start": 36.64, "end": 39.71, "text": "老板们，到这儿看明白了没有？"},
+      {"id": "cleaned-page-014", "start": 39.71, "end": 42.84, "text": "这里最值得我们研究的，"},
+      {"id": "cleaned-page-015-partial", "start": 42.84, "end": 45, "text": "不是它推荐了哪家店，"}
+    ]
+  },
+  "screenClipRuntimeOrder": ["query", "answerRecommendations", "mapApp", "storeEntryJump", "storeMenu"],
+  "screenClips": {
+    "query": {
+      "sourceIn": 86,
+      "sourceOut": 98,
+      "representativeTime": 94,
+      "semanticClaim": "真实餐饮条件提问已发出，小微正在查询地图",
+      "outputInFrame": 0,
+      "outputOutFrame": 319,
+      "ocr": {
+        "crop": "850x520+18+220",
+        "resize": "2550x1560",
+        "psm": 6,
+        "mustContainAtLeast": 4,
+        "anchors": ["今晚", "四人", "不辣", "减肥", "推荐"]
+      }
+    },
+    "answerRecommendations": {
+      "sourceIn": 104,
+      "sourceOut": 107.4,
+      "representativeTime": 106,
+      "semanticClaim": "回答卡给出餐饮方向，并同屏展示地图门店推荐",
+      "outputInFrame": 667,
+      "outputOutFrame": 769,
+      "ocr": {
+        "crop": "888x1200+0+120",
+        "resize": "1776x2400",
+        "psm": 6,
+        "mustContainAtLeast": 1,
+        "anchors": ["地图问答"]
+      }
+    },
+    "mapApp": {
+      "sourceIn": 126,
+      "sourceOut": 129.72,
+      "representativeTime": 128,
+      "semanticClaim": "跳切到独立地图 App，真实门店落点和店铺入口可见",
+      "outputInFrame": 769,
+      "outputOutFrame": 881,
+      "ocr": {
+        "crop": "888x1200+0+120",
+        "resize": "1776x2400",
+        "psm": 6,
+        "mustContainAtLeast": 2,
+        "anchors": ["牧之初心", "原切牛排"]
+      }
+    },
+    "storeEntryJump": {
+      "sourceIn": 129.8,
+      "sourceOut": 131,
+      "representativeTime": 130.5,
+      "semanticClaim": "地图门店卡进入小程序前的真实动作；随后明示跳过132–140秒加载/隐私和140–142秒弹层",
+      "outputInFrame": 881,
+      "outputOutFrame": 955,
+      "ocr": {
+        "crop": "888x1200+0+120",
+        "resize": "1776x2400",
+        "psm": 6,
+        "mustContainAtLeast": 1,
+        "anchors": ["牧之初心"]
+      }
+    },
+    "storeMenu": {
+      "sourceIn": 142,
+      "sourceOut": 146.5,
+      "representativeTime": 144,
+      "semanticClaim": "明确跳过132–140秒加载/隐私和140–142秒弹层后，门店小程序的菜单真实可见",
+      "outputInFrame": 955,
+      "outputOutFrame": 1099,
+      "ocr": {
+        "crop": "888x1200+0+120",
+        "resize": "1776x2400",
+        "psm": 6,
+        "mustContainAtLeast": 2,
+        "anchors": ["牧之初心", "牛排", "129"]
+      }
+    }
+  },
+  "excludedScreenRange": {
+    "sourceIn": 132,
+    "sourceOut": 140,
+    "representativeTime": 134,
+    "semanticClaim": "小程序加载、134秒服务协议与隐私政策、人数选择与服务加载；不能冒充回答、地图或菜单",
+    "renderAllowed": false,
+    "ocrMustContain": ["服务协议与隐私政策"]
+  },
+  "unusedTransitionRange": {
+    "sourceIn": 140,
+    "sourceOut": 142,
+    "semanticClaim": "促销弹层与菜单完成态之间的过渡，不用于菜单可读证据",
+    "renderAllowed": false
+  },
+  "talkingHeadClip": {
+    "spokenSourceIn": 59.96,
+    "spokenSourceOut": 63.03,
+    "outputInFrame": 1099,
+    "outputOutFrame": 1191,
+    "semanticClaim": "36.64‑39.71秒回到本人真实口播画面，只承载‘老板们，到这儿看明白了没有’"
+  },
+  "semanticFrameGates": {
+    "questionFlipFirstAllowedFrame": 1286,
+    "questionFlipLastForbiddenFrame": 1285,
+    "storeEntryJumpFrame": 919
+  },
+  "retiredInputs": {
+    "oldStaticPath": "media/wechat-geo-aao-20260823/screen-30fps.mp4",
+    "oldSha256": "c62481e12b095462748d216c71b45cf8d81fe495a25a52a28a9fe763d948ea6c",
+    "old86To150MappingAllowed": false,
+    "automaticTimeConversionAllowed": false
+  }
+}

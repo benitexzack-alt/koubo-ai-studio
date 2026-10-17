@@ -1,0 +1,4 @@
+(version 1)
+(allow default)
+(deny network-outbound (require-not (remote ip "localhost:*")))
+(deny network-inbound (require-all (remote ip) (require-not (remote ip "localhost:*"))))

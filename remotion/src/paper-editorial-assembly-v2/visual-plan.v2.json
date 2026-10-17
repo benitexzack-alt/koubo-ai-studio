@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "paper-editorial-assembly-candidate-v2",
+  "id": "paper-editorial-assembly-v2-deterministic-candidate",
+  "status": "candidate",
+  "productionEligible": false,
+  "approval": {
+    "machineQa": "passed-local-2026-08-24",
+    "normalSpeedFullWatch": "pending",
+    "styleAcceptedByUser": false
+  },
+  "sourcePolicy": {
+    "externalGeneration": false,
+    "paidProvider": false,
+    "externalAssets": false,
+    "realPerson": false,
+    "brandMarks": false,
+    "fakeInterface": false,
+    "generatedModelText": false,
+    "deterministicRemotionOnly": true
+  },
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationInFrames": 810,
+    "durationSeconds": 27,
+    "audioIntent": "silent-visual-style-candidate"
+  },
+  "styleSystem": {
+    "name": "纸媒叙事装配 v2",
+    "material": [
+      "warm paper fibers",
+      "clean torn edges",
+      "halftone fields",
+      "cream keylines",
+      "layered paper shadows"
+    ],
+    "sharedColorAnchors": [
+      "cream",
+      "ink navy",
+      "brick red",
+      "mustard"
+    ],
+    "compositionRules": [
+      "asymmetric editorial framing",
+      "foreground midground background",
+      "three to six object groups per semantic world",
+      "completed state hold after causal assembly"
+    ],
+    "prohibitedCarryover": [
+      "G01-G04",
+      "西北算格",
+      "reference video brands",
+      "reference video photographs",
+      "reference video exact layouts",
+      "reference video shot order"
+    ]
+  },
+  "worlds": [
+    {
+      "id": "world-a-signal-to-visual-tasks",
+      "startFrame": 0,
+      "endFrameExclusive": 270,
+      "semanticPurpose": "把一句原始信号拆成镜头、证据、关系三项视觉任务",
+      "composition": "左侧信号源，中央拆分枢纽，右侧纵向三任务卡；斜向分支形成视觉动势",
+      "layers": [
+        "back paper field and torn color banner",
+        "signal source and branching routes",
+        "task stacks, moving nodes and completion label"
+      ],
+      "objectGroups": [
+        "signal source cutout",
+        "waveform ribbon",
+        "splitter hub",
+        "three-task card stack",
+        "branching threads and moving nodes"
+      ],
+      "assemblySteps": [
+        "stage sheet and color anchor arrive",
+        "signal source assembles",
+        "waveform ribbon draws toward splitter",
+        "splitter presses into place",
+        "three branches unroll",
+        "three task cards arrive sequentially",
+        "signal nodes travel, three task checks press, and completion label locks"
+      ],
+      "completedStateHoldFrames": 45
+    },
+    {
+      "id": "world-b-evidence-relationship-board",
+      "startFrame": 255,
+      "endFrameExclusive": 540,
+      "semanticPurpose": "把分散材料连成可追溯证据关系，再允许结论出现",
+      "composition": "中央待证命题，四角材料簇，底层地图与时间轴，红线跨层连接",
+      "layers": [
+        "dark table and torn evidence board",
+        "documents, abstract photographs and map",
+        "pins, red threads, timeline and closure stamp"
+      ],
+      "objectGroups": [
+        "evidence board",
+        "left document cluster",
+        "right document cluster",
+        "central proposition card",
+        "map and timeline",
+        "pins, red threads and closure stamp"
+      ],
+      "assemblySteps": [
+        "evidence board lands",
+        "four source cards arrive",
+        "central proposition card locks",
+        "map layer slides beneath sources",
+        "pins press and red threads draw",
+        "timeline grows from left to right",
+        "relationship closure stamp lands"
+      ],
+      "completedStateHoldFrames": 66
+    },
+    {
+      "id": "world-c-data-path-to-miniature-system",
+      "startFrame": 525,
+      "endFrameExclusive": 810,
+      "semanticPurpose": "把输入数据经过机制处理，长成具有输出的微缩系统",
+      "composition": "左侧三类输入，中央处理齿轮，右侧城市输出；主路横向贯穿，支路产生纵深",
+      "layers": [
+        "blueprint paper field and grid",
+        "input tokens, routes and processing gate",
+        "moving packets, miniature buildings, trees and completion label"
+      ],
+      "objectGroups": [
+        "blueprint field",
+        "three input tokens",
+        "main road and branch routes",
+        "processing gate",
+        "moving packets",
+        "miniature city output"
+      ],
+      "assemblySteps": [
+        "blueprint sheet opens",
+        "three inputs arrive",
+        "main road grows",
+        "branch routes connect to processor",
+        "processing gate assembles and turns",
+        "data packets traverse the mechanism",
+        "city rises and completion label locks"
+      ],
+      "completedStateHoldFrames": 64
+    }
+  ],
+  "humanReviewQuestions": [
+    "三个世界是否一眼可区分，同时仍属于同一纸媒系统",
+    "每个动作是否推动语义因果，而非纯装饰",
+    "各段完成态是否具有足够信息密度与视觉层次",
+    "撕边、颗粒、阴影是否像纸材而非普通扁平 UI",
+    "正常速度完整观看时是否有晕动、空窗或阅读压力"
+  ]
+}

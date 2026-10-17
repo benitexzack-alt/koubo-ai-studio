@@ -1,0 +1,930 @@
+{
+  "schemaVersion": 4,
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required"
+  },
+  "videoId": "WECHAT_GEO_AAO_20260823_talk01",
+  "videoTitle": "AI把客人介绍过来以后，别让他走丢",
+  "sourceVideo": "source/20260823_wechat_geo_aao/copy_72D5690E-11F6-48D7-8B1B-67C9E1A0FD5F.MOV",
+  "transcript": "edit/20260823_wechat_geo_aao/transcripts/WECHAT_GEO_AAO_20260823_talk01_whisper-small-split-v1.json",
+  "bilingualCaptions": "remotion/public/data/WECHAT_GEO_AAO_20260823.bilingual.v1.json",
+  "baselineId": "koubo-formal-16x9-v1",
+  "styleReferenceIds": [
+    "v8-user-confirmed-default-20260812",
+    "v8-speaker-first-continuous-semantics",
+    "real-screen-first-no-fake-ui",
+    "koubo-paper-construct-v1"
+  ],
+  "target": {
+    "aspect": "16:9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "platform": "douyin"
+  },
+  "previewCoverage": [
+    "hook",
+    "complex-overlay",
+    "full-screen-asset",
+    "media-fullscreen",
+    "cta",
+    "speaker-overlay",
+    "real-screen-recording",
+    "source-evidence",
+    "hero-emphasis",
+    "fact-boundary",
+    "progressive-process",
+    "digital-camera-movement",
+    "sfx-ab"
+  ],
+  "previewCoverageNotes": {
+    "full-screen-asset": "仅表示本条已对真实录屏资产做预览覆盖；成片不使用全屏Remotion讲解卡。",
+    "media-fullscreen": "该合同标签仅用于确认真实录屏素材已被审看；实际画面保持讲述者与录屏并置，不使用全屏Remotion卡。",
+    "source-evidence": "两段微信界面均来自用户提供的真实录屏，并保留当时测试边界说明。",
+    "hero-emphasis": "首屏只用透明重点文字强化真人口播，不遮挡人物面部和手势。",
+    "cta": "CTA在全片导演计划中是必检项；本轮45秒开头预览不提前放入CTA。"
+  },
+  "editPolicy": "完整保留本人口播，不删减、不重排；字幕以真人原片实际说法为唯一正文；微信录屏仅按当时界面演示，不外推为全量上线、自动下单或自动支付。",
+  "assetCoverage": {
+    "usableOriginalVideoItems": 2,
+    "assignedOriginalVideoItems": 2,
+    "generatedVideoItems": 4,
+    "assignedGeneratedVideoItems": 4,
+    "referenceImageItems": 0,
+    "referenceImageItemsAssignedToVideo": 0,
+    "allRequiredClaimsCovered": true,
+    "note": "真人原片是主画面；微信录屏是真实界面证据；四个纸构镜头只解释抽象机制，不替代界面、事实或来源证据。"
+  },
+  "layers": [
+    {
+      "id": "wechat-001-hook",
+      "start": 0,
+      "end": 6.31,
+      "spokenLine": "有没有人发现，微信下面那个按住说话的框，颜色跟以前不一样了？",
+      "purpose": "semantic-emphasis",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "wechat-001-hook",
+      "zone": "left-safe",
+      "title": "“按住说话”变了",
+      "detail": "不只是颜色变化，后面还多了一个AI入口。",
+      "items": ["颜色变了", "AI处理"],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "wechat-001-hook-event",
+        "enterAt": 0,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "chapter",
+        "cueId": "wechat-001-hook-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "wechat-hook",
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 2.8
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "hook",
+        "coverageRatio": 0.34,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-002-image-ai-screen",
+      "start": 6.31,
+      "end": 20.04,
+      "spokenLine": "聊天里的图片，点一下，下面会出来一个AI处理。",
+      "purpose": "source-evidence",
+      "kind": "annotated-real-screen",
+      "titleOwner": true,
+      "overlapGroup": "wechat-002-image-ai-screen",
+      "zone": "left-safe",
+      "title": "图片里多了“AI处理”",
+      "detail": "美化、提取信息、修改图片，都在这个真实录屏里。",
+      "items": ["美化", "提取信息", "修改图片"],
+      "asset": {
+        "sourceType": "user-recording",
+        "source": "remotion/public/media/wechat-geo-aao-20260823/screen-30fps.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "user",
+        "requestId": "screen-image-ai",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "wechat-002-image-ai-screen-event",
+        "enterAt": 6.31,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "wechat-002-image-ai-screen-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-screen",
+        "src": "media/wechat-geo-aao-20260823/screen-30fps.mp4",
+        "trimBeforeSeconds": 0,
+        "playbackRate": 1.25,
+        "screenMode": "image-ai",
+        "disclosure": "真实微信录屏 · 当时界面测试"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 12.4
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "real-interface-evidence",
+        "coverageRatio": 0.39,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-003-model-boundary",
+      "start": 20.04,
+      "end": 23.32,
+      "spokenLine": "这里面用到的可能是腾讯的混元生图模型。",
+      "purpose": "fact-boundary",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "wechat-003-model-boundary",
+      "zone": "left-safe",
+      "title": "可能是混元生图",
+      "detail": "官方能力支持图像风格化；该入口实际调用的具体版本未公开。",
+      "items": ["能力已知", "具体版本未知"],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "wechat-003-model-boundary-event",
+        "enterAt": 20.04,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "evidence",
+        "cueId": "wechat-003-model-boundary-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "model-boundary",
+        "tone": "amber"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 21.4
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "fact-boundary",
+        "coverageRatio": 0.35,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-004-query-screen",
+      "start": 23.32,
+      "end": 33.96,
+      "spokenLine": "我现在在兰州中心附近，四个人，不吃辣，想吃清淡一点，最好减肥也能吃。",
+      "purpose": "source-evidence",
+      "kind": "annotated-real-screen",
+      "titleOwner": true,
+      "overlapGroup": "wechat-004-query-screen",
+      "zone": "left-safe",
+      "title": "一句话，把这次需求说清楚",
+      "detail": "地点、人数、忌口和饮食目标被放进同一次提问。",
+      "items": ["兰州中心", "4个人", "不吃辣", "清淡 / 减肥"],
+      "asset": {
+        "sourceType": "user-recording",
+        "source": "remotion/public/media/wechat-geo-aao-20260823/screen-30fps.mp4"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "user",
+        "requestId": "screen-natural-language-query",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "wechat-004-query-screen-event",
+        "enterAt": 23.32,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "wechat-004-query-screen-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "real-screen",
+        "src": "media/wechat-geo-aao-20260823/screen-30fps.mp4",
+        "trimBeforeSeconds": 23,
+        "playbackRate": 1.25,
+        "screenMode": "restaurant-query",
+        "disclosure": "真实微信录屏 · 结果仅代表当时测试"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 29.2
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "natural-language-query",
+        "coverageRatio": 0.39,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-005-four-way-search",
+      "start": 33.96,
+      "end": 36.63,
+      "spokenLine": "以前碰到这种问题，四个人可能就要开始分工了。",
+      "purpose": "process-visualization",
+      "kind": "transparent-semantic-information",
+      "titleOwner": true,
+      "overlapGroup": "wechat-005-four-way-search",
+      "zone": "left-safe",
+      "title": "以前，四个人分头找",
+      "detail": "一个问题，拆成四条手动搜寻路径。",
+      "items": ["刷短视频", "翻评论", "开地图", "问朋友"],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "wechat-005-four-way-search-event",
+        "enterAt": 33.96,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "wechat-005-four-way-search-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "four-way-search",
+        "tone": "cyan"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 35.8
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "branch-map",
+        "coverageRatio": 0.38,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-006-paper-four-way-search",
+      "start": 36.63,
+      "end": 41.8,
+      "spokenLine": "四个人可能就要开始分工了，一个刷短视频，一个翻评论，一个打开地图，还有一个问朋友。",
+      "purpose": "concept-illustration",
+      "kind": "generated-concept-illustration",
+      "titleOwner": true,
+      "overlapGroup": "wechat-006-paper-four-way-search",
+      "zone": "left-safe",
+      "title": "一个问题，分成四条路",
+      "detail": "纸构推演只解释旧搜寻路径，不作为真实界面或业务证据。",
+      "items": ["刷短视频", "翻评论", "开地图", "问朋友"],
+      "asset": {
+        "sourceType": "user-generated-video",
+        "source": "remotion/public/media/wechat-geo-aao-20260823/user-generated-paper/G01.mp4"
+      },
+      "assetDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "requestId": "G01",
+        "evidenceUse": "illustration-only",
+        "styleReferenceId": "koubo-paper-construct-v1",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "wechat-006-paper-four-way-search-event",
+        "enterAt": 36.63,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "wechat-006-paper-four-way-search-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "paper-construct-video",
+        "src": "media/wechat-geo-aao-20260823/user-generated-paper/G01.mp4",
+        "previewFallback": false,
+        "disclosure": "AI生成·概念演绎",
+        "badge": "非真实业务证据"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 41.2
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "paper-branch",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-007-talk-short-path",
+      "start": 82.56,
+      "end": 105.58,
+      "spokenLine": "以前客户在各个平台一点一点找；以后可以把位置、人数、口味、忌口和预算一次说给AI。",
+      "purpose": "continuous-semantic-explanation",
+      "kind": "transparent-semantic-information",
+      "titleOwner": false,
+      "overlapGroup": "wechat-007-talk-short-path-card",
+      "zone": "left-safe",
+      "title": "一句话，说清四个条件",
+      "detail": "条件先说完整，AI才有机会把范围收窄，再把人带到地图和店铺页面。",
+      "items": ["我在哪儿", "一共几个人", "口味与忌口", "大概预算"],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "wechat-007-talk-short-path-card-event",
+        "enterAt": 82.56,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "wechat-007-talk-short-path-card-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "talk-info-card",
+        "disclosure": "V8 · 需求收窄"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 90.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "condition-stack",
+        "coverageRatio": 0.35,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-007-paper-short-path",
+      "start": 94.68,
+      "end": 99.85,
+      "spokenLine": "预算大概多少，一口气说给AI，AI把范围收一收。",
+      "purpose": "concept-illustration",
+      "kind": "generated-concept-illustration",
+      "titleOwner": true,
+      "overlapGroup": "wechat-007-paper-short-path",
+      "zone": "left-safe",
+      "title": "四个条件，合成一条短路径",
+      "detail": "纸构推演解释多条件被合成一次完整需求，不作为产品能力证据。",
+      "items": ["地点", "人数", "口味", "预算"],
+      "asset": {
+        "sourceType": "user-generated-video",
+        "source": "remotion/public/media/wechat-geo-aao-20260823/user-generated-paper/G02.mp4"
+      },
+      "assetDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "requestId": "G02",
+        "evidenceUse": "illustration-only",
+        "styleReferenceId": "koubo-paper-construct-v1",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "wechat-007-paper-short-path-event",
+        "enterAt": 94.68,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "wechat-007-paper-short-path-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "paper-construct-video",
+        "src": "media/wechat-geo-aao-20260823/user-generated-paper/G02.mp4",
+        "previewFallback": false,
+        "disclosure": "AI生成·概念演绎",
+        "badge": "非真实业务证据"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 97.6
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "paper-short-path",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-008-talk-merchant-alignment",
+      "start": 125.74,
+      "end": 143.02,
+      "spokenLine": "AI回答别人以前，能不能把店铺地址、营业、菜单和服务入口认清楚。",
+      "purpose": "continuous-semantic-explanation",
+      "kind": "transparent-semantic-information",
+      "titleOwner": false,
+      "overlapGroup": "wechat-008-talk-merchant-alignment-card",
+      "zone": "left-safe",
+      "title": "先让AI认清这家店",
+      "detail": "同一家店在不同入口留下的信息，必须保持真实、准确和一致。",
+      "items": ["地址与定位", "营业时间", "主打与菜单", "订位和小程序"],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "wechat-008-talk-merchant-alignment-card-event",
+        "enterAt": 125.74,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "wechat-008-talk-merchant-alignment-card-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "talk-info-card",
+        "disclosure": "V8 · GEO信息一致性"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 128.7
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "merchant-fact-stack",
+        "coverageRatio": 0.35,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-008-paper-merchant-alignment",
+      "start": 132.92,
+      "end": 138.09,
+      "spokenLine": "几点营业、主打什么、适合谁、菜单还准不准，能不能订位，小程序能不能打开。",
+      "purpose": "concept-illustration",
+      "kind": "generated-concept-illustration",
+      "titleOwner": true,
+      "overlapGroup": "wechat-008-paper-merchant-alignment",
+      "zone": "left-safe",
+      "title": "多处信息，对齐同一家店",
+      "detail": "纸构推演只解释信息一致性，不代表平台已经完成自动核验。",
+      "items": ["地址", "营业", "菜单", "入口"],
+      "asset": {
+        "sourceType": "user-generated-video",
+        "source": "remotion/public/media/wechat-geo-aao-20260823/user-generated-paper/G03.mp4"
+      },
+      "assetDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "requestId": "G03",
+        "evidenceUse": "illustration-only",
+        "styleReferenceId": "koubo-paper-construct-v1",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "wechat-008-paper-merchant-alignment-event",
+        "enterAt": 132.92,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "wechat-008-paper-merchant-alignment-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "paper-construct-video",
+        "src": "media/wechat-geo-aao-20260823/user-generated-paper/G03.mp4",
+        "previewFallback": false,
+        "disclosure": "AI生成·概念演绎",
+        "badge": "非真实业务证据"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 136.4
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "paper-alignment",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-009-talk-service-handoff",
+      "start": 191,
+      "end": 212.08,
+      "spokenLine": "AAO要解决的是AI把人带过来以后，地图、菜单、订位、点餐和人工能不能接住。",
+      "purpose": "continuous-semantic-explanation",
+      "kind": "transparent-semantic-information",
+      "titleOwner": false,
+      "overlapGroup": "wechat-009-talk-service-handoff-card",
+      "zone": "left-safe",
+      "title": "介绍之后，接住下一步",
+      "detail": "AI负责把选择收窄，商家必须准备真实可用的下一步服务入口。",
+      "items": ["进地图找店", "看真实菜单", "订位或点餐", "停车与人工"],
+      "asset": {
+        "sourceType": "remotion-component"
+      },
+      "assetDecision": {
+        "class": "remotion-information",
+        "producer": "codex-remotion",
+        "requestId": null,
+        "fallback": "speaker-overlay"
+      },
+      "visualEvent": {
+        "id": "wechat-009-talk-service-handoff-card-event",
+        "enterAt": 191,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "node",
+        "cueId": "wechat-009-talk-service-handoff-card-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "talk-info-card",
+        "disclosure": "V8 · AAO行动入口"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 193.5
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "service-handoff-stack",
+        "coverageRatio": 0.35,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-009-paper-service-handoff",
+      "start": 199.88,
+      "end": 205.05,
+      "spokenLine": "你有没有地方能让他继续办事？想找店，能进地图。",
+      "purpose": "concept-illustration",
+      "kind": "generated-concept-illustration",
+      "titleOwner": true,
+      "overlapGroup": "wechat-009-paper-service-handoff",
+      "zone": "left-safe",
+      "title": "介绍之后，接住下一步",
+      "detail": "纸构推演解释明确任务被送入服务入口，不代表自动下单或自动支付。",
+      "items": ["地图", "菜单", "预约", "人工"],
+      "asset": {
+        "sourceType": "user-generated-video",
+        "source": "remotion/public/media/wechat-geo-aao-20260823/user-generated-paper/G04.mp4"
+      },
+      "assetDecision": {
+        "class": "generated-video",
+        "producer": "user",
+        "requestId": "G04",
+        "evidenceUse": "illustration-only",
+        "styleReferenceId": "koubo-paper-construct-v1",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "wechat-009-paper-service-handoff-event",
+        "enterAt": 199.88,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "media",
+        "cueId": "wechat-009-paper-service-handoff-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "paper-construct-video",
+        "src": "media/wechat-geo-aao-20260823/user-generated-paper/G04.mp4",
+        "previewFallback": false,
+        "disclosure": "AI生成·概念演绎",
+        "badge": "非真实业务证据"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 202.8
+      },
+      "background": "opaque",
+      "presentation": {
+        "renderMode": "media-fullscreen",
+        "semanticFamily": "paper-service-handoff",
+        "coverageRatio": 1,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-010-pdf-showcase",
+      "start": 317.88,
+      "end": 327.88,
+      "spokenLine": "我把GEO和AAO的整套讲解课件已经整理好了。做餐饮、零售、本地服务的朋友，评论区留GEO，我免费发给大家。",
+      "purpose": "source-evidence",
+      "kind": "annotated-real-document",
+      "titleOwner": true,
+      "overlapGroup": "wechat-010-pdf-showcase",
+      "zone": "left-safe",
+      "title": "GEO × AAO 讲解课件",
+      "detail": "展示真实课件封面、核心关系页与建设路径页，承接结尾分享动作。",
+      "items": ["正式课件", "核心关系", "建设路径"],
+      "asset": {
+        "sourceType": "user-document",
+        "source": "source/20260823_wechat_geo_aao/supporting-materials/甘肃元石科技有限公司_GEO与AAO专业讲解_正式版_V1.0_2026-08-22.pdf"
+      },
+      "assetDecision": {
+        "class": "real-evidence",
+        "producer": "user",
+        "requestId": "geo-aao-deck",
+        "evidenceUse": "document-showcase",
+        "fallback": "speaker-plus-information"
+      },
+      "visualEvent": {
+        "id": "wechat-010-pdf-showcase-event",
+        "enterAt": 317.88,
+        "primary": true
+      },
+      "sound": {
+        "policy": "required",
+        "role": "evidence",
+        "cueId": "wechat-010-pdf-showcase-sfx",
+        "offsetFrames": 0,
+        "maxSyncErrorFrames": 2
+      },
+      "params": {
+        "component": "pdf-showcase",
+        "pages": [
+          "media/WECHAT_GEO_AAO_20260823_talk01/pdf-showcase/deck-cover.png",
+          "media/WECHAT_GEO_AAO_20260823_talk01/pdf-showcase/deck-core.png",
+          "media/WECHAT_GEO_AAO_20260823_talk01/pdf-showcase/deck-path.png"
+        ],
+        "disclosure": "真实课件页面 · 结尾分享展示"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "continuousReviewIntervalSeconds": 0.5,
+        "reviewAt": 322.88
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "document-showcase",
+        "coverageRatio": 0.47,
+        "progressiveReveal": true
+      }
+    },
+    {
+      "id": "wechat-review-image-ai-enter",
+      "start": 7.8,
+      "end": 8.1,
+      "spokenLine": "聊天里的图片，点一下，下面会出来一个AI处理。",
+      "purpose": "risk-frame-review",
+      "kind": "camera-only",
+      "titleOwner": false,
+      "overlapGroup": "wechat-002-image-ai-screen",
+      "zone": "left-safe",
+      "asset": {
+        "sourceType": "speaker"
+      },
+      "assetDecision": {
+        "class": "speaker",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-only"
+      },
+      "visualEvent": {
+        "id": "wechat-review-image-ai-enter-event",
+        "enterAt": 7.8,
+        "primary": false
+      },
+      "sound": {
+        "policy": "none"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 7.95
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "risk-review-enter",
+        "coverageRatio": 0.01,
+        "progressiveReveal": false
+      }
+    },
+    {
+      "id": "wechat-review-image-ai-exit",
+      "start": 17.2,
+      "end": 17.5,
+      "spokenLine": "美化、提取信息、修改图片，都在里面。",
+      "purpose": "risk-frame-review",
+      "kind": "camera-only",
+      "titleOwner": false,
+      "overlapGroup": "wechat-002-image-ai-screen",
+      "zone": "left-safe",
+      "asset": {
+        "sourceType": "speaker"
+      },
+      "assetDecision": {
+        "class": "speaker",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-only"
+      },
+      "visualEvent": {
+        "id": "wechat-review-image-ai-exit-event",
+        "enterAt": 17.2,
+        "primary": false
+      },
+      "sound": {
+        "policy": "none"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 17.35
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "risk-review-exit",
+        "coverageRatio": 0.01,
+        "progressiveReveal": false
+      }
+    },
+    {
+      "id": "wechat-review-query-detail",
+      "start": 30.8,
+      "end": 31.1,
+      "spokenLine": "四个人，不吃辣，想吃清淡一点，最好减肥也能吃。",
+      "purpose": "risk-frame-review",
+      "kind": "camera-only",
+      "titleOwner": false,
+      "overlapGroup": "wechat-004-query-screen",
+      "zone": "left-safe",
+      "asset": {
+        "sourceType": "speaker"
+      },
+      "assetDecision": {
+        "class": "speaker",
+        "producer": "existing",
+        "requestId": null,
+        "fallback": "speaker-only"
+      },
+      "visualEvent": {
+        "id": "wechat-review-query-detail-event",
+        "enterAt": 30.8,
+        "primary": false
+      },
+      "sound": {
+        "policy": "none"
+      },
+      "checks": {
+        "avoidFace": true,
+        "avoidHands": true,
+        "avoidSubtitle": true,
+        "needsFrameReview": true,
+        "reviewAt": 30.95
+      },
+      "background": "talk",
+      "presentation": {
+        "renderMode": "speaker-overlay",
+        "semanticFamily": "risk-review-query",
+        "coverageRatio": 0.01,
+        "progressiveReveal": false
+      }
+    }
+  ]
+}

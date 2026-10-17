@@ -12,10 +12,12 @@ import {
 } from '../edit/20260917_ai_efficiency_sharing/00_工程控制/preview-adapter.v1.mjs';
 import {assertEmployeeAIEfficiencyFormal, isEmployeeAIEfficiencyFormal}
   from '../edit/20260917_ai_efficiency_sharing/00_工程控制/formal-adapter.v1.mjs';
-import {assertIndustryAiNoAnxietyFormalR1, isIndustryAiNoAnxietyFormalR1}
-  from '../edit/20260926_industry_ai_no_anxiety/00_控制/formal-adapter.r1.mjs';
+import {assertEmployeeAIEfficiencyFormalR2, isEmployeeAIEfficiencyFormalR2}
+  from '../edit/20260917_ai_efficiency_sharing/00_工程控制/formal-adapter.r2.mjs';
 import {assertAITrainingFormalR1, isAITrainingFormalR1}
   from '../edit/20260919_ai_training_methods/00_控制/formal-adapter.r1.mjs';
+import {assertIndustryAiNoAnxietyFormalR1, isIndustryAiNoAnxietyFormalR1}
+  from '../edit/20260926_industry_ai_no_anxiety/00_控制/formal-adapter.r1.mjs';
 import {assertLanzhouAISalonFormalR2, isLanzhouAISalonFormalR2}
   from '../edit/20260920_lanzhou_ai_salon/00_工程控制/formal-r2/formal-adapter.r2.mjs';
 import {assertLanzhouAISalonFormalR3, isLanzhouAISalonFormalR3}
@@ -39,8 +41,9 @@ import {
 
 export const SCOPED_DIRECT_EXPORT_MANIFEST_SHA256 = 'ba74d65e7bd59446718171aa38de6b0799092dbedb2180abd6c385587f28653e';
 export const EMPLOYEE_AI_FORMAL_PIN = '2e15109ab9c0757b7f09c0044933c360cf8d7086bf52890cb491cf8d360df6f3';
-export const INDUSTRY_AI_NO_ANXIETY_FORMAL_R1_PIN = '2e7deb85a1d258249c26379caf92a4aeb5373fdcab20d38f8053698ffc1210e9';
+export const EMPLOYEE_AI_FORMAL_R2_PIN = 'c0ef45cc10da00f1f595d2e72a345cc83bef24ca09b436a2808f1b035cedd5f2';
 export const AI_TRAINING_FORMAL_R1_PIN = 'a02ea83b97c4fc1f2a2897015314ae46fac08bca2d213b76e60679f2d0079260';
+export const INDUSTRY_AI_NO_ANXIETY_FORMAL_R1_PIN = '2e7deb85a1d258249c26379caf92a4aeb5373fdcab20d38f8053698ffc1210e9';
 export const LANZHOU_AI_SALON_FORMAL_R2_PIN = '401419bce646d2d4c34457348881ef023b319bfea599487d27290577aa42f99c';
 export const LANZHOU_AI_SALON_FORMAL_R3_PIN = 'f704d131264d132cb8abf6f9fab8624981cc0fc3f8d80a71750d0575b01eafac';
 export const EMPLOYEE_AI_REPAIR_PINS = Object.freeze({
@@ -277,7 +280,7 @@ function validateSchema(value, schema, at = '$') {
   }
 }
 
-export const isScopedDirectExportJob = (job) => isEmployeeAIEfficiencyPreview(job) || isLanzhouAISalonFormalR3(job) || job?.productionGate?.route === SCOPED_DIRECT_EXPORT.route ||
+export const isScopedDirectExportJob = (job) => isEmployeeAIEfficiencyPreview(job) || isEmployeeAIEfficiencyFormalR2(job) || isLanzhouAISalonFormalR3(job) || job?.productionGate?.route === SCOPED_DIRECT_EXPORT.route ||
   job?.productionGate?.state === SCOPED_DIRECT_EXPORT.state || job?.productionGate?.scopedDirectExport != null;
 
 function inside(root, value, mustExist = true) {
@@ -340,14 +343,14 @@ function userText(line) {
     return event.payload.content.filter((item) => ['input_text', 'text'].includes(item.type)).map((item) => item.text).join('\n');
   }
   fail('SDE_USER_MESSAGE', '授权证据必须定位到真实 user 消息，不接受助手总结或工具输出');
-  if (isEnterpriseAIOrganizationRenderV1(job)) {
-    return assertEnterpriseAIOrganizationRenderV1({projectRoot, job, jobPath, command, pin: ENTERPRISE_AI_ORGANIZATION_V1_PIN});
-  }
 }
 
 export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = null, command = 'formal'}) {
   if (isDirectorMotionMinutePreview(job)) {
     return assertDirectorMotionMinutePreview({projectRoot, job, jobPath, command, pin: DIRECTOR_MOTION_MINUTE_PREVIEW_PIN});
+  }
+  if (isEnterpriseAIOrganizationRenderV1(job)) {
+    return assertEnterpriseAIOrganizationRenderV1({projectRoot, job, jobPath, command, pin: ENTERPRISE_AI_ORGANIZATION_V1_PIN});
   }
   if (isTenAIBusinessesRenderR2(job)) {
     return assertTenAIBusinessesRenderR2({projectRoot, job, jobPath, command, pins: TEN_AI_BUSINESSES_R2_PINS});
@@ -366,6 +369,9 @@ export function assertScopedDirectExport({projectRoot = ROOT, job, jobPath = nul
   }
   if (isLanzhouAISalonFormalR2(job)) {
     return assertLanzhouAISalonFormalR2({projectRoot, job, jobPath, command, pin: LANZHOU_AI_SALON_FORMAL_R2_PIN});
+  }
+  if (isEmployeeAIEfficiencyFormalR2(job)) {
+    return assertEmployeeAIEfficiencyFormalR2({projectRoot, job, jobPath, command, pin: EMPLOYEE_AI_FORMAL_R2_PIN});
   }
   if (isEmployeeRepairPreview(job)) {
     return assertEmployeeRepairPreview({projectRoot, job, jobPath, command, pins: EMPLOYEE_AI_REPAIR_PINS});
