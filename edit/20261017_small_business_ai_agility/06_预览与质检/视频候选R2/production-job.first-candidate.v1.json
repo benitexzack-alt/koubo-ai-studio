@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20261017_small_business_ai_agility_v9_candidate",
+  "videoId": "small-business-ai-agility-20261017",
+  "title": "小公司AI组织灵敏性_纸艺视频完整观看候选",
+  "productionState": "input-prepared-awaiting-controlled-preflight",
+  "productionEligible": false,
+  "productionProfile": {
+    "id": "v9-semantic-direction-sfx",
+    "version": "V9"
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required",
+    "userPreviewApproved": false
+  },
+  "knowledgeContext": {
+    "taskId": "small-business-ai-agility-video-candidate-r2-20261017",
+    "contextPath": "small-business-ai-agility-video-candidate-r2-20261017/context.json"
+  },
+  "inputs": {
+    "source": "edit/20261017_small_business_ai_agility/01_素材投放区/01_口播原片/copy_FDA786EB-B266-4B5A-9CDA-757475BAC1C6.MOV",
+    "renderProxy": "edit/20261017_small_business_ai_agility/05_剪辑工程/public/media/host.mp4"
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/small-business-ai-agility-20261017/index.tsx",
+    "publicDir": "edit/20261017_small_business_ai_agility/05_剪辑工程/public",
+    "compositionWithSfx": "SmallBusinessAiAgility20261017-WithSfx",
+    "compositionWithoutSfx": "SmallBusinessAiAgility20261017-NoSfx",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 137.53333333333333
+  },
+  "director": {
+    "required": true,
+    "taskId": "SMALL_BUSINESS_AI_AGILITY_20261017",
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0",
+    "phase": "post-shoot",
+    "paperRequired": true,
+    "fallback": "blocked",
+    "artifacts": {
+      "directorCues": {
+        "path": "edit/20261017_small_business_ai_agility/03_导演规划/director-cues.v2.json",
+        "sha256": "147bc7cb75a23d87c74f0af1a31a5126c1cb9033714a53b9dd8a0ab27dfa3b36"
+      },
+      "runtimePlan": {
+        "path": "edit/20261017_small_business_ai_agility/05_剪辑工程/runtime-plan.v1.json",
+        "sha256": "a7a6a0fd39e93828671ee0326b65ec541787853040de46ee62cc70791c917581"
+      },
+      "spokenTimeline": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/实录正文分页候选.v1.json",
+        "sha256": "33889db3c7db3837e7d4c1a237678634a9e0d631584c82466aba2f78f5065e6e"
+      },
+      "postshootRebind": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/实录分页重绑.v1.json",
+        "sha256": "5d87002738913117dfc1d12c99d9accf35d3f0f9cb570fb3aca4fcd19336a3f8"
+      },
+      "mediaIntake": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/原生素材入库候选.v1.json",
+        "sha256": "8da1600d71de9b924db00388c56411ae7397125142878b5d502a5025074683a0"
+      },
+      "factReview": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/事实待决.v1.json",
+        "sha256": "d1e473de18b6ac7d7822a25fb12d8901ebb30808c129e10d3771bfff616bb0ca"
+      },
+      "userScope": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/用户预览范围.v1.json",
+        "sha256": "854494874e6fd95e4e26e1bda09d1aec4efea937b3c7450d9aa3b204802eb7af"
+      }
+    },
+    "inputFormat": "director-cues-v2-surface-bound"
+  },
+  "productionGate": {
+    "schema": "director-production-entry-binding/v2",
+    "revisionId": "small-business-ai-agility-v9-video-candidate-r2-20261017",
+    "state": "first-candidate-preview-required",
+    "productionEligible": false,
+    "userPreviewApproved": false,
+    "formalEnabled": false,
+    "firstCandidateInput": {
+      "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/first-candidate-input.v1.json",
+      "sha256": "e52c1e36ae089acdc820efee37a18a112821924839cce487e16624748a1ba038"
+    },
+    "firstCandidateAuthorization": null,
+    "freezeReceipt": null,
+    "previewAuthorizationMode": "small-business-ai-agility-current-chat-review/v1",
+    "localChatPreviewAuthorization": {
+      "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/本期内部预览聊天授权_完整.v1.json",
+      "sha256": "c29f2710dea8675af937ff8b7f96eff1f98b4c1458fee9d59bc9df6c12c84ef0"
+    }
+  },
+  "preview": {
+    "output": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/小公司AI_V9视频候选R2_1080p_有音效.mp4",
+    "renderSettings": {
+      "concurrency": 1,
+      "timeoutInMilliseconds": 120000,
+      "scale": 1
+    }
+  },
+  "formal": {
+    "enabled": false
+  },
+  "publishAuthorized": false,
+  "preparationNote": "仅本期用户提供8秒纸艺并要求继续剪辑的聊天授权；完整1080p观看候选，保留原声和实录字幕，不等于全片验收或发布。"
+}

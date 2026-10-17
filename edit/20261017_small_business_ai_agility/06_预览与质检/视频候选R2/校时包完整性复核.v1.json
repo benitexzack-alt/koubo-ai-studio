@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "stream-copy-packet-integrity/v1",
+  "checkedAt": "2026-10-17T19:37:34.725338+08:00",
+  "method": "ffprobe -show_packets -show_data_hash sha256；按各音视频流原有包顺序逐一比较压缩包data_hash。整体摘要为带SHA256前缀的逐包hash按换行拼接后再做SHA256。",
+  "files": {
+    "rendered": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/小公司AI_V9视频候选R2_1080p_有音效.mp4",
+      "fileBytes": 216449506,
+      "streams": {
+        "video": {
+          "streamIndex": 0,
+          "codec": "h264",
+          "packetCount": 4126,
+          "payloadBytes": 210838295,
+          "orderedPacketHashDigestSha256": "a7449fd26e2ca852033e6c07f0961af62fc88458868d5ae4d6b484edd1c94d74"
+        },
+        "audio": {
+          "streamIndex": 1,
+          "codec": "aac",
+          "packetCount": 6449,
+          "payloadBytes": 5458004,
+          "orderedPacketHashDigestSha256": "965d8e5a736d43ac3715b1011380feecef7e3f236f267b3c6665de4d5662c45d"
+        }
+      }
+    },
+    "viewing": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/07_成片/小公司AI落地_V9_1080p_有音效_待审.mp4",
+      "fileBytes": 216449523,
+      "streams": {
+        "video": {
+          "streamIndex": 0,
+          "codec": "h264",
+          "packetCount": 4126,
+          "payloadBytes": 210838295,
+          "orderedPacketHashDigestSha256": "a7449fd26e2ca852033e6c07f0961af62fc88458868d5ae4d6b484edd1c94d74"
+        },
+        "audio": {
+          "streamIndex": 1,
+          "codec": "aac",
+          "packetCount": 6449,
+          "payloadBytes": 5458004,
+          "orderedPacketHashDigestSha256": "965d8e5a736d43ac3715b1011380feecef7e3f236f267b3c6665de4d5662c45d"
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "video": {
+      "codecSame": true,
+      "packetCountSame": true,
+      "payloadBytesSame": true,
+      "orderedPacketHashesExactlyEqual": true,
+      "matchingPrefixPacketCount": 4126,
+      "differentAlignedPacketCount": 0,
+      "differentAlignedPacketIndices0BasedFirst10": [],
+      "packetCountDeltaViewingMinusRendered": 0,
+      "sequenceDigestSame": true
+    },
+    "audio": {
+      "codecSame": true,
+      "packetCountSame": true,
+      "payloadBytesSame": true,
+      "orderedPacketHashesExactlyEqual": true,
+      "matchingPrefixPacketCount": 6449,
+      "differentAlignedPacketCount": 0,
+      "differentAlignedPacketIndices0BasedFirst10": [],
+      "packetCountDeltaViewingMinusRendered": 0,
+      "sequenceDigestSame": true
+    }
+  },
+  "compressedAudioVideoPacketContentPreserved": true,
+  "scope": "仅证明压缩音视频包序列内容是否保持；本轮不比较容器字节、时间戳或播放同步，也不代表人审或正式接纳。",
+  "sourcesModified": false,
+  "renderPerformed": false,
+  "humanFullWatchConfirmed": false,
+  "unresolvedSubtitle": {
+    "timeSeconds": [
+      33.266,
+      35.5
+    ],
+    "pageId": "S021",
+    "originalText": "等真真的方案讨论落地的时候",
+    "localAsrCandidate": "等真正的方案讨论落地的时候",
+    "status": "待直接原声听审确认，本轮未改字幕。"
+  }
+}

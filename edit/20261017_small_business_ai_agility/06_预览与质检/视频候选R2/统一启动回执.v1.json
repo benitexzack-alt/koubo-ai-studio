@@ -1,0 +1,2574 @@
+{
+  "schema_version": "2.1",
+  "status": "context-ready",
+  "summary": "已生成任务上下文包：项目匹配为 matched，检索到 24 份可追溯材料。",
+  "next_actions": [
+    "主执行者逐份读取 hard_rules、current_project_facts 和适用的关联项目级事实，并回填带哈希与完成时间的阅读凭证。",
+    "严格遵守 execution_scope：只允许在唯一主项目根目录内执行任务级写入；关联项目一律只读观察，项目调用不等于接管项目执行。",
+    "跨项目公开内容在项目四类事实读取回执完成前，不得读取组件级来源，也不得让内容门禁通过。",
+    "对 similar_cases 只复用经过当前项目事实复核的部分。",
+    "相似案例、ready-for-draft 和历史候选不得替代用户选题；没有可追踪的用户明确选择，只能停在候选阶段。",
+    "完成真实验证后提交结构化任务结果，禁止直接把模型总结晋升为事实。"
+  ],
+  "task": {
+    "id": "small-business-ai-agility-video-candidate-r2-20261017",
+    "project": "口播",
+    "objective": "20261017小公司AI纸艺视频接入与V9完整观看候选导出",
+    "cwd": "/Users/pc/Documents/口播",
+    "risk": "normal"
+  },
+  "project_match": {
+    "status": "matched",
+    "id": "koubo",
+    "name": "口播视频",
+    "aliases": [
+      "口播",
+      "口播项目",
+      "口播剪辑",
+      "口播自动化"
+    ],
+    "confidence": 100,
+    "matched_root": "/Users/pc/Documents/口播",
+    "roots": [
+      "/Users/pc/Documents/口播"
+    ],
+    "match_reason": "当前工作目录位于已登记项目根目录",
+    "business_tags": [
+      "口播",
+      "短视频",
+      "抖音",
+      "内容创作",
+      "视频包装",
+      "选题"
+    ],
+    "technology_tags": [
+      "Remotion",
+      "React",
+      "TypeScript",
+      "Playwright",
+      "FFmpeg",
+      "图片生成",
+      "视频编辑"
+    ],
+    "public_content_truth": null,
+    "current_context_files": [
+      "AGENTS.md",
+      "project.md",
+      "README.md",
+      "knowledge/00-项目知识索引.md",
+      "knowledge/08-决策与复盘日志.md",
+      "workflow/production-baseline.v1.json",
+      "workflow/upgrade-backlog.json"
+    ],
+    "knowledge_base_context_files": []
+  },
+  "related_projects": [],
+  "execution_scope": {
+    "primary_project_id": "koubo",
+    "primary_project_root": "/Users/pc/Documents/口播",
+    "primary_access_mode": "task-scoped-read-write",
+    "write_allowed_roots": [
+      "/Users/pc/Documents/口播"
+    ],
+    "read_only_roots": [],
+    "related_project_rule": "关联项目只用于读取当前状态、验证结果和交付证据；不得修改其文件、运行其生产链路、替它请求业务输入或宣布其执行结论。",
+    "write_escalation_rule": "确需修改关联项目时，必须把该项目作为新的唯一主项目重新启动任务；关联命中本身永远不授予写权限。"
+  },
+  "hard_rules": [
+    {
+      "path": "index.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "20477e683f11ea9888c6cfb5df2f3e058751bf2d5959c7fa84d0dad68fe131e7",
+      "modified_at": "2026-10-03T16:47:54.691233+00:00",
+      "document_status": "active",
+      "authority_level": "reference",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守",
+      "excerpt": "# 🏠 全局 AI 开发知识库 — 统一知识中枢 > 奕和家具接续更新（2026-10-03）：[[01_项目实战/奕和家具/00_项目总览]]；UP空间历史统一归奕和，项目知识留在Obsidian，原件与工程通过索引关联，Codex统一管理。 > **唯一知识库**：所有 Codex、Claude Code、AI 调用、项目实战、技术积累统一存放于此 > **最后更新**：2026-09-24 --- ## 📂 知识库结构 ``` /Users/pc/Documents/个人知识库/ │ ├── 📄 index.md                                    ← 你在这里 │ ├── 📁 00_规范与配置/                              — 跨项目配置、合规、工具手册 │   ├── 00_合规&服务器备案.md                      — 架构红线/域"
+    },
+    {
+      "path": "00_规范与配置/知识库路由表.json",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "51db3edd929fe52bc72b402d2a806a499c7d9b014770ecf3832ba9e243c1250e",
+      "modified_at": "2026-10-03T16:47:54.692835+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守",
+      "excerpt": "{ \"version\": \"2026-08-10\", \"purpose\": \"所有 Codex、Claude Code、WorkBuddy 和其他 AI 项目启动时的统一知识库路由表。\", \"root\": \"/Users/pc/Documents/个人知识库\", \"startup_protocol\": { \"command\": \"python3 /Users/pc/Documents/个人知识库/04_Claude Code日常操作/scripts/project_bootstrap.py --project <项目名> --task <任务描述> --cwd <当前项目目录> --json\", \"rule\": \"重大任务、跨项目任务、部署、公开发布、现实行动、采购合作、抖音投放、持续半天以上的任务，必须先生成启动包，再进入大规模执行。\", \"outputs\": [ \"强制启动十问\", \"本次必读文档\", \"项目状态与最近复盘\""
+    },
+    {
+      "path": "00_规范与配置/03_-毛选方法论/00-总纲.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "c6d4cda4c5462e4aa2afbe1693a2b445c204cd3ee5c678e729b7b6c698631206",
+      "modified_at": "2026-06-22T15:15:43.391453+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守",
+      "excerpt": "# 实践方法论总纲 > 用真实调查认识世界，用主要矛盾组织行动，用群众反馈修正路线，用独立自主建设能力，用持续实践检验一切结论。 ## 一、共同目标 人与 AI 的共同目标不是制造漂亮文本，也不是机械完成指令，而是： 1. 认识真实世界，解决真实问题。 2. 为真实的人创造长期价值，减少浪费、欺骗和无效劳动。 3. 把一次成功沉淀为可复用的组织能力、知识和工具。 4. 在法律、安全、尊严和基本权利的边界内追求结果。 5. 保持学习与纠错能力，不让旧经验变成新教条。 ## 二、最高方法原则 ### 1. 实事求是 - 不从愿望、权威、流行观点或既有模板出发，要从可核验的事实出发。 - 没有调查，不形成确定性结论；证据不足时明确标注假设与置信度。 - 理论、经验和 AI 输出都是假说，只有经过现实检验才成为当前可用结论。 ### 2. 实践是检验标准 - 把争论转化为可以观测的实验、原型、访谈、数据或端到端测试。 - 先做最小闭环，"
+    },
+    {
+      "path": "00_规范与配置/07_第一性原理全局决策规范.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "79129cf291bdea61a86dcf92540917bc1cfea11e71111bc8d9f123517625aa8e",
+      "modified_at": "2026-09-28T08:23:54.730528+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守",
+      "excerpt": "# 第一性原理全局决策规范 > 适用范围：Claude Code、Codex及所有项目、产品、业务、设计、技术和运营决策 > 建立日期：2026年6月22日 > 核心要求：从可验证事实和不可绕过的约束出发，重新构造最小可行方案，而不是照搬行业惯例。 ## 一、最精华的定义 第一性原理不是“故意与众不同”，也不是“把所有旧经验推翻”。 它的核心是： > 暂时放下行业惯例、现成方案和他人结论，把问题拆解到无法继续拆分的事实、硬约束和基本成本，再从这些基础重新推导解决方案。 判断一个方案是否真正使用了第一性原理，可以问： 1. 我们解决的真实问题是什么？ 2. 哪些是已经验证的事实？ 3. 哪些只是行业惯例、历史包袱或未经验证的假设？ 4. 哪些约束确实不可绕过？ 5. 如果从零开始，最小、最直接的实现是什么？ 6. 用什么真实数据证明它有效？ ## 二、概念来源与马斯克的工程化 ### 亚里士多德的原始概念 “第一原理”源自古希腊哲"
+    },
+    {
+      "path": "00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "c0d738dbb7858b78c92249afb8d7def8adad7ad5340e93b9e10b41a1e624f353",
+      "modified_at": "2026-08-13T03:03:43.217770+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守",
+      "excerpt": "# 公开内容生产大脑硬门禁 > 版本：2026-08-11 > 适用范围：口播、抖音短视频、公众号文章、图文、直播提纲、商业内容及其他准备公开发布的内容。 > 事故依据：[[07_知识库治理/2026-07-18_口播内容大脑事故根因与修复验收]] ## 一、最高目标 内容生产不是把资料改写成一篇流畅文稿，而是让一个明确的人看完后发生一种可观察变化：理解一个以前不懂的机制、修正一个判断、拿走一个工具、完成一个动作，或看见一个有边界的真实结果。 以下内容不得进入成稿： - 只有热点复述，没有观众利益； - 只有概念分类，没有机制解释； - 只有“AI 很重要、要落地、从小事开始”等旧结论，没有新增证据； - 只有作者身份和态度，没有陌生观众也愿意拿走的东西； - 素材只有标题或元数据，却被写成原作者完整观点； - 文案未通过，已经开始做封面、动效、音效或成片。 ## 二、不可跳过的输入 任何公开内容任务开始时，必须先取得并记录以下"
+    },
+    {
+      "path": "00_规范与配置/03_最佳实践/抖音口播内容与DOU+投放边界.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "b4eefd4314ce21a9876487806029eb49e48914ae8147cc851e0d41006aa1109d",
+      "modified_at": "2026-07-14T09:26:14.579888+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守",
+      "excerpt": "# 抖音口播内容与 DOU+ 投放边界 > 版本：2026-07-12 > 用途：每条抖音口播从选题到发布、DOU+、商单、带货和广告的执行闸门 > 完整依据：[[00_规范与配置/08_抖音中国大陆规则全景库_2026-07-12]] > 公开来源索引：[[00_规范与配置/09_抖音公开规则与治理信息索引_2026-07-12]] > 重要边界：本手册是内部保守工作标准，不得对外冒充“抖音官方完整规则” ## 一、30 秒总则 每条内容依次过四道门： ```text 允许公开发布 ↓ 允许推荐、搜索和变现 ↓ 允许 DOU+ 内容加热 ↓ 允许商业广告、带货或交易 ``` 上一步通过，只能说明上一步通过： - 能发，不等于会推荐； - 会推荐，不等于能投 DOU+； - 能投 DOU+，不等于能投巨量广告、千川或本地推； - 星图预检通过，不等于目的投放平台终审通过； - 平台审核通过，不等于免除法律责任。 ## 二、红黄绿"
+    },
+    {
+      "path": "00_规范与配置/08_抖音中国大陆规则全景库_2026-07-12.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "347f1fb279511388ec75fcb3c7a99673408501267d48fa8f7db441cb12b6cc59",
+      "modified_at": "2026-07-11T17:58:54.189036+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守",
+      "excerpt": "# 抖音中国大陆规则全景库 > 版本：2026-07-12 快照版 > 适用：抖音中国大陆主站、创作者内容、直播、电商与生活服务、DOU+、巨量营销相关投放 > 主要用途：口播短视频选题、写稿、拍摄、发布、加热、商业合作前的边界核查 > 证据截止：2026-07-12（Asia/Shanghai） > 性质：研究与创作合规参考，不替代律师意见、平台实时审核结果或账号后台提示 ## 一、先说清楚“全部”的口径 抖音规则不是一本固定手册，而是分散在用户协议、规则中心、安全与信任中心、创作者中心、直播、电商、生活服务、DOU+、巨量营销、巨量千川、巨量本地推等多个动态系统中。部分页面只在登录后、客户端内或特定账号权限下展示，平台也会按行业、地区、主体、商品和投放目标动态校验。 因此，本库对“全部”的可验证定义是： 1. 覆盖截至采集日可在中国大陆公开网页检索、访问或通过官方公开接口读取的规则体系； 2. 覆盖与口播创作最直接相关的发布"
+    },
+    {
+      "path": "00_规范与配置/09_抖音公开规则与治理信息索引_2026-07-12.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "39704cfca6eca51e9305e51aed3c23d2abb539cbc43958a738f52e33293b8b8b",
+      "modified_at": "2026-07-11T17:54:08.678308+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守",
+      "excerpt": "# 抖音公开规则与治理信息索引（旧规则中心 + 安全与信任中心） > 采集时间：2026/07/12 01:29:19（北京时间，UTC+8） > 数据性质：抖音官方公开接口的索引快照。条目同时包含规则、公约、公告、专项行动、治理通报、报告、指南和典型案例，**不能把全部条目视为当前统一适用的强制规则**。判断现行效力时必须打开正文，核对发布/生效/修订日期、适用业务和后续替代规则。 > 去重口径：旧中心保留 JSON 的 104 条；核心入口保留 4 条；新中心 68 个文章展示位按 `article` ID 去重为 66 篇，再用文章详情接口取得官方标题和发布日期。标题去重仅用于盘点，不代表内容重复或规则失效。 ## 一、采集端点与统计 - 旧中心公告 JSON：<https://lf3-beecdn.bytetos.com/obj/ies-fe-bee/bee_prod/biz_1107/bee_prod_1107_bee"
+    },
+    {
+      "path": "00_规范与配置/10_抖音商业投放规则证据库_2026-07-12.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "7a041f94dcfba42376f412eedb1f09f7686494ab9367a69e82278b92cff2d67c",
+      "modified_at": "2026-07-11T17:58:33.345262+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守",
+      "excerpt": "# 抖音商业投放规则证据库 > 范围：DOU+、巨量广告、巨量千川、巨量星图、巨量本地推，以及商业广告标识、直播营销和 AI 生成内容标识。 > 地域：中国大陆。 > 检索与访问日期：2026-07-12。 > 证据口径：只把抖音、字节跳动、巨量引擎、巨量星图官方页面及中国政府现行法规作为已确认依据。第三方培训文章、代理商解读、论坛帖子只用于发现线索，未列为规则依据。 > 重要声明：这是公开网页证据快照，不是法律意见，也不等于登录后的账户、行业、地域、素材和商品在投放当日一定可投。 ## 一、结论先行：必须分清四道门 “抖音里能看到”并不等于“平台会继续推荐”，更不等于“可以付费加热”或“可以作为广告投放”。 | 门槛 | 审什么 | 通过后仅能说明 | 不能反推 | |---|---|---|---| | 1. 可发布 | 社区底线、法律、账号状态、版权肖像等 | 作品当前可以公开展示 | 不代表会获得自然推荐 | | 2. "
+    },
+    {
+      "path": "00_规范与配置/11_抖音直播电商生活服务与开放平台规则证据库_2026-07-12.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "eab74c93aafa356dee188ca10764f161a1e31c3b7ff279766e0190108cbe7d40",
+      "modified_at": "2026-07-11T18:00:57.288310+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守",
+      "excerpt": "# 抖音直播、电商、生活服务与开放平台规则专题调研（中国大陆） > 调研日期：2026-07-12（中国标准时间） > 证据口径：只把抖音/字节跳动官方规则页面、官方规则接口和中国国家机关现行法规范作为“已核验事实”；搜索摘要、培训文章、自媒体解读仅用于找线索，不进入有效规则结论。 > 重要声明：本文件是“截至访问日公开可检索规则集”，不是对抖音全部内部风控标准的保证穷尽。平台规则会动态调整，实际发布/投放前仍须复核原页、商品类目规则和账号后台提示。 ## 一、研究结论：做口播、短视频和直播时最先守住的边界 1. **整场责任，不只看主播嘴里说了什么。** 主播需对画面、声音、字幕、贴纸、背景、连麦用户、评论互动、商品卡和包装中的信息负责；发现连麦方违法违规应立即制止或断开。 2. **商品和服务必须先核资质、再核事实、最后才写口播。** 商品名称、品牌、材质、数量、产地、专利、销量、功效、发货、退换、赠品、价格及使用条件，均应"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/AGENTS.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "b32a9ba8db0b8df9055d04dca92ef35dac26d196a385ad19165a60578b67dbce",
+      "modified_at": "2026-10-14T15:56:44.557051+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断",
+      "excerpt": "# 口播项目 AGENTS.md > 适用范围：本目录下所有口播选题、脚本、素材处理、转写、剪辑、包装、发布复盘。 > 项目根目录：以本 `AGENTS.md` 所在的 Git 仓库根目录为准，不依赖固定用户名或克隆位置。 > 建立日期：2026-07-04 ## 一、任务阶段路由与按需读取 任何 AI 在读取整条生产链或开始执行前，必须先把当前任务归入一个阶段，并固定本阶段的唯一交付。除非用户明确要求端到端连续执行，否则一次只处理一个阶段： 1. `topic-script`：选题、研究、事实核验、文稿和封面文字方案。 2. `director-only`：完整文稿或实录到全文语义四路导演、真实素材执行单、AI/纸艺首帧与视频提示词、拍后 Shotcraft 机会，并建立本期唯一素材投放入口。 3. `firstframe`：把已确认导演表交给首帧自动化，生成、写入中文并验收首帧。 4. `video-generation`：",
+      "score": 130
+    }
+  ],
+  "current_project_facts": [
+    {
+      "path": "/Users/pc/Documents/口播/project.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "40bec5cd8294d0300ad44afe9952f311a44b27ff4c74cee9963934fd6afb0f84",
+      "modified_at": "2026-10-17T10:03:07.269742+00:00",
+      "document_status": "active",
+      "authority_level": "project-current",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断",
+      "excerpt": "# 口播视频项目 > 2026-10-17本期已进入剪辑：用户给出137.533秒原MOV及81条SRT并要求先剪、纸艺稍后到。本期已完成原件副本与解码、4126帧H.264代理、原AAC提取且解码PCM与源一致；字幕原文保留，三对跨词分页合并为78页双语。5组现有V9动效、7段数字运镜、8个逐动作声候选与P01 66.6—74.6秒pending槽位已接入独立组件，类型/数据/字体宽度检查通过；未渲染。157卡扫描两机器候选因阅读和布局问题未采用，不假称Shotcraft已落片。纸艺目前只有首帧图；受控输出仍待视频和本期授权绑定，未借旧飞车例外、未改共享入口。入口：`edit/20261017_small_business_ai_agility/05_剪辑工程/剪辑进度.md`。 > 2026-10-17小公司AI首帧检查：用户明确授权仅P01首帧，已用内置生图生成r1及一次定点修订r2。四词目视准确、纸材与空间成立；r2已消",
+      "score": 130
+    },
+    {
+      "path": "/Users/pc/Documents/口播/README.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "5b3af8435f2276e9b65a8a163bc6799841358cb17e28dd7fa3c424f1efb1955b",
+      "modified_at": "2026-10-14T15:56:44.560140+00:00",
+      "document_status": "current",
+      "authority_level": "project-current",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断",
+      "excerpt": "# koubo-ai-studio · AI 口播工作室 面向真人口播的内容与视频生产工程。把来源研究、账号反馈、脚本审阅、实录字幕、纸艺分镜、Remotion 包装和发布复盘接在同一套可检查的流程里，让每条内容都能追溯到来源、实际录音、素材和验收记录。 项目来自「超哥AI创业记」的真实制作实践，主要服务甘肃本地小微企业、创业者和希望看懂 AI 应用的普通人。仓库提供工作流、Skill、代码、模板和校验器；新账号需要替换个人事实与账号资料。 ## 当前版本：V9 成片制作基准 + V9.1 导演流程 更新日期：2026-10-14。用户已认可一分钟升级效果，采用V9；下一条真实视频继续验证。生产版本与导演版本分别管理。 | 层级 | 当前状态 | 解决的问题 | | --- | --- | --- | | 内容流程 | 来源研究、候选选择、源头精髓、内容门禁、双 Skill 审稿 | 写稿前确认来源、内容增量、事实和本人表达 |",
+      "score": 130
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "6f4cc6620e11c5d50d2cfb4996898b1e27bb4009ba6c91704015f90018ca0e4b",
+      "modified_at": "2026-10-14T15:56:44.559220+00:00",
+      "document_status": "active",
+      "authority_level": "reference",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断",
+      "excerpt": "# 口播项目知识索引 > 用途：本项目的统一知识入口。后续做选题、脚本、剪辑、包装和复盘，都从这里开始。 ## 一、项目核心文件 - `../README.md` 与 `../CHANGELOG.md`：仓库接入说明及版本变化；2026-10-14起成片默认V9，导演V9.1与导演表v2独立管理；下一条真实视频继续验证。 - `../workflow/active-director-profile.v1.json`：V9.1 / 9.1.0 导演下游活动档案，与成片V9生产档案分开判断。 - `../workflow/audits/director-v9-upgrade-20260905.v1.md`：安全区、三套提示词、Shotcraft 与九阶段状态机升级依据；下一条真实片验收仍待完成。 - `../skills/koubo-runninghub-video-batch/SKILL.md`：随仓库保存的 RHTV 批量配置 ",
+      "score": 130
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "efadcb3448dec7f2e45cc610cc4c9948273a1b66f01034404b89bdea5e8327df",
+      "modified_at": "2026-10-17T10:03:07.298083+00:00",
+      "document_status": "active",
+      "authority_level": "reference",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断",
+      "excerpt": "# 决策与复盘日志 ## 2026-10-17｜小公司AI P01首帧两版检查与停止重试 - 用户原话“是的，你先生成首帧。”仅授权当前P01；本地官方交接及独立范围回执已建立，不升级整导演/视频/发布授权。 - 内置生图r1与一次定点修订r2均实际落盘、打开并独立复核。四词人工目视正确；全图OCR分别为“厚証卡点调整试用”“再証卡点调盩试用”，r1局部诊断为“再斌”，未伪装OCR通过。 - r2消除了高护墙、桥墩和支路大台阶，但大卡点片挡直路、小调整片仍挡支路，未形成同一挡片封共同入口。终点连接被遮住，连续通行未证实。P0无，P1未闭合。 - 连续两版核心入口问题未解决，停止第三次同类尝试；已核对官方图像生成结构定位限制及参考布局方法，候选为先锁结构草图再生图或经用户批准请导演简化机构，成功率未验证。 - 两版原图、提示词、SHA及生成/OCR/视觉回执保留在本期目录。未改原导演文件，未进入RunningHub或视频生成；等待",
+      "score": 130
+    },
+    {
+      "path": "/Users/pc/Documents/口播/workflow/production-baseline.v1.json",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "61a34392fc14ebc8f61bde0afed9468701c19da289bf8968c72272606821a498",
+      "modified_at": "2026-08-11T09:55:50.597576+00:00",
+      "document_status": "active",
+      "authority_level": "reference",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断",
+      "excerpt": "{ \"schemaVersion\": 1, \"baselineId\": \"koubo-formal-16x9-v1\", \"baselineRevision\": \"V7.2-20260730\", \"status\": \"historical-rollback-active\", \"effectiveFrom\": \"2026-07-30\", \"authorityNote\": \"本文件保留V7.2技术参数和用户完整观看通过的锁定母版，供回归与故障回滚使用。新视频默认视觉和音效档案以workflow/active-production-profile.v1.json为唯一权威。\", \"appliesTo\": \"锁定母版回归、故障回滚和V8仍复用的通用技术参数；不得据此把新视频静默回退到V7.2视觉包装。\", \"production\": { \"width\": 1920, \"height\": 1080, \"fps\": 30, \"videoCod",
+      "score": 130
+    },
+    {
+      "path": "/Users/pc/Documents/口播/workflow/upgrade-backlog.json",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "cb0031423a653513e96be76d2b1fa22748deca61ece4caae1fe790bd60aaf35c",
+      "modified_at": "2026-08-11T14:12:08.086543+00:00",
+      "document_status": "active",
+      "authority_level": "reference",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断",
+      "excerpt": "{ \"schemaVersion\": 1, \"statuses\": [\"planned\", \"in-progress\", \"validated\", \"promoted\", \"rejected\"], \"items\": [ { \"id\": \"upgrade-20260711-visual-plan-layer-owner\", \"type\": \"fix\", \"source\": \"2026-07-10 成片复查：模板化与行动引导节点出现标题叠层。\", \"goal\": \"让视觉方案声明每个时间段由哪一层承担标题，并在渲染前拦截冲突。\", \"acceptance\": \"含全屏素材和信息卡的视觉方案能自动发现同组多标题。\", \"status\": \"promoted\", \"baselineImpact\": \"required\" }, { \"id\": \"upgrade-20260711-strong-title-cover-style\", \"ty",
+      "score": 130
+    }
+  ],
+  "similar_cases": [
+    {
+      "path": "01_项目实战/抖音知识中台/工作区/账号增长反馈/2026-10-10-复盘价值与调用卡顿根因及最小升级方案.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "468aa7efe6a24fce3269f4af3a9aab1935caf694328a3637e7120939a2b6745d",
+      "modified_at": "2026-10-10T06:56:46.202905+00:00",
+      "document_status": "active",
+      "authority_level": "project-record",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 39",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实",
+      "excerpt": "# 复盘价值与调用卡顿：根因及最小升级方案 > 执行端：Codex；日期：2026-10-10。 > 状态：只读调查完成；新设计待本人确认，未修改运行代码、请求策略或驾驶舱，没有新增付费模型请求。 > 本轮目标：让一次作品复盘交付一个有依据、能用于下一条的决策，而非再次证明接口能返回报告。 ## 一、第一性原理结论 服务对象是超哥本人。成功不是“生成了报告”“测试通过”，而是减少下一条内容的决策和试错成本：知道保留什么、优先改什么、为什么，以及下次如何观察。 当前功能有局部编辑价值，尚未证明自主复盘价值和增长效果。技术链路可以返回，不代表报告能独立替用户选重点；报告选出重点，也不代表改动能带来增长。 本轮与技术、内容两个只读协作角色分别核对后，主要矛盾确定为：**复盘任务的输入与输出没有围绕下一条决策组织，修复长期停留在“删错话、补规则”。** 调用可见性是另一项需要修正的体验问题，但不是内容价值的替代品。 ## 二、哪些是已经",
+      "score": 39
+    },
+    {
+      "path": "06_每日复盘/2026-10-07.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "33596cdc8faed7cda653d44989b3a5a74ee96af7126953a6765657063248a8b4",
+      "modified_at": "2026-10-08T02:40:01.460761+00:00",
+      "document_status": "active",
+      "authority_level": "timeline-evidence",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 37",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实",
+      "excerpt": "# 2026-10-07 每日复盘 > 主题：收工自动扫描生成，待人工补充主线 > 状态：自动扫描已完成 <!-- shougong:auto:2026-10-07:start --> ## 收工自动扫描（2026-10-07） > 证据来源：本机 Git 提交、Git 工作区状态、`.claude/memory`、`.agency-runs`。 > 边界：只记录本机可读取证据；纯聊天但未落盘的 Claude/Codex 内容不会出现在这里。 ### 一、活跃项目 - `AI选题雷达`：`/Users/pc/Documents/AI选题雷达` - `图鉴中国`：`/Users/pc/Documents/ChatGPT/图鉴中国` - `大白鲨餐饮订货系统`：`/Users/pc/Documents/ChatGPT/大白鲨餐饮订货系统` - `奕和家具`：`/Users/pc/Documents/ChatGPT/奕和家具` - `",
+      "score": 37
+    },
+    {
+      "path": "01_项目实战/抖音知识中台/工作区/2026-09-27-姜胡说16条-短视频系统与一人公司/00-入库总览.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "56ef38bf4890e6d320b73e2a3ac763ef9fb3762eda6533ce0d5148deeb365a6d",
+      "modified_at": "2026-09-27T07:19:43.041781+00:00",
+      "document_status": "active",
+      "authority_level": "project-record",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 37",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实",
+      "excerpt": "# 姜胡说16条：短视频系统与一人公司 > 入库日期：2026-09-27。16段本地视频共145分09秒，新增16条来源、75张候选知识卡。原始转写与时间轴已保留；关键句抽帧校对，不等于全片逐字精校。本页是内部研究导航，不是新口播稿，也不是已验证的增长方法。 ## 从哪里看 [内容驾驶舱](http://127.0.0.1:5180/) → 内容库 → 抖音原文与知识，搜索“姜胡说”。最新16条均有完整转写、开头钩子、论证结构、主要观点、适用项目、风险与知识卡。 ## 先抓住这五组内容 | 主题 | 对应视频 | 提炼出的主线 | 对我们有什么用 | |---|---|---|---| | 系统总图 | 1 | 定位—选题—生产—检验—变现；AI辅助与底层判断共同支撑 | 查清一次内容生产卡在哪一环，不把所有问题都归于文案或工具 | | 自然表达与框架 | 2、7、8 | 面向真实对象讲；记关键点而非逐字背稿；打破预期后给出解",
+      "score": 37
+    },
+    {
+      "path": "07_知识库治理/2026-07-18_口播内容大脑事故根因与修复验收.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "2153a523865e119915cb0a60cfa17711c4122b447cc0885c60d0ab62215702bc",
+      "modified_at": "2026-07-18T04:53:25.939230+00:00",
+      "document_status": "active",
+      "authority_level": "governance-evidence",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 37",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实",
+      "excerpt": "# 2026-07-18 口播内容大脑事故根因与修复验收 > 事故对象：`01_项目实战/AI选题雷达/2026-07-18-WAIC2026/02-WAIC2026口播拍摄终稿.md` > 当前结论：该稿作废，不进入拍摄、V6 视觉、音效或成片阶段。 > 首要成果：先修复并验证内容生产链路，再重新选题和写稿。 ## 一、真实目标 这次不是把一篇稿子改顺，而是回答并解决一个更根本的问题：为什么已经存在项目规范、最近作品、参考素材和 Skill，AI 仍然会忽略它们，并重复生成已经冻结的旧母题。 成功标准不是“新稿看起来更好”，而是同时满足： 1. 必读规则能被入口稳定路由，而不是依赖模型临时想起； 2. 素材完整度能限制下游用途，不能把建卡成功误认为内容获取成功； 3. 最近六条查重、选题增量、机制解释和本人声音都有可检查的输入； 4. 不合格稿件会被机器门禁拦截，不能继续进入视觉包装； 5. 旧 WAIC 稿必须稳定失败，合格",
+      "score": 37
+    },
+    {
+      "path": "01_项目实战/抖音知识中台/工作区/2026-09-20-李梓赫-2026抖音创作者大会-截图转写与口播参考.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "066c02758497016d822f4329a021bbbeeeade6bc5ee77c07cf06609cb2c38444",
+      "modified_at": "2026-09-26T15:25:31.362091+00:00",
+      "document_status": "active",
+      "authority_level": "project-record",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 33",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实",
+      "excerpt": "--- type: screenshot-reference status: candidate created_at: 2026-09-26 captured_at: 2026-09-20 source_author: 李梓赫 source_title: \"2026抖音创作者大会，我听出了三个信号\" source_evidence: user-supplied-screenshots source_original_url: null source_video_id: null source_completeness: partial transcript_status: partial analysis_scope: partial analysis_eligible: false draft_evidence_eligible: false verification_status: 待核验 rights_status: i",
+      "score": 33
+    }
+  ],
+  "reusable_learnings": [
+    {
+      "path": "02_技术积累/MCP配置完成报告_2026-06-26.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "a162fefd067b3264d8a815af4c6cb7486d211f58320f9ae926b10430f2bc5e88",
+      "modified_at": "2026-07-14T09:26:14.577685+00:00",
+      "document_status": "active",
+      "authority_level": "reusable-learning",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 6",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实",
+      "excerpt": "# MCP 配置完成报告 **配置日期：2026-06-26** **配置人员：Claude Opus 4.8** --- ## ✅ 已安装的 7 个 MCP ### 原有 MCP（3个） | MCP | 用途 | 命令 | 状态 | |-----|------|------|------| | **lightrag** | 本地知识库语义搜索 | `uvx lightrag-mcp` | ✅ | | **video-transcriber** | 视频转文字 | `npx -y video-transcriber-mcp` | ✅ | | **chrome-devtools** | Chrome 浏览器调试 | `npx -y chrome-devtools-mcp` | ✅ | ### P0 新增（4个） | MCP | 用途 | 命令 | 状态 | |-----|------|------|------| | **gith",
+      "score": 6
+    },
+    {
+      "path": "02_技术积累/MCP工具全景推荐.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "c88474aca4b948194ca3ad0e3f89d47e493eb2f6480d44a8759d64caa69ff4b0",
+      "modified_at": "2026-07-14T09:26:14.577013+00:00",
+      "document_status": "active",
+      "authority_level": "reusable-learning",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 6",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实",
+      "excerpt": "# MCP 工具全景推荐 — Claude Code 最佳实践 **生成时间：2026-06-26** **目标：覆盖你的全部项目和未来发展方向** --- ## 📊 你的项目全景图 | 项目 | 技术栈 | 状态 | 核心需求 | |------|--------|------|---------| | 今石缘 | Vue3 + Django + Docker | 🟢 已上线 | AI 生图/文案、H5 展示 | | UP空间家具 | Vue3 + Django + Docker | 🟢 已上线 | AI 家具识别、空间拆解 | | 口播视频工厂 | 待定 | 🟠 搭建中 | 视频处理、AI 口播生成 | | AI餐饮平台 | FastAPI + Vue3 | 🟡 MVP | AI 点餐、数据分析 | | 咸鱼 | 待启动 | 🔴 即将启动 | 待定 | | GEO | 待定 | 🟡 验证 | SEO/地理位置优化 | | A",
+      "score": 6
+    }
+  ],
+  "related_materials": [],
+  "unknowns_and_conflicts": [],
+  "recommended_skills": [
+    {
+      "name": "content-brain-gate",
+      "path": "/Users/pc/Documents/口播/skills/content-brain-gate/SKILL.md",
+      "match_reason": "显式能力路由命中：public-content-gate:口播",
+      "quality_verdict": "UNREVIEWED",
+      "evidence_level": "READ",
+      "execution_allowed": false,
+      "auto_read_required": true,
+      "workflow_execution_required": true,
+      "execution_phase": "before-outline",
+      "required_action": "本轮公开内容任务开始时立即完整读取该 SKILL.md；在选题、提纲或正文前自动运行口播项目的账号表现预检工具，生成绑定任务ID、全部已接纳快照、全部已发布作品和当前学习卡的回执；从回执选取一项全账号基线和一条近期作品真实数值，在 performance_feedback.account_data_application 写明本条具体改动；再执行内容门禁，失败时停止写稿，不能等待用户另行提醒"
+    }
+  ],
+  "recommended_agents": [
+    {
+      "name": "agency-studio-producer",
+      "business_value": "口播与视频制作排期、依赖、交付门控制",
+      "match_reason": "任务语义匹配，分数 4",
+      "runtime_verification": "not_verified",
+      "execution_allowed": false,
+      "allowed_access_mode": null,
+      "required_action": "当前仅作候选角色；必须先完成该角色的真实派遣和产物接管验证"
+    }
+  ],
+  "blocked_capabilities": [
+    {
+      "name": "auto-agency",
+      "status": "blocked",
+      "reason": "现有执行器仍是模拟占位输出，未通过真实 Agent 调度与产物验收。"
+    }
+  ],
+  "account_performance_preflight": {
+    "required": true,
+    "executed_automatically": true,
+    "ok": true,
+    "status": "ready-current",
+    "requires_current_account_data": false,
+    "receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/small-business-ai-agility-video-candidate-r2-20261017.json",
+    "receipt_sha256": "0a99e62be878bc15b806271317bbfdb5559a60f6f67b37bce2d844b987217ba8",
+    "published_work_count": 40,
+    "accepted_run_count": 118,
+    "recent_six_count": 6,
+    "active_lesson_count": 6,
+    "active_lesson_ids": [
+      "lesson:opening:title-answer-before-background",
+      "lesson:hook:concrete-conflict-scene-object",
+      "lesson:duration:value-order-before-shortening",
+      "lesson:metrics:separate-early-and-mature-windows",
+      "lesson:conversion:narrow-high-intent-is-a-separate-win",
+      "lesson:metric:cover-click-100-is-ambiguous"
+    ],
+    "automatic_reference": {
+      "accountBaseline": {
+        "workCount": 40,
+        "totalPlays": 70122,
+        "medianPlays": 1106,
+        "weightedMetrics": {
+          "completionRate": 1.4888,
+          "fiveSecondCompletionRate": 32.011,
+          "coverClickRate": 48.1154,
+          "twoSecondBounceRate": 41.5597,
+          "averagePlayDurationSeconds": 15.9294
+        },
+        "totals": {
+          "likes": 2357,
+          "shares": 167,
+          "comments": 235,
+          "favorites": 454,
+          "profileVisits": 2240,
+          "followerGain": 277
+        },
+        "derivedRates": {
+          "interactionRate": 4.582,
+          "profileVisitRate": 3.1944,
+          "followerGainRate": 0.395
+        },
+        "missingMetricCounts": {
+          "plays": 0,
+          "completionRate": 0,
+          "fiveSecondCompletionRate": 1,
+          "coverClickRate": 7,
+          "twoSecondBounceRate": 1,
+          "averagePlayDurationSeconds": 1,
+          "likes": 0,
+          "shares": 0,
+          "comments": 0,
+          "favorites": 0,
+          "profileVisits": 0,
+          "followerGain": 0
+        }
+      },
+      "contentTypeBaselines": [
+        {
+          "contentType": "5min+视频",
+          "workCount": 22,
+          "totalPlays": 40850,
+          "medianPlays": 1125,
+          "weightedMetrics": {
+            "completionRate": 1.2487,
+            "fiveSecondCompletionRate": 31.4434,
+            "coverClickRate": 46.9579,
+            "twoSecondBounceRate": 41.0502,
+            "averagePlayDurationSeconds": 18.4816
+          },
+          "totals": {
+            "likes": 1169,
+            "shares": 74,
+            "comments": 112,
+            "favorites": 248,
+            "profileVisits": 926,
+            "followerGain": 108
+          },
+          "derivedRates": {
+            "interactionRate": 3.9241,
+            "profileVisitRate": 2.2668,
+            "followerGainRate": 0.2644
+          },
+          "missingMetricCounts": {
+            "plays": 0,
+            "completionRate": 0,
+            "fiveSecondCompletionRate": 0,
+            "coverClickRate": 0,
+            "twoSecondBounceRate": 0,
+            "averagePlayDurationSeconds": 0,
+            "likes": 0,
+            "shares": 0,
+            "comments": 0,
+            "favorites": 0,
+            "profileVisits": 0,
+            "followerGain": 0
+          }
+        },
+        {
+          "contentType": "3-5min视频",
+          "workCount": 10,
+          "totalPlays": 19866,
+          "medianPlays": 1058.5,
+          "weightedMetrics": {
+            "completionRate": 1.2544,
+            "fiveSecondCompletionRate": 35.5378,
+            "coverClickRate": 50.4262,
+            "twoSecondBounceRate": 38.9445,
+            "averagePlayDurationSeconds": 13.8495
+          },
+          "totals": {
+            "likes": 644,
+            "shares": 73,
+            "comments": 88,
+            "favorites": 161,
+            "profileVisits": 1010,
+            "followerGain": 136
+          },
+          "derivedRates": {
+            "interactionRate": 4.8626,
+            "profileVisitRate": 5.0841,
+            "followerGainRate": 0.6846
+          },
+          "missingMetricCounts": {
+            "plays": 0,
+            "completionRate": 0,
+            "fiveSecondCompletionRate": 0,
+            "coverClickRate": 0,
+            "twoSecondBounceRate": 0,
+            "averagePlayDurationSeconds": 0,
+            "likes": 0,
+            "shares": 0,
+            "comments": 0,
+            "favorites": 0,
+            "profileVisits": 0,
+            "followerGain": 0
+          }
+        },
+        {
+          "contentType": "1-3min视频",
+          "workCount": 6,
+          "totalPlays": 5372,
+          "medianPlays": 995,
+          "weightedMetrics": {
+            "completionRate": 2.4049,
+            "fiveSecondCompletionRate": 28.5692,
+            "coverClickRate": null,
+            "twoSecondBounceRate": 44.2601,
+            "averagePlayDurationSeconds": 10.062
+          },
+          "totals": {
+            "likes": 170,
+            "shares": 4,
+            "comments": 9,
+            "favorites": 26,
+            "profileVisits": 138,
+            "followerGain": 15
+          },
+          "derivedRates": {
+            "interactionRate": 3.8905,
+            "profileVisitRate": 2.5689,
+            "followerGainRate": 0.2792
+          },
+          "missingMetricCounts": {
+            "plays": 0,
+            "completionRate": 0,
+            "fiveSecondCompletionRate": 0,
+            "coverClickRate": 6,
+            "twoSecondBounceRate": 0,
+            "averagePlayDurationSeconds": 0,
+            "likes": 0,
+            "shares": 0,
+            "comments": 0,
+            "favorites": 0,
+            "profileVisits": 0,
+            "followerGain": 0
+          }
+        },
+        {
+          "contentType": "1min-视频",
+          "workCount": 1,
+          "totalPlays": 3639,
+          "medianPlays": 3639,
+          "weightedMetrics": {
+            "completionRate": 3.56,
+            "fiveSecondCompletionRate": 24.21,
+            "coverClickRate": null,
+            "twoSecondBounceRate": 57.57,
+            "averagePlayDurationSeconds": 7.295
+          },
+          "totals": {
+            "likes": 363,
+            "shares": 16,
+            "comments": 25,
+            "favorites": 14,
+            "profileVisits": 148,
+            "followerGain": 16
+          },
+          "derivedRates": {
+            "interactionRate": 11.4867,
+            "profileVisitRate": 4.0671,
+            "followerGainRate": 0.4397
+          },
+          "missingMetricCounts": {
+            "plays": 0,
+            "completionRate": 0,
+            "fiveSecondCompletionRate": 0,
+            "coverClickRate": 1,
+            "twoSecondBounceRate": 0,
+            "averagePlayDurationSeconds": 0,
+            "likes": 0,
+            "shares": 0,
+            "comments": 0,
+            "favorites": 0,
+            "profileVisits": 0,
+            "followerGain": 0
+          }
+        },
+        {
+          "contentType": "长图文",
+          "workCount": 1,
+          "totalPlays": 395,
+          "medianPlays": 395,
+          "weightedMetrics": {
+            "completionRate": 6.57,
+            "fiveSecondCompletionRate": null,
+            "coverClickRate": 51.6,
+            "twoSecondBounceRate": null,
+            "averagePlayDurationSeconds": null
+          },
+          "totals": {
+            "likes": 11,
+            "shares": 0,
+            "comments": 1,
+            "favorites": 5,
+            "profileVisits": 18,
+            "followerGain": 2
+          },
+          "derivedRates": {
+            "interactionRate": 4.3038,
+            "profileVisitRate": 4.557,
+            "followerGainRate": 0.5063
+          },
+          "missingMetricCounts": {
+            "plays": 0,
+            "completionRate": 0,
+            "fiveSecondCompletionRate": 1,
+            "coverClickRate": 0,
+            "twoSecondBounceRate": 1,
+            "averagePlayDurationSeconds": 1,
+            "likes": 0,
+            "shares": 0,
+            "comments": 0,
+            "favorites": 0,
+            "profileVisits": 0,
+            "followerGain": 0
+          }
+        }
+      ],
+      "recentSix": [
+        {
+          "videoKey": "5d91de5ae593b55099667849",
+          "workId": null,
+          "title": "你的公司真的做好迎接AI时代的准备了吗 如果你的公司想做全员AI深度改造，又不知道从哪里开始的，评论区留下你的行业，给你详细拆解。我是超哥，在兰州深耕企业AI落地服务。\n话题\n#企业AI #AI应用 #组织改造  #超哥AI创业记#ai落地变现",
+          "publishedAt": "2026-10-12 21:12:12",
+          "contentType": "1-3min视频",
+          "reviewStatus": "公开",
+          "metrics": {
+            "plays": 299,
+            "completionRate": 1.34,
+            "fiveSecondCompletionRate": 25.46,
+            "coverClickRate": null,
+            "twoSecondBounceRate": 47.85,
+            "averagePlayDurationSeconds": 7.9693,
+            "likes": 14,
+            "shares": 0,
+            "comments": 1,
+            "favorites": 2,
+            "profileVisits": 7,
+            "followerGain": 0
+          }
+        },
+        {
+          "videoKey": "b792ebdb60b97798ac9b5c2a",
+          "workId": null,
+          "title": "10个看好的AI生意 你对哪一项有兴趣，可以带着你原来做的行业来聊。我们看看你的经验能用到哪一步。缺的能力怎么补，再决定要不要做。#AI创业#我的长长长假 #创作者中心 #创作灵感 #超哥AI创业记",
+          "publishedAt": "2026-10-07 20:25:42",
+          "contentType": "3-5min视频",
+          "reviewStatus": "公开",
+          "metrics": {
+            "plays": 1120,
+            "completionRate": 1.27,
+            "fiveSecondCompletionRate": 29.71,
+            "coverClickRate": 100,
+            "twoSecondBounceRate": 38.73,
+            "averagePlayDurationSeconds": 15.3609,
+            "likes": 28,
+            "shares": 9,
+            "comments": 0,
+            "favorites": 19,
+            "profileVisits": 59,
+            "followerGain": 1
+          }
+        },
+        {
+          "videoKey": "4d58975be945d5cac5c07949",
+          "workId": null,
+          "title": "顾客让AI选店，你的生意怎么被找到？ 各位CEO你可以先你的一项服务\n问一问AI,看他把产品、地址、服务、条件说对了没有\n给的联系方式和预约的方式能不能用\n回答里面有出处的也点进去核对一下\n如果需要对齐以上所有信息，评论区留言我给你出方法\n#聊聊你的AI营销思路 #创作者中心 #创作灵感  #GEO#超哥ai创业记",
+          "publishedAt": "2026-10-01 20:52:57",
+          "contentType": "5min+视频",
+          "reviewStatus": "公开",
+          "metrics": {
+            "plays": 539,
+            "completionRate": 0.53,
+            "fiveSecondCompletionRate": 26.02,
+            "coverClickRate": 100,
+            "twoSecondBounceRate": 40.33,
+            "averagePlayDurationSeconds": 7.2431,
+            "likes": 17,
+            "shares": 1,
+            "comments": 2,
+            "favorites": 2,
+            "profileVisits": 12,
+            "followerGain": 0
+          }
+        },
+        {
+          "videoKey": "54995b33b2afd70ab3c014ce",
+          "workId": null,
+          "title": "伟大祖国繁荣昌盛 #AI把知识拍成大片了 #国庆 #国庆节",
+          "publishedAt": "2026-10-01 10:22:52",
+          "contentType": "3-5min视频",
+          "reviewStatus": "公开",
+          "metrics": {
+            "plays": 443,
+            "completionRate": 1.79,
+            "fiveSecondCompletionRate": 22.49,
+            "coverClickRate": 34.43,
+            "twoSecondBounceRate": 44.99,
+            "averagePlayDurationSeconds": 11.0327,
+            "likes": 12,
+            "shares": 1,
+            "comments": 0,
+            "favorites": 1,
+            "profileVisits": 9,
+            "followerGain": 1
+          }
+        },
+        {
+          "videoKey": "f0bb6421187ee7d6d356b549",
+          "workId": null,
+          "title": "老板们别再为AI焦虑了 用你的行业经验配上AI就是趋势#AI应用 #兰州AI创业 #超哥AI创业记#生活服务热点中心 #ai创作者浪潮计划",
+          "publishedAt": "2026-09-29 20:40:38",
+          "contentType": "1-3min视频",
+          "reviewStatus": "公开",
+          "metrics": {
+            "plays": 389,
+            "completionRate": 1.93,
+            "fiveSecondCompletionRate": 27.25,
+            "coverClickRate": null,
+            "twoSecondBounceRate": 44.42,
+            "averagePlayDurationSeconds": 8.191,
+            "likes": 10,
+            "shares": 0,
+            "comments": 2,
+            "favorites": 3,
+            "profileVisits": 19,
+            "followerGain": 1
+          }
+        },
+        {
+          "videoKey": "c9497273b0ceecaa02ba092a",
+          "workId": null,
+          "title": "普通人的想法，靠AI直接落地！ 一句话就能做出你想要的，未来已来。\n我把自己从2025年10月接触AI，到在兰州探索AI落地的经历，写成提示词，交给前沿大模型。\n它自主写代码，把画面、配乐、动效，甚至音乐卡点都做了出来。\n看完成片，我感受到的不只是“AI又变强了”，而是：一个普通人的想法，离真正做出来，又近了一步。\n过去这一年，我一边追着技术更新，一边琢磨怎么把它用进身边的工作和生意。接下来还是想把这些能力变成看得见、用得上的服务。\n让未来，在兰州发生。\n#AI创业 #ai新星计划 #兰州AI创业 #AI落地 #超哥AI创业记",
+          "publishedAt": "2026-09-26 16:31:02",
+          "contentType": "1-3min视频",
+          "reviewStatus": "公开",
+          "metrics": {
+            "plays": 1166,
+            "completionRate": 4.21,
+            "fiveSecondCompletionRate": 33.43,
+            "coverClickRate": null,
+            "twoSecondBounceRate": 41.82,
+            "averagePlayDurationSeconds": 10.3178,
+            "likes": 23,
+            "shares": 0,
+            "comments": 0,
+            "favorites": 4,
+            "profileVisits": 39,
+            "followerGain": 2
+          }
+        }
+      ],
+      "acceptedHistorySignals": {
+        "status": "ready",
+        "periods": {
+          "previous": {
+            "status": "ready",
+            "baselineRunId": "a16aeb9677070c1d6903ebec",
+            "latestRunId": "7d1597acc977f2b9109b9f5a",
+            "baselineAt": "2026-10-15T14:00:25.157Z",
+            "latestAt": "2026-10-16T14:00:24.298Z",
+            "elapsedHours": 24,
+            "followersDelta": 2,
+            "totalPlaysDelta": 57,
+            "videoCountDelta": 0
+          },
+          "day": {
+            "status": "ready",
+            "baselineRunId": "a16aeb9677070c1d6903ebec",
+            "latestRunId": "7d1597acc977f2b9109b9f5a",
+            "baselineAt": "2026-10-15T14:00:25.157Z",
+            "latestAt": "2026-10-16T14:00:24.298Z",
+            "elapsedHours": 24,
+            "followersDelta": 2,
+            "totalPlaysDelta": 57,
+            "videoCountDelta": 0,
+            "targetHours": 24,
+            "availableHours": 1606.9
+          },
+          "week": {
+            "status": "ready",
+            "baselineRunId": "6acadc64033e06a685c5655e",
+            "latestRunId": "7d1597acc977f2b9109b9f5a",
+            "baselineAt": "2026-10-09T14:00:20.705Z",
+            "latestAt": "2026-10-16T14:00:24.298Z",
+            "elapsedHours": 168,
+            "followersDelta": 4,
+            "totalPlaysDelta": -16507,
+            "videoCountDelta": -5,
+            "targetHours": 168,
+            "availableHours": 1606.9
+          }
+        },
+        "latestVideoChanges": [
+          {
+            "videoKey": "5d91de5ae593b55099667849",
+            "title": "你的公司真的做好迎接AI时代的准备了吗 如果你的公司想做全员AI深度改造，又不知道从哪里开始的，评论区留下你的行业，给你详细拆解。我是超哥，在兰州深耕企业AI落地服务。\n话题\n#企业AI #AI应用 #组织改造  #超哥AI创业记#ai落地变现",
+            "publishedAt": "2026-10-12 21:12:12",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 299,
+              "completionRate": 1.34,
+              "fiveSecondCompletionRate": 25.46,
+              "averagePlayDurationSeconds": 7.9693,
+              "likes": 14,
+              "shares": 0,
+              "comments": 1,
+              "favorites": 2,
+              "profileVisits": 7,
+              "followerGain": 0
+            },
+            "deltas": {
+              "plays": 14,
+              "completionRate": -0.05999999999999983,
+              "fiveSecondCompletionRate": 0.46000000000000085,
+              "averagePlayDurationSeconds": -0.01470000000000038,
+              "likes": 2,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 1,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "fb4d17a353a8c98c4ac93392",
+            "title": "AI线下沙龙 | 一场本地创业者实战碰撞 汇聚甘肃本地企业家、AI技术从业者，只聊小微企业AI落地的真实问题，拆解西北商业的实际痛点。\n不谈虚概念，只做真实交流，期待下一场和更多同频的朋友一起探索。\n#兰州AI #兰州创业 #AI线下沙龙 #企业AI落地 #甘肃创业者",
+            "publishedAt": "2026-09-23 14:37:56",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 3663,
+              "completionRate": 0.84,
+              "fiveSecondCompletionRate": 24.19,
+              "averagePlayDurationSeconds": 11.1168,
+              "likes": 122,
+              "shares": 7,
+              "comments": 6,
+              "favorites": 11,
+              "profileVisits": 72,
+              "followerGain": 7
+            },
+            "deltas": {
+              "plays": 11,
+              "completionRate": 0.039999999999999925,
+              "fiveSecondCompletionRate": 0.240000000000002,
+              "averagePlayDurationSeconds": 0.3774999999999995,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 1,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "b792ebdb60b97798ac9b5c2a",
+            "title": "10个看好的AI生意 你对哪一项有兴趣，可以带着你原来做的行业来聊。我们看看你的经验能用到哪一步。缺的能力怎么补，再决定要不要做。#AI创业#我的长长长假 #创作者中心 #创作灵感 #超哥AI创业记",
+            "publishedAt": "2026-10-07 20:25:42",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1120,
+              "completionRate": 1.27,
+              "fiveSecondCompletionRate": 29.71,
+              "averagePlayDurationSeconds": 15.3609,
+              "likes": 28,
+              "shares": 9,
+              "comments": 0,
+              "favorites": 19,
+              "profileVisits": 59,
+              "followerGain": 1
+            },
+            "deltas": {
+              "plays": 8,
+              "completionRate": 0.08000000000000007,
+              "fiveSecondCompletionRate": 0.23000000000000043,
+              "averagePlayDurationSeconds": 0.3495000000000008,
+              "likes": 1,
+              "shares": 1,
+              "comments": 0,
+              "favorites": 1,
+              "profileVisits": 1,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "6cdbf33e02288ad65848f6dd",
+            "title": "AI实践者共创沙龙持续招募中 第一期兰州AI实践者共创沙龙正在持续推进。我们发起这场活动，不是为了做一场“听完就结束”的分享，而是想邀请更多正在使用、准备使用，或还不知道从哪里开始使用AI的朋友，带着真实问题来交流。\n#ai创业 #ai时代机遇 #ai项目落地 #AI兰州创业 #超哥AI创业记",
+            "publishedAt": "2026-09-16 19:44:42",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 3639,
+              "completionRate": 3.56,
+              "fiveSecondCompletionRate": 24.21,
+              "averagePlayDurationSeconds": 7.295,
+              "likes": 363,
+              "shares": 16,
+              "comments": 25,
+              "favorites": 14,
+              "profileVisits": 148,
+              "followerGain": 16
+            },
+            "deltas": {
+              "plays": 5,
+              "completionRate": -0.009999999999999787,
+              "fiveSecondCompletionRate": -0.00999999999999801,
+              "averagePlayDurationSeconds": -0.0033000000000003027,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "2b13be89e72d4143a49c871c",
+            "title": "兰州首届OPC技能交流大会 AI会继续进入更多本地行业，并增加行业人员与AI从业者协作的机会。#兰州AI创业#AI #OPC #人工智能座谈会 #ai产业联盟势不可挡",
+            "publishedAt": "2026-07-31 22:11:56",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 10317,
+              "completionRate": 1.27,
+              "fiveSecondCompletionRate": 42.76,
+              "averagePlayDurationSeconds": 14.987,
+              "likes": 155,
+              "shares": 46,
+              "comments": 53,
+              "favorites": 86,
+              "profileVisits": 596,
+              "followerGain": 108
+            },
+            "deltas": {
+              "plays": 4,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0.00999999999999801,
+              "averagePlayDurationSeconds": -0.00569999999999915,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 1,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "6d3fd1032f7ff19f5bb4569a",
+            "title": "兰州50人带电脑学AI，本地企业真正缺的是什么？ 这场AI信创训练，真正跟普通人有关的是这4个问题#AI创业#兰州AI #AI落地 #AI培训 #行业交流会议",
+            "publishedAt": "2026-08-11 22:07:24",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1322,
+              "completionRate": 1.42,
+              "fiveSecondCompletionRate": 37.91,
+              "averagePlayDurationSeconds": 15.4111,
+              "likes": 17,
+              "shares": 3,
+              "comments": 11,
+              "favorites": 8,
+              "profileVisits": 86,
+              "followerGain": 11
+            },
+            "deltas": {
+              "plays": 3,
+              "completionRate": -0.010000000000000009,
+              "fiveSecondCompletionRate": 0.00999999999999801,
+              "averagePlayDurationSeconds": -0.002000000000000668,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "f0bb6421187ee7d6d356b549",
+            "title": "老板们别再为AI焦虑了 用你的行业经验配上AI就是趋势#AI应用 #兰州AI创业 #超哥AI创业记#生活服务热点中心 #ai创作者浪潮计划",
+            "publishedAt": "2026-09-29 20:40:38",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 389,
+              "completionRate": 1.93,
+              "fiveSecondCompletionRate": 27.25,
+              "averagePlayDurationSeconds": 8.191,
+              "likes": 10,
+              "shares": 0,
+              "comments": 2,
+              "favorites": 3,
+              "profileVisits": 19,
+              "followerGain": 1
+            },
+            "deltas": {
+              "plays": 2,
+              "completionRate": -0.020000000000000018,
+              "fiveSecondCompletionRate": -0.019999999999999574,
+              "averagePlayDurationSeconds": -0.03409999999999869,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 1,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "c9497273b0ceecaa02ba092a",
+            "title": "普通人的想法，靠AI直接落地！ 一句话就能做出你想要的，未来已来。\n我把自己从2025年10月接触AI，到在兰州探索AI落地的经历，写成提示词，交给前沿大模型。\n它自主写代码，把画面、配乐、动效，甚至音乐卡点都做了出来。\n看完成片，我感受到的不只是“AI又变强了”，而是：一个普通人的想法，离真正做出来，又近了一步。\n过去这一年，我一边追着技术更新，一边琢磨怎么把它用进身边的工作和生意。接下来还是想把这些能力变成看得见、用得上的服务。\n让未来，在兰州发生。\n#AI创业 #ai新星计划 #兰州AI创业 #AI落地 #超哥AI创业记",
+            "publishedAt": "2026-09-26 16:31:02",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1166,
+              "completionRate": 4.21,
+              "fiveSecondCompletionRate": 33.43,
+              "averagePlayDurationSeconds": 10.3178,
+              "likes": 23,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 4,
+              "profileVisits": 39,
+              "followerGain": 2
+            },
+            "deltas": {
+              "plays": 2,
+              "completionRate": 0.04999999999999982,
+              "fiveSecondCompletionRate": 0.11999999999999744,
+              "averagePlayDurationSeconds": 0.0813000000000006,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "cc2affc3551fe41556eab90c",
+            "title": "八大AI训练方法 不是背答案，是练判断力。\n你可以多AI分工协作。\n#AI #兰州AI创业#创业经验分享 #创作者中心 #超哥ai创业记",
+            "publishedAt": "2026-09-20 21:32:16",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1695,
+              "completionRate": 0.54,
+              "fiveSecondCompletionRate": 28.6,
+              "averagePlayDurationSeconds": 10.6601,
+              "likes": 37,
+              "shares": 3,
+              "comments": 1,
+              "favorites": 17,
+              "profileVisits": 29,
+              "followerGain": 7
+            },
+            "deltas": {
+              "plays": 2,
+              "completionRate": -0.010000000000000009,
+              "fiveSecondCompletionRate": 0.21000000000000085,
+              "averagePlayDurationSeconds": -0.05259999999999998,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 1,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "7d5f4264376f36bd58dff1e0",
+            "title": "ChatGPT面世四年，生产力革命为什么迟迟没来？ 旧任务提速不等于新价值：不少AI应用只是把原来由人完成的工作转给机器，减少工时，但未必同时创造新产品、新市场和新需求。#AI创业 #商业认知 #AI生产力 #OPC #AI",
+            "publishedAt": "2026-08-04 22:30:48",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 7658,
+              "completionRate": 2.08,
+              "fiveSecondCompletionRate": 44.91,
+              "averagePlayDurationSeconds": 32.751,
+              "likes": 204,
+              "shares": 19,
+              "comments": 30,
+              "favorites": 55,
+              "profileVisits": 108,
+              "followerGain": 26
+            },
+            "deltas": {
+              "plays": 2,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0.01999999999999602,
+              "averagePlayDurationSeconds": -0.011099999999999,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "1237f68bd97c1a19acd8ae36",
+            "title": "AI省下的时间，该怎么分？ 用AI干得更快，为什么还要藏着？\n企业推AI，先把增效分配说清楚\n接下来是继续加项目，还是让团队也得到回报？\n我建议企业把省下的工时怎么用、增效收益怎么分先说清楚，再把个人的用法沉淀成团队流程。#ai会取代人类吗 #创作者中心 #AI办公  #工作效率 #超哥AI创业记",
+            "publishedAt": "2026-09-18 20:38:16",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1339,
+              "completionRate": 1.94,
+              "fiveSecondCompletionRate": 28.84,
+              "averagePlayDurationSeconds": 14.0956,
+              "likes": 38,
+              "shares": 3,
+              "comments": 4,
+              "favorites": 9,
+              "profileVisits": 25,
+              "followerGain": 7
+            },
+            "deltas": {
+              "plays": 1,
+              "completionRate": -0.010000000000000009,
+              "fiveSecondCompletionRate": -0.03999999999999915,
+              "averagePlayDurationSeconds": -0.03240000000000087,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "db3c168c183163e7f96d0bc3",
+            "title": "AI并没有发明新的商业模式 用广告投放和知识工作两个场景，拆开看AI怎样进入原来的业务流程。当同一种能力越来越便宜，企业之间的差距，可能会从“谁更擅长找到客户”，转向“谁更擅长理解客户”。\n这不是在贬低AI。看清它改变了哪里，才更容易判断哪些工作可以交给机器，哪些判断还得由人负责。#ai人工智能时代 #创作者中心 #AI创业 #兰州AI创业 #超哥AI创业记",
+            "publishedAt": "2026-09-14 20:57:35",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1609,
+              "completionRate": 0.92,
+              "fiveSecondCompletionRate": 23.62,
+              "averagePlayDurationSeconds": 11.7291,
+              "likes": 60,
+              "shares": 2,
+              "comments": 3,
+              "favorites": 12,
+              "profileVisits": 24,
+              "followerGain": 5
+            },
+            "deltas": {
+              "plays": 1,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": -0.019999999999999574,
+              "averagePlayDurationSeconds": -0.007600000000000051,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "4b365e1a1d12851f4d889791",
+            "title": "草原上的算力，跟普通企业有什么关系？ 乌兰察布为什么吸引数据中心和智算项目？绿电、低温和通往北京的低时延网络，是它承接算力的重要条件。\n但对中小企业更实际的问题，不是要不要自己买服务器，而是哪些业务值得按需调用算力。知识库、流程改造和行业服务，都要先从真实场景和小范围验证开始。\n算力底座在草原，结果仍要回到企业现场。你的业务里，哪一步最适合先用AI重构？\n#乌兰察布 #算力  #企业AI落地 #燃起来大国重器  #超哥AI创业记",
+            "publishedAt": "2026-09-02 19:44:32",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 826,
+              "completionRate": 0.36,
+              "fiveSecondCompletionRate": 30.66,
+              "averagePlayDurationSeconds": 11.641,
+              "likes": 9,
+              "shares": 0,
+              "comments": 1,
+              "favorites": 4,
+              "profileVisits": 9,
+              "followerGain": 0
+            },
+            "deltas": {
+              "plays": 1,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": -0.030000000000001137,
+              "averagePlayDurationSeconds": -0.011100000000000776,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "e183f1beb4665f48e3151de3",
+            "title": "国产AI落到兰州，普通企业和OPC能接住什么？ 走进兰州本地的信创产业园和永新国信数据要素产业园，我更关心的是：芯片、服务器产线、数据服务和AI课程都出现以后，为什么一家企业还是可能接不成一个真正能用的AI项目？\n中间缺的，是一条有人负责的责任链：业务结果谁提出，数据权限谁批准，AI流程谁搭建，系统出错谁接管，最后谁验收、谁维护。\n正在做企业AI应用或者OPC的朋友，可以先把这五个责任人写出来，看看自己的项目还有哪一格是空的。\n#国产AI芯片  #企业AI应用 #OPC一人公司 #兰州AI #AI创业",
+            "publishedAt": "2026-08-14 21:26:51",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1113,
+              "completionRate": 1.93,
+              "fiveSecondCompletionRate": 34.22,
+              "averagePlayDurationSeconds": 18.6771,
+              "likes": 21,
+              "shares": 1,
+              "comments": 2,
+              "favorites": 5,
+              "profileVisits": 30,
+              "followerGain": 4
+            },
+            "deltas": {
+              "plays": 1,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "4d58975be945d5cac5c07949",
+            "title": "顾客让AI选店，你的生意怎么被找到？ 各位CEO你可以先你的一项服务\n问一问AI,看他把产品、地址、服务、条件说对了没有\n给的联系方式和预约的方式能不能用\n回答里面有出处的也点进去核对一下\n如果需要对齐以上所有信息，评论区留言我给你出方法\n#聊聊你的AI营销思路 #创作者中心 #创作灵感  #GEO#超哥ai创业记",
+            "publishedAt": "2026-10-01 20:52:57",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 539,
+              "completionRate": 0.53,
+              "fiveSecondCompletionRate": 26.02,
+              "averagePlayDurationSeconds": 7.2431,
+              "likes": 17,
+              "shares": 1,
+              "comments": 2,
+              "favorites": 2,
+              "profileVisits": 12,
+              "followerGain": 0
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "54995b33b2afd70ab3c014ce",
+            "title": "伟大祖国繁荣昌盛 #AI把知识拍成大片了 #国庆 #国庆节",
+            "publishedAt": "2026-10-01 10:22:52",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 443,
+              "completionRate": 1.79,
+              "fiveSecondCompletionRate": 22.49,
+              "averagePlayDurationSeconds": 11.0327,
+              "likes": 12,
+              "shares": 1,
+              "comments": 0,
+              "favorites": 1,
+              "profileVisits": 9,
+              "followerGain": 1
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0.002100000000000435,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "e211ed03c030960d822653e9",
+            "title": "一句话就能做出你想要的，未来已来 我把自己从2025年10月接触AI，到在兰州探索AI落地的经历，写成提示词，交给了 Claude Opus 5.5。\n它自己写代码，把画面、配乐、动效，甚至音乐卡点，都做了出来。\n看完成片，我感受到的不只是“AI又变强了”，而是：一个普通人的想法，离真正做出来，又近了一步。\n过去这一年，我一边追着技术更新，一边琢磨怎么把它用进身边的工作和生意。接下来还是想把这些能力变成看得见、用得上的服务。\n让未来，在兰州发生。\n#AI创业#ai新星计划 #兰州AI创业#设计#超哥AI创业记",
+            "publishedAt": "2026-09-26 12:42:24",
+            "reviewStatus": "自见",
+            "metrics": {
+              "plays": 0,
+              "completionRate": 22.22,
+              "fiveSecondCompletionRate": 32.14,
+              "averagePlayDurationSeconds": 17.2143,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "25747084d1fc66ecdbc64e35",
+            "title": "做过生意的人，学 AI 别急着丢掉老本行 我做过企业 AI 应用和 GEO 的付费项目，也做过交付。但这不等于生意已经做稳。接下来我会继续在兰州把企业的问题弄明白，把能做和暂时做不了的部分说清楚。\n兰州的老板有企业 AI 应用的实际问题，可以带着问题来聊。#兰州AI创业#企业AI应用#AI创业#GEO#青年创业",
+            "publishedAt": "2026-09-12 21:08:45",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 524,
+              "completionRate": 0.53,
+              "fiveSecondCompletionRate": 31.83,
+              "averagePlayDurationSeconds": 15.9151,
+              "likes": 26,
+              "shares": 1,
+              "comments": 2,
+              "favorites": 5,
+              "profileVisits": 23,
+              "followerGain": 4
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0.1599999999999966,
+              "averagePlayDurationSeconds": -0.0259999999999998,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "b2e01b84fe6b1a9b9e3781ee",
+            "title": "本地AI应用落地 帮本地中小企业做AI落地、AI内容定制、AI技能孵化#抖音前沿科技首发计划 #AI创业#兰州AI创业 #企业AI #超哥AI创业记",
+            "publishedAt": "2026-09-08 20:54:03",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 509,
+              "completionRate": 1.11,
+              "fiveSecondCompletionRate": 30.03,
+              "averagePlayDurationSeconds": 14.1226,
+              "likes": 23,
+              "shares": 2,
+              "comments": 1,
+              "favorites": 5,
+              "profileVisits": 29,
+              "followerGain": 2
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": -0.04999999999999716,
+              "averagePlayDurationSeconds": -0.020899999999999253,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "707409ba802947417a8fd06f",
+            "title": "别再只卷播放：AI本地服务怎么做？ 换个方向看，AI 也可以和本地人的具体需求结合：家庭故事、人生回忆、门店宣传和沟通话术，都可以先从一项能说清、能交付、能验收的小服务开始。\n线上账号可以展示案例，真正有没有需求、愿不愿意付费，还是要回到本地市场逐单验证。AI 负责提高制作和整理效率；选什么需求、怎么交付、结果能不能用，仍然要有人负责。\n你身边还有哪些值得试一试的本地 AI 需求#青年创作者成长计划 #AI创业 #ai本地生活 #兰州AI创业#超哥AI创业记",
+            "publishedAt": "2026-09-05 21:11:38",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 2926,
+              "completionRate": 0.88,
+              "fiveSecondCompletionRate": 16.92,
+              "averagePlayDurationSeconds": 9.7885,
+              "likes": 317,
+              "shares": 4,
+              "comments": 8,
+              "favorites": 14,
+              "profileVisits": 34,
+              "followerGain": 3
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": -0.010000000000000009,
+              "fiveSecondCompletionRate": 0.060000000000002274,
+              "averagePlayDurationSeconds": 0.10820000000000007,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "0dfe2de08b7c0f2d8c0f4e47",
+            "title": "GPT-6与Cybercab开启AGI GPT-6 Astra演示了软件操作，Cybercab面向无人驾驶。做生意的人更关心的是：数据、文案这些工作，AI能帮到哪一步？人还得做判断，看结果。有具体的企业AI应用需求，评论区留下“落地”。\n#gpt6 #Cybercab #企业AI应用 #兰州创业 #超哥AI创业记",
+            "publishedAt": "2026-09-05 02:19:10",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 883,
+              "completionRate": 1.31,
+              "fiveSecondCompletionRate": 34.74,
+              "averagePlayDurationSeconds": 13.6314,
+              "likes": 22,
+              "shares": 3,
+              "comments": 1,
+              "favorites": 9,
+              "profileVisits": 16,
+              "followerGain": 0
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": -0.03999999999999915,
+              "averagePlayDurationSeconds": -0.013400000000000745,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "f755378aaad18ec9f9b906b7",
+            "title": "会做AI产品，为什么还是难变现？ AI把做产品的门槛降下来了，工具和模板也越来越容易复制。但客户敢不敢买，不只看产品，还要看你能不能解决真实问题，把结果持续交付。\n这一条想讲清楚：技术只是入门。个人品牌、信任背书、对行业和老板需求的理解，以及长期落地服务，才是更难被复制的部分。\n你现在做AI产品，最卡的是曝光、信任，还是落地交付？\n#AI创业 #AI产品 #个人IP  #兰州AI创业 #超哥AI创业记",
+            "publishedAt": "2026-08-30 20:51:02",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 824,
+              "completionRate": 2.82,
+              "fiveSecondCompletionRate": 38.08,
+              "averagePlayDurationSeconds": 12.3829,
+              "likes": 20,
+              "shares": 1,
+              "comments": 0,
+              "favorites": 8,
+              "profileVisits": 36,
+              "followerGain": 5
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0.01999999999999602,
+              "averagePlayDurationSeconds": -0.012100000000000222,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "6df6b8b5d0c84aac2e7265d0",
+            "title": "超级个体，不是AI造出来的 同样的模型、会员和教程，很多人都能用。真正拉开差距的，是你能不能快速看懂陌生项目，找到合适的人和工具，再把它们组织成一个能交付的结果。\n超级个体不是一个人把所有活都扛下来，也不是每项技能都练到顶级。能接住新问题、补齐认知、调动资源，把事情做成，这才是AI放大的部分。\n你觉得自己现在最需要补的是综合适配、陌生领域破局，还是资源组织？#超级个体 #兰州AI  #ai行业发展 #AI创业 #超哥AI创业记",
+            "publishedAt": "2026-08-29 20:09:09",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1099,
+              "completionRate": 1.15,
+              "fiveSecondCompletionRate": 33.27,
+              "averagePlayDurationSeconds": 12.3263,
+              "likes": 41,
+              "shares": 0,
+              "comments": 3,
+              "favorites": 7,
+              "profileVisits": 33,
+              "followerGain": 4
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": -0.02999999999999403,
+              "averagePlayDurationSeconds": -0.009999999999999787,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "348718ed946e75ae7f3f15d9",
+            "title": "企业AI报价差这么大，差的不是工具 同样是企业AI落地，为什么有的报价很低，有的却很高？真正的差别，往往不在模型和软件，而在有没有把资料、判断、执行和复盘接成一段能跑、能验收的工作。\n先从每天重复、容易乱的一小段开始。评论区留“信息”，轻量版行业信息获取工具包整理好后，免费分享给大家。\n话题\n#企业AI落地 #餐饮数字化 #本地实体  #AI创业 #ai平权",
+            "publishedAt": "2026-08-28 20:48:45",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 703,
+              "completionRate": 0.72,
+              "fiveSecondCompletionRate": 22.2,
+              "averagePlayDurationSeconds": 13.3581,
+              "likes": 24,
+              "shares": 0,
+              "comments": 2,
+              "favorites": 6,
+              "profileVisits": 15,
+              "followerGain": 4
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "727dbbe93718a6fc324a2df6",
+            "title": "AI 就算推荐了你，客户为什么还会走丢？ 对本地商家来说，值得检查的不是“AI 会不会推荐我”这一句话，而是两件事：GEO 能不能让 AI 认清真实、统一的信息；AAO 能不能把客户下一步接到地图、预约、点餐或人工服务。先把地址、营业时间、菜单和入口对齐，再把一条客户路径跑顺。做餐饮、零售、本地服务的朋友，评论区留“GEO”，完整讲解课件免费发给你。#ai应用 #GEO #AAO#企业AI #兰州AI创业",
+            "publishedAt": "2026-08-26 20:23:49",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 809,
+              "completionRate": 0.92,
+              "fiveSecondCompletionRate": 42.1,
+              "averagePlayDurationSeconds": 13.7963,
+              "likes": 18,
+              "shares": 7,
+              "comments": 2,
+              "favorites": 7,
+              "profileVisits": 39,
+              "followerGain": 0
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "93c369fe6853d88aa0f0fc20",
+            "title": "AI 使用 6 段位，自测你在哪一层 我把 AI 使用分成 6 个段位，从单次问答到企业落地，看看你卡在了哪一层？\n#AI创业 #大模型 #Agent #工作流#ai创新创业",
+            "publishedAt": "2026-08-22 21:29:11",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 537,
+              "completionRate": 1.37,
+              "fiveSecondCompletionRate": 30.41,
+              "averagePlayDurationSeconds": 17.8239,
+              "likes": 22,
+              "shares": 1,
+              "comments": 6,
+              "favorites": 8,
+              "profileVisits": 32,
+              "followerGain": 6
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "37c7ed8d7f5491c1d75781e4",
+            "title": "学AI真能多挣钱吗？ AI值得学，但有工作的人和准备全职进入AI行业的人，不该走同一条路。不建议小白直接辞职做AI。先让AI帮你解决一件真实工作，再决定要不要继续投入时间和钱。\n#ai落地变现 #AI创业#AI兰州创业#AIGC #普通人学AI",
+            "publishedAt": "2026-08-20 20:29:13",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1137,
+              "completionRate": 1.34,
+              "fiveSecondCompletionRate": 28.37,
+              "averagePlayDurationSeconds": 16.5038,
+              "likes": 23,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 5,
+              "profileVisits": 31,
+              "followerGain": 2
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "5455f44f75cf2b74bb36cbbe",
+            "title": "普通人学AI，先问自己为什么学？ 先想清楚：你学AI，是为了解决什么事？\n结果想明白了，再动手也不晚。#人工智能 #AI创业 #AIGC #AIGC漫剧 #兰州AI创业",
+            "publishedAt": "2026-08-18 21:30:52",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1783,
+              "completionRate": 0.43,
+              "fiveSecondCompletionRate": 19.34,
+              "averagePlayDurationSeconds": 13.6416,
+              "likes": 126,
+              "shares": 0,
+              "comments": 4,
+              "favorites": 6,
+              "profileVisits": 39,
+              "followerGain": 3
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "4da298e8a29710e45a7f09fb",
+            "title": "AI圈最魔幻的事：热闹很多，交付太少 AI能做短视频、自动回复、管销售，也能把演示做得很漂亮。可把它放回真实生意，老板要看的不是界面，而是四件事：能不能交付、有没有人愿意付出成本、做过几次后能不能沉出共性，出了错谁来负责。\n工具动作可以学，别把工具动作当成经营建议。#企业AI应用 #AI创业 #老板思维 #OPC一人公司 #兰州AI创业",
+            "publishedAt": "2026-08-16 20:44:24",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 4044,
+              "completionRate": 1.86,
+              "fiveSecondCompletionRate": 44.62,
+              "averagePlayDurationSeconds": 26.7532,
+              "likes": 83,
+              "shares": 15,
+              "comments": 29,
+              "favorites": 29,
+              "profileVisits": 170,
+              "followerGain": 18
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "b0dca4e4d633f7772b79e68c",
+            "title": "AI在支配你，还是你在掌控AI？ 同样一套AI，有人把自己变成更便宜的一段执行，有人却用它放大判断和能力。区别不在会不会提示词，而在你有没有真实领域、可复用资产，以及对结果负责的能力。回想最近一周：AI给出第一版以后，你补了什么，又做了哪些决定？#人工智能#AI创业#职场成长#兰州AI创业#OPC一人公司",
+            "publishedAt": "2026-08-12 21:59:00",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1017,
+              "completionRate": 0.74,
+              "fiveSecondCompletionRate": 23.83,
+              "averagePlayDurationSeconds": 11.5804,
+              "likes": 44,
+              "shares": 0,
+              "comments": 1,
+              "favorites": 4,
+              "profileVisits": 14,
+              "followerGain": 2
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "085c1a84f839bcec451b08e8",
+            "title": "AI在第四次工业革命里站哪一层？普通人该站哪里？ AI 属于通用认知生产力层，算力大模型是巨头赛道，普通人真正值钱的位置，卡在 AI 与现实中间。\n掌握调用权、解释权、转化权、校准权四层核心能力，才能把 AI 工具变成自己的核心竞争力，而不是单纯做 AI 的答案消费者#AI创业 #兰州AI #人工智能 #第四次工业革命 #普通人如何用AI",
+            "publishedAt": "2026-08-10 20:36:23",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1803,
+              "completionRate": 1.55,
+              "fiveSecondCompletionRate": 28.84,
+              "averagePlayDurationSeconds": 18.5428,
+              "likes": 24,
+              "shares": 2,
+              "comments": 3,
+              "favorites": 20,
+              "profileVisits": 47,
+              "followerGain": 4
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": -0.010000000000001563,
+              "averagePlayDurationSeconds": -0.008099999999998886,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "9f51269517d10e6295356254",
+            "title": "AI给普通人最大的公平，叫低成本试错 普通人用AI做自媒体，先别急着谈赚钱 \nAI给普通人的第一笔资产，不是钱，是账号\n#AI创业#兰州创业 #抖音创业者#AI创作浪潮计划 #创业复盘",
+            "publishedAt": "2026-08-08 22:07:58",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 746,
+              "completionRate": 1.09,
+              "fiveSecondCompletionRate": 26.39,
+              "averagePlayDurationSeconds": 23.6486,
+              "likes": 20,
+              "shares": 7,
+              "comments": 2,
+              "favorites": 6,
+              "profileVisits": 74,
+              "followerGain": 5
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "2ebfe69230ad45ab2d3fc7f0",
+            "title": "学AI赚不到钱？普通人做AI创业的真正壁垒！ 今天就拿你最近一条内容，或者一个正在做的项目，借助AI开启你的自媒体之路。#AI创业 #BuildinPublic #普通人如何抓住AI红利#AI工具 #创业思考",
+            "publishedAt": "2026-08-03 19:45:03",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 856,
+              "completionRate": 1.66,
+              "fiveSecondCompletionRate": 24.19,
+              "averagePlayDurationSeconds": 15.6182,
+              "likes": 66,
+              "shares": 0,
+              "comments": 3,
+              "favorites": 12,
+              "profileVisits": 28,
+              "followerGain": 1
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "8766303966abbb96f02373f5",
+            "title": "AI热潮退去后，普通人真正能留下什么？ 浪潮会淘汰跟风者、投机者，唯独沉淀硬核基建与技术能力。而我们普通人，真正要为自己留下两样不可替代的核心资产：1⃣ 真实现场的进场资格2⃣ 真实落地的验收证据\n#AI创业 #兰州AI创业 #aigc #算力 #OPC",
+            "publishedAt": "2026-08-01 20:43:02",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 3914,
+              "completionRate": 1.15,
+              "fiveSecondCompletionRate": 33.16,
+              "averagePlayDurationSeconds": 18.0383,
+              "likes": 73,
+              "shares": 2,
+              "comments": 11,
+              "favorites": 18,
+              "profileVisits": 50,
+              "followerGain": 6
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "42ad7123a79840fcd959675e",
+            "title": "听听8岁孩子眼中，AI到底是什么 在成年人争论AI是工具还是挑战的时候，下一代早已自然接纳人工智能。\n科技不会停下脚步，AI将会陪着这一代人一同成长。\n真正的未来，藏在孩子源源不断的好奇心之中。#AI #人工智能 #AI创业 #企业AI应用 #AIGC",
+            "publishedAt": "2026-07-29 17:42:56",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1355,
+              "completionRate": 1.43,
+              "fiveSecondCompletionRate": 19.4,
+              "averagePlayDurationSeconds": 5.4436,
+              "likes": 65,
+              "shares": 0,
+              "comments": 2,
+              "favorites": 0,
+              "profileVisits": 12,
+              "followerGain": 0
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "424b6b8278da86affe72e1a7",
+            "title": "真正值钱的AI项目，只解决日常麻烦 真正的落地AI，不问技术多花哨。\n只问：它让谁的哪一步工作，变得更简单、更可控、更可沉淀？技术可以很快，但值得深耕的项目，永远藏在真实的烟火痛点里。#AI落地 #兰州AI创业 #产品思维  #创业深耕#aigc创世计划",
+            "publishedAt": "2026-07-25 23:41:37",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1684,
+              "completionRate": 0.49,
+              "fiveSecondCompletionRate": 20.72,
+              "averagePlayDurationSeconds": 10.566,
+              "likes": 55,
+              "shares": 2,
+              "comments": 1,
+              "favorites": 6,
+              "profileVisits": 25,
+              "followerGain": 1
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "464ca874451f9850a7cb481c",
+            "title": "有些话适合慢慢讲，有些情绪只给懂的人听。耐心看完，总有一句戳中你。#兰州AI创业 #AI创业#技能证书 #AIGC",
+            "publishedAt": "2026-07-24 20:24:23",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 395,
+              "completionRate": 6.57,
+              "fiveSecondCompletionRate": null,
+              "averagePlayDurationSeconds": null,
+              "likes": 11,
+              "shares": 0,
+              "comments": 1,
+              "favorites": 5,
+              "profileVisits": 18,
+              "followerGain": 2
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": null,
+              "averagePlayDurationSeconds": null,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "68c50b4aeebfdc8889c40b41",
+            "title": "150个粉丝，凭什么谈AI变现？ 学AI没变现，没有正反馈时，你到底该不该坚持？\n粉丝没涨，但这事不能白做！\n#AI创业 #AI变现 #个人知识库#创作者中心  #ai创作大赛",
+            "publishedAt": "2026-07-23 21:40:08",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 1018,
+              "completionRate": 1.53,
+              "fiveSecondCompletionRate": 31.15,
+              "averagePlayDurationSeconds": 12.2935,
+              "likes": 21,
+              "shares": 3,
+              "comments": 10,
+              "favorites": 9,
+              "profileVisits": 115,
+              "followerGain": 5
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "a0d247b1d83e15cd9c8dcc6d",
+            "title": "AI不会替设计师完成设计，但能先把灵感接住 灵感来了，怎么把它留下来？\n怎么变成客户看得懂、设计师还能继续深化的方案？\nAI不是替代设计师，而是先把一瞬间的想法接住，再把经验、案例和材料沉淀成自己的知识库。#AI创业 #设计师 #个人知识库 #AI落地 #兰州创业",
+            "publishedAt": "2026-07-21 23:04:32",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 3806,
+              "completionRate": 0.8,
+              "fiveSecondCompletionRate": 17.85,
+              "averagePlayDurationSeconds": 8.4765,
+              "likes": 81,
+              "shares": 4,
+              "comments": 1,
+              "favorites": 8,
+              "profileVisits": 42,
+              "followerGain": 3
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "96d9bfba2d95962cd2be0d6a",
+            "title": "WAIC 最值得看的，是 AI 开始直接读真实世界的数据 AI 算得出一百套活动方案，却摸不透你店里的真实情况；\n读得透所有行业手册，却代替不了你多年的现场判断。\nAI 永远是工具，拿主意的，还得是干过实事的人。\n认同的老板点个赞。#waic2026 #AI创业 #AI新星计划 #兰州创业#AI创作浪潮计划",
+            "publishedAt": "2026-07-18 21:55:20",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 384,
+              "completionRate": 1.69,
+              "fiveSecondCompletionRate": 23.21,
+              "averagePlayDurationSeconds": 14.5302,
+              "likes": 14,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 2,
+              "profileVisits": 13,
+              "followerGain": 0
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": -0.08999999999999986,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          },
+          {
+            "videoKey": "12333aa7a61fe6038663de1d",
+            "title": "如何让AI精准推荐你的企业？ 先核对：你是谁、真正做什么、服务哪些场景、证据在哪里。因为 AI 连你的真实业务都看不懂，发再多内容也可能只是自说自话#兰州AI创业 #GEO #企业AI落地 #本地企业获客 #AI搜索优化",
+            "publishedAt": "2026-07-18 11:15:46",
+            "reviewStatus": "公开",
+            "metrics": {
+              "plays": 229,
+              "completionRate": 2.65,
+              "fiveSecondCompletionRate": 33.8,
+              "averagePlayDurationSeconds": 17.9972,
+              "likes": 8,
+              "shares": 2,
+              "comments": 1,
+              "favorites": 3,
+              "profileVisits": 33,
+              "followerGain": 1
+            },
+            "deltas": {
+              "plays": 0,
+              "completionRate": 0,
+              "fiveSecondCompletionRate": 0,
+              "averagePlayDurationSeconds": 0,
+              "likes": 0,
+              "shares": 0,
+              "comments": 0,
+              "favorites": 0,
+              "profileVisits": 0,
+              "followerGain": 0
+            },
+            "changeStatus": "tracked",
+            "feedbackBound": false
+          }
+        ],
+        "anomalies": [],
+        "boundary": "增量只表示两次官方快照之间的数值变化，不自动证明选题、结构或方法导致了结果；结论必须人工复盘。"
+      }
+    },
+    "content_gate_binding": {
+      "receipt_path": "/Users/pc/Documents/口播/workflow/account-performance-preflights/small-business-ai-agility-video-candidate-r2-20261017.json",
+      "receipt_sha256": "0a99e62be878bc15b806271317bbfdb5559a60f6f67b37bce2d844b987217ba8",
+      "read": true,
+      "required_application": {
+        "field": "performance_feedback.account_data_application",
+        "account_baseline_source": "automaticReference.accountBaseline",
+        "recent_work_source": "automaticReference.recentSix",
+        "planned_change_required": true,
+        "causal_claim_allowed": [
+          "none",
+          "human-confirmed-lesson-only"
+        ]
+      }
+    },
+    "boundary": "本回执绑定当前已接纳官方数据；平台统计仍可能延迟，因果结论仍需人工复盘。"
+  },
+  "public_content_project_gate": {
+    "applicable": false,
+    "status": "not-applicable",
+    "required_first": true,
+    "component_source_can_unlock_gate": false,
+    "component_source_read_allowed": false,
+    "sequence_rule": "先完成四类项目级权威资料的执行者读取回执，再允许读取海报、AI模板、生成方向或单项实施状态等组件级来源。",
+    "required_result_fields": [
+      "project_truth_read_receipts",
+      "canonical_business_chain_used",
+      "current_code_state_claims",
+      "human_responsibility_boundaries",
+      "public_content_project_gate_decision"
+    ],
+    "projects": [],
+    "blocked_component_paths": []
+  },
+  "quality_gates": [
+    "新知识必须先判断唯一归属，不重复写多个事实源。",
+    "事实、合理推断、未确认事项必须分开写。",
+    "重大任务开始前生成启动包，结束前写每日复盘。",
+    "公开内容必须通过来源完整度、最近六条查重、选题增量、机制解释和本人声音门禁，未达到 ready-for-production 不进入包装。",
+    "跨项目公开内容必须先完成项目级权威入口、完整业务链、当前代码状态和人工责任边界的读取回执；海报、AI模板、生成方向或单项实施状态等组件级来源不得单独使内容门禁通过。",
+    "5180内容驾驶舱只负责内容资产、选题建议和账号反馈；采用方向只记录编辑决策，不得创建口播任务或生成最终文稿。",
+    "涉及密钥、密码、Cookie、Token 的内容不得入库或提交。",
+    "Agent 结果只有在任务契约、真实规范任务名、来源哈希、工作区保护和交付物校验全部通过，并由父任务从 verified 显式转为 accepted 后才允许接管；失败、超时、取消、迟到或占位输出不得污染主任务。",
+    "每次结构调整必须更新 index.md、知识库路由表和知识图谱。"
+  ],
+  "writeback": {
+    "daily_review": "06_每日复盘/2026-10-17.md",
+    "project_status": "已匹配项目 口播视频 的当前状态主档",
+    "result_package_schema": "1.1",
+    "result_writer": "04_Claude Code日常操作/scripts/task_result_writeback.py",
+    "promotion_queue": "07_知识库治理/待晋升经验队列.json",
+    "result_package_required_fields": [
+      "schema_version",
+      "task_id",
+      "context_schema_version",
+      "project_id",
+      "status",
+      "summary",
+      "verified_facts",
+      "reasonable_inferences",
+      "unknowns",
+      "decisions",
+      "artifacts",
+      "validations",
+      "failures",
+      "read_receipts",
+      "adopted_sources",
+      "rejected_sources",
+      "project_status_update",
+      "promotion_candidates"
+    ],
+    "write_order": [
+      "daily_review",
+      "project_status",
+      "promotion_queue"
+    ],
+    "default_mode": "dry-run",
+    "failure_policy": "任何校验、哈希或目标版本冲突发生时不得写入；failed、blocked 和 partial 结果不得更新项目状态或进入待晋升队列。",
+    "promotion_policy": "跨项目经验只生成待晋升建议，不自动写入全局最佳实践。",
+    "required_result_fields": [],
+    "public_content_project_rule": "本任务不触发跨项目公开内容事实回填。"
+  },
+  "read_receipt": {
+    "status": "pending-executor-read",
+    "selected_document_count": 24,
+    "required_document_count": 17,
+    "verified_required_document_count": 0,
+    "project_truth_status": "not-applicable",
+    "rule": "文件被检索和计算哈希不等于执行者已读；阅读凭证必须包含当前文件哈希、status=read 和 read_completed_at，四类项目事实未齐不得进入跨项目公开内容生产。"
+  },
+  "provenance": [
+    {
+      "path": "index.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "20477e683f11ea9888c6cfb5df2f3e058751bf2d5959c7fa84d0dad68fe131e7",
+      "modified_at": "2026-10-03T16:47:54.691233+00:00",
+      "document_status": "active",
+      "authority_level": "reference",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守"
+    },
+    {
+      "path": "00_规范与配置/知识库路由表.json",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "51db3edd929fe52bc72b402d2a806a499c7d9b014770ecf3832ba9e243c1250e",
+      "modified_at": "2026-10-03T16:47:54.692835+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守"
+    },
+    {
+      "path": "00_规范与配置/03_-毛选方法论/00-总纲.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "c6d4cda4c5462e4aa2afbe1693a2b445c204cd3ee5c678e729b7b6c698631206",
+      "modified_at": "2026-06-22T15:15:43.391453+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守"
+    },
+    {
+      "path": "00_规范与配置/07_第一性原理全局决策规范.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "79129cf291bdea61a86dcf92540917bc1cfea11e71111bc8d9f123517625aa8e",
+      "modified_at": "2026-09-28T08:23:54.730528+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守"
+    },
+    {
+      "path": "00_规范与配置/12_公开内容生产大脑硬门禁.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "c0d738dbb7858b78c92249afb8d7def8adad7ad5340e93b9e10b41a1e624f353",
+      "modified_at": "2026-08-13T03:03:43.217770+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守"
+    },
+    {
+      "path": "00_规范与配置/03_最佳实践/抖音口播内容与DOU+投放边界.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "b4eefd4314ce21a9876487806029eb49e48914ae8147cc851e0d41006aa1109d",
+      "modified_at": "2026-07-14T09:26:14.579888+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守"
+    },
+    {
+      "path": "00_规范与配置/08_抖音中国大陆规则全景库_2026-07-12.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "347f1fb279511388ec75fcb3c7a99673408501267d48fa8f7db441cb12b6cc59",
+      "modified_at": "2026-07-11T17:58:54.189036+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守"
+    },
+    {
+      "path": "00_规范与配置/09_抖音公开规则与治理信息索引_2026-07-12.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "39704cfca6eca51e9305e51aed3c23d2abb539cbc43958a738f52e33293b8b8b",
+      "modified_at": "2026-07-11T17:54:08.678308+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守"
+    },
+    {
+      "path": "00_规范与配置/10_抖音商业投放规则证据库_2026-07-12.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "7a041f94dcfba42376f412eedb1f09f7686494ab9367a69e82278b92cff2d67c",
+      "modified_at": "2026-07-11T17:58:33.345262+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守"
+    },
+    {
+      "path": "00_规范与配置/11_抖音直播电商生活服务与开放平台规则证据库_2026-07-12.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "eab74c93aafa356dee188ca10764f161a1e31c3b7ff279766e0190108cbe7d40",
+      "modified_at": "2026-07-11T18:00:57.288310+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "命中全局固定规则或任务路由",
+      "allowed_use": "当前任务必须遵守"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/AGENTS.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "b32a9ba8db0b8df9055d04dca92ef35dac26d196a385ad19165a60578b67dbce",
+      "modified_at": "2026-10-14T15:56:44.557051+00:00",
+      "document_status": "active",
+      "authority_level": "hard-rule",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/project.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "40bec5cd8294d0300ad44afe9952f311a44b27ff4c74cee9963934fd6afb0f84",
+      "modified_at": "2026-10-17T10:03:07.269742+00:00",
+      "document_status": "active",
+      "authority_level": "project-current",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/README.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "5b3af8435f2276e9b65a8a163bc6799841358cb17e28dd7fa3c424f1efb1955b",
+      "modified_at": "2026-10-14T15:56:44.560140+00:00",
+      "document_status": "current",
+      "authority_level": "project-current",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "6f4cc6620e11c5d50d2cfb4996898b1e27bb4009ba6c91704015f90018ca0e4b",
+      "modified_at": "2026-10-14T15:56:44.559220+00:00",
+      "document_status": "active",
+      "authority_level": "reference",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "efadcb3448dec7f2e45cc610cc4c9948273a1b66f01034404b89bdea5e8327df",
+      "modified_at": "2026-10-17T10:03:07.298083+00:00",
+      "document_status": "active",
+      "authority_level": "reference",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/workflow/production-baseline.v1.json",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "61a34392fc14ebc8f61bde0afed9468701c19da289bf8968c72272606821a498",
+      "modified_at": "2026-08-11T09:55:50.597576+00:00",
+      "document_status": "active",
+      "authority_level": "reference",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/workflow/upgrade-backlog.json",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "cb0031423a653513e96be76d2b1fa22748deca61ece4caae1fe790bd60aaf35c",
+      "modified_at": "2026-08-11T14:12:08.086543+00:00",
+      "document_status": "active",
+      "authority_level": "reference",
+      "match_reason": "项目注册表指定的当前上下文入口",
+      "allowed_use": "用于当前任务的事实与约束判断"
+    },
+    {
+      "path": "01_项目实战/抖音知识中台/工作区/账号增长反馈/2026-10-10-复盘价值与调用卡顿根因及最小升级方案.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "468aa7efe6a24fce3269f4af3a9aab1935caf694328a3637e7120939a2b6745d",
+      "modified_at": "2026-10-10T06:56:46.202905+00:00",
+      "document_status": "active",
+      "authority_level": "project-record",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 39",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实"
+    },
+    {
+      "path": "06_每日复盘/2026-10-07.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "33596cdc8faed7cda653d44989b3a5a74ee96af7126953a6765657063248a8b4",
+      "modified_at": "2026-10-08T02:40:01.460761+00:00",
+      "document_status": "active",
+      "authority_level": "timeline-evidence",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 37",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实"
+    },
+    {
+      "path": "01_项目实战/抖音知识中台/工作区/2026-09-27-姜胡说16条-短视频系统与一人公司/00-入库总览.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "56ef38bf4890e6d320b73e2a3ac763ef9fb3762eda6533ce0d5148deeb365a6d",
+      "modified_at": "2026-09-27T07:19:43.041781+00:00",
+      "document_status": "active",
+      "authority_level": "project-record",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 37",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实"
+    },
+    {
+      "path": "07_知识库治理/2026-07-18_口播内容大脑事故根因与修复验收.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "2153a523865e119915cb0a60cfa17711c4122b447cc0885c60d0ab62215702bc",
+      "modified_at": "2026-07-18T04:53:25.939230+00:00",
+      "document_status": "active",
+      "authority_level": "governance-evidence",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 37",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实"
+    },
+    {
+      "path": "01_项目实战/抖音知识中台/工作区/2026-09-20-李梓赫-2026抖音创作者大会-截图转写与口播参考.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "066c02758497016d822f4329a021bbbeeeade6bc5ee77c07cf06609cb2c38444",
+      "modified_at": "2026-09-26T15:25:31.362091+00:00",
+      "document_status": "active",
+      "authority_level": "project-record",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 33",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实"
+    },
+    {
+      "path": "02_技术积累/MCP配置完成报告_2026-06-26.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "a162fefd067b3264d8a815af4c6cb7486d211f58320f9ae926b10430f2bc5e88",
+      "modified_at": "2026-07-14T09:26:14.577685+00:00",
+      "document_status": "active",
+      "authority_level": "reusable-learning",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 6",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实"
+    },
+    {
+      "path": "02_技术积累/MCP工具全景推荐.md",
+      "line_start": 1,
+      "line_end": 40,
+      "sha256": "c88474aca4b948194ca3ad0e3f89d47e493eb2f6480d44a8759d64caa69ff4b0",
+      "modified_at": "2026-07-14T09:26:14.577013+00:00",
+      "document_status": "active",
+      "authority_level": "reusable-learning",
+      "match_reason": "确定性文本检索命中当前任务，相关度分数 6",
+      "allowed_use": "作为相似案例或经验线索；采用前仍需核对当前项目事实"
+    }
+  ],
+  "date": "2026-10-17",
+  "project": "口播",
+  "task_description": "20261017小公司AI纸艺视频接入与V9完整观看候选导出",
+  "project_dir": "/Users/pc/Documents/口播",
+  "must_read": [
+    "index.md",
+    "00_规范与配置/知识库路由表.json",
+    "00_规范与配置/03_-毛选方法论/00-总纲.md",
+    "00_规范与配置/07_第一性原理全局决策规范.md",
+    "00_规范与配置/12_公开内容生产大脑硬门禁.md",
+    "00_规范与配置/03_最佳实践/抖音口播内容与DOU+投放边界.md",
+    "00_规范与配置/08_抖音中国大陆规则全景库_2026-07-12.md",
+    "00_规范与配置/09_抖音公开规则与治理信息索引_2026-07-12.md",
+    "00_规范与配置/10_抖音商业投放规则证据库_2026-07-12.md",
+    "00_规范与配置/11_抖音直播电商生活服务与开放平台规则证据库_2026-07-12.md",
+    "/Users/pc/Documents/口播/AGENTS.md",
+    "/Users/pc/Documents/口播/project.md",
+    "/Users/pc/Documents/口播/README.md",
+    "/Users/pc/Documents/口播/knowledge/00-项目知识索引.md",
+    "/Users/pc/Documents/口播/knowledge/08-决策与复盘日志.md",
+    "/Users/pc/Documents/口播/workflow/production-baseline.v1.json",
+    "/Users/pc/Documents/口播/workflow/upgrade-backlog.json"
+  ],
+  "latest_daily_reviews": [
+    "06_每日复盘/2026-10-17.md",
+    "06_每日复盘/2026-10-16.md",
+    "06_每日复盘/2026-10-15.md",
+    "06_每日复盘/2026-10-14.md",
+    "06_每日复盘/2026-10-13.md"
+  ],
+  "ten_questions": [
+    "为谁服务，谁会受到影响？",
+    "要改变的真实状态和可观测结果是什么？",
+    "已知事实、证据、未知项和假设分别是什么？",
+    "当前阶段的主要矛盾是什么？",
+    "人员、时间、数据、权限和外部依赖是什么？",
+    "最小可执行、可验证、可回滚的一步是什么？",
+    "什么真实证据算通过，谁验收？",
+    "法律、安全、隐私、伦理和不可逆风险是什么？",
+    "当前阶段、下一阶段和暂停项是什么？",
+    "结果、失败、决策和经验沉淀到哪里？"
+  ]
+}

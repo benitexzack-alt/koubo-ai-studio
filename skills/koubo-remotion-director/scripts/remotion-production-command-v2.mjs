@@ -8,18 +8,30 @@ const previewSettingsArgs = (settings, context) => {
   const reject = (code) => { throw Object.assign(new Error(`本期候选导出参数拒绝：${code}`), {code}); };
   // 本期静图兼容许可仅允许1280x720内部预览；不复用或放宽上一期规则。
   if (context?.preflightRoute === 'small-business-ai-agility-current-chat-review') {
+    const videoR2 = context?.revisionId === 'small-business-ai-agility-v9-video-candidate-r2-20261017';
     if (context?.mode !== 'preview' || context?.command !== 'direct-remotion-preview' ||
         context?.episodeId !== 'small-business-ai-agility-20261017' ||
         context?.jobId !== '20261017_small_business_ai_agility_v9_candidate' ||
-        context?.revisionId !== 'small-business-ai-agility-v9-static-preview-r1-20261017' ||
+        (!videoR2 && context?.revisionId !== 'small-business-ai-agility-v9-static-preview-r1-20261017') ||
         context?.inputFormat !== 'director-cues-v2-surface-bound' ||
         context?.width !== 1920 || context?.height !== 1080 || context?.fps !== 30 ||
         context?.durationSeconds !== 4126 / 30) reject('RRPV2_PREVIEW_SETTINGS_SCOPE_INVALID');
-    if (!settings || Array.isArray(settings) || typeof settings !== 'object' || Object.keys(settings).length !== 3 ||
-        settings.concurrency !== 1 || settings.timeoutInMilliseconds !== 120000 || settings.scale !== 2 / 3) {
+    const hasFrames = settings && Object.hasOwn(settings, 'frames');
+    if (!settings || Array.isArray(settings) || typeof settings !== 'object' ||
+        Object.keys(settings).length !== (videoR2 && hasFrames ? 4 : 3) ||
+        Object.keys(settings).some(key => !['concurrency', 'timeoutInMilliseconds', 'scale', ...(videoR2 ? ['frames'] : [])].includes(key)) ||
+        settings.concurrency !== 1 || settings.timeoutInMilliseconds !== 120000 ||
+        (videoR2 ? ![1, 2 / 3].includes(settings.scale) : settings.scale !== 2 / 3)) {
       reject('RRPV2_PREVIEW_SETTINGS_INVALID');
     }
-    return ['--concurrency=1', '--timeout=120000', '--scale=0.6666666666666666'];
+    if (hasFrames && (!videoR2 || settings.scale !== 2 / 3 || !settings.frames ||
+        Array.isArray(settings.frames) || Object.keys(settings.frames).length !== 2 ||
+        !Number.isInteger(settings.frames.start) || !Number.isInteger(settings.frames.end) ||
+        settings.frames.start < 0 || settings.frames.end < settings.frames.start || settings.frames.end >= 4126)) {
+      reject('RRPV2_PREVIEW_SETTINGS_INVALID');
+    }
+    return ['--concurrency=1', '--timeout=120000', `--scale=${settings.scale}`,
+      ...(hasFrames ? [`--frames=${settings.frames.start}-${settings.frames.end}`] : [])];
   }
   const fullCandidate = context?.revisionId === 'musk-grok-business-ai-v9-full-candidate-r3-20261016';
   if (context?.mode !== 'preview' || context?.command !== 'direct-remotion-preview' ||

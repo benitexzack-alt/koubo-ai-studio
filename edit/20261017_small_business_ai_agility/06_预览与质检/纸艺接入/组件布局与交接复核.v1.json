@@ -1,0 +1,367 @@
+{
+  "schemaVersion": "paper-component-handoff-review/v1",
+  "episodeId": "20261017_small_business_ai_agility",
+  "checkedAt": "2026-10-17T19:13:54.053347+08:00",
+  "scope": "实际源纸艺画面抽帧、组件布局数值与时间映射；不构成合成片视觉或声音验收",
+  "source": {
+    "path": "/Users/pc/Downloads/视频 (2).mp4",
+    "sha256": "d4a4a213bcad26e7708ac7dbd7028dca37162c94773228cd9b0a10e57b1ad03a",
+    "width": 1344,
+    "height": 768,
+    "fps": 24,
+    "frames": 192,
+    "durationSeconds": 8,
+    "videoCodec": "h264",
+    "pixelFormat": "yuv420p",
+    "audioCodec": "aac",
+    "audioSampleRate": 32000,
+    "audioChannels": 2
+  },
+  "sourceVisualReview": {
+    "contactSheet": "edit/20261017_small_business_ai_agility/06_预览与质检/纸艺接入/组件复核_纸艺联系表.jpg",
+    "framesInspected": [
+      0,
+      12,
+      24,
+      48,
+      72,
+      96,
+      120,
+      144,
+      168,
+      180,
+      191
+    ],
+    "observed": "试用牌沿轨道抵达卡点，卡点与调整门片旋开，试用牌继续前行抵达再试台。末段试用/再试可见。",
+    "limitation": "末段调整门片被源片自身推近移至下边缘，局部已出画；本期contain布局未额外裁切。"
+  },
+  "layout": {
+    "paper": {
+      "x": 520,
+      "y": 90,
+      "width": 1344,
+      "height": 768,
+      "fit": "contain",
+      "sourceScale": 1
+    },
+    "presenterPip": {
+      "x": 64,
+      "y": 620,
+      "width": 400,
+      "height": 225
+    },
+    "subtitle": {
+      "x": 88,
+      "y": 886,
+      "width": 1744,
+      "height": 168
+    },
+    "pipToPaperHorizontalGap": 56,
+    "paperToSubtitleVerticalGap": 28,
+    "pipToSubtitleVerticalGap": 41,
+    "stablePipIntersectsPaper": false,
+    "subtitleIntersectsPaper": false,
+    "subtitleIntersectsPip": false
+  },
+  "change": {
+    "path": "remotion/src/small-business-ai-agility-20261017/Composition.tsx",
+    "sha256": "00bd277ea7be2b824e0e9503da6e9cc79576153b91d9aa775777028cc6f6cd64",
+    "before": "transitionFrames: 8",
+    "after": "transitionFrames: 12",
+    "durationSeconds": 0.4,
+    "paperFadeUnchangedFrames": 5,
+    "authority": "主线程明确同意仅本期真人首尾12帧过渡，纸艺保持5帧淡变",
+    "otherCodeChanged": false,
+    "runtimeSnapshotModified": false
+  },
+  "timingMapping": {
+    "slotWindow": {
+      "from": 1998,
+      "toExclusive": 2238
+    },
+    "compositionFps": 30,
+    "outputDurationFrames": 240,
+    "outputDurationSeconds": 8,
+    "sourceInFrame": 0,
+    "sourceFps": 24,
+    "sourceDurationFrames": 192,
+    "computedTrimBeforeCompositionFrames": 0,
+    "computedTrimAfterCompositionFrames": 240,
+    "playbackRate": 1,
+    "wrongTrimAfter192WouldYieldSeconds": 6.4,
+    "lastOutputFrameSourceTimeSeconds": 7.966666666666667,
+    "addedFreezeOrLoop": false,
+    "note": "OffthreadVideo/Audio的trimBefore与trimAfter按本期30fps解释；24fps是源帧计数换算依据，不能把源192帧当输出trimAfter。"
+  },
+  "presenterContinuity": {
+    "source": "同一常驻OffthreadVideo，纸艺进出仅改变外层矩形；不重新建真人Sequence或重播声音",
+    "voice": "常驻独立原声Audio，gain=1、playbackRate=1；纸艺视频muted并另接经审核的原生动作音",
+    "enterFullyPipFrame": 2010,
+    "exitBeginsFrame": 2226,
+    "fullScreenResumeFrame": 2238
+  },
+  "riskFramesForControlledExport": [
+    1997,
+    1998,
+    1999,
+    2004,
+    2009,
+    2010,
+    2022,
+    2118,
+    2148,
+    2178,
+    2208,
+    2225,
+    2226,
+    2232,
+    2233,
+    2234,
+    2237,
+    2238
+  ],
+  "riskFrameValues": [
+    {
+      "frame": 1997,
+      "seconds": 66.566667,
+      "paperSourceSeconds": null,
+      "presenterMix": 0,
+      "presenterRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "frame": 1998,
+      "seconds": 66.6,
+      "paperSourceSeconds": 0,
+      "presenterMix": 0,
+      "presenterRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "frame": 1999,
+      "seconds": 66.633333,
+      "paperSourceSeconds": 0.033333,
+      "presenterMix": 0.019675925925925927,
+      "presenterRect": {
+        "x": 1.2592592592592593,
+        "y": 12.199074074074074,
+        "width": 1890.0925925925926,
+        "height": 1063.1770833333333
+      }
+    },
+    {
+      "frame": 2004,
+      "seconds": 66.8,
+      "paperSourceSeconds": 0.2,
+      "presenterMix": 0.5,
+      "presenterRect": {
+        "x": 32,
+        "y": 310,
+        "width": 1160,
+        "height": 652.5
+      }
+    },
+    {
+      "frame": 2009,
+      "seconds": 66.966667,
+      "paperSourceSeconds": 0.366667,
+      "presenterMix": 0.9803240740740741,
+      "presenterRect": {
+        "x": 62.74074074074074,
+        "y": 607.8009259259259,
+        "width": 429.9074074074074,
+        "height": 241.82291666666663
+      }
+    },
+    {
+      "frame": 2010,
+      "seconds": 67,
+      "paperSourceSeconds": 0.4,
+      "presenterMix": 1,
+      "presenterRect": {
+        "x": 64,
+        "y": 620,
+        "width": 400,
+        "height": 225
+      }
+    },
+    {
+      "frame": 2022,
+      "seconds": 67.4,
+      "paperSourceSeconds": 0.8,
+      "presenterMix": 1,
+      "presenterRect": {
+        "x": 64,
+        "y": 620,
+        "width": 400,
+        "height": 225
+      }
+    },
+    {
+      "frame": 2118,
+      "seconds": 70.6,
+      "paperSourceSeconds": 4,
+      "presenterMix": 1,
+      "presenterRect": {
+        "x": 64,
+        "y": 620,
+        "width": 400,
+        "height": 225
+      }
+    },
+    {
+      "frame": 2148,
+      "seconds": 71.6,
+      "paperSourceSeconds": 5,
+      "presenterMix": 1,
+      "presenterRect": {
+        "x": 64,
+        "y": 620,
+        "width": 400,
+        "height": 225
+      }
+    },
+    {
+      "frame": 2178,
+      "seconds": 72.6,
+      "paperSourceSeconds": 6,
+      "presenterMix": 1,
+      "presenterRect": {
+        "x": 64,
+        "y": 620,
+        "width": 400,
+        "height": 225
+      }
+    },
+    {
+      "frame": 2208,
+      "seconds": 73.6,
+      "paperSourceSeconds": 7,
+      "presenterMix": 1,
+      "presenterRect": {
+        "x": 64,
+        "y": 620,
+        "width": 400,
+        "height": 225
+      }
+    },
+    {
+      "frame": 2225,
+      "seconds": 74.166667,
+      "paperSourceSeconds": 7.566667,
+      "presenterMix": 1,
+      "presenterRect": {
+        "x": 64,
+        "y": 620,
+        "width": 400,
+        "height": 225
+      }
+    },
+    {
+      "frame": 2226,
+      "seconds": 74.2,
+      "paperSourceSeconds": 7.6,
+      "presenterMix": 1,
+      "presenterRect": {
+        "x": 64,
+        "y": 620,
+        "width": 400,
+        "height": 225
+      }
+    },
+    {
+      "frame": 2232,
+      "seconds": 74.4,
+      "paperSourceSeconds": 7.8,
+      "presenterMix": 0.5,
+      "presenterRect": {
+        "x": 32,
+        "y": 310,
+        "width": 1160,
+        "height": 652.5
+      }
+    },
+    {
+      "frame": 2233,
+      "seconds": 74.433333,
+      "paperSourceSeconds": 7.833333,
+      "presenterMix": 0.3761574074074074,
+      "presenterRect": {
+        "x": 24.074074074074073,
+        "y": 233.21759259259258,
+        "width": 1348.2407407407409,
+        "height": 758.3854166666667
+      }
+    },
+    {
+      "frame": 2234,
+      "seconds": 74.466667,
+      "paperSourceSeconds": 7.866667,
+      "presenterMix": 0.2592592592592593,
+      "presenterRect": {
+        "x": 16.592592592592595,
+        "y": 160.74074074074076,
+        "width": 1525.9259259259259,
+        "height": 858.3333333333333
+      }
+    },
+    {
+      "frame": 2237,
+      "seconds": 74.566667,
+      "paperSourceSeconds": 7.966667,
+      "presenterMix": 0.019675925925925944,
+      "presenterRect": {
+        "x": 1.2592592592592604,
+        "y": 12.199074074074085,
+        "width": 1890.0925925925926,
+        "height": 1063.1770833333333
+      }
+    },
+    {
+      "frame": 2238,
+      "seconds": 74.6,
+      "paperSourceSeconds": null,
+      "presenterMix": 0,
+      "presenterRect": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  ],
+  "reviewAttention": [
+    "进入前0.4秒真人缩入发生于试用牌接近卡点的主要动作之前；需看1998/2004/2010真实合成帧。",
+    "退出前段仍可读上部再试区域；真人最后数帧扩回全屏是预期交接，重点看2226/2232/2234/2237。",
+    "确认中段门片旋开及试用牌前行动作，真人小窗和字幕均保持独立区域。",
+    "确认源24fps在30fps时间线上正常重采样，没有末帧延长、循环或变速。"
+  ],
+  "checks": {
+    "independentTsc": "passed",
+    "sourceAndSlotDurationMath": "passed",
+    "stableLayoutNonOverlapMath": "passed",
+    "renderStarted": false,
+    "compositedVisualAccepted": false,
+    "audioAccepted": false
+  },
+  "actualRuntimePlan": {
+    "path": "remotion/src/small-business-ai-agility-20261017/runtime-plan.snapshot.json",
+    "sha256": "a7a6a0fd39e93828671ee0326b65ec541787853040de46ee62cc70791c917581",
+    "previewParameterValidation": "passed",
+    "assetType": "video",
+    "sourceInFrame": 0,
+    "sourceFps": 24,
+    "sourceDurationFrames": 192,
+    "nativeAudioGain": 0.32,
+    "computedTrimBefore": 0,
+    "computedTrimAfter": 240
+  }
+}

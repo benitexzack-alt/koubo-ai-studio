@@ -10,7 +10,7 @@ const CAPTION = 'SmallBusinessAgility20261017-Caption';
 const C = {ink: '#16252d', cream: '#f2eadc', white: '#fffdf8', accent: '#e1b96d', muted: '#c8d1d4'};
 const mediaError = (src: string) => (error: Error) => cancelRender(new Error(`本期媒体不可用：${src}；${error.message}`));
 export const MEDIA_LAYOUT = {presenter: {x: 64, y: 620, width: 400, height: 225},
-  paper: {x: 520, y: 90, width: 1344, height: 768}, transitionFrames: 8} as const;
+  paper: {x: 520, y: 90, width: 1344, height: 768}, transitionFrames: 12} as const;
 
 /** 连续资料共用一次真人缩入/回全屏；片段边界不改变真人位置。 */
 export const mergePresenterWindows = (slots: MediaSlot[]): FrameWindow[] => {

@@ -7,6 +7,7 @@ import {tmpdir} from 'node:os';
 import {dirname, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {AGILITY_CHAT_PREVIEW_MODE, AGILITY_CHAT_PREVIEW_ROUTE, AGILITY_CHAT_SOURCE,
+  AGILITY_VIDEO_R2_SOURCE, AGILITY_VIDEO_R2_REVISION,
   validateAgilityChatPreviewAuthorization} from '../scripts/small-business-ai-agility-chat-preview-authorization.mjs';
 import {buildControlledRemotionRenderArgsV2} from '../scripts/remotion-production-command-v2.mjs';
 import {computeProductionGateClosureV2} from '../scripts/director-production-preflight-v2.mjs';
@@ -110,6 +111,47 @@ try {
     assert.throws(() => buildControlledRemotionRenderArgsV2({...base, renderContext: context, previewRenderSettings: invalid}),
       error => error.code === 'RRPV2_PREVIEW_SETTINGS_INVALID'); passed++;
   }
+  const r2Source = readFileSync(resolve(repo, AGILITY_VIDEO_R2_SOURCE.path));
+  assert.equal(digest(r2Source), AGILITY_VIDEO_R2_SOURCE.sha256);
+  put(AGILITY_VIDEO_R2_SOURCE.path, r2Source);
+  const resetR2 = () => {
+    reset();
+    input.revisionId = binding.revisionId = authorization.revisionId = job.productionGate.revisionId = AGILITY_VIDEO_R2_REVISION;
+    input.artifacts = {mediaIntake: put('r2-intake.json', {assets: [{kind: 'paper',
+      source: {sha256: 'd4a4a213bcad26e7708ac7dbd7028dca37162c94773228cd9b0a10e57b1ad03a'}, media: {type: 'video'}}]})};
+    authorization.binding = structuredClone(binding);
+    authorization.sourceMessages = {...AGILITY_VIDEO_R2_SOURCE}; save();
+  };
+  resetR2(); assert.equal(check().independentSignature, false); passed++;
+  for (const invalidCommand of ['direct-remotion-render', 'release-validation']) {
+    resetR2(); command = invalidCommand;
+    assert.throws(check, error => error.code === 'AGCP_COMMAND_OR_FORMAT_FORBIDDEN'); passed++;
+  }
+  resetR2(); authorization.sourceMessages = {...AGILITY_CHAT_SOURCE}; save();
+  assert.throws(check, error => error.code === 'AGCP_CURRENT_CHAT_REFERENCE_REQUIRED'); passed++;
+  resetR2(); input.artifacts.mediaIntake = put('wrong-paper.json', {assets: [{kind: 'paper',
+    source: {sha256: '8'.repeat(64)}, media: {type: 'video'}}]});
+  assert.throws(check, error => error.code === 'AGCP_R2_PAPER_SOURCE_REQUIRED'); passed++;
+  resetR2(); authorization.fullWatchConfirmed = true; save();
+  assert.throws(check, error => error.code === 'AGCP_FUTURE_ACCEPTANCE_FORBIDDEN'); passed++;
+  const r2Context = {...context, revisionId: AGILITY_VIDEO_R2_REVISION};
+  for (const scale of [1, 2 / 3]) {
+    const full = buildControlledRemotionRenderArgsV2({...base, renderContext: r2Context,
+      previewRenderSettings: {...settings, scale}});
+    assert.equal(full.includes(`--scale=${scale}`), true);
+    assert.equal(full.some(arg => arg.startsWith('--frames=')), false); passed++;
+  }
+  const risk = buildControlledRemotionRenderArgsV2({...base, renderContext: r2Context,
+    previewRenderSettings: {...settings, frames: {start: 1950, end: 2279}}});
+  assert.equal(risk.at(-1), '--frames=1950-2279'); passed++;
+  for (const frames of [null, [], {start: -1, end: 100}, {start: 50, end: 49},
+    {start: 0, end: 4126}, {start: 1.5, end: 30}, {start: 0, end: 30, fps: 60}]) {
+    assert.throws(() => buildControlledRemotionRenderArgsV2({...base, renderContext: r2Context,
+      previewRenderSettings: {...settings, frames}}), error => error.code === 'RRPV2_PREVIEW_SETTINGS_INVALID'); passed++;
+  }
+  assert.throws(() => buildControlledRemotionRenderArgsV2({...base, renderContext: r2Context,
+    previewRenderSettings: {...settings, scale: 1, frames: {start: 0, end: 100}}}),
+  error => error.code === 'RRPV2_PREVIEW_SETTINGS_INVALID'); passed++;
   console.log(JSON.stringify({ok: true, passed, previewDimensions: [1280, 720], durationInFrames: 4126,
     productionRenderInvoked: false, independentSignatureCreated: false}));
 } finally {rmSync(root, {recursive: true, force: true});}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "spoken-final-copy-check/v1",
+  "status": "candidate-with-one-unresolved-term",
+  "inputHashes": {
+    "srt": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_实录与字幕/用户提供_10月17日_原始.srt",
+      "sha256": "fafd2f37e99c27f9e0c8baeb7e4bfefcb123a04cfc02a0b89efc84c2b1048e45"
+    },
+    "canonical": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_实录与字幕/canonical-spoken.candidate.v1.json",
+      "sha256": "a629cfa2eeed669783c52f2827471148cf670d1877245770e43e848aad0af429"
+    },
+    "bilingual81": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_实录与字幕/captions.bilingual.v1.json",
+      "sha256": "b7e89ea2c8bc8ad1108f7ca1f150a002a5ca9e94ebe19d4339ece677bfba8809"
+    },
+    "layout78": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_实录与字幕/captions.bilingual.layout.v1.json",
+      "sha256": "10704932ca5967eb88e205b4940d6ca1268d4f747042af5e2fd006e1961a637b"
+    },
+    "layoutChanges": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_实录与字幕/captions.layout-change.v1.json",
+      "sha256": "747d4f10822da3d1d2c53acbbdb206b5eb42279cd0476d449c0944696ab0d3d3"
+    },
+    "small": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_实录与字幕/局部核对/whisper-small_19_5至37秒.txt",
+      "sha256": "8cbf4924c782cc3fc91829af6ed7eb7a8159f05db5c0f58068e6640821f268b5"
+    },
+    "base": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_实录与字幕/局部核对/whisper-base_19_5至37秒.txt",
+      "sha256": "fe37cc75139dc02ec2a0f9893b85903bf1c375b433cde5586ca907b5f0bda5f5"
+    }
+  },
+  "outputs": [
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_实录与字幕/canonical-spoken.final-candidate.v1.json",
+      "sha256": "5ff62f95d063b13ece515a3cea70064545e5e16de649d1002a16843d06ed46e9"
+    },
+    {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_实录与字幕/captions.bilingual.final-candidate.v1.json",
+      "sha256": "c950225895498cb5851d9d22f87af04cbd75f14d1a5aae6b34b1e4f243f62420"
+    }
+  ],
+  "appliedTextCorrections": [],
+  "existingLayoutChangesRetained": [
+    "S023+S024合并",
+    "S073+S074合并",
+    "S080+S081合并",
+    "S065只加句号"
+  ],
+  "termDecisions": [
+    {
+      "id": "S013",
+      "time": [
+        21.8,
+        23.766
+      ],
+      "current": "自带的组织灵敏性",
+      "decision": "retain-user-srt",
+      "evidence": [
+        "用户SRT为组织灵敏性",
+        "base识别组织靈敏性",
+        "small识别组织领命性，存在冲突"
+      ],
+      "forbiddenSubstitution": "组织敏捷性",
+      "note": "不从拍前稿恢复词语，不称已完成全量听审。"
+    },
+    {
+      "id": "S021",
+      "time": [
+        33.266,
+        35.5
+      ],
+      "current": "等真真的方案讨论落地的时候",
+      "candidate": "等真正的方案讨论落地的时候",
+      "decision": "retain-pending-direct-audio-review",
+      "evidence": [
+        "small和base均识别为真正的",
+        "同段两份ASR还出现明显误字，模型一致只作交叉线索",
+        "未取得可审计的实际听审结论"
+      ],
+      "englishCurrent": "By the time the plan is really, really discussed and implemented,",
+      "englishDecision": "keep-current-translation-until-Chinese-confirmed"
+    },
+    {
+      "id": "S040",
+      "time": [
+        67.533,
+        70.766
+      ],
+      "current": "那么全员呢当天就能用上用上手啊",
+      "decision": "retain-repetition-and-fillers",
+      "note": "重复及口头语不删；所有其他条目的呢、啊、然后等亦保留。"
+    }
+  ],
+  "checks": {
+    "originalSrtUnchanged": true,
+    "priorFilesUnchanged": true,
+    "canonical81ExactlyUserSrt": true,
+    "layout78TextEquivalentIgnoringPunctuationWhitespace": true,
+    "noOverlap": true,
+    "withinOriginalMediaDuration": true,
+    "fullAudioHumanReview": false,
+    "noRuntimeChange": true,
+    "noRendering": true
+  },
+  "scope": "只生成字幕最终剪辑候选；不改事实主张、原片、原SRT、runtime或共享文件，不渲染发布。",
+  "reviewLimitation": "不是完整原声听审通过记录，也不是成片可读性验收。"
+}

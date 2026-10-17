@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "first35s-sfx-comparison-check/v1",
+  "checkedAt": "2026-10-17T19:41:14.409246+08:00",
+  "script": {
+    "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/check-video.py",
+    "sha256": "d48ea0e41b8aadae4ae422e6d8d95cf1672955af0220d57767560d15461285c2",
+    "function": "check_sync",
+    "inMemoryWindowOverride": [
+      [
+        14,
+        17
+      ],
+      [
+        30,
+        33
+      ]
+    ],
+    "diskScriptModified": false
+  },
+  "referenceVoice": {
+    "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/05_剪辑工程/public/audio/voice.m4a",
+    "sha256": "f79e064183f1f871b94d339d0ae22a25d5e2a608cdcaf568b7bbe8c4eaea0574"
+  },
+  "results": {
+    "noAddedSfxControlledOriginal": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/小公司AI_V9视频候选R2_前35秒720p_无附加音效.mp4",
+      "sha256": "120c1333a4133062e2e20fb8c45649f6f8a879f08942b8b4f2a33d56cce584a9",
+      "bytes": 25180222,
+      "width": 1280,
+      "height": 720,
+      "fps": "30/1",
+      "frames": 1050,
+      "duration": 35.050667,
+      "metadataPass": true,
+      "fullDecode": true,
+      "syncWindows": [
+        {
+          "start": 14,
+          "end": 17,
+          "lagSamples16k": 683,
+          "lagMs": 42.6875,
+          "alignedCorrelation": 0.9974270885889851,
+          "sameTimestampCorrelation": -0.016406622555608583,
+          "pass": false
+        },
+        {
+          "start": 30,
+          "end": 33,
+          "lagSamples16k": 683,
+          "lagMs": 42.6875,
+          "alignedCorrelation": 0.9986405650446913,
+          "sameTimestampCorrelation": -0.02331091158932641,
+          "pass": false
+        }
+      ],
+      "sameTimestampSyncPass": false
+    },
+    "withAddedSfxViewingComparison": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/前35秒720p_有附加音效_观看对照.mp4",
+      "sha256": "d13cc6c54003ce1583a41ac82b0a2e51b6c8577fe642c3180b6ce122174a2a4c",
+      "bytes": 9690335,
+      "width": 1280,
+      "height": 720,
+      "fps": "30/1",
+      "frames": 1050,
+      "duration": 35.0,
+      "metadataPass": true,
+      "fullDecode": true,
+      "syncWindows": [
+        {
+          "start": 14,
+          "end": 17,
+          "lagSamples16k": 0,
+          "lagMs": 0.0,
+          "alignedCorrelation": 0.9993728354226016,
+          "sameTimestampCorrelation": 0.9993728354226016,
+          "pass": true
+        },
+        {
+          "start": 30,
+          "end": 33,
+          "lagSamples16k": 0,
+          "lagMs": 0.0,
+          "alignedCorrelation": 0.9995623699391559,
+          "sameTimestampCorrelation": 0.9995623699391559,
+          "pass": true
+        }
+      ],
+      "sameTimestampSyncPass": true
+    },
+    "noAddedSfxViewingComparison": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/前35秒720p_无附加音效_观看对照.mp4",
+      "sha256": "3be8f2020d8d2bc3cfec178a92a45a97053e5d7934a188161672fbd7c932e5ca",
+      "bytes": 25180239,
+      "width": 1280,
+      "height": 720,
+      "fps": "30/1",
+      "frames": 1050,
+      "duration": 35.008,
+      "metadataPass": true,
+      "fullDecode": true,
+      "syncWindows": [
+        {
+          "start": 14,
+          "end": 17,
+          "lagSamples16k": 0,
+          "lagMs": 0.0,
+          "alignedCorrelation": 0.9993794494710858,
+          "sameTimestampCorrelation": 0.9993794494710858,
+          "pass": true
+        },
+        {
+          "start": 30,
+          "end": 33,
+          "lagSamples16k": 0,
+          "lagMs": 0.0,
+          "alignedCorrelation": 0.9995673375239552,
+          "sameTimestampCorrelation": 0.9995673375239552,
+          "pass": true
+        }
+      ],
+      "sameTimestampSyncPass": true
+    }
+  },
+  "correction": {
+    "neededAndAuthorized42_7msDelayDetected": true,
+    "performed": true,
+    "audioTimestampOffsetSeconds": -0.0426666667,
+    "command": [
+      "ffmpeg",
+      "-nostdin",
+      "-v",
+      "error",
+      "-n",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/小公司AI_V9视频候选R2_前35秒720p_无附加音效.mp4",
+      "-itsoffset",
+      "-0.0426666667",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/小公司AI_V9视频候选R2_前35秒720p_无附加音效.mp4",
+      "-map",
+      "0:v:0",
+      "-map",
+      "1:a:0",
+      "-c",
+      "copy",
+      "-movflags",
+      "+faststart",
+      "-avoid_negative_ts",
+      "disabled",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/前35秒720p_无附加音效_观看对照.mp4"
+    ],
+    "streamCopyOnly": true,
+    "originalPreserved": true
+  },
+  "protectedSourcesUnchanged": true,
+  "humanFullWatchConfirmed": false,
+  "formalAccepted": false,
+  "publishAuthorized": false,
+  "scopeNote": "仅前35秒两版完整解码、格式帧数、两个无纸艺原生声窗口的音频延迟；未作整片人审、附加响度或画面验收。"
+}
