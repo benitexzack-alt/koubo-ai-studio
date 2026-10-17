@@ -21,6 +21,57 @@ const verifiedMedia = new Map();
 const verifiedPcm = new Map();
 export const nativeV2FullDecodeTimeoutMs = (durationSeconds) => Math.min(600000, Math.max(120000, Math.ceil(durationSeconds * 2000)));
 
+// 用户只接受本期 P01 的静态用途；不把历史结构/OCR失败改写为动态验收通过。
+const AGILITY_STATIC_PAPER = Object.freeze({
+  episodeId: 'small-business-ai-agility-20261017', taskId: 'SMALL_BUSINESS_AI_AGILITY_20261017',
+  selectionPath: 'edit/20261017_small_business_ai_agility/00_控制/P01静图选择与Remotion预览请求.v1.json',
+  selectionSha256: '11b5d7522abe960ca5dfded7f1268d196938c871a7cb1ee4edc2d3fe7cf70188',
+  imagePath: 'edit/20261017_small_business_ai_agility/01_素材投放区/04_纸艺视频/P01_首帧_r1.png',
+  imageSha256: 'fbcd564b441932f28b3543dc7c2460b1b92241c010354a5b965427889fa8a0b0',
+  previousQaPath: 'edit/20261017_small_business_ai_agility/04_首帧质检/P01_生成与检查回执_r1-r2.json',
+  previousQaSha256: 'cd07bcc90be5078be2bda1cd64916815121ec0f1dfa623ca3f1388eefd621d12',
+});
+
+export function validateAgilityStaticPaperSelection({projectRoot, contract, job, scope, runtime, closure, itemFor}) {
+  const fixed = AGILITY_STATIC_PAPER;
+  requireValue(contract.episodeId === fixed.episodeId && contract.taskId === fixed.taskId &&
+    job.videoId === fixed.episodeId && scope.scope?.useUserSelectedStaticPaper === true &&
+    scope.scope.useExistingPaperVideos === false, 'NV2_STATIC_PAPER_SCOPE_INVALID');
+  const bound = (reference, path, hash) => reference?.sha256 === hash &&
+    resolve(projectRoot, reference.path ?? '') === resolve(projectRoot, path) &&
+    sha256File(resolve(projectRoot, path)) === hash;
+  requireValue(bound(scope.staticPaperSelection, fixed.selectionPath, fixed.selectionSha256) &&
+    bound(scope.staticPaperPreviousQa, fixed.previousQaPath, fixed.previousQaSha256),
+    'NV2_STATIC_PAPER_SELECTION_INVALID');
+  const selection = closure.document(scope.staticPaperSelection).body;
+  closure.document(scope.staticPaperPreviousQa);
+  requireValue(selection.schemaVersion === 'episode-static-paper-user-selection/v1' &&
+    selection.episodeId === fixed.episodeId && selection.taskId === fixed.taskId &&
+    selection.source === 'current-human-chat-message' && selection.staticImageChoiceAccepted === true &&
+    selection.staticDowngrade?.approved === true && selection.staticDowngrade.approvedBy === 'user' &&
+    selection.dynamicQualityAccepted === false && selection.previousQaPreserved === true &&
+    selection.previousQaPath === fixed.previousQaPath && selection.formalAccepted === false &&
+    selection.fullWatchConfirmed === false && selection.publishAuthorized === false &&
+    selection.independentSignature === false && selection.runningHubAuthorized === false &&
+    selection.videoGenerationOnExternalPlatformAuthorized === false &&
+    selection.userQuotes?.includes('直接就用这张静态图片去Remotion直接生成视频就行了。') &&
+    bound(selection.selectedImage, fixed.imagePath, fixed.imageSha256), 'NV2_STATIC_PAPER_ACCEPTANCE_INVALID');
+  const papers = runtime.mediaSlots.filter(slot => slot.kind === 'paper');
+  requireValue(runtime.fps === 30 && papers.length === 1 && papers[0].id === 'P01' &&
+    papers[0].state === 'ready' && papers[0].window?.from === 1998 && papers[0].window.to === 2238 &&
+    papers[0].asset?.type === 'image' && papers[0].asset.sourceInFrame === 0 &&
+    papers[0].asset.nativeAudio === null && papers[0].asset.audioDisposition === 'not-applicable' &&
+    (papers[0].asset.playbackRate === undefined || papers[0].asset.playbackRate === 1),
+    'NV2_STATIC_PAPER_SLOT_INVALID');
+  const item = itemFor(papers[0].asset.src);
+  requireValue(item.media?.type === 'image' && bound(item.source, fixed.imagePath, fixed.imageSha256) &&
+    bound(item.sourceReceipt, fixed.selectionPath, fixed.selectionSha256) &&
+    item.renderAsset?.sha256 === fixed.imageSha256 &&
+    sha256File(resolve(projectRoot, item.renderAsset.path)) === fixed.imageSha256,
+    'NV2_STATIC_PAPER_ASSET_INVALID');
+  return true;
+}
+
 // 仅本期 R3 的真实校字指令；保留旧 11 条候选，新增范围严格来自已保存的 8 条实际差异。
 export function validateMuskGrokR3UserDirectedCorrections({projectRoot, contract, job, correction, segments, closure}) {
   const revision = 'musk-grok-business-ai-v9-full-candidate-r3-20261016';
@@ -159,8 +210,11 @@ export function validateNativeV2FirstCandidate({projectRoot, contract, job, read
   }
   for (const body of [scope, intake]) requireValue(body.episodeId === contract.episodeId &&
     body.taskId === contract.taskId && body.revisionId === contract.revisionId, 'NV2_INPUT_IDENTITY_MISMATCH');
+  const staticPaperRequested = scope.scope?.useUserSelectedStaticPaper === true;
   requireValue(scope.schemaVersion === 'episode-native-v2-review-authorization/v1' &&
-    ['reviewOnly', 'preserveAllOriginalSpeech', 'useExistingPaperVideos', 'allowPendingReviewInCandidate'].every((key) => scope.scope?.[key] === true) &&
+    ['reviewOnly', 'preserveAllOriginalSpeech', 'allowPendingReviewInCandidate'].every((key) => scope.scope?.[key] === true) &&
+    (staticPaperRequested ? scope.scope.useExistingPaperVideos === false :
+      scope.scope.useExistingPaperVideos === true && !scope.staticPaperSelection && !scope.staticPaperPreviousQa) &&
     scope.scope?.formalAuthorized === false && scope.scope?.publishAuthorized === false &&
     text(scope.quotedUserMessage) && Number.isFinite(Date.parse(scope.recordedAt)), 'NV2_REVIEW_SCOPE_REQUIRED');
   requireValue(readFileSync(resolve(projectRoot, scope.sourceMessage?.path ?? ''), 'utf8').includes(scope.quotedUserMessage),
@@ -261,7 +315,8 @@ export function validateNativeV2FirstCandidate({projectRoot, contract, job, read
   const needed = [runtime.host.src, runtime.voice.src, runtime.fonts?.displaySrc, runtime.fonts?.captionSrc,
     ...runtime.sfx.map((item) => item.src)];
   const papers = runtime.mediaSlots.filter((slot) => slot.kind === 'paper');
-  requireValue(papers.length > 0 && papers.every((slot) => slot.state === 'ready' && slot.asset?.type === 'video'),
+  if (staticPaperRequested) validateAgilityStaticPaperSelection({projectRoot, contract, job, scope, runtime, closure, itemFor});
+  else requireValue(papers.length > 0 && papers.every((slot) => slot.state === 'ready' && slot.asset?.type === 'video'),
     'NV2_EXISTING_PAPER_REQUIRED');
   for (const slot of runtime.mediaSlots) {
     requireValue(reviewStatus(slot.reviewStatus), 'NV2_MEDIA_REVIEW_STATUS_INVALID');

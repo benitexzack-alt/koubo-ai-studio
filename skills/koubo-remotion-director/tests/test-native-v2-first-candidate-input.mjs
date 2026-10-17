@@ -7,7 +7,7 @@ import {tmpdir} from 'node:os';
 import {dirname, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {buildFirstCandidateInputContract, validateFirstCandidateInputContract} from '../scripts/first-candidate-input-contract.mjs';
-import {NATIVE_V2_INPUT_FORMAT, nativeV2FullDecodeTimeoutMs, validateMuskGrokR3UserDirectedCorrections} from '../scripts/native-v2-first-candidate-input.mjs';
+import {NATIVE_V2_INPUT_FORMAT, nativeV2FullDecodeTimeoutMs, validateAgilityStaticPaperSelection, validateMuskGrokR3UserDirectedCorrections} from '../scripts/native-v2-first-candidate-input.mjs';
 import {PAPER_BASELINE_ID, PAPER_TEXT_POLICY} from '../scripts/paper-quality-baseline.mjs';
 import {paperMediaTools, runPaperMediaTool} from '../scripts/paper-asset-intake-media.mjs';
 import {validateDirectorExternalMessageAnchorV2} from '../scripts/director-contract-v2-core.mjs';
@@ -181,6 +181,11 @@ try {
   test('路径前缀不得越界', () => change('runtimePlan', value => {value.assetPrefix = '../';}), 'NV2_ASSET_PREFIX_INVALID');
   test('原始ASR全文不能遗漏', () => change('postshootRebind', value => {value.semanticBeats[0].sourceSegmentIds = [];}), 'NV2_REBIND_SPEECH_COVERAGE_MISMATCH');
   test('纸艺必须真实到件', () => change('runtimePlan', value => {value.mediaSlots[0].state = 'pending';}), 'NV2_EXISTING_PAPER_REQUIRED');
+  test('普通纸艺视频规则不接受静图', () => change('runtimePlan', value => {value.mediaSlots[0].asset.type = 'image';}), 'NV2_EXISTING_PAPER_REQUIRED');
+  test('静图例外不得混用原视频授权', () => change('userScope', value => {value.scope.useUserSelectedStaticPaper = true;}), 'NV2_REVIEW_SCOPE_REQUIRED');
+  test('其他项目不得声明本期静图例外', () => change('userScope', value => {
+    value.scope.useExistingPaperVideos = false; value.scope.useUserSelectedStaticPaper = true;
+  }), 'NV2_STATIC_PAPER_SCOPE_INVALID');
   test('小样授权不能升级公开发布', () => change('userScope', value => {value.scope.publishAuthorized = true;}), 'NV2_REVIEW_SCOPE_REQUIRED');
   test('输入哈希漂移必须拒绝', () => {contract.artifacts.runtimePlan.sha256 = '0'.repeat(64);}, 'FCI_INPUT_SHA_MISMATCH');
   test('分支不能默认为旧格式', () => {delete job.director.inputFormat;}, 'NV2_FORMAT_BINDING_MISMATCH');
@@ -195,6 +200,56 @@ try {
     sourceMessageSha256: sha(root), issuerGroupId: 'unsigned-current-execution', explicitAcceptanceQuote: '只允许小样'},
     'director-first-candidate-input-authorization');
   assert.equal(unsigned.ok, false); passed++;
+  // 本期真实选择只读测试：验证固定静图用途，不产生视频、独立授权或历史QA通过。
+  const agilityPrefix = 'edit/20261017_small_business_ai_agility/';
+  const agilityRef = suffix => ({path: agilityPrefix + suffix,
+    sha256: sha(readFileSync(resolve(repo, agilityPrefix + suffix)))});
+  const selectionReference = agilityRef('00_控制/P01静图选择与Remotion预览请求.v1.json');
+  const previousQaReference = agilityRef('04_首帧质检/P01_生成与检查回执_r1-r2.json');
+  const selectedImageReference = agilityRef('01_素材投放区/04_纸艺视频/P01_首帧_r1.png');
+  const staticBase = {
+    contract: {episodeId: 'small-business-ai-agility-20261017', taskId: 'SMALL_BUSINESS_AI_AGILITY_20261017'},
+    job: {videoId: 'small-business-ai-agility-20261017'},
+    scope: {scope: {useUserSelectedStaticPaper: true, useExistingPaperVideos: false},
+      staticPaperSelection: selectionReference, staticPaperPreviousQa: previousQaReference},
+    runtime: {fps: 30, mediaSlots: [{id: 'P01', kind: 'paper', state: 'ready',
+      window: {from: 1998, to: 2238}, asset: {type: 'image', src: 'media/P01_static_r1.png',
+        sourceInFrame: 0, nativeAudio: null, audioDisposition: 'not-applicable'}}]},
+    item: {source: selectedImageReference, sourceReceipt: selectionReference,
+      renderAsset: selectedImageReference, media: {type: 'image'}},
+  };
+  const staticCheck = (value = staticBase, transformSelection = value => value) =>
+    validateAgilityStaticPaperSelection({projectRoot: repo, ...value,
+      closure: {document: reference => ({body: transformSelection(JSON.parse(readFileSync(resolve(repo, reference.path), 'utf8')))})},
+      itemFor: () => value.item});
+  assert.equal(staticCheck(), true); passed++;
+  const rejectStatic = (name, mutate, code) => {
+    const value = structuredClone(staticBase); mutate(value);
+    assert.throws(() => staticCheck(value), error => error.code === code, name);
+    passed++; console.log(`通过：${name}`);
+  };
+  for (const key of ['episodeId', 'taskId']) {
+    rejectStatic(`静图不可迁移到其他${key}`, value => {value.contract[key] = 'other';}, 'NV2_STATIC_PAPER_SCOPE_INVALID');
+  }
+  rejectStatic('静图job不可换期', value => {value.job.videoId = 'other';}, 'NV2_STATIC_PAPER_SCOPE_INVALID');
+  for (const key of ['staticPaperSelection', 'staticPaperPreviousQa']) {
+    rejectStatic(`静图证据${key}不可换哈希`, value => {value.scope[key].sha256 = '0'.repeat(64);}, 'NV2_STATIC_PAPER_SELECTION_INVALID');
+    rejectStatic(`静图证据${key}不可换路径`, value => {value.scope[key].path = 'another.json';}, 'NV2_STATIC_PAPER_SELECTION_INVALID');
+  }
+  for (const [key, bad] of Object.entries({dynamicQualityAccepted: true, previousQaPreserved: false,
+    formalAccepted: true, fullWatchConfirmed: true, publishAuthorized: true, independentSignature: true,
+    runningHubAuthorized: true, videoGenerationOnExternalPlatformAuthorized: true})) {
+    assert.throws(() => staticCheck(staticBase, value => ({...value, [key]: bad})),
+      error => error.code === 'NV2_STATIC_PAPER_ACCEPTANCE_INVALID', `静图不可虚报${key}`); passed++;
+  }
+  rejectStatic('仅P01允许静图', value => {value.runtime.mediaSlots[0].id = 'P02';}, 'NV2_STATIC_PAPER_SLOT_INVALID');
+  rejectStatic('不得增加第二静图纸艺镜', value => {value.runtime.mediaSlots.push(structuredClone(value.runtime.mediaSlots[0]));}, 'NV2_STATIC_PAPER_SLOT_INVALID');
+  rejectStatic('静图时窗不得扩大', value => {value.runtime.mediaSlots[0].window.to++;}, 'NV2_STATIC_PAPER_SLOT_INVALID');
+  rejectStatic('静图不得另带原生动作音', value => {value.runtime.mediaSlots[0].asset.nativeAudio = {src: 'motion.wav'};}, 'NV2_STATIC_PAPER_SLOT_INVALID');
+  rejectStatic('静图不得伪装视频', value => {value.runtime.mediaSlots[0].asset.type = 'video';}, 'NV2_STATIC_PAPER_SLOT_INVALID');
+  rejectStatic('静图渲染字节必须等于原图', value => {value.item.renderAsset.sha256 = '0'.repeat(64);}, 'NV2_STATIC_PAPER_ASSET_INVALID');
+  rejectStatic('静图来源不得替换r2', value => {value.item.source = agilityRef('01_素材投放区/04_纸艺视频/P01_首帧_r2.png');}, 'NV2_STATIC_PAPER_ASSET_INVALID');
+  rejectStatic('静图媒体类型须真实', value => {value.item.media.type = 'video';}, 'NV2_STATIC_PAPER_ASSET_INVALID');
   // 真实本期文本与来源只读；纯校字分支测试不再次解码本期媒体。
   const r3Prefix = 'edit/20261016_musk_grok_business_ai/';
   const currentRef = path => ({path: r3Prefix + path, sha256: sha(readFileSync(resolve(repo, r3Prefix + path)))});

@@ -29,6 +29,8 @@ import {
   validateFirstCandidateInputContract,
 } from './first-candidate-input-contract.mjs';
 import {validateMuskGrokChatPreviewAuthorization} from './musk-grok-chat-preview-authorization.mjs';
+import {AGILITY_CHAT_PREVIEW_MODE, AGILITY_CHAT_PREVIEW_ROUTE,
+  validateAgilityChatPreviewAuthorization} from './small-business-ai-agility-chat-preview-authorization.mjs';
 
 export const DIRECTOR_PRODUCTION_ENTRY_BINDING_SCHEMA = 'director-production-entry-binding/v2';
 export const DIRECTOR_PRODUCTION_FREEZE_RECEIPT_SCHEMA = 'director-production-freeze-receipt/v2';
@@ -59,6 +61,7 @@ const GATE_CLOSURE_PATHS = Object.freeze([
   'skills/koubo-remotion-director/scripts/first-candidate-input-contract.mjs',
   'skills/koubo-remotion-director/scripts/native-v2-first-candidate-input.mjs',
   'skills/koubo-remotion-director/scripts/musk-grok-chat-preview-authorization.mjs',
+  'skills/koubo-remotion-director/scripts/small-business-ai-agility-chat-preview-authorization.mjs',
   'skills/koubo-remotion-director/scripts/director-cues-v2-core.mjs',
   'skills/koubo-remotion-director/scripts/paper-quality-baseline.mjs',
   'skills/koubo-remotion-director/scripts/preproduction-director-core.mjs',
@@ -511,12 +514,15 @@ const validateFirstCandidatePreflight = ({projectRoot, parsedJob, jobFile, regis
     additionalStrings: boundFiles.map((item) => item.path),
   });
   if (gate.previewAuthorizationMode !== undefined || gate.localChatPreviewAuthorization !== undefined) {
-    const authorization = validateMuskGrokChatPreviewAuthorization({projectRoot, job: parsedJob,
+    const isAgilityPreview = gate.previewAuthorizationMode === AGILITY_CHAT_PREVIEW_MODE;
+    const validateChatAuthorization = isAgilityPreview ? validateAgilityChatPreviewAuthorization : validateMuskGrokChatPreviewAuthorization;
+    const authorization = validateChatAuthorization({projectRoot, job: parsedJob,
       input: input.body, binding, command, readBoundJson});
     const knowledgeContext = validateKnowledgeContextForProductionV2({projectRoot,
       jobPath: jobFile.absolutePath, job: parsedJob, command});
     const evidence = {
-      ok: true, code: 'DPG2_MUSK_GROK_CHAT_PREVIEW_OK', route: 'musk-grok-current-chat-review', command, entrypoint,
+      ok: true, code: isAgilityPreview ? 'DPG2_AGILITY_CHAT_PREVIEW_OK' : 'DPG2_MUSK_GROK_CHAT_PREVIEW_OK',
+      route: isAgilityPreview ? AGILITY_CHAT_PREVIEW_ROUTE : 'musk-grok-current-chat-review', command, entrypoint,
       jobId: parsedJob.jobId, revisionId: gate.revisionId, jobFileSha256: jobFile.sha256,
       jobSnapshotSha256: binding.jobSnapshotSha256, firstCandidateInputSha256: input.sha256,
       localChatPreviewAuthorizationSha256: authorization.authorizationSha256,
