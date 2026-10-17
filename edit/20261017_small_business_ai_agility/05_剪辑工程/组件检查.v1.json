@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "episode-component-check/v1",
+  "episodeId": "20261017_small_business_ai_agility",
+  "checkedAt": "2026-10-17T10:02:01.889Z",
+  "scope": "本期组件类型、实际runtime参数、字体加载和文字宽度；不代表画面、人声、音效或整片人工验收",
+  "status": "technical-checks-passed-preview-pending",
+  "runtimePlan": {
+    "path": "remotion/src/small-business-ai-agility-20261017/runtime-plan.snapshot.json",
+    "sha256": "d97e2fb162cbb66ba08c53b711449731440139da206bea8c2a7a547d3dcdc73c"
+  },
+  "ownedFiles": [
+    {
+      "path": "remotion/src/small-business-ai-agility-20261017/Composition.tsx",
+      "sha256": "fe12b996a101d1347af464f8443cf8fdb9eda7611d13365b89105b039b525a74"
+    },
+    {
+      "path": "remotion/src/small-business-ai-agility-20261017/runtime.ts",
+      "sha256": "363a42060beca2380f947a6f0ba5d3b91821a19f3550da7258b472abfe553a6f"
+    },
+    {
+      "path": "remotion/src/small-business-ai-agility-20261017/types.ts",
+      "sha256": "1eb1668207b560cf3d10624cd04e10a785723c6c44a9d2cef9999cfcdcbf2245"
+    },
+    {
+      "path": "remotion/src/small-business-ai-agility-20261017/index.tsx",
+      "sha256": "15849a69ab9f5826d3bf27bbdb2244c6ce824ec7eb57602e606dab525e08345f"
+    },
+    {
+      "path": "remotion/src/small-business-ai-agility-20261017/tsconfig.json",
+      "sha256": "3f2322fb513724b2f04c7454d65d2633ab3b84cd5a438ff601cee262c91b3df3"
+    },
+    {
+      "path": "remotion/src/small-business-ai-agility-20261017/production-profile.snapshot.json",
+      "sha256": "dac499043328b6051501ca8d7c0b4778ac2a329ce128ab2c20fb1b9211b58af5"
+    }
+  ],
+  "oldAndSharedCodeModifiedByThisAgent": false,
+  "typeCheck": {
+    "command": "./node_modules/.bin/tsc --project src/small-business-ai-agility-20261017/tsconfig.json --noEmit",
+    "cwd": "remotion",
+    "exitCode": 0
+  },
+  "runtimeCheck": {
+    "preview": "passed",
+    "formal": "rejected-as-expected",
+    "formalReason": "本期数据未就绪：正式模式拒绝待补或未验收素材",
+    "durationFrames": 4126,
+    "captionCount": 78,
+    "overlayCount": 5,
+    "cameraCount": 7,
+    "addedSfxCount": 8,
+    "paperSlot": "P01",
+    "paperState": "pending",
+    "voiceGain": 1,
+    "voicePlaybackRate": 1,
+    "everyCameraFrameScaleWithinOneAndOwnPeak": true
+  },
+  "layoutParameters": {
+    "defaultRegion": {
+      "x": 64,
+      "y": 110,
+      "width": 580,
+      "height": 340
+    },
+    "informationBottomMaximum": 450,
+    "subtitleTop": 886,
+    "wordCardFontCssPixels": {
+      "main": 60,
+      "supporting": 44,
+      "category": 32
+    },
+    "roleGrid": {
+      "columns": 3,
+      "rows": 2,
+      "rowHeight": 84,
+      "gap": 12,
+      "sameSlotsRemainWhileNewRolesArrive": true,
+      "fontSizeCssPixels": 44,
+      "textScaleApplied": false,
+      "labels": [
+        "销售",
+        "运营",
+        "行政",
+        "客服",
+        "剪辑",
+        "文案"
+      ]
+    }
+  },
+  "fontChecks": {
+    "method": "本机Playwright无头浏览器仅加载实际本地字体，用Canvas测量指定文字宽度；未启动Remotion或输出视频帧",
+    "display": {
+      "path": "edit/20261017_small_business_ai_agility/05_剪辑工程/public/fonts/smiley-sans.woff2",
+      "sha256": "731f22973349404b15a88a99ef3b5dd4104c0965c23b7e485c1f11e84fea99e2",
+      "loaded": true,
+      "titleCssPixels": 60,
+      "availableWidth": 540,
+      "measuredWidths": {
+        "真实的业务问题": 336,
+        "组织灵敏性": 240,
+        "到底该怎么干": 288,
+        "还来得及吗": 240
+      },
+      "roleCssPixels": 44,
+      "roleAvailableWidth": 147.33333333333334,
+      "eachRoleMeasuredWidth": 70.39999389648438
+    },
+    "caption": {
+      "path": "edit/20261017_small_business_ai_agility/05_剪辑工程/public/fonts/STHeiti-Medium.ttc",
+      "sha256": "f8fa4a63e2cf500e98e64d4c73260daaba049306cf85dec9e3729bc285b7d645",
+      "loaded": true,
+      "format": "truetype",
+      "weight": "400 900",
+      "sample": "小公司怎么做AI落地",
+      "sampleCssPixels": 44,
+      "sampleMeasuredWidth": 394.5039978027344
+    }
+  },
+  "pending": [
+    "按原片细帧核对人物手势保护区",
+    "受控渲染后查看实际画面与全部字幕",
+    "正常速度正常音量试听人声和8处附加音",
+    "接入纸艺真实文件并验收原生声及左下真人连续切换",
+    "用户完整观看确认"
+  ],
+  "renderStartedByThisAgent": false,
+  "visualAccepted": false,
+  "audioAccepted": false,
+  "checkHistory": [
+    {
+      "checkedAt": "2026-10-17T17:59:14.293634+08:00",
+      "runtimePlan": {
+        "path": "remotion/src/small-business-ai-agility-20261017/runtime-plan.snapshot.json",
+        "sha256": "d97e2fb162cbb66ba08c53b711449731440139da206bea8c2a7a547d3dcdc73c"
+      },
+      "runtimeCheck": {
+        "preview": "passed",
+        "formal": "rejected-as-expected",
+        "formalReason": "本期数据未就绪：正式模式拒绝待补或未验收素材",
+        "durationFrames": 4126,
+        "captionCount": 81,
+        "overlayCount": 5,
+        "cameraCount": 7,
+        "addedSfxCount": 8,
+        "paperSlot": "P01",
+        "paperState": "pending",
+        "voiceGain": 1,
+        "voicePlaybackRate": 1,
+        "everyCameraFrameScaleWithinOneAndOwnPeak": true
+      },
+      "scope": "本期组件类型、实际runtime参数、字体加载和文字宽度；不代表画面、人声、音效或整片人工验收",
+      "reason": "首次检查为81条用户原始字幕；本次仅刷新78页排版候选技术参数，不覆盖首次事实"
+    }
+  ],
+  "latestRecheck": {
+    "reason": "主代理将81条实录字幕整理为78页排版候选，本轮只复检实际runtime参数和正式模式拒绝；文字准确性不由本检查证明",
+    "declaredCaptionChanges": [
+      "合并S023与S024跨词分页",
+      "合并S073与S074跨词分页",
+      "合并S080与S081跨词分页",
+      "S065添加句号"
+    ],
+    "declaredChangeSource": "主代理本轮明确交接",
+    "typeCheck": "沿用首次通过结果；本轮未改组件类型或代码",
+    "runtimeParameters": "passed",
+    "renderStarted": false,
+    "visualAccepted": false,
+    "audioAccepted": false
+  }
+}

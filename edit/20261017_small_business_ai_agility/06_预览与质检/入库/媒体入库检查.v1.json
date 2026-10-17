@@ -1,0 +1,49 @@
+{
+  "status": "technical-ingest-passed",
+  "sourceVideoDecodeExit": 0,
+  "hostProxyDecodeExit": 0,
+  "durationSeconds": 137.533333,
+  "durationInFrames": 4126,
+  "canvas": [
+    1920,
+    1080,
+    30
+  ],
+  "voiceFullLengthPreserved": true,
+  "decodedPcmComparison": {
+    "originalSha256": "502444b53c9df0a402598668ce6d4690ddd703a1845b7e238be28e9cf171ddef",
+    "extractedSha256": "502444b53c9df0a402598668ce6d4690ddd703a1845b7e238be28e9cf171ddef",
+    "same": true,
+    "method": "ffmpeg decode audio to default PCM, hash sha256"
+  },
+  "voiceOriginalIntegratedLufs": -23.8,
+  "voiceTruePeakDbfs": -3.9,
+  "inputs": [
+    {
+      "path": "edit/20261017_small_business_ai_agility/01_素材投放区/01_口播原片/copy_FDA786EB-B266-4B5A-9CDA-757475BAC1C6.MOV",
+      "bytes": 218327640,
+      "sha256": "26019a72de54e3d797076bba3a03fecb41a0216d490a1b4c3522158b35f0011e"
+    },
+    {
+      "path": "edit/20261017_small_business_ai_agility/04_实录与字幕/用户提供_10月17日_原始.srt",
+      "bytes": 4828,
+      "sha256": "fafd2f37e99c27f9e0c8baeb7e4bfefcb123a04cfc02a0b89efc84c2b1048e45"
+    },
+    {
+      "path": "edit/20261017_small_business_ai_agility/05_剪辑工程/public/media/host.mp4",
+      "bytes": 212473178,
+      "sha256": "a9aaba89d58ee2ea89f1f4853adb1fdb67b060a7c2f92034a63827c5d125d016"
+    },
+    {
+      "path": "edit/20261017_small_business_ai_agility/05_剪辑工程/public/audio/voice.m4a",
+      "bytes": 1875278,
+      "sha256": "f79e064183f1f871b94d339d0ae22a25d5e2a608cdcaf568b7bbe8c4eaea0574"
+    }
+  ],
+  "limitations": [
+    "仅素材入库与可解码检查，不是成片QA",
+    "字幕仍待全量音频复核",
+    "纸艺只有首帧图，没有收到视频",
+    "没有渲染动效合成片"
+  ]
+}
