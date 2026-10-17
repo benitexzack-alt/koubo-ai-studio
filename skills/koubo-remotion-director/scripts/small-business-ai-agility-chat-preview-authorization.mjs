@@ -14,6 +14,11 @@ export const AGILITY_VIDEO_R2_SOURCE = Object.freeze({
   sha256: '9f034ddd652092c83416014548c27adccb6b4b8167417b5ffa2b014c667f74ef',
 });
 export const AGILITY_VIDEO_R2_REVISION = 'small-business-ai-agility-v9-video-candidate-r2-20261017';
+export const AGILITY_MOTION_R3_REVISION = 'small-business-ai-agility-v9-motion-sample-r3-20261017';
+export const AGILITY_MOTION_R3_SOURCE = Object.freeze({
+  path: 'edit/20261017_small_business_ai_agility/08_动效优化小样R3/控制/本轮局部动效小样授权原话.v1.json',
+  sha256: '25741223905c41545628f2081fa3fd9387f1f994dd531e32c518c206ebb7c464',
+});
 const identity = Object.freeze({
   episodeId: 'small-business-ai-agility-20261017',
   taskId: 'SMALL_BUSINESS_AI_AGILITY_20261017',
@@ -31,8 +36,10 @@ const requireValue = (condition, code) => {
 export function validateAgilityChatPreviewAuthorization({projectRoot, job, input, binding, command, readBoundJson}) {
   const gate = job.productionGate;
   const videoR2 = gate.revisionId === AGILITY_VIDEO_R2_REVISION;
-  const expectedIdentity = videoR2 ? {...identity, revisionId: AGILITY_VIDEO_R2_REVISION} : identity;
-  const expectedSource = videoR2 ? AGILITY_VIDEO_R2_SOURCE : AGILITY_CHAT_SOURCE;
+  const motionR3 = gate.revisionId === AGILITY_MOTION_R3_REVISION;
+  const expectedIdentity = motionR3 ? {...identity, revisionId: AGILITY_MOTION_R3_REVISION} :
+    videoR2 ? {...identity, revisionId: AGILITY_VIDEO_R2_REVISION} : identity;
+  const expectedSource = motionR3 ? AGILITY_MOTION_R3_SOURCE : videoR2 ? AGILITY_VIDEO_R2_SOURCE : AGILITY_CHAT_SOURCE;
   requireValue(command === 'direct-remotion-preview' && gate.previewAuthorizationMode === AGILITY_CHAT_PREVIEW_MODE &&
     input.inputFormat === NATIVE_V2_INPUT_FORMAT && job.director?.inputFormat === NATIVE_V2_INPUT_FORMAT,
   'AGCP_COMMAND_OR_FORMAT_FORBIDDEN');
@@ -64,6 +71,38 @@ export function validateAgilityChatPreviewAuthorization({projectRoot, job, input
   requireValue(resolve(projectRoot, source.path) === resolve(projectRoot, expectedSource.path) &&
     source.sha256 === expectedSource.sha256, 'AGCP_CURRENT_CHAT_REFERENCE_REQUIRED');
   const record = source.body;
+  if (motionR3) {
+    requireValue(record.schemaVersion === 'episode-motion-sample-user-request/v1' &&
+      Object.entries(expectedIdentity).every(([key, value]) => record[key] === value) &&
+      record.quotedUserMessage === '好的，抓紧开始。' &&
+      record.quotedPrecedingProposal === '建议先把24—47秒做成约23秒的修改对照，验证字号、排版和节奏，再应用到整片。' &&
+      record.source?.kind === 'current-chat-human-message-relayed-by-parent-agent' &&
+      record.source?.platformMessageId === null && record.source?.platformMessageIdInvented === false &&
+      record.requestedOutput === '23-second-motion-layout-review-sample' &&
+      record.sourceFrameRange?.start === 720 && record.sourceFrameRange?.end === 1409 && record.sourceFps === 30 &&
+      record.authorizationType === 'local-chat-authorization' && record.isIndependentSignature === false &&
+      ['humanAcceptancePerformed', 'fullWatchConfirmed', 'candidateAccepted', 'factsVerified', 'formalAuthorized',
+        'publishAuthorized', 'externalUploadAuthorized', 'paymentAuthorized'].every(key => record[key] === false),
+    'AGCP_CHAT_SCOPE_INVALID');
+    const settings = job.preview?.renderSettings;
+    requireValue(job.remotion?.root === 'remotion' &&
+      job.remotion.entry === 'src/small-business-ai-agility-r3-sample/index.tsx' &&
+      job.remotion.publicDir === 'edit/20261017_small_business_ai_agility/05_剪辑工程/public' &&
+      job.remotion.compositionWithSfx === 'SmallBusinessAgilityR3Sample-WithSfx' &&
+      job.remotion.compositionWithoutSfx === 'SmallBusinessAgilityR3Sample-NoSfx' &&
+      job.remotion.width === 1920 && job.remotion.height === 1080 && job.remotion.fps === 30 &&
+      job.remotion.durationSeconds === 4126 / 30 &&
+      settings?.concurrency === 1 && settings.timeoutInMilliseconds === 120000 && settings.scale === 1 &&
+      settings.frames?.start === 720 && settings.frames?.end === 1409 &&
+      job.formal?.enabled === false &&
+      ['小公司AI_24-47秒_动效优化R3_1080p_有音效.mp4',
+        '小公司AI_24-47秒_动效优化R3_1080p_有音效_修订1.mp4'].some(name =>
+        resolve(projectRoot, job.preview.output ?? '') === resolve(projectRoot,
+          'edit/20261017_small_business_ai_agility/08_动效优化小样R3', name)),
+    'AGCP_R3_SAMPLE_RANGE_REQUIRED');
+    return {authorizationSha256: authorization.sha256, sourceMessageSha256: source.sha256,
+      authorizationMethod: 'current-chat-verbatim', independentSignature: false};
+  }
   if (videoR2) {
     requireValue(record.schemaVersion === 'episode-video-candidate-user-request/v1' &&
       Object.entries(expectedIdentity).every(([key, value]) => record[key] === value) &&

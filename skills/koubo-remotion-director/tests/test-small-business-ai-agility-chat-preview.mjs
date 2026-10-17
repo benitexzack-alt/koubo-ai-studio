@@ -8,6 +8,7 @@ import {dirname, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {AGILITY_CHAT_PREVIEW_MODE, AGILITY_CHAT_PREVIEW_ROUTE, AGILITY_CHAT_SOURCE,
   AGILITY_VIDEO_R2_SOURCE, AGILITY_VIDEO_R2_REVISION,
+  AGILITY_MOTION_R3_SOURCE, AGILITY_MOTION_R3_REVISION,
   validateAgilityChatPreviewAuthorization} from '../scripts/small-business-ai-agility-chat-preview-authorization.mjs';
 import {buildControlledRemotionRenderArgsV2} from '../scripts/remotion-production-command-v2.mjs';
 import {computeProductionGateClosureV2} from '../scripts/director-production-preflight-v2.mjs';
@@ -152,6 +153,50 @@ try {
   assert.throws(() => buildControlledRemotionRenderArgsV2({...base, renderContext: r2Context,
     previewRenderSettings: {...settings, scale: 1, frames: {start: 0, end: 100}}}),
   error => error.code === 'RRPV2_PREVIEW_SETTINGS_INVALID'); passed++;
+  const r3Source = readFileSync(resolve(repo, AGILITY_MOTION_R3_SOURCE.path));
+  assert.equal(digest(r3Source), AGILITY_MOTION_R3_SOURCE.sha256);
+  put(AGILITY_MOTION_R3_SOURCE.path, r3Source);
+  const r3Settings = {concurrency: 1, timeoutInMilliseconds: 120000, scale: 1, frames: {start: 720, end: 1409}};
+  const resetR3 = () => {
+    reset();
+    input.revisionId = binding.revisionId = authorization.revisionId = job.productionGate.revisionId = AGILITY_MOTION_R3_REVISION;
+    job.remotion = {root: 'remotion', entry: 'src/small-business-ai-agility-r3-sample/index.tsx',
+      publicDir: 'edit/20261017_small_business_ai_agility/05_剪辑工程/public',
+      compositionWithSfx: 'SmallBusinessAgilityR3Sample-WithSfx', compositionWithoutSfx: 'SmallBusinessAgilityR3Sample-NoSfx',
+      width: 1920, height: 1080, fps: 30, durationSeconds: 4126 / 30};
+    job.preview = {output: 'edit/20261017_small_business_ai_agility/08_动效优化小样R3/小公司AI_24-47秒_动效优化R3_1080p_有音效.mp4',
+      renderSettings: structuredClone(r3Settings)};
+    job.formal = {enabled: false};
+    authorization.binding = structuredClone(binding);
+    authorization.sourceMessages = {...AGILITY_MOTION_R3_SOURCE}; save();
+  };
+  resetR3(); assert.equal(check().independentSignature, false); passed++;
+  resetR3(); job.preview.output = 'edit/20261017_small_business_ai_agility/08_动效优化小样R3/小公司AI_24-47秒_动效优化R3_1080p_有音效_修订1.mp4';
+  assert.equal(check().independentSignature, false); passed++;
+  for (const mutate of [
+    () => {job.preview.renderSettings.frames.start = 0;},
+    () => {job.preview.renderSettings.frames.end = 4125;},
+    () => {delete job.preview.renderSettings.frames;},
+    () => {job.remotion.entry = 'src/small-business-ai-agility-20261017/index.tsx';},
+    () => {job.preview.output = 'outputs/full.mp4';},
+    () => {job.formal.enabled = true;},
+  ]) {
+    resetR3(); mutate();
+    assert.throws(check, error => error.code === 'AGCP_R3_SAMPLE_RANGE_REQUIRED'); passed++;
+  }
+  resetR3(); command = 'direct-remotion-render';
+  assert.throws(check, error => error.code === 'AGCP_COMMAND_OR_FORMAT_FORBIDDEN'); passed++;
+  resetR3(); authorization.sourceMessages = {...AGILITY_VIDEO_R2_SOURCE}; save();
+  assert.throws(check, error => error.code === 'AGCP_CURRENT_CHAT_REFERENCE_REQUIRED'); passed++;
+  const r3Context = {...context, revisionId: AGILITY_MOTION_R3_REVISION};
+  assert.deepEqual(buildControlledRemotionRenderArgsV2({...base, renderContext: r3Context,
+    previewRenderSettings: r3Settings}).slice(-4), ['--concurrency=1', '--timeout=120000', '--scale=1', '--frames=720-1409']); passed++;
+  for (const invalid of [null, {}, {...r3Settings, scale: 2 / 3}, {...r3Settings, frames: undefined},
+    {...r3Settings, frames: {start: 0, end: 1409}}, {...r3Settings, frames: {start: 720, end: 4125}},
+    {...r3Settings, frames: {start: 720, end: 1409, fps: 30}}, {...r3Settings, concurrency: 2}]) {
+    assert.throws(() => buildControlledRemotionRenderArgsV2({...base, renderContext: r3Context,
+      previewRenderSettings: invalid}), error => error.code === 'RRPV2_PREVIEW_SETTINGS_INVALID'); passed++;
+  }
   console.log(JSON.stringify({ok: true, passed, previewDimensions: [1280, 720], durationInFrames: 4126,
     productionRenderInvoked: false, independentSignatureCreated: false}));
 } finally {rmSync(root, {recursive: true, force: true});}

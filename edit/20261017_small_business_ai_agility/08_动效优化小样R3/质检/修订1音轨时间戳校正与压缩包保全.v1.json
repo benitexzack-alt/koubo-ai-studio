@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "agility-r3-repair1-timestamp-remux/v1",
+  "source": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/小公司AI_24-47秒_动效优化R3_1080p_有音效_修订1.mp4",
+  "sourceSha256": "4762ec9b2ba3b1f42e12f20f0a4d2cf20844a5197bf3d20bad1279d04930d663",
+  "output": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/交付/小公司AI_24至47秒_动效优化R3_修订版_1080p.mp4",
+  "outputSha256": "66f176248d2fbfc41445fa8eb56451a5d04e0f0d07333e6bea3a6bc8d60d1155",
+  "priorMeasuredAudioReference": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/小公司AI_24-47秒_动效优化R3_1080p_有音效.mp4",
+  "priorMeasuredAudioReferenceSha256": "6010b25374aa67ce3cb09b1c4f4537ee202254f78c5311bfd30154588d16c2ef",
+  "audioPacketsAndTimestampsEqualToMeasuredPrior": true,
+  "previousMeasuredLagMs": [
+    42.6875,
+    42.6875,
+    42.6875
+  ],
+  "audioTimestampShiftSeconds": -0.042666666666667,
+  "command": [
+    "ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-copyts",
+    "-i",
+    "edit/20261017_small_business_ai_agility/08_动效优化小样R3/小公司AI_24-47秒_动效优化R3_1080p_有音效_修订1.mp4",
+    "-itsoffset",
+    "-0.042666666666667",
+    "-i",
+    "edit/20261017_small_business_ai_agility/08_动效优化小样R3/小公司AI_24-47秒_动效优化R3_1080p_有音效_修订1.mp4",
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-c",
+    "copy",
+    "-avoid_negative_ts",
+    "disabled",
+    "-movflags",
+    "+faststart",
+    "edit/20261017_small_business_ai_agility/08_动效优化小样R3/交付/小公司AI_24至47秒_动效优化R3_修订版_1080p.mp4"
+  ],
+  "videoReencoded": false,
+  "audioReencoded": false,
+  "streams": {
+    "v:0": {
+      "sourcePackets": 690,
+      "outputPackets": 690,
+      "allCompressedPacketHashesEqualInOrder": true,
+      "allVideoTimestampsEqual": true
+    },
+    "a:0": {
+      "sourcePackets": 1081,
+      "outputPackets": 1081,
+      "allCompressedPacketHashesEqualInOrder": true,
+      "allVideoTimestampsEqual": null
+    }
+  },
+  "humanAcceptance": false,
+  "packetPreservationPass": true
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "agility-r3-layout-repair-review/v1",
+  "finalVideo": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/交付/小公司AI_24至47秒_动效优化R3_修订版_1080p.mp4",
+  "finalSha256": "66f176248d2fbfc41445fa8eb56451a5d04e0f0d07333e6bea3a6bc8d60d1155",
+  "method": "真实最终观看版中按源帧号减720精确抽帧，复核16帧联系表；不把结构检查当作最终视觉结果。",
+  "checkedSourceFrames": [
+    880,
+    882,
+    884,
+    886,
+    986,
+    988,
+    990,
+    992,
+    994,
+    996,
+    998,
+    1375,
+    1376,
+    1378,
+    1380,
+    1386
+  ],
+  "resolvedFindings": [
+    {
+      "id": "R3-LAYERS-TO-REPORT-GHOST",
+      "evidence": "880旧说明已退，882新层层汇报单独淡入，884与886保持新字；未见旧新同位置叠字。",
+      "result": "targeted-real-frame-check-passed"
+    },
+    {
+      "id": "R3-MOVE-OVERLAP",
+      "evidence": "986–990先横向分列，990–998再向上收拢；所检精确帧中各文字卡保持独立，没有后卡遮前卡字。",
+      "result": "targeted-real-frame-check-passed"
+    },
+    {
+      "id": "R3-TAIL-TEXT-GHOST",
+      "evidence": "1375/1376仅旧两项退场，1378已退空，1380开始新成本字，1386落定；未见交叉叠字。",
+      "result": "targeted-real-frame-check-passed"
+    }
+  ],
+  "technicalReport": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/质检/修订版最终观看技术检查/技术检查.v1.json",
+  "technicalChecksPassed": true,
+  "syncLagMsAcrossThreeWindows": [
+    0,
+    0,
+    0
+  ],
+  "captionPagesExactMatch": 15,
+  "scopeLimit": "局部小样的技术检查及已发现过渡问题的实帧复核；并非用户完整观看确认、正式成片验收或发布授权。",
+  "fullNormalSpeedHumanUserReview": false,
+  "humanUserAcceptance": false,
+  "publishAuthorized": false,
+  "priorFailureEvidenceRetained": [
+    "布局边界问题补充.v1.json",
+    "换字边界问题补充.v1.json"
+  ]
+}

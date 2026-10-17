@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "episode-scoped-sample-repair/v1",
+  "createdAt": "2026-10-17T12:51:31.720Z",
+  "previousJob": {
+    "path": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/控制/production-job.sample.v1.json",
+    "sha256": "366ba69f51945d5368c56829c9ebf7a281e411375957b1da198d8fd8fa029620"
+  },
+  "previousInput": {
+    "path": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/控制/first-candidate-input.v1.json",
+    "sha256": "edc5a2a2e57560a08e7d3aef77038e1ff238e4953c15369f764f3195c67c8fb1"
+  },
+  "userAuthorization": {
+    "path": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/控制/本期局部预览聊天授权.v1.json",
+    "sha256": "c112af3b874d288d075d5cbf4eca9e037a2eb8b41236d9d1a5826be894bdacef"
+  },
+  "sourceUserRequest": {
+    "path": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/控制/本轮局部动效小样授权原话.v1.json",
+    "sha256": "25741223905c41545628f2081fa3fd9387f1f994dd531e32c518c206ebb7c464"
+  },
+  "defects": [
+    "约882帧层级多退出与汇报进入交叉叠化",
+    "约990帧收横排时节点斜向穿越造成叠字",
+    "约1375帧尾词与上一节点同时可见造成叠字"
+  ],
+  "requestedRepair": [
+    "层级多先退场后出现汇报",
+    "先水平分列再竖移",
+    "尾词延后并给上一节点完成退场"
+  ],
+  "sourceRangeFrames": {
+    "start": 720,
+    "end": 1409
+  },
+  "runtimePlanUnchanged": true,
+  "audioAndCaptionsUnchanged": true,
+  "previousVideoPreserved": true,
+  "previousReceiptPreserved": true,
+  "previousControlDirectoryPreserved": true,
+  "humanAcceptancePerformed": false,
+  "formalAuthorized": false,
+  "publishAuthorized": false,
+  "renderInvoked": false
+}

@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20261017_small_business_ai_agility_v9_candidate",
+  "videoId": "small-business-ai-agility-20261017",
+  "title": "小公司AI_24至47秒_字号与连续关系对照R3",
+  "productionState": "input-prepared-awaiting-controlled-preflight",
+  "productionEligible": false,
+  "productionProfile": {
+    "id": "v9-semantic-direction-sfx",
+    "version": "V9"
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required",
+    "userPreviewApproved": false
+  },
+  "knowledgeContext": {
+    "taskId": "small-business-ai-agility-motion-sample-r3-20261017",
+    "contextPath": "small-business-ai-agility-motion-sample-r3-20261017/context.json"
+  },
+  "inputs": {
+    "source": "edit/20261017_small_business_ai_agility/01_素材投放区/01_口播原片/copy_FDA786EB-B266-4B5A-9CDA-757475BAC1C6.MOV",
+    "renderProxy": "edit/20261017_small_business_ai_agility/05_剪辑工程/public/media/host.mp4"
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/small-business-ai-agility-r3-sample/index.tsx",
+    "publicDir": "edit/20261017_small_business_ai_agility/05_剪辑工程/public",
+    "compositionWithSfx": "SmallBusinessAgilityR3Sample-WithSfx",
+    "compositionWithoutSfx": "SmallBusinessAgilityR3Sample-NoSfx",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 137.53333333333333
+  },
+  "director": {
+    "required": true,
+    "taskId": "SMALL_BUSINESS_AI_AGILITY_20261017",
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0",
+    "phase": "post-shoot",
+    "paperRequired": true,
+    "fallback": "blocked",
+    "artifacts": {
+      "directorCues": {
+        "path": "edit/20261017_small_business_ai_agility/03_导演规划/director-cues.v2.json",
+        "sha256": "147bc7cb75a23d87c74f0af1a31a5126c1cb9033714a53b9dd8a0ab27dfa3b36"
+      },
+      "runtimePlan": {
+        "path": "remotion/src/small-business-ai-agility-r3-sample/sample-plan.snapshot.json",
+        "sha256": "d81780c3cd33321fff709c2f84ad5e695604d3cd36583044b31f2c96453dcffa"
+      },
+      "spokenTimeline": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/实录正文分页候选.v1.json",
+        "sha256": "33889db3c7db3837e7d4c1a237678634a9e0d631584c82466aba2f78f5065e6e"
+      },
+      "postshootRebind": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/实录分页重绑.v1.json",
+        "sha256": "5d87002738913117dfc1d12c99d9accf35d3f0f9cb570fb3aca4fcd19336a3f8"
+      },
+      "mediaIntake": {
+        "path": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/控制/既有来源复用候选.v1.json",
+        "sha256": "015a9b754d402aa1942546a277aad29bd4cd95afafa8da5bb91c36d09375703e"
+      },
+      "factReview": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/事实待决.v1.json",
+        "sha256": "d1e473de18b6ac7d7822a25fb12d8901ebb30808c129e10d3771bfff616bb0ca"
+      },
+      "userScope": {
+        "path": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/控制/用户局部预览范围.v1.json",
+        "sha256": "8e745deba7570fbcaba05a02e78d2b4e6be9e5db4d635bcb1caea55578879858"
+      }
+    },
+    "inputFormat": "director-cues-v2-surface-bound"
+  },
+  "productionGate": {
+    "schema": "director-production-entry-binding/v2",
+    "revisionId": "small-business-ai-agility-v9-motion-sample-r3-20261017",
+    "state": "first-candidate-preview-required",
+    "productionEligible": false,
+    "userPreviewApproved": false,
+    "formalEnabled": false,
+    "firstCandidateInput": {
+      "path": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/控制/first-candidate-input.v1.json",
+      "sha256": "edc5a2a2e57560a08e7d3aef77038e1ff238e4953c15369f764f3195c67c8fb1"
+    },
+    "firstCandidateAuthorization": null,
+    "freezeReceipt": null,
+    "previewAuthorizationMode": "small-business-ai-agility-current-chat-review/v1",
+    "localChatPreviewAuthorization": {
+      "path": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/控制/本期局部预览聊天授权.v1.json",
+      "sha256": "c112af3b874d288d075d5cbf4eca9e037a2eb8b41236d9d1a5826be894bdacef"
+    }
+  },
+  "preview": {
+    "output": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/小公司AI_24-47秒_动效优化R3_1080p_有音效.mp4",
+    "renderSettings": {
+      "concurrency": 1,
+      "timeoutInMilliseconds": 120000,
+      "scale": 1,
+      "frames": {
+        "start": 720,
+        "end": 1409
+      }
+    }
+  },
+  "formal": {
+    "enabled": false
+  },
+  "publishAuthorized": false,
+  "preparationNote": "本轮用户接受24—47秒局部修改对照提案；仅23秒内部观看，未授权整片应用、全局V9升级或发布。"
+}

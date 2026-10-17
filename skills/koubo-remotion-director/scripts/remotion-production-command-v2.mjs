@@ -9,14 +9,23 @@ const previewSettingsArgs = (settings, context) => {
   // 本期静图兼容许可仅允许1280x720内部预览；不复用或放宽上一期规则。
   if (context?.preflightRoute === 'small-business-ai-agility-current-chat-review') {
     const videoR2 = context?.revisionId === 'small-business-ai-agility-v9-video-candidate-r2-20261017';
+    const motionR3 = context?.revisionId === 'small-business-ai-agility-v9-motion-sample-r3-20261017';
     if (context?.mode !== 'preview' || context?.command !== 'direct-remotion-preview' ||
         context?.episodeId !== 'small-business-ai-agility-20261017' ||
         context?.jobId !== '20261017_small_business_ai_agility_v9_candidate' ||
-        (!videoR2 && context?.revisionId !== 'small-business-ai-agility-v9-static-preview-r1-20261017') ||
+        (!videoR2 && !motionR3 && context?.revisionId !== 'small-business-ai-agility-v9-static-preview-r1-20261017') ||
         context?.inputFormat !== 'director-cues-v2-surface-bound' ||
         context?.width !== 1920 || context?.height !== 1080 || context?.fps !== 30 ||
         context?.durationSeconds !== 4126 / 30) reject('RRPV2_PREVIEW_SETTINGS_SCOPE_INVALID');
     const hasFrames = settings && Object.hasOwn(settings, 'frames');
+    if (motionR3) {
+      if (!settings || Array.isArray(settings) || Object.keys(settings).length !== 4 ||
+          Object.keys(settings).some(key => !['concurrency', 'timeoutInMilliseconds', 'scale', 'frames'].includes(key)) ||
+          settings.concurrency !== 1 || settings.timeoutInMilliseconds !== 120000 || settings.scale !== 1 ||
+          !hasFrames || !settings.frames || Array.isArray(settings.frames) || Object.keys(settings.frames).length !== 2 ||
+          settings.frames.start !== 720 || settings.frames.end !== 1409) reject('RRPV2_PREVIEW_SETTINGS_INVALID');
+      return ['--concurrency=1', '--timeout=120000', '--scale=1', '--frames=720-1409'];
+    }
     if (!settings || Array.isArray(settings) || typeof settings !== 'object' ||
         Object.keys(settings).length !== (videoR2 && hasFrames ? 4 : 3) ||
         Object.keys(settings).some(key => !['concurrency', 'timeoutInMilliseconds', 'scale', ...(videoR2 ? ['frames'] : [])].includes(key)) ||

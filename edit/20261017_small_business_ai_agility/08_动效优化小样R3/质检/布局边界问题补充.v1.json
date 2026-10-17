@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "agility-r3-layout-boundary-review/v1",
+  "candidate": "../交付/小公司AI_24至47秒_动效优化R3_1080p.mp4",
+  "candidateSha256": "673cac4ade8869caffdf22885306f1bc103954d49f0943c831bd9c6a54efe90c",
+  "relationToEarlierReview": "稳态关键帧检查未覆盖以下短过渡，不能据此前报告推断整段布局无问题。技术解码与同步通过不等于视觉验收。",
+  "checkedSourceFrames": [
+    990,
+    992,
+    994,
+    996,
+    1375,
+    1376,
+    1377
+  ],
+  "findings": [
+    {
+      "id": "R3-MOVE-OVERLAP",
+      "sourceFrames": [
+        992,
+        994
+      ],
+      "sourceSeconds": [
+        33.0666666667,
+        33.1333333333
+      ],
+      "observed": "纵排收横排途中，后卡压住前卡文字；994帧可见层层汇报尾字及反复开会局部受遮。",
+      "suggestion": "改变平移次序或分阶段先收尺寸/横向让开，再向上收拢，避免文字卡穿过。",
+      "status": "needs-local-repair"
+    },
+    {
+      "id": "R3-TAIL-TEXT-GHOST",
+      "sourceFrames": [
+        1375,
+        1376
+      ],
+      "sourceSeconds": [
+        45.8333333333,
+        45.8666666667
+      ],
+      "observed": "试错成本极低新字和复杂审批/协调部门旧字在同一位置交叉叠化，产生实际重影。",
+      "suggestion": "同位置文字先退后进或不重叠替换，不采用交叉叠化。",
+      "status": "needs-local-repair"
+    }
+  ],
+  "contactSheet": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/质检/布局边界逐帧/收拢与尾句换字边界联系表.jpg",
+  "humanUserAcceptance": false,
+  "overallVisualAcceptance": false
+}

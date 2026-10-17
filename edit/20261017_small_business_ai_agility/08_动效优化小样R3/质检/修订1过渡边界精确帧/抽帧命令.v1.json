@@ -1,0 +1,41 @@
+{
+  "source": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/小公司AI_24-47秒_动效优化R3_1080p_有音效_修订1.mp4",
+  "sourceSha256": "4762ec9b2ba3b1f42e12f20f0a4d2cf20844a5197bf3d20bad1279d04930d663",
+  "sourceFrameOffset": 720,
+  "frames": [
+    880,
+    882,
+    884,
+    886,
+    986,
+    988,
+    990,
+    992,
+    994,
+    996,
+    998,
+    1375,
+    1376,
+    1378,
+    1380,
+    1386
+  ],
+  "command": [
+    "ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-i",
+    "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/小公司AI_24-47秒_动效优化R3_1080p_有音效_修订1.mp4",
+    "-vf",
+    "select=eq(n\\,160)+eq(n\\,162)+eq(n\\,164)+eq(n\\,166)+eq(n\\,266)+eq(n\\,268)+eq(n\\,270)+eq(n\\,272)+eq(n\\,274)+eq(n\\,276)+eq(n\\,278)+eq(n\\,655)+eq(n\\,656)+eq(n\\,658)+eq(n\\,660)+eq(n\\,666)",
+    "-vsync",
+    "0",
+    "-frames:v",
+    "16",
+    "-q:v",
+    "2",
+    "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/质检/修订1过渡边界精确帧/抽帧_%03d.jpg"
+  ],
+  "extractedFrames": 16
+}

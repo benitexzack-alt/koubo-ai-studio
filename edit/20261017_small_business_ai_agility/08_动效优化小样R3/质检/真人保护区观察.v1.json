@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "agility-r3-subject-protection/v1",
+  "coordinateSpace": {
+    "width": 1920,
+    "height": 1080
+  },
+  "method": "人工查看原片与现版九帧联系表的像素区域估计；非逐帧自动人像追踪。",
+  "samplesSeconds": [
+    24.2,
+    29.5,
+    32.4,
+    35.7,
+    36.6,
+    38.9,
+    40.6,
+    43.7,
+    46.5
+  ],
+  "faceEnvelope": {
+    "x": 790,
+    "y": 120,
+    "right": 1390,
+    "bottom": 875
+  },
+  "captionEnvelope": {
+    "x": 88,
+    "y": 886,
+    "right": 1832,
+    "bottom": 1054
+  },
+  "hands": [
+    {
+      "atSecond": 24.2,
+      "x": 390,
+      "y": 750,
+      "right": 1040,
+      "bottom": 1080,
+      "note": "双手进入下方区域。"
+    },
+    {
+      "atSecond": 38.9,
+      "x": 320,
+      "y": 330,
+      "right": 890,
+      "bottom": 1020,
+      "note": "老板一声拍板，抬左掌；左图不可扩展盖住手。"
+    },
+    {
+      "atSecond": 40.6,
+      "x": 0,
+      "y": 660,
+      "right": 250,
+      "bottom": 1080,
+      "note": "左边缘手势。"
+    }
+  ],
+  "proposedDefaultContentZone": {
+    "x": 64,
+    "y": 110,
+    "right": 720,
+    "bottom": 600
+  },
+  "limitation": "默认区域在强手势时不安全，应按动作收拢/让位；需在新版实际渲染中复核。",
+  "relatedVisualAgentEvidence": {
+    "atSecond": 33.5,
+    "boundsApproximate": [
+      350,
+      250,
+      780,
+      885
+    ],
+    "source": "visual代理实际看帧回报，需新版复核",
+    "proposedResponse": "32.95–34.1秒节点收拢到y128–216顶部横条并隐藏大标题。"
+  },
+  "newVideoPassed": false,
+  "humanAcceptance": false
+}

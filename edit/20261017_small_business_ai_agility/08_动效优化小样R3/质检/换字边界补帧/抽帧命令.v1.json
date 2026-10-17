@@ -1,0 +1,72 @@
+{
+  "source": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/交付/小公司AI_24至47秒_动效优化R3_1080p.mp4",
+  "sourceFrameOffset": 720,
+  "frames": [
+    880,
+    882,
+    884,
+    886
+  ],
+  "commands": [
+    [
+      "ffmpeg",
+      "-nostdin",
+      "-v",
+      "error",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/交付/小公司AI_24至47秒_动效优化R3_1080p.mp4",
+      "-vf",
+      "select=eq(n\\,160)",
+      "-frames:v",
+      "1",
+      "-q:v",
+      "2",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/质检/换字边界补帧/源帧880_小样帧160_29.3333秒.jpg"
+    ],
+    [
+      "ffmpeg",
+      "-nostdin",
+      "-v",
+      "error",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/交付/小公司AI_24至47秒_动效优化R3_1080p.mp4",
+      "-vf",
+      "select=eq(n\\,162)",
+      "-frames:v",
+      "1",
+      "-q:v",
+      "2",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/质检/换字边界补帧/源帧882_小样帧162_29.4000秒.jpg"
+    ],
+    [
+      "ffmpeg",
+      "-nostdin",
+      "-v",
+      "error",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/交付/小公司AI_24至47秒_动效优化R3_1080p.mp4",
+      "-vf",
+      "select=eq(n\\,164)",
+      "-frames:v",
+      "1",
+      "-q:v",
+      "2",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/质检/换字边界补帧/源帧884_小样帧164_29.4667秒.jpg"
+    ],
+    [
+      "ffmpeg",
+      "-nostdin",
+      "-v",
+      "error",
+      "-i",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/交付/小公司AI_24至47秒_动效优化R3_1080p.mp4",
+      "-vf",
+      "select=eq(n\\,166)",
+      "-frames:v",
+      "1",
+      "-q:v",
+      "2",
+      "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/08_动效优化小样R3/质检/换字边界补帧/源帧886_小样帧166_29.5333秒.jpg"
+    ]
+  ]
+}

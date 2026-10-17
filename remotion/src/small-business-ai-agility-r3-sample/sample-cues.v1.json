@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "agility-r3-semantic-sample/v1",
+  "sampleWindow": {
+    "from": 720,
+    "to": 1410
+  },
+  "fullTimelineFrames": 4126,
+  "fps": 30,
+  "layout": {
+    "x": 64,
+    "top": 110,
+    "rightmost": 748,
+    "bottom": 708,
+    "titlePixels": 84,
+    "supportingPixels": 60,
+    "compactPixels": 52
+  },
+  "events": {
+    "enterprise": 726,
+    "fixedProcess": 776,
+    "reporting": 881,
+    "meetings": 916,
+    "tugging": 968,
+    "compactForHand": 986,
+    "compactSettled": 998,
+    "timeConclusion": 1066,
+    "smallCompany": 1096,
+    "companySuffix": 1131,
+    "bossDecision": 1164,
+    "sameDayDirection": 1211,
+    "noApproval": 1263,
+    "noCoordination": 1299,
+    "exit": 1402,
+    "lowTrialCost": 1370,
+    "compactColumnsSettled": 990,
+    "lowTrialCostReveal": 1378
+  },
+  "motionSettleFrames": {
+    "enterprise": 741,
+    "reporting": 893,
+    "meetings": 928,
+    "tugging": 980,
+    "compactForHand": 998,
+    "timeConclusion": 1078,
+    "smallCompany": 1110,
+    "bossDecision": 1174,
+    "sameDayDirection": 1223,
+    "noApproval": 1275,
+    "noCoordination": 1311,
+    "lowTrialCost": 1386
+  },
+  "semanticRelations": {
+    "enterpriseFriction": "层层汇报、反复开会、相互拉扯为并列摩擦；仅按说到时间出现，无相互串联箭头。",
+    "smallCompany": "老板拍板与当天定方向按实录形成决策关系；两项不需要作为并列约束移除表达，不画作新增流程。"
+  },
+  "sourceReadNotes": [
+    "research/20261017_agility_motion_review/README.md",
+    "research/20261017_agility_motion_review/current_frames/029.00s.jpg",
+    "research/20261017_agility_motion_review/current_frames/039.00s.jpg",
+    "research/20261017_agility_motion_review/current_frames/045.00s.jpg"
+  ],
+  "protectionNotes": [
+    "33.5秒抬左手；986—990帧先收窄文字卡并分散至互不重叠列，990—998帧再各自上移至y132—220，大企业标题990帧前淡出。",
+    "38.8—40.2秒抬左掌；只显示顶部标题与y225—325的老板拍板，方向关系在40.366秒才向下展开。",
+    "本次不改变真人裁剪、运镜、字幕、原声或纸艺。"
+  ],
+  "review": {
+    "machineStructure": "checked",
+    "normalSpeedVisual": "pending",
+    "humanAcceptance": "pending"
+  },
+  "addedSoundEvents": [
+    {
+      "id": "r3-structure-settle",
+      "visualSettleFrame": 741,
+      "transientOffsetFrames": 2,
+      "sequenceFrom": 739,
+      "source": "sfx/remotion-whoosh.wav",
+      "reason": "结构末层落定；前导声瞬态贴合实际落定"
+    },
+    {
+      "id": "r3-friction-settle",
+      "visualSettleFrame": 893,
+      "transientOffsetFrames": 1,
+      "sequenceFrom": 892,
+      "source": "sfx/v1-keyword-tick.wav",
+      "reason": "第一项并列摩擦落定；其余两项静音累积"
+    },
+    {
+      "id": "r3-boss-decision-settle",
+      "visualSettleFrame": 1174,
+      "transientOffsetFrames": 0,
+      "sequenceFrom": 1174,
+      "source": "sfx/v2-keyword-select.wav",
+      "reason": "老板拍板落定；小公司转折本身留白"
+    },
+    {
+      "id": "r3-direction-settle",
+      "visualSettleFrame": 1223,
+      "transientOffsetFrames": 2,
+      "sequenceFrom": 1221,
+      "source": "sfx/v1-confirm-soft.wav",
+      "reason": "当天定方向与箭头落定"
+    }
+  ],
+  "transitionCorrections": {
+    "evidence": "edit/20261017_small_business_ai_agility/08_动效优化小样R3/质检/布局边界逐帧/收拢与尾句换字边界联系表.jpg",
+    "parallelNodes": {
+      "horizontalAndSize": [
+        986,
+        990
+      ],
+      "verticalLift": [
+        990,
+        998
+      ],
+      "titleHiddenAt": 990
+    },
+    "lastLine": {
+      "oldLinesFadeOut": [
+        1370,
+        1378
+      ],
+      "newLineEnter": [
+        1378,
+        1386
+      ]
+    },
+    "otherContentChanged": false,
+    "additionalSoundsAdded": false,
+    "renderVerification": "pending"
+  }
+}
