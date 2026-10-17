@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "jobId": "20261017_small_business_ai_agility_v9_candidate",
+  "videoId": "small-business-ai-agility-20261017",
+  "title": "小公司AI落地_V9_R4_全长有音效观看候选",
+  "productionState": "input-prepared-awaiting-controlled-preflight",
+  "productionEligible": false,
+  "productionProfile": {
+    "id": "v9-semantic-direction-sfx",
+    "version": "V9"
+  },
+  "baseline": {
+    "path": "workflow/production-baseline.v1.json"
+  },
+  "experiment": {
+    "id": "v8-semantic-continuity-sfx",
+    "status": "candidate-preview-required",
+    "userPreviewApproved": false
+  },
+  "knowledgeContext": {
+    "taskId": "small-business-ai-agility-motion-full-r4-20261017",
+    "contextPath": "small-business-ai-agility-motion-full-r4-20261017/context.json"
+  },
+  "inputs": {
+    "source": "edit/20261017_small_business_ai_agility/01_素材投放区/01_口播原片/copy_FDA786EB-B266-4B5A-9CDA-757475BAC1C6.MOV",
+    "renderProxy": "edit/20261017_small_business_ai_agility/05_剪辑工程/public/media/host.mp4"
+  },
+  "remotion": {
+    "root": "remotion",
+    "entry": "src/small-business-ai-agility-r4-final/index.tsx",
+    "publicDir": "edit/20261017_small_business_ai_agility/05_剪辑工程/public",
+    "compositionWithSfx": "SmallBusinessAgilityR4Final-WithSfx",
+    "compositionWithoutSfx": "SmallBusinessAgilityR4Final-NoSfx",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 137.53333333333333
+  },
+  "director": {
+    "required": true,
+    "taskId": "SMALL_BUSINESS_AI_AGILITY_20261017",
+    "profileId": "paper-editorial-director-v9",
+    "profileVersion": "9.1.0",
+    "phase": "post-shoot",
+    "paperRequired": true,
+    "fallback": "blocked",
+    "artifacts": {
+      "directorCues": {
+        "path": "edit/20261017_small_business_ai_agility/03_导演规划/director-cues.v2.json",
+        "sha256": "147bc7cb75a23d87c74f0af1a31a5126c1cb9033714a53b9dd8a0ab27dfa3b36"
+      },
+      "runtimePlan": {
+        "path": "remotion/src/small-business-ai-agility-r4-final/sample-plan.snapshot.json",
+        "sha256": "0f325cd99c9282e51bcf3b96da7e5fbc7767643c56a69047642e00b2ca473619"
+      },
+      "spokenTimeline": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/实录正文分页候选.v1.json",
+        "sha256": "33889db3c7db3837e7d4c1a237678634a9e0d631584c82466aba2f78f5065e6e"
+      },
+      "postshootRebind": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/实录分页重绑.v1.json",
+        "sha256": "5d87002738913117dfc1d12c99d9accf35d3f0f9cb570fb3aca4fcd19336a3f8"
+      },
+      "mediaIntake": {
+        "path": "edit/20261017_small_business_ai_agility/09_动效优化正片R4/控制/既有来源复用候选.v1.json",
+        "sha256": "efd6dfdab95f541d59bab7e06cfe198312a9bb83bf2bca293afcc481ed3f6377"
+      },
+      "factReview": {
+        "path": "edit/20261017_small_business_ai_agility/06_预览与质检/视频候选R2/事实待决.v1.json",
+        "sha256": "d1e473de18b6ac7d7822a25fb12d8901ebb30808c129e10d3771bfff616bb0ca"
+      },
+      "userScope": {
+        "path": "edit/20261017_small_business_ai_agility/09_动效优化正片R4/控制/用户整片候选范围.v1.json",
+        "sha256": "59e449f7ef57cc66695380e2fde85288c84bf722fd53e86f54fd2e3b3de61073"
+      }
+    },
+    "inputFormat": "director-cues-v2-surface-bound"
+  },
+  "productionGate": {
+    "schema": "director-production-entry-binding/v2",
+    "revisionId": "small-business-ai-agility-v9-motion-full-candidate-r4-20261017",
+    "state": "first-candidate-preview-required",
+    "productionEligible": false,
+    "userPreviewApproved": false,
+    "formalEnabled": false,
+    "firstCandidateInput": {
+      "path": "edit/20261017_small_business_ai_agility/09_动效优化正片R4/控制/first-candidate-input.v1.json",
+      "sha256": "5ddb9dcc55e44a4a034646ccd1e83e80c56d9f90cd42bc41f3946cf79db8afc9"
+    },
+    "firstCandidateAuthorization": null,
+    "freezeReceipt": null,
+    "previewAuthorizationMode": "small-business-ai-agility-current-chat-review/v1",
+    "localChatPreviewAuthorization": {
+      "path": "edit/20261017_small_business_ai_agility/09_动效优化正片R4/控制/本期整片候选聊天授权.v1.json",
+      "sha256": "443ff403f8132ffb4a15f2ad50e7b3195879085917a43a9b59081f3d6fe173a9"
+    }
+  },
+  "preview": {
+    "output": "edit/20261017_small_business_ai_agility/09_动效优化正片R4/小公司AI落地_V9_R4_1080p_有音效_受控原件.mp4",
+    "renderSettings": {
+      "concurrency": 1,
+      "timeoutInMilliseconds": 120000,
+      "scale": 1
+    }
+  },
+  "formal": {
+    "enabled": false
+  },
+  "publishAuthorized": false,
+  "preparationNote": "沿最新当前聊天授权，将已认可23秒视觉方向应用完整观看候选并配齐声音；小样验收仅绑定原23秒文件，新全片不预先标记验收或发布。"
+}

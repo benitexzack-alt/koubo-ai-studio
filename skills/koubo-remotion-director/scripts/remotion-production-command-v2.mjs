@@ -10,14 +10,21 @@ const previewSettingsArgs = (settings, context) => {
   if (context?.preflightRoute === 'small-business-ai-agility-current-chat-review') {
     const videoR2 = context?.revisionId === 'small-business-ai-agility-v9-video-candidate-r2-20261017';
     const motionR3 = context?.revisionId === 'small-business-ai-agility-v9-motion-sample-r3-20261017';
+    const motionR4 = context?.revisionId === 'small-business-ai-agility-v9-motion-full-candidate-r4-20261017';
     if (context?.mode !== 'preview' || context?.command !== 'direct-remotion-preview' ||
         context?.episodeId !== 'small-business-ai-agility-20261017' ||
         context?.jobId !== '20261017_small_business_ai_agility_v9_candidate' ||
-        (!videoR2 && !motionR3 && context?.revisionId !== 'small-business-ai-agility-v9-static-preview-r1-20261017') ||
+        (!videoR2 && !motionR3 && !motionR4 && context?.revisionId !== 'small-business-ai-agility-v9-static-preview-r1-20261017') ||
         context?.inputFormat !== 'director-cues-v2-surface-bound' ||
         context?.width !== 1920 || context?.height !== 1080 || context?.fps !== 30 ||
         context?.durationSeconds !== 4126 / 30) reject('RRPV2_PREVIEW_SETTINGS_SCOPE_INVALID');
     const hasFrames = settings && Object.hasOwn(settings, 'frames');
+    if (motionR4) {
+      if (!settings || Array.isArray(settings) || Object.keys(settings).length !== 3 ||
+          settings.concurrency !== 1 || settings.timeoutInMilliseconds !== 120000 || settings.scale !== 1 ||
+          context.composition !== 'SmallBusinessAgilityR4Final-WithSfx') reject('RRPV2_PREVIEW_SETTINGS_INVALID');
+      return ['--concurrency=1', '--timeout=120000', '--scale=1'];
+    }
     if (motionR3) {
       if (!settings || Array.isArray(settings) || Object.keys(settings).length !== 4 ||
           Object.keys(settings).some(key => !['concurrency', 'timeoutInMilliseconds', 'scale', 'frames'].includes(key)) ||
@@ -75,5 +82,5 @@ export const buildControlledRemotionRenderArgsV2 = ({
   '--codec=h264',
   '--pixel-format=yuv420p',
   `--public-dir=${text(publicDir, 'Remotion publicDir')}`,
-  ...previewSettingsArgs(previewRenderSettings, renderContext),
+  ...previewSettingsArgs(previewRenderSettings, {...renderContext, composition}),
 ];

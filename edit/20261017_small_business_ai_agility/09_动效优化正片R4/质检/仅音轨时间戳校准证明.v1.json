@@ -1,0 +1,60 @@
+{
+  "source": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/09_动效优化正片R4/小公司AI落地_V9_R4_1080p_有音效_受控原件.mp4",
+  "sourceSha256": "944f65a5e03cbfd1b2eefd93e3722421ecaf737ec85ce3d579386f47ea641774",
+  "output": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/09_动效优化正片R4/交付/小公司AI落地_V9_R4_1080p_有音效.mp4",
+  "outputSha256": "6f066f79071bcbaac08c4996ce7770f659163d1cc13d4045a742f3d9c5da09b1",
+  "measuredOriginalLagMs": 42.6875,
+  "audioTimestampOffsetSeconds": -0.042666666666666665,
+  "command": [
+    "ffmpeg",
+    "-nostdin",
+    "-v",
+    "error",
+    "-copyts",
+    "-i",
+    "edit/20261017_small_business_ai_agility/09_动效优化正片R4/小公司AI落地_V9_R4_1080p_有音效_受控原件.mp4",
+    "-itsoffset",
+    "-0.042666666666667",
+    "-i",
+    "edit/20261017_small_business_ai_agility/09_动效优化正片R4/小公司AI落地_V9_R4_1080p_有音效_受控原件.mp4",
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-c",
+    "copy",
+    "-avoid_negative_ts",
+    "disabled",
+    "-movflags",
+    "+faststart",
+    "edit/20261017_small_business_ai_agility/09_动效优化正片R4/交付/小公司AI落地_V9_R4_1080p_有音效.mp4"
+  ],
+  "streamChecks": {
+    "0": {
+      "packetCountBefore": 4126,
+      "packetCountAfter": 4126,
+      "allPacketPayloadsIdentical": true,
+      "ptsDeltaTicks": [
+        0
+      ],
+      "dtsDeltaTicks": [
+        0
+      ]
+    },
+    "1": {
+      "packetCountBefore": 6449,
+      "packetCountAfter": 6449,
+      "allPacketPayloadsIdentical": true,
+      "ptsDeltaTicks": [
+        -2048
+      ],
+      "dtsDeltaTicks": [
+        -2048
+      ]
+    }
+  },
+  "videoReencoded": false,
+  "audioReencoded": false,
+  "sourcePreserved": true,
+  "fullCandidateQaPending": true
+}

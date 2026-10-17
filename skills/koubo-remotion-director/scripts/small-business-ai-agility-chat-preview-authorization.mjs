@@ -19,6 +19,11 @@ export const AGILITY_MOTION_R3_SOURCE = Object.freeze({
   path: 'edit/20261017_small_business_ai_agility/08_动效优化小样R3/控制/本轮局部动效小样授权原话.v1.json',
   sha256: '25741223905c41545628f2081fa3fd9387f1f994dd531e32c518c206ebb7c464',
 });
+export const AGILITY_MOTION_R4_REVISION = 'small-business-ai-agility-v9-motion-full-candidate-r4-20261017';
+export const AGILITY_MOTION_R4_SOURCE = Object.freeze({
+  path: 'edit/20261017_small_business_ai_agility/09_动效优化正片R4/控制/本轮整片与发布包导出授权原话.v1.json',
+  sha256: '79bbede24d7d6ce424c6a8b50ffe8a370962de13ae5d06c4dc98b437f74422b6',
+});
 const identity = Object.freeze({
   episodeId: 'small-business-ai-agility-20261017',
   taskId: 'SMALL_BUSINESS_AI_AGILITY_20261017',
@@ -37,9 +42,10 @@ export function validateAgilityChatPreviewAuthorization({projectRoot, job, input
   const gate = job.productionGate;
   const videoR2 = gate.revisionId === AGILITY_VIDEO_R2_REVISION;
   const motionR3 = gate.revisionId === AGILITY_MOTION_R3_REVISION;
-  const expectedIdentity = motionR3 ? {...identity, revisionId: AGILITY_MOTION_R3_REVISION} :
+  const motionR4 = gate.revisionId === AGILITY_MOTION_R4_REVISION;
+  const expectedIdentity = motionR4 ? {...identity, revisionId: AGILITY_MOTION_R4_REVISION} : motionR3 ? {...identity, revisionId: AGILITY_MOTION_R3_REVISION} :
     videoR2 ? {...identity, revisionId: AGILITY_VIDEO_R2_REVISION} : identity;
-  const expectedSource = motionR3 ? AGILITY_MOTION_R3_SOURCE : videoR2 ? AGILITY_VIDEO_R2_SOURCE : AGILITY_CHAT_SOURCE;
+  const expectedSource = motionR4 ? AGILITY_MOTION_R4_SOURCE : motionR3 ? AGILITY_MOTION_R3_SOURCE : videoR2 ? AGILITY_VIDEO_R2_SOURCE : AGILITY_CHAT_SOURCE;
   requireValue(command === 'direct-remotion-preview' && gate.previewAuthorizationMode === AGILITY_CHAT_PREVIEW_MODE &&
     input.inputFormat === NATIVE_V2_INPUT_FORMAT && job.director?.inputFormat === NATIVE_V2_INPUT_FORMAT,
   'AGCP_COMMAND_OR_FORMAT_FORBIDDEN');
@@ -71,6 +77,35 @@ export function validateAgilityChatPreviewAuthorization({projectRoot, job, input
   requireValue(resolve(projectRoot, source.path) === resolve(projectRoot, expectedSource.path) &&
     source.sha256 === expectedSource.sha256, 'AGCP_CURRENT_CHAT_REFERENCE_REQUIRED');
   const record = source.body;
+  if (motionR4) {
+    requireValue(record.schemaVersion === 'episode-motion-full-candidate-user-request/v1' &&
+      Object.entries(expectedIdentity).every(([key, value]) => record[key] === value) &&
+      record.quotedUserMessage === '好的，没问题。然后音效记着都配上就可以了，抓紧导出。然后还有提示词，封面提示词和这个发布包文案，快点。' &&
+      record.source?.kind === 'current-chat-human-message-relayed-by-parent-agent' &&
+      record.source?.platformMessageId === null && record.source?.platformMessageIdInvented === false &&
+      record.requestedOutput === 'full-resolution-sound-enabled-candidate-and-publication-package-for-user-review' &&
+      record.sampleAcceptance?.accepted === true && record.sampleAcceptance.scope === '23-second-R3-repaired-viewing-sample-only' &&
+      record.sampleAcceptance.video?.sha256 === '66f176248d2fbfc41445fa8eb56451a5d04e0f0d07333e6bea3a6bc8d60d1155' &&
+      record.sampleAcceptance.fullEpisodeAcceptanceImplied === false &&
+      record.authorizationType === 'local-chat-authorization' && record.isIndependentSignature === false &&
+      ['humanAcceptancePerformed', 'fullWatchConfirmed', 'candidateAccepted', 'factsVerified', 'formalAuthorized',
+        'publishAuthorized', 'externalUploadAuthorized', 'paymentAuthorized'].every(key => record[key] === false),
+    'AGCP_CHAT_SCOPE_INVALID');
+    const settings = job.preview?.renderSettings;
+    requireValue(job.remotion?.root === 'remotion' &&
+      job.remotion.entry === 'src/small-business-ai-agility-r4-final/index.tsx' &&
+      job.remotion.publicDir === 'edit/20261017_small_business_ai_agility/05_剪辑工程/public' &&
+      job.remotion.compositionWithSfx === 'SmallBusinessAgilityR4Final-WithSfx' &&
+      job.remotion.compositionWithoutSfx === 'SmallBusinessAgilityR4Final-NoSfx' &&
+      job.remotion.width === 1920 && job.remotion.height === 1080 && job.remotion.fps === 30 &&
+      job.remotion.durationSeconds === 4126 / 30 && settings && Object.keys(settings).length === 3 &&
+      settings.concurrency === 1 && settings.timeoutInMilliseconds === 120000 && settings.scale === 1 &&
+      job.formal?.enabled === false && resolve(projectRoot, job.preview.output ?? '') === resolve(projectRoot,
+        'edit/20261017_small_business_ai_agility/09_动效优化正片R4/小公司AI落地_V9_R4_1080p_有音效_受控原件.mp4'),
+    'AGCP_R4_FULL_CANDIDATE_REQUIRED');
+    return {authorizationSha256: authorization.sha256, sourceMessageSha256: source.sha256,
+      authorizationMethod: 'current-chat-verbatim', independentSignature: false};
+  }
   if (motionR3) {
     requireValue(record.schemaVersion === 'episode-motion-sample-user-request/v1' &&
       Object.entries(expectedIdentity).every(([key, value]) => record[key] === value) &&
