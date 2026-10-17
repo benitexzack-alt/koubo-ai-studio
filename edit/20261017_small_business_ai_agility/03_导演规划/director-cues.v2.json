@@ -1,0 +1,789 @@
+{
+  "schemaVersion": "koubo-director-cues/v2",
+  "taskId": "SMALL_BUSINESS_AI_AGILITY_20261017",
+  "status": "ready-for-user-review",
+  "executionScope": "director-only",
+  "handoffGate": {
+    "status": "blocked-awaiting-user-approval",
+    "downstreamAllowed": false
+  },
+  "inputScript": {
+    "path": "edit/20261017_small_business_ai_agility/00_控制/用户原稿_只读.txt",
+    "sha256": "9df9829afc7c93df794ecff15b248147263b32fe6d2f550e9feeef4aea50fb65",
+    "authority": "user-confirmed-script"
+  },
+  "routingPolicy": {
+    "selectionBasis": "semantic-need-not-fixed-cadence",
+    "speakerIsFallback": true,
+    "generatedInsertMinimum": 0,
+    "paperInsertMinimum": 0,
+    "fixedCadenceForbidden": true,
+    "generatedVisualCannotServeAsEvidence": true,
+    "factVerificationSeparatedFromPrimaryVisual": true,
+    "constructedVisualPriority": [
+      "paper-editorial",
+      "ai-generated-video"
+    ],
+    "aiGeneratedVideoUseCondition": "concrete-human-or-environment-scene-paper-unnatural",
+    "shotcraftSelectionStage": "post-shoot-edit-release",
+    "shotcraftEligibleRoutes": [
+      "speaker",
+      "real-evidence"
+    ],
+    "shotcraftForbiddenInsideRoutes": [
+      "paper-editorial",
+      "ai-generated-video"
+    ]
+  },
+  "styleLocks": {
+    "aiGeneratedVideo": null,
+    "paperEditorial": {
+      "promptPrefix": "16:9横屏，实体纸艺微缩舞台，奶油白厚纸、珊瑚红活动件、深蓝折纸背景；可见纸纤维、切边、折痕和真实接触阴影，至少三层前后空间；中文直接长在纸面上。",
+      "mustKeep": [
+        "同一任务始终可辨，不替换为另一张纸",
+        "前景任务、中景通路与后景支架有真实厚度和遮挡",
+        "中文贴合承载面，随该纸件运动",
+        "左下角安静留位，底部独立字幕空间"
+      ],
+      "mustAvoid": [
+        "办公室卡通人物与假客户案例",
+        "平面流程图、满屏卡片、装饰性齿轮堆叠",
+        "数字倍数、成功勾、倒计时与收益符号",
+        "纸张穿模、突然换物和文字漂浮"
+      ],
+      "textPolicy": "first-frame-generated-chinese-surface-bound",
+      "qualityBaselineId": "paper-super-individual-20260829-v1",
+      "referenceImages": [
+        {
+          "id": "REF01",
+          "usage": "style-mechanism-only",
+          "path": "edit/20260828_super_individual/05_素材验收/frames/paper_07-mid-original.png",
+          "sha256": "5d04fa4d180847d6e142e7dd352caf98396718a18ec676d16006f9756068f6b2"
+        }
+      ]
+    }
+  },
+  "selectionSummary": {
+    "mainPoint": "从小组织决策链可能较短的条件出发，围绕具体岗位尝试AI，并根据真实任务反馈调整；效果仍需测量。",
+    "argumentFlow": [
+      "咨询引出还来不来得及、怎么干",
+      "提出小组织敏捷性的比较判断",
+      "缩小改造范围到具体岗位",
+      "效果承诺待核，机制只解释试用与调整",
+      "本人服务偏好和业务价值",
+      "本地老板问题、交流邀请与自我介绍"
+    ],
+    "routeCounts": {
+      "speaker": 27,
+      "real-evidence": 0,
+      "ai-generated-video": 0,
+      "paper-editorial": 1,
+      "shotcraftOpportunity": 5
+    },
+    "routeRationales": {
+      "speaker": "咨询、判断、岗位说明和服务邀请由本人承载，使用现有V9拍后语义编排，不为换镜插入无关素材。",
+      "real-evidence": "没有必须展示的具体产品、界面、人物行为或现场；后台公开依据保留在核对表，不以政策截图替代效果证据。",
+      "ai-generated-video": "没有纸艺无法自然表达且必须具象化的人物环境；办公室与客户替代镜头易造成案例误认。",
+      "paper-editorial": "仅用一段遇阻后调整再试的连续物理动作解释迭代，不能证明全员当天上手或效果翻倍。"
+    },
+    "visualRhythmReason": "全文按语义分段而非28次切镜；岗位并列逐项呈现、一次机制纸艺和真人表达形成节奏，拍后按真实声音和手势选数字运镜。",
+    "protectedSpeakerBeatIds": [
+      "B01",
+      "B02",
+      "B17",
+      "B22",
+      "B23",
+      "B24",
+      "B25",
+      "B26",
+      "B27",
+      "B28"
+    ]
+  },
+  "semanticBeats": [
+    {
+      "id": "B01",
+      "order": 1,
+      "scriptQuote": "这两天有个十来人规模的公司老板找我咨询，",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F01",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人讲述近期咨询，真实表情建立可信度；不补造客户身份或聊天截图。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B02",
+      "order": 2,
+      "scriptQuote": "问出了咋们大多数老板的问题:现在企业做AI变革，我们这种小公司还来得及吗？到底该怎么干？",
+      "rhetoricalRole": "hook-question",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F02",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "让观众正面听见两个问题；拍后可局部强调问句，不插入虚构老板。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B03",
+      "order": 3,
+      "scriptQuote": "其实恰恰是这种小规模公司，相比大企业，优势反而更大，",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F03",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "保留本人判断，比较主张待核，不配大小企业竞赛或胜负图。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B04",
+      "order": 4,
+      "scriptQuote": "竞争力更强。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F04",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "延续同一真人镜头，避免用排名或奖杯强化未证实的整体竞争力。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B05",
+      "order": 5,
+      "scriptQuote": "核心原因就是：小组织自带的【组织敏捷性】",
+      "rhetoricalRole": "mechanism",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F05",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "正面解释关键词；拍后让组织敏捷性一词随语义出现，保持真人为主。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B06",
+      "order": 6,
+      "scriptQuote": "大企业层级多、流程固化，想要推一套AI改造，层层汇报、反复开会，部门之间互相拉扯。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F06",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人讲述概括性经验；不使用陌生公司的办公室画面暗指其内耗。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B07",
+      "order": 7,
+      "scriptQuote": "等方案讨论落地，需要很久。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F07",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "承接前句不另换镜；不添加虚构审批天数或倒计时。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B08",
+      "order": 8,
+      "scriptQuote": "但是十几个人的公司不一样。老板一声拍板，当天就能定方向。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F08",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人手势承接对比；决定方向与项目上线分开，不制作当天上线画面。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B09",
+      "order": 9,
+      "scriptQuote": "不用复杂审批，不需要协调好几个部门，",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F09",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "保持表达连续；审批与协同取决于具体业务，不用一键清空审批的图像。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B10",
+      "order": 10,
+      "scriptQuote": "试错成本极低。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F10",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "保留待核判断，不添加零成本、低价标签或收益曲线。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B11",
+      "order": 11,
+      "scriptQuote": "我们不需要全员大改造、不需要全套系统升级。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "abstract-explanation",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人给出局部试点建议，以语气转折突出范围收窄。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B12",
+      "order": 12,
+      "scriptQuote": "只针对销售、运营、行政、客服、剪辑、文案这几个核心岗位，做精准AI落地。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真人旁六个岗位随读到的名称逐项呈现；它们是可选岗位并列关系，不是六步实施顺序。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B13",
+      "order": 13,
+      "scriptQuote": "只要把这几个岗位的AI流程打通，效率立刻翻倍、",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F11",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "效果倍数缺少同条件实测，保留原文供审阅，不添加翻倍数字、图表或成功音效。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B14",
+      "order": 14,
+      "scriptQuote": "成本立刻下降、",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F12",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "延续同一镜头；没有完整成本记录，不用下降箭头制造核实感。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B15",
+      "order": 15,
+      "scriptQuote": "结果立竿见影。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F13",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "延续同一镜头；即时效果未证实，不用庆祝镜头作背书。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B16",
+      "order": 16,
+      "scriptQuote": "觉得这个AI工具好用，全员当天就能上手；哪个流程跑不通，马上调整迭代。",
+      "rhetoricalRole": "mechanism",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F14",
+      "primaryRoute": "paper-editorial",
+      "routeCueId": "P01",
+      "decisionReason": "用同一个纸艺任务遇阻后调整通路、再次试用，解释反馈迭代；不表现全员当天采用或已经成功。",
+      "viewerGain": "explain-mechanism"
+    },
+    {
+      "id": "B17",
+      "order": 17,
+      "scriptQuote": "这也是我现在在兰州，最喜欢服务中小企业的核心原因。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "纸艺退出后恢复真人全幅，让本人说明服务偏好，不能用纸艺代替本人口碑。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B18",
+      "order": 18,
+      "scriptQuote": "大企业交付周期长、落地阻力大、内耗严重。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F15",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "个人判断保持真人；概括性对照待核，不嫁接真实企业影像。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B19",
+      "order": 19,
+      "scriptQuote": "而咱们本地小微企业：\n交付快、落地快、出效果更快！",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F16",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "保留本人叙述并标记比较依据待补，不展示工期竞赛或成绩单。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B20",
+      "order": 20,
+      "scriptQuote": "AI真正的价值就是解决真实的业务问题、帮企业提效、帮老板省钱、帮团队增收。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "核心价值由本人表达；拍后仅聚焦真实的业务问题，不把目标画成已经兑现的利润。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B21",
+      "order": 21,
+      "scriptQuote": "很多老板现在很焦虑：别人都在做AI，我不做怕掉队，想做又不知道从哪下手，工具装了一堆，最后全部闲置，落不了地。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F17",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人说出观察和焦虑，保留停顿；不补造客户崩溃、闲置比例或大量采访。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B22",
+      "order": 22,
+      "scriptQuote": "如果你也是兰州本地实体企业、小微企业老板，",
+      "rhetoricalRole": "service-invitation",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "直视镜头点出本地服务对象，避免装饰镜头打断对话感。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B23",
+      "order": 23,
+      "scriptQuote": "你也遇到了AI不会落地、用不出效果、不知道怎么匹配自己行业业务的问题。",
+      "rhetoricalRole": "service-invitation",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "延续真人点出问题，靠语气和手势建立对应关系。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B24",
+      "order": 24,
+      "scriptQuote": "评论区留下你的行业，",
+      "rhetoricalRole": "service-invitation",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人邀请观众回应；拍后可以留下行业一词，不生成虚假评论弹窗。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B25",
+      "order": 25,
+      "scriptQuote": "我来帮你免费拆解你的企业AI落地方案。",
+      "rhetoricalRole": "service-invitation",
+      "claimClass": "real-operation",
+      "requiresFactCheck": true,
+      "factCheckId": "F18",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "服务承诺由本人完整说出；免费范围需明确，不额外加名额、原价或限时。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B26",
+      "order": 26,
+      "scriptQuote": "想面对面聊、想做本地企业一对一AI改造，也可以直接进我的粉丝群。",
+      "rhetoricalRole": "service-invitation",
+      "claimClass": "real-operation",
+      "requiresFactCheck": true,
+      "factCheckId": "F19",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "保留本人说明会面及粉丝群渠道；不生成虚假群聊或承诺后台功能已核验。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B27",
+      "order": 27,
+      "scriptQuote": "我是超哥，扎根兰州，",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "presenter-expression",
+      "requiresFactCheck": false,
+      "factCheckId": null,
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "真实露脸完成自我介绍，不用外部人物或虚构企业场景替代。",
+      "viewerGain": "presenter-trust"
+    },
+    {
+      "id": "B28",
+      "order": 28,
+      "scriptQuote": "只做能落地、有结果、帮企业赚钱的AI实体应用。",
+      "rhetoricalRole": "judgment-or-explanation",
+      "claimClass": "factual-claim",
+      "requiresFactCheck": true,
+      "factCheckId": "F20",
+      "primaryRoute": "speaker",
+      "routeCueId": null,
+      "decisionReason": "本人定位收尾；赚钱表述须区分追求与保证，不加收益截图或收款音。",
+      "viewerGain": "presenter-trust"
+    }
+  ],
+  "factChecks": [
+    {
+      "id": "F01",
+      "beatId": "B01",
+      "sourceRequirement": "用户提供近期咨询与公司规模自述；未独立核验，不补造客户身份或聊天证据。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F02",
+      "beatId": "B02",
+      "sourceRequirement": "大多数是发生率概括，缺少代表性样本；可以记录用户观察，不据此编造统计。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F03",
+      "beatId": "B03",
+      "sourceRequirement": "S1/S2支持小步试点，未提供小公司整体优势高于大公司的比较数据，需限定比较维度。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F04",
+      "beatId": "B04",
+      "sourceRequirement": "竞争力更强缺少行业、资源和结果的同条件比较；组织规模不足以直接推出竞争力。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F05",
+      "beatId": "B05",
+      "sourceRequirement": "组织敏捷性仅为决策链短、授权清楚等条件下的机制推论；不能说所有小组织自动具备。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "codex-public-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F06",
+      "beatId": "B06",
+      "sourceRequirement": "大企业层级、流程和内耗概括缺少具体对照；若作为本人经验需限定观察范围。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F07",
+      "beatId": "B07",
+      "sourceRequirement": "需要很久无确定时长和案例依据；不得添加虚构审批周期。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F08",
+      "beatId": "B08",
+      "sourceRequirement": "当天定方向在有授权的小范围试点中可能成立，但需与生产上线分开，未核验本企业实绩。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F09",
+      "beatId": "B09",
+      "sourceRequirement": "无需复杂审批或多部门协调需具体权限、数据与业务边界，不能按人数直接保证。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F10",
+      "beatId": "B10",
+      "sourceRequirement": "成本极低缺少工具、数据、培训、集成、复核和返工成本记录。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F11",
+      "beatId": "B13",
+      "sourceRequirement": "效率立刻翻倍需要相同任务量、质量标准、测量周期和前后数据；当前未提供。S1/S2/S3不能证明。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F12",
+      "beatId": "B14",
+      "sourceRequirement": "成本立刻下降需完整投入与持续费用对照；当前未提供，节省工时不自动等于现金成本下降。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F13",
+      "beatId": "B15",
+      "sourceRequirement": "结果立竿见影需明确结果指标与验收时间；当前没有可验证案例。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F14",
+      "beatId": "B16",
+      "sourceRequirement": "全员当天上手没有采用记录；S1只支持按成效调整。P01仅解释遇阻后调整再试，不是效果证据。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F15",
+      "beatId": "B18",
+      "sourceRequirement": "大企业周期、阻力、内耗的概括没有本轮比较证据，不对应任意被拍到的真实企业。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "shared",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F16",
+      "beatId": "B19",
+      "sourceRequirement": "交付快、落地快、出效果更快需要本人同范围项目的周期和结果记录，当前未提供。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F17",
+      "beatId": "B21",
+      "sourceRequirement": "很多老板焦虑和工具闲置为用户观察，发生率未知，不添加普遍性统计。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F18",
+      "beatId": "B25",
+      "sourceRequirement": "免费拆解是用户提出的服务承诺，需明确免费范围与后续收费边界，不新增时限、名额或效果保证。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F19",
+      "beatId": "B26",
+      "sourceRequirement": "本地一对一服务与粉丝群邀请为用户提出；需本人确认当前可提供及群入口可用，本轮未登录核验。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    },
+    {
+      "id": "F20",
+      "beatId": "B28",
+      "sourceRequirement": "帮企业赚钱若作普遍结果承诺，需案例与条件；目前只能记录个人服务目标，不能证明全部项目可盈利。 详细来源见02_事实核对/公开依据与主张边界.md。",
+      "owner": "user-private-source",
+      "onScreenTreatment": "not-required",
+      "fallbackIfUnverified": "remove-or-rewrite-claim"
+    }
+  ],
+  "routePlans": {
+    "realMaterials": {
+      "status": "not-required",
+      "notRequiredReason": "没有必须展示的具体产品、界面、人物行为或现场；后台公开依据保留在核对表，不以政策截图替代效果证据。",
+      "items": []
+    },
+    "aiGeneratedVideos": {
+      "status": "not-required",
+      "notRequiredReason": "没有纸艺无法自然表达且必须具象化的人物环境；办公室与客户替代镜头易造成案例误认。",
+      "items": []
+    },
+    "paperEditorials": {
+      "status": "planned",
+      "notRequiredReason": null,
+      "items": [
+        {
+          "id": "P01",
+          "beatId": "B16",
+          "startAnchorText": "觉得这个AI工具好用",
+          "endAnchorText": "马上调整迭代。",
+          "timingStatus": "pre-shoot-text-anchor-only",
+          "purpose": "illustration-only",
+          "evidenceEligible": false,
+          "durationSeconds": 8,
+          "reason": "用同一个纸艺任务遇阻后调整通路、再次试用，解释反馈迭代；不表现全员当天采用或已经成功。 拍后以“哪个流程跑不通”之后的实际语义窗优先承接；原声持续、真人缩至左下，退出恢复全幅。8秒为生成目标，不是已锁定剪辑时间。",
+          "visualRole": "process",
+          "visualMetaphor": "同一纸任务遇到阻挡，调节通路后准备再次试用。",
+          "composition": "前景任务、中景敞开纸轨与折动件、后景测试台，三层物理纵深；主体中右，左下真人留位，底部字幕留位。",
+          "referenceImageIds": [
+            "REF01"
+          ],
+          "firstFramePrompt": "16:9横屏，实体纸艺微缩舞台，奶油白厚纸、珊瑚红活动件、深蓝折纸背景；可见纸纤维、切边、折痕和真实接触阴影，至少三层前后空间；中文直接长在纸面上。静态初始画面：主体集中在画面中部偏右，前景是一张尚未出发的奶油白试用任务折页，其正面清晰印着“试用”；中景浅灰开放纸轨道上，珊瑚色挡片横在直行通路与备用支路的共同入口，正面印着“卡点”。挡片侧边连接一块可翻折的铰接调节片，面向镜头的纸面印着“调整”；其旁弧形备用通路本体敞开可见，但入口此刻被同一挡片封住；通路通向更靠后的后侧测试台面，台面印着“再试”。四个词全部存在于起始画面，逐字准确。各承载纸面与相邻结构边界清楚，任务仍在挡片前，调节片未翻动，备用通路没有跨越高墙或钻入隧洞；终点不出现成功证明。前景折页、中景轨道、后景折纸支架拉开纵深，斜上方柔光；左下角留安静桌面给真人小窗，底部留安静区域给字幕，不在生成图中绘制真人、字幕或界面。",
+          "videoPrompt": "基于已确认首帧，保持同一构图、纸材、四组中文和物件身份。同一张试用任务折页遇到卡点后，经铰接调节片改变通路，再进入后侧测试台面准备再试。总长约8秒：先让试用任务折页沿轨道前进，在珊瑚色挡片前明确停住；铰接调节片缓慢翻折，带动挡片改变朝向，露出通往后侧测试台面的开放支路；同一折页沿支路连续移至“再试”处，最后保留约两秒看清新通路与准备再次试用的状态。镜头仅极轻微靠近主体，不改变左下和底部留位。试用、卡点、调整三处中文随各自纸面完整移动，“再试”固定在测试台面；不补出全员上手、翻倍、省钱或成功符号。保留轻纸摩擦、折页翻动和接触桌面的可用原生动作声，不加解说或背景音乐。",
+          "primaryAction": "同一张试用任务折页遇到卡点后，经铰接调节片改变通路，再进入后侧测试台面准备再试。",
+          "negativePrompt": [
+            "文字错字、漂浮或换字",
+            "纸张穿过挡片和突然瞬移",
+            "路径被墙、隧洞或装饰物堵住",
+            "画面变成二维流程图",
+            "效率倍数、金币、成功勾或全员上手证明",
+            "左下及底部堆满运动主体",
+            "生成真人、说话声、额外字幕或音乐"
+          ],
+          "textPlan": [
+            {
+              "text": "试用",
+              "surface": "试用任务折页",
+              "motion": "with-object"
+            },
+            {
+              "text": "卡点",
+              "surface": "珊瑚色挡片",
+              "motion": "with-object"
+            },
+            {
+              "text": "调整",
+              "surface": "铰接调节片",
+              "motion": "with-object"
+            },
+            {
+              "text": "再试",
+              "surface": "后侧测试台面",
+              "motion": "fixed-context",
+              "reason": "固定再次试用的位置，不把到达终点误作已经成功。"
+            }
+          ],
+          "motionPlan": {
+            "goal": "看懂流程遇阻可以通过调整再次试用，仍需下一轮验证。",
+            "actions": [
+              "同一任务沿现有通路遇到挡片停住",
+              "调节片带动挡片换向，开放旁侧连续通路",
+              "同一任务沿支路进入再试位置并停留"
+            ],
+            "result": "观众能看见从受阻到可再次试用的关系变化，尚无效率或成功结论。",
+            "textBinding": "surface-bound",
+            "audioPolicy": "preserve-usable-native-action-sound"
+          }
+        }
+      ]
+    }
+  },
+  "shotcraftOpportunities": [
+    {
+      "id": "SO01",
+      "beatId": "B02",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "对象为两个问题，初态是真人直面镜头；随说到还来得及吗、怎么干依次强调对应短语；结果保留两个问题的阅读顺序，读稳后撤回真人。以真实语气和轻短落点声衔接下句，不预锁卡片或时点。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO02",
+      "beatId": "B05",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "对象为组织敏捷性关键词，初态真人表达；说到原词时轻量出现并聚焦，结果让观众记住解释对象；读稳后让位给大、小组织比较，声音只随文字实际落定一次，不强化比较结论。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO03",
+      "beatId": "B12",
+      "baseVisualRoute": "speaker",
+      "intent": "list-reveal",
+      "reason": "对象是销售、运营、行政、客服、剪辑、文案六个并列岗位，初态保持真人；随实际说到的岗位逐个出现并保留，结果形成可选范围而非先后流程；末项后整体读稳，再收回真人。声音对应实际落点择要安排，不按固定间隔打点。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO04",
+      "beatId": "B20",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "对象是真实的业务问题，初态纸艺已结束、真人全幅；口播落到该词时短暂聚焦，结果强调工作目标，读稳后撤出并承接老板焦虑；留出语气转折，不配赚钱或庆祝音。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    },
+    {
+      "id": "SO05",
+      "beatId": "B24",
+      "baseVisualRoute": "speaker",
+      "intent": "keyword-emphasis",
+      "reason": "对象为行业一词，初态真人邀请；读到行业时局部出现，结果使观众知道可回应什么；停留读稳后自然融入免费拆解说明，声音轻且不盖住承诺，禁止虚构评论滚动。",
+      "status": "opportunity-only-post-shoot-selection-pending",
+      "catalogScope": "full-current-catalog"
+    }
+  ],
+  "rhythmAudit": {
+    "basis": "semantic-runs-not-seconds",
+    "fixedCadenceForbidden": true,
+    "longSpeakerRunsReviewed": true,
+    "runs": [
+      {
+        "fromBeatId": "B01",
+        "toBeatId": "B15",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "连续真人覆盖咨询、比较、岗位与效果判断。两个问题、一个概念和六岗位有语义变化；拍后按声音和手势决定数字运镜与轻量动效，待核效果句不加成果画面，不因时长强插办公室镜头。",
+        "mitigationRefs": [
+          "SO01",
+          "SO02",
+          "SO03"
+        ]
+      },
+      {
+        "fromBeatId": "B17",
+        "toBeatId": "B28",
+        "risk": "medium",
+        "decision": "shotcraft-opportunity",
+        "reason": "后半由本人服务偏好进入目标和本地邀请，应保持对话连续。聚焦真实问题与行业回应两处；拍后据真实停顿决定轻微运镜，不套固定频率，不用虚构客户换镜。",
+        "mitigationRefs": [
+          "SO04",
+          "SO05"
+        ]
+      }
+    ]
+  }
+}

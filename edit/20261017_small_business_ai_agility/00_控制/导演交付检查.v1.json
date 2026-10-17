@@ -1,0 +1,36 @@
+{
+  "taskId": "SMALL_BUSINESS_AI_AGILITY_20261017",
+  "stage": "director-only",
+  "status": "ready-for-user-review",
+  "directorSha256": "147bc7cb75a23d87c74f0af1a31a5126c1cb9033714a53b9dd8a0ab27dfa3b36",
+  "scriptSha256": "9df9829afc7c93df794ecff15b248147263b32fe6d2f550e9feeef4aea50fb65",
+  "officialValidator": {
+    "command": "node skills/koubo-remotion-director/scripts/validate-director-cues-v2.mjs --input edit/20261017_small_business_ai_agility/03_导演规划/director-cues.v2.json --repo-root /Users/pc/Documents/口播",
+    "exitCode": 0,
+    "ok": true
+  },
+  "checks": {
+    "fullScriptCoveredWithoutRewriting": true,
+    "humanPaperPromptsMatchDirector": true,
+    "speakerBeats": 27,
+    "paperBeats": 1,
+    "postShootOpportunities": 5,
+    "factCheckTasks": 20,
+    "desktopEntryVerified": true
+  },
+  "independentTextReview": {
+    "reviewer": "agility_schema",
+    "p1": 0,
+    "p2Found": 1,
+    "p2": "旁路初始敞开与调整后才开放的因果不清",
+    "resolution": "明确同一挡片封住直行和备用支路共同入口，备用路本体可见但入口不通；翻动后才露出支路。",
+    "afterFixCheck": "主代理核对JSON和人读版一致，当前官方结构校验再次通过；未冒称独立二审已完成"
+  },
+  "notEstablished": [
+    "用户对本条导演的确认",
+    "原稿全部事实通过",
+    "首帧审美与动态动作通过",
+    "实录时长和时间轴",
+    "整片视听或发布通过"
+  ]
+}
