@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "koubo-scoped-firstframe-handoff-local-review/v1",
+  "taskId": "SMALL_BUSINESS_AI_AGILITY_20261017",
+  "revisionId": "paper-p01-firstframe-r1",
+  "date": "2026-10-17",
+  "status": "local-handoff-validated-awaiting-firstframe",
+  "stage": "firstframe",
+  "scope": "仅P01一张首帧；未执行生图、未访问平台",
+  "checks": {
+    "officialBuilderPassed": true,
+    "officialDirectoryRevalidationPassed": true,
+    "onlyP01": true,
+    "firstFramePromptMatchesOriginalDirectorVerbatim": true,
+    "firstFramePromptSha256Matches": true,
+    "textPlanMatchesOriginalDirector": true,
+    "childHashMatchesMasterBinding": true,
+    "originalDirectorSha256Unchanged": true,
+    "exactUserAnswerAndPrecedingQuestionRecorded": true,
+    "authorizationExplicitlyLimitedToOneFirstframe": true,
+    "wholeDirectorAcceptanceNotClaimed": true,
+    "userVisualAcceptancePending": true,
+    "officialExternalPermissionsRemainFalse": true
+  },
+  "bindings": {
+    "originalDirector": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/03_导演规划/director-cues.v2.json",
+      "sha256": "147bc7cb75a23d87c74f0af1a31a5126c1cb9033714a53b9dd8a0ab27dfa3b36"
+    },
+    "authorization": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_首帧质检/执行交接_r1/用户P01首帧制作授权.v1.json",
+      "sha256": "74818db5ee2f75947b37318d543399463ca3f784712b719865ca2fc89395903c"
+    },
+    "master": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_首帧质检/执行交接_r1/官方交接/director-cues-v2-handoff.v1.json",
+      "sha256": "728701dbc1be0aa2a0d3e2f87d801afa606cae7b81dd40cbbb129d0321ed2907"
+    },
+    "officialValidationReceipt": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_首帧质检/执行交接_r1/官方交接/director-cues-v2-handoff-validation-receipt.v1.json",
+      "sha256": "c8181d55d1144cdb5ed434559ed183d8aae528496ba9281d480d28f092cc7394"
+    },
+    "firstframeChild": {
+      "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_首帧质检/执行交接_r1/官方交接/paper-editorial.first-frame-handoff.v1.json",
+      "sha256": "73877206b00718e5ff9b349c548e731eb57951b31b66b38f7e17242e81bd5aa0"
+    }
+  },
+  "P01": {
+    "beatId": "B16",
+    "pairId": "P01-prompt-pair-v1",
+    "pairSha256": "f1850f7fde79bd8020e79993d62031fe21e982a7d7e86066a62f2bf7c6a11334",
+    "firstFramePromptSha256": "10b89a3eaea93fb4063eccea758466e693ebc7426226b03b75a5f5cca70edbb0",
+    "expectedText": ["试用", "卡点", "调整", "再试"],
+    "imageGenerated": false,
+    "visualQA": "pending",
+    "ocr": "pending",
+    "userVisualAcceptance": "pending"
+  },
+  "limitations": [
+    "既有构建器校验schema、批准字段与来源哈希，不执行细粒度授权策略；本轮范围以独立授权回执明确限定。",
+    "总交接存在其他分路和视频child仅是标准结构，不获得其他生产阶段许可。",
+    "本地交接校验不证明生成图片视觉质量，不等于整份导演表或整片验收。"
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "koubo-director-route-prompt-handoff/v1",
+  "taskId": "SMALL_BUSINESS_AI_AGILITY_20261017",
+  "revisionId": "paper-p01-firstframe-r1",
+  "status": "planned",
+  "sourceRoute": "paper-editorial",
+  "downstreamRoute": "paper-editorial",
+  "notRequiredReason": null,
+  "source": {
+    "directorCues": {
+      "path": "edit/20261017_small_business_ai_agility/03_导演规划/director-cues.v2.json",
+      "sha256": "147bc7cb75a23d87c74f0af1a31a5126c1cb9033714a53b9dd8a0ab27dfa3b36"
+    },
+    "userApproval": {
+      "path": "edit/20261017_small_business_ai_agility/04_首帧质检/执行交接_r1/用户P01首帧制作授权.v1.json",
+      "sha256": "74818db5ee2f75947b37318d543399463ca3f784712b719865ca2fc89395903c"
+    },
+    "activeDirectorProfile": {
+      "path": "workflow/active-director-profile.v1.json",
+      "sha256": "f5767da622252b724007d31c63a79278f77008f75820f4c554bd3e5037e90fdf"
+    }
+  },
+  "executionScope": "local-handoff-only",
+  "externalActionsAuthorized": false,
+  "generationStarted": false,
+  "promptKind": "first-frame",
+  "promptIsolation": {
+    "containsVideoPromptBodies": false,
+    "consumer": "first-frame-stage"
+  },
+  "styleLock": {
+    "promptPrefix": "16:9横屏，实体纸艺微缩舞台，奶油白厚纸、珊瑚红活动件、深蓝折纸背景；可见纸纤维、切边、折痕和真实接触阴影，至少三层前后空间；中文直接长在纸面上。",
+    "mustKeep": [
+      "同一任务始终可辨，不替换为另一张纸",
+      "前景任务、中景通路与后景支架有真实厚度和遮挡",
+      "中文贴合承载面，随该纸件运动",
+      "左下角安静留位，底部独立字幕空间"
+    ],
+    "mustAvoid": [
+      "办公室卡通人物与假客户案例",
+      "平面流程图、满屏卡片、装饰性齿轮堆叠",
+      "数字倍数、成功勾、倒计时与收益符号",
+      "纸张穿模、突然换物和文字漂浮"
+    ],
+    "textPolicy": "first-frame-generated-chinese-surface-bound",
+    "qualityBaselineId": "paper-super-individual-20260829-v1",
+    "referenceImages": [
+      {
+        "id": "REF01",
+        "usage": "style-mechanism-only",
+        "path": "edit/20260828_super_individual/05_素材验收/frames/paper_07-mid-original.png",
+        "sha256": "5d04fa4d180847d6e142e7dd352caf98396718a18ec676d16006f9756068f6b2"
+      }
+    ]
+  },
+  "itemCount": 1,
+  "items": [
+    {
+      "id": "P01",
+      "beatId": "B16",
+      "startAnchorText": "觉得这个AI工具好用",
+      "endAnchorText": "马上调整迭代。",
+      "timingStatus": "pre-shoot-text-anchor-only",
+      "durationSeconds": 8,
+      "pairId": "P01-prompt-pair-v1",
+      "pairSha256": "f1850f7fde79bd8020e79993d62031fe21e982a7d7e86066a62f2bf7c6a11334",
+      "prompt": "16:9横屏，实体纸艺微缩舞台，奶油白厚纸、珊瑚红活动件、深蓝折纸背景；可见纸纤维、切边、折痕和真实接触阴影，至少三层前后空间；中文直接长在纸面上。静态初始画面：主体集中在画面中部偏右，前景是一张尚未出发的奶油白试用任务折页，其正面清晰印着“试用”；中景浅灰开放纸轨道上，珊瑚色挡片横在直行通路与备用支路的共同入口，正面印着“卡点”。挡片侧边连接一块可翻折的铰接调节片，面向镜头的纸面印着“调整”；其旁弧形备用通路本体敞开可见，但入口此刻被同一挡片封住；通路通向更靠后的后侧测试台面，台面印着“再试”。四个词全部存在于起始画面，逐字准确。各承载纸面与相邻结构边界清楚，任务仍在挡片前，调节片未翻动，备用通路没有跨越高墙或钻入隧洞；终点不出现成功证明。前景折页、中景轨道、后景折纸支架拉开纵深，斜上方柔光；左下角留安静桌面给真人小窗，底部留安静区域给字幕，不在生成图中绘制真人、字幕或界面。",
+      "promptSha256": "10b89a3eaea93fb4063eccea758466e693ebc7426226b03b75a5f5cca70edbb0",
+      "negativePrompt": [
+        "文字错字、漂浮或换字",
+        "纸张穿过挡片和突然瞬移",
+        "路径被墙、隧洞或装饰物堵住",
+        "画面变成二维流程图",
+        "效率倍数、金币、成功勾或全员上手证明",
+        "左下及底部堆满运动主体",
+        "生成真人、说话声、额外字幕或音乐"
+      ],
+      "reason": "用同一个纸艺任务遇阻后调整通路、再次试用，解释反馈迭代；不表现全员当天采用或已经成功。 拍后以“哪个流程跑不通”之后的实际语义窗优先承接；原声持续、真人缩至左下，退出恢复全幅。8秒为生成目标，不是已锁定剪辑时间。",
+      "visualRole": "process",
+      "visualMetaphor": "同一纸任务遇到阻挡，调节通路后准备再次试用。",
+      "composition": "前景任务、中景敞开纸轨与折动件、后景测试台，三层物理纵深；主体中右，左下真人留位，底部字幕留位。",
+      "textPlan": [
+        {
+          "text": "试用",
+          "surface": "试用任务折页",
+          "motion": "with-object"
+        },
+        {
+          "text": "卡点",
+          "surface": "珊瑚色挡片",
+          "motion": "with-object"
+        },
+        {
+          "text": "调整",
+          "surface": "铰接调节片",
+          "motion": "with-object"
+        },
+        {
+          "text": "再试",
+          "surface": "后侧测试台面",
+          "motion": "fixed-context",
+          "reason": "固定再次试用的位置，不把到达终点误作已经成功。"
+        }
+      ],
+      "referenceImageIds": [
+        "REF01"
+      ]
+    }
+  ]
+}

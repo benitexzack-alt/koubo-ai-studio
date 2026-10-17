@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "koubo-paper-firstframe-direct-chinese-review/v1",
+  "taskId": "SMALL_BUSINESS_AI_AGILITY_20261017",
+  "sceneId": "P01",
+  "beatId": "B16",
+  "pairId": "P01-prompt-pair-v1",
+  "recordedAt": "2026-10-17T17:55:16+08:00",
+  "recordedAtMeaning": "检查记录时间，非平台生成精确时间",
+  "status": "blocked-revision-required",
+  "userVisualAcceptance": "pending",
+  "authorization": {
+    "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_首帧质检/执行交接_r1/用户P01首帧制作授权.v1.json",
+    "sha256": "74818db5ee2f75947b37318d543399463ca3f784712b719865ca2fc89395903c",
+    "userQuote": "是的，你先生成首帧。",
+    "scope": "仅本期P01首帧，未扩大为整导演或视频批准"
+  },
+  "source": {
+    "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/03_导演规划/P01_纸艺首帧与视频提示词.md",
+    "sha256": "18e99dc8dd021d99a32fd2347b993ad208d8f711578621d6e9bfe92f56ff41cd",
+    "cuesSha256": "147bc7cb75a23d87c74f0af1a31a5126c1cb9033714a53b9dd8a0ab27dfa3b36",
+    "firstFrameChildSha256": "73877206b00718e5ff9b349c548e731eb57951b31b66b38f7e17242e81bd5aa0",
+    "originalPromptContentSha256": "10b89a3eaea93fb4063eccea758466e693ebc7426226b03b75a5f5cca70edbb0"
+  },
+  "skill": {
+    "path": "skills/koubo-paper-firstframe-producer/SKILL.md",
+    "sha256": "f6e9190c14b2a6ad17153eb3dcdb9e1eb43af1d392883a545712c5a3a3a8b2ab",
+    "route": "新纸艺基线路线",
+    "imagegenSkillSha256": "681ddb4ad6d06a2acc78a3535b583f8d0c1ea800ecda3d56370d3310fd2cd4ba",
+    "generationTool": "image_gen",
+    "localTextBakeUsed": false
+  },
+  "textPlan": [
+    {
+      "text": "试用",
+      "surface": "试用任务折页"
+    },
+    {
+      "text": "卡点",
+      "surface": "珊瑚色挡片"
+    },
+    {
+      "text": "调整",
+      "surface": "铰接调节片"
+    },
+    {
+      "text": "再试",
+      "surface": "后侧测试台面"
+    }
+  ],
+  "attempts": [
+    {
+      "revision": "r1",
+      "mode": "new-generation",
+      "image": {
+        "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/01_素材投放区/04_纸艺视频/P01_首帧_r1.png",
+        "sha256": "fbcd564b441932f28b3543dc7c2460b1b92241c010354a5b965427889fa8a0b0",
+        "bytes": 2164994,
+        "width": 1672,
+        "height": 941
+      },
+      "providerOriginalPath": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-e8db9791-5b75-4dc1-b000-f8fb02f43f87.png",
+      "executionPrompt": {
+        "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_首帧质检/P01_实际生图提示词_r1.txt",
+        "fileSha256": "409459a772dc1a8aed04a424b8a1fa521b391017977972e6b4dec7fb0d658014",
+        "fileContainsTrailingNewline": true
+      },
+      "visualResult": "FAIL",
+      "ocr": [
+        {
+          "engine": "Apple Vision accurate zh-Hans, usesLanguageCorrection=false",
+          "input": "full-image",
+          "raw": "厚証卡点调整试用",
+          "exactMatch": false
+        },
+        {
+          "engine": "Apple Vision accurate zh-Hans, usesLanguageCorrection=false",
+          "input": "diagnostic-crop",
+          "crop": "260x110+1270+75",
+          "resize": "1040x660!",
+          "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_首帧质检/P01_再试_OCR局部诊断_r1.png",
+          "sha256": "0887785f1059032f103d0506d4c8551b5d7640f19481c64e6f908226c9c1131b",
+          "raw": "再斌",
+          "exactMatch": false
+        }
+      ],
+      "humanTextReview": "四词目视准确，不把OCR误读称为真实错字",
+      "findings": [
+        "P1：高护墙/抬高的弧线入口有竖直台阶，同一折页无跨坎转入未成立。",
+        "P1：调整片挡在弧线口形成第二道门，未显示单一挡片封共同入口。",
+        "P2：底部轨道穿下边缘，非连续独立留白。"
+      ]
+    },
+    {
+      "revision": "r2",
+      "mode": "targeted-edit",
+      "image": {
+        "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/01_素材投放区/04_纸艺视频/P01_首帧_r2.png",
+        "sha256": "a8706f2bade604f381aa97d8a2ec3d0c5aa3ceb2071212977420a59df1c77fe7",
+        "bytes": 2107229,
+        "width": 1672,
+        "height": 941
+      },
+      "providerOriginalPath": "/Users/pc/.codex/generated_images/01a05ce8-84ee-7112-bbc5-309c3e660c77/exec-9ce76f8d-ac79-4b6c-9f5b-7ed6853b2d1e.png",
+      "editSourceSha256": "fbcd564b441932f28b3543dc7c2460b1b92241c010354a5b965427889fa8a0b0",
+      "executionPrompt": {
+        "path": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/04_首帧质检/P01_定点修订提示词_r2.txt",
+        "fileSha256": "2587f86bc0d81ebb19272f0615beeff6f90b7c053d83e8c67ca3d50b2c01e883",
+        "fileContainsTrailingNewline": true
+      },
+      "visualResult": "FAIL",
+      "ocr": [
+        {
+          "engine": "Apple Vision accurate zh-Hans, usesLanguageCorrection=false",
+          "input": "full-image",
+          "raw": "再証卡点调盩试用",
+          "exactMatch": false
+        }
+      ],
+      "humanTextReview": "四词目视准确，OCR未闭合",
+      "resolved": [
+        "高护墙、桥墩、支路大台阶已消除，不继续算作r2缺陷。"
+      ],
+      "findings": [
+        "P1：卡点片挡直路，调整片仍挡弧形支路入口，两门分别封路，共同入口拓扑未成立。",
+        "P1待证：再试台倾斜覆盖轨道末端，接合不可见，不能确认同高连续进入，也不声称必然穿墙。",
+        "P2：底部轨道仍穿下边缘，尚无连续独立字幕留白。"
+      ]
+    }
+  ],
+  "independentVisualReviewer": "/root/p01_p02_visual_qa",
+  "currentP0": [],
+  "currentP1": [
+    "共同入口拓扑不符原词",
+    "终点连续通行尚未证实",
+    "OCR精确识别未闭合"
+  ],
+  "verifiedFacts": [
+    "两版图片实际生成、保存并打开复核。",
+    "四词人工目视正确，纸材和三层空间成立。",
+    "修订仅解决部分结构，核心入口问题仍在。"
+  ],
+  "inference": [
+    "生成侧未落实原词已有的共同入口约束；不是四个中文字目标写错。",
+    "先锁定几何布局再生图可能减少同类错误，但未验证成功率。"
+  ],
+  "unknown": [
+    "真实图生视频动态结果",
+    "用户视觉接受情况",
+    "备选修复成功率"
+  ],
+  "stopReason": "同一入口结构问题连续两版未解决，停止第三次同类尝试，等待用户选择新修复方法。",
+  "externalState": {
+    "runningHubAccessed": false,
+    "uploaded": false,
+    "configured": false,
+    "videoSubmitted": false,
+    "videoGenerated": false,
+    "separatePayment": false,
+    "published": false
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/guides/image-generation",
+      "use": "官方说明复杂布局定位与文字清晰度仍有限制，不证明本图必然出错的机制。"
+    },
+    {
+      "url": "https://github.com/openai/skills/blob/main/skills/.system/imagegen/references/prompting.md",
+      "use": "参考布局和sketch-to-render可作为下一轮候选，不代表已实测。"
+    }
+  ],
+  "contextNotes": [
+    "日常执行手册的用户指定旧路径03_最佳实践/抖音口播内容与DOU+投放边界.md不存在；未伪称已读取。本轮未发布/投放，不扩展修索引。",
+    "已读取规则快照与来源索引中适用的证据/AI边界，只用于说明图与公开发布相互独立，不宣称当前平台合规验收。"
+  ]
+}

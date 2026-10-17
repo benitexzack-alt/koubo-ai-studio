@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "koubo-director-cues-user-approval/v2",
+  "status": "approved",
+  "taskId": "SMALL_BUSINESS_AI_AGILITY_20261017",
+  "revisionId": "paper-p01-firstframe-r1",
+  "bindings": {
+    "directorCues": {
+      "path": "edit/20261017_small_business_ai_agility/03_导演规划/director-cues.v2.json",
+      "sha256": "147bc7cb75a23d87c74f0af1a31a5126c1cb9033714a53b9dd8a0ab27dfa3b36"
+    }
+  },
+  "approved": true,
+  "userQuote": "是的，你先生成首帧。",
+  "approvedAt": "2026-10-17T09:47:52.918Z",
+  "approvalTimeBasis": "本轮收到用户明确授权后的记录时间，不冒称聊天发送精确时间",
+  "exceptions": [],
+  "precedingQuestionContext": {
+    "assistantQuestionQuote": "文件已核对，仍标记“待确认”。确认按这版生成 P01 一张首帧（试用、卡点、调整、再试），检查后给你看，暂不进入 RunningHub，对吗？",
+    "quotationType": "exact-question-provided-by-main-agent",
+    "providedBy": "主任务"
+  },
+  "approvalMeaning": "approved仅代表本用户原话授权按当前P01方案制作一张首帧并建立本地交接，不代表整份导演表的完整验收，也不代表其他分路或后续生产授权。",
+  "scope": {
+    "stage": "firstframe",
+    "selectedSceneIds": [
+      "P01"
+    ],
+    "authorizedImageCount": 1,
+    "localOfficialHandoffAuthorized": true,
+    "firstFrameGenerationAuthorized": true,
+    "userVisualAcceptance": "pending",
+    "wholeDirectorAcceptance": false,
+    "wholeFilmAcceptance": false,
+    "otherRouteExecutionAuthorized": false,
+    "runningHubUploadAuthorized": false,
+    "runningHubConfigurationAuthorized": false,
+    "videoGenerationAuthorized": false,
+    "videoTaskSubmissionAuthorized": false,
+    "paidVideoGenerationAuthorized": false,
+    "rechargeAuthorized": false,
+    "separatePaymentAuthorized": false,
+    "editingAuthorized": false,
+    "publicationAuthorized": false
+  },
+  "outputDirectory": "/Users/pc/Documents/口播/edit/20261017_small_business_ai_agility/01_素材投放区/04_纸艺视频",
+  "constraints": [
+    "仅消费官方纸艺首帧child中的P01，不把视频词加入生图词。",
+    "四组中文直接生成在承载纸面，仍需实际看图与OCR。",
+    "原03导演文件与00交付回执只读，不改写历史pending结论。",
+    "官方构建器保留的其他路线清单和视频child仅是本地结构，不获得执行许可。",
+    "首帧生成完成不等于用户已验收，未经下一步确认不进入RunningHub。"
+  ]
+}
