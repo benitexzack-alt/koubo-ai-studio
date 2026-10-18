@@ -398,5 +398,32 @@
     "paperScenesAreInsertBranch": true,
     "paperScenesDoNotReplaceOfficialEvidence": true,
     "generatedVideoIsFullScreenIllustrationOnly": true
+  },
+  "codeInsertPolicy": {
+    "effectiveFrom": "2026-10-18",
+    "authorityPath": "skills/koubo-remotion-director/references/code-insert-shots.v1.md",
+    "styles": [
+      "paper",
+      "pixel"
+    ],
+    "generator": "claude-code",
+    "planPathPattern": "edit/generated-video/<episode>/insert-shots.plan.json",
+    "validatorPath": "skills/koubo-remotion-director/scripts/validate-insert-shots-plan.mjs",
+    "exporterPath": "skills/koubo-remotion-director/scripts/export-insert-shots-plan.mjs",
+    "firstFrameRequired": false,
+    "runningHubRequired": false,
+    "legacyFirstFrameHandoffApplicable": false,
+    "presenterInset": "bottom-left-continuous",
+    "nativeAudioMixOptions": [
+      "preserve",
+      "duck",
+      "mute"
+    ],
+    "canvas": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30
+    },
+    "nextEpisodeEndToEndValidation": "pending"
   }
 }

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "插入镜头生成方案",
+  "description": "仅描述纸艺或像素插入镜头。结构通过不代表语义、实录逐词或视觉避让通过；这些仍由导演对照真实音频或 SRT 核对。时间顺序、不重叠、30fps 整数帧、镜号唯一及 enterSec 小于 duration 由配套校验器检查。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["episode", "canvas", "shots"],
+  "properties": {
+    "episode": {"$ref": "#/$defs/pathComponent"},
+    "canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "fps"],
+      "properties": {
+        "width": {"const": 1920},
+        "height": {"const": 1080},
+        "fps": {"const": 30}
+      }
+    },
+    "shots": {
+      "type": "array",
+      "description": "按 insertAt 顺序排列；本期不需要插入镜头时可以为空。",
+      "items": {"$ref": "#/$defs/shot"}
+    }
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "pathComponent": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!\\.{1,2}$)(?!.*[. ]$)[^/\\\\\\u0000-\\u001f\\u007f<>:\"|?*]+$",
+      "description": "安全的单个目录名或文件名主体；前后空白、系统保留名称另由配套校验器拒绝。"
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "object", "enterSec"],
+      "properties": {
+        "label": {"type": "string", "minLength": 1, "maxLength": 6, "pattern": "\\p{Script=Han}", "description": "原样贴入画面的中文标签，最多 6 个 Unicode 字符。"},
+        "object": {"$ref": "#/$defs/text", "description": "一句话描述看得见的物件及动作。"},
+        "enterSec": {"type": "number", "minimum": 0, "description": "相对于本镜头起点，严格小于 duration；标签不得提前出现，按 ceil(enterSec*30-1e-6) 取出现帧，该帧必须小于 duration*30，保证至少一帧可见。导演按实录中说到此词的时点填写。节点列表是空间顺序，不要求出现时间递增。"}
+      }
+    },
+    "shot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["shotId", "insertAt", "duration", "style", "theme", "title", "spokenLine", "nodes", "flow", "ending", "avoid"],
+      "properties": {
+        "shotId": {"$ref": "#/$defs/pathComponent"},
+        "insertAt": {"type": "string", "pattern": "^[0-9]{2}:[0-5][0-9]:[0-5][0-9]\\.[0-9]{3}$"},
+        "duration": {"type": "number", "exclusiveMinimum": 0, "description": "剪入长度，以秒表示；乘以 30 必须是正整数帧，允许浮点计算精度误差。"},
+        "style": {"enum": ["paper", "pixel"]},
+        "theme": {"$ref": "#/$defs/text", "description": "paper 填一句主色调描述；pixel 只能为 noir、blocks 或 mono。"},
+        "title": {"$ref": "#/$defs/text"},
+        "spokenLine": {"$ref": "#/$defs/text"},
+        "nodes": {"type": "array", "minItems": 3, "maxItems": 5, "items": {"$ref": "#/$defs/node"}},
+        "flow": {"$ref": "#/$defs/text"},
+        "ending": {"$ref": "#/$defs/text"},
+        "avoid": {"type": "array", "items": {"$ref": "#/$defs/text"}}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"style": {"const": "pixel"}}},
+          "then": {"properties": {"theme": {"enum": ["noir", "blocks", "mono"]}}}
+        }
+      ]
+    }
+  }
+}
