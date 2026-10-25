@@ -11,7 +11,15 @@ import {exportInsertShotsPlan, parseInsertShotsArgs, validateInsertShotsPlan} fr
 const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const example = JSON.parse(fs.readFileSync(path.join(skillRoot, 'templates/insert-shots.plan.example.json'), 'utf8'));
 const schema = JSON.parse(fs.readFileSync(path.join(skillRoot, 'templates/insert-shots.plan.schema.json'), 'utf8'));
+const draftingExample = JSON.parse(fs.readFileSync(path.join(skillRoot, 'templates/insert-shots.drafting.example.json'), 'utf8'));
+const schemaCheck = new Ajv({allErrors: true, strict: false}).compile(schema);
 const fresh = () => structuredClone(example);
+const freshDrafting = () => structuredClone(draftingExample);
+const validateDrafting = (change) => {
+  const plan = freshDrafting();
+  change(plan, plan.shots[0]);
+  return validateInsertShotsPlan(plan);
+};
 const validate = (change) => {
   const plan = fresh();
   change(plan, plan.shots[0]);
@@ -205,4 +213,180 @@ test('两条 CLI 在临时目录端到端校验和导出，不渲染也不写旁
   const duplicate = spawnSync(process.execPath, [path.join(skillRoot, 'scripts/export-insert-shots-plan.mjs'), '--input', inputPath, '--repo-root', repoRoot], {encoding: 'utf8'});
   assert.equal(duplicate.status, 1);
   assert.match(JSON.parse(duplicate.stderr).error, /拒绝覆盖/);
+});
+
+test('新图纸示例通过 Schema 和语义结构检查，明确只是非实录假设示例', () => {
+  assert.equal(schemaCheck(draftingExample), true, JSON.stringify(schemaCheck.errors));
+  const result = validateInsertShotsPlan(draftingExample);
+  assert.equal(result.ok, true, JSON.stringify(result.errors));
+  assert.match(draftingExample.shots[0].spokenLine, /非本期实录/);
+  assert.match(result.note, /不核验来源真假/);
+  assert.equal(result.validationScope, 'structure-only');
+});
+
+test('旧协议保持旧字段严格性，不新增比例约束，也不把扩展字段悄悄接纳', () => {
+  const legacy = fresh();
+  legacy.shots.push({...structuredClone(legacy.shots[0]), shotId: 'P02', insertAt: '00:00:20.000', style: 'pixel', theme: 'noir'});
+  assert.equal(validateInsertShotsPlan(legacy).ok, true);
+  assert.equal(schemaCheck(legacy), true);
+  for (const change of [
+    (shot) => {shot.layout = 'flow';},
+    (shot) => {shot.assumption = false;},
+    (shot) => {shot.nodes[0].kind = 'claim';},
+    (shot) => {shot.nodes[0].value = '文字';},
+    (shot) => {shot.nodes[0].source = '出处';},
+    (shot) => {shot.style = 'drafting';},
+  ]) {
+    const plan = fresh();
+    change(plan.shots[0]);
+    assert.equal(validateInsertShotsPlan(plan).ok, false);
+    assert.equal(schemaCheck(plan), false);
+  }
+});
+
+test('新期号对象的纸艺和像素镜头不强加 layout、assumption 或 kind', () => {
+  for (const style of ['paper', 'pixel']) {
+    const plan = fresh();
+    plan.episode = {id: example.episode, primaryStyle: style};
+    plan.shots[0].style = style;
+    if (style === 'pixel') plan.shots[0].theme = 'mono';
+    assert.equal(validateInsertShotsPlan(plan).ok, true);
+    assert.equal(schemaCheck(plan), true);
+  }
+});
+
+for (const [name, change] of [
+  ['缺少期号 id', (plan) => {delete plan.episode.id;}],
+  ['缺少主风格', (plan) => {delete plan.episode.primaryStyle;}],
+  ['空期号', (plan) => {plan.episode.id = ' ';}],
+  ['非法主风格', (plan) => {plan.episode.primaryStyle = 'video';}],
+  ['非法辅风格', (plan) => {plan.episode.secondaryStyle = null;}],
+  ['期号未知字段', (plan) => {plan.episode.name = '测试';}],
+  ['缺少图纸版式', (plan, shot) => {delete shot.layout;}],
+  ['非法图纸版式', (plan, shot) => {shot.layout = 'table';}],
+  ['缺少假设声明', (plan, shot) => {delete shot.assumption;}],
+  ['假设声明不是布尔值', (plan, shot) => {shot.assumption = 'true';}],
+  ['空图纸色调', (plan, shot) => {shot.theme = ' ';}],
+  ['缺少节点类型', (plan, shot) => {delete shot.nodes[0].kind;}],
+  ['非法节点类型', (plan, shot) => {shot.nodes[0].kind = 'number';}],
+  ['数字没有来源', (plan, shot) => {delete shot.nodes[0].source;}],
+  ['数字来源为空', (plan, shot) => {shot.nodes[0].source = ' ';}],
+  ['假设数字未明确假设来源', (plan, shot) => {shot.nodes[0].source = '演示数据';}],
+  ['假设来源没有内容', (plan, shot) => {shot.nodes[0].source = '假设： ';}],
+  ['value 不是文字', (plan, shot) => {shot.nodes[0].value = 1000;}],
+  ['source 不是文字', (plan, shot) => {shot.nodes[0].source = 1000;}],
+]) {
+  test(`新协议拒绝${name}，Schema 与配套校验器一致`, () => {
+    const plan = freshDrafting();
+    change(plan, plan.shots[0]);
+    assert.equal(validateInsertShotsPlan(plan).ok, false);
+    assert.equal(schemaCheck(plan), false);
+  });
+}
+
+test('阿拉伯、全角、中文及中文大写数量均要求 source，纯文字可省略', () => {
+  for (const value of ['12万元', '１２万元', '两万元', '壹佰元', '半数']) {
+    const plan = freshDrafting();
+    plan.shots[0].nodes[0].value = value;
+    delete plan.shots[0].nodes[0].source;
+    assert.equal(validateInsertShotsPlan(plan).ok, false);
+    assert.equal(schemaCheck(plan), false);
+  }
+  const plan = freshDrafting();
+  plan.shots[0].nodes[0].value = '待核对';
+  delete plan.shots[0].nodes[0].source;
+  assert.equal(validateInsertShotsPlan(plan).ok, true);
+  assert.equal(schemaCheck(plan), true);
+});
+
+test('事实数字可以填写出处，结构检查不会把来源字段当成真实性验收', () => {
+  const plan = freshDrafting();
+  plan.shots[0].assumption = false;
+  plan.shots[0].nodes.forEach((node) => {node.source = '待人工核对的来源记录';});
+  assert.equal(validateInsertShotsPlan(plan).ok, true);
+  assert.equal(schemaCheck(plan), true);
+  assert.match(validateInsertShotsPlan(plan).note, /不核验来源真假/);
+});
+
+test('clause 必须包含逐字摘录节点的 value 与 source，但不伪称检查了原文', () => {
+  const plan = freshDrafting();
+  const shot = plan.shots[0];
+  shot.layout = 'clause';
+  shot.assumption = false;
+  shot.nodes[0] = {...shot.nodes[0], kind: 'quote', value: '推动人工智能应用', source: '结构示例文本第1条，非真实政策引用'};
+  assert.equal(validateInsertShotsPlan(plan).ok, true);
+  assert.equal(schemaCheck(plan), true);
+  for (const field of ['value', 'source']) {
+    const invalid = structuredClone(plan);
+    delete invalid.shots[0].nodes[0][field];
+    assert.equal(validateInsertShotsPlan(invalid).ok, false);
+    assert.equal(schemaCheck(invalid), false);
+  }
+  shot.nodes[0].kind = 'claim';
+  assert.equal(validateInsertShotsPlan(plan).ok, false);
+  assert.equal(schemaCheck(plan), false);
+});
+
+test('stack 最多四节点，ledger3 需要三个相近字数的因子与一个结果', () => {
+  const plan = freshDrafting();
+  plan.shots[0].layout = 'stack';
+  assert.equal(validateInsertShotsPlan(plan).ok, true);
+  plan.shots[0].nodes.push({...plan.shots[0].nodes[0]});
+  assert.equal(validateInsertShotsPlan(plan).ok, false);
+  assert.equal(schemaCheck(plan), false);
+  assert.equal(validateDrafting((p, shot) => {shot.nodes[2].kind = 'claim';}).ok, false);
+  assert.equal(validateDrafting((p, shot) => {shot.nodes[3].kind = 'readout';}).ok, false);
+  assert.equal(validateDrafting((p, shot) => {shot.nodes[0].label = '量';}).ok, false);
+});
+
+test('新方案仅允许声明的主辅风格，主风格占比正好七成可通过，少一镜即失败', () => {
+  const plan = freshDrafting();
+  plan.episode.secondaryStyle = 'paper';
+  plan.shots = Array.from({length: 10}, (_, index) => ({
+    ...structuredClone(draftingExample.shots[0]),
+    shotId: `P${String(index + 1).padStart(2, '0')}`,
+    insertAt: `00:0${Math.floor(index / 6)}:${String((index % 6) * 10).padStart(2, '0')}.000`,
+    style: index < 7 ? 'drafting' : 'paper',
+  }));
+  assert.equal(validateInsertShotsPlan(plan).ok, true);
+  plan.shots[6].style = 'paper';
+  const lowRatio = validateInsertShotsPlan(plan);
+  assert.equal(lowRatio.ok, false);
+  assert.match(lowRatio.errors.find((error) => error.path === '$.episode.primaryStyle').message, /70%/);
+  plan.shots[6].style = 'drafting';
+  plan.shots[9].style = 'pixel';
+  plan.shots[9].theme = 'noir';
+  assert.equal(validateInsertShotsPlan(plan).ok, false);
+  plan.shots = [];
+  assert.equal(validateInsertShotsPlan(plan).ok, true);
+  plan.episode.secondaryStyle = plan.episode.primaryStyle;
+  assert.equal(validateInsertShotsPlan(plan).ok, false);
+});
+
+test('新期号 id 保留安全路径限制，在写目录之前拒绝逃逸', (t) => {
+  const {repoRoot, inputPath} = temporary(t);
+  for (const unsafe of ['../escape', '.', '..', '/tmp/escape', 'a\\b', 'CON', 'item.', ' item']) {
+    const plan = freshDrafting();
+    plan.episode.id = unsafe;
+    fs.writeFileSync(inputPath, JSON.stringify(plan));
+    assert.throws(() => exportInsertShotsPlan({repoRoot, inputPath}), /校验未通过/);
+    assert.deepEqual(fs.readdirSync(repoRoot), []);
+  }
+});
+
+test('新方案导出使用 episode.id 作为目录，保留对象和原始字节且拒绝覆盖', (t) => {
+  const {repoRoot, inputPath} = temporary(t);
+  const original = `${JSON.stringify(draftingExample, null, '\t')}\r\n`;
+  fs.writeFileSync(inputPath, original);
+  for (const script of ['validate-insert-shots-plan.mjs', 'export-insert-shots-plan.mjs']) {
+    const result = spawnSync(process.execPath, [path.join(skillRoot, 'scripts', script), '--input', inputPath, '--repo-root', repoRoot], {encoding: 'utf8'});
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(JSON.parse(result.stdout).validationScope, 'structure-only');
+  }
+  const output = path.join(fs.realpathSync(repoRoot), 'edit/generated-video', draftingExample.episode.id, 'insert-shots.plan.json');
+  assert.equal(fs.readFileSync(output, 'utf8'), original);
+  assert.deepEqual(JSON.parse(fs.readFileSync(output)), draftingExample);
+  assert.deepEqual(fs.readdirSync(path.dirname(path.dirname(output))), [draftingExample.episode.id]);
+  assert.throws(() => exportInsertShotsPlan({repoRoot, inputPath}), /拒绝覆盖/);
+  assert.equal(fs.readFileSync(output, 'utf8'), original);
 });

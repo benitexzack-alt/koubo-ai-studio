@@ -4,6 +4,14 @@
 > 项目根目录：以本 `AGENTS.md` 所在的 Git 仓库根目录为准，不依赖固定用户名或克隆位置。
 > 建立日期：2026-07-04
 
+## 2026-10-25 导演交接补充：测绘图纸与AI情景
+
+- 用户于2026-10-25明确确认当前V9及本次导演交接规则为最新默认版本和最低保障。测绘图纸方案按语义采用，实际新风格画面仍逐期验收。当前以导演Skill、`references/drafting-style.v1.json`及`references/ai-scene-handoff.v1.md`为准；不改历史成片或整体后期基准。
+- 新代码插片增加drafting及六种layout；新episode对象包含id/primaryStyle/可选secondaryStyle，原episode字符串计划保持兼容。新计划一主一辅、主风格占已选代码镜头至少70%；可零插片，不把比例变成数量或频率配额。数字逐项source，假设明确标注，条款逐字核原文。
+- 每期全文导演必须独立判断AI情景采用或不采用并说明具体理由。采用时，同次交付用户可直接复制的`AI视频生成提示词.md`；仅交Claude的代码JSON不代表导演交接完整。具体人物、工作动作或环境有解释收益即可考虑AI情景，不再要求纸艺先失败。
+- paper/pixel/drafting均不生成首帧或调用RunningHub。AI情景提示词单独交付，不混进代码JSON，不自动代用户生成。下文仅列纸艺/像素的当前代码规则也适用于drafting；旧v2首帧与“纸艺无法表达才用AI”的要求只保留历史兼容。
+- 左下同期真人、独立字幕、原声与实录时点、动作音效和完整发布包要求保持。下一期收到原片后重绑方案，风格协议检查不冒充实际渲染或观看验收。
+
 ## 当前纸艺/像素插片协议（2026-10-18 用户决定）
 
 - 新纸艺和像素插片走 `skills/koubo-remotion-director/SKILL.md` 及 `references/code-insert-shots.v1.md`：导演输出一份 `edit/generated-video/<episode>/insert-shots.plan.json`，用户交给 Claude Code 直接生成每镜 MP4，再交回 Codex 按实录时间码剪入。

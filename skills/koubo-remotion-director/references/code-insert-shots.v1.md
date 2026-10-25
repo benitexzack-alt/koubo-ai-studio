@@ -1,29 +1,34 @@
 # 插入镜头生成方案：Claude Code 交接规范
 
-2026-10-18 用户确定：纸艺/像素直接代码生成 MP4，取消这两路首帧与 RunningHub。本文适用于新导演交接，旧首帧合同不适用。
+2026-10-18确定纸艺/像素直接代码生成MP4；2026-10-25按用户转交的Claude方案增补drafting测绘图纸风。三路均不生成首帧、不走RunningHub。旧计划兼容，新格式以episode对象区分，不批量迁移历史。
 
 ## 文件和字段
 
-唯一文件：`edit/generated-video/<episode>/insert-shots.plan.json`。
+给Claude的代码插片计划：`edit/generated-video/<episode-id>/insert-shots.plan.json`。给用户的独立AI情景视频词见[AI情景交接规范](ai-scene-handoff.v1.md)，不塞入本JSON；导演全文必须说明AI情景采用或不采用及理由。
 
-顶层只有 `episode/canvas/shots`；每镜只有 `shotId/insertAt/duration/style/theme/title/spokenLine/nodes/flow/ending/avoid`。不加包装器、审批/哈希字段、首帧或图生视频提示词。
+顶层仍为 `episode/canvas/shots`。旧episode字符串保留旧字段。新episode对象为 `{id, primaryStyle, secondaryStyle?}`，`id`是唯一工程目录名，主辅风格不得相同；secondaryStyle无需时省略。新镜头在原字段上增加 `layout/assumption`，节点增加可选 `value/kind/source`；drafting强制layout、assumption及节点kind。不加入审批/哈希、首帧或AI情景视频提示词。
 
-[示例 JSON](../templates/insert-shots.plan.example.json)与[JSON Schema](../templates/insert-shots.plan.schema.json)随 Skill 提供。示例不是本期实录，时间须用真实口播重新填写。
+[旧纸艺示例](../templates/insert-shots.plan.example.json)、[新测绘图纸示例](../templates/insert-shots.drafting.example.json)与[JSON Schema](../templates/insert-shots.plan.schema.json)随Skill提供。示例均非本期实录；示例时间只用于协议测试，正式时间必须重新绑定。
 
 | 字段 | 规则 |
 | --- | --- |
-| `episode` | 本期唯一标识和目录名，不带分隔符、上级目录或绝对路径 |
+| `episode` | 旧字符串照旧；新对象含id、primaryStyle及可选secondaryStyle。id不得含分隔符、上级目录或绝对路径 |
 | `canvas` | 1920×1080、30fps |
 | `shotId` | 本期唯一，如 P01，混用两种画风也不重复，用此值命名 MP4 |
 | `insertAt` | HH:MM:SS.mmm，本期实际剪辑时间轴入点，不是未核对的拍前估算 |
 | `duration` | 正数秒，与画面帧数/30相等，不沿用旧2–8秒限制 |
-| `style` | 仅 paper 或 pixel |
-| `theme` | paper 用中文主色句，如“深蓝与暖白为主，灰蓝作辅助”；pixel 仅 noir、blocks、mono |
+| `style` | 旧协议paper/pixel；新协议paper/pixel/drafting，且必须属于声明的主辅风格 |
+| `theme` | paper/drafting用主色句；drafting按统一近黑、灰白与琥珀规范；pixel仅noir、blocks、mono |
+| `layout` | 新drafting必填ledger3、compare2、flow、clause、readout或stack |
+| `assumption` | 新drafting必填布尔值；true时渲染清晰“假设”，数量source也须逐项说明假设 |
 | `title` | 这一镜的一项核心意思，不增加收益或事实承诺 |
 | `spokenLine` | 对应窗口实际说出的原句，拍前稿不能替代实录 |
-| `nodes` | 3–5项，按画面左到右排序，每项只有 label/object/enterSec |
+| `nodes` | 3–5项，按画面左到右；stack最多4项。保留label/object/enterSec，新协议允许value/kind/source |
 | `label` | 准确中文短标签，≤6个Unicode字符，“AI”等术语也计入长度，Claude 原样排字 |
-| `object` | 一句可见物件与动作，如“深蓝漏斗接住落下的时钟纸片” |
+| `object` | 一句可见物件与动作，包括drafting选框绘制、数值落定，不能只给静态标签 |
+| `value` | 新协议可选非空字符串；含阿拉伯数字或中文数量字符时必须逐项带source |
+| `kind` | claim/facet/result/quote/readout；drafting节点必填 |
+| `source` | 数值出处或明确假设参数；quote需逐字原文及来源定位。source存在不等于真实性已核验 |
 | `enterSec` | 镜头内标签入点，≥0且<duration；空间顺序不强制时间递增 |
 | `flow` | 一句话写因果/关系如何传递；并列不画成强制前后流程 |
 | `ending` | 最后一拍的结果画面与阅读停留 |
@@ -31,11 +36,21 @@
 
 `shots=[]` 可表示经导演判断本期不需插片，不为凑数硬造节点。工具只检查结构、长度、数值、路径、时间排序/重叠；不自动验证语义、画面质量或词级同步。
 
+## 新风格与来源约束
+
+新协议仅使用一主一辅，主风格镜数占代码插片至少70%；镜数分母不含真人、真实素材或AI情景。允许无辅助风格或shots为空，不为比例凑镜头。旧字符串计划不套用新比例。
+
+- drafting六种版式与全部颜色、文字、构件、动作、安全区以[drafting-style.v1.json](drafting-style.v1.json)为准；下次交接指明该规范，让Claude按style/layout实现。
+- ledger3必须有三个facet与一个result，三个facet标签字数尽量接近（最多差两字）；不得为对齐改原意。超出时改为准确短标签并把解释留在object，或选其他适合版式。stack同时最多4项。
+- clause至少一个quote节点，value逐字摘录已读取原文，source写文件名/标题、条款或段落和可定位来源。条款编号、日期不做滚动计数。不具备原文证据时不能制造权威式卡片。
+- 数字source须逐节点提供，不能只在结果节点写一次。源提案样例前三个数字没有source，只能作草图，不能作为合格交接原样导出。假设值写“假设：…”，事实值写真实依据；派生数给出可复算公式与基础来源。
+- 标题、标签、来源小字和算式里其他上屏数量同样需要导演核对。机器只查字段完整性和规则，不能证明出处可访问、内容真实、引用逐字一致或公式正确。
+
 ## 导演和风格
 
 主动检查持续真人讲解中的机制、比较、路径和操作过程，优先让有解释价值的关系可见。用户允许多做有用镜头，不继承旧“少量”偏好或费用限制，也不机械设配额。
 
-纸艺表现材质、层次、空间关系、业务因果和交付；像素表现路径、分叉、关卡、工具和任务推进。按内容选择，可在一期穿插；不默认每镜同一桌面，不每次强行换风格。画面是说明，不是事实证据。
+drafting优先表达数字、账目、条款与清单；纸艺表现实物、空间及人物关系；像素用于有助理解的比喻、路径或游戏化。按一主一辅约束选用，不因风格库变大而频繁换皮。画面是说明，不是事实证据；具体人物工作动作可另走AI情景。
 
 逐镜核对原句、短标签、可见动作和结果。没有说出的收益、数据、真实业务成果不得添加。动作与读字分开，结尾留停顿，不把并列岗位演成串行工序。改写可见文字需沿用项目文案审稿边界。
 
@@ -44,6 +59,8 @@
 ## 左下真人与字幕
 
 Claude 只生成插片。真人口型、转场、字幕、配乐由 Codex 后期处理。避让必须写进每镜 `avoid`，不能假定 Claude 读过内部规则。
+
+三种代码风格均沿用本条真人与字幕保护区。drafting内容区为x=520–1860、y=60–860，左侧标题列不放关键数字，具体见风格规范layoutContract。
 
 当前横屏 V9 可沿用 20261017 工程的小窗 `x=64,y=620,width=400,height=225` 作为起点；使用该布局时将以下两条写进 avoid：
 
@@ -57,6 +74,8 @@ Claude 只生成插片。真人口型、转场、字幕、配乐由 Codex 后期
 每镜独立 `<shotId>.mp4`，1920×1080、30fps，画面帧数对应 duration。音频编码末尾的少量填充与画面少帧区别判断。拟音原轨保留，不要求额外解说或配乐；最终可保留、压低或静音，由正常速度试听决定，避免重复音效。
 
 逐镜核对解码、规格、帧数、中文、标签时点、动作因果、结尾停留、声音与避让；按 insertAt 剪入。合辑只作参考，交付仍逐镜。失败只返工失败镜头。
+
+代码插片描述标签可用“示意动画”，AI情景用“AI情景演绎”；这些说明不替代平台AI声明，不能据制作方式自动推定豁免。
 
 新路线不要求首帧图、首帧OCR、图片配对哈希或RunningHub回执，也不伪造这些证据兼容旧门禁。正式接片/受控渲染仍绑定本期真实原片、素材和确认；旧专用适配器不能直接冒充新路线已可用。当前已确定规则，下一条实际验证“计划→Claude MP4→本期口播”闭环。
 

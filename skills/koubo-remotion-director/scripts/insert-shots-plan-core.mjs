@@ -4,10 +4,15 @@ import path from 'node:path';
 const PLAN_KEYS = ['episode', 'canvas', 'shots'];
 const SHOT_KEYS = ['shotId', 'insertAt', 'duration', 'style', 'theme', 'title', 'spokenLine', 'nodes', 'flow', 'ending', 'avoid'];
 const NODE_KEYS = ['label', 'object', 'enterSec'];
+const STYLES = ['paper', 'pixel', 'drafting'];
+const DRAFTING_LAYOUTS = ['ledger3', 'compare2', 'flow', 'clause', 'readout', 'stack'];
+const NODE_KINDS = ['claim', 'facet', 'result', 'quote', 'readout'];
+const QUANTITY_PATTERN = /[\p{Number}零〇一二三四五六七八九十百千万亿两壹贰叁肆伍陆柒捌玖拾佰仟萬億兆半廿卅]/u;
+const ASSUMPTION_SOURCE_PATTERN = /^\s*假设\s*[:：]\s*\S/u;
 const TIME_PATTERN = /^(\d{2}):([0-5]\d):([0-5]\d)\.(\d{3})$/u;
 const PIXEL_THEMES = new Set(['noir', 'blocks', 'mono']);
 const DEVICE_NAME = /^(?:con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/iu;
-const STRUCTURE_NOTE = '只验证 JSON 结构、数值和镜头排布；物件动作、中文语义、实录逐词对齐及真人小窗和字幕避让仍须导演对照真实音频或 SRT 核对。';
+const STRUCTURE_NOTE = '只验证 JSON 结构、数值、镜头排布和来源字段完整性；不核验来源真假、引文是否逐字准确或假设计算。物件动作、中文语义、实录逐词对齐及真人小窗和字幕避让仍须导演对照真实音频或 SRT 核对。';
 
 function isRecord(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -36,7 +41,7 @@ function timeMilliseconds(value) {
 export function validateInsertShotsPlan(plan) {
   const errors = [];
   const fail = (at, message) => errors.push({path: at, message});
-  const record = (value, at, keys) => {
+  const record = (value, at, keys, optionalKeys = []) => {
     if (!isRecord(value)) {
       fail(at, '必须是对象');
       return false;
@@ -45,7 +50,7 @@ export function validateInsertShotsPlan(plan) {
       if (!Object.hasOwn(value, key)) fail(`${at}.${key}`, '缺少必填字段');
     }
     for (const key of Object.keys(value)) {
-      if (!keys.includes(key)) fail(`${at}.${key}`, '不允许增加字段');
+      if (!keys.includes(key) && !optionalKeys.includes(key)) fail(`${at}.${key}`, '不允许增加字段');
     }
     return true;
   };
@@ -53,7 +58,16 @@ export function validateInsertShotsPlan(plan) {
     if (!hasText(value)) fail(at, '必须是非空字符串');
   };
   if (record(plan, '$', PLAN_KEYS)) {
-    if (!safePathComponent(plan.episode)) fail('$.episode', '必须是安全的单个目录名，不能包含路径分隔符、控制字符或保留名称');
+    const extended = isRecord(plan.episode);
+    if (extended) {
+      record(plan.episode, '$.episode', ['id', 'primaryStyle'], ['secondaryStyle']);
+      if (!safePathComponent(plan.episode.id)) fail('$.episode.id', '必须是安全的单个目录名，不能包含路径分隔符、控制字符或保留名称');
+      if (!STYLES.includes(plan.episode.primaryStyle)) fail('$.episode.primaryStyle', '只能填写 paper、pixel 或 drafting');
+      if (Object.hasOwn(plan.episode, 'secondaryStyle')) {
+        if (!STYLES.includes(plan.episode.secondaryStyle)) fail('$.episode.secondaryStyle', '只能填写 paper、pixel 或 drafting；不需要辅风格时省略');
+        if (plan.episode.secondaryStyle === plan.episode.primaryStyle) fail('$.episode.secondaryStyle', '辅风格不能等于主风格');
+      }
+    } else if (!safePathComponent(plan.episode)) fail('$.episode', '必须是安全的单个目录名，或含 id 和 primaryStyle 的对象');
     if (record(plan.canvas, '$.canvas', ['width', 'height', 'fps'])) {
       for (const [key, expected] of Object.entries({width: 1920, height: 1080, fps: 30})) {
         if (plan.canvas[key] !== expected) fail(`$.canvas.${key}`, `必须等于 ${expected}`);
@@ -67,7 +81,7 @@ export function validateInsertShotsPlan(plan) {
       let latestEnd = null;
       plan.shots.forEach((shot, index) => {
         const at = `$.shots[${index}]`;
-        if (!record(shot, at, SHOT_KEYS)) return;
+        if (!record(shot, at, SHOT_KEYS, extended ? ['layout', 'assumption'] : [])) return;
         if (!safePathComponent(shot.shotId)) fail(`${at}.shotId`, '必须是安全的单个文件名主体，不能包含路径分隔符、控制字符或保留名称');
         if (typeof shot.shotId === 'string') {
           const portableId = shot.shotId.normalize('NFC').toLowerCase();
@@ -90,20 +104,50 @@ export function validateInsertShotsPlan(plan) {
           previousStart = start;
           if (durationValid) latestEnd = Math.max(latestEnd ?? 0, start + shot.duration * 1000);
         }
-        if (!['paper', 'pixel'].includes(shot.style)) fail(`${at}.style`, '只能填写 paper 或 pixel');
+        if (!(extended ? STYLES : ['paper', 'pixel']).includes(shot.style)) fail(`${at}.style`, extended ? '只能填写 paper、pixel 或 drafting' : '旧期号字符串协议只能填写 paper 或 pixel');
+        if (extended) {
+          if (![plan.episode.primaryStyle, plan.episode.secondaryStyle].includes(shot.style)) fail(`${at}.style`, '镜头风格必须属于本期声明的主风格或辅风格');
+          if ((shot.style === 'drafting' || Object.hasOwn(shot, 'layout')) && !DRAFTING_LAYOUTS.includes(shot.layout)) {
+            fail(`${at}.layout`, '必须填写 ledger3、compare2、flow、clause、readout 或 stack');
+          }
+          if ((shot.style === 'drafting' || Object.hasOwn(shot, 'assumption')) && typeof shot.assumption !== 'boolean') {
+            fail(`${at}.assumption`, '必须明确填写布尔值 true 或 false');
+          }
+        }
         text(shot.theme, `${at}.theme`);
         if (shot.style === 'pixel' && !PIXEL_THEMES.has(shot.theme)) fail(`${at}.theme`, 'pixel 主题只能填写 noir、blocks 或 mono');
         for (const key of ['title', 'spokenLine', 'flow', 'ending']) text(shot[key], `${at}.${key}`);
         if (!Array.isArray(shot.nodes) || shot.nodes.length < 3 || shot.nodes.length > 5) {
           fail(`${at}.nodes`, '必须包含 3–5 个节点，按画面从左到右排列');
         }
+        if (extended && shot.layout === 'stack' && Array.isArray(shot.nodes) && shot.nodes.length > 4) fail(`${at}.nodes`, 'stack 版式最多包含 4 个节点');
+        if (extended && shot.layout === 'clause' && Array.isArray(shot.nodes) && !shot.nodes.some((node) => isRecord(node) && node.kind === 'quote')) fail(`${at}.nodes`, 'clause 版式必须至少包含一个 quote 原文节点');
+        if (extended && shot.layout === 'ledger3' && Array.isArray(shot.nodes)) {
+          const facets = shot.nodes.filter((node) => isRecord(node) && node.kind === 'facet');
+          const results = shot.nodes.filter((node) => isRecord(node) && node.kind === 'result');
+          if (facets.length !== 3 || results.length !== 1) fail(`${at}.nodes`, 'ledger3 版式必须恰好包含三个 facet 因子和一个 result 结果节点');
+          const labelLengths = facets.filter((node) => typeof node.label === 'string').map((node) => [...node.label].length);
+          if (labelLengths.length === 3 && Math.max(...labelLengths) - Math.min(...labelLengths) > 2) fail(`${at}.nodes`, 'ledger3 三个 facet 标签的字数差不能超过两个字');
+        }
         if (Array.isArray(shot.nodes)) shot.nodes.forEach((node, nodeIndex) => {
           const nodeAt = `${at}.nodes[${nodeIndex}]`;
-          if (!record(node, nodeAt, NODE_KEYS)) return;
+          if (!record(node, nodeAt, NODE_KEYS, extended ? ['value', 'kind', 'source'] : [])) return;
           if (!hasText(node.label) || [...node.label].length > 6 || !/\p{Script=Han}/u.test(node.label)) {
             fail(`${nodeAt}.label`, '必须是含中文的非空标签，最多 6 个 Unicode 字符');
           }
           text(node.object, `${nodeAt}.object`);
+          if (extended) {
+            if ((shot.style === 'drafting' || Object.hasOwn(node, 'kind')) && !NODE_KINDS.includes(node.kind)) fail(`${nodeAt}.kind`, '必须填写 claim、facet、result、quote 或 readout');
+            if (Object.hasOwn(node, 'value')) text(node.value, `${nodeAt}.value`);
+            if (Object.hasOwn(node, 'source')) text(node.source, `${nodeAt}.source`);
+            const quantity = typeof node.value === 'string' && QUANTITY_PATTERN.test(node.value);
+            if (quantity && !hasText(node.source)) fail(`${nodeAt}.source`, '含数量字符的 value 必须提供非空 source；这里只检查来源字段完整性');
+            if (quantity && shot.assumption === true && !ASSUMPTION_SOURCE_PATTERN.test(node.source ?? '')) fail(`${nodeAt}.source`, '假设数字的 source 必须以“假设：”开头并说明假设内容');
+            if (shot.layout === 'clause' && node.kind === 'quote') {
+              text(node.value, `${nodeAt}.value`);
+              text(node.source, `${nodeAt}.source`);
+            }
+          }
           if (typeof node.enterSec !== 'number' || !Number.isFinite(node.enterSec) || node.enterSec < 0 || (durationValid && node.enterSec >= shot.duration)) {
             fail(`${nodeAt}.enterSec`, '必须是从零开始且小于本镜头时长的有限秒数');
           } else if (durationValid && Math.ceil(node.enterSec * 30 - 1e-6) >= Math.round(shot.duration * 30)) {
@@ -113,6 +157,9 @@ export function validateInsertShotsPlan(plan) {
         if (!Array.isArray(shot.avoid)) fail(`${at}.avoid`, '必须是字符串数组');
         else shot.avoid.forEach((value, avoidIndex) => text(value, `${at}.avoid[${avoidIndex}]`));
       });
+      if (extended && plan.shots.length > 0 && plan.shots.filter((shot) => isRecord(shot) && shot.style === plan.episode.primaryStyle).length * 10 < plan.shots.length * 7) {
+        fail('$.episode.primaryStyle', '有镜头时主风格镜数必须至少占 70%；应调整有意义的镜头方案，不为凑比例添加镜头');
+      }
     }
   }
   return {ok: errors.length === 0, validationScope: 'structure-only', note: STRUCTURE_NOTE, errors};
@@ -146,7 +193,8 @@ export function exportInsertShotsPlan({inputPath, repoRoot}) {
   const root = fs.realpathSync(path.resolve(repoRoot));
   if (!fs.statSync(root).isDirectory()) throw new Error('仓库根目录必须是已存在的目录');
   let directory = root;
-  for (const component of ['edit', 'generated-video', validated.plan.episode]) {
+  const episodeId = isRecord(validated.plan.episode) ? validated.plan.episode.id : validated.plan.episode;
+  for (const component of ['edit', 'generated-video', episodeId]) {
     directory = path.join(directory, component);
     ensureDirectoryWithoutSymlink(directory);
     if (fs.realpathSync(directory) !== directory) throw new Error(`输出目录解析发生变化：${directory}`);

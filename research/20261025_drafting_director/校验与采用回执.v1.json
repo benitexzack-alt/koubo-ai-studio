@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-25",
+  "scope": "导演交接协议与文档维护，不生成或剪辑视频",
+  "sourceFiles": [
+    {
+      "path": "research/20261025_drafting_director/A_测绘图纸风_推荐.png",
+      "sha256": "105583872ba7936fec571eb6381ae18b51f913477319b8dafdc7308b4748d42b"
+    },
+    {
+      "path": "research/20261025_drafting_director/四种风格对比.jpg",
+      "sha256": "c5b7f94d04f6723473e866bc88af22332e1919b71bf8970ce7b0156a1125c224"
+    },
+    {
+      "path": "research/20261025_drafting_director/给Codex_导演Skill升级方案.md",
+      "sha256": "9d7a24aaa99826aab5ea4621152b175bfdb75957f1d6511045dc46cfe91c3552"
+    }
+  ],
+  "tests": {
+    "command": "node --test skills/koubo-remotion-director/tests/test-insert-shots-plan.mjs",
+    "passed": 89,
+    "failed": 0
+  },
+  "realFileAndCliChecks": [
+    {
+      "input": "edit/generated-video/20261019_ai_assistant_local_business/insert-shots.plan.json",
+      "ok": true,
+      "shotCount": 7,
+      "scope": "structure-only"
+    },
+    {
+      "input": "edit/generated-video/20261023_ai_cost_profit/insert-shots.plan.json",
+      "ok": true,
+      "shotCount": 11,
+      "scope": "structure-only"
+    },
+    {
+      "input": "skills/koubo-remotion-director/templates/insert-shots.drafting.example.json",
+      "ok": true,
+      "shotCount": 1,
+      "scope": "structure-only"
+    },
+    {
+      "input": "新示例CLI导出到临时工程",
+      "ok": true,
+      "correctEpisodeIdPath": true,
+      "byteIdentical": true,
+      "existingOutputNotOverwritten": true
+    }
+  ],
+  "boundaries": {
+    "historicalPlansRewritten": false,
+    "rendererImplementedHere": false,
+    "newVideoGenerated": false,
+    "sourceTruthVerifiedByValidator": false,
+    "newEpisodeRealRecordingReceived": false
+  },
+  "aiRouteAudit": {
+    "rootCause": "2026-10-18代码插片入口只保留真人、真实素材、paper、pixel和单份JSON交付，AI情景独立判断与提示词交付缺失",
+    "previousEpisodes": {
+      "20261017": "有明确不需要AI情景及理由",
+      "20261019": "全文导演未记录AI情景采用或不采用判断，不能据此断言必须加AI",
+      "20261023": "用户要求后已独立交付五支AI情景视频提示词"
+    },
+    "fix": "新Skill恢复每期独立判断；需要则同次交视频词，不需要须具体理由；不并入代码JSON"
+  },
+  "independentReview": {
+    "issuesFound": 1,
+    "issue": "新示例avoid缺具体坐标",
+    "resolution": "补齐左下x32–500/y584–884和底部y900–1080以及不烘真人/字幕",
+    "remainingIssues": 0
+  }
+}

@@ -4,26 +4,27 @@
 
 项目来自「超哥AI创业记」的真实制作实践，主要服务甘肃本地小微企业、创业者和希望看懂 AI 应用的普通人。仓库提供工作流、Skill、代码、模板和校验器；新账号需要替换个人事实与账号资料。
 
-## 当前版本：V9 成片制作基准 + V9.1 导演流程
+## 当前版本：V9 最新默认版本与最低保障
 
-更新日期：2026-10-18。成片继续采用V9；新纸艺/像素改为导演 JSON → Claude Code 直接生成 MP4 → Codex 剪入，下一条实际节目验证完整闭环。历史导演V9.1保留兼容，生产与导演版本分别管理。
+更新日期：2026-10-25。用户已确认当前V9成片方向与最新导演交接规则为后续视频的最低保障。代码插片支持测绘图纸 drafting、纸艺 paper、像素 pixel，由Claude Code生成逐镜MP4；每期单独判断AI情景，需要时同次提供完整视频提示词。新风格动态效果仍按每期实际回片验收。历史导演V9.1保留兼容，不另起V10。
 
 | 层级 | 当前状态 | 解决的问题 |
 | --- | --- | --- |
 | 内容流程 | 来源研究、候选选择、源头精髓、内容门禁、双 Skill 审稿 | 写稿前确认来源、内容增量、事实和本人表达 |
-| 成片制作 | V9 活动基线，下一条继续验证 | 真人主画面、连续语义动效、实录中英字幕、数字运镜、逐视觉音效与发布包 |
-| 导演流程 | 纸艺/像素使用 insert-shots.plan.json；旧V9.1/v2保留兼容 | 精确原句与时间、3–5节点、画风选择、左下真人与字幕避让 |
+| 成片制作 | V9 最新默认基线与最低保障，逐片验收 | 真人主画面、连续语义动效、实录中英字幕、数字运镜、逐视觉音效与发布包 |
+| 导演流程 | drafting/paper/pixel代码JSON；独立AI情景提示词；旧V9.1/v2保留兼容 | 实录锚点、六种测绘版式、数字来源、左下真人与字幕避让 |
 | 历史基线 | V7.2 锁定母版 | 历史回归与故障回滚 |
 
-成片V9采用连续动作编排、按语义比较并实际使用动效库、真人交接和逐动作配声；继承V8实录与交付技术合同。版本已获用户确认，下一条整片视听仍须验证，V10暂不启动。依据见 [V9基线](knowledge/23-V9导演编排与动效采用基线.md)、[采用记录](workflow/audits/production-v9-adoption-20261014.v1.json)、[生产档案](workflow/active-production-profile.v1.json) 和 [导演档案](workflow/active-director-profile.v1.json)。
+成片V9采用连续动作编排、按语义比较并实际使用动效库、真人交接和逐动作配声；继承V8实录与交付技术合同。当前最低保障已获用户确认，后续整片视听仍逐片验收，V10暂不启动。最新[最低保障确认](workflow/audits/v9-minimum-guarantee-20261025.v1.json)绑定规则与10月23日整片参考。其余依据见 [V9基线](knowledge/23-V9导演编排与动效采用基线.md)、[采用记录](workflow/audits/production-v9-adoption-20261014.v1.json)、[生产档案](workflow/active-production-profile.v1.json) 和 [导演档案](workflow/active-director-profile.v1.json)。
 
 ## 能完成什么
 
 - 研究与选题：绑定知识库阅读记录、已接纳账号数据和最近六条内容；建立机制卡、跨源矩阵及候选题，用户选定题目、钩子和提纲后继续。
 - 脚本审阅：完整来源适用时先提炼源头精髓，再核查事实、观点增量、重复与语言；保留事实锁、稿件哈希和审稿报告。
 - 实录字幕：拍摄后以真实声音为唯一正文，拍摄前文稿只作核对；英文从确认后的实录中文翻译。
-- 视觉导演：按全文语义选择真人、真实素材、纸艺或像素插片；后两者只作说明，真实材料承担证据。两种画风可穿插，主动补充有解释收益的镜头。
-- 代码插片：导演输出单份 insert-shots.plan.json，用户交给 Claude Code 直接生成逐镜1080p/30fps MP4；不生成首帧，不走 RunningHub，不输出首帧或图生视频词。
+- 视觉导演：按全文语义选择真人、真实素材、测绘图纸/纸艺/像素代码插片或AI情景。代码动画和AI情景只作说明，真实材料承担证据；每期必须明确AI情景采用或不采用的理由。
+- 代码插片：单份 insert-shots.plan.json 交Claude Code生成逐镜1080p/30fps MP4。drafting支持ledger3、compare2、flow、clause、readout、stack六种版式；新对象式episode一主一辅，数字逐项标来源，旧字符串计划兼容。代码插片不生成首帧、不走RunningHub。
+- AI情景交接：需要时同次给出可复制的AI视频提示词、原句锚点、生成和剪入长度、声音、保护区及回传位置；用户生成后交回Codex剪辑。不能因交了代码JSON就漏掉这条分路。
 - 视频包装：人物讲解小窗、局部连续语义动效、声画绑定、响度处理、风险帧与媒体质检；Shotcraft 作为按需启用的辅助信息层。
 - 交付复盘：候选成片、当期真人截图、3:4 封面提示词、主标题与两个备选标题、发布文案、话题和发布记录一次整理。
 
@@ -35,7 +36,7 @@
 → 左下真人、字幕、转场、混音 → 候选 → 用户确认 → 正式渲染与发布包
 ```
 
-新纸艺/像素的唯一交接文件位于 `edit/generated-video/<episode>/insert-shots.plan.json`，详见[交接规范](skills/koubo-remotion-director/references/code-insert-shots.v1.md)与[示例](skills/koubo-remotion-director/templates/insert-shots.plan.example.json)。每镜回传 `<shotId>.mp4`，时长与方案一致；拟音可保留、压低或静音。旧首帧/RunningHub工具只保留历史兼容，不作为新路线前置。规则与结构验证已更新，下一期实际接片和整片观看仍需验证。
+三种代码插片的唯一计划文件位于 `edit/generated-video/<episode>/insert-shots.plan.json`，详见[交接规范](skills/koubo-remotion-director/references/code-insert-shots.v1.md)与[示例](skills/koubo-remotion-director/templates/insert-shots.plan.example.json)。每镜回传 `<shotId>.mp4`，时长与方案一致；拟音可保留、压低或静音。旧首帧/RunningHub工具只保留历史兼容，不作为新路线前置。测绘风格见[完整规范](skills/koubo-remotion-director/references/drafting-style.v1.json)与[新协议示例](skills/koubo-remotion-director/templates/insert-shots.drafting.example.json)；AI情景另交[完整提示词](skills/koubo-remotion-director/references/ai-scene-handoff.v1.md)。规则与结构检查不替代实际回片和整片观看。
 
 本地生成文件、机器检查通过、用户完整观看、平台发布是不同状态。生产校验器检查阶段顺序和证据绑定；公开视频发布由用户单独决定。完整单条口播默认保留实录，只有明确要求删减、重排或修正口误时才进入内容剪辑。
 
@@ -47,7 +48,7 @@
 | [source-essence-synthesis](skills/source-essence-synthesis/SKILL.md) | 完整来源的母命题、认知节点与论证链保真 |
 | [content-brain-gate](skills/content-brain-gate/SKILL.md) | 事实、账号数据、内容增量、声音与生产准入 |
 | [humanize-koubo-script](skills/humanize-koubo-script/SKILL.md) | 事实安全精修、本人表达与留存风险审稿 |
-| [koubo-remotion-director](skills/koubo-remotion-director/SKILL.md) | 全文导演、纸艺/像素JSON交接、V9编排意图与实录时间绑定 |
+| [koubo-remotion-director](skills/koubo-remotion-director/SKILL.md) | 全文导演、三种代码插片JSON、独立AI情景提示词与V9实录交接 |
 | [koubo-paper-firstframe-producer](skills/koubo-paper-firstframe-producer/SKILL.md) | 历史/另行指定路线的首帧与OCR，新纸艺/像素不调用 |
 | [koubo-asset-prep](skills/koubo-asset-prep/SKILL.md) | 授权素材的抠图、图片或生成视频升清 |
 | [koubo-shotcraft-library](skills/koubo-shotcraft-library/SKILL.md) | 动效检索、逐节拍选择与实际应用回执 |

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "v9-minimum-guarantee-20261025",
+  "recordedAt": "2026-10-25",
+  "authority": "user-explicit-current-chat",
+  "userStatement": "那目前这个就是作为我们的最新版本，也是最低保障版本。然后看一下在GitHub上同步一下。",
+  "status": "adopted-default-minimum",
+  "productionVersion": "V9",
+  "scope": "后续新口播的当前制作方向与导演交接最低保障；不批量迁移历史任务",
+  "requirements": [
+    "实录优先且原声不擅改，字幕与英文绑定实际中文",
+    "语义字卡、数字运镜、可读排版和安全区保持V9基准",
+    "按内容采用drafting/paper/pixel代码插片，不设固定数量或频率",
+    "每期独立判断AI情景，需要时同次交完整视频提示词",
+    "插片期间左下同期真人连续播放，字幕独立，交接平滑",
+    "动作音效正常速度试听，混音不抢原声",
+    "成片、当期真人截图、3:4封面提示词、主标题与两个备选、发布文案和话题同次交付"
+  ],
+  "ruleBindings": [
+    {
+      "path": "skills/koubo-remotion-director/SKILL.md",
+      "sha256": "a5598697b4f2c1e1269b145185a3739094dbd73184096f89d0de09fe927164af"
+    },
+    {
+      "path": "skills/koubo-remotion-director/references/code-insert-shots.v1.md",
+      "sha256": "4b09d39f16f245eced76f56b14f2fa48a1137cae29d18ccea5a67108c8f5560a"
+    },
+    {
+      "path": "skills/koubo-remotion-director/references/drafting-style.v1.json",
+      "sha256": "bee7d219943002c8f730098e62c401137d85b7668f84f927af0bfa8f3908dd81"
+    },
+    {
+      "path": "skills/koubo-remotion-director/references/ai-scene-handoff.v1.md",
+      "sha256": "d75c4d88230fe019be265cae852f9a624c019fec5dd2f424ec84ec9e6da38bde"
+    },
+    {
+      "path": "skills/koubo-remotion-director/templates/insert-shots.plan.schema.json",
+      "sha256": "552362291ffa0ec5ea9abe3bb15ebea24e00ae7faa7a5e0382ed4a0fd377b97c"
+    },
+    {
+      "path": "skills/koubo-remotion-director/scripts/insert-shots-plan-core.mjs",
+      "sha256": "f2098d0edbe0fb6227dee522f3c72e61c0d68dfae3a5e3e8015f057992d469e6"
+    }
+  ],
+  "fullEpisodeReference": {
+    "episode": "20261023_ai_cost_profit",
+    "recordedAt": "2026-10-24",
+    "sourcePreview": {
+      "path": "edit/20261023_ai_cost_profit/07_受控导出/AI降本与利润_V9_1080p_有音效_候选.mp4",
+      "sha256": "c6e7173ec8c689c9d4f7b308ec603d7ebf1c797d68c8867ab8050c504cb086c9",
+      "durationSec": 328.8,
+      "fps": 30,
+      "width": 1920,
+      "height": 1080
+    },
+    "acceptance": "user-accepted-visual-and-copy-direction",
+    "feedbackRecord": {
+      "path": "workflow/audits/v9-full-episode-feedback-20261024.v1.json",
+      "sha256": "7c096163c4f02e4dc5a52e7a15a3ef7f7303bf3ef62773b4a5e3c1077f3b3c68"
+    },
+    "referenceRole": "当前完整一期的效果与制作方向参考",
+    "scope": "后续新视频保持当前V9方向，按每期实录重新编排；不是正式发布或事实通过回执"
+  },
+  "inheritedTechnicalMinimumPreserved": true,
+  "downgrade": "requires-explicit-user-approval-for-the-current-job",
+  "dynamicDraftingValidation": "pending-next-episode",
+  "isTechnicalReleaseReceipt": false,
+  "isPublicationApproval": false,
+  "githubSyncAuthorized": true
+}

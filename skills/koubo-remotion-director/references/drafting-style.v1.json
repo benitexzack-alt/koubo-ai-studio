@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "id": "drafting-technical-drawing-v1",
+  "style": "drafting",
+  "name": "测绘图纸风",
+  "status": "active-director-baseline",
+  "referenceCanvas": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "source": {
+    "proposal": "research/20261025_drafting_director/给Codex_导演Skill升级方案.md",
+    "image": "research/20261025_drafting_director/A_测绘图纸风_推荐.png",
+    "basis": "用户提供的Claude研究及原创建议；未打包会员付费素材或声称已核验其许可。"
+  },
+  "palette": {
+    "background": "#0b0d10",
+    "ink": "#d9d9dc",
+    "secondaryInk": "#8e8e94",
+    "line": "#2c2d30",
+    "accent": "#f2b544",
+    "accentUsage": "每镜只强调一处当前结论数字或结果框，不为未核实主张制造权威感。"
+  },
+  "typography": {
+    "title": {
+      "family": "Noto Serif SC",
+      "weight": 900,
+      "sizePx": [
+        72,
+        96
+      ],
+      "chromaticOffsetPx": 1.2,
+      "chromaticOffsetScope": "仅标题"
+    },
+    "body": {
+      "family": "Noto Sans SC",
+      "weight": 700,
+      "minimumReadablePx": 40
+    },
+    "numbers": {
+      "family": "Noto Sans SC",
+      "weight": 700,
+      "sizePx": [
+        64,
+        110
+      ]
+    },
+    "decoration": {
+      "family": "JetBrains Mono",
+      "weight": 500,
+      "sizePx": [
+        16,
+        20
+      ],
+      "letterSpacingPx": 3,
+      "meaningfulInformationAllowed": false,
+      "policy": "仅无业务含义的刻度或装饰；不显示内部P01/R01镜号、JSON名或假数值读数。"
+    },
+    "fontPolicy": "使用本地已授权字体；缺字先回报并选经确认的本地回退字体，不接境外CDN。关键内容按最终合成尺寸复核，不用缩字硬塞。"
+  },
+  "primitives": {
+    "selectionBox": {
+      "strokePx": 1,
+      "strokeColor": "rgba(255,255,255,.22)",
+      "cornerHandlePx": 13,
+      "secondaryCornerHandlePx": 7
+    },
+    "hatching": {
+      "angleDegrees": 132,
+      "strokePx": 1.5,
+      "denseGapPx": 30,
+      "sparseGapPx": 56,
+      "animated": false
+    },
+    "dropLinePx": [
+      2,
+      95
+    ],
+    "dimensionLinePx": [
+      40,
+      2
+    ],
+    "rulers": {
+      "edges": [
+        "top",
+        "left"
+      ],
+      "tickGapPx": 26,
+      "majorEvery": 4
+    },
+    "registrationMarkPx": 13,
+    "darkColumns": {
+      "widthPx": 30,
+      "gapPx": 82,
+      "color": "#101215"
+    }
+  },
+  "texture": {
+    "scanlineGapPx": 3,
+    "scanlineOpacity": 0.18,
+    "vignetteStrength": 0.78,
+    "scope": "本期drafting插片共用统一设置；不覆盖真人、字幕、真实资料或其他V9图层。",
+    "readabilityPolicy": "保留清晰信息层，暗角与扫描线不得让关键字、来源或数值无法阅读；以实际手机尺度验收。"
+  },
+  "motion": {
+    "selectionBox": "裁切绘制边框，完成后角柄错后2帧落下并保持",
+    "dropLine": "自上向下长出",
+    "dimensionLine": "从一端伸出",
+    "backgroundColumns": "仅开场升起一次",
+    "hatching": "静止",
+    "numberCounterMaxSec": 0.6,
+    "numberCounterPolicy": "仅连续数量可短计数并停在原话对应终值；年份、日期、条款号、金额公式等精确标识直接显示，不滚成伪数据。",
+    "inversionFlash": {
+      "maximumPerEpisode": 1,
+      "frames": 2,
+      "required": false,
+      "use": "仅最重要转折确有必要时使用"
+    },
+    "forbidden": [
+      "呼吸",
+      "漂浮",
+      "脉冲",
+      "动态斜线阴影"
+    ],
+    "compositionReviewAfterSec": 8,
+    "compositionChange": "在6–8秒语义节点检查推近、横移或前组收为摘要；持续超过8秒的同版式须有有效构图推进，不能为定时硬切打断读字或改原声。",
+    "emptySpacePolicy": "优先放大主体和减少无效留白；仅在有解释价值时增加尺寸线，不填无依据装饰数字。"
+  },
+  "layouts": {
+    "ledger3": {
+      "purpose": "算账",
+      "structure": "三个因子阴影框、落线、算式、一个琥珀结果框",
+      "facetCount": 3,
+      "resultCount": 1,
+      "preferredFacetLabelLengthDifferenceMax": 2,
+      "alignmentPolicy": "通过等宽框和分行对齐，不为凑字改写原文或删数字含义。"
+    },
+    "compare2": {
+      "purpose": "前后或方案对比",
+      "structure": "左右选框，中间尺寸线表达有来源的差值；没有差值依据则只显示并列关系"
+    },
+    "flow": {
+      "purpose": "流程或有依据的因果",
+      "structure": "节点依次画出，落线与横线连接；只突出当前节点，不把并列画成因果"
+    },
+    "clause": {
+      "purpose": "已核对的政策原文或新闻原句",
+      "structure": "原文大选框、关键词小框、侧边批注",
+      "quotePolicy": "quote.value须逐字摘录已读取原文，source写真实文件名或标题、定位链接及条款/段落。看原文界面才有意义时仍用真实资料主画面配框选。"
+    },
+    "readout": {
+      "purpose": "一个关键数据及其已核实方向",
+      "structure": "标签、主读数及必要比较，不制造没有原文依据的趋势"
+    },
+    "stack": {
+      "purpose": "清单",
+      "structure": "编号阴影条逐项落下",
+      "maximumConcurrentItems": 4
+    }
+  },
+  "layoutContract": {
+    "presenterBox": {
+      "x": 64,
+      "y": 620,
+      "width": 400,
+      "height": 225
+    },
+    "presenterProtectedRect": {
+      "left": 32,
+      "top": 584,
+      "right": 500,
+      "bottom": 884
+    },
+    "subtitleBand": {
+      "left": 0,
+      "top": 900,
+      "right": 1920,
+      "bottom": 1080
+    },
+    "contentRect": {
+      "left": 520,
+      "top": 60,
+      "right": 1860,
+      "bottom": 860
+    },
+    "leftTitleColumn": {
+      "left": 64,
+      "right": 464,
+      "top": 60,
+      "bottom": 560,
+      "criticalNumbersAllowed": false
+    },
+    "owner": "Claude只生成动画本体；Codex合成本条同期真人和字幕，不能在回片中烘入",
+    "transforms": "以上为1920×1080起点；最终若缩放视窗，必须复算40px最低有效字高与保护区。"
+  },
+  "evidence": {
+    "allVisibleNumbersNeedSource": true,
+    "assumptionBadge": "假设",
+    "numericSourcePolicy": "value中的数量逐项source，不把末尾一个总来源代替前面各数；真实数值来源和假设参数分开。数字主标题、算式和条款正文也须导演核对，程序不代替事实核验。",
+    "codeAnimationLabel": "示意动画",
+    "aiSceneLabel": "AI情景演绎",
+    "declarationPolicy": "画面说明标签不替代发布平台的AI声明；不推导代码制作就完全与AI无关，不删除原生来源或AI元数据。"
+  },
+  "adoption": {
+    "confirmedAt": "2026-10-25",
+    "authority": "user-explicit",
+    "scope": "当前导演交接的最新默认规范及最低保障；不等于新风格渲染效果验收",
+    "dynamicValidation": "pending-next-episode"
+  },
+  "verification": {
+    "referenceImagesViewed": true,
+    "dynamicVideoRenderedByThisChange": false,
+    "nextEpisodeReviewRequired": true
+  }
+}

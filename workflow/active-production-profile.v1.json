@@ -6,8 +6,8 @@
   "effectiveFrom": "2026-10-14",
   "decision": {
     "authority": "user-explicit",
-    "summary": "用户认可一分钟升级效果，明确采用V9作为下一条及后续新口播制作基准；下一条实片继续验证，再决定V10。",
-    "reconfirmedAt": "2026-10-14",
+    "summary": "用户于2026-10-25确认当前V9整片方向及drafting/paper/pixel与独立AI情景交接为最新默认版本和最低保障；沿用10月23日整片参考，完整发布包同次交付，新风格实际回片逐期验收，V10未启动。",
+    "reconfirmedAt": "2026-10-25",
     "supersedesDefaultProfile": "v8-semantic-continuity-sfx",
     "adoptionRecord": {
       "path": "workflow/audits/production-v9-adoption-20261014.v1.json",
@@ -247,5 +247,35 @@
     "current": "V9",
     "nextEpisodeValidation": "pending",
     "V10": "deferred-until-next-video-review"
+  },
+  "currentFullEpisodeReference": {
+    "episode": "20261023_ai_cost_profit",
+    "recordedAt": "2026-10-24",
+    "sourcePreview": {
+      "path": "edit/20261023_ai_cost_profit/07_受控导出/AI降本与利润_V9_1080p_有音效_候选.mp4",
+      "sha256": "c6e7173ec8c689c9d4f7b308ec603d7ebf1c797d68c8867ab8050c504cb086c9",
+      "durationSec": 328.8,
+      "fps": 30,
+      "width": 1920,
+      "height": 1080
+    },
+    "acceptance": "user-accepted-visual-and-copy-direction",
+    "feedbackRecord": {
+      "path": "workflow/audits/v9-full-episode-feedback-20261024.v1.json",
+      "sha256": "7c096163c4f02e4dc5a52e7a15a3ef7f7303bf3ef62773b4a5e3c1077f3b3c68"
+    },
+    "referenceRole": "当前完整一期的效果与制作方向参考",
+    "scope": "后续新视频保持当前V9方向，按每期实录重新编排；不是正式发布或事实通过回执"
+  },
+  "minimumGuarantee": {
+    "status": "active-default-minimum",
+    "confirmedAt": "2026-10-25",
+    "record": {
+      "path": "workflow/audits/v9-minimum-guarantee-20261025.v1.json",
+      "sha256": "a91345dce340ec58d1d6316bfeb4f1047757e26e6776f742a9035500204726eb"
+    },
+    "scope": "当前V9制作方向与导演交接；历史minimumReference继续作为继承技术下限",
+    "dynamicDraftingValidation": "pending-next-episode",
+    "requiresExplicitUserApprovalToDowngrade": true
   }
 }
