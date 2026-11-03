@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="本机口播动效工作台：预览、选择、交接与回看。">
+  <title>口播动效工作台</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#effect-grid">跳到动效列表</a>
+  <header class="topbar">
+    <a href="/" class="brand" aria-label="口播动效工作台首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>口播<span class="brand-muted">动效工作台</span></span></a>
+    <div class="topbar-end"><span class="local-badge"><span></span>本机私用</span><button class="button button-subtle mobile-plan" id="mobile-plan">本期方案 <span id="mobile-count">0</span></button></div>
+  </header>
+
+  <div id="recovery-banner" class="recovery-banner" hidden></div>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="动效导航">
+      <p class="eyebrow sidebar-label">挑选动效</p>
+      <nav id="category-nav" aria-label="分类"></nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item" id="history-button"><span class="nav-symbol" aria-hidden="true">▷</span><span>历史实片参考</span></button>
+        <div class="sidebar-note"><span class="note-dot"></span><p>先看动作，再选用法。<br>每一期，按内容重新选择。</p></div>
+      </div>
+    </aside>
+
+    <main class="library">
+      <section class="library-heading">
+        <div><p class="eyebrow">让讲解更清楚</p><h1 id="library-title">全部动效<span id="library-total">—</span></h1><p class="intro">看示例，挑一个适合这句话的动作。</p></div>
+        <div class="library-stamp" aria-hidden="true"><span>看得见</span><span>讲得清</span></div>
+      </section>
+      <section class="filterbar" aria-label="搜索和筛选">
+        <label class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg><input id="search" type="search" placeholder="搜索动作或用途，如：对比、清单、人物" autocomplete="off" aria-label="搜索动效"></label>
+        <label class="filter-select"><span class="sr-only">素材需求</span><select id="material-filter"><option value="all">全部素材需求</option><option value="unused">无需真人录像</option><option value="required">需要人物素材</option></select></label>
+      </section>
+      <div class="results-line"><span id="result-summary" aria-live="polite">正在读取本机动效库…</span><span class="preview-note">图片识别 · 点开播放</span></div>
+      <div id="library-error" class="notice notice-error" hidden></div>
+      <section id="effect-grid" class="effect-grid" aria-label="动效列表" tabindex="-1"></section>
+      <div id="empty-results" class="empty-state" hidden><span class="empty-symbol" aria-hidden="true">⌕</span><h2>这里还没有动效</h2><p>试试别的关键词，或切回全部分类。</p><button class="button" id="reset-filters">查看全部动效</button></div>
+      <footer class="library-footer">官方示例用于选型；本期效果以实际素材制作的小样为准。</footer>
+    </main>
+
+    <aside class="episode-panel" id="episode-panel" aria-label="本期方案">
+      <div class="panel-heading"><div><p class="eyebrow">从选择到成片</p><h2>本期方案</h2></div><button id="close-mobile-plan" class="icon-button mobile-plan" aria-label="关闭本期方案">×</button><button id="new-episode" class="button button-small">＋ 新建</button></div>
+      <div class="episode-select-row"><label class="sr-only" for="episode-select">当前口播期次</label><select id="episode-select"><option value="">尚未创建本期</option></select></div>
+      <div id="save-status" class="save-status" role="status"><span class="status-dot"></span><span>正在读取…</span></div>
+      <div id="save-actions" class="save-actions" hidden><button id="retry-save" class="text-button">重试保存</button><button id="reload-state" class="text-button">读取最新版本</button><button id="draft-backup" class="text-button">导出当前草稿</button></div>
+      <button id="edit-transcript" class="transcript-button"><span class="document-icon" aria-hidden="true">≡</span><span><strong>本期文稿 / 实录字幕</strong><small id="transcript-summary">粘贴或导入，方便选择原句</small></span><span aria-hidden="true">↗</span></button>
+      <div class="plan-list-heading"><span>已选动效 <b id="selection-count">0</b></span><span>按加入顺序</span></div>
+      <div id="selection-list" class="selection-list"></div>
+      <div class="panel-bottom">
+        <button id="export-md" class="button button-primary export-main" disabled>导出本期剪辑清单 <span aria-hidden="true">↗</span></button>
+        <div class="secondary-actions"><button id="export-json" class="text-button" disabled>导出结构化交接</button><button id="backup-state" class="text-button">备份全部方案</button><button id="import-backup" class="text-button">恢复备份</button></div>
+        <p class="fine-print">选择会保存在本机。选中效果后仍需制作与验收。</p>
+      </div>
+    </aside>
+  </div>
+
+  <dialog id="preview-dialog" class="dialog preview-dialog" aria-labelledby="preview-title">
+    <div class="dialog-top"><div><p id="preview-category" class="eyebrow"></p><h2 id="preview-title"></h2></div><button class="icon-button dialog-close" aria-label="关闭动效预览">×</button></div>
+    <div class="preview-layout"><div class="preview-stage"><video id="preview-video" controls playsinline preload="none"></video><div id="preview-error" class="media-error" hidden><span aria-hidden="true">↗</span><strong>官方预览暂时无法播放</strong><p>可以打开官网查看，稍后再试。该效果仍可加入本期。</p><a id="preview-error-link" class="button" target="_blank" rel="noopener noreferrer">到官网看示例</a></div><div class="video-caption"><span class="sample-badge">官方示例</span><span>示例文字、人物不代表本期素材</span></div></div><div class="preview-info"><h3>画面怎么动</h3><p id="preview-signature"></p><h3>准备什么</h3><ul id="preview-requirements"></ul><div class="preview-meta"><span>示例时长</span><strong id="preview-duration"></strong></div><a id="preview-official" class="text-link" target="_blank" rel="noopener noreferrer">查看官方详情 ↗</a></div></div>
+    <div class="dialog-footer"><button id="preview-favorite" class="button">收藏</button><button id="preview-add" class="button button-primary">＋ 加入本期</button></div>
+  </dialog>
+
+  <dialog id="episode-dialog" class="dialog narrow-dialog" aria-labelledby="episode-dialog-title"><form id="episode-form"><div class="dialog-top"><div><p class="eyebrow">开始一个新方案</p><h2 id="episode-dialog-title">这期讲什么？</h2></div><button type="button" class="icon-button dialog-close" aria-label="关闭新建方案">×</button></div><div class="dialog-body"><label class="field-label" for="episode-title">本期名称</label><input id="episode-title" class="field" required maxlength="100" placeholder="例如：小公司怎样用好人工智能"><p class="field-help">可以先选动效，拍摄后再绑定真实字幕与时间。</p></div><div class="dialog-footer"><button type="button" class="button dialog-close">取消</button><button class="button button-primary" type="submit">创建本期方案</button></div></form></dialog>
+
+  <dialog id="selection-dialog" class="dialog editor-dialog" aria-labelledby="selection-title"><form id="selection-form"><div class="dialog-top"><div><p class="eyebrow">绑定这期内容</p><h2 id="selection-title"></h2></div><button type="button" class="icon-button dialog-close" aria-label="关闭选择编辑">×</button></div><div class="dialog-body editor-body"><div class="field-heading"><label class="field-label" for="selection-anchor">用在哪句话</label><button id="pick-anchor" class="text-button" type="button">从本期正文选择 ↗</button></div><textarea id="selection-anchor" class="field" rows="3" placeholder="粘贴文稿或实际口播中的原句；暂未确定也可以留空。"></textarea><label class="field-label" for="selection-text">画面要显示的文字 / 数字</label><textarea id="selection-text" class="field" rows="3" placeholder="按原意填写需要展示的内容，不会替换实录字幕。"></textarea><label class="field-label" for="selection-note">动作要求与备注</label><textarea id="selection-note" class="field" rows="2" placeholder="例如：先出现两个方案，再突出右侧的差异。"></textarea><details class="advanced-fields"><summary>实录时间与候选片段 <span>拍后填写</span></summary><div class="time-row"><label>实录开始（秒）<input id="selection-start" class="field" type="number" min="0" step="0.001" placeholder="待绑定"></label><label>实录结束（秒）<input id="selection-end" class="field" type="number" min="0" step="0.001" placeholder="待绑定"></label></div><label class="field-label" for="candidate-path">本期候选视频路径</label><input id="candidate-path" class="field" placeholder="edit/本期目录/候选片.mp4"><p class="field-help">填写口播项目内 edit/ 或 outputs/ 下的视频相对路径。不会修改原片。</p><label class="field-label" for="candidate-sec">该动效在候选片中的位置（秒）</label><input id="candidate-sec" class="field" type="number" min="0" step="0.001" placeholder="从开头播放"></details><p id="selection-error" class="form-error" role="alert"></p></div><div class="dialog-footer"><button type="button" class="button dialog-close">取消</button><button type="submit" class="button button-primary">保存到本期</button></div></form></dialog>
+
+  <dialog id="transcript-dialog" class="dialog transcript-dialog" aria-labelledby="transcript-title"><div class="dialog-top"><div><p class="eyebrow">保持原句，不自动改写</p><h2 id="transcript-title">本期文稿 / 实录字幕</h2></div><button class="icon-button dialog-close" aria-label="关闭正文">×</button></div><div class="dialog-body"><div class="transcript-tools"><button id="import-transcript" class="button button-small">导入文本或字幕文件</button><span id="transcript-count"></span></div><label class="sr-only" for="transcript-text">本期正文</label><textarea id="transcript-text" class="field transcript-text" placeholder="在这里粘贴确认文稿或实录字幕。选中文字后，可把它绑定到本期动效。"></textarea><p id="transcript-hint" class="field-help">正文仅用于定位，保留实际说法和字幕内容。</p></div><div class="dialog-footer"><button id="apply-anchor" class="button" hidden>使用选中的原句</button><button id="save-transcript" class="button button-primary">保存正文</button></div></dialog>
+
+  <dialog id="history-dialog" class="dialog" aria-labelledby="history-title"><div class="dialog-top"><div><p class="eyebrow">已制作的历史画面</p><h2 id="history-title">历史实片参考</h2></div><button class="icon-button dialog-close" aria-label="关闭历史参考">×</button></div><div class="dialog-body"><p class="field-help">这些片段用于比较真实落片效果，不会自动加入本期，也不代表本期已制作。</p><div id="history-list"></div></div></dialog>
+  <dialog id="review-dialog" class="dialog review-dialog" aria-labelledby="review-title"><div class="dialog-top"><div><p id="review-kicker" class="eyebrow">本期候选回看</p><h2 id="review-title"></h2></div><button class="icon-button dialog-close" aria-label="关闭实片回看">×</button></div><div class="dialog-body"><video id="review-video" controls playsinline preload="metadata"></video><p id="review-message" class="field-help"></p><p id="review-error" class="form-error" role="alert"></p></div><div class="dialog-footer"><button id="review-seek" class="button">回到效果位置</button><button id="review-confirm" class="button button-primary" disabled>我已观看并确认这段效果</button></div></dialog>
+
+  <input type="file" id="transcript-file" accept=".txt,.srt,.vtt,text/plain" hidden>
+  <input type="file" id="backup-file" accept=".json,application/json" hidden>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
