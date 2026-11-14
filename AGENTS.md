@@ -6,7 +6,7 @@
 
 ## 2026-10-25 导演交接补充：测绘图纸与AI情景
 
-- 用户于2026-10-25明确确认当前V9及本次导演交接规则为最新默认版本和最低保障。测绘图纸方案按语义采用，实际新风格画面仍逐期验收。当前以导演Skill、`references/drafting-style.v1.json`及`references/ai-scene-handoff.v1.md`为准；不改历史成片或整体后期基准。
+- 用户于2026-10-25确认本节导演交接规则。测绘图纸方案按语义采用，新风格按每期实际回片验收。导演交接以导演Skill、`references/drafting-style.v1.json`及`references/ai-scene-handoff.v1.md`为准。
 - 新代码插片增加drafting及六种layout；新episode对象包含id/primaryStyle/可选secondaryStyle，原episode字符串计划保持兼容。新计划一主一辅、主风格占已选代码镜头至少70%；可零插片，不把比例变成数量或频率配额。数字逐项source，假设明确标注，条款逐字核原文。
 - 每期全文导演必须独立判断AI情景采用或不采用并说明具体理由。采用时，同次交付用户可直接复制的`AI视频生成提示词.md`；仅交Claude的代码JSON不代表导演交接完整。具体人物、工作动作或环境有解释收益即可考虑AI情景，不再要求纸艺先失败。
 - paper/pixel/drafting均不生成首帧或调用RunningHub。AI情景提示词单独交付，不混进代码JSON，不自动代用户生成。下文仅列纸艺/像素的当前代码规则也适用于drafting；旧v2首帧与“纸艺无法表达才用AI”的要求只保留历史兼容。
@@ -46,7 +46,7 @@
 - `director-only`：读取确认文稿/实录、风格参考、导演 Skill 与 `references/code-insert-shots.v1.md`；新纸艺/像素使用 insert-shots 模板与独立校验。只有历史或非代码路线才读取旧 v2 模板/交接，不把旧首帧生产合同倒灌到新方案。
 - `firstframe`：仅按该阶段明确授权读取对应历史/其他路线 Skill；新纸艺/像素不调用首帧生产 Skill。
 - `video-generation`：新纸艺/像素以本期 insert-shots.plan.json 为交接依据，Claude 回传每镜 MP4；不调用 RunningHub。只有明确要求其他图生视频路线时读取其首帧与平台 Skill。
-- `edit-release`：读取 `knowledge/23-V9导演编排与动效采用基线.md`、其继承的 `knowledge/20-V8连续语义动效与可感知音效基线.md`、`knowledge/22-实录优先字幕与系列发布包硬门禁.md`、`workflow/active-production-profile.v1.json` 和本阶段对应 Skill。成片 V9 是新视频默认制作基准，下一条真实视频继续验证；导演 V9.1 与导演表 v2 保持原名。V8保留为继承基础和历史档案，V7.2只用于锁定母版回归和故障回滚；任何降级必须有用户明确批准记录，V10须待下条反馈后再决定。
+- `edit-release`：读取 `knowledge/23-V9导演编排与动效采用基线.md`、其继承的 `knowledge/20-V8连续语义动效与可感知音效基线.md`、`knowledge/22-实录优先字幕与系列发布包硬门禁.md`、`workflow/active-production-profile.v1.json` 和本阶段对应 Skill。用户于2026-11-14确认《五次技术革命》V9 R2 为后续口播的最低制作基准。每期按实录从工作台自由选效，逐片验收。导演 V9.1 与导演表 v2 保持原名。V8保留为继承基础和历史档案，V7.2只用于锁定母版回归和故障回滚；任何降级必须有用户明确批准记录，V10须待下条反馈后再决定。
 - `governance-maintenance`：只读取目标规则、直接调用者和最小相关测试；发现生产链旁支问题只登记，不顺手修复。
 
 `topic-script` 阶段生成、改写或重组公开口播时，先用项目内 `douyin-koubo-source-to-original` 生成并校验研究上下文和候选包；用户未选择候选题、三个钩子中的一个和提纲骨架时，只能输出讨论候选，不能写完整公开稿。完整访谈、长视频、文章或参考口播的深度改编，再用 `source-essence-synthesis` 生成并校验源头精髓卡；达到 `ready-for-outline` 后，使用 `content-brain-gate` 生成并校验内容门禁卡。五项文案能力的固定顺序是：源头拆解与原创合成 → 源头精髓（适用时）→ 内容大脑门禁 → humanizer-zh → 本人口播精修。`tools/setup-koubo.mjs` 必须注册项目内前三项；`humanizer-zh` 是 Codex 全局 Skill，`humanize-koubo-script` 是项目 Skill。没有实际读取证据、校验结果和用户选择回执时，不得只说“已经查过知识库”。已经由用户确认且本轮不修改正文的文稿进入 `director-only` 时，不重复启动本段文案流程。

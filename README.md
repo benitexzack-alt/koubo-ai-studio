@@ -6,7 +6,7 @@
 
 ## 当前版本：V9 最新默认版本与最低保障
 
-更新日期：2026-10-25。用户已确认当前V9成片方向与最新导演交接规则为后续视频的最低保障。代码插片支持测绘图纸 drafting、纸艺 paper、像素 pixel，由Claude Code生成逐镜MP4；每期单独判断AI情景，需要时同次提供完整视频提示词。新风格动态效果仍按每期实际回片验收。历史导演V9.1保留兼容，不另起V10。
+更新日期 2026-11-14。用户已确认《五次技术革命》V9 R2 整片效果，并将它定为后续口播的最低制作基准。每期按实录和画面需要从动效工作台自由匹配。代码插片支持测绘图纸、纸艺和像素，由 Claude Code 生成逐镜视频。每期单独判断是否采用 AI 情景，采用时同次提供完整视频提示词。
 
 | 层级 | 当前状态 | 解决的问题 |
 | --- | --- | --- |
@@ -15,7 +15,7 @@
 | 导演流程 | drafting/paper/pixel代码JSON；独立AI情景提示词；旧V9.1/v2保留兼容 | 实录锚点、六种测绘版式、数字来源、左下真人与字幕避让 |
 | 历史基线 | V7.2 锁定母版 | 历史回归与故障回滚 |
 
-成片V9采用连续动作编排、按语义比较并实际使用动效库、真人交接和逐动作配声；继承V8实录与交付技术合同。当前最低保障已获用户确认，后续整片视听仍逐片验收，V10暂不启动。最新[最低保障确认](workflow/audits/v9-minimum-guarantee-20261025.v1.json)绑定规则与10月23日整片参考。其余依据见 [V9基线](knowledge/23-V9导演编排与动效采用基线.md)、[采用记录](workflow/audits/production-v9-adoption-20261014.v1.json)、[生产档案](workflow/active-production-profile.v1.json) 和 [导演档案](workflow/active-director-profile.v1.json)。
+成片 V9 重点检查片头钩子、章节转折、正文金句、数字运镜和动作音对齐，继承 V8 实录与交付技术合同。新搭配先做实录小样，确认后渲染整片。最新整片依据见 [最低基准确认](workflow/audits/v9-full-episode-feedback-20261114.v1.json)。执行细节见 [V9 基线](knowledge/23-V9导演编排与动效采用基线.md)、[生产档案](workflow/active-production-profile.v1.json) 和 [导演档案](workflow/active-director-profile.v1.json)。
 
 ## 能完成什么
 
